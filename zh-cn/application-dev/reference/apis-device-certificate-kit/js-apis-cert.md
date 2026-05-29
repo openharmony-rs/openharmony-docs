@@ -1550,7 +1550,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -1680,7 +1680,7 @@ getEncoded() : Promise\<EncodingBlob>
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -2240,7 +2240,7 @@ getCertSerialNumber() : bigint
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 
 **示例：**
 
@@ -2374,7 +2374,7 @@ getIssuerName() : DataBlob
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -2511,7 +2511,7 @@ getIssuerName(encodingType: EncodingType): string
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error.|
 
@@ -2677,9 +2677,9 @@ getSubjectName(encodingType?: EncodingType) : DataBlob
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed.           |
+| 401 | invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed. <br>适用版本：12+          |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -2823,7 +2823,7 @@ getNotBeforeTime() : string
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -2954,7 +2954,7 @@ getNotAfterTime() : string
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -3086,7 +3086,7 @@ getSignature() : DataBlob
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -3218,7 +3218,7 @@ getSignatureAlgName() : string
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -3350,7 +3350,7 @@ getSignatureAlgOid() : string
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -3482,7 +3482,7 @@ getSignatureAlgParams() : DataBlob
 | -------- | ------------------------------------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -3793,7 +3793,7 @@ getExtKeyUsage() : DataArray
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -4067,7 +4067,7 @@ getSubjectAltNames() : DataArray
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -4224,7 +4224,7 @@ getIssuerAltNames() : DataArray
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.|
 
 **示例：**
@@ -4380,7 +4380,7 @@ getItem(itemType: CertItemType) : DataBlob
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -4698,7 +4698,7 @@ getCRLDistributionPoint(): DataArray
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -4829,7 +4829,7 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -4980,7 +4980,7 @@ getSubjectX500DistinguishedName(): X500DistinguishedName
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -5131,7 +5131,7 @@ toString(): string
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -5287,7 +5287,7 @@ toString(encodingType: EncodingType): string
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error. |
 
@@ -5434,7 +5434,7 @@ hashCode(): Uint8Array
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -5584,7 +5584,7 @@ getExtensionsObject(): CertExtension
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -5915,7 +5915,7 @@ getEncoded() : EncodingBlob
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -6039,7 +6039,7 @@ getOidList(valueType : ExtensionOidType) : DataArray
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -6164,7 +6164,7 @@ getEntry(valueType: ExtensionEntryType, oid : DataBlob) : DataBlob
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -6291,7 +6291,7 @@ ArkTS-Sta: checkCA() : int
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -6406,7 +6406,7 @@ hasUnsupportedCriticalExtension(): boolean
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -7020,7 +7020,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -7099,7 +7099,7 @@ getEncoded() : Promise\<EncodingBlob>
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -7551,7 +7551,7 @@ getIssuerName() : DataBlob
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -7629,7 +7629,7 @@ getLastUpdate() : string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -7707,7 +7707,7 @@ getNextUpdate() : string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -8144,7 +8144,7 @@ getTbsInfo() : DataBlob
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -8222,7 +8222,7 @@ getSignature() : DataBlob
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -8300,7 +8300,7 @@ getSignatureAlgName() : string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -8378,7 +8378,7 @@ getSignatureAlgOid() : string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -8457,7 +8457,7 @@ getSignatureAlgParams() : DataBlob
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -8827,7 +8827,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -8956,7 +8956,7 @@ getEncoded() : Promise\<EncodingBlob>
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -9759,7 +9759,7 @@ getIssuerName() : DataBlob
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -9894,7 +9894,7 @@ getIssuerName(encodingType: EncodingType): string
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error. |
 
@@ -10031,7 +10031,7 @@ getLastUpdate() : string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -10160,7 +10160,7 @@ getNextUpdate() : string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -10893,7 +10893,7 @@ getSignature() : DataBlob
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -11022,7 +11022,7 @@ getSignatureAlgName() : string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -11151,7 +11151,7 @@ getSignatureAlgOid() : string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -11281,7 +11281,7 @@ getSignatureAlgParams() : DataBlob
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -11410,7 +11410,7 @@ getTBSInfo() : DataBlob
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -11539,7 +11539,7 @@ getExtensions(): DataBlob
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -11890,7 +11890,7 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -12011,7 +12011,7 @@ toString(): string
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -12137,7 +12137,7 @@ toString(encodingType: EncodingType): string
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error. |
 
@@ -12264,7 +12264,7 @@ hashCode(): Uint8Array
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -12384,7 +12384,7 @@ getExtensionsObject(): CertExtension
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -12523,7 +12523,7 @@ createCertChainValidator(algorithm :string) : CertChainValidator
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -12589,14 +12589,14 @@ validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.                           |
 | 19030002 | the certificate signature verification failed.    |
 | 19030003 | the certificate has not taken effect.             |
 | 19030004 | the certificate has expired.                      |
 | 19030005 | failed to obtain the certificate issuer.          |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 19030007 | the key cannot be used for a digital signature.     |
 
 **示例：**
 
@@ -12727,14 +12727,14 @@ validate(certChain : CertChainData) : Promise\<void>
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.                           |
 | 19030002 | the certificate signature verification failed.    |
 | 19030003 | the certificate has not taken effect.             |
 | 19030004 | the certificate has expired.                      |
 | 19030005 | failed to obtain the certificate issuer.          |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 19030007 | the key cannot be used for a digital signature.     |
 
 **示例：**
 
@@ -12961,8 +12961,8 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValid
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | the parameter check failed.                           |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | parameter check failed.                           |
 | 19030001 | crypto operation error.                           |
 | 19030002 | the certificate signature verification failed.    |
 | 19030003 | the certificate has not taken effect.             |
@@ -12977,7 +12977,7 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValid
 | 19030013 | email address mismatch in the certificate.     |
 | 19030014 | key usage mismatch in the certificate. |
 | 19030015 | failed to obtain the certificate revocation list.          |
-| 19030016 | the certificate revocation list does not take effect.             |
+| 19030016 | the certificate revocation list has not taken effect.             |
 | 19030017 | the certificate revocation list has expired.                      |
 | 19030018 | failed to verify the signature of the certificate revocation list.          |
 | 19030019 | failed to find the issuer of the certificate revocation list. |
@@ -13145,7 +13145,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -13232,7 +13232,7 @@ getEncoded() : Promise\<EncodingBlob>
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -13387,7 +13387,7 @@ getCertIssuer() : DataBlob
 | -------- | -------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 
 **示例：**
 
@@ -13466,7 +13466,7 @@ getRevocationDate() : string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -13553,7 +13553,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -13697,7 +13697,7 @@ getEncoded() : Promise\<EncodingBlob>
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -13831,7 +13831,7 @@ getSerialNumber() : bigint
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -13969,7 +13969,7 @@ getCertIssuer() : DataBlob
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -14108,7 +14108,7 @@ getCertIssuer(encodingType: EncodingType): string
 | -------- | ------------------------------------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error. |
 
@@ -14245,7 +14245,7 @@ getRevocationDate() : string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -14377,7 +14377,7 @@ getExtensions(): DataBlob
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -14515,7 +14515,7 @@ hasExtensions(): boolean
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -14647,7 +14647,7 @@ getCertIssuerX500DistinguishedName(): X500DistinguishedName
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -14766,7 +14766,7 @@ toString(): string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -14884,7 +14884,7 @@ hashCode(): Uint8Array
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -15002,7 +15002,7 @@ getExtensionsObject(): CertExtension
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -16755,14 +16755,14 @@ buildX509CertChain(param: [CertChainBuildParameters](#certchainbuildparameters12
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.                           |
 | 19030002 | the certificate signature verification failed.    |
 | 19030003 | the certificate has not taken effect.             |
 | 19030004 | the certificate has expired.                      |
 | 19030005 | failed to obtain the certificate issuer.          |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 19030007 | the key cannot be used for a digital signature.     |
 
 **示例：**
 
@@ -17004,7 +17004,7 @@ parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.                           |
 | 19030008 | maybe wrong password.            |
 
@@ -17399,7 +17399,7 @@ parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is too large.                                    |
 | 19030001 | crypto operation error.                           |
 | 19030008 | maybe wrong password.            |
@@ -17804,7 +17804,7 @@ createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise\<Uint8Arra
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
 | 19030001 | crypto operation error.                           |
 
@@ -18137,7 +18137,7 @@ createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19020003 | parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
 | 19030001 | crypto operation error.                           |
 
@@ -18470,14 +18470,14 @@ createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | crypto operation error.                           |
 | 19030002 | the certificate signature verification failed.    |
 | 19030003 | the certificate has not taken effect.             |
 | 19030004 | the certificate has expired.                      |
 | 19030005 | failed to obtain the certificate issuer.          |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 19030007 | the key cannot be used for a digital signature.     |
 
 **示例：**
 
@@ -18986,14 +18986,14 @@ validate(param: CertChainValidationParameters): Promise\<CertChainValidationResu
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error.           |
 | 19030002 | the certificate signature verification failed. |
 | 19030003 | the certificate has not taken effect.           |
 | 19030004 | the certificate has expired. |
 | 19030005 | failed to obtain the certificate issuer.           |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.      |
+| 19030007 | the key cannot be used for a digital signature.      |
 
 **示例：**
 
@@ -19259,14 +19259,14 @@ validate(param: CertChainValidationParameters, callback: AsyncCallback\<CertChai
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error.           |
 | 19030002 | the certificate signature verification failed. |
 | 19030003 | the certificate has not taken effect.           |
 | 19030004 | the certificate has expired. |
 | 19030005 | failed to obtain the certificate issuer.           |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.      |
+| 19030007 | the key cannot be used for a digital signature.      |
 
 **示例：**
 
@@ -19517,7 +19517,7 @@ toString(): string
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -19754,7 +19754,7 @@ hashCode(): Uint8Array
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -19998,7 +19998,7 @@ generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 | 19030008 | maybe wrong password. |
 
@@ -20168,14 +20168,14 @@ createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 | 19030002 | the certificate signature verification failed. |
 | 19030003 | the certificate has not taken effect. |
 | 19030004 | the certificate has expired. |
 | 19030005 | failed to obtain the certificate issuer. |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature. |
+| 19030007 | the key cannot be used for a digital signature. |
 
 **示例：**
 
@@ -20272,14 +20272,14 @@ createX500DistinguishedName(nameDer: Uint8Array): Promise\<X500DistinguishedName
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 | 19030002 | the certificate signature verification failed. |
 | 19030003 | the certificate has not taken effect. |
 | 19030004 | the certificate has expired. |
 | 19030005 | failed to obtain the certificate issuer. |
 | 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature. |
+| 19030007 | the key cannot be used for a digital signature. |
 
 **示例：**
 
@@ -20365,7 +20365,7 @@ getName(): string
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -20453,7 +20453,7 @@ getName(type: string): Array\<string>
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -20534,7 +20534,7 @@ getName(encodingType: EncodingType): string
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
 | 19030001 | crypto operation error. |
 
@@ -20619,7 +20619,7 @@ getName(type: string, encodingType: EncodingType): Array\<string>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is invalid. |
 | 19030001 | crypto operation error. |
 
@@ -20695,7 +20695,7 @@ getEncoded(): EncodingBlob
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -20778,7 +20778,7 @@ createCmsGenerator(contentType: CmsContentType): CmsGenerator
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -20882,7 +20882,7 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 | 19030008 | maybe wrong password. |
 
@@ -21092,7 +21092,7 @@ addCert(cert: X509Cert): void
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -21242,7 +21242,7 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes:<br>1. The type of algorithm is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
@@ -21300,7 +21300,7 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The type of recipient certificate is invalid or not supported;<br>2. The digestAlgorithm of CmsKeyAgreeRecipientInfo is invalid or not supported;<br>3. The recipientInfo does not have any recipient info. |
 | 19030001 | crypto operation error. |
 
@@ -21422,7 +21422,7 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -21654,7 +21654,7 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -21882,7 +21882,7 @@ getEncryptedContentData(): Promise\<Uint8Array>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -22009,7 +22009,7 @@ createCmsParser(): CmsParser
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -22174,7 +22174,7 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The type of the cmsFormat is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
@@ -22319,7 +22319,7 @@ getContentType(): CmsContentType
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -22471,7 +22471,7 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The trustCerts of config is empty;<br>2. The length of the contentData of config is zero or too large;<br>3. The contentDataFormat of config is invalid or not supported. |
 | 19030001 | crypto operation error. |
 | 19030003 | the certificate has not taken effect. |
@@ -22618,7 +22618,7 @@ getContentData(): Promise\<Uint8Array>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -22769,8 +22769,8 @@ getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The type of the cmsFormat is invalid or not supported. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | parameter check failed. Possible causes: <br>1. The value of type is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
 **示例：**
@@ -22923,7 +22923,7 @@ decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19020003 | parameter check failed. Possible causes: <br>1. The private key is invalid or not supported;<br>2. The recipient certificate is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
