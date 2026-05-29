@@ -5578,7 +5578,7 @@ let website: contact.Website = {
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | mode        | [ContactSyncMode](#contactsyncmode) |  否  |  否   |  联系人同步模式。     |
 | syncId        | number |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
-| completedBatches        | Array&lt;number&gt; |  否  |  否    | 表示已成功同步的联系人的批处理标识符数组。值的范围是从1到totalBatches。     |
+| completedBatches        | Array&lt;number&gt; |  否  |  否    | 表示已成功同步的联系人批次标识符数组。取值范围为1到totalBatches。      |
 | totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
 | lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳（毫秒）。|
 
