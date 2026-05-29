@@ -93,7 +93,42 @@
         dateTime: {
           // 指明提醒的目标时间
           year: date.getFullYear(),
-          month: date.getUTCMonth() + 1,
+      <!-- @[alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->   
+      
+      ``` TypeScript
+      let alarm: reminderAgentManager.ReminderRequestAlarm = {
+        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_ALARM, // 提醒类型为闹钟类型
+        hour: time.hour, // 指明提醒的目标时刻
+        minute: time.minute, // 指明提醒的目标分钟
+        actionButton: // 设置弹出的提醒通知信息上显示的按钮类型和标题
+        [
+          {
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close')
+              .id), // "app.string.alarm_clock_close"资源文件中的value值为"关闭闹钟"
+            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
+          },
+          {
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone')
+              .id), // "app.string.alarm_clock_postpone"资源文件中的value值为"推迟闹钟"
+            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
+          }
+        ],
+        slotType: notificationManager.SlotType.CONTENT_INFORMATION, // 指明提醒的Slot类型
+        ringDuration: Constant.REMINDER_DURATION, // 指明响铃时长和振动时长（单位：秒）
+        wantAgent: {
+          // 点击提醒通知后跳转的目标UIAbility信息
+          pkgName: 'com.example.reminderagentmanager',
+          abilityName: 'EntryAbility'
+        },
+        title: context.resourceManager.getStringSync($r('app.string.alarm_clock')
+          .id), // 指明提醒标题, "app.string.alarm_clock"资源文件中的value值为"闹钟"
+        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach')
+          .id), // 指明提醒内容, "app.string.alarm_clock_reach"资源文件中的value值为"闹钟时间已到"
+        snoozeTimes: 0, // 指明延迟提醒次数
+        timeInterval: 0, // 执行延迟提醒间隔（单位：秒）
+        daysOfWeek: []  // 指明每周哪几天需要重复提醒
+      }
+      ```
           day: date.getDate(),
           hour: date.getHours(),
           minute: date.getMinutes(),
