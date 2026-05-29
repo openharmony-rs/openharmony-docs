@@ -13,9 +13,12 @@
     - [基本语法概述](state-management/arkts-basic-syntax-overview.md)
     - [UI装饰器总览](state-management/arkts-decorator-overview.md)
     - [声明式UI描述](state-management/arkts-declarative-ui-description.md)
-    - 动态自定义组件<!--arkts-custom-components-->
+    - 自定义组件<!--arkts-custom-components-->
       - [创建自定义组件](state-management/arkts-create-custom-components.md)
-      - [自定义组件生命周期](state-management/arkts-page-custom-components-lifecycle.md)
+      - [\@Component装饰器: 自定义组件（ArkTS-Sta）](../ui/state-management-static/arkts-static-create-component.md)
+      - [\@ComponentV2装饰器：自定义组件（ArkTS-Sta）](../ui/state-management-static/arkts-static-componentv2.md)
+      - [自定义组件生命周期（ArkTS-Dyn）](state-management/arkts-page-custom-components-lifecycle.md)
+      - [自定义组件生命周期（ArkTS-Sta）](state-management-static/arkts-static-custom-components-new-lifecycle.md)
       - [自定义组件生命周期（推荐）](state-management/arkts-custom-components-new-lifecycle.md)
       - [自定义组件的自定义布局](state-management/arkts-page-custom-components-layout.md)
       - [自定义组件成员属性访问限定符使用限制](state-management/arkts-custom-components-access-restrictions.md)
@@ -24,15 +27,10 @@
         - [\@ReusableV2装饰器：V2组件复用](state-management/arkts-new-reusableV2.md)
         - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)
       - 自定义组件冻结<!--arkts-component-freeze-->
-        - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
-        - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
-    - 静态自定义组件<!--arkts-static-custom-components-->
-      - [\@Component装饰器: 自定义组件](../ui/state-management-static/arkts-static-create-component.md)
-      - [\@ComponentV2装饰器：自定义组件](../ui/state-management-static/arkts-static-componentv2.md)
-      - [自定义组件生命周期](state-management-static/arkts-static-custom-components-new-lifecycle.md)
-      - [自定义组件冻结](../ui/state-management-static/arkts-static-custom-components-v1-v2-freeze.md)
-        - [V1自定义组件冻结场景](../ui/state-management-static/arkts-static-freeze.md)
-        - [V2自定义组件冻结场景](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
+        - [自定义组件冻结（V1）（ArkTS-Dyn）](state-management/arkts-custom-components-freeze.md)
+        - [自定义组件冻结（V1）（ArkTS-Sta）](../ui/state-management-static/arkts-static-freeze.md)
+        - [自定义组件冻结（V2）（ArkTS-Dyn）](state-management/arkts-custom-components-freezeV2.md)
+        - [自定义组件冻结（V2）（ArkTS-Sta）](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
     - UI装饰器<!--arkts-ui-decorators-->
       - [装饰器总览](../ui/state-management/arkts-ui-decorators-overview.md)
       - 组件扩展<!--arkts-extend-components-->
@@ -338,6 +336,7 @@
     - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components-sys.md)
     - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](arkts-isolated-components-sys.md)
     <!--DelEnd-->
+  - [内置组件扩展](state-management-static/arkts-static-extendable-inner-component.md)
   - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
     - ArkTS-Dyn已废弃接口在ArkTS-Sta上的适配方法<!--ui-arkts-sta-deprecated-apis-migration-guide-->
       - [UI接口适配](arkts-sta-deprecated-ui-apis.md)
@@ -405,7 +404,7 @@
     - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
       - [使用Text组件](ndk-use-text-component.md)
-      - [使用属性字符串的文本绘制与显示](ndk-styled-string.md)
+      - [使用属性字符串](ndk-styled-string.md)
       - [添加输入框文本事件监听](ndk-textarea-event.md)
   - 使用选择类组件<!--arkts-build-picker-ndk-->
       - [使用滑动选择器Picker](ndk-picker.md)

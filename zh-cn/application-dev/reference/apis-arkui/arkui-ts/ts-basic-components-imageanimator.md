@@ -303,9 +303,9 @@ attributeModifier(modifier: AttributeModifier\<ImageAnimatorAttribute> | Attribu
 
 ### onStart
 
-ArkTS-Sta: onStart(event: (() => void) | undefined)
-
 ArkTS-Dyn: onStart(event: () => void)
+
+ArkTS-Sta: onStart(event: (() => void) | undefined)
 
 状态回调，动画开始播放时触发。
 
@@ -327,9 +327,9 @@ ArkTS-Dyn: onStart(event: () => void)
 
 ### onPause
 
-ArkTS-Sta: onPause(event: (() => void) | undefined)
-
 ArkTS-Dyn: onPause(event: () => void)
+
+ArkTS-Sta: onPause(event: (() => void) | undefined)
 
 状态回调，动画暂停播放时触发。
 
@@ -351,9 +351,9 @@ ArkTS-Dyn: onPause(event: () => void)
 
 ### onRepeat
 
-ArkTS-Sta: onRepeat(event: (() => void) | undefined)
-
 ArkTS-Dyn: onRepeat(event: () => void)
+
+ArkTS-Sta: onRepeat(event: (() => void) | undefined)
 
 状态回调，动画重复播放时触发。
 
@@ -373,9 +373,9 @@ ArkTS-Dyn: onRepeat(event: () => void)
 
 ### onCancel
 
-ArkTS-Sta: onCancel(event: (() => void) | undefined)
-
 ArkTS-Dyn: onCancel(event: () => void)
+
+ArkTS-Sta: onCancel(event: (() => void) | undefined)
 
 状态回调，动画返回最初状态时触发。
 
@@ -397,9 +397,9 @@ ArkTS-Dyn: onCancel(event: () => void)
 
 ### onFinish
 
-ArkTS-Sta: onFinish(event: (() => void) | undefined)
-
 ArkTS-Dyn: onFinish(event: () => void)
+
+ArkTS-Sta: onFinish(event: (() => void) | undefined)
 
 状态回调，动画播放完成时或者停止播放时触发。 
 

@@ -2016,8 +2016,8 @@ extractAlphaPixelMap(): Promise\<PixelMap>
 | 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
-| 7600105 | The PixelMap has been released. |
-| 7600106 | The PixelMap has been passed to another thread. |
+| 7600105 | The current PixelMap has been released. |
+| 7600106 | The current PixelMap has been passed across threads. |
 | 7600305 | Failed to create the PixelMap. Possible cause: Current PixelMap data is corrupted. |
 | 7600306 | Failed to convert the data. Possible causes: 1. Failed to perform pixel format conversion. 2. The system is out of memory. |
 
@@ -2071,8 +2071,8 @@ extractAlphaPixelMapSync(): PixelMap
 | 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
-| 7600105 | The PixelMap has been released. |
-| 7600106 | The PixelMap has been passed to another thread. |
+| 7600105 | The current PixelMap has been released. |
+| 7600106 | The current PixelMap has been passed across threads. |
 | 7600305 | Failed to create the PixelMap. Possible cause: Current PixelMap data is corrupted. |
 | 7600306 | Failed to convert the data. Possible causes: 1. Failed to perform pixel format conversion. 2. The system is out of memory. |
 

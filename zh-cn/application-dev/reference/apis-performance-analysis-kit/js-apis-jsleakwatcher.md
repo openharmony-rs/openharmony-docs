@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> 本模块仅适用于ArkTS-Dyn。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -27,6 +29,8 @@ enable(isEnable: boolean): void
 使能ArkTS对象泄漏检测，默认关闭。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -48,6 +52,8 @@ watch(obj: object, msg: string): void
 注册待检测泄漏的对象。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -72,6 +78,8 @@ check(): string
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
+**ArkTS-Dyn起始版本**：12
+
 **返回值：**
 
 | 类型    | 说明                                                       |
@@ -91,6 +99,8 @@ dump(filePath: string): Array&lt;string&gt;
 导出泄漏列表和虚拟机内存快照。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -122,6 +132,8 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -166,6 +178,8 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
+**ArkTS-Dyn起始版本**：24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -189,30 +203,10 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 
 <!--code_no_check-->
 ```ts
-enum MonitorObjectType {
-  ALL = -1, 
-  CUSTOM_COMPONENT = 1 << 0,
-  WINDOW = 1 << 1,
-  NODE_CONTAINER = 1 << 2,
-  X_COMPONENT = 1 << 3,
-  ABILITY = 1 << 4
-};
-
-interface LeakWatcherConfig {
-  monitorObjectTypes: MonitorObjectType;
-  objectUniqueIDs: Array<number>;
-  checkInterval: number;
-  fgLeakCountThreshold: number;
-  bgLeakCountThreshold: number;
-  maxStoredHeapDumps: number;
-  dumpHeapWaitTimeMs: number;
-  exclusionList: Array<string>;
-};
-
 // 监测ArkTS对象CustomComponent和Window的内存泄漏
 // 对象中类型传入空值或假值代表该属性设置为默认值
-let config: LeakWatcherConfig = {
-    monitorObjectTypes: MonitorObjectType.CUSTOM_COMPONENT | MonitorObjectType.WINDOW,
+let config: jsLeakWatcher.LeakWatcherConfig = {
+    monitorObjectTypes: jsLeakWatcher.MonitorObjectType.CUSTOM_COMPONENT | jsLeakWatcher.MonitorObjectType.WINDOW,
     objectUniqueIDs: [],
     checkInterval: 10000,
     fgLeakCountThreshold: 5,
@@ -234,6 +228,8 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
+**ArkTS-Dyn起始版本**：24
+
 | 名称 | 类型 | 只读 | 可选 | 说明 | 
 | ------- | ------- | ------- | ------- | ------- | 
 | monitorObjectTypes | [MonitorObjectType](#monitorobjecttype24) | 否 | 否 | 被监测对象类型。<br>默认监测所有组件类型。 |
@@ -251,6 +247,8 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 需要监控的组件对象类型枚举。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：24
 
 | 名称 | 值 | 说明 |
 | ------- | ------- | ------- |

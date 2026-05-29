@@ -224,7 +224,6 @@ notificationManager.publish(notificationRequest, userId).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let notificationRequest: notificationManager.NotificationRequest = {
     id: 1,
@@ -243,7 +242,7 @@ let userId: int = 1;
 
 notificationManager.publish(notificationRequest, userId).then(() => {
     console.info("publish success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
 });
 ```

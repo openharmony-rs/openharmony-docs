@@ -700,7 +700,7 @@ SIM card activation or deactivation failed.
 1. 检查飞行模式是否关闭。
 2. 检查是否插入SIM卡。
 
-## 9201018 指定应用不持支操作
+## 9201018 指定应用不支持操作
 
 **错误信息**
 
@@ -718,7 +718,7 @@ The application is inoperable.
 
 指定应用不支持添加，请添加其他应用到栏。
 
-## 9201019 指定位置不持支操作
+## 9201019 指定位置不支持操作
 
 **错误信息**
 
@@ -775,3 +775,21 @@ A lock screen password has been set for the device.
 **处理步骤**
 
 删除锁屏密码。
+
+## 9201043 API调用的前置条件未满足
+
+**错误信息**
+
+Prerequisites for the API call have not been satisfied. For example, distributed outgoing transmission is not disallowed before adding the distributed bidirectional collaboration trustlist.
+
+**错误描述**
+
+当API调用的前置条件未满足时，会产生此错误码。
+
+**可能原因**
+
+在添加允许分布式双向协同应用名单之前，设备间单向传输能力未被禁止。
+
+**处理步骤**
+
+先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
