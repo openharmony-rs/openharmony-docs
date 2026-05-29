@@ -164,7 +164,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 ## CertBlob
 
-表示证书二进制数据。
+表示证书文件数据。
 
 **起始版本：** 26.0.0
 
@@ -172,7 +172,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称        | 类型                                | 只读 | 可选 | 说明  |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
-| certData    | Uint8Array                           | 否   | 否  | 表示证书文件数据,最大长度为8196字节。 |
+| certData    | Uint8Array                           | 否   | 否  | 表示证书文件数据，最大长度为8196字节。 |
 | certFormat  | [CertFileFormat](#certfileformat)   | 否   | 是  | 表示证书文件格式。默认值：PEM_DER。 |
 | certScope   | [CertScope](#certscope18)         | 否   | 是  | 表示用户CA证书的存储位置。默认值：CURRENT_USER。 |
 
@@ -193,7 +193,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。 |
 | CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。 |
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。   |
-| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB凭据服务失败。   |
+| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB Key服务失败。   |
 | CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。   |
 
 ## CertType<sup>18+</sup>
@@ -268,7 +268,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 ## UkeyInfo<sup>22+</sup>
 
-提供USB凭据属性信息。
+提供USB Key证书凭据属性信息。
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -674,7 +674,7 @@ try {
 
 installUserTrustedCertificate(certificate: CertBlob): Promise\<CMResult>
 
-安装用户CA证书。使用Promise异步回调。
+安装用户CA证书。当入参certificate.certFormat为P7B时，输入的P7B证书文件中最多只能包含20本证书。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1726,7 +1726,7 @@ try {
 
 getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-表示获取USB凭据详细信息。使用Promise异步回调。
+表示获取USB Key证书凭据详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1738,14 +1738,14 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
 | 参数名   | 类型   | 必填 | 说明    |
 | -------- | ------- | ---- | ------ |
-| keyUri | string | 是   | 表示USB凭据的唯一标识符，长度限制256字节以内。 |
-| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | 是   | 表示USB凭据的属性信息。 |
+| keyUri | string | 是   | 表示USB Key证书凭据的唯一标识符，长度限制256字节以内。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | 是   | 表示USB Key证书凭据的属性信息。 |
 
 **返回值**：
 
 | 类型  | 说明  |
 | ----- | ----- |
-| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取到的USB凭据详情的结果，返回值为[CMResult](#cmresult)对象中的credentialDetailList属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取到的USB Key证书凭据详情的结果，返回值为[CMResult](#cmresult)对象中的credentialDetailList属性。 |
 
 **错误码：**
 
@@ -1786,7 +1786,7 @@ try {
 
 getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-获取USB凭据证书列表。使用Promise异步回调。
+表示获取USB Key证书凭据列表。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1800,14 +1800,14 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 
 | 参数名       | 类型                                | 必填 | 说明                                      |
 | ------------ | ----------------------------------- | ---- | ----------------------------------------- |
-| ukeyProvider | string                               | 是   | 表示USB凭据提供商。                       |
-| ukeyInfo     | [UkeyInfo](#ukeyinfo22)             | 是   | 表示USB凭据的属性信息。                     |
+| ukeyProvider | string                               | 是   | 表示USB Key的设备提供商。                       |
+| ukeyInfo     | [UkeyInfo](#ukeyinfo22)             | 是   | 表示USB Key证书凭据的属性信息。                     |
 
 **返回值**：
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取USB凭据证书列表的结果，返回值为[CMResult](#cmresult)对象中的credentialDetailList属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取USB Key证书凭据列表的结果，返回值为[CMResult](#cmresult)对象中的credentialDetailList属性。 |
 
 **错误码：**
 
@@ -1848,7 +1848,7 @@ try {
 
 importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Promise\<void>
 
-导入证书到USB Key。使用Promise异步回调。
+表示导入证书到USB Key。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1862,9 +1862,9 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| keyUri | string | 是 | 表示USB key证书的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
-| cert | Uint8Array | 是 | 表示待导入的证书数据。最大长度为1MB。<br>证书数据格式遵循SKF规范的定义。 |
-| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB key证书属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
+| keyUri | string | 是 | 表示USB key证书凭据的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
+| cert | Uint8Array | 是 | 表示待导入的证书数据。最大长度为10KB。<br>证书数据格式遵循SKF规范的定义。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB key证书凭据属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
 
 **返回值**：
 
