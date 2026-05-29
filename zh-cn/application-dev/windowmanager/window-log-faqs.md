@@ -471,30 +471,24 @@ SetResizeByDragEnabled: This is not main window or decor enabled sub window
 
 **分析定位及解决**
 
-**步骤1：理解setResizeByDragEnabled接口要求**
+检查创建子窗口时是否在SubWindowOptions中将`decorEnabled`设置为`true`。
 
-该接口用于控制是否允许通过拖拽进行窗口缩放，有以下前提条件：
-- 仅支持应用主窗口和子窗口调用。 
-- 主窗口仅在[自由窗口](window-terminology.md#自由窗口)状态下调用可立即生效，在非[自由窗口](window-terminology.md#自由窗口)状态下调用时不报错不生效，切换到[自由窗口](window-terminology.md#自由窗口)状态下生效。
-- 子窗口必须开启窗口装饰栏（decorEnabled=true）才能调用此接口。
+对于调用该接口的子窗口，要保证子窗口已开启窗口装饰栏。
 
-**步骤2：检查子窗口创建配置**
+**正反案例**
 
-检查创建子窗口时是否设置了窗口装饰：
+错误示例
 
 ```ts
-// 错误示例：创建子窗口时未开启装饰栏
 windowStage.createSubWindowWithOptions('mySubWindow', {
   title: "",
-  decorEnabled: false,    // 未开启装饰栏
+  decorEnabled: false,    // 错误：未开启装饰栏
   isModal: false,
   maximizeSupported: true
-})
+});
 ```
 
-**正确示例**
-
-对于调用该接口的子窗口，要保证子窗口已开启窗口装饰栏，将SubWindowOptions中的`decorEnabled`设置为`true`。
+正确示例
 
 ```ts
 let options: window.SubWindowOptions = {
@@ -508,5 +502,6 @@ windowStage.createSubWindowWithOptions('mySubWindow', options).then((windowClass
   windowClass.setResizeByDragEnabled(true, (err: BusinessError) => {
     console.error("setResizeByDragEnabled failed.", ` code: ${err.code}, message: ${err.message}`)
   })
-}            
+})
 ```
+      
