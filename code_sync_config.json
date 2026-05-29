@@ -31835,14 +31835,14 @@
 						"start_line":103
 					},
 					{
-						"end_line":138,
+						"end_line":158,
 						"name":"packToFile_pixelMap",
-						"start_line":126
+						"start_line":141
 					},
 					{
-						"end_line":152,
+						"end_line":177,
 						"name":"packToFile_imageSource",
-						"start_line":140
+						"start_line":160
 					},
 					{
 						"end_line":22,
@@ -31940,19 +31940,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":45,
 						"name":"create_picturePackOpts",
-						"start_line":22
+						"start_line":39
 					},
 					{
-						"end_line":163,
+						"end_line":196,
 						"name":"packToData_picture",
-						"start_line":148
+						"start_line":179
 					},
 					{
-						"end_line":182,
+						"end_line":218,
 						"name":"packToFile_picture",
-						"start_line":171
+						"start_line":198
 					}
 				]
 			}
@@ -31970,24 +31970,24 @@
 						"start_line":16
 					},
 					{
-						"end_line":42,
+						"end_line":43,
 						"name":"init_receiver",
 						"start_line":33
 					},
 					{
-						"end_line":96,
+						"end_line":99,
 						"name":"On_imageArrival",
-						"start_line":44
+						"start_line":45
 					},
 					{
-						"end_line":112,
+						"end_line":115,
 						"name":"adjust_bufferSize",
-						"start_line":100
+						"start_line":103
 					},
 					{
-						"end_line":128,
+						"end_line":131,
 						"name":"adjust_width",
-						"start_line":118
+						"start_line":121
 					}
 				]
 			}
@@ -33363,7 +33363,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp",
 				"functions":[
 					{
-						"end_line":154,
+						"end_line":177,
 						"name":"allocator_operations",
 						"start_line":15
 					},
@@ -33383,7 +33383,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/TranscodingUtility.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":52,
 						"name":"transcoding_example",
 						"start_line":15
 					}
@@ -33418,9 +33418,9 @@
 						"start_line":38
 					},
 					{
-						"end_line":460,
+						"end_line":610,
 						"name":"pack_source",
-						"start_line":281
+						"start_line":413
 					}
 				]
 			},
@@ -33668,14 +33668,14 @@
 						"start_line":189
 					},
 					{
-						"end_line":119,
+						"end_line":131,
 						"name":"get_imageInfo",
 						"start_line":97
 					},
 					{
-						"end_line":187,
+						"end_line":203,
 						"name":"editExif_operations",
-						"start_line":121
+						"start_line":133
 					},
 					{
 						"end_line":237,
@@ -33683,14 +33683,14 @@
 						"start_line":225
 					},
 					{
-						"end_line":254,
+						"end_line":380,
 						"name":"create_pixelmapList",
-						"start_line":239
+						"start_line":359
 					},
 					{
-						"end_line":267,
+						"end_line":399,
 						"name":"get_delayTimeList",
-						"start_line":256
+						"start_line":382
 					},
 					{
 						"end_line":279,
@@ -33743,7 +33743,7 @@
 						"start_line":33
 					},
 					{
-						"end_line":167,
+						"end_line":170,
 						"name":"picture_operations",
 						"start_line":37
 					}
@@ -33808,9 +33808,9 @@
 						"start_line":41
 					},
 					{
-						"end_line":187,
+						"end_line":203,
 						"name":"editExif_operations",
-						"start_line":121
+						"start_line":133
 					}
 				]
 			},
