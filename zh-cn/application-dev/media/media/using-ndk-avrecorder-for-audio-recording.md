@@ -478,7 +478,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Stop failed %{public}d", result);
       }
-      close(g_outputFd);
+      
       napi_value res;
       napi_create_int32(env, result, &res);
       return res;
