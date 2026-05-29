@@ -6,7 +6,7 @@
 <!--Designer: @chengguohong; @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c036364f537738c5cc00a1d7190b45d315e6e787 translatedAt=2026-05-29T12:18:03.630Z pushedAt=2026-05-29T13:17:39.186Z -->
+<!-- md-trans-meta sourceCommit=c036364f537738c5cc00a1d7190b45d315e6e787 translatedAt=2026-05-29T12:18:03.630Z pushedAt=2026-05-29T13:40:32.546Z -->
 
 ## Symptom
 
@@ -32,7 +32,7 @@ During BLE Bluetooth application development, error 2900099 occurs when the [set
 
 - Check whether another asynchronous API call is still pending when the client calls **setCharacteristicChangeNotification**, causing the **setCharacteristicChangeNotification** call to be blocked. To troubleshoot the issue:
 
-  - Add logs to API callbacks to view the complete API call sequence. From object instance creation to data transmission, the recommended BLE client API call sequence is as follows:
+  - Add logs to API callbacks to view the complete API call sequence. From object instance creation to data transmission, the BLE client API call sequence is as follows for reference:
 
     - Call [createGattClientDevice](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#blecreategattclientdevice) to create a client instance.
 
