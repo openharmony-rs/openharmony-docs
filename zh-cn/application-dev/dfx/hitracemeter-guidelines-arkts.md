@@ -253,6 +253,11 @@ ArkTS-Sta示例：
 
    添加按钮以触发接口调用：
    <!-- @[TestHiTraceMeter_BUTTON](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS_Sta/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   Button("testHiTraceMeter").backgroundColor('#FFFF00FF')
+     .onClick(testHiTraceMeter)
+   ```
 
 ### 步骤二：采集trace信息并查看
 
