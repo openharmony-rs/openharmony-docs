@@ -168,7 +168,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ## AccessibilityExtensionAbility.onAccessibilityKeyEvent
 
-onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean;
+onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 
 在物理按键按下时回调该方法，在该方法中根据业务判断是否消费事件。
 
