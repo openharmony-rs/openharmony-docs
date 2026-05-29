@@ -15079,7 +15079,9 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 设置主窗或子窗支持的窗口模式，使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -15113,6 +15115,8 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility, bundleManager } from '@kit.AbilityKit';
@@ -15141,6 +15145,45 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  //...
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError | null, windowClass) => {
+      try {
+        if (err?.code) {
+        console.error(Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message});
+        return;
+        }
+        if (windowClass != undefined) {
+          let promise = windowClass.setSupportedWindowModes([
+            bundleManager.SupportWindowMode.FULL_SCREEN,
+            bundleManager.SupportWindowMode.SPLIT,
+            bundleManager.SupportWindowMode.FLOATING
+          ]);
+          promise.then(() => {
+            console.info('Succeeded in setting window support modes');
+          }).catch((err: Error) => {
+            console.error(Failed to set window support modes. Cause code: ${err.code}, message: ${err.message});
+          });
+        }
+      } catch (exception) {
+        console.error(`Failed to set window support modes. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+};
 ```
 
 ## isFocused<sup>12+</sup>
