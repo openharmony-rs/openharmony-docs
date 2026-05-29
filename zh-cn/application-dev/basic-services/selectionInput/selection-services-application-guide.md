@@ -120,42 +120,6 @@
 
 3. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件中，开发者可实现扩展能力类。该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)，用于划词扩展生命周期的管理。
 
-    ``` TypeScript
-    import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
-    import { Want } from '@kit.AbilityKit';
-    import { rpc } from '@kit.IPCKit';
-
-    class SelectionAbilityStub extends rpc.RemoteObject {
-      constructor(des: string) {
-        super(des);
-      }
-
-      onRemoteMessageRequest(
-        code: number,
-        data: rpc.MessageSequence,
-        reply: rpc.MessageSequence,
-        options: rpc.MessageOption
-      ): boolean | Promise<boolean> {
-        return true;
-      }
-    }
-
-    class SelectionExtAbility extends SelectionExtensionAbility {
-      private panel_: selectionManager.Panel | undefined = undefined;
-
-      onConnect(want: Want): rpc.RemoteObject {
-        // 当SelectionExtensionAbility实例完成创建时，系统会触发该回调。开发者可在该回调中执行初始化逻辑（如定义变量、加载资源、监听划词事件等）。
-        return new SelectionAbilityStub('remote');
-      }
-
-      onDisconnect(): void {
-        // 当SelectionExtensionAbility实例被销毁（例如用户关闭划词开关或切换划词应用）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。
-        selectionManager.destroyPanel(this.panel_);
-      }
-    }
-
-    export default SelectionExtAbility;
-    ```
     上述代码中，划词扩展被拉起时会触发[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容的设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发[onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#ondisconnect)回调，可以在该回调中完成窗口销毁的操作。详细内容可参见下面第4步。
 
 
