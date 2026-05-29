@@ -5512,3 +5512,5 @@ struct MyComponent {
   }
 }
 ```
+
+<!--no_check-->
