@@ -151,8 +151,8 @@ createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, p
 
 | 参数名       | 类型                | 必填 | 说明             |
 | ------------ | ------------------- | ---- | ---------------- |
-| hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA1010102/YCBCR_P010，色彩空间是BT2020_HLG。 |
-| sdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | SDR PixelMap，位深8bit，像素格式为RGBA8888/NV21/NV12，色彩空间是P3。 |
+| hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA_1010102/YCBCR_P010，色彩空间是BT2020_HLG。 |
+| sdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | SDR PixelMap，位深8bit，像素格式为RGBA_8888/NV21，色彩空间是P3。 |
 | params | GainmapParams | 是   | Gainmap Params，包含一个bool类型的参数isFullSizeGainmap，来决定是否使用全尺寸Gainmap，默认值是{isFullSizeGainmap : false}。|
 
 **返回值：**
