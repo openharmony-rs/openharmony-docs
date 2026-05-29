@@ -202,6 +202,7 @@
       - [AutoFillTriggerType (系统接口)](js-apis-inner-application-autoFillTriggerType-sys.md)
       - [AutoStartupCallback (系统接口)](js-apis-inner-application-autoStartupCallback-sys.md)
       - [AutoStartupInfo (系统接口)](js-apis-inner-application-autoStartupInfo-sys.md)
+      - [CliToolEvent (系统接口)](js-apis-inner-application-cliToolEvent-sys.md)
       - [Context (系统接口)](js-apis-inner-application-context-sys.md)
       - [ContinueDeviceInfo (系统接口)](js-apis-inner-application-continueDeviceInfo-sys.md)
       - [CustomData (系统接口)](js-apis-inner-application-customData-sys.md)
@@ -215,6 +216,8 @@
       - [RunningMultiAppInfo (系统接口)](js-apis-inner-application-runningMultiAppInfo-sys.md)
       - [RunningMultiInstanceInfo (系统接口)](js-apis-inner-application-runningMultiInstanceInfo-sys.md)
       - [ServiceExtensionContext (系统接口)](js-apis-inner-application-serviceExtensionContext-sys.md)
+      - [ToolEventCallback (系统接口)](js-apis-inner-application-toolEventCallback-sys.md)
+      - [ToolInfo (系统接口)](js-apis-inner-application-ToolInfo-sys.md)
       - [UIServiceExtensionContext (系统接口)](js-apis-inner-application-uiserviceExtensionContext-sys.md)
       - [UIServiceHostProxy (系统接口)](js-apis-inner-application-uiservicehostproxy-sys.md)
       - [UIAbilityContext (系统接口)](js-apis-inner-application-uiAbilityContext-sys.md)
@@ -223,6 +226,7 @@
       - [AutoFillRect (系统接口)](js-apis-inner-application-autoFillRect-sys.md)
       - [AgentExtensionConnectCallback (系统接口)](js-apis-inner-application-agentExtensionConnectCallback-sys.md)
       - [AgentProxy (系统接口)](js-apis-inner-application-agentProxy-sys.md)
+      - [ToolInfo (系统接口)](js-apis-inner-application-ToolInfo-sys.md)
       <!--DelEnd-->
     - bundleManager<!--bundlemanager-->
       - [abilityInfo](js-apis-bundleManager-abilityInfo.md)
@@ -316,7 +320,6 @@
     - [ability_runtime_common.h](capi-ability-runtime-common-h.md)
     - [application_context.h](capi-application-context-h.md)
     - [context_constant.h](capi-context-constant-h.md)
-    - [connect_options.h](capi-connect-options-h.md)
     - [native_child_process.h](capi-native-child-process-h.md)
     - [native_interface_bundle.h](capi-native-interface-bundle-h.md)
     - [start_options.h](capi-start-options-h.md)
@@ -325,8 +328,6 @@
     - [bundle_manager_common.h](capi-bundle-manager-common-h.md)
     - [context.h](capi-abilityruntime-context-h.md)
     - [extension_ability.h](capi-extension-ability-h.md)
-    - [modular_object_extension_ability.h](capi-modular-object-extension-ability-h.md)
-    - [modular_object_extension_context.h](capi-modular-object-extension-context-h.md)
     - [modular_object_extension_manager.h](capi-modular-object-extension-manager-h.md)
   - 结构体<!--ability-struct-->
     - [AbilityBase_Element](capi-abilitybase-element.md)
@@ -348,9 +349,6 @@
     - [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-extensioninstance8h.md)
     - [OH_AbilityRuntime_ModularObjectExtensionInfo*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md)
     - [OH_AbilityRuntime_AllModularObjectExtensionInfos*](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md)
-    - [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)
-    - [OH_AbilityRuntime_ModularObjectExtensionContext*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md)
-    - [OH_AbilityRuntime_ModularObjectExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md)
 - 错误码<!--ability-arkts-errcode-->
   - [元能力子系统错误码](errorcode-ability.md)
   - [DistributedSchedule错误码](errorcode-DistributedSchedule.md)

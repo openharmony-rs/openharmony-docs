@@ -232,7 +232,33 @@ onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 | ------ | ------------------------------------- | ---- | -------------- |
 | event  | &nbsp;()&nbsp;=&gt;&nbsp;void | 是   | 滚动全部循环次数完成时的回调。 |
 
+### onStop
+
+onStop(event:&nbsp;Callback&lt;void&gt;\| undefined)
+
+跑马灯滚动结束或停止时触发回调。
+
+跑马灯停止表示跑马灯将从开始位置，重新开始循环，不包含暂停场景，暂停不会触发该回调。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                  | 必填 | 说明           |
+| ------ | ------------------------------------- | ---- | -------------- |
+| event  | [Callback](ts-types.md#callback12)&lt;void&gt;\| undefined| 是   | 跑马灯滚动结束或停止时触发回调。<br/>设置为undefined时不会执行回调。 |
+
 ## 示例
+
+### 示例1（跑马灯内容动态更新）
 
 该示例通过设置[MarqueeOptions](#marqueeoptions18对象说明)的start、step、loop、fromStart、src、spacing、delay属性和[marqueeUpdateStrategy](#marqueeupdatestrategy12)展示了跑马灯内容动态更新时运行的效果。
 
@@ -317,3 +343,80 @@ struct MarqueeExample {
 ```
 
 ![marquee](figures/marquee.gif)
+
+### 示例2（设置跑马灯停止回调）
+
+该示例通过变更跑马灯状态来触发跑马灯的onStop回调，触发onStop回调后使停止计数器numberSTOP的值加1。
+
+从API版本26.0.0开始，新增[onStop](#onstop)接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct MarqueeStop4 {
+  @State change :boolean = true;
+  @State isString: String = '正向滚动';
+  @State marqueeText: string =
+    'This is the text with the text overflow set marquee This is the text with the text overflow set marquee This is the text with the text overflow set marquee';
+  @State numberSTART: number = 0;
+  @State numberBOUNCE: number = 0;
+  @State numberSTOP: number = 0;
+
+  build() {
+    Scroll() {
+      Column() {
+        Row() {
+          Column() {
+            Text('Start')
+            Text(this.numberSTART.toString())
+          }.margin(10)
+
+          Column() {
+            Text('Bounce')
+            Text(this.numberBOUNCE.toString())
+          }.margin(10)
+
+          Column() {
+            Text('Stop')
+            Text(this.numberSTOP.toString())
+          }.margin(10)
+        }.margin(20)
+
+        Marquee({
+          start: true,
+          step: 6,
+          loop: 1,
+          fromStart: this.change,
+          src: this.marqueeText
+        })
+          .marqueeUpdateStrategy(MarqueeUpdateStrategy.DEFAULT)
+          .margin(20)
+          .onStart(() => {
+            // '收到状态: START';
+            this.numberSTART++;
+          })
+          .onBounce(() => {
+            // '收到状态: BOUNCE';
+            this.numberBOUNCE++;
+          })
+          .onStop(() => {
+            // '收到状态: STOP';
+            this.numberSTOP++;
+          })
+        Button(this.isString.toString()).onClick(() => {
+          if (this.change) {
+            this.change = false
+            this.isString = '反向滚动';
+          } else {
+            this.change = true
+            this.isString = '正向滚动';
+          }
+        }).margin(20)
+      }.height(600).width('100%').padding({ left: 35, right: 35, top: 35 })
+    }
+  }
+}
+```
+
+![marqueeOnStop](figures/marqueeOnStop.gif)
