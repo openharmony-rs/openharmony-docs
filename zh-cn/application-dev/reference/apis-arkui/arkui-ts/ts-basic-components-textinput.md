@@ -2361,7 +2361,7 @@ ArkTS-Sta: onSecurityStateChange(callback: Callback\<boolean> | undefined)
 
 | 参数名       | 类型   | 必填 | 说明                               |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | ArkTS-Dyn: Callback\<boolean><br/>ArkTS-Sta: Callback\<boolean> \| undefined | 是   | 回调函数。<br/>true表示状态切换；false表示状态未切换。<br/>取值为undefined时，不使用回调函数。|
+| callback | ArkTS-Dyn: Callback\<boolean><br/>ArkTS-Sta: Callback\<boolean> \| undefined | 是   | 回调函数。<br/>true表示密码显示；false表示密码隐藏。<br/>取值为undefined时，不使用回调函数。|
 
 ### onWillInsert<sup>12+</sup>
 
