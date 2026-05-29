@@ -578,7 +578,7 @@ router.replaceUrl({
 
 pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route.
 
 > **NOTE**
 >
@@ -726,7 +726,7 @@ router.pushNamedRoute({
 
 pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route.
 
 > **NOTE**
 >
@@ -1531,7 +1531,7 @@ export default {
 // detail page
 export default {
   onInit() {
-    console.info('showData1:' + this.getUIContext().getRouter().getParams()['data1']);
+    console.info('showData1:' + router.getParams()['data1']);
   }
 }
 ```
