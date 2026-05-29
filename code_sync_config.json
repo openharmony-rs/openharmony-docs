@@ -49767,6 +49767,36 @@
 						"end_line":578,
 						"name":"Cpp_InputEventListExample",
 						"start_line":15
+					},
+					{
+						"end_line":119,
+						"name":"register_click_event",
+						"start_line":117
+					},
+					{
+						"end_line":127,
+						"name":"register_touch_event",
+						"start_line":125
+					},
+					{
+						"end_line":136,
+						"name":"register_mouse_event",
+						"start_line":134
+					},
+					{
+						"end_line":144,
+						"name":"register_hover_event",
+						"start_line":142
+					},
+					{
+						"end_line":153,
+						"name":"register_axis_event",
+						"start_line":151
+					},
+					{
+						"end_line":170,
+						"name":"register_key_event",
+						"start_line":159
 					}
 				]
 			},
