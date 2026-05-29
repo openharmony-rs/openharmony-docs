@@ -79,13 +79,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
-1: Specify the same padding for the four directions.<br>
+Specify the same padding for the four directions.<br>
 
 | Name| Description|
 | -- | -- |
 | value[0].f32 | Padding, in vp.|
 
-2: Specify different paddings for the four directions.<br>
+Specify different paddings for the four directions.<br>
 
 | Name| Description|
 | -- | -- |
@@ -116,13 +116,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
-1: Specify the same margin for the four directions.<br>
+One or four parameters can be passed:
+
+Specify the same margin for the four directions.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Margin, in vp.|
 
-2: Specify different margins for the four directions.<br>
+Specify different margins for the four directions.<br>
 
 | Name| Description|
 | -- | -- |
@@ -155,7 +157,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment method. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_CENTER**.|
+| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_CENTER**.|
 
 **Returns**
 
@@ -176,12 +178,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
-1. Specify the same width for the four borders.<br>
+One or four parameters can be passed:
+
+Specify the same width for the four borders.<br>
 | Name| Description|
 | -- | -- |
-| 1. .value[0].f32 | Width.|
+| .value[0].f32 | Width.|
 
-2. Specify different width values for the four borders.<br>
+Specify different width values for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -212,13 +216,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
-1. Specify the same corner radius for the four borders.<br>
+One or four parameters can be passed:
+
+Specify the same corner radius for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Corner radius.|
 
-2. Specify different corner radii for the four borders.<br>
+Specify different corner radii for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -249,13 +255,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
-1. Specify the same color for the four borders.<br>
+One or four parameters can be passed:
+
+Specify the same color for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].u32 | Border color, in 0xARGB format, for example, **0xFFFF11FF**.|
 
-2. Specify different colors for the four borders.<br>
+Specify different colors for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -286,13 +294,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
-1. Specify the same line style for the four borders.<br>
+One or four parameters can be passed:
+
+Specify the same line style for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Border line style. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
 
-2. Specify different line styles for the four borders.<br>
+Specify different line styles for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -710,13 +720,22 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
+One or four parameters can be passed:
+
+Specify the same padding for the four borders.<br>
 | Name| Description|
 | -- | -- |
-| 1. .value[0].f32 | Padding, which is the same for the four directions, in percentage.|
-| 2. .value[0].f32 | Top padding, in percentage.|
+| .value[0].f32 | Padding, in percentage.|
+
+Specify different paddings for the four borders.<br>
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Top padding, in percentage.|
 | .value[1].f32 | Right padding, in percentage.|
 | .value[2].f32 | Bottom padding, in percentage.|
 | .value[3].f32 | Left padding, in percentage.|
+
 
 **Returns**
 
@@ -740,10 +759,19 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
+One or four parameters can be passed:
+
+Specify the same margin for the four borders.
+
 | Name| Description|
 | -- | -- |
-| 1. .value[0].f32 | Margin, which is the same for the four directions, in percentage.|
-| 2. .value[0].f32 | Top margin, in percentage.|
+| .value[0].f32 | Margin, in percentage.|
+
+Specify different margins for the four borders.
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Top margin, in percentage.|
 | .value[1].f32 | Right margin, in percentage.|
 | .value[2].f32 | Bottom margin, in percentage.|
 | .value[3].f32 | Left margin, in percentage.|
@@ -848,11 +876,20 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 **Since**: 12
 
 **Parameters**
+One or four parameters can be passed:
+
+Specify the same width for the four borders.
 
 | Name| Description|
 | -- | -- |
-| 1. .value[0].f32 | Width, which is the same for the four borders, in percentage.|
-| 2. .value[0].f32 | Width of the top border, in percentage.|
+| .value[0].f32 | Width, in percentage.|
+
+
+Specify different width values for the four borders.
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Width of the top border, in percentage.|
 | .value[1].f32 | Width of the right border, in percentage.|
 | .value[2].f32 | Width of the bottom border, in percentage.|
 | .value[3].f32 | Width of the left border, in percentage.|
@@ -878,11 +915,19 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 **Since**: 12
 
 **Parameters**
+One or four parameters can be passed:
+
+Specify the same corner radius for the four borders.
 
 | Name| Description|
 | -- | -- |
-| 1. .value[0].f32 | Radius, which is the same for the four corners, in percentage.|
-| 2. .value[0].f32 | Radius of the upper left corner, in percentage.|
+| .value[0].f32 | Radius, in percentage.|
+
+Specify different corner radii for the four borders.
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Radius of the upper left corner, in percentage.|
 | .value[1].f32 | Radius of the upper right corner, in percentage.|
 | .value[2].f32 | Radius of the lower left corner, in percentage.|
 | .value[3].f32 | Radius of the lower right corner, in percentage.|

@@ -33,6 +33,8 @@ Sets the dynamic dimming degree of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
@@ -70,6 +72,8 @@ freezeUINode(id: string, isFrozen: boolean): void
 Sets whether to freeze a specific component by **id** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +192,8 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 Sets whether to freeze a specific component by **uniqueId** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -321,7 +327,7 @@ struct Index {
 
 setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void
 
-Configures the keyboard appearance, including blur effects and fluid lighting effects. These effects are only available in immersive mode. For details about immersive mode, see [KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15). The fluid lighting effect requires the blur effect to be enabled. The final display depends on input method implementation.
+Configures the keyboard appearance, including blur effects and fluid lighting effects. These effects are only available in immersive mode. For details about the immersive mode, see [KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15). The fluid lighting effect requires the blur effect to be enabled. The final display depends on input method implementation.
 
 **System API**: This is a system API.
 
@@ -455,6 +461,8 @@ Captures a snapshot of the area between two specified components. This API uses 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**System API**: This is a system API.
 
 **Parameters**
 
