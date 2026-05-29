@@ -1504,7 +1504,7 @@ selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 
 selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入[筛选条件](#contactselectionoptions10)）。使用callback异步回调。
+调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入[筛选条件](#contactselectionoptions)）。使用callback异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1514,7 +1514,7 @@ selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Arra
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| options | [ContactSelectionOptions](#contactselectionoptions10) | 是   | 选择联系人时的筛选条件，表示单选或多选。 |
+| options | [ContactSelectionOptions](#contactselectionoptions) | 是   | 选择联系人时的筛选条件，表示单选或多选。 |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当调用选择联系人接口成功，err为undefined，data为选择的联系人数组；否则为错误对象。 |
 
 **错误码：**
@@ -1557,7 +1557,7 @@ selectContacts(options: ContactSelectionOptions): Promise&lt;Array&lt;Contact&gt
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| options | [ContactSelectionOptions](#contactselectionoptions10) | 是   | 选择联系人时的筛选条件，用于指定是单选还是多选。 |
+| options | [ContactSelectionOptions](#contactselectionoptions) | 是   | 选择联系人时的筛选条件，用于指定是单选还是多选。 |
 
 **返回值：**
 
@@ -4552,13 +4552,15 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 });
 ```
 
-## contact.syncContacts<sup>26+</sup>
+## contact.syncContacts
 
 syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;int&gt;&gt;
 
 批量同步多个联系人至联系人数据库。最多可批量同步400个联系人。调用方必须处于前台。
 
-**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -4571,8 +4573,8 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 | 参数名  | 类型                | 必填 | 说明                                                         |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| mode | [ContactSyncMode](#contactsyncmode26)                                  | 是   | 表示联系人同步模式的类型。                                           |
-| progress      | [ContactSyncProgress](#contactsyncprogress26)                       | 是   | 表示联系人同步进度的相关信息。       |
+| mode | [ContactSyncMode](#contactsyncmode)                                  | 是   | 表示联系人同步模式的类型。                                           |
+| progress      | [ContactSyncProgress](#contactsyncprogress)                       | 是   | 表示联系人同步进度的相关信息。       |
 | contacts      | Array&lt;[Contact](#contact)&gt;                      | 是   | 表示需要同步至数据库的联系人信息数组。       |
 
 **返回值：**
@@ -4648,13 +4650,15 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
 }
 ```
 
-## contact.queryContactSyncInfo<sup>26+</sup>
+## contact.queryContactSyncInfo
 
 queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&gt;
 
 查询调用应用程序正在进行的联系人同步信息。如果返回的联系人同步信息为空，则调用方未进行联系人同步或联系人同步已完成。
 
-**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -4672,7 +4676,7 @@ queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;Array&lt;[ContactSyncInfo](#contactsyncinfo26)&gt;&gt; | Promise对象，返回调用应用程序的联系人同步信息数组。如果没有正在同步的联系人，则返回null。 |
+| Promise&lt;Array&lt;[ContactSyncInfo](#contactsyncinfo)&gt;&gt; | Promise对象，返回调用应用程序的联系人同步信息数组。如果没有正在同步的联系人，则返回null。 |
 
 **错误码：**
 
@@ -4699,13 +4703,15 @@ const syncInfoList: ContactSyncInfo[] = await contact.queryContactSyncInfo(conte
 console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList));
 ```
 
-## contact.importContactsViaUI<sup>26+</sup>
+## contact.importContactsViaUI
 
 importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;int&gt;&gt;
 
 通过UI交互批量导入多个联系人。每次最多可导入100个联系人。
 
-**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -5531,7 +5537,7 @@ let website: contact.Website = {
 
 枚举，同步模式的类型。
 
-**原子化服务API**：从API version 26 开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.ContactsData
 
@@ -5544,7 +5550,7 @@ let website: contact.Website = {
 
 联系人同步进度的信息。包含同步ID、当前批次和总批次。
 
-**原子化服务API**：从API version 26 开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.Contacts
 
@@ -5558,13 +5564,13 @@ let website: contact.Website = {
 
 调用应用程序相关的联系人同步的信息。
 
-**原子化服务API**：从API version 26 开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.Contacts
 
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
-| mode        | [ContactSyncMode](#contactsyncmode26) |  否  |  否   |  联系人同步模式。     |
+| mode        | [ContactSyncMode](#contactsyncmode) |  否  |  否   |  联系人同步模式。     |
 | syncId        | int |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
 | completedBatches        | Array&lt;int&gt; |  否  |  否    | 表示已成功同步的联系人的批处理标识符数组。值的范围是从1到totalBatches。     |
 | totalBatches        | int |  否  |  否    | 表示要同步的联系人批次总数。     |
