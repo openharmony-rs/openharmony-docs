@@ -1732,8 +1732,6 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
-
 **参数**：
 
 | 参数名   | 类型   | 必填 | 说明    |
@@ -1794,8 +1792,6 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
-
 **参数**：
 
 | 参数名       | 类型                                | 必填 | 说明                                      |
@@ -1855,8 +1851,6 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
-
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 
