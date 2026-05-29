@@ -98,6 +98,7 @@
   - 基于AgentExtensionAbility的智能体开发指导<!--agent-->
     - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
     - [AgentExtensionAbility配置文件说明](agent-extension-configuration.md)
+  - [基于ArkTS脚本开发应用Skill](arkts-skill-development-guide.md)
 - FA模型开发指导<!--fa-model-development-->
   - [FA模型开发概述](fa-model-development-overview.md)
   - FA模型应用组件<!--fa-model-application-components-->
