@@ -288,7 +288,7 @@ typedef void (*OH_MetadataOutput_OnMetadataObjectExtAvailable)(void* context, OH
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void\* context | 用户提供的上下文指针。 |
+| void* context | 用户提供的上下文指针。 |
 | [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)\*\* metadataObjectExt | 指向元数据对象的二级指针。 |
 | uint32_t size | 元数据对象的数量。 |
 
