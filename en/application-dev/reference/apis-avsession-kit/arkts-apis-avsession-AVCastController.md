@@ -1,22 +1,23 @@
 # Interface (AVCastController)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+
+After a casting connection is set up, you can call [avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10) to obtain the cast controller. Through the controller, you can query the session ID, send commands and events to a session, and obtain session metadata and playback state information.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 10.
 
-After a casting connection is set up, you can call [avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10) to obtain the cast controller. Through the controller, you can query the session ID, send commands and events to a session, and obtain session metadata and playback state information.
-
 ## Modules to Import
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## getAVPlaybackState<sup>10+</sup>
@@ -44,14 +45,12 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
+avCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
   if (err) {
-    console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getAVPlaybackState : SUCCESS');
+    console.error(`Failed to get AV playback state: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting AV playback state.');
 });
 ```
 
@@ -82,12 +81,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
-  console.info('getAVPlaybackState : SUCCESS');
+avCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
+  console.info('Succeeded in getting AV playback state.');
 }).catch((err: BusinessError) => {
-  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get AV playback state: ${err.message}`);
 });
 ```
 
@@ -105,7 +102,7 @@ Obtains the decoding modes supported by the current remote device. This API uses
 
 | Type                                                       | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| Promise\<Array\<[DecoderType](arkts-apis-avsession-e.md#decodertype19)\>\> | Promise return an array of decoding modes supported by the remote device.|
+| Promise\<Array\<[DecoderType](arkts-apis-avsession-e.md#decodertype19)\>\> | Promise used to return an array of decoding modes supported by the remote device.|
 
 **Error codes**
 
@@ -118,15 +115,13 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
-  console.info(`getSupportedDecoders : SUCCESS : decoderTypes.length : ${decoderTypes.length}`);
+avCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
+  console.info(`Succeeded in getting supported decoders, length: ${decoderTypes.length}`);
   if (decoderTypes.length > 0 ) {
-    console.info(`getSupportedDecoders : SUCCESS : decoderTypes[0] : ${decoderTypes[0]}`);
+    console.info(`Succeeded in getting supported decoder: ${decoderTypes[0]}`);
   }
 }).catch((err: BusinessError) => {
-  console.error(`getSupportedDecoders BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get supported decoders: ${err.message}`);
 });
 ```
 
@@ -150,7 +145,7 @@ Obtains the recommended resolution level based on the passed decoding mode. This
 
 | Type                                                       | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| Promise\<[ResolutionLevel](arkts-apis-avsession-e.md#resolutionlevel19)\> | Promise return the recommended resolution level of the remote device.|
+| Promise\<[ResolutionLevel](arkts-apis-avsession-e.md#resolutionlevel19)\> | Promise used to return the recommended resolution level of the remote device.|
 
 **Error codes**
 
@@ -163,13 +158,11 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
-aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
-  console.info('getRecommendedResolutionLevel successfully');
+avCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
+  console.info('Succeeded in getting recommended resolution level.');
 }).catch((err: BusinessError) => {
-  console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get recommended resolution level: ${err.message}`);
 });
 ```
 
@@ -200,16 +193,15 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import type hdrCapability from './@ohos.graphics.hdrCapability';
+import  { type hdrCapability } from '@kit.ArkGraphics2D';
 
-aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
-  console.info(`getSupportedHdrCapabilities : SUCCESS : hdrFormats.length : ${hdrFormats.length}`);
+avCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
+  console.info(`Succeeded in getting supported HDR capabilities, length: ${hdrFormats.length}`);
   if (hdrFormats.length > 0 ) {
-    console.info(`getSupportedHdrCapabilities : SUCCESS : descriptors[0] : ${hdrFormats[0]}`);
+    console.info(`Succeeded in getting supported HDR capability: ${hdrFormats[0]}`);
   }
 }).catch((err: BusinessError) => {
-  console.error(`getSupportedHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get supported HDR capabilities: ${err.message}`);
 });
 ```
 
@@ -217,7 +209,7 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
 
 getSupportedPlaySpeeds(): Promise\<Array\<number>>
 
-Obtains the playback speeds supported by the current remote device. This API uses a promise to return the result.
+Obtains the playback speeds supported by the remote device. This API is only supported for devices connected using the Cast+ protocol. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -240,15 +232,13 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
-  console.info(`getSupportedPlaySpeeds : SUCCESS : hdrFormats.length : ${nums.length}`);
+avCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
+  console.info(`Succeeded in getting supported play speeds, length: ${nums.length}`);
   if (nums.length > 0 ) {
-    console.info(`getSupportedPlaySpeeds : SUCCESS : descriptors[0] : ${nums[0]}`);
+    console.info(`Succeeded in getting supported play speed: ${nums[0]}`);
   }
 }).catch((err: BusinessError) => {
-  console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get supported play speeds: ${err.message}`);
 });
 ```
 
@@ -289,13 +279,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let avCommand: avSession.AVCastControlCommand = {command:'play'};
-aVCastController.sendControlCommand(avCommand).then(() => {
-  console.info('SendControlCommand successfully');
+avCastController.sendControlCommand(avCommand).then(() => {
+  console.info('Succeeded in sending control command.');
 }).catch((err: BusinessError) => {
-  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to send control command: ${err.message}`);
 });
 ```
 
@@ -328,15 +316,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let avCommand: avSession.AVCastControlCommand = {command:'play'};
-aVCastController.sendControlCommand(avCommand, (err: BusinessError) => {
+avCastController.sendControlCommand(avCommand, (err: BusinessError) => {
   if (err) {
-    console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('SendControlCommand successfully');
+    console.error(`Failed to send control command: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in sending control command.');
 });
 ```
 
@@ -373,9 +359,11 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.sendCustomData({customData : "This is custom data"});
+avCastController.sendCustomData({customData : "This is custom data"}).then(() => {
+  console.info('Succeeded in sending custom data.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to send custom data: ${err.message}`);
+});
 ```
 
 ## prepare<sup>10+</sup>
@@ -406,8 +394,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // Set playback parameters.
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -426,12 +412,12 @@ let playItem: avSession.AVQueueItem = {
   }
 };
 // Prepare for playback. This operation triggers loading and buffering, but not the actual playback.
-aVCastController.prepare(playItem, (err: BusinessError) => {
+avCastController.prepare(playItem, (err: BusinessError) => {
   if (err) {
-    console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('prepare successfully');
+    console.error(`Failed to prepare: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in preparing.');
 });
 ```
 
@@ -471,8 +457,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // Set playback parameters.
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -491,10 +475,10 @@ let playItem: avSession.AVQueueItem = {
   }
 };
 // Prepare for playback. This operation triggers loading and buffering, but not the actual playback.
-aVCastController.prepare(playItem).then(() => {
-  console.info('prepare successfully');
+avCastController.prepare(playItem).then(() => {
+  console.info('Succeeded in preparing.');
 }).catch((err: BusinessError) => {
-  console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to prepare: ${err.message}`);
 });
 ```
 
@@ -503,6 +487,10 @@ aVCastController.prepare(playItem).then(() => {
 start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 Prepares for the playback of a media asset. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> In the audio and video casting scenario, when the application sequentially calls the [prepare](#prepare10) and **start** APIs and the asset ID remains unchanged, if a valid **mediaUri** or **fdSrc** is passed to the **prepare** API, the **start** API will reuse the complete **AVMediaDescription** object information in the prepare phase.
 
 **System capability**: SystemCapability.Multimedia.AVSession.AVCast
 
@@ -526,8 +514,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // Set playback parameters.
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -547,12 +533,12 @@ let playItem: avSession.AVQueueItem = {
 };
 
 // Start playback.
-aVCastController.start(playItem, (err: BusinessError) => {
+avCastController.start(playItem, (err: BusinessError) => {
   if (err) {
-    console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('start successfully');
+    console.error(`Failed to start: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in starting.');
 });
 ```
 
@@ -561,6 +547,10 @@ aVCastController.start(playItem, (err: BusinessError) => {
 start(item: AVQueueItem): Promise\<void>
 
 Prepares for the playback of a media asset. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> In the audio and video casting scenario, when the application sequentially calls the [prepare](#prepare10) and **start** APIs and the asset ID remains unchanged, if a valid **mediaUri** or **fdSrc** is passed to the **prepare** API, the **start** API will reuse the complete **AVMediaDescription** object information in the prepare phase.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -591,8 +581,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // Set playback parameters.
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -611,10 +599,10 @@ let playItem: avSession.AVQueueItem = {
   }
 };
 // Start playback.
-aVCastController.start(playItem).then(() => {
-  console.info('start successfully');
+avCastController.start(playItem).then(() => {
+  console.info('Succeeded in starting.');
 }).catch((err: BusinessError) => {
-  console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to start: ${err.message}`);
 });
 ```
 
@@ -643,14 +631,12 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueItem) => {
+avCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueItem) => {
   if (err) {
-    console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getCurrentItem successfully');
+    console.error(`Failed to get current item: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting current item.');
 });
 ```
 
@@ -681,12 +667,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
-  console.info('getCurrentItem successfully');
+avCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
+  console.info('Succeeded in getting current item.');
 }).catch((err: BusinessError) => {
-  console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current item: ${err.message}`);
 });
 ```
 
@@ -702,7 +686,7 @@ Obtains the supported commands. This API uses an asynchronous callback to return
 
 | Name| Type| Mandatory| Description|
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
-| callback | AsyncCallback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)>> | Yes| Callback return the supported commands.|
+| callback | AsyncCallback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)>> | Yes| Callback used to return the supported commands.|
 
 **Error codes**
 
@@ -715,14 +699,12 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getValidCommands((err: BusinessError, state: avSession.AVCastControlCommandType[]) => {
+avCastController.getValidCommands((err: BusinessError, state: avSession.AVCastControlCommandType[]) => {
   if (err) {
-    console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getValidCommands successfully');
+    console.error(`Failed to get valid commands: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting valid commands.');
 });
 ```
 
@@ -751,12 +733,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
-  console.info('getValidCommands successfully');
+avCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
+  console.info('Succeeded in getting valid commands.');
 }).catch((err: BusinessError) => {
-  console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get valid commands: ${err.message}`);
 });
 ```
 
@@ -801,7 +781,11 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
   // Obtain a media key from the server. Assign a value based on service requirements.
   let licenseResponseData: Uint8Array = new Uint8Array();
   console.info(`Succeeded in get license by ${drmUrl}.`);
-  aVCastController.processMediaKeyResponse(assetId, licenseResponseData);
+  avCastController.processMediaKeyResponse(assetId, licenseResponseData).then(() => {
+    console.info('Succeeded in processing media key response.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to process media key response: ${err.message}`);
+  });
 }
 ```
 
@@ -830,14 +814,12 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.release((err: BusinessError) => {
+avCastController.release((err: BusinessError) => {
   if (err) {
-    console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('release successfully');
+    console.error(`Failed to release: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in releasing.');
 });
 ```
 
@@ -868,21 +850,19 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.release().then(() => {
-  console.info('release successfully');
+avCastController.release().then(() => {
+  console.info('Succeeded in releasing.');
 }).catch((err: BusinessError) => {
-  console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to release: ${err.message}`);
 });
 
 ```
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
+on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
 
-Subscribes to playback state change events.
+Subscribes to playback state change events. This API uses an asynchronous callback to return the result.
 
 Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
 
@@ -895,8 +875,8 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'playbackStateChange'** is triggered when the playback state changes.|
-| filter   |  Array\<string>\|'all'| Yes  | The value **'all'** indicates that any playback state field change will trigger the event, and **Array\<string>** indicates that only changes to the listed playback state field will trigger the event.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is Array\<keyof AVPlaybackState> \| 'all'.|
-| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | Yes  | Callback function, where the **state** parameter indicates the new playback state.                     |
+| filter   |  Array\<keyof AVPlaybackState>\|'all'| Yes  | The value **'all'** indicates that any playback state field change will trigger the event, and **Array\<keyof AVPlaybackstate>** indicates that only changes to the listed playback state field will trigger the event.|
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | Yes  | Callback function, where the **state** parameter indicates the new playback state.|
 
 **Error codes**
 
@@ -910,12 +890,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 
 let playbackFilter: Array<keyof avSession.AVPlaybackState> = ['state', 'speed', 'loopMode'];
-aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 ```
@@ -949,14 +929,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('playbackStateChange');
+avCastController.off('playbackStateChange');
 ```
 
 ## on('mediaItemChange')<sup>10+</sup>
 
 on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
-Subscribes to media asset change events.
+Subscribes to media asset change events. This API uses an asynchronous callback to return the result.
 
 Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
 
@@ -983,7 +963,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
+avCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
   console.info(`on mediaItemChange state : ${item.itemId}`);
 });
 ```
@@ -1016,7 +996,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('mediaItemChange');
+avCastController.off('mediaItemChange');
 ```
 
 ## on('playNext')<sup>10+</sup>
@@ -1050,7 +1030,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('playNext', () => {
+avCastController.on('playNext', () => {
   console.info('on playNext');
 });
 ```
@@ -1083,7 +1063,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('playNext');
+avCastController.off('playNext');
 ```
 
 ## on('playPrevious')<sup>10+</sup>
@@ -1117,7 +1097,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('playPrevious', () => {
+avCastController.on('playPrevious', () => {
   console.info('on playPrevious');
 });
 ```
@@ -1150,7 +1130,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('playPrevious');
+avCastController.off('playPrevious');
 ```
 
 ## on('requestPlay')<sup>11+</sup>
@@ -1182,7 +1162,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
+avCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
   console.info(`on requestPlay state : ${item.itemId}`);
 });
 ```
@@ -1214,7 +1194,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('requestPlay');
+avCastController.off('requestPlay');
 ```
 
 ## on('endOfStream')<sup>11+</sup>
@@ -1246,7 +1226,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('endOfStream', () => {
+avCastController.on('endOfStream', () => {
   console.info('on endOfStream');
 });
 ```
@@ -1278,7 +1258,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('endOfStream');
+avCastController.off('endOfStream');
 ```
 
 ## on('seekDone')<sup>10+</sup>
@@ -1312,7 +1292,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('seekDone', (pos: number) => {
+avCastController.on('seekDone', (pos: number) => {
   console.info(`on seekDone pos: ${pos} `);
 });
 ```
@@ -1345,12 +1325,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('seekDone');
+avCastController.off('seekDone');
 ```
 
 ## on('validCommandChange')<sup>11+</sup>
 
-on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>): void
+on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>)
 
 Subscribes to valid command change events.
 
@@ -1367,25 +1347,26 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ------------------------------ |
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **Example**
 
 ```ts
-aVCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
-  console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
-  console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
+avCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
+  console.info(`Succeeded in valid command change, size: ${validCommands.length}`);
+  console.info(`Succeeded in valid command change, validCommands: ${validCommands.values()}`);
 });
 ```
 
 ## off('validCommandChange')<sup>11+</sup>
 
-off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>): void
+off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>)
 
 Unsubscribes from valid command change events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
@@ -1400,17 +1381,18 @@ Unsubscribes from valid command change events. If a callback is specified, the c
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message          |
 | -------- | ---------------- |
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **Example**
 
 ```ts
-aVCastController.off('validCommandChange');
+avCastController.off('validCommandChange');
 ```
 
 ## on('videoSizeChange')<sup>12+</sup>
@@ -1426,7 +1408,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The event **'videoSizeChange'** is triggered when the video size changes.|
+| type     | string                                                       | Yes  | Event type. The event **'videoSizeChange'** is triggered when the valid commands supported by the session changes.|
 | callback | (width: number, height: number) => void   | Yes  | Callback used to return the result.                   |
 
 **Error codes**
@@ -1441,8 +1423,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('videoSizeChange', (width: number, height: number) => {
-  console.info(`videoSizeChange : SUCCESS : size : ${width}, ${height}`);
+avCastController.on('videoSizeChange', (width: number, height: number) => {
+  console.info(`Succeeded in video size change, size: ${width}, ${height}`);
 });
 ```
 
@@ -1458,7 +1440,7 @@ Unsubscribes from video size change events. If a callback is specified, the corr
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The event **'videoSizeChange'** is triggered when the video size changes.|
+| type     | string                                                       | Yes  | Event type. The event **'videoSizeChange'** is triggered when the valid commands supported by the session changes.|
 
 **Error codes**
 
@@ -1472,7 +1454,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('videoSizeChange');
+avCastController.off('videoSizeChange');
 ```
 
 ## on('error')<sup>10+</sup>
@@ -1496,7 +1478,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message             |
 | -------- | --------------------- |
@@ -1514,7 +1496,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.on('error', (error: BusinessError) => {
+avCastController.on('error', (error: BusinessError) => {
   console.info(`error happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1537,7 +1519,7 @@ Unsubscribes from remote player errors. If a callback is specified, the correspo
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message             |
 | -------- | --------------------- |
@@ -1553,7 +1535,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('error')
+avCastController.off('error')
 ```
 
 ## on('keyRequest')<sup>12+</sup>
@@ -1591,7 +1573,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
   console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
 }
-aVCastController.on('keyRequest', keyRequestCallback);
+avCastController.on('keyRequest', keyRequestCallback);
 ```
 
 ## off('keyRequest')<sup>12+</sup>
@@ -1623,7 +1605,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('keyRequest');
+avCastController.off('keyRequest');
 ```
 
 ## on('castControlGenericError')<sup>13+</sup>
@@ -1670,7 +1652,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlGenericError', (error: BusinessError) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlGenericError', (error: BusinessError) => {
   console.info(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1689,7 +1673,7 @@ Unsubscribes from generic error events during cast control. If a callback is spe
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | 	Event type, which is **'castControlGenericError'** in this case.|
+| type     | string   | Yes  |  Event type, which is **'castControlGenericError'** in this case.|
 | callback | ErrorCallback | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
@@ -1703,7 +1687,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlGenericError');
+avCastController.off('castControlGenericError');
 ```
 
 ## on('castControlIoError')<sup>13+</sup>
@@ -1753,7 +1737,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlIoError', (error: BusinessError) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlIoError', (error: BusinessError) => {
   console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1786,7 +1772,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlIoError');
+avCastController.off('castControlIoError');
 ```
 
 ## on('castControlParsingError')<sup>13+</sup>
@@ -1824,7 +1810,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlParsingError', (error: BusinessError) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlParsingError', (error: BusinessError) => {
   console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1843,7 +1831,7 @@ Unsubscribes from parsing error events during cast control. If a callback is spe
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | 	Event type, which is **'castControlParsingError'** in this case.|
+| type     | string   | Yes  |  Event type, which is **'castControlParsingError'** in this case.|
 | callback | ErrorCallback | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
@@ -1857,7 +1845,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlParsingError');
+avCastController.off('castControlParsingError');
 ```
 
 ## on('castControlDecodingError')<sup>13+</sup>
@@ -1896,7 +1884,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlDecodingError', (error: BusinessError) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlDecodingError', (error: BusinessError) => {
   console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1915,7 +1905,7 @@ Unsubscribes from decoding error events during cast control. If a callback is sp
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | 	Event type, which is **'castControlDecodingError'** in this case.|
+| type     | string   | Yes  |  Event type, which is **'castControlDecodingError'** in this case.|
 | callback | ErrorCallback | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
@@ -1929,7 +1919,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlDecodingError');
+avCastController.off('castControlDecodingError');
 ```
 
 ## on('castControlAudioRendererError')<sup>13+</sup>
@@ -1965,7 +1955,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlAudioRendererError', (error: BusinessError) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlAudioRendererError', (error: BusinessError) => {
   console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1998,7 +1990,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlAudioRendererError');
+avCastController.off('castControlAudioRendererError');
 ```
 
 ## on('castControlDrmError')<sup>13+</sup>
@@ -2041,7 +2033,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.on('castControlDrmError', (error: BusinessError) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlDrmError', (error: BusinessError) => {
   console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -2074,7 +2068,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-aVCastController.off('castControlDrmError');
+avCastController.off('castControlDrmError');
 ```
 
 ## on('customDataChange')<sup>20+</sup>
@@ -2105,7 +2099,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-aVCastController.on('customDataChange', (callback) => {
+avCastController.on('customDataChange', (callback) => {
     console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
 });
 ```
@@ -2138,5 +2132,5 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-aVCastController.off('customDataChange');
+avCastController.off('customDataChange');
 ```

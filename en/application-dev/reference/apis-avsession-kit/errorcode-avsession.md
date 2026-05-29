@@ -1,7 +1,7 @@
 # AVSession Management Error Codes
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -179,6 +179,40 @@ The remote session has been destroyed or has not been created.
 **Solution**
 
 Query the session status again to determine whether the remote session exists.
+
+## 6600110 Desktop Lyrics Not Enabled for the Application
+
+**Error Message**
+
+The desktop lyrics feature of this application is not enabled.
+
+**Description**
+
+The desktop lyrics feature of the application is not enabled.
+
+**Possible Causes**
+
+The desktop lyrics feature of the application is not enabled.
+
+**Solution**
+
+Call the [enableDesktopLyric](./arkts-apis-avsession-AVSession.md#enabledesktoplyric23) API to enable the desktop lyrics feature.
+
+## 6600111 Desktop Lyrics Not Supported for the Current Device
+
+The desktop lyrics feature is not supported.
+
+**Description**
+
+The current device does not support the desktop lyrics feature.
+
+**Possible Causes**
+
+The desktop lyrics feature is not supported on the current device.
+
+**Solution**
+
+You are advised to use the [isDesktopLyricSupported](./arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23) API to check whether the current device supports the desktop lyrics feature.
 
 ## 6611000 Unknown Error in the Cast Controller
 
