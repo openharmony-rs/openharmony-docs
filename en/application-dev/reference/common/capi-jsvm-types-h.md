@@ -1,7 +1,7 @@
 # jsvm_types.h
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -56,6 +56,7 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 | [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) | JSVM_PropertyHandlerCfg                 | Defines the pointer type of the struct that contains the property handler.                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)                                         | JSVM_Callback   | Defines the pointer types of the native functions provided by user. These functions are exposed to JavaScript via JSVM-API.                                |
 | [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md) | JSVM_CompileProfile | Defines the compilation sampling file transferred together with **JSVM_COMPILE_COMPILE_PROFILE**.|
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md) | JSVM_DeserializeResult | Defines the background deserialization result transferred together with **JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT**.|
 
 ### Enums
 
@@ -100,7 +101,7 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 
 | Name| typedef Keyword| Description|
 | ---- | ------------- | ---- |
-| uint16_t    | char16_t   | Create an alias, **char16_t**, for **uint16_t**.<br>This code ensures that the **char16_t** type is available in all target compilation environments, even in some old environments that do not support it. **char16_t** is a new basic data type introduced in C++11. It is used to store 16-bit characters and represent UTF-16-encoded characters.<br>If the compiler does not recognize **char16_t**, manually define a custom type whose underlying implementation is a 16-bit unsigned integer. The prerequisite is as follows: the current compiler is not a C++ compiler, or it is a Microsoft Visual C++ compiler with a version earlier than Visual Studio 2015 (exclusive).|
+| uint16_t    | char16_t   | Create an alias, **char16_t**, for **uint16_t**.<br>This code ensures that the **char16_t** type is available in all target compilation environments, even in some old environments that do not support it. **char16_t** is a new basic data type introduced in C++11. It is used to store 16-bit characters and represent UTF-16-encoded characters.<br>If the compiler does not recognize **char16_t**, manually define a custom type whose underlying implementation is a 16-bit unsigned integer. Prerequisite: The current compiler is not a C++ compiler.\|\| It is a Microsoft Visual C++ compiler with a version earlier than Visual Studio 2015 (exclusive).|
 
 ## Enum Description
 
@@ -293,7 +294,7 @@ Enumerates memory pressure levels.
 | JSVM_MEMORY_PRESSURE_LEVEL_NONE | No pressure.|
 | JSVM_MEMORY_PRESSURE_LEVEL_MODERATE | Moderate pressure.|
 | JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL | Critical pressure.|
-| JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY | Notifies the system of insufficient memory.<br>Warning: This has a significant negative impact on GC performance.<br>Suggestion: Use other values to affect the GC plan.<br>**Since**: 22 |
+| JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY | The system is notified that the memory is insufficient and garbage collection is triggered immediately.<br>**Since**: 22 |
 
 ### JSVM_CompileMode
 
@@ -333,6 +334,8 @@ Defines an enum for **id** in **JSVM_CompileOptions**. Each **id** corresponds t
 | JSVM_COMPILE_SCRIPT_ORIGIN | JSVM script origin.|
 | JSVM_COMPILE_COMPILE_PROFILE | JSVM compilation profile.|
 | JSVM_COMPILE_ENABLE_SOURCE_MAP | Source map enablement status of JSVM.|
+| JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT | Background deserialization result of the JSVM script.<br>**Since**: 24|
+| JSVM_COMPILE_CODE_CACHE_REJECTED | Whether the JSVM bytecode cache is rejected.<br>**Since**: 24|
 
 ### JSVM_RegExpFlags
 

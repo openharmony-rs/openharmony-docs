@@ -245,7 +245,7 @@ This error code is reported if the memory is insufficient.
 
 **Cause**
 
-This error code is reported if the memory is insufficient.
+The memory is insufficient.
 
 **Solution**
 
@@ -497,7 +497,7 @@ This error code is reported if the file requested by the specified URL does not 
 
 **Cause**
 
-This error code is reported if the file requested by the specified URL does not exist.
+The file requested by the specified URL does not exist.
 
 **Solution**
 
@@ -555,7 +555,7 @@ An incorrect server domain name is configured for the atomic service.
 
 **Solution**
 
-Configure a correct server domain name for the atomic service.
+Configure a correct server domain name for the atomic service. For details, see [Configuring Server Domain Names](https://developer.huawei.com/consumer/en/doc/atomic-guides/agc-help-harmonyos-server-domain). The server domain name configuration takes effect more than one day after being set.
 
 ## 2300999 Internal Error
 
@@ -565,12 +565,41 @@ Internal error.
 
 **Description**
 
-This error code is reported if an internal error occurs.
+An internal error occurs in the HTTP module, which is usually caused by an unmapped error returned by the underlying network library or other internal exceptions.
 
 **Cause**
 
-An unknown error occurs.
+1. **Unmapped error of the underlying network library**:
+   - The HTTP error code mapping rule is the 2300000 + CURL error code. If the error code returned by CURL is not defined in the mapping table, the error code 2300999 is returned.
+   - For example, the CURL error code 1 is mapped to 2300001, and the CURL error code 28 is mapped to 2300028. If the error code returned by CURL is not mapped, the error code 2300999 is returned.
+   - **Keywords in logs**: `CURLcode result` (The specific CURL error code is printed in the logs.)
+
+2. **HTTP3 protocol issues**:
+   - When the HTTP3 protocol is used, there are other configuration errors before the request is started.
+   - **Log keywords**: `error_.GetErrorCode()=` and the request protocol is HTTP3.
+
+3. **Global interceptor verification failure**:
+   - The global request interceptor fails to be verified.
+   - **Log keywords**: `GlobalRequestInterceptorCheck fail` and `GlobalRequestInterceptorCheck failed`
 
 **Solution**
 
-Try again or contact technical support.
+1. **For underlying network library errors**:
+   - View the complete logs to obtain the underlying CURL error code.
+   - Refer to the [CURL error code document](https://curl.se/libcurl/c/libcurl-errors.html) to understand the specific error meaning.
+   - Take corresponding measures based on the error type (such as Internet connection, SSL certificate, and timeout).
+
+2. **For HTTP3 protocol issues**:
+   - If the HTTP3 protocol is used, check whether the request configuration has other errors (such as the URL format and permission).
+   - View the specific error information in the logs and resolve the error first.
+   - Consider using HTTP/2 or HTTP/1.1 instead.
+
+3. **For global interceptor issues**:
+   - Check whether the global HTTP interceptor is configured.
+   - Check whether the implementation of the interceptor callback function is correct.
+
+4. **General handling measures**:
+   - Try to create an HTTP request object again to avoid using an invalid object.
+   - Check the memory usage to ensure that the system resources are sufficient.
+   - If the problem persists, collect complete logs, submit a problem report, and contact technical support for help.
+   - Simplify the request configuration and check which configuration item causes the problem.
