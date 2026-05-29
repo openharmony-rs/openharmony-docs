@@ -118,7 +118,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| capList   | string[] | 否   | 是   | 表示能力集合, 包含页面内容、页面链接、文本选择等能力。具体能力项见下表。|
+| capList   | string[] | 否   | 是   | 表示能力集合，包含页面内容、页面链接、文本选择等能力。具体能力项见下表。|
 | groupId | string | 否 | 是 | 业务分组ID。具体分组ID见下表。|
 
 参数约束说明：<br>
@@ -453,7 +453,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | 否   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个感知信息项。|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | 否   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
