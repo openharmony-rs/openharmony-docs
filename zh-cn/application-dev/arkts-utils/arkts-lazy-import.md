@@ -422,8 +422,8 @@ export function func() {
     
     ``` TypeScript
     // entry/src/main/ets/pages/outer1.ets
-    import { a } from './1' // outer文件从1文件中加载了a变量
-    console.info('example ', a); // a变量在outer文件执行时就被使用
+    import { a } from './1' // outer1文件从1文件中加载了a变量
+    console.info('example ', a); // a变量在outer1文件执行时就被使用
     ```
 
     ```ts
@@ -446,8 +446,8 @@ export function func() {
     
     ``` TypeScript
     // entry/src/main/ets/pages/outer1.ets
-    import { a } from './1' // outer文件从1文件中加载了a变量
-    console.info('example ', a); // a变量在outer文件执行时就被使用
+    import { a } from './1' // outer1文件从1文件中加载了a变量
+    console.info('example ', a); // a变量在outer1文件执行时就被使用
     ```
 
     <!-- @[scenario_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/LazyImport/entry/src/main/ets/pages/innerinner.ets) -->
