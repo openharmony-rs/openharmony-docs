@@ -331,7 +331,9 @@ if (avScreenCaptureRecorder != undefined) {
 
 ## addWatermark
 
-addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<number>
+ArkTS-Dyn: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<number>
+
+ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<int>
 
 在录制视频过程中添加自定义水印图像。使用Promise异步回调。
 
@@ -341,7 +343,9 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 >
 > - 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用addWatermark接口。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -358,7 +362,7 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<number> | Promise对象，返回所添加水印的编号ID。 |
+| ArkTS-Dyn: Promise\<number>  <br/> ArkTS-Sta: Promise\<int> | Promise对象，返回所添加水印的编号ID。 |
 
 **错误码：**
 
@@ -373,6 +377,8 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import image from '@ohos.multimedia.image';
@@ -386,6 +392,25 @@ if (watermark) {
       console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
     })
     .catch((error: BusinessError) => {
+      console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import image from '@ohos.multimedia.image';
+import media from '@ohos.multimedia.media';
+
+let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
+let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+if (watermark) {
+    avScreenCaptureRecorder.addWatermark(watermark, watermarkConfig).then((num: int) => {
+      console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
+    })
+    .catch((error: Error) => {
       console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
     });
 }
