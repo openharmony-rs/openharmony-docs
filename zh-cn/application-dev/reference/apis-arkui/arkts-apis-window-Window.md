@@ -15156,7 +15156,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
-  //...
+  // ...
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
     let windowClass: window.Window | undefined = undefined;
