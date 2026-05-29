@@ -8,7 +8,6 @@
 <!--Adviser: @w_Machine_cc-->
 
 - [Media Kit简介](media-kit-intro.md)
-- [Media Kit术语](media-terminology.md)
 - 媒体开发指导(ArkTS)<!--media-kit-dev--arkts-->
   - 播放<!--media-playback-arkts-->
     - [使用AVPlayer播放音频(ArkTS)](using-avplayer-for-playback.md)
@@ -49,3 +48,4 @@
     - [使用AVImageGenerator获取视频帧(C/C++)](using-ndk-avimagegenerator-for-video.md)
   - 视频转码<!--media-transcoder-c-->
     - [使用AVTranscoder实现视频转码(C/C++)](using-ndk-avtranscoder-for-transcodering.md)<!--RP1--><!--RP1End-->
+- [Media Kit术语](media-terminology.md)
