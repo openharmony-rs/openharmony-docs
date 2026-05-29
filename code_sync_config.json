@@ -54312,5 +54312,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/application-models/arkts-skill-development-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":83,
+						"name":"module_skill",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets",
+				"functions":[
+					{
+						"end_line":22,
+						"name":"music_skill_import",
+						"start_line":15
+					},
+					{
+						"end_line":218,
+						"name":"music_skill",
+						"start_line":24
+					},
+					{
+						"end_line":163,
+						"name":"music_skill_verify",
+						"start_line":36
+					},
+					{
+						"end_line":129,
+						"name":"music_skill_try",
+						"start_line":56
+					},
+					{
+						"end_line":214,
+						"name":"music_skill_branch",
+						"start_line":88
+					}
+				]
+			}
+		]
 	}
 ]
