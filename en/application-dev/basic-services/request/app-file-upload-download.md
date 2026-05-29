@@ -36,9 +36,9 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // Create an application file locally.
   try {
-    let file = fs.openSync(cacheDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    fs.writeSync(file.fd, 'upload file test');
-    fs.closeSync(file);
+    let file = fileIo.openSync(cacheDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    fileIo.writeSync(file.fd, 'upload file test');
+    fileIo.closeSync(file);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
@@ -46,7 +46,7 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // Configure the upload task.
   let files: request.File[] = [
-  // "internal://cache" in uri corresponds to the cacheDir directory.
+  // uri prefix internal://cache corresponds to the cacheDir directory.
     {
       filename: fileName,
       name: 'test',
@@ -669,8 +669,7 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
         logger.error(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
       })
       task.on('completed', async (progress) => {
-        console.warn('Request download completed, ' + JSON.stringify(progress));
-        logger.error(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+        logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
         // Obtain the file status information, including the file size.
         let filePath = filesDir + '/' + fileName;
         // Obtain the file status information, including the file size.
