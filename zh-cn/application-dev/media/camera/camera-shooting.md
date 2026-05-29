@@ -226,16 +226,16 @@
 - 在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)结束之后进行调用。 
 
   ```ts
-  async function startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+  async function startSession(photoSession: camera.PhotoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
     try {
-      videoSession.addInput(cameraInput);
+      photoSession.addInput(cameraInput);
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to addInput. error: ${err.code}`);
     }
     let canAddPreviewOutput : boolean = false;
     try {
-      canAddPreviewOutput = videoSession.canAddOutput(previewOutput);
+      canAddPreviewOutput = photoSession.canAddOutput(previewOutput);
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to add previewOutput. error: ${err.code}`);
@@ -245,14 +245,14 @@
       return;
     }
     try {
-      videoSession.addOutput(previewOutput);
+      photoSession.addOutput(previewOutput);
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to add previewOutput. error: ${err.code}`);
     }
     let canAddPhotoOutput : boolean = false
     try {
-      canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
+      canAddPhotoOutput = photoSession.canAddOutput(photoOutput);
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to add photoOutput error: ${err.code}`);
@@ -262,13 +262,13 @@
       return;
     }
     try {
-      videoSession.addOutput(photoOutput);
+      photoSession.addOutput(photoOutput);
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to add photoOutput. error: ${err.code}`);
     }
     try {
-      await videoSession.commitConfig();
+      await photoSession.commitConfig();
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to commitConfig. error: ${err.code}`);
@@ -276,17 +276,17 @@
     }
    
     try {
-      await videoSession.start();
+      await photoSession.start();
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to start. error: ${err.code}`);
     }
-    modeSwitchToHigh(videoSession, photoOutput);
+    modeSwitchToHigh(photoSession, photoOutput);
   }
 
-  async function modeSwitchToHigh(videoSession: camera.VideoSession, photoOutput: camera.PhotoOutput): Promise<void> {
+  async function modeSwitchToHigh(photoSession: camera.PhotoSession, photoOutput: camera.PhotoOutput): Promise<void> {
     try {
-      if (videoSession) {
+      if (photoSession) {
         let quality: camera.PhotoQualityPrioritization = camera.PhotoQualityPrioritization.HIGH_QUALITY;
         let isSupported = false;
         isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
@@ -307,16 +307,16 @@
 - 在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)之前调用。 
 
   ```ts
-  async function startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+  async function startSession(photoSession: camera.PhotoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
     try {
-      videoSession.addInput(cameraInput);
+      photoSession.addInput(cameraInput);
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to addInput. error: ${err.code}`);
     }
     let canAddPreviewOutput : boolean = false;
     try {
-      canAddPreviewOutput = videoSession.canAddOutput(previewOutput);
+      canAddPreviewOutput = photoSession.canAddOutput(previewOutput);
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to add previewOutput. error: ${err.code}`);
@@ -326,14 +326,14 @@
       return;
     }
     try {
-      videoSession.addOutput(previewOutput);
+      photoSession.addOutput(previewOutput);
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to add previewOutput. error: ${err.code}`);
     }
     let canAddPhotoOutput : boolean = false
     try {
-      canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
+      canAddPhotoOutput = photoSession.canAddOutput(photoOutput);
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to add photoOutput error: ${err.code}`);
@@ -343,14 +343,14 @@
       return;
     }
     try {
-      videoSession.addOutput(photoOutput);
+      photoSession.addOutput(photoOutput);
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to add photoOutput. error: ${err.code}`);
     }
-    modeSwitchToHigh(videoSession, photoOutput);
+    modeSwitchToHigh(photoSession, photoOutput);
     try {
-      await videoSession.commitConfig();
+      await photoSession.commitConfig();
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to commitConfig. error: ${err.code}`);
@@ -358,16 +358,16 @@
     }
    
     try {
-      await videoSession.start();
+      await photoSession.start();
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to start. error: ${err.code}`);
     }
   }
 
-  async function modeSwitchToHigh(videoSession: camera.VideoSession, photoOutput: camera.PhotoOutput): Promise<void> {
+  async function modeSwitchToHigh(photoSession: camera.PhotoSession, photoOutput: camera.PhotoOutput): Promise<void> {
     try {
-      if (videoSession) {
+      if (photoSession) {
         let quality: camera.PhotoQualityPrioritization = camera.PhotoQualityPrioritization.HIGH_QUALITY;
         let isSupported = false;
         isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);

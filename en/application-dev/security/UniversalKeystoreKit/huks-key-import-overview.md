@@ -116,7 +116,7 @@ The key management service specifications include mandatory specifications and o
 > When an RSA key is imported, the public key must be greater than or equal to 65537.
 > Digital envelope does not support the DSA algorithm, X25519 key, and Ed25519 key. When a digital envelope key is imported, the public key is entered in this tag as a raw key.
 
-**Specifications****<!--RP1--> for standard devices<!--RP1End-->**
+**Specifications<!--RP1--> for standard devices<!--RP1End-->**
 
 | Algorithm| Supported Key Length (Bit)| API Version| <!--DelCol4-->Mandatory|
 | -------- | -------- | -------- | -------- |
@@ -137,7 +137,7 @@ The key management service specifications include mandatory specifications and o
 | DES | 64 | 18+ | Yes|
 | 3DES | 128, 192| 18+ | Yes|
 
-**Specifications****<!--RP2--> for mini-system devices<!--RP2End-->**
+**Specifications<!--RP2--> for mini-system devices<!--RP2End-->**
 
 <!--Del-->
 Before implementing the specifications for mini-system devices, determine whether your device supports the related specifications.
