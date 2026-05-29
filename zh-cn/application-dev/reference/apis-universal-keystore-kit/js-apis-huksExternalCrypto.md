@@ -281,12 +281,14 @@ getProperty(resourceId: string, propertyId: string, params?: Array\<HuksExternal
 
 调用此接口获取属性值并返回结果。使用Promise异步回调。
 
-propertyId表示查询属性的ID信息，当前仅支持GMT 0016-2023中定义的SKF接口名作为属性ID，支持的ID包括如下：
+propertyId表示查询属性的ID信息，推荐使用GMT 0016-2023中定义的SKF接口名作为属性ID，支持的ID包括如下：
 
-- SKF_EnumDev
-- SKF_GetDevInfo
-- SKF_EnumApplication
+- SKF_EnumDev 
+- SKF_GetDevInfo 
+- SKF_EnumApplication 
 - SKF_EnumContainer
+
+从API版本26.0.0开始，属性ID放开限制，支持自定义属性ID，由[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)实现方提供。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -623,4 +625,78 @@ huksExternalCrypto.closeResource(testResourceId)
     .then(() => {
       console.info('promise: closeResource success.');
     });
+```
+
+## huksExternalCrypto.setProperty
+
+setProperty(resourceId: string, propertyId: string, params?: HuksExternalCryptoParam[]): Promise&lt;void&gt;
+
+调用此接口设置由resourceId标识的UKey资源的属性值。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ------- | ---- | ----------|
+| resourceId | string | 是   | 资源ID。可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。 |
+| propertyId | string | 是   | 设置操作的属性名称。由[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)实现方提供，推荐使用GMT 0016-2023中定义的SKF接口名作为属性ID。 |
+| params  | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | 否   | 需要传递给[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)的输入参数，包含与propertyId相关的操作参数。不传入时，不向Extension Ability传递额外参数。 |
+
+**返回值：**
+
+| 类型   | 说明   |
+| -------- | ------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | API is not supported. |
+| 12000005 | IPC communication failed. |
+| 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
+| 12000011 | The cached resource ID not found. |
+| 12000012 | Device environment or input parameters are abnormal. This may occur if the process function is null, or due to other issues. |
+| 12000014 | The memory is insufficient. |
+| 12000018 | The input parameters are invalid. Possible causes: 1. The resourceId or propertyId length is invalid. 2. The parameters contain invalid tags or invalid value types. |
+| 12000020 | The provider operation failed. This means an error occurred in the crypto extension before calling the UKey driver interface. |
+| 12000021 | The UKey PIN is locked. |
+| 12000023 | The UKey PIN is not authenticated. |
+| 12000024 | The provider or UKey is busy. |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+const testResourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: {
+    key: "testKey"
+  } as ESObject
+});
+
+const propertyId = "SKF_SetDevInfo";
+const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+
+async function testFunction() : Promise<void>
+{
+  try {
+    await huksExternalCrypto.setProperty(testResourceId, propertyId, extProperties)
+      .then(() => {
+        console.info('promise: setProperty success.');
+      });
+  } catch (error) {
+    console.error(`promise: setProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
+  }
+}
 ```
