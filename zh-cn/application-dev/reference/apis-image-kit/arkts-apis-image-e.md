@@ -300,11 +300,11 @@
 | PITCH_ANGLE<sup>11+</sup> | "HwMnotePitchAngle" | 俯仰角度。<br />**读写能力：** 只读。<br> | _ |
 | PHYSICAL_APERTURE<sup>10+</sup> | "HwMnotePhysicalAperture" | 物理孔径，光圈大小。单位为毫米（mm）。<br />**读写能力：** 只读。<br> | _ |
 | FOCUS_MODE<sup>11+</sup> | "HwMnoteFocusMode" | 对焦模式。<br />**读写能力：** 只读。<br> | _ |
-| XTSTYLE_TEMPLATE_NAME<sup>26+</sup> | "HwMnoteXtStyleTemplateName" | XTstyle模板名称。<br />**读写能力：** 只读。<br> | _ |
-| XTSTYLE_CUSTOM_LIGHT_AND_SHADOW<sup>26+</sup> | "HwMnoteXtStyleCustomLightAndShadow" | XTstyle自定义光影。<br />**读写能力：** 只读。<br> | _ |
-| XTSTYLE_CUSTOM_SATURATION<sup>26+</sup> | "HwMnoteXtStyleCustomSaturation" | XTstyle自定义饱和度。<br />**读写能力：** 只读。<br> | _ |
-| XTSTYLE_CUSTOM_HUE<sup>26+</sup> | "HwMnoteXtStyleCustomHue" | XTstyle自定义色调。<br />**读写能力：** 只读。<br> | _ |
-| XTSTYLE_EXPOSURE_PARAM<sup>26+</sup> | "HwMnoteXtStyleExposureParam" | XTstyle曝光参数。<br />**读写能力：** 只读。<br> | _ |
+| XTSTYLE_TEMPLATE_NAME | "HwMnoteXtStyleTemplateName" | XTstyle模板名称。<br />**读写能力：** 只读。<br>**模型约束：** 此接口仅可在Stage模型下使用<br>**起始版本：** 26.0.0 | _ |
+| XTSTYLE_CUSTOM_LIGHT_AND_SHADOW | "HwMnoteXtStyleCustomLightAndShadow" | XTstyle自定义光影。<br />**读写能力：** 只读。<br>**模型约束：** 此接口仅可在Stage模型下使用<br>**起始版本：** 26.0.0 | _ |
+| XTSTYLE_CUSTOM_SATURATION | "HwMnoteXtStyleCustomSaturation" | XTstyle自定义饱和度。<br />**读写能力：** 只读。<br>**模型约束：** 此接口仅可在Stage模型下使用<br>**起始版本：** 26.0.0 | _ |
+| XTSTYLE_CUSTOM_HUE | "HwMnoteXtStyleCustomHue" | XTstyle自定义色调。<br />**读写能力：** 只读。<br>**模型约束：** 此接口仅可在Stage模型下使用<br>**起始版本：** 26.0.0 | _ |
+| XTSTYLE_EXPOSURE_PARAM | "HwMnoteXtStyleExposureParam" | XTstyle曝光参数。<br />**读写能力：** 只读。<br>**模型约束：** 此接口仅可在Stage模型下使用<br>**起始版本：** 26.0.0 | _ |
 
 ## FragmentMapPropertyKey<sup>13+</sup>
 
