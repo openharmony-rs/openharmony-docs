@@ -502,5 +502,5 @@ windowStage.createSubWindowWithOptions('mySubWindow', options).then((windowClass
   windowClass.setResizeByDragEnabled(true, (err: BusinessError) => {
     console.error("setResizeByDragEnabled failed.", ` code: ${err.code}, message: ${err.message}`)
   })
-}
+})
 ```
