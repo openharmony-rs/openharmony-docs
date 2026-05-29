@@ -86,64 +86,6 @@ struct Index {
 }
 ```
 
-## inputEventClient.injectEvent<sup>23+</sup>
-
-injectEvent(keyEvent: KeyEventInfo): void
-
-注入系统按键事件。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
-
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
-
-**参数：**
-
-| 参数名       | 类型                    | 必填   | 说明        |
-| -------- | --------------------- | ---- | --------- |
-| keyEvent | [KeyEventInfo](#keyeventinfo23) | 是    | 需要注入的按键事件。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID  | 错误信息             |
-| ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | Permission denied, non-system app called system api.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例：**
-
-```js
-import { inputEventClient } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let keyEventInfo: inputEventClient.KeyEventInfo = {
-              KeyEvent: {
-                isPressed: true,
-                keyCode: 2,
-                keyDownDuration: 0,
-                isIntercepted: false
-              }
-            }
-            // 注入系统按键事件
-            inputEventClient.injectEvent(keyEventInfo);
-          } catch (error) {
-            console.error(`Failed to inject KeyEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
 ## inputEventClient.injectKeyEvent<sup>11+</sup>
 
 injectKeyEvent(keyEvent: KeyEventData): void
