@@ -3283,6 +3283,7 @@ Enumerates the UI states of a component, used for handling state-specific styles
 | UI_STATE_FOCUSED = 1 << 1 | Focused state.|
 | UI_STATE_DISABLED = 1 << 2 | Disabled state.|
 | UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, and **MenuItem**.|
+| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br>**Since**: 26.0.0|
 
 ### ArkUI_FocusWrapMode
 
