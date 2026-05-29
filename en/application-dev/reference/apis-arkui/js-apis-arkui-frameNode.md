@@ -11120,7 +11120,7 @@ class MyNodeController extends NodeController {
     // Add the polymorphic style processing capability to the Text component.
     styleText.addSupportedUIStates(this.theStatesToBeSupported, (node: FrameNode, currentState: number) => {
       if (currentState == UIState.NORMAL) { // Use the equality operator to check NORMAL state.
-        // NORMAL state: Apply common UI effects.
+        // NORMAL state: Apply normal UI effects.
         console.info('Callback UIState.NORMAL')
         node.commonAttribute.backgroundColor(Color.Green)
         node.commonAttribute.borderWidth(2)
