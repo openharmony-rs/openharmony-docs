@@ -70,9 +70,9 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| GEOFENCE_TRANSITION_EVENT_APPROACHING_GEOFENCE    | 8 | 该事件表示设备正在接近地理围栏区域。 |
-| GEOFENCE_TRANSITION_EVENT_LEAVING_GEOFENCE    | 16 | 该事件表示设备已离开地理围栏区域。 |
-| GEOFENCE_TRANSITION_EVENT_NEAR_WANDER    | 32 | 该事件表示设备正在接近地理围栏区域，且持续徘徊超过15分钟。 |
+| GEOFENCE_TRANSITION_EVENT_APPROACHING_GEOFENCE    | 8 | 该事件表示设备正在接近地理围栏区域。<br/>**系统接口**：此接口为系统接口。 |
+| GEOFENCE_TRANSITION_EVENT_LEAVING_GEOFENCE    | 16 | 该事件表示设备已离开地理围栏区域。<br/>**系统接口**：此接口为系统接口。 |
+| GEOFENCE_TRANSITION_EVENT_NEAR_WANDER    | 32 | 该事件表示设备正在接近地理围栏区域，且持续徘徊超过15分钟。<br/>**系统接口**：此接口为系统接口。 |
 
 
 ## Location
