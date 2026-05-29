@@ -293,7 +293,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, callback: AsyncCallback\<CMResult>): void
 
-表示安装私有凭据。使用Callback回调异步返回结果。
+安装私有凭据。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -347,7 +347,7 @@ try {
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string): Promise\<CMResult>
 
-表示安装私有凭据。使用Promise异步回调。
+安装私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -407,7 +407,7 @@ try {
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, level: AuthStorageLevel): Promise\<CMResult>
 
-表示安装私有凭据并指定凭据的存储级别。使用Promise异步回调。
+安装私有凭据并指定凭据的存储级别。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -470,7 +470,7 @@ try {
 
 getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 
-表示获取私有凭据的详细信息，使用Callback回调异步返回结果。
+获取私有凭据的详细信息，使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -521,7 +521,7 @@ try {
 
 getPrivateCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取私有凭据详情。使用Promise异步回调。
+获取私有凭据详情。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -577,7 +577,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): void
 
-表示卸载指定的私有凭据，使用Callback回调异步返回结果。
+卸载指定的私有凭据，使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -623,7 +623,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
-表示卸载指定的私有凭据。使用Promise异步回调。
+卸载指定的私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -739,7 +739,7 @@ try {
 
 installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope): CMResult
 
-表示安装用户CA证书。
+安装用户CA证书。
 
 **需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
@@ -797,7 +797,7 @@ try {
 
 uninstallUserTrustedCertificateSync(certUri: string) : void
 
-表示删除用户CA证书。
+删除用户CA证书。
 
 **需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
@@ -837,7 +837,7 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>): void
 
-表示使用凭据进行签名、验签的初始化操作，是签名验签流程的第一步，后续需依次调用update和finish接口完成操作。使用Callback回调异步返回结果。
+使用凭据进行签名、验签的初始化操作，是签名验签流程的第一步，后续需依次调用update和finish接口完成操作。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -890,7 +890,7 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 
-表示使用凭据进行签名、验签的初始化操作。使用Promise异步回调。
+使用凭据进行签名、验签的初始化操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -948,7 +948,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): void
 
-表示签名、验签的数据更新操作，需要在init操作之后调用，用于传入待签名、验签的数据。使用Callback回调异步返回结果。
+签名、验签的数据更新操作，需要在init操作之后调用，用于传入待签名、验签的数据。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -958,7 +958,7 @@ update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): vo
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用init方法获得。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | data | Uint8Array                   | 是   | 表示待签名、验签的数据。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当签名、验签的数据更新操作成功时，err为null，否则为错误对象。 |
 
@@ -1000,7 +1000,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
-表示签名、验签的数据更新操作。使用Promise异步回调。
+签名、验签的数据更新操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1010,7 +1010,7 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用init方法获得。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | data | Uint8Array                   | 是   | 表示待签名、验签的数据。 |
 
 **返回值**：
@@ -1055,9 +1055,9 @@ try {
 
 ## certificateManager.finish
 
-finish(handle: Uint8Array, callback: AsyncCallback<CMResult>): void
+finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-表示完成签名的操作，是签名流程的最后一步，需要先调用init和update接口。使用Callback回调异步返回结果。
+完成签名的操作，是签名流程的最后一步，需要先调用init和update接口。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1067,7 +1067,7 @@ finish(handle: Uint8Array, callback: AsyncCallback<CMResult>): void
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用init方法获得。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当签名成功时，err为null，data为[CMResult](#cmresult)对象中的outData属性，表示签名数据；否则为错误对象。 |
 
 **错误码：**
@@ -1110,7 +1110,7 @@ try {
 
 finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-表示完成验签的操作，使用Callback回调异步返回结果。
+完成验签的操作，使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1120,7 +1120,7 @@ finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMRes
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用init方法获得。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | signature | Uint8Array                   | 是   | 表示签名数据。 |
 | callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当验签成功时，err为null；否则为错误对象。 |
 
@@ -1162,7 +1162,7 @@ try {
 
 finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
-表示完成签名、验签的操作。使用Promise异步回调。
+完成签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1172,7 +1172,7 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用init方法获得。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | signature | Uint8Array                   | 否   | 表示用于验签操作的签名数据。签名操作时无需传入此参数。 |
 
 **返回值**：
@@ -1234,7 +1234,7 @@ try {
 
 abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 
-表示中止签名、验签的操作，使用Callback回调异步返回结果。
+中止签名、验签的操作，使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1282,7 +1282,7 @@ try {
 
 abort(handle: Uint8Array): Promise\<void>
 
-表示中止签名、验签的操作。使用Promise异步回调。
+中止签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1335,7 +1335,7 @@ try {
 
 getPublicCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取用户公共凭据的详细信息。使用Promise异步回调。
+获取用户公共凭据的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1392,7 +1392,7 @@ try {
 
 isAuthorizedApp(keyUri: string): Promise\<boolean>
 
-表示当前应用是否由指定的用户凭据授权。使用Promise异步回调。
+当前应用是否由指定的用户凭据授权。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1446,7 +1446,7 @@ try {
 
 getAllUserTrustedCertificates(): Promise\<CMResult>
 
-表示获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
+获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1495,7 +1495,7 @@ try {
 
 getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
-表示根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
+根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1554,7 +1554,7 @@ try {
 
 getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
-表示获取用户根CA证书的详细信息。使用Promise异步回调。
+获取用户根CA证书的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1609,7 +1609,7 @@ try {
 
 getPrivateCertificates(): Promise\<CMResult>
 
-表示获取应用安装的凭据列表。使用Promise异步回调。
+获取应用安装的凭据列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1657,7 +1657,7 @@ try {
 
 getCertificateStorePath(property: CertStoreProperty): string
 
-表示获取证书的存储路径。
+获取证书的存储路径。
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -1726,7 +1726,7 @@ try {
 
 getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-表示获取USB Key证书凭据详细信息。使用Promise异步回调。
+获取USB Key证书凭据详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1786,7 +1786,7 @@ try {
 
 getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-表示获取USB Key证书凭据列表。使用Promise异步回调。
+获取USB Key证书凭据列表。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1848,7 +1848,7 @@ try {
 
 importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Promise\<void>
 
-表示导入证书到USB Key。使用Promise异步回调。
+导入证书到USB Key。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
