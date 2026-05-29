@@ -39,7 +39,6 @@
     - [@Require装饰器：校验构造传参](state-management/arkts-require.md)
   - 学习UI范式状态管理<!--arkts-state-management-->
     - [状态管理概述](state-management/arkts-state-management-overview.md)
-    - [状态管理术语](state-management/arkts-state-management-glossary.md)
     - [状态管理原理介绍](state-management/arkts-state-management-introduce.md)
     - [状态管理V1和V2更新机制差异](state-management/arkts-v1-v2-update-difference.md)
     - [MVVM模式（V1）](state-management/arkts-mvvm.md)
@@ -103,6 +102,7 @@
       - [数据对象状态管理常见问题](state-management/arkts-state-management-faq-inner-class.md)
       - [应用内状态管理和其他常见问题](state-management/arkts-state-management-faq-application-and-others.md)
       - [状态变量改变不触发组件刷新问题常用定位方法](state-management/troubleshooting-state-manage.md)
+    - [状态管理术语](state-management/arkts-state-management-glossary.md)
   - 学习UI范式渲染控制<!--arkts-rendering-control-->
     - [渲染控制概述](rendering-control/arkts-rendering-control-overview.md)
     - [if/else：条件渲染](rendering-control/arkts-rendering-control-ifelse.md)
