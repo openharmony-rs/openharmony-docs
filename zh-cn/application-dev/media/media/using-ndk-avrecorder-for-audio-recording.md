@@ -44,7 +44,7 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-使用[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
+使用[native_avformat.h](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
 ```c++
 #include <multimedia/player_framework/native_avformat.h>
 ```
