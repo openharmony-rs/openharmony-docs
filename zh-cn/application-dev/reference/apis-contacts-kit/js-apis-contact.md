@@ -4609,22 +4609,24 @@ const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let mode = contact.ContactSyncMode.MODE_INCREMENTAL;
 const totalBatches: number = 3;
 const syncId: number = Date.now();
+const totalCount = 300;
+const batchSize = 100;
 for (let batch: number = 1; batch <= totalBatches; batch++) {
   try {
     const remaining: number = totalCount - (batch - 1) * batchSize;
     const currentBatchSize: number = Math.min(batchSize, remaining);
     const contacts: contact.Contact[] = [];
-    for (let i: number = 0; i < count; i++) {
+    for (let i: number = 0; i < currentBatchSize; i++) {
       const contactData: contact.Contact = {
         name: {
-          fullName: 同步联系人${i + 1}_${batch}批次
+          fullName: `同步联系人${i + 1}_${batch}批次`
           },
         phoneNumbers: [{
-          phoneNumber: 1380000${String(i + 1).padStart(4, '0')},
+          phoneNumber: `1380000${String(i + 1).padStart(4, '0')}`,
           labelName: '手机'
         }],
         emails: [{
-          email: contact${i + 1}@example.com,
+          email: `contact${i + 1}@example.com`,
           labelName: '工作'
           }]
         };
@@ -4638,7 +4640,6 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
     console.info(`同步批次 ${batch}/${totalBatches}, 联系人数量: ${currentBatchSize}`);
     let result = await contact.syncContacts(context, mode, progress, contacts);
     console.info(`批次 ${batch} 同步成功 result `  + JSON.stringify(result));
-    console.info(`syncContacts 完成: syncId=${syncId}, 总批次=${totalBatches}`);
   }
   catch (err) {
     const e = err as BusinessError;
@@ -4721,7 +4722,7 @@ importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&l
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;int&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID (可通过 {@link Contact#getId()})获得的值表示创建成功。 |
+| Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID (可通过 {@link Contact#getId()})获得的值表示创建成功。 |
 
 **错误码：**
 
