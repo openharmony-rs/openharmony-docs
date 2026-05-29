@@ -17,6 +17,9 @@ API版本26.0.0之前，其父组件支持[WaterFlow](ts-container-waterflow.md)
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 该组件从API version 19开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - LazyVGridLayout组件高度默认自适应内容，不建议设置高度、高度约束或宽高比，设置后会导致显示异常。
 > - 该组件在不同父组件下的懒加载支持条件如下：
 >   1. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向[FlexDirection](ts-appendix-enums.md#flexdirection)设置为FlexDirection.Column的情况下支持懒加载。在WaterFlow的多列模式或布局方向为FlexDirection.Row或FlexDirection.RowReverse的情况下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
@@ -163,32 +166,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnVisibleIndexesChangeCallback](#onvisibleindexeschangecallback)&nbsp;\|&nbsp;undefined | 是  | onVisibleIndexesChange事件的回调函数。方法入参为undefined时，取消监听。 |
-
-## OnVisibleIndexesChangeCallback
-
-ArkTS-Dyn: OnVisibleIndexesChangeCallback = (start: number, end: number) => void
-
-ArkTS-Sta: OnVisibleIndexesChangeCallback = (start: int, end: int) => void
-
-LazyVGridLayout可视区域内子组件的索引值发生变化时触发的回调类型。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                  |
-| ------ | ------ | ---- | ------------------------------------- |
-| start  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 当前可视区域内子组件的起始索引。可视区域内无子组件或者LazyVGridLayout内无子组件时返回-1。 |
-| end  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 当前可视区域内子组件的结束索引。可视区域内无子组件或者LazyVGridLayout内无子组件时返回-1。 |
+| callback  | [OnVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback)&nbsp;\|&nbsp;undefined | 是  | onVisibleIndexesChange事件的回调函数。方法入参为undefined时，取消监听。 |
 
 ## 示例
 

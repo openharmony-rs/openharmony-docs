@@ -15,6 +15,8 @@ Counter组件用于精确调节数值。
 >
 >  - 该组件从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+>  - 本模块接口仅可在Stage模型下使用。
+>
 >  - 如果Counter设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到Counter本身。这可能导致开发者设置的通用属性或通用事件的效果不生效或不符合预期，因此，不建议Counter设置通用属性和通用事件。
 
 ## 导入模块
@@ -64,7 +66,9 @@ CounterComponent({&nbsp;options:&nbsp;CounterOptions&nbsp;})
 
 **装饰器类型：**@Component
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+### 属性
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,11 +82,25 @@ CounterComponent({&nbsp;options:&nbsp;CounterOptions&nbsp;})
 | ------- | --------------------------------- | ---- | ---------- | ----------------------- |
 | options | [CounterOptions](#counteroptions) | 是   | ArkTS-Dyn: @Prop <br>ArkTS-Sta: @PropRef  | 定义Counter组件的类型。 |
 
+### build<sup>23+</sup>
+
+build(): void
+
+build函数用于构造Counter高级组件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**装饰器类型：** [\@Builder](../../../ui/state-management/arkts-builder.md)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
 ## CounterOptions
 
 CounterOptions定义Counter类型及样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,7 +125,7 @@ CounterOptions定义Counter类型及样式。
 
 CounterType指定Counter类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,7 +144,7 @@ CounterType指定Counter类型。
 
 CommonOptions定义了Counter的共通属性和事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,7 +154,7 @@ CommonOptions定义了Counter的共通属性和事件。
 
 | 名称            | 类型                      | 只读 | 可选 | 说明                                                         |
 | --------------- | ------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| focusable       | boolean                   | 否  | 是 | 设置Counter是否可以获焦。<br>**说明：** <br>该属性对列表型和紧凑型Counter生效。<br>默认值：true。 <br>true：Counter可以获焦；false：Counter不可以获焦。 <br>值为undefined时，按默认值处理。 |
+| focusable       | boolean                   | 否  | 是 | 设置Counter是否可以获焦。<br> **说明：** <br>该属性对列表型和紧凑型Counter生效。<br>默认值：true。 <br>true：Counter可以获焦；false：Counter不可以获焦。 <br>值为undefined时，按默认值处理。 |
 | step            | ArkTS-Dyn: number <br>ArkTS-Sta: int  | 否  | 是 | 设置Counter的步长。<br>取值范围：大于等于1的整数。<br>默认值：1。<br>超出取值范围按默认值处理。 |
 | onHoverIncrease | ArkTS-Dyn: (isHover: boolean) => void <br>ArkTS-Sta: [OnCounterHoverCallback](#oncounterhovercallback23) | 否  | 是 | 鼠标进入或退出Counter组件的增加按钮时触发该回调。<br>isHover：表示鼠标是否悬浮在增加按钮组件上，鼠标进入时为true，退出时为false。<br>默认值：不触发鼠标进入或退出Counter组件的增加按钮时的回调。 <br>值为undefined时，按默认值处理。 |
 | onHoverDecrease | ArkTS-Dyn: (isHover: boolean) => void <br>ArkTS-Sta: [OnCounterHoverCallback](#oncounterhovercallback23) | 否  | 是 | 鼠标进入或退出Counter组件的减小按钮触时发该回调。<br>isHover：表示鼠标是否悬浮在组件上，进入时为true，离开时为false。<br>默认值：不触发鼠标进入或退出Counter组件的减小按钮时的回调。<br>值为undefined时，按默认值处理。 |
@@ -147,7 +165,7 @@ InlineStyleOptions定义了数值内联型Counter的属性和事件。
 
 继承于[CommonOptions](#commonoptions)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,7 +187,7 @@ NumberStyleOptions定义了列表型和紧凑型Counter的属性和事件。
 
 继承于[InlineStyleOptions](#inlinestyleoptions)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -191,7 +209,7 @@ DateStyleOptions定义了日期内联型Counter的属性和事件。
 
 继承于[CommonOptions](#commonoptions)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,7 +228,7 @@ DateStyleOptions定义了日期内联型Counter的属性和事件。
 
 DateData定义了日期通用属性和方法，包括年、月、日。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,7 +250,7 @@ ArkTS-Sta: constructor(year: int, month: int, day: int)
 
 DateData的构造函数用于初始化日期对象。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -254,7 +272,7 @@ toString(): string
 
 以字符串格式返回当前日期值。格式为’YYYY-MM-DD'。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

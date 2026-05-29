@@ -2346,25 +2346,30 @@ onMediaLibraryAvailability(callback: Callback&lt;MediaLibraryAvailability&gt;): 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-private handleMediaLibraryChange?: (
-  changeData: photoAccessHelper.MediaLibraryAvailability
-) => void;
+class MediaLibraryExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleMediaLibraryChange?: (changeData: photoAccessHelper.MediaLibraryAvailability) => void;
 
-onMediaLibraryAvailability = async () => {
-  try {
-    this.handleMediaLibraryChange = (
-      changeData: photoAccessHelper.MediaLibraryAvailability
-    ) => {
-      const availabilityStatus = changeData.availabilityStatus;
-      const unavailabilityReason = changeData.unavailabilityReason;
-      console.info(`媒体库状态变化：状态=${availabilityStatus}，原因=${unavailabilityReason}`);
-    };
-    this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
-    console.info('媒体库监听注册成功');
-  } catch (err) {
-    console.error(`onMediaLibraryAvailability failed::${err.code}, ${err.message} !`);
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
   }
-};
+
+  onMediaLibraryAvailability = async () => {
+    try {
+      this.handleMediaLibraryChange = (
+        changeData: photoAccessHelper.MediaLibraryAvailability
+      ) => {
+        const availabilityStatus = changeData.availabilityStatus;
+        const unavailabilityReason = changeData.unavailabilityReason;
+        console.info(`媒体库状态变化：状态=${availabilityStatus}，原因=${unavailabilityReason}`);
+      };
+      this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+      console.info('媒体库监听注册成功');
+    } catch (err) {
+      console.error(`onMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
 ```
 
 ## offMediaLibraryAvailability
@@ -2401,17 +2406,22 @@ offMediaLibraryAvailability(callback?: Callback&lt;MediaLibraryAvailability&gt;)
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-private handleMediaLibraryChange?: (
-  changeData: photoAccessHelper.MediaLibraryAvailability
-) => void;
+class MediaLibraryExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleMediaLibraryChange?: (changeData: photoAccessHelper.MediaLibraryAvailability) => void;
 
-offMediaLibraryAvailability = async () => {
-  try {
-    this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
-    this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
-    console.info('媒体库监听解除成功');
-  } catch (err) {
-    console.error(`offMediaLibraryAvailability failed::${err.code}, ${err.message} !`);
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
   }
-};
+
+  offMediaLibraryAvailability = async () => {
+    try {
+      this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+      this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
+      console.info('媒体库监听解除成功');
+    } catch (err) {
+      console.error(`offMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
 ```

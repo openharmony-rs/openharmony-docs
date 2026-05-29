@@ -252,18 +252,23 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
       Column() {
         // 由于LocalStorage中PropA已经被初始化，因此this.parentLinkNumber的值为47
         Button(`Parent from LocalStorage ${this.parentLinkNumber}`)
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.parentLinkNumber += 1;
           })
         // 由于LocalStorage中PropB已经被初始化，因此this.parentLinkObject.code的值为50
         // 类属性观测需要使用@Observed装饰class，因此不支持刷新
         Button(`Parent from LocalStorage ${this.parentLinkObject.code}`)
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.parentLinkObject.code += 1;
           })
         // @Component子组件自动获得对Parent LocalStorage实例的访问权限
         Child()
       }
+      .width('100%')
     }
   }
   
@@ -278,19 +283,26 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
       Column() {
         // 更改将同步至LocalStorage中的'PropA'以及Parent.parentLinkNumber
         Button(`Child from LocalStorage ${this.childLinkNumber}`)
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.childLinkNumber += 1;
           })
         // 更改将同步至LocalStorage中的'PropB'以及Parent.parentLinkObject.code
         // 类属性观测需要使用@Observed装饰class，因此不支持刷新
         Button(`Child from LocalStorage ${this.childLinkObject.code}`)
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.childLinkObject.code += 1;
           })
       }
+      .width('100%')
     }
   }
   ```
+
+![localstorage_innerui](../figures/localstorage1.gif)
 
 ### \@LocalStoragePropRef和LocalStorage单向同步的简单场景
 
@@ -323,11 +335,14 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
       Column() {
         // 点击后从47开始加1，只改变当前组件显示的storageProp1，不会同步到LocalStorage中
         Button(`Parent from LocalStorage ${this.storageProp1}`)
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.storageProp1 += 1;
           })
         Child()
       }
+      .width('100%')
     }
   }
   
@@ -340,10 +355,15 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
       Column() {
         // 当Parent改变时，当前storageProp2不会改变，显示47
         Text(`Parent from LocalStorage ${this.storageProp2}`)
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
   ```
+
+![localstorage_single_sync](../figures/localstorage2.gif)
 
 ### \@LocalStoragePropRef获得LocalStorage中数据源的引用
 
@@ -388,7 +408,11 @@ struct Index {
   build() {
     Column() {
       Text(`data property code is ${this.data.code}`)
+        .fontSize(20)
+        .margin(10)
       Button('modify data property code')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.data.code += 10;
           // 如果只点击该Button，由于data是LocalStorage中数据源的引用，则LocalStorage中数据源的属性也会修改。
@@ -396,15 +420,20 @@ struct Index {
         })
 
       Button('replace data')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.data = new Data(200);
           // 如果点击该Button，本地的data变量会引用新的对象，所以不会影响LocalStorage中的数据源。
           console.info(`PropA in LocalStorage ${storage.get<Data>('PropA')!.code}`);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage_localstoragepropref](../figures/localstorage3.gif)
 
 ### \@LocalStorageLink和LocalStorage双向同步的简单场景
 
@@ -434,19 +463,25 @@ struct Parent {
 
   build() {
     Column() {
-      Text(`incr @LocalStorageLink variable`)
-        // 点击“incr @LocalStorageLink variable”，this.storageLink加1，改变同步回storage，全局变量linkToPropA也会同步改变
-
+      // 点击“incr @LocalStorageLink variable”，this.storageLink加1，改变同步回storage，全局变量linkToPropA也会同步改变
+      Button(`incr @LocalStorageLink variable`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.storageLink += 1;
         })
 
       // 并不建议在组件内使用全局变量linkToPropA.get()，因为可能会有生命周期不同引起的错误。
       Text(`@LocalStorageLink: ${this.storageLink} - linkToPropA: ${linkToPropA.get()}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage_twoway_sync](../figures/localstorage4.gif)
 
 ### 兄弟组件之间同步状态变量
 
@@ -930,11 +965,18 @@ struct Test {
   build() {
     Column() {
       Text(`count值: ${this.count}`)
+        .fontSize(20)
+        .margin(10)
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           model.call('count', this.count + 1);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage_change_property_outside](../figures/localstorage5.gif)

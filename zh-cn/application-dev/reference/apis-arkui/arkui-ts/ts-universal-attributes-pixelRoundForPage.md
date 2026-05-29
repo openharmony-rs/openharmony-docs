@@ -10,9 +10,14 @@
 
 >  **说明：**
 >
-> - 本模块从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。 
+> - 本模块从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 若出现像素取整[问题](ts-universal-attributes-pixelRoundForComponent.md#常见问题)，且使用[组件级像素取整](./ts-universal-attributes-pixelRoundForComponent.md)无法解决时，建议尝试采用PIXEL_ROUND_AFTER_MEASURE模式。
+>
 > - 在PIXEL_ROUND_AFTER_MEASURE模式下，组件会在测量大小结束时进行取整，即最终大小相比于PIXEL_ROUND_ON_LAYOUT_FINISH模式可能扩大1px。
+>
 > - 页面级像素取整与组件级像素取整的区别在于：页面级像素取整调整整个页面的像素取整时机，而组件级像素取整调整特定组件在特定方向上的像素取整对齐方式。
 
 ## setPixelRoundMode
@@ -21,7 +26,7 @@ setPixelRoundMode(mode: PixelRoundMode): void
 
 设置当前页面的像素取整模式。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +63,7 @@ getPixelRoundMode(): PixelRoundMode
 
 获取当前页面的像素取整模式。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 

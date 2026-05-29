@@ -2,15 +2,17 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-形状融合容器，会收集该容器内所有[使用祖先融合效果](ts-universal-attributes-use-union-effect-sys.md#useunioneffect)的后代组件形状，将收集的形状融合生效在容器上，作为该容器的绘制形状。
+形状融合容器，会收集该容器内所有使用[useUnionEffect](ts-universal-attributes-use-union-effect-sys.md#useunioneffect)的后代组件形状，将收集的形状融合生效在容器上，作为该容器的绘制形状。
 
 >  **说明：**
 >
 > - 该组件从API version 23开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 本模块为系统接口。
 > 

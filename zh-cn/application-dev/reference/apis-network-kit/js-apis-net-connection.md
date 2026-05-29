@@ -310,7 +310,7 @@ let options: http.HttpRequestOptions = {
   usingProxy: true, // 选择使用网络代理，从API 10开始支持该属性。
 };
 // 发起一个HTTP请求。
-httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
+httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
    console.info(`Result: ${data.result}`);
    console.info(`code: ${data.responseCode}`);
@@ -1947,7 +1947,6 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>>): 
 
 **需要权限**：ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -1994,8 +1993,6 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress\>\>
 使用当前默认网络解析主机名以获取所有IP地址。使用Promise异步回调。
 
 **需要权限**：ohos.permission.INTERNET
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -3613,12 +3610,15 @@ on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 订阅事件，固定为'netBlockStatusChange'。<br/>netBlockStatusChange：网络阻塞状态事件。 |
 | callback | Callback<[NetBlockStatusInfo](#netblockstatusinfo11)>        | 是   | 回调函数，获取网络阻塞状态信息。|
+
 
 **示例：**
 
@@ -3671,6 +3671,53 @@ netCon.unregister((error: BusinessError|null) => {
 });
 ```
 
+
+### onNetBlockStatusChange
+
+onNetBlockStatusChange(callback: Callback\<NetBlockStatusInfo>): void;
+
+订阅网络阻塞状态事件。此接口需要在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 订阅事件，固定为'netBlockStatusChange'。<br/>netBlockStatusChange：网络阻塞状态事件。 |
+| callback | Callback<[NetBlockStatusInfo](#netblockstatusinfo11)>        | 是   | 回调函数，获取网络阻塞状态信息。|
+
+  
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络阻塞状态事件。
+netCon.onNetBlockStatusChange((value) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(value)}`);
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络阻塞状态事件。
+netCon.unregister((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+```
+  
+
+
 ### on('netCapabilitiesChange')
 
 on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
@@ -3684,6 +3731,8 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 **ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
+  
+ **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -3826,6 +3875,8 @@ on(type: 'netLost', callback: Callback\<NetHandle>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                               | 必填 | 说明                                                         |
@@ -3883,6 +3934,52 @@ netCon.unregister((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
+  
+### onNetLost
+
+onNetLost(callback: Callback\<NetHandle>): void
+
+订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**参数：**
+
+| 参数名   | 类型                               | 必填 | 说明                                                         |
+| -------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                             | 是   | 订阅事件，固定为'netLost'。<br/>netLost：网络严重中断或正常断开事件。 |
+| callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，数据网络句柄(netHandle)。|
+
+**示例：**
+  
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络丢失事件
+netCon.onNetLost((value) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(value)}`);
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络丢失事件。
+netCon.unregister((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+```
+
 
 ### on('netUnavailable')
 
@@ -3897,6 +3994,8 @@ on(type: 'netUnavailable', callback: Callback\<void>): void
 **ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -3956,6 +4055,50 @@ netCon.unregister((error: BusinessError|null) => {
 });
 ```
 
+### onNetUnavailable
+
+onNetUnavailable(callback: Callback\<void>): void
+
+订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**参数：**
+
+| 参数名   | 类型            | 必填 | 说明                                                         |
+| -------- | --------------- | ---- | ------------------------------------------------------------ |
+| type     | string          | 是   | 订阅事件，固定为'netUnavailable'。<br/>netUnavailable：网络不可用事件。 |
+| callback | Callback\<void> | 是   | 回调函数，无返回结果。|
+
+**示例：**
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络不可用事件。
+netCon.onNetUnavailable((value) => {
+  console.info("Succeeded to get unavailable net event");
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络不可用事件。
+netCon.unregister((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+```
 ## NetHandle
 
 数据网络的句柄。
@@ -3981,6 +4124,8 @@ bindSocket(socketParam: TCPSocket \| UDPSocket, callback: AsyncCallback\<void>):
 将TCPSocket或UDPSocket绑定到当前NetHandle对应的网络。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -4069,6 +4214,8 @@ bindSocket(socketParam: TCPSocket \| UDPSocket): Promise\<void\>
 将TCPSocket或UDPSocket绑定到当前NetHandle对应的网络。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -4353,6 +4500,8 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                                                         |
@@ -4430,6 +4579,8 @@ getAddressByName(host: string): Promise\<NetAddress>
 
 **ArkTS-Sta起始版本：** 23
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -4501,8 +4652,8 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | NET_CAPABILITY_INTERNET  | 12   | 表示该网络应具有访问Internet的能力，此能力由网络提供者设置，但该网络访问Internet的连通性并未被网络管理成功验证。网络连通性可以通过NET_CAPABILITY_VALIDATED和NET_CAPABILITY_CHECKING_CONNECTIVITY判断。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
 | NET_CAPABILITY_NOT_VPN | 15 | 表示网络不使用VPN（Virtual&nbsp;Private&nbsp;Network，虚拟专用网络）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
 | NET_CAPABILITY_VALIDATED | 16   | 表示网络管理通过该网络与华为云地址成功建立连接，此能力由网络管理模块设置。<br>**注意：** 网络管理可能会与华为云地址建立连接失败，导致网络能力不具备此标记位，但不完全代表该网络无法访问互联网。另外，对于新完成连接的网络，由于网络正在进行连通性验证，此值可能无法反映真实的验证结果。对此，应用可以通过NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup>检查网络是否正在检测连通性。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | 表示系统发现该网络存在强制网络门户，需要用户登陆认证，该能力由网络管理模块设置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
-| NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup> | 31   | 表示网络管理正在检验当前网络的连通性，此值会在网络连接时设置。当此值存在时，NET_CAPABILITY_VALIDATED的值不准确，连通性检测结束后不再设置，此时可以通过判断NetCap是否包含NET_CAPABILITY_VALIDATED判断连通性。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
+| NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | 表示系统发现该网络存在强制网络门户，需要用户登陆认证，该能力由网络管理模块设置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup> | 31   | 表示网络管理正在检验当前网络的连通性，此值会在网络连接时设置。当此值存在时，NET_CAPABILITY_VALIDATED的值不准确，连通性检测结束后不再设置，此时可以通过判断NetCap是否包含NET_CAPABILITY_VALIDATED判断连通性。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
 
 ## NetBearType
 
@@ -4515,9 +4666,9 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | ----------------------- | ---- | ---------- |
 | BEARER_CELLULAR | 0    | 蜂窝网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
 | BEARER_WIFI     | 1    | Wi-Fi网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| BEARER_BLUETOOTH<sup>12+</sup> | 2    | 蓝牙网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
+| BEARER_BLUETOOTH<sup>12+</sup> | 2    | 蓝牙网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
 | BEARER_ETHERNET | 3    | 以太网网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| BEARER_VPN<sup>12+</sup>| 4    | VPN网络。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
+| BEARER_VPN<sup>12+</sup>| 4    | VPN网络。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
 
 ## ConversionProcess<sup>23+</sup>
 

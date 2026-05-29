@@ -10,6 +10,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface的起始版本为API version 12。接口在API version 12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。
 
@@ -25,9 +26,13 @@ hasFlash(): boolean
 
 检测是否有闪光灯，返回是否支持闪光灯。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -67,7 +72,7 @@ isFlashModeSupported(flashMode: FlashMode): boolean
 
 检测闪光灯模式是否支持。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -75,7 +80,7 @@ isFlashModeSupported(flashMode: FlashMode): boolean
 
 | 参数名       | 类型                     | 必填 | 说明                               |
 | --------- | ----------------------- | ---- | --------------------------------- |
-| flashMode | [FlashMode](arkts-apis-camera-e.md#flashmode) | 是   | 指定闪光灯模式。传参为null或者undefined，作为0处理，闪光灯关闭。             |
+| flashMode | [FlashMode](arkts-apis-camera-e.md#flashmode) | 是   | ArkTS-Dyn： 指定闪光灯模式。传参为null或者undefined，作为0处理，闪光灯关闭。<br/>ArkTS-Sta： 指定闪光灯模式。目前不支持传参null或者undefined。 |
 
 **返回值：**
 

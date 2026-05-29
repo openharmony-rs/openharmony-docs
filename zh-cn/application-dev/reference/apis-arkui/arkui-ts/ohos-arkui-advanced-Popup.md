@@ -14,6 +14,8 @@ Popup是用于显示特定样式气泡。
 >
 > - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 该组件不支持在Wearable设备上使用。
 >
 > - 建议结合[Popup控制](ts-universal-attributes-popup.md)中的自定义气泡功能。
@@ -34,7 +36,7 @@ Popup(options: PopupOptions): void
 
 **装饰器类型：** [@Builder](../../../ui/state-management/arkts-builder.md)
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,21 +66,21 @@ PopupOptions定义Popup的具体样式参数。
 
 | 名称        | 类型       | 只读        | 可选 | 说明                            |
 | ----------- | ---------- | ----| ---- | --------------------------------- |
-| icon      | [PopupIconOptions](#popupiconoptions)                        | 否   | 是   | 设置popup图标。<br />**说明：**<br />当width和height设置异常值或0时不显示。<br/> 默认不显示图标。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| title     | [PopupTextOptions](#popuptextoptions)                        | 否   | 是   | 设置popup标题文本。 <br/> 默认不显示标题文本。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| message   | [PopupTextOptions](#popuptextoptions)                        | 否   | 否   | 设置popup内容文本。<br />**说明：**<br />message不支持设置fontWeight。 <br/> 默认不显示内容文本。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br /> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 11 |
+| icon      | [PopupIconOptions](#popupiconoptions)                        | 否   | 是   | 设置popup图标。<br />**说明：**<br />当width和height设置异常值或0时不显示。<br/> 默认不显示图标。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| title     | [PopupTextOptions](#popuptextoptions)                        | 否   | 是   | 设置popup标题文本。 <br/> 默认不显示标题文本。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| message   | [PopupTextOptions](#popuptextoptions)                        | 否   | 否   | 设置popup内容文本。<br />**说明：**<br />message不支持设置fontWeight。 <br/> 默认不显示内容文本。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br /> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 11 |
 | message<sup>23+</sup>   | [PopupTextOptions](#popuptextoptions)                        | 否   | 是   | 设置popup内容文本。<br />**说明：**<br />message不支持设置fontWeight。 <br/> 默认不显示内容文本。<br /> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/> **ArkTS-Sta起始版本：** 23 |
-| showClose | boolean \| [Resource](ts-types.md#resource)                | 否   | 是   | 设置popup关闭按钮。<br/>true：显示关闭按钮；false：不显示关闭按钮。<br/>Resource：显示对应的图标。<br />默认值：true<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| onClose   | ArkTS-Dyn: () => void <br />  ArkTS-Sta : [Callback](ts-types.md#voidcallback12)                                                | 否   | 是   | 设置popup关闭按钮回调函数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| buttons   | ArkTS-Dyn: [[PopupButtonOptions](#popupbuttonoptions)?,[PopupButtonOptions](#popupbuttonoptions)?]  <br />  ArkTS-Sta : [[PopupButtonOptions](#popupbuttonoptions) \| undefined,[PopupButtonOptions](#popupbuttonoptions) \| undefined]   | 否   | 是   | 设置popup操作按钮，按钮最多设置两个。 <br/> 默认不显示按钮。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                | 是 | 布局方向。<br/>默认值：Direction.Auto<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
-| maxWidth<sup>18+</sup> | [Dimension](ts-types.md#dimension10)                                             | 否                                | 是 | 设置popup的最大宽度，通过此接口popup可以自定义宽度显示。<br />**说明：** <br />1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。<br/>2. maxWidth是数字类型，支持float和integer，例如`$r('app.float.maxWidth')`、`$r('app.integer.maxWidth')`。<br/>3. 当类型为Resource时，如果未设置单位，默认单位为px。<br/>默认值：400vp<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 |
+| showClose | boolean \| [Resource](ts-types.md#resource)                | 否   | 是   | 设置popup关闭按钮。<br/>true：显示关闭按钮；false：不显示关闭按钮。<br/>Resource：显示对应的图标。<br />默认值：true<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| onClose   | ArkTS-Dyn: () => void <br />  ArkTS-Sta : [Callback](ts-types.md#voidcallback12)                                                | 否   | 是   | 设置popup关闭按钮回调函数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| buttons   | ArkTS-Dyn: [[PopupButtonOptions](#popupbuttonoptions)?,[PopupButtonOptions](#popupbuttonoptions)?]  <br />  ArkTS-Sta : [[PopupButtonOptions](#popupbuttonoptions) \| undefined,[PopupButtonOptions](#popupbuttonoptions) \| undefined]   | 否   | 是   | 设置popup操作按钮，按钮最多设置两个。 <br/> 默认不显示按钮。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                | 是 | 布局方向。<br/>默认值：Direction.Auto<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| maxWidth<sup>18+</sup> | [Dimension](ts-types.md#dimension10)                                             | 否                                | 是 | 设置popup的最大宽度，通过此接口popup可以自定义宽度显示。<br />**说明：** <br />1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。<br/>2. maxWidth是数字类型，支持float和integer，例如`$r('app.float.maxWidth')`、`$r('app.integer.maxWidth')`。<br/>3. 当类型为Resource时，如果未设置单位，默认单位为px。<br/>默认值：400vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## PopupTextOptions
 
 设置文本样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +100,7 @@ PopupOptions定义Popup的具体样式参数。
 
 PopupButtonOptions定义按钮的相关属性和事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,7 +121,7 @@ PopupButtonOptions定义按钮的相关属性和事件。
 
 PopupIconOptions定义图标的属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
