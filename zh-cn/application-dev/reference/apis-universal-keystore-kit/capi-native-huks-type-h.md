@@ -70,7 +70,7 @@
 | [OH_Huks_SecureSignType](#oh_huks_securesigntype) | OH_Huks_SecureSignType | 生成或导入密钥时，指定该密钥的安全签名类型。 |
 | [OH_Huks_KeyClassType](#oh_huks_keyclasstype) | OH_Huks_KeyClassType | 密钥类型。 |
 | [OH_Huks_KeyWrapType](#oh_huks_keywraptype) | OH_Huks_KeyWrapType | 生成或导入密钥时，指定该密钥的封装类型。 |
-| [OH_Huks_Tag](#oh_huks_tag) | OH_Huks_Tag | 参数集所用的TAG值枚举。<br> 1-200：密钥参数标签值。<br> 301-500：密钥使用访问控制和使用认证相关的标签值。<br> 501-600：密钥认证相关的标签值。<br> 601-1000：其他类型的标签值预留值。<br> 1001-9999：扩展标签值。<br> 11000-12000：预留值。<br> 20001-N：其他标签预留值。 |
+| [OH_Huks_Tag](#oh_huks_tag) | OH_Huks_Tag | 参数集所用的TAG值枚举。 |
 
 ### 宏定义
 
@@ -426,8 +426,8 @@ enum OH_Huks_ErrCode
 | OH_HUKS_ERR_CODE_ITEM_EXISTS = 12000019 | 该项实体已存在。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | 提供者或Ukey内部执行失败。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | PIN码被锁定。<br>**起始版本：** 22 |
-|  | PIN码错误。<br>**起始版本：** 22 |
-|  | PIN码未认证通过。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | PIN码错误。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | PIN码未认证通过。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_BUSY = 12000024 | 提供者或Ukey中的资源正在被使用。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 | 资源超过限制。<br>**起始版本：** 22 |
 
@@ -603,8 +603,8 @@ enum OH_Huks_KeyClassType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HUKS_KEY_CLASS_DEFAULT = 0 | 默认类型，指定密钥存储在HUKS中。<br>**起始版本：** 22 |
-| OH_HUKS_KEY_CLASS_EXTENSION = 1 | 密钥存储在外部加密能力提供者中。<br>**起始版本：** 22 |
+| OH_HUKS_KEY_CLASS_DEFAULT = 0 | 默认类型，指定密钥存储在HUKS中。 |
+| OH_HUKS_KEY_CLASS_EXTENSION = 1 | 密钥存储在外部加密能力提供者中。 |
 
 ### OH_Huks_KeyWrapType
 

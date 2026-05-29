@@ -41,8 +41,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | 定义provider名称的最大字节长度。<br>**起始版本：** 22 |
-| OH_HUKS_EXTERNAL_CRYPTO_MAX_RESOURCE_ID_LEN   512 | 定义资源ID的最大字节长度。<br>**起始版本：** 22 |
+| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | 定义provider名称的最大字节长度。 |
+| OH_HUKS_EXTERNAL_CRYPTO_MAX_RESOURCE_ID_LEN   512 | 定义资源ID的最大字节长度。 |
 
 ## 枚举类型说明
 
@@ -81,8 +81,8 @@ enum OH_Huks_ExternalPinAuthState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN码未认证。<br>**起始版本：** 22 |
-| OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN码认证成功。<br>**起始版本：** 22 |
-| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN码被锁。<br>**起始版本：** 22 |
+| OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN码未认证。|
+| OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN码认证成功。 |
+| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN码被锁。 |
 
 
