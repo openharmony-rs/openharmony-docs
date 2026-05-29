@@ -150,7 +150,6 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |SmartEdge|Todo|获取待办场景的感知信息。|
     |SmartEdge|Activity|获取基础服务的感知信息。|
     |CeliaMemory|Article|获取阅读场景的感知信息。|
-    |CeliaMemory|Todo|获取待办场景的感知信息。|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
