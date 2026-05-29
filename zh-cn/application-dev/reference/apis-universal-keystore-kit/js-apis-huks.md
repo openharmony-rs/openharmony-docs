@@ -25,34 +25,40 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 调用接口使用的options中的properties数组中的param。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 | 名称 | 类型                                | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
-| tag    | [HuksTag](#hukstag)                 | 否   | 否   | 标签。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| value  | boolean\|number\|bigint\|Uint8Array | 否   | 否   | 标签对应值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| tag    | [HuksTag](#hukstag)                 | 否   | 否   | 标签。 |
+| value  | boolean\|number\|bigint\|Uint8Array | 否   | 否   | 标签对应值。 |
 
 ## HuksOptions
 
 调用接口使用的options。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 | 名称 | 类型                                | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
-| properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 属性，用于存储HuksParam的数组。默认为undefined。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| inData     | Uint8Array        | 否   | 是   | 输入数据。默认为undefined。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。               |
+| properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 属性，用于存储HuksParam的数组。默认为undefined。 |
+| inData     | Uint8Array        | 否   | 是   | 输入数据。默认为undefined。 |
 
 ## HuksSessionHandle<sup>9+</sup>
 
 HUKS handle结构体。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 | 名称 | 类型                                | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
-| handle    | number     | 否   | 否   | 表示无符号整数类型的handle值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                       |
-| challenge | Uint8Array | 否   | 是   | 表示[initSession](#huksinitsession9)操作之后获取到的challenge信息。默认为undefined。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| handle    | number     | 否   | 否   | 表示无符号整数类型的handle值。 |
+| challenge | Uint8Array | 否   | 是   | 表示[initSession](#huksinitsession9)操作之后获取到的challenge信息。默认为undefined。 |
 
 ## HuksReturnResult<sup>9+</sup>
 
@@ -70,11 +76,13 @@ HUKS handle结构体。
 
 返回的密钥别名数组。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Security.Huks.Extension
 
 | 名称 | 类型                                | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
-| keyAliases | Array\<string>                  | 否   | 否   | 表示密钥别名集。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| keyAliases | Array\<string>                  | 否   | 否   | 表示密钥别名集。 |
 
 ## huks.generateKeyItem<sup>9+</sup>
 
@@ -84,9 +92,9 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 
 基于密钥不出[TEE](../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，此接口不会返回密钥材料内容，只用于表示此次调用是否成功。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Security.Huks.Core
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -712,7 +720,7 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 
 获取密钥证书。使用callback异步回调。
 
-**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
+**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -847,7 +855,7 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 
 获取密钥证书。使用Promise异步回调。
 
-**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
+**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -1659,7 +1667,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 参数名   | 类型                                                 | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | keyAlias | string                                               | 是   | 密钥别名，应与所用密钥生成时使用的别名相同。                 |
-| options  | [HuksOptions](#huksoptions)                          | 是   | 用于导出密钥时指定密钥的属性，如使用[HuksAuthStorageLevel](#huksauthstoragelevel11)指定需导出密钥的安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。     |
+| options  | [HuksOptions](#huksoptions)                          | 是   | 空对象（此处传空即可）。当API version ≥ 12时，传空默认为CE类密钥，当API version ＜ 12时，传空默认为DE类密钥。     |
 | callback | AsyncCallback<[HuksReturnResult](#huksreturnresult9)> | 是   | 回调函数。当导出密钥成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误对象。HuksReturnResult中的outData返回从HUKS中导出的公钥。 |
 
 **错误码：**
@@ -1679,7 +1687,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 12000014 | memory is insufficient. |
 | 12000018 | the group id specified by the access group tag is invalid. |
 | 12000020 | the provider operation failed. |
-| 12000024 | the provider or Ukey is busy. |
+| 12000024 | the provider or UKey is busy. |
 | 12000026 | the secure element is not available. |
 
 **示例：**
@@ -1828,7 +1836,7 @@ unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Pr
 
 | 类型                                           | 说明                                                         |
 | ---------------------------------------------- | ------------------------------------------------------------ |
-| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise对象，返回调用接口的结果。 |
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的outData成员为导入的密钥密文。 |
 
 **错误码：**
 
@@ -2242,7 +2250,7 @@ hasKeyItem(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 
 | 类型              | 说明                                    |
 | ----------------- | --------------------------------------- |
-| Promise\<boolean> | Promise对象。若密钥存在，返回值为true，若密钥不存在，返回值为false。 |
+| Promise\<boolean> | Promise对象。返回true表示密钥存在，返回false表示密钥不存在。 |
 
 **错误码：**
 
@@ -3269,9 +3277,9 @@ async function testListAliases() {
 | HUKS_ERR_CODE_INVALID_ARGUMENT<sup>20+</sup>  | 12000018 | 输入参数非法。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core     |
 | HUKS_ERR_CODE_ITEM_EXISTS<sup>22+</sup>  | 12000019 | 同名provider已注册。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
 | HUKS_ERR_CODE_EXTERNAL_MODULE<sup>22+</sup>  | 12000020 | 依赖的外部模块返回错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
-| HUKS_ERR_CODE_PIN_LOCKED<sup>22+</sup>  | 12000021 | Ukey PIN码被锁。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
-| HUKS_ERR_CODE_PIN_INCORRECT<sup>22+</sup>  | 12000022 | Ukey PIN码错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
-| HUKS_ERR_CODE_PIN_NO_AUTH<sup>22+</sup>  | 12000023 | Ukey PIN码未认证。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
+| HUKS_ERR_CODE_PIN_LOCKED<sup>22+</sup>  | 12000021 | UKey PIN码被锁。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
+| HUKS_ERR_CODE_PIN_INCORRECT<sup>22+</sup>  | 12000022 | UKey PIN码错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
+| HUKS_ERR_CODE_PIN_NO_AUTH<sup>22+</sup>  | 12000023 | UKey PIN码未认证。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
 | HUKS_ERR_CODE_BUSY<sup>22+</sup>  | 12000024 | 设备或资源繁忙。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
 | HUKS_ERR_CODE_EXCEED_LIMIT<sup>22+</sup>  | 12000025 | 资源超过限制。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
 | HUKS_ERR_CODE_SE_FAULT  | 12000026 | 安全元件故障。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
@@ -3304,9 +3312,10 @@ async function testListAliases() {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：**
 
-API version 8-11系统能力为SystemCapability.Security.Huks.Extension；从API version 12开始为SystemCapability.Security.Huks.Core
+API版本8-11：SystemCapability.Security.Huks.Extension
+API版本12+：SystemCapability.Security.Huks.Core
 
 | 名称                   | 值   | 说明                                     |
 | ---------------------- | ---- | ---------------------------------------- |
@@ -3460,7 +3469,7 @@ API version 8-11系统能力为SystemCapability.Security.Huks.Extension；从API
 
 ## HuksSendType
 
-表示发送TAG的方式。
+表示发送tag的方式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3516,7 +3525,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 
 ## HuksRsaPssSaltLenType<sup>10+</sup>
 
-表示Rsa在签名验签、padding为pss时需指定的salt_len类型。
+表示RSA在签名验签、padding为PSS时需指定的salt_len类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3659,7 +3668,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 
 ## HuksTagType
 
-表示Tag的数据类型。
+表示tag的数据类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3667,35 +3676,35 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 
 | 名称                  | 值      | 说明                                    |
 | --------------------- | ------- | --------------------------------------- |
-| HUKS_TAG_TYPE_INVALID | 0 << 28 | 表示非法的Tag类型。                     |
-| HUKS_TAG_TYPE_INT     | 1 << 28 | 表示该Tag的数据类型为int类型的number。  |
-| HUKS_TAG_TYPE_UINT    | 2 << 28 | 表示该Tag的数据类型为uint类型的number。 |
-| HUKS_TAG_TYPE_ULONG   | 3 << 28 | 表示该Tag的数据类型为bigint。           |
-| HUKS_TAG_TYPE_BOOL    | 4 << 28 | 表示该Tag的数据类型为boolean。          |
-| HUKS_TAG_TYPE_BYTES   | 5 << 28 | 表示该Tag的数据类型为Uint8Array。       |
+| HUKS_TAG_TYPE_INVALID | 0 << 28 | 表示非法的tag类型。                     |
+| HUKS_TAG_TYPE_INT     | 1 << 28 | 表示该tag的数据类型为int类型的number。  |
+| HUKS_TAG_TYPE_UINT    | 2 << 28 | 表示该tag的数据类型为uint类型的number。 |
+| HUKS_TAG_TYPE_ULONG   | 3 << 28 | 表示该tag的数据类型为bigint。           |
+| HUKS_TAG_TYPE_BOOL    | 4 << 28 | 表示该tag的数据类型为boolean。          |
+| HUKS_TAG_TYPE_BYTES   | 5 << 28 | 表示该tag的数据类型为Uint8Array。       |
 
 ## HuksTag
 
-表示调用参数的Tag。
+表示调用参数的tag。
 
 | 名称                                                        | 值                                       | 说明                                                         |
 | ----------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------ |
-| HUKS_TAG_INVALID<sup>(deprecated)</sup>                     | HuksTagType.HUKS_TAG_TYPE_INVALID \| 0   | 表示非法的Tag。<br/>**说明：** 从API version 8开始使用，从API version 9开始废弃。 <br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_ALGORITHM                                          | HuksTagType.HUKS_TAG_TYPE_UINT \| 1      | 表示算法的Tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_PURPOSE                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 2      | 表示密钥用途的Tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_KEY_SIZE                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 3      | 表示密钥长度的Tag，单位：bit。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_DIGEST                                             | HuksTagType.HUKS_TAG_TYPE_UINT \| 4      | 表示摘要算法的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_TAG_PADDING                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 5      | 表示填充模式的Tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_BLOCK_MODE                                         | HuksTagType.HUKS_TAG_TYPE_UINT \| 6      | 表示加密模式的Tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_KEY_TYPE                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 7      | 表示密钥类型的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_ASSOCIATED_DATA                                    | HuksTagType.HUKS_TAG_TYPE_BYTES \| 8     | 表示附加身份验证数据的Tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_INVALID<sup>(deprecated)</sup>                     | HuksTagType.HUKS_TAG_TYPE_INVALID \| 0   | 表示非法的tag。<br/>**说明：** 从API version 8开始使用，从API version 9开始废弃。 <br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_ALGORITHM                                          | HuksTagType.HUKS_TAG_TYPE_UINT \| 1      | 表示算法的tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_PURPOSE                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 2      | 表示密钥用途的tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_KEY_SIZE                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 3      | 表示密钥长度的tag，单位：bit。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_DIGEST                                             | HuksTagType.HUKS_TAG_TYPE_UINT \| 4      | 表示摘要算法的tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
+| HUKS_TAG_PADDING                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 5      | 表示填充模式的tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_BLOCK_MODE                                         | HuksTagType.HUKS_TAG_TYPE_UINT \| 6      | 表示加密模式的tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_KEY_TYPE                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 7      | 表示密钥类型的tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_ASSOCIATED_DATA                                    | HuksTagType.HUKS_TAG_TYPE_BYTES \| 8     | 表示附加身份验证数据的tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_NONCE                                              | HuksTagType.HUKS_TAG_TYPE_BYTES \| 9     | 表示密钥加解密的NONCE字段。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IV                                                 | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10    | 表示密钥初始化的向量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_INFO                                               | HuksTagType.HUKS_TAG_TYPE_BYTES \| 11    | 表示密钥派生时的info。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_SALT                                               | HuksTagType.HUKS_TAG_TYPE_BYTES \| 12    | 表示密钥派生时的盐值。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_PWD<sup>(deprecated)</sup>                         | HuksTagType.HUKS_TAG_TYPE_BYTES \| 13    | 表示密钥派生时的password。<br/>**说明：** 从API version 8开始，从API version 9开始废弃。   <br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_ITERATION                                          | HuksTagType.HUKS_TAG_TYPE_UINT \| 14     | 表示密钥派生时的迭代次数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_TAG_KEY_GENERATE_TYPE                                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 15     | 表示生成密钥类型的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_KEY_GENERATE_TYPE                                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 15     | 表示生成密钥类型的tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_DERIVE_MAIN_KEY<sup>(deprecated)</sup>             | HuksTagType.HUKS_TAG_TYPE_BYTES \| 16    | 表示密钥派生时的主密钥。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。   <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_DERIVE_FACTOR<sup>(deprecated)</sup>               | HuksTagType.HUKS_TAG_TYPE_BYTES \| 17    | 表示密钥派生时的派生因子。<br/>**说明：**  从API version 8开始支持，从API version 9开始废弃。   <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_DERIVE_ALG<sup>(deprecated)</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 18     | 表示密钥派生时的算法类型。<br/>**说明：** 从API version 8开始，从API version 9开始废弃。   <br> **系统能力：** SystemCapability.Security.Huks.Extension |
@@ -3748,30 +3757,30 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_KEY_SECURITY_LEVEL                                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 526   | 表示密钥安全级别。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_AAD<sup>24+</sup>                                  | HuksTagType.HUKS_TAG_TYPE_BYTES \| 527   | 标记指示GCM或CCM模式的附加验证数据。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_CONTEXT                                           | HuksTagType.HUKS_TAG_TYPE_BYTES \| 528   | 表示ML-DSA签名验签的context参数。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | 表示是否使用生成key时传入的别名的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_KEY_STORAGE_FLAG                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1002   | 表示密钥存储方式的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | 表示是否使用生成key时传入的别名的tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_KEY_STORAGE_FLAG                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1002   | 表示密钥存储方式的tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_ALLOWED_WRAP                                    | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1003   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_KEY_WRAP_TYPE                                      | HuksTagType.HUKS_TAG_TYPE_UINT \| 1004   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_KEY_AUTH_ID                                        | HuksTagType.HUKS_TAG_TYPE_BYTES \| 1005  | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_ROLE                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 1006   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_TAG_KEY_FLAG                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 1007   | 表示密钥标志的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_KEY_FLAG                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 1007   | 表示密钥标志的tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_ASYNCHRONIZED                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1008   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_SECURE_KEY_ALIAS<sup>(deprecated)</sup>            | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1009   | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                          <br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_SECURE_KEY_UUID<sup>(deprecated)</sup>             | HuksTagType.HUKS_TAG_TYPE_BYTES \| 1010  | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                            <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_DOMAIN                                         | HuksTagType.HUKS_TAG_TYPE_UINT \| 1011   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_DEVICE_PASSWORD_SET<sup>11+</sup>                | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1012   | 表示密钥锁屏密码访问控制字段，可限制密钥只有在用户设置了锁屏密码时可用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
-| HUKS_TAG_PROCESS_NAME<sup>(deprecated)</sup>                | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10001 | 表示进程名称的Tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。          <br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_PROCESS_NAME<sup>(deprecated)</sup>                | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10001 | 表示进程名称的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。          <br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_PACKAGE_NAME<sup>(deprecated)</sup>                | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10002 | 原为预留字段。 <br>**说明：** 从API version 9开始废弃，无替代接口。             <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_ACCESS_TIME<sup>(deprecated)</sup>                 | HuksTagType.HUKS_TAG_TYPE_UINT \| 10003  | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                    <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_USES_TIME<sup>(deprecated)</sup>                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 10004  | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                 <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_CRYPTO_CTX<sup>(deprecated)</sup>                  | HuksTagType.HUKS_TAG_TYPE_ULONG \| 10005 | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY                                                | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10006 | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_KEY_VERSION<sup>(deprecated)</sup>                 | HuksTagType.HUKS_TAG_TYPE_UINT \| 10007  | 表示密钥版本的Tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。                   <br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_KEY_VERSION<sup>(deprecated)</sup>                 | HuksTagType.HUKS_TAG_TYPE_UINT \| 10007  | 表示密钥版本的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。                   <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_PAYLOAD_LEN<sup>(deprecated)</sup>                 | HuksTagType.HUKS_TAG_TYPE_UINT \| 10008  | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。                          <br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_AE_TAG                                             | HuksTagType.HUKS_TAG_TYPE_BYTES \| 10009 | 用于传入GCM模式中的AEAD数据的字段。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_KEY_HANDLE<sup>(deprecated)</sup>               | HuksTagType.HUKS_TAG_TYPE_ULONG \| 10010 | 原为预留字段。 <br> **说明：** 从API version 9开始废弃，无替代接口。              <br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_OS_VERSION<sup>(deprecated)</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 10101  | 表示操作系统版本的Tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。      <br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_OS_PATCHLEVEL<sup>(deprecated)</sup>               | HuksTagType.HUKS_TAG_TYPE_UINT \| 10102  | 表示操作系统补丁级别的Tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。    <br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_OS_VERSION<sup>(deprecated)</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 10101  | 表示操作系统版本的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。      <br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_OS_PATCHLEVEL<sup>(deprecated)</sup>               | HuksTagType.HUKS_TAG_TYPE_UINT \| 10102  | 表示操作系统补丁级别的tag。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃。    <br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_SYMMETRIC_KEY_DATA                                 | HuksTagType.HUKS_TAG_TYPE_BYTES \| 20001 | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA                         | HuksTagType.HUKS_TAG_TYPE_BYTES \| 20002 | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_ASYMMETRIC_PRIVATE_KEY_DATA                        | HuksTagType.HUKS_TAG_TYPE_BYTES \| 20003 | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
@@ -3780,7 +3789,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 
 getSdkVersion(options: HuksOptions) : string
 
-获取当前系统sdk版本。
+获取当前系统SDK版本。
 
 > **说明：**
 >
@@ -4007,7 +4016,7 @@ let result = huks.deleteKey(keyAlias, emptyOptions).then((data) => {
 
 importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<HuksResult>) : void
 
-导入明文密钥，使用Callback方式回调异步返回结果。
+导入明文密钥，使用callback方式回调异步返回结果。
 
 > **说明：**
 >
@@ -4148,7 +4157,7 @@ let result = huks.importKey(keyAlias, huksOptions);
 
 exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<HuksResult>) : void
 
-导出密钥，使用Callback方式回调异步返回的结果。
+导出密钥，使用callback方式回调异步返回的结果。
 
 > **说明：**
 >
@@ -4345,7 +4354,7 @@ isKeyExist(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 
 | 类型              | 说明                                    |
 | ----------------- | --------------------------------------- |
-| Promise\<boolean> | Promise对象。false代表密钥不存在，true代表密钥存在。 |
+| Promise\<boolean> | Promise对象。返回false表示密钥不存在，返回true表示密钥存在。 |
 
 **示例：**
 
@@ -4407,7 +4416,7 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 
 | 类型                                | 说明                                               |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksHandle](#hukshandledeprecated)> | Promise对象，返回HuksResult。HuksHandle的handle返回init生成的handle。 |
+| Promise\<[HuksHandle](#hukshandledeprecated)> | Promise对象，返回HuksHandle。HuksHandle的handle返回init生成的handle。 |
 
 ## huks.update<sup>(deprecated)</sup>
 
@@ -4753,7 +4762,7 @@ function huksAbort() {
 
 ## HuksHandle<sup>(deprecated)</sup>
 
-huks Handle结构体。
+HUKS handle结构体。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

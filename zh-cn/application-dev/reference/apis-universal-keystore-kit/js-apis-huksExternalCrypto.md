@@ -38,7 +38,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
 | 名称    | 值   | 说明   |
 | ------- | ---- | -------- |
-| HUKS_EXT_CRYPTO_TAG_UKEY_PIN | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200001    | 表示PIN码的TAG。 |
+| HUKS_EXT_CRYPTO_TAG_UKEY_PIN | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200001    | 表示PIN码的Tag。 |
 | HUKS_EXT_CRYPTO_TAG_ABILITY_NAME | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200002    | 表示[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)的名称。 |
 | HUKS_EXT_CRYPTO_TAG_EXTRA_DATA | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200003    | 外部数据，在通用查询场景，表示返回的数据。 |
 | HUKS_EXT_CRYPTO_TAG_UID | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200004    | 表示调用方的uid。 |
@@ -95,7 +95,7 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
     - 参数格式错误时，返回[ERROR_PARAMETER_VALIDATION_FAILED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)。
     - 其余失败场景返回错误码[ERROR_GENERIC](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)，成功时返回0。
 
-**需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER
+**需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER。配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -160,7 +160,7 @@ unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam
 
 注销指定的外部provider。使用Promise异步回调。
 
-**需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER
+**需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER。配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
