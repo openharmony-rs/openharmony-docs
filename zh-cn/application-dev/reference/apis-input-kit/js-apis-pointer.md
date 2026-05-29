@@ -40,7 +40,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
 
 **示例**：
@@ -100,7 +100,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
 
 **示例**：
@@ -152,7 +152,7 @@ setPointerVisibleSync(visible: boolean): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -199,7 +199,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -334,7 +334,7 @@ getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): 
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -402,7 +402,7 @@ getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -472,7 +472,7 @@ getPointerStyleSync(windowId: number): PointerStyle
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -521,7 +521,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCal
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -589,7 +589,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&g
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -654,7 +654,7 @@ setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 ```js
@@ -810,7 +810,7 @@ setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, foc
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -977,7 +977,7 @@ setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number,
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 

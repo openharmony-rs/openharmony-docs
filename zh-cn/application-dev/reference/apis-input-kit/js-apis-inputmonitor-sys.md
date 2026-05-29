@@ -48,7 +48,7 @@ on(type: 'touch', receiver: TouchEventReceiver): void
 | ---- | --------------------- |
 | 201  | Permission denied.   |
 | 202  | Permission denied, non-system app called system api.   |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -103,7 +103,7 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 | ---- | --------------------- |
 | 201  | Permission denied.   |
 | 202  | Permission denied, non-system app called system api.   |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -158,8 +158,8 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -238,7 +238,7 @@ off(type: 'touch', receiver?: TouchEventReceiver): void
 | ---- | --------------------- |
 | 201  | Permission denied.   |
 | 202  | Permission denied, non-system app called system api.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -329,7 +329,7 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 | ---- | --------------------- |
 | 201  | Permission denied.   |
 | 202  | Permission denied, non-system app called system api.   |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -470,8 +470,8 @@ on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -524,8 +524,8 @@ off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -615,8 +615,8 @@ on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -669,8 +669,8 @@ off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): vo
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -760,8 +760,8 @@ on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -814,8 +814,8 @@ off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -906,8 +906,8 @@ on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -962,8 +962,8 @@ off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1054,8 +1054,8 @@ on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1110,8 +1110,8 @@ off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1201,8 +1201,8 @@ on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1255,8 +1255,8 @@ off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1348,7 +1348,7 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 | ---- | --------------------- |
 | 201  | Permission denied.   |
 | 202  | Caller is not a system application.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1404,7 +1404,7 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 | ---- | --------------------- |
 | 201  | Permission denied.   |
 | 202  | Caller is not a system application.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1493,7 +1493,7 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 | ---- | --------------------- |
 | 201  | Permission denied.   |
 | 202  | Caller is not a system application.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1549,7 +1549,7 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 | ---- | --------------------- |
 | 201  | Permission denied.   |
 | 202  | Caller is not a system application.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1638,7 +1638,7 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Permission denied, non-system app called system api.         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 4100001  | Event listening not supported for the key.                   |
 
 **示例：**
@@ -1693,7 +1693,7 @@ off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Permission denied, non-system app called system api.         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1831,8 +1831,8 @@ on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 202      | Permission denied, non-system app called system api.         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | SystemAPI permit error.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1885,8 +1885,8 @@ off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1974,8 +1974,8 @@ on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 202      | Permission denied, non-system app called system api.         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | SystemAPI permit error.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -2028,8 +2028,8 @@ off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202  | SystemAPI permit error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

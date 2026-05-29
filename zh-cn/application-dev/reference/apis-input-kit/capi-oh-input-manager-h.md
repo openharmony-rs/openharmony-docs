@@ -658,7 +658,7 @@ Input_Result OH_Input_GetKeyState(struct Input_KeyState* keyState)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 操作成功返回[INPUT_SUCCESS](#input_result)；否则返回[Input_Result](#input_result)中定义的其他错误代码。 |
+| [Input_Result](#input_result) | 操作成功返回[INPUT_SUCCESS](#input_result)；参数校验失败返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_CreateKeyState()
 
@@ -3875,7 +3875,7 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectTouchEvent 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
+| int32_t | OH_Input_InjectTouchEvent 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。 |
 
 ### OH_Input_InjectMouseEvent()
 
