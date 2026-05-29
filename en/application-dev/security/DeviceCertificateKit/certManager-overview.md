@@ -21,7 +21,7 @@ The **certManager** module provides system-level certificate management capabili
 
 You can use the APIs provided by the **certManager** module to implement lifecycle management of service certificates/credentials and CA certificates. The certificate lifecycle management involves the following:
 
-- Certificate installation: You can use **install()** to pass in a certificate.
+- Certificate installation: You can use **install()** to pass in a certificate file or keystore file.
 
 - Certificate storage: The **certManager** module stores the installed certificate in a directory of the certificate manager service. The private key credential corresponding to the certificate is stored in the HUKS module.
 

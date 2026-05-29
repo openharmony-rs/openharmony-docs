@@ -13,7 +13,9 @@ Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> 
+>
+> - The APIs of this module can be used only in the stage model.
+>
 > - If the root node of the provided Builder is a syntax node ([if/else](../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../ui/rendering-control/arkts-rendering-control-contentslot.md)...), [Span](./arkui-ts/ts-basic-components-span.md), [ContainerSpan](./arkui-ts/ts-basic-components-containerspan.md), [SymbolSpan](./arkui-ts/ts-basic-components-symbolSpan.md), or a custom component, an additional [FrameNode](./js-apis-arkui-frameNode.md) is generated and displayed as BuilderProxyNode in the node tree. This structural change affects the propagation of certain events. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
 >
 > - If you encounter display issues when reusing a BuilderNode across pages, see [Cross-Page Reuse Considerations](../../ui/arkts-user-defined-arktsNode-builderNode.md#cross-page-reuse-considerations) for guidance.
@@ -87,7 +89,7 @@ Defines the optional build options.
 | ------------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
 | nestingBuilderSupported | boolean | No  | Yes  | Whether to support nested **@Builder** within **@Builder**. **true** if supported, **false** otherwise.<br>Default value: **false**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | localStorage<sup>20+</sup> | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Yes  | LocalStorage for the current BuilderNode. Custom components mounted under this BuilderNode will share the specified LocalStorage. **NOTE**<br>If LocalStorage is also passed through a custom component's constructor, the constructor parameter takes precedence.<br>Default value: **null**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| enableProvideConsumeCrossing<sup>20+</sup> | boolean | No  | Yes  | Defines whether two-way synchronization is supported between the [@Consume](../../ui/state-management/arkts-provide-and-consume.md) decorated variable of the custom component of [state management V1](../../ui/state-management/arkts-state-management-overview.md#state-management-v1) inside the **BuilderNode** and the [@Provide](../../ui/state-management/arkts-provide-and-consume.md) decorated variable outside the **BuilderNode**, and whether two-way synchronization is supported between the [@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable of the custom component of [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) inside the **BuilderNode** and the [@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable outside the **BuilderNode**.<br>API version 20 and later versions support two-way synchronization for the custom component of state management V1. API version 22 and later versions support two-way synchronization for the custom component of state management V2.<br>The value **true** means that this feature is supported, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| enableProvideConsumeCrossing<sup>20+</sup> | boolean | No  | Yes  | Defines whether two-way synchronization is supported between the [@Consume](../../ui/state-management/arkts-provide-and-consume.md) decorated variable of the custom component of [state management V1](../../ui/state-management/arkts-state-management-overview.md#state-management-v1) inside the **BuilderNode** and the [@Provide](../../ui/state-management/arkts-provide-and-consume.md) decorated variable outside the **BuilderNode**, and whether two-way synchronization is supported between the [@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable of the custom component of [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) inside the **BuilderNode** and the [@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable outside the **BuilderNode**.<br>API version 20 and later versions support two-way synchronization for the custom component of state management V1. API version 23 and later versions support two-way synchronization for the custom component of state management V2.<br>The value **true** means that this feature is supported, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## InputEventType<sup>20+</sup>
 
@@ -1212,7 +1214,7 @@ struct Index {
 
 updateConfiguration(): void
 
-Updates the configuration of the entire node by passing in a [system environment change](../apis-ability-kit/js-apis-app-ability-configuration.md) event.
+Transfers a system environment change event and triggers full update of a node. For details about system environment changes, see [@ohos.app.ability.Configuration (Environment Variables)](../apis-ability-kit/js-apis-app-ability-configuration.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1570,7 +1572,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 >
 > - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
 >
-> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [SourceType](arkui-ts/ts-appendix-enums.md#touchtype) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
+> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
 >
 > - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
 >
@@ -1578,7 +1580,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 >
 > - If the event is converted to a developer-constructed event, mandatory fields must be assigned values, for example, the **touches** field of a touch event and the **scrollStep** field of an axis event. Ensure the completeness of the event. For example, [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of a touch event must contain both the **DOWN** and **UP** fields to prevent program exceptions or unexpected crashes.
 >
-> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--Del-->
+> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--DelEnd-->
 
 **Model constraint**: This API can be used only in the stage model.
 
@@ -1607,7 +1609,7 @@ For details, see [Example 16: Handling Mouse Events with Competition Strategies 
 
 inheritFreezeOptions(enabled: boolean): void
 
-Sets whether this **BuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
+Sets whether the current **BuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
 
 > **NOTE**
 >
@@ -2698,7 +2700,7 @@ struct Index {
 
 updateConfiguration(): void
 
-Updates the configuration of the entire node by passing in a [system environment change](../apis-ability-kit/js-apis-app-ability-configuration.md) event. This event can be used to notify the object of the update. Whether the system environment used by the object is updated depends on the current system environment change of the application.
+Transfers a system environment change event and triggers full update of a node. This event can be used to notify the object of the update. Whether the system environment used by the object is updated depends on the current system environment change of the application. For details about system environment changes, see [@ohos.app.ability.Configuration (Environment Variables)](../apis-ability-kit/js-apis-app-ability-configuration.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -2982,7 +2984,7 @@ Posts the input event to the target node managed by the **ReactiveBuilderNode**.
 
 **offsetA** indicates the **BuilderNode**'s offset relative to its parent component, **offsetB** the hit position's offset relative to the **BuilderNode**, **offsetC** the composite offset (offsetA + offsetB) passed to the **postInputEvent**.
 
-! [API coordinate conversion example](figures/postTouchEvent.PNG)
+![API coordinate conversion example](figures/postTouchEvent.PNG)
 
 > **NOTE**
 >
@@ -3024,11 +3026,54 @@ Posts the input event to the target node managed by the **ReactiveBuilderNode**.
 
 For details, see [Example 13: Handling Mouse Events in ReactiveBuilderNode)](#example-13-handling-mouse-events-in-reactivebuildernode), [Example 14: Handling Touch Events in ReactiveBuilderNode](#example-14-handling-touch-events-in-reactivebuildernode), and [Example 15: Handling Axis Events in ReactiveBuilderNode)](#example-15-handling-axis-events-in-reactivebuildernode).
 
+### postInputEventWithStrategy<sup>24+</sup>
+
+postInputEventWithStrategy(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean
+
+Posts an event containing a competition strategy to the target UI component node.
+
+Before calling this API, you need to convert the value of **event** to the corresponding event and convert the coordinates in the **window** parameter in **event**. **offsetA** indicates the offset of the ReactiveBuilderNode relative to the parent component, **offsetB** indicates the offset of the hit position relative to the ReactiveBuilderNode, and **offsetC** is the sum of **offsetA** and **offsetB**. The value of **offsetC** is used as the value of the **window** parameter in **event** and passed to the **postInputEventWithStrategy** method. For details, see the following sample code.
+
+![Coordinate conversion example](figures/postInputEvent-point.png)
+
+> **NOTE**
+>
+> - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
+>
+> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
+>
+> - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
+>
+> - The forwarded event is posted to the target component and its child components for processing, and triggers the corresponding gesture. You can use input parameters to control whether the gestures of the current component and the target component are in a competitive relationship.
+>
+> - If the event is converted to a developer-constructed event, mandatory fields must be assigned values, for example, the **touches** field of a touch event and the **scrollStep** field of an axis event. Ensure the completeness of the event. For example, [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of a touch event must contain both the **DOWN** and **UP** fields to prevent program exceptions or unexpected crashes.
+>
+> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--DelEnd-->
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                                     | Mandatory| Description      |
+| ------ | ------------------------------------------------------------------------- | ---- | ---------- |
+| event  | [InputEventType](#inputeventtype20) | Yes  | Input event used for event posting.|
+| competitionStrategy  | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | No  | Whether the gesture for posting the event is in a competition scenario. By default, the gesture is not in a competition scenario.|
+
+**Return value**
+
+| Type   | Description              |
+| ------- | ------------------ |
+| boolean | Whether the event is successfully dispatched. Returns **true** if the operation is successful; returns **false** otherwise.|
+
 ### inheritFreezeOptions<sup>22+</sup>
 
 inheritFreezeOptions(enabled: boolean): void
 
-Sets whether this **ReactiveBuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the **ReactiveBuilderNode** object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
+Sets whether the current **ReactiveBuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the **ReactiveBuilderNode** object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
 
 > **NOTE**
 >
@@ -5784,7 +5829,7 @@ class MyNodeController extends NodeController {
     return this.rootNode.getFrameNode();
   }
 
-  postInputEvent(event: InputEventType, uiContext: UIContext, CompetitionStrategy: competitionStrategy): boolean {
+  postInputEvent(event: InputEventType, uiContext: UIContext, competitionStrategy: CompetitionStrategy): boolean {
     if (this.rootNode == null) {
       return false;
     }

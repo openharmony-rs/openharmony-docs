@@ -1,7 +1,7 @@
 # native_interface_accessibility.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -676,6 +676,10 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 
 
 Sets whether the **ArkUI_AccessibilityElementInfo** object is checked.
+
+> **NOTE**
+>
+> This API only sets whether the object is checked, but does not set whether the object is checkable. To set whether the object is checkable, call [OH_ArkUI_AccessibilityElementInfoSetCheckable](#oh_arkui_accessibilityelementinfosetcheckable).
 
 **Since**: 13
 

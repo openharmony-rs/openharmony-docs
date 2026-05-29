@@ -9,9 +9,9 @@
 
 - （Y/N）master <br/>
 - （Y/N）(master with sta) OpenHarmony_feature_sta_20260331 <br/>
+- （Y/N）(API 26.0.0 Beta1) OpenHarmony-7.0-Beta1 <br/>
 - （Y/N）(API 24 Beta)  weekly_20260309 <br/>
-- （Y/N）(API 23 Release)  OpenHarmony-6.1-Release <br/>
-- （Y/N）(API 22 Release)  weekly_20251117
+
 
 ## （必填）文档变更来源
 

@@ -1,7 +1,7 @@
 # SwipeRefresher
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -31,7 +31,7 @@ import { SwipeRefresher } from '@kit.ArkUI';
 
 ## SwipeRefresher
 
-SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
+SwipeRefresher({content?: ResourceStr, isLoading: boolean})
 
 主要用于实现下拉刷新功能。当用户下拉页面时，会触发内容加载操作，即从数据源获取新内容并动态展示在界面中。
 

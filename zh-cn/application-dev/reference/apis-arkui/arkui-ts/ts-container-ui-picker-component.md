@@ -12,9 +12,9 @@ UIPickerComponent容器是用于实现用户选择操作的组件。它支持从
 >
 > - 该组件从API version 22开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - UIPickerComponent容器的选项行高固定为40vp，最多可显示7个选项。由于显示效果为立体滚轮样式，因此除选中项外的其他选项会进行不同角度的旋转，实际的可视高度会小于40vp。
+> - UIPickerComponent容器默认选项行高为40vp，默认显示7个选项。可通过[itemHeight](#itemheight)和[displayedItemCount](#displayeditemcount)属性进行配置。由于显示效果为立体滚轮样式，因此除选中项外的其他选项会进行不同角度的旋转，实际的可视高度会小于选项行高。
 >
-> - UIPickerComponent容器的[height](./ts-universal-attributes-size.md#height)建议设置为200vp。当设置的高度大于等于该建议值时，可完全显示7个选项；小于该建议值时，显示范围会从上下边缘向中间裁剪，可显示的选项数量也会相应减少，始终保持选中项垂直居中。
+> - UIPickerComponent容器的[height](./ts-universal-attributes-size.md#height)建议设置为200vp。当设置的高度大于等于该建议值时，可完整显示默认的7个选项；若通过[displayedItemCount](#displayeditemcount)或[itemHeight](#itemheight)配置了更多可见项或更大选项高度，建议相应增大组件高度。设置高度小于建议值时，显示范围会从上下边缘向中间裁剪，可显示的选项数量也会相应减少，始终保持选中项垂直居中。
 >
 > - 当UIPickerComponent容器未设置[width](./ts-universal-attributes-size.md#width)时，取当前视图中可见子组件的最大宽度作为容器宽度。建议为UIPickerComponent容器设置宽度，或为每个子组件设置相同宽度，以避免滑动过程中容器宽度动态发生变化，影响显示效果。
 >
@@ -145,6 +145,46 @@ selectionIndicator(style: Optional\<PickerIndicatorStyle>)
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle对象说明)> | 是   | 选中项指示器的样式。<br/>默认值：<br/>{<br/>type: PickerIndicatorType.BACKGROUND,<br/>borderRadius: {<br/>value:12,<br/>unit:LengthUnit.vp<br/>},<br/>backgroundColor: 'sys.color.comp_background_tertiary'<br/>}<br/>当style的值为undefined时，使用默认值。|
+
+### itemHeight
+
+itemHeight(height: Optional\<LengthMetrics>)
+
+设置UIPickerComponent容器每个选项的高度。未通过该接口设置时，每个选项的高度为40vp。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| height | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是 | 选项高度。<br/>单位：与[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)一致。<br/>取值范围：[40vp, 64vp]<br/>设置小于40vp或大于64vp时，使用默认值40vp。<br/>当height的值为undefined时，使用默认值40vp。<br/>不支持“百分比”类型。 |
+
+### displayedItemCount
+
+displayedItemCount(count: Optional\<number>)
+
+设置UIPickerComponent容器可见选项的数量。未通过该接口设置时，可见选项的数量为7行。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| count | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是 | 可见选项数量。<br/>取值范围：[2, 9]内的整数。<br/>设置小数时，使用向下取整后的整数。<br/>设置偶数时，自动转为不小于该值的奇数（例如2变为3、8变为9）。<br/>设置不在取值范围内时，使用默认值7行。<br/>当count的值为undefined时，使用默认值7行。 |
 
 ## 事件
 
@@ -1427,3 +1467,127 @@ struct TimeUIPickerComponentExample {
 ```
 
 ![containerPicker](./figures/ContainerPickerDemo8.gif)
+
+### 示例9（设置选项高度）
+
+该示例通过[itemHeight](#itemheight)设置UIPickerComponent容器的选项高度。
+
+从API版本26.0.0开始，新增[itemHeight](#itemheight)属性。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct UIPickerComponentItemHeightExample {
+  private dataArray: string[] = [];
+  @State pickerItemHeight: LengthMetrics | undefined = undefined;
+  @State selectedIndex: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 1; i <= 10; i++) {
+      this.dataArray.push('选项' + i)
+    }
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      Text('当前itemHeight：' + (this.pickerItemHeight ? this.pickerItemHeight.value + 'vp' : '默认值(40vp)'))
+        .fontSize(16)
+
+      UIPickerComponent() {
+        ForEach(this.dataArray, (item: string) => {
+          Text(item)
+        })
+      }
+      .width('70%')
+      .itemHeight(this.pickerItemHeight)
+      .onChange((selectedIndex: number) => {
+        this.selectedIndex = selectedIndex
+      })
+
+      Row({ space: 12 }) {
+        Button('40vp')
+          .onClick(() => {
+            this.pickerItemHeight = LengthMetrics.vp(40)
+          })
+        Button('50vp')
+          .onClick(() => {
+            this.pickerItemHeight = LengthMetrics.vp(50)
+          })
+        Button('64vp')
+          .onClick(() => {
+            this.pickerItemHeight = LengthMetrics.vp(64)
+          })
+      }
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![containerPicker](./figures/ContainerPickerDemo9.jpg)
+
+### 示例10（设置可见选项数量）
+
+该示例通过[displayedItemCount](#displayeditemcount)设置UIPickerComponent容器的可见选项数量。
+
+从API版本26.0.0开始，新增[displayedItemCount](#displayeditemcount)属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct UIPickerComponentDisplayedCountExample {
+  private dataArray: string[] = [];
+  @State visibleCount: number = 7;
+
+  aboutToAppear(): void {
+    for (let i = 1; i <= 12; i++) {
+      this.dataArray.push('第' + i + '项')
+    }
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      Text('displayedItemCount: ' + this.visibleCount)
+        .fontSize(16)
+
+      UIPickerComponent() {
+        ForEach(this.dataArray, (item: string) => {
+          Text(item)
+        })
+      }
+      .width('70%')
+      .displayedItemCount(this.visibleCount)
+
+      Row({ space: 12 }) {
+        Button('3项')
+          .width(120)
+          .height(40)
+          .onClick(() => {
+            this.visibleCount = 3
+          })
+        Button('5项')
+          .width(120)
+          .height(40)
+          .onClick(() => {
+            this.visibleCount = 5
+          })
+        Button('8项(自动变9)')
+          .width(120)
+          .height(40)
+          .onClick(() => {
+            this.visibleCount = 8
+          })
+      }
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![containerPicker](./figures/ContainerPickerDemo10.jpg)

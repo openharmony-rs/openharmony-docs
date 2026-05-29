@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 弧形滑块视图容器，提供子组件滑动轮播显示的能力。 
@@ -141,7 +141,7 @@ vertical(isVertical: Optional\<boolean>)
 
 disableSwipe(disabled: Optional\<boolean>)
 
-设置禁用组件滑动切换功能。
+是否禁用组件滑动切换功能。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -151,7 +151,7 @@ disableSwipe(disabled: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
-| disabled  | Optional\<boolean> | 是   | 禁用组件滑动切换功能。设置为true禁用，false不禁用。<br/>默认值：false |
+| disabled  | Optional\<boolean> | 是   | 是否禁用组件滑动切换功能。设置为true禁用，false不禁用。<br/>默认值：false |
 
 ### digitalCrownSensitivity
 

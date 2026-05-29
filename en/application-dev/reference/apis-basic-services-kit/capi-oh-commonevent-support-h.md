@@ -102,3 +102,6 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED = "usual.event.MANAGED_BROWSER_POLICY_CHANGED" | Indicates the common event that the browser hosting policy has been changed.<br>**Since**: 15|
 | static const char* const COMMON_EVENT_TABLET_MODE_CHANGED = "usual.event.TABLET_MODE_CHANGED" | Indicates the common event that the tablet mode of a device has been changed.<br>**Since**: 23|
 | static const char* const COMMON_EVENT_LID_STATE_CHANGED = "usual.event.LID_STATE_CHANGED" | Indicates the common event that the lid state of a device has been changed.<br>**Since**: 23|
+ | static const char* const COMMON_EVENT_VOLUME_DECRYPTED = "usual.event.VOLUME_DECRYPTED" | Indicates that specific volumes on the device have been decrypted.<br>**Since**: 26.0.0 |
+ | static const char* const COMMON_EVENT_VOLUME_ENCRYPTED = "usual.event.VOLUME_ENCRYPTED" | Indicates that specific volumes on the device have been encrypted.<br>**Since**: 26.0.0 |
+ | static const char* const COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET = "usual.event.VOLUME_ENCRYPTION_POLICY_SET" | Indicates that specific volumes on the device have had their encryption policy set.<br>**Since**: 26.0.0 |

@@ -34,13 +34,13 @@
 以下通过几个典型场景来说明组件截图能力的常见使用方式。
 
 ### 截取长内容（滚动截图）
-较长内容通常使用滚动类容器组件实现。截图时，仅能捕获容器内可见内容，超出边界部分无法截取。若使用LazyForEach或Repeat，超出显示范围内容亦不会被系统构建及截取。
+较长内容通常使用滚动类容器组件实现。截图时，仅能捕获容器内可见内容，超出边界部分无法截取。若使用[LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)或[Repeat](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)，超出显示范围内容亦不会被系统构建及截取。
 
 可利用滚动类容器接口，模拟用户滑动逐页截图，之后按偏移量拼接各页PixelMap位图，以生成完整长图。关键点在于模拟滑动、维护位移与位图关系及实现PixelMap位图读写。
 
 **步骤1：添加滚动控制器及事件监听**
 
-为了能够模拟滚动，以及监听组件滚动的具体offset，需要为List（此处以列表为例）组件添加滚动控制器以及滚动监听。
+为了能够模拟滚动，以及监听组件滚动的具体[offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)，需要为[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)（此处以列表为例）组件添加滚动控制器以及滚动监听。
 
 <!-- @[scroll_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/ScrollSnapshot.ets) -->
 
@@ -147,7 +147,7 @@ static scrollAnimation(scroller: Scroller, duration: number, scrollHeight: numbe
 
 **步骤3：拼接长截图**
 
-使用image.createPixelMapSync()方法创建长截图longPixelMap，并遍历之前保存的图像片段数据（this.areaArray），构建image.PositionArea对象area，然后调用longPixelMap.writePixelsSync(area)方法将这些片段逐个写入到正确的位置，从而拼接成一个完整的长截图。
+使用image.[createPixelMapSync](../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapsync12)()方法创建长截图longPixelMap，并遍历之前保存的图像片段数据（this.areaArray），构建image.PositionArea对象area，然后调用longPixelMap.[writePixelsSync](../reference/apis-image-kit/arkts-apis-image-PixelMap.md#writepixelssync12)(area)方法将这些片段逐个写入到正确的位置，从而拼接成一个完整的长截图。
 
 <!-- @[merge_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/common/ImageUtils.ets) -->
 
@@ -195,7 +195,7 @@ static async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, li
 
 **步骤4：保存截图**
 
-使用安全控件SaveButton实现截图保存到相册。
+使用安全控件[SaveButton](../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)实现截图保存到相册。
 
 <!-- @[save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
 
@@ -347,7 +347,7 @@ export class GlobalStaticSnapshot {
 
 应用可通过以下几种方式进行优化：
 1. 自行提前解析图片为PixelMap格式，将PixelMap配置给图片组件；建议优先以此方法进行优化。
-2. 配置所使用的图片组件的syncLoad属性为true来强制同步加载，这样组件被构建时，即可确保资源可以直接被提交；
+2. 配置所使用的图片组件的[syncLoad](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#syncload8)属性为true来强制同步加载，这样组件被构建时，即可确保资源可以直接被提交；
 3. 通过指定延迟时长以及checkImageStatus设置为true，尝试截图，当返回160001错误后，重新加大时长进行截图；
 
 

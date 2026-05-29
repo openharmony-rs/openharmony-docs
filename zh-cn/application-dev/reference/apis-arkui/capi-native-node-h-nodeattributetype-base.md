@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（基础属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW; @wangyang2022; @zju_ljz-->
-<!--Designer: @CCFFWW; @wangyang2022; @lanshouren-->
+<!--Owner: @hehongyang3; @wangyang2022; @zju_ljz-->
+<!--Designer: @hehongyang3; @wangyang2022; @lanshouren-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -222,3 +222,27 @@ NODE_CLICK_DISTANCE = 97
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].f32 | 表示识别点击手势时允许手指在该范围内移动，单位为vp。 |
+
+## NODE_INSPECTOR_LABEL
+
+```c
+NODE_INSPECTOR_LABEL = 126
+```
+
+设置调测标签，帮助开发者分辨同类节点，提高开发和分析调试的效率。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .string | 表示调测标签的内容。当传入空指针时本地调用无效，支持传入空字符串。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .string | 表示调测标签的内容。 |

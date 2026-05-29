@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -204,20 +204,21 @@
 
 | 名称              |  值    | 说明            |
 | ----------------- | ------ | --------------- |
-| SAMPLE_RATE_8000  | 8000   | 采样率为8000。  |
-| SAMPLE_RATE_11025 | 11025  | 采样率为11025。 |
-| SAMPLE_RATE_12000 | 12000  | 采样率为12000。 |
-| SAMPLE_RATE_16000 | 16000  | 采样率为16000。 |
-| SAMPLE_RATE_22050 | 22050  | 采样率为22050。 |
-| SAMPLE_RATE_24000 | 24000  | 采样率为24000。 |
-| SAMPLE_RATE_32000 | 32000  | 采样率为32000。 |
-| SAMPLE_RATE_44100 | 44100  | 采样率为44100。 |
-| SAMPLE_RATE_48000 | 48000  | 采样率为48000。 |
-| SAMPLE_RATE_64000 | 64000  | 采样率为64000。 |
-| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | 采样率为88200。 |
-| SAMPLE_RATE_96000 | 96000  | 采样率为96000。 |
-| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。 |
-| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。 |
+| SAMPLE_RATE_8000  | 8000   | 采样率为8000。单位为赫兹（Hz）。  |
+| SAMPLE_RATE_11025 | 11025  | 采样率为11025。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_12000 | 12000  | 采样率为12000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_16000 | 16000  | 采样率为16000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_22050 | 22050  | 采样率为22050。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_24000 | 24000  | 采样率为24000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_32000 | 32000  | 采样率为32000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_44100 | 44100  | 采样率为44100。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_48000 | 48000  | 采样率为48000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_64000 | 64000  | 采样率为64000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | 采样率为88200。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_96000 | 96000  | 采样率为96000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_384000 | 384000  | 采样率为384000。单位为赫兹（Hz）<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AudioEncodingType<sup>8+</sup>
 
@@ -541,6 +542,8 @@
 ## AudioConcurrencyMode<sup>12+</sup>
 
 表示音频并发模式的枚举。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

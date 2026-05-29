@@ -10,6 +10,8 @@
 
 提供远端对象创建、销毁、数据发送、远端对象死亡状态监听等功能的C接口。
 
+对应的开发指南及样例可参考[IPC与RPC通信开发指导(C/C++)](../../ipc/ipc-capi-development-guideline.md)
+
 **引用文件：** <IPCKit/ipc_cremote_object.h>
 
 **库：** libipc_capi.so
