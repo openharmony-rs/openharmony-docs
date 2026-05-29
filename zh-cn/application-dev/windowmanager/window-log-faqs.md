@@ -321,14 +321,14 @@ Error code: 1300012
 // 错误：异步任务在窗口销毁后调用stopPiP()接口
 stopPiPTimer() {
     setTimeout(() => {
-        this.pipController.stopPiP();
+        this.pipController?.stopPiP();
     }, 1000);
 }
 ```
 
 正确示例
 ```ts
-async function stopPiPSafely(pipController: PiPController) {
+async stopPiPSafely(pipController: PiPController) {
   let state: string = 'undefined';
   
   pipController.on('stateChange', (newState: string, reason: string) => {
@@ -370,14 +370,14 @@ Error code: 1300012
 // 错误：异步任务在窗口已创建后调用startPiP()接口
 startPiPTimer() {
     setTimeout(() => {
-        this.pipController.startPiP();
+        this.pipController?.startPiP();
     }, 1000);
 }
 ```
 
 正确示例
 ```ts
-async function startPiPSafely(pipController: PiPController) {
+async startPiPSafely(pipController: PiPController) {
   let state: string = 'undefined';
   
   pipController.on('stateChange', (newState: string, reason: string) => {
