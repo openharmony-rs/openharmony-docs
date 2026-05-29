@@ -749,7 +749,6 @@ apperceive接口支持的groupId能力列表，如下：
 |SmartEdge|Todo|获取待办场景的感知信息。|
 |SmartEdge|Activity|获取基础服务的感知信息。|
 |CeliaMemory|Article|获取阅读场景的感知信息。|
-|CeliaMemory|Todo|获取待办场景的感知信息。|
 
 **返回值：**
 
