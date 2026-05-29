@@ -78,23 +78,17 @@
    - 定义倒计时实例。
      
       <!-- @[timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) --> 
-      
-      ``` TypeScript
-      ```
+
 
    - 定义日历实例。
      
       <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) --> 
       
-      ``` TypeScript
-      ```
 
    - 定义闹钟实例。
    
       <!-- @[alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) --> 
       
-      ``` TypeScript
-      ```
 
 3. 发布相应的提醒代理。代理发布后，应用即可使用后台代理提醒功能。
    
