@@ -331,9 +331,7 @@ apiAvailable(version: string | number): boolean;
 
 **起始版本**：26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）**：从API版本26开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口Stage模型和FA模型下皆可使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Startup.SystemInfo
 
@@ -343,24 +341,30 @@ apiAvailable(version: string | number): boolean;
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | version | string \| number | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。|
 
+**返回值**：
+
+| 类型                                       | 说明                                            |
+| ------------------------------------------ | ----------------------------------------------- |
+| boolean                                     | 布尔值。返回true表示当前版本号大于入参版本号；返回false则表示当前版本号小于入参版本号  |
+
 **示例：**
 
 ```ts
 import { deviceInfo } from '@kit.BasicServicesKit';
 
-// Check API 26.0.0 (String format for API 26+ represents both OpenHarmony and Distribution OS)
+// Check API 26.0.0 (String format for API 26.0.0+ represents both OpenHarmony and Distribution OS)
 if (deviceInfo.apiAvailable("26.0.0")) {
    // 需要版本隔离的方法
 }
 
 
-// Check API 5.0.1 (Distribution OS version, API 26-)
+// Check API 5.0.1 (Distribution OS version, API 26.0.0-)
 if (deviceInfo.apiAvailable("5.0.1")) {
    // 需要版本隔离的方法
 }
 
 
-// Check API 13 (OpenHarmony SDK version, API 26-)
+// Check API 13 (OpenHarmony SDK version, API 26.0.0-)
 if (deviceInfo.apiAvailable(13)) {
    // 需要版本隔离的方法
 }

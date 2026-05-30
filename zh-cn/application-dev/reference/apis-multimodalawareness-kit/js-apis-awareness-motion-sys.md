@@ -8,9 +8,11 @@
 
 本模块提供对用户动作的感知能力，包括用户的手势、动作等。
 
+**起始版本**：26.0.0
+
 > **说明：**
 >
-> 本模块首批接口从API版本26.0.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块为系统接口。
 
 ## 导入模块
 
@@ -21,6 +23,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 ## PickupEvent
 
 拾取事件枚举。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -33,6 +37,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 ## RotateEvent
 
 旋转事件枚举。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -49,6 +55,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 ## PhysicalOrientation
 
 传感器检测到的物理方向枚举。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -67,6 +75,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 由智能算法计算出的逻辑方向枚举。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：该接口为系统接口。
@@ -83,6 +93,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 智能旋转传感器事件的基本数据结构。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：该接口为系统接口。
@@ -97,6 +109,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 onPickupChange(callback: Callback&lt;PickupEvent&gt;): void
 
 订阅拾取传感器事件。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -143,6 +157,8 @@ onRotateChange(callback: Callback&lt;RotateEvent&gt;): void
 
 订阅旋转传感器事件。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：此接口为系统接口，仅系统应用可调用。
@@ -187,6 +203,8 @@ try {
 onSmartRotateChange(callback: Callback&lt;SmartRotateEvent&gt;): void
 
 订阅智能旋转传感器事件。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -233,6 +251,8 @@ offPickupChange(callback?: Callback&lt;PickupEvent&gt;): void
 
 取消订阅拾取传感器事件。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：此接口为系统接口，仅系统应用可调用。
@@ -273,6 +293,8 @@ offRotateChange(callback?: Callback&lt;RotateEvent&gt;): void
 
 取消订阅旋转传感器事件。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：此接口为系统接口，仅系统应用可调用。
@@ -312,6 +334,8 @@ try {
 offSmartRotateChange(callback?: Callback&lt;SmartRotateEvent&gt;): void
 
 取消订阅智能旋转传感器事件。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 

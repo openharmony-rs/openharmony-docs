@@ -35,6 +35,8 @@ Sets the dynamic dimming degree of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
@@ -72,6 +74,8 @@ freezeUINode(id: string, isFrozen: boolean): void
 Sets whether to freeze a specific component by **id** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,6 +194,8 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 Sets whether to freeze a specific component by **uniqueId** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -457,6 +463,8 @@ Captures a snapshot of the area between two specified components. This API uses 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**System API**: This is a system API.
 
 **Parameters**
 

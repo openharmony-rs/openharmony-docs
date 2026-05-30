@@ -320,7 +320,7 @@ struct SystemMaterialPage {
 从API版本26.0.0开始，新增uiMaterial.getMaterialInfo方法和empty方法。
 
 首先在[module.json5](../../quick-start/module-configuration-file.md)文件中配置开关信息，需注意只有在entry类型的module中配置才会生效。
-``` ts
+``` json5
 {
   "module": {
     // ···

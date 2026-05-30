@@ -322,7 +322,7 @@ Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *opti
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| int32_t* desiredDynamicRange | 期望的动态范围[IMAGE_PACKER_DYNAMIC_RANGE]#image_packer_dynamic_range)。 |
+| int32_t* desiredDynamicRange | 期望的动态范围[IMAGE_PACKER_DYNAMIC_RANGE](#image_packer_dynamic_range)。 |
 
 **返回：**
 
@@ -348,7 +348,7 @@ Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *opti
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| int32_t desiredDynamicRange | 期望的动态范围[IMAGE_PACKER_DYNAMIC_RANGE]#image_packer_dynamic_range)。 |
+| int32_t desiredDynamicRange | 期望的动态范围[IMAGE_PACKER_DYNAMIC_RANGE](#image_packer_dynamic_range)。 |
 
 **返回：**
 

@@ -601,7 +601,7 @@ extensionAbilities示例：
 |sysPicker/photoEditor|图片编辑弹窗的ExtensionAbility，三方应用配置不生效，当前配置仅在系统应用中有效。|
 |sys/commonUI|非通用的ExtensionAbility，提供业务属性强相关的嵌入式显示或弹框，三方应用配置不生效，当前配置仅在系统应用中有效。|
 |autoFill/smart|用于情景化场景自动填充业务的ExtensionAbility，支持数据的保存、填充能力。|
-|modularObject|模块化对象管理的ExtensionAbility，从API版本26.0.0开始，支持该标签。|
+|modularObject|[模块化对象](../application-models/modular-object-extension-overview.md)管理的ExtensionAbility，从API版本26.0.0开始，支持该标签。|
 |uiService|弹窗服务组件，在启动过程中会创建Window，并支持双向通信，三方应用配置不生效，当前配置仅在系统应用中有效。 |
 |recentPhoto|最近照片推荐的ExtensionAbility。|
 |fence|地理围栏的ExtensionAbility。|
