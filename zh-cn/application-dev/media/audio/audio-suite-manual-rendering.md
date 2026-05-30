@@ -55,6 +55,33 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
  
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
    <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 输入节点请求数据的回调函数。
+   static int32_t InputNodeWriteDataCallBack(OH_AudioNode *audioNode, void *userData, void *audioData,
+                                             int32_t audioDataSize, bool *finished)
+   {
+       if ((audioNode == nullptr) || (userData == nullptr) || (audioData == nullptr) || (audioDataSize <= 0) ||
+           (finished == nullptr)) {
+           return -1;
+       }
+       struct AudioDataInfo *info = static_cast<struct AudioDataInfo *>(userData);
+       // 要处理的音频大小。
+       int32_t actualDataSize = std::min(audioDataSize, info->bufferSize - info->totalWriteSize);
+       // 将PCM音频数据写入audioData。
+       if (actualDataSize > 0) {
+           std::copy(info->buffer + info->totalWriteSize, info->buffer + info->totalWriteSize + actualDataSize,
+                     static_cast<uint8_t *>(audioData));
+       }
+       info->totalWriteSize += actualDataSize;
+       // 音频数据全部处理完。
+       if (info->totalWriteSize >= info->bufferSize) {
+           *finished = true;
+       }
+       return actualDataSize;
+   }
+   ```
    <!-- @[audioSuite_CreateBaseNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    
    ``` C++
