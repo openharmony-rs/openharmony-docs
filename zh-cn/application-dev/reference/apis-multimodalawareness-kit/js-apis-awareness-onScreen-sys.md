@@ -630,7 +630,7 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**设备行为差异**：该接口仅支持Phone、Tablet以及Car设备（Car 设备下需满足 capList 为 InjectEvent），在其余设备类型中调用将触发801错误码。
+**设备行为差异**：该接口仅支持Phone、Tablet以及Car设备（Car 设备下需满足 capList 为 InjectEvent），在其余设备类型中调用将返回801错误码。
 
 **参数**：
 
