@@ -32,6 +32,8 @@ enable(isEnable: boolean): void
 
 **ArkTS-Dyn起始版本**：12
 
+**ArkTS-Sta起始版本**：26.1.0
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -54,6 +56,8 @@ watch(obj: object, msg: string): void
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
 **ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数：**
 
@@ -80,6 +84,8 @@ check(): string
 
 **ArkTS-Dyn起始版本**：12
 
+**ArkTS-Sta起始版本**：26.1.0
+
 **返回值：**
 
 | 类型    | 说明                                                       |
@@ -101,6 +107,8 @@ dump(filePath: string): Array&lt;string&gt;
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
 **ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数：**
 
@@ -134,6 +142,8 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
 **ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数：**
 
@@ -179,6 +189,8 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
 **ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数：**
 
@@ -230,6 +242,8 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 
 **ArkTS-Dyn起始版本**：24
 
+**ArkTS-Sta起始版本**：26.1.0
+
 | 名称 | 类型 | 只读 | 可选 | 说明 | 
 | ------- | ------- | ------- | ------- | ------- | 
 | monitorObjectTypes | [MonitorObjectType](#monitorobjecttype24) | 否 | 否 | 被监测对象类型。<br>默认监测所有组件类型。 |
@@ -249,6 +263,8 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
 **ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：26.1.0
 
 | 名称 | 值 | 说明 |
 | ------- | ------- | ------- |
