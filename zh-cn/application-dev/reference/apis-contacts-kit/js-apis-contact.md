@@ -1504,7 +1504,7 @@ selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 
 selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入[筛选条件](#contactselectionoptions)）。使用callback异步回调。
+调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入筛选条件(#contactselectionoptions10)）。使用callback异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1514,7 +1514,7 @@ selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Arra
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| options | [ContactSelectionOptions](#contactselectionoptions) | 是   | 选择联系人时的筛选条件，表示单选或多选。 |
+| options | [ContactSelectionOptions](#contactselectionoptions10) | 是   | 选择联系人时的筛选条件，表示单选或多选。 |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当调用选择联系人接口成功，err为undefined，data为选择的联系人数组；否则为错误对象。 |
 
 **错误码：**
@@ -1557,7 +1557,7 @@ selectContacts(options: ContactSelectionOptions): Promise&lt;Array&lt;Contact&gt
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| options | [ContactSelectionOptions](#contactselectionoptions) | 是   | 选择联系人时的筛选条件，用于指定是单选还是多选。 |
+| options | [ContactSelectionOptions](#contactselectionoptions10) | 是   | 选择联系人时的筛选条件，用于指定是单选还是多选。 |
 
 **返回值：**
 
