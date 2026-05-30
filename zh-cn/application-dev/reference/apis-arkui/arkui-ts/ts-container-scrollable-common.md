@@ -1350,9 +1350,9 @@ type OnDidStopDraggingCallback = (willFling: boolean) => void
 | --------  | ------- | ---- | -------------------------------------------------------------------------------- |
 | willFling | boolean | 是   | 结束拖拽后是否会有惯性动效。返回true代表拖拽结束后有惯性动效，返回false代表没有惯性动效。 |
 
-## onVisibleIndexesChangeCallback
+## OnVisibleIndexesChangeCallback
 
-type onVisibleIndexesChangeCallback = (start: number, end: number) => void
+type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 懒加载布局容器[LazyVGridLayout](ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md)所显示的子组件索引发生变化时的回调类型。
 
