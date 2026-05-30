@@ -139,15 +139,17 @@ import { backup } from '@kit.CoreFileKit';
 | writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，预期可清理出目标大小的可用存储单元。单位：MB，取值范围：0-2097152MB。|
 | waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。单位：秒，取值范围：0-180秒。|
 
-## PathInfo<sup>26+</sup>
+## PathInfo
 
 文件迁移的路径信息。
 
+**起始版本：** 26.0.0
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
-
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**系统接口**：此接口为系统接口。
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                     |
 | ---------- | ------ | ---- | --- | ---------------------------------------- |
@@ -167,6 +169,7 @@ import { backup } from '@kit.CoreFileKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | onBackupSizeReport<sup>18+</sup>  | [OnBackupSizeReport](#onbackupsizereport18) | 否 | 是 |  框架获取到的待备份的数据量大小的信息。 |
+| onMigrateResult | [OnMigrateResult](#onmigrateresult) | 否 | 是 | 迁移文件流程结束的回调，返回迁移文件的结果信息。 |
 
 ### onFileReady
 
@@ -451,22 +454,24 @@ onProcess (bundleName: string, process: string)
   }
   ```
 
-### onMigrateResult<sup>26+</sup>
+### onMigrateResult
 
-onMigrateResult(bundleName: string, err?: BusinessError | void | string)
+onMigrateResult: AsyncCallback&lt;string, void | string&gt;
 
 回调函数。迁移文件流程结束的回调，返回迁移文件的结果信息。
 
-**系统接口**：此接口为系统接口。
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+**系统接口**：此接口为系统接口。
+
 **参数：**
 
-| 参数名     | 类型   | 必填 | 说明                            |
-| ---------- | ------ | ---- | ------------------------------- |
-| bundleName | string | 是   | 应用包名。                        |
-| err | [BusinessError](../errorcode-ts.md#businesserror) \| void \| string | 否   | 错误信息。成功时不返回，失败时返回错误信息。 |
+| 参数名     | 类型          | 必填 | 说明                                                        |
+| ---------- | ------------- | ---- | ----------------------------------------------------------- |
+| bundleName | string        | 是   | 服务返回的应用名称。                                          |
+| err        | BusinessError | 否   | 当迁移操作成功，err为undefined，data为bundle名称；否则为错误对象。 |
 
 **错误码：**
 
@@ -485,12 +490,11 @@ onMigrateResult(bundleName: string, err?: BusinessError | void | string)
 **示例：**
 
   ```ts
-  import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  onMigrateResult: (bundleName: string, err: BusinessError | void | string) => {
+  onMigrateResult: (err: BusinessError, bundleName: string) => {
     if (err) {
-      console.error(`onMigrateResult failed. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+      console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('onMigrateResult success, bundleName: ' + bundleName);
@@ -3295,32 +3299,34 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
   }
   ```
 
-### migrateFile<sup>26+</sup>
+### migrateFile
 
-migrateFile(pathInfo: [PathInfo](#pathinfo26), fileMeta: [FileMeta](#filemeta)): Promise&lt;void&gt;
+migrateFile(pathInfo: [PathInfo](#pathinfo), fileMeta: [FileMeta](#filemeta)): Promise&lt;void&gt;
 
 用于将文件从源路径迁移到目标路径。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
-
-**模型约束**：此接口仅可在Stage模型下使用。
+**起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.BACKUP
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
-| pathInfo | [PathInfo](#pathinfo26) | 是   | 路径信息，包含源路径和目标路径。 |
+| pathInfo | [PathInfo](#pathinfo) | 是   | 路径信息，包含源路径和目标路径。 |
 | fileMeta | [FileMeta](#filemeta) | 是   | 文件元数据，包含bundleName和可选的fileName。 |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3372,9 +3378,9 @@ migrateFile(pathInfo: [PathInfo](#pathinfo26), fileMeta: [FileMeta](#filemeta)):
     onBackupServiceDied: () => {
       console.info(`service died`);
     },
-    onMigrateResult: (bundleName: string, err: BusinessError | void | string) => {
+    onMigrateResult: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
-        console.error(`onMigrateResult failed. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+        console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onMigrateResult success, bundleName: ' + bundleName);
@@ -3386,8 +3392,8 @@ migrateFile(pathInfo: [PathInfo](#pathinfo26), fileMeta: [FileMeta](#filemeta)):
     try {
       await sessionRestore.migrateFile(
         {
-          srcPath: "/data/storage/el1/base/files/source.txt",
-          destPath: "/data/storage/el2/base/files/dest.txt"
+          srcPath: "/data/storage/el1/base/files/",
+          destPath: "/data/storage/el2/base/files/"
         },
         {
           bundleName: "com.example.app",
@@ -3402,19 +3408,21 @@ migrateFile(pathInfo: [PathInfo](#pathinfo26), fileMeta: [FileMeta](#filemeta)):
   }
   ```
 
-### getApkFileHandle<sup>26+</sup>
+### getApkFileHandle
 
 getApkFileHandle(path: string, fileName: string): Promise&lt;[FileData](#filedata)&gt;
 
 用于获取APK文件的文件句柄。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
-
-**模型约束**：此接口仅可在Stage模型下使用。
+**起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.BACKUP
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
