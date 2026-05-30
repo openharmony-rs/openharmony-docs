@@ -4770,7 +4770,6 @@ promise.then((data) => {
 });
 ```
 
->>>>>>> 763cdf347a9... 导入联系人资料
 ## ContactSelectionOptions<sup>10+</sup>
 
 选择联系人条件。
@@ -5533,3 +5532,51 @@ let website: contact.Website = {
 };
 ```
 
+## ContactSyncMode
+
+枚举，同步模式的类型。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+| 名称                  | 值 | 说明                               |
+| --------------------- | ---- | ---------------------------------- |
+| MODE_INCREMENTAL    | 1 | 表示将在数据库中插入或更新云端和本地之间不同的联系人。<br/>**系统能力**：SystemCapability.Applications.Contacts |
+| MODE_CLOUD_BASED            | 2 | 表示所有本地联系人将被云联系人替换。当使用云覆盖本地模式进行批量同步时，在第一次批量同步期间会删除所有本地联系人（第三方联系人除外）。<br/>**系统能力**：SystemCapability.Applications.Contacts                 |
+
+## ContactSyncProgress
+
+联系人同步进度的信息。包含同步ID、当前批次和总批次。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+|                名称               |                  类型                 |  只读  | 可选    |        说明      |
+| --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
+| syncId        | number |  否  |  否   |  表示用于同步所有联系人的同步标识符。该值应从0开始。     |
+| currentBatch        | number |  否  |  否    | 表示要同步的当前联系人批次的标识符。值的范围是从1到totalBatches。     |
+| totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
+
+## ContactSyncInfo
+
+调用应用程序相关的联系人同步的信息。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+|                名称               |                  类型                 |  只读  | 可选    |        说明      |
+| --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
+| mode        | [ContactSyncMode](#contactsyncmode) |  否  |  否   |  联系人同步模式。     |
+| syncId        | number |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
+| completedBatches        | Array&lt;number&gt; |  否  |  否    | 表示已成功同步的联系人批次标识符数组。取值范围为1到totalBatches。      |
+| totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
+| lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳（毫秒）。|
