@@ -199,11 +199,11 @@ export class AVScreenCaptureDemo {
       return;
     }
     try {
- 	     fileIo.closeSync(this.captureFile.fd);
- 	   } catch (error) {
- 	     let err = error as BusinessError;
- 	     console.error(`Failed to close fd, error code: ${err.code}, message: ${err.message}`);
- 	   }
+      fileIo.closeSync(this.captureFile.fd);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to close fd, error code: ${err.code}, message: ${err.message}`);
+    }
   }
 
   private setConfig(): void {
