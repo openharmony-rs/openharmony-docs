@@ -702,8 +702,8 @@ Sets the hover effect of the component.
 | Name       | Value| Description            |
 | --------- | --- | -------------- |
 | None      | 0 | No effect.        |
-| Scale     | 2 | Zoom-in and zoom-out effect.       |
-| Highlight | 3 | Background fade-in and fade-out effect.  |
+| Scale     | 2 | Zoom-in/Zoom-out effect.       |
+| Highlight | 3 | Background fade-in/fade-out effect.  |
 | Auto      | 4 | Default hover effect.|
 
 ## HitTestMode<sup>9+</sup>
