@@ -238,7 +238,7 @@ this.parent.child.num = 5;
     
     ``` TypeScript
     import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
-
+    
     @Observed
     class Info {
       count: int;
