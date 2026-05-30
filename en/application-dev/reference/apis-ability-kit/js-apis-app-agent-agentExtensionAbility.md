@@ -30,7 +30,6 @@ import { AgentExtensionAbility } from '@kit.AbilityKit';
 
 **Figure 1** AgentExtensionAbility lifecycle
 
-![AgentExtensionAbility-lifecycle](figures/agentExtension-lifecycle.png)
 
 - **onCreate**
 
