@@ -259,7 +259,7 @@
 
    **ArkTS-Sta示例：**
 
-   <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/KvStore/KvStoreStaticSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
 
    ```ts
    public On: () => void = (() => {

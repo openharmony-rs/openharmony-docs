@@ -109,15 +109,18 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Sta示例：
 
-   ```ts
+   <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    let uris: Array<string> = [];
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    const documentViewPicker = new picker.DocumentViewPicker(context);
    documentViewPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
      uris = documentSaveResult;
      console.info('documentViewPicker.save to file succeed and uris are:' + uris);
-   }).catch((err: BusinessError): void => {
-     console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+     // ...
+   }).catch((err: Error): void => {
+     console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -130,30 +133,35 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
 4. 待界面从FilePicker返回后，使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
-   ```ts
+   <!--@[document_open_sync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    if (uris.length > 0) {
-      let uri: string = uris[0];
-      // 这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
-      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
-      console.info('file fd: ' + file.fd);
-   }
+     let uri: string = uris[0];
+     let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
+     // ...
+       console.info('file fd: ' + file.fd);
    ```
 
 5. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ArkTS-Dyn示例：
 
-   ```ts
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
    fileIo.closeSync(file);
    ```
-
    ArkTS-Sta示例：
 
-   ```ts
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    let writeLen: long = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
+   // ...
    fileIo.closeSync(file);
    ```
 
@@ -183,21 +191,21 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Dyn示例：
 
-   ```ts
+   <!--@[audio_save_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    const audioSaveOptions = new picker.AudioSaveOptions();
-   // 保存文件名（可选） 
-   audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3'];
+   audioSaveOptions.newFileNames = ['AudioViewPicker03.mp3']; // 保存文件名（可选）
    ```
-
    ArkTS-Sta示例：
 
-   ```ts
+   <!--@[audio_save_options](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    const audioSaveOptions: picker.AudioSaveOptions = {
-      newFileNames: ['AudioViewPicker01.mp3']
+     newFileNames: ['AudioViewPicker03.mp3']
    };
    ```
-
-3. 创建[音频选择器AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save-5)接口拉起FilePicker界面进行文件保存。
 
    ArkTS-Dyn示例：
 
@@ -218,15 +226,18 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Sta示例：
 
-   ```ts
+   <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    let uris: Array<string> = [];
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-   const audioViewPicker = new picker.AudioViewPicker(context);
-   audioViewPicker.save(audioSaveOptions).then((audioSelectResult: Array<string>) => {
-     uris = audioSelectResult;
-     console.info('audioViewPicker.save to file succeed and uri is:' + uris);
-   }).catch((err: BusinessError): void => {
-     console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+   const documentViewPicker = new picker.DocumentViewPicker(context);
+   documentViewPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
+     uris = documentSaveResult;
+     console.info('documentViewPicker.save to file succeed and uris are:' + uris);
+     // ...
+   }).catch((err: Error): void => {
+     console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -239,20 +250,23 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
 4. 待界面从FilePicker返回后，可以使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
-   ```ts
+   <!--@[document_open_sync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    if (uris.length > 0) {
-      let uri: string = uris[0];
-      // 这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
-      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
-      console.info('file fd: ' + file.fd);
-   }
+     let uri: string = uris[0];
+     let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
+     // ...
+       console.info('file fd: ' + file.fd);
    ```
 
 5. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ArkTS-Dyn示例：
 
-   ```ts
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
    fileIo.closeSync(file);
@@ -260,9 +274,12 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Sta示例：
 
-   ```ts
+   <!--@[document_writesync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    let writeLen: long = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
+   // ...
    fileIo.closeSync(file);
    ```
 
@@ -303,7 +320,9 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Dyn示例：
 
-   ```ts
+   <!--@[download_save_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    const documentSaveOptions = new picker.DocumentSaveOptions();
    // 配置保存的模式为DOWNLOAD，若配置了DOWNLOAD模式，此时配置的其他documentSaveOptions参数将不会生效。
    documentSaveOptions.pickerMode = picker.DocumentPickerMode.DOWNLOAD;
@@ -311,9 +330,11 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Sta示例：
 
-   ```ts
+   <!--@[download_save_options](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    const documentSaveOptions: picker.DocumentSaveOptions = {
-      pickerMode: picker.DocumentPickerMode.DOWNLOAD
+     pickerMode: picker.DocumentPickerMode.DOWNLOAD
    };
    ```
 
@@ -321,12 +342,15 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Dyn示例：
 
-   ```ts
+   <!--@[download_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    let uri: string = '';
    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    const documentViewPicker = new picker.DocumentViewPicker(context);
    const documentSaveOptions = new picker.DocumentSaveOptions();
+   // 配置保存的模式为DOWNLOAD，若配置了DOWNLOAD模式，此时配置的其他documentSaveOptions参数将不会生效。
    documentSaveOptions.pickerMode = picker.DocumentPickerMode.DOWNLOAD;
    documentViewPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
      uri = documentSaveResult[0];
@@ -342,21 +366,34 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Sta示例：
 
-   ```ts
+   <!--@[download_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    let uri: string = '';
    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    const documentViewPicker = new picker.DocumentViewPicker(context);
-   const documentSaveOptions = new picker.DocumentSaveOptions();
-   documentSaveOptions.pickerMode = picker.DocumentPickerMode.DOWNLOAD;
+   const documentSaveOptions: picker.DocumentSaveOptions = {
+     pickerMode: picker.DocumentPickerMode.DOWNLOAD
+   };
    documentViewPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
-     uri = documentSaveResult[0];
-     console.info('documentViewPicker.save succeed and uri is:' + uri);
-     const testFilePath = new fileUri.FileUri(uri + '/test.txt').path;
-     const file = fileIo.openSync(testFilePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-     fileIo.writeSync(file.fd, 'Hello World!');
-     fileIo.closeSync(file.fd);
-   }).catch((err: BusinessError): void => {
-     console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-   })
+     if (documentSaveResult && documentSaveResult.length > 0) {
+       uri = documentSaveResult[0] || '';
+       console.info('documentViewPicker.save succeed and uri is:' + uri);
+       if (uri) {
+         const fileUriObj = new fileUri.FileUri(uri + '/test.txt');
+         const testFilePath: string = fileUriObj.path ?? '';
+         let file = fileIo.openSync(testFilePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+         try {
+           fileIo.writeSync(file.fd, 'Hello World!');
+         } catch (err) {
+           console.error(`write file failed, code is: ${err.code}, message is: ${err.message}`);
+         } finally {
+           fileIo.closeSync(file.fd);
+         }
+       }
+     }
+   }).catch((err: Error): void => {
+     console.error(`Invoke documentViewPicker.save failed, code is: ${err.code}, message is: ${err.message}`);
+   });
    ```
