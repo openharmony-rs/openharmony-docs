@@ -47,7 +47,7 @@ import { Param } from '@kit.ArkUI';
     @Local count: number = 0;
     @Local message: string = 'Hello';
     @Local flag: boolean = false;
-
+  
     build() {
       Column() {
         Text(`${this.count}`)
@@ -82,7 +82,7 @@ import { Param } from '@kit.ArkUI';
     @Require @Param count: number;
     @Require @Param message: string;
     @Require @Param flag: boolean;
-
+  
     build() {
       Column() {
         Text(`Param ${this.count}`)
