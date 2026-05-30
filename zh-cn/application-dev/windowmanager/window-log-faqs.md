@@ -503,7 +503,7 @@ async stopPiPSafely(pipController: PiPController) {
   pipController.on('stateChange', (newState: string, reason: string) => {
     state = newState;
     if (state === 'STARTED') {
-      pipController.stopPiP();
+      pipController?.stopPiP();
     }
   });
 }
@@ -552,7 +552,7 @@ async startPiPSafely(pipController: PiPController) {
   pipController.on('stateChange', (newState: string, reason: string) => {
     state = newState;
     if (state === 'STOPPED') {
-      pipController.startPiP();
+      pipController?.startPiP();
     }
   });
 }
