@@ -244,6 +244,11 @@
 						"end_line":211,
 						"name":"allocator_yuv_operations",
 						"start_line":156
+					},
+					{
+						"end_line":177,
+						"name":"allocator_operations",
+						"start_line":15
 					}
 				]
 			}
@@ -289,6 +294,16 @@
 						"end_line":37,
 						"name":"get_supportedFormats",
 						"start_line":24
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"release_pixelMapDecoder",
+						"start_line":44
 					}
 				]
 			}
@@ -6194,6 +6209,51 @@
 						"end_line":203,
 						"name":"editExif_operations",
 						"start_line":133
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/image/image-faqs/heif-adapter-faq.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/TranscodingUtility.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"transcoding_example",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/image/image-packer-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp",
+				"functions":[
+					{
+						"end_line":610,
+						"name":"pack_source",
+						"start_line":413
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/image/image-source-picture-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp",
+				"functions":[
+					{
+						"end_line":170,
+						"name":"picture_operations",
+						"start_line":37
 					}
 				]
 			}
