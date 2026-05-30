@@ -169,7 +169,7 @@
 
 ## ChaCha20
 
-从API22开始，算法库支持该算法。
+从API版本22开始，算法库支持该算法。
 
 算法库当前提供了[ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20)加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
@@ -221,7 +221,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 ## Blowfish（BF）
 
-从API版本26.0.0开始，支持密码算法[Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfishbf)，是一种分组密码算法，分组长度为64位，长度支持32位～448位。
+从API版本26.0.0开始，支持密码算法[Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfishbf)，是一种分组密码算法，分组长度为64位，密钥长度支持32位～448位。
 
 > **说明：**
 >

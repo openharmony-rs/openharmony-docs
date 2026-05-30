@@ -208,7 +208,7 @@ ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算
 
 以字符串参数完成ECDSA签名验签，具体的“字符串参数”由“非对称密钥类型”和“摘要”使用符号“|”拼接而成，用于在创建非对称签名验签实例时，指定非对称签名验签算法规格。
 
-如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为ECC224、摘要算法为SHA256的密钥时，其字符串参数为"ECC224|SHA256"，onlySign和OnlyVerify模式下的签名验签，其字符串参数为"ECC224|SHA256|OnlySign"和"ECC224|SHA256|OnlyVerify"。
+如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为ECC224、摘要算法为SHA256的密钥时，其字符串参数为"ECC224|SHA256"，OnlySign和OnlyVerify模式下的签名验签，其字符串参数为"ECC224|SHA256|OnlySign"和"ECC224|SHA256|OnlyVerify"。
 
 > **说明：**
 >
@@ -218,7 +218,7 @@ ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算
 
 | 非对称密钥类型 | 摘要 | 签名/验签模式 | API版本 | 
 | -------- | -------- | -------- | -------- |
-| ECC192 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign/OnlyVerify | 26.0.0 | 
+| ECC192 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign/OnlyVerify | 26.0.0+ | 
 | ECC224 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign/OnlyVerify | 9+ | 
 | ECC256 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign/OnlyVerify | 9+ | 
 | ECC384 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign/OnlyVerify | 9+ | 
