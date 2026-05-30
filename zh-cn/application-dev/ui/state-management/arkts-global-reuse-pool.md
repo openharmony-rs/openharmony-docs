@@ -95,10 +95,24 @@ struct ReusableComponent { // 复用组件
 适配全局复用能力的示例如下：
 
 ```ts
+@ReusableV2
+@ComponentV2
+struct ReusableComponent { // 复用组件
+  aboutToRecycle() {
+    // 在Index组件中if分支切换时，该组件由上层组件Index声明的全局复用池接纳，并复用到ChildComponentB中的ReusableComponent创建过程中
+    console.info('Reusable component is being recycled'); 
+  }
+  aboutToDisappear() {
+    console.info('Reusable component is being destroyed'); 
+  }
+  build() {
+    Text('ReusableComponent')
+  }
+}
 @Entry
 @ComponentV2({
   reusePool: 'shared', // 配置全局复用池模式，使能全局复用能力
-  poolAccepts: ['ReusableComponent'], // 配置全局复用池接纳名称为ReuseComponent的自定义组件
+  poolAccepts: [ReusableComponent], // 配置全局复用池接纳名称为ReuseComponent的自定义组件
   freezeWhenInactive: false // 组件冻结默认配置 
 })
 struct Index {
@@ -133,20 +147,6 @@ struct ChildComponentB {
       Text('Component B')
       ReusableComponent() // 子组件ComponentA和ComponentB共用复用组件ReusableComponent
     }
-  }
-}
-@ReusableV2
-@ComponentV2
-struct ReusableComponent { // 复用组件
-  aboutToRecycle() {
-    // 在Index组件中if分支切换时，该组件由上层组件Index声明的全局复用池接纳，并复用到ChildComponentB中的ReusableComponent创建过程中
-    console.info('Reusable component is being recycled'); 
-  }
-  aboutToDisappear() {
-    console.info('Reusable component is being destroyed'); 
-  }
-  build() {
-    Text('ReusableComponent')
   }
 }
 ```
@@ -241,6 +241,8 @@ struct ReusableComponent { // 复用组件
 
 - 建议不要在[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)中修改会触发重新渲染的状态变量，因为组件此时正从UI树中移除。
 
+- 由于ArkTS语法限制，`poolAccepts`参数配置的自定义组件，必须在`poolAccepts`上方的代码中有定义或者从其他文件导入。如果在poolAccepts传入的组件在下方定义，则会编译报错，报错消息是“Class '...' used before its declaration.”。
+
 ## 使用场景
 
 ### 多个父组件间共享复用池
@@ -310,7 +312,7 @@ struct ReusableCompA {
 }
 
 // 多个CompA组件实例共用一个ReusableCompA的全局复用池。
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableCompA'], freezeWhenInactive: false})
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableCompA], freezeWhenInactive: false})
 struct CompA {
   @Require @Param label: string;
 
@@ -392,7 +394,7 @@ struct ReusableChild {
 
 @Entry
 // 声明全局复用池，接纳ReusableChild复用组件。
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct Parent {
   @Provider() provide: number = 100;
   @Local boolVal: boolean = false;
@@ -591,7 +593,7 @@ struct SubChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['LegacyComp', 'GlobalChild', 'ReusableChild', 'SubChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [LegacyComp, GlobalChild, ReusableChild, SubChild], freezeWhenInactive: false })
 struct Index {
   @Provider() provide: number = 100;
   @Local boolVal: boolean = true;
@@ -685,6 +687,7 @@ SubChild aboutToReuse         // 和GlobalChild一起被复用
 
 ```plaintext
 LegacyComp aboutToDisappear
+ReusableChild aboutToRecycle
 ```
 
 再点击"检查LegacyComp": `count=0, maxCount=0`（复用池被手动清空了）
@@ -718,7 +721,7 @@ struct TestChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['TestChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showA: boolean = true;
   @Local showB: boolean = true;
@@ -876,7 +879,7 @@ struct ReusableChild {
   }
 }
 
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct Index2 {
   @Local showChild: boolean = true;
 
@@ -956,7 +959,7 @@ struct ReusableLeaf {
 
 @Entry
 // 配置全局复用池，接纳ChildA复用组件
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ChildA'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ChildA], freezeWhenInactive: false })
 struct EntryComp {
   @Local showParent: boolean = true;
 
@@ -979,7 +982,7 @@ struct EntryComp {
 }
 
 // 配置全局复用池，接纳ReusableLeaf复用组件
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableLeaf'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableLeaf], freezeWhenInactive: false })
 struct ParentA {
   @Local showChild: boolean = true;
 
@@ -1057,7 +1060,7 @@ function preRenderBuilder() {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableComponent'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
 struct Index {
   @Local onUIFullyLoaded: boolean = false;
 
