@@ -37,7 +37,6 @@
    let packOpts: image.PackingOption = {
      format: 'image/jpeg',
      quality: 95,
-     desiredDynamicRange: image.PackingDynamicRange.AUTO,
      needsPackProperties: true
    };
    ```
