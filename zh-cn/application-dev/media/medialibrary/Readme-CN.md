@@ -1,15 +1,10 @@
 # Media Library Kit（媒体文件管理服务）
 
 <!--Kit: Media Library Kit-->
-
 <!--Subsystem: Multimedia-->
-
 <!--Owner: @xuchangda; @yixiaoff-->
-
 <!--Designer: @guxinggang; @liweilu1-->
-
 <!--Tester: @wangbeibei; @xchaosioda-->
-
 <!--Adviser: @w_Machine_cc-->
 
 - [Media Library Kit 简介](photoAccessHelper-overview.md)
