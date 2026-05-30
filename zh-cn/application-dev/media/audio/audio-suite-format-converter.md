@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 26.0.0开始，[AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md)给开发者提供PCM音频格式转换能力，支持使用格式转换接口将PCM（Pulse Code Modulation）音频数据从一种格式转换为另一种格式，包括采样率、声道布局、采样格式（位深）的转换。
+从API version 26.0.0开始，[AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md)给开发者提供PCM音频格式转换能力，在纯音频转码等场景下支持开发者使用格式转换接口将PCM（Pulse Code Modulation）音频数据从一种格式转换为另一种格式，包括采样率、声道布局、采样格式（位深）的转换。
 
 ## 开发基础配置
 
@@ -40,7 +40,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 **使用限制** 
 
-- 仅支持PCM格式的音频数据。
+- 仅支持PCM格式的音频数据进行转换。
 - 回调数据大小限制：单次回调最多返回400KB数据，超出部分需要分多次返回。
 - 输出缓冲区容量：输出缓冲区容量必须至少能容纳一个完整音频帧（采样率 × 声道数 × 采样格式字节数）。
 - 数据流结束处理：即使回调返回`AUDIOCONVERTER_INPUT_DATA_FINISHED`，仍需继续调用[OH_AudioConverter_Process()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_process)直到`outputSize`为0，以确保所有缓存的转换数据都被输出。
