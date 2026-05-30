@@ -1408,7 +1408,7 @@ setDisallowedPermission(admin: Want, permission: string, disallow: boolean, acco
 
 > **说明：**
 >
-> 1.只可以禁用[权限APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)为normal或system_basic的权限，否则返回错误码9201045。
+> 1.只能禁用[权限APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)为normal或system_basic的权限，否则返回错误码9201045。
 >
 > 2.单个用户下最多可以禁用200个权限。
 >
