@@ -302,18 +302,18 @@ import { Param } from '@kit.ArkUI';
   
   ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
-
+  
   interface Info {
     name: string;
     age: number;
   }
-
+  
   @Entry
   @ComponentV2
   struct Index {
     // 装饰字面量
     @Local info: Info = { name: 'Jack', age: 25 } as Info;
-
+  
     build() {
       Column() {
         Text(`Local info.name: ${this.info.name}`)
@@ -339,11 +339,11 @@ import { Param } from '@kit.ArkUI';
       .width('100%')
     }
   }
-
+  
   @ComponentV2
   struct Child {
     @Require @Param info: Info;
-
+  
     build() {
       Column() {
         Text(`Param info.name: ${this.info.name}`)
