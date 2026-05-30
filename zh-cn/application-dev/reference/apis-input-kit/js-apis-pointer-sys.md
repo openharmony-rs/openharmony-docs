@@ -511,7 +511,7 @@ ArkTS-Sta: getPointerSpeedSync(): int
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回鼠标移动速度。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回鼠标移动速度，范围1-20。  |
 
 **错误码**：
 
@@ -3102,7 +3102,7 @@ ArkTS-Sta: getTouchpadPointerSpeed(): Promise\<int>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<int> | Promise对象，返回触控板光标移动速度。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<int> | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
 
 **错误码**：
 
@@ -4571,7 +4571,7 @@ ArkTS-Sta: getPointerSize(callback: AsyncCallback&lt;int&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小，范围为[1-7]；否则为错误对象。 |
 
 **错误码**：
 
@@ -4668,7 +4668,7 @@ ArkTS-Sta: getPointerSize(): Promise&lt;int&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回鼠标光标大小。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回鼠标光标大小，范围为[1-7]。 |
 
 **错误码**：
 
@@ -4758,7 +4758,7 @@ ArkTS-Sta: getPointerSizeSync(): int
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 鼠标光标大小。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 鼠标光标大小，范围为[1-7]。 |
 
 **错误码**：
 
