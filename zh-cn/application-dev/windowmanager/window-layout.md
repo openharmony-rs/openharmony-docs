@@ -429,7 +429,7 @@ const TAG = 'IndexPage';
   
   // ...
     /**
-     * 通过enableDrag控制子窗口的拖拽缩放功能
+     通过enableDrag控制子窗口的拖拽缩放功能
      */
     private setSubWindowResizeEnabled(enabled: boolean): void {
       const subWindow = this.getSubWindow();
