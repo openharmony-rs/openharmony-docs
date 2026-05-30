@@ -302,16 +302,21 @@ Bad file descriptor.
 
 **可能原因**
 
-1.Socket已被关闭或销毁。
-2.Socket未正确创建。
-3.在已关闭的Socket上执行操作。
-4.Socket fd被意外关闭，日志提示"poll to send failed, socket is X, errno is 9"或"fcntl F_GETFL error, errno is 9"。
+1. Socket已被关闭或销毁。
+
+2. Socket未正确创建。
+
+3. 在已关闭的Socket上执行操作。
+
+4. Socket fd被意外关闭，日志提示`poll to send failed, socket is .*, errno is 9`或`fcntl F_GETFL error, errno is .*`，其中 `.*` 为通配符。
 
 **处理步骤**
 
-1.检查Socket是否被意外关闭。
-2.确保在调用其他方法前Socket已正确创建并处于有效状态。
-3.若Socket已关闭，请重新创建Socket实例。
+1. 检查Socket是否被意外关闭。
+
+2. 确保在调用其他方法前Socket已正确创建并处于有效状态。
+
+3. 若Socket已关闭，请重新创建Socket实例。
 
 ## 2301013 权限不足
 
@@ -325,13 +330,15 @@ Insufficient permissions.
 
 **可能原因**
 
-1.应用缺少必要的网络权限配置（如ohos.permission.INTERNET）。
-2.系统权限限制，如访问特定端口需要特殊权限。
+1. 应用缺少必要的网络权限配置（如ohos.permission.INTERNET）。
+
+2. 系统权限限制，如访问特定端口需要特殊权限。
 
 **处理步骤**
 
-1.检查module.json5中是否配置了必要的网络权限（如ohos.permission.INTERNET）。
-2.确认操作是否符合权限要求。可通过日志关键词"Permission denied"定位该错误。
+1. 检查module.json5中是否配置了必要的网络权限（如ohos.permission.INTERNET）。
+
+2. 确认操作是否符合权限要求。可通过日志关键词"Permission denied"定位该错误。
 
 ## 2303111 资源暂时不可用，请重试
 
@@ -471,16 +478,21 @@ SSL/TLS上下文为空，参数错误。
 
 **可能原因**
 
-1.TLSSocket.connect方法未调用。
-2.TLSSocket.connect方法执行失败。
-3.SSL连接未成功建立。
-4.TLSSocket未正确绑定（未调用bind方法），日志提示"tlsSocket is null"。
+1. [TLSSocket.connect](./js-apis-socket.md#connect9)方法未调用。
+
+2. [TLSSocket.connect](./js-apis-socket.md#connect9)方法执行失败。
+
+3. SSL连接未成功建立。
+
+4. TLSSocket未正确绑定（未调用bind方法），日志提示"tlsSocket is null"。
 
 **处理步骤**
 
-1.确保在调用其他方法前先成功调用TLSSocket.connect方法。
-2.检查connect方法的执行结果，确认连接已成功建立。
-3.若connect失败，请排查失败原因后重新尝试连接。
+1. 确保在调用其他方法前先成功调用[TLSSocket.connect](./js-apis-socket.md#connect9)方法。
+
+2. 检查connect方法的执行结果，确认连接已成功建立。
+
+3. 若connect失败，请排查失败原因后重新尝试连接。
 
 ## 2303502 TLS读取错误
 
@@ -548,16 +560,21 @@ TLS系统调用发生不可恢复的致命I/O错误。
 
 **可能原因**
 
-1.网络问题导致通信失败。
-2.底层Socket异常。
-3.TLS握手过程中发生错误。
-4.Socket在TLS操作过程中被关闭，日志提示"poll to recv failed"或"recv fail"。常见errno值参考：errno=9（EBADF，无效文件描述符）、errno=104（ECONNRESET，连接被重置）、errno=110（ETIMEDOUT，连接超时）、errno=111（ECONNREFUSED，连接被拒绝）。
+1. 网络问题导致通信失败。
+
+2. 底层Socket异常。
+
+3. TLS握手过程中发生错误。
+
+4. Socket在TLS操作过程中被关闭，日志提示`poll to recv failed, socket is .*, errno is .*`或`recv fail, socket:.*, errno:.*`，其中 `.*` 为通配符。常见errno值参考：errno=9（EBADF，无效文件描述符）、errno=104（ECONNRESET，连接被重置）、errno=110（ETIMEDOUT，连接超时）、errno=111（ECONNREFUSED，连接被拒绝）。
 
 **处理步骤**
 
-1.请参阅日志中的Linux系统内核错误码errno以了解详细信息。
-2.检查网络连接状态。
-3.尝试重新建立TLS连接。
+1. 请参阅日志中的Linux系统内核错误码errno以了解详细信息。
+
+2. 检查网络连接状态。
+
+3. 尝试重新建立TLS连接。
 
 ## 2303506 清除TLS连接出错
 
