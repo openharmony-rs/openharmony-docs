@@ -119,6 +119,15 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    由于混音功能有多个输入节点，需单独设置回调函数`InputNodeWriteDataCallBack`中的`userData`参数来区分多个输入节点，从而实现多个PCM音频数据的输入。`InputNodeWriteDataCallBack`函数类型为[OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)。
 
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
+   
+   ``` C
+   struct AudioDataInfo {
+       uint8_t *buffer = nullptr;   // 音频数据。
+       int32_t bufferSize = 0;      // 音频数据总大小。
+       int32_t totalWriteSize = 0;  // 处理过的音频数据总大小。
+       int32_t totalReadSize = 0;  // 已读取的音频数据总大小。
+   };
+   ```
    <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    
    ``` C++
