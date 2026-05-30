@@ -281,6 +281,7 @@ struct Parent {
         if (this.show[2]) CompA({ label: 'A3' })
       }
     }
+    .width('100%')
   }
 }
 
@@ -327,6 +328,8 @@ struct CompA {
   }
 }
 ```
+
+![arkts-global-reuse-shared.gif](./figures/arkts-global-reuse-shared.gif)
 
 **启动** — 3个CompA实例，6个ReusableCompA子组件：
 ```plaintext
@@ -384,7 +387,6 @@ struct ReusableChild {
     Column({ space: 20 }) {
       Text(`ReusableChild @Consumer: ${this.provide}`)
         .fontSize(20)
-        .fontColor(Color.Green)
       SubChild()
     }
   }
@@ -415,15 +417,14 @@ struct Parent {
       if (this.boolVal) {
         Text('非可复用组件')
           .fontSize(24)
-          .fontColor(Color.Red)
         Child()
       } else {
         Text('可复用组件')
           .fontSize(24)
-          .fontColor(Color.Red)
         ReusableChild()
       }
     }
+    .width('100%')
   }
 }
 
@@ -464,12 +465,13 @@ struct Child {
     Column({ space: 20 }) {
       Text(`Child @Consumer: ${this.provide}`)
         .fontSize(20)
-        .fontColor(Color.Green)
       SubChild()
     }
   }
 }
 ```
+
+![arkts-global-reuse-per-instance.gif](./figures/arkts-global-reuse-per-instance.gif)
 
 **从ReusableChild切换到Child**：
 ```plaintext
@@ -634,14 +636,18 @@ struct Index {
         .onClick(() => {
           this.boolVal = !this.boolVal;
         })
+        .width(150)
 
       // 手动池检查按钮
       Button('检查GlobalChild')
         .onClick(() => this.verifyPool('GlobalChild', GlobalChild))
+        .width(150)
       Button('检查LegacyComp')
         .onClick(() => this.verifyPool('LegacyComp', LegacyComp))
+        .width(150)
       Button('设置复用池大小')
         .onClick(() => this.setPoolMaxCount('LegacyComp', LegacyComp))
+        .width(150)
 
       if (this.boolVal) {
         GlobalChild()
@@ -649,6 +655,7 @@ struct Index {
         LegacyComp()
       }
     }
+    .width('100%')
   }
 }
 ```
@@ -689,6 +696,8 @@ ReusableChild aboutToRecycle
 ```
 
 再点击"检查LegacyComp": `count=0, maxCount=0`（复用池被手动清空了）
+
+![arkts-global-reuse-getreusableinfo.gif](./figures/arkts-global-reuse-getreusableinfo.gif)
 
 ### 使用`reuseId`控制缓存大小
 
@@ -745,24 +754,28 @@ struct PoolOwner {
   }
 
   build() {
-    Column() {
+    Column({ space: 3 }) {
       Button('切换A')
         .onClick(() => {
           this.showA = !this.showA;
         })
+        .width(150)
       Button('切换B')
         .onClick(() => {
           this.showB = !this.showB;
         })
+        .width(150)
       Button('切换C')
         .onClick(() => {
           this.showC = !this.showC;
         })
+        .width(150)
       Button('仅清除B')
         .onClick(() => this.purgeReuseId('B'))
+        .width(150)
       Button('打印复用池信息')
         .onClick(() => this.printReusePool())
-
+        .width(150)
 
       if (this.showA) {
         TestChild({ label: 'A' })
@@ -777,9 +790,12 @@ struct PoolOwner {
           .reuse({ reuseId: () => 'C' })
       }
     }
+    .width('100%')
   }
 }
 ```
+
+![arkts-global-reuse-reuseid.gif](./figures/arkts-global-reuse-reuseid.gif)
 
 当所有3个都被关闭时，`getReusableInfo(TestChild)`（不带reuseId）返回一个数组：
 ```typescript
@@ -829,6 +845,7 @@ struct Parent {
         Index2()
       }
     }
+    .width('100%')
   }
 }
 
@@ -896,10 +913,12 @@ struct Index2 {
 }
 ```
 
+![arkts-global-reuse-cross-branch.gif](./figures/arkts-global-reuse-cross-branch.gif)
+
 **测试序列**：
 
 1. **关闭Index1** — 来自Index1分支的ReusableChild 进入共享池。
-2. **关闭再打开Index2的ReusableChild** — 池化的实例（最初来自Index1）在Index2中被复用。日志中的实例ID确认了同一实例跨越了分支。
+2. **关闭再打开Index2的ReusableChild** — 池化的实例（最初来自Index1）在Index2中被复用。
 3. **打开Index1** — Index1和ChildComp被复用。ReusableChild从池中被复用。
 
 ### 多级复用池结构
@@ -976,6 +995,7 @@ struct EntryComp {
         ParentA()
       }
     }
+    .width('100%')
   }
 }
 
@@ -1006,6 +1026,8 @@ struct ParentA {
   }
 }
 ```
+
+![arkts-global-reuse-multi-level.gif](./figures/arkts-global-reuse-multi-level.gif)
 
 - `ChildA`使用`EntryComp`上声明的全局复用池，因为`EntryComp`复用池配置`poolAccepts`接受`ChildA`。
 - `ReusableLeaf`和它的父组件`ChildA`一起进入`EntryComp`的复用池中，不会进入`ParentA`上配置的全局复用池。
@@ -1090,6 +1112,8 @@ struct CompA {
   }
 }
 ```
+
+![arkts-global-reuse-prerender.png](./figures/arkts-global-reuse-prerender.png)
 
 执行序列：
 
