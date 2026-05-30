@@ -173,7 +173,40 @@ const TAG = 'IndexPage';
   import hilog from '@ohos.hilog';
   
   const DOMAIN = 0x0000;
-  const TAG = 'Sample_AdjustLayout';
+  <!-- @[enableDrag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  // Index.ets
+  import { window } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import hilog from '@ohos.hilog';
+  
+  const DOMAIN = 0x0000;
+  const TAG = 'IndexPage';
+  
+  // ...
+    /**
+     通过enableDrag控制子窗口的拖拽缩放功能
+     */
+    private setSubWindowResizeEnabled(enabled: boolean): void {
+      const subWindow = this.getSubWindow();
+      if (!subWindow) {
+        this.resultText = '子窗口未创建';
+        return;
+      }
+  
+      subWindow.enableDrag(enabled)
+        .then(() => {
+          AppStorage.setOrCreate<boolean>('SUB_WINDOW_RESIZE_ENABLED', enabled);
+          this.resultText = enabled ? '已开启子窗拖拽大小' : '已关闭子窗拖拽大小';
+        })
+        .catch((err: Error) => {
+          const businessError = err as BusinessError;
+          this.resultText = `设置拖拽大小失败: ${JSON.stringify(businessError)}`;
+          hilog.error(DOMAIN, TAG, `set resize drag failed: ${JSON.stringify(businessError)}`);
+        });
+    }
+  ```
   
   @Entry
   @Component
