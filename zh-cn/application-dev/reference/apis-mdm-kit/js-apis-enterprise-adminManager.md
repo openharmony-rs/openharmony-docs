@@ -27,7 +27,7 @@ disableAdmin(admin: Want, userId?: number): Promise\<void>
 解除激活指定用户的设备管理应用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请）或ohos.permission.START_PROVISIONING_MESSAGE或ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
-<br/>- 从API version 23开始，支持申请ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN权限。仅当[SDA](../../mdm/mdm-kit-term.md#sda)或[DA](../../mdm/mdm-kit-term.md#da)设备管理应用解除激活自身时，可以申请该权限。<br/>- 从API version 20开始，支持申请ohos.permission.START_PROVISIONING_MESSAGE权限。仅当[BYOD](../../mdm/mdm-kit-term.md#byod)设备管理应用解除激活自身时，可以申请该权限。<br/>- API 19及之前的版本，需要申请ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请）。
+<br/>- 从API version 23开始，支持申请ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN权限。仅当[SDA](../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)或[DA](../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)设备管理应用解除激活自身时，可以申请该权限。<br/>- 从API version 20开始，支持申请ohos.permission.START_PROVISIONING_MESSAGE权限。仅当[BYOD](../../mdm/mdm-kit-term.md#bring-your-own-device-byod自带设备办公)设备管理应用解除激活自身时，可以申请该权限。<br/>- API 19及之前的版本，需要申请ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -465,7 +465,7 @@ try {
 
 enableDeviceAdmin(admin: Want): Promise&lt;void&gt;
 
-[超级设备管理应用](../../mdm/mdm-kit-term.md#sda)通过该接口可以激活其他[普通设备管理应用](../../mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
+[SDA](../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)应用通过该接口可以激活其他[DA](../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)应用，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
 
@@ -522,7 +522,7 @@ adminManager.enableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
 
 disableDeviceAdmin(admin: Want): Promise&lt;void&gt;
 
-[超级设备管理应用](../../mdm/mdm-kit-term.md#sda)通过该接口可以解除激活其他[普通设备管理应用](../../mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
+[SDA](../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)应用通过该接口可以解除激活其他[DA](../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)应用，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
 
@@ -655,10 +655,10 @@ try {
 | MANAGED_EVENT_ACCOUNT_ADDED<sup>18+</sup>    | 5    | 账号新增事件。 |
 | MANAGED_EVENT_ACCOUNT_SWITCHED<sup>18+</sup> | 6    | 账号切换事件。 |
 | MANAGED_EVENT_ACCOUNT_REMOVED<sup>18+</sup>  | 7    | 账号删除事件。 |
-| MANAGED_EVENT_STARTUP_GUIDE_COMPLETED<sup>24+</sup> | 8    | 开机向导完成事件。**模型约束**：此接口仅可在Stage模型下使用。 |
-| MANAGED_EVENT_BOOT_COMPLETED<sup>24+</sup>  | 9    | 设备启动完成事件。**模型约束**：此接口仅可在Stage模型下使用。 |
-| MANAGED_EVENT_BUNDLE_UPDATED                | 10    | 应用更新事件。**模型约束**：此接口仅可在Stage模型下使用。**起始版本**：26.0.0。 |
-| MANAGED_EVENT_POLICIES_CHANGED                | 11    | 策略变更事件。仅支持超级设备管理应用订阅该事件，其他类型设备管理应用订阅该事件时返回9200002错误码。**模型约束**：此接口仅可在Stage模型下使用。**起始版本**：26.0.0。 |
+| MANAGED_EVENT_STARTUP_GUIDE_COMPLETED<sup>24+</sup> | 8    | 开机向导完成事件。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| MANAGED_EVENT_BOOT_COMPLETED<sup>24+</sup>  | 9    | 设备启动完成事件。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| MANAGED_EVENT_BUNDLE_UPDATED                | 10    | 应用更新事件。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| MANAGED_EVENT_POLICIES_CHANGED                | 11    | 策略变更事件。仅支持超级设备管理应用订阅该事件，其他类型设备管理应用订阅该事件时返回9200002错误码。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AdminType<sup>15+</sup>
 

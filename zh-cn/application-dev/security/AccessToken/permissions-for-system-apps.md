@@ -619,6 +619,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet | Wearable
+
 **起始版本**：12
 
 ## ohos.permission.RECEIVE_ENTERPRISE_POLICY_EVENT
@@ -630,6 +632,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：14
 
@@ -4474,6 +4478,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：PC/2in1 | Phone | Tablet
+
 **起始版本**：18
 
 ## ohos.permission.ACCESS_FUSION_AWARENESS_DATA
@@ -4722,6 +4728,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | Wearable
 
 **起始版本**：18
 
@@ -5798,6 +5806,20 @@
 ## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
 
 允许应用获取和设置车机情景模式。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.AUTO_UPDATER
+
+允许应用向车机设备发送升级指令。
 
 **权限级别**：system_basic
 

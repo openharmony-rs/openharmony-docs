@@ -619,6 +619,8 @@ Allows an application to activate enterprise devices.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | wearables
+
 **Since**: 12
 
 ## ohos.permission.RECEIVE_ENTERPRISE_POLICY_EVENT
@@ -630,6 +632,8 @@ Allows a system application to subscribe to the policy events published by the E
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 14
 
@@ -4472,6 +4476,8 @@ Allows a system application to obtain the group information of Family Sharing.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Since**: 18
 
 ## ohos.permission.ACCESS_FUSION_AWARENESS_DATA
@@ -4720,6 +4726,8 @@ This permission prevents unauthorized access to custom configuration files, such
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | wearables
 
 **Since**: 18
 
@@ -5806,6 +5814,20 @@ Allows an application to obtain and set the car scenario mode.
 **Supported devices**: cars
 
 **Valid since**: 26.0.0
+
+## ohos.permission.vehicle.AUTO_UPDATER
+
+Allows an application to send update instructions to the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
 
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 

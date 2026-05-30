@@ -62,6 +62,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV
+
 **起始版本**：10
 
 ## ohos.permission.DISCOVER_BLUETOOTH
@@ -85,6 +87,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -155,6 +159,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -247,6 +253,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -722,3 +730,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.GET_ENTERPRISE_CONFIG
+
+允许应用获取行业定制配置文件。
+
+行业定制配置文件中，包括用户壁纸、浏览器策略等配置文件。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
