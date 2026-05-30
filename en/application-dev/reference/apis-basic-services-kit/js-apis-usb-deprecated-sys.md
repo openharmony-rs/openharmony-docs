@@ -44,7 +44,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Function list in numeric mask format.|
+| number | Function list in numeric mask format after conversion.|
 
 **Example**
 
@@ -73,7 +73,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 | Type  | Description                          |
 | ------ | ------------------------------ |
-| string | Function list in string format.|
+| string | Function list in string format after conversion.|
 
 **Example**
 

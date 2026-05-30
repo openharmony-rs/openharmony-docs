@@ -2226,6 +2226,10 @@ struct PoolOwner {
   build() {
     Column() {
       ReusableChild()
+      Button('Check Pool')
+        .onClick(() => {
+          this.checkPool();
+        })
     }
   }
 }
@@ -2245,7 +2249,7 @@ The **IReusePool** API provides the features related to the global reuse pool of
 
 ### getReusableInfo
 
-getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
+getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
 
 Obtains the information about the recycling instance of a given reusable component type in this reuse pool.
 
@@ -2268,7 +2272,7 @@ Obtains the information about the recycling instance of a given reusable compone
 
 | Type| Description|
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [IReusableInfo](#ireusableinfo) \| [IReusableInfo](#ireusableinfo)[] \| undefined | If the reuse pool is not configured to accept the given component type, **undefined** is returned.<br>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and **maxCount** is set to the default value).<br>If **reuseId** is not specified and the reusable component does not use **reuseId**, a single **IReusableInfo** is returned.<br>If **reuseId** is not specified but the reusable component uses **reuseId**, an **Array&lt;IReusableInfo&gt;** is returned, providing a separate entry for each **reuseId** that has a positive value of **count** or a non-default value of **maxCount** as well as an entry of **reuseId: undefined**.|
+| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | If the reuse pool is not configured to accept the given component type, **undefined** is returned.<br>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and **maxCount** is set to the default value).<br>If **reuseId** is not specified and the reusable component does not use **reuseId**, a single **IReusableInfo** is returned.<br>If **reuseId** is not specified but the reusable component uses **reuseId**, an **Array&lt;IReusableInfo&gt;** is returned, providing a separate entry for each **reuseId** that has a positive value of **count** or a non-default value of **maxCount** as well as an entry of **reuseId: undefined**.|
 
 **Example**
 
@@ -2339,7 +2343,7 @@ struct PoolOwner {
 
 ### preRender
 
-preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
+preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
 Pre-creates @Reusable/@ReusableV2 decorated components and places them in this reuse pool.
 
@@ -2355,8 +2359,8 @@ Pre-creates @Reusable/@ReusableV2 decorated components and places them in this r
 
 | Name | Type                | Mandatory|  Description                           |
 | ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[]\> | Yes  | **WrappedBuilder** that contains the @Builder decorated function to be executed *n* times. Each execution should create one or more @Reusable/@ReusableV2 decorated components.|
-| n   | number               | Yes  | Number of times the @Builder decorated function is executed.                                                                                                         |
+| builder | WrappedBuilder\<[]\> | Yes  | **WrappedBuilder** that contains the @Builder decorated function to be executed *times* times. Each execution should create one or more @Reusable/@ReusableV2 decorated components.|
+| times   | number               | Yes  | Number of times the @Builder decorated function is executed.                                                                                                         |
 
 **Return value**
 
