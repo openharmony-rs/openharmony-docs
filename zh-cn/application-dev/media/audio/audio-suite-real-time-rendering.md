@@ -60,6 +60,36 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
  
    <!-- @[audioSuite_AudioRendererOnWriteData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
    <!-- @[audioSuite_StartRealTimeRenderingPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 创建构建器。
+   OH_AudioStreamBuilder_Create(&rendererBuilder, OH_AudioStream_Type::AUDIOSTREAM_TYPE_RENDERER);
+   OH_AudioStreamBuilder_SetSamplingRate(rendererBuilder, OH_Audio_SampleRate::SAMPLE_RATE_48000);
+   OH_AudioStreamBuilder_SetChannelCount(rendererBuilder, CHANNEL_COUNT);
+   OH_AudioStreamBuilder_SetSampleFormat(rendererBuilder, AUDIOSTREAM_SAMPLE_S16LE);
+   OH_AudioStreamBuilder_SetEncodingType(rendererBuilder, AUDIOSTREAM_ENCODING_TYPE_RAW);
+   OH_AudioStreamBuilder_SetRendererInfo(rendererBuilder, AUDIOSTREAM_USAGE_MUSIC);
+   
+   // 如果samplingRate为11025请使用40ms来计算。
+   int32_t frameSize = RENDER_FRAME_DURATION_MS * audioFormatOutput.samplingRate * audioFormatOutput.channelCount *
+                       SAMPLE_FORMAT_S16LE_BYTE_SIZE / MS_PER_SECOND;
+   // 设置audioDataSize长度（待播放的数据大小）。
+   OH_AudioStreamBuilder_SetFrameSizeInCallback(rendererBuilder, frameSize);
+   // 配置写入音频数据回调函数。
+   OH_AudioStreamBuilder_SetRendererWriteDataCallback(rendererBuilder, AudioRendererOnWriteData,
+                                                      static_cast<void *>(audioSuitePipeline));
+   
+   // 启动管线。
+   OH_AudioSuiteEngine_StartPipeline(audioSuitePipeline);
+   
+   // 开发者可以自行创建renderer流，播放音频。
+   // ...
+       
+   // ...
+   // 停止管线。
+   OH_AudioSuiteEngine_StopPipeline(audioSuitePipeline);
+   ```
 
 4. 资源销毁。
 
