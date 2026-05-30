@@ -451,7 +451,7 @@ UKey PIN码未认证。
 
 **处理步骤**
 
-请先调用[huksExternalCrypto.authUkeyPin](js-apis-huksExternalCrypto.md#huksexternalcryptoauthukeypin)完成PIN码认证后，再执行后续操作。
+先完成UKey PIN码认证，再执行需要认证的操作。
 
 ## 12000024 设备或资源繁忙
 
