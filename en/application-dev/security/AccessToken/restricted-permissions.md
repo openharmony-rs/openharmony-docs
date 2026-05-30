@@ -754,7 +754,7 @@ With this permission, the application can choose the target applications for sys
 
 **Authorization mode**：system_grant
 
-**Device**：Phone | PC/2in1 | Tablet
+**Device**：Phone | PC/2in1 | Tablet | TV
 
 **Since**：21
 
