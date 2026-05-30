@@ -166,19 +166,19 @@ import { Consume, Provide } from '@kit.ArkUI';
    @Component
    struct Child {
      @Consume num: number;
-
+   
      build() {
        Column() {
          Text(`num的值: ${this.num}`)
        }
      }
    }
-
+   
    @Entry
    @Component
    struct Parent {
      @Provide num: number = 10;
-
+   
      build() {
        Column() {
          Text(`num的值: ${this.num}`)
