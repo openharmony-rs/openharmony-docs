@@ -4556,7 +4556,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 
 syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-批量同步多个联系人至联系人数据库。最多可批量同步400个联系人。调用方必须处于前台。
+批量同步多个联系人至联系人数据库。每次最多可批量同步400个联系人。调用方必须处于前台。
 
 **起始版本**：26.0.0
 
@@ -4641,7 +4641,7 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
     };
     console.info(`同步批次 ${batch}/${totalBatches}, 联系人数量: ${currentBatchSize}`);
     let result = await contact.syncContacts(context, mode, progress, contacts);
-    console.info(`批次 ${batch} 同步成功 result `  + JSON.stringify(result));
+    console.info(`批次 ${batch} 同步成功，result: `  + JSON.stringify(result));
   }
   catch (err) {
     const e = err as BusinessError;
