@@ -61,12 +61,13 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
            return;
          }
          // 解析图像内容。
-         nextImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
-           imgComponent: image.Component) => {
-           if (err || imgComponent === undefined) {
-             console.error('getComponent failed');
-           }
-           if (imgComponent.byteBuffer) {
+         (async () => {
+           try {
+             let imgComponent = await nextImage.getComponent(image.ComponentType.JPEG);
+             if (!imgComponent.byteBuffer) {
+               console.error('byteBuffer is null');
+               return;
+             }
              // 详情见下方解析图片buffer数据参考，本示例以方式一为例。
              let width = nextImage.size.width; // 获取图片的宽。
              let height = nextImage.size.height; // 获取图片的高。
@@ -76,7 +77,7 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
              if (stride == width) {
                let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
                  size: { height: height, width: width },
-                 srcPixelFormat: 8,
+                 srcPixelFormat: image.PixelMapFormat.NV21,
                })
              } else {
                // stride与width不一致。
@@ -89,16 +90,17 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
                }
                let pixelMap = await image.createPixelMap(dstArr.buffer, {
                  size: { height: height, width: width },
-                 srcPixelFormat: 8,
+                 srcPixelFormat: image.PixelMapFormat.NV21,
                })
              }
-           } else {
-             console.error('byteBuffer is null');
+           } catch (error) {
+             console.error('getComponent failed');
+           } finally {
+             // 确保当前buffer没有在使用的情况下，可进行资源释放。
+             // 如果对buffer进行异步操作，需要在异步操作结束后再释放该资源（nextImage.release()）。
+             await nextImage.release();
            }
-           // 确保当前buffer没有在使用的情况下，可进行资源释放。
-           // 如果对buffer进行异步操作，需要在异步操作结束后再释放该资源（nextImage.release()）。
-           nextImage.release();
-         })
+         })();
        })
      })
    }
