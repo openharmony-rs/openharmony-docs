@@ -103,7 +103,7 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
    >
    > 创建ImageSource对象可参考[图片解码](../image/image-source-c.md)。
 
-   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
    
    ``` C++
    // 获取指定property的value值。
@@ -123,12 +123,16 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
        Image_String getKey;
        getKey.data = key;
        getKey.size = keySize;
-       Image_String getValue;
+       Image_String getValue = {nullptr, 0};
        OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_GetImageProperty key: %{public}s.", getKey.data);
        Image_ErrorCode errCode = OH_ImageSourceNative_GetImagePropertyWithNull(g_thisImageSource->source,
                                                                                &getKey, &getValue);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetImageProperty failed, errCode: %{public}d.", errCode);
+           if (getValue.data != nullptr) {
+               free(getValue.data);
+               getValue.data = nullptr;
+           }
            return GetJsResult(env, errCode);
        }
        napi_value resultNapi = nullptr;
