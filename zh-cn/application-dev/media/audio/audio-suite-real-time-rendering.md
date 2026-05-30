@@ -243,7 +243,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 - 音频编创错误码具体报错信息请参考：[OH_AudioSuite_Result](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_result)。
 
 ## 示例代码
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/README.md)
+- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 
 <!--RP1-->
 <!--RP1End-->
