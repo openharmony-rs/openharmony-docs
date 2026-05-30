@@ -60,6 +60,8 @@
          console.info('Succeeded in packing the image.');
        } catch (error) {
          console.error('Failed to pack the picture to data. And the error is: ' + error);
+       } finally {
+         await imagePackerApi.release();
        }
      }
      ```
