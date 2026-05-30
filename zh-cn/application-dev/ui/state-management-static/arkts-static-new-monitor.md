@@ -52,6 +52,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    
    ``` TypeScript
    import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor } from '@kit.ArkUI';
+   
    @Entry
    @ComponentV2
    struct Index {
