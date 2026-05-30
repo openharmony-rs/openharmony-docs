@@ -1,4 +1,10 @@
 # 术语表
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @xuchangda; @yixiaoff-->
+<!--Designer: @guxinggang; @liweilu1-->
+<!--Tester: @wangbeibei; @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## A
 
