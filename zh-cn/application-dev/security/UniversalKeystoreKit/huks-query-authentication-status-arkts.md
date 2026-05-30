@@ -1,4 +1,4 @@
-# 查询认证状态(ArkTS)
+﻿# 查询认证状态(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -43,7 +43,7 @@ async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPin
         console.error(`promise: getUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: getUkeyPinAuthState input arg invalid`);
+    console.error('promise: getUkeyPinAuthState input arg invalid.');
   }
   return ret;
 }
@@ -51,10 +51,10 @@ async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPin
 async function testGetUkeyPinAuthState() {
   let ret: huksExternalCrypto.HuksExternalPinAuthState = await getUkeyPinAuthState();
   if (ret != huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED) {
-    console.error(`getUkeyPinAuthState failed`);
+    console.error('getUkeyPinAuthState failed.');
     return;
   }
 
-  console.info(`getUkeyPinAuthState success`);
+  console.info('getUkeyPinAuthState success.');
 }
 ```

@@ -1,4 +1,4 @@
-# 通用查询(ArkTS)
+﻿# 通用查询(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -41,7 +41,7 @@ async function getProperty(): Promise<Array<huksExternalCrypto.HuksExternalCrypt
   const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
   // 3. 调用getProperty获取属性信息
-  console.info(`promise: await huksExternalCrypto getProperty`);
+  console.info('promise: await huksExternalCrypto getProperty.');
   try {
     await huksExternalCrypto.getProperty(testResourceId, propertyId, extProperties)
       .then((data) => {

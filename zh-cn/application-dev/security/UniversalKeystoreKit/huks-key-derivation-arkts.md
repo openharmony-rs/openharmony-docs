@@ -1,4 +1,4 @@
-# 密钥派生(ArkTS)
+﻿# 密钥派生(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -186,7 +186,7 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwO
 }
 
 async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise generateKeyItem`);
+  console.info('enter promise generateKeyItem.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
@@ -225,7 +225,7 @@ function initSession(keyAlias: string, huksOptions: huks.HuksOptions, throwObjec
 }
 
 async function publicInitFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise doInit`);
+  console.info('enter promise doInit.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await initSession(keyAlias, huksOptions, throwObject)
@@ -265,7 +265,7 @@ function updateSession(handle: number, huksOptions: huks.HuksOptions, throwObjec
 }
 
 async function publicUpdateFunc(handle: number, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise doUpdate`);
+  console.info('enter promise doUpdate.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await updateSession(handle, huksOptions, throwObject)
@@ -304,7 +304,7 @@ function finishSession(handle: number, huksOptions: huks.HuksOptions, throwObjec
 }
 
 async function publicFinishFunc(handle: number, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise doFinish`);
+  console.info('enter promise doFinish.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await finishSession(handle, huksOptions, throwObject)
@@ -344,7 +344,7 @@ function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObj
 }
 
 async function publicDeleteKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise deleteKeyItem`);
+  console.info('enter promise deleteKeyItem.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await deleteKeyItem(keyAlias, huksOptions, throwObject)
@@ -521,7 +521,7 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwO
 }
 
 async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise generateKeyItem`);
+  console.info('enter promise generateKeyItem.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
@@ -560,7 +560,7 @@ function initSession(keyAlias: string, huksOptions: huks.HuksOptions, throwObjec
 }
 
 async function publicInitFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise doInit`);
+  console.info('enter promise doInit.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await initSession(keyAlias, huksOptions, throwObject)
@@ -600,7 +600,7 @@ function updateSession(handle: number, huksOptions: huks.HuksOptions, throwObjec
 }
 
 async function publicUpdateFunc(handle: number, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise doUpdate`);
+  console.info('enter promise doUpdate.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await updateSession(handle, huksOptions, throwObject)
@@ -639,7 +639,7 @@ function finishSession(handle: number, huksOptions: huks.HuksOptions, throwObjec
 }
 
 async function publicFinishFunc(handle: number, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise doFinish`);
+  console.info('enter promise doFinish.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await finishSession(handle, huksOptions, throwObject)
@@ -679,7 +679,7 @@ function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObj
 }
 
 async function publicDeleteKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise deleteKeyItem`);
+  console.info('enter promise deleteKeyItem.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await deleteKeyItem(keyAlias, huksOptions, throwObject)

@@ -1,4 +1,4 @@
-# 非匿名密钥证明(仅对系统应用开放)(ArkTS)
+﻿# 非匿名密钥证明(仅对系统应用开放)(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -126,7 +126,7 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwO
 
 /* 3.生成密钥 */
 async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise generateKeyItem`);
+  console.info('enter promise generateKeyItem.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
@@ -164,7 +164,7 @@ function attestKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObj
 }
 
 async function publicAttestKey(keyAlias: string, huksOptions: huks.HuksOptions): Promise<string> {
-  console.info(`enter promise attestKeyItem`);
+  console.info('enter promise attestKeyItem.');
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await attestKeyItem(keyAlias, huksOptions, throwObject)
@@ -191,7 +191,7 @@ async function publicAttestKey(keyAlias: string, huksOptions: huks.HuksOptions):
 async function attestKeyTest(): Promise<string> {
   await publicGenKeyFunc(aliasString, genOptions);
   let ret = await publicAttestKey(aliasString, huksOptions);
-  console.info('attest certChain data: ' + attestCertChain)
-  return ret;
+  console.info(`attest certChain data: ` + attestCertChain)
+  return ret);
 }
 ```

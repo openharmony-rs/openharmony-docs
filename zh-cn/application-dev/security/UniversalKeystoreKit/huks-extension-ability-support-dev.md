@@ -1,4 +1,4 @@
-# CryptoExtensionAbility适配开发指导
+﻿# CryptoExtensionAbility适配开发指导
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -108,7 +108,7 @@
      } catch (error) {
        // 场景：打开资源失败
        result.resultCode = res.resultCode
-       console.error(`promise: onOpenResource failed`);
+       console.error('promise: onOpenResource failed.');
      }
      return Promise.resolve(result);
    }
@@ -134,7 +134,7 @@
      } catch (error) {
        // 场景：关闭资源失败
        result.resultCode = res.resultCode
-       console.error(`promise: onCloseResource failed`);
+       console.error('promise: onCloseResource failed.');
      }
      return Promise.resolve(result);
    }
@@ -193,7 +193,7 @@
      } catch (error) {
        // 场景：获取属性失败
        result.resultCode = res.resultCode
-       console.error(`promise: onGetProperty failed`);
+       console.error('promise: onGetProperty failed.');
      }
      return Promise.resolve(result);
    }
@@ -233,7 +233,7 @@
        // 场景：PIN码认证失败
        result.resultCode = res.resultCode
        result.retryCount = res.retryCount
-       console.error(`promise: onAuthUkeyPin failed`);
+       console.error('promise: onAuthUkeyPin failed.');
      }
      return Promise.resolve(result);
    }
@@ -268,7 +268,7 @@
      } catch (error) {
        // 场景：获取PIN码认证状态失败
        result.resultCode = res.resultCode
-       console.error(`promise: onGetUkeyPinAuthState failed`);
+       console.error('promise: onGetUkeyPinAuthState failed.');
      }
      return Promise.resolve(result);
    }
@@ -294,7 +294,7 @@
      } catch (error) {
        // 场景：清除PIN码认证状态失败
        result.resultCode = res.resultCode
-       console.error(`promise: onClearUkeyPinAuthState failed`);
+       console.error('promise: onClearUkeyPinAuthState failed.');
      }
      return Promise.resolve(result);
    }
@@ -322,7 +322,7 @@
      } catch (error) {
        // 场景：三段式init阶段失败
        result.resultCode = res.resultCode
-       console.error(`promise: onInitSession failed`);
+       console.error('promise: onInitSession failed.');
      }
      return Promise.resolve(result);
    }
@@ -351,7 +351,7 @@
      } catch (error) {
        // 场景：三段式update阶段失败
        result.resultCode = res.resultCode
-       console.error(`promise: onUpdateSession failed`);
+       console.error('promise: onUpdateSession failed.');
      }
      return Promise.resolve(result);
    }
@@ -380,7 +380,7 @@
      } catch (error) {
        // 场景：三段式finish阶段失败
        result.resultCode = res.resultCode
-       console.error(`promise: onFinishSession failed`);
+       console.error('promise: onFinishSession failed.');
      }
      return Promise.resolve(result);
    }
@@ -409,7 +409,7 @@
      } catch (error) {
        // 场景：导出证书失败
        result.resultCode = res.resultCode
-       console.error(`promise: onExportCertificate failed`);
+       console.error('promise: onExportCertificate failed.');
      }
      return Promise.resolve(result);
    }
@@ -438,7 +438,7 @@
      } catch (error) {
        // 场景：导出所有证书失败
        result.resultCode = res.resultCode
-       console.error(`promise: onEnumCertificates failed`);
+       console.error('promise: onEnumCertificates failed.');
      }
      return Promise.resolve(result);
    }

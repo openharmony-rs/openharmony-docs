@@ -1,4 +1,4 @@
-# 生成密钥(ArkTS)
+﻿# 生成密钥(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -76,7 +76,7 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions): Promise<string> {
-  console.info(`enter promise generateKeyItem`);
+  console.info('enter promise generateKeyItem.');
   try {
     await generateKeyItem(keyAlias, huksOptions)
       .then((data) => {
@@ -87,7 +87,7 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
       });
     return 'Success';
   } catch (error) {
-    console.error(`promise: generateKeyItem input arg invalid, ` + JSON.stringify(error));
+    console.error(`promise: generateKeyItem input arg invalid, ` + JSON.stringify(error);
     return 'Failed';
   }
 }
