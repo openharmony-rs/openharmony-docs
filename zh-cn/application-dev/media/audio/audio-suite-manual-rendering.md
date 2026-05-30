@@ -121,6 +121,73 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
    <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    <!-- @[audioSuite_CreateMixingNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 创建节点构造器。
+   OH_AudioNodeBuilder *nodeBuilder = nullptr;
+   OH_AudioSuiteNodeBuilder_Create(&nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::INPUT_NODE_TYPE_DEFAULT);
+   // 配置音频数据格式，开发者根据要处理的音频数据格式设置采样率、声道分布、声道数、位深、编码格式参数。
+   OH_AudioFormat audioFormatInput;
+   audioFormatInput.samplingRate = OH_Audio_SampleRate::SAMPLE_RATE_48000;
+   audioFormatInput.channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+   audioFormatInput.channelCount = CHANNEL_COUNT;
+   audioFormatInput.sampleFormat = OH_Audio_SampleFormat::AUDIO_SAMPLE_S16LE;
+   audioFormatInput.encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW;
+   OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatInput);
+   // 设置第一个音频流的回调。
+   void *userData = static_cast<void *>(audioInfoForField);
+   OH_AudioSuiteNodeBuilder_SetRequestDataCallback(nodeBuilder, InputNodeWriteDataCallBack, userData);
+   // 创建第一个输入节点。
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.inputNodeForField);
+   
+   // 重置构造器配置并设置为输入节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::INPUT_NODE_TYPE_DEFAULT);
+   OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatInput);
+   // 设置第二个音频流的回调。
+   userData = static_cast<void *>(audioInfoForMix);
+   OH_AudioSuiteNodeBuilder_SetRequestDataCallback(nodeBuilder, InputNodeWriteDataCallBack, userData);
+   // 创建第二个输入节点。
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.inputNodeForMix);
+   
+   // 重置构造器配置并设置为输入节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_SOUND_FIELD);
+   // 创建声场节点并设置声场模式为聆听。
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.fieldNode);
+   OH_AudioSuiteEngine_SetSoundFieldType(nodes.fieldNode, SOUND_FIELD_FRONT_FACING);
+   
+   // 重置构造器配置并设置为输入节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_AUDIO_MIXER);
+   // 创建混音节点。
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.mixerNode);
+   
+   // 重置构造器配置并设置为输入节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::OUTPUT_NODE_TYPE_DEFAULT);
+   // 配置音频数据格式，开发者根据预期输出的音频格式设置采样率、声道分布、声道数、位深、编码格式参数。
+   OH_AudioFormat audioFormatOutput;
+   audioFormatOutput.samplingRate = OH_Audio_SampleRate::SAMPLE_RATE_48000;
+   audioFormatOutput.channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+   audioFormatOutput.channelCount = CHANNEL_COUNT;
+   audioFormatOutput.sampleFormat = OH_Audio_SampleFormat::AUDIO_SAMPLE_S16LE;
+   audioFormatOutput.encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW;
+   OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatOutput);
+   // 创建输出节点。
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.outputNode);
+   
+   // 销毁输出节点构造器。
+   OH_AudioSuiteNodeBuilder_Destroy(nodeBuilder);
+   
+   // 连接各个节点组成组网。
+   OH_AudioSuiteEngine_ConnectNodes(nodes.inputNodeForField, nodes.fieldNode);
+   OH_AudioSuiteEngine_ConnectNodes(nodes.fieldNode, nodes.mixerNode);
+   OH_AudioSuiteEngine_ConnectNodes(nodes.inputNodeForMix, nodes.mixerNode);
+   OH_AudioSuiteEngine_ConnectNodes(nodes.mixerNode, nodes.outputNode);
+   ```
 
 3. 渲染音频数据。
 
