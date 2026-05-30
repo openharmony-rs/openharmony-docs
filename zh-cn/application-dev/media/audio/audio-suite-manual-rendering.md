@@ -89,6 +89,59 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
    <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    <!-- @[audioSuite_CreateSeparationNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 创建节点构造器。
+   OH_AudioNodeBuilder *nodeBuilder = nullptr;
+   OH_AudioSuiteNodeBuilder_Create(&nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::INPUT_NODE_TYPE_DEFAULT);
+   
+   // 配置音频数据格式，开发者根据要处理的音频数据格式设置采样率、声道分布、声道数、位深、编码格式参数。
+   OH_AudioFormat audioFormatInput;
+   audioFormatInput.samplingRate = OH_Audio_SampleRate::SAMPLE_RATE_48000;
+   audioFormatInput.channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+   audioFormatInput.channelCount = CHANNEL_COUNT;
+   audioFormatInput.sampleFormat = OH_Audio_SampleFormat::AUDIO_SAMPLE_S16LE;
+   audioFormatInput.encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW;
+   OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatInput);
+   void *userData = static_cast<void *>(audioInfo);
+   // 设置音频流的回调。
+   OH_AudioSuiteNodeBuilder_SetRequestDataCallback(nodeBuilder, InputNodeWriteDataCallBack, userData);
+   
+   // 创建输入节点。
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.inputNode);
+   
+   // 重置构造器配置并设置为音源分离节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder,
+                                        OH_AudioNode_Type::EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION);
+   
+   // 创建音源分离节点。
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.aissNode);
+   
+   // 重置构造器配置并设置为输出节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::OUTPUT_NODE_TYPE_DEFAULT);
+   // 配置音频数据格式，开发者根据预期输出的音频格式设置采样率、声道分布、声道数、位深、编码格式参数。
+   OH_AudioFormat audioFormatOutput;
+   audioFormatOutput.samplingRate = OH_Audio_SampleRate::SAMPLE_RATE_48000;
+   audioFormatOutput.channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+   audioFormatOutput.channelCount = CHANNEL_COUNT;
+   audioFormatOutput.sampleFormat = OH_Audio_SampleFormat::AUDIO_SAMPLE_S16LE;
+   audioFormatOutput.encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW;
+   OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatOutput);
+   
+   // 创建输出节点。
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.outputNode);
+   
+   // 销毁节点构造器。
+   OH_AudioSuiteNodeBuilder_Destroy(nodeBuilder);
+   
+   // 连接各个节点组成组网。
+   OH_AudioSuiteEngine_ConnectNodes(nodes.inputNode, nodes.aissNode);
+   OH_AudioSuiteEngine_ConnectNodes(nodes.aissNode, nodes.outputNode);
+   ```
 
 3. 渲染音频数据。
 
