@@ -41,14 +41,17 @@ URL格式错误或URL缺失。
 
 **可能原因**
 
-1.传入的URL格式不符合规范（如缺少协议头、非法字符等）。
-2.URL为空或未传入。
+1. 传入的URL含有非法字符或格式不符合规范。
+
+2. URL为空或未传入。
 
 **处理步骤**
 
-1.检查传入的URL格式是否正确，确保包含协议头（如http://或https://）。
-2.确认URL参数不为空。
-3.可查看日志关键词"HttpClient CURLcode result 3"定位该错误。
+1. 检查传入的URL格式是否正确，确认URL不含有非法字符。
+
+2. 确认URL参数不为空。
+
+3. 可查看日志关键词"HttpClient CURLcode result 3"定位该错误。
 
 ## 2300005 代理服务器域名解析失败
 
@@ -80,16 +83,21 @@ Failed to resolve the host name.
 
 **可能原因**
 
-1.传入的服务器域名不正确或不存在。
-2.网络不通畅或DNS服务器无法访问。
-3.本地DNS缓存异常。
+1. 传入的服务器域名不正确或不存在。
+
+2. 网络不通畅或DNS服务器无法访问。
+
+3. 本地DNS缓存异常。
 
 **处理步骤**
 
-1.检查传入的URL中域名是否正确。
-2.检查网络连接状态，确保网络可用。
-3.尝试使用其他DNS服务器或刷新DNS缓存。
-4.可查看日志关键词"HttpClient CURLcode result 6"定位该错误。
+1. 检查传入的URL中域名是否正确。
+
+2. 检查网络连接状态，确保网络可用。
+
+3. 尝试使用其他DNS服务器或刷新DNS缓存。
+
+4. 可查看日志关键词"HttpClient CURLcode result 6"定位该错误。
 
 ## 2300007 无法连接到服务器
 
@@ -103,18 +111,25 @@ Failed to connect to the server.
 
 **可能原因**
 
-1.服务器地址或端口不正确。
-2.服务器未启动或无法响应。
-3.网络连接被防火墙阻止。
-4.连接超时。
+1. 服务器地址或端口不正确。
+
+2. 服务器未启动或无法响应。
+
+3. 网络连接被防火墙阻止。
+
+4. 连接超时。
 
 **处理步骤**
 
-1.检查服务器地址和端口是否正确。
-2.确认服务器是否正常运行。
-3.检查防火墙配置是否允许该连接。
-4.检查网络连通性。
-5.可查看日志关键词"HttpClient CURLcode result 7"定位该错误。
+1. 检查服务器地址和端口是否正确。
+
+2. 确认服务器是否正常运行。
+
+3. 检查防火墙配置是否允许该连接。
+
+4. 检查网络连通性。
+
+5. 可查看日志关键词"HttpClient CURLcode result 7"定位该错误。
 
 ## 2300008 服务器返回非法数据
 
@@ -124,15 +139,20 @@ Invalid server response.
 
 **错误描述**
 
-服务器返回非法数据。
+服务器返回了无法解析的非法数据。
 
 **可能原因**
 
-服务器出错，返回了非HTTP格式的数据。
+1. 服务器返回的数据不符合HTTP协议格式。
+2. 代理服务器配置错误，代理地址指向了非HTTP代理服务。
+3. 请求的端口上运行的不是HTTP/HTTPS服务。
+4. 服务器或代理未按协议规范返回数据。
 
 **处理步骤**
 
-排查服务器实现。
+1. 排查服务器实现，确认返回的是合法HTTP格式数据。
+2. 如果使用了代理，检查代理配置是否正确，确认代理地址指向的是HTTP代理服务。
+3. 确认请求的目标端口是否运行HTTP/HTTPS服务。
 
 ## 2300009 拒绝对远程资源的访问
 
@@ -182,16 +202,21 @@ Transferred a partial file.
 
 **可能原因**
 
-1.服务器在传输过程中中断连接。
-2.网络不稳定导致数据传输中断。
-3.服务器返回的数据大小与声明不匹配。
+1. 服务器在传输过程中中断连接。
+
+2. 网络不稳定导致数据传输中断。
+
+3. 服务器返回的数据大小与声明不匹配。
 
 **处理步骤**
 
-1.检查服务器实现是否正常。
-2.确认网络连接稳定性。
-3.检查是否设置了range请求导致部分传输。
-4.可查看日志关键词"HttpClient CURLcode result 18"定位该错误。
+1. 检查服务器实现是否正常。
+
+2. 确认网络连接稳定性。
+
+3. 检查是否设置了range请求导致部分传输。
+
+4. 可查看日志关键词"HttpClient CURLcode result 18"定位该错误。
 
 ## 2300023 向磁盘/应用程序写入接收数据失败
 
@@ -205,18 +230,25 @@ Failed to write the received data to the disk or application.
 
 **可能原因**
 
-1.应用没有写文件权限。
-2.待下载的文件超过5M且未设置maxLimit参数（最大支持100M）。
-3.磁盘空间不足。
-4.上一次请求数据未接收完毕便调用destroy销毁导致接收数据不完整。
+1. 应用没有写文件权限。
+
+2. 调用[request](./js-apis-http.md#request)接口下载超过大小限制（API version 23之前限制为5MB，API version 23及之后的版本，限制为50MB），且未在[HttpRequestOptions](./js-apis-http.md#httprequestoptions)中设置maxLimit参数。
+
+3. 磁盘空间不足。
+
+4. 上一次请求数据未接收完毕便调用[destroy](./js-apis-http.md#destroy)销毁导致接收数据不完整。
 
 **处理步骤**
 
-1.检查应用是否具有写文件权限。
-2.若需下载大文件，请设置合适的maxLimit参数。
-3.检查磁盘空间是否充足。
-4.确保请求完成后再调用destroy方法。
-5.可查看日志关键词"HttpClient CURLcode result 23"定位该错误。
+1. 检查应用是否具有写文件权限。
+
+2. 若需下载超过5MB的数据，请在[HttpRequestOptions](./js-apis-http.md#httprequestoptions)中设置合适的maxLimit参数，或改用[requestInStream](./js-apis-http.md#requestinstream10)接口发起流式请求。
+
+3. 检查磁盘空间是否充足。
+
+4. 确保请求完成后再调用[destroy](./js-apis-http.md#destroy)方法。
+
+5. 可查看日志关键词"HttpClient CURLcode result 23"定位该错误。
 
 ## 2300025 上传失败
 
@@ -284,17 +316,23 @@ Operation timeout.
 
 **可能原因**
 
-1.TCP连接超时（connectTimeout默认60000ms）。
-2.数据读写超时（readTimeout默认60000ms）。
-3.网络不稳定导致响应延迟。
-4.服务器负载过高，处理速度缓慢。
+1. TCP连接超时（connectTimeout默认60000ms）。
+
+2. 数据读写超时（readTimeout默认60000ms）。
+
+3. 网络不稳定导致响应延迟。
+
+4. 服务器负载过高，处理速度缓慢。
 
 **处理步骤**
 
-1.检查网络连接状态，确认网络稳定。
-2.根据实际情况调整readTimeout或connectTimeout参数。
-3.排查服务器负载情况。
-4.可查看日志关键词"HttpClient CURLcode result 28"定位该错误。
+1. 检查网络连接状态，确认网络稳定。
+
+2. 根据实际情况调整readTimeout或connectTimeout参数。
+
+3. 排查服务器负载情况。
+
+4. 可查看日志关键词"HttpClient CURLcode result 28"定位该错误。
 
 ## 2300047 重定向次数达到最大值
 
@@ -362,16 +400,21 @@ Failed to receive data from the peer.
 
 **可能原因**
 
-1.网络连接中断或不稳定。
-2.服务器关闭了连接。
-3.对端发送数据过程中出现异常。
+1. 网络连接中断或不稳定。
+
+2. 服务器关闭了连接。
+
+3. 对端发送数据过程中出现异常。
 
 **处理步骤**
 
-1.检查网络连接状态。
-2.确认服务器端是否正常运行。
-3.重新发起请求尝试。
-4.可查看日志关键词"HttpClient CURLcode result 56"定位该错误。
+1. 检查网络连接状态。
+
+2. 确认服务器端是否正常运行。
+
+3. 重新发起请求尝试。
+
+4. 可查看日志关键词"HttpClient CURLcode result 56"定位该错误。
 
 ## 2300058 本地SSL证书错误
 
@@ -421,18 +464,25 @@ Invalid SSL peer certificate or SSH remote key.
 
 **可能原因**
 
-1.服务器证书过期。
-2.证书未被信任的CA签发。
-3.证书域名与请求域名不匹配。
-4.证书配置了SSL Pinning（certificatePinning）但公钥哈希值不匹配，日志提示"Specified pinned public key did not match"。
-5.证书链不完整。
+1. 服务器证书过期。
+
+2. 证书未被信任的CA签发。
+
+3. 证书域名与请求域名不匹配。
+
+4. 证书配置了SSL Pinning（certificatePinning）但公钥哈希值不匹配，日志提示"Specified pinned public key did not match"。
+
+5. 证书链不完整。
 
 **处理步骤**
 
-1.建议参考[tls客户端证书验证流程](../../network/http-request.md#tls客户端证书验证流程)自排查问题原因。
-2.若配置了certificatePinning，请检查公钥哈希值是否正确。
-3.检查服务器证书是否过期或域名是否匹配。
-4.可查看日志关键词"HttpClient CURLcode result 60"定位该错误。
+1. 建议参考[tls客户端证书验证流程](../../network/http-request.md#tls客户端证书验证流程)自排查问题原因。
+
+2. 若配置了certificatePinning，请检查公钥哈希值是否正确。
+
+3. 检查服务器证书是否过期或域名是否匹配。
+
+4. 可查看日志关键词"HttpClient CURLcode result 60"定位该错误。
 
 ## 2300061 无法识别或错误的HTTP编码格式
 
@@ -590,9 +640,11 @@ It is not allowed to access this domain.
 
 **可能原因**
 
-1.元服务应用未正确配置服务器域名。
-2.访问的域名不在已配置的白名单中。
-3.域名配置后尚未生效（配置生效需要等待一天以上）。
+1. 元服务应用未正确配置服务器域名。
+
+2. 访问的域名不在已配置的白名单中。
+
+3. 域名配置后尚未生效（配置生效需要等待一天以上）。
 
 **处理步骤**
 
