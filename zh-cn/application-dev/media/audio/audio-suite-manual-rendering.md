@@ -63,6 +63,35 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    开发者调用[OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口渲染并获取PCM音频数据。
    
    <!-- @[audioSuite_StartBasePipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 根据输出节点的格式计算单帧处理数据大小。如果samplingRate为11025请使用40ms来计算。
+   int32_t frameSize = RENDER_FRAME_DURATION_MS * OH_Audio_SampleRate::SAMPLE_RATE_48000 * CHANNEL_COUNT *
+                       SAMPLE_FORMAT_S16LE_BYTE_SIZE / MS_PER_SECOND;
+   // 用于接收渲染后的输出音频数据。
+   uint8_t *audioData = (uint8_t *)malloc(frameSize);
+   int32_t responseSize = 0;
+   bool finished = false;
+   // 渲染。
+   OH_AudioSuiteEngine_StartPipeline(audioSuitePipeline);
+   // ...
+   do {
+       OH_AudioSuite_Result result = OH_AudioSuiteEngine_RenderFrame(
+           audioSuitePipeline, static_cast<void *>(audioData), frameSize, &responseSize, &finished);
+       if ((result != OH_AudioSuite_Result::AUDIOSUITE_SUCCESS) || (responseSize <= 0)) {
+           // 本次音频编创渲染失败。
+           break;
+       } else {
+           // audioData是渲染过后的音频数据，音频数据长度为responseSize，开发者根据业务场景自行使用或者保存。
+           // ...
+       }
+   } while (!finished);
+   // ...
+   OH_AudioSuiteEngine_StopPipeline(audioSuitePipeline);
+   free(audioData);
+   audioData = nullptr;
+   ```
 
 4. 资源销毁。
    
