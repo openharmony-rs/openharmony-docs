@@ -111,11 +111,16 @@
        const imagePackerApi = image.createImagePacker();
        let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
        const path : string = context.cacheDir + '/pixel_map.jpg';
+       let file: fileIo.File | undefined = undefined;
        try {
-         let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+         file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
          await imagePackerApi.packToFile(pixelMap, file.fd, packOpts);
        } catch (error) {
          console.error('Failed to pack the pixelMap to file. And the error is: ' + error);
+       } finally {
+         if (file) {
+           fileIo.closeSync(file.fd);
+         }
        }
      }
      ```
