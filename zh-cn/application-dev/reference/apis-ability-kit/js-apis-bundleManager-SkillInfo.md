@@ -13,7 +13,7 @@
 >
 >本模块仅适用于ArkTS-Dyn。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -25,7 +25,7 @@ import { skillManager } from '@kit.AbilityKit';
 
 技能配置信息，用于定义AI 代理的技能能力。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,11 +51,11 @@ import { skillManager } from '@kit.AbilityKit';
 
 技能类型的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

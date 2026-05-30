@@ -59,9 +59,9 @@ import { Once } from '@kit.ArkUI';
 
 \@Once用于变量仅初始化同步数据源一次，之后不再继续同步变化的场景。
 
-```ts
-'use static'
+<!-- @[OnceInitSync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/OnceDecorator/entry/src/main/ets/pages/OnceInitSync.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Once, Param, Text } from '@kit.ArkUI';
 
 @ComponentV2
@@ -95,9 +95,9 @@ struct MyComponent {
 
 当\@Once与\@Param结合使用时，可以解除\@Param本地不可修改的限制，并能够触发UI刷新。此时，使用\@Param和\@Once的效果类似于[\@Local](./arkts-static-new-local.md)，但\@Param和\@Once还能接收外部传入的初始值。
 
-```ts
-'use static'
+<!-- @[OnceLocalModify](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/OnceDecorator/entry/src/main/ets/pages/OnceLocalModify.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Once, Param, Require, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2

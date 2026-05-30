@@ -104,7 +104,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
-
+   
    ``` TypeScript
    let uris: string[] = [];
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -120,15 +120,18 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Sta示例：
 
-   ```ts
-   let uris: Array<string> = [];
+   <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SelectingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
+   let uris: string[] = [];
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    const documentViewPicker = new picker.DocumentViewPicker(context);
-   documentViewPicker.select(documentSelectOptions).then((documentSelectResult: Array<string>) => {
+   documentViewPicker.select(documentSelectOptions).then((documentSelectResult: string[]) => {
      uris = documentSelectResult;
      console.info('documentViewPicker.select to file succeed and uris are:' + uris);
-   }).catch((err: BusinessError): void => {
-     console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+     // ...
+   }).catch((err: Error): void => {
+     console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
 
@@ -141,22 +144,25 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
 4. 待界面从FilePicker返回后，使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口通过URI打开这个文件得到文件描述符（fd）。
 
-   ```ts
+   <!--@[file_open_sync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SelectingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    if (uris.length > 0) {
      let uri: string = uris[0];
-     // 这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
+     //这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_ONLY);
-     console.info('file fd: ' + file.fd);
-   }
+     // ...
+       console.info('file fd: ' + file.fd);
    ```
 
 5. 通过fd使用[fileIo.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioreadsync)接口读取这个文件内的数据。
 
-   ```ts
-   let buffer = new ArrayBuffer(4096);
-   let readLen = fileIo.readSync(file.fd, buffer);
+   <!--@[document_fs_read_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
+   let buffer = new ArrayBuffer(4096); // 分配一个大小为4096字节的缓冲区
+   let readLen = fileIo.readSync(file.fd, buffer); // 读取文件内容
    console.info('readSync data to file succeed and buffer size is:' + readLen);
-   // 读取完成后关闭fd。
    fileIo.closeSync(file);
    ```
 
@@ -190,13 +196,17 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Dyn示例：
 
-   ```ts
+   <!--@[audio_select_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    const audioSelectOptions = new picker.AudioSelectOptions();
    ```
 
    ArkTS-Sta示例：
 
-   ```ts
+   <!--@[audio_select_option](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SelectingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    const audioSelectOptions: picker.AudioSelectOptions = {};
    ```
 
@@ -205,14 +215,14 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
-
+   
    ``` TypeScript
    let uris: string[] = [];
    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    const audioViewPicker = new picker.AudioViewPicker(context);
    audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
-     // 文件选择成功后，返回被选中音频的URI结果集。
+     //文件选择成功后，返回被选中音频的URI结果集。
      uris = audioSelectResult;
      console.info('audioViewPicker.select to file succeed and uri is:' + uris);
      // ...
@@ -223,16 +233,21 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    ArkTS-Sta示例：
 
-   ```ts
-   let uris: Array<string> = [];
+   <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SelectingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
+   let uris: string[] = [];
+   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    const audioViewPicker = new picker.AudioViewPicker(context);
    audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
+     //文件选择成功后，返回被选中音频的URI结果集。
      uris = audioSelectResult;
      console.info('audioViewPicker.select to file succeed and uri is:' + uris);
-   }).catch((err: BusinessError): void => {
-     console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
-   });
+     // ...
+   }).catch((err: Error): void => {
+     console.error(`Invoke audioViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+   })
    ```
 
    > **注意：**
@@ -243,22 +258,25 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
 4. 待界面从AudioPicker返回后，可以使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口通过URI打开这个文件得到文件描述符（fd）。
 
-   ```ts
+   <!--@[file_open_sync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SelectingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
    if (uris.length > 0) {
-      let uri: string = uris[0];
-      // 这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
-      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_ONLY);
-      console.info('file fd: ' + file.fd);
-   }
+     let uri: string = uris[0];
+     //这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
+     let file = fileIo.openSync(uri, fileIo.OpenMode.READ_ONLY);
+     // ...
+       console.info('file fd: ' + file.fd);
    ```
 
 5. 通过fd可以使用[fileIo.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#readsync)接口读取这个文件内的数据。
 
-   ```ts
-   let buffer = new ArrayBuffer(4096);
-   let readLen = fileIo.readSync(file.fd, buffer);
+   <!--@[document_fs_read_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   
+   ``` TypeScript
+   let buffer = new ArrayBuffer(4096); // 分配一个大小为4096字节的缓冲区
+   let readLen = fileIo.readSync(file.fd, buffer); // 读取文件内容
    console.info('readSync data to file succeed and buffer size is:' + readLen);
-   // 读取完成后关闭fd。
    fileIo.closeSync(file);
    ```
 

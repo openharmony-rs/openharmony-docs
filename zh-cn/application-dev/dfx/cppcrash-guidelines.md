@@ -201,6 +201,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Uid | 用户ID | 8 | 是 | - |
 | HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 仅故障线程开启HiTraceChain功能时提供，详见[HiTraceChain介绍](hitracechain-intro.md)。 |
 | Process name | 故障进程名 | 8 | 是 | - |
+| App running unique id | 应用运行时唯一关联的id。 | 26.0.0 | 是 | - |
 | Process life time | 故障进程存活时间 | 8 | 是 | - |
 | Process Memory(kB) | 故障进程内存占用 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存状态 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[实现原理](#实现原理)。 |
@@ -270,6 +271,7 @@ Pid:6946 <- 进程号
 Uid:20010044 <- 用户ID
 HiTraceId:a92ab1c7eae68fa <- HiTraceChain唯一跟踪标识(非必选，故障线程无HiTraceId不打印)
 Process name:com.example.myapplication <- 故障进程名
+App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:255s <- 故障进程存活时间
 Process Memory(kB): 177672(Rss) <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 509212, Available 1115804 <- 整机内存状态（非必选）
@@ -455,6 +457,7 @@ Pid:18763   <- 进程号
 Uid:0         <- 用户ID
 HiTraceId:a92ab123ba26e5d  <-HiTraceChain唯一跟踪标识(非必选，故障线程无HiTraceId不打印)
 Process name:./crasher_cpp         <- 故障进程名
+App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s               <- 故障进程存活时间
 Process Memory(kB): 5357(Rss)     <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 583336, Available 1194164 <- 整机内存状态（非必选）
@@ -517,6 +520,7 @@ Pid:15413                            <- 进程号
 Uid:0                                  <- 用户ID
 HiTraceId:a92ab1c7eae68fa  <- HiTraceChain唯一跟踪标识(非必选，故障线程无HiTraceId不打印)
 Process name:./crasher_cpp             <- 故障进程名
+App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s                  <- 故障进程存活时间
 Process Memory(kB): 5279(Rss)     <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 311000, Available 1181132 <- 整机内存状态（非必选）
@@ -551,6 +555,7 @@ Pid:16051                                 <- 进程号
 Uid:0                                     <- 用户ID
 HiTraceId:a92ab13e65d617d  <- HiTraceChain唯一跟踪标识(非必选，故障线程无HiTraceId不打印)
 Process name:./crasher_cpp                <- 故障进程名
+App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s                      <- 故障进程存活时间
 Process Memory(kB): 5271(Rss)            <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 311220, Available 1181516 <- 整机内存状态（非必选）
@@ -636,6 +641,7 @@ Pid:28421                                   <- 进程号
 Uid:20020214                                <- 用户ID
 HiTraceId:a92ab1c7eae68fa  <- HiTraceChain唯一跟踪标识(非必选，故障线程无HiTraceId不打印)
 Process name:com.example.uv001              <- 故障进程名
+App running unique id:124500628566978194    <- 应用运行时唯一关联的id
 Process life time:42s                        <- 故障进程存活时间
 Process Memory(kB): 151736(Rss)            <- 故障进程内存占用
 Device Memory(kB): Total 11712088, Free 2500232, Available 5275648 <- 整机内存状态（非必选）

@@ -10,8 +10,8 @@
 appRecovery模块提供了应用在故障状态下的恢复能力。
 
 > **说明：**
->
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 
+> 本模块同时适用于ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -34,12 +34,12 @@ import { appRecovery } from '@kit.AbilityKit';
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称       | 值   | 说明       |
-| ---------- | ---- | ---------- |
-| ALWAYS_RESTART   | 0    | 总是重启应用。 <br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| RESTART_WHEN_CPP_CRASH<sup>24+</sup>    | 0x0004    | 发生CPP_CRASH时重启应用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
-| NO_RESTART           | 0xFFFF    | 总是不重启应用。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| ------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ALWAYS_RESTART   | 0    | 总是重启应用。 <br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br/>- **ArkTS-Dyn起始版本**：9<br/>- **ArkTS-Sta起始版本**：23|
+| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br/>- **ArkTS-Dyn起始版本**：9<br/>- **ArkTS-Sta起始版本**：23|
+| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br/>- **ArkTS-Dyn起始版本**：9<br/>- **ArkTS-Sta起始版本**：23|
+| RESTART_WHEN_CPP_CRASH<sup>24+</sup>    | 0x0004    | 发生CPP_CRASH时重启应用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。<br/>- **ArkTS-Dyn起始版本**：24<br/>- **ArkTS-Sta起始版本**：24 |
+| NO_RESTART           | 0xFFFF    | 总是不重启应用。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br/>- **ArkTS-Dyn起始版本**：9<br/>- **ArkTS-Sta起始版本**：23|
 
 ## SaveOccasionFlag
 
@@ -49,14 +49,14 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本**：23
 
-| 名称                          | 值   | 说明                                                         |
-| ----------------------------- | ---- | ------------------------------------------------------------ |
-| SAVE_WHEN_ERROR            | 0x0001    | 当发生应用故障时保存。 |
-| SAVE_WHEN_BACKGROUND            | 0x0002    | 当应用切入后台时保存。 |
+| 名称                      | 值        | 说明                |
+| ------------------------ | --------- | ------------------- |
+| SAVE_WHEN_ERROR          | 0x0001    | 当发生应用故障时保存。|
+| SAVE_WHEN_BACKGROUND     | 0x0002    | 当应用切入后台时保存。|
 
 ## SaveModeFlag  
 
@@ -66,14 +66,14 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本**：23
 
-| 名称                          | 值   | 说明                                                         |
-| ----------------------------- | ---- | ------------------------------------------------------------ |
-| SAVE_WITH_FILE             | 0x0001    | 每次状态保存都会写入到本地文件缓存。 |
-| SAVE_WITH_SHARED_MEMORY             | 0x0002    | 状态先保存在内存中，应用故障退出时写入到本地文件缓存。 |
+| 名称                      | 值        | 说明                                               |
+| ------------------------ | --------- | -------------------------------------------------- |
+| SAVE_WITH_FILE           | 0x0001    | 每次状态保存都会写入到本地文件缓存。|
+| SAVE_WITH_SHARED_MEMORY  | 0x0002    | 状态先保存在内存中，应用故障退出时写入到本地文件缓存。|
 
 ## appRecovery.enableAppRecovery
 
@@ -87,17 +87,17 @@ enableAppRecovery(restart?: [RestartFlag](#restartflag), saveOccasion?: [SaveOcc
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| restart | [RestartFlag](#restartflag) | 否 | 枚举类型，发生对应故障时是否重启，默认为重启。 |
-| saveOccasion | [SaveOccasionFlag](#saveoccasionflag) | 否 | 枚举类型，状态保存时机，默认为故障时保存。 |
-| saveMode | [SaveModeFlag](#savemodeflag) | 否 | 枚举类型，状态保存方式， 默认为文件缓存。 |
+| ------------ | ------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| restart | [RestartFlag](#restartflag) | 否 | 枚举类型，发生对应故障时是否重启，默认为重启。|
+| saveOccasion | [SaveOccasionFlag](#saveoccasionflag) | 否 | 枚举类型，状态保存时机，默认为故障时保存。|
+| saveMode | [SaveModeFlag](#savemodeflag) | 否 | 枚举类型，状态保存方式， 默认为文件缓存。|
 
 **示例：**
     
@@ -137,9 +137,9 @@ API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Abili
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本**：23
 
 **示例：**
 
@@ -173,9 +173,9 @@ saveAppState(): boolean
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本**：9
 
 **返回值：**
 
@@ -215,9 +215,9 @@ saveAppState(context?: UIAbilityContext): boolean
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -263,9 +263,9 @@ setRestartWant(want: Want): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 

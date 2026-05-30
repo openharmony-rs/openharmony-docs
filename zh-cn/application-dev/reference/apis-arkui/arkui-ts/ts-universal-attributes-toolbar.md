@@ -1,8 +1,8 @@
 # 工具栏设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
-<!--Designer: @piggyguy-->
+<!--Owner: @pengzhiwen3-->
+<!--Designer: @dutie123-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 

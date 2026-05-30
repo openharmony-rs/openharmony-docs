@@ -1895,6 +1895,28 @@ setStyledPlaceholder(styledString: StyledString): void
 | ------- | ------ | ---- | ----- |
 | styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是 | 设置属性字符串样式的提示文本，其优先级高于[placeholder](#placeholder12)属性设置的提示文本。<br>提示文本不支持触发属性字符串[GestureStyle](./ts-universal-styled-string.md#gesturestyle)样式绑定的手势事件，以及[UrlStyle](./ts-universal-styled-string.md#urlstyle14)样式的超链接跳转能力。|
 
+### scrollToVisible
+
+scrollToVisible(range?: TextRange): void
+
+将指定范围内的内容滚动到可视区域。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明  |
+| ------- | ------ | ---- | ----- |
+| range | [TextRange](ts-text-common.md#textrange12) | 否    | 滚动到可视区域的内容范围，包括内容起始位置和终止位置。<br>起始位置应小于等于结束位置，否则接口调用无效。起始位置小于0视为0，结束位置大于全文长度视为全文长度。<br>未指定范围时，默认为全部内容。未指定起始位置，默认起始位置为0；未指定结束位置，默认结束位置为全文长度。 |
+
 ## RichEditorController
 
 RichEditor组件的控制器，继承自[RichEditorBaseController](#richeditorbasecontroller12)。
@@ -8427,3 +8449,76 @@ struct ShaderColorStyle {
 }
 ```
 ![RichEditorShaderStyle](figures/richEditorShaderStyle.png)
+
+### 示例43（将指定范围的文字滚动到可视区内）
+
+本示例通过[scrollToVisible](#scrolltovisible)将可视区外的文本滚动到可视区内。
+
+从API版本26.0.0开始，新增scrollToVisible接口。
+
+ArkTS-Dyn示例：
+
+```ts
+@Entry
+@Component
+struct ScrollToVisibleDemo {
+  controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 30 } };
+  exampleText: string = '第一段示例文本\n第二段示例文本\n第三段示例文本\n第四段示例文本' +
+    '\n第五段示例文本\n第六段示例文本\n第七段示例文本\n第八段示例文本';
+
+  build() {
+    Column() {
+      RichEditor({ controller: this.controller })
+        .onReady(() => {
+          this.controller.addTextSpan(this.exampleText, this.textSpanOptions)
+        })
+        .width('250vp')
+        .height('150vp')
+        .border({ width: 1, color: Color.Black })
+        .margin(10)
+      Button('滚动首段文本至可视区').onClick((event: ClickEvent) => {
+        this.controller.scrollToVisible({start: 0, end: 7})
+      }).margin(5)
+      Button('滚动末段文本至可视区').onClick((event: ClickEvent) => {
+        this.controller.scrollToVisible({start: 64, end: 71})
+      }).margin(5)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Row, ClickEvent, Color, Button, ButtonAttribute, RichEditor, RichEditorController, RichEditorOptions, RichEditorTextSpanOptions, State } from '@kit.ArkUI';
+@Entry
+@Component
+struct ScrollToVisibleDemo {
+  controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 30 } } as RichEditorTextSpanOptions;
+  exampleText: string = '第一段示例文本\n第二段示例文本\n第三段示例文本\n第四段示例文本' +
+    '\n第五段示例文本\n第六段示例文本\n第七段示例文本\n第八段示例文本';
+
+  build() {
+    Column() {
+      RichEditor({ controller: this.controller })
+        .onReady(() => {
+          this.controller.addTextSpan(this.exampleText, this.textSpanOptions)
+        })
+        .width('250vp')
+        .height('150vp')
+        .border({ width: 1, color: Color.Black })
+        .margin(10)
+      Button('滚动首段文本至可视区').onClick((event: ClickEvent) => {
+        this.controller.scrollToVisible({start: 0, end: 7})
+      }).margin(5)
+      Button('滚动末段文本至可视区').onClick((event: ClickEvent) => {
+        this.controller.scrollToVisible({start: 64, end: 71})
+      }).margin(5)
+    }
+  }
+}
+```
+
+![RichEditorScrollToVisible](figures/richEditorScrollToVisible.gif)

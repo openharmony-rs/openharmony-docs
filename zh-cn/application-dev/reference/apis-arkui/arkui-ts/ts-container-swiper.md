@@ -1891,6 +1891,38 @@ ArkTS-Sta: space(space: LengthMetrics | undefined): this
 | ------------------------------- | ------------ |
 | ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
 
+### indicatorIcon
+
+ArkTS-Dyn: indicatorIcon(iconList: Array&lt;IndicatorIconInfo&gt;): DotIndicator
+
+ArkTS-Sta: indicatorIcon(iconList: Array&lt;IndicatorIconInfo&gt; | undefined): this
+
+设置Swiper圆点导航点的图标。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型                         | 必填 | 说明                                                         |
+| ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
+| iconList  | ArkTS-Dyn: Array<[IndicatorIconInfo](#indicatoriconinfo)><br/>ArkTS-Sta: Array<[IndicatorIconInfo](#indicatoriconinfo)> \| undefined  | 是   | 设置圆点导航点图标。<br/>取值为undefined时，等同于未设置导航点图标。 |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ------------------------------- | ------------ |
+| ArkTS-Dyn: [DotIndicator](#dotindicator10)<br/>ArkTS-Sta: this | 返回当前圆点指示器。 |
+
 ## DigitIndicator<sup>10+</sup>
 
 构造数字指示器的样式，继承自[Indicator](#indicator10)。
@@ -2138,6 +2170,31 @@ ArkTS-Sta: selectedDigitFont(value: Font | undefined): this
 | ------------ | ------- | ---- | ---- | ---------------------------------------- |
 | isShown      | boolean | 否    | 是    | 预加载范围内的节点是否进行绘制。<br/>true表示预加载范围内的节点进行绘制；false表示预加载范围内的节点不进行绘制。<br/>默认值：false |
 | independent  | boolean | 否    | 是    | [cachedCount](#cachedcount24)是否按组计算。<br/>true表示cachedCount按实际子组件个数计算，不按组计算；false表示如果displayCount.swipeByGroup=true，则cachedCount按组计算，否则按实际子组件个数计算。<br/>默认值：false |
+
+## IndicatorIconInfo
+
+圆点导航点图标配置。
+
+> **说明：**
+>
+> 仅支持通过SymbolGlyphModifier对象的[fontColor](ts-basic-components-symbolGlyph.md#fontcolor)属性修改图标颜色。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称              | 类型                                 | 只读   | 可选  | 说明                                     |
+| ---------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
+| index            | ArkTS-Dyn: number<br/>ArkTS-Sta: int                             | 否   | 否    | 配置图标的导航点索引。<br/>取值范围：[0, swiper子组件的数量-1] <br/>**说明：** <br/>设置的值大于最大页面索引时，图标不显示。 |
+| icon            | [ResourceStr](ts-types.md#resourcestr) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)     | 否   | 否    | 配置的图标内容。<br/>**说明：** <br/>未设置有效图标时，显示圆点导航点。 |
 
 ## 事件
 
@@ -3765,3 +3822,93 @@ struct SwiperFakeDragExample {
 }
 ```
 ![swiper](figures/fakedrag.gif)
+
+### 示例12（配置Swiper组件导航点图标）
+
+该示例通过设置indicatorIcon接口，展示了Swiper组件如何配置导航点图标。
+
+从API版本26.0.0开始，新增[indicatorIcon](#indicatoricon)接口。
+
+ArkTS-Dyn示例：
+
+```ts
+// swiperIndicatorIcon.ets
+import { SymbolGlyphModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SwiperIndicatorIconExample {
+  private symbolModifier1: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi'));
+  @State arr: string[] = ['0', '1'];
+
+  build() {
+    Scroll() {
+      Column({ space: 20 }) {
+        Swiper() {
+          ForEach(this.arr, (item: string) => {
+            Text(item)
+              .textAlign(TextAlign.Center)
+              .width('100%')
+              .height('100%')
+              .backgroundColor(0xAFEEEE)
+          })
+        }
+        .width('90%')
+        .height('50%')
+        .indicator( // 设置圆点导航点样式
+          new DotIndicator()
+            .itemWidth(20)
+            .itemHeight(20)
+            .selectedItemWidth(20)
+            .selectedItemHeight(20)
+            .indicatorIcon([{ index: 0, icon: this.symbolModifier1 },
+              { index: 1, icon: $r('sys.media.ohos_ic_public_albums') }])) // 设置导航点图标
+      }
+      .width('100%')
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// swiperIndicatorIcon.ets
+import { Entry, Text, Column, Component, $r, Scroll, DotIndicator, Swiper, ForEach, TextAlign, State, SymbolGlyphModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SwiperIndicatorIconExample {
+  private symbolModifier1: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi'));
+  @State arr: string[] = ['0', '1'];
+
+  build() {
+    Scroll() {
+      Column() {
+        Swiper() {
+          ForEach(this.arr, (item: string) => {
+            Text(item)
+              .textAlign(TextAlign.Center)
+              .width('100%')
+              .height('100%')
+              .backgroundColor(0xAFEEEE)
+          })
+        }
+        .width('90%')
+        .height('50%')
+        .indicator( // 设置圆点导航点样式
+          new DotIndicator()
+            .itemWidth(20)
+            .itemHeight(20)
+            .selectedItemWidth(30)
+            .selectedItemHeight(30)
+            .indicatorIcon([{ index: 0, icon: this.symbolModifier1 },
+              { index: 1, icon: $r('sys.media.ohos_ic_public_albums') }])) // 设置导航点图标
+      }
+      .width('100%')
+    }
+  }
+}
+```
+
+![swiper](figures/indicatorIcon.jpg)

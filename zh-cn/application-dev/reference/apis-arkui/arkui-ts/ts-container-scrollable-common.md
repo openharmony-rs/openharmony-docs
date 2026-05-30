@@ -734,6 +734,8 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -1079,8 +1081,6 @@ ArkTS-Sta: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: int) 
 开始拖拽列表或网格元素时触发的回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1499,16 +1499,16 @@ type OnDidStopDraggingCallback = (willFling: boolean) => void
 
 ## OnVisibleIndexesChangeCallback
 
-type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
+ArkTS-Dyn: type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
-懒加载线性布局容器[LazyColumnLayout](ts-container-lazycolumnlayout.md)所显示的子组件索引发生变化时的回调类型。
+ArkTS-Sta: type OnVisibleIndexesChangeCallback = (start: int, end: int) => void
+
+懒加载布局容器[LazyColumnLayout](ts-container-lazycolumnlayout.md)、[LazyVGridLayout](ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md)所显示的子组件索引发生变化时的回调类型。
 
 > **说明：**
 >
-> - 当LazyColumnLayout没有子组件时，start和end都返回-1。
-> - 当LazyColumnLayout在可视区域内无子组件时，start和end都返回-1。
-
-**起始版本：** 26.0.0
+> - 当懒加载布局容器没有子组件时，start和end都返回-1。
+> - 当懒加载布局容器在可视区域内无子组件时，start和end都返回-1。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1516,12 +1516,16 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| start  | number | 是   | 可视区域起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
-| end    | number | 是   | 可视区域终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
+| start  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 可视区域起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
+| end    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 可视区域终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
 
 ## 示例
 

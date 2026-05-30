@@ -272,9 +272,13 @@
   - 行列与堆叠<!--rows-columns-and-stacking-->
     - [Flex](arkui-ts/ts-container-flex.md)
     - [Column](arkui-ts/ts-container-column.md)
+    - [ExtendableColumn (可扩展的Column)](arkui-ts/ts-container-extendablecolumn.md)
     - [Row](arkui-ts/ts-container-row.md)
+    - [ExtendableRow (可扩展的Row)](arkui-ts/ts-container-extendablerow.md)
     - [Stack](arkui-ts/ts-container-stack.md)
+    - [ExtendableStack (可扩展的Stack)](arkui-ts/ts-container-extendablestack.md)
     - [RelativeContainer](arkui-ts/ts-container-relativecontainer.md)
+    - [ExtendableRelativeContainer (可扩展的RelativeContainer)](arkui-ts/ts-container-extendablerelativecontainer.md)
      <!--Del-->
     - [Flex (系统接口)](arkui-ts/ts-container-flex-sys.md)
     - [Column (系统接口)](arkui-ts/ts-container-column-sys.md)
@@ -289,16 +293,20 @@
     - [SideBarContainer](arkui-ts/ts-container-sidebarcontainer.md)
   - 动态布局<!--dynamic-layout-->
     - [DynamicLayout](arkui-ts/ts-container-dynamiclayout.md)
-  - 断点容器<!--container-reader-->
+  - 容器断点<!--container-reader-->
     - [ContainerReader](arkui-ts/ts-container-containerreader.md)
   - 滚动与滑动<!--scroll-and-swipe-->
     - [List](arkui-ts/ts-container-list.md)
+    - [ExtendableList (可扩展的List)](arkui-ts/ts-container-extendablelist.md)
     - [ListItem](arkui-ts/ts-container-listitem.md)
+    - [ExtendableListItem (可扩展的ListItem)](arkui-ts/ts-container-extendablelistitem.md)
     - [ListItemGroup](arkui-ts/ts-container-listitemgroup.md)
     - [ArcList](arkui-ts/ts-container-arclist.md)
     - [ArcListItem](arkui-ts/ts-container-arclistitem.md)
     - [Grid](arkui-ts/ts-container-grid.md)
+    - [ExtendableGrid (可扩展的Grid)](arkui-ts/ts-container-extendablegrid.md)
     - [GridItem](arkui-ts/ts-container-griditem.md)
+    - [ExtendableGridItem (可扩展的GridItem)](arkui-ts/ts-container-extendablegriditem.md)
     - [Scroll](arkui-ts/ts-container-scroll.md)
     - [Swiper](arkui-ts/ts-container-swiper.md)
     - [ArcSwiper](arkui-ts/ts-container-arcswiper.md)
@@ -325,7 +333,9 @@
     - [ToolBarItem](arkui-ts/ts-basic-components-toolbaritem.md)
   - 按钮与选择<!--buttons-and-selections-->
     - [Button](arkui-ts/ts-basic-components-button.md)
+    - [ExtendableButton (可扩展的Button)](arkui-ts/ts-basic-components-extendablebutton.md)
     - [Toggle](arkui-ts/ts-basic-components-toggle.md)
+    - [ExtendableToggle (可扩展的Toggle)](arkui-ts/ts-basic-components-extendabletoggle.md)
     - [Checkbox](arkui-ts/ts-basic-components-checkbox.md)
     - [CheckboxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)
     - [UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md)
@@ -345,6 +355,7 @@
     - [选择器（Picker）公共接口](arkui-ts/ts-picker-common.md)
   - 文本与输入<!--text-and-input-->
     - [Text](arkui-ts/ts-basic-components-text.md)
+    - [ExtendableText (可扩展的Text)](arkui-ts/ts-basic-components-extendabletext.md)
     - [TextArea](arkui-ts/ts-basic-components-textarea.md)
     - [TextInput](arkui-ts/ts-basic-components-textinput.md)
     - [RichEditor](arkui-ts/ts-basic-components-richeditor.md)
@@ -368,6 +379,7 @@
     <!--DelEnd-->
   - 图片与视频<!--images-and-videos-->
     - [Image](arkui-ts/ts-basic-components-image.md)
+    - [ExtendableImage (可扩展的Image)](arkui-ts/ts-basic-components-extendableimage.md)
     - [ImageAnimator](arkui-ts/ts-basic-components-imageanimator.md)
     - [Video](arkui-ts/ts-media-components-video.md)
     - [图像类型定义](arkui-ts/ts-image-common.md)
@@ -640,6 +652,7 @@
         - [@Env](arkui-ts/ts-state-management-env-static.md)
   - 响应式环境变量<!--responsive-env-system-property-->
     - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
+    - [\@CustomEnv：自定义环境变量](arkui-ts/ts-custom-env-property.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
     - [像素单位](arkui-ts/ts-pixel-units.md)

@@ -25,7 +25,7 @@ TapGesture(value?: TapGestureParameters)
 
 触发点击手势事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为KEY，JOYSTICK。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,9 +53,9 @@ TapGesture(value?: TapGestureParameters)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| count<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 识别的连续点击次数。当设置的值小于1或不设置时，会被转化为默认值。<br/>默认值：1<br/>取值范围：[0, +∞)<br/>**说明：**<br/>1. 当配置多击时，上一次的最后一根手指抬起和下一次的第一根手指按下的超时时间为300毫秒。<br/>2. 当上次点击的位置与当前点击的位置距离超过60vp时，手势识别失败。在多指情况下，点击的位置为所有参与手势响应手指的平均位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
-| fingers<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 触发点击的手指数，最小为1指，&nbsp;最大为10指。当设置小于1的值或不设置时，会被转化为默认值。<br/>默认值：1<br/>**说明：**<br/>1. 当配置多指时，第一根手指按下后300毫秒内未有足够的手指数按下，手势识别失败；手指抬起时，抬起后剩余的手指数小于阈值时开始计时，如300ms内未全部抬起则手势识别失败。<br/>2. 实际点击手指数超过配置值，手势识别成功。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| distanceThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 点击手势移动阈值。当设置的值小于等于0或不设置时，会被转化为默认值。<br/>默认值：2³¹-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| count<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 识别的连续点击次数。当设置的值小于1或不设置时，会被转化为默认值。<br/>默认值：1<br/>取值范围：[0, +∞)<br/>**说明：**<br/>1. 当配置多击时，上一次的最后一根手指抬起和下一次的第一根手指按下的超时时间为300毫秒。<br/>2. 当上次点击的位置与当前点击的位置距离超过60vp时，手势识别失败。在多指情况下，点击的位置为所有参与手势响应手指的平均位置。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
+| fingers<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 触发点击的手指数，最小为1指，&nbsp;最大为10指。当设置小于1的值或不设置时，会被转化为默认值。<br/>默认值：1<br/>**说明：**<br/>1. 当配置多指时，第一根手指按下后300毫秒内未有足够的手指数按下，手势识别失败；手指抬起时，抬起后剩余的手指数小于阈值时开始计时，如300ms内未全部抬起则手势识别失败。<br/>2. 实际点击手指数超过配置值，手势识别成功。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| distanceThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 点击手势移动阈值。当设置的值小于等于0或不设置时，会被转化为默认值。<br/>默认值：2³¹-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 
 ## 事件
 
@@ -73,7 +73,7 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 
 点击手势识别成功回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,14 +99,14 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| windowX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| windowY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| displayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| displayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| globalDisplayX<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
-| globalDisplayY<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| windowX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| windowY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| displayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| displayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| globalDisplayX<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
 
 ### getCurrentLocalPosition
 
@@ -116,7 +116,7 @@ ArkTS-Sta: default getCurrentLocalPosition(): Coordinate2D
 
 获取点击位置相对于当前组件实时位置的左上角坐标。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
