@@ -64,6 +64,23 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 4. 资源销毁。
 
    <!-- @[audioSuite_DestroyRealTimeRendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 销毁流构造器。
+   OH_AudioStreamBuilder_Destroy(rendererBuilder);
+   
+   // 销毁节点。
+   OH_AudioSuiteEngine_DestroyNode(inputNode);
+   OH_AudioSuiteEngine_DestroyNode(eqNode);
+   OH_AudioSuiteEngine_DestroyNode(outputNode);
+   
+   // 销毁管线。
+   OH_AudioSuiteEngine_DestroyPipeline(audioSuitePipeline);
+   
+   // 销毁引擎。
+   OH_AudioSuiteEngine_Destroy(audioSuiteEngine);
+   ```
 
 ## 注意事项
 
