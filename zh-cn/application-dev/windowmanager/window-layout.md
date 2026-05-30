@@ -191,6 +191,68 @@ const TAG = 'IndexPage';
   使用示例：
 
   <!-- @[sub_move_resize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  // EntryAbility.ets
+  import { UIAbility } from '@kit.AbilityKit';
+  import { window, display } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import hilog from '@ohos.hilog';
+  
+  const DOMAIN = 0x0000;
+  const TAG = 'Sample_AdjustLayout';
+  
+  // ...
+    /**
+     * 创建子窗口并调整位置大小
+     */
+    private createSubWindow(windowStage: window.WindowStage): void {
+      if (!this.mainWindow) {
+        return;
+      }
+      const mainRect = this.mainWindow.getWindowProperties().windowRect;
+      const subWidth = 600;
+      const subHeight = 300;
+      const margin = 24;
+  
+      // 计算子窗口位置：放在主窗口右下角
+      const subX = Math.max(
+        mainRect.left + margin,
+        mainRect.left + mainRect.width - subWidth - margin
+      );
+  
+      const subY = Math.max(
+        mainRect.top + margin,
+        mainRect.top + mainRect.height - subHeight - margin
+      );
+  
+      // 创建子窗口
+      windowStage.createSubWindow('DemoSubWindow').then((subWindow: window.Window) => {
+        hilog.info(DOMAIN, TAG, 'createSubWindow success');
+  
+        this.subWindow = subWindow;
+        AppStorage.setOrCreate<window.Window>('SUB_WINDOW', subWindow);
+        AppStorage.setOrCreate<window.Size>('WINDOW_SIZE', {
+          width: subWidth,
+          height: subHeight
+        });
+  
+        // 注册子窗口尺寸变化监听
+        this.registerSubWindowRectChange(subWindow);
+        // 设置子窗口尺寸
+        this.subWindow!.resizeAsync(subWidth, subHeight);
+        // 移动子窗口位置
+        this.subWindow!.moveWindowToAsync(subX, subY);
+        // 子窗口设置为默认可拖拽
+        this.subWindow!.enableDrag(true);
+        // 加载子窗口内容页面
+        this.loadSubWindowContent(this.subWindow!);
+      }).catch((err: Error) => {
+        const businessError = err as BusinessError;
+        hilog.error(DOMAIN, TAG, `createSubWindow failed: ${JSON.stringify(businessError)}`);
+      });
+    }
+  ```
 
 ### 通过拖拽改变窗口的位置大小
 
