@@ -100,7 +100,7 @@ FoldSplitContainer({primary: RegionBuilder, secondary: RegionBuilder, extra?: Re
 | isExtraRegionPerpendicular | boolean | 否 | 是 | 设置为true时，扩展区域从上到下贯穿整个组件；设置为false时，扩展区域不贯穿整个组件。此字段仅在extra有效时生效。<br/>默认值：true |
 | verticalSplitRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: [PresetSplitRatio](#presetsplitratio) | 否 | 是 | 主要区域与次要区域之间的高度比例。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_1V1 |
 | horizontalSplitRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: [PresetSplitRatio](#presetsplitratio) | 否 | 是 | 主要区域与扩展区域之间的宽度比例。此字段在extra有效时生效。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_3V2 |
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 是 | 扩展区域的位置信息。当isExtraRegionPerpendicular设置为false时，此字段生效。<br/>默认值：ExtraRegionPosition.top |
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 是 | 扩展区域的位置信息。当isExtraRegionPerpendicular设置为false时，此字段生效。<br/>默认值：ExtraRegionPosition.TOP |
 
 ## HoverModeRegionLayoutOptions
 
@@ -118,7 +118,7 @@ FoldSplitContainer({primary: RegionBuilder, secondary: RegionBuilder, extra?: Re
 | -------- | -------- | -------- | -------- | -------- |
 | showExtraRegion | boolean | 否 | 是 | 可折叠屏幕在半折叠状态下是否显示扩展区域。设置为true时表示显示扩展区域，设置为false时表示不显示扩展区域。<br/>默认值：false |
 | horizontalSplitRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: [PresetSplitRatio](#presetsplitratio) | 否 | 是 | 主要区域与扩展区域之间的宽度比例，当且仅当extra有效时此字段才生效。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_3V2 |
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 是 | 扩展区域的位置信息，当且仅当showExtraRegion设置为true时此字段才生效。<br/>默认值：ExtraRegionPosition.top |
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 是 | 扩展区域的位置信息，当且仅当showExtraRegion设置为true时此字段才生效。<br/>默认值：ExtraRegionPosition.TOP |
 
 > **说明：**
 >
