@@ -339,7 +339,8 @@ config.videoInfo.videoCapInfo.displayId = 0;
 // (可选)若有期望录制的窗口，可传入单个窗口Id。
 int32_t* missionIds = new int32_t[1]{61}; // 表示弹出的Picker默认选中61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
-config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+int32_t missionIdsLen = sizeof(missionIds) / sizeof(missionIds[0]);
+config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIdsLen);
 
 // 在配置参数结束后执行"delete[] missionIds"。
 ```
@@ -360,7 +361,8 @@ config.videoInfo.videoCapInfo.displayId = 0;
 // 传入多个窗口Id。
 int32_t* missionIds = new int32_t[2]{60, 61}; // 表示期望同时录制60、61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
-config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+int32_t missionIdsLen = sizeof(missionIds) / sizeof(missionIds[0]);
+config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIdsLen);
 
 // 在配置参数结束后执行"delete[] missionIds"。
 ```

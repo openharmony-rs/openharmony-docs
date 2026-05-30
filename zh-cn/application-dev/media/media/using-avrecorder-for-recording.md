@@ -373,15 +373,11 @@ async function audioRecording(context: common.Context): Promise<void> {
   // 关闭录制文件fd。
   try {
     if (audioFile) {
-      await fileIo.close(audioFile.fd);
+      fileIo.closeSync(audioFile.fd);
     }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`Failed to close fd, error code: ${err.code}, message: ${err.message}`);
-  } finally {
-    if (audioFile) {
-      fileIo.closeSync(audioFile.fd);
-    }
   }
 }
 ```
