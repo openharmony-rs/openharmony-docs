@@ -26,3 +26,7 @@
   - [BLE Advertising and Scanning Development](ble-development-guide.md)
 
   - [GATT-based BLE Connection and Data Transmission Development](gatt-development-guide.md)
+
+- Bluetooth FAQs<!--bluetooth-faq-->
+
+  - [2900099 Bluetooth API Call Error](bluetooth-faq-2900099-errorcode.md)
