@@ -50,7 +50,7 @@ ArkWeb图片上传可参考：[使用Web组件上传文件](../../../web/web-fil
 
 示例代码如下：
 
-<!-- @[transcoding_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/TranscodingUtility.ets) -->        
+<!-- @[transcoding_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/TranscodingUtility.ets) -->         
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

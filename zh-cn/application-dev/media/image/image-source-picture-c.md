@@ -150,7 +150,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
    > 并非所有图片都包含辅助图。在获取辅助图前，应先调用`OH_PictureNative_GetAuxiliaryPicture`接口尝试获取。其他辅助图类型请参考[Image_AuxiliaryPictureType](../../reference/apis-image-kit/capi-picture-native-h.md#image_auxiliarypicturetype)。
 
 
-   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->     
+   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->      
    
    ``` C++
    // 释放ImageSource。
