@@ -175,7 +175,7 @@ struct ParentComponent {
 在 `build()` 函数中声明的所有语句统称为UI描述，这些描述需遵循以下规则：
 
 -  [@Entry](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-entry-static.md)装饰的自定义组件，其build()函数下的根节点是容器组件，并且必须和唯一存在。[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach-sta.md)不能作为根节点。
-- 使用 [`@Component`](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-component-static.md) 或 [`@ComponentV2`](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-componentv2-static.md) 装饰的自定义组件，其`build()` 函数下的根节点必须唯一且必要，可以是非容器组件，但 `ForEach` 不能作为根节点。
+- 使用[@Component](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-component-static.md)或[@ComponentV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-componentv2-static.md)装饰的自定义组件，其`build()` 函数下的根节点必须唯一且必要，可以是非容器组件，但 `ForEach` 不能作为根节点。
 
 ```typescript
   'use static'
@@ -345,7 +345,7 @@ struct MyComponent {
 
 **在 build() 函数中调用耗时的同步接口示例**
 
-在build()函数中，不建议编写非UI逻辑，如调用剪切板接口[getDataSync](../../../application-dev/reference/apis-basic-services-kit/js-apis-pasteboard.md)获取剪切板数据或执行for循环等。这些操作会增加构建时间，影响UI性能。
+在build()函数中，不建议编写非UI逻辑，如调用剪切板接口[getDataSync](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11)获取剪切板数据或执行for循环等。这些操作会增加构建时间，影响UI性能。
 
 ```typescript
 'use static'
@@ -537,11 +537,12 @@ struct MyComponent {
 
 ## 自定义组件支持跨Ability迁移
 
-API版本26.0.0前，自定义组件不支持跨Ability迁移，自定义组件实例在跨Ability后，改变自定义组件的状态变量将无法触发UI组件刷新。
+API版本26.0.0之前，自定义组件不支持跨Ability迁移，自定义组件实例在跨Ability后，改变自定义组件的状态变量将无法触发UI组件刷新。
 
-API版本26.0.0开始，自定义组件支持跨Ability迁移。
+从API版本26.0.0开始，自定义组件支持跨Ability迁移，迁移后的自定义组件能够正常触发UI刷新。
 
 需要注意：
+
 仅支持组件树上的自定义组件迁移。对于未挂载在组件树上的自定义组件将不支持迁移。
 
 在下面的示例中：
@@ -552,33 +553,50 @@ API版本26.0.0开始，自定义组件支持跨Ability迁移。
    - 自定义组件`ComponentUnderBuilderNode`在被挂载到新的Ability下时，会通知切换Ability的自定义组件更新其所属的Ability实例ID。
    - 点击自定义组件`ComponentUnderBuilderNode`内```Button('change message')```，改变状态变量`message`的值，触发```@Watch('messageUpdate') ```回调和UI刷新。
 
-下面的示例包含了创建新的Ability流程，具体示例可参考[starAbility](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)。
+下面的示例包含了创建新的Ability流程，具体示例可参考[startAbility](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)。
 
 ``` TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
+'use static'
 
-const DOMAIN = 0x0000;
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+import hilog from '@ohos.hilog';
 
-export default class EntryAbility extends UIAbility {
+class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', 'EntryAbility onCreate');
+  }
+
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
-        return;
-      }
-      hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
-    });
+    hilog.info(0x0000, 'testTag', 'EntryAbility onWindowStageCreate');
+    try {
+      // 加载Index页面
+      windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+        if (err && err.code) {
+          hilog.info(0x0000, 'testTag', 'loadContent error');
+          return;
+        }
+        hilog.info(0x0000, 'testTag', 'loadContent ok');
+      });
+    } catch (e) {
+      hilog.info(0x0000, 'testTag', 'loadContent catch error: ' + e.message);
+    }
   }
 }
 ```
 
 ``` TypeScript
+'use static'
+
 import { MyNodeController } from './MyNodeController';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+import common from '@ohos.app.ability.common';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
+import { Entry, Component, Column, Text, Button, NodeContainer, ColumnOptions } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
@@ -589,41 +607,42 @@ struct Index {
 
   startNewAbility() {
     const want: Want = {
-      bundleName: 'com.example.enablecustomcomponentcrossability',
+      // 应用包名
+      bundleName: 'com.example.customcomponentcross',
       abilityName: 'ExtraAbility'
     };
 
     try {
       const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
-      context.startAbility(want, (err: BusinessError) => {
-        if (err.code) {
-          hilog.error(DOMAIN, 'testTag', `startAbility failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        hilog.info(DOMAIN, 'testTag', 'startAbility succeed');
-      });
+      context!.startAbility(want);
     } catch (err) {
-      hilog.error(DOMAIN, 'testTag',
-        `startAbility failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+      hilog.error(DOMAIN, 'testTag', `startAbility failed, message is ${err.message}`);
     }
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column({ space: 10} as ColumnOptions) {
       Text('Index')
-      // 创建globalBuilderNode，并将globalBuilderNode下的节点挂在NodeContainer的占位节点下
-      Button('add node to tree').width(200).onClick(() => {
-        this.nodeController.addBuilderNode();
-      })
-      // 从NodeContainer的占位节点下移除globalBuilderNode下的节点
-      Button('remove node from tree').width(200).onClick(() => {
-        this.nodeController.removeBuilderNode();
-      })
-      // 拉起新的Ability
-      Button('start new ability').width(200).onClick(() => {
-        this.startNewAbility();
-      })
-      NodeContainer(this.nodeController).backgroundColor('#FFEEF0')
+      Button('add node to tree')
+        .width(200)
+        .onClick(() => {
+          // 创建globalBuilderNode，并将globalBuilderNode下的节点挂在NodeContainer的占位节点下
+          this.nodeController.addBuilderNode();
+        })
+      Button('remove node from tree')
+        .width(200)
+        .onClick(() => {
+          // 从NodeContainer的占位节点下移除globalBuilderNode下的节点
+          this.nodeController.removeBuilderNode();
+        })
+      Button('start new ability')
+        .width(200)
+        .onClick(() => {
+          // 拉起新的Ability
+          this.startNewAbility();
+        })
+      NodeContainer(this.nodeController)
+        .backgroundColor('#FFEEF0')
     }
     .width('100%')
     .height('100%')
@@ -632,12 +651,15 @@ struct Index {
 ```
 
 ``` TypeScript
-import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+'use static'
+
+import { Builder, BuilderNode, FrameNode, NodeController, UIContext, wrapBuilder,
+        Column, Component, State, Watch, Text, Button, ColumnOptions } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
 
 const DOMAIN = 0x0000;
 
-let globalBuilderNode: BuilderNode<[]> | undefined = undefined;
+let globalBuilderNode: BuilderNode | undefined = undefined;
 
 export class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -650,24 +672,28 @@ export class MyNodeController extends NodeController {
   }
 
   addBuilderNode(): void {
+    // 如果globalBuilderNode尚未创建，则创建一个新的BuilderNode
     if (!globalBuilderNode && this.uiContext) {
-      globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildComponent), undefined);
+      globalBuilderNode = new BuilderNode<undefined>(this.uiContext as UIContext);
+      globalBuilderNode!.build(wrapBuilder(buildComponent));
     }
+    // 将globalBuilderNode下的节点挂载到NodeContainer的占位节点下
     if (this.rootNode && globalBuilderNode) {
-      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
+      this.rootNode!.appendChild(globalBuilderNode!.getFrameNode()!);
     }
   }
 
   removeBuilderNode(): void {
+    // 从NodeContainer的占位节点下移除globalBuilderNode下的节点
     if (this.rootNode && globalBuilderNode) {
-      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
+      this.rootNode!.removeChild(globalBuilderNode!.getFrameNode()!);
     }
   }
 
   disposeNode(): void {
+    // 销毁globalBuilderNode下的节点
     if (this.rootNode && globalBuilderNode) {
-      globalBuilderNode.dispose();
+      globalBuilderNode!.dispose();
       globalBuilderNode = undefined;
     }
   }
@@ -684,45 +710,61 @@ function buildComponent() {
 struct ComponentUnderBuilderNode {
   @State @Watch('messageUpdate') message: string = 'hello';
 
-  messageUpdate() {
+  messageUpdate(propertyName: string) {
     hilog.info(DOMAIN, 'testTag', `ComponentUnderBuilderNode message change ${this.message}`);
   }
 
   build() {
-    Column() {
+    Column({ space: 10} as ColumnOptions) {
       Text(`message: ${this.message}`)
       // 改变message的值，触发@Watch('messageUpdate')回调和Text组件的刷新
-      Button('change message').onClick(() => {
-        this.message += ' world';
-      })
+      Button('change message')
+        .onClick(() => {
+          this.message += ' world';
+        })
     }
   }
 }
 ```
 
 ``` TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
+'use static'
 
-const DOMAIN = 0x0000;
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+import hilog from '@ohos.hilog';
 
-export default class ExtraAbility extends UIAbility {
+class ExtraAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', 'ExtraAbility onCreate');
+  }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    windowStage.loadContent('pages/ExtraIndex', (err) => {
-      if (err.code) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
-        return;
-      }
-      hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
-    });
+    hilog.info(0x0000, 'testTag', 'ExtraAbility onWindowStageCreate');
+    try {
+      // 加载ExtraIndex页面
+      windowStage.loadContent('extraability/ExtraIndex', (err: BusinessError<void> | null): void => {
+        if (err && err.code) {
+          hilog.info(0x0000, 'testTag', 'loadContent error');
+          return;
+        }
+        hilog.info(0x0000, 'testTag', 'loadContent ok');
+      });
+    } catch (e) {
+      hilog.info(0x0000, 'testTag', 'loadContent catch error: ' + e.message);
+    }
   }
 }
 ```
 
 ``` TypeScript
-import { MyNodeController } from './MyNodeController';
+'use static'
+
+import { Entry, Text, Column, Component, Button, NodeContainer, ColumnOptions } from '@kit.ArkUI';
+import { MyNodeController } from '../pages/MyNodeController';
 
 @Entry
 @Component
@@ -730,24 +772,33 @@ struct ExtraIndex {
   private nodeController: MyNodeController = new MyNodeController();
 
   build() {
-    Column({ space: 10 }) {
+    Column({ space: 10} as ColumnOptions) {
       Text('ExtraIndex')
-      // 将globalBuilderNode下的节点挂在NodeContainer的占位节点下
-      Button('add node to tree').width(200).onClick(() => {
-        this.nodeController.addBuilderNode();
-      })
-      // 从NodeContainer的占位节点下移除globalBuilderNode下的节点
-      Button('remove node from tree').width(200).onClick(() => {
-        this.nodeController.removeBuilderNode();
-      })
-      // 销毁globalBuilderNode下的节点
-      Button('dispose node').width(200).onClick(() => {
-        this.nodeController.disposeNode();
-      })
-      NodeContainer(this.nodeController).backgroundColor('#FFEEF0')
+      Button('add node to tree')
+        .width(200)
+        .onClick(() => {
+          // 将globalBuilderNode下的节点挂在NodeContainer的占位节点下
+          this.nodeController.addBuilderNode();
+        })
+      Button('remove node from tree')
+        .width(200)
+        .onClick(() => {
+          // 从NodeContainer的占位节点下移除globalBuilderNode下的节点
+          this.nodeController.removeBuilderNode();
+        })
+      Button('dispose node')
+        .width(200)
+        .onClick(() => {
+          // 销毁globalBuilderNode下的节点
+          this.nodeController.disposeNode();
+        })
+      NodeContainer(this.nodeController)
+        .backgroundColor('#FFEEF0')
     }
     .width('100%')
     .height('100%')
   }
 }
 ```
+
+![customcomponent-cross-ability](../figures/component-cross-ability-static.gif)
