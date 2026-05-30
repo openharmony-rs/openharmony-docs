@@ -67,6 +67,54 @@
 
 <!-- @[aspectRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// Index.ets
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0x0000;
+const TAG = 'IndexPage';
+
+// ...
+  /**
+   步骤2：为主窗口设置指定宽高比例
+   */
+  private setWindowAspectRatioEnabled(enabled: boolean): void {
+    const mainWindow = this.getMainWindow();
+    if (!mainWindow) {
+      this.resultText = '找不到主窗口';
+      return;
+    }
+    if (enabled) {
+      const ratio = 1.5;
+      // 设置可布局内容宽高比限制
+      mainWindow.setAspectRatio(ratio)
+        .then(() => {
+          AppStorage.setOrCreate('WINDOW_ASPECT_RATIO_ENABLED', enabled);
+          this.resultText = '已开启比例限制';
+        })
+        .catch((err: Error) => {
+          const businessError = err as BusinessError;
+          this.resultText = `设置比例限制失败: ${JSON.stringify(businessError)}`;
+          hilog.error(DOMAIN, TAG, `set aspect ratio failed: ${JSON.stringify(businessError)}`);
+        });
+    } else {
+      // 取消可布局内容宽高比限制
+      mainWindow.resetAspectRatio()
+        .then(() => {
+          AppStorage.setOrCreate('WINDOW_ASPECT_RATIO_ENABLED', enabled);
+          this.resultText = '已关闭比例限制';
+        })
+        .catch((err: Error) => {
+          const businessError = err as BusinessError;
+          this.resultText = `重置比例限制失败: ${JSON.stringify(businessError)}`;
+          hilog.error(DOMAIN, TAG, `reset aspect ratio failed: ${JSON.stringify(businessError)}`);
+        });
+    }
+  }
+```
+
 ## 调整窗口位置与大小
 
 
