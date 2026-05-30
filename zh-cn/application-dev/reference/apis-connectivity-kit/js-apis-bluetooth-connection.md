@@ -1941,7 +1941,7 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
 | 参数名     | 类型    | 必填  | 说明                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是   | 表示需要连接的对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。|
+| deviceId | string | 是   | 表示需要断开连接连接的对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。|
 
 **返回值：**
 
