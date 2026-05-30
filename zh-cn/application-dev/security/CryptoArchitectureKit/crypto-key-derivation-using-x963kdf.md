@@ -21,7 +21,7 @@
    - key：原始密钥材料。
 
       如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
-   - info：可选的上下文与应用相关信息，可为空，用于拓展短密钥。
+   - info：可选的上下文与应用相关信息，可为空，用于扩展短密钥。
    - keySize：目标密钥的字节长度，需要为正整数。
 
 2. 调用[cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11)，指定字符串参数'X963KDF|SHA256'，创建密钥派生算法为X963KDF、HMAC函数摘要算法为SHA256的密钥派生函数对象（Kdf）。

@@ -13,7 +13,7 @@
 
 ## RSA
 
-[RSA](crypto-asym-key-generation-conversion-spec.md#rsa)为非对称加密算法，加密长度需要在固定长度进行，在实际应用中，如果数据量无法达到固定的长度要求，可以通过不同的填充模式进行数据填充。
+[RSA](crypto-asym-key-generation-conversion-spec.md#rsa)为非对称加密算法，加密数据长度需满足固定长度要求，在实际应用中，如果数据量无法达到固定的长度要求，可以通过不同的填充模式进行数据填充。
 
 算法库目前提供了RSA加解密常用的三种模式。
 

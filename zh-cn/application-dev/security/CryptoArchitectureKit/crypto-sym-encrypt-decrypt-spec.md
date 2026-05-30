@@ -168,7 +168,7 @@
 
 ## ChaCha20
 
-从API22开始，算法库支持该算法。
+从API版本22开始，算法库支持该算法。
 
 算法库当前提供了[ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20)加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
