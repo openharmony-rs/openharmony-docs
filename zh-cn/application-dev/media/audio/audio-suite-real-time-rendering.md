@@ -40,6 +40,15 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 1. 在初始化时，创建[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)管线（包括输入节点、均衡器节点、输出节点）。
   
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
+   
+   ``` C
+   struct AudioDataInfo {
+       uint8_t *buffer = nullptr;   // 音频数据。
+       int32_t bufferSize = 0;      // 音频数据总大小。
+       int32_t totalWriteSize = 0;  // 处理过的音频数据总大小。
+       int32_t totalReadSize = 0;  // 已读取的音频数据总大小。
+   };
+   ```
    <!-- @[audioSuite_RealTimeRenderingInputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
    
    ``` C++
