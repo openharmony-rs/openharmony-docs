@@ -4556,7 +4556,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 
 syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-批量同步多个联系人至联系人数据库。每次最多可批量同步400个联系人。调用方必须处于前台。
+批量同步多个联系人至联系人数据库。每次最多可批量同步400个联系人。同步三方应用自身联系人至本机。调用方必须处于前台。
 
 **起始版本**：26.0.0
 
@@ -4654,7 +4654,7 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
 
 queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&gt;
 
-查询调用应用程序正在进行的联系人同步信息。如果返回的联系人同步信息为空，则调用方未进行联系人同步或联系人同步已完成。
+查询当前应用的联系人信息同步状态。返回空值表示应用未发起同步或同步已完成。
 
 **起始版本**：26.0.0
 
