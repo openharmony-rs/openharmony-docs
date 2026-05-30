@@ -120,30 +120,30 @@ import { Param } from '@kit.ArkUI';
     Text,
     Trace
   } from '@kit.ArkUI';
-
+  
   class RawObject {
     name: string;
-
+  
     constructor(name: string) {
       this.name = name;
     }
   }
-
+  
   @ObservedV2
   class ObservedObject {
     @Trace name: string;
-
+  
     constructor(name: string) {
       this.name = name;
     }
   }
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local rawObject: RawObject = new RawObject('rawObject');
     @Local observedObject: ObservedObject = new ObservedObject('observedObject');
-
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
@@ -177,12 +177,12 @@ import { Param } from '@kit.ArkUI';
       .width('100%')
     }
   }
-
+  
   @ComponentV2
   struct Child {
     @Require @Param rawObject: RawObject;
     @Require @Param observedObject: ObservedObject;
-
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
