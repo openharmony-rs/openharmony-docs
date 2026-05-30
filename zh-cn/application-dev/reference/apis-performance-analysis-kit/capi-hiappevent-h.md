@@ -762,7 +762,7 @@ HiAppEvent_Watcher* OH_HiAppEvent_CreateWatcher(const char* name)
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)* | 接口调用成功时返回指向的新建监听器的指针，name参数异常时返回nullptr。 |
+| [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)* | 接口调用成功时返回指向的新建监听器的指针，当name为空指针时返回nullptr。 |
 
 ### OH_HiAppEvent_DestroyWatcher()
 
@@ -801,7 +801,7 @@ int OH_HiAppEvent_SetTriggerCondition(HiAppEvent_Watcher* watcher, int row, int 
 | [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)* watcher | 指向监听器的指针（即OH_HiAppEvent_CreateWatcher接口返回的指针）。 |
 | int row | 当输入值大于0，且新接收事件的数量大于等于该值时，将调用设置的onTrigger回调函数；<br> 当输入值小于等于0时，不再以接收数量多少为维度来触发onTrigger回调。 |
 | int size | 当输入值大于0，且新接收事件的大小(单个事件大小计算方式为，将事件转换为json字符串后，字符串的长度)大于等于该值时，将调用设置的onTrigger回调函数；<br> 当输入值小于等于0时，不再以新接收事件大小为维度触发onTrigger回调。 |
-| int timeOut | 单位秒，当输入值大于0，每经过timeout秒，将检查监视器是否存在新接收到的事件，如果存在将触发onTrigger回调。<br> 触发onTrigger后，经过timeOut秒后将再次检查是否存在新接收到的事件。<br> 当输入值小于等于0，不以超时时间为维度触发onTrigger回调。 |
+| int timeOut | 单位为秒，实际生效值为timeOut×30秒。timeOut>0时，每timeOut×30秒检查新事件，有则触发onTrigger，触发后重新计时；timeOut≤0时不启用超时触发。|
 
 **返回：**
 
@@ -1050,8 +1050,8 @@ int OH_HiAppEvent_SetReportPolicy(HiAppEvent_Processor* processor, int periodRep
 | 参数项 | 描述 |
 | -- | -- |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | 指向处理者的指针（即OH_HiAppEvent_CreateProcessor接口返回的指针）。 |
-| int periodReport | 事件定时上报周期，单位为秒。 |
-| int batchReport | 事件上报阈值，当事件条数达到阈值时上报事件。 |
+| int periodReport | 事件定时上报周期，单位为秒。传入数值需大于等于0 |
+| int batchReport | 事件上报阈值，当事件条数达到阈值时上报事件。传入数值范围[0,1000] |
 | bool onStartReport | 数据处理者在启动时是否上报事件。配置值为true表示上报事件，false表示不上报事件。 |
 | bool onBackgroundReport | 应用程序进入后台时是否上报事件。配置值为true表示上报事件，false表示不上报事件。 |
 
