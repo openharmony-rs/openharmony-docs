@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 KioskManager模块提供Kiosk模式管理能力，包括系统进入/退出Kiosk模式操作。
 
@@ -30,7 +30,7 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 
@@ -42,7 +42,7 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 |------|------|
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -52,8 +52,8 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 |---------|---------|
 | 801 | Capability not supported. |
 | 16000050 | Failed to connect to the system service. |
-| 16000110 | Current application is not in kiosk app list, can not enter kiosk mode. |
-| 16000111 | System is already in kiosk mode, can not enter again. |
+| 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
+| 16000111 | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
 | 16000113 | Current ability is not in foreground. |
 
 **示例**：
@@ -98,7 +98,7 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 
@@ -110,7 +110,7 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 |------|------|
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -120,8 +120,8 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 |---------|---------|
 | 801 | Capability not supported. |
 | 16000050 | Failed to connect to the system service. |
-| 16000110 | Current application is not in kiosk app list, can not exit kiosk mode. |
-| 16000112 | Current application is not in kiosk mode, can not exit. |
+| 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
+| 16000112 | The current application is not in Kiosk mode and cannot exit Kiosk mode. |
 
 **示例**：
 

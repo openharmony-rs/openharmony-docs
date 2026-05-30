@@ -1,4 +1,10 @@
 # @ohos.bundleState (设备使用信息统计)(系统接口)
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @xufu7-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供设备使用信息统计能力。
 
@@ -39,9 +45,9 @@ queryBundleStateInfos(begin: number, end: number, callback: AsyncCallback&lt;Bun
 
 | 参数名      | 类型                                       | 必填   | 说明                                      |
 | -------- | ---------------------------------------- | ---- | --------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，单位毫秒。                                   |
-| end      | number                                   | 是    | 结束时间，单位毫秒。                                   |
-| callback | AsyncCallback&lt;[BundleActiveInfoResponse](js-apis-deviceUsageStatistics-sys.md#bundleactiveinforesponse)&gt; | 是    | 指定的callback回调方法。返回指定起始和结束时间内应用使用时长统计信息。 |
+| begin    | number                                   | 是    | 起始时间，单位：ms。                                   |
+| end      | number                                   | 是    | 结束时间，单位：ms。                                   |
+| callback | AsyncCallback&lt;[BundleActiveInfoResponse](js-apis-deviceUsageStatistics-sys.md#bundleactiveinforesponsedeprecated)&gt; | 是    | 指定的callback回调方法。返回指定起始和结束时间内应用使用时长统计信息。 |
 
 **示例**：
 
@@ -53,8 +59,8 @@ bundleState.queryBundleStateInfos(0, 20000000000000, (err: BusinessError ,
   if (err) {
     console.error('BUNDLE_ACTIVE queryBundleStateInfos callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE queryBundleStateInfos callback success.');
-    console.log('BUNDLE_ACTIVE queryBundleStateInfos callback result ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE queryBundleStateInfos callback success.');
+    console.info('BUNDLE_ACTIVE queryBundleStateInfos callback result ' + JSON.stringify(res));
   }
 });
 ```
@@ -76,14 +82,14 @@ queryBundleStateInfos(begin: number, end: number): Promise&lt;BundleActiveInfoRe
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，单位毫秒。 |
-| end   | number | 是    | 结束时间，单位毫秒。 |
+| begin | number | 是    | 起始时间，单位：ms。 |
+| end   | number | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
 | 类型                                       | 说明                                     |
 | ---------------------------------------- | -------------------------------------- |
-| Promise&lt;[BundleActiveInfoResponse](js-apis-deviceUsageStatistics-sys.md#bundleactiveinforesponse)&gt; | 指定的Promise回调方法。返回指定起始和结束时间内应用使用时长统计信息。 |
+| Promise&lt;[BundleActiveInfoResponse](js-apis-deviceUsageStatistics-sys.md#bundleactiveinforesponsedeprecated)&gt; | 指定的Promise回调方法。返回指定起始和结束时间内应用使用时长统计信息。 |
 
 **示例**：
 
@@ -91,8 +97,8 @@ queryBundleStateInfos(begin: number, end: number): Promise&lt;BundleActiveInfoRe
 import { BusinessError } from '@ohos.base';
 
 bundleState.queryBundleStateInfos(0, 20000000000000).then((res: bundleState.BundleActiveInfoResponse) => {
-  console.log('BUNDLE_ACTIVE queryBundleStateInfos promise success.');
-  console.log('BUNDLE_ACTIVE queryBundleStateInfos promise result ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE queryBundleStateInfos promise success.');
+  console.info('BUNDLE_ACTIVE queryBundleStateInfos promise result ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryBundleStateInfos promise failed, because: ' + err.code);
 });
@@ -115,9 +121,9 @@ queryBundleStateInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 | 参数名        | 类型                                       | 必填   | 说明                                       |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| byInterval | [IntervalType](js-apis-deviceUsageStatistics-sys.md#intervaltype)            | 是    | 查询类型。                                    |
-| begin      | number                                   | 是    | 起始时间，单位毫秒。                                    |
-| end        | number                                   | 是    | 结束时间，单位毫秒。                                    |
+| byInterval | [IntervalType](js-apis-deviceUsageStatistics-sys.md#intervaltypedeprecated)            | 是    | 查询类型。                                    |
+| begin      | number                                   | 是    | 起始时间，单位：ms。                                    |
+| end        | number                                   | 是    | 结束时间，单位：ms。                                    |
 | callback   | AsyncCallback&lt;Array&lt;[BundleStateInfo](js-apis-deviceUsageStatistics-sys.md#bundlestateinfodeprecated)&gt;&gt; | 是    | 指定的callback回调方法。返回指定时间段间隔（天、周、月、年）查询应用使用时长统计信息。 |
 
 **示例**：
@@ -129,10 +135,10 @@ bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED
   if (err) {
     console.error('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback success.');
+    console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback success.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -155,9 +161,9 @@ queryBundleStateInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 | 参数名        | 类型                            | 必填   | 说明    |
 | ---------- | ----------------------------- | ---- | ----- |
-| byInterval | [IntervalType](js-apis-deviceUsageStatistics-sys.md#intervaltype) | 是    | 查询类型。 |
-| begin      | number                        | 是    | 起始时间，单位毫秒。 |
-| end        | number                        | 是    | 结束时间，单位毫秒。 |
+| byInterval | [IntervalType](js-apis-deviceUsageStatistics-sys.md#intervaltypedeprecated) | 是    | 查询类型。 |
+| begin      | number                        | 是    | 起始时间，单位：ms。 |
+| end        | number                        | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
@@ -171,10 +177,10 @@ queryBundleStateInfoByInterval(byInterval: IntervalType, begin: number, end: num
 import { BusinessError } from '@ohos.base';
 
 bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED, 0, 20000000000000).then((res: Array<bundleState.BundleStateInfo>) => {
-  console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise success.');
+  console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise success.');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise failed, because: ' + err.code);
@@ -198,8 +204,8 @@ queryBundleActiveStates(begin: number, end: number, callback: AsyncCallback&lt;A
 
 | 参数名      | 类型                                       | 必填   | 说明                                      |
 | -------- | ---------------------------------------- | ---- | --------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，单位毫秒。                                   |
-| end      | number                                   | 是    | 结束时间，单位毫秒。                                   |
+| begin    | number                                   | 是    | 起始时间，单位：ms。                                   |
+| end      | number                                   | 是    | 结束时间，单位：ms。                                   |
 | callback | AsyncCallback&lt;Array&lt;[BundleActiveState](js-apis-deviceUsageStatistics-sys.md#bundleactivestatedeprecated)&gt;&gt; | 是    | 指定的callback回调方法。返回指定起始和结束时间查询所有应用的事件集合。 |
 
 **示例**：
@@ -211,10 +217,10 @@ bundleState.queryBundleActiveStates(0, 20000000000000, (err: BusinessError, res:
   if (err) {
     console.error('BUNDLE_ACTIVE queryBundleActiveStates callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE queryBundleActiveStates callback success.');
+    console.info('BUNDLE_ACTIVE queryBundleActiveStates callback success.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryBundleActiveStates callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryBundleActiveStates callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryBundleActiveStates callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryBundleActiveStates callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -237,8 +243,8 @@ queryBundleActiveStates(begin: number, end: number): Promise&lt;Array&lt;BundleA
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，单位毫秒。 |
-| end   | number | 是    | 结束时间，单位毫秒。 |
+| begin | number | 是    | 起始时间，单位：ms。 |
+| end   | number | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
@@ -252,10 +258,10 @@ queryBundleActiveStates(begin: number, end: number): Promise&lt;Array&lt;BundleA
 import { BusinessError } from '@ohos.base';
 
 bundleState.queryBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
-  console.log('BUNDLE_ACTIVE queryBundleActiveStates promise success.');
+  console.info('BUNDLE_ACTIVE queryBundleActiveStates promise success.');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryBundleActiveStates promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryBundleActiveStates promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryBundleActiveStates promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryBundleActiveStates promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryBundleActiveStates promise failed, because: ' + err.code);
@@ -285,7 +291,7 @@ queryAppUsagePriorityGroup(): Promise&lt;number&gt;
 import { BusinessError } from '@ohos.base';
 
 bundleState.queryAppUsagePriorityGroup().then((res: number) => {
-  console.log('BUNDLE_ACTIVE QueryPackageGroup promise succeeded. result: ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE QueryPackageGroup promise succeeded. result: ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE QueryPackageGroup promise failed. because: ' + err.code);
 });
@@ -317,7 +323,7 @@ bundleState.queryAppUsagePriorityGroup((err: BusinessError, res: number) => {
   if(err) {
     console.error('BUNDLE_ACTIVE QueryPackageGroup callback failed. because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE QueryPackageGroup callback succeeded. result: ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE QueryPackageGroup callback succeeded. result: ' + JSON.stringify(res));
   }
 });
 ```
@@ -337,8 +343,8 @@ queryCurrentBundleActiveStates(begin: number, end: number, callback: AsyncCallba
 
 | 参数名      | 类型                                       | 必填   | 说明                                      |
 | -------- | ---------------------------------------- | ---- | --------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，单位毫秒。                                   |
-| end      | number                                   | 是    | 结束时间，单位毫秒。                                   |
+| begin    | number                                   | 是    | 起始时间，单位：ms。                                   |
+| end      | number                                   | 是    | 结束时间，单位：ms。                                   |
 | callback | AsyncCallback&lt;Array&lt;[BundleActiveState](#bundleactivestatedeprecated)&gt;&gt; | 是    | callback回调方法。返回当前应用在指定起始和结束时间内的事件集合。 |
 
 **示例**：
@@ -350,10 +356,10 @@ bundleState.queryCurrentBundleActiveStates(0, 20000000000000, (err: BusinessErro
   if (err) {
     console.error('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback success.');
+    console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback success.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -374,8 +380,8 @@ queryCurrentBundleActiveStates(begin: number, end: number): Promise&lt;Array&lt;
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，单位毫秒。 |
-| end   | number | 是    | 结束时间，单位毫秒。 |
+| begin | number | 是    | 起始时间，单位：ms。 |
+| end   | number | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
@@ -389,10 +395,10 @@ queryCurrentBundleActiveStates(begin: number, end: number): Promise&lt;Array&lt;
 import { BusinessError } from '@ohos.base';
 
 bundleState.queryCurrentBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
-  console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise success.');
+  console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise success.');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise failed, because: ' + err.code);
@@ -411,15 +417,15 @@ bundleState.queryCurrentBundleActiveStates(0, 20000000000000).then((res: Array<b
 | 名称                      | 类型     | 必填   | 说明                                       |
 | ------------------------ | ------ | ---- | ---------------------------------------- |
 | bundleName               | string | 否    | 应用包名。                                    |
-| abilityPrevAccessTime    | number | 否    | 应用最后一次使用的时间。                             |
-| abilityInFgTotalTime     | number | 否    | 应用在前台使用的总时间。                             |
+| abilityPrevAccessTime    | number | 否    | 应用最后一次使用的时间，单位：ms。                             |
+| abilityInFgTotalTime     | number | 否    | 应用在前台使用的总时间，单位：ms。                             |
 | id                       | number | 是    | 用户id。|
-| abilityPrevSeenTime      | number | 否    | 应用最后一次在前台可见的时间。|
-| abilitySeenTotalTime     | number | 否    | 应用在前台可见的总时间。|
-| fgAbilityAccessTotalTime | number | 否    | 应用访问前台的总时间。|
-| fgAbilityPrevAccessTime  | number | 否    | 应用最后一次访问前台的时间。|
-| infosBeginTime           | number | 否    | BundleActiveInfo对象中第一条应用使用统计的记录时间。|
-| infosEndTime             | number | 否    | BundleActiveInfo对象中最后一条应用使用统计的记录时间。|
+| abilityPrevSeenTime      | number | 否    | 应用最后一次在前台可见的时间，单位：ms。|
+| abilitySeenTotalTime     | number | 否    | 应用在前台可见的总时间，单位：ms。|
+| fgAbilityAccessTotalTime | number | 否    | 应用访问前台的总时间，单位：ms。|
+| fgAbilityPrevAccessTime  | number | 否    | 应用最后一次访问前台的时间，单位：ms。|
+| infosBeginTime           | number | 否    | BundleActiveInfo对象中第一条应用使用统计的记录时间，单位：ms。|
+| infosEndTime             | number | 否    | BundleActiveInfo对象中最后一条应用使用统计的记录时间，单位：ms。|
 
 ### merge<sup>(deprecated)</sup>
 
@@ -446,7 +452,7 @@ merge(toMerge: BundleStateInfo): void
 | --------------------- | ------ | ---- | ---------------------------------------- |
 | bundleName            | string | 否    | 应用包名。                                    |
 | stateType             | number | 否    | 应用事件类型。                                  |
-| stateOccurredTime     | number | 否    | 应用事件发生的时间戳。                              |
+| stateOccurredTime     | number | 否    | 应用事件发生的时间戳，单位：ms。                              |
 | appUsagePriorityGroup | number | 否    | 应用程序的使用优先级组。|
 | indexOfLink           | string | 否    | 快捷方式id。|
 | nameOfClass           | string | 否    | 类名。|

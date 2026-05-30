@@ -1,9 +1,9 @@
 # @ohos.graphics.sendableColorSpaceManager (可共享的色彩管理)
 
 <!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphic-->
-<!--Owner: @xubo85-->
-<!--Designer: @comicchang; @wang-luyu4-->
+<!--Subsystem: Graphics-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @dizuo1-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -22,7 +22,7 @@ import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 ## ISendable
 type ISendable = lang.ISendable
 
-ISendable是所有Sendable类型（除null和undefined）的父类型。自身没有任何必须的方法和属性。
+为与当前模块的接口规范保持一致，重新定义了ISendable类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -138,11 +138,11 @@ getColorSpaceName(): colorSpaceManager.ColorSpace
 
 **错误码：**
 
-以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
 
-| 错误码ID | 错误信息 |
-| ------- | ----------------------- |
-| 18600001 | The parameter value is abnormal. |
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：12-22 |
 
 **示例：**
 
@@ -162,15 +162,15 @@ getWhitePoint(): collections.Array\<number\>
 
 | 类型                | 说明                     |
 | ------------------ | ------------------------ |
-| [collections.Array\<number\>](../apis-arkts/arkts-apis-arkts-collections-Array.md)  | 返回色域白点值[x, y]。 |
+| [collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<number>  | 返回色域白点值[x, y]。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
 
-| 错误码ID | 错误信息 |
-| ------- | ----------------------- |
-| 18600001 | The parameter value is abnormal. |
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：12-22 |
 
 **示例：**
 
@@ -195,11 +195,11 @@ getGamma(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
 
-| 错误码ID | 错误信息 |
-| ------- | ----------------------- |
-| 18600001 | The parameter value is abnormal. |
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：12-22 |
 
 **示例：**
 

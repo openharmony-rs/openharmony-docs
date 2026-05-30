@@ -2,10 +2,12 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+提供字体属性配置的结构体。
 
 > **说明：**
 >
@@ -16,8 +18,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-提供字体属性配置的结构体。
 
 ## 导入模块
 
@@ -30,6 +30,8 @@ import { drawing } from '@kit.ArkGraphics2D';
 constructor()
 
 字体属性的构造函数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -45,6 +47,8 @@ let typeFaceArgument = new drawing.TypefaceArguments();
 addVariation(axis: string, value: number)
 
 给字体属性设置字重值。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

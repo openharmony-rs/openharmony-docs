@@ -1,8 +1,8 @@
 # @ohos.data.storage (Lightweight Data Storage)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @yanhuii-->
-<!--Designer: @houpengtao1-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -28,7 +28,7 @@ import data_storage from '@ohos.data.storage';
 | Name            | Type| Readable| Writable| Description                                 |
 | ---------------- | -------- | ---- | ---- | ------------------------------------- |
 | MAX_KEY_LENGTH   | number   | Yes  | No  | Maximum length of a key, which is 80 bytes.    |
-| MAX_VALUE_LENGTH | number   | Yes  | No  | Maximum length of a value, which is 8192 bytes.|
+| MAX_VALUE_LENGTH | number   | Yes  | No  | Maximum value length, which is 16 MB.|
 
 
 ## data_storage.getStorageSync

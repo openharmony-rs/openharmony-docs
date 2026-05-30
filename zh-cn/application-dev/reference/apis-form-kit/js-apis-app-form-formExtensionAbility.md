@@ -1,10 +1,10 @@
 # @ohos.app.form.FormExtensionAbility (FormExtensionAbility)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 
 FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新等生命周期回调。
 
@@ -42,9 +42,9 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称    | 类型                                                         | 可读 | 可写 | 说明                                                         |
+| 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 是   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 
 ### FormExtensionAbility.onAddForm
 
@@ -78,7 +78,7 @@ import { Want } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAddForm(want: Want) {
-    console.log(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
+    console.info(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
     let dataObj1: Record<string, string> = {
       'temperature': '11c',
       'time': '11:00'
@@ -116,7 +116,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onCastToNormalForm(formId: string) {
     // 卡片提供方收到卡片使用方将临时卡片转常态卡片的通知时触发，开发者需根据实际需求做相应的处理
-    console.log(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
+    console.info(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
   }
 };
 ```
@@ -148,7 +148,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onUpdateForm(formId: string, wantParams?: Record<string, Object>) {
-    console.log(`FormExtensionAbility onUpdateForm, formId: ${formId},
+    console.info(`FormExtensionAbility onUpdateForm, formId: ${formId},
         wantPara: ${wantParams?.['ohos.extra.param.key.host_bg_inverse_color']}`);
     let param: Record<string, string> = {
       'temperature': '22c',
@@ -156,9 +156,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     }
     let obj2: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
     formProvider.updateForm(formId, obj2).then(() => {
-      console.log(`FormExtensionAbility context updateForm`);
+      console.info(`FormExtensionAbility context updateForm`);
     }).catch((error: BusinessError) => {
-      console.error(`FormExtensionAbility context updateForm failed, data: ${error}`);
+      console.error(`FormExtensionAbility context updateForm failed, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
     });
   }
 };
@@ -168,8 +168,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onChangeFormVisibility(newStatus: Record\<string, number>): void
 
-卡片提供方接收修改可见性的通知接口。
-该接口仅对系统应用生效，且需要将formVisibleNotify配置为true。
+卡片提供方接收修改可见性的通知接口。该接口仅对系统应用生效，且需要将formVisibleNotify配置为true。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -179,7 +178,7 @@ onChangeFormVisibility(newStatus: Record\<string, number>): void
 
 | 参数名  | 类型   | 必填 | 说明                   |
 | ------- | ------ | ---- | ---------------------- |
-| newStatus  | Record\<string, number> | 是   | 请求修改的卡片标识和可见状态。 |
+| newStatus  | Record\<string, number> | 是   | 请求修改的卡片标识和可见状态。<br>**说明：** number参数是取值范围[0, 2]的整数，0是未知类型，1是可见状态，2是不可见状态。<br>详细参考 [formInfo.VisibilityType](js-apis-app-form-formInfo.md#visibilitytype) |
 
 **示例：**
 
@@ -196,7 +195,7 @@ function getObjKeys(obj: Object): string[] {
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onChangeFormVisibility(newStatus: Record<string, number>) {
-    console.log(`FormExtensionAbility onChangeFormVisibility, newStatus: ${newStatus}`);
+    console.info(`FormExtensionAbility onChangeFormVisibility, newStatus: ${newStatus}`);
     let param: Record<string, string> = {
       'temperature': '22c',
       'time': '22:00'
@@ -206,11 +205,11 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     let keys: string[] = getObjKeys(newStatus);
 
     for (let i: number = 0; i < keys.length; i++) {
-      console.log(`FormExtensionAbility onChangeFormVisibility, key: ${keys[i]}, value= ${newStatus[keys[i]]}`);
+      console.info(`FormExtensionAbility onChangeFormVisibility, key: ${keys[i]}, value= ${newStatus[keys[i]]}`);
       formProvider.updateForm(keys[i], obj2).then(() => {
-        console.log(`FormExtensionAbility context updateForm`);
+        console.info('FormExtensionAbility context updateForm');
       }).catch((error: BusinessError) => {
-        console.error(`Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+        console.error(`Operation updateForm failed. , code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       });
     }
   }
@@ -243,7 +242,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
-    console.log(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
   }
 };
 ```
@@ -273,7 +272,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onRemoveForm(formId: string) {
-    console.log(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
+    console.info(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
   }
 };
 ```
@@ -306,7 +305,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onConfigurationUpdate(newConfig: Configuration) {
     // 仅当前formExtensionAbility存活时更新配置才会触发此生命周期。
     // 需要注意：formExtensionAbility创建后10秒内无操作将会被清理。
-    console.log(`onConfigurationUpdate, config: ${JSON.stringify(newConfig)}`);
+    console.info(`onConfigurationUpdate, config: ${newConfig?.language}`);
   }
 };
 ```
@@ -315,7 +314,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onAcquireFormState?(want: Want): formInfo.FormState
 
-卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态(该方法可以选择性重写)。
+卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态（该方法可以选择性重写）。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -327,7 +326,7 @@ onAcquireFormState?(want: Want): formInfo.FormState
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | want表示获取卡片状态的描述。描述包括Bundle名称、能力名称、模块名称、卡片名和卡片维度。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | want表示获取卡片状态的描述。描述包括Bundle名称、能力名称、模块名称、卡片名称等。 |
 
 **返回值：**
 
@@ -343,7 +342,7 @@ import { Want } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAcquireFormState(want: Want) {
-    console.log(`FormExtensionAbility onAcquireFormState, want: ${want}`);
+    console.info(`FormExtensionAbility onAcquireFormState, want: ${want}`);
     return formInfo.FormState.UNKNOWN;
   }
 };
@@ -368,7 +367,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onStop() {
-    console.log(`FormExtensionAbility onStop`);
+    console.info(`FormExtensionAbility onStop`);
   }
 }
 ```

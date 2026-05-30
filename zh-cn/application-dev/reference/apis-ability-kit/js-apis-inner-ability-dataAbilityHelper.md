@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 可以通过[acquireDataAbilityHelper](js-apis-ability-featureAbility.md#featureabilityacquiredataabilityhelper7)接口获取DataAbilityHelper对象。
 
@@ -59,7 +59,7 @@ DAHelper.openFile('dataability:///com.example.DataAbility', mode, (error, data) 
     if (error && error.code !== 0) {
         console.error(`openFile fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`openFile success, data: ${JSON.stringify(data)}`);
+        console.info(`openFile success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -214,7 +214,7 @@ DAHelper.getType('dataability:///com.example.DataAbility', (error, data) => {
     if (error && error.code !== 0) {
         console.error(`getType fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getType success, data: ${JSON.stringify(data)}`);
+        console.info(`getType success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -288,7 +288,7 @@ DAHelper.getFileTypes( 'dataability:///com.example.DataAbility', 'image/*', (err
     if (error && error.code !== 0) {
         console.error(`getFileTypes fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getFileTypes success, data: ${JSON.stringify(data)}`);
+        console.info(`getFileTypes success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -362,7 +362,7 @@ DAHelper.normalizeUri('dataability:///com.example.DataAbility', (error, data) =>
     if (error && error.code !== 0) {
         console.error(`normalizeUri fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`normalizeUri success, data: ${JSON.stringify(data)}`);
+        console.info(`normalizeUri success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -435,7 +435,7 @@ DAHelper.denormalizeUri('dataability:///com.example.DataAbility', (error, data) 
     if (error && error.code !== 0) {
         console.error(`denormalizeUri fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`denormalizeUri success, data: ${JSON.stringify(data)}`);
+        console.info(`denormalizeUri success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -508,7 +508,7 @@ DAHelper.notifyChange('dataability:///com.example.DataAbility', (error) => {
     if (error && error.code !== 0) {
         console.error(`notifyChange fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log('notifyChange success');
+        console.info('notifyChange success');
     }
 });
 ```
@@ -589,7 +589,7 @@ DAHelper.insert('dataability:///com.example.DataAbility', valueBucket, (error, d
     if (error && error.code !== 0) {
         console.error(`insert fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`insert success, data: ${JSON.stringify(data)}`);
+        console.info(`insert success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -674,7 +674,7 @@ DAHelper.batchInsert('dataability:///com.example.DataAbility', cars, (error, dat
     if (error && error.code !== 0) {
         console.error(`batchInsert fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`batchInsert success, data: ${JSON.stringify(data)}`);
+        console.info(`batchInsert success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -755,7 +755,7 @@ DAHelper.delete('dataability:///com.example.DataAbility', da, (error, data) => {
     if (error && error.code !== 0) {
         console.error(`delete fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`delete success, data: ${JSON.stringify(data)}`);
+        console.info(`delete success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -831,14 +831,14 @@ DAHelper.delete('dataability:///com.example.DataAbility', (error, data) => {
     if (error && error.code !== 0) {
         console.error(`delete fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`delete success, data: ${JSON.stringify(data)}`);
+        console.info(`delete success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
 
 ## DataAbilityHelper.update
 
-update(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-data-rdb.md#valuesbucket), predicates: dataAbility.DataAbilityPredicates, callback: AsyncCallback\<number>): void
+update(uri: string, valuesBucket: rdb.ValuesBucket, predicates: dataAbility.DataAbilityPredicates, callback: AsyncCallback\<number>): void
 
 更新数据库中的数据记录。使用callback异步回调。
 
@@ -878,14 +878,14 @@ DAHelper.update('dataability:///com.example.DataAbility', va, da, (error, data) 
     if (error && error.code !== 0) {
         console.error(`update fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`update success, data: ${JSON.stringify(data)}`);
+        console.info(`update success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
 
 ## DataAbilityHelper.update
 
-update(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-data-rdb.md#valuesbucket), predicates?: dataAbility.DataAbilityPredicates): Promise\<number>
+update(uri: string, valuesBucket: rdb.ValuesBucket, predicates?: dataAbility.DataAbilityPredicates): Promise\<number>
 
 更新数据库中的数据记录。使用Promise异步回调。
 
@@ -933,7 +933,7 @@ DAHelper.update('dataability:///com.example.DataAbility', va, da).then((data) =>
 
 ## DataAbilityHelper.update
 
-update(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-data-rdb.md#valuesbucket), callback: AsyncCallback\<number>): void
+update(uri: string, valuesBucket: rdb.ValuesBucket, callback: AsyncCallback\<number>): void
 
 predicates筛选条件为空，自定义更新数据库的处理逻辑。使用callback异步回调。
 
@@ -970,7 +970,7 @@ DAHelper.update('dataability:///com.example.DataAbility', va, (error, data) => {
     if (error && error.code !== 0) {
         console.error(`update fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`update success, data: ${JSON.stringify(data)}`);
+        console.info(`update success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1011,7 +1011,7 @@ DAHelper.query('dataability:///com.example.DataAbility', cars, da, (error, data)
     if (error && error.code !== 0) {
         console.error(`query fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`query success, data: ${JSON.stringify(data)}`);
+        console.info(`query success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1047,7 +1047,7 @@ DAHelper.query('dataability:///com.example.DataAbility', (error, data) => {
     if (error && error.code !== 0) {
         console.error(`query fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`query success, data: ${JSON.stringify(data)}`);
+        console.info(`query success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1085,7 +1085,7 @@ DAHelper.query('dataability:///com.example.DataAbility', cars, (error, data) => 
     if (error && error.code !== 0) {
         console.error(`query fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`query success, data: ${JSON.stringify(data)}`);
+        console.info(`query success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1124,7 +1124,7 @@ DAHelper.query('dataability:///com.example.DataAbility', da, (error, data) => {
     if (error && error.code !== 0) {
         console.error(`query fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`query success, data: ${JSON.stringify(data)}`);
+        console.info(`query success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1206,7 +1206,7 @@ dataAbilityHelper.call('dataability:///com.example.jsapidemo.UserDataAbility',
     if (error && error.code !== 0) {
         console.error(`call fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`call success, data: ${JSON.stringify(data)}`);
+        console.info(`call success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1249,9 +1249,9 @@ let dataAbilityHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbi
 );
 dataAbilityHelper.call('dataability:///com.example.jsapidemo.UserDataAbility',
     'method', 'arg', {'key1':'value1'}).then((data) => {
-    console.info('call success, data: ${data}');
+    console.info(`call success, data: ${data}`);
 }).catch((error: BusinessError) => {
-    console.error('call failed, error: ${error}');
+    console.error(`call failed, error: ${error}`);
 });
 ```
 
@@ -1289,7 +1289,7 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
     if (error && error.code !== 0) {
         console.error(`executeBatch fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`executeBatch success, data: ${JSON.stringify(data)}`);
+        console.info(`executeBatch success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1331,9 +1331,9 @@ let dataAbilityHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbi
     'dataability:///com.example.jsapidemo.UserDataAbility'
 );
 dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbility', op).then((data) => {
-    console.info('executeBatch success, data: ${data}');
+    console.info(`executeBatch success, data: ${data}`);
 }).catch((error: BusinessError) => {
-    console.error('executeBatch failed, error: ${error}');
+    console.error(`executeBatch failed, error: ${error}`);
 });
 
 ```
@@ -1346,4 +1346,4 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----- | ---- | ---- | ---- | ---- |
-| [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | 否 | 否 | 数据存储在键值对中。 |
+| [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | 否 | 是 | 数据存储在键值对中。 |

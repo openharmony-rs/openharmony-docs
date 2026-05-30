@@ -1,7 +1,7 @@
 # 使用JSVM-API接口处理异步操作
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -81,7 +81,7 @@ const char *srcCallNative = R"JS(isPromise())JS";
 <!-- @[oh_jsvm_ispromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/ispromise/src/main/cpp/hello.cpp) -->
 
 预期结果：
-```
+```txt
 JSVM OH_JSVM_IsPromise success:0
 ```
 
@@ -168,7 +168,7 @@ const char *srcCallNative = R"JS(createPromise();
 <!-- @[oh_jsvm_resolvedeferred_and_rejectdeferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/resolvereject/src/main/cpp/hello.cpp) -->
 
 预期结果：
-```
+```txt
 JSVM CreatePromise success:1
 OH_JSVM_ResolveDeferred resolve
 OH_JSVM_RejectDeferred reject
@@ -269,7 +269,7 @@ static void RunDemo(JSVM_VM vm, JSVM_Env env) {
 ```
 
 预期结果：
-```
+```txt
 Before promise resolved, x1: 0, x2: 0
 After promise resolved, x1: 2, x2: 3
 ```

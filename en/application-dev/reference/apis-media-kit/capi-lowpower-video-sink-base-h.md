@@ -2,10 +2,10 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @Saber_e-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -28,7 +28,7 @@ The file declares the structs and enums of the LowPowerVideoSink.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) | OH_LowPowerVideoSink | Describes the declaration for the LowPowerVideoSink.|
-| [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md) | OH_LowPowerVideoSinkCallback | Contains a set of callback function pointers for the LowPowerVideoSink.<br>To ensure the normal running of the LowPowerVideoSink, you must register the instance of this struct with the [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) instance and process the information reported by the callback functions.|
+| [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md) | OH_LowPowerVideoSinkCallback | Contains a set of callback function pointers for the LowPowerVideoSink.<br> To ensure the normal running of the LowPowerVideoSink, you must register the instance of this struct with the [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) instance and process the information reported by the callback functions.|
 
 ### Functions
 
@@ -46,7 +46,7 @@ The file declares the structs and enums of the LowPowerVideoSink.
 
 ### OH_LowPowerVideoSink_OnDataNeeded()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink,OH_AVSamplesBuffer* buffer,void *userData)
 ```
 
@@ -67,7 +67,7 @@ Called when the LowPowerVideoSink needs more data. This callback is included in 
 
 ### OH_LowPowerVideoSink_OnError()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink,OH_AVErrCode errCode,const char* errMsg,void* userData)
 ```
 
@@ -83,13 +83,13 @@ Called when an error occurs in the LowPowerVideoSink.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) errCode | Error code returned when an error occurs during service operations.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) errCode | Error code returned when an error occurs during service operations.|
 | const char* errMsg | Pointer to the error message returned when an error occurs during service operations.|
 | void* userData | Pointer to the data on which the caller depends when executing the callback.|
 
 ### OH_LowPowerVideoSink_OnTargetArrived()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink,const int64_t targetPts,const bool isTimeout,void* userData)
 ```
 
@@ -105,13 +105,13 @@ Called when the LowPowerVideoSink reaches the target point. This callback is inc
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| const int64_t targetPts | Presentation timestamp (PTS) of the target point.|
-| const bool isTimeout | Whether the wait for the target point has timed out. If it has timed out, this value is **false**.|
+| const int64_t targetPts | Presentation timestamp (PTS) of the target point. The unit is microsecond.|
+| const bool isTimeout | Whether the wait for the target point has timed out. **true** if timed out, **false** otherwise.|
 | void* userData | Pointer to the data on which the caller depends when executing the callback.|
 
 ### OH_LowPowerVideoSink_OnRenderStarted()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink, void* userData)
 ```
 
@@ -131,7 +131,7 @@ Called when the LowPowerVideoSink starts rendering. This callback is included in
 
 ### OH_LowPowerVideoSink_OnStreamChanged()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink, OH_AVFormat* format, void* userData)
 ```
 
@@ -147,12 +147,12 @@ Called when the stream changes in the LowPowerVideoSink. This callback is includ
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* format | Pointer to the changed parameters and their values.|
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* format | Pointer to the changed parameters and their values.|
 |  void* userData | Pointer to the data on which the caller depends when executing the callback.|
 
 ### OH_LowPowerVideoSink_OnFirstFrameDecoded()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* sink, void* userData)
 ```
 
@@ -172,7 +172,7 @@ Called when the first frame is successfully decoded in the LowPowerVideoSink. Th
 
 ### OH_LowPowerVideoSink_OnEos()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* userData)
 ```
 

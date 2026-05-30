@@ -1,8 +1,8 @@
 # @ohos.util.stream (数据流基类stream)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -70,7 +70,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持null、undefined和空字符串。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 
@@ -78,15 +78,14 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| boolean | 可写流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区数据量已达到设定水位线，不建议继续写入。 |
+| boolean | 可写流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区数据量已达到设定水位线，不建议继续写入以避免内存溢出。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200035 | The doWrite method has not been implemented. |
 | 10200036 | The stream has been ended. |
 | 10200037 | The callback is invoked multiple times consecutively. |
@@ -135,11 +134,10 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200035 | The doWrite method has not been implemented. |
 
 **示例：**
@@ -186,14 +184,6 @@ setDefaultEncoding(encoding?: string): boolean
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示成功，false表示失败。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -304,14 +294,6 @@ on(event: string, callback: Callback<emitter.EventData>): void
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br/>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br/>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br/>\- `'error'`：在可写流发生异常时触发该事件。<br/>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\> | 是 | 回调函数，返回事件传输的数据。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -350,14 +332,6 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 | -------- | -------- | -------- | -------- |
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br/>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br/>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br/>\- `'error'`：在可写流发生异常时触发该事件。<br/>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\>   | 否 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -402,14 +376,6 @@ doInitialize(callback: Function): void
 | -------- | -------- | -------- | -------- |
 | callback | Function | 是 | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -445,14 +411,6 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -485,16 +443,8 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| chunks    | string[] \|  Uint8Array[] | 是 | 被批量写出的数据数组。 |
+| chunks    | string[] \|  Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -527,9 +477,9 @@ Readable构造函数的选项信息。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-| 名称 | 类型 | 必填 | 说明 |
-| ---- | -------- | ---- | -------------- |
-| encoding | string  | 否 | 指定数据的编码格式，如果传入非法字符串，将会在Readable构造函数中抛出异常。<br/>-&nbsp;支持格式：utf-8、UTF-8、GBK、GB2312、gb2312、GB18030、gb18030、ibm866、iso-8859-2、iso-8859-3、iso-8859-4、iso-8859-5、iso-8859-6、iso-8859-7、iso-8859-8、iso-8859-8-i、iso-8859-10、iso-8859-13、iso-8859-14、iso-8859-15、koi8-r、koi8-u、macintosh、windows-874、windows-1250、windows-1251、windows-1252、windows-1253、windows-1254、windows-1255、windows-1256、windows-1257、windows-1258、gbk、big5、euc-jp、iso-2022-jp、shift_jis、euc-kr、x-mac-cyrillic、utf-16be、utf-16le。 <br/>-&nbsp; 默认值是：'utf-8'。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | -------- | ---- | ---- | -------------- |
+| encoding | string  | 否 | 是 | 指定数据的编码格式，如果传入非法字符串，将会在Readable构造函数中抛出异常。<br/>-&nbsp;支持格式：utf-8、UTF-8、GBK、GB2312、gb2312、GB18030、gb18030、ibm866、iso-8859-2、iso-8859-3、iso-8859-4、iso-8859-5、iso-8859-6、iso-8859-7、iso-8859-8、iso-8859-8-i、iso-8859-10、iso-8859-13、iso-8859-14、iso-8859-15、koi8-r、koi8-u、macintosh、windows-874、windows-1250、windows-1251、windows-1252、windows-1253、windows-1254、windows-1255、windows-1256、windows-1257、windows-1258、gbk、big5、euc-jp、iso-2022-jp、shift_jis、euc-kr、x-mac-cyrillic、utf-16be、utf-16le。 <br/>-&nbsp; 默认值是：'utf-8'。|
 
 ## Readable
 
@@ -583,14 +533,6 @@ Readable的构造函数。
 | ------ | -------- | -------- | -------- |
 | options   | [ReadableOptions](#readableoptions)   | 是 | Readable构造函数的选项信息。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -624,11 +566,10 @@ read(size?: number): string | null
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200038 | The doRead method has not been implemented. |
 
 **示例：**
@@ -721,6 +662,7 @@ console.info("Readable test pause", readableStream.isPaused()); // Readable test
 setEncoding(encoding?: string): boolean
 
 设置可读流的字符编码。
+
 当缓冲区有数据时，不允许设置字符编码，返回值为false。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -738,14 +680,6 @@ setEncoding(encoding?: string): boolean
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示设置成功，false表示设置失败。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -821,14 +755,6 @@ pipe(destination: Writable, options?: Object): Writable
 | -------- | -------- |
 | [Writable](#writable) | 返回当前可写流对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -881,14 +807,6 @@ unpipe(destination?: Writable): Readable
 | -------- | -------- |
 | [Readable](#readable) | 返回当前可读流对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -940,14 +858,6 @@ on(event: string, callback: Callback<emitter.EventData>): void
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\> | 是 | 回调函数，返回事件数据。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -984,14 +894,6 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 | -------- | -------- | -------- | -------- |
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\>   | 否 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1034,14 +936,6 @@ doInitialize(callback: Function): void
 | -------- | -------- | -------- | -------- |
 | callback | Function | 是 | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -1076,14 +970,6 @@ doRead(size: number): void
 | -------- | -------- | -------- | -------- |
 | size | number | 是 | 读取数据的字节数。 取值范围：0 <= size <= Number.MAX_VALUE。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -1104,7 +990,7 @@ readable.on('data', () => {
 
 ### push
 
-push(chunk:  Uint8Array | string | null, encoding?: string): boolean
+push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean
 
 将数据推送到可读流缓冲区中。
 
@@ -1116,7 +1002,7 @@ push(chunk:  Uint8Array | string | null, encoding?: string): boolean
 
 | 参数名    | 类型     | 必填     | 说明 |
 | -------- | -------- | -------- | -------- |
-| chunk | Uint8Array \| string  \| null | 是 | 读取的数据。 |
+| chunk | Uint8Array \| string  \| undefined \| null | 是 | 读取的数据。 <br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`Uint8Array \| string  \| null`。 |
 | encoding | string | 否 | 数据的编码格式。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 
 **返回值：**
@@ -1124,14 +1010,6 @@ push(chunk:  Uint8Array | string | null, encoding?: string): boolean
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 可读流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区已满。输入null时，固定返回false表示推送结束，没有数据块可推送。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1154,6 +1032,7 @@ console.info("Readable push test", readable.readableLength); // Readable push te
 ## Duplex
 
 双工流是一个同时支持可读和可写能力的流。双工流允许数据在两个方向上进行传输，既可以读取数据，又可以写入数据。
+
 Duplex类继承[Readable](#readable)，支持Readable中所有的方法。
 
 ### 属性
@@ -1202,7 +1081,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持null、undefined和空字符串。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 
@@ -1210,15 +1089,14 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| boolean | 可写流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区数据量已达到设定水位线，不建议继续写入。 |
+| boolean | 可写流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区数据量已达到设定水位线，不建议继续写入，如果连续调用写入函数，数据仍会被添加到缓冲区中，直到内存溢出为止。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200036 | The stream has been ended. |
 | 10200037 | The callback is invoked multiple times consecutively. |
 | 10200039 | The doTransform method has not been implemented for a class that inherits from Transform. |
@@ -1271,11 +1149,10 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200039 | The doTransform method has not been implemented for a class that inherits from Transform. |
 
 **示例：**
@@ -1322,14 +1199,6 @@ setDefaultEncoding(encoding?: string): boolean
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示设置成功，false表示设置失败。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1436,14 +1305,6 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -1479,16 +1340,8 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| chunks    | string[] \| Uint8Array[] | 是 | 被批量写出的数据数组。 |
+| chunks    | string[] \| Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1557,14 +1410,6 @@ doTransform(chunk: string, encoding: string, callback: Function): void
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。 |
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -1600,14 +1445,6 @@ doFlush(callback: Function): void
 | 参数名    | 类型     | 必填     | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback  | Function | 是   | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

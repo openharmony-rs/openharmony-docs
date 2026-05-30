@@ -1,4 +1,4 @@
-# Introduction to Network Kit
+# About This Kit
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
@@ -13,8 +13,8 @@ Network Kit provides the following functions:
 - [Socket connection](socket-connection.md): transmits data through Socket.
 - [Network connection management](net-connection-manager.md): provides basic network management capabilities, including management of Wi-Fi/cellular/Ethernet connection priorities, network quality evaluation, subscription to network connection status changes, query of network connection information, and DNS resolution.
 - [mDNS management](net-mdns.md): provides Multicast DNS (mDNS) management capabilities, such as adding, removing, discovering, and resolving local services on a LAN.<!--Del-->
-- [Network sharing](net-sharing.md): shares a device's Internet connection with other connected devices by means of Wi-Fi hotspot, Bluetooth, and USB sharing, and queries the network sharing state and shared mobile data volume.
-- [Ethernet connection](net-ethernet.md): provides wired network capabilities, which allow you to set the IP address, subnet mask, gateway, and Domain Name System (DNS) server of a wired network.
+- [Network sharing](net-sharing-sys.md): shares a device's Internet connection with other connected devices by means of Wi-Fi hotspot, Bluetooth, and USB sharing, and queries the network sharing state and shared mobile data volume.
+- [Ethernet connection](net-ethernet-sys.md): provides wired network capabilities, which allow you to set the IP address, subnet mask, gateway, and Domain Name System (DNS) server of a wired network.
 <!--DelEnd-->
 
 <!--RP1-->
@@ -23,6 +23,7 @@ Network Kit provides the following functions:
 ## Constraints
 
 To use the functions of the network management module, you must obtain the permissions listed in the following table.
+
 Before requesting permissions, ensure that the [basic principles for using permissions](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
 | Permission                          | Description                                  |

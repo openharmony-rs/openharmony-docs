@@ -1,10 +1,20 @@
 # image_pixel_map_mdk.h
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yaozhupeng-->
+<!--Designer: @yaozhupeng-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-The **image_pixel_map_napi.h** file declares the APIs used to lock, access, and unlock a PixelMap.
+The file declares the APIs used to lock, access, and unlock a PixelMap. You are advised to use [pixelmap_native.h](capi-pixelmap-native-h.md).
 
-**Library**: libpixelmapndk.z.so
+**File to include**: <multimedia/image_framework/image_pixel_map_mdk.h>
+
+**Library**: libpixelmap_ndk.z.so
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
 
@@ -32,8 +42,8 @@ The **image_pixel_map_napi.h** file declares the APIs used to lock, access, and 
 
 | Name| Description|
 | -- | -- |
-| [int32_t OH_PixelMap_CreatePixelMap(napi_env env, OhosPixelMapCreateOps info,void* buf, size_t len, napi_value* res)](#oh_pixelmap_createpixelmap) | Creates a PixelMap object. Currently, only BGRA input streams are supported.<br>The buffer passed in by this API does not support the stride.<br>This function does not support the DMA memory.|
-| [int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps info,void* buf, size_t len, int32_t rowStride, napi_value* res)](#oh_pixelmap_createpixelmapwithstride) | Creates a PixelMap object.<br>Currently, only BGRA input streams are supported. For a PixelMap in RGBA format (with the size greater than 512\*512), DMA memory is used by default.|
+| [int32_t OH_PixelMap_CreatePixelMap(napi_env env, OhosPixelMapCreateOps info, void* buf, size_t len, napi_value* res)](#oh_pixelmap_createpixelmap) | Creates a PixelMap object. Currently, only BGRA input streams are supported.<br>The buffer passed in by this API does not support the stride.<br>This function does not support the DMA memory.|
+| [int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps info, void* buf, size_t len, int32_t rowStride, napi_value* res)](#oh_pixelmap_createpixelmapwithstride) | Creates a PixelMap object.<br>Currently, only BGRA input streams are supported. For a PixelMap in RGBA format (with the size greater than 512\*512), DMA memory is used by default.|
 | [int32_t OH_PixelMap_CreateAlphaPixelMap(napi_env env, napi_value source, napi_value* alpha)](#oh_pixelmap_createalphapixelmap) | Creates a PixelMap object that contains only alpha channel information.|
 | [NativePixelMap* OH_PixelMap_InitNativePixelMap(napi_env env, napi_value source)](#oh_pixelmap_initnativepixelmap) | Initializes a NativePixelMap object.|
 | [int32_t OH_PixelMap_GetBytesNumberPerRow(const NativePixelMap* native, int32_t* num)](#oh_pixelmap_getbytesnumberperrow) | Obtains the number of bytes per row of a NativePixelMap object.|
@@ -44,7 +54,7 @@ The **image_pixel_map_napi.h** file declares the APIs used to lock, access, and 
 | [int32_t OH_PixelMap_SetDensity(const NativePixelMap* native, int32_t density)](#oh_pixelmap_setdensity) | Sets the pixel density for a NativePixelMap object.|
 | [int32_t OH_PixelMap_SetOpacity(const NativePixelMap* native, float opacity)](#oh_pixelmap_setopacity) | Sets the opacity for a NativePixelMap object.|
 | [int32_t OH_PixelMap_Scale(const NativePixelMap* native, float x, float y)](#oh_pixelmap_scale) | Scales a NativePixelMap object.<br>You are advised to use the new function [OH_PixelmapNative_Scale](capi-pixelmap-native-h.md#oh_pixelmapnative_scale) since API version 12.|
-| [int32_t OH_PixelMap_ScaleWithAntiAliasing(const NativePixelMap* native, float x, float y,OH_PixelMap_AntiAliasingLevel level)](#oh_pixelmap_scalewithantialiasing) | Scales a NativePixelMap object based on the specified anti-aliasing level, width, and height.<br>You are advised to use the new function [OH_PixelmapNative_ScaleWithAntiAliasing](capi-pixelmap-native-h.md#oh_pixelmapnative_scalewithantialiasing) since API version 12.|
+| [int32_t OH_PixelMap_ScaleWithAntiAliasing(const NativePixelMap* native, float x, float y, OH_PixelMap_AntiAliasingLevel level)](#oh_pixelmap_scalewithantialiasing) | Scales a NativePixelMap object based on the specified anti-aliasing level, width, and height.<br>You are advised to use the new function [OH_PixelmapNative_ScaleWithAntiAliasing](capi-pixelmap-native-h.md#oh_pixelmapnative_scalewithantialiasing) since API version 12.|
 | [int32_t OH_PixelMap_Translate(const NativePixelMap* native, float x, float y)](#oh_pixelmap_translate) | Translates a NativePixelMap object.<br>You are advised to use the new function [OH_PixelmapNative_Translate](capi-pixelmap-native-h.md#oh_pixelmapnative_translate) since API version 12.|
 | [int32_t OH_PixelMap_Rotate(const NativePixelMap* native, float angle)](#oh_pixelmap_rotate) | Rotates a NativePixelMap object.<br>You are advised to use the new function [OH_PixelmapNative_Rotate](capi-pixelmap-native-h.md#oh_pixelmapnative_rotate) since API version 12.|
 | [int32_t OH_PixelMap_Flip(const NativePixelMap* native, int32_t x, int32_t y)](#oh_pixelmap_flip) | Flips a NativePixelMap object.<br>You are advised to use the new function [OH_PixelmapNative_Flip](capi-pixelmap-native-h.md#oh_pixelmapnative_flip) since API version 12.|
@@ -57,7 +67,7 @@ The **image_pixel_map_napi.h** file declares the APIs used to lock, access, and 
 
 ### PixelMap Alpha Types
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -76,7 +86,7 @@ Enumerates the PixelMap alpha types.
 
 ### PixelMap Editing Types
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -93,7 +103,7 @@ Enumerates the PixelMap editing types.
 
 ### OH_PixelMap_AntiAliasingLevel
 
-```
+```c
 enum OH_PixelMap_AntiAliasingLevel
 ```
 
@@ -115,7 +125,7 @@ Enumerates the anti-aliasing levels used for scaling PixelMaps.
 
 ### OH_PixelMap_CreatePixelMap()
 
-```
+```c
 int32_t OH_PixelMap_CreatePixelMap(napi_env env, OhosPixelMapCreateOps info,void* buf, size_t len, napi_value* res)
 ```
 
@@ -148,7 +158,7 @@ This function does not support the DMA memory.
 
 ### OH_PixelMap_CreatePixelMapWithStride()
 
-```
+```c
 int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps info,void* buf, size_t len, int32_t rowStride, napi_value* res)
 ```
 
@@ -180,7 +190,7 @@ Currently, only BGRA input streams are supported. For a PixelMap in RGBA format 
 
 ### OH_PixelMap_CreateAlphaPixelMap()
 
-```
+```c
 int32_t OH_PixelMap_CreateAlphaPixelMap(napi_env env, napi_value source, napi_value* alpha)
 ```
 
@@ -207,7 +217,7 @@ Creates a PixelMap object that contains only alpha channel information.
 
 ### OH_PixelMap_InitNativePixelMap()
 
-```
+```c
 NativePixelMap* OH_PixelMap_InitNativePixelMap(napi_env env, napi_value source)
 ```
 
@@ -233,7 +243,7 @@ Initializes a NativePixelMap object.
 
 ### OH_PixelMap_GetBytesNumberPerRow()
 
-```
+```c
 int32_t OH_PixelMap_GetBytesNumberPerRow(const NativePixelMap* native, int32_t* num)
 ```
 
@@ -259,7 +269,7 @@ Obtains the number of bytes per row of a NativePixelMap object.
 
 ### OH_PixelMap_GetIsEditable()
 
-```
+```c
 int32_t OH_PixelMap_GetIsEditable(const NativePixelMap* native, int32_t* editable)
 ```
 
@@ -285,7 +295,7 @@ Checks whether a NativePixelMap object is editable.
 
 ### OH_PixelMap_IsSupportAlpha()
 
-```
+```c
 int32_t OH_PixelMap_IsSupportAlpha(const NativePixelMap* native, int32_t* alpha)
 ```
 
@@ -311,7 +321,7 @@ Checks whether a NativePixelMap object supports alpha channels.
 
 ### OH_PixelMap_SetAlphaAble()
 
-```
+```c
 int32_t OH_PixelMap_SetAlphaAble(const NativePixelMap* native, int32_t alpha)
 ```
 
@@ -337,7 +347,7 @@ Sets an alpha channel for a NativePixelMap object.
 
 ### OH_PixelMap_GetDensity()
 
-```
+```c
 int32_t OH_PixelMap_GetDensity(const NativePixelMap* native, int32_t* density)
 ```
 
@@ -363,7 +373,7 @@ Obtains the pixel density of a NativePixelMap object.
 
 ### OH_PixelMap_SetDensity()
 
-```
+```c
 int32_t OH_PixelMap_SetDensity(const NativePixelMap* native, int32_t density)
 ```
 
@@ -389,7 +399,7 @@ Sets the pixel density for a NativePixelMap object.
 
 ### OH_PixelMap_SetOpacity()
 
-```
+```c
 int32_t OH_PixelMap_SetOpacity(const NativePixelMap* native, float opacity)
 ```
 
@@ -415,7 +425,7 @@ Sets the opacity for a NativePixelMap object.
 
 ### OH_PixelMap_Scale()
 
-```
+```c
 int32_t OH_PixelMap_Scale(const NativePixelMap* native, float x, float y)
 ```
 
@@ -444,7 +454,7 @@ You are advised to use the new function [OH_PixelmapNative_Scale](capi-pixelmap-
 
 ### OH_PixelMap_ScaleWithAntiAliasing()
 
-```
+```c
 int32_t OH_PixelMap_ScaleWithAntiAliasing(const NativePixelMap* native, float x, float y,OH_PixelMap_AntiAliasingLevel level)
 ```
 
@@ -474,7 +484,7 @@ You are advised to use the new function [OH_PixelmapNative_ScaleWithAntiAliasing
 
 ### OH_PixelMap_Translate()
 
-```
+```c
 int32_t OH_PixelMap_Translate(const NativePixelMap* native, float x, float y)
 ```
 
@@ -503,7 +513,7 @@ You are advised to use the new function [OH_PixelmapNative_Translate](capi-pixel
 
 ### OH_PixelMap_Rotate()
 
-```
+```c
 int32_t OH_PixelMap_Rotate(const NativePixelMap* native, float angle)
 ```
 
@@ -531,7 +541,7 @@ You are advised to use the new function [OH_PixelmapNative_Rotate](capi-pixelmap
 
 ### OH_PixelMap_Flip()
 
-```
+```c
 int32_t OH_PixelMap_Flip(const NativePixelMap* native, int32_t x, int32_t y)
 ```
 
@@ -560,7 +570,7 @@ You are advised to use the new function [OH_PixelmapNative_Flip](capi-pixelmap-n
 
 ### OH_PixelMap_Crop()
 
-```
+```c
 int32_t OH_PixelMap_Crop(const NativePixelMap* native, int32_t x, int32_t y, int32_t width, int32_t height)
 ```
 
@@ -591,7 +601,7 @@ You are advised to use the new function [OH_PixelmapNative_Crop](capi-pixelmap-n
 
 ### OH_PixelMap_GetImageInfo()
 
-```
+```c
 int32_t OH_PixelMap_GetImageInfo(const NativePixelMap* native, OhosPixelMapInfos *info)
 ```
 
@@ -619,7 +629,7 @@ You are advised to use the new function [OH_PixelmapNative_GetImageInfo](capi-pi
 
 ### OH_PixelMap_AccessPixels()
 
-```
+```c
 int32_t OH_PixelMap_AccessPixels(const NativePixelMap* native, void** addr)
 ```
 
@@ -645,7 +655,7 @@ Obtains the memory address of a NativePixelMap object and locks the memory.
 
 ### OH_PixelMap_UnAccessPixels()
 
-```
+```c
 int32_t OH_PixelMap_UnAccessPixels(const NativePixelMap* native)
 ```
 

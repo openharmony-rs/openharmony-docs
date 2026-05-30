@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 > **NOTE**
 >
@@ -147,7 +147,7 @@ The **gzsetparams** API is called before calling the **gzclose** or **gzclosew**
 
 **Solution**
 
-Check the whether the **gzsetparams** API is called and pass in the correct compression level and compression strategy.
+Check whether the **gzsetparams** API is called and pass in the correct compression level and compression strategy.
 
 ## 17800007 Incorrect Input Buffer
 

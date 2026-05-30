@@ -1,14 +1,20 @@
-# @ohos.enterprise.deviceControl (Device Control)
+# @ohos.enterprise.deviceControl (Device Control Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @hp_guo-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @zhang_yixin13-->
 
 The **deviceControl** module provides APIs for device control.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -26,13 +32,15 @@ Allows the specified device administrator application to operate devices.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| operate  | string                                                  | Yes  | Operation to be performed, which can be any of the following:<br>- **resetFactory**: restore device factory settings.<br>- **reboot**: restart devices.<br>- **shutDown**: shut down devices.<br>- **lockScreen**: lock device screens.<!--RP1--><!--RP1End-->|
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| operate  | string                                                  | Yes  | Operation to be performed, which can be any of the following:<br>- **resetFactory**: restore device factory settings. After this API is called, the device will be restored to factory settings immediately. Once the restoration is complete, all device data will be erased and cannot be restored. To protect against data loss caused by potential application attacks, enterprises should implement robust security measures for their applications.<br>- **reboot**: restart devices.<br>- **shutDown**: shut down devices.<br>- **lockScreen**: lock device screens. Once this capability is used, the device screen will become inaccessible. It only supports lock screen text customization but does not allow for interactive function customization on the lock screen. To implement custom behaviors on the lock screen, you are advised to use the [setAllowedKioskApps](js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20) API to configure apps that support the [Kiosk mode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode).<!--RP1--><!--RP1End-->|
 | addition | string                                                  | No  | <!--RP2-->Additional parameter for the operation. Currently, this parameter does not need to be passed in.<!--RP2End-->       |
 
 **Error codes**
@@ -49,14 +57,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { deviceControl } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
+  // Replace the parameters as required.
   deviceControl.operateDevice(wantTemp, 'resetFactory');
 } catch (err) {
   console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);

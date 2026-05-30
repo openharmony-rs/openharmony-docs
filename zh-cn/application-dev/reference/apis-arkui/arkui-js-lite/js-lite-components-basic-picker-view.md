@@ -1,4 +1,10 @@
 # picker-view
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @luoying_ace_admin-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 嵌入页面的滑动选择器。
 
@@ -27,7 +33,7 @@
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
 | range | Array | - | 否 | 设置文本选择器的取值范围。<br/>使用时需要使用数据绑定的方式，如range&nbsp;=&nbsp;{{data}}，js中声明相应变量：data：["15",&nbsp;"20",&nbsp;"25"]。 |
-| selected | string | 0 | 否 | 设置文本选择器的默认选择值，该值需要为range的索引。 |
+| selected | number | 0 | 否 | 设置文本选择器的默认选择值，该值需要为range的索引。 |
 
 时间选择器：type=time
 
@@ -89,7 +95,7 @@ type=time：
   <text class="title">
     Selected：{{time}}
   </text>
-  <picker-view class="time-picker" type="time" selected="{{defaultTime}}" @change="handleChange"></picker-view>
+  <picker-view class="time-picker" type="time" ref="pickerViewObj" selected="{{defaultTime}}" @change="handleChange"></picker-view>
 </div>
 ```
 
@@ -136,14 +142,18 @@ export default {
     const minutes = date.getMinutes();
     return this.concat(hours, minutes);
   },
-
   fill(value) {
     return (value > 9 ? "" : "0") + value;
   },
-
   concat(hours, minutes) {
     return `${this.fill(hours)}:${this.fill(minutes)}`;
   },
+  onShow() {
+        this.$refs.pickerViewObj.rotation({focus: true})
+  },
+  onHide() {
+      this.$refs.pickerViewObj.rotation({focus: false})
+  }
 }
 ```
 

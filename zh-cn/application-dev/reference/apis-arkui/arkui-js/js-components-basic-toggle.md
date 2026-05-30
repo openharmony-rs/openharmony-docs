@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >  从API version 5开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -52,7 +52,7 @@
 
 | 名称     | 参数                              | 描述             |
 | ------ | ------------------------------- | -------------- |
-| change | {&nbsp;checked：isChecked&nbsp;} | 组件选中状态发生变化时触发。 |
+| change | {&nbsp;checked: isChecked&nbsp;} | 组件选中状态发生变化时触发。 |
 
 
 ## 方法

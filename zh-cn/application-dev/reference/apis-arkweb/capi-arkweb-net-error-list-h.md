@@ -4,11 +4,13 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## 概述
 
 声明ArkWeb网络协议栈错误码。
+
+**引用文件：** <web/arkweb_net_error_list.h>
 
 **库：** libohweb.so
 
@@ -30,7 +32,7 @@
 
 ### ArkWeb_NetError
 
-```
+```c
 enum ArkWeb_NetError
 ```
 
@@ -97,7 +99,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_SOCKS_CONNECTION_FAILED = -120 | 为目标主机建立到SOCKS代理服务器的连接失败。 |
 | ARKWEB_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121 | SOCKS代理服务器无法建立与目标主机的连接，因为该主机无法访问。 |
 | ARKWEB_ERR_ALPN_NEGOTIATION_FAILED = -122 | 协商备用协议的请求失败。 |
-| ARKWEB_ERR_SSL_NO_RENEGOTIATION = -123 | 对等端发送了SSL no_regregation警报消息。 |
+| ARKWEB_ERR_SSL_NO_RENEGOTIATION = -123 | 对等端发送了SSL no_renegotiation警报消息。 |
 | ARKWEB_ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124 | Winsock有时会报告写入的数据多于传递的数据。这可能是由于LSP损坏。 |
 | ARKWEB_ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125 | SSL对等端向我们发送了一个致命的decompression_failure警告。这通常发生在对等端错误地认为它支持DEFLATE压缩并选择它时。 |
 | ARKWEB_ERR_SSL_BAD_RECORD_MAC_ALERT = -126 | SSL对等端向我们发送了一个致命的bad_record_mac警告。这通常发生在错误支持DEFLATE的服务器上。 |
@@ -201,7 +203,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_PAC_NOT_IN_DHCP = -348 | 无法从DHCP检索PAC URL配置。这可能表明检索DHCP配置失败，或者在DHCP中没有配置PAC URL。 |
 | ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349 | HTTP响应包含多个Content-Disposition响应头。 |
 | ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350 | HTTP响应包含了多个Location响应头。 |
-| ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351 | HTTP/2服务器在未处理请求的情况下拒绝了请求，并发送了带有错误代码NO_ERROR和低于与请求对应的流ID的Last-Stream-ID的GOAWAY帧， |
+| ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351 | HTTP/2服务器在未处理请求的情况下拒绝了请求，并发送了带有错误代码NO_ERROR和低于与请求对应的流ID的Last-Stream-ID的GOAWAY帧。 |
 | ARKWEB_ERR_HTTP2_PING_FAILED = -352 | HTTP/2服务器未响应PING消息。 |
 | ARKWEB_ERR_CONTENT_LENGTH_MISMATCH = -354 | 当连接关闭时，HTTP响应主体传输的字节数少于Content-Length头中公布的字节数。 |
 | ARKWEB_ERR_INCOMPLETE_CHUNKED_ENCODING = -355 | HTTP响应体使用分块编码传输，但在连接关闭时，终止的零长度区块从未被发送。 |

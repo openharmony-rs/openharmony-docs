@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## 需要权限
@@ -20,7 +20,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { AtomicServiceWeb } from '@kit.ArkUI';
 ```
 
@@ -34,7 +34,7 @@ import { AtomicServiceWeb } from '@kit.ArkUI';
 
 ## AtomicServiceWeb
 
-```
+```ts
 AtomicServiceWeb({
   src: ResourceStr,
   controller: AtomicServiceWebController,
@@ -351,9 +351,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型       | 必填 | 说明    |
-|------|----------|----|-------|
-| data | object[] | 是  | 消息列表。 |
+| 名称   | 类型       | 只读 | 可选 | 说明    |
+|------|----------|----|--|-------|
+| data | object[] | 否 | 否 | 消息列表。 |
 
 ## OnErrorReceiveEvent
 
@@ -363,10 +363,10 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型                                                                                    | 必填 | 说明              |
-|---------|---------------------------------------------------------------------------------------|----|-----------------|
-| request | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 是  | 网页请求的封装信息。      |
-| error   | [WebResourceError](../../apis-arkweb/arkts-basic-components-web-WebResourceError.md)     | 是  | 网页加载资源错误的封装信息 。 |
+| 名称      | 类型                                                                                    | 只读 | 可选 | 说明              |
+|---------|---------------------------------------------------------------------------------------|----|--|-----------------|
+| request | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 否 | 否 | 网页请求的封装信息。      |
+| error   | [WebResourceError](../../apis-arkweb/arkts-basic-components-web-WebResourceError.md)     | 否 | 否 | 网页加载资源错误的封装信息 。 |
 
 ## OnHttpErrorReceiveEvent
 
@@ -376,10 +376,10 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 类型                                                                                      | 必填 | 说明         |
-|----------|-----------------------------------------------------------------------------------------|----|------------|
-| request  | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md)   | 是  | 网页请求的封装信息。 |
-| response | [WebResourceResponse](../../apis-arkweb/arkts-basic-components-web-WebResourceResponse.md) | 是  | 资源响应的封装信息。 |
+| 名称       | 类型                                                                                      | 只读 | 可选 | 说明         |
+|----------|-----------------------------------------------------------------------------------------|----|--|------------|
+| request  | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md)   | 否 | 否 | 网页请求的封装信息。 |
+| response | [WebResourceResponse](../../apis-arkweb/arkts-basic-components-web-WebResourceResponse.md) | 否 | 否 | 资源响应的封装信息。 |
 
 ## OnPageBeginEvent
 
@@ -388,10 +388,10 @@ Web组件返回的请求/响应头对象。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称  | 类型     | 必填 | 说明        |
-|-----|--------|----|-----------|
-| url | string | 是  | 页面的URL地址。 |
+  
+| 名称  | 类型     | 只读 | 可选 | 说明        |
+|-----|--------|----|--|-----------|
+| url | string | 否 | 否 | 页面的URL地址。 |
 
 ## OnPageEndEvent
 
@@ -401,9 +401,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型     | 必填 | 说明        |
-|-----|--------|----|-----------|
-| url | string | 是  | 页面的URL地址。 |
+| 名称  | 类型     | 只读 | 可选 | 说明        |
+|-----|--------|----|--|-----------|
+| url | string | 否 | 否 | 页面的URL地址。 |
 
 ## OnLoadInterceptEvent
 
@@ -413,9 +413,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| data | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 是 | 网页请求的封装信息。 |
+| 名称             | 类型      | 只读 | 可选  | 说明                                       |
+| -------------- | ---- | ---- | -- |-------------------------------------- |
+| data | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 否 | 否 | 网页请求的封装信息。 |
 
 ## OnProgressChangeEvent
 
@@ -425,9 +425,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| newProgress | number | 是 | 新的加载进度，取值范围为0到100的整数。                       |
+| 名称             | 类型      | 只读 | 可选  | 说明                                       |
+| -------------- | ---- | ---- | -- | -------------------------------------- |
+| newProgress | number | 否 | 否 | 新的加载进度，取值范围为0到100的整数。                       |
 
 ## OnLoadInterceptCallback
 
@@ -449,7 +449,7 @@ type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 
 | 类型      | 说明        |
 |---------|-----------|
-| boolean | 返回资源是否被拦截 |
+| boolean | 返回资源是否被拦截，true表示被拦截。 |
 
 ## 事件
 
@@ -557,7 +557,6 @@ struct WebComponent {
 ```
 
 ```html
-// index.html
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">

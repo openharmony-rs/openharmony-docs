@@ -2,18 +2,20 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @lushi871202; @hehongyang3-->
+<!--Designer: @piggyguy; @lushi871202; @hehongyang3-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供UI组件行为变化的无感监听能力。推荐使用[UIObserver](./arkts-apis-uicontext-uiobserver.md)进行组件监听。
 
 > **说明：**
 >
-> 从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
 
 
 ## 导入模块
@@ -30,17 +32,17 @@ NavDestination组件状态。
 
 | 名称      | 值  | 说明                     |
 | --------- | --- | ------------------------ |
-| ON_SHOWN  | 0   | NavDestination组件显示。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_HIDDEN | 1   | NavDestination组件隐藏。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_APPEAR<sup>12+</sup> | 2   | NavDestination从组件树上挂载。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_DISAPPEAR<sup>12+</sup> | 3   | NavDestination从组件树上卸载。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_SHOW<sup>12+</sup> | 4   | NavDestination组件显示之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_HIDE<sup>12+</sup> | 5   | NavDestination组件隐藏之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_APPEAR<sup>12+</sup>| 6   | NavDestination挂载到组件树之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
-| ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
-| ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_SHOWN  | 0   | NavDestination组件显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_HIDDEN | 1   | NavDestination组件隐藏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_APPEAR<sup>12+</sup> | 2   | NavDestination从组件树上挂载。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ON_DISAPPEAR<sup>12+</sup> | 3   | NavDestination从组件树上卸载。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_WILL_SHOW<sup>12+</sup> | 4   | NavDestination组件显示之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_WILL_HIDE<sup>12+</sup> | 5   | NavDestination组件隐藏之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_WILL_APPEAR<sup>12+</sup>| 6   | NavDestination挂载到组件树之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
+| ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
+| ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## ScrollEventType<sup>12+</sup>
 
@@ -57,7 +59,7 @@ NavDestination组件状态。
 
 ## RouterPageState
 
-routerPage生命周期触发时对应的状态。
+routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](#routerpageinfo)中，作为[routerPageUpdate](#uiobserveronrouterpageupdate11)无感监听的返回值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -86,7 +88,7 @@ TabContent组件的状态。
 
 ## NavDestinationInfo
 
-NavDestination组件信息。
+NavDestination组件信息，由系统返回给开发者。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +102,7 @@ NavDestination组件信息。
 | navDestinationId<sup>12+</sup>        | string    | 否  | 否  | NavDestination组件的唯一标识ID。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | mode<sup>15+</sup>        | [NavDestinationMode](arkui-ts/ts-basic-components-navdestination.md#navdestinationmode枚举说明11)   | 否  | 是   | NavDestination类型。    <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。               |
 | uniqueId<sup>15+</sup>        | number     | 否 | 是 | NavDestination组件的uniqueId。      <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。             |
+| size<sup>23+</sup>        | [Size](./js-apis-arkui-graphics.md#size)     | 否 | 是 | NavDestination组件的大小，单位是vp。      <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。             |
 
 ## NavigationInfo<sup>12+</sup>
 
@@ -142,20 +145,19 @@ Observer选项。
 
 ## RouterPageInfo
 
-RouterPageInfo包含的信息。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+RouterPageInfo包含的信息，由系统返回给开发者。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
 | -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
-| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否   | 触发生命周期的routerPage页面对应的上下文信息。 |
-| index                | number                                                  | 否   | 否   | 触发生命周期的routerPage在栈中的位置。<br/> 取值范围：[0, +∞)         |
-| name                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的名称。           |
-| path                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的路径。           |
-| state                | [RouterPageState](#routerpagestate)                     | 否   | 否   | 触发生命周期的routerPage页面的状态。           |
-| pageId<sup>12+</sup> | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的唯一标识。       |
+| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否   | 触发生命周期的routerPage页面对应的上下文信息。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| index                | number                                                  | 否   | 否   | 触发生命周期的routerPage在栈中的位置。<br/> 取值范围：[0, +∞)<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
+| name                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的名称。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| path                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的路径。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| state                | [RouterPageState](#routerpagestate)                     | 否   | 否   | 触发生命周期的routerPage页面的状态。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| pageId<sup>12+</sup> | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的唯一标识。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| size<sup>23+</sup> | [Size](./js-apis-arkui-graphics.md#size) | 否 | 是 | routerPage页面的大小，单位是vp。<br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## DensityInfo<sup>12+</sup>
 
@@ -195,24 +197,50 @@ Navigation组件页面切换事件的监听选项。
 
 | 名称         | 类型                                          | 只读  | 可选 | 说明                                          |
 | ------------ | --------------------------------------------- | ----- | ---- | -------------------------------------------- |
-| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 是   | 指定需要监听的Navigation的ID |
+| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否   | 指定需要监听的Navigation的ID。 |
 
-## TabContentInfo<sup>12+</sup>
+## TextChangeEventInfo<sup>22+</sup>
+输入框文本变化的信息。
 
-TabContent页面的切换信息。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称         | 类型                                         | 只读  | 可选 | 说明                                          |
 | ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
-| tabContentId | string                                       | 否   | 否   | TabContent组件的id。                          |
-| tabContentUniqueId | number                                 | 否   | 否   | TabContent组件的uniqueId。                    |
-| state        | [TabContentState](#tabcontentstate12)        | 否   | 否   | TabContent组件的状态。                        |
-| index        | number                                       | 否   | 否   | TabContent组件的下标索引。索引从0开始。        |
-| id           | string                                       | 否   | 否   | Tabs组件的id。                                |
-| uniqueId     | number                                       | 否   | 否   | Tabs组件的uniqueId。                          |
+| id           | string                                       | 否   | 否   | 文本输入组件的ID。|
+| uniqueId     | number                                       | 否   | 否   | 文本输入组件的唯一标识符。|
+| content        | string                                       | 否   | 否   | 变化后的文本内容。|
+
+## TabContentInfo<sup>12+</sup>
+
+TabContent页面的切换信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称         | 类型                                         | 只读  | 可选 | 说明                                          |
+| ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| tabContentId | string                                       | 否   | 否   | TabContent组件的id。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
+| tabContentUniqueId | number                                 | 否   | 否   | TabContent组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                |
+| state        | [TabContentState](#tabcontentstate12)        | 否   | 否   | TabContent组件的状态。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
+| index        | number                                       | 否   | 否   | TabContent组件的下标索引。索引从0开始。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| id           | string                                       | 否   | 否   | Tabs组件的id。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
+| uniqueId     | number                                       | 否   | 否   | Tabs组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                      |
+| lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。   |
+
+## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
+
+窗口尺寸布局断点变化回调的信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
+| -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
+| widthBreakpoint      | [WidthBreakpoint](./arkui-ts/ts-appendix-enums.md#widthbreakpoint13)  | 是   | 否   | 窗口宽度所在的布局断点枚举。        |
+| heightBreakpoint     | [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13)| 是   | 否   | 窗口高度所在的布局断点枚举。        |
+
 
 ## uiObserver.on('navDestinationUpdate')
 
@@ -259,12 +287,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    // 注册监听
     uiObserver.on('navDestinationUpdate', (info) => {
       console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
   aboutToDisappear() {
+    // 注销监听
     uiObserver.off('navDestinationUpdate');
   }
 
@@ -309,7 +339,7 @@ off(type: 'navDestinationUpdate', callback?: Callback\<NavDestinationInfo\>): vo
 
 on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback\<NavDestinationInfo\>): void
 
-监听NavDestination组件的状态变化。
+监听NavDestination组件的状态变化。与[uiObserver.on](#uiobserveronnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -351,12 +381,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    // 注册监听，指定Navigation的id
     uiObserver.on('navDestinationUpdate', { navigationId: "testId" }, (info) => {
       console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
   aboutToDisappear() {
+    // 注销监听
     uiObserver.off('navDestinationUpdate', { navigationId: "testId" });
   }
 
@@ -381,7 +413,7 @@ struct Index {
 
 off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback\<NavDestinationInfo\>): void
 
-取消监听NavDestination组件的状态变化。
+取消监听NavDestination组件的状态变化。与[uiObserver.off](#uiobserveroffnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -518,12 +550,14 @@ struct Index {
       Row() {
         Button('UIObserver on')
           .onClick(() => {
+            // 注册监听
             uiObserver.on('scrollEvent', (info) => {
               console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserver off')
           .onClick(() => {
+            // 注销监听
             uiObserver.off('scrollEvent');
           })
       }
@@ -531,12 +565,14 @@ struct Index {
       Row() {
         Button('UIObserverWithId on')
           .onClick(() => {
+            // 注册监听，指定组件的id
             uiObserver.on('scrollEvent', this.options, (info) => {
               console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserverWithId off')
           .onClick(() => {
+            // 注销监听
             uiObserver.off('scrollEvent',this.options);
           })
       }
@@ -661,7 +697,7 @@ on(type: 'densityUpdate', context: UIContext, callback: Callback\<DensityInfo\>)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
 | context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
-| callback | Callback\<[DensityInfo](#densityinfo12)\>        | 是   | 回调函数。携带densityInfo，返回变化后的屏幕像素密度。                 |
+| callback | Callback\<[DensityInfo](#densityinfo12)\>        | 是   | 回调函数。携带DensityInfo，返回变化后的屏幕像素密度。                 |
 
 **示例：**
 
@@ -1067,7 +1103,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callbac
 
 on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback: Callback\<NavDestinationSwitchInfo\>): void
 
-监听Navigation的页面切换事件。
+监听Navigation的页面切换事件。与[uiObserver.on](#uiobserveronnavdestinationswitch12)相比，新增了observerOptions参数，即支持设置监听选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1199,7 +1235,7 @@ struct Index {
 
 off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback?: Callback\<NavDestinationSwitchInfo\>): void
 
-取消监听Navigation的页面切换事件。
+取消监听Navigation的页面切换事件。与[uiObserver.off](#uiobserveroffnavdestinationswitch12)相比，新增了observerOptions参数，即支持设置监听选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1222,7 +1258,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observe
 
 on(type: 'tabContentUpdate', callback: Callback\<TabContentInfo\>): void
 
-监听TabContent页面的切换事件。
+监听TabContent页面的切换事件。相比[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1249,10 +1285,12 @@ function callbackFunc(info: uiObserver.TabContentInfo) {
 struct TabsExample {
 
   aboutToAppear(): void {
+    // 注册监听
     uiObserver.on('tabContentUpdate', callbackFunc);
   }
 
   aboutToDisappear(): void {
+    // 注销监听
     uiObserver.off('tabContentUpdate', callbackFunc);
   }
 
@@ -1309,7 +1347,7 @@ off(type: 'tabContentUpdate', callback?: Callback\<TabContentInfo\>): void
 
 on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback\<TabContentInfo\>): void
 
-监听TabContent页面的切换事件。
+监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1337,10 +1375,12 @@ function callbackFunc(info: uiObserver.TabContentInfo) {
 struct TabsExample {
 
   aboutToAppear(): void {
+    // 注册监听，指定Tabs的id
     uiObserver.on('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 
   aboutToDisappear(): void {
+    // 注销监听
     uiObserver.off('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 
@@ -1376,7 +1416,7 @@ struct TabsExample {
 
 off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
 
-取消监听TabContent页面的切换事件。
+取消监听指定Tabs组件id的TabContent页面切换事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

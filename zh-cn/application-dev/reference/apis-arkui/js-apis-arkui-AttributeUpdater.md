@@ -1,17 +1,18 @@
 # AttributeUpdater
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
+<!--Adviser: @Brilliantry_Rui-->
 
 将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。
 
 > **说明：**
 >
-> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## 导入模块
@@ -36,6 +37,8 @@ import { AttributeUpdater } from '@kit.ArkUI';
 >  5. updateConstructorParams当前只支持Button，Image，Text，Span，SymbolSpan和ImageSpan组件。
 >  
 >  6. AttributeUpdater不支持深浅色切换等状态管理相关的操作。
+>
+>  7. 在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[AttributeUpdater](#attributeupdatert-c--initializert)对象的接口时，建议使用[UIContext](./arkts-apis-uicontext-uicontext.md)的[runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask)接口明确UI上下文，参考[执行绑定UI实例的闭包](../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
 
 ## Initializer\<T>
 type Initializer\<T> = () => T
@@ -134,7 +137,7 @@ struct Index {
           .width('80%')
           .labelStyle({ maxLines: 2 })
           .onClick(() => {
-            this.flushTheButton = this.flushTheButton + ' Updated' ;
+            this.flushTheButton = this.flushTheButton + ' Updated';
           })
       }
       .width('100%')
@@ -199,22 +202,15 @@ struct updaterDemo2 {
 ```
 ![attributeUpdater2](figures/attribute-updater2.gif)
 
-### updateConstructorParams
-updateConstructorParams: C
-
-用来更改组件的构造入参。C代表组件的构造函数类型。
-
-其中C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等。
+### 属性
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：**
-
-| 类型             | 说明                                                         |
-| -------------------- | ------------------------------------------------------------ |
-| C   |C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| updateConstructorParams | [C](#attributeupdatert-c--initializert) | 否 | 否 | C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等。用于更改组件的构造函数入参。 |
 
 **示例：** 
 
@@ -283,8 +279,8 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
       .height(30);
   }
 
-  onComponentChanged(instance: ButtonAttribute) :void {
-    instance.backgroundColor('#ff2787d9')
+  onComponentChanged(instance: ButtonAttribute): void {
+    instance.backgroundColor('#ff519db4')
       .width('50%')
       .height(30);
   }
@@ -302,7 +298,7 @@ struct updaterDemo4 {
         Button("Test")
           .onClick(() => {
             this.btnState = !this.btnState;
-        })
+          }).margin({ bottom: 20 })
 
         if (this.btnState) {
           Button("Button")
@@ -318,3 +314,4 @@ struct updaterDemo4 {
   }
 }
 ```
+![](figures/attribute-updater4.gif)

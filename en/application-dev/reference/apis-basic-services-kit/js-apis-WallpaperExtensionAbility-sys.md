@@ -1,5 +1,12 @@
 # @ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System APIs)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @gcw_jQMboB9m-->
+<!--Designer: @gcw_jQMboB9m-->
+<!--Tester: @murphy84-->
+<!--Adviser: @fang-jinxu-->
+
 The **WallpaperExtensionAbility** module provides lifecycle callbacks for wallpaper extension abilities and APIs for listening for wallpaper changes.
 
 > **NOTE**
@@ -16,11 +23,15 @@ The **WallpaperExtensionAbility** module provides lifecycle callbacks for wallpa
 import { WallpaperExtensionAbility } from '@kit.BasicServicesKit';
 ```
 
-## WallpaperExtensionAbility.onCreate
+## WallpaperExtensionAbility.onCreate<sup>(deprecated)</sup>
 
 onCreate(want: object): void
 
 Called to initialize a wallpaper extension ability when it is launched. Multi-thread concurrent calls are not supported.
+
+> **NOTE**
+> 
+> This API is supported since API version 10 and deprecated since API version 23.
 
 **System capability**: SystemCapability.MiscServices.Wallpaper
 
@@ -30,7 +41,7 @@ Called to initialize a wallpaper extension ability when it is launched. Multi-th
 
 | Name| Type         | Mandatory| Description                            |
 | ------ | ----------- | ---- | ------------------------------- |
-| want   | [object](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information related to the wallpaper extension ability, including the ability name and bundle name.|
+| want   | object | Yes  | Want information related to the wallpaper extension ability, including the ability name and bundle name.|
 
 **Example**
 
@@ -40,16 +51,20 @@ import { Want } from '@kit.AbilityKit';
 
 class WallpaperExt extends WallpaperExtensionAbility {
     onCreate(want: Want): void {
-        console.log('onCreate, want:' + want.abilityName);
+        console.info('onCreate, want:' + want.abilityName);
     }
 }
 ```
 
-## WallpaperExtensionAbility.onWallpaperChange
+## WallpaperExtensionAbility.onWallpaperChange<sup>(deprecated)</sup>
 
 onWallpaperChange(wallpaperType: number): void
 
 Called when the wallpaper changes. Multi-thread concurrent calls are not supported.
+
+> **NOTE**
+> 
+> This API is supported since API version 10 and deprecated since API version 23.
 
 **System capability**: SystemCapability.MiscServices.Wallpaper
 
@@ -59,7 +74,7 @@ Called when the wallpaper changes. Multi-thread concurrent calls are not support
 
 | Name| Type       | Mandatory| Description                  |
 | ------ | --------- | --- |----------------------|
-| wallpaperType  | number | Yes | Wallpaper type.<br>**0**: home screen wallpaper.<br>**1**: lock screen wallpaper. |
+| wallpaperType  | number | Yes | Wallpaper type.<br> **0**: home screen wallpaper.<br>**1**: lock screen wallpaper.|
 
 **Example**
 
@@ -69,16 +84,20 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 class WallpaperExt extends WallpaperExtensionAbility {
     onWallpaperChange(wallpaperType: wallpaper.WallpaperType): void {
-        console.log('onWallpaperChange, wallpaperType:' + wallpaperType);
+        console.info('onWallpaperChange, wallpaperType:' + wallpaperType);
     }
 }
 ```
 
-## WallpaperExtensionAbility.onDestroy
+## WallpaperExtensionAbility.onDestroy<sup>(deprecated)</sup>
 
 onDestroy(): void
 
 Called when this wallpaper extension ability is destroyed to clear resources. Multi-thread concurrent calls are not supported.
+
+> **NOTE**
+> 
+> This API is supported since API version 10 and deprecated since API version 23.
 
 **System capability**: SystemCapability.MiscServices.Wallpaper
 
@@ -91,7 +110,7 @@ import { WallpaperExtensionAbility } from '@kit.BasicServicesKit';
 
 class WallpaperExt extends WallpaperExtensionAbility {
     onDestroy(): void {
-        console.log('onDestroy');
+        console.info('onDestroy');
     }
 }
 ```

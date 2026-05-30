@@ -22,7 +22,7 @@ Since API version 21, the ArkTS APIs are supported to subscribe to task executio
 
 ### Adding an Event Watcher
 
-To ensure that event callbacks can be successfully received in the development phase, you are advised to create a native C++ project, implement subscription in the ArkTs code, and use C++ code to construct fault injection to trigger task execution timeout events.
+To ensure that event callbacks can be successfully received in the development phase, you are advised to create a native C++ project, implement subscription in the ArkTS code, and use C++ code to construct fault injection to trigger task execution timeout events.
 
 1. Create a native C++ project. The directory structure is as follows:
 
@@ -59,7 +59,7 @@ To ensure that event callbacks can be successfully received in the development p
 4. Subscribe to system events. In the **EntryAbility.ets** file, add the subscription code to the **onCreate** function. The sample code is as follows:
 
    ```ts
-   hiAppEvent.addWatcher({
+   let watcher: hiAppEvent.Watcher = {
      // Set the watcher name. The system identifies different watchers based on their names.
      name: "watcher",
      // Add the system events to watch, for example, the task execution timeout event.
@@ -94,7 +94,7 @@ To ensure that event callbacks can be successfully received in the development p
          }
        }
      }
-   });
+    };
    hiAppEvent.addWatcher(watcher);
    ```
 
@@ -104,7 +104,13 @@ To ensure that event callbacks can be successfully received in the development p
 
    ```c++
    // Import the hicollie.h file.
+   #include "napi/native_api.h"
    #include "hicollie/hicollie.h"
+   #include "hilog/log.h"
+   #include <unistd.h>
+   #undef LOG_TAG
+   #define LOG_TAG "testTag"
+   
    static napi_value TestHiCollieTimerNdk(napi_env env, napi_callback_info exports)
    {
        // Define the task execution timeout ID.
@@ -163,27 +169,28 @@ To ensure that event callbacks can be successfully received in the development p
 
    ```typescript
    import testNapi from 'libentry.so';
+
    @Entry
-     @Component
-     struct Index {
-       @State message: string = 'Hello World';
-      
-       build() {
-         Row() {
-           Column() {
-             Button("TestHiCollieTimerNdk")
-               .fontSize(50)
-               .fontWeight(FontWeight.Bold)
-               .onClick(testNapi.TestHiCollieTimerNdk);  // Add a click event to trigger the TestHiCollieTimerNdk method.
-           }
-           .width('100%')
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+
+     build() {
+       Row() {
+         Column() {
+           Button("TestHiCollieTimerNdk")
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(testNapi.TestHiCollieTimerNdk);  // Add a click event to trigger the TestHiCollieTimerNdk method.
          }
-         .height('100%')
+         .width('100%')
        }
+       .height('100%')
+     }
    }
    ```
 
-8. In DevEco Studio, click the **Run** button to run the project. Then, click the **testHiCollieTimerNdk** button to trigger a task execution timeout event.
+8. In DevEco Studio, click the **Run** button to run the project. Then, click the **TestHiCollieTimerNdk** button to trigger a task execution timeout event.
 
 ### Verifying the Subscription
 
@@ -209,8 +216,6 @@ After the project crashes and exits, restart it. You can view the system event d
    ```
 
 ### Removing an Event Watcher
-
-1. Remove the event watcher.
 
 ```ts
 // Remove the event watcher to unsubscribe from events.

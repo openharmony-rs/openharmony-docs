@@ -4,17 +4,18 @@
 <!--Owner: @gzweioh-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 The web component supports the picture-in-picture (PiP) feature. An application can use the Picture-in-Picture API of the W3C standard to create a floating window on a web page to play videos. In this way, users can continue to watch videos in the PiP window when browsing other web pages or interacting with other applications. 
 
 To use online video resources, you need to set the network permission in the configuration file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-```json
-// src/main/module.json5
+<!-- @[web_picture_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/module.json5) -->
+
+``` JSON5
 "requestPermissions": [
   {
     "name": "ohos.permission.INTERNET"
-  },
+  }
 ]
 ```
 
@@ -65,7 +66,9 @@ try {
 ## Listening for Picture-in-Picture Events
 
 When a user enables the picture-in-picture mode, a floating window is displayed for playing the video. The system specifies that only one picture-in-picture video can be played at a time.
+
 When **HTMLVideoElement** successfully enters the PiP mode, the **enterpictureinpicture** event is triggered. When **HTMLVideoElement** successfully exits the PiP mode, the **leavepictureinpicture** event is triggered.
+
 You can handle these events by listening for them.
 
 
@@ -81,14 +84,14 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 
 ## Interacting with the Picture-in-Picture Window
 
-* PiP window control: 
-  Allows users to double-click a PiP window to zoom in or zoom out the window. 
-  Allows users to drag the PiP window to any position on the screen. 
-  Allows users to click the PiP window to display or hide UI components at the PiP control layer. 
+* PiP window control:<br>
+  Allows users to double-click a PiP window to zoom in or zoom out the window.<br>
+  Allows users to drag the PiP window to any position on the screen.<br> 
+  Allows users to click the PiP window to display or hide UI components at the PiP control layer.<br> 
 
-* UI components at the PiP control layer: 
-  The PiP window control layer includes the close (close the PiP window) and restore (restore from the PiP window to the original application UI) components. 
-  The playback control includes the pause, play, and forward/rewind components. (By default, the forward/rewind UI component is displayed. If the original video does not support forward/rewind, there is no response for click events.)
+* UI components at the PiP control layer:<br> 
+  The PiP window control layer includes the close (close the PiP window) and restore (restore from the PiP window to the original application UI) components.<br> 
+  The playback control includes the pause, play, and forward/rewind components. (By default, the forward/rewind UI component is displayed. If the original video does not support forward/rewind, there is no response for click events.)<br>
   
   ![web-picture-in-picture](figures/web-picture-in-picture-ui.png)
 
@@ -99,16 +102,17 @@ The following is an example of entering and exiting the PiP mode:
 
 * ETS code on the application side:
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+  <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
 
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  
   @Entry
   @Component
   struct Index {
     @State videoSrc: Resource = $rawfile('PictureInPicture.html');
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Web({src: this.videoSrc, controller: this.controller})
@@ -182,13 +186,13 @@ The following is an example of entering and exiting the PiP mode:
       // Listen for the PiP enter event.
       video.addEventListener("enterpictureinpicture", () => {
         // Update the button text to "Exit PiP"
-        togglePipButton.textContent = "Exit PiP"
+        togglePipButton.textContent = "Exit PiP";
       });
 
       // Listen for the PiP exit event.
       video.addEventListener("leavepictureinpicture", () => {
         // Update the button text to "Enable PiP"
-        togglePipButton.textContent = "Enable PiP"
+        togglePipButton.textContent = "Enable PiP";
       });
   </script>
   </body>

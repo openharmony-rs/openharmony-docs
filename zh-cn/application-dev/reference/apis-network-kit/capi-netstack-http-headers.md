@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_Headers Http_Headers
+```
+
 ## 概述
 
 HTTP请求或者是响应中的标头。

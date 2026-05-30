@@ -1,10 +1,10 @@
 # panel
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >  从API version 5开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。

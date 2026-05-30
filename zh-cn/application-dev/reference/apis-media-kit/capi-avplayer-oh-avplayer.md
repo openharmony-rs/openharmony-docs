@@ -4,7 +4,11 @@
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVPlayer OH_AVPlayer
+```
 
 ## 概述
 

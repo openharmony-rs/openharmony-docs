@@ -13,6 +13,8 @@
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 本模块接口为系统接口。
+> 
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 ## 导入模块
 
@@ -58,7 +60,7 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
     return;
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
-  if(data.length > 0 ）{
+  if (data.length > 0) {
     screenClass = data[0];
   }
 });
@@ -98,7 +100,7 @@ let screenClass: screen.Screen | null = null;
 let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 promise.then((data: Array<screen.Screen>) => {
   if(data.length > 0){
-  	screenClass = data[0];
+    screenClass = data[0];
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -191,8 +193,8 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;, callback: AsyncC
 
 | 参数名       | 类型                        | 必填 | 说明                 |
 | ------------ | --------------------------- | ---- |--------------------|
-| mainScreen   | number                      | 是   | 主屏幕id，该参数仅支持整数输入。  |
-| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕id集合，其中id应为整数。 |
+| mainScreen   | number                      | 是   | 主屏幕ID，该参数仅支持整数输入。  |
+| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 |
 | callback     | AsyncCallback&lt;number&gt; | 是   | 回调函数。返回镜像屏幕的群组id，其中id为整数。  |
 
 **错误码：**
@@ -236,8 +238,8 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;): Promise&lt;numb
 
 | 参数名       | 类型                | 必填 | 说明                 |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreen   | number              | 是   | 主屏幕id，该参数仅支持整数输入。  |
-| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕id集合。其中id应为整数。 |
+| mainScreen   | number              | 是   | 主屏幕ID，该参数仅支持整数输入。  |
+| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕ID集合。其中ID应为整数。 |
 
 **返回值：**
 
@@ -283,7 +285,7 @@ stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                      |
 | ------------ | --------------------------- | --- |-----------------------------------------|
-| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕id集合，其中id应为整数。 mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 mirrorScreen数组大小不应超过1000。 |
 | callback     | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止屏幕镜像模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -326,7 +328,7 @@ stopMirror(mirrorScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                 |
 | ------------ | ------------------- | --- |--------------------|
-| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕id集合，其中id应为整数。mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕ID集合，其中ID应为整数。mirrorScreen数组大小不应超过1000。 |
 
 **返回值：**
 
@@ -367,11 +369,13 @@ makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在Wearable设备中报801错误码，在其他设备中不生效也不报错。
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| uniqueScreen  | Array&lt;number&gt; | 是   | 异源屏幕id集合。其中id应为大于0的整数，否则返回401错误码。 |
+| uniqueScreen  | Array&lt;number&gt; | 是   | 异源屏幕ID集合。其中ID应为大于0的整数，否则返回401错误码。 |
 
 **返回值：**
 
@@ -446,6 +450,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = { 
@@ -453,7 +458,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 screen.createVirtualScreen(option, (err: BusinessError, data: screen.Screen) => {
   const errCode: number = err.code;
@@ -513,6 +519,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = { 
@@ -520,7 +527,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -556,6 +564,7 @@ destroyVirtualScreen(screenId:number, callback: AsyncCallback&lt;void&gt;): void
 | ------- | ----------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 | 1400002 | Unauthorized operation. |
 
 **示例：**
@@ -604,6 +613,7 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 | ------- | ----------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 | 1400002 | Unauthorized operation. |
 
 **示例：**
@@ -623,7 +633,7 @@ screen.destroyVirtualScreen(screenId).then(() => {
 
 setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-设置虚拟屏幕的surface，使用callback异步回调。
+设置虚拟屏幕的surface，表示当前虚拟屏用于显示对应surface中的内容，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -636,7 +646,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallb
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | screenId  | number                    | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
-| surfaceId | string                    | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义。                                                |
+| surfaceId | string                    | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置虚拟屏幕surface成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -653,25 +663,49 @@ setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallb
 **示例：**
 
 ```ts
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
-let surfaceId: string = '2048';
-screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError) => {
-  const errCode: number = err.code;
-  if (errCode) {
-    console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
-    return;
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError) => {
+    const errCode: number = err.code;
+    if (errCode) {
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      return;
+    }
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    });
   }
-  console.info('Succeeded in setting the surface for the virtual screen.');
-});
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## screen.setVirtualScreenSurface
 
 setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
-设置虚拟屏幕的surface，使用Promise异步回调。
+设置虚拟屏幕的surface，表示当前虚拟屏用于显示对应surface中的内容，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -684,7 +718,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
 | screenId  | number | 是   | 屏幕的id，该参数仅支持整数输入。    |
-| surfaceId | string | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义。 |
+| surfaceId | string | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 
 **返回值：**
 
@@ -706,15 +740,39 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
-let surfaceId: string = '2048';
-screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
-  console.info('Succeeded in setting the surface for the virtual screen.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
-});
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## screen.setScreenPrivacyMaskImage<sup>19+</sup>
@@ -803,7 +861,7 @@ isScreenRotationLocked(): Promise&lt;boolean&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 screen.isScreenRotationLocked().then((isLocked: boolean) => {
-  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${islocked}`);
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
 });
@@ -839,12 +897,12 @@ isScreenRotationLocked(callback: AsyncCallback&lt;boolean&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 screen.isScreenRotationLocked((err: BusinessError, isLocked: boolean) => {
-const errCode: number = err.code;
-if (errCode) {
-  console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
-  return;
-}
-console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${islocked}`);
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
 });
 ```
 
@@ -858,7 +916,7 @@ setScreenRotationLocked(isLocked: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** 该接口在2in1设备上调用不生效不报错，在其他设备中可正常调用。
+**设备行为差异：** 仅在支持跟随sensor旋转的设备中生效，其他设备调用不生效不报错。
 
 **参数：**
 
@@ -898,11 +956,13 @@ screen.setScreenRotationLocked(isLocked).then(() => {
 
 setScreenRotationLocked(isLocked: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置自动转屏开关是否锁定，使用callback异步回调，不适用于2in1设备。
+设置自动转屏开关是否锁定，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：** 仅在支持跟随sensor旋转的设备中生效，其他设备调用不生效不报错。
 
 **参数：**
 
@@ -940,7 +1000,7 @@ screen.setScreenRotationLocked(isLocked, (err: BusinessError) => {
 
 setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondaryScreenMode: MultiScreenMode): Promise&lt;void&gt;
 
-设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。
+设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。primaryScreenId和secondaryScreenId均为0时，仅在扩展屏显示。
 
 **系统接口：** 此接口为系统接口。
 
@@ -950,8 +1010,8 @@ setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondary
 
 | 参数名       | 类型                 | 必填 | 说明                |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | number           | 是  | 主屏的id，该参数应为正整数。 |
-| secondaryScreenId | number           | 是  | 扩展屏幕的id，该参数应为正整数。|
+| primaryScreenId   | number           | 是  | 主屏的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
+| secondaryScreenId | number           | 是  | 扩展屏幕的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | 是  | 扩展屏幕的显示模式。|
 
 **返回值：**
@@ -1016,6 +1076,7 @@ setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, se
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed, non-system application uses system API. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1041,6 +1102,56 @@ screen.setMultiScreenRelativePosition(mainScreenOptions, secondaryScreenOptions)
   console.error(`Failed to set multi screen relative position. Code:${err.code}, message is ${err.message}`);
 });
 ```
+## screen.resizeVirtualScreen<sup>24+</sup>
+
+resizeVirtualScreen(screenId: number, width: number, height: number): Promise&lt;void&gt;
+
+修改指定虚拟屏的尺寸，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名      | 类型        | 必填 | 说明                                                        |
+| ---------- | ----------- | ---  |------------------------------------------------------------|
+| screenId   | number      | 是   | 要修改的虚拟屏的屏幕ID，取值范围为[1000, 2147483647]的正整数，超出有效范围时返回错误码1400004。 |
+| width      | number      | 是   | 虚拟屏的新宽度，单位为px，取值范围为[1, 65536]的正整数，超出有效范围时返回错误码1400004。  |
+| height     | number      | 是   | 虚拟屏的新高度，单位为px，取值范围为[1, 65536]的正整数，超出有效范围时返回错误码1400004。  |
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- |---------------------------------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+| 801     | Capability not supported. Function can not work because the current device does not support this ability.|
+| 1400001 | Invalid display or screen.|
+| 1400003 | This display manager service works abnormally.|
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenId: number = 1000;
+let width: number = 1920;
+let height: number = 1080;
+screen.resizeVirtualScreen(screenId, width, height).then(() => {
+  console.info(`Succeeded in resizing virtual screen: screenId=${screenId}, width=${width}, height=${height}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set screen area mirroring. Code:${err.code}, message is ${err.message}`);
+});
+```
 
 ## screen.makeMirrorWithRegion<sup>19+</sup>
 
@@ -1056,8 +1167,8 @@ makeMirrorWithRegion(mainScreen:number, mirrorScreen:Array&lt;number&gt;, mainSc
 
 | 参数名       | 类型                | 必填 | 说明                 |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreen   | number              | 是   | 主屏幕id，该参数仅支持正整数输入。  |
-| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕id集合。其中id应为正整数。  |
+| mainScreen   | number              | 是   | 主屏幕ID，该参数仅支持正整数输入。  |
+| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕ID集合。其中ID应为正整数。  |
 | mainScreenRegion | [Rect](#rect19) | 是   | 主屏创建镜像的矩形区域。         |
 
 **返回值：**
@@ -1226,7 +1337,7 @@ stopExpand(expandScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                      |
 | ------------ | --------------------------- | --- |-----------------------------------------|
-| expandScreen | Array&lt;number&gt;         | 是   | 扩展屏幕id集合，其中id为整数。 expandScreen数组大小不应超过1000。  |
+| expandScreen | Array&lt;number&gt;         | 是   | 扩展屏幕ID集合，其中ID为整数。 expandScreen数组大小不应超过1000。  |
 | callback     | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止屏幕扩展模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1273,7 +1384,7 @@ stopExpand(expandScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                 |
 | ------------ | ------------------- | --- |--------------------|
-| expandScreen | Array&lt;number&gt; | 是   | 扩展屏幕id集合，其中id为整数。expandScreen数组大小不应超过1000。 |
+| expandScreen | Array&lt;number&gt; | 是   | 扩展屏幕ID集合，其中ID为整数。expandScreen数组大小不应超过1000。 |
 
 **返回值：**
 
@@ -1341,7 +1452,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称    | 类型     | 只读 | 可选  | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
-| id       | number   | 否   | 否   | 屏幕的id，该参数应为正整数，非正整数会作为非法参数报错。|
+| id       | number   | 否   | 否   | 屏幕的ID，该参数应为正整数，非正整数会作为非法参数报错。|
 | startX   | number   | 否   | 否   | 屏幕的起始X轴坐标。以两块屏幕外接矩形的左上顶点为原点，向右为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
 | startY   | number   | 否   | 否   | 屏幕的起始Y轴坐标。以两块屏幕外接矩形的左上顶点为原点，向下为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
 
@@ -1358,12 +1469,14 @@ screen.stopExpand(expandScreenIds).then(() => {
 | name      | string   | 否   | 否   | 指定虚拟屏幕的名称。               |
 | width     | number   | 否   | 否   | 指定虚拟屏幕的宽度，单位为px，该参数应为整数。 |
 | height    | number   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为整数。 |
-| density   | number   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。 |
+| density   | number   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
+| supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
+| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。 |
 
 ## Screen
 
-屏幕实例。
+[物理屏](../../displaymanager/display-terminology.md#物理屏)屏幕实例。
 
 下列API示例中都需先使用[getAllScreens()](#screengetallscreens)、[createVirtualScreen()](#screencreatevirtualscreen)中的任一方法获取到Screen实例，再通过此实例调用对应方法。
 
@@ -1376,19 +1489,21 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称              | 类型                                       | 只读 | 可选 | 说明                                                          |
 | ----------------- | ---------------------------------------------- | ---- | ---- |-------------------------------------------------------------|
-| id                | number                                         | 是   | 否   | 屏幕的id，该参数为整数。                           |
+| id                | number                                         | 是   | 否   | 屏幕的ID，该参数为整数。                           |
+| rsId<sup>21+</sup> |number | 是 | 否 | 屏幕端口的id，该参数为整数。|
 | parent            | number                                         | 是   | 否   | 屏幕所属群组的id，该参数为整数。             |
 | supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。   |
 | activeModeIndex   | number                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。 |
 | orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。       |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。     |
-| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。<br> **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中不可用。  |       
+| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
+| densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### setOrientation
 
 setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-设置屏幕方向，使用callback异步回调。
+设置屏幕方向，使用callback异步回调。当设置的方向符合[应用旋转策略](../../quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1422,6 +1537,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1429,7 +1545,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1452,7 +1569,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 setOrientation(orientation: Orientation): Promise&lt;void&gt;
 
-设置屏幕方向，使用Promise异步回调。
+设置屏幕方向，使用Promise异步回调。当设置的方向符合[应用旋转策略](../../quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1491,6 +1608,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1498,7 +1616,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1512,6 +1631,73 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
   });
 }).catch((err: BusinessError) => {
   console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+});
+```
+
+### setOrientation
+
+setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions): Promise\<void>
+
+设置屏幕方向，使用Promise异步回调。
+
+可通过orientationOptions参数指定旋转时是否带有动画、是否忽略系统窗口的旋转锁定。
+
+当设置的方向符合应用旋转策略（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛出异常。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
+
+| 参数名      | 类型                        | 必填 | 说明       |
+| ----------- | --------------------------- | ---- | ---------- |
+| orientation | [Orientation](#orientation) | 是   | 屏幕方向。 |
+| orientationOptions | [OrientationOptions](#orientationoptions) | 否 | 设置屏幕旋转时的可选参数。默认带动画旋转屏幕，不忽略旋转锁定。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let orientationOptions : screen.OrientationOptions = {
+  needAnimation: true,
+  ignoreRotationLock: false,
+};
+
+let screenClass: screen.Screen | null = null;
+let screensPromise: Promise<Array<screen.Screen>> = screen.getAllScreens();
+screensPromise.then((data: Array<screen.Screen>) => {
+  if (data.length > 0) {
+    screenClass = data[0];
+    let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL, orientationOptions);
+    promise.then(() => {
+      console.info('Succeeded in setting the vertical orientation with orientationOptions.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the vertical orientation with orientationOptions. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code:${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1553,6 +1739,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1560,7 +1747,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1623,6 +1811,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1630,7 +1819,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1687,6 +1877,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1694,7 +1885,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1757,6 +1949,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1764,7 +1957,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1821,7 +2015,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 | 名称        | 类型 | 只读 | 可选 | 说明                                               |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
-| id          | number   | 否   | 否   | 模式id，所支持的模式由具体设备分辨率和刷新率决定，该参数为整数。 | 
+| id          | number   | 否   | 否   | 模式ID，所支持的模式由具体设备分辨率和刷新率决定，该参数为整数。 | 
 | width       | number   | 否   | 否   | 屏幕的宽度，单位为px，该参数为整数。                                |
 | height      | number   | 否   | 否   | 屏幕的高度，单位为px，该参数为整数。                                |
 | refreshRate | number   | 否   | 否   | 屏幕的刷新率，单位为hz，该参数为整数。                                     |
@@ -1840,3 +2034,20 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 | top     | number   | 否   | 否   | 矩形左上角顶点的Y轴坐标，单位为px，该参数应为整数。 |
 | width   | number   | 否   | 否   | 矩形的宽度，单位为px，该参数应为整数。             |
 | height  | number   | 否   | 否   | 矩形的高度，单位为px，该参数应为整数。             |
+
+## OrientationOptions
+
+设置屏幕方向的可选参数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此字段仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+| 名称        | 类型 | 只读 | 可选 | 说明                                               |
+| ----------- | -------- | ---- | ---- | -------------------------------------------------- |
+| needAnimation          | boolean   | 否   | 是   |  是否带动画旋转。true表示带动画旋转屏幕，false表示不带动画旋转屏幕。默认值为true。 | 
+| ignoreRotationLock     | boolean   | 否   | 是   |  是否忽略旋转锁定。true表示即使某些系统窗口锁定屏幕旋转，也允许屏幕旋转；false表示当系统窗口锁定屏幕旋转时，不允许屏幕旋转。默认值为false。<br> **设备行为差异：** 该字段仅在PC/2in1设备（非折叠PC）和其他设备的电脑模式下生效，在其他设备中调用不生效不报错。|

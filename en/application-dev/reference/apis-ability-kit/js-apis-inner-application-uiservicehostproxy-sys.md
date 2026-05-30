@@ -1,5 +1,12 @@
 # UIServiceHostProxy (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @xhz-sz-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 UIServiceHostProxy functions as a proxy to send data from the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md) server to the client.
 
 

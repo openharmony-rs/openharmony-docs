@@ -1,10 +1,10 @@
 # native_avmetadata.h
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -29,14 +29,6 @@
 | [OH_AVMetadataBuilderStruct](capi-ohavsession-oh-avmetadatabuilderstruct.md) | OH_AVMetadataBuilder | 会话元数据构造器。构造器用于构造会话元数据。 |
 | [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md) | OH_AVMetadata | 会话元数据。资源设置的avmetadata的实例。 |
 
-### 枚举
-
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [AVMetadata_Result](#avmetadata_result) | AVMetadata_Result | 元数据操作的错误码。 |
-| [AVMetadata_SkipIntervals](#avmetadata_skipintervals) | AVMetadata_SkipIntervals | 表示session支持的快进快退时间间隔。 |
-| [AVMetadata_DisplayTag](#avmetadata_displaytag) | AVMetadata_DisplayTag | 应用媒体音源的特殊类型标识。 |
-
 ### 函数
 
 | 名称 | 描述 |
@@ -45,7 +37,7 @@
 | [AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)](#oh_avmetadatabuilder_destroy) | 销毁元数据构造器。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder, const char* assetId)](#oh_avmetadatabuilder_setassetid) | 设置当前媒体资源id。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, const char* title)](#oh_avmetadatabuilder_settitle) | 设置资源标题。 |
-| [AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, const char* artist)](#oh_avmetadatabuilder_setartist) | 设置资源所属的艺术家。 |
+| [AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, const char* artist)](#oh_avmetadatabuilder_setartist) | 设置资源所属的艺术家信息。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, const char* author)](#oh_avmetadatabuilder_setauthor) | 设置资源的作者。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, const char* album)](#oh_avmetadatabuilder_setalbum) | 设置资源专辑名称。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, const char* writer)](#oh_avmetadatabuilder_setwriter) | 设置资源词作者。 |
@@ -55,71 +47,17 @@
 | [AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder, const char* subtitle)](#oh_avmetadatabuilder_setsubtitle) | 设置副标题。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* builder, const char* description)](#oh_avmetadatabuilder_setdescription) | 设置媒体描述信息。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, const char* lyric)](#oh_avmetadatabuilder_setlyric) | 设置歌词。 |
-| [AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* builder, AVMetadata_SkipIntervals intervals)](#oh_avmetadatabuilder_setskipintervals) | 设置资源的跳转的间隔时间。 |
+| [AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* builder, AVMetadata_SkipIntervals intervals)](#oh_avmetadatabuilder_setskipintervals) | 设置资源的跳转间隔时间。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* builder, int32_t tags)](#oh_avmetadatabuilder_setdisplaytags) | 设置媒体资源的金标类型。 |
+| [AVMetadata_Result OH_AVMetadataBuilder_SetFilter(OH_AVMetadataBuilder* builder, uint32_t filter)](#oh_avmetadatabuilder_setfilter) | 设置支持的协议。 |
 | [AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* builder, OH_AVMetadata** avMetadata)](#oh_avmetadatabuilder_generateavmetadata) | 生成媒体元数据对象。 |
 | [AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)](#oh_avmetadata_destroy) | 释放媒体元数据对象。 |
-
-## 枚举类型说明
-
-### AVMetadata_Result
-
-```
-enum AVMetadata_Result
-```
-
-**描述**
-
-元数据操作的错误码。
-
-**起始版本：** 13
-
-| 枚举项 | 描述 |
-| -- | -- |
-| AVMETADATA_SUCCESS = 0 | 执行成功。 |
-| AVMETADATA_ERROR_INVALID_PARAM = 1 | 入参错误。 |
-| AVMETADATA_ERROR_NO_MEMORY = 2 | 内存不足。 |
-
-### AVMetadata_SkipIntervals
-
-```
-enum AVMetadata_SkipIntervals
-```
-
-**描述**
-
-表示session支持的快进快退时间间隔。
-
-**起始版本：** 13
-
-| 枚举项 | 描述 |
-| -- | -- |
-| SECONDS_10 = 10 | 时间为10秒。 |
-| SECONDS_15 = 15 | 时间为15秒。 |
-| SECONDS_30 = 30 | 时间为30秒。 |
-
-### AVMetadata_DisplayTag
-
-```
-enum AVMetadata_DisplayTag
-```
-
-**描述**
-
-应用媒体音源的特殊类型标识。
-
-**起始版本：** 13
-
-| 枚举项 | 描述 |
-| -- | -- |
-| AVSESSION_DISPLAYTAG_AUDIO_VIVID = 1 | AUDIO VIVID标识。 |
-
 
 ## 函数说明
 
 ### OH_AVMetadataBuilder_Create()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 ```
 
@@ -129,22 +67,21 @@ AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 
 **起始版本：** 13
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)** builder |  该引用指向创建的构造器的结果。 |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)** builder |  该引用指向创建的构造器实例。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。<br> AVMETADATA_ERROR_NO_MEMORY：没有内存来分配新实例。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。<br>         AVMETADATA_ERROR_NO_MEMORY：内存不足。 |
 
 ### OH_AVMetadataBuilder_Destroy()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 ```
 
@@ -153,7 +90,6 @@ AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 销毁元数据构造器。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -165,11 +101,11 @@ AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetAssetId()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder, const char* assetId)
 ```
 
@@ -178,7 +114,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder,
 设置当前媒体资源id。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -191,11 +126,11 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder,
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                               1.参数builder为nullptr。<br>                               2.参数assetId为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数assetId为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetTitle()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, const char* title)
 ```
 
@@ -204,7 +139,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, c
 设置资源标题。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -217,37 +151,36 @@ AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数title为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数title为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetArtist()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, const char* artist)
 ```
 
 **描述**
 
-设置资源所属的艺术家。
+设置资源所属的艺术家信息。
 
 **起始版本：** 13
-
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | 指向元数据构造器的实例。 |
-| const char* artist | 艺术家。 |
+| const char* artist | 媒体资源的艺术家。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数artist为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数artist为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetAuthor()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, const char* author)
 ```
 
@@ -256,7 +189,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, 
 设置资源的作者。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -269,11 +201,11 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数author为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数author为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetAlbum()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, const char* album)
 ```
 
@@ -282,7 +214,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, c
 设置资源专辑名称。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -295,11 +226,11 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数album为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数album为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetWriter()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, const char* writer)
 ```
 
@@ -308,7 +239,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, 
 设置资源词作者。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -321,11 +251,11 @@ AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数writer为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数writer为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetComposer()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder, const char* composer)
 ```
 
@@ -334,7 +264,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder
 设置资源作曲者。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -347,11 +276,11 @@ AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数composer为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数composer为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetDuration()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder, int64_t duration)
 ```
 
@@ -360,7 +289,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder
 设置资源播放时长。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -373,11 +301,11 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetMediaImageUri()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* builder, const char* mediaImageUri)
 ```
 
@@ -386,7 +314,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 设置媒体图片数据。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -399,11 +326,11 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数mediaImageUri为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数mediaImageUri为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetSubtitle()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder, const char* subtitle)
 ```
 
@@ -412,7 +339,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder
 设置副标题。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -425,11 +351,11 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数subtitle为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数subtitle为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetDescription()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* builder, const char* description)
 ```
 
@@ -438,7 +364,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* buil
 设置媒体描述信息。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -451,11 +376,11 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* buil
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数description为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数description为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetLyric()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, const char* lyric)
 ```
 
@@ -465,49 +390,47 @@ AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, c
 
 **起始版本：** 13
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | 指向元数据构造器的实例。 |
-| const char* lyric | lrc格式的歌词内容。 |
+| const char* lyric | LRC格式的歌词内容。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数lyric为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数lyric为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetSkipIntervals()
 
-```
-AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* builder,AVMetadata_SkipIntervals intervals)
+```c
+AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* builder, AVMetadata_SkipIntervals intervals)
 ```
 
 **描述**
 
-设置资源的跳转的间隔时间。
+设置资源的跳转间隔时间。
 
 **起始版本：** 13
-
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | 指向元数据构造器的实例。 |
-| [AVMetadata_SkipIntervals](capi-native-avmetadata-h.md#avmetadata_skipintervals) intervals | 跳转的时间间隔。 |
+| [AVMetadata_SkipIntervals](capi-native-avsession-base-h.md#avmetadata_skipintervals) intervals | 跳转的时间间隔。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数intervals为无效。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数intervals为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetDisplayTags()
 
-```
+```c
 AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* builder, int32_t tags)
 ```
 
@@ -516,7 +439,6 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* buil
 设置媒体资源的金标类型。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -529,12 +451,37 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* buil
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
+
+### OH_AVMetadataBuilder_SetFilter()
+
+```c
+AVMetadata_Result OH_AVMetadataBuilder_SetFilter(OH_AVMetadataBuilder* builder, uint32_t filter)
+```
+
+**描述**
+
+设置支持的协议。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | 指向元数据构造器的实例。 |
+| uint32_t filter | 此会话支持的协议。如果没有设置，默认为[AVSession_ProtocolType](capi-native-avsession-base-h.md#avsession_protocoltype).TYPE_CAST_PLUS_STREAM。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数filter是无效的。 |
 
 ### OH_AVMetadataBuilder_GenerateAVMetadata()
 
-```
-AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* builder,OH_AVMetadata** avMetadata)
+```c
+AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* builder, OH_AVMetadata** avMetadata)
 ```
 
 **描述**
@@ -542,7 +489,6 @@ AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* 
 生成媒体元数据对象。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -555,11 +501,11 @@ AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_NO_MEMORY：内存不足。<br> AVMETADATA_ERROR_INVALID_PARAM：<br>                                1. 参数builder为nullptr。<br>                                2. 参数avMetadata为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_NO_MEMORY：内存不足。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数avMetadata为nullptr。 |
 
 ### OH_AVMetadata_Destroy()
 
-```
+```c
 AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)
 ```
 
@@ -568,7 +514,6 @@ AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)
 释放媒体元数据对象。
 
 **起始版本：** 13
-
 
 **参数：**
 
@@ -580,6 +525,6 @@ AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：参数avMetadata为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：参数avMetadata为nullptr。 |
 
 

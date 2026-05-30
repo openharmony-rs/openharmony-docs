@@ -1,6 +1,14 @@
 # list-item
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 **\<list-item>** is a child component of the **[\<list>](js-lite-components-container-list.md)** component and is used to display items in a list.
+
 
 > **NOTE**
 >
@@ -50,4 +58,4 @@ Supported
 
 ## Example
 
-See **Example** in [list](js-lite-components-container-list.md).
+See [Example in list](js-lite-components-container-list.md#example).

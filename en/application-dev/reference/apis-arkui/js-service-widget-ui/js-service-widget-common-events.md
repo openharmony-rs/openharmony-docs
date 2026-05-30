@@ -1,4 +1,10 @@
 # Universal Events
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Unlike private events, universal events can be bound to most components. (If a keyup event needs to be triggered to respond to the input of carriage return and space characters on the keyboard, add the click event to the outermost component.)

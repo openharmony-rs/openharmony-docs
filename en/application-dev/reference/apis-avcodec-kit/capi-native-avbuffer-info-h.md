@@ -1,5 +1,12 @@
 # native_avbuffer_info.h
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
 The file declares the attribute definition of the media struct AVBuffer.
@@ -34,7 +41,7 @@ The file declares the attribute definition of the media struct AVBuffer.
 
 ### OH_AVCodecBufferFlags
 
-```
+```c
 enum OH_AVCodecBufferFlags
 ```
 

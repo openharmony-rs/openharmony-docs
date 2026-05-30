@@ -22,7 +22,9 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 submitMetadata(metadata: string): void
 
 第三方应用将需要编码的内容传递给MSDP，MSDP决定适时将内容传递给调用编码接口的系统应用或服务。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.MultimodalAwareness.MetadataBinding
 
 **参数**：
@@ -37,13 +39,12 @@ submitMetadata(metadata: string): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 32100001 | Internal handling failed. Set Meta data to screenshot app fail. |
+| 32100001 | Internal handling failed. |
 
 **示例**：
 
 ```ts
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let metadata: string = "";
 try {
@@ -57,8 +58,11 @@ try {
 on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;number&gt;): void 
 
 订阅系统事件以获取编码内容，应用注册回调，事件发生时回传编码内容。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.MultimodalAwareness.MetadataBinding  
+
 **参数**： 
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
@@ -73,13 +77,12 @@ on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;nu
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 32100001 | Internal handling failed. Service exception. |
+| 32100001 | Internal handling failed. |
 | 32100004 | Subscribe Failed. Possible causes: 1. Abnormal system capability; 2. IPC communication abnormality; 3. Algorithm loading exception. |
 
 **示例：**  
 ```ts
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName: string = '';
 try {
@@ -98,8 +101,11 @@ try {
 off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;number&gt;): void
 
 取消订阅系统获取编码内容的事件。取消注册回调接口。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.MultimodalAwareness.MetadataBinding  
+
 **参数**：
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
@@ -114,14 +120,13 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 32100001 | Internal handling failed. Service exception. |
+| 32100001 | Internal handling failed. |
 | 32100005 | Unsubscribe Failed. Possible causes: 1. Abnormal system capability; 2. IPC communication abnormality. |
 
 **示例**：
 
 ```ts
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName: string = '';
 try {

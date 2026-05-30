@@ -4,11 +4,11 @@
 <!--Owner: @seaside_wu1-->
 <!--Designer: @shiyu_huang-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >
->  从API Version 7 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 7 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 默认插槽

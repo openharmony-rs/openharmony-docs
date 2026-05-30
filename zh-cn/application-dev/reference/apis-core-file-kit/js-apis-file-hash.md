@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供文件哈希处理能力，对文件内容进行哈希处理。
 
@@ -154,12 +154,12 @@ createHash(algorithm: string): HashStream
 
   ```ts
   // pages/xxx.ets
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   function hashFileWithStream() {
     const filePath = pathDir + "/test.txt";
     // 创建文件可读流
-    const rs = fs.createReadStream(filePath);
+    const rs = fileIo.createReadStream(filePath);
     // 创建哈希流
     const hs = hash.createHash('sha256');
     rs.on('data', (emitData) => {
@@ -218,7 +218,7 @@ update(data: ArrayBuffer): void
 
 digest(): string
 
-计算传给被哈希的所有数据的摘要。
+计算传递给哈希处理的所有数据的摘要。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 

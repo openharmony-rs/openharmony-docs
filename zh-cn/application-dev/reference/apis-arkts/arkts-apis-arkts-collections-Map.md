@@ -1,17 +1,17 @@
 # Class (Map)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
+一种基于键值对存储的非线性数据结构。能够高效地通过唯一键来存取对应的值。
+
 > **说明：**
 >
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
-
-一种非线性数据结构。
 
 文档中存在泛型的使用，涉及以下泛型标记符：
 
@@ -56,11 +56,10 @@ constructor(entries?: readonly (readonly [K, V])[] | null)
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                        |
 | 10200012 | The ArkTS Map's constructor cannot be directly invoked. |
 
 **示例：**
@@ -75,7 +74,7 @@ const myMap = new collections.Map<number, number>();
 const myMap = new collections.Map<number, string>([
   [1, "one"],
   [2, "two"],
-  [3, "three"],
+  [3, "three"]
 ]);
 ```
 
@@ -93,6 +92,43 @@ const myMap1: collections.Map<number, SharedClass> = new collections.Map<number,
 let obj = new Object();
 const myMap2: collections.Map<number, Object> = new collections.Map<number, Object>([[1, obj]]);
 ```
+
+## constructor
+
+constructor(iterable: Iterable\<readonly \[K, V]>)
+
+创建ArkTS Map对象的构造函数。
+
+**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                              |
+| ------ | ---- | ---- | ------------------------------- |
+| iterable | Iterable\<readonly \[K, V]> | 是 | 用于构造ArkTS Map的对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 10200012 | The ArkTS Map's constructor cannot be directly invoked. |
+
+**示例：**
+
+```ts
+const mapper = new Map([
+  ['1', 'a'],
+  ['2', 'b'],
+]);
+let newMap = new collections.Map<string, string>(mapper.entries());
+console.info(newMap.get('1')); // 预期输出： a
+console.info(newMap.get('2')); // 预期输出： b
+```
+
 
 ## entries
 entries(): IterableIterator<[K, V]>
@@ -142,7 +178,9 @@ const myMap: collections.Map<number, string> = new collections.Map<number, strin
   [2, "three"],
   [3, "four"]
 ]);
+// 返回一个myMap迭代器对象，该对象包含了此myMap中的每个元素的[number, string]键值对。
 const entriesIter: IterableIterator<[number, string]> = myMap.entries();
+// 遍历entriesIter迭代器对象。
 for (const entry of entriesIter) {
   if (entry[1].startsWith('t')) {
     myMap.delete(entry[0]);
@@ -285,11 +323,10 @@ delete(key: K): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 401      | Parameter error.                                     |
 | 10200011 | The delete method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                   |
 
@@ -332,11 +369,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ----------------------------------------------------- |
-| 401      | Parameter error.                                      |
 | 10200011 | The forEach method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                    |
 
@@ -389,11 +425,10 @@ get(key: K): V | undefined
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                                  |
 | 10200011 | The get method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                |
 
@@ -432,11 +467,10 @@ has(key: K): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                                  |
 | 10200011 | The has method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                |
 
@@ -476,11 +510,10 @@ set(key: K, value: V): Map<K, V>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                                  |
 | 10200011 | The set method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                |
 

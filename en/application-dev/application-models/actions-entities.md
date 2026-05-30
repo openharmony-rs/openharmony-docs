@@ -1,5 +1,12 @@
 # Common action and entities Values (Not Recommended)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 > **NOTE**
 >
 > Due to the generalized use of the fields **action** and **entities**, the system lacks control over the behavior of applications declaring **action** and **entities**. This loophole allows malicious applications to make false declarations, hijacking traffic and rendering post-redirection features inoperative. As such, the system intends to deprecate unnecessary **action** and **entities**. You are advised to [start an application of the specified type](./start-intent-panel.md).

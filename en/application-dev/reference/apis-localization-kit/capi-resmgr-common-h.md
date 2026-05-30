@@ -1,5 +1,12 @@
 # resmgr_common.h
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @ningningW-->
+
 ## Overview
 
 Provides the enum types and structures for resource manager APIs.
@@ -36,7 +43,7 @@ Provides the enum types and structures for resource manager APIs.
 
 ### ResourceManager_ErrorCode
 
-```
+```c
 enum ResourceManager_ErrorCode
 ```
 
@@ -64,7 +71,7 @@ Enumerates resource manager error codes.
 
 ### ScreenDensity
 
-```
+```c
 enum ScreenDensity
 ```
 
@@ -85,7 +92,7 @@ Enumerates screen density types.
 
 ### ResourceManager_Direction
 
-```
+```c
 enum ResourceManager_Direction
 ```
 
@@ -102,7 +109,7 @@ Enumerates screen orientations.
 
 ### ResourceManager_ColorMode
 
-```
+```c
 enum ResourceManager_ColorMode
 ```
 
@@ -114,12 +121,12 @@ Enumerates color modes.
 
 | Enum Item| Description|
 | -- | -- |
-| DARK = 0 | Dark mode.|
-| LIGHT = 1 | Light mode.|
+| COLOR_MODE_DARK = 0 | Dark mode.|
+| COLOR_MODE_LIGHT = 1 | Light mode.|
 
 ### ResourceManager_DeviceType
 
-```
+```c
 enum ResourceManager_DeviceType
 ```
 

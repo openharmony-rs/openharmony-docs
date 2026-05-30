@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 > **说明：**
 >
@@ -20,6 +20,10 @@
 
 Operation not permitted
 
+**错误描述**
+
+操作不允许。
+
 **可能原因**
 
 当前用户文件操作不被允许，URI或path访问未授权。
@@ -28,7 +32,7 @@ Operation not permitted
 
 1.根据当前系统的[访问控制机制](../../security/AccessToken/access-token-overview.md)，应用无法使用分享给其他应用的URI。
 
-2.根据[系统Picker](../../application-models/system-app-startup.md)的运行机制，通过Picker获取到的URI仅有临时权限，无法持久化保存使用。
+2.根据[系统Picker](../../application-models/system-app-startup.md#拉起系统应用的方式)的运行机制，通过Picker获取到的URI仅具有临时权限，应用退出或设备重启后如需继续访问，需按[授权持久化](../../file-management/file-persistPermission.md)流程处理。
 
 3.URI路径不推荐进行拼接，拼接后的URI默认未授权。
 
@@ -38,19 +42,43 @@ Operation not permitted
 
 No such file or directory
 
+**错误描述**
+
+没有此文件或目录。
+
 **可能原因**
 
-文件或目录不存在。
+1.传入路径不是沙箱路径，或在应用沙箱内不存在该文件或目录。
+
+2.接口仅支持沙箱路径时，传入了URI。
+
+3.接口支持URI时，传入了自行拼接或二次编/解码后的不正确的URI。
+
+4.接口仅支持'utf-8'编码的文件或目录名，使用其他编码可能导致文件找不到。
+
+5.创建文件时，路径中目标文件所在的目录不存在。
 
 **处理步骤**
 
-确认文件路径是否存在。
+1.检查传入的路径是否为沙箱路径，在沙箱内是否存在。
+
+2.检查是否传错参数类型。
+
+3.检查是否传入了自行拼接或二次编/解码后的不正确的URI。
+
+4.检查文件或目录名编码格式是否是'utf-8'。
+
+5.创建文件时，检查文件父级目录是否存在。
 
 ### 13900003 没有这样的进程
 
 **错误信息**
 
 No such process
+
+**错误描述**
+
+没有此类进程。
 
 **可能原因**
 
@@ -68,6 +96,10 @@ No such process
 
 Interrupted system call
 
+**错误描述**
+
+系统调用被中断。
+
 **可能原因**
 
 系统调用被其他线程中断。
@@ -84,19 +116,37 @@ Interrupted system call
 
 I/O error
 
+**错误描述**
+
+I/O错误。
+
 **可能原因**
 
-IO请求非法。
+底层I/O错误，通常与硬件或者驱动设备层故障相关。
+
+1. 硬件故障：设备物理损坏导致无法完成I/O指令。
+
+2. 通信链路中断：数据传输过程链接断开。
+
+3. 驱动程序错误：驱动程序异常或者版本不兼容。
 
 **处理步骤**
 
-重新进行IO请求。
+1. 检查硬件状态是否正常。
+
+2. 检查USB设备等链接是否正常。
+
+3. 检查并更新驱动程序。
 
 ### 13900006 没有这个设备或地址
 
 **错误信息**
 
 No such device or address
+
+**错误描述**
+
+没有此设备或地址。
 
 **可能原因**
 
@@ -112,6 +162,10 @@ No such device or address
 
 Arg list too long
 
+**错误描述**
+
+参数列表过长。
+
 **可能原因**
 
 参数列表过长。
@@ -120,11 +174,15 @@ Arg list too long
 
 减少参数个数。
 
-### 13900008 坏的文件描述符
+### 13900008 异常的文件描述符
 
 **错误信息**
 
 Bad file descriptor
+
+**错误描述**
+
+异常的文件描述符。
 
 **可能原因**
 
@@ -144,6 +202,10 @@ Bad file descriptor
 
 No child processes
 
+**错误描述**
+
+没有子进程。
+
 **可能原因**
 
 无法创建子进程。
@@ -158,6 +220,10 @@ No child processes
 
 Try again
 
+**错误描述**
+
+资源暂时不可用。
+
 **可能原因**
 
 资源被阻塞。
@@ -171,6 +237,10 @@ Try again
 **错误信息**
 
 Out of memory
+
+**错误描述**
+
+内存溢出。
 
 **可能原因**
 
@@ -188,6 +258,10 @@ Out of memory
 
 Permission denied
 
+**错误描述**
+
+拒绝许可。
+
 **可能原因**
 
 1.文件操作被DAC或selinux拦截。
@@ -200,13 +274,17 @@ Permission denied
 
 2.排查内核日志中是否有[avc拦截日志](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-security-selinux-develop-intro.md)，如果存在avc拦截告警，<!--RP1-->拦截原因分析请参考[SELinux开发说明](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md)。<!--RP1End-->
 
-3.确认文件的路径是否为应用内的沙箱路径[沙箱路径地址](../../file-management/app-sandbox-directory.md)，文件管理系统禁止操作应用沙箱以外的文档。
+3.确认文件的路径是否为应用内的沙箱路径（[应用沙箱目录与应用沙箱路径](../../file-management/app-sandbox-directory.md#应用沙箱目录与应用沙箱路径)），文件管理系统禁止操作应用沙箱以外的文档。
 
 ### 13900013 错误的地址
 
 **错误信息**
 
 Bad address
+
+**错误描述**
+
+错误的地址。
 
 **可能原因**
 
@@ -222,6 +300,10 @@ Bad address
 
 Device or resource busy
 
+**错误描述**
+
+设备或资源忙。
+
 **可能原因**
 
 请求的资源不可用。
@@ -235,6 +317,10 @@ Device or resource busy
 **错误信息**
 
 File exists
+
+**错误描述**
+
+文件已存在。
 
 **可能原因**
 
@@ -250,6 +336,10 @@ File exists
 
 Cross-device link
 
+**错误描述**
+
+无效的交叉链接。
+
 **可能原因**
 
 跨设备链接失败。
@@ -263,6 +353,10 @@ Cross-device link
 **错误信息**
 
 No such device
+
+**错误描述**
+
+设备不存在。
 
 **可能原因**
 
@@ -278,6 +372,10 @@ No such device
 
 Not a directory
 
+**错误描述**
+
+不是一个目录。
+
 **可能原因**
 
 此路径不是文件夹目录。
@@ -291,6 +389,10 @@ Not a directory
 **错误信息**
 
 Is a directory
+
+**错误描述**
+
+是一个目录。
 
 **可能原因**
 
@@ -306,6 +408,10 @@ Is a directory
 
 Invalid argument
 
+**错误描述**
+
+无效参数。
+
 **可能原因**
 
 输入参数非法。
@@ -314,11 +420,15 @@ Invalid argument
 
 确认参数合法性。
 
-### 13900021 打开太多的文件系统
+### 13900021 打开太多的文件描述符
 
 **错误信息**
 
 File table overflow
+
+**错误描述**
+
+打开太多的文件描述符。
 
 **可能原因**
 
@@ -334,6 +444,10 @@ File table overflow
 
 Too many open files
 
+**错误描述**
+
+打开的文件过多。
+
 **可能原因**
 
 系统打开过多的文件。
@@ -347,6 +461,10 @@ Too many open files
 **错误信息**
 
 Text file busy
+
+**错误描述**
+
+文本文件忙。
 
 **可能原因**
 
@@ -362,6 +480,10 @@ Text file busy
 
 File too large
 
+**错误描述**
+
+文件过大。
+
 **可能原因**
 
 文件大小超出最大文件大小。
@@ -375,6 +497,10 @@ File too large
 **错误信息**
 
 No space left on device
+
+**错误描述**
+
+设备上剩余空间不足。
 
 **可能原因**
 
@@ -390,6 +516,10 @@ No space left on device
 
 Illegal seek
 
+**错误描述**
+
+非法移位。
+
 **可能原因**
 
 在管道或FIFO中使用seek。
@@ -403,6 +533,10 @@ Illegal seek
 **错误信息**
 
 Read-only file system
+
+**错误描述**
+
+只读文件系统。
 
 **可能原因**
 
@@ -418,6 +552,10 @@ Read-only file system
 
 Too many links
 
+**错误描述**
+
+链接过多。
+
 **可能原因**
 
 文件已达最大链接数。
@@ -431,6 +569,10 @@ Too many links
 **错误信息**
 
 Resource deadlock would occur
+
+**错误描述**
+
+资源死锁错误。
 
 **可能原因**
 
@@ -446,6 +588,10 @@ Resource deadlock would occur
 
 Filename too Long
 
+**错误描述**
+
+文件名过长。
+
 **可能原因**
 
 文件名超过最大长度255字节。
@@ -460,6 +606,10 @@ Filename too Long
 
 Function not implemented
 
+**错误描述**
+
+功能没有实现。
+
 **可能原因**
 
 系统不支持此功能。
@@ -473,6 +623,10 @@ Function not implemented
 **错误信息**
 
 Directory not empty
+
+**错误描述**
+
+目录非空。
 
 **可能原因**
 
@@ -490,6 +644,10 @@ Directory not empty
 
 Too many symbolic links encountered
 
+**错误描述**
+
+符号链接层次过多。
+
 **可能原因**
 
 符号链接层次过多。
@@ -503,6 +661,10 @@ Too many symbolic links encountered
 **错误信息**
 
 Operation would block
+
+**错误描述**
+
+操作被阻塞。
 
 **可能原因**
 
@@ -518,6 +680,10 @@ Operation would block
 
 Invalid request descriptor
 
+**错误描述**
+
+请求描述符无效。
+
 **可能原因**
 
 文件描述符非法。
@@ -531,6 +697,10 @@ Invalid request descriptor
 **错误信息**
 
 Device not a stream
+
+**错误描述**
+
+设备不是字符流。
 
 **可能原因**
 
@@ -546,6 +716,10 @@ Device not a stream
 
 No data available
 
+**错误描述**
+
+无可用数据。
+
 **可能原因**
 
 数据不可用。
@@ -560,6 +734,10 @@ No data available
 
 Value too large for defined data type
 
+**错误描述**
+
+变量值超出数据类型规定的最大值。
+
 **可能原因**
 
 值超出所定义的数据类型范围。
@@ -568,11 +746,15 @@ Value too large for defined data type
 
 修改数据类型。
 
-### 13900039 文件描述符在坏状态
+### 13900039 文件描述符在异常状态
 
 **错误信息**
 
 File descriptor in bad state
+
+**错误描述**
+
+文件描述符在异常状态。
 
 **可能原因**
 
@@ -588,6 +770,10 @@ File descriptor in bad state
 
 Interrupted system call should be restarted
 
+**错误描述**
+
+应该重新启动被中断的系统调用。
+
 **可能原因**
 
 系统调用被中断。
@@ -602,6 +788,10 @@ Interrupted system call should be restarted
 
 Quota exceeded
 
+**错误描述**
+
+超出磁盘配额。
+
 **可能原因**
 
 磁盘空间不足。
@@ -615,6 +805,10 @@ Quota exceeded
 **错误信息**
 
 Unknown error
+
+**错误描述**
+
+未知错误。
 
 **可能原因**
 
@@ -632,6 +826,10 @@ Unknown error
 
 No record is locks available
 
+**错误描述**
+
+没有可用的锁。
+
 **可能原因**
 
 系统资源不足。
@@ -646,6 +844,10 @@ No record is locks available
 
 Network is unreachable
 
+**错误描述**
+
+网络无法访问。
+
 **可能原因**
 
 网络异常。
@@ -659,6 +861,10 @@ Network is unreachable
 **错误信息**
 
 Connection failed
+
+**错误描述**
+
+连接失败。
 
 **可能原因**
 
@@ -676,6 +882,10 @@ Connection failed
 
 Software caused connection abort
 
+**错误描述**
+
+软件造成连接中断。
+
 **可能原因**
 
 设备下线或Wi-Fi、蓝牙断连。
@@ -686,6 +896,138 @@ Software caused connection abort
 
 2.检查Wi-Fi和蓝牙，确认状态正常。
 
+### 13900050 内部资源错误
+
+**错误信息**
+
+Internal resource error.
+
+**错误描述**
+
+内部资源错误。
+
+**可能原因**
+
+系统内部资源分配失败。
+
+**处理步骤**
+
+重新运行当前代码。
+
+### 13900051 缓冲区读写越界
+
+**错误信息**
+
+Buffer read/write out of bounds.
+
+**错误描述**
+
+mmap缓冲区读写越界。
+
+**可能原因**
+
+读写的数据长度超过了mmap映射区的剩余可用空间。
+
+**处理步骤**
+
+1.调用[remaining](js-apis-file-fs.md#remaining)确认映射区的剩余可用空间。
+
+2.如需操作更大范围，可先调用[setLimit](js-apis-file-fs.md#setlimit)调整限制值。
+
+### 13900052 mmap缓冲区已释放
+
+**错误信息**
+
+Mmap buffer released.
+
+**错误描述**
+
+mmap缓冲区已释放。
+
+**可能原因**
+
+1.对已调用[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)释放的缓冲区进行操作。
+
+2.FileMapping对象的内部状态无效。
+
+**处理步骤**
+
+1.确认mmap缓冲区是否已调用[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)释放。
+
+2.代码如果已经调用过[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)接口，则需重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)接口建立新的映射。
+
+### 13900053 mmap缓冲区只读
+
+**错误信息**
+
+Read-only mmap buffer.
+
+**错误描述**
+
+mmap缓冲区只读。
+
+**可能原因**
+
+以只读模式映射的缓冲区尝试进行写操作。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)，将映射模式设置为读写模式或私有模式。
+
+### 13900054 mmap缓冲区不可访问
+
+**错误信息**
+
+Mmap buffer is inaccessible.
+
+**错误描述**
+
+mmap缓冲区不可访问。
+
+**可能原因**
+
+系统内存映射异常导致缓冲区指针失效。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)映射文件。
+
+### 13900055 mmap映射类型不支持该操作
+
+**错误信息**
+
+Mmap operation not supported.
+
+**错误描述**
+
+mmap映射类型不支持该操作。
+
+**可能原因**
+
+[msync](js-apis-file-fs.md#msync)写入磁盘时，映射区为只读模式或私有模式。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)，将映射模式设置为读写模式。
+
+### 13900056 mmap不支持映射此文件
+
+**错误信息**
+
+Mmap does not support mapping this file.
+
+**错误描述**
+
+mmap不支持映射此文件。
+
+**可能原因**
+
+目标文件不是常规文件，如管道、socket、设备文件等。
+
+**处理步骤**
+
+请使用[read](js-apis-file-fs.md#fileioread)、[write](js-apis-file-fs.md#fileiowrite)或[Stream](js-apis-file-fs.md#stream)等文件访问接口替代mmap。
+
 ## 用户数据管理错误码
 
 ### 14000001 文件名非法
@@ -693,6 +1035,10 @@ Software caused connection abort
 **错误信息**
 
 Invalid file name
+
+**错误描述**
+
+文件名非法。
 
 **可能原因**
 
@@ -708,6 +1054,10 @@ Invalid file name
 
 Invalid URI
 
+**错误描述**
+
+非法URI。
+
 **可能原因**
 
 URI不合法。
@@ -721,6 +1071,10 @@ URI不合法。
 **错误信息**
 
 Invalid file name extension
+
+**错误描述**
+
+文件名后缀非法。
 
 **可能原因**
 
@@ -736,6 +1090,10 @@ Invalid file name extension
 
 File already in the recycle bin
 
+**错误描述**
+
+文件已进入回收站。
+
 **可能原因**
 
 文件已经被删除进入回收站。
@@ -749,6 +1107,10 @@ File already in the recycle bin
 **错误信息**
 
 System inner fail
+
+**错误描述**
+
+系统内部错误。
 
 **可能原因**
 
@@ -764,6 +1126,10 @@ System inner fail
 
 Member is not a valid PhotoKey
 
+**错误描述**
+
+成员名非法。
+
 **可能原因**
 
 传入的字符串不是类或接口的成员名。
@@ -772,6 +1138,48 @@ Member is not a valid PhotoKey
 
 确保传入的字符串为类或接口的成员名。
 
+### 14000016 操作类型不支持
+
+**错误信息**
+
+Operation Not Support
+
+**错误描述**
+
+当前操作类型不被支持。
+
+**可能原因**
+
+1. 对非Moving Photo类型的资源执行了Moving Photo相关操作。
+
+2. 对已通过添加/移动/移除的资源，再次操作相同的URI。
+
+3. 之前的资源创建/修改请求还未提交就再次修改（包含 CREATE_FROM_URI/GET_WRITE_CACHE_HANDLER/ADD_RESOURCE 操作）。
+
+4. 对非视频类型（MediaType.VIDEO）的资源执行了视频增强等视频专属操作。
+
+5. 对非用户相册或高亮相册执行了不允许的操作。
+
+**处理步骤**
+
+1. 确认资源类型。
+
+   - 如执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源是Moving Photo类型。
+   - 如执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO类型。
+
+2. 避免重复操作。
+
+   - 在调用addAssets/removeAssets/moveAssets前，检查是否已执行过此操作，避免连续重复调用。
+
+3. 完成提交后再修改。
+
+   - 在调用createImageAssetRequest/createVideoAssetRequest/getWriteCacheHandler/addResource后，需调用[applyChanges](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。
+   - 提交生效后才能对创建的资产发起新的修改请求。
+
+4. 确认相册类型。
+   - addAssets/removeAssets 仅支持用户相册和高亮相册。
+   - 系统相册（如相机、截屏相册）不支持这些操作。
+
 ## 空间统计错误码
 
 ### 13600001 IPC通信失败
@@ -779,6 +1187,10 @@ Member is not a valid PhotoKey
 **错误信息**
 
 IPC error
+
+**错误描述**
+
+IPC通信失败。
 
 **可能原因**
 
@@ -794,6 +1206,10 @@ IPC error
 
 File system not supported
 
+**错误描述**
+
+文件系统类型不支持。
+
 **可能原因**
 
 操作的文件系统类型不支持。
@@ -807,6 +1223,10 @@ File system not supported
 **错误信息**
 
 Mount failed
+
+**错误描述**
+
+挂载失败。
 
 **可能原因**
 
@@ -822,6 +1242,10 @@ Mount failed
 
 Unmount failed
 
+**错误描述**
+
+卸载失败。
+
 **可能原因**
 
 设备繁忙。
@@ -835,6 +1259,10 @@ Unmount failed
 **错误信息**
 
 Incorrect volume state
+
+**错误描述**
+
+卷状态错误。
 
 **可能原因**
 
@@ -850,6 +1278,10 @@ Incorrect volume state
 
 Failed to create the directory or node
 
+**错误描述**
+
+创建目录或者节点失败。
+
 **可能原因**
 
 目录或节点已存在。
@@ -864,6 +1296,10 @@ Failed to create the directory or node
 
 Failed to delete the directory or node
 
+**错误描述**
+
+删除目录或者节点失败。
+
 **可能原因**
 
 目录或节点已删除。
@@ -877,6 +1313,10 @@ Failed to delete the directory or node
 **错误信息**
 
 No such object
+
+**错误描述**
+
+操作对象不存在。
 
 **可能原因**
 
@@ -896,6 +1336,10 @@ No such object
 
 User ID out of range
 
+**错误描述**
+
+用户id超出范围。
+
 **可能原因**
 
 输入错误的用户id。
@@ -904,6 +1348,348 @@ User ID out of range
 
 检查输入的用户id是否处于正常范围。
 
+### 13600010 输入参数非法
+
+**错误信息**
+
+The input parameter is invalid.
+
+**错误描述**
+
+用户输入参数非法。
+
+**可能原因**
+
+输入错误的参数。
+
+**处理步骤**
+
+检查输入的参数是否处于正常范围。
+
+### 13600011 上报指定业务空间占用失败
+
+**错误信息**
+
+Failed to report the specified business space usage.
+
+**错误描述**
+
+上报指定业务空间占用失败。
+
+**可能原因**
+
+与数据库交互异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600012 查询指定业务空间占用失败
+
+**错误信息**
+
+Failed to query the specified business space usage.
+
+**错误描述**
+
+查询指定业务空间占用失败。
+
+**可能原因**
+
+与数据库交互异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600013 查询所有业务空间占用情况失败
+
+**错误信息**
+
+Failed to query all business space usage.
+
+**错误描述**
+
+查询所有业务空间占用情况失败。
+
+**可能原因**
+
+与数据库交互异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600015 获取磁盘空间占用信息失败
+
+**错误信息**
+
+Failed to traverse the query data partition directory.
+
+**错误描述**
+
+获取磁盘空间占用信息失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600016 获取文件系统inode数失败
+
+**错误信息**
+
+Failed to query the inode information of the data partition.
+
+**错误描述**
+
+获取数据分区的inode信息失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600017 获取当前应用的inode占用量失败
+
+**错误信息**
+
+Failed to query the inode information of the application.
+
+**错误描述**
+
+获取当前应用的inode占用量失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600018 查询系统数据大小失败
+
+**错误信息**
+
+Failed to query the system data size.
+
+**错误描述**
+
+查询系统数据大小失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600023 光盘不可擦除
+
+**错误信息**
+
+Disc not erasable.
+
+**错误描述**
+
+光盘不可擦除。
+
+**可能原因**
+
+光盘类型不支持擦除操作，如CD-R等一次性写入光盘。
+
+**处理步骤**
+
+确认光盘类型为可擦写光盘（如CD-RW、DVD-RW等）。
+
+### 13600024 光盘为空
+
+**错误信息**
+
+Empty disc.
+
+**错误描述**
+
+光盘为空。
+
+**可能原因**
+
+光盘中没有数据或未被正确识别。
+
+**处理步骤**
+
+1.确认光盘已正确放入光驱。
+
+2.确认光盘包含有效数据。
+
+### 13600025 写入ISO文件失败
+
+**错误信息**
+
+Failed to write the ISO file.
+
+**错误描述**
+
+写入ISO文件失败。
+
+**可能原因**
+
+1.ISO文件损坏或格式不正确。
+
+2.写入过程中发生I/O错误。
+
+3.光盘写入权限不足。
+
+**处理步骤**
+
+1.检查ISO文件完整性。
+
+2.确认光盘状态正常且可写入。
+
+3.重试写入操作。
+
+### 13600026 光盘空间不足
+
+**错误信息**
+
+Insufficient disc space.
+
+**错误描述**
+
+光盘空间不足。
+
+**可能原因**
+
+待写入数据大小超过光盘剩余容量。
+
+**处理步骤**
+
+1.检查待写入数据大小。
+
+2.使用容量更大的光盘或减少写入数据。
+
+### 13600027 源数据未找到
+
+**错误信息**
+
+Source data not found.
+
+**错误描述**
+
+源数据未找到。
+
+**可能原因**
+
+1.源文件路径错误或文件不存在。
+
+2.源数据已被删除或移动。
+
+**处理步骤**
+
+1.确认源文件路径正确。
+
+2.确认源文件存在且可访问。
+
+### 13600028 刻录操作失败
+
+**错误信息**
+
+Burn operation failed.
+
+**错误描述**
+
+刻录操作失败。
+
+**可能原因**
+
+1.光驱硬件故障或连接异常。
+
+2.刻录过程中断或超时。
+
+3.光盘质量不佳或已损坏。
+
+**处理步骤**
+
+1.检查光驱已连接且处于正常识别的空闲状态。
+
+2.更换质量良好的光盘。
+
+3.降低刻录速度后重试。
+
+### 13600029 无正在进行的操作
+
+**错误信息**
+
+No ongoing operation.
+
+**错误描述**
+
+无正在进行的操作。
+
+**可能原因**
+
+查询不存在或未开始的刻录任务。
+
+**处理步骤**
+
+确认是否有正在进行的刻录操作。
+
+### 13600030 校验失败
+
+**错误信息**
+
+Verification failed.
+
+**错误描述**
+
+校验失败。
+
+**可能原因**
+
+1.刻录数据与源数据不一致。
+
+2.光盘读取错误。
+
+3.数据传输过程中出现错误。
+
+**处理步骤**
+
+1.重新进行刻录操作。
+
+2.检查光盘质量和光驱状态。
+
+3.验证源数据完整性。
+
+### 13600031 数据不匹配
+
+**错误信息**
+
+Data mismatch.
+
+**错误描述**
+
+数据不匹配。
+
+**可能原因**
+
+刻录后的数据与原始源数据存在差异。
+
+**处理步骤**
+
+1.重新刻录并校验数据。
+
+2.检查源文件在刻录过程中是否被修改。
+
+3.更换光盘或光驱后重试。
+
 ## 公共文件访问错误码
 
 ### 14300001 IPC通信失败
@@ -911,6 +1697,10 @@ User ID out of range
 **错误信息**
 
 IPC error
+
+**错误描述**
+
+IPC通信失败。
 
 **可能原因**
 
@@ -928,6 +1718,10 @@ IPC error
 
 Invalid URI
 
+**错误描述**
+
+URI格式错误。
+
 **可能原因**
 
 使用非法URI。
@@ -941,6 +1735,10 @@ Invalid URI
 **错误信息**
 
 Failed to obtain the server ability information
+
+**错误描述**
+
+查询server端ability信息失败。
 
 **可能原因**
 
@@ -956,6 +1754,10 @@ BMS接口异常。
 
 Incorrect result returned by js-server
 
+**错误描述**
+
+js-server实际返回的结果异常。
+
 **可能原因**
 
 server端返回实际数据不当。
@@ -969,6 +1771,10 @@ server端返回值检查。
 **错误信息**
 
 Failed to register notify
+
+**错误描述**
+
+notify注册失败。
 
 **可能原因**
 
@@ -986,6 +1792,10 @@ Failed to register notify
 
 Failed to unregister notify
 
+**错误描述**
+
+notify移除失败。
+
 **可能原因**
 
 1.server端服务不在。
@@ -1002,6 +1812,10 @@ Failed to unregister notify
 
 Failed to initialize the notify agent
 
+**错误描述**
+
+notify代理初始化失败。
+
 **可能原因**
 
 未注册就去取消notify。
@@ -1015,6 +1829,10 @@ Failed to initialize the notify agent
 **错误信息**
 
 Failed to notify the agent
+
+**错误描述**
+
+js-server端通知代理失败。
 
 **可能原因**
 

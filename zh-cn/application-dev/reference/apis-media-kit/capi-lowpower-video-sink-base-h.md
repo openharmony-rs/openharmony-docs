@@ -2,10 +2,10 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @Saber_e-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -46,7 +46,7 @@
 
 ### OH_LowPowerVideoSink_OnDataNeeded()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink,OH_AVSamplesBuffer* buffer,void *userData)
 ```
 
@@ -67,7 +67,7 @@ LowPowerVideoSink需要数据时调用该方法，包含在[OH_LowPowerVideoSink
 
 ### OH_LowPowerVideoSink_OnError()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink,OH_AVErrCode errCode,const char* errMsg,void* userData)
 ```
 
@@ -83,13 +83,13 @@ LowPowerVideoSink发生错误时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) errCode | 业务操作过程中发生错误时返回的错误码。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) errCode | 业务操作过程中发生错误时返回的错误码。 |
 | const char* errMsg | 业务操作过程中发生错误时返回的错误描述信息。 |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 ### OH_LowPowerVideoSink_OnTargetArrived()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink,const int64_t targetPts,const bool isTimeout,void* userData)
 ```
 
@@ -105,13 +105,13 @@ LowPowerVideoSink到达目标点时调用该方法，包含在[OH_LowPowerVideoS
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| const int64_t targetPts | 目标点的pts。 |
-| const bool isTimeout | 如果等待目标点超时，则为false。 |
+| const int64_t targetPts | 目标点的pts。单位为微秒。 |
+| const bool isTimeout | 表示等待目标点是否超时。若为true，表示等待目标点超时；若为false，则表示未超时。 |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 ### OH_LowPowerVideoSink_OnRenderStarted()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink, void* userData)
 ```
 
@@ -131,7 +131,7 @@ LowPowerVideoSink开始渲染时调用该方法，包含在[OH_LowPowerVideoSink
 
 ### OH_LowPowerVideoSink_OnStreamChanged()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink, OH_AVFormat* format, void* userData)
 ```
 
@@ -147,12 +147,12 @@ LowPowerVideoSink流切换调用该方法，包含在[OH_LowPowerVideoSinkCallba
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* format | 包含变化的参数和对应的值。 |
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* format | 包含变化的参数和对应的值。 |
 |  void* userData | 用户执行回调所依赖的数据。 |
 
 ### OH_LowPowerVideoSink_OnFirstFrameDecoded()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* sink, void* userData)
 ```
 
@@ -172,7 +172,7 @@ LowPowerVideoSink第一帧解码成功时调用该方法，包含在[OH_LowPower
 
 ### OH_LowPowerVideoSink_OnEos()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* userData)
 ```
 

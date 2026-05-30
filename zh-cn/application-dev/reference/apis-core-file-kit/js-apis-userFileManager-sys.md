@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 该模块提供用户数据管理能力：包括访问、修改用户公共媒体数据信息等常用功能。
 
@@ -19,11 +19,15 @@
 import userFileManager from '@ohos.filemanagement.userFileManager';
 ```
 
-## userFileManager.getUserFileMgr
+## userFileManager.getUserFileMgr<sup>(deprecated)</sup>
 
 getUserFileMgr(context: Context): UserFileManager
 
 获取用户数据管理模块的实例，用于访问和修改用户公共媒体数据信息（如音频、视频、图片、文档等）。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.getPhotoAccessHelper](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#photoaccesshelpergetphotoaccesshelper19)替代。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -65,11 +69,15 @@ struct Index {
 
 ## UserFileManager
 
-### getPhotoAssets
+### getPhotoAssets<sup>(deprecated)</sup>
 
 getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;FileAsset&gt;&gt;): void
 
-获取图片和视频资源，使用callback方式返回结果。
+获取图片和视频资源。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -79,12 +87,12 @@ getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| options  | [FetchOptions](#fetchoptions)        | 是   | 图片和视频检索选项。              |
-| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | 是   | callback返回图片和视频检索结果集。 |
+| options  | [FetchOptions](#fetchoptionsdeprecated)        | 是   | 图片和视频检索选项。              |
+| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | 是   | callback返回图片和视频检索结果集。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -92,7 +100,7 @@ getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -119,11 +127,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getPhotoAssets
+### getPhotoAssets<sup>(deprecated)</sup>
 
 getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&gt;
 
-获取图片和视频资源，使用Promise方式返回结果。
+获取图片和视频资源。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -133,17 +145,17 @@ getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&g
 
 | 参数名  | 类型                | 必填 | 说明             |
 | ------- | ------------------- | ---- | ---------------- |
-| options | [FetchOptions](#fetchoptions)   | 是   | 图片和视频检索选项。     |
+| options | [FetchOptions](#fetchoptionsdeprecated)   | 是   | 图片和视频检索选项。     |
 
 **返回值：**
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Promise对象，返回图片和视频数据结果集。 |
+| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | Promise对象，返回图片和视频数据结果集。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -151,7 +163,7 @@ getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&g
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -177,11 +189,15 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
-### createPhotoAsset
+### createPhotoAsset<sup>(deprecated)</sup>
 
 createPhotoAsset(displayName: string, albumUri: string, callback: AsyncCallback&lt;FileAsset&gt;): void
 
 指定待创建的图片或者视频的文件名和所在相册的uri，创建图片或视频资源，使用callback方式返回结果。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.createAsset](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createasset)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -193,11 +209,11 @@ createPhotoAsset(displayName: string, albumUri: string, callback: AsyncCallback&
 | -------- | ------------------------ | ---- | ------------------------- |
 | displayName  | string        | 是   | 创建的图片或者视频文件名。              |
 | albumUri  | string        | 是   | 创建的图片或者视频所在相册的uri。              |
-| callback |  AsyncCallback&lt;[FileAsset](#fileasset)&gt; | 是   | callback返回创建的图片和视频结果。 |
+| callback |  AsyncCallback&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | callback返回创建的图片和视频结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -206,7 +222,7 @@ createPhotoAsset(displayName: string, albumUri: string, callback: AsyncCallback&
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -231,11 +247,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### createPhotoAsset
+### createPhotoAsset<sup>(deprecated)</sup>
 
 createPhotoAsset(displayName: string, callback: AsyncCallback&lt;FileAsset&gt;): void
 
 指定待创建的图片或者视频的文件名，创建图片或视频资源，使用callback方式返回结果。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.createAsset](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createasset)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -246,11 +266,11 @@ createPhotoAsset(displayName: string, callback: AsyncCallback&lt;FileAsset&gt;):
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
 | displayName  | string        | 是   | 创建的图片或者视频文件名。              |
-| callback |  AsyncCallback&lt;[FileAsset](#fileasset)&gt; | 是   | callback返回创建的图片和视频结果。 |
+| callback |  AsyncCallback&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | callback返回创建的图片和视频结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -259,7 +279,7 @@ createPhotoAsset(displayName: string, callback: AsyncCallback&lt;FileAsset&gt;):
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -276,11 +296,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### createPhotoAsset
+### createPhotoAsset<sup>(deprecated)</sup>
 
 createPhotoAsset(displayName: string, albumUri?: string): Promise&lt;FileAsset&gt;
 
-指定待创建的图片或者视频的文件名和所在相册的uri，创建图片或视频资源，使用Promise方式返回结果。
+指定待创建的图片或者视频的文件名和所在相册的uri，创建图片或视频资源。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.createAsset](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createasset)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -297,11 +321,11 @@ createPhotoAsset(displayName: string, albumUri?: string): Promise&lt;FileAsset&g
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| Promise&lt;[FileAsset](#fileasset)&gt; | Promise对象，返回创建的图片和视频结果。 |
+| Promise&lt;[FileAsset](#fileassetdeprecated)&gt; | Promise对象，返回创建的图片和视频结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -309,7 +333,7 @@ createPhotoAsset(displayName: string, albumUri?: string): Promise&lt;FileAsset&g
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -325,11 +349,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### createPhotoAsset
+### createPhotoAsset<sup>(deprecated)</sup>
 
 createPhotoAsset(displayName: string, createOption: PhotoCreateOptions, callback: AsyncCallback&lt;FileAsset&gt;): void
 
 指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源，使用callback方式返回结果。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.createAsset](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createasset)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -340,12 +368,12 @@ createPhotoAsset(displayName: string, createOption: PhotoCreateOptions, callback
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
 | displayName  | string        | 是   | 创建的图片或者视频文件名。              |
-| createOption  | [PhotoCreateOptions](#photocreateoptions10)        | 是   | 图片或视频的创建选项。              |
-| callback |  AsyncCallback&lt;[FileAsset](#fileasset)&gt; | 是   | callback返回创建的图片和视频结果。 |
+| createOption  | [PhotoCreateOptions](#photocreateoptionsdeprecated)        | 是   | 图片或视频的创建选项。              |
+| callback |  AsyncCallback&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | callback返回创建的图片和视频结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -354,7 +382,7 @@ createPhotoAsset(displayName: string, createOption: PhotoCreateOptions, callback
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -374,11 +402,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### createPhotoAsset
+### createPhotoAsset<sup>(deprecated)</sup>
 
 createPhotoAsset(displayName: string, createOption: PhotoCreateOptions): Promise&lt;FileAsset&gt;
 
-指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源，使用Promise方式返回结果。
+指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.createAsset](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createasset)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -389,17 +421,17 @@ createPhotoAsset(displayName: string, createOption: PhotoCreateOptions): Promise
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
 | displayName  | string        | 是   | 创建的图片或者视频文件名。              |
-| createOption  |  [PhotoCreateOptions](#photocreateoptions10)       | 是   | 图片或视频的创建选项。              |
+| createOption  |  [PhotoCreateOptions](#photocreateoptionsdeprecated)       | 是   | 图片或视频的创建选项。              |
 
 **返回值：**
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| Promise&lt;[FileAsset](#fileasset)&gt; | Promise对象，返回创建的图片和视频结果。 |
+| Promise&lt;[FileAsset](#fileassetdeprecated)&gt; | Promise对象，返回创建的图片和视频结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -407,7 +439,7 @@ createPhotoAsset(displayName: string, createOption: PhotoCreateOptions): Promise
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -426,11 +458,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### createAudioAsset<sup>10+</sup>
+### createAudioAsset<sup>(deprecated)</sup>
 
 createAudioAsset(displayName: string, callback: AsyncCallback&lt;FileAsset&gt;): void
 
 创建音频文件资源，使用callback方式返回结果。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[picker.AudioViewPicker](js-apis-file-picker.md#audioviewpicker)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -441,11 +477,11 @@ createAudioAsset(displayName: string, callback: AsyncCallback&lt;FileAsset&gt;):
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
 | displayName  | string        | 是   | 创建的音频文件名。              |
-| callback |  AsyncCallback&lt;[FileAsset](#fileasset)&gt; | 是   | callback返回创建的音频资源结果。 |
+| callback |  AsyncCallback&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | callback返回创建的音频资源结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -454,7 +490,7 @@ createAudioAsset(displayName: string, callback: AsyncCallback&lt;FileAsset&gt;):
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -471,11 +507,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### createAudioAsset<sup>10+</sup>
+### createAudioAsset<sup>(deprecated)</sup>
 
 createAudioAsset(displayName: string): Promise&lt;FileAsset&gt;
 
-创建音频文件资源，使用Promise方式返回结果。
+创建音频文件资源。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[picker.AudioViewPicker](js-apis-file-picker.md#audioviewpicker)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -491,11 +531,11 @@ createAudioAsset(displayName: string): Promise&lt;FileAsset&gt;
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| Promise&lt;[FileAsset](#fileasset)&gt; | Promise对象，返回创建的音频资源结果。 |
+| Promise&lt;[FileAsset](#fileassetdeprecated)&gt; | Promise对象，返回创建的音频资源结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -503,7 +543,7 @@ createAudioAsset(displayName: string): Promise&lt;FileAsset&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -519,7 +559,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### createAlbum<sup>10+</sup>
+### createAlbum<sup>(deprecated)</sup>
 
 createAlbum(name: string, callback: AsyncCallback&lt;Album&gt;): void
 
@@ -531,6 +571,10 @@ createAlbum(name: string, callback: AsyncCallback&lt;Album&gt;): void
 - 英文字符大小写不敏感。
 - 相册名不允许重名。
 
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.createAlbumRequest](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createalbumrequest11)替代。
+
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
@@ -540,11 +584,11 @@ createAlbum(name: string, callback: AsyncCallback&lt;Album&gt;): void
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
 | name  | string         | 是   | 待创建相册的相册名。              |
-| callback |  AsyncCallback&lt;[Album](#album)&gt; | 是   | callback返回创建的相册实例。 |
+| callback |  AsyncCallback&lt;[Album](#albumdeprecated)&gt; | 是   | callback返回创建的相册实例。 |
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -560,17 +604,21 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### createAlbum<sup>10+</sup>
+### createAlbum<sup>(deprecated)</sup>
 
 createAlbum(name: string): Promise&lt;Album&gt;
 
-创建相册，使用Promise方式返回结果。
+创建相册。使用Promise异步回调。
 
 待创建的相册名参数规格为：
 - 相册名字符串长度为1~255。
 - 不允许出现的非法英文字符，包括：<br> . .. \ / : * ? " ' ` < > | { } [ ]
 - 英文字符大小写不敏感。
 - 相册名不允许重名。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.createAlbumRequest](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createalbumrequest11)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -586,11 +634,11 @@ createAlbum(name: string): Promise&lt;Album&gt;
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| Promise&lt;[Album](#album)&gt; | Promise对象，返回创建的相册实例。 |
+| Promise&lt;[Album](#albumdeprecated)&gt; | Promise对象，返回创建的相册实例。 |
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -606,13 +654,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### deleteAlbums<sup>10+</sup>
+### deleteAlbums<sup>(deprecated)</sup>
 
 deleteAlbums(albums: Array&lt;Album&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-删除相册，使用callback方式返回结果。
+删除存在的用户相册。使用callback异步回调。
 
-删除相册前需先确保相册存在，只能删除用户相册。
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.deleteAlbums](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deletealbums11)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -622,12 +672,12 @@ deleteAlbums(albums: Array&lt;Album&gt;, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| albums  | Array&lt;[Album](#album)&gt;         | 是   | 待删除相册的数组。              |
+| albums  | Array&lt;[Album](#albumdeprecated)&gt;         | 是   | 待删除相册的数组。              |
 | callback |  AsyncCallback&lt;void&gt; | 是   | callback返回void。 |
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -654,13 +704,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### deleteAlbums<sup>10+</sup>
+### deleteAlbums<sup>(deprecated)</sup>
 
 deleteAlbums(albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
-删除相册，使用Promise方式返回结果。
+删除存在的用户相册。使用Promise异步回调。
 
-删除相册前需先确保相册存在，只能删除用户相册。
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.deleteAlbums](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deletealbums11)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -670,7 +722,7 @@ deleteAlbums(albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| albums  |  Array&lt;[Album](#album)&gt;          | 是   | 待删除相册的数组。              |
+| albums  |  Array&lt;[Album](#albumdeprecated)&gt;          | 是   | 待删除相册的数组。              |
 
 **返回值：**
 
@@ -680,7 +732,7 @@ deleteAlbums(albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -707,7 +759,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getAlbums<sup>10+</sup>
+### getAlbums<sup>(deprecated)</sup>
 
 getAlbums(type: AlbumType, subType: AlbumSubType, options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Album&gt;&gt;): void
 
@@ -717,6 +769,10 @@ getAlbums(type: AlbumType, subType: AlbumSubType, options: FetchOptions, callbac
 
 获取相册前需先保证相册存在。
 
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums)替代。
+
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
@@ -725,14 +781,14 @@ getAlbums(type: AlbumType, subType: AlbumSubType, options: FetchOptions, callbac
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| type  | [AlbumType](#albumtype10)         | 是   | 相册类型。              |
-| subType  | [AlbumSubType](#albumsubtype10)         | 是   | 相册子类型。              |
-| options  | [FetchOptions](#fetchoptions)         | 是   |  检索选项。              |
-| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | 是   | callback返回获取相册的结果集。 |
+| type  | [AlbumType](#albumtypedeprecated)         | 是   | 相册类型。              |
+| subType  | [AlbumSubType](#albumsubtypedeprecated)         | 是   | 相册子类型。              |
+| options  | [FetchOptions](#fetchoptionsdeprecated)         | 是   |  检索选项。              |
+| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[Album](#albumdeprecated)&gt;&gt; | 是   | callback返回获取相册的结果集。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -740,7 +796,7 @@ getAlbums(type: AlbumType, subType: AlbumSubType, options: FetchOptions, callbac
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -770,7 +826,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getAlbums<sup>10+</sup>
+### getAlbums<sup>(deprecated)</sup>
 
 getAlbums(type: AlbumType, subType: AlbumSubType, callback: AsyncCallback&lt;FetchResult&lt;Album&gt;&gt;): void
 
@@ -780,6 +836,10 @@ getAlbums(type: AlbumType, subType: AlbumSubType, callback: AsyncCallback&lt;Fet
 
 获取相册前需先保证相册存在。
 
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums)替代。
+
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
@@ -788,13 +848,13 @@ getAlbums(type: AlbumType, subType: AlbumSubType, callback: AsyncCallback&lt;Fet
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| type  | [AlbumType](#albumtype10)         | 是   | 相册类型。              |
-| subType  | [AlbumSubType](#albumsubtype10)         | 是   | 相册子类型。              |
-| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | 是   | callback返回获取相册的结果集。 |
+| type  | [AlbumType](#albumtypedeprecated)         | 是   | 相册类型。              |
+| subType  | [AlbumSubType](#albumsubtypedeprecated)         | 是   | 相册子类型。              |
+| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[Album](#albumdeprecated)&gt;&gt; | 是   | callback返回获取相册的结果集。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -802,7 +862,7 @@ getAlbums(type: AlbumType, subType: AlbumSubType, callback: AsyncCallback&lt;Fet
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -824,15 +884,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getAlbums<sup>10+</sup>
+### getAlbums<sup>(deprecated)</sup>
 
 getAlbums(type: AlbumType, subType: AlbumSubType, options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
-根据检索选项和相册类型获取相册，使用Promise方式返回结果。
+根据检索选项和相册类型获取相册。使用Promise异步回调。
 
 该接口不支持获取隐藏相册，请使用[getHiddenAlbums](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#gethiddenalbums11)获得。
 
 获取相册前需先保证相册存在。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -842,19 +906,19 @@ getAlbums(type: AlbumType, subType: AlbumSubType, options?: FetchOptions): Promi
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| type  | [AlbumType](#albumtype10)         | 是   | 相册类型。              |
-| subType  | [AlbumSubType](#albumsubtype10)         | 是   | 相册子类型。              |
-| options  | [FetchOptions](#fetchoptions)         | 否   |  检索选项，不填时默认根据相册类型检索。              |
+| type  | [AlbumType](#albumtypedeprecated)         | 是   | 相册类型。              |
+| subType  | [AlbumSubType](#albumsubtypedeprecated)         | 是   | 相册子类型。              |
+| options  | [FetchOptions](#fetchoptionsdeprecated)         | 否   |  检索选项，不填时默认根据相册类型检索。              |
 
 **返回值：**
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | Promise对象，返回获取相册的结果集。 |
+| Promise&lt;[FetchResult](#fetchresult)&lt;[Album](#albumdeprecated)&gt;&gt; | Promise对象，返回获取相册的结果集。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -862,7 +926,7 @@ getAlbums(type: AlbumType, subType: AlbumSubType, options?: FetchOptions): Promi
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -891,7 +955,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getPhotoAlbums
+### getPhotoAlbums<sup>(deprecated)</sup>
 
 getPhotoAlbums(options: AlbumFetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Album&gt;&gt;): void
 
@@ -899,7 +963,9 @@ getPhotoAlbums(options: AlbumFetchOptions, callback: AsyncCallback&lt;FetchResul
 
 该接口不支持获取隐藏相册，请使用[getHiddenAlbums](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#gethiddenalbums11)获得。
 
-此接口即将废弃，请使用[getAlbums<sup>10+</sup>](#getalbums10)的新接口。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -909,12 +975,12 @@ getPhotoAlbums(options: AlbumFetchOptions, callback: AsyncCallback&lt;FetchResul
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| options  | [AlbumFetchOptions](#albumfetchoptions)        | 是   | 相册检索选项。              |
-| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | 是   | callback返回相册检索结果。 |
+| options  | [AlbumFetchOptions](#albumfetchoptionsdeprecated)        | 是   | 相册检索选项。              |
+| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[Album](#albumdeprecated)&gt;&gt; | 是   | callback返回相册检索结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -922,7 +988,7 @@ getPhotoAlbums(options: AlbumFetchOptions, callback: AsyncCallback&lt;FetchResul
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -951,15 +1017,17 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getPhotoAlbums
+### getPhotoAlbums<sup>(deprecated)</sup>
 
 getPhotoAlbums(options: AlbumFetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
-获取相册，使用Promise方式返回结果。
+获取相册。使用Promise异步回调。
 
 该接口不支持获取隐藏相册，请使用[getHiddenAlbums](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#gethiddenalbums11)获得。
 
-此接口即将废弃，请使用[getAlbums<sup>10+</sup>](#getalbums10)的新接口。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -969,17 +1037,17 @@ getPhotoAlbums(options: AlbumFetchOptions): Promise&lt;FetchResult&lt;Album&gt;&
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| options  | [AlbumFetchOptions](#albumfetchoptions)        | 是   | 相册检索选项。              |
+| options  | [AlbumFetchOptions](#albumfetchoptionsdeprecated)        | 是   | 相册检索选项。              |
 
 **返回值：**
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[Album](#album)&gt;&gt; | Promise对象，返回相册检索结果。 |
+| Promise&lt;[FetchResult](#fetchresult)&lt;[Album](#albumdeprecated)&gt;&gt; | Promise对象，返回相册检索结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -987,7 +1055,7 @@ getPhotoAlbums(options: AlbumFetchOptions): Promise&lt;FetchResult&lt;Album&gt;&
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1009,13 +1077,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getPrivateAlbum
+### getPrivateAlbum<sup>(deprecated)</sup>
 
 getPrivateAlbum(type: PrivateAlbumType, callback: AsyncCallback&lt;FetchResult&lt;PrivateAlbum&gt;&gt;): void
 
 获取系统相册，使用 callback 方式返回系统相册的数组。
 
-此接口即将废弃，请使用[getAlbums<sup>10+</sup>](#getalbums10)的新接口。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1025,12 +1095,12 @@ getPrivateAlbum(type: PrivateAlbumType, callback: AsyncCallback&lt;FetchResult&l
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| type  | [PrivateAlbumType](#privatealbumtype)        | 是   | 系统相册类型。              |
-| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[PrivateAlbum](#privatealbum)&gt;&gt; | 是   | callback返回相册检索结果。 |
+| type  | [PrivateAlbumType](#privatealbumtypedeprecated)        | 是   | 系统相册类型。              |
+| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[PrivateAlbum](#privatealbumdeprecated)&gt;&gt; | 是   | callback返回相册检索结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1038,7 +1108,7 @@ getPrivateAlbum(type: PrivateAlbumType, callback: AsyncCallback&lt;FetchResult&l
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -1054,13 +1124,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getPrivateAlbum
+### getPrivateAlbum<sup>(deprecated)</sup>
 
 getPrivateAlbum(type: PrivateAlbumType): Promise&lt;FetchResult&lt;PrivateAlbum&gt;&gt;
 
-获取系统相册，使用Promise方式返回结果。
+获取系统相册。使用Promise异步回调。
 
-此接口即将废弃，请使用[getAlbums<sup>10+</sup>](#getalbums10)的新接口。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.getAlbums](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1070,17 +1142,17 @@ getPrivateAlbum(type: PrivateAlbumType): Promise&lt;FetchResult&lt;PrivateAlbum&
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| type  | [PrivateAlbumType](#privatealbumtype)        | 是   | 系统相册类型。              |
+| type  | [PrivateAlbumType](#privatealbumtypedeprecated)        | 是   | 系统相册类型。              |
 
 **返回值：**
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[PrivateAlbum](#privatealbum)&gt;&gt; | Promise对象，返回相册检索结果。 |
+| Promise&lt;[FetchResult](#fetchresult)&lt;[PrivateAlbum](#privatealbumdeprecated)&gt;&gt; | Promise对象，返回相册检索结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1088,7 +1160,7 @@ getPrivateAlbum(type: PrivateAlbumType): Promise&lt;FetchResult&lt;PrivateAlbum&
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -1103,11 +1175,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getAudioAssets
+### getAudioAssets<sup>(deprecated)</sup>
 
 getAudioAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;FileAsset&gt;&gt;): void
 
 获取音频文件，使用callback方式返回结果。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[picker.AudioViewPicker](js-apis-file-picker.md#audioviewpicker)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1117,12 +1193,12 @@ getAudioAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| options  | [FetchOptions](#fetchoptions)        | 是   | 检索选项。              |
-| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | 是   | callback返回音频检索结果。 |
+| options  | [FetchOptions](#fetchoptionsdeprecated)        | 是   | 检索选项。              |
+| callback |  AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | 是   | callback返回音频检索结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1130,7 +1206,7 @@ getAudioAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1157,12 +1233,16 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getAudioAssets
+### getAudioAssets<sup>(deprecated)</sup>
 
 getAudioAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&gt;
 
 
-获取音频文件，使用promise方式返回结果。
+获取音频文件。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[picker.AudioViewPicker](js-apis-file-picker.md#audioviewpicker)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1172,17 +1252,17 @@ getAudioAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&g
 
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
-| options  | [FetchOptions](#fetchoptions)        | 是   | 检索选项。              |
+| options  | [FetchOptions](#fetchoptionsdeprecated)        | 是   | 检索选项。              |
 
 **返回值：**
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Promise对象，返回音频检索结果。 |
+| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | Promise对象，返回音频检索结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1190,7 +1270,7 @@ getAudioAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&g
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1217,11 +1297,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### delete
+### delete<sup>(deprecated)</sup>
 
 delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除媒体文件，删除的文件进入到回收站。
+删除媒体文件，删除的文件进入到回收站。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.deleteAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#deleteassets11-1)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 和 ohos.permission.WRITE_AUDIO
 
@@ -1236,7 +1320,7 @@ delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1244,7 +1328,7 @@ delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1278,11 +1362,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### delete
+### delete<sup>(deprecated)</sup>
 
 delete(uri: string): Promise&lt;void&gt;
 
-删除媒体文件,删除的文件进入到回收站。
+删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.deleteAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#deleteassets11-1)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 和 ohos.permission.WRITE_AUDIO
 
@@ -1302,7 +1390,7 @@ delete(uri: string): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1310,7 +1398,7 @@ delete(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1337,11 +1425,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getActivePeers
+### getActivePeers<sup>(deprecated)</sup>
 
 getActivePeers(callback: AsyncCallback&lt;Array&lt;PeerInfo&gt;&gt;): void
 
 获取在线对端设备的信息，使用callback方式返回异步结果。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，当前无可替代接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1349,18 +1441,18 @@ getActivePeers(callback: AsyncCallback&lt;Array&lt;PeerInfo&gt;&gt;): void
 
 | 参数名   | 类型                              | 必填 | 说明         |
 | -------- | --------------------------------- | ---- | ------------ |
-| callback | AsyncCallback&lt;Array&lt;[PeerInfo](#peerinfo)&gt;&gt; | 是   | 返回在线设备列表。 |
+| callback | AsyncCallback&lt;Array&lt;[PeerInfo](#peerinfodeprecated)&gt;&gt; | 是   | 返回在线设备列表。 |
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
   console.info('getActivePeersDemo');
   mgr.getActivePeers((err, devicesInfo) => {
     if (devicesInfo != undefined) {
-      console.log('getActivePeers succeed.');
+      console.info('getActivePeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1371,11 +1463,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getActivePeers
+### getActivePeers<sup>(deprecated)</sup>
 
 getActivePeers(): Promise&lt;Array&lt;PeerInfo&gt;&gt;
 
-获取在线对端设备的信息，使用promise方式返回异步结果。
+获取在线对端设备的信息。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，当前无可替代接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1383,11 +1479,11 @@ getActivePeers(): Promise&lt;Array&lt;PeerInfo&gt;&gt;
 
 | 类型                        | 说明                          |
 | --------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[PeerInfo](#peerinfo)&gt;&gt; | Promise对象，返回在线设备列表。 |
+| Promise&lt;Array&lt;[PeerInfo](#peerinfodeprecated)&gt;&gt; | Promise对象，返回在线设备列表。 |
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -1395,7 +1491,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   try {
     let devicesInfo: Array<userFileManager.PeerInfo> = await mgr.getActivePeers();
     if (devicesInfo != undefined) {
-      console.log('getActivePeers succeed.');
+      console.info('getActivePeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1408,11 +1504,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getAllPeers
+### getAllPeers<sup>(deprecated)</sup>
 
 getAllPeers(callback: AsyncCallback&lt;Array&lt;PeerInfo&gt;&gt;): void
 
 获取所有对端设备的信息，使用callback方式返回异步结果。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，当前无可替代接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1420,18 +1520,18 @@ getAllPeers(callback: AsyncCallback&lt;Array&lt;PeerInfo&gt;&gt;): void
 
 | 参数名   | 类型                              | 必填 | 说明         |
 | -------- | --------------------------------- | ---- | ------------ |
-| callback | AsyncCallback&lt;Array&lt;[PeerInfo](#peerinfo)&gt;&gt; | 是   | 返回在线设备列表。 |
+| callback | AsyncCallback&lt;Array&lt;[PeerInfo](#peerinfodeprecated)&gt;&gt; | 是   | 返回在线设备列表。 |
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
   console.info('getAllPeersDemo');
   mgr.getAllPeers((err, devicesInfo) => {
     if (devicesInfo != undefined) {
-      console.log('getAllPeers succeed.');
+      console.info('getAllPeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1442,11 +1542,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getAllPeers
+### getAllPeers<sup>(deprecated)</sup>
 
 getAllPeers(): Promise&lt;Array&lt;PeerInfo&gt;&gt;
 
-获取所有对端设备的信息，使用promise方式返回异步结果。
+获取所有对端设备的信息。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，当前无可替代接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1454,11 +1558,11 @@ getAllPeers(): Promise&lt;Array&lt;PeerInfo&gt;&gt;
 
 | 类型                        | 说明                          |
 | --------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[PeerInfo](#peerinfo)&gt;&gt; | Promise对象，返回所有设备列表。 |
+| Promise&lt;Array&lt;[PeerInfo](#peerinfodeprecated)&gt;&gt; | Promise对象，返回所有设备列表。 |
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -1467,7 +1571,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     let devicesInfo: Array<userFileManager.PeerInfo> = await mgr.getAllPeers();
 
     if (devicesInfo != undefined) {
-      console.log('getAllPeers succeed.');
+      console.info('getAllPeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1480,11 +1584,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getPhotoIndex<sup>10+</sup>
+### getPhotoIndex<sup>(deprecated)</sup>
 
 getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callback: AsyncCallback&lt;number&gt;): void
 
-获取相册中图片或视频的位置，使用callback方式返回结果。
+获取相册中图片或视频的位置。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.getPhotoIndex](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#getphotoindex)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -1498,12 +1606,12 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callbac
 | -------- | ------------------------- | ---- | ---------- |
 | photoUri | string | 是   | 所查询的图库资源的uri。 |
 | albumUri | string | 是   | 相册uri，可以为空字符串，为空字符串时默认查询全部图库资源。   |
-| options  | [FetchOptions](#fetchoptions)       | 是   |  检索选项，predicates中必须设置一种检索排序方式，不设置或多设置均会导致接口调用异常。      |
+| options  | [FetchOptions](#fetchoptionsdeprecated)       | 是   |  检索选项，predicates中必须设置一种检索排序方式，不设置或多设置均会导致接口调用异常。      |
 | callback | AsyncCallback&lt;number&gt;| 是   | callback返回相册中资源的索引。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1511,7 +1619,7 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callbac
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1550,11 +1658,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getPhotoIndex<sup>10+</sup>
+### getPhotoIndex<sup>(deprecated)</sup>
 
 getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promise&lt;number&gt;
 
-获取相册中图片或视频的位置，使用Promise方式返回结果。
+获取相册中图片或视频的位置。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.getPhotoIndex](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#getphotoindex)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -1568,7 +1680,7 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promis
 | -------- | ------------------------- | ---- | ---------- |
 | photoUri | string | 是   | 所查询的图库资源的uri。 |
 | albumUri | string | 是   | 相册uri，可以为空字符串，为空字符串时默认查询全部图库资源。   |
-| options  | [FetchOptions](#fetchoptions)       | 是   |  检索选项，predicates中必须设置一种检索排序方式，不设置或多设置均会导致接口调用异常。      |
+| options  | [FetchOptions](#fetchoptionsdeprecated)       | 是   |  检索选项，predicates中必须设置一种检索排序方式，不设置或多设置均会导致接口调用异常。      |
 
 **返回值：**
 
@@ -1578,7 +1690,7 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promis
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1586,7 +1698,7 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promis
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1628,12 +1740,17 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### release
+### release<sup>(deprecated)</sup>
 
 release(callback: AsyncCallback&lt;void&gt;): void
 
-释放UserFileManager实例，使用callback方式返回结果。
+释放UserFileManager实例。使用callback异步回调。
+
 当后续不需要使用UserFileManager实例中的方法时调用。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.release](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#release)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1645,7 +1762,7 @@ release(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -1660,12 +1777,17 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### release
+### release<sup>(deprecated)</sup>
 
 release(): Promise&lt;void&gt;
 
-释放UserFileManager实例，使用Promise方式返回结果。
-当后续不需要使用UserFileManager 实例中的方法时调用。
+释放UserFileManager实例。使用Promise异步回调。
+
+当后续不需要使用UserFileManager实例中的方法时调用。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.release](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#release)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1677,7 +1799,7 @@ release(): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -1691,11 +1813,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### on<sup>10+</sup>
+### on<sup>(deprecated)</sup>
 
 on(uri: string, forSubUri: boolean, callback: Callback&lt;ChangeData&gt;) : void
 
 对指定uri注册监听，使用callback方式返回异步结果。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.registerChange](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1703,13 +1829,13 @@ on(uri: string, forSubUri: boolean, callback: Callback&lt;ChangeData&gt;) : void
 
 | 参数名    | 类型                                        | 必填 | 说明                                                         |
 | --------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| uri       | string                                      | 是   | FileAsset的uri, Album的uri或[DefaultChangeUri](#defaultchangeuri10)的值。 |
+| uri       | string                                      | 是   | FileAsset的uri, Album的uri或[DefaultChangeUri](#defaultchangeurideprecated)的值。 |
 | forSubUri | boolean                                     | 是   | 是否模糊监听。uri为相册uri时，forSubUri 为true能监听到相册中文件的变化；如果是false只能监听相册本身变化。uri为fileAsset时，forSubUri 为true、false没有区别。uri为DefaultChangeUri时，forSubUri必须为true；如果为false将找不到该uri，收不到任何消息。 |
-| callback  | Callback&lt;[ChangeData](#changedata10)&gt; | 是   | 返回要监听的[ChangeData](#changedata10)。注：uri可以注册多个不同的callback监听，[off<sup>10+</sup>](#off10)可以关闭该uri所有监听，也可以关闭指定callback的监听。 |
+| callback  | Callback&lt;[ChangeData](#changedatadeprecated)&gt; | 是   | 返回要监听的[ChangeData](#changedatadeprecated)。注：uri可以注册多个不同的callback监听，[off](#offdeprecated)可以关闭该uri所有监听，也可以关闭指定callback的监听。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1717,7 +1843,7 @@ on(uri: string, forSubUri: boolean, callback: Callback&lt;ChangeData&gt;) : void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1757,11 +1883,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### off<sup>10+</sup>
+### off<sup>(deprecated)</sup>
 
  off(uri: string, callback?: Callback&lt;ChangeData&gt;): void
 
 取消对指定uri的监听，一个uri可以注册多个监听，存在多个callback监听时，可以取消指定注册的callback的监听；不指定callback时解除该uri的所有监听。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.unRegisterChange](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#unregisterchange)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1769,12 +1899,12 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| uri      | string                                      | 是   | FileAsset的uri, Album的uri或[DefaultChangeUri](#defaultchangeuri10)的值。 |
-| callback | Callback&lt;[ChangeData](#changedata10)&gt; | 否   | 取消[on<sup>10+</sup>](#on10)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。 |
+| uri      | string                                      | 是   | FileAsset的uri, Album的uri或[DefaultChangeUri](#defaultchangeurideprecated)的值。 |
+| callback | Callback&lt;[ChangeData](#changedatadeprecated)&gt; | 否   | 取消[on](#ondeprecated)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1782,7 +1912,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1823,13 +1953,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### on
+### on<sup>(deprecated)</sup>
 
 on(type: ChangeEvent, callback: Callback&lt;void&gt;): void
 
 打开文件管理库变更通知，使用callback方式返回异步结果。
 
-此接口即将废弃，请使用[on<sup>10+</sup>](#on10)的新接口。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.on](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#onphotochange20)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1837,12 +1969,12 @@ on(type: ChangeEvent, callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type     | [ChangeEvent](#changeevent)               | 是   | 媒体类型 <br/>'deviceChange'：&nbsp;注册设备变更。 <br/>'albumChange'：&nbsp;相册变更。<br/>'imageChange'：&nbsp;图片文件变更。<br/>'audioChange'： &nbsp;音频文件变更。<br/>'videoChange'：  &nbsp;视频文件变更。<br/>'remoteFileChange'：&nbsp;注册设备上文件变更。 |
+| type     | [ChangeEvent](#changeeventdeprecated)               | 是   | 媒体类型 <br/>'deviceChange'：&nbsp;注册设备变更。 <br/>'albumChange'：&nbsp;相册变更。<br/>'imageChange'：&nbsp;图片文件变更。<br/>'audioChange'： &nbsp;音频文件变更。<br/>'videoChange'：  &nbsp;视频文件变更。<br/>'remoteFileChange'：&nbsp;注册设备上文件变更。 |
 | callback | Callback&lt;void&gt; | 是   | callback返回void。                                                   |
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -1872,13 +2004,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### off
+### off<sup>(deprecated)</sup>
 
 off(type: ChangeEvent, callback?: Callback&lt;void&gt;): void
 
 关闭文件管理库变更通知，使用callback方式返回异步结果。
 
-此接口即将废弃，请使用[off<sup>10+</sup>](#off10)的新接口。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAccessHelper.off](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#offphotochange20)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1886,12 +2020,12 @@ off(type: ChangeEvent, callback?: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type     | [ChangeEvent](#changeevent)               | 是   | 媒体类型 <br/>'deviceChange'：&nbsp;注册设备变更。 <br/>'albumChange'：&nbsp;相册变更。<br/>'imageChange'：&nbsp;图片文件变更。<br/>'audioChange'： &nbsp;音频文件变更。<br/>'videoChange'：  &nbsp;视频文件变更。<br/>'remoteFileChange'：&nbsp;注册设备上文件变更。 |
+| type     | [ChangeEvent](#changeeventdeprecated)               | 是   | 媒体类型 <br/>'deviceChange'：&nbsp;注册设备变更。 <br/>'albumChange'：&nbsp;相册变更。<br/>'imageChange'：&nbsp;图片文件变更。<br/>'audioChange'： &nbsp;音频文件变更。<br/>'videoChange'：  &nbsp;视频文件变更。<br/>'remoteFileChange'：&nbsp;注册设备上文件变更。 |
 | callback | Callback&lt;void&gt; | 否   | callback返回void。                                                   |
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -1923,9 +2057,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-## FileAsset
+## FileAsset<sup>(deprecated)</sup>
+
+系统相册。
 
 提供封装文件属性的方法。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)替代。
 
 ### 属性
 
@@ -1933,15 +2073,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 | 名称                      | 类型                     | 只读 | 可选 | 说明                                                   |
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
-| uri                       | string                   | 是   | 否   | 媒体文件资源uri（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件uri介绍中的[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。         |
-| fileType   | [FileType](#filetype) | 是   | 否   | 媒体文件类型。                                               |
-| displayName               | string                   | 否   | 否   | 显示文件名，包含后缀名。                                 |
+| uri                       | string                   | 是   | 否   | 媒体文件资源uri（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件uri介绍中的[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.uri](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#属性)替代。         |
+| fileType   | [FileType](#filetypedeprecated) | 是   | 否   | 媒体文件类型。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.PhotoType](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#属性)替代。                                               |
+| displayName               | string                   | 否   | 否   | 显示文件名，包含后缀名。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.displayName](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#属性)替代。                                 |
 
-### get
+### get<sup>(deprecated)</sup>
 
 get(member: string): MemberType
 
 获取FileAsset成员参数。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.get](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#get)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1959,7 +2103,7 @@ get(member: string): MemberType
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1983,11 +2127,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### set
+### set<sup>(deprecated)</sup>
 
 set(member: string, value: string): void
 
 设置FileAsset成员参数。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.set](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#set)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2000,7 +2148,7 @@ set(member: string, value: string): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2023,11 +2171,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### commitModify
+### commitModify<sup>(deprecated)</sup>
 
 commitModify(callback: AsyncCallback&lt;void&gt;): void
 
-修改文件的元数据，使用callback方式返回异步结果。
+修改文件的元数据。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.commitModify](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2041,7 +2193,7 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2072,11 +2224,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### commitModify
+### commitModify<sup>(deprecated)</sup>
 
 commitModify(): Promise&lt;void&gt;
 
-修改文件的元数据，使用promise方式返回异步结果。
+修改文件的元数据。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.commitModify](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2090,7 +2246,7 @@ commitModify(): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2120,13 +2276,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### open
+### open<sup>(deprecated)</sup>
 
 open(mode: string, callback: AsyncCallback&lt;number&gt;): void
 
-打开当前文件，使用callback方式返回异步结果。
+打开当前文件。使用callback异步回调。
 
-**注意**：当前写操作是互斥的操作，写操作完成后需要调用close进行释放。
+> **注意：**
+>
+> 当前写操作是互斥的操作，写操作完成后需要调用close进行释放。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[fileIo.open](js-apis-file-fs.md#fileioopen-1)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 或 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2141,7 +2303,7 @@ open(mode: string, callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -2159,13 +2321,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### open
+### open<sup>(deprecated)</sup>
 
 open(mode: string): Promise&lt;number&gt;
 
-打开当前文件，使用promise方式返回异步结果。
+打开当前文件。使用Promise异步回调。
 
-**注意**：当前写操作是互斥的操作，写操作完成后需要调用close进行释放。
+> **注意：**
+>
+> 当前写操作是互斥的操作，写操作完成后需要调用close进行释放。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[fileIo.open](js-apis-file-fs.md#fileioopen)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 或 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2185,7 +2353,7 @@ open(mode: string): Promise&lt;number&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 async function example(mgr: userFileManager.UserFileManager) {
@@ -2206,11 +2374,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### close
+### close<sup>(deprecated)</sup>
 
 close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 关闭当前文件，使用callback方式返回异步结果。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[fileIo.close](js-apis-file-fs.md#fileioclose-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2223,7 +2395,7 @@ close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2253,11 +2425,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### close
+### close<sup>(deprecated)</sup>
 
 close(fd: number): Promise&lt;void&gt;
 
-关闭当前文件，使用promise方式返回异步结果。
+关闭当前文件。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[fileIo.close](js-apis-file-fs.md#fileioclose)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2275,7 +2451,7 @@ close(fd: number): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2300,11 +2476,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getThumbnail
+### getThumbnail<sup>(deprecated)</sup>
 
 getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-获取文件的缩略图，使用callback方式返回异步结果。
+获取文件的缩略图。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.getThumbnail](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#getthumbnail)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 或 ohos.permission.READ_AUDIO
 
@@ -2318,7 +2498,7 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2343,11 +2523,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getThumbnail
+### getThumbnail<sup>(deprecated)</sup>
 
 getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-获取文件的缩略图，传入缩略图尺寸，使用callback方式返回异步结果。
+获取文件的缩略图，传入缩略图尺寸。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.getThumbnail](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#getthumbnail)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 或 ohos.permission.READ_AUDIO
 
@@ -2362,7 +2546,7 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2389,11 +2573,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getThumbnail
+### getThumbnail<sup>(deprecated)</sup>
 
 getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
-获取文件的缩略图，传入缩略图尺寸，使用promise方式返回异步结果。
+获取文件的缩略图，传入缩略图尺寸。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.getThumbnail](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#getthumbnail)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 或 ohos.permission.READ_AUDIO
 
@@ -2413,7 +2601,7 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2439,11 +2627,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### favorite
+### favorite<sup>(deprecated)</sup>
 
 favorite(isFavorite: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 将文件设置为收藏文件，使用callback方式返回异步结果。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setFavorite](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setfavorite11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2458,7 +2650,7 @@ favorite(isFavorite: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2482,11 +2674,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### favorite
+### favorite<sup>(deprecated)</sup>
 
 favorite(isFavorite: boolean): Promise&lt;void&gt;
 
-将文件设置为收藏文件，使用promise方式返回异步结果。
+将文件设置为收藏文件。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setFavorite](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setfavorite11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2506,7 +2702,7 @@ favorite(isFavorite: boolean): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2529,13 +2725,17 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### setHidden<sup>10+</sup>
+### setHidden<sup>(deprecated)</sup>
 
 setHidden(hiddenState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 将文件设置为隐私文件，使用callback方式返回异步结果。
 
 隐私文件存在隐私相册中，对三方应用不开放，用户通过隐私相册去获取隐私文件后可以通过设置hiddenState为false来从隐私相册中移除。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setHidden](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#sethidden11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -2550,7 +2750,7 @@ setHidden(hiddenState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2559,7 +2759,7 @@ setHidden(hiddenState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2583,13 +2783,17 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### setHidden<sup>10+</sup>
+### setHidden<sup>(deprecated)</sup>
 
 setHidden(hiddenState: boolean): Promise&lt;void&gt;
 
-将文件设置为隐私文件，使用promise方式返回异步结果。
+将文件设置为隐私文件。使用Promise异步回调。
 
 隐私文件存在隐私相册中，对三方应用不开放，用户通过隐私相册去获取隐私文件后可以通过设置hiddenState为false来从隐私相册中移除。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setHidden](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#sethidden11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -2609,7 +2813,7 @@ setHidden(hiddenState: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2618,7 +2822,7 @@ setHidden(hiddenState: boolean): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2644,13 +2848,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getExif<sup>10+</sup>
+### getExif<sup>(deprecated)</sup>
 
 getExif(): Promise&lt;string&gt;
 
-返回jpg格式图片Exif标签组成的json格式的字符串，该方法使用Promise方式返回结果。
+读取jpg格式图片的Exif标签，并返回json格式的字符串。使用Promise异步回调。
 
-**注意**：此接口返回的是exif标签组成的json格式的字符串，完整exif信息由all_exif与[ImageVideoKey.USER_COMMENT](#imagevideokey)组成，fetchColumns需要传入这两个字段。
+> **注意：**
+>
+> 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与[ImageVideoKey](#imagevideokeydeprecated).USER_COMMENT组成，fetchColumns需要传入这两个字段。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.getExif](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#getexif)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -2663,6 +2873,14 @@ getExif(): Promise&lt;string&gt;
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
 | Promise&lt;string&gt; | 返回exif标签组成的json格式的字符串。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202   | Called by non-system application.               |
 
 **支持Exif标签列表**：
 
@@ -2708,7 +2926,7 @@ Exif标签的详细信息请参考[image.PropertyKey](../apis-image-kit/arkts-ap
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2736,13 +2954,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getExif<sup>10+</sup>
+### getExif<sup>(deprecated)</sup>
 
 getExif(callback: AsyncCallback&lt;string&gt;): void
 
-返回jpg格式图片Exif标签组成的json格式的字符串，该方法使用callback方式返回结果。
+读取jpg格式图片的Exif标签，并返回json格式的字符串。使用callback异步回调。
 
-**注意**：此接口返回的是exif标签组成的json格式的字符串，完整exif信息由all_exif与[ImageVideoKey.USER_COMMENT](#imagevideokey)组成，fetchColumns需要传入这两个字段。
+> **注意：**
+>
+> 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与[ImageVideoKey](#imagevideokeydeprecated).USER_COMMENT组成，fetchColumns需要传入这两个字段。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoAsset.getExif](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#getexif)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -2755,6 +2979,14 @@ getExif(callback: AsyncCallback&lt;string&gt;): void
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | callback | AsyncCallback&lt;string&gt; | 是   | 返回exif标签组成的json格式的字符串。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202   | Called by non-system application.               |
 
 **支持Exif标签列表**：
 
@@ -2800,7 +3032,7 @@ Exif标签的详细信息请参考[image.PropertyKey](../apis-image-kit/arkts-ap
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2838,13 +3070,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### setUserComment<sup>10+</sup>
+### setUserComment<sup>(deprecated)</sup>
 
 setUserComment(userComment: string): Promise&lt;void&gt;
 
-修改图片或者视频的备注信息，该方法使用Promise来返回结果。
+修改图片或者视频的备注信息。使用Promise异步回调。
 
-**注意**：此接口只可修改图片或者视频的备注信息。
+> **注意：**
+>
+> 此接口只可修改图片或者视频的备注信息。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setUserComment](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setusercomment11)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -2866,7 +3104,7 @@ setUserComment(userComment: string): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2875,7 +3113,7 @@ setUserComment(userComment: string): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2898,13 +3136,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### setUserComment<sup>10+</sup>
+### setUserComment<sup>(deprecated)</sup>
 
 setUserComment(userComment: string, callback: AsyncCallback&lt;void&gt;): void
 
-修改图片或者视频的备注信息，该方法使用callback形式来返回结果。
+修改图片或者视频的备注信息。使用callback异步回调。
 
-**注意**：此接口只可修改图片或者视频的备注信息。
+> **注意：**
+>
+> 此接口只可修改图片或者视频的备注信息。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setUserComment](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setusercomment11)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -2921,7 +3165,7 @@ setUserComment(userComment: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2930,7 +3174,7 @@ setUserComment(userComment: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2963,11 +3207,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 文件检索结果集。
 
-### getCount
+### getCount<sup>(deprecated)</sup>
 
 getCount(): number
 
 获取文件检索结果中的文件总数。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getCount](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getcount)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2979,7 +3227,7 @@ getCount(): number
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -2997,11 +3245,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### isAfterLast
+### isAfterLast<sup>(deprecated)</sup>
 
 isAfterLast(): boolean
 
 检查结果集是否指向最后一行。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.isAfterLast](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#isafterlast)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3013,7 +3265,7 @@ isAfterLast(): boolean
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3036,17 +3288,21 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### close
+### close<sup>(deprecated)</sup>
 
 close(): void
 
 释放 FetchFileResult 实例并使其失效。无法调用其他方法。
 
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.close](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#close)替代。
+
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3068,11 +3324,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getFirstObject
+### getFirstObject<sup>(deprecated)</sup>
 
 getFirstObject(callback: AsyncCallback&lt;T&gt;): void
 
-获取文件检索结果中的第一个文件资产。此方法使用callback形式返回结果。
+获取文件检索结果中的第一个文件资产。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getFirstObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3084,7 +3344,7 @@ getFirstObject(callback: AsyncCallback&lt;T&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3107,11 +3367,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getFirstObject
+### getFirstObject<sup>(deprecated)</sup>
 
 getFirstObject(): Promise&lt;T&gt;
 
-获取文件检索结果中的第一个文件资产。此方法使用promise方式来异步返回。
+获取文件检索结果中的第一个文件资产。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getFirstObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3123,7 +3387,7 @@ getFirstObject(): Promise&lt;T&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3141,12 +3405,17 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getNextObject
+### getNextObject<sup>(deprecated)</sup>
 
 getNextObject(callback: AsyncCallback&lt;T&gt;): void
 
-获取文件检索结果中的下一个文件资产。此方法使用callback形式返回结果。
-在调用此方法之前，必须使用[isAfterLast()](#isafterlast)来检查当前位置是否为最后一行。
+获取文件检索结果中的下一个文件资产。使用callback异步回调。
+
+在调用此方法之前，必须使用[isAfterLast()](#isafterlastdeprecated)来检查当前位置是否为最后一行。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getNextObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getnextobject)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3158,7 +3427,7 @@ getNextObject(callback: AsyncCallback&lt;T&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3184,12 +3453,17 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getNextObject
+### getNextObject<sup>(deprecated)</sup>
 
 getNextObject(): Promise&lt;T&gt;
 
-获取文件检索结果中的下一个文件资产。此方法使用promise方式来异步返回。
-在调用此方法之前，必须使用[isAfterLast()](#isafterlast)来检查当前位置是否为最后一行。
+获取文件检索结果中的下一个文件资产。使用Promise异步回调。
+
+在调用此方法之前，必须使用[isAfterLast()](#isafterlastdeprecated)来检查当前位置是否为最后一行。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getNextObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getnextobject)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3201,7 +3475,7 @@ getNextObject(): Promise&lt;T&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3222,11 +3496,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getLastObject
+### getLastObject<sup>(deprecated)</sup>
 
 getLastObject(callback: AsyncCallback&lt;T&gt;): void
 
-获取文件检索结果中的最后一个文件资产。此方法使用callback回调来返回。
+获取文件检索结果中的最后一个文件资产。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getLastObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getlastobject)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3238,7 +3516,7 @@ getLastObject(callback: AsyncCallback&lt;T&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3261,11 +3539,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getLastObject
+### getLastObject<sup>(deprecated)</sup>
 
 getLastObject(): Promise&lt;T&gt;
 
-获取文件检索结果中的最后一个文件资产。此方法使用Promise方式来返回。
+获取文件检索结果中的最后一个文件资产。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getLastObject](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getlastobject)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3277,7 +3559,7 @@ getLastObject(): Promise&lt;T&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3295,11 +3577,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getPositionObject
+### getPositionObject<sup>(deprecated)</sup>
 
 getPositionObject(index: number, callback: AsyncCallback&lt;T&gt;): void
 
-获取文件检索结果中具有指定索引的文件资产。此方法使用callback来返回。
+获取文件检索结果中具有指定索引的文件资产。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getObjectByPosition](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getobjectbyposition)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3312,7 +3598,7 @@ getPositionObject(index: number, callback: AsyncCallback&lt;T&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3320,7 +3606,7 @@ getPositionObject(index: number, callback: AsyncCallback&lt;T&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3343,11 +3629,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getPositionObject
+### getPositionObject<sup>(deprecated)</sup>
 
 getPositionObject(index: number): Promise&lt;T&gt;
 
-获取文件检索结果中具有指定索引的文件资产。此方法使用Promise形式返回文件Asset。
+获取文件检索结果中具有指定索引的文件资产。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getObjectByPosition](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getobjectbyposition)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3365,7 +3655,7 @@ getPositionObject(index: number): Promise&lt;T&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3373,7 +3663,7 @@ getPositionObject(index: number): Promise&lt;T&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3395,11 +3685,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getAllObject<sup>10+</sup>
+### getAllObject<sup>(deprecated)</sup>
 
 getAllObject(callback: AsyncCallback&lt;Array&lt;T&gt;&gt;): void
 
-获取文件检索结果中的所有文件资产。此方法使用callback形式返回结果。
+获取文件检索结果中的所有文件资产。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getAllObjects](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getallobjects)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3411,7 +3705,7 @@ getAllObject(callback: AsyncCallback&lt;Array&lt;T&gt;&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3434,11 +3728,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getAllObject<sup>10+</sup>
+### getAllObject<sup>(deprecated)</sup>
 
 getAllObject(): Promise&lt;Array&lt;T&gt;&gt;
 
-获取文件检索结果中的所有文件资产。此方法使用promise方式来异步返回。
+获取文件检索结果中的所有文件资产。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchResult.getAllObjects](../apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getallobjects)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3450,7 +3748,7 @@ getAllObject(): Promise&lt;Array&lt;T&gt;&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3468,9 +3766,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-## Album
+## Album<sup>(deprecated)</sup>
+
+系统相册。
 
 实体相册。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.Album](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#album)替代。
 
 ### 属性
 
@@ -3478,19 +3782,23 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 | 名称           | 类型    | 只读   | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
-| albumType<sup>10+</sup> | [AlbumType]( #albumtype10) | 是    | 否    | 相册类型。    |
-| albumSubType<sup>10+</sup> | [AlbumSubType]( #albumsubtype10) | 是    | 否   | 相册子类型。    |
-| albumName | string | 否    | 否   | 相册名称。<br>**说明：** 用户相册可写，预置相册不可写。    |
-| albumUri | string | 是    | 否    | 相册Uri。   |
-| dateModified  | number | 是    | 否    |  相册的修改时间。 |
-| count | number | 是    | 否    |  相册中文件数量。 |
-| coverUri | string | 否    | 否	    | 封面文件Uri。<br>**说明：** 用户相册可写，预置相册不可写。 |
+| albumType | [AlbumType](#albumtypedeprecated) | 是    | 否    | 相册类型。<br/> **说明：** 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.albumType](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#属性)替代。    |
+| albumSubType | [AlbumSubType](#albumsubtypedeprecated) | 是    | 否   | 相册子类型。<br/> **说明：** 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.albumSubType](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#属性)替代。    |
+| albumName | string | 否    | 否   | 相册名称。<br/>**说明：**<br/>用户相册可写，预置相册不可写。<br/>从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.albumName](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#属性)替代。    |
+| albumUri | string | 是    | 否    | 相册Uri。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.albumUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#属性)替代。   |
+| dateModified  | number | 是    | 否    |  相册的修改时间。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.Album.dateModified](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#属性-1)替代。 |
+| count | number | 是    | 否    |  相册中文件数量。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.count](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#属性)替代。 |
+| coverUri | string | 否    | 否     | 封面文件Uri。<br>**说明：**<br/>用户相册可写，预置相册不可写。<br/>从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.coverUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#属性)替代。 |
 
-### getPhotoAssets
+### getPhotoAssets<sup>(deprecated)</sup>
 
 getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;FileAsset&gt;&gt;): void
 
-获取相册中的文件。该方法使用callback形式来返回文件。
+获取相册中的文件。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -3500,12 +3808,12 @@ getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | 是   | 检索选项。 |
-| callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | 是   | callback返回图片和视频数据结果集。 |
+| options | [FetchOptions](#fetchoptionsdeprecated) | 是   | 检索选项。 |
+| callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | 是   | callback返回图片和视频数据结果集。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3513,7 +3821,7 @@ getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3541,11 +3849,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### getPhotoAssets
+### getPhotoAssets<sup>(deprecated)</sup>
 
 getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&gt;
 
-获取相册中的文件。该方法使用Promise来返回文件。
+获取相册中的文件。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -3555,17 +3867,17 @@ getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&g
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | 是   | 检索选项。 |
+| options | [FetchOptions](#fetchoptionsdeprecated) | 是   | 检索选项。 |
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | Promise对象，返回图片和视频数据结果集。 |
+| Promise&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | Promise对象，返回图片和视频数据结果集。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3573,7 +3885,7 @@ getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&g
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3600,11 +3912,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### commitModify
+### commitModify<sup>(deprecated)</sup>
 
 commitModify(callback: AsyncCallback&lt;void&gt;): void
 
-更新相册属性修改到数据库中。该方法使用callback形式来返回结果。
+更新相册属性修改到数据库中。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.Album.commitModify](../apis-media-library-kit/arkts-apis-photoAccessHelper-Album.md#commitmodify)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3618,7 +3934,7 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3642,11 +3958,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### commitModify
+### commitModify<sup>(deprecated)</sup>
 
 commitModify(): Promise&lt;void&gt;
 
-更新相册属性修改到数据库中。该方法使用Promise来返回结果。
+更新相册属性修改到数据库中。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.Album.commitModify](../apis-media-library-kit/arkts-apis-photoAccessHelper-Album.md#commitmodify)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3660,7 +3980,7 @@ commitModify(): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3687,11 +4007,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### addPhotoAssets<sup>10+</sup>
+### addPhotoAssets<sup>(deprecated)</sup>
 
 addPhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 往相册中添加图片或者视频，需要先预置相册和文件资源。该方法使用callback形式来返回结果。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.addAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3701,12 +4025,12 @@ addPhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;void&g
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[FileAsset](#fileasset)&gt; | 是   | 待添加到相册中的图片或视频数组。 |
+| assets | Array&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | 待添加到相册中的图片或视频数组。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | callback返回void。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3714,7 +4038,7 @@ addPhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;void&g
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3744,11 +4068,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### addPhotoAssets<sup>10+</sup>
+### addPhotoAssets<sup>(deprecated)</sup>
 
 addPhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
-往相册中添加图片或者视频，需要先预置相册和文件资源。该方法使用Promise来返回结果。
+在相册中添加图片或者视频，需要先预置相册和文件资源。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.addAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3758,7 +4086,7 @@ addPhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[FileAsset](#fileasset)&gt; | 是   | 待添加到相册中的图片或视频数组。 |
+| assets | Array&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | 待添加到相册中的图片或视频数组。 |
 
 **返回值：**
 
@@ -3768,7 +4096,7 @@ addPhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3776,7 +4104,7 @@ addPhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3805,11 +4133,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### removePhotoAssets<sup>10+</sup>
+### removePhotoAssets<sup>(deprecated)</sup>
 
 removePhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 从相册中移除图片或者视频，需要先预置相册和文件资源。该方法使用callback形式来返回结果。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.removeAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#removeassets11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3819,12 +4151,12 @@ removePhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;voi
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[FileAsset](#fileasset)&gt; | 是   | 相册中待移除的图片或视频数组。 |
+| assets | Array&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | 相册中待移除的图片或视频数组。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | callback返回void。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3832,7 +4164,7 @@ removePhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;voi
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3862,11 +4194,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### removePhotoAssets<sup>10+</sup>
+### removePhotoAssets<sup>(deprecated)</sup>
 
 removePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
-从相册中移除图片或者视频，需要先预置相册和文件资源。该方法使用Promise来返回结果。
+从相册中移除图片或者视频，需要先预置相册和文件资源。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.removeAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#removeassets11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3876,7 +4212,7 @@ removePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[FileAsset](#fileasset)&gt; | 是   | 相册中待移除的图片或视频数组。 |
+| assets | Array&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | 相册中待移除的图片或视频数组。 |
 
 **返回值：**
 
@@ -3886,7 +4222,7 @@ removePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3894,7 +4230,7 @@ removePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3923,11 +4259,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### recoverPhotoAssets<sup>10+</sup>
+### recoverPhotoAssets<sup>(deprecated)</sup>
 
 recoverPhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 从回收站中恢复图片或者视频，需要先在回收站中预置文件资源。该方法使用callback形式来返回结果。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.recoverAssets](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#recoverassets11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3937,12 +4277,12 @@ recoverPhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;vo
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[FileAsset](#fileasset)&gt; | 是   | 回收站中待恢复图片或者视频数组。 |
+| assets | Array&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | 回收站中待恢复图片或者视频数组。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | callback返回void。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3950,7 +4290,7 @@ recoverPhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;vo
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -3980,11 +4320,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### recoverPhotoAssets<sup>10+</sup>
+### recoverPhotoAssets<sup>(deprecated)</sup>
 
 recoverPhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
-从回收站中恢复图片或者视频，需要先在回收站中预置文件资源。该方法使用Promise来返回结果。
+从回收站中恢复图片或者视频，需要先在回收站中预置文件资源。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.recoverAssets](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#recoverassets11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3994,7 +4338,7 @@ recoverPhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[FileAsset](#fileasset)&gt; | 是   | 回收站中待恢复图片或者视频数组。 |
+| assets | Array&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | 回收站中待恢复图片或者视频数组。 |
 
 **返回值：**
 
@@ -4004,7 +4348,7 @@ recoverPhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -4012,7 +4356,7 @@ recoverPhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4041,13 +4385,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### deletePhotoAssets<sup>10+</sup>
+### deletePhotoAssets<sup>(deprecated)</sup>
 
 deletePhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。该方法使用callback形式来返回结果。
+从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。使用callback异步回调。
 
-**注意**：此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
+> **注意：**
+>
+> 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.deleteAssets](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deleteassets11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4057,12 +4407,12 @@ deletePhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;voi
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[FileAsset](#fileasset)&gt; | 是   | 回收站中待彻底删除图片或者视频数组。 |
+| assets | Array&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | 回收站中待彻底删除图片或者视频数组。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | callback返回void。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -4070,7 +4420,7 @@ deletePhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;voi
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4100,13 +4450,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### deletePhotoAssets<sup>10+</sup>
+### deletePhotoAssets<sup>(deprecated)</sup>
 
 deletePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
-从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。该方法使用Promise来返回结果。
+从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。使用Promise异步回调。
 
-**注意**：此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
+> **注意：**
+>
+> 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAlbumChangeRequest.deleteAssets](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deleteassets11)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4116,7 +4472,7 @@ deletePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[FileAsset](#fileasset)&gt; | 是   | 回收站中待彻底删除图片或者视频数组。 |
+| assets | Array&lt;[FileAsset](#fileassetdeprecated)&gt; | 是   | 回收站中待彻底删除图片或者视频数组。 |
 
 **返回值：**
 
@@ -4126,7 +4482,7 @@ deletePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -4134,7 +4490,7 @@ deletePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4163,11 +4519,13 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-## PrivateAlbum
+## PrivateAlbum<sup>(deprecated)</sup>
 
 系统相册。
 
-此接口即将废弃，请使用[Album](#album)接口替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.Album](#albumdeprecated)替代。
 
 ### 属性
 
@@ -4175,19 +4533,21 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 | 名称           | 类型    | 只读   | 可选   | 说明      |
 | ------------ | ------ | ---- | ---- | ------- |
-| albumName | string | 否    | 否    | 相册名称。    |
-| albumUri | string | 是    | 否    | 相册Uri。   |
-| dateModified | number | 是    | 否    | 修改日期。    |
-| count | number | 是    | 否    | 相册中文件数量。 |
-| coverUri | string | 否    | 否    | 封面文件Uri。 |
+| albumName | string | 否    | 否    | 相册名称。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.albumName](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#属性)替代。    |
+| albumUri | string | 是    | 否    | 相册Uri。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.albumUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#属性)替代。   |
+| dateModified | number | 是    | 否    | 修改日期。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.Album.dateModified](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#属性-1)替代。    |
+| count | number | 是    | 否    | 相册中文件数量。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.count](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#属性)替代。 |
+| coverUri | string | 否    | 否    | 封面文件Uri。<br/> **说明：** 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.coverUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#属性)替代。 |
 
-### getPhotoAssets
+### getPhotoAssets<sup>(deprecated)</sup>
 
 getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;FileAsset&gt;&gt;): void
 
 获取系统相册中的文件。该方法使用callback形式来返回文件。
 
-此接口即将废弃，请使用[Album.getPhotoAssets](#getphotoassets-2)接口替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -4197,12 +4557,12 @@ getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | 是   | 检索选项。 |
-| callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;&gt; | 是   | callback返回图片和视频数据结果集。 |
+| options | [FetchOptions](#fetchoptionsdeprecated) | 是   | 检索选项。 |
+| callback | AsyncCallback&lt;[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;&gt; | 是   | callback返回图片和视频数据结果集。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -4210,7 +4570,7 @@ getPhotoAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4240,13 +4600,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 ```
 
-### getPhotoAssets
+### getPhotoAssets<sup>(deprecated)</sup>
 
 getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&gt;
 
-获取系统相册中的文件。该方法使用Promise来返回文件。
+获取系统相册中的文件。使用Promise异步回调。
 
-此接口即将废弃，请使用[Album.getPhotoAssets](#getphotoassets-3)接口替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AbsAlbum.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -4256,17 +4618,17 @@ getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&g
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | 是   | 检索选项。 |
+| options | [FetchOptions](#fetchoptionsdeprecated) | 是   | 检索选项。 |
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise:[FetchResult](#fetchresult)&lt;[FileAsset](#fileasset)&gt;| Promise对象，返回图片和视频数据结果集。 |
+| Promise:[FetchResult](#fetchresult)&lt;[FileAsset](#fileassetdeprecated)&gt;| Promise对象，返回图片和视频数据结果集。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -4274,7 +4636,7 @@ getPhotoAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&g
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4294,13 +4656,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### delete
+### delete<sup>(deprecated)</sup>
 
 delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除系统相册中的文件，仅支持删除回收站相册中文件。
+删除系统相册中的文件，仅支持删除回收站相册中文件。使用callback异步回调。
 
-此接口即将废弃，请使用[Album.deletePhotoAssets](#deletephotoassets10)接口替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.deleteAssetsWithUri](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deleteassetswithuri19)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 和 ohos.permission.WRITE_AUDIO
 
@@ -4315,7 +4679,7 @@ delete(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4342,13 +4706,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### delete
+### delete<sup>(deprecated)</sup>
 
 delete(uri: string): Promise&lt;void&gt;
 
-删除系统相册中的文件，仅支持删除回收站相册中文件。
+删除系统相册中的文件，仅支持删除回收站相册中文件。使用Promise异步回调。
 
-此接口即将废弃，请使用[Album.deletePhotoAssets](#deletephotoassets10)接口替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.deleteAssetsWithUri](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deleteassetswithuri19)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 和 ohos.permission.WRITE_AUDIO
 
@@ -4368,7 +4734,7 @@ delete(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4394,13 +4760,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### recover
+### recover<sup>(deprecated)</sup>
 
 recover(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-恢复系统相册中的文件，仅支持恢复回收站相册中文件。
+恢复系统相册中的文件，仅支持恢复回收站相册中文件。使用callback异步回调。
 
-此接口即将废弃，请使用[Album.recoverPhotoAssets](#recoverphotoassets10)接口替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.recoverAssetsWithUri](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#recoverassetswithuri19)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 和 ohos.permission.WRITE_AUDIO
 
@@ -4415,7 +4783,7 @@ recover(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4450,13 +4818,15 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-### recover
+### recover<sup>(deprecated)</sup>
 
 recover(uri: string): Promise&lt;void&gt;
 
-恢复系统相册中的文件，仅支持恢复回收站相册中文件。
+恢复系统相册中的文件，仅支持恢复回收站相册中文件。使用Promise异步回调。
 
-此接口即将废弃，请使用[Album.recoverPhotoAssets](#recoverphotoassets10)接口替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.recoverAssetsWithUri](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#recoverassetswithuri19)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.READ_AUDIO 和 ohos.permission.WRITE_AUDIO
 
@@ -4476,7 +4846,7 @@ recover(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
-mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgr)的示例使用。
+mgr的创建请参考[userFileManager.getUserFileMgr](#userfilemanagergetuserfilemgrdeprecated)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4502,36 +4872,56 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-## MemberType
+## MemberType<sup>(deprecated)</sup>
 
-成员类型。
+type MemberType = number | string | boolean
+
+文件资产成员的类型。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MemberType](../apis-media-library-kit/arkts-apis-photoAccessHelper-t.md#membertype)替代。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
-| 名称  |  类型 |  只读  |  可选  |  说明  |
-| ----- |  ---- |  ---- |  ---- |  ---- |
-| number |  number | 是 | 是 | number类型。 |
-| string |  string | 是 | 是 | string类型。|
-| boolean |  boolean | 是 | 是 | boolean类型。 |
+| 类型  | 说明                      |
+| ----- |  ---- |
+| number | number类型。 |
+| string | string类型。 |
+| boolean | boolean类型。 |
 
-## ChangeEvent
+## ChangeEvent<sup>(deprecated)</sup>
+
+type ChangeEvent = 'deviceChange' | 'albumChange' | 'imageChange' | 'audioChange' | 'videoChange' | 'remoteFileChange'
 
 变更监听的媒体文件类型。
 
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.ChangeData](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#changedata)替代。
+
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
-| 名称   | 类型                     | 必填 | 说明                      |
-| -------- | ------------------------- | ---- | ----- |
-| deviceChange | string | 是    | 设备。 |
-| albumChange | string | 是    | 相册。 |
-| imageChange | string | 是    | 图片。 |
-| audioChange | string | 是    | 音频。 |
-| videoChange | string | 是    | 视频。 |
-| remoteFileChange | string | 是    | 远程文件。 |
+| 类型  | 说明                      |
+| ----- |  ---- |
+| 'deviceChange' | 表示设备，值固定为'deviceChange'字符串。 |
+| 'albumChange' | 表示相册，值固定为'albumChange'字符串。 |
+| 'imageChange' | 表示图片，值固定为'imageChange'字符串。 |
+| 'audioChange' | 表示音频，值固定为'audioChange'字符串。 |
+| 'videoChange' | 表示视频，值固定为'videoChange'字符串。 |
+| 'remoteFileChange' | 表示远程文件，值固定为'remoteFileChange'字符串。 |
 
-## PeerInfo
+## PeerInfo<sup>(deprecated)</sup>
 
 注册设备的信息。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，当前无可替代接口。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -4541,9 +4931,13 @@ async function example(mgr: userFileManager.UserFileManager) {
 | networkId  | string                     | 是   | 否   | 注册设备的网络ID。 |
 | isOnline   | boolean                    | 是   | 否   | 是否在线。true是在线，false为不在线         |
 
-## FileType
+## FileType<sup>(deprecated)</sup>
 
 枚举，媒体文件类型。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoType](../apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#phototype)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4553,9 +4947,13 @@ async function example(mgr: userFileManager.UserFileManager) {
 | VIDEO |  2 |  视频。 |
 | AUDIO |  3 |  音频。 |
 
-## PhotoSubType<sup>10+</sup>
+## PhotoSubType<sup>(deprecated)</sup>
 
-枚举，不同[FileAsset](#fileasset)的类型。
+枚举，不同[FileAsset](#fileassetdeprecated)的类型。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoSubType](../apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photosubtype12)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4565,9 +4963,13 @@ async function example(mgr: userFileManager.UserFileManager) {
 | SCREENSHOT |  1 |  截屏录屏文件类型。 |
 | CAMERA |  2 |  相机拍摄的照片和视频类型。 |
 
-## PositionType<sup>10+</sup>
+## PositionType<sup>(deprecated)</sup>
 
 枚举，文件位置，表示文件在本地或云端。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PositionType](../apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#positiontype16)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4577,9 +4979,13 @@ async function example(mgr: userFileManager.UserFileManager) {
 | CLOUD |  2 |  文件只存在于云端。 |
 | BOTH |  3 |  文件在本地和云端中都存在。 |
 
-## AlbumType<sup>10+</sup>
+## AlbumType<sup>(deprecated)</sup>
 
 枚举，相册类型，表示是用户相册还是系统预置相册。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AlbumType](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#albumtype)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4588,9 +4994,13 @@ async function example(mgr: userFileManager.UserFileManager) {
 | USER |  0 |  用户相册。 |
 | SYSTEM |  1024 |  系统预置相册。 |
 
-## AlbumSubType<sup>10+</sup>
+## AlbumSubType<sup>(deprecated)</sup>
 
 枚举，相册子类型，表示具体的相册类型。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AlbumSubType](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#albumsubtype)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4605,11 +5015,13 @@ async function example(mgr: userFileManager.UserFileManager) {
 | CAMERA |  1030 |  相机拍摄的照片和视频相册。 |
 | ANY |  2147483647 |  任意相册。 |
 
-## PrivateAlbumType
+## PrivateAlbumType<sup>(deprecated)</sup>
 
 枚举，系统相册类型。
 
-此接口即将废弃，请使用[AlbumType](#albumtype10)和[AlbumSubType](#albumsubtype10)和接口替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AlbumSubtype](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#albumsubtype)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4618,9 +5030,13 @@ async function example(mgr: userFileManager.UserFileManager) {
 | TYPE_FAVORITE |  0 |  收藏夹相册。 |
 | TYPE_TRASH |  1 |  回收站相册。 |
 
-## AudioKey
+## AudioKey<sup>(deprecated)</sup>
 
 枚举，音频文件关键信息。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[picker.AudioViewPicker](js-apis-file-picker.md#audioviewpicker)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4636,9 +5052,13 @@ async function example(mgr: userFileManager.UserFileManager) {
 | DURATION      | duration            | 持续时间（单位：毫秒）。                                    |
 | FAVORITE      | favorite            | 收藏。                                                   |
 
-## ImageVideoKey
+## ImageVideoKey<sup>(deprecated)</sup>
 
 枚举，图片和视频文件关键信息。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoKeys](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#photokeys)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4656,15 +5076,19 @@ async function example(mgr: userFileManager.UserFileManager) {
 | DATE_TAKEN    | date_taken          | 拍摄日期（文件拍照时间距1970年1月1日的秒数值）。                |
 | ORIENTATION   | orientation         | 图片文件的方向。                                             |
 | FAVORITE      | favorite            | 收藏。                                                    |
-| POSITION<sup>10+</sup>  | position            | 文件位置类型。                               |
-| DATE_TRASHED<sup>10+</sup>  | date_trashed  | 删除日期（删除文件时间距1970年1月1日的秒数值）。                 |
-| HIDDEN<sup>10+</sup>  | hidden            | 文件的隐藏状态。                               |
-| CAMERA_SHOT_KEY<sup>10+</sup>    | camera_shot_key           | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。    |
-| USER_COMMENT<sup>10+</sup>  | user_comment            | 用户注释信息。                               |
+| POSITION  | position            | 文件位置类型。                               |
+| DATE_TRASHED  | date_trashed  | 删除日期（删除文件时间距1970年1月1日的秒数值）。                 |
+| HIDDEN  | hidden            | 文件的隐藏状态。                               |
+| CAMERA_SHOT_KEY    | camera_shot_key           | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。    |
+| USER_COMMENT  | user_comment            | 用户注释信息。                               |
 
-## AlbumKey
+## AlbumKey<sup>(deprecated)</sup>
 
 枚举，相册关键信息。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.AlbumKeys](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#albumkeys)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4676,53 +5100,75 @@ async function example(mgr: userFileManager.UserFileManager) {
 | DATE_ADDED    | date_added          | 添加日期（添加文件时间距1970年1月1日的秒数值）。             |
 | DATE_MODIFIED | date_modified       | 修改日期（修改文件时间距1970年1月1日的秒数值，修改文件名不会改变此值，当文件内容发生修改时才会更新）。 |
 
-## PhotoCreateOptions<sup>10+</sup>
+## PhotoCreateOptions<sup>(deprecated)</sup>
 
 图片或视频的创建选项。
 
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.PhotoCreateOptions](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#createoptions)替代。
+
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| subType           | [PhotoSubType](#photosubtype10) | 否  | 图片或者视频的子类型。  |
-| cameraShotKey           | string | 否  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
+| subType           | [PhotoSubType](#photosubtypedeprecated) | 否   | 是   | 图片或者视频的子类型。 |
+| cameraShotKey           | string | 否   | 是   | 锁屏相机拍照或录像的标记字段（仅开放给系统相机，其key值由系统相机定义）。 |
 
-## FetchOptions
+## FetchOptions<sup>(deprecated)</sup>
 
 检索条件。
 
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchOptions](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions)替代。
+
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
-| fetchColumns           | Array&lt;string&gt; | 否   | 否   | 检索条件，指定列名查询，如果该参数为空时默认查询uri、name、fileType（具体字段名称以检索对象定义为准）且使用[get](#get)接口去获取当前对象的其他属性时将会报错。示例：<br />fetchColumns: ['uri', 'title']。 |
+| fetchColumns           | Array&lt;string&gt; | 否   | 否   | 检索条件，指定列名查询，如果该参数为空时默认查询uri、name、fileType（具体字段名称以检索对象定义为准）且使用[get](#getdeprecated)接口去获取当前对象的其他属性时将会报错。示例：<br />fetchColumns: ['uri', 'title']。 |
 | predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates-sys.md) | 否   | 否   | 谓词查询，显示过滤条件。 |
 
-## AlbumFetchOptions
+## AlbumFetchOptions<sup>(deprecated)</sup>
 
 相册检索条件。
 
+> **说明：**
+>
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.FetchOptions](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions)替代。
+
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
 | predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates-sys.md) | 否   | 否   | 谓词查询，显示过滤条件。 |
 
-## ChangeData<sup>10+</sup>
+## ChangeData<sup>(deprecated)</sup>
 
 监听器回调函数的值。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.ChangeData](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#changedata)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
 | 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| type    | [NotifyType](#notifytype10) | 否   | 否   | ChangeData的通知类型。                                       |
-| uris    | Array&lt;string&gt;         | 否   | 否   | 相同[NotifyType](#notifytype10)的所有uri，可以是FileAsset或Album。 |
+| type    | [NotifyType](#notifytypedeprecated) | 否   | 否   | ChangeData的通知类型。                                       |
+| uris    | Array&lt;string&gt;         | 否   | 否   | 相同[NotifyType](#notifytypedeprecated)的所有uri，可以是FileAsset或Album。 |
 | subUris | Array&lt;string&gt;         | 否   | 否   | 相册中变动文件的uri数组。可能为undefined，使用前需要检查是否为undefined。|
 
-## NotifyType<sup>10+</sup>
+## NotifyType<sup>(deprecated)</sup>
 
 枚举，通知事件的类型。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.NotifyType](../apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4734,9 +5180,13 @@ async function example(mgr: userFileManager.UserFileManager) {
 | NOTIFY_ALBUM_ADD_ASSET    | 3    | 在相册中添加的文件集的通知类型。 |
 | NOTIFY_ALBUM_REMOVE_ASSET | 4    | 在相册中删除的文件集的通知类型。 |
 
-## DefaultChangeUri<sup>10+</sup>
+## DefaultChangeUri<sup>(deprecated)</sup>
 
 枚举，DefaultChangeUri子类型。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.DefaultChangeUri](../apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 

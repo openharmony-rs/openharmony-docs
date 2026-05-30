@@ -1,5 +1,16 @@
 # RawDir
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @ningningW-->
+
+```c
+typedef struct RawDir RawDir
+```
+
 ## 概述
 
 提供对rawfile目录的访问。

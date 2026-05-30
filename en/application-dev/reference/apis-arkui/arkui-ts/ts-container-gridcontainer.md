@@ -1,4 +1,10 @@
 # GridContainer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **GridContainer** component lays out components vertically. It is used only in the grid layout.
 
@@ -13,10 +19,17 @@ The **GridContainer** component lays out components vertically. It is used only 
 
 Supported
 
-
 ## APIs
 
+### GridContainer<sup>(deprecated)</sup>
+
 GridContainer(value?: GridContainerOptions)
+
+Defines the grid container that lays out child components vertically.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [GridCol](ts-container-gridcol.md#apis) or [GridRow](ts-container-gridrow.md#apis) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,18 +39,26 @@ GridContainer(value?: GridContainerOptions)
 | -------- | -------- | -------- | -------- |
 | value | GridContainerOptions | No| Options of the **GridContainer** component.|
 
-## GridContainerOptions
+## GridContainerOptions<sup>(deprecated)</sup>
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [GridColOptions](ts-container-gridcol.md#gridcoloptions) or [GridRowOptions](ts-container-gridrow.md#gridrowoptions) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| columns | number \| 'auto' | No| Total number of columns in the current layout.<br>Default value: **'auto'**|
-| sizeType | SizeType | No| Device size type.<br>Default value: **SizeType.Auto**|
-| gutter | number \| string | No| Gutter of the grid layout. This parameter cannot be set to a percentage.|
-| margin | number \| string | No| Margin of the grid layout. This parameter cannot be set to a percentage.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| columns | number&nbsp;\|&nbsp;'auto' | No| Yes| Total number of columns in the current layout.<br>Default value: **'auto'**|
+| sizeType | SizeType | No| Yes| Device size type.<br>Default value: **SizeType.Auto**|
+| gutter | number&nbsp;\|&nbsp;string | No| Yes| Gutter of the grid layout. This parameter cannot be set to a percentage.|
+| margin | number&nbsp;\|&nbsp;string | No| Yes| Margin of the grid layout. This parameter cannot be set to a percentage.|
 
-## SizeType
+## SizeType<sup>(deprecated)</sup>
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [GridColColumnOption](ts-container-gridcol.md#gridcolcolumnoption) or [GridRowColumnOption](ts-container-gridrow.md#gridrowcolumnoption) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,4 +152,4 @@ struct GridContainerExample {
 }
 ```
 
-![en-us_image_0000001256858425](figures/en-us_image_0000001256858425.gif)
+![en-us_image_0000001219744187](figures/en-us_image_0000001219744187.gif)

@@ -4,7 +4,7 @@
 <!--Owner: @qq_42700029-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **PermissionRequest** object. For details about the sample code, see [onPermissionRequest](./arkts-basic-components-web-events.md#onpermissionrequest9).
 
@@ -14,7 +14,7 @@ Implements the **PermissionRequest** object. For details about the sample code, 
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>9+</sup>
 

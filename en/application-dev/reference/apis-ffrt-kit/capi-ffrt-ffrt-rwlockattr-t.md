@@ -5,7 +5,12 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+
+
+```c
+typedef struct {...} ffrt_rwlockattr_t
+```
 
 ## Overview
 

@@ -1,4 +1,10 @@
 # @ohos.telephony.esim (eSIM Management)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @yangyannanyangyannan-->
+<!--Designer: @ghxbob-->
+<!--Tester: @weitiantian-->
+<!--Adviser: @zhang_yixin13-->
 
 The **esim** module provides basic eSIM management capabilities, including checking whether a specified card slot supports the eSIM function.
 
@@ -13,7 +19,7 @@ The **esim** module provides basic eSIM management capabilities, including check
 import { eSIM } from '@kit.TelephonyKit';
 ```
 
-## eSIM.isSupported<sup>18+</sup>
+## eSIM.isSupported
 
 isSupported\(slotId: number\): boolean
 
@@ -39,7 +45,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID             | Error Message                          |
 | --------------------- | ---------------------------------- |
-| 401 | Invalid parameter value.     |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.   |
 |3120001| Service connection failed. |
 |3120002| System internal error.     |
 
@@ -48,11 +54,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { eSIM } from '@kit.TelephonyKit';
 
-let isSupported: boolean = eSIM.isSupported(0);
-console.log(`the esim is Supported:` + isSupported);
+let isSupported: boolean = eSIM.isSupported(1);
+console.info(`the esim is Supported:` + isSupported);
 ```
 
-## eSIM.addProfile<sup>18+</sup>
+## eSIM.addProfile
 
 addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 
@@ -64,9 +70,9 @@ Launches the download page for the user to add a single profile. This API uses a
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                  |
-| ------ | ------ | ---- | -------------------------------------- |
-| profile | DownloadableProfile | Yes  | Profile that can be downloaded.|
+| Name| Type                                           | Mandatory| Description                                  |
+| ------ |-----------------------------------------------| ---- | -------------------------------------- |
+| profile | [DownloadableProfile](#downloadableprofile) | Yes  | Profile that can be downloaded.|
 
 **Returns**
 
@@ -81,7 +87,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID             | Error Message                          |
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied.           |
-| 401 | Invalid parameter value.     |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.     |
 | 801 | Capability not supported.    |
 |3120001| Service connection failed. |
 |3120002| System internal error.     |
@@ -104,21 +110,33 @@ let profile: eSIM.DownloadableProfile = {
 };
 
 eSIM.addProfile(profile).then(() => {
-    console.log(`addProfile invoking succeeded.`);
-}).catch((err: BusinessError) => {
+    console.info(`addProfile invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`addProfile, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
-## DownloadableProfile<sup>18+</sup>
+## DownloadableProfile
 
 Defines a downloadable profile.
 
 **System capability**: SystemCapability.Telephony.CoreService.Esim
 
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ----- | -----|
-| activationCode   | string             |  Yes | Activation code. For a profile that does not require an activation code, the value may be left empty.|
-| confirmationCode | string             |  No | Confirmation code.     |
-| carrierName      | string             |  No | Carrier name.   |
-| accessRules      | Array\<AccessRule> |  No | Access rule array.|
+| Name| Type                                  |  Read-Only| Optional| Description|
+| ----- |--------------------------------------| ----- | ---- | -----|
+| activationCode   | string                               |  No |  No | Activation code. For a profile that does not require an activation code, the value may be left empty.|
+| confirmationCode | string                               |  No |  Yes | Confirmation code.    |
+| carrierName      | string                               |  No |  Yes | Carrier name.  |
+| accessRules      | Array\<[AccessRule](#accessrule20)\> |  No |  Yes | Access rule array.|
+
+## AccessRule<sup>20+</sup>
+
+Defines access rules.
+
+**System capability**: SystemCapability.Telephony.CoreService.Esim
+
+| Name| Type| Read-Only| Optional| Description|
+| ----- | ----- |----|----| -----|
+| certificateHashHexStr | string  | No | No | Hex string of the certificate hash.|
+| packageName           | string  | No | No | Package name.|
+| accessType            | number  | No | No | Rule type.|

@@ -4,7 +4,7 @@
 <!--Owner: @yuzhouhang1-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebDataBase** object.
 
@@ -14,7 +14,7 @@ Implements a **WebDataBase** object.
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 >
 > - You must load the **Web** component before calling the APIs in **WebDataBase**.
 
@@ -47,7 +47,7 @@ Retrieves HTTP authentication credentials for a given host and realm. This API r
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -104,7 +104,7 @@ Saves HTTP authentication credentials for a given host and realm. This API retur
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                                               |
 | -------- | ------------------------------------------------------ |

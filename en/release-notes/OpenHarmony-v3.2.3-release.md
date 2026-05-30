@@ -26,7 +26,7 @@ OpenHarmony 3.2.3 Release provides enhanced system security over OpenHarmony 3.2
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
   
    ```
    git config --global user.name "yourname"
@@ -37,7 +37,7 @@ OpenHarmony 3.2.3 Release provides enhanced system security over OpenHarmony 3.2
 4. Run the following commands to install the **repo** tool:
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -49,7 +49,7 @@ OpenHarmony 3.2.3 Release provides enhanced system security over OpenHarmony 3.2
 Use the **repo** tool to download the source code over SSH. (You must have an SSH public key for access to Gitee.)
 
  ```
- repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2.3-Release --no-repo-verify
+ repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2.3-Release --no-repo-verify
  repo sync -c
  repo forall -c 'git lfs pull'
  ```
@@ -60,7 +60,7 @@ Use the **repo** tool to download the source code over HTTPS.
 
 Obtain the source code from the version tag, which is the same as that released with the version.
  ```
- repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2.3-Release --no-repo-verify
+ repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2.3-Release --no-repo-verify
  repo sync -c
  repo forall -c 'git lfs pull'
  ```
@@ -88,7 +88,7 @@ This version does not involve API updates.
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 ## Resolved Issues
 
@@ -96,33 +96,33 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.                                                       | Description                                                    |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I76UCD](https://gitee.com/open_harmony/dashboard?issue_id=I76UCD) | [OpenHarmony 3.2.12.5] [3.2 Release] [Multimedia subsystem] [RK3568] [Inevitably: 10/10] When a recording file is played in Gallery, the image freezes for the last 2 seconds.|
-| [I7B07F](https://e.gitee.com/open_harmony/issues/table/?issue=I7B07F) | [OpenHarmony 3.2.12.5] [Softbus] [Discovery] [rk3568] [Inevitably: 3/3] Bluetooth discovery fails.|
-| [I7BZ4F](https://e.gitee.com/open_harmony/issues/table/?issue=I7BZ4F) | [OpenHarmony 3.2.13.1] [RK3568] [Discovery] [Probability: 3/42] CoAP discovery fails occasionally.|
-| [I7C98S](https://e.gitee.com/open_harmony/issues/table/?issue=I7C98S) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [Low probability: 2/10] [wukong] A JavaScript crash occurs in the initializeConsume stack of com.ohos.photos. This issue occurs twice.|
-| [I7FO8I](https://e.gitee.com/open_harmony/issues/table/?issue=I7FO8I) | [OpenHarmony 3.2 0620 daily] [RK3568] [Pressure test] [Low probability: 1/10] [wukong] A C++ crash occurs in libabilitykit_native.z.so of the IPC_3_14056 thread in com.ohos.adminprovisioning. This problem occurs once.|
-| [I7FR03](https://e.gitee.com/open_harmony/issues/table/?issue=I7FR03) | [OpenHarmony 3.2 0620 daily] [RK3568] [Pressure test] [Low probability: 1/10] [wukong] Rosenweb on consumer occurs in RSRenderThread of the com.ohos.note process. As a result, a C++ crash occurs in libmali-bifrost-g52-g2p0-ohos.so. This problem occurs once.|
-| [I7WJ2I](https://gitee.com/open_harmony/dashboard?issue_id=I7WJ2I) | [OpenHarmony master/3.2 Release] [Driver subsystem] [rk3568] [Inevitably: 5/5] Dynamic stream allocation fails.|
-| [I6UYP6](https://gitee.com/open_harmony/dashboard?issue_id=I6UYP6) | [OpenHarmony 3.2 Release] When the **put** and **putSync** APIs are called to set the **key** length and **value** length that exceed the maximum number of bytes, the APIs do not throw any exception.|
-| [I72P5E](https://gitee.com/open_harmony/dashboard?issue_id=I72P5E) | [OpenHarmony 3.2.12.2] [RK3568] [Pressure test] [Inevitably: 10/10] Memory leakage occurs in libace.z.so when a user repeatedly touches an image in Gallery to maximize it and then exits.|
-| [I72P5I](https://gitee.com/open_harmony/dashboard?issue_id=I72P5I) | [OpenHarmony 3.2.12.2] [RK3568] [Pressure test] [Inevitably: 10/10] Memory leakage occurs in libace.z.so when a user repeatedly touches an image folder in Gallery to browse images in grid form and then exits.|
-| [I76N0Y](https://gitee.com/open_harmony/dashboard?issue_id=I76N0Y) | [OpenHarmony 3.2.12.2] [RK3568] [Pressure test] [Inevitably: 10/10] Memory leakage occurs in libace.z.so when an application is repeatedly added to and then removed from the dock bar.|
-| [I7FNXR](https://gitee.com/open_harmony/dashboard?issue_id=I7FNXR) | [OpenHarmony 3.2.13.5] [RK3568] [Pressure test] [Low probability: 1/10] [wukong] A C++ crash occurs in libipc_core.z.so of the IPC_7_15380 thread in the camera_service process. This problem occurs once.|
-| [I7GATH](https://gitee.com/open_harmony/dashboard?issue_id=I7GATH) | [OpenHarmony 3.2.13.5] [Input method] [Inevitably: 5/5] A C++crash occurs in the input method selection box after an injection test is performed on the DevecoTesting service interface.|
-| [I7HDQP](https://gitee.com/open_harmony/dashboard?issue_id=I7HDQP) | [OpenHarmony 3.2.13.5] [Application subsystem] [RK3568] [Inevitably: 5/5] After the language is switched to English, some application names on the home screen are still displayed in Chinese. They are displayed in English only after a system restart.|
-| [I7HFEO](https://gitee.com/open_harmony/dashboard?issue_id=I7HFEO) | [OpenHarmony 3.2.14.1] [Test subsystem] [3861] [Inevitably: 5/5] A test item fails in the ActsUiTest module.|
-| [I7HX8E](https://gitee.com/open_harmony/dashboard?issue_id=I7HX8E) | [OpenHarmony 3.2.14.1] [RK3568] [XTS pressure test] [Low probability] A C++ crash occurs in librpc.z.so of the jsThread-1 thread in the com.ohos.rpctest process. This issue occurs twice.|
-| [I7IV88](https://gitee.com/open_harmony/dashboard?issue_id=I7IV88) | [OpenHarmony 3.2.14.1] [RK3568] [Pressure test] [Low probability] [wukong] A JavaScript crash occurs in clickToGroupDetail of the key process com.ohos.mms. This issue occurs four times.|
-| [I7KZKQ](https://gitee.com/open_harmony/dashboard?issue_id=I7KZKQ) | [OpenHarmony 3.2.14.2] [RK3568] [Pressure test] [Low probability] [wukong] A JavaScript crash occurs in clickInfoToConversation of the key process com.ohos.mms. This issue occurs 13 times.|
-| [I7KZLX](https://gitee.com/open_harmony/dashboard?issue_id=I7KZLX) | [OpenHarmony 3.2.14.2] [RK3568] [Pressure test] [Low probability] [wukong] A JavaScript crash occurs in dealSessionDraft of com.ohos.mms. This issue occurs once.|
-| [I7KZN7](https://gitee.com/open_harmony/dashboard?issue_id=I7KZN7) | [OpenHarmony 3.2.14.2] [RK3568] [Pressure test] [Low probability] [wukong] A JavaScript crash occurs in menuChange of the key process com.ohos.contact. This issue occurs 18 times.|
-| [I7PAL6](https://gitee.com/open_harmony/dashboard?issue_id=I7PAL6) | [OpenHarmony 3.2.14.5] [RK3568] [Pressure test] [Low probability] [wukong] A C++ crash occurs in libhap_restorecon.z.so of the IPC_1_643 thread in /system/bin/installs. This issue occurs once.|
-| [I7Q85E](https://gitee.com/open_harmony/dashboard?issue_id=I7Q85E) | [OpenHarmony 3.2.14.5] [RK3568] [Pressure test] [wukong] The memory usage is too high during the pressure test.|
-| [I7VAB8](https://gitee.com/open_harmony/dashboard?issue_id=I7VAB8) | [OpenHarmony 3.2.14.6] [RK3568] [Pressure test] [Low probability] [wukong] A C++ crash occurs in libcamera_napi.z.so of the com.ohos.camera thread in the com.ohos.camera process. This issue occurs 24 times.|
-| [I7VBCV](https://gitee.com/open_harmony/dashboard?issue_id=I7VBCV) | [OpenHarmony 3.2.14.6] [RK3568] [Pressure test] [Low frequency] A JavaScript crash occurs in the cancelTimer stack of the ohos.samples.distributedmusicplayer process. This issue occurs three times.|
-| [I7BL13](https://gitee.com/open_harmony/dashboard?issue_id=I7BL13) | [OpenHarmony 3.2 Release] [Power subsystem] [rk3568] [Inevitably: 5/5] A global thread is created using a local variable.|
-| [I7BY2N](https://gitee.com/open_harmony/dashboard?issue_id=I7BY2N) | [OpenHarmony 3.2 Release] An empty file can be compiled.|
-| [I7CREK](https://gitee.com/open_harmony/dashboard?issue_id=I7CREK) | [OpenHarmony 3.2 Release] JSON parameter verification needs an adjustment.|
+| [I76UCD](https://gitcode.com/open_harmony/dashboard?issue_id=I76UCD) | [OpenHarmony 3.2.12.5] [3.2 Release] [Multimedia subsystem] [RK3568] [Inevitably: 10/10] When a recording file is played in Gallery, the image freezes for the last 2 seconds.|
+| [I7B07F](https://e.gitcode.com/open_harmony/issues/table/?issue=I7B07F) | [OpenHarmony 3.2.12.5] [Softbus] [Discovery] [rk3568] [Inevitably: 3/3] Bluetooth discovery fails.|
+| [I7BZ4F](https://e.gitcode.com/open_harmony/issues/table/?issue=I7BZ4F) | [OpenHarmony 3.2.13.1] [RK3568] [Discovery] [Probability: 3/42] CoAP discovery fails occasionally.|
+| [I7C98S](https://e.gitcode.com/open_harmony/issues/table/?issue=I7C98S) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [Low probability: 2/10] [wukong] A JavaScript crash occurs in the initializeConsume stack of com.ohos.photos. This issue occurs twice.|
+| [I7FO8I](https://e.gitcode.com/open_harmony/issues/table/?issue=I7FO8I) | [OpenHarmony 3.2 0620 daily] [RK3568] [Pressure test] [Low probability: 1/10] [wukong] A C++ crash occurs in libabilitykit_native.z.so of the IPC_3_14056 thread in com.ohos.adminprovisioning. This problem occurs once.|
+| [I7FR03](https://e.gitcode.com/open_harmony/issues/table/?issue=I7FR03) | [OpenHarmony 3.2 0620 daily] [RK3568] [Pressure test] [Low probability: 1/10] [wukong] Rosenweb on consumer occurs in RSRenderThread of the com.ohos.note process. As a result, a C++ crash occurs in libmali-bifrost-g52-g2p0-ohos.so. This problem occurs once.|
+| [I7WJ2I](https://gitcode.com/open_harmony/dashboard?issue_id=I7WJ2I) | [OpenHarmony master/3.2 Release] [Driver subsystem] [rk3568] [Inevitably: 5/5] Dynamic stream allocation fails.|
+| [I6UYP6](https://gitcode.com/open_harmony/dashboard?issue_id=I6UYP6) | [OpenHarmony 3.2 Release] When the **put** and **putSync** APIs are called to set the **key** length and **value** length that exceed the maximum number of bytes, the APIs do not throw any exception.|
+| [I72P5E](https://gitcode.com/open_harmony/dashboard?issue_id=I72P5E) | [OpenHarmony 3.2.12.2] [RK3568] [Pressure test] [Inevitably: 10/10] Memory leakage occurs in libace.z.so when a user repeatedly touches an image in Gallery to maximize it and then exits.|
+| [I72P5I](https://gitcode.com/open_harmony/dashboard?issue_id=I72P5I) | [OpenHarmony 3.2.12.2] [RK3568] [Pressure test] [Inevitably: 10/10] Memory leakage occurs in libace.z.so when a user repeatedly touches an image folder in Gallery to browse images in grid form and then exits.|
+| [I76N0Y](https://gitcode.com/open_harmony/dashboard?issue_id=I76N0Y) | [OpenHarmony 3.2.12.2] [RK3568] [Pressure test] [Inevitably: 10/10] Memory leakage occurs in libace.z.so when an application is repeatedly added to and then removed from the dock bar.|
+| [I7FNXR](https://gitcode.com/open_harmony/dashboard?issue_id=I7FNXR) | [OpenHarmony 3.2.13.5] [RK3568] [Pressure test] [Low probability: 1/10] [wukong] A C++ crash occurs in libipc_core.z.so of the IPC_7_15380 thread in the camera_service process. This problem occurs once.|
+| [I7GATH](https://gitcode.com/open_harmony/dashboard?issue_id=I7GATH) | [OpenHarmony 3.2.13.5] [Input method] [Inevitably: 5/5] A C++crash occurs in the input method selection box after an injection test is performed on the DevecoTesting service interface.|
+| [I7HDQP](https://gitcode.com/open_harmony/dashboard?issue_id=I7HDQP) | [OpenHarmony 3.2.13.5] [Application subsystem] [RK3568] [Inevitably: 5/5] After the language is switched to English, some application names on the home screen are still displayed in Chinese. They are displayed in English only after a system restart.|
+| [I7HFEO](https://gitcode.com/open_harmony/dashboard?issue_id=I7HFEO) | [OpenHarmony 3.2.14.1] [Test subsystem] [3861] [Inevitably: 5/5] A test item fails in the ActsUiTest module.|
+| [I7HX8E](https://gitcode.com/open_harmony/dashboard?issue_id=I7HX8E) | [OpenHarmony 3.2.14.1] [RK3568] [XTS pressure test] [Low probability] A C++ crash occurs in librpc.z.so of the jsThread-1 thread in the com.ohos.rpctest process. This issue occurs twice.|
+| [I7IV88](https://gitcode.com/open_harmony/dashboard?issue_id=I7IV88) | [OpenHarmony 3.2.14.1] [RK3568] [Pressure test] [Low probability] [wukong] A JavaScript crash occurs in clickToGroupDetail of the key process com.ohos.mms. This issue occurs four times.|
+| [I7KZKQ](https://gitcode.com/open_harmony/dashboard?issue_id=I7KZKQ) | [OpenHarmony 3.2.14.2] [RK3568] [Pressure test] [Low probability] [wukong] A JavaScript crash occurs in clickInfoToConversation of the key process com.ohos.mms. This issue occurs 13 times.|
+| [I7KZLX](https://gitcode.com/open_harmony/dashboard?issue_id=I7KZLX) | [OpenHarmony 3.2.14.2] [RK3568] [Pressure test] [Low probability] [wukong] A JavaScript crash occurs in dealSessionDraft of com.ohos.mms. This issue occurs once.|
+| [I7KZN7](https://gitcode.com/open_harmony/dashboard?issue_id=I7KZN7) | [OpenHarmony 3.2.14.2] [RK3568] [Pressure test] [Low probability] [wukong] A JavaScript crash occurs in menuChange of the key process com.ohos.contact. This issue occurs 18 times.|
+| [I7PAL6](https://gitcode.com/open_harmony/dashboard?issue_id=I7PAL6) | [OpenHarmony 3.2.14.5] [RK3568] [Pressure test] [Low probability] [wukong] A C++ crash occurs in libhap_restorecon.z.so of the IPC_1_643 thread in /system/bin/installs. This issue occurs once.|
+| [I7Q85E](https://gitcode.com/open_harmony/dashboard?issue_id=I7Q85E) | [OpenHarmony 3.2.14.5] [RK3568] [Pressure test] [wukong] The memory usage is too high during the pressure test.|
+| [I7VAB8](https://gitcode.com/open_harmony/dashboard?issue_id=I7VAB8) | [OpenHarmony 3.2.14.6] [RK3568] [Pressure test] [Low probability] [wukong] A C++ crash occurs in libcamera_napi.z.so of the com.ohos.camera thread in the com.ohos.camera process. This issue occurs 24 times.|
+| [I7VBCV](https://gitcode.com/open_harmony/dashboard?issue_id=I7VBCV) | [OpenHarmony 3.2.14.6] [RK3568] [Pressure test] [Low frequency] A JavaScript crash occurs in the cancelTimer stack of the ohos.samples.distributedmusicplayer process. This issue occurs three times.|
+| [I7BL13](https://gitcode.com/open_harmony/dashboard?issue_id=I7BL13) | [OpenHarmony 3.2 Release] [Power subsystem] [rk3568] [Inevitably: 5/5] A global thread is created using a local variable.|
+| [I7BY2N](https://gitcode.com/open_harmony/dashboard?issue_id=I7BY2N) | [OpenHarmony 3.2 Release] An empty file can be compiled.|
+| [I7CREK](https://gitcode.com/open_harmony/dashboard?issue_id=I7CREK) | [OpenHarmony 3.2 Release] JSON parameter verification needs an adjustment.|
 
 ## Fixed Security Vulnerabilities
 
@@ -225,7 +225,7 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.| Description| Impact| To Be Resolved By|
 | ----- | -------- | ---- | ------------ |
-| [I7HW2C](https://e.gitee.com/open_harmony/dashboard?issue=I7E931) | [OpenHarmony 3.2.14.1] [RK3568] [Pressure test] [ToC] [Low probability] [wukong] A C++ crash occurs in libace.z.so of the com.ohos.note thread in the key process com.ohos.note. This problem occurs 20 times.| Impact on application development (especially APIs) and user experience: The note application may break down in some scenarios. This issue occurs 15 times during the pressure test on multiple devices within 10,000 hours. From the HiLog analysis, there is a high probability that this issue occurs in extreme scenarios and has little impact on normal use. It has no impact on the chip platform and subsystem communities.| 2023-10-31|
-| [I7E931](https://e.gitee.com/open_harmony/dashboard?issue=I7E931) | Memory leakage issues in OpenHarmony 3.2 Release.| When a JavaScript application calls the IPC, the NAPIRemoteObject process needs to be created, and 1.2 KB memory occurs during the creation. However, the process can be used repeatedly once created, and the memory is released when the application process exits.| 2023-10-31|
-| [I7P9VS](https://e.gitee.com/open_harmony/issues/table/?issue=I7P9VS) |[OpenHarmony 3.2.14.5] [RK3568] [Pressure test] [Inevitably: 10/10] Memory leakage occurs in ElementRegister::ClearRemovedItems when a user repeatedly touches an image in Gallery to maximize it and then exits.| The leaked memory size is reduced from several KBs to 72 bytes. This issue has little impact on the system.| 2023-10-31|
-| [I7P9T5](https://e.gitee.com/open_harmony/issues/table/?issue=I7P9T5) |[OpenHarmony 3.2.14.5] [RK3568] [Pressure test] [Inevitably: 10/10] Memory leakage occurs in ElementRegister::RemoveItem and ElementRegister::ClearRemovedItems when a user repeatedly touches an image folder in Gallery to browse images in grid form and then exits.| The leaked memory size is reduced from several KBs to 144 bytes. This issue has little impact on the system.| 2023-10-31|
+| [I7HW2C](https://e.gitcode.com/open_harmony/dashboard?issue=I7E931) | [OpenHarmony 3.2.14.1] [RK3568] [Pressure test] [ToC] [Low probability] [wukong] A C++ crash occurs in libace.z.so of the com.ohos.note thread in the key process com.ohos.note. This problem occurs 20 times.| Impact on application development (especially APIs) and user experience: The note application may break down in some scenarios. This issue occurs 15 times during the pressure test on multiple devices within 10,000 hours. From the HiLog analysis, there is a high probability that this issue occurs in extreme scenarios and has little impact on normal use. It has no impact on the chip platform and subsystem communities.| 2023-10-31|
+| [I7E931](https://e.gitcode.com/open_harmony/dashboard?issue=I7E931) | Memory leakage issues in OpenHarmony 3.2 Release.| When a JavaScript application calls the IPC, the NAPIRemoteObject process needs to be created, and 1.2 KB memory occurs during the creation. However, the process can be used repeatedly once created, and the memory is released when the application process exits.| 2023-10-31|
+| [I7P9VS](https://e.gitcode.com/open_harmony/issues/table/?issue=I7P9VS) |[OpenHarmony 3.2.14.5] [RK3568] [Pressure test] [Inevitably: 10/10] Memory leakage occurs in ElementRegister::ClearRemovedItems when a user repeatedly touches an image in Gallery to maximize it and then exits.| The leaked memory size is reduced from several KBs to 72 bytes. This issue has little impact on the system.| 2023-10-31|
+| [I7P9T5](https://e.gitcode.com/open_harmony/issues/table/?issue=I7P9T5) |[OpenHarmony 3.2.14.5] [RK3568] [Pressure test] [Inevitably: 10/10] Memory leakage occurs in ElementRegister::RemoveItem and ElementRegister::ClearRemovedItems when a user repeatedly touches an image folder in Gallery to browse images in grid form and then exits.| The leaked memory size is reduced from several KBs to 144 bytes. This issue has little impact on the system.| 2023-10-31|

@@ -1,10 +1,10 @@
 # Rect
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 矩形绘制组件。
 
@@ -12,7 +12,7 @@
 >
 >  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
+>  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 
 ## 子组件
@@ -24,6 +24,8 @@
 
 Rect(options?: RectOptions | RoundedRectOptions)
 
+用于绘制矩形的构造函数。 
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -34,7 +36,7 @@ Rect(options?: RectOptions | RoundedRectOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [RectOptions](ts-drawing-components-rect.md#rectoptions18对象说明) \| [RoundedRectOptions](ts-drawing-components-rect.md#roundedrectoptions18对象说明)  | 否 | Rect绘制属性。<br/>异常值undefined和null按照无效值处理。|
+| options | [RectOptions](ts-drawing-components-rect.md#rectoptions18对象说明) \| [RoundedRectOptions](ts-drawing-components-rect.md#roundedrectoptions18对象说明)  | 否 | Rect绘制属性。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
 
 ## RectOptions<sup>18+</sup>对象说明
 
@@ -47,6 +49,8 @@ Rect(options?: RectOptions | RoundedRectOptions)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ Rect(options?: RectOptions | RoundedRectOptions)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,7 +138,7 @@ radius(value: Length | Array&lt;any&gt;)
 
 | 参数名 | 类型                                                         | 必填 | 说明                         |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------- |
-| value  | [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; | 是   | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined和null按照无效值处理。|
+| value  | [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; | 是   | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined和null按照[[0, 0], [0, 0], [0, 0], [0, 0]]处理。|
 
 ### fill
 
@@ -150,7 +156,7 @@ fill(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：Color.Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
 
 ### fillOpacity
 
@@ -186,7 +192,7 @@ stroke(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照Color.Black处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
 
 ### strokeDashArray
 
@@ -204,7 +210,7 @@ strokeDashArray(value: Array&lt;any&gt;)
 
 | 参数名 | 类型             | 必填 | 说明                      |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | 是   | 边框间隙。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。|
+| value  | Array&lt;any&gt; | 是   | 定义Rect轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
 
 ### strokeDashOffset
 
@@ -314,7 +320,7 @@ strokeWidth(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                     |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 边框宽度，取值范围≥0。<br/>默认值：1<br/>默认单位：vp<br/>默认单位：vp<br/>异常值undefined、null和NaN按照默认值处理，Infinity按0处理。 |
+| value  | [Length](ts-types.md#length) | 是   | 边框宽度，取值范围≥0。<br/>默认值：1<br/>默认单位：vp<br/>异常值undefined、null和NaN按照默认值处理，Infinity按0处理。 |
 
 ### antiAlias
 
@@ -332,7 +338,7 @@ antiAlias(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照默认值处理。|
+| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照false处理。|
 
 ## 示例
 
@@ -388,7 +394,9 @@ struct RectExample {
 
 ### 示例2（绘制渐变色矩形）
 
-通过通用属性linearGradient、clipShape分别绘制渐变色的矩形。
+通过通用属性[linearGradient](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient18)、[clipShape](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape18)分别绘制渐变色的矩形。
+
+从API version 18开始，新增linearGradient、clipShape通用属性。
 
 ```ts
 // xxx.ets
@@ -437,16 +445,16 @@ struct RectExample {
   build() {
     Column({ space: 10 }) {
       // 绘制90% * 50矩形，圆角半径为5
-      Rect({ width: '90%', height: '50', radius: '5' })//使用string类型
+      Rect({ width: '90%', height: '50', radius: '5' }) // 使用string类型
         .fill(Color.Green)
       // 绘制200 * 50的矩形框，圆角半径为5
-      Rect({ width: 200, height: 50, radius: 5 })//使用number类型
+      Rect({ width: 200, height: 50, radius: 5 }) // 使用number类型
         .fillOpacity(0)
         .stroke(Color.Red)
         .strokeWidth(3)
       // 绘制200 * 50矩形, 圆角宽80, 圆角高20
       Rect({
-        width: $r('app.string.RectWidth'), //使用Resource类型，需用户自定义
+        width: $r('app.string.RectWidth'), // 使用Resource类型，需用户自定义
         height: $r('app.string.RectHeight'),
         radius: $r('app.string.RectRadius')
       })

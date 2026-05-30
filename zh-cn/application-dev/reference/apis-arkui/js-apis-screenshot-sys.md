@@ -49,6 +49,22 @@ import { screenshot } from '@kit.ArkUI';
 | displayId | number        | 否 | 是   | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，该参数应为整数。默认为0。 |
 | isNotificationNeeded| boolean        | 否 | 是   | 表示截取图像之后是否发送截屏通知，true表示发送截屏通知，false表示不发送截屏通知，默认值为true。截屏通知可以通过[captureStatusChange](js-apis-display.md#displayoncapturestatuschange12)接口监听。   |
 | isCaptureFullOfScreen | boolean        | 否 | 是   | 表示是否截取当前物理屏上所有DisplayId对应的逻辑屏。对于一个物理屏上有多个DisplayId的场景，true表示截取整个物理屏，false表示只截取DisplayId所在区域的逻辑屏。默认值为false。 |
+| displayIntent | [DisplayIntentType](#displayintenttype)        | 否 | 是   | 表示截取HDR图像的渲染方式，不影响SDR图像效果。默认值为screenshot.DisplayIntentType.CANONICAL。<br>**起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## DisplayIntentType 
+
+截取HDR图像的渲染方式枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| CANONICAL | 0 | 表示指定截图以标准HDR显示属性进行渲染，以优化截图在不同HDR显示器上的显示效果。|
+| LOCAL | 1 |表示指定截图以当前HDR显示属性进行渲染，以保证截图与当前被截图的显示器显示效果一致。|
 
 ## Size
 
@@ -67,13 +83,13 @@ import { screenshot } from '@kit.ArkUI';
 
 save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-获取屏幕截图。
+获取屏幕截图，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -90,7 +106,6 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.|
 | 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -115,7 +130,7 @@ let screenshotOptions: screenshot.ScreenshotOptions = {
 };
 screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap) => {
   if (err) {
-    console.error(`Failed to save screenshot. Code: ${err.code} , messgae : ${err.message}`);
+    console.error(`Failed to save screenshot. Code: ${err.code} , message : ${err.message}`);
     return;
   }
   console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -127,13 +142,13 @@ screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap
 
 save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-获取屏幕截图。
+获取屏幕截图，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -171,13 +186,13 @@ screenshot.save((err: BusinessError, pixelMap: image.PixelMap) => {
 
 save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
-获取屏幕截图。
+获取屏幕截图，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -194,13 +209,13 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.|
 | 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 
 **示例：**
 
@@ -229,7 +244,7 @@ try {
     console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelNumber}`);
     pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
-    console.error(`Failed to save screenshot. Code: ${err.code} , messgae : ${err.message}`);
+    console.error(`Failed to save screenshot. Code: ${err.code} , message : ${err.message}`);
   });
 } catch (exception) {
   console.error(`Failed to save screenshot. Code: ${exception.code} , message : ${exception.message}`);
@@ -240,7 +255,7 @@ try {
 
 saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
 
-获取屏幕截图。SDR为标准动态范围图，HDR为高动态范围图。
+获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。
 - 当物理屏存在HDR资源（包括HDR资源被遮挡）时，无论HDR是否开启，该接口返回一个包含SDR和HDR的PixelMap数组。
 - 当物理屏不存在HDR资源时，与[save](#screenshotsave)接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备[save](#screenshotsave)接口的裁剪、拉伸、旋转功能。
 <br><br>
@@ -249,7 +264,7 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -285,7 +300,8 @@ import { image } from '@kit.ImageKit';
 let hdrScreenshotOptions: screenshot.HdrScreenshotOptions = {
   "displayId": 0,
   "isNotificationNeeded": true,
-  "isCaptureFullOfScreen": true
+  "isCaptureFullOfScreen": true,
+  "displayIntent": screenshot.DisplayIntentType.CANONICAL
 };
 try {
   let promise = screenshot.saveHdrPicture(hdrScreenshotOptions);

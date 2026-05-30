@@ -1,8 +1,8 @@
 # 开放权限（系统授权）
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -13,7 +13,7 @@
 
 <!--Del-->
 > **说明：**
-> 权限级别为normal的权限，不涉及ACL使能字段。
+> 权限级别为normal的权限，不涉及是否支持证书授权字段。
 <!--DelEnd-->
 
 ## 申请方式
@@ -62,6 +62,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV
+
 **起始版本**：10
 
 ## ohos.permission.DISCOVER_BLUETOOTH
@@ -85,6 +87,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -136,9 +140,9 @@
 
 ## ohos.permission.GET_WIFI_INFO
 
-允许应用获取Wi-Fi信息。
+允许应用获取Wi-Fi信息和使用P2P能力。
 
-该权限允许应用获取Wi-Fi信息，包括Wi-Fi的开启状态、扫描结果、连接信息、连接状态、设备能力、P2P状态等信息。
+获取该权限后，应用可获取Wi-Fi信息，包括Wi-Fi的开启状态、扫描结果、连接信息、连接状态、设备能力、P2P状态等；同时，应用可使用P2P能力。
 
 **权限级别**：normal
 
@@ -156,11 +160,15 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
+
 **起始版本**：7
 
 ## ohos.permission.INTERNET
 
 允许使用Internet网络。
+
+获取该权限后，应用可以获取IP地址、进行DNS解析或自定义DNS规则等。
 
 **权限级别**：normal
 
@@ -246,6 +254,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
+
 **起始版本**：7
 
 ## ohos.permission.CLEAN_BACKGROUND_PROCESSES
@@ -272,36 +282,6 @@
 
 **起始版本**：7
 
-## ohos.permission.MODIFY_AUDIO_SETTINGS
-
-允许应用修改音频设置。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：8
-
-## ohos.permission.RUNNING_LOCK
-
-允许应用获取运行锁，保证应用在后台的持续运行。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：7
-
-## ohos.permission.SET_WALLPAPER
-
-允许应用设置壁纸。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：7
-
 ## ohos.permission.ACCESS_CERT_MANAGER
 
 允许应用进行查询证书及私有凭据等操作。
@@ -312,21 +292,11 @@
 
 **起始版本**：9
 
-## ohos.permission.hsdr.HSDR_ACCESS
-
-允许应用访问安全检测与响应框架。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：10
-
 ## ohos.permission.RUN_DYN_CODE
 
 允许系统方舟运行时引擎在受限模式下执行动态下发的方舟字节码。
 
-该权限相关的API均为系统API，仅部分特定系统应用可申请该权限。 
+该权限相关的API均为系统API，仅部分特定系统应用可申请该权限。
 
 **权限级别**：normal
 
@@ -341,6 +311,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable | SmartLock
 
 **起始版本**：11
 
@@ -378,9 +350,13 @@
 
 允许应用访问导航信息服务。
 
+获取该权限后，应用可设置导航信息、处理其他应用发送的导航指令等。
+
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -405,6 +381,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -492,6 +470,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：General
+
 **起始版本**：20
 
 ## ohos.permission.kernel.NET_RAW
@@ -563,9 +543,11 @@
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：PC/2in1
+**支持设备**：PC/2in1 | Tablet
 
 **起始版本**：20
+
+**变更信息：** API 20-22，该权限仅支持在PC/2in1设备上申请；从API 23 开始，增加支持在平板上申请。
 
 ## ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN
 
@@ -592,5 +574,173 @@
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：PC/2in1
+
+**起始版本**：20
+
+## ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK
+
+允许应用使能超时息屏不锁屏功能。
+
+设备超时息屏后默认锁屏，获取该权限后，应用超时息屏后，不进入锁屏界面。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：22
+
+## ohos.permission.LOCK_WINDOW_CURSOR
+
+允许应用在窗口获焦时锁定鼠标光标。
+
+获取该权限后，应用可以在窗口获焦时锁定鼠标光标，控制鼠标光标不超过指定窗口区域，同时可控制光标是否跟随移动，失焦之后自动取消绑定。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：22
+
+## ohos.permission.CUSTOMIZE_MENU_ICON
+
+允许应用在“文件管理”的右键菜单中配置自定义图标。
+
+获取该权限后，应用可在右键菜单中配置自定义图标，帮助用户识别并拉起本应用。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：23
+
+## ohos.permission.kernel.EXEMPT_ANONYMOUS_EXECUTABLE_MEMORY
+
+允许声明匿名可执行内存。
+
+仅用于二进制程序声明匿名可执行内存。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：23
+
+## ohos.permission.INHERIT_PARENT_PERMISSION
+
+允许子进程继承父进程的权限。
+
+仅用于二进制程序继承父进程的权限。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：23
+
+## ohos.permission.GET_DONOTDISTURB_STATE
+
+允许应用获取系统的免打扰状态。
+
+获取该权限后，应用可通过接口查询系统是否处于免打扰状态。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：23
+
+## ohos.permission.ALLOW_COREDUMP
+
+允许系统将应用进程的内存转储到应用沙箱。
+
+应用获取该权限后，表示应用允许系统将本应用的内存，存储到应用沙箱中。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：2in1
+
+**起始版本**：23
+
+## ohos.permission.HDR_BRIGHTNESS
+
+允许应用使用HDR提亮能力。
+
+获取该权限后，应用可为组件内容添加HDR提亮效果。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
+允许应用查询ObjectEditorExtensionAbility信息和拉起ObjectEditorExtensionAbility组件。
+
+获取该权限后，应用可以查询当前可插入的嵌入内容类型，并编辑该类型的内容。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24
+
+## ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+允许应用查询卷加解密状态。
+
+获取该权限后，应用可获取卷加解密状态、订阅卷加解密状态变化的系统公共事件等。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.STYLUS_FRAME_BOOST
+
+允许应用使用手写笔跟手性的增强接口。
+
+获取该权限后，应用可以优化手写效果跟手性，提升应用中使用手写笔书写场景的跟手性体验。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.GET_ENTERPRISE_CONFIG
+
+允许应用获取行业定制配置文件。
+
+行业定制配置文件中，包括用户壁纸、浏览器策略等配置文件。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20

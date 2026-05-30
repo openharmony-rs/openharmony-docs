@@ -1,10 +1,10 @@
 # Polyline
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 折线绘制组件。
 
@@ -12,7 +12,7 @@
 >
 >  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
+>  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 
 ## 子组件
@@ -24,6 +24,8 @@
 
 Polyline(options?: PolylineOptions)
 
+用于绘制折线的构造函数。 
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -32,7 +34,7 @@ Polyline(options?: PolylineOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [PolylineOptions](ts-drawing-components-polyline.md#polylineoptions18对象说明) | 否 | Polyline绘制区域。<br/>异常值undefined和null按照无效值处理。|
+| options | [PolylineOptions](ts-drawing-components-polyline.md#polylineoptions18对象说明) | 否 | Polyline绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
 
 ## PolylineOptions<sup>18+</sup>对象说明
 
@@ -45,6 +47,8 @@ Polyline(options?: PolylineOptions)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +95,7 @@ fill(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：Color.Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
 
 ### fillOpacity
 
@@ -127,7 +131,7 @@ stroke(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。 <br/>异常值undefined和null按照默认值处理，NaN和Infinity按照Color.Black处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
 
 ### strokeDashArray
 
@@ -145,13 +149,13 @@ strokeDashArray(value: Array&lt;any&gt;)
 
 | 参数名 | 类型             | 必填 | 说明                      |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | 是   | 线条间隙。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。|
+| value  | Array&lt;any&gt; | 是   | 定义Polyline轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
 
 ### strokeDashOffset
 
 strokeDashOffset(value: number | string)
 
-设置线条绘制起点的偏移量，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+设置线条绘制起点的偏移量，设置正值向左边偏移，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -271,7 +275,7 @@ antiAlias(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照默认值处理。|
+| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照false处理。|
 
 ## 示例
 
@@ -323,17 +327,17 @@ struct PolylineTypeExample {
   build() {
     Column({ space: 10 }) {
       // 在 100 * 100 的矩形框中绘制一段折线，起点(0, 0)，经过(20,60)，到达终点(100, 100)
-      Polyline({ width: '100', height: '100' })//使用string类型
+      Polyline({ width: '100', height: '100' }) // 使用string类型
         .points([[0, 0], [20, 60], [100, 100]])
         .fillOpacity(0)
         .stroke(Color.Blue)
         .strokeWidth(3)
-      Polyline({ width: 100, height: 100 })// 使用number类型
+      Polyline({ width: 100, height: 100 }) // 使用number类型
         .points([[0, 0], [20, 60], [100, 100]])
         .fillOpacity(0)
         .stroke(Color.Blue)
         .strokeWidth(3)
-      Polyline({ width: $r('app.string.PolylineWidth'), height: $r('app.string.PolylineHeight') })// 使用Resource类型，需用户自定义
+      Polyline({ width: $r('app.string.PolylineWidth'), height: $r('app.string.PolylineHeight') }) // 使用Resource类型，需用户自定义
         .points([[0, 0], [20, 60], [100, 100]])
         .fillOpacity(0)
         .stroke(Color.Blue)

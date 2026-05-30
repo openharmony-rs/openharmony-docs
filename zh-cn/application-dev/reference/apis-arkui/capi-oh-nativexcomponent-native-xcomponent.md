@@ -1,4 +1,10 @@
 # OH_NativeXComponent Native XComponent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @dutie123-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 

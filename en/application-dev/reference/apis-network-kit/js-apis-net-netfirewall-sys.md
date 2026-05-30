@@ -17,7 +17,7 @@ The **netFirewall** module implements the firewall query functionality. It allow
 ## Modules to Import
 
 ```ts
-import netfirewall from '@ohos.net.netFirewall';
+import { netFirewall } from '@kit.NetworkKit';
 ```
 
 ## netFirewall.getInterceptedRecords
@@ -36,7 +36,7 @@ Obtains interception records based on the specified user ID. You need to specify
 
 | Name      | Type                                                    | Mandatory| Description                                        |
 | ------------ | ------------------------------------------------------- | ---- | -------------------------------------------- |
-| userId       | number                                                  | Yes  | Existing user ID.|
+| userId       | number                                                  | Yes  | User ID. The value must be an existing user ID in the system.|
 | requestParam | [RequestParam](js-apis-net-netfirewall.md#requestparam) | Yes  | Query parameter.                                  |
 
 **Return value**

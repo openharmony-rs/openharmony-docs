@@ -146,4 +146,4 @@ HiAppEvent数据处理者lib库为HiAppEvent事件处理者提供事件处理能
 
 ## 参考
 
-如果您想了解更多关于HiAppEvent特性的源码及使用信息，请参考[HiAppEvent代码仓](https://gitee.com/openharmony/hiviewdfx_hiappevent)。
+如果您想了解更多关于HiAppEvent特性的源码及使用信息，请参考[HiAppEvent代码仓](https://gitcode.com/openharmony/hiviewdfx_hiappevent)。

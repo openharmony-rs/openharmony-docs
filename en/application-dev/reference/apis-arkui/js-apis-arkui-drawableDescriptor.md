@@ -1,30 +1,75 @@
 # @ohos.arkui.drawableDescriptor (DrawableDescriptor)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **DrawableDescriptor** module provides APIs for obtaining **pixelMap** objects, including the foreground, background, mask, and layered icons.
+This module provides capabilities for layered icon composition (foreground, background, mask), animated image control, and basic image processing.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 
 ## Modules to Import
 
 ```ts
-import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
+import {
+  DrawableDescriptor,
+  LayeredDrawableDescriptor,
+  AnimatedDrawableDescriptor,
+  AnimationOptions,
+  AnimationController,
+  PictureDrawableDescriptor,
+  HdrCompositionConfig
+} from '@kit.ArkUI';
 ```
+## DrawableDescriptorLoadedResult<sup>21+</sup>
 
+Represents the result of loading an image resource or URI.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name     | Type   | Read-Only| Optional | Description             |
+| ---------- | ------ | -----| ----|------------------------ |
+| imageWidth   | number | No| No| Image width.<br>Unit: px.|
+| imageHeight | number | No| No| Image height.<br>Unit: px.|
+
+**Example**
+
+```ts
+import { AnimatedDrawableDescriptor, AnimationOptions, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
+
+let options: AnimationOptions = { duration: 2000, iterations: 1 };
+let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
+try {
+    // You can preload animated image resources into the memory.
+    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
+    console.info(`load result = ${JSON.stringify(result)}`)
+} catch(e) {
+    console.error("load failed")
+}
+```
 ## DrawableDescriptor
 
-Resources in PNG, JPG, BMP, SVG, GIF, WEBP, ASTC, and SUT formats are supported.
+Represents the base class providing overridable methods for [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) acquisition and image resource loading.
 
 ### getPixelMap
 
 getPixelMap(): image.PixelMap
 
-Obtains this **pixelMap** object.
+Obtains this **PixelMap** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,22 +77,185 @@ Obtains this **pixelMap** object.
 
 | Type                                      | Description      |
 | ---------------------------------------- | -------- |
-| [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | **PixelMap** object.|
+| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | **PixelMap** object.|
+
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 **Example**
-  ```ts
-import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI'
-let resManager = this.getUIContext().getHostContext()?.resourceManager
-let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
-    .id)) as DrawableDescriptor;
-let pixmapNew: object = pixmap.getPixelMap()
-  ```
 
-Creates a **DrawableDescriptor** object when the passed resource ID or name belongs to a common image.
+For details, see [LayeredDrawableDescriptor](#layereddrawabledescriptor).
+
+### loadSync<sup>21+</sup>
+
+loadSync(): DrawableDescriptorLoadedResult
+
+Synchronously loads the image resource and returns the loading result.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                                        | Description                |
+| ------------------------------------------------------------ | -------------------- |
+| [DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21) | Image resource loading result.|
+
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111001   | resource loading failed. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
+
+```ts
+import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult, AnimationOptions } from '@kit.ArkUI';
+
+let options: AnimationOptions = { duration: 2000, iterations: 1 };
+let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
+try {
+    // You can preload animated image resources into the memory.
+    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
+    console.info(`load result = ${JSON.stringify(result)}`)
+} catch(e) {
+    console.error("load failed")
+}
+```
+
+### load<sup>21+</sup>
+
+load(): Promise\<DrawableDescriptorLoadedResult>
+
+Asynchronously loads the image resource and returns the loading result. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                                        | Description                |
+| ------------------------------------------------------------ | -------------------- |
+| Promise\<[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)> | Image resource loading result.|
+
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111001   | resource loading failed. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
+
+```ts
+import {
+  AnimatedDrawableDescriptor,
+  DrawableDescriptor,
+  DrawableDescriptorLoadedResult,
+  AnimationOptions
+} from '@kit.ArkUI';
+
+let options: AnimationOptions = { duration: 2000, iterations: 1 };
+let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
+drawable.load().then((result: DrawableDescriptorLoadedResult) => {
+  console.info(`load result = ${JSON.stringify(result)}`)
+}).catch(() => {
+  console.info(`load failed`)
+})
+```
+
+### release
+
+release(): void
+
+Releases the resource held by **DrawableDescriptor**. After the **release** API is called, the object becomes unavailable. In this case, if you call APIs such as [getPixelMap](#getpixelmap), [getForeground](#getforeground), [getBackground](#getbackground), [getMask](#getmask), [loadSync](#loadsync21), and [load](#load21) again, error code 111002 will be thrown. No crash occurs when the **release** API is called repeatedly.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Example**
+
+```ts
+import { DrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private resManager = this.getUIContext().getHostContext()?.resourceManager;
+  // Replace $r('app.media.startIcon') with the image resource file you use.
+  private drawable: DrawableDescriptor | undefined =
+    this.resManager?.getDrawableDescriptor($r('app.media.startIcon').id);
+
+  build() {
+    Column() {
+      Button('release')
+        .onClick(() => {
+          this.drawable?.release()
+        })
+      Button('isReleased')
+        .onClick(() => {
+          let released = this.drawable?.isReleased()
+          console.info(`isReleased = ${released}`)
+        })
+    }
+  }
+}
+```
+
+### isReleased
+
+isReleased(): boolean
+
+Checks whether **DrawableDescriptor** is released. If **true** is returned, the object has been released. In this case, calling APIs such as [getPixelMap](#getpixelmap), [getForeground](#getforeground), [getBackground](#getbackground), [getMask](#getmask), [loadSync](#loadsync21), and [load](#load21) will throw error code 111002. If **false** is returned, the object has not been released and can be used normally.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type   | Description                           |
+| ------- | ------------------------------- |
+| boolean | Whether **DrawableDescriptor** is released. The value **true** indicates that the object is released, and **false** indicates that the object is not released.|
+
+### invalidate
+
+invalidate(): void
+
+Redraws **DrawableDescriptor**. Currently, this API is supported for the [PictureDrawableDescriptor](#picturedrawabledescriptor) type, and does not take effect for other **DrawableDescriptor** subtypes. If no component is bound to **DrawableDescriptor**, no operation is performed.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
-Implements a **PixelMapDrawableDescriptor** object , which can be created by passing in a **pixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
+Implements a **PixelMapDrawableDescriptor** object, which can be created by passing in a **PixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
 
 ### constructor<sup>12+</sup>
 
@@ -57,14 +265,61 @@ A constructor used to create a **PixelMapDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)  | No| **PixelMap** image data.|
+| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | No| **PixelMap** image data.|
 
+### constructor
+
+constructor(src?: image.PixelMap | ResourceStr)
+
+A constructor used to create a **PixelMapDrawableDescriptor** object through the PixelMap type or **ResourceStr**.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type             | Mandatory | Description                                      |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | No| **PixelMap** image data. You can use application resources, system resources, sandbox paths (file://\<bundleName\>/\<sandboxPath\>), and Base64 strings to create **PixelMapDrawableDescriptor** objects.|
+
+**Example**
+
+The following is the sample code for creating a **PixelMapDrawableDescriptor** object using **ResourceStr**:
+
+```ts
+// xxx.ets
+import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PixelMapDrawableDescriptorExample {
+  // Create a PixelMapDrawableDescriptor object using Resource.
+  // Replace $r('app.media.icon') with the image resource file you use.
+  @State drawable: DrawableDescriptor = new PixelMapDrawableDescriptor($r('app.media.icon'))
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+        .margin({ bottom: 20 })
+    }
+  }
+}
+```
 
 ## LayeredDrawableDescriptor
 
@@ -82,83 +337,88 @@ The **drawable.json** file is located under **entry/src/main/resources/base/medi
 }
 ```
 
-**Example** 
+**Example**
 
-1. Create a **LayeredDrawableDescriptor** object from a JSON file.
+This example creates a **LayeredDrawableDescriptor** object using a JSON file.
 
-    ```ts
-    // xxx.ets
-    import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
+```ts
+// xxx.ets
+import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
 
-    @Entry
-    @Component
-    struct Index {
-      private resManager = this.getUIContext().getHostContext()?.resourceManager;
- 
-      build() {
-        Row() {
-          Column() {
-            Image((this.resManager?.getDrawableDescriptor($r('app.media.drawable').id) as LayeredDrawableDescriptor))
-            Image(((this.resManager?.getDrawableDescriptor($r('app.media.drawable')
-            .id) as LayeredDrawableDescriptor).getForeground()).getPixelMap())
-          }.height('50%')
-        }.width('50%')
-      }
-    }
-    ```
-2. Creates a **LayeredDrawableDescriptor** object using **PixelMapDrawableDescriptor**.
-   
-    ```ts
-    import { DrawableDescriptor, LayeredDrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
-    import { image } from '@kit.ImageKit';
+@Entry
+@Component
+struct Index {
+  private resManager = this.getUIContext().getHostContext()?.resourceManager;
+  // Replace $r('app.media.drawable') with the image resource file you use.
+  private layeredDrawableDescriptor: DrawableDescriptor | undefined =
+    this.resManager?.getDrawableDescriptor($r('app.media.drawable').id);
 
-    @Entry
-    @Component
-    struct Index {
-      @State fore1: image.PixelMap | undefined = undefined;
-      @State back1: image.PixelMap | undefined = undefined;
+  build() {
+    Row() {
+      Column() {
+        Image((this.layeredDrawableDescriptor instanceof LayeredDrawableDescriptor) ?
+          this.layeredDrawableDescriptor : undefined)
+        Image((this.layeredDrawableDescriptor instanceof LayeredDrawableDescriptor) ?
+          this.layeredDrawableDescriptor?.getForeground()?.getPixelMap() : undefined)
+      }.height('50%')
+    }.width('50%')
+  }
+}
+```
 
-      @State foregroundDraw:DrawableDescriptor|undefined=undefined;
-      @State backgroundDraw:DrawableDescriptor|undefined=undefined;
-      @State maskDraw:DrawableDescriptor|undefined=undefined;
-      @State maskPixel: image.PixelMap | undefined = undefined;
-      @State draw : LayeredDrawableDescriptor | undefined = undefined;
-      async aboutToAppear() {
-        this.fore1 = await this.getPixmapFromMedia($r('app.media.foreground'));
-        this.back1 = await this.getPixmapFromMedia($r('app.media.background'));
-        this.maskPixel = await this.getPixmapFromMedia($r('app.media.ohos_icon_mask'));
-        // Create a LayeredDrawableDescriptor object using PixelMapDrawableDescriptor.
-        this.foregroundDraw = new PixelMapDrawableDescriptor(this.fore1);
-        this.backgroundDraw = new PixelMapDrawableDescriptor(this.back1);
-        this.maskDraw = new PixelMapDrawableDescriptor(this.maskPixel);
+This example creates a **LayeredDrawableDescriptor** object using a **PixelMapDrawableDescriptor** object.
 
-        this.draw = new LayeredDrawableDescriptor(this.foregroundDraw,this.backgroundDraw,this.maskDraw);
-      }
-      build() {
-        Row() {
-          Column() {
-              Image(this.draw)
-                .width(300)
-                .height(300)
-          }.height('100%').justifyContent(FlexAlign.Center)
-        }.width('100%').height("100%").backgroundColor(Color.Pink)
-      }
-      // Obtain pixelMap from a resource through the image framework based on the resource
-      private async getPixmapFromMedia(resource: Resource) {
-        let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-          bundleName: resource.bundleName,
-          moduleName: resource.moduleName,
-          id: resource.id
-        });
-        let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
-        let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-          desiredPixelFormat: image.PixelMapFormat.BGRA_8888
-        });
-        await imageSource.release();
-        return createPixelMap;
-      }
-    }
-    ```
+```ts
+import { DrawableDescriptor, LayeredDrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct Index {
+  @State fore1: image.PixelMap | undefined = undefined;
+  @State back1: image.PixelMap | undefined = undefined;
+
+  @State foregroundDraw: DrawableDescriptor | undefined = undefined;
+  @State backgroundDraw: DrawableDescriptor | undefined = undefined;
+  @State maskDraw: DrawableDescriptor | undefined = undefined;
+  @State maskPixel: image.PixelMap | undefined = undefined;
+  @State draw: LayeredDrawableDescriptor | undefined = undefined;
+
+  async aboutToAppear() {
+    // Replace $r('app.media.foreground') with the image resource file you use.
+    this.fore1 = await this.getPixmapFromMedia($r('app.media.foreground'));
+    // Replace $r('app.media.background') with the image resource file you use.
+    this.back1 = await this.getPixmapFromMedia($r('app.media.background'));
+    // Replace $r('app.media.ohos_icon_mask') with the image resource file you use.
+    this.maskPixel = await this.getPixmapFromMedia($r('app.media.ohos_icon_mask'));
+    // Create a LayeredDrawableDescriptor object using PixelMapDrawableDescriptor.
+    this.foregroundDraw = new PixelMapDrawableDescriptor(this.fore1);
+    this.backgroundDraw = new PixelMapDrawableDescriptor(this.back1);
+    this.maskDraw = new PixelMapDrawableDescriptor(this.maskPixel);
+    this.draw = new LayeredDrawableDescriptor(this.foregroundDraw,this.backgroundDraw,this.maskDraw);
+  }
+
+  build() {
+    Row() {
+      Column() {
+          Image(this.draw)
+            .width(300)
+            .height(300)
+      }.height('100%').justifyContent(FlexAlign.Center)
+    }.width('100%').height("100%").backgroundColor(Color.Pink)
+  }
+  // Obtain pixelMap from a resource through the image framework based on the resource.
+  private async getPixmapFromMedia(resource: Resource) {
+    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
+    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+      desiredPixelFormat: image.PixelMapFormat.BGRA_8888
+    });
+    await imageSource.release();
+    return createPixelMap;
+  }
+}
+```
 
 ### constructor<sup>12+</sup>
 
@@ -167,6 +427,8 @@ constructor(foreground?: DrawableDescriptor, background?: DrawableDescriptor, ma
 A constructor used to create a **LayeredDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,6 +447,8 @@ Obtains the **DrawableDescriptor** object of the foreground.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -193,14 +457,56 @@ Obtains the **DrawableDescriptor** object of the foreground.
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | **DrawableDescriptor** object.|
 
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
+
 **Example**
-  ```ts
+```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
-let resManager = this.getUIContext().getHostContext()?.resourceManager;
-let drawable: LayeredDrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.drawable')
-    .id)) as LayeredDrawableDescriptor;
-let drawableNew: object = drawable.getForeground();
-  ```
+
+@Entry
+@Component
+struct Index {
+  @State drawableDescriptor: DrawableDescriptor | undefined = undefined;
+
+  private getForeground(): DrawableDescriptor | undefined {
+    let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // Replace $r('app.media.drawable') with the image resource file you use.
+    let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+    if (!drawable) {
+      return undefined;
+    }
+    if (drawable instanceof LayeredDrawableDescriptor) {
+      let layeredDrawableDescriptor = (drawable as LayeredDrawableDescriptor).getForeground();
+      return layeredDrawableDescriptor;
+    }
+    return undefined;
+  }
+
+  aboutToAppear(): void {
+    this.drawableDescriptor = this.getForeground();
+  }
+
+  build() {
+    RelativeContainer() {
+      if (this.drawableDescriptor) {
+        Image(this.drawableDescriptor)
+          .width(100)
+          .height(100)
+          .borderWidth(1)
+          .backgroundColor(Color.Green);
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ### getBackground
 
@@ -210,6 +516,8 @@ Obtains the **DrawableDescriptor** object of the background.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -218,14 +526,51 @@ Obtains the **DrawableDescriptor** object of the background.
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | **DrawableDescriptor** object.|
 
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
+
 **Example**
-  ```ts
+```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
-let resManager = this.getUIContext().getHostContext()?.resourceManager;
-let drawable: LayeredDrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.drawable')
-    .id)) as LayeredDrawableDescriptor;
-let drawableNew: object = drawable.getBackground();
-  ```
+
+@Entry
+@Component
+struct Index {
+  @State drawableDescriptor: DrawableDescriptor | undefined = undefined;
+
+  private getBackground(): DrawableDescriptor | undefined {
+    let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // Replace $r('app.media.drawable') with the image resource file you use.
+    let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+    if (!drawable) {
+      return undefined;
+    }
+    let layeredDrawableDescriptor = (drawable as LayeredDrawableDescriptor).getBackground();
+    return layeredDrawableDescriptor;
+  }
+
+  aboutToAppear(): void {
+    this.drawableDescriptor = this.getBackground();
+  }
+
+  build() {
+    RelativeContainer() {
+      if (this.drawableDescriptor) {
+        Image(this.drawableDescriptor)
+          .width(100)
+          .height(100)
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ### getMask
 
@@ -235,6 +580,8 @@ Obtains the **DrawableDescriptor** object of the mask.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -243,14 +590,52 @@ Obtains the **DrawableDescriptor** object of the mask.
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | **DrawableDescriptor** object.|
 
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
+
 **Example**
-  ```ts
+```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
-let resManager = this.getUIContext().getHostContext()?.resourceManager;
-let drawable: LayeredDrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.drawable')
-    .id)) as LayeredDrawableDescriptor;
-let drawableNew: object = drawable.getMask();
-  ```
+
+@Entry
+@Component
+struct Index {
+  @State drawableDescriptor: DrawableDescriptor | undefined = undefined;
+
+  private getMask(): DrawableDescriptor | undefined {
+    let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // Replace $r('app.media.drawable') with the image resource file you use.
+    let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+    if (!drawable) {
+      return undefined;
+    }
+    let layeredDrawableDescriptor = (drawable as LayeredDrawableDescriptor).getMask();
+    return layeredDrawableDescriptor;
+  }
+
+  aboutToAppear(): void {
+    this.drawableDescriptor = this.getMask();
+  }
+
+  build() {
+    RelativeContainer() {
+      if (this.drawableDescriptor) {
+        Image(this.drawableDescriptor)
+          .width(100)
+          .height(100)
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### getMaskClipPath
 
 static getMaskClipPath(): string
@@ -258,6 +643,8 @@ static getMaskClipPath(): string
 Obtains the built-in clipping path parameters of the system. It is a static method of **LayeredDrawableDescriptor**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -269,7 +656,7 @@ Obtains the built-in clipping path parameters of the system. It is a static meth
 
 **Example**
 
-  ```ts
+```ts
 // xxx.ets
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
 
@@ -279,6 +666,7 @@ struct Index {
   build() {
     Row() {
       Column() {
+        // Replace $r('app.media.icon') with the image resource file you use.
         Image($r('app.media.icon'))
           .width('200px').height('200px')
           .clipShape(new Path({commands:LayeredDrawableDescriptor.getMaskClipPath()}))
@@ -290,45 +678,17 @@ struct Index {
     }.width('100%')
   }
 }
-  ```
-
-## AnimationOptions<sup>12+</sup>
-
-Provides the playback options of the animation with a pixel map image array in an **Image** component.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name     | Type   | Mandatory | Description                                   |
-| ---------- | ------ | -----| --------------------------------------- |
-| duration   | number | No  | Total playback duration for the pixel map image array. The default value is 1 second per image.<br> Value range: [0, +∞).     |
-| iterations | number | No  | Number of times that the pixel map image array is played. The default value is **1**. The value **-1** indicates infinite playback, and a value greater than 0 represents the number of playback times.|
-
-**Example**
-
-```ts
-import { AnimationOptions } from '@kit.ArkUI';
-@Entry
-@Component
-struct Example {
-  options: AnimationOptions = { duration: 2000, iterations: 1 };
-  build() {
-  }
-}
 ```
 
-## AnimatedDrawableDescriptor<sup>12+</sup>
+### setBlendMode<sup>23+</sup>
 
-Implements an **AnimatedDrawableDescriptor** object, which can be passed in when the **Image** component is used to play the pixel map image array. Inherits from [DrawableDescriptor](#drawabledescriptor).
+setBlendMode(mode: drawing.BlendMode): void
 
-### constructor<sup>12+</sup>
+Sets the blend mode of **LayeredDrawableDescriptor**. If this API is called for multiple times on the same **LayeredDrawableDescriptor** object, only the last call before the drawing completion takes effect. This API does not support dynamic switching. The default drawing order of **LayeredDrawableDescriptor** is background, mask, and foreground. After the blend mode is set, the drawing order changes to background, foreground, and mask. If the specified value is invalid, the default drawing order is used.
 
-constructor(pixelMaps: Array\<image.PixelMap>, options?: AnimationOptions)
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
-A constructor used to create an **AnimatedDrawableDescriptor** instance.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -336,8 +696,81 @@ A constructor used to create an **AnimatedDrawableDescriptor** instance.
 
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| pixelMaps | Array\<[image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7)>  | Yes  | **PixelMap** image data.|
-| options   | [AnimationOptions](#animationoptions12) | No  | Animation options.                              |
+| mode | [drawing.BlendMode](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)  | Yes  | Blend mode.|
+
+**Example**
+
+```ts
+import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { drawing } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State drawableDescriptor: DrawableDescriptor | undefined = undefined;
+
+  private setBlendMode(blendMode: drawing.BlendMode): DrawableDescriptor | undefined {
+    let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // Replace $r('app.media.drawable') with the layered icon file you use.
+    let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+    if (!drawable) {
+      return undefined;
+    }
+    let layeredDrawableDescriptor = drawable as LayeredDrawableDescriptor;
+    layeredDrawableDescriptor.setBlendMode(blendMode);
+    return layeredDrawableDescriptor;
+  }
+
+  aboutToAppear(): void {
+    this.drawableDescriptor = this.setBlendMode(drawing.BlendMode.SRC_OVER);
+  }
+
+  build() {
+    RelativeContainer() {
+      if (this.drawableDescriptor) {
+        Image(this.drawableDescriptor)
+          .width(100)
+          .height(100)
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## AnimationStopMode<sup>24+</sup>
+
+Enumerates the stop modes of an animation.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name     | **Value** | Description             |
+| ---------- | ---- |------------------------ |
+| FIRST_FRAME   | 0 | The animation returns to the first frame when it stops.|
+| LAST_FRAME | 1 | The animation stays at the last frame when it stops.|
+
+## AnimationOptions<sup>12+</sup>
+
+Provides the configuration options for animation playback, including the playback duration, number of playback times, and autoplay behavior.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
+| Name     | Type   | Read-Only| Optional | Description                                   |
+| :--------- | :----- | :----| :----| :-------------------------------------- |
+| duration   | number | No  | Yes | Total playback duration for the image sequence.<br>For **PixelMap** arrays, the default value is 1s per image. For local or application resources, the duration is determined by the playback delay embedded in the image resource.<br>Unit: ms.<br> Value range: [0, +∞).<br>Negative values are treated as the default value.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| iterations | number | No  | Yes|Number of playback times for the image sequence.<br>A value of **-1** indicates infinite playback, **0** indicates no playback, and a value greater than 0 represents the number of playback times.<br>The default value is **1**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| frameDurations<sup>21+</sup> | Array\<number> | No| Yes|Per-frame playback duration. The setting overrides **duration** if specified.<br>If **duration** and **frameDurations** are set, **duration** is ignored.<br>If the value of **frameDurations** is inconsistent with the image count, animation timing distributes across the total duration.<br>Unit: ms.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
+| autoPlay<sup>21+</sup> | boolean | No | Yes|Whether to enable autoplay.<br> **true** to enable, **false** otherwise.<br>The default value is **true**.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
+| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | No | Yes|Sets the stop mode for an animation.<br> The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the animation returns to the first frame when it stops.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
 
 **Example**
 
@@ -348,33 +781,574 @@ import { image } from '@kit.ImageKit';
 @Entry
 @Component
 struct Example {
-  pixelmaps: Array<image.PixelMap>  = [];
-  options: AnimationOptions = {duration:1000, iterations:-1};
-  @State animated: AnimatedDrawableDescriptor  = new AnimatedDrawableDescriptor(this.pixelmaps, this.options);
-  async aboutToAppear() {
-    this.pixelmaps.push(await this.getPixmapFromMedia($r('app.media.icon')));
-    this.animated = new AnimatedDrawableDescriptor(this.pixelmaps, this.options);
+  pixelMaps: Array<image.PixelMap> = [];
+  // Configure animation options for an array of four images.
+  options: AnimationOptions = {
+    duration: 2000,
+    iterations: 1,
+    frameDurations: [20, 30, 40, 50],
+    autoPlay: true
+  };
+  @State animated?: DrawableDescriptor = undefined;
+
+  aboutToAppear() {
+    // Replace $r('app.media.png1') with the image resource file you use.
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png1')));
+     // Replace $r('app.media.png2') with the image resource file you use.
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png2')));
+     // Replace $r('app.media.png3') with the image resource file you use.
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png3')));
+     // Replace $r('app.media.png4') with the image resource file you use.
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png4')));
+    this.animated = new AnimatedDrawableDescriptor(this.pixelMaps, this.options);
   }
+
   build() {
     Column() {
       Row() {
         Image(this.animated)
+          .width(100)
+          .height(100)
       }
     }
   }
-  private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-      bundleName: resource.bundleName,
-      moduleName: resource.moduleName,
-      id: resource.id
-    });
+
+  private getPixmapFromMedia(resource: Resource) {
+    let unit8Array = this.getUIContext().getHostContext()?.resourceManager?.getMediaContentSync(resource.id);
     let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
-    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+    let pixelMap: image.PixelMap = imageSource.createPixelMapSync({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888
     });
-    await imageSource.release();
-    return createPixelMap;
+    imageSource.release();
+    return pixelMap;
   }
 }
+```
 
+## AnimatedDrawableDescriptor<sup>12+</sup>
+
+Defines a descriptor object used to play animated content (for example, **PixelMap** arrays or animated image resources) using the [Image](./arkui-ts/ts-basic-components-image.md) component. It inherits from [DrawableDescriptor](#drawabledescriptor).
+
+### constructor<sup>12+</sup>
+
+constructor(pixelMaps: Array\<image.PixelMap>, options?: AnimationOptions)
+
+A constructor used to create an **AnimatedDrawableDescriptor** object.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type             | Mandatory | Description                                      |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| pixelMaps | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Yes  | **PixelMap** image data.|
+| options   | [AnimationOptions](#animationoptions12) | No  | Animation options.                              |
+
+### constructor<sup>21+</sup>
+
+constructor(src: ResourceStr | Array\<image.PixelMap>, options?: AnimationOptions)
+
+A constructor used to create an **AnimatedDrawableDescriptor** object.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type             | Mandatory | Description                                      |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (file://\<bundleName>/\<sandboxPath>), and Base64 string.|
+| options   | [AnimationOptions](#animationoptions12) | No  | Animation playback configuration.|
+
+**Example**
+
+```ts
+import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+import { fileUri } from '@kit.CoreFileKit';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // Sandbox paths (file://xx) and application resources are supported.
+  @State animated1: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+  @State animated2: AnimatedDrawableDescriptor | undefined = undefined;
+
+  aboutToAppear() {
+    let files = this.getUIContext().getHostContext()?.filesDir
+    let originPath = files + "/flower.gif"
+    let resultPath = fileUri.getUriFromPath(originPath)
+    this.animated2 = new AnimatedDrawableDescriptor(resultPath, { iterations: -1 })
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.animated1).width(100).height(100)
+        Image(this.animated2).width(100).height(100)
+      }
+    }
+  }
+}
+```
+
+### getAnimationController<sup>21+</sup>
+
+getAnimationController(id?: string): AnimationController | undefined
+
+Obtains the animation controller for playback control.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| id     | string | No  | ID of the target component.<br>Optional when the [Image](./arkui-ts/ts-basic-components-image.md) component and **AnimatedDrawableDescriptor** object have a 1:1 relationship.<br>Required when the same **AnimatedDrawableDescriptor** object is bound to multiple [Image](./arkui-ts/ts-basic-components-image.md) components (in this case, you must ensure the ID uniqueness).<br>This rule is based on the design principle of the animation system: Animation data can be shared across multiple components, but each component's animation runs independently. Correspondingly, an **AnimationController** object maintains a strict 1:1 relationship with a component, meaning one component is paired with exactly one **AnimationController** object.<br>In addition, [AnimatedDrawableDescriptor](#animateddrawabledescriptor12) supports the feature for automatically pausing animation playback when the bound component is not visible (for example, when the component is scrolled out of the screen or hidden). For specific implementation details, see [onVisibleAreaChange](./arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange).|
+
+**Return value**
+
+| Type            | Description                              |
+| ---------------- | -----------------------------------|
+| [AnimationController](#animationcontroller21) \| undefined | Animation controller object.|
+
+**Example**
+
+Scenario 1: 1:1 relationship between the [Image](./arkui-ts/ts-basic-components-image.md) component and **AnimatedDrawableDescriptor** object
+
+```ts
+import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // Replace $r('app.media.gif') with the image resource file you use.
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+
+  build() {
+    Column() {
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .borderColor(Color.Red)
+        .borderWidth(1)
+      Button("start")
+        .onClick(() => {
+          let controller = this.animated.getAnimationController()
+          controller?.start()
+        })
+      Button("stop")
+        .onClick(() => {
+          let controller = this.animated.getAnimationController()
+          controller?.stop()
+        })
+    }
+  }
+}
+```
+
+Scenario 2: 1:*N* relationship between the [Image](./arkui-ts/ts-basic-components-image.md) component and **AnimatedDrawableDescriptor** object
+
+```ts
+import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // Replace $r('app.media.gif') with the image resource file you use.
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+
+  build() {
+    Column() {
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .borderColor(Color.Red)
+        .borderWidth(1)
+        .id("Component1")
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .borderColor(Color.Red)
+        .borderWidth(1)
+      Button("start")
+        .onClick(() => {
+          let controller = this.animated.getAnimationController("Component1")
+          controller?.start()
+        })
+      Button("stop")
+        .onClick(() => {
+          let controller = this.animated.getAnimationController("Component1")
+          controller?.stop()
+        })
+    }
+  }
+}
+```
+
+## AnimationController<sup>21+</sup>
+
+Implements an animation controller object. It provides APIs for playing, stopping, resuming, and pausing animations, as well as querying the status.
+
+### start<sup>21+</sup>
+
+start(): void
+
+Starts playback from the first frame.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Example**
+
+```ts
+import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // Replace $r('app.media.gif') with the image resource file you use.
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+
+  build() {
+    Column() {
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .onClick(() => {
+          let controller = this.animated.getAnimationController()
+          // Start playback.
+          controller?.start()
+        })
+    }
+  }
+}
+```
+
+### stop<sup>21+</sup>
+
+stop(): void
+
+Stops playback and resets to the first frame.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Example**
+
+```ts
+import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // Replace $r('app.media.gif') with the image resource file you use.
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+
+  build() {
+    Column() {
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .onClick(() => {
+          let controller = this.animated.getAnimationController()
+          // Stop playback and reset to the first frame.
+          controller?.stop()
+        })
+    }
+  }
+}
+```
+
+### resume<sup>21+</sup>
+
+resume(): void
+
+Resumes playback from the current frame.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Example**
+
+```ts
+import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // Replace $r('app.media.gif') with the image resource file you use.
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+
+  build() {
+    Column() {
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .onClick(() => {
+          let controller = this.animated.getAnimationController()
+          // Start playback from the current frame when the animated image is paused or stopped.
+          controller?.resume()
+        })
+    }
+  }
+}
+```
+
+### pause<sup>21+</sup>
+
+pause(): void
+
+Pauses playback on the current frame.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Example**
+
+```ts
+import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // Replace $r('app.media.gif') with the image resource file you use.
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+
+  build() {
+    Column() {
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .onClick(() => {
+          let controller = this.animated.getAnimationController()
+          // Pause playback on the current frame.
+          controller?.pause()
+        })
+    }
+  }
+}
+```
+
+### getStatus<sup>21+</sup>
+
+getStatus(): AnimationStatus
+
+Obtains the current animation playback status.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type            | Description                              |
+| ---------------- | -----------------------------------|
+| [AnimationStatus](./arkui-ts/ts-appendix-enums.md#animationstatus) | Current animation state: initial, running, paused, or stopped.|
+
+**Example**
+
+```ts
+import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example {
+  options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // Replace $r('app.media.gif') with the image resource file you use.
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+
+  statusToString(status: AnimationStatus): string {
+    switch (status) {
+      case AnimationStatus.Initial:
+        return "Initial"
+      case AnimationStatus.Running:
+        return "Running"
+      case AnimationStatus.Paused:
+        return "Paused"
+      case AnimationStatus.Stopped:
+        return "Stopped"
+      default:
+        return "Error"
+    }
+  }
+
+  build() {
+    Column() {
+      Image(this.animated)
+        .width(100)
+        .height(100)
+        .onClick(() => {
+          let controller = this.animated.getAnimationController()
+          // Obtain the current animation playback status.
+          let status = controller?.getStatus()
+          console.info(`animation status = ${this.statusToString(status)}`)
+        })
+    }
+  }
+}
+```
+
+## HdrCompositionConfig
+
+Provides HDR composition configuration.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| rect | [Rectangle](arkui-ts/ts-universal-attributes-touch-target.md#rectangle)| No| No| Rectangle area for HDR composition.|
+
+## PictureDrawableDescriptor
+
+Creates a **PictureDrawableDescriptor** object by passing a **Picture** object. This API inherits from [DrawableDescriptor](#drawabledescriptor).
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+### constructor
+
+constructor(src: image.Picture)
+
+A constructor used to create a **PictureDrawableDescriptor** object.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| src | image.[Picture](../apis-image-kit/arkts-apis-image-Picture.md) | Yes| **Picture** object for creating **PictureDrawableDescriptor**.|
+
+### setHdrComposition
+
+setHdrComposition(config: HdrCompositionConfig): void
+
+Sets HDR composition.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| config | [HdrCompositionConfig](#hdrcompositionconfig) | Yes| HDR composition configuration.|
+
+**Example**
+
+```ts
+import { PictureDrawableDescriptor } from '@ohos.arkui.drawableDescriptor';
+import { image } from '@kit.ImageKit';
+
+
+@Entry
+@Component
+struct PictureDrawableDescriptorInvalidateTest {
+  @State drawable: PictureDrawableDescriptor | undefined = undefined;
+
+  async createPictureDrawableDescriptor() {
+    let resMgr = this.getUIContext().getHostContext()?.resourceManager
+    if (resMgr) {
+      try {
+        // Replace $r('app.media.heic') with the image resource file you use.
+        let uint8buffer = resMgr.getMediaContentSync($r('app.media.heic').id)
+        let imageSource = image.createImageSource(uint8buffer.buffer)
+        // Configure decoding options and request to decode the GAINMAP and LHDR_GAINMAP auxiliary images for HDR composition.
+        let options: image.DecodingOptionsForPicture = {
+          desiredAuxiliaryPictures: [image.AuxiliaryPictureType.GAINMAP, image.AuxiliaryPictureType.LHDR_GAINMAP],
+          desiredPixelFormat: image.PixelMapFormat.NV12
+        }
+        let picture = await imageSource.createPicture(options)
+        let drawable = new PictureDrawableDescriptor(picture)
+        imageSource.release()
+        this.drawable = drawable
+      } catch (error) {
+        console.error(`get media content failed`)
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(300)
+        .height(225)
+        .borderColor(Color.Red)
+        .borderWidth(1)
+
+      Button("Create PictureDrawableDescriptor").onClick((event: ClickEvent) => {
+        this.createPictureDrawableDescriptor()
+      })
+
+      Button("Trigger Rebuild").onClick((event: ClickEvent) => {
+        // Set the HDR composition and specify the position and size of the rectangle area for composition.
+        this.drawable?.setHdrComposition({
+          rect: {
+            x: 200,
+            y: 200,
+            width: 300,
+            height: 300
+          }
+        })
+        this.drawable?.invalidate()
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```

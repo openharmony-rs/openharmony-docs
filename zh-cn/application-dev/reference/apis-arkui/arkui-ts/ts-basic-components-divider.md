@@ -4,13 +4,13 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-提供分隔线组件，分隔不同内容块/内容元素。
+提供分割线组件，分割不同内容块/内容元素。
 
 >  **说明：**
 >
->  该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  如果出现分割线粗细不一或者消失的问题，请参考[组件级像素取整常见问题](./ts-universal-attributes-pixelRoundForComponent.md#常见问题)。
 
@@ -22,7 +22,7 @@
 
 Divider()
 
-创建分隔线组件。
+创建分割线组件。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -76,6 +76,12 @@ strokeWidth(value: number | string)
 
 设置分割线的宽度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
+> **说明：**
+> - 分割线的宽度不支持百分比设置。
+> - 使用水平分割线时，strokeWidth控制高度，优先级低于通用属性[height](ts-universal-attributes-size.md#height)；使用垂直分割线时，strokeWidth控制宽度，优先级低于通用属性[width](ts-universal-attributes-size.md#width)。
+> - 超过通用属性设置大小时，按照通用属性进行裁切。
+> - 如果设备硬件存在1像素取整后分割线不显示问题，建议使用2像素。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -86,7 +92,7 @@ strokeWidth(value: number | string)
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string | 是   | 分割线宽度。<br/>默认值：1px。<br />非法值：按默认值处理 <br/>单位：vp<br/>**说明：**  <br>分割线的宽度不支持百分比设置。优先级低于[通用属性height](ts-universal-attributes-size.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
+| value  | number&nbsp;\|&nbsp;string | 是   | 分割线宽度。<br/>默认值：1px  <br />非法值：按默认值处理。 <br/>单位：vp |
 
 ### lineCap
 
@@ -112,7 +118,9 @@ lineCap(value: LineCapStyle)
 
 ## 示例
 
-定义了Divider的样式，如方向、颜色及宽度。
+### 示例1（定义Divider方向、颜色及宽度）
+
+该示例定义了Divider的样式，如方向、颜色及宽度。
 
 ```ts
 // xxx.ets
@@ -185,3 +193,42 @@ struct DividerExample {
 ```
 
 ![zh-cn_image_0000001174422926](figures/zh-cn_image_0000001174422926.png)
+
+### 示例2（定义Divider的lineCap样式）
+
+该示例定义了Divider的lineCap样式。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct DividerExample {
+  build() {
+    Column({space:30}) {
+      Text("LineCap:Butt")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Butt)
+
+      Text("LineCap:Round")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Round)
+
+      Text("LineCap:Square")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Square)
+
+    }.width('100%').padding({ top: 24 })
+  }
+}
+```
+
+![dividerLineCap.png](figures/dividerLineCap.png)

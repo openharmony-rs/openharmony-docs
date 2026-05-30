@@ -31,7 +31,7 @@ In addition, OpenHarmony provides a wide array of system components that can be 
 
 | Topic       | Development Scenario                                                  | Related Documentation                                                    |
 | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| About OpenHarmony| Getting familiar with OpenHarmony                                         | - [About OpenHarmony](https://gitee.com/openharmony)<br>- [Glossary](../glossary.md)|
+| About OpenHarmony| Getting familiar with OpenHarmony                                         | - [About OpenHarmony](https://gitcode.com/openharmony)<br>- [Glossary](../glossary.md)|
 | Development resources   | Preparing for your development                                          | - [Obtaining Source Code](get-code/sourcecode-acquire.md)<br>- [Obtaining Tools](get-code/gettools-acquire.md) |
 | Getting started       | Getting started with setup, build, burning, debugging, and running of OpenHarmony         | - [Getting Started](quick-start/Readme-EN.md) |
 | Basic capabilities   | Using basic capabilities of OpenHarmony                               | - [Kernel for Mini System](kernel/kernel-mini-overview.md)<br>- [Kernel for Small System](kernel/kernel-small-overview.md)<br>- [HDF](driver/driver-overview-foundation.md)<br>- [Compilation and Building Guide](subsystems/subsys-build-all.md)<br>- [Security Guidelines](security/security-guidelines-overall.md)<br>- [Privacy Protection](security/security-privacy-protection.md) |
@@ -44,7 +44,7 @@ In addition, OpenHarmony provides a wide array of system components that can be 
 
 | Topic| Development Scenario| Related Documentation|
 | -------- | -------- | -------- |
-| About OpenHarmony| Getting familiar with OpenHarmony| - [About OpenHarmony](https://gitee.com/openharmony)<br>- [Glossary](../glossary.md)|
+| About OpenHarmony| Getting familiar with OpenHarmony| - [About OpenHarmony](https://gitcode.com/openharmony)<br>- [Glossary](../glossary.md)|
 | Development resources| Preparing for your development| - [Obtaining Source Code](get-code/sourcecode-acquire.md)<br>- [Obtaining Tools](get-code/gettools-acquire.md) |
 | Getting started| Getting started with setup, build, burning, debugging, and running of OpenHarmony| - [Getting Started](quick-start/Readme-EN.md) |
 | Basic capabilities| Using basic capabilities of OpenHarmony| - [Kernel Development](kernel/kernel-standard-overview.md)<br>- [HDF](driver/driver-overview-foundation.md)<br>- [Compilation and Building Guide](subsystems/subsys-build-all.md)<br>- [Security Guidelines](security/security-guidelines-overall.md)<br>- [Privacy Protection](security/security-privacy-protection.md) |

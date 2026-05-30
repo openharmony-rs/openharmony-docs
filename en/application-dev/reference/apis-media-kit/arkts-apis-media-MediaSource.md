@@ -4,16 +4,14 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+The MediaSource class defines the media data information, which is from [createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreatemediasourcewithurl12).
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 12.
-
-The MediaSource class defines the media data information, which is from [createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreatemediasourcewithurl12).
-
-**System capability**: SystemCapability.Multimedia.Media.Core
 
 ## Modules to Import
 
@@ -51,7 +49,7 @@ Sets a MediaSourceLoader object, which is used to help the player request media 
 
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
-| resourceLoader | [MediaSourceLoader](arkts-apis-media-i.md#mediasourceloader18) | Yes  | MediaSourceLoader object used to obtain media data for the player.|
+| resourceLoader | [MediaSourceLoader](arkts-apis-media-i.md#mediasourceloader18) | Yes  | **MediaSourceLoader** object used to obtain media data for the player.|
 
 **Example**
 
@@ -65,7 +63,7 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 
 let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLoadingRequest) => {
-  console.log(`Opening resource: ${request.url}`);
+  console.info(`Opening resource: ${request.url}`);
   // Open the resource and return a unique handle, ensuring the mapping between the UUID and request.
   uuid += 1;
   requests.set(uuid, request);
@@ -73,12 +71,12 @@ let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLo
 };
 
 let sourceReadCallback: media.SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => {
-  console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+  console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
   // Check whether the UUID is valid and store the read request. Avoid blocking the request while pushing data and header information.
 };
 
 let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
-  console.log(`Closing resource with handle ${uuid}`);
+  console.info(`Closing resource with handle ${uuid}`);
   // Clear resources related to the current UUID.
   requests.remove(uuid);
 };
@@ -92,3 +90,37 @@ let resourceLoader: media.MediaSourceLoader = {
 
 mediaSource.setMediaResourceLoaderDelegate(resourceLoader);
 ```
+
+## enableOfflineCache<sup>23+</sup>
+
+enableOfflineCache(enable: boolean): void
+
+Sets whether to enable offline caching during video playback.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                |
+| -------- | -------- | ---- | -------------------- |
+| enable | boolean | Yes  | Whether to enable offline caching during video playback. **true** to enable, **false** otherwise.|
+
+## getID
+
+getID(): string
+
+Obtains the ID of a media source.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Return value**
+
+| Type                           | Description                                                        |
+| ------------------------------- | ------------------------------------------------------------ |
+| string | ID of the media source. If the operation fails, an empty string is returned.|

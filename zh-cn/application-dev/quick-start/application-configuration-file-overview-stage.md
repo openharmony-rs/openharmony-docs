@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 每个应用项目的代码目录下必须包含应用配置文件，这些配置文件会向编译工具、操作系统和应用市场提供应用的基本信息。
 
@@ -28,7 +28,7 @@
 [module.json5配置文件](module-configuration-file.md)包含以下内容：
 
 
-- Module的基本配置信息，包含Module名称、类型、描述、支持的设备类型等基本信息。
+- [Module](./application-package-overview.md#module类型)的基本配置信息，包含Module名称、类型、描述、支持的设备类型等基本信息。
 
 - 应用组件信息，包含[UIAbility组件](module-configuration-file.md#abilities标签)和[ExtensionAbility组件](module-configuration-file.md#extensionabilities标签)的描述信息。
 

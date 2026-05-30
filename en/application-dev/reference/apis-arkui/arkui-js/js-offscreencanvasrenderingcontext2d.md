@@ -1,4 +1,10 @@
 # OffscreenCanvasRenderingContext2D
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -32,6 +38,7 @@ export default {
     var offscreen = new OffscreenCanvas(360, 500);
     var offCanvas2 = offscreen.getContext("2d");
     var img = new Image();
+    // Replace 'common/images/flower.jpg' with the resource file you use.
     img.src = 'common/images/flower.jpg';
     offCanvas2.drawImage(img, 0, 0, 100, 100);
     offCanvas2.filter = 'blur(5px)';
@@ -83,14 +90,14 @@ Checks whether a specified point is in the path area.
 **Parameters**
 | Name | Type  | Mandatory  | Description                           |
 | ---- | ------ | ---- | ----------------------------- |
-| path | Path2D | No   | Path used for checking. If this parameter is not set, the current path is used.|
+| path | Path2D | No    | Path used for checking. If this parameter is not set, the current path is used.|
 | x    | number | Yes   | X-coordinate of the point used for checking.                   |
 | y    | number | Yes   | Y-coordinate of the point used for checking.                   |
 
 **Return value**
 | Type     | Description           |
 | ------- | ------------- |
-| boolean | Whether a specified point is in the path area.|
+| boolean | Whether a specified point is in the path area. Returns **true** if the point is inside the path area; returns **false** otherwise.|
 
 **Example**
 ```html
@@ -129,7 +136,7 @@ canvas {
 // xxx.js
 export default {
   data: {
-    textValue: 0
+    textValue: false
   },
   onShow(){
     var canvas = this.$refs.canvas.getContext('2d');
@@ -157,7 +164,7 @@ Checks whether a specified point is on the edge line of a path.
 **Parameters**
 | Name | Type  | Mandatory  | Description                           |
 | ---- | ------ | ---- | ----------------------------- |
-| path | Path2D | No   | Path used for checking. If this parameter is not set, the current path is used.|
+| path | Path2D | No    | Path used for checking. If this parameter is not set, the current path is used.|
 | x    | number | Yes   | X-coordinate of the point used for checking.                   |
 | y    | number | Yes   | Y-coordinate of the point used for checking.                   |
 
@@ -203,7 +210,7 @@ canvas {
 // xxx.js
 export default {
   data: {
-    textValue: 0
+    textValue: false
   },
   onShow(){
     var canvas = this.$refs.canvas.getContext('2d');

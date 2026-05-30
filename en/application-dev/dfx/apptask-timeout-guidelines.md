@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @rr_cn-->
-<!--SE: @peterhuangyu-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## Overview
 
@@ -20,62 +21,65 @@ Task timeout detection includes main thread timeout detection and task execution
 
 ### Detection Principles
 
-1. Triggering process:
-   When the main thread experiences a timeout between 150 ms and 450 ms, it triggers a call stack sampling. If the timeout exceeds 450 ms, it triggers a trace sampling. 
+The main thread event processing duration is checked. When the task duration exceeds the threshold, the log collection process is triggered, including stack collection and trace collection. The triggering conditions of the two collections are mutually exclusive. Only one collection is triggered upon a timeout.
 
-   150 ms < Main thread processing time < 450 ms: stack sampling is triggered by main thread timeout. For the processes with the same PID, the call stack sampling for a main thread timeout event can be triggered only once. If **Developer Options** is enabled, call stack sampling can be triggered once an hour. No timeout check is performed within 10s after the application starts.
+Which of the collection processes is triggered depends on the processing duration of a single event in the main thread. The triggering conditions, log collection formats, and frequency restrictions are as follows:
 
-   Main thread processing time > 450 ms: trace sampling is triggered by main thread timeout. For the processes with the same PID, the trace sampling for a main thread timeout event can be triggered only once in a day. 
+| Collection Process| Triggering Condition| Log Collection Format| Prerequisites and Restrictions|
+| -------- | -------- | -------- | -------- |
+| Stack collection| 150 ms < Main thread processing duration < 450 ms| File name format: **MAIN_THREAD_JANK_Second-level time_PID.txt**.<br>For example, **MAIN_THREAD_JANK_20240613211739_40986.txt**.| - The application is not detected within 10s after being started.<br> - When [Developer options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section0736139111917) is disabled, the main thread timeout event stack collection process can be triggered at most once a day within a lifecycle of an application.<br> - When [Developer options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432) is enabled, the main thread timeout event stack collection process can be triggered at most once an hour within a lifecycle of an application.|
+| Trace collection| Main thread processing duration > 450 ms| File name format: **MAIN_THREAD_JANK_unix timestamp_PID.trace**.<br>For example, **MAIN_THREAD_JANK_1762064185461_40986.trace**.| - To trigger trace collection, you can use the [nolog](performance-analysis-kit-terminology.md#nolog-version) version and disable [Developer options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432).<br> - Only one trace collection process can be triggered for the main thread timeout event within a day.|
 
-   Main thread processing time = 450 ms: no sampling is triggered.
+> **NOTE**
+>
+> If the main thread processing duration is equal to 450 ms, no collection process is triggered.
+>
+> When **Developer Options** is disabled, DevEco Studio may be unavailable. Therefore, you are advised to install the application before disabling **Developer Options**.
 
-   > **NOTE**
-   >
-   > To enable the main thread checker to collect tracing data when a task times out, ensure that the nolog version is used and **Developer Options** is disabled
-   >
-   > You can go to **Settings** > **About phone** to check the software version. The log version ends with **log**.
-   >
-   > When **Developer Options** is disabled, DevEco Studio may be unavailable. Therefore, you are advised to install the application before disabling **Developer Options**.
+1. Stack collection process:
 
-2. Stack capture time:
-   When the main thread timeout event occurs, the main thread checker starts to check whether the timeout event occurs again every 150 ms (1 ≤ number of check times ≤ 2). There are three cases:
+   When the main thread processing times out (150 ms < main thread processing duration < 450 ms), a periodic detection task is started and executed every 150 ms. A stack file is generated only when the main thread processing duration exceeds 150 ms in at least one of the first two rounds of detection. The possible cases are as follows:
 
-   (1) If a timeout event is detected during the first check, the main thread checker starts stack sampling every 150 ms for 10 times. The stack sampling data is collected and an event is reported at the next interval. Then the check ends.
+   (1) If a main thread timeout event (main thread processing duration > 150 ms) is detected during the first check, the stack collection starts and is performed every 150 ms for 10 times. The stack data is collected and an event is reported at the next interval. Then the check ends.
 
    ![sample_stack_1](figures/sample_stack_1.png)
 
-   (2) If a timeout event is detected during the second check, the main thread checker starts stack sampling every 150 ms for 10 times. The stack sampling data is collected and an event is reported at the next interval. Then the check ends.
+   (2) If a main thread timeout event (main thread processing duration > 150 ms) is detected during the second check, the stack collection starts and is performed every 150 ms for 10 times. The stack data is collected and an event is reported at the next interval. Then the check ends.
 
    ![sample_stack_2](figures/sample_stack_2.png)
 
-   (3) If no timeout event is detected in the two checks, the check ends.
+   (3) If no main thread timeout event (main thread processing duration > 150 ms) is detected during the first two checks, the check ends.
 
    ![sample_stack_3](figures/sample_stack_3.png)
 
-3. Trace collection time:
+2. Trace collection process
 
-   After the function is called to capture tracing data, the main thread checker checks for a main thread timeout event every 150 ms for 20 times. If a main thread timeout event occurs in any of the 20 checks, the check ends in 3s and the tracing data is stored.
+   When the main thread processing times out (main thread processing duration > 450 ms), the API for enabling trace collection is invoked to check every 150 ms for 20 times whether the duration exceeds 150 ms. The possible cases are as follows:
 
-   (1) If no main thread timeout event occurs in any of the 20 checks, no trace file is generated.
+   (1) If no main thread timeout event (main thread processing duration > 150 ms) is detected during the 20 checks, no trace file is generated, and the check ends.
 
    ![dump-trace1](figures/dump-trace1.PNG)
 
-   (2) If a main thread timeout event occurs in any of the 20 checks, a trace file is generated.
+   (2) If a main thread timeout event (main thread processing duration > 150 ms) is detected during any of the 20 checks, a trace file is generated, and an event is reported. Then the check ends.
+
+   ![dump-trace1](figures/dump-trace2.PNG)
 
 ### Obtaining Logs
 
-Main thread timeout logs are stored in the application sandbox directory. You can obtain the logs in any of the following ways:
+Main thread jank event logs are stored in the application sandbox directory. You can obtain the logs in any of the following ways:
 
-**Method 1: HiAppEvent APIs**
+**Subscribing to Main Thread Jank Events using HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the address sanitizer event by referring to [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Jank Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-crash-events.md#params) field in the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Jank Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-mainthreadjank-events.md#event-fields) field in the event.
 
-### Log Specifications 
+### Log Specifications
 
-1. Log aging:
+1. Log aging specifications of main thread timeout detection
+
    Generally, the size of a stack file is 7 KB to 10 KB, and the size of a trace file is 1 MB to 5 MB. The **watchdog** directory in the application sandbox can store a maximum of 10 MB data. If the total file size exceeds 10 MB, the directory aging mechanism is automatically triggered to delete a maximum of 100 files based on the file name sequence. The path to **watchdog** is **/data/storage/el2/log/watchdog/**.
 
-2. Sampling stack specifications
+2. Stack specifications of main thread timeout detection
+
    Currently, stack capturing supports only the ARM64 architecture. The stack capture result contains both native frames and JS frames parsed.
 
    An example of the stack capture result is as follows:
@@ -132,10 +136,11 @@ HiAppEvent provides APIs for subscribing to faults. For details, see [Introducti
    4 indicates the path, file, row number, and column number of the called function.
    ```
 
-3. Sampling trace specifications:
-   The size of the trace file is 1 MB to 5 MB. You can visually analyze the trace file using [SmartPerf](https://gitee.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitee.com/openharmony/developtools_smartperf_host/releases).
+3. Trace specifications of main thread timeout detection
 
-   For details about the trace file, see [Loading Trace Files on the Web Client](https://gitee.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md).
+   The size of the trace file is 1 MB to 5 MB. You can visually analyze the trace file using [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
+
+   For details about the trace file, see [Loading Trace Files on the Web Client](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md).
 
 ## Task Execution Timeout Detection
 
@@ -151,12 +156,12 @@ The following figure shows the detection principles.
 
 ### Obtaining Logs
 
-Task execution timeout logs are stored in the application sandbox directory. You can obtain the logs in any of the following ways:
+You can obtain task execution timeout logs in any of the following ways:
 
-**Method 1: HiAppEvent APIs**
+**Subscribing to Task Execution Timeout Events using HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Jank Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-crash-events.md#params) field in the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the task execution timeout event by referring to [Subscribing to Task Execution Timeout Events (ArkTS)](hiappevent-watcher-apphicollie-events-arkts.md) or [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-apphicollie-events.md#event-fields) field in the event.
 
 ### Log Specifications
 
-For details, see [Log Specifications](appfreeze-guidelines.md#log-specifications).
+The log specifications of task execution timeout events are the same as those of application freeze events. For details, see [Application Freeze Log Specifications](appfreeze-guidelines.md#log-specifications).

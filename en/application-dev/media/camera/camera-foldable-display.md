@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 Foldable devices come in various forms. When developing camera applications, a consistent camera switching solution is necessary to enhance user experience during photo and video capture.
 
 A single foldable device can use different cameras depending on its fold state. The system identifies each camera and associates it with a specific fold state, indicating which cameras are available in those states. Applications can call [CameraManager.on('foldStatusChange')](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#onfoldstatuschange12) or [display.on('foldStatusChange')](../../reference/apis-arkui/js-apis-display.md#displayonfoldstatuschange10) to listen for fold state changes of the device, call [CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras) to obtain the available cameras in the current state, and make adaptations accordingly.
@@ -254,7 +254,7 @@ struct Index {
   }
 
   aboutToAppear(): void {
-    console.log(TAG + 'aboutToAppear is called');
+    console.info(TAG + 'aboutToAppear is called');
     this.initContext();
     this.initCameraManager();
     this.requestPermissionsFn();

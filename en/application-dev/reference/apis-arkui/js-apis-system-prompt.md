@@ -1,4 +1,10 @@
 # @system.prompt (Prompt)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Prompt** module provides APIs for creating and showing toasts, dialog boxes, and action menus.
 
@@ -78,10 +84,10 @@ class B{
         },
       ],
       success: (data)=> {
-        console.log('dialog success callback, click button : ' + data.index);
+        console.info('dialog success callback, click button : ' + data.index);
       },
       cancel: ()=> {
-        console.log('dialog cancel callback');
+        console.info('dialog cancel callback');
       },
     });
   }
@@ -123,10 +129,10 @@ class C{
         },
       ],
       success: (tapIndex)=> {
-        console.log('dialog success callback, click button : ' + data.tapIndex);
+        console.info('dialog success callback, click button : ' + tapIndex);
       },
       fail: (errMsg)=> {
-        console.log('dialog fail callback' + errMsg);
+        console.info('dialog fail callback' + errMsg);
       },
     });
   }

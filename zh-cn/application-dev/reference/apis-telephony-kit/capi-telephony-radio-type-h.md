@@ -1,4 +1,10 @@
 # telephony_radio_type.h
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Terence_Super-->
+<!--Designer: @Terence_Super-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -31,11 +37,18 @@
 | [Telephony_RadioTechnology](#telephony_radiotechnology) | Telephony_RadioTechnology | 设备的无线接入技术类型。 |
 | [Telephony_NsaState](#telephony_nsastate) | Telephony_NsaState | 设备的NSA网络注册状态类型。 |
 
+### 宏定义
+
+| 名称  | 描述 |
+| --  | -- |
+| TELEPHONY_MAX_OPERATOR_LEN 64  | 定义运营商名称的最大长度。<br>**起始版本：** 13 |
+| TELEPHONY_MAX_PLMN_NUMERIC_LEN 6  | 定义PLMN的最大长度。<br>**起始版本：** 13  |
+
 ## 枚举类型说明
 
 ### Telephony_RadioResult
 
-```
+```c
 enum Telephony_RadioResult
 ```
 
@@ -56,7 +69,7 @@ enum Telephony_RadioResult
 
 ### Telephony_RegState
 
-```
+```c
 enum Telephony_RegState
 ```
 
@@ -75,7 +88,7 @@ enum Telephony_RegState
 
 ### Telephony_RadioTechnology
 
-```
+```c
 enum Telephony_RadioTechnology
 ```
 
@@ -103,7 +116,7 @@ enum Telephony_RadioTechnology
 
 ### Telephony_NsaState
 
-```
+```c
 enum Telephony_NsaState
 ```
 

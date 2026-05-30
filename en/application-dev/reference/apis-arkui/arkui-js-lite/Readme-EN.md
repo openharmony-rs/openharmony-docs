@@ -1,4 +1,10 @@
-# JavaScript-compatible Web-like Development Paradigm (ArkUI.Lite)
+# JavaScript-compatible Web-like Development Paradigm (ArkUI.Lite)<!--arkui-js-lite-comp-->
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - Framework Overview<!--js-lite-framework-overview-->
   - [File Organization](js-lite-framework-file.md)
@@ -10,7 +16,7 @@
     - [HML](js-lite-framework-syntax-hml.md)
     - [CSS](js-lite-framework-syntax-css.md)
     - [JavaScript](js-lite-framework-syntax-js.md)
-- Universal Component Information<!--js-lite-universal-comp-infor-->
+- Universal Components<!--js-lite-universal-comp-infor-->
   - [Universal Events](js-lite-common-events.md)
   - [Universal Attributes](js-lite-common-attributes.md)
   - [Universal Styles](js-lite-common-styles.md)

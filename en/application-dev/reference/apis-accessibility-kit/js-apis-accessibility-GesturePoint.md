@@ -1,6 +1,14 @@
 # @ohos.accessibility.GesturePoint (Gesture Point)
 
-The **GesturePoint** module provides APIs for creating gesture touch point information required for an accessibility application to inject gestures.
+<!--Kit: Accessibility Kit-->
+<!--Subsystem: BarrierFree-->
+<!--Owner: @qiiiiiiian-->
+<!--Designer: @z7o-->
+<!--Tester: @A_qqq-->
+<!--Adviser: @w_Machine_cc-->
+
+The **GesturePoint** module provides APIs
+for creating gesture touch point information required for an accessibility application to inject gestures.
 
 > **NOTE**
 >
@@ -20,20 +28,20 @@ Defines a gesture touch point.
 
 ### Attributes
 
-| Name       | Type  | Readable  | Writable  | Description     |
+| Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| positionX | number | Yes   | Yes   | X coordinate of the touch point.|
-| positionY | number | Yes   | Yes   | Y coordinate of the touch point.|
+| positionX | number | No   | No   | X coordinate of the touch point, in pixels (px).|
+| positionY | number | No   | No   | Y coordinate of the touch point, in pixels (px).|
 
 ### constructor<sup>(deprecated)</sup>
 
 constructor(positionX: number, positionY: number);
 
-A constructor used to create a **GesturePoint** instance.
+Defines a constructor used to create a **GesturePoint** instance.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -41,8 +49,8 @@ A constructor used to create a **GesturePoint** instance.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| positionX | number | Yes| X coordinate of the touch point.|
-| positionY | number | Yes | Y coordinate of the touch point.|
+| positionX | number | Yes| X coordinate of the touch point, in pixels (px).|
+| positionY | number | Yes | Y coordinate of the touch point, in pixels (px).|
 
 **Example**
 

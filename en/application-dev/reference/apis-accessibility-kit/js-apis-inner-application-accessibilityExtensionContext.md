@@ -1,5 +1,12 @@
 # AccessibilityExtensionContext (Accessibility Extension Context)
 
+<!--Kit: Accessibility Kit-->
+<!--Subsystem: BarrierFree-->
+<!--Owner: @qiiiiiiian-->
+<!--Designer: @z7o-->
+<!--Tester: @A_qqq-->
+<!--Adviser: @w_Machine_cc-->
+
 The **AccessibilityExtensionContext** module, inherited from **ExtensionContext**, provides context for **AccessibilityExtensionAbility**.
 
 You can use the APIs of this module to configure the concerned information, obtain root information, and inject gestures.
@@ -26,68 +33,70 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 Provides attribute names and value types of a node element.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 ### Attributes
 
-| Name                  | Type                                                             | Readable| Writable| Description             |
+| Name                  | Type                                                             | Read-Only| Optional| Description             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
-| accessibilityFocused | boolean                                                            | Yes  | No  | Whether the element is focused for accessibility purposes. The value **true** indicates that the element is focused, and **false** indicates the opposite.<br>Default value: **false**.|
-| accessibilityText<sup>12+</sup> | string                                                  | Yes  | No  | Accessibility text information of an element.|
-| bundleName           | string                                                             | Yes  | No  | Bundle name.|
-| checkable            | boolean                                                            | Yes  | No  | Whether the element is checkable. The value **true** indicates that the element is checkable, and **false** indicates the opposite.<br>Default value: **false**.|
-| checked              | boolean                                                            | Yes  | No  | Whether the element is checked. The value **true** indicates that the element is checked, and **false** indicates the opposite.<br>Default value: **false**.|
-| children             | Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;        | Yes  | No  | All child elements.|
-| clickable            | boolean                                                            | Yes  | No  | Whether the element is clickable. The value **true** indicates that the element is clickable, and **false** indicates the opposite.<br>Default value: **false**.|
-| componentId          | number                                                             | Yes  | No  | ID of the component to which the element belongs. <br>Default value: **-1**.|
-| componentType        | string                                                             | Yes  | No  | Type of the component to which the element belongs.|
-| contents             | Array&lt;string&gt;                                                | Yes  | No  | Content.|
-| currentIndex         | number                                                             | Yes  | No  | Index of the current item. <br>Default value: **0**.|
-| description          | string                                                             | Yes  | No  | Description of the element.|
-| editable             | boolean                                                            | Yes  | No  | Whether the element is editable. The value **true** indicates that the element is editable, and **false** indicates the opposite.<br>Default value: **false**.|
-| endIndex             | number                                                             | Yes  | No  | Index of the last list item displayed on the screen. <br>Default value: **0**.|
-| error                | string                                                             | Yes  | No  | Error status.|
-| focusable            | boolean                                                            | Yes  | No  | Whether the element is focusable. The value **true** indicates that the element is focusable, and **false** indicates the opposite.<br>Default value: **false**.|
-| hintText             | string                                                             | Yes  | No  | Hint text.|
-| inputType            | number                                                             | Yes  | No  | Type of the input text. <br>Default value: **0**.|
-| inspectorKey         | string                                                             | Yes  | No  | Inspector key.|
-| isActive             | boolean                                                            | Yes  | No  | Whether the element is active. The value **true** indicates that the element is active and **false** indicates the opposite.<br>Default value: **true**.|
-| isEnable             | boolean                                                            | Yes  | No  | Whether the element is enabled. The value **true** indicates that the element is enabled, and **false** indicates the opposite.<br>Default value: **false**.|
-| isHint               | boolean                                                            | Yes  | No  | Whether the element is a hint. The value **true** indicates that the element is a hint, and **false** indicates the opposite.<br>Default value: **false**.|
-| isFocused            | boolean                                                            | Yes  | No  | Whether the element is focused. The value **true** indicates that the element is focused, and **false** indicates the opposite.<br>Default value: **false**.|
-| isPassword           | boolean                                                            | Yes  | No  | Whether the element is a password. The value **true** indicates that the element is a password, and **false** indicates the opposite.<br>Default value: **false**.|
-| isVisible            | boolean                                                            | Yes  | No  | Whether the element is visible. The value **true** indicates that the element is visible, and **false** indicates the opposite.<br>Default value: **false**.|
-| itemCount            | number                                                             | Yes  | No  | Total number of items. <br>Default value: **0**.|
-| lastContent          | string                                                             | Yes  | No  | Last content.|
-| layer                | number                                                             | Yes  | No  | Display layer of the element.|
-| longClickable        | boolean                                                            | Yes  | No  | Whether the element is long-clickable. The value **true** indicates that the element is long-clickable, and **false** indicates the opposite.<br>Default value: **false**.|
-| pageId               | number                                                             | Yes  | No  | Page ID. <br>Default value: **-1**.|
-| parent               | [AccessibilityElement](#accessibilityelement9)                     | Yes  | No  | Parent element of the element.|
-| pluralLineSupported  | boolean                                                            | Yes  | No  | Whether the element supports multiple lines of text. The value **true** indicates that the element supports multiple lines of text, and **false** indicates the opposite.<br>Default value: **false**.|
-| rect                 | [Rect](#rect)                                                      | Yes  | No  | Area of the element.|
-| resourceName         | string                                                             | Yes  | No  | Resource name of the element.|
-| rootElement          | [AccessibilityElement](#accessibilityelement9)                     | Yes  | No  | Root element of the window element.|
-| screenRect           | [Rect](#rect)                                                      | Yes  | No  | Display area of the element.|
-| scrollable           | boolean                                                            | Yes  | No  | Whether the element is scrollable. The value **true** indicates that the element is scrollable, and **false** indicates the opposite.<br>Default value: **false**.|
-| selected             | boolean                                                            | Yes  | No  | Whether the element is selected. The value **true** indicates that the element is selected, and **false** indicates the opposite.<br>Default value: **false**.|
-| startIndex           | number                                                             | Yes  | No  | Index of the first list item on the screen. <br>Default value: **0**.|
-| text                 | string                                                             | Yes  | No  | Text of the element.|
-| textLengthLimit      | number                                                             | Yes  | No  | Maximum text length of the element.|
-| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| Yes  | No  | Unit of movement when the text is read.|
-| triggerAction        | [accessibility.Action](js-apis-accessibility.md#action)            | Yes  | No  | Action that triggers the element event.|
-| type                 | [WindowType](#windowtype)                                          | Yes  | No  | Window type of the element.|
-| valueMax             | number                                                             | Yes  | No  | Maximum value. <br>Default value: **0**.|
-| valueMin             | number                                                             | Yes  | No  | Minimum value. <br>Default value: **0**.|
-| valueNow             | number                                                             | Yes  | No  | Current value. <br>Default value: **0**.|
-| windowId             | number                                                             | Yes  | No  | Window ID. <br>Default value: **-1**.|
-| textType<sup>12+</sup>             | string                                                             | Yes  | No  | Accessibility text type of an element, which is configured by the **accessibilityTextHint** attribute of the component.|
-| offset<sup>12+</sup>             | number              | Yes  | No  | Pixel offset of the content area relative to the top coordinate of a scrollable component, such as **List** and **Grid**. <br>Default value: **0**.|
-| hotArea<sup>12+</sup>             | [Rect](#rect)                                                              | Yes  | No  | Touchable area of an element.|
-| customComponentType<sup>18+</sup>             | string                                                             | Yes  | No  | Custom component type.|
-| accessibilityNextFocusId<sup>18+</sup>             | number                | Yes  | No  | ID of the next component to be focused on. You can use **findElement('elementId')** to obtain the value of this attribute set on the component from the **AccessibilityElementInfo** object. <br>Default value: **-1**.|
-| accessibilityPreviousFocusId<sup>18+</sup>             | number                | Yes  | No  | ID of the previous component to be focused on. You can use **findElement('elementId')** to obtain the value of this attribute set on the component from the **AccessibilityElementInfo** object. <br>Default value: **-1**.|
-| extraInfo<sup>18+</sup>             | string     | Yes  | No  | Extended attributes, which are used to define the attributes of specific components, including:<br>- **CheckboxGroupSelectedStatus**: selection status of the **CheckboxGroup** component. The options are as follows:<br>**0**: selected<br>**1**: partially selected<br>**2**: not selected<br>- **Row**: row where an focused item is located in **Grid**.<br>- **Column**: column where an focused item is located in **Grid**.<br>- **ListItemIndex**: row where an focused item is located in **List**.<br>- **SideBarContainerStates**: expansion state of the expandable components (such as **SideBarContainer** and **Select**). The options are as follows:<br>**0**: collapsed<br>**1**: expanded<br>- **ToggleType**: type of the **Toggle** component. The options are as follows:<br>**0**: checkbox<br>**1**: switch<br>**2**: button<br>- **BindSheet**: position of the **BindSheet** component on the screen. The options are as follows:<br>**0**: high<br>**1**: middle<br>**2**: low<br>- **hasRegisteredHover**: whether the component has registered the **onAccessibilityHover** event callback. The value **1** indicates that the component has registered the event callback; otherwise, this field is not used.<br>- **direction**: layout direction of the **List** component. The value can be **vertical** or **horizontal**.<br>- **expandedState**: expanded state of list items in the **List** component. The value can be **expanded** or **collapsed**.|
-| accessibilityScrollable<sup>18+</sup>             | boolean                 | Yes  | No  | Whether an element is scrollable for accessibility. This attribute has a higher priority than **scrollable**. <br>- **true** (default): the element is scrollable.<br>- **false**: the element is not scrollable.|
+| accessibilityFocused | boolean                                                            | No  | No  | Whether the element is focused for accessibility purposes. The value **true** indicates that the element is focused, and **false** indicates the opposite.<br>Default value: **false**.|
+| accessibilityText<sup>12+</sup> | string                                                  | No  | No  | Accessibility text information of an element.|
+| bundleName           | string                                                             | No  | No  | Bundle name.|
+| checkable            | boolean                                                            | No  | No  | Whether the element is checkable. The value **true** indicates that the element is checkable, and **false** indicates the opposite.<br>Default value: **false**.|
+| checked              | boolean                                                            | No  | No  | Whether the element is checked. The value **true** indicates that the element is checked, and **false** indicates the opposite.<br>Default value: **false**.|
+| children             | Array&lt;[AccessibilityElement](#accessibilityelement)&gt;        | No  | No  | All child elements.|
+| clickable            | boolean                                                            | No  | No  | Whether the element is clickable. The value **true** indicates that the element is clickable, and **false** indicates the opposite.<br>Default value: **false**.|
+| componentId          | number                                                             | No  | No  | ID of the component to which the element belongs. <br>Default value: **-1**.|
+| componentType        | string                                                             | No  | No  | Type of the component to which the element belongs, for example, **Button** for the button component and **Image** for the image component.|
+| contents             | Array&lt;string&gt;                                                | No  | No  | List of contents. Set this parameter based on site requirements. No special restrictions.|
+| currentIndex         | number                                                             | No  | No  | Index of the current item. <br>Default value: **0**.|
+| description          | string                                                             | No  | No  | Description of the element. Set this parameter based on site requirements. No special restrictions.|
+| editable             | boolean                                                            | No  | No  | Whether the element is editable. The value **true** indicates that the element is editable, and **false** indicates the opposite.<br>Default value: **false**.|
+| endIndex             | number                                                             | No  | No  | Index of the last list item displayed on the screen. <br>Default value: **0**.|
+| error                | string                                                             | No  | No  | Error status.|
+| focusable            | boolean                                                            | No  | No  | Whether the element is focusable. The value **true** indicates that the element is focusable, and **false** indicates the opposite.<br>Default value: **false**.|
+| hintText             | string                                                             | No  | No  | Hint text.|
+| inputType            | number                                                             | No  | No  | Type of the input text. <br>Default value: **0**.|
+| inspectorKey         | string                                                             | No  | No  | Alias of the element.|
+| isActive             | boolean                                                            | No  | No  | Whether the element is active. The value **true** indicates that the element is active and **false** indicates the opposite.<br>Default value: **true**.|
+| isEnable             | boolean                                                            | No  | No  | Whether the element is enabled. The value **true** indicates that the element is enabled, and **false** indicates the opposite.<br>Default value: **false**.|
+| isHint               | boolean                                                            | No  | No  | Whether the element is a hint. The value **true** indicates that the element is a hint, and **false** indicates the opposite.<br>Default value: **false**.|
+| isFocused            | boolean                                                            | No  | No  | Whether the element is focused. The value **true** indicates that the element is focused, and **false** indicates the opposite.<br>Default value: **false**.|
+| isPassword           | boolean                                                            | No  | No  | Whether the element is a password. The value **true** indicates that the element is a password, and **false** indicates the opposite.<br>Default value: **false**.|
+| isVisible            | boolean                                                            | No  | No  | Whether the element is visible. The value **true** indicates that the element is visible, and **false** indicates the opposite.<br>Default value: **false**.|
+| itemCount            | number                                                             | No  | No  | Total number of items. <br>Default value: **0**.|
+| lastContent          | string                                                             | No  | No  | Last content.|
+| layer                | number                                                             | No  | No  | Display layer of the element.|
+| longClickable        | boolean                                                            | No  | No  | Whether the element is long-clickable. The value **true** indicates that the element is long-clickable, and **false** indicates the opposite.<br>Default value: **false**.|
+| pageId               | number                                                             | No  | No  | Page ID. <br>Default value: **-1**.|
+| parent               | [AccessibilityElement](#accessibilityelement)                     | No  | No  | Parent element of the element.|
+| pluralLineSupported  | boolean                                                            | No  | No  | Whether the element supports multiple lines of text. The value **true** indicates that the element supports multiple lines of text, and **false** indicates the opposite.<br>Default value: **false**.|
+| rect                 | [Rect](#rect)                                                      | No  | No  | Area of the element.|
+| resourceName         | string                                                             | No  | No  | Resource name of the element.|
+| rootElement          | [AccessibilityElement](#accessibilityelement)                     | No  | No  | Root element of the window element.|
+| screenRect           | [Rect](#rect)                                                      | No  | No  | Display area of the element.|
+| scrollable           | boolean                                                            | No  | No  | Whether the element is scrollable. The value **true** indicates that the element is scrollable, and **false** indicates the opposite.<br>Default value: **false**.|
+| selected             | boolean                                                            | No  | No  | Whether the element is selected. The value **true** indicates that the element is selected, and **false** indicates the opposite.<br>Default value: **false**.|
+| startIndex           | number                                                             | No  | No  | Index of the first list item on the screen. <br>Default value: **0**.|
+| text                 | string                                                             | No  | No  | Text of the element.|
+| textLengthLimit      | number                                                             | No  | No  | Maximum text length of the element.|
+| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| No  | No  | Granularity of movement when the text is read.|
+| triggerAction        | [accessibility.Action](js-apis-accessibility.md#action)            | No  | No  | Action that triggers the element event.|
+| type                 | [WindowType](#windowtype)                                          | No  | No  | Window type of the element.|
+| valueMax             | number                                                             | No  | No  | Maximum value. <br>Default value: **0**.|
+| valueMin             | number                                                             | No  | No  | Minimum value. <br>Default value: **0**.|
+| valueNow             | number                                                             | No  | No  | Current value. <br>Default value: **0**.|
+| windowId             | number                                                             | No  | No  | Window ID. <br>Default value: **-1**.|
+| textType<sup>12+</sup>             | string                                                             | No  | No  | Accessibility text type of an element, which is configured by the **accessibilityTextHint** attribute of the component.|
+| offset<sup>12+</sup>             | number              | No  | No  | For scrollable components such as **List** and **Grid**, this attribute indicates the pixel offset of the content area relative to the top coordinate of the component. The unit is pixel (px). <br>Default value: **0**.|
+| hotArea<sup>12+</sup>             | [Rect](#rect)                                                              | No  | No  | Touchable area of an element.|
+| customComponentType<sup>18+</sup>             | string                                                             | No  | Yes  | Custom component type. It corresponds to [AccessibilityRoleType Enumeration Description](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18) of the element.|
+| accessibilityNextFocusId<sup>18+</sup>             | number                | No  | Yes  | ID of the next component to be focused on. You can use **findElement('elementId')** to obtain the value of this attribute set on the component from the **AccessibilityElementInfo** object. <br>Default value: **-1**.|
+| accessibilityPreviousFocusId<sup>18+</sup>             | number                | No  | Yes  | ID of the previous component to be focused on. You can use **findElement('elementId')** to obtain the value of this attribute set on the component from the **AccessibilityElementInfo** object. <br>Default value: **-1**.|
+| extraInfo<sup>18+</sup>             | string     | No | Yes  | Extended attributes, which are used to define the attributes of specific components, including:<br>- **CheckboxGroupSelectedStatus**: selection status of the **CheckboxGroup** component. The options are as follows:<br>**0**: selected<br>**1**: partially selected<br>**2**: not selected<br>- **Row**: row where a focused item is located in **Grid**.<br>- **Column**: column where a focused item is located in **Grid**.<br>- **ListItemIndex**: row where a focused item is located in **List**.<br>- **SideBarContainerStates**: expansion state of the expandable components (such as **SideBarContainer** and **Select**). The options are as follows:<br>**0**: collapsed<br>**1**: expanded<br>- **ToggleType**: type of the **Toggle** component. The options are as follows:<br>**0**: checkbox<br>**1**: switch<br>**2**: button<br>- **BindSheet**: position of the **BindSheet** component on the screen. The options are as follows:<br>**0**: high<br>**1**: middle<br>**2**: low<br>- **hasRegisteredHover**: whether the component has registered the **onAccessibilityHover** event callback. The value **1** indicates that the component has registered the event callback; otherwise, this field is not used.<br>- **direction**: layout direction of the **List** component. The value can be **vertical** or **horizontal**.<br>- **expandedState**: expanded state of list items in the **List** component. The value can be **expanded** or **collapsed**.<br>- **componentTypeDescription**: detailed information about the component type.|
+| accessibilityScrollable<sup>18+</sup>             | boolean                 | No  | Yes  | Whether an element is scrollable for accessibility. This attribute has a higher priority than **scrollable**. <br>- **true** (default): the element is scrollable.<br>- **false**: the element is not scrollable.|
 
 ## FocusDirection
 
@@ -125,12 +134,12 @@ Defines a rectangle.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
-| Name    | Type    | Readable  | Writable  | Description       |
+| Name    | Type    | Read-Only  | Optional  | Description       |
 | ------ | ------ | ---- | ---- | --------- |
-| left   | number | Yes   | No   | Left boundary of the rectangle.|
-| top    | number | Yes   | No   | Top boundary of the rectangle.|
-| width  | number | Yes   | No   | Width of the rectangle. |
-| height | number | Yes   | No   | Height of the rectangle. |
+| left   | number | No   | No   | Left boundary of the rectangle, in pixels.|
+| top    | number | No   | No   | Top boundary of the rectangle, in pixels.|
+| width  | number | No   | No   | Width of the rectangle, in pixels. |
+| height | number | No   | No   | Height of the rectangle, in pixels. |
 
 ## WindowType
 
@@ -153,7 +162,7 @@ Sets the concerned target bundle. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -171,11 +180,11 @@ Sets the concerned target bundle. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -184,7 +193,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let targetNames = ['com.ohos.xyz'];
 axContext.setTargetBundleName(targetNames).then(() => {
-  console.info(`Succeeded in set target bundle names, targetNames is ${targetNames}`);
+  console.info(`succeeded in setting target bundle names, targetNames is ${targetNames}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to set target bundle names, Code is ${err.code}, message is ${err.message}`);
 })
@@ -198,7 +207,7 @@ Sets the concerned target bundle. This API uses an asynchronous callback to retu
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -211,11 +220,11 @@ Sets the concerned target bundle. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -229,7 +238,7 @@ try {
       console.error(`failed to set target bundle names, Code is ${err.code}, message is ${err.message}`);
       return;
     }
-    console.info(`Succeeded in set target bundle names, targetNames is ${targetNames}`);
+    console.info(`succeeded in setting target bundle names, targetNames is ${targetNames}`);
   });
 } catch (error) {
   console.error(`failed to set target bundle names, Because ${JSON.stringify(error)}`);
@@ -244,7 +253,7 @@ Obtains the focus element. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -257,15 +266,15 @@ Obtains the focus element. This API uses a promise to return the result.
 **Return value**
 | Type                                 | Description                    |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the current focus element.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the current focus element.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -278,7 +287,7 @@ let rootElement: AccessibilityElement;
 
 axContext.getFocusElement().then((data: AccessibilityElement) => {
   rootElement = data;
-  console.log(`Succeeded in get focus element,${JSON.stringify(data)}`);
+  console.info(`succeeded in getting focus element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get focus element, Code is ${err.code}, message is ${err.message}`);
 })
@@ -292,7 +301,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -300,15 +309,15 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 | Name     | Type                                      | Mandatory  | Description               |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the current focus element.|
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the current focus element.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -325,7 +334,7 @@ axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get focus element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting focus element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -337,7 +346,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -346,15 +355,15 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 | Name                 | Type                                      | Mandatory  | Description               |
 | -------------------- | ---------------------------------------- | ---- | ----------------- |
 | isAccessibilityFocus | boolean                                  | Yes   | Whether the obtained focus element is an accessibility focus. The value **True** means that the obtained focus element is an accessibility focus, and **False** means the opposite.   |
-| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the current focus element.|
+| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the current focus element.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -372,7 +381,7 @@ axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: Acces
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get focus element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting focus element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -384,7 +393,7 @@ Obtains the root element of a window. This API uses a promise to return the resu
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -392,21 +401,21 @@ Obtains the root element of a window. This API uses a promise to return the resu
 
 | Name     | Type    | Mandatory  | Description                    |
 | -------- | ------ | ---- | ---------------------- |
-| windowId | number | No   | Window for which you want to obtain the root element. If this parameter is not specified, it indicates the current active window.|
+| windowId | number | No   | ID of the window whose root element is to be obtained. If this parameter is not specified, it indicates the current active window.|
 
 **Return value**
 
 | Type                                 | Description                    |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the root element of the specified window.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the root element of the specified window.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -419,7 +428,7 @@ let rootElement: AccessibilityElement;
 
 axContext.getWindowRootElement().then((data: AccessibilityElement) => {
   rootElement = data;
-  console.log(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get root element of the window, Code is ${err.code}, message is ${err.message}`);
 });
@@ -433,7 +442,7 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -441,15 +450,15 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 | Name     | Type                                      | Mandatory  | Description                |
 | -------- | ---------------------------------------- | ---- | ------------------ |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the root element.|
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the root element.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -466,7 +475,7 @@ axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) 
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -478,7 +487,7 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -486,16 +495,16 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 | Name     | Type                                      | Mandatory  | Description                    |
 | -------- | ---------------------------------------- | ---- | ---------------------- |
-| windowId | number                                   | Yes   | Window for which you want to obtain the root element. If this parameter is not specified, it indicates the current active window.|
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the root element.    |
+| windowId | number                                   | Yes   | ID of the window whose root element is to be obtained. If this parameter is not specified, it indicates the current active window.|
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the root element.    |
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -513,7 +522,7 @@ axContext.getWindowRootElement(windowId, (err: BusinessError, data: Accessibilit
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -525,7 +534,7 @@ Obtains the list of windows on a display. This API uses a promise to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -539,15 +548,15 @@ Obtains the list of windows on a display. This API uses a promise to return the 
 
 | Type                                      | Description                    |
 | ---------------------------------------- | ---------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Promise used to return the window list.|
+| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Promise used to return the window list.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -557,7 +566,7 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getWindows().then((data: AccessibilityElement[]) => {
-  console.log(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
 });
@@ -571,7 +580,7 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -579,15 +588,15 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 
 | Name     | Type                                      | Mandatory  | Description               |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Yes   | Callback used to return the window list.|
+| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Yes   | Callback used to return the window list.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -601,7 +610,7 @@ axContext.getWindows((err: BusinessError, data: AccessibilityElement[]) => {
     console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -613,7 +622,7 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -622,15 +631,15 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 | Name      | Type                                      | Mandatory  | Description                   |
 | --------- | ---------------------------------------- | ---- | --------------------- |
 | displayId | number                                   | Yes   | ID of the display from which the window information is obtained. If this parameter is not specified, it indicates the default main display.|
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Yes   | Callback used to return the window list.    |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Yes   | Callback used to return the window list.    |
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -645,7 +654,7 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
     console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -655,7 +664,7 @@ injectGesture(gesturePath: GesturePath): Promise\<void>;
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated) instead.
 
 Injects a gesture. This API uses a promise to return the result.
 
@@ -675,11 +684,11 @@ Injects a gesture. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -695,7 +704,7 @@ for (let i = 0; i < 10; i++) {
   gesturePath.points.push(gesturePoint);
 }
 axContext.injectGesture(gesturePath).then(() => {
-  console.info(`Succeeded in inject gesture,gesturePath is ${gesturePath}`);
+  console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to inject gesture, Code is ${err.code}, message is ${err.message}`);
 });
@@ -706,7 +715,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated) instead.
 
 Injects a gesture. This API uses an asynchronous callback to return the result.
 
@@ -721,11 +730,11 @@ Injects a gesture. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003 | No accessibility permission to perform the operation. |
 
 **Example**
@@ -744,7 +753,7 @@ axContext.injectGesture(gesturePath, (err: BusinessError) => {
     console.error(`failed to inject gesture, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in inject gesture,gesturePath is ${gesturePath}`);
+  console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 });
 ```
 ## AccessibilityExtensionContext.injectGestureSync<sup>(deprecated)</sup>
@@ -755,7 +764,7 @@ Injects a gesture.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 10 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -767,11 +776,11 @@ Injects a gesture.
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID| Error Message                                           |
 | -------- | --------------------------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300003  | No accessibility permission to perform the operation. |
 
 **Example**
@@ -787,9 +796,11 @@ for (let i = 0; i < 10; i++) {
 axContext.injectGestureSync(gesturePath);
 ```
 
-## AccessibilityElement<sup>9+</sup>
+## AccessibilityElement
 
 Defines the **AccessibilityElement**. Before calling APIs of **AccessibilityElement**, you must call [AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated) or [AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated) to obtain an **AccessibilityElement** instance.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -801,7 +812,7 @@ Obtains all attribute names of this element. This API uses a promise to return t
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -819,9 +830,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.attributeNames().then((data: ElementAttributeKeys[]) => {
-  console.log(`Succeeded in get attribute names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.log(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
+  console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -833,7 +844,7 @@ Obtains all attribute names of this element. This API uses an asynchronous callb
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -855,7 +866,7 @@ rootElement.attributeNames((err: BusinessError, data: ElementAttributeKeys[]) =>
     console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get attribute names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute names, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -867,7 +878,7 @@ Obtains the attribute value based on an attribute name. This API uses a promise 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -886,7 +897,7 @@ Obtains the attribute value based on an attribute name. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
@@ -904,7 +915,7 @@ let attributeName: ElementAttributeKeys = 'bundleName';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.attributeValue(attributeName).then((data: string) => {
-  console.log(`Succeeded in get attribute value by name, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute value by name, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
 });
@@ -912,14 +923,13 @@ rootElement.attributeValue(attributeName).then((data: string) => {
 
 ### attributeValue<sup>(deprecated)</sup>
 
-attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, 
-    callback: AsyncCallback\<ElementAttributeValues[T]>): void;
+attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, callback: AsyncCallback\<ElementAttributeValues[T]>): void
 
 Obtains the attribute value based on an attribute name. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -932,7 +942,7 @@ Obtains the attribute value based on an attribute name. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
@@ -953,7 +963,7 @@ rootElement.attributeValue(attributeName, (err: BusinessError, data: string) => 
     console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get attribute value, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute value, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -965,7 +975,7 @@ Obtains the names of all actions supported by this element. This API uses a prom
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -982,7 +992,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.actionNames().then((data: string[]) => {
-  console.log(`Succeeded in get action names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting action names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
 })
@@ -996,7 +1006,7 @@ Obtains the names of all actions supported by this element. This API uses an asy
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1015,7 +1025,7 @@ rootElement.actionNames((err: BusinessError, data: string[]) => {
     console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get action names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting action names, ${JSON.stringify(data)}`);
 })
 ```
 
@@ -1027,7 +1037,7 @@ Performs an action based on the specified action name. This API uses a promise t
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1035,7 +1045,7 @@ Performs an action based on the specified action name. This API uses a promise t
 
 | Name        | Type                                    | Mandatory  | Description                                                      |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action). |
+| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action).| 
 | parameters | object | No   | Parameters required for performing the target action. Empty by default.                            |
 
 **Return value**
@@ -1046,11 +1056,11 @@ Performs an action based on the specified action name. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300005 | This action is not supported. |
 
 **Example**
@@ -1062,7 +1072,7 @@ let actionName = 'action';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.performAction(actionName).then(() => {
-  console.info(`Succeeded in perform action,actionName is ${actionName}`);
+  console.info(`succeeded in performing action,actionName is ${actionName}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1076,7 +1086,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // rootElement is an instance of AccessibilityElement.
 // An action that does not require any parameter setting is an action without parameters, as specified in the action description.
 rootElement.performAction('click').then(() => {
-  console.info(`Succeeded in perform action.`);
+  console.info(`succeeded in performing action.`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1090,11 +1100,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // rootElement is an instance of AccessibilityElement.
 // Sample code of setSelection
 rootElement.performAction('setSelection', {
-  selectTextBegin: '0', // Indicates the start position of selection.
-  selectTextEnd: '8',   // Indicates the end position of selection.
+  selectTextBegin: '0', // Start position of the selection.
+  selectTextEnd: '8',   // End position of the selection.
   selectTextInForWard: true   // true indicates the insertion point, and false indicates the selection range.
 }).then(() => {
-  console.info(`Succeeded in perform action`);
+  console.info(`succeeded in performing action`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1108,7 +1118,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 rootElement.performAction('setCursorPosition', {
   offset: '1'   // Position of the cursor.
 }).then(() => {
-  console.info(`Succeeded in perform action`);
+  console.info(`succeeded in performing action`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1122,7 +1132,7 @@ Performs an action based on the specified action name. This API uses an asynchro
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1130,16 +1140,16 @@ Performs an action based on the specified action name. This API uses an asynchro
 
 | Name        | Type                                    | Mandatory  | Description            |
 | ----------- | ---------------------------------------- | ---- | -------------- |
-| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action).|
+| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action).| 
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300005 | This action is not supported. |
 
 **Example**
@@ -1155,7 +1165,7 @@ rootElement.performAction(actionName, (err: BusinessError) => {
     console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in perform action, actionName is ${actionName}`);
+  console.info(`succeeded in performing action, actionName is ${actionName}`);
 });
 ```
 
@@ -1167,7 +1177,7 @@ Performs an action based on the specified action name. This API uses an asynchro
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1181,11 +1191,11 @@ Performs an action based on the specified action name. This API uses an asynchro
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300005 | This action is not supported. |
 
 **Example**
@@ -1202,7 +1212,7 @@ rootElement.performAction(actionName, parameters, (err: BusinessError) => {
     console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in perform action,actionName is ${actionName}, parameters is ${parameters}`);
+  console.info(`succeeded in performing action,actionName is ${actionName}, parameters is ${parameters}`);
 });
 ```
 
@@ -1214,7 +1224,7 @@ Finds an element based on the content type. This API uses a promise to return th
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1229,15 +1239,15 @@ Finds an element based on the content type. This API uses a promise to return th
 
 | Type                                      | Description                           |
 | ---------------------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Promise used to return the result.|
+| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Promise used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1248,7 +1258,7 @@ let condition = 'keyword';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.findElement('content', condition).then((data: AccessibilityElement[]) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1262,7 +1272,7 @@ Finds an element based on the content type. This API uses an asynchronous callba
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1272,15 +1282,15 @@ Finds an element based on the content type. This API uses an asynchronous callba
 | --------- | ---------------------------------------- | ---- | ---------------------------- |
 | type      | string                                   | Yes   | Type of element finding. The value is fixed at **'content'**.|
 | condition | string                                   | Yes   | Search criteria.                    |
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Yes   | Callback used to return the result.    |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Yes   | Callback used to return the result.    |
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1295,7 +1305,7 @@ rootElement.findElement('content', condition, (err: BusinessError, data: Accessi
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -1307,7 +1317,7 @@ Finds an element based on the focus type. This API uses a promise to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1322,15 +1332,15 @@ Finds an element based on the focus type. This API uses a promise to return the 
 
 | Type                                 | Description                            |
 | ----------------------------------- | ------------------------------ |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the result.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1342,7 +1352,7 @@ let condition: FocusType = 'normal';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.findElement('focusType', condition).then((data: AccessibilityElement) => {
-  console.log(`Succeeded in find element,${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1356,7 +1366,7 @@ Finds an element based on the focus type. This API uses an asynchronous callback
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1366,15 +1376,15 @@ Finds an element based on the focus type. This API uses an asynchronous callback
 | --------- | ---------------------------------------- | ---- | ---------------------------------- |
 | type      | string                                   | Yes   | Type of element finding. The value is fixed at **'focusType'**.|
 | condition | [FocusType](#focustype)                  | Yes   | Focus type.                      |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the result.         |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the result.         |
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1390,7 +1400,7 @@ rootElement.findElement('focusType', condition, (err: BusinessError, data: Acces
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -1402,7 +1412,7 @@ Finds an element based on the focus direction. This API uses a promise to return
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1417,15 +1427,15 @@ Finds an element based on the focus direction. This API uses a promise to return
 
 | Type                                 | Description                              |
 | ----------------------------------- | -------------------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the result.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1437,7 +1447,7 @@ let condition: FocusDirection = 'up';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.findElement('focusDirection', condition).then((data: AccessibilityElement) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1451,7 +1461,7 @@ Finds an element based on the focus direction. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1461,15 +1471,15 @@ Finds an element based on the focus direction. This API uses an asynchronous cal
 | --------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type      | string                                   | Yes   | Type of element finding. The value is fixed at **'focusDirection'**.|
 | condition | [FocusDirection](#focusdirection)        | Yes   | Direction of the next focus element.                          |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the result.             |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the result.             |
 
 **Error codes**
 
-For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                         |
 | ------- | ----------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1485,6 +1495,6 @@ rootElement.findElement('focusDirection', condition, (err: BusinessError, data: 
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 });
 ```

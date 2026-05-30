@@ -1,16 +1,16 @@
 # Interfaces（其他）
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **说明：**
 >
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## WebOptions
 
@@ -20,11 +20,12 @@
 
 | 名称        | 类型                          | 只读     | 可选   | 说明                                     |
 | ---------- | ------------------------------|---- | ---- | ---------------------------------------- |
-| src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否    | 否    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件(文件支持html和txt类型)，请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。 |
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | 否    | 否   | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、声明周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
+| src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否    | 否    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件（文件支持html和txt类型），请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。 |
+| controller | [WebController](./arkts-basic-components-web-WebController.md) \| WebviewController  | 否    | 否   | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、生命周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用[WebviewController](./arkts-basic-components-web-t.md#webviewcontroller9)替代。 |
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否    | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示支持Web组件同步渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 |
-| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。 |
+| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>传入undefined或null时为false。 |
 | sharedRenderProcessToken<sup>12+</sup> | string | 否    | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。  |
+| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否    | 是 |  设定鼠标事件是否被转换成触摸事件。<br> 默认值：false。 |
 
 ## WebMediaOptions<sup>10+</sup>
 
@@ -35,7 +36,7 @@ Web媒体策略的配置。
 | 名称             | 类型      | 只读 | 可选  | 说明                                       |
 | -------------- | ------- | ---- | ---- | ---------------------------------------- |
 | resumeInterval | number  | 否 | 是 | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。|
-| audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。<br>默认值:true。                       |
+| audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。<br>默认值：true。                       |
 | audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。|
 
 ## ScriptItem<sup>11+</sup>
@@ -47,7 +48,21 @@ Web媒体策略的配置。
 | 名称         | 类型           | 只读 | 可选   | 说明           |
 | ----------- | -------------- | --- | ------|--------------- |
 | script      | string         | 否  |  否    | 需要注入、执行的JavaScript脚本。 |
-| scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议(自定义协议)，不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
+| scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议（自定义协议），不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
+| urlRegexRules<sup>23+</sup>  | Array\<[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)\> | 否  |  是    | 一组允许来源的正则匹配规则。 当scriptRules设置为[]时，才使用urlRegexRules进行匹配。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## UrlRegexRule<sup>23+</sup>
+
+定义Url正则表达式规则。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称          | 类型  | 只读 | 可选 | 说明            |
+| ----------- | ------ | --- | -----|---------------- |
+| secondLevelDomain | string | 否  | 否    | 二级域名的精确匹配。例如，"https://www.example.com"的二级域名为example.com；"https://www.example.com.cn"二级域名为example.com.cn。网址没有二级域名则为空。 |
+| rule | string | 否  | 否    | url正则表达式。 在secondLevelDomain匹配成功后，才进行url正则匹配。 |
 
 ## NestedScrollOptionsExt<sup>14+</sup>
 
@@ -73,8 +88,11 @@ Web媒体策略的配置。
 |  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭应用接管网页媒体播放功能。<br/> 默认值：false。 |
 |  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的高度，使其覆盖网页内容。false表示不覆盖网页内容，跟原视频图层高度一样，嵌入在网页中。<br>默认值：false。 |
 
-## ExpandedMenuItemOptions<sup>12+</sup>
+## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
+> **说明：**
+>
+> 从API version 12开始支持，从API version 20开始废弃，建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
 自定义菜单扩展项。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -206,7 +224,7 @@ Web同层渲染的配置。
 
 ## OnHttpErrorReceiveEvent<sup>12+</sup>
 
-定义网页收到加载资源加载HTTP错误时触发。
+定义网页收到资源加载HTTP错误时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -227,7 +245,7 @@ Web同层渲染的配置。
 | userAgent          | string | 否 | 否 | 用于下载的用户代理。                          |
 | contentDisposition | string | 否 | 否 | 服务器返回的 Content-Disposition响应头，服务器可能返回空。 |
 | mimetype           | string | 否 | 否 | 服务器返回内容媒体类型（MIME）信息。                |
-| contentLength      | number | 否 | 否 | 服务器返回文件的长度。                         |
+| contentLength      | number | 否 | 否 | 服务器返回文件的长度。  单位：字节。                       |
 
 ## OnRefreshAccessedHistoryEvent<sup>12+</sup>
 
@@ -239,6 +257,7 @@ Web同层渲染的配置。
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | url         | string  | 否 | 否 | 访问的url。                                  |
 | isRefreshed | boolean | 否 | 否 | true表示该页面是被重新加载的（调用[refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh)接口），false表示该页面是新加载的。 |
+| isMainFrame<sup>22+</sup> | boolean | 否 | 是 | 是否是主文档触发。<br>true表示是主文档触发，false表示不是主文档触发。|
 
 ## OnRenderExitedEvent<sup>12+</sup>
 
@@ -398,8 +417,19 @@ Web同层渲染的配置。
 | handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | 否 | 否 | 通知Web组件用户操作行为。  |
 | host     | string                                   | 否 | 否 | 请求证书服务器的主机名。    |
 | port     | number                                   | 否 | 否 | 请求证书服务器的端口号。    |
-| keyTypes | Array<string\>                           | 否 | 否 | 可接受的非对称秘钥类型。    |
+| keyTypes | Array<string\>                           | 否 | 否 | 可接受的非对称密钥类型。    |
 | issuers  | Array<string\>                           | 否 | 否 | 与私钥匹配的证书可接受颁发者。 |
+
+
+## VerifyPinEvent<sup>22+</sup>
+定义当需要用户进行PIN码认证时触发回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ------------|---------------------------- |
+| handler  | [VerifyPinHandler](./arkts-basic-components-web-VerifyPinHandler.md) | 否 | 否 | 通知Web组件用户操作行为。  |
+| identity     | string                                   | 否 | 否 | 用于认证的证书凭据标识。    |
 
 ## OnWindowNewEvent<sup>12+</sup>
 
@@ -413,6 +443,34 @@ Web同层渲染的配置。
 | isUserTrigger | boolean                                  | 否 | 否 | true代表用户触发，false代表非用户触发。      |
 | targetUrl     | string                                   | 否 | 否 | 目标url。                        |
 | handler       | [ControllerHandler](./arkts-basic-components-web-ControllerHandler.md) | 否 | 否 | 用于设置新建窗口的WebviewController实例。 |
+
+## WindowFeatures<sup>23+</sup>
+
+网页请求创建的新窗口特征信息，包括大小和位置。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                | 类型                                  | 只读 | 可选 | 说明                        |
+|-------------------| ------------------------------------ | ---- | ---- |---------------------------|
+| x                 | number                              | 否    | 否 | 新窗口左上角横坐标（单位：像素）。   |
+| y                 | number                              | 否    | 否 | 新窗口左上角纵坐标（单位：像素）。            |
+| width             | number                              | 否    | 否 | 新窗口宽度（单位：像素）。          |
+| height            | number                              | 否    | 否 | 新窗口高度（单位：像素）。          |
+
+## OnWindowNewExtEvent<sup>23+</sup>
+
+定义网页请求用户创建窗口时触发的回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读   | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| isAlert       | boolean                                  | 否 | 否 | true代表请求创建对话框，false代表请求创建新标签页。    |
+| isUserTrigger | boolean                                  | 否 | 否 | true代表用户触发，false代表非用户触发。      |
+| targetUrl     | string                                   | 否 | 否 | 请求的新窗口中需要打开的url。                        |
+| handler       | [ControllerHandler](./arkts-basic-components-web-ControllerHandler.md) | 否 | 否 | 用于设置新建窗口的WebviewController实例。 |
+| windowFeatures | [WindowFeatures](./arkts-basic-components-web-i.md#windowfeatures23)                                | 否 | 否 | 网页请求创建的新窗口特征信息。 |
+| navigationPolicy | [NavigationPolicy](./arkts-basic-components-web-e.md#navigationpolicy23)                            | 否 | 否 | 网页请求用户创建新窗口时的窗口打开方式。 |
 
 ## OnTouchIconUrlReceivedEvent<sup>12+</sup>
 
@@ -510,7 +568,7 @@ Web同层渲染的配置。
 | methodList | Array\<string\>                          | 否 | 否    | 参与注册的应用侧JavaScript对象的同步方法。                 |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | 否 | 是    | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。   |
-| permission<sup>12+</sup>  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
+| permission<sup>12+</sup>  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 
 ## OnPageEndEvent<sup>12+</sup>
 
@@ -540,7 +598,7 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| newProgress | number | 否 | 否 | 新的加载进度，取值范围为0到100的整数。                       |
+| newProgress | number | 否 | 否 | 新的加载进度，取值范围为[0, 100]的整数。                       |
 
 ## OnTitleReceiveEvent<sup>12+</sup>
 
@@ -583,7 +641,7 @@ Web同层渲染的配置。
 
 | 名称                     | 类型   | 只读   | 可选 | 说明                                   |
 | ------------------------ | ---- | ---- | ---- | -------------------------------------- |
-| jsStack      | string | 否 | 否 | 网页的javaScript调用栈信息。       |
+| jsStack      | string | 否 | 否 | 网页的JavaScript调用栈信息。       |
 | pid | number | 否 | 否 | 网页的进程id。 |
 | reason | [RenderProcessNotRespondingReason](./arkts-basic-components-web-e.md#renderprocessnotrespondingreason12) | 否 | 否 | 触发渲染进程无响应回调的原因。 |
 
@@ -629,7 +687,7 @@ Web组件进入全屏回调事件的详情。
 | url               | string                              | 否    | 是 | 同层标签的url信息。            |
 | tag<sup>12+</sup> | string              | 否    | 是 | 标签名，统一为大写字符。              |
 | params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的param标签键值对列表，该map本质为Object类型，请使用Object提供的方法操作该对象，即`embed.info?.param?.["name"]`。  |
-| position<sup>12+</sup>          | Position            | 否    | 是 | 同层标签在屏幕坐标系中相对于Web组件的位置信息，此处区别于标准Position，单位为px。 |
+| position<sup>12+</sup>          | Position            | 否    | 是 | 同层标签相对于Web组件左上角为坐标原点的位置信息，此处区别于标准Position，单位为px。 |
 
 ## NativeEmbedParamItem<sup>21+</sup>
 
@@ -664,7 +722,7 @@ Web组件进入全屏回调事件的详情。
 | 名称             | 类型   | 只读   | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | controller | [WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)  | 否 | 否 | 提供控制自定义键盘的输入、删除、关闭等操作。 |
-| attributes | Record<string, string> | 否 | 否 | 触发本次软键盘弹出的网页元素属性。
+| attributes | Record<string, string> | 否 | 否 | 触发本次软键盘弹出的网页元素属性。|
 
 ## WebKeyboardOptions<sup>12+</sup>
 
@@ -676,7 +734,7 @@ Web组件进入全屏回调事件的详情。
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | 否 | 否 | 是否使用系统默认软键盘。<br>true表示使用系统默认软键盘，false表示不使用系统默认软键盘。<br>默认值：true。 |
 | enterKeyType | number | 否 | 是 | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，默认值为UNSPECIFIED。当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
-| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | 是 | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。
+| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | 是 | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。|
 
 
 ## FirstMeaningfulPaint<sup>12+</sup>
@@ -702,7 +760,7 @@ Web组件进入全屏回调事件的详情。
 | largestImagePaintTime     | number | 否 | 是   | 最大图片加载的时间，单位是以毫秒表示。   |
 | largestTextPaintTime      | number | 否 | 是   | 最大文本加载时间，单位是以毫秒表示。     |
 | largestImageLoadStartTime | number | 否 | 是   | 最大图片开始加载时间，单位是以毫秒表示。 |
-| largestImageLoadEndTime   | number | 否 | 是   | 最大图片结束记载时间，单位是以毫秒表示。 |
+| largestImageLoadEndTime   | number | 否 | 是   | 最大图片结束加载时间，单位是以毫秒表示。 |
 | imageBPP                  | number | 否 | 是   | 最大图片像素位数。                           |
 
 ## NativeEmbedDataInfo<sup>11+</sup>
@@ -787,7 +845,7 @@ Web组件进入全屏回调事件的详情。
 
 ## OnPdfScrollEvent<sup>20+</sup>
 
-定义PDF页面滚动到底时触发的函数。
+定义PDF页面滚动到底时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -815,3 +873,100 @@ Web屏幕捕获的配置。
 | 名称          | 类型                                      | 只读 | 可选  | 说明         |
 | ----------- | --------------------------------------- | ---- |----| ---------- |
 | captureMode | [WebCaptureMode](./arkts-basic-components-web-e.md#webcapturemode10) | 否 | 否 | Web屏幕捕获模式。 |
+
+## BlankScreenDetectionEventInfo<sup>22+</sup>
+
+定义检测到白屏时的事件信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| url | string | 否 | 否 | 检测到白屏时，页面的url。    |
+| blankScreenReason | [DetectedBlankScreenReason](./arkts-basic-components-web-e.md#detectedblankscreenreason22) | 否 | 否 | 本次检测到白屏时，具体原因与检测的方法相关。    |
+| blankScreenDetails | [BlankScreenDetails](./arkts-basic-components-web-i.md#blankscreendetails22) | 否 | 是 | 本次检测白屏的结果的细节。<br>如当发现近似白屏的现象产生，这个细节就包含具体命中了多少点。否则没有该属性。 |
+
+## BlankScreenDetails<sup>22+</sup>
+
+定义检测到白屏时的结果的细节。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| detectedContentfulNodesCount | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。<br>表示当前命中了多少有内容的节点。    |
+
+## BlankScreenDetectionConfig<sup>22+</sup>
+
+定义白屏检测的策略配置选项。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| enable | boolean | 否 | 否 | 是否使能白屏策略功能。   |
+| detectionTiming | number[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br/>默认值：[1.0,3.0,5.0]。 |
+| detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
+| contentfulNodesCountThreshold | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。|
+
+## CameraCaptureStateChangeInfo<sup>23+</sup>
+
+定义摄像头触发回调时的改变前后的状态信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 原来的状态   |
+| newState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 改变后的状态   |
+
+## MicrophoneCaptureStateChangeInfo<sup>23+</sup>
+
+定义麦克风触发回调时的改变前后的状态信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
+| newState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |
+
+## AcceptableFileType<sup>23+</sup>
+
+定义文件选择器拉取文件时网页推荐的文件类型信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称  | 类型                     | 只读 | 可选 | 说明             |
+| :---- | :------------------------- | :--- | :--- | :--------------- |
+| mimeType | string | 否 | 否   | 文件MIME类型。 |
+| acceptableType | Array\<string\> | 否 | 否   | 文件类型数组，包含若干可供选择的文件类型。 |
+
+## FirstScreenPaint<sup>23+</sup>
+
+检测到首屏渲染时的事件信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| url | string | 否 | 否 | 本次首屏渲染统计所对应的url。    |
+| navigationStartTime | number | 否 | 否 | url所指页面开始导航的时刻。<br>单位：毫秒。 |
+| firstScreenPaintTime | number | 否 | 否 | url所指页面首屏绘制完成的时刻。<br>单位：毫秒。|
+
+## AISessionEvent
+
+自定义AI会话配置对象，用于定义AI会话的生命周期回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| aiSessionType | [AISessionType](./arkts-basic-components-web-e.md#aisessiontype) | 否 | 否 | AI会话类型。 |
+| onCreateAISession | [OnCreateAISession](./arkts-basic-components-web-t.md#oncreateaisession) | 否 | 否 | AI会话创建时触发的回调函数。返回`true`跳过系统默认行为，返回`false`继续执行系统默认逻辑。 |
+| onExecuteAIAction | [OnExecuteAIAction](./arkts-basic-components-web-t.md#onexecuteaiaction) | 否 | 否 | AI会话执行操作时触发的回调函数。 |
+| onDestroyAISession | [OnDestroyAISession](./arkts-basic-components-web-t.md#ondestroyaisession) | 否 | 否 | AI会话销毁时触发的回调函数，用于清理与自定义AI模型关联的资源。 |

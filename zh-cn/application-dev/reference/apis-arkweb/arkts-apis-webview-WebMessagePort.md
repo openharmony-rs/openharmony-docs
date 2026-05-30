@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 通过WebMessagePort可以进行消息的发送以及接收，发送[WebMessageType](./arkts-apis-webview-e.md#webmessagetype10)/[WebMessage](./arkts-apis-webview-t.md#webmessage)类型消息给HTML5侧。
 
@@ -14,7 +14,7 @@
 >
 > - 本Interface首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 导入模块
 
@@ -214,7 +214,7 @@ class TestObj {
   }
 }
 
-// 应用与网页互发消息的示例：使用"init_web_messageport"的通道，通过端口0在应用侧接受网页发送的消息，通过端口1在网页侧接受应用发送的消息。
+// 应用与网页互发消息的示例：使用"init_web_messageport"的通道，通过端口0在应用侧接收网页发送的消息，通过端口1在网页侧接收应用发送的消息。
 @Entry
 @Component
 struct WebComponent {
@@ -523,6 +523,7 @@ struct WebComponent {
           try {
             if (this.msgPort && this.msgPort.length == 2) {
               this.msgPort[1].close();
+              this.msgPort = [];
             } else {
               console.error("msgPort is null, Please initialize first");
             }

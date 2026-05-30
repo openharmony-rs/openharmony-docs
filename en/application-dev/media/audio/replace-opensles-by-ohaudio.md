@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You are advised to use OHAudio APIs instead of OpenSL ES APIs to develop audio services, since the latter may fail to provide extended audio capabilities. This topic describes how to switch the audio service code from the OpenSL ES APIs to the OHAudio APIs.
 
@@ -14,7 +14,7 @@ Different from the OpenSL ES APIs, the OHAudio APIs support low-latency playback
 
 The table below lists the differences in the features supported by the APIs.
 
-| | OpenSL ES| OHAudio |
+| Feature| OpenSL ES| OHAudio |
 | --- | --- | --- |
 | Audio streaming playback| Supported| Supported|
 | Audio streaming recording| Supported| Supported|

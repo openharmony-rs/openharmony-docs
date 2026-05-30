@@ -2,15 +2,23 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+ImagePacker类，用于图片压缩和编码。
+
+在调用ImagePacker的方法前，需要先通过[image.createImagePacker](arkts-apis-image-f.md#imagecreateimagepacker)构建一个ImagePacker实例。
+
+编码期间，请避免修改或释放作为输入的ImageSource/PixelMap/Picture对象，以免出现crash或其他未定义行为。
+
+由于图片占用内存较大，所以当ImagePacker实例使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
+当前支持的格式有：JPEG、WebP、PNG、HEIC<sup>12+</sup>、GIF<sup>18+</sup>、从API版本26.0.0开始支持TIFF格式（不同硬件设备支持情况不同，可通过ImagePacker的supportedFormats属性查看）。
 
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-图片编码器类，用于图片压缩和编码。在调用ImagePacker的方法前，需要先通过[createImagePacker](arkts-apis-image-f.md#imagecreateimagepacker)构建一个ImagePacker实例，当前支持格式有：jpeg、webp、png、heif<sup>12+</sup>（不同硬件设备支持情况不同）。
 
 ## 导入模块
 
@@ -24,13 +32,13 @@ import { image } from '@kit.ImageKit';
 
 | 名称             | 类型           | 只读 | 可选 | 说明                       |
 | ---------------- | -------------- | ---- | ---- | -------------------------- |
-| supportedFormats | Array\<string> | 是   | 否   | 图片编码支持的格式 jpeg、webp、png、heic<sup>12+</sup>（不同硬件设备支持情况不同）。 |
+| supportedFormats | Array\<string> | 是   | 否   | 图片编码支持的格式，包括：JPEG、WebP、PNG、HEIC<sup>12+</sup>、GIF<sup>18+</sup>、从API版本26.0.0开始支持TIFF格式（不同硬件设备支持情况不同）。 |
 
 ## packToData<sup>13+</sup>
 
 packToData(source: ImageSource, options: PackingOption): Promise\<ArrayBuffer>
 
-图片压缩或重新编码，使用Promise形式返回结果。
+图片压缩或重新编码。使用Promise异步回调。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -43,9 +51,15 @@ packToData(source: ImageSource, options: PackingOption): Promise\<ArrayBuffer>
 | source | [ImageSource](arkts-apis-image-ImageSource.md)     | 是   | 编码的ImageSource。 |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。 |
 
+**返回值：**
+
+| 类型                         | 说明                                          |
+| ---------------------------- | --------------------------------------------- |
+| Promise\<ArrayBuffer>        | Promise对象，返回压缩或编码后的数据。 |
+
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -53,17 +67,11 @@ packToData(source: ImageSource, options: PackingOption): Promise\<ArrayBuffer>
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.              |
 | 62980101 | The image data is abnormal. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980119 | Failed to encode the image. |
 | 62980120 | Add pixelmap out of range. |
 | 62980172 | Failed to encode icc. |
 | 62980252 | Failed to create surface. |
-
-**返回值：**
-
-| 类型                         | 说明                                          |
-| ---------------------------- | --------------------------------------------- |
-| Promise\<ArrayBuffer>        | Promise对象，返回压缩或编码后的数据。 |
 
 **示例：**
 
@@ -89,7 +97,7 @@ async function PackToData(context : Context) {
 
 packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 
-图片压缩或重新编码，使用Promise形式返回结果。
+图片压缩或重新编码。使用Promise异步回调。
 
 > **注意：**
 > 接口如果返回401错误码，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -113,7 +121,7 @@ packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -121,7 +129,7 @@ packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.              |
 | 62980101 | The image data is abnormal. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980119 | Failed to encode the image. |
 | 62980120 | Add pixelmap out of range. |
 | 62980172 | Failed to encode icc. |
@@ -154,7 +162,7 @@ async function PackToData() {
 
 packing(picture: Picture, options: PackingOption): Promise\<ArrayBuffer>
 
-将图像压缩或重新编码，使用Promise形式返回结果。
+将图像压缩或重新编码。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -173,7 +181,7 @@ packing(picture: Picture, options: PackingOption): Promise\<ArrayBuffer>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -200,7 +208,6 @@ async function Packing(context: Context) {
     let opts: image.PackingOption = {
       format: "image/jpeg",
       quality: 98,
-      bufferSize: 10,
       desiredDynamicRange: image.PackingDynamicRange.AUTO,
       needsPackProperties: true};
     await imagePackerObj.packing(pictureObj, opts).then((data: ArrayBuffer) => {
@@ -216,7 +223,7 @@ async function Packing(context: Context) {
 
 packToDataFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, options: PackingOptionsForSequence): Promise\<ArrayBuffer>
 
-将多个PixelMap编码成GIF数据。使用Promise形式返回结果。
+将多个PixelMap编码成GIF数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -260,8 +267,8 @@ async function PackToDataFromPixelmapSequence(context : Context) {
     disposalTypes: [3, 2, 3], // 指定GIF编码中3帧的帧过渡模式分别为3（恢复到之前的状态）、2（恢复背景色)、3(恢复到之前的状态)。
     loopCount: 0 // 指定GIF编码中循环次数为无限循环。
   };
-  let Packer = image.createImagePacker();
-  Packer.packToDataFromPixelmapSequence(pixelMapList, ops)
+  let packer = image.createImagePacker();
+  packer.packToDataFromPixelmapSequence(pixelMapList, ops)
     .then((data: ArrayBuffer) => {
       console.info('Succeeded in packing.');
     }).catch((error: BusinessError) => {
@@ -274,9 +281,11 @@ async function PackToDataFromPixelmapSequence(context : Context) {
 
 release(callback: AsyncCallback\<void>): void
 
-释放图片编码实例，使用callback形式返回结果。
+释放图片编码实例。使用callback异步回调。
 
-ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+由于图片占用内存较大，所以当ImagePacker实例使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -307,9 +316,11 @@ async function Release() {
 
 release(): Promise\<void>
 
-释放图片编码实例，使用Promise形式返回释放结果。
+释放图片编码实例。使用Promise异步回调。
 
-ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+由于图片占用内存较大，所以当ImagePacker实例使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -317,7 +328,7 @@ ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最
 
 | 类型           | 说明                                                   |
 | -------------- | ------------------------------------------------------ |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **示例：**
 
@@ -338,7 +349,7 @@ async function Release() {
 
 packToFile(source: ImageSource, fd: number, options: PackingOption, callback: AsyncCallback\<void>): void
 
-指定编码参数，将ImageSource直接编码进文件。使用callback形式返回结果。
+指定编码参数，将ImageSource直接编码进文件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -347,7 +358,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 | 参数名   | 类型                            | 必填 | 说明                           |
 | -------- | ------------------------------- | ---- | ------------------------------ |
 | source   | [ImageSource](arkts-apis-image-ImageSource.md)     | 是   | 编码的ImageSource。                 |
-| fd       | number                          | 是   | 文件描述符。                   |
+| fd       | number                          | 是   | 文件描述符。取值范围为[0，65535]。                   |
 | options   | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数，当编码进文件成功，err为undefined，否则为错误对象。  |
 
@@ -360,7 +371,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.              |
 | 62980101 | The image data is abnormal. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid input parameter. |
 | 62980119 | Failed to encode the image. |
 | 62980120 | Add pixelmap out of range. |
@@ -371,7 +382,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   // 此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
@@ -379,7 +390,7 @@ async function PackToFile(context : Context) {
   const imageSourceObj: image.ImageSource = image.createImageSource(path);
   let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
   const filePath: string = context.filesDir + "/image_source.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   imagePackerObj.packToFile(imageSourceObj, file.fd, packOpts, (err: BusinessError) => {
     if (err) {
@@ -395,7 +406,7 @@ async function PackToFile(context : Context) {
 
 packToFile (source: ImageSource, fd: number, options: PackingOption): Promise\<void>
 
-指定编码参数，将ImageSource直接编码进文件。使用Promise形式返回结果。
+指定编码参数，将ImageSource直接编码进文件。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -404,14 +415,14 @@ packToFile (source: ImageSource, fd: number, options: PackingOption): Promise\<v
 | 参数名 | 类型                            | 必填 | 说明           |
 | ------ | ------------------------------- | ---- | -------------- |
 | source | [ImageSource](arkts-apis-image-ImageSource.md)     | 是   | 编码的ImageSource。 |
-| fd     | number                          | 是   | 文件描述符。   |
+| fd     | number                          | 是   | 文件描述符。取值范围为[0，65535]。   |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。 |
 
 **返回值：**
 
 | 类型           | 说明                              |
 | -------------- | --------------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -422,7 +433,7 @@ packToFile (source: ImageSource, fd: number, options: PackingOption): Promise\<v
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.              |
 | 62980101 | The image data is abnormal. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid input parameter. |
 | 62980119 | Failed to encode the image. |
 | 62980120 | Add pixelmap out of range. |
@@ -433,7 +444,7 @@ packToFile (source: ImageSource, fd: number, options: PackingOption): Promise\<v
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   // 此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
@@ -441,7 +452,7 @@ async function PackToFile(context : Context) {
   const imageSourceObj: image.ImageSource = image.createImageSource(path);
   let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
   const filePath: string = context.filesDir + "/image_source.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   imagePackerObj.packToFile(imageSourceObj, file.fd, packOpts).then(() => {
     console.info('Succeeded in packing the image to file.');
@@ -455,7 +466,7 @@ async function PackToFile(context : Context) {
 
 packToFile (source: PixelMap, fd: number, options: PackingOption,  callback: AsyncCallback\<void>): void
 
-指定编码参数，将PixelMap直接编码进文件。使用callback形式返回结果。
+指定编码参数，将PixelMap直接编码进文件。使用callback异步回调。
 
 > **注意：**
 > 接口如果返回62980115错误码，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -467,7 +478,7 @@ packToFile (source: PixelMap, fd: number, options: PackingOption,  callback: Asy
 | 参数名   | 类型                            | 必填 | 说明                           |
 | -------- | ------------------------------- | ---- | ------------------------------ |
 | source   | [PixelMap](arkts-apis-image-PixelMap.md)          | 是   | 编码的PixelMap资源。           |
-| fd       | number                          | 是   | 文件描述符。                   |
+| fd       | number                          | 是   | 文件描述符。取值范围为[0，65535]。                   |
 | options   | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数，当编码图片进文件成功，err为undefined，否则为错误对象。  |
 
@@ -480,7 +491,7 @@ packToFile (source: PixelMap, fd: number, options: PackingOption,  callback: Asy
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.              |
 | 62980101 | The image data is abnormal. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid input parameter. |
 | 62980119 | Failed to encode the image. |
 | 62980120 | Add pixelmap out of range. |
@@ -491,7 +502,7 @@ packToFile (source: PixelMap, fd: number, options: PackingOption,  callback: Asy
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
@@ -499,7 +510,7 @@ async function PackToFile(context : Context) {
   const path: string = context.filesDir + "/pixel_map.jpg";
   image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
-    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     const imagePackerObj: image.ImagePacker = image.createImagePacker();
     imagePackerObj.packToFile(pixelmap, file.fd, packOpts, (err: BusinessError) => {
       if (err) {
@@ -516,7 +527,7 @@ async function PackToFile(context : Context) {
 
 packToFile (source: PixelMap, fd: number, options: PackingOption): Promise\<void>
 
-指定编码参数，将PixelMap直接编码进文件。使用Promise形式返回结果。
+指定编码参数，将PixelMap直接编码进文件。使用Promise异步回调。
 
 > **注意：**
 > 接口如果返回62980115错误码，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -528,14 +539,14 @@ packToFile (source: PixelMap, fd: number, options: PackingOption): Promise\<void
 | 参数名 | 类型                            | 必填 | 说明                 |
 | ------ | ------------------------------- | ---- | -------------------- |
 | source | [PixelMap](arkts-apis-image-PixelMap.md)          | 是   | 编码的PixelMap资源。 |
-| fd     | number                          | 是   | 文件描述符。         |
+| fd     | number                          | 是   | 文件描述符。取值范围为[0，65535]。         |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。       |
 
 **返回值：**
 
 | 类型           | 说明                              |
 | -------------- | --------------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -546,7 +557,7 @@ packToFile (source: PixelMap, fd: number, options: PackingOption): Promise\<void
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.              |
 | 62980101 | The image data is abnormal. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid input parameter. |
 | 62980119 | Failed to encode the image. |
 | 62980120 | Add pixelmap out of range. |
@@ -557,7 +568,7 @@ packToFile (source: PixelMap, fd: number, options: PackingOption): Promise\<void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
@@ -565,7 +576,7 @@ async function PackToFile(context : Context) {
   const path: string = context.filesDir + "/pixel_map.jpg";
   image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
-    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     const imagePackerObj: image.ImagePacker = image.createImagePacker();
     imagePackerObj.packToFile(pixelmap, file.fd, packOpts)
       .then(() => {
@@ -581,7 +592,7 @@ async function PackToFile(context : Context) {
 
 packToFile(picture: Picture, fd: number, options: PackingOption): Promise\<void>
 
-指定编码参数，将Picture直接编码进文件。使用Promise形式返回结果。
+指定编码参数，将Picture直接编码进文件。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -590,18 +601,18 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise\<void>
 | 参数名  | 类型                         | 必填 | 说明                 |
 | ------- | ---------------------------- | ---- | -------------------- |
 | picture  | [Picture](arkts-apis-image-Picture.md)          | 是   | 编码的Picture资源。 |
-| fd      | number                       | 是   | 文件描述符。         |
+| fd      | number                       | 是   | 文件描述符。取值范围为[0，65535]。         |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。       |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -612,7 +623,7 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context: Context) {
   const resourceMgr = context.resourceManager;
@@ -628,11 +639,10 @@ async function PackToFile(context: Context) {
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   if (imagePackerObj != null) {
     const filePath: string = context.filesDir + "/test.jpg";
-    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     let packOpts: image.PackingOption = {
       format: "image/jpeg",
       quality: 98,
-      bufferSize: 10,
       desiredDynamicRange: image.PackingDynamicRange.AUTO,
       needsPackProperties: true};
     await imagePackerObj.packToFile(pictureObj, file.fd, packOpts).then(() => {
@@ -648,7 +658,7 @@ async function PackToFile(context: Context) {
 
 packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd: number, options: PackingOptionsForSequence): Promise\<void>
 
-指定编码参数，将多个PixelMap编码成GIF文件。使用Promise形式返回结果。
+指定编码参数，将多个PixelMap编码成GIF文件。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -657,14 +667,14 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd: number, o
 | 参数名           | 类型                                                      | 必填 | 说明                   |
 | ---------------- | --------------------------------------------------------- | ---- | ---------------------- |
 | pixelmapSequence | Array<[PixelMap](arkts-apis-image-PixelMap.md)>                             | 是   | 待编码的PixelMap序列。 |
-| fd               | number                                                    | 是   | 文件描述符。           |
+| fd               | number                                                    | 是   | 文件描述符。取值范围为[0，65535]。           |
 | options          | [PackingOptionsForSequence](arkts-apis-image-i.md#packingoptionsforsequence18) | 是   | 动图编码参数。         |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -679,7 +689,7 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd: number, o
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const resourceMgr = context.resourceManager;
@@ -689,15 +699,15 @@ async function PackToFile(context : Context) {
   let imageSource = image.createImageSource(color);
   let pixelMapList = await imageSource.createPixelMapList();
   let path: string = context.cacheDir + '/result.gif';
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   let ops: image.PackingOptionsForSequence = {
     frameCount: 3,  // 指定GIF编码中的帧数为3。
     delayTimeList: [10, 10, 10],  // 指定GIF编码中3帧的延迟时间分别为100ms、100ms、100ms。
     disposalTypes: [3, 2, 3], // 指定GIF编码中3帧的帧过渡模式分别为3（恢复到之前的状态）、2（恢复背景色)、3(恢复到之前的状态)。
     loopCount: 0 // 指定GIF编码中循环次数为无限循环。
   };
-  let Packer = image.createImagePacker();
-  Packer.packToFileFromPixelmapSequence(pixelMapList, file.fd, ops)
+  let packer = image.createImagePacker();
+  packer.packToFileFromPixelmapSequence(pixelMapList, file.fd, ops)
     .then(() => {
       console.info('Succeeded in packToFileMultiFrames.');
     }).catch((error: BusinessError) => {
@@ -706,11 +716,159 @@ async function PackToFile(context : Context) {
 }
 ```
 
+## packBinaryImageToTiffFile
+
+packBinaryImageToTiffFile(bufferInfo: BinaryBufferInfo, fd: number, options?: PackingOptionsForTiff): Promise\<void>
+
+将二值图像数据编码到入参fd对应的TIFF文件。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| bufferInfo | [BinaryBufferInfo](arkts-apis-image-i.md#binarybufferinfo) | 是 | 图像缓冲区信息。 |
+| fd | number | 是 | 文件描述符ID。该值必须为正整数。 |
+| options | [PackingOptionsForTiff](arkts-apis-image-i.md#packingoptionsfortiff) | 否 | TIFF图像编码选项。<br>未传入options时，默认的compression为4（CCITT G4）。<br>未传入options时，默认的orientation为1（TOP_LEFT），表示图像未旋转。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 7800202 | Invalid parameter. Possible causes: 1. Invalid FD; 2. Compression algorithm mismatch. |
+| 7800301 | Encode failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+
+const DOMAIN = 0X00000;
+const TAG: string = 'PackBinaryImageToTiffFile';
+
+async function PackBinaryImageToTiffFile(context: Context) {
+  const width = 100;
+  const height = 100;
+  const rowBytes = 13;
+  const bufferSize = rowBytes * height;
+  const data: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+  let bufferInfo: image.BinaryBufferInfo = {
+    size: { width: width, height: height },
+    data: data,
+    bytesPerRow: rowBytes
+  };
+
+  const filePath: string = context.filesDir + "/output.tiff";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+
+  let tiffOptions: image.PackingOptionsForTiff = {
+    compression: 4 // CCITT G4压缩
+  };
+
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  await imagePackerObj.packBinaryImageToTiffFile(bufferInfo, file.fd, tiffOptions)
+    .then(() => {
+      hilog.info(DOMAIN, TAG, 'Succeeded in packing binary image to tiff file.');
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `Failed to pack binary image to tiff file. code ${error.code}, message is ${error.message}`);
+    });
+  fileIo.closeSync(file);
+}
+```
+
+## packBinaryImageToTiffData
+
+packBinaryImageToTiffData(bufferInfo: BinaryBufferInfo, options?: PackingOptionsForTiff): Promise\<ArrayBuffer>
+
+将二值图像数据编码为TIFF数据，以ArrayBuffer的形式返回。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| bufferInfo | [BinaryBufferInfo](arkts-apis-image-i.md#binarybufferinfo) | 是 | 图像缓冲区信息。 |
+| options | [PackingOptionsForTiff](arkts-apis-image-i.md#packingoptionsfortiff) | 否 | TIFF图像编码选项。<br>未传入options时，默认的compression为4（CCITT G4）。<br>未传入options时，默认的orientation为1（TOP_LEFT），表示图像未旋转。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<ArrayBuffer> | Promise对象，返回编码后的数据。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 7800202 | Invalid parameter. Possible causes: 1. Invalid FD; 2. Compression algorithm mismatch. |
+| 7800301 | Encode failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+
+const DOMAIN = 0X00000;
+const TAG: string = 'PackBinaryImageToTiffData';
+
+async function PackBinaryImageToTiffData() {
+  const width = 100;
+  const height = 100;
+  const rowBytes = 13;
+  const bufferSize = rowBytes * height;
+  const data: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+  let bufferInfo: image.BinaryBufferInfo = {
+    size: { width: width, height: height },
+    data: data,
+    bytesPerRow: rowBytes
+  };
+
+  let tiffOptions: image.PackingOptionsForTiff = {
+    compression: 4 // CCITT G4压缩
+  };
+
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  await imagePackerObj.packBinaryImageToTiffData(bufferInfo, tiffOptions)
+    .then((data: ArrayBuffer) => {
+      hilog.info(DOMAIN, TAG, 'Succeeded in packing binary image to tiff data.');
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `Failed to pack binary image to tiff data. code ${error.code}, message is ${error.message}`);
+    });
+}
+```
+
 ## packing<sup>(deprecated)</sup>
 
 packing(source: ImageSource, option: PackingOption, callback: AsyncCallback\<ArrayBuffer>): void
 
-图片压缩或重新编码，使用callback形式返回结果。
+图片压缩或重新编码。使用callback异步回调。
 
 > **说明：**
 >
@@ -753,7 +911,7 @@ async function Packing(context : Context) {
 
 packing(source: ImageSource, option: PackingOption): Promise\<ArrayBuffer>
 
-图片压缩或重新编码，使用Promise形式返回结果。
+图片压缩或重新编码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -800,7 +958,7 @@ async function Packing(context : Context) {
 
 packing(source: PixelMap, option: PackingOption, callback: AsyncCallback\<ArrayBuffer>): void
 
-图片压缩或重新编码，使用callback形式返回结果。
+图片压缩或重新编码。使用callback异步回调。
 
 > **说明：**
 >
@@ -849,7 +1007,7 @@ async function Packing() {
 
 packing(source: PixelMap, option: PackingOption): Promise\<ArrayBuffer>
 
-图片压缩或重新编码，使用Promise形式返回结果。
+图片压缩或重新编码。使用Promise异步回调。
 
 > **说明：**
 >

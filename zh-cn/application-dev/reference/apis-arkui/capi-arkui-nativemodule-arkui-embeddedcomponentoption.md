@@ -1,8 +1,18 @@
 # ArkUI_EmbeddedComponentOption
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_EmbeddedComponentOption ArkUI_EmbeddedComponentOption
+```
 
 ## 概述
 
-为EmbeddedComponent定义EmbeddedComponentOption。
+为EmbeddedComponent定义参数EmbeddedComponentOption。
 
 **起始版本：** 20
 

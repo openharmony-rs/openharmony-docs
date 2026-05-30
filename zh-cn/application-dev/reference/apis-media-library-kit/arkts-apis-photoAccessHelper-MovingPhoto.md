@@ -4,16 +4,14 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+动态照片对象。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
-
-动态照片对象。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## 导入模块
 
@@ -39,7 +37,7 @@ getUri(): string
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -94,7 +92,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
-同时请求动态照片的图片内容和视频内容，并写入参数指定的对应的uri中。
+同时请求动态照片的图片内容和视频内容，并写入参数指定的对应的uri中。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -116,11 +114,11 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<void> | Promise对象，返回void。 |
+| Promise\<void> |Promise对象，无返回结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -146,7 +144,7 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
     let videoFileUri: string = "file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4";
     try {
       await movingPhoto.requestContent(imageFileUri, videoFileUri);
-      console.log("moving photo contents retrieved successfully");
+      console.info("moving photo contents retrieved successfully");
     } catch (err) {
       console.error(`failed to retrieve contents of moving photo, error code is ${err.code}, message is ${err.message}`);
     }
@@ -188,7 +186,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 
-请求指定资源类型的动态照片内容，并写入参数指定的uri中。
+请求指定资源类型的动态照片内容，并写入参数指定的uri中。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -210,11 +208,11 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<void> | Promise对象，返回void。 |
+| Promise\<void> |Promise对象，无返回结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -239,7 +237,7 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
     let imageFileUri: string = "file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg";
     try {
       await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE, imageFileUri);
-      console.log("moving photo image content retrieved successfully");
+      console.info("moving photo image content retrieved successfully");
     } catch (err) {
       console.error(`failed to retrieve image content of moving photo, error code is ${err.code}, message is ${err.message}`);
     }
@@ -277,7 +275,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(resourceType: ResourceType): Promise\<ArrayBuffer>
 
-请求指定资源类型的动态照片内容，以ArrayBuffer的形式返回。
+请求指定资源类型的动态照片内容，以ArrayBuffer的形式返回。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -302,7 +300,7 @@ requestContent(resourceType: ResourceType): Promise\<ArrayBuffer>
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -325,7 +323,7 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
     }
     try {
       let buffer: ArrayBuffer = await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE);
-      console.log("moving photo image content retrieved successfully, buffer length: " + buffer.byteLength);
+      console.info("moving photo image content retrieved successfully, buffer length: " + buffer.byteLength);
     } catch (err) {
       console.error(`failed to retrieve image content of moving photo, error code is ${err.code}, message is ${err.message}`);
     }

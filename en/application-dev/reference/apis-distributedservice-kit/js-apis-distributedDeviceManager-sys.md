@@ -1,4 +1,10 @@
 # @ohos.distributedDeviceManager (Device Management) (System API)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedHardware-->
+<!--Owner: @hwzhangchuang-->
+<!--Designer: @hwzhangchuang-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **distributedDeviceManager** module provides APIs for distributed device management.
 
@@ -55,7 +61,7 @@ Defines the service profile information. It is populated based on the data retur
 
 **System API**: This is a system API.
 
-| Name          | Type | Read Only| Optional             |  Description   |
+| Name          | Type | Read-Only| Optional             |  Description   |
 | -------------- | ---- | --------| ------- | --------|
 | deviceId       | string  | No| No  |  Device ID.         |
 | serviceId       | string  | No|No  | Service ID.          |
@@ -114,7 +120,7 @@ Defines the device icon information filter options.
 |  productId      | string  | No| No  |  Product ID.         |
 |  subProductId   | string  | No| Yes  |  Sub-product ID. This parameter is left unspecified by default.     |
 |  imageType      | string  | No| No  |  Image type. This parameter has a fixed value of **ID**, indicating the product's physical image.|
-|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016064 pixels)<br>- **sm**: small image (size: 65536 pixels)        |
+|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016064 px)<br>- **sm**: small image (size: 65536 px)        |
 |  internalModel  | string  | No| Yes  |  Internal product model. This parameter is left unspecified by default.       |
 
 ## DeviceIconInfo<sup>18+</sup>
@@ -130,7 +136,7 @@ Defines the device icon information.
 |  productId      | string  | No| No  |  Product ID.         |
 |  subProductId   | string  | No| Yes  |  Sub-product ID. This parameter is left unspecified by default.    |
 |  imageType      | string  | No| No  |  Image type. This parameter has a fixed value of **ID**, indicating the product's physical image.       |
-|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016 x 64 pixels)<br>- **sm**: small image (size: 655 x 36 pixels)        |
+|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016064 px)<br>- **sm**: small image (size: 65536 px)        |
 |  url            | string  | No| No  |  URL.         |
 |  icon           | ArrayBuffer | No| No| Icon.        |
 |  internalModel  | string  | No| Yes  |  Internal product model. This parameter is left unspecified by default.        |
@@ -147,6 +153,21 @@ Defines the network ID filter options.
 | -------------- | ---- | ------ | --------- | --------|
 |  wiseDeviceId       | string  | No| No  |  Registered device ID.         |
 |  onlineStatus    | number  | No| No  |  Device online status.<br>- **0**: The device is offline.<br>- **1**: The device is online.     |
+
+## DeviceIdentification<sup>24+</sup>
+
+Defines a struct to identify a distributed device.
+
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+| Name      | Type | Read-Only| Optional             | Description         |
+|----------| ---- | ------ | --------- |-------------|
+| deviceId | string  | No| No  | Anonymous device ID obtained.|
+| udid     | string  | No| No  | Unique device ID.    |
 
 ## DeviceManager
 
@@ -188,15 +209,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
- try {
-    /*
-      action = 0 - Grant the permission.
-      action = 1 - Revoke the permission.
-      action = 2 - Time out the user operation in the permission request dialog.
-      action = 3 - Cancel the display of the PIN box.
-      action = 4 - Cancel the display of the PIN input box.
-      action = 5 - Confirm the input in the PIN input box.
-    */
+  try {
+    /**
+     * action = 0 - Grant the permission.
+     * action = 1 - Revoke the permission.
+     * action = 2 - Time out the user operation in the permission request dialog.
+     * action = 3 - Cancel the display of the PIN box.
+     * action = 4 - Cancel the display of the PIN input box.
+     * action = 5 - Confirm the input in the PIN input box.
+     */
     let operation = 0;
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     dmInstance.replyUiAction(operation, 'extra');
@@ -210,7 +231,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
-Subscribes to the reply to the UI operation result.
+Subscribes to the reply to the UI operation result. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
@@ -231,6 +252,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                            |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 
@@ -267,7 +289,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
-Unsubscribes from the reply to the UI operation result.
+Unsubscribes from the reply to the UI operation result. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
@@ -288,6 +310,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 
@@ -661,7 +684,7 @@ Sets the remote device name. This API uses a promise to return the result.
 
   | Name      | Type           | Mandatory | Description               |
   | ------------- | --------------- | ---- | ------------------- |
-  |  deviceId       | string         | Yes   | UDID of the  remote device. If the device does not have a UDID, the MAC address or SN of the device is used as the device ID. The SN is used preferentially.    |
+  |  deviceId       | string         | Yes   | UDID of the remote device. If the device does not have a UDID, the MAC address or SN of the device is used as the device ID. The SN is used preferentially.    |
   |  deviceName       | string         | Yes   | Device name to set. The value is a string of 1 to 255 characters.   |
 
 **Returns**
@@ -705,48 +728,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-### restoreLocalDeivceName<sup>18+</sup>
-
-restoreLocalDeivceName(): void
-
-Restores the local device name by resetting the network settings.
-
-**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
-
-**System capability**: SystemCapability.DistributedHardware.DeviceManager
-
-**System API**: This is a system API.
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
-
-| ID| Error Message                                                       |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 11600102 | Failed to obtain the service.                                 |
-
-**Example**
-
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.restoreLocalDeivceName();
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
 ### getDeviceNetworkIdList<sup>18+</sup>
 
 getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains the list of network devices according to the specified filter options.
+Obtains the list of network devices according to the specified filter options. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
@@ -798,5 +784,146 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getDeviceNetworkIdList errCode:' + e.code + ',errMessage:' + e.message);
+  }
+  ```
+### getIdentificationByDeviceIds<sup>24+</sup>
+
+getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIdentification&gt;;
+
+Queries the device identification based on the device ID.
+
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM, ohos.permission.DISTRIBUTED_DATASYNC, and ohos.permission.sec.ACCESS_UDID
+
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Parameters**
+
+  | Name      | Type                 | Mandatory | Description              |
+  | ------------- |---------------------| ---- |------------------|
+  |   deviceIds      | Array&lt;string&gt; |  Yes  | List of device IDs that can be obtained by the application.|
+
+**Returns**
+
+  | Type                                                          | Description           |
+  |--------------------------------------------------------------| --------------- |
+  | Array&lt;[DeviceIdentification](#deviceidentification24)&gt; |  Device identification list.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
+
+| ID   | Error Message                                                                                                             |
+|----------|-------------------------------------------------------------------------------------------------------------------|
+| 201      | User permission verify failed.            |
+| 202      | The caller is not a system application.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed; |
+| 11600101 | Failed to execute the function.                                                                        |
+
+**Example**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit'
+  private idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
+  getDeviceUdids(deviceIds: Array<string>): void {
+    let deviceManager: distributedDeviceManager.DeviceManager | null = null;
+    try {
+      deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
+      this.idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
+      console.info("Successfully retrieved UDID list");
+    } catch (error) {
+      console.error('Get device UDID failed:', error);
+      this.idsLists = [];
+    } finally {
+      if (deviceManager) {
+        try {
+          distributedDeviceManager.releaseDeviceManager(deviceManager);
+          console.info("deviceManager released successfully");
+        } catch (releaseError) {
+          console.error('Release device manager failed:', releaseError);
+        }
+      }
+    }
+  }
+  ```
+
+### restoreLocalDeviceName<sup>24+</sup>
+
+restoreLocalDeviceName(): void
+
+Restores the local device name by resetting the network settings.
+
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
+
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
+
+**System API**: This is a system API.
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
+
+| ID| Error Message                                                       |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain the service.                                 |
+
+**Example**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.restoreLocalDeviceName();
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error('restoreLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+  }
+  ```
+
+### restoreLocalDeivceName<sup>(deprecated)</sup>
+
+restoreLocalDeivceName(): void
+
+Restores the local device name by resetting the network settings.
+
+> **NOTE**
+>
+> This API is supported since API version 18 and deprecated since API version 24. You are advised to use [restoreLocalDeviceName](#restorelocaldevicename24) instead.
+
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
+
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
+
+**System API**: This is a system API.
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
+
+| ID| Error Message                                                       |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain the service.                                 |
+
+**Example**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.restoreLocalDeivceName();
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
   }
   ```

@@ -7,21 +7,20 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-- [Introduction to Performance Analysis Kit](performance-analysis-kit-overview.md)
+- [About This Kit](performance-analysis-kit-overview.md)
 - Fault Detection<!--fault-analysis-->
   - [Overview](fault-detection-overview.md)
   - Crash Detection<!--crash-detection-->
-    - [Crash Detection Overview](crash-detection-overview.md)
     - [JS Crash (Process Crash) Detection](jscrash-guidelines.md)
     - [C++ Crash (Process Crash) Detection](cppcrash-guidelines.md)
   - [Address Sanitizer detection](address-sanitizer-guidelines.md)
-  - [Application Freeze Detection](appfreeze-guidelines.md)
+  - [Application Freeze Detection](appfreeze-guidelines.md)<!--RP1--><!--RP1End-->
   - [Task Timeout Detection](apptask-timeout-guidelines.md)
-  - [Application Killed Detection](appkilled-guidelines.md)
+  - [Application Killed Detection](appkilled-guidelines.md)<!--RP2--><!--RP2End-->
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)
-- Event Subscription<!--event-subscription-->
+- Event Subscription<!--hiappevent-->
   - [Introduction to HiAppEvent](hiappevent-intro.md)
   - Using HiAppEvent to Subscribe to Events<!--event-subscription-->
     - [Event Subscription Overview](event-subscription-overview.md)
@@ -56,10 +55,14 @@
         - [Application Killed Event Overview](hiappevent-watcher-app-killed-events.md)
         - [Subscribing to Application Killed Events (ArkTS)](hiappevent-watcher-app-killed-events-arkts.md)
         - [Subscribing to Application Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
+      - ArkWeb Fling Jank Events<!--scroll-arkweb-fling-jank-events-->
+        - [ArkWeb Fling Jank Event Overview](hiappevent-watcher-web-fling-jank-events.md)
+        - [Subscribing to ArkWeb Fling Jank Events (ArkTS)](hiappevent-watcher-web-fling-jank-events-arkts.md)<!--RP3--><!--RP3End-->
   <!--Del-->
   - [Event Reporting](hiappevent-event-reporting.md)
   <!--DelEnd-->
   - [HiAppEvent FAQs](hiappevent-faq.md)
+  - [Using FaultLogExtensionAbility to Subscribe to Events](fault-log-extension-app-events-arkts.md)
 - Performance Tracing<!--hitracemeter-->
   - [Introduction to HiTraceMeter](hitracemeter-intro.md)
   - [Using HiTraceMeter (ArkTS)](hitracemeter-guidelines-arkts.md)
@@ -84,12 +87,14 @@
 - [Performance Analysis Kit Terminology](performance-analysis-kit-terminology.md)
 - Command Line Tools<!--perform-command-line-utilities-->
   - [hdc](hdc.md)
-  - [hilog](hilog.md)
-  - [hidumper](hidumper.md)
+  - [hilog](hilog.md)<!--RP4--><!--RP4End-->
+  - hidumper<!--hidumper-tool-->
+    - [hidumper](hidumper.md)
+    - [PrivacyManagerService](hidumper-PrivacyManagerService.md)
   - [hitrace](hitrace.md)
   - [hiperf](hiperf.md)
   - [hiprofiler](hiprofiler.md)
   - [uinput](uinput.md)
   <!--Del-->
-  - [hisysevent](hisysevent.md)
+  - [hisysevent (for System Applications Only)](hisysevent-sys.md)
   <!--DelEnd-->

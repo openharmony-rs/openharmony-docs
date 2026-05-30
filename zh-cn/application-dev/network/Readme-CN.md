@@ -17,6 +17,8 @@
     - [使用WebSocket访问网络(C/C++)](native-websocket-guidelines.md)
     - [使用Socket访问网络](socket-connection.md)
     - [使用MDNS访问局域网服务](net-mdns.md)
+    - [使用DNS解析域名](net-dns.md)
+    - [使用HTTP全局拦截器(C/C++)](native-httpinterceptor-guidelines.md)
 
 - 连接网络<!--network-kit-network-connecttion-->
     - [管理网络连接](net-connection-manager.md)
@@ -29,7 +31,7 @@
     - [扩展认证](net-eap.md)
   
     <!--Del-->
-    - [网络共享（仅对系统应用开放）](net-sharing.md)
-    - [以太网连接管理（仅对系统应用开放）](net-ethernet.md)   
-    - [VPN管理（仅对系统应用开放）](net-vpn.md)
+    - [网络共享（仅对系统应用开放）](net-sharing-sys.md)
+    - [以太网连接管理（仅对系统应用开放）](net-ethernet-sys.md)   
+    - [VPN管理（仅对系统应用开放）](net-vpn-sys.md)
     <!--DelEnd-->

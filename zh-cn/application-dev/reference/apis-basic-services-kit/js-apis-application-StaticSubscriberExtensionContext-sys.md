@@ -1,8 +1,8 @@
-# @ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext)
+# @ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext)(系统接口)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -61,9 +61,9 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201     | The application does not have permission to call the interface. |
-| 202     | The application is not system-app, can not use system-api. |
-| 401     | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.      |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      |
 | 16000001 | The specified ability does not exist.                        |
 | 16000002 | Incorrect ability type.                                      |
 | 16000004 | Cannot start an invisible component.                           |
@@ -81,36 +81,36 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
   ```ts
-import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
+  import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
 
-let want: Want = {
-  bundleName: "com.example.myapp",
-  abilityName: "MyAbility"
-};
+  let want: Want = {
+    bundleName: "com.example.myapp",
+    abilityName: "MyAbility"
+  };
 
-class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
-  onReceiveEvent(event: commonEventManager.CommonEventData) {
-    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
 
-    try {
-      this.context.startAbility(want, (error: BusinessError) => {
-        if (error) {
-          // 处理业务逻辑错误
-          console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
-          return;
-        }
-        // 执行正常业务
-        console.info('startAbility succeed');
-      });
-    } catch (paramError) {
-      // 处理入参错误异常
-      let code = (paramError as BusinessError).code;
-      let message = (paramError as BusinessError).message;
-      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      try {
+        this.context.startAbility(want, (error: BusinessError) => {
+          if (error) {
+            // 处理业务逻辑错误
+            console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
+            return;
+          }
+          // 执行正常业务
+          console.info('startAbility succeed');
+        });
+      } catch (paramError) {
+        // 处理入参错误异常
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      }
     }
   }
-}
   ```
 
 ## StaticSubscriberExtensionContext.startAbility
@@ -147,9 +147,9 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201     | The application does not have permission to call the interface. |
-| 202     | The application is not system-app, can not use system-api. |
-| 401     | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.      |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      |
 | 16000001 | The specified ability does not exist.                        |
 | 16000002 | Incorrect ability type.                                      |
 | 16000004 | Cannot start an invisible component.                           |
@@ -167,33 +167,33 @@ startAbility(want: Want): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
+  import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
 
-let want: Want = {
-  bundleName: "com.example.myapp",
-  abilityName: "MyAbility"
-};
+  let want: Want = {
+    bundleName: "com.example.myapp",
+    abilityName: "MyAbility"
+  };
 
-class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
-  onReceiveEvent(event: commonEventManager.CommonEventData) {
-    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
-    try {
-      this.context.startAbility(want)
-        .then(() => {
-          // 执行正常业务
-          console.info('startAbility succeed');
-        })
-        .catch((error: BusinessError) => {
-          // 处理业务逻辑错误
-          console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
-        });
-    } catch (paramError) {
-      // 处理入参错误异常
-      let code = (paramError as BusinessError).code;
-      let message = (paramError as BusinessError).message;
-      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+      try {
+        this.context.startAbility(want)
+          .then(() => {
+            // 执行正常业务
+            console.info('startAbility succeed');
+          })
+          .catch((error: BusinessError) => {
+            // 处理业务逻辑错误
+            console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
+          });
+      } catch (paramError) {
+        // 处理入参错误异常
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      }
     }
   }
-}
   ```

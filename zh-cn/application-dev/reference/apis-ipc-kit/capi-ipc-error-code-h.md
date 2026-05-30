@@ -10,6 +10,8 @@
 
 提供IPC错误码定义。
 
+**引用文件：** <IPCKit/ipc_error_code.h>
+
 **库：** libipc_capi.so
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -52,6 +54,6 @@ IPC错误码定义。
 | OH_IPC_DEAD_REMOTE_OBJECT = OH_IPC_ERROR_CODE_BASE + 5 | 远端对象死亡。 |
 | OH_IPC_INVALID_USER_ERROR_CODE = OH_IPC_ERROR_CODE_BASE + 6 | 用户自定义错误码超出范围[1900001, 1999999]。 |
 | OH_IPC_INNER_ERROR = OH_IPC_ERROR_CODE_BASE + 7| IPC内部错误。 |
-| OH_IPC_ERROR_CODE_MAX = OH_IPC_ERROR_CODE_BASE + 8| 错误码区间最大值。 |
-| OH_IPC_USER_ERROR_CODE_MIN = OH_IPC_ERROR_CODE_BASE + 9| 用户自定义错误码最小值。 |
-| OH_IPC_USER_ERROR_CODE_MAX = OH_IPC_ERROR_CODE_BASE + 10| 用户自定义错误码最大值。 |
+| OH_IPC_ERROR_CODE_MAX = OH_IPC_ERROR_CODE_BASE + 1000| 错误码区间最大值。 |
+| OH_IPC_USER_ERROR_CODE_MIN = 1909000 | 用户自定义错误码最小值。 |
+| OH_IPC_USER_ERROR_CODE_MAX = 1909999 | 用户自定义错误码最大值。 |

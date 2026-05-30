@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct {...} WindowManager_WindowProperties
+```
+
 ## 概述
 
 窗口属性。

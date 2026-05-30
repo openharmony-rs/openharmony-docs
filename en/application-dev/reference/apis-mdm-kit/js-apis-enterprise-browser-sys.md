@@ -1,16 +1,22 @@
 # @ohos.enterprise.browser (Browser Management) (System API)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @hp_guo-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @zhang_yixin13-->
 
 The **browser** module provides browser management, including setting, canceling, and obtaining browser policies.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-guide.md#introduction) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.browser](js-apis-enterprise-browser.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.browser](js-apis-enterprise-browser.md).
 
 ## Modules to Import
 
@@ -28,12 +34,15 @@ Sets the browsing policy for a specified browser. This API uses an asynchronous 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | appId    | string              | Yes   | Application ID, which is used to specify the browser.                 |
 | policies    | string              | Yes   | Policies to set. If this parameter is set to an empty string, the policies of the specified browser are canceled.                 |
 | callback | AsyncCallback&lt;void&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
@@ -53,11 +62,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { browser } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace the value of appId with the specified application ID of the browser.
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -75,18 +86,21 @@ browser.setPolicies(wantTemp, appId, policies, (err) => {
 
 setPolicies(admin: Want, appId: string, policies: string): Promise&lt;void&gt;
 
-Sets the browsing policy for a specified browser. This API uses an asynchronous promise to return the result.
+Sets the browsing policy for a specified browser. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | appId    | string              | Yes   | Application ID, which is used to specify the browser.                 |
 | policies    | string                | Yes   | Policies to set. If this parameter is set to an empty string, the policies of the specified browser are canceled.                 |
 
@@ -111,12 +125,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { browser } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace the value of appId with the specified application ID of the browser.
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -136,12 +152,15 @@ Obtains the policy of the specified browser. This API uses an asynchronous callb
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | appId    | string              | Yes   | Application ID, which is used to specify the browser.                 |
 | callback | AsyncCallback&lt;string&gt;       | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.      |
 
@@ -158,11 +177,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { browser } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace the value of appId with the specified application ID of the browser.
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -179,16 +200,19 @@ browser.getPolicies(wantTemp, appId, (err, result) => {
 
 getPolicies(admin: Want, appId: string): Promise&lt;string&gt;
 
-Obtains the policy of the specified browser. This API uses an asynchronous promise to return the result.
+Obtains the policy of the specified browser. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | appId    | string              | Yes   | Application ID, which is used to specify the browser.                 |
 
 **Return value**
@@ -210,12 +234,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { browser } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace the value of appId with the specified application ID of the browser.
 let appId: string = 'com.example.******_******/******5t5CoBM=';

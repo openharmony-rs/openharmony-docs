@@ -2,10 +2,12 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+着色器。画刷和画笔设置着色器后，会使用着色器效果而不是颜色属性去绘制，但此时画笔和画刷的透明度属性仍然生效。
 
 > **说明：**
 >
@@ -16,8 +18,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-着色器。画刷和画笔设置着色器后，会使用着色器效果而不是颜色属性去绘制，但此时画笔和画刷的透明度属性仍然生效。
 
 ## 导入模块
 
@@ -103,8 +103,9 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 import { RenderNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const width = 1000;
     const height = 1000;
     const bufferSize = width * height * 4;
@@ -118,7 +119,7 @@ class DrawingRenderNode extends RenderNode {
       colorData[i+3] = 255;
     }
 
-    let opts : image.InitializationOptions = {
+    let opts: image.InitializationOptions = {
       editable: true,
       pixelFormat: 3,
       size: { height, width }
@@ -128,7 +129,9 @@ class DrawingRenderNode extends RenderNode {
     let matrix = new drawing.Matrix();
     let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
     if (pixelMap != null) {
-      let imageShader = drawing.ShaderEffect.createImageShader(pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
+      let imageShader =
+        drawing.ShaderEffect.createImageShader(pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options,
+          matrix);
     }
   }
 }
@@ -230,7 +233,7 @@ static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Ar
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | centerPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的圆心。 |
-| radius   | number  | 是   | 表示渐变的半径，小于等于0时无效，该参数为浮点数。 |
+| radius   | number  | 是   | 表示渐变的半径，小于等于0时无效，该参数为浮点数。单位为物理像素px。 |
 | colors | Array\<number> | 是   | 表示在圆心和圆边界之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
 | pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在圆心和圆边界之间。 |
@@ -323,9 +326,9 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | startPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   |表示渐变的起始圆的圆心。 |
-| startRadius | number | 是   | 表示渐变的起始圆的半径，小于0时无效。该参数为浮点数。 |
+| startRadius | number | 是   | 表示渐变的起始圆的半径，小于0时无效。该参数为浮点数。单位为物理像素px。 |
 | endPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的结束圆的圆心。 |
-| endRadius | number | 是   | 表示渐变的结束圆的半径，小于0时无效。该参数为浮点数。 |
+| endRadius | number | 是   | 表示渐变的结束圆的半径，小于0时无效。该参数为浮点数。单位为物理像素px。 |
 | colors | Array\<number> | 是   | 表示在起始圆和结束圆之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
 | pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始圆和结束圆之间。|

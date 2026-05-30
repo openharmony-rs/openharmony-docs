@@ -4,7 +4,11 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioCaptureInfo {...} OH_AudioCaptureInfo
+```
 
 ## Overview
 
@@ -24,6 +28,6 @@ When both **audioSampleRate** and **audioChannels** are **0**, the audio-related
 
 | Name| Description|
 | -- | -- |
-| int32_t audioSampleRate | Audio sample rate. For details about the supported rates, see [AudioSamplingRate](../apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8) of Audio Kit.|
+| int32_t audioSampleRate | Audio sample rate. For details about the supported rates, see [AudioSamplingRate](../apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8) of Audio Kit. The unit is Hz.|
 | int32_t audioChannels | Audio channel count.|
 | [OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) audioSource | Audio source.|

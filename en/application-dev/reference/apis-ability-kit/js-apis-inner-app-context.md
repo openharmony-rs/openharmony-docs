@@ -1,7 +1,15 @@
 # Context (Context Base Class of the FA Model)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 <!--deprecated_code_no_check-->
 
-The Context module provides context for abilities or applications. It allows access to application-specific resources, as well as permission requests and verification.
+The Context module provides context for ability components or applications. It allows access to application-specific resources, as well as permission requests and verification.
 
 > **NOTE**
 >
@@ -56,7 +64,7 @@ context.getOrCreateLocalDir((error, data)=>{
     if (error && error.code !== 0) {
         console.error(`getOrCreateLocalDir fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getOrCreateLocalDir success, data: ${JSON.stringify(data)}`);
+        console.info(`getOrCreateLocalDir success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -121,7 +129,7 @@ bundle.getBundleInfo('com.context.test', 1, (err: BusinessError, datainfo: bundl
         if (error && error.code !== 0) {
             console.error(`verifyPermission fail, error: ${JSON.stringify(error)}`);
         } else {
-            console.log(`verifyPermission success, data: ${JSON.stringify(data)}`);
+            console.info(`verifyPermission success, data: ${JSON.stringify(data)}`);
         }
     });
 });
@@ -156,7 +164,7 @@ context.verifyPermission('com.example.permission', (error, data) =>{
     if (error && error.code !== 0) {
         console.error(`verifyPermission fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`verifyPermission success, data: ${JSON.stringify(data)}`);
+        console.info(`verifyPermission success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -230,7 +238,7 @@ context.requestPermissionsFromUser(
         if (error && error.code !== 0) {
             console.error(`requestPermissionsFromUser fail, error: ${JSON.stringify(error)}`);
         } else {
-            console.log(`requestPermissionsFromUser success, data: ${JSON.stringify(data)}`);
+            console.info(`requestPermissionsFromUser success, data: ${JSON.stringify(data)}`);
         }
     }
 );
@@ -304,7 +312,7 @@ context.getApplicationInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getApplicationInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getApplicationInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getApplicationInfo success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -364,7 +372,7 @@ context.getBundleName((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getBundleName fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getBundleName success, data: ${JSON.stringify(data)}`);
+        console.info(`getBundleName success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -422,7 +430,7 @@ context.getDisplayOrientation((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getDisplayOrientation fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getDisplayOrientation success, data: ${JSON.stringify(data)}`);
+        console.info(`getDisplayOrientation success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -482,7 +490,7 @@ context.getExternalCacheDir((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getExternalCacheDir fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getExternalCacheDir success, data: ${JSON.stringify(data)}`);
+        console.info(`getExternalCacheDir success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -588,7 +596,7 @@ Sets whether to show this feature at the top of the lock screen so that the feat
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -620,7 +628,7 @@ Sets whether to show this feature at the top of the lock screen so that the feat
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -746,7 +754,7 @@ context.getProcessInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getProcessInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getProcessInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getProcessInfo success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -787,7 +795,7 @@ getElementName(callback: AsyncCallback\<ElementName>): void
 
 Obtains the element name of this ability. This API uses an asynchronous callback to return the result.
 
-This API is available only to Page abilities.
+This API is available only to Page ability components.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -808,7 +816,7 @@ context.getElementName((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getElementName fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getElementName success, data: ${JSON.stringify(data)}`);
+        console.info(`getElementName success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -821,7 +829,7 @@ getElementName(): Promise\<ElementName>
 
 Obtains the element name of this ability. This API uses a promise to return the result.
 
-This API is available only to Page abilities.
+This API is available only to Page ability components.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -868,7 +876,7 @@ context.getProcessName((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getProcessName fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getProcessName success, data: ${JSON.stringify(data)}`);
+        console.info(`getProcessName success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -928,7 +936,7 @@ context.getCallingBundle((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getCallingBundle fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getCallingBundle success, data: ${JSON.stringify(data)}`);
+        console.info(`getCallingBundle success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -986,7 +994,7 @@ context.getCacheDir((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getCacheDir fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getCacheDir success, data: ${JSON.stringify(data)}`);
+        console.info(`getCacheDir success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1042,7 +1050,7 @@ context.getFilesDir((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getFilesDir fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getFilesDir success, data: ${JSON.stringify(data)}`);
+        console.info(`getFilesDir success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1100,7 +1108,7 @@ context.getOrCreateDistributedDir((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getOrCreateDistributedDir fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getOrCreateDistributedDir success, data: ${JSON.stringify(data)}`);
+        console.info(`getOrCreateDistributedDir success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1158,7 +1166,7 @@ context.getAppType((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getAppType fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getAppType success, data: ${JSON.stringify(data)}`);
+        console.info(`getAppType success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1214,7 +1222,7 @@ context.getHapModuleInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getHapModuleInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getHapModuleInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getHapModuleInfo success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1270,7 +1278,7 @@ context.getAppVersionInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getAppVersionInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getAppVersionInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getAppVersionInfo success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1326,7 +1334,7 @@ context.getAbilityInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getAbilityInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getAbilityInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getAbilityInfo success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1405,7 +1413,7 @@ context.isUpdatingConfigurations((error, data) => {
     if (error && error.code !== 0) {
         console.error(`isUpdatingConfigurations fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`isUpdatingConfigurations success, data: ${JSON.stringify(data)}`);
+        console.info(`isUpdatingConfigurations success, data: ${JSON.stringify(data)}`);
     }
 });
 ```

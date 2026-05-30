@@ -1,5 +1,12 @@
 # RunningAppClone (系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wendel-->
+<!--Designer: @wendel-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
 定义分身应用在运行态的结构信息。
 
 > **说明：**

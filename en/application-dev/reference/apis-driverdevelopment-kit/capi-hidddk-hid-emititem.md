@@ -1,10 +1,14 @@
 # Hid_EmitItem
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Hid_EmitItem {...} Hid_EmitItem
+```
 
 ## Overview
 

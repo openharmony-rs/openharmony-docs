@@ -12,7 +12,7 @@ Node-API provides APIs for customizing asynchronous (async for short) operations
 
 ## Basic Concepts
 
-Node-API supports asynchronous operations, which helps handle I/O-intensive or compute-intensive tasks. These tasks usually need to be executed in a non-blocking manner to avoid blocking the main thread. Before you get started, understand the following concepts:
+Async operations are used to complete I/O-intensive or compute-intensive tasks, which usually need to be executed without blocking the main thread. Before you get started, understand the following concepts:
 
 - Async model: Node-API provides APIs that implement async operations using a promise or a callback. Promise is a programming model based on future values. It allows results of async operations to be encapsulated in objects and called in a chain. Callback is a traditional async programming mode. It uses callback functions to process async operation results.
 - Temporary result: When a native method (Node-API) is called, it immediately returns a temporary result to the ArkTS caller. The temporary result is usually a flag indicating an async operation being performed or a handle for subsequent processing of an async operation result.
@@ -20,7 +20,7 @@ Node-API supports asynchronous operations, which helps handle I/O-intensive or c
 
 ## Available APIs
 
-The following table lists the APIs provided by the Node-API module for customizing async operations. You can use these APIs to implement ArkTS callbacks and manage the resource lifecycle in C/C++. These APIs help implement complex async operations and effective interaction with ArkTS. They are used in the following scenarios:
+The following table lists the APIs provided by the Node-API module for customizing async operations. You can use these APIs to implement ArkTS callbacks and manage the resource lifecycle in C/C++. These APIs help implement complex async operations and effective interaction with ArkTS. The following table lists the use cases of these APIs.
 | API| Description|
 | -------- | -------- |
 | napi_async_init, napi_async_destroy| Creates/Destroys an async context. You can use these APIs to handle time-consuming tasks, such as file I/O operations and network requests, without blocking the main thread. You can use **napi_async_init** to create an async context for executing the task, and use **napi_async_destroy** after the task is complete to destroy and release related resources.|
@@ -37,15 +37,17 @@ Use **napi_async_init** to create an async context, and use **napi_async_destroy
 
 ### napi_make_callback
 
-When writing the Node-API module, you need to call the ArkTS callback function after the asynchronous operation is complete. You can use napi_async_init to create an asynchronous resource context, and then use napi_make_callback to execute the ArkTS callback function.
+Use **napi_make_callback** to call and execute an ArkTS callback after an async operation is complete.
 
 ### napi_open_callback_scope, napi_close_callback_scope
 
-If you need to create a callback scope to ensure that the ArkTS environment is still available during asynchronous operations, you can use napi_open_callback_scope to create a callback scope and use napi_close_callback_scope to close the scope after the asynchronous operations are complete.
+Use **napi_open_callback_scope** to create a scope for the callback, and then use **napi_close_callback_scope** to close the scope after the asynchronous operation is complete.
 
 CPP code:
 
-```cpp
+<!-- @[napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 
 static constexpr int INT_ARG_2 = 2; // Input parameter index.
@@ -81,6 +83,7 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
     napi_callback_scope scope = nullptr;
     status = napi_open_callback_scope(env, resource, context, &scope);
     if (status != napi_ok) {
+        napi_async_destroy(env, context);
         napi_throw_error(env, nullptr, "napi_open_callback_scope fail");
         return nullptr;
     }
@@ -103,29 +106,50 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/napi_init.cpp) -->
+
+
 
 API declaration:
 
-```ts
-// index.d.ts
+index.d.ts
+<!-- @[napi_async_open_close_callback_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const asynchronousWork: (object: Object, obj: Object, fun: Function, num: number) => number | undefined;
 ```
-<!-- @[napi_async_open_close_callback_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+
 
 ArkTS code:
 
-```ts
+Modules to import:
+
+<!-- @[ark_napi_async_open_close_callback_scope_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-import process from '@ohos.process';
+import { process } from '@kit.ArkTS';
+```
+
+Test code:
+
+<!-- @[ark_napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API asynchronousWork: %{public}d', testNapi.asynchronousWork({}, process.ProcessManager, (num: number)=>{return num;}, 123));
+  hilog.info(0x0000, 'testTag', 'Test Node-API asynchronousWork: %{public}d',
+    testNapi.asynchronousWork({}, process.ProcessManager, (num: number) => {
+      return num;
+    }, 123));
+  // ···
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API asynchronousWork error: %{public}s', error.message);
+  // ···
 }
 ```
-<!-- @[ark_napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 

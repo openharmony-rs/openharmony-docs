@@ -1,20 +1,34 @@
 # Polymorphic Style
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can set state-specific styles for components.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  Since API version 11, you can also dynamically set component attributes through [attributeModifier](./ts-universal-attributes-attribute-modifier.md).
+> - Since API version 11, you can also dynamically set component attributes through [attributeModifier](./ts-universal-attributes-attribute-modifier.md).
 >
->  Polymorphic styles only support [universal attributes](ts-component-general-attributes.md). If a polymorphic style does not take effect, the attribute you are modifying might be a private attribute of the component, for example, [fontColor](./ts-universal-attributes-text-style.md) or [backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18) of the [TextInput](./ts-basic-components-textinput.md) component. In this case, you can use **attributeModifier** to dynamically set these component-specific attributes.
+> - Polymorphic styles only support [universal attributes](ts-component-general-attributes.md). If a polymorphic style does not take effect, the attribute you are modifying might be a private attribute of the component, for example, **fontColor** or [backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18) of the [TextInput](./ts-basic-components-textinput.md) component. In this case, you can use **attributeModifier** to dynamically set these component-specific attributes.
+>
+> - Currently, the implementation of polymorphic styles relies on the refresh mechanism of custom component nodes. Since the builder does not have an independent custom parent node and cannot directly trigger refresh, polymorphic styles cannot be applied directly within the builder. The recommended solution is to encapsulate the polymorphic styles into a custom component and place this component within the @Builder to indirectly achieve the polymorphic style effect. For details about the sample code, see [Example 3: Setting Polymorphic Styles for the Builder Component](#example-3-setting-polymorphic-styles-for-the-builder-component).
+>  
+> - Polymorphic styles for the focused state are only applied when [focus activation](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is enabled.
 
 ## stateStyles
 
-stateStyles(value: StateStyles)
+stateStyles(value: StateStyles): T
 
 Sets the state-specific styles for the component.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -26,26 +40,32 @@ Sets the state-specific styles for the component.
 
 | Name| Type                               | Mandatory| Description                    |
 | ------ | ----------------------------------- | ---- | ------------------------ |
-| value  | [StateStyles](#statestyles) | Yes  | State-specific styles for the component.|
+| value  | [StateStyles](#statestyles-1) | Yes  | State-specific styles for the component.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
 
 ## StateStyles
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| normal | ()=&gt;void | No| Style of the component when being stateless.|
-| pressed | ()=&gt;void | No| Style of the component in the pressed state.|
-| disabled | ()=&gt;void | No| Style of the component in the disabled state.|
-| focused | ()=&gt;void | No| Style of the component in the focused state.|
-| clicked | ()=&gt;void | No| Style of the component in the clicked state.|
-| selected<sup>10+</sup> | ()=&gt;void | No| Style of the component in the selected state.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| normal | any | No| Yes| Style of the component when being stateless.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| pressed | any | No| Yes| Style of the component in the pressed state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| disabled | any | No| Yes| Style of the component in the disabled state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| focused | any | No| Yes| Style of the component in the focused state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| clicked | any | No| Yes| Style of the component in the clicked state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| selected<sup>10+</sup> | object | No| Yes| Style of the component in the selected state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
 
 **Notes about the selected state:**
 
-- The selected state style depends on the value of the component's selected attribute. You can change the attribute value through [onClick](ts-universal-events-click.md) or [$$](../../../ui/state-management/arkts-two-way-sync.md).
+- The selected state style depends on the value of the component's selected attribute. You can change the attribute value through a [click event](ts-universal-events-click.md) or [$$](../../../ui/state-management/arkts-two-way-sync.md).
 
 - The table below lists the components that support the selected state style and their selected attributes or parameters.
 
@@ -58,6 +78,10 @@ Sets the state-specific styles for the component.
   | [ListItem](ts-container-listitem.md) | selected         | 10          |
   | [GridItem](ts-container-griditem.md) | selected         | 10          |
   | [MenuItem](ts-basic-components-menuitem.md) | selected         | 10          |
+
+**Notes about pressed and clicked states**
+
+- When both **clicked** and **pressed** are used on the same component, only the last registered state takes effect.
 
 ## Example
 
@@ -72,7 +96,8 @@ This example demonstrates the style changes of the **Text** component when its s
 struct StyleExample {
   @State isEnable: boolean = true
 
-  @Styles pressedStyles():void {
+  @Styles
+  pressedStyles(): void {
     .backgroundColor("#ED6F21")
     .borderRadius(10)
     .borderStyle(BorderStyle.Dashed)
@@ -83,7 +108,8 @@ struct StyleExample {
     .opacity(1)
   }
 
-  @Styles disabledStyles():void {
+  @Styles
+  disabledStyles(): void {
     .backgroundColor("#E5E5E5")
     .borderRadius(10)
     .borderStyle(BorderStyle.Solid)
@@ -94,7 +120,8 @@ struct StyleExample {
     .opacity(1)
   }
 
-  @Styles normalStyles():void {
+  @Styles
+  normalStyles(): void {
     .backgroundColor("#0A59F7")
     .borderRadius(10)
     .borderStyle(BorderStyle.Solid)
@@ -111,6 +138,7 @@ struct StyleExample {
         .fontSize(14)
         .fontColor(Color.White)
         .opacity(0.5)
+        // stateStyles sets the style of the component in its normal state.
         .stateStyles({
           normal: this.normalStyles,
         })
@@ -127,6 +155,7 @@ struct StyleExample {
         .opacity(1)
         .fontSize(14)
         .fontColor(Color.White)
+        // stateStyles sets the style of the component in its pressed state.
         .stateStyles({
           pressed: this.pressedStyles,
         })
@@ -144,6 +173,7 @@ struct StyleExample {
         .fontSize(14)
         .fontColor(Color.White)
         .enabled(this.isEnable)
+        // stateStyles sets the style of the component in its disabled state.
         .stateStyles({
           disabled: this.disabledStyles,
         })
@@ -151,7 +181,7 @@ struct StyleExample {
       Text("control disabled")
         .onClick(() => {
           this.isEnable = !this.isEnable
-          console.log(`${this.isEnable}`)
+          console.info(`${this.isEnable}`)
         })
     }
     .width(350).height(300)
@@ -159,7 +189,7 @@ struct StyleExample {
 }
 ```
 
-![en-us_image_0000001211898512](figures/en-us_image_0000001211898512.gif)
+![en-us_image_0000001188742468](figures/en-us_image_0000001188742468.gif)
 
 ### Example 2: Setting Polymorphic Styles for the Radio Component
 
@@ -226,3 +256,64 @@ struct Index {
 ```
 
 ![selected](figures/selected.gif)
+
+### Example 3: Setting Polymorphic Styles for the Builder Component
+
+This example demonstrates the style changes of the **Builder** component when it is in pressed state.
+
+```ts
+import { ComponentContent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Component
+struct Child {
+  build() {
+    Row()
+      .zIndex(10)
+      .width(200)
+      .height(200)
+      .stateStyles({
+        normal: {
+          .backgroundColor(Color.Blue)
+        },
+        pressed: {
+          .backgroundColor(Color.Black)
+        }
+      })
+  }
+}
+
+@Builder
+function buildText() {
+  Child()
+}
+
+@Entry
+@Component
+struct Index {
+  private contentNode: ComponentContent<Object> =
+    new ComponentContent(this.getUIContext(), wrapBuilder(buildText));
+
+  build() {
+    Column() {
+      Button().margin({ top: 200 }).onClick((event: ClickEvent) => {
+        this.getUIContext()
+          .getPromptAction()
+          .openCustomDialog(this.contentNode)
+          .then(() => {
+            console.info('OpenCustomDialog complete.')
+          })
+          .catch((error: BusinessError) => {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+          })
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![Builder](figures/stateStyles_builder.gif)

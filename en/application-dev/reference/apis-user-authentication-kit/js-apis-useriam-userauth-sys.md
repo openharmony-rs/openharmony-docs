@@ -3,14 +3,16 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 The **userIAM.userAuth** module provides user authentication capabilities in identity authentication scenarios, such as device unlocking, payment, and app login.
 
 > **NOTE**<br>
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
 > - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.userIAM.userAuth (User Authentication)](js-apis-useriam-userauth.md).
 
 ## Modules to Import
@@ -25,9 +27,10 @@ Represents the user authentication parameters.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name          | Type                              | Mandatory| Description                                                        |
-| -------------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| userId<sup>18+</sup> | number | No  |ID of the user to be authenticated. The value is a positive integer greater than or equal to 0. The default value is the ID of the current user.|
+| Name          | Type                              | Read-Only| Optional| Description                                                        |
+| -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| userId<sup>18+</sup> | number | No  | Yes  |ID of the user to be authenticated. The value is a positive integer greater than or equal to 0. The default value is the ID of the current user.<br>**System API**: This is a system API.|
+| credentialIdList<sup>23+</sup> | Uint8Array[] | No| Yes|List of credential IDs. If the credential ID list is not empty, the specified credential ID is authenticated.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## WindowModeType<sup>10+</sup>
 
@@ -48,9 +51,9 @@ Represents the information presented on the user authentication page.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name                | Type                               | Mandatory| Description                                                        |
-| -------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| windowMode           | [WindowModeType](#windowmodetype10) | No  | Display format of the user authentication page. The default value is **WindowModeType.DIALOG_BOX**.<br>**System API**: This is a system API.|
+| Name                | Type                               | Read-Only| Optional| Description                                                        |
+| -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| windowMode           | [WindowModeType](#windowmodetype10) | No  | Yes  | Display format of the user authentication page. The default value is **WindowModeType.DIALOG_BOX**.<br>**System API**: This is a system API.|
 
 ## NoticeType<sup>10+</sup>
 
@@ -85,13 +88,13 @@ Sends a notification from the user authentication widget.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission denied. Called by non-system application. |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.    |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
 | 12500002 | General operation error.                |
 
 **Example**
@@ -121,10 +124,10 @@ try {
   const jsonEventData = JSON.stringify(eventData);
   let noticeType = userAuth.NoticeType.WIDGET_NOTICE;
   userAuth.sendNotice(noticeType, jsonEventData);
-  console.info('sendNotice success');
+  console.info('sendNotice successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`sendNotice catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`sendNotice failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -151,11 +154,11 @@ Subscribes to commands from the user authentication framework for the user authe
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **Example**
@@ -167,16 +170,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.on('command', {
     sendCommand(cmdData) {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
-  console.info('subscribe authentication event success');
+  console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -199,11 +202,11 @@ Unsubscribes from commands sent from the user authentication framework.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **Example**
@@ -215,16 +218,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.off('command', {
     sendCommand(cmdData) {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
-  console.info('cancel subscribe authentication event success');
+  console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -235,6 +238,7 @@ getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 Obtains a **UserAuthWidgetMgr** instance for user authentication.
 
 > **NOTE**<br>
+>
 > A **UserAuthInstance** instance can be used for an authentication only once.
 
 **Required permissions**: ohos.permission.SUPPORT_USER_AUTH
@@ -257,13 +261,13 @@ Obtains a **UserAuthWidgetMgr** instance for user authentication.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission denied. Called by non-system application. |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.                                     |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. |
 | 12500002 | General operation error.                |
 
 **Example**
@@ -275,10 +279,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -311,16 +315,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.on('command', {
     sendCommand(cmdData) {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
-  console.info('subscribe authentication event success');
+  console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -332,7 +336,7 @@ Enumerates the types of credentials for identity authentication.
 
 | Name       | Value  | Description      |
 | ----------- | ---- | ---------- |
-| PRIVATE_PIN<sup>14+</sup>  | 16   | Privacy password.|
+| PRIVATE_PIN<sup>14+</sup>  | 16   | Privacy password.<br>**System API**: This is a system API.|
 
 **Example**
 
@@ -357,19 +361,19 @@ try {
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // The authentication result is returned by onResult() only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.on('result', {
     onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -389,7 +393,7 @@ Queries whether there is any reusable identity authentication result.
 
 | Name | Type  | Mandatory| Description                |
 | ------- | ------ | ---- | -------------------- |
-| authParam | [userAuth.AuthParam](js-apis-useriam-userauth.md#authparam10) | Yes| Represents the user authentication parameters.|
+| authParam | [AuthParam](js-apis-useriam-userauth.md#authparam10) | Yes| User authentication parameters.|
 
 **Return value**
 
@@ -431,14 +435,14 @@ try {
     reuseUnlockResult: reuseUnlockResult,
   };
   let authToken = userAuth.queryReusableAuthResult(authParam);
-  console.info('query reuse auth result success');
+  console.info('query reuse auth result successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`query reuse auth result catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`query reuse auth result failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
-## UserAuthResultCode<sup>18+</sup>
+## UserAuthResultCode<sup>9+</sup>
 
 Enumerates the authentication result codes.
 
@@ -448,6 +452,6 @@ Enumerates the authentication result codes.
 
 | Name                   |   Value  | Description                |
 | ----------------------- | ------ | -------------------- |
-| AUTH_TOKEN_CHECK_FAILED | 12500015      | The AuthToken is invalid.|
-| AUTH_TOKEN_EXPIRED      | 12500016      | The interval between the AuthToken issuance time and the AuthToken verification time exceeds the maximum validity period.|
+| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | The AuthToken is invalid.|
+| AUTH_TOKEN_EXPIRED<sup>18+</sup>      | 12500016      | The interval between the AuthToken issuance time and the AuthToken verification time exceeds the maximum validity period.|
 | REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | Failed to reuse the authentication result.|

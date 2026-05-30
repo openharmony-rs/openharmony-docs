@@ -1,5 +1,12 @@
 # @ohos.customization.customConfig (Custom Configurations)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @liule_123-->
+<!--Designer: @sunshine_1984-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @fang-jinxu-->
+
 This module provides APIs for applications to obtain custom configurations, such as channel IDs.
 
 >  **NOTE**
@@ -16,7 +23,7 @@ import { customConfig } from '@kit.BasicServicesKit';
 
 getChannelId(): string
 
-Obtains the channel ID based on the bundle name of an application.
+Obtains a pre-installed channel ID of this application.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -26,11 +33,13 @@ Obtains the channel ID based on the bundle name of an application.
 
 |  Type |  Description |
 | ------ | ----- |
-| string | Channel ID|
+| string | Channel ID obtained.|
 
 **Example**
 
   ```ts
-    let channelId: string = customConfig.getChannelId();
-    console.log('app channelId is ' + channelId);
+  import { customConfig } from '@kit.BasicServicesKit';
+
+  let channelId: string = customConfig.getChannelId();
+  console.info('app channelId is ' + channelId);
   ```

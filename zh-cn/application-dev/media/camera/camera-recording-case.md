@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { JSON } from '@kit.ArkTS';
 
 interface RecordingResources {
@@ -37,7 +37,7 @@ interface RecordingResources {
   cameraInput?: camera.CameraInput;
   previewOutput?: camera.PreviewOutput;
   videoSession?: camera.VideoSession;
-  file?: fs.File;
+  file?: fileIo.File;
 }
 
 // 全局资源跟踪。
@@ -65,7 +65,7 @@ async function releaseResources(): Promise<void> {
     async () => {
       if (resources.file) {
         try {
-          await fs.close(resources.file);
+          await fileIo.close(resources.file);
         } catch (e) {
           console.error('Failure to close file');
         }
@@ -145,7 +145,7 @@ async function videoRecording(context: common.Context, surfaceId: string): Promi
   const videoProfile: camera.VideoProfile = cameraOutputCap.videoProfiles[0];
   let videoUri: string = context.filesDir + '/' + 'VIDEO_' + Date.parse(new Date().toString()) + '.mp4'; // 本地沙箱路径。
   try {
-    resources.file = fs.openSync(videoUri, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    resources.file = fileIo.openSync(videoUri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   } catch (error) {
     console.error(`openSync call failed, error: ${JSON.stringify(error)}`);
     return;
@@ -335,15 +335,24 @@ async function videoRecording(context: common.Context, surfaceId: string): Promi
     await resources.avRecorder!.start();
   } catch (error) {
     let err = error as BusinessError;
-    console.error(`avRecorder stop error: ${err}`);
+    console.error(`avRecorder start error: ${err}`);
   }
 
+  // 停止录像。
+  try {
+    await resources.avRecorder!.stop();
+    await resources.videoOutput!.stop();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`avRecorder stop error: ${err}`);
+  }
+  
   // 停止当前会话。
   await resources.videoSession.stop();
 
   // 关闭文件。
   try {
-    fs.closeSync(resources.file);
+    fileIo.closeSync(resources.file);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`closeSync failed, error: ${err}`);

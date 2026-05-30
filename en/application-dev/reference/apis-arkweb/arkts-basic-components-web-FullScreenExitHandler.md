@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **FullScreenExitHandler** object to notify you that the **Web** component exits full screen mode. For details about the sample code, see [onFullScreenEnter](./arkts-basic-components-web-events.md#onfullscreenenter9).
 
@@ -14,7 +14,7 @@ Implements the **FullScreenExitHandler** object to notify you that the **Web** c
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>9+</sup>
 

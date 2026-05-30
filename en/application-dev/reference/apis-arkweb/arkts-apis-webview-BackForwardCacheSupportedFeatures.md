@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **BackForwardCacheSupportedFeatures** object to allow a page that uses any of the following features to enter the back-forward cache. For details about the sample code, see [enableBackForwardCache](./arkts-apis-webview-WebviewController.md#enablebackforwardcache12).
 
@@ -14,7 +14,7 @@ Implements a **BackForwardCacheSupportedFeatures** object to allow a page that u
 >
 > - The initial APIs of this class are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## Attributes
 

@@ -1,4 +1,10 @@
 # In-Application Embedded Component (EmbeddedComponent)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **EmbeddedComponent** allows the current page to embed UI content provided by other EmbeddedUIExtensionAbilities within the same application. These UIs run in independent processes, offering enhanced security and stability.
 
@@ -20,7 +26,7 @@ Be aware of the component's usage constraints and lifecycle management to maximi
 
 - Device Requirements
 
-  The **EmbeddedComponent** is supported only on devices configured with multi-process permissions.
+  The **EmbeddedComponent** is supported only on devices that support [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md).
 
 - Applicable Scope
 
@@ -31,6 +37,7 @@ Be aware of the component's usage constraints and lifecycle management to maximi
   The **EmbeddedComponent** supports [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), with default and minimum width and height values set to 10 vp.
   
   The following width- and height-related attributes are not supported:
+  
   **constraintSize**, **aspectRatio**, **layoutWeight**, **flexBasis**, **flexGrow**, and **flexShrink**.
 
 - Event handling
@@ -47,37 +54,39 @@ This example demonstrates the basic usage of the **EmbeddedComponent** and Embed
 
 The host page is the parent page of the **EmbeddedComponent**, embedding and displaying the UI from the EmbeddedUIExtensionAbility. Below is a complete implementation:
 
-```ts
+<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
+
+``` TypeScript
 import { Want } from '@kit.AbilityKit';
 
-@Entry
 @Component
-struct Index {
-  @State message: string = 'Message: '
+export struct Embedded {
+  @State message: string = 'Message: ';
   private want: Want = {
-    bundleName: "com.example.embeddeddemo",
-    abilityName: "ExampleEmbeddedAbility",
-  }
-
+    bundleName: 'com.samples.uiextensionandaccessibility',
+    abilityName: 'ExampleEmbeddedAbility',
+  };
   build() {
-    Row() {
-      Column() {
-        Text(this.message).fontSize(30)
-        EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-          .width('100%')
-          .height('90%')
-          .onTerminated((info) => {
-            // Triggered when the terminateSelfWithResult button is clicked on the extension page.
-            this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
-          })
-          .onError((error) => {
-            // Triggered on failure or exception.
-            this.message = 'Error: code = ' + error.code;
-          })
+    // ...
+      Row() {
+        Column() {
+          Text(this.message).fontSize(30)
+          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
+            .width('100%')
+            .height('90%')
+            .onTerminated((info) => {
+              // onTerminated is triggered when the terminateSelfWithResult button is clicked on the extension page.
+              this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
+            })
+            .onError((error) => {
+              // onError is triggered on failure or exception.
+              this.message = `Error: code = ${error.code}`;
+            })
+        }
+        .width('100%')
       }
-      .width('100%')
-    }
-    .height('100%')
+      .height('100%')
+      // ...
   }
 }
 ```
@@ -106,40 +115,43 @@ Key considerations for implementing the host page:
 
 The provider application implements embedded UI extension abilities. Below is an example lifecycle implementation:
 
-```ts
+<!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/extensionability/ExampleEmbeddedAbility.ets) -->
+
+``` TypeScript
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = '[ExampleEmbeddedAbility]'
 
 export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   onCreate() {
-    console.log(TAG, `onCreate`);
+    hilog.info(0x0000, TAG, '%{public}s', `onCreate`);
   }
 
   onForeground() {
-    console.log(TAG, `onForeground`);
+    hilog.info(0x0000, TAG, '%{public}s',  `onForeground`);
   }
 
   onBackground() {
-    console.log(TAG, `onBackground`);
+    hilog.info(0x0000, TAG, '%{public}s', `onBackground`);
   }
 
   onDestroy() {
-    console.log(TAG, `onDestroy`);
+    hilog.info(0x0000, TAG, '%{public}s', `onDestroy`);
   }
 
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    console.log(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+    hilog.info(0x0000, TAG , '%{public}s', `onSessionCreate, want: ${JSON.stringify(want)}`);
     let param: Record<string, UIExtensionContentSession> = {
       'session': session
     };
     let storage: LocalStorage = new LocalStorage(param);
-    // Load the pages/extension.ets content.
-    session.loadContent('pages/extension', storage);
+    // Load the Extension.ets content.
+    session.loadContent('pages/EmbeddedComponent/Extension', storage);
   }
 
   onSessionDestroy(session: UIExtensionContentSession) {
-    console.log(TAG, `onSessionDestroy`);
+    hilog.info(0x0000, TAG , '%{public}s',  `onSessionDestroy`);
   }
 }
 ```
@@ -170,29 +182,30 @@ Key implementation details:
 
 The following is an implementation of the entry component of the provider application, which demonstrates how to use **UIExtensionContentSession** and how to exit the embedded page and return the result through a button click event. This code file needs to be declared in the **main_pages.json** configuration file.
 
-```ts
+<!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
+
+``` TypeScript
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-let storage = new LocalStorage();
-
-@Entry(storage)
+@Entry()
 @Component
 struct Extension {
   @State message: string = 'EmbeddedUIExtensionAbility Index';
-  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+  private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
 
   build() {
     Column() {
       Text(this.message)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-      Button("terminateSelfWithResult").fontSize(20).onClick(() => {
+      Button('terminateSelfWithResult').fontSize(20).onClick(() => {
         // Call terminateSelfWithResult to exit when the button is clicked.
         this.session?.terminateSelfWithResult({
           resultCode: 1,
           want: {
-            bundleName: "com.example.embeddeddemo",
-            abilityName: "ExampleEmbeddedAbility",
+            bundleName: 'com.samples.uiextensionandaccessibility',
+            abilityName: 'ExampleEmbeddedAbility',
           }
         });
       })
@@ -205,23 +218,23 @@ Key considerations for implementing the entry page:
 
 1. Session management
 
-  Properly obtain and use the **UIExtensionContentSession** instances to ensure communication with the host application.
+   Properly obtain and use the **UIExtensionContentSession** instances to ensure communication with the host application.
 
 2. Result return
 
-  When returning results to the host through **terminateSelfWithResult**, specify:
+   When returning results to the host through **terminateSelfWithResult**, specify:
 
-  - **resultCode**: result code.
+   - **resultCode**: result code.
 
-  - **want**: recipient of the result.
+   - **want**: recipient of the result.
 
 3. Page lifecycle
 
-  Manage the lifecycle of the entry page to ensure proper resource cleanup.
+   Manage the lifecycle of the entry page to ensure proper resource cleanup.
 
 4. Style configuration
 
-  Properly configure page element styles to display the page as expected.
+   Properly configure page element styles to display the page as expected.
 
 **Configuration**
 
@@ -229,28 +242,20 @@ Key considerations for implementing the entry page:
 
   Add the ExampleEmbeddedAbility configuration under the **extensionAbilities** tag in the **module.json5** file:
 
-```json
+<!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "name": "ExampleEmbeddedAbility",
-  "srcEntry": "./ets/extensionAbility/ExampleEmbeddedAbility.ets",
+  "srcEntry": "./ets/extensionability/ExampleEmbeddedAbility.ets",
   "type": "embeddedUI"
-}
+},
 ```
 
 **Expected Results**
 
-1. An error message appears since multi-process mode is disabled by default.
+1. Start the application on the device that supports **EmbeddedUIExtensionAbility**.
 
-![en-us_image_0000001502261185](figures/en-us_image_0000001502261185.jpg)
+   ![en-us_image_0000001502261065](figures/en-us_image_0000001502261065.jpg)
 
-2. Use the following hdc command to enable multi-process mode. Then, restart the device:
-
-```bash
-hdc shell param set persist.sys.abilityms.multi_process_model true
-```
-
-3. The UI is displayed correctly after the application starts.
-
-![en-us_image_0000001502261065](figures/en-us_image_0000001502261065.jpg)
-
-4. Clicking the **terminateSelfWithResult** button hides the provider content and displays **onTerminated** information on the host page.
+2. Clicking the **terminateSelfWithResult** button hides the provider content and displays **onTerminated** information on the host page.

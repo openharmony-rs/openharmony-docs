@@ -1,16 +1,21 @@
 # Text Drawing
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
-
-The **&lt;svg&gt;** component can also be used to draw text.
+The **svg** component can also be used to draw text.
 
 
 ## Text
 
 > **NOTE**
 > - The text content must be written in the **&lt;text&gt;** area. The **&lt;tspan&gt;** child element label can be nested.
-> 
+>
 > - **&lt;text&gt;** can be nested only by the parent element label **svg**.
-> 
+>
 > - Only the default font **sans-serif** is supported.
 
 Set the following attributes to define text styles: **x** (X coordinate), **y** (Y coordinate), **dx** (x-axis offset of the text), **dy** (y-axis offset of the text), **fill** (font fill color), **stroke** (text border color), and **stroke-width** (text border width).
@@ -28,7 +33,7 @@ Set the following attributes to define text styles: **x** (X coordinate), **y** 
 </div>
 ```
 
-![en-us_image_0000001275803145](figures/en-us_image_0000001275803145.png)
+![en-us_image_0000001227151887](figures/en-us_image_0000001227151887.png)
 
 
 ## Drawing Text Along the Path
@@ -50,4 +55,4 @@ Set **textpath** to draw text along the path.
 </div>
 ```
 
-![en-us_image_0000001231843084](figures/en-us_image_0000001231843084.png)
+![en-us_image_0000001181354262](figures/en-us_image_0000001181354262.png)

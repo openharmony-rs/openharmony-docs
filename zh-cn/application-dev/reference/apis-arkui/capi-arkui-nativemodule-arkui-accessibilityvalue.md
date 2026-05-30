@@ -1,4 +1,14 @@
 # ArkUI_AccessibilityValue
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @wangyinhua-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_AccessibilityValue ArkUI_AccessibilityValue
+```
 
 ## 概述
 

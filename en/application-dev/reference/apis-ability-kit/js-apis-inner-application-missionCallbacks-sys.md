@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @hu-zhiqiong-->
 
 The module defines the callbacks invoked after synchronization starts. These callbacks can be used as input parameters in [registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener).
 
@@ -12,6 +12,7 @@ The module defines the callbacks invoked after synchronization starts. These cal
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > The APIs provided by this module are system APIs.
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -25,9 +26,13 @@ notifyMissionsChanged(deviceId: string): void
 
 Called to notify that the list of missions has changed.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.MANAGE_MISSIONS
 
 **Parameters**
 
@@ -46,15 +51,15 @@ distributedMissionManager.registerMissionListener(
   },
   {
     notifyMissionsChanged: (deviceId: string) => {
-      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
     notifySnapshot: (deviceId: string, mission: number) => {
-      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+      console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
     notifyNetDisconnect: (deviceId: string, state: number) => {
-      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+      console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
     }
   }
 );
@@ -66,9 +71,13 @@ notifySnapshot(deviceId: string, mission: number): void
 
 Called to notify that the snapshot has changed.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.MANAGE_MISSIONS
 
 **Parameters**
 
@@ -87,15 +96,15 @@ distributedMissionManager.registerMissionListener(
   },
   {
     notifyMissionsChanged: (deviceId: string) => {
-      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
     notifySnapshot: (deviceId: string, mission: number) => {
-      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+      console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
     notifyNetDisconnect: (deviceId: string, state: number) => {
-      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+      console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
     }
   }
 );
@@ -107,9 +116,13 @@ notifyNetDisconnect(deviceId: string, state: number): void
 
 Called to notify that the network connection is interrupted.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.MANAGE_MISSIONS
 
 **Parameters**
 
@@ -129,15 +142,15 @@ distributedMissionManager.registerMissionListener(
   },
   {
     notifyMissionsChanged: (deviceId: string) => {
-      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
     notifySnapshot: (deviceId: string, mission: number) => {
-      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+      console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
     notifyNetDisconnect: (deviceId: string, state: number) => {
-      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+      console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
     }
   }
 );

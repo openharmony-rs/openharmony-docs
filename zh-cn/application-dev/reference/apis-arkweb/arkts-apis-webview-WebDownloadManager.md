@@ -4,9 +4,9 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
-可以通过该类提供的接口来恢复失败的下载任务。
+可以通过该类提供的接口来设置下载委托或恢复失败的下载任务。
 
 > **说明：**
 >
@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 11开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 导入模块
 
@@ -30,7 +30,7 @@ static setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 > **说明：**
 >
->在调用本接口前，若尚未创建Web组件且未执行initializeWebEngine方法完成Web内核初始化，必须先调用initializeWebEngine方法进行初始化，否则接口调用无效。
+>在调用本接口前，若尚未创建Web组件且未执行[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)方法完成Web内核初始化，必须先调用initializeWebEngine方法进行初始化，否则接口调用无效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -38,7 +38,7 @@ static setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| delegate      | [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)  | 是   | 用来接收下载进回调的委托。 |
+| delegate      | [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md)  | 是   | 用来接收下载进度的委托。 |
 
 **示例：**
 
@@ -70,7 +70,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
@@ -185,7 +185,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })

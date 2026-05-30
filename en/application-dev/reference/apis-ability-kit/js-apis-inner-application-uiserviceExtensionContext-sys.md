@@ -1,5 +1,12 @@
 # UIServiceExtensionContext (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @xhz-sz-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The UIServiceExtensionContext module provides the context environment for a [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md).
 
 UIServiceExtensionContext provides access to a [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md) and APIs for operating the ability, for example, starting, terminating, connecting, and disconnecting ability.
@@ -8,7 +15,7 @@ UIServiceExtensionContext provides access to a [UIServiceExtensionAbility](js-ap
 >
 >  - The initial APIs of this module are supported since API version 14. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >  - The APIs of this module can be used only in the stage model.
->  - The APIs of this module must be used in the main thread, but not in child threads such as Worker and TaskPool.
+>  - The APIs of this module must be used on the main thread, but not on child threads such as Worker and TaskPool.
 >  - The APIs provided by this module are system APIs.
 
 ## Modules to Import
@@ -50,10 +57,10 @@ Starts an ability. This API uses a promise to return the result.
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| No| Want information about the target ability, such as the ability name and bundle name.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes|Yes| Parameters used for starting the ability.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability, such as the ability name and bundle name.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
 
 **Return value**
 
@@ -80,7 +87,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000019 | Can not match any component.       |
+| 16000019 | No matching ability is found.       |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -106,7 +113,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
       this.context.startAbility(want, options)
         .then((data: void) => {
           // Carry out normal service processing.
-          console.log('startAbility succeed');
+          console.info('startAbility succeed');
         })
         .catch((error: BusinessError) => {
           // Process service logic errors.
@@ -125,7 +132,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
 
 terminateSelf(): Promise&lt;void&gt;
 
-Terminates this [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md).
+Terminates this [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -137,10 +144,6 @@ Terminates this [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensi
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error codes**
-
-N/A
-
 **Example**
 
 ```ts
@@ -151,7 +154,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
   onCreate() {
     this.context.terminateSelf().then(() => {
       // Carry out normal service processing.
-      console.log('terminateSelf succeed');
+      console.info('terminateSelf succeed');
     }).catch((error: BusinessError) => {
       // Process service logic errors.
       console.error(`terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
@@ -162,10 +165,9 @@ class UIEntryAbility extends UIServiceExtensionAbility {
 
 ## UIServiceExtensionContext.startAbilityByType
 
-startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;,
-    abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
+startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;, abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
 
-Starts a [UIAbility](js-apis-app-ability-uiAbility.md) or [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) based on the type of the target ability. This API can be called only by applications running in the foreground.
+Starts a [UIAbility](js-apis-app-ability-uiAbility.md) or [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) based on the type of the target ability. This API can be called only by applications running in the foreground. This API uses a promise to return the result.
 
 
 > **NOTE**
@@ -178,11 +180,11 @@ Starts a [UIAbility](js-apis-app-ability-uiAbility.md) or [UIExtensionAbility](j
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- |  -------- |
-| type | string  | Yes| No|  Type of the target ability.|
-| wantParam | Record&lt;string, Object&gt;| Yes| No| Want parameter.|
-| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)| Yes| No| Callback.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- |  -------- |
+| type | string  | Yes| Type of the target ability.|
+| wantParam | Record&lt;string, Object&gt;| Yes| Want parameter.|
+| abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)| Yes| Callback invoked to return the UIExtensionAbility startup result.|
 
 **Return value**
 
@@ -221,15 +223,15 @@ struct SubIndex {
             let startWant: Record<string, Object> = {
               'sceneType': 1,
               'email': [encodeURI('xxx@example.com'),
-                encodeURI('xxx@example.com')], // Email address of the recipient. Multiple values are separated by commas (,). The array content is URL encoded using encodeURI().
+                encodeURI('xxx@example.com')], // Email address of the recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
               'cc': [encodeURI('xxx@example.com'),
-                encodeURI('xxx@example.com')], // Email address of the CC recipient. Multiple values are separated by commas (,). The array content is URL encoded using encodeURI().
+                encodeURI('xxx@example.com')], // Email address of the CC recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
               'bcc': [encodeURI('xxx@example.com'),
-                encodeURI('xxx@example.com')], // Email address of the BCC recipient. Multiple values are separated by commas (,). The array content is URL encoded using encodeURI().
+                encodeURI('xxx@example.com')], // Email address of the BCC recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
               'subject': encodeURI('Email subject'), // Email subject. The content is URL encoded using encodeURI().
               'body': encodeURI('Email body'), // Email body. The content is URL encoded using encodeURI().
-              'ability.params.stream': [encodeURI('Attachment URI 1'),
-                encodeURI('Attachment URI 2')], // Attachment URIs. Multiple values are separated by commas (,). The array content is URL encoded using encodeURI().
+              'ability.params.stream': [encodeURI ('attachment uri1'),
+                encodeURI ('attachment uri2') ], // Attachment URI. Multiple values are separated by commas (,). The array content is URL-encoded using the encodeURI() method.
               'ability.want.params.uriPermissionFlag': 1
             };
             let abilityStartCallback: common.AbilityStartCallback = {
@@ -241,7 +243,7 @@ struct SubIndex {
               // Start a UIAbility or UIExtensionAbility based on the type of the target ability.
               context.startAbilityByType("mail", startWant, abilityStartCallback)
                 .then(() => {
-                  console.log(TAG + `Succeeded in windows starting ability`);
+                  console.info(TAG + `Succeeded in windows starting ability`);
                 }).catch((err: BusinessError) => {
                 console.error(TAG +
                   `Failed to windows starting ability, Code is ${err.code}, message is ${err.message}.`);
@@ -277,10 +279,10 @@ Connects to a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) an
 
 **Parameters**
 
-| Name              | Type                    | Read Only| Optional| Description             |
-| -------------------- | ------------------------ | ---- | ---- |----------------- |
-| want                 | [Want](js-apis-app-ability-want.md) | Yes | No| Want parameter.      |
-| options              | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes|Yes  | Connection options.|
+| Name              | Type                    | Mandatory| Description             |
+| -------------------- | ------------------------ | ---- |----------------- |
+| want                 | [Want](js-apis-app-ability-want.md) | Yes| Want parameter.      |
+| options              | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes| Connection options.|
 
 **Return value**
 
@@ -294,7 +296,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message |
 | -------- | --- |
-| 201     | Not system application.   |
+| 201     | The application does not have permission to call the interface.   |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001  | The specified ability does not exist.         |
 | 16000002   | Incorrect ability type.         |
@@ -303,6 +305,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000006   | Cross-user operations are not allowed.         |
 | 16000008   | The crowdtesting application expires.        |
 | 16000011   | The context does not exist.         |
+| 16000013   | The application is controlled by EDM.       |
 | 16000050   | Internal error.        |
 | 16000053   | The ability is not on the top of the UI.        |
 | 16000055   | Installation-free timed out.         |
@@ -314,8 +317,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common, Want } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// The client needs to import idl_service_ext_proxy.ts provided by the server to the local project.
-import IdlServiceExtProxy from '../IdlServiceExt/idl_service_ext_proxy';
 
 const TAG: string = '[Page_ServiceExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -330,54 +331,39 @@ let want: Want = {
 let options: common.ConnectOptions = {
   onConnect(elementName, remote: rpc.IRemoteObject): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
-    if (remote === null) {
-      hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
-      return;
-    }
-    let serviceExtProxy: IdlServiceExtProxy = new IdlServiceExtProxy(remote);
-    // Communication is carried out by API calling, without exposing RPC details.
-    serviceExtProxy.processData(1, (errorCode: number, retVal: number) => {
-      hilog.info(DOMAIN_NUMBER, TAG, `processData, errorCode: ${errorCode}, retVal: ${retVal}`);
-    });
-    serviceExtProxy.insertDataToMap('theKey', 1, (errorCode: number) => {
-      hilog.info(DOMAIN_NUMBER, TAG, `insertDataToMap, errorCode: ${errorCode}`);
-    })
   },
   onDisconnect(elementName): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
   },
   onFailed(code: number): void {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
+    hilog.info(DOMAIN_NUMBER, TAG, `onFailed callback, ${code}`);
   }
 };
+
 @Entry
 @Component
 struct Page_UIServiceExtensionAbility {
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
           }
           .onClick(() => {
-            let context: common.UIServiceExtensionContext = this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
+            let context: common.UIServiceExtensionContext =
+              this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
             // The ID returned after the connection is set up must be saved. The ID will be used for disconnection.
             connectionId = context.connectServiceExtensionAbility(want, options);
             // The background service is connected.
             this.getUIContext().getPromptAction().showToast({
-              message: $r('app.string.SuccessfullyConnectBackendService')
+              message: 'SuccessfullyConnectBackendService'
             });
             // connectionId = context.connectAbility(want, options);
             hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```
@@ -386,8 +372,7 @@ struct Page_UIServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connectionId: number): Promise&lt;void&gt;
 
-Disconnects from a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API is opposite to [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability).
-
+Disconnects from a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API is opposite to [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -395,9 +380,9 @@ Disconnects from a [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.m
 
 **Parameters**
 
-| Name               | Type                    | Read Only| Optional| Description             |
-| -------------------- | ------------------------ | ---- | ----------------- | ----------------- |
-| connectionId         | number                   | Yes | No| Connection ID returned by [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability).|
+| Name               | Type                    | Mandatory| Description             |
+| -------------------- | ------------------------ | ---- | ----------------- |
+| connectionId         | number                   | Yes| Connection ID returned by [connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability).|
 
 
 **Return value**
@@ -427,36 +412,34 @@ const TAG: string = '[Page_ServiceExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let connectionId: number;
+
 @Entry
 @Component
 struct Page_UIServiceExtensionAbility {
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
           }
           .onClick(() => {
-            let context: common.UIServiceExtensionContext = this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
+            let context: common.UIServiceExtensionContext =
+              this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
             // connectionId is returned when connectServiceExtensionAbility is called and needs to be manually maintained.
             context.disconnectServiceExtensionAbility(connectionId).then(() => {
               hilog.info(DOMAIN_NUMBER, TAG, 'disconnectServiceExtensionAbility success');
               // The background service is disconnected.
               this.getUIContext().getPromptAction().showToast({
-                message: $r('app.string.SuccessfullyDisconnectBackendService')
+                message: 'SuccessfullyDisconnectBackendService'
               });
-            }).catch((error: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG, 'disconnectServiceExtensionAbility failed');
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG,
+                `disconnectServiceExtensionAbility failed, err code: ${err.code}, err msg: ${err.message}`);
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```

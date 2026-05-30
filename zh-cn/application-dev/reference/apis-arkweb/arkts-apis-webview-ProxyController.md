@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 此类用于为应用程序设置代理。
 
@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 15开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 导入模块
 
@@ -61,7 +61,7 @@ static removeProxyOverride(callback: OnProxyConfigChangeCallback): void
 
 | 参数名          | 类型     |  必填  | 说明           |
 | ---------------| ------- | ---- | ------------- |
-| callback     | [OnProxyConfigChangeCallback](./arkts-apis-webview-t.md#onproxyconfigchangecallback15)   | 是   | 代理设置成功的回调。 |
+| callback     | [OnProxyConfigChangeCallback](./arkts-apis-webview-t.md#onproxyconfigchangecallback15)   | 是   | 代理配置变更的回调。 |
 
 **错误码：**
 
@@ -119,7 +119,7 @@ struct WebComponent {
           }
           this.proxyRules = proxyConfig.getProxyRules();
           for (let i = 0; i < this.proxyRules.length; i++) {
-            console.info("SchemeFiletr: " + this.proxyRules[i].getSchemeFilter());
+            console.info("SchemeFilter: " + this.proxyRules[i].getSchemeFilter());
             console.info("Url: " + this.proxyRules[i].getUrl());
           }
           let isReverseBypassRule = proxyConfig.isReverseBypassEnabled();

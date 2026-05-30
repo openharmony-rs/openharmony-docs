@@ -16,7 +16,7 @@ Members in each service SIG write basic documents for the release. Developers in
 
 1. Provide the **Documents** breakdown in the service SIG requirement issue. If new documents or updates to the existing documents are required, this requirement issue must be liked to the Docs SIG.
 
-2. View the feature requirements of the release in [OpenHarmony Roadmap]( https://gitee.com/openharmony/release-management/blob/master/OpenHarmony-RoadMap.md). This roadmap provides the release time plan, features to deliver, feature status, and SIG information.
+2. View the feature requirements of the release in [OpenHarmony Roadmap]( https://gitcode.com/openharmony/release-management/blob/master/OpenHarmony-RoadMap.md). This roadmap provides the release time plan, features to deliver, feature status, and SIG information.
 
    If a feature requirement involves document delivery, add **Yes** in the **Need Docs** column so that the Docs SIG can track the document delivery.
 
@@ -28,7 +28,7 @@ If you are a member of a service SIG and are responsible for developing a new fe
 If you need help in the document structure, ask questions in the `#SIG-Docs` Zulip.
 
 1. Contact the documentation owner in the Docs SIG for suggestions on document design by referring to [Document Reviewers](docs-reviewers.md).
-2. Obtain the corresponding [document template](template) and learn the document writing instructions.
+2. Obtain the corresponding document template and learn the document writing instructions.
 3. Provide detailed documents and usage instructions for the feature as much as possible. After you finish a draft, submit a pull request (PR) and include the link to the corresponding issue in the PR description.
 
 ### Submitting Documents for Review Through PRs
@@ -65,7 +65,7 @@ When submitting a translation requirement, ensure that:
 
 1. The Chinese document meets the quality standards stipulated for deliverables.
 2. The PR related to the Chinese document or the Chinese document path is provided.
-3. Temporary Chinese documents can be submitted to the [Docs Repository](https://gitee.com/openharmony/community/tree/master/sig/).
+3. Temporary Chinese documents can be submitted to the [Docs Repository](https://gitcode.com/openharmony/community/tree/master/sig/).
 
 ## Actions for Docs SIG Members or Document Contributors
 
@@ -73,9 +73,9 @@ Members in the Docs SIG or document contributors should cooperate with each serv
 
 ### Understanding Feature Plans of Each Release
 
-To know feature and release plans of a release, you can attend the meeting [SIG Release](https://gitee.com/openharmony/release-management/blob/master/README.md) held on Friday every two weeks. Understand the release progress, requirement delivery progress, and document delivery progress.
+To know feature and release plans of a release, you can attend the meeting [SIG Release](https://gitcode.com/openharmony/release-management/blob/master/README.md) held on Friday every two weeks. Understand the release progress, requirement delivery progress, and document delivery progress.
 
-You can also view feature requirements of a release in [OpenHarmony Roadmap](https://gitee.com/openharmony/release-management/blob/master/OpenHarmony-RoadMap.md). You can select feature issues marked with SIG_Docs and associated document PRs.
+You can also view feature requirements of a release in [OpenHarmony Roadmap](https://gitcode.com/openharmony/release-management/blob/master/OpenHarmony-RoadMap.md). You can select feature issues marked with SIG_Docs and associated document PRs.
 
 
 ### Reviewing Chinese Documents Submitted in PRs

@@ -2,16 +2,16 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供外部应用组件嵌入式显示功能，即外部应用提供的UI可在本应用内显示。如需通过跨进程通信实现更新，请参考[@ohos.pluginComponent](../js-apis-plugincomponent.md)。
 
 
 >  **说明：**
 >
->  - 该组件从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  - 本模块系统接口。
 
@@ -46,12 +46,14 @@ PluginComponent(options: PluginComponentOptions)
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数       | 类型   | 描述                        |
-| ---------- | ------ | --------------------------- |
-| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9类型说明) | 组件模板，用于跟提供方定义的组件绑定。                |
-| data<sup>9+</sup>       | any    | 传给插件组件提供方使用的数据。 |
+| 名称       | 类型   | 只读 |可选 | 说明                        |
+| ---------- | ------ | ------ | ------ |--------------------------- |
+| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9类型说明) | 否 | 否 | 组件模板，用于跟提供方定义的组件绑定。                |
+| data<sup>9+</sup>       | any | 否 | 否  | 传给插件组件提供方使用的数据。 |
 
 ## PluginComponentTemplate<sup>9+</sup>类型说明
 
@@ -59,31 +61,33 @@ PluginComponent(options: PluginComponentOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数       | 类型   | 描述                        |
-| ---------- | ------ | --------------------------- |
-| source     | string | 组件模板名。                |
-| bundleName | string | 提供方Ability的bundleName。 |
+| 名称       | 类型  | 只读 | 可选 | 说明                        |
+| ---------- | ------ | ------ | ------ | --------------------------- |
+| source     | string | 否 | 否 | 组件模板名。                |
+| bundleName | string | 否 | 否 | 提供方Ability的bundleName。 |
 
 ## 属性
 
 必须显式设置组件宽高为非0有效值。
 
-**说明：**
-
-  模板支持两种提供方式：
-* 1.使用绝对路径进行资源提供：source字段填写模板绝对路径，bundleName不需要填写。仅适用于不需要加载资源的单独模板页面，不建议使用。
-* 2.通过应用包进行资源提供：bundleName字段需要填写应用包名；source字段填写相对hap包的模板相对路径，对于多hap场景，通过“相对路径&模块名称”的方式进行hap包的确认。
-
-  例如：{source: 'pages/PluginProviderExample.ets&entry', bundleName: 'com.example.provider'}
-
-  仅对FA模型支持source字段填写AbilityName、bundleName字段填写应用包名的方式进行资源提供。
-
-  例如：{source: 'plugin', bundleName: 'com.example.provider'}
+> **说明：**
+>
+> 模板支持两种提供方式：
+>
+> 1.使用绝对路径进行资源提供：source字段填写模板绝对路径，bundleName不需要填写。仅适用于不需要加载资源的单独模板页面，不建议使用。
+>
+> 2.通过应用包进行资源提供：bundleName字段需要填写应用包名；source字段填写相对hap包的模板相对路径，对于多hap场景，通过“相对路径&模块名称”的方式进行hap包的确认。
+>
+>  例如：{source: 'pages/PluginProviderExample.ets&entry', bundleName: 'com.example.provider'}
+>
+>  仅对FA模型支持source字段填写AbilityName、bundleName字段填写应用包名的方式进行资源提供。
+>
+>  例如：{source: 'plugin', bundleName: 'com.example.provider'}
 
 
 ## 事件
 
-支持[绑定手势方法](ts-gesture-settings.md)，并分发给提供方页面，在提供方页面内部处理。
+支持[绑定手势事件](ts-gesture-settings.md)，并分发给提供方页面，在提供方页面内部处理。
 
 除支持[通用事件](ts-component-general-events.md)，还支持以下事件：
 
@@ -125,6 +129,8 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 参数     | 类型               | 描述                        |
@@ -141,12 +147,14 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数       | 类型   | 描述                        |
-| ---------- | ------ | -------------------------- |
-| errcode<sup>9+</sup>    | number | 错误码。                    |
-| msg<sup>9+</sup>        | string | 错误信息。                  |
+| 名称       | 类型  | 只读 | 可选 | 说明                        |
+| ---------- | ------ | ------ | ------ |-------------------------- |
+| errcode<sup>9+</sup>    | number | 否 | 否 |错误码。                    |
+| msg<sup>9+</sup>        | string | 否 | 否 |错误信息。                  |
 
 错误码1为默认错误码，错误信息和处理建议详见下表：
 
@@ -164,7 +172,7 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 ## 示例（加载PluginComponent）
 
-本示例展示PluginComponent组件的基础使用方式，需要创建一个bundleName为"com.example.user"的[使用方应用](#组件使用方)，和一个bundleName为"com.example.provider"的[提供方应用](#组件提供方)。应用项目构建完成后，具体测试步骤如下：
+本示例展示PluginComponent组件的基础使用方式，需要创建一个bundleName为"com.example.user"的[使用方](#组件使用方)应用，和一个bundleName为"com.example.provider"的[提供方](#组件提供方)应用。应用项目构建完成后，具体测试步骤如下：
 1. 将两个应用的hap包安装到设备上；
 2. 打开使用方应用页面，使用方与提供方内容都正确显示；
 3. 分别点击使用方的“Register Push Listener”按钮和提供方的“Register Request Listener”按钮注册监听；
@@ -226,7 +234,7 @@ onError(callback:&nbsp;PluginErrorCallback)
     }
   }
   ```
-- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的ets/pages/plugin_component.js文件中。
+- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的ets/pages/plugin_component.ets文件中。
 - 在module.json5配置文件中增加requestPermissions标签，允许使用方查询其他应用信息：
   ```json
   "requestPermissions": [
@@ -284,7 +292,7 @@ onError(callback:&nbsp;PluginErrorCallback)
     }
   }
   ```
-- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的ets/pages/plugin_component.js文件中。
+- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的ets/pages/plugin_component.ets文件中。
 
 ### Plugin组件工具
 

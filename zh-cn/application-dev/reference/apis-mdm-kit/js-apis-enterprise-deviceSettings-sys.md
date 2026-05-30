@@ -1,10 +1,10 @@
 # @ohos.enterprise.deviceSettings （设备设置管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供企业设备设置能力，包括获取设备息屏时间等。
 
@@ -14,7 +14,7 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需通过[enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)接口将设备管理应用激活后调用。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.deviceSettings](js-apis-enterprise-deviceSettings.md)。
 
@@ -42,7 +42,7 @@ setScreenOffTime(admin: Want, time: number): void
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。     |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。     |
 | time | number            | 是    | 设备息屏时间（单位：毫秒，建议参数与设备可选息屏时间保持一致）。       |
 
 **错误码**：
@@ -66,7 +66,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   // 参数需根据实际情况进行替换
@@ -95,7 +95,7 @@ getScreenOffTime(admin: Want, callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | callback | AsyncCallback&lt;number&gt;            | 是    | 回调函数。当接口调用成功，err为null，data为设备息屏时间（单位：毫秒），否则err为错误对象。       |
 
 **错误码**：
@@ -119,7 +119,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 deviceSettings.getScreenOffTime(wantTemp, (err, result) => {
@@ -149,7 +149,7 @@ getScreenOffTime(admin: Want): Promise&lt;number&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -179,7 +179,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 deviceSettings.getScreenOffTime(wantTemp).then((result) => {
@@ -207,8 +207,8 @@ installUserCertificate(admin: Want, certificate: CertBlob, callback: AsyncCallba
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。            |
-| certificate    | [CertBlob](#certblob)     | 是    | 证书信息。证书文件应放在应用沙箱路径等应用有权限访问的路径下。 |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
+| certificate    | [CertBlob](#certblob)     | 是    | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。 |
 | callback | AsyncCallback&lt;string&gt;            | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。      |
 
 **错误码**：
@@ -235,7 +235,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let certFileArray: Uint8Array = new Uint8Array();
 // 变量context需要在MainAbility的onCreate回调函数中进行初始化
@@ -252,7 +252,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     }
   });
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get row file content. message: ${error.message}`);
+  console.error(`Failed to get raw file content. message: ${error.message}`);
   return;
 });
 ```
@@ -275,8 +275,8 @@ installUserCertificate(admin: Want, certificate: CertBlob): Promise&lt;string&gt
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
-| certificate    | [CertBlob](#certblob)     | 是    | 证书信息。证书文件应放在应用沙箱路径等应用有权限访问的路径下。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| certificate    | [CertBlob](#certblob)     | 是    | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。 |
 
 **返回值：**
 
@@ -308,7 +308,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let certFileArray: Uint8Array = new Uint8Array();
 // 变量context需要在MainAbility的onCreate回调函数中进行初始化
@@ -321,24 +321,13 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     .then((result) => {
       console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
     }).catch((err: BusinessError) => {
-    console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get row file content. message: ${error.message}`);
+  console.error(`Failed to get raw file content. message: ${error.message}`);
   return;
 });
 ```
-
-## CertBlob
-
-证书信息。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称         | 类型     | 只读 | 可选 | 说明                            |
-| ----------- | --------| ----- | ---- | ------------------------------- |
-| inData | Uint8Array | 否 | 否 |证书的二进制内容。 |
-| alias | string | 否 | 否 |证书别名。 |
 
 ## deviceSettings.uninstallUserCertificate
 
@@ -358,7 +347,7 @@ uninstallUserCertificate(admin: Want, certUri: string, callback: AsyncCallback&l
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | certUri    | string    | 是    | 证书uri，由安装用户证书接口[installUserCertificate](#devicesettingsinstallusercertificate)设置返回。 |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。      |
 
@@ -384,7 +373,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let aliasStr = "certName";
@@ -415,7 +404,7 @@ uninstallUserCertificate(admin: Want, certUri: string): Promise&lt;void&gt;
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | certUri    | string     | 是    | 证书uri，由安装用户证书接口[installUserCertificate](#devicesettingsinstallusercertificate-1)设置返回。 |
 
 **返回值：**
@@ -447,7 +436,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let aliasStr = "certName"
@@ -476,7 +465,7 @@ setPowerPolicy(admin: Want, powerScene: PowerScene, powerPolicy: PowerPolicy): v
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | powerScene | [PowerScene](#powerscene11) | 是    | 电源策略场景，当前只支持超时场景。       |
 | powerPolicy | [PowerPolicy](#powerpolicy11) | 是    | 电源策略。       |
 
@@ -501,7 +490,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let delayTime = 0;
@@ -533,7 +522,7 @@ getPowerPolicy(admin: Want, powerScene: PowerScene): PowerPolicy
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | powerScene | [PowerScene](#powerscene11) | 是    | 电源策略场景，当前只支持超时场景。       |
 
 **返回值：**
@@ -563,7 +552,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let powerScene: deviceSettings.PowerScene = deviceSettings.PowerScene.TIME_OUT;
@@ -573,6 +562,17 @@ try {
   console.error(`Failed to get power policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## CertBlob
+
+证书信息。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| inData | Uint8Array | 否 | 否 |证书的二进制内容。 |
+| alias | string | 否 | 否 |证书别名，别名长度小于40个字符。 |
 
 ## PowerPolicy<sup>11+</sup>
 
@@ -612,5 +612,5 @@ try {
 | NONE | 0 | 不执行动作。 |
 | AUTO_SUSPEND | 1 | 自动进入睡眠。 |
 | FORCE_SUSPEND | 2 | 强制进入睡眠。 |
-| HIBERNATE | 3 | 进入休眠。（当前电源子系统暂不支持） |
+| HIBERNATE | 3 | 进入休眠，该策略暂不生效。 |
 | SHUTDOWN | 4 | 关机。 |

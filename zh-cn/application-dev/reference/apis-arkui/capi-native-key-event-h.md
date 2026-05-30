@@ -1,10 +1,10 @@
 # native_key_event.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -19,6 +19,8 @@
 **起始版本：** 14
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[NdkKeyEvent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkKeyEvent)<!--RP1End-->
 
 ## 汇总
 
@@ -52,7 +54,7 @@
 
 ### ArkUI_KeyCode
 
-```
+```c
 enum ArkUI_KeyCode
 ```
 
@@ -108,7 +110,7 @@ enum ArkUI_KeyCode
 | ARKUI_KEYCODE_N = 2030 | 按键'N'。                     |
 | ARKUI_KEYCODE_O = 2031 | 按键'O'。                     |
 | ARKUI_KEYCODE_P = 2032 | 按键'P'。                     |
-| ARKUI_KEYCODE_Q = 2033 | 按键'R'。                     |
+| ARKUI_KEYCODE_Q = 2033 | 按键'Q'。                     |
 | ARKUI_KEYCODE_R = 2034 | 按键'R'。                     |
 | ARKUI_KEYCODE_S = 2035 | 按键'S'。                     |
 | ARKUI_KEYCODE_T = 2036 | 按键'T'。                     |
@@ -214,7 +216,7 @@ enum ArkUI_KeyCode
 
 ### ArkUI_KeyEventType
 
-```
+```c
 enum ArkUI_KeyEventType
 ```
 
@@ -235,7 +237,7 @@ enum ArkUI_KeyEventType
 
 ### ArkUI_KeySourceType
 
-```
+```c
 enum ArkUI_KeySourceType
 ```
 
@@ -255,7 +257,7 @@ enum ArkUI_KeySourceType
 
 ### ArkUI_KeyIntension
 
-```
+```c
 enum ArkUI_KeyIntension
 ```
 
@@ -299,7 +301,7 @@ enum ArkUI_KeyIntension
 
 ### OH_ArkUI_KeyEvent_GetType()
 
-```
+```c
 ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)
 ```
 
@@ -325,7 +327,7 @@ ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_KeyEvent_GetKeyCode()
 
-```
+```c
 int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)
 ```
 
@@ -351,7 +353,7 @@ int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_KeyEvent_GetKeyText()
 
-```
+```c
 const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)
 ```
 
@@ -377,7 +379,7 @@ const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_KeyEvent_GetKeySource()
 
-```
+```c
 ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* event)
 ```
 
@@ -403,7 +405,7 @@ ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* eve
 
 ### OH_ArkUI_KeyEvent_StopPropagation()
 
-```
+```c
 void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)
 ```
 
@@ -424,7 +426,7 @@ void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool sto
 
 ### OH_ArkUI_KeyEvent_GetKeyIntensionCode()
 
-```
+```c
 ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEvent* event)
 ```
 
@@ -450,7 +452,7 @@ ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEven
 
 ### OH_ArkUI_KeyEvent_GetUnicode()
 
-```
+```c
 uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)
 ```
 
@@ -476,7 +478,7 @@ uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_KeyEvent_SetConsumed()
 
-```
+```c
 void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsumed)
 ```
 
@@ -497,7 +499,7 @@ void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsu
 
 ### OH_ArkUI_KeyEvent_Dispatch()
 
-```
+```c
 void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)
 ```
 
@@ -518,7 +520,7 @@ void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent*
 
 ### OH_ArkUI_KeyEvent_IsNumLockOn()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, bool* state)
 ```
 
@@ -545,7 +547,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, b
 
 ### OH_ArkUI_KeyEvent_IsCapsLockOn()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, bool* state)
 ```
 
@@ -572,7 +574,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_KeyEvent_IsScrollLockOn()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event, bool* state)
 ```
 

@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
  表示下载任务，您可以使用此对象来操作相应的下载任务。
 
@@ -14,9 +14,9 @@
 >
 > - 本Class首批接口从API version 11开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 >
-> - 在下载过程中，下载的进程会通过WebDownloadDelegate通知给使用者，使用者可以通过参数WebDownloadItem来操作下载任务。
+> - 在下载过程中，下载的进度会通过WebDownloadDelegate通知给使用者，使用者可以通过参数WebDownloadItem来操作下载任务。
 >
 > - 当前WebDownloadItem支持的下载文件名最长长度为255字节<!--RP1--><!--RP1End-->。
 
@@ -67,7 +67,7 @@ struct WebComponent {
               console.info("download update guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
@@ -132,7 +132,7 @@ struct WebComponent {
               console.info("download update current speed: " + webDownloadItem.getCurrentSpeed());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
@@ -197,7 +197,7 @@ struct WebComponent {
               console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
@@ -233,7 +233,7 @@ getTotalBytes(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 待下载文件的总长度，-1代表总大小未知。 |
+| number | 待下载文件的总长度，-1代表总大小未知。单位：字节。 |
 
 **示例：**
 
@@ -262,7 +262,7 @@ struct WebComponent {
               console.info("download update total bytes: " + webDownloadItem.getTotalBytes());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
@@ -327,7 +327,7 @@ struct WebComponent {
               console.info("download update download state: " + webDownloadItem.getState());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
@@ -392,7 +392,7 @@ struct WebComponent {
               console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               console.info("download error code: " + webDownloadItem.getLastErrorCode());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
@@ -458,7 +458,7 @@ struct WebComponent {
               console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
@@ -523,7 +523,7 @@ struct WebComponent {
               console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
@@ -588,7 +588,7 @@ struct WebComponent {
               console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
@@ -653,7 +653,7 @@ struct WebComponent {
               console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
@@ -719,7 +719,7 @@ struct WebComponent {
               console.info("download update received bytes: " + webDownloadItem.getReceivedBytes());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
@@ -784,11 +784,145 @@ struct WebComponent {
               console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.info("download finish guid: " + webDownloadItem.getGuid());
               console.info("download finish full path: " + webDownloadItem.getFullPath());
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            this.controller.startDownload('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## getOriginalUrl<sup>24+</sup>
+
+getOriginalUrl(): string
+
+获取下载文件的原始URL地址。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| string | 下载文件的原始URL地址。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("will start a download, original URL: " + webDownloadItem.getOriginalUrl());
+              // 传入一个下载路径，并开始下载。
+              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error("download failed guid: " + webDownloadItem.getGuid());
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download finish guid: " + webDownloadItem.getGuid());
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            this.controller.startDownload('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## getReferrerUrl<sup>24+</sup>
+
+getReferrerUrl(): string
+
+获取下载文件的referrer地址。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| string | 下载文件的referrer地址。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("will start a download, referrer URL: " + webDownloadItem.getReferrerUrl());
+              // 传入一个下载路径，并开始下载。
+              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error("download failed guid: " + webDownloadItem.getGuid());
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -851,7 +985,7 @@ struct WebComponent {
               console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
@@ -933,7 +1067,7 @@ struct WebComponent {
               console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
@@ -971,7 +1105,7 @@ struct WebComponent {
 
 start(downloadPath: string): void
 
-开始下载到指定目录，参数为下载文件的磁盘存储路径(包含文件名)。
+开始下载到指定目录，参数为下载文件的磁盘存储路径（包含文件名）。
 
 > **说明：**
 >
@@ -983,7 +1117,7 @@ start(downloadPath: string): void
 
 | 参数名 | 类型                   | 必填 | 说明                             |
 | ------ | ---------------------- | ---- | ------------------------------|
-| downloadPath   | string     | 是  | 下载文件的路径(包含文件名)，路径长度与文件管理中长度一致，最长255字符。 |
+| downloadPath   | string     | 是  | 下载文件的路径（包含文件名），路径长度与文件管理中长度一致，最长255字节。 |
 
 **错误码：**
 
@@ -1021,7 +1155,7 @@ struct WebComponent {
               console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
@@ -1093,7 +1227,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
@@ -1181,7 +1315,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
@@ -1277,7 +1411,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })

@@ -20,6 +20,7 @@
     - [Functions](arkts-apis-data-relationalStore-f.md)
     - [Interface (RdbStore)](arkts-apis-data-relationalStore-RdbStore.md)
     - [Interface (ResultSet)](arkts-apis-data-relationalStore-ResultSet.md)
+    - [Class (LiteResultSet)](arkts-apis-data-relationalStore-LiteResultSet.md)
     - [Interface (Transaction)](arkts-apis-data-relationalStore-Transaction.md)
     - [Interfaces (其他)](arkts-apis-data-relationalStore-i.md)
     - [Class (RdbPredicates)](arkts-apis-data-relationalStore-RdbPredicates.md)
@@ -43,14 +44,15 @@
   - [@ohos.data.dataShareResultSet (数据共享结果集)(系统接口)](js-apis-data-DataShareResultSet-sys.md)
   - [@ohos.data.distributedKVStore (分布式键值数据库)(系统接口)](js-apis-distributedKVStore-sys.md)
   - [@ohos.data.relationalStore (关系型数据库)(系统接口)](js-apis-data-relationalStore-sys.md)
+  - [@ohos.data.uniformTypeDescriptor (标准化数据定义与描述)(系统接口)](js-apis-data-uniformTypeDescriptor-sys.md)
   <!--DelEnd-->
   - 已停止维护的接口<!--arkdata-arkts-dep-->
     - [@ohos.data.distributedData (分布式数据管理)](js-apis-distributed-data.md)
     - [@ohos.data.rdb (关系型数据库)](js-apis-data-rdb.md)
     - [@ohos.data.storage (轻量级存储)](js-apis-data-storage.md)
-    - [@system.storage数据存储](js-apis-system-storage.md)
-    - data/rdb
-      - [resultSet结果集](js-apis-data-resultset.md)
+    - [@system.storage (数据存储)](js-apis-system-storage.md)
+    - data/rdb<!--data-rdb-->
+      - [resultSet (结果集)](js-apis-data-resultset.md)
 - ArkTS 组件<!--arkdata-comp-->
   - [@ohos.data.UdmfComponents (内容卡片)](js-apis-data-UdmfComponents.md)
 - C API<!--arkdata-c-->
@@ -84,6 +86,7 @@
   - 结构体<!--arkdata-struct-->
     - [OH_Cursor](capi-rdb-oh-cursor.md)
     - [OH_Predicates](capi-rdb-oh-predicates.md)
+    - [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
     - [OH_VObject](capi-rdb-oh-vobject.md)
     - [OH_VBucket](capi-rdb-oh-vbucket.md)
     - [OH_Rdb_Config](capi-rdb-oh-rdb-config.md)
@@ -127,6 +130,7 @@
     - [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)
     - [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)
     - [OH_UdsContentForm](capi-udmf-oh-udscontentform.md)
+    - [OH_UdsDetails](capi-udmf-oh-udsdetails.md)
     - [OH_Utd](capi-udmf-oh-utd.md)
 - 错误码<!--arkdata-arkts-errcode-->
   - [关系型数据库错误码](errorcode-data-rdb.md)

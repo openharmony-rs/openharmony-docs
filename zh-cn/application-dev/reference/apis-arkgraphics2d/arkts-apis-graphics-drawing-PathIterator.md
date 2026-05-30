@@ -2,10 +2,12 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+表示路径操作迭代器，可通过遍历迭代器读取path的操作指令。
 
 > **说明：**
 >
@@ -16,8 +18,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-表示路径操作迭代器，可通过遍历迭代器读取path的操作指令。
 
 ## 导入模块
 
@@ -86,7 +86,7 @@ let path: drawing.Path = new drawing.Path();
 path.moveTo(10, 20);
 let iter: drawing.PathIterator = new drawing.PathIterator(path);
 let verbStr: Array<string> = ["MOVE", "LINE", "QUAD", "CONIC", "CUBIC", "CLOSE", "DONE"];
-let pointCount: Array<number> = [1,2,3,4,4,0,0]; //1,2,3,3.5,4,0,0
+let pointCount: Array<number> = [1,2,3,4,4,0,0];
 let points: Array<common2D.Point> = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}];
 let offset = 0;
 let verb = iter.next(points, offset);

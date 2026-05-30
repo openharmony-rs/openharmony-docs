@@ -1,61 +1,21 @@
 # @ohos.nfc.tag (Standard NFC Tags)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 The **tag** module provides APIs for operating and managing NFC tags. The following tag read modes are available:
-<br>Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application.
+<br>Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application. Background mode does not involve tag-related APIs. For details, see [nfc-tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md#accessing-an-nfc-tag-without-starting-an-application).
 <br>Foreground mode: A foreground application has priority to read the NFC tag discovered.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-## Declaring the NFC Tag Background Mode
-
-To enable NFC tags to be read without starting an application, declare NFC-related attributes in the **module.json5** file.
-```json
-{
-    "module": {
-        // Other declared attributes
-
-        "abilities": [
-            {
-                "skills": [
-                    {
-                        "actions": [
-                            // Other declared actions
-
-                            // Add the action of the NFC tag.
-                            "ohos.nfc.tag.action.TAG_FOUND"
-                        ],
-                        "uris": [
-                            {
-                                "type":"tag-tech/NfcA"
-                            },
-                            {
-                                "type":"tag-tech/IsoDep"
-                            }
-                            // Add other technologies if necessary.
-                            // Example: NfcB, NfcF, NfcV, Ndef, MifareClassic, MifareUL, and NdefFormatable
-                        ]
-                    }
-                ]
-            }
-        ],
-        "requestPermissions": [
-            {
-                "name": "ohos.permission.NFC_TAG",
-                "reason": "$string:app_name",
-            }
-        ]
-    }
-}
-```
-> **NOTE**<br>
->
->1. The **actions** field must contain **ohos.nfc.tag.action.TAG_FOUND** and cannot be changed.
->2. The **type** field under **uris** must start with **tag-tech/**, followed by NfcA, NfcB, NfcF, NfcV, IsoDep, Ndef, MifareClassic, MifareUL, or NdefFormatable. If there are multiple types, enter them in different lines. Incorrect settings of this field will cause a parsing failure.
->3. The **name** field under **requestPermissions** is mandatory. It must be **ohos.permission.NFC_TAG** and cannot be changed.
->4. When calling the APIs and constants of this module, use **canIUse("SystemCapability.Communication.NFC.Tag")** to check whether the device supports NFC. If the device does not support NFC, the application stability may be affected. For details, see [NFC Tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md).
->5. If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability Development](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
+>1. The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>2. When calling the APIs and constants of this module, use **canIUse("SystemCapability.Communication.NFC.Tag")** to check whether the device supports NFC. If the device does not support NFC, the application stability may be affected. For details, see [NFC Tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md).
+>3. If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
 
 ## **Modules to Import**
 
@@ -81,7 +41,7 @@ export default class EntryAbility extends UIAbility {
         } catch (error) {
             console.error("tag.getTagInfo catch error: " + error);
         }
-        if (tagInfo == null || tagInfo == undefined) {
+        if (tagInfo == null) {
             console.error("no TagInfo to be created, ignore it.");
             return;
         }
@@ -527,7 +487,7 @@ Obtains a **BarcodeTag** object, which allows access to the tags in the BarcodeT
 
 | Type                       | Description                |
 | ------------------------- | ------------------ |
-| [BartcodeTag](js-apis-nfctech.md#barcodetag18) | **BarcodeTag** object obtained.|
+| [BarcodeTag](js-apis-nfctech.md#barcodetag18) | **BarcodeTag** object obtained.|
 
 **Error codes**
 
@@ -575,7 +535,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
 registerForegroundDispatch(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), discTech: number[], callback: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
 
-Registers a listener for the NFC tag read event so that the tag can be preferentially dispatched to a foreground application. You can set the supported NFC tag technologies in **discTech**. The callback returns [TagInfo](#taginfo) read. This API can be called only by an application running in the foreground. It must be used with [tag.unregisterForegroundDispatch](#tagunregisterforegrounddispatch10) in pairs. The registered callback must be unregistered before the tag reading page exits the foreground or is destroyed.
+Registers a listener for the NFC tag read event so that the tag can be preferentially dispatched to a foreground application. You can set the supported NFC tag technologies in **discTech**. The [TagInfo](#taginfo) read is returned through a callback. This API can be called only by an application running in the foreground. It must be used with [tag.unregisterForegroundDispatch](#tagunregisterforegrounddispatch10) in pairs. The registered callback must be unregistered before the tag reading page exits the foreground or is destroyed. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -644,11 +604,11 @@ import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
-let discTech: number[] = [tag.NFC_A, tag.NFC_B]; // Specify the technology required for foreground ability.
+let discTech : number[] = [tag.NFC_A, tag.NFC_B]; // Specify the technology required for foreground ability.
 let elementName : bundleManager.ElementName;
 function foregroundCb(err : BusinessError, tagInfo : tag.TagInfo) {
     if (!err) {
-        console.log("foreground callback: tag found tagInfo = ", JSON.stringify(tagInfo));
+        console.info("foreground callback: tag found tagInfo = ", JSON.stringify(tagInfo));
     } else {
         console.error("foreground callback err: " + err.message);
         return;
@@ -658,7 +618,7 @@ function foregroundCb(err : BusinessError, tagInfo : tag.TagInfo) {
 
 export default class MainAbility extends UIAbility {
     OnCreate(want : Want, launchParam : AbilityConstant.LaunchParam) {
-        console.log("OnCreate");
+        console.info("OnCreate");
         elementName = {
             bundleName: want.bundleName as string,
             abilityName: want.abilityName as string,
@@ -667,7 +627,7 @@ export default class MainAbility extends UIAbility {
     }
 
     onForeground() {
-        console.log("onForeground");
+        console.info("onForeground");
         try {
             tag.registerForegroundDispatch(elementName, discTech, foregroundCb);
         } catch (e) {
@@ -676,20 +636,20 @@ export default class MainAbility extends UIAbility {
     }
 
     onBackground() {
-        console.log("onBackground");
+        console.info("onBackground");
         try {
             tag.unregisterForegroundDispatch(elementName);
         } catch (e) {
-            console.error("registerForegroundDispatch error: " + (e as BusinessError).message);
+            console.error("unregisterForegroundDispatch error: " + (e as BusinessError).message);
         }
     }
 
     onWindowStageDestroy() {
-        console.log("onWindowStageDestroy");
+        console.info("onWindowStageDestroy");
         try {
             tag.unregisterForegroundDispatch(elementName);
         } catch (e) {
-            console.error("registerForegroundDispatch error: " + (e as BusinessError).message);
+            console.error("unregisterForegroundDispatch error: " + (e as BusinessError).message);
         }
     }
 
@@ -701,7 +661,7 @@ export default class MainAbility extends UIAbility {
 
 on(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), discTech: number[], callback: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
 
-Subscribes to the NFC tag read event to implement dispatch of the tag to a foreground application preferentially. The device enters the reader mode and disables card simulation. You can set the supported NFC tag technologies in **discTech**. The callback returns [TagInfo](#taginfo) read. This API must be used with [tag.off](#tagoff11) in pairs. If the NFC reader mode is enabled by [tag.on](#tagon11), **tag.off** must be called when the application page exits the foreground or is destroyed.
+Subscribes to the NFC tag read event to implement dispatch of the tag to a foreground application preferentially. The device enters the reader mode and disables card emulation. You can set the supported NFC tag technologies in **discTech**. The [TagInfo](#taginfo) read is returned through a callback. This API must be used with [tag.off](#tagoff11) in pairs. If the NFC reader mode is enabled by [tag.on](#tagon11), **tag.off** must be called when the application page exits the foreground or is destroyed. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -738,7 +698,7 @@ See the example of [tag.off](#tagoff11).
 
 off(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), callback?: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
 
-Unsubscribes from the NFC tag card read event. The device exits the reader mode and resumes card simulation. If the NFC reader mode is enabled by [tag.on](#tagon11), this API must be used when the application page exits the foreground or is destroyed.
+Unsubscribes from the NFC tag card read event. The device exits the reader mode and resumes card emulation. If the NFC reader mode is enabled by [tag.on](#tagon11), this API must be used when the application page exits the foreground or is destroyed.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -773,12 +733,12 @@ import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
-let discTech: number[] = [tag.NFC_A, tag.NFC_B]; // Specify the technology required for foreground ability.
+let discTech : number[] = [tag.NFC_A, tag.NFC_B]; // Specify the technology required for foreground ability.
 let elementName : bundleManager.ElementName;
 
 function readerModeCb(err : BusinessError, tagInfo : tag.TagInfo) {
     if (!err) {
-        console.log("offCallback: tag found tagInfo = ", JSON.stringify(tagInfo));
+        console.info("offCallback: tag found tagInfo = ", JSON.stringify(tagInfo));
     } else {
         console.error("offCallback err: " + err.message);
         return;
@@ -788,7 +748,7 @@ function readerModeCb(err : BusinessError, tagInfo : tag.TagInfo) {
 
 export default class MainAbility extends UIAbility {
     OnCreate(want : Want, launchParam : AbilityConstant.LaunchParam) {
-        console.log("OnCreate");
+        console.info("OnCreate");
         elementName = {
             bundleName: want.bundleName as string,
             abilityName: want.abilityName as string,
@@ -797,7 +757,7 @@ export default class MainAbility extends UIAbility {
     }
 
     onForeground() {
-        console.log("on start");
+        console.info("on start");
         try {
             tag.on('readerMode', elementName, discTech, readerModeCb);
         } catch (e) {
@@ -806,7 +766,7 @@ export default class MainAbility extends UIAbility {
     }
 
     onBackground() {
-        console.log("onBackground");
+        console.info("onBackground");
         try {
             tag.off('readerMode', elementName, readerModeCb);
         } catch (e) {
@@ -815,9 +775,142 @@ export default class MainAbility extends UIAbility {
     }
 
     onWindowStageDestroy() {
-        console.log("onWindowStageDestroy");
+        console.info("onWindowStageDestroy");
         try {
             tag.off('readerMode', elementName, readerModeCb);
+        } catch (e) {
+            console.error("tag.off error: " + (e as BusinessError).message);
+        }
+    }
+
+  // Other functions in the ability lifecycle
+}
+```
+
+## tag.on<sup>23+</sup>
+
+on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[], callback: Callback&lt;TagInfo&gt;, interval: number): void
+
+Subscribes to the NFC tag read event so that the tag can be preferentially dispatched to a foreground application. You can also set the interval for detecting whether a card is present. This API uses an asynchronous callback to return the result.
+- The device enters the reader mode and disables card emulation.
+- You can set the supported NFC tag technologies in **discTech** and set the interval for detecting whether a card is present. The callback returns [TagInfo](#taginfo) read.
+- This API must be used with [tag.off](#tagoff23) in pairs. If the NFC reader mode is enabled by **tag.on**, [tag.off](#tagoff23) must be called when the application page exits the foreground or is destroyed.
+
+**Required permissions**: ohos.permission.NFC_TAG
+
+**System capability**: SystemCapability.Communication.NFC.Tag
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Parameters**
+
+| Name      | Type    | Mandatory| Description                                                   |
+| ------------ | -------- | ---- | ------------------------------------------------------- |
+| type    | string  | Yes  | Event type, which has a fixed value of **readerModeWithInterval**.|
+| elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | Yes  | Information about the tag reading page of the application. It must contain at least **bundleName** and **abilityName**.         |
+| discTech         |  number[]   | Yes  | NFC tag technologies supported by the foreground application. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), and [NFC_V](#constants) only.|
+| callback | Callback&lt;[TagInfo](#taginfo)&gt; | Yes  | Callback used to listen for the card reader mode, which returns the tag information read.|
+| interval | number | Yes| Interval for checking whether a card is present, in milliseconds.|
+
+**Error codes**
+
+For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 201  | Permission denied. |
+| 801  | Capability not supported. |
+| 3100201 | The tag running state is abnormal in the service. |
+| 3100202  | The element state is invalid. |
+
+**Example**
+
+See the example of [tag.off](#tagoff23).
+
+## tag.off<sup>23+</sup>
+
+off(type: 'readerModeWithInterval', elementName: ElementName, callback?: Callback&lt;TagInfo&gt;): void
+
+Unsubscribes from the NFC tag card read event. The device exits the reader mode and resumes card emulation. If the NFC reader mode is enabled by [tag.on](#tagon23), this API must be used when the application page exits the foreground or is destroyed. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.NFC_TAG
+
+**System capability**: SystemCapability.Communication.NFC.Tag
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Parameters**
+
+| Name      | Type    | Mandatory| Description                                                   |
+| ------------ | -------- | ---- | ------------------------------------------------------- |
+| type    | string  | Yes  | Event type, which has a fixed value of **readerModeWithInterval**.|
+| elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | Yes  | Information about the tag reading page of the application. It must contain at least **bundleName** and **abilityName**.         |
+| callback | Callback&lt;[TagInfo](#taginfo)&gt; | No  | Callback to unregister.|
+
+**Error codes**
+
+For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 201  | Permission denied. |
+| 801  | Capability not supported. |
+| 3100201 | The tag running state is abnormal in the service. |
+| 3100203  | The off() API can be called only when the on() has been called. |
+
+**Example**
+
+```js
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
+
+let discTech : number[] = [tag.NFC_A, tag.NFC_B]; // Specify the technology required for foreground ability.
+let elementName : bundleManager.ElementName;
+let interval : number = 200;
+
+function readerModeCb(err : BusinessError, tagInfo : tag.TagInfo) {
+    if (!err) {
+        console.info("offCallback: tag found tagInfo = ", JSON.stringify(tagInfo));
+    } else {
+        console.error("offCallback err: " + err.message);
+        return;
+    }
+  // Other operations on taginfo
+}
+
+export default class MainAbility extends UIAbility {
+    OnCreate(want : Want, launchParam : AbilityConstant.LaunchParam) {
+        console.info("OnCreate");
+        elementName = {
+            bundleName: want.bundleName as string,
+            abilityName: want.abilityName as string,
+            moduleName: want.moduleName as string
+        }
+    }
+
+    onForeground() {
+        console.info("on start");
+        try {
+            tag.on('readerModeWithInterval', elementName, discTech, readerModeCb, interval);
+        } catch (e) {
+            console.error("tag.on error: " + (e as BusinessError).message);
+        }
+    }
+
+    onBackground() {
+        console.info("onBackground");
+        try {
+            tag.off('readerModeWithInterval', elementName, readerModeCb);
+        } catch (e) {
+            console.error("tag.off error: " + (e as BusinessError).message);
+        }
+    }
+
+    onWindowStageDestroy() {
+        console.info("onWindowStageDestroy");
+        try {
+            tag.off('readerModeWithInterval', elementName, readerModeCb);
         } catch (e) {
             console.error("tag.off error: " + (e as BusinessError).message);
         }
@@ -866,10 +959,10 @@ try {
     let uri = "https://www.example.com"; // Set the correct URI.
     let ndefRecord : tag.NdefRecord = tag.ndef.makeUriRecord(uri);
     if (ndefRecord != undefined) {
-        console.log("ndefMessage makeUriRecord rtdType: " + ndefRecord.rtdType);
-        console.log("ndefMessage makeUriRecord payload: " + ndefRecord.payload);
+        console.info("ndefMessage makeUriRecord rtdType: " + ndefRecord.rtdType);
+        console.info("ndefMessage makeUriRecord payload: " + ndefRecord.payload);
     } else {
-        console.log("ndefMessage makeUriRecord ndefRecord: " + ndefRecord);
+        console.error("ndefMessage makeUriRecord ndefRecord: " + ndefRecord);
     }
 } catch (businessError) {
     console.error("ndefMessage makeUriRecord catch businessError: " + businessError);
@@ -913,14 +1006,14 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 import { tag } from '@kit.ConnectivityKit';
 
 try {
-    let text = "Hello World"; // Set the text as demanded.
+    let text = "Hello World";   // Set the text as demanded.
     let locale = "en"; // Set the expected encoding format.
     let ndefRecord : tag.NdefRecord = tag.ndef.makeTextRecord(text, locale);
     if (ndefRecord != undefined) {
-        console.log("ndefMessage makeTextRecord rtdType: " + ndefRecord.rtdType);
-        console.log("ndefMessage makeTextRecord payload: " + ndefRecord.payload);
+        console.info("ndefMessage makeTextRecord rtdType: " + ndefRecord.rtdType);
+        console.info("ndefMessage makeTextRecord payload: " + ndefRecord.payload);
     } else {
-        console.log("ndefMessage makeTextRecord ndefRecord: " + ndefRecord);
+        console.error("ndefMessage makeTextRecord ndefRecord: " + ndefRecord);
     }
 } catch (businessError) {
     console.error("ndefMessage makeTextRecord catch businessError: " + businessError);
@@ -966,10 +1059,10 @@ try {
     let bundleName: string = 'com.demo.test';
     let ndefRecord : tag.NdefRecord = tag.ndef.makeApplicationRecord(bundleName);
     if (ndefRecord != undefined) {
-        console.log("ndefMessage makeApplicationRecord rtdType: " + ndefRecord.rtdType);
-        console.log("ndefMessage makeApplicationRecord payload: " + ndefRecord.payload);
+        console.info("ndefMessage makeApplicationRecord rtdType: " + ndefRecord.rtdType);
+        console.info("ndefMessage makeApplicationRecord payload: " + ndefRecord.payload);
     } else {
-        console.log("ndefMessage makeApplicationRecord ndefRecord: " + ndefRecord);
+        console.error("ndefMessage makeApplicationRecord ndefRecord: " + ndefRecord);
     }
 } catch (businessError) {
     console.error("ndefMessage makeApplicationRecord catch businessError: " + businessError);
@@ -1013,14 +1106,14 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 import { tag } from '@kit.ConnectivityKit';
 
 try {
-    let mimeType = "text/plain"; // Set a correct MIME type.
+    let mimeType = "text/plain";   // Set a correct MIME type.
     let mimeData = [0x01, 0x02, 0x03, 0x04]; // Set the correct MIME data.
     let ndefRecord : tag.NdefRecord = tag.ndef.makeMimeRecord(mimeType, mimeData);
     if (ndefRecord != undefined) {
-        console.log("ndefMessage makeMimeRecord rtdType: " + ndefRecord.rtdType);
-        console.log("ndefMessage makeMimeRecord payload: " + ndefRecord.payload);
+        console.info("ndefMessage makeMimeRecord rtdType: " + ndefRecord.rtdType);
+        console.info("ndefMessage makeMimeRecord payload: " + ndefRecord.payload);
     } else {
-        console.log("ndefMessage makeMimeRecord ndefRecord: " + ndefRecord);
+        console.error("ndefMessage makeMimeRecord ndefRecord: " + ndefRecord);
     }
 } catch (businessError) {
     console.error("ndefMessage makeMimeRecord catch businessError: " + businessError);
@@ -1069,10 +1162,10 @@ try {
     let externalData = [0x01, 0x02, 0x03, 0x04]; // Set the correct external data.
     let ndefRecord : tag.NdefRecord = tag.ndef.makeExternalRecord(domainName, type, externalData);
     if (ndefRecord != undefined) {
-        console.log("ndefMessage makeExternalRecord rtdType: " + ndefRecord.rtdType);
-        console.log("ndefMessage makeExternalRecord payload: " + ndefRecord.payload);
+        console.info("ndefMessage makeExternalRecord rtdType: " + ndefRecord.rtdType);
+        console.info("ndefMessage makeExternalRecord payload: " + ndefRecord.payload);
     } else {
-        console.log("ndefMessage makeExternalRecord ndefRecord: " + ndefRecord);
+        console.error("ndefMessage makeExternalRecord ndefRecord: " + ndefRecord);
     }
 } catch (businessError) {
     console.error("ndefMessage makeExternalRecord catch businessError: " + businessError);
@@ -1117,9 +1210,9 @@ import { tag } from '@kit.ConnectivityKit';
 let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]; // Set the correct raw data, which is in the NDEF format.
 try {
     let ndefMessage : tag.NdefMessage = tag.ndef.createNdefMessage(rawData);
-    console.log("ndef createNdefMessage, ndefMessage: " + ndefMessage);
+    console.info("ndef createNdefMessage, ndefMessage: " + ndefMessage);
     let rawData2 : number[] = tag.ndef.messageToBytes(ndefMessage);
-    console.log("ndefMessage messageToBytes rawData2: " + rawData2);
+    console.info("ndefMessage messageToBytes rawData2: " + rawData2);
 } catch (businessError) {
     console.error("ndef createNdefMessage businessError: " + businessError);
 }
@@ -1128,7 +1221,7 @@ try {
 
 createNdefMessage(data: number[]): [NdefMessage](js-apis-nfctech.md#ndefmessage9)
 
-Creates an NDEF message from raw byte data. The data must comply with the NDEF record format. Otherwise, the NDE record list contained in the **NdefMessage** object will be empty.
+Creates an NDEF message from raw byte data. The data must comply with the NDEF record format. Otherwise, the NDEF record list contained in the **NdefMessage** object will be empty.
 
 **System capability**: SystemCapability.Communication.NFC.Tag
 
@@ -1158,10 +1251,10 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
-let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]; // The NDEF data must be resolvable.
+let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43];  // The NDEF data must be resolvable.
 try {
     let ndefMessage : tag.NdefMessage = tag.ndef.createNdefMessage(rawData);
-    console.log("ndef createNdefMessage, ndefMessage: " + ndefMessage);
+    console.info("ndef createNdefMessage, ndefMessage: " + ndefMessage);
 } catch (businessError) {
     console.error("ndef createNdefMessage businessError: " + businessError);
 }
@@ -1207,7 +1300,7 @@ let textRecord : tag.NdefRecord = tag.ndef.makeTextRecord("Hello World", "en");
 let ndefRecords : tag.NdefRecord[] = [uriRecord, textRecord];
 try {
     let ndefMessage : tag.NdefMessage = tag.ndef.createNdefMessage(ndefRecords);
-    console.log("ndef createNdefMessage ndefMessage: " + ndefMessage);
+    console.info("ndef createNdefMessage ndefMessage: " + ndefMessage);
 } catch (businessError) {
     console.error("ndef createNdefMessage businessError: " + businessError);
 }
@@ -1221,11 +1314,11 @@ Defines the **TagInfo** object, which provides information about the tag technol
 
 **Required permissions**: ohos.permission.NFC_TAG
 
-| **Name**                     | **Type**                                                     | **Readable**| **Writable**| **Description**                                                                                    |
+| **Name**                     | **Type**                                                     | **Read-Only**| **Optional**| **Description**                                                                                    |
 | ----------------------------- | ------------------------------------------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
-| uid<sup>9+</sup>              | number[]                                                      | Yes      | No      | Tag unique identifier (UID), which consists of hexadecimal numbers ranging from **0x00** to **0xFF**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
-| technology<sup>9+</sup>       | number[]                                                      | Yes      | No      | Supported tag technologies. Each number is a constant indicating the supported technology.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
-| supportedProfiles             | number[]                                                      | Yes      | No      | Supported profiles. This parameter is not supported since API version 9. Use [tag.TagInfo#technology](#taginfo) instead.           |
+| uid<sup>9+</sup>              | number[]                                                      | No      | No      | Tag unique identifier (UID), which consists of hexadecimal numbers ranging from **0x00** to **0xFF**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
+| technology<sup>9+</sup>       | number[]                                                      | No      | No      | Supported tag technologies. Each number is a constant indicating the supported technology.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
+| supportedProfiles<sup>(deprecated)</sup>             | number[]                                                      | No      | No      | Supported profiles.<br>Note: This parameter is supported since API version 7 and deprecated since API version 9. Use **[tag.TagInfo#technology](#taginfo)** instead.           |
 
 ## NdefRecord<sup>9+</sup>
 Defines an NDEF record. For details, see *NFCForum-TS-NDEF_1.0*.
@@ -1234,12 +1327,12 @@ Defines an NDEF record. For details, see *NFCForum-TS-NDEF_1.0*.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-| **Name**| **Type**| **Readable**| **Writable**| **Description**                                                                                 |
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**                                                                                 |
 | -------- | -------- | -------- | -------- | ----------------------------------------------------------------------------------------- |
-| tnf      | number   | Yes      | No      | Type name field (TNF) of the NDEF record.                                                      |
-| rtdType  | number[] | Yes      | No      | Record type definition (RTD) of the NDEF record. It consists of hexadecimal numbers ranging from **0x00** to **0xFF**.|
-| id       | number[] | Yes      | No      | NDEF record ID, which consists of hexadecimal numbers ranging from **0x00** to **0xFF**.                               |
-| payload  | number[] | Yes      | No      | NDEF payload, which consists of hexadecimal numbers ranging from **0x00** to **0xFF**.                          |
+| tnf      | number   | No      | No      | Type name field (TNF) of the NDEF record.                                                      |
+| rtdType  | number[] | No      | No      | Record type definition (RTD) of the NDEF record. It consists of hexadecimal numbers ranging from **0x00** to **0xFF**.|
+| id       | number[] | No      | No      | NDEF record ID, which consists of hexadecimal numbers ranging from **0x00** to **0xFF**.                               |
+| payload  | number[] | No      | No      | NDEF payload, which consists of hexadecimal numbers ranging from **0x00** to **0xFF**.                          |
 
 ## Constants
 Enumerates the tag technology types.
@@ -1248,16 +1341,18 @@ Enumerates the tag technology types.
 
 | **Name**                    |**Type**| **Value**| **Description**                   |
 | ---------------------------- | ------ | ------ | --------------------------- |
-| NFC_A<sup>7+</sup>                        |  number | 1      | NFC-A (ISO 14443-3A).<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| NFC_B<sup>7+</sup>                        |  number | 2      | NFC-B (ISO 14443-3B).<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| ISO_DEP<sup>7+</sup>                      |  number | 3      | ISO-DEP (ISO 14443-4).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| NFC_F<sup>7+</sup>                        |  number | 4      | NFC-F (JIS 6319-4).<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
-| NFC_V<sup>7+</sup>                        |  number | 5      | NFC-V (ISO 15693).<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
-| NDEF<sup>7+</sup>                         |  number | 6      | NDEF.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
+| NFC_A                        |  number | 1      | NFC-A (ISO 14443-3A).<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| NFC_B                        |  number | 2      | NFC-B (ISO 14443-3B).<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| ISO_DEP                      |  number | 3      | ISO-DEP (ISO 14443-4).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| NFC_F                        |  number | 4      | NFC-F (JIS 6319-4).<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
+| NFC_V                        |  number | 5      | NFC-V (ISO 15693).<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
+| NDEF                         |  number | 6      | NDEF.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
 | NDEF_FORMATABLE<sup>9+</sup> |  number | 7      | NDEF formattable.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| MIFARE_CLASSIC<sup>7+</sup>               |  number | 8      | MIFARE Classic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
-| MIFARE_ULTRALIGHT<sup>7+</sup>            |  number | 9      | MIFARE Ultralight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
+| MIFARE_CLASSIC               |  number | 8      | MIFARE Classic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
+| MIFARE_ULTRALIGHT            |  number | 9      | MIFARE Ultralight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
 | NFC_BARCODE<sup>18+</sup>    |  number | 10     | BARCODE technology.<br>**Atomic service API**: This API can be used in atomic services since API version 18.              |
+| RTD_TEXT<sup>9+</sup>        | number[] | [0x54] | NDEF record of the text type. For details, see **NFCForum-TS-NDEF_1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| RTD_URI<sup>9+</sup>         | number[] | [0x55] | NDEF record of the URI type. For details, see **NFCForum-TS-NDEF_1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## TnfType<sup>9+</sup>
 Enumerates the TNF types. For details, see *NFCForum-TS-NDEF_1.0*.
@@ -1275,18 +1370,6 @@ Enumerates the TNF types. For details, see *NFCForum-TS-NDEF_1.0*.
 | TNF_EXT_APP      | 0x4    | NFC Forum external type [NFC RTD].             |
 | TNF_UNKNOWN      | 0x5    | Unknown.                                       |
 | TNF_UNCHANGED    | 0x6    | Unchanged (see section 2.3.3 in *NFCForum-TS-NDEF_1.0*).                 |
-
-## NDEF Record RTD
-Enumerates the NDEF record types. For details about the RTD, see *NFCForum-TS-NDEF_1.0*.
-
-**System capability**: SystemCapability.Communication.NFC.Tag
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-| **Name**             |**Type**| **Value**| **Description**               |
-| --------------------- | ------ | ------ | ----------------------- |
-| RTD_TEXT<sup>9+</sup> |number[]| [0x54] | NDEF record of the text type.|
-| RTD_URI<sup>9+</sup>  |number[]| [0x55] | NDEF record of the URI type. |
 
 ## NfcForumType<sup>9+</sup>
 Enumerates the NFC Forum tag types.
@@ -1344,11 +1427,11 @@ Enumerates the MIFARE Ultralight tag types.
 | TYPE_ULTRALIGHT   | 1      | MIFARE Ultralight.  |
 | TYPE_ULTRALIGHT_C | 2      | MIFARE Ultralight C.|
 
-## NfcATag<sup>7+</sup>
+## NfcATag
 
 type NfcATag = _NfcATag
 
-Defines an **NfcATag** object.
+Obtains an **NfcATag** object.
 
 **System capability**: SystemCapability.Communication.NFC.Tag
 
@@ -1356,9 +1439,9 @@ Defines an **NfcATag** object.
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| [_NfcATag](./js-apis-nfctech.md#nfcatag) | Object that implements access to NFC-A (ISO 15693) properties and I/O operations on a tag. |
+| [_NfcATag](./js-apis-nfctech.md#nfcatag) | Object that implements access to NFC-A(ISO 14443-3A) properties and I/O operations on a tag. |
 
-## NfcBTag<sup>7+</sup>
+## NfcBTag
 
 type NfcBTag = _NfcBTag
 
@@ -1372,7 +1455,7 @@ Obtains an **NfcBTag** object.
 | ------ | ------------------------------------------------------------ |
 | [_NfcBTag](./js-apis-nfctech.md#nfcbtag) | Object that implements access to NFC-B (ISO 14443-3B) properties and I/O operations on a tag. |
 
-## NfcFTag<sup>7+</sup>
+## NfcFTag
 
 type NfcFTag = _NfcFTag
 
@@ -1384,9 +1467,9 @@ Obtains an **NfcFTag** object.
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| [_NfcFTag](./js-apis-nfctech.md#nfcftag) | Object that implements access to NFC-F (ISO 6319-4) properties and I/O operations on a tag. |
+| [_NfcFTag](./js-apis-nfctech.md#nfcftag) | Object that implements access to NFC-F(JIS 6319-4) properties and I/O operations on a tag. |
 
-## NfcVTag<sup>7+</sup>
+## NfcVTag
 
 type NfcVTag = _NfcVTag
 
@@ -1498,7 +1581,7 @@ Obtains an **NdefMessage** object.
 | ------ | ------------------------------------------------------------ |
 | [_NdefMessage](./js-apis-nfctech.md#ndefmessage9) | Obtains all NDEF records.|
 
-## TagSession<sup>7+</sup>
+## TagSession
 
 type TagSession = _TagSession
 

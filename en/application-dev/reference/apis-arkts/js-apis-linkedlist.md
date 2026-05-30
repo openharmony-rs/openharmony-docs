@@ -23,9 +23,9 @@ This topic uses the following to identify the use of generics:
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
+> - Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
 
 
 ## Modules to Import
@@ -666,8 +666,7 @@ console.info("result:", result.has(4));  // result: true
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList&lt;T&gt;) => void, thisArg?: Object): void
 
 Uses a callback to traverse the elements in this LinkedList and obtain their indexes.
 

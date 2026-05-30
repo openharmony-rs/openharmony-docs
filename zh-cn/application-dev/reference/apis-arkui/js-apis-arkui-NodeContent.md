@@ -1,16 +1,20 @@
 # NodeContent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 NodeContent是ArkUI提供的[ContentSlot](./arkui-ts/ts-components-contentSlot.md)的管理器。
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - NodeContent对象不支持使用JSON序列化。
 
 ## 导入模块
 
@@ -62,6 +66,8 @@ struct Parent {
 }
 ```
 
+上述代码中so的实现可参考<!--RP1-->[Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponent)<!--RP1End-->。
+
 ### addFrameNode<sup>12+</sup>
 
 addFrameNode(node: FrameNode): void
@@ -77,6 +83,14 @@ addFrameNode(node: FrameNode): void
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
 | node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 需要添加的FrameNode。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100025 | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
 
 ### removeFrameNode<sup>12+</sup>
 

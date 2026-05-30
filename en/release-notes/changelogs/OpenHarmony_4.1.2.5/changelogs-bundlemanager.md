@@ -21,7 +21,7 @@ Check whether your application is a system application. If yes, change **app-fea
 
 ## c2.bundlemanager.2 Added the dataUnclearable Field to the ApplicationInfo Struct
 
-The **dataUnclearable** field is added to the [ApplicationInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) struct. For details, see [API reference](../../../application-dev/reference/apis/js-apis-bundle-ApplicationInfo.md).
+The **dataUnclearable** field is added to the [ApplicationInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) struct. For details, see [API reference](../../../application-dev/reference/apis/js-apis-bundle-ApplicationInfo.md).
 
 **Change Impact**
 
@@ -29,8 +29,9 @@ N/A
 
 **Key API/Component Changes**
 
-The **dataUnclearable** field is added to the [ApplicationInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) struct. For details, see [API reference](../../../application-dev/reference/apis/js-apis-bundle-ApplicationInfo.md).
+The **dataUnclearable** field is added to the [ApplicationInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) struct. For details, see [API reference](../../../application-dev/reference/apis/js-apis-bundle-ApplicationInfo.md).
 
 **Adaptation Guide**
 
 N/A
+<!--no_check-->

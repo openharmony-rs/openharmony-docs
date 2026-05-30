@@ -2,14 +2,17 @@
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
-<!--Designer: @lee_jet520-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+
 linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备间连接的稳定性。使用多通道合并算法，增加设备间连接数，提升跨设备数据传输能力，改善用户使用体验。
 
 > **说明：**
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块接口仅可在Stage模型下使用
 
 ## 导入模块
 
@@ -26,6 +29,8 @@ createServer(name:&nbsp;string):&nbsp;Server
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -46,6 +51,7 @@ createServer(name:&nbsp;string):&nbsp;Server
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390203      | Duplicate server name.|
 | 32390206 | Invalid parameter.  |
 
@@ -55,15 +61,16 @@ createServer(name:&nbsp;string):&nbsp;Server
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
-  let name:string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -77,6 +84,8 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -98,6 +107,7 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390206 | Invalid parameter.  |
 
 **示例：**
@@ -108,20 +118,25 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
 } catch (err) {
-  hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
 ## Server
 
 服务对象，提供启动服务、停止服务、关闭服务、注册/取消注册服务端回调等方法。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 以下方法，在服务端设备上执行。
 
@@ -134,6 +149,8 @@ start():&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
 
@@ -151,15 +168,16 @@ start():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -172,6 +190,8 @@ stop():&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
 
@@ -187,16 +207,17 @@ stop():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
   server.stop();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -211,6 +232,8 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **错误码：**
 
 以下错误码的详细介绍请参考[增强连接错误码](errorcode-link-enhance.md)。
@@ -225,16 +248,17 @@ close():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
   server.close();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -247,6 +271,8 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 | 参数名       | 类型                                    | 必填   | 说明    |
@@ -269,22 +295,23 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 
   // 订阅服务接收事件
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-      hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
+    hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
   });
   // 启动服务
   server.start();
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -297,6 +324,8 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -320,22 +349,23 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
   // 取消订阅服务接收
   server.off('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -349,6 +379,8 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -372,11 +404,12 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 
@@ -387,7 +420,7 @@ try {
   // 启动服务
   server.start();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -401,6 +434,8 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -424,11 +459,12 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('serverStopped', (reason: number): void => {
@@ -439,7 +475,7 @@ try {
     hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
   });
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -448,6 +484,8 @@ try {
 客户端调用connect()后，返回的连接结果。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
 | ----------------- | ------ | ----  | ---- | ------------------ |
@@ -459,6 +497,10 @@ try {
 
 连接对象，提供连接、断连、获取对端设备ID、发送数据、注册/取消注册回调等方法。
 
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
+
 ### connect()
 
 connect():&nbsp;void
@@ -469,6 +511,7 @@ connect():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
 
@@ -488,11 +531,12 @@ connect():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // 订阅连接结果
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
@@ -516,6 +560,7 @@ disconnect():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
 
@@ -531,11 +576,12 @@ disconnect():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -545,7 +591,7 @@ try {
   });
   connection.connect();
 } catch (err) {
-    hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -560,6 +606,8 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **错误码：**
 
 以下错误码的详细介绍请参考[增强连接错误码](errorcode-link-enhance.md)。
@@ -575,11 +623,12 @@ close():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -603,6 +652,7 @@ getPeerDeviceId():&nbsp;string
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
 
 **返回值：**
 
@@ -625,11 +675,12 @@ getPeerDeviceId():&nbsp;string
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.getPeerDeviceId();
   hilog.info(0x0000, TAG, "peerDeviceId=%{public}s" + connection.getPeerDeviceId());
@@ -648,6 +699,8 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -672,11 +725,12 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -705,6 +759,8 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填   | 说明    |
@@ -727,15 +783,16 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // 订阅连接结果
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
-      hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
+    hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
   });
 
   // 发起连接
@@ -755,6 +812,8 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -778,11 +837,12 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -807,6 +867,8 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填   | 说明    |
@@ -829,18 +891,19 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // 订阅断连通知
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
-  hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -854,6 +917,8 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -877,18 +942,19 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
   // 取消订阅断连通知
-  connection.off('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.off('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -905,6 +971,8 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -928,15 +996,18 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  // 发起连接
   connection.connect();
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  // 订阅数据接收通知
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -952,6 +1023,8 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -975,17 +1048,20 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  // 订阅数据接收通知
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
-  connection.off('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  // 取消数据接收通知
+  connection.off('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +

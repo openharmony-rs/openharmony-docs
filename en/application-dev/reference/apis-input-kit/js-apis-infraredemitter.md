@@ -1,10 +1,17 @@
 # @ohos.multimodalInput.infraredEmitter (IR Management)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @zhang_yixin13-->
+
 The **infraredEmitter** module generates IR signals of the specified frequency and size, and queries the frequency range supported by the device.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 15. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 
 ## Modules to Import
@@ -13,7 +20,7 @@ The **infraredEmitter** module generates IR signals of the specified frequency a
 import { infraredEmitter } from '@kit.InputKit';
 ```
 
-## infraredEmitter.transmitInfrared<sup>15+</sup>
+## infraredEmitter.transmitInfrared
 
 transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
@@ -28,7 +35,7 @@ Generates IR signals at the specified frequency and level.
 | Name      | Type                       | Mandatory  | Description                                      |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | infraredFrequency | number             | Yes   | IR frequency, in Hz.|
-| pattern | Array&lt;number&gt; | Yes   | IR level signal, in μs. The value must be an even number within the value range of [0,1024].<br>For example, in the IR level signal array [100,200,300,400], 100 μs is a high-level signal, 200 μs is a low-level signal, 300 μs is a high-level signal, and 400 μs is a low-level signal.|
+| pattern | Array&lt;number&gt; | Yes   | IR level signal, in μs. The value range is [0,1024]. If the value is set **0**, the API call does not take effect. The value of the level signal must be greater than 0.<br>For example, in the IR level signal array [100,200,300,400], 100 μs is a high-level signal, 200 μs is a low-level signal, 300 μs is a high-level signal, and 400 μs is a low-level signal.|
 
 **Error codes**
 
@@ -42,28 +49,43 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  infraredEmitter.transmitInfrared(38000, [100, 200, 300, 400]);
-} catch (error) {
-  console.error(`transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { infraredEmitter } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            infraredEmitter.transmitInfrared(38000, [100, 200, 300, 400]);
+          } catch (error) {
+            console.error(`transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
-## infraredEmitter.getInfraredFrequencies<sup>15+</sup>
+## infraredEmitter.getInfraredFrequencies
 
 getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
-Queries the frequency range of IR signals supported by the mobile phone.
+Queries the frequency range of IR signals supported by the device.
 
 **Required permissions**: ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
 **System capability**: SystemCapability.MultimodalInput.Input.InfraredEmitter
 
+**Device behavior differences**: On phones and TVs that support IR emitters, this API returns the frequency range of IR signals. On devices that do not support IR emitters, this API returns one group of maximum and minimum frequencies, both of which are 0 Hz. You are advised to use the [hasIrEmitter](#infraredemitterhasiremitter23) API to check whether a device supports IR emitters.
+
 **Return value**
 
-| Parameter                 | Description                 |
+| Type                 | Description                 |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency15)&gt; | Frequency range, including multiple groups of maximum and minimum frequencies.|
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.<br>Since API version 23, one group of maximum and minimum frequencies, both of which are **0** Hz, are returned.|
 
 **Error codes**
 
@@ -76,21 +98,82 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  let frequencies = infraredEmitter.getInfraredFrequencies();
-  console.log(`frequencies: ${JSON.stringify(frequencies)}`);
-} catch (error) {
-  console.error(`Get infrared frequencies failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { infraredEmitter } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let frequencies = infraredEmitter.getInfraredFrequencies();
+            console.info(`frequencies: ${JSON.stringify(frequencies)}`);
+          } catch (error) {
+            console.error(`Get infrared frequencies failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
-##  InfraredFrequency<sup>15+</sup>
+##  InfraredFrequency
 
 Defines the frequency range of IR signals.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InfraredEmitter
 
-| Name                              | Type| Mandatory  | Description |
-| -------------------------------- | ---- | ------ | ------ |
-| max                       | number | Yes| Maximum frequency, in Hz.|
-| min                          | number | Yes | Minimum frequency, in Hz.|
+| Name       | Type  | Read-Only  | Optional  | Description     |
+| --------- | ------ | ---- | ---- | ------- |
+| max    | number  | No   | No| Maximum frequency, in Hz.|
+| min    | number  | No   | No| Minimum frequency, in Hz.|
+
+## infraredEmitter.hasIrEmitter<sup>23+</sup>
+
+hasIrEmitter(): Promise&lt;boolean&gt;
+
+Checks whether the device has an infrared transmitter. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
+
+**System capability**: SystemCapability.MultimodalInput.Input.InfraredEmitter
+
+**Return value**
+
+| Type                 | Description                 |
+| ------------------- | ------------------- |
+| Promise&lt;boolean&gt; | If the device has an infrared transmitter, **true** is returned. Otherwise, **false** is returned.|
+
+**Error codes**
+
+For details about the error codes, see [IR Management Error Codes](errorcode-infraredemitter.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message         |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 3800001 | Input service exception. |
+
+**Example**
+
+```js
+import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+            infraredEmitter.hasIrEmitter().then((result: boolean) => {
+              console.info(`hasIrEmitter: ${JSON.stringify(result)}`);
+            }).catch((error: BusinessError)=> {
+              console.error(`hasIrEmitter failed: ${JSON.stringify(error)}`);})
+        })
+    }
+  }
+}
+```

@@ -1,8 +1,18 @@
 # OH_EffectBufferInfo
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_EffectBufferInfo OH_EffectBufferInfo
+```
 
 ## Overview
 
-The OH_EffectBufferInfo struct describes the image buffer information.
+The struct describes the image buffer information.
 
 **Since**: 12
 

@@ -54,7 +54,7 @@
 
 - IDL接口
 
-  接口定义语言（Interface Definition Language）通过IDL编译器编译后，能够生成与编程语言相关的文件：客户端桩文件，服务器框架文件。本文主要是通过IDL接口生成的客户端和服务端来实现Pin_auth服务和驱动的通信，详细使用方法可参考[IDL简介](https://gitee.com/openharmony/ability_idl_tool/blob/master/README.md)。
+  接口定义语言（Interface Definition Language）通过IDL编译器编译后，能够生成与编程语言相关的文件：客户端桩文件，服务器框架文件。本文主要是通过IDL接口生成的客户端和服务端来实现Pin_auth服务和驱动的通信，详细使用方法可参考[IDL简介](https://gitcode.com/openharmony/ability_idl_tool/blob/master/README.md)。
 
 - IPC通信
 

@@ -1,4 +1,11 @@
-# @ohos.app.ability.UIExtensionContentSession (带界面扩展能力界面操作类)(系统接口)
+# @ohos.app.ability.UIExtensionContentSession (带界面扩展能力的界面操作类)(系统接口)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @xhz-sz-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 UIExtensionContentSession是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)加载界面内容时创建的实例对象，当UIExtensionComponent控件拉起指定的UIExtensionAbility时，UIExtensionAbility会创建UIExtensionContentSession对象，并通过[onSessionCreate](js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)回调传递给开发者。一个UIExtensionComponent控件对应一个UIExtensionContentSession对象，提供界面加载，结果通知等方法。每个UIExtensionAbility的UIExtensionContentSession之间互不影响，可以各自进行操作。
 
@@ -8,7 +15,7 @@ UIExtensionContentSession是[UIExtensionAbility](js-apis-app-ability-uiExtension
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.UIExtensionContentSession (带界面扩展能力界面操作类)](js-apis-app-ability-uiExtensionContentSession.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.UIExtensionContentSession (带界面扩展能力的界面操作类)](js-apis-app-ability-uiExtensionContentSession.md)。
 
 ## 导入模块
 
@@ -727,7 +734,7 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -798,7 +805,7 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -876,7 +883,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | The application does not have permission to call the interface. |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -940,7 +947,7 @@ getUIExtensionHostWindowProxy(): uiExtensionHost.UIExtensionHostWindowProxy
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [uiExtensionHost.UIExtensionHostWindowProxy](../apis-arkui/js-apis-uiExtensionHost-sys.md) | 宿主应用窗口信息。 |
+| [uiExtensionHost.UIExtensionHostWindowProxy](../apis-arkui/js-apis-uiExtensionHost-sys.md#uiextensionhostwindowproxy) | 宿主应用窗口信息。 |
 
 **错误码：**
 
@@ -961,19 +968,19 @@ const TAG: string = '[UIExtAbility]';
 
 export default class UIExtAbility extends UIExtensionAbility {
   onCreate() {
-    console.log(TAG, `UIExtAbility onCreate`);
+    console.info(TAG, `UIExtAbility onCreate`);
   }
 
   onForeground() {
-    console.log(TAG, `UIExtAbility onForeground`);
+    console.info(TAG, `UIExtAbility onForeground`);
   }
 
   onBackground() {
-    console.log(TAG, `UIExtAbility onBackground`);
+    console.info(TAG, `UIExtAbility onBackground`);
   }
 
   onDestroy() {
-    console.log(TAG, `UIExtAbility onDestroy`);
+    console.info(TAG, `UIExtAbility onDestroy`);
   }
 
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
@@ -992,7 +999,7 @@ export default class UIExtAbility extends UIExtensionAbility {
   }
 
   onSessionDestroy(session: UIExtensionContentSession) {
-    console.log(TAG, `UIExtAbility onSessionDestroy`);
+    console.info(TAG, `UIExtAbility onSessionDestroy`);
   }
 }
 ```

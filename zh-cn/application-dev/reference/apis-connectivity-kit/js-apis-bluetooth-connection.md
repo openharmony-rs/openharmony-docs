@@ -87,11 +87,25 @@ type MajorMinorClass = constant.MajorMinorClass
 | [constant.MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | 蓝牙设备的子类型。 |
 
 
+## BluetoothAddress<sup>21+</sup>
+
+type BluetoothAddress = common.BluetoothAddress
+
+描述蓝牙设备地址信息的参数结构，包括地址与地址类型。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 蓝牙设备的地址信息。 |
+
+
 ## connection.pairDevice
 
 pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 主动发起与对端蓝牙设备的配对流程。使用Callback异步回调。
+- 若开发者不知道目标设备的[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -123,7 +137,7 @@ pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     connection.pairDevice('11:22:33:44:55:66', (err: BusinessError) => {
@@ -141,6 +155,7 @@ try {
 pairDevice(deviceId: string): Promise&lt;void&gt;
 
 主动发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+- 若开发者不知道目标设备的[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -177,7 +192,7 @@ pairDevice(deviceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.pairDevice('11:22:33:44:55:66').then(() => {
@@ -192,11 +207,71 @@ try {
 ```
 
 
+## connection.pairDevice<sup>21+</sup>
+
+pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
+
+主动发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+- 若开发者已知目标设备的MAC地址及[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
+- 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明                                  |
+| -------- | ------ | ---- | ----------------------------------- |
+| deviceId | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 是    | 需要配对的对端蓝牙设备地址信息，包括地址与地址类型。 |
+
+**返回值：**
+
+| 类型                  | 说明            |
+| ------------------- | ------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.ConnectivityKit';
+// promise
+try {
+    let btAddr: common.BluetoothAddress = {
+        "address": '11:22:33:44:55:66', // 目标设备的实际MAC地址或虚拟MAC地址
+        "addressType": common.BluetoothAddressType.REAL, // 相应的地址类型
+    }
+    connection.pairDevice(btAddr).then(() => {
+        console.info('pairDevice');
+    }, (error: BusinessError) => {
+        console.error('errCode: ' + error.code + ', errMessage' + error.message);
+    });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ## connection.getRemoteDeviceName
 
 getRemoteDeviceName(deviceId: string): string
 
 获取对端蓝牙设备的名称。
+
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备名称。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -232,7 +307,7 @@ getRemoteDeviceName(deviceId: string): string
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let remoteDeviceName: string = connection.getRemoteDeviceName('XX:XX:XX:XX:XX:XX');
 } catch (err) {
@@ -246,6 +321,8 @@ try {
 getRemoteDeviceName(deviceId: string, alias?: boolean): string
 
 获取对端蓝牙设备的名称，其中alias为可选参数。
+
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备名称。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -282,7 +359,7 @@ getRemoteDeviceName(deviceId: string, alias?: boolean): string
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let remoteDeviceName: string = connection.getRemoteDeviceName('XX:XX:XX:XX:XX:XX', true);
 } catch (err) {
@@ -295,7 +372,10 @@ try {
 
 getRemoteDeviceClass(deviceId: string): DeviceClass
 
-获取对端蓝牙设备的类别。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
+获取对端蓝牙设备的类别。
+
+- 从API version 18开始，此接口不再校验ohos.permission.ACCESS_BLUETOOTH权限。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备类别信息。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -326,7 +406,7 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let remoteDeviceClass: connection.DeviceClass = connection.getRemoteDeviceClass('XX:XX:XX:XX:XX:XX');
 } catch (err) {
@@ -339,6 +419,8 @@ try {
 getRemoteDeviceTransport(deviceId: string): BluetoothTransport
 
 获取对端蓝牙设备的传输类型。
+
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备的传输类型。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -382,6 +464,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 
 获取对端蓝牙设备的Profile协议能力，通过UUID区分。使用Callback异步回调。
 - 建议仅对已配对的设备调用该方法。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取Profile协议能力。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -410,7 +493,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.getRemoteProfileUuids('XX:XX:XX:XX:XX:XX', (err: BusinessError, data: Array<connection.ProfileUuids>) => {
         console.info('getRemoteProfileUuids, err: ' + JSON.stringify(err) + ', data: ' + JSON.stringify(data));
@@ -428,6 +511,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 
 获取对端蓝牙设备的Profile协议能力，通过UUID区分。使用Promise异步回调。
 - 建议仅对已配对的设备调用该方法。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取Profile协议能力。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -461,7 +545,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.getRemoteProfileUuids('XX:XX:XX:XX:XX:XX').then(() => {
         console.info('getRemoteProfileUuids');
@@ -504,7 +588,7 @@ getLocalName(): string
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let localName: string = connection.getLocalName();
 } catch (err) {
@@ -529,7 +613,7 @@ getPairedDevices(): Array&lt;string&gt;
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Array&lt;string&gt; | 已配对蓝牙设备的地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新获取，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 | 
+| Array&lt;string&gt; | 已配对蓝牙设备的地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
 
 **错误码**：
 
@@ -546,7 +630,7 @@ getPairedDevices(): Array&lt;string&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let devices: Array<string> = connection.getPairedDevices();
 } catch (err) {
@@ -560,6 +644,8 @@ try {
 getPairState(deviceId: string): BondState
 
 获取对端蓝牙设备的配对状态信息。
+
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取配对状态信息。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -595,7 +681,7 @@ getPairState(deviceId: string): BondState
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let res: connection.BondState = connection.getPairState("XX:XX:XX:XX:XX:XX");
     console.info('getPairState: ' + res);
@@ -617,15 +703,16 @@ getProfileConnectionState(profileId?: ProfileId): ProfileConnectionState
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名       | 类型        | 必填   | 说明                                    |
 | --------- | --------- | ---- | ------------------------------------- |
-| profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | 否    | 表示Profile协议的枚举值。如果携带ProfileId，则返回指定Profile协议的连接状态。如果未携带ProfileId，则检查所有支持的Profile连接状态，按如下优先级顺序检查并返回：<br>- 存在已连接的Profile协议，则返回[STATE_CONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 存在正在连接的Profile协议，则返回[STATE_CONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 存在正在断连的Profile协议，则返回[STATE_DISCONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 以上条件均不满足，则返回[STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate)。 | 
+| profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | 否    | 表示Profile协议的枚举值。如果携带ProfileId，则返回指定Profile协议的连接状态。如果未携带ProfileId，则检查所有支持的Profile连接状态，按如下优先级顺序检查并返回：<br>- 存在已连接的Profile协议，则返回[STATE_CONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 存在正在连接的Profile协议，则返回[STATE_CONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 存在正在断连的Profile协议，则返回[STATE_DISCONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 以上条件均不满足，则返回[STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate)。 |
 
 **返回值：**
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Profile协议的连接状态。 | 
+| [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Profile协议的连接状态。 |
 
 **错误码**：
 
@@ -644,7 +731,7 @@ getProfileConnectionState(profileId?: ProfileId): ProfileConnectionState
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { constant } from '@kit.ConnectivityKit';
 try {
     let result: connection.ProfileConnectionState = connection.getProfileConnectionState(constant.ProfileId.PROFILE_A2DP_SOURCE);
@@ -669,7 +756,7 @@ setDevicePairingConfirmation(deviceId: string, accept: boolean): void
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------   | ------- | ---- | -------------------------------- |
-| deviceId | string | 是 | 表示对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 | 
+| deviceId | string | 是 | 表示对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | accept   | boolean | 是    | 是否接受对端设备的配对请求。true表示接受，false表示不接受。       |
 
 **错误码**：
@@ -688,7 +775,7 @@ setDevicePairingConfirmation(deviceId: string, accept: boolean): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 订阅“pinRequired”配对请求事件，收到对端配对请求后设置配对确认。
 function onReceivePinRequiredEvent(data: connection.PinRequiredParam) { // data为配对请求的入参，配对请求参数。
     console.info('pin required  = '+ JSON.stringify(data));
@@ -736,7 +823,7 @@ setDevicePinCode(deviceId: string, code: string, callback: AsyncCallback&lt;void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     connection.setDevicePinCode('11:22:33:44:55:66', '12345', (err: BusinessError) => {
@@ -787,7 +874,7 @@ setDevicePinCode(deviceId: string, code: string): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
@@ -837,7 +924,7 @@ setLocalName(name: string): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.setLocalName('device_name');
 } catch (err) {
@@ -850,7 +937,7 @@ try {
 
 setBluetoothScanMode(mode: ScanMode, duration: number): void
 
-设置蓝牙扫描模式，决定本机设备是否可被连接，或者可被发现。
+设置蓝牙扫描模式，决定本机设备是否可被连接，或者可被发现。搭配[onScanModeChange](#connectiononscanmodechange23)接口使用，可实时监听蓝牙扫描模式变更事件。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -879,7 +966,7 @@ setBluetoothScanMode(mode: ScanMode, duration: number): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     // 设置为可连接可发现才可被对端设备扫描到，可以连接。
     connection.setBluetoothScanMode(connection.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE, 100);
@@ -893,7 +980,7 @@ try {
 
 getBluetoothScanMode(): ScanMode
 
-获取蓝牙扫描模式。
+获取蓝牙扫描模式。搭配[onScanModeChange](#connectiononscanmodechange23)接口使用，可实时监听蓝牙扫描模式变更事件。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -920,7 +1007,7 @@ getBluetoothScanMode(): ScanMode
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let scanMode: connection.ScanMode = connection.getBluetoothScanMode();
 } catch (err) {
@@ -960,7 +1047,7 @@ startBluetoothDiscovery(): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: Array<string>) {
     console.info('data length' + data.length);
 }
@@ -1003,7 +1090,7 @@ stopBluetoothDiscovery(): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.stopBluetoothDiscovery();
 } catch (err) {
@@ -1043,7 +1130,7 @@ isBluetoothDiscovering(): boolean
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let res: boolean = connection.isBluetoothDiscovering();
     console.info('isBluetoothDiscovering: ' + res);
@@ -1058,6 +1145,7 @@ setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 
 设置对端蓝牙设备的名称，不能设置为空字符串。如果设为空字符串会失败。使用Promise异步回调。
 - 建议仅对已配对的设备调用该方法。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行名称设置。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1112,6 +1200,7 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 
 获取对端蓝牙设备的电量信息。使用Promise异步回调。
 - 对端蓝牙设备的电量信息变更通过[on('batteryChange')](#connectiononbatterychange12)的回调结果获取。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取电量信息。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1143,7 +1232,7 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.getRemoteDeviceBatteryInfo('11:22:33:AA:BB:FF').then((data: connection.BatteryInfo) => {
@@ -1184,7 +1273,7 @@ on(type: 'batteryChange', callback: Callback&lt;BatteryInfo&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: connection.BatteryInfo) => void = (data: connection.BatteryInfo) => {
     console.info('BatteryInfo = '+ JSON.stringify(data));
 }
@@ -1225,7 +1314,7 @@ off(type: 'batteryChange', callback?: Callback&lt;BatteryInfo&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: connection.BatteryInfo) => void = (data: connection.BatteryInfo) => {
     console.info('BatteryInfo = '+ JSON.stringify(data));
 }
@@ -1258,7 +1347,7 @@ on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): 
 | 参数名      | 类型                                  | 必填   | 说明                                     |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | type     | string                              | 是    | 事件回调类型，支持的事件为'bluetoothDeviceFind'，表示蓝牙设备扫描结果上报事件。当调用[connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery)后，开始设备扫描，若扫描到设备，触发该事件。 |
-| callback | Callback&lt;Array&lt;string&gt;&gt; | 是    | 指定订阅的回调函数，会携带扫描到的设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新发起扫描，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。    |
+| callback | Callback&lt;Array&lt;string&gt;&gt; | 是    | 指定订阅的回调函数，会携带扫描到的设备地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。   |
 
 **错误码**：
 
@@ -1274,7 +1363,7 @@ on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): 
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: Array<string>) { // data为蓝牙设备地址集合。
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
@@ -1318,7 +1407,7 @@ off(type: 'bluetoothDeviceFind', callback?: Callback&lt;Array&lt;string&gt;&gt;)
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: Array<string>) {
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
@@ -1362,7 +1451,7 @@ on(type: 'bondStateChange', callback: Callback&lt;BondStateParam&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: connection.BondStateParam) { // data为回调函数入参，表示配对的状态。
     console.info('pair state = '+ JSON.stringify(data));
 }
@@ -1405,7 +1494,7 @@ off(type: 'bondStateChange', callback?: Callback&lt;BondStateParam&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: connection.BondStateParam) {
     console.info('bond state = '+ JSON.stringify(data));
 }
@@ -1449,7 +1538,7 @@ on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: connection.PinRequiredParam) { // data为配对请求参数。
     console.info('pin required = '+ JSON.stringify(data));
 }
@@ -1492,7 +1581,7 @@ off(type: 'pinRequired', callback?: Callback&lt;PinRequiredParam&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: connection.PinRequiredParam) {
     console.info('pin required = '+ JSON.stringify(data));
 }
@@ -1538,7 +1627,7 @@ on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&g
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data为蓝牙设备扫描结果集合。
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
@@ -1580,7 +1669,7 @@ off(type: 'discoveryResult', callback?: Callback&lt;Array&lt;DiscoveryResult&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data为蓝牙设备扫描结果集合。
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
@@ -1593,11 +1682,93 @@ try {
 ```
 
 
+## connection.onScanModeChange<sup>23+</sup>
+
+onScanModeChange(callback: Callback&lt;ScanMode&gt;): void
+
+订阅蓝牙扫描模式变更事件。使用Callback异步回调。当调用[setBluetoothScanMode](#connectionsetbluetoothscanmode)更改当前蓝牙扫描模式后，如订阅此事件，则会收到携带最新扫描模式的回调函数。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                               |
+| -------- | ---------------------------------------- | ---- | -------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | 是    | 指定订阅的回调函数，会携带变更后最新的蓝牙扫描模式。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.              |
+
+**示例：**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.onScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## connection.offScanModeChange<sup>23+</sup>
+
+offScanModeChange(callback?: Callback&lt;ScanMode&gt;): void
+
+取消订阅蓝牙扫描模式变更事件。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.onScanModeChange](#connectiononscanmodechange23)中的回调函数一致；若无传参，则取消订阅所有蓝牙扫描模式变更的回调函数通知。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.offScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
 ## connection.getLastConnectionTime<sup>15+</sup>
 
 getLastConnectionTime(deviceId: string): Promise&lt;number&gt;
 
 获取对端蓝牙设备最近一次连接的时间点。使用Promise异步回调。
+
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取最近一次连接时间。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -1646,8 +1817,9 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 连接对端设备支持的profile（只包括A2DP、HFP和HID）。使用Callback异步回调。
 - 需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30s内调用此接口一次。
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行profile连接。
 
-**需要权限：**: ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力：**: SystemCapability.Communication.Bluetooth.Core
 
@@ -1674,7 +1846,7 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   connection.connectAllowedProfiles('68:13:24:79:4C:8C', (err: BusinessError) => {
     if (err) {
@@ -1696,8 +1868,9 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 连接对端设备支持的profile（只包括A2DP、HFP和HID）。使用Promise异步回调。
 - 需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30s内调用此接口一次。
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行profile连接。
 
-**需要权限：**: ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力：**: SystemCapability.Communication.Bluetooth.Core
 
@@ -1729,7 +1902,7 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   connection.connectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
       console.info('connectAllowedProfiles');
@@ -1738,6 +1911,60 @@ try {
   });
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## connection.getVirtualAddressByHash<sup>24+</sup>
+
+getVirtualAddressByHash(algorithmType: HashAlgorithmType, hashValue: string): string
+
+根据已配对设备[实际MAC地址](../../connectivity/bluetooth/bluetooth-overview.md#蓝牙设备地址类型)的哈希值获取对应的[虚拟MAC地址](../../connectivity/bluetooth/bluetooth-overview.md#蓝牙设备地址类型)。
+
+当[HashAlgorithmType](#hashalgorithmtype24)为HASH_ALGORITHM_SHA256时，应使用大写实际MAC地址通过SHA256算法生成对应的哈希值（十六进制64位），取后32位作为输入，哈希值字母不区分大小写。
+
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名     | 类型    | 必填  | 说明                                 |
+| -------- | ------ | ---- | ----------------------------------- |
+| algorithmType | [HashAlgorithmType](#hashalgorithmtype24) | 是   | 哈希算法类型。|
+| hashValue | string | 是   | 哈希值，例如："c10b57deb2e1aafd255596e0d4fd6789"。|
+
+**返回值：**
+
+| 类型                                             | 说明               |
+| ------------------------------------------------- | ------------------- |
+| string | 返回与哈希值相对应的设备虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"，返回地址为大写。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见 [通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID| 错误信息|
+| -------- | ---------------------------- |
+|201     | Permission denied.                       |
+|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|2900003 | Bluetooth disabled.                 |
+|2900015 | Parameter format mismatch with specification.   |
+|2900016 | Device unpaired.   |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem.                        |
+
+**示例：**
+
+```js
+// 若查询的真实地址为11:22:33:44:55:AA,
+// 对应的64位哈希值为 d2204cb9b6d3d3962cc90fa54130efb4c10b57deb2e1aafd255596e0d4fd6789,
+// 当HashAlgorithmType为HASH_ALGORITHM_SHA256时取后32位哈希值
+let hashValue: string = "c10b57deb2e1aafd255596e0d4fd6789";
+try {
+  let addr: string = connection.getVirtualAddressByHash(connection.HashAlgorithmType.HASH_ALGORITHM_SHA256, hashValue);
+} catch (err) {
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1808,7 +2035,7 @@ try {
 | TRANSPORT_BR_EDR   | 0 | 传统蓝牙（Basic Rate/Enhanced Data Rate，BR/EDR）设备传输方式。  |
 | TRANSPORT_LE  | 1 | 低功耗蓝牙（Bluetooth Low Energy，BLE）设备传输方式。  |
 | TRANSPORT_DUAL<sup>20+</sup>  | 2 | 同时支持传统蓝牙（BR/EDR）和低功耗蓝牙（BLE）的双模设备传输方式。设备可以根据需要选择使用传统蓝牙（BR/EDR）或低功耗蓝牙（BLE）进行通信。  |
-| TRANSPORT_UNKNOWN<sup>20+</sup>  | 3 | 未知的设备传输方式。  | 
+| TRANSPORT_UNKNOWN<sup>20+</sup>  | 3 | 未知的设备传输方式。  |
 
 
 ## ScanMode
@@ -1876,9 +2103,24 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 15%; 15%; 10%; 10%; 50%-->
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId    | string      | 否    | 否    | 扫描到的设备地址。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新发起扫描，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。|
+| deviceId    | string      | 否    | 否    | 扫描到的设备地址。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。|
 | rssi     | number      | 否    | 否    | 扫描到的设备信号强度，单位：dBm。|
 | deviceName     | string      | 否    | 否    | 扫描到的设备名称。|
 | deviceClass     | [DeviceClass](#deviceclass)      | 否    | 否    | 扫描到的设备类型。|
+
+## HashAlgorithmType<sup>24+</sup>
+
+枚举，表示哈希算法类型。
+
+哈希算法是一种数学函数，通过对输入数据进行复杂计算，生成一个唯一且固定长度的字符串（即哈希值）。常用于数据完整性校验、数字签名等场景。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+| 名称                 | 值  | 说明     |
+| ------------------ | ---- | ------ |
+| HASH_ALGORITHM_SHA256        | 0    | SHA256哈希算法。|

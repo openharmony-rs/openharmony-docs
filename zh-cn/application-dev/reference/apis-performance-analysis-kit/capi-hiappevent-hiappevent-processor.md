@@ -3,13 +3,17 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+
+```c
+typedef struct HiAppEvent_Processor HiAppEvent_Processor
+```
 
 ## 概述
 
-用于处理app事件上报的处理者。
+应用事件上报的处理者。
 
 **起始版本：** 18
 

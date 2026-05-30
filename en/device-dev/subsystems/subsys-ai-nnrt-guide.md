@@ -119,11 +119,11 @@ Download the OpenHarmony source code from the open source community, build the `
 
 2. Implement the device driver. Unless otherwise required, you can directly use the `nnrt_device_driver.cpp` file generated through IDL file compilation.
 
-3. Implement service APIs by referring to the `nnrt_device_service.cpp` and `prepared_model_service.cpp` files. For details about the API definitions, see [NNRt HDI Definitions](https://gitee.com/openharmony/drivers_interface/tree/master/nnrt).
+3. Implement service APIs by referring to the `nnrt_device_service.cpp` and `prepared_model_service.cpp` files. For details about the API definitions, see [NNRt HDI Definitions](https://gitcode.com/openharmony/drivers_interface/tree/master/nnrt).
 
 4. Compile the implementation files for device drivers and services as shared libraries.
 
-    Create the `BUILD.gn` file with the following content in the `drivers/peripheral/nnrt/v2_0/hdi_cpu_service/` directory. For details about how to set related parameters, see [Compilation and Building](https://gitee.com/openharmony/build).
+    Create the `BUILD.gn` file with the following content in the `drivers/peripheral/nnrt/v2_0/hdi_cpu_service/` directory. For details about how to set related parameters, see [Compilation and Building](https://gitcode.com/openharmony/build).
 
     ```shell
     import("//build/ohos.gni")
@@ -358,7 +358,7 @@ The SELinux feature has been enabled for the OpenHarmony. You need to configure 
     ```
 
 10. Configure access permissions because SELinux uses the trustlist access permission mechanism. Upon service startup, run the `dmesg` command to view the AVC alarm,
-which provides a list of missing permissions. For details about the SELinux configuration, see [security_selinux](https://gitee.com/openharmony/security_selinux/blob/master/README-en.md).
+which provides a list of missing permissions. For details about the SELinux configuration, see [security_selinux](https://gitcode.com/openharmony/security_selinux/blob/master/README-en.md).
     ```shell
     hdc_std shell
     dmesg | grep nnrt
@@ -428,7 +428,7 @@ On completion of service development, you can use XTS to verify its basic functi
     ```
 
 ### Development Example
-For the complete demo code, see [NNRt Service Implementation Example](https://gitee.com/openharmony/ai_neural_network_runtime/tree/master/example/drivers).
+For the complete demo code, see [NNRt Service Implementation Example](https://gitcode.com/openharmony/ai_neural_network_runtime/tree/master/example/drivers).
 
 1. Go to the root directory of OpenHarmony source code and create the `nnrt` folder in the `drivers/peripheral` directory. Then, copy the `example/driver/nnrt/v2_0` folder from the  `foundation/ai/neural_network_runtime` directory of NNRt source code to the created `nnrt` folder.
     ```shell

@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 选择性允许使用以下特性的页面进入前进后退缓存。完整示例代码参考[enableBackForwardCache](./arkts-apis-webview-WebviewController.md#enablebackforwardcache12)。
 
@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 属性
 

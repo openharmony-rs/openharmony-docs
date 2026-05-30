@@ -3,9 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
-<!--Designer: @li-weifeng2-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供意图执行基类，开发者通过本模块对接端侧[意图框架](../../application-models/insight-intent-overview.md)，[通过配置文件开发意图](../../application-models/insight-intent-config-development.md)实现意图的业务逻辑。
 
@@ -39,8 +39,7 @@ import { InsightIntentExecutor } from '@kit.AbilityKit';
 
 ### onExecuteInUIAbilityForegroundMode
 
-onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage):
-  insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 当意图执行依赖[UIAbility](./js-apis-app-ability-uiAbility.md)组件前台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。
 
@@ -75,12 +74,13 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
-    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage): insightIntent.ExecuteResult {
+    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): insightIntent.ExecuteResult {
       let result: insightIntent.ExecuteResult;
       if (name !== 'SupportedInsightIntentName') {
         hilog.warn(0x0000, 'testTag', 'Unsupported insight intent %{public}s', name);
         result = {
-          // decided by developer
+          // 由开发者定义
           code: 404,
           result: {
             message: 'Unsupported insight intent.',
@@ -89,7 +89,7 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
         return result;
       }
 
-      // if developer need load intent content, 'pages/IntentPage' is intent page.
+      // 若开发者需要加载意图内容，pages/IntentPage即为意图页面
       pageLoader.loadContent('pages/IntentPage', (err, data) => {
         if (err.code) {
           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
@@ -128,13 +128,14 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
   }
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
-    // 实现异步接口需要使用async/await语法糖，通过async声明该接口是一个异步函数。
-    async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage): Promise<insightIntent.ExecuteResult> {
+    // 实现异步接口需要使用async/await语法糖，通过async声明该接口是一个异步函数
+    async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): Promise<insightIntent.ExecuteResult> {
       let result: insightIntent.ExecuteResult;
       if (name !== 'SupportedInsightIntentName') {
         hilog.warn(0x0000, 'testTag', 'Unsupported insight intent %{public}s', name);
         result = {
-          // decided by developer
+          // 由开发者定义
           code: 404,
           result: {
             message: 'Unsupported insight intent.',
@@ -151,8 +152,7 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
 
 ### onExecuteInUIAbilityBackgroundMode
 
-onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
-    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 当意图执行依赖[UIAbility](./js-apis-app-ability-uiAbility.md)组件后台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。
 
@@ -212,8 +212,9 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
   }
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
-    // 实现异步接口需要使用async/await语法糖，通过async声明该接口是一个异步函数。
-    async onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>): Promise<insightIntent.ExecuteResult> {
+    // 实现异步接口需要使用async/await语法糖，通过async声明该接口是一个异步函数
+    async onExecuteInUIAbilityBackgroundMode(name: string,
+      param: Record<string, Object>): Promise<insightIntent.ExecuteResult> {
       let result: insightIntent.ExecuteResult = await executeInsightIntent(param);
       return result;
     }
@@ -222,8 +223,7 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
 
 ### onExecuteInUIExtensionAbility
 
-onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession):
-  insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 当意图执行依赖[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)启动时，会在UIExtensionAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。
 
@@ -253,12 +253,13 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageL
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
-    onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession): insightIntent.ExecuteResult {
+    onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>,
+      pageLoader: UIExtensionContentSession): insightIntent.ExecuteResult {
       let result: insightIntent.ExecuteResult;
       if (name !== 'SupportedInsightIntentName') {
         hilog.warn(0x0000, 'testTag', 'Unsupported insight intent %{public}s', name);
         result = {
-          // decided by developer
+          // 由开发者定义
           code: 404,
           result: {
             message: 'Unsupported insight intent.',
@@ -267,7 +268,7 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageL
         return result;
       }
 
-      // if developer need load intent content, 'pages/IntentPage' is intent page.
+      // 若开发者需要加载意图内容，pages/Index即为意图页面
       pageLoader.loadContent('pages/Index');
 
       result = {
@@ -299,13 +300,14 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageL
   }
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
-    // 实现异步接口需要使用async/await语法糖，通过async声明该接口是一个异步函数。
-    async onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession): Promise<insightIntent.ExecuteResult> {
+    // 实现异步接口需要使用async/await语法糖，通过async声明该接口是一个异步函数
+    async onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>,
+      pageLoader: UIExtensionContentSession): Promise<insightIntent.ExecuteResult> {
       let result: insightIntent.ExecuteResult;
       if (name !== 'SupportedInsightIntentName') {
         hilog.warn(0x0000, 'testTag', 'Unsupported insight intent %{public}s', name);
         result = {
-          // decided by developer
+          // 由开发者定义
           code: 404,
           result: {
             message: 'Unsupported insight intent.',
@@ -322,8 +324,7 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageL
 
 ### onExecuteInServiceExtensionAbility
 
-onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
-    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 当意图执行依赖ServiceExtensionAbility组件启动时，会在ServiceExtensionAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。
 
@@ -357,7 +358,7 @@ onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
       if (name !== 'SupportedInsightIntentName') {
         hilog.warn(0x0000, 'testTag', 'Unsupported insight intent %{public}s', name);
         result = {
-          // decided by developer
+          // 由开发者定义
           code: 404,
           result: {
             message: 'Unsupported insight intent.',
@@ -395,13 +396,14 @@ onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
   }
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
-    // 实现异步接口需要使用async/await语法糖，通过async声明该接口是一个异步函数。
-    async onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>): Promise<insightIntent.ExecuteResult> {
+    // 实现异步接口需要使用async/await语法糖，通过async声明该接口是一个异步函数
+    async onExecuteInServiceExtensionAbility(name: string,
+      param: Record<string, Object>): Promise<insightIntent.ExecuteResult> {
       let result: insightIntent.ExecuteResult;
       if (name !== 'SupportedInsightIntentName') {
         hilog.warn(0x0000, 'testTag', 'Unsupported insight intent %{public}s', name);
         result = {
-          // decided by developer
+          // 由开发者定义
           code: 404,
           result: {
             message: 'Unsupported insight intent.',

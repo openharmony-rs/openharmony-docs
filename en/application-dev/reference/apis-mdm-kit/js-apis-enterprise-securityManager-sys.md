@@ -1,16 +1,22 @@
 # @ohos.enterprise.securityManager (Security Management) (System API)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @hp_guo-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @zhang_yixin13-->
 
 The **securityManager** module provides device security management capabilities, including obtaining the security patch status and file system encryption status.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-guide.md#introduction) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 >
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md).
 
 ## Modules to Import
 
@@ -28,13 +34,15 @@ Queries the security patch tag of a device.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -57,11 +65,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -81,13 +91,15 @@ Queries the encryption status of the device file system.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 
 **Return value**
 
@@ -110,11 +122,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -129,9 +143,11 @@ try {
 
 getPasswordPolicy(): PasswordPolicy
 
-Obtains the password policy of this device.
+Obtains the device screen lock password policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -139,7 +155,7 @@ Obtains the password policy of this device.
 
 | Type                  | Description                     |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | Device password policy obtained.|
+| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | Device screen lock password policy.|
 
 **Error codes**
 
@@ -152,6 +168,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
+
 try {
     let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy();
     console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
@@ -165,6 +183,8 @@ try {
 Represents the file system encryption status.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 

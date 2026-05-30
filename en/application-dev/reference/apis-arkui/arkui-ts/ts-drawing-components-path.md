@@ -1,15 +1,23 @@
 # Path
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Path** component is used to draw a custom closed shape based on a specified drawing path.
 
 > **NOTE**
 >
 > This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> This component supports dynamic constructor parameter updates using the [updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#properties) API of the [AttributeUpdater](../js-apis-arkui-AttributeUpdater.md) class since API version 20.
 
 
 ## Child Components
 
-Not supported
+None
 
 ## APIs
 
@@ -25,10 +33,15 @@ Path(options?: PathOptions)
 
 | Name                                            | Type        | Mandatory| Description                  |
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
-| options  | [PathOptions](ts-drawing-components-path.md#pathoptions18) | No  | Options for path drawing.|
+| options  | [PathOptions](ts-drawing-components-path.md#pathoptions18) | No  | Options of the path.<br>The **undefined** and **null** values are treated as invalid and will not take effect.|
 
 ## PathOptions<sup>18+</sup>
-Describes the options for path drawing.
+
+Describes the options of the path.
+
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -36,11 +49,11 @@ Describes the options for path drawing.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| width | string \| number | No| Width of the rectangle where the path is located.<br>If the value is invalid or the default value is used, the width required for the content is used.<br>Default unit: vp|
-| height | string \| number | No| Height of the rectangle where the path is located.<br>If the value is invalid or the default value is used, the width required for the content is used.<br>Default unit: vp|
-| [commands](ts-drawing-components-path.md#commands) | string  | No| Command string for drawing the path.<br>If the value is invalid or the default value is used, the width required for the content is used. Default value: **''**<br>An invalid value is handled as the default value.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| width<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Width of the rectangle where the path is located.<br>If the value is invalid or the default value is used, the width required for the content is used.<br>Default unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| height<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Height of the rectangle where the path is located.<br>If the value is invalid or the default value is used, the height required for the content is used.<br>Default unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [commands<sup>7+</sup>](ts-drawing-components-path.md#commands) | [ResourceStr](ts-types.md#resourcestr)  | No| Yes| Command string for drawing the path.<br>If the value is invalid or the default value is used, the width and height required for the content are used. The default value is an empty string.<br>An invalid value is handled as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -48,7 +61,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 ### commands
 
-commands(value: string)
+commands(value: [ResourceStr](ts-types.md#resourcestr))
 
 Sets a string of path commands that comply with the [SVG path syntax](ts-drawing-components-path.md#svg-path-syntax). The unit is px. For details about how to convert pixel units, see [Pixel Units](ts-pixel-units.md).
 
@@ -62,13 +75,13 @@ Sets a string of path commands that comply with the [SVG path syntax](ts-drawing
 
 | Name| Type  | Mandatory| Description                         |
 | ------ | ------ | ---- | ----------------------------- |
-| value  | string | Yes  | Path for drawing a line.<br>Default value: **''**<br>Default unit: px|
+| value  | [ResourceStr](ts-types.md#resourcestr) | Yes  | Path for drawing a line.<br>The default value is an empty string.<br>Default unit: px<br>The **undefined** and **null** values are invalid and treated as the default value.|
 
 ### fill
 
 fill(value: ResourceColor)
 
-Sets the color of the fill area. An invalid value is handled as the default value. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
+Sets the color of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Invalid values are treated as the default value. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -80,13 +93,13 @@ Sets the color of the fill area. An invalid value is handled as the default valu
 
 | Name| Type                                      | Mandatory| Description                                  |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: **Color.Black**|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: [Color](ts-appendix-enums.md#color).Black<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### fillOpacity
 
 fillOpacity(value: number | string | Resource)
 
-Sets the opacity of the fill area. The value range is [0.0, 1.0]. If the value passed in is less than **0.0**, the opacity is set to **0.0**. If the value passed in is greater than **1.0**, the opacity is set to **1.0**. Any other value is regarded as **1.0**.
+Sets the opacity of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -98,13 +111,13 @@ Sets the opacity of the fill area. The value range is [0.0, 1.0]. If the value p
 
 | Name| Type                                                        | Mandatory| Description                          |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>Default value: **1**|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>For the number type, the value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other value is treated as **1.0**.<br>For the string type, the value is a character string of the number type. The value range is the same as that of the number type.<br>For the Resource type, the value is a character string from the system resource or application resource. The value range is the same as that of the number type.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**.|
 
 ### stroke
 
 stroke(value: ResourceColor)
 
-Sets the stroke color. If this attribute is not set, the component does not have any stroke. If the value is invalid, no stroke will be drawn.
+Sets the stroke color. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default stroke color is opaque black.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -116,13 +129,13 @@ Sets the stroke color. If this attribute is not set, the component does not have
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>Default value: [Color](ts-appendix-enums.md#color).Transparent<br>Invalid values **undefined** and **null** values are treated as the default value, and invalid values **NaN** and **Infinity** are treated as [Color](ts-appendix-enums.md#color).Black.|
 
 ### strokeDashArray
 
 strokeDashArray(value: Array&lt;any&gt;)
 
-Sets the stroke dashes. Line segments may overlap when they intersect. The value must be greater than or equal to 0. Invalid values are treated as the default value.
+Sets the stroke dashes. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Line segments may overlap when they intersect. The value must be greater than or equal to 0. Invalid values are treated as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -134,13 +147,13 @@ Sets the stroke dashes. Line segments may overlap when they intersect. The value
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Stroke dashes.<br>Default value: **[]**<br>Default unit: vp|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the path outline. Elements alternate between dash length and gap length.<br>Default value: **[]** (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are invalid and treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 
 strokeDashOffset(value: number | string)
 
-Sets the line dash offset. An invalid value is handled as the default value.
+Sets the offset of the start point for drawing the stroke. A positive value shifts the start point to the left. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). An invalid value is handled as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -152,13 +165,13 @@ Sets the line dash offset. An invalid value is handled as the default value.
 
 | Name| Type                      | Mandatory| Description                                |
 | ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | number \| string | Yes  | Line dash offset.<br>Default value: **0**<br>Default unit: vp|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Line dash offset.<br>Default value: **0**<br>Default unit: vp<br>The **undefined** and **null** values are treated as the default value. If set to **NaN** or **Infinity**, **strokeDashArray** has no effect.|
 
 ### strokeLineCap
 
 strokeLineCap(value: LineCapStyle)
 
-Sets the style of end points of lines.
+Sets the cap style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -170,13 +183,13 @@ Sets the style of end points of lines.
 
 | Name| Type                                             | Mandatory| Description                                            |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Style of the end points of lines.<br>Default value: **LineCapStyle.Butt**|
+| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### strokeLineJoin
 
 strokeLineJoin(value: LineJoinStyle)
 
-Sets the join style of lines.
+Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -188,13 +201,13 @@ Sets the join style of lines.
 
 | Name| Type                                               | Mandatory| Description                                              |
 | ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of lines.<br>Default value: **LineJoinStyle.Miter**|
+| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### strokeMiterLimit
 
 strokeMiterLimit(value: number | string)
 
-Sets the limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join. The miter length indicates the distance from the outer tip to the inner corner of the miter. This attribute works only when **strokeLineJoin** is set to **LineJoinStyle.Miter**.
+Sets the limit on the ratio of the miter length to the value of stroke width used to draw a miter join. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The miter length indicates the distance from the outer tip to the inner corner of the miter. The border width is the value of **strokeWidth**. This attribute works only when **strokeLineJoin** is set to **LineJoinStyle.Miter**.
 
 The value must be greater than or equal to 1.0. If the value is in the [0, 1) range, the value **1.0** will be used. In other cases, the default value will be used.
 
@@ -208,13 +221,13 @@ The value must be greater than or equal to 1.0. If the value is in the [0, 1) ra
 
 | Name| Type                      | Mandatory| Description                                          |
 | ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | number \| string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>The **undefined**, **null**, and **NaN** values are treated as the default value. If set to **Infinity**, **stroke** has no effect.|
 
 ### strokeOpacity
 
 strokeOpacity(value: number | string | Resource)
 
-Sets the stroke opacity. The value range is [0.0, 1.0]. If the value passed in is less than **0.0**, the opacity is set to **0.0**. If the value passed in is greater than **1.0**, the opacity is set to **1.0**. Any other value is regarded as **1.0**.
+Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -226,13 +239,13 @@ Sets the stroke opacity. The value range is [0.0, 1.0]. If the value passed in i
 
 | Name| Type                                                        | Mandatory| Description                      |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: **1**|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: **1**<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
 
 ### strokeWidth
 
 strokeWidth(value: Length)
 
-Sets the stroke width. If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
+Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -244,13 +257,13 @@ Sets the stroke width. If this attribute is of the string type, percentage value
 
 | Name| Type                        | Mandatory| Description                    |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>An invalid value is handled as the default value.|
+| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>Invalid values **undefined**, **null**, and **NaN** are treated as the default value, and invalid value **Infinity** is treated as **0**.|
 
 ### antiAlias
 
 antiAlias(value: boolean)
 
-Specifies whether anti-aliasing is enabled.
+Sets whether to enable anti-aliasing. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -262,7 +275,7 @@ Specifies whether anti-aliasing is enabled.
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: Anti-aliasing is enabled.<br>**false**: Anti-aliasing is disabled.<br>Default value: **true**|
+| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: enable anti-aliasing; **false**: disable anti-aliasing.<br>Default value: **true**<br>Invalid values **undefined** and **null** are treated as **false**.|
 
 ## SVG Path Syntax
 
@@ -270,20 +283,22 @@ The table below lists the supported SVG path commands.
 
 | Command  | Name                              | Parameter                                      | Description                                      |
 | ---- | -------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| M    | moveto                           | (x y)                                   | Starts a new subpath at the point specified by the given (x, y) coordinates. For example, `M 0 0` starts a new subpath at point (0, 0).|
-| L    | lineto                           | (x y)                                   | Draws a line from the current point to the point specified by the given (x, y) coordinates. The specified point becomes the start point of the new subpath. For example, `L 50 50` draws a line from the current point to point (50, 50), which is the start point of the new subpath.|
-| H    | horizontal lineto                | x                                        | Draws a horizontal line to the given X coordinate. This command is equivalent to an **L** command with the current Y coordinate. For example, **H 50** draws a horizontal line from the current point to (50, current y).|
-| V    | vertical lineto                  | y                                        | Draws a vertical line to the given Y coordinate. This command is equivalent to an **L** command with the current X coordinate. For example, **V 50** draws a vertical line from the current point to (current x, 50).|
-| C    | curveto                          | (x1 y1 x2 y2 x y)                        | Draws a cubic Bezier curve from the current point to the point specified by the given (x, y) coordinates, with (x1, y1) as the control point of the curve start point and (x2, y2) as the control point of the curve end point. For example, **C100 100 250 100 250 200** draws a cubic Bezier curve from the current point to point (250, 200), which is the start point of the new subpath.|
-| S    | smooth curveto                   | (x2 y2 x y)                              | Draws a cubic Bezier curve from the current point to the point specified by the given (x, y) coordinates, with (x2, y2) as the control point of the curve end point. If the previous command is **C** or **S**, the control point of the curve start point is the mapping of the control point of the curve end point in the previous command relative to the start point. For example, in **C100 100 250 100 250 200 S400 300 400 200**, the second segment of the cubic Bezier curve uses point (250, 300) as the control point of the curve start point. If there is no previous command or the previous command is not **C** or **S**, the control point of the curve start point coincides with the current point.|
-| Q    | quadratic Belzier curve          | (x1 y1 x y)                              | Draws a quadratic Bezier curve from the current point to the point specified by the given (x, y) coordinates, with (x1, y1) as the control point. For example, **Q400 50 600 300** draws a quadratic Bezier curve from the current point to point (600, 300), which is the start point of the new subpath.|
-| T    | smooth quadratic Belzier curveto | (x y)                                    | Draws a quadratic Bezier curve from the current point to the point specified by the given (x, y) coordinates. If the previous command is **Q** or **T**, the control point is the mapping of the control point of the curve end point in the previous command relative to the start point. For example, in **Q400 50 600 300 T1000 300**, the second segment of the quadratic Bezier curve uses point (800, 350) as the control point. If there is no previous command or the previous command is not **Q** or **T**, the control point of the curve start point coincides with the current point.|
-| A    | elliptical Arc                   | (rx ry x-axis-rotation large-arc-flag sweep-flag x y) | Draws an elliptical arc from the current point to the point specified by the given (x, y) coordinates. **(rx, ry)** and **x-axis-rotation** define the size and direction of the arc, indicating how the arc rotates relative to the current coordinate system (in degrees). **large-arc-flag** and **sweep-flag** define how the arc is drawn.|
+| M    | moveto                           | **x**: X-coordinate of the start point.<br>**y**: Y-coordinate of the start point.                                   | Starts a new subpath at the specified point (x, y). This point becomes the new current point.|
+| L    | lineto                           | **x**: X-coordinate of the end point of the line.<br>**y**: Y-coordinate of the end point of the line.                                   | Draws a straight line from the current point to (x, y). This end point becomes the new current point. For example, **L 50 50** draws a line to (50, 50).|
+| H    | horizontal lineto                | **x**: X-coordinate of the end point of the horizontal line.                                       | Draws a horizontal line to the given X coordinate. Equivalent to an **L** command with the current Y coordinate. For example, **H 50** draws a horizontal line from the current point to (50, current y).|
+| V    | vertical lineto                  | **y**: Y-coordinate of the end point of the vertical line.                                       | Draws a vertical line to the given Y coordinate. Equivalent to an **L** command with the current X coordinate. For example, given a current point of (100, 100), the command **V 50** draws a vertical line to the point (100, 50) and then sets (100, 50) as the new current point.|
+| C    | curveto                          | **x1**: X-coordinate of the first control point.<br>**y1**: Y-coordinate of the first control point.<br>**x2**: X-coordinate of the second control point.<br>**y2**: Y-coordinate of the second control point.<br>**x**: X-coordinate of the end point.<br>**y**: Y-coordinate of the end point.                       | Draws a cubic Bezier curve from the current point to the point specified by the given (x, y) coordinates, with (x1, y1) as the control point of the curve start point and (x2, y2) as the control point of the curve end point. For example, **C100 100 250 100 250 200** draws a cubic Bezier curve from the current point to (250, 200), with (250, 200) as the start point of a new subpath.|
+| S    | smooth curveto                   | **x2**: X-coordinate of the second control point.<br>**y2**: Y-coordinate of the second control point.<br>**x**: X-coordinate of the end point.<br>**y**: Y-coordinate of the end point.                             |Draws a cubic Bezier curve from the current point to the point specified by the given (x, y) coordinates, with (x2, y2) as the control point of the curve end point. If the previous command is **C** or **S**, the control point is the mapping of the control point of the curve end point in the previous command relative to the start point. For example, in **C100 100 250 100 250 200 S400 300 400 200**, the control point of the start point of the second Bezier curve is (250, 300). If there is no previous command or the previous command is not **C** or **S**, the first control point coincides with the current point.|
+| Q    | quadratic Bezier curve          | **x1**: X-coordinate of the first control point.<br>**y1**: Y-coordinate of the first control point.<br>**x**: X-coordinate of the end point.<br>**y**: Y-coordinate of the end point.                             | Draws a quadratic Bezier curve from the current point to the point specified by the given (x, y) coordinates, with (x1, y1) as the control point. For example, **Q400 50 600 300** draws a quadratic Bezier curve from the current point to the point specified by the given (600, 300) coordinates, with the point specified by the given (600, 300) coordinates as the start point of a new subpath.|
+| T    | smooth quadratic Bezier curveto | **x**: X-coordinate of the end point.<br>**y**: Y-coordinate of the end point.                                   | Draws a quadratic Bezier curve from the current point to the point specified by the given (x, y) coordinates. If the previous command is **Q** or **T**, the control point is the mapping of the control point of the curve end point in the previous command relative to the start point. For example, in **Q400 50 600 300 T1000 300**, the control point of the second Bezier curve is (800, 350). If there is no previous command or the previous command is not **Q** or **T**, the first control point coincides with the current point.|
+| A    | elliptical Arc                   | **rx**: radius of the ellipse on the x-axis.<br>**ry**: radius of the ellipse on the y-axis.<br>**x-axis-rotation**: rotation angle of the ellipse relative to the coordinate system.<br>**large-arc-flag**: whether to draw a large arc (1) or a small arc (0).<br>**sweep-flag**: whether to draw clockwise (1) or counterclockwise (0).<br>**x**: X-coordinate of the end point.<br>**y**: Y-coordinate of the end point.| Draws an elliptical arc from the current point to the point specified by the given (x, y) coordinates. The size and direction of the ellipse are defined by two radii (rx, ry) and **x-axis-rotation**, indicating how the entire ellipse is rotated relative to the current coordinate system (in degrees). **large-arc-flag** and **sweep-flag** define how the arc is drawn.|
 | Z    | closepath                        | none                                     | Closes the current subpath by connecting the current path back to the initial point of the current subpath.            |
 
-For example, **commands('M0 20 L50 50 L50 100 Z')** defines a triangle that starts from position (0, 20), by drawing a line from point (0, 20) to point (50, 50), then a line from point (50, 50) to point (50, 100), and finally a line from point (50, 100) to point (0, 20).
+For example, the command string **commands('M0 20 L50 50 L50 100 Z')** defines a triangle: It starts at (0, 20), draws a line to (50, 50), then to (50, 100), and finally closes the path back to (0, 20).
 
-## Example
+## Examples
+
+### Example 1: Drawing Rectangles
 
 This example demonstrates how to use **commands**, **fillOpacity**, and **stroke** to draw a closed shape with the specified path, opacity, and stroke color.
 
@@ -367,3 +382,81 @@ struct PathExample {
 ```
 
 ![en-us_image_0000001219744193](figures/en-us_image_0000001219744193.png)
+
+### Example 2: Drawing a Path Using Different Parameter Types
+
+This example demonstrates how to draw a path using different length types of the **width**, **height**, and **commands** attributes.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct PathTypeExample {
+  build() {
+    Column({ space: 10 }) {
+      // Use the string type for the width, height, and commands attributes to draw a line.
+      Path({ width: '600px', height: '10px' })
+        .commands('M0 0 L600 0')
+        .fillOpacity(0)
+        .stroke(Color.Black)
+        .strokeWidth(3)
+      // Use the number type for the width and height attributes to draw a rectangle.
+      Path({ width: 200, height: 100 })
+        .commands('M200 0 H400 V200 H200 Z')
+        .fillOpacity(0)
+        .stroke(Color.Black)
+        .strokeWidth(3)
+      // Use the Resource type (customized by yourself) for the width, height, and commands attributes to draw an arc.
+      Path({ width: $r('app.string.PathWidth'), height: $r('app.string.PathHeight') }) // In this example, PathWidth and PathHeight are both defined as 200.
+        .commands($r('app.string.PathCommands')) // In this example, PathCommands is defined as "M150 300 Q300 0 450 300 Z".
+        .fillOpacity(0)
+        .stroke(Color.Black)
+        .strokeWidth(3)
+    }.width('100%')
+    .margin({ top: 5 })
+  }
+}
+```
+
+![pathDemo2](figures/pathDemo2.png)
+
+### Example 3: Dynamically Setting Attributes of the Path Component Using attributeModifier
+
+This example shows how to use **attributeModifier** to dynamically set the **commands**, **fill**, **fillOpacity**, **stroke**, **strokeDashArray**, **strokeDashOffset**, **strokeLineCap**, **strokeLineJoin**, **strokeMiterLimit**, **strokeOpacity**, **strokeWidth**, and **antiAlias** attributes of the **Path** component.
+
+```ts
+// xxx.ets
+class MyPathModifier implements AttributeModifier<PathAttribute> {
+  applyNormalAttribute(instance: PathAttribute): void {
+    // Use the string type for the commands attribute to draw a triangle with the following information: fill color: #707070, fill opacity: 0.5, stroke color: #2787D9, stroke dash array: [20], offset to left: 15, cap style: semi-circle, line join: miter; miter limit: 5; stroke opacity: 0.5; stroke width: 10; anti-aliasing enabled.
+    instance.commands('M100 0 L200 240 L0 240 Z')
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeLineJoin(LineJoinStyle.Miter)
+    instance.strokeMiterLimit(5)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct PathModifierDemo {
+  @State modifier: MyPathModifier = new MyPathModifier()
+
+  build() {
+    Column() {
+      Path()
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```
+
+![](figures/pathModifier.png)

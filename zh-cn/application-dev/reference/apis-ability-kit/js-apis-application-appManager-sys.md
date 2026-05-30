@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
 
 appManager模块提供App管理的能力，包括查询当前是否处于稳定性测试场景、查询是否为ram受限设备、获取应用程序的内存大小、获取有关运行进程的信息等。
@@ -52,22 +52,28 @@ registerApplicationStateObserver(observer: ApplicationStateObserver): number
 
   const observerCode = appManager.registerApplicationStateObserver({
     onForegroundApplicationChanged(appStateData) {
-        console.log('------------ onForegroundApplicationChanged -----------', appStateData);
+      console.info(`onForegroundApplicationChanged, appStateData: ${appStateData}.`);
     },
     onAbilityStateChanged(abilityStateData) {
-        console.log('------------ onAbilityStateChanged -----------', abilityStateData);
+      console.info(`onAbilityStateChanged, abilityStateData: ${abilityStateData}.`);
     },
     onProcessCreated(processData) {
-        console.log('------------ onProcessCreated -----------', processData);
+      console.info(`onProcessCreated, processData: ${processData}.`);
     },
     onProcessDied(processData) {
-        console.log('------------ onProcessDied -----------', processData);
+      console.info(`onProcessDied, processData: ${processData}.`);
     },
     onProcessStateChanged(processData) {
-        console.log('------------ onProcessStateChanged -----------', processData);
+      console.info(`onProcessStateChanged, processData: ${processData}.`);
+    },
+    onAppStarted(appStateData) {
+      console.info(`onAppStarted, appStateData: ${JSON.stringify(appStateData)}`);
+    },
+    onAppStopped(appStateData) {
+      console.info(`onAppStopped, appStateData: ${JSON.stringify(appStateData)}`);
     }
   });
-  console.log('-------- observerCode: ---------', observerCode);
+  console.info(`observerCode: ${observerCode}.`);
   ```
 
 ## appManager.unregisterApplicationStateObserver
@@ -99,9 +105,11 @@ unregisterApplicationStateObserver(observerId: number,  callback: AsyncCallback\
 
   function unregisterApplicationStateObserverCallback(err: BusinessError) {
     if (err) {
-        console.error('------------ unregisterApplicationStateObserverCallback ------------', err);
+      console.error(`UnregisterApplicationStateObserverCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
+      return;
     }
   }
+
   appManager.unregisterApplicationStateObserver(observerId, unregisterApplicationStateObserverCallback);
   ```
 
@@ -139,10 +147,10 @@ unregisterApplicationStateObserver(observerId: number): Promise\<void>
 
   appManager.unregisterApplicationStateObserver(observerId)
   .then((data) => {
-      console.log('----------- unregisterApplicationStateObserver success ----------', data);
+      console.info(`unregisterApplicationStateObserver success, data: ${data}.`);
   })
   .catch((err: BusinessError) => {
-      console.error('----------- unregisterApplicationStateObserver fail ----------', err);
+      console.error(`unregisterApplicationStateObserver failed, err code: ${err.code}, err msg: ${err.message}.`);
   });
   ```
 
@@ -171,9 +179,9 @@ getForegroundApplications(callback: AsyncCallback\<Array\<AppStateData>>): void
 
   appManager.getForegroundApplications((err, data) => {
     if (err) {
-        console.error('--------- getForegroundApplicationsCallback fail ---------', err);
+      console.error(`GetForegroundApplications failed, error code: ${err.code}, error msg: ${err.message}.`);
     } else {
-        console.log('--------- getForegroundApplicationsCallback success ---------', data);
+      console.info(`GetForegroundApplications success, data: ${JSON.stringify(data)}.`);
     }
   });
   ```
@@ -203,19 +211,19 @@ getForegroundApplications(): Promise\<Array\<AppStateData>>
   import { BusinessError } from '@ohos.base';
 
   appManager.getForegroundApplications()
-  .then((data) => {
-      console.log('--------- getForegroundApplications success -------', data);
-  })
-  .catch((err: BusinessError) => {
-      console.error('--------- getForegroundApplications fail -------', err);
-  });
+    .then((data) => {
+      console.info(`GetForegroundApplications success, data: ${JSON.stringify(data)}.`);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`GetForegroundApplications failed, error code: ${err.code}, error msg: ${err.message}.`);
+    });
   ```
 
 ## appManager.killProcessWithAccount
 
 killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 
-切断account进程（Promise形式）。
+切断account进程。使用Promise异步回调。
 
 > **说明：** 
 >
@@ -232,7 +240,7 @@ killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
+| accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
 
 **返回值：**
 
@@ -249,12 +257,12 @@ import { BusinessError } from '@ohos.base';
 let bundleName = 'bundleName';
 let accountId = 0;
 appManager.killProcessWithAccount(bundleName, accountId)
-   .then((data) => {
-       console.log('------------ killProcessWithAccount success ------------', data);
-   })
-   .catch((err: BusinessError) => {
-       console.error('------------ killProcessWithAccount fail ------------', err);
-   });
+  .then((data) => {
+    console.info(`KillProcessWithAccount success, data: ${JSON.stringify(data)}.`);
+  })
+  .catch((err: BusinessError) => {
+    console.error(`KillProcessWithAccount failed, error code: ${err.code}, error msg: ${err.message}.`);
+  });
 ```
 
 
@@ -262,7 +270,7 @@ appManager.killProcessWithAccount(bundleName, accountId)
 
 killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCallback\<void\>): void
 
-切断account进程（callback形式）。
+切断account进程。使用callback异步回调。
 
 > **说明：** 
 >
@@ -279,7 +287,7 @@ killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCal
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
+| accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数，当切断account进程成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -290,13 +298,15 @@ import { BusinessError } from '@ohos.base';
 
 let bundleName = 'bundleName';
 let accountId = 0;
+
 function killProcessWithAccountCallback(err: BusinessError, data: void) {
-   if (err) {
-       console.error('------------- killProcessWithAccountCallback fail, err: --------------', err);
-   } else {
-       console.log('------------- killProcessWithAccountCallback success, data: --------------', data);
-   }
+  if (err) {
+    console.error(`KillProcessWithAccountCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
+  } else {
+    console.info(`KillProcessWithAccountCallback success, data: ${JSON.stringify(data)}`);
+  }
 }
+
 appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
 ```
 
@@ -323,16 +333,18 @@ killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>)
     
   ```ts
   import appManager from '@ohos.application.appManager';
-import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@ohos.base';
 
   let bundleName = 'bundleName';
+
   function killProcessesByBundleNameCallback(err: BusinessError, data: void) {
     if (err) {
-        console.error('------------- killProcessesByBundleNameCallback fail, err: --------------', err);
+      console.error(`KillProcessesByBundleNameCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
     } else {
-        console.log('------------- killProcessesByBundleNameCallback success, data: --------------', data);
+      console.info(`KillProcessesByBundleNameCallback success, data: ${JSON.stringify(data)}.`);
     }
   }
+
   appManager.killProcessesByBundleName(bundleName, killProcessesByBundleNameCallback);
   ```
 
@@ -369,10 +381,10 @@ killProcessesByBundleName(bundleName: string): Promise\<void>
   let bundleName = 'com.example.myapplication';
   appManager.killProcessesByBundleName(bundleName)
     .then((data) => {
-        console.log('------------ killProcessesByBundleName success ------------', data);
+      console.info(`KillProcessesByBundleName success, data: ${JSON.stringify(data)}.`);
     })
     .catch((err: BusinessError) => {
-        console.error('------------ killProcessesByBundleName fail ------------', err);
+      console.error(`KillProcessesByBundleName failed, error code: ${err.code}, error msg: ${err.message}.`);
     });
   ```
 
@@ -402,13 +414,15 @@ clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>)
   import { BusinessError } from '@ohos.base';
 
   let bundleName = 'bundleName';
+
   function clearUpApplicationDataCallback(err: BusinessError, data: void) {
     if (err) {
-        console.error('------------- clearUpApplicationDataCallback fail, err: --------------', err);
+      console.error(`ClearUpApplicationDataCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
     } else {
-        console.log('------------- clearUpApplicationDataCallback success, data: --------------', data);
+      console.info(`ClearUpApplicationDataCallback success, data: ${JSON.stringify(data)}.`);
     }
   }
+
   appManager.clearUpApplicationData(bundleName, clearUpApplicationDataCallback);
   ```
 
@@ -445,9 +459,95 @@ clearUpApplicationData(bundleName: string): Promise\<void>
   let bundleName = 'bundleName';
   appManager.clearUpApplicationData(bundleName)
     .then((data) => {
-        console.log('------------ clearUpApplicationData success ------------', data);
+      console.info(`ClearUpApplicationData success, data: ${JSON.stringify(data)}.`);
     })
     .catch((err: BusinessError) => {
-        console.error('------------ clearUpApplicationData fail ------------', err);
+      console.error(`ClearUpApplicationData failed, error code: ${err.code}, error msg: ${err.message}.`);
     });
+  ```
+
+## appManager.getProcessRunningInformation<sup>(deprecated)</sup>
+
+getProcessRunningInformation(): Promise\<Array\<ProcessRunningInfo>>
+
+获取有关运行进程的信息。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation)替代。
+
+**需要权限**：ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口**：此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<Array\<[ProcessRunningInfo](js-apis-inner-application-processRunningInfo.md)>> | Promise对象，返回有关运行进程的信息。 |
+
+**错误码**：
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. |
+
+**示例：**
+    
+  ```ts
+  import appManager from '@ohos.application.appManager';
+  import { BusinessError } from '@ohos.base';
+
+  appManager.getProcessRunningInformation().then((data) => {
+    console.info(`The process running infos is: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`error: ${JSON.stringify(error)}`);
+  });
+  ```
+
+## appManager.getProcessRunningInformation<sup>(deprecated)</sup>
+
+getProcessRunningInformation(callback: AsyncCallback\<Array\<ProcessRunningInfo>>): void
+
+获取有关运行进程的信息。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation)替代。
+
+**需要权限**：ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | AsyncCallback\<Array\<[ProcessRunningInfo](js-apis-inner-application-processRunningInfo.md)>> | 是 | 回调函数，返回有关运行进程的信息。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. |
+
+**示例：**
+    
+  ```ts
+  import appManager from '@ohos.application.appManager';
+
+  appManager.getProcessRunningInformation((error, data) => {
+    if (error && error.code !== 0) {
+      console.error(`getProcessRunningInformation fail, error: ${JSON.stringify(error)}`);
+    } else {
+      console.info(`getProcessRunningInformation success, data: ${JSON.stringify(data)}`);
+    }
+  });
   ```

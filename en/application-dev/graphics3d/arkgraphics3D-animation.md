@@ -2,88 +2,167 @@
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
-<!--SE: @zdustc-->
-<!--TSE: @zhangyue283-->
+<!--Designer: @zdustc-->
+<!--Tester: @zhangyue283-->
+<!--Adviser: @ge-yafang-->
 
 Animations, an important resource type in a 3D scene, is used to control the motion of elements in the scene. For example, to simulate a scene where a person walks, it is difficult to calculate and set the rotation angle of every joint of the person in each frame. When making such an animation, the resource producer saves key frame data of the animation and the interpolator type between key frames in a model file.
 
 ArkGraphics 3D provides APIs for you to play and control animations to achieve the expected rendering effect in the scene.
 
+## How to Develop
+1. Import the required modules.
 
-## Creating Animation Resources
-Animation resources are made and saved to model files by model resource producers when they make the model. ArkGraphics 3D provides the capability of extracting and playing animations from glTF model resources.
-```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+   Import the core types provided by ArkGraphics 3D in the page script to create and control 3D scenes, cameras, and animation resources.
 
-function createAnimation() : void {
-  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
-  scene.then(async (result: Scene) => {
-    if (result) {
-      // Obtain animation resources.
-      let anim: Animation = result.animations[0];
-    }
-  });
-}
-```
+   <!-- @[anim_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+   
+   ``` TypeScript
+   import { Animation, Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
+   ```
 
+2. Load scene resources.
 
-## Controlling the Animation Status
-ArkGraphics 3D provides the following APIs to control the animation status:
-- **start**: plays an animation based on the current progress.
-- **stop**: stops playing an animation and sets its progress to **0** (not started).
-- **finish**: finishes the playing of an animation and sets its progress of **1** (finished).
-- **pause**: pauses an animation. The animation remains in the current playing progress.
-- **restart**: plays an animation from the beginning.
+   Call **Scene.load()** to load the .glb (or .gltf) model from the **resources/rawfile/** directory of your application, and obtain a scene object upon completion.
 
-The sample code is as follows:
-```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+   <!-- @[anim_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+   
+   ``` TypeScript
+   Scene.load($rawfile('gltf/BrainStem/glTF/BrainStem.glb'))
+     .then(async (result: Scene) => {
+       this.scene = result;
+       let rf: SceneResourceFactory = this.scene.getResourceFactory();
+       // ...
+     }).catch((err: string) => {
+       console.error(err);
+   });
+   ```
 
-function animationControl() : void {
-  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
-  scene.then(async (result: Scene) => {
-    if (result) {
-      let anim: Animation = result.animations[0];
-      // Control the animation status.
-      anim.start();
-      anim.pause();
-      anim.stop();
-      anim.restart();
-      anim.finish();
-    }
-  });
-}
-```
+3. Obtain an animation and register callbacks.
 
+   Obtain an animation resource from **scene.animations[0]**, enable the animation, and register the **onStarted()** and **onFinished()** callbacks to listen for the animation playback status or trigger logic.
 
-## Using Animation Callbacks
-An animation callback function is triggered when an animation enters a certain state. You can perform logic control based on the animation state. ArkGraphics 3D provides the following callback functions:
-- **onStarted()**: called when an animation starts to play. The start operation is triggered by calling **start** or **restart**.
-- **onFinished()**: called when an animation playback is complete or the **finish** API is called.
+   ArkGraphics 3D provides the following animation callback APIs:
+    - **onStarted()**: called when the animation starts (either through a start or restart operation).
+    - **onFinished()**: called when the animation completes playback or the finish operation is performed.
 
-The sample code is as follows:
-```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+   <!-- @[anim_pick_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+   
+   ``` TypeScript
+   this.anim = this.scene.animations[0];
+   if (this.anim) {
+     this.anim.enabled = true;
+     // Register callback function
+     this.anim.onStarted(() => {
+       // ...
+       this.animationCallbackInvoked = 'animation on start';
+     });
+   
+     this.anim.onFinished(() => {
+       // ...
+       this.animationCallbackInvoked = 'animation on finish';
+     });
+     // ...
+   } else {
+     console.error('No animation found in scene.');
+   }
+   ```
 
-function callBacks() : void {
-  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
-  scene.then(async (result: Scene) => {
-    if (result) {
-      let anim: Animation = result.animations[0];
-      // Register the callbacks.
-      anim.onFinished(()=>{
-        console.info("onFinished");
-      });
-      anim.onStarted(()=>{
-        console.info("onStarted");
-      });
-    }
-  });
-}
-```
+4. Create a camera and configure scene rendering parameters.
+
+   Call **SceneResourceFactory.createCamera()** to create a camera and adjust the viewing position. Then, wrap the loaded scene into a SceneOptions object and specify the rendering type as **ModelType.SURFACE** to render the scene content via Component3D.
+
+   <!-- @[anim_camera_sceneopt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+   
+   ``` TypeScript
+   // create a new camera.
+   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   // set the camera.
+   this.cam.enabled = true;
+   this.cam.position.z = 5;
+   this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+   ```
+
+5. Build the UI and control the animation.
+
+   Render the 3D scene using Component3D and add buttons to the UI to control the animation playback status.
+     
+   ArkGraphics 3D provides the following APIs to control the animation status:
+    - **start**: plays an animation based on the current progress.
+    - **stop**: stops playing an animation and sets its progress to **0** (not started).
+    - **finish**: finishes the playing of an animation and sets its progress of **1** (finished).
+    - **pause**: pauses an animation. The animation remains in the current playing progress.
+    - **restart**: plays an animation from the beginning.
+    - **seek**: jumps to a specific progress point in the animation. For example, **seek(0.3)** reaches 30% of the total duration.
+
+   <!-- @[anim_controls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+   
+   ``` TypeScript
+   Button('start')
+     // ...
+     .onClick(async () => {
+       if (!this.scene || !this.scene.animations[0]) {
+         return;
+       }
+       this.anim = this.scene.animations[0];
+       this.anim.start();
+     });
+   
+   Button('pause')
+     // ...
+     .onClick(async () => {
+       if (!this.scene || !this.scene.animations[0]) {
+         return;
+       }
+       this.anim = this.scene.animations[0];
+       this.anim.pause();
+     });
+   
+   Button('stop')
+     // ...
+     .onClick(async () => {
+       if (!this.scene || !this.scene.animations[0]) {
+         return;
+       }
+       this.anim = this.scene.animations[0];
+       this.anim.stop();
+     });
+   
+   Button('finish')
+     // ...
+     .onClick(async () => {
+       if (!this.scene || !this.scene.animations[0]) {
+         return;
+       }
+       this.anim = this.scene.animations[0];
+       this.anim.finish();
+     });
+   
+   Button('restart')
+     // ...
+     .onClick(async () => {
+       if (!this.scene || !this.scene.animations[0]) {
+         return;
+       }
+       this.anim = this.scene.animations[0];
+       this.anim.restart();
+     });
+   
+   Button('seek to 30% progress')
+     // ...
+     .onClick(async () => {
+       if (!this.scene || !this.scene.animations[0]) {
+         return;
+       }
+       this.anim = this.scene.animations[0];
+       // seek to 30%
+       this.anim.seek(0.3);
+     });
+   ```
+
+<!--RP1-->
+## Samples
+
+The following sample is provided to help you better understand how to efficiently use 3D animations:
+- [3D Engine Interface Example (ArkTS) (API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
+<!--RP1End-->

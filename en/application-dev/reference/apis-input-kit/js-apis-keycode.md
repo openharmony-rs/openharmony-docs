@@ -1,10 +1,17 @@
 # @ohos.multimodalInput.keyCode (Keycode)
 
-The **keyCode** module provides keycode values for key devices, such as the keyboard, power key, camera key, and the like.
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @zhang_yixin13-->
+
+The **keyCode** module provides key codes of key devices, including keyboards, CDs, and gamepads.
 
 > **NOTE**
-> 
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -14,7 +21,7 @@ import { KeyCode } from '@kit.InputKit';
 
 ## KeyCode
 
-Keycode value.
+Enumerates the key codes.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -24,10 +31,9 @@ Keycode value.
 | KEYCODE_UNKNOWN                  |  -1 | Unknown key                       |
 | KEYCODE_HOME                     |  1 | Function (Home) key                 |
 | KEYCODE_BACK                     |  2 | Back key                        |
-| KEYCODE_HEADSETHOOK<sup>20+</sup>              |  6 | Play/Pause key for wired headset                        |
 | KEYCODE_SEARCH<sup>13+</sup> | 9 | Search key|
-| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | Play/Pause key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
-| KEYCODE_MEDIA_STOP               |  11 | Stop key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
+| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | Play/Pause key<br>Difference between this key and **KEYCODE_PLAYPAUSE**:<br>**KEYCODE_PLAYPAUSE** is an earlier definition, while **KEYCODE_MEDIA_PLAY_PAUSE** is designed for modern media key devices.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
+| KEYCODE_MEDIA_STOP               |  11 | Media: Stop Key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
 | KEYCODE_MEDIA_NEXT               |  12 | Next key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
 | KEYCODE_MEDIA_PREVIOUS           |  13 | Previous key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
 | KEYCODE_MEDIA_REWIND            |  14 | Rewind key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
@@ -126,9 +132,9 @@ Keycode value.
 | KEYCODE_INSERT                   |  2083 | Insert key                        |
 | KEYCODE_FORWARD                  |  2084 | Forward key                        |
 | KEYCODE_MEDIA_PLAY               |  2085 | Play key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| KEYCODE_MEDIA_PAUSE              |  2086 | Pause key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| KEYCODE_MEDIA_CLOSE              |  2087 | Close key                    |
-| KEYCODE_MEDIA_EJECT              |  2088 | Eject key                    |
+| KEYCODE_MEDIA_PAUSE              |  2086 | Media: Pause Key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
+| KEYCODE_MEDIA_CLOSE              |  2087 | Media: Close Key                    |
+| KEYCODE_MEDIA_EJECT              |  2088 | Media: Eject Key                    |
 | KEYCODE_MEDIA_RECORD             |  2089 | Record key                    |
 | KEYCODE_F1                       |  2090 | F1 key                     |
 | KEYCODE_F2                       |  2091 | F2 key                     |
@@ -179,7 +185,7 @@ Keycode value.
 | KEYCODE_BUTTON_THUMBR<sup>15+</sup>  |  2315 | Joystick key THUMBR      |
 | KEYCODE_SLEEP                    |  2600 | Sleep key                        |
 | KEYCODE_ZENKAKU_HANKAKU          |  2601 | Zenkaku/Hankaku key                   |
-| KEYCODE_102ND                    |  2602 | 102nd key                    |
+| KEYCODE_102ND                    |  2602 | International Keyboard Extension key                    |
 | KEYCODE_RO                       |  2603 | Ro key                      |
 | KEYCODE_KATAKANA                 |  2604 | Katakana key                     |
 | KEYCODE_HIRAGANA                 |  2605 | Hiragana key                     |
@@ -206,9 +212,9 @@ Keycode value.
 | KEYCODE_CALC                     |  2626 | Calc key, which is used to start the calculator application       |
 | KEYCODE_FILE                     |  2627 | File key                       |
 | KEYCODE_BOOKMARKS                |  2628 | Bookmarks key                        |
-| KEYCODE_NEXT                     |  2629 | Next key                      |
-| KEYCODE_PLAYPAUSE                |  2630 | Play/Pause key                     |
-| KEYCODE_PREVIOUS                 |  2631 | Previous key                      |
+| KEYCODE_NEXT                     |  2629 | Page Down key                      |
+| KEYCODE_PLAYPAUSE                |  2630 | Play/Pause key<br>Difference between this key and **KEYCODE_MEDIA_PLAY_PAUSE**:<br>**KEYCODE_PLAYPAUSE** is an earlier definition, while **KEYCODE_MEDIA_PLAY_PAUSE** is designed for modern media key devices.                     |
+| KEYCODE_PREVIOUS                 |  2631 | Page Up key                      |
 | KEYCODE_STOPCD                   |  2632 | Stop CD key                      |
 | KEYCODE_CONFIG                   |  2634 | Config key                        |
 | KEYCODE_REFRESH                  |  2635 | Refresh key                        |
@@ -308,6 +314,9 @@ Keycode value.
 | KEYCODE_KBDINPUTASSIST_NEXTGROUP |  2729 | Assist_Next_Group key, used to switch to the next input method in the input group              |
 | KEYCODE_KBDINPUTASSIST_ACCEPT    |  2730 | Keyboard Input-assisted Accept key          |
 | KEYCODE_KBDINPUTASSIST_CANCEL    |  2731 | Keyboard Input-assisted Cancel key         |
+| KEYCODE_MOUSE_ASSISTANT<sup>24+</sup>    |  2732 | Mouse AI Assistant key         |
+| KEYCODE_MOUSE_INTELLIGENCE_SELECTION<sup>24+</sup>    |  2733 | Mouse Smart Selection key         |
+| KEYCODE_AOD_SINGLE_CLICK         |  2740 | Tapping the phone touchscreen, which is used in AOD mode<br>**Since**: 26.0.0|
 | KEYCODE_FRONT                    |  2800 | Front key, which is used to launch the windshield defogger                  |
 | KEYCODE_SETUP                    |  2801 | Setup key                        |
 | KEYCODE_WAKEUP                   |  2802 | Wakeup key                        |
@@ -316,10 +325,10 @@ Keycode value.
 | KEYCODE_XFER                     |  2805 | XFER key, which is used to start file transfer               |
 | KEYCODE_PROG1                    |  2806 | Program key 1                       |
 | KEYCODE_PROG2                    |  2807 | Program key 2                      |
-| KEYCODE_MSDOS                    |  2808 | MS-DOS key           |
+| KEYCODE_MSDOS                    |  2808 | DOS key           |
 | KEYCODE_SCREENLOCK               |  2809 | Screen Lock key                      |
 | KEYCODE_DIRECTION_ROTATE_DISPLAY |  2810 | Directional Rotation Display key                    |
-| KEYCODE_CYCLEWINDOWS             |  2811 | Windows Cycle key                 |
+| KEYCODE_CYCLEWINDOWS             |  2811 | Window Cycle key                 |
 | KEYCODE_COMPUTER                 |  2812 | Key                         |
 | KEYCODE_EJECTCLOSECD             |  2813 | Eject CD key                     |
 | KEYCODE_ISO                      |  2814 | ISO key                       |
@@ -352,7 +361,7 @@ Keycode value.
 | KEYCODE_BLUETOOTH                |  2843 | Bluetooth key                       |
 | KEYCODE_WLAN                     |  2844 | WLAN key                      |
 | KEYCODE_UWB                      |  2845 | Ultra-wideband key                   |
-| KEYCODE_WWAN_WIMAX               |  2846 | WWAN WiMAX key               |
+| KEYCODE_WWAN_WIMAX               |  2846 | Mobile Network Control key               |
 | KEYCODE_RFKILL                   |  2847 | RF Kill key                  |
 | KEYCODE_CHANNEL                  |  3001 | Channel key                      |
 | KEYCODE_BTN_0                    |  3100 | Button 0                        |
@@ -365,3 +374,8 @@ Keycode value.
 | KEYCODE_BTN_7                    |  3107 | Button 7                        |
 | KEYCODE_BTN_8                    |  3108 | Button 8                        |
 | KEYCODE_BTN_9                    |  3109 | Button 9                        |
+| KEYCODE_DAGGER_CLICK<sup>18+</sup> | 3211 | Single tapping the smart watch's X-TAP sensor|
+| KEYCODE_DAGGER_DOUBLE_CLICK<sup>18+</sup> | 3212 | Double tapping the smart watch's X-TAP sensor|
+| KEYCODE_DAGGER_LONG_PRESS<sup>18+</sup> | 3213 | Long-pressing the smart watch's X-TAP sensor|
+| KEYCODE_DIV<sup>20+</sup> | 3220 | Left button of the smart watch|
+| KEYCODE_XKEY | 3232 | Custom shortcut key<br>**Since**: 26.0.0|

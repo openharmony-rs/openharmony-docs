@@ -1,4 +1,10 @@
 # ImageAnimator
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **ImageAnimator** component enables images to be played a frame-by-frame basis. The list of images to be played as well as the duration of each image can be configured.
 
@@ -31,7 +37,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 images(value: Array&lt;ImageFrameInfo&gt;)
 
-Sets the image frame information. Dynamic update is not supported.
+Sets image frame information. Dynamic update is not supported.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -43,7 +49,7 @@ Sets the image frame information. Dynamic update is not supported.
 
 | Name| Type                                                  | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[ImageFrameInfo](#imageframeinfo)&gt; | Yes  | Image frame information. The information of each frame includes the image path, image size, image position, and image playback duration. For details, see [ImageFrameInfo](#imageframeinfo).<br>Default value: **[]**<br> **NOTE**<br>If the input array is too large, memory usage may increase. Therefore, as the controller of memory usage, be sure to assess potential memory consumption before passing in the data to avoid issues such as insufficient memory.|
+| value  | Array&lt;[ImageFrameInfo](#imageframeinfo)&gt; | Yes  | Image frame information. The information of each frame includes the path, size, position, and playback duration of an image. For details, see [ImageFrameInfo](#imageframeinfo).<br>Default value: **[]**<br> Note: If the input array is too large, memory usage may increase. Therefore, as the controller of memory usage, be sure to assess potential memory consumption before passing in the data to avoid issues such as insufficient memory.|
 
 ### state
 
@@ -61,7 +67,7 @@ Sets the playback state of the animation.
 
 | Name| Type                                                   | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [AnimationStatus](ts-appendix-enums.md#animationstatus) | Yes  | Playback state of the animation. The default state is **Initial**.<br>Default value: **AnimationStatus.Initial**|
+| value  | [AnimationStatus](ts-appendix-enums.md#animationstatus) | Yes  | Playback state of the animation.<br>Default value: **AnimationStatus.Initial**|
 
 ### duration
 
@@ -79,7 +85,7 @@ Sets the playback duration. This attribute does not take effect when a separate 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Playback duration.<br>If the value is **0**, no image is played.<br>If it is set to a negative value, the default value is used.<br>The value change takes effect only at the start of the next cycle.<br>Unit: ms<br>Default value: **1000**|
+| value  | number | Yes  | Playback duration.<br>If the value is **0**, no image is played.<br>If the display duration allocated per image is shorter than a single frame interval, playback anomalies may occur.<br>If it is set to a negative value, the default value is used.<br>The value change takes effect only at the start of the next cycle.<br>Unit: ms<br>Default value: **1000**|
 
 ### reverse
 
@@ -123,7 +129,9 @@ preDecode(value: number)
 
 Sets the number of images to be pre-decoded.
 
-This API is deprecated since API version 9.
+> **NOTE**
+> 
+> This API is supported since API version 7 and deprecated since API version 9. Currently, no substitute is available.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -165,7 +173,7 @@ Sets the number of times that the animation is played.
 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| value  | number | Yes  | Number of times that the animation is played. By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. Values less than -1 are treated as the default value. For the value is a floating-point number, it is rounded down.<br>Default value: **1**|
+| value  | number | Yes  | By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. Values less than **-1** are treated as the default value. When the value is a floating-point number, it is rounded down.<br>Default value: **1**|
 
 ### monitorInvisibleArea<sup>17+</sup>
 
@@ -179,26 +187,27 @@ Sets whether the component should automatically pause or resume based on its vis
 
 **Parameters**
 
+<!--Table: auto; 10%; 10%; auto-->
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| monitorInvisibleArea  | boolean | Yes| Whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event.<br> With the value **true**, when the component's [AnimationStatus](ts-appendix-enums.md#animationstatus) is Running, the component automatically pauses once it becomes invisible and resumes playback if it becomes visible again, based on the **onVisibleAreaChange** event.<br>Default value: **false**.<br> **NOTE**<br>When this parameter is dynamically changed from **true** to **false**,<br> the component will resume from its last paused state based on the current [AnimationStatus](ts-appendix-enums.md#animationstatus).<br>Changes to this property do not affect the custom [state](./ts-basic-components-imageanimator.md#state) value.|
+| monitorInvisibleArea  | boolean | Yes| Whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event.<br> With the value **true**, when the component's [AnimationStatus](ts-appendix-enums.md#animationstatus) is **Running**, the component automatically pauses once it becomes invisible and resumes playback if it becomes visible again, based on the **onVisibleAreaChange** event.<br>With the value **false**, the pause and playback of the component are not affected by **onVisibleAreaChange**.<br>Default value: **false**<br> **NOTE**<br>When this parameter is dynamically changed from **true** to **false**, the component will resume from its last paused state based on the current [AnimationStatus](ts-appendix-enums.md#animationstatus).<br>Changes to this property do not affect the custom [state](./ts-basic-components-imageanimator.md#state) value.|
 
 ## ImageFrameInfo
 
-Provides image frame information.
+Image frame information set.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Mandatory| Description|
-| -------- | -------------- | -------- | -------- |
-| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | Yes   | Image path. The image format can be .jpg, .jpeg, .svg, .png, .bmp, .webp, .ico, or .heif. The [Resource](ts-types.md#resource) type is supported since API version 9, and the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) type is supported since API version 12.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
-| width    | number \| string | No | Image width. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.      |
-| height   | number \| string | No | Image height. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.       |
-| top      | number \| string | No | Vertical coordinate of the image relative to the upper left corner of the widget For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10. |
-| left     | number \| string | No | Horizontal coordinate of the image relative to the upper left corner of the widget For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.  |
-| duration | number          | No    | Playback duration of each image frame, in milliseconds.<br>Default value: **0**.<br>Negative numbers are not supported. Setting negative values will cause the image to stay in the current frame for a long time, affecting normal playback.        |
+| Name  | Type  | Read-Only| Optional| Description|
+| -------- | -------------- | -------- | -------- | -------- |
+| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | No | No  | Image path. The image format can be .jpg, .jpeg, .svg, .png, .bmp, .webp, .ico, or .heif. The [Resource](ts-types.md#resource) type is supported since API version 9, and the [PixelMap](ts-image-common.md#pixelmap) type is supported since API version 12.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| width    | number&nbsp;\|&nbsp;string | No| Yes| Image width. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.      |
+| height   | number&nbsp;\|&nbsp;string | No| Yes| Image height. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.       |
+| top      | number&nbsp;\|&nbsp;string | No| Yes| Vertical coordinate of the image relative to the upper left corner of the component. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10. |
+| left     | number&nbsp;\|&nbsp;string | No| Yes| Horizontal coordinate of the image relative to the upper left corner of the component. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.  |
+| duration | number          | No   | Yes   | Playback duration of each image frame, in milliseconds.<br>Default value: **0**<br>Negative numbers are not supported. Setting negative values will cause the image to stay in the current frame for a long time, affecting normal playback.        |
 
 ## Events
 
@@ -206,7 +215,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onStart
 
-onStart(event: () =&gt; void)
+onStart(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 Triggered when the animation starts to play.
 
@@ -216,9 +225,15 @@ Triggered when the animation starts to play.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Callback triggered when the animation starts to play.|
+
 ### onPause
 
-onPause(event: () =&gt; void)
+onPause(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 Triggered when the animation playback is paused.
 
@@ -228,9 +243,15 @@ Triggered when the animation playback is paused.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Callback triggered when the animation playback is paused.|
+
 ### onRepeat
 
-onRepeat(event: () =&gt; void)
+onRepeat(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 Triggered when the animation playback is repeated.
 
@@ -238,9 +259,15 @@ Triggered when the animation playback is repeated.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Callback triggered when the animation playback is repeated.|
+
 ### onCancel
 
-onCancel(event: () =&gt; void)
+onCancel(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 Triggered when the animation playback returns to the initial state.
 
@@ -250,11 +277,18 @@ Triggered when the animation playback returns to the initial state.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Callback triggered when the animation playback returns to the initial state.|
+
 ### onFinish
 
-onFinish(event: () =&gt; void)
+onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
-Triggered when the animation playback is complete or stopped.
+Triggered when the animation playback completes or stops.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -262,6 +296,11 @@ Triggered when the animation playback is complete or stopped.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Callback triggered when the animation playback completes or stops.|
 
 ## Example
 
@@ -283,15 +322,19 @@ struct ImageAnimatorExample {
       ImageAnimator()
         .images([
           {
+            // Replace $r('app.media.img1') with the image resource file you use.
             src: $r('app.media.img1')
           },
           {
+            // Replace $r('app.media.img2') with the image resource file you use.
             src: $r('app.media.img2')
           },
           {
+            // Replace $r('app.media.img3') with the image resource file you use.
             src: $r('app.media.img3')
           },
           {
+            // Replace $r('app.media.img4') with the image resource file you use.
             src: $r('app.media.img4')
           }
         ])
@@ -367,8 +410,18 @@ struct ImageAnimatorExample {
   @State images: Array<ImageFrameInfo> = [];
 
   async aboutToAppear() {
-    this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.icon')));
+    // Replace $r('app.media.1') with the image resource file you use.
+    this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.1')));
+    // Replace $r('app.media.2') with the image resource file you use.
+    this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.2')));
+    // Replace $r('app.media.3') with the image resource file you use.
+    this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.3')));
+    // Replace $r('app.media.4') with the image resource file you use.
+    this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.4')));
     this.images.push({ src: this.imagePixelMap[0] });
+    this.images.push({ src: this.imagePixelMap[1] });
+    this.images.push({ src: this.imagePixelMap[2] });
+    this.images.push({ src: this.imagePixelMap[3] });
   }
 
   build() {
@@ -426,11 +479,7 @@ struct ImageAnimatorExample {
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-      bundleName: resource.bundleName,
-      moduleName: resource.moduleName,
-      id: resource.id
-    });
+    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
     let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
     let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888
@@ -465,15 +514,19 @@ struct ImageAnimatorAutoPauseTest {
           ImageAnimator()
             .images([
               {
+                // Replace $r('app.media.Clouds') with the image resource file you use.
                 src: $r('app.media.Clouds')
               },
               {
+                // Replace $r('app.media.landscape') with the image resource file you use.
                 src: $r('app.media.landscape')
               },
               {
+                // Replace $r('app.media.sky') with the image resource file you use.
                 src: $r('app.media.sky')
               },
               {
+                // Replace $r('app.media.mountain') with the image resource file you use.
                 src: $r('app.media.mountain')
               }
             ])
@@ -489,11 +542,11 @@ struct ImageAnimatorAutoPauseTest {
             .height(240)
             .margin({ top: 100 })
             .onStart(() => {
-              this.preCallBack = "Start";
+              this.preCallBack = 'Start';
               console.info('ImageAnimator Start');
             })
             .onPause(() => {
-              this.preCallBack = "Pause";
+              this.preCallBack = 'Pause';
               console.info('ImageAnimator Pause');
             })
             .onRepeat(() => {
@@ -533,11 +586,10 @@ struct ImageAnimatorAutoPauseTest {
         console.info('Scroll Stop');
       })
 
-      Text("Last triggered callback (Pause/Start): " + this.preCallBack)
+      Text('Last triggered callback (Pause/Start):' + this.preCallBack)
         .margin({ top: 60, left: 20 })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
   }
 }
 ```
-
 

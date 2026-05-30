@@ -1,5 +1,12 @@
 # Matching Rules of Explicit Want and Implicit Want
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 Both explicit [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) and implicit [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) can be used to match an application component to start based on certain rules. These rules determine how the parameters set in [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) match the configuration file declared by the target application component.
 
 ## Matching Rules of Explicit Want
@@ -97,22 +104,22 @@ When the **uri** and **type** parameters are not null in the **want** parameter 
 There are four combinations of **uri** and **type** settings. The matching rules are as follows:
 
 - Both **uri** and **type** are null in the **want** parameter.
-  - If the **uris** array under **skills** of an application component is null, the matching is successful.
-  - If the **uris** array under **skills** of an application component contains an URI element whose **scheme** and **type** are null, the matching is successful.
-  - In other cases, the matching fails.
+  1. If the **uris** array under **skills** of an application component is null, the matching is successful.
+  2. If the **uris** array under **skills** of an application component contains a URI element whose **scheme** and **type** are null, the matching is successful.
+  3. In other cases, the matching fails.
 
 - Only **uri** is not null in the **want** parameter.
-  - If the **uris** array under **skills** of an application component is null, the matching fails.
-  - If the **uris** array under **skills** of an application component contains an element whose [uri is matched](#matching-rules-of-uri) and **type** is null, the matching is successful. Otherwise, the matching fails.
-  - If the matching fails for the preceding two scenarios and the input URI is a file path URI, the system obtains the MIME type of the file based on the file name extension. If the MIME type matches **type** configured under **skills**, the matching is successful.
+  1. If the **uris** array under **skills** of an application component is null, the matching fails.
+  2. If the **uris** array under **skills** of an application component contains an element whose [uri is matched](#matching-rules-of-uri) and **type** is null, the matching is successful. Otherwise, the matching fails.
+  3. If the matching fails for the preceding two scenarios and the input URI is a file path URI, the system obtains the MIME type of the file based on the file name extension. If the MIME type matches **type** configured under **skills**, the matching is successful.
 
 - Only **type** is not null in the **want** parameter.
-  - If the **uris** array under **skills** of an application component is null, the matching fails.
-  - If the **uris** array under **skills** of an application component contains an URI element whose **scheme** is null and [type is matched](#matching-rules-of-type), the matching is successful. Otherwise, the matching fails.
+  1. If the **uris** array under **skills** of an application component is null, the matching fails.
+  2. If the **uris** array under **skills** of an application component contains a URI element whose **scheme** is null and [type is matched](#matching-rules-of-type), the matching is successful. Otherwise, the matching fails.
 
 - Both **uri** and **type** are not null in the **want** parameter, as shown below.
-  - If the **uris** array under **skills** of an application component is null, the matching fails.
-  - If the **uris** array under **skills** of an application component contains an element whose [uri is matched](#matching-rules-of-uri) and [type is matched](#matching-rules-of-type), the matching is successful. Otherwise, the matching fails.
+  1. If the **uris** array under **skills** of an application component is null, the matching fails.
+  2. If the **uris** array under **skills** of an application component contains an element whose [uri is matched](#matching-rules-of-uri) and [type is matched](#matching-rules-of-type), the matching is successful. Otherwise, the matching fails.
 
 Leftmost URI matching: When only **scheme**, a combination of **scheme** and **host**, or a combination of **scheme**, **host**, and **port** is configured in the **uris** array under **skills** of the application component, the matching is successful only if the leftmost URI in the passed **want** parameter matches **scheme**, the combination of **scheme** and **host**, or the combination of **scheme**, **host**, and **port**.
 
@@ -148,7 +155,7 @@ The matching rules are as follows:
 
 - If **pathRegex** of **s_uri** is not null and **w_uri** meets the regular expression of **s_uri**, the matching is successful. Otherwise, the matching fails.
 
-> **NOTE**
+> **NOTE**<br>
 >
 > The **scheme**, **host**, **port**, **path**, **pathStartWith**, and **pathRegex** attributes of **uris** under **skills** of an application component are concatenated. If **path**, **pathStartWith**, and **pathRegex** are declared in sequence, **uris** can be concatenated into the following expressions:
 >
@@ -168,7 +175,7 @@ The matching rules are as follows:
 
 ### Matching Rules of type
 
-> **NOTE**
+> **NOTE**<br>
 >
 > The matching rules of **type** described in this section are based on the fact that **type** in the **want** parameter is not null. If **type** is null, follow the [matching rules of uri and type in the want parameter](#matching-rules-of-uri-and-type-in-the-want-parameter).
 
@@ -184,7 +191,7 @@ The matching rules are as follows:
 
 ### Matching Rules of linkFeature
 
-> **NOTE**
+> **NOTE**<br>
 >
 > The linkFeature matching rules described below apply to the scenario where **parameters** in the **want** parameter contains the **linkFeature** key and the value of the key is not null.
 

@@ -1,11 +1,11 @@
-# WantAgentInfo
+# WantAgentInfo(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 定义触发WantAgent所需要的信息。
 
@@ -20,6 +20,17 @@
 ```ts
 import { wantAgent as abilityWantAgent } from '@kit.AbilityKit';
 ```
+
+## WantAgentInfo
+
+定义触发WantAgent所需要的信息，可以作为[getWantAgent](js-apis-app-ability-wantAgent.md#wantagentgetwantagent)的入参创建指定的WantAgent对象。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称           | 类型                            | 只读 | 可选 | 说明                   |
+| -------------- | ------------------------------ | ---- | ---- |---------------------- |
+| userId<sup>23+</sup>    | number | 否 | 是 | 用户ID。<br>取值范围：大于等于0。<br>默认值为调用方所在用户ID。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+
 
 ## LocalWantAgentInfo<sup>20+</sup>
 

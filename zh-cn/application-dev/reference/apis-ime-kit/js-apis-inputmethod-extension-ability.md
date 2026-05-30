@@ -1,12 +1,12 @@
 # @ohos.InputMethodExtensionAbility (InputMethodExtensionAbility)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块支持开发者自行开发输入法应用，以及管理输入法应用的生命周期。
+本模块支持开发者自行开发输入法应用，以及管理输入法Extension的生命周期。
 
 > **说明：**
 >
@@ -39,7 +39,7 @@ import { InputMethodExtensionAbility } from '@kit.IMEKit';
 
 onCreate(want: Want): void
 
-Extension生命周期回调，在拉起Extension输入法应用时调用，执行初始化输入法应用操作。
+Extension生命周期回调，在拉起输入法Extension时调用，执行初始化输入法应用操作。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -57,7 +57,7 @@ import { Want } from '@kit.AbilityKit';
 
 class InputMethodExt extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    console.info('onCreate, want:' + want.abilityName);
+    console.info('onCreate, want:' + want?.abilityName);
   }
 }
 ```

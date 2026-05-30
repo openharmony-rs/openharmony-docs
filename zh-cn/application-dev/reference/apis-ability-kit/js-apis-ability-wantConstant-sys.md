@@ -1,5 +1,12 @@
 # @ohos.ability.wantConstant (wantConstant)(系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
 wantConstant模块提供want中操作want常数和解释Flags说明的能力。
 
 > **说明：**

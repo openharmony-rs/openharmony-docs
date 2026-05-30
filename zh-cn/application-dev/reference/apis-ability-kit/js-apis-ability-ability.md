@@ -1,5 +1,12 @@
 # @ohos.ability.ability (Ability模块)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @lidongrui-->
+<!--Designer: @ccllee1-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
 Ability模块将二级模块API组织在一起方便开发者进行导出。
 
 > **说明：**

@@ -1,4 +1,11 @@
-# @ohos.ability.particleAbility (ParticleAbility)
+# @ohos.ability.particleAbility (ParticleAbility Module)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The particleAbility module provides APIs for operating a DataAbility and ServiceAbility. You can use the APIs to start and terminate a ParticleAbility, obtain a dataAbilityHelper object, and connect to or disconnect from a ServiceAbility.
 
@@ -61,7 +68,7 @@ particleAbility.startAbility(
     if (error && error.code !== 0) {
       console.error(`startAbility fail, error: ${JSON.stringify(error)}`);
     } else {
-      console.log(`startAbility success, data: ${JSON.stringify(data)}`);
+      console.info(`startAbility success, data: ${JSON.stringify(data)}`);
     }
   },
 );
@@ -220,7 +227,7 @@ Requests a continuous task from the system. This API uses an asynchronous callba
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning) instead.
 
 **Parameters**
 
@@ -287,7 +294,7 @@ Requests a continuous task from the system. This API uses a promise to return th
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1) instead.
 
 **Parameters**
 
@@ -353,7 +360,7 @@ Requests to cancel a continuous task from the system. This API uses an asynchron
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning) instead.
 
 **Parameters**
 
@@ -389,7 +396,7 @@ Requests to cancel a continuous task from the system. This API uses a promise to
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1) instead.
 
 **Return value**
 
@@ -453,10 +460,10 @@ let connId = particleAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`particleAbilityTest ConnectAbility onFailed errCode: ${code}`);
@@ -465,7 +472,7 @@ let connId = particleAbility.connectAbility(
 );
 
 particleAbility.disconnectAbility(connId).then((data) => {
-  console.log(`data: ${data}`);
+  console.info(`data: ${data}`);
 }).catch((error: BusinessError) => {
   console.error(`particleAbilityTest result errCode: ${error.code}`);
 });
@@ -500,10 +507,10 @@ let connId = particleAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`particleAbilityTest ConnectAbility onFailed errCode: ${code}`);
@@ -552,10 +559,10 @@ let connId = particleAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`particleAbilityTest ConnectAbility onFailed errCode: ${code}`);
@@ -564,7 +571,7 @@ let connId = particleAbility.connectAbility(
 );
 
 particleAbility.disconnectAbility(connId).then(() => {
-  console.log('disconnectAbility success');
+  console.info('disconnectAbility success');
 }).catch((error: BusinessError) => {
   console.error(`particleAbilityTest result errCode : ${error.code}`);
 });

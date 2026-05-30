@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 ## 使用场景
 
@@ -16,38 +16,45 @@
 接口具体使用方法和说明请参考[System](../reference/apis-localization-kit/js-apis-i18n.md#system9)的API接口文档。
 
 1. 导入模块。
-   ```ts
+
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   
+   ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    ```
 
-2. 获取用户偏好。
-   ```ts
+2. 使用场景。
+- 获取用户偏好。
+
+   <!-- @[get_user_preference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   
+   ``` TypeScript
    // 判断系统当前是否使用本地数字
    let usingLocalDigit: boolean = i18n.System.getUsingLocalDigit();
-
+   
    // 判断系统当前是否使用24小时制
    let is24HourClock: boolean = i18n.System.is24HourClock();
-
+   
    // 通过监听公共事件COMMON_EVENT_TIME_CHANGED可以感知系统时制变化
-   let subscriber: commonEventManager.CommonEventSubscriber; // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-   let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+   let timeSubscriber: commonEventManager.CommonEventSubscriber; // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+   let timeSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
      events: [commonEventManager.Support.COMMON_EVENT_TIME_CHANGED]
    };
    // 创建订阅者
-   commonEventManager.createSubscriber(subscribeInfo)
+   commonEventManager.createSubscriber(timeSubscribeInfo)
      .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-       console.info("CreateSubscriber");
-       subscriber = commonEventSubscriber;
-       commonEventManager.subscribe(subscriber, (err, data) => {
+       console.info('CreateSubscriber');
+       timeSubscriber = commonEventSubscriber;
+       commonEventManager.subscribe(timeSubscriber, (err, data) => {
          if (err) {
            console.error(`Failed to subscribe common event. error code: ${err.code}, message: ${err.message}.`);
            return;
          }
          // 用于区分系统时间和系统时制变化
          if (data.data != undefined && data.data == '24HourChange') {
-            console.info("The subscribed event has occurred."); // 系统时制变化时执行
-          }
+           console.info('The subscribed event has occurred.'); // 系统时制变化时执行
+         }
        })
      })
      .catch((err: BusinessError) => {
@@ -56,8 +63,9 @@
    ```
 
 <!--Del-->
-3. 设置使用本地数字。
-   ```ts
+- 设置使用本地数字。
+
+   ``` TypeScript
    try {
      i18n.System.setUsingLocalDigit(true); // 使用本地数字
    } catch (error) {
@@ -66,8 +74,9 @@
    }
    ```
 
-4. 设置时间显示格式为24小时制。
-   ```ts
+- 设置时间显示格式为24小时制。
+
+   ``` TypeScript
    try {
      i18n.System.set24HourClock(true); // 设置系统时制为24小时制
    } catch (error) {

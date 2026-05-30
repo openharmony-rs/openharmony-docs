@@ -4,13 +4,13 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+PhotoAsset provides APIs for encapsulating file asset attributes.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-PhotoAsset provides APIs for encapsulating file asset attributes.
 
 ## Modules to Import
 
@@ -22,11 +22,11 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                     | Type                    | Readable| Writable| Description                                                  |
+| Name                     | Type                    | Read-Only| Optional| Description                                                  |
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | Yes  | No  | Media asset URI, for example, **file://media/Photo/1/IMG_datetime_0001/displayName.jpg**. For details, see [Media File URI](../../file-management/user-file-uri-intro.md#media-file-uri).<br>**Atomic service API**: This API can be used in atomic services since API version 12.        |
 | photoType   | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | Yes  | No  | Type of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                                              |
-| displayName               | string                   | Yes  | No  | File name, including the file name extension, to display. The value contains 1 to 255 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
+| displayName               | string                   | Yes  | No  | File name, including the file name extension, to display. The string length ranges from 1 to 255.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
 
 ## get
 
@@ -97,8 +97,8 @@ Sets a **PhotoAsset** member parameter.
 
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
-| member | string | Yes   | Name of the member parameter to set, for example, [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE. The value contains 1 to 255 characters.|
-| value | string | Yes   | Value of the member parameter to set. Only the value of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE can be changed. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The total length of the file name, which is in the format of title+file name extension, must be between 1 and 255 characters.<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]  |
+| member | string | Yes   | Name of the member parameter to set, for example, [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE. The string length ranges from 1 to 255.|
+| value | string | Yes   | Value of the member parameter to set. Only the value of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE can be changed. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The string length ranges from 1 to 255. (The asset file name is in the format of title + file name extension.)<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]  |
 
 **Error codes**
 
@@ -151,7 +151,7 @@ Commits the modification on the file metadata to the database. This API uses an 
 
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback function. If the file metadata is modified successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -159,7 +159,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 If error code 14000001 is returned, refer to [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys) to learn about the format and length requirements of the file name.
 
-If error code 13900012 is returned, follow the instructions provided in [Before You Start](../../media/medialibrary/photoAccessHelper-preparation.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -216,7 +215,7 @@ Commits the modification on the file metadata to the database. This API uses a p
 
 | Type                 | Description        |
 | ------------------- | ---------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; |Promise that returns no value.|
 
 **Error codes**
 
@@ -250,6 +249,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  if (photoAsset === undefined) {
+    console.error('commitModifyPromise photoAsset is undefined');
+    return;
+  }
   let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
   let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
   console.info('photoAsset get photoAssetTitle = ', photoAssetTitle);
@@ -268,11 +271,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
-Closes a file. This API uses an asynchronous callback to return the result.
+Closes the current file. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided, and the corresponding **close** API is also deprecated.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fileIo.close](../apis-core-file-kit/js-apis-file-fs.md#fileioclose-1) instead.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -281,7 +284,7 @@ Closes a file. This API uses an asynchronous callback to return the result.
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
 | fd       | number                    | Yes   | FD of the file to close.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback function. If the current file is closed successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -329,11 +332,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number): Promise&lt;void&gt;
 
-Closes a file. This API uses a promise to return the result.
+Closes the current file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided, and the corresponding **close** API is also deprecated.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fileIo.close](../apis-core-file-kit/js-apis-file-fs.md#fileioclose) instead.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -390,11 +393,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-Obtains the thumbnail of this file. This API uses an asynchronous callback to return the result.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
+Obtains the thumbnail of a file. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -402,7 +405,7 @@ Obtains the thumbnail of this file. This API uses an asynchronous callback to re
 
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the PixelMap of the thumbnail.|
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback function. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -450,9 +453,9 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 
 Obtains the file thumbnail of the given size. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -461,7 +464,7 @@ Obtains the file thumbnail of the given size. This API uses an asynchronous call
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
 | size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | Yes   | Size of the thumbnail.           |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the PixelMap of the thumbnail.|
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback function. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -492,16 +495,20 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
   let size: image.Size = { width: 720, height: 720 };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-  let asset = await fetchResult.getFirstObject();
-  console.info('asset displayName = ', asset.displayName);
-  asset.getThumbnail(size, (err, pixelMap) => {
-    if (err === undefined) {
-      console.info('getThumbnail successful ' + pixelMap);
-    } else {
-      console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
-    }
-  });
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset = await fetchResult.getFirstObject();
+    console.info('asset displayName = ', asset.displayName);
+    asset.getThumbnail(size, (err, pixelMap) => {
+      if (err === undefined) {
+        console.info('getThumbnail successful ' + pixelMap);
+      } else {
+        console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
+      }
+    });
+  } catch (error) {
+    console.error(`Error fetching assets: ${error.message}`);
+  }
 }
 ```
 
@@ -511,9 +518,9 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
 Obtains the file thumbnail of the given size. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -574,7 +581,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 clone(title: string): Promise&lt;PhotoAsset&gt;
 
-Clones a media asset. The file name can be set, but the file type cannot be changed.
+Clones a media asset. The file name can be set, but the file type cannot be changed. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE\_IMAGEVIDEO
 
@@ -584,7 +591,7 @@ Clones a media asset. The file name can be set, but the file type cannot be chan
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| title| string | Yes   | Title of the cloned asset. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The total length of the file name, which is in the format of title+file name extension, must be between 1 and 255 characters.<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ] |
+| title| string | Yes   | Title of the cloned asset. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The string length ranges from 1 to 255. (The asset file name is in the format of title + file name extension.)<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ] |
 
 **Return value**
 
@@ -634,11 +641,11 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 Opens this file in read-only mode. This API uses an asynchronous callback to return the result.
 
+The returned FD must be closed when it is not required.
+
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
->
-> - The returned FD must be closed when it is not required.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen-1) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -648,7 +655,7 @@ Opens this file in read-only mode. This API uses an asynchronous callback to ret
 
 | Name     | Type                         | Mandatory  | Description                                 |
 | -------- | --------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the file descriptor (FD) of the file opened.                           |
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback function. If the current file is opened successfully, **err** is **undefined**, and **data** is the file descriptor. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -697,11 +704,11 @@ getReadOnlyFd(): Promise&lt;number&gt;
 
 Opens this file in read-only mode. This API uses a promise to return the result.
 
+The returned FD must be closed when it is not required.
+
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
->
-> - The returned FD must be closed when it is not required.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -744,6 +751,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
     let fd: number = await photoAsset.getReadOnlyFd();
     if (fd !== undefined) {
       console.info('File fd' + fd);

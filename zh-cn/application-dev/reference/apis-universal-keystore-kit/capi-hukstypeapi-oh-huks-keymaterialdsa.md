@@ -7,9 +7,13 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_KeyMaterialDsa {...}
+```
+
 ## 概述
 
-定义Dsa密钥的结构体类型。
+定义DSA密钥的结构体类型。
 
 **起始版本：** 9
 

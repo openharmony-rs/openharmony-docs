@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @ding_dong_dong-->
-<!--Designer: @dboy190; @houpengtao1-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -189,7 +189,7 @@ Compatible mode: In this mode, the value check is successful as long as the valu
 
 constructor()
 
-A constructor used to create a **Schema** instance.
+Defines a constructor used to create a **Schema** instance.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -223,14 +223,14 @@ Represents a **Schema** instance, which provides the methods for defining the va
 | Name    | Type   | Read Only| Optional| Description                                                        |
 | -------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | nullable | boolean | No  | No  | Whether the field can be null. The value **true** means the node field can be null; the value **false** means the opposite.|
-| default  | string  | No  | No  | Default value of **FieldNode**.                                     |
+| default  | string  | No  | No  | Default value of **FieldNode**. The value of **default** must be a string literal that can be parsed by the type. Ensure that the value type is the same as **type**.|
 | type     | number  | No  | No  | **FieldNode** data type, which is a value of [ValueType](#valuetype). Currently, the BYTE_ARRAY type is not supported. Using this type may cause a failure in calling [getKVStore](#getkvstore).|
 
 ### constructor
 
 constructor(name: string)
 
-A constructor used to create a **FieldNode** instance with a string field.
+Defines a constructor used to create a **FieldNode** instance with a string field.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -964,6 +964,8 @@ try {
 
 Provides APIs for obtaining the distributed KV store result sets. A maximum of eight result sets can be opened at a time.
 
+The **KVStoreResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data.
+
 Before calling any API in **KVStoreResultSet**, you must use **[getKVStore](#getkvstore)** to construct a **SingleKVStore** or **DeviceKVStore** instance.
 
 > **NOTE**
@@ -1304,12 +1306,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
-  let isfirst: boolean;
+  let isFirst: boolean;
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    isfirst = resultSet.isFirst();
-    console.info("Check isFirst succeed:" + isfirst);
+    isFirst = resultSet.isFirst();
+    console.info("Check isFirst succeed:" + isFirst);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1339,12 +1341,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
-  let islast: boolean;
+  let isLast: boolean;
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    islast = resultSet.isLast();
-    console.info("Check isLast succeed: " + islast);
+    isLast = resultSet.isLast();
+    console.info("Check isLast succeed: " + isLast);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1377,8 +1379,8 @@ try {
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    let isbeforefirst = resultSet.isBeforeFirst();
-    console.info("Check isBeforeFirst succeed: " + isbeforefirst);
+    let isBeforeFirst = resultSet.isBeforeFirst();
+    console.info("Check isBeforeFirst succeed: " + isBeforeFirst);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1411,8 +1413,8 @@ try {
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('getResultSet succeed.');
     resultSet = result;
-    let isafterlast = resultSet.isAfterLast();
-    console.info("Check isAfterLast succeed:" + isafterlast);
+    let isAfterLast = resultSet.isAfterLast();
+    console.info("Check isAfterLast succeed:" + isAfterLast);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1465,7 +1467,7 @@ Provides methods to create a **Query** object, which defines different data quer
 
 constructor()
 
-A constructor used to create a **Query** instance.
+Defines a constructor used to create a **Query** instance.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1509,6 +1511,12 @@ equalTo(field: string, value: number|string|boolean): Query
 Creates a **Query** object to match the specified field whose value is equal to the given value.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -1557,6 +1565,12 @@ Creates a **Query** object to match the specified field whose value is not equal
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name | Type| Mandatory | Description                   |
@@ -1604,6 +1618,12 @@ Creates a **Query** object to match the specified field whose value is greater t
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 | Name | Type| Mandatory | Description                   |
 | -----  | ------  | ----  | ----------------------- |
@@ -1649,6 +1669,12 @@ lessThan(field: string, value: number|string): Query
 Creates a **Query** object to match the specified field whose value is less than the specified value.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -1698,6 +1724,12 @@ Creates a **Query** object to match the specified field whose value is greater t
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 
@@ -1745,6 +1777,12 @@ lessThanOrEqualTo(field: string, value: number|string): Query
 Creates a **Query** object to match the specified field whose value is less than or equal to the specified value.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -1794,6 +1832,12 @@ Creates a **Query** object to match the specified field whose value is **null**.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name| Type| Mandatory| Description                         |
@@ -1839,6 +1883,12 @@ inNumber(field: string, valueList: number[]): Query
 Creates a **Query** object to match the specified field whose value is within the specified list of numbers.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -1887,6 +1937,12 @@ Creates a **Query** object to match the specified field whose value is within th
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name   | Type| Mandatory| Description                         |
@@ -1933,6 +1989,12 @@ notInNumber(field: string, valueList: number[]): Query
 Creates a **Query** object to match the specified field whose value is not within the specified list of numbers.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -1981,6 +2043,12 @@ Creates a **Query** object to match the specified field whose value is not withi
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name   | Type| Mandatory| Description                         |
@@ -2028,6 +2096,12 @@ Creates a **Query** object to match the specified field whose value is similar t
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name| Type| Mandatory| Description                         |
@@ -2074,6 +2148,12 @@ unlike(field: string, value: string): Query
 Creates a **Query** object to match the specified field whose value is not similar to the specified string.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -2188,6 +2268,12 @@ Creates a **Query** object to sort the query results in ascending order.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name| Type| Mandatory| Description                         |
@@ -2234,6 +2320,12 @@ orderByDesc(field: string): Query
 Creates a **Query** object to sort the query results in descending order.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -2331,6 +2423,12 @@ isNotNull(field: string): Query
 Creates a **Query** object to match the specified field whose value is not **null**.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -4061,7 +4159,7 @@ try {
 
 getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the number of results that matches the specified **Query** object. This API uses an asynchronous callback to return the result.
+Obtains the number of results that match the specified **Query** object. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4080,6 +4178,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **Example**
@@ -4124,7 +4223,7 @@ try {
 
 getResultSize(query: Query): Promise&lt;number&gt;
 
-Obtains the number of results that matches the specified **Query** object. This API uses a promise to return the result.
+Obtains the number of results that match the specified **Query** object. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4148,6 +4247,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **Example**
@@ -5296,7 +5396,7 @@ Unsubscribes from data changes.
 
 | Name  | Type                                                 | Mandatory| Description                                                    |
 | -------- | --------------------------------------------------------- | ---- | -------------------------------------------------------- |
-| event    | string                                                    | Yes  | Event type. The value is **dataChange**, which indicates data changes.|
+| event    | string                                                    | Yes  | Event type. The value is **dataChange**, which indicates a data change event.|
 | listener | Callback&lt;[ChangeNotification](#changenotification)&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for data changes.|
 
 **Error codes**
@@ -5355,7 +5455,7 @@ Unsubscribes from the cross-device data sync completion events.
 | Name      | Type                                     | Mandatory| Description                                                      |
 | ------------ | --------------------------------------------- | ---- | ---------------------------------------------------------- |
 | event        | string                                        | Yes  | Event type. The value is **syncComplete**, which indicates a sync completion event.|
-| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for data changes. |
+| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | No  | Callback to unregister. If this parameter is not set, all callbacks used to listen for the data sync completion event are unregistered. When multiple ArkTS instances (obtained through the [getKVStore](#getkvstore) API) of the same database all register the callback used to listen for the sync completion event, if all these callbacks are unregistered by one of the ArkTS instances, then the callbacks of the others are also unregistered. |
 
 **Error codes**
 
@@ -6927,6 +7027,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **Example**
@@ -6995,6 +7096,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **Example**
@@ -7037,7 +7139,7 @@ try {
 
 getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;number&gt;): void;
 
-Obtains the number of results that matches the specified device ID and **Query** object. This API uses an asynchronous callback to return the result.
+Obtains the number of results that match the specified device ID and **Query** object. This API uses an asynchronous callback to return the result.
 > **NOTE**
 >
 > **deviceId** can be obtained by [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).
@@ -7110,7 +7212,7 @@ try {
 
 getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
 
-Obtains the number of results that matches the specified device ID and **Query** object. This API uses a promise to return the result.
+Obtains the number of results that match the specified device ID and **Query** object. This API uses a promise to return the result.
 > **NOTE**
 >
 > **deviceId** can be obtained by [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).

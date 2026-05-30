@@ -7,12 +7,16 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoAsymCipher OH_CryptoAsymCipher
+```
+
 ## Overview
 
 Defines a struct for asymmetric encryption.
 
 **Since**: 20
 
-**Related Module**: [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)
+**Related module**: [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)
 
 **Header file:** [crypto_asym_cipher.h](capi-crypto-asym-cipher-h.md)

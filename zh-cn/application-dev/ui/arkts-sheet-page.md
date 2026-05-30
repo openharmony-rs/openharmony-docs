@@ -4,13 +4,13 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 [半模态页面（bindSheet）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)默认是模态形式的非全屏弹窗式交互页面，允许部分底层父视图可见，帮助用户在与半模态交互时保留其父视图环境。
 
 半模态页面适用于展示简单的任务或信息面板，例如，个人信息、文本简介、分享面板、创建日程、添加内容等。若需展示可能影响父视图的半模态页面，半模态支持配置为非模态交互形式。
 
-半模态在不同宽度的设备上存在不同的形态能力，开发者对不同宽度的设备上有不同的形态诉求请参考([preferType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions))属性。可以使用bindSheet构建半模态转场效果，详见[模态转场](arkts-modal-transition.md#使用bindsheet构建半模态转场效果)。对于复杂或者冗长的用户流程，建议考虑其他的转场方式替代半模态。如[全模态转场](arkts-contentcover-page.md)和[Navigation转场](arkts-navigation-navigation.md)。
+半模态在不同宽度的设备上存在不同的形态能力，开发者对不同宽度的设备上有不同的形态诉求请参考([preferType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions))属性。可以使用bindSheet构建半模态转场效果，详见[模态转场](arkts-modal-transition.md#使用bindsheet构建半模态转场效果)。对于复杂或者冗长的用户流程，建议考虑其他的转场方式替代半模态。如[全模态转场](arkts-contentcover-page.md)和[Navigation转场](./arkts-navigation-animation.md)。
 
 ## 使用约束
 
@@ -35,16 +35,16 @@
 
 1. 内容处于最顶部（内容不可滚动时以此状态处理）
 
-   上滑时，优先向上扩展面板档位，如无档位可扩展，则滚动内容
+   上滑时，优先向上扩展面板挡位，如无挡位可扩展，则滚动内容
 
-   下滑时，优先向下收缩面板档位，如无档位可收缩，则关闭面板
+   下滑时，优先向下收缩面板挡位，如无挡位可收缩，则关闭面板
 2. 内容处于中间位置（可上下滚动）
 
    上/下滑时，优先滚动内容，直至页面内容到达底部/顶部
 
 3. 内容处于底部位置（内容可滚动时）
 
-   上滑时，呈现内容区域回弹效果，不切换档位
+   上滑时，呈现内容区域回弹效果，不切换挡位
 
    下滑时，滚动内容直到到达顶部
 
@@ -62,8 +62,10 @@
 ```
 
 完整示例代码如下：
+<!-- @[Nested_scrolling_Sheet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template10/SheetDemo.ets) -->
 
-```ts
+``` TypeScript
+
 @Entry
 @Component
 struct SheetDemo {
@@ -91,7 +93,8 @@ struct SheetDemo {
         scrollBackward: NestedScrollMode.SELF_FIRST,
       })
 
-      Text("非滚动区域")
+      // 请将$r('app.string.tSheetBuilder_text1')替换为实际资源文件，在本示例中该资源文件的value值为"非滚动区域"
+      Text($r('app.string.tSheetBuilder_text1'))
         .width('100%')
         .backgroundColor(Color.Gray)
         .layoutWeight(1)
@@ -109,13 +112,15 @@ struct SheetDemo {
         .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
           detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
           preferType: SheetType.BOTTOM,
-          title: { title: '嵌套滚动场景' },
+          // 请将$r('app.string.tSheetBuilder_text2')替换为实际资源文件，在本示例中该资源文件的value值为"嵌套滚动场景"
+          title: { title: $r('app.string.tSheetBuilder_text2') },
         })
     }.width('100%').height('100%')
     .justifyContent(FlexAlign.Center)
   }
 }
 ```
+
 
 ![sheetTwo](figures/sheetTwo.PNG)
 
@@ -126,11 +131,18 @@ struct SheetDemo {
 > **说明：** 
 >
 > 声明onWillDismiss接口后，半模态页面的所有关闭操作，包括侧滑、点击关闭按钮、点击蒙层和下拉关闭，都需通过调用dismiss方法来实现。若未实现此逻辑，半模态页面将无法响应上述关闭操作。
+<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->
 
-```ts
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_SupportingAgingFriendly]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'SupportingAgingFriendly_';
+
 @Entry
 @Component
-struct onWillDismiss_Dismiss {
+struct OnWillDismiss_Dismiss {
   @State isShow: Boolean = false;
 
   @Builder
@@ -141,7 +153,7 @@ struct onWillDismiss_Dismiss {
   }
 
   build() {
-    Button("OpenBindSheet")
+    Button('OpenBindSheet')
       .onClick(() => {
         this.isShow = true
       })
@@ -151,13 +163,14 @@ struct onWillDismiss_Dismiss {
         blurStyle: BlurStyle.Thick,
         dragBar: true,
         detents: [SheetSize.MEDIUM, SheetSize.LARGE],
-        title: { title: "title", subtitle: "subtitle" },
+        title: { title: 'title', subtitle: 'subtitle' },
         enableOutsideInteractive: false,
-        onWillDismiss: ((DismissSheetAction: DismissSheetAction) => { 
+        onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
           // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否需要关闭半模态"
           this.getUIContext().showAlertDialog(
             {
-              message: '是否选择关闭半模态',
+              // 请将$r('app.string.bindContentCover_label2')替换为实际资源文件，在本示例中该资源文件的value值为"示例2（自定义转场动画）"
+              message: $r('app.string.bindContentCover_label2'),
               autoCancel: true,
               alignment: DialogAlignment.Bottom,
               gridCount: 4,
@@ -165,7 +178,7 @@ struct onWillDismiss_Dismiss {
               primaryButton: {
                 value: 'cancel',
                 action: () => {
-                  console.info('Callback when the cancel button is clicked');
+                  hilog.info(DOMAIN, TAG, 'Callback when the cancel button is clicked');
                 }
               },
               secondaryButton: {
@@ -176,12 +189,12 @@ struct onWillDismiss_Dismiss {
                 // 第三步：确认关闭半模态逻辑所在，此处为AlertDialog的Button回调
                 action: () => {
                   // 第四步：上述第三步逻辑触发的时候，调用dismiss()关闭半模态
-                  DismissSheetAction.dismiss();
-                  console.info('Callback when the ok button is clicked');
+                  dismissSheetAction.dismiss();
+                  hilog.info(DOMAIN, TAG, 'Callback when the ok button is clicked');
                 }
               },
               cancel: () => {
-                console.info('AlertDialog Closed callbacks');
+                hilog.info(DOMAIN, TAG, BUNDLE + 'onWillDismiss_Dismiss:' + 'AlertDialog Closed callbacks');
               }
             }
           )
@@ -190,22 +203,26 @@ struct onWillDismiss_Dismiss {
   }
 }
 ```
+
+
 ![onWillDismiss](figures/onWillDismiss.png)
 
 ## 屏蔽部分关闭行为
 
 由于声明了onWillDismiss接口，半模态的关闭行为都需要dismiss处理。可以通过if等逻辑自定义处理关闭逻辑。
+
 下述示例显示半模态页面只在下滑的时候关闭。
 
 ```ts
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
   if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
-    DismissSheetAction.dismiss(); //注册dismiss行为
+    DismissSheetAction.dismiss();// 注册dismiss行为
   }
 }),
 ```
 
 同理可以结合`onWillSpringBackWhenDismiss`接口实现更好的下滑体验。
+
 类比`onWillDismiss`，在声明了`onWillSpringBackWhenDismiss`后，半模态下滑时的回弹操作需要使用 `SpringBackAction.springBack()`处理，无此逻辑则不会回弹。
 
 具体代码如下，在半模态下滑的时候无需回弹。
@@ -213,12 +230,12 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 ```ts
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
   if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
-    DismissSheetAction.dismiss(); //注册dismiss行为
+    DismissSheetAction.dismiss();// 注册dismiss行为
   }
 }),
 
 onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
- //没有注册springBack，下拉半模态页面无回弹行为
+// 没有注册springBack，下拉半模态页面无回弹行为
 }),
 ```
 
@@ -230,8 +247,10 @@ onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
 - 2in1设备上需同时满足窗口处于瀑布模式才会产生避让。
 
 完整示例代码如下：
+<!-- @[SheetTransitionExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template12/SheetTransitionExample.ets) -->
 
-```ts
+``` TypeScript
+
 @Entry
 @Component
 struct SheetTransitionExample {
@@ -242,22 +261,24 @@ struct SheetTransitionExample {
   @Builder
   myBuilder() {
     Column() {
-      Button("enableHoverMode切换")
+      // 请将$r('app.string.bindSheetCmd_label10')替换为实际资源文件，在本示例中该资源文件的value值为"enableHoverMode切换"
+      Button($r('app.string.bindSheetCmd_label10'))
         .margin(10)
         .fontSize(20)
         .onClick(() => {
           this.enableHoverMode = !this.enableHoverMode;
         })
 
-      Button("hoverModeArea切换")
+      // 请将$r('app.string.bindSheetCmd_label11')替换为实际资源文件，在本示例中该资源文件的value值为"hoverModeArea切换"
+      Button($r('app.string.bindSheetCmd_label11'))
         .margin(10)
         .fontSize(20)
         .onClick(() => {
           this.hoverModeArea = this.hoverModeArea === HoverModeAreaType.TOP_SCREEN ?
-          HoverModeAreaType.BOTTOM_SCREEN : HoverModeAreaType.TOP_SCREEN;
+            HoverModeAreaType.BOTTOM_SCREEN : HoverModeAreaType.TOP_SCREEN;
         })
 
-      Button("close modal")
+      Button('close modal')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -270,7 +291,8 @@ struct SheetTransitionExample {
 
   build() {
     Column() {
-      Button("拉起半模态")
+      // 请将$r('app.string.bindSheetCmd_label9')替换为实际资源文件，在本示例中该资源文件的value值为"拉起半模态"
+      Button($r('app.string.bindSheetCmd_label9'))
         .onClick(() => {
           this.isShow = true;
         })
@@ -290,5 +312,6 @@ struct SheetTransitionExample {
   }
 }
 ```
+
 
 ![sheetOne](figures/sheetOne.PNG)

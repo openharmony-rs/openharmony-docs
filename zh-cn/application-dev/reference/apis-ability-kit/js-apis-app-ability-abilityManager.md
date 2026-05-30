@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025 -->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AbilityManager模块提供获取Ability相关信息和运行状态信息的能力。
 
@@ -53,7 +53,7 @@ getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | 以Promise方式返回接口运行结果及运行中的ability信息，可进行错误处理或其他自定义处理。 |
+| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise对象，返回UIAbility运行时的相关信息。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -72,7 +72,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   abilityManager.getAbilityRunningInfos()
     .then((data: abilityManager.AbilityRunningInfo[]) => {
-      console.log(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
+      console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
     })
     .catch((error: BusinessError) => {
       console.error(`getAbilityRunningInfos fail, error code: ${JSON.stringify(error.code)}, error msg: ${JSON.stringify(error.message)}`);
@@ -94,7 +94,8 @@ restartSelfAtomicService(context: Context): void
 >
 > - 当前仅支持以独立窗口方式拉起原子化服务。
 >
-> - 该接口的两次调用时间间隔不能低于3秒。
+> - 在调用本接口成功后的3秒内，再次调用本接口、[ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)或[UIAbilityContext.restartApp()](js-apis-inner-application-uiAbilityContext.md#restartapp22)接口中的任一接口，系统将返回错误码16000064。
+
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -133,6 +134,37 @@ export default class EntryAbility extends EmbeddableUIAbility {
     } catch (e) {
       console.error(`restartSelfAtomicService error: ${JSON.stringify(e as BusinessError)}`);
     }
+  }
+}
+```
+
+## abilityManager.isEmbeddedUIExtensionSupported
+
+isEmbeddedUIExtensionSupported(): boolean
+
+开发者通过调用该接口判断[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)是否可以在当前设备上使用。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 当前设备是否支持[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)。返回true表示当前设备支持；返回false表示当前设备不支持。 |
+
+**示例：**
+
+```ts
+import { abilityManager, UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let isSupported: boolean = abilityManager.isEmbeddedUIExtensionSupported();
+    console.info(`isEmbeddedUIExtensionSupported is ${isSupported}`);
   }
 }
 ```

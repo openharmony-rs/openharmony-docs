@@ -1,4 +1,10 @@
 # @ohos.telephony.observer (Observer) (System API)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 The **observer** module provides event subscription management functions. With the APIs provided by this module, you can register or unregister an observer that listens cell information events (for the SIM card in the specified slot).
 
@@ -54,7 +60,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { radio } from '@kit.TelephonyKit';
 
 observer.on('cellInfoChange', (data: Array<radio.CellInformation>) => {
-    console.log("on cellInfoChange, data:" + JSON.stringify(data));
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -102,7 +108,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellInfoChange', options, (data: Array<radio.CellInformation>) => {
-    console.log("on cellInfoChange, data:" + JSON.stringify(data));
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -147,7 +153,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.CellInformation>) => void = (data: Array<radio.CellInformation>) => {
-    console.log("on cellInfoChange, data:" + JSON.stringify(data));
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
 }
 observer.on('cellInfoChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.

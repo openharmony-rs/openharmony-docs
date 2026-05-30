@@ -1,14 +1,14 @@
 # inputmethod_types_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
-提供了输入法相关的类型定义。
+提供了输入法相关的类型定义，包含键盘状态、回车键功能类型，光标移动方向等。
 
 **引用文件：** <inputmethod/inputmethod_types_capi.h>
 
@@ -33,13 +33,13 @@
 | [InputMethod_TextInputType](#inputmethod_textinputtype) | InputMethod_TextInputType | 文本输入类型。 |
 | [InputMethod_CommandValueType](#inputmethod_commandvaluetype) | InputMethod_CommandValueType | 私有数据类型。 |
 | [InputMethod_ErrorCode](#inputmethod_errorcode) | InputMethod_ErrorCode | 输入法错误码。 |
-| [InputMethod_RequestKeyboardReason](#inputmethod_requestkeyboardreason) | InputMethod_RequestKeyboardReason | 表示请求键盘输入原因。 |
+| [InputMethod_RequestKeyboardReason](#inputmethod_requestkeyboardreason) | InputMethod_RequestKeyboardReason | 表示请求键盘输入的原因。 |
 
 ## 枚举类型说明
 
 ### InputMethod_KeyboardStatus
 
-```
+```c
 enum InputMethod_KeyboardStatus
 ```
 
@@ -57,7 +57,7 @@ enum InputMethod_KeyboardStatus
 
 ### InputMethod_EnterKeyType
 
-```
+```c
 enum InputMethod_EnterKeyType
 ```
 
@@ -81,7 +81,7 @@ enum InputMethod_EnterKeyType
 
 ### InputMethod_Direction
 
-```
+```c
 enum InputMethod_Direction
 ```
 
@@ -101,7 +101,7 @@ enum InputMethod_Direction
 
 ### InputMethod_ExtendAction
 
-```
+```c
 enum InputMethod_ExtendAction
 ```
 
@@ -115,12 +115,12 @@ enum InputMethod_ExtendAction
 | -- | -- |
 | IME_EXTEND_ACTION_SELECT_ALL = 0 | 全选。 |
 | IME_EXTEND_ACTION_CUT = 3 | 剪切。 |
-| IME_EXTEND_ACTION_COPY = 4 | 赋值。 |
+| IME_EXTEND_ACTION_COPY = 4 | 复制。 |
 | IME_EXTEND_ACTION_PASTE = 5 | 粘贴。 |
 
 ### InputMethod_TextInputType
 
-```
+```c
 enum InputMethod_TextInputType
 ```
 
@@ -150,7 +150,7 @@ enum InputMethod_TextInputType
 
 ### InputMethod_CommandValueType
 
-```
+```c
 enum InputMethod_CommandValueType
 ```
 
@@ -169,7 +169,7 @@ enum InputMethod_CommandValueType
 
 ### InputMethod_ErrorCode
 
-```
+```c
 enum InputMethod_ErrorCode
 ```
 
@@ -182,7 +182,7 @@ enum InputMethod_ErrorCode
 | 枚举项 | 描述 |
 | -- | -- |
 | IME_ERR_OK = 0 | 成功。 |
-| IME_ERR_UNDEFINED = 1 | 查询失败。 |
+| IME_ERR_UNDEFINED = 1 | 未定义错误。 |
 | IME_ERR_PARAMCHECK = 401 | 参数检查失败。 |
 | IME_ERR_PACKAGEMANAGER = 12800001 | 包管理异常。 |
 | IME_ERR_IMENGINE = 12800002 | 输入法应用异常。 |
@@ -197,13 +197,13 @@ enum InputMethod_ErrorCode
 
 ### InputMethod_RequestKeyboardReason
 
-```
+```c
 enum InputMethod_RequestKeyboardReason
 ```
 
 **描述**
 
-表示请求键盘输入原因。
+表示请求键盘输入的原因。
 
 **起始版本：** 15
 

@@ -18,9 +18,9 @@ Kconfig visual configuration has the following advantages:
 
 ### Related Modules
 
-- [Kconfig update module](https://gitee.com/openharmony/build/blob/master/tools/component_tools/generate_kconfig.py): updates the component information list in the Kconfig menu.
+- [Kconfig update module](https://gitcode.com/openharmony/build/blob/master/tools/component_tools/generate_kconfig.py): updates the component information list in the Kconfig menu.
 
-- [Config format conversion](https://gitee.com/openharmony/build/blob/master/tools/component_tools/parse_kconf.py): converts the **config** file generated on the GUI to the standard format for compilation and build.
+- [Config format conversion](https://gitcode.com/openharmony/build/blob/master/tools/component_tools/parse_kconf.py): converts the **config** file generated on the GUI to the standard format for compilation and build.
 
 ## Operation Guide
 
@@ -103,7 +103,7 @@ The component list productdefine/common/base/base_product.json is updated with p
 
 **Solution**
 
-Update the [Kconfig file](https://gitee.com/openharmony/build/blob/master/tools/component_tools/kconfig).
+Update the [Kconfig file](https://gitcode.com/openharmony/build/blob/master/tools/component_tools/kconfig).
 
 ```shell
 cd build/tools/component_tools

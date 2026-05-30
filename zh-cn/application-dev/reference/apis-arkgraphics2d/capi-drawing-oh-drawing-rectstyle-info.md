@@ -1,4 +1,14 @@
 # OH_Drawing_RectStyle_Info
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct {...} OH_Drawing_RectStyle_Info
+```
 
 ## 概述
 

@@ -1,5 +1,12 @@
 # @ohos.net.networkSecurity (Network Security)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 The **networkSecurity** module provides the network security verification capability. Specifically, it provides APIs for applications to verify the certificates in use.
 
 > **NOTE**
@@ -16,7 +23,6 @@ import { networkSecurity } from '@kit.NetworkKit';
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -61,17 +67,17 @@ Defines the certificate data.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name | Type                  | Mandatory     | Description          |
-| ----- | --------------------- | --------- | -------------- |
-| type  | CertType              | Yes     | Certificate type. |
-| data  | string \| ArrayBuffer | Yes      | Certificate data.     |
+| Name | Type                  | Read-Only     |Optional| Description          |
+| ----- | --------------------- | --------- | ----|---------- |
+| type  | CertType              | No   |No|Certificate type. |
+| data  | string \| ArrayBuffer | No   | No|Certificate data.     |
 
 
 ## networkSecurity.certVerification
 
 certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
-Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application.
+Verifies the certificate passed by the application using the preset CA certificate and the CA certificate installed by the user in the certificate management. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -121,7 +127,6 @@ For details about the error codes, see [Network Security Error Codes](errorcode-
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert:networkSecurity.CertBlob = {
@@ -153,7 +158,7 @@ networkSecurity.certVerification(cert, caCert)
 
 certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
-Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application.
+Verifies the certificate passed by the application using the preset CA certificate and the CA certificate installed by the user in the certificate management. This API returns the result synchronously.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -203,7 +208,6 @@ For details about the error codes, see [Network Security Error Codes](errorcode-
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Create certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -262,7 +266,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let result: boolean = networkSecurity.isCleartextPermitted();
@@ -306,7 +309,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let result: boolean = networkSecurity.isCleartextPermittedByHostName("xxx");

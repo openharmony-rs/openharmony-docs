@@ -1,5 +1,11 @@
 # 停止PageAbility
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @lidongrui-->
+<!--Designer: @ccllee1-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 停止PageAbility通过featureAbility中的terminateSelf接口实现。
 
@@ -22,7 +28,7 @@ const TAG: string = 'PagePageAbilityFirst';
 const domain: number = 0xFF00;
 ```
 ```ts
-//...
+// ...
 (async (): Promise<void> => {
   try {
     hilog.info(domain, TAG, 'Begin to terminateSelf');
@@ -32,5 +38,5 @@ const domain: number = 0xFF00;
     hilog.error(domain, TAG, 'terminateSelf failed with ' + error);
   }
 })()
-//...
+// ...
 ```

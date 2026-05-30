@@ -2,13 +2,13 @@
 
 ## When to Use
 
-You can call the C/C++ APIs of DRM Kit to implement digital copyright protection features such as DRM certificate management, DRM license management, DRM content authorization, and DRM content decryption.
+DRM Kit provides C/C++ APIs for comprehensive digital rights management, covering certificate management, license management, content authorization, and content decryption.
 
-DRM Kit provides MediaKeySystem to manage DRM certificates, DRM licenses, and MediaKeySession instances. MediaKeySession is responsible for authorizing DRM content and can work with Media Kit or AVCodec Kit to decrypt the DRM content, thereby enabling playback of DRM-protected content.
+Its implementation is built around two core classes: MediaKeySystem and MediaKeySession. MediaKeySystem handles system-level management of DRM certificates and licenses, as well as the lifecycle of MediaKeySession instances. MediaKeySession, in turn, is responsible for authorizing specific content and enabling its decryption through integration with AVCodec Kit for playback.
 
 ## How to Develop
 
-Read [DRM](../../reference/apis-drm-kit/capi-drm.md) for the API reference.
+For details on the APIs, see [DRM API](../../reference/apis-drm-kit/capi-drm.md).
 
 1. Import the DRM Kit module.
 
@@ -28,7 +28,7 @@ Read [DRM](../../reference/apis-drm-kit/capi-drm.md) for the API reference.
 3. Obtain the name and ID list of the DRM solutions supported by the device.
 
     ```c++
-    uint32_t count = 3; // count indicates the number of DRM plugins supported by the device. Pass in the actual number.
+    uint32_t count = 3; // count specifies the number of DRM plugins supported by the device. Pass in the actual number.
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));
     Drm_ErrCode ret = OH_MediaKeySystem_GetMediaKeySystems(descriptions, &count);
@@ -37,7 +37,7 @@ Read [DRM](../../reference/apis-drm-kit/capi-drm.md) for the API reference.
     }
     ```
 
-4. (Optional) Check whether the device supports the specified DRM solution based on the name, MIME type, and content protection level.
+4. (Optional) Check whether the device supports a specific DRM solution based on the name, MIME type, and content protection level.
 
     ```c++
     bool isSupported = OH_MediaKeySystem_IsSupported3("com.clearplay.drm", "video/mp4", CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
@@ -165,7 +165,7 @@ Read [DRM](../../reference/apis-drm-kit/capi-drm.md) for the API reference.
     }
     ```
 
-13. Generate a media key request and process its response to request a license for DRM content authorization.
+13. Generate a media key request and process its response to request a license for content authorization.
 
     ```c++
     #define MAX_DRM_MEDIA_KEY_RESPONSE_BUF_SIZE 24576 // 24576: (2 * 12 * 1024)
@@ -221,7 +221,7 @@ Read [DRM](../../reference/apis-drm-kit/capi-drm.md) for the API reference.
     }
     ```
 
-16. (Optional) Obtain the IDs of offline media keys, obtain their status, and clear the keys.
+16. (Optional) Obtain the IDs of offline media keys, obtain their status, and clear them.
 
     ```c++
     DRM_OfflineMediakeyIdArray offlineMediaKeyIds;

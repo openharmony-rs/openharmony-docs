@@ -1,4 +1,10 @@
 # 通用样式
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu; @yihao-lin; @weixin_52725220-->
+<!--Designer: @lanshouren; @piggyguy; @weixin_52725220-->
+<!--Tester: @liuli0427; @songyanhong; @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -75,12 +81,12 @@
 
 ```html
 <div class="container" onswipe="touchMove">
-	<text style="margin: 10px; box-sizing: content-box; width: 300px;height: 300px; border-color: blue; border-width: 20px;">
-		contentBox
-	</text>
-	<text style="margin: 10px; box-sizing: border-box; width: 300px;height: 300px;border-color: blue; border-width: 20px;">
-		borderBox
-	</text>
+    <text style="margin: 10px; box-sizing: content-box; width: 300px;height: 300px; border-color: blue; border-width: 20px;">
+        contentBox
+    </text>
+    <text style="margin: 10px; box-sizing: border-box; width: 300px;height: 300px;border-color: blue; border-width: 20px;">
+        borderBox
+    </text>
 </div>
 ```
 

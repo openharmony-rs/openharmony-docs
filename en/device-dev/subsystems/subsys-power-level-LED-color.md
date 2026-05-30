@@ -9,7 +9,7 @@ OpenHarmony provides the battery level and LED color mapping by default. Some pr
 ### Constraints
 
  
-The configuration path for battery level customization is subject to the [configuration policy](https://gitee.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
+The configuration path for battery level customization is subject to the [configuration policy](https://gitcode.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
 
 ## How to Develop
 
@@ -25,11 +25,11 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ### Getting Started with Development
 
-The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate battery level and LED color mapping customization.
+The following uses [DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate battery level and LED color mapping customization.
 
-1. Create the `battery` folder in the product directory [/vendor/hihope/rk3568](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568).
+1. Create the `battery` folder in the product directory [/vendor/hihope/rk3568](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568).
 
-2. Create a target folder by referring to the [default folder of battery level and LED color mapping configuration](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile), and install it in `//vendor/hihope/rk3568/battery`. The content is as follows:
+2. Create a target folder by referring to the [default folder of battery level and LED color mapping configuration](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile), and install it in `//vendor/hihope/rk3568/battery`. The content is as follows:
 
     ```text
     profile
@@ -37,7 +37,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     ├── battery_config.json
     ```
 
-3. Write the custom `battery_config.json` file by referring to the [battery_config.json](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/battery_config.json) file in the default folder of battery level and LED color mapping configuration. For example:
+3. Write the custom `battery_config.json` file by referring to the [battery_config.json](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/battery_config.json) file in the default folder of battery level and LED color mapping configuration. For example:
 
     ```json
     {
@@ -74,7 +74,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     | rgb | LED RGB combination|
 
 
-4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/BUILD.gn) file in the default folder of battery level and LED color mapping configuration to pack the `battery_config.json` file to the `//vendor/etc/battery` directory. The configuration is as follows:
+4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/BUILD.gn) file in the default folder of battery level and LED color mapping configuration to pack the `battery_config.json` file to the `//vendor/etc/battery` directory. The configuration is as follows:
 
     ```shell
     import("//build/ohos.gni")                # Reference build/ohos.gni.
@@ -87,7 +87,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     }
     ```
 
-5. Add the build target to `module_list` in [ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
+5. Add the build target to `module_list` in [ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
 
     ```json
     {
@@ -211,7 +211,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     ![high_power_led_alter](figures/high_power_led_alter.jpg)
 
 ## Reference
-During development, you can refer to the [default battery level and LED color mapping configuration](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/battery_config.json), as shown below:
+During development, you can refer to the [default battery level and LED color mapping configuration](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/services/native/profile/battery_config.json), as shown below:
 
  
 

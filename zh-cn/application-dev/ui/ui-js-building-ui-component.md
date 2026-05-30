@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件（Component）是构建页面的核心，每个组件通过对数据和方法的简单封装，实现独立的可视、可交互功能单元。组件之间相互独立，随取随用，也可以在需求相同的地方重复使用。
 
@@ -16,6 +16,7 @@
 
 根据组件的功能，可以分为以下六大类：
 
+<!--Table: 10%; 90%-->
 | 组件类型 | 主要组件 |
 | -------- | -------- |
 | 容器组件 | [badge](../reference/apis-arkui/arkui-js/js-components-container-badge.md)、[dialog](../reference/apis-arkui/arkui-js/js-components-container-dialog.md)、[div](../reference/apis-arkui/arkui-js/js-components-container-div.md)、[form](../reference/apis-arkui/arkui-js/js-components-container-form.md)、[list](../reference/apis-arkui/arkui-js/js-components-container-list.md)、[list-item](../reference/apis-arkui/arkui-js/js-components-container-list-item.md)、[list-item-group](../reference/apis-arkui/arkui-js/js-components-container-list-item-group.md)、[panel](../reference/apis-arkui/arkui-js/js-components-container-panel.md)、[popup](../reference/apis-arkui/arkui-js/js-components-container-popup.md)、[refresh](../reference/apis-arkui/arkui-js/js-components-container-refresh.md)、[stack](../reference/apis-arkui/arkui-js/js-components-container-stack.md)、[stepper](../reference/apis-arkui/arkui-js/js-components-container-stepper.md)、[stepper-item](../reference/apis-arkui/arkui-js/js-components-container-stepper-item.md)、[swiper](../reference/apis-arkui/arkui-js/js-components-container-swiper.md)、[tabs](../reference/apis-arkui/arkui-js/js-components-container-tabs.md)、[tab-bar](../reference/apis-arkui/arkui-js/js-components-container-tab-bar.md)、[tab-content](../reference/apis-arkui/arkui-js/js-components-container-tab-content.md) |
@@ -31,10 +32,10 @@
 
 针对组件开发，有以下相关实例可供参考：
 
-- [rating组件的使用（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/JSUI/RatingApplication)
+- [rating组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/RatingApplication)
 
-- [简易视频播放器（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)
+- [简易视频播放器（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)
 
-- [购物应用（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/JSUI/ShoppingSample)
+- [购物应用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/ShoppingSample)
 
-- [图片常见操作（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Media/ImageOperation)
+- [图片常见操作（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageOperation)

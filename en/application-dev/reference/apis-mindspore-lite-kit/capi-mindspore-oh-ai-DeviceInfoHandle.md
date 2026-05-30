@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef void *OH_AI_DeviceInfoHandle
+```
+
 ## Overview
 
 Defines the pointer to the MindSpore device information.

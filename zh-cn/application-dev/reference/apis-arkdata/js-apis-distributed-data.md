@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @ding_dong_dong-->
-<!--Designer: @dboy190; @houpengtao1-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -1189,7 +1189,7 @@ try {
 
 constructor() 
 
-用于创建Schema实例的构造函数。
+用于创建Query实例的构造函数。
 
 **系统能力：**  SystemCapability.DistributedDataManager.KVStore.Core
 

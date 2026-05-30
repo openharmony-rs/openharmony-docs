@@ -1,4 +1,10 @@
 # @ohos.bundle.appDomainVerify (Application Domain Name Verification) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @hw-xpc-->
+<!--Designer: @xuchuanqi87-->
+<!--Tester: @sl_sunshineGirl-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The appDomainVerify module provides APIs to query the mappings between applications and domain names for the purposes of application domain name verification.
 
@@ -46,25 +52,26 @@ Queries the list of domain names associated with an application based on its bun
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Domain Name Verification Error Codes](errorcode-appDomainVerify.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Domain Name Verification Error Codes](errorcode-appDomainVerify-sys.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | System API accessed by non-system app. |
 | 401 | Parameter error.|
-| 29900001 | System internal error. |
+| 29900001 |  Internal error. |
 
 **Example**
 
 ```ts
 import { appDomainVerify } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // Obtain the list of domain names associated with the bundle name "com.example.app1".
 let bundleName = "com.example.app1";
 let domains = appDomainVerify.queryAssociatedDomains(bundleName);
 domains.forEach(domain => {
-  console.log(`app:${bundleName} associate with domain:${domain}`);
+  hilog.info(0x0000, 'testTag', `app:${bundleName} associate with domain:${domain}`);
 });
 ```
 
@@ -94,24 +101,25 @@ Obtains the list of bundle names associated with a domain name.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Domain Name Verification Error Codes](errorcode-appDomainVerify.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Domain Name Verification Error Codes](errorcode-appDomainVerify-sys.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | System API accessed by non-system app. |
 | 401 | Parameter error.|
-| 29900001 | System internal error. |
+| 29900001 |  Internal error. |
 
 **Example**
 
 ```ts
 import { appDomainVerify } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // Obtain the list of bundle names associated with the domain name "example.com".
 let domain = "example.com";
 let bundleNames = appDomainVerify.queryAssociatedBundleNames(domain);
 bundleNames.forEach(bundleName => {
-  console.log(`domain:${domain} associate with app:${bundleName}`);
+  hilog.info(0x0000, 'testTag', `domain:${domain} associate with app:${bundleName}`);
 });
 ```

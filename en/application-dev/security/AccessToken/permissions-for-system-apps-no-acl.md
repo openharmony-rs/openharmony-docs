@@ -3,30 +3,31 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 Before requesting permissions for your application, read and understand the [permission request paths](determine-application-mode.md) and this topic to determine the permissions required.
 
 > **NOTE**
 >
-> - The permissions listed in this topic are available to system_basic or system_core applications, but not to normal applications.
+> - The permissions listed in this topic are available to system_basic or higher-level applications, but not to normal applications.
 > - The authorization mode of these permissions is system_grant.
-> - These permissions cannot be requested via access control list (ACL).
+> - The following permissions cannot be requested across application levels via ACL.
 
 For details about the process for requesting the permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
-## ohos.permission.RECEIVER_STARTUP_COMPLETED
+## ohos.permission.hsdr.HSDR_ACCESS
 
-Allows an application to subscribe to the startup broadcast.
+Allows an application to access the OpenHarmony Security Detection and Response Framework.
 
-**Permission level**: system_basic
+**Permission level**: normal
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
-**Valid since**: 9
+**Valid since**: 10
 
 ## ohos.permission.SYSTEM_LIGHT_CONTROL
 
@@ -36,7 +37,7 @@ Allows an application to control lights, including turning on and off lights.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 11
 
@@ -48,7 +49,7 @@ Allows an application to obtain information about all application accounts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 7
 
@@ -60,31 +61,19 @@ Allows an application to call interfaces of the DeviceAuthCredMgr application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
 ## ohos.permission.ACCESS_AUTH_RESPOOL
 
-Allows an SA to register the executor.
+Allows an SA to register the authentication executor.
 
 **Permission level**: system_core
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
-
-**Valid since**: 9
-
-## ohos.permission.READ_ACCESSIBILITY_CONFIG
-
-Allows an application to read the accessibility configuration.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 9
 
@@ -96,7 +85,7 @@ Allows the push service to write data to an application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -108,7 +97,7 @@ Allows the push service to read data from an application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -120,7 +109,7 @@ Allows an SA to call the network diagnosis, Wi-Fi, network adapter listening, an
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -132,7 +121,7 @@ Allows networking between different devices.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 9
 
@@ -144,7 +133,7 @@ Allows a standby component to publish a customized network limit event.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -156,7 +145,7 @@ Allows a system service to access the cellular call SA.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -168,9 +157,25 @@ Allows a system service to access the IMS SA.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
+
+## ohos.permission.ACCESS_DEVELOPER_PCAP_SWITCH
+
+Allows a system application to manage the PCAP packet capture switch, including enabling, disabling, and checking the status of the switch.
+
+With this permission, an application can call APIs provided by the system layer to set the PCAP packet capture switch, obtain the switch status, and register the status change listener.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: false
+
+**Supported devices**: phones | TVs | tablets
+
+**Since**: 26.0.0
 
 ## ohos.permission.ENFORCE_USER_IDM
 
@@ -180,19 +185,7 @@ Allows an SA to delete the IAM user information without a token.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
-
-**Valid since**: 9
-
-## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
-
-Allows an application to set the accessibility configuration.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 9
 
@@ -204,66 +197,6 @@ Allows a system service to enable distributed hardware resources.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 11
-
-## ohos.permission.ACCESS_SUPER_HUB
-
-Allows an application to access Super Hub.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 12
-
-## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
-
-Allows a UIExtensionAbility to be displayed on the locked screen.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 14
-
-## ohos.permission.USE_USER_ACCESS_MANAGER
-
-Allows an application to query and configure user identity authentication policies, and verify the authentication result.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 18
-
-## ohos.permission.SET_LAUNCH_REASON_MESSAGE
-
-Allows a system application to set the launch reason when starting another application.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 18
-
-## ohos.permission.ACCESS_USER_ACCOUNT_INFO
-
-Allows a system application to access user account information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 18

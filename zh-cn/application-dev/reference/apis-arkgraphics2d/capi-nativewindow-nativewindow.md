@@ -1,10 +1,14 @@
 # NativeWindow
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @li_hui180; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```c
+typedef struct NativeWindow OHNativeWindow
+```
+
 ## 概述
 
 提供对OHNativeWindow的访问功能。

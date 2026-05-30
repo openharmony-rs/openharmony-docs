@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 

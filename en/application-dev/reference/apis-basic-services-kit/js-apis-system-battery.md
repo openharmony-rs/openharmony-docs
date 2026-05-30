@@ -5,13 +5,20 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **battery** module allows you to query the charging status and remaining power of a device.
 
 >  **NOTE**
->  - The APIs of this module are no longer maintained since API version 6. It is recommended that you use [`@ohos.batteryInfo`](js-apis-battery-info.md).
->  - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+>- Module maintenance policy:
+>
+>    \- For lite wearables, this module is constantly maintained and available.
+>
+>    \- For other device types, this module is no longer maintained since API version 6. You are advised to use [@ohos.batteryInfo](js-apis-battery-info.md) instead.
+>
+>- The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
 
 
 ## Modules to Import
@@ -38,15 +45,69 @@ Obtains the current charging state and battery level.
 
 **Example**
 
+ArkTS example:
 ```js
 Battery.getStatus({
     success: (data: BatteryResponse) => {
-        console.log('success get battery level:' + data.level);
+        console.info('success get battery level:' + data.level);
     },
     fail: (data: string, code: number) => {
         console.error('fail to get battery level code:' + code + ', data: ' + data);
     }
 });
+```
+
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Data" style="width: 240px; height: 50px; margin: 5px;" onclick="getBatteryInfo"></input>
+    <text class="title">level: {{ capacity }}</text>
+    <text class="title">charging: {{ charging }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import Battery from '@system.battery';
+
+export default {
+    data: {
+        capacity: '',
+        charging: ''
+    },
+    getBatteryInfo() {
+        let TAG = 'get_status_success_test';
+        Battery.getStatus({
+            success: (batteryResponse) => {
+                this.capacity = batteryResponse.level;
+                this.charging = batteryResponse.charging;
+                console.info(`${TAG} batteryResponse.level: ${batteryResponse.level}`);
+                console.info(`${TAG} batteryResponse.charging: ${batteryResponse.charging}`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} getStatus complete`);
+            }
+        });
+    },
+}
 ```
 
 ## GetStatusOptions<sup>(deprecated)</sup>
@@ -67,7 +128,7 @@ Defines a response that returns the charging status and remaining power of the d
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Lite
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| charging | boolean | Yes| No| Whether the battery is being charged. The value **true** indicates that the battery is being changed; **false** indicates the opposite. The default value is **false**.|
-| level | number | Yes| No| Current battery level, which ranges from **0.00** to **1.00**.|
+| charging | boolean | No| No| Whether the battery is being charged. The value **true** indicates that the battery is being charged; **false** indicates the opposite. The default value is **false**.<br>**Note**: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use batteryInfo.[chargingStatus](js-apis-battery-info.md#constants) instead.|
+| level | number | No| No| Current battery level in percent, which ranges from **0.00** to **1.00**.<br>**Note**: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use batteryInfo.[batterySOC](js-apis-battery-info.md#constants) instead.|

@@ -1,5 +1,12 @@
 # AbilityForegroundStateObserver (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines the listener used to listen for ability foreground and background state changes.
 
 > **NOTE**

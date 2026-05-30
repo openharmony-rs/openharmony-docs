@@ -1,147 +1,187 @@
 # \@BuilderParam Decorator: Referencing the \@Builder Function
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-
-When you create a custom component and want to add a specific function, for example, a click-to-redirect operation, to a specified custom component, if you directly embed an event method into the component, the function will be added to all instances of the custom component. To solve this problem, ArkUI uses the \@BuilderParam decorator to decorate variables pointing to the [\@Builder](./arkts-builder.md) method (that is, @BuilderParam is used to decorate the @Builder function). When initializing a custom component, you can use different methods (such as modifying parameters, trailing closure, or using arrow function) to change values of the custom builder functions decorated by \@BuilderParam and call the \@BuilderParam in a custom component to add specific features. This decorator can be used to declare an element of any UI description, similar to a slot placeholder.
-
+When you create a [custom component](./arkts-create-custom-components.md) and add a specific function, for example, [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) to the component, if you directly embed an event method in the component, the function is added to all instances of the custom component. To solve this problem, ArkUI introduces the \@BuilderParam decorator. \@BuilderParam is used to decorate variables pointing to the \@Builder method. When initializing a custom component, you can use different methods (such as parameter modification, trailing closure, and borrowing arrow functions) to pass parameters to the custom build function decorated by \@BuilderParam. In the custom component, call \@BuilderParam to add specific functions to the component.
 
 Before reading this topic, you are advised to read [\@Builder](./arkts-builder.md).
 
 > **NOTE**
+>
+> The initial APIs of this module are supported since API version 7.
 >
 > This decorator can be used in ArkTS widgets since API version 9.
 >
 > This decorator can be used in atomic services since API version 11.
 
 
-## Usage Rules
+## How to Use
 
 
 ### Initializing \@BuilderParam Decorated Methods
 
 An \@BuilderParam decorated method can be initialized only by an \@Builder function reference.
 
-- Local initialization with the owning component's custom \@Builder function reference or a global \@Builder function reference
+- Use the custom build function of the custom component or the global custom build function to initialize the method decorated by \@BuilderParam locally.
 
-  ```ts
-  @Builder function overBuilder() {}
-
+  <!-- @[builder_param_init_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethod.ets) -->
+  
+  ``` TypeScript
+  @Builder
+  function overBuilder() {
+  }
+  
   @Component
   struct Child {
-    @Builder doNothingBuilder() {};
-    // Use the custom builder function of the custom component for @BuilderParam initialization.
+    @Builder
+    doNothingBuilder() {
+    }
+  
+    // Use the custom build function of the custom component to initialize the method decorated by \@BuilderParam.
     @BuilderParam customBuilderParam: () => void = this.doNothingBuilder;
-    // Use the global custom builder function for @BuilderParam initialization.
+    // Use the global custom build function to initialize the method decorated by \@BuilderParam.
     @BuilderParam customOverBuilderParam: () => void = overBuilder;
-    build(){}
+  
+    build() {
+    }
   }
   ```
 
+
 - Initialization from the parent component
 
-  ```ts
+  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) -->  
+  
+  ``` TypeScript
   @Component
   struct Child {
-    @Builder customBuilder() {};
+    @Builder
+    customBuilder() {
+    }
+  
     @BuilderParam customBuilderParam: () => void = this.customBuilder;
-
+  
     build() {
       Column() {
         this.customBuilderParam()
       }
     }
   }
-
+  
   @Entry
   @Component
   struct Parent {
-    @Builder componentBuilder() {
-      Text(`Parent builder `)
+    @Builder
+    componentBuilder() {
+      Text('Parent builder')
     }
-
+  
     build() {
       Column() {
+        // Use a parent component's custom builder function to initialize a method decorated with @BuilderParam in a child component.
         Child({ customBuilderParam: this.componentBuilder })
       }
     }
   }
   ```
-  **Figure 1** Example effect
 
-  ![builderparam-demo1](figures/builderparam-demo1.png)
+Effect
+
+![builderparam-demo1](figures/builderparam-demo1.png)
 
 
 - **this** in the function body must point to the correct object.
 
   Example:
 
-    ```ts
-    @Component
-    struct Child {
-      label: string = 'Child';
-      @Builder customBuilder() {};
-      @Builder customChangeThisBuilder() {};
-      @BuilderParam customBuilderParam: () => void = this.customBuilder;
-      @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
-
-      build() {
-        Column() {
-          this.customBuilderParam()
-          this.customChangeThisBuilderParam()
-        }
+  <!-- @[builder_param_init_method_demo02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo02.ets) -->
+  
+  ``` TypeScript
+  @Component
+  struct Child {
+    label: string = 'Child';
+  
+    @Builder
+    customBuilder() {
+    }
+  
+    @Builder
+    customChangeThisBuilder() {
+    }
+  
+    @BuilderParam customBuilderParam: () => void = this.customBuilder;
+    @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
+  
+    build() {
+      Column() {
+        this.customBuilderParam()
+        this.customChangeThisBuilderParam()
       }
     }
-
-    @Entry
-    @Component
-    struct Parent {
-      label: string = 'Parent';
-
-      @Builder componentBuilder() {
-        Text(`${this.label}`)
-      }
-
-      build() {
-        Column() {
-          // When this.componentBuilder() is called, this points to the Parent component decorated by the @Entry. That is, the value of the label variable is Parent.
-          this.componentBuilder()
-          Child({
-            // Pass this.componentBuilder to @BuilderParam customBuilderParam of the Child component. this points to the Child, that is, the value of the label variable is Child.
-            customBuilderParam: this.componentBuilder,
-            // Pass ():void=>{this.componentBuilder()} to @BuilderParam customChangeThisBuilderParam of the Child component.
-            // this of the arrow function points to the host object, so the value of the label variable is Parent.
-            customChangeThisBuilderParam: (): void => { this.componentBuilder() }
-          })
-        }
+  }
+  
+  @Entry
+  @Component
+  struct Parent {
+    label: string = 'Parent';
+  
+    @Builder
+    componentBuilder() {
+      Text(`${this.label}`)
+    }
+  
+    build() {
+      Column() {
+        // When this.componentBuilder() is called, this points to the Parent component decorated by the @Entry. That is, the value of the label variable is Parent.
+        this.componentBuilder()
+        Child({
+          // Pass this.componentBuilder to @BuilderParam customBuilderParam of the Child component. this points to the Child, that is, the value of the label variable is Child.
+          customBuilderParam: this.componentBuilder,
+          // Pass ():void=>{this.componentBuilder()} to @BuilderParam customChangeThisBuilderParam of the Child component.
+          // this of the arrow function points to the host object, so the value of the label variable is Parent.
+          customChangeThisBuilderParam: (): void => {
+            this.componentBuilder()
+          }
+        })
       }
     }
-    ```
-  **Figure 2** Example effect
+  }
+  ```
 
-  ![builderparam-demo2](figures/builderparam-demo2.png)
+Effect
+
+![builderparam-demo2](figures/builderparam-demo2.png)
 
 
 ## Constraints
 
-- \@BuilderParam decorated variables can be initialized only by using the \@Builder function. For details, see [Initialized Value of @BuilderParam Must Be @Builder](#initialized-value-of-builderparam-must-be-builder).
+- The variable decorated with \@BuilderParam can be initialized only through the \@Builder function. For details, see [Initialized Value of @BuilderParam Must Be @Builder](#initialized-value-of-builderparam-must-be-builder).
 
-- When the @Require and \@BuilderParam decorators are used together, the latter must be initialized. For details, see [Using @Require and @BuilderParam Together](#using-require-and-builderparam-together).
+- When the [\@Require decorator](./arkts-require.md) and \@BuilderParam decorator are used together, the \@BuilderParam decorator must be initialized. For details, see [Using @Require and @BuilderParam Together](#using-require-and-builderparam-together).
 
-- In the scenario where a custom component trailing closure is used, the child component has only one \@BuilderParam to receive this trailing closure, and the \@BuilderParam cannot contain parameters. For details, see [Component Initialization Through Trailing Closure](#component-initialization-through-trailing-closure).
+- In the scenario where a custom component is followed by a closure, the child component has only one \@BuilderParam to receive the closure, and the method decorated by this \@BuilderParam cannot have parameters. For details, see [Component Initialization Through Trailing Closure](#component-initialization-through-trailing-closure).
 
-## Use Scenarios
+## Use Cases
 
 ### Component Initialization Through Parameters
 
-An \@BuilderParam decorated method can be a method with or without parameters. Whether it contains parameters should match that of the assigned \@Builder method.
+The method decorated by \@BuilderParam must match the type of the \@Builder method it points to.
 
-```ts
-class Tmp{
-  label: string = '';
+<!-- @[builder_param_scene_init_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneInitComponent.ets) -->
+
+``` TypeScript
+class Tmp {
+  public label: string = '';
 }
 
-@Builder function overBuilder($$: Tmp) {
+@Builder
+function overBuilder($$: Tmp) {
   Text($$.label)
-    .width(400)
+    .width('100%')
     .height(50)
     .backgroundColor(Color.Green)
 }
@@ -149,7 +189,11 @@ class Tmp{
 @Component
 struct Child {
   label: string = 'Child';
-  @Builder customBuilder() {};
+
+  @Builder
+  customBuilder() {
+  }
+
   // Without parameters. The pointed customBuilder does not carry parameters either.
   @BuilderParam customBuilderParam: () => void = this.customBuilder;
   // With parameters. The pointed overBuilder also carries parameters.
@@ -158,7 +202,7 @@ struct Child {
   build() {
     Column() {
       this.customBuilderParam()
-      this.customOverBuilderParam({label: 'global Builder label' } )
+      this.customOverBuilderParam({ label: 'global Builder label' })
     }
   }
 }
@@ -168,7 +212,8 @@ struct Child {
 struct Parent {
   label: string = 'Parent';
 
-  @Builder componentBuilder() {
+  @Builder
+  componentBuilder() {
     Text(`${this.label}`)
   }
 
@@ -180,31 +225,37 @@ struct Parent {
   }
 }
 ```
-**Figure 3** Example effect
+Effect
 
 ![builderparam-demo3](figures/builderparam-demo3.png)
 
 
 ### Component Initialization Through Trailing Closure
 
-In a custom component, the \@BuilderParam decorated attribute can be initialized using a trailing closure. During initialization, the component name is followed by a pair of braces ({}) to form a trailing closure.
+In a custom component, the \@BuilderParam decorated attribute can be initialized using a trailing closure. During initialization, a component must be followed by a pair of braces ({}) to form a trailing closure.
 
 > **NOTE**
 >
->  - In this scenario, the custom component can have only one \@BuilderParam decorated attribute.
-> 
->  - In this scenario, custom components do not support universal attributes.
+>  - In this scenario, the custom component has only one attribute decorated with \@BuilderParam.
+>
+>  - In this scenario, the custom component does not support common attributes.
 
 You can pass the content in the trailing closure to \@BuilderParam as an \@Builder decorated method.
 
 Example 1:
 
-```ts
+<!-- @[builder_param_scene_trailing_closure_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneTrailingClosure01.ets) -->
+
+``` TypeScript
 @Component
 struct CustomContainer {
   @Prop header: string = '';
-  @Builder closerBuilder(){};
-  // Use the trailing closure {} (@Builder decorated method) of the parent component for @BuilderParam initialization.
+
+  @Builder
+  closerBuilder() {
+  }
+
+  // Use the trailing closure {} (decorated by @Builder) of the parent component to initialize the @BuilderParam-decorated method of the child component.
   @BuilderParam closer: () => void = this.closerBuilder;
 
   build() {
@@ -216,7 +267,8 @@ struct CustomContainer {
   }
 }
 
-@Builder function specificParam(label1: string, label2: string) {
+@Builder
+function specificParam(label1: string, label2: string) {
   Column() {
     Text(label1)
       .fontSize(30)
@@ -246,19 +298,25 @@ struct CustomContainerUser {
   }
 }
 ```
-**Figure 4** Example effect
+Effect
 
-![builderparam-demo4](figures/builderparam-demo4.png)
+![builderparam-demo4](figures/builderparam-demo4.gif)
 
-Use global @Builder and local @Builder to initialize @BuilderParam in the @ComponentV2 decorated custom components through trailing closures.
+You can use global or local \@Builder to initialize the methods decorated by \@BuilderParam in the custom component decorated by [\@ComponentV2](./arkts-create-custom-components.md#componentv2) in the form of trailing closures.
 
 Example 2:
 
-```ts
+<!-- @[builder_param_scene_trailing_closure_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneTrailingClosure02.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct ChildPage {
-  @Require @Param message: string = "";
-  @Builder customBuilder() {};
+  @Require @Param message: string = '';
+
+  @Builder
+  customBuilder() {
+  }
+
   @BuilderParam customBuilderParam: () => void = this.customBuilder;
 
   build() {
@@ -271,10 +329,12 @@ struct ChildPage {
   }
 }
 
-const builder_value: string = 'Hello World';
-@Builder function overBuilder() {
+const builderValue: string = 'Hello World';
+
+@Builder
+function overBuilder() {
   Row() {
-    Text(`Global Builder: ${builder_value}`)
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -285,9 +345,10 @@ const builder_value: string = 'Hello World';
 struct ParentPage {
   @Local label: string = 'Parent Page';
 
-  @Builder componentBuilder() {
-    Row(){
-      Text(`Local Builder:${this.label}`)
+  @Builder
+  componentBuilder() {
+    Row() {
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -295,16 +356,17 @@ struct ParentPage {
 
   build() {
     Column() {
-      ChildPage({ message: this.label}){
-        Column() {  // Use the local @Builder. Column component is followed by braces ({}) to form a trailing closure to initialize the custom component @BuilderParam.
+      ChildPage({ message: this.label }) {
+        Column() { // Use the local @Builder. Column component is followed by braces ({}) to form a trailing closure to initialize the custom component @BuilderParam.
           this.componentBuilder();
         }
       }
+
       Line()
         .width('100%')
         .height(10)
         .backgroundColor('#000000').margin(10)
-      ChildPage({ message: this.label}){  // Use global @Builder. ChildPage component is followed by braces ({}) to form a trailing closure to initialize the custom component @BuilderParam.
+      ChildPage({ message: this.label }) { // Use the global @Builder. Component is followed by braces ({}) to form a trailing closure to initialize the custom component @BuilderParam.
         Column() {
           overBuilder();
         }
@@ -313,16 +375,175 @@ struct ParentPage {
   }
 }
 ```
+Effect
+
+![builderparam-demo8](figures/builderparam-demo8.png)
+
+### Using \@BuilderParam to Isolate the Calls of Multiple Components to the \@Builder Redirection Logic
+
+When the system component encapsulated by \@Builder contains the redirection logic, all custom components that call \@Builder have the redirection function. To disable the redirection function of a specific component, you can use \@BuilderParam to isolate the redirection logic.
+
+> **NOTE**
+>
+> In the sample code, the **Navigation** component is used for navigation. For details about the implementation logic, see the [Navigation](../arkts-navigation-architecture.md) guide.
+
+<!-- @[builder_param_scene_jump_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/BuilderParamSceneJumpLogic.ets) -->
+
+``` TypeScript
+import { HelloWorldPageBuilder } from './helloworld';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+class NavigationParams {
+  public pathStack: NavPathStack = new NavPathStack();
+  public boo: boolean = true;
+}
+
+@Builder
+function navigationAction(params: NavigationParams) {
+  Column() {
+    Navigation(params.pathStack) {
+      Button('router to page', { stateEffect: true, type: ButtonType.Capsule })
+        .width('80%')
+        .height(40)
+        .margin(20)
+        .onClick(() => {
+          // Modify the @BuilderParam parameter to determine whether to perform redirection.
+          if (params.boo) {
+            params.pathStack.pushPath({ name: 'HelloWorldPage' });
+          } else {
+            hilog.info(DOMAIN, 'testTag', '%{public}s', '@BuilderParam setting does not jump');
+          }
+        })
+    }
+    .navDestination(HelloWorldPageBuilder)
+    .hideTitleBar(true)
+    .height('100%')
+    .width('100%')
+  }
+  .height('25%')
+  .width('100%')
+}
+
+@Entry
+@Component
+struct ParentPage {
+  @State info: NavigationParams = new NavigationParams();
+
+  build() {
+    Column() {
+      Text('ParentPage')
+      navigationAction({ pathStack: this.info.pathStack, boo: true })
+      ChildPageOne()
+      ChildPage_BuilderParam({ eventBuilder: navigationAction })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct ChildPageOne {
+  @State info: NavigationParams = new NavigationParams();
+
+  build() {
+    Column() {
+      Text('ChildPage')
+      navigationAction({ pathStack: this.info.pathStack, boo: true })
+    }
+  }
+}
+
+@Component
+struct ChildPage_BuilderParam {
+  @State info: NavigationParams = new NavigationParams();
+  @BuilderParam eventBuilder: (param: NavigationParams) => void = navigationAction;
+
+  build() {
+    Column() {
+      Text('ChildPage_BuilderParam')
+      // Modify the transferred global @Builder parameters to disable the redirection function.
+      this.eventBuilder({ pathStack: this.info.pathStack, boo: false })
+    }
+  }
+}
+```
+
+
+<!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets) --> 
+
+``` TypeScript
+@Builder
+export function HelloWorldPageBuilder() {
+  HelloWorldPage()
+}
+
+@Component
+struct HelloWorldPage {
+  @State message: string = 'Hello World';
+  @State pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    // Child page for redirection.
+    NavDestination() {
+      Column() {
+        Text(this.message)
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+
+**router_map.json**
+This file is stored in the **resources/base/profile** directory of the project.
+```ts
+{
+  "routerMap": [
+    {
+      "name": "HelloWorldPage",
+      "buildFunction": "HelloWorldPageBuilder",
+      "pageSourceFile": "src/main/ets/pages/helloworld.ets"
+    }
+  ]
+}
+```
+**module.json5**
+This file is located in the root directory of the application module, for example, **entry/src/main/module.json5**.
+
+```ts
+{
+  "module": {
+    "routerMap": "$profile:router_map",
+    ......
+  }
+}   
+```
+
+Effect
+
+![builderparam-demo7](figures/builderparam-demo7.gif)
 
 ### \@BuilderParam Initialization Through Global and Local \@Builder
 
-In a custom component, the \@BuilderParam decorated variable is used to receive the content passed by the parent component through \@Builder for initialization. The \@Builder of the parent component can use the arrow function to change the object that this points to, therefore, when a \@BuilderParam decorated variable is used, different content is displayed.
+In a custom component, the variable decorated with \@BuilderParam is used to receive the content passed by the parent component through \@Builder for initialization. Because the \@Builder of the parent component can use the arrow function to change the current this direction, the variable decorated with \@BuilderParam displays different content.
 
-```ts
+<!-- @[builder_param_scene_global_local_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneGlobalLocalInit.ets) -->
+
+``` TypeScript
 @Component
 struct ChildPage {
   label: string = 'Child Page';
-  @Builder customBuilder() {};
+
+  @Builder
+  customBuilder() {
+  }
+
   @BuilderParam customBuilderParam: () => void = this.customBuilder;
   @BuilderParam customChangeThisBuilderParam: () => void = this.customBuilder;
 
@@ -334,10 +555,12 @@ struct ChildPage {
   }
 }
 
-const builder_value: string = 'Hello World';
-@Builder function overBuilder() {
+const builderValue: string = 'Hello World';
+
+@Builder
+function overBuilder() {
   Row() {
-    Text(`Global Builder: ${builder_value}`)
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -348,9 +571,10 @@ const builder_value: string = 'Hello World';
 struct ParentPage {
   label: string = 'Parent Page';
 
-  @Builder componentBuilder() {
-    Row(){
-      Text(`Local Builder:${this.label}`)
+  @Builder
+  componentBuilder() {
+    Row() {
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -358,44 +582,55 @@ struct ParentPage {
 
   build() {
     Column() {
-      // When this.componentBuilder() is called, this points to the **ParentPage** component decorated by the @Entry. Therefore, the value of the label variable is Parent Page.
+      // When this.componentBuilder() is called, this points to the ParentPage component decorated by the @Entry. Therefore, the value of the label variable is 'Parent Page'.
       this.componentBuilder()
       ChildPage({
-        // Pass this.componentBuilder to @BuilderParam customBuilderParam of the ChildPage component. this points to ChildPage, that is, the value of the label variable is Child Page.
+        // Pass this.componentBuilder to @BuilderParam customBuilderParam of the child component ChildPage.
+        // this points to ChildPage, that is, the value of the label variable is 'Child Page'.
         customBuilderParam: this.componentBuilder,
         // Pass ():void=>{this.componentBuilder()} to @BuilderParam customChangeThisBuilderParam of the ChildPage component.
-        // this of the arrow function points to the host object, so the value of the label variable is Parent Page.
-        customChangeThisBuilderParam: (): void => { this.componentBuilder() }
+        // this of the arrow function points to the host object, so the value of the label variable is 'Parent Page'.
+        customChangeThisBuilderParam: (): void => {
+          this.componentBuilder()
+        }
       })
       Line()
         .width('100%')
         .height(10)
         .backgroundColor('#000000').margin(10)
-      // When the global overBuilder() is called, this points to the entire current page. Therefore, the displayed content is Hello World.
+      // When the global overBuilder() is called, this points to the entire current page. Therefore, the displayed content is 'Hello World'.
       overBuilder()
       ChildPage({
-        // Pass the global overBuilder to @BuilderParam customBuilderParam of the ChildPage component. this points to the entire current page, that is, the displayed content is Hello World.
+        // Pass the global overBuilder to @BuilderParam customBuilderParam of the child component ChildPage.
+        // this points to the entire current page. Therefore, the displayed content is 'Hello World'.
         customBuilderParam: overBuilder,
-        // Pass the global overBuilder to @BuilderParam customChangeThisBuilderParam of the ChildPage component. this points to the entire current page, that is, the displayed content is Hello World.
+        // Transfer the global overBuilder to @BuilderParam customChangeThisBuilderParam of the child component ChildPage.
+        // this points to the entire current page. Therefore, the displayed content is 'Hello World'.
         customChangeThisBuilderParam: overBuilder
       })
     }
   }
 }
 ```
-**Figure 5** Example effect
+Effect
 
 ![builderparam-demo5](figures/builderparam-demo5.png)
 
 ### Using @BuilderParam in a @ComponentV2 Decorated Custom Component
 
-Use global @Builder and local @Builder to initialize the @BuilderParam attribute of the @ComponentV2 decorated custom component.
+Use the global or local @Builder to initialize the @BuilderParam attribute in the custom component decorated with @ComponentV2.
 
-```ts
+<!-- @[builder_param_scene_in_component_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneInComponentV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct ChildPage {
   @Param label: string = 'Child Page';
-  @Builder customBuilder() {};
+
+  @Builder
+  customBuilder() {
+  }
+
   @BuilderParam customBuilderParam: () => void = this.customBuilder;
   @BuilderParam customChangeThisBuilderParam: () => void = this.customBuilder;
 
@@ -407,10 +642,12 @@ struct ChildPage {
   }
 }
 
-const builder_value: string = 'Hello World';
-@Builder function overBuilder() {
+const builderValue: string = 'Hello World';
+
+@Builder
+function overBuilder() {
   Row() {
-    Text(`Global Builder: ${builder_value}`)
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -421,9 +658,10 @@ const builder_value: string = 'Hello World';
 struct ParentPage {
   @Local label: string = 'Parent Page';
 
-  @Builder componentBuilder() {
-    Row(){
-      Text(`Local Builder:${this.label}`)
+  @Builder
+  componentBuilder() {
+    Row() {
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -431,32 +669,37 @@ struct ParentPage {
 
   build() {
     Column() {
-      // When this.componentBuilder() is called, this points to the **ParentPage** component decorated by the @Entry. Therefore, the value of the label variable is Parent Page.
+      // When this.componentBuilder() is called, this points to the ParentPage component decorated by the @Entry. Therefore, the value of the label variable is 'Parent Page'.
       this.componentBuilder()
       ChildPage({
-        // Pass this.componentBuilder to @BuilderParam customBuilderParam of the ChildPage component. this points to ChildPage, that is, the value of the label variable is Child Page.
+        // Pass this.componentBuilder to @BuilderParam customBuilderParam of the child component ChildPage.
+        // this points to ChildPage, that is, the value of the label variable is 'Child Page'.
         customBuilderParam: this.componentBuilder,
         // Pass ():void=>{this.componentBuilder()} to @BuilderParam customChangeThisBuilderPara of the ChildPage component.
-        // this of the arrow function points to the host object, so the value of the label variable is Parent Page.
-        customChangeThisBuilderParam: (): void => { this.componentBuilder() }
+        // this of the arrow function points to the host object, so the value of the label variable is 'Parent Page'.
+        customChangeThisBuilderParam: (): void => {
+          this.componentBuilder()
+        }
       })
       Line()
         .width('100%')
         .height(5)
         .backgroundColor('#000000').margin(10)
-      // When the global overBuilder() is called, this points to the entire current page. Therefore, the displayed content is Hello World.
+      // When the global overBuilder() is called, this points to the entire current page. Therefore, the displayed content is 'Hello World'.
       overBuilder()
       ChildPage({
-        // Pass the global overBuilder to @BuilderParam customBuilderParam of the ChildPage component. this points to the entire current page, that is, the displayed content is Hello World.
+        // Pass the global overBuilder to @BuilderParam customBuilderParam of the child component ChildPage.
+        // this points to the entire current page. Therefore, the displayed content is 'Hello World'.
         customBuilderParam: overBuilder,
-        // Pass the global overBuilder to @BuilderParam customChangeThisBuilderParam of the ChildPage component. this points to the entire current page, that is, the displayed content is Hello World.
+        // Transfer the global overBuilder to @BuilderParam customChangeThisBuilderParam of the child component ChildPage.
+        // this points to the entire current page. Therefore, the displayed content is 'Hello World'.
         customChangeThisBuilderParam: overBuilder
       })
     }
   }
 }
 ```
-**Figure 6** Example effect
+Effect
 
 ![builderparam-demo6](figures/builderparam-demo6.png)
 
@@ -465,15 +708,21 @@ struct ParentPage {
 
 ### UI Re-rendering Fails When Content Is Changed
 
-When the custom component **ChildPage** is called, \@Builder is passed as a parameter through **this.componentBuilder**. Currently, this points to the custom component. Therefore, if the **label** value is changed inside the parent component, the custom component **ChildPage** cannot detect the change.
+When the custom component **ChildPage** is called, the \@Builder parameter is transferred through **this.componentBuilder**. **this** points to the internal part of the custom component. Therefore, when the value of **label** is changed in the parent component, **ChildPage** cannot detect the change.
 
-[Incorrect Example]
+[Incorrect usage]
 
-```ts
+<!-- @[builder_param_problem_not_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshOpposite.ets) -->
+
+``` TypeScript
 @Component
 struct ChildPage {
   @State label: string = 'Child Page';
-  @Builder customBuilder() {};
+
+  @Builder
+  customBuilder() {
+  }
+
   @BuilderParam customChangeThisBuilderParam: () => void = this.customBuilder;
 
   build() {
@@ -488,8 +737,9 @@ struct ChildPage {
 struct ParentPage {
   @State label: string = 'Parent Page';
 
-  @Builder componentBuilder() {
-    Row(){
+  @Builder
+  componentBuilder() {
+    Row() {
       Text(`Builder :${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
@@ -502,7 +752,8 @@ struct ParentPage {
         // this points to the ChildPage component.
         customChangeThisBuilderParam: this.componentBuilder
       })
-      Button('Click to change label')
+      // Replace $r('app.string.builderOpp_text1') with the actual resource file. In this example, the value of the resource file is "Click to change the label content."
+      Button($r('app.string.builderOpp_text1'))
         .onClick(() => {
           this.label = 'Hello World';
         })
@@ -511,16 +762,21 @@ struct ParentPage {
 }
 ```
 
-Use the arrow function to pass the \@Builder to the custom component **ChildPage** and this points to the parent component **ParentPage**. Therefore, if the value of label is changed in the parent component, the **ChildPage** detects the change and renders the UI again.
-The dynamic UI rendering can also be implemented by changing @Builder to @LocalBuilder.
+Use the arrow function to transfer \@Builder to the custom component **ChildPage**. The value of **this** points to the parent component **ParentPage**. When the value of **label** is changed in the parent component, **ChildPage** detects the change and renders the UI again.
 
-[Correct Example]
+[Correct usage]
 
-```ts
+<!-- @[builder_param_problem_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshPositive.ets) -->
+
+``` TypeScript
 @Component
 struct ChildPage {
   @State label: string = 'Child Page';
-  @Builder customBuilder() {};
+
+  @Builder
+  customBuilder() {
+  }
+
   @BuilderParam customChangeThisBuilderParam: () => void = this.customBuilder;
 
   build() {
@@ -535,8 +791,9 @@ struct ChildPage {
 struct ParentPage {
   @State label: string = 'Parent Page';
 
-  @Builder componentBuilder() {
-    Row(){
+  @Builder
+  componentBuilder() {
+    Row() {
       Text(`Builder :${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
@@ -546,9 +803,12 @@ struct ParentPage {
   build() {
     Column() {
       ChildPage({
-        customChangeThisBuilderParam: () => { this.componentBuilder() }
+        customChangeThisBuilderParam: () => {
+          this.componentBuilder()
+        }
       })
-      Button('Click to change label')
+      // Replace $r('app.string.builderOpp_text1') with the actual resource file. In this example, the value of the resource file is "Click to change the label content."
+      Button($r('app.string.builderOpp_text1'))
         .onClick(() => {
           this.label = 'Hello World';
         })
@@ -559,21 +819,22 @@ struct ParentPage {
 
 ### Using @Require and @BuilderParam Together
 
-The variables decorated by @Require need to be initialized; otherwise, an error is reported during compilation.
+The variables decorated by the \@Require decorator need to be initialized. If the variables are not initialized, a compilation error is reported.
 
-[Incorrect Example]
+[Incorrect usage]
 
 ```ts
-@Builder function globalBuilder() {
+@Builder
+function globalBuilder() {
   Text('Hello World')
 }
 
 @Entry
 @Component
-struct customBuilderDemo {
+struct CustomBuilderDemo {
   build() {
     Column() {
-      // No value is assigned to ChildBuilder. An error is reported during compilation or editing.
+      // Since no value has been assigned to the ChildBuilder variable decorated with @Require, an error will be thrown at this point both during compilation and editing.
       ChildPage()
     }
   }
@@ -582,6 +843,7 @@ struct customBuilderDemo {
 @Component
 struct ChildPage {
   @Require @BuilderParam ChildBuilder: () => void = globalBuilder;
+
   build() {
     Column() {
       this.ChildBuilder()
@@ -590,31 +852,36 @@ struct ChildPage {
 }
 ```
 
-Initialize the variables decorated by @Require. In this case, no error is reported during compilation.
+The variables decorated by \@Require must be initialized from external systems.
 
-[Correct Example]
+[Correct usage]
 
-```ts
-@Builder function globalBuilder() {
+<!-- @[builder_param_problem_combined_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemCombinedPositive.ets) --> 
+
+``` TypeScript
+@Builder
+function globalBuilder() {
   Text('Hello World')
 }
 
 @Entry
 @Component
-struct customBuilderDemo {
+struct CustomBuilderDemo {
   build() {
     Column() {
-      ChildPage({ChildBuilder: globalBuilder})
+      // childBuilder is decorated with @Require and must be initialized from external systems.
+      ChildPage({ childBuilder: globalBuilder })
     }
   }
 }
 
 @Component
 struct ChildPage {
-  @Require @BuilderParam ChildBuilder: () => void = globalBuilder;
+  @Require @BuilderParam childBuilder: () => void = globalBuilder;
+
   build() {
     Column() {
-      this.ChildBuilder()
+      this.childBuilder()
     }
   }
 }
@@ -622,22 +889,25 @@ struct ChildPage {
 
 ### Initialized Value of @BuilderParam Must Be @Builder
 
-Use the @State decorated variables to initialize the variables of @BuilderParam decorated child component **ChildBuilder**. An error is reported during compilation.
+When the \@State decorator is used to decorate a variable and the \@BuilderParam and **ChildBuilder** variables of the child component are initialized, an error message is displayed during compilation.
 
-[Incorrect Example]
+[Incorrect usage]
 
 ```ts
-@Builder function globalBuilder() {
+@Builder
+function globalBuilder() {
   Text('Hello World')
 }
+
 @Entry
 @Component
-struct customBuilderDemo {
-  @State message: string = "";
+struct CustomBuilderDemo {
+  @State message: string = '';
+
   build() {
     Column() {
-      // ChildBuilder receives the variable decorated by @State. An error is reported during compilation or editing.
-      ChildPage({ChildBuilder: this.message})
+      // When the ChildBuilder variable decorated with @BuilderParam receives a variable decorated with @State, compilation and editing errors will occur.
+      ChildPage({ ChildBuilder: this.message })
     }
   }
 }
@@ -645,6 +915,7 @@ struct customBuilderDemo {
 @Component
 struct ChildPage {
   @BuilderParam ChildBuilder: () => void = globalBuilder;
+
   build() {
     Column() {
       this.ChildBuilder()
@@ -653,30 +924,36 @@ struct ChildPage {
 }
 ```
 
-Use @Builder decorated **globalBuilder()** to initialize the variables of @BuilderParam decorated **ChildBuilder**. No error is reported during compilation.
+Use the **globalBuilder()** method decorated by the global \@Builder to initialize the **ChildBuilder** variable decorated by the \@BuilderParam of the child component. No error is reported during compilation, and the function is normal.
 
-[Correct Example]
+[Correct usage]
 
-```ts
-@Builder function globalBuilder() {
+<!-- @[builder_param_problem_must_builder_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemMustBuilderPositive.ets) --> 
+
+``` TypeScript
+@Builder
+function globalBuilder() {
   Text('Hello World')
 }
+
 @Entry
 @Component
-struct customBuilderDemo {
+struct CustomBuilderDemo {
   build() {
     Column() {
-      ChildPage({ChildBuilder: globalBuilder})
+      // Correct usage.
+      ChildPage({ childBuilder: globalBuilder })
     }
   }
 }
 
 @Component
 struct ChildPage {
-  @BuilderParam ChildBuilder: () => void = globalBuilder;
+  @BuilderParam childBuilder: () => void = globalBuilder;
+
   build() {
     Column() {
-      this.ChildBuilder()
+      this.childBuilder()
     }
   }
 }

@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 本模块用于监听当前应用进程的状态变化。为了便于表述，下文中将“应用进程”简称为“进程”。
 
@@ -73,7 +73,7 @@ let applicationStateChangeCallback: ApplicationStateChangeCallback = {
 
 export default class MyAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     // 1.获取applicationContext
     let applicationContext = this.context.getApplicationContext();
     try {
@@ -84,7 +84,7 @@ export default class MyAbility extends UIAbility {
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
-    console.log('Register applicationStateChangeCallback');
+    console.info('Register applicationStateChangeCallback');
   }
   onDestroy() {
     let applicationContext = this.context.getApplicationContext();

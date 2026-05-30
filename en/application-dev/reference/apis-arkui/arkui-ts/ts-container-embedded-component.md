@@ -1,4 +1,10 @@
 # EmbeddedComponent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **EmbeddedComponent** is a component used to embed into the current page the UI provided by another [EmbeddedUIExtensionAbility](../../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) in the same application. The EmbeddedUIExtensionAbility runs in an independent process for UI layout and rendering.
 
@@ -22,6 +28,8 @@ Not supported
 
 EmbeddedComponent(loader: Want, type: EmbeddedType)
 
+Creates a cross-process embedded component to display the UI of the EmbeddedUIExtensionAbility with the same bundle name.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -39,7 +47,7 @@ The [universal attributes](ts-component-general-attributes.md) are supported.
 
 > **NOTE**
 >
-> The default and minimum widths and heights of the **EmbeddedComponent** are all 10 vp. The following attributes related to the width and height are not supported: **constraintSize**, **aspectRatio**, **layoutWeight**, **flexBasis**, **flexGrow**, and **flexShrink**.
+> The default and minimum width and height of the **EmbeddedComponent** are both 10 vp. The following width- and height-related attributes are not supported: **constraintSize**, **aspectRatio**, **layoutWeight**, **flexBasis**, **flexGrow**, and **flexShrink**.
 
 ## Events
 
@@ -51,7 +59,11 @@ Universal events, such as the [click event](ts-universal-events-click.md), are n
 
 onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
-Called when the started EmbeddedUIExtensionAbility is terminated by calling **terminateSelfWithResult** or **terminateSelf**.
+Triggered when the the launched EmbeddedUIExtensionAbility exits normally by calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself).
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -72,7 +84,11 @@ Called when the started EmbeddedUIExtensionAbility is terminated by calling **te
 
 onError(callback: ErrorCallback)
 
-Called when an error occurs during the running of the started EmbeddedUIExtensionAbility.
+Called when an error occurs during the running of the started EmbeddedUIExtensionAbility. Through the **code**, **name**, and **message** in the callback parameters, error information can be obtained and handled. For details about the error codes, see [UIExtension Error Codes](../errorcode-uiextension.md).
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -101,12 +117,10 @@ Provides the result returned by the started **EmbeddedUIExtensionAbility**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### Properties
-
-| Name| Type                                                      | Mandatory| Description                                                |
-| ---- | ---------------------------------------------------------- | ---- | ---------------------------------------------------- |
-| code | number                                                     | Yes  | Result code returned when the EmbeddedUIExtensionAbility exits.|
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | No| Data returned when the EmbeddedUIExtensionAbility exits.  |
+| Name| Type                     | Read-Only| Optional| Description                                                |
+| ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
+| code | number                                                     | No| No| Result code returned when the EmbeddedUIExtensionAbility exits. The result code is determined by the data passed when terminateSelfWithResult or terminateSelf is called.|
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | No| Yes| Data returned when the EmbeddedUIExtensionAbility exits.  |
 
 ## Example: Loading an EmbeddedComponent Component
 
@@ -120,16 +134,18 @@ This example shows the basic usage of the **EmbeddedComponent** and EmbeddedUIEx
   @Entry
   @Component
   struct Index {
-    @State message: string = 'Message: '
+    @State message: string = 'Message: ';
     private want: Want = {
-      bundleName: "com.example.embeddeddemo",
+      bundleName: "com.example.embeddedComponent",
       abilityName: "ExampleEmbeddedAbility",
-    }
+    };
 
     build() {
       Row() {
         Column() {
-          Text(this.message).fontSize(30)
+          Text(this.message)
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
           EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
             .width('100%')
             .height('90%')
@@ -154,27 +170,27 @@ This example shows the basic usage of the **EmbeddedComponent** and EmbeddedUIEx
   ```ts
   import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
-  const TAG: string = '[ExampleEmbeddedAbility]'
+  const TAG: string = '[ExampleEmbeddedAbility]';
 
   export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
     onCreate() {
-      console.log(TAG, `onCreate`);
+      console.info(TAG, `onCreate`);
     }
 
     onForeground() {
-      console.log(TAG, `onForeground`);
+      console.info(TAG, `onForeground`);
     }
 
     onBackground() {
-      console.log(TAG, `onBackground`);
+      console.info(TAG, `onBackground`);
     }
 
     onDestroy() {
-      console.log(TAG, `onDestroy`);
+      console.info(TAG, `onDestroy`);
     }
 
     onSessionCreate(want: Want, session: UIExtensionContentSession) {
-      console.log(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+      console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
       let param: Record<string, UIExtensionContentSession> = {
         'session': session
       };
@@ -184,7 +200,7 @@ This example shows the basic usage of the **EmbeddedComponent** and EmbeddedUIEx
     }
 
     onSessionDestroy(session: UIExtensionContentSession) {
-      console.log(TAG, `onSessionDestroy`);
+      console.info(TAG, `onSessionDestroy`);
     }
   }
   ```
@@ -194,13 +210,12 @@ This example shows the basic usage of the **EmbeddedComponent** and EmbeddedUIEx
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-  let storage = LocalStorage.getShared()
-
-  @Entry(storage)
+  @Entry
   @Component
   struct Extension {
     @State message: string = 'EmbeddedUIExtensionAbility Index';
-    private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+    private storage: LocalStorage | undefined = this.getUIContext()?.getSharedLocalStorage();
+    private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
 
     build() {
       Column() {
@@ -212,7 +227,7 @@ This example shows the basic usage of the **EmbeddedComponent** and EmbeddedUIEx
           this.session?.terminateSelfWithResult({
             resultCode: 1,
             want: {
-              bundleName: "com.example.embeddeddemo",
+              bundleName: "com.example.embeddedComponent",
               abilityName: "ExampleEmbeddedAbility",
             }
           });
@@ -230,3 +245,24 @@ This example shows the basic usage of the **EmbeddedComponent** and EmbeddedUIEx
     "type": "embeddedUI"
   }
   ```
+- The file directory structure is as follows:
+
+  ```shell
+  .
+  └── main
+      ├── ets
+      │   ├── extensionAbility
+      │   │   └── ExampleEmbeddedAbility.ets
+      │   └── pages
+      |       ├── extension.ets
+      │       └── Index.ets  
+      ├── resources
+      |   └── base
+      |       └── profile
+      |           └── main_pages.json
+      └── module.json5
+  ```
+
+- The following is an example:
+
+  ![EmbeddedComponent](figures/embeddedComponent.png)

@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行任务队列相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -26,22 +26,24 @@
 ## 使用示例
 
 JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅展示接口对应的C++相关代码。
+
 权限要求：Wasm字节码需要应用拥有JIT权限才能执行，可参考[JSVM 申请JIT权限指导](jsvm-apply-jit-profile.md)申请对应权限。
+
 运行限制：当前 JSVM 版本在坚盾守护模式下将禁用 WebAssembly 全部功能模块。开发者需针对此限制进行应用兼容性评估，具体技术规范详见[JSVM 坚盾守护模式](jsvm-secure-shield-mode.md)。
 ### OH_JSVM_PumpMessageLoop & OH_JSVM_PerformMicrotaskCheckpoint
 
 启动任务队列，执行任务。
 
 cpp部分代码：
+<!-- @[oh_jsvm_pump_message_loop_and_perform_microtask_checkpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/pumpmessageloop/src/main/cpp/hello.cpp) -->
 
-```cpp
+``` C++
 #include <chrono>
-#include <string.h>
-
-static int g_aa = 0;
+#include <cstring>
+// ...
 
 // 待执行的js代码
-static const char *STR_TASK = R"JS( 
+static const char *STR_TASK = R"JS(
     // wasm 字节码 (以add 模块为例)
     // 以下 wasmBuffer 对应的 wasm 字节码文本格式如下所示，只包含了一个函数 add
     // (module
@@ -55,7 +57,7 @@ static const char *STR_TASK = R"JS(
     var wasmBytes = new Uint8Array([0x00, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00, 0x01, 0x07, 0x01,
                                        0x60, 0x02, 0x7f, 0x7f, 0x01, 0x7f, 0x03, 0x02, 0x01, 0x00, 0x07,
                                        0x07, 0x01, 0x03, 0x61, 0x64, 0x64, 0x00, 0x00, 0x0a, 0x09, 0x01,
-                                       0x07, 0x00, 0x20, 0x00, 0x20, 0x01, 0x6a, 0x0b]);    
+                                       0x07, 0x00, 0x20, 0x00, 0x20, 0x01, 0x6a, 0x0b]);
 
     var p = WebAssembly.instantiate(wasmBytes, {});
     p.then((result) => {
@@ -67,15 +69,17 @@ static const char *STR_TASK = R"JS(
 )JS";
 
 // 保证js代码中的打印信息可以正常输出
-static JSVM_Value ConsoleInfo(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value ConsoleInfo(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1];
-    char log[256] = "";
+    #define MAX_LOG_LENGTH 255
+    char log[MAX_LOG_LENGTH + 1] = "";
     size_t logLength = 0;
     JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL));
 
-    OH_JSVM_GetValueStringUtf8(env, args[0], log, 255, &logLength);
-    log[255] = 0;
+    OH_JSVM_GetValueStringUtf8(env, args[0], log, MAX_LOG_LENGTH, &logLength);
+    log[MAX_LOG_LENGTH] = 0;
     OH_LOG_INFO(LOG_APP, "JSVM API TEST: %{public}s", log);
     return nullptr;
 }
@@ -88,7 +92,8 @@ JSVM_PropertyDescriptor descriptor[] = {
     {"consoleinfo", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
 };
 
-static int32_t TestJSVM() {
+static int32_t TestJSVM()
+{
     JSVM_InitOptions init_options;
     memset(&init_options, 0, sizeof(init_options));
     if (g_aa == 0) {
@@ -102,7 +107,7 @@ static int32_t TestJSVM() {
     CHECK(OH_JSVM_CreateVM(&options, &vm));
     JSVM_VMScope vm_scope;
     CHECK(OH_JSVM_OpenVMScope(vm, &vm_scope));
-    
+
     JSVM_Env env;
     CHECK(OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env));
     JSVM_EnvScope envScope;
@@ -119,12 +124,13 @@ static int32_t TestJSVM() {
     auto start = std::chrono::system_clock::now();
     while (true) {
         // 如果任务队列中没有任务启动，则rst设置为false
-        CHECK_RET(OH_JSVM_PumpMessageLoop(vm, &rst)); 
+        CHECK_RET(OH_JSVM_PumpMessageLoop(vm, &rst));
         CHECK_RET(OH_JSVM_PerformMicrotaskCheckpoint(vm));
         // 定时退出
         auto now = std::chrono::system_clock::now();
         auto cost = std::chrono::duration_cast<std::chrono::milliseconds>(now - start).count();
-        if (cost > 100) {
+        const int timeoutMs = 100;
+        if (cost > timeoutMs) {
             break;
         }
     }
@@ -137,11 +143,9 @@ static int32_t TestJSVM() {
     CHECK(OH_JSVM_DestroyVM(vm));
     return 0;
 }
-
 ```
-<!-- @[oh_jsvm_pump_message_loop_and_perform_microtask_checkpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/pumpmessageloop/src/main/cpp/hello.cpp) -->
 预期输出结果：
-```
+```txt
 JSVM API TEST: Called with instance [object Object]
 JSVM API TEST: Called Finally
 ```
@@ -186,7 +190,7 @@ static int SetMicrotaskPolicy(JSVM_VM vm, JSVM_Env env) {
     CHECK_RET(OH_JSVM_GetValueBool(env, hasEvaluateMicrotask, &val));
     OH_LOG_INFO(
         LOG_APP,
-        "Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
+        "Policy: JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
         val);
 
     CHECK_RET(OH_JSVM_PerformMicrotaskCheckpoint(vm));
@@ -194,7 +198,7 @@ static int SetMicrotaskPolicy(JSVM_VM vm, JSVM_Env env) {
     CHECK_RET(OH_JSVM_GetValueBool(env, hasEvaluateMicrotask, &val));
     OH_LOG_INFO(
         LOG_APP,
-        "Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
+        "Policy: JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
         val);
 
     return 0;
@@ -221,8 +225,8 @@ static int32_t TestJSVM() {
     }
     // 创建JSVM环境
     CHECK(OH_JSVM_CreateVM(nullptr, &vm));
-    CHECK(OH_JSVM_CreateEnv(vm, 0, nullptr, &env));
     CHECK(OH_JSVM_OpenVMScope(vm, &vmScope));
+    CHECK(OH_JSVM_CreateEnv(vm, 0, nullptr, &env));
     CHECK_RET(OH_JSVM_OpenEnvScope(env, &envScope));
     CHECK_RET(OH_JSVM_OpenHandleScope(env, &handleScope));
 
@@ -232,15 +236,15 @@ static int32_t TestJSVM() {
     // 销毁JSVM环境
     CHECK_RET(OH_JSVM_CloseHandleScope(env, handleScope));
     CHECK_RET(OH_JSVM_CloseEnvScope(env, envScope));
-    CHECK(OH_JSVM_CloseVMScope(vm, vmScope));
     CHECK(OH_JSVM_DestroyEnv(env));
+    CHECK(OH_JSVM_CloseVMScope(vm, vmScope));
     CHECK(OH_JSVM_DestroyVM(vm));
     return 0;
 }
 ```
 
 预期输出结果：
-```
+```txt
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask : 1
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: 0
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: 1

@@ -4,7 +4,7 @@
 <!--Owner: @zhang-yinglie-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 从API version 9开始，支持Web组件的[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md)类和[onGeolocationShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#ongeolocationshow)方法对网页进行位置权限管理。更多信息请参见<!--RP1-->[隐私保护说明](../../device-dev/security/security-privacy-protection.md)<!--RP1End-->。
 
@@ -13,7 +13,7 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
 ## 需要权限
 使用获取位置功能，需在module.json5中配置位置权限。具体添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-   ```
+   ``` JSON5
    "requestPermissions":[
       {
         "name" : "ohos.permission.LOCATION" // 精准定位
@@ -77,7 +77,7 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
     controller: webview.WebviewController = new webview.WebviewController();
     uiContext: UIContext = this.getUIContext();
 
-    // 组件的声明周期函数，创建组件实例后触发
+    // 组件的生命周期函数，创建组件实例后触发
     aboutToAppear(): void {
       let context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
       if (!context) {
@@ -139,7 +139,7 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
   ```
 
 ## 管理位置权限
-通过Web组件的[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md)类管理网页的位置权限，提供了新增（[allowgeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation)）、查看（[getaccessiblegeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation)）和删除（[deleteallgeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deleteallgeolocation)）网页位置权限的方法。例如查看网页是否已申请位置权限、将网页已申请的位置权限删除。
+通过Web组件的[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md)类管理网页的位置权限，提供了新增（[allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation)）、查看（[getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation)）和删除（[deleteGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deletegeolocation)）网页位置权限的方法。例如查看网页是否已申请位置权限、将网页已申请的位置权限删除。
 
 
 ```ts

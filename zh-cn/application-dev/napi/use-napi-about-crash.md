@@ -59,7 +59,7 @@
 ```cpp
 #define CHECK(cond)                                                 \
     do {                                                            \
-        if (cond) {                                                 \
+        if (!(cond)) {                                                 \
             OH_LOG_FATAL(LOG_APP, "Failed to check `" #cond "`");   \
             std::abort();                                           \
         }                                                           \
@@ -88,7 +88,7 @@ public:
         if (argc_ > 0) {
             argv_ = new napi_value[argc_];
             CHECK_NOT_NULL(argv_);
-            memset(argv_, nullptr, sizeof(argv_));
+            memset(argv_, 0, sizeof(argv_));
             napi_get_cb_info(env, info, &argc_, argv_, nullptr, nullptr);
         }
     }
@@ -393,7 +393,7 @@ EXPAND_THREADSAFE_FUNCTION_CASE(TriggerDFXTsfnRelease,
 napi_add_env_cleanup_hook 和 napi_remove_env_cleanup_hook 的示例代码
 
 ```cpp
-static void EnvCLeanUpCallback(void *arg) {
+static void EnvCleanUpCallback(void *arg) {
     char* data = reinterpret_cast<char *>(arg);
     delete data;
 }
@@ -406,11 +406,11 @@ napi_value TriggerDFXClnAddXT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
+    *data = '\0';
     std::thread([](napi_env env, char* data) {
-        napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+        napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     }, env, data).join();
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     delete data;
     return nullptr; 
 }
@@ -423,10 +423,10 @@ napi_value TriggerDFXClnAddMT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    *data = '\0';
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     delete data;
     return nullptr;
 }
@@ -439,10 +439,10 @@ napi_value TriggerDFXClnRmXT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    *data = '\0';
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     std::thread([](napi_env env, char* data) {
-        napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+        napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
         delete data;
     }, env, data).join();
     return nullptr; 
@@ -456,11 +456,11 @@ napi_value TriggerDFXClnRmMT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    *data = '\0';
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     // 解注册使用的参数与注册时的一致性，比重复解注册更值得关注
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     delete data;
     return nullptr;
 }
@@ -518,4 +518,101 @@ napi_value TriggerDFXInsGetXT(napi_env env, napi_callback_info info)
     }, env).join();
     return nullptr;
 }
+```
+
+## 异步任务回调及引用回调崩溃
+
+### 覆盖范围及关键日志
+
+当回调函数存在空指针解引用或数组越界等逻辑错误时会导致应用崩溃。若发生崩溃且启用了编译优化，崩溃调用栈仅显示调用回调函数的函数，而不会显示实际调用的回调函数具体来自哪个so共享库。开发者可通过以下步骤定位问题：
+1. 获取打印的回调函数指针（十进制）。
+2. 将指针转换为十六进制。
+3. 在crash文件的Maps中匹配十六进制地址，即可确定实际导致崩溃的函数具体是来自哪个so共享库。
+
+> **关键日志**
+>
+> Crash occurred on &lt;function name&gt;, callback: &lt;callback ptr&gt;
+
+该维测手段覆盖范围如下：
+
+1. napi_wrap、napi_wrap_enhance、napi_add_finalizer中的finalize_cb执行过程中发生崩溃。
+2. napi_set_instance_data中finalize_cb执行过程中发生崩溃。
+3. 调用napi_async_work相关接口complete执行过程中发生崩溃。
+4. 调用threadsafe_function相关接口，thread_finalize_cb及call_js_cb执行过程中发生崩溃。
+
+### 案例及示例代码
+
+> **注意：**
+>
+> 下面的代码仅用于构造异常场景，触发异常分支的DFX日志。在充分理解其意图前，请勿将其直接应用到业务场景中。
+
+**构造崩溃场景**
+
+``` C++
+/*
+ * 接口声明 index.d.ts
+ * const wrapCb: () => void;
+ */
+static napi_value WrapCb(napi_env env, napi_callback_info info)
+{
+    napi_value obj = nullptr;
+    napi_status status = napi_create_object(env, &obj);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_create_object fail");
+        return nullptr;
+    }
+    const char* testStr = "test";
+    status = napi_wrap(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint){
+        abort();
+    }, nullptr, nullptr);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_wrap fail");
+        return nullptr;
+    }
+    return nullptr;
+}
+```
+
+执行wrapCb后触发垃圾回收，触发回调函数执行。
+
+``` TypeScript
+import testNapi from 'libentry.so';
+
+declare class ArkTools {
+  static forceFullGC():void;
+}
+
+testNapi.wrapCb();
+ArkTools.forceFullGC();
+```
+
+**分析崩溃日志**
+
+``` text
+Device Memory(kB): Total 11871352, Free 332976, Available 5793792
+Reason:Signal:SIGABRT(SI_TKILL)@0x01317bf10000b226 from:45606:20020209
+LastFatalMessage:[NAPI] Crash occurred on ProcessAll, callback: 385297425128
+```
+
+将callback指针地址385297425128转为16进制表示为0x59B58422E8。在该crash文件的Maps中搜索该回调函数的地址，用得到的16进制数减去libentry.so模块开始地址得到偏移地址0x22E8。
+
+``` text
+59b5504000-59b5505000 rw-p 00001000 /system/lib64/lib_cpuboost.so
+59b5505000-59b5805000 rw-p 00000000 [anon:native_heap:jemalloc]
+59b5840000-59b5841000 r--p 00000000 /data/storage/el1/bundle/libs/arm64/libentry.so
+59b5841000-59b5843000 r-xp 00000000 /data/storage/el1/bundle/libs/arm64/libentry.so
+59b5843000-59b5844000 r--p 00001000 /data/storage/el1/bundle/libs/arm64/libentry.so
+59b5844000-59b5845000 rw-p 00001000 /data/storage/el1/bundle/libs/arm64/libentry.so
+59b5880000-59b5912000 r--p 00000000 /data/storage/el1/bundle/libs/arm64/libc++_shared.so
+59b5912000-59b59ac000 r-xp 00091000 /data/storage/el1/bundle/libs/arm64/libc++_shared.so
+59b59ac000-59b59b6000 r--p 0012a000 /data/storage/el1/bundle/libs/arm64/libc++_shared.so
+59b59b6000-59b59b7000 rw-p 00133000 /data/storage/el1/bundle/libs/arm64/libc++_shared.so
+```
+
+通过[llvm-addr2line](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1735713501344)工具可以确定0x22E8正是回调函数所在行。由此可以确定问题发生在napi_wrap时传入的回调函数中。
+
+``` text
+llvm-addr2line -ifCe libentry.so 0x22e8
+WrapCb(napi_env__, napi_callback_info__)::$_0::invoke(napi_env, void, void*)
+D:/DevEcoStudioProjects/PrintCbPtr/entry/src/main/cpp/napi_init.cpp:9
 ```

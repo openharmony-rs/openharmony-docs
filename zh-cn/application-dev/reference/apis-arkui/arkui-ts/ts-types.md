@@ -1,10 +1,10 @@
 # 基础类型定义
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
@@ -34,11 +34,13 @@
 
   filename：工程中resources/rawfile目录下的文件名称。
 
->  **说明：**
+> **说明：**
 >
->  引用资源类型时，需确保资源类型对象内的数据类型与当前以资源类型作为参数的属性方法本身的类型一致。例如某个属性方法支持设置string | Resource，那么在使用Resource引用类型时，其数据类型也应当为string。
+> - 引用资源类型时，需确保资源类型对象内的数据类型与当前以资源类型作为参数的属性方法本身的类型一致。例如某个属性方法支持设置string | Resource，那么在使用Resource引用类型时，其数据类型也应当为string。
 >
->  引用资源类型时，需确保资源类型对象用法为当前支持的用法，否则当前以资源类型作为参数的属性效果将和不设置该属性相同。
+> - 引用资源类型时，需确保资源类型对象用法为当前支持的用法，否则当前以资源类型作为参数的属性效果将和不设置该属性相同。
+>
+> - $rawfile不支持通过[预览器](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-previewer-arkts-js)预览。
 
 ## Length
 
@@ -96,6 +98,8 @@
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -130,6 +134,8 @@
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型                | 只读  |  可选   | 说明                   |
@@ -142,6 +148,7 @@
 ## EdgeWidths<sup>9+</sup>
 
 边框宽度类型，用于描述组件边框不同方向的宽度。
+
 引入该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -160,11 +167,14 @@
 ## LocalizedEdgeWidths<sup>12+</sup>
 
 边框宽度类型，用于描述组件边框不同方向的宽度。
+
 引入该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,6 +188,7 @@
 ## BorderRadiuses<sup>9+</sup>
 
 圆角类型，用于描述组件边框圆角半径。
+
 引用该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -196,11 +207,14 @@
 ## LocalizedBorderRadiuses<sup>12+</sup>
 
 圆角类型，用于描述组件边框圆角半径。
+
 引用该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,6 +228,7 @@
 ## EdgeColors<sup>9+</sup>
 
 边框颜色，用于描述组件边框四条边的颜色。
+
 引入该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -232,11 +247,14 @@
 ## LocalizedEdgeColors<sup>12+</sup>
 
 边框颜色，用于描述组件边框四条边的颜色。
+
 引入该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -250,6 +268,7 @@
 ## EdgeStyles<sup>9+</sup>
 
 边框样式，用于描述组件边框四条边的样式。
+
 引入该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -278,21 +297,6 @@
 | dx   | [Length](#length) | 否  |  否    | 水平方向偏移量。 |
 | dy   | [Length](#length) | 否  |  否    | 竖直方向偏移量。 |
 
-## RectResult<sup>10+</sup>
-
-位置和尺寸类型，用于描述组件的位置和宽高。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称      | 类型   | 只读 | 可选  | 说明 |
-| ------- | ------ | ----- | -------- | ---------- |
-| x     | number | 否 | 否 | 水平方向横坐标。|
-| y     | number |  否 | 否 | 竖直方向纵坐标。|
-| width | number | 否 | 否 | 内容宽度大小。|
-| height | number | 否 | 否 | 内容高度大小。|
-
 ## ResourceColor
 
 type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Resource](#resource)
@@ -309,7 +313,7 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | ----------------------------------- | ------------------------------------------------------------ |
 | [Color](ts-appendix-enums.md#color) | 颜色枚举值。                                                 |
 | number                              | HEX格式颜色，支持rgb或者argb。示例：0xffffff，0xffff0000。number无法识别传入位数，格式选择依据值的大小，例如0x00ffffff作rgb格式解析。 |
-| string                              | rgb或者argb格式颜色。示例：'#ffffff'，'#ff000000'，'rgb(255, 100, 255)'，'rgba(255, 100, 255, 0.5)'。 |
+| string                              | 支持rgb、rgba或者argb的格式颜色。<br/>rgb格式颜色示例：'#ffffff'、'rgb(255, 100, 255)'。<br/>rgba格式颜色示例：'rgba(255, 100, 255, 0.5)'。<br/>argb格式颜色示例：'#ff000000'。 |
 | [Resource](#resource)               | 使用引入资源的方式，引入系统资源或者应用资源中的颜色。       |
 
 ## LengthConstrain
@@ -332,6 +336,10 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 设置文本样式。
 
+> **说明：**
+>
+> 可以使用[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)注册自定义字体。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -340,7 +348,7 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | ------ | ------------------------------------------------------------ | ---- | -------- | ------------------------------------------------------------ |
 | size   | [Length](#length)                                            | 否   |  是  | 设置文本尺寸，Length为number类型时，使用fp单位。不支持设置百分比字符串。<br>默认值：16.0 |
 | weight | [FontWeight](ts-appendix-enums.md#fontweight) \| number \| string | 否  |  是 | 设置文本的字体粗细，number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br>默认值：400 \| FontWeight.Normal |
-| family | string \| [Resource](#resource)                              | 否   |  是  | 设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)。 |
+| family | string \| [Resource](#resource)                              | 否   |  是  | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。|
 | style  | [FontStyle](ts-appendix-enums.md#fontstyle)                  | 否   |  是  | 设置文本的字体样式。<br>默认值：FontStyle.Normal             |
 
 ## Area<sup>8+</sup>
@@ -357,8 +365,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | -------------- | ---------------------- | ------------------------------ |
 | width          | [Length](#length)      | 目标元素的宽度。<br/>单位：vp |
 | height         | [Length](#length)      | 目标元素的高度。<br/>单位：vp |
-| position       | [Position](#position) | 目标元素左上角相对父元素左上角的位置。            |
-| globalPosition | [Position](#position) | 目标元素左上角相对页面左上角的位置。             |
+| position       | [Position](#position) | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
+| globalPosition | [Position](#position) | 目标元素左上角在当前窗口坐标系中的位置。             |
 
 ## Position
 
@@ -381,6 +389,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型                | 只读  |  可选   | 说明                          |
@@ -396,6 +406,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型     | 只读  |  可选   | 说明                          |
@@ -410,6 +422,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 位置类型，表示相对四边的偏移量。同时设置top和bottom，仅top生效；同时设置start和end，仅start生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -469,8 +483,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | color  | [EdgeColors](./ts-types.md#edgecolors9)<sup>9+</sup>&nbsp;\|&nbsp;[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否|是   | 设置边框颜色。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。     |
 | radius | [BorderRadiuses](#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[Length](ts-types.md#length)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](#localizedborderradiuses12)<sup>12+</sup> | 否|是   | 设置边框圆角半径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | style  | [EdgeStyles](#edgestyles9)<sup>9+</sup>&nbsp;\|&nbsp;[BorderStyle](ts-appendix-enums.md#borderstyle) | 否|是   | 设置边框样式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。    |
-| dashGap<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | 否|是  | 设置虚线的线段间距，仅在边框样式为虚线时生效。<br/>不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 该接口不支持在ArkTS卡片中使用。|
-| dashWidth<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | 否|是   | 设置虚线的线段长度，仅在边框样式为虚线时生效。<br/>不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 该接口不支持在ArkTS卡片中使用。     |
+| dashGap<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | 否|是  | 设置虚线的线段间距，仅在边框样式为虚线时生效。<br/>不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力：** 该接口不支持在ArkTS卡片中使用。|
+| dashWidth<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | 否|是   | 设置虚线的线段长度，仅在边框样式为虚线时生效。<br/>不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力：** 该接口不支持在ArkTS卡片中使用。     |
 
 ## ColorFilter<sup>9+</sup>
 
@@ -495,9 +509,31 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | ------------- | ---------------------- | ---------------------------------------- |
 | CustomBuilder | (()&nbsp;=&gt;&nbsp;any) \| void | 生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用。 |
 
+## CustomBuilderT\<T><sup>23+</sup>
+
+type CustomBuilderT\<T> = (t: T) => void
+
+自定义UI描述，相比于CustomBuilder，本接口支持传入一个参数。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----------- | -------- | ---- | ---------------------------------------- |
+| t | T| 是 | 生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用，并允许传入一个参数。|
+
 ## MarkStyle<sup>10+</sup>对象说明
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -512,6 +548,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 全屏模态转场方式枚举类型，用于设置全屏模态转场类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -534,7 +572,7 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | width  | [Dimension](#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths11对象说明)| 否 | 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。 |
 | color  | [ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否 | 是 | 设置外描边颜色。<br/>默认值：Color.Black                   |
 | radius | [Dimension](#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses11对象说明)| 否 | 是 | 设置外描边圆角半径，不支持百分比。<br/>默认值：0<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
-| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11对象说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID            |
+| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11对象说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID            |
 
 ## EdgeOutlineWidths<sup>11+</sup>对象说明
 
@@ -559,6 +597,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型                         | 只读 | 可选   | 说明       |
@@ -576,20 +616,26 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型                                     | 只读 | 可选  | 说明      |
 | ------ | ---------------------------------------- | -- | -- | ------- |
-| left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否 | 是   | 左侧外描边样式。 |
-| right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否 | 是   | 右侧外描边样式。 |
-| top    | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否 | 是   | 上侧外描边样式。 |
-| bottom | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否  | 是  | 下侧外描边样式。 |
+| left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否 | 是   | 左侧外描边样式。 |
+| right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否 | 是   | 右侧外描边样式。 |
+| top    | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否 | 是   | 上侧外描边样式。 |
+| bottom | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否  | 是  | 下侧外描边样式。 |
 
 ## Dimension<sup>10+</sup>
 
 长度类型，用于描述尺寸单位。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -608,6 +654,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型                    | 说明                                     |
@@ -619,6 +667,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 长度类型，用于描述以vp像素单位为单位的长度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -632,6 +682,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型                    | 说明                                     |
@@ -643,6 +695,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 长度类型，用于描述以lpx像素单位为单位的长度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -656,6 +710,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型                    | 说明                                     |
@@ -668,6 +724,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型                    | 说明                                     |
@@ -679,6 +737,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 配置跟手点坐标，不配置时，默认居中。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -693,6 +753,8 @@ type VoidCallback：() => void;
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Callback<sup>12+</sup>
@@ -703,6 +765,8 @@ Callback<T,V = void> = (data: T) => V;
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DividerStyleOptions<sup>12+</sup>
@@ -710,6 +774,8 @@ Callback<T,V = void> = (data: T) => V;
 分割线样式属性集合, 用于描述分割线相关信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -727,12 +793,14 @@ Callback<T,V = void> = (data: T) => V;
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名   | 类型     | 描述             |
-| ----- | ------ | -------------- |
-| horizontal | number | 组件在竖直方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0  |
-| vertical     | number | 组件在水平方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0 |
+| 名称      | 类型   | 只读 | 可选 | 说明       |
+| --------- | ------ | ---- | ---- | ---------- |
+| horizontal | number | 否 | 是 | 组件在水平方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0  |
+| vertical     | number | 否 | 是 | 组件在竖直方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0 |
 
 ## Configuration
 
@@ -751,19 +819,25 @@ Callback<T,V = void> = (data: T) => V;
 
 ## AccessibilityOptions<sup>14+</sup>对象说明
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                   | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| accessibilityPreferred | boolean | 否 | 是   | 若accessibilityPreferred设置为true，则深度遍历每个子节点时优先选择该子节点的无障碍文本accessibilityText。<br/>若无障碍文本为空则选择本身Text文本，最终将拼接完成的文本设置给accessibilityText与Text都为空的父节点。<br/>若accessibilityPreferred设置为false，表示不启用此功能。<br/>默认值：false |
+| accessibilityPreferred | boolean | 否 | 是   | 若accessibilityPreferred设置为true，则深度遍历每个子节点时优先选择该子节点的无障碍文本accessibilityText。<br/>若无障碍文本为空则选择本身Text文本，最终将拼接完成的文本设置给accessibilityText与Text都为空的父节点。<br/>若accessibilityPreferred设置为false，表示不启用此功能。<br/>默认值：false <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| stateControllerRoleType<sup>23+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定类型的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| stateControllerId<sup>23+</sup> | string | 否 | 是   | 指定特定[唯一标识ID](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定标识的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>如果与stateControllerRoleType同时配置，则优先匹配ID一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| actionControllerRoleType<sup>23+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| actionControllerId<sup>23+</sup> | string | 否 | 是   |  指定特定[唯一标识ID](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定标识的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>如果与actionControllerRoleType同时配置，则优先匹配ID一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## ScrollBarMargin<sup>20+</sup>对象说明
 
 滚动条边距。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -772,6 +846,38 @@ Callback<T,V = void> = (data: T) => V;
 | start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 滚动条起始边距。<br/>默认值：0，单位：vp |
 | end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 滚动条末尾边距。<br/>默认值：0，单位：vp |
 
+## ResponsiveFillType<sup>22+</sup>
+
+type ResponsiveFillType = PresetFillType
+
+响应式布局填充模式，用于WaterFlow、Grid、List和Swiper组件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+
+
+| 类型                    | 说明                        |
+| --------------------- | ------------------------- |
+| [PresetFillType](../arkui-ts/ts-appendix-enums.md#presetfilltype22)                | 为不同响应式断点规格指定列数。                    |
+
+## ItemFillPolicy<sup>22+</sup>
+
+定义一个适用于WaterFlow、Grid、List和Swiper组件的响应式布局策略。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型 |只读|可选| 说明             |
+| ------ | ---- |------|------| ---------------- |
+| fillType     | [ResponsiveFillType](#responsivefilltype22) |否| 是   | 为不同的响应式断点指定列数。默认值为BREAKPOINT_DEFAULT。 |
+
 ## DirectionalEdgesT\<T><sup>12+</sup>
 
 边缘宽度类型，用于描述组件边缘不同方向的宽度。支持全球化。
@@ -779,6 +885,8 @@ Callback<T,V = void> = (data: T) => V;
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -792,11 +900,14 @@ Callback<T,V = void> = (data: T) => V;
 ## Bias对象说明
 
 设置组件在锚点约束下的偏移参数。
-<br/>以水平方向Bias为例，其值为组件到左锚点的距离 D<sub>start</sub>与组件到水平方向锚点间总距离 D<sub>start</sub> +  D<sub>end</sub>的比值。镜像语言下，D<sub>start</sub>为组件到右锚点的距离。下图中D<sub>width</sub>表示组件宽度。
-<br/>![bias_horizontal_example.png](figures/bias_horizontal_example.png)
-<br/>竖直方向同理，其值为组件到上锚点的距离D<sub>top</sub>与组件到竖直方向锚点间总距离D<sub>top</sub> + D<sub>bottom</sub>的比值。下图中D<sub>height</sub>表示组件高度。
-<br/>![bias_vertical_example.png](figures/bias_vertical_example.png)
 
+以水平方向Bias为例，其值为组件到左锚点的距离 D<sub>start</sub>与组件到水平方向锚点间总距离 D<sub>start</sub> +  D<sub>end</sub>的比值。镜像语言下，D<sub>start</sub>为组件到右锚点的距离。下图中D<sub>width</sub>表示组件宽度。
+
+![bias_horizontal_example.png](figures/bias_horizontal_example.png)
+
+竖直方向同理，其值为组件到上锚点的距离D<sub>top</sub>与组件到竖直方向锚点间总距离D<sub>top</sub> + D<sub>bottom</sub>的比值。下图中D<sub>height</sub>表示组件高度。
+
+![bias_vertical_example.png](figures/bias_vertical_example.png)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -806,3 +917,105 @@ Callback<T,V = void> = (data: T) => V;
 | -------- | -------- | -------- | -------- | -------- |
 | horizontal  | number | &nbsp;否 |是 | 水平方向上的bias值。<br/>当子组件的width属性有正确值并且有2个水平方向的锚点时生效，设置的值必须大于等于0。<br/>默认值：&nbsp;0.5 |
 | vertical  | number | &nbsp;否 |是 | 垂直方向上的bias值。<br/>当子组件的height属性有正确值并且有2个垂直方向的锚点时生效，设置的值必须大于等于0。<br/>默认值：&nbsp;0.5 |
+
+## CacheCountInfo<sup>22+</sup>对象说明
+
+缓存数量信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 类型                                                         | 只读 | 可选 | 说明                                   |
+| ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
+| minCount | number | 否   | 否 | 最小缓存数，当实际缓存数小于最小缓存数时，在滚动动画帧间空闲时隙加载缓存。<br/> 取值范围：[0, +∞)，小于0时按1处理。|
+| maxCount   | number | 否   | 否 | 最大缓存数，当实际缓存数大于最大缓存数时，缓存内容会回收或释放，当UI空闲时（无动画或用户操作），会加载缓存到最大缓存数。<br/> 取值范围：[minCount, +∞)，小于minCount时按minCount处理。 |
+
+## Coordinate2D
+
+描述一个二维坐标系。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 类型                                                         | 只读 | 可选 | 说明                                   |
+| ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
+| x | number | 否 | 否 | x轴坐标，单位vp。 |
+| y | number | 否 | 否 | y轴坐标，单位vp。 |
+
+## AccessibilityActionOptions<sup>23+</sup>对象说明
+
+设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。仅[Slider](ts-basic-components-slider.md)组件支持使用。在其他组件使用该接口时，编译环节可正常通过，但接口功能不生效。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+<!--Table: 15%; 10%; 10%; 10%; 55%-->
+| 名称                   | 类型    | 只读 | 可选 | 说明                                                         |
+| ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| scrollStep | number | 否 | 是   | 无障碍手势触发的无障碍滚动操作中的组件操作步数。默认值基于组件默认值。<br/>不支持的组件配置不生效。<br/>当前支持组件：[slider](ts-basic-components-slider.md)，用于slider组件聚焦后通过手势上下扫动触发slider组件的滑动操作。滑动距离：scrollStep*[step](ts-basic-components-slider.md#slideroptions对象说明)。取值范围：[1, ([max](ts-basic-components-slider.md#slideroptions对象说明) - [min](ts-basic-components-slider.md#slideroptions对象说明))/[step](ts-basic-components-slider.md#slideroptions对象说明)]，默认值为1。超出取值范围时取默认值1；在取值范围内，scrollStep为非整数时向下取整。<br/> |
+
+## AccessibilityNextFocusParams
+
+定义无障碍自定义下一个焦点处理过程中可使用的详细参数对象。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ------ | ---- | ---- | ---- |
+| isConsiderDescendants | boolean | 否 | 是 | 是否在无障碍自定义下一个焦点处理过程中查找后代节点中的焦点。<br/>true表示在无障碍自定义下一个焦点处理过程中查找后代节点中的焦点；false表示在无障碍自定义下一个焦点处理过程中不查找后代节点中的焦点。<br/>默认值：false |
+
+## AccessibilityCustomAction
+
+自定义无障碍操作接口。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型  | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| name  | [ResourceStr](#resourcestr) | 否 | 否 | 自定义操作的名称，用于标识和绑定操作回调。<br/>**说明：**<br/>名称的文本长度需在128字节以内，超出部分将被截断。 |
+| onAction  | [VoidCallback](#voidcallback12) | 否 | 否 | 处理自定义操作的回调。 |
+
+## SmartGestureShortcutOptions
+
+智慧手势响应行为配置对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| action | [GestureShortcut](ts-appendix-enums.md#gestureshortcut) | 否 | 是 | 智慧手势响应优先级。当前仅支持GestureShortcut.PRIMARY，表示组件在智慧手势的滑动，点击等操作中作为首选响应目标。<br/>默认值为GestureShortcut.PRIMARY。 |
+| enabled | boolean | 否 | 是 | 当前组件是否响应智慧手势。<br/>true表示组件响应智慧手势，false表示组件不响应智慧手势。<br/>默认值为false。 |
+| selectable | boolean | 否 | 是 | 组件被智慧手势操作选中后是否展示并保留选中态。<br/>true表示显示选中框，false表示不显示选中框。<br/>当enabled为true时，默认值为true；当enabled为false时，默认值为false。 |

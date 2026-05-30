@@ -1,10 +1,10 @@
 # 半模态错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -36,7 +36,7 @@ The bindSheetContent already exists.
 
 **错误描述**
 
-内容节点对应的半模态页面当前已处于打开状态。
+内容节点对应的半模态页面已处于打开状态。
 
 **可能原因**
 
@@ -54,7 +54,7 @@ The bindSheetContent cannot be found.
 
 **错误描述**
 
-内容节点对应的半模态页面当前未被打开。
+内容节点对应的半模态页面未被打开。
 
 **可能原因**
 

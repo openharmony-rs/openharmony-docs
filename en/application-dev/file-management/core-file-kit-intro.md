@@ -1,10 +1,10 @@
-# Introduction to Core File Kit
+# About This Kit
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 Core File Kit provides capabilities for accessing and managing application files and user files. You can use the APIs provided by Core File Kit to manage, search for, and back up different types of files efficiently.
 
@@ -52,11 +52,13 @@ You can use Core File Kit in any of the following scenarios:
 ## Features
 
 - Sandbox isolation:
-Each application has a dedicated [sandbox directory](app-sandbox-directory.md) in the internal storage. The sandbox directory is a collection of the [application file directory](app-sandbox-directory.md#application-file-directory-and-application-file-path) and the system files required for application running. The sandbox feature stands out with the following advantages:
+
+  Each application has a dedicated [sandbox directory](app-sandbox-directory.md) in the internal storage. The sandbox directory is a collection of the [application file directory](app-sandbox-directory.md#application-file-directory-and-application-file-path) and the system files required for application running. The sandbox feature stands out with the following advantages:
   - Isolation: The application sandbox provides a completely isolated environment to ensure secure access to application files.
   - Security: The application sandbox defines the minimum data visible to each application, which protects application file security.
 - Application share:
-Files can be shared between applications by uniform resource identifier (URI) or file descriptor (FD). The application share feature has the following advantages:
+
+  Files can be shared between applications by uniform resource identifier (URI) or file descriptor (FD). The application share feature has the following advantages:
   - Portability: Files can be easily shared between applications, without the need for the user to switch between different applications.
   - High efficiency: Files can be quickly transferred between applications, which eliminates redirections and the response time.
   - Data consistency: File share between applications ensures data integrity and consistency, preventing data corruption or loss during transmission.
@@ -80,7 +82,7 @@ You can use the user file access framework to access and manage user files. This
 
 - **FilePicker**: a system prebuilt application that allows a client to select and save user files without any permission. For details, see [Selecting User Files](select-user-file.md).
 
-- **FileManager**: You can also develop your own file picker or file manager application as required. <!--RP1-->File picker is a subset of file manager. For details about how to develop a file manager application, see [Developing a File Manager Application](dev-user-file-manager.md).<!--RP1End-->
+- **FileManager**: You can also develop your own file picker or file manager application as required. <!--RP1-->File picker is a subset of file manager. For details about how to develop a file manager application, see [Developing a File Manager Application (for System Applications Only)](dev-user-file-manager-sys.md).<!--RP1End-->
 
 - The user file access framework provides the following functional modules:
   - **File Access Helper**: provides APIs for the **FileManager** and **FilePicker** to access user files.

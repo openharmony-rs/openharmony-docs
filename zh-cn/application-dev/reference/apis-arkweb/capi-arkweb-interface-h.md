@@ -4,11 +4,13 @@
 <!--Owner: @aohui; @zourongchun-->
 <!--Designer: @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## 概述
 
 提供ArkWeb在Native侧获取API的接口，及基础Native API类型。
+
+**引用文件：** <web/arkweb_interface.h>
 
 **库：** libohweb.so
 
@@ -43,7 +45,7 @@
 
 ### ArkWeb_NativeAPIVariantKind
 
-```
+```c
 enum ArkWeb_NativeAPIVariantKind
 ```
 
@@ -60,14 +62,14 @@ enum ArkWeb_NativeAPIVariantKind
 | ARKWEB_NATIVE_WEB_MESSAGE_PORT | webMessagePort相关API类型。 |
 | ARKWEB_NATIVE_WEB_MESSAGE | webMessage相关API类型。 |
 | ARKWEB_NATIVE_COOKIE_MANAGER | cookieManager相关API类型。 |
-| ARKWEB_NATIVE_JAVASCRIPT_VALUE | JavaScriptValue相关接口类型。<br>**起始版本：** 18 |
+| ARKWEB_NATIVE_JAVASCRIPT_VALUE | JavaScriptValue相关API类型。<br>**起始版本：** 18 |
 
 
 ## 函数说明
 
 ### OH_ArkWeb_GetNativeAPI()
 
-```
+```c
 ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 ```
 
@@ -93,13 +95,13 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 
 ### OH_ArkWeb_RegisterScrollCallback()
 
-```
+```c
 bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallback callback, void* userData)
 ```
 
-**描述**
+**描述：**
 
-设置组件滚动时的回调函数。
+注册组件滚动时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

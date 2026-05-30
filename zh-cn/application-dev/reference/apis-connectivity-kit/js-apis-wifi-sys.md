@@ -1,5 +1,11 @@
 # @ohos.wifi (WLAN)（系统接口）
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
 
 > **说明：**
@@ -39,9 +45,9 @@ enableWifi(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.enableWifi();
+    wifi.enableWifi();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -69,9 +75,9 @@ disableWifi(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.disableWifi();
+    wifi.disableWifi();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -81,7 +87,7 @@ try {
 
 addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
-添加网络配置，使用Promise异步回调。
+添加网络配置。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -107,30 +113,30 @@ addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 0,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.addDeviceConfig(config).then(result => {
-		console.info("result:" + JSON.stringify(result));
-	});	
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 0,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    wifi.addDeviceConfig(config).then(result => {
+        console.info("result:" + JSON.stringify(result));
+    });    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -209,7 +215,7 @@ IPv6配置信息。
 
 addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
-添加网络配置，使用callback异步回调。
+添加网络配置。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -230,30 +236,30 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 0,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.addDeviceConfig(config,(error,result) => {
-		console.info("result:" + JSON.stringify(result));
-	});	
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 0,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    wifi.addDeviceConfig(config,(error,result) => {
+        console.info("result:" + JSON.stringify(result));
+    });    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -262,7 +268,7 @@ try {
 
 connectToNetwork(networkId: number): boolean
 
-连接到指定网络。
+应用使用该接口连接到热点。
 
 **系统接口：** 此接口为系统接口。
 
@@ -288,11 +294,11 @@ connectToNetwork(networkId: number): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	let networkId = 0;
-	wifi.connectToNetwork(networkId);
+    let networkId = 0;
+    wifi.connectToNetwork(networkId);
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
-}	
+    console.error("failed:" + JSON.stringify(error));
+}    
 ```
 
 ## wifi.connectToDevice
@@ -325,29 +331,29 @@ connectToDevice(config: WifiDeviceConfig): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 3,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-		ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.connectToDevice(config);
-			
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 3,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    wifi.connectToDevice(config);
+            
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -375,9 +381,9 @@ disconnect(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.disconnect();
+    wifi.disconnect();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -391,7 +397,7 @@ try {
 | 名称 | 类型 | 可读 | 可写 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | number | 是 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| chload | number | 是 | 否 | 连接负载，值越大表示负载约高。 <br /> **系统接口：** 此接口为系统接口。 |
+| chload | number | 是 | 否 | 连接负载，值越大表示负载越高。 <br /> **系统接口：** 此接口为系统接口。 |
 | snr | number | 是 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 |
 | suppState | [SuppState](#suppstate) | 是 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 |
 
@@ -480,10 +486,10 @@ getDeviceMacAddress(): string[]
 import wifi from '@ohos.wifi';
 
 try {
-	let ret = wifi.getDeviceMacAddress();
-	console.info("deviceMacAddress:" + JSON.stringify(ret));
+    let ret = wifi.getDeviceMacAddress();
+    console.info("deviceMacAddress:" + JSON.stringify(ret));
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -512,9 +518,9 @@ reassociate(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.reassociate();
+    wifi.reassociate();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -541,15 +547,15 @@ reconnect(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.reconnect();
+    wifi.reconnect();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
 ## wifi.getDeviceConfigs<sup>7+</sup>
 
-getDeviceConfigs(): &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig)&gt;
+getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 获取网络配置。
 
@@ -570,10 +576,10 @@ getDeviceConfigs(): &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig)&gt;
 import wifi from '@ohos.wifi';
 
 try {
-	let configs = wifi.getDeviceConfigs();
-	console.info("configs:" + JSON.stringify(configs));
+    let configs = wifi.getDeviceConfigs();
+    console.info("configs:" + JSON.stringify(configs));
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -606,29 +612,29 @@ updateNetwork(config: WifiDeviceConfig): number
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 3,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	let ret = wifi.updateNetwork(config);
-	console.error("ret:" + ret);		
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 3,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    let ret = wifi.updateNetwork(config);
+    console.error("ret:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -661,10 +667,10 @@ disableNetwork(netId: number): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	let netId = 0;
-	wifi.disableNetwork(netId);		
+    let netId = 0;
+    wifi.disableNetwork(netId);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -691,9 +697,9 @@ removeAllNetwork(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.removeAllNetwork();		
+    wifi.removeAllNetwork();        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -726,10 +732,10 @@ removeDevice(id: number): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	let id = 0;
-	wifi.removeDevice(id);		
+    let id = 0;
+    wifi.removeDevice(id);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -756,9 +762,9 @@ enableHotspot(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.enableHotspot();	
+    wifi.enableHotspot();    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -785,9 +791,9 @@ disableHotspot(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.disableHotspot();	
+    wifi.disableHotspot();    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -814,10 +820,10 @@ isHotspotDualBandSupported(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	let ret = wifi.isHotspotDualBandSupported();
-	console.info("result:" + ret);		
+    let ret = wifi.isHotspotDualBandSupported();
+    console.info("result:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -844,10 +850,10 @@ isHotspotActive(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	let ret = wifi.isHotspotActive();
-	console.info("result:" + ret);		
+    let ret = wifi.isHotspotActive();
+    console.info("result:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -880,17 +886,17 @@ setHotspotConfig(config: HotspotConfig): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.HotspotConfig = {
-		ssid: "****",
-		securityType: 3,
-		band: 0,
-		preSharedKey: "****",
-		maxConn: 0
-	}
-	let ret = wifi.setHotspotConfig(config);
-	console.info("result:" + ret);		
+    let config:wifi.HotspotConfig = {
+        ssid: "****",
+        securityType: 3,
+        band: 0,
+        preSharedKey: "****",
+        maxConn: 0
+    }
+    let ret = wifi.setHotspotConfig(config);
+    console.info("result:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -905,7 +911,7 @@ try {
 | **名称** | **类型** | **可读** | **可写** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8。 |
-| securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytype) | 是 | 否 | 加密类型。 |
+| securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytypedeprecated) | 是 | 否 | 加密类型。 |
 | band | number | 是 | 否 | 热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段 |
 | preSharedKey | string | 是 | 否 | 热点的密钥。 |
 | maxConn | number | 是 | 否 | 最大设备连接数。 |
@@ -934,16 +940,16 @@ getHotspotConfig(): HotspotConfig
 import wifi from '@ohos.wifi';
 
 try {
-	let config = wifi.getHotspotConfig();
-	console.info("result:" + JSON.stringify(config));		
+    let config = wifi.getHotspotConfig();
+    console.info("result:" + JSON.stringify(config));        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
 ## wifi.getStations<sup>7+</sup>
 
-getStations(): &nbsp;Array&lt;[StationInfo](#stationinfo7)&gt;
+getStations(): &nbsp;Array&lt;StationInfo&gt;
 
 获取连接的设备。
 
@@ -964,10 +970,10 @@ getStations(): &nbsp;Array&lt;[StationInfo](#stationinfo7)&gt;
 import wifi from '@ohos.wifi';
 
 try {
-	let stations = wifi.getStations();
-	console.info("result:" + JSON.stringify(stations));		
+    let stations = wifi.getStations();
+    console.info("result:" + JSON.stringify(stations));        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1016,10 +1022,10 @@ deletePersistentGroup(netId: number): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	let netId = 0;
-	wifi.deletePersistentGroup(netId);	
+    let netId = 0;
+    wifi.deletePersistentGroup(netId);    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1053,10 +1059,10 @@ setDeviceName(devName: string): boolean
 import wifi from '@ohos.wifi';
 
 try {
-	let name = "****";
-	wifi.setDeviceName(name);	
+    let name = "****";
+    wifi.setDeviceName(name);    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1186,7 +1192,7 @@ on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf]&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
@@ -1205,7 +1211,7 @@ off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf]&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
 
   **示例：**
 ```ts

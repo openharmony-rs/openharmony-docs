@@ -1,8 +1,19 @@
 # WebSocket
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+struct WebSocket {...}
+```
+
 ## Overview
 
-Defines the WebSocket client structure.
+Defines the WebSocket client struct.
 
 **Since**: 11
 

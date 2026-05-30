@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_ProbeResultInfo {...} NetConn_ProbeResultInfo
+```
+
 ## 概述
 
 定义探测结果信息。

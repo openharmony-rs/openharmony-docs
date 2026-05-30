@@ -2,8 +2,8 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @chenshi51-->
-<!--Designer: @Maplestory-->
-<!--Tester: @yufeifei-->
+<!--Designer: @Maplestory91-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## Overview
@@ -29,26 +29,23 @@ After the application starts, add an event watcher before any service logic runs
 
 The following example describes how to subscribe to a crash event triggered by button clicking.
 
-1. Obtain the dependency **jsoncpp** of the sample project.
-
-   Specifically, obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by referring to **Amalgamated source** in [JsonCpp](https://github.com/open-source-parsers/jsoncpp).
+1. Obtain the **jsoncpp** file on which the sample project depends. Click [HiAppEvent Sample Project EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub) and **click Download the directory** to download the EventSub project file.
 
 2. Create a native C++ project and import the preceding files to the project. The directory structure is as follows:
 
    ```yml
    entry:
+     libs:    // Folder for storing the third-party library associated with jsoncpp.
      src:
        main:
          cpp:
-           - json:
-               - json.h
-               - json-forwards.h
+           - thirdparty:
+               jsoncpp:    // Folder for storing the third-party library associated with jsoncpp.
            - types:
                libentry:
                  - index.d.ts
            - CMakeLists.txt
            - napi_init.cpp
-           - jsoncpp.cpp
          ets:
            - entryability:
                - EntryAbility.ets
@@ -56,26 +53,41 @@ The following example describes how to subscribe to a crash event triggered by b
                - Index.ets
    ```
 
+   The source code corresponding to the **jsoncpp** library file in this sample project is derived from [the third-party open-source library JsonCpp](https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.6.tar.gz)
+
 3. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
 
    ```cmake
-   # Add the jsoncpp.cpp file, which is used to parse the JSON strings in the subscription events.
-   add_library(entry SHARED napi_init.cpp jsoncpp.cpp)
+   add_library(entry SHARED napi_init.cpp)
    # Add libhiappevent_ndk.z.so and libhilog_ndk.z.so (log output). 
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
+   set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
+   # Check whether the entry/build directory exists.
+   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_DIR})
+   # Decompress jsoncpp-1.9.6.tar.gz to entry/build to obtain the directory of the jsoncpp header file.
+   execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
+       WORKING_DIRECTORY ${DEST_DIR})
+
+   # Add the third-party library libjsoncpp.so (used to parse JSON strings in subscription events).
+   target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
+   target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
    ```
 
 4. In the **napi_init.cpp** file, import the dependency files and define **LOG_TAG**.
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "json/json.h"
-   #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
-   
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
-   ```
+    <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+    
+    ``` C++
+    #include "napi/native_api.h"
+    // Adapt the path for referencing json.h based on the location of the third-party library jsoncpp in the project.
+    #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
+    #include "hiappevent/hiappevent.h"
+    #include "hilog/log.h"
+    
+    #undef LOG_TAG
+    #define LOG_TAG "testTag"
+    ```
 
 5. Subscribe to system events.
 
@@ -83,63 +95,74 @@ The following example describes how to subscribe to a crash event triggered by b
 
       In the **napi_init.cpp** file, define **onReceive()** as follows:
 
-      ```c++
-      // Define a variable to cache the created watcher pointer.
-      static HiAppEvent_Watcher *systemEventWatcher; 
+      <!-- @[Sys_Crash_Crash_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
       
-      static void OnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen) {
+      ``` C++
+      static void OnReceiveCrashEvent(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups,
+          uint32_t groupLen)
+      {
           for (int i = 0; i < groupLen; ++i) {
               for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
-                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s", appEventGroups[i].appEventInfos[j].domain);
-                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s", appEventGroups[i].appEventInfos[j].name);
-                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d", appEventGroups[i].appEventInfos[j].type);
-                  if (strcmp(appEventGroups[i].appEventInfos[j].domain, DOMAIN_OS) == 0 && 
-                      strcmp(appEventGroups[i].appEventInfos[j].name, EVENT_APP_CRASH) == 0) {
-                      Json::Value params;
-                      Json::Reader reader(Json::Features::strictMode());
-                      Json::FastWriter writer;
-                      if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
-                          auto time = params["time"].asInt64();
-                          auto crashType = params["crash_type"].asString();
-                          auto foreground = params["foreground"].asBool();
-                          auto bundleVersion = params["bundle_version"].asString();
-                          auto bundleName = params["bundle_name"].asString();
-                          auto pid = params["pid"].asInt();
-                          auto uid = params["uid"].asInt();
-                          auto uuid = params["uuid"].asString();
-                          auto exception = writer.write(params["exception"]);
-                          auto hilogSize = params["hilog"].size();
-                          auto externalLog = writer.write(params["external_log"]);
-                          auto logOverLimit = params["log_over_limit"].asBool();
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.crash_type=%{public}s", crashType.c_str());
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s", bundleName.c_str());
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s", uuid.c_str());
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s", exception.c_str());
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d", hilogSize);
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
-                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
-                      }
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s",
+                      appEventGroups[i].appEventInfos[j].domain);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s",
+                      appEventGroups[i].appEventInfos[j].name);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d",
+                      appEventGroups[i].appEventInfos[j].type);
+                  if (strcmp(appEventGroups[i].appEventInfos[j].domain, DOMAIN_OS) != 0 ||
+                      strcmp(appEventGroups[i].appEventInfos[j].name, EVENT_APP_CRASH) != 0) {
+                      continue;
+                  }
+                  Json::Value params;
+                  Json::Reader reader(Json::Features::strictMode());
+                  Json::FastWriter writer;
+                  if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld",
+                          params["time"].asInt64());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.crash_type=%{public}s",
+                          params["crash_type"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d",
+                          params["foreground"].asBool());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
+                          params["bundle_version"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s",
+                          params["bundle_name"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", params["pid"].asInt());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", params["uid"].asInt());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s",
+                          params["uuid"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s",
+                          writer.write(params["exception"]).c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d",
+                          params["hilog"].size());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_life_time=%{public}d",
+                          params["process_life_time"].asInt());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s",
+                          writer.write(params["memory"]).c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s",
+                          writer.write(params["external_log"]).c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d",
+                          params["log_over_limit"].asBool());
                   }
               }
           }
       }
       
-      static napi_value RegisterWatcher(napi_env env, napi_callback_info info) {
+      // Define a variable to cache the pointer to the created watcher.
+      static HiAppEvent_Watcher *systemEventWatcherR;
+      
+      static napi_value RegisterWatcherCrashEvent(napi_env env, napi_callback_info info)
+      {
           // Set the watcher name. The system identifies different watchers based on their names.
-          systemEventWatcher = OH_HiAppEvent_CreateWatcher("onReceiverWatcher");
-          // Set the event to watch to EVENT_APP_CRASH.
+          systemEventWatcherR = OH_HiAppEvent_CreateWatcher("AppCrashWatcherR");
+          // Set the event name for subscription to EVENT_APP_CRASH (the crash event).
           const char *names[] = {EVENT_APP_CRASH};
-          // Subscribe to the system event EVENT_APP_CRASH.
-          OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // Call the OH_HiAppEvent_SetWatcherOnReceive function to set the implemented callback. After the watcher receives an event, the OnReceive callback is triggered.
-          OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
-          // Start the watcher to listen for events.
-          OH_HiAppEvent_AddWatcher(systemEventWatcher);
+          // Add the events to watch, for example, system events.
+          OH_HiAppEvent_SetAppEventFilter(systemEventWatcherR, DOMAIN_OS, 0, names, 1);
+          // Set the implemented callback. After receiving the event, the watcher immediately triggers the OnReceiveCrashEvent callback.
+          OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcherR, OnReceiveCrashEvent);
+          // Add a watcher to listen for the specified event.
+          OH_HiAppEvent_AddWatcher(systemEventWatcherR);
           return {};
       }
       ```
@@ -148,12 +171,12 @@ The following example describes how to subscribe to a crash event triggered by b
 
       Define **OnTrigger()** in the **napi_init.cpp** file.
 
-      ```c++
-      // Define a variable to cache the created watcher pointer.
-      static HiAppEvent_Watcher *systemEventWatcher;
+      <!-- @[Sys_Crash_Event_OnTrigger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
       
-      // You need to implement the OnTake callback to obtain the listened events. The events pointer is valid only in this function.
-      static void OnTake(const char *const *events, uint32_t eventLen) {
+      ``` C++
+      // Implement the callback function used to return the listened events. The content pointed to by the events pointer is valid only in this function.
+      static void OnTakeCrash(const char *const *events, uint32_t eventLen)
+      {
           Json::Reader reader(Json::Features::strictMode());
           Json::FastWriter writer;
           for (int i = 0; i < eventLen; ++i) {
@@ -162,58 +185,66 @@ The following example describes how to subscribe to a crash event triggered by b
                   auto domain =  eventInfo["domain_"].asString();
                   auto name = eventInfo["name_"].asString();
                   auto type = eventInfo["type_"].asInt();
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger");
                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s", domain.c_str());
                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s", name.c_str());
                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d", type);
                   if (domain ==  DOMAIN_OS && name == EVENT_APP_CRASH) {
-                      auto time = eventInfo["time"].asInt64();
-                      auto crashType = eventInfo["crash_type"].asString();
-                      auto foreground = eventInfo["foreground"].asBool();
-                      auto bundleVersion = eventInfo["bundle_version"].asString();
-                      auto bundleName = eventInfo["bundle_name"].asString();
-                      auto pid = eventInfo["pid"].asInt();
-                      auto uid = eventInfo["uid"].asInt();
-                      auto uuid = eventInfo["uuid"].asString();
-                      auto exception = writer.write(eventInfo["exception"]);
-                      auto hilogSize = eventInfo["hilog"].size();
-                      auto externalLog = writer.write(eventInfo["external_log"]);
-                      auto logOverLimit = eventInfo["log_over_limit"].asBool();
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.crash_type=%{public}s", crashType.c_str());
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s", bundleName.c_str());
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s", uuid.c_str());
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s", exception.c_str());
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d", hilogSize);
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
-                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld",
+                          eventInfo["time"].asInt64());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.crash_type=%{public}s",
+                          eventInfo["crash_type"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d",
+                          eventInfo["foreground"].asBool());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
+                          eventInfo["bundle_version"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s",
+                          eventInfo["bundle_name"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", eventInfo["pid"].asInt());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", eventInfo["uid"].asInt());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s",
+                          eventInfo["uuid"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s",
+                          writer.write(eventInfo["exception"]).c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d",
+                          eventInfo["hilog"].size());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_life_time=%{public}d",
+                          eventInfo["process_life_time"].asInt());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s",
+                          writer.write(eventInfo["memory"]).c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s",
+                          writer.write(eventInfo["external_log"]).c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d",
+                          eventInfo["log_over_limit"].asBool());
                   }
               }
           }
       }
       
-      // Implement the subscription callback to customize the processing of the obtained event data.
-      static void OnTrigger(int row, int size) {
-          // After the callback is received, obtain the specified number of events.
-          OH_HiAppEvent_TakeWatcherData(systemEventWatcher, row, OnTake);
+      // Define a variable to cache the pointer to the created watcher.
+      static HiAppEvent_Watcher *systemEventWatcherT;
+      
+      // Implement the subscription callback function to apply custom processing to the obtained event logging data.
+      static void OnTriggerCrash(int row, int size)
+      {
+          // After the callback is received, obtain the specified number of received events.
+          OH_HiAppEvent_TakeWatcherData(systemEventWatcherT, row, OnTakeCrash);
       }
       
-      static napi_value RegisterWatcher(napi_env env, napi_callback_info info) {
+      static napi_value RegisterWatcherClickCrash(napi_env env, napi_callback_info info)
+      {
           // Set the watcher name. The system identifies different watchers based on their names.
-          systemEventWatcher = OH_HiAppEvent_CreateWatcher("onTriggerWatcher");
+          systemEventWatcherT = OH_HiAppEvent_CreateWatcher("AppCrashWatcherT");
           // Set the event to watch to EVENT_APP_CRASH.
           const char *names[] = {EVENT_APP_CRASH};
           // Add the events to watch, for example, system events.
-          OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
+          OH_HiAppEvent_SetAppEventFilter(systemEventWatcherT, DOMAIN_OS, 0, names, 1);
           // Set the implemented callback function. The callback function will be triggered when the conditions set by OH_HiAppEvent_SetTriggerCondition are met.
-          OH_HiAppEvent_SetWatcherOnTrigger(systemEventWatcher, OnTrigger);
-          // Set the conditions for triggering the subscription callback. For example, trigger the onTrigger callback when the number of new events is 1.
-          OH_HiAppEvent_SetTriggerCondition(systemEventWatcher, 1, 0, 0);
-          // Start the watcher to listen for subscribed events.
-          OH_HiAppEvent_AddWatcher(systemEventWatcher);
+          OH_HiAppEvent_SetWatcherOnTrigger(systemEventWatcherT, OnTriggerCrash);
+          // Set the conditions for triggering the subscription callback. For example, trigger this OnTriggerCrash callback when the number of new event logs is 1.
+          OH_HiAppEvent_SetTriggerCondition(systemEventWatcherT, 1, 0, 0);
+          // Add a watcher to listen for the specified event.
+          OH_HiAppEvent_AddWatcher(systemEventWatcherT);
           return {};
       }
       ```
@@ -221,44 +252,66 @@ The following example describes how to subscribe to a crash event triggered by b
 6. Register **RegisterWatcher** as an ArkTS API.
 
    In the **napi_init.cpp** file, register **RegisterWatcher** as an ArkTS API.
-
-   ```c++
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "registerWatcher", nullptr, RegisterWatcher, nullptr, nullptr, nullptr, napi_default, nullptr }
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   ```
+    <!-- @[Sys_Crash_Event_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value Init(napi_env env, napi_value exports)
+    {
+        napi_property_descriptor desc[] = {
+            // ···
+            { "registerWatcherCrashEvent", nullptr, RegisterWatcherCrashEvent, nullptr, nullptr, nullptr, napi_default,
+                nullptr },
+            { "registerWatcherClickCrash", nullptr, RegisterWatcherClickCrash, nullptr, nullptr, nullptr, napi_default,
+                nullptr },
+            // ···
+        };
+        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+        return exports;
+    }
+    ```
 
    Define the ArkTS API in the **index.d.ts** file.
 
-   ```typescript
-   export const registerWatcher: () => void;
-   ```
+    <!-- @[Sys_Crash_Event_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    
+    ``` TypeScript
+    export const registerWatcherClickCrash: () => void;
+    export const registerWatcherCrashEvent: () => void;
+    ```
 
 7. In the **EntryAbility.ets** file, add the following API to **onCreate()**.
 
-   ```typescript
-   // Import the dependent module.
-   import testNapi from 'libentry.so'
-   
-   // Add the API to onCreate().
-   // Register the system event watcher at startup.
-   testNapi.registerWatcher();
-   ```
+    <!-- @[Sys_Crash_Event_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    // Add the C API call in onCreate().
+    // Register the crash event watcher at startup.
+    testNapi.registerWatcherClickCrash();
+    // Register the button click event watcher at startup.
+    testNapi.registerWatcherCrashEvent();
+    ```
+
 
 8. In the **Index.ets** file, add a button to trigger a crash event.
 
-   ```typescript
-   Button("appCrash").onClick(() => {
-     JSON.parse("");
-   })
-   ```
+    <!-- @[JsError_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    Button('JsError')
+      .type(ButtonType.Capsule)
+      .margin({
+        top: 20
+      })
+      .backgroundColor('#0D9FFB')
+      .width('80%')
+      .height('5%')
+      .onClick(() => {
+        // Construct a scenario in onClick() to trigger a crash event.
+        JSON.parse('');
+      })
+    ```
 
-9. Click **Run** to start the application project. Then, click the **appCrash** button to trigger a crash event. The system generates crash logs and triggers the callback.
+9. Click **Run** to start the application project. Then, click the **JsError** button to trigger a crash event. The system generates crash logs and triggers the callback.
 
 > **NOTE**
 >
@@ -271,6 +324,8 @@ The callback time of a crash event varies depending on whether the crash excepti
 **Application not proactively captures crash events**
 
 If the application does not proactively capture the crash exception, the application will exit after the system handles the crash. When the application restarts, HiAppEvent reports the crash event to the registered watcher to complete the callback.
+
+Since API version 21, if the application fails to start or remains unstarted for a long time, you can delay the event notification by referring to [Using FaultLogExtensionAbility to Subscribe to Events](./fault-log-extension-app-events-arkts.md).
 
 **Application proactively captures crash events**
 
@@ -288,17 +343,19 @@ In the development and debugging phase, after HiAppEvent reports a crash event a
 HiAppEvent eventInfo.domain=OS
 HiAppEvent eventInfo.name=APP_CRASH
 HiAppEvent eventInfo.eventType=1
-HiAppEvent eventInfo.params.time=1502032265088
+HiAppEvent eventInfo.params.time=1503045716054
 HiAppEvent eventInfo.params.crash_type=JsError
 HiAppEvent eventInfo.params.foreground=1
 HiAppEvent eventInfo.params.bundle_version=1.0.0
-HiAppEvent eventInfo.params.bundle_name=com.example.myapplication
-HiAppEvent eventInfo.params.pid=19237
-HiAppEvent eventInfo.params.uid=20010043
-HiAppEvent eventInfo.params.uuid=cc0f062e1b28c1fd2c817fafab5e8ca3207925b4bdd87c43ed23c60029659e01
-HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON","name":"SyntaxError","stack":"at anonymous (entry/src/main/ets/pages/Index.ets:16:11)"}
-HiAppEvent eventInfo.params.hilog.size=110
-HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1502032265211_19237.log"]
+HiAppEvent eventInfo.params.bundle_name=com.samples.eventsub
+HiAppEvent eventInfo.params.pid=2610
+HiAppEvent eventInfo.params.uid=20010044
+HiAppEvent eventInfo.params.uuid=7c3b1579c8ca8629af3858f8145254c2867ee402dc16ee18034337aae258620b
+HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON: Empty Text","name":"SyntaxError","stack":"    at anonymous (entry|entry|1.0.0|src/main/ets/pages/Index.ts:163:22)\n","thread_name":"amples.eventsub"}
+HiAppEvent eventInfo.params.hilog.size=100
+HiAppEvent eventInfo.params.process_life_time=25
+HiAppEvent eventInfo.params.memory={"rss":181964,"sys_avail_mem":1230456,"sys_free_mem":676940,"sys_total_mem":2001932}
+HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1503045716408_2610.log"]
 HiAppEvent eventInfo.params.log_over_limit=0
 ```
 
@@ -306,21 +363,30 @@ HiAppEvent eventInfo.params.log_over_limit=0
 
 1. Remove the event watcher.
 
-   ```c++
-   static napi_value RemoveWatcher(napi_env env, napi_callback_info info) {
-       // Remove the watcher.
-       OH_HiAppEvent_RemoveWatcher(systemEventWatcher);
-       return {};
-   }
-   ```
+    <!-- @[Sys_Crash_Event_C++_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value RemoveWatcherCrash(napi_env env, napi_callback_info info)
+    {
+        // Remove the watcher.
+        OH_HiAppEvent_RemoveWatcher(systemEventWatcherR);
+        OH_HiAppEvent_RemoveWatcher(systemEventWatcherT);
+        return {};
+    }
+    ```
 
 2. Destroy the event watcher.
 
-   ```c++
-   static napi_value DestroyWatcher(napi_env env, napi_callback_info info) {
-       // Destroy the created watcher and set systemEventWatcher to nullptr.
-       OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
-       systemEventWatcher = nullptr;
-       return {};
-   }
-   ```
+    <!-- @[Sys_Crash_Event_C++_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value DestroyWatcherCrash(napi_env env, napi_callback_info info)
+    {
+        // Destroy the created watcher and set eventWatcher to nullptr.
+        OH_HiAppEvent_DestroyWatcher(systemEventWatcherR);
+        OH_HiAppEvent_DestroyWatcher(systemEventWatcherT);
+        systemEventWatcherR = nullptr;
+        systemEventWatcherT = nullptr;
+        return {};
+    }
+    ```

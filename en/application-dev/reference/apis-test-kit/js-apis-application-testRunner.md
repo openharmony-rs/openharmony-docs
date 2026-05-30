@@ -1,5 +1,12 @@
 # @ohos.application.testRunner (TestRunner)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024; @xuzhihao666-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The **TestRunner** module provides a test framework. You can use the APIs of this module to prepare the unit test environment and run test cases.
 
 To implement your own unit test framework, extend this class and override its APIs.
@@ -8,7 +15,7 @@ To implement your own unit test framework, extend this class and override its AP
 > 
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module can be used only in <!--RP1-->[arkxtest](../../application-test/arkxtest-guidelines.md)<!--RP1End-->.
+> The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 
 ## Modules to Import
 
@@ -33,14 +40,13 @@ import { TestRunner } from '@kit.TestKit';
 
 export default class UserTestRunner implements TestRunner {
   onPrepare() {
-    console.log('Trigger onPrepare');
+    console.info('Trigger onPrepare');
   }
+
   onRun() {
   }
-};
+}
 ```
-
-
 
 ## TestRunner.onRun
 
@@ -60,8 +66,43 @@ import { TestRunner } from '@kit.TestKit';
 export default class UserTestRunner implements TestRunner {
   onPrepare() {
   }
+
   onRun() {
-    console.log('Trigger onRun');
+    console.info('Trigger onRun');
   }
-};
+}
+```
+
+## TestRunner.onStop
+
+onStop(): void
+
+Called when the test is complete and before the test environment exits.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Example**
+
+```ts
+import { TestRunner } from '@kit.TestKit';
+
+export default class UserTestRunner implements TestRunner {
+  onPrepare() {
+    console.info('Trigger onPrepare');
+  }
+
+  onRun() {
+    console.info('Trigger onRun');
+  }
+
+  onStop() {
+    console.info('Trigger onStop');
+  }
+}
 ```

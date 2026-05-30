@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -40,7 +40,7 @@ Operation not allowed.
 
 **可能原因**
 
-接口执行顺序错误，比如未beginConfig就开始进行commitConfig操作等。
+接口执行顺序错误，比如在未调用[beginConfig](arkts-apis-camera-Session.md#beginconfig11)前就开始进行[commitConfig](arkts-apis-camera-Session.md#commitconfig11)操作等。
 
 **处理步骤**
 
@@ -170,7 +170,7 @@ Can not use camera cause of preempted.
 
 **处理步骤**
 
-N/A
+将当前开启的摄像头关闭。
 
 ## 7400110 与当前配置存在冲突
 

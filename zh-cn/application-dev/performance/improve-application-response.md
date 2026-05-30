@@ -1,5 +1,12 @@
 # 提升应用响应速度
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 应用对用户的输入需要快速反馈，以提升交互体验，因此本文提供了以下方法来提升应用响应速度。
 
 - 避免主线程被非UI任务阻塞
@@ -66,7 +73,7 @@ struct ImageExample2 {
 当前系统提供了[TaskPool线程池](../reference/apis-arkts/js-apis-taskpool.md)，TaskPool提供了任务优先级设置、线程池自动管理机制，示例如下：
 
 ```typescript
-import taskpool from '@ohos.taskpool';
+import { taskpool } from '@kit.ArkTS';
 
 @Concurrent
 function computeTask(arr: string[]): string[] {
@@ -291,11 +298,11 @@ struct StackExample2 {
 
 当Text('New Page')隐藏状态时开始抓取耗时，此时点击按钮显示Text('New Page')组件时结束抓取，此时引起了兄弟节点中ForEach中的文本测量，Text总共创建个数为stack容器1个Text+兄弟节点中ForEach中的100个Text，共101个，Text总耗时为3ms。
 
-![img](./figures/improve_application_responese_1.png)
+![img](./figures/improve_application_response_1.png)
 
 基于上例，将Stack容器指定宽高，相同操作抓取耗时，此时没有引起父组件兄弟节点的布局计算和测量更新，仅有Stack容器中的1个Text创建耗时，Text总耗时为255μs。
 
-![img](./figures/improve_application_responses_2.png)
+![img](./figures/improve_application_response_2.png)
 
 可见，对于可以指定宽高的容器可以限制刷新范围。
 
@@ -425,7 +432,7 @@ AVPlayer实例的创建与销毁都很消耗性能，针对这个问题可以使
 
 反例：打开新页面时创建实例，离开页面时使用release方法销毁实例。
 ```typescript
-import media from '@ohos.multimedia.media';
+import { media } from '@kit.MediaKit';
 
 @Entry
 @Component
@@ -455,7 +462,7 @@ struct Index {
 
 正例：首次加载页面时维护两个实例，在切换页面时切换实例，并将之前的实例通过reset方法重置。
 ```typescript
-import media from '@ohos.multimedia.media';
+import { media } from '@kit.MediaKit';
 
 @Entry
 @Component
@@ -535,9 +542,6 @@ class AVPlayerManager {
 1、模拟广告页，通过点击不同按钮分别进入普通页面和预加载页面。
 ```typescript
 // Index.ets
-
-import router from '@ohos.router';
-
 @Entry
 @Component
 struct Index {
@@ -628,7 +632,9 @@ export const getNumbers = (): string[] => {
 1、应用启动时提前创建首页。
 ```typescript
 // EntryAbility.ets  
-
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
 import { ControllerManager } from '../builder/CustomerController';
 import { getNumbers } from '../builder/CustomerBuilder';
 
@@ -644,7 +650,7 @@ export default class EntryAbility extends UIAbility {
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
-    window.getLastWindow(this.context, (err: BusinessError, data) => {
+    window.getLastWindow(this.context, (err: BusinessError<void>, data) => {
       if (err.code) {
         console.error('Failed to obtain top window. Cause:' + JSON.stringify(err));
         return;
@@ -684,8 +690,7 @@ struct PreloadedPage {
 ```typescript
 // CustomerController.ets
 
-import { UIContext } from '@ohos.arkui.UIContext';
-import { NodeController, BuilderNode, FrameNode } from "@ohos.arkui.node";
+import { BuilderNode, NodeController } from '@kit.ArkUI';
 import { MyBuilder } from './CustomerBuilder';
 
 export class MyNodeController extends NodeController {

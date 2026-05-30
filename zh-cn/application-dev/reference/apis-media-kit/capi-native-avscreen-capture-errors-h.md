@@ -1,10 +1,10 @@
 # native_avscreen_capture_errors.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -32,7 +32,7 @@
 
 ### OH_AVSCREEN_CAPTURE_ErrCode
 
-```
+```c
 enum OH_AVSCREEN_CAPTURE_ErrCode
 ```
 

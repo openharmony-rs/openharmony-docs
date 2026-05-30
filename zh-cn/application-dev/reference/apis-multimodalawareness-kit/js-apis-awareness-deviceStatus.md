@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.deviceStatus（设备状态感知）
+# @ohos.multimodalAwareness.deviceStatus (设备状态感知)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
@@ -52,7 +52,6 @@
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 32500001 | Service exception. |
 | 32500002 | Subscription failed. |
@@ -90,7 +89,6 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 32500001 | Service exception. |
 | 32500003 | Unsubscription failed. |
@@ -111,7 +109,7 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 
    ```ts
    // 定义callback变量
-   let callback : Callback<deviceStatus.SteadyStandingStatus> = (data : deviceStatus. SteadyStandingStatus) => {
+   let callback : Callback<deviceStatus.SteadyStandingStatus> = (data : deviceStatus.SteadyStandingStatus) => {
       console.info('succeed to get status, now status = ' + data);
    };
    // 以callback为回调函数，订阅设备静止姿态感知（支架态）事件

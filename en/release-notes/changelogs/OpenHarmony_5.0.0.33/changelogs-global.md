@@ -34,7 +34,7 @@ OpenHarmony SDK 5.0.0.33
 **Key API/Component Changes**
 
 **SystemCapability.Global.ResourceManager** provides APIs for resource management.
-For details about the APIs, see [API Reference](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource-manager.md).
+For details about the APIs, see [API Reference](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource-manager.md).
 
 **Adaptation Guide**
 

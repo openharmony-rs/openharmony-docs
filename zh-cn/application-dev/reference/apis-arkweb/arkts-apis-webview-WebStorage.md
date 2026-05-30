@@ -4,7 +4,7 @@
 <!--Owner: @yuzhouhang1-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 通过WebStorage可管理Web SQL数据库接口和HTML5 Web存储接口，每个应用中的所有Web组件共享一个WebStorage。
 
@@ -14,9 +14,11 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 >
 > - 目前调用WebStorage下的方法，都需要先加载Web组件。
+>
+> - 本Class下的接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的管理失效。ArkWeb内核版本参考ArkWeb简介[约束与限制](../../web/web-component-overview.md#约束与限制)。
 
 ## 导入模块
 
@@ -171,7 +173,7 @@ struct WebComponent {
 
 static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
-以回调方式异步获取当前使用Web SQL数据库的所有源的信息。
+以回调方式异步获取当前使用Web SQL数据库和HTML5支持的Web存储API的所有源的信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -235,7 +237,7 @@ struct WebComponent {
 
 static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
-以Promise方式异步获取当前使用Web SQL数据库的所有源的信息。
+以Promise方式异步获取当前使用Web SQL数据库和HTML5支持的Web存储API的所有源的信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -299,7 +301,7 @@ struct WebComponent {
 
 static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 
-使用callback回调异步获取指定源的Web SQL数据库的存储配额，配额以字节为单位。
+使用callback回调异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -308,7 +310,7 @@ static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 | 参数名   | 类型                  | 必填 | 说明               |
 | -------- | --------------------- | ---- | ------------------ |
 | origin   | string                | 是   | 指定源的字符串索引。 |
-| callback | AsyncCallback\<number> | 是   | 指定源的存储配额。<br>number是long型整数，范围为(-2,147,483,648)~(2,147,483,647)。   |
+| callback | AsyncCallback\<number> | 是   | 指定源的存储配额。<br>number是long型整数，范围为[-2147483648, 2147483647]。<br>单位：byte。   |
 
 **错误码：**
 
@@ -361,7 +363,7 @@ struct WebComponent {
 
 static getOriginQuota(origin: string): Promise\<number>
 
-以Promise方式异步获取指定源的Web SQL数据库的存储配额，配额以字节为单位。
+以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -375,7 +377,7 @@ static getOriginQuota(origin: string): Promise\<number>
 
 | 类型            | 说明                                    |
 | --------------- | --------------------------------------- |
-| Promise\<number> | Promise实例，用于获取指定源的存储配额。 |
+| Promise\<number> | Promise实例，用于获取指定源的存储配额。<br>单位：byte。 |
 
 **错误码：**
 
@@ -428,7 +430,7 @@ struct WebComponent {
 
 static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 
-以回调方式异步获取指定源的Web SQL数据库的存储量，存储量以字节为单位。
+以回调方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -437,7 +439,7 @@ static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 | 参数名   | 类型                  | 必填 | 说明               |
 | -------- | --------------------- | ---- | ------------------ |
 | origin   | string                | 是   | 指定源的字符串索引 |
-| callback | AsyncCallback\<number> | 是   | 指定源的存储量。   |
+| callback | AsyncCallback\<number> | 是   | 指定源的存储量。<br>单位：byte。   |
 
 **错误码：**
 
@@ -490,7 +492,7 @@ struct WebComponent {
 
 static getOriginUsage(origin: string): Promise\<number>
 
-以Promise方式异步获取指定源的Web SQL数据库的存储量，存储量以字节为单位。
+以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -504,7 +506,7 @@ static getOriginUsage(origin: string): Promise\<number>
 
 | 类型            | 说明                                  |
 | --------------- | ------------------------------------- |
-| Promise\<number> | Promise实例，用于获取指定源的存储量。 |
+| Promise\<number> | Promise实例，用于获取指定源的存储量。<br>单位：byte。 |
 
 **错误码：**
 
@@ -555,7 +557,7 @@ struct WebComponent {
 
 static deleteAllData(incognito?: boolean): void
 
-清除Web SQL数据库当前使用的所有存储。
+清除被JavaScript存储API使用的所有存储数据，这包括Web SQL数据库和HTML5支持的Web存储API。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -563,7 +565,7 @@ static deleteAllData(incognito?: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下Web的SQL数据库当前使用的所有存储。<br>默认值：false。<br>传入undefined与null时为false。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下Web的SQL数据库当前使用的所有存储。<br>默认值：false。<br>传入undefined或null时为false。 |
 
 **示例：**
 

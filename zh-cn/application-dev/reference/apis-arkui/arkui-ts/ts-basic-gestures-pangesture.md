@@ -1,10 +1,10 @@
 # PanGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 滑动手势事件，当滑动的最小距离达到设定的最小值时触发滑动手势事件。
 
@@ -40,7 +40,7 @@ PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; direction?: PanDirection; distance?: number } \| [PanGestureOptions](#pangestureoptions) | 否 | 滑动手势参数。<br> - fingers：用于指定触发滑动的最少手指数，最小为1指，最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br> - direction：用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br> - distance：用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>取值范围：[0, +∞)<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。 |
+| value | { fingers?: number; direction?: [PanDirection](ts-basic-gestures-pangesture.md#pandirection枚举说明); distance?: number } \| [PanGestureOptions](#pangestureoptions) | 否 | 滑动手势参数。<br> - fingers：用于指定触发滑动的最少手指数，最小为1指，最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br> - direction：用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br> - distance：用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>取值范围：[0, +∞)<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ### PanGesture<sup>15+</sup>
 
@@ -49,6 +49,8 @@ PanGesture(options?: PanGestureHandlerOptions)
 创建滑动手势对象。与[PanGesture](#pangesture-1)相比，options参数新增了对isFingerCountLimited和distanceMap参数，分别表示是否检查触摸屏幕的手指数量以及指定不同输入源触发滑动手势事件的最小滑动距离。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,14 +70,14 @@ PanGesture(options?: PanGestureHandlerOptions)
 
 | 名称 | 值 | 说明 |
 | ---- | -- | ----- |
-| All | - | 所有方向。 |
-| Horizontal | - | 水平方向。 |
-| Vertical | - | 竖直方向。 |
-| Left | - | 向左滑动。 |
-| Right | - | 向右滑动。 |
-| Up | - | 向上滑动。 |
-| Down | - | 向下滑动。 |
-| None | - | 任何方向都不可触发滑动手势事件。 |
+| None | 0 | 任何方向都不可触发滑动手势事件。 |
+| Left | 1 | 向左滑动。 |
+| Right | 2 | 向右滑动。 |
+| Horizontal | 3 | 水平方向。 |
+| Up | 4 | 向上滑动。 |
+| Down | 8 | 向下滑动。 |
+| Vertical | 12 | 竖直方向。 |
+| All | 15 | 所有方向。 |
 
 
 ## PanGestureOptions
@@ -94,23 +96,7 @@ constructor(value?: { fingers?: number; direction?: PanDirection; distance?: num
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value   | { fingers?: number; direction?: [PanDirection](#pandirection枚举说明); distance?: number } | 否   | 滑动手势配置参数对象。<br/>fingers用于指定触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 <br/>direction用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>distance用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。|
-
-### constructor<sup>20+</sup>
-
-constructor(value?: PanGestureHandlerOptions)
-
-创建滑动手势配置参数对象。通过PanGestureOptions对象接口可以动态修改滑动手势识别器的属性，从而避免通过状态变量修改属性（状态变量修改会导致UI刷新）。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --------- | ---------------------- | ---- | -------------------------------- |
-| value   | [PanGestureHandlerOptions](./ts-gesturehandler.md#pangesturehandleroptions)   | 否   | 滑动手势处理器配置参数。 |
+| value   | { fingers?: number; direction?: [PanDirection](#pandirection枚举说明); distance?: number } | 否   | 滑动手势配置参数对象。<br/>fingers用于指定触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 <br/>direction用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>distance用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。|
 
 ### setDirection
 
@@ -128,27 +114,11 @@ setDirection(value: PanDirection)
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | value  |  [PanDirection](#pandirection枚举说明) | 是   | 用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All |
 
-### setDirection<sup>20+</sup>
-
-setDirection(value: PanDirection): void
-
-设置滑动方向。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型                                       | 必填 | 说明                         |
-| ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  [PanDirection](#pandirection枚举说明) | 是   | 用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All |
-
 ### setDistance
 
 setDistance(value: number)
 
-设置触发滑动手势事件的最小滑动距离，单位为vp。距离值不宜设置过大，避免因滑动脱手，响应时延过大等问题导致性能劣化，最佳实践请参考：[减小拖动识别距离](https://developer.huawei.com/consumer/cn/doc/best-practices-V5/bpta-application-latency-optimization-cases-V5#section1116134115286)。
+设置触发滑动手势事件的最小滑动距离，单位为vp。距离值不宜设置过大，避免因滑动脱手、响应时延过大等问题导致性能劣化，最佳实践请参考：[减小拖动识别距离](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-application-latency-optimization-cases#section1116134115286)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -158,23 +128,7 @@ setDistance(value: number)
 
 | 参数名 | 类型                                       | 必填 | 说明                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | 是   | 触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。 |
-
-### setDistance<sup>20+</sup>
-
-setDistance(value: number): void
-
-设置触发滑动手势事件的最小滑动距离，单位为vp。距离值不宜设置过大，避免因滑动脱手，响应时延过大等问题导致性能劣化，最佳实践请参考：[减小拖动识别距离](https://developer.huawei.com/consumer/cn/doc/best-practices-V5/bpta-application-latency-optimization-cases-V5#section1116134115286)。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型                                       | 必填 | 说明                       |
-| ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | 是   | 触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。 |
+| value  |  number | 是   | 触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ### setFingers
 
@@ -192,23 +146,6 @@ setFingers(value: number)
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | value  |  number | 是   | 触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 |
 
-### setFingers<sup>20+</sup>
-
-setFingers(value: number): void
-
-设置触发滑动的最少手指数。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型                                       | 必填 | 说明                         |
-| ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | 是   | 触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 |
-
-
 ### getDirection<sup>12+</sup>
 
 getDirection(): PanDirection
@@ -216,6 +153,8 @@ getDirection(): PanDirection
 获取滑动方向。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,6 +172,8 @@ getDistance(): number
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -243,8 +184,6 @@ getDistance(): number
 
 
 ## 事件
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 >  **说明：**
 >
@@ -322,6 +261,8 @@ onActionCancel(event: Callback\<GestureEvent\>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -361,7 +302,7 @@ struct PanGestureExample {
       PanGesture(this.panOption)
         .onActionStart((event: GestureEvent) => {
           console.info('Pan start');
-          console.info('Pan start timeStamp is: ' + event.timestamp);
+          console.info(`Pan start timeStamp is: ${event.timestamp}`);
         })
         .onActionUpdate((event: GestureEvent) => {
           if (event) {
@@ -373,7 +314,7 @@ struct PanGestureExample {
           this.positionX = this.offsetX;
           this.positionY = this.offsetY;
           console.info('Pan end');
-          console.info('Pan end timeStamp is: ' + event.timestamp);
+          console.info(`Pan end timeStamp is: ${event.timestamp}`);
         })
       )
 

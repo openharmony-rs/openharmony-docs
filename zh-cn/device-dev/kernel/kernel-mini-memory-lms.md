@@ -28,7 +28,7 @@ LMS使用影子内存映射标记系统内存的状态，一共可标记为三�
 
 ## 接口说明
 
-OpenHarmony LiteOS-M内核的LMS模块提供下面几种功能，接口详细信息可以查看[API](https://gitee.com/openharmony/kernel_liteos_m/blob/master/components/lms/los_lms.h)参考。
+OpenHarmony LiteOS-M内核的LMS模块提供下面几种功能，接口详细信息可以查看[API](https://gitcode.com/openharmony/kernel_liteos_m/blob/master/components/lms/los_lms.h)参考。
 
   **表1** LMS模块接口说明
 

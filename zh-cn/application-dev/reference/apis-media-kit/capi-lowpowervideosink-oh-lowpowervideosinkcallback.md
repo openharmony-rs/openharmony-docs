@@ -1,4 +1,14 @@
 # OH_LowPowerVideoSinkCallback
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_LowPowerVideoSinkCallback OH_LowPowerVideoSinkCallback
+```
 
 ## 概述
 

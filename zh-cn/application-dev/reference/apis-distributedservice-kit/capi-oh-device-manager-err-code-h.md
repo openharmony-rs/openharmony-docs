@@ -1,4 +1,10 @@
 # oh_device_manager_err_code.h
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao;@huangkai71-->
+<!--Designer: @gsxiaowen;@lee_jet520-->
+<!--Tester: @hanjiawei;@Ytt-test-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
@@ -26,7 +32,7 @@
 
 ### DeviceManager_ErrorCode
 
-```
+```c
 enum DeviceManager_ErrorCode
 ```
 

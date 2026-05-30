@@ -8,7 +8,7 @@ Public API
 
 **Reason for Change**
 
-The [shortcutId field](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/module-configuration-file.md#shortcuts) cannot be configured via a resource index (starting with **$**) in the application shortcut configuration file.
+The [shortcutId field](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/quick-start/module-configuration-file.md#shortcuts) cannot be configured via a resource index (starting with **$**) in the application shortcut configuration file.
 
 **Impact of the Change**
 

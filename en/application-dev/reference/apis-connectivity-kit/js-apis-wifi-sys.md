@@ -1,5 +1,11 @@
 # @ohos.wifi (WLAN) (System API)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 The **WLAN** module provides basic wireless local area network (WLAN) functions, peer-to-peer (P2P) functions, and WLAN message notification services. It allows applications to communicate with other devices over WLAN.
 
 > **NOTE**
@@ -39,9 +45,9 @@ Enables WLAN.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.enableWifi();
+    wifi.enableWifi();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -69,9 +75,9 @@ Disables WLAN.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.disableWifi();
+    wifi.disableWifi();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -99,7 +105,7 @@ Adds network configuration. This API uses a promise to return the result.
 
   | **Type**| **Description**|
   | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the WLAN configuration ID. If **-1** is returned, the network configuration fails to be added.|
+  | Promise&lt;number&gt; | Promise used to return the ID of the added network configuration. If the value is **-1**, the network configuration fails to be added.|
 
   **Example**
 
@@ -107,30 +113,30 @@ Adds network configuration. This API uses a promise to return the result.
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 0,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.addDeviceConfig(config).then(result => {
-		console.info("result:" + JSON.stringify(result));
-	});	
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 0,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    wifi.addDeviceConfig(config).then(result => {
+        console.info("result:" + JSON.stringify(result));
+    });    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -143,13 +149,15 @@ Represents the WLAN configuration.
 
 | **Name**| **Type**| **Readable**| **Writable**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
-| creatorUid | number | Yes| No| ID of the creator.<br>**System API**: This is a system API.|
-| disableReason | number | Yes| No| Reason for disabling WLAN.<br>**System API**: This is a system API.|
-| netId | number | Yes| No| Network ID.<br>**System API**: This is a system API.|
-| randomMacType | number | Yes| No| Random MAC type.<br>**System API**: This is a system API.|
-| randomMacAddr | string | Yes| No| Random MAC address.<br>**System API**: This is a system API.|
-| ipType | [IpType](#iptype7) | Yes| No| IP address type.<br>**System API**: This is a system API.|
-| staticIp | [IpConfig](#ipconfig7) | Yes| No| Static IP address configuration.<br>**System API**: This is a system API.|
+| creatorUid | number | Yes| No| ID of the creator.<br> **System API**: This is a system API.|
+| disableReason | number | Yes| No| Reason for disabling the network.<br> **System API**: This is a system API.|
+| netId | number | Yes| No| Network ID.<br> **System API**: This is a system API.|
+| randomMacType | number | Yes| No| Random MAC type.<br> **System API**: This is a system API.|
+| randomMacAddr | string | Yes| No| Random MAC address.<br> **System API**: This is a system API.|
+| ipType | [IpType](#iptype7) | Yes| No| IP address type.<br> **System API**: This is a system API.|
+| family<sup>20+</sup> | number | No| Yes| IP protocol version.<br> **System API**: This is a system API.|
+| staticIp | [IpConfig](#ipconfig7) | No| Yes| Static IPv4 address information.<br> **System API**: This is a system API.|
+| staticIpv6<sup>20+</sup> | [Ipv6Config](#ipv6config20) | No| Yes| Static IPv6 address information.<br> **System API**: This is a system API.|
 
 
 ## IpType<sup>7+</sup>
@@ -170,18 +178,37 @@ Enumerates the IP address types.
 
 ## IpConfig<sup>7+</sup>
 
-Represents IP configuration information.
+Defines the IPv4 address information.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| **Name**| **Type**| **Readable**| **Writable**| **Description**|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | Yes| No| IP address.|
-| gateway | number | Yes| No| Gateway.|
-| dnsServers | number[] | Yes| No| Domain name server (DNS) information.|
-| domains | Array&lt;string&gt; | Yes| No| Domain information.|
+| ipAddress | number | No| No| IPv4 address.|
+| gateway | number | No| No| Gateway.|
+| prefixLength | number | No| No| Prefix length.|
+| dnsServers | number[] | No| No| Domain name server (DNS) information.|
+| domains | Array&lt;string&gt; | No| No| Domain information.|
+
+
+## Ipv6Config<sup>20+</sup>
+
+Defines the IPv6 address information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Communication.WiFi.STA
+
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| ipAddress | string | No| No| IPv6 address.|
+| gateway | string| No| No| Gateway.|
+| prefixLength | number | No| No| Prefix length.|
+| dnsServers | Array\<string> | No| No| Domain name server (DNS) information.|
+| domains | Array\<string> | No| No| Domain information.|
+
 
 
 ## wifi.addDeviceConfig
@@ -209,30 +236,30 @@ Adds network configuration. This API uses an asynchronous callback to return the
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 0,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.addDeviceConfig(config,(error,result) => {
-		console.info("result:" + JSON.stringify(result));
-	});	
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 0,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    wifi.addDeviceConfig(config,(error,result) => {
+        console.info("result:" + JSON.stringify(result));
+    });    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -241,7 +268,7 @@ try {
 
 connectToNetwork(networkId: number): boolean
 
-Connects to the specified network.
+Connects to a hotspot.
 
 **System API**: This is a system API.
 
@@ -267,11 +294,11 @@ Connects to the specified network.
 import wifi from '@ohos.wifi';
 
 try {
-	let networkId = 0;
-	wifi.connectToNetwork(networkId);
+    let networkId = 0;
+    wifi.connectToNetwork(networkId);
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
-}	
+    console.error("failed:" + JSON.stringify(error));
+}    
 ```
 
 ## wifi.connectToDevice
@@ -291,7 +318,7 @@ Connects to the specified network.
 
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration.|
+  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
 
 **Return value**
 
@@ -304,29 +331,29 @@ Connects to the specified network.
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 3,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-		ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.connectToDevice(config);
-			
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 3,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    wifi.connectToDevice(config);
+            
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -354,9 +381,9 @@ Disconnects the network.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.disconnect();
+    wifi.disconnect();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -369,10 +396,10 @@ Represents the WLAN connection information.
 
 | Name| Type| Readable| Writable| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| networkId | number | Yes| No| Network configuration ID.<br>**System API**: This is a system API.|
-| chload | number | Yes| No| Channel load. A larger value indicates a higher load.<br>**System API**: This is a system API.|
-| snr | number | Yes| No| Signal-to-noise ratio (SNR).<br>**System API**: This is a system API.|
-| suppState | [SuppState](#suppstate) | Yes| No| Supplicant state.<br>**System API**: This is a system API.|
+| networkId | number | Yes| No| ID of the network configuration to disable.<br> **System API**: This is a system API.|
+| chload | number | Yes| No| Channel load. A larger value indicates a higher load.<br> **System API**: This is a system API.|
+| snr | number | Yes| No| Signal-to-noise ratio (SNR).<br> **System API**: This is a system API.|
+| suppState | [SuppState](#suppstate) | Yes| No| Supplicant state.<br> **System API**: This is a system API.|
 
 
 ## SuppState
@@ -427,7 +454,7 @@ Obtains the features supported by this device.
 | 0x0004 | Generic Advertisement Service (GAS)/Access Network Query Protocol (ANQP) feature|
 | 0x0008 | Wi-Fi Direct|
 | 0x0010 | SoftAP|
-| 0x0040 | Wi-Fi AWare|
+| 0x0040 | Wi-Fi Aware|
 | 0x8000 | WLAN AP/STA concurrency|
 | 0x8000000 | WPA3 Personal (WPA-3 SAE)|
 | 0x10000000 | WPA3-Enterprise Suite B |
@@ -452,17 +479,17 @@ Obtains the device MAC address.
 
   | **Type**| **Description**|
   | -------- | -------- |
-  | string[] | MAC address obtained.|
+  | string[] | MAC address.|
 
 **Example**
 ```ts
 import wifi from '@ohos.wifi';
 
 try {
-	let ret = wifi.getDeviceMacAddress();
-	console.info("deviceMacAddress:" + JSON.stringify(ret));
+    let ret = wifi.getDeviceMacAddress();
+    console.info("deviceMacAddress:" + JSON.stringify(ret));
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -491,9 +518,9 @@ Re-associates with the network.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.reassociate();
+    wifi.reassociate();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -520,15 +547,15 @@ Reconnects to the network.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.reconnect();
+    wifi.reconnect();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
 ## wifi.getDeviceConfigs<sup>7+</sup>
 
-getDeviceConfigs(): &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig)&gt;
+getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 Obtains network configuration.
 
@@ -549,10 +576,10 @@ Obtains network configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let configs = wifi.getDeviceConfigs();
-	console.info("configs:" + JSON.stringify(configs));
+    let configs = wifi.getDeviceConfigs();
+    console.info("configs:" + JSON.stringify(configs));
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -572,7 +599,7 @@ Updates network configuration.
 
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig) | Yes| New WLAN configuration.|
+  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
 
 **Return value**
 
@@ -585,29 +612,29 @@ Updates network configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 3,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	let ret = wifi.updateNetwork(config);
-	console.error("ret:" + ret);		
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 3,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    let ret = wifi.updateNetwork(config);
+    console.error("ret:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -640,10 +667,10 @@ Disables network configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let netId = 0;
-	wifi.disableNetwork(netId);		
+    let netId = 0;
+    wifi.disableNetwork(netId);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -670,9 +697,9 @@ Removes the configuration of all networks.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.removeAllNetwork();		
+    wifi.removeAllNetwork();        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -692,7 +719,7 @@ Removes the specified network configuration.
 
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
-| id | number | Yes| ID of the network configuration to remove.|
+  | id | number | Yes| ID of the network configuration to disable.|
 
 **Return value**
 
@@ -705,10 +732,10 @@ Removes the specified network configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let id = 0;
-	wifi.removeDevice(id);		
+    let id = 0;
+    wifi.removeDevice(id);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -735,9 +762,9 @@ Enables this hotspot.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.enableHotspot();	
+    wifi.enableHotspot();    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -764,9 +791,9 @@ Disables this hotspot.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.disableHotspot();	
+    wifi.disableHotspot();    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -793,10 +820,10 @@ Checks whether the hotspot supports dual band.
 import wifi from '@ohos.wifi';
 
 try {
-	let ret = wifi.isHotspotDualBandSupported();
-	console.info("result:" + ret);		
+    let ret = wifi.isHotspotDualBandSupported();
+    console.info("result:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -816,17 +843,17 @@ Checks whether this hotspot is active.
 
   | **Type**| **Description**|
   | -------- | -------- |
-| boolean | Returns **true** if the hotspot is active; returns **false** otherwise.|
+  | boolean | Returns **true** if WLAN is enabled; returns **false** otherwise.|
 
 **Example**
 ```ts
 import wifi from '@ohos.wifi';
 
 try {
-	let ret = wifi.isHotspotActive();
-	console.info("result:" + ret);		
+    let ret = wifi.isHotspotActive();
+    console.info("result:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -859,17 +886,17 @@ Sets hotspot configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.HotspotConfig = {
-		ssid: "****",
-		securityType: 3,
-		band: 0,
-		preSharedKey: "****",
-		maxConn: 0
-	}
-	let ret = wifi.setHotspotConfig(config);
-	console.info("result:" + ret);		
+    let config:wifi.HotspotConfig = {
+        ssid: "****",
+        securityType: 3,
+        band: 0,
+        preSharedKey: "****",
+        maxConn: 0
+    }
+    let ret = wifi.setHotspotConfig(config);
+    console.info("result:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -884,7 +911,7 @@ Represents the hotspot configuration.
 | **Name**| **Type**| **Readable**| **Writable**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | Yes| No| SSID of the hotspot, in UTF-8 format.|
-| securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytype) | Yes| No| Security type.|
+| securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytypedeprecated) | Yes| No| Security type.|
 | band | number | Yes| No| Hotspot band. The value **1** stands for 2.4 GHz, the value **2** for 5 GHz, and the value **3** for dual band.|
 | preSharedKey | string | Yes| No| PSK of the hotspot.|
 | maxConn | number | Yes| No| Maximum number of connections allowed.|
@@ -913,16 +940,16 @@ Obtains hotspot configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let config = wifi.getHotspotConfig();
-	console.info("result:" + JSON.stringify(config));		
+    let config = wifi.getHotspotConfig();
+    console.info("result:" + JSON.stringify(config));        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
 ## wifi.getStations<sup>7+</sup>
 
-getStations(): &nbsp;Array&lt;[StationInfo](#stationinfo7)&gt;
+getStations(): &nbsp;Array&lt;StationInfo&gt;
 
 Obtains information about the connected stations.
 
@@ -943,10 +970,10 @@ Obtains information about the connected stations.
 import wifi from '@ohos.wifi';
 
 try {
-	let stations = wifi.getStations();
-	console.info("result:" + JSON.stringify(stations));		
+    let stations = wifi.getStations();
+    console.info("result:" + JSON.stringify(stations));        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -995,10 +1022,10 @@ Deletes a persistent group.
 import wifi from '@ohos.wifi';
 
 try {
-	let netId = 0;
-	wifi.deletePersistentGroup(netId);	
+    let netId = 0;
+    wifi.deletePersistentGroup(netId);    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1019,7 +1046,7 @@ Sets the device name.
 
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
-  | devName | string | Yes| Device name to set.|
+  | devName | string | Yes| Device name.|
 
 **Return value**
 
@@ -1032,10 +1059,10 @@ Sets the device name.
 import wifi from '@ohos.wifi';
 
 try {
-	let name = "****";
-	wifi.setDeviceName(name);	
+    let name = "****";
+    wifi.setDeviceName(name);    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1056,7 +1083,7 @@ Subscribes to Wi-Fi stream changes.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | Yes| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional. |
+  | callback | Callback&lt;number&gt; | Yes| Callback invoked to return the status change, which can be any of the following values:<br>- **0**: No change.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
 
 ## wifi.off('streamChange')<sup>7+</sup>
 
@@ -1075,7 +1102,7 @@ Unsubscribes from Wi-Fi stream changes.
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | No| Callback to unregister. The Wi-Fi stream change can be any of the following values:<br>- **0**: No stream.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
+| callback | Callback&lt;number&gt; | No| Callback invoked to return the status change, which can be any of the following values:<br>- **0**: No change.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
 
 **Example**
 ```ts
@@ -1098,7 +1125,7 @@ wifi.off("streamChange", recvStreamChangeFunc);
 
 on(type: "hotspotStaJoin", callback: Callback&lt;StationInfo&gt;): void
 
-Subscribes to the event of an STA joining a Wi-Fi hotspot.
+Subscribes to the addition of a STA to a Wi-Fi hotspot.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1111,13 +1138,13 @@ Subscribes to the event of an STA joining a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
-| callback | Callback&lt;StationInfo&gt; | Yes| Callback invoked when an STA is connected to a Wi-Fi hotspot.|
+  | callback | Callback&lt;StationInfo&gt; | Yes| Callback invoked to return the WLAN state.|
 
 ## wifi.off('hotspotStaJoin')<sup>7+</sup>
 
 off(type: "hotspotStaJoin", callback?: Callback&lt;StationInfo&gt;): void
 
-Unsubscribes from the event of an STA joining a Wi-Fi hotspot.
+Unsubscribes from the addition of a STA to a Wi-Fi hotspot.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1130,7 +1157,7 @@ Unsubscribes from the event of an STA joining a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
-| callback | Callback&lt;StationInfo&gt; | No| Callback to unregister.|
+  | callback | Callback&lt;StationInfo&gt; | No| Callback invoked to return the WLAN state.|
 
   **Example**
 ```ts
@@ -1152,7 +1179,7 @@ wifi.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
 
-Subscribes to the event of an STA leaving a Wi-Fi hotspot.
+Subscribes to the disconnection of a STA from a Wi-Fi hotspot.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1165,13 +1192,13 @@ Subscribes to the event of an STA leaving a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-| callback | Callback&lt;StationInf]&gt; | Yes| Callback invoked when an STA is disconnected from a Wi-Fi hotspot.|
+  | callback | Callback&lt;StationInf&gt; | Yes| Callback invoked to return the WLAN state.|
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
 off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
 
-Unsubscribes from the event of an STA leaving a Wi-Fi hotspot.
+Unsubscribes from the disconnection of a STA from a Wi-Fi hotspot.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1184,7 +1211,7 @@ Unsubscribes from the event of an STA leaving a Wi-Fi hotspot.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-| callback | Callback&lt;StationInf]&gt; | No| Callback to unregister.|
+  | callback | Callback&lt;StationInf&gt; | No| Callback invoked to return the WLAN state.|
 
   **Example**
 ```ts

@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef void *OH_AI_ContextHandle
+```
+
 ## Overview
 
 Defines the pointer to the MindSpore context. 

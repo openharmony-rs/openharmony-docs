@@ -23,12 +23,12 @@
 
 ## 场景和功能介绍
 
-以下Node-API接口主要用于与ArkTS交互时处理错误和异常情况。其使用场景如下：
+以下[Node-API](../reference/native-lib/napi.md#已从node-api组件标准库中导出的符号列表)接口主要用于与ArkTS交互时处理错误和异常情况。其使用场景如下：
 | 接口 | 描述 |
 | -------- | -------- |
 | napi_create_error、napi_create_type_error、napi_create_range_error | 在C/C++中需要创建一个错误对象时，可以使用这些函数。创建的错误对象可以使用napi_throw抛出到ArkTS。 |
 | napi_throw | 当在C/C++中出现了错误或异常情况时，通过使用napi_create_error或napi_get_last_error_info方法创建或获取ArkTS Error对象，使用该方法抛出已有的ArkTS Error对象。 |
-| napi_throw_error、napi_throw_type_error、napi_throw_range_error | 当在C/C++中出现了错误或异常情况时，可以使用这些函数来抛出ArkTS中的异常。 |
+| napi_throw_error、napi_throw_type_error、napi_throw_range_error、napi_throw_business_error | 当在C/C++中出现了错误或异常情况时，可以使用这些函数来抛出ArkTS中的异常。 |
 | napi_is_error | 检查一个napi_value是否代表一个错误对象时，可以使用这个函数。 |
 | napi_get_and_clear_last_exception | 当你需要获取最近一次出现的异常，并将异常队列清空时，可以使用这个函数。 |
 | napi_is_exception_pending | 当你需要判断是否有未处理的异常时，可以使用这个函数。 |
@@ -47,6 +47,7 @@ cpp部分代码
 
 ```cpp
 #include "napi/native_api.h"
+#include "hilog/log.h"
 static napi_value GetLastErrorInfo(napi_env env, napi_callback_info info)
 {
     // 获取输入参数（这里以字符串message作为参数传入）
@@ -90,6 +91,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_last_error_info: %{public}s', testNapi.getLastErrorInfo('message'));
 } catch (error) {
@@ -135,6 +137,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   throw testNapi.createTypeError();
 } catch (error) {
@@ -180,6 +183,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   throw testNapi.createRangeError();
 } catch (error) {
@@ -233,6 +237,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.napiThrow();
 } catch (error) {
@@ -290,6 +295,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.napiThrowErrorMessage();
 } catch (error) {
@@ -302,6 +308,53 @@ try {
 }
 ```
 <!-- @[ark_napi_throw_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
+
+### napi_throw_business_error
+
+用于抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。[该接口抛出的是一个原生的Error对象，并不是ArkTS的SDK中声明的BusinessError对象。](../reference/native-lib/napi.md#node-api组件扩展的接口)
+
+cpp部分代码
+
+```cpp
+#include "napi/native_api.h"
+#include "hilog/log.h"
+
+static constexpr int INT_ARG_100 = 100;
+
+// 这里直接抛出一个带有errorMessage的错误
+static napi_value NapiThrowBusinessError(napi_env env, napi_callback_info info)
+{
+    napi_status status = napi_throw_business_error(env, INT_ARG_100, "error message");
+    if (status != napi_ok) {
+        OH_LOG_INFO(LOG_APP, "napi_throw_business_error failed :: %{public}d", status);
+    }
+    return nullptr;
+}
+```
+<!-- [napi_throw_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
+
+接口声明
+
+```ts
+// index.d.ts
+export const napiThrowBusinessError: () => void;
+```
+<!-- [napi_throw_business_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+ArkTS侧示例代码
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+
+try {
+  testNapi.napiThrowBusinessError();
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_throw_business_error error code: %{public}d , message: %{public}s', error.code, error.message);
+  console.info(typeof error.code); // "number"
+}
+```
+<!-- [ark_napi_throw_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_throw_type_error
 
@@ -352,6 +405,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.throwTypeErrorMessage();
 } catch (error) {
@@ -420,6 +474,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.throwRangeErrorMessage();
 } catch (error) {
@@ -474,6 +529,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   throw new Error("throwing an error");
 } catch (error) {
@@ -522,6 +578,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // 这里获取到最后一个未处理的异常
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_and_clear_last_exception, error.message: %{public}s',
            testNapi.getAndClearLastException());
@@ -576,6 +633,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 interface MyObject {
   code: string;
   message: string;
@@ -626,6 +684,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.fatalError();
 } catch (error) {
@@ -673,7 +732,6 @@ export const fatalException: (err: Error) => void;
 ArkTS侧示例代码
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 const err = new Error("a fatal exception occurred");

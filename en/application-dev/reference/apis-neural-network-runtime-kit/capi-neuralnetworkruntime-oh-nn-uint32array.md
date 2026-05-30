@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NN_UInt32Array {...} OH_NN_UInt32Array
+```
+
 ## Overview
 
 Defines the structure for storing 32-bit unsigned integer arrays.

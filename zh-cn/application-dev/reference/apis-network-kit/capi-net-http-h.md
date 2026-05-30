@@ -39,13 +39,17 @@
 
 ### OH_Http_CreateHeaders()
 
-```
+```c
 Http_Headers *OH_Http_CreateHeaders(void)
 ```
 
 **描述**
 
 创建HTTP请求或者响应的头。
+
+> **说明：**
+>
+> 建议在本次HTTP请求结束后，及时调用[OH_Http_DestroyHeaders](#oh_http_destroyheaders)销毁HTTP请求或者响应的头，执行资源清理等操作。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -59,7 +63,7 @@ Http_Headers *OH_Http_CreateHeaders(void)
 
 ### OH_Http_DestroyHeaders()
 
-```
+```c
 void OH_Http_DestroyHeaders(Http_Headers **headers)
 ```
 
@@ -80,7 +84,7 @@ void OH_Http_DestroyHeaders(Http_Headers **headers)
 
 ### OH_Http_SetHeaderValue()
 
-```
+```c
 uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, const char *value)
 ```
 
@@ -109,7 +113,7 @@ uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, 
 
 ### OH_Http_GetHeaderValue()
 
-```
+```c
 Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name)
 ```
 
@@ -137,7 +141,7 @@ Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name
 
 ### OH_Http_GetHeaderEntries()
 
-```
+```c
 Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 ```
 
@@ -164,7 +168,7 @@ Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 
 ### OH_Http_DestroyHeaderEntries()
 
-```
+```c
 void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 ```
 
@@ -185,7 +189,7 @@ void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 
 ### OH_Http_CreateRequest()
 
-```
+```c
 Http_Request *OH_Http_CreateRequest(const char *url)
 ```
 
@@ -212,13 +216,17 @@ Http_Request *OH_Http_CreateRequest(const char *url)
 
 ### OH_Http_Request()
 
-```
+```c
 int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)
 ```
 
 **描述**
 
 发起HTTP请求。
+
+> **说明：**
+>
+> 建议在本次HTTP请求收到响应并处理完毕后，及时调用[OH_Http_Destroy](#oh_http_destroy)中断HTTP请求。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -243,13 +251,13 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 
 ### OH_Http_Destroy()
 
-```
+```c
 void OH_Http_Destroy(struct Http_Request **request)
 ```
 
 **描述**
 
-销毁HTTP请求。
+中断HTTP请求。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -260,6 +268,6 @@ void OH_Http_Destroy(struct Http_Request **request)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct Http_Request](capi-netstack-http-request.md) **request | 要销毁的请求，指向Http_Request的指针，参考[Http_Request](capi-netstack-http-request.md)。 |
+| [struct Http_Request](capi-netstack-http-request.md) **request | 要中断的请求，指向Http_Request的指针，参考[Http_Request](capi-netstack-http-request.md)。 |
 
 

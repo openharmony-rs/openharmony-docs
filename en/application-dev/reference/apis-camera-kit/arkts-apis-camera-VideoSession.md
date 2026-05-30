@@ -4,20 +4,18 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+**VideoSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [Stabilization](arkts-apis-camera-Stabilization.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), [Macro](arkts-apis-camera-Macro.md), and [ControlCenter](arkts-apis-camera-ControlCenter.md).
+
+It implements a video session, which provides operations on the flash, exposure, white balance, focus, zoom, video stabilization, color space, macro mode, and controller.
+
+**VideoSession** is provided for the default video recording mode. It applies to common scenarios. It supports recording at various resolutions (such as 720p and 1080p) and frame rates (such as 30 fps and 60 fps).
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 11.
-
-VideoSession inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [Stabilization](arkts-apis-camera-Stabilization.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), [Macro](arkts-apis-camera-Macro.md), and [ControlCenter](arkts-apis-camera-ControlCenter.md).
-
-It implements a video session, which provides operations on the flash, exposure, white balance, focus, zoom, video stabilization, color space, macro mode, and controller.
-
-> **NOTE**
->
-> VideoSession is provided for the default video recording mode. It applies to common scenarios. It supports recording at various resolutions (such as 720p and 1080p) and frame rates (such as 30 fps and 60 fps).
 
 ## Modules to Import
 
@@ -39,7 +37,7 @@ Checks whether this session supports a preconfigured resolution.
 
 | Name           | Type                                 | Mandatory | Description             |
 |----------------|-------------------------------------|-----|-----------------|
-| preconfigType  | [PreconfigType](arkts-apis-camera-e.md#preconfigtype12)   | Yes  | Resolution type.     |
+| preconfigType | [PreconfigType](arkts-apis-camera-e.md#preconfigtype12) | Yes| Resolution type.|
 | preconfigRatio | [PreconfigRatio](arkts-apis-camera-e.md#preconfigratio12) | No  | Aspect ratio. The default value is 16:9.|
 
 **Return value**
@@ -119,7 +117,7 @@ function testPreconfig(videoSession: camera.VideoSession, preconfigType: camera.
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to VideoSession error events. This API uses an asynchronous callback to return the result.
+Subscribes to **VideoSession** error events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -154,7 +152,7 @@ function registerSessionError(videoSession: camera.VideoSession): void {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-Unsubscribes from VideoSession error events. This API uses a callback to return the result.
+Unsubscribes from **VideoSession** error events. This API uses a callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -322,7 +320,7 @@ Subscribes to automatic camera switch status change events. This API uses an asy
 | Name    | Type                                                                  | Mandatory| Description                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------ |
 | type     | string                                                               | Yes  | Event type. The value is fixed at **'autoDeviceSwitchStatusChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[AutoDeviceSwitchStatus](arkts-apis-camera-i.md#autodeviceswitchstatus13)\> | Yes  | Callback function, which is used to obtain the status of automatic camera switch. |
+| callback | AsyncCallback\<[AutoDeviceSwitchStatus](arkts-apis-camera-i.md#autodeviceswitchstatus13)\> | Yes  | Callback used to obtain the status of automatic camera switch. |
 
 **Example**
 
@@ -374,7 +372,8 @@ setQualityPrioritization(quality : QualityPrioritization) : void;
 Sets the priority level for video recording quality.
 
 > **NOTE**
-> The default value is **HIGH_QUALITY**. Switching to **POWER_BALANCE** will compromise video recording quality to achieve lower power usage. The extent of power conservation achieved varies depending on the platform.
+> - The default value is **HIGH_QUALITY**. Switching to **POWER_BALANCE** will compromise video recording quality to achieve lower power usage. The extent of power conservation achieved varies depending on the platform.
+> - It is recommended that this API be called between [commitConfig](arkts-apis-camera-Session.md#commitconfig11) and [start](arkts-apis-camera-Session.md#start11-1).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -388,7 +387,7 @@ Sets the priority level for video recording quality.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
 | ID| Error Message                                                                                                                                       |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -589,7 +588,7 @@ Unsubscribes from macro state change events.
 | Name   | Type                    | Mandatory| Description                                                                    |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------------|
 | type     | string                   | Yes  | Event type. The value is fixed at **'macroStatusChanged'**. The event can be listened for when a session is created.                     |
-| callback | AsyncCallback\<boolean\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| callback | AsyncCallback\<boolean\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. If **true** is returned, the unsubscription is successful. If **false** is returned, the unsubscription fails.|
 
 
 **Example**
@@ -597,5 +596,73 @@ Unsubscribes from macro state change events.
 ```ts
 function unregisterMacroStatusChanged(videoSession: camera.VideoSession): void {
   videoSession.off('macroStatusChanged');
+}
+```
+
+## onIsoInfoChange<sup>22+</sup>
+
+onIsoInfoChange(callback: Callback\<IsoInfo\>): void
+
+Subscribes to sensitivity (ISO) state change events and obtains the latest ISO value through a callback.
+
+**Model restriction**: This API can be used only in the stage model.
+ 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type                                     | Mandatory| Description                      |
+| -------- | ----------------------------------------- | ---- | ------------------------ |
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | Yes  | Callback used to obtain the current ISO value of the camera.|
+
+
+**Example**
+
+```ts
+
+function callback(isoInfo: camera.IsoInfo): void {
+  console.info(`Iso : ${isoInfo}`);
+}
+
+function registerIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.onIsoInfoChange(callback);
+}
+```
+
+## offIsoInfoChange<sup>22+</sup>
+
+offIsoInfoChange(callback?: Callback\<IsoInfo\>): void
+
+Unsubscribes from ISO state change events.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type                                     | Mandatory| Description                      |
+| -------- | ----------------------------------------- | ---- | ------------------------ |
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | No  | Callback used for unsubscription.<br>If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.)<br>Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+
+
+**Example**
+
+```ts
+
+function callback(isoInfo: camera.IsoInfo): void {
+  console.info(`Iso : ${isoInfo}`);
+}
+
+function unregisterIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.offIsoInfoChange(callback);
+}
+
+function unregisterAllIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.offIsoInfoChange();
 }
 ```

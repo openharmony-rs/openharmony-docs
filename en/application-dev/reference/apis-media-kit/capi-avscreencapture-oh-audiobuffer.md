@@ -4,7 +4,11 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioBuffer {...} OH_AudioBuffer
+```
 
 ## Overview
 
@@ -24,5 +28,5 @@ The struct describes the configuration such as the size, type, and timestamp of 
 | -- | -- |
 | uint8_t* buf | Pointer to an audio buffer.|
 | int32_t size | Size of the audio buffer.|
-| int64_t timestamp | Timestamp of the audio buffer.|
+| int64_t timestamp | Timestamp of the audio buffer. The unit is ns.|
 | [OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) type | Type of the audio capture source.|

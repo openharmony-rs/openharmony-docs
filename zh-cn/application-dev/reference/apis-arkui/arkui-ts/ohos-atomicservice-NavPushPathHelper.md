@@ -51,7 +51,7 @@ NavPushPathHelper的构造函数。
 
 pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，使用Promise异步回调返回接口调用结果。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -73,7 +73,7 @@ pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -83,7 +83,9 @@ pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<vo
 
 pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，使用Promise异步回调返回接口调用结果，具体根据options中指定不同的[LaunchMode](ts-basic-components-navigation.md#launchmode12枚举说明)，有不同的行为。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，使用Promise异步回调。
+
+具体根据options中指定不同的[LaunchMode](ts-basic-components-navigation.md#launchmode12枚举说明)，有不同的行为。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -91,11 +93,11 @@ pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Pr
 
 **参数：**
 
-| 参数名   | 类型                            | 必填   | 说明                  |
-| ---- | ----------------------------- | ---- | -------------------- |
+| 参数名   | 类型                            | 必填   | 说明 |
+| ---- | ----------------------------- | ---- |----|
 | moduleName | string | 是    | 目标[NavDestination](ts-basic-components-navdestination.md)所在分包的moduleName。 |
 | info | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 是    | [NavDestination](ts-basic-components-navdestination.md)页面的信息。 |
-| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | 否    | 页面栈操作选项。 |
+| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | 否    | 页面栈操作选项。默认值为{ launchMode: LaunchMode.STANDARD, animated: true }。 |
 
 **返回值：**
 
@@ -105,7 +107,7 @@ pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -115,7 +117,7 @@ pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Pr
 
 pushPathByName(moduleName: string, name: string, param: Object, animated?: boolean): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，传递的数据为param，使用Promise异步回调返回接口调用结果。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，传递的数据为param，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -138,7 +140,7 @@ pushPathByName(moduleName: string, name: string, param: Object, animated?: boole
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -148,7 +150,7 @@ pushPathByName(moduleName: string, name: string, param: Object, animated?: boole
 
 pushPathByName(moduleName: string, name: string, param: Object, onPop: Callback\<PopInfo>, animated?: boolean): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，传递的数据为param，添加onPop回调接收入栈页面出栈时的返回结果，并进行处理，使用Promise异步回调返回接口调用结果。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，传递的数据为param，添加onPop回调接收入栈页面出栈时的返回结果，并进行处理，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -172,7 +174,7 @@ pushPathByName(moduleName: string, name: string, param: Object, onPop: Callback\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -182,7 +184,7 @@ pushPathByName(moduleName: string, name: string, param: Object, onPop: Callback\
 
 pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，使用Promise异步回调返回接口调用结果。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -204,7 +206,7 @@ pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Prom
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -218,7 +220,9 @@ pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Prom
 
 pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，使用Promise异步回调返回接口调用结果，具体根据options中指定不同的[LaunchMode](ts-basic-components-navigation.md#launchmode12枚举说明)，有不同的行为。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，使用Promise异步回调。
+
+具体根据options中指定不同的[LaunchMode](ts-basic-components-navigation.md#launchmode12枚举说明)，有不同的行为。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -226,11 +230,11 @@ pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptio
 
 **参数：**
 
-| 参数名   | 类型                            | 必填   | 说明                  |
-| ---- | ----------------------------- | ---- | -------------------- |
+| 参数名   | 类型                            | 必填   | 说明 |
+| ---- | ----------------------------- | ---- |----|
 | moduleName | string | 是    | 目标[NavDestination](ts-basic-components-navdestination.md)所在分包的moduleName。 |
 | info | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 是    | [NavDestination](ts-basic-components-navdestination.md)页面的信息。 |
-| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | 否    | 页面栈操作选项。 |
+| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | 否    | 页面栈操作选项。默认值为{ launchMode: LaunchMode.STANDARD, animated: true }。 |
 
 **返回值：**
 
@@ -240,7 +244,7 @@ pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptio
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -254,7 +258,7 @@ pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptio
 
 pushDestinationByName(moduleName: string, name: string, param: Object, animated?: boolean): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，传递的数据为param，使用Promise异步回调返回接口调用结果。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，传递的数据为param，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -277,7 +281,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, animated?
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -291,7 +295,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, animated?
 
 pushDestinationByName(moduleName: string, name: string, param: Object, onPop: Callback\<PopInfo>, animated?: boolean): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，传递的数据为param，并且添加用于页面出栈时处理返回结果的OnPop回调，使用Promise异步回调返回接口调用结果。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，传递的数据为param，并且添加用于页面出栈时处理返回结果的OnPop回调，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -315,7 +319,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, onPop: Ca
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -329,7 +333,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, onPop: Ca
 
 replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，将info指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，使用Promise异步回调返回接口调用结果。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，将info指定的[NavDestination](ts-basic-components-navdestination.md)页面信息入栈，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -351,7 +355,7 @@ replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -361,7 +365,9 @@ replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\
 
 replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，使用Promise异步回调返回接口调用结果，具体根据options中指定不同的[LaunchMode](ts-basic-components-navigation.md#launchmode12枚举说明)，有不同的行为。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，使用Promise异步回调。
+
+具体根据options中指定不同的[LaunchMode](ts-basic-components-navigation.md#launchmode12枚举说明)，有不同的行为。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -373,7 +379,7 @@ replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions):
 | ---- | ----------------------------- | ---- | -------------------- |
 | moduleName | string | 是    | 目标[NavDestination](ts-basic-components-navdestination.md)所在分包的moduleName。 |
 | info | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 是    | 新栈顶页面参数信息。 |
-| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | 否    | 页面栈操作选项。 |
+| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | 否    | 页面栈操作选项。默认值为{ launchMode: LaunchMode.STANDARD, animated: true }。 |
 
 **返回值：**
 
@@ -383,7 +389,7 @@ replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -393,7 +399,7 @@ replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions):
 
 replacePathByName(moduleName: string, name: string, param: Object, animated?: boolean): Promise\<void\>
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，将name指定的页面入栈，使用Promise异步回调返回接口调用结果。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，将name指定的页面入栈，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -416,7 +422,7 @@ replacePathByName(moduleName: string, name: string, param: Object, animated?: bo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -503,7 +509,7 @@ export struct PageOne {
             }}).catch((error: BusinessError) => {
               console.error(`[pushPath]failed, error code = ${error.code}, error.message = ${error.message}.`);
             }).then(() => {
-              console.log(`[pushPath]success.`);
+              console.info(`[pushPath]success.`);
             });
           })
 
@@ -517,7 +523,7 @@ export struct PageOne {
             }}, {launchMode:0, animated:true}).catch((error: BusinessError) => {
               console.error(`[pushPath with NavigationOptions]failed, error code = ${error.code}, error.message = ${error.message}.`);
             }).then(() => {
-              console.log(`[pushPath with NavigationOptions]success.`);
+              console.info(`[pushPath with NavigationOptions]success.`);
             });
           })
 
@@ -532,7 +538,7 @@ export struct PageOne {
             }).catch((error: BusinessError) => {
               console.error(`[pushPathByName]failed, error code = ${error.code}, error.message = ${error.message}.`);
             }).then(() => {
-              console.log(`[pushPathByName]success.`);
+              console.info(`[pushPathByName]success.`);
             });
           })
 
@@ -546,7 +552,7 @@ export struct PageOne {
             .catch((error: BusinessError) => {
               console.error(`[pushPathByNameWithoutOnPop]failed, error code = ${error.code}, error.message = ${error.message}.`);
             }).then(() => {
-              console.log(`[pushPathByNameWithoutOnPop]success.`);
+              console.info(`[pushPathByNameWithoutOnPop]success.`);
             });
           })
 
@@ -619,7 +625,7 @@ export struct PageOne {
             }}).catch((error: BusinessError) => {
               console.error(`[replacePath]failed, error code = ${error.code}, error.message = ${error.message}.`);
             }).then(() => {
-              console.log(`[replacePath]success.`);
+              console.info(`[replacePath]success.`);
             });
           })
 
@@ -633,7 +639,7 @@ export struct PageOne {
             }}, {launchMode:0, animated:true}).catch((error: BusinessError) => {
               console.error(`[replacePath with NavigationOptions]failed, error code = ${error.code}, error.message = ${error.message}.`);
             }).then(() => {
-              console.log(`[replacePath with NavigationOptions]success.`);
+              console.info(`[replacePath with NavigationOptions]success.`);
             });
           })
 
@@ -647,7 +653,7 @@ export struct PageOne {
               .catch((error: BusinessError) => {
               console.error(`[replacePathByName]failed, error code = ${error.code}, error.message = ${error.message}.`);
             }).then(() => {
-              console.log(`[replacePathByName]success.`);
+              console.info(`[replacePathByName]success.`);
             });
           })
 
@@ -664,9 +670,9 @@ export struct PageOne {
 }
 ```
 
+工程配置文件module.json5中配置 {"routerMap": "$profile:route_map"}，在route_map.json文件配置如下：
+
 ```json
-// 工程配置文件module.json5中配置 {"routerMap": "$profile:route_map"}
-// route_map.json
 {
   "routerMap": [
     {
@@ -723,9 +729,9 @@ export struct PageTwo {
 }
 ```
 
+工程配置文件module.json5中配置 {"routerMap": "$profile:route_map"}，在route_map.json文件配置如下：
+
 ```json
-// 工程配置文件module.json5中配置 {"routerMap": "$profile:route_map"}
-// route_map.json
 {
   "routerMap": [
     {

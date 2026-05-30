@@ -1,17 +1,19 @@
 # 音频通话开发概述
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @zyy0412-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 常用的音频通话模式包括VoIP通话和蜂窝通话。
 
 - VoIP通话：
+
   VoIP（Voice over Internet Protocol）通话是指基于互联网协议（IP）进行通讯的一种语音通话技术。VoIP通话会将通话信息打包成数据包，通过网络进行传输，因此VoIP通话对网络要求较高，通话质量与网络连接速度紧密相关。
 
 - 蜂窝通话（仅对系统应用开放）：
+
   蜂窝通话是指传统的电话功能，由运营商提供服务，目前仅对系统应用开放，未向第三方应用提供开发接口。
 
 在开发音频通话相关功能时，开发者可以根据实际情况，检查当前的[音频场景模式](#音频场景模式)和[铃声模式](#铃声模式)，以使用相应的音频处理策略。
@@ -19,8 +21,8 @@
 ## 音频场景模式
 
 应用使用音频通话相关功能时，系统会切换至与通话相关的音频场景模式（[AudioScene](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioscene8)），当前预置了多种音频场景，包括响铃、通话、语音聊天等，在不同的场景下，系统会采用不同的策略来处理音频。
-<!--Del-->
-如在蜂窝通话场景中会更注重人声的清晰度。系统会使用3A算法对音频数据进行预处理，抑制通话回声，消除背景噪音，调整音量范围，从而达到清晰人声的效果。3A算法，指声学回声消除（Acoustic Echo Cancellation, AEC）、背景噪声抑制（Active Noise Control, ANC）、自动增益控制（Automatic Gain Control, AGC）三种音频处理算法。<!--DelEnd-->
+
+如在通话场景中会更注重人声的清晰度。系统会使用3A算法对音频数据进行预处理，抑制通话回声，消除背景噪音，调整音量范围，从而达到清晰人声的效果。3A算法，指声学回声消除（Acoustic Echo Cancellation, AEC）、背景噪声抑制（Active Noise Control, ANC）、自动增益控制（Automatic Gain Control, AGC）三种音频处理算法。
 
 当前预置的音频场景：
 

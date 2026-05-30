@@ -23,7 +23,7 @@ These concepts are important in exception and error handling. Properly using met
 
 ## Available APIs
 
-The following table lists the APIs provided by the Node-API module for handling ArkTS errors and exceptions in C/C++. Procedure:
+The following [Node-APIs](../reference/native-lib/napi.md#symbols-exported-from-the-node-api-library) are used to handle errors and exceptions during interaction with ArkTS. Procedure:
 | API| Description|
 | -------- | -------- |
 | napi_create_error, napi_create_type_error, napi_create_range_error| Creates an error, which can be thrown to ArkTS using **napi_throw**.|
@@ -47,6 +47,7 @@ CPP code:
 
 ```cpp
 #include "napi/native_api.h"
+#include "hilog/log.h"
 static napi_value GetLastErrorInfo(napi_env env, napi_callback_info info)
 {
     // Obtain the input parameter, that is the message string in this example.
@@ -90,6 +91,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_last_error_info: %{public}s', testNapi.getLastErrorInfo('message'));
 } catch (error) {
@@ -135,6 +137,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   throw testNapi.createTypeError();
 } catch (error) {
@@ -180,6 +183,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   throw testNapi.createRangeError();
 } catch (error) {
@@ -233,6 +237,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.napiThrow();
 } catch (error) {
@@ -290,6 +295,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.napiThrowErrorMessage();
 } catch (error) {
@@ -302,6 +308,53 @@ try {
 }
 ```
 <!-- @[ark_napi_throw_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
+
+### napi_throw_business_error
+
+Throws an ArkTS error with the text information, where the code property of the error object is of the number type. [This API throws a native **Error** object, not the **BusinessError** object declared in the ArkTS SDK.](../reference/native-lib/napi.md#node-api-extended-symbols)
+
+CPP code:
+
+```cpp
+#include "napi/native_api.h"
+#include "hilog/log.h"
+
+static constexpr int INT_ARG_100 = 100;
+
+// Throw an error with an error message.
+static napi_value NapiThrowBusinessError(napi_env env, napi_callback_info info)
+{
+    napi_status status = napi_throw_business_error(env, INT_ARG_100, "error message");
+    if (status != napi_ok) {
+        OH_LOG_INFO(LOG_APP, "napi_throw_business_error failed :: %{public}d", status);
+    }
+    return nullptr;
+}
+```
+<!-- [napi_throw_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
+
+API declaration:
+
+```ts
+// index.d.ts
+export const napiThrowBusinessError: () => void;
+```
+<!-- [napi_throw_business_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+ArkTS code:
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+
+try {
+  testNapi.napiThrowBusinessError();
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_throw_business_error error code: %{public}d , message: %{public}s', error.code, error.message);
+  console.info(typeof error.code); // "number"
+}
+```
+<!-- [ark_napi_throw_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_throw_type_error
 
@@ -352,6 +405,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.throwTypeErrorMessage();
 } catch (error) {
@@ -420,6 +474,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.throwRangeErrorMessage();
 } catch (error) {
@@ -474,6 +529,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   throw new Error("throwing an error");
 } catch (error) {
@@ -522,6 +578,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // Obtain the last unprocessed exception.
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_and_clear_last_exception, error.message: %{public}s',
            testNapi.getAndClearLastException());
@@ -576,6 +633,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 interface MyObject {
   code: string;
   message: string;
@@ -592,7 +650,7 @@ try {
 
 ### napi_fatal_error
 
-Call **napi_fatal_error** to raise a fatal error to terminate the process immediately. Calling **napi_fatal_error** will terminate the application immediately. Avoid frequently calling this API in during normal operations.
+Call **napi_fatal_error** to raise a fatal error to terminate the process immediately. Calling **napi_fatal_error** will terminate the application immediately. Avoid frequently calling this API during normal operations.
 
 CPP code:
 
@@ -626,6 +684,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.fatalError();
 } catch (error) {
@@ -673,7 +732,6 @@ export const fatalException: (err: Error) => void;
 ArkTS code:
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 const err = new Error("a fatal exception occurred");

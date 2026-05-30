@@ -2,10 +2,12 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+蒙版滤镜对象。
 
 > **说明：**
 >
@@ -16,8 +18,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-蒙版滤镜对象。
 
 ## 导入模块
 
@@ -38,7 +38,7 @@ static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter
 | 参数名     | 类型                   | 必填 | 说明                                 |
 | ---------- | --------------------- | ---- | ----------------------------------- |
 | blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | 是   | 模糊类型。                           |
-| sigma      | number                | 是   | 高斯模糊的标准偏差，必须为大于0的浮点数。 |
+| sigma      | number                | 是   | 高斯模糊的标准偏差，必须为大于0的浮点数。单位为物理像素px。 |
 
 **返回值：**
 
@@ -58,7 +58,7 @@ static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter
 
 ```ts
 import { RenderNode } from '@kit.ArkUI';
-import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {

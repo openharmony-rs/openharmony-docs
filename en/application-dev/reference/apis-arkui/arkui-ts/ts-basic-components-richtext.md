@@ -1,4 +1,10 @@
 # RichText
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @weixin_41848015-->
+<!--Designer: @libing23232323-->
+<!--Tester: @ghiker-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **RichText** component parses and displays HTML text.
 
@@ -16,14 +22,15 @@ The **RichText** component parses and displays HTML text.
 
 - Inapplicable scenarios:
 
-  The **RichText** component is not suitable for scenarios where there is a need for extensive customization of the display effect of the HTML string. For example, the **RichText** component does not allow for changing the background color, font color, font size, or content by setting attributes and events. Under such scenarios, the [Web](../../apis-arkweb/ts-basic-components-web.md) component is recommended.
+  The **RichText** component is not suitable for application scenarios that require extensive customization of HTML string display effects. For example, the **RichText** component does not allow for changing the background color, font color, font size, or content by setting attributes and events. In this case, the [Web component](../../apis-arkweb/arkts-basic-components-web.md) is recommended.
 
-  The **RichText** component can be memory-intensive. If it is reused in scenarios such as lists where multiple instances are created, slow scrolling or rendering may result. Under such scenarios, you may want to use the [RichEditor](../arkui-ts/ts-basic-components-richeditor.md#richeditor) component.
+  The **RichText** component consumes significant memory resources. When **RichText** components are repeatedly used in a **List** loop, issues such as stuttering and sluggish scrolling response may occur.
 
 >  **NOTE**
 >
 > - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 > - This component is not able to auto-adapt its width and height to the content. Therefore, you must set the layout when using this component.
+> - This component is no longer updated and maintained. You are advised to use the [Web component](../../apis-arkweb/arkts-basic-components-web.md).
 
 
 ## Child Components
@@ -32,7 +39,7 @@ Not supported
 
 ## APIs
 
-RichText(content:string)
+RichText(content:string &nbsp;|&nbsp; Resource)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +47,8 @@ RichText(content:string)
 
 | Name| Type| Mandatory | Description|
 | ------- | -------- | ------------- | -------- |
-| content | string | Yes  | String in HTML format.|
+| content | string \| [Resource](ts-types.md#resource) <sup>20+</sup>   | Yes  | HTML string or local resource file.|
+
 
 
 ## Events
@@ -49,17 +57,25 @@ RichText(content:string)
 
 onStart(callback: () => void)
 
-Triggered when web page loading starts.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory | Description|
+| ------- | -------- | ------------- | -------- |
+|  callback | () => void | Yes  | Callback triggered when a web page is loaded.|
 
 ### onComplete
 
 onComplete(callback: () => void)
 
-Triggered when web page loading is completed.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory | Description|
+| ------- | -------- | ------------- | -------- |
+|  callback | () => void | Yes  | Callback triggered when a web page is loaded.|
 
 ## Attributes
 
@@ -73,13 +89,13 @@ Among the [universal attributes](ts-component-general-attributes.md), only the *
 | \<p>\</p> | Defines a paragraph.| \<p>This is a paragraph\</p>|
 | \<br/> | Inserts a newline character.| \<p>This is a paragraph\<br/>This is a new paragraph\</p>|
 | \<font/> | Defines the font style for the text contained within it, including the font face, size, and color. In the <font/> tag, the font size can be set only to a number ranging from 1 to 7, with the default value being **3**. This tag is deprecated in HTML 4.01 and not supported in XHTML1.0 Strict DTD. Use the CSS font properties to style text instead. CSS syntax: \<p style="font-size: 35px; font-family: verdana; color: rgb(24,78,228)"> | \<font size="3" face="arial" color="red">This is in red\</font> |
-| \<hr/> | Defines a thematic break (such as a shift of topic) on an HTML page and creates a horizontal line.| \<p>This is text\</p>\<hr/>\<p>This is text\</p> |
+| \<hr/> | Defines a thematic break (such as a shift of topic) on an HTML page and creates a horizontal line.| \<p>This is a paragraph\</p>\<hr/>\<p>This is a paragraph\</p> |
 | \<image>\</image> | Defines an image.| \<image src="resource://rawfile/icon.png">\</image> |
 | \<div>\</div> | Defines a generic container that is generally used to group block-level elements. It allows you to apply CSS styles to multiple elements at the same time.| \<div style='color:#0000FF'>\<h3>This is the heading in a div element\</h3>\</div> |
 | \<i>\</i> | Displays text in italic style.| \<i>This is in italic style\</i>|
 | \<u>\</u> | Defines text that should be styled differently or have a non-textual annotation, such as misspelt words or a proper name in Chinese text. It is recommended that you avoid using the \<u> tag where it could be confused with a hyperlink.| \<p>\<u>This is an underlined paragraph\</u>\</p> |
 | \<style>\</style> | Used to embed CSS within an HTML document.| \<style>h1{color:red;}p{color:blue;}\</style> |
-| style | Defines the inline style of an element and is placed inside the tag. Use quotation marks (') to separate the styling text and use semicolons (;) to separate styles, for example, **style='width: 500px;height: 500px;border: 1px solid;margin: 0 auto;'**.| \<h1 style='color:blue;text-align:center'>This is a heading\</h1>\<p style='color:green'>This is text\</p> |
+| style | Defines the inline style of an element. It is written inside the tag, requires quotation marks for distinction when used, and separates styles with semicolon(;). For example, style='width: 500px;height: 500px;border: 1px solid;margin: 0 auto;'.| \<h1 style='color:blue;text-align:center'>This is a heading\</h1>\<p style='color:green'>This is a paragraph\</p> |
 | \<script>\</script> | Embeds or references a client-side script, such as JavaScript.| \<script>document.write("Hello World!")\</script> |
 
 ## Example
@@ -100,7 +116,7 @@ struct RichTextExample {
   '<div style="width: 500px;height: 500px;border: 1px solid;margin: 0 auto;">' +
   '<p style="font-size: 35px;text-align: center;font-weight: bold; color: rgb(24,78,228)">Font size: 35px; line height: 45px</p>' +
   '<p style="background-color: #e5e5e5;line-height: 45px;font-size: 35px;text-indent: 2em;">' +
-  '<p>This is text. This is text. This is text. This is text. This is text. This is text. This is text. This is text. This is text.</p>';
+  '<p>This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph.</p>';
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,
@@ -141,3 +157,55 @@ struct RichTextExample {
 ```
 
  ![richText](figures/richText.png)
+
+Loads local resource files.
+
+Loads local resource files through **$rawfile**.
+
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct RichTextComponent {
+
+    build() {
+      Column() {
+        // Load a local resource file through $rawfile.
+        RichText($rawfile("index.html"))
+      }
+    }
+  }
+  ```
+
+The following is an example of loading a link with the hash (#) route through the resources protocol in Webview.
+
+When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead. If the URL contains a number sign (#), the content following the number sign is treated as an anchor (fragment).
+
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct RichTextComponent {
+
+    build() {
+      Column() {
+        // Load local resource files through the resource protocol.
+        RichText("resource://rawfile/index.html#home")
+      }
+    }
+  }
+  ```
+
+Create an **index.html** file in **src/main/resources/rawfile**.
+
+   HTML file to be loaded:
+
+   ```html
+   <!-- index.html -->
+   <!DOCTYPE html>
+   <html>
+       <body>
+           <p>Hello World</p>
+       </body>
+   </html>
+   ```

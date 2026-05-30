@@ -1,9 +1,8 @@
 # oh_commonevent.h
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -12,6 +11,8 @@
 定义公共事件订阅与退订API接口与枚举错误码。
 
 **库：** libohcommonevent.so
+
+**引用文件：** <BasicServicesKit/oh_commonevent.h>
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -33,8 +34,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 |----|------------|----|
-| void  | CommonEvent_Subscriber    | 提供CommonEvent_Subscriber订阅者结构体声明。   |
-| void  | CommonEvent_Parameters    | 提供CommonEvent_RcvData公共事件附件信息结构体声明。  |
+| void  | CommonEvent_Subscriber    | 提供CommonEvent_Subscriber订阅者声明。   |
+| void  | CommonEvent_Parameters    | 提供CommonEvent_RcvData公共事件附加信息声明。  |
 
 ### 枚举
 
@@ -48,25 +49,25 @@
 | -- | -- | -- |
 | [typedef void (\*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)](#commonevent_receivecallback) | CommonEvent_ReceiveCallback | 提供CommonEvent_ReceiveCallback回调函数声明。 |
 | [CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)](#oh_commonevent_createsubscribeinfo) | - | 创建订阅者信息。 |
-| [CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeInfo* info, const char* permission)](#oh_commonevent_setpublisherpermission) | - | 设置订阅者权限。 |
-| [CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeInfo* info, const char* bundleName)](#oh_commonevent_setpublisherbundlename) | - | 设置订阅者包名称。 |
+| [CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeInfo* info, const char* permission)](#oh_commonevent_setpublisherpermission) | - | 设置发布方权限。 |
+| [CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeInfo* info, const char* bundleName)](#oh_commonevent_setpublisherbundlename) | - | 设置发布方包名称。 |
 | [void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)](#oh_commonevent_destroysubscribeinfo) | - | 释放订阅者信息。 |
 | [CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info,CommonEvent_ReceiveCallback callback)](#oh_commonevent_createsubscriber) | - | 创建订阅者。 |
 | [void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)](#oh_commonevent_destroysubscriber) | - | 释放订阅者。 |
 | [CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_subscribe) | - | 订阅公共事件。 |
 | [CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_unsubscribe) | - | 退订公共事件。 |
 | [const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_geteventfromrcvdata) | - | 获取当前接收的公共事件名称。 |
-| [int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getcodefromrcvdata) | - | 获取接收到的公共事件数据（number类型）。 |
-| [const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getdatastrfromrcvdata) | - | 获取接收到的公共事件数据（string类型）。 |
+| [int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getcodefromrcvdata) | - | 获取接收到的公共事件数据，整数类型。 |
+| [const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getdatastrfromrcvdata) | - | 获取接收到的公共事件数据，字符串类型。 |
 | [const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getbundlenamefromrcvdata) | - | 获取接收到的公共事件的包名称信息。 |
-| [const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getparametersfromrcvdata) | - | 获取接收到的公共事件的附加信息。 |
+| [const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getparametersfromrcvdata) | - | 获取公共事件附加信息。 |
 | [CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)](#oh_commonevent_createpublishinfo) | - | 创建公共事件属性对象。 |
 | [void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)](#oh_commonevent_destroypublishinfo) | - | 销毁公共事件属性对象。 |
 | [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishInfo* info, const char* bundleName)](#oh_commonevent_setpublishinfobundlename) | - | 设置公共事件订阅者包名称。 |
 | [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_PublishInfo* info,const char* permissions[], int32_t num)](#oh_commonevent_setpublishinfopermissions) | - | 设置公共事件订阅者权限。 |
-| [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* info, int32_t code)](#oh_commonevent_setpublishinfocode) | - | 设置公共事件传递的数据（number类型）。 |
-| [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info,const char* data, size_t length)](#oh_commonevent_setpublishinfodata) | - | 设置公共事件传递的数据（string类型）。 |
-| [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishInfo* info,CommonEvent_Parameters* param)](#oh_commonevent_setpublishinfoparameters) | - | 设置公共事件传递的附加信息。 |
+| [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* info, int32_t code)](#oh_commonevent_setpublishinfocode) | - | 设置公共事件传递的数据，整数类型。 |
+| [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info,const char* data, size_t length)](#oh_commonevent_setpublishinfodata) | - | 设置公共事件传递的数据，字符串类型。 |
+| [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishInfo* info,CommonEvent_Parameters* param)](#oh_commonevent_setpublishinfoparameters) | - | 设置公共事件附加信息。 |
 | [CommonEvent_Parameters* OH_CommonEvent_CreateParameters()](#oh_commonevent_createparameters) | - | 创建公共事件附加信息对象。 |
 | [void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)](#oh_commonevent_destroyparameters) | - | 销毁公共事件附加信息对象。 |
 | [bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const char* key)](#oh_commonevent_haskeyinparameters) | - | 检查附加信息中是否包含键值对信息。 |
@@ -97,16 +98,16 @@
 | [bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getabortcommonevent) | - | 获取当前有序公共事件是否处于中止状态。 |
 | [bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)](#oh_commonevent_abortcommonevent) | - | 该接口与[OH_CommonEvent_FinishCommonEvent](#oh_commonevent_finishcommonevent)配合使用，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。 |
 | [bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)](#oh_commonevent_clearabortcommonevent) | - | 该接口与[OH_CommonEvent_FinishCommonEvent](#oh_commonevent_finishcommonevent)配合使用，可以取消当前有序公共事件的中止状态，使该公共事件继续向下一个订阅者传递。 |
-| [int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getcodefromsubscriber) | - | 获取有序公共事件传递的数据（number类型）。 |
-| [bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int32_t code)](#oh_commonevent_setcodetosubscriber) | - | 设置有序公共事件传递的数据（number类型）。 |
-| [const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getdatafromsubscriber) | - | 获取有序公共事件传递的数据（string类型）。 |
-| [bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, const char* data, size_t length)](#oh_commonevent_setdatatosubscriber) | - | 设置有序公共事件传递的数据（string类型）。 |
+| [int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getcodefromsubscriber) | - | 获取有序公共事件传递的数据，整数类型。 |
+| [bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int32_t code)](#oh_commonevent_setcodetosubscriber) | - | 设置有序公共事件传递的数据，整数类型。 |
+| [const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getdatafromsubscriber) | - | 获取有序公共事件传递的数据，字符串类型。 |
+| [bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, const char* data, size_t length)](#oh_commonevent_setdatatosubscriber) | - | 设置有序公共事件传递的数据，字符串类型。 |
 
 ## 枚举类型说明
 
 ### CommonEvent_ErrCode
 
-```
+```c
 enum CommonEvent_ErrCode
 ```
 
@@ -134,7 +135,7 @@ enum CommonEvent_ErrCode
 
 ### CommonEvent_ReceiveCallback()
 
-```
+```c
 typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)
 ```
 
@@ -153,7 +154,7 @@ typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)
 
 ### OH_CommonEvent_CreateSubscribeInfo()
 
-```
+```c
 CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)
 ```
 
@@ -168,7 +169,7 @@ CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* events[] | 订阅的公共事件。 |
+| const char* events[] | 订阅的公共事件，实际订阅的公共事件数量为`eventsNum`与`events`数组长度的最小值。 |
 | int32_t eventsNum | 订阅的公共事件数量。 |
 
 **返回：**
@@ -179,13 +180,13 @@ CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events
 
 ### OH_CommonEvent_SetPublisherPermission()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeInfo* info, const char* permission)
 ```
 
 **描述**
 
-设置订阅者权限。
+设置发布方权限。
 
 **起始版本：** 12
 
@@ -205,13 +206,13 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeI
 
 ### OH_CommonEvent_SetPublisherBundleName()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeInfo* info, const char* bundleName)
 ```
 
 **描述**
 
-设置订阅者包名称。
+设置发布方包名称。
 
 **起始版本：** 12
 
@@ -231,7 +232,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeI
 
 ### OH_CommonEvent_DestroySubscribeInfo()
 
-```
+```c
 void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)
 ```
 
@@ -250,7 +251,7 @@ void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)
 
 ### OH_CommonEvent_CreateSubscriber()
 
-```
+```c
 CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info,CommonEvent_ReceiveCallback callback)
 ```
 
@@ -276,7 +277,7 @@ CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_Subscr
 
 ### OH_CommonEvent_DestroySubscriber()
 
-```
+```c
 void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)
 ```
 
@@ -295,7 +296,7 @@ void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)
 
 ### OH_CommonEvent_Subscribe()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)
 ```
 
@@ -320,13 +321,13 @@ CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subsc
 
 ### OH_CommonEvent_UnSubscribe()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)
 ```
 
 **描述**
 
-退阅公共事件。
+退订公共事件。
 
 **起始版本：** 12
 
@@ -345,7 +346,7 @@ CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* sub
 
 ### OH_CommonEvent_GetEventFromRcvData()
 
-```
+```c
 const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvData)
 ```
 
@@ -370,13 +371,13 @@ const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvDat
 
 ### OH_CommonEvent_GetCodeFromRcvData()
 
-```
+```c
 int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)
 ```
 
 **描述**
 
-获取公共事件传递的数据（number类型）。
+获取公共事件传递的数据，整数类型。
 
 **起始版本：** 12
 
@@ -391,17 +392,17 @@ int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回公共事件传递的数据（number类型）。 |
+| int32_t | 返回公共事件传递的数据，整数类型。 |
 
 ### OH_CommonEvent_GetDataStrFromRcvData()
 
-```
+```c
 const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvData)
 ```
 
 **描述**
 
-获取公共事件传递的数据（string类型）。
+获取公共事件传递的数据，字符串类型。
 
 **起始版本：** 12
 
@@ -416,11 +417,11 @@ const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvD
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 返回公共事件传递的数据（string类型）。 |
+| const char* | 返回公共事件传递的数据，字符串类型。 |
 
 ### OH_CommonEvent_GetBundleNameFromRcvData()
 
-```
+```c
 const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* rcvData)
 ```
 
@@ -445,7 +446,7 @@ const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* r
 
 ### OH_CommonEvent_GetParametersFromRcvData()
 
-```
+```c
 const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const CommonEvent_RcvData* rcvData)
 ```
 
@@ -470,7 +471,7 @@ const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const Comm
 
 ### OH_CommonEvent_CreatePublishInfo()
 
-```
+```c
 CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)
 ```
 
@@ -495,7 +496,7 @@ CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)
 
 ### OH_CommonEvent_DestroyPublishInfo()
 
-```
+```c
 void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)
 ```
 
@@ -514,7 +515,7 @@ void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)
 
 ### OH_CommonEvent_SetPublishInfoBundleName()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishInfo* info, const char* bundleName)
 ```
 
@@ -540,7 +541,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishI
 
 ### OH_CommonEvent_SetPublishInfoPermissions()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_PublishInfo* info,const char* permissions[], int32_t num)
 ```
 
@@ -556,7 +557,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_Publish
 | 参数项 | 描述 |
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | 公共事件属性对象。 |
-| const char* permissions[] | 订阅者权限名称数组。 |
+| const char* permissions[] | 订阅者权限名称数组，生效数量为`num`与`permissions`数组长度的最小值。 |
 | int32_t num | 权限的数量。 |
 
 **返回：**
@@ -567,13 +568,13 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_Publish
 
 ### OH_CommonEvent_SetPublishInfoCode()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* info, int32_t code)
 ```
 
 **描述**
 
-设置公共事件传递的数据（number类型）。
+设置公共事件传递的数据，整数类型。
 
 **起始版本：** 18
 
@@ -583,7 +584,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* i
 | 参数项 | 描述 |
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | 公共事件属性对象。 |
-| int32_t code | 公共事件传递的数据（number类型）。 |
+| int32_t code | 公共事件传递的数据，整数类型。 |
 
 **返回：**
 
@@ -593,13 +594,13 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* i
 
 ### OH_CommonEvent_SetPublishInfoData()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info,const char* data, size_t length)
 ```
 
 **描述**
 
-设置公共事件传递的数据（string类型）。
+设置公共事件传递的数据，字符串类型。
 
 **起始版本：** 18
 
@@ -609,7 +610,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* i
 | 参数项 | 描述 |
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | 公共事件属性对象。 |
-| const char* data | 公共事件传递的数据（string类型）。 |
+| const char* data | 公共事件传递的数据，字符串类型，实际有效数据长度为`length`和`data`字符串长度的最小值。 |
 | size_t length | 结果数据的长度。 |
 
 **返回：**
@@ -620,7 +621,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* i
 
 ### OH_CommonEvent_SetPublishInfoParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishInfo* info,CommonEvent_Parameters* param)
 ```
 
@@ -646,7 +647,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishI
 
 ### OH_CommonEvent_CreateParameters()
 
-```
+```c
 CommonEvent_Parameters* OH_CommonEvent_CreateParameters()
 ```
 
@@ -664,7 +665,7 @@ CommonEvent_Parameters* OH_CommonEvent_CreateParameters()
 
 ### OH_CommonEvent_DestroyParameters()
 
-```
+```c
 void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)
 ```
 
@@ -683,7 +684,7 @@ void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)
 
 ### OH_CommonEvent_HasKeyInParameters()
 
-```
+```c
 bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const char* key)
 ```
 
@@ -709,7 +710,7 @@ bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const
 
 ### OH_CommonEvent_GetIntFromParameters()
 
-```
+```c
 int OH_CommonEvent_GetIntFromParameters(const CommonEvent_Parameters* para, const char* key, const int defaultValue)
 ```
 
@@ -736,7 +737,7 @@ int OH_CommonEvent_GetIntFromParameters(const CommonEvent_Parameters* para, cons
 
 ### OH_CommonEvent_SetIntToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetIntToParameters(CommonEvent_Parameters* param, const char* key, int value)
 ```
 
@@ -763,7 +764,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetIntToParameters(CommonEvent_Parameters* pa
 
 ### OH_CommonEvent_GetIntArrayFromParameters()
 
-```
+```c
 int32_t OH_CommonEvent_GetIntArrayFromParameters(const CommonEvent_Parameters* para, const char* key, int** array)
 ```
 
@@ -790,7 +791,7 @@ int32_t OH_CommonEvent_GetIntArrayFromParameters(const CommonEvent_Parameters* p
 
 ### OH_CommonEvent_SetIntArrayToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameters* param, const char* key,const int* value, size_t num)
 ```
 
@@ -818,7 +819,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameter
 
 ### OH_CommonEvent_GetLongFromParameters()
 
-```
+```c
 long OH_CommonEvent_GetLongFromParameters(const CommonEvent_Parameters* para, const char* key, const long defaultValue)
 ```
 
@@ -845,7 +846,7 @@ long OH_CommonEvent_GetLongFromParameters(const CommonEvent_Parameters* para, co
 
 ### OH_CommonEvent_SetLongToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetLongToParameters(CommonEvent_Parameters* param, const char* key, long value)
 ```
 
@@ -872,7 +873,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetLongToParameters(CommonEvent_Parameters* p
 
 ### OH_CommonEvent_GetLongArrayFromParameters()
 
-```
+```c
 int32_t OH_CommonEvent_GetLongArrayFromParameters(const CommonEvent_Parameters* para, const char* key, long** array)
 ```
 
@@ -899,7 +900,7 @@ int32_t OH_CommonEvent_GetLongArrayFromParameters(const CommonEvent_Parameters* 
 
 ### OH_CommonEvent_SetLongArrayToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Parameters* param, const char* key,const long* value, size_t num)
 ```
 
@@ -927,7 +928,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Paramete
 
 ### OH_CommonEvent_GetBoolFromParameters()
 
-```
+```c
 bool OH_CommonEvent_GetBoolFromParameters(const CommonEvent_Parameters* para, const char* key, const bool defaultValue)
 ```
 
@@ -954,7 +955,7 @@ bool OH_CommonEvent_GetBoolFromParameters(const CommonEvent_Parameters* para, co
 
 ### OH_CommonEvent_SetBoolToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetBoolToParameters(CommonEvent_Parameters* param, const char* key, bool value)
 ```
 
@@ -981,7 +982,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetBoolToParameters(CommonEvent_Parameters* p
 
 ### OH_CommonEvent_GetBoolArrayFromParameters()
 
-```
+```c
 int32_t OH_CommonEvent_GetBoolArrayFromParameters(const CommonEvent_Parameters* para, const char* key, bool** array)
 ```
 
@@ -1008,7 +1009,7 @@ int32_t OH_CommonEvent_GetBoolArrayFromParameters(const CommonEvent_Parameters* 
 
 ### OH_CommonEvent_SetBoolArrayToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Parameters* param, const char* key,const bool* value, size_t num)
 ```
 
@@ -1036,7 +1037,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Paramete
 
 ### OH_CommonEvent_GetCharFromParameters()
 
-```
+```c
 char OH_CommonEvent_GetCharFromParameters(const CommonEvent_Parameters* para, const char* key, const char defaultValue)
 ```
 
@@ -1063,7 +1064,7 @@ char OH_CommonEvent_GetCharFromParameters(const CommonEvent_Parameters* para, co
 
 ### OH_CommonEvent_SetCharToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetCharToParameters(CommonEvent_Parameters* param, const char* key, char value)
 ```
 
@@ -1090,7 +1091,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetCharToParameters(CommonEvent_Parameters* p
 
 ### OH_CommonEvent_GetCharArrayFromParameters()
 
-```
+```c
 int32_t OH_CommonEvent_GetCharArrayFromParameters(const CommonEvent_Parameters* para, const char* key, char** array)
 ```
 
@@ -1117,7 +1118,7 @@ int32_t OH_CommonEvent_GetCharArrayFromParameters(const CommonEvent_Parameters* 
 
 ### OH_CommonEvent_SetCharArrayToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Parameters* param, const char* key,const char* value, size_t num)
 ```
 
@@ -1145,7 +1146,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Paramete
 
 ### OH_CommonEvent_GetDoubleFromParameters()
 
-```
+```c
 double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para, const char* key,const double defaultValue)
 ```
 
@@ -1172,7 +1173,7 @@ double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para
 
 ### OH_CommonEvent_SetDoubleToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetDoubleToParameters(CommonEvent_Parameters* param, const char* key,double value)
 ```
 
@@ -1199,7 +1200,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetDoubleToParameters(CommonEvent_Parameters*
 
 ### OH_CommonEvent_GetDoubleArrayFromParameters()
 
-```
+```c
 int32_t OH_CommonEvent_GetDoubleArrayFromParameters(const CommonEvent_Parameters* para, const char* key,double** array)
 ```
 
@@ -1226,7 +1227,7 @@ int32_t OH_CommonEvent_GetDoubleArrayFromParameters(const CommonEvent_Parameters
 
 ### OH_CommonEvent_SetDoubleArrayToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parameters* param, const char* key,const double* value, size_t num)
 ```
 
@@ -1254,7 +1255,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parame
 
 ### OH_CommonEvent_Publish()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)
 ```
 
@@ -1279,7 +1280,7 @@ CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)
 
 ### OH_CommonEvent_PublishWithInfo()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const CommonEvent_PublishInfo* info)
 ```
 
@@ -1305,7 +1306,7 @@ CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const Comm
 
 ### OH_CommonEvent_IsOrderedCommonEvent()
 
-```
+```c
 bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1330,7 +1331,7 @@ bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscribe
 
 ### OH_CommonEvent_FinishCommonEvent()
 
-```
+```c
 bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1355,7 +1356,7 @@ bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)
 
 ### OH_CommonEvent_GetAbortCommonEvent()
 
-```
+```c
 bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1380,7 +1381,7 @@ bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber
 
 ### OH_CommonEvent_AbortCommonEvent()
 
-```
+```c
 bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1405,7 +1406,7 @@ bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)
 
 ### OH_CommonEvent_ClearAbortCommonEvent()
 
-```
+```c
 bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1430,13 +1431,13 @@ bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)
 
 ### OH_CommonEvent_GetCodeFromSubscriber()
 
-```
+```c
 int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subscriber)
 ```
 
 **描述**
 
-获取有序公共事件传递的数据（number类型）。
+获取有序公共事件传递的数据，整数类型。
 
 **起始版本：** 18
 
@@ -1451,17 +1452,17 @@ int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subsc
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回有序公共事件传递的数据（number类型），无法获取时返回0。 |
+| int32_t | 返回有序公共事件传递的数据，整数类型，无法获取时返回0。 |
 
 ### OH_CommonEvent_SetCodeToSubscriber()
 
-```
+```c
 bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int32_t code)
 ```
 
 **描述**
 
-设置有序公共事件传递的数据（number类型）。
+设置有序公共事件传递的数据，整数类型。
 
 **起始版本：** 18
 
@@ -1471,7 +1472,7 @@ bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int3
 | 参数项 | 描述 |
 | -- | -- |
 | [CommonEvent_Subscriber](#变量)* subscriber | 公共事件的订阅者对象。 |
-| int32_t code | 有序公共事件传递的数据（number类型）。 |
+| int32_t code | 有序公共事件传递的数据，整数类型。 |
 
 **返回：**
 
@@ -1481,13 +1482,13 @@ bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int3
 
 ### OH_CommonEvent_GetDataFromSubscriber()
 
-```
+```c
 const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* subscriber)
 ```
 
 **描述**
 
-获取有序公共事件传递的数据（string类型）。
+获取有序公共事件传递的数据，字符串类型。
 
 **起始版本：** 18
 
@@ -1502,17 +1503,17 @@ const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* s
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 返回有序公共事件传递的数据（string类型），无法获取时返回null。 |
+| const char* | 返回有序公共事件传递的数据，字符串类型，无法获取时返回null。 |
 
 ### OH_CommonEvent_SetDataToSubscriber()
 
-```
+```c
 bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, const char* data, size_t length)
 ```
 
 **描述**
 
-设置有序公共事件传递的数据（string类型）。
+设置有序公共事件传递的数据，字符串类型。
 
 **起始版本：** 18
 
@@ -1522,7 +1523,7 @@ bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, cons
 | 参数项 | 描述 |
 | -- | -- |
 | [CommonEvent_Subscriber](#变量)* subscriber | 公共事件的订阅者对象。 |
-| const char* data | 有序公共事件传递的数据（string类型）。 |
+| const char* data | 有序公共事件传递的数据，字符串类型，实际有效数据长度为`length`与`data`字符串长度的较小值。 |
 | size_t length | 数据的长度。 |
 
 **返回：**

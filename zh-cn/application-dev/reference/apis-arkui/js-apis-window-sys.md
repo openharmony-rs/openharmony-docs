@@ -18,6 +18,8 @@
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.window (窗口)](arkts-apis-window.md)。
+>
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 ## 导入模块
 
@@ -63,12 +65,10 @@ import { window } from '@kit.ArkUI';
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---------- | --------- | ---- | ---- |-------------- |
-| zIndex<sup>20+</sup>       | number | 否 | 是 | 当前系统窗口的层级，仅在[WindowType](#windowtype7)为TYPE_DYNAMIC时生效。|
-| defaultDensityEnabled<sup>20+</sup> | boolean| 否 | 是 |是否使用系统默认Density，使用系统默认Density之后，窗口不会跟随系统显示大小变化重新布局。<br>当创建的系统窗口设置此参数为true时，表示当前窗口使用系统默认Density，且不会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>当创建的系统窗口设置此参数为false时，表示当前窗口不使用系统默认Density，且会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>默认为false。|
+| zIndex<sup>20+</sup>       | number | 否 | 是 | 当前系统窗口的层级，仅在[WindowType](#windowtype7)为TYPE_DYNAMIC时生效。<br>**系统能力：** SystemCapability.Window.SessionManager|
+| defaultDensityEnabled<sup>20+</sup> | boolean| 否 | 是 |是否使用系统默认Density，使用系统默认Density之后，窗口不会跟随系统显示大小变化重新布局。<br>当创建的系统窗口设置此参数为true时，表示当前窗口使用系统默认Density，且不会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>当创建的系统窗口设置此参数为false时，表示当前窗口不使用系统默认Density，且会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>默认为false。<br>**系统能力：** SystemCapability.Window.SessionManager|
 
 ## WindowMode<sup>7+</sup>
 
@@ -85,20 +85,6 @@ import { window } from '@kit.ArkUI';
 | PRIMARY    | 3    | 表示APP分屏多窗口主要模式。上下分屏时，上分屏为主要模式。左右分屏时，左分屏为主要模式。  |
 | SECONDARY  | 4    | 表示APP分屏多窗口次要模式。上下分屏时，下分屏为次要模式。左右分屏时，右分屏为次要模式。  |
 | FLOATING   | 5    | 表示APP自由悬浮形式窗口模式。 |
-
-## WindowLayoutMode<sup>9+</sup>
-
-窗口布局模式枚举。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-| 名称       | 值   | 说明                          |
-| ---------- | ---- | ----------------------------- |
-| WINDOW_LAYOUT_MODE_CASCADE  | 0    | 表示使用层叠布局模式。层叠布局下，多个自由窗口层叠放置，以Z轴次序区分。     |
-| WINDOW_LAYOUT_MODE_TILE | 1    | 表示使用平铺布局模式。平铺布局下，新打开的应用窗口出现在最右侧。           |
-
 
 ## BlurStyle<sup>9+</sup>
 
@@ -229,17 +215,69 @@ import { window } from '@kit.ArkUI';
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | systemAnimationParams             | [StartAnimationSystemParams](#startanimationsystemparams20)                 | 否   | 是   | 启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。|
+| isWindowLimitsForcible | boolean | 否 | 是 | 应用主窗窗口尺寸限制是否可突破系统默认限制。仅当被启动应用为系统应用时生效，否则不生效也不报错。<br> - true: 允许突破系统默认限制。在窗口尺寸限制计算过程中，将忽略系统默认限制，最终生效结果仍按各来源取交集计算，且优先级保持不变。 详细说明可参考[WindowLimits](arkts-apis-window-i.md#windowlimits11)。<br> - false: 不允许突破系统默认限制，窗口尺寸限制按照默认规则计算（包含系统默认限制）。<br>默认值为false。<br>**起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
-## window.minimizeAll<sup>9+</sup>
-minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
+## WindowAnchorInfo<sup>24+</sup>
 
-最小化某显示设备下的所有窗口。
+一级子窗与主窗保持相对位置的窗口锚点参数信息。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
+| ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| anchorType             | [WindowAnchor](arkts-apis-window-e.md#windowanchor20)                 | 否   | 否   | 一级子窗与主窗保持相对位置不变时的窗口锚点枚举。|
+| offsetX             |     number           | 否   | 是   | 一级子窗锚点与主窗锚点位置的X轴偏移量，单位为px。仅支持整数输入，浮点数向下取整，默认值为0。|
+| offsetY             |     number           | 否   | 是   | 一级子窗锚点与主窗锚点位置的Y轴偏移量，单位为px。仅支持整数输入，浮点数向下取整，默认值为0。|
+
+## SubWindowAttachOptions<sup>24+</sup>
+
+子窗与主窗保持相对位置不变时的参数。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
+| ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| currentLayoutMode             | string               | 否   | 是   | 子窗当前布局模式，用于控制应用定制的UI效果。若不传，则默认为空字符串。|
+| parentWindowSizeChangeCallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | 否   | 是   | 父窗大小变化的回调。绑定后立即回调一次，后续父窗大小变化时通知。默认不传，无法收到父窗大小变化通知。|
+| parentWindowStatusChangeCallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | 否   | 是   | 父窗模式变化的回调。绑定后立即回调一次，后续父窗模式变化时通知。默认不传，无法收到父窗模式变化通知。|
+| isIntersectedWidthLimit | boolean | 否 | 是 | 子窗与绑定主窗的宽度是否互相限制。<br>true表示子窗与绑定主窗的宽度不能超过两个窗口宽度限制的交集；若两者宽度限制无交集，则不互相限制。当多个子窗同时设置此参数为true时，所有参与互限的窗口（包括主窗）的宽度受全部窗口宽度限制的交集约束。<br>false表示子窗与绑定主窗的宽度不会互相限制。<br>默认为false。<br>**起始版本：** 26.0.0 |
+| isIntersectedHeightLimit | boolean | 否 | 是 | 子窗与绑定主窗的高度是否互相限制。<br>true表示子窗与绑定主窗的高度不能超过两个窗口高度限制的交集；若两者高度限制无交集，则不互相限制。当多个子窗同时设置此参数为true时，所有参与互限的窗口（包括主窗）的高度受全部窗口高度限制的交集约束。<br>false表示子窗与绑定主窗的高度不会互相限制。<br>默认为false。<br>**起始版本：** 26.0.0 |
+
+## WindowLayoutMode<sup>(deprecated)</sup>
+
+窗口布局模式枚举。
+
+> **说明：**
+>
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** 该接口在Phone设备中调用返回801错误码，在其他设备中可正常调用。
+| 名称       | 值   | 说明                          |
+| ---------- | ---- | ----------------------------- |
+| WINDOW_LAYOUT_MODE_CASCADE<sup>(deprecated)</sup>  | 0    | 表示使用层叠布局模式。层叠布局下，多个自由窗口层叠放置，以Z轴次序区分。<br>**说明：** <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代枚举。|
+| WINDOW_LAYOUT_MODE_TILE<sup>(deprecated)</sup> | 1    | 表示使用平铺布局模式。平铺布局下，新打开的应用窗口出现在最右侧。<br>**说明：** <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代枚举。|
+
+## window.minimizeAll<sup>9+</sup>
+minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
+
+最小化指定ID的屏幕中的所有主窗口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：** <!--RP1-->该接口在Phone设备中可正常调用，在其他设备中返回801错误码。<!--RP1End-->
 
 **参数：**
 
@@ -289,13 +327,13 @@ try {
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number): Promise&lt;void&gt;
 
-最小化某显示设备下的所有窗口。
+最小化指定ID的屏幕中的所有主窗口，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** 该接口在Phone设备中调用返回801错误码，在其他设备中可正常调用。
+**设备行为差异：** <!--RP1-->该接口在Phone设备中可正常调用，在其他设备中返回801错误码。<!--RP1End-->
 
 **参数：**
 
@@ -331,6 +369,62 @@ displayClass = display.getDefaultDisplaySync();
 
 try {
   let promise = window.minimizeAll(displayClass.id);
+  promise.then(() => {
+    console.info('Succeeded in minimizing all windows.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to minimize all windows. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.minimizeAllWithExclusion<sup>23+</sup>
+minimizeAllWithExclusion(displayId: number, excludeWindowId: number): Promise&lt;void&gt;
+
+最小化指定ID的屏幕中除指定窗口之外的所有主窗口，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：** 该接口在Phone设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明           |
+| -------- | ------------------------- | ---- | -------------- |
+| displayId| number                    | 是   | 屏幕ID，该参数仅支持整数输入，输入浮点数会向下取整。 |
+| excludeWindowId | number              | 是   | 窗口ID。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。窗口ID小于等于0，或窗口ID为null或者undefined时，会抛出401错误码；窗口ID大于0但是不存在会抛出1300002错误码；窗口ID大于0且窗口存在但是不在该屏幕，最小化指定屏幕上的所有主窗口。该参数仅支持整数输入，输入浮点数会向下取整。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1.Window is nullptr; 2. Failed to find specified window by id. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { display, window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+let excludeWindowId = 1;
+
+try {
+  let promise = window.minimizeAllWithExclusion(displayClass.id, excludeWindowId);
   promise.then(() => {
     console.info('Succeeded in minimizing all windows.');
   }).catch((err: BusinessError) => {
@@ -384,7 +478,7 @@ window.toggleShownStateForAllAppWindows((err: BusinessError) => {
 ## window.toggleShownStateForAllAppWindows<sup>9+</sup>
 toggleShownStateForAllAppWindows(): Promise&lt;void&gt;
 
-多窗口快速切换时隐藏或者恢复应用窗口。
+多窗口快速切换时隐藏或者恢复应用窗口，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -417,99 +511,6 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to toggle shown state for all app windows. Cause code: ${err.code}, message: ${err.message}`);
 });
-```
-
-## window.setWindowLayoutMode<sup>9+</sup>
-setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;): void
-
-设置窗口布局模式。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明           |
-| -------- | ------------------------- | ---- | -------------- |
-| mode       | [WindowLayoutMode](#windowlayoutmode9)                  | 是   | 设置的窗口布局模式。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调信息。     |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300003 | This window manager service works abnormally. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE, (err: BusinessError) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in setting window layout mode.');
-  });
-} catch (exception) {
-  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-## window.setWindowLayoutMode<sup>9+</sup>
-setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
-
-设置窗口布局模式。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明           |
-| -------- | ------------------------- | ---- | -------------- |
-| mode       | [WindowLayoutMode](#windowlayoutmode9)                    | 是   | 设置的窗口布局模式。 |
-
-**返回值：**
-
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300003 | This window manager service works abnormally. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let promise = window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE);
-  promise.then(() => {
-    console.info('Succeeded in setting window layout mode.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
-}
 ```
 
 ## window.on('systemBarTintChange')<sup>8+</sup>
@@ -890,7 +891,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
@@ -955,7 +956,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
@@ -967,6 +968,73 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
   try {
     let promise = window.setWaterMarkImage(pixelMap, enable);
     promise.then(() => {
+      console.info('Succeeded in showing watermark image.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to show watermark image. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (exception) {
+    console.error(`Failed to show watermark image. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create PixelMap. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## window.setWaterMarkImage
+setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, priority: number): Promise&lt;void&gt;
+
+设置屏幕水印图片的显示状态，并设定水印的优先级。使用Promise异步回调。当priority等于0时，当前接口与[setWaterMarkImage](#windowsetwatermarkimage10)等价。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
+
+| 参数名 | 类型                        | 必填  | 说明                 |
+| ------ | --------------------------- | ---- | -------------------- |
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 水印图片。可通过[createPixelMap](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmap8)接口获取。|
+| enable   | boolean                  | 是   | 设置是否显示水印图片。true表示显示水印图片；false表示不显示水印图片。设置显示水印后需主动设置为false才能关闭水印图片显示。|
+| priority   | number                  | 是   | 水印设置优先级。数值越小表示优先级越高，需大于等于0，小于0时返回1300016错误码。设置水印时，如果传入的优先级比上一次设置的低，则本次设置不会生效。|
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300003 | This window manager service works abnormally. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enable: boolean = true;
+let color: ArrayBuffer = new ArrayBuffer(40000);
+let initializationOptions: image.InitializationOptions = {
+  size: {
+    height: 100,
+    width: 100
+  }
+};
+image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMap) => {
+  console.info('Succeeded in creating pixelmap.');
+  try {
+    window.setWaterMarkImage(pixelMap, enable, 0).then(() => {
       console.info('Succeeded in showing watermark image.');
     }).catch((err: BusinessError) => {
       console.error(`Failed to show watermark image. Cause code: ${err.code}, message: ${err.message}`);
@@ -1006,11 +1074,11 @@ getSnapshot(windowId: number): Promise<image.PixelMap>
 | -------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: Internal task error. |
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | This operation is not accessible.             |
 
 **示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -1132,6 +1200,314 @@ try {
 }
 ```
 
+## window.setSpecificSystemWindowZIndex<sup>23+</sup>
+setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&lt;void&gt;
+
+设置系统窗口的窗口层级。使用Promise异步回调。
+
+将所有该类型系统窗口zIndex调整为所设置的值，调整前后，该类型窗口之间相对层级保持不变，焦点窗口不发生变化。当应用关闭之后该类型窗口层级恢复默认值。
+
+推荐不同类型窗口设置不同的zIndex，如果已经存在相同zIndex的窗口，设置前后，窗口之间的相对层级保持不变。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名          | 类型   | 必填  | 说明                    |
+| -------------- | ------ | ----- | ----------------------- |
+| windowType | [WindowType](#windowtype7) | 是    | 窗口类型。仅支持TYPE_WALLET_SWIPE_CARD、TYPE_VOICE_INTERACTION、TYPE_SCREENSHOT、TYPE_SCREEN_CONTROL、TYPE_FLOAT_NAVIGATION和TYPE_MUTISCREEN_COLLABORATION。 |
+| zIndex | number | 是    | 系统窗口的层级。该参数仅支持整数输入，浮点数输入将向下取整。0和负数会使窗口在桌面以下。|
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| ------- | --------------------------------------------- |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Possible cause: Invalid window type. |
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  window.setSpecificSystemWindowZIndex(window.WindowType.TYPE_WALLET_SWIPE_CARD, 200).then(() => {
+    console.info('Succeeded in setting zIndex');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set zIndex. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set zIndex. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.createSubWindowAndBindParent
+
+createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
+
+创建一个子窗，并绑定父窗。使用Promise异步回调。
+
+仅支持主窗口作为绑定的父窗。
+
+子窗跟随父窗显示/隐藏，但并不跟随父窗销毁，子窗通过回调函数监听父窗生命周期变化。
+
+建议在父窗销毁后主动销毁创建的子窗。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                |
+| -------- | ----------------------- | -- |---------------------------------------------------|
+| name | string | 是 | 窗口名称。|
+| parentId | number | 是 | 指定父窗口ID。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
+| ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 当前应用上下文信息。|
+| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener) | 是 | 回调函数。返回绑定父窗的生命周期变化。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------------------------------- | ------------------------------------ |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前创建的子窗口对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. This can not work correctly due to limited device capabilities. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 1300002 | This window state is abnormal. Possible cause: 1. Internal task error. 2. The number of windows has reached the limit. |
+| 1300003 | This window manager service works abnormally. |
+| 1300009 | The parent window is invalid. Possible cause: 1. The parent window does not exist or has been destroyed. 2. Invalid window type. Only main windows are supported.|
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    const parentWindowEventListener = (windowId: number, event: window.WindowEventType) => {
+      // ...
+    }
+    try {
+      let promise = window.createSubWindowAndBindParent('test', 100, this.context, parentWindowEventListener);
+      promise.then((data) => {
+        console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
+        windowClass = data;
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+## window.moveMainWindowToTargetDisplay
+moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
+
+将指定的主窗口迁移到指定的屏幕上。使用Promise异步回调。
+
+- 对于[主屏](../../displaymanager/display-terminology.md#主屏)/[扩展屏](../../displaymanager/display-terminology.md#扩展屏)与[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)之间以及虚拟屏与虚拟屏之间的窗口迁移，仅主窗及其子窗会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦。
+- 对于主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕，抬升并获取焦点。
+
+<!--RP3--><!--RP3End-->
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名          | 类型   | 必填  | 说明                    |
+| -------------- | ------ | ----- | ----------------------- |
+| displayId | number | 是    | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为非负整数，可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.displayId获取；也可通过获取[Display](js-apis-display.md#display)对象的[id](js-apis-display.md#属性)属性获取此参数。 |
+| windowId | number | 是    | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。|
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| ------- | --------------------------------------------- |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+| 1300008 | The display device is abnormal.           |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { display, window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
+      }
+      let displayClass: display.Display | null = null;
+      displayClass = display.getDefaultDisplaySync();
+      let mainWindow = windowStage.getMainWindowSync();
+      try {
+        window.moveMainWindowToTargetDisplay(displayClass.id, mainWindow.getWindowProperties().id).then(() => {
+          console.info(`Succeeded in moving window id: ${mainWindow.getWindowProperties().id} to target display id: ${mainWindow.getWindowProperties().displayId}`);
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to move window to target display. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to move window to target display. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
+## window.setWindowLayoutMode<sup>(deprecated)</sup>
+setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;): void
+
+设置窗口布局模式，使用callback异步回调。
+
+> **说明：**
+>
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明           |
+| -------- | ------------------------- | ---- | -------------- |
+| mode       | [WindowLayoutMode](#windowlayoutmodedeprecated)                  | 是   | 设置的窗口布局模式。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调信息。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE, (err: BusinessError) => {
+    const errCode: number = err.code;
+    if (errCode) {
+      console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in setting window layout mode.');
+  });
+} catch (exception) {
+  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.setWindowLayoutMode<sup>(deprecated)</sup>
+setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
+
+设置窗口布局模式，使用Promise异步回调。
+
+> **说明：**
+>
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明           |
+| -------- | ------------------------- | ---- | -------------- |
+| mode       | [WindowLayoutMode](#windowlayoutmodedeprecated)                  | 是   | 设置的窗口布局模式。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE);
+  promise.then(() => {
+    console.info('Succeeded in setting window layout mode.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## Window
 
 当前窗口实例，窗口管理器管理的基本单元。
@@ -1220,7 +1596,7 @@ promise.then(() => {
 
 hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
-隐藏当前窗口，过程中播放动画，使用callback异步回调，仅支持系统窗口。
+隐藏当前窗口，过程中播放动画，使用callback异步回调。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1239,9 +1615,9 @@ hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
 
 **示例：**
 
@@ -1262,7 +1638,7 @@ windowClass.hideWithAnimation((err: BusinessError) => {
 
 hideWithAnimation(): Promise&lt;void&gt;
 
-隐藏当前窗口，过程中播放动画，使用Promise异步回调，仅支持系统窗口。
+隐藏当前窗口，过程中播放动画，使用Promise异步回调。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1281,9 +1657,9 @@ hideWithAnimation(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
 
 **示例：**
 
@@ -1302,7 +1678,7 @@ promise.then(() => {
 
 showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
-显示当前窗口，过程中播放动画，使用callback异步回调，仅支持系统窗口。
+显示当前窗口，过程中播放动画，使用callback异步回调。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1321,9 +1697,9 @@ showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
 
 **示例：**
 
@@ -1344,7 +1720,7 @@ windowClass.showWithAnimation((err: BusinessError) => {
 
 showWithAnimation(): Promise&lt;void&gt;
 
-显示当前窗口，过程中播放动画，使用Promise异步回调，仅支持系统窗口。
+显示当前窗口，过程中播放动画，使用Promise异步回调。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1363,9 +1739,9 @@ showWithAnimation(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
 
 **示例：**
 
@@ -1513,11 +1889,187 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### attachLayoutToParentWindow<sup>24+</sup>
+
+attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWindowAttachOptions): Promise&lt;void&gt;
+
+设置一级子窗与主窗保持相对位置不变。使用Promise异步回调。
+
+该相对位置通过子窗与主窗之间的锚点偏移量表示，子窗和主窗使用的窗口锚点相同。
+
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
+
+> **说明：**
+>
+> - 只支持一级子窗调用该接口，子窗需处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）。
+>
+> - 当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，并且可以监听主窗大小及模式切换。除非调用[detachLayoutToParentWindow()](#detachlayouttoparentwindow24)接口解绑，否则效果将持续。
+>
+> - 当子窗调用该接口后，再调用[moveWindowTo()](arkts-apis-window-Window.md#movewindowto9)、[maximize()](arkts-apis-window-Window.md#maximize12)、[setFollowParentWindowLayoutEnabled()](arkts-apis-window-Window.md#setfollowparentwindowlayoutenabled17)等修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错。
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明           |
+| -------- | ------------------------- | ---- | -------------- |
+| anchorInfo       | [WindowAnchorInfo](#windowanchorinfo24)                    | 否   | 一级子窗与主窗保持相对位置不变时的锚点参数。若不传，默认逻辑参考[WindowAnchorInfo](#windowanchorinfo24)。 |
+| attachOptions       | [SubWindowAttachOptions](#subwindowattachoptions24)                    | 否   | 设置子窗布局的附加参数。若不传，默认逻辑参考[SubWindowAttachOptions](#subwindowattachoptions24)。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function attachLayoutToParentWindow can not work correctly due to limited device capabilities.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300003 | This window manager service works abnormally.|
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is maximized.|
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (loadError: BusinessError) => {
+      if (loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
+        return;
+      }
+      console.info("Succeeded in loading the content.");
+      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        let anchorInfo : window.WindowAnchorInfo = {
+          anchorType: window.WindowAnchor.TOP_START,
+          offsetX: 0,
+          offsetY: 0
+        };
+        let attachOptions: window.SubWindowAttachOptions = {
+          parentWindowSizeChangeCallback:(data: window.Size) => {
+            console.info(`Successfully accepted parentWindow size change, width: ${data.width}, height: ${data.height}`);
+          },
+          parentWindowStatusChangeCallback:(type: window.WindowStatusType) => {
+            console.info(`Successfully accepted parentWindow status change, statusType: ${type}`);
+          },
+          isIntersectedWidthLimit: true,
+          isIntersectedHeightLimit: true
+        }
+        subWindow.attachLayoutToParentWindow(anchorInfo, attachOptions).then(() => {
+          console.info("Succeeded in attaching to the main window");
+        }).catch((error: BusinessError) => {
+          console.error(`attachLayoutToParentWindow failed. ${error.code} ${error.message}`);
+        })
+      }).catch((error: BusinessError) => {
+        console.error(`createSubWindow failed. ${error.code} ${error.message}`);
+      })
+    });
+  }
+}
+```
+
+### detachLayoutToParentWindow<sup>24+</sup>
+
+detachLayoutToParentWindow(): Promise&lt;void&gt;
+
+解除一级子窗与主窗保持相对位置不变的协同关系。使用Promise异步回调。
+
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
+
+> **说明：**
+>
+> - 子窗调用接口时需保持子窗处于协同状态。
+>
+> - 调用接口解除协同后，子窗将保持协同时的位置，可对子窗进行拖拽以修改子窗大小和位置。
+>
+> - 解除协同后，调用[moveWindowTo()](arkts-apis-window-Window.md#movewindowto9)、[maximize()](arkts-apis-window-Window.md#maximize12)、[setFollowParentWindowLayoutEnabled()](arkts-apis-window-Window.md#setfollowparentwindowlayoutenabled17)修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错。
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function detachLayoutToParentWindow can not work correctly due to limited device capabilities.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300003 | This window manager service works abnormally.|
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. Only level-1 subwindows are supported.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: The subwindow is not attached to the main window.|
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (loadError: BusinessError) => {
+      if (loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
+        return;
+      }
+      console.info("Succeeded in loading the content.");
+      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        subWindow.detachLayoutToParentWindow().then(() => {
+          console.info("Succeeded in detaching to the main window");
+        }).catch((error: BusinessError) => {
+          console.error(`detachLayoutToParentWindow failed. ${error.code} ${error.message}`);
+        })
+      }).catch((error: BusinessError) => {
+        console.error(`createSubWindow failed. ${error.code} ${error.message}`);
+      })
+    });
+  }
+}
+```
+
 ### bindDialogTarget<sup>9+</sup>
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-绑定模态窗口与目标窗口并添加模态窗口销毁监听，使用callback异步回调。
+绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1528,7 +2080,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | token       | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | 是   | 目标窗口token值。 |
-| deathCallback | Callback&lt;void&gt;        | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;        | 是   | 目标窗口销毁监听。 |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -1546,37 +2098,25 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 
 ```ts
 import { rpc } from '@kit.IPCKit';
+import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
-class MyDeathRecipient {
-  onRemoteDied() {
-    console.info('server died');
-  }
-}
+export class Property {
+  public value: Object
 
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  addDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  removeDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  isObjectDead(): boolean {
-    return false;
+  constructor(value: Object) {
+    this.value = value
   }
 }
 
 export default class ServiceExtAbility extends ServiceExtensionAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let token: TestRemoteObject = new TestRemoteObject('testObject');
-    let config: window.Configuration = { name: "test", windowType: window.WindowType.TYPE_DIALOG, ctx: this.context };
+  onRequest(want: Want, startId: number) {
+    console.info('onRequest');
+    let config: window.Configuration = {
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
     try {
       window.createWindow(config, (err: BusinessError, data) => {
         let errCode: number = err?.code;
@@ -1588,19 +2128,21 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
           console.error('data is null');
           return;
         }
-        data.bindDialogTarget(token, () => {
+        let token = want.parameters?.['ohos.ability.params.request.token'] as Property;
+        let value = token.value as rpc.RemoteObject;
+        data.bindDialogTarget(value, () => {
           console.info('Dialog Window Need Destroy.');
           }, (err: BusinessError) => {
           let errCode: number = err?.code;
           if (errCode) {
-            console.error(`Failed to bind dialog target. Error code: ${err?.code}, message: ${err?.message}`);
+            console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
             return;
           }
           console.info('Succeeded in binding dialog target.');
         });
       });
-    } catch (exception) {
-      console.error(`Failed to bind dialog target. Cause code: ${exception.code}, message: ${exception.message}`);
+    } catch (err) {
+      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
     }
   }
 }
@@ -1610,7 +2152,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): Promise&lt;void&gt;
 
-绑定模态窗口与目标窗口并添加模态窗口销毁监听，使用Promise异步回调。
+绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1621,7 +2163,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | token       | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | 是   | 目标窗口token值。 |
-| deathCallback | Callback&lt;void&gt;        | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;        | 是   | 目标窗口销毁监听。 |
 
 **返回值：**
 
@@ -1644,36 +2186,20 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 
 ```ts
 import { rpc } from '@kit.IPCKit';
+import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
-class MyDeathRecipient {
-  onRemoteDied() {
-    console.info('server died');
-  }
-}
+export class Property {
+  public value: Object
 
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  addDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  removeDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  isObjectDead(): boolean {
-    return false;
+  constructor(value: Object) {
+    this.value = value
   }
 }
 
 export default class ServiceExtAbility extends ServiceExtensionAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let token: TestRemoteObject = new TestRemoteObject('testObject');
+  onRequest(want: Want, startId: number) {
+    console.info('onRequest');
     let config: window.Configuration = {
       name: "test",
       windowType: window.WindowType.TYPE_DIALOG,
@@ -1690,17 +2216,19 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
           console.error('data is null');
           return;
         }
-        let promise = data.bindDialogTarget(token, () => {
+        let token = want.parameters?.['ohos.ability.params.request.token'] as Property;
+        let value = token.value as rpc.RemoteObject;
+        let promise = data.bindDialogTarget(value, () => {
           console.info('Dialog Window Need Destroy.');
         });
         promise.then(() => {
           console.info('Succeeded in binding dialog target.');
         }).catch((err: BusinessError) => {
-          console.error(`Failed to bind dialog target. Error code: ${err?.code}, message: ${err?.message}`);
+          console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
         });
       });
-    } catch (exception) {
-      console.error(`Failed to bind dialog target. Cause code: ${exception.code}, message: ${exception.message}`);
+    } catch (err) {
+      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
     }
   }
 }
@@ -1710,7 +2238,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-绑定模态窗口与目标窗口并添加模态窗口销毁监听，使用callback异步回调。
+绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1721,7 +2249,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | 是   | 目标窗口RequestInfo值。 |
-| deathCallback | Callback&lt;void&gt;    | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;    | 是   | 目标窗口销毁监听。 |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -1781,7 +2309,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback&lt;void&gt;): Promise&lt;void&gt;
 
-绑定模态窗口与目标窗口并添加模态窗口销毁监听，使用Promise异步回调。
+绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1792,7 +2320,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | 是   | 目标窗口RequestInfo值。 |
-| deathCallback | Callback&lt;void&gt;    | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;    | 是   | 目标窗口销毁监听。 |
 
 **返回值：**
 
@@ -1916,6 +2444,8 @@ setSnapshotSkip(isSkip: boolean): void
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 
+**示例：**
+
 ```ts
 let isSkip: boolean = true;
 try {
@@ -1925,144 +2455,11 @@ try {
 }
 ```
 
-### setForbidSplitMove<sup>9+</sup>
-
-setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback&lt;void&gt;): void
-
-设置主窗口在分屏模式下是否被禁止移动，使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**参数：**
-
-| 参数名      | 类型                      | 必填 | 说明                 |
-| ----------- | ------------------------- | ---- | -------------------- |
-| isForbidSplitMove | boolean                   | 是   | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
-| callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
-
-**示例：**
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      windowClass = data;
-      let isForbidSplitMove: boolean = true;
-      try {
-        windowClass.setForbidSplitMove(isForbidSplitMove, (err: BusinessError) => {
-          const errCode: number = err.code;
-          if (errCode) {
-            console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
-            return;
-          }
-          console.info('Succeeded in forbidding window moving in split screen mode.');
-        });
-      } catch (exception) {
-        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
-
-### setForbidSplitMove<sup>9+</sup>
-
-setForbidSplitMove(isForbidSplitMove: boolean): Promise&lt;void&gt;
-
-设置主窗口在分屏模式下是否被禁止移动，使用Promise异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**参数：**
-
-| 参数名      | 类型    | 必填 | 说明                 |
-| ----------- | ------- | ---- | -------------------- |
-| isForbidSplitMove | boolean | 是   | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
-
-**返回值：**
-
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
-
-**示例：**
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      windowClass = data;
-      let isForbidSplitMove: boolean = true;
-      try {
-        let promise = windowClass.setForbidSplitMove(isForbidSplitMove);
-        promise.then(() => {
-          console.info('Succeeded in forbidding window moving in split screen mode.');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
-        });
-      } catch (exception) {
-        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
-
 ### opacity<sup>9+</sup>
 
 opacity(opacity: number): void
 
-设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口不透明度。仅支持在系统窗口、全局悬浮窗和模态窗口的[自定义显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2099,7 +2496,7 @@ try {
 
 scale(scaleOptions: ScaleOptions): void
 
-设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口缩放参数。仅支持在系统窗口、全局悬浮窗和模态窗口的[自定义显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2142,7 +2539,7 @@ try {
 
 rotate(rotateOptions: RotateOptions): void
 
-设置窗口旋转参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口旋转参数。仅支持在系统窗口、全局悬浮窗和模态窗口的[自定义显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2186,7 +2583,7 @@ try {
 
 translate(translateOptions: TranslateOptions): void
 
-设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口平移参数。仅支持在系统窗口、全局悬浮窗和模态窗口的[自定义显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2228,7 +2625,7 @@ try {
 
  getTransitionController(): TransitionController
 
-获取窗口属性转换控制器。
+获取窗口属性转换控制器。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2260,7 +2657,7 @@ let controller = windowClass.getTransitionController(); // 获取属性转换控
 
 setBlur(radius: number): void
 
-设置窗口模糊。
+设置窗口模糊。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2297,8 +2694,10 @@ try {
 
 setBackdropBlur(radius: number): void
 
-设置窗口背景模糊。
+设置窗口背景模糊。仅支持系统窗口、全局悬浮窗和模态窗口使用。
+
 窗口背景是指窗口覆盖的下层区域，与窗口大小相同。
+
 需要通过[setWindowBackgroundColor](arkts-apis-window-Window.md#setwindowbackgroundcolor9)将窗口内容背景设置成透明，否则无法看到模糊效果。
 
 **系统接口：** 此接口为系统接口。
@@ -2337,7 +2736,7 @@ try {
 
 setBackdropBlurStyle(blurStyle: BlurStyle): void
 
-设置窗口背景模糊类型。
+设置窗口背景模糊类型。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2374,7 +2773,7 @@ try {
 
 setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): void
 
-设置窗口边缘阴影。
+设置窗口边缘阴影。仅支持系统窗口、应用子窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2382,12 +2781,12 @@ setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): v
 
 **参数：**
 
-| 参数名  | 类型   | 必填 | 说明                                                          |
-| ------- | ------ | ---- |-------------------------------------------------------------|
-| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。     |
-| color   | string | 否   | 表示窗口边缘阴影的颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`#00FF00`或`#FF00FF00`。 |
-| offsetX | number | 否   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px。                              |
-| offsetY | number | 否   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px。                              |
+| 参数名  | 类型   | 必填 | 说明                                                                       |
+| ------- | ------ | ---- |--------------------------------------------------------------------------|
+| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。            |
+| color   | string | 否   | 表示窗口边缘阴影的颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`#00FF00`或`#FF00FF00`，默认值为'#000000'。 |
+| offsetX | number | 否   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px，默认值为0.0。                                    |
+| offsetY | number | 否   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px，默认值为0.0。                                    |
 
 **错误码：**
 
@@ -2414,7 +2813,7 @@ try {
 
 setCornerRadius(cornerRadius: number): void
 
-设置窗口圆角半径。
+设置窗口圆角半径。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2447,45 +2846,6 @@ try {
 }
 ```
 
-### setTouchableAreas<sup>12+</sup>
-
-setTouchableAreas(rects: Array&lt;Rect&gt;): void
-
-实现设置窗口可触摸区域；不设置时默认整个窗口区域可触摸；设置窗口可触摸区域后，区域外触摸事件将被透传；如果窗口区域发生变化需要重新设置。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| rects | Array<[Rect](arkts-apis-window-i.md#rect7)> | 是   | 窗口可触摸区域。可触摸区域最大个数不能超过10个，且范围不能超出窗口区域。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |                       |
-
-**示例：**
-
-```ts
-try {
-  windowClass.setTouchableAreas([{left: 100, top: 100, width: 200, height:200},
-    {left: 400, top: 100, width: 200, height:200}]);
-} catch (exception) {
-  console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 ### raiseToAppTop<sup>10+</sup>
 
 raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
@@ -2493,6 +2853,8 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 提升应用子窗口到应用顶层。使用callback异步回调。
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
+
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2710,6 +3072,8 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -2785,6 +3149,8 @@ raiseAboveTarget(windowId: number): Promise&lt;void&gt;
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -2859,7 +3225,7 @@ export default class EntryAbility extends UIAbility {
 
 raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于将主窗口的层级调整至同应用下的另一个主窗口之上，子窗口的层级会跟随所属主窗口变动。使用Promise异步回调。
+将主窗口的层级调整至同应用下的另一个主窗口之上，子窗口的层级会跟随所属主窗口变动。使用Promise异步回调。
 
 仅支持系统应用主窗口调用。
 
@@ -2873,7 +3239,7 @@ raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -2958,7 +3324,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
 }
 ```
 ```json5
-//module.json5
+// module.json5
 {
   "module": {
     "name": "entry",
@@ -3092,6 +3458,75 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### setMainWindowRaiseByClickEnabled<sup>23+</sup>
+
+setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
+
+禁止/使能主窗口点击抬升功能。使用Promise异步回调。
+
+点击主窗口时，默认会抬升主窗口及其子窗口。调用此接口禁止主窗口点击抬升后（即传入false），点击主窗口时不会将其及子窗口进行抬升，保持原有状态不变；点击子窗口时，主窗口会连同子窗口一起被抬升。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| enable   | boolean                   | 是   | 设置主窗口点击抬升功能是否使能，true表示使能，false表示禁止。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((window: window.Window) => {
+      // 加载主窗口对应的页面
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch(err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
+      });
+    });
+  }
+}
+```
+
 ### hideNonSystemFloatingWindows<sup>11+</sup>
 
 hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -3104,7 +3539,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中调用不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -3183,7 +3618,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中调用不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -3263,7 +3698,7 @@ setDefaultDensityEnabled(enabled: boolean): void
 
 不调用此接口进行设置，则表示不使用系统默认Density。
 
-当存在同时使用该接口、[setDefaultDensityEnabled(true)](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
+当存在同时使用该接口、[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3283,7 +3718,7 @@ setDefaultDensityEnabled(enabled: boolean): void
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -3320,7 +3755,7 @@ isMainWindowFullScreenAcrossDisplays(): Promise&lt;boolean&gt;
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally. |
 | 1300004  | Unauthorized operation. |
 
@@ -3366,9 +3801,9 @@ on(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback: Callback&lt;bool
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
@@ -3407,9 +3842,9 @@ off(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback?: Callback&lt;bo
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
@@ -3429,77 +3864,6 @@ try {
 }
 ```
 
-### setWindowContainerModalColor<sup>20+</sup>
-
-setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
-
-设置主窗口容器在焦点态和非焦点态时的背景色。在Stage模型下，该接口需在调用[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)后使用。
-
-窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。当同时使用该接口和[setWindowBackgroundColor()](arkts-apis-window-Window.md#setwindowbackgroundcolor9)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ----- | ------ | -- | ----------------------------------------------------------------------- |
-| activeColor | string | 是 | 窗口容器处于焦点态时的背景色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。|
-| inactiveColor | string | 是 | 窗口容器处于非焦点态时的背景色，为十六进制RGB颜色或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation.                      |
-
-**示例：**
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
-      let errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('Succeeded in loading the content.');
-      // 获取应用主窗口。
-      let windowClass: window.Window | undefined = undefined;
-      windowStage.getMainWindow((err: BusinessError, data) => {
-        let errCode: number = err.code;
-        if (errCode) {
-          console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-          return;
-        }
-        windowClass = data;
-        let activeColor: string = '#00000000';
-        let inactiveColor: string = '#FF000000';
-        try {
-          windowClass.setWindowContainerModalColor(activeColor, inactiveColor);
-          console.info('Succeeded in setting window container color.');
-        } catch (exception) {
-          console.error(`Failed to set the window container color. Cause code: ${exception.code}, message: ${exception.message}`);
-        };
-      });
-    });
-  }
-}
-```
-
 ### setTopmost<sup>12+</sup>
 
 setTopmost(isTopmost: boolean): Promise&lt;void&gt;
@@ -3510,7 +3874,11 @@ setTopmost(isTopmost: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中调用返回801错误码。
+**设备行为差异：**
+
+在<!--RP2-->OpenHarmony 6.1<!--RP2End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+从<!--RP2-->OpenHarmony 6.1<!--RP2End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -3617,7 +3985,9 @@ try {
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于设置主窗标题栏上的最大化、最小化、分屏按钮是否可见。
+设置标题栏上的最大化、最小化、分屏按钮是否可见。
+
+仅支持主窗和[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口，其他窗口调用时将返回1300004错误码。
 
 仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
 
@@ -3625,7 +3995,7 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -3683,6 +4053,163 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+```
+
+### setRotationLocked<sup>22+</sup>
+
+setRotationLocked(locked: boolean): Promise&lt;void&gt;
+
+仅支持[系统窗口](../../windowmanager/window-type-overview.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
+
+> **说明：**
+>
+> - 如果在锁定期间主窗口通过[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。
+>
+> - 如果在锁定期间系统窗口通过[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)设置显示方向属性，则解除旋转锁定后该窗口在前台且层级最高时还原最后一次的方向请求。低层级窗口通过setRotationLocked设置旋转锁定不会影响高层级系统窗口调用[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)设置显示方向。
+>
+> - 如果在锁定期间sensor方向发生了变化，则解除旋转锁定后还原到最后一次的sensor方向。
+>
+> - 如果在锁定期间应用调用[setOrientation()](./js-apis-screen-sys.md#setorientation)设置屏幕方向，忽略该次屏幕方向设置。
+>
+> - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../windowmanager/window-rotation.md#窗口旋转简介)。
+>
+> - 不影响应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)orientation属性设置的启动方向。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| locked | boolean | 是   | 设置是否锁定旋转，true表示锁定旋转，false表示解除锁定。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+| 1300029 | This window type is invalid. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let locked: boolean = true;
+let promise = windowClass.setRotationLocked(locked);
+promise.then(() => {
+  console.info('set rotation locked success.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set rotation locked. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getRotationLocked<sup>22+</sup>
+
+getRotationLocked(): boolean
+
+仅支持[系统窗口](../../windowmanager/window-type-overview.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| boolean | 当前系统窗是否设置旋转锁定。true表示当前系统窗已锁定旋转；false表示当前系统窗未锁定旋转。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+| 1300029 | This window type is invalid. |
+
+**示例：**
+
+```ts
+try {
+  let locked = windowClass.getRotationLocked();
+  console.info('Succeeded in getting rotation locked.');
+} catch (exception) {
+  console.error(`Failed to get rotation locked. Cause code: ${exception.code}, message: ${exception.message}`);
+};
+```
+
+### requestFocus<sup>13+</sup>
+
+requestFocus(isFocused: boolean): Promise&lt;void&gt;
+
+支持当前窗口主动请求获焦/失焦，使用Promise异步回调。调用成功即返回，该接口返回值不代表最终获焦/失焦生效结果。可使用[on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10)监听窗口获焦/失焦状态。
+
+获焦请求发送后，窗口获焦结果受到窗口可获焦属性及窗口可见状态的限制。获焦成功的窗口需满足以下约束：1.窗口支持获焦；2.窗口可见（窗口已显示，未销毁且未退至后台）。
+
+失焦请求发送后，窗口无条件失焦。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| isFocused | boolean | 是   | 是否获取焦点，true表示请求获焦，false表示请求失焦。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isFocused: boolean = true;
+let promise = windowClass.requestFocus(isFocused);
+promise.then(() => {
+  console.info('Succeeded in requesting focus.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to request focus. Cause code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### setWindowType<sup>(deprecated)</sup>
@@ -3762,25 +4289,94 @@ promise.then(() => {
 });
 ```
 
-### requestFocus<sup>13+</sup>
+### setForbidSplitMove<sup>(deprecated)</sup>
 
-requestFocus(isFocused: boolean): Promise&lt;void&gt;
+setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-支持当前窗口主动请求获焦/失焦，使用Promise异步回调。调用成功即返回，该接口返回值不代表最终获焦/失焦生效结果。可使用[on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10)监听窗口获焦/失焦状态。
+设置主窗口在分屏模式下是否被禁止移动，使用callback异步回调。
 
-获焦请求发送后，窗口获焦结果受到窗口可获焦属性及窗口可见状态的限制。获焦成功的窗口需满足以下约束：1.窗口支持获焦；2.窗口可见（窗口已显示，未销毁且未退至后台）。
-
-失焦请求发送后，窗口无条件失焦。
+> **说明：**
+>
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| isFocused | boolean | 是   | 是否获取焦点，true表示请求获焦，false表示请求失焦。 |
+| 参数名      | 类型                      | 必填 | 说明                 |
+| ----------- | ------------------------- | ---- | -------------------- |
+| isForbidSplitMove | boolean                   | 是   | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
+| callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 1300002 | This window state is abnormal.               |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      let isForbidSplitMove: boolean = true;
+      try {
+        windowClass.setForbidSplitMove(isForbidSplitMove, (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
+            return;
+          }
+          console.info('Succeeded in forbidding window moving in split screen mode.');
+        });
+      } catch (exception) {
+        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
+### setForbidSplitMove<sup>(deprecated)</sup>
+
+setForbidSplitMove(isForbidSplitMove: boolean): Promise&lt;void&gt;
+
+设置主窗口在分屏模式下是否被禁止移动，使用Promise异步回调。
+
+> **说明：**
+>
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
+
+| 参数名      | 类型    | 必填 | 说明                 |
+| ----------- | ------- | ---- | -------------------- |
+| isForbidSplitMove | boolean | 是   | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
 
 **返回值：**
 
@@ -3793,25 +4389,45 @@ requestFocus(isFocused: boolean): Promise&lt;void&gt;
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 202     | Permission verification failed, non-system application uses system API. |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let isFocused: boolean = true;
-let promise = windowClass.requestFocus(isFocused);
-promise.then(() => {
-  console.info('Succeeded in requesting focus.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to request focus. Cause code: ${err.code}, message: ${err.message}`);
-});
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      let isForbidSplitMove: boolean = true;
+      try {
+        let promise = windowClass.setForbidSplitMove(isForbidSplitMove);
+        promise.then(() => {
+          console.info('Succeeded in forbidding window moving in split screen mode.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
 ```
 
 ## SubWindowOptions<sup>11+</sup>
@@ -3994,7 +4610,7 @@ export default class EntryAbility extends UIAbility {
 
 | 名称                  | 类型          | 只读 | 可选 | 说明             |
 | --------------------- | ----------------- | ---- | ---- | ---------------- |
-| toWindow<sup>9+</sup> | [Window](arkts-apis-window-Window.md) | 否   | 否   | 动画的目标窗口。 |
+| toWindow | [Window](arkts-apis-window-Window.md) | 否   | 否   | 动画的目标窗口。 |
 
 ### completeTransition<sup>9+</sup>
 
@@ -4066,7 +4682,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowClass: window.Window | undefined = undefined;
 let config: window.Configuration = {
   name: "systemTypeWindow",
-  windowType: window.WindowType.TYPE_PANEL, //根据需要自选系统窗口类型
+  windowType: window.WindowType.TYPE_PANEL, // 根据需要自选系统窗口类型
   ctx: this.context
 };
 let promise = window.createWindow(config);

@@ -4,7 +4,11 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioSession_Strategy {...} OH_AudioSession_Strategy
+```
 
 ## Overview
 
@@ -22,4 +26,4 @@ The struct describes an audio session strategy.
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioSession_ConcurrencyMode](capi-native-audio-session-manager-h.md#oh_audiosession_concurrencymode) concurrencyMode | Audio concurrency mode.|
+| [OH_AudioSession_ConcurrencyMode](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) concurrencyMode | Audio concurrency mode.|

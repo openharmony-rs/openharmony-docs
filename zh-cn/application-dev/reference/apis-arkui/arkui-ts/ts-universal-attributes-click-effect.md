@@ -1,16 +1,18 @@
 # 点击回弹效果
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件点击时的回弹效果。
 
 >  **说明：**
 >
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## clickEffect
 
@@ -38,7 +40,7 @@ clickEffect(value: ClickEffect | null): T
 
 clickEffect(effect: Optional\<ClickEffect | null>): T
 
-设置当前组件的点击回弹效果。与[clickEffect](#clickeffect)相比，effect参数新增了对undefined类型的支持。
+设置当前组件的点击回弹效果。与[clickEffect](#clickeffect)相比，新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -48,7 +50,7 @@ clickEffect(effect: Optional\<ClickEffect | null>): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| effect | Optional\<[ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null> | 是   | 设置当前组件的点击回弹效果。<br/>**说明：**<br/>可通过undefined或者null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
+| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null> | 是   | 设置当前组件的点击回弹效果。<br/>**说明：**<br/>可通过undefined或者null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
 
 **返回值：**
 
@@ -66,7 +68,7 @@ clickEffect(effect: Optional\<ClickEffect | null>): T
 
 | 名称  | 类型                                                  | 只读    | 可选   |  说明                                                         |
 | ----- | ----------------------------------------------------------- | ---- | --------- | --------------------------------------------------------- |
-| level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | 否   | 否  |设置当前组件的点击回弹效果。<br/>**说明：**<br/>当level为undefined或者null时， ClickEffect采用ClickEffectLevel.LIGHT对应的回弹效果，缩放比参照scale说明。 |
+| level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | 否   | 否  |设置当前组件的点击回弹效果。<br/>默认值：ClickEffectLevel.LIGHT<br/>**说明：**<br/>当level为undefined或者null时， ClickEffect采用ClickEffectLevel.LIGHT对应的回弹效果，缩放比参照scale说明。 |
 | scale | number                                                      | 否   | 是  |回弹缩放比例，支持在设置ClickEffectLevel的基础上微调。<br/>**说明：**<br/>当level为ClickEffectLevel.LIGHT时，默认值：0.90 <br/>当level为ClickEffectLevel.MIDDLE或者ClickEffectLevel.HEAVY时，默认值：0.95 <br/>当level为undefined或者null时，level为ClickEffectLevel.LIGHT，默认值：0.90 <br/>当scale为undefined或者null时，使用当前level对应的默认缩放比例。 |
 
 ## 示例
@@ -83,7 +85,7 @@ struct ToggleExample {
       Text('type: Switch').fontSize(12).fontColor(0xcccccc).width('90%')
       Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Toggle({ type: ToggleType.Switch, isOn: false })
-          .clickEffect({level:ClickEffectLevel.LIGHT})
+          .clickEffect({ level: ClickEffectLevel.LIGHT })
           .selectedColor('#007DFF')
           .switchPointColor('#FFFFFF')
           .onChange((isOn: boolean) => {
@@ -91,7 +93,7 @@ struct ToggleExample {
           })
 
         Toggle({ type: ToggleType.Switch, isOn: true })
-          .clickEffect({level:ClickEffectLevel.LIGHT, scale: 0.5})
+          .clickEffect({ level: ClickEffectLevel.LIGHT, scale: 0.5 })
           .selectedColor('#007DFF')
           .switchPointColor('#FFFFFF')
           .onChange((isOn: boolean) => {
@@ -102,7 +104,7 @@ struct ToggleExample {
       Text('type: Checkbox').fontSize(12).fontColor(0xcccccc).width('90%')
       Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Toggle({ type: ToggleType.Checkbox, isOn: false })
-          .clickEffect({level:ClickEffectLevel.MIDDLE})
+          .clickEffect({ level: ClickEffectLevel.MIDDLE })
           .size({ width: 20, height: 20 })
           .selectedColor('#007DFF')
           .onChange((isOn: boolean) => {
@@ -110,7 +112,7 @@ struct ToggleExample {
           })
 
         Toggle({ type: ToggleType.Checkbox, isOn: true })
-          .clickEffect({level:ClickEffectLevel.MIDDLE, scale: 0.5})
+          .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.5 })
           .size({ width: 20, height: 20 })
           .selectedColor('#007DFF')
           .onChange((isOn: boolean) => {
@@ -123,7 +125,7 @@ struct ToggleExample {
         Toggle({ type: ToggleType.Button, isOn: false }) {
           Text('status button').fontColor('#182431').fontSize(12)
         }.width(106)
-        .clickEffect({level:ClickEffectLevel.HEAVY})
+        .clickEffect({ level: ClickEffectLevel.HEAVY })
         .selectedColor('rgba(0,125,255,0.20)')
         .onChange((isOn: boolean) => {
           console.info('Component status:' + isOn);
@@ -132,7 +134,7 @@ struct ToggleExample {
         Toggle({ type: ToggleType.Button, isOn: true }) {
           Text('status button').fontColor('#182431').fontSize(12)
         }.width(106)
-        .clickEffect({level:ClickEffectLevel.HEAVY, scale: 0.5})
+        .clickEffect({ level: ClickEffectLevel.HEAVY, scale: 0.5 })
         .selectedColor('rgba(0,125,255,0.20)')
         .onChange((isOn: boolean) => {
           console.info('Component status:' + isOn);

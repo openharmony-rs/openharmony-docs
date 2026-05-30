@@ -4,7 +4,11 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+
+```c
+typedef struct OH_NativeBundle_Metadata {...} OH_NativeBundle_Metadata
+```
 
 ## 概述
 

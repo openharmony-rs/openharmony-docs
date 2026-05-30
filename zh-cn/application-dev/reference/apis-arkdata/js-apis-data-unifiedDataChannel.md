@@ -11,6 +11,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -100,21 +102,58 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 | null | 表示null。 |
 | undefined | 表示undefined。 |
 
+## UriPermission
+
+拖拽场景下的URI授权策略。
+
+>**说明：**
+>
+>此授权策略仅在拖拽场景下生效，其他场景不生效。
+
+支持不授权、读、写、持久化四种权限策略，可组合使用，仅以下组合生效：
+- 仅使用NONE：不做任何文件授权。
+- 仅使用READ：仅做单次只读授权。
+- 仅使用WRITE：做单次读、写授权（写授权包含读授权）。
+- READ+WRITE：做单次读、写授权，与仅写授权等同。
+- READ+PERSIST：做持久化读授权。
+- WRITE+PERSIST：做持久化读写授权。
+- READ+WRITE+PERSIST：做持久化读写授权。
+
+拖拽授权策略应用规则（按优先级从高到低）：
+- 单个数据级别：FileUri、HTML两个UDS以及File、Image、Video、Audio、Folder、HTML六个UDC数据结构支持配置授权策略参数，仅对单个record单次生效，优先级最高。
+- UnifiedData级别：UnifiedDataProperties中提供的授权参数对单次拖拽有效。若某个数据中配置了授权策略，则优先按照该数据的配置进行，优先级次之。
+- 默认级别：若单个数据和UnifiedDataProperties均未配置授权策略，则按照拖拽默认逻辑进行代理授权。默认逻辑如下：
+
+    - FileUri类型数据（FileUri UDS或File、Image、Video、Audio、Folder五个UDC类型）：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。
+    - HTML类型数据，仅针对HTML文本中img标签下的uri做读授权。
+
+**起始版本**：26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+| 名称 | 值 | 说明 |
+| ------------ | --- | ------------------------------------------- |
+| NONE | 0 | 表示未授予任何权限。 |
+| READ | 1 | 表示读取或查看数据的权限。 |
+| WRITE | 2 | 表示修改数据的权限（包含READ）。 |
+| PERSIST | 3 | 表示持久化文件的权限。 |
+
 ## UnifiedDataProperties<sup>12+</sup>
 
 定义统一数据对象中所有数据记录的属性，包含时间戳、标签、粘贴范围以及一些附加数据等。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| extras<sup>12+</sup> | Record<string, object> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。 |
-| tag<sup>12+</sup> | string | 否 | 是 | 用户自定义标签。非必填字段，默认值为空字符串。 |
-| timestamp<sup>12+</sup> | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。 |
-| shareOptions<sup>12+</sup> | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。 |
-| getDelayData<sup>12+</sup> | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。 |
+| extras | Record<string, object> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| tag | string | 否 | 是 | 用户自定义标签。非必填字段，默认值为空字符串。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| timestamp | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| shareOptions | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| getDelayData | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST，只对单次数据生效，优先级较低，具体策略见[UriPermission](#uripermission)。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -130,6 +169,10 @@ properties.extras = {
 };
 properties.tag = "This is a tag of properties";
 properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
+// 从API 26.0.0版本开始，支持uri授权策略
+properties.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.WRITE
+];
 properties.getDelayData = ((type: string) => {
   if (type == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
     let plainTextDetails : Record<string, string> = {
@@ -200,7 +243,7 @@ constructor(record: UnifiedRecord)
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -237,7 +280,7 @@ addRecord(record: UnifiedRecord): void
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -341,7 +384,7 @@ hasType(type: string): boolean
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -412,14 +455,13 @@ let types = unifiedData.getTypes();
 
 描述统一数据对象的数据摘要，包括数据类型和大小。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| summary   | Record<string, number> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。 |
-| totalSize | number | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。 |
+| summary   | Record<string, number> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| totalSize | number | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| overview<sup>22+</sup>   | Record<string, number> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -440,6 +482,8 @@ function parseSummary(summary : unifiedDataChannel.Summary) {
       let value : string = info[1];
     }
   }
+  let overviewRecord = summary.overview as Record<string, number>;
+  let totalSize = summary.totalSize;
 }
 ```
 
@@ -614,7 +658,7 @@ addEntry(type: string, value: ValueType): void
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -671,7 +715,7 @@ getEntry(type: string): ValueType
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -871,7 +915,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ## PlainText
 
-纯文本类型数据，是[Text](#text)的子类，用于描述纯文本类数据。
+[Text](#text)的子类，用于描述纯文本类数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -892,7 +936,7 @@ text.abstract = 'This is abstract';
 
 ## Hyperlink
 
-超链接类型数据，是[Text](#text)的子类，用于描述超链接类型数据。
+[Text](#text)的子类，用于描述超链接类型数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -915,14 +959,13 @@ link.description = 'This is description';
 
 HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言数据。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlContent  | string | 否 | 否 | html格式内容。             |
-| plainContent | string | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。 |
+| htmlContent  | string | 否 | 否 | html格式内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
+| plainContent | string | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -930,20 +973,23 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 let html = new unifiedDataChannel.HTML();
 html.htmlContent = '<div><p>标题</p></div>';
 html.plainContent = 'This is plainContent';
+// 从API 26.0.0版本开始，支持uri授权策略
+html.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.WRITE
+];
 ```
 
 ## File
 
 File类型数据，是[UnifiedRecord](#unifiedrecord)的子类，也是文件类型数据的基类，用于描述文件类型数据，推荐开发者优先使用File的子类描述数据，如[Image](#image)、[Video](#video)、[Folder](#folder)等具体子类。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| details | Record<string, string> | 否 | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文件相关信息。例如，可生成一个details内容为<br/>{<br/>"name":"文件名",<br/>"type":"文件类型"<br/>}<br/>的数据对象，用于描述一个文件。非必填字段，默认值为空字典对象。 |
-| uri     | string                    | 否 | 否 | 本地文件数据uri或网络文件uri，本地文件数据uri可通过[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)函数获取。                                                                                                                                            |
+| details | Record<string, string> | 否 | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文件相关信息。例如，可生成一个details内容为<br/>{<br/>"name":"文件名",<br/>"type":"文件类型"<br/>}<br/>的数据对象，用于描述一个文件。非必填字段，默认值为空字典对象。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| uri     | string                    | 否 | 否 | 本地文件数据uri或网络文件uri，本地文件数据uri可通过[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)函数获取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权），只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -959,11 +1005,15 @@ export default class EntryAbility extends UIAbility {
     let pathDir = context.filesDir;
     let file = new unifiedDataChannel.File();
     file.details = {
-        name: 'test',
-        type: 'txt'
+      'name': 'test',
+      'type': 'txt'
     };
     let filePath = pathDir + '/test.txt';
     file.uri = fileUri.getUriFromPath(filePath);
+    // 从API 26.0.0版本开始，支持uri授权策略
+    file.uriAuthorizationPolicies = [
+      unifiedDataChannel.UriPermission.WRITE
+    ];
   }
 }
 ```
@@ -1163,8 +1213,8 @@ let unifiedData = new unifiedDataChannel.UnifiedData(form);
 | -------- | -------- | -------- | -------- | -------- |
 | appId       | string | 否 | 否 | 图标对应的应用id。      |
 | appName     | string | 否 | 否 | 图标对应的应用名。       |
-| appIconId   | string | 否 | 否 | 图标的图片id。        |
-| appLabelId  | string | 否 | 否 | 图标名称对应的标签id。    |
+| appIconId   | string | 否 | 否 | 图标的图片id。<br/>        |
+| appLabelId  | string | 否 | 否 | 图标名称对应的标签id。   |
 | bundleName  | string | 否 | 否 | 图标对应的应用bundle名。 |
 | abilityName | string | 否 | 否 | 图标对应的应用ability名。 |
 
@@ -1273,10 +1323,10 @@ UDMF已经支持的数据通路枚举类型。其主要用途是标识各种UDMF
 | 名称       | 值         | 说明      |
 |----------|-----------|---------|
 | DATA_HUB | 'DataHub' | 公共数据通路。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| DRAG<sup>14+</sup> | 'Drag' | 拖拽类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在拖拽场景下使用UDMF来跨应用数据共享。 |
-| SYSTEM_SHARE<sup>20+</sup> | 'SystemShare' | 系统分享类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在系统分享场景下使用UDMF来跨应用数据共享。 |
-| PICKER<sup>20+</sup> | 'Picker' | Picker类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在Picker选择器场景下使用UDMF来跨应用数据共享。 |
-| MENU<sup>20+</sup> | 'Menu' | 菜单类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在右键菜单场景下使用UDMF来跨应用数据共享。 |
+| DRAG<sup>14+</sup> | 'Drag' | 拖拽类型数据通道。<br/>**适用场景：** 适用于在拖拽场景下使用UDMF来跨应用数据共享。 |
+| SYSTEM_SHARE<sup>20+</sup> | 'SystemShare' | 系统分享类型数据通道。<br/>**适用场景：** 适用于在系统分享场景下使用UDMF来跨应用数据共享。 |
+| PICKER<sup>20+</sup> | 'Picker' | Picker类型数据通道。<br/>**适用场景：** 适用于在Picker选择器场景下使用UDMF来跨应用数据共享。 |
+| MENU<sup>20+</sup> | 'Menu' | 菜单类型数据通道。<br/>**适用场景：** 适用于在右键菜单场景下使用UDMF来跨应用数据共享。 |
 
 ## Visibility<sup>20+</sup> 
 
@@ -1286,8 +1336,8 @@ UDMF已经支持的数据通路枚举类型。其主要用途是标识各种UDMF
 
 | 名称          | 值   | 说明                          |
 | ------------- | ---- |------------------------------|
-| ALL           | 0    | 可见性等级，所有应用可见。<br/>**模型约束：** 此接口仅可在Stage模型下使用。     |
-| OWN_PROCESS   | 1    | 可见性等级，仅数据提供者可见。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
+| ALL           | 0    | 可见性等级，所有应用可见。    |
+| OWN_PROCESS   | 1    | 可见性等级，仅数据提供者可见。  |
 
 ## Options
 
@@ -1390,7 +1440,7 @@ type DataProgressListener = (progressInfo: ProgressInfo, data: UnifiedData | nul
 |----------------------|-------------------------------------------------| ---- | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------|
 | progressIndicator    | [ProgressIndicator](#progressindicator15)       | 否   | 否   | 定义进度条指示选项，可选择是否采用系统默认进度显示。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。                                                                                                                         |
 | dataProgressListener | [DataProgressListener](#dataprogresslistener15) | 否   | 否   | 表示获取统一数据时的进度和数据监听器。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。                                                                                                                                |
-| destUri              | string                                          | 否   | 是   | 拷贝文件的目标路径。若不支持文件处理，则不需要设置此参数，默认为空；若支持文件处理，须设置一个已经存在的目录。若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理。不填写时获取到到的uri为源端路径URI，填写后获取到的uri为目标路径uri。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| destUri              | string                                          | 否   | 是   | 拷贝文件的目标路径。若不支持文件处理，则不需要设置此参数，默认为空；若支持文件处理，须设置一个已经存在的目录。若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理。不填写时获取到的uri为源端路径URI，填写后获取到的uri为目标路径uri。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | fileConflictOptions  | [FileConflictOptions](#fileconflictoptions15)   | 否   | 是   | 定义文件拷贝冲突时的选项，默认为OVERWRITE。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。                                                                                                                         |
 | acceptableInfo<sup>20+</sup>  | [DataLoadInfo](#dataloadinfo20)   | 否   | 是   | 定义接收方对数据类型和数据记录数量的接收能力。延迟加载场景下，发送方可根据此信息生成并返回更合适的数据内容。默认为空，不提供接收方数据接收能力。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
 
@@ -1418,6 +1468,8 @@ type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 
 用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。
 
+该处理函数为同步函数，适用于处理简单业务逻辑，若函数业务逻辑较复杂、执行时间较长（3s以上），推荐使用异步处理函数[DelayedDataLoadHandler](#delayeddataloadhandler22)。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
@@ -1434,11 +1486,35 @@ type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 |-----------------------|-----------------------------------|
 | [UnifiedData](#unifieddata) \| null | 当延迟处理函数触发时，返回UnifiedData或null。 |
 
+## DelayedDataLoadHandler<sup>22+</sup>
+
+type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<UnifiedData | null>
+
+用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。
+
+该处理函数为异步函数，返回Promise对象，不阻塞主线程，可处理复杂业务逻辑、执行长耗时任务。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**参数：**
+
+| 参数名      | 类型                            | 必填    | 说明           |
+|----------|-------------------------------|-------|--------------|
+| acceptableInfo | [DataLoadInfo](#dataloadinfo20) | 否     | 表示数据接收方可以接收的数据类型和数量，默认为空。 |
+
+**返回值：**
+
+| 类型                    | 说明                                |
+|-----------------------|-----------------------------------|
+| Promise&lt;[UnifiedData](#unifieddata) \| null&gt; | 当延迟处理函数触发时，返回Promise对象。 |
+
 ## DataLoadParams<sup>20+</sup>
 
 用于在延迟加载场景下描述发送方的数据加载策略。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+当同时传入loadHandler和delayedDataLoadHandler时，优先使用delayedDataLoadHandler，loadHandler不生效。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1446,8 +1522,9 @@ type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 
 | 名称                   | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                 |
 |----------------------|-------------------------------------------------| ---- |-----|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | 否 | 否| 表示用于延迟加载数据的处理函数。             |
-| dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | 否 | 否| 用于描述当前发送方可生成的数据类型及数量信息。              |
+| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | 否 | 否| 表示用于延迟加载数据的处理函数。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。             |
+| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#delayeddataloadhandler22) | 否 | 是| 表示用于延迟加载数据的异步处理函数。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。              |
+| dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | 否 | 否| 用于描述当前发送方可生成的数据类型及数量信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。              |
 
 ## unifiedDataChannel.insertData
 
@@ -1473,7 +1550,7 @@ insertData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;strin
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -1535,7 +1612,7 @@ insertData(options: Options, data: UnifiedData): Promise&lt;string&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -1590,7 +1667,7 @@ updateData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;void&
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -1672,7 +1749,7 @@ updateData(options: Options, data: UnifiedData): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -1746,7 +1823,7 @@ queryData(options: Options, callback: AsyncCallback&lt;Array&lt;UnifiedData&gt;&
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -1809,7 +1886,7 @@ queryData(options: Options): Promise&lt;Array&lt;UnifiedData&gt;&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -1865,7 +1942,7 @@ deleteData(options: Options, callback: AsyncCallback&lt;Array&lt;UnifiedData&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -1928,7 +2005,7 @@ deleteData(options: Options): Promise&lt;Array&lt;UnifiedData&gt;&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -1969,8 +2046,6 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 **需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **参数：**
@@ -1986,9 +2061,9 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 20400001     | Settings already exist. To reconfigure, remove the existing sharing options.       |
+| 20400001     | Settings already exist.       |
 
 **示例：**
 
@@ -2011,8 +2086,6 @@ removeAppShareOptions(intention: Intention): void
 
 **需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **参数：**
@@ -2027,7 +2100,7 @@ removeAppShareOptions(intention: Intention): void
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -2057,8 +2130,6 @@ convertRecordsToEntries(data: UnifiedData): void
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **参数：**
@@ -2073,7 +2144,7 @@ convertRecordsToEntries(data: UnifiedData): void
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

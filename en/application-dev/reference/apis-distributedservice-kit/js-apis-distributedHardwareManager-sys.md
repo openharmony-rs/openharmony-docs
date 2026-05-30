@@ -1,5 +1,10 @@
 # @ohos.distributedHardware.hardwareManager (Distributed Hardware Management) (System API)
-
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedHardware-->
+<!--Owner: @hwzhangchuang-->
+<!--Designer: @hwzhangchuang-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
 The **hardwareManager** module provides the capability of controlling distributed hardware, including pausing, resuming, and stopping the distributed hardware service on the controlled device.
 
 > **NOTE**
@@ -11,19 +16,21 @@ The **hardwareManager** module provides the capability of controlling distribute
 ## Modules to Import
 
 ```js
-import hardwareManager from '@ohos.distributedHardware.hardwareManager';
+import { hardwareManager } from '@kit.DistributedServiceKit';
 ```
 
 ## HardwareDescriptor
 
 Represents the distributed hardware information.
 
+**Required permissions**: ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
+
 **System capability**: SystemCapability.DistributedHardware.DistributedHardwareFWK
 
-| Name        | Type                                               | Mandatory | Description                                                        |
-| ------------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type         | [DistributedHardwareType](#distributedhardwaretype) | Yes  | Type of the distributed hardware.<br>**Required permissions**: ohos.permission.ACCESS_DISTRIBUTED_HARDWARE |
-| srcNetworkId | string                                              | No  | Source device. If this parameter is not specified, it indicates all source devices.<br>**Required permissions**: ohos.permission.ACCESS_DISTRIBUTED_HARDWARE |
+| Name        | Type                                               | Read-Only| Optional| Description                                                        |
+| ------------ | --------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| type         | [DistributedHardwareType](#distributedhardwaretype) | No  | No  | Type of the distributed hardware.|
+| srcNetworkId | string                                              | No  | Yes  | Source device. If this parameter is not specified, it indicates all source devices.|
 
 ## DistributedHardwareType
 
@@ -33,11 +40,11 @@ Enumerates the types of the distributed hardware.
 
 | Name         | Value  | Description                        |
 | :------------ | ---- | ---------------------------- |
-| ALL           | 0    | All distributed applications.        |
+| ALL           | 0    | All distributed hardware.        |
 | CAMERA        | 1    | Distributed camera.            |
 | SCREEN        | 8    | Distributed screen.            |
-| MODEM_MIC     | 256  | Distributed microphone for mobile calls. |
-| MODEM_SPEAKER | 512  | Distributed speaker for mobile calls. |
+| MODEM_MIC     | 256  | Distributed microphone for mobile calls.|
+| MODEM_SPEAKER | 512  | Distributed speaker for mobile calls.|
 | MIC           | 1024 | Distributed microphone.          |
 | SPEAKER       | 2048 | Distributed speaker.          |
 
@@ -49,7 +56,7 @@ Enumerates the error codes used for the distributed hardware.
 
 | Name                                     | Value      | Description                  |
 | ----------------------------------------- | -------- | ---------------------- |
-| ERR_CODE_DISTRIBUTED_HARDWARE_NOT_STARTED | 24200101 | The distributed hardware is not started. |
+| ERR_CODE_DISTRIBUTED_HARDWARE_NOT_STARTED | 24200101 | The distributed hardware is not started.|
 | ERR_CODE_DEVICE_NOT_CONNECTED             | 24200102 | The source device is not connected.  |
 
 ## hardwareManager.pauseDistributedHardware
@@ -66,17 +73,17 @@ Pauses the distributed hardware service on the controlled device. This API uses 
 
 | Name      | Type                                      | Mandatory  | Description      |
 | --------- | ---------------------------------------- | ---- | -------- |
-| description | [HardwareDescriptor](#hardwaredescriptor) | Yes  | Hardware information. |
+| description | [HardwareDescriptor](#hardwaredescriptor) | Yes  | Hardware information.|
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-| ID | Error Message                                            |
+| ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission verification failed.                      |
 | 202      | Permission denied, non-system app called system api. |
@@ -87,8 +94,8 @@ Pauses the distributed hardware service on the controlled device. This API uses 
 **Example**
 
   ```ts
-  import hardwareManager from '@ohos.distributedHardware.hardwareManager';
-  import { BusinessError } from '@ohos.base';
+  import { hardwareManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   try {
     let description: hardwareManager.HardwareDescriptor = {
@@ -96,11 +103,11 @@ Pauses the distributed hardware service on the controlled device. This API uses 
       srcNetworkId: '1111'
     };
     hardwareManager.pauseDistributedHardware(description).then(() => {
-      console.log('pause distributed hardware successfully');
+      console.info('pause distributed hardware successfully');
     }).catch((error: BusinessError) => {
       console.error('pause distributed hardware failed, cause:' + error);
     })
-    console.log('pause distributed hardware successfully');
+    console.info('pause distributed hardware successfully');
   } catch (error) {
     console.error('pause distributed hardware failed:' + error);
   }
@@ -118,19 +125,19 @@ Resumes the distributed hardware service on the controlled device. This API uses
 
 **Parameters**
 
-| Name     | Type                                     | Mandatory | Description          |
+| Name     | Type                                     | Mandatory| Description          |
 | ----------- | ----------------------------------------- | ---- | -------------- |
-| description | [HardwareDescriptor](#hardwaredescriptor) | Yes  | Hardware information. |
+| description | [HardwareDescriptor](#hardwaredescriptor) | Yes  | Hardware information.|
 
 **Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-| ID | Error Message                                            |
+| ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission verification failed.                      |
 | 202      | Permission denied, non-system app called system api. |
@@ -141,8 +148,8 @@ Resumes the distributed hardware service on the controlled device. This API uses
 **Example**
 
   ```ts
-  import hardwareManager from '@ohos.distributedHardware.hardwareManager';
-  import { BusinessError } from '@ohos.base';
+  import { hardwareManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let description: hardwareManager.HardwareDescriptor = {
@@ -150,11 +157,11 @@ Resumes the distributed hardware service on the controlled device. This API uses
       srcNetworkId: '1111'
     };
     hardwareManager.resumeDistributedHardware(description).then(() => {
-      console.log('resume distributed hardware successfully');
+      console.info('resume distributed hardware successfully');
     }).catch((error: BusinessError) => {
       console.error('resume distributed hardware failed, cause:' + error);
     })
-    console.log('resume distributed hardware successfully');
+    console.info('resume distributed hardware successfully');
   } catch (error) {
     console.error('resume distributed hardware failed:' + error);
   }
@@ -174,19 +181,19 @@ Stops the distributed hardware service on the controlled device. This API uses a
 
 **Parameters**
 
-| Name     | Type                                     | Mandatory | Description          |
+| Name     | Type                                     | Mandatory| Description          |
 | ----------- | ----------------------------------------- | ---- | -------------- |
-| description | [HardwareDescriptor](#hardwaredescriptor) | Yes  | Hardware information. |
+| description | [HardwareDescriptor](#hardwaredescriptor) | Yes  | Hardware information.|
 
 **Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-| ID | Error Message                                            |
+| ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission verification failed.                      |
 | 202      | Permission denied, non-system app called system api. |
@@ -197,8 +204,8 @@ Stops the distributed hardware service on the controlled device. This API uses a
 **Example**
 
   ```ts
-  import hardwareManager from '@ohos.distributedHardware.hardwareManager';
-  import { BusinessError } from '@ohos.base';
+  import { hardwareManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   try {
     let description: hardwareManager.HardwareDescriptor = {
@@ -206,11 +213,11 @@ Stops the distributed hardware service on the controlled device. This API uses a
       srcNetworkId: '1111'
     };
     hardwareManager.stopDistributedHardware(description).then(() => {
-      console.log('stop distributed hardware successfully');
+      console.info('stop distributed hardware successfully');
     }).catch((error: BusinessError) => {
       console.error('stop distributed hardware failed, cause:' + error);
     })
-    console.log('stop distributed hardware successfully');
+    console.info('stop distributed hardware successfully');
   } catch (error) {
     console.error('stop distributed hardware failed:' + error);
   }

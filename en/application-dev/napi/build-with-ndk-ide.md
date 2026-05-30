@@ -1,4 +1,10 @@
 # Building an NDK Project with the DevEco Studio Template
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 
 The NDK uses CMake and Ninja to build C/C++ code of applications. The figure below shows the build process.
@@ -12,7 +18,7 @@ The core build process is as follows:
 
 1. The build settings in the CMake configuration script and **externalNativeOptions** in **build-profile.json5** are compared with the settings in the native cache to generate CMake commands, and execute them.
 
-2. Run Ninja, perform compilation and linking based on the makefile, and synchronize the generated .so file and the .so file on which the runtime depends to the output directory to complete the build process.
+2. Run Ninja, perform compilation and linking based on the Makefile, and synchronize the generated .so file and the .so file on which the runtime depends to the output directory to complete the build process.
 
 
 You can use the application template provided by DevEco Studio to quickly generate a CMake build script and set related compilation and build parameters in **build-profile.json5**.
@@ -22,7 +28,7 @@ You can use the application template provided by DevEco Studio to quickly genera
 
 The NDK project created using the DevEco Studio template contains the automatically generated **CMakeLists.txt** script, as shown in the following:
 
-```
+```txt
 # the minimum version of CMake.
 cmake_minimum_required(VERSION 3.4.1)
 project(MyApplication) 
@@ -48,7 +54,7 @@ The source code, header files, and third-party libraries required for compilatio
 ## externalNativeOptions
 
 The **externalNativeOptions** parameter in the module-level **build-profile.json5** file is the entry for configuring C/C++ file compilation of the NDK project. You can use **path** to specify the path to the CMake script, **arguments** to set CMake parameters, **cppFlags** to set C++ compiler parameters, and **abiFilters** to set the compilation architecture.
-```
+```json
 "apiType": "stageMode",
 "buildOption": {
   "arkOptions": {

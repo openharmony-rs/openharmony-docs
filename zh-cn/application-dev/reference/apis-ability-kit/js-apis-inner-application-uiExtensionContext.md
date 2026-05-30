@@ -2,10 +2,10 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @zhangyafei-echo-->
-<!--Designer: @zhangyafei-echo-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Owner: @zexin_c-->
+<!--Designer: @xhz-sz-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 UIExtensionContext是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)，提供[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的相关配置信息以及操作[UIAbility](js-apis-app-ability-uiAbility.md)的方法，如启动[UIAbility](js-apis-app-ability-uiAbility.md)等。
 
@@ -228,7 +228,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -517,7 +517,7 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise对象，返回给拉起方的信息。 |
+| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise对象，返回被拉起的UIAbility退出时的返回结果。 |
 
 **错误码：**
 
@@ -635,6 +635,8 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -701,7 +703,7 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -873,7 +875,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -985,7 +987,7 @@ terminateSelfWithResult(parameter: AbilityResult): Promise&lt;void&gt;
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -1098,6 +1100,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
 打开一个独立窗口的原子化服务，并返回结果。使用Promise异步回调。
+
 分为以下几种情况：
  - 正常情况下可通过调用[terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。
  - 异常情况下比如杀死原子化服务会返回异常信息给调用方，异常信息中resultCode为-1。
@@ -1176,7 +1179,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 ### openLink<sup>12+<sup>
 
-openLink(link:string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
+openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
 通过App Linking或Deep Linking方式启动UIAbility。使用Promise异步回调。
 
@@ -1186,6 +1189,7 @@ openLink(link:string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Abi
 - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。
 
 如果希望获取被拉起方终止后的结果，可以设置callback参数，此参数的使用可参照[startAbilityForResult](#startabilityforresult)接口。
+
 传入的参数不合法时，如未设置必选参数或link字符串不是标准格式的URL，接口会直接抛出异常。参数校验通过，拉起目标方时出现的错误通过promise返回错误信息。
 
 > **说明：**
@@ -1231,6 +1235,7 @@ openLink(link:string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Abi
 | 16000069 | The extension cannot start the third party application. |
 | 16200001 | The caller has been released. |
 | 16000053 | The ability is not on the top of the UI. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
 
 **示例：**
 
@@ -1302,7 +1307,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
-启动一个UIServiceExtensionAbility。
+启动一个UIServiceExtensionAbility。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1321,7 +1326,7 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1388,7 +1393,7 @@ struct Index {
 
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
-连接到一个UIServiceExtensionAbility。
+连接到一个UIServiceExtensionAbility。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1408,7 +1413,7 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 | 类型                    | 说明                 |
 | ----------------------- | -------------------- |
-| Promise&lt;UIServiceProxy&gt; | 连接UIServiceExtensionAbility成功时，返回[UIServiceProxy](js-apis-inner-application-uiserviceproxy.md)对象，借助该对象可以往UIServiceExtensionAbility发送数据。 |
+| Promise&lt;UIServiceProxy&gt; | Promise对象，连接UIServiceExtensionAbility成功时，返回[UIServiceProxy](js-apis-inner-application-uiserviceproxy.md)对象，借助该对象可以往UIServiceExtensionAbility发送数据。 |
 
 **错误码：**
 
@@ -1442,9 +1447,8 @@ struct Page_UIServiceExtensionAbility {
 
   build() {
     Column() {
-      //...
       Row() {
-        //...
+        // ...
       }.onClick(() => {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         const want: Want = {
@@ -1478,7 +1482,7 @@ struct Page_UIServiceExtensionAbility {
 
 disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
-断开UIServiceExtensionAbility。
+断开UIServiceExtensionAbility。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1492,7 +1496,7 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
 | 类型                    | 说明                 |
 | ----------------------- | -------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1517,16 +1521,15 @@ struct Page_UIServiceExtensionAbility {
 
   build() {
     Column() {
-      //...
       Row() {
-        //...
+        // ...
       }.onClick(() => {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         // this.uiServiceProxy是连接时保存的proxy对象
         context.disconnectUIServiceExtensionAbility(this.uiServiceProxy).then(() => {
           console.info(`disconnectUIServiceExtensionAbility success.`);
         }).catch((error: BusinessError) => {
-          console.info(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
+          console.error(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
         })
       })
     }

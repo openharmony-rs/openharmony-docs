@@ -1,10 +1,10 @@
 # 模态转场
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 模态转场是新的界面覆盖在旧的界面上，旧的界面不消失的一种转场方式。
@@ -65,22 +65,30 @@
 
 完整示例代码和效果如下。
 
-```ts
+<!-- @[bind_content_cover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template1/BindContentCoverDemo.ets) -->
+
+``` TypeScript
 import { curves } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
 interface PersonList {
-  name: string,
+  name: Resource,
   cardNum: string
 }
 
 @Entry
 @Component
 struct BindContentCoverDemo {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   private personList: Array<PersonList> = [
-    { name: '王**', cardNum: '1234***********789' },
-    { name: '宋*', cardNum: '2345***********789' },
-    { name: '许**', cardNum: '3456***********789' },
-    { name: '唐*', cardNum: '4567***********789' }
+    // 请将$r('app.string.modal_transition_text1')替换为实际资源文件，在本示例中该资源文件的value值为"王**"
+    { name: $r('app.string.modal_transition_text1'), cardNum: '1234***********789' },
+    // 请将$r('app.string.modal_transition_text2')替换为实际资源文件，在本示例中该资源文件的value值为"宋*"
+    { name: $r('app.string.modal_transition_text2'), cardNum: '2345***********789' },
+    // 请将$r('app.string.modal_transition_text3')替换为实际资源文件，在本示例中该资源文件的value值为"许**"
+    { name: $r('app.string.modal_transition_text3'), cardNum: '3456***********789' },
+    // 请将$r('app.string.modal_transition_text4')替换为实际资源文件，在本示例中该资源文件的value值为"唐*"
+    { name: $r('app.string.modal_transition_text4'), cardNum: '4567***********789' }
   ];
   // 第一步：定义全屏模态转场效果bindContentCover
   // 模态转场控制变量
@@ -92,7 +100,8 @@ struct BindContentCoverDemo {
   MyBuilder() {
     Column() {
       Row() {
-        Text('选择乘车人')
+        // 请将$r('app.string.modal_transition_text5')替换为实际资源文件，在本示例中该资源文件的value值为"选择乘车人"
+        Text($r('app.string.modal_transition_text5'))
           .fontSize(20)
           .fontColor(Color.White)
           .width('100%')
@@ -102,7 +111,8 @@ struct BindContentCoverDemo {
       .backgroundColor(0x007dfe)
 
       Row() {
-        Text('+ 添加乘车人')
+        // 请将$r('app.string.modal_transition_text6')替换为实际资源文件，在本示例中该资源文件的value值为"+ 添加乘车人"
+        Text($r('app.string.modal_transition_text6'))
           .fontSize(16)
           .fontColor(0x333333)
           .margin({ top: 10 })
@@ -117,7 +127,7 @@ struct BindContentCoverDemo {
         ForEach(this.personList, (item: PersonList, index: number) => {
           Row() {
             Column() {
-              if (index % 2 == 0) {
+              if (index % 2 === 0) {
                 Column()
                   .width(20)
                   .height(20)
@@ -144,7 +154,8 @@ struct BindContentCoverDemo {
             .alignItems(HorizontalAlign.Start)
 
             Column() {
-              Text('编辑')
+              // 请将$r('app.string.modal_transition_text7')替换为实际资源文件，在本示例中该资源文件的value值为"编辑"
+              Text($r('app.string.modal_transition_text7'))
                 .fontColor(0x007dfe)
                 .fontSize(16)
             }
@@ -157,8 +168,8 @@ struct BindContentCoverDemo {
         })
       }
       .padding({ top: 20, bottom: 20 })
-
-      Text('确认')
+      // 请将$r('app.string.modal_transition_text8')替换为实际资源文件，在本示例中该资源文件的value值为“确认”
+      Text($r('app.string.modal_transition_text8'))
         .width('90%')
         .height(40)
         .textAlign(TextAlign.Center)
@@ -178,7 +189,8 @@ struct BindContentCoverDemo {
   build() {
     Column() {
       Row() {
-        Text('确认订单')
+        // 请将$r('app.string.modal_transition_text9')替换为实际资源文件，在本示例中该资源文件的value值为"确认订单"
+        Text($r('app.string.modal_transition_text9'))
           .fontSize(20)
           .fontColor(Color.White)
           .width('100%')
@@ -191,19 +203,22 @@ struct BindContentCoverDemo {
         Row() {
           Column() {
             Text('00:25')
-            Text('始发站')
+            // 请将$r('app.string.modal_transition_text10')替换为实际资源文件，在本示例中该资源文件的value值为"始发站"
+            Text($r('app.string.modal_transition_text10'))
           }
           .width('30%')
 
           Column() {
             Text('G1234')
-            Text('8时1分')
+            // 请将$r('app.string.modal_transition_text11')替换为实际资源文件，在本示例中该资源文件的value值为"8时1分"
+            Text($r('app.string.modal_transition_text11'))
           }
           .width('30%')
 
           Column() {
             Text('08:26')
-            Text('终点站')
+            // 请将$r('app.string.modal_transition_text12')替换为实际资源文件，在本示例中该资源文件的value值为"终点站"
+            Text($r('app.string.modal_transition_text12'))
           }
           .width('30%')
         }
@@ -216,14 +231,17 @@ struct BindContentCoverDemo {
       .borderRadius(10)
 
       Column() {
-        Text('+ 选择乘车人')
+        // 请将$r('app.string.modal_transition_text13')替换为实际资源文件，在本示例中该资源文件的value值为"+ 选择乘车人"
+        Text($r('app.string.modal_transition_text13'))
           .fontSize(18)
           .fontColor(Color.Orange)
           .fontWeight(FontWeight.Bold)
           .padding({ top: 10, bottom: 10 })
           .width('60%')
           .textAlign(TextAlign.Center)
-          .borderRadius(15)// 通过选定的模态接口，绑定模态展示界面，ModalTransition是内置的ContentCover转场动画类型，这里选择DEFAULT代表设置上下切换动画效果，通过onDisappear控制状态变量变换。
+          .borderRadius(15)
+          // 通过选定的模态接口，绑定模态展示界面，ModalTransition是内置的ContentCover转场动画类型，
+          // 这里选择DEFAULT代表设置上下切换动画效果，通过onDisappear控制状态变量变换。
           .bindContentCover(this.isPresent, this.MyBuilder(), {
             modalTransition: ModalTransition.DEFAULT,
             onDisappear: () => {
@@ -257,13 +275,31 @@ struct BindContentCoverDemo {
 完整示例和效果如下。
 
 
-```ts
+<!-- @[bind_sheet_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template2/BindSheetDemo.ets) -->
+
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+
 @Entry
 @Component
 struct BindSheetDemo {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   // 半模态转场显示隐藏控制
   @State isShowSheet: boolean = false;
-  private menuList: string[] = ['不要辣', '少放辣', '多放辣', '不要香菜', '不要香葱', '不要一次性餐具', '需要一次性餐具'];
+  // 请将$r('app.string.modal_transition_text14')替换为实际资源文件，在本示例中该资源文件的value值为"不要辣"
+  private menuList: Resource[] = [$r('app.string.modal_transition_text14'),
+    // 请将$r('app.string.modal_transition_text15')替换为实际资源文件，在本示例中该资源文件的value值为"少放辣"
+    $r('app.string.modal_transition_text15'),
+    // 请将$r('app.string.modal_transition_text16')替换为实际资源文件，在本示例中该资源文件的value值为"多放辣"
+    $r('app.string.modal_transition_text16'),
+    // 请将$r('app.string.modal_transition_text17')替换为实际资源文件，在本示例中该资源文件的value值为"不要香菜"
+    $r('app.string.modal_transition_text17'),
+    // 请将$r('app.string.modal_transition_text18')替换为实际资源文件，在本示例中该资源文件的value值为"不要香葱"
+    $r('app.string.modal_transition_text18'),
+    // 请将$r('app.string.modal_transition_text19')替换为实际资源文件，在本示例中该资源文件的value值为"不要一次性餐具"
+    $r('app.string.modal_transition_text19'),
+    // 请将$r('app.string.modal_transition_text20')替换为实际资源文件，在本示例中该资源文件的value值为"需要一次性餐具"
+    $r('app.string.modal_transition_text20')];
 
   // 通过@Builder构建半模态展示界面
   @Builder
@@ -277,7 +313,7 @@ struct BindSheetDemo {
             .backgroundColor(0xf1f1f1)
             .borderRadius(8)
             .margin(10)
-            .padding(10)
+            .padding(15)
         })
       }
       .padding({ top: 18 })
@@ -289,7 +325,8 @@ struct BindSheetDemo {
 
   build() {
     Column() {
-      Text('口味与餐具')
+      // 请将$r('app.string.modal_transition_text21')替换为实际资源文件，在本示例中该资源文件的value值为"口味与餐具"
+      Text($r('app.string.modal_transition_text21'))
         .fontSize(28)
         .padding({ top: 30, bottom: 30 })
       Column() {
@@ -302,7 +339,8 @@ struct BindSheetDemo {
             .borderRadius(20)
 
           Column() {
-            Text('选择点餐口味和餐具')
+            // 请将$r('app.string.modal_transition_text22')替换为实际资源文件，在本示例中该资源文件的value值为"选择点餐口味和餐具"
+            Text($r('app.string.modal_transition_text22'))
               .fontSize(16)
               .fontWeight(FontWeight.Medium)
           }
@@ -326,7 +364,8 @@ struct BindSheetDemo {
         .alignItems(VerticalAlign.Center)
         .padding({ left: 15, top: 15, bottom: 15 })
         .backgroundColor(Color.White)
-        // 通过选定的半模态接口，绑定模态展示界面，style中包含两个参数，一个是设置半模态的高度，不设置时默认高度是Large，一个是是否显示控制条DragBar，默认是true显示控制条，通过onDisappear控制状态变量变换。
+        // 通过选定的半模态接口，绑定模态展示界面，style中包含两个参数，一个是设置半模态的高度，不设置时默认高度是Large，
+        // 一个是是否显示控制条DragBar，默认是true显示控制条，通过onDisappear控制状态变量变换。
         .bindSheet(this.isShowSheet, this.mySheet(), {
           height: 300,
           dragBar: false,
@@ -355,27 +394,40 @@ struct BindSheetDemo {
 [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)为组件绑定弹出式菜单，通过点击触发。完整示例和效果如下。
 
 
-```ts
-class BMD{
-  value:ResourceStr = ''
-  action:() => void = () => {}
+<!-- @[bind_menu_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template3/BindMenuDemo.ets) -->
+
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xF811;
+const TAG = '[Sample_Animation]';
+
+class BMD {
+  public value: ResourceStr = '';
+  public action: () => void = () => {
+  };
 }
+
 @Entry
 @Component
 struct BindMenuDemo {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   // 第一步: 定义一组数据用来表示菜单按钮项
-  @State items:BMD[] = [
+  @State items: BMD[] = [
     {
-      value: '菜单项1',
+      // 请将$r('app.string.modal_transition_text23')替换为实际资源文件，在本示例中该资源文件的value值为"菜单项1"
+      value: $r('app.string.modal_transition_text23'),
       action: () => {
-        console.info('handle Menu1 select')
+        hilog.info(DOMAIN, TAG, 'handle Menu1 select');
       }
     },
     {
-      value: '菜单项2',
+      // 请将$r('app.string.modal_transition_text24')替换为实际资源文件，在本示例中该资源文件的value值为"菜单项2"
+      value: $r('app.string.modal_transition_text24'),
       action: () => {
-        console.info('handle Menu2 select')
+        hilog.info(DOMAIN, TAG, 'handle Menu2 select');
       }
     },
   ]
@@ -384,8 +436,7 @@ struct BindMenuDemo {
     Column() {
       Button('click')
         .backgroundColor(0x409eff)
-        .borderRadius(5)
-          // 第二步: 通过bindMenu接口将菜单数据绑定给元素
+        // 第二步: 通过bindMenu接口将菜单数据绑定给元素
         .bindMenu(this.items)
     }
     .justifyContent(FlexAlign.Center)
@@ -405,16 +456,27 @@ struct BindMenuDemo {
 完整示例和效果如下。
 
 
-```ts
+<!-- @[bind_context_menu_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template4/BindContextMenuDemo.ets) -->
+
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+
 @Entry
 @Component
 struct BindContextMenuDemo {
-  private menu: string[] = ['保存图片', '收藏', '搜一搜'];
-  // $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  // 请将$r('app.string.modal_transition_text25')替换为实际资源文件，在本示例中该资源文件的value值为"保存图片"
+  private menu: Resource[] = [$r('app.string.modal_transition_text25'),
+    // 请将$r('app.string.modal_transition_text26')替换为实际资源文件，在本示例中该资源文件的value值为"收藏"
+    $r('app.string.modal_transition_text26'),
+    // 请将$r('app.string.modal_transition_text27')替换为实际资源文件，在本示例中该资源文件的value值为"搜一搜"
+    $r('app.string.modal_transition_text27')];
+  // 请将$r('app.media.icon_2')替换为实际资源文件 
   private pics: Resource[] = [$r('app.media.icon_1'), $r('app.media.icon_2')];
 
   // 通过@Builder构建自定义菜单项
-  @Builder myMenu() {
+  @Builder
+  myMenu() {
     Column() {
       ForEach(this.menu, (item: string) => {
         Row() {
@@ -436,7 +498,8 @@ struct BindContextMenuDemo {
   build() {
     Column() {
       Row() {
-        Text('查看图片')
+        // 请将$r('app.string.modal_transition_text28')替换为实际资源文件，在本示例中该资源文件的value值为"查看图片"
+        Text($r('app.string.modal_transition_text28'))
           .fontSize(20)
           .fontColor(Color.White)
           .width('100%')
@@ -447,12 +510,17 @@ struct BindContextMenuDemo {
 
       Column() {
         ForEach(this.pics, (item: Resource) => {
-          Row(){
+          Row() {
             Image(item)
               .width('100%')
               .draggable(false)
           }
-          .padding({ top: 20, bottom: 20, left: 10, right: 10 })
+          .padding({
+            top: 20,
+            bottom: 20,
+            left: 10,
+            right: 10
+          })
           .bindContextMenu(this.myMenu, ResponseType.LongPress)
         })
       }
@@ -473,16 +541,18 @@ struct BindContextMenuDemo {
 完整示例和代码如下。
 
 
-```ts
+<!-- @[bind_popup_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template5/BindPopupDemo.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct BindPopupDemo {
-
   // 第一步：定义变量控制弹窗显示
   @State customPopup: boolean = false;
 
   // 第二步：popup构造器定义弹框内容
-  @Builder popupBuilder() {
+  @Builder
+  popupBuilder() {
     Column({ space: 2 }) {
       Row().width(64)
         .height(64)
@@ -501,12 +571,12 @@ struct BindPopupDemo {
     Column() {
 
       Button('click')
-        // 第四步：创建点击事件，控制弹窗显隐
+      // 第四步：创建点击事件，控制弹窗显隐
         .onClick(() => {
           this.customPopup = !this.customPopup;
         })
         .backgroundColor(0xf56c6c)
-          // 第三步：使用bindPopup接口将弹窗内容绑定给元素
+        // 第三步：使用bindPopup接口将弹窗内容绑定给元素
         .bindPopup(this.customPopup, {
           builder: this.popupBuilder,
           placement: Placement.Top,
@@ -539,34 +609,51 @@ struct BindPopupDemo {
 完整示例和代码如下。
 
 
-```ts
+<!-- @[modal_transition_with_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template6/ModalTransitionWithIf.ets) -->
+
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+
 @Entry
 @Component
 struct ModalTransitionWithIf {
-  private listArr: string[] = ['WLAN', '蓝牙', '个人热点', '连接与共享'];
-  private shareArr: string[] = ['投屏', '打印', 'VPN', '私人DNS', 'NFC'];
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  // 请在resources\base\element\string.json文件中配置name为'modal_transition_text29'，value为非空字符串的资源
+  private listArr: ResourceStr[] = ['WLAN', this.context.resourceManager.getStringByNameSync('modal_transition_text29'),
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text30'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text30'),
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text31'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text31')];
+  // 请在resources\base\element\string.json文件中配置name为'modal_transition_text32'，value为非空字符串的资源
+  private shareArr: ResourceStr[] = [this.context.resourceManager.getStringByNameSync('modal_transition_text32'),
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text33'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text33'), 'VPN',
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text34'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text34'), 'NFC'];
   // 第一步：定义状态变量控制页面显示
   @State isShowShare: boolean = false;
+
   private shareFunc(): void {
     this.getUIContext()?.animateTo({ duration: 500 }, () => {
       this.isShowShare = !this.isShowShare;
     })
   }
 
-  build(){
+  build() {
     // 第二步：定义Stack布局显示当前页面和模态页面
     Stack() {
       Column() {
         Column() {
-          Text('设置')
+          // 请将$r('app.string.modal_transition_text35')替换为实际资源文件，在本示例中该资源文件的value值为“设置”
+          Text($r('app.string.modal_transition_text35'))
             .fontSize(28)
             .fontColor(0x333333)
         }
         .width('90%')
         .padding({ top: 30, bottom: 15 })
         .alignItems(HorizontalAlign.Start)
-
-        TextInput({ placeholder: '输入关键字搜索' })
+        // 请将$r('app.string.modal_transition_text36')替换为实际资源文件，在本示例中该资源文件的value值为“输入关键字搜索”
+        TextInput({ placeholder: $r('app.string.modal_transition_text36') })
           .width('90%')
           .height(40)
           .margin({ bottom: 10 })
@@ -618,7 +705,8 @@ struct ModalTransitionWithIf {
             .width('100%')
             .onClick(() => {
               // 第五步：改变状态变量，显示模态页面
-              if(item.slice(-2) === '共享'){
+              // 请在resources\base\element\string.json文件中配置name为'modal_transition_text37'，value为非空字符串的资源
+              if (item.slice(-2) === this.context.resourceManager.getStringByNameSync('modal_transition_text37')) {
                 this.shareFunc();
               }
             })
@@ -631,7 +719,7 @@ struct ModalTransitionWithIf {
       .backgroundColor(0xfefefe)
 
       // 第三步：在if中定义模态页面，显示在最上层，通过if控制模态页面出现消失
-      if(this.isShowShare){
+      if (this.isShowShare) {
         Column() {
           Column() {
             Row() {
@@ -649,14 +737,15 @@ struct ModalTransitionWithIf {
               .onClick(() => {
                 this.shareFunc();
               })
-              Text('连接与共享')
+              // 请将$r('app.string.modal_transition_text31')替换为实际资源文件，在本示例中该资源文件的value值为“连接与共享”
+              Text($r('app.string.modal_transition_text31'))
                 .fontSize(28)
                 .fontColor(0x333333)
             }
             .padding({ top: 30 })
           }
           .width('90%')
-          .padding({bottom: 15})
+          .padding({ bottom: 15 })
           .alignItems(HorizontalAlign.Start)
 
           List({ space: 12, initialIndex: 0 }) {

@@ -1,18 +1,20 @@
 # Class (Router)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @gouyuanyuan-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供通过不同的url访问不同的页面，包括跳转到应用内的指定页面、同应用内的某个页面替换当前页面、返回上一页面或指定的页面等。
 
 > **说明：**
 >
-> - 本模块首批接口从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 10开始支持。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 以下API需先使用UIContext中的[getRouter()](arkts-apis-uicontext-uicontext.md#getrouter)方法获取到Router对象，再通过该对象调用对应方法。
 
@@ -40,7 +42,7 @@ pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -52,41 +54,104 @@ pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义传递参数的类
+class innerParams {
+  array: number[];
+
+  constructor(tuple: number[]) {
+    this.array = tuple;
+  }
+}
+
+class RouterParams {
+  data: innerParams;
+
+  constructor(tuple: number[]) {
+    this.data = new innerParams(tuple);
+  }
+}
 
 @Entry
 @Component
 struct Index {
   async routePage() {
-    this.getUIContext().getRouter().pushUrl({
-        url: 'pages/routerpage2',
-        params: {
-          data1: 'message',
-          data2: {
-            data3: [123, 456, 789]
-          }
-        }
-      })
+    let options: router.RouterOptions = {
+      url: 'pages/second',
+      params: new RouterParams([12, 45, 78])
+    }
+    this.getUIContext()
+      .getRouter()
+      .pushUrl(options)
       .then(() => {
-        console.info('succeeded');
+        console.info('pushUrl success');
       })
-      .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+      .catch((err: ESObject) => {
+        console.error(`pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
       })
   }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({ top: 20 })
-      .backgroundColor('#ccc')
-      .onClick(() => {
-        this.routePage();
-      })
+      Text('First Page')
+      Button('Next page')
+        .type(ButtonType.Capsule)
+        .margin({ top: 20 })
+        .onClick(() => {
+          this.routePage()
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+```ts
+// 在second页面中接收传递过来的参数
+class innerParams {
+  array: number[];
+
+  constructor(tuple: number[]) {
+    this.array = tuple;
+  }
+}
+
+class RouterParams {
+  data: innerParams;
+
+  constructor(tuple: number[]) {
+    this.data = new innerParams(tuple);
+  }
+}
+
+@Entry
+@Component
+struct Second {
+  @State data: object = (this.getUIContext().getRouter().getParams() as RouterParams).data;
+  @State secondData: string = '';
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Text('Second Page')
+      Button('Back')
+        .fontSize(30)
+        .onClick(() => {
+          try {
+            this.getUIContext().getRouter().showAlertBeforeBackPage({ message: 'Are you sure to return?' })
+          } catch (error) {
+            // TODO: Implement error handling.
+          }
+          this.getUIContext().getRouter().back()
+        })
+        .margin({ top: 20 })
+      Button(`The value on the first page：${this.secondData}`)
+        .margin({ top: 20 })
+        .onClick(()=> {
+          this.secondData = (this.data['array'][1]).toString();
+        })
     }
     .width('100%')
     .height('100%')
@@ -113,7 +178,7 @@ pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -173,7 +238,7 @@ struct Index {
 
 pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-跳转到应用内的指定页面，使用Promise异步回调。
+跳转到应用内的指定页面，使用Promise异步回调。与[pushUrl](#pushurl)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -194,7 +259,7 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -259,7 +324,7 @@ struct Index {
 
 pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-跳转到应用内的指定页面。使用callback异步回调。
+跳转到应用内的指定页面。使用callback异步回调。与[pushUrl](#pushurl-1)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -275,7 +340,7 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncC
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -362,7 +427,7 @@ replaceUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -389,7 +454,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -431,7 +496,7 @@ replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -487,7 +552,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。
+用应用内的某个页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceUrl](#replaceurl)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -508,7 +573,7 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -542,7 +607,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -569,7 +634,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面。使用callback异步回调。
+用应用内的某个页面替换当前页面，并销毁被替换的页面。使用callback异步回调。与[replaceUrl](#replaceurl-1)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -585,7 +650,7 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: Asy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -668,7 +733,7 @@ pushNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -699,7 +764,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -741,7 +806,7 @@ pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -800,7 +865,7 @@ struct Index {
 
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-跳转到指定的命名路由页面，使用Promise异步回调。
+跳转到指定的命名路由页面，使用Promise异步回调。与[pushNamedRoute](#pushnamedroute)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -821,7 +886,7 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Pro
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -858,7 +923,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -885,7 +950,7 @@ struct Index {
 
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-跳转到指定的命名路由页面。使用callback异步回调。
+跳转到指定的命名路由页面。使用callback异步回调。与[pushNamedRoute](#pushnamedroute-1)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -901,7 +966,7 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, call
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -988,7 +1053,7 @@ replaceNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -1015,7 +1080,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1057,7 +1122,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -1113,7 +1178,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。
+用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](#replacenamedroute)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1135,7 +1200,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -1169,7 +1234,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1196,7 +1261,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-用指定的命名路由页面替换当前页面，并销毁被替换的页面。使用callback异步回调。
+用指定的命名路由页面替换当前页面，并销毁被替换的页面。使用callback异步回调。与[replaceNamedRoute](#replacenamedroute-1)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1212,7 +1277,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, c
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -1336,7 +1401,7 @@ router.back(1);
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
-router.back(1, {info:'来自Home页'}); //携带参数返回
+router.back(1, {info:'来自Home页'}); // 携带参数返回
 ```
 
 ## clear
@@ -1362,11 +1427,15 @@ let router: Router = uiContext.getRouter();
 router.clear();    
 ```
 
-## getLength
+## getLength<sup>(deprecated)</sup>
 
 getLength(): string
 
 获取当前在页面栈内的页面数量。
+
+> **说明：**
+>
+> 从API version 10开始支持，从 API version 23开始废弃，建议使用[getStackSize](#getstacksize23)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1390,6 +1459,48 @@ let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
 let size = router.getLength();        
 console.info('pages stack size = ' + size);    
+```
+
+## getStackSize<sup>23+</sup>
+
+getStackSize(): number
+
+获取当前页面栈内的页面数量。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型     | 说明                 |
+| ------ | ------------------ |
+| number | 页面数量，页面栈支持最大数值是32。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button() {
+        Text('stack size')
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+      }.type(ButtonType.Capsule)
+      .margin({ top: 20 })
+      .backgroundColor('#ccc')
+      .onClick(() => {
+        console.info(`get stack size: ${this.getUIContext().getRouter().getStackSize()}`)
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## getState
@@ -1440,7 +1551,7 @@ getStateByIndex(index: number): router.RouterState | undefined
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index    | number | 是   | 表示要获取的页面索引。 <br/> 取值范围：[0, +∞) |
+| index    | number | 是   | 表示要获取的页面索引。 <br/> 取值范围：[1, +∞) |
 
 **返回值：**
 
@@ -1524,7 +1635,7 @@ showAlertBeforeBackPage(options: router.EnableAlertOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -1585,6 +1696,8 @@ getParams(): Object
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+
 
 **返回值：**
 

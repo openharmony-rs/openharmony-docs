@@ -1,10 +1,10 @@
 # 感知组件可见性
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 组件可见性是指组件在屏幕上的显示状态，通过感知可见性，应用能够实现以下典型场景：
@@ -571,6 +571,7 @@ export function PageTwoBuilder(name: string) {
 - 检查父组件是否设置clip属性，裁剪可能导致可见面积计算偏差。
 - 考虑组件透明度影响，即使 opacity为0也会被计入可见面积。
 - 结合nodeRenderState监听交叉验证。
+- 尝试将[measureFromViewport](./../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange22)设置为true进行验证。
 
 ### 高频回调导致性能下降
 

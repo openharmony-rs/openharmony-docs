@@ -1,10 +1,10 @@
 # @ohos.app.form.formProvider (formProvider)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
 
@@ -57,14 +57,14 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error) {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider setFormNextRefreshTime success`);
+    console.info(`formProvider setFormNextRefreshTime success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -115,10 +115,10 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 try {
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
-    console.log(`formProvider setFormNextRefreshTime success`);
+    console.info(`formProvider setFormNextRefreshTime success`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -129,9 +129,12 @@ try {
 
 ## formProvider.updateForm
 
-updateForm(formId: string, formBindingData: formBindingData.FormBindingData,callback: AsyncCallback&lt;void&gt;): void
+updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 更新指定的卡片，使用callback异步回调。
+> **说明：**
+>
+> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -165,7 +168,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData,call
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 try {
   let param: Record<string, string> = {
     'temperature': '22c',
@@ -177,7 +180,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider updateForm success`);
+    console.info(`formProvider updateForm success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -189,6 +192,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
 更新指定的卡片，使用Promise异步回调。
+> **说明：**
+>
+> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -227,7 +233,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 let param: Record<string, string> = {
   'temperature': '22c',
   'time': '22:00'
@@ -235,7 +241,7 @@ let param: Record<string, string> = {
 let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
 try {
   formProvider.updateForm(formId, obj).then(() => {
-    console.log(`formProvider updateForm success`);
+    console.info(`formProvider updateForm success`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
   });
@@ -283,7 +289,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -324,7 +330,7 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // get info of forms belong to module entry.
+  // 获取指定module的卡片信息
   moduleName: 'entry'
 };
 try {
@@ -333,7 +339,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -380,12 +386,12 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // get info of forms belong to module entry.
+  // 获取指定module的卡片信息
   moduleName: 'entry'
 };
 try {
   formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.log(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -408,7 +414,7 @@ openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): 
 | ------ | ------ |----|----------------------------------------------------|
 | abilityName | string | 是  | 编辑页的ability名称。                                     |
 | formId | string | 是  | 卡片标识。                                              |
-| isMainPage | boolean | 否  | 是否为主编辑页，true表示是主编辑页，false表示不是主编辑页。<br/>默认值：true。 |
+| isMainPage | boolean | 否  | 是否为主编辑页。<br/>-&nbsp;true：表示是主编辑页。<br/>-&nbsp;false：表示不是主编辑页。<br/>默认值：true。 |
 
 **错误码：**
 
@@ -436,7 +442,7 @@ struct Page {
   @State message: string = 'Hello World';
 
   aboutToAppear(): void {
-    console.log(`${TAG} aboutToAppear.....`);
+    console.info(`${TAG} aboutToAppear.....`);
   }
 
   build() {
@@ -450,8 +456,76 @@ struct Page {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          console.log(`${TAG} onClick.....`);
+          console.info(`${TAG} onClick.....`);
           formProvider.openFormEditAbility('ability://EntryFormEditAbility', '1386529921');
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## formProvider.closeFormEditAbility<sup>23+</sup>
+
+closeFormEditAbility(isMainPage?: boolean): void
+
+关闭卡片编辑页。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                 |
+| ------ | ------ |----|----------------------------------------------------|
+| isMainPage | boolean | 否  | 是否关闭一级卡片编辑页，true表示关闭一级编辑页，false表示关闭非一级编辑页。<br/>默认值：true。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID    | 错误信息 |
+|----------| -------- |
+| 801      | Capability not supported due to limited device capabilities. |
+| 16500050 | IPC connection error. |
+| 16501015 | Cannot close the widget editing page opened by other apps. |
+
+**示例：**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+
+const TAG: string = 'FormEditDemo-Page] -->';
+
+@Entry
+@Component
+struct Page {
+  @State message: string = 'Hello World';
+
+  aboutToAppear(): void {
+    console.info(`${TAG} aboutToAppear.....`);
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('PageHelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Top },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          console.info(`${TAG} onClick.....`);
+          try {
+            formProvider.closeFormEditAbility();
+            console.info(`${TAG} close FormEditAbility success.`);
+          } catch (error) {
+            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+          }
         })
     }
     .height('100%')
@@ -464,17 +538,22 @@ struct Page {
 
 openFormManager(want: Want): void
 
-打开卡片管理页面。
+打开当前应用的卡片管理页面。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**设备行为差异：** 该接口在Wearable中调用会返回[16501000](./errorcode-form.md#16501000-内部功能错误)错误码。
 
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                                                                                                                                                                                                                                                                                                      |
 |------| ------ | ---- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 打开卡片管理页面的请求中的want参数，需包含以下字段。<br>bundleName: 卡片所属应用的包名。<br>abilityName: 卡片所属的ability名称。<br>parameters:<br>- ohos.extra.param.key.form_dimension: [卡片尺寸](js-apis-app-form-formInfo.md#formdimension)。<br>- ohos.extra.param.key.form_name: 卡片名称。<br>- ohos.extra.param.key.module_name: 卡片所属的模块名称。 |
+> **说明：**
+>
+> 如果parameters参数没有填完整或者指定的卡片不存在，就会默认展示[form_config.json](../../form/arkts-ui-widget-configuration.md#卡片配置)中配置的默认卡片。
 
 **错误码：**
 
@@ -554,7 +633,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const formId: string = '388344236';
 try {
   formProvider.getPublishedFormInfoById(formId).then((data: formInfo.FormInfo) => {
-    console.log(`formProvider getPublishedFormInfoById, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getPublishedFormInfoById, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -601,7 +680,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formProvider.getPublishedFormInfos().then((data: formInfo.FormInfo[]) => {
-    console.log(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -615,6 +694,11 @@ try {
 requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;
 
 卡片提供方发起互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
+> **说明：**
+>
+> 1. 该接口在省电模式场景下不可使用，会报16501000错误码。
+> 2. 当设备热档位进入HOT场景并且没有点击事件的场景下，该接口会报16501000错误码；当热档位进入OVERHEATED时，任何情况下都会报16501000错误码。热档位信息具体可参考[热档位信息](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel)。
+
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -654,7 +738,7 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 let overflowInfo: formInfo.OverflowInfo = {
   area: {
     left: -10,
@@ -720,7 +804,7 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 
 try {
   formProvider.cancelOverflow(formId).then(() => {
@@ -753,7 +837,7 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的的位置信息和卡片尺寸信息，单位vp。 |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。 |
 
 **错误码：**
 
@@ -775,7 +859,7 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 
 try {
   formProvider.getFormRect(formId).then((data: formInfo.Rect) => {
@@ -858,7 +942,7 @@ getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)：
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -875,6 +959,116 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.getPublishedRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
     console.info(`formProvider getPublishedRunningFormInfos, data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+## formProvider.reloadForms<sup>22+</sup>
+
+reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;number&gt;
+
+对于当前应用程序相同moduleName、abilityName、formName的卡片，多次加桌后会每张卡片会有不同的卡片id。卡片提供方可以通过本接口批量更新不同的卡片id但moduleName、abilityName、formName相同的卡片。在应用主进程通过本接口通知FormExtension进程进行批量更新，仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------  |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，做校验使用。     |
+| moduleName | string | 是   | 指定卡片的moduleName。   |
+| abilityName | string | 是 | 指定卡片的abilityName。  |
+| formName | string | 是 | 指定卡片在[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的卡片名称。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| ------------ | ---------------------------------- |
+| Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+
+try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  // 请开发者替换为实际请求更新的卡片信息
+  let moduleName: string = 'entry';
+  let abilityName: string = 'EntryFormAbility';
+  let formName: string = 'formName';
+  formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
+    console.info(`reloadForms success, reload number: ${reloadNum}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+## formProvider.reloadAllForms<sup>22+</sup>
+
+reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
+
+在应用主进程通过本接口可以通知FormExtension进程批量更新当前应用程序下已经加桌的所有卡片，仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------  |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，做校验使用。     |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| ------------ | ---------------------------------- |
+| Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+
+try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  formProvider.reloadAllForms(context).then((reloadNum: number) => {
+    console.info(`reloadAllForms success, reload number: ${reloadNum}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });

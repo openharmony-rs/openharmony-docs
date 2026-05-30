@@ -1,5 +1,12 @@
 # ProcessInfo
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines process information. You can use [getProcessInfo](js-apis-inner-app-context.md#contextgetprocessinfo7) to obtain information about the processes running on the current ability.
 
 > **NOTE**
@@ -31,7 +38,7 @@ context.getProcessInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getProcessInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getProcessInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getProcessInfo success, data: ${JSON.stringify(data)}`);
         let pid = data.pid;
         let processName = data.processName;
     }

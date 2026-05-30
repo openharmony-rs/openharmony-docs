@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @saga2025-->
 <!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **mechanicManager** module provides the mechanic device interaction capabilities, such as connection management, device control, and monitoring.
 
@@ -276,7 +276,7 @@ console.info(`'Query rotation speed successful, speed limit information:' ${spee
 
 rotateBySpeed(mechId: number, speed: RotationSpeed, duration: number): Promise\<Result>
 
-Rotates the current body at the specified speed.
+Rotates the current body at the specified speed. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Mechanic.Core
 
@@ -289,6 +289,12 @@ Rotates the current body at the specified speed.
 | mechId | number | Yes| ID of the mechanic device.|
 | speed | [RotationSpeed](#rotationspeed) | Yes| Specified rotation speed. If the specified value is greater than the value returned by **getMaxRotationSpeed**, the value returned by **getMaxRotationSpeed** is used by default.|
 | duration | number | Yes| Rotation duration, in milliseconds. If the specified value is greater than the value returned by **getMaxRotationTime**, the value returned by **getMaxRotationTime** is used by default.|
+
+**Return value**
+
+| Type                                       | Description       |
+| ------------------------------------------- | --------- |
+| Promise\<[Result](#result)> | Promise used to return the rotation result.|
 
 **Error codes**
 
@@ -555,6 +561,53 @@ let axisStatus: mechanicManager.RotationAxesStatus = mechanicManager.getRotation
 console.info(`'Query the rotation axis status successfully, axis state:' ${axisStatus}`);
 ```
 
+## mechanicManager.searchTarget<sup>21+<sup>
+searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
+
+Rotates the mechanical body 360 degrees to search for the target. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This is a system API.
+
+**Parameters**
+| Name    | Type                   | Mandatory| Description  |
+| ---------- | ---------------------- | ---- | ----- |
+| target | [TargetType](#targettype21) | Yes| Target face information.|
+| params | [SearchParams](#searchparams21) | Yes| Search direction.|
+
+**Return value**
+
+| Type                                       | Description       |
+| ------------------------------------------- | --------- |
+| Promise\<[SearchResult](#searchresult21)> | Promise used to return the search result.|
+
+**Error codes**
+
+For details about the error codes, see [Mechanic Manager Error Codes](errorcode-mechanic.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message          |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+| 33300004 | Camera not opened. |
+
+**Example**
+
+```ts
+let targetInfo: mechanicManager.TargetInfo = {
+    targetType: mechanicManager.TargetType.HUMAN_FACE
+};
+let searchParams: mechanicManager.SearchParams = {
+    direction: mechanicManager.SearchDirection.DEFAULT
+}
+mechanicManager.searchTarget(targetInfo,
+    searchParams).then((searchResult) => {
+    console.info(`'result:' ${searchResult}`);
+});
+```
 ## RotationAngles
 
 Defines the rotation angle relative to the current position.
@@ -686,3 +739,68 @@ Enumerates the rotation results.
 | LIMITED | 2 | Restricted by the maximum rotation angle.|
 | TIMEOUT | 3 | Operation timeout.|
 | SYSTEM_ERROR | 100 | System error.|
+
+## TargetType<sup>21+<sup>
+
+Enumerates the target face information.
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This is a system API.
+
+  | Name| Type| Value | Description|
+| ----------- | ------|---- | --------------- |
+| HUMAN_FACE | int | 0 | Target face information.|
+
+
+  ## SearchDirection<sup>21+<sup>
+
+Default search direction.
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This is a system API.
+
+  | Name| Type| Value | Description|
+| ----------- | ------|---- | --------------- |
+| DEFAULT | int | 0 | Default direction. |
+  | LEFTWARD | int | 1 | Leftward, that is, clockwise.|
+  | RIGHTWARD | int | 2 | Rightward, that is, counterclockwise.|
+  
+ ## TargetInfo<sup>21+<sup>
+
+Information about the search target.
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This is a system API.
+
+| Name  | Type| Read-Only| Optional| Description|
+| ----- | ---- | ---- | --- | --- |
+| targetType | [TargetType](#targettype21) | No| No| Information about the search target.|
+  
+  
+ 
+## SearchParams<sup>21+<sup>
+
+Specifies the search direction.
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This is a system API.
+
+| Name  | Type| Read-Only| Optional| Description|
+| ----- | ---- | ---- | --- | --- |
+| direction | [SearchDirection](#searchdirection21) | No| No| Search direction.|
+
+  ## SearchResult<sup>21+<sup>
+
+Displays the execution result of the search command.
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This is a system API.
+
+| Name  | Type| Read-Only| Optional| Description|
+| ----- | ---- | ---- | --- | --- |
+| targetCount | number | No| No| Number of found targets.|

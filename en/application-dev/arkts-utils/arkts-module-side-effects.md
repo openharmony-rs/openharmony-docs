@@ -4,7 +4,7 @@
 <!--Owner: @wangchen965-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -32,7 +32,7 @@ The output is as follows:
 
 ```typescript
 Module loaded!
-1
+data is  1
 ```
 
 **Side effects produced**
@@ -55,7 +55,7 @@ console.info("data is ", data);
 The output is as follows:
 
 ```typescript
-1
+data is  1
 ```
 
 Optimization method 2: Encapsulate code that may cause side effects within functions or methods, and execute the code only when needed, rather than upon module loading.
@@ -75,7 +75,7 @@ console.info("data is ", data);
 The output is as follows:
 
 ```typescript
-1
+data is  1
 ```
 
 ### Modifying Global Objects
@@ -115,8 +115,8 @@ function maybeNotCalledAtAll() {
 The output is as follows:
 
 ```text
-data from module
-200
+data1 is  data from module
+globalThis.someGlobalVar is  200
 ```
 
 **Side effects produced**
@@ -163,8 +163,8 @@ function maybeNotCalledAtAll() {
 The output is as follows:
 
 ```text
-data from module
-100
+data1 is  data from module
+globalThis.someGlobalVar is  100
 ```
 
 ### Modifying State Variables of Application-level ArkUI Components
@@ -338,8 +338,8 @@ console.info("data is ", data); // During the use of the variable, the module is
 The output is as follows:
 
 ```text
-undefined
-data from module
+globalThis.someGlobalVar undefined
+data is  data from module
 ```
 
 **Side effects produced**
@@ -367,8 +367,8 @@ console.info("data is ", data);
 The output is as follows:
 
 ```text
-100
-data from module
+globalThis.someGlobalVar is  100
+data is  data from module
 ```
 
 ## Optimizing Performance with import Path Expansion
@@ -404,6 +404,7 @@ console.info("har NumberString.ets execute.");
 1. If **main.ets** depends only on the NumberString module in the HAR, the import statement **import xxx from "har"** will cause all modules along the entire chain of the HAR to be parsed and executed, increasing the time spent on module parsing and execution. In the example above, the modules har/Index, OtherModule1, OtherModule2, Utils, OtherModule3, OtherModule4, and NumberString will all be parsed and executed.
 
 2. During module parsing, a depth-first traversal approach is used to establish the binding relationships between variables. The **har.One** variable used in **main.ets** is exported from **har/src/main/ets/NumberString.ets**. However, due to the use of export *, establishing the binding relationships requires recursively matching variable names, which increases the time spent on module parsing.
+
 In the example above, the **har/Index.ets** file is checked first. This file contains multiple export * statements, so it sequentially checks whether OtherModule1 and OtherModule2 export the **One** variable. Then, it finds the Utils module, which also has export * statements, so it continues to check OtherModule3 and OtherModule4, ultimately determining that the **One** variable is exported from the NumberString module.
 
 Optimization methods: Modify the code as follows to skip intermediate dependency paths and directly import the module corresponding to the variable.

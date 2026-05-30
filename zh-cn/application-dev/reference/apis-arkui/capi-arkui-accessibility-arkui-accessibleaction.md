@@ -1,10 +1,14 @@
 # ArkUI_AccessibleAction
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Owner: @wangyinhua-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_AccessibleAction
+```
 
 ## 概述
 

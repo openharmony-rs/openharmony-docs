@@ -33,7 +33,7 @@ OpenHarmony 3.1 Beta provides the following enhancements over OpenHarmony 3.0 LT
 
 1.  Register your account with Gitee.
 2.  Register an SSH public key for access to Gitee.
-3.  Install the [git client](https://git-scm.com/book/en/v2) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure basic user information.
+3.  Install the [git client](https://git-scm.com/book/en/v2) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure basic user information.
 
     ```
     git config --global user.name "yourname"
@@ -44,7 +44,7 @@ OpenHarmony 3.1 Beta provides the following enhancements over OpenHarmony 3.0 LT
 4.  Run the following commands to install the **repo** tool:
 
     ```
-    curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the access permission to this directory, download the tool to any other accessible directory and configure the directory to the environment variable.
+    curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the access permission to this directory, download the tool to any other accessible directory and configure the directory to the environment variable.
     chmod a+x /usr/local/bin/repo
     pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
     ```
@@ -56,7 +56,7 @@ OpenHarmony 3.1 Beta provides the following enhancements over OpenHarmony 3.0 LT
 Use the **repo** tool to download the source code over SSH. (You must have an SSH public key for access to Gitee.)
 
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Beta --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Beta --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -66,7 +66,7 @@ repo forall -c 'git lfs pull'
 Use the **repo** tool to download the source code over HTTPS.
 
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Beta --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Beta --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -137,7 +137,7 @@ _[Changelog](api-diff/v3.1-beta/changelog-v3.1-beta.md)_
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 
 ### Samples &amp; Codelabs
@@ -149,27 +149,27 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Name| Introduction| Programming Language|
 | -------- | -------- | -------- |
-| [ArkTS Common Event](https://gitee.com/openharmony/app_samples/tree/master/Notification/CommonEvent) | This sample shows how to use **CommonEvent** APIs in ArkTS to create subscribers and subscribe to, publish, and unsubscribe from common events. | ArkTS |
-| [Air Quality](https://gitee.com/openharmony/app_samples/tree/master/common/AirQuality)| This sample implements a simple air quality app using JS. The app displays air quality information using line wrapping and historical data in a bar chart.| JS |
-| [Distributed Calculator](https://gitee.com/openharmony/app_samples/tree/master/common/DistributeCalc)| This sample implements a simple calculator app using JS distributed features. The calculator can perform simple numerical calculations and start a remote calculator Feature Ability (FA) to perform collaborative calculation.| JS |
-| [ArkTS Notification](https://gitee.com/openharmony/app_samples/tree/master/common/Notification) | This sample shows how to create and delete a slot in ArkTS, and how to publish and cancel a notification. | ArkTS |
-| [ArkTS Resource Management](https://gitee.com/openharmony/app_samples/tree/master/common/ResourceManager) | This sample shows how to call resource management APIs in ArkTS to obtain strings and images. | ArkTS |
-| [Kika Keyboard](https://gitee.com/openharmony/app_samples/tree/master/CompleteApps/KikaInput) | This sample shows how to implement a lightweight input method app, Kika Keyboard, that can run on smart devices powered by OpenHarmony.| JS |
-| [ArkTS Distributed Data Management](https://gitee.com/openharmony/app_samples/tree/master/data/Kvstore) | This sample shows how to use distributed data management in ArkTS, including creating a **KvManager** instance and using KvStore data transfer. | ArkTS |
-| [Lightweight Data Storage](https://gitee.com/openharmony/app_samples/tree/master/data/LiteStorage) | Lightweight data storage supports lightweight key-value operations and allows local apps to store a small amount of data. This sample shows how to add offerings to the shopping cart, remove offerings from the shopping cart, and saving the shopping cart. The shopping cart information is retained even when the app is closed. This reflects the lightweight storage feature.| ArkTS |
-| [ArkTS Process](https://gitee.com/openharmony/app_samples/tree/master/ETSUI/Process) | This sample shows how to obtain process information and start a child process to run a shell script in ArkTS. With this sample, you can obtain the running time, obtain and change the working directory of a process, send a signal to a specific process, start or close a child process, and exit the current process. | ArkTS |
-| [ArkTS Running Lock](https://gitee.com/openharmony/app_samples/tree/master/common/Runninglock) | This sample shows how to test the running lock that prevents the system from entering sleep mode. It uses the black and white wallpapers to simulate the screen-off and screen-on states.| ArkTS |
-| [String Codec](https://gitee.com/openharmony/app_samples/tree/master/Util/UtilStringCodec) | This sample shows how to output strings in a specified format and output error codes in text format. It also demonstrates string encoding and decoding.| ArkTS |
-| [JS Audio Playback and Management](https://gitee.com/openharmony/app_samples/tree/master/media/JsAudioPlayer)| This sample shows how to use the JS-based audio playback feature and set the volume.| JS |
-| [JS Video](https://gitee.com/openharmony/app_samples/tree/master/media/JsVideo) | This sample shows how to use the JS UI component **\<video>** to implement video playback. You can play a video clip and pause the playback through the control bar of the **\<video>** component.| JS |
-| [Dot Test](https://gitee.com/openharmony/app_samples/tree/master/DFX/JsDotTest)| This sample illustrates the dot test function, including application dotting and performance dotting.| JS |
-| [JS Worker](https://gitee.com/openharmony/app_samples/tree/master/thread/JsWorker) | This sample shows how to start a worker thread in JS and implement the communication between the worker thread and host thread.| JS |
-| [canvas Component](https://gitee.com/openharmony/app_samples/tree/master/UI/JsCanvas)| This sample shows how to use the **\<canvas>** component to customize drawings.| JS |
-| [JS Dialog](https://gitee.com/openharmony/app_samples/tree/master/UI/JsDialog)| The JS UI component **\<dialog>** allows users to customize the dialog box style and layout. This sample shows how to use a custom dialog box to implement contacts addition and deletion.| JS |
-| [JSList Offerings](https://gitee.com/openharmony/app_samples/tree/master/UI/JsList)| This sample shows how to apply **<list\>** component in the offering classification list. In **<listGroup\>**, two **<list-item\>** components are used to display the list in the collapsed and expanded state. After a list is touched, the corresponding list items are displayed.| JS |
-| [JS Panel](https://gitee.com/openharmony/app_samples/tree/master/UI/JsPanel) | The JS container component **\<panel>** provides a lightweight, slidable content display panel. The panel attributes such as the triggering mode and display height can be customized. This sample shows how to display the offering details and service guarantee on the panel.| JS |
-| [JS svg](https://gitee.com/openharmony/app_samples/tree/master/UI/JsSvg) | This sample shows how to use the JS component **<svg\>** and its child components, including **<rect\>**, **<circle\>**, **<ellipse\>**, **<path\>**, **<line\>**, **<polygon\>**, **<polyline\>**, **<text\>**, **<animate\>**, and **<animateTransform\>**.| JS |
-| [Custom JS Components](https://gitee.com/openharmony/app_samples/tree/master/UI/JSUICustomComponent)| Custom components are existing components encapsulated based on service requirements. A custom component can be invoked multiple times in a project to improve the code readability. This sample shows how to use custom JS components, including basic usage, custom events, Props, and event parameters.| JS |
+| [ArkTS Common Event](https://gitcode.com/openharmony/app_samples/tree/master/Notification/CommonEvent) | This sample shows how to use **CommonEvent** APIs in ArkTS to create subscribers and subscribe to, publish, and unsubscribe from common events. | ArkTS |
+| [Air Quality](https://gitcode.com/openharmony/app_samples/tree/master/common/AirQuality)| This sample implements a simple air quality app using JS. The app displays air quality information using line wrapping and historical data in a bar chart.| JS |
+| [Distributed Calculator](https://gitcode.com/openharmony/app_samples/tree/master/common/DistributeCalc)| This sample implements a simple calculator app using JS distributed features. The calculator can perform simple numerical calculations and start a remote calculator Feature Ability (FA) to perform collaborative calculation.| JS |
+| [ArkTS Notification](https://gitcode.com/openharmony/app_samples/tree/master/common/Notification) | This sample shows how to create and delete a slot in ArkTS, and how to publish and cancel a notification. | ArkTS |
+| [ArkTS Resource Management](https://gitcode.com/openharmony/app_samples/tree/master/common/ResourceManager) | This sample shows how to call resource management APIs in ArkTS to obtain strings and images. | ArkTS |
+| [Kika Keyboard](https://gitcode.com/openharmony/app_samples/tree/master/CompleteApps/KikaInput) | This sample shows how to implement a lightweight input method app, Kika Keyboard, that can run on smart devices powered by OpenHarmony.| JS |
+| [ArkTS Distributed Data Management](https://gitcode.com/openharmony/app_samples/tree/master/data/Kvstore) | This sample shows how to use distributed data management in ArkTS, including creating a **KvManager** instance and using KvStore data transfer. | ArkTS |
+| [Lightweight Data Storage](https://gitcode.com/openharmony/app_samples/tree/master/data/LiteStorage) | Lightweight data storage supports lightweight key-value operations and allows local apps to store a small amount of data. This sample shows how to add offerings to the shopping cart, remove offerings from the shopping cart, and saving the shopping cart. The shopping cart information is retained even when the app is closed. This reflects the lightweight storage feature.| ArkTS |
+| [ArkTS Process](https://gitcode.com/openharmony/app_samples/tree/master/ETSUI/Process) | This sample shows how to obtain process information and start a child process to run a shell script in ArkTS. With this sample, you can obtain the running time, obtain and change the working directory of a process, send a signal to a specific process, start or close a child process, and exit the current process. | ArkTS |
+| [ArkTS Running Lock](https://gitcode.com/openharmony/app_samples/tree/master/common/Runninglock) | This sample shows how to test the running lock that prevents the system from entering sleep mode. It uses the black and white wallpapers to simulate the screen-off and screen-on states.| ArkTS |
+| [String Codec](https://gitcode.com/openharmony/app_samples/tree/master/Util/UtilStringCodec) | This sample shows how to output strings in a specified format and output error codes in text format. It also demonstrates string encoding and decoding.| ArkTS |
+| [JS Audio Playback and Management](https://gitcode.com/openharmony/app_samples/tree/master/media/JsAudioPlayer)| This sample shows how to use the JS-based audio playback feature and set the volume.| JS |
+| [JS Video](https://gitcode.com/openharmony/app_samples/tree/master/media/JsVideo) | This sample shows how to use the JS UI component **\<video>** to implement video playback. You can play a video clip and pause the playback through the control bar of the **\<video>** component.| JS |
+| [Dot Test](https://gitcode.com/openharmony/app_samples/tree/master/DFX/JsDotTest)| This sample illustrates the dot test function, including application dotting and performance dotting.| JS |
+| [JS Worker](https://gitcode.com/openharmony/app_samples/tree/master/thread/JsWorker) | This sample shows how to start a worker thread in JS and implement the communication between the worker thread and host thread.| JS |
+| [canvas Component](https://gitcode.com/openharmony/app_samples/tree/master/UI/JsCanvas)| This sample shows how to use the **\<canvas>** component to customize drawings.| JS |
+| [JS Dialog](https://gitcode.com/openharmony/app_samples/tree/master/UI/JsDialog)| The JS UI component **\<dialog>** allows users to customize the dialog box style and layout. This sample shows how to use a custom dialog box to implement contacts addition and deletion.| JS |
+| [JSList Offerings](https://gitcode.com/openharmony/app_samples/tree/master/UI/JsList)| This sample shows how to apply **<list\>** component in the offering classification list. In **<listGroup\>**, two **<list-item\>** components are used to display the list in the collapsed and expanded state. After a list is touched, the corresponding list items are displayed.| JS |
+| [JS Panel](https://gitcode.com/openharmony/app_samples/tree/master/UI/JsPanel) | The JS container component **\<panel>** provides a lightweight, slidable content display panel. The panel attributes such as the triggering mode and display height can be customized. This sample shows how to display the offering details and service guarantee on the panel.| JS |
+| [JS svg](https://gitcode.com/openharmony/app_samples/tree/master/UI/JsSvg) | This sample shows how to use the JS component **<svg\>** and its child components, including **<rect\>**, **<circle\>**, **<ellipse\>**, **<path\>**, **<line\>**, **<polygon\>**, **<polyline\>**, **<text\>**, **<animate\>**, and **<animateTransform\>**.| JS |
+| [Custom JS Components](https://gitcode.com/openharmony/app_samples/tree/master/UI/JSUICustomComponent)| Custom components are existing components encapsulated based on service requirements. A custom component can be invoked multiple times in a project to improve the code readability. This sample shows how to use custom JS components, including basic usage, custom events, Props, and event parameters.| JS |
 
 
 #### New Codelabs
@@ -178,13 +178,13 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Name| Introduction| Programming Language|
 | -------- | -------- | -------- |
-| [Synced Sketchpad (ArkTS)](https://gitee.com/openharmony/codelabs/tree/master/Distributed/DistributeDatabaseDrawEts)| This codelab shows how to implement synchronous writing and interaction between multiple devices based on the distributed feature.| ArkTS |
-| [Distributed Database](https://gitee.com/openharmony/codelabs/tree/master/Data/JsDistributedData)| This codelab shows how to use the Distributed Data Service APIs to facilitate consistent data access between devices.| JS |
-| [Relational Database](https://gitee.com/openharmony/codelabs/tree/master/Data/JSRelationshipData)| This codelab shows how to quickly develop database-related application services based on the relational database and data management capability.| JS |
-| [Shopping (ArkTS)](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/ShoppingEts) | This codelab shows how to implement a shopping app based on OpenHarmony ArkTS UI components. | ArkTS |
-| [Transition Animation (ArkTS)](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/TransitionAnimation) | This codelab shows how to implement page transition, component transition, and transition of shared elements based on OpenHarmony ArkUI components. | ArkTS |
-| [slider Usage (ArkTS)](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/SliderExample) | This codelab shows how to use the OpenHarmony ArkUI component **\<slider>** to implement the animation effect when users adjust the size and speed of the windmill. | ArkTS |
-| [Dialog Box (ArkTS)](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/CustomDialogEts) | This codelab shows how to implement an alert dialog box and custom dialog box based on OpenHarmony ArkTS UI components. | ArkTS |
+| [Synced Sketchpad (ArkTS)](https://gitcode.com/openharmony/codelabs/tree/master/Distributed/DistributeDatabaseDrawEts)| This codelab shows how to implement synchronous writing and interaction between multiple devices based on the distributed feature.| ArkTS |
+| [Distributed Database](https://gitcode.com/openharmony/codelabs/tree/master/Data/JsDistributedData)| This codelab shows how to use the Distributed Data Service APIs to facilitate consistent data access between devices.| JS |
+| [Relational Database](https://gitcode.com/openharmony/codelabs/tree/master/Data/JSRelationshipData)| This codelab shows how to quickly develop database-related application services based on the relational database and data management capability.| JS |
+| [Shopping (ArkTS)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ShoppingEts) | This codelab shows how to implement a shopping app based on OpenHarmony ArkTS UI components. | ArkTS |
+| [Transition Animation (ArkTS)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/TransitionAnimation) | This codelab shows how to implement page transition, component transition, and transition of shared elements based on OpenHarmony ArkUI components. | ArkTS |
+| [slider Usage (ArkTS)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/SliderExample) | This codelab shows how to use the OpenHarmony ArkUI component **\<slider>** to implement the animation effect when users adjust the size and speed of the windmill. | ArkTS |
+| [Dialog Box (ArkTS)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/CustomDialogEts) | This codelab shows how to implement an alert dialog box and custom dialog box based on OpenHarmony ArkTS UI components. | ArkTS |
 
 
 ## Resolved Issues
@@ -193,11 +193,11 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.| Description|
 | -------- | -------- |
-| [I48IM7](https://gitee.com/openharmony/hiviewdfx_hilog/issues/I48IM7) | During the hilog pressure test, **hilogd** restarts unexpectedly, and the **hilog** command cannot be used.|
+| [I48IM7](https://gitcode.com/openharmony/hiviewdfx_hilog/issues/I48IM7) | During the hilog pressure test, **hilogd** restarts unexpectedly, and the **hilog** command cannot be used.|
 | I48YPH | [DSoftBus - Networking] During the testing of the getting-offline - discovery - networking cycle, there are 3 failures among all the 110 attempts.|
-| [I4BVVW](https://gitee.com/openharmony/communication_dsoftbus/issues/I4BVVW) | [DSoftBus - Networking] The success rate of automatic networking between a standard-system device and mobile phone is 97%.|
+| [I4BVVW](https://gitcode.com/openharmony/communication_dsoftbus/issues/I4BVVW) | [DSoftBus - Networking] The success rate of automatic networking between a standard-system device and mobile phone is 97%.|
 | I4BXY1 | There is no sound in the first few seconds of a video recording, the sound and image are out of sync, frame freezing occurs, and noises occur when the audio source was far away during recording.|
-| [3ZJ1D](https://gitee.com/openharmony/kernel_liteos_a/issues/I3ZJ1D) | There is a possibility that the user mode fails in the XTS pressure test of the permission case.|
+| [3ZJ1D](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3ZJ1D) | There is a possibility that the user mode fails in the XTS pressure test of the permission case.|
 
 
 ## Known Issues
@@ -206,9 +206,9 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.| Description| Impact| To Be Resolved On|
 | -------- | -------- | -------- | -------- |
-| [I4NRS5](https://gitee.com/openharmony/kernel_linux_5.10/issues/I4NRS5) | [Kernel subsystem] A CVE vulnerability exists.| No patch has been released for the Linux kernel. The kernel will be updated after the patch is released in the community.| Depending on the patch release in the community|
-| [I4MGJM](https://gitee.com/openharmony/drivers_peripheral/issues/I4MGJM) | [HDF/Camera] The case fails when the RK3568 board runs the camera HDI tests.| The photographing and preview functions are normal. The recording function can be started but cannot be stopped.| 2021/12/31 |
+| [I4NRS5](https://gitcode.com/openharmony/kernel_linux_5.10/issues/I4NRS5) | [Kernel subsystem] A CVE vulnerability exists.| No patch has been released for the Linux kernel. The kernel will be updated after the patch is released in the community.| Depending on the patch release in the community|
+| [I4MGJM](https://gitcode.com/openharmony/drivers_peripheral/issues/I4MGJM) | [HDF/Camera] The case fails when the RK3568 board runs the camera HDI tests.| The photographing and preview functions are normal. The recording function can be started but cannot be stopped.| 2021/12/31 |
 | I4OECR | An Ark stack exception occurs during XTS running (low probability).| There is a low probability that the Ark stack becomes abnormal during the XTS pressure test. This issue occurs only once in 48 hours. The exception stack is reported only in the log and does not affect the functions.| 2022/01/05|
-| [I4OBTW](https://gitee.com/openharmony/ability_ability_runtime/issues/I4OBTW) | After all XTS cases are executed and the application is installed, aa start failures occur, affecting the OpenHarmony pipeline stability test.| During the XTS pressure test, when 100 application packages are installed in batches in a short period of time, 2 of them cannot be started. User experience is not affected.| 2022/01/05|
+| [I4OBTW](https://gitcode.com/openharmony/ability_ability_runtime/issues/I4OBTW) | After all XTS cases are executed and the application is installed, aa start failures occur, affecting the OpenHarmony pipeline stability test.| During the XTS pressure test, when 100 application packages are installed in batches in a short period of time, 2 of them cannot be started. User experience is not affected.| 2022/01/05|
 | I4OLHF | [Ark subsystem] The test process is abnormal due to the com.amsst.amsMissionSnapshotTest process.| This issue occurs occasionally during high-pressure tests.| 2022/01/05|
 | I4OLUK | [Ark subsystem] The process stack is abnormal due to the com.ohos.systemui process.| This issue occurs occasionally during high-pressure tests.| 2022/01/05|

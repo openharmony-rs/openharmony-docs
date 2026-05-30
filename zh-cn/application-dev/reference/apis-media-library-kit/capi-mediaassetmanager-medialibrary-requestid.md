@@ -1,12 +1,22 @@
 # MediaLibrary_RequestId
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct MediaLibrary_RequestId {...} MediaLibrary_RequestId
+```
 
 ## 概述
 
-定义请求Id。
+定义请求ID。
 
 当请求媒体库资源时，会返回此类型。
 
-请求Id可用于取消请求。
+请求ID可用于取消请求。
 
 如果请求失败，值将全为零，如 "00000000-0000-0000-0000-000000000000"。
 
@@ -22,6 +32,6 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| char requestId[UUID_STR_MAX_LENGTH] | 请求Id。 |
+| char requestId[UUID_STR_MAX_LENGTH] | 请求ID。 |
 
 

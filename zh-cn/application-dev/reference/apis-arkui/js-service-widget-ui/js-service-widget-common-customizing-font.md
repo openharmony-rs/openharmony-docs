@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 font-face用于定义字体样式。应用可以在style中定义font-face来指定相应的字体名和字体资源，然后在font-family样式中引用该字体。
@@ -14,7 +14,7 @@ font-face用于定义字体样式。应用可以在style中定义font-face来指
 
 > **说明：**
 >
-> 从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 字体格式支持ttf和otf。
 

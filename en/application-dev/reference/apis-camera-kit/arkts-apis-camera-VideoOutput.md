@@ -4,13 +4,13 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+**VideoOutput** implements output information used in a video session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-VideoOutput implements output information used in a video session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 ## Modules to Import
 
@@ -117,8 +117,6 @@ Stops video recording. This API uses an asynchronous callback to return the resu
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function stopVideoOutput(videoOutput: camera.VideoOutput): void {
   videoOutput.stop(() => {
     console.info('Callback invoked to indicate the video output stop success.');
@@ -359,7 +357,7 @@ Obtains the supported frame rates.
 
 |      Type     |     Description    |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | Array of supported frame rates.|
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | Array of supported frame rates. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -493,7 +491,7 @@ Checks whether mirror recording is supported.
 
 | Type           | Description                             |
 | -------------- |---------------------------------|
-| boolean | Check result for the support of mirror recording. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of mirror recording. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -553,13 +551,14 @@ function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRe
 
 ## getVideoRotation<sup>12+</sup>
 
-getVideoRotation(deviceDegree: number): ImageRotation
+getVideoRotation(deviceDegree?: number): ImageRotation
 
-Obtains the video rotation degree.
+Obtains the video rotation angle.
 
-- Device' natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
-- Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural direction. The rear camera sensor of a phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural direction.
-- Screen orientation: The top-left corner of the image displayed on the screen is the first pixel, which is the coordinate origin. In the case of lock screen, the direction is the same as the device's natural orientation.
+- Device's natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+- Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -569,13 +568,13 @@ Obtains the video rotation degree.
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | Yes  | Device rotation degree, measured in degrees, within the range of [0, 360].|
+| deviceDegree | number | No  | Device rotation angle, measured in degrees, within the range of [0, 360].<br>Since API version 23, the input parameter **deviceDegree** is optional. If no parameter is passed, the system obtains the **deviceDegree** value to calculate the video rotation angle.|
 
 **Return value**
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Video rotation degree.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Returns the rotation angle of a video. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -583,7 +582,6 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID  | Error Message                        |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **Example**
@@ -602,6 +600,19 @@ async function getVideoRotation(videoOutput: camera.VideoOutput): Promise<camera
   } catch (error) {
     let err = error as BusinessError;
     console.error('Failed to get video rotation: ' + JSON.stringify(err));
+  }
+  return videoRotation;
+}
+
+function testGetVideoRotationWithOutParam(videoOutput: camera.VideoOutput): camera.ImageRotation {
+  let videoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    videoRotation = videoOutput.getVideoRotation();
+    console.info(`Video rotation is: ${videoRotation}`);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The videoOutput.testGetVideoRotationWithOutParam call failed. error code: ${err.code}`);
   }
   return videoRotation;
 }

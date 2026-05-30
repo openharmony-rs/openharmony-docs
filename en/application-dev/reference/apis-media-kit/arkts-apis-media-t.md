@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -54,7 +54,7 @@ Describes the state of the [AVPlayer](arkts-apis-media-AVPlayer.md). Your applic
 |            'completed'            | The AVPlayer enters this state when a media asset finishes playing and loop playback is not set (no **loop = true**). In this case, if [play()](arkts-apis-media-AVPlayer.md#play9) is called, the AVPlayer enters the playing state and replays the media asset; if [stop()](arkts-apis-media-AVPlayer.md#stop9) is called, the AVPlayer enters the stopped state.|
 |             'stopped'             | The AVPlayer enters this state when [stop()](arkts-apis-media-AVPlayer.md#stop9) is called in the prepared, playing, paused, or completed state. In this case, the playback engine retains the properties but releases the memory resources. You can call [prepare()](arkts-apis-media-AVPlayer.md#prepare9) to prepare the resources again, call [reset()](arkts-apis-media-AVPlayer.md#reset9) to reset the properties, or call [release()](arkts-apis-media-AVPlayer.md#release9) to destroy the playback engine.|
 |            'released'             | The AVPlayer enters this state when [release()](arkts-apis-media-AVPlayer.md#release9) is called. The playback engine associated with the AVPlayer instance is destroyed, and the playback process ends. This is the final state.|
-| 'error' | The AVPlayer enters this state when an irreversible error occurs in the playback engine. You can call [reset()](arkts-apis-media-AVPlayer.md#reset9) to reset the properties or call [release()](arkts-apis-media-AVPlayer.md#release9) to destroy the playback engine. For details about the error codes, see [Media Error Codes](errorcode-media.md).<br>**NOTE** Relationship between the error state and the [on('error')](arkts-apis-media-AVPlayer.md#onerror9) event<br>1. When the AVPlayer enters the error state, the **on('error')** event is triggered. You can obtain the detailed error information through this event.<br>2. When the AVPlayer enters the error state, the playback service stops. This requires the client to design a fault tolerance mechanism to call [reset()](arkts-apis-media-AVPlayer.md#reset9) or [release()](arkts-apis-media-AVPlayer.md#release9).<br>3. The client receives **on('error')** event but the AVPlayer does not enter the error state. This situation occurs due to either of the following reasons:<br>Cause 1: The client calls an API in an incorrect state or passes in an incorrect parameter, and the AVPlayer intercepts the call. If this is the case, the client must correct its code logic.<br>Cause 2: A stream error is detected during playback. As a result, the container and decoding are abnormal for a short period of time, but continuous playback and playback control operations are not affected. If this is the case, the client does not need to design a fault tolerance mechanism.|
+| 'error' | The AVPlayer enters this state when an irreversible error occurs in the playback engine. You can call [reset()](arkts-apis-media-AVPlayer.md#reset9) to reset the properties or call [release()](arkts-apis-media-AVPlayer.md#release9) to destroy the playback engine. For details about the error codes, see [Media Error Codes](errorcode-media.md).<br>**NOTE**<br>Distinguishing the error state from the [on('error')](arkts-apis-media-AVPlayer.md#onerror9) state:<br>1. When the AVPlayer enters the error state, the **on('error')** event is triggered. You can obtain the detailed error information through this event.<br>2. When the AVPlayer enters the error state, the playback service stops. This requires the client to design a fault tolerance mechanism to call [reset()](arkts-apis-media-AVPlayer.md#reset9) or [release()](arkts-apis-media-AVPlayer.md#release9).<br>3. The client receives **on('error')** event but the AVPlayer does not enter the error state. This situation occurs due to either of the following reasons:<br>Cause 1: The client calls an API in an incorrect state or passes in an incorrect parameter, and the AVPlayer intercepts the call. If this is the case, the client must correct its code logic.<br>Cause 2: A stream error is detected during playback. As a result, the container and decoding are abnormal for a short period of time, but continuous playback and playback control operations are not affected. If this is the case, the client does not need to design a fault tolerance mechanism.|
 
 ## OnTrackChangeHandler<sup>12+</sup>
 
@@ -132,7 +132,7 @@ Describes the callback used to listen for video super resolution status changes.
 
 Super resolution is automatically disabled in either of the following cases:
 * The current super resolution algorithm only works with videos that have a frame rate of 30 fps or lower. If the video frame rate exceeds 30 fps, or if the input frame rate exceeds the processing capability of the super resolution algorithm in scenarios such as fast playback, super resolution is automatically disabled.
-* The current super resolution algorithm supports input resolutions from 320 x 320 to 1920 x 1080, in px. If the input video resolution exceeds the range during playback, super resolution is automatically disabled.
+* The current super resolution algorithm supports input resolutions from 320 × 320 to 1920 × 1080, in px. If the input video resolution exceeds the range during playback, super resolution is automatically disabled.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -176,6 +176,23 @@ Describes the callback invoked for the event indicating that the playback rate s
 | Name  | Type  | Mandatory| Description                                                        |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | rate | number | Yes| Playback rate.|
+
+## OnFrameFetched<sup>23+</sup>
+
+type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError\<void>) => void
+
+Describes the callback invoked when thumbnails are obtained in batches.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                                                        |
+| ------ | ------ | ------ | ---------------------------------------------------------- |
+| frameInfo  | [FrameInfo](arkts-apis-media-i.md#frameinfo23) | Yes| Thumbnail information.    |
+| err | BusinessError\<void> | No| Error that occurs when the thumbnail is obtained. The default value is **null**.|
 
 ## AVRecorderState<sup>9+</sup>
 
@@ -232,7 +249,7 @@ This callback function is implemented by applications to handle resource open re
 
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
-| request | [MediaSourceLoadingRequest](arkts-apis-media-MediaSourceLoadingRequest.md) | Yes | 	Parameters for the resource open request, including detailed information about the requested resource and the data push method.|
+| request | [MediaSourceLoadingRequest](arkts-apis-media-MediaSourceLoadingRequest.md) | Yes |  Parameters for the resource open request, including detailed information about the requested resource and the data push method.|
 
 **Return value**
 
@@ -250,7 +267,7 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 
 let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLoadingRequest) => {
-  console.log(`Opening resource: ${request.url}`);
+  console.info(`Opening resource: ${request.url}`);
   // Open the resource and return a unique handle, ensuring the mapping between the UUID and request.
   uuid += 1;
   requests.set(uuid, request);
@@ -276,15 +293,15 @@ This callback function is implemented by applications to handle resource read re
 
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
-| uuid | number | Yes | 	ID for the resource handle.|
-| requestedOffset | number | Yes | 	Offset of the current media data relative to the start of the resource.|
-| requestedLength | number | Yes | 	Length of the current request. The value **-1** indicates reaching the end of the resource. After pushing the data, call [finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18) to notify the player that the push is complete.|
+| uuid | number | Yes |  ID for the resource handle.|
+| requestedOffset | number | Yes |  Offset of the current media data relative to the start of the resource.|
+| requestedLength | number | Yes |  Length of the current request. The value **-1** indicates reaching the end of the resource. After pushing the data, call [finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18) to notify the player that the push is complete.|
 
 **Example**
 
 ```ts
 let sourceReadCallback: media.SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => {
-  console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+  console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
   // Check whether the UUID is valid and store the read request. Avoid blocking the request while pushing data and header information.
 };
 ```
@@ -312,16 +329,28 @@ This callback function is implemented by applications to release related resourc
 **Example**
 
 ```ts
-import HashMap from '@ohos.util.HashMap';
+import { HashMap } from '@kit.ArkTS';
 
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 
 let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
-  console.log(`Closing resource with handle ${uuid}`);
+  console.info(`Closing resource with handle ${uuid}`);
   // Clear resources related to the current UUID.
   requests.remove(uuid);
 };
 ```
+
+## PlaybackMetrics<sup>23+</sup>
+
+type PlaybackMetrics = Record\<PlaybackMetricsKey, Object>
+
+Describes the container for the key-value pairs of playback metrics.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Type  | Description                                                        |
+|------ | ------------------------------------------------------------ |
+| Record\<[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23), Object> |  Playback metrics. The value type is key-value pair. For details about the types and ranges of keys and values, see [PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23).|
 
 ## AudioState<sup>(deprecated)</sup>
 
@@ -330,7 +359,6 @@ type AudioState = 'idle' | 'playing' | 'paused' | 'stopped' | 'error'
 Describes the audio playback state. You can obtain the state through the **state** property.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayerState](#avplayerstate9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -350,7 +378,6 @@ type VideoPlayState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | '
 Describes the video playback state. You can obtain the state through the **state** property.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayerState](#avplayerstate9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoPlayer

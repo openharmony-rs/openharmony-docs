@@ -1,10 +1,10 @@
 # @ohos.enterprise.securityManager（安全管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供设备安全管理的能力，包括查询安全补丁状态、查询文件加密状态等。
 
@@ -14,9 +14,9 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需通过[enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)接口将设备管理应用激活后调用。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md)。
 
 ## 导入模块
 
@@ -42,7 +42,7 @@ getSecurityPatchTag(admin: Want): string
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -71,14 +71,14 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
-    let res: string = securityManager.getSecurityPatchTag(wantTemp);
-    console.info(`Succeeded in getting security patch tag. tag: ${res}`);
+  let res: string = securityManager.getSecurityPatchTag(wantTemp);
+  console.info(`Succeeded in getting security patch tag. tag: ${res}`);
 } catch(err) {
-    console.error(`Failed to get security patch tag. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get security patch tag. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ## securityManager.getDeviceEncryptionStatus
@@ -99,7 +99,7 @@ getDeviceEncryptionStatus(admin: Want): DeviceEncryptionStatus
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 
 **返回值：**
 
@@ -128,14 +128,14 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
-    let result: securityManager.DeviceEncryptionStatus = securityManager.getDeviceEncryptionStatus(wantTemp);
-    console.info(`Succeeded in getting device encryption status. isEncrypted: ${result.isEncrypted}`);
+  let result: securityManager.DeviceEncryptionStatus = securityManager.getDeviceEncryptionStatus(wantTemp);
+  console.info(`Succeeded in getting device encryption status. isEncrypted: ${result.isEncrypted}`);
 } catch(err) {
-    console.error(`Failed to get device encryption status. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get device encryption status. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -143,7 +143,7 @@ try {
 
 getPasswordPolicy(): PasswordPolicy
 
-获取设备口令策略。
+获取设备锁屏口令策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -155,7 +155,7 @@ getPasswordPolicy(): PasswordPolicy
 
 | 类型                   | 说明                      |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | 设备口令策略。 |
+| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | 设备锁屏口令策略。 |
 
 **错误码**：
 
@@ -171,10 +171,10 @@ getPasswordPolicy(): PasswordPolicy
 import { securityManager } from '@kit.MDMKit';
 
 try {
-    let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy();
-    console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
+  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy();
+  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

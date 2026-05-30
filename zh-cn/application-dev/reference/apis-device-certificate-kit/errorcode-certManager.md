@@ -95,6 +95,22 @@ The device enters advanced security mode.
 
 需要在应用界面提醒用户关闭坚盾守护模式。
 
+<!--Del-->
+## 17500008 密码错误
+
+**错误信息**
+
+The input password is error.
+
+**可能原因**
+
+输入的密码错误。
+
+**处理步骤**
+
+检查密码是否正确，使用正确的密码再次尝试。
+<!--DelEnd-->
+
 ## 17500009 不支持指定的证书存储路径
 
 **错误信息**
@@ -108,3 +124,31 @@ The device does not support the specified certificate store path.
 **处理步骤**
 
 检查输入的证书类型是否正确。
+
+## 17500010 访问USB证书凭据失败
+
+**错误信息**
+
+The USB key service access failed.
+
+**可能原因**
+
+USB硬件驱动服务发生异常。
+
+**处理步骤**
+
+检查USB是否正常连接或USB驱动是否正常工作。
+
+## 17500011 入参校验失败
+
+**错误信息**
+
+The input parameters validation failed.
+
+**可能原因**
+
+参数格式异常或参数范围无效。
+
+**处理步骤**
+
+检查接口入参格式或范围。

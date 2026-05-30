@@ -1,4 +1,14 @@
 # OH_NativeXComponent_ExtraMouseEventInfo
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @dutie123-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct OH_NativeXComponent_ExtraMouseEventInfo OH_NativeXComponent_ExtraMouseEventInfo
+```
 
 ## 概述
 

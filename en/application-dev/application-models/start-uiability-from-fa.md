@@ -1,12 +1,18 @@
 # Starting a UIAbility from the FA Model
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-This topic describes how the three application components of the FA model start the UIAbility component of the stage model.
+This topic describes how the three application components of the [FA model](ability-terminology.md#fa-model) start the UIAbility component of the [stage model](ability-terminology.md#stage-model).
 
 
 ## PageAbility Starting a UIAbility
 
-A PageAbility starts a UIAbility in the same way as it starts another PageAbility.
+  A PageAbility starts a UIAbility in the same way as it starts another PageAbility.
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -23,11 +29,10 @@ const domain: number = 0xFF00;
 struct PageInterflowFaAndStage {
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -39,14 +44,10 @@ struct PageInterflowFaAndStage {
             }).catch((error: BusinessError) => {
               hilog.error(domain, TAG, `Ability failed, error code: ${error.code}, error msg: ${error.message}.`);
             });
-            //...
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```
@@ -74,11 +75,10 @@ const domain: number = 0xFF00;
 struct PageInterflowFaAndStage {
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -92,11 +92,8 @@ struct PageInterflowFaAndStage {
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```

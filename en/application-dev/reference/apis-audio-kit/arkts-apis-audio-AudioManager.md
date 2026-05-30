@@ -4,15 +4,15 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
-
-> **NOTE**
->
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+<!--Adviser: @w_Machine_cc-->
 
 This interface implements audio volume and device management.
 
 Before calling any API in AudioManager, you must use [getAudioManager](arkts-apis-audio-f.md#audiogetaudiomanager) to obtain an AudioManager instance.
+
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -161,6 +161,8 @@ audioManager.off('audioSceneChange', audioSceneChangeCallback);
 getVolumeManager(): AudioVolumeManager
 
 Obtains an AudioVolumeManager instance.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -417,9 +419,9 @@ Sets the volume for a stream. This API uses an asynchronous callback to return t
 
 > **NOTE**
 > 
-> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
+> - This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 > 
-> Applications cannot directly adjust the system volume. They can use the system volume panel to control the volume. For details about the samples and introduction, see [AVVolumePanel Reference](ohos-multimedia-avvolumepanel.md).
+> - Applications cannot directly adjust the system volume. They can use the system volume panel to control the volume. For details about the examples and descriptions, see [Volume Panel](ohos-multimedia-avvolumepanel.md) in the API reference.
 
 **Required permissions**: ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -431,7 +433,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volume     | number                              | Yes  | Volume to set. The value range can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 | callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -457,9 +459,9 @@ Sets the volume for a stream. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
+> - This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 >
-> Applications cannot directly adjust the system volume. They can use the system volume panel to control the volume. For details about the samples and introduction, see [AVVolumePanel Reference](ohos-multimedia-avvolumepanel.md).
+> - Applications cannot directly adjust the system volume. They can use the system volume panel to control the volume. For details about the examples and descriptions, see [Volume Panel](ohos-multimedia-avvolumepanel.md) in the API reference.
 
 **Required permissions**: ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -471,7 +473,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volume     | number                              | Yes  | Volume to set. The value range can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 
 **Return value**
@@ -504,7 +506,7 @@ Obtains the volume of a stream. This API uses an asynchronous callback to return
 
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.      |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
 | callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 
 **Example**
@@ -537,7 +539,7 @@ Obtains the volume of a stream. This API uses a promise to return the result.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -569,7 +571,7 @@ Obtains the minimum volume allowed for a stream. This API uses an asynchronous c
 
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.      |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
 | callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum stream volume obtained; otherwise, **err** is an error object.|
 
 **Example**
@@ -602,7 +604,7 @@ Obtains the minimum volume allowed for a stream. This API uses a promise to retu
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -634,7 +636,7 @@ Obtains the maximum volume allowed for a stream. This API uses an asynchronous c
 
 | Name    | Type                               | Mandatory| Description                  |
 | ---------- | ----------------------------------- | ---- | ---------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.          |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.          |
 | callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum stream volume obtained; otherwise, **err** is an error object.|
 
 **Example**
@@ -667,7 +669,7 @@ Obtains the maximum volume allowed for a stream. This API uses a promise to retu
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -701,7 +703,7 @@ When the minimum volume of a stream cannot be set to 0, muting the stream is not
 
 | Name    | Type                               | Mandatory| Description                                 |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                         |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                         |
 | mute       | boolean                             | Yes  | Whether to mute the stream. **true** to mute, **false** otherwise.|
 | callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -737,7 +739,7 @@ When the minimum volume of a stream cannot be set to 0, muting the stream is not
 
 | Name    | Type                               | Mandatory| Description                                 |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                         |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                         |
 | mute       | boolean                             | Yes  | Whether to mute the stream. **true** to mute, **false** otherwise.|
 
 **Return value**
@@ -771,7 +773,7 @@ Checks whether a stream is muted. This API uses an asynchronous callback to retu
 
 | Name    | Type                               | Mandatory| Description                                           |
 | ---------- | ----------------------------------- | ---- | ----------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                   |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                   |
 | callback   | AsyncCallback&lt;boolean&gt;        | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is muted or **false** if not muted; otherwise, **err** is an error object.|
 
 **Example**
@@ -804,7 +806,7 @@ Checks whether a stream is muted. This API uses a promise to return the result.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -836,7 +838,7 @@ Checks whether a stream is active. This API uses an asynchronous callback to ret
 
 | Name    | Type                               | Mandatory| Description                                             |
 | ---------- | ----------------------------------- | ---- | ------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                     |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                     |
 | callback   | AsyncCallback&lt;boolean&gt;        | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is active or **false** if not active; otherwise, **err** is an error object.|
 
 **Example**
@@ -869,7 +871,7 @@ Checks whether a stream is active. This API uses a promise to return the result.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.|
 
 **Return value**
 
@@ -1419,7 +1421,7 @@ on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback\<InterruptAc
 
 Subscribes to the audio interruption event, which is triggered when the audio focus is changed. This API uses an asynchronous callback to return the result.
 
-Same as [on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9), this API is used to listen for focus is changed. However, this API is used in scenarios without audio streams (no AudioRenderer instance is created), such as frequency modulation (FM) and voice wakeup.
+Same as [on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9), this API is used to listen for focus changes. However, this API is used in scenarios without audio streams (no AudioRenderer instance is created), such as frequency modulation (FM) and voice wakeup.
 
 > **NOTE**
 >

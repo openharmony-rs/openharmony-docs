@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 The **privacyManager** module provides APIs for privacy management, such as management of permission usage records.
 
@@ -25,9 +26,12 @@ import { privacyManager } from '@kit.AbilityKit';
 addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCount: number, failCount: number, options?: AddPermissionUsedRecordOptions): Promise&lt;void&gt;
 
 Adds a permission usage record when an application protected by the permission is called by another service or application. This API uses a promise to return the result.
+
 The permission usage record includes the application identity (token ID) of the caller, name of the permission used, and number of successful and failed accesses to the target application.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -35,11 +39,11 @@ The permission usage record includes the application identity (token ID) of the 
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| tokenID   |  number   | Yes  | Token ID of the caller, which can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the [BundleInfo](js-apis-bundleManager-bundleInfo.md) of the application.|
 | permissionName | Permissions | Yes  | Name of the permission.|
 | successCount | number | Yes  | Number of successful accesses.|
 | failCount | number | Yes  | Number of failed accesses.|
-| options<sup>12+</sup> | [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) | No  | Options for adding a permission usage record. The default value is **NORMAL_TYPE**. This parameter is supported since API version 12.|
+| options<sup>12+</sup> | [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) | No  | Optional parameter for adding a permission usage record.<br>The default value of **usedType** is **NORMAL_TYPE**, which is supported since API version 12.<br>The default value of **enhancedIdentity** is **""**, which is supported since API version 26.0.0.|
 
 **Return value**
 
@@ -49,18 +53,19 @@ The permission usage record includes the application identity (token ID) of the 
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the count value is invalid, or usedType in [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) is invalid. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the count value is invalid, usedType in [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) is invalid, or the enhancedIdentity in [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) exceeds 48 characters. |
 | 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
+| 12100009 | Common inner error. A database error occurs. |
 
 **Example**
 
@@ -68,20 +73,21 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0).then(() => {
-  console.log('addPermissionUsedRecord success');
-}).catch((err: BusinessError) => {
-  console.error(`addPermissionUsedRecord fail, err->${JSON.stringify(err)}`);
+  console.info('addPermissionUsedRecord success');
+}).catch((err: BusinessError): void => {
+  console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 // with options param
 let options: privacyManager.AddPermissionUsedRecordOptions = {
-  usedType: privacyManager.PermissionUsedType.PICKER_TYPE
+  usedType: privacyManager.PermissionUsedType.PICKER_TYPE,
+  enhancedIdentity: "test"
 };
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, options).then(() => {
-  console.log('addPermissionUsedRecord success');
-}).catch((err: BusinessError) => {
-  console.error(`addPermissionUsedRecord fail, err->${JSON.stringify(err)}`);
+  console.info('addPermissionUsedRecord success');
+}).catch((err: BusinessError): void => {
+  console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -90,9 +96,12 @@ privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1,
 addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCount: number, failCount: number, callback: AsyncCallback&lt;void&gt;): void
 
 Adds a permission usage record when an application protected by the permission is called by another service or application. This API uses an asynchronous callback to return the result.
+
 The permission usage record includes the application identity (token ID) of the caller, name of the permission used, and number of successful and failed accesses to the target application.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -100,7 +109,7 @@ The permission usage record includes the application identity (token ID) of the 
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| tokenID   |  number   | Yes  | Token ID of the caller, which can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the [BundleInfo](js-apis-bundleManager-bundleInfo.md) of the application.|
 | permissionName | Permissions | Yes  | Permission name. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 | successCount | number | Yes  | Number of successful accesses.|
 | failCount | number | Yes  | Number of failed accesses.|
@@ -108,7 +117,7 @@ The permission usage record includes the application identity (token ID) of the 
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -120,6 +129,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
+| 12100009 | Common inner error. A database error occurs. |
 
 **Example**
 
@@ -127,12 +137,12 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`addPermissionUsedRecord fail, err->${JSON.stringify(err)}`);
+    console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
   } else {
-    console.log('addPermissionUsedRecord success');
+    console.info('addPermissionUsedRecord success');
   }
 });
 ```
@@ -143,7 +153,9 @@ getPermissionUsedRecord(request: PermissionUsedRequest): Promise&lt;PermissionUs
 
 Obtains historical permission usage records. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -157,11 +169,11 @@ Obtains historical permission usage records. This API uses a promise to return t
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise<[PermissionUsedResponse](#permissionusedresponse)> | Promise used to return the permission usage records.|
+| Promise<[PermissionUsedResponse](#permissionusedresponse)> | Promise that returns the queried permission usage records.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -169,10 +181,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The value of flag, begin, or end in request is invalid. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
-| 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
-| 12100008 | Out of memory. |
 
 **Example**
 
@@ -192,9 +201,9 @@ let request: privacyManager.PermissionUsedRequest = {
 };
 
 privacyManager.getPermissionUsedRecord(request).then((data) => {
-  console.log(`getPermissionUsedRecord success, data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getPermissionUsedRecord fail, err->${JSON.stringify(err)}`);
+  console.info(`getPermissionUsedRecord success, result: ${data}`);
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -204,7 +213,9 @@ getPermissionUsedRecord(request: PermissionUsedRequest, callback: AsyncCallback&
 
 Obtains historical permission usage records. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -217,7 +228,7 @@ Obtains historical permission usage records. This API uses an asynchronous callb
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -225,10 +236,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The value of flag, begin, or end in request is invalid. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
-| 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
-| 12100008 | Out of memory. |
 
 **Example**
 
@@ -249,9 +257,9 @@ let request: privacyManager.PermissionUsedRequest = {
 
 privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: privacyManager.PermissionUsedResponse) => {
   if (err) {
-    console.error(`getPermissionUsedRecord fail, err->${JSON.stringify(err)}`);
+    console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
   } else {
-    console.log(`getPermissionUsedRecord success, data->${JSON.stringify(data)}`);
+    console.info(`getPermissionUsedRecord success, result: ${data}`);
   }
 });
 ```
@@ -260,11 +268,13 @@ privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: priva
 
 setPermissionUsedRecordToggleStatus(status: boolean): Promise&lt;void&gt;
 
-Sets whether to record the permission usage of this user. This API uses a promise to return the result.
+Sets whether to record the permission usage of this user. Sets the permission usage record switch for this user. This API uses a promise to return the result.
 
 If **status** is **true**, [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) can be called to add permission usage records. If **status** is set **false**, [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) does not add permission usage records. Instead, it deletes the historical records of the user.
 
-**Required permissions**: ohos.permission.PERMISSION_RECORD_TOGGLE (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_RECORD_TOGGLE
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -282,7 +292,7 @@ If **status** is **true**, [addPermissionUsedRecord](#privacymanageraddpermissio
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -290,7 +300,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100007 | The service is abnormal. |
-| 12100009 | Common inner error. |
+| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query applications under the user. |
 
 **Example**
 
@@ -299,9 +309,9 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
-  console.log('setPermissionUsedRecordToggleStatus success');
-}).catch((err: BusinessError) => {
-  console.error(`setPermissionUsedRecordToggleStatus fail, err->${JSON.stringify(err)}`);
+  console.info('setPermissionUsedRecordToggleStatus success');
+}).catch((err: BusinessError): void => {
+  console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -311,7 +321,9 @@ getPermissionUsedRecordToggleStatus(): Promise&lt;boolean&gt;
 
 Obtains the settings of the permission usage record switch for this user. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -319,11 +331,11 @@ Obtains the settings of the permission usage record switch for this user. This A
 
 | Type         | Description                                   |
 | ------------- | --------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the switch settings. **true** to enable, **false** otherwise.|
+| Promise&lt;boolean&gt; | Promise used to return the result. Returns **true** if the switch is enabled. Returns **false** if the switch is disabled.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -338,14 +350,14 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 privacyManager.getPermissionUsedRecordToggleStatus().then((res) => {
-  console.log('getPermissionUsedRecordToggleStatus success');
+  console.info('getPermissionUsedRecordToggleStatus success');
   if (res == true) {
-    console.log('get status is TRUE');
+    console.info('get status is TRUE');
   } else {
-    console.log('get status is FALSE');
+    console.info('get status is FALSE');
   }
-}).catch((err: BusinessError) => {
-  console.error(`getPermissionUsedRecordToggleStatus fail, err->${JSON.stringify(err)}`);
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -353,11 +365,11 @@ privacyManager.getPermissionUsedRecordToggleStatus().then((res) => {
 
 startUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;void&gt;
 
-Starts using a permission. This API is called by a system application to report the permission usage of an application in the foreground and background, allowing the privacy service to respond based on the application lifecycle. This API uses a promise to return the result.
+This API is called by a system application to transfer the permission usage of the application in the foreground and background. The privacy service notifies all subscribers of this permission usage status change event of the status. For details about the subscription method, see [on](#privacymanageron). This API uses a promise to return the result.
 
-When an application starts to use a permission, the privacy service notifies the privacy indicator that the application is using the permission. Upon the application's exit, the privacy service notifies the privacy indicator that the application has stopped using the permission and clears the corresponding cache.
+**System API**: This is a system API.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -365,7 +377,7 @@ When an application starts to use a permission, the privacy service notifies the
 
 | Name         | Type  | Mandatory| Description                                 |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| tokenID        | number | Yes  | Token ID of the caller, which can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the [BundleInfo](js-apis-bundleManager-bundleInfo.md) of the application.|
 | permissionName | Permissions | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 
 **Return value**
@@ -376,7 +388,7 @@ When an application starts to use a permission, the privacy service notifies the
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -384,7 +396,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
+| 12100002 | (Deprecated in 12) The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
 | 12100007 | The service is abnormal. |
@@ -396,11 +408,11 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
-  console.log('startUsingPermission success');
-}).catch((err: BusinessError) => {
-  console.error(`startUsingPermission fail, err->${JSON.stringify(err)}`);
+  console.info('startUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -408,15 +420,11 @@ privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(
 
 startUsingPermission(tokenID: number, permissionName: Permissions, pid?: number, usedType?: PermissionUsedType): Promise&lt;void&gt;
 
-Starts using a permission. This API is called by a system application to report the permission usage of an application in the foreground and background, allowing the privacy service to respond based on the application lifecycle. This API uses a promise to return the result.
+This API is called by a system application to transfer the permission usage of the application in the foreground and background. The privacy service notifies all subscribers of this permission usage status change event of the status. For details about the subscription method, see [on](#privacymanageron). This API uses a promise to return the result.
 
-When an application starts to use a permission, the privacy service notifies the privacy indicator that the application is using the permission. Upon the application's exit, the privacy service notifies the privacy indicator that the application has stopped using the permission and clears the corresponding cache.
+**System API**: This is a system API.
 
-For a multi-process application, you can specify the process ID (PID) of the application when reporting the permission usage. If no PID is specified, the privacy service responds by application. When the application exits, the privacy service notifies the privacy indicator and clears the cache.
-
-If a PID is specified, the privacy service responds by process. when the process exits, the privacy service notifies the privacy indicator and clears the cache. In this case, the PID must be that of the application corresponding to the token ID.
-
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -424,7 +432,7 @@ If a PID is specified, the privacy service responds by process. when the process
 
 | Name         | Type  | Mandatory| Description                                 |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| tokenID        | number | Yes  | Token ID of the caller, which can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the [BundleInfo](js-apis-bundleManager-bundleInfo.md) of the application.|
 | permissionName | Permissions | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 | pid            | number | No  | PID of the caller. The default value is **-1**, which indicates that the privacy service does not respond based on the process lifecycle.|
 | usedType       | [PermissionUsedType](#permissionusedtype12) | No| Sensitive permission access mode. The default value is **NORMAL_TYPE**.|
@@ -437,7 +445,7 @@ If a PID is specified, the privacy service responds by process. when the process
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -445,7 +453,6 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the type of the specified tokenID is not of the application type, or usedType is invalid. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
 | 12100007 | The service is abnormal. |
@@ -458,33 +465,122 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit'
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // accessTokenId can also be obtained by using bundleManager.getBundleInfoForSelfSync.
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
 
 // without pid and usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
-  console.log('startUsingPermission success');
-}).catch((err: BusinessError) => {
-  console.error(`startUsingPermission fail, err->${JSON.stringify(err)}`);
+  console.info('startUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with pid
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
-  console.log('startUsingPermission success');
-}).catch((err: BusinessError) => {
-  console.error(`startUsingPermission fail, err->${JSON.stringify(err)}`);
+  console.info('startUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
-  console.log('startUsingPermission success');
-}).catch((err: BusinessError) => {
-  console.error(`startUsingPermission fail, err->${JSON.stringify(err)}`);
+  console.info('startUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with pid and usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
-  console.log('startUsingPermission success');
-}).catch((err: BusinessError) => {
-  console.error(`startUsingPermission fail, err->${JSON.stringify(err)}`);
+  console.info('startUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## privacyManager.startUsingPermission
+
+startUsingPermission(tokenID: number, permissionName: Permissions, pid?: number, usedType?: PermissionUsedType, options?: PermissionUsingOptions): Promise&lt;void&gt;
+
+This API is called by a system application to transfer the permission usage of the application in the foreground and background. The privacy service notifies all subscribers of this permission usage status change event of the status. For details about the subscription method, see [on](#privacymanageron). This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
+
+**System capability**: SystemCapability.Security.AccessToken
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name         | Type  | Mandatory| Description                                 |
+| -------------- | ------ | ---- | ------------------------------------ |
+| tokenID        | number | Yes  | Token ID of the caller, which can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the [BundleInfo](js-apis-bundleManager-bundleInfo.md) of the application.|
+| permissionName | Permissions | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| pid            | number | No  | PID of the caller process. The default value is **-1**, indicating that the response is not based on the process lifecycle.|
+| usedType       | [PermissionUsedType](#permissionusedtype12) | No| Sensitive permission access mode. The default value is **NORMAL_TYPE**.|
+| options        | [PermissionUsingOptions](#permissionusingoptions)| No| Optional parameter for using a permission.|
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------- | --------------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
+| 202 | Not system app. Interface caller is not a system app. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the type of the specified tokenID is not of the application type, usedType is invalid, or the enhancedIdentity in PermissionUsingOptions exceeds 48 characters. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
+| 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
+| 12100007 | The service is abnormal. |
+| 12100008 | Out of memory. |
+
+**Example**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit'
+
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+let pid: number = rpc.IPCSkeleton.getCallingPid();
+let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
+
+// Without the pid and usedType parameters
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// With the pid parameter
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// With the usedType parameter
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// With the pid and usedType parameters
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// With pid, usedType, and enhancedIdentity
+privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType, {enhancedIdentity: "test"}).then(() => {
+  console.info('startUsingPermission success.');
+}).catch((err: BusinessError): void => {
+  console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -492,11 +588,11 @@ privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, 
 
 startUsingPermission(tokenID: number, permissionName: Permissions, callback: AsyncCallback&lt;void&gt;): void
 
-Starts using a permission. This API is called by a system application to report the permission usage of an application in the foreground and background, allowing the privacy service to respond based on the application lifecycle. This API uses an asynchronous callback to return the result.
+This API is called by a system application to transfer the permission usage of the application in the foreground and background. The privacy service notifies all subscribers of this permission usage status change event of the status. For details about the subscription method, see [on](#privacymanageron). This API uses an asynchronous callback to return the result.
 
-When an application starts to use a permission, the privacy service notifies the privacy indicator that the application is using the permission. Upon the application's exit, the privacy service notifies the privacy indicator that the application has stopped using the permission and clears the corresponding cache.
+**System API**: This is a system API.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -504,13 +600,13 @@ When an application starts to use a permission, the privacy service notifies the
 
 | Name         | Type                 | Mandatory| Description                                 |
 | -------------- | --------------------- | ---- | ------------------------------------ |
-| tokenID        | number                | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| tokenID        | number                | Yes  | Token ID of the caller, which can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the [BundleInfo](js-apis-bundleManager-bundleInfo.md) of the application.|
 | permissionName | Permissions                | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 | callback       | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -518,7 +614,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
+| 12100002 | (Deprecated in 12) The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
 | 12100007 | The service is abnormal. |
@@ -530,12 +626,12 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`startUsingPermission fail, err->${JSON.stringify(err)}`);
+    console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
   } else {
-    console.log('startUsingPermission success');
+    console.info('startUsingPermission success');
   }
 });
 ```
@@ -544,9 +640,11 @@ privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err:
 
 stopUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;void&gt;
 
-Stops using a permission. This API must be called by a system application, and used with **startUsingPermission** in pairs. This API uses a promise to return the result.
+Stops using a permission. This API is called by a system service and corresponds to **startUsingPermission**. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -554,7 +652,7 @@ Stops using a permission. This API must be called by a system application, and u
 
 | Name         | Type  | Mandatory| Description                                 |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| tokenID        | number | Yes  | Token ID of the caller, which can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the [BundleInfo](js-apis-bundleManager-bundleInfo.md) of the application.|
 | permissionName | Permissions | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 
 **Return value**
@@ -565,7 +663,7 @@ Stops using a permission. This API must be called by a system application, and u
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -573,7 +671,6 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
 | 12100007 | The service is abnormal. |
@@ -585,11 +682,11 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
-  console.log('stopUsingPermission success');
-}).catch((err: BusinessError) => {
-  console.error(`stopUsingPermission fail, err->${JSON.stringify(err)}`);
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -597,11 +694,13 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then((
 
 stopUsingPermission(tokenID: number, permissionName: Permissions, pid?: number): Promise&lt;void&gt;
 
-Stops using a permission. This API must be called by a system application, and used with **startUsingPermission** in pairs. This API uses a promise to return the result.
+Stops using a permission. This API is called by a system service and corresponds to **startUsingPermission**. This API uses a promise to return the result.
 
 The value of **pid** must match that used in **startUsingPermission**.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -609,7 +708,7 @@ The value of **pid** must match that used in **startUsingPermission**.
 
 | Name         | Type  | Mandatory| Description                                 |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| tokenID        | number | Yes  | Token ID of the caller, which can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the [BundleInfo](js-apis-bundleManager-bundleInfo.md) of the application.|
 | permissionName | Permissions | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 | pid            | number | No  | PID of the application. The value must match that used in **startUsingPermission**. The default value is **-1**.|
 
@@ -621,7 +720,7 @@ The value of **pid** must match that used in **startUsingPermission**.
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -629,7 +728,6 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
 | 12100007 | The service is abnormal. |
@@ -642,21 +740,100 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit'
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // accessTokenId can also be obtained by using bundleManager.getBundleInfoForSelfSync.
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 
 // without pid
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
-  console.log('stopUsingPermission success');
-}).catch((err: BusinessError) => {
-  console.error(`stopUsingPermission fail, err->${JSON.stringify(err)}`);
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 
 // with pid
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
-  console.log('stopUsingPermission success');
-}).catch((err: BusinessError) => {
-  console.error(`stopUsingPermission fail, err->${JSON.stringify(err)}`);
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## privacyManager.stopUsingPermission
+
+stopUsingPermission(tokenID: number, permissionName: Permissions, pid?: number, options?: PermissionUsingOptions): Promise&lt;void&gt;
+
+Stops using a permission. This API is called by a system service and corresponds to **startUsingPermission**. This API uses a promise to return the result.
+
+The PID must be the same as the PID passed in [startUsingPermission](#privacymanagerstartusingpermission-1).
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
+
+**System capability**: SystemCapability.Security.AccessToken
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name         | Type  | Mandatory| Description                                 |
+| -------------- | ------ | ---- | ------------------------------------ |
+| tokenID        | number | Yes  | Token ID of the caller, which can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the [BundleInfo](js-apis-bundleManager-bundleInfo.md) of the application.|
+| permissionName | Permissions | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| pid            | number | No  | PID of the caller process. The default value is **-1**, indicating that the response is not based on the process lifecycle.|
+| options        | [PermissionUsingOptions](#permissionusingoptions)| No| Optional parameter for using a permission.|
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------- | --------------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
+| 202 | Not system app. Interface caller is not a system app. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the type of the specified tokenID is not of the application type, or the enhancedIdentity in PermissionUsingOptions exceeds 48 characters. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
+| 12100004 | The API is not used in pair with 'startUsingPermission'. |
+| 12100007 | The service is abnormal. |
+| 12100008 | Out of memory. |
+
+**Example**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit'
+
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+let pid: number = rpc.IPCSkeleton.getCallingPid();
+
+// Without the pid parameter
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+
+// With the pid parameter
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+
+// With the extended identity ID
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, {enhancedIdentity: "test"}).then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -664,9 +841,11 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).t
 
 stopUsingPermission(tokenID: number, permissionName: Permissions, callback: AsyncCallback&lt;void&gt;): void
 
-Stops using a permission. This API must be called by a system application, and used with **startUsingPermission** in pairs. This API uses an asynchronous callback to return the result.
+Stops using a permission. This API is called by a system service and corresponds to **startUsingPermission**. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -674,13 +853,13 @@ Stops using a permission. This API must be called by a system application, and u
 
 | Name         | Type                 | Mandatory| Description                                 |
 | -------------- | --------------------- | ---- | ------------------------------------ |
-| tokenID        | number                | Yes  | Token ID of the caller, which is the value of **accessTokenId** in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
+| tokenID        | number                | Yes  | Token ID of the caller, which can be obtained from the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the [BundleInfo](js-apis-bundleManager-bundleInfo.md) of the application.|
 | permissionName | Permissions                | Yes  | Permission to use. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 | callback       | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -688,7 +867,6 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
 | 12100007 | The service is abnormal. |
@@ -700,27 +878,82 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // You can use getApplicationInfo to obtain accessTokenId.
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`stopUsingPermission fail, err->${JSON.stringify(err)}`);
+    console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
   } else {
-    console.log('stopUsingPermission success');
+    console.info('stopUsingPermission success');
   }
 });
+```
+
+## privacyManager.checkPermissionInUse
+
+checkPermissionInUse(permissionName: Permissions): boolean
+
+Checks whether a specified sensitive permission is in use.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
+
+**System capability**: SystemCapability.Security.AccessToken
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name         | Type  | Mandatory| Description                                 |
+| -------------- | ------ | ---- | ------------------------------------ |
+| permissionName | Permissions                | Yes  | Name of the permission to be queried. You can query the valid permission names in [Application Permissions](../../security/AccessToken/app-permissions.md).|
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------- | --------------------------------------- |
+| boolean | Whether the specified sensitive permission is in use. true: The specified sensitive permission is in use. false: The specified sensitive permission is not in use.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
+| 202 | Not system application. Interface caller is not a system application. |
+| 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
+| 12100007 | The service is abnormal. |
+
+**Example**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+
+try {
+  let result = privacyManager.checkPermissionInUse('ohos.permission.CAMERA')
+  console.info('checkPermissionInUse success, result: ' + result);
+} catch (err) {
+  console.error(`checkPermissionInUse fail, code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## privacyManager.on
 
 on(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;ActiveChangeResponse&gt;): void
 
-Subscribes to changes in the permission usage status of the specified permissions.
+Subscribes to changes in the permission usage status of the specified permissions. This API uses an asynchronous callback to return the result.
 
 Multiple callbacks can be registered for the same **permissionList**.
 
-The same callback cannot be registered for the **permissionList**s with overlapping values.
+The same callback cannot be registered for the **permissionList** with overlapping values.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -730,11 +963,11 @@ The same callback cannot be registered for the **permissionList**s with overlapp
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | Yes  | Event type. The value is **'activeStateChange'**, which indicates the permission usage change.  |
 | permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. If this parameter is not specified, this API will subscribe to usage changes of all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | Yes| Callback used to return the permission usage change.|
+| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | Yes| Callback used to return the object of subscribing to state changes of the specified permission.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -756,10 +989,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let permissionList: Array<Permissions> = [];
 try {
     privacyManager.on('activeStateChange', permissionList, (data: privacyManager.ActiveChangeResponse) => {
-        console.debug('receive permission state change, data:' + JSON.stringify(data));
+        console.debug(`receive permission state change, data: + ${data}`);
     });
 } catch(err) {
-    console.error(`catch err->${JSON.stringify(err)}`);
+    console.error(`Catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -767,11 +1000,13 @@ try {
 
 off(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback?: Callback&lt;ActiveChangeResponse&gt;): void
 
-Unsubscribes from changes in the permission usage of the specified permissions.
+Unsubscribes from changes in the permission usage of the specified permissions. This API uses an asynchronous callback to return the result.
 
-If **callback** is not specified, this API will unregister all callbacks for **permissionList**.
+During unsubscribing, if no callback is passed, all callbacks in **permissionList** are deleted in batches.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -780,12 +1015,12 @@ If **callback** is not specified, this API will unregister all callbacks for **p
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | Yes  | Event type. The value is **'activeStateChange'**, which indicates the permission usage change.  |
-| permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. The value must be the same as that in **on()**. If this parameter is not specified, this API will unsubscribe from usage changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | No| Callback to unregister.|
+| permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. The value must be the same as that in [on](#privacymanageron). If this parameter is not specified, this API will unsubscribe from state changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | No| Callback used to return the object of canceling the subscription to state changes of the specified token ID and permission.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -793,7 +1028,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionList is not in the listening list. |
-| 12100004 | The API is not used in pair with 'on'. |
+| 12100004 | The API is not used in pair with "on". |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
 
@@ -806,17 +1041,19 @@ let permissionList: Array<Permissions> = [];
 try {
     privacyManager.off('activeStateChange', permissionList);
 } catch(err) {
-    console.error(`catch err->${JSON.stringify(err)}`);
+    console.error(`Catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## privacyManager.getPermissionUsedTypeInfos<sup>12+</sup>
 
-getPermissionUsedTypeInfos(tokenId?: number, permissionName?: Permissions): Promise&lt;Array&lt;PermissionUsedTypeInfo&gt;&gt;
+getPermissionUsedTypeInfos(tokenId?: number | null, permissionName?: Permissions): Promise&lt;Array&lt;PermissionUsedTypeInfo&gt;&gt;
 
 Obtains information about how a sensitive permission is used by an application.
 
-**Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PERMISSION_USED_STATS
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -824,27 +1061,27 @@ Obtains information about how a sensitive permission is used by an application.
 
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
-| tokenId            | number                | No  | ID of the application that uses the sensitive permission. If this parameter is **0**, this API obtains the sensitive permission access information of all applications.  |
+| tokenId            | number \| null                | No  | ID of the application that uses the sensitive permission. If this parameter is **0**, this API obtains the sensitive permission access information of all applications. The **null** type is supported since API version 20.  |
 | permissionName     | Permissions           | No  | Name of the sensitive permission used. If this parameter is left blank, this API obtains the access information about all sensitive permissions.  |
 
 **Return value**
 
 | Type         | Description                                   |
 | ------------- | --------------------------------------- |
-| Promise&lt;Array&lt;[PermissionUsedTypeInfo](#permissionusedtypeinfo12)&gt;&gt; | Promise used to return the information obtained.|
+| Promise&lt;Array&lt;[PermissionUsedTypeInfo](#permissionusedtypeinfo12)&gt;&gt; | Promise that returns the permission access type information list.|
 
 **Error codes**
 
-For details about the error codes, see [Access Control Error Codes](errorcode-access-token.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
 
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
 | 202 | Not system app. Interface caller is not a system app. |
-| 401 | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 12100001 | Invalid parameter. PermissionName exceeds 256 characters. |
 | 12100002 | The input tokenId does not exist. |
 | 12100003 | The input permissionName does not exist. |
+| 12100009 | Common inner error. A database error occurs. |
 
 **Example**
 
@@ -852,37 +1089,39 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { privacyManager, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenId: number = 0; // You can use bundleManager.getApplicationInfo to obtain accessTokenId.
+let tokenId: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 let permissionName: Permissions = 'ohos.permission.CAMERA';
 // Without any parameter.
 privacyManager.getPermissionUsedTypeInfos().then(() => {
-  console.log('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
-  console.error(`getPermissionUsedTypeInfos fail, err->${JSON.stringify(err)}`);
+  console.info('getPermissionUsedTypeInfos success');
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // Pass in tokenId only.
 privacyManager.getPermissionUsedTypeInfos(tokenId).then(() => {
-  console.log('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
-  console.error(`getPermissionUsedTypeInfos fail, err->${JSON.stringify(err)}`);
+  console.info('getPermissionUsedTypeInfos success');
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // Pass in permissionName only.
 privacyManager.getPermissionUsedTypeInfos(null, permissionName).then(() => {
-  console.log('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
-  console.error(`getPermissionUsedTypeInfos fail, err->${JSON.stringify(err)}`);
+  console.info('getPermissionUsedTypeInfos success');
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // Pass in tokenId and permissionName.
 privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
-  console.log('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
-  console.error(`getPermissionUsedTypeInfos fail, err->${JSON.stringify(err)}`);
+  console.info('getPermissionUsedTypeInfos success');
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ## PermissionUsageFlag
 
 Enumerates the modes for querying the permission usage records.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -894,6 +1133,8 @@ Enumerates the modes for querying the permission usage records.
 ## PermissionUsedRequest
 
 Represents the request for querying permission usage records.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -910,7 +1151,9 @@ Represents the request for querying permission usage records.
 
 ## PermissionUsedResponse
 
-Represents the permission usage records of all applications.
+Represents the access records of all applications or devices.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -918,25 +1161,30 @@ Represents the permission usage records of all applications.
 | --------- | -------------- | ---- | ---- | ---------------------------------------- |
 | beginTime | number         | No   | No   | Start time of the query, in ms.|
 | endTime   | number         | No   | No   | End time of the query, in ms.|
-| bundleRecords  | Array&lt;[BundleUsedRecord](#bundleusedrecord)&gt;         | No   | No   | Permission usage records.                                |
+| bundleRecords  | Array&lt;[BundleUsedRecord](#bundleusedrecord)&gt;         | No   | No   | Permission usage records of applications or devices.                                |
 
 ## BundleUsedRecord
 
-Represents the permission access records of an application.
+Represents the access records of an application or device.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
 | Name      | Type            | Read-Only| Optional| Description                                      |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| tokenId  | number         | No   | No   | Token ID of the application (caller).                                |
-| isRemote | boolean         | No   | No   | Whether it is a distributed device. **false** (default) means non-distributed devices; **true** means distributed devices.|
-| deviceId  | string         | No   | No   | ID of the device hosting the target application.                                |
-| bundleName | string         | No   | No   | Bundle name of the target application.|
-| permissionRecords  | Array&lt;[PermissionUsedRecord](#permissionusedrecord)&gt;         | No   | No   | Permission usage records of the target application.                                |
+| tokenId  | number         | No   | No   | Identity ID of the application that uses the permission. It is invalid in distributed scenarios.                                |
+| isRemote | boolean         | No   | No   | Whether the access record is in a distributed scenario. The default value is **false**, indicating that it is not a distributed scenario. The value **true** indicates a distributed scenario.|
+| deviceId  | string         | No   | No   | ID of the device where the application that uses the permission is located. It is used only in distributed scenarios.                                |
+| deviceName<sup>24+</sup>  | string         | No   | Yes   | Name of the device where the application that uses the permission is located. It is used only in distributed scenarios.                                |
+| bundleName | string         | No   | No   | Package name of the application that uses the permission. It is invalid in distributed scenarios.|
+| permissionRecords  | Array&lt;[PermissionUsedRecord](#permissionusedrecord)&gt;         | No   | No   | Permission usage records of each application or device.                                |
 
 ## PermissionUsedRecord
 
 Represents the usage records of a permission.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -950,25 +1198,30 @@ Represents the usage records of a permission.
 | lastAccessDuration | number         | No   | No   | Last access duration, in ms.|
 | accessRecords  | Array&lt;[UsedRecordDetail](#usedrecorddetail)&gt;         | No   | No   | Successful access records. This parameter is valid only when **flag** is **FLAG_PERMISSION_USAGE_DETAIL**. By default, 10 records are provided.                                |
 | rejectRecords  | Array&lt;[UsedRecordDetail](#usedrecorddetail)&gt;         | No   | No   | Rejected access records. This parameter is valid only when **flag** is **FLAG_PERMISSION_USAGE_DETAIL**. By default, 10 records are provided.                                |
+| enhancedIdentity | string | No| Yes|  Extended identity.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## UsedRecordDetail
 
 Represents the details of a single access record.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Security.AccessToken
 
 | Name      | Type            | Read-Only| Optional| Description                                      |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| status  | number         | No   | No   | Access status.                                |
-| lockScreenStatus<sup>11+</sup>  | number         | No   | Yes   | Status of the screen during the access.<br> - **1**: The screen is not locked when the permission is used.<br> - **2**: The screen is locked when the permission is used.                                |
+| status  | number         | No   | No   | Access status.|
+| lockScreenStatus<sup>11+</sup>  | number         | No   | Yes   | Status of the screen during the access.<br> - **1**: The screen is not locked when the permission is used.<br> - **2**: The screen is locked when the permission is used.|
 | timestamp | number         | No   | No   | Access timestamp, in ms.|
-| accessDuration  | number         | No   | No   | Access duration, in ms.                                |
-| count<sup>11+</sup> | number | No| Yes   | Number of successful or failed accesses.
+| accessDuration  | number         | No   | No   | Access duration, in ms.|
+| count<sup>11+</sup> | number | No| Yes   | Number of successful or failed accesses.|
 | usedType<sup>12+</sup> | [PermissionUsedType](#permissionusedtype12) | No| Yes   | Means for using the sensitive permission.|
 
 ## PermissionActiveStatus
 
 Enumerates the permission usage statuses.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -982,7 +1235,9 @@ Enumerates the permission usage statuses.
 
 Defines the detailed permission usage information.
 
- **System capability**: SystemCapability.Security.AccessToken
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Security.AccessToken
 
 | Name          | Type                   | Read-Only| Optional| Description                  |
 | -------------- | ---------------------- | ---- | ---- | --------------------- |
@@ -992,10 +1247,13 @@ Defines the detailed permission usage information.
 | deviceId       | string                 | No  | No  | Device ID.                |
 | activeStatus   | [PermissionActiveStatus](#permissionactivestatus) | No  | No  | Permission usage status.       |
 | usedType<sup>18+</sup> | [PermissionUsedType](#permissionusedtype12) | No  | Yes  | Sensitive permission access mode. This parameter is invalid when **activeStatus** is **INACTIVE**.|
+| enhancedIdentity | string | No| Yes|  Extended identity.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## PermissionUsedType<sup>12+</sup>
 
 Enumerates the means for using a sensitive permission.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -1009,7 +1267,9 @@ Enumerates the means for using a sensitive permission.
 
 Represents detailed information about the use of a permission.
 
- **System capability**: SystemCapability.Security.AccessToken
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Security.AccessToken
 
 | Name          | Type                   | Read-Only| Optional| Description                  |
 | -------------- | ---------------------- | ---- | ---- | --------------------- |
@@ -1021,8 +1281,25 @@ Represents detailed information about the use of a permission.
 
 Represents the options for adding a permission usage record.
 
- **System capability**: SystemCapability.Security.AccessToken
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Security.AccessToken
 
 | Name          | Type                   | Read-Only| Optional| Description                  |
 | -------------- | ---------------------- | ---- | ---- | --------------------- |
 | usedType | [PermissionUsedType](#permissionusedtype12) | No| Yes   | Access mode of the sensitive permission.|
+| enhancedIdentity | string | No| Yes|  Extended identity.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+
+## PermissionUsingOptions
+
+Represents the optional parameter set for using a permission.
+
+ **Since**: 26.0.0
+
+ **System capability**: SystemCapability.Security.AccessToken
+
+ **Model restriction**: This API can be used only in the stage model.
+
+| Name          | Type                   | Read-Only| Optional| Description                  |
+| -------------- | ---------------------- | ---- | ---- | --------------------- |
+| enhancedIdentity | string | No| Yes|  Extended identity.|

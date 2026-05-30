@@ -1,7 +1,7 @@
 # native_fence.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @li_hui180; @ding-panyun-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -13,9 +13,9 @@
 
 **库：** libnative_fence.so
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeFence
-
 **起始版本：** 20
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **相关模块：** [NativeFence](capi-nativefence.md)
 
@@ -34,15 +34,13 @@
 
 ### OH_NativeFence_IsValid()
 
-```
+```c
 bool OH_NativeFence_IsValid(int fenceFd)
 ```
 
 **描述**
 
 检查fenceFd是否有效。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeFence
 
 **起始版本：** 20
 
@@ -61,7 +59,7 @@ bool OH_NativeFence_IsValid(int fenceFd)
 
 ### OH_NativeFence_Wait()
 
-```
+```c
 bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 ```
 
@@ -69,7 +67,6 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 
 阻塞传入的fenceFd。最大阻塞时间由超时参数决定。传入的fenceFd需要用户自己关闭。
 
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeFence
 
 **起始版本：** 20
 
@@ -79,7 +76,7 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 | 参数项           | 描述                                                         |
 | ---------------- | ------------------------------------------------------------ |
 | int fenceFd      | 表示一个文件描述符，用于定时同步。                           |
-| uint32_t timeout | 表示等待时间。单位为毫秒，-1表示永久等待，0表示接口立即返回。 |
+| uint32_t timeout | 表示等待时间。单位为毫秒，0表示接口立即返回。 |
 
 **返回：**
 
@@ -89,15 +86,13 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 
 ### OH_NativeFence_WaitForever()
 
-```
+```c
 bool OH_NativeFence_WaitForever(int fenceFd)
 ```
 
 **描述**
 
 永久阻塞传入的fenceFd。传入的fenceFd需要用户自己关闭。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeFence
 
 **起始版本：** 20
 
@@ -116,15 +111,13 @@ bool OH_NativeFence_WaitForever(int fenceFd)
 
 ### OH_NativeFence_Close()
 
-```
+```c
 void OH_NativeFence_Close(int fenceFd)
 ```
 
 **描述**
 
 关闭fenceFd。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeFence
 
 **起始版本：** 20
 

@@ -1,4 +1,14 @@
 # ArkUI_ContextCallback
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_ContextCallback
+```
 
 ## 概述
 
@@ -16,7 +26,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void* userData | 自定义类型。 |
+| void* userData | 自定义类型，开发者自定义类型的数据，在回调时作为参数传入。 |
 
 
 ### 成员函数
@@ -29,7 +39,7 @@
 
 ### callback()
 
-```
+```c
 void (*callback)(void* userData)
 ```
 

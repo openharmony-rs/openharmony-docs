@@ -1,6 +1,13 @@
 # Crypto Architecture Kit (Crypto Architecture Kit)
 
-- [Introduction to Crypto Architecture Kit](crypto-architecture-kit-intro.md)
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+- [About This Kit](crypto-architecture-kit-intro.md)
 - Key Generation and Conversion<!--crypto-key-generation-conversion-->
   - [Key Generation and Conversion Overview](crypto-key-generation-conversion-overview.md)
   - Key Generation and Conversion Specifications<!--crypto-key-generation-conversion-spec-->
@@ -25,6 +32,8 @@
     - [Converting a PEM String into an Asymmetric Key Pair (C/C++)](crypto-convert-string-data-to-asym-key-pair-ndk.md)
     - [Encoding and Decoding with an RSA Private Key (ArkTS)](crypto-rsa-encoded-decoded.md)
     - [Encoding and Decoding with an RSA Private Key (C/C++)](crypto-rsa-encoded-decoded-ndk.md)
+    - [Obtaining a Public Key from a Private Key (ArkTS)](crypto-prikey-to-get-pubkey.md)
+    - [Obtaining a Public Key from a Private Key (C/C++)](crypto-prikey-to-get-pubkey-ndk.md)
 - Encryption and Decryption<!--crypto-encryption-decryption-->
   - [Encryption and Decryption Overview](crypto-encryption-decryption-overview.md)
   - Encryption and Decryption Algorithm Specifications<!--crypto-encrypt-decrypt-spec-->
@@ -36,16 +45,18 @@
     - [Encryption and Decryption with an AES Symmetric Key (GCM Mode) (C/C++)](crypto-aes-sym-encrypt-decrypt-gcm-ndk.md)
     - [Encryption and Decryption with an AES Symmetric Key (CCM Mode) (ArkTS)](crypto-aes-sym-encrypt-decrypt-ccm.md)
     - [Encryption and Decryption with an AES Symmetric Key (CCM Mode) (C/C++)](crypto-aes-sym-encrypt-decrypt-ccm-ndk.md)
+    - [Encryption and Decryption Using an AES Symmetric Key (CCM Mode) with AeadParamsSpec (ArkTS)](crypto-aes-sym-encrypt-decrypt-ccm-new.md)
     - [Encryption and Decryption with an AES Symmetric Key (CBC Mode) (ArkTS)](crypto-aes-sym-encrypt-decrypt-cbc.md)
     - [Encryption and Decryption with an AES Symmetric Key (CBC Mode) (C/C++)](crypto-aes-sym-encrypt-decrypt-cbc-ndk.md)
     - [Encryption and Decryption with an AES Symmetric Key (ECB Mode) (ArkTS)](crypto-aes-sym-encrypt-decrypt-ecb.md)
     - [Encryption and Decryption with an AES Symmetric Key (ECB Mode) (C/C++)](crypto-aes-sym-encrypt-decrypt-ecb-ndk.md)
     - [Encryption and Decryption by Segment with an AES Symmetric Key (GCM Mode) (ArkTS)](crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)
+    - [Encryption and Decryption with an AES Symmetric Key (XTS Mode) (ArkTS)](crypto-aes-sym-encrypt-decrypt-xts.md)
     - [Encryption and Decryption by Segment with an AES Symmetric Key (GCM Mode) (C/C++)](crypto-aes-sym-encrypt-decrypt-gcm-by-segment-ndk.md)
     - [Encryption and Decryption with a DES Symmetric Key (ECB Mode) (ArkTS)](crypto-des-sym-encrypt-decrypt-ecb.md)
     - [Encryption and Decryption with a DES Symmetric Key (ECB Mode) (C/C++)](crypto-des-sym-encrypt-decrypt-ecb-ndk.md)
-    - [Encryption and Decryption with a 3DES Asymmetric Key Pair (ArkTS)](crypto-3des-sym-encrypt-decrypt-ecb.md)
-    - [Encryption and Decryption with a 3DES Asymmetric Key Pair (C/C++)](crypto-3des-sym-encrypt-decrypt-ecb-ndk.md)
+    - [Encryption and Decryption with a 3DES Symmetric Key Pair (ArkTS)](crypto-3des-sym-encrypt-decrypt-ecb.md)
+    - [Encryption and Decryption with a 3DES Symmetric Key Pair (C/C++)](crypto-3des-sym-encrypt-decrypt-ecb-ndk.md)
     - [Encryption and Decryption with an SM4 Symmetric Key (ECB Mode) (ArkTS)](crypto-sm4-sym-encrypt-decrypt-ecb.md)
     - [Encryption and Decryption with an SM4 Symmetric Key (ECB Mode) (C/C++)](crypto-sm4-sym-encrypt-decrypt-ecb-ndk.md)
     - [Encryption and Decryption with an SM4 Symmetric Key (CBC Mode) (ArkTS)](crypto-sm4-sym-encrypt-decrypt-cbc.md)
@@ -54,6 +65,10 @@
     - [Encryption and Decryption with an SM4 Symmetric Key (GCM Mode) (C/C++)](crypto-sm4-sym-encrypt-decrypt-gcm-ndk.md)
     - [Encryption and Decryption by Segment with an SM4 Symmetric Key (GCM Mode) (ArkTS)](crypto-sm4-sym-encrypt-decrypt-gcm-by-segment.md)
     - [Encryption and Decryption by Segment with an SM4 Symmetric Key (GCM Mode) (C/C++)](crypto-sm4-sym-encrypt-decrypt-gcm-by-segment-ndk.md)
+    - [Encryption and Decryption with a ChaCha20 Symmetric Key Pair (ArkTS)](crypto-chacha20-encrypt-decrypt.md)
+    - [Encryption and Decryption with a ChaCha20 Symmetric Key Pair (C/C++)](crypto-chacha20-encrypt-decrypt-ndk.md)
+    - [Encryption and Decryption with a ChaCha20 Symmetric Key Pair (Poly1305) (ArkTS)](crypto-chacha20-encrypt-decrypt-poly1305.md)
+    - [Encryption and Decryption with a ChaCha20 Symmetric Key Pair (Poly1305) (C/C++)](crypto-chacha20-encrypt-decrypt-poly1305-ndk.md)
     - [Encryption and Decryption with an RSA Asymmetric Key Pair (PKCS1) (ArkTS)](crypto-rsa-asym-encrypt-decrypt-pkcs1.md)
     - [Encryption and Decryption with an RSA Asymmetric Key Pair (PKCS1) (C/C++)](crypto-rsa-asym-encrypt-decrypt-pkcs1-ndk.md)
     - [Encryption and Decryption by Segment with an RSA Asymmetric Key Pair (ArkTS)](crypto-rsa-asym-encrypt-decrypt-by-segment.md)
@@ -61,21 +76,30 @@
     - [Encryption and Decryption with an RSA Asymmetric Key Pair (PKCS1_OAEP)](crypto-rsa-asym-encrypt-decrypt-pkcs1_oaep.md)
     - [Encryption and Decryption with an SM2 Asymmetric Key Pair (ArkTS)](crypto-sm2-asym-encrypt-decrypt.md)
     - [Encryption and Decryption with an SM2 Asymmetric Key Pair (C/C++)](crypto-sm2-asym-encrypt-decrypt-ndk.md)
+    - [Encryption and Decryption of Symmetric Keys with AES-WRAP (ArkTS)](crypto-aes-wrap-encrypt-decrypt.md)
+    - [Encryption and Decryption of Symmetric Keys with AES-WRAP (C/C++)](crypto-aes-wrap-encrypt-decrypt-ndk.md)
     - [Converting SM2 Ciphertext (ArkTS)](crypto-sm2-ciphertext-conversion.md)
     - [Converting SM2 Ciphertext (C/C++)](crypto-sm2-ciphertext-conversion-ndk.md)
+    - [Encryption and Decryption with an RC2 Symmetric Key (CBC Mode) (ArkTS)](crypto-rc2-sym-encrypt-decrypt-cbc.md)
+    - [Encryption and Decryption with an RC4 Symmetric Key (ArkTS)](crypto-rc4-sym-encrypt-decrypt.md)
+    - [Encryption and Decryption with ECIES (ArkTS)](crypto-encrypt-decrypt-using-ecies.md)
+    - [Encryption and Decryption Using ECIES (C/C++)](crypto-encrypt-decrypt-using-ecies-native.md)
 - Signing and Signature Verification<!--crypto-sign-sig-verify-->
   - [Signing and Signature Verification Overview and Algorithm Specifications](crypto-sign-sig-verify-overview.md)
   - Signing and Signature Verification Development<!--crypto-sign-sig-verify-dev-->
     - [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode) (ArkTS)](crypto-rsa-sign-sig-verify-pkcs1.md)
     - [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode) (C/C++)](crypto-rsa-sign-sig-verify-pkcs1-ndk.md)
+    - [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode) (OnlySign and OnlyVerify Modes) (ArkTS)](crypto-rsa-pkcs1-sig-verify-onlySign-onlyVerify.md)
     - [Signing and Signature Recovery Using an RSA Key Pair (PKCS1 Mode) (ArkTS)](crypto-rsa-sign-sig-verify-recover-pkcs1.md)
     - [Signature Recovery Using an RSA Key Pair (PKCS1 Mode) (C/C++)](crypto-rsa-sign-sig-verify-recover-pkcs1-ndk.md)
     - [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode) (ArkTS)](crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)
     - [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode) (C/C++)](crypto-rsa-sign-sig-verify-pkcs1-by-segment-ndk.md)
     - [Signing and Signature Verification with an RSA Key Pair (PSS Mode) (ArkTS)](crypto-rsa-sign-sig-verify-pss.md)
     - [Signing and Signature Verification with an RSA Key Pair (PSS Mode) (C/C++)](crypto-rsa-sign-sig-verify-pss-ndk.md)
+    - [Signing and Signature Verification with an RSA Key Pair (PSS Mode) (OnlySign and OnlyVerify Modes) (ArkTS)](crypto-rsa-pss-sig-verify-onlySign-onlyVerify.md)
     - [Signing and Signature Verification with an ECDSA Key Pair (ArkTS)](crypto-ecdsa-sign-sig-verify.md)
     - [Signing and Signature Verification with an ECDSA Key Pair (C/C++)](crypto-ecdsa-sign-sig-verify-ndk.md)
+    - [Signing and Signature Verification with an ECC Key Pair (OnlySign and OnlyVerify Modes) (ArkTS)](crypto-ecc-sig-verify-onlySign-onlyVerify.md)
     - [Signing and Signature Verification with an SM2 Key Pair (ArkTS)](crypto-sm2-sign-sig-verify-pkcs1.md)
     - [Signing and Signature Verification with an SM2 Key Pair (C/C++)](crypto-sm2-sign-sig-verify-pkcs1-ndk.md)
     - [Converting SM2 Signature Formats (ArkTS)](crypto-sm2-sign-data-format-conversion.md)
@@ -96,14 +120,19 @@
     - [Generating an MD Using SHA-256 (C/C++)](crypto-generate-message-digest-ndk.md)
     - [Generating an MD Using MD5 (ArkTS)](crypto-generate-message-digest-md5.md)
     - [Generating an MD Using MD5 (C/C++)](crypto-generate-message-digest-md5-ndk.md)
+    - [Generating an MD Using SHA-3 (ArkTS)](crypto-generate-message-digest-sha3.md)
+    - [Generating an MD Using SHA3-256 (C/C++)](crypto-generate-message-digest-sha3-ndk.md)
 - MAC<!--crypto-compute-mac-->
   - [MAC Overview and Algorithm Specifications](crypto-compute-mac-overview.md)
   - [Generating an HMAC (ArkTS)](crypto-compute-hmac.md)
   - [Generating an HMAC (C/C++)](crypto-compute-hmac-ndk.md)
   - [Generating a CMAC (ArkTS)](crypto-compute-cmac.md)
   - [Generating a CMAC (C/C++)](crypto-compute-cmac-ndk.md)
-- [Generating Secure Random Numbers (ArkTS)](crypto-generate-random-number.md)
-- [Generating Secure Random Numbers (C/C++)](crypto-generate-random-number-ndk.md)
+- Random Numbers<!--crypto-compute-rand-->
+  - [Generating Secure Random Numbers (ArkTS)](crypto-generate-random-number.md)
+  - [Generating Secure Random Numbers (C/C++)](crypto-generate-random-number-ndk.md)
+  - [Generating Secure Random Numbers with Hardware Entropy Sources (ArkTS)](crypto-generate-random-number-hardware.md)
+  - [Generating Secure Random Numbers with Hardware Entropy Sources (C/C++)](crypto-generate-random-number-hardware-ndk.md)
 - Key Derivation<!--crypto-key-derivation-->
   - [Key Derivation Overview and Algorithm Specifications](crypto-key-derivation-overview.md)
   - [Key Derivation Using PBKDF2 (ArkTS)](crypto-key-derivation-using-pbkdf2.md)
@@ -112,3 +141,7 @@
   - [Key Derivation Using HKDF (C/C++)](crypto-key-derivation-using-hkdf-ndk.md)
   - [Key Derivation Using Scrypt (ArkTS)](crypto-key-derivation-using-scrypt.md)
   - [Key Derivation Using Scrypt (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
+  - [Key Derivation Using X963KDF (ArkTS)](crypto-key-derivation-using-x963kdf.md)
+  - [Key Derivation Using X963KDF (C/C++)](crypto-key-derivation-using-x963kdf-ndk.md)<!--RP1--><!--RP1End-->
+- Crypto Architecture Kit FAQs<!--crypto-faqs-->
+  - [AES Decryption Failure Returning Error Code 17630001](crypto-aes-decryption-error-faq.md)

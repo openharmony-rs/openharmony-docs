@@ -9,6 +9,8 @@
 
 为实现数据完整性保护和防抵赖，可使用生成/导入的密钥，对数据进行签名验签操作。
 
+从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
+
 ## 支持的算法
 
 以下为密钥签名/验签支持的规格说明。
@@ -33,6 +35,8 @@
 | <!--DelRow-->ECC/NoDigest | 签名是ASN1格式。<br/>NoDigest需要指定TAG HuksKeyDigest.HUKS_DIGEST_NONE。 | 9+ | 否 |
 | ED25519/NoDigest | NoDigest需要指定TAG HuksKeyDigest.HUKS_DIGEST_NONE。 | 8+ | 是 |
 | SM2/SM3 | 签名是ASN1格式。 | 9+ | 是 |
+| SM2/NoDigest | 签名是ASN1格式。<br/>NoDigest需要指定TAG HuksKeyDigest.HUKS_DIGEST_NONE。由业务对明文做SM3哈希，再将哈希后的数据传入，哈希后的数据长度必须满足SM2签名验签支持的摘要算法规格。 | 22+ | 是 |
+| ML-DSA | 可选参数context可以通过[HUKS_TAG_CONTEXT](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)指定，长度最大255字节。 | 26.0.0+ | 是 |
 
 **<!--RP4-->轻量级设备<!--RP4End-->规格**
 

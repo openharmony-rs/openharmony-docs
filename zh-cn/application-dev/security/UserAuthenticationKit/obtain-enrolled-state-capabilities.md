@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[API文档](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetenrolledstate12)。
+具体参数、返回值、错误码等描述，请参考对应的[userAuth.getEnrolledState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetenrolledstate12)。
 
 | 接口名称 | 功能描述 | 
 | -------- | -------- |
@@ -25,16 +25,23 @@
 
 以查询用户人脸注册凭据的状态为例：
 
-```ts
-import { BusinessError } from  '@kit.BasicServicesKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+<!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
-try {
-  let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
-  console.info(`get current enrolled state success, enrolledState: ${JSON.stringify(enrolledState)}`);
-} catch (error) {
-  const err: BusinessError = error as BusinessError;
-  console.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
+``` TypeScript
+obtainingEnrolledCredentialInformation() {
+  try {
+    let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
+    Logger.info('get current enrolled state successfully.');
+    return enrolledState.credentialDigest;
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`get current enrolled state failed, code is ${err?.code}, message is ${err?.message}`);
+    return false;
+  }
 }
 ```
-<!-- [obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+
+
+## 示例代码
+
+  - [查询用户注册凭据的状态](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)

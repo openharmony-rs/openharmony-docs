@@ -1,12 +1,20 @@
 # Class (FocusController)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供控制焦点的能力，如清除、移动和激活焦点等功能。
 
 > **说明：**
 >
-> - 本模块首批接口从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 以下API需先使用UIContext中的[getFocusController()](arkts-apis-uicontext-uicontext.md#getfocuscontroller12)方法获取FocusController实例，再通过该实例调用对应方法。
 
@@ -21,6 +29,8 @@ clearFocus(): void
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
+
+在该示例中，按钮"button2"默认获焦，点击按钮"clearFocus"后，焦点回到该页面的根容器节点"column1"，此时按下键盘TAB键，按钮"button2"重新获焦。可通过点击"button1"使该按钮获焦，点击按钮"clearFocus"后，焦点同样回到该页面的根容器节点"column1"，此时按下键盘TAB键，由按钮"button1"重新获焦。
 
 ```ts
 @Entry
@@ -60,7 +70,9 @@ struct ClearFocusExample {
             this.getUIContext().getFocusController().clearFocus();
           })
       }
+      .id('column2')
     }
+    .id('column1')
     .width('100%')
     .height('100%')
   }
@@ -138,7 +150,7 @@ struct RequestExample {
             try {
               this.getUIContext().getFocusController().requestFocus("eee");
             } catch (error) {
-              console.error('requestFocus failed code is ' + error.code + ' message is ' + error.message);
+              console.error(`requestFocus failed code is ${error.code} message is ${error.message}`);
             }
           })
       }
@@ -241,10 +253,10 @@ struct ClearFocusExample {
           .fontColor(Color.White)
           .focusOnTouch(true)
           .backgroundColor(Color.Blue)
-          .onClick(()=> {
-            console.log("button1 onClick");
+          .onClick(() => {
+            console.info("button1 onClick");
             this.getUIContext().getFocusController().activate(true);
-            console.log("focus status " + this.getUIContext().getFocusController().isActive());
+            console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
         Button('button2')
           .width(200)
@@ -253,10 +265,10 @@ struct ClearFocusExample {
           .focusOnTouch(true)
           .backgroundColor(this.btColor)
           .defaultFocus(true)
-          .onClick(()=> {
-            console.log("button2 onClick");
+          .onClick(() => {
+            console.info("button2 onClick");
             this.getUIContext().getFocusController().activate(false);
-            console.log("focus status " + this.getUIContext().getFocusController().isActive());
+            console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
           .onFocus(() => {
             this.btColor = Color.Red;
@@ -286,7 +298,7 @@ setAutoFocusTransfer(isAutoFocusTransfer: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| isAutoFocusTransfer | boolean| 是 | 设置页面切换时，新的页面是否需要主动获取焦点，例如[Router](js-apis-router.md#routerpushurldeprecated)、[Navigation](arkui-ts/ts-basic-components-navigation.md)、[Menu](arkui-ts/ts-basic-components-menu.md)、[Dialog](arkui-ts/ohos-arkui-advanced-Dialog.md)、[Popup](arkui-ts/ohos-arkui-advanced-Popup.md)等。true表示需要主动获取焦点，false表示不需要主动获取焦点。默认值为true。 |
+| isAutoFocusTransfer | boolean| 是 | 设置页面切换时，新的页面是否需要主动获取焦点，例如[Router](js-apis-router.md)、[Navigation](arkui-ts/ts-basic-components-navigation.md)、[Menu](arkui-ts/ts-basic-components-menu.md)、[Dialog](arkui-ts/ohos-arkui-advanced-Dialog.md)、[Popup](arkui-ts/ohos-arkui-advanced-Popup.md)等。true表示需要主动获取焦点，false表示不需要主动获取焦点。默认值为true。 |
 
 **示例：** 
 
@@ -294,6 +306,7 @@ setAutoFocusTransfer(isAutoFocusTransfer: boolean): void
 @CustomDialog
 struct CustomDialogExample {
   controller?: CustomDialogController;
+
   build() {
     Column() {
       Text('这是自定义弹窗')
@@ -313,13 +326,14 @@ struct CustomDialogExample {
     }
   }
 }
+
 @Entry
 @Component
 struct CustomDialogUser {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-    }),
+    builder: CustomDialogExample({}),
   });
+
   aboutToDisappear() {
     this.dialogController = null;
   }
@@ -362,7 +376,6 @@ setKeyProcessingMode(mode: KeyProcessingMode): void
 @Entry
 @Component
 struct Index {
-
   aboutToAppear() {
     this.getUIContext().getFocusController().setKeyProcessingMode(KeyProcessingMode.ANCESTOR_EVENT);
   }
@@ -371,11 +384,11 @@ struct Index {
     Row() {
       Row() {
         Button('Button1').id('Button1').onKeyEvent((event) => {
-          console.log("Button1");
+          console.info("Button1");
           return true;
         })
         Button('Button2').id('Button2').onKeyEvent((event) => {
-          console.log("Button2");
+          console.info("Button2");
           return true;
         })
       }

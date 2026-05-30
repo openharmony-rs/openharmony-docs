@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the APIs in **ImageReceiver** to create a PreviewOutput instance and obtain real-time data of the preview stream for secondary processing. For example, you can add a filter algorithm to the preview stream.
 
@@ -200,9 +200,9 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "OH_ImageNative_Release call failed.");
        }
-	   delete[] types;
+       delete[] types;
    }
-   
+
    void OnImageReceiver() {
        // Register the callback to listen for the image content reported by each frame.
        Image_ErrorCode errCode = OH_ImageReceiverNative_On(receiver, OnCallback);

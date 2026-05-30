@@ -1,4 +1,10 @@
-# JS服务卡片UI组件
+# JS服务卡片UI组件<!--arkui-card-comp-->
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - 框架说明<!--card-comp-framework-overview-->
   - [文件组织](js-service-widget-file.md)
@@ -8,7 +14,7 @@
   - [多语言支持](js-service-widget-multiple-languages.md)
   - [版本兼容适配](js-service-widget-version-compatibility.md)
   - [设置主题样式](js-service-widget-theme.md)
-- 组件通用信息<!--card-comp-universal-comp-infor-->
+- 组件通用信息<!--card-comp-universal-comp-inform-->
   - [通用属性](js-service-widget-common-attributes.md)
   - [通用样式](js-service-widget-common-styles.md)
   - [通用事件](js-service-widget-common-events.md)

@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 当前示例提供完整的相机应用从后台切换至前台启动恢复的流程介绍，方便开发者了解完整的接口调用顺序。
 
@@ -146,7 +146,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
         return;
       }
 
-      //创建会话。
+      // 创建会话。
       let photoSession: camera.PhotoSession | undefined = undefined;
       try {
         photoSession = cameraManager.createSession(camera.SceneMode.NORMAL_PHOTO) as camera.PhotoSession;

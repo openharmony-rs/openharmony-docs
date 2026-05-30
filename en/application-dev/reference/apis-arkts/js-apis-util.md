@@ -190,7 +190,9 @@ Calls back an asynchronous function. In the callback, the first parameter indica
 
 > **NOTE**
 >
-> **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
+> - **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
+>
+> - This API converts an async function that returns a promise into an error-first callback function. The function returned by this API accepts a callback as its second input parameter. When this method is called, the original function is executed first. When the promise of **original** returns **resolve**, the first parameter of the callback function is **null**, and the second parameter is the value of **resolve**. When the promise of **original** returns **reject**, the first parameter of the callback function is an error object, and the second parameter is **null**. When **original** is a function without input parameters, the first input parameter of the function returned by this API must be an invalid placeholder parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -219,11 +221,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-async function fn() {
-  return 'hello world';
+async function fn(input: string) {
+  return input;
 }
 let cb = util.callbackWrapper(fn);
-cb(1, (err : Object, ret : string) => {
+cb('hello world', (err : Object, ret : string) => {
   if (err) throw new Error;
   console.info(ret);
 });
@@ -234,7 +236,7 @@ cb(1, (err : Object, ret : string) => {
 
 promisify(original: (err: Object, value: Object) =&gt; void): Function
 
-Processes an asynchronous function and returns a promise.
+Receives a function that uses the error-first callback mode, that is, uses `(err, value) => callback` as the last parameter, and uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -464,7 +466,7 @@ console.info("result = " + result);
 
 promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
-Processes an asynchronous function and returns a promise.
+Receives a function that uses the error-first callback mode, that is, uses `(err, value) => callback` as the last parameter, and uses a promise to return the result.
 
 > **NOTE**
 >
@@ -558,6 +560,37 @@ console.info(stack);
 // Obtain the stack trace information of the main thread.
 ```
 
+## ArkTSVM<sup>23+</sup>
+
+A class that provides VM maintenance and test capabilities for developers.
+
+### setMultithreadingDetectionEnabled<sup>23+</sup>
+
+static setMultithreadingDetectionEnabled(enabled: boolean): void
+
+Sets whether to enable multithreading detection. When **enabled** is set to **true**, the detection is turned on, and multithreading-related details will be included in the cppcrash files generated for multithreading issues. When **enabled** is set to **false**, the detection is turned off, and no such details will be present in the corresponding cppcrash files.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| enabled  | boolean  | Yes      | Controls whether to enable multithreading detection. **true** means enabling the detection, and **false** means disabling it.|
+
+**Example**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+// Enable multithreading detection.
+util.ArkTSVM.setMultithreadingDetectionEnabled(true);
+// Disable multithreading detection.
+util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+```
+
 ## TextDecoderOptions<sup>11+</sup>
 
 Describes decoding-related options, which include **fatal** and **ignoreBOM**.
@@ -566,10 +599,10 @@ Describes decoding-related options, which include **fatal** and **ignoreBOM**.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name     | Type| Mandatory| Description              |
-| --------- | -------- | ---- | ------------------ |
-| fatal     | boolean  | No  | Whether to display fatal errors. The value **true** means to display fatal errors, and **false** means the opposite. The default value is **false**.|
-| ignoreBOM | boolean  | No  | Whether to ignore the BOM. The value **true** means to ignore the BOM, and **false** means the opposite. The default value is **false**. |
+| Name     | Type| Read-Only| Optional| Description              |
+| --------- | -------- | ---- | ---- | ------------------ |
+| fatal     | boolean  | No  | Yes| Whether to display fatal errors. The value **true** means to display fatal errors, and **false** means the opposite. The default value is **false**.|
+| ignoreBOM | boolean  | No  | Yes| Whether to ignore the BOM. The value **true** means to ignore the BOM, and **false** means the opposite. The default value is **false**. |
 
 ## DecodeToStringOptions<sup>12+</sup>
 
@@ -579,9 +612,9 @@ Describes the behavioral parameters for the **decodeToString** method when decod
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| stream | boolean | No| Whether the incomplete byte sequence at the end of the input needs to be appended to the parameter for the next call of **decodeToString**. The value **true** means that the incomplete byte sequence is stored in the internal buffer until the function is called next time. If the value is false, the byte sequence is directly decoded when the function is called currently. The default value is **false**.|
+| Name| Type| Read-Only| Optional| Description|
+| --------- | -------- | ---- | ---- | ------------------ |
+| stream | boolean | No| Yes| Whether the incomplete byte sequence at the end of the input needs to be appended to the parameter for the next call of **decodeToString**. The value **true** means that the incomplete byte sequence is stored in the internal buffer until the function is called next time. If the value is false, the byte sequence is directly decoded when the function is called currently. The default value is **false**.|
 
 ## DecodeWithStreamOptions<sup>11+</sup>
 
@@ -591,9 +624,9 @@ Defines whether decoding follows data blocks.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| stream | boolean | No| Whether to allow data blocks in subsequent **decodeWithStream()**. If data is processed in blocks, set this parameter to **true**. If this is the last data block to process or data is not divided into blocks, set this parameter to **false**. The default value is **false**.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | ---- | ---- | -------- |
+| stream | boolean | No| Yes| Whether to allow data blocks in subsequent **decodeWithStream()**. If data is processed in blocks, set this parameter to **true**. If this is the last data block to process or data is not divided into blocks, set this parameter to **false**. The default value is **false**.|
 
 ## Aspect<sup>11+</sup>
 
@@ -639,7 +672,7 @@ class MyClass {
   static data: string = 'data000';
   static bar(arg: string): string {
     console.info('bar arg is ' + arg);
-	return MyClass.data;
+    return MyClass.data;
   }
 }
 
@@ -1122,6 +1155,7 @@ Encrypted information, including the number of read characters and the number of
 ## TextEncoder
 
 Provides APIs to encode strings into byte arrays. Multiple encoding formats are supported.
+
 When **TextEncoder** is used for encoding, the number of bytes occupied by a character varies according to the encoding format. You must explicitly specify the encoding format to obtain the required encoding result.
 
 ### Properties
@@ -1395,7 +1429,7 @@ let rationalNumber = new util.RationalNumber();
 
 static parseRationalNumber(numerator: number,denominator: number): RationalNumber
 
-Create a **RationalNumber** instance with a given numerator and denominator.
+Creates a **RationalNumber** instance with a given numerator and denominator.
 
 > **NOTE**
 >
@@ -2325,7 +2359,7 @@ console.info('result = ' + result);
 
 values(): V[]
 
-Obtains all values in this cache, listed from the most to the least recently accessed.
+Obtains all values in this cache, listed from the least to the most recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2335,25 +2369,33 @@ Obtains all values in this cache, listed from the most to the least recently acc
 
 | Type     | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| V[] | All values in the cache, listed from the most to the least recently accessed.|
+| V[] | The list of all values in this cache, listed from the least to the most recently accessed.|
 
 **Example**
 
 ```ts
-let pro = new util.LRUCache<number|string,number|string>();
-pro.put(2, 10);
-pro.put(2, "anhu");
-pro.put("afaf", "grfb");
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.values();
 console.info('result = ' + result);
-// Output: result = anhu,grfb
+// Output: result = A,B,C,D,E,F
+pro.get(1);
+pro.get(2);
+result = pro.values();
+console.info('result = ' + result);
+// Output: result = C,D,E,F,A,B
 ```
 
 ### keys<sup>9+</sup>
 
 keys(): K[]
 
-Obtains all keys in this cache, listed from the most to the least recently accessed.
+Obtains all keys in this cache, listed from the least to the most recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2363,17 +2405,26 @@ Obtains all keys in this cache, listed from the most to the least recently acces
 
 | Type     | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| K&nbsp;[] | All keys in the cache, listed from the most to the least recently accessed.|
+| K[] | The list of all keys in this cache, listed from the least to the most recently accessed.|
 
 **Example**
 
 ```ts
-let pro = new util.LRUCache<number, number>();
-pro.put(2, 10);
-pro.put(3, 1);
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.keys();
 console.info('result = ' + result);
-// Output: result = 2,3
+// Output: result = 1,2,3,4,5,6
+pro.get(5);
+pro.get(3);
+result = pro.keys();
+console.info('result = ' + result);
+// Output: result = 1,2,4,6,5,3
 ```
 
 ### remove<sup>9+</sup>
@@ -2422,6 +2473,10 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 
 Performs subsequent operations after a value is removed. The subsequent operations must be implemented by developers. This API is called during deletion operations, such as [get<sup>9+</sup>](#get9), [put<sup>9+</sup>](#put9), [remove<sup>9+</sup>](#remove9), [clear<sup>9+</sup>](#clear9), and [updateCapacity<sup>9+</sup>](#updatecapacity9).
 
+> **NOTE**
+>
+> If the callback method is executed after [clear<sup>9+</sup>](#clear9) and [updateCapacity<sup>9+</sup>](#updatecapacity9) are called and the input **key** and **value** parameters are of the MapIterator type, perform subsequent operations by referring to example 2.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -2443,7 +2498,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-**Example**
+**Example 1**
 
 ```ts
 class ChildLRUCache<K, V> extends util.LRUCache<K, V> {
@@ -2466,6 +2521,61 @@ let lru = new ChildLRUCache<number, number>(2);
 lru.put(1, 1);
 lru.put(2, 2);
 lru.put(3, 3);
+```
+
+**Example 2**
+
+```ts
+class TestClass {
+  str:string = '';
+  constructor(input: string) {
+    this.str = input;
+  }
+}
+
+class ChildLRUCache extends util.LRUCache<string, TestClass> {
+  constructor(capacity?: number) {
+    super(capacity);
+  }
+
+  afterRemoval(isEvict: boolean, key: string, value: TestClass, newValue: TestClass): void {
+    if(value.toString().indexOf('[object Map Iterator]') >= 0) {
+      console.info('Entered via clear');
+      console.info('isEvict = ' + isEvict);
+      const keysIterator = (key as ESObject as IterableIterator<string>);
+      const valuesIterator = (value as ESObject as IterableIterator<TestClass>);
+
+      let keyEntry = keysIterator.next();
+      let valueEntry = valuesIterator.next();
+      while (!keyEntry.done && !valueEntry.done) {
+        console.info(`key = ${keyEntry.value}, valueStr = ${valueEntry.value.str}`);
+        keyEntry = keysIterator.next();
+        valueEntry = valuesIterator.next();
+      }
+    } else {
+      console.info('Entered via put');
+      console.info('isEvict = ' + isEvict);
+      console.info('key = ' + key + '  valueStr = ' + value.str);
+    }
+  }
+}
+let test1 = new TestClass('testA');
+let test2 = new TestClass('testB');
+let test3 = new TestClass('testC');
+let lru = new ChildLRUCache(2);
+lru.put('aa', test1);
+lru.put('bb', test2);
+lru.put('cc', test3);    // Remove the key-value pair for 'aa'.
+lru.clear();             // Clear the entire cache buffer.
+/*
+Output: Entered via put.
+         isEvict = true
+         key = aa  valueStr = testA
+         Entered via clear.
+         isEvict = false
+         key = bb, valueStr = testB
+         key = cc, valueStr = testC
+*/
 ```
 
 ### contains<sup>9+</sup>
@@ -5238,6 +5348,68 @@ Checks whether the value is of the SharedArrayBuffer type.
   // Output: result = true
   ```
 
+## AutoFinalizer&lt;T&gt;<sup>22+</sup>
+
+AutoFinalizer is a class that provides callback APIs when an ArkTS object is released. By implementing it, you can customize the resource cleanup logic that triggers automatically when an object is reclaimed.
+
+> **NOTE**
+>
+> AutoFinalizer&lt;T&gt; must be used together with AutoFinalizerCleaner&lt;T&gt;. Implementing AutoFinalizer&lt;T&gt; alone will yield no functionality.
+
+### onFinalization<sup>22+</sup>
+
+onFinalization(heldValue: T): void
+
+Defines the resource cleanup callback that triggers automatically when an object is reclaimed.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| heldValue | T | Yes| When the listened object is reclaimed, this value is passed to the `onFinalization` callback method.|
+
+## AutoFinalizerCleaner&lt;T&gt;<sup>22+</sup>
+
+AutoFinalizerCleaner is a utility class that associates an object's lifecycle with resource cleanup logic. Its primary role is to bind an object implementing AutoFinalizer&lt;T&gt; to a specific value, and automatically trigger the resource cleanup callback when the object is reclaimed.
+
+### register&lt;T&gt;<sup>22+</sup>
+
+static register&lt;T&gt;(obj: AutoFinalizer&lt;T&gt;, heldValue: T): void
+
+Associates an object implementing `AutoFinalizer` with an input value, and triggers the resource cleanup callback when the object is reclaimed.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| obj | [AutoFinalizer&lt;T&gt;](#autofinalizert22) | Yes| Object that implements `AutoFinalizer`. The `onFinalization` method is called when the object is reclaimed.|
+| heldValue | T | Yes| When the listened object is reclaimed, this value is passed to the `obj.onFinalization` method.|
+
+**Example**
+
+```ts
+class DeviceManageViewModel implements util.AutoFinalizer<string> {
+  constructor(heldValue: string) {
+    util.AutoFinalizerCleaner.register(this, heldValue);
+  }
+
+  onFinalization(heldValue: string) {
+    console.info("onFinalization: ", heldValue);
+    // Wait for the garbage collection to be triggered. Once it is triggered, the following result is displayed: onFinalization: test
+  }
+}
+
+const device = new DeviceManageViewModel("test");
+```
+
 ## LruBuffer<sup>(deprecated)</sup>
 
 > **NOTE**
@@ -5868,7 +6040,7 @@ Obtains a two-dimensional array in key-value pairs.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [LRUCache.Symbol.iterator<sup>9+</sup>](#symboliterator9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [LRUCache.[Symbol.iterator]<sup>9+</sup>](#symboliterator9) instead.
 
 **System capability**: SystemCapability.Utils.Lang
 

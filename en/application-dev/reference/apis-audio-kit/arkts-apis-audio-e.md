@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -12,7 +12,7 @@
 
 ## AudioVolumeType
 
-Enumerates the audio stream types.
+Enumerates the audio volume types.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -103,7 +103,21 @@ Enumerates the device types.
 | REMOTE_DAUDIO<sup>18+</sup>        | 29 | Distributed device.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | HEARING_AID<sup>20+</sup>        | 30 | Hearing aid device.|
 | NEARLINK<sup>20+</sup>        | 31 | NearLink device.|
+| SYSTEM_PRIVATE<sup>22+</sup> | 200 | System private device. (This device is a private device within the system, and applications can ignore it.)|
 | DEFAULT<sup>9+</sup> | 1000   | Default device type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+
+## BluetoothAndNearlinkPreferredRecordCategory<sup>21+</sup>
+
+Enumerates the preferred device categories available for recording with Bluetooth or NearLink.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name                | Value    | Description                                                     |
+| ---------------------| ------ | --------------------------------------------------------- |
+| PREFERRED_NONE  | 0      | No specific device preference.|
+| PREFERRED_DEFAULT | 1      | Prefers using Bluetooth or NearLink devices for recording; whether to use low-latency or high-quality recording depends on the system.|
+| PREFERRED_LOW_LATENCY  | 2      | Prefers using Bluetooth or NearLink devices in low-latency mode for recording.|
+| PREFERRED_HIGH_QUALITY | 3      | Prefers using Bluetooth or NearLink devices in high-quality mode for recording.|
 
 ## CommunicationDeviceType<sup>9+</sup>
 
@@ -120,6 +134,8 @@ Enumerates the device types used for communication.
 Enumerates the audio ring modes.
 
 **System capability**: SystemCapability.Multimedia.Audio.Communication
+
+**Device behavior difference**: If this API is set to the vibration mode on a device without a vibration component, no vibration effect is generated.
 
 | Name               |  Value   | Description      |
 | ------------------- | ------ | ---------- |
@@ -216,6 +232,20 @@ Enumerates the audio encoding types.
 | ENCODING_TYPE_INVALID | -1     | Invalid.   |
 | ENCODING_TYPE_RAW     | 0      | PCM encoding.|
 
+## AudioLatencyType<sup>23+</sup>
+
+Enumerates the audio latency types.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name| Value| Description|
+| ---- | -- | ---- |
+| LATENCY_TYPE_ALL | 0 | Calculates the overall audio processing link latency, including both the software and hardware.|
+| LATENCY_TYPE_SOFTWARE | 1 | Calculates the software latency, including the software sound effect.|
+| LATENCY_TYPE_HARDWARE | 2 | Calculates the hardware latency, including the HAL, driver, and hardware.|
+
 ## AudioChannelLayout<sup>11+</sup>
 
 Enumerates the audio channel layouts of audio files.
@@ -276,7 +306,7 @@ Enumerates the audio channel layouts of audio files.
 
 ## StreamUsage
 
-Enumerates the audio stream usage types.
+Enumerates the types of audio streams played.
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -285,7 +315,7 @@ Enumerates the audio stream usage types.
 | STREAM_USAGE_UNKNOWN                      | 0      | Unknown content.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_MEDIA<sup>(deprecated)</sup> | 1      | Media.<br> This enumerated value is supported since API version 7 and deprecated since API version 10. You are advised to use **STREAM_USAGE_MUSIC**, **STREAM_USAGE_MOVIE**, **STREAM_USAGE_GAME**, or **STREAM_USAGE_AUDIOBOOK** instead.|
 | STREAM_USAGE_MUSIC<sup>10+</sup>          | 1      | Music.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| STREAM_USAGE_VOICE_COMMUNICATION          | 2      | VoIP voice call.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| STREAM_USAGE_VOICE_COMMUNICATION          | 2      | VoIP voice call. (The 3A algorithm is enabled when this stream starts.)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_VOICE_ASSISTANT<sup>9+</sup> | 3      | Voice assistant.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_ALARM<sup>10+</sup>          | 4      | Audio stream for alarming.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_VOICE_MESSAGE<sup>10+</sup>  | 5      | Voice message.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -297,7 +327,7 @@ Enumerates the audio stream usage types.
 | STREAM_USAGE_GAME<sup>10+</sup>           | 11     | Gaming.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_AUDIOBOOK<sup>10+</sup>      | 12     | Audiobooks (including crosstalks and storytelling), news radio, and podcasts.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | STREAM_USAGE_NAVIGATION<sup>10+</sup>     | 13     | Navigation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| STREAM_USAGE_VIDEO_COMMUNICATION<sup>12+</sup>     | 17     | VoIP video call.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| STREAM_USAGE_VIDEO_COMMUNICATION<sup>12+</sup>     | 17     | VoIP video call. (The 3A algorithm is enabled when this stream starts.)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## AudioState<sup>8+</sup>
 
@@ -359,7 +389,7 @@ Enumerates the types of force that causes audio interruption.
 
 The force type is obtained when an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received.
 
-This type specifies whether audio interruption is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [InterruptHint](#interrupthint). For details about the audio interruption strategy, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+This type specifies whether audio interruption is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [InterruptHint](#interrupthint). For details about the audio interruption policy, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -378,7 +408,7 @@ The hint is obtained when an [InterruptEvent](arkts-apis-audio-i.md#interrupteve
 
 The hint specifies the operation (such as audio pause or volume adjustment) to be performed on audio streams based on the focus strategy.
 
-You can determine whether the operation is forcibly performed by the system based on [InterruptForceType](#interruptforcetype9) in **InterruptEvent**. For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+You can determine whether the operation is forcibly performed by the system based on [InterruptForceType](#interruptforcetype9) in **InterruptEvent**. For details, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -412,8 +442,9 @@ Enumerates whether an audio stream can be recorded by other applications.
 
 | Name                | Value  | Description                            |
 | -------------------- | ---- | -------------------------------- |
-| PRIVACY_TYPE_PUBLIC  | 0    | The audio stream can be recorded by other applications.  |
-| PRIVACY_TYPE_PRIVATE | 1    | The audio stream cannot be recorded by other applications.|
+| PRIVACY_TYPE_PUBLIC  | 0    | The audio stream can be recorded or screen-projected by other applications and is not privacy-related.|
+| PRIVACY_TYPE_PRIVATE | 1    | The audio stream cannot be recorded or screen-projected by other applications.|
+| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | The audio stream can be recorded or screen-projected by other applications and is privacy-related.<br> For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, audio streams of the [STREAM_USAGE_VOICE_COMMUNICATION](#streamusage) type cannot be recorded or screen-projected by other applications.<br> However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be recorded or screen-projected by other applications.|
 
 ## ChannelBlendMode<sup>11+</sup>
 
@@ -447,11 +478,13 @@ Enumerates the reasons for audio stream device changes.
 
 Enumerates the recommended actions to take after an output device changes.
 
+Common scenario example: switching between a headset and a loudspeaker device. Upon switching from the loudspeaker device to the headset upon wearing, the system suggests continuing playback and prompts that the application does not need to pause. Upon transitioning from the headset to the loudspeaker device upon removal, the system suggests suspending playback.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 | Name                                       |  Value    | Description             |
 |:------------------------------------------| :----- |:----------------|
-| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE | 0 | Suggests continuing playback.          |
+| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE | 0 | Suggests continuing playback. (This event serves as a playback maintenance indication, informing the application that audio playback does not need to stop during this device change. However, it must not be used as a criterion for triggering audio playback.)          |
 | DEVICE_CHANGE_RECOMMEND_TO_STOP | 1 | Suggests stopping playback.        |
 
 ## DeviceChangeType
@@ -478,7 +511,7 @@ Enumerates the blocked statuses of audio devices.
 
 ## SourceType<sup>8+</sup>
 
-Enumerates the audio source types.
+Enumerates the types of audio streams captured.
 
 | Name                                        |  Value    | Description                  |
 | :------------------------------------------- | :----- | :--------------------- |
@@ -486,11 +519,11 @@ Enumerates the audio source types.
 | SOURCE_TYPE_MIC                              | 0      | Mic source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup>   | 1      | Voice recognition source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_PLAYBACK_CAPTURE<sup>(deprecated)</sup>   | 2 | Internal audio recording source.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture<br> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead. |
-| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | Voice communication source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
+| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | Voice communication source. (The 3A algorithm is not enabled if recording is started independently. It is enabled when the AudioRenderer of the [STREAM_USAGE_VOICE_COMMUNICATION](#streamusage) or [STREAM_USAGE_VIDEO_COMMUNICATION](#streamusage) type is also used to start playback.)<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup>      | 10     | Voice message source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup>          | 13     | Video recording source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup>     | 14 |  Audio source for raw microphone recording, where the system does not perform any algorithm processing.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
-|  SOURCE_TYPE_LIVE<sup>20+</sup>     | 17 |  Audio source in live streaming scenarios.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
+| SOURCE_TYPE_LIVE<sup>20+</sup>     | 17 |  Audio source in live streaming scenarios. This source type provides system echo cancellation capabilities on supported devices.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 
 ## AudioScene<sup>8+</sup>
 
@@ -514,7 +547,7 @@ Enumerates the audio concurrency modes.
 | Name                  | Value| Description     |
 | :--------------------- |:--|:--------|
 | CONCURRENCY_DEFAULT | 0 | Uses the system strategy by default.    |
-| CONCURRENCY_MIX_WITH_OTHERS | 1 | Mixes with other audio streams.    |
+| CONCURRENCY_MIX_WITH_OTHERS | 1 | Concurrent with other audio streams, that is, audio mixing.  |
 | CONCURRENCY_DUCK_OTHERS | 2 | Ducks other audio streams.|
 | CONCURRENCY_PAUSE_OTHERS | 3 | Pauses other audio streams.|
 
@@ -549,7 +582,7 @@ The hint is obtained when an [AudioSessionStateChangedEvent](arkts-apis-audio-i.
 
 The hint specifies the action (such as audio pause or volume adjustment) to take on the audio session based on the focus strategy.
 
-For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+For details, see [Audio Session Management](../../media/audio/audio-session-management.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -559,8 +592,12 @@ For details, see [Introduction to Audio Focus and Audio Sessions](../../media/au
 | AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE               | 1      | A hint is displayed, indicating that the audio session is paused and the audio focus is lost temporarily. When focus is regained, the AUDIO_SESSION_STATE_CHANGE_HINT_RESUME event is received.|
 | AUDIO_SESSION_STATE_CHANGE_HINT_STOP                | 2      | A hint is displayed, indicating that the audio session is stopped and the audio focus is lost permanently.|
 | AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP                | 3      | A hint is displayed, indicating that the audio session is stopped by the system due to no activity, and the audio focus is lost.|
-| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK                | 4      | A hint is displayed, indicating that audio ducking starts and the audio is played at a lower volume.|
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | A hint is displayed, indicating that audio ducking ends and the audio is played at the normal volume.|
+| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK                | 4      | A hint is displayed, indicating that audio ducking starts and the audio is played at a lower volume.<br>If [enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23) is enabled, you can choose to mute the audio.|
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | A hint is displayed, indicating that audio ducking ends and the audio is played at the normal volume.<br>If [enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23) is enabled, you can unmute the audio.|
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION<sup>23+</sup>    | 6      |  Mute suggestion.<br>When another application starts playback of non-mixable audio, your application can determine whether to mute.<br> **Model restriction**: This API can be used only in the stage model.|
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION<sup>23+</sup>  | 7      | Unmute suggestion.<br>When the non-mixable audio of another application has finished playing, your application can determine whether to unmute.<br> **Model restriction**: This API can be used only in the stage model.|
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE<sup>24+</sup>    | 8      |  A hint is displayed, indicating that the audio session is muted.<br>This hint is received only when the following conditions are met: The [setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) API is called to set [AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED, the [setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) API is called, and the audio session is activated.<br> **Model restriction**: This API can be used only in the stage model.|
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE<sup>24+</sup>  | 9      | A hint is displayed, indicating that the audio session is unmuted.<br>This hint is received only when the following conditions are met: The [setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) API is called to set [AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED, the [setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) API is called, and the audio session is activated.<br> **Model restriction**: This API can be used only in the stage model.|
 
 ## AudioDataCallbackResult<sup>12+</sup>
 
@@ -668,3 +705,17 @@ Enumerates the equalizer types of audio loopback.
 | FLAT   | 1     | Maintains the original sound without equalization.|
 | FULL   | 2     | Enhances the fullness of vocals (default).|
 | BRIGHT | 3     | Enhances the brightness of vocals.|
+
+## AudioSessionBehaviorFlags<sup>24+</sup>
+
+Enumerates audio session behaviors.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name                  | Value| Description     |
+| :--------------------- |:--|:--------|
+| DEFAULT_BEHAVIOR<sup>24+</sup> | 0x00000000 | Default behavior, which is used to clear the audio session behavior settings.|
+| VOIP_PRIVACY_TYPE_PUBLIC | 0x00000001 | Non-privacy VoIP. Concurrent recording of VoIP streams and other application streams are supported.<br>**Note**: VoIP call streams are private streams. Exercise caution when using this API and ensure that it complies with privacy protection requirements.<br>**Since**: 26.0.0|
+| MUTE_WHEN_INTERRUPTED<sup>24+</sup> | 0x00000002 | Mute the audio stream when it is interrupted.<br>You need to call [setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) to set the behavior and call [setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to make the setting take effect.<br>An application will receive an [InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE notification when playback is muted, and an [InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE notification when playback is unmuted.|

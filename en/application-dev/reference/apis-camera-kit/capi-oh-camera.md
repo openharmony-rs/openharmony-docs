@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -22,6 +22,7 @@ You can refer to the corresponding development guide and samples based on your d
 - [Video Recording](../../media/camera/native-camera-recording.md)
 - [Camera Metadata](../../media/camera/native-camera-metadata.md)
 - [Using the Flashlight](../../media/camera/native-camera-torch-use.md)
+- [Pressure Management](../../media/camera/native-camera-system-pressure.md)
 <!--RP1--><!--RP1End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -32,8 +33,8 @@ You can refer to the corresponding development guide and samples based on your d
 
 | Name| Description|
 | -- | -- |
-| [camera.h](capi-camera-h.md) | Declares the basic concepts of the camera.|
-| [camera_device.h](capi-camera-device-h.md) | Declares the basic concepts of the camera device.|
+| [camera.h](capi-camera-h.md) | Defines the basic APIs of the camera.|
+| [camera_device.h](capi-camera-device-h.md) | Defines the basic APIs of the camera device.|
 | [camera_input.h](capi-camera-input-h.md) | Declares the camera input concepts.|
 | [camera_manager.h](capi-camera-manager-h.md) | Declares the camera manager concepts.|
 | [capture_session.h](capi-capture-session-h.md) | Declares the capture session concepts.|

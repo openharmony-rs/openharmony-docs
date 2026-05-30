@@ -4,7 +4,11 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Camera_FrameShutterEndInfo {...} Camera_FrameShutterEndInfo
+```
 
 ## 概述
 
@@ -22,6 +26,6 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t captureId | 拍照id。 |
+| int32_t captureId | 拍照ID。 |
 
 

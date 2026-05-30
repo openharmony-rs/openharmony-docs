@@ -39,6 +39,49 @@ Obtains an **AccountManager** instance.
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   ```
 
+## osAccount.isDomainAccountSupported
+
+isDomainAccountSupported(): Promise&lt;boolean&gt;
+
+Checks whether this domain account is supported. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                  | Description                                     |
+| :--------------------- | :----------------------------------------- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means this domain account is supported; the value **false** means the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
+
+| ID| Error Message            |
+| -------- | ------------------- |
+| 12300001 | The system service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  osAccount.isDomainAccountSupported().then((isSupported: boolean) => {
+    console.info('isDomainAccountSupported successfully, isSupported: ' + isSupported);
+  }).catch((err: BusinessError) => {
+    console.error(`isDomainAccountSupported failed, code is ${err.code}, message is: ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`isDomainAccountSupported exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## OsAccountType
 
 Enumerates the system account types.
@@ -82,17 +125,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkMultiOsAccountEnabled((err: BusinessError, isEnabled: boolean) => {
       if (err) {
         console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
       } else {
-      console.log('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
+        console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
       }
     });
-  } catch (err) {
-    console.error('checkMultiOsAccountEnabled failed, error:' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -122,15 +167,17 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
     accountManager.checkMultiOsAccountEnabled().then((isEnabled: boolean) => {
-      console.log('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
+      console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
     }).catch((err: BusinessError) => {
       console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkMultiOsAccountEnabled failed, error:' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -171,18 +218,20 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.checkOsAccountActivated(localId, (err: BusinessError, isActivated: boolean) => {
       if (err) {
-        console.error('checkOsAccountActivated failed, error:' + JSON.stringify(err));
+        console.error(`checkOsAccountActivated failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOsAccountActivated successfully, isActivated:' + isActivated);
+        console.info('checkOsAccountActivated successfully, isActivated:' + isActivated);
       }
     });
-  } catch (err) {
-    console.error('checkOsAccountActivated exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountActivated exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -228,16 +277,18 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.checkOsAccountActivated(localId).then((isActivated: boolean) => {
-      console.log('checkOsAccountActivated successfully, isActivated: ' + isActivated);
+      console.info('checkOsAccountActivated successfully, isActivated: ' + isActivated);
     }).catch((err: BusinessError) => {
-      console.error('checkOsAccountActivated failed, error: ' + JSON.stringify(err));
+      console.error(`checkOsAccountActivated failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkOsAccountActivated exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountActivated exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -274,16 +325,18 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let constraint: string = 'constraint.wifi';
   try {
     accountManager.isOsAccountConstraintEnabled(constraint).then((isEnabled: boolean) => {
-      console.log('isOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
+      console.info('isOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
     }).catch((err: BusinessError) => {
-      console.error('isOsAccountConstraintEnabled failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('isOsAccountConstraintEnabled exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -325,19 +378,21 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   try {
     accountManager.checkOsAccountConstraintEnabled(localId, constraint, (err: BusinessError, isEnabled: boolean)=>{
       if (err) {
-        console.error('checkOsAccountConstraintEnabled failed, error: ' + JSON.stringify(err));
+        console.error(`checkOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
+        console.info('checkOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
       }
     });
-  } catch (err) {
-    console.error('checkOsAccountConstraintEnabled exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -384,17 +439,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   try {
     accountManager.checkOsAccountConstraintEnabled(localId, constraint).then((isEnabled: boolean) => {
-      console.log('checkOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
+      console.info('checkOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
     }).catch((err: BusinessError) => {
-      console.error('checkOsAccountConstraintEnabled failed, error: ' + JSON.stringify(err));
+      console.error(`checkOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkOsAccountConstraintEnabled exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -425,17 +482,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountTestable((err: BusinessError, isTestable: boolean) => {
       if (err) {
-        console.error('checkOsAccountTestable failed, error: ' + JSON.stringify(err));
+        console.error(`checkOsAccountTestable failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOsAccountTestable successfully, isTestable: ' + isTestable);
+        console.info('checkOsAccountTestable successfully, isTestable: ' + isTestable);
       }
     });
-  } catch (err) {
-    console.error('checkOsAccountTestable error: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountTestable code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -465,15 +524,17 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountTestable().then((isTestable: boolean) => {
-      console.log('checkOsAccountTestable successfully, isTestable: ' + isTestable);
+      console.info('checkOsAccountTestable successfully, isTestable: ' + isTestable);
     }).catch((err: BusinessError) => {
-      console.error('checkOsAccountTestable failed, error: ' + JSON.stringify(err));
+      console.error(`checkOsAccountTestable failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkOsAccountTestable exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountTestable exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -489,7 +550,7 @@ Checks whether this system account is unlocked. This API uses a promise to retur
 
 | Type                  | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account is unlocked; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -503,15 +564,17 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.isOsAccountUnlocked().then((isVerified: boolean) => {
-      console.log('isOsAccountUnlocked successfully, isVerified: ' + isVerified);
+      console.info('isOsAccountUnlocked successfully, isVerified: ' + isVerified);
     }).catch((err: BusinessError) => {
-      console.error('isOsAccountUnlocked failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountUnlocked failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('isOsAccountUnlocked exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountUnlocked exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -519,7 +582,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a system account has been verified. This API uses an asynchronous callback to return the result.
+Checks whether this system account is unlocked. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -545,17 +608,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountVerified((err: BusinessError, isVerified: boolean) => {
       if (err) {
-        console.error('checkOsAccountVerified failed, error: ' + JSON.stringify(err));
+        console.error(`checkOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOsAccountVerified successfully, isVerified: ' + isVerified);
+        console.info('checkOsAccountVerified successfully, isVerified: ' + isVerified);
       }
     });
-  } catch (err) {
-    console.error('checkOsAccountVerified exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -589,15 +654,17 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountVerified().then((isVerified: boolean) => {
-      console.log('checkOsAccountVerified successfully, isVerified: ' + isVerified);
+      console.info('checkOsAccountVerified successfully, isVerified: ' + isVerified);
     }).catch((err: BusinessError) => {
-      console.error('checkOsAccountVerified failed, error: ' + JSON.stringify(err));
+      console.error(`checkOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkOsAccountVerified exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -638,18 +705,20 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.checkOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
       if (err) {
-        console.error('checkOsAccountVerified failed, error: ' + JSON.stringify(err));
+        console.error(`checkOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOsAccountVerified successfully, isVerified: ' + isVerified);
+        console.info('checkOsAccountVerified successfully, isVerified: ' + isVerified);
       }
     });
-  } catch (err) {
-    console.error('checkOsAccountVerified exception: ' + err);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -695,16 +764,18 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.checkOsAccountVerified(localId).then((isVerified: boolean) => {
-      console.log('checkOsAccountVerified successfully, isVerified: ' + isVerified);
+      console.info('checkOsAccountVerified successfully, isVerified: ' + isVerified);
     }).catch((err: BusinessError) => {
-      console.error('checkOsAccountVerified failed, error: ' + JSON.stringify(err));
+      console.error(`checkOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkOsAccountVerified exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -738,17 +809,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountCount((err: BusinessError, count: number) => {
       if (err) {
-        console.error('getOsAccountCount failed, error: ' + JSON.stringify(err));
+        console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOsAccountCount successfully, count: ' + count);
+        console.info('getOsAccountCount successfully, count: ' + count);
       }
     });
-  } catch (err) {
-    console.error('getOsAccountCount exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -781,15 +854,17 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountCount().then((count: number) => {
-      console.log('getOsAccountCount successfully, count: ' + count);
+      console.info('getOsAccountCount successfully, count: ' + count);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountCount failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch(err) {
-    console.error('getOsAccountCount exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -820,17 +895,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountLocalId((err: BusinessError, localId: number) => {
       if (err) {
-        console.error('getOsAccountLocalId failed, error: ' + JSON.stringify(err));
+        console.error(`getOsAccountLocalId failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOsAccountLocalId successfully, localId: ' + localId);
+        console.info('getOsAccountLocalId successfully, localId: ' + localId);
       }
     });
-  } catch (err) {
-    console.error('getOsAccountLocalId exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -860,15 +937,17 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountLocalId().then((localId: number) => {
-      console.log('getOsAccountLocalId successfully, localId: ' + localId);
+      console.info('getOsAccountLocalId successfully, localId: ' + localId);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountLocalId failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalId failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getOsAccountLocalId exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -901,17 +980,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   try {
     accountManager.getOsAccountLocalIdForUid(uid, (err: BusinessError, localId: number) => {
       if (err) {
-        console.error('getOsAccountLocalIdForUid failed, error: ' + JSON.stringify(err));
+        console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
       }
-      console.log('getOsAccountLocalIdForUid successfully, localId: ' + localId);
+      console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
     });
-  } catch (err) {
-    console.error('getOsAccountLocalIdForUid exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForUid exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -949,16 +1030,18 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   try {
     accountManager.getOsAccountLocalIdForUid(uid).then((localId: number) => {
-      console.log('getOsAccountLocalIdForUid successfully, localId: ' + localId);
+      console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountLocalIdForUid failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getOsAccountLocalIdForUid exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForUid exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -994,15 +1077,65 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 **Example**: Obtain the ID of the system account whose process UID is **12345678**.
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   try {
     let localId : number = accountManager.getOsAccountLocalIdForUidSync(uid);
-    console.log('getOsAccountLocalIdForUidSync successfully, localId: ' + localId);
-  } catch (err) {
-    console.error('getOsAccountLocalIdForUidSync exception: ' + JSON.stringify(err));
+    console.info('getOsAccountLocalIdForUidSync successfully, localId: ' + localId);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForUidSync exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### getOsAccountLocalIds
+
+getOsAccountLocalIds(): Promise&lt;number[]&gt;
+
+Obtains the local IDs of all non-system-level system accounts. Non-system-level system accounts are visible to users and are usually used for operations such as login. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Required permission**: ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                 | Description                                   |
+| :------------------- | :------------------------------------- |
+| Promise&lt;number[]&gt; | Promise used to return the local IDs of all non-system-level system accounts.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message            |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 12300001 | The system service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+try {
+  accountManager.getOsAccountLocalIds().then((localIds: number[]) => {
+    console.info('getOsAccountLocalIds localIds: ' + localIds);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountLocalIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### getOsAccountLocalIdForDomain<sup>9+</sup>
 
@@ -1036,18 +1169,20 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountLocalIdForDomain(domainInfo, (err: BusinessError, localId: number) => {
       if (err) {
-        console.error('getOsAccountLocalIdForDomain failed, error: ' + JSON.stringify(err));
+        console.error(`getOsAccountLocalIdForDomain failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
+        console.info('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
       }
     });
-  } catch (err) {
-    console.error('getOsAccountLocalIdForDomain exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1088,16 +1223,18 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   try {
     accountManager.getOsAccountLocalIdForDomain(domainInfo).then((localId: number) => {
-      console.log('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
+      console.info('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountLocalIdForDomain failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdForDomain failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getOsAccountLocalIdForDomain exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1138,18 +1275,20 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.getOsAccountConstraints(localId, (err: BusinessError, constraints: string[]) => {
       if (err) {
-        console.error('getOsAccountConstraints failed, err: ' + JSON.stringify(err));
+        console.error(`getOsAccountConstraints failed, err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOsAccountConstraints successfully, constraints: ' + JSON.stringify(constraints));
+        console.info('getOsAccountConstraints successfully, constraints: ' + JSON.stringify(constraints));
       }
     });
-  } catch (err) {
-    console.error('getOsAccountConstraints exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1195,16 +1334,18 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.getOsAccountConstraints(localId).then((constraints: string[]) => {
-      console.log('getOsAccountConstraints, constraints: ' + constraints);
+      console.info('getOsAccountConstraints, constraints: ' + constraints);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountConstraints err: ' + JSON.stringify(err));
+      console.error(`getOsAccountConstraints err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getOsAccountConstraints exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1235,20 +1376,22 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getActivatedOsAccountLocalIds((err: BusinessError, idArray: number[])=>{
       if (err) {
-        console.error('getActivatedOsAccountLocalIds err:' + JSON.stringify(err));
+        console.error(`getActivatedOsAccountLocalIds code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getActivatedOsAccountLocalIds idArray length:' + idArray.length);
+        console.info('getActivatedOsAccountLocalIds idArray length:' + idArray.length);
         for(let i=0;i<idArray.length;i++) {
           console.info('activated os account id: ' + idArray[i]);
         }
       }
     });
   } catch (e) {
-    console.error('getActivatedOsAccountLocalIds exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getActivatedOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1278,15 +1421,17 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getActivatedOsAccountLocalIds().then((idArray: number[]) => {
-      console.log('getActivatedOsAccountLocalIds, idArray: ' + idArray);
+      console.info('getActivatedOsAccountLocalIds, idArray: ' + idArray);
     }).catch((err: BusinessError) => {
-      console.error('getActivatedOsAccountLocalIds err: ' + JSON.stringify(err));
+      console.error(`getActivatedOsAccountLocalIds err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getActivatedOsAccountLocalIds exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getActivatedOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1324,17 +1469,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getCurrentOsAccount((err: BusinessError, curAccountInfo: osAccount.OsAccountInfo)=>{
       if (err) {
-        console.error('getCurrentOsAccount err:' + JSON.stringify(err));
+        console.error(`getCurrentOsAccount code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getCurrentOsAccount curAccountInfo:' + JSON.stringify(curAccountInfo));
+        console.info('getCurrentOsAccount curAccountInfo:' + JSON.stringify(curAccountInfo));
       }
     });
   } catch (e) {
-    console.error('getCurrentOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getCurrentOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1371,15 +1518,17 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getCurrentOsAccount().then((accountInfo: osAccount.OsAccountInfo) => {
-      console.log('getCurrentOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
+      console.info('getCurrentOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
     }).catch((err: BusinessError) => {
-      console.error('getCurrentOsAccount err: ' + JSON.stringify(err));
+      console.error(`getCurrentOsAccount err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getCurrentOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getCurrentOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1410,17 +1559,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountType((err: BusinessError, accountType: osAccount.OsAccountType) => {
       if (err) {
-        console.error('getOsAccountType err: ' + JSON.stringify(err));
+        console.error(`getOsAccountType err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOsAccountType accountType: ' + accountType);
+        console.info('getOsAccountType accountType: ' + accountType);
       }
     });
   } catch (e) {
-    console.error('getOsAccountType exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1450,15 +1601,17 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountType().then((accountType: osAccount.OsAccountType) => {
-      console.log('getOsAccountType, accountType: ' + accountType);
+      console.info('getOsAccountType, accountType: ' + accountType);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountType err: ' + JSON.stringify(err));
+      console.error(`getOsAccountType err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getOsAccountType exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1492,17 +1645,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryDistributedVirtualDeviceId((err: BusinessError, virtualID: string) => {
       if (err) {
-        console.error('queryDistributedVirtualDeviceId err: ' + JSON.stringify(err));
+        console.error(`queryDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('queryDistributedVirtualDeviceId virtualID: ' + virtualID);
+        console.info('queryDistributedVirtualDeviceId virtualID: ' + virtualID);
       }
     });
   } catch (e) {
-    console.error('queryDistributedVirtualDeviceId exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1535,15 +1690,17 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryDistributedVirtualDeviceId().then((virtualID: string) => {
-      console.log('queryDistributedVirtualDeviceId, virtualID: ' + virtualID);
+      console.info('queryDistributedVirtualDeviceId, virtualID: ' + virtualID);
     }).catch((err: BusinessError) => {
-      console.error('queryDistributedVirtualDeviceId err: ' + JSON.stringify(err));
+      console.error(`queryDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('queryDistributedVirtualDeviceId exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1577,6 +1734,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   try {
@@ -1584,7 +1742,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
       if (err) {
         console.error(`get localId code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('get localId:' + localId + ' by serialNumber: ' + serialNumber);
+        console.info('get localId:' + localId + ' by serialNumber: ' + serialNumber);
       }
     });
   } catch (e) {
@@ -1628,16 +1786,18 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   try {
     accountManager.getOsAccountLocalIdForSerialNumber(serialNumber).then((localId: number) => {
-      console.log('getOsAccountLocalIdForSerialNumber localId: ' + localId);
+      console.info('getOsAccountLocalIdForSerialNumber localId: ' + localId);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountLocalIdForSerialNumber err: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdForSerialNumber err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getOsAccountLocalIdForSerialNumber exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForSerialNumber exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1671,6 +1831,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1678,7 +1839,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
       if (err) {
         console.error(`get serialNumber code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('get serialNumber:' + serialNumber + ' by localId: ' + localId);
+        console.info('get serialNumber:' + serialNumber + ' by localId: ' + localId);
       }
     });
   } catch (e) {
@@ -1722,16 +1883,18 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.getSerialNumberForOsAccountLocalId(localId).then((serialNumber: number) => {
-      console.log('getSerialNumberForOsAccountLocalId serialNumber: ' + serialNumber);
+      console.info('getSerialNumberForOsAccountLocalId serialNumber: ' + serialNumber);
     }).catch((err: BusinessError) => {
-      console.error('getSerialNumberForOsAccountLocalId err: ' + JSON.stringify(err));
+      console.error(`getSerialNumberForOsAccountLocalId err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getSerialNumberForOsAccountLocalId exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getSerialNumberForOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1743,7 +1906,7 @@ Checks whether multiple system accounts are supported. This API uses an asynchro
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [checkMultiOsAccountEnabled](#checkmultiosaccountenabled9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkMultiOsAccountEnabled](#checkmultiosaccountenabled9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1757,12 +1920,13 @@ Checks whether multiple system accounts are supported. This API uses an asynchro
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isMultiOsAccountEnable((err: BusinessError, isEnabled: boolean) => {
     if (err) {
-      console.error('isMultiOsAccountEnable failed, error: ' + JSON.stringify(err));
+      console.error(`isMultiOsAccountEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-    console.log('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
+      console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
     }
   });
   ```
@@ -1775,7 +1939,7 @@ Checks whether multiple system accounts are supported. This API uses a promise t
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [checkMultiOsAccountEnabled](#checkmultiosaccountenabled9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkMultiOsAccountEnabled](#checkmultiosaccountenabled9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1789,11 +1953,12 @@ Checks whether multiple system accounts are supported. This API uses a promise t
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isMultiOsAccountEnable().then((isEnabled: boolean) => {
-    console.log('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
+    console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
   }).catch((err: BusinessError) => {
-    console.error('isMultiOsAccountEnable failed, error: ' + JSON.stringify(err));
+    console.error(`isMultiOsAccountEnable failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -1822,13 +1987,14 @@ Checks whether a system account is activated. This API uses an asynchronous call
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.isOsAccountActived(localId, (err: BusinessError, isActived: boolean) => {
     if (err) {
-      console.error('isOsAccountActived failed, err:' + JSON.stringify(err));
+      console.error(`isOsAccountActived failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('isOsAccountActived successfully, isActived:' + isActived);
+      console.info('isOsAccountActived successfully, isActived:' + isActived);
     }
   });
   ```
@@ -1863,12 +2029,13 @@ Checks whether a system account is activated. This API uses a promise to return 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.isOsAccountActived(localId).then((isActived: boolean) => {
-    console.log('isOsAccountActived successfully, isActived: ' + isActived);
+    console.info('isOsAccountActived successfully, isActived: ' + isActived);
   }).catch((err: BusinessError) => {
-    console.error('isOsAccountActived failed, error: ' + JSON.stringify(err));
+    console.error(`isOsAccountActived failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -1898,14 +2065,15 @@ Checks whether the specified constraint is enabled for a system account. This AP
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   accountManager.isOsAccountConstraintEnable(localId, constraint, (err: BusinessError, isEnabled: boolean) => {
     if (err) {
-      console.error('isOsAccountConstraintEnable failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountConstraintEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('isOsAccountConstraintEnable successfully, isEnabled: ' + isEnabled);
+      console.info('isOsAccountConstraintEnable successfully, isEnabled: ' + isEnabled);
     }
   });
   ```
@@ -1941,13 +2109,14 @@ Checks whether the specified constraint is enabled for a system account. This AP
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   accountManager.isOsAccountConstraintEnable(localId, constraint).then((isEnabled: boolean) => {
-    console.log('isOsAccountConstraintEnable successfully, isEnabled: ' + isEnabled);
+    console.info('isOsAccountConstraintEnable successfully, isEnabled: ' + isEnabled);
   }).catch((err: BusinessError) => {
-    console.error('isOsAccountConstraintEnable err: ' + JSON.stringify(err));
+    console.error(`isOsAccountConstraintEnable err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -1959,7 +2128,7 @@ Checks whether this system account is a test account. This API uses an asynchron
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [checkOsAccountTestable](#checkosaccounttestable9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkOsAccountTestable](#checkosaccounttestable9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1973,12 +2142,13 @@ Checks whether this system account is a test account. This API uses an asynchron
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isTestOsAccount((err: BusinessError, isTestable: boolean) => {
     if (err) {
-      console.error('isTestOsAccount failed, error: ' + JSON.stringify(err));
+      console.error(`isTestOsAccount failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('isTestOsAccount successfully, isTestable: ' + isTestable);
+      console.info('isTestOsAccount successfully, isTestable: ' + isTestable);
     }
   });
   ```
@@ -1991,7 +2161,7 @@ Checks whether this system account is a test account. This API uses a promise to
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [checkOsAccountTestable](#checkosaccounttestable9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkOsAccountTestable](#checkosaccounttestable9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2005,11 +2175,12 @@ Checks whether this system account is a test account. This API uses a promise to
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
     accountManager.isTestOsAccount().then((isTestable: boolean) => {
-      console.log('isTestOsAccount successfully, isTestable: ' + isTestable);
+      console.info('isTestOsAccount successfully, isTestable: ' + isTestable);
     }).catch((err: BusinessError) => {
-      console.error('isTestOsAccount failed, error: ' + JSON.stringify(err));
+      console.error(`isTestOsAccount failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2021,7 +2192,7 @@ Checks whether a system account has been verified. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkOsAccountVerified](#checkosaccountverifieddeprecated).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkOsAccountVerified](#checkosaccountverifieddeprecated) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2037,12 +2208,13 @@ Checks whether a system account has been verified. This API uses an asynchronous
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isOsAccountVerified((err: BusinessError, isVerified: boolean) => {
     if (err) {
-      console.error('isOsAccountVerified failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('isOsAccountVerified successfully, isVerified: ' + isVerified);
+      console.info('isOsAccountVerified successfully, isVerified: ' + isVerified);
     }
   });
   ```
@@ -2072,13 +2244,14 @@ Checks whether a system account has been verified. This API uses an asynchronous
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.isOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
     if (err) {
-      console.error('isOsAccountVerified failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('isOsAccountVerified successfully, isVerified: ' + isVerified);
+      console.info('isOsAccountVerified successfully, isVerified: ' + isVerified);
     }
   });
   ```
@@ -2113,11 +2286,12 @@ Checks whether a system account has been verified. This API uses a promise to re
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isOsAccountVerified().then((isVerified: boolean) => {
-    console.log('isOsAccountVerified successfully, isVerified: ' + isVerified);
+    console.info('isOsAccountVerified successfully, isVerified: ' + isVerified);
   }).catch((err: BusinessError) => {
-    console.error('isOsAccountVerified failed, error: ' + JSON.stringify(err));
+    console.error(`isOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2129,7 +2303,7 @@ Obtains the number of system accounts created. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountCount](#getosaccountcount9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountCount](#getosaccountcount9) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2145,12 +2319,13 @@ Obtains the number of system accounts created. This API uses an asynchronous cal
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getCreatedOsAccountsCount((err: BusinessError, count: number)=>{
     if (err) {
-      console.error('getCreatedOsAccountsCount failed, error: ' + JSON.stringify(err));
+      console.error(`getCreatedOsAccountsCount failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getCreatedOsAccountsCount successfully, count: ' + count);
+      console.info('getCreatedOsAccountsCount successfully, count: ' + count);
     }
   });
   ```
@@ -2163,7 +2338,7 @@ Obtains the number of system accounts created. This API uses a promise to return
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountCount](#getosaccountcount9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountCount](#getosaccountcount9-1) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2179,11 +2354,12 @@ Obtains the number of system accounts created. This API uses a promise to return
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getCreatedOsAccountsCount().then((count: number) => {
-    console.log('getCreatedOsAccountsCount successfully, count: ' + count);
+    console.info('getCreatedOsAccountsCount successfully, count: ' + count);
   }).catch((err: BusinessError) => {
-    console.error('getCreatedOsAccountsCount failed, error: ' + JSON.stringify(err));
+    console.error(`getCreatedOsAccountsCount failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2195,7 +2371,7 @@ Obtains the ID of the system account to which the current process belongs. This 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountLocalId](#getosaccountlocalid9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountLocalId](#getosaccountlocalid9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2209,12 +2385,13 @@ Obtains the ID of the system account to which the current process belongs. This 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountLocalIdFromProcess((err: BusinessError, localId: number) => {
     if (err) {
-      console.error('getOsAccountLocalIdFromProcess failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdFromProcess failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOsAccountLocalIdFromProcess id:: ' + localId);
+      console.info('getOsAccountLocalIdFromProcess id:: ' + localId);
     }
   });
   ```
@@ -2227,7 +2404,7 @@ Obtains the ID of the system account to which the current process belongs. This 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountLocalId](#getosaccountlocalid9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountLocalId](#getosaccountlocalid9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2241,11 +2418,12 @@ Obtains the ID of the system account to which the current process belongs. This 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountLocalIdFromProcess().then((localId: number) => {
-    console.log('getOsAccountLocalIdFromProcess successfully, localId: ' + localId);
+    console.info('getOsAccountLocalIdFromProcess successfully, localId: ' + localId);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountLocalIdFromProcess failed, error: ' + JSON.stringify(err));
+    console.error(`getOsAccountLocalIdFromProcess failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2257,7 +2435,7 @@ Obtains the system account ID based on the process UID. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountLocalIdForUid](#getosaccountlocalidforuid9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForUid](#getosaccountlocalidforuid9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2272,13 +2450,14 @@ Obtains the system account ID based on the process UID. This API uses an asynchr
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   accountManager.getOsAccountLocalIdFromUid(uid, (err: BusinessError, localId: number) => {
     if (err) {
-      console.error('getOsAccountLocalIdFromUid failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdFromUid failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOsAccountLocalIdFromUid successfully, localId: ' + localId);
+      console.info('getOsAccountLocalIdFromUid successfully, localId: ' + localId);
     }
   });
   ```
@@ -2291,7 +2470,7 @@ Obtains the system account ID based on the process UID. This API uses a promise 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountLocalIdForUid](#getosaccountlocalidforuid9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForUid](#getosaccountlocalidforuid9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2311,12 +2490,13 @@ Obtains the system account ID based on the process UID. This API uses a promise 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   accountManager.getOsAccountLocalIdFromUid(uid).then((localId: number) => {
-    console.log('getOsAccountLocalIdFromUid successfully, localId: ' + localId);
+    console.info('getOsAccountLocalIdFromUid successfully, localId: ' + localId);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountLocalIdFromUid failed, error: ' + JSON.stringify(err));
+    console.error(`getOsAccountLocalIdFromUid failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2328,7 +2508,7 @@ Obtains the system account ID based on the domain account information. This API 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2345,13 +2525,14 @@ Obtains the system account ID based on the domain account information. This API 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountLocalIdFromDomain(domainInfo, (err: BusinessError, localId: number) => {
     if (err) {
-      console.error('getOsAccountLocalIdFromDomain failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdFromDomain failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOsAccountLocalIdFromDomain successfully, localId: ' + localId);
+      console.info('getOsAccountLocalIdFromDomain successfully, localId: ' + localId);
     }
   });
   ```
@@ -2364,7 +2545,7 @@ Obtains the system account ID based on the domain account information. This API 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9-1) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2386,12 +2567,13 @@ Obtains the system account ID based on the domain account information. This API 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   accountManager.getOsAccountLocalIdFromDomain(domainInfo).then((localId: number) => {
-    console.log('getOsAccountLocalIdFromDomain successfully, localId: ' + localId);
+    console.info('getOsAccountLocalIdFromDomain successfully, localId: ' + localId);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountLocalIdFromDomain failed, error: ' + JSON.stringify(err));
+    console.error(`getOsAccountLocalIdFromDomain failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2420,13 +2602,14 @@ Obtains all constraints enabled for a system account. This API uses an asynchron
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId, (err: BusinessError, constraints: string[])=>{
     if (err) {
-      console.error('getOsAccountAllConstraints err:' + JSON.stringify(err));
+      console.error(`getOsAccountAllConstraints code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOsAccountAllConstraints:' + JSON.stringify(constraints));
+      console.info('getOsAccountAllConstraints:' + JSON.stringify(constraints));
     }
   });
   ```
@@ -2461,12 +2644,13 @@ Obtains all constraints enabled for a system account. This API uses a promise to
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId).then((constraints: string[]) => {
-    console.log('getOsAccountAllConstraints, constraints: ' + constraints);
+    console.info('getOsAccountAllConstraints, constraints: ' + constraints);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountAllConstraints err: ' + JSON.stringify(err));
+    console.error(`getOsAccountAllConstraints err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2478,7 +2662,7 @@ Obtains information about all activated system accounts. This API uses an asynch
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2492,16 +2676,17 @@ Obtains information about all activated system accounts. This API uses an asynch
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-  accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[])=>{
-      if (err) {
-        console.error('queryActivatedOsAccountIds err:' + JSON.stringify(err));
-      } else {
-        console.log('queryActivatedOsAccountIds idArray length:' + idArray.length);
-        for(let i=0;i<idArray.length;i++) {
-          console.info('activated os account id: ' + idArray[i]);
-        }
+  accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[]) => {
+    if (err) {
+      console.error(`queryActivatedOsAccountIds code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('queryActivatedOsAccountIds idArray length:' + idArray.length);
+      for (let i = 0; i < idArray.length; i++) {
+        console.info('activated os account id: ' + idArray[i]);
       }
+    }
   });
   ```
 
@@ -2511,7 +2696,7 @@ queryActivatedOsAccountIds(): Promise&lt;Array&lt;number&gt;&gt;
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9-1) instead.
 
 Obtains information about all activated system accounts. This API uses a promise to return the result.
 
@@ -2527,11 +2712,12 @@ Obtains information about all activated system accounts. This API uses a promise
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.queryActivatedOsAccountIds().then((idArray: number[]) => {
-    console.log('queryActivatedOsAccountIds, idArray: ' + idArray);
+    console.info('queryActivatedOsAccountIds, idArray: ' + idArray);
   }).catch((err: BusinessError) => {
-    console.error('queryActivatedOsAccountIds err: ' + JSON.stringify(err));
+    console.error(`queryActivatedOsAccountIds err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2559,12 +2745,13 @@ Obtains information about the system account to which the current process belong
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.queryCurrentOsAccount((err: BusinessError, curAccountInfo: osAccount.OsAccountInfo)=>{
     if (err) {
-      console.error('queryCurrentOsAccount err:' + JSON.stringify(err));
+      console.error(`queryCurrentOsAccount code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('queryCurrentOsAccount curAccountInfo:' + JSON.stringify(curAccountInfo));
+      console.info('queryCurrentOsAccount curAccountInfo:' + JSON.stringify(curAccountInfo));
     }
   });
   ```
@@ -2593,11 +2780,12 @@ Obtains information about the system account to which the current process belong
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.queryCurrentOsAccount().then((accountInfo: osAccount.OsAccountInfo) => {
-    console.log('queryCurrentOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
+    console.info('queryCurrentOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
   }).catch((err: BusinessError) => {
-    console.error('queryCurrentOsAccount err: ' + JSON.stringify(err));
+    console.error(`queryCurrentOsAccount err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2609,7 +2797,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountType](#getosaccounttype9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountType](#getosaccounttype9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2623,12 +2811,13 @@ Obtains the type of the account to which the current process belongs. This API u
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountTypeFromProcess((err: BusinessError, accountType: osAccount.OsAccountType) => {
     if (err) {
-      console.error('getOsAccountTypeFromProcess err: ' + JSON.stringify(err));
+      console.error(`getOsAccountTypeFromProcess err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOsAccountTypeFromProcess accountType: ' + accountType);
+      console.info('getOsAccountTypeFromProcess accountType: ' + accountType);
     }
   });
   ```
@@ -2641,7 +2830,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountType](#getosaccounttype9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountType](#getosaccounttype9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2655,11 +2844,12 @@ Obtains the type of the account to which the current process belongs. This API u
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountTypeFromProcess().then((accountType: osAccount.OsAccountType) => {
-    console.log('getOsAccountTypeFromProcess, accountType: ' + accountType);
+    console.info('getOsAccountTypeFromProcess, accountType: ' + accountType);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountTypeFromProcess err: ' + JSON.stringify(err));
+    console.error(`getOsAccountTypeFromProcess err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2671,7 +2861,7 @@ Obtains the ID of a distributed virtual device. This API uses an asynchronous ca
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications) or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -2687,12 +2877,13 @@ Obtains the ID of a distributed virtual device. This API uses an asynchronous ca
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getDistributedVirtualDeviceId((err: BusinessError, virtualID: string) => {
     if (err) {
-      console.error('getDistributedVirtualDeviceId err: ' + JSON.stringify(err));
+      console.error(`getDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getDistributedVirtualDeviceId virtualID: ' + virtualID);
+      console.info('getDistributedVirtualDeviceId virtualID: ' + virtualID);
     }
   });
   ```
@@ -2705,7 +2896,7 @@ Obtains the ID of this distributed virtual device. This API uses a promise to re
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9-1) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications) or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -2721,11 +2912,12 @@ Obtains the ID of this distributed virtual device. This API uses a promise to re
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getDistributedVirtualDeviceId().then((virtualID: string) => {
-    console.log('getDistributedVirtualDeviceId, virtualID: ' + virtualID);
+    console.info('getDistributedVirtualDeviceId, virtualID: ' + virtualID);
   }).catch((err: BusinessError) => {
-    console.error('getDistributedVirtualDeviceId err: ' + JSON.stringify(err));
+    console.error(`getDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2737,7 +2929,7 @@ Obtains the system account ID based on the SN. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2752,13 +2944,14 @@ Obtains the system account ID based on the SN. This API uses an asynchronous cal
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   accountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err: BusinessError, localId: number)=>{
     if (err) {
       console.error(`get localId code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('get localId:' + localId + ' by serialNumber: ' + serialNumber);
+      console.info('get localId:' + localId + ' by serialNumber: ' + serialNumber);
     }
   });
   ```
@@ -2771,7 +2964,7 @@ Obtains the system account ID based on the SN. This API uses a promise to return
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2791,12 +2984,13 @@ Obtains the system account ID based on the SN. This API uses a promise to return
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   accountManager.getOsAccountLocalIdBySerialNumber(serialNumber).then((localId: number) => {
-    console.log('getOsAccountLocalIdBySerialNumber localId: ' + localId);
+    console.info('getOsAccountLocalIdBySerialNumber localId: ' + localId);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountLocalIdBySerialNumber err: ' + JSON.stringify(err));
+    console.error(`getOsAccountLocalIdBySerialNumber err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2808,7 +3002,7 @@ Obtains the SN of a system account based on the account ID. This API uses an asy
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2823,13 +3017,14 @@ Obtains the SN of a system account based on the account ID. This API uses an asy
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId, (err: BusinessError, serialNumber: number)=>{
     if (err) {
       console.error(`get serialNumber code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('get serialNumber:' + serialNumber + ' by localId: ' + localId);
+      console.info('get serialNumber:' + serialNumber + ' by localId: ' + localId);
     }
   });
   ```
@@ -2842,7 +3037,7 @@ Obtains the SN of a system account based on the account ID. This API uses a prom
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2862,12 +3057,13 @@ Obtains the SN of a system account based on the account ID. This API uses a prom
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId).then((serialNumber: number) => {
-    console.log('getSerialNumberByOsAccountLocalId serialNumber: ' + serialNumber);
+    console.info('getSerialNumberByOsAccountLocalId serialNumber: ' + serialNumber);
   }).catch((err: BusinessError) => {
-    console.error('getSerialNumberByOsAccountLocalId err: ' + JSON.stringify(err));
+    console.error(`getSerialNumberByOsAccountLocalId err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2894,25 +3090,83 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300001 | The system service works abnormally. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountName().then((name: string) => {
-      console.log('getOsAccountName, name: ' + name);
+      console.info('getOsAccountName, name: ' + name);
     }).catch((err: BusinessError) => {
       console.error('getOsAccountName err: ' + err);
     });
   } catch (e) {
-    console.error('getOsAccountName exception: ' + e);
+    const err = e as BusinessError;
+    console.error(`getOsAccountName exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
+### getOsAccountNameByLocalId
+
+getOsAccountNameByLocalId(localId: number): Promise&lt;string&gt;
+
+Obtains the name of a system account based on its local ID. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Required permission**: ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                    |
+| -------- | ------ | ---- | ----------------------- |
+| localId  | number | Yes  | Local ID of the target system account.|
+
+**Return value**
+
+| Type               | Description                    |
+| ------------------- | ----------------------- |
+| Promise&lt;string&gt; | Promise used to return the name of the target system account.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                    |
+| -------- | --------------------------- |
+| 201 | Permission denied. |
+| 12300001 | The system service works abnormally. |
+| 12300003 | Account not found. |
+| 12300008 | Restricted Account. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+try {
+  accountManager.getOsAccountNameByLocalId(100).then((name: string) => {
+    console.info('getOsAccountNameByLocalId, name: ' + name);
+  }).catch((err: BusinessError) => {
+    console.error('getOsAccountNameByLocalId err: ' + err);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountNameByLocalId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### getForegroundOsAccountLocalId<sup>15+</sup>
 
-getForegroundOsAccountLocalId(): Promise&lt;number&gt;;
+getForegroundOsAccountLocalId(): Promise&lt;number&gt;
 
-Obtains the ID of the foreground system account.
+Obtains the ID of the foreground system account. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2920,7 +3174,7 @@ Obtains the ID of the foreground system account.
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.|
+| Promise&lt;number&gt; | Promise used to return the ID of the foreground system account.|
 
 **Error codes**
 
@@ -2934,23 +3188,25 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getForegroundOsAccountLocalId().then((localId: number) => {
-      console.log('getForegroundOsAccountLocalId, localId: ' + localId);
+      console.info('getForegroundOsAccountLocalId, localId: ' + localId);
     }).catch((err: BusinessError) => {
-      console.error('getForegroundOsAccountLocalId err: ' + JSON.stringify(err));
+      console.error(`getForegroundOsAccountLocalId err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getForegroundOsAccountLocalId exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getForegroundOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
 ### getOsAccountDomainInfo<sup>15+</sup>
 
-getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;;
+getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
-Obtains the domain account information associated with a specified system account.
+Obtains the domain account information associated with a specified system account. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_DOMAIN_ACCOUNTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available to system applications and enterprise applications)
 
@@ -2966,7 +3222,7 @@ Obtains the domain account information associated with a specified system accoun
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise used to return the result.|
+| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise used to return the domain account information obtained.|
 
 **Error codes**
 
@@ -2983,17 +3239,18 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
     if (domainAccountInfo === null) {
-      console.log('The target OS account is not a domain account.')
+      console.info('The target OS account is not a domain account.')
     } else {
-      console.log('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
-      console.log('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
+      console.info('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
+      console.info('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
     }
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountDomainInfo err: ' + JSON.stringify(err));
+    console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
   })
   ```
 
@@ -3038,20 +3295,23 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300004 | The new account already exists. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let oldDomainInfo: osAccount.DomainAccountInfo =
     {domain: 'testDomain', accountName: 'oldtestAccountName'};
   let newDomainInfo: osAccount.DomainAccountInfo =
     {domain: 'testDomain', accountName: 'newtestAccountName'};
   try {
     osAccount.DomainAccountManager.updateAccountInfo(oldDomainInfo, newDomainInfo).then(() => {
-      console.log('updateAccountInfo, success');
+      console.info('updateAccountInfo, success');
     }).catch((err: BusinessError) => {
       console.error('updateAccountInfo err: ' + err);
     });
   } catch (e) {
-    console.error('updateAccountInfo exception: ' + e);
+    const err = e as BusinessError;
+    console.error(`updateAccountInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -3061,23 +3321,23 @@ Represents information about a system account.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name                        | Type                                                        | Mandatory| Description                             |
-| ------------------------------ | ------------------------------------------------------------ | ---- | --------------------------------- |
-| localId                        | number                                                       | Yes  | ID of the system account.                     |
-| localName                      | string                                                       | Yes  | Name of the system account.                   |
-| type                           | [OsAccountType](#osaccounttype)                              | Yes  | Type of the system account.                     |
-| constraints                    | Array&lt;string&gt;                                          | Yes  | [Constraints](#constraints) of the system account. By default, no value is passed in.|
-| isVerified<sup>(deprecated)</sup> | boolean                                                   | Yes  | Whether the account has been verified. The value **true** means the specified account has been verified; the value **false** means the opposite.<br>**Note**: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isUnlocked** instead.          |
-| isUnlocked<sup>11+</sup>      | boolean                                                       | Yes  | Whether the account is unlocked (whether the **el2/** directory is decrypted). The value **true** means the specified account is unlocked; the value **false** means the opposite.                     |
-| photo<sup>8+</sup>             | string                                                       | Yes  | Avatar of the system account. By default, no value is passed in.                     |
-| createTime<sup>8+</sup>        | number                                                       | Yes  | Time when the system account was created.                 |
-| lastLoginTime<sup>8+</sup>     | number                                                       | Yes  | Last login time of the system account. By default, no value is passed in.         |
-| serialNumber<sup>8+</sup>      | number                                                       | Yes  | SN of the system account.                     |
-| isActived<sup>(deprecated)</sup>         | boolean                                            | Yes  | Whether the system account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.<br>**Note**: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isActivated** instead.                 |
-| isActivated<sup>11+</sup>         | boolean                                                   | Yes  | Whether the system account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.                 |
-| isCreateCompleted<sup>8+</sup> | boolean                                                      | Yes  | Whether the system account information is complete. The value **true** means the specified account is complete; the value **false** means the opposite.             |
-| distributedInfo                | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | Yes  | Distributed account information. By default, no value is passed in.                   |
-| domainInfo<sup>8+</sup>        | [DomainAccountInfo](#domainaccountinfo8)                      | Yes  | Domain account information. By default, no value is passed in.                       |
+| Name                        | Type                                                        | Read-Only | Optional | Description                             |
+| ------------------------------ | ------------------------------------------------------------ | ---- | ---- | --------------------------------- |
+| localId                        | number                                                       | No| No | ID of the target system account.                     |
+| localName                      | string                                                       | No| No | Name of the system account.                   |
+| type                           | [OsAccountType](#osaccounttype)                              | No| No | Type of the system account.                     |
+| constraints                    | Array&lt;string&gt;                                          | No| No | [Constraints](#constraints) of the system account. By default, no value is passed in.|
+| isVerified<sup>(deprecated)</sup> | boolean                                                   | No| No | Whether the account has been verified. The value **true** means the specified account has been verified; the value **false** means the opposite.<br>Note: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isUnlocked** instead.          |
+| isUnlocked<sup>11+</sup>      | boolean                                                       | No| No | Whether the account is unlocked (whether the **el2/** directory is decrypted). The value **true** means the specified account is unlocked; the value **false** means the opposite.                     |
+| photo<sup>8+</sup>             | string                                                       | No| No | Avatar of the system account. By default, no value is passed in.                     |
+| createTime<sup>8+</sup>        | number                                                       | No| No | System account creation time. The value is a Unix timestamp (in seconds).                 |
+| lastLoginTime<sup>8+</sup>     | number                                                       | No| No | Last login time of the system account. The value is a Unix timestamp (in seconds).         |
+| serialNumber<sup>8+</sup>      | number                                                       | No| No | SN of the system account.                     |
+| isActived<sup>(deprecated)</sup>         | boolean                                            | No| No | Whether the system account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.<br>Note: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isActivated** instead.                 |
+| isActivated<sup>11+</sup>         | boolean                                                   | No| No | Whether the system account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.                 |
+| isCreateCompleted<sup>8+</sup> | boolean                                                      | No| No | Whether the system account information is complete. The value **true** means the specified account is complete; the value **false** means the opposite.             |
+| distributedInfo                | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | No| No | Distributed account information. By default, no value is passed in.                   |
+| domainInfo<sup>8+</sup>        | [DomainAccountInfo](#domainaccountinfo8)                      | No| No | Domain account information. By default, no value is passed in.                       |
 
 ## DomainAccountInfo<sup>8+</sup>
 
@@ -3085,11 +3345,13 @@ Represents the domain account information.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| domain      | string | Yes  | Domain name.    |
-| accountName | string | Yes  | Domain account name.|
-| serverConfigId<sup>18+</sup> | string | No  | Domain account configuration ID, which is an empty string by default.|
+| Name     | Type  | Read-Only | Optional| Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| domain      | string | No| No | Domain name.    |
+| accountName | string | No| No | Domain account name.|
+| serverConfigId<sup>18+</sup> | string | No| Yes | Domain account configuration ID, which is an empty string by default.|
+| additionalInfo | Record<string, Object> | No| Yes| Additional information about the domain account.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.|
+
 
 ## DomainServerConfig<sup>18+</sup>
 
@@ -3097,11 +3359,11 @@ Represents the configuration of a domain server.
 
 **System capability**: SystemCapability.Account.OsAccount
 
-| Name     | Type  | Mandatory| Description      |
-| ----------- | ------ | ---- | ---------- |
-| parameters | Record<string, Object> | Yes  | Server configuration parameters.|
-| id | string | Yes  | Server configuration ID.|
-| domain | string | Yes| Domain to which the server belongs.|
+| Name     | Type  | Read-Only | Optional| Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| parameters | Record<string, Object> | No| No | Server configuration parameters.|
+| id | string | No| No | Server configuration ID.|
+| domain | string | No| No | Domain to which the server belongs.|
 
 ## DomainServerConfigManager<sup>18+</sup>
 
@@ -3144,17 +3406,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300215 | The number of server config reaches the upper limit. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
   };
   osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('add server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
+    console.info('add server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3193,19 +3457,21 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300214 | Server config has been associated with an account. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
   };
   osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
     osAccount.DomainServerConfigManager.removeServerConfig(serverConfig.id);
-    console.log('remove domain server configuration successfully');
+    console.info('remove domain server configuration successfully');
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3248,22 +3514,24 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300214 | Server config has been associated with an account. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
   };
   osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
     osAccount.DomainServerConfigManager.updateServerConfig(serverConfig.id, configParams).then((data) => {
-      console.log('update domain server configuration successfully, return config: ' + JSON.stringify(data));
+      console.info('update domain server configuration successfully, return config: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-      console.error('update domain server configuration failed, error: ' + JSON.stringify(err));
+      console.error(`update domain server configuration failed, code is ${err.code}, message is ${err.message}`);
     });
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3301,22 +3569,24 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300212 | Server config not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
   };
   osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
     osAccount.DomainServerConfigManager.getServerConfig(serverConfig.id).then((data: osAccount.DomainServerConfig) => {
-      console.log('get domain server configuration successfully, return config: ' + JSON.stringify(data));
+      console.info('get domain server configuration successfully, return config: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-      console.error('get domain server configuration failed, error: ' + JSON.stringify(err));
+      console.error(`get domain server configuration failed, code is ${err.code}, message is ${err.message}`);
     });
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3347,22 +3617,24 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300001 | The system service works abnormally. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
   };
   osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
     osAccount.DomainServerConfigManager.getAllServerConfigs().then((data: Array<osAccount.DomainServerConfig>) => {
-      console.log('get all domain server configuration successfully, return config: ' + JSON.stringify(data));
+      console.info('get all domain server configuration successfully, return config: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-      console.error('get all domain server configuration failed, error: ' + JSON.stringify(err));
+      console.error(`get all domain server configuration failed, code is ${err.code}, message is ${err.message}`);
     });
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3400,17 +3672,19 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300003 | Domain account not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountInfo: osAccount.DomainAccountInfo = {
     'accountName': 'demoName',
     'domain': 'demoDomain'
   };
   osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('get account server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
+    console.info('get account server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 

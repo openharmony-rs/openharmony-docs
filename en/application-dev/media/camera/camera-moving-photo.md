@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The camera framework provides the capability of taking moving photos. With this capability, users can take a moving photo in one-click mode, in a way similar to taking an ordinary photo.
 
@@ -42,7 +42,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
        return;
      }
      let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
-     if (!photoProfilesArray || previewProfilesArray.length === 0) {
+     if (!photoProfilesArray || photoProfilesArray.length === 0) {
        console.error("photoProfilesArray is null or []");
        return;
      }

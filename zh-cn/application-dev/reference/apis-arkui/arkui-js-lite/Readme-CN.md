@@ -1,4 +1,10 @@
-# 兼容JS的类Web开发范式（ArkUI.Lite）
+# 兼容JS的类Web开发范式（ArkUI.Lite）<!--arkui-js-lite-comp-->
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - 框架说明<!--js-lite-framework-overview-->
   - [文件组织](js-lite-framework-file.md)
@@ -10,7 +16,7 @@
     - [HML语法参考](js-lite-framework-syntax-hml.md)
     - [CSS语法参考](js-lite-framework-syntax-css.md)
     - [JS语法参考](js-lite-framework-syntax-js.md)
-- 组件通用信息<!--js-lite-universal-comp-infor-->
+- 组件通用信息<!--js-lite-universal-comp-inform-->
   - [通用事件](js-lite-common-events.md)
   - [通用属性](js-lite-common-attributes.md)
   - [通用样式](js-lite-common-styles.md)
@@ -37,3 +43,5 @@
 - 画布组件<!--js-lite-canvas-comp-->
   - [canvas组件](js-lite-components-canvas-canvas.md)
   - [CanvasRenderingContext2D对象](js-lite-components-canvas-canvasrenderingcontext2d.md)
+- 全局接口<!--js-lite-global-interface-->
+  - [旋转表冠事件监听](js-lite-common-monitorcrownevents.md)

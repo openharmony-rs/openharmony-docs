@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @zhangyafei-echo-->
-<!--Designer: @zhangyafei-echo-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -34,7 +34,7 @@ You can create intents in a visualized manner using DevEco Studio. The procedure
 2. Choose the intent vertical domain, the file name for the InsightIntent framework entry code, and the intent configuration, which includes the intent name and the bound application component.
 3. When you have finished, click **Finish**.
 
-    An **insight_intent.json** file is generated in **module > src > main > resource > base > profile**. You can view the current InsightIntent framework configuration details in this file.
+    An **insight_intent.json** file is generated in **module > src > main > resources > base > profile**. You can view the current InsightIntent framework configuration details in this file.
 
     ```json
     {
@@ -58,23 +58,27 @@ You can create intents in a visualized manner using DevEco Studio. The procedure
 
 4. An entry code file is generated in **module > src > main > ets > insightintents**. Implement the functional code for the intent in the intent execution function.
 
-    ```ts
-    // This file is the entry point corresponding to the srcEntry field in intent configuration.
+    <!-- @[playmusic_executor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/InsightIntentConfigDevelopment/entry/src/main/ets/insightintents/PlayMusicExecutor.ets) -->
+
+    ``` TypeScript
+    // This file is the entry point corresponding to the 'srcEntry' field in intent configuration.
     import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
-
+    // ···
+    
     export default class PlayMusicExecutor extends InsightIntentExecutor {
-      // If executeMode in intent configuration is set to foreground, this API should be implemented.
+      // If 'executeMode' in intent configuration is set to 'foreground', this API should be implemented.
       async onExecuteInUIAbilityForegroundMode(intentName: string, params: Record<string, Object>,
         windowStage: window.WindowStage): Promise<insightIntent.ExecuteResult> {
         // Implement the playback logic.
+        // ···
         const result: insightIntent.ExecuteResult = {
           code: 0
         };
         return Promise.resolve(result);
       }
-
-      // If executeMode in intent configuration is set to background, this API should be implemented.
+    
+      // If 'executeMode' in intent configuration is set to 'background', this API should be implemented.
       async onExecuteInUIAbilityBackgroundMode(intentName: string,
         params: Record<string, Object>): Promise<insightIntent.ExecuteResult> {
         // Background control logic.
@@ -85,7 +89,7 @@ You can create intents in a visualized manner using DevEco Studio. The procedure
       }
     }
     ```
-
+   
 > **NOTE**
 >
 > The configuration file approach only provides basic execution capabilities. The parameter format must be negotiated between the developer and the system entry point.
@@ -120,10 +124,12 @@ Example intent configuration:
 
 Implementation of the intent executor:
 
-```ts
+<!-- @[playmusic_extension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/InsightIntentConfigDevelopment/entry/src/main/ets/insightintents/ExtensionExecutor.ets) -->
+
+``` TypeScript
 import { InsightIntentExecutor, insightIntent, UIExtensionContentSession } from '@kit.AbilityKit';
 
-export default class IntentExecutorImpl extends InsightIntentExecutor {
+export default class ExtensionExecutor extends InsightIntentExecutor {
   // The uiExtension is configured for the intent. Therefore, this API should be implemented.
   async onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>,
     pageLoader: UIExtensionContentSession): Promise<insightIntent.ExecuteResult> {
@@ -162,10 +168,12 @@ Example intent configuration:
 
 Implementation of the intent executor:
 
-```ts
+<!-- @[playmusic_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/InsightIntentConfigDevelopment/entry/src/main/ets/insightintents/DownloadExecutor.ets) -->
+
+``` TypeScript
 import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
 
-export default class IntentExecutorImpl extends InsightIntentExecutor {
+export default class DownloadExecutor extends InsightIntentExecutor {
   // The serviceExtension is configured for the intent. Therefore, this API should be implemented.
   async onExecuteInServiceExtensionAbility(name: string,
     param: Record<string, Object>): Promise<insightIntent.ExecuteResult> {
@@ -212,7 +220,7 @@ The intention configuration file **insight_intent.json** is located in the **res
 | --- | --- | --- | --- |
 | intentName | Intent name, which is the unique identifier of an intent. The value is a string starting with an uppercase letter and containing letters and digits.| String| No|
 | domain | Domain name of the intent. It is used to categorize intents by domain (for example, video, music, and game).<!--RP1--><!--RP1End--> | String| No|
-| intentVersion | Version number of the intent. It is used to distinguish and manage intents when their capabilities evolve. The value is a three-part data sequence separated by dots, for example, 1.0.1.| String| No|
+| intentVersion | Version number of the intent. It is used to distinguish and manage intents when their capabilities evolve. The value is a three-part data sequence separated by dots, for example, **1.0.1**.| String| No|
 | srcEntry | Relative path of the intent execution file. The value is a string with a maximum of 127 bytes.| String| No|
 | uiAbility | Information about the UIAbility bound to the intent. It contains the **ability** and **executeMode** fields.<br>- **ability**: mandatory; name of the UIAbility. The value must be the same as that of **name** in the [abilities tag](../quick-start/module-configuration-file.md#abilities) of the **module.json5** file.<br>- **executeMode**: mandatory; execution mode. The value can be **foreground** or **background**.<br> &nbsp; &nbsp; - **foreground**: The intent logic can be executed when the UIAbility is launched in the foreground.<br>&nbsp; &nbsp; - **background**: The intent logic can be executed when the UIAbility is launched in the background. | Object| Yes|
 | <!--DelRow--> serviceExtension | Information about the ServiceExtensionAbility bound to the intent. It contains only the **ability** field, which is mandatory and specifies the name of the ServiceExtensionAbility. The value must be the same as that of **name** in the [extensionAbilities tag](../quick-start/module-configuration-file.md#extensionabilities) of the **module.json5** file.| Object| Yes|

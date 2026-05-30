@@ -1,4 +1,14 @@
 # NativeDisplayManager_DisplayInfo
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct {...} NativeDisplayManager_DisplayInfo
+```
 
 ## Overview
 
@@ -17,7 +27,7 @@ The struct describes the information about a display.
 | Name| Description|
 | -- | -- |
 | uint32_t id | ID of the display. The value must be a non-negative integer.|
-| char name[OH_DISPLAY_NAME_LENGTH + 1] | Name of the display.|
+| char name[[OH_DISPLAY_NAME_LENGTH](capi-oh-display-info-h.md#macros) + 1]| Name of the display.|
 | bool isAlive | Whether the display is active. **true** if active, **false** otherwise.|
 | int32_t width | Width of the display, in px. The value must be a non-negative integer.|
 | int32_t height | Height of the display, in px. The value must be a non-negative integer.|
@@ -33,6 +43,6 @@ The struct describes the information about a display.
 | float yDPI | Exact physical pixels per inch of the display in the Y dimension. The value must be a floating-point number greater than 0.|
 | [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation) rotation | Clockwise rotation angle of the display.|
 | [NativeDisplayManager_DisplayState](capi-oh-display-info-h.md#nativedisplaymanager_displaystate) state | State of the display.|
-| [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation) orientation | Orientation of the display.|
+| [NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation) orientation | Orientation of the display.|
 | [NativeDisplayManager_DisplayHdrFormat](capi-nativedisplaymanager-displayhdrformat.md)* hdrFormat | All the HDR formats supported by the display.|
 | [NativeDisplayManager_DisplayColorSpace](capi-nativedisplaymanager-displaycolorspace.md)* colorSpace | All the color spaces supported by the display.|

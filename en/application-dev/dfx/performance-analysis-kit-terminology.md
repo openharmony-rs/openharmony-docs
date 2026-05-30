@@ -35,7 +35,7 @@ An application of the release version is built in [release mode](https://develop
 
 AppFreeze (application freeze) means that an application does not respond to user operations (for example, clicking) for a specified period of time.
 
-### Asan
+### ASan
 
 Address Sanitizer (ASan) is a memory address sanitizer that detects invalid address access.
 
@@ -60,7 +60,7 @@ GWP-ASan is a native memory allocator that supports detection for use-after-free
 
 ### HWASan
 
-Hardware-Assisted Address Sanitizer (HWASan) is a memory error detection system provided by Clang LLVM. It is used to detect common memory access errors in C/C++. Moreover, it has much better performance and memory overhead than Asan.
+Hardware-Assisted Address Sanitizer (HWASan) is a memory error detection system provided by Clang LLVM. It is used to detect common memory access errors in C/C++ and offers better performance and lower memory overhead than ASan.
 
 ### JS Crash
 
@@ -73,6 +73,11 @@ ThreadSanitizer (TSan) is a tool for detecting data races.
 ### UBSan
 
 Undefined Behavior Sanitizer (UBSan) detects undefined behavior in code, enabling developers to locate and fix the underlying defects at runtime.
+
+### Call Stack
+
+Call stack records the sequence of function calls for the thread, from its start up to the current point (such as the crash or freeze). For details, see [Call stack frame](cppcrash-guidelines.md#common-faults) and [JS hybrid stack frame](cppcrash-guidelines.md#common-faults).
+
 
 ## Performance
 
@@ -118,11 +123,11 @@ Virtual Set Size (VSS) indicates the size of the virtual memory of a process, in
 
 ### PSS
 
-Proportional Set Size (PSS) is a more accurate method of measuring memory usage. It allocates the memory consumed by shared libraries among all processes using them in proportion to their actual share.
+Proportional Set Size (PSS) indicates the total physical memory occupied by a process. PSS = Shared memory/Number of processes that use the shared memory + Private memory of the process
 
 ### RSS
 
-Resident Set Size (RSS) denotes the size of physical memory that is currently resident for a process.
+Resident Set Size (RSS) indicates the size of physical memory that is currently resident for a process.
 
 ### Dirty Pages
 

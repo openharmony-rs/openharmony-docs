@@ -1,53 +1,57 @@
 # 设置应用内主题换肤
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
 对于采用ArkTS开发的应用，提供了应用内组件的主题换肤功能，支持局部的深浅色切换及动态换肤。目前，该功能只支持设置应用内主题换肤，暂不支持在UIAbility或窗口层面进行主题设置，同时也不支持C-API和Node-API。
 
 ## 自定义主题色
-当应用需要使用换肤功能时，应自定义主题颜色。[CustomTheme](../reference/apis-arkui/js-apis-arkui-theme.md#customtheme)用于自定义主题色的内容，其属性可选，仅需要复写需修改的部分，未修改内容将继承系统默认设置，可参考[系统默认的token颜色值](#系统缺省token色值)。请参照以下示例自定义主题色：
+当应用需要使用换肤功能时，应自定义主题颜色。[CustomTheme](../reference/apis-arkui/js-apis-arkui-theme.md#customtheme)用于自定义主题色的内容，其属性可选，仅需对需要修改的token字段赋值，其余token将继承系统默认颜色值，可参考[系统默认的token颜色值](#系统缺省token色值)。请参照以下示例自定义主题色：
 
-  ```ts
-    // AppTheme.ets
-    import { CustomColors, CustomTheme } from '@kit.ArkUI';
-
-    export class AppColors implements CustomColors {
-      // 自定义主题色
-      brand: ResourceColor = '#FF75D9';
-      // 使用$r，让一级警示色在深色和浅色模式下，设置为不同的颜色
-      warning: ResourceColor = $r('app.color.start_window_background');
-    }
-
-    export class AppTheme implements CustomTheme {
-      public colors: AppColors = new AppColors();
-    }
-    
-    export let gAppTheme: CustomTheme = new AppTheme();
+  <!-- @[app_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/AppTheme.ets) -->
+  
+  ``` TypeScript
+  import { CustomColors, CustomTheme } from '@kit.ArkUI';
+  
+  export class AppColors implements CustomColors {
+    // 自定义主题色
+    public brand: ResourceColor = '#FF75D9';
+    // 使用$r，让一级警示色在深色和浅色模式下，设置为不同的颜色
+    public warning: ResourceColor = $r('sys.color.ohos_id_color_warning');
+  }
+  
+  export class AppTheme implements CustomTheme {
+    public colors: AppColors = new AppColors();
+  }
+  
+  export let gAppTheme: CustomTheme = new AppTheme();
   ```
 
 ## 设置应用内组件自定义主题色
 - 若在页面入口处设置应用内组件自定义主题色，需确保在页面build前执行[ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol).[setDefaultTheme](../reference/apis-arkui/js-apis-arkui-theme.md#setdefaulttheme)。
+
   示例代码中，[onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)回调函数用于使自定义组件获取当前生效的Theme对象。
 
-  ```ts
+  <!-- @[display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/Theme1.ets) -->
+    
+    ``` TypeScript
     // Index.ets
     import { Theme, ThemeControl } from '@kit.ArkUI';
     import { gAppTheme } from './AppTheme';
     
     //在页面build前执行ThemeControl
     ThemeControl.setDefaultTheme(gAppTheme);
-
+    
     @Entry
     @Component
     struct DisplayPage {
       @State menuItemColor: ResourceColor = $r('sys.color.background_primary');
-      
+    
       onWillApplyTheme(theme: Theme) {
         this.menuItemColor = theme.colors.backgroundPrimary;
       }
@@ -70,7 +74,7 @@
                       .checked(true)
                   }
                   .width('50%')
-
+    
                   Column() {
                     Text('Dark')
                       .fontSize('16fp')
@@ -86,7 +90,7 @@
               .borderRadius('10vp')
               .backgroundColor(this.menuItemColor)
             }
-
+    
             ListItem() {
               Column() {
                 Text('Brightness')
@@ -99,7 +103,7 @@
               .borderRadius('10vp')
               .backgroundColor(this.menuItemColor)
             }
-
+    
             ListItem() {
               Column() {
                 Row() {
@@ -135,18 +139,15 @@
                 Text('Warning')
                   .width('100%')
                   .margin({ top: '5vp', left: '14fp' })
-                Button() {
-                  Text('Text')
-                    .fontSize(30)
-                    .fontWeight(FontWeight.Bold)
-                }
-                .type(ButtonType.Capsule)
-                .role(ButtonRole.ERROR)
-                .width('40%')
+                Button('Text')
+                  .type(ButtonType.Capsule)
+                  .role(ButtonRole.ERROR)
+                  .width('40%')
               }
               .width('100%')
               .height('70vp')
               .borderRadius('10vp')
+              .backgroundColor(this.menuItemColor)
             }
           }
         }
@@ -156,16 +157,18 @@
         .height('100%')
       }
     }
-  ```
+    ```
 
 - 若在UIAbility中设置应用内组件自定义主题色，需在onWindowStageCreate()方法的windowStage.[loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)的完成时回调中调用[ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol).[setDefaultTheme](../reference/apis-arkui/js-apis-arkui-theme.md#setdefaulttheme)，设置应用内组件的自定义主题色。
 
-  ```ts
+    <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
     // EntryAbility.ets
     import {AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { window, CustomColors, ThemeControl } from '@kit.ArkUI';
-
+    
     class AppColors implements CustomColors {
       fontPrimary = 0xFFD53032;
       iconOnPrimary = 0xFFD53032;
@@ -186,7 +189,7 @@
       onWindowStageCreate(windowStage: window.WindowStage) {
         // Main window is created, set main page for this ability
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-      
+    
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
             hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -198,82 +201,91 @@
           hilog.info(0x0000, 'testTag', '%{public}s', 'ThemeControl.setDefaultTheme done');
         });
       }
-    
     }
-  ```
+    ```
 
-![systemTheme](figures/systemTheme.png)
+  ![systemTheme](figures/systemTheme.png)
 
-> **说明：**
->
->如果setDefaultTheme的参数为undefined时，默认token值对应的色值参考[系统缺省token色值](#系统缺省token色值)。
->
->setDefaultTheme需要在ArkUI初始化后即windowStage.loadContent的完成时回调中使用。
+  > **说明：**
+  >
+  > - 当setDefaultTheme的参数为undefined时，会清除先前设置的自定义主题，默认token值对应的色值参考[系统缺省token色值](#系统缺省token色值)。
+  >
+  > - setDefaultTheme需要在ArkUI初始化后即windowStage.loadContent的完成时回调中使用。
 
 ## 设置应用局部页面自定义主题风格
 通过设置[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)，将自定义主题Theme的配色应用于内部组件的默认样式。在WithTheme的作用范围内，组件的配色会根据Theme的配色进行调整。
 
+> **说明：**
+>
+> 在自定义节点[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)中使用[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)，为了确保显示效果正确，需手动传递系统环境变化事件，触发节点的全量更新，详细请参考[BuilderNode系统环境变化更新](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)。
+
 如示例所示，使用WithTheme({ theme: this.CustomTheme })可将作用域内组件的配色设置为自定义主题风格。后续可以通过更新this.CustomTheme来更换主题风格。[onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)回调函数用于使自定义组件能够获取当前生效的Theme对象。
 
-  ```ts
-    import { CustomColors, CustomTheme, Theme } from '@kit.ArkUI';
-
-    class AppColors implements CustomColors {
-      fontPrimary: ResourceColor = $r('app.color.brand_purple');
-      backgroundEmphasize: ResourceColor = $r('app.color.brand_purple');
-    }
-    
-    class AppColorsSec implements CustomColors {
-      fontPrimary: ResourceColor = $r('app.color.brand');
-      backgroundEmphasize: ResourceColor = $r('app.color.brand');
-    }
-    
-    class AppTheme implements CustomTheme {
-      public colors: AppColors = new AppColors();
-    }
-    
-    class AppThemeSec implements CustomTheme {
-      public colors: AppColors = new AppColorsSec();
-    }
-    
-    @Entry
-    @Component
-    struct DisplayPage {
-      @State customTheme: CustomTheme = new AppTheme();
-      @State message: string = '设置应用局部页面自定义主题风格';
-      count = 0;
-    
-      build() {
-        WithTheme({ theme: this.customTheme }) {
-          Row(){
-            Column() {
-              Text('WithTheme')
-                .fontSize(30)
-                .margin({bottom: 10})
-              Text(this.message)
-                .margin({bottom: 10})
-              Button('change theme').onClick(() => {
-                this.count++;
-                if (this.count > 1) {
-                  this.count = 0;
-                }
-                switch (this.count) {
-                  case 0:
-                    this.customTheme = new AppTheme();
-                    break;
-                  case 1:
-                    this.customTheme = new AppThemeSec();
-                    break;
-                }
-              })
-            }
-            .width('100%')
+  <!-- @[custom_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme2/Theme2.ets) -->
+  
+  ``` TypeScript
+  import { CustomColors, CustomTheme, Theme } from '@kit.ArkUI';
+  import { common } from '@kit.AbilityKit';
+  //请将$r('app.color.xxx')替换为实际资源文件
+  class AppColors implements CustomColors {
+    public fontPrimary: ResourceColor = $r('app.color.brand_purple');
+    public backgroundEmphasize: ResourceColor = $r('app.color.brand_purple');
+  }
+  
+  class AppColorsSec implements CustomColors {
+    public fontPrimary: ResourceColor = $r('app.color.brand');
+    public backgroundEmphasize: ResourceColor = $r('app.color.brand');
+  }
+  
+  class AppTheme implements CustomTheme {
+    public colors: AppColors = new AppColors();
+  }
+  
+  class AppThemeSec implements CustomTheme {
+    public colors: AppColors = new AppColorsSec();
+  }
+  
+  @Entry
+  @Component
+  struct DisplayPage1 {
+    @State customTheme: CustomTheme = new AppTheme();
+    // 请将$r('app.string.SetCustomThemeStyle')替换为实际资源文件，在本示例中该资源文件的value值为"设置应用局部页面自定义主题风格"
+    @State message: ResourceStr = $r('app.string.SetCustomThemeStyle');
+    count = 0;
+  
+    build() {
+      WithTheme({ theme: this.customTheme }) {
+        Row(){
+          Column() {
+            Text('WithTheme')
+              .fontSize(30)
+              .margin({bottom: 10})
+            Text(this.message)
+              .margin({bottom: 10})
+            Button('change theme').onClick(() => {
+              this.count++;
+              if (this.count > 1) {
+                this.count = 0;
+              }
+              switch (this.count) {
+                case 0:
+                  this.customTheme = new AppTheme();
+                  break;
+                case 1:
+                  this.customTheme = new AppThemeSec();
+                  break;
+                default:
+                  break;
+              }
+            })
           }
-          .height('100%')
           .width('100%')
         }
+        .height('100%')
+        .width('100%')
       }
     }
+  }
   ```
 
 ![customTheme](figures/customTheme.gif)
@@ -301,48 +313,56 @@ dark.json数据示例：
     }
   ```
 
-  ```ts
-    @Entry
-    @Component
-    struct DisplayPage {
-      @State message: string = 'Hello World';
-      @State colorMode: ThemeColorMode = ThemeColorMode.DARK;
-
-      build() {
-        WithTheme({ colorMode: this.colorMode }) {
-          Row() {
-            Column() {
-              Text(this.message)
-                .fontSize(50)
-                .fontWeight(FontWeight.Bold)
-              Button('Switch ColorMode').onClick(() => {
-                if (this.colorMode === ThemeColorMode.LIGHT) {
-                  this.colorMode = ThemeColorMode.DARK;
-                } else if (this.colorMode === ThemeColorMode.DARK) {
-                  this.colorMode = ThemeColorMode.LIGHT;
-                }
-              })
-            }
-            .width('100%')
+  <!-- @[with_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets) --> 
+  
+  ``` TypeScript
+  import { ThemeControl } from '@kit.ArkUI';
+  
+  ThemeControl.setDefaultTheme(undefined);
+  
+  @Entry
+  @Component
+  struct DisplayPage3 {
+    @State message: string = 'Hello World';
+    @State colorMode: ThemeColorMode = ThemeColorMode.DARK;
+  
+    build() {
+      WithTheme({ colorMode: this.colorMode }) {
+        Row() {
+          Column() {
+            Text(this.message)
+              .fontSize(50)
+              .fontWeight(FontWeight.Bold)
+            Button('Switch ColorMode').onClick(() => {
+              if (this.colorMode === ThemeColorMode.LIGHT) {
+                this.colorMode = ThemeColorMode.DARK;
+              } else if (this.colorMode === ThemeColorMode.DARK) {
+                this.colorMode = ThemeColorMode.LIGHT;
+              }
+            })
           }
-          .backgroundColor($r('app.color.start_window_background'))
-          .height('100%')
-          .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.END, SafeAreaEdge.BOTTOM, SafeAreaEdge.START])
+          .width('100%')
         }
+        .backgroundColor($r('sys.color.background_primary'))
+        .height('100%')
+        // 扩展安全区，实现沉浸式深浅色变更效果
+        .expandSafeArea(
+          [SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.END, SafeAreaEdge.BOTTOM, SafeAreaEdge.START])
       }
     }
+  }
   ```
 
 ![lightDarkMode](figures/lightDarkMode.png)
 
 ## 系统缺省token色值
 
-| Token                                      | 场景类别 | Light |           | Dark    |                                              |
+| Token                                      | 场景类别 | Light |    说明       | Dark    |               说明                               |
 |--------------------------------------------|-----| --- |-----------| ------- | -------------------------------------------- |
 | theme.colors.brand                         | 品牌色 |#ff0a59f7| ![](figures/ff0a59f7.png "#ff0a59f7") |#ff317af7|![](figures/ff317af7.png "#ff317af7")|
 | theme.colors.warning                       | 一级警示色 |#ffe84026| ![](figures/ffe84026.png "#ffe84026") |#ffd94838|![](figures/ffd94838.png "#ffd94838")|
 | theme.colors.alert                         | 二级警示色 |#ffed6f21| ![](figures/ffed6f21.png "#ffed6f21") |#ffdb6b42|![](figures/ffdb6b42.png "#ffdb6b42")|
-| theme.colors.confirm                       | 确认色 |#ff64bb5c| ![](figures/ff64bb5c.png "#ff64bb5c") |#ff5ba854|![](figures/ff5ba854.png "#ff5ba854")|
+| theme.colors.confirm                       | 确认色 |#ff64bb5c| ![](figures/ff64bb5c.png "#ff64bb5c") |#ff5be854|![](figures/ff5be854.png "#ff5be854")|
 | theme.colors.fontPrimary                   | 一级文本 | #e5000000 | ![](figures/e5000000.png "#e5000000") |#e5ffffff|![](figures/e5ffffff.png "#e5ffffff")|
 | theme.colors.fontSecondary                 | 二级文本 | #99000000 | ![](figures/99000000.png "#99000000") |#99ffffff|![](figures/99ffffff.png "#99ffffff")|
 | theme.colors.fontTertiary                  | 三级文本 | #66000000 | ![](figures/66000000.png "#66000000") |#66ffffff|![](figures/66ffffff.png "#66ffffff")|

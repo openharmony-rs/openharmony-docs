@@ -1,8 +1,16 @@
 # deviceinfo.h
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @chenjinxiang3-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 ## Overview
 
 Declares the APIs for querying device information.
+
+**File to include**: <deviceinfo.h>
 
 **Library**: libdeviceinfo_ndk.z.so
 
@@ -50,7 +58,7 @@ Declares the APIs for querying device information.
 
 ### OH_GetDeviceType()
 
-```
+```c
 const char *OH_GetDeviceType(void)
 ```
 
@@ -64,11 +72,11 @@ Obtains the device type.
 
 | Type| Description|
 | -- | -- |
-| const char | Returns one of the following values:<br>**phone** (or **default**)<br>**wearable**<br>**liteWearable**<br>**tablet**<br>**tv**<br>**car**<br>**smartVision** |
+| const char | Returns one of the following values:<br>**phone** (or **default**),<br>         **wearable**,<br>         **liteWearable**,<br>         **tablet**,<br>          **tv**,<br>          **car**,<br>          **smartVision**|
 
 ### OH_GetManufacture()
 
-```
+```c
 const char *OH_GetManufacture(void)
 ```
 
@@ -86,7 +94,7 @@ Obtains the device manufacturer.
 
 ### OH_GetBrand()
 
-```
+```c
 const char *OH_GetBrand(void)
 ```
 
@@ -104,7 +112,7 @@ Obtains the device brand.
 
 ### OH_GetMarketName()
 
-```
+```c
 const char *OH_GetMarketName(void)
 ```
 
@@ -122,7 +130,7 @@ Obtains the market name.
 
 ### OH_GetProductSeries()
 
-```
+```c
 const char *OH_GetProductSeries(void)
 ```
 
@@ -140,7 +148,7 @@ Obtains the product series.
 
 ### OH_GetProductModel()
 
-```
+```c
 const char *OH_GetProductModel(void)
 ```
 
@@ -158,7 +166,7 @@ Obtains the product model.
 
 ### OH_GetSoftwareModel()
 
-```
+```c
 const char *OH_GetSoftwareModel(void)
 ```
 
@@ -176,7 +184,7 @@ Obtains the software model.
 
 ### OH_GetHardwareModel()
 
-```
+```c
 const char *OH_GetHardwareModel(void)
 ```
 
@@ -194,7 +202,7 @@ Obtains the hardware model.
 
 ### OH_GetBootloaderVersion()
 
-```
+```c
 const char *OH_GetBootloaderVersion(void)
 ```
 
@@ -212,7 +220,7 @@ Obtains the Bootloader version.
 
 ### OH_GetAbiList()
 
-```
+```c
 const char *OH_GetAbiList(void)
 ```
 
@@ -230,7 +238,7 @@ Obtains the ABI list.
 
 ### OH_GetSecurityPatchTag()
 
-```
+```c
 const char *OH_GetSecurityPatchTag(void)
 ```
 
@@ -248,7 +256,7 @@ Obtains the security patch tag.
 
 ### OH_GetDisplayVersion()
 
-```
+```c
 const char *OH_GetDisplayVersion(void)
 ```
 
@@ -266,7 +274,7 @@ Obtains the display version.
 
 ### OH_GetIncrementalVersion()
 
-```
+```c
 const char *OH_GetIncrementalVersion(void)
 ```
 
@@ -284,7 +292,7 @@ Obtains the incremental version.
 
 ### OH_GetOsReleaseType()
 
-```
+```c
 const char *OH_GetOsReleaseType(void)
 ```
 
@@ -302,7 +310,7 @@ Obtains the OS release type.
 
 ### OH_GetOSFullName()
 
-```
+```c
 const char *OH_GetOSFullName(void)
 ```
 
@@ -320,7 +328,7 @@ Obtains the OS full name.
 
 ### OH_GetSdkApiVersion()
 
-```
+```c
 int OH_GetSdkApiVersion(void)
 ```
 
@@ -338,7 +346,7 @@ Obtains the SDK API version.
 
 ### OH_GetFirstApiVersion()
 
-```
+```c
 int OH_GetFirstApiVersion(void)
 ```
 
@@ -356,7 +364,7 @@ Obtains the first API version.
 
 ### OH_GetVersionId()
 
-```
+```c
 const char *OH_GetVersionId(void)
 ```
 
@@ -374,7 +382,7 @@ Obtains the version ID.
 
 ### OH_GetBuildType()
 
-```
+```c
 const char *OH_GetBuildType(void)
 ```
 
@@ -392,7 +400,7 @@ Obtains the build type.
 
 ### OH_GetBuildUser()
 
-```
+```c
 const char *OH_GetBuildUser(void)
 ```
 
@@ -410,7 +418,7 @@ Obtains the build user.
 
 ### OH_GetBuildHost()
 
-```
+```c
 const char *OH_GetBuildHost(void)
 ```
 
@@ -428,7 +436,7 @@ Obtains the build host.
 
 ### OH_GetBuildTime()
 
-```
+```c
 const char *OH_GetBuildTime(void)
 ```
 
@@ -446,7 +454,7 @@ Obtains the build time.
 
 ### OH_GetBuildRootHash()
 
-```
+```c
 const char *OH_GetBuildRootHash(void)
 ```
 
@@ -464,7 +472,7 @@ Obtains the build root hash.
 
 ### OH_GetDistributionOSName()
 
-```
+```c
 const char *OH_GetDistributionOSName(void)
 ```
 
@@ -478,11 +486,11 @@ Obtains the ISV distribution OS name. ISVs can use their own OS names.
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns an ISV distribution OS name.<br>If no ISV is specified, an empty string is returned. |
+| const char* | Returns an ISV distribution OS name.<br> If no ISV is specified, an empty string is returned.|
 
 ### OH_GetDistributionOSVersion()
 
-```
+```c
 const char *OH_GetDistributionOSVersion(void)
 ```
 
@@ -496,11 +504,11 @@ Obtains the ISV distribution OS version.
 
 | Type| Description                                                                        |
 | -- |----------------------------------------------------------------------------|
-| const char* | Returns an ISV distribution OS version.<br>If no ISV is specified, the value of [OH_GetOSFullName](#oh_getosfullname) is returned. |
+| const char* | Returns an ISV distribution OS version.<br> If no ISV is specified, the value of [OH_GetOSFullName](#oh_getosfullname) is returned.|
 
 ### OH_GetDistributionOSApiVersion()
 
-```
+```c
 int OH_GetDistributionOSApiVersion(void)
 ```
 
@@ -518,7 +526,7 @@ Obtains the ISV distribution OS API version.
 
 ### OH_GetDistributionOSReleaseType()
 
-```
+```c
 const char *OH_GetDistributionOSReleaseType(void)
 ```
 
@@ -532,4 +540,4 @@ Obtains the ISV distribution OS release type.
 
 | Type| Description                                                                             |
 | -- |---------------------------------------------------------------------------------|
-| const char | Returns an ISV distribution OS release type.<br>If no ISV is specified, the value of [OH_GetOsReleaseType](#oh_getosreleasetype) is returned. |
+| const char | Returns an ISV distribution OS release type.<br> If no ISV is specified, the value of [OH_GetOsReleaseType](#oh_getosreleasetype) is returned.|

@@ -33,7 +33,7 @@
 
 ### Udmf_ErrCode
 
-```
+```c
 enum Udmf_ErrCode
 ```
 
@@ -51,7 +51,7 @@ enum Udmf_ErrCode
 
 ### Udmf_ListenerStatus
 
-```
+```c
 enum Udmf_ListenerStatus
 ```
 

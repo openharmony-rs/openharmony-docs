@@ -2,9 +2,14 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
-<!--SE: @kutcherzhou1-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Owner: @hello_harmony; @leiguangyu-->
+<!--Designer: @kutcherzhou1-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @jinqiuheng-->
+
+```c
+typedef struct HiDebug_StackFrame {...} HiDebug_StackFrame
+```
 
 ## Overview
 
@@ -20,8 +25,8 @@ Defines the stack frame content.
 
 ### Member Variables
 
-| Name                                                                          | Description                                             |
-|------------------------------------------------------------------------------|-------------------------------------------------|
+| Name| Description|
+| -- | -- |
 | [HiDebug_StackFrameType](capi-hidebug-type-h.md#hidebug_stackframetype) type | Type of the current stack.                                        |
 | struct [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) js       | JS stack frame content defined by [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md).        |
 | struct [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) native                                   | Native stack frame content defined by [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md).|

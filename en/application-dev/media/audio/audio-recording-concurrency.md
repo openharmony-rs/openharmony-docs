@@ -1,10 +1,10 @@
-# Shared Audio Input
+# Recording Concurrency Strategy Description
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Audio input sources usually consist of audio data captured by built-in microphones, external devices, or remote distributed devices. They can also be audio data sent by other applications to the system for playback. Depending on the audio source, audio input can be categorized into two types: internal recording and external recording.
 
@@ -35,7 +35,7 @@ The current system version has relaxed some restrictions on concurrent recording
 
 In most cases, the quality of audio data depends on the optimization processing strategy of the system for audio input data.
 
-When an application initiates audio recording, the system identifies the audio scenario based on the audio stream type and other related parameters sent by the application, and selects an appropriate processing strategy to handle the input data. For instance, when an application initiates a VoIP call, the system performs noise reduction and voice enhancement optimizations on the VoIP audio stream.
+When an application initiates audio recording, the system identifies the audio scenario based on the audio stream type and other related parameters sent by the application, and selects an appropriate strategy to handle the input data. For instance, when an application initiates a VoIP call, the system performs noise reduction and voice enhancement optimizations on the VoIP audio stream.
 
 Some audio recording stream types only need to obtain audio input data, whereas others heavily rely on the system's optimization processing. Improper handling may lead to a poor experience. Therefore, for these audio recording stream types, it is necessary to ensure that the system can still configure appropriate optimization processing strategies during concurrent recording. To this end, the system configures priorities for these audio recording stream types and adds a priority adjustment scheme on top of the existing [audio focus strategies](audio-playback-concurrency.md#audio-focus-strategy).
 
@@ -63,6 +63,6 @@ The system has implemented preliminary management for concurrent recording scena
 - Avoid concurrent recording scenarios whenever possible. Design applications to minimize overlap with other recording tasks. If necessary, display a message to users such as "Another recording task is currently in progress."
 
   If concurrent recording is unavoidable, clearly inform users that audio quality may be affected.
-- [Select the appropriate recording stream type](using-right-streamusage-and-sourcetype.md), as different types correspond to different system optimization strategies. You are advised to select the appropriate [recording stream type](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) based on your service requirements.
+- Different audio recording stream types correspond to different system optimization and processing strategies. You are advised to select an appropriate [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) based on their requirements. For details, see [Selecting the Appropriate Audio Stream Types](using-right-streamusage-and-sourcetype.md).
 - If recording is no longer required, stop and release recording resources promptly to avoid impacting other audio streams and to reduce unnecessary system overhead.
 - Application implementation should not overly rely on fixed concurrent recording rules but should adapt based on the status returned by system interfaces.

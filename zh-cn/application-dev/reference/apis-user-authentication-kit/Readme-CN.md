@@ -1,8 +1,15 @@
 # User Authentication Kit（用户认证服务）
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 - ArkTS API<!--user-authentication-arkts-->
   - [@ohos.userIAM.userAuth (用户认证)](js-apis-useriam-userauth.md)
   <!--Del-->
+  - [@ohos.userIAM.companionDeviceAuth (伴随设备认证)(系统接口)](js-apis-useriam-companiondeviceauth-sys.md)
   - [@ohos.userIAM.faceAuth (人脸认证)(系统接口)](js-apis-useriam-faceauth-sys.md)
   - [@ohos.userIAM.userAccessCtrl (用户访问控制)(系统接口)](js-apis-useriam-useraccessctrl-sys.md)
   - [@ohos.userIAM.userAuth (用户认证)(系统接口)](js-apis-useriam-userauth-sys.md)

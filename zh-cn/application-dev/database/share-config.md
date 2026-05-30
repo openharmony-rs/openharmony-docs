@@ -23,7 +23,7 @@
 
 ## 约束与限制
 
-一个应用最多可以发布32个配置项，这个数量是静态配置与动态配置的总和。
+API版本26.0.0之前，一个应用最多可以发布32个配置项；从API版本26.0.0开始，一个应用最多可以发布64个配置项。这个数量是静态配置与动态配置的总和。
 
 ## 接口说明
 以下接口为应用间配置共享的相关接口。详细接口和说明，请参考[应用间配置共享接口](../reference/apis-arkdata/js-apis-data-dataShare.md#datasharecreatedataproxyhandle20)。
@@ -39,7 +39,8 @@
 | 接口名称                                                     | 描述               |
 | ------------------------------------------------------------ | ------------------ |
 | publish(data: ProxyData[], config: DataProxyConfig): Promise<DataProxyResult[]> | 发布或修改配置项。 |
-| delete(uris: string[], config: DataProxyConfig): Promise<DataProxyResult[]> | 删除配置项。       |
+| delete(uris: string[], config: DataProxyConfig): Promise<DataProxyResult[]> | 删除发布方发布的指定URI对应的配置项。       |
+| delete(config: DataProxyConfig): Promise<DataProxyResult[]> | 删除发布方发布的所有配置项。<br/>**起始版本：** 26.0.0       |
 
 ### 配置访问方接口
 
@@ -55,7 +56,7 @@
 配置发布方需要配置module.json5文件中的crossAppSharedConfig字段，通过crossAppSharedConfig字段引用shared_config.json文件，shared_config.json为共享配置文件，定义了应用希望与其他应用共享的配置项。共享配置文件需放置在工程resources/base/profile目录下，并通过`$`资源访问方式引用。  
 
 
-```json
+```json5
 {
   "module":{
     "crossAppSharedConfig": "$profile:shared_config"
@@ -64,17 +65,17 @@
 ```
 
 
-共享配置文件shared_config.json的文件名"shared_config"可自定义，根节点名称为crossAppSharedConfig，为对象数组，标识当前共享配置项的数量。（一个应用最多可以发布32个配置项，这个数量是静态配置项与动态配置项的总和。静态配置项数量超过32时，只解析前32个符合crossAppSharedConfig字段配置说明要求的配置项，其余配置项不生效。）
+共享配置文件shared_config.json的文件名"shared_config"可自定义，根节点名称为crossAppSharedConfig，为对象数组，标识当前共享配置项的数量。<br/>API版本26.0.0之前，一个应用最多可以发布32个配置项，这个数量是静态配置项与动态配置项的总和。静态配置项数量超过32时，只解析前32个符合crossAppSharedConfig字段配置说明要求的配置项，其余配置项不生效。<br/>从API版本26.0.0开始，一个应用最多可以发布64个配置项，这个数量是静态配置项与动态配置项的总和。静态配置项数量超过64时，只解析前64个符合crossAppSharedConfig字段配置说明要求的配置项，其余配置项不生效。
 
 crossAppSharedConfig字段配置说明：
 
 | 属性名称 | 含义 | 数据类型 | 必填 |
 | ------- | ------- | ------- | ------- |
 | uri | 共享配置项的全局唯一标识。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复。uri最大长度为256字节。 | 字符串 | 是 |
-| value | 共享配置项的值，最大长度为4096字节。 | 字符串 | 是 |
-| allowList | 允许访问该共享配置项的应用程序列表。数组最大长度为256，超过256的部分不生效。数组中每个元素为应用的[appIdentifier](../quick-start/common_problem_of_application.md#什么是appidentifier)，单个appIdentifier为只包含数字的字符串，最大长度为128字节，超过128字节的appIdentifier不会生效。可使用[getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口来获取当前应用的appIdentifier。 | 字符串数组 | 是 |
+| value | 共享配置项的值。<br/>API版本26.0.0之前，最大长度为4096字节。<br/>从API版本26.0.0开始，最大长度为102400字节。共享配置项的值长度大于4096字节时，[应用间配置共享接口](../reference/apis-arkdata/js-apis-data-dataShare.md#datasharecreatedataproxyhandle20)的[DataProxyConfig](../reference/apis-arkdata/js-apis-data-dataShare.md#dataproxyconfig20)参数需配置maxValueLength字段为[MAX_LENGTH_100K](../reference/apis-arkdata/js-apis-data-dataShare.md#dataproxymaxvaluelength)，将共享配置项的值最大长度扩展为102400字节，否则接口返回结果可能非预期。 | 字符串 | 是 |
+| allowList | 允许访问该共享配置项的应用程序列表。数组最大长度为256，超过256的部分不生效。<br/>API版本26.0.0之前，数组中每个元素为应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)，单个appIdentifier为只包含数字的字符串，最大长度为128字节，超过128字节的appIdentifier不会生效。可使用[getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口来获取当前应用的appIdentifier。<br/>从API版本26.0.0开始，数组支持配置特殊字符串"all"（区分大小写）表示允许所有应用访问。 | 字符串数组 | 是 |
 
-```json
+```json5
 {
     "crossAppSharedConfig": [
         {
@@ -86,6 +87,11 @@ crossAppSharedConfig字段配置说明：
             "uri": "datashareproxy://com.example.example/key2",
             "value": "SHARED_CONFIG_DEMO2",
             "allowList": ["6917573298752100864", "6917573298752100864"]
+        },
+        {
+            "uri": "datashareproxy://com.example.example/key3",
+            "value": "ALLOW ALL APP READ",
+            "allowList": ["all"]
         }
     ]
 }
@@ -101,25 +107,33 @@ crossAppSharedConfig字段配置说明：
 
 - 通过调用publish接口发布或修改配置项。
 
-  ```ts
-  import { dataShare } from '@kit.ArkData';
-  import { BusinessError } from '@kit.BasicServicesKit';
+  <!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
   
-  export function publish() {
-    dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-      const newConfigData: dataShare.ProxyData[] = [{
-        uri: 'datashareproxy://com.example.app1/config1',
-        value: 'Value1',
-        allowList: ['com.example.app2', 'com.example.app3'],
-      }, {
-        uri: 'datashareproxy://com.example.app1/config2',
-        value: 'Value2',
-        allowList: ['com.example.app3', 'com.example.app4'],
-      },];
+  ``` TypeScript
+  function publishSharedConfig() {
+    dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+      const newConfigData: dataShare.ProxyData[] = [
+        {
+          uri: 'datashareproxy://com.samples.shareconfig/config1',
+          value: 'Value1',
+          allowList: [
+            'appIdentifier1',
+            'appIdentifier2'
+          ]
+        },
+        {
+          uri: 'datashareproxy://com.samples.shareconfig/config2',
+          value: 'Value2',
+          allowList: [
+            'appIdentifier3',
+            'appIdentifier4'
+          ]
+        }
+      ];
       const config: dataShare.DataProxyConfig = {
         type: dataShare.DataProxyType.SHARED_CONFIG,
       };
-      dsProxyHelper.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
+      dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
         results.forEach((result) => {
           console.info(`URI: ${result.uri}, Result: ${result.result}`);
         });
@@ -132,20 +146,23 @@ crossAppSharedConfig字段配置说明：
   }
   ```
 
+
+
 - 通过调用delete接口删除配置项。
 
-  ```ts
-  import { dataShare } from '@kit.ArkData';
-  import { BusinessError } from '@kit.BasicServicesKit';
+  <!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
   
-  export function deleteShareConfig() {
-    dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-      const urisToDelete: string[] =
-        ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+  ``` TypeScript
+  function deleteSharedConfig() {
+    dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+      const urisToDelete: string[] = [
+        'datashareproxy://com.samples.shareconfig/config1',
+        'datashareproxy://com.samples.shareconfig/config2'
+      ];
       const config: dataShare.DataProxyConfig = {
         type: dataShare.DataProxyType.SHARED_CONFIG,
       };
-      dsProxyHelper.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
+      dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
         results.forEach((result) => {
           console.info(`URI: ${result.uri}, Result: ${result.result}`);
         });
@@ -158,6 +175,8 @@ crossAppSharedConfig字段配置说明：
   }
   ```
 
+
+
 ## 配置访问方
 
 配置访问方可以通过调用get、on或off接口来获取配置信息或监听/取消监听配置变化。
@@ -166,18 +185,19 @@ crossAppSharedConfig字段配置说明：
 
 使用get接口获取配置信息。
 
-```ts
-import { dataShare } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[get_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
-export function get() {
-  dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-    const urisToGet: string[] =
-      ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+``` TypeScript
+function getSharedConfig() {
+  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+    const urisToGet: string[] = [
+      'datashareproxy://com.samples.shareconfig/config1',
+      'datashareproxy://com.samples.shareconfig/config2'
+    ];
     const config: dataShare.DataProxyConfig = {
       type: dataShare.DataProxyType.SHARED_CONFIG,
     };
-    dsProxyHelper.get(urisToGet, config).then((results: dataShare.DataProxyGetResult[]) => {
+    dataProxyHandle.get(urisToGet, config).then((results: dataShare.DataProxyGetResult[]) => {
       results.forEach((result) => {
         console.info(`URI: ${result.uri}, Result: ${result.result}, AllowList: ${result.allowList}`);
       });
@@ -188,20 +208,24 @@ export function get() {
     console.error('Error creating DataProxyHandle:', error);
   });
 }
+
 ```
+
+
 
 ### 监听/取消监听配置变化
 
 使用on接口监听配置变化，使用off接口取消监听配置变化。
 
-```ts
-import { dataShare } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[watch_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
-export function watchConfigChanges() {
+``` TypeScript
+function watchConfigChanges() {
   dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-    const uris: string[] =
-      ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+    const uris: string[] = [
+      'datashareproxy://com.samples.shareconfig/config1',
+      'datashareproxy://com.samples.shareconfig/config2'
+    ];
     const config: dataShare.DataProxyConfig = {
       type: dataShare.DataProxyType.SHARED_CONFIG,
     };
@@ -219,7 +243,7 @@ export function watchConfigChanges() {
     listenResults.forEach((result) => {
       console.info(`URI: ${result.uri}, Result: ${result.result}`);
     });
-    // 取消监听配置变化    
+    // 取消监听配置变化
     const unListenResults: dataShare.DataProxyResult[] = dsProxyHelper.off('dataChange', uris, config, callback);
     unListenResults.forEach((result) => {
       console.info(`URI: ${result.uri}, Result: ${result.result}`);
@@ -228,4 +252,7 @@ export function watchConfigChanges() {
     console.error('Error creating DataProxyHandle:', error);
   });
 }
+
 ```
+
+

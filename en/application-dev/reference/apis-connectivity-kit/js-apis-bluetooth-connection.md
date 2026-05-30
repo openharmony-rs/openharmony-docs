@@ -1,5 +1,12 @@
 # @ohos.bluetooth.connection (Bluetooth Connection Module)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 The connection module provides capabilities for pairing with, connecting to, and querying the status of Bluetooth devices.
 
 > **NOTE**
@@ -80,11 +87,25 @@ Defines the Bluetooth device subclass, which is further classified based on [Maj
 | [constant.MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | Bluetooth device subclass.|
 
 
+## BluetoothAddress<sup>21+</sup>
+
+type BluetoothAddress = common.BluetoothAddress
+
+Defines the address information of a Bluetooth device, including the address and address type.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+| Type                 | Description                 |
+| ------------------- | ------------------- |
+| [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | Address information of the Bluetooth device.|
+
+
 ## connection.pairDevice
 
 pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 Initiates pairing with the peer Bluetooth device. This API uses an asynchronous callback to return the result.
+- If you do not know the [address type](js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, you are advised to call this API to initiate pairing.
 - You can obtain the Bluetooth pairing status from the callback of [on('bondStateChange')](#connectiononbondstatechange).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -116,7 +137,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     connection.pairDevice('11:22:33:44:55:66', (err: BusinessError) => {
@@ -134,6 +155,7 @@ try {
 pairDevice(deviceId: string): Promise&lt;void&gt;
 
 Initiates pairing with the peer Bluetooth device. This API uses a promise to return the result.
+- If you do not know the [address type](js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, you are advised to call this API to initiate pairing.
 - You can obtain the Bluetooth pairing status from the callback of [on('bondStateChange')](#connectiononbondstatechange).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -170,15 +192,73 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.pairDevice('11:22:33:44:55:66').then(() => {
         console.info('pairDevice');
     }, (error: BusinessError) => {
-        console.info('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
+        console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
     })
 
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## connection.pairDevice<sup>21+</sup>
+
+pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
+
+Initiates pairing with the peer Bluetooth device. This API uses a promise to return the result.
+- If you know the MAC address and [address type](js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, you are advised to call this API to initiate pairing.
+- You can obtain the Bluetooth pairing status from the callback of [on('bondStateChange')](#connectiononbondstatechange).
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type    | Mandatory  | Description                                 |
+| -------- | ------ | ---- | ----------------------------------- |
+| deviceId | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | Yes   | Address information of the peer Bluetooth device, including the address and address type.|
+
+**Return value**
+
+| Type                 | Description           |
+| ------------------- | ------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.ConnectivityKit';
+// promise
+try {
+    let btAddr: common.BluetoothAddress = {
+        "address": '11:22:33:44:55:66', // Actual or virtual MAC address of the target device.
+        "addressType": common.BluetoothAddressType.REAL, // Address type of the target device.
+    }
+    connection.pairDevice(btAddr).then(() => {
+        console.info('pairDevice');
+    }, (error: BusinessError) => {
+        console.error('errCode: ' + error.code + ', errMessage' + error.message);
+    });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -190,6 +270,8 @@ try {
 getRemoteDeviceName(deviceId: string): string
 
 Obtains the name of the peer Bluetooth device.
+
+- Starting from API version 21, this API can be used to obtain the device name by using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -225,7 +307,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let remoteDeviceName: string = connection.getRemoteDeviceName('XX:XX:XX:XX:XX:XX');
 } catch (err) {
@@ -239,6 +321,8 @@ try {
 getRemoteDeviceName(deviceId: string, alias?: boolean): string
 
 Obtains the name of the peer device. The **alias** parameter is optional.
+
+- Starting from API version 21, this API can be used to obtain the device name by using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -275,7 +359,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let remoteDeviceName: string = connection.getRemoteDeviceName('XX:XX:XX:XX:XX:XX', true);
 } catch (err) {
@@ -288,7 +372,10 @@ try {
 
 getRemoteDeviceClass(deviceId: string): DeviceClass
 
-Obtains the class of the peer Bluetooth device. Since API version 18, the **ohos.permission.ACCESS_BLUETOOTH** permission is no longer verified.
+Obtains the class of the peer Bluetooth device.
+
+- Starting from API version 18, this API does not verify the ohos.permission.ACCESS_BLUETOOTH permission.
+- Starting from API version 21, this API can be used to obtain the device class by using the actual MAC address of the peer device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -319,7 +406,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let remoteDeviceClass: connection.DeviceClass = connection.getRemoteDeviceClass('XX:XX:XX:XX:XX:XX');
 } catch (err) {
@@ -327,6 +414,49 @@ try {
 }
 ```
 
+## connection.getRemoteDeviceTransport<sup>20+</sup>
+
+getRemoteDeviceTransport(deviceId: string): BluetoothTransport
+
+Obtains the transport type of the peer Bluetooth device.
+
+- Starting from API version 21, this API can be used to obtain the transport type of the peer device by using the actual MAC address of the peer device.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type    | Mandatory  | Description                               |
+| -------- | ------ | ---- | --------------------------------- |
+| deviceId | string | Yes   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+
+**Return value**
+
+| Type                         | Description      |
+| --------------------------- | -------- |
+| [BluetoothTransport](#bluetoothtransport) | Transport type of the peer device.|
+
+**Error codes**
+
+For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Get transport failed.                        |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let transport: connection.BluetoothTransport = connection.getRemoteDeviceTransport('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## connection.getRemoteProfileUuids<sup>12+</sup>
 
@@ -334,6 +464,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 
 Obtains the profile of the peer Bluetooth device based on the specified UUID. This API uses an asynchronous callback to return the result.
 - You are advised to use this API only for paired devices.
+- Starting from API version 21, this API can be used to obtain the profile of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -362,7 +493,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.getRemoteProfileUuids('XX:XX:XX:XX:XX:XX', (err: BusinessError, data: Array<connection.ProfileUuids>) => {
         console.info('getRemoteProfileUuids, err: ' + JSON.stringify(err) + ', data: ' + JSON.stringify(data));
@@ -380,6 +511,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 
 Obtains the profile of the peer Bluetooth device based on the specified UUID. This API uses a promise to return the result.
 - You are advised to use this API only for paired devices.
+- Starting from API version 21, this API can be used to obtain the profile of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -395,7 +527,7 @@ Obtains the profile of the peer Bluetooth device based on the specified UUID. Th
 
 | Type                 | Description           |
 | ------------------- | ------------- |
-|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise used to return the set of supported profiles .|
+|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise used to return the set of supported profiles.|
 
 **Error codes**
 
@@ -413,7 +545,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.getRemoteProfileUuids('XX:XX:XX:XX:XX:XX').then(() => {
         console.info('getRemoteProfileUuids');
@@ -456,7 +588,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let localName: string = connection.getLocalName();
 } catch (err) {
@@ -481,7 +613,7 @@ Obtains the addresses of paired Bluetooth devices.
 
 | Type                 | Description           |
 | ------------------- | ------------- |
-| Array&lt;string&gt; | Addresses of paired Bluetooth devices.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual addresses of paired Bluetooth devices will not change.<br>- If a device is unpaired or Bluetooth is disabled, the virtual address will change after the device is paired again.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).| 
+| Array&lt;string&gt; | Addresses of paired Bluetooth devices.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual addresses of paired Bluetooth devices will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
 
 **Error codes**
 
@@ -498,7 +630,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let devices: Array<string> = connection.getPairedDevices();
 } catch (err) {
@@ -512,6 +644,8 @@ try {
 getPairState(deviceId: string): BondState
 
 Obtains the pairing status of the peer Bluetooth device.
+
+- Starting from API version 21, this API can be used to obtain the pairing status of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -547,7 +681,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let res: connection.BondState = connection.getPairState("XX:XX:XX:XX:XX:XX");
     console.info('getPairState: ' + res);
@@ -569,15 +703,16 @@ Obtains the connection status of a Bluetooth profile. The **ProfileId** paramete
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name      | Type       | Mandatory  | Description                                   |
 | --------- | --------- | ---- | ------------------------------------- |
-| profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | No   | Bluetooth profile. If **ProfileId** is present, the connection status of the specified profile is returned. If **ProfileId** is not present, the connection status of all supported profiles is returned in the following order:<br>- If a profile is connected, [STATE_CONNECTED] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a profile is being connected, [STATE_CONNECTING] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a profile is being disconnected, [STATE_DISCONNECTING] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If none of the preceding conditions is met, [STATE_DISCONNECTED] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.| 
+| profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | No   | Bluetooth profile. If **ProfileId** is present, the connection status of the specified profile is returned. If **ProfileId** is not present, the connection status of all supported profiles is returned in the following order:<br>- If a profile is connected, [STATE_CONNECTED] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a profile is being connected, [STATE_CONNECTING] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a profile is being disconnected, [STATE_DISCONNECTING] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If none of the preceding conditions is met, [STATE_DISCONNECTED] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.|
 
 **Return value**
 
 | Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
-| [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Connection status of the profile.| 
+| [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Connection status of the profile.|
 
 **Error codes**
 
@@ -596,7 +731,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { constant } from '@kit.ConnectivityKit';
 try {
     let result: connection.ProfileConnectionState = connection.getProfileConnectionState(constant.ProfileId.PROFILE_A2DP_SOURCE);
@@ -621,7 +756,7 @@ Confirms the pairing request from the peer Bluetooth device.
 
 | Name   | Type     | Mandatory  | Description                              |
 | ------   | ------- | ---- | -------------------------------- |
-| deviceId | string | Yes| Address of the peer device, for example, XX:XX:XX:XX:XX:XX.| 
+| deviceId | string | Yes| Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
 | accept   | boolean | Yes   | Whether to accept the pairing request from the peer device. The value **true** means to accept the pairing request, and the value **false** means the opposite.      |
 
 **Error codes**
@@ -640,7 +775,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // Subscribe to the pinRequired event and configure the pairing confirmation after receiving a pairing request from the peer device.
 function onReceivePinRequiredEvent(data: connection.PinRequiredParam) { // data is the input parameter for the pairing request.
     console.info('pin required  = '+ JSON.stringify(data));
@@ -669,7 +804,7 @@ Sets the PIN used to complete Bluetooth pairing. This API uses an asynchronous c
 | Name   | Type     | Mandatory  | Description                              |
 | ------ | ------- | ---- | -------------------------------- |
 | deviceId | string  | Yes   | MAC address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| code   | string  | Yes   | PIN to set.       |
+| code   | string  | Yes   | PIN code entered by the user. The value is a string of 0 (not included) to 16 (included) characters, for example, **12345**.       |
 | callback   | AsyncCallback&lt;void&gt;  | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.       |
 
 **Error codes**
@@ -688,11 +823,11 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     connection.setDevicePinCode('11:22:33:44:55:66', '12345', (err: BusinessError) => {
-        console.info('setDevicePinCode,device name err:' + JSON.stringify(err));
+        console.info('setDevicePinCode,device name err: ' + JSON.stringify(err));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -715,7 +850,7 @@ Sets the PIN used to complete Bluetooth pairing. This API uses a promise to retu
 | Name   | Type     | Mandatory  | Description                              |
 | ------ | ------- | ---- | -------------------------------- |
 | deviceId | string  | Yes   | MAC address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| code   | string  | Yes   | PIN to set.       |
+| code   | string  | Yes   | PIN code entered by the user. The value is a string of 0 (not included) to 16 (included) characters, for example, **12345**.       |
 
 **Return value**
 
@@ -739,13 +874,13 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
         console.info('setDevicePinCode');
     }, (error: BusinessError) => {
-        console.info('setDevicePinCode: errCode:' + error.code + ',errMessage' + error.message);
+        console.error('setDevicePinCode: errCode:' + error.code + ',errMessage' + error.message);
     })
 
 } catch (err) {
@@ -771,7 +906,7 @@ Sets the name of the local Bluetooth device. The value cannot be an empty string
 
 | Name | Type    | Mandatory  | Description                   |
 | ---- | ------ | ---- | --------------------- |
-| name | string | Yes   | Bluetooth device name. The value range is (0,248], in bytes.|
+| name | string | Yes   | Bluetooth name. The value is a string of 0 (not included) to 248 (included) bytes.|
 
 **Error codes**
 
@@ -789,7 +924,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.setLocalName('device_name');
 } catch (err) {
@@ -802,7 +937,7 @@ try {
 
 setBluetoothScanMode(mode: ScanMode, duration: number): void
 
-Sets the Bluetooth scan mode, which determines whether the local device can be connected or discovered.
+Sets the Bluetooth scan mode, which determines whether the local device can be connected or discovered. This API is used together with the [onScanModeChange](#connectiononscanmodechange23) API to listen for Bluetooth scan mode change events in real time.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -813,7 +948,7 @@ Sets the Bluetooth scan mode, which determines whether the local device can be c
 | Name     | Type                   | Mandatory  | Description                          |
 | -------- | --------------------- | ---- | ---------------------------- |
 | mode     | [ScanMode](#scanmode) | Yes   | Bluetooth scan mode to set. If the scan times out (**duration** is not **0**) when the scan mode is **SCAN_MODE_GENERAL_DISCOVERABLE**, the scan mode will be reset to **SCAN_MODE_CONNECTABLE**.              |
-| duration | number                | Yes   | Duration (in seconds) in which the device can be discovered. The value **0** indicates unlimited time.|
+| duration | number                | Yes   | Duration during which the device can be discovered, in milliseconds. If the value is set to **0**, the device can be discovered permanently.|
 
 **Error codes**
 
@@ -831,7 +966,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     // The device can be discovered and connected only when the discoverable and connectable mode is used.
     connection.setBluetoothScanMode(connection.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE, 100);
@@ -845,7 +980,7 @@ try {
 
 getBluetoothScanMode(): ScanMode
 
-Obtains the Bluetooth scan mode.
+Obtains the Bluetooth scan mode. This API is used together with the [onScanModeChange](#connectiononscanmodechange23) API to listen for Bluetooth scan mode change events in real time.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -872,7 +1007,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let scanMode: connection.ScanMode = connection.getBluetoothScanMode();
 } catch (err) {
@@ -886,9 +1021,10 @@ try {
 startBluetoothDiscovery(): void
 
 Starts a Bluetooth scan for device discovery.<br>
-- This API applies to both classic Bluetooth devices and BLE devices.<br>
+- This API applies to both Bluetooth Classic devices and BLE devices. The entire Bluetooth scan process takes about 12 seconds.<br>
 - You can obtain the scan result from the callback of [connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind) (supported since API version 10) or [connection.on('discoveryResult')](#connectionondiscoveryresult18) (supported since API version 18). You are advised to use [connection.on('discoveryResult')](#connectionondiscoveryresult18), which can obtain more detailed device information.<br>
-- You can call [stopBluetoothDiscovery](#connectionstopbluetoothdiscovery) to stop the Bluetooth scan.
+- Do not call this API repeatedly during a scan. You can use [connection.isBluetoothDiscovering](#connectionisbluetoothdiscovering11) to check whether a Bluetooth scan is in progress.<br>
+- You can call [connection.stopBluetoothDiscovery](#connectionstopbluetoothdiscovery) to stop the scan. Start the next scan only after the current scan is stopped.<br>
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -911,7 +1047,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: Array<string>) {
     console.info('data length' + data.length);
 }
@@ -930,7 +1066,8 @@ stopBluetoothDiscovery(): void
 
 Stops the Bluetooth scan.<br>
 - This API applies only to scans initiated by [connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery).<br>
-- Call this API to stop the Bluetooth scan when device discovery is no longer needed.
+- Call this API to stop the Bluetooth scan when device discovery is no longer needed.<br>
+- Do not call this API repeatedly if a scan is not in progress. You can use [connection.isBluetoothDiscovering](#connectionisbluetoothdiscovering11) to check whether a Bluetooth scan is in progress.<br>
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -953,7 +1090,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.stopBluetoothDiscovery();
 } catch (err) {
@@ -993,7 +1130,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let res: boolean = connection.isBluetoothDiscovering();
     console.info('isBluetoothDiscovering: ' + res);
@@ -1008,6 +1145,7 @@ setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 
 Sets the name of the peer Bluetooth device. The value cannot be an empty string. If the value is an empty string, the operation will fail. This API uses a promise to return the result.
 - You are advised to use this API only for paired devices.
+- Starting from API version 21, this API can be used to set the name of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1020,7 +1158,7 @@ Sets the name of the peer Bluetooth device. The value cannot be an empty string.
 | Name     | Type                                 | Mandatory  | Description                                    |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | deviceId     | string                              | Yes   | MAC address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| name | string | Yes   | Bluetooth device name. The value range is (0,64], in bytes.   |
+| name | string | Yes   | Name of the peer device. The value is a string of 0 (not included) to 64 (included) bytes.   |
 
 **Return value**
 
@@ -1042,15 +1180,14 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.setRemoteDeviceName('11:22:33:44:55:66', 'RemoteDeviceName').then(() => {
         console.info('setRemoteDeviceName success');
     }, (error: BusinessError) => {
-        console.error('setRemoteDeviceName: errCode:' + error.code + ',errMessage' + error.message);
+        console.error('setRemoteDeviceName: errCode: ' + error.code + ',errMessage' + error.message);
     })
-
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -1063,6 +1200,7 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 
 Obtains the battery level of the peer Bluetooth device. This API uses a promise to return the result.
 - You can obtain the battery level of the peer Bluetooth device from the callback of [on('batteryChange')](#connectiononbatterychange12).
+- Starting from API version 21, this API can be used to obtain the battery level of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1072,7 +1210,7 @@ Obtains the battery level of the peer Bluetooth device. This API uses a promise 
 
 | Name   | Type     | Mandatory  | Description                              |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | Yes   | MAC address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string  | Yes   | MAC address of the peer Bluetooth device, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
@@ -1094,7 +1232,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.getRemoteDeviceBatteryInfo('11:22:33:AA:BB:FF').then((data: connection.BatteryInfo) => {
@@ -1135,7 +1273,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: connection.BatteryInfo) => void = (data: connection.BatteryInfo) => {
     console.info('BatteryInfo = '+ JSON.stringify(data));
 }
@@ -1162,7 +1300,7 @@ Unsubscribes from battery change events of the peer device.
 | Name     | Type                                 | Mandatory  | Description                                      |
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
 | type     | string                              | Yes   | Event type. The value **batteryChange** indicates the battery change event.  |
-| callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | No   | Callback to unsubscribe.<br>If this parameter is specified, it must be the same as the callback in [connection.on('batteryChange')](#connectiononbatterychange12). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('batteryChange')](#connectiononbatterychange12). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -1176,7 +1314,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: connection.BatteryInfo) => void = (data: connection.BatteryInfo) => {
     console.info('BatteryInfo = '+ JSON.stringify(data));
 }
@@ -1209,7 +1347,7 @@ Subscribes to scan result reporting events of Bluetooth devices. This API uses a
 | Name     | Type                                 | Mandatory  | Description                                    |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | type     | string                              | Yes   | Event type. The value **bluetoothDeviceFind** indicates a scan result reporting event. A device scan starts when [connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery) is called. This event is triggered when a device is discovered.|
-| callback | Callback&lt;Array&lt;string&gt;&gt; | Yes   | Callback used to return the set of device addresses.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If a device is unpaired or Bluetooth is disabled, the virtual address will change after the device is paired again.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).   |
+| callback | Callback&lt;Array&lt;string&gt;&gt; | Yes   | Callback used to return the set of device addresses.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual addresses of paired Bluetooth devices will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).  |
 
 **Error codes**
 
@@ -1225,7 +1363,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: Array<string>) { // data is an array of Bluetooth device addresses.
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
@@ -1254,7 +1392,7 @@ Unsubscribes from Bluetooth scan result reporting events.
 | Name     | Type                                 | Mandatory  | Description                                      |
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
 | type     | string                              | Yes   | Event type. The value **bluetoothDeviceFind** indicates a scan result reporting event.  |
-| callback | Callback&lt;Array&lt;string&gt;&gt; | No   | Callback used to return the result.<br>If this parameter is specified, it must be the same as the callback in [connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;Array&lt;string&gt;&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -1269,7 +1407,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: Array<string>) {
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
@@ -1313,7 +1451,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: connection.BondStateParam) { // data, as the input parameter of the callback, indicates the pairing state.
     console.info('pair state = '+ JSON.stringify(data));
 }
@@ -1340,7 +1478,7 @@ Unsubscribes from Bluetooth pairing status change events.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value **bondStateChange** indicates a Bluetooth pairing status change event.    |
-| callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | No   | Callback used to return the result.<br>If this parameter is specified, it must be the same as the callback in [connection.on('bondStateChange')](#connectiononbondstatechange). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('bondStateChange')](#connectiononbondstatechange). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -1356,7 +1494,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: connection.BondStateParam) {
     console.info('bond state = '+ JSON.stringify(data));
 }
@@ -1400,7 +1538,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: connection.PinRequiredParam) { // data is the pairing request parameter.
     console.info('pin required = '+ JSON.stringify(data));
 }
@@ -1427,7 +1565,7 @@ Unsubscribes from pairing request events.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value **pinRequired** indicates a pairing request event.            |
-| callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | No   | Callback used to return the result.<br>If this parameter is specified, it must be the same as the callback in [connection.on('pinRequired')](#connectiononpinrequired). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('pinRequired')](#connectiononpinrequired). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -1443,7 +1581,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 function onReceiveEvent(data: connection.PinRequiredParam) {
     console.info('pin required = '+ JSON.stringify(data));
 }
@@ -1460,7 +1598,7 @@ try {
 
 on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&gt;): void
 
-Subscribes to Bluetooth scan result reporting events. This API uses an asynchronous callback to return the result.<br>
+Subscribes to scan result reporting events of Bluetooth devices. This API uses an asynchronous callback to return the result.<br>
 - This API applies to both classic Bluetooth devices and BLE devices.<br>
 - The reported information includes the device address, signal strength, name, and type.
 
@@ -1472,7 +1610,7 @@ Subscribes to Bluetooth scan result reporting events. This API uses an asynchron
 
 | Name     | Type                                 | Mandatory  | Description                                    |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| type     | string                              | Yes   | Event type. The value **discoveryResult** indicates a scan result reporting event. A device scan starts when [connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery) is called. If a device is found, this event is triggered.|
+| type     | string                              | Yes   | Event type. The value **discoveryResult** indicates a scan result reporting event. A device scan starts when [connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery) is called. This event is triggered when a device is discovered.|
 | callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | Yes   | Callback used to return the set of scan results.   |
 
 **Error codes**
@@ -1489,7 +1627,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data is an array of Bluetooth devices discovered.
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
@@ -1516,7 +1654,7 @@ Unsubscribes from the Bluetooth device discovered.
 | Name     | Type                                 | Mandatory  | Description                                      |
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
 | type     | string                              | Yes   | Event type. The value **discoveryResult** indicates a scan result reporting event.  |
-| callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | No   | Callback used to return the result.<br>If this parameter is specified, it must be the same as the callback in [connection.on('discoveryResult')](#connectionondiscoveryresult18). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('discoveryResult')](#connectionondiscoveryresult18). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -1531,7 +1669,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data is an array of Bluetooth devices discovered.
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
@@ -1544,11 +1682,93 @@ try {
 ```
 
 
+## connection.onScanModeChange<sup>23+</sup>
+
+onScanModeChange(callback: Callback&lt;ScanMode&gt;): void
+
+Subscribes to Bluetooth scan mode change events. This API uses an asynchronous callback to return the result. If such events are subscribed to, after the current Bluetooth scan mode is changed by calling [setBluetoothScanMode](#connectionsetbluetoothscanmode), the callback containing the latest scan mode will be received.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                              |
+| -------- | ---------------------------------------- | ---- | -------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | Yes   | Callback used to return the latest Bluetooth scan mode.|
+
+**Error codes**
+
+For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.              |
+
+**Example**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.onScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## connection.offScanModeChange<sup>23+</sup>
+
+offScanModeChange(callback?: Callback&lt;ScanMode&gt;): void
+
+Unsubscribes from Bluetooth scan mode change events.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is passed, the value must be the same as that in [connection.onScanModeChange](#connectiononscanmodechange23). If this parameter is not passed, all callbacks for the Bluetooth scan mode change will be unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.offScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
 ## connection.getLastConnectionTime<sup>15+</sup>
 
 getLastConnectionTime(deviceId: string): Promise&lt;number&gt;
 
 Obtains the latest connection time of the peer Bluetooth device. This API uses a promise to return the result.
+
+- Starting from API version 21, this API can be used to obtain the latest connection time of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -1562,7 +1782,7 @@ Obtains the latest connection time of the peer Bluetooth device. This API uses a
 
 | Type                 | Description        |
 | ------------------- | ------------- |
-| Promise&lt;number&gt; | Promise used to return the latest connection time of the peer Bluetooth device.|
+| Promise&lt;number&gt; | Promise used to return the latest connection time of the peer Bluetooth device, in the UNIX timestamp format.|
 
 **Error codes**
 
@@ -1579,11 +1799,11 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { connection } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.getLastConnectionTime('11:22:33:44:55:66').then((time: number) => {
-        console.info('connectionTime: ${time}');
+        console.info(`connectionTime: ${time}`);
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -1597,6 +1817,7 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 Obtains the profiles supported by the peer device. Supported profiles include A2DP, HFP, and HID. This API uses an asynchronous callback to return the result.
 - Call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
 - Upon successful pairing, you are advised to call [getRemoteProfileUuids](#connectiongetremoteprofileuuids12) to query the profiles supported by the target device. This API is called only if the target device supports the profile required by the application.
+- Starting from API version 21, this API can be used to perform profile connection using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1625,7 +1846,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   connection.connectAllowedProfiles('68:13:24:79:4C:8C', (err: BusinessError) => {
     if (err) {
@@ -1647,6 +1868,7 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 Obtains the profiles supported by the peer device. Supported profiles include A2DP, HFP, and HID. This API uses a promise to return the result.
 - Call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
 - Upon successful pairing, you are advised to call [getRemoteProfileUuids](#connectiongetremoteprofileuuids12) to query the profiles supported by the target device. This API is called only if the target device supports the profile required by the application.
+- Starting from API version 21, this API can be used to perform profile connection using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1680,7 +1902,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   connection.connectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
       console.info('connectAllowedProfiles');
@@ -1689,6 +1911,60 @@ try {
   });
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## connection.getVirtualAddressByHash<sup>24+</sup>
+
+getVirtualAddressByHash(algorithmType: HashAlgorithmType, hashValue: string): string
+
+Obtains the [virtual MAC address](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type) of a paired device based on the hash of its [actual MAC address](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type).
+
+When [HashAlgorithmType](#hashalgorithmtype24) is set to **HASH_ALGORITHM_SHA256**, the hash (a 64-digit hexadecimal value) is generated based on the actual MAC address in uppercase using the SHA-256 algorithm. The last 32 bits of the hash are used as the input. The letters in the hash are case insensitive.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name    | Type   | Mandatory | Description                                |
+| -------- | ------ | ---- | ----------------------------------- |
+| algorithmType | [HashAlgorithmType](#hashalgorithmtype24) | Yes  | Hash algorithm type.|
+| hashValue | string | Yes  | Hash value, for example, **c10b57deb2e1aafd255596e0d4fd6789**.|
+
+**Return value**
+
+| Type                                            | Description              |
+| ------------------------------------------------- | ------------------- |
+| string | Virtual MAC address of the device corresponding to the hash, for example, XX:XX:XX:XX:XX:XX. The returned address is in uppercase.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201     | Permission denied.                       |
+|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|2900003 | Bluetooth disabled.                 |
+|2900015 | Parameter format mismatch with specification.   |
+|2900016 | Device unpaired.   |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem.                        |
+
+**Example**
+
+```js
+// If the queried actual address is 11:22:33:44:55:AA,
+// the corresponding 64-bit hash is d2204cb9b6d3d3962cc90fa54130efb4c10b57deb2e1aafd255596e0d4fd6789.
+// If HashAlgorithmType is set to HASH_ALGORITHM_SHA256, the last 32 bits of the hash are used.
+let hashValue: string = "c10b57deb2e1aafd255596e0d4fd6789";
+try {
+  let addr: string = connection.getVirtualAddressByHash(connection.HashAlgorithmType.HASH_ALGORITHM_SHA256, hashValue);
+} catch (err) {
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1756,8 +2032,10 @@ Enumerates the device transmission modes.
 
 | Name                              | Value   | Description             |
 | -------------------------------- | ------ | --------------- |
-| TRANSPORT_BR_EDR   | 0 | Legacy Bluetooth basic rate/enhanced data rate (BR/EDR) mode. This mode is used by default if the device supports dual transmission modes.|
+| TRANSPORT_BR_EDR   | 0 | Legacy Bluetooth basic rate/enhanced data rate (BR/EDR) mode. |
 | TRANSPORT_LE  | 1 | BLE mode. |
+| TRANSPORT_DUAL<sup>20+</sup>  | 2 | BR/EDR and BLE modes. You can select either the BR/EDR or BLE mode for communication. |
+| TRANSPORT_UNKNOWN<sup>20+</sup>  | 3 | Unknown transport mode. |
 
 
 ## ScanMode
@@ -1825,9 +2103,24 @@ Defines the device discovery result.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 15%; 15%; 10%; 10%; 50%-->
 | Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId    | string      | No   | No   | Address of the discovered device.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If a device is unpaired or Bluetooth is disabled, the virtual address will change after the device is paired again.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
+| deviceId    | string      | No   | No   | Address of the discovered device.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual addresses of paired Bluetooth devices will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
 | rssi     | number      | No   | No   | Signal strength, in dBm.|
 | deviceName     | string      | No   | No   | Device name.|
-| deviceClass     | DeviceClass      | No   | No   | Device class.|
+| deviceClass     | [DeviceClass](#deviceclass)      | No   | No   | Device class.|
+
+## HashAlgorithmType<sup>24+</sup>
+
+Enumerates the hash algorithm types.
+
+The hash algorithm is a mathematical function that performs complex calculations on input data to generate a unique and fixed-length string (hash value). It is commonly used in scenarios such as data integrity verification and digital signatures.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+| Name                | Value | Description    |
+| ------------------ | ---- | ------ |
+| HASH_ALGORITHM_SHA256        | 0    | SHA-256 hash algorithm.|

@@ -5,13 +5,13 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
+A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md).
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > This module can be imported only to ArkTS files (with the file name extension .ets).
-
-A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md).
 
 **Decorator**: \@Sendable
 
@@ -353,7 +353,7 @@ Creates an ArkTS Uint16Array with a variable number of parameters.
 
 | Name   | Type         | Mandatory| Description                           |
 | --------- | ------------- | ---- | ------------------------------- |
-| items | number[] | No  | Array of elements used to create the array. The number of elements can be zero, one, or more.|
+| items | number[] | No  | Array of elements used to create the array. The number of elements can be zero, one, or more. The default value is an empty array.|
 
 **Return value**
 

@@ -2,10 +2,10 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @Saber_e-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -28,7 +28,7 @@ The file declares the structs and enums of the LowPowerAudioSink.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) | OH_LowPowerAudioSink | Describes the declaration for the LowPowerAudioSink.|
-| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | Contains a set of callback function pointers for the LowPowerAudioSink.<br>To ensure the normal running of the LowPowerAudioSink, you must register the instance of this struct with the [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) instance and process the information reported by the callback functions.|
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | Contains a set of callback function pointers for the LowPowerAudioSink.<br> To ensure the normal running of the LowPowerAudioSink, you must register the instance of this struct with the [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) instance and process the information reported by the callback functions.|
 
 ### Functions
 
@@ -45,7 +45,7 @@ The file declares the structs and enums of the LowPowerAudioSink.
 
 ### OH_LowPowerAudioSink_OnError()
 
-```
+```c
 typedef void (*OH_LowPowerAudioSink_OnError)(OH_LowPowerAudioSink* sink,OH_AVErrCode errCode,const char* errorMsg,void* userData)
 ```
 
@@ -61,13 +61,13 @@ Called when an error occurs in the LowPowerAudioSink.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | Pointer to an OH_LowPowerAudioSink instance.|
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) errorCode | Error code reported when an error occurs.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) errCode | Error code reported when an error occurs.|
 | const char* errorMsg | Pointer to an error message.|
 | void* userData | Pointer to user-defined data.|
 
 ### OH_LowPowerAudioSink_OnPositionUpdated()
 
-```
+```c
 typedef void (*OH_LowPowerAudioSink_OnPositionUpdated)(OH_LowPowerAudioSink* sink,int64_t currentPosition,void* userData)
 ```
 
@@ -83,12 +83,12 @@ Called when the playback position is updated in the LowPowerAudioSink.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | Pointer to an OH_LowPowerAudioSink instance.|
-| int64_t currentPosition | Current playback position.|
+| int64_t currentPosition | Current playback position. The unit is milliseconds.|
 | void* userData | Pointer to user-defined data.|
 
 ### OH_LowPowerAudioSink_OnDataNeeded()
 
-```
+```c
 typedef void (*OH_LowPowerAudioSink_OnDataNeeded)(OH_LowPowerAudioSink* sink,OH_AVSamplesBuffer* samples,void* userData)
 ```
 
@@ -109,7 +109,7 @@ Called when the LowPowerAudioSink needs more data.
 
 ### OH_LowPowerAudioSink_OnInterrupted()
 
-```
+```c
 typedef void (*OH_LowPowerAudioSink_OnInterrupted)(OH_LowPowerAudioSink* sink,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint,void* userData)
 ```
 
@@ -131,7 +131,7 @@ Called when the audio focus is interrupted in the LowPowerAudioSink.
 
 ### OH_LowPowerAudioSink_OnDeviceChanged()
 
-```
+```c
 typedef void (*OH_LowPowerAudioSink_OnDeviceChanged)(OH_LowPowerAudioSink* sink,OH_AudioStream_DeviceChangeReason reason,void* userData)
 ```
 
@@ -152,7 +152,7 @@ Called when the audio device changes in the LowPowerAudioSink.
 
 ### OH_LowPowerAudioSink_OnEos()
 
-```
+```c
 typedef void (*OH_LowPowerAudioSink_OnEos)(OH_LowPowerAudioSink* sink, void* userData)
 ```
 

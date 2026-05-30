@@ -1,4 +1,10 @@
 # Using Neon Instructions
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @liyiming13-->
+<!--Designer: @liyiming13-->
+<!--Tester: @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 
 Arm Neon is an advanced Single Instruction Multiple Data (SIMD) architecture extension for Arm processors. It supports parallel processing of multiple pieces of data by using one instruction. It is widely used in fields such as multimedia encoding/decoding and 2D/3D graphics to improve execution performance.
@@ -16,7 +22,7 @@ In OpenHarmony, the Neon extension is enabled by default in the arm64-v8a ABI. I
 
 In the LLVM toolchain of the OpenHarmony SDK, the armeabi-v7a ABI supports precompiled runtime libraries with many configurations. The directory structure is as follows. **native-root** is the root directory where the native package of the NDK is decompressed.
 
-```
+```txt
 {native-root}/llvm/lib/clang/current/lib/arm-linux-ohos/
     |-- a7_hard_neon-vfpv4
     |       |-- clang_rt.crtbegin.o

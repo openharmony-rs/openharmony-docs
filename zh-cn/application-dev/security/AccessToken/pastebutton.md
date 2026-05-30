@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-粘贴控件是一种特殊的系统安全控件，它允许应用在用户的授权下无提示地读取剪贴板数据。
+粘贴控件是一种特殊的系统安全控件，它允许应用在用户的授权下静默读取剪贴板数据。
 
 集成粘贴控件后，单击该控件时，应用读取剪贴板数据不会弹窗提示。适用于任何需要读取剪贴板的应用场景，避免弹窗干扰用户。
 
@@ -43,7 +43,9 @@
 
    当前示例使用了默认参数。具体详情，请参见[PasteButton控件](../../reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md)。此外，所有安全控件均继承了[安全控件通用属性](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md)，可用于自定义样式。
    
-   ```ts
+   <!-- @[use_paste_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Paste.ets) -->    
+   
+   ``` TypeScript
    import { pasteboard, BusinessError } from '@kit.BasicServicesKit';
    
    @Entry
@@ -54,7 +56,10 @@
      build() {
        Row() {
          Column({ space: 10 }) {
-           TextInput({ placeholder: '请输入验证码', text: this.message })
+           TextInput({ placeholder: $r('app.string.input_verify_code'), text: this.message })
+             .onChange((val: string) => {
+               this.message = val;
+             })
            PasteButton()
              .padding({top: 12, bottom: 12, left: 24, right: 24})
              .onClick((event: ClickEvent, result: PasteButtonOnClickResult) => {
@@ -64,7 +69,6 @@
                      console.error(`Failed to get paste data. Code is ${err.code}, message is ${err.message}`);
                      return;
                    }
-                   // 剪贴板内容为 '123456'。
                    this.message = pasteData.getPrimaryText();
                  });
                }
@@ -76,3 +80,4 @@
      }
    }
    ```
+

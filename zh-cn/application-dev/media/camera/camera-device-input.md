@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
@@ -12,7 +12,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
@@ -85,7 +85,7 @@
       if (!previewProfilesArray) {
         console.error("createOutput previewProfilesArray == null || undefined");
       }
-      //photoProfiles属性为获取当前设备支持的拍照输出流。
+      // photoProfiles属性为获取当前设备支持的拍照输出流。
       let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
       if (!photoProfilesArray) {
         console.error("createOutput photoProfilesArray == null || undefined");

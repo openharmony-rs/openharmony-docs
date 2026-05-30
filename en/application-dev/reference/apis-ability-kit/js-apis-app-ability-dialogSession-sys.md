@@ -41,18 +41,20 @@ Provides DialogAbility information, including the bundle name, module name, and 
 | visible<sup>12+</sup> | boolean | No| No| Whether the ability is visible. **true** if visible, **false** otherwise.|
 | appIndex<sup>12+</sup> | number | No| No| Index of the application clone.|
 | multiAppMode<sup>12+</sup> | [MultiAppMode](./js-apis-bundleManager-applicationInfo.md#multiappmode12) | No| No| Multi-app mode.|
+| codePath<sup>23+</sup> | string | No| Yes| Installation directory of the application.|
+| installSource<sup>23+</sup> | string | No| Yes| Installation source of the application. The options are as follows:<br> - **pre-installed**: pre-installed application installed during the first boot.<br> - **ota**: pre-installed application added during system upgrade.<br> - **recovery**: pre-installed application manually restored by the user after uninstallation.<br> - **bundleName**: installation by the application corresponding to this bundle name. **bundleName** represents a variable, subject to the actual value.<br> - **unknown**: unknown application installation source.|
 
 ## DialogSessionInfo
 
-Provides session information, including the requester information, target application list, and other parameters.
+Provides session information, including the requester information, target ability information list, and other parameters.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| callerAbilityInfo | [DialogAbilityInfo](#dialogabilityinfo)| Yes| No| Ability information of the requester.|
-| targetAbilityInfos | Array\<[DialogAbilityInfo](#dialogabilityinfo)\> | Yes| No| Target application list.|
-| parameters | Record<string, Object> | Yes| Yes| Other parameters.|
+| callerAbilityInfo | [DialogAbilityInfo](#dialogabilityinfo)| No| No| Ability information of the requester.|
+| targetAbilityInfos | Array\<[DialogAbilityInfo](#dialogabilityinfo)\> | No| No| List of target ability information.|
+| parameters | Record<string, Object> | No| Yes| Other parameters.|
 
 ## getDialogSessionInfo
 
@@ -82,22 +84,28 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006  | Cross-user operations are not allowed. |
 | 16000050  | Internal error. |
 
 **Example**
-
 ```ts
-import { dialogSession, Want } from '@kit.AbilityKit';
+import { dialogSession, Want, UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
-// want is specified by the system. dialogSessionId is a built-in parameter.
-let dialogSessionId: string = want?.parameters?.dialogSessionId;
+const TAG: string = '[testTag] UIExtAbility';
 
-// Obtain DialogSessionInfo.
-let dialogSessionInfo: dialogSession.DialogSessionInfo = dialogSession.getDialogSessionInfo(dialogSessionId);
+export default class UIExtAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    // want is specified by the system. dialogSessionId is a built-in parameter.
+    let dialogSessionId = want?.parameters?.dialogSessionId.toString();
+
+    // Obtain DialogSessionInfo.
+    let dialogSessionInfo: dialogSession.DialogSessionInfo = dialogSession.getDialogSessionInfo(dialogSessionId);
+    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+  }
+}
 ```
 
 ## sendDialogResult
@@ -125,7 +133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006  | Cross-user operations are not allowed. |
@@ -134,33 +142,37 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { dialogSession, Want } from '@kit.AbilityKit';
+import { dialogSession, Want, UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// want is specified by the system. dialogSessionId is a built-in parameter.
-let dialogSessionId: string = want?.parameters?.dialogSessionId;
+export default class UIExtAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    // want is specified by the system. dialogSessionId is a built-in parameter.
+    let dialogSessionId = want?.parameters?.dialogSessionId.toString();
 
-// Obtain DialogSessionInfo.
-let dialogSessionInfo: dialogSession.DialogSessionInfo = dialogSession.getDialogSessionInfo(dialogSessionId);
+    // Obtain DialogSessionInfo.
+    let dialogSessionInfo: dialogSession.DialogSessionInfo =
+      dialogSession.getDialogSessionInfo(dialogSessionId);
 
-let isAllow: boolean = true;
+    let isAllow: boolean = true;
 
-// When isAllow is true, targetWant is one of dialogSessionInfo.targetAbilityInfos.
-let targetWant: Want = {
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
-};
+    let targetWant: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
 
-try {
-  dialogSession.sendDialogResult(dialogSessionId, targetWant, isAllow, (err, data) => {
-    if (err) {
-      console.error(`sendDialogResult error, errorCode: ${err.code}`);
-    } else {
-      console.log(`sendDialogResult success`);
+    try {
+      dialogSession.sendDialogResult(dialogSessionId, targetWant, isAllow, (err, data) => {
+        if (err) {
+          console.error(`sendDialogResult error, errorCode: ${err.code}`);
+        } else {
+          console.info(`sendDialogResult success`);
+        }
+      });
+    } catch (err) {
+      console.error(`sendDialogResult error, errorCode: ${(err as BusinessError).code}`);
     }
-  });
-} catch (err) {
-  console.error(`sendDialogResult error, errorCode: ${(err as BusinessError).code}`);
+  }
 }
 ```
 
@@ -194,7 +206,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006  | Cross-user operations are not allowed. |
@@ -203,31 +215,34 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { dialogSession, Want } from '@kit.AbilityKit';
+import { dialogSession, Want, UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// want is specified by the system. dialogSessionId is a built-in parameter.
-let dialogSessionId: string = want?.parameters?.dialogSessionId;
+export default class UIExtAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    // want is specified by the system. dialogSessionId is a built-in parameter.
+    let dialogSessionId = want?.parameters?.dialogSessionId.toString();
 
-// Obtain DialogSessionInfo.
-let dialogSessionInfo: dialogSession.DialogSessionInfo = dialogSession.getDialogSessionInfo(dialogSessionId);
+    // Obtain DialogSessionInfo.
+    let dialogSessionInfo: dialogSession.DialogSessionInfo = dialogSession.getDialogSessionInfo(dialogSessionId);
 
-let isAllow: boolean = true;
+    let isAllow: boolean = true;
 
-// When isAllow is true, targetWant is one of dialogSessionInfo.targetAbilityInfos.
-let targetWant: Want = {
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
-};
+    let targetWant: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
 
-try {
-  dialogSession.sendDialogResult(dialogSessionId, targetWant, isAllow)
-    .then((data) => {
-      console.log(`startChildProcess success, pid: ${data}`);
-    }, (err: BusinessError) => {
-      console.error(`startChildProcess error, errorCode: ${err.code}`);
-    })
-} catch (err) {
-  console.error(`sendDialogResult error, errorCode: ${(err as BusinessError).code}`);
+    try {
+      dialogSession.sendDialogResult(dialogSessionId, targetWant, isAllow)
+        .then((data) => {
+          console.info(`sendDialogResult success, pid: ${data}`);
+        }, (err: BusinessError) => {
+          console.error(`sendDialogResult error, errorCode: ${err.code}`);
+        });
+    } catch (err) {
+      console.error(`sendDialogResult error, errorCode: ${(err as BusinessError).code}`);
+    }
+  }
 }
 ```

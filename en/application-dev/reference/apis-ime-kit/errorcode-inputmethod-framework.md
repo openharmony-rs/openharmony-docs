@@ -1,9 +1,9 @@
 # Input Method Framework Error Codes
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
@@ -56,6 +56,7 @@ Check whether the input method process is running properly. For example, click t
 Input method client error. Possible causes: 
 1. the edit box is not focused.
 2. no edit box is bound to current input method application.
+3. ipc failed due to the large amount of data transferred or other reasons.
 
 **Description**
 
@@ -65,11 +66,13 @@ This error code is reported when the API for showing or hiding the keyboard fail
 
 1. The application is not focused.
 2. The input method is disconnected from the application due to a service error with the application.
+3. IPC fails because the data volume to transmit is too large.
 
 **Solution**
 
 1. Bind the input method to the application again: Close the background process of the application, start the application again, and touch a text input box. If the keyboard is displayed properly, the issue is resolved.
 2. Place the application in the foreground and ensure that it is not covered by other applications or windows. Then touch the text input box to display the input method.
+3. According to [IPC Constraints](../../ipc/ipc-rpc-overview.md#constraints), you must limit the volume of data to be transmitted to a small size before initiating the request. Note that the total data transmitted at the IPC layer during each API call is the sum of the data sent by the application and the necessary data required for system-layer processing. Therefore, the maximum data an application can send when calling an API is less than the maximum allowed by IPC.
 
 ## 12800004 Not an Input Method
 
@@ -391,7 +394,7 @@ The input parameters do not meet the preceding requirements when the [setImmersi
 
 **Error Message**
 
-this operation is allowed only after adjustPanelRect or resize is called.
+This operation is allowed only after adjustPanelRect or resize is called.
 
 **Description**
 
@@ -413,3 +416,48 @@ The **setImmersiveEffect** API can be called only after any of the following API
   - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect12) (available since API version 12)
   - [adjustPanelRect](js-apis-inputmethodengine.md#adjustpanelrect15) (available since API version 15)
   - [resize](js-apis-inputmethodengine.md#resize10) (available since API version 10)
+  
+## 12800022 Invalid displayId
+
+**Error Message**
+
+Invalid displayId.
+
+**Description**
+
+Invalid displayId.
+
+**Possible Causes**
+
+The **displayId** passed to the [getSystemPanelCurrentInsets](js-apis-inputmethodengine.md#getsystempanelcurrentinsets21) API is invalid.
+
+**Solution**
+
+You can call the [getDisplayId](js-apis-inputmethodengine.md#getdisplayid15) API to obtain the ID of the current window.
+<!--Del-->
+## 12800026 Input Method System Panel Error
+
+**Error Message**
+
+Input method system panel error. Possible causes: 
+1. system panel not connected.
+2. ipc failed due to large amount of data transferred or other reasons.
+3. the caller is not system panel.
+
+**Description**
+
+The operation on the input method system panel fails.
+
+**Possible Causes**
+
+1. The system panel is not connected.
+2. IPC fails because the data volume to transmit is too large.
+3. The caller is not the system panel.
+
+**Solution**
+
+1. Ensure that the system channel is connected by calling the [connectSystemChannel](./js-apis-inputmethod-system-panel-manager-sys.md#inputmethodsystempanelmanagerconnectsystemchannel) API.
+2. Adjust the volume of data to be transmitted by referring to [IPC Constraints](../../ipc/ipc-rpc-overview.md#constraints).
+3. Ensure that the caller is the system panel.
+<!--DelEnd-->
+<!--no_check-->

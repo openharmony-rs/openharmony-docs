@@ -1,10 +1,16 @@
 # 无障碍
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @wangyinhua-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件可以设置相应的无障碍属性和事件来更好地使用无障碍能力。
 
 > **说明：**
 >
-> 从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 无障碍属性
 
@@ -37,6 +43,7 @@
   ```
 
 - accessibilityimportance
+
   此情况下，div和text都不会被无障碍框选中。若想让某些默认不会被无障碍框选中的组件可以被选中，则给该组件增加一个accessibilityimportance="yes"即可。
 
   

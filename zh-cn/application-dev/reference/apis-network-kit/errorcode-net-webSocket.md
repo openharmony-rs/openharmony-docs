@@ -19,7 +19,7 @@ Websocket connect failed.
 
 **错误描述**
 
-Websocket连接失败。
+WebSocket连接失败。
 
 **可能原因**
 
@@ -39,11 +39,17 @@ Websocket url error.
 
 **错误描述**
 
-Websocket URL错误。
+WebSocket URL错误。
 
 **可能原因**
 
 未配置正确的URL。
+
+**处理步骤**
+
+1.检查URL是否为空或者未包含正确的协议（ws://或wss://)。
+
+2.检查URL长度是否超过2048个字符。
 
 ## 2302002 Websocket 证书不存在
 
@@ -53,11 +59,18 @@ Websocket certificate file does not exist.
 
 **错误描述**
 
-Websocket 证书不存在。
+WebSocket 证书不存在。
 
 **可能原因**
 
 证书路径错误或未配置证书。
+
+**处理步骤**
+
+1.检查CA证书路径是否有效。
+
+2.如指定了WebSocketRequestOptions.clientCert，请检查证书路径与私钥路径是否有效。
+
 
 ## 2302003 Websocket 连接已经存在
 
@@ -67,11 +80,15 @@ Websocket connection already exists.
 
 **错误描述**
 
-Websocket 连接已经存在。
+WebSocket 连接已经存在。
 
 **可能原因**
 
-Websocket 连接已经建立。
+WebSocket 连接已经建立。
+
+**处理步骤**
+
+已建立websocket连接，无需重复调用WebSocket.connect进行建连，无其他处理步骤。
 
 ## 2302004 WebsocketServer 无法在指定的NIC（网络接口）上进行网络监听
 
@@ -81,11 +98,11 @@ Can't listen to the given NIC.
 
 **错误描述**
 
-WebsocketServer无法在指定的NIC上进行网络监听。
+WebSocketServer无法在指定的NIC上进行网络监听。
 
 **可能原因**
 
-WebsocketServer服务器配置文件中的ip地址无效。
+WebSocketServer服务器配置文件中的ip地址无效。
 
 **处理步骤**
 
@@ -99,15 +116,33 @@ Can't listen to the given Port.
 
 **错误描述**
 
-WebsocketServer无法在指定的端口上进行网络监听。
+WebSocketServer无法在指定的端口上进行网络监听。
 
 **可能原因**
 
-WebsocketServer服务器配置文件中的端口号无效。
+WebSocketServer服务器配置文件中的端口号无效。
 
 **处理步骤**
 
 检查端口号的有效性。
+
+## 2302007 WebsocketServer当前监听的端口已被占用
+
+**错误信息**
+
+Websocket port already occupied.
+
+**错误描述**
+
+WebsocketServer当前监听的端口已经被占用。
+
+**可能原因**
+
+指定的监听端口已被其他进程占用。
+
+**处理步骤**
+
+更换一个未被占用的端口。
 
 ## 2302998 不允许访问域名
 
@@ -125,7 +160,7 @@ It is not allowed to access this domain.
 
 **处理步骤**
 
-可参考[配置服务器域名](https://developer.huawei.com/consumer/cn/doc/atomic-guides-V5/agc-help-harmonyos-server-domain-V5)文档完成服务器域名相关配置。
+可参考[配置服务器域名](https://developer.huawei.com/consumer/cn/doc/atomic-guides/agc-help-harmonyos-server-domain)文档完成服务器域名相关配置。
 
 ## 2302999 内部错误
 
@@ -139,4 +174,8 @@ Internal error.
 
 **可能原因**
 
-其他系统故障。
+空指针异常、内存分配异常等。
+
+**处理步骤**
+
+重启机器重试。

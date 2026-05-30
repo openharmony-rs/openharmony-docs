@@ -4,7 +4,7 @@
 <!--Owner: @ding-xin88-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 In the system, applications can use the **Web** component to load web pages. If the capability or performance of non-system UI components is inferior to that of system components, you can use the ArkUI component to render these components (same-layer components).
 
@@ -46,7 +46,7 @@ The following specifications take effect in both web pages and third-party frame
 
 - Self-drawing components: [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md), [Web](../reference/apis-arkweb/arkts-basic-components-web.md)
 
-- Command-based custom drawing nodes: [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md), [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md), [ContentSlot](../reference/apis-arkui/arkui-ts/ts-components-contentSlot.md), [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md), [Graphics](../reference/apis-arkui/js-apis-arkui-graphics.md), [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md), [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md), [XComponentNode](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md), [AttributeUpdater](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md) and CAPI. (The components that support same-layer rendering are the same as that of ArkTS.)
+- Command-based custom drawing nodes: [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md), [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md), [ContentSlot](../reference/apis-arkui/arkui-ts/ts-components-contentSlot.md), [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md), [Graphics](../reference/apis-arkui/js-apis-arkui-graphics.md), [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md), [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md), [XComponentNode](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md), [AttributeUpdater](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md) and [CAPI](../reference/apis-arkui/capi-arkui-nativemodule.md). (The components that support same-layer rendering are the same as that of ArkTS.)
 
 **Supported Common Component Attributes and Events**:
 
@@ -99,6 +99,15 @@ The [onNativeEmbedVisibilityChange](../reference/apis-arkweb/arkts-basic-compone
 
 - By default, visibility changes caused by the CSS style or size change of the same-layer tag are not reported. For details, see [onNativeEmbedVisibilityChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedvisibilitychange12).
 
+Status change of the **param** element embedded in the same-layer rendering tag **\<object>**:
+The [onNativeEmbedObjectParamChange()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedobjectparamchange21) callback is triggered when the param element of the same-layer rendering tag **\<object>** changes.
+
+- The addition, modification, and deletion of the **param** element can be reported.
+
+- A maximum of 500 **param** element changes can be reported at a time. More changes will be reported subsequently.
+
+- For details about the report, see [NativeEmbedParamDataInfo](../reference/apis-arkweb/arkts-basic-components-web-i.md#nativeembedparamdatainfo21).
+
 **Constraints**:
 
 - A maximum of five same-layer tag can be displayed on a web page. Otherwise, the rendering performance deteriorates.
@@ -132,7 +141,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
 
    The **\<embed>** and **\<object>** tags support same-layer rendering, and the **type** can be specified randomly. They are case insensitive and will be converted to lowercase letters by the ArkWeb kernel. The **tag** string is matched using the entire string, and the **type** string is matched using the prefix.
 
-   If this API is not used or receives an invalid string (empty string), the ArkWeb kernel uses the default setting, that is, "embed" + "native/" prefix. If the specified **type** is the same as the W3C standard **\<object>** or **\<embed>** type, for example, **registerNativeEmbedRule** ("**object**," "**application**/**pdf**"), ArkWeb will comply with the W3C standard behavior and will not identify it as a same-layer tag.
+   If this API is not used or receives an invalid string (empty string), the ArkWeb kernel uses the default setting, that is, "embed" + "native/" prefix. If the specified **type** is the same as the W3C standard **\<object>** or **\<embed>** type, for example, **registerNativeEmbedRule**("**object**," "**application**/**pdf**"), ArkWeb will comply with the W3C standard behavior and will not identify it as a same-layer tag.
 
    - Use the \<embed> tags.
 
@@ -344,7 +353,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                  // Create a NodeController instance, set parameters, and rebuild.
+                  // Create a node controller and set parameters.
                   let nodeController = new MyNodeController()
                   // The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -446,7 +455,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
    - Tapping or holding with the left, middle, or right mouse button.
    - Tapping or holding the left, middle, or right mouse button using the touchpad.
 
-   Call [onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20) to listen for the mouse events of the same-layer rendered region.
+   Call [onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20) to listen for the mouse events in the same-layer rendering region.
 
     ```ts
     build() {
@@ -496,15 +505,17 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
     ```
 **Sample Code**
 
-To start with, add network permissions to module.json5. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
+To start with, add network permissions to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
-  ```
-  "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-  ```
+<!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/module.json5) -->
+
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
+```
 
 Code on the application side:
 
@@ -658,7 +669,7 @@ Code on the application side:
                  const componentId = embed.info?.id?.toString() as string
                  if (embed.status == NativeEmbedStatus.CREATE) {
                    console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                   // Create a NodeController instance, set parameters, and rebuild.
+                   // Create a node controller and set parameters.
                    let nodeController = new MyNodeController()
                    // The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                    nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -903,7 +914,7 @@ Code on the application side:
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info))
-                  // Create a NodeController instance, set parameters, and rebuild.
+                  // Create a node controller and set parameters.
                   let nodeController = new MyNodeController()
                   // 1. The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string, type : embed.info?.type as string,
@@ -987,11 +998,11 @@ Code on the application side:
   ```ts
   // HAP's src/main/ets/pages/PlayerDemo.ets
   import { media } from '@kit.MediaKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export class AVPlayerDemo {
     private count: number = 0;
-    private surfaceID: string = ''; // The surfaceID parameter specifies the window used to display the video. Its value is obtained through XComponent.
+    private surfaceID: string = ''; // The surfaceID parameter specifies the window used to display the video. Its value is obtained through the XComponent.
     private isSeek: boolean = true; // Specify whether the seek operation is supported.
 
     setSurfaceID(surface_id: string){
@@ -1094,7 +1105,7 @@ Code on the application side:
   </html>
   ```
 
-- Demo:
+- Demo
 
   ![web-same-layer](figures/web-same-layer.png)
 
@@ -1289,7 +1300,7 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                  // Create a NodeController instance, set parameters, and rebuild.
+                  // Create a node controller and set parameters.
                   let nodeController = new MyNodeController()
                   // The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -1358,7 +1369,7 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
 
 - Example of a frontend page:
 
-  The sample code uses the **\<embed>** tag. If the **\<object>** tag is used, register the **\<object>** tag and **\<type>** on the eTS side.
+  The sample code uses the **\<embed>** tag. To use the **\<object>** tag, register it and **\<type>** on the eTS side.
   ```html
   <!--HAP's src/main/resources/rawfile/overlay.html-->
   <!DOCTYPE html>
@@ -1381,7 +1392,7 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
   </html>
   ```
 
-- Demo:
+- Demo
   
   The **display** attribute of **arkwebnativestyle** is not set.
 
@@ -1391,6 +1402,227 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
 
   ![web-same-layer](figures/web-same-layer-nativeEmbedOverlay2.png)
 
+## Aligning the Same-layer Rendered Texture Map
+
+The private attribute** arkwebnativestyle** for ArkWeb same-layer rendering scenarios only takes effect on the **</embed>** and **</object>** tags after same-layer rendering is enabled. Since API version 23, two configurations are added: **object-fit: stretch** (the default value, where the texture is stretched and aligned according to the **bounds** size of the same-layer tag) and **object-fit: none** (where the texture is not stretched and aligned with the top-left corner). These configurations are used to control the texture alignment mode of a single same-layer tag for flexible display effects. They can solve the texture stretching issue that occurs in scenarios where the width and height of the same-layer tag change dynamically.
+
+The values of the attribute are listed in the following table.
+
+| Value| Description|
+| - | - |
+| object-fit:stretch | Default value. The texture is stretched and aligned based on the **bounds** of the same-layer tag.|
+| object-fit:none | The texture is not stretched and aligned with the left top corner.|
+
+- Code on the application side:
+  ```ts
+    // Create a NodeController instance.
+    import { webview } from '@kit.ArkWeb';
+    import { UIContext } from '@kit.ArkUI';
+    import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+
+    @Observed
+    declare class Params{
+      elementId: string
+      textOne: string
+      textTwo: string
+      width: number
+      height: number
+    }
+
+    declare class NodeControllerParams {
+      surfaceId: string
+      type: string
+      renderType: NodeRenderType
+      embedId: string
+      width: number
+      height: number
+    }
+
+    // The NodeController instance must be used with a NodeContainer for controlling and feeding back the behavior of the nodes in the container.
+    class MyNodeController extends NodeController {
+      private rootNode: BuilderNode<[Params]> | undefined | null;
+      private embedId_: string = "";
+      private surfaceId_: string = "";
+      private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+      private width_: number = 0;
+      private height_: number = 0;
+      private type_: string = "";
+      private isDestroy_: boolean = false;
+
+      setRenderOption(params: NodeControllerParams) {
+        this.surfaceId_ = params.surfaceId;
+        this.renderType_ = params.renderType;
+        this.embedId_ = params.embedId;
+        this.width_ = params.width;
+        this.height_ = params.height;
+        this.type_ = params.type;
+      }
+
+      // Method that must be overridden. It is used to build the number of nodes and return the number of nodes that will be mounted to the corresponding NodeContainer.
+      // Called when the corresponding NodeContainer is created or called by the rebuild method.
+      makeNode(uiContext: UIContext): FrameNode | null {
+        if (this.isDestroy_) { // rootNode is null.
+          return null;
+        }
+        if (!this.rootNode) {// rootNode is set to undefined.
+          this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
+          if(this.rootNode) {
+            this.rootNode.build(wrapBuilder(ImageBuilder), {  textOne: "myImage", width: this.width_, height: this.height_  })
+            return this.rootNode.getFrameNode();
+          }else{
+            return null;
+          }
+        }
+        // Return the FrameNode object.
+        return this.rootNode.getFrameNode();
+      }
+
+      updateNode(arg: Object): void {
+        this.rootNode?.update(arg);
+      }
+
+      getEmbedId(): string {
+        return this.embedId_;
+      }
+
+      setDestroy(isDestroy: boolean): void {
+        this.isDestroy_ = isDestroy;
+        if (this.isDestroy_) {
+          this.rootNode = null;
+        }
+      }
+
+      postEvent(event: TouchEvent | undefined): boolean {
+        return this.rootNode?.postTouchEvent(event) as boolean
+      }
+
+      postInputEvent(event: MouseEvent | undefined): boolean {
+        return this.rootNode?.postInputEvent(event) as boolean
+      }
+    }
+
+    @Component
+    struct ImageComponent {
+      @Prop params: Params
+      private imageOne: Resource = $rawfile('demo.PNG');
+      @State src: Resource = this.imageOne
+
+      build() {
+        Column(){
+          Image(this.src)
+        }
+        .width(this.params.width)
+        .height(this.params.height)
+      }
+    }
+
+
+    // In @Builder, add the specific dynamic component content.
+    @Builder
+    function ImageBuilder(params:Params) {
+      ImageComponent({params: params})
+    }
+
+    @Entry
+    @Component
+    struct Page{
+      browserTabController: WebviewController = new webview.WebviewController()
+      private nodeControllerMap: Map<string, MyNodeController> = new Map();
+      @State componentIdArr: Array<string> = [];
+      @State widthMap: Map<string, number> = new Map();
+      @State heightMap: Map<string, number> = new Map();
+      @State positionMap: Map<string, Edges> = new Map();
+      @State edges: Edges = {};
+      uiContext: UIContext = this.getUIContext();
+
+      build() {
+        Row() {
+          Column() {
+            Stack() {
+              ForEach(this.componentIdArr, (componentId: string) => {
+                NodeContainer(this.nodeControllerMap.get(componentId))
+                  .position(this.positionMap.get(componentId))
+                  .width(this.widthMap.get(componentId))
+                  .height(this.heightMap.get(componentId))
+              }, (embedId: string) => embedId)
+              // Load the local text.html page.
+              Web({src: $rawfile("test.html"), controller: this.browserTabController})
+                // Enable same-layer rendering.
+                .enableNativeEmbedMode(true)
+                  // Obtain the lifecycle change data of the <embed> tag.
+                .onNativeEmbedLifecycleChange((embed) => {
+                  console.info("NativeEmbed surfaceId" + embed.surfaceId);
+                  // If embed.info.id is used as the key for mapping nodeController, explicitly specify the ID on the HTML5 page.
+                  const componentId = embed.info?.id?.toString() as string
+                  if (embed.status == NativeEmbedStatus.CREATE) {
+                    console.info("NativeEmbed create" + JSON.stringify(embed.info));
+                    // Create a node controller and set parameters.
+                    let nodeController = new MyNodeController()
+                    // The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
+                    nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
+                      type : embed.info?.type as string,
+                      renderType : NodeRenderType.RENDER_TYPE_TEXTURE,
+                      embedId : embed.embedId as string,
+                      width : this.uiContext.px2vp(embed.info?.width),
+                      height : this.uiContext.px2vp(embed.info?.height)})
+                    this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`}
+                    nodeController.setDestroy(false);
+                    // Save the nodeController instance to the Map, with the Id attribute of the embed tag passed in by the Web component as the key.
+                    this.nodeControllerMap.set(componentId, nodeController);
+                    this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
+                    this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
+                    this.positionMap.set(componentId, this.edges);
+                    // Save the Id attribute of the embed tag passed in by the Web component to the @State decorated variable for dynamically creating a nodeContainer. The push action must be executed after the set action.
+                    this.componentIdArr.push(componentId)
+                  } else if (embed.status == NativeEmbedStatus.UPDATE) {
+                    let nodeController = this.nodeControllerMap.get(componentId);
+                    console.info("NativeEmbed update" + JSON.stringify(embed));
+                    this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`}
+                    this.positionMap.set(componentId, this.edges);
+                    this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
+                    this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
+                    nodeController?.updateNode({textOne: 'update', width: this.uiContext.px2vp(embed.info?.width), height: this.uiContext.px2vp(embed.info?.height)} as ESObject)
+                  } else if (embed.status == NativeEmbedStatus.DESTROY) {
+                    console.info("NativeEmbed destroy" + JSON.stringify(embed));
+                    let nodeController = this.nodeControllerMap.get(componentId);
+                    nodeController?.setDestroy(true);
+                    this.nodeControllerMap.delete(componentId);
+                    this.positionMap.delete(componentId);
+                    this.widthMap.delete(componentId);
+                    this.heightMap.delete(componentId);
+                    this.componentIdArr = this.componentIdArr.filter((value: string) => value !== componentId);
+                  } else {
+                    console.info("NativeEmbed status" + embed.status);
+                  }
+                })
+            }
+          }
+        }
+      }
+    }
+  ```
+
+- Example of a frontend page:
+
+  The sample code uses the **\<embed>** tag. To use the **\<object>** tag, register it and **\<type>** on the eTS side.
+  ```html
+    <!--HAP's src/main/resources/rawfile/test.html-->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Same-Layer Rendering Test HTML</title>
+    </head>
+    <body>
+    <div>
+        <!-- The attribute is set to object-fit:none. The texture is not stretched and aligned with the left top corner. -->
+        <embed id="nativeVideo"
+               type="native/camera"
+               arkwebnativestyle="object-fit:none"/>
+    </div>
+    </body>
+    </html>
+  ```
+ 
 ## FAQs
 ### What should I do if the same-layer rendered components are stretched?
 

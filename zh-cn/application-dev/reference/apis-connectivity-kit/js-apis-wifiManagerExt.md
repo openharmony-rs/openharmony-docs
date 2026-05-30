@@ -1,4 +1,11 @@
 # @ohos.wifiManagerExt (WLAN扩展接口)
+
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 该模块主要提供WLAN扩展接口，供非通用类型产品使用。
 
 > **说明：**
@@ -30,7 +37,7 @@ enableHotspot(): void
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -65,7 +72,7 @@ disableHotspot(): void
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -82,11 +89,11 @@ disableHotspot(): void
   }
 ```
 
-## wifiManagerExt.getSupportedPowerMode<sup>9+</sup>
+## wifiManagerExt.getSupportedPowerMode
 
 getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
-获取支持的功率模式，使用Promise异步回调。
+获取支持的功率模式。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -96,35 +103,35 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Array&lt;[PowerMode](#powermode9)&gt;&gt; | Promise对象。表示功率模式。 |
+  | Promise&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Promise对象。表示功率模式。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
-## PowerMode<sup>9+</sup>
+## PowerMode
 
 表示功率模式的枚举。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SLEEPING | 0 | 睡眠模式。 |
-| GENERAL | 1 | 常规模式。 |
-| THROUGH_WALL | 2 | 穿墙模式。 |
+| SLEEPING | 0 | 睡眠模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
+| GENERAL | 1 | 常规模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
+| THROUGH_WALL | 2 | 穿墙模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
 
 
-## wifiManagerExt.getSupportedPowerMode<sup>9+</sup>
+## wifiManagerExt.getSupportedPowerMode
 
 getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): void
 
-获取支持的功率模式，使用callback异步回调。
+获取支持的功率模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -134,14 +141,14 @@ getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): vo
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode9)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示支持的功率模式。如果err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示支持的功率模式。如果err为非0，表示处理出现错误。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -149,32 +156,23 @@ getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): vo
 **示例：**
 
 ```ts
-  import { wifiManagerExt } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
 
-  wifiManagerExt.getSupportedPowerMode((err, data:wifiManagerExt.PowerMode[]) => {
-      if (err) {
-          console.error("get supported power mode info error");
-          return;
-      }
-      console.info("get supported power mode info: " + JSON.stringify(data));
-  });
-
-  wifiManagerExt.getSupportedPowerMode().then(data => {
-      console.info("get supported power mode info: " + JSON.stringify(data));
-  }).catch((error:number) => {
-      console.error("get supported power mode error");
-  });
+wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => {
+    if (err) {
+        console.error("get supported power mode info error: ", err);
+        return;
+    }
+    console.info("get supported power mode info: " + JSON.stringify(data));
+});
 ```
 
-## wifiManagerExt.getPowerMode<sup>9+</sup>
+## wifiManagerExt.getPowerMode
 
 getPowerMode(): Promise&lt;PowerMode&gt;
 
 获取功率模式，使用Promise异步回调。
 
-> **说明：**
-> 从API version 9开始支持，从API version 10开始废弃。
-
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
@@ -183,14 +181,14 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[PowerMode](#powermode9)&gt; | Promise对象。表示功率模式。 |
+  | Promise&lt;[PowerMode](#powermode)&gt; | Promise对象。表示功率模式。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -198,21 +196,26 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 **示例：**
 
 ```ts
-  import { wifiManagerExt } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
 
+async function getWifiPowerMode() {
   try {
-      let model = wifiManagerExt.getPowerMode();
-      console.info("model info:" + model);
-  }catch(error){
-      console.error("failed: " + JSON.stringify(error));
+    // 1. 使用 await 等待 Promise 解析完成
+    let model = await wifiManagerExt.getPowerMode();
+    
+    console.info("model info: " + model);
+  } catch (error) {
+    // 2. 捕获 Promise 拒绝时的错误
+    console.error("failed: " + JSON.stringify(error));
   }
+}
 ```
 
-## wifiManagerExt.getPowerMode<sup>9+</sup>
+## wifiManagerExt.getPowerMode
 
 getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
-获取功率模式，使用callback异步回调。
+获取功率模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -222,14 +225,14 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[PowerMode](#powermode9)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示功率模式。如果err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[PowerMode](#powermode)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示功率模式。如果err为非0，表示处理出现错误。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -258,7 +261,7 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
 setPowerMode(mode: PowerMode) : void
 
- 设置功率模式。
+设置功率模式。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。
@@ -271,14 +274,14 @@ setPowerMode(mode: PowerMode) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| mode | [PowerMode](#powermode9) | 是 | 功率模式。 |
+| mode | [PowerMode](#powermode) | 是 | 功率模式。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |

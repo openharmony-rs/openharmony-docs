@@ -1,22 +1,41 @@
 # Click Control
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
 
 Click control attributes are used to set whether a component can respond to finger interactions such as click and touch events.
 
 >  **NOTE**
 >
->  This module is deprecated since API version 9. You are advised to use [hitTestBehavior](ts-universal-attributes-hit-test-behavior.md) instead.
+>  The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
+## touchable<sup>(deprecated)</sup>
+
+touchable(value: boolean): T
+
+Whether the component can respond to finger interactions such as click and touch events.
+
+> **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
-
-
-## Attributes
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [hitTestBehavior](ts-universal-attributes-hit-test-behavior.md#hittestbehavior) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type| Description                   |
-| ----------- | -------- | ------------------------ |
-| touchable<sup>(deprecated)</sup>   | boolean  | Whether the component can respond to finger interactions such as click and touch events.<br>**true** (default): The component can respond to finger interactions.<br>**false**: The component cannot respond to finger interactions.|
+**Parameters**
+
+| Name     | Type| Mandatory| Description                   |
+| ----------- | -------- | ----- | ------------------------ |
+| value   | boolean  |  Yes  |Whether the component can respond to finger interactions such as click and touch events.<br>**true** (default): The component can respond to finger interactions. **false**: The component cannot respond to finger interactions.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
 
 ## Example
 

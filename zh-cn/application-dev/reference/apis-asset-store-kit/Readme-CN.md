@@ -1,4 +1,10 @@
 # Asset Store Kit（关键资产存储服务）
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
 
 - ArkTS API<!--asset-store-arkts-->
   - [@ohos.security.asset (关键资产存储服务)](js-apis-asset.md)
@@ -20,4 +26,4 @@
     - [Asset_ResultSet](capi-assettype-asset-resultset.md)
     - [Asset_SyncResult](capi-assettype-asset-syncresult.md)
 - 错误码<!--asset-store-arkts-errcode-->
-  - [Asset错误码](errorcode-asset.md)
+  - [关键资产存储服务错误码](errorcode-asset.md)

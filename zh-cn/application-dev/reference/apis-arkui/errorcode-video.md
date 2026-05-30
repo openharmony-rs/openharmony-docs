@@ -4,11 +4,11 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，媒体错误码请参考[媒体错误码](../apis-media-kit/errorcode-media.md)，通用错误码请参考[通用错误码](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，媒体错误码请参考[Media错误码](../apis-media-kit/errorcode-media.md)，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
 ## 103601 播放器创建失败
 

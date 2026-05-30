@@ -1,7 +1,15 @@
 # Context (FA Model)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 <!--deprecated_code_no_check-->
 
-There is only one context in the FA model. All capabilities in the context are provided through methods. The context uses these methods to extend the capabilities of the **featureAbility** class.
+There is only one context in the [FA model](ability-terminology.md#fa-model). All capabilities in the context are provided through methods. The context uses these methods to extend the capabilities of the **featureAbility** class.
 
 
 ## Available APIs
@@ -45,7 +53,6 @@ For details about the APIs, see [API Reference](../reference/apis-ability-kit/js
         });
         hilog.info(domain, TAG, 'Application onCreate');
       }
-      //...
     }
     
     export default new MainAbility();
@@ -74,7 +81,6 @@ For details about the APIs, see [API Reference](../reference/apis-ability-kit/js
       onDestroy() {
         hilog.info(domain, TAG, 'Application onDestroy');
       }
-      //...  
     }
     
     export default new PageAbilitySingleton();

@@ -1,8 +1,15 @@
 # Page Transition Animation (Not Recommended)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-To achieve a better transition effect, you are advised to use the [Navigation](arkts-navigation-navigation.md) component and [modal transition](arkts-modal-transition.md).
+To achieve a better transition effect, you are advised to use the [navigation transition](./arkts-navigation-animation.md) and [modal transition](arkts-modal-transition.md).
 
 During page redirection, one page enters and the other page exits. You can customize the [page transition effects](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md) for these pages through the **pageTransition** function. Specifically, [PageTransitionEnter](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionenter) defines the page entrance animation, while [PageTransitionExit](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionexit) defines the page exit animation.
+
 The **pageTransition** function is as follows:
 
 ```ts
@@ -16,29 +23,30 @@ pageTransition() {
 API of **PageTransitionEnter**:
 
 ```ts
-PageTransitionEnter({type?: RouteType,duration?: number,curve?: Curve | string,delay?: number})
+PageTransitionEnter({ type?: RouteType, duration?: number, curve?: Curve | string, delay?: number })
 ```
 
 
 API of **PageTransitionExit**:
 
 ```ts
-PageTransitionExit({type?: RouteType,duration?: number,curve?: Curve | string,delay?: number})
+PageTransitionExit({ type?: RouteType, duration?: number, curve?: Curve | string, delay?: number })
 ```
 
 
-Both **PageTransitionEnter** and **PageTransitionExit** contain the **slide**, **translate**, **scale**, and **opacity** attributes. For **PageTransitionEnter**, these attributes indicate the start values for page entrance. For **PageTransitionExit**, these attributes indicate the end values for page exit. In this sense, configuration of page transition is similar to that of component transition. **PageTransitionEnter** provides the **onEnter** callback, and **PageTransitionExit** provides the **onExit** callback.
+The preceding APIs define the **PageTransitionEnter** and **PageTransitionExit** components. You can implement different page transition effects through the [slide](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#slide), [translate](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#translate), [scale](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#scale) and [opacity](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#opacity) attributes. For **PageTransitionEnter**, these attributes indicate the start values for page entrance. For **PageTransitionExit**, these attributes indicate the end values for page exit. In this sense, configuration of page transition is similar to that of component [transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md). **PageTransitionEnter** provides the **onEnter** callback, and **PageTransitionExit** provides the **onExit** callback.
 
 
-In the preceding APIs, the **type** parameter indicates the route type used in page navigation. Each page transition involves exit of one page and entrance of the other. If you switch from page A to page B through the **router.pushUrl** operation, page A exits, with the exit animation applied; and page B enters, with the entrance animation applied. If you switch from page B back to page A through the **router.back** operation, page B exits, , with the exit animation applied; and page A enters, with the entrance animation applied. That is, **PageTransitionEnter** of a page may be an entrance animation of a new page (pushed to the stack) or of an existing page (popped from the stack). To distinguish these two types of entrance animations, the **type** parameter is provided.
+In the preceding APIs, the **type** parameter indicates the route type used in page navigation. Each page transition involves exit of one page and entrance of the other. If you switch from page A to page B using [pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl), page A exits and plays the exit animation; and page B enters and plays the entrance animation. If you switch from page B back to page A using [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back), page B exits and plays the exit animation; and page A enters and plays the entrance animation. That is, **PageTransitionEnter** of a page may be an entrance animation of a new page (pushed to the stack) or of an existing page (popped from the stack). To distinguish these two types of entrance animations, the **type** parameter is provided.
 
 
 ## Setting type to RouteType.None
 
 When **type** is set to **RouteType.None** (default value), the page transition animations work for both the push and pop operations in the page stack.
 
+<!-- @[pageTransition_template5_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionSrc3.ets) -->
 
-```ts
+``` TypeScript
 // page A
 pageTransition() {
   // Configure the page entrance animation to sliding in from the left, with the duration of 1200 ms. The settings take effect no matter whether the push or pop operation is performed on the page stack.
@@ -50,7 +58,11 @@ pageTransition() {
 }
 ```
 
-```ts
+<!-- -->
+
+<!-- @[pageTransition_template5_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionDst3.ets) -->
+
+``` TypeScript
 // page B
 pageTransition() {
   // Configure the page entrance animation to sliding in from the right, with the duration of 1000 ms. The settings take effect no matter whether the push or pop operation is performed on the page stack.
@@ -63,15 +75,16 @@ pageTransition() {
 ```
 
 
+
 Assume that the page navigation is in the multi-instance mode, which means that duplicate pages are allowed in the page stack. There may be four scenarios. The following table lists the page transition effects.
 
 
 | Route Operation                        | Page A Transition Effect                           | Page B Transition Effect                           |
 | ---------------------------- | ---------------------------------- | ---------------------------------- |
-| **router.pushUrl**, navigating from page A to a new instance of page B| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the left of the screen. | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the right of the screen.|
-| **router.back**, returning from page B back to page A      | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the left of the screen.| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the right of the screen. |
-| **router.pushUrl**, navigating from page B to a new instance of page A| The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the left of the screen.| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the right of the screen. |
-| **router.back**, returning from page A back to page B      | The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the left of the screen. | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the right of the screen.|
+| **pushUrl**, navigating from page A to a new instance of page B| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the left of the screen. | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the right of the screen.|
+| **back**, returning from page B back to page A      | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the left of the screen.| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the right of the screen. |
+| **pushUrl**, navigating from page B to a new instance of page A| The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the left of the screen.| The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the right of the screen. |
+| **back**, returning from page A back to page B      | The page exits. The animation defined by **PageTransitionExit** is applied. In the example, the page slides out from the left of the screen. | The page enters. The animation defined by **PageTransitionEnter** is applied. In the example, the page slides in from the right of the screen.|
 
 
 If you want the page accessed by **router.pushUrl** to always slide in from the right and the page exited by **router.back** to always slide out from the right, the third and fourth cases in the preceding table do not meet the requirements. In this case, you need to define four page transition effects.
@@ -79,10 +92,11 @@ If you want the page accessed by **router.pushUrl** to always slide in from the 
 
 ## Setting type to RouteType.Push or RouteType.Pop
 
-When **type** is set to **RouteType.Push**, the page transition animations work for only both the push operations in the page stack. When **type** is set to **RouteType.Pop**, the page transition animations work for only both the pop operations in the page stack.
+When [type](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionoptions) is set to [RouteType.Push](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#routetype), the page transition animations work for only both the push operations in the page stack. When **type** is set to **RouteType.Pop**, the page transition animations work for only the pop operations in the page stack.
 
+<!-- @[pageTransition_template6_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionSrc4.ets) -->
 
-```ts
+``` TypeScript
 // page A
 pageTransition() {
   // Configure the page entrance animation to sliding in from the right, with the duration of 1200 ms. The settings take effect only when the push operation is performed on the page stack.
@@ -100,7 +114,11 @@ pageTransition() {
 }
 ```
 
-```ts
+<!-- -->
+
+<!-- @[pageTransition_template6_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionDst4.ets) -->
+
+``` TypeScript
 // page B
 pageTransition() {
   // Configure the page entrance animation to sliding in from the right, with the duration of 1000 ms. The settings take effect only when the push operation is performed on the page stack.
@@ -124,21 +142,22 @@ The preceding code defines page transition effects for all possibles scenarios. 
 
 | Route Operation                        | Page A Transition Effect                                 | Page B Transition Effect                                 |
 | ---------------------------- | ---------------------------------------- | ---------------------------------------- |
-| **router.pushUrl**, navigating from page A to a new instance of page B| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Push** takes effect. The page slides out from the left of the screen.| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Push** takes effect. The page slides in from the right of the screen.|
-| **router.back**, returning from page B back to page A      | The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Pop** takes effect. The page slides in from the left of the screen.| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Pop** takes effect. The page slides out from the right of the screen.|
-| **router.pushUrl**, navigating from page B to a new instance of page A| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Push** takes effect. The page slides in from the right of the screen.| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Push** takes effect. The page slides out from the left of the screen.|
-| **router.back**, returning from page A back to page B      | The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Pop** takes effect. The page slides out from the right of the screen.| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Pop** takes effect. The page slides in from the left of the screen.|
+| **pushUrl**, navigating from page A to a new instance of page B| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Push** takes effect. The page slides out from the left of the screen.| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Push** takes effect. The page slides in from the right of the screen.|
+| **back**, returning from page B back to page A      | The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Pop** takes effect. The page slides in from the left of the screen.| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Pop** takes effect. The page slides out from the right of the screen.|
+| **pushUrl**, navigating from page B to a new instance of page A| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Push** takes effect. The page slides in from the right of the screen.| The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Push** takes effect. The page slides out from the left of the screen.|
+| **back**, returning from page A back to page B      | The page exits. The transition style of **PageTransitionExit** whose **type** is **RouteType.Pop** takes effect. The page slides out from the right of the screen.| The page enters. The transition style of **PageTransitionEnter** whose **type** is **RouteType.Pop** takes effect. The page slides in from the left of the screen.|
 
 
->**NOTE**
+> **NOTE**
 >
->    1. The transition style of each page can be independently configured. However, as each transition involves two pages, take into account the smoothness between page transitions, for example, the transition duration.
+> - The transition style of each page can be independently configured. However, as each transition involves two pages, take into account the smoothness between page transitions, for example, the transition duration.
 >
->    2. If no page transition style is defined, a page uses the default page transition style.
+> - If no page transition style is defined, a page uses the default page transition style.
 
 
 ## Disabling Page Transition
 
+You can disable the transition animation of a page by setting the page transition duration to 0.
 
 ```ts
 pageTransition() {
@@ -147,21 +166,20 @@ pageTransition() {
 }
 ```
 
-
-You can disable the transition animation of a page by setting the page transition duration to 0.
-
-
 ## Example
 
-In the following example, page transition animations are defined using [router.pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl) for all the page transition scenarios.
+In the following example, page transition animations are defined using [pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl) for all the page transition scenarios.
 
-```ts
+<!-- @[pageTransition_template3_pageTransitionSrc1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionSrc1.ets) -->
+
+``` TypeScript
 // PageTransitionSrc1
 @Entry
 @Component
 struct PageTransitionSrc1 {
   build() {
     Column() {
+      // Replace $r('app.media.mountain') with the actual resource file.
       Image($r('app.media.mountain'))
         .width('90%')
         .height('80%')
@@ -170,19 +188,19 @@ struct PageTransitionSrc1 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionDst1' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionDst1' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // Return to the previous page, which is equivalent to the pop operation.
             this.getUIContext().getRouter().back();
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -203,16 +221,18 @@ struct PageTransitionSrc1 {
 }
 ```
 
+<!-- -->
 
+<!-- @[pageTransition_template3_pageTransitionDst1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionDst1.ets) -->
 
-
-```ts
+``` TypeScript
 // PageTransitionDst1
 @Entry
 @Component
 struct PageTransitionDst1 {
   build() {
     Column() {
+      // Replace $r('app.media.forest') with the actual resource file.
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -221,19 +241,19 @@ struct PageTransitionDst1 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionSrc1' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionSrc1' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // Return to the previous page, which is equivalent to the pop operation.
             this.getUIContext().getRouter().back();
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -261,15 +281,16 @@ struct PageTransitionDst1 {
 
 In the following example, **type** is set to **RouteType.None**.
 
+<!-- @[pageTransition_template4_pageTransitionSrc2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionSrc2.ets) -->
 
-
-```ts
+``` TypeScript
 // PageTransitionSrc2
 @Entry
 @Component
 struct PageTransitionSrc2 {
   build() {
     Column() {
+      // Replace $r('app.media.mountain') with the actual resource file.
       Image($r('app.media.mountain'))
         .width('90%')
         .height('80%')
@@ -278,19 +299,19 @@ struct PageTransitionSrc2 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionDst2' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionDst2' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // Return to the previous page, which is equivalent to the pop operation.
             this.getUIContext().getRouter().back();
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -306,15 +327,18 @@ struct PageTransitionSrc2 {
 }
 ```
 
+<!-- -->
 
+<!-- @[pageTransition_template4_pageTransitionDst2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionDst2.ets) -->
 
-```ts
+``` TypeScript
 // PageTransitionDst2
 @Entry
 @Component
 struct PageTransitionDst2 {
   build() {
     Column() {
+      // Replace $r('app.media.forest') with the actual resource file.
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -323,19 +347,19 @@ struct PageTransitionDst2 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionSrc2' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionSrc2' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // Return to the previous page, which is equivalent to the pop operation.
             this.getUIContext().getRouter().back();
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -350,7 +374,6 @@ struct PageTransitionDst2 {
   }
 }
 ```
-
 
 
 ![pageTransition_None](figures/pageTransition_None.gif)

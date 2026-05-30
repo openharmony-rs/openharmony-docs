@@ -1,6 +1,17 @@
 # @ohos.app.ability.EmbeddableUIAbility (Embeddable UIAbility)
 
-The EmbeddableUIAbility module provides the UIAbility that can be started in embedded mode for atomic services. It inherits from [UIAbility](js-apis-app-ability-uiAbility.md) and supports two startup modes: redirection startup and embedded startup. For details about the inheritance relationship of each ability, see [Inheritance Relationship](./js-apis-app-ability-ability.md#ability-inheritance-relationship).
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+EmbeddableUIAbility is an embeddable UIAbility component provided for atomic services. It inherits from [UIAbility](js-apis-app-ability-uiAbility.md).
+
+You can implement EmbeddableUIAbility to enable atomic services to be launched by other applications either as a standalone window or embedded within the host application's UI.
+
+For details about the inheritance relationship of each ability, see [Inheritance Relationship](./js-apis-app-ability-ability.md#ability-inheritance-relationship).
 
 > **NOTE**
 >
@@ -22,4 +33,4 @@ import { EmbeddableUIAbility } from '@kit.AbilityKit';
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| context | [EmbeddableUIAbilityContext](js-apis-inner-application-EmbeddableUIAbilityContext.md) | No| No| Context of the UIAbility.|
+| context | [EmbeddableUIAbilityContext](js-apis-inner-application-EmbeddableUIAbilityContext.md) | No| No| Context of the EmbeddableUIAbility.|

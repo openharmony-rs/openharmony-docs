@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Provides a list of ArkWeb network protocol stack errors.
 
@@ -81,7 +81,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_SOCKS_CONNECTION_FAILED | -120 |  The connection between the SOCKS proxy server and the target host fails to be established.   |
 |ERR_SOCKS_CONNECTION_HOST_UNREACHABLE | -121 | The domain name of the SOCKS proxy server is unreachable.|
 |ERR_ALPN_NEGOTIATION_FAILED | -122 | The request for negotiating the standby protocol fails.|
-|ERR_SSL_NO_RENEGOTIATION | -123 | The server sends an **SSL no_regregation** alert message.|
+|ERR_SSL_NO_RENEGOTIATION | -123 | The server sends an **SSL no_renegotiation** alert message.|
 |ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES | -124 | Winsock sometimes reports that more data is written than is passed. This may be caused by LSP damage.|
 |ERR_SSL_DECOMPRESSION_FAILURE_ALERT | -125 | The SSL peer sent a decompression failure alert to the local end. This usually occurs when the peer mistakenly believes that it supports DEFLATE compression.|
 |ERR_SSL_BAD_RECORD_MAC_ALERT | -126 | The SSL peer sent a **bad_record_mac** alert to the local end. This may occur on a server that is not support DELEGATE.|
@@ -119,11 +119,11 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_CT_STH_INCOMPLETE | -169 | The Certificate Transparency parsed signed tree head successfully, but some information is missing.|
 |ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH | -170 | The attempt to re-send proxy authentication credentials failed because the AuthController has not generated the credentials yet. The caller should reconnect the AuthController.|
 |ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED | -171 | The Certificate Transparency failed to parse the consistency proof.|
-|ERR_SSL_OBSOLETE_CIPHER | -172 | The SSL server requires an unsupported cipher suite, which has been deleted. This error will immediately occurs in a rollback of one or two versions after the cipher suite is deleted, after which the rollback will be deleted.|
+|ERR_SSL_OBSOLETE_CIPHER | -172 | The SSL server requires an unsupported cipher suite, which has been deleted. This error will immediately occur in a rollback of one or two versions after the cipher suite is deleted, after which the rollback will be deleted.|
 |ERR_WS_UPGRADE | -173 | The WebSocket handshake is completed, the connection has been upgraded, and the URLRequest is canceled.|
 |ERR_READ_IF_READY_NOT_IMPLEMENTED | -174 | The ReadIfReady of socket is not implemented. |
 |ERR_NO_BUFFER_SPACE | -176 | No socket buffer space is available.|
-|ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS | -177 | There is no common signature algorithm between the private key of the local end certificate and the preferences of the server.|
+|ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS | -177 | There is no common signing algorithm between the private key of the local end certificate and the preferences of the server.|
 |ERR_EARLY_DATA_REJECTED | -178 | TLS 1.3 early data is rejected by the server. This error will be received before any data is returned from the socket. Retry the request when early data is disabled.|
 |ERR_WRONG_VERSION_ON_EARLY_DATA | -179 | The TLS 1.3 early data version is incorrect.|
 |ERR_TLS13_DOWNGRADE_DETECTED | -180 | TLS 1.3 is enabled, but an earlier version has been negotiated. This error indicates that it supports TLS 1.3. This is part of the security check in TLS 1.3, but it may also indicate that the user is using a problematic TLS-terminating proxy.|
@@ -136,10 +136,10 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_CERT_AUTHORITY_INVALID | -202 | The CA is not trusted. This may mean: 1. The attacker replaces a real certificate with a certificate that contains its public key and is signed by its cousin. 2. The server operator has a valid certificate from a CA that the local end does not know but should trust. 3. The server provides a self-signed certificate that cannot defend against active attackers.|
 |ERR_CERT_CONTAINS_ERRORS | -203 | The certificate contains errors.|
 |ERR_CERT_NO_REVOCATION_MECHANISM | -204 |There is no revocation mechanism for this certificate.|
-|ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | Revocation information for this website's security certificate is not available. This may mean: 1. The attacker compromises the private key in the certificate and prevents the local end from discovering that the certificate has been revoked. 2. The certificate is not revoked, but the revocation server is busy or unavailable.|
+|ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | Revocation information for this website's security certificate is not available. This may mean that: 1. The attacker compromises the private key in the certificate and prevents the local end from discovering that the certificate has been revoked. 2. The certificate is not revoked, but the revocation server is busy or unavailable.|
 |ERR_CERT_REVOKED | -206 | The certificate is revoked. The local end can ignore this error, but it should not do this.|
 |ERR_CERT_INVALID | -207 |  The certificate is invalid. |
-|ERR_CERT_WEAK_SIGNATURE_ALGORITHM | -208 | The server responds with a certificate signed with a weak signature algorithm.|
+|ERR_CERT_WEAK_SIGNATURE_ALGORITHM | -208 | The server responds with a certificate signed with a weak signing algorithm.|
 |ERR_CERT_NON_UNIQUE_NAME | -210 |  The domain name specified in the certificate is not unique.|
 |ERR_CERT_WEAK_KEY | -211 | The server responds with a certificate that contains a weak key (for example, a small RSA key).|
 |ERR_CERT_NAME_CONSTRAINT_VIOLATION | -212 | The certificate name constraint is violated.|
@@ -149,7 +149,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_CERT_KNOWN_INTERCEPTION_BLOCKED | -217 | The certificate is used for interception by an entity other than the device owner.|
 |ERR_SSL_OBSOLETE_VERSION_OR_CIPHER | -218 | The connection uses an outdated version of SSL/TLS or password.|
 |ERR_CERT_END | -219 | This error follows the previous error code.|
-|ERR_INVALID_URL | -300 | The URL is invalid.|
+|ERR_INVALID_URL | -300 | Invalid URL.|
 |ERR_DISALLOWED_URL_SCHEME | -301 |  The URL scheme is not allowed to be used.|
 |ERR_UNKNOWN_URL_SCHEME | -302 | The URL scheme is unknown.|
 |ERR_INVALID_REDIRECT | -303 | The attempt to load a URL causes a redirection to an invalid URL.|
@@ -158,7 +158,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_UNSAFE_PORT | -312 | The port is unsafe.|
 |ERR_INVALID_RESPONSE | -320 | The response is invalid.|
 |ERR_INVALID_CHUNKED_ENCODING | -321 | The chunked encoding is invalid.|
-|ERR_METHOD_UNSUPPORTED | -322 |	The method is not supported.|
+|ERR_METHOD_UNSUPPORTED | -322 | The method is not supported.|
 |ERR_UNEXPECTED_PROXY_AUTH | -323 | The proxy authentication is unexpected.|
 |ERR_EMPTY_RESPONSE | -324 | The response is empty.|
 |ERR_RESPONSE_HEADERS_TOO_BIG | -325 | The value of response headers is too large.|
@@ -167,7 +167,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_MALFORMED_IDENTITY | -329 | The identity used for authentication is invalid.|
 |ERR_CONTENT_DECODING_FAILED | -330 | The response content failed to be decoded.|
 |ERR_NETWORK_IO_SUSPENDED | -331 | The operation failed because all network I/Os are suspended.|
-|ERR_SYN_REPLY_NOT_RECEIVED | -332 |	The **FLIP** data is received when **SYN_REPLY** is not received on the stream.|
+|ERR_SYN_REPLY_NOT_RECEIVED | -332 | The **FLIP** data is received when **SYN_REPLY** is not received on the stream.|
 |ERR_ENCODING_CONVERSION_FAILED | -333 | The response failed to be converted to the target encoding.|
 |ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT | -334 | The format of the FTP directory list cannot be recognized.|
 |ERR_NO_SUPPORTED_PROXIES | -336 | There is no supported proxy.|
@@ -176,7 +176,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_UNSUPPORTED_AUTH_SCHEME | -339 | The authentication scheme is not supported.|
 |ERR_ENCODING_DETECTION_FAILED | -340 | The encoding detection failed.|
 |ERR_MISSING_AUTH_CREDENTIALS | -341 | The authentication credentials are missing.|
-|ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS | -342 |	The security library status is unexpected.|
+|ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS | -342 | The security library status is unexpected.|
 |ERR_MISCONFIGURED_AUTH_ENVIRONMENT | -343 | The authentication environment is incorrectly configured.|
 |ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | The security library status is undocumented.|
 |ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN | -345 | The response body is too big.|
@@ -215,7 +215,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_TOO_MANY_ACCEPT_CH_RESTARTS | -382 | The **ACCEPT_CH_RESTARTS** has been triggered too many times.|
 | | -383 | In the same request, the IP address space of the remote endpoint is different from the previous one. Cache entries for any affected requests should be marked as invalid.|
 |ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY | -384 | The cached IP address space of the remote endpoint is blocked by a local network access policy.|
-|ERR_CACHE_MISS | -400 |	There is no requested entry in the cache.|
+|ERR_CACHE_MISS | -400 | There is no requested entry in the cache.|
 |ERR_CACHE_READ_FAILURE | -401 | The data cannot be read from the disk cache.|
 |ERR_CACHE_WRITE_FAILURE | -402 | The data cannot be written to the disk cache.|
 |ERR_CACHE_OPERATION_UNSUPPORTED | -403 | The entry does not support this operation.|
@@ -263,7 +263,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_DNS_TIMED_OUT | -803 | The DNS transaction times out.|
 |ERR_DNS_CACHE_MISS | -804 | The entry is not found in the cache or other local sources.|
 |ERR_DNS_SEARCH_EMPTY | -805 | The suffix search list rule prevents the resolution of a given host name.|
-|ERR_DNS_SORT_ERROR | -806 |	Addresses are not sorted according to RFC 3484.|
+|ERR_DNS_SORT_ERROR | -806 | Addresses are not sorted according to RFC 3484.|
 |ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED | -808 | The host name of the DNS-over-HTTPS server cannot be resolved.|
 |ERR_DNS_NAME_HTTPS_ONLY | -809 | DNS has identified that the request is prohibited due to insecure connections (HTTP/WS). The application should handle this error like HTTP redirection, redirecting the connection to secure HTTPS or WSS.|
 |ERR_DNS_REQUEST_CANCELED | -810 | All DNS requests related to this task are canceled.|

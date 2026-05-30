@@ -1,4 +1,10 @@
 # Dynamic Component Creation
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @seaside_wu1-->
+<!--Designer: @shiyu_huang-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can dynamically add components with specified attributes and styles to pages.
 

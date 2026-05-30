@@ -1,4 +1,10 @@
 # @ohos.wifi (WLAN)
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 
 The **WLAN** module provides basic wireless local area network (WLAN) functions, peer-to-peer (P2P) functions, and WLAN message notification services. It allows applications to communicate with other devices over WLAN.
 
@@ -15,11 +21,15 @@ import wifi from '@ohos.wifi';
 ```
 
 
-## wifi.isWifiActive
+## wifi.isWifiActive<sup>(deprecated)</sup>
 
 isWifiActive(): boolean
 
 Checks whether WLAN is enabled.
+
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.isWifiActive](js-apis-wifiManager.md#wifimanageriswifiactive) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -27,7 +37,7 @@ Checks whether WLAN is enabled.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if WLAN is enabled; returns **false** otherwise.|
 
@@ -44,11 +54,15 @@ try {
 }
 ```
 
-## wifi.scan
+## wifi.scan<sup>(deprecated)</sup>
 
 scan(): boolean
 
 Starts a scan for WLAN.
+
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.scan](js-apis-wifiManager.md#wifimanagerscandeprecated) instead.
 
 **Required permissions**: **ohos.permission.SET_WIFI_INFO** and **ohos.permission.LOCATION**
 
@@ -56,7 +70,7 @@ Starts a scan for WLAN.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
 
@@ -72,11 +86,15 @@ try {
 }
 ```
 
-## wifi.getScanInfos
+## wifi.getScanInfos<sup>(deprecated)</sup>
 
 getScanInfos(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 Obtains the scan result. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getScanInfos](js-apis-wifiManager.md#wifimanagergetscaninfolist10) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION or ohos.permission.GET_WIFI_PEERS_MAC (
 available only for system applications)
@@ -85,16 +103,20 @@ available only for system applications)
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
-  | Promise&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;&nbsp;&gt; | Promise used to return the detected hotspots.|
+  | Promise&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfodeprecated)&gt;&nbsp;&gt; | Promise used to return the detected hotspots.|
 
 
-## wifi.getScanInfos
+## wifi.getScanInfos<sup>(deprecated)</sup>
 
 getScanInfos(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 Obtains the scan result. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getScanInfos](js-apis-wifiManager.md#wifimanagergetscaninfolist10) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION or ohos.permission.GET_WIFI_PEERS_MAC (
 available only for system applications)
@@ -103,39 +125,18 @@ available only for system applications)
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the detected hotspots. Otherwise, **err** is a non-zero value and **data** is empty.|
+  | callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfodeprecated)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the detected hotspots. Otherwise, **err** is a non-zero value and **data** is empty.|
 
 **Example**
 
 ```ts
 import wifi from '@ohos.wifi';
 
-wifi.getScanInfos((err, result) => {
-    if (err) {
-        console.error("get scan info error");
-        return;
-    }
-
-    let len = result.length;
-    console.log("wifi received scan info: " + len);
-    for (let i = 0; i < len; ++i) {
-        console.info("ssid: " + result[i].ssid);
-        console.info("bssid: " + result[i].bssid);
-        console.info("capabilities: " + result[i].capabilities);
-        console.info("securityType: " + result[i].securityType);
-        console.info("rssi: " + result[i].rssi);
-        console.info("band: " + result[i].band);
-        console.info("frequency: " + result[i].frequency);
-        console.info("channelWidth: " + result[i].channelWidth);
-        console.info("timestamp: " + result[i].timestamp);
-    }
-});
-
 wifi.getScanInfos().then(result => {
     let len = result.length;
-    console.log("wifi received scan info: " + len);
+    console.info("wifi received scan info: " + len);
     for (let i = 0; i < len; ++i) {
         console.info("ssid: " + result[i].ssid);
         console.info("bssid: " + result[i].bssid);
@@ -151,34 +152,41 @@ wifi.getScanInfos().then(result => {
 ```
 
 
-## WifiScanInfo
+## WifiScanInfo<sup>(deprecated)</sup>
 
 Represents WLAN hotspot information.
+
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [WifiScanInfo](js-apis-wifiManager.md#wifiscaninfo) instead.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
-| **Name**| **Type**| **Readable**| **Writable**| **Description**|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | Yes| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
-| bssid | string | Yes| No| Basic service set identifier (BSSID) of the hotspot, for example, **00:11:22:33:44:55**.|
-| capabilities | string | Yes| No| Hotspot capabilities.|
-| securityType | [WifiSecurityType](#wifisecuritytype) | Yes| No| WLAN security type.|
-| rssi | number | Yes| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
-| band | number | Yes| No| Frequency band of the WLAN access point (AP).|
-| frequency | number | Yes| No| Frequency of the WLAN AP.|
-| channelWidth | number | Yes| No| Channel width of the WLAN AP.|
-| timestamp | number | Yes| No| Timestamp.|
+| ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
+| bssid | string | No| No| Basic service set identifier (BSSID) of the hotspot, for example, **00:11:22:33:44:55**.|
+| capabilities | string | No| No| Hotspot capabilities.|
+| securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | No| No| WLAN security type.|
+| rssi | number | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
+| band | number | No| No| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
+| frequency | number | No| No| Frequency of the WLAN AP.|
+| channelWidth | number | No| No| Channel width of the WLAN AP.|
+| timestamp | number | No| No| Timestamp.|
 
 
-## WifiSecurityType
+## WifiSecurityType<sup>(deprecated)</sup>
 
 Enumerates the WLAN security types.
 
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype) instead.
+
 **System capability**: SystemCapability.Communication.WiFi.Core
 
-
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | WIFI_SEC_TYPE_INVALID | 0 | Invalid security type.|
 | WIFI_SEC_TYPE_OPEN | 1 | Open security type.|
@@ -187,29 +195,35 @@ Enumerates the WLAN security types.
 | WIFI_SEC_TYPE_SAE | 4 | Simultaneous Authentication of Equals (SAE).|
 
 
-
-## WifiDeviceConfig
+## WifiDeviceConfig<sup>(deprecated)</sup>
 
 Represents the WLAN configuration.
 
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [WifiDeviceConfig](js-apis-wifiManager.md#wifideviceconfig) instead.
+
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-
-| **Name**| **Type**| **Readable**| **Writable**| **Description**|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | Yes| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
-| bssid | string | Yes| No| Hotspot BSSID, for example, **00:11:22:33:44:55**.|
-| preSharedKey | string | Yes| No| PSK of the hotspot. The maximum length is 64 bytes.|
-| isHiddenSsid | boolean | Yes| No| Whether the network is hidden.|
-| securityType | [WifiSecurityType](#wifisecuritytype) | Yes| No| Security type.|
+| ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
+| bssid | string | No| No| BSSID of the hotspot, for example, **00:11:22:33:44:55**.|
+| preSharedKey | string | No| No| PSK of the hotspot. The maximum length is 64 bytes.|
+| isHiddenSsid | boolean | No| No| Whether the network is hidden. The value **true** indicates that the network is hidden, and the value **false** indicates the opposite.|
+| securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | No| No| Security type.|
 
 
 
-## wifi.addUntrustedConfig<sup>7+</sup>
+## wifi.addUntrustedConfig<sup>(deprecated)</sup>
 
 addUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
 Adds the configuration of an untrusted network. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.addCandidateConfig](js-apis-wifiManager.md#wifimanageraddcandidateconfig) instead.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -217,13 +231,13 @@ Adds the configuration of an untrusted network. This API uses a promise to retur
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the operation is successful; the value **false** means the opposite.|
 
@@ -259,11 +273,15 @@ try {
 }
 ```
 
-## wifi.addUntrustedConfig<sup>7+</sup>
+## wifi.addUntrustedConfig<sup>(deprecated)</sup>
 
 addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boolean&gt;): void
 
 Adds the configuration of an untrusted network. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.addCandidateConfig](js-apis-wifiManager.md#wifimanageraddcandidateconfig-1) instead.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -271,9 +289,9 @@ Adds the configuration of an untrusted network. This API uses an asynchronous ca
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
   | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is **true**. If the operation fails, **data** is **false**. If **err** is not **0**, an error has occurred.|
 
 **Example**
@@ -308,11 +326,15 @@ try {
 }
 ```
 
-## wifi.removeUntrustedConfig<sup>7+</sup>
+## wifi.removeUntrustedConfig<sup>(deprecated)</sup>
 
 removeUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
 Removes the configuration of an untrusted network. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.removeCandidateConfig](js-apis-wifiManager.md#wifimanagerremovecandidateconfig) instead.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -320,13 +342,13 @@ Removes the configuration of an untrusted network. This API uses a promise to re
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the operation is successful; the value **false** means the opposite.|
 
@@ -364,11 +386,15 @@ try {
 ```
 
 
-## wifi.removeUntrustedConfig<sup>7+</sup>
+## wifi.removeUntrustedConfig<sup>(deprecated)</sup>
 
 removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boolean&gt;): void
 
 Removes the configuration of an untrusted network. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.removeCandidateConfig](js-apis-wifiManager.md#wifimanagerremovecandidateconfig-1) instead.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -376,9 +402,9 @@ Removes the configuration of an untrusted network. This API uses an asynchronous
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
   | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is **true**. If the operation fails, **data** is **false**. If **err** is not **0**, an error has occurred.|
 
 **Example**
@@ -413,12 +439,15 @@ try {
 }
 ```
 
-
-## wifi.getSignalLevel
+## wifi.getSignalLevel<sup>(deprecated)</sup>
 
 getSignalLevel(rssi: number, band: number): number
 
 Obtains the WLAN signal level.
+
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getSignalLevel](js-apis-wifiManager.md#wifimanagergetsignallevel) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -426,14 +455,14 @@ Obtains the WLAN signal level.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | rssi | number | Yes| RSSI of the hotspot, in dBm.|
   | band | number | Yes| Frequency band of the WLAN AP.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | number | Signal level obtained. The value range is [0, 4].|
 
@@ -452,11 +481,15 @@ try {
 
 ```
 
-## wifi.getLinkedInfo
+## wifi.getLinkedInfo<sup>(deprecated)</sup>
 
 getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
-Obtains WLAN connection information. This API uses a promise to return the result.
+Obtains information about the WLAN connection. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getLinkedInfo](js-apis-wifiManager.md#wifimanagergetlinkedinfo) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -466,14 +499,18 @@ Obtains WLAN connection information. This API uses a promise to return the resul
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | Promise used to return the WLAN connection information.|
+  | Promise&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | Promise used to return the WLAN connection information.|
 
 
-## wifi.getLinkedInfo
+## wifi.getLinkedInfo<sup>(deprecated)</sup>
 
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
-Obtains WLAN connection information. This API uses an asynchronous callback to return the result.
+Obtains information about the WLAN connection. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getLinkedInfo](js-apis-wifiManager.md#wifimanagergetlinkedinfo-1) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -483,7 +520,7 @@ Obtains WLAN connection information. This API uses an asynchronous callback to r
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the WLAN connection information obtained. If **err** is not **0**, an error has occurred.|
+  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfodeprecated)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the WLAN connection information obtained. If **err** is not **0**, an error has occurred.|
 
 **Example**
 ```ts
@@ -505,30 +542,38 @@ wifi.getLinkedInfo().then(data => {
 ```
 
 
-## WifiLinkedInfo
+## WifiLinkedInfo<sup>(deprecated)</sup>
 
 Represents the WLAN connection information.
 
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [WifiLinkedInfo](js-apis-wifiManager.md#wifilinkedinfo) instead.
+
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | Yes| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
-| bssid | string | Yes| No| Hotspot BSSID, for example, **00:11:22:33:44:55**.|
-| rssi | number | Yes| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
-| band | number | Yes| No| Frequency band of the WLAN AP.|
-| linkSpeed | number | Yes| No| Speed of the WLAN AP.|
-| frequency | number | Yes| No| Frequency of the WLAN AP.|
-| isHidden | boolean | Yes| No| Whether to hide the WLAN AP.|
-| isRestricted | boolean | Yes| No| Whether to restrict data volume at the WLAN AP.|
-| macAddress | string | Yes| No| MAC address of the device.|
-| ipAddress | number | Yes| No| IP address of the device that sets up the WLAN connection.|
-| connState | [ConnState](#connstate) | Yes| No| WLAN connection state.|
+| ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
+| bssid | string | No| No| BSSID of the hotspot, for example, **00:11:22:33:44:55**.|
+| rssi | number | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
+| band | number | No| No| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
+| linkSpeed | number | No| No| Speed of the WLAN AP, in Mbit/s.|
+| frequency | number | No| No| Frequency of the WLAN AP.|
+| isHidden | boolean | No| No| Whether to hide the WLAN AP. The value **true** indicates that the network is hidden, and the value **false** indicates the opposite.|
+| isRestricted | boolean | No| No| Whether to restrict data volume at the WLAN AP. The value **true** means to restrict data volume at the WLAN AP, and the value **false** indicates the opposite.|
+| macAddress | string | No| No| MAC address of the device.|
+| ipAddress | number | No| No| IP address of the device that sets up the WLAN connection.|
+| connState | [ConnState](#connstatedeprecated) | No| No| WLAN connection state.|
 
 
-## ConnState
+## ConnState<sup>(deprecated)</sup>
 
 Enumerates the WLAN connection states.
+
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [ConnState](js-apis-wifiManager.md#connstate) instead.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -544,11 +589,15 @@ Enumerates the WLAN connection states.
 | UNKNOWN | 7 | Failed to set up the WLAN connection.|
 
 
-## wifi.isConnected<sup>7+</sup>
+## wifi.isConnected<sup>(deprecated)</sup>
 
 isConnected(): boolean
 
 Checks whether the WLAN is connected.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.isConnected](js-apis-wifiManager.md#wifimanagerisconnected) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -556,17 +605,20 @@ Checks whether the WLAN is connected.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the WLAN is connected; returns **false** otherwise.|
 
 
-
-## wifi.isFeatureSupported<sup>7+</sup>
+## wifi.isFeatureSupported<sup>(deprecated)</sup>
 
 isFeatureSupported(featureId: number): boolean
 
 Checks whether the device supports the specified WLAN feature.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.isFeatureSupported](js-apis-wifiManager.md#wifimanagerisfeaturesupported) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -575,13 +627,13 @@ Checks whether the device supports the specified WLAN feature.
 **Parameters**
 
 
-  | **Name**| **Type**| Mandatory| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | featureId | number | Yes| Feature ID.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the feature is supported; returns **false** otherwise.|
 
@@ -600,11 +652,15 @@ try {
 ```
 
 
-## wifi.getIpInfo<sup>7+</sup>
+## wifi.getIpInfo<sup>(deprecated)</sup>
 
 getIpInfo(): IpInfo
 
 Obtains IP information.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.getIpInfo](js-apis-wifiManager.md#wifimanagergetipinfo) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -612,9 +668,9 @@ Obtains IP information.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
-  | [IpInfo](#ipinfo7) | IP information obtained.|
+  | [IpInfo](#ipinfodeprecated) | IP information obtained.|
 
 **Example**
 ```ts
@@ -628,28 +684,36 @@ try {
 }
 ```
 
-## IpInfo<sup>7+</sup>
+## IpInfo<sup>(deprecated)</sup>
 
-Represents IP information.
+IP information obtained.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.getIpInfo](js-apis-wifiManager.md#wifimanagergetipinfo) instead.
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Core
 
-| **Name**| **Type**| **Readable**| **Writable**| **Description**|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | Yes| No| IP address.|
-| gateway | number | Yes| No| Gateway.|
-| netmask | number | Yes| No| Subnet mask.|
-| primaryDns | number | Yes| No| IP address of the preferred DNS server.|
-| secondDns | number | Yes| No| IP address of the alternate DNS server.|
-| serverIp | number | Yes| No| IP address of the DHCP server.|
-| leaseDuration | number | Yes| No| Lease duration of the IP address.|
+| ipAddress | number | No| No| IP address.|
+| gateway | number | No| No| Gateway.|
+| netmask | number | No| No| Subnet mask.|
+| primaryDns | number | No| No| IP address of the preferred DNS server.|
+| secondDns | number | No| No| IP address of the alternate DNS server.|
+| serverIp | number | No| No| IP address of the DHCP server.|
+| leaseDuration | number | No| No| Lease duration of the IP address.|
 
 
-## wifi.getCountryCode<sup>7+</sup>
+## wifi.getCountryCode<sup>(deprecated)</sup>
 
 getCountryCode(): string
 
 Obtains the country code.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.getCountryCode](js-apis-wifiManager.md#wifimanagergetcountrycode) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -657,7 +721,7 @@ Obtains the country code.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | string | Country code obtained.|
 
@@ -674,11 +738,15 @@ try {
 ```
 
 
-## wifi.getP2pLinkedInfo<sup>8+</sup>
+## wifi.getP2pLinkedInfo<sup>(deprecated)</sup>
 
 getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
-Obtains P2P link information. This API uses a promise to return the result.
+Obtains P2P connection information. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.getP2pLinkedInfo](js-apis-wifiManager.md#wifimanagergetp2plinkedinfo) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -688,26 +756,34 @@ Obtains P2P link information. This API uses a promise to return the result.
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo8)&gt; | Promise used to return the P2P link information.|
+  | Promise&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Promise used to return the P2P link information.|
 
 
 
-## WifiP2pLinkedInfo<sup>8+</sup>
+## WifiP2pLinkedInfo<sup>(deprecated)</sup>
 
-Represents the P2P link information obtained.
+Represents the WLAN connection information.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [WifiP2pLinkedInfo](js-apis-wifiManager.md#wifip2plinkedinfo) instead.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| connectState | [P2pConnectState](#p2pconnectstate8) | Yes| No| P2P connection state.|
-| isGroupOwner | boolean | Yes| No| Whether the device is the group owner.|
-| groupOwnerAddr | string | Yes| No| MAC address of the group.
+| connectState | [P2pConnectState](#p2pconnectstatedeprecated) | No| No| P2P connection state.|
+| isGroupOwner | boolean | No| No| Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.|
+| groupOwnerAddr | string | No| No| MAC address of the group.|
 
 
-## P2pConnectState<sup>8+</sup>
+## P2pConnectState<sup>(deprecated)</sup>
 
 Enumerates the P2P connection states.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [P2pConnectState](js-apis-wifiManager.md#p2pconnectstate) instead.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
@@ -717,11 +793,15 @@ Enumerates the P2P connection states.
 | CONNECTED | 1 | Connected.|
 
 
-## wifi.getP2pLinkedInfo<sup>8+</sup>
+## wifi.getP2pLinkedInfo<sup>(deprecated)</sup>
 
 getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
-Obtains P2P link information. This API uses an asynchronous callback to return the result.
+Obtains P2P connection information. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.getP2pLinkedInfo](js-apis-wifiManager.md#wifimanagergetp2plinkedinfo-1) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -731,7 +811,7 @@ Obtains P2P link information. This API uses an asynchronous callback to return t
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo8)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the P2P link information. If **err** is not **0**, an error has occurred.|
+  | callback | AsyncCallback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the P2P link information. If **err** is not **0**, an error has occurred.|
 
 **Example**
 ```ts
@@ -750,11 +830,15 @@ wifi.getP2pLinkedInfo().then(data => {
 });
 ```
 
-## wifi.getCurrentGroup<sup>8+</sup>
+## wifi.getCurrentGroup<sup>(deprecated)</sup>
 
 getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
 Obtains the current P2P group information. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.getCurrentGroup](js-apis-wifiManager.md#wifimanagergetcurrentgroup) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -764,14 +848,18 @@ Obtains the current P2P group information. This API uses a promise to return the
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[WifiP2pGroupInfo](#wifip2pgroupinfo8)&gt; | Promise used to return the P2P group information obtained.|
+  | Promise&lt;[WifiP2pGroupInfo](#wifip2pgroupinfodeprecated)&gt; | Promise used to return the P2P group information obtained.|
 
 
-## wifi.getCurrentGroup<sup>8+</sup>
+## wifi.getCurrentGroup<sup>(deprecated)</sup>
 
 getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
 Obtains the current P2P group information. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.getCurrentGroup](js-apis-wifiManager.md#wifimanagergetcurrentgroup-1) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -781,7 +869,7 @@ Obtains the current P2P group information. This API uses an asynchronous callbac
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfo8)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the group information obtained. If **err** is not **0**, an error has occurred.|
+  | callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfodeprecated)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the group information obtained. If **err** is not **0**, an error has occurred.|
 
 **Example**
 ```ts
@@ -800,11 +888,15 @@ wifi.getCurrentGroup().then(data => {
 });
 ```
 
-## wifi.getP2pPeerDevices<sup>8+</sup>
+## wifi.getP2pPeerDevices<sup>(deprecated)</sup>
 
 getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
-Obtains the peer device list in the P2P connection. This API uses a promise to return the result.
+Obtains the P2P peer device list. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.getP2pPeerDevices](js-apis-wifiManager.md#wifimanagergetp2ppeerdevices) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -814,14 +906,18 @@ Obtains the peer device list in the P2P connection. This API uses a promise to r
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[WifiP2pDevice[]](#wifip2pdevice8)&gt; | Promise used to return the peer device list.|
+  | Promise&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | Promise used to return the peer device list.|
 
 
-## wifi.getP2pPeerDevices<sup>8+</sup>
+## wifi.getP2pPeerDevices<sup>(deprecated)</sup>
 
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
-Obtains the peer device list in the P2P connection. This API uses an asynchronous callback to return the result.
+Obtains the P2P peer device list. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.getP2pPeerDevices](js-apis-wifiManager.md#wifimanagergetp2ppeerdevices-1) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -831,7 +927,7 @@ Obtains the peer device list in the P2P connection. This API uses an asynchronou
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pDevice[]](#wifip2pdevice8)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the peer device list obtained. If **err** is not **0**, an error has occurred.|
+  | callback | AsyncCallback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the peer device list obtained. If **err** is not **0**, an error has occurred.|
 
 **Example**
 ```ts
@@ -850,24 +946,32 @@ wifi.getP2pPeerDevices().then(data => {
 });
 ```
 
-## WifiP2pDevice<sup>8+</sup>
+## WifiP2pDevice<sup>(deprecated)</sup>
 
 Represents the P2P device information.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [WifiP2pDevice](js-apis-wifiManager.md#wifip2pdevice) instead.
+
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| deviceName | string | Yes| No| Device name.|
-| deviceAddress | string | Yes| No| MAC address of the device.|
-| primaryDeviceType | string | Yes| No| Type of the primary device.|
-| deviceStatus | [P2pDeviceStatus](#p2pdevicestatus8) | Yes| No| Device status.|
-| groupCapabilitys | number | Yes| No| Group capabilities.|
+| deviceName | string | No| No| Device name.|
+| deviceAddress | string | No| No| MAC address of the device.|
+| primaryDeviceType | string | No| No| Type of the primary device.|
+| deviceStatus | [P2pDeviceStatus](#p2pdevicestatusdeprecated) | No| No| Device status.|
+| groupCapabilitys | number | No| No| Group capabilities.|
 
 
-## P2pDeviceStatus<sup>8+</sup>
+## P2pDeviceStatus<sup>(deprecated)</sup>
 
 Enumerates the P2P device states.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [P2pDeviceStatus](js-apis-wifiManager.md#p2pdevicestatus) instead.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
@@ -880,11 +984,15 @@ Enumerates the P2P device states.
 | UNAVAILABLE | 4 | Unavailable.|
 
 
-## wifi.createGroup<sup>8+</sup>
+## wifi.createGroup<sup>(deprecated)</sup>
 
 createGroup(config: WifiP2PConfig): boolean
 
 Creates a P2P group.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.createGroup](js-apis-wifiManager.md#wifimanagercreategroup) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -892,9 +1000,9 @@ Creates a P2P group.
 
 **Parameters**
 
-  | **Name**| **Type**| Mandatory| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiP2PConfig](#wifip2pconfig8) | Yes| Group configuration.|
+  | config | [WifiP2PConfig](#wifip2pconfigdeprecated) | Yes| Group configuration.|
 
 **Return value**
 
@@ -921,24 +1029,32 @@ try {
 }
 ```
 
-## WifiP2PConfig<sup>8+</sup>
+## WifiP2PConfig<sup>(deprecated)</sup>
 
 Represents P2P group configuration.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [WifiP2PConfig](js-apis-wifiManager.md#wifip2pconfig) instead.
+
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| deviceAddress | string | Yes| No| Device address.|
-| netId | number | Yes| No| Network ID. The value **-1** indicates a temporary group, and **-2** indicates a persistent group.|
-| passphrase | string | Yes| No| Passphrase of the group.|
-| groupName | string | Yes| No| Group name.|
-| goBand | [GroupOwnerBand](#groupownerband8) | Yes| No| Frequency band of the group.|
+| deviceAddress | string | No| No| Device address.|
+| netId | number | No| No| Network ID. The value **-1** indicates a temporary group, and **-2** indicates a persistent group.|
+| passphrase | string | No| No| Passphrase of the group.|
+| groupName | string | No| No| Group name.|
+| goBand | [GroupOwnerBand](#groupownerbanddeprecated) | No| No| Frequency band of the group.|
 
 
-## GroupOwnerBand<sup>8+</sup>
+## GroupOwnerBand<sup>(deprecated)</sup>
 
 Enumerates the P2P group frequency bands.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [GroupOwnerBand](js-apis-wifiManager.md#groupownerband) instead.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
@@ -949,11 +1065,15 @@ Enumerates the P2P group frequency bands.
 | GO_BAND_5GHZ | 2 | 5 GHz.|
 
 
-## wifi.removeGroup<sup>8+</sup>
+## wifi.removeGroup<sup>(deprecated)</sup>
 
 removeGroup(): boolean
 
 Removes this P2P group.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.removeGroup](js-apis-wifiManager.md#wifimanagerremovegroup) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -976,11 +1096,15 @@ try {
 }
 ```
 
-## wifi.p2pConnect<sup>8+</sup>
+## wifi.p2pConnect<sup>(deprecated)</sup>
 
 p2pConnect(config: WifiP2PConfig): boolean
 
 Sets up a P2P connection.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.p2pConnect](js-apis-wifiManager.md#wifimanagerp2pconnect) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -989,9 +1113,9 @@ Sets up a P2P connection.
 **Parameters**
 
 
-  | **Name**| **Type**| Mandatory| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiP2PConfig](#wifip2pconfig8) | Yes| P2P group configuration.|
+  | config | [WifiP2PConfig](#wifip2pconfigdeprecated) | Yes| P2P group configuration.|
 
 **Return value**
 
@@ -1023,7 +1147,7 @@ wifi.on("p2pDeviceChange", recvP2pDeviceChangeFunc);
 
 let recvP2pPeerDeviceChangeFunc = (result:wifi.WifiP2pDevice[]) => {
     console.info("p2p peer device change receive event: " + JSON.stringify(result));
-    wifi.getP2pPeerDevices((err, data:wifi.WifiP2pDevice) => {
+    wifi.getP2pPeerDevices((err, data:wifi.WifiP2pDevice[]) => {
         if (err) {
             console.error('failed to get peer devices: ' + JSON.stringify(err));
             return;
@@ -1067,11 +1191,15 @@ setTimeout(() => {wifi.off("p2pPersistentGroupChange", recvP2pPersistentGroupCha
 console.info("start discover devices -> " + wifi.startDiscoverDevices());
 ```
 
-## wifi.p2pCancelConnect<sup>8+</sup>
+## wifi.p2pCancelConnect<sup>(deprecated)</sup>
 
 p2pCancelConnect(): boolean
 
 Cancels this P2P connection.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.p2pCancelConnect](js-apis-wifiManager.md#wifimanagerp2pcancelconnect) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1094,11 +1222,15 @@ try {
 }
 ```
 
-## wifi.startDiscoverDevices<sup>8+</sup>
+## wifi.startDiscoverDevices<sup>(deprecated)</sup>
 
 startDiscoverDevices(): boolean
 
 Starts to discover devices.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.startDiscoverDevices](js-apis-wifiManager.md#wifimanagerstartdiscoverdevices) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -1121,11 +1253,15 @@ try {
 }
 ```
 
-## wifi.stopDiscoverDevices<sup>8+</sup>
+## wifi.stopDiscoverDevices<sup>(deprecated)</sup>
 
 stopDiscoverDevices(): boolean
 
 Stops discovering devices.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.stopDiscoverDevices](js-apis-wifiManager.md#wifimanagerstopdiscoverdevices) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1135,7 +1271,7 @@ Stops discovering devices.
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | **true** if the operation is successful; **false** otherwise.|
 
 **Example**
 ```ts
@@ -1148,31 +1284,39 @@ try {
 }
 ```
 
-## WifiP2pGroupInfo<sup>8+</sup>
+## WifiP2pGroupInfo<sup>(deprecated)</sup>
 
 Represents the P2P group information.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo) instead.
+
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| isP2pGo | boolean | Yes| No| Whether the device is the group owner.|
-| ownerInfo | [WifiP2pDevice](#wifip2pdevice8) | Yes| No| Device information of the group.|
-| passphrase | string | Yes| No| Passphrase of the group.|
-| interface | string | Yes| No| Interface name.|
-| groupName | string | Yes| No| Group name.|
-| networkId | number | Yes| No| Network ID.|
-| frequency | number | Yes| No| Frequency of the group.|
-| clientDevices | [WifiP2pDevice[]](#wifip2pdevice8) | Yes| No| List of connected devices.|
-| goIpAddress | string | Yes| No| IP address of the group.|
+| isP2pGo | boolean | No| No| Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.|
+| ownerInfo | [WifiP2pDevice](#wifip2pdevicedeprecated) | No| No| Device information of the group.|
+| passphrase | string | No| No| Passphrase of the group.|
+| interface | string | No| No| Interface name.|
+| groupName | string | No| No| Group name.|
+| networkId | number | No| No| Network ID.|
+| frequency | number | No| No| Frequency of the group.|
+| clientDevices | [WifiP2pDevice[]](#wifip2pdevicedeprecated) | No| No| List of connected devices.|
+| goIpAddress | string | No| No| IP address of the group.|
 
 
 
-## wifi.on('wifiStateChange')<sup>7+</sup>
+## wifi.on('wifiStateChange')<sup>(deprecated)</sup>
 
 on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to WLAN state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronwifistatechange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1180,14 +1324,14 @@ Subscribes to WLAN state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **WLAN states** 
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Deactivated|
 | 1 | Activated|
@@ -1195,11 +1339,15 @@ Subscribes to WLAN state changes.
 | 3 | Deactivating|
 
 
-## wifi.off('wifiStateChange')<sup>7+</sup>
+## wifi.off('wifiStateChange')<sup>(deprecated)</sup>
 
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from WLAN state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffwifistatechange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1207,7 +1355,7 @@ Unsubscribes from WLAN state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1228,36 +1376,44 @@ wifi.off("wifiStateChange", recvPowerNotifyFunc);
 ```
 
 
-## wifi.on('wifiConnectionChange')<sup>7+</sup>
+## wifi.on('wifiConnectionChange')<sup>(deprecated)</sup>
 
 on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to WLAN connection state changes.
 
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronwificonnectionchange) instead.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN connection state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **WLAN connection states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Disconnected.|
 | 1 | Connected.|
 
 
-## wifi.off('wifiConnectionChange')<sup>7+</sup>
+## wifi.off('wifiConnectionChange')<sup>(deprecated)</sup>
 
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from WLAN connection state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffwificonnectionchange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1265,7 +1421,7 @@ Unsubscribes from WLAN connection state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1285,36 +1441,44 @@ wifi.on("wifiConnectionChange", recvWifiConnectionChangeFunc);
 wifi.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
 ```
 
-## wifi.on('wifiScanStateChange')<sup>7+</sup>
+## wifi.on('wifiScanStateChange')<sup>(deprecated)</sup>
 
 on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to WLAN scan state changes.
 
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronwifiscanstatechange) instead.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN scan state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **WLAN scan states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Scan failed.|
 | 1 | Scan successful.|
 
 
-## wifi.off('wifiScanStateChange')<sup>7+</sup>
+## wifi.off('wifiScanStateChange')<sup>(deprecated)</sup>
 
 off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from WLAN scan state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffwifiscanstatechange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1322,7 +1486,7 @@ Unsubscribes from WLAN scan state changes.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
 | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1342,29 +1506,37 @@ wifi.on("wifiScanStateChange", recvWifiScanStateChangeFunc);
 wifi.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
 ```
 
-## wifi.on('wifiRssiChange')<sup>7+</sup>
+## wifi.on('wifiRssiChange')<sup>(deprecated)</sup>
 
 on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to RSSI changes.
 
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronwifirssichange) instead.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiRssiChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the RSSI, in dBm.|
 
 
-## wifi.off('wifiRssiChange')<sup>7+</sup>
+## wifi.off('wifiRssiChange')<sup>(deprecated)</sup>
 
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from RSSI changes.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffwifirssichange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1372,7 +1544,7 @@ Unsubscribes from RSSI changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiRssiChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1394,11 +1566,15 @@ wifi.off("wifiRssiChange", recvWifiRssiChangeFunc);
 ```
 
 
-## wifi.on('hotspotStateChange')<sup>7+</sup>
+## wifi.on('hotspotStateChange')<sup>(deprecated)</sup>
 
 on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to hotspot state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronhotspotstatechange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1406,14 +1582,14 @@ Subscribes to hotspot state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the hotspot state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **Hotspot states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Deactivated|
 | 1 | Activated|
@@ -1435,11 +1611,15 @@ wifi.on("hotspotStateChange", recvHotspotStateChangeFunc);
 wifi.off("hotspotStateChange", recvHotspotStateChangeFunc);
 ```
 
-## wifi.off('hotspotStateChange')<sup>7+</sup>
+## wifi.off('hotspotStateChange')<sup>(deprecated)</sup>
 
 off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from hotspot state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffhotspotstatechange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1447,18 +1627,22 @@ Unsubscribes from hotspot state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
 
 
 
-## wifi.on('p2pStateChange')<sup>8+</sup>
+## wifi.on('p2pStateChange')<sup>(deprecated)</sup>
 
 on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to P2P state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pstatechange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1466,14 +1650,14 @@ Subscribes to P2P state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **P2P states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 1 | Available|
 | 2 | Opening|
@@ -1481,11 +1665,15 @@ Subscribes to P2P state changes.
 | 4 | Closing|
 | 5 | Closed|
 
-## wifi.off('p2pStateChange')<sup>8+</sup>
+## wifi.off('p2pStateChange')<sup>(deprecated)</sup>
 
 off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from P2P state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pstatechange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1493,7 +1681,7 @@ Unsubscribes from P2P state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1513,40 +1701,48 @@ wifi.on("p2pStateChange", recvP2pStateChangeFunc);
 wifi.off("p2pStateChange", recvP2pStateChangeFunc);
 ```
 
-## wifi.on('p2pConnectionChange')<sup>8+</sup>
+## wifi.on('p2pConnectionChange')<sup>(deprecated)</sup>
 
 on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 Subscribes to P2P connection state changes.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pconnectionchange) instead.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo8)&gt; | Yes| Callback used to return the P2P connection state.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Yes| Callback for status changes.|
 
 
-## wifi.off('p2pConnectionChange')<sup>8+</sup>
+## wifi.off('p2pConnectionChange')<sup>(deprecated)</sup>
 
 off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 Unsubscribes from P2P connection state changes.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pconnectionchange) instead.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo8)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
 
 **Example**
 ```ts
@@ -1563,11 +1759,15 @@ wifi.on("p2pConnectionChange", recvP2pConnectionChangeFunc);
 wifi.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
 ```
 
-## wifi.on('p2pDeviceChange')<sup>8+</sup>
+## wifi.on('p2pDeviceChange')<sup>(deprecated)</sup>
 
 on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
 Subscribes to P2P device state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pdevicechange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -1575,17 +1775,21 @@ Subscribes to P2P device state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice8)&gt; | Yes| Callback used to return the P2P device state.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)&gt; | Yes| Callback for status changes.|
 
 
-## wifi.off('p2pDeviceChange')<sup>8+</sup>
+## wifi.off('p2pDeviceChange')<sup>(deprecated)</sup>
 
 off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 Unsubscribes from P2P device state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pdevicechange) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -1593,10 +1797,10 @@ Unsubscribes from P2P device state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice8)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
 
 **Example**
 ```ts
@@ -1613,11 +1817,15 @@ wifi.on("p2pDeviceChange", recvP2pDeviceChangeFunc);
 wifi.off("p2pDeviceChange", recvP2pDeviceChangeFunc);
 ```
 
-## wifi.on('p2pPeerDeviceChange')<sup>8+</sup>
+## wifi.on('p2pPeerDeviceChange')<sup>(deprecated)</sup>
 
 on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
 Subscribes to P2P peer device state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2ppeerdevicechange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -1625,17 +1833,21 @@ Subscribes to P2P peer device state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice8)&gt; | Yes| Callback used to return the P2P peer device state.|
+  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | Yes| Callback for status changes.|
 
 
-## wifi.off('p2pPeerDeviceChange')<sup>8+</sup>
+## wifi.off('p2pPeerDeviceChange')<sup>(deprecated)</sup>
 
 off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
 Unsubscribes from P2P peer device state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2ppeerdevicechange) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -1643,10 +1855,10 @@ Unsubscribes from P2P peer device state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice8)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
+  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
 
 **Example**
 ```ts
@@ -1663,37 +1875,45 @@ wifi.on("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
 wifi.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
 ```
 
-## wifi.on('p2pPersistentGroupChange')<sup>8+</sup>
+## wifi.on('p2pPersistentGroupChange')<sup>(deprecated)</sup>
 
 on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 Subscribes to P2P persistent group state changes.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2ppersistentgroupchange) instead.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
-  | callback | Callback&lt;void&gt; | Yes| Callback used to return the P2P persistent group state.|
+  | callback | Callback&lt;void&gt; | Yes| Callback for status changes.|
 
 
-## wifi.off('p2pPersistentGroupChange')<sup>8+</sup>
+## wifi.off('p2pPersistentGroupChange')<sup>(deprecated)</sup>
 
 off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 Unsubscribes from P2P persistent group state changes.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2ppersistentgroupchange) instead.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
   | callback | Callback&lt;void&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1714,36 +1934,44 @@ wifi.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
 
 ```
 
-## wifi.on('p2pDiscoveryChange')<sup>8+</sup>
+## wifi.on('p2pDiscoveryChange')<sup>(deprecated)</sup>
 
 on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to P2P device discovery state changes.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pdiscoverychange) instead.
+
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P device discovery state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **P2P discovered device states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Initial state.|
 | 1 | Discovered.|
 
 
-## wifi.off('p2pDiscoveryChange')<sup>8+</sup>
+## wifi.off('p2pDiscoveryChange')<sup>(deprecated)</sup>
 
 off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from P2P device discovery state changes.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pdiscoverychange) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -1751,7 +1979,7 @@ Unsubscribes from P2P device discovery state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|

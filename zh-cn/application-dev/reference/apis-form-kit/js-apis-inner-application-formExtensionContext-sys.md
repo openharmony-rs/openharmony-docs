@@ -1,4 +1,10 @@
 # FormExtensionContext (系统接口)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 
 FormExtensionContext模块是[FormExtensionAbility](js-apis-app-form-formExtensionAbility.md)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
@@ -9,8 +15,6 @@ FormExtensionContext模块提供FormExtensionAbility具有的接口和能力。
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 本模块接口仅可在Stage模型下使用。
 > 本模块接口为系统接口。
-
-
 
 ## 导入模块
 
@@ -28,6 +32,8 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
@@ -36,7 +42,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16500050 | IPC connection error. |
+| 16500050 | An IPC connection error happened. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 
@@ -57,7 +63,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行startAbility
-    console.log(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -68,9 +74,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     this.context.startAbility(want, (error: BusinessError) => {
       if (error) {
-        console.error(`FormExtensionContext startAbility, error:${JSON.stringify(error)}`);
+        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       } else {
-        console.log('FormExtensionContext startAbility success');
+        console.info('FormExtensionContext startAbility success');
       }
     });
   }
@@ -86,6 +92,8 @@ startAbility(want: Want): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -107,7 +115,7 @@ startAbility(want: Want): Promise&lt;void&gt;
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16500050 | IPC connection error. |
+| 16500050 | An IPC connection error happened. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 
@@ -121,7 +129,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行startAbility
-    console.log(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -147,7 +155,9 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 **系统能力：** SystemCapability.Ability.Form
 
-**系统接口：** 此接口为系统接口，三方应用不支持调用。
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -168,18 +178,18 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permissions denied.             |
+| 201      | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Can not start invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000011 | The context does not exist.        |
-| 16000050 | Internal error. |
 
 **示例：**
 
@@ -194,7 +204,7 @@ let commRemote: rpc.IRemoteObject | null = null;
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行connectServiceExtensionAbility
-    console.log(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -206,13 +216,13 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     let options: common.ConnectOptions = {
       onConnect(elementName, remote) {
         commRemote = remote; // remote 用于与ServiceExtensionAbility进行通信
-        console.log('----------- onConnect -----------');
+        console.info('----------- onConnect -----------');
       },
       onDisconnect(elementName) {
-        console.log('----------- onDisconnect -----------')
+        console.info('----------- onDisconnect -----------')
       },
       onFailed(code) {
-        console.error('----------- onFailed -----------')
+        console.error(`onFailed, code: ${code}`)
       }
     };
 
@@ -231,11 +241,13 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
-将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。
+将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空，使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
-**系统接口：** 此接口为系统接口，三方应用不支持调用。
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -251,7 +263,7 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16000011 | The context does not exist.        |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -263,6 +275,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // commRemote为onConnect回调内返回的remote对象，此处定义为null无任何实际意义，仅作示例
 let commRemote: rpc.IRemoteObject | null = null;
+
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 实际使用时，connection为connectServiceExtensionAbility中的返回值，此处定义为1无任何实际意义，仅作示例
@@ -277,7 +290,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
           return;
         }
         // 执行正常业务
-        console.log('disconnectServiceExtensionAbility succeed');
+        console.info('disconnectServiceExtensionAbility succeed');
       });
     } catch (paramError) {
       commRemote = null;
@@ -296,7 +309,9 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**系统接口：** 此接口为系统接口，三方应用不支持调用。
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -329,6 +344,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // commRemote为onConnect回调内返回的remote对象，此处定义为null无任何实际意义，仅作示例
 let commRemote: rpc.IRemoteObject | null = null;
+
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 实际使用时，connection为connectServiceExtensionAbility中的返回值，此处定义为1无任何实际意义，仅作示例
@@ -339,7 +355,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         .then(() => {
           commRemote = null;
           // 执行正常业务
-          console.log('disconnectServiceExtensionAbility succeed');
+          console.info('disconnectServiceExtensionAbility succeed');
         })
         .catch((error: BusinessError) => {
           commRemote = null;

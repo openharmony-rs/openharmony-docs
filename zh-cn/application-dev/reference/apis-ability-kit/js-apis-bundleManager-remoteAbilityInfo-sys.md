@@ -4,9 +4,9 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
-包含远程的ability信息，通过接口[distributedBundle.getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlegetremoteabilityinfo)获取。
+包含远程的ability信息，通过接口[distributedBundle.getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo)获取。
 
 > **说明：**
 >

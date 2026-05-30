@@ -1,18 +1,22 @@
 # ScsiPeripheral_RequestSenseRequest
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSenseRequest
+```
+
 ## Overview
 
-Defines the request structure of the **request sense** command.
+Defines the request structure of the **Request Sense** command.
 
 **Since**: 18
 
-**Related module**: [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

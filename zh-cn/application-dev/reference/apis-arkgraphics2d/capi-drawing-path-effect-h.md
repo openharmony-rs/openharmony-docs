@@ -1,4 +1,10 @@
 # drawing_path_effect.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -7,6 +13,8 @@
 **引用文件：** <native_drawing/drawing_path_effect.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -36,7 +44,7 @@
 
 ### OH_Drawing_PathDashStyle
 
-```
+```c
 enum OH_Drawing_PathDashStyle
 ```
 
@@ -57,7 +65,7 @@ enum OH_Drawing_PathDashStyle
 
 ### OH_Drawing_CreateComposePathEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreateComposePathEffect(OH_Drawing_PathEffect* outer, OH_Drawing_PathEffect* inner)
 ```
 
@@ -85,7 +93,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreateComposePathEffect(OH_Drawing_PathEffect*
 
 ### OH_Drawing_CreateCornerPathEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreateCornerPathEffect(float radius)
 ```
 
@@ -112,7 +120,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreateCornerPathEffect(float radius)
 
 ### OH_Drawing_CreateDashPathEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreateDashPathEffect(float* intervals, int count, float phase)
 ```
 
@@ -141,7 +149,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreateDashPathEffect(float* intervals, int cou
 
 ### OH_Drawing_CreateDiscretePathEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreateDiscretePathEffect(float segLength, float deviation)
 ```
 
@@ -169,7 +177,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreateDiscretePathEffect(float segLength, floa
 
 ### OH_Drawing_CreatePathDashEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreatePathDashEffect(const OH_Drawing_Path* path, float advance, float phase,OH_Drawing_PathDashStyle type)
 ```
 
@@ -199,7 +207,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreatePathDashEffect(const OH_Drawing_Path* pa
 
 ### OH_Drawing_CreateSumPathEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreateSumPathEffect(OH_Drawing_PathEffect* firstPathEffect,OH_Drawing_PathEffect* secondPathEffect)
 ```
 
@@ -227,7 +235,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreateSumPathEffect(OH_Drawing_PathEffect* fir
 
 ### OH_Drawing_PathEffectDestroy()
 
-```
+```c
 void OH_Drawing_PathEffectDestroy(OH_Drawing_PathEffect* pathEffect)
 ```
 

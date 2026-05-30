@@ -3,9 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 查不到已通过HiAppEvent订阅的事件内容
 
@@ -93,45 +93,72 @@ external_log日志文件所在目录的空间已达到上限，但无法删除ex
 
 **解决措施**
 
-- 开发者如果有权限访问设备的/data/app目录，可以手动删除external_log日志文件。文件目录为
-  /data/app/el2/100/log/应用包名/hiappevent（或resourcelimit或watchdog）。
+- 开发者如果有权限访问设备的“/data/app/el2/100/log/应用包名”目录，可以手动删除external_log日志文件。文件目录为/data/app/el2/100/log/应用包名/hiappevent（或resourcelimit或watchdog）。
 
-- 开发者若没有权限访问设备的/data/app目录，可以在应用代码中删除external_log日志文件。代码示例如下。文件删除接口可以参考[fs.unlink](../reference/apis-core-file-kit/js-apis-file-fs.md#fsunlink)。
+- 开发者若没有权限访问设备的“/data/app/el2/100/log/应用包名”目录，可以在应用代码中删除external_log日志文件。代码示例如下。文件删除接口可以参考[fileIo.unlink](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiounlink)。
 
 **代码示例**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
 
-if (eventInfo.params['external_log'] != undefined) {
-  for (let index = 0; index < eventInfo.params['external_log'].length; ++index) {
-    let externalLog: string = eventInfo.params['external_log'][index];
-    hilog.info(0x0000, 'testTag', `externalLog=${externalLog}`);
-    // 验证访问权限：
-    let res = fs.accessSync(externalLog);
-    if (res) {
-      hilog.info(0x0000, 'testTag', `HiAppEvent file exists`);
-    } else {
-      hilog.error(0x0000, 'testTag', `HiAppEvent file does not exist`);
+  hiAppEvent.addWatcher({
+    // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+    name: "AppCrashWatcher",
+    // 订阅过滤条件，这里是订阅了系统事件中的崩溃事件
+    appEventFilters: [
+      {
+        domain: hiAppEvent.domain.OS,
+        names: [hiAppEvent.event.APP_CRASH]
+      }
+    ],
+    // 实现onReceive回调，监听到事件后实时回调
+    onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+      hilog.info(0x0000, 'testTag', `domain=${domain}`);
+      for (const eventGroup of appEventGroups) {
+        hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
+        for (const eventInfo of eventGroup.appEventInfos) {
+          // 开发者可以获取到崩溃事件发生的时间戳
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${JSON.stringify(eventInfo.params['time'])}`);
+          // 开发者可以获取到崩溃应用的包名
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${JSON.stringify(eventInfo.params['bundle_name'])}`);
+          // 开发者可以获取到崩溃事件发生时的故障日志文件
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
+
+          if (eventInfo.params['external_log'] != undefined) {
+            for (let index = 0; index < eventInfo.params['external_log'].length; ++index) {
+              let externalLog: string = eventInfo.params['external_log'][index];
+              hilog.info(0x0000, 'testTag', `externalLog=${externalLog}`);
+              // 验证访问权限：
+              let res = fileIo.accessSync(externalLog);
+              if (res) {
+                hilog.info(0x0000, 'testTag', `HiAppEvent file exists`);
+              } else {
+                hilog.error(0x0000, 'testTag', `HiAppEvent file does not exist`);
+              }
+              // 验证读写权限：
+              fileIo.open(externalLog, fileIo.OpenMode.READ_WRITE).then((file: fileIo.File) => {
+              hilog.info(0x0000, 'testTag', `HiAppEvent file=${externalLog} fd=${file.fd}`);
+              fileIo.closeSync(file);
+              }).catch((err: BusinessError) => {
+                hilog.info(0x0000, 'testTag',
+                `HiAppEvent open file=${externalLog} failed with error message=${err.message}, error code=${err.code}`);
+              });
+              // 删除external_log日志文件：
+              fileIo.unlink(externalLog).then(() => {
+                console.info("HiAppEvent remove file:" + externalLog + " succeed");
+              }).catch((err: BusinessError) => {
+                console.error("HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +
+                ", error code: " + err.code);
+              });
+            }
+          }
+        }
+      }
     }
-    // 验证读写权限：
-    fs.open(externalLog, fs.OpenMode.READ_WRITE).then((file: fs.File) => {
-      hilog.info(0x0000, 'testTag', `HiAppEvent file=${externalLog} fd=${file.fd}`);
-      fs.closeSync(file);
-    }).catch((err: BusinessError) => {
-      hilog.info(0x0000, 'testTag',
-        `HiAppEvent open file=${externalLog} failed with error message=${err.message}, error code=${err.code}`);
-    });
-    // 删除external_log日志文件：
-    fs.unlink(externalLog).then(() => {
-      console.info("HiAppEvent remove file:" + externalLog + " succeed");
-    }).catch((err: BusinessError) => {
-      console.error("HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +
-        ", error code: " + err.code);
-    });
-  }
-}
+  });
 ```
 
 访问及删除external_log日志文件的日志：

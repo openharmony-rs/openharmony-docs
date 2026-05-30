@@ -12,11 +12,11 @@ When **OH_Usb_SendPipeRequest** or **OH_Usb_SendPipeRequestWithAshmem** is calle
 
 **Change Impact**
 
-This change does not require application adaptation.
+The error code **USB_DDK_INVALID_PARAMETER** defined by the API will be thrown in the given situation. You can determine whether to capture the error code based on the actual situation.
 
 Before change: If data transfer is interrupted because incorrect parameters are passed to **OH_Usb_SendPipeRequest** or **OH_Usb_SendPipeRequestWithAshmem**, the API call fails but no error is reported.
 
-After change: If data transfer is interrupted because incorrect parameters are passed to **OH_Usb_SendPipeRequest** or **OH_Usb_SendPipeRequestWithAshmem**, the API call fails and an error is reported.
+After change: If data transfer is interrupted because incorrect parameters are passed to **OH_Usb_SendPipeRequest** or **OH_Usb_SendPipeRequestWithAshmem**, the API call fails and the error code **USB_DDK_INVALID_PARAMETER** is reported.
 
 **Start API Level**
 
@@ -26,15 +26,15 @@ SendPipeRequestWithAshmem: API version 12
 
 **Change Since**
 
-OpenHarmony 6.0.0.32.
+OpenHarmony SDK 6.0.0.32
 
 **Key API/Component Changes**
 
-drivers/external_device_manager: OH_Usb_SendPipeRequest and OH_Usb_SendPipeRequestWithAshmem
+**OH_Usb_SendPipeRequest** and **OH_Usb_SendPipeRequestWithAshmem**
 
 **Adaptation Guide**
 
-The API functions remain unchanged as long as correct parameters are passed to **OH_Usb_SendPipeRequest** and **OH_Usb_SendPipeRequestWithAshmem**. Therefore, adaptation is not required.
+The API functionality remains unchanged as long as correct parameters are passed in. If invalid parameters are passed in, the error code **USB_DDK_INVALID_PARAMETER** defined by the API will be thrown in the given situation. You can determine whether to capture the error code based on the actual situation.
 
 Sample code:
 
@@ -127,5 +127,9 @@ Sample code:
     pipe.endpoint = endpoint;
     pipe.timeout = UINT32_MAX;
     int32_t returnValue = OH_Usb_SendPipeRequestWithAshmem(&pipe, ashmem);
+    if (returnValue == USB_DDK_INVALID_PARAMETER) {
+        // Add the service logic for processing the error code USB_DDK_INVALID_PARAMETER.
+        ...
+    }
     ...
 ```

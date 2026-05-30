@@ -4,13 +4,15 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 <!--Del-->
 - 快速入门<!--quick-start-->
   - [开发准备](start-overview.md)
   - [构建第一个ArkTS应用（Stage模型）](start-with-ets-stage.md)
 <!--DelEnd-->
+<!--RP1-->
+<!--RP1End-->
 - 开发基础知识<!--development-fundamentals-->
   - 应用程序包基础知识<!--application-package-fundamentals-->
     - [应用程序包概述](application-package-overview.md)
@@ -23,7 +25,7 @@
       - [HSP](in-app-hsp.md)
     - 应用程序包安装卸载与更新<!--application-package-install-->
       - [应用安装卸载与更新开发指导](application-package-install-uninstall.md)
-      - [应用安装与更新一致性校验](multi_module_installation_update_consistency_verification.md)
+      - [应用安装与更新一致性校验](install-and-update-consistency-verification.md)
   - 应用配置文件（Stage模型）<!--application-configuration-file-stage-->
     - [应用配置文件概述（Stage模型）](application-configuration-file-overview-stage.md)
     - [app.json5配置文件](app-configuration-file.md)
@@ -34,15 +36,15 @@
     - [deviceConfig内部结构](deviceconfig-structure.md)
     - [module对象内部结构](module-structure.md)
   - 典型场景的开发指导<!--application-typical-scenarios-->
-    - [集成态HSP](integrated-hsp.md)
-    - [HAR转HSP指导](har-to-hsp.md)
-    - [HSP转HAR指导](hsp-to-har.md)
-    - [HAP转HAR指导](hap-to-har.md)
     - [创建应用静态快捷方式](typical-scenario-configuration.md)
     - [创建应用分身](app-clone.md)
     - [创建应用多实例](multiInstance.md)
     - [配置应用图标和名称](layered-image.md)
-  - [应用程序包常见问题](common_problem_of_application.md)
+    - [HAR转HSP指导](har-to-hsp.md)
+    - [HSP转HAR指导](hsp-to-har.md)
+    - [HAP转HAR指导](hap-to-har.md)
+    - [集成态HSP](integrated-hsp.md)
+  - [应用程序包常见问题](common-problem-of-application.md)
   - [应用程序包术语](application-package-glossary.md)
 - [资源分类与访问](resource-categories-and-access.md)
 - 学习ArkTS语言<!--learning-arkts-->
@@ -54,6 +56,8 @@
     - [从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md)
     - [适配指导案例](arkts-more-cases.md)
   - [ArkTS高性能编程实践](arkts-high-performance-programming.md)
-  - 面向其他语言的ArkTS迁移指导
+  - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
     - [从Java到ArkTS的迁移指导](getting-started-with-arkts-for-java-programmers.md)
     - [从Swift到ArkTS的迁移指导](getting-started-with-arkts-for-swift-programmers.md)
+<!--RP2-->
+<!--RP2End-->

@@ -1,5 +1,4 @@
 # Window Overview
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @Pakoo007-->
@@ -38,11 +37,11 @@ The Window module has the following features:
 
 ### Window Type
 
-The Window module provides system windows and application windows.
-- A **system window** implements specific functionalities of the system. Examples include the volume bar, wallpaper, notification panel, status bar, and navigation bar.
-- An **application window** is related to the application display. Based on the displayed content, application windows are further classified into main windows and child windows.
-  - A main window shows the application UI and appears on the task management page.
-  - A child window is an auxiliary window of an application, such as a dialog box and floating window. It is not displayed on the task management page. Its lifecycle follows that of the main window.
+Windows are classified into system windows and application windows.
+- A **system window** implements specific functionalities of the system. Examples include the volume bar, wallpaper, notification panel, status bar, and navigation bar. System windows are available only for system applications.
+- **Application windows**, which are different from system windows, are related to the display of application content. Depending on how they are managed and their purpose, application windows can be further divided into main windows and auxiliary windows.
+  - Main windows are created by default when a UIAbility is created and are displayed as an independent mission card on the mission management screen. They are used to show the main interface of the application's UIAbility.
+  - Auxiliary windows are managed, created, and destroyed by the application itself and are not displayed as an independent mission card on the mission management screen. They can be used to show auxiliary content of the application, such as pop-up windows. Auxiliary windows include child windows, global floating windows, modal windows, picture-in-picture, and floating ball windows.
 
 
 
@@ -58,6 +57,8 @@ The application window mode refers to the display mode of the main window when i
 
 
 ![windowMode](figures/windowMode.png)
+
+For details about the adaptation development guidance for the window mode, see [Window Mode](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-mode).
 
 
 ## Working Principles
@@ -116,7 +117,7 @@ The flow of lifecycle events for the application's main window is shown in the f
 If you need to detect changes in the lifecycle of the application's main window, you can use the following registration APIs to listen for these changes.
 
 - Before API version 20, you can call [on('windowStageEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageevent9) to register a listener for the WindowStage lifecycle changes and call [off('windowStageEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#offwindowstageevent9) to unregister the listener. This registration API does not ensure the order of lifecycle state transitions and is not recommended for use when the order of states matters.
-- From API version 20 onwards, you can call [on('windowStageLifecycleEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstagelifecycleevent20) to register a listener for the WindowStage lifecycle changes and call [off('windowStageLifecycleEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#offwindowstagelifecycleevent20) to unregister the listener. This registration API does not support listening for focus gain/loss states of the WindowStage. For such requirements, use [on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10). For applications requiring a specific order of lifecycle states, this API is recommended.
+- From API version 20 onwards, you can call [on('windowStageLifecycleEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#onwindowstagelifecycleevent20) to register a listener for the WindowStage lifecycle changes and call [off('windowStageLifecycleEvent')](../reference/apis-arkui/arkts-apis-window-WindowStage.md#offwindowstagelifecycleevent20) to unregister the listener. This registration API does not support listening for focus gain/loss states of the WindowStage. For such requirements, use [on('windowEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowevent10). For applications requiring a specific order of lifecycle states, this API is recommended.
 
 ### Differentiated Lifecycle Behaviors Across Different Devices
 
@@ -140,6 +141,4 @@ In the stage model, when the main window of an application moves from the foregr
 
 -  You cannot develop system windows in the FA model.
 
--  The application main window and child window have the following size limits: [320, 2560] in width and [240, 2560] in height, both in units of vp.
-
--  The system window has the following size limits: (0, 2560] in width and (0, 2560] in height, both in units of vp.
+-  The window size is restricted by [WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11), determined by product configurations. If [setWindowLimits](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11) has not been called, you can use [getWindowLimits](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimits11) to obtain the system's default limits, measured in px.

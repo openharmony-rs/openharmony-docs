@@ -2,10 +2,10 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @huchuyun-->
+<!--Adviser: @Brilliantry_Rui-->
 
 &lt;[list](js-lite-components-container-list.md)&gt;的子组件，用来展示列表具体item。
 

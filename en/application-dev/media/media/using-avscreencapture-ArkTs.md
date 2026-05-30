@@ -1,10 +1,10 @@
-# Using AVScreenCaptureRecorder to Record Screens and Save Them to Files (ArkTS)
+# Using AVScreenCaptureRecorder to Record Screens and Write Them to Files (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Screen capture is mainly used to record the main screen.
 
@@ -12,7 +12,7 @@ You can call the ArkTS APIs of the [AVScreenCaptureRecorder](media-kit-intro.md#
 
 The AVScreenCaptureRecorder, Window, and Graphics modules together implement the entire video capture process.
 
-The full screen capture process involves creating an AVScreenCaptureRecorder instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing resources.
+The full-screen capture process involves creating an AVScreenCaptureRecorder instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing resources.
 
 If you are in a call when screen capture starts or a call is coming during screen capture, screen capture automatically stops, and the **SCREENCAPTURE_STATE_STOPPED_BY_CALL** status is reported.
 
@@ -27,7 +27,8 @@ Before your development, configure the following permissions for your applicatio
 - To use the microphone, request the ohos.permission.MICROPHONE permission. For details about how to request user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 - To read images or videos, preferentially use the media library [Picker for access](../medialibrary/photoAccessHelper-photoviewpicker.md).
 - To save images or videos, preferentially use the [security component for storage](../medialibrary/photoAccessHelper-savebutton.md).
-
+- Starting from API version 22, when you perform screen capture for an application on a PC/2-in-1 device, you can request the ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK permission to maintain capture even when the screen is off but not locked. For details about the configuration, [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
+- Starting from API version 22, when you perform screen capture for an application on a PC/2-in-1 device, you can request the ohos.permission.CUSTOM_SCREEN_RECORDING permission to prevent the privacy protection pop-up from being displayed during screen capture. For details about how to request the permission, see [Requesting Restricted Permissions](../../security/AccessToken/restricted-permissions.md).
 > **NOTE**
 >
 > To clone, back up, or synchronize images and videos in users' public directory, request the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions for reading and writing audio files. For details, see <!--RP1-->[Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->.
@@ -40,8 +41,8 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
     ```javascript
     import { common } from '@kit.AbilityKit';
-    import media from '@ohos.multimedia.media';
-    import fs from '@ohos.file.fs';
+    import { media } from '@kit.MediaKit';
+    import { fileIo } from '@kit.CoreFileKit';
     ```
 
 2. Create the member variable **screenCapture** of the **AVScreenCaptureRecorder** type.
@@ -57,20 +58,20 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
     ```javascript
     this.screenCapture.on('stateChange', async (infoType: media.AVScreenCaptureStateCode) => {
-    	switch (infoType) {
+      switch (infoType) {
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STARTED:
-              	console.info("Callback invoked when screen capture starts");
-              	break;
+                console.info("Callback invoked when screen capture starts");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_CANCELED:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("Screen capture is not allowed.");
-              	break;
+                console.info("Screen capture is not allowed.");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_USER:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("Touch the button in the screen capture capsule to stop screen capture. Underlying capture will stop.");
-              	break;
+                console.info("Touch the button in the screen capture capsule to stop screen capture. Underlying capture will stop.");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER:
                 console.info("Screen capture stops due to other interruptions. Underlying capture will stop.");
                 break;
@@ -97,7 +98,7 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
                 console.info("Underlying capture will stop after the user account is changed.");
                 break;
             default:
-              	break;
+                break;
         }
     })
     this.screenCapture.on('error', (err) => {
@@ -118,7 +119,7 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
     ```javascript
     const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     let filePath: string = context.filesDir + '/screenCapture.mp4';
-    let captureFile: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
     if (!captureFile) {
       console.error("Handle exceptions.");
       return;
@@ -140,20 +141,20 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
     };
     ```
 
-5. Call **init()** to initialize the screenCapture instance based on the preset screen capture parameters.
+5. Call [init](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#init12) to initialize **screenCapture** based on the preconfigured screen recording parameters.
 
     ```javascript
     await this.screenCapture.init(this.captureConfig);
     ```
 
-6. Set the windows that will be skipped during screen capture, by entering the subwindow IDs and main window IDs. For details, see [Window API Reference](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties).
+6. Set the windows that will be skipped during screen capture, by entering the subwindow IDs and main window IDs. For details, see [WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties).
 
     ```javascript
     let windowIDs = [57, 86];
     await this.screenCapture.skipPrivacyMode(windowIDs);
     ```
 
-7. Call **startRecording()** to start screen capture and listen for state changes using the callback function.
+7. Call [startRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12) to start screen capture and use a listener to monitor state change events.
 
     ```javascript
     await this.screenCapture.startRecording();
@@ -161,15 +162,15 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
 8. Stop screen capture.
 
-    - When the user touches the stop button in the screen capture capsule to stop screen capture, the screenCapture instance triggers the **SCREENCAPTURE_STATE_STOPPED_BY_USER** callback to notify the application that the screen recording has stopped. The application does not need to call the **stopRecording()** API.
+    - After the user taps the stop button in the screen capture capsule to stop screen capture, the **screenCapture** instance triggers the **SCREENCAPTURE_STATE_STOPPED_BY_USER** callback to notify the application that screen capture has been stopped. You do not need to call the [stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12) method.
 
-    - The application proactively calls **stopRecording()** to stop screen capture.
+    - The application proactively calls [stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12) to stop screen capture.
 
       ```javascript
       await this.screenCapture.stopRecording();
       ```
 
-9. Call **release()** to release the instance.
+9. Call [release](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#release12) to release the instance.
 
     ```javascript
     await this.screenCapture.release();
@@ -177,29 +178,27 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
 ## Complete Sample Code
 
-Refer to the sample code below to implement captured file storage using **AVScreenCaptureRecorder**.
+The following is the complete sample code for capturing a screen and saving the screen data captured to a file using **AVScreenCaptureRecorder**.
 
 ```javascript
-import { common } from '@kit.AbilityKit';
-import media from '@ohos.multimedia.media';
-import fs from '@ohos.file.fs';
+import { media } from '@kit.MediaKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
-  private captureFile: fs.File | undefined = undefined;
+  private captureFile: fileIo.File | undefined = undefined;
   private captureConfig: media.AVScreenCaptureRecordConfig | undefined = undefined;
 
-  private openFile(): void {
-    const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    const path: string = context.filesDir + '/screenCapture.mp4'; // File sandbox path. The file name extension must match the container format.
-    this.captureFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  private openFile(context: Context): void {
+    const path: string = context.filesDir + '/screenCapture.mp4'; // File sandbox path. The file name extension must match the encapsulation format.
+    this.captureFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   }
 
   private closeFile(): void {
     if (!this.captureFile) {
       return;
     }
-    fs.closeSync(this.captureFile);
+    fileIo.closeSync(this.captureFile);
   }
 
   private setConfig(): void {
@@ -280,13 +279,13 @@ export class AVScreenCaptureDemo {
   }
 
   // Call startRecording to start screen capture. To stop screen capture, click the stop button in the screen capture capsule.
-  async startRecording(): Promise<void> {
+  async startRecording(context: Context): Promise<void> {
     this.screenCapture = await media.createAVScreenCaptureRecorder();
     if (!this.screenCapture) {
       // failed.
       return;
     }
-    this.openFile();
+    this.openFile(context);
     if (!this.captureFile) {
       console.error("Handle exceptions.");
       return;

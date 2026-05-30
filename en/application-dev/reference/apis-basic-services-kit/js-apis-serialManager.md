@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 This module provides the serial port management functions, including enabling and disabling the serial port of the device, writing and reading data, setting and obtaining the configuration parameters of the serial port, and managing permissions.
 
@@ -27,7 +27,7 @@ Obtains the serial port device list, including the device name and port number.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
-**Returns**
+**Return value**
 
 | Type                                       | Description         |
 |-------------------------------------------|-------------|
@@ -45,13 +45,15 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port device list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
+function getPortList() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 }
-let portId: number = portList[0].portId;
 ```
 
 ## serialManager.hasSerialRight
@@ -66,9 +68,9 @@ Checks whether the application has the permission to access the serial port devi
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
-**Returns**
+**Return value**
 
 | Type     | Description              |
 |---------|------------------|
@@ -76,9 +78,9 @@ Checks whether the application has the permission to access the serial port devi
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
@@ -97,19 +99,21 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('portList: ', JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function hasSerialRight() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('portList: ', JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// Check whether the device can be accessed by the application.
-if (serialManager.hasSerialRight(portId)) {
-  console.info('The serial port is accessible');
-} else {
-  console.info('No permission to access the serial port');
+  // Check whether the device can be accessed by the application.
+  if (serialManager.hasSerialRight(portId)) {
+    console.info('The serial port is accessible');
+  } else {
+    console.error('No permission to access the serial port');
+  }
 }
 ```
 
@@ -117,7 +121,7 @@ if (serialManager.hasSerialRight(portId)) {
 
 requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
-Requests the permission for the application to access the serial port device. After the application exits, the access permission on the serial port device is automatically removed. After the application is restarted, you need to request the permission again.
+Requests the permission for the application to access the serial port device. After the application exits, the access permission on the serial port device is automatically removed. After the application is restarted, you need to request the permission again. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -125,9 +129,9 @@ Requests the permission for the application to access the serial port device. Af
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
-**Returns**
+**Return value**
 
 | Type                    | Description           |
 |------------------------|---------------|
@@ -135,9 +139,9 @@ Requests the permission for the application to access the serial port device. Af
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
@@ -156,25 +160,27 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function requestSerialRight() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// Check whether the device can be accessed by the application.
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // If the application does not have the access permission and is not granted by the user, the application exits.
-      console.info('user is not granted the operation permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and is not granted by the user, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 }
 ```
 
@@ -190,13 +196,13 @@ Opens a serial port device.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -216,39 +222,41 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function open() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// Check whether the device can be accessed by the application.
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // If the application does not have the access permission and is not granted by the user, the application exits.
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and is not granted by the user, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// Open a serial port device.
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
+  // Open a serial port device.
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
 ## serialManager.getAttribute
 
-getAttribute(portId: number): Readonly&lt;[SerialAttribute](#serialattribute)&gt;
+getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
 Obtains the configuration parameters of a specified serial port.
 
@@ -258,9 +266,9 @@ Obtains the configuration parameters of a specified serial port.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
-**Returns**
+**Return value**
 
 | Type    | Description         |
 |--------|-------------|
@@ -268,9 +276,9 @@ Obtains the configuration parameters of a specified serial port.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -289,52 +297,54 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
-
-// Check whether the device can be accessed by the application.
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // If the application does not have the access permission and is not granted by the user, the application exits.
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
-
-// Open a serial port device.
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-  return;
-}
-
-// Obtain the serial port configuration.
-try {
-  let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
-  if (attribute === undefined) {
-    console.error('getAttribute usbSerial error, attribute is undefined');
-  } else {
-    console.info('getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
+function getAttribute() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
   }
-} catch (error) {
-  console.error('getAttribute usbSerial error, ' + JSON.stringify(error));
+  let portId: number = portList[0].portId;
+
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and is not granted by the user, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
+
+  // Open a serial port device.
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+    return;
+  }
+
+  // Obtain the serial port configuration.
+  try {
+    let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
+    if (attribute === undefined) {
+      console.error('getAttribute usbSerial error, attribute is undefined');
+    } else {
+      console.info('getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
+    }
+  } catch (error) {
+    console.error('getAttribute usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
 ## serialManager.setAttribute
 
-setAttribute(portId: number, attribute: [SerialAttribute](#serialattribute)): void
+setAttribute(portId: number, attribute: SerialAttribute): void
 
 Sets the parameters of the serial port. If this method is not called, the default configuration parameters are used (baud rate: 9600 bit/s; data bit: 8; parity bit: 0; stop bit: 1).
 
@@ -344,14 +354,14 @@ Sets the parameters of the serial port. If this method is not called, the defaul
 
 | Name      | Type                                 | Mandatory| Description         |
 |-----------|-------------------------------------|----|-------------|
-| portId    | number                              | Yes | Port number.|
+| portId    | number                              | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 | attribute | [SerialAttribute](#serialattribute) | Yes | Configuration parameters of the serial port.    |
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -370,48 +380,50 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
-
-// Check whether the device can be accessed by the application.
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // If the application does not have the access permission and is not granted by the user, the application exits.
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
-
-// Open a serial port device.
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-  return;
-}
-
-// Set the serial port configuration.
-try {
-  let attribute: serialManager.SerialAttribute = {
-    baudRate: serialManager.BaudRates.BAUDRATE_9600,
-    dataBits: serialManager.DataBits.DATABIT_8,
-    parity: serialManager.Parity.PARITY_NONE,
-    stopBits: serialManager.StopBits.STOPBIT_1
+function setAttribute() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
   }
-  serialManager.setAttribute(portId, attribute);
-  console.info('setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
-} catch (error) {
-  console.error('setAttribute usbSerial error, ' + JSON.stringify(error));
+  let portId: number = portList[0].portId;
+
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and is not granted by the user, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
+
+  // Open a serial port device.
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+    return;
+  }
+
+  // Set the serial port configuration.
+  try {
+    let attribute: serialManager.SerialAttribute = {
+      baudRate: serialManager.BaudRates.BAUDRATE_9600,
+      dataBits: serialManager.DataBits.DATABIT_8,
+      parity: serialManager.Parity.PARITY_NONE,
+      stopBits: serialManager.StopBits.STOPBIT_1
+    }
+    serialManager.setAttribute(portId, attribute);
+    console.info('setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
+  } catch (error) {
+    console.error('setAttribute usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -419,7 +431,7 @@ try {
 
 read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-Reads data from the serial port device asynchronously.
+Reads data from the serial port device asynchronously. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -427,11 +439,11 @@ Reads data from the serial port device asynchronously.
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.     |
+| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).     |
 | buffer  | Uint8Array | Yes | Buffer for reading data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout interval, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
 
-**Returns**
+**Return value**
 
 | Type                   | Description            |
 |-----------------------|----------------|
@@ -439,9 +451,9 @@ Reads data from the serial port device asynchronously.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -462,42 +474,44 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function read() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// Check whether the device can be accessed by the application.
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // If the application does not have the access permission and is not granted by the user, the application exits.
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and is not granted by the user, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// Open a serial port device.
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-}
+  // Open a serial port device.
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+  }
 
-// Read data asynchronously.
-let readBuffer: Uint8Array = new Uint8Array(64);
-serialManager.read(portId, readBuffer, 2000).then((size: number) => {
-  console.info('read usbSerial success, readBuffer: ' + readBuffer.toString());
-}).catch((error: Error) => {
-  console.error('read usbSerial error, ' + JSON.stringify(error));
-})
+  // Read data asynchronously.
+  let readBuffer: Uint8Array = new Uint8Array(64);
+  serialManager.read(portId, readBuffer, 2000).then((size: number) => {
+    console.info('read usbSerial success, readBuffer: ' + readBuffer.toString());
+  }).catch((error: Error) => {
+    console.error('read usbSerial error, ' + JSON.stringify(error));
+  })
+}
 ```
 
 ## serialManager.readSync
@@ -512,11 +526,11 @@ Reads data from the serial port device synchronously.
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.|
+| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 | buffer  | Uint8Array | Yes | Buffer for reading data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout interval, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
 
-**Returns**
+**Return value**
 
 | Type    | Description         |
 |--------|-------------|
@@ -524,9 +538,9 @@ Reads data from the serial port device synchronously.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -547,42 +561,44 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function readSync() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// Check whether the device can be accessed by the application.
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // If the application does not have the access permission and is not granted by the user, the application exits.
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and is not granted by the user, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// Open a serial port device.
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-}
+  // Open a serial port device.
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+  }
 
-// Read data synchronously.
-let readSyncBuffer: Uint8Array = new Uint8Array(64);
-try {
-  serialManager.readSync(portId, readSyncBuffer, 2000);
-  console.info('readSync usbSerial success, readSyncBuffer: ' + readSyncBuffer.toString());
-} catch (error) {
-  console.error('readSync usbSerial error, ' + JSON.stringify(error));
+  // Read data synchronously.
+  let readSyncBuffer: Uint8Array = new Uint8Array(64);
+  try {
+    serialManager.readSync(portId, readSyncBuffer, 2000);
+    console.info('readSync usbSerial success, readSyncBuffer: ' + readSyncBuffer.toString());
+  } catch (error) {
+    console.error('readSync usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -590,7 +606,7 @@ try {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-Writes data to the serial port device asynchronously.
+Writes data to the serial port device asynchronously. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -598,11 +614,11 @@ Writes data to the serial port device asynchronously.
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.     |
+| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).     |
 | buffer  | Uint8Array | Yes | Buffer for writing data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If so, the API is processed properly; if not, a timeout message is returned after the specified time. The default value **0** is returned when data cannot be written into the target port.|
 
-**Returns**
+**Return value**
 
 | Type                   | Description         |
 |-----------------------|-------------|
@@ -610,9 +626,9 @@ Writes data to the serial port device asynchronously.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -625,57 +641,60 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 > **NOTE**
 >
-> The following sample code shows the basic process for calling the **addSerialRight** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
+> The following sample code shows the basic process for calling the **write** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
+import { buffer } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function write() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// Check whether the device can be accessed by the application.
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // If the application does not have the access permission and is not granted by the user, the application exits.
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and is not granted by the user, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// Open a serial port device.
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-}
+  // Open a serial port device.
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+  }
 
-// Write data asynchronously.
-let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
-  console.info('write usbSerial success, writeBuffer: ' + writeBuffer.toString());
-}).catch((error: Error) => {
-  console.error('write usbSerial error, ' + JSON.stringify(error));
-})
+  // Write data asynchronously.
+  let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+  serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
+    console.info('write usbSerial success, writeBuffer: ' + writeBuffer.toString());
+  }).catch((error: Error) => {
+    console.error('write usbSerial error, ' + JSON.stringify(error));
+  })
+}
 ```
 
 ## serialManager.writeSync
 
 writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-Writes data to the serial port device synchronously.
+Writes data to the serial port device synchronously. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -683,11 +702,11 @@ Writes data to the serial port device synchronously.
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.    |
+| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).    |
 | buffer  | Uint8Array | Yes | Destination buffer for writing data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If so, the API is processed properly; if not, a timeout message is returned after the specified time. The default value **0** is returned when data cannot be written into the target port.|
 
-**Returns**
+**Return value**
 
 | Type    | Description         |
 |--------|-------------|
@@ -695,9 +714,9 @@ Writes data to the serial port device synchronously.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -715,45 +734,48 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
+import { buffer } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function writeSync() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// Check whether the device can be accessed by the application.
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // If the application does not have the access permission and is not granted by the user, the application exits.
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and is not granted by the user, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// Open a serial port device.
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-}
+  // Open a serial port device.
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+  }
 
-// Write data synchronously.
-let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-try {
-  serialManager.writeSync(portId, writeSyncBuffer, 2000);
-  console.info('writeSync usbSerial success, writeSyncBuffer: ' + writeSyncBuffer.toString());
-} catch (error) {
-  console.error('writeSync usbSerial error, ' + JSON.stringify(error));
+  // Write data synchronously.
+  let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+  try {
+    serialManager.writeSync(portId, writeSyncBuffer, 2000);
+    console.info('writeSync usbSerial success, writeSyncBuffer: ' + writeSyncBuffer.toString());
+  } catch (error) {
+    console.error('writeSync usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -769,13 +791,13 @@ Closes the serial port device.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -794,42 +816,44 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function close() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// Check whether the device can be accessed by the application.
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // If the application does not have the access permission and is not granted by the user, the application exits.
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and is not granted by the user, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// Open a serial port device.
-try {
-  serialManager.open(portId)
-  console.info('open usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('open usbSerial error, ' + JSON.stringify(error));
-  return;
-}
+  // Open a serial port device.
+  try {
+    serialManager.open(portId)
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('open usbSerial error, ' + JSON.stringify(error));
+    return;
+  }
 
-// Close the serial port device.
-try {
-  serialManager.close(portId);
-  console.info('close usbSerial success, portId: ' + portId);
-} catch (error) {
-  console.error('close usbSerial error, ' + JSON.stringify(error));
+  // Close the serial port device.
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -845,13 +869,13 @@ Cancels the permission to access the serial port device when the application is 
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception.                                |
@@ -871,33 +895,35 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('usbSerial portList: ' + JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('usbSerial portList is empty');
-  return;
-}
-let portId: number = portList[0].portId;
+function cancelSerialRight() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
 
-// Check whether the device can be accessed by the application.
-if (!serialManager.hasSerialRight(portId)) {
-  serialManager.requestSerialRight(portId).then(result => {
-    if (!result) {
-      // If the application does not have the access permission and is not granted by the user, the application exits.
-      console.info('user is not granted the operation  permission');
-      return;
-    } else {
-      console.info('grant permission successfully');
-    }
-  });
-}
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and is not granted by the user, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    });
+  }
 
-// Cancel the granted permission.
-try {
-  serialManager.cancelSerialRight(portId);
-  console.info('cancelSerialRight success, portId: ', portId);
-} catch (error) {
-  console.error('cancelSerialRight error, ', JSON.stringify(error));
+  // Cancel the granted permission.
+  try {
+    serialManager.cancelSerialRight(portId);
+    console.info('cancelSerialRight success, portId: ', portId);
+  } catch (error) {
+    console.error('cancelSerialRight error, ', JSON.stringify(error));
+  }
 }
 ```
 
@@ -909,10 +935,10 @@ Represents the configuration parameters of a serial port.
 
 | Name      |          Type       |  Read-Only  |  Optional| Description       |
 |----------|--------|----------|-----------|----------------------|
-| baudRate | [BaudRates](#baudrates) |   No  | No | Baud rate. |
-| dataBits | [DataBits](#databits)   |   No  | Yes | Data bits. The default value is **8**. |
+| baudRate | [BaudRates](#baudrates) |   No  | No | Baud rate of the serial port, in bit/s. |
+| dataBits | [DataBits](#databits)   |   No  | Yes | Data bits of the serial port, in bits. The default value is **8**. |
 | parity   | [Parity](#parity)       |   No  | Yes | Parity check. The default value is **None**, indicating that no parity check is performed.|
-| stopBits | [StopBits](#stopbits)   |   No  | Yes | Stop bits. The default value is **1**. |
+| stopBits | [StopBits](#stopbits)   |   No  | Yes | Stop bits of the serial port, in bits. The default value is **1**. |
 
 ## SerialPort
 
@@ -927,46 +953,46 @@ Represents the parameters of a serial port.
 
 ## BaudRates
 
-Enumerates the baud rates.
+Enumerates the baud rates, in bit/s.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
 | Name    | Value    | Description   |
 |-----------|-----------|-----------|
-| BAUDRATE_50  | 50  | The baud rate is 50 bit/s. |
-| BAUDRATE_75  | 75  | The baud rate is 75 bit/s. |
-| BAUDRATE_110  | 110  | The baud rate is 110 bit/s. |
-| BAUDRATE_134  | 134  | The baud rate is 134 bit/s. |
-| BAUDRATE_150  | 150  | The baud rate is 150 bit/s. |
-| BAUDRATE_200  | 200  | The baud rate is 200 bit/s. |
-| BAUDRATE_300  | 300  | The baud rate is 300 bit/s. |
-| BAUDRATE_600  | 600  | The baud rate is 600 bit/s. |
-| BAUDRATE_1200  | 1200  | The baud rate is 1200 bit/s. |
-| BAUDRATE_1800  | 1800  | The baud rate is 1800 bit/s. |
-| BAUDRATE_2400  | 2400  | The baud rate is 2400 bit/s. |
-| BAUDRATE_4800  | 4800  | The baud rate is 4800 bit/s. |
-| BAUDRATE_9600  | 9600  | The baud rate is 9600 bit/s. |
-| BAUDRATE_19200  | 19200  | The baud rate is 19200 bit/s. |
-| BAUDRATE_38400  | 38400  | The baud rate is 38400 bit/s. |
-| BAUDRATE_57600  | 57600  | The baud rate is 57600 bit/s. |
-| BAUDRATE_115200  | 115200  | The baud rate is 115200 bit/s. |
-| BAUDRATE_230400  | 230400  | The baud rate is 230400 bit/s. |
-| BAUDRATE_460800  | 460800  | The baud rate is 460800 bit/s. |
-| BAUDRATE_500000  | 500000  | The baud rate is 500000 bit/s. |
-| BAUDRATE_576000  | 576000  | The baud rate is 576000 bit/s. |
-| BAUDRATE_921600  | 921600  | The baud rate is 921600 bit/s. |
-| BAUDRATE_1000000  | 1000000  | The baud rate is 1000000 bit/s. |
-| BAUDRATE_1152000  | 1152000  | The baud rate is 1152000 bit/s. |
-| BAUDRATE_1500000  | 1500000  | The baud rate is 1500000 bit/s. |
-| BAUDRATE_2000000  | 2000000  | The baud rate is 2000000 bit/s. |
-| BAUDRATE_2500000  | 2500000  | The baud rate is 2500000 bit/s. |
-| BAUDRATE_3000000  | 3000000  | The baud rate is 3000000 bit/s. |
-| BAUDRATE_3500000  | 3500000  | The baud rate is 3500000 bit/s. |
-| BAUDRATE_4000000  | 4000000  | The baud rate is 4000000 bit/s. |
+| BAUDRATE_50  | 50  | The transmission baud rate is 50 bit/s. |
+| BAUDRATE_75  | 75  | The transmission baud rate is 75 bit/s. |
+| BAUDRATE_110  | 110  | The transmission baud rate is 110 bit/s. |
+| BAUDRATE_134  | 134  | The transmission baud rate is 134 bit/s. |
+| BAUDRATE_150  | 150  | The transmission baud rate is 150 bit/s. |
+| BAUDRATE_200  | 200  | The transmission baud rate is 200 bit/s. |
+| BAUDRATE_300  | 300  | The transmission baud rate is 300 bit/s. |
+| BAUDRATE_600  | 600  | The transmission baud rate is 600 bit/s. |
+| BAUDRATE_1200  | 1200  | The transmission baud rate is 1200 bit/s. |
+| BAUDRATE_1800  | 1800  | The transmission baud rate is 1800 bit/s. |
+| BAUDRATE_2400  | 2400  | The transmission baud rate is 2400 bit/s. |
+| BAUDRATE_4800  | 4800  | The transmission baud rate is 4800 bit/s. |
+| BAUDRATE_9600  | 9600  | The transmission baud rate is 9600 bit/s. |
+| BAUDRATE_19200  | 19200  | The transmission baud rate is 19,200 bit/s. |
+| BAUDRATE_38400  | 38400  | The transmission baud rate is 38,400 bit/s. |
+| BAUDRATE_57600  | 57600  | The transmission baud rate is 57,600 bit/s. |
+| BAUDRATE_115200  | 115200  | The transmission baud rate is 115,200 bit/s. |
+| BAUDRATE_230400  | 230400  | The transmission baud rate is 230,400 bit/s. |
+| BAUDRATE_460800  | 460800  | The transmission baud rate is 460,800 bit/s. |
+| BAUDRATE_500000  | 500000  | The transmission baud rate is 500,000 bit/s. |
+| BAUDRATE_576000  | 576000  | The transmission baud rate is 576,000 bit/s. |
+| BAUDRATE_921600  | 921600  | The transmission baud rate is 921,600 bit/s. |
+| BAUDRATE_1000000  | 1000000  | The transmission baud rate is 1,000,000 bit/s. |
+| BAUDRATE_1152000  | 1152000  | The transmission baud rate is 1,152,000 bit/s. |
+| BAUDRATE_1500000  | 1500000  | The transmission baud rate is 1,500,000 bit/s. |
+| BAUDRATE_2000000  | 2000000  | The transmission baud rate is 2,000,000 bit/s. |
+| BAUDRATE_2500000  | 2500000  | The transmission baud rate is 2,500,000 bit/s. |
+| BAUDRATE_3000000  | 3000000  | The transmission baud rate is 3,000,000 bit/s. |
+| BAUDRATE_3500000  | 3500000  | The transmission baud rate is 3,500,000 bit/s. |
+| BAUDRATE_4000000  | 4000000  | The transmission baud rate is 4,000,000 bit/s. |
 
 ## DataBits
 
-Enumerates the number of data bits.
+Enumerates the number of data bits, in bits.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -993,7 +1019,7 @@ Enumerates the parity check modes.
 
 ## StopBits
 
-Enumerates of the number of stop bits.
+Enumerates the number of stop bits, in bits.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 

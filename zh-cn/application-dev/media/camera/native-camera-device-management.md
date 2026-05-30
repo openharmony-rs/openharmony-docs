@@ -4,13 +4,13 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 在开发一个相机应用前，需要先通过调用相机接口来创建一个独立的相机设备。
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口。选择系统提供的NDK接口能力，导入NDK接口的方法如下。
 
@@ -43,7 +43,7 @@
    {
        // 创建CameraManager对象。
        Camera_ErrorCode ret = OH_Camera_GetCameraManager(cameraManager);
-       if (cameraManager == nullptr || ret != CAMERA_OK) {
+       if (*cameraManager == nullptr || ret != CAMERA_OK) {
           OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraManager failed.");
        }
        return ret;
@@ -54,7 +54,7 @@
    >
    > 如果获取对象失败，说明相机可能被占用或无法使用。如果被占用，须等到相机被释放后才能重新获取。
 
-4. 通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，不可继续后续操作。
+4. 通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，无法进行后续操作。
      
    ```c++
    Camera_ErrorCode GetSupportedCameras(Camera_Manager* cameraManager, Camera_Device** cameras, uint32_t &size)
@@ -64,6 +64,7 @@
        if (cameras == nullptr || size == 0 || ret != CAMERA_OK) {
           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
        }
+       // 在不使用cameras时，需要调用OH_CameraManager_DeleteSupportedCameras()方法释放相机列表并置空指针防止内存泄漏。
        for (uint32_t index = 0; index < size; index++) {
           OH_LOG_INFO(LOG_APP, "cameraId  =  %{public}s ", (*cameras)[index].cameraId);              // 获取相机ID。
           OH_LOG_INFO(LOG_APP, "cameraPosition  =  %{public}d ", (*cameras)[index].cameraPosition);  // 获取相机位置。
@@ -79,7 +80,7 @@
 
 在相机应用开发过程中，可以随时监听相机状态，包括新相机的出现、相机的移除、相机的可用状态。在回调函数中，通过相机ID、相机状态这两个参数进行监听，如当有新相机出现时，可以将新相机加入到应用的备用相机中。
 
-  通过注册cameraStatus事件，通过回调返回监听结果，callback返回Camera_StatusInfo参数，参数的具体内容可参考相机管理器回调接口实例[Camera_StatusInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-statusinfo.md)。
+  通过[OH_CameraManager_RegisterCallback()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_registercallback)注册cameraStatus事件，通过回调返回监听结果，callback返回Camera_StatusInfo参数，参数的具体内容可参考相机管理器回调接口实例[Camera_StatusInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-statusinfo.md)。
   ```c++
   void CameraStatusCallback(Camera_Manager* cameraManager, Camera_StatusInfo* status)
   {

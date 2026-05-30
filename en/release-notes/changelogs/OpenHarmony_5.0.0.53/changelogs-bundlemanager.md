@@ -43,7 +43,7 @@ OpenHarmony 5.0.0.53
 
 **Key API/Component Changes**
 
-**maxFileSupported** in [module.json5](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/module-configuration-file.md#skills).
+**maxFileSupported** in [module.json5](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/quick-start/module-configuration-file.md#skills).
 
 **Adaptation Guide**
 

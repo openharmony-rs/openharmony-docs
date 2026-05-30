@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Represents a **WebviewController** object used to control various behaviors of **Web** components, including page navigation, lifecycle status, and JavaScript interaction. A **WebviewController** object can control only one **Web** component, and the APIs (except static APIs) in the **WebviewController** can be invoked only after it has been bound to the target **Web** component.
 
@@ -14,7 +14,7 @@ Represents a **WebviewController** object used to control various behaviors of *
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## Modules to Import
 
@@ -32,9 +32,9 @@ Constructs a **WebviewController** object.
 >
 > When no parameter is passed in **new webview.WebviewController()**, it indicates that the constructor is empty. If the C API is not used, no parameter needs to be passed.
 > 
-> When a valid string is passed in, **new webview.WebviewController("xxx")** can be used to distinguish multiple instances and invoke the methods of the corresponding instance.
+> When a valid string is passed in, such as **new webview.WebviewController("xxx")**, it can be used to distinguish multiple instances and invoke the methods of the corresponding instance.
 > 
-> When an empty parameter is passed in, such as **new webview.WebviewController("")** or **new webview.WebviewController(undefined)**, the parameter is meaningless that multiple instances cannot be distinguished and **undefined** is returned. You need to check whether the return value is normal.
+> When an empty parameter is passed in, such as **new webview.WebviewController("")** or **new webview.WebviewController(undefined)**, it is meaningless and cannot distinguish multiple instances. In this case, **undefined** is returned. You need to check whether the returned value is normal.
 >
 > After the **Web** component is destroyed, the **WebViewController** is unbound, and exception 17100001 will be thrown when the non-static method of **WebViewController** is called. You need to pay attention to the calling time and capture exceptions to prevent abnormal process exit.
 
@@ -174,7 +174,7 @@ Sets how the **Web** component uses HTTPDNS for DNS resolution.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -217,11 +217,11 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 
 | Name             | Type   | Mandatory  |  Description|
 | ------------------ | ------- | ---- | ------------- |
-| webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** indicates that web debugging is enabled, and **false** indicates the opposite .<br>Default value: **false**.|
+| webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** means to enable web debugging, and **false** means the opposite.<br>Default value: **false**.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -268,16 +268,16 @@ Loads a specified URL.
 | Name | Type            | Mandatory| Description                 |
 | ------- | ---------------- | ---- | :-------------------- |
 | url     | string \| Resource | Yes  | URL to load.     |
-| headers | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No  | Additional HTTP request header of the URL.<br>Default value: **[]**.|
+| headers | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No  | Additional HTTP request header of the URL.<br>Default value: **[]**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid.                |
 | 17100003 | Invalid resource path or file type.                          |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
@@ -367,7 +367,9 @@ struct WebComponent {
 }
 ```
 
-2. Using the resources protocol, which can be used by WebView to load links with a hash (#).
+2. Using resources protocol.
+
+When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead.
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -384,7 +386,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             // Load local resource files through the resource protocol.
-            this.controller.loadUrl("resource://rawfile/index.html");
+            this.controller.loadUrl("resource://rawfile/index.html#home");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -393,6 +395,36 @@ struct WebComponent {
     }
   }
 }
+```
+
+Create an **index.html** file in **src/main/resources/rawfile**.
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<body>
+<div id="content"></div>
+
+<script>
+  function loadContent() {
+    var hash = window.location.hash;
+    var contentDiv = document.getElementById('content');
+
+    if (hash === '#home') {
+      contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
+    } else {
+      contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
+    }
+  }
+
+  // Load the UI.
+  window.addEventListener('load', loadContent);
+
+  // Update the UI when the hash changes.
+  window.addEventListener('hashchange', loadContent);
+</script>
+</body>
+</html>
 ```
 
 3. Load the local file through the sandbox path. For details, see the sample code for loading the sandbox path in [Loading Web Pages](../../web/web-page-loading-with-web-components.md#loading-local-pages).
@@ -439,12 +471,12 @@ If **encoding** is not base64 (including null values), ASCII encoding is used fo
 | data       | string | Yes  | String obtained after being base64 or URL encoded.                   |
 | mimeType   | string | Yes  | Media type (MIME).                                          |
 | encoding   | string | Yes  | Encoding type, which can be base64 or URL.                      |
-| baseUrl    | string | No  | URL (HTTP/HTTPS/data compliant), which is assigned by the **Web** component to **window.origin**. If a large number of HTML files need to be loaded, set this parameter to **data**.|
-| historyUrl | string | No  | URL used for historical records. If this parameter is not empty, historical records are managed based on this URL. This parameter is invalid when **baseUrl** is left empty.|
+| baseUrl    | string | No  | URL (HTTP/HTTPS/data compliant), which is assigned by the **Web** component to **window.origin**. If a large number of HTML files need to be loaded, set this parameter to **data**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
+| historyUrl | string | No  | URL used for historical records. If this parameter is not empty, historical records are managed based on this URL. This parameter is invalid when **baseUrl** is left empty.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -533,7 +565,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.controller.loadData(
-              "<img src=aa/bb.jpg>," // Attempt to load the image from "https: // xxx.com/" + "aa/bb.jpg".
+              "<img src=aa/bb.jpg>", // Attempt to load the image from "https: // xxx.com/" + "aa/bb.jpg".
               "text/html",
               "UTF-8",
               "https://xxx.com/",
@@ -818,7 +850,8 @@ struct WebComponent {
 onActive(): void
 
 Called when the **Web** component enters the active state.
-<br>The application can interact with the user while in the active foreground state, and it remains in this state until the focus is moved away from it due to some event (for example, an incoming call is received or the device screen is turned off).
+
+The application can interact with the user while in the active foreground state, and it remains in this state until the focus is moved away from it due to some event (for example, an incoming call is received or the device screen is turned off).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -948,6 +981,56 @@ struct WebComponent {
 }
 ```
 
+## refresh<sup>24+</sup>
+
+refresh(ignoreCache: boolean): void
+
+Notifies the **Web** component to refresh the web page. You can choose whether to ignore the cache refresh.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type| Mandatory| Description              |
+| ------- | -------- | ---- | ---------------------- |
+| ignoreCache | boolean  | Yes  | Whether to ignore cache refresh when the **Web** component refreshes the web page.<br>The value **true** means to ignore the cache refresh, and **false** means the opposite.<br>**NOTE**<br>If **undefined** or **null** is passed in, the value is **false**.|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('refresh')
+        .onClick(() => {
+          try {
+            this.controller.refresh(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## accessStep
 
 accessStep(step: number): boolean
@@ -970,7 +1053,7 @@ Checks whether a specific number of steps forward or backward can be performed o
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1053,11 +1136,11 @@ struct WebComponent {
 
 ## registerJavaScriptProxy
 
-registerJavaScriptProxy(object: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
+registerJavaScriptProxy(jsObject: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
 
-Registers a proxy for interaction between the application and web pages loaded by the **Web** component.
-<br>Registers a JavaScript object with the window. APIs of this object can then be invoked in the window. After this API is called, call [refresh](#refresh) for the registration to take effect.
-<br>For the example, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).
+Registers a proxy for interaction between the application and web pages loaded by the **Web** component. Registers a JavaScript object with the window. APIs of this object can then be invoked in the window.
+
+For the example, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).
 
 > **NOTE**
 >
@@ -1067,6 +1150,7 @@ Registers a proxy for interaction between the application and web pages loaded b
 > - If a **registerJavaScriptProxy** is both registered in the synchronous and asynchronous lists, it is called asynchronously by default.
 > - You should register **registerJavaScriptProxy** either in synchronous list or in asynchronous list. Otherwise, this API fails to be registered.
 > - After the HTML5 thread submits an asynchronous JavaScript task to the ETS main thread, the HTML5 thread can continue to execute subsequent tasks without waiting for the task execution to complete and return a result. In this way, scenarios where the HTML5 thread is blocked due to long-running JavaScript tasks or a congested ETS thread can be effectively reduced. However, an asynchronous JavaScript task cannot return a value, and a task execution sequence cannot be ensured. Therefore, you should determine whether to use a synchronous or asynchronous function based on a specific scenario.
+> - The injected object does not appear in JavaScript until the page is reloaded.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1074,15 +1158,15 @@ Registers a proxy for interaction between the application and web pages loaded b
 
 | Name    | Type      | Mandatory| Description                                       |
 | ---------- | -------------- | ---- | ------------------------------------------------------------ |
-| object     | object         | Yes  | Application-side JavaScript object to be registered. Methods and attributes can be declared separately, but cannot be registered and used at the same time. If an object contains only attributes, HTML5 can access the attributes in the object. If an object contains only methods, HTML5 can access the methods in the object.<br>1. The parameter and return value can be any of the following types:<br>string, number, boolean.<br>2. Dictionary or Array, with a maximum of 10 nested layers and 10,000 data records per layer.<br>3. Object, which must contain the **methodNameListForJsProxy:[fun1, fun2]** attribute, where **fun1** and **fun2** are methods that can be called.<br>4. The parameter also supports Function and Promise. Their callback cannot have return values.<br>5. The return value supports Promise. Its callback cannot have a return value.|
+| jsObject     | object         | Yes  | Application-side JavaScript object to be registered. Methods and attributes can be declared separately, but cannot be registered and used at the same time. If an object contains only attributes, HTML5 can access the attributes in the object. If an object contains only methods, HTML5 can access the methods in the object.<br>1. The parameter and return value can be any of the following types:<br>string, number, boolean.<br>2. Dictionary or Array, with a maximum of 10 nested layers and 10,000 data records per layer.<br>3. Object, which must contain the **methodNameListForJsProxy:[fun1, fun2]** attribute, where **fun1** and **fun2** are methods that can be called.<br>4. The parameter also supports Function and Promise. Their callback cannot have return values.<br>5. The return value supports Promise. Its callback cannot have a return value.|
 | name       | string         | Yes  | Name of the object to be registered, which is the same as that invoked in the window. After registration, the window can use this name to access the JavaScript object at the application side.|
 | methodList | Array\<string> | Yes  | Synchronous methods of the JavaScript object to be registered at the application side.                      |
-| asyncMethodList<sup>12+</sup> | Array\<string> | No  | Asynchronous methods of the JavaScript object to be registered at the application side. The default value is null. Asynchronous methods cannot obtain return values. |
-| permission<sup>12+</sup> | string | No  | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels.<br>1. The **scheme** and **host** parameters cannot be empty. The **host** does not support wildcards and can contain only complete host names.<br>2. You can configure only the object-level trustlist, which takes effect for all JSBridge methods.<br>3. If method-level trustlists are configured for JSBridge method A, the intersection of object-level and method-level trustlists takes effect.|
+| asyncMethodList<sup>12+</sup> | Array\<string> | No  | Asynchronous methods of the JavaScript object to be registered at the application side. The default value is null. Asynchronous methods cannot obtain return values.<br>If **undefined** or **null** is passed, error code **401** will be thrown. |
+| permission<sup>12+</sup> | string | No  | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels.<br>1. The **scheme** and **host** parameters cannot be empty. The **host** does not support wildcards and can contain only complete host names.<br>2. You can configure only the object-level trustlist, which takes effect for all JSBridge methods.<br>3. If method-level trustlists are configured for JSBridge method A, the intersection of object-level and method-level trustlists takes effect.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1255,7 +1339,7 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1355,7 +1439,7 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1440,7 +1524,7 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1477,6 +1561,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      // If an exception occurs or the return type is not supported, getErrorDescription is not empty.
+                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -1569,6 +1658,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      // If an exception occurs or the return type is not supported, getErrorDescription is not empty.
+                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -1660,7 +1754,7 @@ Executes a JavaScript script. This API uses a promise to return the script execu
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1693,6 +1787,11 @@ struct WebComponent {
           this.controller.runJavaScriptExt('test()')
             .then((result) => {
               try {
+                if (result.getErrorDescription()) {
+                  // If an exception occurs or the return type is not supported, getErrorDescription is not empty.
+                  console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                  return;
+                }
                 let type = result.getType();
                 switch (type) {
                   case webview.JsMessageType.STRING: {
@@ -1774,6 +1873,11 @@ struct WebComponent {
             this.controller.runJavaScriptExt(arrayBuffer)
               .then((result) => {
                 try {
+                  if (result.getErrorDescription()) {
+                    // If an exception occurs or the return type is not supported, getErrorDescription is not empty.
+                    console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                    return;
+                  }
                   let type = result.getType();
                   switch (type) {
                     case webview.JsMessageType.STRING: {
@@ -1845,7 +1949,7 @@ function test() {
 
 deleteJavaScriptRegister(name: string): void
 
-Deletes a specific application JavaScript object that is registered with the window through **registerJavaScriptProxy**. After the deletion, the [refresh](#refresh) API must be called.
+Deletes a JavaScript object with the specified name on the application side that is registered with the window using [registerJavaScriptProxy](#registerjavascriptproxy) or [javaScriptProxy](./arkts-basic-components-web-attributes.md#javascriptproxy). The deletion takes effect after the page is reloaded.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1857,7 +1961,7 @@ Deletes a specific application JavaScript object that is registered with the win
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1962,7 +2066,7 @@ Zooms in or out of this web page. This API is effective only when [zoomAccess](a
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2016,7 +2120,7 @@ Searches the web page for content that matches the keyword specified by **'searc
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2131,7 +2235,7 @@ Searches for and highlights the next match.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2268,7 +2372,7 @@ Creates web message ports.
 
 | Name| Type                  | Mandatory| Description                            |
 | ------ | ---------------------- | ---- | :------------------------------|
-| isExtentionType<sup>10+</sup>   | boolean     | No | Whether to use the extended interface.<br>The value **true** means to use the extended interface, and **false** means the opposite.<br>Default value: **false**.|
+| isExtentionType<sup>10+</sup>   | boolean     | No | Whether to use the extended interface.<br>The value **true** means to use the extended interface, and **false** means the opposite.<br>Default value: **false**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Return value**
 
@@ -2278,7 +2382,7 @@ Creates web message ports.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2307,7 +2411,7 @@ Sends a web message to an HTML window.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2412,7 +2516,7 @@ HTML file to be loaded:
 
 <!--code_no_check-->
 ```js
-//xxx.js
+// xxx.js
 var h5Port;
 var output = document.querySelector('.output');
 window.addEventListener('message', function (event) {
@@ -2777,7 +2881,7 @@ struct WebComponent {
 
 getPageHeight(): number
 
-Obtains the height of this web page.
+Obtains the height of this web page. For details, see [Obtaining the Web Page Content Height](../../web/web-getpage-height.md).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2813,7 +2917,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let pageHeight = this.controller.getPageHeight();
-            console.log("pageHeight : " + pageHeight);
+            console.info("pageHeight : " + pageHeight);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -2842,7 +2946,7 @@ Stores this web page. This API uses an asynchronous callback to return the resul
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2909,7 +3013,7 @@ Stores this web page. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3066,7 +3170,7 @@ Because the previously loaded web pages are used for the operation, no page relo
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3116,11 +3220,11 @@ Scrolls the page to the specified absolute position within a specified period.
 | ------ | -------- | ---- | ---------------------- |
 | x   | number   | Yes  | X coordinate of the absolute position. If the value is a negative number, the value 0 is used.<br>Unit: vp|
 | y   | number   | Yes  | Y coordinate of the absolute position. If the value is a negative number, the value 0 is used.<br>Unit: vp|
-| duration<sup>14+</sup> | number | No| Scrolling animation duration,<br>in milliseconds.<br>If no value is input or the input value is a negative number or 0, the animation is disabled.|
+| duration<sup>14+</sup> | number | No| Scrolling animation duration,<br>in milliseconds.<br>If no value is input or the input value is a negative number or 0, the animation is disabled.<br>If **null** or **undefined** is passed, error code **401** is thrown.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3152,7 +3256,7 @@ struct WebComponent {
         Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); // If you want to stop the animation generated by the current scroll, you can generate another 1 ms animation to interrupt the animation.
+            this.controller.scrollBy(0, 0, 1); // To stop the animation generated by the current scroll, you can generate another 1 ms animation to interrupt the animation.
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3200,11 +3304,11 @@ Scrolls the page by the specified amount within a specified period.
 | ------ | -------- | ---- | ---------------------- |
 | deltaX | number   | Yes  | Amount to scroll by along the x-axis. The positive direction is rightward.<br>Unit: vp|
 | deltaY | number   | Yes  | Amount to scroll by along the y-axis. The positive direction is downward.<br>Unit: vp|
-| duration<sup>14+</sup> | number | No| Scrolling animation duration,<br>in milliseconds.<br>If no value is input or the input value is a negative number or 0, the animation is disabled.|
+| duration<sup>14+</sup> | number | No| Scrolling animation duration,<br>in milliseconds.<br>If no value is input or the input value is a negative number or 0, the animation is disabled.<br>If **null** or **undefined** is passed, error code **401** is thrown.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3240,7 +3344,7 @@ struct WebComponent {
       Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); // If you want to stop the animation generated by the current scroll, you can generate another 1 ms animation to interrupt the animation.
+            this.controller.scrollBy(0, 0, 1); // To stop the animation generated by the current scroll, you can generate another 1 ms animation to interrupt the animation.
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3296,7 +3400,7 @@ Scrolls the page by the specified amount and returns value to indicate whether t
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3378,7 +3482,7 @@ Simulates a slide-to-scroll action on the page at the specified velocity.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3441,6 +3545,7 @@ Scroll Test
 getOriginalUrl(): string
 
 Obtains the original URL of this page.
+
 Risk warning: If you want to obtain the URL for JavaScriptProxy communication API authentication, use [getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](#getlastjavascriptproxycallingframeurl12).
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -3552,11 +3657,11 @@ Sets the **window.navigator.onLine** attribute in JavaScript.
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
-| enable | boolean | Yes  | Whether the **window.navigator.onLine** attribute is enabled.<br>The value **true** indicates that the **window.navigator.onLine** attribute is enabled, and the value **false** indicates the opposite.<br>Default value: **true**.|
+| enable | boolean | Yes  | Whether to enable the **window.navigator.onLine** attribute.<br>The value **true** indicates that the **window.navigator.onLine** attribute is enabled, and the value **false** indicates the opposite.<br>Default value: **true**.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3630,7 +3735,7 @@ Checks whether this page contains images. This API uses an asynchronous callback
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3687,7 +3792,7 @@ Checks whether this page contains images. This API uses a promise to return the 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3746,7 +3851,7 @@ Removes all Webview cache files in an application.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3801,7 +3906,7 @@ Removes all Webview cache files in an application.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3851,7 +3956,7 @@ Scrolls the page up by half the viewport or jumps to the top of the page.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3934,7 +4039,7 @@ Scrolls the page down by half the viewport or jumps to the bottom of the page.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4119,6 +4224,7 @@ struct WebComponent {
 ```
 
 2. Modify the **EntryAbility.ets** file.
+
 Obtain the path of the application cache file.
 ```ts
 // xxx.ets
@@ -4150,7 +4256,7 @@ If the value of **state** is too large, exceptions may occur. It is recommended 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4205,6 +4311,7 @@ struct WebComponent {
 ```
 
 2. Modify the **EntryAbility.ets** file.
+
 Obtain the path of the application cache file.
 ```ts
 // xxx.ets
@@ -4234,7 +4341,7 @@ Grants the cross-domain request and fetch request permissions for the specified 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4274,6 +4381,62 @@ struct WebComponent {
           }
           return this.responseWeb;
         })
+    }
+  }
+}
+```
+
+## customizeSchemes<sup>21+</sup>
+
+static customizeSchemes(schemes: Array\<WebCustomScheme\>, lazyInitWebEngine: boolean): void
+
+Grants the cross-domain request and fetch request permissions for the specified URL schemes (also known as protocols) to the web kernel. A cross-domain fetch request for any of the specified URL schemes can be intercepted by the [onInterceptRequest](./arkts-basic-components-web-events.md#oninterceptrequest9) API, so that you can further process the request. It is recommended that this API be called before any **Web** component is initialized.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                     |
+| -------- | ------- | ---- | -------------------------------------- |
+| schemes | Array\<[WebCustomScheme](./arkts-apis-webview-i.md#webcustomscheme)\> | Yes  | Array of up to 10 custom schemes.|
+| lazyInitWebEngine | boolean | Yes| Whether to skip WebEngine initialization in the API.<br>The value **true** means to skip the WebEngine initialization and store the registered schemes temporarily. When the WebEngine is initialized, the schemes are transferred to the WebEngine. The value false means to initialize the WebEngine automatically in the API.|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+|  401 | Parameter error. Possible causes: 1. The length of the schemes array is greater than 10. 2. The character length of the scheme is greater than 32. 3. The character in the scheme is not within the allowed range of lowercase English letters, numbers, and the symbols ".", "+", "-". |
+| 17100020 | Failed to register custom schemes. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+  scheme1: webview.WebCustomScheme = { schemeName: "name1", isSupportCORS: true, isSupportFetch: true };
+  scheme2: webview.WebCustomScheme = { schemeName: "name2", isSupportCORS: true, isSupportFetch: true };
+  scheme3: webview.WebCustomScheme = { schemeName: "name3", isSupportCORS: true, isSupportFetch: true };
+
+  aboutToAppear(): void {
+    try {
+      webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3], true);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
 }
@@ -4456,7 +4619,7 @@ Obtains the certificate information of this website. When the **Web** component 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4618,7 +4781,7 @@ Mutes this web page.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4683,7 +4846,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | Invalid url.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                      |
 
 **Example**
 
@@ -4750,7 +4913,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
 
 **Example**
 
@@ -4795,9 +4958,9 @@ Prefetches resource requests based on specified request information and addition
 | Name            | Type                            |  Mandatory | Description                                                             |
 | ------------------| ------------------------------- | ---- | ------------------------------------------------------------------ |
 | request           | [RequestInfo](./arkts-apis-webview-i.md#requestinfo12)   | Yes  | Information about the prefetched request.                                                     |
-| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No  | Additional HTTP request header of the prefetched request.                                            |
-| cacheKey          | string                          | No  | Key used to query the cache of prefetched resources. The value can contain only letters and digits. If this parameter is not passed or is left empty, **url** is used by default.|
-| cacheValidTime    | number                          | No  | Validity period for caching prefetched resources.<br>Value range: (0, 2147483647]<br>Default value: **300s**<br>Unit: second.        |
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No  | Additional HTTP request header of the prefetched request.<br>If **undefined** or **null** is passed, error code **401** will be thrown.        |
+| cacheKey          | string                          | No  | Key used to query the cache of prefetched resources. The value can contain only letters and digits. If this parameter is not passed or is left empty, **url** is used by default.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
+| cacheValidTime    | number                          | No  | Validity period for caching prefetched resources.<br>Value range: (0, 2147483647]<br>Default value: **300s**<br>Unit: second.<br>If **undefined** or **null** is passed, error code **401** will be thrown.    |
 
 **Error codes**
 
@@ -4805,21 +4968,20 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
 
 **Example**
 
 ```ts
-// xxx.ets
+// EntryAbility.ets
 import { webview } from '@kit.ArkWeb';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate");
+    console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
-    // Replace "https://www.example1.com/post?e=f&g=h" with the actual website address to visit. 
+    // Replace "https://www.example1.com/post?e=f&g=h" with a real URL to visit.
     webview.WebviewController.prefetchResource(
       {
         url: "https://www.example1.com/post?e=f&g=h",
@@ -4832,7 +4994,7 @@ export default class EntryAbility extends UIAbility {
       },],
       "KeyX", 500);
     AppStorage.setOrCreate("abilityWant", want);
-    console.log("EntryAbility onCreate done");
+    console.info("EntryAbility onCreate done");
   }
 }
 ```
@@ -4854,7 +5016,7 @@ Clears the cache of prefetched resources based on the specified cache key list. 
 **Example**
 
 ```ts
-// xxx.ets
+// Index.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -4866,7 +5028,7 @@ struct WebComponent {
     Column() {
       Web({ src: "https://www.example.com/", controller: this.controller })
         .onAppear(() => {
-          // Replace "https://www.example1.com/post?e=f&g=h" with the actual website address to visit. 
+          // Replace "https://www.example1.com/post?e=f&g=h" with a real URL to visit.
           webview.WebviewController.prefetchResource(
             {
               url: "https://www.example1.com/post?e=f&g=h",
@@ -4910,7 +5072,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
 | 17100013 | The number of preconnect sockets is invalid.                                                 |
 
 **Example**
@@ -4938,7 +5100,7 @@ setCustomUserAgent(userAgent: string): void
 
 Sets a custom user agent, which will overwrite the default user agent.
 
-When **src** of the **Web** component is set to a URL, set **User-Agent** in **onControllerAttached**. For details, see the following example. Avoid setting the user agent in **onLoadIntercept**. Otherwise, the setting may fail occasionally.
+When **src** of the **Web** component is set to a URL, set **User-Agent** in **onControllerAttached**. For details, see the following example. Avoid setting the **User-Agent** in **onLoadIntercept**. Otherwise, the setting may fail occasionally.
 
 When **src** of the **Web** component is set to an empty string, call **setCustomUserAgent** to set **User-Agent** and then use **loadUrl** to load a specific page.
 
@@ -4946,7 +5108,7 @@ For details about the default **User-Agent**, see [Developing User-Agent](../../
 
 > **NOTE**
 >
->If a URL is set for the **Web** component **src** and **User-Agent** is not set in the **onControllerAttached** callback, calling **setCustomUserAgent** may cause mismatches between the loaded page and the intended user agent.
+>If a URL is set for the **Web** component **src** and **User-Agent** is not set in the **onControllerAttached** callback, calling **setCustomUserAgent** may cause mismatches between the loaded page and the intended **User-Agent**.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4958,7 +5120,7 @@ For details about the default **User-Agent**, see [Developing User-Agent](../../
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4999,7 +5161,7 @@ struct WebComponent {
 
 setDownloadDelegate(delegate: WebDownloadDelegate): void
 
-Sets a **WebDownloadDelegate** object to receive downloads and download progress triggered from a page.
+Sets a **WebDownloadDelegate** for the current **Web** component. The delegate is used to receive the download progress triggered within the page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5067,7 +5229,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. |
 
 **Example**
 
@@ -5166,9 +5328,9 @@ static setAppCustomUserAgent(userAgent: string): void
 
 Sets the application-level custom user agent, which will overwrite the system user agent and take effect for all **Web** components in the application.
 
-If you need to set the application-level custom user agent, you are advised to call the **setAppCustomUserAgent** method to set the user agent before creating the **Web** component, and then create the **Web** component with the specified src or load the page using [loadUrl](#loadurl).
+If you need to set the application-level custom user agent, you are advised to call the **setAppCustomUserAgent** method to set the **User-Agent** before creating the **Web** component, and then create the **Web** component with the specified src or load the page using [loadUrl](#loadurl).
 
-For details about the default User-Agent definition, application scenarios, and API priorities, see [Developing User-Agent](../../web/web-default-userAgent.md).
+For details about the default **User-Agent** definition, application scenarios, and API priorities, see [Developing User-Agent](../../web/web-default-userAgent.md).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5217,7 +5379,7 @@ Sets a custom user agent for a specific website, which overwrites the system use
 
 To set a custom user agent for a specific website, you are advised to call the **setUserAgentForHosts** method to set **User-Agent** before creating a **Web** component, and then create a **Web** component with a specified src or use [loadUrl](#loadurl) to load a specific page.
 
-For details about the default User-Agent definition, application scenarios, and API priorities, see [Developing User-Agent](../../web/web-default-userAgent.md).
+For details about the default **User-Agent** definition, application scenarios, and API priorities, see [Developing User-Agent](../../web/web-default-userAgent.md).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5228,13 +5390,6 @@ For details about the default User-Agent definition, application scenarios, and 
 | userAgent      | string  | Yes  | Information about the custom user agent. It is recommended that you obtain the current default user agent through [getDefaultUserAgent](#getdefaultuseragent14) and then customize the obtained user agent.|
 | hosts      | Array\<string>  | Yes  | List of domain names related to the custom user agent. Only the latest list is retained each time the API is called. The maximum number of entries is 20,000, and the excessive entries are automatically truncated.|
 
-**Error codes**
-
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **Example**
 
@@ -5277,7 +5432,7 @@ struct WebComponent {
 
 static setConnectionTimeout(timeout: number): void
 
-Sets the network connection timeout. You can use the **onErrorReceive** method in the **Web** component to obtain the timeout error code.
+Sets the network connection timeout interval. You can use the **onErrorReceive** method in the **Web** component to obtain the timeout error code. If this API is not called, the default timeout interval is **30** seconds.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5289,7 +5444,7 @@ Sets the network connection timeout. You can use the **onErrorReceive** method i
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5350,7 +5505,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.              |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.              |
 
 **Example**
 
@@ -5376,7 +5531,8 @@ export default class EntryAbility extends UIAbility {
 enableSafeBrowsing(enable: boolean): void
 
 Enables the safe browsing feature. This feature is forcibly enabled and cannot be disabled for identified untrusted websites.
-By default, this feature does not take effect. OpenHarmony provides only the malicious website blocking web UI. The website risk detection and web UI display features are implemented by the vendor. You are advised to listen for [DidStartNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h#:~:text=virtual%20void-,DidStartNavigation) and [DidRedirectNavigation](https://gitee.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h#:~:text=virtual%20void-,DidRedirectNavigation) in **WebContentsObserver** to detect risks.
+
+By default, this feature does not take effect. OpenHarmony provides only the malicious website blocking web UI. The website risk detection and web UI display features are implemented by the vendor. You are advised to listen for [DidStartNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h) and [DidRedirectNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h) in **WebContentsObserver** for detection.
 
 > **NOTE**
 > 
@@ -5392,7 +5548,7 @@ By default, this feature does not take effect. OpenHarmony provides only the mal
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5483,7 +5639,7 @@ Enables intelligent tracking prevention.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5538,7 +5694,7 @@ Obtains whether intelligent tracking prevention is enabled on this web page.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5592,7 +5748,7 @@ Adds a list of domain names that bypass intelligent tracking prevention.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                 |
 | -------- | ------------------------ |
@@ -5646,7 +5802,7 @@ Deletes the domain names from the list of domain names added through the **addIn
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                 |
 | -------- | ------------------------ |
@@ -5694,7 +5850,7 @@ Deletes all domain names from the list of domain names added through the **addIn
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                 |
 | -------- | ------------------------ |
@@ -5764,6 +5920,10 @@ enableAdsBlock(enable: boolean): void
 
 Enables ad blocking.
 
+> **NOTE**
+>
+> - The ad blocking feature works only for the release-type application, not the debug-type application.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Parameters**
@@ -5778,7 +5938,7 @@ Enables ad blocking.
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5835,7 +5995,7 @@ Checks whether ad blocking is enabled.
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5875,6 +6035,7 @@ struct WebComponent {
 isAdsBlockEnabledForCurPage() : boolean
 
 Checks whether ad blocking is enabled on this web page.
+
 After ads blocking is enabled for the **Web** component, this feature is enabled for all web pages by default. You can call [addAdsBlockDisallowedList](./arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12) to disable the feature for specific domains.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -5891,7 +6052,7 @@ After ads blocking is enabled for the **Web** component, this feature is enabled
 >
 > Since API version 18, exception 801 will be thrown when this API is called on a device that does not support ad blocking.
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -5942,7 +6103,7 @@ Sets the ArkWeb render subprocess mode.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                 |
 | -------- | ------------------------ |
@@ -6079,12 +6240,12 @@ Loads the specified URL with **postData** using the POST method. If **url** is n
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid.                |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **Example**
@@ -6155,7 +6316,7 @@ Creates a **PrintDocumentAdapter** instance to provide content for printing.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                   |
 | -------- | -------------------------------------------------------------------------- |
@@ -6300,11 +6461,11 @@ Sets whether this web page is scrollable.
 | Name| Type| Mandatory| Description              |
 | ------ | -------- | ---- | ---------------------- |
 | enable     | boolean   | Yes  | Whether this web page is scrollable.<br>The value **true** indicates that this web page is scrollable, and **false** indicates the opposite.<br>Default value: **true**.|
-| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  No| Scrolling type supported by the web page. The default value is supported.<br> - If the value of **enable** is set to **false**, the specified **ScrollType** is disabled. If **ScrollType** is set to the default value, all scrolling types are disabled.<br> - If the value of **enable** is set to **true**, all scrolling types are enabled regardless of the value of **ScrollType**.|
+| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  No| Scrolling type supported by the web page. The default value is supported.<br> - If the value of **enable** is set to **false**, the specified **ScrollType** is disabled. If **ScrollType** is set to the default value, all scrolling types are disabled.<br> - If the value of **enable** is set to **true**, all scrolling types are enabled regardless of the value of **ScrollType**.<br>If **null** or **undefined** is passed, error code **401** is thrown.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -6394,7 +6555,7 @@ struct WebComponent {
 
 setPrintBackground(enable: boolean): void
 
-Sets whether to print the web page background.
+Sets whether to print the background of a web page. If the setting of this API is inconsistent with that of [PrintAttributes](../apis-basic-services-kit/js-apis-print.md#printattributes11), the setting of this API takes precedence.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -6406,7 +6567,7 @@ Sets whether to print the web page background.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -6991,7 +7152,7 @@ struct WebComponent {
       Button('getMediaPlaybackState')
         .onClick(() => {
           try {
-            console.log("MediaPlaybackState : " + this.controller.getMediaPlaybackState());
+            console.info("MediaPlaybackState : " + this.controller.getMediaPlaybackState());
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -7019,7 +7180,7 @@ Sets the [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md) class for 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -7116,7 +7277,7 @@ Sets the WebSchemeHandler used to intercept ServiceWorker for all Web components
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -7273,8 +7434,10 @@ struct WebComponent {
   }
 }
 ```
+
 HTML file to be loaded:
- ```html
+
+```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
@@ -7284,7 +7447,7 @@ HTML file to be loaded:
   <body>
     <video id="video" width="400px" height="400px" autoplay>
     </video>
-    <input type="button" title="HTML5 Camera" value="Enable Camera" onclick="getMedia()"/>
+    <input type="button" title="HTML5 Camera" value="Enable Camera" onclick="getMedia()" />
     <script>
       function getMedia() {
         let constraints = {
@@ -7304,7 +7467,7 @@ HTML file to be loaded:
     </script>
   </body>
 </html>
- ```
+```
 
 ## stopCamera<sup>12+</sup>
 
@@ -7351,6 +7514,7 @@ For the complete sample code, see [startCamera](#startcamera12).
 precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<number\>
 
 Precompiles JavaScript to generate the bytecode cache or update the existing bytecode cache based on the provided parameters.
+
 The API determines whether to update the existing bytecode cache based on the provided file information, E-Tag response header, and Last-Modified response header.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -7371,7 +7535,7 @@ The API determines whether to update the existing bytecode cache based on the pr
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -7503,7 +7667,7 @@ The API is recommended for use in conjunction with dynamic components. Employ of
    }
    ```
 
-JavaScript resources can also be obtained through [network requests](../apis-network-kit/js-apis-http.md). However, the HTTP response header obtained using this method is not in the standard HTTP response header format. Additional steps are required to convert the response header into the standard HTTP response header format before use. If the response header obtained through a network request is e-tag, convert it to E-Tag before using it.
+   JavaScript resources can also be obtained through [network requests](../apis-network-kit/js-apis-http.md). However, the HTTP response header obtained using this method is not in the standard HTTP response header format. Additional steps are required to convert the response header into the standard HTTP response header format before use. If the response header obtained through a network request is e-tag, convert it to E-Tag before using it.
 
 4. Compile the code of the service component.
 
@@ -7577,7 +7741,7 @@ JavaScript resources can also be obtained through [network requests](../apis-net
      build() {
        Column() {
          // Load the Web component used by the service at a proper time. In this example, the button is clicked.
-         Button ("Load Page")
+         Button("Load Page")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
                url:  "https://www.example.com/business.html",
@@ -7599,6 +7763,7 @@ To update the locally generated compiled bytecode, change the value of E-Tag or 
 onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 
 Called when the [application takes over media playback of the web page](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12) and a media file is played on the web page.
+
 If the application does not take over media playback on the web page, this callback is not invoked.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -7916,10 +8081,15 @@ struct WebComponent {
 injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-webview-i.md#offlineresourcemap12)\>): void
 
 Injects local offline resources to the memory cache to improve the initial page startup speed.
+
 Resources in the memory cache are automatically managed by the ArkWeb engine. When the injected resources are excessive and cause significant memory pressure, the engine will automatically release unused resources. It is advisable to avoid injecting a large number of resources into the memory cache.
+
 Under normal circumstances, the validity period of the resources is controlled by the provided Cache-Control or Expires response header, with a default validity period of 86,400 seconds, which is one day.
+
 The MIME type of the resources is configured through the provided Content-Type response header. The Content-Type must comply with standards; otherwise, the resources cannot be used correctly. For resources of type MODULE_JS, a valid MIME type must be provided. For other types, the MIME type is optional.
+
 Resources injected in this mode can be loaded only through HTML tags. If a **script** tag on the web page uses the **crossorigin** attribute, the **Cross-Origin** response header must be set in the **responseHeaders** parameter of the API. The value for this header should be **anonymous** or **use-credentials**.
+
 After **webview.WebviewController.SetRenderProcessMode(webview.RenderProcessMode.MULTIPLE)** is called, the application starts the multi-rendering process mode. This API does not take effect in this scenario.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -7936,9 +8106,8 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed.                                     |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.  |
 
 **Example**
 
@@ -8159,7 +8328,7 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
      build() {
        Column() {
          // Load the Web component used by the service at a proper time. In this example, the button is clicked.
-         Button ("Load Page")
+         Button("Load Page")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
                url: "https://www.example.com/business.html",
@@ -8206,7 +8375,7 @@ Sets the IP address of the host after domain name resolution.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
@@ -8232,7 +8401,7 @@ Clears the IP address of a specified host after domain name resolution.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
@@ -8310,7 +8479,7 @@ struct Example{
 
   build(){
     Column(){
-      Button ("Screenshot")
+      Button("Screenshot")
         .onClick(()=>{
           try {
             let surfaceId = this.controller.getSurfaceId();
@@ -8355,7 +8524,7 @@ Sets the URL trustlist of the web page. Only URLs in the trustlist can be loaded
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -8429,7 +8598,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-Sets a path list. When a file protocol accesses resources in the path list, it can access the local files across domains. In addition, when a path list is set, the file protocol can access only the resources in the path list. The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overwritten by that of this API. The paths in the list must be any of the following:
+Sets a path list. When the file protocol accesses resources in the path list, cross-origin access to local files and other online resources is allowed. In addition, when a path list is set, the file protocol can access only the resources in the path list. The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overwritten by that of this API. The paths in the list must be any of the following:
 
 1. The path of subdirectory of the application file directory. (The application file directory is obtained using [Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in the Ability Kit.) For example:
 
@@ -8438,8 +8607,8 @@ Sets a path list. When a file protocol accesses resources in the path list, it c
 
 2. The path of application resource directory or its subdirectory. (The application resource directory is obtained from [Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in the Ability Kit.) For example:
 
-* /data/storage/el1/bundle/entry/resource/resfile
-* /data/storage/el1/bundle/entry/resource/resfile/example
+* /data/storage/el1/bundle/entry/resources/resfile
+* /data/storage/el1/bundle/entry/resources/resfile/example
 
 3. Since API version 21, the application cache directory and its subdirectories are also supported. (The application cache directory is obtained through [Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in Ability Kit). For example:
 
@@ -8464,7 +8633,7 @@ If a path in the list is not of the preceding paths, error code 401 is reported 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
@@ -8675,7 +8844,7 @@ Clears the cache occupied by **Web** component based on the specified memory pre
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -8728,7 +8897,7 @@ Obtains the data stream of a specified web page using an asynchronous callback.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -8811,7 +8980,7 @@ Obtains the data stream of a specified web page using a promise.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -8912,7 +9081,7 @@ struct WebComponent {
         Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`)
       }
       .margin({ top: 10, bottom: 10 })
-      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
         .key("web_01")
         .overScrollMode(this.mode)
         .onTouch(() => {
@@ -8941,7 +9110,7 @@ struct WebComponent {
 ```
   HTML file to be loaded:
   ```html
-  <!--index.html-->
+  <!-- index.html -->
   <!DOCTYPE html>
   <html>
   <head>
@@ -9085,8 +9254,8 @@ struct WebComponent {
         .onClick(() => {
           try {
             let hitValue = this.controller.getLastHitTest();
-            console.log("hitType: " + hitValue.type);
-            console.log("extra: " + hitValue.extra);
+            console.info("hitType: " + hitValue.type);
+            console.info("extra: " + hitValue.extra);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -9175,7 +9344,7 @@ Deregisters the attach state event of **WebViewController**. After the deregistr
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Attach state event of **WebViewController**, whose value is fixed to **controllerAttachStateChange**.|
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | No| Callback triggered when the attach state of **WebViewController** changes. By default, this parameter is left blank. If **Callback** is specified, only the specified callback is deregistered. Otherwise, all callbacks will be deregistered.|
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | No| Callback triggered when the attach state of **WebViewController** changes. By default, this parameter is left blank. If **Callback** is specified, only the specified callback is deregistered. Otherwise, all callbacks will be deregistered.<br>If **null** or **undefined** is passed, error code **401** is thrown.|
 
 **Example**
 
@@ -9311,7 +9480,7 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 | Name             | Type   | Mandatory  |  Description|
 | ------------------ | ------- | ---- | ------------- |
 | webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** indicates that web page debugging is enabled, and **false** indicates the opposite.|
-| port               | number  | Yes  | Specifies the TCP port number of the devtools service. If no port is specified, this API is equivalent to the [setWebDebuggingAccess] (#setwebdebuggingaccess) API.<br>Value range: (1024, 65535]<br>If the value of port is within the range of [0, 1024], the **BusinessError** exception is thrown. The error code is **17100023**.|
+| port               | number  | Yes  | Specifies the TCP port number of the DevTools service. If no port is specified, this API is equivalent to the [setWebDebuggingAccess] (#setwebdebuggingaccess) API.<br>Value range: (1024, 65535]<br>If the value of port is within the range of [0, 1024], the **BusinessError** exception is thrown. The error code is **17100023**.|
 
 
 **Error codes**
@@ -9366,7 +9535,7 @@ Obtains the loading progress of the current web page.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -9438,7 +9607,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let hitTestType = this.controller.getHitTest();
-            console.log("hitTestType: " + hitTestType);
+            console.info("hitTestType: " + hitTestType);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -9493,8 +9662,8 @@ struct WebComponent {
         .onClick(() => {
           try {
             let hitValue = this.controller.getHitTestValue();
-            console.log("hitType: " + hitValue.type);
-            console.log("extra: " + hitValue.extra);
+            console.info("hitType: " + hitValue.type);
+            console.info("extra: " + hitValue.extra);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -9523,11 +9692,11 @@ Sets the bottom avoidance height of the visible viewport on the web page.
 
 | Name| Type| Mandatory| Description              |
 | ------ | -------- | ---- | ---------------------- |
-| avoidHeight   | number   | Yes  | Bottom avoidance height of the visible viewport on the web page.<br>Default value: **0**.<br>Unit: vp.<br>Value range: [0, height of the **Web** component]<br>If the value is set to an invalid value, the boundary value is used.|
+| avoidHeight   | number   | Yes  | Bottom avoidance height of the visible viewport on the web page.<br>Unit: vp.<br>Value range: [0, height of the **Web** component]<br>If the value is less than 0, the value **0** is used. If the value is greater than the height of the **Web** component, the height of the **Web** component is used.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -9732,7 +9901,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let isEnabled: boolean = webview.WebviewController.isPrivateNetworkAccessEnabled();
-            console.log("isPrivateNetworkAccessEnabled:", isEnabled);
+            console.info("isPrivateNetworkAccessEnabled:", isEnabled);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -9758,7 +9927,7 @@ Obtains the prediction information about blankless loading (for details, see [Bl
 > - The default size of the persistent cache capacity is 30 MB (about 30 pages). You can set the cache capacity by calling [setBlanklessLoadingCacheCapacity](#setblanklessloadingcachecapacity20). For details, see the description of this API. When the maximum capacity is exceeded, the cache is updated based on the Least Recently Used (LRU) mechanism. The persistent cache data that has been stored for more than seven days is automatically cleared. After the cache is cleared, the optimization effect appears when the page is loaded for the third time.
 > - If the snapshot similarity (**similarity** in [BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20)) is extremely low, check whether the **key** value is correct.
 > - After this API is called, page loading snapshot detection and transition frame generation calculation are enabled, which generates certain resource overhead.
-> - Blankless loading consumes certain resources, which depends on the resolution of the **Web** component. When the width and height of the resolution are respectively **w** and **h**, the peak memory usage increases by about **12×w×h** B in the page-opening phase. After the page is opened, the memory is reclaimed, which does not affect the stable memory usage. When the size of the solid-state application cache is increased, the increased cache of each page is about **w×h/10** B and the cache is located in the application cache.
+> - Blankless loading consumes certain resources, which depends on the resolution of the **Web** component. When the width and height of the resolution are respectively **w** and **h**, the peak memory usage increases by about **12 × w × h** B in the page-opening phase. After the page is opened, the memory is reclaimed, which does not affect the stable memory usage. When the size of the solid-state application cache is increased, the increased cache of each page is about **w × h/10** B and the cache is located in the application cache.
 > - Add the **ohos.permission.INTERNET** and **ohos.permission.GET_NETWORK_INFO** permissions to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -9783,7 +9952,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **Example**
 
@@ -9810,7 +9979,7 @@ struct WebComponent {
                   this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
                 }
               } else {
-                console.log('getBlankless info err');
+                console.info('getBlankless info err');
               }
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -9842,7 +10011,7 @@ Sets whether to enable blankless loading. This API must be used together with [g
 | Name  | Type   | Mandatory| Description                     |
 | -------- | ------- | ---- | -------------------------------------- |
 | key | string | Yes| Key value that uniquely identifies the page. This value must be the same as the **key** value of the **getBlanklessInfoWithKey** API.<br>The value cannot be empty and can contain a maximum of 2048 characters.<br>When an invalid value is set, the error code **WebBlanklessErrorCode** is returned, and the API does not take effect.|
-| is_start | boolean | Yes| Whether to enable frame interpolation. The value **true** means to enable frame interpolation, and **false** means the opposite.<br>Default value: **false**.|
+| is_start | boolean | Yes| Whether to enable frame interpolation. The value **true** means to enable frame interpolation, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Return value**
 
@@ -9856,7 +10025,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **Example**
 
@@ -9883,10 +10052,90 @@ struct WebComponent {
                   this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
                 }
               } else {
-                console.log('getBlankless info err');
+                console.info('getBlankless info err');
               }
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+            return false;
+        })
+    }
+  }
+}
+```
+
+## setBlanklessLoadingWithParams<sup>23+</sup>
+
+setBlanklessLoadingWithParams(key: string, param: BlanklessLoadingParam): WebBlanklessErrorCode
+
+Sets the configuration parameters for frame interpolation during blankless loading. This API must be used with [getBlanklessInfoWithKey](#getblanklessinfowithkey20). Compared with [setBlanklessLoadingWithKey](#setblanklessloadingwithkey20), this API supports more parameter settings for frame interpolation during blankless loading, including the frame interpolation duration, cache data validity period, and custom callback after frame interpolation is complete.
+
+> **NOTE**
+>
+> - This API must be called after the page loading API is triggered. Other restrictions are the same as those of [getBlanklessInfoWithKey](#getblanklessinfowithkey20).
+> - The page must be loaded in the component that calls this API.
+> - When the similarity is low, the system will deem the scene change too abrupt and frame insertion will fail.
+> - Add the **ohos.permission.INTERNET** and **ohos.permission.GET_NETWORK_INFO** permissions to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                     |
+| -------- | ------- | ---- | -------------------------------------- |
+| key | string | Yes| Key value that uniquely identifies the page. This value must be the same as the **key** value of the **getBlanklessInfoWithKey** API.<br>The value cannot be empty and can contain a maximum of 2048 characters.<br>When an invalid value is set, the error code **WebBlanklessErrorCode** is returned, and the API does not take effect.|
+| param | [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) | Yes| Parameters for frame interpolation of blankless loading.|
+
+**Return value**
+
+| Type                | Description                     |
+| -------------------- | ------------------------- |
+| [WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20) | API calling result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+|  801     | Capability not supported. |
+
+**Example**
+
+```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+       .javaScriptAccess(true)
+       .onLoadIntercept((event) => {
+            try {
+              let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
+              if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
+                let data = new Date(2026, 5, 10, 0, 0, 0, 0);
+                let param: webview.BlanklessLoadingParam = {
+                  enable: info.similarity > 0.4 && info.similarity < 2000,
+                  duration: info.loadingTime,
+                  expirationTime: data.getTime(),
+                  callback: (info: webview.BlanklessFrameInterpolationInfo)=>{
+                    // Data monitoring.
+                  },
+                };
+                this.controller.setBlanklessLoadingWithParams('http://www.example.com/page1', param);
+              } else {
+                console.info('getBlankless info err');
+              }
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},
+                Message: ${(error as BusinessError).message}`);
             }
             return false;
         })
@@ -9913,7 +10162,7 @@ In an applet or web application, when the content changes significantly during p
 
 | Name  | Type   | Mandatory| Description                     |
 | -------- | ------- | ---- | -------------------------------------- |
-| keys | Array\<string\> | No| Key value list on the pages using the blankless optimization solution. The **key** value has been specified in [getBlanklessInfoWithKey](#getblanklessinfowithkey20).<br>Default value: key list of all pages cached by the blankless optimization solution.<br>The key length cannot exceed 2048 characters, and the number of keys must be less than or equal to 100. The key value is the same as that input to the **Web** component during page loading.<br>If the key length exceeds 2048 characters, the key does not take effect. If the key length exceeds 100 characters, the first 100 characters are used. If the key length is NULL, the default value is used.|
+| keys | Array\<string\> | No| Key value list on the pages using the blankless optimization solution. The **key** value has been specified in [getBlanklessInfoWithKey](#getblanklessinfowithkey20).<br>Default value: key list of all pages cached by the blankless optimization solution.<br>Valid value range: The key length cannot exceed 2048 characters, and the number of keys must be less than or equal to 100. The key value is the same as that input to the **Web** component during page loading.<br>Invalid value setting behavior: If **undefined** or **null** is passed, error code **401** is thrown. If the key length exceeds 2048, the key does not take effect. If the key length exceeds 100, the first 100 values are used. If the key is empty, the default value is used.|
 
 **Error codes**
 
@@ -9921,7 +10170,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **Example**
 
@@ -9932,8 +10181,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate");
-    // If the web page of the application will be greatly changed on May 6, 2022, for example, during product promotion activities, you are advised to clear the frame interpolation to optimize the cache.
+    console.info("EntryAbility onCreate");
+    // If the web page of the application will be greatly changed on June 10, 2025, for example, during product promotion activities, you are advised to clear the frame interpolation to optimize the cache.
     webview.WebviewController.initializeWebEngine();
     let pageUpdateTime: number = Date.UTC(2025, 5, 10, 0, 0, 0, 0);
     let pageUpdateTime1: number = Date.UTC(2025, 5, 11, 0, 0, 0, 0);
@@ -9947,7 +10196,7 @@ export default class EntryAbility extends UIAbility {
       }
     }
     AppStorage.setOrCreate("abilityWant", want);
-    console.log("EntryAbility onCreate done");
+    console.info("EntryAbility onCreate done");
   }
 }
 ```
@@ -9956,7 +10205,7 @@ export default class EntryAbility extends UIAbility {
 
 static setBlanklessLoadingCacheCapacity(capacity: number): number
 
-Sets the persistent cache capacity of the blankless loading solution and returns the value that takes effect. The default cache capacity is 30 MB, and the maximum cache capacity is 100 MB. When this limit is exceeded, transition frames that are not frequently used are eliminated.
+Sets the persistent cache capacity of the blankless loading solution and returns the value that takes effect. If the API is not explicitly called, the default cache capacity is 30 MB. When this limit is exceeded, transition frames that are not frequently used are eliminated.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -9964,7 +10213,7 @@ Sets the persistent cache capacity of the blankless loading solution and returns
 
 | Name  | Type   | Mandatory| Description                     |
 | -------- | ------- | ---- | -------------------------------------- |
-| capacity | number | Yes| Persistent cache capacity, in MB. The maximum value is 100 MB.<br>The default value is 30 MB.<br>The value ranges from 0 to 100. If this parameter is set to **0**, no cache capacity is available and the functionality is disabled globally.<br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect.|
+| capacity | number | Yes| Persistent cache capacity, in MB. The maximum value is 100 MB.<br>The value ranges from 0 to 100. If this parameter is set to **0**, no cache capacity is available and the functionality is disabled globally.<br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect.|
 
 **Return value**
 
@@ -9978,7 +10227,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **Example**
 
@@ -9989,7 +10238,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate");
+    console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
     // Set the cache capacity to 10 MB.
     try {
@@ -9998,7 +10247,7 @@ export default class EntryAbility extends UIAbility {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     AppStorage.setOrCreate("abilityWant", want);
-    console.log("EntryAbility onCreate done");
+    console.info("EntryAbility onCreate done");
   }
 }
 ```
@@ -10011,7 +10260,7 @@ Sets the destroy mode of the **Web** component. The destroy mode of the **Web** 
 
 > **NOTE**
 >
-> [WebDestroyMode.FAST_MODE](./arkts-apis-webview-e.md#webdestroymode20) changes the time when the **Web** component is destroyed. When it is used, pay attention to the incorrect implementation that depends on the destroy time of the **Web** component. For example, when a **WebViewController** is called in fast mode rather than using [WebDestroyMode.NORMAL_MODE](./arkts-apis-webview-e.md#webdestroymode20), the unbinding exception is more likely to be triggered. In this case, the application needs to capture the exception, or use [getAttachState](#getattachstate20) to obtain the attach state to avoid stability problems.
+> [WebDestroyMode.FAST_MODE](./arkts-apis-webview-e.md#webdestroymode20) changes the time when the **Web** component is destroyed. When it is used, pay attention to the incorrect implementation that depends on the destroy time of the **Web** component. For example, when a **WebViewController** is called in fast mode rather than using [WebDestroyMode.NORMAL_MODE](./arkts-apis-webview-e.md#webdestroymode20), the unbinding exception (**17100001**) is more likely to be triggered. In this case, the application needs to capture the exception, or use [getAttachState](#getattachstate20) to obtain the attach state to avoid stability problems.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -10037,6 +10286,72 @@ export default class EntryAbility extends UIAbility {
     console.info("EntryAbility onCreate done");
   }
 }
+```
+
+## setScrollbarMode<sup>23+</sup>
+
+static setScrollbarMode(scrollbarMode: ScrollbarMode): void
+
+Sets the global scrollbar mode in the web page. When this API is not explicitly called, [ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode23) is used by default, indicating that the scroll bar is not always displayed.
+
+> **NOTE**
+>
+> - You can set whether to always display the web scrollbar of the current application based on the scrollbar mode.
+> - If the [forceDisplayScrollBar](./arkts-basic-components-web-attributes.md#forcedisplayscrollbar14) API is set at the same time as this API, the setting of **forceDisplayScrollBar** does not take effect.
+> - This API must be called before WebViewController is bound to a **Web** component.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                     |
+| -------- | ------- | ---- | -------------------------------------- |
+| scrollbarMode | [ScrollbarMode](./arkts-apis-webview-e.md#scrollbarmode23) | Yes| Scroll bar mode.|
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  aboutToAppear(): void {
+    webview.WebviewController.setScrollbarMode(webview.ScrollbarMode.FORCE_DISPLAY_SCROLLBAR);
+  }
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .height('90%')
+    }
+  }
+}
+```
+
+HTML file to be loaded:
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <style>
+      body {
+        width:2560px;
+        height:2560px;
+        padding-right:170px;
+        padding-left:170px;
+        border:5px solid blueviolet;
+      }
+    </style>
+</head>
+<body>
+Scroll Test
+</body>
+</html>
 ```
 
 ## setActiveWebEngineVersion<sup>20+</sup>
@@ -10073,12 +10388,12 @@ import { webview } from '@kit.ArkWeb';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate")
+    console.info("EntryAbility onCreate")
     webview.WebviewController.setActiveWebEngineVersion(webview.ArkWebEngineVersion.M114)
     if (webview.WebviewController.getActiveWebEngineVersion() == webview.ArkWebEngineVersion.M114) {
-      console.log("Active Web Engine Version set to M114")
+      console.info("Active Web Engine Version set to M114")
     }
-    console.log("EntryAbility onCreate done")
+    console.info("EntryAbility onCreate done")
   }
 }
 ```
@@ -10101,6 +10416,40 @@ Obtains the current ArkWeb kernel version.
 
 For details, see [setActiveWebEngineVersion](#setactivewebengineversion20).
 
+## isActiveWebEngineEvergreen<sup>23+</sup>
+
+static isActiveWebEngineEvergreen(): boolean
+
+Checks whether the system is using the evergreen kernel, that is, the latest kernel.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type| Description|
+| ------ | ------ |
+| boolean | Whether the system is using the evergreen kernel. If the system is using the evergreen kernel, **true** is returned. Otherwise, **false** is returned.|
+
+**Example**
+
+This example shows how to determine whether the evergreen kernel is used in the EntryAbility creation phase.
+
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info("EntryAbility onCreate")
+    if (webview.WebviewController.isActiveWebEngineEvergreen()) {
+      console.info("Active Web Engine is Evergreen")
+    }
+    console.info("EntryAbility onCreate done")
+  }
+}
+```
+
 ## setAutoPreconnect<sup>21+</sup>
 
 static setAutoPreconnect(enabled: boolean): void
@@ -10122,8 +10471,6 @@ This API must be called before [initializeWebEngine()](#initializewebengine) is 
 ```ts
 // EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 export default class EntryAbility extends UIAbility {
@@ -10166,7 +10513,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let isEnabled: boolean = webview.WebviewController.isAutoPreconnectEnabled();
-            console.log("isAutoPreconnectEnabled:", isEnabled);
+            console.info("isAutoPreconnectEnabled:", isEnabled);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -10187,7 +10534,7 @@ Queries the currently effective site isolation mode.
 
 | Type                                     | Description                                                        |
 | ----------------------------------------- | ------------------------------------------------------------ |
-| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | Site isolation mode.<br>getSiteIsolationMode() queries the currently effective site isolation mode.
+| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | Site isolation mode.<br>getSiteIsolationMode() queries the currently effective site isolation mode.|
 
 
 **Example**
@@ -10242,7 +10589,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17100001 |Init Error .  |
+| 17100001 |Init error. Possible causes: 1. Site Isolation mode is already set by the developer. 2. Site Isolation mode cannot be strict in single-render-process mode. 3. Site Isolation mode cannot be changed while Secure Shield mode is active.  |
 
 **Example**
 
@@ -10250,19 +10597,555 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
 
-  aboutToAppear() {
+  build() {
     Column() {
       Button('setSiteIsolationMode')
         .onClick(() => {
-          webview.WebviewController.setSiteIsolationMode(web_webview.SiteIsolationMode.PARTIAL);          
+          try {
+            webview.WebviewController.setSiteIsolationMode(webview.SiteIsolationMode.PARTIAL);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
         })
       Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## setSocketIdleTimeout<sup>21+</sup>
+
+static setSocketIdleTimeout(timeout: number): void
+
+Sets the timeout interval for used sockets to stay idle in the **Web** component. If the value is different from the timeout interval of existing idle sockets, the existing idle sockets are cleared according to the new value.
+
+If this API is not used to set the timeout interval for idle sockets, the default value **300s** is used for the **Web** component.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                                                    |
+| -------- | ------- | ---- | -------------------------------------------------------- |
+| timeout | number | Yes  | Timeout interval for used sockets to stay idle in the **Web** component, in seconds.<br>Value range: [30, 300].<br>If the value is less than 30, the value **30** takes effect. If the value is greater than 300, the value **300** takes effect.|
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        webview.WebviewController.setSocketIdleTimeout(200);
+        AppStorage.setOrCreate("abilityWant", want);
+    }
+}
+```
+## setSoftKeyboardBehaviorMode<sup>22+</sup>
+
+setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void
+
+Set the behavior mode of the soft keyboard. If this API is not explicitly called, the system automatically hides or shows the soft keyboard when the **Web** component loses or gains focus, or when its status becomes inactive or active.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                     |
+| -------- | ------- | ---- | -------------------------------------- |
+| mode | [WebSoftKeyboardBehaviorMode](./arkts-apis-webview-e.md#websoftkeyboardbehaviormode22) | Yes| Behavior mode of the web soft keyboard.|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+
+**Example**
+
+```ts
+// index.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('Web InActive').onClick(() => {
+        this.controller.setSoftKeyboardBehaviorMode(webview.WebSoftKeyboardBehaviorMode.DISABLE_AUTO_KEYBOARD_ON_ACTIVE);
+      })
+      Web({ src: 'www.example.com', controller: this.controller })
+        .keyboardAvoidMode(WebKeyboardAvoidMode.RETURN_TO_UICONTEXT)
+    }
+  }
+}
+```
+
+## resumeMicrophone<sup>23+</sup>
+
+resumeMicrophone(): void
+
+Resumes microphone capture on the current web page. Before using the microphone , add the **ohos.permission.MICROPHONE** permission to **module.json5**. For details about how to add the permission, see [Declaring Permissions in the Configuration File](../../security/AccessToken/declare-permissions.md).
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+
+**Example**
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, PermissionRequestResult, common } from '@kit.AbilityKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  uiContext: UIContext = this.getUIContext();
+
+  aboutToAppear(): void {
+    let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'], (err: BusinessError, data: PermissionRequestResult) => {
+      console.info('data:' + JSON.stringify(data));
+      console.info('data permissions:' + data.permissions);
+      console.info('data authResults:' + data.authResults);
+    })
+  }
+
+  build() {
+    Column() {
+      Button("resumeMicrophone").onClick(() => {
+        try {
+          this.controller.resumeMicrophone();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Button("pauseMicrophone").onClick(() => {
+        try {
+          this.controller.pauseMicrophone();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Button("stopMicrophone").onClick(() => {
+        try {
+          this.controller.stopMicrophone();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onPermissionRequest((event) => {
+          if (event) {
+            this.uiContext.showAlertDialog({
+              title: 'title',
+              message: 'text',
+              primaryButton: {
+                value: 'deny',
+                action: () => {
+                  event.request.deny();
+                }
+              },
+              secondaryButton: {
+                value: 'onConfirm',
+                action: () => {
+                  event.request.grant(event.request.getAccessibleResource());
+                }
+              },
+              cancel: () => {
+                event.request.deny();
+              }
+            })
+          }
+        })
+        .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateChangeInfo) => {
+          console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
+        })
+    }
+  }
+}
+```
+
+HTML file to be loaded:
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="UTF-8">
+ </head>
+ <body>
+   <video id="video" width="400px" height="400px" autoplay="autoplay">
+   </video>
+   <input type="button" title="HTML5 Microphone" value="Enable Microphone" onclick="getMedia()" />
+   <script>
+     function getMedia() {
+       let constraints = {
+         video: {
+           width: 500,
+           height: 500
+         },
+         audio: true
+       }
+       let video = document.getElementById("video");
+       let promise = navigator.mediaDevices.getUserMedia(constraints);
+       promise.then(function(MediaStream) {
+         video.srcObject = MediaStream;
+         video.play();
+       })
+     }
+   </script>
+ </body>
+</html>
+```
+
+## pauseMicrophone<sup>23+</sup>
+
+pauseMicrophone(): void
+
+Pauses microphone capture on the current web page.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+
+**Example**
+
+For the complete sample code, see [resumeMicrophone](#resumemicrophone23).
+
+## stopMicrophone<sup>23+</sup>
+
+stopMicrophone(): void
+
+Stops microphone capture on the current web page.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+
+**Example**
+
+For the complete sample code, see [resumeMicrophone](#resumemicrophone23).
+
+## setUserAgentClientHintsEnabled<sup>24+</sup>
+
+static setUserAgentClientHintsEnabled(enabled: boolean): void
+
+Sets whether to enable the UserAgent Client Hints feature.
+
+> **NOTE**
+>
+> User-Agent Client Hints (UA-CH) is a privacy protection mechanism that replaces the traditional **User-Agent** string. It transfers client information through on-demand requests and structured data, reducing the risk of excessive tracking.
+>
+> If this method is not used, the UserAgent Client Hints feature is disabled by default.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name             | Type   | Mandatory  |  Description|
+| ------------------ | ------- | ---- | ------------- |
+| enabled | boolean | Yes  | Whether to enable the UserAgent Client Hints feature.<br>**true** to enable, **false** otherwise.|
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State userAgent: string = "";
+
+  build() {
+    Column() {
+      Button('setUserAgentMetadata').fontSize(20)
+        .onClick((e: ClickEvent) => {
+          try {
+            let arrayVersions: Array<webview.UserAgentBrandVersion> = new Array<webview.UserAgentBrandVersion>;
+            let brandVersion:webview.UserAgentBrandVersion = new webview.UserAgentBrandVersion();
+            brandVersion.setBrand("brand OpenHarmony");
+            brandVersion.setMajorVersion("major version 1.0");
+            brandVersion.setFullVersion("blank full version 1.0");
+            arrayVersions.push(brandVersion);
+            let metadata:webview.UserAgentMetadata = new webview.UserAgentMetadata();
+            metadata.setBrandVersionList(arrayVersions);
+            metadata.setFormFactors([webview.UserAgentFormFactor.AUTOMOTIVE]);
+            metadata.setArchitecture("arch OpenHarmony");
+            metadata.setBitness("bitness 64");
+            metadata.setFullVersion("full version OpenHarmony");
+            metadata.setMobile(true);
+            metadata.setModel("model OpenHarmony");
+            metadata.setPlatform("platform OpenHarmony");
+            metadata.setPlatformVersion("platform version OpenHarmony");
+            metadata.setWow64(false);
+            this.controller.setUserAgentMetadata(this.userAgent, metadata);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('getUserAgentMetadata').fontSize(20)
+        .onClick((e: ClickEvent) => {
+          try {
+            this.userAgent = this.controller.getUserAgent();
+            let metadata = this.controller.getUserAgentMetadata(this.userAgent);
+            let versionList = metadata.getBrandVersionList();
+            for(let i = 0; i < versionList.length; i++) {
+              console.info("Brand:" + versionList[i].getBrand());
+              console.info("MajorVersion " + versionList[i].getMajorVersion());
+              console.info("FullVersion " + versionList[i].getFullVersion());
+            }
+            let FormFactors = metadata.getFormFactors();
+            for(let j = 0; j < FormFactors.length; j++) {
+              console.info("FormFactor:" + FormFactors[j]);
+            }
+            console.info("Bitness:" + metadata.getBitness());
+            console.info("FullVersion:" + metadata.getFullVersion());
+            console.info("Mobile:" + metadata.getMobile());
+            console.info("Model:" + metadata.getModel());
+            console.info("Platform:" + metadata.getPlatform());
+            console.info("PlatformVersion:" + metadata.getPlatformVersion());
+            console.info("Wow64:" + metadata.getWow64());
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            this.userAgent = this.controller.getUserAgent();
+            let metaData: webview.UserAgentMetadata = new webview.UserAgentMetadata();
+            metaData.setPlatform("OpenHarmony");
+            this.controller.setCustomUserAgent(this.userAgent);
+            let enabled: boolean = webview.WebviewController.getUserAgentClientHintsEnabled();
+            console.info("isUserAgentClientHintsEnabled:", enabled);
+            webview.WebviewController.setUserAgentClientHintsEnabled(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## getUserAgentClientHintsEnabled<sup>24+</sup>
+
+static getUserAgentClientHintsEnabled(): boolean
+
+Checks whether the UserAgent Client Hints feature is enabled.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type   | Description                                    |
+| ------- | --------------------------------------- |
+| boolean | Whether the UserAgent Client Hints feature is enabled. **true** if the feature is enabled, **false** otherwise.|
+
+**Example**
+
+For details about the sample code, see [setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24).
+
+## setUserAgentMetadata<sup>24+</sup>
+
+setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
+
+Sets the **UserAgentMetadata** corresponding to the **User-Agent**.
+
+> **NOTE**
+>
+> **UserAgentMetadata** is used to fill in the user agent client prompt. It provides the brand and version information of the client, the brand and major version of the underlying operating system, and details about the underlying device.
+>
+> You can set the user agent by using **setCustomUserAgent**, **setAppCustomUserAgent**, or **setUserAgentForHosts**.
+>
+> If **UserAgentMetadata** is not found based on the overwritten **User-Agent** and the overwritten **User-Agent** contains the default **User-Agent**, the default value is used.
+>
+> If **UserAgentMetadata** is empty but the overwritten **User-Agent** does not contain the default user agent, only low-level user agent client prompts are generated.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name             | Type   | Mandatory  |  Description|
+| ------------------ | ------- | ---- | ------------- |
+| userAgent | string | Yes  | Information about the custom user agent. You can use [getUserAgent](#getuseragent) to obtain the current default user agent.|
+| metaData | [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md) | Yes  | **UserAgentMetadata** corresponding to the user agent. You can use [getUserAgentMetadata](#getuseragentmetadata24) to obtain the current default value and then modify it using the corresponding method.|
+
+**Example**
+
+For details about the sample code, see [setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24).
+
+## getUserAgentMetadata<sup>24+</sup>
+
+getUserAgentMetadata(userAgent: string): UserAgentMetadata
+
+Obtains the UserAgentMetadata information of a user agent.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name             | Type   | Mandatory  |  Description|
+| ------------------ | ------- | ---- | ------------- |
+| userAgent | string | Yes  | Information about the custom user agent. You can use [getUserAgent](#getuseragent) to obtain the current default user agent.|
+
+**Return value**
+
+| Type   | Description                                    |
+| ------- | --------------------------------------- |
+| metaData | [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md) corresponding to the user agent.|
+
+**Example**
+
+For details about the sample code, see [setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24).
+
+## setUrlTrustList<sup>24+</sup>
+
+setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void
+
+Sets the URL trustlist of the web page. Only URLs in the trustlist can be loaded or redirected. Otherwise, the URL is blocked and an alarm page is displayed.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                 |
+| ------- | ------ | ---- | :-------------------- |
+| urlTrustList | string | Yes  | URL trustlist, which is configured in JSON format. The maximum size is 10 MB.<br>**setUrlTrustList()** is used in overwrite mode. If it is called for multiple times, the latest setting overwrites the previous setting.<br>If this parameter is left blank, the trustlist is canceled and access to all URLs is allowed.<br>Example in JSON format:<br>{<br>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;]<br>} |
+| allowOpaqueOrigin | boolean | Yes| Whether to allow **loadUrl** to directly load [opaque origin URLs](https://mdn.org.cn/en-US/docs/Web/URI/Reference/Schemes) such as **javascript/data**. **true** to allow, and **false** otherwise.|
+| supportWildcard | boolean | Yes| Whether to support wildcard matching for **host** and **path**. For example, to allow access to **a.example.com** and **b.example.com** when ***.example.com** is configured in the trustlist. **true** to support, and **false** otherwise.|
+
+**Parameters in JSON format**:
+
+| Name  | Type| Mandatory| Description                 |
+| -------- | -------- | ---- | ------------------------- |
+| scheme | string | No| Optional parameter. The supported protocols are HTTP and HTTPS.|
+| host | string | Yes| Mandatory parameter.<br>When **supportWildcard** is set to **false**, exact match is performed. That is, the URL is allowed only when its **host** field is the same as the rule field. Multiple rules for the same host can take effect at the same time.<br>When **supportWildcard** is set to **true**, the wildcard character (\*) can be used to match any string. The matching rules are as follows:<br>1. **host** is segmented by periods (.).<br>2. A wildcard (*) can match only one segment. For example, **www.*.com** can match only **www.example.com** but not **www.example1.example2.com**.<br>3. Multiple wildcards can be used to match multiple segments. For example, **www.*.*** can match **www.example.com** but not **www.example1.example2.com**.<br>4. The wildcard can be used only separately. Multiple consecutive asterisks (*) or using the wildcard with other strings are not supported. For example, `**.example.com` and `*ww.example.com` are not supported.|
+| port | number | No| Optional parameter.|
+| path | string | No| Optional parameter.<br>If **supportWildcard** is set to **false**, the prefix matching mode is used. For example, in **pathA/pathB/pathC**, **pathA/pathB/** is specified, and all level-3 directories such as **pathC** can be accessed, which must be a complete directory name or file name. Partial matching is not allowed.<br>When **supportWildcard** is set to **true**, the wildcard character (\*) can be used to match any string. The matching rules are as follows:<br>1. **path** is segmented by slashes (/).<br>2. If the wildcard (\*) is not the last segment, only one segment can be matched. For example, **pathA/*/pathD** can match only **pathA/pathB/pathD** but not **pathA/pathB/pathC/pathD**.<br>3. If the wildcard (\*) is the last segment, multiple subsequent segments can be matched. For example, **pathA/*** can match **pathA/pathB** and **pathA/pathB/pathC**, and can also match files, for example, **pathA/xxx.txt**.<br>4. The wildcard can be used only separately. Multiple asterisks (*) or using the wildcard with other strings are not supported. For example, `**/pathA/pathB` and `path*/pathB/pathC` are not supported.|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. JSON string exceeds 10MB limit.<br>3.JSON parsing failed (syntax errors, etc.)<br>4. UrlPermissionList field is missing.<br>5. URL rule validation failed:<br>- scheme must be http or https.<br>- host cannot be empty.<br>- port must be between 0-65535.<br>- path length cannot exceed 65536 characters. |
+| 17100001 | Initialization error. The WebviewController must be associated with a Web component.|
+
+**Example**
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  urltrustList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"trust.example.com\", \"path\":\"test\"}]}"
+  urlWildcardList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"*.example.com\", \"path\":\"*\"}]}"
+
+  build() {
+    Column() {
+      Button('Setting the trustlist')
+        .onClick(() => {
+          try {
+            // Set a trustlist to allow access only to trust web pages.
+            this.controller.setUrlTrustList(this.urltrustList);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Setting the wildcardlist')
+        .onClick(() => {
+          try {
+            // Set a wildcard trustlist to allow access to all URLs.
+            this.controller.setUrlTrustList(this.urlWildcardList, true, true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Cancel the trustlist.')
+        .onClick(() => {
+          try {
+            // Input an empty string to setUrlTrustList() to disable the trustlist, and all URLs can be accessed.
+            this.controller.setUrlTrustList("");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Access the trust web')
+        .onClick(() => {
+          try {
+            // The trustlist is enabled and trust web pages can be accessed.
+            this.controller.loadUrl('http://trust.example.com/test');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Access the untrust web')
+        .onClick(() => {
+          try {
+            // The trustlist is enabled that untrust web pages cannot be accessed and an error page is displayed.
+            this.controller.loadUrl('http://untrust.example.com/test');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
+        try {
+          // Set the trustlist using onControllerAttached() to enable the trustlist before the URL starts to be loaded. The untrusted web page cannot be accessed, and an error page is displayed.
+          this.controller.setUrlTrustList(this.urltrustList);
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
     }
   }
 }

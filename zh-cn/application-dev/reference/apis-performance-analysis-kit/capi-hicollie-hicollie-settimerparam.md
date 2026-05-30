@@ -5,7 +5,11 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+
+```c
+typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
+```
 
 ## 概述
 
@@ -24,7 +28,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | const char *name | timer任务名称。 |
-| unsigned int timeout | 任务超时时间阈值，单位s。 |
+| unsigned int timeout | 任务超时时间阈值，单位：s。 |
 | [OH_HiCollie_Callback](capi-hicollie-h.md#oh_hicollie_callback) func | 超时发生时执行的回调函数。 |
 | void *arg | 回调函数的参数。 |
 | [HiCollie_Flag](capi-hicollie-h.md#hicollie_flag) flag | 超时发生时执行的动作，参考[HiCollie_Flag](capi-hicollie-h.md#hicollie_flag)。 |

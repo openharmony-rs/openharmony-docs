@@ -1,7 +1,17 @@
 # ArkGraphics 2D（方舟2D图形服务）
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin; @oh_wangxk; @gmiao522-->
+<!--Designer: @wangyanglan; @liumingxiang-->
+<!--Tester: @nobuggers; @yhl0101-->
+<!--Adviser: @ge-yafang-->
+
 - ArkTS API<!--arkgraphics-arkts-->
   - [@ohos.effectKit (图像效果)](js-apis-effectKit.md)
+  <!--Del-->
+  - [@ohos.effectKit (图像效果)(系统接口)](js-apis-effectKit-sys.md)
+  <!--DelEnd-->
   - [@ohos.graphics.colorSpaceManager (色彩管理)](js-apis-colorSpaceManager.md)
   - [@ohos.graphics.sendableColorSpaceManager (可共享的色彩管理)](js-apis-sendableColorSpaceManager.md)
   - [@ohos.graphics.common2D (2D图形通用数据类型)](js-apis-graphics-common2D.md)
@@ -10,7 +20,7 @@
     - [模块描述](arkts-apis-graphics-drawing.md)
     - [Class (Brush)](arkts-apis-graphics-drawing-Brush.md)
     - [Class (Canvas)](arkts-apis-graphics-drawing-Canvas.md)
-    - [Class (ClorFilter)](arkts-apis-graphics-drawing-ColorFilter.md)
+    - [Class (ColorFilter)](arkts-apis-graphics-drawing-ColorFilter.md)
     - [Class (Font)](arkts-apis-graphics-drawing-Font.md)
     - [Class (ImageFilter)](arkts-apis-graphics-drawing-ImageFilter.md)
     - [Class (Lattice)](arkts-apis-graphics-drawing-Lattice.md)
@@ -20,13 +30,14 @@
     - [Class (PathEffect)](arkts-apis-graphics-drawing-PathEffect.md)
     - [Class (PathIterator)](arkts-apis-graphics-drawing-PathIterator.md)
     - [Class (Pen)](arkts-apis-graphics-drawing-Pen.md)
+    - [Class (PointUtils)](arkts-apis-graphics-drawing-PointUtils.md)
     - [Class (RectUtils)](arkts-apis-graphics-drawing-RectUtils.md)
     - [Class (Region)](arkts-apis-graphics-drawing-Region.md)
     - [Class (RoundRect)](arkts-apis-graphics-drawing-RoundRect.md)
     - [Class (SamplingOptions)](arkts-apis-graphics-drawing-SamplingOptions.md)
     - [Class (ShaderEffect)](arkts-apis-graphics-drawing-ShaderEffect.md)
     - [Class (ShadowLayer)](arkts-apis-graphics-drawing-ShadowLayer.md)
-    - [Class (TextBold)](arkts-apis-graphics-drawing-TextBlob.md)
+    - [Class (TextBlob)](arkts-apis-graphics-drawing-TextBlob.md)
     - [Class (Tool)](arkts-apis-graphics-drawing-Tool.md)
     - [Class (Typeface)](arkts-apis-graphics-drawing-Typeface.md)
     - [Class (TypefaceArguments)](arkts-apis-graphics-drawing-TypefaceArguments.md)
@@ -68,11 +79,13 @@
     - [drawing_gpu_context.h](capi-drawing-gpu-context-h.md)
     - [drawing_image.h](capi-drawing-image-h.md)
     - [drawing_image_filter.h](capi-drawing-image-filter-h.md)
+    - [drawing_lattice.h](capi-drawing-lattice-h.md)
     - [drawing_mask_filter.h](capi-drawing-mask-filter-h.md)
     - [drawing_matrix.h](capi-drawing-matrix-h.md)
     - [drawing_memory_stream.h](capi-drawing-memory-stream-h.md)
     - [drawing_path.h](capi-drawing-path-h.md)
     - [drawing_path_effect.h](capi-drawing-path-effect-h.md)
+    - [drawing_path_iterator.h](capi-drawing-path-iterator-h.md)
     - [drawing_pen.h](capi-drawing-pen-h.md)
     - [drawing_pixel_map.h](capi-drawing-pixel-map-h.md)
     - [drawing_point.h](capi-drawing-point-h.md)
@@ -111,6 +124,7 @@
     - [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)
     - [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md)
     - [OH_NativeBuffer_Planes](capi-oh-nativebuffer-oh-nativebuffer-planes.md)
+    - [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)
     - [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md)
     - [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md)
     - [DisplaySoloist_ExpectedRateRange](capi-nativedisplaysoloist-displaysoloist-expectedraterange.md)
@@ -130,6 +144,7 @@
     - [OH_Drawing_FontStyleStruct](capi-drawing-oh-drawing-fontstylestruct.md)
     - [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md)
     - [OH_Drawing_StrutStyle](capi-drawing-oh-drawing-strutstyle.md)
+    - [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md)
     - [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)
     - [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md)
     - [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md)
@@ -143,7 +158,6 @@
     - [Rect](capi-nativewindow-rect.md)
     - [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md)
     - [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md)
-    - [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)
     - [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)
     - [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)
     - [NativePixelMap_](capi-drawing-nativepixelmap-.md)
@@ -162,11 +176,17 @@
     - [OH_Drawing_TextTab](capi-drawing-oh-drawing-texttab.md)
     - [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)
     - [OH_Drawing_Run](capi-drawing-oh-drawing-run.md)
+    - [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)
+    - [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)
+    - [OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md)
+    - [OH_Drawing_FontVariationInstanceCoordinate](capi-drawing-oh-drawing-fontvariationinstancecoordinate.md)
     - [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)
     - [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)
     - [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)
     - [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)
     - [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)
+    - [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md)
+    - [OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md)
     - [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md)
     - [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)
     - [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)

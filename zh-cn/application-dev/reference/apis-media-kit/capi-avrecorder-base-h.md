@@ -1,10 +1,10 @@
 # avrecorder_base.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -59,7 +59,7 @@
 
 ### OH_AVRecorder_AudioSourceType
 
-```
+```c
 enum OH_AVRecorder_AudioSourceType
 ```
 
@@ -82,7 +82,7 @@ AVRecorder的音频源类型。
 
 ### OH_AVRecorder_VideoSourceType
 
-```
+```c
 enum OH_AVRecorder_VideoSourceType
 ```
 
@@ -101,7 +101,7 @@ AVRecorder的视频源类型。
 
 ### OH_AVRecorder_CodecMimeType
 
-```
+```c
 enum OH_AVRecorder_CodecMimeType
 ```
 
@@ -126,7 +126,7 @@ enum OH_AVRecorder_CodecMimeType
 
 ### OH_AVRecorder_ContainerFormatType
 
-```
+```c
 enum OH_AVRecorder_ContainerFormatType
 ```
 
@@ -149,7 +149,7 @@ enum OH_AVRecorder_ContainerFormatType
 
 ### OH_AVRecorder_State
 
-```
+```c
 enum OH_AVRecorder_State
 ```
 
@@ -173,7 +173,7 @@ AVRecorder状态。
 
 ### OH_AVRecorder_StateChangeReason
 
-```
+```c
 enum OH_AVRecorder_StateChangeReason
 ```
 
@@ -192,7 +192,7 @@ AVRecorder状态变化的原因。
 
 ### OH_AVRecorder_FileGenerationMode
 
-```
+```c
 enum OH_AVRecorder_FileGenerationMode
 ```
 
@@ -214,7 +214,7 @@ enum OH_AVRecorder_FileGenerationMode
 
 ### OH_AVRecorder_OnStateChange()
 
-```
+```c
 typedef void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder,OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)
 ```
 
@@ -238,7 +238,7 @@ typedef void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder,OH_AVRecorde
 
 ### OH_AVRecorder_OnError()
 
-```
+```c
 typedef void (*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg,void *userData)
 ```
 
@@ -256,13 +256,13 @@ typedef void (*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | OH_AVRecorder实例的指针。 |
-|  int32_t errorCode | 错误码，详细说明请参见[AVErrorCode](../apis-avcodec-kit/_core.md#oh_averrcode-1)。 |
+|  int32_t errorCode | 错误码，详细说明请参见[OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode)。 |
 |  const char *errorMsg | 错误信息。 |
 | void *userData | 用户特定数据的指针。 |
 
 ### OH_AVRecorder_OnUri()
 
-```
+```c
 typedef void (*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData)
 ```
 

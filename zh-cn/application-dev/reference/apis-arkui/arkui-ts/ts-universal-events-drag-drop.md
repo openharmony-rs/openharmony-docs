@@ -1,18 +1,18 @@
 # 拖拽事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 拖拽事件是指在用户界面中，当用户拖动某个对象（如文件、控件或元素）时触发的一系列事件。这些事件允许开发者自定义拖拽行为，实现诸如拖放、调整位置等功能。
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
+> - 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
 
 ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖出或拖入响应。开发者也可以通过实现通用拖拽事件来自定义拖拽能力。
 
@@ -20,7 +20,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 - 默认支持拖入能力的组件（目标组件可响应拖入数据）：[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)、[RichEditor](ts-basic-components-richeditor.md)，开发者可通过设置这些组件的[allowDrop](ts-universal-attributes-drag-drop.md#allowdrop)属性为null来禁用对默认拖入能力的支持。
 
-其他组件需要开发者将[draggable](ts-universal-attributes-drag-drop.md#draggable)属性设置为true，并在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)等接口中实现数据传输相关内容，才能正确处理拖拽能力。
+其他支持拖出能力的组件需要开发者将[draggable](ts-universal-attributes-drag-drop.md#draggable)属性设置为true，并在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)等接口中实现数据传输相关内容，才能正确处理拖拽能力。
 <!--RP1--><!--RP1End-->
 
 > **说明：**
@@ -31,13 +31,17 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T
 
-第一次拖拽此事件绑定的组件时，长按时间 >= 500ms，然后手指移动距离 >= 10vp，触发回调。
+在手势拖拽场景中，在可拖拽的组件上长按时间超过500ms，然后手指移动距离大于10vp时触发此回调；在鼠标拖拽场景中，鼠标左键在可拖拽的组件上按下并移动超过1vp时，即可触发此回调。
 
 针对默认支持拖拽能力的组件，如果开发者设置了onDragStart，优先执行onDragStart，并根据执行情况决定是否使用系统默认的拖拽能力，具体规则为：
 - 如果开发者返回了自定义预览图，则不再使用系统默认的拖拽预览图；
 - 如果开发者设置了拖拽数据，则不再使用系统默认填充的拖拽数据。
 
 文本类组件[Text](ts-basic-components-text.md)、[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)、[RichEditor](ts-basic-components-richeditor.md)对选中的文本内容进行拖拽时，不支持自定义预览图。当onDragStart与菜单预览一起使用或使用了默认支持拖拽能力的组件时，预览及菜单项上的自定义内容不支持拖拽。
+
+> **说明：**
+>
+> 从API version 13开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -71,7 +75,7 @@ onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
@@ -93,7 +97,7 @@ onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
@@ -115,7 +119,7 @@ onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
@@ -137,7 +141,7 @@ onDrop(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
@@ -149,9 +153,11 @@ onDrop(event: (event: DragEvent, extraParams?: string) => void): T
 
 onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
 
-绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。如果开发者没有在onDrop中主动调用event.setResult()设置拖拽接收的结果，若拖拽组件为系统支持默认拖入的组件，以系统实际处理数据结果为准，其它组件则系统按照数据接收成功处理。
+绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。如果开发者没有在onDrop中主动调用event.[setResult](ts-universal-events-drag-drop.md#setresult10)()设置拖拽接收的结果，若拖拽组件为系统支持默认拖入的组件，以系统实际处理数据结果为准，其它组件则系统按照数据接收成功处理。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,13 +182,15 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，在onDragEnd调用中不包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，在onDragEnd调用中不包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
@@ -194,9 +202,15 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 
 onPreDrag(callback: Callback\<PreDragStatus>): T
 
-绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。此接口不支持在鼠标拖拽中触发。
+绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。拖拽发起前的各阶段可参考[PreDragStatus](#predragstatus12枚举说明)。此接口不支持在鼠标拖拽中触发。
+
+> **说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,6 +236,8 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -239,6 +255,8 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 ## DragItemInfo
 
+定义拖拽过程中拖拽项的相关信息。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -246,7 +264,7 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 | 名称      | 类型                  | 只读| 可选   | 说明                               |
 | --------- | ---------------------------------------- | ---- | ---- | --------------------------------- |
 | pixelMap  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否    |  是   |设置拖拽过程中显示的图片。 |
-| builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否    |  是   |拖拽过程中显示自定义组件，如果设置了pixelMap，则忽略此值。<br /> **说明：** <br/>不支持全局builder。如果builder中使用了[Image](ts-basic-components-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](ts-basic-components-image.md#syncload8)为true。该builder只用于生成当次拖拽中显示的图片，builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。|
+| builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否    |  是   |拖拽过程中显示自定义组件，如果设置了pixelMap，则忽略此值。<br /> **说明：** <br/>不支持全局builder。如果builder中使用了[Image](ts-basic-components-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](ts-basic-components-image.md#syncload8)为true。该builder只用于生成当次拖拽中显示的图片，builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。<br/>builder传参时，建议传参格式为builder: ()=>{this.customBuilder()}，用以保证this指向的正确性。具体请参考[将@Builder装饰的函数当作CustomBuilder类型使用](../../../ui/state-management/arkts-builder.md#将builder装饰的函数当作custombuilder类型使用)。|
 | extraInfo | string                                   | 否    |  是   |拖拽项的附加信息，用于描述拖拽项。                    |
 
 ## PreviewConfiguration<sup>15+</sup>
@@ -254,6 +272,8 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 配置自定义拖拽过程中的预览图样式。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,12 +286,12 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
   用于返回组件在拖拽中需要用到的额外信息。
 
-  extraParams是Json对象转换的string字符串，可以通过Json.parse转换的Json对象获取如下属性。
+  extraParams是JSON对象转换的string字符串，可以通过JSON.parse转换的JSON对象获取如下属性。
 
 | 名称          | 类型   | 描述                                       |
 | ------------- | ------ | ---------------------------------------- |
-| selectedIndex | number | 当拖拽事件设在父容器的子元素时，selectedIndex表示当前被拖拽子元素是父容器第selectedIndex个子元素，selectedIndex从0开始。<br/>仅在ListItem组件的拖拽事件中生效。 |
-| insertIndex   | number | 当前拖拽元素在List组件中放下时，insertIndex表示被拖拽元素插入该组件的第insertIndex个位置，insertIndex从0开始。<br/>仅在List组件的拖拽事件中生效。 |
+| selectedIndex | number | 当拖拽事件设在父容器的子元素时，selectedIndex表示当前被拖拽子元素是父容器第selectedIndex个子元素，selectedIndex从0开始。<br/>仅在[ListItem](ts-container-listitem.md)组件的拖拽事件中生效，否则返回undefined。 |
+| insertIndex   | number | 当前拖拽元素在List组件中放下时，insertIndex表示被拖拽元素插入该组件的第insertIndex个位置，insertIndex从0开始。<br/>仅在[List](ts-container-list.md)组件的拖拽事件中生效，否则返回undefined。 |
 
 ## DragEvent<sup>7+</sup>
 
@@ -279,14 +299,15 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 ### 属性
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型  | 只读 | 可选 | 说明             |
 | ------ | ------ | ----- | ---- | ------- |
-| useCustomDropAnimation<sup>10+</sup> | boolean | 否 | 否 |当拖拽结束时，是否禁用系统默认落位动效。<br/>应用可将该值设定为true来禁用系统默认落位动效，并实现自己的自定义落位动效。<br/>当不配置或设置为false时，系统默认落位动效生效，当[setResult](#setresult10)设置为DRAG_SUCCESSFUL时，落位为缩小消失动效，不为DRAG_SUCCESSFUL时，则为放大消失动效。<br/>当未禁用系统默认落位动效时，应用不应再实现自定义动效，以避免动效上的冲突。<br/>默认值：false |
-|dragBehavior<sup>10+</sup> | [DragBehavior](#dragbehavior10) | 否 | 否 |切换复制和剪贴模式的角标显示状态。<br/>默认值：DragBehavior.COPY。 |
+| useCustomDropAnimation<sup>10+</sup> | boolean | 否 | 否 |当拖拽结束时，是否禁用系统默认落位动效。<br/>应用可将该值设定为true来禁用系统默认落位动效，并实现自己的自定义落位动效。<br/>当不配置或设置为false时，系统默认落位动效生效，当[setResult](#setresult10)设置为DRAG_SUCCESSFUL时，落位为缩小消失动效，不为DRAG_SUCCESSFUL时，则为放大消失动效。<br/>当未禁用系统默认落位动效时，应用不应再实现自定义动效，以避免动效上的冲突。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | 否 | 是 |设置拖拽过程中需要自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br/>仅在[onDragStart](#ondragstart)回调中设置生效。拖拽成功发起后，系统会在显示拖拽预览窗口前隐藏目标组件。<br/>若拖拽源本身也需要隐藏，需要同时传入拖拽源组件的uniqueId。<br/>组件的uniqueId可通过[UIContext.getFrameNodeById()](../arkts-apis-uicontext-uicontext.md#getframenodebyid12)配合[FrameNode.getUniqueId()](../js-apis-arkui-frameNode.md#getuniqueid12)获取。<br/>开发者应在[onDragEnd](#ondragend10)或[onDrop](#ondrop)中恢复组件显示状态。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+|dragBehavior<sup>10+</sup> | [DragBehavior](#dragbehavior10) | 否 | 否 |切换复制和剪贴模式的角标显示状态。<br/>默认值：DragBehavior.COPY。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ### setData<sup>10+</sup>
 
@@ -295,6 +316,8 @@ setData(unifiedData: UnifiedData): void
 向DragEvent中设置用于拖拽的数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -312,6 +335,8 @@ getData(): UnifiedData
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -322,7 +347,7 @@ getData(): UnifiedData
 
 **错误码：**
 
-以下错误码的详细介绍请参见[drag-event(拖拽事件)](../errorcode-drag-event.md)错误码。
+以下错误码的详细介绍请参见[拖拽事件错误码](../errorcode-drag-event.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -336,6 +361,8 @@ getSummary(): Summary
 获取所拖拽数据的概要，包括数据类型及大小信息；在延迟拖拽场景下，只能获取到数据类型信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -353,6 +380,8 @@ setResult(dragResult: DragResult): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -368,6 +397,8 @@ getResult(): DragResult
 获取拖拽结果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -385,6 +416,8 @@ getPreviewRect(): Rectangle
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -400,6 +433,8 @@ getVelocityX(): number
 获取当前拖拽的x轴方向拖动速度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -417,6 +452,8 @@ getVelocityY(): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -432,6 +469,8 @@ getVelocity(): number
 获取当前拖拽的主方向拖动速度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -449,6 +488,8 @@ getWindowX(): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -464,6 +505,8 @@ getWindowY(): number
 获取拖拽点相对于窗口左上角的y轴坐标。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -481,6 +524,8 @@ getDisplayX(): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -496,6 +541,8 @@ getDisplayY(): number
 获取当前拖拽点相对于屏幕左上角的y轴坐标。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -513,11 +560,15 @@ getModifierKeyState?(keys: Array<string\>): boolean
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
-| keys   | Array&lt;string&gt; | 是   | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
+| keys   | Array&lt;string&gt; | 是   | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl' \| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
 
 **错误码：**
 
@@ -541,6 +592,8 @@ startDataLoading(options: DataSyncOptions): string
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -551,7 +604,7 @@ startDataLoading(options: DataSyncOptions): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[drag-event（拖拽事件）](../errorcode-drag-event.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[拖拽事件错误码](../errorcode-drag-event.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -568,9 +621,11 @@ startDataLoading(options: DataSyncOptions): string
 
 executeDropAnimation(customDropAnimation: Callback\<void\>): void
 
-设置自定义落位动效的执行函数，仅在useCustomDropAnimation为true时有效。
+设置自定义落位动效的执行函数，仅在[useCustomDropAnimation](ts-universal-events-drag-drop.md#属性)为true时有效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -584,9 +639,11 @@ executeDropAnimation(customDropAnimation: Callback\<void\>): void
 
 getDisplayId(): number
 
-获取当前拖拽事件发生时所在的屏幕ID，不支持在onDragEnd阶段使用。
+获取当前拖拽事件发生时所在的屏幕ID，不支持在[onDragEnd](ts-universal-events-drag-drop.md#ondragend10)阶段使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -604,6 +661,8 @@ getDragSource(): string
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -619,6 +678,8 @@ isRemote(): boolean
 获取是否是跨设备拖拽，跨设备拖拽时为true。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -636,6 +697,8 @@ setDataLoadParams(dataLoadParams: DataLoadParams): void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -648,7 +711,11 @@ setDataLoadParams(dataLoadParams: DataLoadParams): void
 
 getX(): number
 
-当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。从API version 10开始不再维护，建议使用[getWindowX()](#getwindowx10)代替。
+当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[getWindowX](#getwindowx10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -662,7 +729,11 @@ getX(): number
 
 getY(): number
 
-当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。从API version 10开始不再维护，建议使用[getWindowY()](#getwindowy10)代替。
+当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[getWindowY](#getwindowy10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -680,6 +751,8 @@ getGlobalDisplayX(): number
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -696,6 +769,8 @@ getGlobalDisplayY(): number
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -706,32 +781,41 @@ getGlobalDisplayY(): number
 
 ## DragResult<sup>10+</sup>枚举说明
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+定义拖拽操作的结果及组件的落入选定状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 值 | 说明 |
 | ----- | -- | --------------- |
-| DRAG_SUCCESSFUL | 0 |拖拽成功，在[onDrop](#ondrop)中使用。 |
-| DRAG_FAILED | 1 |拖拽失败，在[onDrop](#ondrop)中使用。 |
-| DRAG_CANCELED | 2 |拖拽取消，在[onDrop](#ondrop)中使用。 |
-| DROP_ENABLED | 3 |组件允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。 |
-| DROP_DISABLED | 4 |组件不允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。 |
+| UNKNOWN<sup>24+</sup> | -1 |拖拽结果尚未设置，在[onDragStart](#ondragstart)，[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)，[onDrop](#ondrop)中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| DRAG_SUCCESSFUL | 0 |拖拽成功，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DRAG_FAILED | 1 |拖拽失败，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DRAG_CANCELED | 2 |拖拽取消，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DROP_ENABLED | 3 |组件允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DROP_DISABLED | 4 |组件不允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## DragBehavior<sup>10+</sup>
 
-当设置[DragResult](#dragresult10枚举说明)为DROP_ENABLED后，可设置DragBehavior为复制（COPY）或剪切（MOVE）。当DragBehavior为复制（COPY）时，拖拽对象会显示加号角标；为剪切（MOVE）时，拖拽对象不会显示加号角标。DragBehavior用来向开发者描述数据的处理方式是复制（COPY）还是剪切（MOVE），但无法最终决定对数据的实际处理方式。DragBehavior会通过onDragEnd带回给数据拖出方，发起拖拽的一方可通过DragBehavior来区分做出的是复制（COPY）还是剪切（MOVE）数据的不同行为。
+当设置[DragResult](#dragresult10枚举说明)为DROP_ENABLED后，可设置DragBehavior为复制（COPY）或剪切（MOVE）。当DragBehavior为复制（COPY）时，拖拽对象的角标会显示加号；为剪切（MOVE）时，拖拽对象的角标不会显示加号。DragBehavior用来向开发者描述数据的处理方式是复制（COPY）还是剪切（MOVE），但无法最终决定对数据的实际处理方式。DragBehavior会通过onDragEnd带回给数据拖出方，发起拖拽的一方可通过DragBehavior来区分做出的是复制（COPY）还是剪切（MOVE）数据的不同行为。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | ----- | -- | ----------------- |
-| COPY | - |指定对数据的处理方式为复制。|
-| MOVE| - |指定对数据的处理方式为剪切。|
+| COPY | 0 |指定对数据的处理方式为复制。|
+| MOVE| 1 |指定对数据的处理方式为剪切。|
 
 ## PreDragStatus<sup>12+</sup>枚举说明
+
+定义拖拽手势触发前的各阶段状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -754,6 +838,8 @@ type UnifiedData = UnifiedData
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
@@ -767,6 +853,8 @@ type Summary = Summary
 拖拽相关数据的简介。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -782,6 +870,8 @@ type DataLoadParams = DataLoadParams
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
@@ -796,11 +886,13 @@ type DataSyncOptions = GetDataParams
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15) | 表示从UDMF获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
+| [GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15) | 表示从[UDMF](../../apis-arkdata/capi-udmf.md)获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
 
 ## OnDragEventCallback<sup>15+</sup>
 
@@ -810,12 +902,16 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 
 | 参数名 | 类型 |必填 |说明 |
 | ----- | ----------------- | ----- | ----- |
 | event | [DragEvent](#dragevent7)| 是 |  event为拖拽事件信息，包括拖拽点坐标。|
-| extraParams| string |否 | extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| extraParams| string |否 | extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 ## DropOptions<sup>15+</sup>
 
@@ -823,11 +919,13 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型  | 只读 | 可选 | 说明           |
 | ------ | ------ | ---------------- | ------ | ------ |
-| disableDataPrefetch | boolean  | 否  | 否  | 设置拖拽是否提前获取数据。true表示不提前获取数据，false表示提前获取数据，默认值为false。<br/>**说明：**<br/> 当使用[startDataLoading](#startdataloading15)获取数据时需设置该参数为true，防止拖拽提前获取数据。 |
+| disableDataPrefetch | boolean  | 否  | 是  | 设置拖拽是否提前获取数据。true表示不提前获取数据，false表示提前获取数据，默认值为false。<br/>**说明：**<br/> 当使用[startDataLoading](#startdataloading15)获取数据时需设置该参数为true，防止拖拽提前获取数据。 |
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 
@@ -836,6 +934,8 @@ type DragSpringLoadingConfiguration = DragSpringLoadingConfiguration
 定义拖拽的悬停检测配置参数的接口。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -850,6 +950,8 @@ type SpringLoadingContext = SpringLoadingContext
 定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，使其能访问拖拽状态。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -883,6 +985,7 @@ struct Index {
   @Builder
   pixelMapBuilder() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件
       Image($r('app.media.icon'))
         .width(120)
         .height(120)
@@ -890,6 +993,7 @@ struct Index {
     }
   }
 
+  // 获取Udmf数据
   getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
     try {
       let data: UnifiedData = event.getData();
@@ -903,11 +1007,12 @@ struct Index {
       callback(event);
       return true;
     } catch (e) {
-      console.error("getData failed, code = " + (e as BusinessError).code + ", message = " + (e as BusinessError).message);
+      console.error(`getData failed, code = ${(e as BusinessError).code}, message = ${(e as BusinessError).message}`);
       return false;
     }
   }
 
+  // 首次获取Udmf数据失败后自动重试
   getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
     if (this.getDataFromUdmfRetry(event, callback)) {
       return;
@@ -917,6 +1022,7 @@ struct Index {
     }, 1500);
   }
 
+  // 根据拖拽发起前的不同阶段更改背景色
   private PreDragChange(preDragStatus: PreDragStatus): void {
     if (preDragStatus == PreDragStatus.READY_TO_TRIGGER_DRAG_ACTION) {
       this.backGroundColor = Color.Red;
@@ -935,6 +1041,7 @@ struct Index {
           .height(40)
           .margin(10)
           .backgroundColor('#008888')
+        // $r('app.media.icon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.icon'))
           .width(100)
           .height(100)
@@ -970,7 +1077,8 @@ struct Index {
           Text('this is abstract')
             .fontSize(20)
             .width('100%')
-        }.margin({ left: 40, top: 20 })
+        }
+        .margin({ left: 40, top: 20 })
         .width('100%')
         .height(100)
         .onDragStart((event) => {
@@ -1058,7 +1166,7 @@ struct Index {
 
 ### 示例2（自定义落位动效）
 
-示例2展示了通过自定义接口executeDropAnimation，实现落位动效。
+从API version 18开始，示例2展示了通过自定义接口[executeDropAnimation](#executedropanimation18)，实现落位动效。
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 
@@ -1066,16 +1174,9 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 @Component
 struct DropAnimationExample {
   @State targetImage: string = '';
-  @State targetText: string = 'Drag Text';
-  @State hyperLinkText: string = 'HyperLink';
-  @State hyperLinkContent: string = 'HyperLink';
   @State imageWidth: number = 100;
   @State imageHeight: number = 100;
   @State imgState: Visibility = Visibility.Visible;
-  @State videoSrc: string = 'resource://RAWFILE/02.mp4';
-  @State abstractContent: string = "abstract";
-  @State textContent: string = "";
-
   customDropAnimation =
     () => {
       this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal }, () => {
@@ -1088,11 +1189,12 @@ struct DropAnimationExample {
   build() {
     Row() {
       Column() {
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.app_icon'))
           .width(100)
           .height(100)
           .draggable(true)
-          .margin({ left: 15 ,top: 40})
+          .margin({ left: 15, top: 40 })
           .visibility(this.imgState)
           .onDragStart((event) => {
           })
@@ -1105,6 +1207,7 @@ struct DropAnimationExample {
           })
       }.width('45%')
       .height('100%')
+
       Column() {
         Text('Drag Target Area')
           .fontSize(20)
@@ -1122,6 +1225,7 @@ struct DropAnimationExample {
         .margin({ left: 15 })
         .border({ color: Color.Black, width: 1 })
         .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+        // onDrop回调，获取拖拽图片的信息和尺寸并更新显示，同时启用并执行自定义下落动画
         .onDrop((dragEvent: DragEvent) => {
           let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
           let rect: Rectangle = dragEvent.getPreviewRect();
@@ -1145,11 +1249,11 @@ struct DropAnimationExample {
 
 ### 示例3（拖拽异步获取数据）
 
-示例3展示了通过startDataLoading实现拖拽异步获取数据。
+从API version 15开始，示例3展示了通过[startDataLoading](#startdataloading15)实现拖拽异步获取数据。
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import { fileUri, fileIo as fs } from '@kit.CoreFileKit';
+import { fileUri, fileIo as fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -1165,20 +1269,21 @@ struct ImageExample {
       Text('Image拖拽')
         .fontSize('30dp')
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .width(100)
           .height(100)
           .border({ width: 1 })
           .draggable(true)
-          .onDragStart((event:DragEvent) => {
-            const context: Context|undefined = this.uiContext.getHostContext();
-            if(context) {
+          .onDragStart((event: DragEvent) => {
+            const context: Context | undefined = this.uiContext.getHostContext();
+            if (context) {
               let data = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id, 120);
               const arrayBuffer: ArrayBuffer = data.buffer.slice(data.byteOffset, data.byteLength + data.byteOffset);
               let filePath = context.filesDir + '/test.png';
-              let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-              fs.writeSync(file.fd, arrayBuffer);
-              //获取图片的uri
+              let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+              fileIo.writeSync(file.fd, arrayBuffer);
+              // 获取图片的uri
               let uri = fileUri.getUriFromPath(filePath);
               let image: unifiedDataChannel.Image = new unifiedDataChannel.Image();
               image.imageUri = uri;
@@ -1188,23 +1293,24 @@ struct ImageExample {
           })
       }
       .margin({ bottom: 20 })
+
       Row() {
-        Column(){
+        Column() {
           Text('可释放区域')
             .fontSize('15dp')
             .height('10%')
-          List(){
-            ForEach(this.blockArr, (item:string, index) => {
+          List() {
+            ForEach(this.blockArr, (item: string, index) => {
               ListItem() {
                 Image(item)
                   .width(100)
                   .height(100)
-                  .border({width: 1})
+                  .border({ width: 1 })
               }
-              .margin({ left: 30 , top : 30})
-            }, (item:string) => item)
+              .margin({ left: 30, top: 30 })
+            }, (item: string) => item)
           }
-          .border({width: 1})
+          .border({ width: 1 })
           .height('90%')
           .width('100%')
           .onDrop((event?: DragEvent, extraParams?: string) => {
@@ -1212,23 +1318,29 @@ struct ImageExample {
             let context = this.uiContext.getHostContext() as common.UIAbilityContext;
             let pathDir: string = context.distributedFilesDir;
             let destUri = fileUri.getUriFromPath(pathDir);
-            let progressListener: unifiedDataChannel.DataProgressListener = (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData|null) => {
-              if(dragData != null) {
-                let arr:Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
-                if(arr.length > 0) {
-                  if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
-                    let image = arr[0] as unifiedDataChannel.Image;
-                    this.uri = image.imageUri;
-                    this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+            // 创建DataProgressListener监听数据传输进度
+            let progressListener: unifiedDataChannel.DataProgressListener =
+              (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData | null) => {
+                if (dragData != null) {
+                  // 获取数据记录数组
+                  let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
+                  if (arr.length > 0) {
+                    // 检查首记录类型是否为IMAGE
+                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
+                      // 类型匹配成功，记录数据Uri
+                      let image = arr[0] as unifiedDataChannel.Image;
+                      this.uri = image.imageUri;
+                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                    }
+                  } else {
+                    console.info('dragData arr is null');
                   }
                 } else {
-                  console.info('dragData arr is null');
+                  console.info('dragData is undefined');
                 }
-              } else {
-                console.info('dragData is undefined');
-              }
-              console.info(`percentage: ${progress.progress}`);
-            };
+                console.info(`percentage: ${progress.progress}`);
+              };
+            // 设置异步数据加载参数项
             let options: DataSyncOptions = {
               destUri: destUri,
               fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
@@ -1236,17 +1348,19 @@ struct ImageExample {
               dataProgressListener: progressListener,
             }
             try {
+              // 启动数据传输
               this.udKey = (event as DragEvent).startDataLoading(options);
-              console.info('udKey: ', this.udKey);
-            } catch(e) {
+              console.info(`udKey: ${this.udKey}`);
+            } catch (e) {
               console.error(`startDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
             }
-          }, {disableDataPrefetch: true})
+          }, { disableDataPrefetch: true })
         }
         .height("50%")
         .width("90%")
         .border({ width: 1 })
       }
+
       Button('取消数据传输')
         .onClick(() => {
           try {
@@ -1255,14 +1369,14 @@ struct ImageExample {
             console.error(`cancelDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
           }
         })
-        .margin({top: 10})
+        .margin({ top: 10 })
     }.width('100%')
   }
 }
 ```
 ### 示例4（获取当前拖拽的屏幕ID）
 
-示例4展示了通过onDragXXX（不支持onDragEnd）接口获取到拖拽事件，并调用拖拽事件里的getDisplayId接口获取屏幕ID。
+从API version 20开始，示例4展示了通过onDragXXX（不支持onDragEnd）接口获取到拖拽事件，并调用拖拽事件里的[getDisplayId](#getdisplayid20)接口获取屏幕ID。
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -1285,6 +1399,7 @@ struct Index {
   @Builder
   pixelMapBuilder() {
     Column() {
+      // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
       Image($r('app.media.app_icon'))
         .width(120)
         .height(120)
@@ -1305,7 +1420,7 @@ struct Index {
       callback(event);
       return true;
     } catch (e) {
-      console.error("getData failed, code = " + (e as BusinessError).code + ", message = " + (e as BusinessError).message);
+      console.error(`getData failed, code = ${(e as BusinessError).code}, message = ${(e as BusinessError).message}`);
       return false;
     }
   }
@@ -1337,6 +1452,7 @@ struct Index {
           .height(40)
           .margin(10)
           .backgroundColor('#008888')
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .width(100)
           .height(100)
@@ -1439,7 +1555,7 @@ struct Index {
 
 ### 示例5（获取包名和是否是跨设备）
 
-示例5展示了通过onDragXXX接口获取到拖拽事件，调用拖拽事件里的getDragSource接口获取包名，调用isRemote接口获取是否是跨设备。
+从API version 20开始，示例5展示了通过onDragXXX接口获取到拖拽事件，调用拖拽事件里的[getDragSource](#getdragsource20)接口获取包名，调用isRemote接口获取是否是跨设备。
 
 ```ts
 @Entry
@@ -1461,6 +1577,7 @@ struct Index {
             .height(40)
             .margin(10)
             .backgroundColor('#008888')
+          // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
           Image($r('app.media.startIcon'))
             .onDragStart((event) => {
               this.startDragSource = (event as DragEvent).getDragSource();
@@ -1492,7 +1609,8 @@ struct Index {
               this.enterDragSource = (event as DragEvent).getDragSource();
               this.enterIsRemote = (event as DragEvent).isRemote();
             })
-            .onDrop(()=>{})
+            .onDrop(() => {
+            })
         }
         .border({ color: Color.Black, width: 1 })
         .width('45%')
@@ -1519,7 +1637,7 @@ struct Index {
 
 ### 示例6（拖拽支持悬停检测）
 
-示例6展示了通过onDragSpringLoading接口注册回调，并调用SpringLoadingContext接口获取上下文（当前状态、通知序列）。
+从API version 20开始，示例6展示了通过[onDragSpringLoading](#ondragspringloading20)接口注册回调，并调用[SpringLoadingContext](#springloadingcontext20)接口获取上下文（当前状态、通知序列）。
 
 ```ts
 // xxx.ets
@@ -1545,6 +1663,7 @@ struct Index {
           .height(40)
           .margin(10)
           .backgroundColor('#008888')
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .id("ori_image")
           .width(100)
@@ -1602,11 +1721,11 @@ struct Index {
 
 ### 示例7（拖起方延迟提供数据）
 
-示例7展示了在onDragStart中调用setDataLoadParams延迟提供数据接口，并在onDrop中调用startDataLoading异步获取数据接口。
+从API version 20开始，示例7展示了在[onDragStart](#ondragstart)中调用[setDataLoadParams](#setdataloadparams20)延迟提供数据接口，并在[onDrop](#ondrop)中调用[startDataLoading](#startdataloading15)异步获取数据接口。
 
 ```ts
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-import { fileUri, fileIo as fs } from '@kit.CoreFileKit';
+import { fileUri, fileIo as fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -1622,6 +1741,7 @@ struct VideoExample {
       Text('video拖拽')
         .fontSize('30dp')
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // $rawfile('test1.mp4')需要替换为开发者所需的资源文件
         Video({ src: $rawfile('test1.mp4'), controller: new VideoController() })
           .width(200)
           .height(200)
@@ -1631,25 +1751,25 @@ struct VideoExample {
             const context: Context | undefined = this.uiContext.getHostContext();
             if (context) {
               let loadHandler: unifiedDataChannel.DataLoadHandler = (acceptableInfo) => {
-                console.info('acceptableInfo recordCount', acceptableInfo?.recordCount);
+                console.info(`acceptableInfo recordCount ${acceptableInfo?.recordCount}`);
                 if (acceptableInfo?.types) {
-                  console.info('acceptableInfo types', Array.from(acceptableInfo.types));
+                  console.info(`acceptableInfo types ${Array.from(acceptableInfo.types)}`);
                 } else {
                   console.error('acceptableInfo types is undefined');
                 }
                 let data = context.resourceManager.getRawFdSync('test1.mp4');
                 let filePath = context.filesDir + '/test1.mp4';
-                let file: fs.File = null!;
+                let file: fileIo.File = null!;
                 try {
-                  file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+                  file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
                   let bufferSize = data.length as number;
                   let buf = new ArrayBuffer(bufferSize);
-                  fs.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
-                  fs.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
+                  fileIo.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
+                  fileIo.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
                 } catch (error) {
                   console.error(`openSync errorCode: ${error.code}, errorMessage: ${error.message}`);
                 } finally {
-                  fs.closeSync(file.fd);
+                  fileIo.closeSync(file.fd);
                 }
                 context.resourceManager.closeRawFdSync('test1.mp4')
                 this.uri = fileUri.getUriFromPath(filePath);
@@ -1723,7 +1843,7 @@ struct VideoExample {
             }
             try {
               this.udKey = (event as DragEvent).startDataLoading(options);
-              console.info('udKey: ', this.udKey);
+              console.info(`udKey: ${this.udKey}`);
             } catch (e) {
               console.error(`startDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
             }
@@ -1748,3 +1868,127 @@ struct VideoExample {
 }
 ```
 ![DragEvent_setDataLoadParams](figures/dragLoading.gif)
+
+### 示例8（拖拽自动隐藏指定组件）
+该示例通过DragEvent的[autoHideComponentUniqueIds](#属性)属性，在拖拽成功发起后自动隐藏指定组件。
+
+从API版本26.0.0开始，DragEvent新增autoHideComponentUniqueIds属性。
+
+```ts
+import { unifiedDataChannel } from '@kit.ArkData';
+
+@Entry
+@Component
+struct DragEventAutoHideSample {
+  @State sourceVisibility: Visibility = Visibility.Visible;
+  @State badgeVisibility: Visibility = Visibility.Visible;
+  @State statusText: string = '状态：等待拖拽';
+
+  private buildData(textValue: string): unifiedDataChannel.UnifiedData {
+    let plainText = new unifiedDataChannel.PlainText();
+    plainText.textContent = textValue;
+    plainText.abstract = textValue;
+    return new unifiedDataChannel.UnifiedData(plainText);
+  }
+
+  private collectHideIds(): number[] {
+    let hideIds: number[] = [];
+    let sourceNode = this.getUIContext().getFrameNodeById('drag_source');
+    let badgeNode = this.getUIContext().getFrameNodeById('drag_badge');
+    if (sourceNode?.getUniqueId() !== undefined) {
+      hideIds.push(sourceNode.getUniqueId());
+    }
+    if (badgeNode?.getUniqueId() !== undefined) {
+      hideIds.push(badgeNode.getUniqueId());
+    }
+    return hideIds;
+  }
+
+  private hideTargets(): void {
+    this.sourceVisibility = Visibility.Hidden;
+    this.badgeVisibility = Visibility.Hidden;
+    this.statusText = '状态：拖拽中，目标组件已隐藏';
+  }
+
+  private restoreTargets(): void {
+    this.sourceVisibility = Visibility.Visible;
+    this.badgeVisibility = Visibility.Visible;
+    this.statusText = '状态：拖拽结束，组件已恢复显示';
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      Text(this.statusText)
+        .width('100%')
+        .fontSize(14)
+        .fontColor('#BF360C');
+
+      Row({ space: 12 }) {
+        Column() {
+          Text('拖拽源')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium);
+          Text('id: drag_source')
+            .fontSize(10)
+            .fontColor('#E8F5E9');
+        }
+          .id('drag_source')
+          .width(140)
+          .height(90)
+          .backgroundColor('#2E7D32')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.sourceVisibility)
+          .draggable(true)
+          .onDragStart((event: DragEvent) => {
+            let hideIds = this.collectHideIds();
+            event.autoHideComponentUniqueIds = hideIds;
+            event.setData(this.buildData('drag event auto hide test data'));
+            this.hideTargets();
+            return () => {
+              Text('拖拽预览');
+            };
+          })
+          .onDragEnd(() => {
+            this.restoreTargets();
+          });
+
+        Column() {
+          Text('跟随隐藏组件')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium);
+          Text('id: drag_badge')
+            .fontSize(10)
+            .fontColor('#E3F2FD');
+        }
+          .id('drag_badge')
+          .width(140)
+          .height(90)
+          .backgroundColor('#1565C0')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.badgeVisibility);
+      }
+
+      Column() {
+        Text('拖拽落点')
+          .fontWeight(FontWeight.Medium);
+        Text('松手后恢复组件显示')
+          .fontSize(10)
+          .fontColor('#6D4C41');
+      }
+        .width('100%')
+        .height(120)
+        .backgroundColor('#FFE082')
+        .borderRadius(12)
+        .justifyContent(FlexAlign.Center)
+        .onDrop(() => {
+          this.restoreTargets();
+        });
+    }
+    .width('100%')
+    .padding(16);
+  }
+}
+```
+![autohide_drag.gif](figures/autohide_drag.gif)

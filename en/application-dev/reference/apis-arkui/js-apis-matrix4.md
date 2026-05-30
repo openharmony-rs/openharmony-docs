@@ -1,10 +1,21 @@
 # @ohos.matrix4 (Matrix Transformation)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **matrix4** module provides APIs for matrix transformation. You can use these APIs to translate, rotate, and scale images.
+Provides matrix transformation capabilities for components, including translation, rotation, and scaling. For details, see [Transformation](arkui-ts/ts-universal-attributes-transformation.md).
+
+**Matrix4** can be used in the following scenarios:
+
+In [Transformation](arkui-ts/ts-universal-attributes-transformation.md), the [transform](arkui-ts/ts-universal-attributes-transformation.md#transform18) API uses the **Matrix4** object to display the matrix transformation in two-dimensional transformation, and the [transform3D](arkui-ts/ts-universal-attributes-transformation.md#transform3d20) API uses the **Matrix4** object to set the three-dimensional transformation matrix for a component.
+
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -28,7 +39,7 @@ Matrix constructor, which is used to create a 4 x 4 matrix with the input parame
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | Yes  | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Value range of each number: (-∞, +∞)<br>Default value:<br>[1, 0, 0, 0,<br>0, 1, 0, 0,<br>0, 0, 1, 0,<br>0, 0, 0, 1] |
+| options | [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | Yes  | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Value range of each number: (-∞, +∞)<br>Default value:<br>[1,&nbsp;0,&nbsp;0,&nbsp;0,<br>0,&nbsp;1,&nbsp;0,&nbsp;0,<br>0,&nbsp;0,&nbsp;1,&nbsp;0,<br>0,&nbsp;0,&nbsp;0,&nbsp;1] |
 
 **Return value**
 
@@ -67,13 +78,14 @@ let matrix = matrix4.init(
   [1.0, 0.0, 0.0, 0.0,
     0.0, 1.0, 0.0, 0.0,
     0.0, 0.0, 1.0, 0.0,
-    0.0, 0.0, 0.0, 1.0])
+    0.0, 0.0, 0.0, 1.0]);
 
 @Entry
 @Component
 struct Tests {
   build() {
     Column() {
+      // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
         .width("40%")
         .height(100)
@@ -110,18 +122,20 @@ let matrix1 = matrix4.init(
   [1.0, 0.0, 0.0, 0.0,
     0.0, 1.0, 0.0, 0.0,
     0.0, 0.0, 1.0, 0.0,
-    0.0, 0.0, 0.0, 1.0])
-let matrix2 = matrix4.identity()
+    0.0, 0.0, 0.0, 1.0]);
+let matrix2 = matrix4.identity();
 
 @Entry
 @Component
 struct Tests {
   build() {
     Column() {
+      // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
         .width("40%")
         .height(100)
         .transform(matrix1)
+      // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
         .width("40%")
         .height(100)
@@ -166,19 +180,22 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().scale({ x: 1.5 })
-  private matrix2 = this.matrix1.copy().translate({ x: 200 })
-  imageSize: Length = '300px'
+  private matrix1 = matrix4.identity().scale({ x: 1.5 });
+  private matrix2 = this.matrix1.copy().translate({ x: 200 });
+  imageSize: Length = '300px';
 
   build() {
     Column({ space: "50px" }) {
+      // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage"))
         .width(this.imageSize)
         .height(this.imageSize)
+      // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage"))
         .width(this.imageSize)
         .height(this.imageSize)
         .transform(this.matrix1)
+      // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage"))
         .width(this.imageSize)
         .height(this.imageSize)
@@ -195,7 +212,7 @@ struct Test {
 
 combine(options: Matrix4Transit): Matrix4Transit
 
-Combines the effects of two matrices to generate a new matrix object. The original matrix that calls this API will be changed.
+Combines the effects of two matrices to generate a new matrix object. The matrix that calls this API will be changed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -222,17 +239,19 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().translate({ x: 200 })
-  private matrix2 = matrix4.identity().scale({ x: 2 })
+  private matrix1 = matrix4.identity().translate({ x: 200 });
+  private matrix2 = matrix4.identity().scale({ x: 2 });
 
   build() {
     Column() {
       // Before matrix transformation
+      // Replace $r("app.media.icon") with the image resource file you use.
       Image($r("app.media.icon"))
         .width("40%")
         .height(100)
         .margin({ top: 50 })
       // Translate the x-axis by 200px, and then scale it twice to obtain the resultant matrix.
+      // Replace $r("app.media.icon") with the image resource file you use.
       Image($r("app.media.icon"))
         .transform(this.matrix1.copy().combine(this.matrix2))
         .width("40%")
@@ -250,7 +269,7 @@ struct Test {
 
 invert(): Matrix4Transit
 
-Inverts this matrix object. The original matrix that calls this API will be changed.
+Inverts this matrix object. The matrix that calls this API will be changed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -268,19 +287,21 @@ Inverts this matrix object. The original matrix that calls this API will be chan
 import { matrix4 } from '@kit.ArkUI';
 
 // The effect of matrix 1 (width scaled up by 2x) is opposite to that of matrix 2 (width scaled down by 2x).
-let matrix1 = matrix4.identity().scale({ x: 2 })
-let matrix2 = matrix1.copy().invert()
+let matrix1 = matrix4.identity().scale({ x: 2 });
+let matrix2 = matrix1.copy().invert();
 
 @Entry
 @Component
 struct Tests {
   build() {
     Column() {
+      // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
         .width(200)
         .height(100)
         .transform(matrix1)
         .margin({ top: 100 })
+      // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
         .width(200)
         .height(100)
@@ -296,7 +317,7 @@ struct Tests {
 
 translate(options: TranslateOption): Matrix4Transit
 
-Translates this matrix object along the x, y, and z axes. The original matrix that calls this API will be changed.
+Translates this matrix object along the x, y, and z axes. The matrix that calls this API will be changed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -323,10 +344,11 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().translate({ x: 100, y: 200, z: 30 })
+  private matrix1 = matrix4.identity().translate({ x: 100, y: 200, z: 30 });
 
   build() {
     Column() {
+      // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1")).transform(this.matrix1)
         .width("40%")
         .height(100)
@@ -376,10 +398,11 @@ struct Test {
       z: 4,
       centerX: 50,
       centerY: 50
-    })
+    });
 
   build() {
     Column() {
+      // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage")).transform(this.matrix1)
         .width("300px")
         .height("300px")
@@ -398,6 +421,8 @@ skew(x: number, y: number): Matrix4Transit
 Skews this matrix object along the x and y axes. The matrix that calls this API will be changed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -423,10 +448,11 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().skew(2, 3)
+  private matrix1 = matrix4.identity().skew(2, 3);
 
   build() {
     Column() {
+      // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1")).transform(this.matrix1)
         .height(100)
         .margin({
@@ -479,10 +505,11 @@ struct Test {
       y: 1,
       z: 2,
       angle: 30
-    })
+    });
 
   build() {
     Column() {
+      // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1")).transform(this.matrix1)
         .width("40%")
         .height(100)
@@ -525,15 +552,16 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private originPoint: number[] = [50, 50]
-  private matrix_1 = matrix4.identity().translate({ x: 150, y: -50 })
-  private transformPoint = this.matrix_1.transformPoint([this.originPoint[0], this.originPoint[1]])
-  private matrix_2 = matrix4.identity().translate({ x: this.transformPoint[0], y: this.transformPoint[1] })
+  private originPoint: number[] = [50, 50];
+  private matrix_1 = matrix4.identity().translate({ x: 150, y: -50 });
+  private transformPoint = this.matrix_1.transformPoint([this.originPoint[0], this.originPoint[1]]);
+  private matrix_2 = matrix4.identity().translate({ x: this.transformPoint[0], y: this.transformPoint[1] });
 
   build() {
     Column() {
       Text(`Coordinates before matrix transformation: [${this.originPoint}]`)
         .fontSize(16)
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r("app.media.image"))
         .width('600px')
         .height('300px')
@@ -541,6 +569,7 @@ struct Test {
       Text(`Coordinates after matrix transformation: [${this.transformPoint}]`)
         .fontSize(16)
         .margin({ top: 100 })
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r("app.media.image"))
         .width('600px')
         .height('300px')
@@ -561,6 +590,8 @@ Maps the vertex coordinates of a polygon to those of another polygon.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -576,13 +607,12 @@ Maps the vertex coordinates of a polygon to those of another polygon.
 | [Matrix4Transit](#matrix4transit) | Matrix object after the mapping.|
 
 > **NOTE**
->
-> This API must be used with **scale({centerX:0,centerY:0,x:1})** to ensure that the transformation is centered at the upper left corner of the component.
+> This API must be used with **scale({centerX:0,centerY:0,x:1})** to ensure that the transformation is centered in the upper left corner of the component.
 
 **Example**
 
 ```ts
-import { matrix4 } from '@kit.ArkUI'
+import { matrix4 } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -590,13 +620,14 @@ struct Index {
   private matrix1 = matrix4.identity().setPolyToPoly({
     src: [{ x: 0, y: 0 }, { x: 500, y: 0 }, { x: 0, y: 500 }, { x: 500, y: 500 }],
     dst: [{ x: 0, y: 0 }, { x: 500, y: 0 }, { x: 0, y: 500 }, { x: 750, y: 1000 }], pointCount: 4
-  })
+  });
 
   build() {
     Stack() {
       Column().backgroundColor(Color.Blue)
         .width('500px')
         .height('500px')
+      // Replace $r("app.media.transition_image1") with the image resource file you use.
       Image($r('app.media.transition_image1'))
         .scale({ centerX: 0, centerY: 0, x: 1 })
         .transform(this.matrix1)
@@ -609,69 +640,83 @@ struct Index {
 ![en-us_image_0000001174422898](figures/setPolyTopoly.png)
 ## TranslateOption
 
+Describes the translation parameters.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Mandatory| Description                                                       |
-| ---- | ------ | ---- | ----------------------------------------------------------- |
-| x    | number | No  | Translation distance along the x-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
-| y    | number | No  | Translation distance along the y-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
-| z    | number | No  | Translation distance along the z-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
+| Name| Type  | Read-Only| Optional| Description                                                       |
+| ---- | ------ | ---- | ---------- | ------------------------------------------------- |
+| x    | number | No| Yes  | Translation distance along the x-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
+| y    | number | No| Yes  | Translation distance along the y-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
+| z    | number | No| Yes  | Translation distance along the z-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
 
 ## ScaleOption
 
+Describes the scale parameters.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type  | Mandatory| Description                                                        |
-| ------- | ------ | ---- | ------------------------------------------------------------ |
-| x       | number | No  | Scaling multiple along the x-axis. x > 1: The image is scaled up along the x-axis.<br>0 < x < 1: The image is scaled down along the x-axis.<br>x < 0: The image is scaled in the reverse direction of the x-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
-| y       | number | No  | Scaling multiple along the y-axis. y > 1: The image is scaled up along the y-axis.<br>0 < y < 1: The image is scaled down along the y-axis.<br>y < 0: The image is scaled in the reverse direction of the y-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
-| z       | number | No  | Scaling multiple along the z-axis. z > 1: The image is scaled up along the z-axis.<br>0 < z < 1: The image is scaled down along the z-axis.<br>z < 0: The image is scaled in the reverse direction of the z-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
-| centerX | number | No  | X coordinate of the center point.<br>Unit: px<br>Default value: X-coordinate of the component center<br>Value range: (-∞, +∞)   |
-| centerY | number | No  | Y coordinate of the center point.<br>Unit: px<br>Default value: Y-coordinate of the component center<br>Value range: (-∞, +∞)   |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
+| ------- | ------ | ---- | ---------- | -------------------------------------------------- |
+| x       | number | No| Yes | Scaling multiple along the x-axis. x > 1: The image is scaled up along the x-axis.<br>0 < x < 1: The image is scaled down along the x-axis.<br>x < 0: The image is scaled in the reverse direction along the x-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
+| y       | number | No| Yes | Scaling multiple along the y-axis. y > 1: The image is scaled up along the y-axis.<br>0 < y < 1: The image is scaled down along the y-axis.<br>y < 0: The image is scaled in the reverse direction along the y-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
+| z       | number | No| Yes | Scaling multiple along the z-axis. z > 1: The image is scaled up along the z-axis.<br>0 < z < 1: The image is scaled down along the z-axis.<br>z < 0: The image is scaled in the reverse direction along the z-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
+| centerX | number | No| Yes | X-coordinate of the center point.<br>Unit: px<br>Default value: X-coordinate of the component center<br>Value range: (-∞, +∞)   |
+| centerY | number | No| Yes | Y-coordinate of the center point.<br>Unit: px<br>Default value: Y-coordinate of the component center<br>Value range: (-∞, +∞)   |
 
 ## RotateOption
 
+Describes the rotation parameters.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type  | Mandatory| Description                                                        |
-| ------- | ------ | ---- | ------------------------------------------------------------ |
-| x       | number | No  | X coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)     |
-| y       | number | No  | Y coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)     |
-| z       | number | No  | Z coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)<br>**NOTE**<br>The rotation axis vector is valid only when at least one of **x**, **y**, and **z** is not 0.|
-| angle   | number | No  | Rotation angle.<br>Default value: **0**                                    |
-| centerX | number | No  | Additional x-axis offset of the transformation center relative to the component's anchor.<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>The value **0** indicates that the transformation center coincides with the component's x-axis anchor. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
-| centerY | number | No  | Additional y-axis offset of the transformation center relative to the component's anchor.<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>The value **0** indicates that the transformation center coincides with the component's y-axis anchor. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
+| Name   | Type  | Read-Only| Optional| Description                                                        |
+| ------- | ------ | ---- | ---------- | -------------------------------------------------- |
+| x       | number | No| Yes  | X-coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)     |
+| y       | number | No| Yes | Y-coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)     |
+| z       | number | No| Yes | Z-coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)<br>**NOTE**<br>The rotation axis vector is valid only when at least one of **x**, **y**, and **z** is not 0.|
+| angle   | number | No| Yes | Rotation angle.<br>Default value: **0**                                    |
+| centerX | number | No| Yes | Additional x-axis offset of the transformation center relative to the component's anchor.<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>The value **0** indicates that the transformation center coincides with the component's x-axis anchor. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
+| centerY | number | No| Yes | Additional y-axis offset of the transformation center relative to the component's anchor.<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>The value **0** indicates that the transformation center coincides with the component's y-axis anchor. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
 
 ## PolyToPolyOptions<sup>12+</sup>
 
+Describes the configuration options for polygon-to-polygon transformation mapping.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Mandatory| Description                                                       |
-| ---- | ------ | ---- | ----------------------------------------------------------- |
-| src    |  Array<[Point](#point12)> | Yes  | Coordinates of the source point.|
-| srcIndex    | number | No  | Start index of the source point coordinates.<br>Default value: **0**.<br> Value range: [0, +∞).|
-| dst    |  Array<[Point](#point12)>  | Yes  | Coordinates of the destination point.|
-| dstIndex    | number | No  |  Start index of the destination point coordinates.<br>Default value: **0**.<br> Value range: [0, +∞).|
-| pointCount    | number | No  | Number of used points.<br>Default value: **src.length/2**.<br> Value range: [0, +∞).|
+| Name| Type  | Read-Only| Optional| Description                                                       |
+| ---- | ------ | ---- | ---- | ----------------------------------------------------------- |
+| src    |  Array<[Point](#point12)> | No  | No  | Coordinates of the source point.|
+| srcIndex    | number | No  | Yes  | Start index of the source point coordinates.<br>Default value: **0**.<br> Value range: [0, +∞).|
+| dst    |  Array<[Point](#point12)>  | No  | No  | Coordinates of the destination point.|
+| dstIndex    | number | No  | Yes  |  Start index of the destination point coordinates.<br>Default value: **src.length/2**.<br> Value range: [0, +∞).|
+| pointCount    | number | No  | Yes  | Number of used points. **0**: returns an identity matrix. **1**: returns a translation matrix. 2-4: returns a transformation matrix.<br>Default value: **0**.<br> Value range: [0, +∞).|
 
 ## Point<sup>12+</sup>
 
+Defines the data structure of a coordinate point.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Mandatory| Description                                                       |
-| ---- | ------ | ---- | ----------------------------------------------------------- |
-| x    |  number | Yes  | X-coordinate.<br>Value range: (-∞, +∞)|
-| y    | number | Yes  | Y-coordinate.<br>Value range: (-∞, +∞)|
+| Name| Type  | Read-Only| Optional| Description                                                       |
+| ---- | ------ | ---- | -------- | --------------------------------------------------- |
+| x    |  number | No| No  | X-coordinate.<br>Value range: (-∞, +∞)|
+| y    | number | No| No  | Y-coordinate.<br>Value range: (-∞, +∞)|
 
 ## matrix4.copy<sup>(deprecated)</sup>
 
@@ -682,7 +727,7 @@ Copies this matrix object.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.copy](#copy) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.copy](#copy) instead.
 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -702,16 +747,18 @@ import { matrix4 } from '@kit.ArkUI';
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().translate({ x: 100 })
+  private matrix1 = matrix4.identity().translate({ x: 100 });
   // Perform the scale operation on the copy matrix of matrix1, which does not affect matrix1.
-  private matrix2 = this.matrix1.copy().scale({ x: 2 })
+  private matrix2 = this.matrix1.copy().scale({ x: 2 });
 
   build() {
     Column() {
+      // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1"))
         .width("40%")
         .height(100)
         .transform(this.matrix1)
+      // Replace $r("app.media.bg2") with the image resource file you use.
       Image($r("app.media.bg2"))
         .width("40%")
         .height(100)
@@ -732,7 +779,7 @@ Inverts this matrix object.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.invert](#invert) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.invert](#invert) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -750,7 +797,7 @@ Combines the effects of two matrices to generate a new matrix object.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.combine](#combine) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.combine](#combine) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -774,7 +821,7 @@ Translates this matrix object along the x, y, and z axes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.translate](#translate) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.translate](#translate) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -798,7 +845,7 @@ Scales this matrix object along the x, y, and z axes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.scale](#scale) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.scale](#scale) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -822,7 +869,7 @@ Rotates this matrix object along the x, y, and z axes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.rotate](#rotate) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.rotate](#rotate) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -846,7 +893,7 @@ Applies the current transformation effect to a coordinate point.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.transformPoint](#transformpoint) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.transformPoint](#transformpoint) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

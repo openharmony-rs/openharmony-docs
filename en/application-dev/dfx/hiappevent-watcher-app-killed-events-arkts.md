@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @shead-master-->
+<!--Owner: @xuxinao-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
@@ -13,12 +13,12 @@ For details, see [Application Killed Event Overview](./hiappevent-watcher-app-ki
 
 ## Available APIs
 
-For details about how to use the APIs (such as parameter usage restrictions and value ranges), see [HiAppEvent](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
+For details about how to use the APIs, see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 | Name                                             | Description                                        |
 | --------------------------------------------------- | -------------------------------------------- |
-| addWatcher(watcher: Watcher): AppEventPackageHolder | Adds a watcher to listen for application events.|
-| removeWatcher(watcher: Watcher): void               | Removes a watcher for the specified application events.|
+| addWatcher(watcher: Watcher): AppEventPackageHolder | Adds a watcher to subscribe to the application event.|
+| removeWatcher(watcher: Watcher): void               | Removes a watcher to unsubscribe from the application event.|
 
 ## How to Develop
 
@@ -84,8 +84,8 @@ To ensure that the event callback can be successfully received in the developmen
    }
    
    static napi_value Leak(napi_env env, napi_callback_info info) {
-   	std::thread t1(NativeLeak);
-   	t1.detach();
+    std::thread t1(NativeLeak);
+    t1.detach();
        return {};
    }
    ```
@@ -109,7 +109,7 @@ To ensure that the event callback can be successfully received in the developmen
    export const leak: () => void;
    ```
 
-6. In the **entry/src/main/ets/pages/Index.ets** file,  add the **OnClick** function under **build()** and call the **Leak** API.
+6. In the **entry/src/main/ets/pages/Index.ets** file, add the **OnClick** function under **build()** and call the **Leak** API.
 
    ```ts
    import { hilog } from '@kit.PerformanceAnalysisKit';

@@ -4,9 +4,9 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
-本模块支持launcher应用所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息的查询。
+本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息的查询。
 
 > **说明：**
 >
@@ -59,12 +59,12 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let data = launcherBundleManager.getLauncherAbilityInfoSync("com.example.demo", 100);
-    console.info("data is " + JSON.stringify(data));
+  let data = launcherBundleManager.getLauncherAbilityInfoSync("com.example.demo", 100);
+  console.info("data is " + JSON.stringify(data));
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 

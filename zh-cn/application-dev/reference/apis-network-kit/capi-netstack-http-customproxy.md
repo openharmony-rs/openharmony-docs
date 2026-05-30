@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_CustomProxy {...} Http_CustomProxy
+```
+
 ## 概述
 
 用户自定义代理配置。

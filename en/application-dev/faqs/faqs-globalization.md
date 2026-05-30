@@ -1,5 +1,12 @@
 # Resource Manager Development
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+<!--deprecated_code_no_check-->
 
 ## How do I read an XML file in rawfile and convert the data in it to the string type? (API 9)
 
@@ -8,11 +15,11 @@
 Call **getRawFileContent** of the **ResourceManager** module to obtain the data in the XML file, and then use **String.fromCharCode** to convert the data to the string type.
 
 **Example**
-
-```
+<!--code_no_check-->
+```js
 resourceManager.getRawFileContent('test.xml', (error, value) => {
   if (error != null) {
-    console.log("error is " + error);
+    console.error("error is " + error);
   } else {
     let rawFile = value;
     let xml = String.fromCharCode.apply(null, rawFile)
@@ -32,8 +39,8 @@ resourceManager.getRawFileContent('test.xml', (error, value) => {
 The stage model allows an application to obtain a **ResourceManager** object based on **context** and call its resource management APIs without first importing the required bundle. This mode does not apply to the FA model.
 
 **Example**
-
-```
+<!--code_no_check-->
+```js
 const context = getContext(this) as any
 context 
   .resourceManager
@@ -56,9 +63,9 @@ Because the application is installed in HAP mode and the HAP package is not deco
 
 To obtain the path of the **resource** directory, try either of the following ways:
 
-1. Use **$r** or **$rawfile** for access. This method applies to static access, during which the **resource** directory remains unchanged when the application is running.
+1. Use `$r` or `$rawfile` to access resources. This method applies to static access, during which the **resource** directory remains unchanged when the application is running.
 
-2. Use **ResourceManager** for access. This method applies to dynamic access, during which the **resource** directory dynamically changes when the application is running.
+2. Use **ResourceManager** to access resources. This method applies to dynamic access, during which the **resource** directory dynamically changes when the application is running.
 
 **Reference Link**
 
@@ -91,14 +98,14 @@ Use **getStringValue** of the **ResourceManager** module.
 
 **Solution**
 
-Resources are referenced in the **$r('app.type.name')** format. Where, **type** indicates the resource type, such as color, string, and media, and **name** indicates the resource name.
+Resources are referenced in the `$r('app.type.name')` format. Where, **type** indicates the resource type, such as color, string, and media, and **name** indicates the resource name.
 
 
 ## How do I convert resources to strings? (API 9)
 
 **Solution**
 
-If the resource type is set to **string**, the qualifier directory can be set as **this.context.resourceManager.getStringSync($r('app.string.test').id)** and can be converted synchronously. The **$r('app.string.test', 2)** mode is not supported.
+If the resource type is set to **string**, the qualifier directory can be set as `this.context.resourceManager.getStringSync($r('app.string.test').id)` and can be converted synchronously. The `$r('app.string.test', 2)` mode is not supported.
 
 **Reference Link**
 
@@ -107,16 +114,16 @@ If the resource type is set to **string**, the qualifier directory can be set as
 
 ## Can $ be used to reference constants in the form\_config.json file? (API 9)
 
-In the **form_config.json** file, **$** cannot be used to reference constants.
+In the form_config.json file, `$` cannot be used to reference constants.
 
 
 ## How does ArkTS parse XML files? (API 9)
 
 **Solution**
 
-1. Create the following XML file in the **rawfile** directory:
+1. Create the following XML file in the rawfile directory:
 
-   ```
+   ```xml
    <?xml version="1.0" encoding="utf-8"?>
    <user>
        <name>Jacky</name>
@@ -125,17 +132,29 @@ In the **form_config.json** file, **$** cannot be used to reference constants.
    ```
 
 2. Use **resourceManager.getRawFileContent** to obtain the byte arrays of the XML file.
-
-   ```
+   <!--code_no_check-->
+   ```js
    import resourceManager from '@ohos.resourceManager';
-   resourceManager.getRawFileContent("test.xml", (error, value) => {
-     if (error != null) {
-       console.log("error is " + error);
-       return
-     }
-     let arrayBuffer = value.buffer; // unit8Array
-     var xmpParser = new xml.XmlPullParser(arrayBuffer);
-     var tagName = ""
-     //do something
-   }
+   import xml from '@ohos.xml';
+   export default {
+       onCreate() {
+           resourceManager.getResourceManager((error, res) => {
+               if (error != null) {
+                   console.error("error is " + error);
+                   return
+               }
+               res.getRawFileContent("test.xml", (error, value) => {
+                   if (error != null) {
+                       console.error("error is " + error);
+                       return
+                   }
+                   let arrayBuffer = value.buffer; // unit8Array
+                   var xmpParser = new xml.XmlPullParser(arrayBuffer);
+                   var tagName = ""
+                   // do something
+                   console.info("parse xml finished");
+               })
+           })
+       }
+   };
    ```

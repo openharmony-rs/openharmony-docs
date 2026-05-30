@@ -1,4 +1,10 @@
-# XComponent
+# XComponent (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zjsxstar-->
+<!--Designer: @dutie123-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **XComponent** provides a surface for graphics rendering and media data input into your view. You can customize the position and size of the surface as needed.
 
@@ -8,19 +14,15 @@
 >
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [XComponent](ts-basic-components-xcomponent.md).
 
-## APIs
-
-### XComponentOptions<sup>12+</sup>
+## XComponentOptions<sup>12+</sup>
 
 Defines the options of the **XComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name  | Type   | Mandatory| Description                  |
-| -------- | ------- | ---- | ---------------------- |
-| screenId<sup>17+</sup> | number | No| Associated screen ID of the component. The component can display the image of the associated screen. **System API**: This is a system API.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| screenId<sup>17+</sup> | number | No| Yes| Associated screen ID of the component. The component can display the image of the associated screen. **System API**: This is a system API.|
 
   > **NOTE**
   >
@@ -28,7 +30,7 @@ Defines the options of the **XComponent**.
   >
   > It is not supported for **XComponent** components created using the [ArkUI NDK API](../../../ui/ndk-build-ui-overview.md).
 
-## Attributes
+## APIs
 
 ### enableTransparentLayer<sup>18+</sup>
 
@@ -54,7 +56,7 @@ Ensure that **XComponent** components with independent layers are placed below a
 
 3. Use this API in static layout scenarios, such as non-page transition or static video subtitle display scenarios.
 
-**System API**: This attribute can be used in system APIs since API version 18.
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

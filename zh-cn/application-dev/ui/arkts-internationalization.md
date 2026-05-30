@@ -4,7 +4,7 @@
 <!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本文介绍如何实现应用程序UI界面的国际化，包含资源配置和镜像布局，关于应用适配国际化的详细参考，请参考[Localization Kit（本地化开发服务）](../internationalization/i18n-l10n.md)。
 
@@ -14,7 +14,7 @@
 
 ## 使用镜像能力
 
-不同国家对文本对齐方式和读取顺序有所不同，例如英语采用从左到右的顺序，阿拉伯语和希腊语则采用从右到左（RTL）的顺序。为满足不同用户的阅读习惯，ArkUI提供了镜像能力。在特定情况下将显示内容在X轴上进行镜像反转，由从左向右显示变成从右向左显示。
+不同国家对文本对齐方式和读取顺序有所不同，例如英语采用从左到右的顺序，阿拉伯语和希腊语则采用从右到左（RTL）的顺序。为满足不同用户的阅读习惯，ArkUI提供了镜像能力。在特定情况下将显示内容在X轴上进行镜像反转，由从左到右显示变成从右到左显示。
 
 | 镜像前          | 镜像后                                  |
 | ----------- | ----------------------------------- |
@@ -28,13 +28,14 @@
 
 ### 基本概念
 
-- LTR：顺序为从左向右。
-- RTL：顺序为从右向左。
+- LTR：顺序为从左到右。
+- RTL：顺序为从右到左。
 
 ### 使用约束
 
 ArkUI 如下能力已默认适配镜像：
 
+<!--Table: 20%; 80%-->
 | 类别     | 名称                                                         |
 | -------- | ------------------------------------------------------------ |
 | 基础组件 | [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)、[Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md)、[TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md)、[CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md)、[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md)、[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)、[DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)、[Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md)、[SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)、[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)、[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)、[Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md)、[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md)、[Counter](../reference/apis-arkui/arkui-ts/ts-container-counter.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)、[SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)、[bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)、[Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md)、[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)、[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) |
@@ -46,9 +47,9 @@ ArkUI 如下能力已默认适配镜像：
 
 1. 界面布局、边框设置：关于方向类的通用属性，如果需要支持镜像能力，使用泛化的方向指示词 start/end入参类型替换 left/right、x/y等绝对方向指示词的入参类型，来表示自适应镜像能力。
 
-2. Canvas组件只有限支持文本绘制的镜像能力。
+2. [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)组件只有限支持文本绘制的镜像能力。
 
-3. XComponent组件不支持组件镜像能力。
+3. [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件不支持组件镜像能力。
 
 ### 界面布局和边框设置
 
@@ -62,27 +63,33 @@ ArkUI 如下能力已默认适配镜像：
 
 以position为例，需要把绝对方向x、y描述改为新入参类型start、end的描述，其他属性类似。
 
-```typeScript
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index1 {
-  build() {
-    Stack({ alignContent: Alignment.TopStart }) {
+  <!-- @[Interface_Layout_Border_Settings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets) -->
+  
+  ``` TypeScript
+  import { LengthMetrics } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct InterfaceLayoutBorderSettings {
+    build() {
       Stack({ alignContent: Alignment.TopStart }) {
-        Column()
-          .width(100)
-          .height(100)
-          .backgroundColor(Color.Red)
-          .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(200) })  //需要同时支持LTR和RTL时使用API12新增的LocalizedEdges入参类型,
-                                                                                   //仅支持LTR时等同于.position({ x: '200px', y: '200px' })
-
-      }.backgroundColor(Color.Blue)
-    }.width("100%").height("100%").border({ color: '#880606' })
+        Stack({ alignContent: Alignment.TopStart }) {
+          Column()
+            .width(100)
+            .height(100)
+            .backgroundColor(Color.Red)
+            .position({
+              start: LengthMetrics.px(200),
+              top: LengthMetrics.px(200)
+            }) // 需要同时支持LTR和RTL时使用API12新增的LocalizedEdges入参类型,
+          // 仅支持LTR时等同于.position({ x: '200px', y: '200px' })
+  
+        }.backgroundColor(Color.Blue)
+      }.width('100%').height('100%').border({ color: '#880606' })
+    }
   }
-}
-```
+  ```
+  
 
 ### 自定义绘制Canvas组件
 
@@ -94,76 +101,77 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
 2. Canvas组件本身不会自动跟随系统语言切换镜像效果，需要应用监听到系统语言切换后自行重新绘制。
 3. CanvasRenderingContext2D绘制文本时，只有符号等文本会对绘制方向生效，英文字母和数字不响应绘制方向的变化。
 
-```typeScript
-import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello world';
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-
-  aboutToAppear(): void {
-    // 监听系统语言切换
-    let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-    let subscribeInfo2: commonEventManager.CommonEventSubscribeInfo = {
-      events: ["usual.event.LOCALE_CHANGED"],
-    }
-    commonEventManager.createSubscriber(subscribeInfo2, (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
-      if (err) {
-        console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-        return;
+  <!-- @[Customize_Canvas_Component_Drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets) -->
+  
+  ``` TypeScript
+  import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct CustomizeCanvasComponentDrawing {
+    @State message: string = 'Hello world';
+    private settings: RenderingContextSettings = new RenderingContextSettings(true)
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+  
+    aboutToAppear(): void {
+      // 监听系统语言切换
+      let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+      let subscribeInfo2: commonEventManager.CommonEventSubscribeInfo = {
+        events: ['usual.event.LOCALE_CHANGED'],
       }
-
-      subscriber = data;
-      if (subscriber !== null) {
-        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+      commonEventManager.createSubscriber(subscribeInfo2,
+        (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
           if (err) {
-            console.error(`订阅语言地区状态变化公共事件失败. Code is ${err.code}, message is ${err.message}`);
+            console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             return;
           }
-          console.info('成功订阅语言地区状态变化公共事件: data: ' + JSON.stringify(data))
-          // 监听到语言切换后，需要重新绘制Canvas内容
-          this.drawText();
+  
+          subscriber = data;
+          if (subscriber !== null) {
+            commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+              if (err) {
+                return;
+              }
+              // 监听到语言切换后，需要重新绘制Canvas内容
+              this.drawText();
+            })
+          } else {
+            console.error(`MayTest Need create subscriber`);
+          }
         })
-      } else {
-        console.error(`MayTest Need create subscriber`);
-      }
-    })
-  }
-
-  drawText(): void {
-    console.error("MayTest drawText")
-    this.context.reset()
-    this.context.direction = "inherit"
-    this.context.font = '30px sans-serif'
-    this.context.fillText("ab%123&*@", 50, 50)
-  }
-
-  build() {
-    Row() {
-      Canvas(this.context)
-        .direction(Direction.Auto)
-        .width("100%")
-        .height("100%")
-        .onReady(() =>{
-          this.drawText()
-        })
-        .backgroundColor(Color.Pink)
     }
-    .height('100%')
+  
+    drawText(): void {
+      console.error('MayTest drawText')
+      this.context.reset()
+      this.context.direction = 'inherit'
+      this.context.font = '30px sans-serif'
+      this.context.fillText('ab%123&*@', 50, 50)
+    }
+  
+    build() {
+      Row() {
+        Canvas(this.context)
+          .direction(Direction.Auto)
+          .width('100%')
+          .height('100%')
+          .onReady(() =>{
+            this.drawText()
+          })
+      }
+      .height('100%')
+    }
+  
   }
-
-}
-```
-
+  ```
+  
+  
 | 镜像前          | 镜像后                                  |
 | ----------- | ----------------------------------- |
 |![](figures/mirroring_2-0.jpg)|![](figures/mirroring_2-1.jpg)|
 
 ### 镜像状态字符对齐
-[Direction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#direction)是指文字的方向，即文本在屏幕上呈现时字符的顺序。在从左到右（LTR）文本中，显示顺序是从左向右；在从右到左（RTL）文本中，显示顺序是从右向左。
+[Direction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#direction)是指文字的方向，即文本在屏幕上呈现时字符的顺序。在从左到右（LTR）文本中，显示顺序是从左向右；在从右到左（RTL）文本中，显示顺序是从右到左。
 
 [TextAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#textalign)是将文本作为一个整体，在布局上的影响，具体位置会受Direction影响，以TextAlign为start为例，当Direction为LTR时，布局位置靠左；当Direction为RTL时，布局位置靠右。
 

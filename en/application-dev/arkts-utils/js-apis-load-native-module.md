@@ -4,9 +4,9 @@
 <!--Owner: @shilei123-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-The **loadNativeModule** API is used to dynamically load native modules in synchronous mode. Using this API increases the time for loading the .so file. You need to evaluate the impact on the functionality.
+The [loadNativeModule](../reference/common/js-apis-common-load-native-module.md) API is used to dynamically load native modules in synchronous mode. Using this API increases the time for loading the .so file. You need to evaluate the impact on the functionality.
 
 ## API Description
 
@@ -19,18 +19,19 @@ loadNativeModule(moduleName: string): Object;
 | moduleName            | Name of the module to load.      |
 
 > **NOTE**
-> The name of the module loaded by **loadNativeModule** is the name provided in **dependencies** in the **oh-package.json5** file of the dependency.
 >
-> **loadNativeModule** must be called in the UI main thread.
+> - The name of the module loaded by **loadNativeModule** is the name provided in **dependencies** in the **oh-package.json5** file of the dependency.
 >
-> Dependencies must be configured for the API call regardless of whether the parameter is a constant string or variable expression.
+> - **loadNativeModule** must be called in the UI main thread.
+>
+> - Dependencies must be configured for the API call regardless of whether the parameter is a constant string or variable expression.
 
 ## Supported Scenarios
 
 | Scenario           | Example          | 
 | :------------- | :----------------------------- | 
 | System library module       | Load **@ohos.** or **@system.**.       | 
-| Native module in an application| Load **libNativeLibrary.so**.|
+| Native module in an application | Load **libNativeLibrary.so**.|
 
 ## Usage Example
 

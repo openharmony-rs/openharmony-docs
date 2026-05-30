@@ -1,4 +1,10 @@
 # Basic Concepts<a name="EN-US_TOPIC_0000001127284864"></a>
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lanshouren-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Grid components layout elements in a grid system which is built based on  **<grid-container\>**,  **<grid-row\>**, and  **<grid-col\>**  containers.
 

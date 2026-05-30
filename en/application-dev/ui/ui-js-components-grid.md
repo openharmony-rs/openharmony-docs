@@ -1,13 +1,16 @@
 # Grid Layout
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zju_ljz-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
-
-The **\<grid-container>** component is the root container of the grid layout. Within the root container, you can use **\<grid-row>** and **\<grid-col>** for the grid layout. For details, see [Grid-container](../reference/apis-arkui/arkui-js/js-components-grid-container.md).
-
+The **\<grid-container>** component is the root container of the grid layout. Within the root container, you can use **\<grid-row>** and **\<grid-col>** for the grid layout. For details, see [grid-container](../reference/apis-arkui/arkui-js/js-components-grid-container.md).
 
 ## Creating a \<grid-container> Component
 
 Create a **\<grid-container>** component in the .hml file under **pages/index** and add a [\<grid-row>](../reference/apis-arkui/arkui-js/js-components-grid-row.md) child component.
-
 
 ```html
 <!-- index.hml -->
@@ -21,7 +24,6 @@ Create a **\<grid-container>** component in the .hml file under **pages/index** 
 </div>
 ```
 
-
 ```css
 /* xxx.css */
 .container{
@@ -33,17 +35,15 @@ Create a **\<grid-container>** component in the .hml file under **pages/index** 
 }
 ```
 
-![en-us_image_0000001276162725](figures/en-us_image_0000001276162725.png)
+![en-us_image_0000001226897009](figures/en-us_image_0000001226897009.png)
 
 > **NOTE**
 >
 > **\<grid-container>** supports only **\<grid-row>** as a child component.
 
+## Calling Methods
 
-## Methods
-
-Touch the **\<grid-container>** component to call the **getColumns**, **getColumnWidth**, and **getGutterWidth** methods to return the number of columns in the grid container, and column width and gutter width of the grid container. Press and hold the component to call the **getSizeType** method to return the size-responsive type of the grid container (**xs**|**sm**|**md**|**lg**).
-
+In the following example, clicking the **\<grid-container>** component invokes the **getColumns**, **getColumnWidth**, and **getGutterWidth** methods, which return the container's column count, column width, and gutter width, respectively. Long pressing the **\<grid-container>** component calls the **getSizeType** method, returning the current container's responsive size type (xs, sm, md, or lg).
 
 ```html
 <!-- index.hml -->
@@ -61,7 +61,6 @@ Touch the **\<grid-container>** component to call the **getColumns**, **getColum
 </div>
 ```
 
-
 ```css
 /* xxx.css */
 .container{
@@ -72,7 +71,6 @@ Touch the **\<grid-container>** component to call the **getColumns**, **getColum
   align-items: center;
 }
 ```
-
 
 ```js
 // index.js
@@ -108,12 +106,11 @@ export default {
 
 ![en-us_image_0000001227135613](figures/en-us_image_0000001227135613.gif)
 
-
 ## Adding \<grid-col>
 
-After adding a **\<grid-row>** child component to **\<grid-container>**, add a **\<grid-col>** child component to **\<grid-row>** to form a layout.
+After adding a **\<grid-row>** child component inside the **\<grid-container>**, place a [\<grid-col>](../reference/apis-arkui/arkui-js/js-components-grid-col.md) child component within the **\<grid-row>** to form a layout.
 
-
+<!--code_no_check-->
 ```html
 <!-- index.hml -->
 <div class="container">
@@ -148,7 +145,6 @@ After adding a **\<grid-row>** child component to **\<grid-container>**, add a *
 </div>
 ```
 
-
 ```css
 /* xxx.css */
 .container{
@@ -165,12 +161,11 @@ text{
 }
 ```
 
-![en-us_image_0000001231683124](figures/en-us_image_0000001231683124.png)
+![en-us_image_0000001227135731](figures/en-us_image_0000001227135731.png)
 
 > **NOTE**
 >
 > **\<grid-row>** supports only **\<grid-col>** as a child component. You can add content only to **\<grid-col>**.
-
 
 ## Example Scenario
 
@@ -199,7 +194,6 @@ In this example, the content in the list is output cyclically to create a grid l
 </div>
 ```
 
-
 ```css
 /* xxx.css */
 .container{
@@ -213,7 +207,6 @@ text{
   font-size: 60px;
 }
 ```
-
 
 ```js
 // index.js
@@ -244,5 +237,4 @@ export default {
 }
 ```
 
-
-![en-us_image_0000001276003501](figures/en-us_image_0000001276003501.gif)
+![en-us_image_0000001263160403](figures/en-us_image_0000001263160403.gif)

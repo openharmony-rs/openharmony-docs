@@ -1,9 +1,14 @@
 # AVSession_PlaybackPosition
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--SE: @ccfriend-->
-<!--TSE: @chenmingxi1_huawei-->
+<!--Owner: @ccfriend; @devil_red-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
+```
 
 ## Overview
 
@@ -13,7 +18,7 @@ The struct describes the information related to the playback position.
 
 **Related module**: [OHAVSession](capi-ohavsession.md)
 
-**Header file**: [native_avsession.h](capi-native-avsession-h.md)
+**Header file**: [native_avplaybackstate.h](capi-native-avplaybackstate-h.md)
 
 ## Summary
 

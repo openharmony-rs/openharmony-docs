@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_HeaderEntry {...} Http_HeaderEntry
+```
+
 ## Overview
 
 Defines all key-value pairs in the request or response header.
@@ -23,4 +27,4 @@ Defines all key-value pairs in the request or response header.
 | -- | -- |
 | char *key | Key in the request or response header.|
 | [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | Value of the key in the request or response header. For details, see [Http_HeaderValue](capi-netstack-http-headervalue.md).|
-| struct [Http_HeaderEntry](capi-netstack-http-headerentry.md) *next | Pointer to next [Http_HeaderEntry](capi-netstack-http-headerentry.md) in the data chain.|
+| struct Http_HeaderEntry *next | Pointer to Pointer to the next **Http_HeaderEntry**.|

@@ -9,7 +9,7 @@ OpenHarmony supports multiple wakeup sources, such as the power button, keyboard
 ### Constraints
 
 The configuration paths for battery level customization are subject to the configuration policy.
-The configuration path for battery level customization is subject to the [configuration policy](https://gitee.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
+The configuration path for battery level customization is subject to the [configuration policy](https://gitcode.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
 
 ## How to Develop
 
@@ -25,11 +25,11 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ### Getting Started with Development
 
-The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate wakeup source customization.
+The following uses [DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate wakeup source customization.
 
-1. Create the `power_manager` folder in the product directory [/vendor/hihope/rk3568](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568).
+1. Create the `power_manager` folder in the product directory [/vendor/hihope/rk3568](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568).
 
-2. Create a target folder by referring to the [default folder of wakeup source configuration](https://gitee.com/openharmony/powermgr_power_manager/tree/master/services/native/profile), and install it in `/vendor/hihope/rk3568/power_manager`. The content is as follows:
+2. Create a target folder by referring to the [default folder of wakeup source configuration](https://gitcode.com/openharmony/powermgr_power_manager/tree/master/services/native/profile), and install it in `/vendor/hihope/rk3568/power_manager`. The content is as follows:
 
     ```text
     profile
@@ -94,7 +94,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     | click | int | Number of clicks|
 
 
-4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn) file in the default folder of wakeup source configuration to pack the `power_wakeup.json` file to the `/vendor/etc/power_config` directory. The configuration is as follows:
+4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn) file in the default folder of wakeup source configuration to pack the `power_wakeup.json` file to the `/vendor/etc/power_config` directory. The configuration is as follows:
 
     ```shell
     import("//build/ohos.gni")               # Reference build/ohos.gni.
@@ -107,7 +107,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     }
     ```
 
-5. Add the build target to `module_list` in [ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
+5. Add the build target to `module_list` in [ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
 
     ```json
     {

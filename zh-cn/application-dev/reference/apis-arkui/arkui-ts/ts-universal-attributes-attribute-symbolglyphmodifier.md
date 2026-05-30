@@ -3,15 +3,17 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-开发者可使用SymbolGlyphModifier构建组件并配置属性，通过此SymbolGlyphModifier可调用所封装组件的属性和样式接口。
+SymbolGlyphModifier用于动态设置SymbolGlyph组件的属性和样式，支持使用if/else语句进行设置。[SymbolGlyph](./ts-basic-components-symbolGlyph.md)是一个用于展示图标符号的组件。
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## SymbolGlyphModifier
 
@@ -35,7 +37,7 @@ SymbolGlyphModifier的构造函数。
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| src | [Resource](../../apis-localization-kit/js-apis-resource.md#resource) | 否   | 资源信息。 |
+| src | [Resource](ts-types.md#resource) | 否   | 资源信息。 |
 
 ### applyNormalAttribute
 

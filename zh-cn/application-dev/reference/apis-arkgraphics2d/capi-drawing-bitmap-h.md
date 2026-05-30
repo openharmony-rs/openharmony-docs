@@ -2,8 +2,8 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -12,11 +12,13 @@
 文件中定义了与位图相关的功能函数。
 
 <!--RP1-->
-**相关示例：** [NDKAPIDrawing (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKAPIDrawing)<!--RP1End-->
+**相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **引用文件：** <native_drawing/drawing_bitmap.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -40,6 +42,7 @@
 | [void OH_Drawing_BitmapBuild(OH_Drawing_Bitmap* bitmap,const uint32_t width, const uint32_t height, const OH_Drawing_BitmapFormat* bitmapFormat)](#oh_drawing_bitmapbuild) | 用于初始化位图对象的宽度和高度，并且为该位图设置像素格式。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>bitmap、bitmapFormat任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [uint32_t OH_Drawing_BitmapGetWidth(OH_Drawing_Bitmap* bitmap)](#oh_drawing_bitmapgetwidth) | 用于获取指定位图的宽度。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>bitmap为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [uint32_t OH_Drawing_BitmapGetHeight(OH_Drawing_Bitmap* bitmap)](#oh_drawing_bitmapgetheight) | 用于获取指定位图的高度。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>bitmap为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_ErrorCode OH_Drawing_BitmapGetRowBytes(OH_Drawing_Bitmap* bitmap, uint32_t* bytes)](#oh_drawing_bitmapgetrowbytes) | 用于获取指定位图每行的字节数。 |
 | [OH_Drawing_ColorFormat OH_Drawing_BitmapGetColorFormat(OH_Drawing_Bitmap* bitmap)](#oh_drawing_bitmapgetcolorformat) | 用于获取指定位图的像素存储格式。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>bitmap为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [OH_Drawing_AlphaFormat OH_Drawing_BitmapGetAlphaFormat(OH_Drawing_Bitmap* bitmap)](#oh_drawing_bitmapgetalphaformat) | 用于获取指定位图的像素透明度分量。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>bitmap为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void* OH_Drawing_BitmapGetPixels(OH_Drawing_Bitmap* bitmap)](#oh_drawing_bitmapgetpixels) | 用于获取指定位图的像素地址，可以通过像素地址获取到位图的像素数据。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>bitmap为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
@@ -50,7 +53,7 @@
 
 ### OH_Drawing_BitmapCreate()
 
-```
+```c
 OH_Drawing_Bitmap* OH_Drawing_BitmapCreate(void)
 ```
 
@@ -70,7 +73,7 @@ OH_Drawing_Bitmap* OH_Drawing_BitmapCreate(void)
 
 ### OH_Drawing_BitmapDestroy()
 
-```
+```c
 void OH_Drawing_BitmapDestroy(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -91,7 +94,7 @@ void OH_Drawing_BitmapDestroy(OH_Drawing_Bitmap* bitmap)
 
 ### OH_Drawing_BitmapCreateFromPixels()
 
-```
+```c
 OH_Drawing_Bitmap* OH_Drawing_BitmapCreateFromPixels(OH_Drawing_Image_Info* imageInfo, void* pixels, uint32_t rowBytes)
 ```
 
@@ -120,7 +123,7 @@ OH_Drawing_Bitmap* OH_Drawing_BitmapCreateFromPixels(OH_Drawing_Image_Info* imag
 
 ### OH_Drawing_BitmapBuild()
 
-```
+```c
 void OH_Drawing_BitmapBuild(OH_Drawing_Bitmap* bitmap,const uint32_t width, const uint32_t height, const OH_Drawing_BitmapFormat* bitmapFormat)
 ```
 
@@ -144,7 +147,7 @@ void OH_Drawing_BitmapBuild(OH_Drawing_Bitmap* bitmap,const uint32_t width, cons
 
 ### OH_Drawing_BitmapGetWidth()
 
-```
+```c
 uint32_t OH_Drawing_BitmapGetWidth(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -171,7 +174,7 @@ uint32_t OH_Drawing_BitmapGetWidth(OH_Drawing_Bitmap* bitmap)
 
 ### OH_Drawing_BitmapGetHeight()
 
-```
+```c
 uint32_t OH_Drawing_BitmapGetHeight(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -196,9 +199,34 @@ uint32_t OH_Drawing_BitmapGetHeight(OH_Drawing_Bitmap* bitmap)
 | -- | -- |
 | uint32_t | 函数返回位图的高度。 |
 
+### OH_Drawing_BitmapGetRowBytes()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_BitmapGetRowBytes(OH_Drawing_Bitmap* bitmap, uint32_t* bytes)
+```
+
+**描述**
+
+用于获取指定位图每行的字节数。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md)* bitmap | 指向位图对象[OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md)的指针。 |
+| uint32_t* bytes | 表示位图的行字节数。作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数bitmap或bytes为空。 |
+
 ### OH_Drawing_BitmapGetColorFormat()
 
-```
+```c
 OH_Drawing_ColorFormat OH_Drawing_BitmapGetColorFormat(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -225,7 +253,7 @@ OH_Drawing_ColorFormat OH_Drawing_BitmapGetColorFormat(OH_Drawing_Bitmap* bitmap
 
 ### OH_Drawing_BitmapGetAlphaFormat()
 
-```
+```c
 OH_Drawing_AlphaFormat OH_Drawing_BitmapGetAlphaFormat(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -252,7 +280,7 @@ OH_Drawing_AlphaFormat OH_Drawing_BitmapGetAlphaFormat(OH_Drawing_Bitmap* bitmap
 
 ### OH_Drawing_BitmapGetPixels()
 
-```
+```c
 void* OH_Drawing_BitmapGetPixels(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -279,7 +307,7 @@ void* OH_Drawing_BitmapGetPixels(OH_Drawing_Bitmap* bitmap)
 
 ### OH_Drawing_BitmapGetImageInfo()
 
-```
+```c
 void OH_Drawing_BitmapGetImageInfo(OH_Drawing_Bitmap* bitmap, OH_Drawing_Image_Info* imageInfo)
 ```
 
@@ -301,7 +329,7 @@ void OH_Drawing_BitmapGetImageInfo(OH_Drawing_Bitmap* bitmap, OH_Drawing_Image_I
 
 ### OH_Drawing_BitmapReadPixels()
 
-```
+```c
 bool OH_Drawing_BitmapReadPixels(OH_Drawing_Bitmap* bitmap, const OH_Drawing_Image_Info* dstInfo,void* dstPixels, size_t dstRowBytes, int32_t srcX, int32_t srcY)
 ```
 

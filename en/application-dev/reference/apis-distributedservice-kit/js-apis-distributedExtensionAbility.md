@@ -1,4 +1,10 @@
 # @ohos.application.DistributedExtensionAbility (Distributed Extension)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 The **DistributedExtensionAbility** module provides distributed extension capabilities and lifecycle callbacks for distributed ability creation, destruction, and connection.
 
@@ -14,21 +20,27 @@ The **DistributedExtensionAbility** module provides distributed extension capabi
 import { DistributedExtensionAbility} from '@kit.DistributedServiceKit';
 ```
 
-## Attributes
+## DistributedExtensionAbility
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+### Attributes
 
-| Name   | Type                         | Readable| Writable| Description                                                      |
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+| Name   | Type                         | Read-Only| Optional| Description                                                      |
 | ------- | ----------------------------- | ---- | ---- | ---------------------------------------------------------- |
-| context | DistributedExtensionContext() | Yes  | No  | Context of the **DistributedExtension**. This context inherits from **ExtensionContext**.|
+| context | DistributedExtensionContext | No  | No  | Context of the **DistributedExtension**. This context inherits from **ExtensionContext**.|
 
-## DistributedExtensionAbility.onCreate
+### onCreate
 
 onCreate(want: Want): void
 
 Callback invoked to initialize the service logic when a **DistributedExtensionAbility** instance is created.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters**
 
@@ -51,13 +63,15 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 }
 ```
 
-## DistributedExtensionAbility.onCollaborate
+### onCollaborate
 
 onCollaborate(wantParam: Record <string, Object>) : AbilityConstant.CollaborateResult
 
 Callback invoked to return the collaboration result in multi-device collaboration scenarios.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters**
 
@@ -69,7 +83,7 @@ Callback invoked to return the collaboration result in multi-device collaboratio
 
 | Type| Description|
 | ---------- | ---- |
-| [AbilityConstant.CollaborateResult](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#collaborateresult) | Collaboration result, that is, whether the target application accepts the collaboration request.|
+| [AbilityConstant.CollaborateResult](../apis-ability-kit/js-apis-app-ability-abilityConstant.md#collaborateresult18) | Collaboration result, that is, whether the target application accepts the collaboration request.|
 
 **Example**
 
@@ -91,13 +105,15 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 }
 ```
 
-## DistributedExtensionAbility.onDestroy
+### onDestroy
 
 onDestroy(): void
 
 Callback invoked to clear resources when a **ServiceExtensionAbility** instance is destroyed.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **Example**
 

@@ -1,8 +1,14 @@
 # image_effect_errors.h
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zyj208-->
+<!--Designer: @wangshoucheng-->
+<!--Tester: @gengfei-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-The **image_effect_errors.h** file declares the error codes used by the image effector.
+The file declares the error codes used by the image effector.
 
 **Library**: libimage_effect.so
 
@@ -26,7 +32,7 @@ The **image_effect_errors.h** file declares the error codes used by the image ef
 
 ### ImageEffect_ErrorCode
 
-```
+```c
 enum ImageEffect_ErrorCode
 ```
 

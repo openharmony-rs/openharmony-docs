@@ -1,19 +1,22 @@
 # RenderNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供自绘制渲染节点RenderNode，支持开发者通过C API进行开发，完成自定义绘制需求。
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 不建议对[BuilderNode](./js-apis-arkui-builderNode.md)中的RenderNode进行修改操作。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 不建议对[BuilderNode](./js-apis-arkui-builderNode.md)中的RenderNode进行修改操作。BuilderNode中持有的[FrameNode](./js-apis-arkui-frameNode.md)仅用于将该BuilderNode作为子节点挂载到其他FrameNode上，对该FrameNode或对应的RenderNode进行属性设置与子节点操作可能会产生未定义行为，包括但不限于显示异常、事件异常、稳定性问题等。
+>
+> - RenderNode对象不支持使用JSON序列化。
 
 ## 导入模块
 
@@ -36,10 +39,15 @@ RenderNode的构造函数。
 **示例：**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 100,
+  height: 100
+};
 renderNode.backgroundColor = 0xffff0000;
 
 // 继承NodeController实现自定义UI控制器
@@ -87,16 +95,34 @@ appendChild(node: RenderNode): void
 | ------ | ------------------------- | ---- | ---------------------- |
 | node   | [RenderNode](#rendernode-1) | 是   | 需要添加的RenderNode。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted." |
+
 **示例：**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 100,
+  height: 100
+};
 renderNode.backgroundColor = 0xffff0000;
 const child = new RenderNode();
-child.frame = { x: 10, y: 10, width: 50, height: 50 };
+child.frame = {
+  x: 10,
+  y: 10,
+  width: 50,
+  height: 50
+};
 child.backgroundColor = 0xff00ff00;
 renderNode.appendChild(child);
 
@@ -147,23 +173,46 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 | child   | [RenderNode](#rendernode-1)                   | 是   | 需要添加的子节点。                                                           |
 | sibling | [RenderNode](#rendernode-1)&nbsp;\|&nbsp;null | 是   | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted." |
+
 **示例：**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
 
 const child = new RenderNode();
-child.frame = { x: 70, y: 70, width: 50, height: 50 };
+child.frame = {
+  x: 70,
+  y: 70,
+  width: 50,
+  height: 50
+};
 child.backgroundColor = 0xffffff00;
 const sibling = renderNode.getChild(1);
 // 将child节点插入至sibling节点之后
@@ -216,14 +265,24 @@ removeChild(node: RenderNode): void
 
 **示例：**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -423,14 +482,24 @@ getFirstChild(): RenderNode | null
 **示例：**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -494,14 +563,24 @@ getNextSibling(): RenderNode | null
 
 **示例：**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -538,10 +617,9 @@ struct Index {
           // 获取renderNode序列号为1的子节点后，再获取它的下一个同级节点
           const nextSibling = child!.getNextSibling()
           if (nextSibling === null || child === null) {
-            console.info('the child or nextChild is null');
+            console.error('the child or nextChild is null');
           } else {
-            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-              `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
           }
         })
     }
@@ -567,14 +645,24 @@ getPreviousSibling(): RenderNode | null
 
 **示例：**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -613,8 +701,7 @@ struct Index {
           if (child === null || previousSibling === null) {
             console.error('the child or previousChild is null');
           } else {
-            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-              `the position of previousSibling is x: ${previousSibling.position.x}, y: ${previousSibling.position.y}`);
+            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of previousSibling is x: ${previousSibling.position.x}, y: ${previousSibling.position.y}`);
           }
         })
     }
@@ -1161,7 +1248,7 @@ renderNode.backgroundColor = 0xffff0000;
 renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
 // 设置renderNode的比例
 renderNode.scale = { x: 0.5, y: 1 };
-// 获取renderNode的轴心
+// 获取renderNode的比例
 const scale = renderNode.scale;
 
 // 继承NodeController实现自定义UI控制器
@@ -1876,6 +1963,8 @@ draw(context: DrawContext): void
 
 绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。
 
+该接口的[DrawContext](./js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。
+
 > **说明：**
 >
 > RenderNode初始化时，会调用两次draw方法。第一次调用是在首次创建FrameNode时触发Render流程，第二次调用是在首次设置modifier时触发绘制。后续绘制流程皆由modifier触发。
@@ -2220,7 +2309,7 @@ set borderWidth(width: Edges\<number>)
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | 是   | RenderNode的边框宽度，单位为vp。 |
+| width  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | 是   | RenderNode的边框宽度，单位为vp。 |
 
 get borderWidth(): Edges\<number>
 
@@ -2234,7 +2323,7 @@ get borderWidth(): Edges\<number>
 
 | 类型                                                | 说明                   |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | RenderNode的边框宽度，默认所有边框宽度为0vp。 |
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | RenderNode的边框宽度，默认所有边框宽度为0vp。 |
 
 **示例：**
 
@@ -2293,7 +2382,7 @@ set borderColor(color: Edges\<number>)
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| color  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | 是   | RenderNode的边框颜色。 |
+| color  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | 是   | RenderNode的边框颜色。 |
 
 get borderColor(): Edges\<number>
 
@@ -2307,7 +2396,7 @@ get borderColor(): Edges\<number>
 
 | 类型                                                | 说明                   |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | RenderNode的边框颜色，默认所有边框颜色为0XFF000000。 |
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | RenderNode的边框颜色，默认所有边框颜色为0XFF000000。 |
 
 **示例：**
 
@@ -2529,7 +2618,7 @@ get shapeClip(): ShapeClip
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.clip
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -2829,7 +2918,7 @@ get lengthMetricsUnit(): LengthMetricsUnit
 ```ts
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
-import { LengthMetricsUnit } from '@ohos.arkui.node';
+import { LengthMetricsUnit } from '@kit.ArkUI';
 
 // 继承RenderNode，设置RenderNode各个属性使用的单位
 class BaseRenderNode extends RenderNode {
@@ -2897,7 +2986,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
 **示例：**
 
@@ -2979,3 +3068,335 @@ struct Index {
 ```
 
 ![](figures/RenderNode_isDisposed.gif)
+
+### backgroundBlur
+
+set backgroundBlur(blurValue: BackgroundBlur | undefined)
+
+设置背景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                           |
+| ------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
+| blurValue | [BackgroundBlur](./js-apis-arkui-graphics.md#backgroundblur) \| undefined | 是   | 背景模糊效果。undefined表示无背景模糊效果。 |
+
+get backgroundBlur(): BackgroundBlur
+
+获取背景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                         | 说明                                     |
+| ------------------------------------------------------------ | ---------------------------------------- |
+| [BackgroundBlur](./js-apis-arkui-graphics.md#backgroundblur) | 背景模糊效果。默认值为{radius: 0}。 |
+
+**示例：**
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    let frameNode = new FrameNode(uiContext);
+    frameNode.commonAttribute
+      .width(200)
+      .height(200)
+      .backgroundColor('0xffd5d5d5')
+      .backgroundImage($r('app.media.img')) // 需要替换为开发者所需的图像资源文件。
+      .backgroundImagePosition({ x: 25, y: 25 })
+      .backgroundImageSize({ width: 150, height: 100 });
+    this.rootNode.appendChild(frameNode);
+    let blurRenderNode = frameNode.getRenderNode();
+    // 设置背景模糊效果。
+    if (blurRenderNode != null) {
+      blurRenderNode.backgroundBlur = {
+        radius: 20,
+        grayscale: [10, 10]
+      };
+      const backgroundBlur = blurRenderNode.backgroundBlur;
+      console.info(`background blur radius: ${backgroundBlur.radius} grayscale: [${backgroundBlur.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/backgroundBlur.png)
+
+### contentBlur
+
+set contentBlur(blurValue: ContentBlur | undefined)
+
+设置内容模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                       | 必填 | 说明                                           |
+| ------- | ---------------------------------------------------------- | ---- | ---------------------------------------------- |
+| blurValue | [ContentBlur](./js-apis-arkui-graphics.md#contentblur) \| undefined | 是   | 内容模糊效果。undefined表示无内容模糊效果。 |
+
+get contentBlur(): ContentBlur
+
+获取内容模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                       | 说明                                     |
+| ---------------------------------------------------------- | ---------------------------------------- |
+| [ContentBlur](./js-apis-arkui-graphics.md#contentblur) | 内容模糊效果。默认值为{radius: 0}。 |
+
+**示例：**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// 继承RenderNode，实现自定义绘制方法
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 25,
+      y: 25,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // 绘制RenderNode时调用此函数
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 39,
+      green: 135,
+      blue: 217
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200);
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // 设置内容模糊效果。
+      myRenderNode.contentBlur = {
+        radius: 20,
+        grayscale: [10, 10]
+      };
+      renderNode.appendChild(myRenderNode)
+      const contentBlurConfig = myRenderNode.contentBlur;
+      console.info(`content blur radius: ${contentBlurConfig.radius} grayscale: [${contentBlurConfig.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/contentBlur.png)
+
+### foregroundBlur
+
+set foregroundBlur(blurValue: ForegroundBlur | undefined)
+
+设置前景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                           | 必填 | 说明                                         |
+| ------- | -------------------------------------------------------------- | ---- | -------------------------------------------- |
+| blurValue | [ForegroundBlur](./js-apis-arkui-graphics.md#foregroundblur) \| undefined | 是   | 前景模糊效果。undefined表示无前景模糊效果。 |
+
+get foregroundBlur(): ForegroundBlur
+
+获取前景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                           | 说明                                   |
+| -------------------------------------------------------------- | -------------------------------------- |
+| [ForegroundBlur](./js-apis-arkui-graphics.md#foregroundblur) | 前景模糊效果。默认值为{radius: 0}。 |
+
+**示例：**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// 继承RenderNode，实现自定义绘制方法
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 25,
+      y: 25,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // 绘制RenderNode时调用此函数
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 39,
+      green: 135,
+      blue: 217
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200);
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // 设置前景模糊效果。
+      myRenderNode.foregroundBlur = {
+        radius: 20
+      };
+      renderNode.appendChild(myRenderNode);
+      const foregroundBlur = myRenderNode.foregroundBlur;
+      console.info(`foreground blur radius: ${foregroundBlur.radius}`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/foregroundBlur.png)

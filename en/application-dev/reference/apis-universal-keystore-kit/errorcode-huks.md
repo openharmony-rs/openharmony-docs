@@ -17,18 +17,27 @@
 
 The `${messageInfo}` is not supported.
 
+**Description**
+
+The features specified in `${messageInfo}` are not supported.
+
 **Possible Causes**
 
 The API is supported, but certain features in the API, such as the algorithm, are not supported.
 
 **Solution**
 
-Use the supported features as parameters.
+Adjust the API parameters and use the supported alternative parameters.
 
 ## 12000002 Missing Key Algorithm Parameter
+
 **Error Message**
 
 Failed to obtain the `${messageInfo}`. It is not set in ParamSet.
+
+**Description**
+
+The parameters in `${messageInfo}` cannot be obtained because related parameters are not set.
 
 **Possible Causes**
 
@@ -45,9 +54,13 @@ The key parameter is not set.
 
 Invalid `${messageInfo}`.
 
+**Description**
+
+An invalid parameter is used. For details, see `${messageInfo}`.
+
 **Possible Causes**
 
-An invalid parameter is found.
+The related parameters are invalid when the key is used.
 
 **Solution**
 
@@ -64,6 +77,13 @@ A file error can be any of the following:
 - Invalid file size.
 - Failed to `${messageInfo}`.
 
+**Description**
+
+A file error can be any of the following: 
+
+- Disk is full.
+- Invalid file size.
+- The file cannot be accessed. For details, see `${messageInfo}` in the log.
 
 **Possible Causes**
 
@@ -83,6 +103,13 @@ A file error can be any of the following:
 - Failed to get messages from IPC.
 - IPC `${messageInfo}`.
 
+**Description**
+
+A file error can be any of the following: 
+
+- Failed to obtain messages from the IPC.
+- An IPC error occurs. For details about the cause, see `${messageInfo}` in the log.
+
 **Possible Causes**
 
 The Inter-Process Communication (IPC) failed.
@@ -95,11 +122,15 @@ Locate and rectify the IPC failure.
 
 **Error Message**
 
-Crypto engine error.
+Crypto engine error or Ukey driver error.
+
+**Description**
+
+The algorithm library operation or UKey driver operation fails.
 
 **Possible Causes**
 
-The algorithm library operation fails. The possible causes include the following:
+The possible causes are as follows:
 
 1. The encryption and decryption on the algorithm library failed due to incorrect ciphertext data.
 2. Incorrect key parameters exist.
@@ -114,6 +145,10 @@ The algorithm library operation fails. The possible causes include the following
 **Error Message**
 
 This credential is invalidated permanently.
+
+**Description**
+
+The current credential has expired permanently.
 
 **Possible Causes**
 
@@ -133,6 +168,10 @@ The possible causes include the following:
 
 The authentication token verification failed.
 
+**Description**
+
+The user token cannot pass the authentication.
+
 **Possible Causes**
 
 The challenge value is incorrect.
@@ -148,6 +187,10 @@ The challenge value is incorrect.
 
 This authentication token timed out.
 
+**Description**
+
+The token of the current user has timed out.
+
 **Possible Causes**
 
 The authentication failed because the authentication token timed out.
@@ -159,6 +202,10 @@ Initialize the key and perform the authentication again. Ensure that the differe
 ## 12000010 Key Operation Sessions Reaches the Limit
 
 **Error Message**
+
+The number of key operation sessions has reached the limit.
+
+**Description**
 
 The number of key operation sessions has reached the limit.
 
@@ -175,7 +222,11 @@ The number of concurrent key operation sessions has reached the maximum (15).
 
 **Error Message**
 
-The entity does not exist.
+Queried entity does not exist.
+
+**Description**
+
+The target object does not exist.
 
 **Possible Causes**
 
@@ -192,6 +243,10 @@ The key corresponding to the key alias does not exist.
 
 Device environment or input parameter abnormal.
 
+**Description**
+
+The device environment or input parameters are abnormal.
+
 **Possible Causes**
 
 An external error, such as a hardware fault or file error, occurs.
@@ -205,6 +260,10 @@ Provide the error code and log information to the related party.
 **Error Message**
 
 The credential does not exist.
+
+**Description**
+
+The current credential does not exist.
 
 **Possible Causes**
 
@@ -223,6 +282,13 @@ A file error can be any of the following:
 - Insufficient memory.
 - Malloc failed.
 
+**Description**
+
+A file error can be any of the following: 
+
+- The memory is insufficient.
+- Failed to allocate memory.
+
 **Possible Causes**
 
 The system memory is insufficient, or the buffer allocated for the output parameter is too small.
@@ -238,6 +304,10 @@ The system memory is insufficient, or the buffer allocated for the output parame
 
 Failed to obtain the `${messageInfo}` information via UserIAM.
 
+**Description**
+
+Failed to obtain the `${messageInfo}` information through UserIAM.
+
 **Possible Causes**
 
 The called system service has not started.
@@ -251,6 +321,10 @@ Wait for the system service to start and call the API again.
 **Error Message**
 
 The key with same alias is already exist.
+
+**Description**
+
+A key with the same name already exists.
 
 **Possible Causes**
 
@@ -266,6 +340,10 @@ Check whether the same key alias needs to be overwritten as needed.
 
 The input parameter is invalid.
 
+**Description**
+
+The entered parameter is invalid.
+
 **Possible Causes**
 
 1. A mandatory parameter is not passed.
@@ -279,3 +357,129 @@ The input parameter is invalid.
 **Solution**
 
 Make sure all the mandatory parameters are passed in and the types of the passed-in parameter are valid. If parameter verification fails, read the parameter specifications and locate the fault based on the possible causes.
+
+## 12000019 Provider Name Already Registered
+
+**Error Message**
+
+The provider is already registered.
+
+**Description**
+
+The provider to be registered already exists.
+
+**Possible Causes**
+
+The provider to be registered already exists.
+
+**Solution**
+
+Check whether the provider to be registered is correct. If the provider is correct, deregister the provider and register it again.
+
+## 12000020 Dependent Module Error
+
+**Error Message**
+
+The provider operation failed.
+
+**Description**
+
+The downstream dependent module reports an error.
+
+**Possible Causes**
+
+The downstream dependent module reports an error.
+
+**Solution**
+
+Check the cause of the error reported by the downstream module based on the error code or error message returned.
+
+## 12000021 UKey PIN Locked
+
+**Error Message**
+
+The Ukey PIN is locked.
+
+**Description**
+
+The UKey PIN is locked.
+
+**Possible Causes**
+
+The PIN is locked due to too many incorrect PIN attempts.
+
+**Solution**
+
+Contact the bank to unlock the UKey.
+
+## 12000022 Incorrect UKey PIN
+
+**Error Message**
+
+The Ukey PIN is incorrect.
+
+**Description**
+
+The UKey PIN is incorrect.
+
+**Possible Causes**
+
+The PIN is incorrect.
+
+**Solution**
+
+Enter the correct PIN.
+
+## 12000023 Unauthenticated UKey PIN
+
+**Error Message**
+
+The Ukey PIN is not authenticated.
+
+**Description**
+
+The UKey PIN is not authenticated.
+
+**Possible Causes**
+
+PIN authentication is required for the operation, but the PIN has not been authenticated.
+
+**Solution**
+
+PIN authentication is required for the operation, but the PIN has not been authenticated.
+
+## 12000024 Device or Resource Busy
+
+**Error Message**
+
+The provider or Ukey is busy.
+
+**Description**
+
+The device or resource is busy.
+
+**Possible Causes**
+
+The device or resource is busy.
+
+**Solution**
+
+Try again, or remove and insert the UKey and try again.
+
+## 12000025 Resource Limit Exceeded
+
+**Error Message**
+
+The resource exceeds the limit.
+
+**Description**
+
+The resource limit is exceeded.
+
+**Possible Causes**
+
+The resource limit is exceeded.
+
+**Solution**
+
+Check whether there are unreleased resources. If yes, release the resources and try again.

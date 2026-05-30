@@ -1,8 +1,18 @@
 # OH_Pixelmap_HdrDynamicMetadata
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_Pixelmap_HdrDynamicMetadata {...} OH_Pixelmap_HdrDynamicMetadata
+```
 
 ## Overview
 
-The OH_Pixelmap_HdrDynamicMetadata struct describes the dynamic metadata values available for the key **DR_DYNAMIC_METADATA**.
+The struct describes the dynamic metadata values available for the key **DR_DYNAMIC_METADATA**.
 
 **Since**: 12
 

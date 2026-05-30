@@ -1,5 +1,12 @@
 # @ohos.hilog (HiLog)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liuyifeifei;@buzhenwang-->
+<!--Designer: @shenchenkai-->
+<!--Tester: @liyang2235-->
+<!--Adviser: @jinqiuheng-->
+
 The HiLog subsystem allows your applications or services to output logs based on the specified type, level, and format string. Such logs help you learn the running status of applications and better debug programs.
 
 > **NOTE**
@@ -44,7 +51,7 @@ hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);
 
 ## LogLevel
 
-Log level.
+Enumerates the log levels.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -81,17 +88,19 @@ DEBUG logs are not recorded in official versions by default. They are available 
 
 **Example**
 
-This example is used to output a DEBUG log with the format string being `"%{public}s World %{private}d"`. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
+This example is used to output a DEBUG log with the format string being **"%{public}s World %{private}d"**. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
 
 ```js
 hilog.debug(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 ```
 
-If `"hello"` is filled in `%{public}s` and `3` in `%{private}d`, the output log is as follows:
+If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
+<!--RP3-->
+```text
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  D     hello World <private>
 ```
-08-05 12:21:47.579  2695 2703 D A00001/testTag: hello World <private>
-```
+<!--RP3End-->
 
 ## hilog.info
 
@@ -114,17 +123,19 @@ Prints INFO logs.
 
 **Example**
 
-This example is used to output an INFO log with the format string being `"%{public}s World %{private}d"`. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
+This example is used to output an INFO log with the format string being **"%{public}s World %{private}d"**. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
 
 ```js
 hilog.info(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 ```
 
-If `"hello"` is filled in `%{public}s` and `3` in `%{private}d`, the output log is as follows:
+If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
+<!--RP4-->
+```text
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  I     hello World <private>
 ```
-08-05 12:21:47.579  2695 2703 I A00001/testTag: hello World <private>
-```
+<!--RP4End-->
 
 ## hilog.warn
 
@@ -147,17 +158,19 @@ Prints WARN logs.
 
 **Example**
 
-This example is used to output a WARN log with the format string being `"%{public}s World %{private}d"`. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
+This example is used to output a WARN log with the format string being **"%{public}s World %{private}d"**. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
 
 ```js
 hilog.warn(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 ```
 
-If `"hello"` is filled in `%{public}s` and `3` in `%{private}d`, the output log is as follows:
+If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
+<!--RP5-->
+```text
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  W     hello World <private>
 ```
-08-05 12:21:47.579  2695 2703 W A00001/testTag: hello World <private>
-```
+<!--RP5End-->
 
 ## hilog.error
 
@@ -180,17 +193,19 @@ Prints ERROR logs.
 
 **Example**
 
-This example is used to output an ERROR log with the format string being `"%{public}s World %{private}d"`. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
+This example is used to output an ERROR log with the format string being **"%{public}s World %{private}d"**. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
 
 ```js
 hilog.error(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 ```
 
-If `"hello"` is filled in `%{public}s` and `3` in `%{private}d`, the output log is as follows:
+If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
+<!--RP6-->
+```text
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  E     hello World <private>
 ```
-08-05 12:21:47.579  2695 2703 E A00001/testTag: hello World <private>
-```
+<!--RP6End-->
 
 ## hilog.fatal
 
@@ -213,17 +228,19 @@ Prints FATAL logs.
 
 **Example**
 
-This example is used to output a FATAL log with the format string being `"%{public}s World %{private}d"`. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
+This example is used to output a FATAL log with the format string being **"%{public}s World %{private}d"**. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
 
 ```js
 hilog.fatal(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 ```
 
-If `"hello"` is filled in `%{public}s` and `3` in `%{private}d`, the output log is as follows:
+If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
+<!--RP7-->
+```text
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  F     hello World <private>
 ```
-08-05 12:21:47.579  2695 2703 F A00001/testTag: hello World <private>
-```
+<!--RP7End-->
 
 ## hilog.setMinLogLevel<sup>15+</sup>
 
@@ -231,7 +248,11 @@ setMinLogLevel(level: LogLevel): void
 
 Sets the minimum log level.
 
-If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
+> **NOTE**
+>
+> If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
+>
+> This function does not take effect for debug applications.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -265,12 +286,80 @@ After the minimum log level of the process is set to **DEBUG**, the fourth log d
 
 <!--RP1-->
 The log result is as follows:
-```
+```text
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 5
 ```
 <!--RP1End-->
+
+## hilog.setLogLevel<sup>21+</sup>
+
+setLogLevel(level: LogLevel, prefer: PreferStrategy): void
+
+Sets the minimum log level of the current application process.
+
+You can configure different preference strategies using the **prefer** parameter. The **PREFER_CLOSE_LOG** strategy has the same effect as the **setMinLogLevel()** function.
+
+> **NOTE**
+>
+> This function does not take effect for debug applications.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+**Parameters**
+
+| Name| Type                 | Mandatory| Description                                                        |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| level  | [LogLevel](#loglevel) | Yes  | Log level.                                                  |
+| prefer  | [PreferStrategy](#preferstrategy21) | Yes  | Preference strategy.                                                  |
+
+## PreferStrategy<sup>21+</sup>
+
+Enumerates the preference strategies.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
+| Name |   Value  | Description                                                        |
+| ------ | --------------------- | ------------------------------------------------------------ |
+| UNSET_LOGLEVEL | 0 | The setting is cleared. The system-controlled minimum log level takes effect.|
+| PREFER_CLOSE_LOG | 1 | The larger value of the new log level and the system-controlled minimum log level takes effect.|
+| PREFER_OPEN_LOG | 2 | The smaller value of the new log level and the system-controlled minimum log level takes effect.|
+
+**Example**
+
+The following example describes how to print five HiLog logs of different levels and call the **setLogLevel** API twice when the global log level is **INFO**:
+
+```js
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 1);
+hilog.setLogLevel(hilog.LogLevel.WARN, hilog.PreferStrategy.PREFER_OPEN_LOG);
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 2);
+hilog.error(0x0001, 'testTag', 'this is an error level log, id: %{public}d', 3);
+hilog.setLogLevel(hilog.LogLevel.DEBUG, hilog.PreferStrategy.PREFER_CLOSE_LOG);
+hilog.debug(0x0001, "testTag", 'this is a debug level log, id: %{public}d', 4);
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
+```
+
+The first log is printed properly because the global log level is **INFO**.
+
+When the minimum log level of the process is set to **WARN** and the **PREFER_OPEN_LOG** is strategy selected, the actual minimum log level is **INFO**. Therefore, the second and third logs can be printed properly.
+
+When the minimum log level of the process is set to **DEBUG** and the **PREFER_CLOSE_LOG** strategy is selected (equivalent to **hilog.setMinLogLevel(hilog.LogLevel.DEBUG)**), the fourth log cannot be printed because the global log level is **INFO**. The fifth log can be printed.
+
+<!--RP2-->
+The log result is as follows:
+```text
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 2
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 5
+```
+<!--RP2End-->
+
 
 ## Parameter Format
 
@@ -307,13 +396,15 @@ hilog.info(0x0001, "jsHilogTest", "print bigNum: %{public}d %{public}i", bigNum,
 hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 ```
 
-**Log printing result**:
+**Log result**:
+<!--RP8-->
+```text
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  private flag: <private> <private>, print null: null
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print undefined: undefined
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print number: 123 456
+08-09 13:26:29.095  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print bigNum: 1234567890123456768 1234567890123456768
+08-09 13:26:29.095  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print boolean: true
 ```
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: private flag: <private> <private>, print null: null
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print undefined: undefined
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print number: 123 456
-08-09 13:26:29.095  2266  2266 I A00001/jsHilogTest: print bigNum: 1234567890123456768 1234567890123456768
-08-09 13:26:29.095  2266  2266 I A00001/jsHilogTest: print boolean: true
-```
+<!--RP8End-->

@@ -4,21 +4,21 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
-Cookie是服务端发送客户端的数据。客户端持有Cookie，便于服务端快速识别身份和状态。
+Cookie是服务端生成并发送到客户端的数据。客户端持有Cookie，便于服务端快速识别身份和状态。
 
 当Cookie的SameSite属性未指定时，默认值为SameSite=Lax。这种设置下，Cookie仅在用户导航到其源站点时发送，不会在跨站请求中发送。
 
 ## Cookie管理
 
-Web组件提供[WebCookieManager](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)类来管理Cookie信息。Cookie信息存储在应用沙箱路径下/proc/{pid}/root/data/storage/el2/base/cache/web/Cookies的文件中。
+Web组件提供[WebCookieManager](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)类来管理Cookie信息。
 
-下面以[configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)接口为例，为“www\.example.com”设置单个Cookie的值“value=test”。其他Cookie的相关功能及使用，请参考[WebCookieManager()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)接口文档。
+下面以[configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)接口为例，为“www\.example.com”设置单个Cookie的值“value=test”。
 
+<!-- @[set_the_value_of_a_single_cookie](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -34,9 +34,42 @@ struct WebComponent {
           try {
             webview.WebCookieManager.configCookieSync('https://www.example.com', 'value=test');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
+      Web({ src: 'www.example.com', controller: this.controller });
+    }
+  }
+}
+```
+
+从API version 22开始，开发者可以通过[setLazyInitializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#setlazyinitializewebengine22)，为“www\.example.com”设置单个Cookie的值“value=test”时跳过初始化ArkWeb内核，以节省[configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)接口耗时。其他Cookie的相关功能及使用，请参考[WebCookieManager()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)接口文档。
+
+<!-- @[set_lazy_initialize_web_engine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement_LazyInitializeWebEngine.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+webview.WebCookieManager.setLazyInitializeWebEngine(true);
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear(): void {
+    try {
+      webview.WebCookieManager.configCookieSync('https://www.example.com', 'value=test');
+    } catch (error) {
+      console.error(
+        `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
       Web({ src: 'www.example.com', controller: this.controller })
     }
   }
@@ -66,11 +99,9 @@ struct WebComponent {
 
 
 在下面的示例中，缓存设置为None模式。
+<!-- @[configure_the_caching_mode_for_page_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_one.ets) -->
 
-
-
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -90,9 +121,9 @@ struct WebComponent {
 
 
 为了获取最新资源，开发者可以通过[removeCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#removecache)接口清除已经缓存的资源，示例代码如下：
+<!-- @[clear_the_cached_resources_that_have_been_stored](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_two.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -112,7 +143,7 @@ struct WebComponent {
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
-        })
+        });
       Web({ src: 'www.example.com', controller: this.controller })
         .cacheMode(this.mode)
     }
@@ -121,14 +152,14 @@ struct WebComponent {
 ```
 
 
-### Dom Storage
+### DOM Storage
 
-Dom Storage包含了Session Storage和Local Storage两类。Session Storage为临时数据，其存储与释放跟随会话生命周期；Local Storage为持久化数据，保存在应用目录下。两者的数据均通过Key-Value的形式存储，在访问需要客户端存储的页面时使用。开发者可以通过Web组件的属性接口[domStorageAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)进行使能配置，示例如下：
+DOM Storage包含了Session Storage和Local Storage两类。Session Storage为临时数据，其存储与释放跟随会话生命周期；Local Storage为持久化数据，保存在应用目录下。两者的数据均通过Key-Value的形式存储，在访问需要客户端存储的页面时使用。开发者可以通过Web组件的属性接口[domStorageAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)进行使能配置，示例如下：
 
 
+<!-- @[enable_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/DomStorage.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -144,3 +175,9 @@ struct WebComponent {
   }
 }
 ```
+
+## 常见问题
+
+### ArkWeb组件对静态资源文件缓存的大小限制是多少？
+
+ArkWeb对于单个应用静态资源缓存的大小限制是100M。

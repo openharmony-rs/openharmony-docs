@@ -46,7 +46,7 @@
 
 ### OH_Crypto_ErrCode
 
-```
+```c
 enum OH_Crypto_ErrCode
 ```
 
@@ -62,12 +62,13 @@ enum OH_Crypto_ErrCode
 | CRYPTO_INVALID_PARAMS = 401 | 输入参数不合法。 |
 | CRYPTO_NOT_SUPPORTED = 801 | 不支持的函数或算法。 |
 | CRYPTO_MEMORY_ERROR = 17620001 | 内存错误。 |
-| CRYPTO_PARAMETER_CHECK_FAILED = 17620003 | 参数检查失败。<br>**起始版本：** 20  |
+| CRYPTO_PARAMETER_CHECK_FAILED = 17620003 | 参数检查失败。<br>**起始版本：** 20 |
+| CRYPTO_INVALID_CALL = 17620004 | 表示无效的函数调用。<br>**起始版本：** 26.0.0 |
 | CRYPTO_OPERTION_ERROR = 17630001 | 表示加解密操作错误。 |
 
 ### Crypto_CipherMode
 
-```
+```c
 enum Crypto_CipherMode
 ```
 
@@ -87,7 +88,7 @@ enum Crypto_CipherMode
 
 ### OH_Crypto_FreeDataBlob()
 
-```
+```c
 void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 ```
 
@@ -96,7 +97,6 @@ void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 释放dataBlob数据。
 
 **起始版本：** 12
-
 
 **参数：**
 

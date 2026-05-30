@@ -1,16 +1,18 @@
 # 动态手势设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 动态设置组件绑定的手势，支持在属性设置时使用if/else语法。
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## gestureModifier
 
@@ -21,6 +23,8 @@ gestureModifier(modifier:&nbsp;GestureModifier): T
 >  **说明：**
 >
 >  gestureModifier不支持自定义组件。
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -73,7 +77,12 @@ class MyButtonModifier implements GestureModifier {
   applyGesture(event: UIGestureEvent): void {
     if (this.supportDoubleTap) {
       event.addGesture(
-        new TapGestureHandler({ count: 2, fingers: 1 })
+        new TapGestureHandler({
+          count: 2,
+          fingers: 1,
+          // 从API version 23开始，新增distanceThreshold属性
+          distanceThreshold: 100
+        })
           .tag("aaa")
           .onAction((event: GestureEvent) => {
             console.info('Gesture Info is', JSON.stringify(event));

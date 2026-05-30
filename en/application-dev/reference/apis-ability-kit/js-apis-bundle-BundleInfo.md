@@ -12,11 +12,13 @@ The module defines the bundle information, which can be obtained through [bundle
 > 
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module are deprecated since API version 9. You are advised to use [bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md) instead.
+> The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md) instead.
 
 ## BundleInfo<sup>(deprecated)<sup>
 
-This API is deprecated since API version 9. You are advised to use [bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1) instead.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework
 
@@ -50,7 +52,9 @@ This API is deprecated since API version 9. You are advised to use [bundleManage
 
 ## ReqPermissionDetail<sup>(deprecated)<sup>
 
-> This API is deprecated since API version 9. You are advised to use [ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md) instead.
 
 Provides the detailed information of the permissions to request from the system.
 
@@ -66,7 +70,9 @@ Provides the detailed information of the permissions to request from the system.
 
 ## UsedScene<sup>(deprecated)<sup>
 
-> This API is deprecated since API version 9. You are advised to use [UsedScene](js-apis-bundleManager-bundleInfo.md#usedscene) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [UsedScene](js-apis-bundleManager-bundleInfo.md#usedscene) instead.
 
 Describes the application scenario and timing for using the permission.
 

@@ -2,9 +2,9 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -49,7 +49,7 @@
 
 ### OH_Image_Receiver_On_Callback()
 
-```
+```c
 typedef void (*OH_Image_Receiver_On_Callback)(void)
 ```
 
@@ -61,7 +61,7 @@ typedef void (*OH_Image_Receiver_On_Callback)(void)
 
 ### OH_Image_Receiver_CreateImageReceiver()
 
-```
+```c
 int32_t OH_Image_Receiver_CreateImageReceiver(napi_env env, struct OhosImageReceiverInfo info, napi_value* res)
 ```
 
@@ -84,11 +84,11 @@ int32_t OH_Image_Receiver_CreateImageReceiver(napi_env env, struct OhosImageRece
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_INVALID_PARAMETER：从surface获取参数失败。<br> IMAGE_RESULT_CREATE_SURFACE_FAILED：创建surface失败。<br> IMAGE_RESULT_SURFACE_GRALLOC_BUFFER_FAILED：surface分配内存失败。<br> IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。<br> IMAGE_RESULT_MEDIA_RTSP_SURFACE_UNSUPPORT：媒体rtsp surface不支持。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。<br> IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br> IMAGE_RESULT_SUCCESS：操作成功。<br> IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br> IMAGE_RESULT_CREATE_SURFACE_FAILED：创建surface失败。<br> IMAGE_RESULT_SURFACE_GRALLOC_BUFFER_FAILED：surface分配内存失败。<br> IMAGE_RESULT_GET_SURFACE_FAILED：获取surface失败。<br> IMAGE_RESULT_MEDIA_RTSP_SURFACE_UNSUPPORT：媒体rtsp surface不支持。<br> IMAGE_RESULT_DATA_UNSUPPORT：图像类型不支持。<br> IMAGE_RESULT_MEDIA_DATA_UNSUPPORT：媒体类型不支持。 |
 
 ### OH_Image_Receiver_InitImageReceiverNative()
 
-```
+```c
 ImageReceiverNative* OH_Image_Receiver_InitImageReceiverNative(napi_env env, napi_value source)
 ```
 
@@ -118,7 +118,7 @@ ImageReceiverNative* OH_Image_Receiver_InitImageReceiverNative(napi_env env, nap
 
 ### OH_Image_Receiver_GetReceivingSurfaceId()
 
-```
+```c
 int32_t OH_Image_Receiver_GetReceivingSurfaceId(const ImageReceiverNative* native, char* id, size_t len)
 ```
 
@@ -145,7 +145,7 @@ int32_t OH_Image_Receiver_GetReceivingSurfaceId(const ImageReceiverNative* nativ
 
 ### OH_Image_Receiver_ReadLatestImage()
 
-```
+```c
 int32_t OH_Image_Receiver_ReadLatestImage(const ImageReceiverNative* native, napi_value* image)
 ```
 
@@ -173,7 +173,7 @@ int32_t OH_Image_Receiver_ReadLatestImage(const ImageReceiverNative* native, nap
 
 ### OH_Image_Receiver_ReadNextImage()
 
-```
+```c
 int32_t OH_Image_Receiver_ReadNextImage(const ImageReceiverNative* native, napi_value* image)
 ```
 
@@ -201,7 +201,7 @@ int32_t OH_Image_Receiver_ReadNextImage(const ImageReceiverNative* native, napi_
 
 ### OH_Image_Receiver_On()
 
-```
+```c
 int32_t OH_Image_Receiver_On(const ImageReceiverNative* native, OH_Image_Receiver_On_Callback callback)
 ```
 
@@ -228,7 +228,7 @@ int32_t OH_Image_Receiver_On(const ImageReceiverNative* native, OH_Image_Receive
 ### OH_Image_Receiver_GetSize()
 
 
-```
+```c
 int32_t OH_Image_Receiver_GetSize(const ImageReceiverNative* native, struct OhosImageSize* size)
 ```
 
@@ -254,7 +254,7 @@ int32_t OH_Image_Receiver_GetSize(const ImageReceiverNative* native, struct Ohos
 
 ### OH_Image_Receiver_GetCapacity()
 
-```
+```c
 int32_t OH_Image_Receiver_GetCapacity(const ImageReceiverNative* native, int32_t* capacity)
 ```
 
@@ -280,7 +280,7 @@ int32_t OH_Image_Receiver_GetCapacity(const ImageReceiverNative* native, int32_t
 
 ### OH_Image_Receiver_GetFormat()
 
-```
+```c
 int32_t OH_Image_Receiver_GetFormat(const ImageReceiverNative* native, int32_t* format)
 ```
 
@@ -306,7 +306,7 @@ int32_t OH_Image_Receiver_GetFormat(const ImageReceiverNative* native, int32_t* 
 
 ### OH_Image_Receiver_Release()
 
-```
+```c
 int32_t OH_Image_Receiver_Release(ImageReceiverNative* native)
 ```
 

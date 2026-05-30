@@ -1,16 +1,18 @@
 # Class (AVCastPickerHelper)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--SE: @ccfriend-->
-<!--TSE: @chenmingxi1_huawei-->
+<!--Owner: @ccfriend; @devil_red-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
+
+AVCastPickerHelper implements a semi-modal object used for casting. It displays a semi-modal window for users to select a target cast device. Before using the APIs of this class, you need to create an AVCastPickerHelper instance.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this class are supported since API version 14.
-
-AVCastPickerHelper implements a semi-modal object used for casting. It displays a semi-modal window for users to select a target cast device. Before using the APIs of this class, you need to create an AVCastPickerHelper instance.
+> - The AVCastPickerHelper is displayed in semi-modal mode, and is actually bound to the [full-modal page (bindContentCover)](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover).
 
 ## Modules to Import
 
@@ -22,7 +24,7 @@ import { avSession } from '@kit.AVSessionKit';
 
 constructor(context: Context)
 
-Creates an AVCastPickerHelper instance. For details about how to obtain the context, see [getContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12).
+Creates an AVCastPickerHelper instance. For details about how to obtain the context, see [getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12).
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -36,7 +38,7 @@ Creates an AVCastPickerHelper instance. For details about how to obtain the cont
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -46,8 +48,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { common } from '@kit.AbilityKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -59,7 +61,7 @@ struct Index {
         Text(this.message)
           .fontSize(40)
           .fontWeight(FontWeight.Bold)
-          .onClick(()=>{
+          .onClick(() => {
             let context = this.getUIContext().getHostContext() as Context;
             let avCastPicker = new avSession.AVCastPickerHelper(context);
           })
@@ -95,7 +97,7 @@ Starts the AVCastPicker dialog box, where users can select the target cast devic
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -105,17 +107,53 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+
+class MyPage {
+  private avCastPicker: avSession.AVCastPickerHelper;
+
+  constructor(context: common.Context) {
+    this.avCastPicker = new avSession.AVCastPickerHelper(context);
+  }
+
+  async selectCastDevice() {
+    const avCastPickerOptions: avSession.AVCastPickerOptions = {
+      sessionType: 'video',
+    };
+
+this.avCastPicker.select(avCastPickerOptions).then(() => {
+  console.info('Succeeded in selecting.');
+});
+  }
+}
+```
+
+## resetCommunicationDevice<sup>21+</sup>
+
+resetCommunicationDevice(): Promise\<void>
+
+Restores the communication device of an application to the default device. For example, during a voice call, the communication device of the mobile phone is restored to the earpiece. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+
+**Return value**
+
+| Type          | Description                         |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Example**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
 
 async function avCastPicker(context: common.Context) {
-  let avCastPickerOptions : avSession.AVCastPickerOptions = {
-    sessionType : 'video',
-  }
   let avCastPicker = new avSession.AVCastPickerHelper(context);
-  avCastPicker.select(avCastPickerOptions).then(() => {
-    console.info('select successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('Succeeded in resetting communication device.');
   });
 }
 ```
@@ -137,11 +175,11 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type      | Mandatory| Description     |
 | --------| -----------|-----|------------|
 | type     | string    | Yes  | Event type. The event **'pickerStateChange'** is triggered when the semi-modal window changes.|
-| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)>       | Yes  | Callback function, where the **state** parameter indicates the new state of the semi-modal window.|
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)>       | Yes  | Callback function, where the **state** parameter indicates the new state of the semi-modal window.|
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -153,6 +191,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 ```ts
 import { common } from '@kit.AbilityKit';
 import { AVCastPickerState } from '@kit.AVSessionKit';
+import { avSession } from '@kit.AVSessionKit';
 
 async function onPickerStateChange(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
@@ -177,11 +216,11 @@ Unsubscribes from semi-modal window change events. If a callback is specified, t
 | Name  | Type                                              | Mandatory| Description                                                   |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------ |
 | type     | string                                           | Yes  | Event type, which is **'pickerStateChange'** in this case.        |
-| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)> | No  | Callback function, where the **state** parameter indicates the new state of the semi-modal window.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                          |
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)> | No  | Callback function, where the **state** parameter indicates the new state of the semi-modal window.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                          |
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -192,6 +231,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 ```ts
 import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
 
 async function onPickerStateChange(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);

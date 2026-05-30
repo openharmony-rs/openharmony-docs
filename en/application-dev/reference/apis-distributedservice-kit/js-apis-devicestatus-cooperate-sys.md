@@ -1,4 +1,10 @@
 # @ohos.cooperate (Screen Hopping) (System API)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: Msdp-->
+<!--Owner: @wuliangdong-->
+<!--Designer: @butterls-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **cooperate** module implements screen hopping for two or more networked devices to share the keyboard and mouse for collaborative operations.
 
@@ -11,7 +17,7 @@ The **cooperate** module implements screen hopping for two or more networked dev
 ## Modules to Import
 
 ```ts
-import cooperate from '@ohos.cooperate';
+import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
 ## cooperate.prepareCooperate<sup>11+</sup>
@@ -32,28 +38,31 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepareCooperate((error: BusinessError) => {
     if (error) {
-      console.log(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+        [`code`, `message`])}`);
       return;
     }
-    console.log(`Keyboard mouse crossing prepareCooperate success.`);
+    console.info(`Keyboard mouse crossing prepareCooperate success.`);
   });
 } catch (error) {
-  console.log(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -69,32 +78,35 @@ Prepares for screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Parameters               | Description                     |
+| Type               | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepareCooperate().then(() => {
-    console.log(`Keyboard mouse crossing prepareCooperate success.`);
+    console.info(`Keyboard mouse crossing prepareCooperate success.`);
   }, (error: BusinessError) => {
-    console.log(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+      [`code`, `message`])}`);
   });
 } catch (error) {
-  console.log(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -110,34 +122,39 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**Parameters**
+
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the operation result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepareCooperate((error: BusinessError) => {
     if (error) {
-      console.log(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+        [`code`, `message`])}`);
       return;
     }
-    console.log(`Keyboard mouse crossing unprepareCooperate success.`);
+    console.info(`Keyboard mouse crossing unprepareCooperate success.`);
   });
 } catch (error) {
-  console.log(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -153,31 +170,34 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 
 **Return value**
 
-| Parameters               | Description                     |
+| Type               | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepareCooperate().then(() => {
-    console.log(`Keyboard mouse crossing unprepareCooperate success.`);
+    console.info(`Keyboard mouse crossing unprepareCooperate success.`);
   }, (error: BusinessError) => {
-    console.log(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+      [`code`, `message`])}`);
   });
 } catch (error) {
-  console.log(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -203,31 +223,32 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
   cooperate.activateCooperate(targetNetworkId, inputDeviceId, (error: BusinessError) => {
     if (error) {
-      console.log(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
     }
-    console.log(`Start Keyboard mouse crossing success.`);
+    console.info(`Start Keyboard mouse crossing success.`);
   });
 } catch (error) {
-  console.log(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -250,35 +271,36 @@ Starts screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name             | Description                     |
+| Type               | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
- cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
-    console.log(`Start Keyboard mouse crossing success.`);
+  cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
+    console.info(`Start Keyboard mouse crossing success.`);
   }, (error: BusinessError) => {
-    console.log(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
-  console.log(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -303,28 +325,29 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivateCooperate(false, (error: BusinessError) => {
     if (error) {
-      console.log(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
     }
-    console.log(`Stop Keyboard mouse crossing success.`);
+    console.info(`Stop Keyboard mouse crossing success.`);
   });
 } catch (error) {
-  console.log(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -346,31 +369,32 @@ Stops screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name             | Description                     |
+| Type              | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivateCooperate(false).then(() => {
-    console.log(`Stop Keyboard mouse crossing success.`);
+    console.info(`Stop Keyboard mouse crossing success.`);
   }, (error: BusinessError) => {
-    console.log(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
-  console.log(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -395,29 +419,30 @@ Obtains the screen hopping status of the target device. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCooperateSwitchState(deviceDescriptor, (error: BusinessError, data: boolean) => {
     if (error) {
-      console.log(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
     }
-    console.log(`Get the status success, data: ${JSON.stringify(data)}`);
+    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
-  console.log(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -439,33 +464,34 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 
 **Return value**
 
-| Parameters                  | Description                                                        |
+| Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the value **false** indicates the opposite.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCooperateSwitchState(deviceDescriptor).then((data: boolean) => {
-    console.log(`Get the status success, data: ${JSON.stringify(data)}`);
+    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
   }, (error: BusinessError) => {
-    console.log(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
-  console.log(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -490,25 +516,26 @@ Enables listening for screen hopping status change events.
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
 function callback(msg: cooperate.CooperateMessage) {
-  console.log(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+  console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
   return false;
 }
+
 try {
   cooperate.on('cooperateMessage', callback);
 } catch (error) {
-  console.log(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -533,45 +560,49 @@ Disables listening for screen hopping status change events.
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes:1.Incorrect parameter types.2.Parameter verification failed. |
 
 **Example**
 
 ```ts
 // Unregister a single callback.
 function callbackOn(msgOn: cooperate.CooperateMessage) {
-  console.log(`Keyboard mouse crossing event: ${JSON.stringify(msgOn)}`);
+  console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOn)}`);
   return false;
 }
+
 function callbackOff(msgOff: cooperate.CooperateMessage) {
-  console.log(`Keyboard mouse crossing event: ${JSON.stringify(msgOff)}`);
+  console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOff)}`);
   return false;
 }
+
 try {
   cooperate.on('cooperateMessage', callbackOn);
   cooperate.off('cooperateMessage', callbackOff);
 } catch (error) {
-  console.log(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
 ```ts
 // Unregister all callbacks.
+import { cooperate } from '@kit.DistributedServiceKit';
 function callbackOn(msg: cooperate.CooperateMessage) {
-  console.log(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+  console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
   return false;
 }
+
 try {
   cooperate.on('cooperateMessage', callbackOn);
   cooperate.off('cooperateMessage');
 } catch (error) {
-  console.log(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -596,26 +627,27 @@ Registers a listener for the mouse cursor position of a device.
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
 function callback(data: cooperate.MouseLocation) {
-  console.log('displayX:' + data.displayX + 'displayY:' + data.displayX + 'displayWidth:' +
-    data.displayWidth + 'displayHeight:' + data.displayHeight );
+  console.info('displayX:' + data.displayX + 'displayY:' + data.displayY + 'displayWidth:' +
+  data.displayWidth + 'displayHeight:' + data.displayHeight);
 }
+
 try {
   let networkId: string = 'Default';
   cooperate.on('cooperateMouse', networkId, callback);
 } catch (error) {
-  console.log(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -641,12 +673,12 @@ Unregisters the listener for the mouse cursor position of a device.
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
@@ -654,36 +686,90 @@ For details about the error codes, see [Screen Hopping Error Codes](errorcode-de
 ```ts
 // Unregister a single callback.
 function callbackOn(data: cooperate.MouseLocation) {
-  console.log('Register mouse location listener');
+  console.info('Register mouse location listener');
   return false;
 }
+
 function callbackOff(data: cooperate.MouseLocation) {
-  console.log('Unregister mouse location listener');
+  console.info('Unregister mouse location listener');
   return false;
 }
+
 try {
   let networkId: string = 'Default';
   cooperate.on('cooperateMouse', networkId, callbackOn);
   cooperate.off('cooperateMouse', networkId, callbackOff);
 } catch (error) {
-  console.log(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
 ```ts
 // Unregister all callbacks.
 function callbackOn(data: cooperate.MouseLocation) {
-  console.log('Register mouse location listener');
+  console.info('Register mouse location listener');
 }
+
 try {
   let networkId: string = 'Default';
   cooperate.on('cooperateMouse', networkId, callbackOn);
   cooperate.off('cooperateMouse', networkId);
 } catch (error) {
-  console.log(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
+## cooperate.activateCooperateWithOptions<sup>20+</sup>
+
+activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
+
+Starts screen hopping based on the specified options. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.COOPERATE_MANAGER
+
+**System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**Parameters**
+
+| Name   | Type  | Mandatory| Description                    |
+| --------- | ------ | ---- | ------------------------ |
+| targetNetworkId | string | Yes  | Descriptor of the target device for screen hopping.|
+| inputDeviceId   | number | Yes  |  ID of the input device that initiates screen hopping.  |
+|cooperateOptions | [CooperateOptions](#cooperateoptions20) | No  | Screen hopping options, such as the exit position. If this parameter is not set, this API works in the same way as [cooperate.activateCooperate](#cooperateactivatecooperate11-1).|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
+
+| ID| Error Message         |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let targetNetworkId = "networkId";
+let inputDeviceId = 0;
+try {
+  cooperate.activateCooperateWithOptions(targetNetworkId, inputDeviceId).then(() => {
+    console.info(`activateCooperateWithOptions success.`);
+  }, (error: BusinessError) => {
+    console.error(`activateCooperateWithOptions, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`activateCooperateWithOptions, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
 
 
 ## CooperateMessage<sup>11+</sup>
@@ -692,10 +778,10 @@ Defines a screen hopping status change event.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
-| Name     | Type          | Readable| Writable| Description                    |
+| Name     | Type          |Read-Only| Optional| Description                    |
 | --------- | -------------- | ---- | ---- | ------------------------ |
-| networkId | string         | Yes  | No  | Descriptor of the target device for screen hopping.|
-| state     | CooperateState | Yes  | No  | Screen hopping status.        |
+| networkId | string         | No  | No  | Descriptor of the target device for screen hopping.|
+| state     | CooperateState | No  | No  | Screen hopping status.        |
 
 
 ## MouseLocation<sup>12+</sup>
@@ -704,46 +790,41 @@ Defines the mouse pointer position for screen hopping.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
-| Name          | Type           | Readable| Writable| Description                          |
-| ---------      | -------------- | ---- | ---- | ------------------------       |
-| displayX       | number         | Yes  | No  | Position of the mouse pointer on the X coordinate of the screen.|
-| displayY       | number         | Yes  | No  | Position of the mouse pointer on the Y coordinate of the screen.|
-| displayWidth   | number         | Yes  | No  | Screen width, in pixels.                     |
-| displayHeight  | number         | Yes  | No  | Screen height, in pixels.                     |
+| Name          | Type           | Read-Only| Optional| Description                          |
+| ---------------- | -------------- | ---- | ---- | ------------------------------ |
+| displayX       | number         | No  | No  | Position of the mouse pointer on the X coordinate of the screen.|
+| displayY       | number         | No  | No  | Position of the mouse pointer on the Y coordinate of the screen.|
+| displayWidth   | number         | No  | No  | Screen width, in pixels.                     |
+| displayHeight  | number         | No  | No  | Screen height, in pixels.                     |
 
 ## CooperateState<sup>11+</sup>
 
-Screen hopping status.
+Enumerates the screen hopping states.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
-| Name                          | Type   | Readable| Writable| Description                  |
-| ------------------------------ | ------ | ---- | ---- | ---------------------- |
-| COOPERATE_PREPARE              | number | Yes  | No  | The preparation for screen hopping is finished.    |
-| COOPERATE_UNPREPARE            | number | Yes  | No  | The preparation for screen hopping is cancelled.|
-| COOPERATE_ACTIVATE             | number | Yes  | No  | Screen hopping starts.    |
-| COOPERATE_ACTIVATE_SUCCESS     | number | Yes  | No  | Starting screen hopping succeeds.|
-| COOPERATE_ACTIVATE_FAIL        | number | Yes  | No  | Starting screen hopping fails.|
-| COOPERATE_DEACTIVATE_SUCCESS   | number | Yes  | No  | Stopping screen hopping succeeds.|
-| COOPERATE_DEACTIVATE_FAIL      | number | Yes  | No  | Stopping screen hopping fails.|
-| COOPERATE_SESSION_DISCONNECTED | number | Yes  | No  | The screen hopping session is disconnected.|
-| COOPERATE_ACTIVATE_FAILURE     | number | Yes  | No  | Screen hopping fails to start.|
-| COOPERATE_DEACTIVATE_FAILURE   | number | Yes  | No  | Screen hopping fails to stop.|
+| Name                          |  Value| Description                  |
+| ------------------------------ | ---- | ---------------------- |
+| COOPERATE_PREPARE              | 0 | The preparation for screen hopping is finished.    |
+| COOPERATE_UNPREPARE            | 1  | The preparation for screen hopping is cancelled.|
+| COOPERATE_ACTIVATE             | 2  | Screen hopping starts.    |
+| COOPERATE_ACTIVATE_SUCCESS     | 3  | Starting screen hopping succeeds.|
+| COOPERATE_ACTIVATE_FAILURE        | 4 | Screen hopping fails to start.|
+| COOPERATE_DEACTIVATE_SUCCESS   | 5  | Stopping screen hopping succeeds.|
+| COOPERATE_DEACTIVATE_FAILURE      | 6 | Screen hopping fails to stop.|
+| COOPERATE_SESSION_DISCONNECTED | 7 | The screen hopping session is disconnected.|
 
+## CooperateOptions<sup>20+</sup>
 
-## MouseLocation<sup>12+</sup>
-
-Represents the mouse cursor position.
+ Screen hopping options, such as the exit position.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
-| Name          | Type          | Readable| Writable| Description                    |
-| ---------     | -------------- | ---- | ---- | ------------------------ |
-| displayX      | number         | Yes  | No  | X coordinate of the mouse cursor.|
-| displayY      | number         | Yes  | No  | Y coordinate of the mouse cursor.|
-| displayWidth  | number         | Yes  | No  | Width of the screen where the mouse cursor is located, in pixels.|
-| displayHeight | number         | Yes  | No  | Height of the screen where the mouse cursor is located, in pixels.|
-
+| Name     | Type          | Read-Only| Optional| Description                    |
+| --------- | -------------- | ---- | ---- | ------------------------ |
+| displayX      | number         | No  | No  | X coordinate of the mouse cursor.|
+| displayY      | number         | No  | No  | Y coordinate of the mouse cursor.|
+| displayId     | number         | No  | No  | Screen ID of the peer device.|
 
 ## cooperate.prepare<sup>(deprecated)</sup>
 
@@ -765,27 +846,28 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepare((error: BusinessError) => {
     if (error) {
-      console.log(`Keyboard mouse crossing prepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Keyboard mouse crossing prepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
     }
-    console.log(`Keyboard mouse crossing prepare success.`);
+    console.info(`Keyboard mouse crossing prepare success.`);
   });
 } catch (error) {
-  console.log(`Keyboard mouse crossing prepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing prepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -803,31 +885,32 @@ Prepares for screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Parameters                | Description                    |
+| Type                | Description                    |
 | ------------------- | ------------------------------- |
 | Promise&lt;void&gt;      | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepare().then(() => {
-    console.log(`Keyboard mouse crossing prepare success.`);
+    console.info(`Keyboard mouse crossing prepare success.`);
   }, (error: BusinessError) => {
-    console.log(`Keyboard mouse crossing prepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Keyboard mouse crossing prepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
-  console.log(`Keyboard mouse crossing prepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing prepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -845,33 +928,36 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**Parameters**
+
 | Name  | Type                     | Mandatory| Description                                      |
 | -------- | ------------------------- | ---- | ------------------------------------------ |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the operation result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepare((error: BusinessError) => {
     if (error) {
-      console.log(`Keyboard mouse crossing unprepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Keyboard mouse crossing unprepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
     }
-    console.log(`Keyboard mouse crossing unprepare success.`);
+    console.info(`Keyboard mouse crossing unprepare success.`);
   });
 } catch (error) {
-  console.log(`Keyboard mouse crossing unprepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing unprepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -889,31 +975,32 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 
 **Return value**
 
-| Parameters               | Description                                         |
+| Type               | Description                                         |
 | ------------------- | --------------------------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepare().then(() => {
-    console.log(`Keyboard mouse crossing unprepare success.`);
+    console.info(`Keyboard mouse crossing unprepare success.`);
   }, (error: BusinessError) => {
-    console.log(`Keyboard mouse crossing unprepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Keyboard mouse crossing unprepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
-  console.log(`Keyboard mouse crossing unprepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing unprepare failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -935,36 +1022,37 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 | Name               | Type                         | Mandatory | Description                           |
 | --------             | ---------------------------- | ----  | ----------------------------   |
-| targetNetworkId | string                       |  Yes  | Descriptor of the target device for screen hopping.            |
+| targetNetworkId | string                       |  Yes  | Descriptor of the target device for screen hopping.|
 | inputDeviceId | number                       |  Yes  | Identifier of the input device for screen hopping.|
 | callback             | AsyncCallback&lt;void&gt; |  Yes   | Callback used to return the operation result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
   cooperate.activate(targetNetworkId, inputDeviceId, (error: BusinessError) => {
     if (error) {
-      console.log(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
     }
-    console.log(`Start Keyboard mouse crossing success.`);
+    console.info(`Start Keyboard mouse crossing success.`);
   });
 } catch (error) {
-  console.log(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -984,41 +1072,42 @@ Starts screen hopping. This API uses a promise to return the result.
 
 | Name               | Type                         | Mandatory | Description                           |
 | --------             | ---------------------------- | ----  | ----------------------------   |
-| targetNetworkId | string                       |  Yes  | Descriptor of the target device for screen hopping.            |
+| targetNetworkId | string                       |  Yes  | Descriptor of the target device for screen hopping.|
 | inputDeviceId | number                       |  Yes  | Identifier of the input device for screen hopping.|
 
 
 
 **Return value**
 
-| Name                 | Description                            |
+| Type                 | Description                            |
 | ---------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.    |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status.|
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
- cooperate.activate(targetNetworkId, inputDeviceId).then(() => {
-    console.log(`Start Keyboard mouse crossing success.`);
+  cooperate.activate(targetNetworkId, inputDeviceId).then(() => {
+    console.info(`Start Keyboard mouse crossing success.`);
   }, (error: BusinessError) => {
-    console.log(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
-  console.log(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -1045,27 +1134,28 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 |Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivate(false, (error: BusinessError) => {
     if (error) {
-      console.log(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
     }
-    console.log(`Stop Keyboard mouse crossing success.`);
+    console.info(`Stop Keyboard mouse crossing success.`);
   });
 } catch (error) {
-  console.log(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -1091,30 +1181,31 @@ Stops screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name               | Description                           |
+| Type               | Description                           |
 | --------             | ----------------------------   |
-| Promise&lt;void&gt; |  Promise that returns no value.     |
+| Promise&lt;void&gt; |  Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivate(false).then(() => {
-    console.log(`Stop Keyboard mouse crossing success.`);
+    console.info(`Stop Keyboard mouse crossing success.`);
   }, (error: BusinessError) => {
-    console.log(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
-  console.log(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -1141,28 +1232,29 @@ Obtains the screen hopping status of the target device. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCrossingSwitchState(deviceDescriptor, (error: BusinessError, data: boolean) => {
     if (error) {
-      console.log(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
     }
-    console.log(`Get the status success, data: ${JSON.stringify(data)}`);
+    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
-  console.log(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -1186,16 +1278,16 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Return value**
 
-| Parameters                       | Description                    |
+| Type                      | Description                    |
 | -------------------        | ------------------------------- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the value **false** indicates the opposite.|
 
@@ -1204,16 +1296,17 @@ For details about the error codes, see [Screen Hopping Error Codes](errorcode-de
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCrossingSwitchState(deviceDescriptor).then((data: boolean) => {
-    console.log(`Get the status success, data: ${JSON.stringify(data)}`);
+    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
   }, (error: BusinessError) => {
-    console.log(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
-  console.log(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -1240,24 +1333,28 @@ Enables listening for screen hopping status change events.
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
-function callback(networkId: string, msg: cooperate.CooperateMsg) {
-  console.log(`Keyboard mouse crossing event: ${JSON.stringify(networkId)}`);
-  return false;
+import { cooperate } from '@kit.DistributedServiceKit';
+class Data {
+  networkId: string = "networkId";
+  msg: cooperate.CooperateMsg = 0;
 }
+
 try {
-  cooperate.on('cooperate', callback);
+  cooperate.on('cooperate', (data: Data) => {
+    console.info(`Keyboard mouse crossing event: ${JSON.stringify(data)}`);
+  });
 } catch (error) {
-  console.log(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -1284,43 +1381,50 @@ Disables listening for screen hopping status change events.
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
 
 ```ts
 // Unregister a single callback.
-function callbackOn(networkId: string, msg: cooperate.CooperateMsg) {
-  console.log(`Keyboard mouse crossing event: ${JSON.stringify(networkId)}`);
-  return false;
+class Data {
+  networkId: string = "networkId";
+  msg: cooperate.CooperateMsg = 0;
 }
+
 function callbackOff() {
-  console.log(`Keyboard mouse crossing event`);
+  console.info(`Keyboard mouse crossing event`);
   return false;
 }
+
 try {
-  cooperate.on('cooperate', callbackOn);
+  cooperate.on('cooperate', (data: Data) => {
+    console.info(`Keyboard mouse crossing event: ${JSON.stringify(data)}`);
+  });
   cooperate.off('cooperate', callbackOff);
 } catch (error) {
-  console.log(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Register failed, error: ${JSON.stringify(error)}`);
 }
 ```
 ```ts
 // Unregister all callbacks.
-function callbackOn(networkId: string, msg: cooperate.CooperateMsg) {
-  console.log(`Keyboard mouse crossing event: ${JSON.stringify(networkId)}`);
-  return false;
+class Data {
+  networkId: string = "networkId";
+  msg: cooperate.CooperateMsg = 0;
 }
+
 try {
-  cooperate.on('cooperate', callbackOn);
+  cooperate.on('cooperate', (data: Data) => {
+    console.info(`Keyboard mouse crossing event: ${JSON.stringify(data)}`);
+  });
   cooperate.off('cooperate');
 } catch (error) {
-  console.log(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -1332,7 +1436,7 @@ Represents a screen hopping message notification.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [CooperateMessage](#cooperatemessage11).
+> This API is deprecated since API version 10. You are advised to use [CooperateState](#cooperatestate11) instead.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 

@@ -1,14 +1,14 @@
 # 使用AVScreenCapture录屏写文件(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 屏幕录制主要为主屏幕录屏功能。
 
-开发者可以调用录屏（[AVScreenCapture](media-kit-intro.md#avscreencapture)）模块的C API接口，完成屏幕录制，采集设备内、麦克风等的音视频源数据。可以调用录屏模块获取音视频文件，然后通过文件的形式流转到其他模块进行播放或处理，达成文件形式分享屏幕内容的场景。
+开发者可以调用[AVScreenCapture](media-kit-intro.md#avscreencapture)模块的C API接口，完成屏幕录制，采集设备内、麦克风等的音视频源数据。可以调用录屏模块获取音视频文件，然后通过文件的形式流转到其他模块进行播放或处理，达成文件形式分享屏幕内容的场景。
 
 录屏模块和窗口（Window）、图形（Graphic）等模块协同完成整个视频采集的流程。
 
@@ -22,9 +22,13 @@
 
 如果配置了采集麦克风音频数据，需对应配置麦克风权限ohos.permission.MICROPHONE和申请长时任务，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
 
+从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**，实现在屏幕熄灭但不锁屏的场景下，继续保持录制的效果，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
+
+从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.CUSTOM_SCREEN_RECORDING**，实现在录制屏幕时不再弹出隐私告警弹窗。配置方式请参见[受限开放权限](../../security/AccessToken/restricted-permissions.md)。
 ## 开发步骤及注意事项
 
 使用AVScreenCapture时要明确其状态的变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。
+
 在确定的状态下执行不合适的方法会导致AVScreenCapture发生错误，开发者需要在调用状态转换的方法前进行状态检查，避免程序运行异常。
 
 **在 CMake 脚本中链接动态库**
@@ -72,7 +76,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
         .audioChannels = 2,
         .audioSource = OH_ALL_PLAYBACK
     };
-
+    // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
     OH_AudioEncInfo audioEncInfo = {
         .audioBitrate = 48000,
         .audioCodecformat = OH_AAC_LC
@@ -188,19 +192,17 @@ void OnCaptureContentChanged(struct OH_AVScreenCapture *capture, OH_AVScreenCapt
 void OnUserSelected(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData) {
     (void)capture;
     (void)userData;
-    int* selectType = new int;
-    uint64_t* displayId = new uint64_t;
+    int selectType = 0;
+    uint64_t displayId = 0;
 
     // 通过获取接口，拿到对应的选择类型和屏幕Id。OH_AVScreenCapture_UserSelectionInfo* selections仅在OnUserSelected回调中有效。
-    OH_AVSCREEN_CAPTURE_ErrCode errorSelectType = OH_AVScreenCapture_GetCaptureTypeSelected(selections, selectType);
-    OH_AVSCREEN_CAPTURE_ErrCode errorDisplayId = OH_AVScreenCapture_GetDisplayIdSelected(selections, displayId);
-
-    // 在使用完成后，对申请的内存进行释放
-    delete selectType, displayId;
+    OH_AVSCREEN_CAPTURE_ErrCode errorSelectType = OH_AVScreenCapture_GetCaptureTypeSelected(selections, &selectType);
+    OH_AVSCREEN_CAPTURE_ErrCode errorDisplayId = OH_AVScreenCapture_GetDisplayIdSelected(selections, &displayId);
 }
 
 // 开始录屏时调用StartScreenCapture。
 static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
+    // 初始化录屏参数，传入配置信息OH_AVScreenCaptureConfig。
     OH_AVScreenCaptureConfig config;
     OH_AudioCaptureInfo micCapInfo = {
         .audioSampleRate = 48000, 
@@ -252,7 +254,6 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // 实例化ScreenCapture。
     capture = OH_AVScreenCapture_Create();
 
-    // 初始化录屏参数，传入配置信息OH_AVScreenRecorderConfig。
     OH_RecorderInfo recorderInfo;
     const std::string SCREEN_CAPTURE_ROOT = "/data/storage/el2/base/files/";
     outputFd = open((SCREEN_CAPTURE_ROOT + "screen01.mp4").c_str(), O_RDWR | O_CREAT, 0777);
@@ -294,7 +295,7 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // 进行初始化操作。
     int32_t retInit = OH_AVScreenCapture_Init(capture, config);
 
-    // 可选（API 20开始支持）：可以根据需要设置区域坐标和大小，设置想要捕获的区域，如下方创建了一个从（0，0）为起点的长100，宽100的矩形区域。此接口也可以在开始录屏以后设置。
+    // 可选（API version 20开始支持）：可以根据需要设置区域坐标和大小，设置想要捕获的区域，如下方创建了一个从（0，0）为起点的长100，宽100的矩形区域。此接口也可以在开始录屏以后设置。
     OH_Rect* region = new OH_Rect;
     region->x = 0;
     region->y = 0;

@@ -1,11 +1,16 @@
 # Animation Frame
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Requesting an Animation Frame
 
-Use the **requestAnimationFrame** method to request frames on a one-by-one basis. This method accepts a callback as an argument.
+Use the **requestAnimationFrame** method to request frames on a per-frame basis. This method accepts a callback function as its argument.
 
-When **runframe** calls **requestAnimationFrame**, the **step** callback with the **timestamp** parameter is passed, and this timestamp is assigned to **startTime**. When the difference between the **timestamp** and **startTime** is less than the specified value, **requestAnimationFrame** is called again, and the animation stops.
+When **runframe** calls **requestAnimationFrame**, the **step** callback with the **timestamp** parameter is passed, and this **timestamp** is assigned to **startTime**. When the difference between the **timestamp** and **startTime** is less than the specified threshold, **requestAnimationFrame** is called again; once the threshold is reached, the animation stops.
 
 ```html
 <!-- xxx.hml -->
@@ -76,7 +81,7 @@ export default {
       }
       var elapsed = timestamp - this.startTime;
         if (elapsed < 500) {
-          console.log('callback step timestamp: ' + timestamp);
+          console.info('callback step timestamp: ' + timestamp);
           this.animation = requestAnimationFrame(this.step);
         }
       } else {
@@ -85,7 +90,7 @@ export default {
         this.animation = requestAnimationFrame(this.step);
       }
       if (this.left == 250 || this.left == 0) {
-        this.flag = !this.flag
+        this.flag = !this.flag;
      }
     },
     onDestroy() {
@@ -94,7 +99,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001267767877](figures/en-us_image_0000001267767877.gif)
+![en-us_image_0000001174756860](figures/en-us_image_0000001174756860.gif)
 
 > **NOTE**
 >
@@ -175,7 +180,7 @@ export default {
       this.animation = requestAnimationFrame(this.step);
     }
     if (this.left == 250 || this.left == 0) {
-      this.flag = !this.flag
+      this.flag = !this.flag;
     }
   },
   onDestroy() {
@@ -184,7 +189,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001223127740](figures/en-us_image_0000001223127740.gif)
+![en-us_image_0000001220316655](figures/en-us_image_0000001220316655.gif)
 
 > **NOTE**
 >

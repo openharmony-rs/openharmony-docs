@@ -4,17 +4,17 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 OffscreenCanvas组件用于绘制自定义图形。
 
-使用[Canvas](ts-components-canvas-canvas.md)组件或[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)时，渲染、动画和用户交互通常发生在应用程序的主线程上，与画布动画和渲染相关的计算可能会影响应用程序性能。OffscreenCanvas提供了一个可以在屏幕外渲染的画布，这样可以在单独的线程中运行一些任务，从而避免影响应用程序主线程性能。
+使用[Canvas](ts-components-canvas-canvas.md)组件或[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)对象时，渲染、动画和用户交互通常发生在应用程序的主线程上，与画布动画和渲染相关的计算可能会影响应用程序性能。OffscreenCanvas提供了一个可以在屏幕外渲染的画布，这样可以在单独的线程中运行一些任务，从而避免影响应用程序主线程性能。
 
 > **说明：** 
 >
 > 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> OffscreenCanvas无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[Drawing模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
+> OffscreenCanvas无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
 
 ## 子组件
 
@@ -227,7 +227,7 @@ getContext(contextType: "2d", options?: RenderingContextSettings): OffscreenCanv
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md) | OffscreenCanvas组件的绘图上下文。如果getContext方法的入参contextType为"2d"以外类型（包括null或者undefined），返回null。 |
+| [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md) | OffscreenCanvas组件的绘图上下文。如果getContext方法的入参contextType为"2d"以外类型（包括null或者undefined），返回undefined，使用前应判断返回值是否为undefined。 |
 
 **示例：**
 
@@ -293,12 +293,13 @@ struct OffscreenCanvasExamplePage {
 >
 > 已经通过postMessage传OffscreenCanvas对象到某一线程，不允许再将该对象通过postMessage传给其他线程，否则抛出异常。
 >
-> DevEco Studio的预览器不支持显示在worker线程中绘制的内容。
+> DevEco Studio的预览器不支持显示在Worker线程中绘制的内容。
 
 **示例：**
 
 ```ts
 import { worker } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { common } from '@kit.AbilityKit';
@@ -308,13 +309,17 @@ import { common } from '@kit.AbilityKit';
 struct OffscreenCanvasExamplePage {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-  private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ts');
+  private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
   private imgPixelMap: image.PixelMap | undefined = undefined
 
   aboutToAppear(): void {
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
-    this.imgPixelMap = resourceMgr.getDrawableDescriptor($r("app.media.startIcon").id).getPixelMap()
+    try {
+      this.imgPixelMap = resourceMgr.getDrawableDescriptor($r("app.media.startIcon").id).getPixelMap();
+    } catch (error) {
+      console.error(`resourceMgr getDrawableDescriptor error, error code: ${(error as BusinessError).code}`);
+    }
   }
 
   build() {
@@ -328,6 +333,7 @@ struct OffscreenCanvasExamplePage {
           .backgroundColor('#FFFFFF')
           .onReady(() => {
             let offCanvas = new OffscreenCanvas(600, 800)
+            // worker线程中绘制图像
             this.myWorker.postMessage({ myOffCanvas: offCanvas, imgPixelMap: this.imgPixelMap });
             this.myWorker.onmessage = (e): void => {
               if (e.data.myImage) {
@@ -349,7 +355,8 @@ struct OffscreenCanvasExamplePage {
 Worker线程在onmessage中接收到主线程postMessage发送的OffscreenCanvas，并进行绘制。
 
 ```ts
-import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+// entry/src/main/ets/workers/Worker.ets
+import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 import { image } from '@kit.ImageKit';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;

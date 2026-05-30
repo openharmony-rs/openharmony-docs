@@ -1,17 +1,10 @@
-# @ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility)
+# @ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility) (System API)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @michael_woo888-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
-
-<!--Kit: Basic Services Kit-->
-<!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
-<!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 The **StaticSubscriberExtensionAbility** module provides Extension abilities for static subscribers.
 
@@ -33,7 +26,7 @@ import { StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 | Name   | Type                                                        | Read Only| Optional| Description    |
 | ------- | ------------------------------------------------------------ | ---- | ---- | -------- |
@@ -61,7 +54,7 @@ Represents a callback of the common event of a static subscriber.
 
     class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
         onReceiveEvent(event: commonEventManager.CommonEventData) {
-            console.log(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+            console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
         }
     }
   ```

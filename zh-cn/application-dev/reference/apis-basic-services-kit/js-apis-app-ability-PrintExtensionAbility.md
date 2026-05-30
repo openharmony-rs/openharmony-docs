@@ -5,7 +5,7 @@
 <!--Owner: @guoshengbang-->
 <!--Designer: @gcw_4D6e0BBd-->
 <!--Tester: @guoshengbang-->
-<!--Adviser: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 该模块为打印扩展能力的操作API，提供调用打印扩展能力的接口。
 
@@ -30,7 +30,8 @@ onCreate(want: Want): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](../apis-ability-kit/js-apis-application-want.md#want) | 是 | 表示调用打印页面需要参数。 |
 
@@ -38,11 +39,11 @@ onCreate(want: Want): void
 
 ```ts
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
-import Want from '@ohos.app.ability.Want';
+import { Want } from '@kit.AbilityKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onCreate(want: Want): void {
-        console.log('onCreate');
+        console.info('onCreate');
         // ...
     }
 }
@@ -63,7 +64,7 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onStartDiscoverPrinter(): void {
-        console.log('onStartDiscoverPrinter enter');
+        console.info('onStartDiscoverPrinter enter');
         // ...
     }
 }
@@ -84,7 +85,7 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onStopDiscoverPrinter(): void {
-        console.log('onStopDiscoverPrinter enter');
+        console.info('onStopDiscoverPrinter enter');
         // ...
     }
 }
@@ -99,7 +100,8 @@ onConnectPrinter(printerId: number): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | number | 是 | 表示打印机ID。 |
 
@@ -110,7 +112,7 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onConnectPrinter(printerId: number): void {
-        console.log('onConnectPrinter enter');
+        console.info('onConnectPrinter enter');
         // ...
     }
 }
@@ -125,7 +127,8 @@ onDisconnectPrinter(printerId: number): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | number | 是 | 表示打印机ID。 |
 
@@ -136,8 +139,100 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onDisconnectPrinter(printerId: number): void {
-        console.log('onDisconnectPrinter enter');
+        console.info('onDisconnectPrinter enter');
         // ...
+    }
+}
+```
+
+### onStartPrintJob<sup>24+</sup>
+
+onStartPrintJob(jobInfo: print.PrintJob): void
+
+开始打印任务时调用。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| jobInfo | [print.PrintJob](js-apis-print.md#printjob24) | 是 | 表示打印任务的信息。 |
+
+**示例：**
+
+```ts
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onStartPrintJob(jobInfo: print.PrintJob): void {
+        console.info('onStartPrintJob, jobId is: ' + jobInfo.jobId);
+        // ...
+    }
+}
+```
+
+### onCancelPrintJob<sup>24+</sup>
+
+onCancelPrintJob(jobInfo: print.PrintJob): void
+
+移除已开始的打印任务时调用。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| jobInfo | [print.PrintJob](js-apis-print.md#printjob24) | 是 | 表示打印任务的信息。 |
+
+**示例：**
+
+```ts
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onCancelPrintJob(jobInfo: print.PrintJob): void {
+        console.info('onCancelPrintJob, jobId is: ' + jobInfo.jobId);
+        // ...
+    }
+}
+```
+
+### onRequestPrinterCapability<sup>24+</sup>
+
+onRequestPrinterCapability(printerId: number): print.PrinterCapability
+
+请求打印机能力时调用。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| printerId | number | 是 | 表示打印机ID。 |
+
+**返回值：**
+| **类型** | **说明** |
+| -------- | -------- |
+| [print.PrinterCapability](js-apis-print.md#printercapability24) | 表示打印能力。 |
+
+**示例：**
+
+```ts
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onRequestPrinterCapability(printerId: number): print.PrinterCapability {
+        console.info('onRequestPrinterCapability enter');
+        // ...
+        let tmp : print.PrinterCapability = {
+            colorMode : 1,
+            duplexMode : 1,
+            pageSize : []
+        };
+        return tmp;
     }
 }
 ```
@@ -157,7 +252,7 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onDestroy(): void {
-        console.log('onDestroy');
+        console.info('onDestroy');
     }
 }
 ```

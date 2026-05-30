@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 switch为开关选择器，切换开启或关闭状态。具体用法请参考[switch](../reference/apis-arkui/arkui-js/js-components-basic-switch.md)。

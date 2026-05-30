@@ -2,10 +2,14 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fangyuhao-->
+<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @huchuyun-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_WaterFlowSectionOption ArkUI_WaterFlowSectionOption
+```
 
 ## 概述
 

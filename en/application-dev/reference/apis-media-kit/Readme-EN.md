@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6; @zzs_911-->
 <!--Designer: @HmQQQ; @stupig001-->
 <!--Tester: @xchaosioda; @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS APIs<!--media-arkts-->
   - @ohos.multimedia.media (Media)<!--js-apis-media-->
@@ -44,6 +44,8 @@
     - [LowPowerAudioSink](capi-lowpoweraudiosink.md)
     - [LowPowerVideoSink](capi-lowpowervideosink.md)
     - [VideoProcessing](capi-videoprocessing.md)
+    - [AVMediaSource](capi-avmedia-source.md)
+    - [AVMediaBase](capi-avmediabase.md)
   - Header Files<!--media-headerfile-->
     - [avimage_generator.h](capi-avimage-generator-h.md)
     - [avimage_generator_base.h](capi-avimage-generator-base-h.md)
@@ -65,6 +67,9 @@
     - [lowpower_video_sink_base.h](capi-lowpower-video-sink-base-h.md)
     - [video_processing.h](capi-video-processing-h.md)
     - [video_processing_types.h](capi-video-processing-types-h.md)
+    - [avmedia_base.h](capi-avmedia-base-h.md)
+    - [avmedia_source.h](capi-avmedia-source-h.md)
+    - [avmetakeys.h](capi-avmetakeys-h.md)
   - Structs<!--media-struct-->
     - [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)
     - [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)
@@ -90,6 +95,7 @@
     - [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md)
     - [OH_RecorderInfo](capi-avscreencapture-oh-recorderinfo.md)
     - [OH_AVScreenCaptureConfig](capi-avscreencapture-oh-avscreencaptureconfig.md)
+    - [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)
     - [OH_AVScreenCaptureCallback](capi-avscreencapture-oh-avscreencapturecallback.md)
     - [OH_Rect](capi-avscreencapture-oh-rect.md)
     - [OH_AudioBuffer](capi-avscreencapture-oh-audiobuffer.md)
@@ -98,6 +104,7 @@
     - [OH_AVScreenCapture_ContentFilter](capi-avscreencapture-oh-avscreencapture-contentfilter.md)
     - [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md)
     - [OH_AVScreenCapture_UserSelectionInfo](capi-avscreencapture-oh-avscreencapture-userselectioninfo.md)
+    - [OH_AVScreenCaptureHighlightConfig](capi-avscreencapture-oh-avscreencapturehighlightconfig.md)
     - [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)
     - [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)
     - [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)
@@ -108,5 +115,15 @@
     - [NativeWindow](capi-videoprocessing-nativewindow.md)
     - [OH_AVFormat](capi-videoprocessing-oh-avformat.md)
     - [VideoProcessing_Callback](capi-videoprocessing-videoprocessing-callback.md)
+    - [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)
+    - [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md)
+    - [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md)
+    - [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md)
+    - [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md)
+    - [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md)
+    - [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)
+    - [OH_AVMetadataExtractor_FrameInfo](capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md)
+    - [OH_MultiDisplayCapability](capi-avscreencapture-oh-multidisplaycapability.md)
+    - [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md)
 - Error Codes<!--media-arkts-errcode-->
   - [Media Error Codes](errorcode-media.md)

@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can call native APIs to perform audio decoding, which decodes media data into PCM streams.
 
@@ -28,11 +28,11 @@ For details about the supported decoding capabilities, see [AVCodec Supported Fo
 
 ## Development Guidelines
 
-Read [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md) for the API reference.
+Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md).
 
 Refer to the code snippet below to complete the entire audio decoding process, including creating a decoder, setting decoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the decoder.
 
-During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.
+During application development, you must call the APIs in the defined sequence. Otherwise, the system may throw exceptions or exhibit other undefined behaviors.  
 
 The figure below shows the call relationship of audio decoding.
 
@@ -55,7 +55,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 ### How to Develop
 
-1. Add the header files.
+1. Add the required header files.
 
     ```cpp
     #include <multimedia/player_framework/native_avcodec_audiocodec.h>
@@ -66,7 +66,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     #include <multimedia/player_framework/native_avbuffer.h>
     ```
 
-2. Create a decoder instance. In the code snippet below, **OH_AVCodec *** is the pointer to the decoder instance created.
+2. Create a decoder instance. In the code snippet below, OH_AVCodec * is the pointer to the decoder instance created.
 
    You can create a decoder by MIME type or codec name.
 
@@ -123,7 +123,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    > **NOTE**
    >
-   > You are not advised to perform time-consuming operations in the callback.
+   > Do not call the decoder APIs or perform time-consuming operations in the callbacks.
 
     ```cpp
     // Implement the OH_AVCodecOnError callback function.
@@ -193,6 +193,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     For details about DRM APIs, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
 
+     
+
     Add the header files.
 
     ```c++
@@ -240,35 +242,17 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    Key values of configuration options are described as follows:
 
-   |             Key             |       Description      |                AAC                 | FLAC|               Vorbis               | MPEG (MP3) |       G711mu        |          AMR (AMR-NB and AMR-WB)        | APE |          G711a          |
-   | ---------------------------- | :--------------: | :--------------------------------: | :--: | :--------------------------------: | :--: | :-----------------: | :-------------------------------: | :--: | :----------------------: |
-   | OH_MD_KEY_AUD_SAMPLE_RATE    |      Sample rate.     |                Mandatory               | Mandatory|                Mandatory                | Mandatory|        Mandatory         |                Mandatory               | Mandatory|           Mandatory          |
-   | OH_MD_KEY_AUD_CHANNEL_COUNT  |      Audio channel count.     |                Mandatory               | Mandatory|                Mandatory                | Mandatory|        Mandatory         |                Mandatory               | Mandatory|           Mandatory          |
-   | OH_MD_KEY_MAX_INPUT_SIZE     |    Maximum input size.  |                Optional               | Optional|                Optional                | Optional|        Optional          |               Optional               | Optional|          Optional           |
-   | OH_MD_KEY_AAC_IS_ADTS        |     ADTS or not.    |             Optional (defaults to **1**)            |  -   |                 -                  |  -   |         -             |               -                  |  -  |         -                |
-   | OH_MD_KEY_AUDIO_SAMPLE_FORMAT   |  Output audio stream format. | Optional (SAMPLE_S16LE, SAMPLE_F32LE)| Optional| Optional (SAMPLE_S16LE, SAMPLE_F32LE)|  Optional| Optional (default: SAMPLE_S16LE)| Optional (SAMPLE_S16LE, SAMPLE_F32LE)| Optional| Optional (default: SAMPLE_S16LE)|
-   | OH_MD_KEY_BITRATE               |       Bit rate.     |                Optional               | Optional|                Optional               | Optional|         Optional          |              Optional                | Optional|         Optional          |
-   | OH_MD_KEY_IDENTIFICATION_HEADER |    ID header.   |                 -                  |  -   |    Mandatory (Either this parameter or **MD_KEY_CODEC_CONFIG** must be set.)   |  -   |          -            |                -                  |  -  |           -            |
-   | OH_MD_KEY_SETUP_HEADER          |   Setup header. |                 -                  |  -   |    Mandatory (Either this parameter or **MD_KEY_CODEC_CONFIG** must be set.)   |  -   |          -            |                -                 |  -  |            -            |
-   | OH_MD_KEY_CODEC_CONFIG          | Codec-specific data.|                Optional                |  -   |   Mandatory (Either this parameter or the combination of **MD_KEY_IDENTIFICATION_HEADER** and **MD_KEY_SETUP_HEADER** must be selected.)   |  -   |           -            |                -                 | Optional|           -            |
-   
+   <!--RP6-->
+   ![Audio decoder key configuration](figures/decoder_key.png)
+   <!--RP6End-->
+
    The sample below lists the value range of each audio decoding type.
 
-   | Audio Decoding Type|                                          Sample Rate (Hz)                                             | Audio Channel Count|
-   | ----------- | ----------------------------------------------------------------------------------------------  | :----: |
-   | AAC         | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000                |  1–8  |
-   | FLAC       | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000, 192000        |  1–8  |
-   | Vorbis      | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000, 176400, 192000|  1–8  |
-   | MPEG (MP3)   | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000                                    |  1–2  |
-   | G711mu      | 8000                                                                                            |   1    |
-   | AMR (amrnb)  | 8000                                                                                            |   1    |
-   | AMR (amrwb)  | 16000                                                                                           |   1    |
-   | APE         | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000, 176400, 192000|  1–2  |
-   | G711a       | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000                                    |  1–6  |
-   <!--RP4-->
-   <!--RP4End-->
+   <!--RP7-->
+   ![Audio decoder format range description](figures/decoder_format.png)
+   <!--RP7End-->
 
-   Starting from API version 20, you can query the [sample rate range](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges). The following audio decoding types support decoding of any sample rate within their range (available after API version 20):
+   Starting from API version 20, you can query the [sample rate range](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges). The following audio decoding types support decoding of any sample rate within their range:
 
    | Audio Decoding Type|    Sample Rate (Hz)  |
    | ----------- | --------------- |
@@ -287,6 +271,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    constexpr uint32_t DEFAULT_MAX_INPUT_SIZE = 1152;
    // Configure whether to use ADTS decoding (optional for AAC decoding).
    constexpr uint32_t DEFAULT_AAC_TYPE = 1;
+   // (Optional) Configure the byte count of each audio data block. This parameter is supported since API version 22 and must be configured only for WMAV1, WMAV2, and WMA PRO decoding.
+   constexpr int32_t DEFAULT_BLOCK_ALIGN = 1;
    OH_AVFormat *format = OH_AVFormat_Create();
    // Set the format.
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
@@ -294,6 +280,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_MAX_INPUT_SIZE, DEFAULT_MAX_INPUT_SIZE);
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AAC_IS_ADTS, DEFAULT_AAC_TYPE);
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_BLOCK_ALIGN, DEFAULT_BLOCK_ALIGN);
    // Configure the decoder.
    int32_t ret = OH_AudioCodec_Configure(audioDec_, format);
    if (ret != AV_ERR_OK) {
@@ -316,7 +303,6 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     ```c++
     #include <fstream>
     ```
-
    The sample code is as follows:
     ```c++
     ifstream inputFile_;
@@ -410,7 +396,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    You should fill in complete input data before calling this API.
 
-   To indicate the End of Stream (EOS), pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
+   When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
     ```c++
     uint32_t index = signal_->inQueue_.front();
@@ -478,8 +464,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     You need to call **OH_AudioCodec_Start()** in the following cases:
 
-    * The EOS of the file is reached.
-    * An error with **OH_AudioCodec_IsValid** set to **true** (indicating that the execution can continue) occurs.
+    * To use the same decoder configuration after **AVCODEC_BUFFER_FLAGS_EOS** of the output buffer is set, call **OH_AudioCodec_Flush()** to refresh the decoder.
+    * If a recoverable error occurs during the execution (**OH_AudioCodec_IsValid()** returns **true**), you can call **OH_AudioCodec_Flush()** to refresh the decoder and then call **OH_AudioCodec_Start()** to start decoding again.
 
     ```c++
     // Refresh the decoder.
@@ -496,7 +482,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 12. (Optional) Call **OH_AudioCodec_Reset()** to reset the decoder.
 
-    After **OH_AudioCodec_Reset()** is called, the decoder returns to the initialized state. To continue decoding, you must call **OH_AudioCodec_Configure()** and then **OH_AudioCodec_Start()**.
+    After **OH_AudioCodec_Reset()** is called, the decoder returns to the initialized state. The input and output buffers obtained before the reset cannot be used. You must call **OH_AudioCodec_Configure()** to reconfigure the decoder and then call **OH_AudioCodec_Start()** to start decoding again. Obtain the input and output buffers again after the decoder is started.
 
     ```c++
     // Reset the decoder.
@@ -513,7 +499,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 13. Call **OH_AudioCodec_Stop()** to stop the decoder.
 
-    After the decoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. If you have passed specific data in the previous **OH_AudioCodec_Start()** for the codec, you must pass it again.
+    After the decoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. The input and output buffers obtained before the decoder is stopped cannot be reused. You must obtain them again after the decoder is started.
 
     ```c++
     // Stop the decoder.
@@ -539,3 +525,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     }
     ```
 
+## Samples
+
+The following sample is provided to help you better understand how to develop audio decoding:
+
+- [Audio Decoding](https://gitcode.com/openharmony/multimedia_av_codec/blob/master/test/nativedemo/audio_demo/avcodec_audio_avbuffer_decoder_demo.cpp)

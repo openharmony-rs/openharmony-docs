@@ -709,13 +709,13 @@ The driver configuration consists of the driver device description defined by th
   >   -   **uid**, **gid**, and **caps** are startup parameters for user-mode drivers only.
   >   -   According to the principle of least privilege for processes, **uid** and **gid** do not need to be configured for service modules. In the preceding example, **uid** and **gid** are left empty (granted with the common user rights) for sample_host.
   >   -   If you need to set **uid** and **gid** to **system** or **root** due to service requirements, contact security experts for review.
-  >   -   The process UIDs are configured in **base/startup/init/services/etc/passwd**, and the process GIDs are configured in **base/startup/init/services/etc/group**. For details, see [Adding a System Service User Group]( https://gitee.com/openharmony/startup_init_lite/wikis).
+  >   -   The process UIDs are configured in **base/startup/init/services/etc/passwd**, and the process GIDs are configured in **base/startup/init/services/etc/group**. For details, see [Adding a System Service User Group]( https://gitcode.com/openharmony/startup_init_lite/wikis).
   >   -   The **caps** value is in the caps = ["xxx"] format. To configure **CAP_DAC_OVERRIDE**, set this parameter to **caps = ["DAC_OVERRIDE"]**. Do not set it to **caps = ["CAP_DAC_OVERRIDE"]**.
   >   -   **preload** specifies the loading policy for the driver.
 
 -   (Optional) Set driver private information.
 
-    If the driver has private configuration, add a driver configuration file to set default driver configuration. When loading the driver, the HDF obtains and saves the driver private information in **property** of **HdfDeviceObject**, and passes the information to the driver using **Bind()** and **Init()** (see [Implementing a Driver](implementing-a-driver)). 
+    If the driver has private configuration, add a driver configuration file to set default driver configuration. When loading the driver, the HDF obtains and saves the driver private information in **property** of **HdfDeviceObject**, and passes the information to the driver using **Bind()** and **Init()** (see [Implementing a Driver](#implementing-a-driver)). 
 
     Example:
 

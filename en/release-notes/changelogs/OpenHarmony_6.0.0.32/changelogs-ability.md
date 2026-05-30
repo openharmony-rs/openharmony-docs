@@ -61,11 +61,9 @@ Public API
 
 **Reason for Change**
 
-In file sharing scenarios (where the **flags** field of Want is configured with [wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION](../../../application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags) or [wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION](../../../application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags)), an application can pass a single URI through the **uri** field of Want, or pass multiple URIs using the **Key** value of [wantConstant.Params.PARAMS_STREAM](../../../application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params). To ensure that the parameters passed to the target application are valid, the system proactively erases URIs that do not meet the conditions.
+In file sharing scenarios (where the **flags** field of [Want](../../../application-dev/reference/apis-ability-kit/js-apis-app-ability-want.md#want) is configured with [wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION](../../../application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags) or [wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION](../../../application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags)), an application can pass a single URI through the **uri** field of **Want**, or pass multiple URIs using the **Key** value of [wantConstant.Params.PARAMS_STREAM](../../../application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params). To ensure that the parameters passed to the target application are valid, the system proactively erases URIs that do not meet the conditions.
 
 **Impact of the Change**
-
-This change does not require application adaptation.
 
 Before change, in file sharing scenarios, if the scheme of the **uri** field in Want is empty, or the scheme of the URIs in the **wantConstant.Params.PARAMS_STREAM** field is not **file**, the system does not perform any processing.
 
@@ -83,7 +81,8 @@ OpenHarmony SDK 6.0.0.32
 
 The APIs related to starting and exiting applications can trigger this change in file sharing scenarios. The involved interfaces are as follows:
 
-[UIAbilityContext](../../../application-dev/reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext):
+[UIAbilityContext](../../../application-dev/reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md):
+
 - startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 - startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
 - startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
@@ -97,7 +96,7 @@ The APIs related to starting and exiting applications can trigger this change in
 - startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 - connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
-[UIExtensionContext](../../../application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#uiextensioncontext):
+[UIExtensionContext](../../../application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md):
 
 - startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 - startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
@@ -113,4 +112,8 @@ The APIs related to starting and exiting applications can trigger this change in
 
 **Adaptation Guide**
 
-No adaptation is required.
+Check whether the file URI read/write flag (**wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION** or **wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION**) is set in the **flags** field of **Want** and whether the **uri** or **wantConstant.Params.PARAMS_STREAM** field is set to a [non-file URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md#fileuri10).
+
+Perform either of the following:
+- Delete the file URI read/write flag in the **flags** field of **Want**.
+- Change non-file URIs in the **uri** and **wantConstant.Params.PARAMS_STREAM** fields to file URIs. If the URI written earlier is a sandbox path, you can convert the URI into a file URI using [fileUri.getUriFromPath](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath).

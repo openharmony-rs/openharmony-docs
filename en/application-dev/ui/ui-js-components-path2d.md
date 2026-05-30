@@ -1,12 +1,18 @@
 # Path2D
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
-**\<Path2D>** allows you to describe a path through an existing path. This path can be drawn through the **stroke** API of **Canvas**. For details, see [Path2D](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md).
+A **Path2D** object defines a geometric path using its methods and can be rendered onto a canvas via the [stroke](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroke-1) method of the **Canvas**. For details, see [Path2D](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md).
 
 
 ## Drawing Line Segments
 
-Create a **\<Path2D>** object and use line segments to create different shapes.
+Create a **Path2D** object and use line segments to create different shapes.
 
 ```html
 <!-- xxx.hml --> 
@@ -36,8 +42,6 @@ canvas {
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
-
 export default {
     onShow() {
         let ctx = this.$refs.canvas.getContext('2d', {
@@ -78,12 +82,12 @@ export default {
 ```
 
 
-![en-us_image_0000001232002968](figures/en-us_image_0000001232002968.png)
+![en-us_image_0000001177930616](figures/en-us_image_0000001177930616.png)
 
 
 ## Drawing Graphs
 
-Use **createPath2D** to create a path object and draw only **path1** so that only **path1** is displayed on the canvas. Click the **Text** component to trigger the **addPath** method. The **path2** object is passed to **path1** as a parameter. After the **stroke** operation is performed on the **path1** object, **path1** and **path2** are displayed on the canvas. Click **Change** to change the value of **setTransform** to** setTransform(2, 0.1, 0.1, 2, 0,0)**. The graph is enlarged and tilted to the left.
+Use **createPath2D** to create a path object and draw only **path1** so that only **path1** is displayed on the canvas. Click the **\<text>** component to trigger the **addPath** method. The **path2** object is passed to **path1** as a parameter. After the **stroke** operation is performed on the **path1** object, **path1** and **path2** are displayed on the canvas. Click **Change** to change the value of **setTransform** to** setTransform(2, 0.1, 0.1, 2, 0,0)**. The graph is enlarged and tilted to the left.
 
 
 ```html
@@ -139,15 +143,13 @@ text {
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
-
 export default {
     data: {
         ctx: null,
         path1: null,
         path2: null,
         path3: null,
-        isAdd: "addPath2",
+        isAdd: 'addPath2',
         isChange: true,
         textName: 'change'
     },
@@ -168,18 +170,18 @@ export default {
         this.ctx.stroke(this.path1);
     },
     addPath() {
-        if (this.isAdd == "addPath2") {
-            // Clear the content in the specified area on the canvas.
+        if (this.isAdd == 'addPath2') {
+            // Clear the specified area on the canvas.
             this.ctx.clearRect(0, 0, 600, 600);
             this.ctx.beginPath();
             // Add a path to the current path.
             this.path2.addPath(this.path1);
             this.ctx.stroke(this.path2);
-            this.isAdd = "clearPath2";
+            this.isAdd = 'clearPath2';
         } else {
             this.ctx.clearRect(0, 0, 600, 600);
             this.ctx.stroke(this.path1);
-            this.isAdd = "addPath2";
+            this.isAdd = 'addPath2';
         }
     },
     setTransform() {
@@ -191,16 +193,16 @@ export default {
             this.path3.setTransform(2, 0.1, 0.1, 2, 0, 0);
             this.ctx.stroke(this.path3);
             this.isChange = !this.isChange;
-            this.textName = "back"
+            this.textName = 'back';
         } else {
             this.ctx.clearRect(0, 0, 600, 600);
             this.path3.setTransform(0.5, -0.1, -0.1, 0.5, 0, 0);
             this.ctx.stroke(this.path3);
             this.isChange = !this.isChange;
-            this.textName = "change";
+            this.textName = 'change';
         }
     }
 }
 ```
 
-![en-us_image_0000001231683112](figures/en-us_image_0000001231683112.gif)
+![en-us_image_0000001177784684](figures/en-us_image_0000001177784684.gif)

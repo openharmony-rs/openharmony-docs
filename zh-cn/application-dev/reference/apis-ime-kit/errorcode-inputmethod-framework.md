@@ -1,9 +1,9 @@
 # 输入法框架错误码
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 > **说明：**
@@ -56,6 +56,7 @@ Input method engine error. Possible causes:
 Input method client error. Possible causes: 
 1. the edit box is not focused.
 2. no edit box is bound to current input method application.
+3. ipc failed due to the large amount of data transferred or other reasons.
 
 **错误描述**
 
@@ -65,11 +66,13 @@ Input method client error. Possible causes:
 
 1. 应用没有获得焦点。
 2. 应用客户端服务异常导致输入法应用与应用客户端断连。
+3. 传输的数据量过大等原因，导致IPC失败。
 
 **处理步骤**
 
 1. 重新将输入法应用与应用进行绑定：将应用后台进程杀死，重新启动应用，通过点击对话框等方式触发输入法键盘的显示，若键盘正常显示，则问题解决。
-2. 将第应用切换至前台，并确保无其他应用或窗口遮挡。通过点击对话框等方式触发键盘弹出。
+2. 将应用切换至前台，并确保无其他应用或窗口遮挡。通过点击对话框等方式触发键盘弹出。
+3. 根据[IPC的约束与限制](../../ipc/ipc-rpc-overview.md#约束与限制)，需先调整传输数据量，控制为较小规模后再发起请求。需特别注意：一次接口调用在IPC层的总传输数据量=应用侧发送的数据量+系统层处理所需的必要数据量，因此应用调用接口时实际可发送的最大数据量，会小于IPC本身限制的最大数据量。
 
 ## 12800004 不是输入法应用
 
@@ -231,7 +234,7 @@ The input method panel does not exist.
 
 **处理步骤**
 
-开发者可以通过接口[createPanel](js-apis-inputmethodengine.md#createpanel10)创建[软键盘类型](js-apis-inputmethodengine.md#paneltype10)的[面板](js-apis-inputmethodengine.md#panel10)。
+开发者可以通过接口[createPanel](js-apis-inputmethodengine.md#createpanel10)创建。
 
 ## 12800013 窗口管理服务错误
 
@@ -331,7 +334,7 @@ The input method is not found.
 
 **错误描述**
 
-输入法未找到。
+通过查询系统已安装输入法列表，输入法未找到。
 
 **可能原因**
 
@@ -362,7 +365,7 @@ Current operation cannot be applied to the preconfigured default input method.
 
 <!--DelEnd-->
 
-## 12800020 沉浸效果不正确
+## 12800020 沉浸效果参数配置错误
 
 **错误信息**
 
@@ -391,7 +394,7 @@ Invalid immersive effect.
 
 **错误信息**
 
-this operation is allowed only after adjustPanelRect or resize is called.
+This operation is allowed only after adjustPanelRect or resize is called.
 
 **错误描述**
 
@@ -418,7 +421,7 @@ this operation is allowed only after adjustPanelRect or resize is called.
 
 **错误信息**
 
-invalid displayId.
+Invalid displayId.
 
 **错误描述**
 
@@ -431,3 +434,83 @@ invalid displayId.
 **处理步骤**
 
 开发者可以通过接口[getDisplayId](js-apis-inputmethodengine.md#getdisplayid15)获取当前窗口的所在id。
+
+## 12800023 指定的用户不存在
+
+**错误信息**
+
+The specified user does not exist.
+
+**错误描述**
+
+指定的用户不存在。
+
+**可能原因**
+
+调用带有userId参数的接口时，传入的userId对应的用户不存在。
+
+**处理步骤**
+
+开发者可以通过系统用户管理接口确认用户ID的有效性，或检查传入的userId参数是否正确。
+
+## 12800024 指定的用户未在前台
+
+**错误信息**
+
+The specified user is not in the foreground.
+
+**错误描述**
+
+指定的用户未在前台。
+
+**可能原因**
+
+调用带有userId参数的接口时，传入的userId对应的用户当前未处于前台状态。
+
+**处理步骤**
+
+确保目标用户处于前台状态后再调用相关接口。
+
+## 12800025 跨用户操作被拒绝
+
+**错误信息**
+
+Cross-user operation denied. Only user 0 applications are authorized for this operation.
+
+**错误描述**
+
+跨用户操作被拒绝。只有用户0的应用才有权执行此操作。
+
+**可能原因**
+
+非用户0的应用尝试访问或操作其他用户的数据或功能。
+
+**处理步骤**
+
+确保只有用户0的应用才调用此类跨用户操作接口。
+<!--Del-->
+## 12800026 输入法系统面板错误
+
+**错误信息**
+
+Input method system panel error. Possible causes: 
+1. system panel not connected.
+2. ipc failed due to large amount of data transferred or other reasons.
+3. the caller is not system panel.
+
+**错误描述**
+
+输入法系统面板操作失败。
+
+**可能原因**
+
+1. 系统面板未连接。
+2. 传输的数据量过大等原因，导致IPC失败。
+3. 调用者不是系统面板。
+
+**处理步骤**
+
+1. 确保已调用[connectSystemChannel](./js-apis-inputmethod-system-panel-manager-sys.md#inputmethodsystempanelmanagerconnectsystemchannel)接口连接系统通道。
+2. 根据[IPC的约束与限制](../../ipc/ipc-rpc-overview.md#约束与限制)，调整传输数据量。
+3. 确保调用者为系统面板。
+<!--DelEnd-->

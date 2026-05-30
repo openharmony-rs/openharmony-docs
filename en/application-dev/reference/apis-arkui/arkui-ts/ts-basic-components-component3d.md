@@ -1,5 +1,12 @@
 # Component3D
-The **Component3D** component is used to load 3D model resources and create custom rendering. It is typically used to present 3D animations.
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zzhao0-->
+<!--Designer: @zdustc-->
+<!--Tester: @zhangyue283-->
+<!--Adviser: @ge-yafang-->
+
+The **Component3D** component used to render ArkGraphics 3D scenes or glTF models (.gltf and .glb files) into the ArkUI. It supports both custom scene mode and automatic scene mode, and provides the capability for custom rendering pipelines.
 
 >  **NOTE**
 >
@@ -33,12 +40,14 @@ Provides the 3D scene configuration options.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
-| Name       | Type                              | Mandatory  | Description                                      |
-| --------- | -------------------------------- | ---- | ---------------------------------------- |
-| scene     | [ResourceStr](ts-types.md#resourcestr) \| [Scene](#scene12) | No   | 3D model resource file or scene object.<br>Default value: **undefined**<br>**NOTE**<br>Currently, only GLTF files are supported.|
-| modelType | [ModelType](#modeltype) | No   | Composition mode of the 3D scene.<br>Default value: **ModelType.SURFACE**<br>**NOTE**<br>**ModelType.TEXTURE**: The GPU is used for composition.<br>**ModelType.SURFACE**: Dedicated hardware is used for composition.<br>In general cases, leave this parameter at its default settings.|
+| Name       | Type                              | Read-Only| Optional  | Description                                      |
+| --------- | -------------------------------- | ---- | ---- | ---------------------------------------- |
+| scene     | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[Scene](#scene12) | No   | Yes   | 3D model resource file or scene object. Default value: **undefined**.<br>When a glTF model (.gltf or .glb file) resource path is passed, the component runs in automatic scene mode. The framework automatically creates a basic camera, lighting, and provides default gesture interactions (rotate and zoom). The related parameters are managed internally by the framework and cannot be modified externally. You can only configure the display effects through the attributes of **Component3D**.<br>When a **Scene** object is passed, the component runs in custom scene mode. You can create and manage the camera, light source, and interactions through ArkGraphics 3D APIs.<br>When this parameter is not specified, the component serves only as an output container for a custom rendering pipeline (shader/customRender).<br>**NOTE**<br>In custom scene mode, the component does not have a built-in camera controller. Therefore, it does not automatically respond to drag or pinch gestures. If interactions are required, you need to integrate gestures and update the camera's position and rotation parameters.|
+| modelType | [ModelType](#modeltype) | No   | Yes   | Composition mode of the 3D scene.<br>Default value: **ModelType.SURFACE**.<br>**NOTE**<br>**ModelType.TEXTURE**: The GPU is used for composition.<br>**ModelType.SURFACE**: Dedicated hardware is used for composition.<br>In general cases, leave this parameter at its default settings.|
 
 ## ModelType
+
+Enumerates the rendering and composition modes, which specify the rendering output mode of a 3D scene.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -46,8 +55,8 @@ Provides the 3D scene configuration options.
 
 | Name   | Value  | Description                    |
 | ------- | ---- | ------------------------ |
-| TEXTURE | 0    | The GPU is used for composition of the 3D scene. |
-| SURFACE | 1    | Dedicated hardware is used for composition of the 3D scene.|
+| TEXTURE | 0 | The GPU is used for composition of the 3D scene.|
+| SURFACE | 1 | Dedicated hardware is used for composition of the 3D scene.|
 
 ## Scene<sup>12+</sup>
 
@@ -98,7 +107,7 @@ Sets the custom 3D scene rendering pipeline. **uri** and **selfRenderUpdate** ca
 | Name          | Type                                  | Mandatory| Description                                                        |
 | ---------------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | uri              | [ResourceStr](ts-types.md#resourcestr) | Yes  | Configuration file for creating a custom rendering pipeline.                                  |
-| selfRenderUpdate | boolean                                | Yes  | Whether rendering can be triggered when the external UI is not updated.<br>The value **true** means that rendering can be triggered when the external UI is not updated, and false means the opposite.|
+| selfRenderUpdate | boolean                                | Yes  | Whether rendering can be triggered when the external UI is not updated.<br>The value **true** means that rendering can be triggered when the external UI is not updated, and **false** means the opposite.|
 
 ### shader
 
@@ -114,7 +123,7 @@ Sets the shader file for custom rendering. The shader file cannot be dynamically
 
 | Name| Type                                  | Mandatory| Description                        |
 | ------ | -------------------------------------- | ---- | ---------------------------- |
-| uri    | [ResourceStr](ts-types.md#resourcestr) | Yes  | Shader file for custom rendering.|
+| uri    | [ResourceStr](ts-types.md#resourcestr) | Yes  | Path to the shader file for custom rendering. For details about the .shader file format, see [Requirements on the .shader File Format](../../../graphics3d/arkgraphics3D-shader-resource.md).|
 
 ### shaderImageTexture
 
@@ -130,7 +139,7 @@ Sets the texture resource used for custom rendering. To use multiple texture res
 
 | Name| Type                                  | Mandatory| Description                      |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| uri    | [ResourceStr](ts-types.md#resourcestr) | Yes  | Texture resource used for custom rendering.|
+| uri    | [ResourceStr](ts-types.md#resourcestr) | Yes  | Path to the texture resource used for custom rendering.|
 
 ### shaderInputBuffer
 
@@ -166,7 +175,7 @@ The rendering resolution cannot be dynamically changed after the component is cr
 
 | Name| Type                                | Mandatory| Description                |
 | ------ | ------------------------------------ | ---- | -------------------- |
-| value  | [Dimension](ts-types.md#dimension10) | Yes  | Width of the 3D rendering resolution. Currently, only **Dimension.Percentage** can be set, with the value range of [0, 100%].|
+| value  | [Dimension](ts-types.md#dimension10) | Yes  | Width of the 3D rendering resolution. Currently, only **Dimension.Percentage** is supported. The value range is [0, 100%].|
 
 ### renderHeight
 
@@ -174,7 +183,7 @@ renderHeight(value: Dimension)
 
 Sets the height of the 3D rendering resolution. The width and height of the rendering resolution may be different from those of the component. If this is the case, they are upsampled or downsampled to the component width and height.
 
-If this attribute is not specified, the default width of the rendering resolution is used.
+If this attribute is not specified, the default height of the rendering resolution is used.
 
 The rendering resolution cannot be dynamically changed after the component is created.
 
@@ -186,7 +195,7 @@ The rendering resolution cannot be dynamically changed after the component is cr
 
 | Name| Type                                | Mandatory| Description                |
 | ------ | ------------------------------------ | ---- | -------------------- |
-| value  | [Dimension](ts-types.md#dimension10) | Yes  | Height of the 3D rendering resolution. Currently, only **Dimension.Percentage** can be set, with the value range of [0, 100%].|
+| value  | [Dimension](ts-types.md#dimension10) | Yes  | Height of the 3D rendering resolution. Currently, only **Dimension.Percentage** is supported. The value range is [0, 100%].|
 
 ## Events
 
@@ -200,12 +209,14 @@ Example of loading a GLTF model:<br>
 @Entry
 @Component
 struct Index {
-  scene: SceneOptions = { scene: $rawfile('gltf/DamageHemlt/glTF/DamagedHelmet.gltf'), modelType: ModelType.SURFACE};
+  // Load scene resources, which supports .gltf and .glb formats. Adapt the path and file name to your project.
+  scene: SceneOptions = { scene: $rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.gltf'), modelType: ModelType.SURFACE};
   build() {
     Row() {
       Column() {
         Text('GLTF Example')
         Component3D( this.scene )
+        // Bind environment resources, which supports .gltf and .glb formats. Adapt the path and file name to your project.
           .environment($rawfile('gltf/Environment/glTF/Environment.gltf'))
           .renderWidth('90%').renderHeight('90%')
       }.width('100%')
@@ -214,10 +225,10 @@ struct Index {
   }
 }
 ```
-Example of custom rendering:<br>
+Custom rendering example:<br>
 
 ```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
+import { AnimatorResult } from '@kit.ArkUI';
 
 class EngineTime {
   totalTimeUs = 0;
@@ -240,8 +251,9 @@ function TickFrame() {
 @Entry
 @Component
 struct Index {
-  scene: SceneOptions = { scene: $rawfile('gltf/DamageHemlt/glTF/DamagedHelmet.gltf'), modelType: ModelType.SURFACE};
-  backAnimator: AnimatorResult = animator.create({
+  // Load scene resources, which supports .gltf and .glb formats. Adapt the path and file name to your project.
+  scene: SceneOptions = { scene: $rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.gltf'), modelType: ModelType.SURFACE};
+  backAnimator: AnimatorResult = this.getUIContext().createAnimator({
     duration: 2000,
     easing: "ease",
     delay: 0,
@@ -253,10 +265,10 @@ struct Index {
   });
   @State timeDelta: number[] = [1.0, 2.0];
   create() {
-    this.backAnimator.onfinish = () => {
-      console.log('backAnimator onfinish');
+    this.backAnimator.onFinish = () => {
+      console.info('backAnimator onfinish');
     }
-    this.backAnimator.onframe = value => {
+    this.backAnimator.onFrame = (value: number) => {
       TickFrame();
       this.timeDelta[0] = engineTime.deltaTimeUs;
     }
@@ -267,9 +279,12 @@ struct Index {
       Column() {
         Text('custom rendering')
         Component3D()
+          // Bind the custom shader script. Adapt the path and file name to your project.
           .shader($rawfile('assets/app/shaders/shader/London.shader'))
+          // Bind the texture resource as the shader input. Adapt the path and file name to your project.
           .shaderImageTexture($rawfile('assets/London.jpg'))
           .shaderInputBuffer(this.timeDelta)
+          // Bind the render-node graph (.rng). The path and file name can be customized based on the specific project resources.
           .customRender($rawfile('assets/app/rendernodegraphs/London.rng'), true)
           .renderWidth('90%').renderHeight('90%')
           .onAppear(() => {

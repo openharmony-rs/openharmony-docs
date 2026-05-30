@@ -1,32 +1,14 @@
 # UI上下文错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
-
-## 100001 内部错误
-
-**错误信息**
-
-Internal error.
-
-**错误描述**
-
-当出现了开发者解决不了的内部异常错误，系统会产生此错误码。
-
-**可能原因**
-
-内存不足或JS虚拟机异常等因素可能导致UI实例创建失败。
-
-**处理步骤**
-
-NA
 
 ## 190001 无效的UIContext对象
 
@@ -117,3 +99,22 @@ The function cannot be called from a non-main thread.
 **处理步骤**
 
 在主线程中调用该函数。
+
+## 120007 实例不存在
+
+**错误信息**
+
+The UIContext is not available.
+
+**错误描述**
+
+实例不存在。
+
+**可能原因**
+
+传入的实例非法或者对应的示例已销毁。
+
+**处理步骤**
+
+传入有效的UIContext对象。
+

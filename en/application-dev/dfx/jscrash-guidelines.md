@@ -2,8 +2,8 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @wanghuan2025-->
-<!--Designer: @Maplestory-->
-<!--Tester: @yufeifei-->
+<!--Designer: @Maplestory91-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## Overview
@@ -26,7 +26,7 @@ ArkCompiler runtime captures process exceptions. The fault log generation proces
 
 ## Constraints
 
-If an exception is thrown in an asynchronous function, no JS crash will occur. You can observe the exception through [ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror).
+If an exception is thrown in an asynchronous function, no JS crash will occur. You can observe the exception through [ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For details about the sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions).
 
 
 ## Obtaining Logs
@@ -57,33 +57,46 @@ The fault log file name format is **jscrash-Process name-Process UID-Millisecond
 |---|---|---|---|---|
 | Device info | Device information.| 8 | Yes| - |
 | Build info | Version information.| 8 | Yes| - |
+| DeviceDebuggable | Whether the system version of the device can be debugged, which is irrelevant to **Developer options**.| 23 | Yes| - |
 | Fingerprint | Fault feature, which is a hash value for faults of the same type.| 8 | Yes| - |
 | Timestamp | Timestamp.| 8 | Yes| - |
 | Module name | Bundle name or Process name.| 8 | Yes| - |
+| ReleaseType | Application version type. The value **release** indicates that the application is a [release-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916), and the value **debug** indicates that the application is a [debug-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).| 23 | Yes| - |
+| CpuAbi | ABI type.| 23 | Yes| - |
 | Version | HAP version.| 8 | Yes| - |
-| Version Code | Version code.| 8 | Yes| - |
+| VersionCode | Version code.| 8 | Yes| - |
+| IsSystemApp | Whether the application is a system application.| 23 | Yes| - |
 | Pid | ID of the faulty process.| 8 | Yes| - |
 | Uid | User ID.| 8 | Yes| - |
+| Process life time | Lifetime of the faulty process.| 22 | Yes| - |
 | Process Memory(kB) | Process memory usage.| 20 | Yes| - |
 | Device Memory(kB) | Device memory information.| 20 | No| This field depends on the maintenance and debugging service process. If the maintenance and debugging service process stops or the device restarts when a fault occurs, this field does not exist. For details, see [Detection Principles](#detection-principles).|
-| Page switch history | Page switching history.| 21 | No| If the maintenance and debugging service process is faulty or the switching history is not cached, this field is not displayed.|
+| Page switch history | Page switching history.| 20 | No| If the maintenance and debugging service process is faulty or the switching history is not cached, this field is not displayed.|
 | Reason | Fault cause.| 8 | Yes| - |
 | Error name | Fault type.| 8 | Yes| - |
 | Error message | Error message.| 8 | Yes| - |
 | Stacktrace | Fault stack.| 8 | Yes| - |
+| HybridStack | Cross-language fault stack between C++ and JS.| 22 | No| In the ARM 64-bit system, if the stacktrace is a JS stack, this field is displayed. A maximum of 256 layers can be displayed.|
+| SubmitterStacktrace | Submitter thread stack.| 20 | No| By default, the asynchronous thread stack tracing functionality is enabled only in the ARM 64-bit system.<br>For versions earlier than API version 22, the functionality of submitting asynchronous tasks by third-party and system applications through [libuv](../reference/native-lib/libuv.md) and [ffrt](../reference/apis-ffrt-kit/capi-ffrt.md) is enabled only in the debug version by default.<br>Since API version 22, the functionality of submitting asynchronous tasks by third-party applications through **libuv** is enabled by default in both debug and release versions. The functionality of submitting asynchronous tasks by third-party and system applications through **ffrt** is enabled by default only in the debug version.|
 | HiLog | HiLog logs printed before the fault occurs. A maximum of 1000 lines can be printed.| 20 | Yes| - |
+| AsyncStack | Promise stack.| 23 | No| In ARM64, if the promise stack is enabled, this field is contained.|
 
 Example of the JS crash log specifications:
 ```text
 Device info:XXX <- Device information
 Build info:XXX-XXXX X.X.X.XX(XXXXXXXX) <- Build information
+DeviceDebuggable:No <- Whether the system version of the device can be debugged.
 Fingerprint:ed1811f3f5ae13c7262b51aab73ddd01df95b2c64466a204e0d70e6461cf1697 <- Fault features
 Timestamp:XXXX-XX-XX XX:XX:XX.XXX <- Timestamp
 Module name:com.example.myapplication <- Bundle name/Process name
+ReleaseType:release <- Application version type.
+CpuAbi:arm64-v8a <- ABI type.
 Version:1.0.0 <- HAP version
 VersionCode:1000000 <- Version code
+IsSystemApp:No <- Whether the application is a system application.
 Pid:579 <- Faulty process ID
 Uid:0 <- User ID
+Process life time:1s  <- Process life time
 Process Memory(kB): 1897(Rss) <- Process memory usage
 Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- Device memory information
 Page switch history: <- Page switch history
@@ -95,22 +108,78 @@ Page switch history: <- Page switch history
 Reason:TypeError <- Fault cause
 Error name:TypeError <- Fault type
 Error message:Cannot read property c of undefined <- Error message
-Cannot get SourceMap info, dump raw stack: <- The release package does not contain the **SourceMap** file, and the JS stack fails to parse it.
+Cannot get SourceMap info, dump raw stack: <- The release package does not contain the SourceMap file, and the JS stack fails to parse it.
 Stacktrace:
     at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)  <- Call stack of the exception code
            ^        ^                              ^
          Function name Module package name The row and column numbers in the file
+HybridStack: <- Cross-language call stack between C++ and JS
+#00 pc 00000000004a814c /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#01 pc 00000000004a6460 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#02 pc 00000000006a94e0 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#03 pc 0000000000334d38 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#04 pc 0000000000253da8 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::ObjectFactory::GetJSError(panda::ecmascript::base::ErrorType const&, char const*, panda::ecmascript::StackCheck)+292)(173710293c3751dc676d24264bfac393)
+#05 pc 00000000005c25d4 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#06 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#07 pc 000000000044843c /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallarg1Imm8V8StwCopy+340)
+#08 at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13) <- JS code executed when an exception occurs
+#09 pc 00000000001e620c /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#10 pc 00000000009ad560 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::Call(panda::ecmascript::EcmaVM const*, panda::Local<panda::JSValueRef>, panda::Local<panda::JSValueRef> const*, int)+456)(173710293c3751dc676d24264bfac393)
+#11 pc 0000000000a63f14 /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+#12 pc 0000000000d836bc /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+#13 pc 000000000111f338 /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+...
 
 HiLog:
  ^
- Add 1000 lines of HiLog logs related to the exception to the generated crash log file.
+ HiLog logs generated before the fault occurs are added to the generated crash log file. A maximum of 1000 lines are supported.
 
 ```
+### Log Specifications for Asynchronous Thread Stack Tracing Faults
 
+When an asynchronous thread crashes, the stack of the thread that submits the asynchronous task is also printed to locate the fault. The call stack of the crash thread and that of the submission thread are separated by **SubmitterStacktrace**. The following is an example process crash log archived by DevEco Studio in FaultLog:
+
+> **NOTE**
+>
+> By default, the asynchronous thread stack tracing functionality is enabled only in the ARM 64-bit system, which can be used to print native stacks for JS crashes.
+>
+> For versions earlier than API version 22, the functionality of submitting asynchronous tasks by third-party and system applications through **libuv** and **ffrt** is enabled only in the debug version by default.
+>
+> Since API version 22, the functionality of submitting asynchronous tasks by third-party applications through **libuv** is enabled by default in both debug and release versions. The functionality of submitting asynchronous tasks by third-party and system applications through **ffrt** is enabled by default only in the debug version.
+The specifications of the **Stacktrace** field are as follows:
+```text
+Stacktrace:
+#00 pc 00000000004d9d4c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::Backtrace(std::__h::basic_ostringstream<char, std::__h::char_traits<char>, std::__h::allocator<char>>&, bool)+92)(723d1618fe2567539bed3038ccfe92d8)
+#01 pc 000000000038ddcc /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::JsStackInfo::BuildJsStackTrace(panda::ecmascript::JSThread*, bool, panda::ecmascript::JSHandle<panda::ecmascript::JSObject> const&, bool, unsigned int)+2952)(723d1618fe2567539bed3038ccfe92d8)
+#02 pc 000000000038c70c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::base::ErrorHelper::ErrorCommonConstructor(panda::ecmascript::EcmaRuntimeCallInfo*, panda::ecmascript::base::ErrorType const&)+1704)(723d1618fe2567539bed3038ccfe92d8)
+#03 pc 000000000038c03c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::builtins::BuiltinsError::ErrorConstructor(panda::ecmascript::EcmaRuntimeCallInfo*)+40)(723d1618fe2567539bed3038ccfe92d8)
+#04 pc 00000000001b5d90 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::ObjectFactory::NewJSError(panda::ecmascript::JSHandle<panda::ecmascript::GlobalEnv> const&, panda::ecmascript::base::ErrorType const&, panda::ecmascript::JSHandle<panda::ecmascript::EcmaString> const&, panda::ecmascript::StackCheck)+984)(723d1618fe2567539bed3038ccfe92d8)
+#05 pc 000000000093274c /system/lib64/platformsdk/libark_jsruntime.so(panda::Exception::Error(panda::ecmascript::EcmaVM const*, panda::Local<panda::StringRef>)+244)(723d1618fe2567539bed3038ccfe92d8)
+#06 pc 0000000000066398 /system/lib64/platformsdk/libace_napi.z.so(napi_throw_error+152)(c91850afe3629242ed12712b76be08f1)
+#07 pc 00000000000020fc /data/storage/el1/bundle/libs/arm64/libentry.so(02cecfd8fd280aeaa1af7b9d1227afeac0ec4356)   <- Exception is thrown
+#08 pc 00000000000890c0 /system/lib64/platformsdk/libruntime.z.so(std::__h::__function::__func<OHOS::AbilityRuntime::OHOSJsEnvironmentImpl::PostTaskToHandler(char const*, void (*)(void*, int), void*, int, int)::$_0, std::__h::allocator<OHOS::AbilityRuntime::OHOSJsEnvironmentImpl::PostTaskToHandler(char const*, void (*)(void*, int), void*, int, int)::$_0>, void ()>::operator()() (.3ec3b6b3a88f13b2aa6c613a7afa022b)+128)(50df26f49d9c067da9cf79b804f136ec)
+========SubmitterStacktrace========    <- After an asynchronous thread crashes, the stack of the thread that submits the asynchronous task is also printed.
+#00 pc 0000000000012cd0 /system/lib64/platformsdk/libuv.so(uv_queue_work+456)(e077582fac1bf7463ca5539c0a2b678a)
+#01 pc 0000000000001fd0 /data/storage/el1/bundle/libs/arm64/libentry.so(02cecfd8fd280aeaa1af7b9d1227afeac0ec4356)
+#02 pc 000000000004d69c /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+220)(c91850afe3629242ed12712b76be08f1)
+#03 pc 0000000000d08e90 /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#04 pc 000000000036ae70 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis2Imm8V8V8V8StwCopy+436)
+#05 at anonymous (entry|entry|1.0.0|src/main/ets/pages/Index.ts:57:79)
+#06 pc 000000000029e144 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::Execute(panda::ecmascript::EcmaRuntimeCallInfo*)+540)(723d1618fe2567539bed3038ccfe92d8)
+#07 pc 0000000000327eac /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::JSFunction::Call(panda::ecmascript::EcmaRuntimeCallInfo*) (.419.extracted)+452)(723d1618fe2567539bed3038ccfe92d8)
+#08 pc 0000000000940c18 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::Call(panda::ecmascript::EcmaVM const*, panda::Local<panda::JSValueRef>, panda::Local<panda::JSValueRef> const*, int)+1988)(723d1618fe2567539bed3038ccfe92d8)
+#09 pc 00000000009ce8d8 /system/lib64/platformsdk/libace_compatible.z.so(OHOS::Ace::Framework::JsiFunction::Call(OHOS::Ace::Framework::JsiRef<OHOS::Ace::Framework::JsiValue>, int, OHOS::Ace::Framework::JsiRef<OHOS::Ace::Framework::JsiValue>*, bool) const+700)(cdb4712f9d1d7fda83faae9d393a244e)
+#10 pc 0000000000972a38 /system/lib64/platformsdk/libace_compatible.z.so(OHOS::Ace::Framework::JsFunction::ExecuteJS(int, OHOS::Ace::Framework::JsiRef<OHOS::Ace::Framework::JsiValue>*, bool)+384)(cdb4712f9d1d7fda83faae9d393a244e)
+#11 pc 0000000000e1f590 /system/lib64/platformsdk/libace_compatible.z.so(OHOS::Ace::Framework::JsClickFunction::Execute(OHOS::Ace::GestureEvent&)+3396)(cdb4712f9d1d7fda83faae9d393a244e)
+#12 pc 0000000001079384 /system/lib64/platformsdk/libace_compatible.z.so(cdb4712f9d1d7fda83faae9d393a244e)
+#13 pc 00000000026e1b28 /system/lib64/platformsdk/libace_compatible.z.so(cdb4712f9d1d7fda83faae9d393a244e)
+#14 pc 0000000000f435a8 /system/lib64/platformsdk/libace_compatible.z.so(OHOS::Ace::NG::TextPattern::ActTextOnClick(OHOS::Ace::GestureEvent&)+164)(cdb4712f9d1d7fda83faae9d393a244e)
+#15 pc 0000000002751134 /system/lib64/platformsdk/libace_compatible.z.so(cdb4712f9d1d7fda83faae9d393a244e)
+```
 
 ### Page switch history
 
-Since API version 21, the **Page switch history** field is used to record the page switch history. A maximum of 10 latest history records can be recorded in the fault log. The format of a record is as follows:
+Since API version 20, the **Page switch history** field is used to record the page switch history. A maximum of 10 latest history records can be recorded in the fault log. The format of a record is as follows:
 ```text
   14:08:30:327 /ets/pages/Index:JsError
        ^             ^            ^
@@ -119,7 +188,7 @@ Since API version 21, the **Page switch history** field is used to record the pa
 
 > **NOTE**
 >
-> The child page's name is available only when it is navigated to through **Navigation**. The page name is defined in the [system routing table](../ui/arkts-navigation-navigation.md#system-routing-table).
+> The child page's name is available only when it is navigated to through **Navigation**.
 >
 > When the application switches between the foreground and background, the corresponding page URL is empty, but **enters foreground** and **leaves foreground** are displayed as special page names.
 >
@@ -178,7 +247,7 @@ at \<Execution method name> (\<Module name|Dependent module name|Version number|
 The following is an example:
 
 
-```
+```text
 at onPageShow (entry|har1|1.0.0|src/main/ets/pages/Index.ts:7:13)
 ```
 
@@ -191,7 +260,8 @@ Format description:
 2. Execution method name: **onPageShow** indicates the name of the calling method that triggers an exception.
 
 3. The structure of the compilation product is as follows:
-   - Compilation product path: For details, see [Sourcemap Format](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713).
+   - Path: For details, see the key field in [Exception Stack Trace Analysis: Sourcemap Format](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713).
+
    - File type: The file name extension is **.ts**. (For .js files, the exception can be located directly without SourceMap mapping.)
 
 4. Row and column number: Colons (:\) are used to separate row and column numbers of the exception.
@@ -209,7 +279,7 @@ at \<Execution method name> \<Dependent module name> (\<Source code path>:\<Line
 The following is an example:
 
 
-```
+```text
 at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 ```
 
@@ -228,3 +298,69 @@ Format description:
    - File type: The file name extension is **.ets**.
 
 5. Row and column number: Colons (:\) are used to separate row and column numbers of the exception.
+
+
+### HybridStack Format
+
+Since API version 22, the cross-language call stack between C++ and JS can be printed in the **HybridStack** of the ARM 64-bit system.
+
+For details about the C++ code stack, see [C++ Exception Code Stack Formats](cppcrash-guidelines.md#common-faults).
+
+For details about the JS call stack, see [JS Exception Code Call Stack Formats](#exception-code-call-stack-formats)
+
+### Promise Stack
+
+The promise stack is disabled by default. Since API version 23, you can run the following command to enable it in ARM64. The setting takes effect for the entire device.
+```cmd
+hdc shell param set persist.ark.properties 0x80105c
+hdc shell reboot
+```
+
+Run the following command to disable the promise stack.
+```cmd
+hdc shell param set persist.ark.properties 0x105c
+hdc shell reboot
+```
+
+By default, an exception thrown in a promise task does not cause a JS crash. However, you can capture a rejected promise using [ErrorManager unhandledRejection](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12) and then throw the exception to trigger a JS crash.
+
+When the promise stack is enabled, if an exception is thrown in a promise task and a JS crash occurs, the JS crash log displays the stack information about the promise task creation.
+
+The format of the promise stack in the JS crash log is as follows:
+
+```text
+Stacktrace:
+...
+HybridStack:
+...
+AsyncStack: <- After the promise stack is enabled, the stack information when the promise task is created is displayed.
+    submitter#00: <- Each promise task corresponds to a submitter. The stack of a submitter supports a maximum of 48 backtracing layers.
+    #00 pc 0000000000266a0c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #01 pc 000000000020ba3c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #02 pc 0000000000dfd330 /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+    #03 pc 00000000004533d8 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis1Imm8V8V8StwCopy+388)
+    #04 at bar entry (entry/src/main/ets/pages/Index.ets:36:29)
+    #05 at foo entry (entry/src/main/ets/pages/Index.ets:33:3)
+    #06 pc 000000000083bf64 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #07 pc 00000000007f42f8 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #08 pc 00000000007e8e88 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #09 pc 0000000000dfcebc /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+484)
+    #10 pc 0000000000dfcd18 /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+64)
+    ...
+    submitter#01: <- Multiple submitters indicate that asynchronous nesting exists. A maximum of eight submitters are supported.
+    #00 pc 0000000000266a0c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #01 pc 0000000000ad9e4c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #02 pc 0000000000dfaa8c /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+44)
+    #03 pc 0000000000518bcc /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+68)
+    #04 at foo entry (entry/src/main/ets/pages/Index.ets:32:3)
+    #05 at anonymous entry (entry/src/main/ets/pages/Index.ets:23:11)
+    #06 pc 0000000000801f5c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #07 pc 0000000000803470 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::Call(panda::ecmascript::EcmaVM const*, panda::Local<panda::JSValueRef>, panda::Local<panda::JSValueRef> const*, int)+548)(e0c4624849e028140f5bff13122863b7)
+    #08 pc 0000000000ad79e8 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    #09 pc 0000000000e98440 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    #10 pc 00000000013208a0 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    ...
+
+HiLog:
+...
+```

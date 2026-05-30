@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 input是交互式组件，用于接收用户数据。其类型可设置为日期、多选框和按钮等。具体用法请参考[input API](../reference/apis-arkui/arkui-js/js-components-basic-input.md)。
 
@@ -56,7 +56,7 @@ input是交互式组件，用于接收用户数据。其类型可设置为日期
     <input onchange="checkboxOnChange" checked="true" type="checkbox"></input>
   </div>
   <div class="content">
-    <input type="date" class="flex" placeholder="Enter data"></input>
+    <input type="date" class="flex" placeholder="Enter date"></input>
   </div>
 </div>
 ```
@@ -110,7 +110,7 @@ export default {
 
 > **说明：**
 >
-> 仅当input类型为checkbox和radio时，当前组件选中的属性是checked才生效，默认值为false。
+> 仅当input类型为checkbox或radio时，当前组件选中的属性是checked才生效，默认值为false。
 
 
 ## 事件绑定
@@ -234,7 +234,7 @@ import promptAction from '@ohos.promptAction'
 
 > **说明：** 
 >
-> 该方法在input类型为text、email、date、time、number和password时生效。
+> showError方法仅在input类型为text、email、date、time、number和password时生效。
 
 
 ## 场景示例
@@ -255,7 +255,7 @@ import promptAction from '@ohos.promptAction'
   </div>    
   <div class="label-item">        
     <label class="lab" target="input3">date:</label>        
-    <input class="flex" id="input3" type="date" placeholder="Enter data" />    
+    <input class="flex" id="input3" type="date" placeholder="Enter date" />    
   </div>    
   <div class="label-item">        
     <label class="lab" target="input4">time:</label>        

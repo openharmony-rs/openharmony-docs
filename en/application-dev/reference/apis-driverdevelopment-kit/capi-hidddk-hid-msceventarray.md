@@ -1,10 +1,14 @@
 # Hid_MscEventArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Hid_MscEventArray {...} Hid_MscEventArray
+```
 
 ## Overview
 
@@ -22,5 +26,5 @@ Defines an array of miscellaneous events.
 
 | Name| Description|
 | -- | -- |
-| Hid_MscEvent* hidMscEvent | Array of miscellaneous events.|
-| uint16_t length | Length of the array.|
+| Hid_MscEvent* hidMscEvent | Miscellaneous event.|
+| uint16_t length | Valid length of an array.|

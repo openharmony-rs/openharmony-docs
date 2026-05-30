@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 定义环境变化信息。Configuration是接口定义，仅做字段声明。
 
@@ -32,7 +32,7 @@ import Configuration from '@ohos.application.Configuration';
 具体字段描述参考ohos.application.Configuration.d.ts文件
 
 **示例：**
-  ```ts
+```ts
 import UIAbility from '@ohos.app.ability.UIAbility';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import EnvironmentCallback from '@ohos.app.ability.EnvironmentCallback';
@@ -41,39 +41,39 @@ import Window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  }
+
+  onDestroy() {
+  }
+
+  onWindowStageCreate(windowStage: Window.WindowStage) {
+    let envCallback: EnvironmentCallback = {
+      onConfigurationUpdated(config) {
+        console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
+        let language = config.language;
+        let colorMode = config.colorMode;
+      },
+      onMemoryLevel(level) {
+        console.info(`onMemoryLevel level: ${JSON.stringify(level)}`);
+      }
+    };
+
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.on('environment', envCallback);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
 
-    onDestroy() {
-    }
-
-    onWindowStageCreate(windowStage: Window.WindowStage) {
-        let envCallback: EnvironmentCallback = {
-            onConfigurationUpdated(config) {
-                console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
-                let language = config.language;
-                let colorMode = config.colorMode;
-            },
-            onMemoryLevel(level){
-                console.log(`onMemoryLevel level: ${JSON.stringify(level)}`);
-            }
-        };
-
-        let applicationContext = this.context.getApplicationContext();
-        try {
-            applicationContext.on('environment',envCallback);
-        } catch (paramError) {
-            console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-        }
-
-        windowStage.loadContent('pages/index', (err, data) => {
-            if (err.code) {
-                console.error(`failed to load the content, error: ${JSON.stringify(err)}`);
-                return;
-            }
-            console.info(`Succeeded in loading the content, data: ${JSON.stringify(data)}`);
-        });
-    }
+    windowStage.loadContent('pages/index', (err, data) => {
+      if (err.code) {
+        console.error(`failed to load the content, error: ${JSON.stringify(err)}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content, data: ${JSON.stringify(data)}`);
+    });
+  }
 }
-  ```
+```
 

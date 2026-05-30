@@ -1,5 +1,12 @@
 # net_ssl_c_type.h
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ## Overview
 
 Defines data structures for the C APIs of the SSL/TLS certificate chain verification module.
@@ -37,7 +44,7 @@ Defines data structures for the C APIs of the SSL/TLS certificate chain verifica
 
 ### NetStack_CertType
 
-```
+```c
 enum NetStack_CertType
 ```
 
@@ -55,7 +62,7 @@ Certificate type enums.
 
 ### NetStack_CertificatePinningKind
 
-```
+```c
 enum NetStack_CertificatePinningKind
 ```
 
@@ -71,7 +78,7 @@ Certificate pinning type enums.
 
 ### NetStack_HashAlgorithm
 
-```
+```c
 enum NetStack_HashAlgorithm
 ```
 

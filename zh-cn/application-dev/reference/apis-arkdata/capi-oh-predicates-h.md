@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
@@ -47,7 +47,7 @@
 
 ### OH_OrderType
 
-```
+```c
 enum OH_OrderType
 ```
 
@@ -67,7 +67,7 @@ enum OH_OrderType
 
 ### OH_Predicates_NotLike()
 
-```
+```c
 int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)
 ```
 
@@ -94,7 +94,7 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 
 ### OH_Predicates_Glob()
 
-```
+```c
 int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)
 ```
 
@@ -121,7 +121,7 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 
 ### OH_Predicates_NotGlob()
 
-```
+```c
 int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)
 ```
 
@@ -148,7 +148,7 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 
 ### OH_Predicates_Having()
 
-```
+```c
 int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, const OH_Data_Values *values)
 ```
 

@@ -1,8 +1,17 @@
 # image_processing.h
 
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @xjtu_liushang-->
+<!--Designer: @yangwang01-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
-The **image_processing.h** file declares the image processing functions. It provides capabilities such as Color Space Conversion (CSC), metadata generation, and image scaling.
+The file declares the image processing functions. It provides capabilities such as Color Space Conversion (CSC), metadata generation, and image scaling.
+
+**File to include**: <multimedia/video_processing_engine/image_processing.h>
 
 **Library**: libimage_processing.so
 
@@ -20,25 +29,25 @@ The **image_processing.h** file declares the image processing functions. It prov
 | -- | -- |
 | [ImageProcessing_ErrorCode OH_ImageProcessing_InitializeEnvironment(void)](#oh_imageprocessing_initializeenvironment) | Initializes the global environment of the image processing module.<br>This function is optional. Generally, this function is called when the main process is started. It is used to initialize the global environment of the image processing module and reduce the time consumed by [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create). It must be used in pair with [OH_ImageProcessing_DeinitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_deinitializeenvironment), which is used to deinitialize the global environment. This function can be used to check whether the GPU works properly.|
 | [ImageProcessing_ErrorCode OH_ImageProcessing_DeinitializeEnvironment(void)](#oh_imageprocessing_deinitializeenvironment) | Deinitializes the global environment of the image processing module.<br>This function must be called after [OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment) is called. Generally, this function is called when the main process is about to exit. Do not call this function when an image processing instance exists or when [OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment) is not called.|
-| [bool OH_ImageProcessing_IsColorSpaceConversionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo)](#oh_imageprocessing_iscolorspaceconversionsupported) | Checks whether CSC is supported for an image.|
-| [bool OH_ImageProcessing_IsCompositionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* sourceGainmapInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo)](#oh_imageprocessing_iscompositionsupported) | Checks whether a dual-layer HDR image can be converted into a single-layer HDR image.|
-| [bool OH_ImageProcessing_IsDecompositionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo,const ImageProcessing_ColorSpaceInfo* destinationGainmapInfo)](#oh_imageprocessing_isdecompositionsupported) | Checks whether a single-layer HDR image can be converted into a dual-layer HDR image.|
+| [bool OH_ImageProcessing_IsColorSpaceConversionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo, const ImageProcessing_ColorSpaceInfo* destinationImageInfo)](#oh_imageprocessing_iscolorspaceconversionsupported) | Checks whether CSC is supported for an image.|
+| [bool OH_ImageProcessing_IsCompositionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo, const ImageProcessing_ColorSpaceInfo* sourceGainmapInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo)](#oh_imageprocessing_iscompositionsupported) | Checks whether a dual-layer HDR image can be converted into a single-layer HDR image.|
+| [bool OH_ImageProcessing_IsDecompositionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo, const ImageProcessing_ColorSpaceInfo* destinationImageInfo, const ImageProcessing_ColorSpaceInfo* destinationGainmapInfo)](#oh_imageprocessing_isdecompositionsupported) | Checks whether a single-layer HDR image can be converted into a dual-layer HDR image.|
 | [bool OH_ImageProcessing_IsMetadataGenerationSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo)](#oh_imageprocessing_ismetadatagenerationsupported) | Checks whether metadata generation is supported for an image.|
 | [ImageProcessing_ErrorCode OH_ImageProcessing_Create(OH_ImageProcessing** imageProcessor, int32_t type)](#oh_imageprocessing_create) | Creates an image processing instance.|
 | [ImageProcessing_ErrorCode OH_ImageProcessing_Destroy(OH_ImageProcessing* imageProcessor)](#oh_imageprocessing_destroy) | Destroys an image processing instance.|
-| [ImageProcessing_ErrorCode OH_ImageProcessing_SetParameter(OH_ImageProcessing* imageProcessor,const OH_AVFormat* parameter)](#oh_imageprocessing_setparameter) | Sets a parameter for the image processing module. This function sets the parameter by key.|
-| [ImageProcessing_ErrorCode OH_ImageProcessing_GetParameter(OH_ImageProcessing* imageProcessor,OH_AVFormat* parameter)](#oh_imageprocessing_getparameter) | Obtains a parameter of the image processing module. This function obtains the parameter by key.|
-| [ImageProcessing_ErrorCode OH_ImageProcessing_ConvertColorSpace(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage)](#oh_imageprocessing_convertcolorspace) | Converts the color space for a single-layer image. This function enables CSC from HDR images to SDR images, CSC from SDR images to HDR images, CSC from SDR images to SDR images, and CSC from HDR images to SDR images.|
-| [ImageProcessing_ErrorCode OH_ImageProcessing_Compose(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* sourceGainmap, OH_PixelmapNative* destinationImage)](#oh_imageprocessing_compose) | Converts a dual-layer HDR image into a single-layer HDR image. This function is used to generate an output image based on an input image and input gain map.|
-| [ImageProcessing_ErrorCode OH_ImageProcessing_Decompose(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage, OH_PixelmapNative* destinationGainmap)](#oh_imageprocessing_decompose) | Converts a single-layer HDR image into a double-layer HDR image. This function is used to generate an output image and output gain map based on an input image.|
-| [ImageProcessing_ErrorCode OH_ImageProcessing_GenerateMetadata(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage)](#oh_imageprocessing_generatemetadata) | Generates metadata for an HDR image.  |
-| [ImageProcessing_ErrorCode OH_ImageProcessing_EnhanceDetail(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage)](#oh_imageprocessing_enhancedetail) | Enhances the image definition and details. This function performs necessary scaling operations on the source image based on the preset sizes of the input and output images to generate the target image. It uses multiple scaling methods to balance performance and image quality.|
+| [ImageProcessing_ErrorCode OH_ImageProcessing_SetParameter(OH_ImageProcessing* imageProcessor, const OH_AVFormat* parameter)](#oh_imageprocessing_setparameter) | Sets a parameter for the image processing module. This function sets the parameter by key.|
+| [ImageProcessing_ErrorCode OH_ImageProcessing_GetParameter(OH_ImageProcessing* imageProcessor, OH_AVFormat* parameter)](#oh_imageprocessing_getparameter) | Obtains a parameter of the image processing module. This function obtains the parameter by key.|
+| [ImageProcessing_ErrorCode OH_ImageProcessing_ConvertColorSpace(OH_ImageProcessing* imageProcessor, OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage)](#oh_imageprocessing_convertcolorspace) | Converts the color space for a single-layer image. This function enables CSC from HDR images to SDR images, CSC from SDR images to HDR images, CSC from SDR images to SDR images, and CSC from HDR images to SDR images.|
+| [ImageProcessing_ErrorCode OH_ImageProcessing_Compose(OH_ImageProcessing* imageProcessor, OH_PixelmapNative* sourceImage, OH_PixelmapNative* sourceGainmap, OH_PixelmapNative* destinationImage)](#oh_imageprocessing_compose) | Converts a dual-layer HDR image into a single-layer HDR image. This function is used to generate an output image based on an input image and input gain map.|
+| [ImageProcessing_ErrorCode OH_ImageProcessing_Decompose(OH_ImageProcessing* imageProcessor, OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage, OH_PixelmapNative* destinationGainmap)](#oh_imageprocessing_decompose) | Converts a single-layer HDR image into a double-layer HDR image. This function is used to generate an output image and output gain map based on an input image.|
+| [ImageProcessing_ErrorCode OH_ImageProcessing_GenerateMetadata(OH_ImageProcessing* imageProcessor, OH_PixelmapNative* sourceImage)](#oh_imageprocessing_generatemetadata) | Generates metadata for an HDR image.  |
+| [ImageProcessing_ErrorCode OH_ImageProcessing_EnhanceDetail(OH_ImageProcessing* imageProcessor, OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage)](#oh_imageprocessing_enhancedetail) | Enhances the image definition and details. This function performs necessary scaling operations on the source image based on the preset sizes of the input and output images to generate the target image. It uses multiple scaling methods to balance performance and image quality.|
 
 ## Function Description
 
 ### OH_ImageProcessing_InitializeEnvironment()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_InitializeEnvironment(void)
 ```
 
@@ -58,7 +67,7 @@ This function is optional. Generally, this function is called when the main proc
 
 ### OH_ImageProcessing_DeinitializeEnvironment()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_DeinitializeEnvironment(void)
 ```
 
@@ -78,7 +87,7 @@ This function must be called after [OH_ImageProcessing_InitializeEnvironment](ca
 
 ### OH_ImageProcessing_IsColorSpaceConversionSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsColorSpaceConversionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo)
 ```
 
@@ -100,11 +109,11 @@ Checks whether CSC is supported for an image.
 
 | Type| Description|
 | -- | -- |
-| bool | Check result. The value **true** is returned if CSC is supported.<br> **false** is returned otherwise.|
+| bool | Check result for the support of CSC. **true** if supported, **false** otherwise.|
 
 ### OH_ImageProcessing_IsCompositionSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsCompositionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* sourceGainmapInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo)
 ```
 
@@ -127,11 +136,11 @@ Checks whether a dual-layer HDR image can be converted into a single-layer HDR i
 
 | Type| Description|
 | -- | -- |
-| bool | Check result. The value **true** is returned if such a conversion is supported.<br> **false** is returned otherwise.|
+| bool | Check result for the support of a conversion from a dual-layer HDR image into a single-layer HDR image. **true** if supported, **false** otherwise.|
 
 ### OH_ImageProcessing_IsDecompositionSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsDecompositionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo,const ImageProcessing_ColorSpaceInfo* destinationGainmapInfo)
 ```
 
@@ -154,11 +163,11 @@ Checks whether a single-layer HDR image can be converted into a dual-layer HDR i
 
 | Type| Description|
 | -- | -- |
-| bool | Check result. The value **true** is returned if such a conversion is supported.<br> **false** is returned otherwise.|
+| bool | Check result for the support of a conversion from a single-layer HDR image into a dual-layer HDR image. **true** if supported, **false** otherwise.|
 
 ### OH_ImageProcessing_IsMetadataGenerationSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsMetadataGenerationSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo)
 ```
 
@@ -179,11 +188,11 @@ Checks whether metadata generation is supported for an image.
 
 | Type| Description|
 | -- | -- |
-| bool | Check result. The value **true** is returned if metadata generation is supported.<br> **false** is returned otherwise.|
+| bool | Check result for the support of metadata generation. **true** if supported, **false** otherwise.|
 
 ### OH_ImageProcessing_Create()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Create(OH_ImageProcessing** imageProcessor, int32_t type)
 ```
 
@@ -209,7 +218,7 @@ Creates an image processing instance.
 
 ### OH_ImageProcessing_Destroy()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Destroy(OH_ImageProcessing* imageProcessor)
 ```
 
@@ -234,7 +243,7 @@ Destroys an image processing instance.
 
 ### OH_ImageProcessing_SetParameter()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_SetParameter(OH_ImageProcessing* imageProcessor,const OH_AVFormat* parameter)
 ```
 
@@ -250,7 +259,7 @@ Sets a parameter for the image processing module. This function sets the paramet
 | Name| Description|
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | Pointer to an image processing instance.|
-| const [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* parameter | Pointer to the parameter.|
+| const [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* parameter | Pointer to the parameter.|
 
 **Returns**
 
@@ -260,7 +269,7 @@ Sets a parameter for the image processing module. This function sets the paramet
 
 ### OH_ImageProcessing_GetParameter()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_GetParameter(OH_ImageProcessing* imageProcessor,OH_AVFormat* parameter)
 ```
 
@@ -276,7 +285,7 @@ Obtains a parameter of the image processing module. This function obtains the pa
 | Name| Description|
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | Pointer to an image processing instance.|
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* parameter | Pointer to the parameter.|
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* parameter | Pointer to the parameter.|
 
 **Returns**
 
@@ -286,7 +295,7 @@ Obtains a parameter of the image processing module. This function obtains the pa
 
 ### OH_ImageProcessing_ConvertColorSpace()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_ConvertColorSpace(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage)
 ```
 
@@ -302,8 +311,8 @@ Converts the color space for a single-layer image. This function enables CSC fro
 | Name| Description|
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | Pointer to an image processing instance, which is created by **IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION**.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | Pointer to the input image.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | Pointer to the output image.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | Pointer to the input image. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | Pointer to the output image. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
 
 **Returns**
 
@@ -313,7 +322,7 @@ Converts the color space for a single-layer image. This function enables CSC fro
 
 ### OH_ImageProcessing_Compose()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Compose(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* sourceGainmap, OH_PixelmapNative* destinationImage)
 ```
 
@@ -329,9 +338,9 @@ Converts a dual-layer HDR image into a single-layer HDR image. This function is 
 | Name| Description|
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | Pointer to an image processing instance, which is created by **IMAGE_PROCESSING_TYPE_COMPOSITION**.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | Pointer to the input image.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceGainmap | Pointer to the input gain map.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | Pointer to the output image.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | Pointer to the input image. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceGainmap | Pointer to the input gain map. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | Pointer to the output image. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
 
 **Returns**
 
@@ -341,7 +350,7 @@ Converts a dual-layer HDR image into a single-layer HDR image. This function is 
 
 ### OH_ImageProcessing_Decompose()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Decompose(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage, OH_PixelmapNative* destinationGainmap)
 ```
 
@@ -357,9 +366,9 @@ Converts a single-layer HDR image into a double-layer HDR image. This function i
 | Name| Description|
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | Pointer to an image processing instance, which is created by **IMAGE_PROCESSING_TYPE_DECOMPOSITION**.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | Pointer to the input image.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | Pointer to the output image.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationGainmap | Pointer to the output gain map.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | Pointer to the input image. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | Pointer to the output image. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationGainmap | Pointer to the output gain map. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
 
 **Returns**
 
@@ -369,7 +378,7 @@ Converts a single-layer HDR image into a double-layer HDR image. This function i
 
 ### OH_ImageProcessing_GenerateMetadata()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_GenerateMetadata(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage)
 ```
 
@@ -385,7 +394,7 @@ Generates metadata for an HDR image. This function is used to generate metadata 
 | Name| Description|
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | Pointer to an image processing instance, which is created by **IMAGE_PROCESSING_TYPE_METADATA_GENERATION**.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | Pointer to the input image.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | Pointer to the input image. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
 
 **Returns**
 
@@ -395,7 +404,7 @@ Generates metadata for an HDR image. This function is used to generate metadata 
 
 ### OH_ImageProcessing_EnhanceDetail()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_EnhanceDetail(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage)
 ```
 
@@ -411,8 +420,8 @@ Enhances the image definition and details. This function performs necessary scal
 | Name| Description|
 | -- | -- |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | Pointer to an image processing instance, which is created by **IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER**.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | Pointer to the input image.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | Pointer to the output image.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* sourceImage | Pointer to the input image. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* destinationImage | Pointer to the output image. The OH_PixelmapNative it points to must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
 
 **Returns**
 

@@ -4,7 +4,7 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 To address challenges of large and complex application development—such as increased package size due to multiple copies of code during compilation, file dependencies, difficulties in sharing code and resources, and pollution of singletons and global variables—ArkTS supports modular compilation, packaging, and running. This approach not only streamlines the development process but also facilitates easier code writing and feature maintenance.
 
@@ -20,7 +20,7 @@ For example, in the figure below, each parent node loads its corresponding child
 
 ![image_0000002043487154](figures/image_0000002043487154.png)
 
-Here, file A is referred to as the entry file, which is the starting point for execution. Certain built-in interfaces for loading content, such as [windowStage.loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) and [Navigation](../ui/arkts-navigation-navigation.md), will also be executed as entry files, especially when these files are not loaded using the **import** syntax.
+Here, file A is referred to as the entry file, which is the starting point for execution. Certain built-in interfaces for loading content, such as [windowStage.loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) and **Navigation**, will also be executed as entry files, especially when these files are not loaded using the **import** syntax.
 
 Starting from file A, a complete set of files will be loaded, including file A, files on which file A depends, and subsequently dependent files, until the leaf nodes of each branch is reached.
 
@@ -71,7 +71,7 @@ JavaScript Object Notation (JSON) is a lightweight data interchange format that 
 
 JSON files can only be imported using the **default** method, as shown below:
 
-```
+``` TypeScript
 import data from './example.json'
 ```
 
@@ -85,13 +85,11 @@ The syntax specifications for importing and exporting the native module (.so) ar
 
 Example:
 
-```
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+``` TypeScript
 // index.d.ts corresponding to libentry.so
 export const add: (a: number, b: number) => number;
 ```
 
-```
-// test.ets
-import { add } from 'libentry.so'
-add(2, 3)
-```
+<!-- @[name_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImport.ets) -->       

@@ -1,5 +1,16 @@
 # AbilityRuntime_StartOptions
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo-->
+<!--Designer: @ccllee1-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
+```c
+typedef struct AbilityRuntime_StartOptions AbilityRuntime_StartOptions
+```
+
 ## 概述
 
 StartOptions数据结构。

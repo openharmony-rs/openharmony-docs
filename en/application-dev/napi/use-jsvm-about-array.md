@@ -8,15 +8,15 @@
 
 ## Introduction
 
-When the JSVM-API interface is used for array-related development, related interfaces can be called in the JSVM module to directly operate and process arrays in JavaScript.
+JSVM-API provides APIs for directly managing JavaScript (JS) arrays.
 
 ## Basic Concepts
 
-JSVM-API can be used to create, access, modify, and traverse arrays. Before using JSVM-API to work with arrays, it's helpful if you understand the following concepts:
+JSVM-API can be used to create, access, modify, and traverse arrays. Before using JSVM-API to work with arrays, it is helpful if you understand the following concepts:
 
 - Array creation: You can use **OH_JSVM_CreateArray** to create an array and pass it to the JS layer.
-- Array-related operations: You can use the APIs provides by the JSVM module to obtain the length of a JS array, retrieve the element at the specified index, and set the element value at the specified index.
-- **TypedArray**: TypedArray in JavaScript is a kind of array data view used to describe binary data. It can be considered as a class array data view of a specified element type. TypedArray does not have a direct constructor, but can be created through its child class constructor. The subclasses include Int8Array, Uint8Array, Uint8ClampedArray, Int16Array, and Int32Array.
+- Array-related operations: You can use the APIs provides by the JSVM module to obtain the length of a JS array, retrieve the element at the specified index, and set the element value of the specified index.
+- **TypedArray**: A **TypedArray** object in JS is an array-like view of an underlying binary data buffer. It can be regarded as an array-like data view of the specified type. There is no constructor for **TypedArray** objects, but they can be constructed by their child class constructors. The child classes of **TypedArray** include **Int8Array**, **Uint8Array**, **Uint8ClampedArray**, **Int16Array**, and **Int32Array**.
 - **ArrayBuffer**: **ArrayBuffer** is a data struct used to represent a binary data buffer of fixed length.
 - **DataView**: **DataView** is a JS view that allows a variety of number types to be read and written in an **ArrayBuffer** object.
 
@@ -27,7 +27,7 @@ JSVM-API can be used to create, access, modify, and traverse arrays. Before usin
 | ---------------------------- | ------------------------------------------ |
 |OH_JSVM_CreateArray | Creates a JS array object.|
 |OH_JSVM_CreateArrayWithLength | Creates a JS array object of the specified length.|
-|OH_JSVM_CreateTypedarray | Creates a JavaScript TypedArray object on an existing ArrayBuffer. The TypedArray object provides a view similar to an array. Each element has the same binary scalar data type. Note that the value of (length * size_of_element) + byte_offset cannot exceed the size of the input array (in bytes). Otherwise, a RangeError exception occurs.|
+|OH_JSVM_CreateTypedarray | Creates a JS **TypedArray** object for an **ArrayBuffer**. The TypedArray object provides an array-like view, where each element has the same binary scalar data type. Note that the sum of **length** × **size_of_element** and **byte_offset** must be less than or equal to the array size (in bytes). Otherwise, a **RangeError** exception will be thrown.|
 |OH_JSVM_CreateDataview | Creates a JS **DataView** object based on an existing **ArrayBuffer**. The **DataView** object provides an array-like view on the underlying data buffer. The **ArrayBuffer** allows elements of different sizes and types. <br>The sum of **byte_length** and **byte_offset** must be less than or equal to the array size (in bytes). Otherwise, a **RangeError** exception will be thrown.|
 |OH_JSVM_GetArrayLength | Obtains the length of an array.|
 |OH_JSVM_GetTypedarrayInfo | Obtains information about a **TypedArray** object.|
@@ -96,7 +96,7 @@ const char *srcCallNative = R"JS(
 <!-- @[oh_jsvm_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM CreateArray success
 ```
 ### OH_JSVM_CreateArrayWithLength
@@ -157,7 +157,7 @@ testCreateArrayWithLength(num);
 <!-- @[oh_jsvm_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarraywithlength/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM CreateArrayWithLength success
 ```
 ### OH_JSVM_CreateTypedarray
@@ -261,7 +261,7 @@ createTypedArray(type.INT32_ARRAY);
 <!-- @[oh_jsvm_create_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createtypedarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM CreateTypedArray success
 JSVM CreateTypedArray success
 ```
@@ -366,7 +366,7 @@ const char *srcCallNative = R"JS(
 <!-- @[oh_jsvm_create_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createdataview/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 CreateDataView success, returnLength: 12
 JSVM CreateDataView success, isArraybuffer: 1
 JSVM CreateDataView success, returnOffset: 4
@@ -429,7 +429,7 @@ getArrayLength(data);
 <!-- @[oh_jsvm_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getarraylength/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM length: 6
 ```
 ### OH_JSVM_GetTypedarrayInfo
@@ -544,7 +544,7 @@ getTypedArrayInfo(new Int8Array(1), 3);
 <!-- @[oh_jsvm_get_typedarray_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/gettypedarrayinfo/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM GetTypedArrayInfo success, JSVM_INT8_ARRAY: 1
 JSVM GetTypedArrayInfo success, length: 5
 JSVM GetTypedArrayInfo success, isArrayBuffer: 1
@@ -653,7 +653,7 @@ getDataViewInfo(data, isarraybuffer);
 <!-- @[oh_jsvm_get_dataview_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getdataviewinfo/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM GetDataViewInfo success, byteLength: 2
 JSVM GetDataViewInfo fail
 JSVM GetDataViewInfo success, isArrayBuffer: 1
@@ -705,7 +705,7 @@ isArray(data);
 <!-- @[oh_jsvm_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM IsArray success, IsArray: 1
 ```
 ### OH_JSVM_SetElement
@@ -754,7 +754,7 @@ setElement(data, 3, undefined);
 <!-- @[oh_jsvm_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/setelement/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM SetElement success
 ```
 ### OH_JSVM_GetElement
@@ -805,7 +805,7 @@ getElement(arr, 3);
 <!-- @[oh_jsvm_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getelement/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM GetElement success
 ```
 ### OH_JSVM_HasElement
@@ -860,7 +860,7 @@ hasElement(arr, 4);
 <!-- @[oh_jsvm_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/haselement/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM hasElement: 1
 JSVM hasElement: 0
 ```
@@ -915,7 +915,7 @@ deleteElement(arr, 0);
 <!-- @[oh_jsvm_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/deleteelement/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM DeleteElement: 1
 ```
 ### OH_JSVM_IsDataview
@@ -965,12 +965,12 @@ isDataView(dataView);
 <!-- @[oh_jsvm_is_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isdataview/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM IsDataView: 1
 ```
 ### OH_JSVM_IsTypedarray
 
-Use **OH_JSVM_IsArraybuffer** to check whether a JS object is an **TypedArray** object.
+Use **OH_JSVM_IsTypedarray** to check whether a JS object is an **TypedArray** object.
 
 CPP code:
 
@@ -1012,6 +1012,6 @@ isTypedarray(new Uint16Array([1, 2, 3, 4]));
 <!-- @[oh_jsvm_is_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/istypedarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM IsTypedarray: 1
 ```

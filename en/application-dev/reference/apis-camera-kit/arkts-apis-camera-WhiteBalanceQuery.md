@@ -4,14 +4,14 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+WhiteBalanceQuery provides APIs to check whether a white balance mode is supported and obtain the white balance mode range supported.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 20.
-
-WhiteBalanceQuery provides APIs to check whether a white balance mode is supported and obtain the white balance mode range supported.
 
 ## Modules to Import
 
@@ -39,7 +39,7 @@ Checks whether a white balance mode is supported.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of the white balance mode. **true** if supported, **false** otherwise.|
+| boolean    | Check result for the support of the white balance mode. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -82,7 +82,7 @@ Obtains the range of white balance values in manual white balance mode.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| Array\<number\>   | Range of white balance values, for example, [2800, ...,10000], in units of K (Kelvin). The actual value depends on the bottom-layer capability.|
+| Array\<number\>   | Range of white balance values, for example, [2800, ...,10000], in units of K (Kelvin). The actual value depends on the bottom-layer capability. If the API call fails, undefined is returned.|
 
 **Error codes**
 

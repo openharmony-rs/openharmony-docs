@@ -7,11 +7,11 @@
 <!--Tester: @guoshengbang-->
 <!--Adviser: @RayShih-->
 
-The OS provides two printing methods:
+OpenHarmony provides two printing methods:
 
-[Method 1](#3-method-1-starting-the-print-preview-page-to-send-print-jobs): An application calls an API to start the system print preview page and sends a print job for the rendered PDF file to a printer. This method is suitable for applications that need to quickly print files using system capabilities.
+[Method 1](#step-3-starting-the-print-preview-page-to-send-print-jobs): An application calls an API to start the system print preview page and sends a print job for the rendered PDF file to a printer. This method is applicable to applications that require printing functionality but for which developers do not wish to develop a preview page.
 
-[Method 2](#4-method-2-discovering-and-connecting-to-printers-to-send-print-jobs): An application calls the print APIs to discover and connect to printers and sends print jobs. This method is suitable for applications that have their own print preview pages. The applications can discover printers, obtain the printer capabilities, and construct a print job.
+[Method 2](#step-4-discovering-and-connecting-to-printers-to-send-print-jobs): An application calls the print APIs to discover and connect to printers and sends print jobs. This method is applicable to applications that have a developed preview page. Applications can call APIs to discover printers, obtain the printer capabilities, and construct a print job.
 
 > **NOTE**
 >
@@ -19,11 +19,10 @@ The OS provides two printing methods:
 > 
 > When the print service is no longer used, call **OH_Print_Release()** to release the print client resources and cancel event subscription.
 
-   
 
 ## How to Develop
 
-### 1. Including header files.
+### Step 1: Including header files.
 
 ```c++
 #include <cstdint>
@@ -36,7 +35,7 @@ The OS provides two printing methods:
 #include "BasicServicesKit/ohprint.h"
 ```
 
-### 2. Adding dynamic link libraries to the CMake script.
+### Step 2: Adding Dynamic Link Libraries to the CMake Script
 
 ```txt
 target_link_libraries(entry PUBLIC
@@ -46,10 +45,11 @@ target_link_libraries(entry PUBLIC
 )
 ```
 
-### 3. Method 1: Starting the print preview page to send print jobs.
+### Step 3: Starting the Print Preview Page to Send Print Jobs
 
 ```ts
 import { Context } from '@kit.AbilityKit';
+import testNapi from 'libentry.so';
 
 @Entry
 @Component
@@ -62,7 +62,7 @@ struct Index {
                     console.error('get fileUri or context failed');
                     return;
                 }
-                getContext(ctx);                                 // Pass the context to the C++ side.
+                testNapi.SetContext(ctx);                                 // Pass the context to the C++ side.
             });
     }
 }
@@ -70,20 +70,20 @@ struct Index {
 
 ```c++
 // Send the print task to the printer through system.
-static void* context;
-static char* currentJobId;
+static void* g_context;
+static char* g_currentJobId;
 
 // Initialize the print service.
 Print_ErrorCode ret = OH_Print_Init();
 
-static napi_value getContext(napi_env env, napi_callback_info info)
+static napi_value SetContext(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value argv[1] = {nullptr};
     // Assume that napi_get_cb_info is returned properly.
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     // Save the context for future use.
-    napi_status ret = napi_unwrap(env, argv[0], &context);
+    napi_status ret = napi_unwrap(env, argv[0], &g_context);
     return nullptr;
 }
 
@@ -95,7 +95,7 @@ static void StartLayoutWriteCb(const char *jobId,
                                 Print_WriteResultCallback writeCallback)
 {
     // Cache the unique task ID.
-    currentJobId = jobId;
+    g_currentJobId = jobId;
     // Implement WriteFile() to obtain the print parameters before and after modification, render the file to be printed, and write data using a fd, for example, color mode or page number.
     uint32_t retCode = WriteFile(fd, oldAttrs, newAttrs);
     // Notify the system that the file has been written.
@@ -112,13 +112,13 @@ static void JobStateChangedCb(const char *jobId, uint32_t state)
 // Call the print API to display the print preview page.
 char printJobName[] = "fileName";
 Print_PrintDocCallback printDocCallback = { StartLayoutWriteCb, JobStateChangedCb };
-Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName, printDocCallback, context);
+Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName, printDocCallback, g_context);
 
 // Release resources when the print service is no longer used.
 OH_Print_Release()
 ```
 
-### 4. Method 2: Discovering and connecting to printers to send print jobs.
+### Step 4: Discovering and Connecting to Printers to Send Print Jobs
 
 ```c++
 // Initialize the print service.

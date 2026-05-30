@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_ClientCert {...} Http_ClientCert
+```
+
 ## Overview
 
 Defines the client certificate sent to a remote server, which will be used by the server to verify the identity of the client.

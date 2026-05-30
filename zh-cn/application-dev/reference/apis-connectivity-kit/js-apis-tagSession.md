@@ -15,7 +15,7 @@
 
 > **注意：**
 >
-> 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap#syscap开发指导)。
+> 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap)。
 
 ## **导入模块**
 
@@ -499,7 +499,7 @@ try {
 
 sendData(data: number[]): Promise<number[]>
 
-发送指令到Tag上，使用Promise方式作为异步方法。
+发送指令到Tag上。使用Promise异步回调。
 
 > **说明：**
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[tagSession.transmit](#transmit9)替代。
@@ -518,7 +518,7 @@ sendData(data: number[]): Promise<number[]>
 
 | **类型** | **说明**                             |
 | ------------------ | --------------------------|
-| Promise<number[]> | 对端Tag对指令的响应数据。每个number十六进制表示，范围是0x00~0xFF。|
+| Promise<number[]> | Promise对象，返回对端Tag对指令的响应数据，每个number十六进制表示，范围是0x00~0xFF。|
 
 **示例：**
 
@@ -551,7 +551,7 @@ function tagSessionDemo() {
 
 sendData(data: number[], callback: AsyncCallback<number[]>): void
 
-发送指令到Tag上，使用AsyncCallback方式作为异步方法。
+发送指令到Tag上。使用callback异步回调。
 
 > **说明：**
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[tagSession.transmit](#transmit9-1)替代。
@@ -599,7 +599,7 @@ function tagSessionDemo() {
 
 transmit(data: number[]): Promise<number[]>
 
-发送指令到Tag上，使用Promise方式作为异步方法。
+发送指令到Tag上。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -617,7 +617,7 @@ transmit(data: number[]): Promise<number[]>
 
 | **类型** | **说明**                             |
 | ------------------ | --------------------------|
-| Promise<number[]> | 对端Tag对指令的响应数据。每个number十六进制表示，范围是0x00~0xFF。|
+| Promise<number[]> | Promise对象，返回对端Tag对指令的响应数据，每个number十六进制表示，范围是0x00~0xFF。|
 
 **错误码：**
 
@@ -669,7 +669,7 @@ function tagSessionDemo() {
 
 transmit(data: number[], callback: AsyncCallback<number[]>): void
 
-发送指令到Tag上，使用AsyncCallback方式作为异步方法。
+发送指令到Tag上。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 

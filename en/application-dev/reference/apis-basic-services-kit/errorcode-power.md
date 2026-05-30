@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 > **NOTE**
 >
@@ -61,7 +61,7 @@ Make sure that the operation is performed when the system is running properly.
 
 **Error Message**
 
-The device activity is being refreshed too frequently; the minimum time interval is 100 ms.
+The device activity is being refreshed too frequently; the minimum timeinterval is 100 ms.
 
 **Description**
 
@@ -73,4 +73,76 @@ The device activity status is frequently refreshed.
 
 **Procedure**
 
-Each refresh must be spaced at least 100 ms apart.
+No more refresh is needed if the device activity status has been refreshed within 100 ms. Try another refresh 100 ms later.
+
+## 4900301 Power Mode Setting Failed
+
+**Error Message**
+
+Setting the power mode failed.
+
+**Description**
+
+This error code is reported if the power mode fails to be set.
+
+**Possible Causes**
+
+The power mode fails to be set due to the power mode control rules.
+
+**Procedure**
+
+The current power mode cannot be switched to the target power mode. You can call the [getPowerMode](js-apis-power.md#powergetpowermode9) API to query the current power mode.
+
+## 4900400 Incorrect Input Parameter
+
+**Error Message**
+
+The input parameter is invalid.
+
+**Description**
+
+The input parameter is incorrect.
+
+**Possible Causes**
+
+The parameter is a null pointer or the parameter value is out of range.
+
+**Procedure**
+
+The input parameter value does not meet the requirements. Check whether the input parameter value is correct.
+
+## 4900501 Failure to Read the Power Supply Configuration Node
+
+**Error Message**
+
+Failed to read the power configuration value.
+
+**Description**
+
+The read operation fails.
+
+**Possible Causes**
+
+The node does not exist.
+
+**Procedure**
+
+Check whether the input parameter node exists.
+
+## 4900601 Failure to Write the Power Supply Configuration Node
+
+**Error Message**
+
+Failed to write the power configuration value.
+
+**Description**
+
+The write operation fails.
+
+**Possible Causes**
+
+The node does not exist.
+
+**Procedure**
+
+Check whether the input parameter node exists.

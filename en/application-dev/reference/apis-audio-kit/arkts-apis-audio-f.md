@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -21,6 +21,8 @@ import { audio } from '@kit.AudioKit';
 getAudioManager(): AudioManager
 
 Obtains an AudioManager instance.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 

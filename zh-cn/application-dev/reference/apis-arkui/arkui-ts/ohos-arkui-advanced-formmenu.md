@@ -1,10 +1,10 @@
 # FormMenu
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 本组件封装了一个“添加至桌面”菜单，用于实现应用内长按组件生成“添加至桌面”菜单，点击该菜单，触发卡片添加至桌面操作。通过桌面访问该应用快捷卡片，可以直接访问该组件功能。在应用使用过程中，该组件作为留存和复访入口，可吸引用户将功能快捷添加到桌面。
 
 本组件支持应用内长按菜单快捷添加卡片到桌面：
@@ -18,7 +18,7 @@
 
 > **说明：**
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 该组件不支持在Wearable设备上使用。
 >
@@ -27,7 +27,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { AddFormMenuItem } from '@kit.ArkUI';
 ```
 
@@ -41,13 +41,13 @@ import { AddFormMenuItem } from '@kit.ArkUI';
 
 ## AddFormMenuItem 
 
-
+```ts
 AddFormMenuItem(
   want: Want,
   componentId: string,
   options?: AddFormOptions
 ): void
-
+```
 
 **装饰器类型：**@Builder
 
@@ -70,11 +70,11 @@ AddFormMenuItem(
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
-| 名称             | 类型                | 必填 | 说明                                                      |
-| --------------- | ---- | ---- | ---------------------------------------------------------------- |
-| formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 卡片数据。 |
-| callback        | AsyncCallback\<string>                                                                                                | 否 | 返回添加卡片是否成功的结果回调。返回为0表示卡片添加成功，非0表示卡片添加失败，失败时请参考[卡片错误码信息](../../apis-form-kit/errorcode-form.md)进行排查。  |
-| style           | [FormMenuItemStyle](#formmenuitemstyle)                                                                              | 否 | 菜单自定义样式信息。|
+| 名称             | 类型|只读|可选| 说明                                                      |
+| --------------- | ---- | ---- | ---- | ---------------------------------------------------------------- |
+| formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 是 | 卡片数据。 |
+| callback        | AsyncCallback\<string>                                                                                                | 否 | 是  | 返回添加卡片是否成功的结果回调。返回为0表示卡片添加成功，非0表示卡片添加失败，失败时请参考[卡片错误码信息](../../apis-form-kit/errorcode-form.md)进行排查。  |
+| style           | [FormMenuItemStyle](#formmenuitemstyle)                                                                              | 否| 是  | 菜单自定义样式信息。|
 
 
 ## FormMenuItemStyle
@@ -84,9 +84,9 @@ AddFormMenuItem(
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
-| 名称            | 类型           | 必填 | 说明 |
-| --------------- | ----------------- | ---- | ---- |
-| options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions对象说明) | 否   | 包含设置MenuItem的各项信息。|
+| 名称 | 类型 | 只读 |可选| 说明 |
+| --------------- | ----------------- | ---- | ---- | ---- |
+| options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions对象说明) | 否   | 是  | 包含设置MenuItem的各项信息。|
 
 > **说明：**
 >
@@ -129,11 +129,11 @@ struct Index {
           formBindingData: formBindingData.createFormBindingData({}),
           // formBindingData: formBindingData.createFormBindingData({ data: 'share' }),
           callback: (error, formId) => {
-            hilog.info(0x3900, tag, `callback info：error = ${JSON.stringify(error)}, formId = ${formId}`);
+            hilog.info(0x3900, tag, `callback info：formId = ${formId}`);
             if (error?.code === 0) {
               hilog.info(0x3900, tag, "添加至桌面成功")
             } else {
-              hilog.info(0x3900, tag, "添加至桌面失败，请尝试其它添加方式")
+              hilog.error(0x3900, tag, `添加至桌面失败，请尝试其它添加方式, error code: ${error?.code}, error message: ${error?.message}`)
             }
           },
           style: {

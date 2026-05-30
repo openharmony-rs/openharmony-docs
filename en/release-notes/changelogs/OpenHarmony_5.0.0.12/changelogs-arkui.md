@@ -130,7 +130,7 @@ Adjust the @Require variable values based on the provided error messages.
 
 **Reference**
 
-[\@Require Decorator: Validating Constructor Input Parameters](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/arkts-require.md)
+[\@Require Decorator: Validating Constructor Input Parameters](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/quick-start/arkts-require.md)
 
 
 ## cl.arkui.2 Restrictions on Using Access Qualifiers for Custom Component Member Properties
@@ -316,7 +316,7 @@ Adjust the use of access qualifiers based on the provided error messages.
 
 **Reference**
 
-[Constraints on Access Modifiers of Custom Component Member Variables](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/arkts-custom-components-access-restrictions.md)
+[Constraints on Access Modifiers of Custom Component Member Variables](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/quick-start/arkts-custom-components-access-restrictions.md)
 
 
 6. The **onFrame**, **onFinish**, **onCancel**, and **onRepeat** APIs in **AnimatorResult** do not adhere to syntax specifications.

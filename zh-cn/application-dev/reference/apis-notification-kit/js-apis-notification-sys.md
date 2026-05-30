@@ -1,10 +1,16 @@
-# @ohos.notification (Notification模块)(系统应用)
+# @ohos.notification (Notification模块)(系统接口)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 本模块提供通知管理的能力，包括发布、取消发布通知，创建、获取、移除通知通道，订阅、取消订阅通知，获取通知的使能状态、角标使能状态，获取通知的相关信息等。
 
 > **说明：**
 >
-> 从API version 9开始，该接口不再维护，推荐使用新接口[@ohos.notificationManager](js-apis-notificationManager.md)。
+> 从API version 9开始，该模块不再维护，建议使用[@ohos.notificationManager](js-apis-notificationManager-sys.md)替代。
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[Notification](./js-apis-notification.md)。
@@ -32,7 +38,7 @@ publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<v
 
 | 参数名     | 类型                                        | 必填 | 说明                                        |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------- |
-| request  | [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest) | 是   | 用于设置要发布通知的内容和相关配置信息。 |
+| request  | [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) | 是   | 用于设置要发布通知的内容和相关配置信息。 |
 | userId   | number                                      | 是   | 用户ID。                           |
 | callback | AsyncCallback\<void\>                       | 是   | 被指定的回调方法。                           |
 
@@ -83,7 +89,7 @@ publish(request: NotificationRequest, userId: number): Promise\<void\>
 
 | 参数名     |  类型                                        | 必填 | 说明                                        |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------- |
-| request  | [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest) | 是   | 用于设置要发布通知的内容和相关配置信息。 |
+| request  | [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) | 是   | 用于设置要发布通知的内容和相关配置信息。 |
 | userId   | number                                      | 是   | 用户ID。                           |
 
 **返回值：**
@@ -147,7 +153,7 @@ import Base from '@ohos.base';
 // addslot回调
 let addSlotCallBack = (err: Base.BusinessError) => {
   if (err) {
-    console.info("addSlot failed " + JSON.stringify(err));
+    console.error("addSlot failed " + JSON.stringify(err));
   } else {
     console.info("addSlot success");
   }
@@ -194,7 +200,7 @@ let notificationSlot: NotificationManager.NotificationSlot = {
     type: Notification.SlotType.SOCIAL_COMMUNICATION
 };
 Notification.addSlot(notificationSlot).then(() => {
-	console.info("addSlot success");
+  console.info("addSlot success");
 }).catch((err: Base.BusinessError) => {
   console.error(`addSlot failed, code is ${err}`);
 });
@@ -228,7 +234,7 @@ import Base from '@ohos.base';
 // addSlots回调
 let addSlotsCallBack = (err: Base.BusinessError) => {
   if (err) {
-    console.info("addSlots failed " + JSON.stringify(err));
+    console.error("addSlots failed " + JSON.stringify(err));
   } else {
     console.info("addSlots success");
   }
@@ -318,7 +324,7 @@ import NotificationSubscribe from '@ohos.notificationSubscribe';
 // subscribe回调
 let subscribeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("subscribe failed " + JSON.stringify(err));
+    console.error("subscribe failed " + JSON.stringify(err));
   } else {
     console.info("subscribe success");
   }
@@ -362,7 +368,7 @@ import NotificationSubscribe from '@ohos.notificationSubscribe';
 
 let subscribeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("subscribe failed " + JSON.stringify(err));
+    console.error("subscribe failed " + JSON.stringify(err));
   } else {
     console.info("subscribe success");
   }
@@ -447,7 +453,7 @@ import NotificationSubscribe from '@ohos.notificationSubscribe';
 
 let unsubscribeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("unsubscribe failed " + JSON.stringify(err));
+    console.error("unsubscribe failed " + JSON.stringify(err));
   } else {
     console.info("unsubscribe success");
   }
@@ -531,7 +537,7 @@ import Base from '@ohos.base';
 
 let enableNotificationCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("enableNotification failed " + JSON.stringify(err));
+    console.error("enableNotification failed " + JSON.stringify(err));
   } else {
     console.info("enableNotification success");
   }
@@ -609,7 +615,7 @@ import Base from '@ohos.base';
 
 let isNotificationEnabledCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("isNotificationEnabled failed " + JSON.stringify(err));
+    console.error("isNotificationEnabled failed " + JSON.stringify(err));
   } else {
     console.info("isNotificationEnabled success");
   }
@@ -684,7 +690,7 @@ import Base from '@ohos.base';
 
 let isNotificationEnabledCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("isNotificationEnabled failed " + JSON.stringify(err));
+    console.error("isNotificationEnabled failed " + JSON.stringify(err));
   } else {
     console.info("isNotificationEnabled success");
   }
@@ -756,7 +762,7 @@ import Base from '@ohos.base';
 
 let displayBadgeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("displayBadge failed " + JSON.stringify(err));
+    console.error("displayBadge failed " + JSON.stringify(err));
   } else {
     console.info("displayBadge success");
   }
@@ -833,7 +839,7 @@ import Base from '@ohos.base';
 
 let isBadgeDisplayedCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("isBadgeDisplayed failed " + JSON.stringify(err));
+    console.error("isBadgeDisplayed failed " + JSON.stringify(err));
   } else {
     console.info("isBadgeDisplayed success");
   }
@@ -911,7 +917,7 @@ import NotificationManager from '@ohos.notificationManager';
 
 let setSlotByBundleCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("setSlotByBundle failed " + JSON.stringify(err));
+    console.error("setSlotByBundle failed " + JSON.stringify(err));
   } else {
     console.info("setSlotByBundle success");
   }
@@ -996,7 +1002,7 @@ import NotificationManager from '@ohos.notificationManager';
 
 let getSlotsByBundleCallback = (err: Base.BusinessError, data: NotificationManager.NotificationSlot[]) => {
   if (err) {
-    console.info("getSlotsByBundle failed " + JSON.stringify(err));
+    console.error("getSlotsByBundle failed " + JSON.stringify(err));
   } else {
     console.info("getSlotsByBundle success");
   }
@@ -1074,7 +1080,7 @@ import NotificationManager from '@ohos.notificationManager';
 
 let getSlotNumByBundleCallback = (err: Base.BusinessError, data: number) => {
   if (err) {
-    console.info("getSlotNumByBundle failed " + JSON.stringify(err));
+    console.error("getSlotNumByBundle failed " + JSON.stringify(err));
   } else {
     console.info("getSlotNumByBundle success");
   }
@@ -1153,7 +1159,7 @@ import Base from '@ohos.base';
 
 let removeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("remove failed " + JSON.stringify(err));
+    console.error("remove failed " + JSON.stringify(err));
   } else {
     console.info("remove success");
   }
@@ -1231,7 +1237,7 @@ remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback\<void\>):
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| hashCode | string                | 是   | 通知唯一ID。可以通过[onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume)回调的入参[SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata)获取其内部[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest)对象中的hashCode。 |
+| hashCode | string                | 是   | 通知唯一ID。可以通过[onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume)回调的入参[SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata)获取其内部[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)对象中的hashCode。 |
 | reason   | [RemoveReason](#removereason-deprecated) | 是   | 通知删除原因。         |
 | callback | AsyncCallback\<void\> | 是   | 删除指定通知回调函数。 |
 
@@ -1244,7 +1250,7 @@ let hashCode: string = 'hashCode';
 
 let removeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("remove failed " + JSON.stringify(err));
+    console.error("remove failed " + JSON.stringify(err));
   } else {
     console.info("remove success");
   }
@@ -1318,7 +1324,7 @@ import Base from '@ohos.base';
 
 let removeAllCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("removeAll failed " + JSON.stringify(err));
+    console.error("removeAll failed " + JSON.stringify(err));
   } else {
     console.info("removeAll success");
   }
@@ -1354,7 +1360,7 @@ import Base from '@ohos.base';
 
 let removeAllCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("removeAll failed " + JSON.stringify(err));
+    console.error("removeAll failed " + JSON.stringify(err));
   } else {
     console.info("removeAll success");
   }
@@ -1426,7 +1432,7 @@ import Base from '@ohos.base';
 
 function removeAllCallback(err: Base.BusinessError) {
   if (err) {
-    console.info("removeAll failed " + JSON.stringify(err));
+    console.error("removeAll failed " + JSON.stringify(err));
   } else {
     console.info("removeAll success");
   }
@@ -1484,7 +1490,7 @@ getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>)
 
 | 参数名     | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | AsyncCallback\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest)>> | 是   | 获取活动通知回调函数。 |
+| callback | AsyncCallback\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)>> | 是   | 获取活动通知回调函数。 |
 
 **示例：**
 
@@ -1494,7 +1500,7 @@ import NotificationManager from '@ohos.notificationManager';
 
 function getAllActiveNotificationsCallback(err: Base.BusinessError, data: NotificationManager.NotificationRequest[]) {
   if (err) {
-    console.info("getAllActiveNotifications failed " + JSON.stringify(err));
+    console.error("getAllActiveNotifications failed " + JSON.stringify(err));
   } else {
     console.info("getAllActiveNotifications success");
   }
@@ -1505,7 +1511,7 @@ Notification.getAllActiveNotifications(getAllActiveNotificationsCallback);
 
 ## Notification.getAllActiveNotifications
 
-getAllActiveNotifications(): Promise\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest)>>
+getAllActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 获取当前未删除的所有通知（Promise形式）。
 
@@ -1519,7 +1525,7 @@ getAllActiveNotifications(): Promise\<Array\<[NotificationRequest](js-apis-inner
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest)>> | 以Promise形式返回获取活动通知。 |
+| Promise\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)>> | 以Promise形式返回获取活动通知。 |
 
 **示例：**
 
@@ -1561,7 +1567,7 @@ import Base from '@ohos.base';
 
 let removeGroupByBundleCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("removeGroupByBundle failed " + JSON.stringify(err));
+    console.error("removeGroupByBundle failed " + JSON.stringify(err));
   } else {
     console.info("removeGroupByBundle success");
   }
@@ -1638,7 +1644,7 @@ import Base from '@ohos.base';
 
 let setDoNotDisturbDateCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("setDoNotDisturbDate failed " + JSON.stringify(err));
+    console.error("setDoNotDisturbDate failed " + JSON.stringify(err));
   } else {
     console.info("setDoNotDisturbDate success");
   }
@@ -1688,7 +1694,7 @@ let doNotDisturbDate: Notification.DoNotDisturbDate = {
     end: new Date(2021, 11, 15, 18, 0)
 };
 Notification.setDoNotDisturbDate(doNotDisturbDate).then(() => {
-	console.info("setDoNotDisturbDate success");
+  console.info("setDoNotDisturbDate success");
 }).catch((err: Base.BusinessError) => {
   console.error(`setDoNotDisturbDate failed, code is ${err}`);
 });
@@ -1722,7 +1728,7 @@ import Base from '@ohos.base';
 
 let setDoNotDisturbDateCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("setDoNotDisturbDate failed " + JSON.stringify(err));
+    console.error("setDoNotDisturbDate failed " + JSON.stringify(err));
   } else {
     console.info("setDoNotDisturbDate success");
   }
@@ -1809,7 +1815,7 @@ import Base from '@ohos.base';
 
 let getDoNotDisturbDateCallback = (err: Base.BusinessError, data: Notification.DoNotDisturbDate) => {
   if (err) {
-    console.info("getDoNotDisturbDate failed " + JSON.stringify(err));
+    console.error("getDoNotDisturbDate failed " + JSON.stringify(err));
   } else {
     console.info("getDoNotDisturbDate success");
   }
@@ -1875,7 +1881,7 @@ import Base from '@ohos.base';
 
 let getDoNotDisturbDateCallback = (err: Base.BusinessError, data: Notification.DoNotDisturbDate) => {
   if (err) {
-    console.info("getDoNotDisturbDate failed " + JSON.stringify(err));
+    console.error("getDoNotDisturbDate failed " + JSON.stringify(err));
   } else {
     console.info("getDoNotDisturbDate success");
   }
@@ -1950,7 +1956,7 @@ import Base from '@ohos.base';
 
 let supportDoNotDisturbModeCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("supportDoNotDisturbMode failed " + JSON.stringify(err));
+    console.error("supportDoNotDisturbMode failed " + JSON.stringify(err));
   } else {
     console.info("supportDoNotDisturbMode success");
   }
@@ -2015,7 +2021,7 @@ import Base from '@ohos.base';
 
 let enabledNotificationCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("enableDistributed failed " + JSON.stringify(err));
+    console.error("enableDistributed failed " + JSON.stringify(err));
   } else {
     console.info("enableDistributed success");
   }
@@ -2084,7 +2090,7 @@ import Base from '@ohos.base';
 
 let enableDistributedByBundleCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("enableDistributedByBundle failed " + JSON.stringify(err));
+    console.error("enableDistributedByBundle failed " + JSON.stringify(err));
   } else {
     console.info("enableDistributedByBundle success");
   }
@@ -2163,7 +2169,7 @@ import Base from '@ohos.base';
 
 let isDistributedEnabledByBundleCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("isDistributedEnabledByBundle failed " + JSON.stringify(err));
+    console.error("isDistributedEnabledByBundle failed " + JSON.stringify(err));
   } else {
     console.info("isDistributedEnabledByBundle success" + JSON.stringify(data));
   }
@@ -2242,7 +2248,7 @@ import Base from '@ohos.base';
 
 let getDeviceRemindTypeCallback = (err: Base.BusinessError, data: Notification.DeviceRemindType) => {
   if (err) {
-    console.info("getDeviceRemindType failed " + JSON.stringify(err));
+    console.error("getDeviceRemindType failed " + JSON.stringify(err));
   } else {
     console.info("getDeviceRemindType success");
   }

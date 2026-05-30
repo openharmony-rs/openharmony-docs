@@ -4,14 +4,14 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+**Session** implements a session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to take a photo or record a video.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 11.
-
-Session implements a session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to take a photo or record a video.
 
 ## Modules to Import
 
@@ -139,7 +139,7 @@ function commitConfig(session: camera.Session): void {
 
 canAddInput(cameraInput: CameraInput): boolean
 
-Checks whether a CameraInput instance can be added to this session. This API must be called after [beginConfig](#beginconfig11) and before [commitConfig](#commitconfig11-1).
+Checks whether a **CameraInput** instance can be added to this session. This API must be called after [beginConfig](#beginconfig11) and before [commitConfig](#commitconfig11-1).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -149,19 +149,17 @@ Checks whether a CameraInput instance can be added to this session. This API mus
 
 | Name       | Type                         | Mandatory| Description                    |
 | ----------- | --------------------------- | ---- | ------------------------ |
-| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | CameraInput instance to add. The API does not take effect if the input parameter is invalid (for example, the value is out of range, null, or undefined).|
+| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | **CameraInput** instance to add. The API does not take effect if the input parameter is invalid (for example, the value is out of range, null, or undefined).|
 
 **Return value**
 
 | Type           | Description                    |
 | -------------- | ------------------------ |
-| boolean | Check result for adding the CameraInput instance. **true** if it can be added, **false** otherwise.|
+| boolean | Check result for adding the **CameraInput** instance. **true** if it can be added, **false** otherwise.|
 
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function canAddInput(session: camera.Session, cameraInput: camera.CameraInput): void {
   let canAdd: boolean = session.canAddInput(cameraInput);
   console.info(`The input canAddInput: ${canAdd}`);
@@ -182,7 +180,7 @@ Adds a [CameraInput](arkts-apis-camera-CameraInput.md) instance to this session.
 
 | Name       | Type                         | Mandatory| Description                    |
 | ----------- | --------------------------- | ---- | ------------------------ |
-| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | CameraInput instance to add.|
+| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | **CameraInput** instance to add.|
 
 **Error codes**
 
@@ -224,7 +222,7 @@ Removes a [CameraInput](arkts-apis-camera-CameraInput.md) instance from this ses
 
 | Name       | Type                         | Mandatory| Description                     |
 | ----------- | --------------------------- | ---- | ------------------------ |
-| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | CameraInput instance to remove.|
+| cameraInput | [CameraInput](arkts-apis-camera-CameraInput.md) | Yes  | **CameraInput** instance to remove.|
 
 **Error codes**
 
@@ -266,19 +264,17 @@ Determines whether a CameraOutput instance can be added to this session. This AP
 
 | Name       | Type                         | Mandatory| Description                    |
 | ----------- | --------------------------- | ---- | ------------------------ |
-| cameraOutput | [CameraOutput](arkts-apis-camera-CameraOutput.md) | Yes  | CameraOutput instance to add. The API does not take effect if the input parameter is invalid (for example, the value is out of range, null, or undefined).|
+| cameraOutput | [CameraOutput](arkts-apis-camera-CameraOutput.md) | Yes  | **CameraOutput** instance to add. The API does not take effect if the input parameter is invalid (for example, the value is out of range, null, or undefined).|
 
 **Return value**
 
 | Type           | Description                    |
 | -------------- | ------------------------ |
-| boolean | Check result for adding the CameraOutput instance. **true** if it can be added, **false** otherwise.|
+| boolean | Check result for adding the **CameraOutput** instance. **true** if it can be added, **false** otherwise.|
 
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function canAddOutput(session: camera.Session, cameraOutput: camera.CameraOutput): void {
   let canAdd: boolean = session.canAddOutput(cameraOutput);
   console.info(`This addOutput can add: ${canAdd}`);
@@ -299,7 +295,7 @@ Adds a [CameraOutput](arkts-apis-camera-CameraOutput.md) instance to this sessio
 
 | Name          | Type                            | Mandatory| Description                     |
 | ------------- | ------------------------------- | ---- | ------------------------ |
-| cameraOutput  | [CameraOutput](arkts-apis-camera-CameraOutput.md)   | Yes  | CameraOutput instance to add.|
+| cameraOutput  | [CameraOutput](arkts-apis-camera-CameraOutput.md)   | Yes  | **CameraOutput** instance to add.|
 
 **Error codes**
 
@@ -341,7 +337,7 @@ Removes a [CameraOutput](arkts-apis-camera-CameraOutput.md) instance from this s
 
 | Name          | Type                            | Mandatory| Description                     |
 | ------------- | ------------------------------- | ---- | ------------------------ |
-| cameraOutput  | [CameraOutput](arkts-apis-camera-CameraOutput.md)   | Yes  | CameraOutput instance to remove.|
+| cameraOutput  | [CameraOutput](arkts-apis-camera-CameraOutput.md)   | Yes  | **CameraOutput** instance to remove.|
 
 **Error codes**
 

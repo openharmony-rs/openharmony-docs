@@ -4,11 +4,15 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct {...} ArkWeb_WebMessagePortAPI
+```
 
 ## Overview
 
-Defines a native API struct of the post message. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
+Defines a native API struct of the post message. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM. The WebMessagePort APIs must be called on the UI thread through **OH_ArkWeb_GetNativeAPI**.
 
 **Since**: 12
 
@@ -37,7 +41,7 @@ Defines a native API struct of the post message. Before calling this API, you ar
 
 ### postMessage()
 
-```
+```c
 ArkWeb_ErrorCode (*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag, const ArkWeb_WebMessagePtr webMessage)
 ```
 
@@ -61,7 +65,7 @@ Sends a message to the HTML page.
 
 ### close()
 
-```
+```c
 void (*close)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag)
 ```
 
@@ -74,17 +78,18 @@ Closes a message port.
 | Name| Description|
 | -- | -- |
 | const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Pointer to the message port.|
+| const char* webTag                                                                   |  Name of the **Web** component.             |
 
 ### setMessageEventHandler()
 
-```
+```c
 void (*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag,
         ArkWeb_OnMessageEventHandler messageEventHandler, void* userData)
 ```
 
 **Description**
 
-Closes a message port.
+Sets a callback for receiving HTML messages.
 
 **Parameters**
 

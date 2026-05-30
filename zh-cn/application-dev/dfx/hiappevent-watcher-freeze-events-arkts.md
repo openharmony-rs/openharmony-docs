@@ -5,11 +5,11 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用冻屏事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent (应用事件打点)ArkTS API文档](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用冻屏事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 ## 接口说明
 
@@ -22,12 +22,12 @@
 
 ### 添加事件观察者
 
-以实现对用户点击按钮触发应用无响应场景生成的应用冻屏事件订阅为例，说明开发步骤。
+以订阅应用冻屏事件为例，说明开发步骤。
 
 1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
 
    ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
@@ -44,6 +44,21 @@
     }).catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
     });
+
+    if (deviceInfo.sdkApiVersion >= 24) {  // API Version 24及以后版本，支持设置页面切换日志
+      // 配置页面切换日志
+      let switchLogPolicy : hiAppEvent.EventPolicy = {
+        "appFreezePolicy": {
+          "pageSwitchLogEnable": true
+        }
+      };
+      // 开发者可以设置应用冻屏日志配置参数
+      hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
+        hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+      });
+    }
    ```
 
 3. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
@@ -74,6 +89,8 @@
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
             // 开发者可以获取到应用冻屏事件发生时应用的前后台状态
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
+            // 开发者可以获取到应用冻屏事件发生时应用的唯一关联id
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
             // 开发者可以获取到应用冻屏事件发生时应用的版本信息
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
             // 开发者可以获取到应用冻屏事件发生时应用的包名
@@ -103,6 +120,12 @@
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
             // 开发者可以获取到应用冻屏事件的自定义数据test_data
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.test_data=${eventInfo.params['test_data']}`);
+            // 开发者可以获取到应用冻屏事件的故障进程存活时间
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
+            // 开发者可以获取到应用冻屏事件的回调日志信息
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_callback_log=${eventInfo.params['external_callback_log']}`);
+            // 开发者可以获取到应用冻屏事件的页面切换日志
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.page_switch_log=${JSON.stringify(eventInfo.params['page_switch_log'])}`);
           }
         }
       }
@@ -113,7 +136,7 @@
 
    ```ts
     Button("appFreeze").onClick(()=>{
-      // 在按钮点击函数中构造一个freeze场景，触发应用应用冻屏事件
+      // 在按钮点击函数中构造一个freeze场景，触发应用冻屏事件
       setTimeout(() => {
         let t = Date.now();
         while (Date.now() - t <= 15000) {}
@@ -135,6 +158,7 @@
    HiAppEvent eventInfo.eventType=1
    HiAppEvent eventInfo.params.time=1711440881768
    HiAppEvent eventInfo.params.foreground=true
+   HiAppEvent eventInfo.params.app_running_unique_id=215456512336951247
    HiAppEvent eventInfo.params.bundle_version=1.0.0
    HiAppEvent eventInfo.params.bundle_name=com.example.myapplication
    HiAppEvent eventInfo.params.process_name=com.example.myapplication
@@ -148,11 +172,41 @@
    HiAppEvent eventInfo.params.event_handler_size_6s=6
    HiAppEvent eventInfo.params.peer_binder.size=0
    HiAppEvent eventInfo.params.threads.size=28
-   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1361464,"sys_free_mem":796232,"sys_total_mem":1992340,"vss":0}
+   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1361464,"sys_free_mem":796232,"sys_total_mem":1992340,"vm_heap_total_size":"9961472","vm_heap_used_size":"7596424","vss":0}
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_FREEZE_1711440899240_3197.log"]
    HiAppEvent eventInfo.params.log_over_limit=false
    HiAppEvent eventInfo.params.test_data=100
+   HiAppEvent eventInfo.params.process_life_time=18
+   HiAppEvent eventInfo.params.external_callback_log=THREAD_BLOCK_3S:log3s THREAD_BLOCK_6S:log6s
    ```
+
+2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
+
+## 从Faultlogger接口迁移应用冻屏事件
+
+[@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)接口从API version 18开始废弃使用, 不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)订阅应用冻屏事件。该章节指导开发者从Faultlogger接口迁移至hiAppEvent接口，来订阅应用冻屏事件。
+
+在Faultlogger的[FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)里定义的APP_FREEZE即为应用冻屏故障类型。
+
+在hiAppEvent的hiAppEvent.addWatcher接口中设置事件名称为hiAppEvent.event.APP_FREEZE、事件领域为hiAppEvent.domain.OS，可以订阅应用冻屏事件。
+
+通过[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params字段说明)中exception字段的name子字段可以区分具体是哪种应用冻屏事件。
+
+[FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo)与[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params字段说明)的字段对应关系如下：
+| Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | 说明 |
+| --- | --- | --- |
+| pid | pid | 无。 |
+| uid | uid | 无。 |
+| type | exception字段中的name子字段 | 类型不同，Faultlogger中是故障类型枚举，hiAppEvent中是字符串类型。 |
+| timestamp | time | 无。 |
+| module | bundle_name | 无。 |
+| fullLog | external_log | fullLog为故障日志全文。external_log为故障日志文件在应用沙箱中的具体路径(/data/storage/el2/log/)，访问该路径的文件，可以得到故障日志全文。 |
+| reason | external_log文件内容中的Reason字段 | 无。 |
+| summary | external_log文件内容中特定段落 | APP_FREEZE的summary对应external_log文件中从appfreeze:进程名所在行到DisplayPowerInfo:所在行的这一段内容。 |
+
+[FaultLogger.query(使用callback回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)和[FaultLogger.query(使用Promise回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
+
+查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到应用冻屏事件](#验证观察者是否订阅到应用冻屏事件)，了解使用hiAppEvent订阅应用冻屏事件（ArkTS）的具体步骤。
 
 <!--RP1-->
 <!--RP1End-->

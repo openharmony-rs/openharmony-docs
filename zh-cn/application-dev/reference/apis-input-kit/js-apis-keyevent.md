@@ -5,13 +5,13 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 设备上报的按键事件，继承自[InputEvent](js-apis-inputevent.md)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -45,7 +45,7 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 | ----------- | -------- | ---- | ---- | -------------- |
 | code        | [KeyCode](js-apis-keycode.md#keycode)  | 否   | 否   | 键值。         |
 | pressedTime | number   | 否   | 否   | 按键按下时间，单位：μs。 |
-| deviceId    | number   | 否   | 否   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id可能会发生变化。   |
+| deviceId    | number   | 否   | 否   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。   |
 
 ## KeyEvent
 

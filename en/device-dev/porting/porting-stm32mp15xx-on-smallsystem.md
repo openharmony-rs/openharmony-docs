@@ -1,12 +1,12 @@
 # Small System STM32MP1 SoC Porting Case
 
-This document describes how to port small development boards with screens based on the [BearPi-HM Micro development board](https://gitee.com/openharmony/device_board_bearpi) of the `STM32MP157` SoC from STMicroelectronics, so as to adapt components such as `ace_engine_lite`, `arkui_ui_lite`, `aafwk_lite`, `appexecfwk_lite`, and `HDF` to the `OpenHarmony LiteOS-A` kernel. The porting architecture uses the solution where `Board` and `SoC` are separated.
+This document describes how to port small development boards with screens based on the [BearPi-HM Micro development board](https://gitcode.com/openharmony/device_board_bearpi) of the `STM32MP157` SoC from STMicroelectronics, so as to adapt components such as `ace_engine_lite`, `arkui_ui_lite`, `aafwk_lite`, `appexecfwk_lite`, and `HDF` to the `OpenHarmony LiteOS-A` kernel. The porting architecture uses the solution where `Board` and `SoC` are separated.
 
 ## Compilation and Building
 
 ### Directory Planning
 
-This solution designs the directory structure using the [board and SoC decoupling idea](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md), and plans the SoC adaptation directory as follows:
+This solution designs the directory structure using the [board and SoC decoupling idea](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md), and plans the SoC adaptation directory as follows:
 
 ```
 device

@@ -1,5 +1,12 @@
 # BaseContext
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 BaseContext is an abstract class that specifies whether a child class Context is used for the stage model or FA model. It is the parent class for all types of Context.
 
 > **NOTE**
@@ -20,7 +27,7 @@ import { common } from '@kit.AbilityKit';
 
 | Name      | Type  | Read-Only  | Optional  | Description     |
 | -------- | ------ | ---- | ---- | ------- |
-| stageMode | boolean | No   | No   | Whether the child class Context is used for the stage model.<br>**true**: used for the stage model.<br>**false**: used for the FA model.|
+| stageMode | boolean | No   | No   | Whether the child class Context is used for the stage model.<br>**true**: [Stage model](../../application-models/ability-terminology.md#stage-model).<br>**false**: [FA model](../../application-models/ability-terminology.md#fa-model).|
 
 **Example**
 

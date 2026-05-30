@@ -1,10 +1,14 @@
 # JSVM_VMScope__*
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+
+```c
+typedef struct JSVM_VMScope__* JSVM_VMScope
+```
 
 ## 概述
 

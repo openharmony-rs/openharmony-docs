@@ -1,10 +1,10 @@
 # avimage_generator.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -41,7 +41,7 @@ The file declares the AVImageGenerator APIs. You can use the APIs to extract vid
 
 ### OH_AVImageGenerator_Create()
 
-```
+```c
 OH_AVImageGenerator* OH_AVImageGenerator_Create(void)
 ```
 
@@ -61,7 +61,7 @@ Creates an OH_AVImageGenerator instance, which is used to generate video frames 
 
 ### OH_AVImageGenerator_SetFDSource()
 
-```
+```c
 OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator,int32_t fd, int64_t offset, int64_t size)
 ```
 
@@ -87,11 +87,11 @@ Sets a data source based on the media file descriptor.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>**AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVImageGenerator_FetchFrameByTime()
 
-```
+```c
 OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator,int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)
 ```
 
@@ -119,11 +119,11 @@ This function must be called after [OH_AVImageGenerator_SetFDSource](#oh_avimage
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>**AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>**AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVImageGenerator_Release()
 
-```
+```c
 OH_AVErrCode OH_AVImageGenerator_Release(OH_AVImageGenerator* generator)
 ```
 
@@ -146,4 +146,4 @@ Releases the resources used by the OH_AVImageGenerator instance and destroys the
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.|

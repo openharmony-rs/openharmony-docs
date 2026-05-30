@@ -1,5 +1,11 @@
 # DFX开发常见问题
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @mzyan-->
+<!--Designer: @liyueric-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @jinqiuheng-->
 
 ## hilog日志如何落盘存储(API 9)
 
@@ -11,7 +17,7 @@
 
 参数解释：
 
-```
+```text
 -w 开启日志落盘任务,start表示开始，stop表示停止。
 -f 设置日志文件名
 -l 设置单个日志文件大小，单位可以是：B/K/M/G
@@ -26,7 +32,7 @@
 
 **解决措施**
 
-通过hilog命令行工具来过滤保留当前应用的日志日志。
+通过hilog命令行工具来过滤保留当前应用的日志。
 
 hilog -T xxx 按tag过滤;
 
@@ -146,13 +152,13 @@ Native抛异常，如果需要查看backtrace，需要运行一下命令。
 ```bash
 hdc shell param set persist.ark.properties 0x125c
 hdc shell reboot
-```  
+```
 恢复默认值：
 
 ```bash
 hdc shell param set persist.ark.properties 0x105c
 hdc shell reboot
-```  
+```
 
 ## hdc工具的属性开关有哪些？例如Ark属性开关等(API 10)
 

@@ -1,9 +1,9 @@
-# @ohos.deviceStatus.dragInteraction（拖拽)(系统接口)
+# @ohos.deviceStatus.dragInteraction (拖拽)(系统接口)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Msdp-->
 <!--Owner: @wuliangdong-->
-<!--Designer: @butterls-->
+<!--Designer: @guo867-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -43,10 +43,10 @@ import { dragInteraction } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
-| 名称       | 类型     | 必填 | 说明               |
-| ---------- | -------- | ---- | ------------------ |
-| dataType   | string   | 是   | 拖拽对象类型。     |
-| dataSize   | number   | 是   | 拖拽对象数据长度。 |
+| 名称           | 类型            | 只读 | 可选 | 说明                           |
+| ---------      | -------------- | ---- | ---- | ------------------------     |
+| dataType     | string          | 否   | 否   | 拖拽对象类型。 |
+| dataSize       | number         | 否   | 否   | 拖拽对象数据长度。 |
 
 ## dragInteraction.on('drag')
 
@@ -71,7 +71,7 @@ on(type: 'drag', callback: Callback\<DragState>): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例：**
@@ -109,7 +109,7 @@ off(type: 'drag', callback?: Callback\<DragState>): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例：**
@@ -164,73 +164,11 @@ getDataSummary(): Array\<Summary>
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
 ```ts
-let summarys: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
-console.info(`Drag interaction summarys: ${summarys}`);
-```
-
-## dragInteraction.setDragSwitchState<sup>18+</sup>
-
-setDragSwitchState(enabled: boolean): void
-
-控制统一拖拽功能总开关。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
-
-**参数：**
-
-| 参数名   | 类型                               | 必填 | 说明                                                                   |
-| -------- | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
-| enabled  | boolean                            | 是   | 设置开关状态。<br>false：关闭，true：开启。                                              |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 202 | Not system application. |
-
-**示例：**
-
-```ts
-dragInteraction.setDragSwitchState(false);
-```
-
-## dragInteraction.setAppDragSwitchState<sup>18+</sup>
-
-setAppDragSwitchState(enabled: boolean, bundleName: string): void
-
-控制统一拖拽适配应用开关。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
-
-**参数：**
-
-| 参数名      | 类型                               | 必填 | 说明                                                                   |
-| --------   | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
-| enabled    | boolean                            | 是   | 设置开关状态。<br>false：关闭，true：开启。                                              |
-| bundleName | string                             | 是   | 设置指定应用包名开关状态。                                               |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
-
-**示例：**
-
-```ts
-dragInteraction.setAppDragSwitchState(true, "com.app.bundleName");
+let summary: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
+console.info(`Drag interaction summary: ${summary}`);
 ```

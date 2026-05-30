@@ -1,5 +1,12 @@
 # Subscribing to Main Thread Jank Events (C/C++)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscribe to main thread jank events. For details (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
@@ -14,7 +21,7 @@ This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscri
 ## How to Develop
 
 ### Adding an Event Watcher
-1. Obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by referring to **Using JsonCpp in your project** in [the third-party open-source library JsonCpp](https://github.com/open-source-parsers/jsoncpp).
+1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
 
 2. Create a native C++ project and import the preceding files to the project. The directory structure is as follows:
 
@@ -160,7 +167,7 @@ This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscri
    testNapi.registerWatcher();
    ```
 
-8. In the **entry/src/main/ets/pages/Index.ets** file, add the **timeOut500** button with **onClick()** to trigger a main thread jank event when the button is clicked. The sample code is as follows:
+8. In the **entry/src/main/ets/pages/index.ets** file, add a button and simulate a main thread jank event in the **onClick** function. The sample code is as follows:
 
    ```typescript
       Button("timeOut350")
@@ -172,7 +179,7 @@ This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscri
       })
    ```
 
-9. In DevEco Studio, click the **Run** button to run the application project. Click the **timeOut350** button twice consecutively to trigger a main thread jank event.
+9. In DevEco Studio, click the **Run** button to run the application project. Click the **timeOut350** button twice or three times consecutively to trigger a main thread jank event.
 
 ### Verifying the Subscription
 

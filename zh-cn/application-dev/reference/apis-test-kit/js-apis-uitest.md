@@ -16,19 +16,19 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 - [Component<sup>9+</sup>](#component9)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。
 - [Driver<sup>9+</sup>](#driver9)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。
 - [UiWindow<sup>9+</sup>](#uiwindow9)：入口类，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
-- [By<sup>(deprecated)</sup>](#bydeprecated)：提供控件特征描述能力，用于控件筛选匹配查找。从API version 9开始不再维护，建议使用[On<sup>9+</sup>](#on9)。
-- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。从API version 9开始不再维护，建议使用[Component<sup>9+</sup>](#component9)。
-- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 9开始不再维护，建议使用[Driver<sup>9+</sup>](#driver9)。
+- [By<sup>(deprecated)</sup>](#bydeprecated)：提供控件特征描述能力，用于控件筛选匹配查找。从API version 8开始支持，从API version 9开始废弃，建议使用[On<sup>9+</sup>](#on9)替代。
+- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。从API version 8开始支持，从API version 9开始废弃，建议使用[Component<sup>9+</sup>](#component9)替代。
+- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 8开始支持，从API version 9开始废弃，建议使用[Driver<sup>9+</sup>](#driver9)替代。
 
 > **说明：**
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
+> - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/uitest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
 
 ## 导入模块
 
 ```ts
-import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY } from '@kit.TestKit';
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY, KeyOptions, TouchOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -70,6 +70,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
 | x    | number |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -82,6 +83,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
 | left   | number |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -126,6 +128,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | 名称                 | 类型    | 只读 | 可选 | 说明                                                                                     |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
 | bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
@@ -133,7 +136,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br>从API version 11开始废弃，建议使用active替代。                                                |
 | active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| displayId<sup>20+</sup> | number | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| displayId<sup>20+</sup> | number | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## UiDirection<sup>10+</sup>
 
@@ -164,19 +167,85 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | MOUSE_BUTTON_RIGHT  | 1    | 鼠标右键。   |
 | MOUSE_BUTTON_MIDDLE | 2    | 鼠标中间键。 |
 
-## UIElementInfo<sup>10+</sup>
 
-UI事件的相关信息。
+## WindowChangeType<sup>22+</sup>
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+支持监听的窗口变化事件类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称                | 值   | 说明         |
+| ------------------- | ---- | ------------ |
+| WINDOW_UNDEFINED   | 0    | 非窗口变化事件。<br>**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| WINDOW_ADDED  | 1    | 窗口出现事件。   |
+| WINDOW_REMOVED | 2    | 窗口消失事件。 |
+| WINDOW_BOUNDS_CHANGED | 3    | 窗口边框变化事件。 |
+
+
+## ComponentEventType<sup>22+</sup>
+
+支持监听的控件操作事件类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称                | 值   | 说明         |
+| ------------------- | ---- | ------------ |
+| COMPONENT_UNDEFINED   | 0    | 非控件操作事件。<br>**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| COMPONENT_CLICKED  | 1    | 控件被点击事件。   |
+| COMPONENT_LONG_CLICKED | 2    | 控件被长按事件。 |
+| COMPONENT_SCROLL_START | 3    | 控件滚动开始事件。 |
+| COMPONENT_SCROLL_END  | 4    | 控件滚动结束事件。   |
+| COMPONENT_TEXT_CHANGED | 5    | [输入框控件](../../ui/arkts-common-components-text-input.md)文本变化事件。 |
+
+
+## WindowChangeOptions<sup>22+</sup>
+
+窗口变化事件监听的扩展配置，用于指定监听过程配置及事件筛选条件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| bundleName | string | 是   | 否   | 归属应用的包名。      |
-| type       | string | 是   | 否   | 控件/窗口类型。       |
-| text       | string | 是   | 否   | 控件/窗口的文本信息。 |
+| timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| bundleName       | string | 否   | 是   | 监听窗口对应包名，缺省时默认监听所有窗口。       |
+
+
+## ComponentEventOptions<sup>22+</sup>
+
+控件操作事件监听的扩展配置，用于指定监听过程配置及事件筛选条件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称       | 类型   | 只读 | 可选 | 说明                  |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br> **说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
+
+## UIElementInfo<sup>10+</sup>
+
+UI事件的相关信息。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+<!--Table: 25%; 25%; 10%; 10%; 30%-->
+| 名称       | 类型   | 只读 | 可选 | 说明                  |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| bundleName | string | 是   | 否   | 应用包名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| type       | string | 是   | 否   | 控件/窗口类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
+| text       | string | 是   | 否   | 控件/窗口的文本信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| windowId<sup>22+</sup>       | number | 是   | 是   | 控件所属窗口id。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentId<sup>22+</sup>       | string | 是   | 是   | 控件id，若非控件操作事件返回空字符串。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 
 ## TouchPadSwipeOptions<sup>18+</sup>
@@ -190,7 +259,7 @@ UI事件的相关信息。
 | 名称       | 类型   | 只读 | 可选 | 说明                                                     |
 | ---------- | ------ |----|----|--------------------------------------------------------|
 | stay | boolean | 否  | 是  | 触摸板多指滑动结束是否停留1s后再抬起，默认为false（不停留1s），true：停留，false：不停留。 |
-| speed       | number | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，不在范围内设为默认值为2000，单位：px/s。  |
+| speed       | number | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值2000。为负数时抛出参数错误的错误码。  |
 
 
 ## InputTextMode<sup>20+</sup>
@@ -207,12 +276,104 @@ UI事件的相关信息。
 | addition       | boolean | 否  | 是  | 输入文本时是否以追加的方式进行输入。true：以追加方式输入。false：不以追加方式输入。默认为false。|
 
 
+## KeyOptions
+
+按键操作选项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| key1 | number | 否  | 是  | 操作时注入的第一个按键值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。 |
+| key2 | number | 否  | 是  | 操作时注入的第二个按键值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。<br> **说明：** 仅设置key2而不设置key1时，将抛出17000007参数校验失败的错误。 |
+
+## TouchOptions
+
+触摸操作通用选项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| speed | number | 否  | 是  | 操作速率，取值范围为200-40000的整数，默认值为600，单位：px/s。取值为超出取值范围的非负数或为null/undefined时按照默认值600处理，为负数时抛出17000007错误码。 |
+| duration | number | 否  | 是  | 操作持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出17000007错误码，为null或undefined时使用默认值。 |
+| pressure | number | 否  | 是  | 触摸的压力值，取值范围为0-1，默认值为0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出17000007错误码。 |
+
+## PenKey
+
+手写笔按键类型枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 值 | 说明 |
+|------|---|------|
+| HANDWRITING | 0 | 书写键。 |
+| SMART | 1 | 智慧键。 |
+| AIR_MOUSE | 2 | 空鼠键。 |
+
+## PenMode
+
+手写笔模式枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 值 | 说明 |
+|------|---|------|
+| HANDWRITING | 0 | 手写模式。 |
+| AIR_MOUSE | 1 | 空鼠模式。 |
+
+## PenKeyOperation
+
+手写笔按键操作类型枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 值 | 说明 |
+|------|---|------|
+| CLICK | 0 | 单击。 |
+| DOUBLE_CLICK | 1 | 双击。 |
+
+## PenKeyOperationOptions
+
+手写笔按键操作选项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| point | [Point](#point9) | 否  | 是  | 空鼠模式下的坐标点，在[triggerPenKey](#triggerpenkey)接口中，当参数key设置为[AIR_MOUSE](#penkey)时必须设置该属性，否则接口调用抛出17000007错误码。 |
+
 ## On<sup>9+</sup>
 
 UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
 On提供的API能力具有以下几个特点:<br>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br>2、控件属性支持多种匹配模式。<br>3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore9)和[ON.isAfter](#isafter9)等API限定邻近控件特征进行辅助定位。<br>On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
 
 ```ts
+// xxx.test.ets
 import { ON } from '@kit.TestKit';
 
 ON.text('123').type('Button');
@@ -256,8 +417,10 @@ text(txt: string, pattern?: MatchPattern): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.text('123'); // 使用静态构造器ON创建On对象，指定目标控件的text属性。
+
+let on: On = ON.text('123'); // 使用静态构造器ON创建On对象，指定目标控件的text属性。
 ```
 
 ### id<sup>9+</sup>
@@ -293,16 +456,17 @@ id(id: string): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目标控件的id属性。
+let on: On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目标控件的id属性。
 ```
 
 ### id<sup>18+</sup>
 
 id(id: string, pattern: MatchPattern): On
 
-指定目标控件id属性，返回On对象自身。
+指定目标控件id属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -332,9 +496,10 @@ id(id: string, pattern: MatchPattern): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('id', MatchPattern.REG_EXP_ICASE); // 忽略大小写匹配控件的id属性值
+let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // 忽略大小写匹配控件的id属性值
 ```
 
 ### type<sup>9+</sup>
@@ -370,15 +535,17 @@ type(tp: string): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
+
+let on: On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
 ```
 
 ### type<sup>18+</sup>
 
 type(tp: string, pattern: MatchPattern): On
 
-指定目标控件的控件类型属性，返回On对象自身。
+指定目标控件的控件类型属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -408,8 +575,10 @@ type(tp: string, pattern: MatchPattern): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON, MatchPattern } from '@kit.TestKit';
-let on:On = ON.type('Button', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
+
+let on: On = ON.type('Button', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
 ```
 
 ### clickable<sup>9+</sup>
@@ -445,8 +614,10 @@ clickable(b?: boolean): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.clickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可点击状态属性。
+
+let on: On = ON.clickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可点击状态属性。
 ```
 
 ### longClickable<sup>9+</sup>
@@ -482,8 +653,10 @@ longClickable(b?: boolean): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.longClickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可长按点击状态属性。
+
+let on: On = ON.longClickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可长按点击状态属性。
 ```
 
 ### scrollable<sup>9+</sup>
@@ -519,8 +692,10 @@ scrollable(b?: boolean): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.scrollable(true); // 使用静态构造器ON创建On对象，指定目标控件的可滑动状态属性。
+
+let on: On = ON.scrollable(true); // 使用静态构造器ON创建On对象，指定目标控件的可滑动状态属性。
 ```
 
 ### enabled<sup>9+</sup>
@@ -556,8 +731,10 @@ enabled(b?: boolean): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.enabled(true); // 使用静态构造器ON创建On对象，指定目标控件的使能状态属性。
+
+let on: On = ON.enabled(true); // 使用静态构造器ON创建On对象，指定目标控件的使能状态属性。
 ```
 
 ### focused<sup>9+</sup>
@@ -593,8 +770,10 @@ focused(b?: boolean): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.focused(true); // 使用静态构造器ON创建On对象，指定目标控件的获焦状态属性。
+
+let on: On = ON.focused(true); // 使用静态构造器ON创建On对象，指定目标控件的获焦状态属性。
 ```
 
 ### selected<sup>9+</sup>
@@ -630,8 +809,10 @@ selected(b?: boolean): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.selected(true); // 使用静态构造器ON创建On对象，指定目标控件的被选中状态属性。
+
+let on: On = ON.selected(true); // 使用静态构造器ON创建On对象，指定目标控件的被选中状态属性。
 ```
 
 ### checked<sup>9+</sup>
@@ -667,8 +848,10 @@ checked(b?: boolean): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checked(true); // 使用静态构造器ON创建On对象，指定目标控件的被勾选状态属性
+
+let on: On = ON.checked(true); // 使用静态构造器ON创建On对象，指定目标控件的被勾选状态属性
 ```
 
 ### checkable<sup>9+</sup>
@@ -704,8 +887,10 @@ checkable(b?: boolean): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checkable(true); // 使用静态构造器ON创建On对象，指定目标控件的能否被勾选状态属性。
+
+let on: On = ON.checkable(true); // 使用静态构造器ON创建On对象，指定目标控件的能否被勾选状态属性。
 ```
 
 ### isBefore<sup>9+</sup>
@@ -741,10 +926,56 @@ isBefore(on: On): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之前。
-let on:On = ON.type('Button').isBefore(ON.text('123'));  // 查找text为123之前的第一个Button组件
+let on: On = ON.type('Button').isBefore(ON.text('123')); // 查找text为123之前的第一个Button组件
+```
+
+### isBefore
+
+isBefore(com: Component): On
+
+指定目标控件位于给出的特征控件之前，返回On对象自身。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型       | 必填 | 说明                 |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | 是   | 特征控件。 <!--RP3--><!--RP3End-->  |
+
+**返回值：**
+
+| 类型       | 说明                                                 |
+| ---------- | ---------------------------------------------------- |
+| [On](#on9) | 返回指定目标控件位于给出的特征控件之前的On对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver = Driver.create();
+  let com: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').isBefore(com); // 查找第一个Text组件之前的text为123的组件
+}
 ```
 
 ### isAfter<sup>9+</sup>
@@ -780,10 +1011,56 @@ isAfter(on: On): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之后。
-let on:On = ON.type('Text').isAfter(ON.text('123'));  // 查找 text为123之后的第一个Text组件
+let on: On = ON.type('Text').isAfter(ON.text('123')); // 查找 text为123之后的第一个Text组件
+```
+
+### isAfter
+
+isAfter(com: Component): On
+
+指定目标控件位于给出的特征控件之后，返回On对象自身。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型       | 必填 | 说明                 |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | 是   | 特征控件。 <!--RP3--><!--RP3End-->  |
+
+**返回值：**
+
+| 类型       | 说明                                                 |
+| ---------- | ---------------------------------------------------- |
+| [On](#on9) | 返回指定目标控件位于给出的特征控件之后的On对象。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver = Driver.create();
+  let com: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').isAfter(com); // 查找第一个Text组件之后的text为123的组件
+}
 ```
 
 ### within<sup>10+</sup>
@@ -819,9 +1096,56 @@ within(on: On): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
+
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之内。
-let on:On = ON.text('java').within(ON.type('Scroll'));  // 查找Scroller里面的text为java的子组件
+let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroller里面的text为java的子组件
+```
+
+### within
+
+within(com: Component): On
+
+指定目标控件位于给出的特征控件之内，返回On对象自身。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型       | 必填 | 说明                 |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | 是   | 特征控件。<!--RP3--><!--RP3End-->  |
+
+**返回值：**
+
+| 类型       | 说明                                               |
+| ---------- | -------------------------------------------------- |
+| [On](#on9) | 返回指定目标控件位于给出的特征控件内的On对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver = Driver.create();
+  let com: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').within(com); // 查找第一个Text组件内部的text为123的组件
+}
 ```
 
 ### inWindow<sup>10+</sup>
@@ -857,8 +1181,10 @@ inWindow(bundleName: string): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.inWindow('com.uitestScene.acts'); // 使用静态构造器ON创建On对象，指定目标控件位于给出的应用窗口内。
+
+let on: On = ON.inWindow('com.uitestScene.acts'); // 使用静态构造器ON创建On对象，指定目标控件位于给出的应用窗口内。
 ```
 
 ### description<sup>11+</sup>
@@ -895,8 +1221,10 @@ description(val: string, pattern?: MatchPattern): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.description('123'); // 使用静态构造器ON创建On对象，指定目标控件的description属性。
+
+let on: On = ON.description('123'); // 使用静态构造器ON创建On对象，指定目标控件的description属性。
 ```
 
 ### hint<sup>18+</sup>
@@ -933,9 +1261,10 @@ hint(val: string, pattern?: MatchPattern): On
 **示例：**
 
 ```ts
- import { MatchPattern, On, ON } from '@kit.TestKit';
- 
- let on:On = ON.hint('welcome', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的提示文本属性。
+// xxx.test.ets
+import { MatchPattern, On, ON } from '@kit.TestKit';
+
+let on: On = ON.hint('welcome', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的提示文本属性。
 ```
 
 ### belongingDisplay<sup>20+</sup>
@@ -962,7 +1291,7 @@ belongingDisplay(displayId: number): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -971,16 +1300,17 @@ belongingDisplay(displayId: number): On
 **示例：**
 
 ```ts
- import { On, ON } from '@kit.TestKit';
- 
- let on:On = ON.belongingDisplay(0); // 使用静态构造器ON创建On对象，指定目标控件所属屏幕ID
+// xxx.test.ets
+import { On, ON } from '@kit.TestKit';
+
+let on: On = ON.belongingDisplay(0); // 使用静态构造器ON创建On对象，指定目标控件所属屏幕ID
 ```
 
 ### originalText<sup>20+</sup>
 
 originalText(text: string, pattern?: MatchPattern): On
 
-指定目标控件的文本属性，支持多种匹配模式，返回On对象自身。
+指定控件的文本内容和文本匹配模式，返回On对象自身。
 
 > **说明**
 >
@@ -1005,7 +1335,7 @@ originalText(text: string, pattern?: MatchPattern): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1014,21 +1344,23 @@ originalText(text: string, pattern?: MatchPattern): On
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.originalText('123'); // 使用静态构造器ON创建On对象，指定目标控件的originalText属性
+let on: On = ON.originalText('123'); // 使用静态构造器ON创建On对象，指定目标控件的originalText属性
 ```
 
 ## Component<sup>9+</sup>
 
 UiTest框架在API9中，Component类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
+
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
 ### click<sup>9+</sup>
 
 click(): Promise\<void>
 
-控件对象进行点击操作，使用Promise异步回调。
+控件对象进行点击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1038,23 +1370,25 @@ click(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON, Component } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
   await button.click();
 }
@@ -1064,7 +1398,7 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-控件对象进行双击操作，使用Promise异步回调。
+控件对象进行双击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1074,21 +1408,23 @@ doubleClick(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
-import {Component, Driver, ON } from '@kit.TestKit';
+// xxx.test.ets
+import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1100,7 +1436,7 @@ async function demo() {
 
 longClick(): Promise\<void>
 
-控件对象进行长按操作，使用Promise异步回调。
+控件对象进行长按操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1110,21 +1446,23 @@ longClick(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1136,7 +1474,7 @@ async function demo() {
 
 getId(): Promise\<string>
 
-获取控件对象的id值，使用Promise异步回调。
+获取控件对象的id值。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1150,17 +1488,19 @@ getId(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1172,7 +1512,7 @@ async function demo() {
 
 getText(): Promise\<string>
 
-获取控件对象的文本信息，使用Promise异步回调。
+获取控件对象的文本信息。使用Promise异步回调。
 
 > **说明**
 >
@@ -1190,17 +1530,19 @@ getText(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1212,7 +1554,7 @@ async function demo() {
 
 getType(): Promise\<string>
 
-获取控件对象的控件类型，使用Promise异步回调。
+获取控件对象的控件类型。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1226,17 +1568,19 @@ getType(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1248,7 +1592,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-获取控件对象的边框信息，使用Promise异步回调。
+获取控件对象的边框信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1262,17 +1606,19 @@ getBounds(): Promise\<Rect>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1284,7 +1630,7 @@ async function demo() {
 
 getBoundsCenter(): Promise\<Point>
 
-获取控件对象所占区域的中心点信息，使用Promise异步回调。
+获取控件对象所占区域的中心点信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1298,17 +1644,19 @@ getBoundsCenter(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1320,7 +1668,7 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-获取控件对象可点击属性，使用Promise异步回调。
+获取控件对象可点击属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1334,24 +1682,26 @@ isClickable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isClickable()) {
-    console.info('This button can be Clicked');
+  if (await button.isClickable()) {
+    console.info('This button can be clicked');
   } else {
-    console.info('This button can not be Clicked');
+    console.info('This button can not be clicked');
   }
 }
 ```
@@ -1360,7 +1710,7 @@ async function demo() {
 
 isLongClickable(): Promise\<boolean>
 
-获取控件对象可长按点击属性，使用Promise异步回调。
+获取控件对象可长按点击属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1374,24 +1724,26 @@ isLongClickable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isLongClickable()) {
-    console.info('This button can longClick');
+  if (await button.isLongClickable()) {
+    console.info('This button supports long click');
   } else {
-    console.info('This button can not longClick');
+    console.info('This button can not support long click');
   }
 }
 ```
@@ -1400,7 +1752,7 @@ async function demo() {
 
 isChecked(): Promise\<boolean>
 
-获取控件对象被勾选状态，使用Promise异步回调。
+获取控件对象被勾选状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1414,21 +1766,23 @@ isChecked(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isChecked()) {
+  if (await checkBox.isChecked()) {
     console.info('This checkBox is checked');
   } else {
     console.info('This checkBox is not checked');
@@ -1440,7 +1794,7 @@ async function demo() {
 
 isCheckable(): Promise\<boolean>
 
-获取控件对象能否被勾选属性，使用Promise异步回调。
+获取控件对象能否被勾选属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1454,21 +1808,23 @@ isCheckable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isCheckable()) {
+  if (await checkBox.isCheckable()) {
     console.info('This checkBox is checkable');
   } else {
     console.info('This checkBox is not checkable');
@@ -1480,7 +1836,7 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-获取控件对象可滑动属性，使用Promise异步回调。
+获取控件对象可滑动属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1494,21 +1850,23 @@ isScrollable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.scrollable(true));
-  if(await scrollBar.isScrollable()) {
+  if (await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
     console.info('This scrollBar can not be operated');
@@ -1521,7 +1879,7 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-获取控件使能状态，使用Promise异步回调。
+获取控件使能状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1535,21 +1893,23 @@ isEnabled(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isEnabled()) {
+  if (await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
     console.info('This button can not be operated');
@@ -1561,7 +1921,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-判断控件对象获焦状态，使用Promise异步回调。
+判断控件对象获焦状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1575,21 +1935,23 @@ isFocused(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isFocused()) {
+  if (await button.isFocused()) {
     console.info('This button is focused');
   } else {
     console.info('This button is not focused');
@@ -1601,7 +1963,7 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-获取控件对象被选中状态，使用Promise异步回调。
+获取控件对象被选中状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1615,21 +1977,23 @@ isSelected(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isSelected()) {
+  if (await button.isSelected()) {
     console.info('This button is selected');
   } else {
     console.info('This button is not selected');
@@ -1641,7 +2005,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-清空组件内原有文本并输入指定文本内容，仅针对可编辑的文本组件生效，使用Promise异步回调。
+清空组件内原有文本并输入指定文本内容，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1651,7 +2015,7 @@ inputText(text: string): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **参数：**
 
@@ -1661,18 +2025,20 @@ inputText(text: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1684,7 +2050,7 @@ async function demo() {
 
 inputText(text: string, mode: InputTextMode): Promise\<void>
 
-向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效，使用Promise异步回调。
+向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1695,27 +2061,28 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
 | text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 |
-| mode | [InputTextMode](#inputtextmode20)  | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。<br> **说明：** InputTextMode.addition取值为ture时，在控件已有文本末尾后追加指定文本。取值为false时，指定文本将覆盖控件已有文本。|
+| mode | [InputTextMode](#inputtextmode20)  | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。<br> **说明：** InputTextMode.addition取值为true时，在控件已有文本末尾后追加指定文本。取值为false时，指定文本将覆盖控件已有文本。|
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 
 **示例：**
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function mode_demo() {
@@ -1730,7 +2097,7 @@ async function mode_demo() {
 
 clearText(): Promise\<void>
 
-清除控件的文本信息，仅针对可编辑的文本组件生效，使用Promise异步回调。
+清除控件的文本信息，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1740,20 +2107,22 @@ clearText(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1765,7 +2134,7 @@ async function demo() {
 
 scrollSearch(on: On): Promise\<Component>
 
-在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动查找目标控件（适用支持滑动的控件）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1785,17 +2154,18 @@ scrollSearch(on: On): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1809,7 +2179,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动查找目标控件（适用支持滑动的控件），支持指定滑动方向和滑动起止点与组件边框的偏移量。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1831,18 +2201,20 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1854,7 +2226,7 @@ async function demo() {
 
 scrollToTop(speed?: number): Promise\<void>
 
-在控件上滑动到顶部（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动到顶部（适用支持滑动的控件）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1864,28 +2236,30 @@ scrollToTop(speed?: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1897,7 +2271,7 @@ async function demo() {
 
 scrollToBottom(speed?: number): Promise\<void>
 
-在控件上滑动到底部（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动到底部（适用支持滑动的控件）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1907,28 +2281,30 @@ scrollToBottom(speed?: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1940,7 +2316,7 @@ async function demo() {
 
 dragTo(target: Component): Promise\<void>
 
-将控件拖拽至目标控件处，使用Promise异步回调。
+将控件拖拽至目标控件处。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1958,22 +2334,24 @@ dragTo(target: Component): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1986,7 +2364,7 @@ async function demo() {
 
 pinchOut(scale: number): Promise\<void>
 
-将控件按指定的比例进行捏合放大，使用Promise异步回调。
+将控件按指定的比例进行捏合放大。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2002,22 +2380,24 @@ pinchOut(scale: number): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2029,7 +2409,7 @@ async function demo() {
 
 pinchIn(scale: number): Promise\<void>
 
-将控件按指定的比例进行捏合缩小，使用Promise异步回调。
+将控件按指定的比例进行捏合缩小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2045,22 +2425,24 @@ pinchIn(scale: number): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2072,7 +2454,7 @@ async function demo() {
 
 getDescription(): Promise\<string>
 
-获取控件对象的描述信息，使用Promise异步回调。
+获取控件对象的描述信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2086,17 +2468,19 @@ getDescription(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000004 | The window or component is invisible or destroyed.                  |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -2107,7 +2491,7 @@ async function demo() {
 
 getHint(): Promise\<string>
 
-获取控件对象的提示文本，使用Promise异步回调。
+获取控件对象的提示文本。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2121,17 +2505,19 @@ getHint(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('TextInput'));
@@ -2142,7 +2528,7 @@ async function demo() {
 
 getDisplayId(): Promise\<number>
 
-获取控件对象所属的屏幕ID，使用Promise异步回调。
+获取控件对象所属的屏幕ID。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2156,16 +2542,17 @@ getDisplayId(): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2179,11 +2566,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-获取控件对象的文本信息，使用Promise异步回调。
-
-> **说明**
->
-> 如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
+获取控件对象的文本信息。使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2197,16 +2580,17 @@ getOriginalText(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2219,7 +2603,8 @@ async function demo() {
 ## Driver<sup>9+</sup>
 
 Driver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。
-该类提供的方法除Driver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
+
+该类提供的方法除Driver.create()和Driver.createUIEventObserver()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 ### create<sup>9+</sup>
 
@@ -2239,7 +2624,7 @@ static create(): Driver
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2248,7 +2633,9 @@ static create(): Driver
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
 }
@@ -2258,7 +2645,7 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-在给定的时间内延时，使用Promise异步回调。
+在给定的时间内延时。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2274,21 +2661,23 @@ delayMs(duration: number): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.delayMs(1000);
@@ -2299,7 +2688,7 @@ async function demo() {
 
 findComponent(on: On): Promise\<Component>
 
-根据给出的目标控件属性要求查找目标控件，使用Promise异步回调。
+根据给出的目标控件属性要求查找目标控件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2319,17 +2708,19 @@ findComponent(on: On): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.text('next page'));
@@ -2340,7 +2731,7 @@ async function demo() {
 
 findComponents(on: On): Promise\<Array\<Component>>
 
-根据给出的目标控件属性要求查找出所有匹配控件，以列表保存，使用Promise异步回调。
+根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2360,17 +2751,19 @@ findComponents(on: On): Promise\<Array\<Component>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let buttonList: Array<Component> = await driver.findComponents(ON.text('next page'));
@@ -2381,7 +2774,7 @@ async function demo() {
 
 findWindow(filter: WindowFilter): Promise\<UiWindow>
 
-通过指定窗口的属性来查找目标窗口，使用Promise异步回调。
+通过指定窗口的属性来查找目标窗口。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2401,20 +2794,22 @@ findWindow(filter: WindowFilter): Promise\<UiWindow>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
 }
 ```
 
@@ -2422,7 +2817,7 @@ async function demo() {
 
 waitForComponent(on: On, time: number): Promise\<Component>
 
-在用户给定的时间内，持续查找满足控件属性要求的目标控件，使用Promise异步回调。
+在用户给定的时间内，持续查找满足控件属性要求的目标控件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2443,20 +2838,22 @@ waitForComponent(on: On, time: number): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.waitForComponent(ON.text('next page'),500);
+  let button: Component = await driver.waitForComponent(ON.text('next page'), 500);
 }
 ```
 
@@ -2464,7 +2861,7 @@ async function demo() {
 
 assertComponentExist(on: On): Promise\<void>
 
-断言API，用于断言当前界面是否存在满足给出的目标属性的控件，使用Promise异步回调。
+断言API，用于断言当前界面是否存在满足给出的目标属性的控件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2480,22 +2877,24 @@ assertComponentExist(on: On): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000003 | Assertion failed.   |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.assertComponentExist(ON.text('next page'));
@@ -2506,7 +2905,7 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-进行点击BACK键的操作，使用Promise异步回调。
+进行点击BACK键的操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2516,20 +2915,22 @@ pressBack(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack();
@@ -2540,7 +2941,7 @@ async function demo() {
 
 pressBack(displayId: number): Promise\<void>
 
-对指定屏幕进行点击BACK键的操作，使用Promise异步回调。
+对指定屏幕进行点击BACK键的操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2556,21 +2957,23 @@ pressBack(displayId: number): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack(0);
@@ -2581,7 +2984,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-传入key值实现模拟点击对应按键的效果，使用Promise异步回调。
+传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2591,26 +2994,27 @@ triggerKey(keyCode: number): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | number | 是   | 指定的key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
@@ -2624,7 +3028,7 @@ async function demo() {
 
 triggerKey(keyCode: number, displayId: number): Promise\<void>
 
-在指定屏幕，传入key值实现模拟点击对应按键的效果，使用Promise异步回调。
+在指定屏幕，传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2634,27 +3038,28 @@ triggerKey(keyCode: number, displayId: number): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | number | 是   | 指定的key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 | displayId | number | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
@@ -2668,7 +3073,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
-通过给定的key值，找到对应组合键并点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的key值，找到对应组合键并点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2678,29 +3083,31 @@ triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key1   | number | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key2   | number | 否   | 指定的第三个key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key0   | number | 是   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key1   | number | 是   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key2   | number | 否   | 指定的第三个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.triggerCombineKeys(2072, 2047, 2035);
@@ -2711,7 +3118,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
 
-通过给定的key值，找到对应组合键，并在指定屏幕下进行点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的key值，找到对应组合键，并在指定屏幕下进行点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2721,29 +3128,30 @@ triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key1   | number | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key2   | number | 否   | 指定的第三个key值，取值范围：大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key0   | number | 是   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key1   | number | 是   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key2   | number | 否   | 指定的第三个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 | displayId | number | 否  | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2756,7 +3164,7 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-在目标坐标点单击，使用Promise异步回调。
+在目标坐标点单击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2773,24 +3181,26 @@ click(x: number, y: number): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.click(100,100);
+  await driver.click(100, 100);
 }
 ```
 
@@ -2798,7 +3208,7 @@ async function demo() {
 
 clickAt(point: Point): Promise\<void>
 
-在目标坐标点进行单击，使用Promise异步回调。
+在目标坐标点进行单击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2814,20 +3224,21 @@ clickAt(point: Point): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2836,11 +3247,61 @@ async function demo() {
 }
 ```
 
+### clickAt
+
+clickAt(point: Point, options?: TouchOptions): Promise\<void>
+
+在目标坐标点进行单击，支持指定触摸选项。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                            |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
+| options      | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置TouchOptions中的pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    pressure: 0.5
+  };
+  // 在目标坐标点进行单击，并指定触摸压力
+  await driver.clickAt({ x: 100, y: 100, displayId: 0 }, options);
+}
+```
+
 ### doubleClick<sup>9+</sup>
 
 doubleClick(x: number, y: number): Promise\<void>
 
-在目标坐标点双击，使用Promise异步回调。
+在目标坐标点双击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2857,24 +3318,26 @@ doubleClick(x: number, y: number): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.doubleClick(100,100);
+  await driver.doubleClick(100, 100);
 }
 ```
 
@@ -2882,7 +3345,7 @@ async function demo() {
 
 doubleClickAt(point: Point): Promise\<void>
 
-对目标坐标进行双击，使用Promise异步回调。
+对目标坐标进行双击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2898,20 +3361,21 @@ doubleClickAt(point: Point): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2924,7 +3388,7 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-在目标坐标点长按，使用Promise异步回调。
+在目标坐标点长按。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2941,24 +3405,26 @@ longClick(x: number, y: number): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.longClick(100,100);
+  await driver.longClick(100, 100);
 }
 ```
 
@@ -2966,7 +3432,7 @@ async function demo() {
 
 longClickAt(point: Point, duration?: number): Promise\<void>
 
-长按目标坐标点，支持指定长按时长，使用Promise异步回调。
+长按目标坐标点，支持指定长按时长。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2983,20 +3449,21 @@ longClickAt(point: Point, duration?: number): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3005,11 +3472,62 @@ async function demo() {
 }
 ```
 
+### longClickAt
+
+longClickAt(point: Point, options?: TouchOptions): Promise\<void>
+
+长按目标坐标点，支持指定触摸选项。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 |说明                                            |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
+| options      | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置TouchOptions中的duration和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    duration: 2000, // 长按持续2000ms
+    pressure: 0.8  // 触摸压力值
+  };
+  // 在目标坐标点进行长按，并指定长按时长和触摸压力
+  await driver.longClickAt({ x: 100, y: 100, displayId: 0 }, options);
+}
+```
+
 ### swipe<sup>9+</sup>
 
 swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-从起始坐标点滑向目的坐标点，使用Promise异步回调。
+从起始坐标点滑向目的坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3023,30 +3541,32 @@ swipe(startx: number, starty: number, endx: number, endy: number, speed?: number
 | starty | number | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。                       |
 | endx   | number | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。                       |
 | endy   | number | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。                       |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipe(100,100,200,200,600);
+  await driver.swipe(100, 100, 200, 200, 600);
 }
 ```
 
@@ -3054,7 +3574,7 @@ async function demo() {
 
 swipeBetween(from: Point, to: Point, speed?: number): Promise\<void>
 
-从起始坐标点滑向目标坐标点，使用Promise异步回调。
+从起始坐标点滑向目标坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3066,31 +3586,84 @@ swipeBetween(from: Point, to: Point, speed?: number): Promise\<void>
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipeBetween({x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800);
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800);
+}
+```
+
+### swipeBetween
+
+swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+
+从起始坐标点滑向目标坐标点，支持指定触摸选项。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                   |
+| ------ | ------ | ---- |------------------------------------------------------|
+| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置TouchOptions中的speed和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    speed: 800,   // 滑动速率800px/s
+    pressure: 0.5  // 触摸压力值
+  };
+  // 从起始坐标点滑向目标坐标点，并指定滑动速率和触摸压力
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -3098,7 +3671,7 @@ async function demo() {
 
 drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-从起始坐标点拖拽至目的坐标点，使用Promise异步回调。
+从起始坐标点拖拽至目的坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3114,26 +3687,26 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 | starty | number | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。              |
 | endx   | number | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。              |
 | endy   | number | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。              |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。|
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 17000002 | The API does not support concurrent calls. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3146,7 +3719,7 @@ async function demo() {
 
 dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-从起始坐标点拖拽至目标坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
+从起始坐标点拖拽至目标坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3160,32 +3733,88 @@ dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
 | duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.dragBetween( {x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800, 1500);
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800, 1500);
+}
+```
+
+### dragBetween
+
+dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+
+从起始坐标点拖拽至目标坐标点，支持指定触摸选项。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                     |
+| ------ | ------ | ---- |--------------------------------------------------------|
+| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置TouchOptions中的pressure、speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    speed: 800,     // 拖拽速率800px/s
+    duration: 2000, // 拖拽前长按2000ms
+    pressure: 0.5   // 触摸压力值
+  };
+  // 从起始坐标点拖拽至目标坐标点，并指定拖拽速率、长按时长和触摸压力
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -3193,7 +3822,7 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
+捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3213,17 +3842,19 @@ screenCap(savePath: string): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');
@@ -3234,7 +3865,7 @@ async function demo() {
 
 screenCap(savePath: string, displayId: number): Promise\<boolean>
 
-捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
+捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3245,7 +3876,7 @@ screenCap(savePath: string, displayId: number): Promise\<boolean>
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | 文件保存路径。路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。 |
-| displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | number | 是  | 指定设备屏幕ID，取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -3255,16 +3886,17 @@ screenCap(savePath: string, displayId: number): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3273,11 +3905,58 @@ async function demo() {
 }
 ```
 
+### dumpLayout
+
+dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
+
+获取当前布局信息并保存为JSON格式的文件。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                       |
+| -------- | ------ | ---- | ------------------------------------------ |
+| savePath | string | 是   | JSON文件保存路径。路径需为当前应用的沙箱目录。 |
+| displayId     | number | 否  | 指定设备屏幕ID，默认为主屏幕的displayId。 |
+
+**返回值：**
+
+| 类型              | 说明                                        |
+| ----------------- |-------------------------------------------|
+| Promise\<boolean> | Promise对象，返回布局信息导出和文件存储是否成功完成。true：完成。false：未完成。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // 获取当前布局信息并保存为JSON文件
+  await driver.dumpLayout('/data/storage/el2/base/cache/layout.json', 0);
+}
+```
+
 ### setDisplayRotation<sup>9+</sup>
 
 setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
-将当前场景的显示方向设置为指定的显示方向，使用Promise异步回调。适用于可旋转的应用场景。
+将当前场景的显示方向设置为指定的显示方向。使用Promise异步回调。适用于可旋转的应用场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3295,21 +3974,23 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, DisplayRotation } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotation(DisplayRotation.ROTATION_180);
@@ -3320,7 +4001,7 @@ async function demo() {
 
 getDisplayRotation(): Promise\<DisplayRotation>
 
-获取当前设备的屏幕显示方向，使用Promise异步回调。
+获取当前设备的屏幕显示方向。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3334,16 +4015,18 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { DisplayRotation, Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let rotation: DisplayRotation = await driver.getDisplayRotation();
@@ -3354,7 +4037,7 @@ async function demo() {
 
 getDisplayRotation(displayId: number): Promise\<DisplayRotation>
 
-获取当前设备指定屏幕的显示方向，使用Promise异步回调。
+获取当前设备指定屏幕的显示方向。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3364,7 +4047,7 @@ getDisplayRotation(displayId: number): Promise\<DisplayRotation>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | number | 是  | 指定设备屏幕ID，取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -3374,16 +4057,17 @@ getDisplayRotation(displayId: number): Promise\<DisplayRotation>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { DisplayRotation, Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3396,7 +4080,7 @@ async function demo() {
 
 setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
-启用/禁用设备旋转屏幕的功能，使用Promise异步回调。
+启用/禁用设备旋转屏幕的功能。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3414,21 +4098,23 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotationEnabled(false);
@@ -3439,7 +4125,7 @@ async function demo() {
 
 getDisplaySize(): Promise\<Point>
 
-获取当前设备的屏幕大小，使用Promise异步回调。
+获取当前设备的屏幕大小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3453,15 +4139,16 @@ getDisplaySize(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3474,7 +4161,7 @@ async function demo() {
 
 getDisplaySize(displayId: number): Promise\<Point>
 
-获取当前设备指定屏幕的大小，使用Promise异步回调。
+获取当前设备指定屏幕的大小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3484,7 +4171,7 @@ getDisplaySize(displayId: number): Promise\<Point>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。               |
+| displayId     | number | 是  | 指定设备屏幕ID，取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。               |
 
 **返回值：**
 
@@ -3494,16 +4181,17 @@ getDisplaySize(displayId: number): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3516,7 +4204,7 @@ async function demo() {
 
 getDisplayDensity(): Promise\<Point>
 
-获取当前设备屏幕的分辨率，使用Promise异步回调。
+获取当前设备屏幕的分辨率。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3530,16 +4218,18 @@ getDisplayDensity(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let density = await driver.getDisplayDensity();
@@ -3550,7 +4240,7 @@ async function demo() {
 
 getDisplayDensity(displayId: number): Promise\<Point>
 
-获取当前设备指定屏幕的分辨率，使用Promise异步回调。
+获取当前设备指定屏幕的分辨率。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3560,7 +4250,7 @@ getDisplayDensity(displayId: number): Promise\<Point>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId | number | 是  | 指定设备屏幕ID，取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -3570,16 +4260,17 @@ getDisplayDensity(displayId: number): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3592,7 +4283,7 @@ async function demo() {
 
 wakeUpDisplay(): Promise\<void>
 
-唤醒当前设备即设备亮屏，使用Promise异步回调。
+唤醒当前设备即设备亮屏。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3602,20 +4293,22 @@ wakeUpDisplay(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.wakeUpDisplay();
@@ -3626,7 +4319,7 @@ async function demo() {
 
 pressHome(): Promise\<void>
 
-设备注入返回桌面操作，使用Promise异步回调。
+设备注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3638,20 +4331,22 @@ pressHome(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressHome();
@@ -3662,7 +4357,7 @@ async function demo() {
 
 pressHome(displayId: number): Promise\<void>
 
-设备指定屏幕上注入返回桌面操作，使用Promise异步回调。
+设备指定屏幕上注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3674,26 +4369,27 @@ pressHome(displayId: number): Promise\<void>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | number | 是  | 指定设备屏幕ID，取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3706,7 +4402,7 @@ async function demo() {
 
 waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
-判断当前界面的所有控件是否已经空闲，使用Promise异步回调。
+判断当前界面的所有控件是否已经空闲。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3727,20 +4423,22 @@ waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let idled:boolean = await driver.waitForIdle(4000,5000);
+  let idled: boolean = await driver.waitForIdle(4000, 5000);
 }
 ```
 
@@ -3748,7 +4446,7 @@ async function demo() {
 
 fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
 
-模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3761,31 +4459,32 @@ fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
 | from    | [Point](#point9) | 是   | 手指接触屏幕的起始点坐标。                                        |
 | to      | [Point](#point9) | 是   | 手指离开屏幕时的坐标点。                                         |
 | stepLen | number           | 是   | 间隔距离，取值大于等于0的整数，单位：px。                                         |
-| speed   | number           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed   | number           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.fling({x: 500, y: 480},{x: 450, y: 480}, 5, 600);
+  await driver.fling({ x: 500, y: 480 }, { x: 450, y: 480 }, 5, 600);
 }
 ```
 
@@ -3793,7 +4492,7 @@ async function demo() {
 
 injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean>
 
-向设备注入多指操作，使用Promise异步回调。
+向设备注入多指操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3804,7 +4503,7 @@ injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<bool
 | 参数名   | 类型                             | 必填 | 说明                                                     |
 | -------- | -------------------------------- | ---- |--------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。                                  |
-| speed    | number                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -3814,40 +4513,41 @@ injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<bool
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
   await driver.injectMultiPointerAction(pointers);
 }
 ```
 
 ### fling<sup>10+</sup>
 
-fling(direction: UiDirection, speed: number): Promise\<void>;
+fling(direction: UiDirection, speed: number): Promise\<void>
 
-指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向和滑动速率，模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3858,27 +4558,29 @@ fling(direction: UiDirection, speed: number): Promise\<void>;
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | number                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed     | number                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.fling(UiDirection.DOWN, 10000);
@@ -3889,7 +4591,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向、滑动速率和操作屏幕，模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3900,27 +4602,28 @@ fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | number                        | 是   | 滑动速率，取值范围为200-40000，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
-| displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| speed     | number                        | 是   | 滑动速率，取值范围为200-40000，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
+| displayId     | number | 是  | 指定设备屏幕ID，取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
@@ -3931,9 +4634,9 @@ async function demo() {
 
 ### screenCapture<sup>10+</sup>
 
-screenCapture(savePath: string, rect?: Rect): Promise\<boolean>;
+screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
-捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
+捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3954,28 +4657,35 @@ screenCapture(savePath: string, rect?: Rect): Promise\<boolean>;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {left: 0, top: 0, right: 100, bottom: 100});
+  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {
+    left: 0,
+    top: 0,
+    right: 100,
+    bottom: 100
+  });
 }
 ```
 
 ### mouseClick<sup>10+</sup>
 
-mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>;
+mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
+在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3987,39 +4697,41 @@ mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标点击的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | number                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | number                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | number                        | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | number                        | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+// xxx.test.ets
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
 ### mouseScroll<sup>10+</sup>
 
-mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>;
+mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
+在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4032,40 +4744,41 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): P
 | p      | [Point](#point9) | 是   | 鼠标点击的坐标。                                            |
 | down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。 |
 | d      | number           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。         |
-| key1   | number           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
-| key2   | number           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
+| key1   | number           | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
+| key2   | number           | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072);
 }
 ```
 
 ### mouseMoveTo<sup>10+</sup>
 
-mouseMoveTo(p: Point): Promise\<void>;
+mouseMoveTo(p: Point): Promise\<void>
 
-将鼠标光标移到目标点，使用Promise异步回调。
+将鼠标光标移到目标点。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4081,25 +4794,26 @@ mouseMoveTo(p: Point): Promise\<void>;
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveTo({x:100, y:100});
+  await driver.mouseMoveTo({ x: 100, y: 100 });
 }
 ```
 
@@ -4121,20 +4835,21 @@ createUIEventObserver(): UIEventObserver;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let observer: UIEventObserver = driver.createUIEventObserver();
 }
 ```
 
@@ -4142,7 +4857,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>
 
-在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度，使用Promise异步回调。
+在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4155,33 +4870,34 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, sp
 | p      | [Point](#point9) | 是   | 鼠标点击的坐标。                                             |
 | down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。  |
 | d      | number           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。          |
-| key1   | number           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| key2   | number           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| speed  | number           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，不在范围内设为默认值为20，单位：格/秒。 |
+| key1   | number           | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| key2   | number           | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| speed  | number           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072,20);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072, 20);
 }
 ```
 
@@ -4189,7 +4905,7 @@ async function demo() {
 
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标双击动作。
+在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标双击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4201,31 +4917,33 @@ mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Pr
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标双击的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | number                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
-| key2   | number                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key1   | number                        | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key2   | number                        | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+// xxx.test.ets
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDoubleClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseDoubleClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4233,7 +4951,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4245,31 +4963,33 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | number                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | number                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | number                        | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | number                        | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+// xxx.test.ets
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4277,7 +4997,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4289,33 +5009,34 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | p        | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId    | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1     | number                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2     | number                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1     | number                        | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2     | number                        | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 | duration | number | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+// xxx.test.ets
+import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
 }
 ```
 
@@ -4323,7 +5044,7 @@ async function demo() {
 
 mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标从起始坐标点滑向终点坐标点，使用Promise异步回调。
+鼠标从起始坐标点滑向终点坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4335,31 +5056,32 @@ mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to     | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed  | number           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | number           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveWithTrack({x:100, y:100}, {x:200, y:200}, 600);
+  await driver.mouseMoveWithTrack({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4367,7 +5089,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，使用Promise异步回调。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点。使用Promise异步回调。从API版本26.0.0开始，该接口支持鼠标跨屏拖拽操作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4381,31 +5103,32 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to     | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed  | number           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | number           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4413,7 +5136,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。从API版本26.0.0开始，该接口支持鼠标跨屏拖拽操作。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4427,32 +5150,92 @@ mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<v
 | --------- | ---------------- | ---- |--------------------------------------------------------|
 | from      | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to        | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed     | number           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | number           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 | duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600, 2000);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600, 2000);
+}
+```
+
+### mouseDrag
+
+mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
+
+按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。该接口支持鼠标跨屏拖拽操作。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
+
+**参数：**
+
+| 参数名  | 类型             | 必填 | 说明                                                     |
+| --------- | ---------------- | ---- |--------------------------------------------------------|
+| from      | [Point](#point9) | 是   | 起始点坐标。                                                 |
+| to        | [Point](#point9) | 是   | 终点坐标。                                                  |
+| touchOptions  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置TouchOptions中的speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
+| keyOptions  | [KeyOptions](#keyoptions) | 否   | 按键操作选项。拖拽过程中同时按下指定的按键。默认值继承[KeyOptions](#keyoptions)各属性默认值。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions, KeyOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let touchOptions: TouchOptions = {
+    speed: 800,     // 拖拽速率800px/s
+    duration: 2000  // 拖拽前长按2000ms
+  };
+  let keyOptions: KeyOptions = {
+    key1: 2072,  // Ctrl键
+    key2: 2019   // C键
+  };
+  // 鼠标拖拽并同时按下Ctrl+C组合键
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
 }
 ```
 
@@ -4460,7 +5243,7 @@ async function demo() {
 
 inputText(p: Point, text: string): Promise\<void>
 
-在指定坐标点输入文本，不清空组件内原有文本，直接在坐标处追加输入，使用Promise异步回调。
+在指定坐标点输入文本，不清空组件内原有文本，直接在坐标处追加输入。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4477,23 +5260,25 @@ inputText(p: Point, text: string): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
   await driver.inputText(point, '123');
@@ -4504,7 +5289,7 @@ async function demo() {
 
 inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 
-在指定坐标点输入文本，支持指定文本输入方式，使用Promise异步回调。
+在指定坐标点输入文本，支持指定文本输入方式。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4516,34 +5301,35 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | 是   | 输入文本的坐标点。 |
 | text   | string           | 是   |输入的文本信息，当前支持英文、中文和特殊字符。 |
-| mode | [InputTextMode](#inputtextmode20) | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。 <br> **说明：** <br> InputTextMode.addition取值为ture时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。 |
+| mode | [InputTextMode](#inputtextmode20) | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。 <br> **说明：** <br> InputTextMode.addition取值为true时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not support, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. function can not work correctly due to limited device capabilities. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
-  await driver.inputText(point, '123', {paste: true, addition: false});
+  await driver.inputText(point, '123', { paste: true, addition: false });
 }
 
 async function demo_Chinese() {
@@ -4559,7 +5345,7 @@ async function demo_Chinese() {
 
 touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: TouchPadSwipeOptions): Promise\<void>
 
-模拟触摸板多指滑动手势，使用Promise异步回调。
+模拟触摸板多指滑动手势。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4573,7 +5359,7 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 | ------ |-----------------------------------------------|----|-----------------------|
 | fingers      | number                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
 | direction | [UiDirection](#uidirection10)                 | 是  | 触摸板多指滑动的方向。           |
-| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项。        |
+| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项，默认取TouchPadSwipeOptions中各属性的默认值。        |
 
 **返回值：**
 
@@ -4583,21 +5369,72 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.        |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
+}
+```
+
+### touchPadTwoFingersScroll<sup>22+</sup>
+
+touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
+
+模拟触摸板双指滚动手势。使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在PC/2in1设备中可正常调用，在其他设备中返回17000005错误码。
+
+**参数：**
+
+| 参数名 | 类型                                            | 必填 | 说明                    |
+| ------ |-----------------------------------------------|----|-----------------------|
+| point       | [Point](#point9) | 是   | 触摸板双指滚动时鼠标光标的位置。                                            |
+| direction   | [UiDirection](#uidirection10)                 | 是  | 触摸板双指滚动的方向。           |
+| d           | number           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。         |
+| speed       | number           | 否   | 触摸板双指滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000005 | This operation is not supported.        |
+| 17000007 | Parameter verification failed.     |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, UiDirection } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.touchPadTwoFingersScroll({ x: 100, y: 100 }, UiDirection.UP, 20, 10);
 }
 ```
 
@@ -4605,7 +5442,7 @@ async function demo() {
 
 penClick(point: Point): Promise\<void>
 
-模拟手写笔点击操作，使用Promise异步回调。
+模拟手写笔点击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4625,20 +5462,22 @@ penClick(point: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penClick({x: 100, y: 100});
+  await driver.penClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4646,7 +5485,7 @@ async function demo() {
 
 penLongClick(point: Point, pressure?: number): Promise\<void>
 
-模拟手写笔长按操作，使用Promise异步回调。
+模拟手写笔长按操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4667,20 +5506,22 @@ penLongClick(point: Point, pressure?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penLongClick({x: 100, y: 100}, 0.5);
+  await driver.penLongClick({ x: 100, y: 100 }, 0.5);
 }
 ```
 
@@ -4688,7 +5529,7 @@ async function demo() {
 
 penDoubleClick(point: Point): Promise\<void>
 
-模拟手写笔双击操作，使用Promise异步回调。
+模拟手写笔双击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4709,20 +5550,22 @@ penDoubleClick(point: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penDoubleClick({x: 100, y: 100});
+  await driver.penDoubleClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4730,7 +5573,7 @@ async function demo() {
 
 penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number): Promise\<void>
 
-模拟手写笔的滑动操作，使用Promise异步回调。
+模拟手写笔的滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4742,7 +5585,7 @@ penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number):
 | ------ |-----------------------------------------------|----|--------------------------------------------------------|
 | startPoint      | [Point](#point9) | 是  | 起始位置的坐标点。                                              |
 | endPoint      | [Point](#point9) | 是  | 结束位置的坐标点。                                              |
-| speed      | number | 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 | pressure      | number | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。                        |
 
 **返回值：**
@@ -4753,20 +5596,22 @@ penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
- import { Driver } from '@kit.TestKit';
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
+  await driver.penSwipe({ x: 100, y: 100 }, { x: 100, y: 500 }, 600, 0.5);
 }
 ```
 
@@ -4774,7 +5619,7 @@ async function demo() {
 
 injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
 
-模拟手写笔多点连续注入操作，使用Promise异步回调。
+模拟手写笔多点连续注入操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4784,8 +5629,8 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 
 | 参数名 | 类型                                            | 必填 | 说明                                                                |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
-| speed      | number| 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。            |
+| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
+| speed      | number| 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。            |
 | pressure      | number | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
 
 
@@ -4797,24 +5642,85 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, PointerMatrix } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let pointer = PointerMatrix.create(1, 8);
   for (let step = 0; step < 8; step++) {
-    pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
+    pointer.setPoint(0, step, { x: 500, y: 1100 - 100 * step });
   }
   await driver.injectPenPointerAction(pointer, 600, 0.5);
+}
+```
+
+### triggerPenKey
+
+triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: PenKeyOperationOptions): Promise\<void>
+
+触发手写笔按键操作。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型       | 必填 | 说明                                                                 |
+| ------ | ---------- | ---- | -------------------------------------------------------------------- |
+| key | [PenKey](#penkey) | 是   | 手写笔按键。                                                   |
+| mode | [PenMode](#penmode) | 是   | 手写笔模式。                                                   |
+| operation | [PenKeyOperation](#penkeyoperation) | 是   | 操作类型。                                                     |
+| options | [PenKeyOperationOptions](#penkeyoperationoptions) | 否   | 操作选项，包括可选的坐标点。默认值继承[PenKeyOperationOptions](#penkeyoperationoptions)各属性默认值。 |
+
+**支持的参数组合：**
+- mode取值为[HANDWRITING](#penmode)时**：支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)。
+- mode取值为[AIR_MOUSE](#penmode)时**：支持key取值为[AIR_MOUSE](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)（需要在options中指定point）；支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)；支持key取值为[SMART](#penkey)，operation取值为[CLICK](#penkeyoperation)。
+- 使用其他参数组合将抛出17000007错误码。
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls. |
+| 17000005 | This operation is not supported. |
+| 17000007 | Parameter verification failed. Unsupported key, mode, and operation combination. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, PenKey, PenMode, PenKeyOperation } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // 手写模式下触发手写键单击
+  await driver.triggerPenKey(PenKey.HANDWRITING, PenMode.HANDWRITING, PenKeyOperation.CLICK);
+  // 空鼠模式下触发空鼠键双击
+  await driver.triggerPenKey(PenKey.AIR_MOUSE, PenMode.AIR_MOUSE, PenKeyOperation.DOUBLE_CLICK, { point: { x: 500, y: 500 } });
+  // 空鼠模式下触发智慧键单击
+  await driver.triggerPenKey(PenKey.SMART, PenMode.AIR_MOUSE, PenKeyOperation.CLICK);
 }
 ```
 
@@ -4822,7 +5728,7 @@ async function demo() {
 
 crownRotate(d: number, speed?: number): Promise\<void>
 
-注入手表表冠旋转事件，可指定旋转速度，使用Promise异步回调。
+注入手表表冠旋转事件，可指定旋转速度。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4835,27 +5741,28 @@ crownRotate(d: number, speed?: number): Promise\<void>
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | d      | number   | 是   | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。         |
-| speed  | number   | 否   | 手表表冠旋转的速度，取值范围：1-500的整数，默认值为20，单位：格/秒。<br> **说明：** 参数取值超出合法范围时，设为默认值20。 |
+| speed  | number   | 否   | 手表表冠旋转的速度，取值范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。<br> **说明：** 参数取值超出合法范围时，设为默认值20。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
-| 801 | Capability not support, function can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4864,6 +5771,256 @@ async function demo() {
   await driver.crownRotate(50, 30);
   // 逆时针旋转20格，旋转速度为30格/秒
   await driver.crownRotate(-20, 30);
+}
+```
+
+### knuckleKnock<sup>22+</sup>
+
+knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
+
+模拟指关节敲击屏幕操作。使用Promise异步回调。
+
+> **说明：**
+> 
+> 若设备关闭了指关节手势<!--RP4--><!--RP4End-->，则调用本接口返回17000005错误码。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在支持指关节操作的Phone、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
+**参数：**
+
+| 参数名 | 类型                                         | 必填 | 说明                                                             |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| pointers  | Array<[Point](#point9)>   | 是   | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。         |
+| times     | number   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000005 | This operation is not supported.             |
+| 17000007 |  Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, Point } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // 模拟指关节单指双击手势
+  let points: Array<Point> = [{ x: 100, y: 100 }];
+  await driver.knuckleKnock(points, 2);
+}
+```
+
+### injectKnucklePointerAction<sup>22+</sup>
+
+injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
+
+模拟指关节多点注入滑动操作。使用Promise异步回调。
+
+> **说明：**
+> 
+> 若设备关闭了指关节手势<!--RP4--><!--RP4End-->，则调用本接口返回17000005错误码。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在支持指关节操作的Phone、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
+**参数：**
+
+| 参数名 | 类型                                         | 必填 | 说明                                                             |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| pointers  | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。|
+| speed    | number                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000005 | This operation is not supported.             |
+| 17000007 |  Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, PointerMatrix } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // 模拟指关节滑动在屏幕上画'S'
+  let pointers: PointerMatrix = PointerMatrix.create(1, 6);
+  pointers.setPoint(0, 0, { x: 750, y: 300 });
+  pointers.setPoint(0, 1, { x: 500, y: 100 });
+  pointers.setPoint(0, 2, { x: 250, y: 300 });
+  pointers.setPoint(0, 3, { x: 750, y: 800 });
+  pointers.setPoint(0, 4, { x: 500, y: 1000 });
+  pointers.setPoint(0, 5, { x: 250, y: 800 });
+  await driver.injectKnucklePointerAction(pointers);
+}
+```
+
+### isComponentPresentWhenLongClick<sup>22+</sup>
+
+isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
+
+在坐标点长按，并查找目标控件是否存在。使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型                                         | 必填 | 说明                                                             |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | 是   | 目标控件的属性要求。 |
+| point  | [Point](#point9) | 是   | 长按的坐标点。 |
+| duration   | number     | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<boolean> | Promise对象。返回长按操作期间目标控件是否存在。true：存在。false：不存在。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 |  Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenLongClick(ON.id('123'), { x: 100, y: 100 }, 2000);
+}
+```
+
+### isComponentPresentWhenDrag<sup>22+</sup>
+
+isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
+
+从起始点拖拽至终止点，并查找目标控件是否存在。使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型                                         | 必填 | 说明                                                             |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | 是   | 目标控件的属性要求。 |
+| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
+| duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<boolean> | Promise对象。返回拖拽操作期间目标控件是否存在。true：存在。false：不存在。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 |  Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenDrag(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000, 2000);
+}
+```
+
+### isComponentPresentWhenSwipe<sup>22+</sup>
+
+isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
+
+从起始点滑向终止点，并查找目标控件是否存在。使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型                                         | 必填 | 说明                                                             |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | 是   | 目标控件的属性要求。 |
+| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<boolean> | Promise对象。返回滑动操作期间目标控件是否存在。true：存在。false：不存在。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 |  Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenSwipe(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000);
 }
 ```
 
@@ -4905,6 +6062,7 @@ static create(fingers: number, steps: number): PointerMatrix
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -4941,33 +6099,35 @@ setPoint(finger: number, step: number, point: Point): void
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
 }
 ```
 
 ## UiWindow<sup>9+</sup>
 
 UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
+
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 ### getBundleName<sup>9+</sup>
 
 getBundleName(): Promise\<string>
 
-获取窗口归属应用的包名信息，使用Promise异步回调。
+获取窗口归属应用的包名信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4981,21 +6141,22 @@ getBundleName(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let name: string = await window.getBundleName();
 }
 ```
@@ -5004,7 +6165,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-获取窗口的边框信息，使用Promise异步回调。
+获取窗口的边框信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5018,20 +6179,22 @@ getBounds(): Promise\<Rect>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let rect = await window.getBounds();
 }
 ```
@@ -5040,7 +6203,7 @@ async function demo() {
 
 getTitle(): Promise\<string>
 
-获取窗口的标题信息，使用Promise异步回调。
+获取窗口的标题信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5054,20 +6217,22 @@ getTitle(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let title = await window.getTitle();
 }
 ```
@@ -5076,7 +6241,7 @@ async function demo() {
 
 getWindowMode(): Promise\<WindowMode>
 
-获取窗口的窗口模式信息，使用Promise异步回调。
+获取窗口的窗口模式信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5090,20 +6255,22 @@ getWindowMode(): Promise\<WindowMode>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let mode = await window.getWindowMode();
 }
 ```
@@ -5112,7 +6279,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-判断窗口是否处于获焦状态，使用Promise异步回调。
+判断窗口是否处于获焦状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5126,20 +6293,22 @@ isFocused(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isFocused();
 }
 ```
@@ -5148,9 +6317,11 @@ async function demo() {
 
 isActived(): Promise\<boolean>
 
-判断窗口是否为用户正在交互窗口，使用Promise异步回调。
+判断窗口是否为用户正在交互窗口。使用Promise异步回调。
 
-从API version 9开始支持，从API version 11开始废弃，建议使用[isActive<sup>11+</sup>](#isactive11)替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[isActive<sup>11+</sup>](#isactive11)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5162,20 +6333,22 @@ isActived(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isActived();
 }
 ```
@@ -5184,7 +6357,7 @@ async function demo() {
 
 focus(): Promise\<void>
 
-让窗口获焦，使用Promise异步回调。
+让窗口获焦。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5198,20 +6371,22 @@ focus(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.focus();
 }
 ```
@@ -5220,13 +6395,13 @@ async function demo() {
 
 moveTo(x: number, y: number): Promise\<void>
 
-将窗口移动到目标点，使用Promise异步回调。适用于支持移动的窗口。
+将窗口移动到目标点。使用Promise异步回调。适用于支持移动的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **参数：**
 
@@ -5243,11 +6418,11 @@ moveTo(x: number, y: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
@@ -5255,10 +6430,12 @@ moveTo(x: number, y: number): Promise\<void>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.moveTo(100, 100);
 }
 ```
@@ -5267,11 +6444,13 @@ async function demo() {
 
 resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
-根据传入的宽、高和调整方向来调整窗口的大小，使用Promise异步回调。适用于支持调整大小的窗口。
+根据传入的宽、高和调整方向来调整窗口的大小。使用Promise异步回调。适用于支持调整大小的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **参数：**
 
@@ -5289,22 +6468,22 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
 
-| 错误码ID | 错误信息                               |
-| -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.                   |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 17000005 | This operation is not supported.         |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-
-**示例：**
+| 17000005 | This operation is not supported.                             |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ```ts
+// xxx.test.ets
 import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resize(100, 100, ResizeDirection.LEFT);
 }
 ```
@@ -5313,13 +6492,13 @@ async function demo() {
 
 split(): Promise\<void>
 
-将窗口模式切换成分屏模式，使用Promise异步回调。适用于支持切换分屏模式的窗口。
+将窗口模式切换成分屏模式。使用Promise异步回调。适用于支持切换分屏模式的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5329,21 +6508,23 @@ split(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.         |
 | 17000005 | This operation is not supported.         |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.split();
 }
 ```
@@ -5352,13 +6533,13 @@ async function demo() {
 
 maximize(): Promise\<void>
 
-将窗口最大化，使用Promise异步回调。适用于支持窗口最大化操作的窗口。
+将窗口最大化。使用Promise异步回调。适用于支持窗口最大化操作的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5368,21 +6549,23 @@ maximize(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.maximize();
 }
 ```
@@ -5391,13 +6574,13 @@ async function demo() {
 
 minimize(): Promise\<void>
 
-将窗口最小化，使用Promise异步回调。适用于支持窗口最小化操作的窗口。
+将窗口最小化。使用Promise异步回调。适用于支持窗口最小化操作的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5407,21 +6590,23 @@ minimize(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 | 17000005 | This operation is not supported.         |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.minimize();
 }
 ```
@@ -5430,37 +6615,39 @@ async function demo() {
 
 resume(): Promise\<void>
 
-将窗口恢复到之前的窗口模式，使用Promise异步回调。
+将窗口恢复到之前的窗口模式。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 | 17000005 | This operation is not supported.         |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resume();
 }
 ```
@@ -5469,37 +6656,39 @@ async function demo() {
 
 close(): Promise\<void>
 
-将窗口关闭，使用Promise异步回调。
+将窗口关闭。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let driver: Driver = Driver.create();
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.close();
 }
 ```
@@ -5508,7 +6697,7 @@ async function demo() {
 
 isActive(): Promise\<boolean>
 
-判断窗口是否为用户正在交互窗口，使用Promise异步回调。
+判断窗口是否为用户正在交互窗口。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5522,20 +6711,22 @@ isActive(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.         |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let focused = await window.isActive();
 }
 ```
@@ -5544,7 +6735,7 @@ async function demo() {
 
 getDisplayId(): Promise\<number>
 
-获取窗口所属的屏幕ID，使用Promise异步回调。
+获取窗口所属的屏幕ID。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5558,21 +6749,22 @@ getDisplayId(): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiWindow, Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let id = await window.getDisplayId();
 }
 ```
@@ -5583,7 +6775,7 @@ UI事件监听器。
 
 ### once('toastShow')<sup>10+</sup>
 
-once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 
 开始监听toast控件出现的事件，使用callback的形式返回结果。
 
@@ -5609,12 +6801,13 @@ once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer:  UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -5625,7 +6818,7 @@ async function demo() {
 
 ### once('dialogShow')<sup>10+</sup>
 
-once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void
 
 开始监听dialog控件出现的事件，使用callback的形式返回结果。
 
@@ -5651,12 +6844,13 @@ once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer: UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -5665,15 +6859,128 @@ async function demo() {
 }
 ```
 
+### once('windowChange')<sup>22+</sup>
+
+once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback\<UIElementInfo>): void
+
+开始监听指定类型的窗口变化事件，支持设置事件监听的扩展配置，监听到指定窗口变化事件时触发callback回调。仅支持[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)的窗口监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                               |
+| -------- | -------------------------------------------- | ---- | ---------------------------------- |
+| type     | string    | 是   | 订阅的事件类型，支持的事件为'windowChange'。当监听到窗口变化时，触发该事件。 |
+| windowChangeType     | [WindowChangeType](#windowchangetype22)   | 是   | 窗口变化事件类型。 |
+| options  | [WindowChangeOptions](#windowchangeoptions22)   | 是   | 窗口变化事件监听的扩展配置，包括监听超时时间和监听窗口对应包名。 |
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | 是   | 事件发生时执行的回调函数，返回事件的相关信息。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000005 | This operation is not supported.        |
+| 17000007  | Parameter verification failed.|
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver, WindowChangeOptions, WindowChangeType } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let options: WindowChangeOptions = {
+    timeout: 20000,
+    bundleName: 'com.example.myapplication'  // 请开发者替换为实际包名
+  }
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.windowChangeType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+  }
+  observer.once('windowChange', WindowChangeType.WINDOW_ADDED, options, callback);
+}
+```
+
+### once('componentEventOccur')<sup>22+</sup>
+
+once(type: 'componentEventOccur', componentEventType: ComponentEventType, options: ComponentEventOptions, callback: Callback\<UIElementInfo>): void
+
+开始监听指定类型的控件操作事件，支持设置事件监听的扩展配置，监听到指定控件操作事件时触发callback回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                               |
+| -------- | -------------------------------------------- | ---- | ---------------------------------- |
+| type     | string    | 是   | 订阅的事件类型，支持的事件为'componentEventOccur'。当监听到控件操作时，触发该事件。 |
+| componentEventType   | [ComponentEventType](#componenteventtype22)   | 是   | 控件操作事件类型。 |
+| options  | [ComponentEventOptions](#componenteventoptions22)  | 是 | 控件操作事件监听的扩展配置，包括监听超时时间和监听控件匹配条件。 |
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | 是   | 事件发生时执行的回调函数。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000005 | This operation is not supported.        |
+| 17000007  | Parameter verification failed.|
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver, ComponentEventOptions, ComponentEventType, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let option: ComponentEventOptions = {
+    timeout: 20000,
+    on: ON.id('123')  // 请开发者替换为实际存在的控件id值
+  };
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.componentEventType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+    console.info(UIElementInfo.componentId);
+    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.top.toString());
+    console.info(UIElementInfo.componentRect?.right.toString());
+    console.info(UIElementInfo.componentRect?.bottom.toString());
+  };
+  observer.once('componentEventOccur', ComponentEventType.COMPONENT_CLICKED, option, callback);
+}
+```
+
 ## By<sup>(deprecated)</sup>
 
 UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
 By提供的API能力具有以下几个特点:<br>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br>2、控件属性支持多种匹配模式。<br>3、支持控件绝对定位，相对定位，可通过[By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated)和[By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated)等API限定邻近控件特征进行辅助定位。<br>By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。
 
-从API version 9开始不再维护，建议使用[On<sup>9+</sup>](#on9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[On<sup>9+</sup>](#on9)替代。
 
 ```ts
+// xxx.test.ets
 import { BY } from '@kit.TestKit';
+
 BY.text('123').type('Button');
 ```
 
@@ -5683,7 +6990,9 @@ text(txt: string, pattern?: MatchPattern): By
 
 指定目标控件文本属性，支持多种匹配模式，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[text<sup>9+</sup>](#text9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[text<sup>9+</sup>](#text9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5703,7 +7012,9 @@ text(txt: string, pattern?: MatchPattern): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { BY, By } from '@kit.TestKit';
+
 let by: By = BY.text('123'); // 使用静态构造器BY创建by对象，指定目标控件的text属性。
 ```
 
@@ -5714,7 +7025,9 @@ key(key: string): By
 
 指定目标控件key值属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[id<sup>9+</sup>](#id9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](#id9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5733,7 +7046,9 @@ key(key: string): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.key('123'); // 使用静态构造器BY创建by对象，指定目标控件的key值属性。
 ```
 
@@ -5744,7 +7059,9 @@ id(id: number): By
 
 指定目标控件id属性，返回By对象自身。
 
-从API version 9开始废弃。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](#id9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5763,7 +7080,9 @@ id(id: number): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.id(123); // 使用静态构造器BY创建by对象，指定目标控件的id属性。
 ```
 
@@ -5774,7 +7093,9 @@ type(tp: string): By
 
 指定目标控件的控件类型属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[type<sup>9+</sup>](#type9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[type<sup>9+</sup>](#type9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5793,7 +7114,9 @@ type(tp: string): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.type('Button'); // 使用静态构造器BY创建by对象，指定目标控件的控件类型属性。
 ```
 
@@ -5804,7 +7127,9 @@ clickable(b?: boolean): By
 
 指定目标控件的可点击状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[clickable<sup>9+</sup>](#clickable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[clickable<sup>9+</sup>](#clickable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5823,7 +7148,9 @@ clickable(b?: boolean): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.clickable(true); // 使用静态构造器BY创建by对象，指定目标控件的可点击状态属性。
 ```
 
@@ -5834,7 +7161,9 @@ scrollable(b?: boolean): By
 
 指定目标控件的可滑动状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[scrollable<sup>9+</sup>](#scrollable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollable<sup>9+</sup>](#scrollable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5853,7 +7182,9 @@ scrollable(b?: boolean): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.scrollable(true); // 使用静态构造器BY创建by对象，指定目标控件的可滑动状态属性。
 ```
 
@@ -5863,7 +7194,9 @@ enabled(b?: boolean): By
 
 指定目标控件的使能状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[enabled<sup>9+</sup>](#enabled9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[enabled<sup>9+</sup>](#enabled9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5882,7 +7215,9 @@ enabled(b?: boolean): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.enabled(true); // 使用静态构造器BY创建by对象，指定目标控件的使能状态属性。
 ```
 
@@ -5892,7 +7227,9 @@ focused(b?: boolean): By
 
 指定目标控件的获焦状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[focused<sup>9+</sup>](#focused9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[focused<sup>9+</sup>](#focused9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5911,7 +7248,9 @@ focused(b?: boolean): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.focused(true); // 使用静态构造器BY创建by对象，指定目标控件的获焦状态属性。
 ```
 
@@ -5921,7 +7260,9 @@ selected(b?: boolean): By
 
 指定目标控件的被选中状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[selected<sup>9+</sup>](#selected9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[selected<sup>9+</sup>](#selected9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5940,7 +7281,9 @@ selected(b?: boolean): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.selected(true); // 使用静态构造器BY创建by对象，指定目标控件的被选中状态属性。
 ```
 
@@ -5950,7 +7293,9 @@ isBefore(by: By): By
 
 指定目标控件位于给出的特征属性控件之前，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[isBefore<sup>9+</sup>](#isbefore9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isBefore<sup>9+</sup>](#isbefore9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5969,6 +7314,7 @@ isBefore(by: By): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 // 使用静态构造器BY创建by对象，指定目标控件位于给出的特征属性控件之前。
@@ -5981,7 +7327,9 @@ isAfter(by: By): By
 
 指定目标控件位于给出的特征属性控件之后，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[isAfter<sup>9+</sup>](#isafter9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isAfter<sup>9+</sup>](#isafter9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6000,26 +7348,33 @@ isAfter(by: By): By
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 // 使用静态构造器BY创建by对象，指定目标控件位于给出的特征属性控件之后。
 let by: By = BY.type('Text').isAfter(BY.text('123')); // 查找 text为123之后的第一个Text组件
 ```
 
+
 ## UiComponent<sup>(deprecated)</sup>
 
 UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
+
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
-从API version 9开始不再维护，建议使用[Component<sup>9+</sup>](#component9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[Component<sup>9+</sup>](#component9)替代。
 
 ### click<sup>(deprecated)</sup>
 
 click(): Promise\<void>
 
-控件对象进行点击操作。
+控件对象进行点击操作。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[click<sup>9+</sup>](#click9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[click<sup>9+</sup>](#click9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6027,12 +7382,14 @@ click(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, Driver, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6044,9 +7401,11 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-控件对象进行双击操作。
+控件对象进行双击操作。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6054,12 +7413,14 @@ doubleClick(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6071,9 +7432,11 @@ async function demo() {
 
 longClick(): Promise\<void>
 
-控件对象进行长按操作。
+控件对象进行长按操作。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[longClick<sup>9+</sup>](#longclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick<sup>9+</sup>](#longclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6081,12 +7444,14 @@ longClick(): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6098,9 +7463,11 @@ async function demo() {
 
 getId(): Promise\<number>
 
-获取控件对象的id值。
+获取控件对象的id值。使用Promise异步回调。
 
-从API version 9开始不再维护，被废弃。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId<sup>9+</sup>](#getid9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6113,7 +7480,9 @@ getId(): Promise\<number>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6125,9 +7494,11 @@ async function demo() {
 
 getKey(): Promise\<string>
 
-获取控件对象的key值。
+获取控件对象的key值。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[getId<sup>9+</sup>](#getid9)
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId<sup>9+</sup>](#getid9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6140,7 +7511,9 @@ getKey(): Promise\<string>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6152,9 +7525,11 @@ async function demo() {
 
 getText(): Promise\<string>
 
-获取控件对象的文本信息。
+获取控件对象的文本信息。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[getText<sup>9+</sup>](#gettext9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getText<sup>9+</sup>](#gettext9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6167,7 +7542,9 @@ getText(): Promise\<string>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6179,9 +7556,11 @@ async function demo() {
 
 getType(): Promise\<string>
 
-获取控件对象的控件类型。
+获取控件对象的控件类型。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[getType<sup>9+</sup>](#gettype9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getType<sup>9+</sup>](#gettype9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6194,7 +7573,9 @@ getType(): Promise\<string>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6206,9 +7587,11 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-获取控件对象可点击状态。
+获取控件对象可点击状态。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[isClickable<sup>9+</sup>](#isclickable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isClickable<sup>9+</sup>](#isclickable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6221,7 +7604,9 @@ isClickable(): Promise\<boolean>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6237,9 +7622,11 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-获取控件对象可滑动状态。
+获取控件对象可滑动状态。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[isScrollable<sup>9+</sup>](#isscrollable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isScrollable<sup>9+</sup>](#isscrollable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6252,7 +7639,9 @@ isScrollable(): Promise\<boolean>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.scrollable(true));
@@ -6269,9 +7658,11 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-获取控件使能状态。
+获取控件使能状态。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[isEnabled<sup>9+</sup>](#isenabled9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isEnabled<sup>9+</sup>](#isenabled9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6284,7 +7675,9 @@ isEnabled(): Promise\<boolean>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6301,9 +7694,11 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-判断控件对象是否获焦。
+判断控件对象是否获焦。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[isFocused<sup>9+</sup>](#isfocused9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isFocused<sup>9+</sup>](#isfocused9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6316,7 +7711,9 @@ isFocused(): Promise\<boolean>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6332,9 +7729,11 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-获取控件对象被选中状态。
+获取控件对象被选中状态。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[isSelected<sup>9+</sup>](#isselected9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isSelected<sup>9+</sup>](#isselected9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6347,7 +7746,9 @@ isSelected(): Promise\<boolean>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6363,9 +7764,11 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-向控件中输入文本，仅针对可编辑的文本组件生效。
+向控件中输入文本，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[inputText<sup>9+</sup>](#inputtext9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText<sup>9+</sup>](#inputtext9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6379,12 +7782,14 @@ inputText(text: string): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let text: UiComponent = await driver.findComponent(BY.text('hello world'));
@@ -6396,9 +7801,11 @@ async function demo() {
 
 scrollSearch(by: By): Promise\<UiComponent>
 
-在控件上滑动查找目标控件（适用于List等支持滑动的控件）。
+在控件上滑动查找目标控件（适用于List等支持滑动的控件）。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[scrollSearch<sup>9+</sup>](#scrollsearch9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollSearch<sup>9+</sup>](#scrollsearch9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6417,7 +7824,9 @@ scrollSearch(by: By): Promise\<UiComponent>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.type('Scroll'));
@@ -6428,9 +7837,12 @@ async function demo() {
 ## UiDriver<sup>(deprecated)</sup>
 
 UiDriver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。
+
 该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
-从API version 9开始不再维护，建议使用[Driver<sup>9+</sup>](#driver9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[Driver<sup>9+</sup>](#driver9)替代。
 
 ### create<sup>(deprecated)</sup>
 
@@ -6438,7 +7850,9 @@ static create(): UiDriver
 
 静态方法，构造一个UiDriver对象，并返回该对象。
 
-从API version 9开始不再维护，建议使用[create<sup>9+</sup>](#create9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[create<sup>9+</sup>](#create9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6451,7 +7865,9 @@ static create(): UiDriver
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
 }
@@ -6461,9 +7877,11 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-UiDriver对象在给定的时间内延时。
+UiDriver对象在给定的时间内延时。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[delayMs<sup>9+</sup>](#delayms9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[delayMs<sup>9+</sup>](#delayms9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6477,12 +7895,14 @@ UiDriver对象在给定的时间内延时。
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.delayMs(1000);
@@ -6493,9 +7913,11 @@ async function demo() {
 
 findComponent(by: By): Promise\<UiComponent>
 
-在UiDriver对象中，根据给出的目标控件属性要求查找目标控件。
+在UiDriver对象中，根据给出的目标控件属性要求查找目标控件。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[findComponent<sup>9+</sup>](#findcomponent9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[findComponent<sup>9+</sup>](#findcomponent9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6514,7 +7936,9 @@ findComponent(by: By): Promise\<UiComponent>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.text('next page'));
@@ -6525,9 +7949,11 @@ async function demo() {
 
 findComponents(by: By): Promise\<Array\<UiComponent>>
 
-在UiDriver对象中，根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。
+在UiDriver对象中，根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[findComponents<sup>9+</sup>](#findcomponents9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[findComponents<sup>9+</sup>](#findcomponents9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6546,7 +7972,9 @@ findComponents(by: By): Promise\<Array\<UiComponent>>
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let buttonList: Array<UiComponent> = await driver.findComponents(BY.text('next page'));
@@ -6557,9 +7985,11 @@ async function demo() {
 
 assertComponentExist(by: By): Promise\<void>
 
-断言API，用于断言当前界面存在满足给出的目标控件属性的控件; 如果控件不存在，该API将抛出JS异常，使当前测试用例失败。
+断言API，用于断言当前界面存在满足给出的目标控件属性的控件; 如果控件不存在，该API将抛出JS异常，使当前测试用例失败。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[assertComponentExist<sup>9+</sup>](#assertcomponentexist9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[assertComponentExist<sup>9+</sup>](#assertcomponentexist9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6573,22 +8003,24 @@ assertComponentExist(by: By): Promise\<void>
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
 | 401      | if the input parameters are invalid.             |
-| 17000002 | if the async function was not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000003 | if the assertion failed.                         |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.assertComponentExist(BY.text('next page'));
@@ -6599,9 +8031,11 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-UiDriver对象进行点击BACK键的操作。
+UiDriver对象进行点击BACK键的操作。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[pressBack<sup>9+</sup>](#pressback9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[pressBack<sup>9+</sup>](#pressback9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6609,12 +8043,14 @@ UiDriver对象进行点击BACK键的操作。
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.pressBack();
@@ -6625,9 +8061,11 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-UiDriver对象采取如下操作：通过key值找到对应键并点击。
+UiDriver对象采取如下操作：通过key值找到对应键并点击。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[triggerKey<sup>9+</sup>](#triggerkey9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[triggerKey<sup>9+</sup>](#triggerkey9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6635,17 +8073,18 @@ UiDriver对象采取如下操作：通过key值找到对应键并点击。
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | 是   | 指定的key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | number | 是   | 指定的key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDriver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
@@ -6660,9 +8099,11 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-UiDriver对象采取如下操作：在目标坐标点单击。
+UiDriver对象采取如下操作：在目标坐标点单击。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[click<sup>9+</sup>](#click9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[click<sup>9+</sup>](#click9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6677,11 +8118,12 @@ UiDriver对象采取如下操作：在目标坐标点单击。
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -6694,9 +8136,11 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-UiDriver对象采取如下操作：在目标坐标点双击。
+UiDriver对象采取如下操作：在目标坐标点双击。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6711,11 +8155,12 @@ UiDriver对象采取如下操作：在目标坐标点双击。
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -6728,9 +8173,11 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。
+UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[longClick<sup>9+</sup>](#longclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick<sup>9+</sup>](#longclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6745,12 +8192,14 @@ UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.longClick(100, 100);
@@ -6761,9 +8210,11 @@ async function demo() {
 
 swipe(startx: number, starty: number, endx: number, endy: number): Promise\<void>
 
-UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目的坐标点。
+UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目的坐标点。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[swipe<sup>9+</sup>](#swipe9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[swipe<sup>9+</sup>](#swipe9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6780,11 +8231,12 @@ UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -6797,9 +8249,11 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中。
+UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[screenCap<sup>9+</sup>](#screencap9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[screenCap<sup>9+</sup>](#screencap9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6819,7 +8273,9 @@ UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的
 **示例：**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');

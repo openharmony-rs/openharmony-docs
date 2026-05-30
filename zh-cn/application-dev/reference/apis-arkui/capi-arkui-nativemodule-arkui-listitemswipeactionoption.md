@@ -2,10 +2,14 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @huchuyun-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_ListItemSwipeActionOption ArkUI_ListItemSwipeActionOption
+```
 
 ## 概述
 

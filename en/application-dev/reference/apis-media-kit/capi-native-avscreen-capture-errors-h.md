@@ -4,7 +4,7 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -32,7 +32,7 @@ The file declares the error codes generated during screen capture.
 
 ### OH_AVSCREEN_CAPTURE_ErrCode
 
-```
+```c
 enum OH_AVSCREEN_CAPTURE_ErrCode
 ```
 

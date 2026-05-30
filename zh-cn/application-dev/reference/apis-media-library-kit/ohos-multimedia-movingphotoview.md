@@ -4,20 +4,33 @@
 <!--Owner: @tangye123456-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @tinygreyy-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 用于播放动态照片文件并控制其播放状态的组件。
 
 > **说明：**
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > 当前不支持在预览器中使用MovingPhotoView组件。
 
 ## 导入模块
 
-```
-import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
-```
+> **说明：**
+>
+> - MovingPhotoViewAttribute是用于配置MovingPhotoView组件属性的关键接口。API version 21及之前版本，导入MovingPhotoView组件后需要开发者手动导入MovingPhotoViewAttribute，否则会编译报错。从API version 22开始，编译工具链识别到导入MovingPhotoView组件后，会自动导入MovingPhotoViewAttribute，无需开发者手动导入。
+> - 如果开发者手动导入MovingPhotoViewAttribute，DevEco Studio会将其显示置灰，API version 21及之前版本删除会编译报错，从API version 22开始，删除对功能无影响。
+ 
+   API version 21及之前版本：
+
+   ```ts
+   import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+   ```
+
+   API version 22及之后版本：
+   
+   ```ts
+   import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
+   ```
 
 ## MovingPhotoView
 
@@ -40,11 +53,11 @@ MovingPhotoView(options: MovingPhotoViewOptions)
 ## MovingPhotoViewOptions
 
 
-| 参数名      | 参数类型                                                                                         | 必填 | 参数描述                                                                                                                                        |
-| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| movingPhoto | [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | 是   | 支持媒体库MovingPhoto数据源，具体信息详见[MovingPhoto说明](arkts-apis-photoAccessHelper-MovingPhoto.md)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| controller  | [MovingPhotoViewController](#movingphotoviewcontroller)                                          | 否   | 设置动态照片控制器，可以控制动态照片的播放状态。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                      |
-| imageAIOptions<sup>18+</sup>   | [ImageAIOptions](../apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) | 否   | 设置动态照片AI分析选项，可配置分析类型或绑定一个分析控制器。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| 名称      | 类型                                                                                         | 只读 | 可选 | 说明                                                                                                                                        |
+| ----------- | ------------------------------------------------------------------------------------------------ | ----------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| movingPhoto | [photoAccessHelper.MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | 否 | 否  | 支持媒体库MovingPhoto数据源，具体信息详见[MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)说明。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| controller  | [MovingPhotoViewController](#movingphotoviewcontroller)                                          | 否 | 是   | 设置动态照片控制器，可以控制动态照片的播放状态。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                      |
+| imageAIOptions<sup>18+</sup>   | [ImageAIOptions](../apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) | 否 | 是 | 设置动态照片AI分析选项，可配置分析类型或绑定一个分析控制器。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -165,7 +178,7 @@ enableAnalyzer(enabled: boolean)
 
 onComplete(callback: MovingPhotoViewEventCallback)
 
-动态照片加载完成图片时触发该事件。
+动态照片加载完成图片时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -182,7 +195,7 @@ onComplete(callback: MovingPhotoViewEventCallback)
 
 onStart(callback: MovingPhotoViewEventCallback)
 
-播放时触发该事件。
+播放时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -199,7 +212,7 @@ onStart(callback: MovingPhotoViewEventCallback)
 
 onPause(callback: MovingPhotoViewEventCallback)
 
-播放暂停时触发该事件。
+播放暂停时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -216,7 +229,7 @@ onPause(callback: MovingPhotoViewEventCallback)
 
 onFinish(callback: MovingPhotoViewEventCallback)
 
-播放结束时触发该事件。
+播放结束时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -233,7 +246,7 @@ onFinish(callback: MovingPhotoViewEventCallback)
 
 onError(callback: MovingPhotoViewEventCallback)
 
-播放失败时触发该事件。
+播放失败时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -250,7 +263,7 @@ onError(callback: MovingPhotoViewEventCallback)
 
 onStop(callback: MovingPhotoViewEventCallback)
 
-播放停止时触发该事件(当stop()方法被调用后触发)。
+播放停止时触发该事件(当stop()方法被调用后触发)。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -267,7 +280,7 @@ onStop(callback: MovingPhotoViewEventCallback)
 
 onPrepared(callback: MovingPhotoViewEventCallback)
 
-动态照片准备播放时触发该事件。
+动态照片准备播放时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -341,7 +354,9 @@ refreshMovingPhoto()
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { emitter } from '@kit.BasicServicesKit';
 import { dataSharePredicates } from '@kit.ArkData';
-import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// API version 21及之前版本导入方式：import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// API version 22及之后版本导入方式如下：
+import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 
 const PHOTO_SELECT_EVENT_ID: number = 80001
 
@@ -406,19 +421,19 @@ struct MovingPhotoViewDemo {
             .autoPlayPeriod(0, 600)
             .objectFit(ImageFit.Cover)
             .onComplete(() => {
-              console.log('Completed');
+              console.info('Completed');
             })
             .onStart(() => {
-              console.log('onStart')
+              console.info('onStart')
             })
             .onFinish(() => {
-              console.log('onFinish')
+              console.info('onFinish')
             })
             .onStop(() => {
-              console.log('onStop')
+              console.info('onStop')
             })
             .onError(() => {
-              console.log('onError')
+              console.error('onError')
             })
         }
       }
@@ -484,7 +499,9 @@ class MediaDataHandlerMovingPhoto implements photoAccessHelper.MediaAssetDataHan
 
 ```ts
 // xxx.ets
-import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// API version 21及之前版本导入方式：import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// API version 22及之后版本导入方式如下：
+import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 
 let data: photoAccessHelper.MovingPhoto
 async function loading(context: Context) {
@@ -571,6 +588,6 @@ struct Index {
   }
 }
 ```
-![AutomicEnergy](figures/AutomicEnergy.gif)
+![AutomaticEnergy](figures/AutomaticEnergy.gif)
 
 <!--RP1--><!--RP1End-->

@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 坚盾守护模式提供给高安全需求用户的系统级别安全模式。该模式通过限制设备基础功能，增强安全性，有效抵御远程攻击面的针对性攻击。
 
@@ -28,7 +28,7 @@
 
 - 禁止使用Service Worker能力。
 
-- 禁止使用非代理UDP流量，防止WebRTC泄露真实源ip。
+- 禁止使用非代理UDP流量，防止WebRTC泄露真实源IP。
 
 - 禁止即时编译（JIT）能力。
 
@@ -59,7 +59,7 @@
 
 - 排查前端代码是否存在MediaDevices.getUserMedia接口调用，该接口用于请求访问流媒体设备，如摄像头和麦克风。在坚盾守护模式下，相关接口调用会抛出异常：“can't use getUserMedia on advancedSecurityMode!”
 
-- 排查前端代码是否存在ServiceWorker相关接口调用，该机制实现离线缓存、网络请求拦截和推送通知等功能，在坚盾守护模式下无法创建。
+- 排查前端代码是否存在Service Worker相关接口调用，该机制实现离线缓存、网络请求拦截和推送通知等功能，在坚盾守护模式下无法创建。
 
 - 在坚盾守护模式下，WebRTC禁止使用非代理UDP传输。应用需验证WebRTC场景下的网络功能和性能。
 

@@ -4,7 +4,7 @@
 <!--Owner: @lanshouren-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -27,7 +27,7 @@
 
 | 名称       | 类型      | 默认值   | 必填   | 描述                   |
 | -------- | ------- | ----- | ---- | -------------------- |
-| vertical | boolean | false | 否    | 使用水平分割线还是垂直分割线，默认水平。 |
+| vertical | boolean | false | 否    | 使用水平分割线还是垂直分割线，默认使用水平分割线。 |
 
 >  **说明：**
 >  不支持focusable、disabled属性。

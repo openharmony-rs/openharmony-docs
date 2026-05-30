@@ -17,13 +17,13 @@
 
 前台位置权限（用于管控应用前台获取位置信息行为）：
 
-精确位置权限：[ohos.permission.LOCATION](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/permissions-for-all.md#ohospermissionlocation)：允许应用获取设备精确位置信息；需要先申请模糊位置权限才可申请此权限。
+精确位置权限：[ohos.permission.LOCATION](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/permissions-for-all.md#ohospermissionlocation)：允许应用获取设备精确位置信息；需要先申请模糊位置权限才可申请此权限。
 
-模糊位置权限：[ohos.permission.APPROXIMATELY_LOCATION](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/permissions-for-all.md#ohospermissionapproximately_location)：允许应用获取设备模糊位置信息。
+模糊位置权限：[ohos.permission.APPROXIMATELY_LOCATION](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/permissions-for-all.md#ohospermissionapproximately_location)：允许应用获取设备模糊位置信息。
 
 后台位置权限（用于管控应用后台获取位置信息行为）：
 
-[ohos.permission.LOCATION_IN_BACKGROUND](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/permissions-for-all.md#ohospermissionlocation_in_background)：允许应用在后台运行时获取设备位置信息；需要先申请前台位置权限后，才可申请此权限。
+[ohos.permission.LOCATION_IN_BACKGROUND](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/permissions-for-all.md#ohospermissionlocation_in_background)：允许应用在后台运行时获取设备位置信息；需要先申请前台位置权限后，才可申请此权限。
 
 具体受影响的弹窗场景见下文：
 

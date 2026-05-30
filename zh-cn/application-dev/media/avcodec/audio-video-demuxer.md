@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 开发者可以调用本模块的Native API接口，完成媒体数据的解封装相关操作，即从比特流数据中取出音频、视频、字幕等媒体sample，获得DRM相关信息。
 
@@ -33,9 +33,9 @@
 
 > **说明**
 >
-> - 调用解封装能力解析网络播放路径，需要[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET
-> - 调用解封装能力解析本地文件，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.READ_MEDIA
-> - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法请参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)
+> - 调用解封装能力解析网络播放路径，需要[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+> - 调用解封装能力解析本地文件，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.READ_MEDIA。
+> - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -82,7 +82,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       printf("get stat failed");
       return;
    }
-   // 为 fd 资源文件创建 source 资源实例, 传入 offset 不为文件起始位置或 size 不为文件大小时，可能会因不能获取完整数据导致 source 创建失败、或后续解封装失败等问题。
+   // 注意：offset（文件起始偏移）、fileSize（文件大小）需与待解析文件匹配。
+   // fd 指向单个资源文件时，offset为0、fileSize为资源文件大小。
+   // fd 指向多个连续拼接的资源文件时（如多个mp3二进制拼接）：offset、fileSize 按待解析文件实际偏移和大小设置。
    OH_AVSource *source = OH_AVSource_CreateWithFD(fd, 0, fileSize);
    if (source == nullptr) {
       printf("create source failed");
@@ -139,7 +141,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
       infile.seekg(pos, std::ios::beg);
       if (length <= 0) {
-         printf("AVSourceReadAt : raed length less than zero!\n");
+         printf("AVSourceReadAt : read length less than zero!\n");
          return MediaDataSourceError::SOURCE_ERROR_IO;
       }
       char* buffer = new char[length];
@@ -162,7 +164,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       return;
    }
    ```
-4. 注册[DRM信息监听函数](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)（可选，若非DRM码流或已获得[DRM信息](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md)，可跳过此步）。
+4. 注册DRM信息监听函数，接口参考[Demuxer_MediaKeySystemInfoCallback()](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)（可选）。如果不是DRM码流或已获得DRM信息，可跳过此步骤。DRM信息内容参考[DRM_MediaKeySystemInfo](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md)。
 
    设置DRM信息监听的接口，回调函数支持返回解封装器实例，适用于多个解封装器场景。
 
@@ -197,10 +199,10 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
    // 注意事项：
    // 1. customKey需与封装时写入的key完全一致（含完整命名层级），
-   //    示例key仅为演示，实际应替换为用户自定义的字符串。
-   //    例：封装时写入key为"com.openharmony.custom.meta.abc.efg"，
-   //       获取时必须使用完整key，截断使用"com.openharmony.custom.meta.abc"会失败。
-   // 2. value类型需与封装时数据类型匹配，示例为string类型。其余类型需调用对应接口，支持int/float类型；API 20起，支持buffer类型。
+   // 示例key仅为演示，实际应替换为用户自定义的字符串。
+   // 例：封装时写入key为"com.openharmony.custom.meta.abc.efg"，
+   // 获取时必须使用完整key，截断使用"com.openharmony.custom.meta.abc"会失败。
+   // 2. value类型需与封装时数据类型匹配，示例为string类型。其余类型需调用对应接口，支持int/float类型；API version 20起，支持buffer类型。
    const char *customKey = "com.openharmony.custom.meta.string"; // 替换为实际封装时使用的完整key。
    const char *customValue;
    if (!OH_AVFormat_GetStringValue(customMetadataFormat, customKey, &customValue)) {
@@ -241,7 +243,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    const char* mimetype = nullptr;
    uint8_t *codecConfig = nullptr;
    size_t bufferSize = 0;
-   int32_t trackType;
+   int32_t trackType = -1;
    for (uint32_t index = 0; index < (static_cast<uint32_t>(trackCount)); index++) {
       // 获取轨道信息，用户可通过该接口获取对应轨道级别属性，具体支持信息参考附表 2。
       OH_AVFormat *trackFormat = OH_AVSource_GetTrackFormat(source, index);
@@ -249,6 +251,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
          printf("get track format failed");
          return;
       }
+      // 获取轨道类型, 不支持的类型不会修改trackType的值。
+      // 注意trackType初始值建议设为非有效值（如-1），避免误用。
       if (!OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType)) {
          printf("get track type from track format failed");
          return;
@@ -260,7 +264,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
          }
          int32_t* referenceIds;
          size_t referenceIdsCount;
-         if (!OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &referenceIds, &referenceIdsCount)) {
+         if (!OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &referenceIds, &referenceIdsCount)) {
             printf("get reference track ids from auxiliary track failed");
          }
          // 根据辅助轨类型处理轨道参考关系。
@@ -345,7 +349,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVDemuxer_ReadSampleBuffer接口本身可能存在耗时久，取决于文件IO，建议以异步方式进行调用。
    ```c++
    // 为每个线程定义处理函数。
-   void ReadTrackSamples(OH_AVFormatDemuxer *demuxer, uint32_t trackIndex, int buffer_size, 
+   void ReadTrackSamples(OH_AVDemuxer *demuxer, uint32_t trackIndex, int32_t buffer_size, 
                          std::atomic<bool>& isEnd, std::atomic<bool>& threadFinished)
    {
       // 创建缓冲区。
@@ -359,6 +363,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       int32_t ret;
 
       while (!isEnd.load()) {
+         // 在调用OH_AVDemuxer_ReadSampleBuffer接口获取数据前，需要先调用OH_AVDemuxer_SelectTrackByID选中需要获取数据的轨道。
+         // 注意：
+         // 在avi、mpg、wmv格式下，由于容器标准不支持封装时间戳信息，所以demuxer解出的帧中不含pts信息，需要调用方根据帧率及解码出帧后的显示顺序自行计算显示时间戳信息。
          ret = OH_AVDemuxer_ReadSampleBuffer(demuxer, trackIndex, buffer);
          if (ret == AV_ERR_OK) {
                OH_AVBuffer_GetBufferAttr(buffer, &info);
@@ -380,8 +387,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
 
    // 根据需求计算合适的缓冲区大小。
-   int audioBufferSize = 4096;  // 典型音频缓冲区大小。
-   int videoBufferSize = w * h * 3 >> 1;  // 原始视频缓冲区大小。
+   int32_t audioBufferSize = 4096;  // 典型音频缓冲区大小。
+   int32_t videoBufferSize = w * h * 3 >> 1;  // 原始视频缓冲区大小。
 
    // 创建原子变量用于线程通信。
    std::atomic<bool> audioIsEnd{false}, videoIsEnd{false}; // 表示流是否结束。
@@ -415,10 +422,10 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 ### 文件级别属性支持范围
 
 > **说明：**
-> 正常解析时才可以获取对应属性数据，如果文件信息错误或缺失，将导致解析异常，无法获取数据。
-> 当前GBK格式字符集数据会转换为UTF8提供，其他类型字符集如果需要转换为UTF8格式使用，需要调用方自行转换，参考[icu4c](../../reference/native-lib/icu4c.md)。
-> 
-> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+> - 正常解析时才可以获取对应属性数据，如果文件信息错误或缺失，将导致解析异常，无法获取数据。
+> - 当前GBK格式字符集数据会转换为UTF8提供，其他类型字符集如果需要转换为UTF8格式使用，需要调用方自行转换，参考[icu4c](../../reference/native-lib/icu4c.md)。
+> - 从API version 23开始，部分OGG格式资源，如OH_MD_KEY_TITLE、OH_MD_KEY_ARTIST和OH_MD_KEY_ALBUM存在于轨道属性中，可从轨道级别属性中获取。
+> - 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
 **表1** 文件级别属性支持范围
 | 名称 | 描述 |
@@ -444,7 +451,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 > 正常解析时才可以获取对应属性数据；如果文件信息错误或缺失，将导致解析异常，无法获取数据。
 > 辅助轨属性范围与实际媒体类型（音频、视频）保持一致。
 > 
-> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
 **表2** 轨道级别属性支持范围
 | 名称 | 描述 | 视频轨支持 | 音频轨支持 | 字幕轨支持 | 辅助轨支持 |

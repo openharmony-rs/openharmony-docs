@@ -1,5 +1,12 @@
 # Atomic Layout
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The atomic layout implements adaptive layout for screens of different sizes and types. Designers can use the atomic layout to define adaptive rules for components on UIs of different widgets. Developers can use the atomic layout to implement the adaptive UI features matching the design effect for a variety of screens.
 
 

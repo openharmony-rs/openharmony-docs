@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 Ability信息，未做特殊说明的属性，均通过[bundle.getAbilityInfo](js-apis-Bundle.md#bundlegetabilityinfodeprecated)获取。
 
@@ -12,11 +12,13 @@ Ability信息，未做特殊说明的属性，均通过[bundle.getAbilityInfo](j
 > 
 > 本模块首批接口从API version 7 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API Version 9开始，该模块不再维护，建议使用[bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md)替代。
+> 从API version 9开始，该模块不再维护，建议使用[bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md)替代。
 
-## AbilityInfo<sup>(deprecated)<sup>
+## AbilityInfo<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md#abilityinfo-1)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md#abilityinfo-1)替代。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -47,5 +49,5 @@ Ability信息，未做特殊说明的属性，均通过[bundle.getAbilityInfo](j
 | uri                   | string                                                       | 是   | 否   | 获取Ability的统一资源标识符（URI）。<br />**模型约束：** 此接口仅可在FA模型下使用。 |
 | labelId               | number                                                       | 是   | 否   | Ability的标签的资源id值。                                            |
 | subType               | bundle.AbilitySubType                                               | 是   | 否   | Ability中枚举使用的模板的子类型。<br />**模型约束：** 此接口仅可在FA模型下使用。 |
-| metaData<sup>8+</sup> | Array\<[CustomizeData](js-apis-bundle-CustomizeData.md)>     | 是   | 否   | ability的元信息。<br />通过调用[bundle.getAbilityInfo](js-apis-Bundle.md#bundlegetabilityinfodeprecated)接口时，传入GET_ABILITY_INFO_WITH_METADATA获取。 |
-| enabled<sup>8+</sup>  | boolean                                                      | 是   | 否   | ability是否可用，取值为true表示Ability可用，取值为false表示Ability不可用。                                            |
+| metaData<sup>8+</sup> | Array\<[CustomizeData](js-apis-bundle-CustomizeData.md)>     | 是   | 否   | Ability的元信息。<br />通过调用[bundle.getAbilityInfo](js-apis-Bundle.md#bundlegetabilityinfodeprecated)接口时，传入GET_ABILITY_INFO_WITH_METADATA获取。 |
+| enabled<sup>8+</sup>  | boolean                                                      | 是   | 否   | Ability是否可用，取值为true表示Ability可用，取值为false表示Ability不可用。                                            |

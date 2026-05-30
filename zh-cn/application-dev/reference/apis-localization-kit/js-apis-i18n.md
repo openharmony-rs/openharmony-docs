@@ -5,15 +5,17 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
-本模块提供系统相关的或者增强的[国际化](../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化能力。
+本模块提供系统相关的以及增强的[国际化](../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[国际化-Intl](js-apis-intl.md)模块提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整的国际化能力。接口中使用的名词定义如下：
+- 模式字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)和单引号包裹的自定义文本自由组合而成的字符串。
+- 框架字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)自由组合而成的字符串，不支持自定义文本。
 
 >  **说明：**
 >
 >  - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块接口依据[CLDR](https://cldr.unicode.org) 国际化数据库进行处理，随着CLDR演进，本模块接口处理结果可能发生变化。其中，API version 12对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)，具体数据变化请参考官方链接。
+>  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如时间日期格式化接口，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅[CLDR官方文档](https://cldr.unicode.org/)。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 
@@ -28,7 +30,7 @@ import { i18n } from '@kit.LocalizationKit';
 
 提供系统属性相关的能力，包括语言地区名称翻译、支持的语言地区列表获取和系统语言地区获取等。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -72,6 +74,7 @@ static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let displayCountry: string = i18n.System.getDisplayCountry('CN', 'en-GB'); // displayCountry = 'China'
@@ -117,6 +120,7 @@ static getDisplayLanguage(language: string, locale: string, sentenceCase?: boole
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // 获取“中文”在英文下的翻译
@@ -133,8 +137,6 @@ static getSystemLanguages(): Array&lt;string&gt;
 
 获取系统支持的语言列表。
 
-从API version 11开始，该类型支持在ArkTS卡片中使用。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
@@ -147,6 +149,8 @@ static getSystemLanguages(): Array&lt;string&gt;
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // systemLanguages = [ 'ug', 'bo', 'zh-Hant', 'en-Latn-US', 'zh-Hans' ]
   let systemLanguages: Array<string> = i18n.System.getSystemLanguages();
   ```
@@ -171,7 +175,7 @@ static getSystemCountries(language: string): Array&lt;string&gt;
 
 | 类型                  | 说明           |
 | ------------------- | ------------ |
-| Array&lt;string&gt; | 某种特定语言下系统支持的国家地区列表。 |
+| Array&lt;string&gt; | language参数指定的语言下，系统支持的国家/地区列表。 |
 
 **错误码：**
 
@@ -189,6 +193,7 @@ static getSystemCountries(language: string): Array&lt;string&gt;
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // systemCountries = [ 'ZW', 'YT', 'YE', ..., 'ER', 'CN', 'DE' ]
@@ -239,6 +244,7 @@ static isSuggested(language: string, region?: string): boolean
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let isSuggestedCountry: boolean = i18n.System.isSuggested('zh', 'CN'); // isSuggestedCountry = true
@@ -269,6 +275,8 @@ static getSystemLanguage(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemLanguage: string = i18n.System.getSystemLanguage(); // 如果系统语言为简体中文，systemLanguage = 'zh-Hans'
   ```
 
@@ -290,6 +298,8 @@ static getSystemRegion(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemRegion: string = i18n.System.getSystemRegion(); // 如果系统地区为中国，systemRegion = 'CN'
   ```
 
@@ -313,6 +323,8 @@ static getSystemLocale(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemLocale: string = i18n.System.getSystemLocale(); // 如果系统语言为简体中文、地区为中国，systemLocale = 'zh-Hans-CN'
   ```
 
@@ -358,6 +370,8 @@ static is24HourClock(): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let is24HourClock: boolean = i18n.System.is24HourClock(); // 如果系统时制是24小时制，is24HourClock = true
   ```
 
@@ -380,6 +394,8 @@ static getPreferredLanguageList(): Array&lt;string&gt;
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let preferredLanguageList: Array<string> = i18n.System.getPreferredLanguageList();
   ```
 
@@ -401,6 +417,8 @@ static getFirstPreferredLanguage(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let firstPreferredLanguage: string = i18n.System.getFirstPreferredLanguage();
   ```
 
@@ -432,6 +450,7 @@ static setAppPreferredLanguage(language: string): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setAppPreferredLanguage('zh');
@@ -459,6 +478,8 @@ static getAppPreferredLanguage(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let appPreferredLanguage: string = i18n.System.getAppPreferredLanguage();
   ```
 
@@ -481,6 +502,8 @@ static getUsingLocalDigit(): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let usingLocalDigit: boolean = i18n.System.getUsingLocalDigit();
   ```
 
@@ -518,6 +541,7 @@ static getSimplifiedLanguage(language?: string): string
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // simplifiedLanguage = 'zh'
@@ -548,6 +572,8 @@ static getTemperatureType(): TemperatureType
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let temperatureType: i18n.TemperatureType = i18n.System.getTemperatureType();
   ```
 
@@ -589,6 +615,7 @@ static getTemperatureName(type: TemperatureType): string
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // temperatureName = 'celsius'
@@ -617,6 +644,8 @@ static getFirstDayOfWeek(): WeekDay
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let firstDayOfWeek: i18n.WeekDay = i18n.System.getFirstDayOfWeek();
   ```
 
@@ -677,36 +706,10 @@ isRTL(locale: string): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isZhRTL: boolean = i18n.isRTL('zh-CN'); // 中文不是镜像语言，返回false
   let isArRTL: boolean = i18n.isRTL('ar-EG'); // 阿语是镜像语言，返回true
-  ```
-
-## i18n.getCalendar<sup>8+</sup>
-
-getCalendar(locale: string, type? : string): Calendar
-
-获取指定区域和历法的日历对象。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**参数：**
-
-| 参数名    | 类型     | 必填   | 说明                                       |
-| ------ | ------ | ---- | ---------------------------------------- |
-| locale | string | 是    | [表示区域ID的字符串](../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成，例如zh-Hans-CN。                 |
-| type   | string | 否    | 表示历法，取值包括：buddhist,&nbsp;chinese,&nbsp;coptic,&nbsp;ethiopic,&nbsp;hebrew,&nbsp;gregory,&nbsp;indian,&nbsp;islamic_civil,&nbsp;islamic_tbla,&nbsp;islamic_umalqura,&nbsp;japanese,&nbsp;persian。<br>默认值：区域默认的历法。不同取值代表的含义和使用场景请参考[设置日历和历法](../../internationalization/i18n-calendar.md)。 |
-
-**返回值：**
-
-| 类型                     | 说明    |
-| ---------------------- | ----- |
-| [Calendar](#calendar8) | 日历对象。 |
-
-**示例：**
-  ```ts
-  let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans', 'chinese'); // 获取中国农历日历对象
   ```
 
 ## EntityRecognizer<sup>11+</sup>
@@ -745,6 +748,7 @@ constructor(locale?: string)
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let entityRecognizer: i18n.EntityRecognizer = new i18n.EntityRecognizer('zh-CN');
@@ -787,6 +791,7 @@ findEntityInfo(text: string): Array&lt;EntityInfoItem&gt;
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let entityRecognizer: i18n.EntityRecognizer = new i18n.EntityRecognizer('zh-CN');
@@ -816,7 +821,35 @@ findEntityInfo(text: string): Array&lt;EntityInfoItem&gt;
 | begin | number | 否    | 否    | 实体在输入字符串中的起始位置。 |
 | end | number | 否    | 否    | 实体在输入字符串中的终止位置。 |
 
-## Calendar<sup>8+</sup>
+## i18n.getCalendar<sup>8+</sup>
+
+getCalendar(locale: string, type? : string): Calendar
+
+获取指定区域和历法的日历对象。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明                                       |
+| ------ | ------ | ---- | ---------------------------------------- |
+| locale | string | 是    | [表示区域ID的字符串](../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成，例如zh-Hans-CN。                 |
+| type   | string | 否    | 表示历法，取值包括：buddhist,&nbsp;chinese,&nbsp;coptic,&nbsp;ethiopic,&nbsp;hebrew,&nbsp;gregory,&nbsp;indian,&nbsp;islamic_civil,&nbsp;islamic_tbla,&nbsp;islamic_umalqura,&nbsp;japanese,&nbsp;persian。<br>默认值：区域默认的历法。不同取值代表的含义和使用场景请参考[设置日历和历法](../../internationalization/i18n-calendar.md)。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| [Calendar](#calendar) | 日历对象。 |
+
+**示例：**
+```ts
+let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans', 'chinese'); // 获取中国农历日历对象
+```
+
+## Calendar
 
 提供历法相关的能力，包括历法名称获取和日期计算等。
 
@@ -828,7 +861,7 @@ findEntityInfo(text: string): Array&lt;EntityInfoItem&gt;
 
 setTime(date: Date): void
 
-设置日历对象内部的时间、日期。
+基于传入的Date对象，设置日历对象内部的时间日期。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -838,10 +871,12 @@ setTime(date: Date): void
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | 是    | 时间、日期。说明：月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间日期。说明：月份从0开始计数，例如0表示一月。 |
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'gregory');
   let date: Date = new Date(2021, 10, 7, 8, 0, 0); // 时间日期为2021.11.07 08:00:00
   calendar.setTime(date);
@@ -852,7 +887,7 @@ setTime(date: Date): void
 
 setTime(time: number): void
 
-设置日历对象内部的时间、日期。
+基于传入的时间戳，设置日历对象内部的时间日期。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -866,6 +901,8 @@ setTime(time: number): void
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'gregory');
   calendar.setTime(10540800000);
   ```
@@ -893,6 +930,8 @@ set(year: number, month: number, date:number, hour?: number, minute?: number, se
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.set(2021, 10, 1, 8, 0, 0); // 设置时间日期为2021.11.1 08:00:00
   ```
@@ -915,6 +954,8 @@ setTimeZone(timezone: string): void
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.setTimeZone('Asia/Shanghai');
   ```
@@ -938,6 +979,8 @@ getTimeZone(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.setTimeZone('Asia/Shanghai');
   let timezone: string = calendar.getTimeZone(); // timezone = 'Asia/Shanghai'
@@ -962,6 +1005,8 @@ getFirstDayOfWeek(): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'gregory');
   let firstDayOfWeek: number = calendar.getFirstDayOfWeek(); // firstDayOfWeek = 1
   ```
@@ -985,6 +1030,8 @@ setFirstDayOfWeek(value: number): void
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.setFirstDayOfWeek(3);
   let firstDayOfWeek: number = calendar.getFirstDayOfWeek(); // firstDayOfWeek = 3
@@ -1008,6 +1055,8 @@ getMinimalDaysInFirstWeek(): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   let minimalDaysInFirstWeek: number = calendar.getMinimalDaysInFirstWeek(); // minimalDaysInFirstWeek = 1
   ```
@@ -1031,6 +1080,8 @@ setMinimalDaysInFirstWeek(value: number): void
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.setMinimalDaysInFirstWeek(3);
   let minimalDaysInFirstWeek: number = calendar.getMinimalDaysInFirstWeek(); // minimalDaysInFirstWeek = 3
@@ -1051,33 +1102,7 @@ get(field: string): number
 
 | 参数名   | 类型     | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| field | string | 是    | 指定的日历属性，目前支持的属性值请参考下表。 |
-
-
-| 属性名称   | 说明                                       |
-| ----- | ---------------------------------------- |
-| era | 纪元，例如公历中的公元前或者公元后。 |
-| year | 年。 |
-| month | 月。说明：月份从0开始计数，例如0表示一月。 |
-| date | 日。 |
-| hour | 挂钟小时数。 |
-| hour_of_day | 一天中的第几小时。 |
-| minute | 分。 |
-| second | 秒。 |
-| millisecond | 毫秒。 |
-| week_of_year | 一年中的第几周，按照星期计算周，注意：第一周的归属算法各地有区别。 |
-| year_woy | 一年中的第几周，按照数值计算周，例如一年中前1~7日属于第一周。 |
-| week_of_month | 一个月中的第几周，按照星期计算周。 |
-| day_of_week_in_month | 一月中的第几周，按照数值计算周，例如1-7日属于第一周。 |
-| day_of_year | 一年中的第几天。 |
-| day_of_week | 一周中的第几天(星期)。 |
-| milliseconds_in_day | 一天中的第几毫秒。 |
-| zone_offset | 以毫秒计时的时区固定偏移量（不含夏令时）。 |
-| dst_offset | 以毫秒计时的夏令时偏移量。 |
-| dow_local | 本地星期。 |
-| extended_year | 扩展的年份数值，支持负数。 |
-| julian_day | 儒略日,与当前时区相关。 |
-| is_leap_month | 是否为闰月。 |
+| field | string | 是    | 指定的日历属性，取值包括：<br>"era"：纪元，例如公历中的公元前或者公元后。<br>"year"：年。<br>"month"：月，从0开始计数，0表示一月。<br>"date"：日。<br>"hour"：挂钟小时数。<br>"hour_of_day"：一天中的第几小时。<br>"minute"：分。<br>"second"：秒。<br>"millisecond"：毫秒。<br>"week_of_year"：一年中的第几周，按照星期计算周，第一周的归属各地有区别。<br>"year_woy"：一年中的第几周，按照数值计算周，例如一年中前1~7日属于第一周。<br>"week_of_month"：一个月中的第几周，按照星期计算周。<br>"day_of_week_in_month"：一月中的第几周，按照数值计算周，例如1-7日属于第一周。<br>"day_of_year"：一年中的第几天。<br>"day_of_week"：一周中的第几天(星期)。<br>"milliseconds_in_day"：一天中的第几毫秒。<br>"zone_offset"：以毫秒计时的时区固定偏移量（不含夏令时）。<br>"dst_offset"：以毫秒计时的夏令时偏移量。<br>"dow_local"：本地星期。<br>"extended_year"：扩展的年份数值，支持负数。<br>"julian_day"：儒略日，与当前时区相关。<br>"is_leap_month"：返回1表示是闰月，返回0表示不是闰月。<br> |
 
 **返回值：**
 
@@ -1087,6 +1112,8 @@ get(field: string): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.set(2021, 10, 1, 8, 0, 0); // 设置时间日期为2021.11.1 08:00:00
   let hourOfDay: number = calendar.get('hour_of_day'); // hourOfDay = 8
@@ -1117,6 +1144,8 @@ getDisplayName(locale: string): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'buddhist');
   let calendarName: string = calendar.getDisplayName('zh'); // calendarName = '佛历'
   ```
@@ -1136,7 +1165,7 @@ isWeekend(date?: Date): boolean
 
 | 参数名  | 类型   | 必填   | 说明                                       |
 | ---- | ---- | ---- | ---------------------------------------- |
-| date | Date | 否    | 时间、日期。说明：月份从0开始计数，例如0表示一月。<br>默认值：日历对象的当前日期。 |
+| date | Date | 否    | 时间日期。说明：月份从0开始计数，例如0表示一月。<br>默认值：日历对象的当前日期。 |
 
 **返回值：**
 
@@ -1146,6 +1175,8 @@ isWeekend(date?: Date): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.set(2021, 11, 11, 8, 0, 0); // 设置时间为2021.12.11 08:00:00
   let isWeekend: boolean = calendar.isWeekend(); // isWeekend = true
@@ -1183,6 +1214,7 @@ add(field: string, amount: number): void
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
@@ -1214,6 +1246,8 @@ getTimeInMillis(): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
   calendar.setTime(5000);
   let millisecond: number = calendar.getTimeInMillis(); // millisecond = 5000
@@ -1234,7 +1268,7 @@ compareDays(date: Date): number
 
 | 参数名  | 类型   | 必填   | 说明                                       |
 | ---- | ---- | ---- | ---------------------------------------- |
-| date | Date | 是    | 时间、日期。说明：月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间日期。说明：月份从0开始计数，例如0表示一月。 |
 
 **返回值：**
 
@@ -1253,6 +1287,7 @@ compareDays(date: Date): number
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
@@ -1264,6 +1299,130 @@ compareDays(date: Date): number
     console.error(`call Calendar.compareDays failed, error code: ${err.code}, message: ${err.message}.`);
   }
   ```
+
+## i18n.getChineseCalendar
+
+getChineseCalendar(locale?: Intl.Locale): ChineseCalendar
+
+获取指定区域的农历对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明                                       |
+| ------ | ------ | ---- | ---------------------------------------- |
+| locale | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 否   | 区域对象，默认值：系统区域对象。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| [ChineseCalendar](#chinesecalendar) | 农历对象。 |
+
+**示例：**
+```ts
+let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
+let calendar: i18n.ChineseCalendar = i18n.getChineseCalendar(locale);
+```
+
+## ChineseCalendar
+
+提供农历相关的能力，包括设置农历时间、判断指定年份某月是否存在闰月。继承自[Calendar](#calendar)，支持[Calendar](#calendar)的方法。
+
+### setChineseCalendarTime
+
+setChineseCalendarTime(chineseCalendarTime: ChineseCalendarTime): void
+
+设置农历对象的时间日期。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| chineseCalendarTime | [ChineseCalendarTime](#chinesecalendar) | 是    | 农历时间对象。 |
+
+**示例：**
+```ts
+let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
+let calendar: i18n.ChineseCalendar = i18n.getChineseCalendar(locale);
+calendar.setChineseCalendarTime({
+  gregorianYear: 2026,
+  cyclicalYear: 43,
+  month: 1,
+  date: 15
+});
+```
+
+### checkLeapMonth
+
+static checkLeapMonth(gregorianYear: number, cyclicalYear: number, month: number): boolean
+
+判断指定年份某月是否存在闰月。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| gregorianYear   | number |   是   |  公历的年。   |
+| cyclicalYear    | number |   是   |  农历的干支年。   |
+| month           | number |   是   |  农历的月。   |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| boolean | 是否存在闰月。true表示该月存在闰月，false表示该月不存在闰月。 |
+
+**示例：**
+```ts
+let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);
+```
+
+## ChineseCalendarTime
+
+农历时间对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | ------- | ------- | ------- | --------------------------------------- |
+| gregorianYear   | number |   否   |   否   |  公历的年。   |
+| cyclicalYear    | number |   否   |   否   |  农历的干支年。   |
+| month           | number |   否   |   否   |  农历的月。月份从0开始计数，例如0表示一月。   |
+| date            | number |   否   |   否   |  农历的日。   |
+| isLeapMonth     | boolean |   否  |   是   |  是否是闰月。默认值：false。  |
+| hour            | number |   否   |   是   |  农历的时。默认值：0。   |
+| minute          | number |   否   |   是   |  农历的分。默认值：0。   |
+| second          | number |   否   |   是   |  农历的秒。默认值：0。   |
 
 ## PhoneNumberFormat<sup>8+</sup>
 
@@ -1287,11 +1446,13 @@ constructor(country: string, options?: PhoneNumberFormatOptions)
 
 | 参数名     | 类型                                       | 必填   | 说明               |
 | ------- | ---------------------------------------- | ---- | ---------------- |
-| country | string                                   | 是    | 表示电话号码所属的国家地区代码。 |
+| country | string                                   | 是    | 表示电话号码所属的国家地区代码，要求是[合法的国家地区码](../../internationalization/i18n-locale-culture.md#实现原理)。 |
 | options | [PhoneNumberFormatOptions](#phonenumberformatoptions8) | 否    | 电话号码格式化时设置的配置项。默认值：NATIONAL。  |
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let option: i18n.PhoneNumberFormatOptions = { type: 'E164' };
   let phoneNumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', option);
   ```
@@ -1320,6 +1481,8 @@ isValidNumber(phoneNumber: string): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let formatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
   let isValidNumber: boolean = formatter.isValidNumber('158****2312'); // isValidNumber = true
   ```
@@ -1352,6 +1515,8 @@ format(phoneNumber: string): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let formatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
   // formattedPhoneNumber = '158 **** 2312'
   let formattedPhoneNumber: string = formatter.format('158****2312');
@@ -1373,6 +1538,9 @@ getLocationName(phoneNumber: string, locale: string): string
 
 获取电话号码归属地。
 
+> **说明**
+> 从API version 23开始，支持对拨号中的电话号码实时获取归属地。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
@@ -1392,9 +1560,22 @@ getLocationName(phoneNumber: string, locale: string): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
+  // 完整电话号码的归属地获取
   let phonenumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
   let locationName: string = phonenumberFormat.getLocationName('158****2345', 'zh-CN'); // locationName = '广东省湛江市'
   let locName: string = phonenumberFormat.getLocationName('0039312****789', 'zh-CN'); // locName = '意大利'
+
+  // 拨号中的电话号码归属地获取
+  let option: i18n.PhoneNumberFormatOptions = { type: 'TYPING' };
+  let typingFormatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', option);
+  let formatResult = typingFormatter.getLocationName('1', 'en'); // formatResult = ''
+  formatResult = typingFormatter.getLocationName('13', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('133', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('1334', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('13342', 'en'); // formatResult = 'China'
+  formatResult = typingFormatter.getLocationName('133426', 'en'); // formatResult = 'Dongguan, Guangdong'
   ```
 
 
@@ -1408,7 +1589,7 @@ getLocationName(phoneNumber: string, locale: string): string
 
 | 名称   | 类型     | 只读   | 可选   | 说明                                       |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| type | string | 否    | 是    | 表示对电话号码格式化的类型，取值包括：'E164',&nbsp;'INTERNATIONAL',&nbsp;'NATIONAL',&nbsp;'RFC3966',&nbsp;'TYPING'。<br>-在API version 8版本，type为必填项。 <br>-API version 9版本开始，type为选填项。<br>-API version 12版本开始支持TYPING，表示对拨号中的电话号码实时格式化。|
+| type | string | 否    | 是    | 表示对电话号码格式化的类型，取值包括：'E164',&nbsp;'INTERNATIONAL',&nbsp;'NATIONAL',&nbsp;'RFC3966',&nbsp;'TYPING'。<br>-在API version 8版本，type为必填项。 <br>-API version 9版本开始，type为选填项。<br>-API version 12版本开始支持TYPING，表示对拨号中的电话号码实时格式化。<br>-API version 23版本开始，TYPING支持实时获取拨号中的电话号码的归属地。|
 
 
 ## UnitInfo<sup>8+</sup>
@@ -1449,6 +1630,8 @@ getInstance(locale?: string): IndexUtil
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   ```
 
@@ -1479,9 +1662,11 @@ getIndexList(): Array&lt;string&gt;
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   // indexList = [ '...', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-  //              'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
+  // 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
   let indexList: Array<string> = indexUtil.getIndexList();
   ```
 
@@ -1504,6 +1689,8 @@ addLocale(locale: string): void
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   indexUtil.addLocale('en-US');
   ```
@@ -1532,6 +1719,8 @@ getIndex(text: string): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   let index: string = indexUtil.getIndex('hi'); // index = 'H'
   ```
@@ -1541,7 +1730,7 @@ getIndex(text: string): string
 
 getLineInstance(locale: string): BreakIterator
 
-获取用于获取可换行点的BreakIterator对象。BreakIterator对象内部维护一个换行迭代器，可以用于访问各个可换行点。
+获取用于定位文本可换行点的BreakIterator对象。该对象内部维护一个换行迭代器，可以用于访问各个可换行点。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1561,6 +1750,8 @@ getLineInstance(locale: string): BreakIterator
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   ```
 
@@ -1591,6 +1782,8 @@ setLineBreakText(text: string): void
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.'); // 设置处理文本
   ```
@@ -1614,6 +1807,8 @@ getLineBreakText(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let breakText: string = iterator.getLineBreakText(); // breakText = 'Apple is my favorite fruit.'
@@ -1638,6 +1833,8 @@ current(): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let currentPos: number = iterator.current(); // currentPos = 0
@@ -1662,6 +1859,8 @@ first(): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let firstPos: number = iterator.first(); // firstPos = 0
@@ -1686,6 +1885,8 @@ last(): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let lastPos: number = iterator.last(); // lastPos = 27
@@ -1716,6 +1917,8 @@ next(index?: number): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let pos: number = iterator.first(); // pos = 0
@@ -1742,6 +1945,8 @@ previous(): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let pos: number = iterator.first(); // pos = 0
@@ -1774,6 +1979,8 @@ following(offset: number): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let pos: number = iterator.following(0); // pos = 6
@@ -1806,6 +2013,8 @@ isBoundary(offset: number): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
   let isBoundary: boolean = iterator.isBoundary(0); // isBoundary = true;
@@ -1837,6 +2046,8 @@ getTimeZone(zoneID?: string): TimeZone
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
   ```
 
@@ -1866,6 +2077,8 @@ getID(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
   let timezoneID: string = timezone.getID(); // timezoneID = 'Asia/Shanghai'
   ```
@@ -1896,6 +2109,8 @@ getDisplayName(locale?: string, isDST?: boolean): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
   let timezoneName: string = timezone.getDisplayName('zh-CN', false); // timezoneName = '中国标准时间'
   ```
@@ -1919,6 +2134,8 @@ getRawOffset(): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
   let offset: number = timezone.getRawOffset(); // offset = 28800000
   ```
@@ -1948,6 +2165,8 @@ getOffset(date?: number): number
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
   let offset: number = timezone.getOffset(1234567890); // offset = 28800000
   ```
@@ -1971,6 +2190,8 @@ static getAvailableIDs(): Array&lt;string&gt;
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // ids = ['America/Adak', 'America/Anchorage', 'America/Bogota', 'America/Denver', 'America/Los_Angeles', 'America/Montevideo', 'America/Santiago', 'America/Sao_Paulo', 'Asia/Ashgabat', 'Asia/Hovd', 'Asia/Jerusalem', 'Asia/Magadan', 'Asia/Omsk', 'Asia/Shanghai', 'Asia/Tokyo', 'Asia/Yerevan', 'Atlantic/Cape_Verde', 'Australia/Lord_Howe', 'Europe/Dublin', 'Europe/London', 'Europe/Moscow', 'Pacific/Auckland', 'Pacific/Easter', 'Pacific/Pago-Pago']
   let ids: Array<string> = i18n.TimeZone.getAvailableIDs();
   ```
@@ -1994,6 +2215,8 @@ static getAvailableZoneCityIDs(): Array&lt;string&gt;
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // cityIDs = ['Auckland', 'Magadan', 'Lord Howe Island', 'Tokyo', 'Shanghai', 'Hovd', 'Omsk', 'Ashgabat', 'Yerevan', 'Moscow', 'Tel Aviv', 'Dublin', 'London', 'Praia', 'Montevideo', 'Brasília', 'Santiago', 'Bogotá', 'Easter Island', 'Salt Lake City', 'Los Angeles', 'Anchorage', 'Adak', 'Pago Pago']
   let cityIDs: Array<string> = i18n.TimeZone.getAvailableZoneCityIDs();
   ```
@@ -2023,6 +2246,8 @@ static getCityDisplayName(cityID: string, locale: string): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let displayName: string = i18n.TimeZone.getCityDisplayName('Shanghai', 'zh-CN'); // displayName = '上海 (中国)'
   ```
 
@@ -2051,6 +2276,8 @@ static getTimezoneFromCity(cityID: string): TimeZone
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let timezone: i18n.TimeZone = i18n.TimeZone.getTimezoneFromCity('Shanghai');
   ```
 
@@ -2094,6 +2321,7 @@ static getTimezonesByLocation(longitude: number, latitude: number): Array&lt;Tim
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let timezoneArray: Array<i18n.TimeZone> = i18n.TimeZone.getTimezonesByLocation(-118.1, 34.0);
@@ -2141,6 +2369,126 @@ let dateTimeFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('en-US', {
 });
 let dateFormat: string =
   dateTimeFormat.format(new Date(zoneOffsetTransition.getMilliseconds())); // November 2, 2025, 1:00:00 PST
+```
+
+### isDaylightSavingTime
+
+isDaylightSavingTime(date: Date): boolean
+
+判断指定的时间日期是否处于夏令时。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| date   | Date   | 是   | 时间日期。月份从0开始计数，例如0表示一月。|
+
+**返回值：**
+
+| 类型       | 说明         |
+| -------- | ---------- |
+| boolean | 是否处于夏令时。true表示处于夏令时，false表示不处于夏令时。 |
+
+**示例：**
+
+```ts
+let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
+let isDST = timezone.isDaylightSavingTime(new Date(2026, 3, 15));
+```
+
+### setAppDefaultTimeZoneById
+
+static setAppDefaultTimeZoneById(zoneID: string): void
+
+设置当前应用的默认时区，在应用运行时生命周期内有效。
+
+> **说明：**
+>
+> 进行日期时间格式化时，若未指定时区，会优先使用应用设置的默认时区。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| zoneID | string | 是   | 应用设置默认的时区ID，如："Asia/Shanghai"。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 8900001   | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let zoneID: string = 'Asia/Shanghai';
+  i18n.TimeZone.setAppDefaultTimeZoneById(zoneID);
+  console.info('setAppDefaultTimeZoneById success.');
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call TimeZone.setAppDefaultTimeZoneById failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### getAppDefaultTimeZone
+
+static getAppDefaultTimeZone(): TimeZone
+
+获取应用使用的默认时区对象。若调用[setAppDefaultTimeZoneById](#setappdefaulttimezonebyid)设置了默认时区，则返回设置的默认时区对象；否则，返回系统时区对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型     | 说明                  |
+| ------ | ------------------- |
+| TimeZone | 应用使用的默认时区对象。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let zoneID: string = 'Asia/Shanghai';
+  i18n.TimeZone.setAppDefaultTimeZoneById(zoneID);
+  console.info('setAppDefaultTimeZoneById success.');
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call TimeZone.setAppDefaultTimeZoneById failed, error code: ${err.code}, message: ${err.message}.`);
+}
+let timeZone: i18n.TimeZone = i18n.TimeZone.getAppDefaultTimeZone();
+let id: string = timeZone.getID();
+console.info(`getAppDefaultTimeZone success, time zone id: ${id}`);
 ```
 
 ## ZoneRules<sup>20+</sup>
@@ -2305,7 +2653,9 @@ static getAvailableIDs(): string[]
 
 **示例：**
   ```ts
-  // 共支持742个ID。每一个ID由使用中划线分割的两部分组成，格式为 source-destination。例如ids = ['Han-Latin','Latin-ASCII', 'Amharic-Latin/BGN','Accents-Any', ...]，Han-Latin表示汉语转为译拉丁文，Amharic-Latin表示阿姆哈拉语转为拉丁文。
+  import { i18n } from '@kit.LocalizationKit';
+
+  // 共支持742个ID。每一个ID由短横线分隔的两部分组成，格式为 source-destination。例如ids = ['Han-Latin','Latin-ASCII', 'Amharic-Latin/BGN','Accents-Any', ...]，Han-Latin表示汉语转为拉丁文，Amharic-Latin表示阿姆哈拉语转为拉丁文。
   // 更多使用信息可以参考ISO-15924。
   let ids: string[] = i18n.Transliterator.getAvailableIDs();
   ```
@@ -2335,6 +2685,8 @@ static getInstance(id: string): Transliterator
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let transliterator: i18n.Transliterator = i18n.Transliterator.getInstance('Any-Latn');
   ```
 
@@ -2363,6 +2715,8 @@ transform(text: string): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let transliterator: i18n.Transliterator = i18n.Transliterator.getInstance('Any-Latn');
   let wordArray: string[] = ['中国', '德国', '美国', '法国']
   for (let i = 0; i < wordArray.length; i++) {
@@ -2413,6 +2767,8 @@ static isDigit(ch: string): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isDigit: boolean = i18n.Unicode.isDigit('1'); // isDigit = true
   ```
 
@@ -2441,6 +2797,8 @@ static isSpaceChar(ch: string): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isSpacechar: boolean = i18n.Unicode.isSpaceChar('a'); // isSpacechar = false
   ```
 
@@ -2469,6 +2827,8 @@ static isWhitespace(ch: string): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isWhitespace: boolean = i18n.Unicode.isWhitespace('a'); // isWhitespace = false
   ```
 
@@ -2497,6 +2857,8 @@ static isRTL(ch: string): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isRtl: boolean = i18n.Unicode.isRTL('a'); // isRtl = false
   ```
 
@@ -2525,6 +2887,8 @@ static isIdeograph(ch: string): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isIdeograph: boolean = i18n.Unicode.isIdeograph('a'); // isIdeograph = false
   ```
 
@@ -2553,6 +2917,8 @@ static isLetter(ch: string): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isLetter: boolean = i18n.Unicode.isLetter('a'); // isLetter = true
   ```
 
@@ -2581,6 +2947,8 @@ static isLowerCase(ch: string): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isLowercase: boolean = i18n.Unicode.isLowerCase('a'); // isLowercase = true
   ```
 
@@ -2609,6 +2977,8 @@ static isUpperCase(ch: string): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let isUppercase: boolean = i18n.Unicode.isUpperCase('a'); // isUppercase = false
   ```
 
@@ -2633,48 +3003,65 @@ static getType(ch: string): string
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| string | 输入字符的一般类别值。|
-
-一般类别值如下，更详细的介绍可以参考Unicode标准。
-
-| 名称 | 值 | 说明 |
-| ---- | -------- | ---------- |
-| U_UNASSIGNED | U_UNASSIGNED | 表示未分配和非字符代码点对应类别。 |
-| U_GENERAL_OTHER_TYPES | U_GENERAL_OTHER_TYPES | 与 U_UNASSIGNED 一致。 |
-| U_UPPERCASE_LETTER | U_UPPERCASE_LETTER | 表示大写字母。 |
-| U_LOWERCASE_LETTER | U_LOWERCASE_LETTER | 表示小写字母。  |
-| U_TITLECASE_LETTER | U_TITLECASE_LETTER | 表示首字母大写。 |
-| U_MODIFIER_LETTER | U_MODIFIER_LETTER | 表示字母修饰符。 |
-| U_OTHER_LETTER | U_OTHER_LETTER | 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 |
-| U_NON_SPACING_MARK | U_NON_SPACING_MARK | 表示非间距标记，例如重音符号'，变音符号#。 |
-| U_ENCLOSING_MARK | U_ENCLOSING_MARK | 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 |
-| U_COMBINING_SPACING_MARK | U_COMBINING_SPACING_MARK | 表示间距标记，例如元音符号[ ]。 |
-| U_DECIMAL_DIGIT_NUMBER | U_DECIMAL_DIGIT_NUMBER | 表示十进制数字。 |
-| U_LETTER_NUMBER | U_LETTER_NUMBER | 表示字母数字，罗马数字。 |
-| U_OTHER_NUMBER | U_OTHER_NUMBER | 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如@、#、（1）、①等。 |
-| U_SPACE_SEPARATOR | U_SPACE_SEPARATOR | 表示空白分隔符，如空格符、不间断空格、固定宽度的空白符。 |
-| U_LINE_SEPARATOR | U_LINE_SEPARATOR | 表示行分隔符。|
-| U_PARAGRAPH_SEPARATOR | U_PARAGRAPH_SEPARATOR | 表示段落分割符。 |
-| U_CONTROL_CHAR | U_CONTROL_CHAR | 表示控制字符。 |
-| U_FORMAT_CHAR | U_FORMAT_CHAR | 表示格式字符。 |
-| U_PRIVATE_USE_CHAR | U_PRIVATE_USE_CHAR | 表示私人使用区代码点类别，例如公司 logo。 |
-| U_SURROGATE | U_SURROGATE | 表示代理项，在UTF-16中用来表示补充字符的方法。 |
-| U_DASH_PUNCTUATION | U_DASH_PUNCTUATION | 表示短划线标点。 |
-| U_START_PUNCTUATION | U_START_PUNCTUATION | 表示开始标点，如左括号。 |
-| U_END_PUNCTUATION | U_END_PUNCTUATION | 表示结束标点，如右括号。 |
-| U_INITIAL_PUNCTUATION | U_INITIAL_PUNCTUATION | 表示前引号，例如左双引号、左单引号。 |
-| U_FINAL_PUNCTUATION | U_FINAL_PUNCTUATION | 表示后引号，例如右双引号、右单引号。 |
-| U_CONNECTOR_PUNCTUATION | U_CONNECTOR_PUNCTUATION | 表示连接符标点。 |
-| U_OTHER_PUNCTUATION | U_OTHER_PUNCTUATION | 表示其他标点。 |
-| U_MATH_SYMBOL | U_MATH_SYMBOL | 表示数学符号。 |
-| U_CURRENCY_SYMBOL | U_CURRENCY_SYMBOL | 表示货币符号。 |
-| U_MODIFIER_SYMBOL | U_MODIFIER_SYMBOL | 表示修饰符号。 |
-| U_OTHER_SYMBOL | U_OTHER_SYMBOL | 表示其它符号。 |
+| string | 输入字符的一般类别值。取值包括：<br>U_UNASSIGNED： 表示未分配和非字符代码点对应类别。 <br>U_GENERAL_OTHER_TYPES： 与 U_UNASSIGNED 一致。 <br>U_UPPERCASE_LETTER： 表示大写字母。 <br>U_LOWERCASE_LETTER： 表示小写字母。  <br>U_TITLECASE_LETTER： 表示首字母大写。 <br>U_MODIFIER_LETTER： 表示字母修饰符。 <br>U_OTHER_LETTER： 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 <br>U_NON_SPACING_MARK： 表示非间距标记，例如重音符号'，变音符号#。 <br>U_ENCLOSING_MARK： 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 <br>U_COMBINING_SPACING_MARK： 表示间距标记，例如元音符号[ ]。 <br>U_DECIMAL_DIGIT_NUMBER： 表示十进制数字。 <br>U_LETTER_NUMBER： 表示字母数字，罗马数字。 <br>U_OTHER_NUMBER： 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如@、#、（1）、①等。 <br>U_SPACE_SEPARATOR： 表示空白分隔符，如空格符、不间断空格、固定宽度的空白符。 <br>U_LINE_SEPARATOR： 表示行分隔符。 <br>U_PARAGRAPH_SEPARATOR： 表示段落分隔符。 <br>U_CONTROL_CHAR： 表示控制字符。 <br>U_FORMAT_CHAR： 表示格式字符。 <br>U_PRIVATE_USE_CHAR： 表示私人使用区代码点类别，例如公司 logo。 <br>U_SURROGATE： 表示代理项，在UTF-16中用来表示补充字符的方法。 <br>U_DASH_PUNCTUATION： 表示短划线标点。 <br>U_START_PUNCTUATION： 表示开始标点，如左括号。 <br>U_END_PUNCTUATION： 表示结束标点，如右括号。 <br>U_INITIAL_PUNCTUATION： 表示前引号，例如左双引号、左单引号。 <br>U_FINAL_PUNCTUATION： 表示后引号，例如右双引号、右单引号。 <br>U_CONNECTOR_PUNCTUATION： 表示连接符标点。 <br>U_OTHER_PUNCTUATION： 表示其他标点。 <br>U_MATH_SYMBOL： 表示数学符号。 <br>U_CURRENCY_SYMBOL： 表示货币符号。 <br>U_MODIFIER_SYMBOL： 表示修饰符号。 <br>U_OTHER_SYMBOL： 表示其它符号。 <br> 更详细的介绍可以参考Unicode标准。|
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let unicodeType: string = i18n.Unicode.getType('a'); // unicodeType = 'U_LOWERCASE_LETTER'
   ```
+
+### detectEncoding
+
+static detectEncoding(bytes: Uint8Array): EncodingInfo
+
+识别输入字节流的编码信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型     | 必填   | 说明    |
+| ---- | ------ | ---- | ----- |
+| bytes | Uint8Array | 是    | 输入字节流。 |
+
+**返回值：**
+
+| 类型      | 说明                                       |
+| ------- | ---------------------------------------- |
+| [EncodingInfo](#encodinginfo) | 编码信息，包含编码名称和置信度。 |
+
+**示例：**
+  ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
+  let uint8Array = new Uint8Array([0xEF, 0xBB, 0xBF, 0xE4, 0xB8, 0xAD]);
+  let info = i18n.Unicode.detectEncoding(uint8Array); // info.encodingName = 'UTF-8', info.confidence = 100
+  ```
+
+## EncodingInfo
+
+编码信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称  | 类型   | 只读   | 可选   | 说明                |
+| ---- | ---- | ---- | ---- | ----------------- |
+| encodingName | string | 否    | 否    | 编码名称，如UTF-8。 |
+| confidence | number | 否    | 否    | 识别结果的置信度，范围是0-100。值越大，识别结果越可靠。 |
 
 ## I18NUtil<sup>9+</sup>
 
@@ -2712,6 +3099,8 @@ static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: 
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let fromUnit: i18n.UnitInfo = { unit: 'cup', measureSystem: 'US' };
   let toUnit: i18n.UnitInfo = { unit: 'liter', measureSystem: 'SI' };
   let convertResult: string =
@@ -2742,6 +3131,8 @@ static getDateOrder(locale: string): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let order: string = i18n.I18NUtil.getDateOrder('zh-CN'); // order = 'y-L-d'
   ```
 
@@ -2781,6 +3172,7 @@ static getTimePeriodName(hour:number, locale?: string): string
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let name: string = i18n.I18NUtil.getTimePeriodName(2, 'zh-CN'); // name = '凌晨'
@@ -2826,6 +3218,7 @@ static getBestMatchLocale(locale: string, localeList: string[]): string
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let matchedLocaleId: string = i18n.I18NUtil.getBestMatchLocale('zh-Hans-CN',
@@ -2871,6 +3264,7 @@ static getThreeLetterLanguage(locale: string): string
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let language: string = i18n.I18NUtil.getThreeLetterLanguage('zh') // language = 'zho'
@@ -2915,6 +3309,7 @@ static getThreeLetterRegion(locale: string): string
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let region: string = i18n.I18NUtil.getThreeLetterRegion('CN') // region = 'CHN'
@@ -2960,6 +3355,7 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
 
 try {
   let path: string = '/data/out/tmp';
@@ -2971,6 +3367,85 @@ try {
   let err: BusinessError = error as BusinessError;
   console.error(`call I18NUtil.getUnicodeWrappedFilePath failed, error code: ${err.code}, message: ${err.message}.`);
 }
+```
+
+### setUnicodeWrappedBidiDirection
+
+static setUnicodeWrappedBidiDirection(text: string, direction: 'RTL' | 'LTR'): string
+
+设置整段文本中部分文本方向，包括RTL、LTR。
+
+> **说明：**
+>
+> 在强字符（指具有明确书写方向的字符）中不生效。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| text | string | 是   | 需要设置方向的文本。 |
+| direction | 'RTL' \| 'LTR' | 是   | 'RTL'表示从右到左，'LTR'表示从左到右。 |
+
+**返回值：**
+
+| 类型     | 说明                  |
+| ------ | ------------------- |
+| string | 设置方向后的文本。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let text: string = '(012) 345-6789';
+  let result: string = i18n.I18NUtil.setUnicodeWrappedBidiDirection(text, 'LTR');
+  console.info(`setUnicodeWrappedBidiDirection, result: ${result}`);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call I18NUtil.setUnicodeWrappedBidiDirection failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### convertCanonicalLocaleIdentifier
+
+static convertCanonicalLocaleIdentifier(locale: string): string
+
+将区域ID调整成符合[BCP47](https://www.rfc-editor.org/info/bcp47)标准的格式。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| locale | string | 是    | 区域ID。 |
+
+**返回值：**
+
+| 类型     | 说明                  |
+| ------ | ------------------- |
+| string | 有效的区域ID会返回符合[BCP47](https://www.rfc-editor.org/info/bcp47)标准格式的区域ID。无效的区域ID会返回空字符串。 |
+
+**示例：**
+
+```ts
+let result: string = i18n.I18NUtil.convertCanonicalLocaleIdentifier('zh-cn'); // result = 'zh-CN'
 ```
 
 ### getUnicodeWrappedFilePath<sup>(deprecated)</sup>
@@ -3011,7 +3486,7 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { intl } from '@kit.LocalizationKit';
+import { i18n, intl } from '@kit.LocalizationKit';
 
 try {
   let path: string = '/data/out/tmp';
@@ -3066,6 +3541,7 @@ static getInstance(mode: NormalizerMode): Normalizer
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let normalizer: i18n.Normalizer = i18n.Normalizer.getInstance(i18n.NormalizerMode.NFC);
@@ -3109,6 +3585,7 @@ normalize(text: string): string
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let normalizer: i18n.Normalizer = i18n.Normalizer.getInstance(i18n.NormalizerMode.NFC);
@@ -3171,6 +3648,7 @@ constructor(icsPath: String)
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // 需要将'/system/lib/US.ics'替换为实际ics文件路径
@@ -3195,7 +3673,7 @@ isHoliday(date?: Date): boolean
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ---------------| ---- | ------------- |
-| date      | Date           | 否   | 时间、日期。说明：月份从0开始计数，例如0表示一月。<br>默认值：当前日期。|
+| date      | Date           | 否   | 时间日期。说明：月份从0开始计数，例如0表示一月。<br>默认值：当前日期。|
 
 **返回值：**
 
@@ -3214,6 +3692,7 @@ isHoliday(date?: Date): boolean
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // 需要将'/system/lib/US.ics'替换为实际ics文件路径
@@ -3261,6 +3740,7 @@ getHolidayInfoItemArray(year?: number): Array&lt;[HolidayInfoItem](#holidayinfoi
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     // 需要将'/system/lib/US.ics'替换为实际ics文件路径
@@ -3336,6 +3816,7 @@ getSimpleDateTimeFormatByPattern(pattern: string, locale?: Intl.Locale): SimpleD
 **示例：**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
 
 try {
   let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
@@ -3382,7 +3863,7 @@ getSimpleDateTimeFormatByPattern(pattern: string, locale?: intl.Locale): SimpleD
 **示例：**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { intl } from '@kit.LocalizationKit';
+import { i18n, intl } from '@kit.LocalizationKit';
 
 try {
   let locale: intl.Locale = new intl.Locale('zh-Hans-CN');
@@ -3427,6 +3908,7 @@ getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: Intl.Locale): Simpl
 **示例：**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
 
 try {
   let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
@@ -3473,7 +3955,7 @@ getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: intl.Locale): Simpl
 **示例：**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { intl } from '@kit.LocalizationKit';
+import { i18n, intl } from '@kit.LocalizationKit';
 
 try {
   let locale: intl.Locale = new intl.Locale('zh-Hans-CN');
@@ -3496,7 +3978,7 @@ try {
 
 format(date: Date): string
 
-对时间、日期进行格式化。
+对时间日期进行格式化。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3506,17 +3988,18 @@ format(date: Date): string
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | 是    | 时间、日期。说明：月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间日期。说明：月份从0开始计数，例如0表示一月。 |
 
 **返回值：**
 
 | 类型                     | 说明    |
 | ---------------------- | ----- |
-| string | 格式化后的时间、日期字符串。 |
+| string | 格式化后的时间日期字符串。 |
 
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let locale : Intl.Locale = new Intl.Locale("zh-Hans-CN");
@@ -3537,6 +4020,490 @@ format(date: Date): string
   }
   ```
 
+## SymbolDateTimeFormat
+
+提供自定义时间日期符号的能力。继承自[Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)，支持[Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)的方法。
+
+### constructor
+
+constructor(locale?: Intl.Locale, options?: SymbolDateTimeFormatOptions)
+
+创建使用自定义符号的时间日期格式化对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型     | 必填   | 说明    |
+| ---- | ------ | ---- | ----- |
+| locale  | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 否    | 区域对象。默认值：系统区域对象。 |
+| options | [SymbolDateTimeFormatOptions](#symboldatetimeformatoptions) | 否    | 自定义符号时间日期格式化的配置项。默认值：区域对象默认的符号。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+```
+
+### format
+
+format(date?: Date | number): string
+
+对时间日期进行格式化，返回使用自定义符号的时间日期字符串。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| date | Date \| number | 否    | 时间日期对象或时间日期对应的毫秒值。默认值：系统当前时间。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 使用自定义符号的时间日期字符串。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+let result = formatter.format(new Date(2026, 3, 26, 14, 20, 0)); // result = '晚2:20'
+```
+
+### formatToParts
+
+formatToParts(date?: Date | number): Intl.DateTimeFormatPart[]
+
+对时间日期进行格式化，返回使用自定义符号的时间日期元素数组。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| date | Date \| number | 否    | 时间日期对象或时间日期对应的毫秒值。默认值：系统当前时间。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| Intl.DateTimeFormatPart[] | 使用自定义符号的时间日期元素数组。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+let parts = formatter.formatToParts(new Date(2026, 3, 26, 14, 20, 0)); // parts[0].type = 'dayPeriod'
+```
+
+### formatRange
+
+formatRange(startDate: Date | number | bigint, endDate: Date | number | bigint): string
+
+对时间日期范围进行格式化。自定义符号在该接口上暂不生效。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| startDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+| endDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 格式化后的时间日期范围字符串。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+let startDate = new Date(2026, 3, 27, 14, 20, 0);
+let endDate = new Date(2026, 3, 27, 18, 20, 0);
+let result = formatter.formatRange(startDate, endDate); // result = '下午2:20至6:20'
+```
+
+### formatRangeToParts
+
+formatRangeToParts(startDate: Date | number | bigint, endDate: Date | number | bigint): Intl.DateTimeRangeFormatPart[]
+
+把时间日期范围格式化成时间日期元素数组。自定义符号在该接口上暂不生效。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| startDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+| endDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| Intl.DateTimeRangeFormatPart[] | 时间日期范围元素数组。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+let startDate = new Date(2026, 3, 27, 14, 20, 0);
+let endDate = new Date(2026, 3, 27, 18, 20, 0);
+let parts = formatter.formatRangeToParts(startDate, endDate); // parts[0].type = 'dayPeriod'
+```
+
+### resolvedOptions
+
+resolvedOptions(): ResolvedSymbolDateTimeFormatOptions
+
+解析自定义时间日期符号的配置项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+|       类型        |         说明          |
+| ----------------- | ----------------------|
+| [ResolvedSymbolDateTimeFormatOptions](#resolvedsymboldatetimeformatoptions)  | 自定义符号时间日期格式化对象配置项的解析结果。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+let options = formatter.resolvedOptions(); // options.timeStyle = 'short', options.amPMSymbol = ['早', '晚']
+```
+
+### SymbolDateTimeFormatOptions
+
+创建自定义符号时间日期格式化对象时的可选配置项。继承自Intl.DateTimeFormatOptions，支持Intl.DateTimeFormatOptions的所有配置项，并且功能与其一致。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| amPMSymbol     | string[] \| undefined |   否 |   是   |  指定的上午和下午符号，要求数组长度不小于2，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。   |
+
+### ResolvedSymbolDateTimeFormatOptions
+
+自定义符号时间日期格式化对象配置项的解析结果。继承自Intl.ResolvedDateTimeFormatOptions，支持Intl.ResolvedDateTimeFormatOptions的所有配置项，并且功能与其一致。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| amPMSymbol     | string[] |   否   |  是   |  指定的上午和下午符号，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。   |
+
+## StyledDateTimeFormat<sup>23+</sup>
+
+提供富文本时间日期格式化的能力。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+### constructor<sup>23+</sup>
+
+constructor(dateTimeFormat: Intl.DateTimeFormat | SimpleDateTimeFormat, options?: StyledDateTimeFormatOptions)
+
+创建需要富文本显示的时间日期格式化的对象。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**参数：**
+
+|   参数名  |      类型      | 必填 |     说明      |
+| --------- | ------------- | ---- | ------------- |
+| dateTimeFormat | [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) \| [SimpleDateTimeFormat](#simpledatetimeformat18) | 是   | 用于格式化时间日期的对象。  |
+| options | [StyledDateTimeFormatOptions](#styleddatetimeformatoptions23) | 否 | 指定时间日期格式化对象的配置项。默认值：默认的文本样式。  |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let yearTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
+  let monthTextStyle: TextStyle = new TextStyle({ fontColor: Color.Green });
+  let dayTextStyle: TextStyle = new TextStyle({ fontColor: Color.Blue });
+
+  // 通过Intl.DateTimeFormat创建StyledDateTimeFormat对象
+  let dateFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('zh-Hans-CN', { dateStyle: 'full' });
+  let styledDateFormat: i18n.StyledDateTimeFormat = new i18n.StyledDateTimeFormat(dateFormat, {
+    year: yearTextStyle,
+    month: monthTextStyle,
+    day: dayTextStyle
+  });
+
+  let hourTextStyle: TextStyle = new TextStyle({ fontColor: Color.Yellow });
+  let minuteTextStyle: TextStyle = new TextStyle({ fontColor: Color.Orange });
+  let secondTextStyle: TextStyle = new TextStyle({ fontColor: Color.Pink });
+
+  // 通过SimpleDateTimeFormat创建StyledDateTimeFormat对象
+  let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
+  let simpleTimeFormat: i18n.SimpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('hhmmss', locale);
+  let styledTimeFormat: i18n.StyledDateTimeFormat = new i18n.StyledDateTimeFormat(simpleTimeFormat, {
+    hour: hourTextStyle,
+    minute: minuteTextStyle,
+    second: secondTextStyle
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call i18n.StyledDateTimeFormat failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### format<sup>23+</sup>
+
+format(date: Date): StyledString
+
+使对时间日期进行格式化，返回富文本对象。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**参数：**
+
+|   参数名  |      类型      | 必填 |     说明      |
+| --------- | ------------- | ---- | ------------- |
+| date | Date | 是 | 需要格式化的时间日期。  |
+
+**返回值：**
+
+|       类型        |         说明          |
+| ----------------- | ----------------------|
+| [StyledString](../apis-arkui/arkui-ts/ts-universal-styled-string.md#styledstring) | 格式化后的富文本对象。 |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let yearTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
+  let monthTextStyle: TextStyle = new TextStyle({ fontColor: Color.Green });
+  let dayTextStyle: TextStyle = new TextStyle({ fontColor: Color.Blue });
+
+  // 通过Intl.DateTimeFormat创建StyledDateTimeFormat对象
+  let dateFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('zh-Hans-CN', { dateStyle: 'full' });
+  let styledDateFormat: i18n.StyledDateTimeFormat = new i18n.StyledDateTimeFormat(dateFormat, {
+    year: yearTextStyle,
+    month: monthTextStyle,
+    day: dayTextStyle
+  });
+  let date: Date = new Date(2025, 11, 1);
+  // formattedDate.getString() 为 '2025年12月1日星期一'。显示formattedDate时'2025'是红色，'12'是绿色，'1'是蓝色
+  let formattedDate: StyledString = styledDateFormat.format(date);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call StyledNumberFormat.format failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+## StyledDateTimeFormatOptions<sup>23+</sup>
+
+创建富文本显示的时间日期格式化对象时的可选配置项。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| year        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定年的文本样式。默认值：StyledString默认的文本样式。     |
+| month        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定月的文本样式。默认值：StyledString默认的文本样式。    |
+| day       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定日的文本样式。默认值：StyledString默认的文本样式。     |
+| hour       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定时的文本样式。默认值：StyledString默认的文本样式。     |
+| minute      | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定分的文本样式。默认值：StyledString默认的文本样式。     |
+| second        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定秒的文本样式。默认值：StyledString默认的文本样式。    |
+| dayPeriod       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定时段的文本样式。默认值：StyledString默认的文本样式。     |
+| weekday        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定星期的文本样式。默认值：StyledString默认的文本样式。     |
+| era        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定纪元的文本样式。默认值：StyledString默认的文本样式。     |
+| timeZoneName   | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定时区名称的文本样式。默认值：StyledString默认的文本样式。  |
+
+## ISO8601DateTimeFormat
+
+符合ISO 8601标准的日期格式化对象。
+
+### constructor
+
+constructor(options?: ISO8601DateTimeFormatOptions)
+
+创建符合ISO 8601标准的日期格式化对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| options | [ISO8601DateTimeFormatOptions](#iso8601datetimeformatoptions) | 否    | 符合ISO 8601标准的日期格式化对象创建时的选项。默认值：所有属性均使用默认值的ISO8601DateTimeFormatOptions对象。 |
+
+**示例：**
+```ts
+let formatter = new i18n.ISO8601DateTimeFormat({
+  dateFormat: 'calendar',
+  timePrecision: 'minutes',
+  separatorStyle: 'extended'
+});
+```
+
+### format
+
+format(date: Date): string
+
+对时间日期进行格式化，返回符合ISO 8601标准的时间日期字符串。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| date | Date | 是    | 时间日期。月份从0开始计数，例如0表示一月。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 格式化后的时间日期字符串。 |
+
+**示例：**
+```ts
+let formatter = new i18n.ISO8601DateTimeFormat({
+  dateFormat: 'calendar',
+  timePrecision: 'minutes',
+  separatorStyle: 'extended'
+});
+let result = formatter.format(new Date(2026, 2, 15, 12, 0, 0));
+```
+
+## ISO8601DateTimeFormatOptions
+
+符合ISO 8601标准的日期格式化对象创建时的选项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | ------- | ------- | ------- | --------------------------------------- |
+| dateFormat   | 'calendar' \| 'ordinal' \| 'week' |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-D**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
+| timePrecision   | 'dateOnly' \| 'hours' \| 'minutes' \| 'seconds' \| 'milliSeconds' |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
+| separatorStyle  | 'extended' \| 'basic' |   否   |   是   |  分隔符风格。取值包括：<br>**extended**：显示日期和时间分隔符。<br>**basic**：不显示日期和时间分隔符。<br>默认值：**extended**。   |
+| timeZone        | [TimeZone](#timezone) |   否   |   是   |  时区。默认值：**UTC**。   |
+| displayTimeZone     | boolean |   否  |   是   |  是否显示时区，true表示显示时区，false表示不显示时区。默认值：true。  |
 
 ## i18n.getSimpleNumberFormatBySkeleton<sup>20+</sup>
 
@@ -3572,6 +4539,7 @@ getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleN
 **示例：**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
 
 try {
   let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
@@ -3618,7 +4586,7 @@ getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.Locale): SimpleN
 **示例：**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { intl } from '@kit.LocalizationKit';
+import { i18n, intl } from '@kit.LocalizationKit';
 
 try {
   let locale: intl.Locale = new intl.Locale('zh-Hans-CN');
@@ -3631,7 +4599,7 @@ try {
 
 ## SimpleNumberFormat<sup>18+</sup>
 
-提供数字格式化的能力。
+基于框架字符串提供数字格式化的能力。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3662,6 +4630,7 @@ format(value: number): string
 **示例：**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
 
 try {
   let locale: Intl.Locale = new Intl.Locale('zh-Hans-CN');
@@ -3672,6 +4641,277 @@ try {
   console.error(`call SimpleNumberFormat.format failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+## SymbolNumberFormat
+
+提供自定义数字符号的能力。继承自[Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)，支持[Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)的方法。
+
+### constructor
+
+constructor(locale?: Intl.Locale, options?: SymbolNumberFormatOptions)
+
+创建使用自定义符号的数字格式化对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型     | 必填   | 说明    |
+| ---- | ------ | ---- | ----- |
+| locale  | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 否    | 区域对象。默认值：系统区域对象。 |
+| options | [SymbolNumberFormatOptions](#symbolnumberformatoptions) | 否    | 自定义数字格式化符号的配置项。默认值：区域默认的符号。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+```
+
+### format
+
+format(value: number | bigint): string
+
+对数字进行格式化，返回使用自定义符号的数字字符串。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| value | number \| bigint | 是    | 待格式化的数字。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 使用自定义符号的数字字符串。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.format(10); // result = '1(0)天'
+```
+
+### formatToParts
+
+formatToParts(value?: number \| bigint): Intl.NumberFormatPart[]
+
+对数字进行格式化，返回使用自定义符号的数字元素数组。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| value | number \| bigint | 否    | 待格式化的数字。默认值：NaN。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| Intl.NumberFormatPart[] | 使用自定义符号的数字元素数组。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.formatToParts(10); // result[0].type = 'integer'
+```
+
+### formatRange
+
+formatRange(startRange: number, endRange: number): string
+
+对数字范围进行格式化，返回使用自定义符号的数字范围字符串。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| startRange | number | 是    | 起始数字。 |
+| endRange | number | 是    | 终止数字。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 使用自定义符号的数字范围字符串。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.formatRange(10, 20); // result = '1(0)-2(0)天'
+```
+
+### formatRangeToParts
+
+formatRangeToParts(startRange: number, endRange: number): Intl.NumberFormatPart[]
+
+对数字范围进行格式化，返回使用自定义符号的数字元素数组。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| startRange | number | 是    | 起始数字。 |
+| endRange | number | 是    | 终止数字。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| Intl.NumberFormatPart[] | 使用自定义符号的数字元素数组。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.formatRangeToParts(10, 20); // result[0].type = 'integer'
+```
+
+### resolvedOptions
+
+resolvedOptions(): ResolvedSymbolNumberFormatOptions
+
+解析自定义数字符号的配置项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+|       类型        |         说明          |
+| ----------------- | ----------------------|
+| [ResolvedSymbolNumberFormatOptions](#resolvedsymbolnumberformatoptions)  | 自定义符号数字格式化对象配置项的解析结果。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.resolvedOptions(); // result.style = 'unit', result.unit = 'day', result.zero = '(0)'
+```
+
+### SymbolNumberFormatOptions
+
+创建自定义符号数字格式化对象时的可选配置项。继承自Intl.NumberFormatOptions，支持Intl.NumberFormatOptions的所有配置项，并且功能与其一致。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| zero     | string \| undefined  |   否    |   是   |  零符号。默认值：区域默认的符号。   |
+| nan     | string \| undefined  |   否    |   是   |  NaN符号。默认值：区域默认的符号。   |
+| minusSign     | string \| undefined  |   否    |   是   |  减符号。默认值：区域默认的符号。   |
+| plusSign     | string \| undefined  |   否    |   是   |  加符号。默认值：区域默认的符号。   |
+| infinity     | string \| undefined  |   否    |   是   |  无穷符号。默认值：区域默认的符号。   |
+| groupingSeparator     | string \| undefined |   否    |   是   |  分组符号。默认值：区域默认的符号。   |
+
+### ResolvedSymbolNumberFormatOptions
+
+自定义符号数字格式化对象配置项的解析结果。继承自Intl.ResolvedNumberFormatOptions，支持Intl.ResolvedNumberFormatOptions的所有配置项，并且功能与其一致。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| zero     | string  |   否    |   是   |  零符号。默认值：区域默认的符号。   |
+| nan     | string  |   否    |   是   |  NaN符号。默认值：区域默认的符号。   |
+| minusSign     | string  |   否    |   是   |  减符号。默认值：区域默认的符号。   |
+| plusSign     | string  |   否    |   是   |  加符号。默认值：区域默认的符号。   |
+| infinity     | string  |   否    |   是   |  无穷符号。默认值：区域默认的符号。   |
+| groupingSeparator     | string |   否    |   是   |  分组符号。默认值：区域默认的符号。   |
+
 
 ## StyledNumberFormat<sup>18+</sup>
 
@@ -3703,7 +4943,7 @@ constructor(numberFormat: intl.NumberFormat | SimpleNumberFormat, options?: Styl
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { intl } from '@kit.LocalizationKit';
+  import { i18n, intl } from '@kit.LocalizationKit';
 
   try {
     let integerTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
@@ -3755,6 +4995,7 @@ constructor(numberFormat: Intl.NumberFormat | SimpleNumberFormat, options?: Styl
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let integerTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
@@ -3811,6 +5052,7 @@ format(value: number): StyledString
 **示例：**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let integerTextStyle: TextStyle = new TextStyle({ fontColor: Color.Red });
@@ -3826,7 +5068,7 @@ format(value: number): StyledString
       fraction: fractionTextStyle,
       unit: unitTextStyle
     });
-    // formattedNumber.getString() 为 '1,234.568%'。显示formattedNumber时'1,234'是红色，'.'是棕色，'568'是蓝色，'%'是绿色。
+    // formattedNumber.getString() 为 '1,234.568%'。显示formattedNumber时'1,234'是红色，'.'是棕色，'568'是蓝色，'%'是绿色
     let formattedNumber: StyledString = styledNumFmt.format(1234.5678);
 
     // 通过SimpleNumberFormat创建StyledNumberFormat对象
@@ -3838,7 +5080,7 @@ format(value: number): StyledString
       fraction: fractionTextStyle,
       unit: unitTextStyle
     });
-    // formattedSimpleNumber.getString() 为 '1,234.5678%'。显示formattedSimpleNumber时'1,234'是红色，'.'是棕色，'5678'是蓝色，'%'是绿色。
+    // formattedSimpleNumber.getString() 为 '1,234.5678%'。显示formattedSimpleNumber时'1,234'是红色，'.'是棕色，'5678'是蓝色，'%'是绿色
     let formattedSimpleNumber: StyledString = styledSimpleNumFmt.format(1234.5678);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
@@ -3856,10 +5098,134 @@ format(value: number): StyledString
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
-| integer        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定整数部分的文本样式。默认值：默认的文本样式。     |
-| decimal        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定小数点的文本样式。默认值：默认的文本样式。    |
-| fraction       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定小数部分的文本样式。默认值：默认的文本样式。     |
-| unit           | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定单位部分的文本样式。默认值：默认的文本样式。     |
+| integer        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定整数部分的文本样式。默认值：StyledString默认的文本样式。     |
+| decimal        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定小数点的文本样式。默认值：StyledString默认的文本样式。    |
+| fraction       | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定小数部分的文本样式。默认值：StyledString默认的文本样式。     |
+| unit           | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定单位部分的文本样式。默认值：StyledString默认的文本样式。     |
+
+## AdvancedMeasureFormat<sup>23+</sup>
+
+提供数字格式化能力。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### constructor<sup>23+</sup>
+
+constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOptions)
+
+创建数字格式化对象。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+|   参数名  |      类型      | 必填 |     说明      |
+| --------- | ------------- | ---- | ------------- |
+| numberFormat | [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) | 是   | 用于格式化数字的对象。  |
+| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | 否 | 指定数字格式化对象的配置项。默认值：与[numberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)格式化效果一样。  |
+
+**示例：**
+  ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
+  let numFmt: Intl.NumberFormat = new Intl.NumberFormat('zh-Hans-CN', { style: 'unit', unit: 'fahrenheit' });
+  let advancedMeasureFormat: i18n.AdvancedMeasureFormat = new i18n.AdvancedMeasureFormat(numFmt, {
+    unitUsage: i18n.UnitUsage.TEMPERATURE_PERSON
+  });
+  ```
+
+### format<sup>23+</sup>
+
+format(num: number): string
+
+对数字进行格式化。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+|   参数名  |      类型      | 必填 |     说明      |
+| --------- | ------------- | ---- | ------------- |
+| num | number | 是 | 需要格式化的数字。  |
+
+**返回值：**
+
+|       类型        |         说明          |
+| ----------------- | ----------------------|
+| string | 格式化后的文本。 |
+
+**示例：**
+  ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
+  let numFmt: Intl.NumberFormat = new Intl.NumberFormat('zh-Hans-CN', { style: 'unit', unit: 'fahrenheit' });
+  let advancedMeasureFormat: i18n.AdvancedMeasureFormat = new i18n.AdvancedMeasureFormat(numFmt, {
+    unitUsage: i18n.UnitUsage.TEMPERATURE_PERSON
+  });
+  let result = advancedMeasureFormat.format(100); // result = '37.778°C'
+  ```
+
+## AdvancedMeasureFormatOptions<sup>23+</sup>
+
+创建数字格式化对象时的可选配置项。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| unitUsage        | [UnitUsage](#unitusage23) |   否    |   是    |  单位格式化使用场景的枚举。     |
+
+## UnitUsage<sup>23+</sup>
+
+单位格式化使用场景的枚举。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| AREA_LAND_AGRICULT | 1 | 农业土地面积。 |
+| AREA_LAND_COMMERCL | 2 | 商业土地面积。 |
+| AREA_LAND_RESIDNTL | 3 | 居住土地面积。 |
+| LENGTH_PERSON | 4 | 身高。 |
+| LENGTH_PERSON_SMALL | 5 | 高精度的身高。 |
+| LENGTH_RAINFALL | 6 | 降雨量。 |
+| LENGTH_ROAD | 7 | 道路长度。 |
+| LENGTH_ROAD_SMALL | 8 | 高精度的道路长度。 |
+| LENGTH_SNOWFALL | 9 | 降雪量。 |
+| LENGTH_VEHICLE | 10 | 交通工具长度。 |
+| LENGTH_VISIBLTY | 11 | 能见度。 |
+| LENGTH_VISIBLTY_SMALL | 12 | 高精度的能见度。 |
+| LENGTH_PERSON_INFORMAL | 13 | 口语化身高。 |
+| LENGTH_PERSON_SMALL_INFORMAL | 14 | 高精度的口语化身高。 |
+| LENGTH_ROAD_INFORMAL | 15 | 口语化道路长度。 |
+| SPEED_ROAD_TRAVEL | 16 | 车速。 |
+| SPEED_WIND | 17 | 风速。 |
+| TEMPERATURE_PERSON | 18 | 体温。 |
+| TEMPERATURE_WEATHER | 19 | 气温。 |
+| VOLUME_VEHICLE_FUEL | 20 | 交通工具燃料容积。 |
+| ELAPSED_TIME_SECOND | 21 | 过去的时间。 |
+| SIZE_FILE_BYTE | 22 | 文件大小。 |
+| SIZE_SHORTFILE_BYTE | 23 | 简短的文件大小。 |
 
 ## i18n.getDisplayCountry<sup>(deprecated)</sup>
 
@@ -3887,6 +5253,8 @@ getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): stri
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let countryName: string = i18n.getDisplayCountry('zh-CN', 'en-GB', true); // countryName = 'China'
   countryName = i18n.getDisplayCountry('zh-CN', 'en-GB'); // countryName = 'China'
   ```
@@ -3917,6 +5285,8 @@ getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): st
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let languageName: string = i18n.getDisplayLanguage('zh', 'en-GB', true); // languageName = 'Chinese'
   languageName = i18n.getDisplayLanguage('zh', 'en-GB'); // languageName = 'Chinese'
   ```
@@ -3940,6 +5310,8 @@ getSystemLanguage(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemLanguage: string = i18n.getSystemLanguage();
   ```
 
@@ -3962,6 +5334,8 @@ getSystemRegion(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let region: string = i18n.getSystemRegion();
   ```
 
@@ -3970,7 +5344,7 @@ getSystemRegion(): string
 
 getSystemLocale(): string
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLocaleInstance](#getsystemlocaleinstance20)代替。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLocale](#getsystemlocaleinstance20)代替。
 
 获取系统区域ID。
 
@@ -3984,6 +5358,8 @@ getSystemLocale(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let locale: string = i18n.getSystemLocale();
   ```
 
@@ -4006,6 +5382,8 @@ is24HourClock(): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let is24HourClock: boolean = i18n.is24HourClock();
   ```
 
@@ -4036,6 +5414,8 @@ set24HourClock(option: boolean): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // 将系统时间设置为24小时制
   let success: boolean = i18n.set24HourClock(true);
   ```
@@ -4068,6 +5448,8 @@ addPreferredLanguage(language: string, index?: number): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // 将语言zh-CN添加到系统偏好语言列表中
   let language: string = 'zh-CN';
   let index: number = 0;
@@ -4101,6 +5483,8 @@ removePreferredLanguage(index: number): boolean
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   // 移除系统偏好语言列表中的第一个偏好语言
   let index: number = 0;
   let success: boolean = i18n.removePreferredLanguage(index);
@@ -4125,6 +5509,8 @@ getPreferredLanguageList(): Array&lt;string&gt;
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let preferredLanguageList: Array<string> = i18n.getPreferredLanguageList();
   ```
 
@@ -4147,6 +5533,8 @@ getFirstPreferredLanguage(): string
 
 **示例：**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let firstPreferredLanguage: string = i18n.getFirstPreferredLanguage();
   ```
 

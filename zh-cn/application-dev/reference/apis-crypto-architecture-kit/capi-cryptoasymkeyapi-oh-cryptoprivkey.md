@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoPrivKey OH_CryptoPrivKey
+```
+
 ## 概述
 
 定义私钥结构体。

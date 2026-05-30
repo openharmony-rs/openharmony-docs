@@ -22,7 +22,7 @@ import bluetooth from '@ohos.bluetooth';
 ```
 
 
-## bluetooth.enableBluetooth<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.enableBluetooth<sup>(deprecated)</sup>
 
 enableBluetooth(): boolean
 
@@ -48,7 +48,7 @@ let enable : boolean = bluetooth.enableBluetooth();
 ```
 
 
-## bluetooth.disableBluetooth<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.disableBluetooth<sup>(deprecated)</sup>
 
 disableBluetooth(): boolean
 
@@ -74,7 +74,7 @@ let disable : boolean = bluetooth.disableBluetooth();
 ```
 
 
-## bluetooth.getLocalName<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getLocalName<sup>(deprecated)</sup>
 
 getLocalName(): string
 
@@ -152,7 +152,7 @@ let connectionState : bluetooth.ProfileConnectionState = bluetooth.getBtConnecti
 ```
 
 
-## bluetooth.setLocalName<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.setLocalName<sup>(deprecated)</sup>
 
 setLocalName(name: string): boolean
 
@@ -217,7 +217,7 @@ let result : boolean = bluetooth.pairDevice("XX:XX:XX:XX:XX:XX");
 ```
 
 
-## bluetooth.getProfileConnState<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getProfileConnState<sup>(deprecated)</sup>
 
 getProfileConnState(profileId: ProfileId): ProfileConnectionState
 
@@ -249,7 +249,7 @@ let result : bluetooth.ProfileConnectionState = bluetooth.getProfileConnState(bl
 ```
 
 
-## bluetooth.getRemoteDeviceName<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getRemoteDeviceName<sup>(deprecated)</sup>
 
 getRemoteDeviceName(deviceId: string): string
 
@@ -281,7 +281,7 @@ let remoteDeviceName : string = bluetooth.getRemoteDeviceName("XX:XX:XX:XX:XX:XX
 ```
 
 
-## bluetooth.getRemoteDeviceClass<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getRemoteDeviceClass<sup>(deprecated)</sup>
 
 getRemoteDeviceClass(deviceId: string): DeviceClass
 
@@ -313,7 +313,7 @@ let remoteDeviceClass : bluetooth.DeviceClass = bluetooth.getRemoteDeviceClass("
 ```
 
 
-## bluetooth.getPairedDevices<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getPairedDevices<sup>(deprecated)</sup>
 
 getPairedDevices(): Array&lt;string&gt;
 
@@ -374,7 +374,7 @@ let result : boolean = bluetooth.setBluetoothScanMode(bluetooth.ScanMode
 ```
 
 
-## bluetooth.getBluetoothScanMode<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getBluetoothScanMode<sup>(deprecated)</sup>
 
 getBluetoothScanMode(): ScanMode
 
@@ -400,7 +400,7 @@ let scanMode : bluetooth.ScanMode = bluetooth.getBluetoothScanMode();
 ```
 
 
-## bluetooth.startBluetoothDiscovery<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.startBluetoothDiscovery<sup>(deprecated)</sup>
 
 startBluetoothDiscovery(): boolean
 
@@ -431,7 +431,7 @@ let result : boolean = bluetooth.startBluetoothDiscovery();
 ```
 
 
-## bluetooth.stopBluetoothDiscovery<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.stopBluetoothDiscovery<sup>(deprecated)</sup>
 
 stopBluetoothDiscovery(): boolean
 
@@ -457,7 +457,7 @@ let result : boolean = bluetooth.stopBluetoothDiscovery();
 ```
 
 
-## bluetooth.setDevicePairingConfirmation<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.setDevicePairingConfirmation<sup>(deprecated)</sup>
 
 setDevicePairingConfirmation(device: string, accept: boolean): boolean
 
@@ -495,7 +495,7 @@ bluetooth.on("pinRequired", onReceivePinRequiredEvent);
 ```
 
 
-## bluetooth.on('bluetoothDeviceFind')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('bluetoothDeviceFind')<sup>(deprecated)</sup>
 
 on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): void
 
@@ -529,7 +529,7 @@ bluetooth.on('bluetoothDeviceFind', onReceiveEvent);
 ```
 
 
-## bluetooth.off('bluetoothDeviceFind')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('bluetoothDeviceFind')<sup>(deprecated)</sup>
 
 off(type: 'bluetoothDeviceFind', callback?: Callback&lt;Array&lt;string&gt;&gt;): void
 
@@ -564,7 +564,7 @@ bluetooth.off('bluetoothDeviceFind', onReceiveEvent);
 ```
 
 
-## bluetooth.on('pinRequired')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('pinRequired')<sup>(deprecated)</sup>
 
 on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 
@@ -598,7 +598,7 @@ bluetooth.on('pinRequired', onReceiveEvent);
 ```
 
 
-## bluetooth.off('pinRequired')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('pinRequired')<sup>(deprecated)</sup>
 
 off(type: 'pinRequired', callback?: Callback&lt;PinRequiredParam&gt;): void
 
@@ -667,7 +667,7 @@ bluetooth.on('bondStateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.off('bondStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('bondStateChange')<sup>(deprecated)</sup>
 
 off(type: 'bondStateChange', callback?: Callback&lt;BondStateParam&gt;): void
 
@@ -702,7 +702,7 @@ bluetooth.off('bondStateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.on('stateChange')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('stateChange')<sup>(deprecated)</sup>
 
 on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
@@ -736,7 +736,7 @@ bluetooth.on('stateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.off('stateChange')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('stateChange')<sup>(deprecated)</sup>
 
 off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
@@ -771,7 +771,7 @@ bluetooth.off('stateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.sppListen<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppListen<sup>(deprecated)</sup>
 
 sppListen(name: string, option: SppOption, callback: AsyncCallback&lt;number&gt;): void
 
@@ -795,12 +795,12 @@ sppListen(name: string, option: SppOption, callback: AsyncCallback&lt;number&gt;
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
@@ -810,7 +810,7 @@ bluetooth.sppListen('server1', sppOption, serverSocket);
 ```
 
 
-## bluetooth.sppAccept<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppAccept<sup>(deprecated)</sup>
 
 sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 
@@ -831,20 +831,20 @@ sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
 let clientNumber = -1;
 function acceptClientSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth clientSocket Number: ' + number);
+    console.info(`bluetooth clientSocket Number: ${number}`);
     // 获取的clientNumber用作服务端后续读/写操作socket的id。
     clientNumber = number;
   }
@@ -883,7 +883,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -892,7 +892,7 @@ bluetooth.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
 ```
 
 
-## bluetooth.sppCloseServerSocket<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppCloseServerSocket<sup>(deprecated)</sup>
 
 sppCloseServerSocket(socket: number): void
 
@@ -912,12 +912,12 @@ sppCloseServerSocket(socket: number): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
@@ -925,7 +925,7 @@ bluetooth.sppCloseServerSocket(serverNumber);
 ```
 
 
-## bluetooth.sppCloseClientSocket<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppCloseClientSocket<sup>(deprecated)</sup>
 
 sppCloseClientSocket(socket: number): void
 
@@ -951,7 +951,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -959,7 +959,7 @@ bluetooth.sppCloseClientSocket(clientNumber);
 ```
 
 
-## bluetooth.sppWrite<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppWrite<sup>(deprecated)</sup>
 
 sppWrite(clientSocket: number, data: ArrayBuffer): boolean
 
@@ -992,7 +992,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -1001,14 +1001,14 @@ let data = new Uint8Array(arrayBuffer);
 data[0] = 123;
 let ret : boolean = bluetooth.sppWrite(clientNumber, arrayBuffer);
 if (ret) {
-  console.log('spp write successfully');
+  console.info('spp write successfully');
 } else {
-  console.log('spp write failed');
+  console.error('spp write failed');
 }
 ```
 
 
-## bluetooth.on('sppRead')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('sppRead')<sup>(deprecated)</sup>
 
 on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;): void
 
@@ -1040,19 +1040,18 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
 function dataRead(dataBuffer : ArrayBuffer) {
   let data = new Uint8Array(dataBuffer);
-  console.log('bluetooth data is: ' + data[0]);
 }
 bluetooth.on('sppRead', clientNumber, dataRead);
 ```
 
 
-## bluetooth.off('sppRead')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('sppRead')<sup>(deprecated)</sup>
 
 off(type: 'sppRead', clientSocket: number, callback?: Callback&lt;ArrayBuffer&gt;): void
 
@@ -1084,7 +1083,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -1092,7 +1091,7 @@ bluetooth.off('sppRead', clientNumber);
 ```
 
 
-## bluetooth.getProfile<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getProfile<sup>(deprecated)</sup>
 
 getProfile(profileId: ProfileId): A2dpSourceProfile | HandsFreeAudioGatewayProfile
 
@@ -1350,7 +1349,7 @@ bluetooth.BLE.off('BLEDeviceFind', onReceiveEvent);
 profile基类。
 
 
-### getConnectionDevices<sup>8+</sup><sup>(deprecated)</sup>
+### getConnectionDevices<sup>(deprecated)</sup>
 
 getConnectionDevices(): Array&lt;string&gt;
 
@@ -1376,7 +1375,7 @@ let a2dpSrc : bluetooth.A2dpSourceProfile = bluetooth.getProfile(bluetooth.Profi
 let retArray : Array<string> = a2dpSrc.getConnectionDevices();
 ```
 
-### getDeviceState<sup>8+</sup><sup>(deprecated)</sup>
+### getDeviceState<sup>(deprecated)</sup>
 
 getDeviceState(device: string): ProfileConnectionState
 
@@ -1413,7 +1412,7 @@ let ret : bluetooth.ProfileConnectionState = a2dpSrc.getDeviceState('XX:XX:XX:XX
 使用A2dpSourceProfile方法之前需要创建该类的实例进行操作，通过getProfile()方法构造此实例。
 
 
-### connect<sup>8+</sup><sup>(deprecated)</sup>
+### connect<sup>(deprecated)</sup>
 
 connect(device: string): boolean
 
@@ -1446,7 +1445,7 @@ let ret : boolean = a2dpSrc.connect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### disconnect<sup>8+</sup><sup>(deprecated)</sup>
+### disconnect<sup>(deprecated)</sup>
 
 disconnect(device: string): boolean
 
@@ -1479,7 +1478,7 @@ let ret : boolean = a2dpSrc.disconnect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### on('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### on('connectionStateChange')<sup>(deprecated)</sup>
 
 on(type: 'connectionStateChange', callback: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1512,7 +1511,7 @@ a2dpSrc.on('connectionStateChange', onReceiveEvent);
 ```
 
 
-### off('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### off('connectionStateChange')<sup>(deprecated)</sup>
 
 off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1546,7 +1545,7 @@ a2dpSrc.off('connectionStateChange', onReceiveEvent);
 ```
 
 
-### getPlayingState<sup>8+</sup><sup>(deprecated)</sup>
+### getPlayingState<sup>(deprecated)</sup>
 
 getPlayingState(device: string): PlayingState
 
@@ -1582,14 +1581,14 @@ let state : bluetooth.PlayingState = a2dpSrc.getPlayingState('XX:XX:XX:XX:XX:XX'
 使用HandsFreeAudioGatewayProfile方法之前需要创建该类的实例进行操作，通过getProfile()方法构造此实例。
 
 
-### connect<sup>8+</sup><sup>(deprecated)</sup>
+### connect<sup>(deprecated)</sup>
 
 connect(device: string): boolean
 
 连接设备的HFP服务。
 
 > **说明：**<br/>
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[bluetoothManager.HandsFreeAudioGatewayProfile.connect](js-apis-bluetoothManager.md#connect)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[bluetoothManager.HandsFreeAudioGatewayProfile.connect](js-apis-bluetoothManager.md#connectdeprecated-1)替代。
 
 **需要权限**：ohos.permission.DISCOVER_BLUETOOTH
 
@@ -1616,7 +1615,7 @@ let ret : boolean = hfpAg.connect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### disconnect<sup>8+</sup><sup>(deprecated)</sup>
+### disconnect<sup>(deprecated)</sup>
 
 disconnect(device: string): boolean
 
@@ -1650,7 +1649,7 @@ let ret : boolean = hfpAg.disconnect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### on('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### on('connectionStateChange')<sup>(deprecated)</sup>
 
 on(type: 'connectionStateChange', callback: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1684,7 +1683,7 @@ hfpAg.on('connectionStateChange', onReceiveEvent);
 ```
 
 
-### off('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### off('connectionStateChange')<sup>(deprecated)</sup>
 
 off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1877,9 +1876,9 @@ let gattService : bluetooth.GattService = {serviceUuid:'00001810-0000-1000-8000-
 let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
 let ret : boolean = gattServer.addService(gattService);
 if (ret) {
-   console.log("add service successfully");
+   console.info("add service successfully");
 } else {
-   console.log("add service failed");
+   console.error("add service failed");
 }
 ```
 
@@ -2029,9 +2028,9 @@ let serverResponse : bluetooth.ServerResponse = {
 let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
 let ret : boolean = gattServer.sendResponse(serverResponse);
 if (ret) {
-  console.log('bluetooth sendResponse successfully');
+  console.info('bluetooth sendResponse successfully');
 } else {
-  console.log('bluetooth sendResponse failed');
+  console.error('bluetooth sendResponse failed');
 }
 ```
 
@@ -2077,9 +2076,9 @@ function ReadCharacteristicReq(CharacteristicReadReq : bluetooth.CharacteristicR
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2164,9 +2163,9 @@ function WriteCharacteristicReq(CharacteristicWriteReq : bluetooth.Characteristi
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2248,9 +2247,9 @@ function ReadDescriptorReq(DescriptorReadReq : bluetooth.DescriptorReadReq) {
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2334,9 +2333,9 @@ function WriteDescriptorReq(DescriptorWriteReq : bluetooth.DescriptorWriteReq) {
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2560,15 +2559,15 @@ client端获取蓝牙低功耗设备的所有服务，即服务发现 。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback 模式
 function getServices(code : BusinessError, gattServices : Array<bluetooth.GattService>) {
   if (code.code == 0) {
-      console.log('bluetooth code is ' + code.code);
-      console.log("bluetooth services size is ", gattServices.length);
+      console.info(`bluetooth code is ${code.code}`);
+      console.info(`bluetooth services size is ${gattServices.length}`);
 
       for (let i = 0; i < gattServices.length; i++) {
-        console.log('bluetooth serviceUuid is ' + gattServices[i].serviceUuid);
+        console.info(`bluetooth serviceUuid is ${gattServices[i].serviceUuid}`);
       }
   }
 }
@@ -2637,14 +2636,13 @@ client端读取蓝牙低功耗设备特定服务的特征值。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 function readCcc(code : BusinessError, BLECharacteristic : bluetooth.BLECharacteristic) {
   if (code.code != 0) {
       return;
   }
-  console.log('bluetooth characteristic uuid: ' + BLECharacteristic.characteristicUuid);
+  console.info(`bluetooth characteristic uuid: ${BLECharacteristic.characteristicUuid}`);
   let value = new Uint8Array(BLECharacteristic.characteristicValue);
-  console.log('bluetooth characteristic value: ' + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
 }
 
 let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('XX:XX:XX:XX:XX:XX');
@@ -2744,14 +2742,13 @@ client端读取蓝牙低功耗设备特定的特征包含的描述符。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 function readDesc(code : BusinessError, BLEDescriptor : bluetooth.BLEDescriptor) {
   if (code.code != 0) {
       return;
   }
-  console.log('bluetooth descriptor uuid: ' + BLEDescriptor.descriptorUuid);
+  console.info(`bluetooth descriptor uuid: ${BLEDescriptor.descriptorUuid}`);
   let value = new Uint8Array(BLEDescriptor.descriptorValue);
-  console.log('bluetooth descriptor value: ' + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
 }
 
 let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('XX:XX:XX:XX:XX:XX');
@@ -2850,9 +2847,9 @@ let characteristic : bluetooth.BLECharacteristic = {serviceUuid: '00001810-0000-
   characteristicValue: bufferCCC, descriptors:descriptors};
 let retWriteCcc : boolean = device.writeCharacteristicValue(characteristic);
 if (retWriteCcc) {
-  console.log('write characteristic successfully');
+  console.info('write characteristic successfully');
 } else {
-  console.log('write characteristic failed');
+  console.error('write characteristic failed');
 }
 ```
 
@@ -2894,9 +2891,9 @@ let descriptor : bluetooth.BLEDescriptor = {serviceUuid: '00001810-0000-1000-800
   descriptorUuid: '00002903-0000-1000-8000-00805F9B34FB', descriptorValue: bufferDesc};
 let retWriteDesc : boolean = device.writeDescriptorValue(descriptor);
 if (retWriteDesc) {
-  console.log('bluetooth write descriptor successfully');
+  console.info('bluetooth write descriptor successfully');
 } else {
-  console.log('bluetooth write descriptor failed');
+  console.error('bluetooth write descriptor failed');
 }
 ```
 
@@ -3077,7 +3074,7 @@ client端订阅蓝牙低功耗设备的连接状态变化事件。
 
 ```js
 function ConnectStateChanged(state : bluetooth.BLEConnectChangedState) {
-  console.log('bluetooth connect state changed');
+  console.info('bluetooth connect state changed');
   let connectState : bluetooth.ProfileConnectionState = state.state;
 }
 let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('XX:XX:XX:XX:XX:XX');
@@ -3292,11 +3289,11 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称     | 类型                | 可读   | 可写   | 说明          |
+| 名称     | 类型                | 只读   | 可选   | 说明          |
 | ------ | ------------------- | ---- | ---- | ----------- |
-| uuid   | string              | 是    | 是    | spp单据的uuid。 |
-| secure | boolean             | 是    | 是    | 是否是安全通道。    |
-| type   | [SppType](#spptypedeprecated) | 是    | 是    | Spp链路类型。    |
+| uuid   | string              | 否    | 否    | spp单据的uuid。 |
+| secure | boolean             | 否    | 否    | 是否是安全通道。    |
+| type   | [SppType](#spptypedeprecated) | 否    | 否    | Spp链路类型。    |
 
 
 ## SppType<sup>(deprecated)</sup>
@@ -3322,12 +3319,12 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称              | 类型                                     | 可读   | 可写   | 说明                                       |
+| 名称              | 类型                                     | 只读   | 可选   | 说明                                       |
 | --------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid     | string                                   | 是    | 是    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
-| isPrimary       | boolean                                  | 是    | 是    | 如果是主服务设置为true，否则设置为false。                |
-| characteristics | Array&lt;[BLECharacteristic](#blecharacteristicdeprecated)&gt; | 是    | 是    | 当前服务包含的特征列表。                             |
-| includeServices | Array&lt;[GattService](#gattservicedeprecated)&gt; | 是    | 是    | 当前服务依赖的其它服务。                             |
+| serviceUuid     | string                                   | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| isPrimary       | boolean                                  | 否    | 否    | 如果是主服务设置为true，否则设置为false。                |
+| characteristics | Array&lt;[BLECharacteristic](#blecharacteristicdeprecated)&gt; | 否    | 否    | 当前服务包含的特征列表。                             |
+| includeServices | Array&lt;[GattService](#gattservicedeprecated)&gt; | 否    | 是    | 当前服务依赖的其它服务。                             |
 
 
 ## BLECharacteristic<sup>(deprecated)</sup>
@@ -3339,12 +3336,12 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                  | 类型                                     | 可读   | 可写   | 说明                                       |
+| 名称                  | 类型                                     | 只读   | 可选   | 说明                                       |
 | ------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid         | string                                   | 是    | 是    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
-| characteristicUuid  | string                                   | 是    | 是    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| characteristicValue | ArrayBuffer                              | 是    | 是    | 特征对应的二进制值。                               |
-| descriptors         | Array&lt;[BLEDescriptor](#bledescriptordeprecated)&gt; | 是    | 是    | 特定特征的描述符列表。                              |
+| serviceUuid         | string                                   | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| characteristicUuid  | string                                   | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| characteristicValue | ArrayBuffer                              | 否    | 否    | 特征对应的二进制值。                               |
+| descriptors         | Array&lt;[BLEDescriptor](#bledescriptordeprecated)&gt; | 否    | 否    | 特定特征的描述符列表。                              |
 
 
 ## BLEDescriptor<sup>(deprecated)</sup>
@@ -3356,12 +3353,12 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                 | 类型        | 可读   | 可写   | 说明                                       |
+| 名称                 | 类型        | 只读   | 可选   | 说明                                       |
 | ------------------ | ----------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid        | string      | 是    | 是    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
-| characteristicUuid | string      | 是    | 是    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| descriptorUuid     | string      | 是    | 是    | 描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
-| descriptorValue    | ArrayBuffer | 是    | 是    | 描述符对应的二进制值。                              |
+| serviceUuid        | string      | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| characteristicUuid | string      | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| descriptorUuid     | string      | 否    | 否    | 描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
+| descriptorValue    | ArrayBuffer | 否    | 否    | 描述符对应的二进制值。                              |
 
 
 ## NotifyCharacteristic<sup>(deprecated)</sup>
@@ -3373,12 +3370,12 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                  | 类型        | 可读   | 可写   | 说明                                       |
+| 名称                  | 类型        | 只读   | 可选   | 说明                                       |
 | ------------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid         | string      | 是    | 是    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
-| characteristicUuid  | string      | 是    | 是    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| characteristicValue | ArrayBuffer | 是    | 是    | 特征对应的二进制值。                               |
-| confirm             | boolean     | 是    | 是    | 如果是notification则对端回复确认设置为true，如果是indication则对端不需要回复确认设置为false。 |
+| serviceUuid         | string      | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| characteristicUuid  | string      | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| characteristicValue | ArrayBuffer | 否    | 否    | 特征对应的二进制值。                               |
+| confirm             | boolean     | 否    | 否    | 如果是notification则对端回复确认设置为true，如果是indication则对端不需要回复确认设置为false。 |
 
 
 ## CharacteristicReadReq<sup>(deprecated)</sup>
@@ -3390,13 +3387,13 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                 | 类型   | 可读   | 可写   | 说明                                       |
+| 名称                 | 类型   | 只读   | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | 是    | 否    | 表示发送特征值读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transId            | number | 是    | 否    | 表示读请求的传输ID，server端回复响应时需填写相同的传输ID。       |
-| offset             | number | 是    | 否    | 表示读特征值数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。 |
-| characteristicUuid | string | 是    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| serviceUuid        | string | 是    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| deviceId           | string | 否    | 否    | 表示发送特征值读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| transId            | number | 否    | 否    | 表示读请求的传输ID，server端回复响应时需填写相同的传输ID。       |
+| offset             | number | 否    | 否    | 表示读特征值数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。 |
+| characteristicUuid | string | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| serviceUuid        | string | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
 
 
 ## CharacteristicWriteReq<sup>(deprecated)</sup>
@@ -3408,16 +3405,16 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                 | 类型   | 可读   | 可写   | 说明                                       |
+| 名称                 | 类型   | 只读   | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | 是    | 否    | 表示发送特征值写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transId            | number | 是    | 否    | 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。       |
-| offset             | number | 是    | 否    | 表示写特征值数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。 |
-| isPrep             | boolean | 是    | 否    | 表示写请求是否立即执行。true表示立即执行。 |
-| needRsp            | boolean | 是    | 否    | 表示是否要给client端回复响应。true表示需要回复。 |
-| value              | ArrayBuffer | 是    | 否    | 表示写入的描述符二进制数据。 |
-| characteristicUuid | string | 是    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| serviceUuid        | string | 是    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| deviceId           | string | 否    | 否    | 表示发送特征值写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| transId            | number | 否    | 否    | 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。       |
+| offset             | number | 否    | 否    | 表示写特征值数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。 |
+| isPrep             | boolean | 否    | 否    | 表示写请求是否立即执行。true表示立即执行。 |
+| needRsp            | boolean | 否    | 否    | 表示是否要给client端回复响应。true表示需要回复。 |
+| value              | ArrayBuffer | 否    | 否    | 表示写入的描述符二进制数据。 |
+| characteristicUuid | string | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| serviceUuid        | string | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
 
 
 ## DescriptorReadReq<sup>(deprecated)</sup>
@@ -3429,14 +3426,14 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                 | 类型   | 可读   | 可写   | 说明                                       |
+| 名称                 | 类型   | 只读   | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | 是    | 否    | 表示发送描述符读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transId            | number | 是    | 否    | 表示读请求的传输ID，server端回复响应时需填写相同的传输ID。       |
-| offset             | number | 是    | 否    | 表示读描述符数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。 |
-| descriptorUuid     | string | 是    | 否    | 表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
-| characteristicUuid | string | 是    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| serviceUuid        | string | 是    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| deviceId           | string | 否    | 否    | 表示发送描述符读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| transId            | number | 否    | 否    | 表示读请求的传输ID，server端回复响应时需填写相同的传输ID。       |
+| offset             | number | 否    | 否    | 表示读描述符数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。 |
+| descriptorUuid     | string | 否    | 否    | 表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
+| characteristicUuid | string | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| serviceUuid        | string | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
 
 
 ## DescriptorWriteReq<sup>(deprecated)</sup>
@@ -3448,17 +3445,17 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                 | 类型        | 可读   | 可写   | 说明                                       |
+| 名称                 | 类型        | 只读   | 可选   | 说明                                       |
 | ------------------ | ----------- | ---- | ---- | ---------------------------------------- |
-| deviceId           | string      | 是    | 否    | 表示发送描述符写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transId            | number      | 是    | 否    | 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。       |
-| offset             | number      | 是    | 否    | 表示写描述符数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。 |
-| isPrep             | boolean     | 是    | 否    | 表示写请求是否立即执行。                             |
-| needRsp            | boolean     | 是    | 否    | 表示是否要给client端回复响应。                       |
-| value              | ArrayBuffer | 是    | 否    | 表示写入的描述符二进制数据。                           |
-| descriptorUuid     | string      | 是    | 否    | 表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
-| characteristicUuid | string      | 是    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
-| serviceUuid        | string      | 是    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| deviceId           | string      | 否    | 否    | 表示发送描述符写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| transId            | number      | 否    | 否    | 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。       |
+| offset             | number      | 否    | 否    | 表示写描述符数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。 |
+| isPrep             | boolean     | 否    | 否    | 表示写请求是否立即执行。                             |
+| needRsp            | boolean     | 否    | 否    | 表示是否要给client端回复响应。                       |
+| value              | ArrayBuffer | 否    | 否    | 表示写入的描述符二进制数据。                           |
+| descriptorUuid     | string      | 否    | 否    | 表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。 |
+| characteristicUuid | string      | 否    | 否    | 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。 |
+| serviceUuid        | string      | 否    | 否    | 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。 |
 
 
 ## ServerResponse<sup>(deprecated)</sup>
@@ -3470,13 +3467,13 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称       | 类型        | 可读   | 可写   | 说明                                     |
+| 名称       | 类型        | 只读   | 可选   | 说明                                     |
 | -------- | ----------- | ---- | ---- | -------------------------------------- |
-| deviceId | string      | 是    | 否    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。       |
-| transId  | number      | 是    | 否    | 表示请求的传输ID，与订阅的读/写请求事件携带的ID保持一致。        |
-| status   | number      | 是    | 否    | 表示响应的状态，设置为0即可，表示正常。                   |
-| offset   | number      | 是    | 否    | 表示请求的读/写起始位置，与订阅的读/写请求事件携带的offset保持一致。 |
-| value    | ArrayBuffer | 是    | 否    | 表示回复响应的二进制数据。                          |
+| deviceId | string      | 否    | 否    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。       |
+| transId  | number      | 否    | 否    | 表示请求的传输ID，与订阅的读/写请求事件携带的ID保持一致。        |
+| status   | number      | 否    | 否    | 表示响应的状态，设置为0即可，表示正常。                   |
+| offset   | number      | 否    | 否    | 表示请求的读/写起始位置，与订阅的读/写请求事件携带的offset保持一致。 |
+| value    | ArrayBuffer | 否    | 否    | 表示回复响应的二进制数据。                          |
 
 
 ## BLEConnectChangedState<sup>(deprecated)</sup>
@@ -3488,10 +3485,10 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称     | 类型                                          | 可读 | 可写 | 说明                                          |
+| 名称     | 类型                                          | 只读 | 可选 | 说明                                          |
 | -------- | ------------------------------------------------- | ---- | ---- | --------------------------------------------- |
-| deviceId | string                                            | 是   | 否   | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | 是   | 是   | 表示BLE连接状态的枚举。                       |
+| deviceId | string                                            | 否   | 否   | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | 否   | 否   | 表示BLE连接状态的枚举。                       |
 
 
 ## ProfileConnectionState<sup>(deprecated)</sup>
@@ -3520,11 +3517,11 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称                                     | 类型    | 可读 | 可写 | 说明                                                         |
+| 名称                                     | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------------------------- | ----------- | ---- | ---- | ------------------------------------------------------------ |
-| deviceId                                 | string      | 是   | 是   | 表示过滤的BLE设备地址，例如："XX:XX:XX:XX:XX:XX"。           |
-| name                                     | string      | 是   | 是   | 表示过滤的BLE设备名。                                        |
-| serviceUuid                              | string      | 是   | 是   | 表示过滤包含该UUID服务的设备，例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| deviceId                                 | string      | 否   | 是   | 表示过滤的BLE设备地址，例如："XX:XX:XX:XX:XX:XX"。           |
+| name                                     | string      | 否   | 是   | 表示过滤的BLE设备名。                                        |
+| serviceUuid                              | string      | 否   | 是   | 表示过滤包含该UUID服务的设备，例如：00001888-0000-1000-8000-00805f9b34fb。 |
 
 
 ## ScanOptions<sup>(deprecated)</sup>
@@ -3536,11 +3533,11 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称        | 类型                    | 可读   | 可写   | 说明                                     |
+| 名称        | 类型                    | 只读   | 可选   | 说明                                     |
 | --------- | ----------------------- | ---- | ---- | -------------------------------------- |
-| interval  | number                  | 是    | 是    | 表示扫描结果上报延迟时间，默认值为0。                    |
-| dutyMode  | [ScanDuty](#scandutydeprecated)   | 是    | 是    | 表示扫描模式，默认值为SCAN_MODE_LOW_POWER。        |
-| matchMode | [MatchMode](#matchmodedeprecated) | 是    | 是    | 表示硬件的过滤匹配模式，默认值为MATCH_MODE_AGGRESSIVE。 |
+| interval  | number                  | 否    | 是    | 表示扫描结果上报延迟时间，默认值为0。                    |
+| dutyMode  | [ScanDuty](#scandutydeprecated)   | 否    | 是    | 表示扫描模式，默认值为SCAN_MODE_LOW_POWER。        |
+| matchMode | [MatchMode](#matchmodedeprecated) | 否    | 是    | 表示硬件的过滤匹配模式，默认值为MATCH_MODE_AGGRESSIVE。 |
 
 
 ## ScanDuty<sup>(deprecated)</sup>
@@ -3583,11 +3580,11 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称       | 类型        | 可读   | 可写   | 说明                                 |
+| 名称       | 类型        | 只读   | 可选   | 说明                                 |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | 是    | 否    | 表示扫描到的设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| rssi     | number      | 是    | 否    | 表示扫描到的设备的rssi值。                    |
-| data     | ArrayBuffer | 是    | 否    | 表示扫描到的设备发送的广播包。                    |
+| deviceId | string      | 否    | 否    | 表示扫描到的设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| rssi     | number      | 否    | 否    | 表示扫描到的设备的rssi值。                    |
+| data     | ArrayBuffer | 否    | 否    | 表示扫描到的设备发送的广播包。                    |
 
 
 ## BluetoothState<sup>(deprecated)</sup>
@@ -3619,11 +3616,11 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称          | 类型    | 可读   | 可写   | 说明                                       |
+| 名称          | 类型    | 只读   | 可选   | 说明                                       |
 | ----------- | ------- | ---- | ---- | ---------------------------------------- |
-| interval    | number  | 是    | 是    | 表示广播间隔，最小值设置32个slot表示20ms，最大值设置16384个slot，默认值设置为1600个slot表示1s。 |
-| txPower     | number  | 是    | 是    | 表示发送功率，最小值设置-127，最大值设置1，默认值设置-7，单位dbm。   |
-| connectable | boolean | 是    | 是    | 表示是否是可连接广播，默认值设置为true。                   |
+| interval    | number  | 否    | 是    | 表示广播间隔，最小值设置32个slot表示20ms，最大值设置16384个slot，默认值设置为1600个slot表示1s。 |
+| txPower     | number  | 否    | 是    | 表示发送功率，最小值设置-127，最大值设置1，默认值设置-7，单位dbm。   |
+| connectable | boolean | 否    | 是    | 表示是否是可连接广播，默认值设置为true。                   |
 
 
 ## AdvertiseData<sup>(deprecated)</sup>
@@ -3635,11 +3632,11 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称              | 类型                                     | 可读   | 可写   | 说明                          |
+| 名称              | 类型                                     | 只读   | 可选   | 说明                          |
 | --------------- | ---------------------------------------- | ---- | ---- | --------------------------- |
-| serviceUuids    | Array&lt;string&gt;                      | 是    | 是    | 表示要广播的服务&nbsp;UUID&nbsp;列表。 |
-| manufactureData | Array&lt;[ManufactureData](#manufacturedatadeprecated)&gt; | 是    | 是    | 表示要广播的广播的制造商信息列表。           |
-| serviceData     | Array&lt;[ServiceData](#servicedatadeprecated)&gt; | 是    | 是    | 表示要广播的服务数据列表。               |
+| serviceUuids    | Array&lt;string&gt;                      | 否    | 否    | 表示要广播的服务&nbsp;UUID&nbsp;列表。 |
+| manufactureData | Array&lt;[ManufactureData](#manufacturedatadeprecated)&gt; | 否    | 否    | 表示要广播的广播的制造商信息列表。           |
+| serviceData     | Array&lt;[ServiceData](#servicedatadeprecated)&gt; | 否    | 否    | 表示要广播的服务数据列表。               |
 
 
 ## ManufactureData<sup>(deprecated)</sup>
@@ -3651,10 +3648,10 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称               | 类型                | 可读   | 可写   | 说明                 |
+| 名称               | 类型                | 只读   | 可选   | 说明                 |
 | ---------------- | ------------------- | ---- | ---- | ------------------ |
-| manufactureId    | number  | 是    | 是    | 表示制造商的ID，由蓝牙SIG分配。 |
-| manufactureValue | ArrayBuffer         | 是    | 是    | 表示制造商发送的制造商数据。     |
+| manufactureId    | number  | 否    | 否    | 表示制造商的ID，由蓝牙SIG分配。 |
+| manufactureValue | ArrayBuffer         | 否    | 否    | 表示制造商发送的制造商数据。     |
 
 
 ## ServiceData<sup>(deprecated)</sup>
@@ -3666,10 +3663,10 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称           | 类型        | 可读   | 可写   | 说明         |
+| 名称           | 类型        | 只读   | 可选   | 说明         |
 | ------------ | ----------- | ---- | ---- | ---------- |
-| serviceUuid  | string      | 是    | 是    | 表示服务的UUID。 |
-| serviceValue | ArrayBuffer | 是    | 是    | 表示服务数据。    |
+| serviceUuid  | string      | 否    | 否    | 表示服务的UUID。 |
+| serviceValue | ArrayBuffer | 否    | 否    | 表示服务数据。    |
 
 
 ## PinRequiredParam<sup>(deprecated)</sup>
@@ -3681,10 +3678,10 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称       | 类型   | 可读   | 可写   | 说明          |
+| 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string | 是    | 否    | 表示要配对的设备ID。 |
-| pinCode  | string | 是    | 否    | 表示要配对的密钥。   |
+| deviceId | string | 否    | 否    | 表示要配对的设备ID。 |
+| pinCode  | string | 否    | 否    | 表示要配对的密钥。   |
 
 
 ## BondStateParam<sup>(deprecated)</sup>
@@ -3696,10 +3693,10 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称       | 类型   | 可读   | 可写   | 说明          |
+| 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string      | 是    | 否    | 表示要配对的设备ID。 |
-| state    | BondState   | 是    | 否    | 表示配对设备的状态。 |
+| deviceId | string      | 否    | 否    | 表示要配对的设备ID。 |
+| state    | BondState   | 否    | 否    | 表示配对设备的状态。 |
 
 
 ## StateChangeParam<sup>(deprecated)</sup>
@@ -3711,10 +3708,10 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称     | 类型                                          | 可读 | 可写 | 说明                            |
+| 名称     | 类型                                          | 只读 | 可选 | 说明                            |
 | -------- | ------------------------------------------------- | ---- | ---- | ------------------------------- |
-| deviceId | string                                            | 是   | 否   | 表示蓝牙设备地址。              |
-| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | 是   | 否   | 表示蓝牙设备的profile连接状态。 |
+| deviceId | string                                            | 否   | 否   | 表示蓝牙设备地址。              |
+| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | 否   | 否   | 表示蓝牙设备的profile连接状态。 |
 
 
 ## DeviceClass<sup>(deprecated)</sup>
@@ -3726,11 +3723,11 @@ gattClient.getRssiValue().then((data : number) => {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-| 名称              | 类型                                | 可读   | 可写   | 说明               |
+| 名称              | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | ----------------------------------- | ---- | ---- | ---------------- |
-| majorClass      | [MajorClass](#majorclassdeprecated)           | 是    | 否    | 表示蓝牙设备主要类别的枚举。   |
-| majorMinorClass | [MajorMinorClass](#majorminorclassdeprecated) | 是    | 否    | 表示主要次要蓝牙设备类别的枚举。 |
-| classOfDevice   | number                              | 是    | 否    | 表示设备类别。          |
+| majorClass      | [MajorClass](#majorclassdeprecated)           | 否    | 否    | 表示蓝牙设备主要类别的枚举。   |
+| majorMinorClass | [MajorMinorClass](#majorminorclassdeprecated) | 否    | 否    | 表示主要次要蓝牙设备类别的枚举。 |
+| classOfDevice   | number                              | 否    | 否    | 表示设备类别。          |
 
 
 

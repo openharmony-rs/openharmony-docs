@@ -1,17 +1,18 @@
 # 悬浮事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 光标滑动或手写笔在屏幕上悬浮移动扫过组件时触发。
 
 >  **说明：**
 >
 >  - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->  - 目前支持通过外接鼠标、手写笔以及触控板触发。
+>
+>  - 目前支持通过外接鼠标以及触控板触发。部分手写笔<!--RP1--><!--RP1End-->不支持悬浮事件，具体取决于硬件能力。
 
 ## onHover
 
@@ -43,6 +44,8 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -61,25 +64,27 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 
 继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------------- | ---------- | ----- | ----- | -------------------- |
-| x<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置相对于当前组件左上角的x轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| y<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置相对于当前组件左上角的y轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| windowX<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置相对于应用窗口左上角的x轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| windowY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置相对于应用窗口左上角的y轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| displayX<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置相对于应用屏幕左上角的x轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| displayY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置相对于应用屏幕左上角的y轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| stopPropagation | () => void |否|否| 阻塞事件冒泡。 <br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
-| globalDisplayX<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| globalDisplayY<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| x<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| y<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| windowX<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用窗口坐标系中的X坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| windowY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用窗口坐标系中的Y坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| displayX<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用屏幕坐标系中的X坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| displayY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用屏幕坐标系中的Y坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| stopPropagation | () => void |否|否| 阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。 <br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
+| globalDisplayX<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| globalDisplayY<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 
 ### 示例1（使用onHover）
 
-该示例通过按钮设置了悬浮事件 `onHover()`，鼠标悬浮可触发onHover事件修改按钮颜色。
+该示例通过按钮设置了悬浮事件[onHover](#onhover)，鼠标悬浮可触发该事件修改按钮颜色。
 
 ```ts
 // xxx.ets
@@ -127,7 +132,7 @@ struct HoverEventExample {
 
 ### 示例2（使用onHoverMove）
 
-该示例设置了按钮的 `onHoverMove()` 事件。当手写笔悬浮在按钮时，UI界面会显示当前手写笔悬浮状的位置。
+从API version 15开始，该示例设置了按钮的[onHoverMove](#onhovermove15)事件。当手写笔悬浮在按钮时，UI界面会显示当前手写笔悬浮状的位置。
 
 ```ts
 // xxx.ets
@@ -154,6 +159,6 @@ struct OnHoverMoveEventExample {
 
 示意图：
 
-手写悬浮在Button组件上时，UI不断刷新笔尖的位置信息：
+手写笔悬浮在Button组件上时，UI不断刷新笔尖的位置信息：
 
 ![onHoverMove](figures/onHoverMove.png)

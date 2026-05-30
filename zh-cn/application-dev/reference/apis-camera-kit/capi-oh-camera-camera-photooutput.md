@@ -4,7 +4,11 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Camera_PhotoOutput Camera_PhotoOutput
+```
 
 ## 概述
 

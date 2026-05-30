@@ -14,13 +14,11 @@ This topic walks you through on how to randomly generate a key with the DH algor
 
 ## How to Develop
 
-1. Set the alias (**keyAlias**) of the key to generate.
-   - The key alias can contain a maximum of 128 bytes and cannot contain sensitive information, such as personal data.
-   - For the keys generated for different services, HUKS isolates the storage paths based on the service identity information to prevent conflicts caused by the same key alias.
+1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
 2. Initialize the key property set.
    - Encapsulate key properties in [HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) and use a **HuksParam** array to assign values to the **properties** field of [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions).
-   - The key property set must contain [HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg), [HuksKeySize](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeysize), and [HuksKeyPurpose](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose). That is, **TAG**, **HUKS_TAG_ALGORITHM**, **HUKS_TAG_PURPOSE**, and **HUKS_TAG_KEY_SIZE** are mandatory.
+   - The key property set must contain [HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg), [HuksKeySize](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeysize), and [HuksKeyPurpose](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose). That is, the **HUKS_TAG_ALGORITHM**, **HUKS_TAG_PURPOSE**, and **HUKS_TAG_KEY_SIZE** tags are mandatory.
    
    > **NOTE**
    >
@@ -29,16 +27,18 @@ This topic walks you through on how to randomly generate a key with the DH algor
 3. Use [generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9) to generate a key based on the key alias and key properties specified.
 
 > **NOTE**
+>
 > If the service uses the same key alias to call the HUKS API to generate a key again, HUKS will generate a new key and overwrite the historical key file.
 
-```ts
-/* Generate a DH key. */
+<!-- @[generate_key_ar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/GenerateKey/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
 
 /* 1. Set the key alias. */
 let keyAlias = 'dh_key';
 /* 2. Initialize the key property set. */
-let properties1: Array<huks.HuksParam> = [
+let properties1: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_DH
@@ -52,9 +52,10 @@ let properties1: Array<huks.HuksParam> = [
     value: huks.HuksKeySize.HUKS_DH_KEY_SIZE_2048
   }
 ];
+
 let huksOptions: huks.HuksOptions = {
   properties: properties1,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 
 /* 3. Generate a key. */
@@ -74,7 +75,7 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   });
 }
 
-async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
+async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions): Promise<string> {
   console.info(`enter promise generateKeyItem`);
   try {
     await generateKeyItem(keyAlias, huksOptions)
@@ -84,12 +85,15 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
       .catch((error: Error) => {
         console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
       });
+    return 'Success';
   } catch (error) {
     console.error(`promise: generateKeyItem input arg invalid, ` + JSON.stringify(error));
+    return 'Failed';
   }
 }
 
-async function TestGenKey() {
-  await publicGenKeyFunc(keyAlias, huksOptions);
+async function testGenKey(): Promise<string> {
+  let ret = await publicGenKeyFunc(keyAlias, huksOptions);
+  return ret;
 }
 ```

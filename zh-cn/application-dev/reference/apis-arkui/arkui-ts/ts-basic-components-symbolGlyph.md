@@ -2,15 +2,17 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 显示图标小符号的组件。<!--RP1--><!--RP1End-->
 
 >  **说明：**
 >
->  该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 子组件
 
@@ -46,6 +48,10 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 
 设置SymbolGlyph组件颜色。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -56,7 +62,33 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | SymbolGlyph组件颜色。<br/> 默认值：不同渲染策略下默认值不同。 |
+| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | SymbolGlyph组件颜色。<br/> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
+
+### fontColor
+
+fontColor(value: Array&lt;ResourceColor | ColorMetrics&gt; | undefined)
+
+设置SymbolGlyph组件的颜色，相比[fontColor](#fontcolor)接口，本接口支持传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型参数。
+
+> **说明：**
+>
+> 该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------ | ---- | ---- | ----- |
+| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;undefined | 是   | SymbolGlyph组件颜色。支持传入`ResourceColor`或`ColorMetrics`类型的数组。<br/> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
 
 ### fontSize
 
@@ -66,6 +98,10 @@ fontSize(value: number | string | Resource)
 
 组件的图标显示大小由fontSize控制，设置width或height后，其他通用属性仅对组件的占位大小生效。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -76,7 +112,7 @@ fontSize(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | SymbolGlyph组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md)<br/>不支持设置百分比字符串。|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | SymbolGlyph组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md#基本像素单位)<br/>不支持设置百分比字符串。|
 
 ### fontWeight
 
@@ -85,6 +121,10 @@ fontWeight(value: number | FontWeight | string)
 设置SymbolGlyph组件粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。
 
 sys.symbol.ohos_lungs图标不支持设置fontWeight。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -98,11 +138,38 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
 | value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | 是   | SymbolGlyph组件粗细。<br/>默认值：FontWeight.Normal |
 
+### fontWeight
+
+fontWeight(value: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
+
+设置SymbolGlyph组件图标小符号的粗细，支持通过FontWeightConfigs配置是否开启可变字重调节、是否开启随设备的字体粗细级别自动更新字重。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| value | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是 | SymbolGlyph组件图标小符号的粗细。<br/>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。<br/>ResourceStr类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular”、“medium”分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal |
+| fontWeightConfigs | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否 | 字体粗细配置。<br/>默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
+
 ### renderingStrategy
 
 renderingStrategy(value: SymbolRenderingStrategy)
 
 设置SymbolGlyph组件渲染策略。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -125,6 +192,10 @@ renderingStrategy(value: SymbolRenderingStrategy)
 effectStrategy(value: SymbolEffectStrategy)
 
 设置SymbolGlyph组件动效策略。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -194,7 +265,7 @@ minFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最小的字体缩放倍数。<br/>取值范围：[0, 1] <br/>设置为0，缩放最小。<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。   |
+| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最小的字体缩放倍数。<br/>取值范围：[0, 1] <br/>设置为0，缩放最小。<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。   |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -210,11 +281,11 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。 |
+| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。 |
 
 ### shaderStyle<sup>20+</sup>
 
-shaderStyle(shaders: Array\<ShaderStyle | undefined\> | ShaderStyle)
+shaderStyle(shader: Array\<ShaderStyle | undefined\> | ShaderStyle)
 
 设置SymbolGlyph组件的渐变色效果。
 
@@ -228,7 +299,7 @@ shaderStyle(shaders: Array\<ShaderStyle | undefined\> | ShaderStyle)
 
 | 参数名     | 类型                                         | 必填                             | 说明                               |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
-| shaders | Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | 是 | 径向渐变或线性渐变或纯色。<br/>传入ShaderStyle时，覆盖所有层；传入数组时，数据项是ShaderStyle，则应用该层；数组项是undefined，则该层使用SymbolGlyph默认颜色，未设置的层也应用默认颜色。根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)，最终设置到SymbolGlyph组件上显示为渐变色效果。<br>**说明：** <br/>单位：[vp](ts-pixel-units.md)<br>中心点请按百分比使用。如果使用的是非百分比（例如10PX），效果等同于设置1000%。<br>半径建议使用百分比。<br>百分比是基于图标大小的百分比，建议取值范围[0, 1)。 |
+| shader | Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | 是 | 径向渐变或线性渐变或纯色。<br/>传入ShaderStyle时，覆盖所有层；传入数组时，数据项是ShaderStyle，则应用该层；数组项是undefined，则该层使用SymbolGlyph默认颜色，未设置的层也应用默认颜色。根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)，最终设置到SymbolGlyph组件上显示为渐变色效果。<br>**说明：** <br/>单位：[vp](ts-pixel-units.md#基本像素单位)<br>中心点请按百分比使用。如果使用的是非百分比（例如10PX），效果等同于设置1000%。<br>半径建议使用百分比。<br>百分比是基于图标大小的百分比，建议取值范围[0, 1)。 |
 
 ### symbolShadow<sup>20+</sup>
 
@@ -246,7 +317,7 @@ symbolShadow(shadow: Optional\<ShadowOptions\>)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)\>  | 是  | SymbolGlyph组件的阴影效果。<br>单位：[vp](ts-pixel-units.md)<br>默认值：{<br>radius：0,<br>color：Color.Black,<br>offsetX：0,<br>offsetY：0<br>} <br>不支持fill、type属性和color中的ColoringStrategy枚举值。|
+| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)\>  | 是  | SymbolGlyph组件的阴影效果。<br>单位：[vp](ts-pixel-units.md#基本像素单位)<br>默认值：{<br>radius：0,<br>color：Color.Black,<br>offsetX：0,<br>offsetY：0<br>} <br>不支持fill、type属性和color中的ColoringStrategy枚举值。|
 
 ## ScaleSymbolEffect<sup>12+</sup>
 
@@ -463,7 +534,7 @@ ReplaceSymbolEffect的构造函数，替换动效。
 
 constructor(scope?: EffectScope, replaceType?: ReplaceEffectType)
 
-ReplaceSymbolEffect的构造函数，替换动效。
+ReplaceSymbolEffect的构造函数，替换动效。支持指定具体的替换动效类型。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -507,8 +578,8 @@ ReplaceSymbolEffect的构造函数，替换动效。
 | 名称     | 值 | 说明                          |
 | ------ | --- | ----------------------------- |
 | SINGLE  | 0 | 单色模式（默认值）。<br/> 可以设置一个或者多个颜色，默认为黑色。<br/> 当设置多个颜色时，仅生效第一个颜色。 |
-| MULTIPLE_COLOR  | 1 | 多色模式。<br/> 最多可以设置三个颜色。当只设置一个颜色时，修改symbol图标的第一层颜色，其他颜色保持默认颜色。<br/> 颜色设置顺序与图标分层顺序匹配，当颜色数量大于图标分层时，多余的颜色不生效。<br/> 仅支持设置颜色，设置透明度设置不生效。|
-|  MULTIPLE_OPACITY   | 2 | 分层模式。<br/> 默认为黑色，可以设置一个或者多个颜色。当设置多个颜色时，仅生效第一个颜色。<br/>不透明度与图层相关，symbol图标的第一层透明度为100%、第二层透明度为50%、第三层透明度为20%。  |
+| MULTIPLE_COLOR  | 1 | 多色模式。<br/> 最多可以设置三个颜色。当只设置一个颜色时，修改symbol图标的第一层颜色，其他颜色保持默认颜色。<br/> 颜色设置顺序与图标分层顺序匹配，当颜色数量大于图标分层时，多余的颜色不生效。|
+|  MULTIPLE_OPACITY   | 2 | 分层模式。<br/> 默认为黑色，可以设置一个或者多个颜色。当设置多个颜色时，仅生效第一个颜色。<br/>不透明度与图层相关，symbol通用图标的默认第一层透明度为100%、第二层透明度为50%、第三层透明度为20%。当设置的颜色包含透明度时，设置的透明度与每个图层的默认透明度进行叠加。 |
 
 ## SymbolEffect<sup>12+</sup>对象说明
 
@@ -921,3 +992,118 @@ struct Index {
 }
 ```
 ![symbol](figures/SymbolGlyph_Example3.jpeg)
+
+### 示例4（设置SymbolGlyph颜色）
+
+该示例通过[fontColor](#fontcolor-1)属性传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型参数，设置SymbolGlyph组件的颜色。
+
+从API版本26.0.0开始，新增支持[fontColor](#fontcolor-1)。
+
+```ts
+import { ColorMetrics } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  blueColor: ColorMetrics[] = [ColorMetrics.resourceColor(Color.Blue)];
+  greenColor: ColorMetrics[] = [ColorMetrics.numeric(0x00FF00)];
+  blackColor: ColorMetrics[] = [ColorMetrics.rgba(0, 0, 0, 1.0)];
+
+  build() {
+    Column() {
+      Row({ space: 20 }) {
+        Column() {
+          Text('resourceColor蓝色')
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+            .fontColor(this.blueColor)
+        }
+
+        Column() {
+          Text('numeric绿色')
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+            .fontColor(this.greenColor)
+        }
+
+        Column() {
+          Text('rgba黑色')
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+            .fontColor(this.blackColor)
+        }
+      }.width('100%')
+    }.width('100%')
+  }
+}
+```
+
+![symbol](figures/SymbolGlyph_Example4.jpeg)
+
+### 示例5（设置字体粗细）
+
+该示例通过[fontWeight](#fontweight-1)属性展示SymbolGlyph不同粗细配置下的效果：第一行图标小符号展示启用可变字重后，分别设置字重值为220和660的效果；第二行图标小符号展示在将设备的系统字体粗细设置为粗体后，分别设置跟随和不跟随设备的字体粗细级别自动更新的效果。
+
+从API版本26.0.0开始，新增[fontWeight](#fontweight-1)属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Row() {
+        Column() {
+          Text('font weight: 220')
+          // ohos_trash为系统预置的垃圾桶小符号
+          SymbolGlyph($r('sys.symbol.ohos_trash'))
+            .fontWeight(220, { enableVariableFontWeight: true })
+            .fontSize(96)
+        }
+        Column() {
+          Text('            ')
+        }
+        Column() {
+          Text('font weight: 660')
+          // ohos_trash为系统预置的垃圾桶小符号
+          SymbolGlyph($r('sys.symbol.ohos_trash'))
+            .fontWeight(660, { enableVariableFontWeight: true })
+            .fontSize(96)
+        }
+      }
+      Row() {
+        Text('    ')
+      }
+      Row() {
+        Text('After set system text weight: Bold')
+      }
+      Row() {
+        Column() {
+          Text('device category: true')
+          // ohos_trash为系统预置的垃圾桶小符号
+          SymbolGlyph($r('sys.symbol.ohos_trash'))
+            .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: true })
+            .fontSize(96)
+        }
+        Column() {
+          Text('    ')
+        }
+        Column() {
+          Text('device category: false')
+          // ohos_trash为系统预置的垃圾桶小符号
+          SymbolGlyph($r('sys.symbol.ohos_trash'))
+            .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: false })
+            .fontSize(96)
+        }
+      }
+    }
+  }
+}
+```
+
+![symbolGlyphFontWeightConfigs](figures/symbolGlyphFontWeightConfigs.png)

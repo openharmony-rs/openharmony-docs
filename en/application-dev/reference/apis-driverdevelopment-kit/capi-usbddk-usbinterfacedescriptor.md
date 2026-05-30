@@ -1,10 +1,14 @@
 # UsbInterfaceDescriptor
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct UsbInterfaceDescriptor {...} __attribute__((packed)) UsbInterfaceDescriptor
+```
 
 ## Overview
 
@@ -12,7 +16,7 @@ Defines standard interface descriptors, which correspond to **Standard Interface
 
 **Since**: 10
 
-**Related module**: [UsbDDK](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-usbddk.md)
 
 **Header file:** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 
@@ -28,6 +32,6 @@ Defines standard interface descriptors, which correspond to **Standard Interface
 | uint8_t bAlternateSetting | Value used to select the alternate setting of the interface.|
 | uint8_t bNumEndpoints | Number of endpoints (excluding endpoint 0) used by the interface.|
 | uint8_t bInterfaceClass | Interface class code allocated by the USB-IF.|
-| uint8_t bInterfaceSubClass | Device subclass code allocated by USB-IF. The value is limited by that of {@link bInterfaceClass}.|
-| uint8_t bInterfaceProtocol | Protocol code allocated by USB-IF. The value is limited by that of {@link bInterfaceClass} and {@link bInterfaceSubClass}.|
+| uint8_t bInterfaceSubClass | Interface subclass code allocated by the USB-IF. The value is limited by that of **bInterfaceClass**.|
+| uint8_t bInterfaceProtocol | Interface protocol code allocated by the USB-IF. The value is limited by that of **bInterfaceClass** and **bInterfaceSubClass**.|
 | uint8_t iInterface | Index of the string descriptor that describes the interface.|

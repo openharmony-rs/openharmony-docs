@@ -1,15 +1,20 @@
 # JavaScript
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sunfei2021-->
+<!--Designer: @sunfei2021-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can use a .js file in the ECMAScript compliant JavaScript language to define the service logic of an HML page. With dynamic typing, JavaScript can make your application more expressive with a flexible design. The following describes the JavaScript compilation and running.
 
 
 ## Syntax
 
-The ES6 syntax is supported.
+The ECMAScript 6.0 syntax is supported.
 
 - Module declaration
-  
+
   Import functionality modules.
 
   ```js
@@ -17,7 +22,7 @@ The ES6 syntax is supported.
   ```
 
 - Code reference
-  
+
   Import JavaScript code.
 
   ```js
@@ -28,11 +33,11 @@ The ES6 syntax is supported.
 ## Objects
 
 - Application objects
-  | Name | Type | Description |
-  | -------- | -------- | -------- |
-  | $def | Object | Object that is exposed in the **app.js** file and obtained by **this.$app.$def**.<br>**NOTE**<br>Application objects do not support data binding. Data update should be triggered on the UI. |
+  | Name| Type  | Description                                                        |
+  | ---- | ------ | ------------------------------------------------------------ |
+  | $def | Object | Object that is exposed in the **app.js** file and obtained by `this.$app.$def`.<br>**NOTE**<br>Application objects do not support data binding. Data update should be triggered on the UI.|
 
-  Example
+  Sample code
 
   ```js
   // app.js
@@ -54,7 +59,6 @@ The ES6 syntax is supported.
   };
   ```
 
-  
   ```js
   // index.js
   export default {
@@ -76,26 +80,25 @@ The ES6 syntax is supported.
   ```
 
 - Page objects
-  | Name | Type | Description |
-  | -------- | -------- | -------- |
-  | data | Object/Function | Data model of the page. If the attribute is of the function type, the return value must be of the object type. The attribute name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (for, if, show, and tid).<br/>Do not use this attribute and private or public at the same time. |
-  | $refs | Object | DOM elements or child component instances that have registered the ref attribute. For example code, see [Obtaining a DOM element](#obtaining-a-dom-element). |
-  | private | Object | Data model of the page. Private data attribute can be modified only on the current page. |
-  | public | Object | Data model of the page. Behaviors of public data attributes are the same as those of the data attribute. |
-  | props | Array/Object | Used for communication between components. This attribute can be transferred to components via &lt;tag xxxx='value'&gt;. A props name must be in lowercase and cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (for, if, show, and tid). Currently, props does not support functions. For details, see [props](../reference/apis-arkui/arkui-js/js-components-custom-props.md#props). |
-  | computed | Object | Used for pre-processing an object for reading and setting. The result is cached. The name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words. For details, see [computed](../reference/apis-arkui/arkui-js/js-components-custom-props.md#computed). |
+  | Name    | Type           | Description                                                        |
+  | -------- | --------------- | ------------------------------------------------------------ |
+  | data     | Object/Function | Data model of the page. If the attribute is of the function type, the return value must be of the object type. The name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**).<br>The **data** field cannot be used together with the **private** or **public** field.|
+  | $refs    | Object          | DOM elements or child component instances that have registered the **ref** attribute. For example code, see [Obtaining a DOM Element](#obtaining-a-dom-element).|
+  | private  | Object          | Data model of the page. Private data attribute can be modified only on the current page.     |
+  | public   | Object          | Data model of the page. Behaviors of public data attributes are the same as those of the **data** attribute.    |
+  | props    | Array/Object    | Used for communication between components. This attribute can be transferred to components via **\<tag xxxx='value'>**. A **props** name must be in lowercase and cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**). Currently, **props** does not support functions. For details, see [Props](../reference/apis-arkui/arkui-js/js-components-custom-props.md#props).|
+  | computed | Object          | Used for pre-processing an object for reading and setting. The result is cached. The name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words. For details, see [computed](../reference/apis-arkui/arkui-js/js-components-custom-props.md#computed).|
 
 ## Methods
 
 - Data methods
-  | Name | Parameter | Description |
-  | -------- | -------- | -------- |
-  | $set | key: string, value: any | Adds an attribute or modifies an existing attribute.<br/>Usage:<br/>this.$set('_key_',_value_): Add an attribute. |
-  | $delete | key: string | Deletes an attribute.<br/>Usage:<br/>this.$delete('key'): Delete an attribute. |
+  | Method     | Parameters                                    | Description                                      |
+  | ------- | -------------------------------------- | ---------------------------------------- |
+  | $set    | key:&nbsp;string,&nbsp;value:&nbsp;any | Adds an attribute or modifies an existing attribute.<br>Usage:<br>`this.$set('key',value)`: adds an attribute.|
+  | $delete | key:&nbsp;string                       | Deletes an attribute.<br>Usage:<br>`this.$delete('key')`: deletes an attribute.|
 
-  Example
+  Sample code
 
-  
   ```js
   // index.js
   export default {
@@ -116,47 +119,47 @@ The ES6 syntax is supported.
   ```
 
 - Public methods
-  | Name | Parameter | Description |
-  | -------- | -------- | -------- |
-  | $element     | id: string | Obtains the component with a specified ID. If no ID is specified, the root component is returned. For example code, see [Obtaining a DOM element](#obtaining-a-dom-element).<br/>Usage:<br/>&lt;div id='xxx'&gt;&lt;/div&gt;<br/>- `this.$element('xxx')`<br/>- this.$element('xxx'): Obtain the component whose ID is xxx.<br/>- this.$element(): Obtain the root component. |
-  | $rootElement | N/A        | Obtains the root element.<br/>Usage:<br>this.\$rootElement().scrollTo({ duration: 500, position: 300 }), which scrolls the page by 300 px within 500 ms. |
-  | $root        | N/A        | Obtains the root ViewModel instance. For example code, see [Obtaining the ViewModel](#obtaining-the-viewmodel). |
-  | $parent      | N/A        | Obtains the parent ViewModel instance. For example code, see [Obtaining the ViewModel](#obtaining-the-viewmodel). |
-  | $child       | id: string | Obtains the ViewModel instance of a custom child component with a specified ID. For example code, see [Obtaining the ViewModel](#obtaining-the-viewmodel).<br/>Usage:<br/>this.\$child('xxx'): Obtain the ViewModel instance of a custom child component whose ID is _xxx_. |
+  | Method        | Parameters           | Description                                                        |
+  | ------------ | --------------- | ------------------------------------------------------------ |
+  | $element     | id:&nbsp;string | Obtains the component with a specified ID. If no ID is specified, the root component is returned. For an example, see [Obtaining a DOM Element](#obtaining-a-dom-element).<br>Usage:<br>**\<div id='xxx'>\</div>**<br>- `this.$element('*xxx*')`: obtains the component whose ID is *xxx*.<br>- `this.$element()`: obtains the root component.|
+  | $rootElement | N/A             | Obtains the root element.<br>Usage:<br>`this.\$rootElement().scrollTo({ duration: 500, position: 300 })`: scrolls the page by 300 px within 500 ms.|
+  | $root        | N/A             | Obtains the root **ViewModel** instance. For example code, see [Obtaining the ViewModel](#obtaining-the-viewmodel).|
+  | $parent      | N/A             | Obtains the parent **ViewModel** instance. For example code, see [Obtaining the ViewModel](#obtaining-the-viewmodel).|
+  | $child       | id:&nbsp;string | Obtains the **ViewModel** instance of a custom child component with a specified ID. For example code, see [Obtaining the ViewModel](#obtaining-the-viewmodel).<br>Usage:<br>`this.\$child('xxx')`: obtains the **ViewModel** instance of a custom child component whose ID is *xxx*.|
 
 - Event methods
-  | Name | Parameter | Description |
-  | -------- | -------- | -------- |
-  | $watch | data: string, callback: string \| Function | Listens for attribute changes. If the value of the data attribute changes, the bound event is triggered. For details, see [Monitoring Data Changes by \$watch](../reference/apis-arkui/arkui-js/js-components-custom-props.md#monitoring-data-changes-by-watch).<br/>Usage:<br/>this.$watch('key', callback): triggers the callback event by listening for changes in the value of the **key** property. |
+  | Method  | Parameters                                                        | Description                                                        |
+  | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | $watch | data:&nbsp;string,&nbsp;callback:&nbsp;string&nbsp;\|&nbsp;Function | Listens for attribute changes. If the value of the **data** attribute changes, the bound event is triggered. For details, see [Monitoring Data Changes by \$watch](../reference/apis-arkui/arkui-js/js-components-custom-props.md#monitoring-data-changes-by-watch).<br>Usage:<br>`this.$watch('key', callback)`: triggers the callback event by listening for changes in the value of the **key** attribute.|
 
 - Page methods
-  | Name | Parameter | Description |
-  | -------- | -------- | -------- |
-  | scrollTo<sup>6+</sup> | scrollPageParam:  ScrollPageParam | Scrolls the page to the target position. You can specify the position using the ID selector or scrolling distance. |
+  | Method                   | Parameters                              | Description                             |
+  | --------------------- | -------------------------------- | ------------------------------- |
+  | scrollTo<sup>6+</sup> | scrollPageParam: ScrollPageParam | Scrolls the page to the target position. You can specify the position using the ID selector or scrolling distance.|
 
   **Table 1** ScrollPageParam<sup>6+</sup>
-  
-  | Name | Type | Default Value | Description |
-  | -------- | -------- | -------- | -------- |
-  | position | number | - | Position to scroll to. |
-  | id | string | - | ID of the element to be scrolled to. |
-  | duration | number | 300 | Scrolling duration, in milliseconds. |
-  | timingFunction | string | ease | Animation curve for scrolling. Available options:<br/>[Animation Styles](../reference/apis-arkui/arkui-js/js-components-common-animation.md) |
-  | complete | () =&gt; void | - | Callback to be invoked when the scrolling is complete. |
 
-  Example
+  | Name          | Type                   | Default Value| Description                                                        |
+  | -------------- | ----------------------- | ------ | ------------------------------------------------------------ |
+  | position       | number                  | -      | Position to scroll to.                                              |
+  | id             | string                  | -      | ID of the element to be scrolled to.                                    |
+  | duration       | number                  | 300    | Scrolling duration, in milliseconds.                                  |
+  | timingFunction | string                  | ease   | Animation curve for scrolling. Available option:<br>[animation-timing-function](../reference/apis-arkui/arkui-js/js-components-common-animation.md)|
+  | complete       | ()&nbsp;=&gt;&nbsp;void | -      | Callback to be invoked when the scrolling is complete.                          |
 
-  
+  Example:
+
   ```js
-  this.$rootElement().scrollTo({position: 0})
-  this.$rootElement().scrollTo({id: 'id', duration: 200, timingFunction: 'ease-in', complete: ()=>void})
+  this.$rootElement().scrollTo({ position: 0 });
+  this.$rootElement().scrollTo({ id: 'id', duration: 200, timingFunction: 'ease-in', complete: () => {
+      console.info('Scrolling completed');
+  } });
   ```
 
 
 ## Obtaining a DOM Element
 
 1. Use **$refs** to obtain a DOM element.
-  
    ```html
    <!-- index.hml -->
    <div class="container">
@@ -175,11 +178,11 @@ The ES6 syntax is supported.
        ]
      },
      handleClick() {
-       const animator = this.$refs.animator; // Obtain the DOM element whose $refs attribute is animator.
+           const animator = this.$refs.animator; // Obtain the DOM element whose $refs attribute is animator.
        const state = animator.getState();
-       if (state === 'paused') {
+       if (state === 'Paused') {
          animator.resume();
-       } else if (state === 'stopped') {
+       } else if (state === 'Stopped') {
          animator.start();
        } else {
          animator.pause();
@@ -189,7 +192,6 @@ The ES6 syntax is supported.
    ```
 
 2. Call **$element** to obtain a DOM element.
-  
    ```html
    <!-- index.hml -->
    <div class="container" style="width:500px;height: 700px; margin: 100px;">
@@ -210,9 +212,9 @@ The ES6 syntax is supported.
      handleClick() {
        const animator = this.$element('animator'); // Obtain the DOM element whose ID is animator.
        const state = animator.getState();
-       if (state === 'paused') {
+       if (state === 'Paused') {
          animator.resume();
-       } else if (state === 'stopped') {
+       } else if (state === 'Stopped') {
          animator.start();
        } else {
          animator.pause();
@@ -242,7 +244,7 @@ The following shows files of the root page:
 // root.js
 export default {
   data: {
-    text: 'I am a root!',
+    text: 'I am root!',
   },
 }
 ```
@@ -272,7 +274,7 @@ export default {
     this.showValue = !this.showValue;
     console.info('parent component get parent text');
     console.info(`${this.$parent().text}`);
-    console.info("The parent component gets the child function.");
+    console.info("parent component get child function");
     console.info(`${this.$child('selfDefineChild').childClicked()}`);
   },
 }
@@ -283,8 +285,8 @@ Customize the child component.
 ```html
 <!-- child.hml -->
 <div class="item" onclick="textClicked">
-  <text class="text-style" onclick="childClicked">Child component clicked</text>
-  <text class="text-style" if="{{isShow}}">Hello child component</text>
+  <text class="text-style" onclick="childClicked">child component clicked</text>
+  <text class="text-style" if="{{isShow}}">hello child component</text>
 </div>
 ```
 
@@ -293,7 +295,7 @@ Customize the child component.
 export default {
   data: {
     isShow: false,
-    text: 'I am the child component!',
+    text: 'I am child component!',
   },
   childClicked () {
     this.isShow = !this.isShow;
@@ -306,4 +308,3 @@ export default {
 ```
 
 ![en-us_image_0000001118642009](figures/en-us_image_0000001118642009.gif)
-<!--no_check-->

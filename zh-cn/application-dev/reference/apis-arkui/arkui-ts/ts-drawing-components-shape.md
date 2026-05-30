@@ -1,10 +1,10 @@
 # Shape
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 绘制组件的父组件，父组件中会描述所有绘制组件均支持的通用属性。
 
@@ -16,7 +16,7 @@
 >
 >  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
+>  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 
 ## 子组件
@@ -28,6 +28,8 @@
 
 Shape(value?: PixelMap)
 
+用于绘制Shape组件的构造函数。 
+
 从API version 9开始，该接口支持在ArkTS卡片中使用，卡片中不支持使用PixelMap对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -38,7 +40,7 @@ Shape(value?: PixelMap)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br/>异常值undefined和null按照无效值处理。 |
+| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 
 ## ViewportRect<sup>18+</sup>对象说明
@@ -52,6 +54,8 @@ Shape(value?: PixelMap)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,7 +87,7 @@ viewPort(value: ViewportRect)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明) | 是 | Viewport绘制属性。<br/>异常值undefined按照默认值处理。 |
+| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明) | 是 | Viewport绘制属性。<br/>默认值：{}<br/>异常值undefined和null按照默认值处理。 |
 
 ### fill
 
@@ -101,7 +105,7 @@ fill(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：Color.Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
 
 ### fillOpacity
 
@@ -137,7 +141,7 @@ stroke(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照Color.Black处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
 
 ### strokeDashArray
 
@@ -155,7 +159,7 @@ strokeDashArray(value: Array&lt;any&gt;)
 
 | 参数名 | 类型             | 必填 | 说明                      |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | 是   | 边框间隙。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。|
+| value  | Array&lt;any&gt; | 是   | 定义Shape轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
 
 ### strokeDashOffset
 
@@ -265,7 +269,7 @@ strokeWidth(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                     |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 边框宽度，取值范围≥0。<br/>默认值：1<br/>默认单位：vp<br/>默认单位：vp<br/>异常值undefined、null和NaN按照默认值处理，Infinity按0处理。 |
+| value  | [Length](ts-types.md#length) | 是   | 边框宽度，取值范围≥0。<br/>默认值：1 <br/>默认单位：vp<br/>异常值undefined、null和NaN按照默认值处理，Infinity按0处理。 |
 
 ### antiAlias
 
@@ -283,7 +287,7 @@ antiAlias(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照默认值处理。|
+| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照false处理。|
 
 ### mesh<sup>8+</sup>
 
@@ -305,9 +309,9 @@ mesh(value: Array&lt;any&gt;, column: number, row: number)
 
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | 是   | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>异常值undefined、null、NaN和Infinity按照无效值处理。 |
-| column | number              | 是   | mesh矩阵列数。<br/>异常值NaN和Infinity按照无效值处理。 |
-| row    | number              | 是   | mesh矩阵行数。<br/>异常值NaN和Infinity按照无效值处理。 |
+| value  | Array&lt;any&gt; | 是   | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>设置异常值undefined、null时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。 |
+| column | number              | 是   | mesh矩阵列数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
+| row    | number              | 是   | mesh矩阵行数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
 
 ## 示例
 
@@ -501,7 +505,7 @@ struct ShapeTypeExample {
       .stroke(Color.Black)
       .strokeWidth(4)
       .strokeDashArray([20])
-      .strokeDashOffset(10) //使用number类型
+      .strokeDashOffset(10) // 使用number类型
       .strokeLineCap(LineCapStyle.Round)
       .strokeLineJoin(LineJoinStyle.Round)
       .strokeMiterLimit(5)
@@ -556,3 +560,43 @@ struct ShapeModifierDemo {
 ```
 
 ![](figures/shapeModifier.png)
+
+### 示例4（使用mesh实现图像局部扭曲）
+
+以下示例展示了如何使用mesh属性设置网格效果，实现图像局部扭曲。
+
+```ts
+// xxx.ets
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct Index {
+  private context: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(200, 200)
+  private meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
+  @State pixelMap: image.PixelMap | undefined = undefined
+
+  aboutToAppear(): void {
+    // "resources/base/media/img.png"需要替换为开发者所需的图像资源文件。
+    let img: ImageBitmap = new ImageBitmap("resources/base/media/img.png")
+    this.context.drawImage(img, 0, 0, 200, 200)
+    this.pixelMap = this.context.getPixelMap(0, 0, 200, 200)
+  }
+
+  build() {
+    Column() {
+      Shape(this.pixelMap)
+      .backgroundColor(Color.Grey)
+      .width(250)
+      .height(250)
+      .mesh(this.meshArray, 2, 2)
+
+      Shape(this.pixelMap)
+      .backgroundColor(Color.Grey)
+      .width(250)
+      .height(250)
+    }
+  }
+}
+```
+![](figures/shapeMesh.png)

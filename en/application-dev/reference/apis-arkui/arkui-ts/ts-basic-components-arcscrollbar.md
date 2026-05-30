@@ -1,11 +1,19 @@
 # ArcScrollBar
 
-The **ArcScrollBar** component is designed to be used together with scrollable components such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md) to provide a circular scrollbar.
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @shengu_lancer; @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
 
->  **NOTE**
+The **ArcScrollBar** component is designed to be used together with scrollable components such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).
+
+> **NOTE**
 >
->  - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
->  - When the width and height of the **ArcScrollBar** component are not set, the **maxSize** value in the [layout constraint](../js-apis-arkui-frameNode.md#layoutconstraint12) of its parent component is used as the width and height. If the parent component of the **ArcScrollBar** component contains scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), or [WaterFlow](ts-container-waterflow.md), you are advised to set the width and height of the **ArcScrollBar** component. Otherwise, the width and height of the component may be infinite.
+> - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
+> - When the width and height of the **ArcScrollBar** component are not set, the **maxSize** value specified in its parent component [LayoutConstraint](../js-apis-arkui-frameNode.md#layoutconstraint12) is used as the width and height. If the parent component of the **ArcScrollBar** component contains scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), or [WaterFlow](ts-container-waterflow.md), you are advised to set the width and height of the **ArcScrollBar** component. Otherwise, the width and height of the component may be infinite.
+> - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
 
 
 ## Child Components
@@ -16,7 +24,7 @@ Not supported
 
 ArcScrollBar(options: ArcScrollBarOptions)
 
-Creates an instance of the **ArcScrollBar** component.
+A constructor used to create an **ArcScrollBar** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -36,10 +44,10 @@ Represents the parameters used to construct an **ArcScrollBar** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| scroller | [Scroller](ts-container-scroll.md#scroller) | Yes| Scroller, which can be bound to scrollable components for scrolling control.|
-| state | [BarState](ts-appendix-enums.md#barstate) | No| State of the scrollbar.<br>Default value: **BarState.Auto**|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -- | -------- | -------- |
+| scroller | [Scroller](ts-container-scroll.md#scroller) | No| No| Scroller, which can be bound to scrollable components for scrolling control.|
+| state | [BarState](ts-appendix-enums.md#barstate) | No| Yes| State of the scrollbar.<br>Default value: **BarState.Auto**|
 
 >  **NOTE**
 > 
@@ -47,7 +55,7 @@ Represents the parameters used to construct an **ArcScrollBar** component.
 
 ## Example
 
-This example demonstrates how to use **ArcScrollBar** with a **Scroll** component to create an external circular scrollbar.
+This example demonstrates how to synchronize **ArcScrollBar** with the [Scroll](ts-container-scroll.md) component to implement an arc scrollbar.
 
 ```ts
 import { ArcScrollBar } from '@kit.ArkUI';
@@ -55,7 +63,7 @@ import { ArcScrollBar } from '@kit.ArkUI';
 @Entry
 @Component
 struct ArcScrollBarExample {
-  private scroller: Scroller = new Scroller()
+  private scroller: Scroller = new Scroller();
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   build() {

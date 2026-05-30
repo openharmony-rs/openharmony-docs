@@ -1,10 +1,14 @@
 # OH_AVRecorder_Config
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVRecorder_Config {...} OH_AVRecorder_Config
+```
 
 ## Overview
 
@@ -28,4 +32,4 @@ The struct describes the AVRecorder configuration.
 | char* url | Pointer to the URL of the recording output file, in the format of fd://xx.|
 | [OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode) fileGenerationMode | Mode for generating the recording output file.|
 | [OH_AVRecorder_Metadata](capi-avrecorder-oh-avrecorder-metadata.md) metadata | Metadata of the recorded media.|
-| int32_t maxDuration | Maximum recording duration.|
+| int32_t maxDuration | Maximum recording duration, in seconds.|

@@ -1,4 +1,10 @@
 # @ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object) (System API)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides APIs for album management, including creating an album and accessing and modifying media data in an album, based on a [Sendable](../../arkts-utils/arkts-sendable.md) object.
 
@@ -40,11 +46,13 @@ Obtains a PhotoAccessHelper instance for the specified user, letting you access 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 |  Permission denied.         |
+| 202 |  Called by non-system application.         |
+| 13900020 | Invalid argument.         |
 
 **Example**
 
@@ -106,11 +114,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
+| 13900020 | Invalid argument.         |
+| 14000001 | Invalid display name.         |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -133,7 +141,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ### createAsset
 
-createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoAsset&gt;
+createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions): Promise\<PhotoAsset\>
 
 Creates an asset with the specified file name and options. This API uses a promise to return the result.
 
@@ -153,7 +161,7 @@ The file name must meet the following requirements:
 | Name     | Type                                                        | Mandatory| Description                      |
 | ----------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | displayName | string                                                       | Yes  | File name of the asset to create.|
-| options     | [PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | Yes  | Options for creating the asset.    |
+| options     | [photoAccessHelper.PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | Yes  | Options for creating the asset.    |
 
 **Return value**
 
@@ -167,11 +175,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
+| 13900020 | Invalid argument.         |
+| 14000001 | Invalid display name.         |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -287,6 +295,67 @@ async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.Pho
 }
 ```
 
+### getPhotoAssets<sup>24+</sup>
+
+getPhotoAssets(assetsData: photoAccessHelper.ValuesBucket[]): Promise&lt;PhotoAsset[]&gt;
+
+Converts the **ValuesBucket** record to a **PhotoAsset** object.
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| assetsData | [photoAccessHelper.ValuesBucket](js-apis-photoAccessHelper-sys.md#valuesbucket22)[] | Yes  | Array of asset records.<br>Each element in the array contains the column name and value of the asset.<br>The array can contain a maximum of 500 elements.<br>Each element in the array must contain the following asset column information: **file_id**, **data**, **display_name**, **media_type**, and **subtype**.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;[PhotoAsset](#photoasset)[]&gt; | Promise used to return the PhotoAsset object array (which may be empty).|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid value type in ValuesBucket; 2. Missing required column in ValuesBucket; 3. Array size exceeds 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
+
+```ts
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('getPhotoAssets demo');
+  let valuesArr: photoAccessHelper.ValuesBucket[] = [];
+  let resultSet: photoAccessHelper.ResultSet | undefined = undefined;
+  let photoAssetArr: sendablePhotoAccessHelper.PhotoAsset[] = [];
+  let QUERY_SQL = 'SELECT file_id,data,display_name,media_type,subtype from Photos limit 100';
+  try {
+    resultSet = await photoAccessHelper.getPhotoAccessHelper(context).query(QUERY_SQL);
+    let index: number = 0;
+    while(resultSet && index < resultSet.rowCount){
+      resultSet.goToRow(index);
+      valuesArr.push(resultSet.getRow());
+      index++;
+    }
+    photoAssetArr = await phAccessHelper.getPhotoAssets(valuesArr);
+    console.info('getPhotoAssets successfully');
+  } catch (err) {
+    console.error(`valuesArr failed: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## PhotoAsset
 
 Provides APIs for encapsulating file asset attributes.
@@ -295,7 +364,7 @@ Provides APIs for encapsulating file asset attributes.
 
 requestSource(): Promise&lt;number&gt;
 
-Opens the source file to obtain the file descriptor (FD). This API uses a promise to return the result.
+Opens the source file and returns the FD. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -317,7 +386,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -330,18 +398,22 @@ import { common } from '@kit.AbilityKit';
 
 async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   try {
-    console.info('requsetSourcePromiseDemo')
+    console.info('requestSourcePromiseDemo')
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     let fetchOptions: photoAccessHelper.FetchOptions = {
       fetchColumns: [],
       predicates: predicates
     };
     let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    if (fetchResult === undefined) {
+      console.error('requestSourcePromise fetchResult is undefined');
+      return;
+    }
     let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     let fd = await photoAsset.requestSource();
     console.info('Source fd is ' + fd);
   } catch (err) {
-    console.error(`requsetSourcePromiseDemo failed with error: ${err.code}, ${err.message}`);
+    console.error(`requestSourcePromiseDemo failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -355,6 +427,8 @@ Obtains analysis data. This API uses a promise to return the result.
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.READ\_IMAGEVIDEO
+
+Since API version 22, the **ohos.permission.MEDIA\_LOCATION** permission is required when **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11). If the permission is not granted, the universal error code [201 Permission Denied](../errorcode-universal.md#201-permission-denied) is thrown.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -419,7 +493,7 @@ Provides APIs to manage albums.
 
 getFaceId(): Promise\<string>
 
-Obtains the face identifier on the cover of a portrait album or group photo album.
+Obtains the face identifier on the cover of a portrait album or group photo album. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -492,16 +566,16 @@ Enumerate the album subtypes.
 
 | Name                 | Value  | Description                                                      |
 | --------------------- | ---- | ---------------------------------------------------------- |
-| HIDDEN                | 1027 | Hidden album. <br>**System API**: This is a system API.                |
-| TRASH                 | 1028 | Trash. <br>**System API**: This is a system API.                  |
-| SCREENSHOT            | 1029 | Album for screenshots and screen recording files. <br>**System API**: This is a system API.          |
-| CAMERA                | 1030 | Album for photos and videos taken by the camera. <br>**System API**: This is a system API.|
-| SOURCE\_GENERIC       | 2049 | Source album. <br>**System API**: This is a system API.                |
-| CLASSIFY              | 4097 | Classified album. <br>**System API**: This is a system API.                |
-| GEOGRAPHY\_LOCATION   | 4099 | Geographic location album. <br>**System API**: This is a system API.                |
-| GEOGRAPHY\_CITY       | 4100 | City album. <br>**System API**: This is a system API.                |
-| SHOOTING\_MODE        | 4101 | Shooting mode album. <br>**System API**: This is a system API.            |
-| PORTRAIT              | 4102 | Portrait album. <br>**System API**: This is a system API.                |
-| GROUP_PHOTO           | 4103 | Group photo album. <br>**System API**: This is a system API.                |
-| HIGHLIGHT             | 4104 | Highlights album. <br>**System API**: This is a system API.                |
-| HIGHLIGHT_SUGGESTIONS | 4105 | Highlights suggestion album. <br>**System API**: This is a system API.            |
+| HIDDEN                | 1027 | Hidden album. **System API**: This is a system API.                |
+| TRASH                 | 1028 | Trash. **System API**: This is a system API.                  |
+| SCREENSHOT            | 1029 | Album for screenshots and screen recording files. **System API**: This is a system API.          |
+| CAMERA                | 1030 | Album for photos and videos taken by the camera. **System API**: This is a system API.|
+| SOURCE\_GENERIC       | 2049 | Source album. **System API**: This is a system API.                |
+| CLASSIFY              | 4097 | Classified album. **System API**: This is a system API.                |
+| GEOGRAPHY\_LOCATION   | 4099 | Geographic location album. **System API**: This is a system API.                |
+| GEOGRAPHY\_CITY       | 4100 | City album. **System API**: This is a system API.                |
+| SHOOTING\_MODE        | 4101 | Shooting mode album. **System API**: This is a system API.            |
+| PORTRAIT              | 4102 | Portrait album. **System API**: This is a system API.                |
+| GROUP_PHOTO           | 4103 | Group photo album. **System API**: This is a system API.                |
+| HIGHLIGHT             | 4104 | Highlights album. **System API**: This is a system API.                |
+| HIGHLIGHT_SUGGESTIONS | 4105 | Highlights suggestion album. **System API**: This is a system API.            |

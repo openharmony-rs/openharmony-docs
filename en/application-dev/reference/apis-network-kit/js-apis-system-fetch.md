@@ -1,4 +1,11 @@
-# @system.fetch (Data Request) (Deprecated)
+# @system.fetch (Data Request)
+
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 > - The APIs of this module are no longer maintained since API version 6. You are advised to use [`@ohos.net.http`](js-apis-http.md).
@@ -56,11 +63,11 @@ Obtains data through a network.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| code | number | Yes| No| Server status code.|
-| data | string \| Object | Yes| No| The type of the returned data is determined by **responseType**. For details, see the mapping between **responseType** and **data** in **success** callback.|
-| headers | Object | Yes| No| All headers in the response from the server.|
+| code | number | No| No| Server status code.|
+| data | string \| Object | No| No| The type of the returned data is determined by **responseType**. For details, see the mapping between **responseType** and **data** in **success** callback.|
+| headers | Object | No| No| All headers in the response from the server.|
 
 **Table 2** Mapping between responseType and data in success callback
 
@@ -72,42 +79,102 @@ Obtains data through a network.
 
 **Example**
 
+ArkTS example:
+
 ```
-export default {
-  data: {
-    responseData: 'NA',
-    url: "test_url",
+fetch.fetch({
+  url: 'test_url',
+  success: (response) => {
+    console.info('fetch success');
+    console.info(JSON.stringify(response));
   },
-  fetch: function () {
-    var that = this;
-    fetch.fetch({
-      url: that.url,
-      success: function(response) {
-        console.info("fetch success");
-        that.responseData = JSON.stringify(response);
-      },
-      fail: function() {
-        console.info("fetch fail");
-      }
-    });
+  fail: () => {
+    console.error('fetch failed');
   }
+});
+```
+
+JS example:
+
+```xml
+<!-- index.hml -->
+<div class="container">
+    <text class="title">Test Network Connection</text>
+    <input type="button" value="Click to test" style="width: 240px; height: 50px;margin: 5px;" onclick="usingFetch"></input>
+    <text class="title" style="color: {{fontColor}};">{{result}}</text>
+</div>
+```
+
+```css
+/* index.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
 }
+.title {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
+
+```js
+// index.js
+import fetch from '@system.fetch';
+
+export default {
+    data: {
+        fontColor: '#FFF',
+        result: '',
+    },
+    usingFetch: function() {
+        const that = this;
+        fetch.fetch({
+            url: 'test_url',
+            success: function(response) {
+                that.fontColor = '#00FF00';
+                that.result = 'SUCCESS';
+                console.info('fetch success');
+                console.info(JSON.stringify(response));
+            },
+            fail: function() {
+                that.fontColor = '#FF0000';
+                that.result = 'FAILED';
+                console.error('fetch failed');
+            }
+        });
+    }
+};
 ```
 
 
 > **NOTE**
->   HTTPS is supported by default. To support HTTP, you need to add **"network"** to the **config.json** file, and set the attribute **"cleartextTraffic"** to **true**, as shown below:
+>   HTTPS is supported by default. To support HTTP, you need to add **"network"** to the **config.json** file, and set the attribute **"cleartextTraffic"** to **true**.
 >   
-> ```
-> {
->   "deviceConfig": {
->     "default": {
->       "network": {
->         "cleartextTraffic": true
->       }
->       ... // Other configuration information
->     }
->   }
->   ... // Other configuration information
-> }
-> ```
+```
+{
+  "deviceConfig": {
+    "default": {
+      "network": {
+        "cleartextTraffic": true
+      }
+      // Other configuration information
+      // ...
+    }
+  }
+  // Other configuration information
+  // ...
+}
+```

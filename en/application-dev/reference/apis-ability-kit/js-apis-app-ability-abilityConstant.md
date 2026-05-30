@@ -44,6 +44,8 @@ Describes the launch parameters, which mainly include the ability launch reasons
 | lastExitReason | [LastExitReason](#lastexitreason) | No| No| An enumerated value indicating the reason for the last exit of the ability.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | lastExitMessage<sup>12+</sup> | string | No| No| Detailed message that describes the reason for the last exit of the ability.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | lastExitDetailInfo<sup>18+</sup> | [LastExitDetailInfo](#lastexitdetailinfo18) | No| Yes| Key runtime information for the last exit of the ability (including process ID, exit timestamp, and RSS memory value).<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| launchUTCTime<sup>23+</sup> | number | No| Yes| UTC timestamp when the UIAbility starts, in milliseconds.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Constraints**:<br>This feature takes effect only when the UIAbility is started. For other types of abilities (for example, UIExtensionAbility), the obtained start time is the default value **0**.|
+| launchUptime<sup>23+</sup> | number | No| Yes| System uptime (the time elapsed since the system booted up) when the UIAbility starts, in milliseconds.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Constraints**:<br>This feature takes effect only when the UIAbility is started. For other types of abilities (for example, UIExtensionAbility), the obtained start time is the default value **0**.|
 
 ## LaunchReason
 
@@ -72,7 +74,7 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.launchReason === AbilityConstant.LaunchReason.START_ABILITY) {
-      console.log('The ability has been started by the way of startAbility.');
+      console.info('The ability has been started by the way of startAbility.');
     }
   }
 }
@@ -93,7 +95,7 @@ Enumerates the reasons for the last exit of the ability. You can use it together
 | JS_ERROR<sup>10+</sup>  | 4    | The ability exits due to a JS_ERROR fault triggered when an application has a JS syntax error that is not captured by developers.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | APP_FREEZE<sup>10+</sup>  | 5    | The ability exits due to [application freeze](../../dfx/appfreeze-guidelines.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | PERFORMANCE_CONTROL<sup>10+</sup>  | 6    | The ability exits due to system performance problems, for example, insufficient device memory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Note: This API will be deprecated. You are advised to use **RESOURCE_CONTROL** instead.|
-| RESOURCE_CONTROL<sup>10+</sup>  | 7    | The ability exits due to improper use of system resources. The specific error cause can be obtained through [LaunchParam.lastExitMessage](#launchparam). The possible causes are as follows:<br> - **CPU Highload**: The CPU load is high.<br> - **CPU_EXT Highload**: A fast CPU load detection is carried out.<br> - **IO Manage Control**: An I/O management and control operation is carried out.<br> - **App Memory Deterioration**: The application memory usage exceeds the threshold.<br> - **Temperature Control**: The temperature is too high or too low.<br> - **Memory Pressure**: The system is low on memory, triggering ability exiting in ascending order of priority.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| RESOURCE_CONTROL<sup>10+</sup>  | 7    | The ability exits due to improper use of system resources. The specific error cause can be obtained through [LaunchParam.lastExitMessage](#launchparam). The possible causes are as follows:<br> - **CPU Highload**: The CPU load is high.<br> - **CPU_EXT Highload**: A fast CPU load detection is carried out.<br> - **IO Manage Control**: An I/O management and control operation is carried out.<br> - **App Memory Deterioration**: The application memory usage exceeds the threshold.<br> - **Temperature Control**: The temperature is too high or too low.<br> - **Memory Pressure**: The system is low on memory, triggering process termination in ascending order of priority.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | UPGRADE<sup>10+</sup>  | 8    | The application exits due to an upgrade.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | USER_REQUEST<sup>18+</sup>  | 9    | The ability exits because it receives a request from the multitasking center.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | SIGNAL<sup>18+</sup>  | 10    | The ability exits because it receives a kill signal from the system.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
@@ -106,10 +108,10 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.APP_FREEZE) {
-      console.log('The ability has exit last because the ability was not responding.');
+      console.info('The ability has exit last because the ability was not responding.');
     }
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
-      console.log('The ability has exited last because the rss control, the lastExitReason is '+ launchParam.lastExitReason + ', the lastExitMessage is ' + launchParam.lastExitMessage);
+      console.info(`The ability has exited last because the rss control, the lastExitReason is ${launchParam.lastExitReason}, the lastExitMessage is ${launchParam.lastExitMessage}.`);
     }
   }
 }
@@ -141,15 +143,15 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.lastExitDetailInfo) {
-      console.log('pid: ' + launchParam.lastExitDetailInfo.pid +
-        '\n processName: ' + launchParam.lastExitDetailInfo.processName +
-        '\n uid: ' + launchParam.lastExitDetailInfo.uid +
-        '\n exitSubReason: ' + launchParam.lastExitDetailInfo.exitSubReason +
-        '\n exitMsg: ' + launchParam.lastExitDetailInfo.exitMsg +
-        '\n rss: ' + launchParam.lastExitDetailInfo.rss +
-        '\n pss: ' + launchParam.lastExitDetailInfo.pss +
-        '\n timestamp: ' + launchParam.lastExitDetailInfo.timestamp +
-        '\n processState: ' + launchParam.lastExitDetailInfo.processState
+      console.info(`pid: ${launchParam.lastExitDetailInfo.pid}
+      \n processName: ${launchParam.lastExitDetailInfo.processName}
+      \n uid: ${launchParam.lastExitDetailInfo.uid}
+      \n exitSubReason: ${launchParam.lastExitDetailInfo.exitSubReason}
+      \n exitMsg: ${launchParam.lastExitDetailInfo.exitMsg}
+      \n rss: ${launchParam.lastExitDetailInfo.rss}
+      \n pss: ${launchParam.lastExitDetailInfo.pss}
+      \n timestamp: ${launchParam.lastExitDetailInfo.timestamp}
+      \n processState: ${launchParam.lastExitDetailInfo.processState}.`
       );
     }
   }
@@ -186,22 +188,20 @@ export default class MyAbility extends UIAbility {
 
 Enumerates the memory levels of the entire device. You can use it in [onMemoryLevel()](js-apis-app-ability-ability.md#abilityonmemorylevel) of the UIAbility to complete different operations.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Name                        | Value| Description               |
 | ---                         | --- | ---           |
-| MEMORY_LEVEL_MODERATE       | 0   | The available memory of the entire device is moderate.|
-| MEMORY_LEVEL_LOW            | 1   | The available memory of the entire device is low.  |
-| MEMORY_LEVEL_CRITICAL       | 2   | The available memory of the entire device is critically low.  |
+| MEMORY_LEVEL_MODERATE       | 0   | Indicates that the system has a moderate amount of available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.| 
+| MEMORY_LEVEL_LOW            | 1   | Indicates that the system has low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.| 
+| MEMORY_LEVEL_CRITICAL       | 2   | Indicates that the system has critically low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 > **NOTE**
 > 
-> The trigger conditions may differ across various devices. For example, on a standard device with 12 GB of memory:
-> - When the available memory of the entire device drops to 1700 MB to 1800 MB, the **onMemoryLevel** callback with a value of **0** is triggered, indicating that the available memory is moderate.
-> - When the available memory of the entire device drops to 1600 MB to 1700 MB, the **onMemoryLevel** callback with a value of **1** is triggered, indicating that the available memory is low.
-> - When the available memory of the entire device drops below 1600 MB, the **onMemoryLevel** callback with a value of **2** is triggered, indicating that the available memory is critically low.
+> - The trigger conditions may differ across various devices. For example, on a standard device with 12 GB of memory:
+>   - When the available memory of the entire device drops to 1700 MB to 1800 MB, the **onMemoryLevel** callback with a value of **0** is triggered, indicating that the available memory is moderate.
+>   - When the available memory of the entire device drops to 1600 MB to 1700 MB, the **onMemoryLevel** callback with a value of **1** is triggered, indicating that the available memory is low.
+>   - When the available memory of the entire device drops below 1600 MB, the **onMemoryLevel** callback with a value of **2** is triggered, indicating that the available memory is critically low.
 
 **Example**
 
@@ -211,7 +211,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
     if (level === AbilityConstant.MemoryLevel.MEMORY_LEVEL_CRITICAL) {
-      console.log('The memory of device is critical, please release some memory.');
+      console.info('The memory of device is critical, please release some memory.');
     }
   }
 }
@@ -219,13 +219,13 @@ export default class MyAbility extends UIAbility {
 
 ## WindowMode<sup>12+</sup>
 
-Enumerates the window modes in which a UIAbility can be displayed at startup. You can use it in [startAbility](js-apis-inner-application-uiAbilityContext.md#startability).
+Enumerates the window modes in which a UIAbility can be displayed at startup. You can use it in [startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Name                       | Value| Description                |
 | ---                         | --- | ---                  |
-| WINDOW_MODE_FULLSCREEN      | 1   | Full screen mode. It takes effect only on 2-in-1 devices and tablets. |
+| WINDOW_MODE_FULLSCREEN      | 1   | Full-screen mode. It takes effect only on 2-in-1 devices and tablets. |
 | WINDOW_MODE_SPLIT_PRIMARY   | 100 | Primary screen (left screen in the case of horizontal orientation) in split-screen mode. It is valid only in intra-app redirection scenarios. It takes effect only on foldable devices and tablets.  |
 | WINDOW_MODE_SPLIT_SECONDARY | 101 | Secondary screen (right screen in the case of horizontal orientation) in split-screen mode. It is valid only in intra-app redirection scenarios. It takes effect only on foldable devices and tablets.  |
 
@@ -247,7 +247,7 @@ let option: StartOptions = {
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     this.context.startAbility(want, option).then(() => {
-      console.log('Succeed to start ability.');
+      console.info('Succeed to start ability.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
     });
@@ -305,7 +305,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) {
     if (reason === AbilityConstant.StateType.CONTINUATION) {
-      console.log('Save the ability data when the ability continuation.');
+      console.info('Save the ability data when the ability continuation.');
     }
     return AbilityConstant.OnSaveResult.ALL_AGREE;
   }

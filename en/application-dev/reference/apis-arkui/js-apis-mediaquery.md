@@ -1,14 +1,20 @@
 # @ohos.mediaquery (Media Query)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zju_ljz-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **mediaquery** module provides different styles for different media types.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module cannot be used in the file declaration of the [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md). In other words, the APIs of this module can be used only after a component instance is created; they cannot be called in the lifecycle of the UIAbility.
+> - This module cannot be used in the file declaration of the [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md). In other words, the APIs of this module can be used only after a component instance is created; they cannot be called in the lifecycle of the UIAbility.
 >
-> The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is unclear](../../ui/arkts-global-interface.md). For details, see [UIContext](js-apis-arkui-UIContext.md#uicontext).
+> - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
 
 
 ## Modules to Import
@@ -26,9 +32,9 @@ Sets the media query condition. This API returns the corresponding media query l
 
 > **NOTE**
 >
-> This API is deprecated since API version 18. You are advised to use [matchMediaSync](js-apis-arkui-UIContext.md#matchmediasync) instead on the obtained [MediaQuery](js-apis-arkui-UIContext.md#mediaquery) object.
+> - This API is supported since API version 7 and deprecated since API version 18. You are advised to use [matchMediaSync](arkts-apis-uicontext-mediaquery.md#matchmediasync) instead. Before calling this API, you need to obtain the [MediaQuery](arkts-apis-uicontext-mediaquery.md) object using the [getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
-> Since API version 10, you can use the [getMediaQuery](js-apis-arkui-UIContext.md#getmediaquery) API in [UIContext](js-apis-arkui-UIContext.md#uicontext) to obtain the [MediaQuery](js-apis-arkui-UIContext.md#mediaquery) object associated with the current UI context.
+> - Since API version 10, you can use the [getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [MediaQuery](arkts-apis-uicontext-mediaquery.md) object associated with the current UI context.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -46,7 +52,7 @@ Sets the media query condition. This API returns the corresponding media query l
 
 | Type              | Description                                        |
 | ------------------ | -------------------------------------------- |
-| [MediaQueryListener](#mediaquerylistener) | Media query listener, which is used to register or deregister the listening callback.|
+| [MediaQueryListener](#mediaquerylistener) | Media query listener, which is used to register or unregister the listening callback.|
 
 **Example**
 
@@ -95,14 +101,13 @@ Registers a media query listener. The callback is triggered when the media attri
 
 **Example**
 
-  See the example of [off](#offchange).
-
+  For details, see [off('change')](#offchange).
 
 ### off('change')
 
 off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 
-Deregisters a media query listener, so that no callback is triggered when the media attributes change.
+Unregisters a media query listener, so that no callback is triggered when the media attributes change.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -115,14 +120,16 @@ Deregisters a media query listener, so that no callback is triggered when the me
 | Name  | Type                            | Mandatory| Description                                                      |
 | -------- | -------------------------------- | ---- | ---------------------------------------------------------- |
 | type     | string                           | Yes  | Listener type. The value is fixed at **'change'**.                                  |
-| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | No  | Callback to be deregistered. If the default value is used, all callbacks of the handle are deregistered.|
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | No  | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered.|
 
 **Example**
 
-  ```ts
+<!--code_no_check-->
+<!--deprecated_code_no_check-->
+```ts
 import { mediaquery } from '@kit.ArkUI';
 
-let listener = mediaquery.matchMediaSync('(orientation: landscape)'); // Listen for landscape events.
+let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // Listen for landscape events.
 function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   if (mediaQueryResult.matches) {
     // do something here
@@ -131,7 +138,7 @@ function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   }
 }
 listener.on('change', onPortrait) // Register the media query listener.
-listener.off('change', onPortrait) // Deregister the listener.
+listener.off('change', onPortrait) // Unregister the callback.
   ```
 
 ## MediaQueryResult
@@ -145,9 +152,9 @@ Provides the media query result.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 
-### Properties
+### Attributes
 
-| Name   | Type   | Readable| Writable| Description                |
+| Name   | Type   | Read-Only| Optional| Description                |
 | ------- | ------- | ---- | ---- | -------------------- |
 | matches | boolean | Yes  | No  | Whether the media query condition is met. The value **true** means that the query conditions are met, and **false** means the opposite. |
 | media   | string  | Yes  | No  | Media query condition.|
@@ -157,8 +164,10 @@ Provides the media query result.
 
 > **NOTE**
 >
-> You are advised to use the [getMediaQuery](js-apis-arkui-UIContext.md#getmediaquery) API in [UIContext](js-apis-arkui-UIContext.md#uicontext) to obtain the [MediaQuery](js-apis-arkui-UIContext.md#mediaquery) object associated with the current UI context.
+> You are advised to use the [getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [MediaQuery](arkts-apis-uicontext-mediaquery.md) object associated with the current UI context.
 
+<!--code_no_check-->
+<!--deprecated_code_no_check-->
 ```ts
 import { mediaquery } from '@kit.ArkUI';
 
@@ -167,7 +176,7 @@ import { mediaquery } from '@kit.ArkUI';
 struct MediaQueryExample {
   @State color: string = '#DB7093'
   @State text: string = 'Portrait'
-  listener = mediaquery.matchMediaSync('(orientation: landscape)') // You are advised to use this.getUIContext().getMediaQuery().matchMediaSync().
+  listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // Listen for landscape events. The mediaquery.matchMediaSync API is deprecated. You are advised to use this.getUIContext().getMediaQuery().matchMediaSync() instead.
 
   onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
     if (mediaQueryResult.matches) {
@@ -198,3 +207,4 @@ struct MediaQueryExample {
   }
 }
 ```
+![media_query](figures/media_query.png)

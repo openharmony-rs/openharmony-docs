@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **DataResubmissionHandler** object for resubmitting or canceling the web form data.
 
@@ -14,7 +14,7 @@ Implements the **DataResubmissionHandler** object for resubmitting or canceling 
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>9+</sup>
 

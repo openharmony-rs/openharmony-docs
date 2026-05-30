@@ -22,13 +22,19 @@
 
 1. 通过context获取到Canvas画布对象。
 
-   ```ts
+   <!-- @[arkts_drawing_simple_text_create_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    let canvas = context.canvas;
    ```
+   <!-- -->
 
-2. 初始化文本样式，此处设置字体颜色为红色，字体大小为50。
+2. 初始化文本样式，此处设置字体颜色为红色，字体大小为100px。
 
-   ```ts
+   <!-- @[arkts_drawing_simple_text_create_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取文本样式
    let myTextStyle: text.TextStyle = {
      // 文本颜色
      color: {
@@ -38,172 +44,48 @@
        blue: 0
      },
      // 文本大小
-     fontSize: 50
+     fontSize: 100
    };
    ```
+   <!-- -->
 
 3. 初始化段落样式。
 
-   ```ts
-   // 设置段落样式
+   <!-- @[arkts_drawing_simple_text_create_paragraph_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
    };
    ```
+   <!-- -->
 
 4. 初始化段落对象，并添加文本。
 
-   ```ts
+   <!-- @[arkts_drawing_simple_text_builder_add_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    let fontCollection = text.FontCollection.getGlobalInstance();
-   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    // 更新文本样式
-   paragraphBuilder.pushStyle(myTextStyle);
+   ParagraphGraphBuilder.pushStyle(myTextStyle);
    // 添加文本
-   paragraphBuilder.addText("Hello World");
+   ParagraphGraphBuilder.addText("Hello World");
    ```
+   <!-- -->
 
 5. 排版段落并进行文本绘制。
 
-   ```ts
+   <!-- @[arkts_drawing_simple_text_layout_paint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 生成段落
-   let paragraph = paragraphBuilder.build();
+   let paragraph = ParagraphGraphBuilder.build();
    // 布局
    paragraph.layoutSync(1250);
    // 绘制文本
-   paragraph.paint(canvas, 10, 0);
+   paragraph.paint(canvas, 0, 100);
    ```
-
-
-## 完整示例
-
-```ts
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
-import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
-
-// 创建一个MyRenderNode类，并绘制文本。
-class MyRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    
-    // 绘制代码逻辑写在这里
-    let canvas = context.canvas;
-    
-    let myTextStyle: text.TextStyle = {
-      // 文本颜色
-      color: {
-        alpha: 255,
-        red: 255,
-        green: 0,
-        blue: 0
-      },
-      // 文本大小
-      fontSize: 100
-    };
-    
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle,
-    };
-    let fontCollection = text.FontCollection.getGlobalInstance();
-    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-    // 更新文本样式
-    paragraphBuilder.pushStyle(myTextStyle);
-    // 添加文本
-    paragraphBuilder.addText("Hello World");
-
-    // 生成段落
-    let paragraph = paragraphBuilder.build();
-    // 布局
-    paragraph.layoutSync(1250);
-    // 绘制文本
-    paragraph.paint(canvas, 10, 800);
-  }
-}
-
-// 创建一个MyRenderNode对象
-const textNode = new MyRenderNode()
-// 定义newNode的像素格式
-textNode.frame = {
-  x: 0,
-  y: 100,
-  width: 1250,
-  height: 800
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
-    if (this.rootNode == null) {
-      return this.rootNode
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.frame = {
-        x: 0,
-        y: 0,
-        width: 10,
-        height: 500
-      }
-    }
-    return this.rootNode
-  }
-
-  addNode(node: RenderNode): void {
-    if (this.rootNode == null) {
-      return
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.appendChild(node)
-    }
-  }
-
-  clearNodes(): void {
-    if (this.rootNode == null) {
-      return
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.clearChildren()
-    }
-  }
-}
-
-let myNodeController: MyNodeController = new MyNodeController()
-
-async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
-}
-
-@Entry
-@Component
-struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
-  build() {
-    Column() {
-      Row() {
-        NodeContainer(myNodeController)
-          .height('100%')
-          .width('100%')
-        Image(this.src)
-          .width('0%').height('0%')
-          .onComplete(
-            () => {
-              performTask();
-            })
-      }
-      .width('100%')
-    }
-  }
-}
-```
 
 ## 效果展示
 

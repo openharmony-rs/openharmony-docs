@@ -8,9 +8,11 @@
 <!--Adviser: @zhang_yixin13-->
 
 VPN 管理模块，支持 VPN 的启动和停止功能。
+
 本模块是操作系统提供的内置VPN功能，允许用户通过系统的网络设置进行VPN连接，通常提供的功能较少，而且有比较严格的限制。
 
 > **说明：**
+>
 > 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 本模块为系统接口。
 
@@ -44,7 +46,7 @@ createVpnConnection(context: AbilityContext): VpnConnection
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息         |
 | --------- | ---------------- |
@@ -101,7 +103,7 @@ setUp(config: VpnConfig, callback: AsyncCallback\<number\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                         |
 | --------- | ------------------------------------------------ |
@@ -177,7 +179,7 @@ setUp(config: VpnConfig): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                         |
 | --------- | ------------------------------------------------ |
@@ -249,7 +251,7 @@ protect(socketFd: number, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -293,9 +295,9 @@ struct Index {
       timeout: 6000
     }
     tcp.connect(addressConnect);
-    tcp.getSocketFd().then((tunnelfd: number) => {
-      console.info("tunenlfd: " + tunnelfd);
-      this.VpnConnection.protect(tunnelfd, (error: BusinessError) => {
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      console.info("tunnelFd: " + tunnelFd);
+      this.VpnConnection.protect(tunnelFd, (error: BusinessError) => {
         console.error(JSON.stringify(error));
       });
     });
@@ -330,7 +332,7 @@ protect(socketFd: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -374,9 +376,9 @@ struct Index {
       timeout: 6000
     }
     tcp.connect(addressConnect);
-    tcp.getSocketFd().then((tunnelfd: number) => {
-      console.info("tunenlfd: " + tunnelfd);
-      this.VpnConnection.protect(tunnelfd).then(() => {
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      console.info("tunnelFd: " + tunnelFd);
+      this.VpnConnection.protect(tunnelFd).then(() => {
         console.info("protect success.");
       }).catch((err: BusinessError) => {
         console.error("protect fail" + JSON.stringify(err));
@@ -407,7 +409,7 @@ destroy(callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -462,7 +464,7 @@ destroy(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN 错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -509,14 +511,15 @@ VPN 配置参数。
 
 | 名称                | 类型                                                           | 只读 |可选| 说明                                |
 | ------------------- | -------------------------------------------------------------- | ---- | ---|----------------------------------- |
-| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN 虚拟网卡的 IP 地址。            |
-| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | 否   |是 |VPN 虚拟网卡的路由信息。            |
-| dnsAddresses        | Array\<string\>                                                | 否   |是 |DNS 服务器地址信息。                |
-| searchDomains       | Array\<string\>                                                | 否   | 是|DNS 的搜索域列表。                  |
-| mtu                 | number                                                         | 否   |是 |最大传输单元 MTU 值(单位:字节)。     |
-| isIPv4Accepted      | boolean                                                        | 否   | 是| 是否支持 IPV4, 默认值为 true。      |
-| isIPv6Accepted      | boolean                                                        | 否   |是 |是否支持 IPV6, 默认值为 flase。     |
-| isLegacy            | boolean                                                        | 否   |是 |是否支持内置 VPN, 默认值为 flase。   |
-| isBlocking          | boolean                                                        | 否   |是 |是否阻塞模式, 默认值为 flase。       |
-| trustedApplications | Array\<string\>                                                | 否   |是 |白名单信息, string 类型表示的包名。  |
-| blockedApplications | Array\<string\>                                                | 否   |是 |黑名单信息, string 类型表示的包名。  |
+| vpnId<sup>20+</sup>           | string | 否   |是| VPN唯一标识。            |
+| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的 IP 地址。            |
+| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | 否   |是 | VPN虚拟网卡的路由信息。            |
+| dnsAddresses        | Array\<string\>                                                | 否   |是 | DNS服务器地址信息。                |
+| searchDomains       | Array\<string\>                                                | 否   | 是| DNS 的搜索域列表。                  |
+| mtu                 | number                                                         | 否   |是 |最大传输单元MTU值(单位:字节)。     |
+| isIPv4Accepted      | boolean                                                        | 否   | 是| 是否支持IPv4。true表示支持IPv4，false表示不支持IPv4。默认值为true。      |
+| isIPv6Accepted      | boolean                                                        | 否   |是 |是否支持IPv6。true表示支持IPv6，false表示不支持IPv6。默认值为false。     |
+| isLegacy            | boolean                                                        | 否   |是 |是否支持内置VPN。true表示支持内置VPN，false表示不支持内置VPN。默认值为false。   |
+| isBlocking          | boolean                                                        | 否   |是 |是否阻塞模式。true表示是阻塞模式，false表示不是阻塞模式。默认值为false。       |
+| trustedApplications | Array\<string\>                                                | 否   |是 | string类型表示的包名可以接入VPN网络。  |
+| blockedApplications | Array\<string\>                                                | 否   |是 | string类型表示的包名不能接入VPN网络。  |

@@ -1,4 +1,10 @@
 # FormExtensionContext (System API)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 
 The **FormExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides the context environment for the [FormExtensionAbility](js-apis-app-form-formExtensionAbility.md).
 
@@ -6,11 +12,9 @@ You can use the APIs of this module to start a FormExtensionAbility.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs of this module can be used only in the stage model.
-> The APIs provided by this module are system APIs.
-
-
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module can be used only in the stage model.
+> - The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -28,6 +32,8 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
@@ -36,7 +42,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16500050 | IPC connection error. |
+| 16500050 | An IPC connection error happened. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 
@@ -57,7 +63,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // Call startAbility() when the message event is triggered.
-    console.log(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -68,9 +74,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     this.context.startAbility(want, (error: BusinessError) => {
       if (error) {
-        console.error(`FormExtensionContext startAbility, error:${JSON.stringify(error)}`);
+        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       } else {
-        console.log('FormExtensionContext startAbility success');
+        console.info('FormExtensionContext startAbility success');
       }
     });
   }
@@ -86,6 +92,8 @@ Starts an ability. This API uses a promise to return the result.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.Form
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -107,7 +115,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16500050 | IPC connection error. |
+| 16500050 | An IPC connection error happened. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 
@@ -121,7 +129,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // Call startAbility() when the message event is triggered.
-    console.log(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -147,7 +155,9 @@ Connects this ability to a ServiceExtensionAbility.
 
 **System capability**: SystemCapability.Ability.Form
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -168,18 +178,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permissions denied.             |
+| 201      | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Can not start invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000011 | The context does not exist.        |
-| 16000050 | Internal error. |
 
 **Example**
 
@@ -194,7 +204,7 @@ let commRemote: rpc.IRemoteObject | null = null;
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // Call connectServiceExtensionAbility() when the message event is triggered.
-    console.log(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -206,13 +216,13 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     let options: common.ConnectOptions = {
       onConnect(elementName, remote) {
         commRemote = remote; // remote is used to communicate with the ServiceExtensionAbility.
-        console.log('----------- onConnect -----------');
+        console.info('----------- onConnect -----------');
       },
       onDisconnect(elementName) {
-        console.log('----------- onDisconnect -----------')
+        console.info('----------- onDisconnect -----------')
       },
       onFailed(code) {
-        console.error('----------- onFailed -----------')
+        console.error(`onFailed, code: ${code}`)
       }
     };
 
@@ -231,11 +241,13 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
-Disconnects this ability from a ServiceExtensionAbility and after the successful disconnection, sets the remote object returned upon the connection to void. This API uses an asynchronous callback to return the result. 
+Disconnects this ability from a **ServiceExtensionAbility** and after the successful disconnection, sets the **remote** object returned upon the connection to void. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -251,7 +263,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16000011 | The context does not exist.        |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
 **Example**
@@ -263,6 +275,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // commRemote is the remote object returned in the onConnect() callback. The value null is meaningless and is only an example.
 let commRemote: rpc.IRemoteObject | null = null;
+
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // In actual use, connection is the return value of connectServiceExtensionAbility(). The value 1 is meaningless and is only an example.
@@ -277,7 +290,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
           return;
         }
         // Carry out normal service processing.
-        console.log('disconnectServiceExtensionAbility succeed');
+        console.info('disconnectServiceExtensionAbility succeed');
       });
     } catch (paramError) {
       commRemote = null;
@@ -296,7 +309,9 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 
 **System capability**: SystemCapability.Ability.Form
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -329,6 +344,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // commRemote is the remote object returned in the onConnect() callback. The value null is meaningless and is only an example.
 let commRemote: rpc.IRemoteObject | null = null;
+
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // In actual use, connection is the return value of connectServiceExtensionAbility(). The value 1 is meaningless and is only an example.
@@ -339,7 +355,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         .then(() => {
           commRemote = null;
           // Carry out normal service processing.
-          console.log('disconnectServiceExtensionAbility succeed');
+          console.info('disconnectServiceExtensionAbility succeed');
         })
         .catch((error: BusinessError) => {
           commRemote = null;

@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **WebResourceRequest** object to obtain resource requests. For details about the sample code, see [onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive).
 
@@ -14,7 +14,7 @@ Implements the **WebResourceRequest** object to obtain resource requests. For de
 >
 > - The initial APIs of this class are supported since API version 8.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor
 

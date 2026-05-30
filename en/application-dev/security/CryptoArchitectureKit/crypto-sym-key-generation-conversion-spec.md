@@ -15,7 +15,7 @@ A key can be generated based on a string parameter, which holds key specificatio
 
 Advanced Encryption Standard (AES) is the most common symmetric encryption algorithm.
 
-It has the following features:
+Features:
 
 - It is a block cipher with a block size of 128 bits.
 
@@ -34,7 +34,7 @@ An AES key can be generated from a string parameter. When creating a symmetric k
 ## DES
 The DES algorithm has the following features:
 
- 
+Features:
 
 DES is a block encryption algorithm. It divides plaintext into 64-bit blocks and encrypts each block.
 
@@ -48,7 +48,7 @@ A DES key can be generated from a string parameter. When creating a symmetric ke
 
 3DES is also called 3DESede or Triple DES.
 
-It has the following features:
+Features:
 
 - It uses three 64-bit keys to encrypt a data block three times, which means to apply the DES cipher three times to each data block.
 
@@ -64,7 +64,7 @@ A 3DES key can be generated from a string parameter. When creating a symmetric k
 
 ShangMi 4 (SM4) is a symmetric algorithm.
 
-It has the following features:
+Features:
 
 - It is a block cipher with a block size of 128 bits.
 
@@ -82,7 +82,7 @@ An SM4 key can be generated from a string parameter. When creating a symmetric k
 
 Hash-based Message Authentication Code (HMAC) is a hash-based message authentication code algorithm. A symmetric key is required for calculation.
 
-It has the following features:
+Features:
 
 The symmetric key used by HMAC can be of any length.
 
@@ -100,10 +100,82 @@ The symmetric key used by HMAC can be generated based on a string parameter.
 
 | MAC Algorithm| MD Algorithm| Key Length (Bit)| String Parameter| API Version| 
 | -------- | -------- | -------- | -------- | -------- |
-| HMAC | SHA1 | 160 | HMAC\|SHA1 | 11+ | 
-| HMAC | SHA224 | 224 | HMAC\|SHA224 | 11+ | 
-| HMAC | SHA256 | 256 | HMAC\|SHA256 | 11+ | 
-| HMAC | SHA384 | 384 | HMAC\|SHA384 | 11+ | 
-| HMAC | SHA512 | 512 | HMAC\|SHA512 | 11+ | 
+| HMAC | SHA-1| 160 | HMAC\|SHA1 | 11+ | 
+| HMAC | SHA-224| 224 | HMAC\|SHA224 | 11+ | 
+| HMAC | SHA-256| 256 | HMAC\|SHA256 | 11+ | 
+| HMAC | SHA-384| 384 | HMAC\|SHA384 | 11+ | 
+| HMAC | SHA-512| 512 | HMAC\|SHA512 | 11+ | 
 | HMAC | SM3 | 256 | HMAC\|SM3 | 11+ | 
 | HMAC | - | [1, 32768] | HMAC | 11+ | 
+
+## ChaCha20
+
+The Crypto framework supports this algorithm since API version 22.
+
+ChaCha20 is a modern symmetric stream cipher.
+
+Features:
+
+- It is a stream cipher, so no padding algorithm is required.
+
+- The key length is 256 bits.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| ChaCha20 | 256 | ChaCha20 | 22+ | 
+
+## RC2
+The Crypto framework supports this algorithm since API version 26.0.0.
+
+RC2 is a block cipher algorithm with a block size of 64 bits.
+
+Features:
+
+- Block size: 64 bits (8 bytes).
+- Key length: 8 to 1024 bits. The string parameter is **RC2**.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| RC2 | 8 to 1024| RC2 | 26.0.0+ | 
+
+## RC4
+The Crypto framework supports this algorithm since API version 26.0.0.
+
+RC4 is a stream cipher algorithm.
+
+Features:
+
+- It is a stream cipher, so no padding is required.
+- Key length: 8 to 4096 bits. The string parameter is **RC4**.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| RC4 | 8 to 4096 | RC4 | 26.0.0+ | 
+
+## Blowfish (BF)
+The Crypto framework supports this algorithm since API version 26.0.0.
+
+Blowfish is a block cipher algorithm with a block size of 64 bits.
+
+Features:
+
+- Block size: 64 bits (8 bytes)
+- Key length: 32 to 448 bits. The string parameter is **Blowfish**.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| Blowfish | 32 to 448| Blowfish | 26.0.0+ | 
+
+## CAST
+The Crypto framework supports this algorithm since API version 26.0.0.
+
+CAST (for example, CAST-128/CAST5) is a block cipher algorithm with a block size of 64 bits.
+
+Features:
+
+- Block size: 64 bits (8 bytes)
+- Key length: 40 to 128 bits. The string parameter is **CAST**.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| CAST | 40 to 128| CAST | 26.0.0+ | 

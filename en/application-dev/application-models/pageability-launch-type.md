@@ -1,9 +1,16 @@
 # PageAbility Launch Type
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @lidongrui-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 Depending on the launch type, the action performed when the PageAbility starts differs, as described in the table below.
 
-**Table 1** PageAbility launch types
+
+  **Table 1** PageAbility launch types
 
 | Launch Type| Meaning| Description|
 | -------- | -------- | -------- |
@@ -13,7 +20,7 @@ Depending on the launch type, the action performed when the PageAbility starts d
 
 You can set **launchType** in the **config.json** file to configure the launch type. The sample code is as follows:
 
-```json
+```json5
 {
   "module": {
     ...
@@ -33,7 +40,7 @@ You can set **launchType** in the **config.json** file to configure the launch t
 When the PageAbility is started in multiton mode or it is started in singleton mode for the first time, the [PageAbility lifecycle callbacks](pageability-lifecycle.md) are triggered. When it is not started for the first time in singleton mode, the **onNewWant()** callback (as described in the table below) is triggered, but the **onCreate()** callback is not.
 
 
-**Table 2** Callbacks specific to the singleton mode
+  **Table 2** Callbacks specific to the singleton mode
 
 | API| Description|
 | -------- | -------- |

@@ -2,9 +2,14 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
-<!--SE: @kutcherzhou1-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Owner: @hello_harmony; @leiguangyu-->
+<!--Designer: @kutcherzhou1-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @jinqiuheng-->
+
+```c
+typedef struct HiDebug_MallocDispatch {...} HiDebug_MallocDispatch
+```
 
 ## Overview
 
@@ -33,7 +38,7 @@ Defines the struct types of the replaceable/restorable **HiDebug_MallocDispatch*
 
 ### malloc()
 
-```
+```c
 void* (*malloc)(size_t)
 ```
 
@@ -43,7 +48,7 @@ Pointer to the custom **malloc** function.
 
 ### calloc()
 
-```
+```c
 void* (*calloc)(size_t, size_t)
 ```
 
@@ -53,7 +58,7 @@ Pointer to the custom **calloc** function.
 
 ### realloc()
 
-```
+```c
 void* (*realloc)(void*, size_t)
 ```
 
@@ -63,7 +68,7 @@ Pointer to the custom **realloc** function.
 
 ### free()
 
-```
+```c
 void (*free)(void*)
 ```
 
@@ -73,7 +78,7 @@ Pointer to the custom **free** function.
 
 ### mmap()
 
-```
+```c
 void* (*mmap)(void*, size_t, int, int, int, off_t)
 ```
 
@@ -83,7 +88,7 @@ Pointer to the custom **mmap** function.
 
 ### munmap()
 
-```
+```c
 int (*munmap)(void*, size_t)
 ```
 

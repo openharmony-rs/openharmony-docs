@@ -1,9 +1,9 @@
 # @ohos.inputMethodEngine (输入法服务)(系统接口)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块为系统输入法应用提供管理能力，包括创建软键盘窗口、插入/删除字符、选中文本、监听物理键盘按键事件等。
@@ -101,6 +101,45 @@ panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngin
   console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
 });
 ```
+
+### setShadow<sup>22+</sup>
+
+setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
+
+设置输入法窗口阴影效果。
+
+> **说明:**
+>
+> 不支持[PanelType](./js-apis-inputmethodengine.md#paneltype10)为SOFT_KEYBOARD类型且[PanelFlag](./js-apis-inputmethodengine.md#panelflag10)状态为FLG_FIXED的面板。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明                                                         |
+| ------- | ------ | ---- | ------------------------------------------------------------ |
+| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。 |
+| color   | string | 是   | 表示窗口边缘阴影的颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`#000000`或`#FF000000`。 |
+| offsetX | number | 是   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px。    |
+| offsetY | number | 是   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 202 | not system application. |
+| 12800013  | window manager service error.      |
+| 12800017 | invalid panel type or panel flag. Possible causes: Panel's flag is FLG_FIXED. |
+
+**示例：**
+
+```ts
+panel.setShadow(20, '#000000', 20, 20);
+```
 ## FluidLightMode<sup>20+</sup>
 
 枚举，输入法流光模式。
@@ -112,9 +151,9 @@ panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngin
 | 名称         | 值 | 说明               |
 | ------------ | -- | ------------------ |
 | NONE | 0 | 不使用流光模式。 |
-| BACKGROUND_FLUID_LIGHT  | 1 | 背景流光。 |
+| BACKGROUND_FLUID_LIGHT  | 1 | 开启背景流光模式。此时系统面板会变为透明，流光效果需要由编辑框宿主应用实现。 |
 
-## EditorAttribute
+## EditorAttribute<sup>20+</sup>
 
 编辑框属性值。
 
@@ -124,7 +163,7 @@ panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngin
 
 | 名称         | 类型 | 只读 | 可选 | 说明               |
 | ------------ | -------- | ---- | ---- | ------------------ |
-| fluidLightMode<sup>20+</sup> | [FluidLightMode](#fluidlightmode20) | 是 | 是 | 流光模式。如果没有设置或设置非法值，默认不使用流光模式。<br>该属性仅系统应用可以使用。|
+| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 是 | 是 | 流光模式。如果没有设置或设置非法值，默认不使用流光模式。<br>该属性仅系统应用可以使用。|
 
 ## ImmersiveEffect<sup>20+</sup>
 

@@ -1,10 +1,10 @@
 # @ohos.file.fileAccess (User File Access and Management) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 The **fileAccess** module provides a framework for accessing and operating user files based on [extension](../../application-models/extensionability-overview.md). This module interacts with a variety of file management services, such as the storage management service, and provides a set of unified file access and management APIs for system applications. The storage management service manages both the directories of the built-in storage and resources on external devices, such as shared disks, USB flash drives, and SD cards.
 
@@ -13,11 +13,12 @@ The **fileAccess** module provides a framework for accessing and operating user 
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The APIs provided by this module are system APIs.
 > - Currently, the APIs of this module can be called only by **FilePicker** and **FileManager**.
+> - The APIs of this module are deprecated since API version 23. You are advised to use [File Management](js-apis-file-fs.md) APIs instead.
 
 ## Modules to Import
 
 ```ts
-import fileAccess from '@ohos.file.fileAccess';
+import { fileAccess } from '@kit.CoreFileKit';
 ```
 
 ## Constant
@@ -25,6 +26,8 @@ import fileAccess from '@ohos.file.fileAccess';
 Represents a URI used for observing the device online/offline status.
 
 **Model restriction**: This constant can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -38,9 +41,11 @@ Represents a URI used for observing the device online/offline status.
 
 getFileAccessAbilityInfo() : Promise&lt;Array&lt;Want&gt;&gt;
 
-Obtains information about all Wants with **extension** set to **fileAccess** in the system. A Want contains information for starting an ability. This API uses a promise to return the result.
+Obtains information about all Wants with **extension** set to **fileAccess** in the system. A Want contains information for starting an ability. This API returns the result asynchronously through a promise.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -59,13 +64,13 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import Want from '@ohos.app.ability.Want';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
   async function getFileAccessAbilityInfo() {
     let wantInfos: Array<Want> = [];
     try {
       wantInfos = await fileAccess.getFileAccessAbilityInfo();
-      console.log("getFileAccessAbilityInfo data " + JSON.stringify(wantInfos));
+      console.info("getFileAccessAbilityInfo data " + JSON.stringify(wantInfos));
     } catch (err) {
       let error: BusinessError = err as BusinessError;
       console.error("getFileAccessAbilityInfo failed, errCode:" + error.code + ", errMessage:" + error.message);
@@ -81,6 +86,8 @@ Obtains information about all Wants with **extension** set to **fileAccess** in 
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
@@ -89,7 +96,7 @@ Obtains information about all Wants with **extension** set to **fileAccess** in 
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
-| callback | AsyncCallback&lt;Array&lt;[Want](../apis-ability-kit/js-apis-app-ability-want.md)&gt;&gt; | Yes| Callback invoked to return the want information obtained.|
+| callback | AsyncCallback&lt;Array&lt;[Want](../apis-ability-kit/js-apis-app-ability-want.md)&gt;&gt; | Yes| Callback used to return the want information obtained.|
 
 **Error codes**
 
@@ -98,8 +105,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import Want from '@ohos.app.ability.Want';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
   async function getFileAccessAbilityInfo() {
     try {
       fileAccess.getFileAccessAbilityInfo((err: BusinessError, wantInfos: Array<Want>) => {
@@ -107,7 +114,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
           console.error("Failed to getFileAccessAbilityInfo in async, errCode:" + err.code + ", errMessage:" + err.message);
           return;
         }
-        console.log("getFileAccessAbilityInfo data " + JSON.stringify(wantInfos));
+        console.info("getFileAccessAbilityInfo data " + JSON.stringify(wantInfos));
       });
     } catch (err) {
       let error: BusinessError = err as BusinessError;
@@ -123,6 +130,8 @@ createFileAccessHelper(context: Context, wants: Array&lt;Want&gt;) : FileAccessH
 Creates a **Helper** object to bind with the specified Wants. This API returns the result synchronously. The **Helper** object provides file access and management capabilities.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -148,9 +157,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import Want from '@ohos.app.ability.Want';
-  import common from '@ohos.app.ability.common';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
+  import { common } from '@kit.AbilityKit';
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
   function createFileAccessHelper01(context: common.UIAbilityContext) {
@@ -183,6 +192,8 @@ Creates a **Helper** object to bind with all file management services in the sys
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
@@ -206,8 +217,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import common from '@ohos.app.ability.common';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { common } from '@kit.AbilityKit';
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
   function createFileAccessHelper02(context: common.UIAbilityContext) {
@@ -232,6 +243,8 @@ Provides APIs for managing file or directory attribute information.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -244,8 +257,8 @@ Provides APIs for managing file or directory attribute information.
 | relativePath<sup>10+</sup> | string | Yes| No| Relative path of the file or directory.|
 | fileName | string | No| No| Name of the file or directory.|
 | mode | number | No| No| Permissions on the file or directory.|
-| size | number | No| No|  Size of the file or directory.|
-| mtime | number | No| No|  Time when the file or directory was last modified.|
+| size | number | No| No|  Size of the file or folder, in bytes.|
+| mtime | number | No| No|  Time when the file or directory was last modified. The value is the number of milliseconds elapsed since the Epoch time (00:00:00 UTC on January 1, 1970).|
 | mimeType | string | No| No|  Multipurpose Internet Mail Extensions (MIME) type of the file or directory.|
 
 ### listFile
@@ -279,7 +292,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // fileInfoDir indicates information about a directory.
   // let filter = { suffix : [".txt", ".jpg", ".xlsx"] };
   let fileInfoDir :Array<fileAccess.FileInfo> = [];
@@ -295,7 +308,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       }
       while (!isDone) {
         let result = fileIterator.next();
-        console.log("next result = " + JSON.stringify(result));
+        console.info("next result = " + JSON.stringify(result));
         isDone = result.done;
         if (!isDone) {
           subfileInfos.push(result.value);
@@ -315,6 +328,8 @@ scanFile(filter?: Filter) : FileIterator;
 Obtains a **FileIterator** object that recursively retrieves the files matching the specified conditions of this directory. This API returns the result synchronously. [FileInfo](#fileinfo) is returned by [next()](#next). Currently, this API supports only built-in storage devices.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -339,7 +354,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // fileInfoDir indicates information about a directory.
   // let filter = {suffix : [".txt", ".jpg", ".xlsx"]};
   let fileInfoDir: Array<fileAccess.FileInfo> = [];
@@ -355,7 +370,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       }
       while (!isDone) {
         let result = fileIterator.next();
-        console.log("next result = " + JSON.stringify(result));
+        console.info("next result = " + JSON.stringify(result));
         isDone = result.done;
         if (!isDone) {
           subfileInfos.push(result.value);
@@ -374,6 +389,8 @@ Provides the **FileIterator** object.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -385,6 +402,8 @@ next() : { value: FileInfo, done: boolean }
 Obtains information about the next-level files or directories.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -405,6 +424,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 Provides APIs for managing the device's root attribute information.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -428,6 +449,8 @@ Obtains a **FileIterator** object that lists the first-level files or directorie
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -451,7 +474,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // rootInfo can be obtained by getRoots().
   // let filter = {suffix : [".txt", ".jpg", ".xlsx"]};
   let rootInfo: Array<fileAccess.FileInfo> = [];
@@ -467,7 +490,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       }
       while (!isDone) {
         let result = fileIterator.next();
-        console.log("next result = " + JSON.stringify(result));
+        console.info("next result = " + JSON.stringify(result));
         isDone = result.done;
         if (!isDone) {
           fileInfos.push(result.value);
@@ -488,6 +511,8 @@ Obtains a **FileIterator** object that recursively retrieves the files matching 
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -511,7 +536,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // rootInfo can be obtained by getRoots().
   // let filter = {suffix : [".txt", ".jpg", ".xlsx"]};
   let rootInfo: Array<fileAccess.FileInfo> = [];
@@ -527,7 +552,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       }
       while (!isDone) {
         let result = fileIterator.next();
-        console.log("next result = " + JSON.stringify(result));
+        console.info("next result = " + JSON.stringify(result));
         isDone = result.done;
         if (!isDone) {
           fileInfos.push(result.value);
@@ -546,6 +571,8 @@ Provides an iterator object of the device root directory.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -557,6 +584,8 @@ next() : { value: RootInfo, done: boolean }
 Obtains the next-level root directory.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -576,6 +605,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 Provides a **FileAccessHelper** object.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -584,8 +615,11 @@ Provides a **FileAccessHelper** object.
 
 getRoots() : Promise&lt;RootIterator&gt;
 
-Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses a promise to return
-a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
+Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API returns the result asynchronously through a promise.
+
+This API uses a promise to return a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -603,7 +637,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
+```ts
 async function getRoots() {
   let rootIterator: fileAccess.RootIterator;
   let rootinfos: Array<fileAccess.RootInfo> = [];
@@ -618,7 +652,7 @@ async function getRoots() {
       }
       while (!isDone) {
         let result = rootIterator.next();
-        console.log("next result = " + JSON.stringify(result));
+        console.info("next result = " + JSON.stringify(result));
         isDone = result.done;
         if (!isDone) {
           rootinfos.push(result.value);
@@ -630,14 +664,17 @@ async function getRoots() {
     console.error("getRoots failed, errCode:" + error.code + ", errMessage:" + error.message);
   }
 }
-  ```
+```
 
 ### getRoots
 
 getRoots(callback:AsyncCallback&lt;RootIterator&gt;) : void
 
-Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses an asynchronous callback to return
-a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
+Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses an asynchronous callback to return the result.
+
+This API uses an asynchronous callback to return a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -647,7 +684,7 @@ a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#roo
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
-| callback | AsyncCallback&lt;[RootIterator](#rootiterator)&gt; | Yes| Callback invoked to return a **RootIterator** object.|
+| callback | AsyncCallback&lt;[RootIterator](#rootiterator)&gt; | Yes| Promise used to return a **RootIterator** object.|
 
 **Error codes**
 
@@ -656,7 +693,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function getRoots() {
     let rootinfos: Array<fileAccess.RootInfo> = [];
     let isDone: boolean = false;
@@ -670,7 +707,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
           }
           while (!isDone) {
             let result = rootIterator.next();
-            console.log("next result = " + JSON.stringify(result));
+            console.info("next result = " + JSON.stringify(result));
             isDone = result.done;
             if (!isDone) {
               rootinfos.push(result.value);
@@ -689,7 +726,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 createFile(uri: string, displayName: string) : Promise&lt;string&gt;
 
-Creates a file in a directory. This API uses a promise to return the result.
+Creates a file in a directory. This API returns the result asynchronously through a promise.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -715,7 +754,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function createFile() {
     // A built-in storage directory is used as an example.
     // In the sample code, sourceUri indicates the Download directory. The URI is the URI in fileInfo.
@@ -732,7 +771,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
           console.error("createFile return undefined object");
           return;
         }
-        console.log("createFile success, fileUri: " + JSON.stringify(fileUri));       
+        console.info("createFile success, fileUri: " + JSON.stringify(fileUri));       
       }
     } catch (err) {
       let error: BusinessError = err as BusinessError;
@@ -747,6 +786,8 @@ createFile(uri: string, displayName: string, callback: AsyncCallback&lt;string&g
 
 Creates a file in a directory. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -757,7 +798,7 @@ Creates a file in a directory. This API uses an asynchronous callback to return 
 | --- | --- | --- | -- |
 | uri | string | Yes| URI of the destination directory for the file to create.|
 | displayName | string | Yes| Name of the file to create. By default, the name of a local file must contain the file suffix.|
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback invoked to return the URI of the file created.|
+| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the URI of the file created.|
 
 **Error codes**
 
@@ -766,7 +807,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, sourceUri indicates the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -780,7 +821,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         if (err) {
           console.error("Failed to createFile in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("createFile success, fileUri: " + JSON.stringify(fileUri));
+        console.info("createFile success, fileUri: " + JSON.stringify(fileUri));
       });
     }
   } catch (err) {
@@ -793,7 +834,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 mkDir(parentUri: string, displayName: string) : Promise&lt;string&gt;
 
-Creates a directory in a specified directory. This API uses a promise to return the result.
+Creates a folder in a specified directory. This API returns the result asynchronously through a promise.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -803,14 +846,14 @@ Creates a directory in a specified directory. This API uses a promise to return 
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
-| parentUri | string | Yes| URI of the destination directory for the directory to create.|
-| displayName | string | Yes| Name of the directory to create.|
+| parentUri | string | Yes| URI of the destination directory for the folder to create.|
+| displayName | string | Yes| Name of the folder to create.|
 
 **Return value**
 
 | Type| Description|
 | --- | -- |
-| Promise&lt;string&gt; | Promise used to return the URI of the directory created.|
+| Promise&lt;string&gt; | Callback used to return the URI of the folder created.|
 
 **Error codes**
 
@@ -819,7 +862,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, sourceUri indicates the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -835,7 +878,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         if (!dirUri) {
           console.error("mkDir return undefined object");
         } else {
-          console.log("mkDir success, dirUri: " + JSON.stringify(dirUri));
+          console.info("mkDir success, dirUri: " + JSON.stringify(dirUri));
         }
       }
     } catch (err) {
@@ -849,7 +892,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 mkDir(parentUri: string, displayName: string, callback: AsyncCallback&lt;string&gt;) : void
 
-Creates a directory in a specified directory. This API uses an asynchronous callback to return the result.
+Creates a folder in a specified directory. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -859,9 +904,9 @@ Creates a directory in a specified directory. This API uses an asynchronous call
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
-| parentUri | string | Yes| URI of the destination directory for the directory to create.|
-| displayName | string | Yes| Name of the directory to create.|
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback invoked to return the URI of the directory created.|
+| parentUri | string | Yes| URI of the destination directory for the folder to create.|
+| displayName | string | Yes| Name of the folder to create.|
+| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the URI of the folder created.|
 
 **Error codes**
 
@@ -870,7 +915,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, sourceUri indicates the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -884,7 +929,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         if (err) {
           console.error("Failed to mkDir in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("mkDir success, dirUri: " + JSON.stringify(dirUri));
+        console.info("mkDir success, dirUri: " + JSON.stringify(dirUri));
       });
     }
   } catch (err) {
@@ -897,7 +942,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 openFile(uri: string, flags: OPENFLAGS) : Promise&lt;number&gt;
 
-Opens a file. This API uses a promise to return the result.
+Opens a file. This API returns the result asynchronously through a promise.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -908,7 +955,7 @@ Opens a file. This API uses a promise to return the result.
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
 | uri | string | Yes| URI of the file to open.|
-| flags | [OPENFLAGS](#openflags) | Yes| File open mode.|
+| flags | [OPENFLAGS](#openflags) | Yes| File open mode. The default value is **0o0**, indicating the read mode.|
 
 **Return value**
 
@@ -923,7 +970,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function openFile01() {
     // A built-in storage directory is used as an example.
     // In the sample code, targetUri indicates a file in the Download directory. The URI is the URI in fileInfo.
@@ -948,6 +995,8 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback&lt;number&gt;) :
 
 Opens a file. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -957,7 +1006,7 @@ Opens a file. This API uses an asynchronous callback to return the result.
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
 | uri | string | Yes| URI of the file to open.|
-| flags | [OPENFLAGS](#openflags) | Yes| File open mode.|
+| flags | [OPENFLAGS](#openflags) | Yes| File open mode. The default value is **0o0**, indicating the read mode.|
 | callback | AsyncCallback&lt;number&gt; | Yes| File descriptor.|
 
 **Error codes**
@@ -967,7 +1016,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, targetUri indicates a file in the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -980,7 +1029,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         if (err) {
           console.error("Failed to openFile in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("openFile success, fd: " + fd);
+        console.info("openFile success, fd: " + fd);
       });
     }
   } catch (err) {
@@ -993,7 +1042,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 delete(uri: string) : Promise&lt;number&gt;
 
-Deletes a file or directory. This API uses a promise to return the result.
+Deletes a file or directory. This API returns the result asynchronously through a promise.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1018,7 +1069,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function deleteFile01() {
     // A built-in storage directory is used as an example.
     // In the sample code, targetUri indicates a file in the Download directory. The URI is the URI in fileInfo.
@@ -1045,6 +1096,8 @@ delete(uri: string, callback: AsyncCallback&lt;number&gt;) : void
 
 Deletes a file or directory. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -1054,7 +1107,7 @@ Deletes a file or directory. This API uses an asynchronous callback to return th
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
 | uri | string | Yes| URI of the file or directory to delete.|
-| callback | AsyncCallback&lt;number&gt; | Yes| Callback invoked to return the error code.|
+| callback | AsyncCallback&lt;number&gt; | Yes| Promise used to return the error code.|
 
 **Error codes**
 
@@ -1063,7 +1116,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, targetUri indicates a file in the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -1076,7 +1129,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         if (err) {
           console.error("Failed to delete in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("delete success, code: " + code);
+        console.info("delete success, code: " + code);
       });
     }
   } catch (err) {
@@ -1089,7 +1142,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 move(sourceFile: string, destFile: string) : Promise&lt;string&gt;
 
-Moves a file or directory. This API uses a promise to return the result. Currently, this API does not support move of files or directories across devices.
+Moves a file or folder. This API returns the result asynchronously through a promise. Currently, this API does not support moving files across devices.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1100,13 +1155,13 @@ Moves a file or directory. This API uses a promise to return the result. Current
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
 | sourceFile | string | Yes| URI of the source file or directory to move.|
-| destFile | string | Yes| URI of the destination directory, to which the file or directory is moved.|
+| destFile | string | Yes| URI of the destination directory, to which the file is moved.|
 
 **Return value**
 
 | Type| Description|
 | ----- | ------ |
-| Promise&lt;string&gt; | Promise used to return the URI of the file or directory in the destination directory.|
+| Promise&lt;string&gt; | Callback used to return the URI of the file or folder in the destination directory.|
 
 **Error codes**
 
@@ -1115,7 +1170,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function moveFile01() {
     // A built-in storage directory is used as an example.
     // In the sample code, sourceFile and destFile indicate the files and directories in the Download directory. The URI is the URI in fileInfo.
@@ -1127,7 +1182,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
     try {
       if (fileAccessHelper != undefined) {
         let fileUri = await fileAccessHelper.move(sourceFile, destFile);
-        console.log("move success, fileUri: " + JSON.stringify(fileUri));
+        console.info("move success, fileUri: " + JSON.stringify(fileUri));
       }
     } catch (err) {
       let error: BusinessError = err as BusinessError;
@@ -1140,7 +1195,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 move(sourceFile: string, destFile: string, callback: AsyncCallback&lt;string&gt;) : void
 
-Moves a file or directory. This API uses an asynchronous callback to return the result. Currently, this API does not support move of files or directories across devices.
+Moves a file or folder. This API uses an asynchronous callback to return the result. Currently, this API does not support moving files or folders across devices.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1151,8 +1208,8 @@ Moves a file or directory. This API uses an asynchronous callback to return the 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
 | sourceFile | string | Yes| URI of the source file or directory to move.|
-| destFile | string | Yes| URI of the destination directory, to which the file or directory is moved.|
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback invoked to return the URI of the file or directory in the destination directory.|
+| destFile | string | Yes| URI of the destination directory, to which the file or folder is moved.|
+| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the URI of the file or folder in the destination directory.|
 
 **Error codes**
 
@@ -1161,7 +1218,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, sourceFile and destFile indicate the files and directories in the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -1175,7 +1232,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         if (err) {
           console.error("Failed to move in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("move success, fileUri: " + JSON.stringify(fileUri));
+        console.info("move success, fileUri: " + JSON.stringify(fileUri));
       });
     }
   } catch (err) {
@@ -1188,7 +1245,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 rename(uri: string, displayName: string) : Promise&lt;string&gt;
 
-Renames a file or directory. This API uses a promise to return the result.
+Renames a file or folder. This API returns the result asynchronously through a promise.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1205,7 +1264,7 @@ Renames a file or directory. This API uses a promise to return the result.
 
 | Type| Description|
 | --- | -- |
-| Promise&lt;string&gt; | Promise used to return the URI of the renamed file or directory.|
+| Promise&lt;string&gt; | Callback used to return the URI of the renamed file or folder.|
 
 **Error codes**
 
@@ -1214,7 +1273,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function renameFile01() {
     // A built-in storage directory is used as an example.
     // In the sample code, sourceDir indicates a file in the Download directory. The URI is the URI in fileInfo.
@@ -1225,7 +1284,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
     try {
       if (fileAccessHelper != undefined) {
         let DestDir = await fileAccessHelper.rename(sourceDir, "testDir");
-        console.log("rename success, DestDir: " + JSON.stringify(DestDir));
+        console.info("rename success, DestDir: " + JSON.stringify(DestDir));
       }
     } catch (err) {
       let error: BusinessError = err as BusinessError;
@@ -1238,7 +1297,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 rename(uri: string, displayName: string, callback: AsyncCallback&lt;string&gt;) : void
 
-Renames a file or directory. This API uses an asynchronous callback to return the result.
+Renames a file or folder. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1250,7 +1311,7 @@ Renames a file or directory. This API uses an asynchronous callback to return th
 | --- | --- | --- | -- |
 | uri | string | Yes| URI of the source file or directory to rename.|
 | displayName | string | Yes| New name of the file or directory, which can contain the file suffix.|
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback invoked to return the URI of the renamed file or directory.|
+| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the URI of the renamed file or folder.|
 
 **Error codes**
 
@@ -1259,7 +1320,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, sourceDir indicates a file in the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -1272,7 +1333,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         if (err) {
           console.error("Failed to rename in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("rename success, DestDir: " + JSON.stringify(DestDir));
+        console.info("rename success, DestDir: " + JSON.stringify(DestDir));
       });
     }
   } catch (err) {
@@ -1285,7 +1346,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 access(sourceFileUri: string) : Promise&lt;boolean&gt;
 
-Checks whether a file or directory exists. This API uses a promise to return the result.
+Checks whether a file or directory exists. This API returns the result asynchronously through a promise.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1295,7 +1358,7 @@ Checks whether a file or directory exists. This API uses a promise to return the
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
-| sourceFileUri | string | Yes| URI of the file or directory to check.|
+| sourceFileUri | string | Yes| URI of the file or directory.|
 
 **Return value**
 
@@ -1310,7 +1373,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, sourceDir indicates a file in the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -1322,9 +1385,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       if (fileAccessHelper != undefined) {
         let existJudgment = await fileAccessHelper.access(sourceDir);
         if (existJudgment) {
-          console.log("sourceDir exists");
+          console.info("sourceDir exists");
         } else {
-          console.log("sourceDir does not exist");
+          console.info("sourceDir does not exist");
         }
       }
     } catch (err) {
@@ -1340,6 +1403,8 @@ access(sourceFileUri: string, callback: AsyncCallback&lt;boolean&gt;) : void
 
 Checks whether a file or directory exists. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -1348,7 +1413,7 @@ Checks whether a file or directory exists. This API uses an asynchronous callbac
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
-| sourceFileUri | string | Yes| URI of the file or directory to check.|
+| sourceFileUri | string | Yes| URI of the file or directory.|
 | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback invoked to return the result. The value **true** means the file or directory exists; the value **false** means the opposite.|
 
 **Error codes**
@@ -1358,7 +1423,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, sourceDir indicates a directory in the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -1373,9 +1438,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
           return;
         }
         if (existJudgment)
-          console.log("sourceDir exists");
+          console.info("sourceDir exists");
         else
-          console.log("sourceDir does not exist");
+          console.info("sourceDir does not exist");
       });
     }
   } catch (err) {
@@ -1388,7 +1453,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getFileInfoFromUri(uri: string) : Promise\<FileInfo>
 
-Obtains a **FileInfo** object based on a URI. This API uses a promise to return the result.
+Obtains a **FileInfo** object based on a URI. This API returns the result asynchronously through a promise.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1409,7 +1476,7 @@ Obtains a **FileInfo** object based on a URI. This API uses a promise to return 
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, sourceUri indicates the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -1434,6 +1501,8 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback\<FileInfo>) : void
 
 Obtains a **FileInfo** object based on a URI. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -1448,7 +1517,7 @@ Obtains a **FileInfo** object based on a URI. This API uses an asynchronous call
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, sourceUri indicates the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -1462,7 +1531,7 @@ Obtains a **FileInfo** object based on a URI. This API uses an asynchronous call
           console.error("Failed to getFileInfoFromUri in async, errCode:" + err.code + ", errMessage:" + err.message);
           return;
         }
-        console.log("getFileInfoFromUri success, fileInfo: " + JSON.stringify(fileInfo));
+        console.info("getFileInfoFromUri success, fileInfo: " + JSON.stringify(fileInfo));
       });
     }
   } catch (err) {
@@ -1471,12 +1540,13 @@ Obtains a **FileInfo** object based on a URI. This API uses an asynchronous call
   }
   ```
 
-
 ### getFileInfoFromRelativePath<sup>10+</sup>
 
 getFileInfoFromRelativePath(relativePath: string) : Promise\<FileInfo>
 
-Obtains a **FileInfo** object based on a relative path. This API uses a promise to return the result.
+Obtains a **FileInfo** object based on a relative path. This API returns the result asynchronously through a promise.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1497,7 +1567,7 @@ Obtains a **FileInfo** object based on a relative path. This API uses a promise 
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // In the sample code, relativePath indicates the Download directory, which is the relativePath in fileInfo.
   // You can use the relativePath obtained.
   async function getRelativePath() {
@@ -1521,6 +1591,8 @@ getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback\<FileI
 
 Obtains a **FileInfo** object based on a relative path. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -1535,7 +1607,7 @@ Obtains a **FileInfo** object based on a relative path. This API uses an asynchr
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // In the sample code, relativePath indicates the Download directory, which is the relativePath in fileInfo.
   // You can use the relativePath obtained.
   let relativePath: string = "Download/";
@@ -1548,7 +1620,7 @@ Obtains a **FileInfo** object based on a relative path. This API uses an asynchr
           console.error("Failed to getFileInfoFromRelativePath in async, errCode:" + err.code + ", errMessage:" + err.message);
           return;
         }
-        console.log("getFileInfoFromRelativePath success, fileInfo: " + JSON.stringify(fileInfo));
+        console.info("getFileInfoFromRelativePath success, fileInfo: " + JSON.stringify(fileInfo));
       });
     }
   } catch (err) {
@@ -1562,6 +1634,8 @@ Obtains a **FileInfo** object based on a relative path. This API uses an asynchr
 query(uri:string, metaJson: string) : Promise&lt;string&gt;
 
 Queries the attribute information about a file or directory based on a URI. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1593,7 +1667,7 @@ async function getQuery01() {
     if (fileAccessHelper != undefined) {
       let fileInfo = await fileAccessHelper.getFileInfoFromRelativePath(imageFileRelativePath);
       let queryResult = await fileAccessHelper.query(fileInfo.uri, jsonStrSingleRelativepath);
-      console.log("query_file_single faf query, queryResult.relative_path: " + JSON.parse(queryResult).relative_path);
+      console.info("query_file_single faf query, queryResult.relative_path: " + JSON.parse(queryResult).relative_path);
     }
   } catch (err) {
     let error: BusinessError = err as BusinessError;
@@ -1607,6 +1681,8 @@ async function getQuery01() {
 query(uri:string, metaJson: string, callback: AsyncCallback&lt;string&gt;) : void
 
 Queries the attribute information about a file or directory based on a URI. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1637,7 +1713,7 @@ async function getQuery02() {
           console.error(`query_file_single faf query Failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        console.log("query_file_single faf query, queryResult.relative_path: " + JSON.parse(queryResult).relative_path);
+        console.info("query_file_single faf query, queryResult.relative_path: " + JSON.parse(queryResult).relative_path);
       })
     }
   } catch (err) {
@@ -1653,6 +1729,8 @@ copy(sourceUri: string, destUri: string, force?: boolean) : Promise&lt;Array&lt;
 
 Copies a file or directory. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -1662,14 +1740,14 @@ Copies a file or directory. This API uses a promise to return the result.
 | Name   | Type   | Mandatory| Description                                                        |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | sourceUri | string  | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
-| destUri   | string  | Yes  | URI of the destination directory, to which the file or directory is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.       |
+| destUri   | string  | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.       |
 | force     | boolean | No  | Whether to forcibly overwrite the file with the same name. If **force** is **true**, the file with the same name will be overwritten. If **force** is **false** or not specified, the file with the same name will not be overwritten. The default value is **false**.|
 
 **Return value**
 
 | Type                                                   | Description                                                        |
 | :------------------------------------------------------ | :----------------------------------------------------------- |
-| Promise&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Promise used to return the result. If the file or directory is copied successfully, no information is returned. If the file copy fails, a **copyResult** array is returned.|
+| Promise&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Promise used to return the result. If the file or folder is copied successfully, no information is returned. If the copy fails, a **copyResult** array is returned.|
 
 Example 1: Copy a file with **force** unspecified.
 
@@ -1687,7 +1765,7 @@ async function copyFunc01() {
     if (fileAccessHelper != undefined) {
       let copyResult = await fileAccessHelper.copy(sourceFile, destFile);
       if (copyResult.length === 0) {
-        console.log("copy success");
+        console.info("copy success");
       } else {
         for (let i = 0; i < copyResult.length; i++) {
           console.error("errCode" + copyResult[i].errCode);
@@ -1720,7 +1798,7 @@ async function copyFunc02() {
     if (fileAccessHelper != undefined) {
       let copyResult = await fileAccessHelper.copy(sourceFile, destFile, true);
       if (copyResult.length === 0) {
-        console.log("copy success");
+        console.info("copy success");
       } else {
         for (let i = 0; i < copyResult.length; i++) {
           console.error("errCode" + copyResult[i].errCode);
@@ -1743,6 +1821,8 @@ copy(sourceUri: string, destUri: string, callback: AsyncCallback&lt;Array&lt;Cop
 
 Copies a file or directory. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -1752,8 +1832,8 @@ Copies a file or directory. This API uses an asynchronous callback to return the
 | Name   | Type                                            | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                           | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
-| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or directory is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
-| callback  | AsyncCallback&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Yes  | Callback invoked to return the result. If the file or directory is copied successfully, no information is returned. If the copy fails, a **copyResult** array is returned.|
+| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
+| callback  | AsyncCallback&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Yes  | Promise used to return the result. If the file or folder is copied successfully, no information is returned. If the copy fails, a **copyResult** array is returned.|
 
 **Example**
 
@@ -1773,7 +1853,7 @@ try {
         console.error("copy failed, errCode:" + err.code + ", errMessage:" + err.message);
       }
       if (copyResult.length === 0) {
-        console.log("copy success");
+        console.info("copy success");
       } else {
         for (let i = 0; i < copyResult.length; i++) {
           console.error("errCode" + copyResult[i].errCode);
@@ -1794,7 +1874,9 @@ try {
 
 copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback&lt;Array&lt;CopyResult&gt;&gt;) : void
 
-Copies a file or directory. This API uses an asynchronous callback to return the result.
+Copies a file or directory. If a file with the same name already exists, you can choose whether to forcibly overwrite the original file. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1805,9 +1887,9 @@ Copies a file or directory. This API uses an asynchronous callback to return the
 | Name   | Type                                            | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                           | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
-| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or directory is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
-| force     | boolean                                          | Yes  | Whether to forcibly overwrite the file with the same name. If **force** is **true**, the file with the same name will be overwritten. If **force** is **false** or not specified, the file with the same name will not be overwritten.|
-| callback  | AsyncCallback&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Yes  | Callback invoked to return the result. If the file or directory is copied successfully, no information is returned. If the copy fails, a **copyResult** array is returned.|
+| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
+| force     | boolean                                          | Yes  | Whether to forcibly overwrite the original file with the same name. If **force** is set to **true**, the original file is forcibly overwritten. If **force** is left empty or set to **false**, the original file is not overwritten.|
+| callback  | AsyncCallback&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Yes  | Promise used to return the result. If the file or folder is copied successfully, no information is returned. If the copy fails, a **copyResult** array is returned.|
 
 **Example**
 
@@ -1827,7 +1909,7 @@ try {
         console.error("copy failed, errCode:" + err.code + ", errMessage:" + err.message);
       }
       if (copyResult.length === 0) {
-        console.log("copy success");
+        console.info("copy success");
       } else {
         for (let i = 0; i < copyResult.length; i++) {
           console.error("errCode" + copyResult[i].errCode);
@@ -1852,6 +1934,8 @@ Copies a file with an alternative file name. This API uses a promise to return t
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -1861,7 +1945,7 @@ Copies a file with an alternative file name. This API uses a promise to return t
 | Name   | Type   | Mandatory| Description                                                        |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | sourceUri | string  | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
-| destUri   | string  | Yes  | URI of the destination directory, to which the file or directory is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.       |
+| destUri   | string  | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.       |
 | fileName  | string  | Yes  | File name to use if there is a file with the same name as the source file in the destination directory.|
 
 **Return value**
@@ -1886,7 +1970,7 @@ async function copyFunc01() {
   try {
     if (fileAccessHelper != undefined) {
       let copyResult = await fileAccessHelper.copyFile(sourceFile, destFile, fileName);
-      console.log("copyResult uri: " + copyResult);
+      console.info("copyResult uri: " + copyResult);
     }
   } catch (err) {
     let error: BusinessError = err as BusinessError;
@@ -1903,6 +1987,8 @@ Copies a file with an alternative file name. This API uses an asynchronous callb
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -1912,7 +1998,7 @@ Copies a file with an alternative file name. This API uses an asynchronous callb
 | Name   | Type                                            | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                           | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
-| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or directory is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
+| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
 | fileName  | string                                           | Yes  | File name to use if there is a file with the same name as the source file in the destination directory.|
 | callback  | AsyncCallback&lt;string&gt; | Yes  | URI of the file generated.|
 
@@ -1930,8 +2016,8 @@ let fileName: string = "2.txt";
 let fileAccessHelper : fileAccess.FileAccessHelper|undefined;
 try {
   if (fileAccessHelper != undefined) {
-    fileAccessHelper.copyFile(sourceFile, destFile, fileName, async (copyResult: string) => {
-          console.log("copyResult uri: " + copyResult);
+    fileAccessHelper.copyFile(sourceFile, destFile, fileName, async (err: BusinessError, copyResult: string) => {
+          console.info("copyResult uri: " + copyResult);
     });
   }
 } catch (err) {
@@ -1945,6 +2031,8 @@ try {
 registerObserver(uri: string, notifyForDescendants: boolean, callback: Callback&lt;NotifyMessage&gt;): void
 
 Registers a callback to listen for a URI. URIs and callbacks can be in many-to-many relationships. You are advised to use one callback to listen for one URI.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -1975,7 +2063,7 @@ async function registerObserver01() {
       // The URI is 'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR1/SUB_FILE', and the event type is NOTIFY_MOVE_SELF.
       const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -1983,7 +2071,7 @@ async function registerObserver01() {
       // The notification expected to receive is about the NOTIFY_MOVED_TO event of the URI 'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR2/SUB_FILE'.
       const callbackDir2 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -1992,7 +2080,7 @@ async function registerObserver01() {
       // The notification expected to receive is about the NOTIFY_MOVED_FROM event of the URI 'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR1/SUB_FILE'.
       const callbackFile = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2029,7 +2117,7 @@ async function registerObserver02() {
       // The notification expected to receive is about the NOTIFY_ADD event of the URI 'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR/SUB_DIR'.
       const callbackDir = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2063,7 +2151,7 @@ async function registerObserver03() {
       // No second return is expected.
       const callbackDir = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2093,7 +2181,7 @@ async function UnregisterObserver03() {
   try {
     const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
       if (NotifyMessageDir != undefined) {
-        console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+        console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
       } else {
         console.error("NotifyMessageDir is undefined");
       }
@@ -2116,6 +2204,8 @@ async function UnregisterObserver03() {
  unregisterObserver(uri: string, callback?: Callback&lt;NotifyMessage&gt;): void
 
 Unregisters a callback that is used to listen for the specified URI.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -2142,7 +2232,7 @@ async function UnregisterObserver01() {
       // The notification expected to receive is about the NOTIFY_DELETE event of the URI 'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR'.
       const callbackDir = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2173,7 +2263,7 @@ async function UnregisterObserver02() {
       // The notification expected to receive is about the NOTIFY_DELETE event of the URI 'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR'.
       const callbackDir = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2207,7 +2297,7 @@ async function UnregisterObserver03() {
       // The notification expected to receive is about the NOTIFY_MOVED_TO event of the URI 'file://docs/storage/Users/currentUser/Documents/NOTIFY_DIR/RENAME_FILE'.
       const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2215,7 +2305,7 @@ async function UnregisterObserver03() {
       // No notification is expected to receive.
       const callbackDir2 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
         if (NotifyMessageDir != undefined) {
-          console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+          console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
         } else {
           console.error("NotifyMessageDir is undefined");
         }
@@ -2247,7 +2337,7 @@ async function UnregisterObserver03() {
   try {
     const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
       if (NotifyMessageDir != undefined) {
-        console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+        console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
       } else {
         console.error("NotifyMessageDir is undefined");
       }
@@ -2269,13 +2359,15 @@ async function UnregisterObserver03() {
 
 moveItem(sourceUri: string, destUri: string, force?: boolean) : Promise&lt;Array&lt;MoveResult&gt;&gt;
 
-Moves a file or directory. This API uses a promise to return the result.
+Moves a file or folder. This API returns the result asynchronously through a promise.
 
 You can forcibly overwrite the file with the same name in the destination directory.
 
-Currently, this API does not support move of files or directories across devices.
+Currently, this API does not support moving files or folders across devices.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -2286,7 +2378,7 @@ Currently, this API does not support move of files or directories across devices
 | Name   | Type   | Mandatory| Description                                                        |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | sourceUri | string  | Yes  | URI of the source file or directory to move.                                   |
-| destUri   | string  | Yes  | URI of the destination directory, to which the file or directory is moved.                                           |
+| destUri   | string  | Yes  | URI of the destination directory, to which the file or folder is moved.                                           |
 | force     | boolean | No  | Whether to forcibly overwrite the file with the same name. The value **true** means to overwrite the file forcibly; the value **false** means the opposite. The default value is **false**.|
 
 **Return value**
@@ -2315,7 +2407,7 @@ async function moveItemFunc01() {
     if (fileAccessHelper != undefined) {
       let moveResult = await fileAccessHelper.moveItem(sourceUri, destUri);
       if (moveResult.length === 0) {
-        console.log("moveItem success");
+        console.info("moveItem success");
       } else {
         for (let i = 0; i < moveResult.length; i++) {
           console.error("errCode" + moveResult[i].errCode);
@@ -2332,7 +2424,7 @@ async function moveItemFunc01() {
 }
 ```
 
-Example 2: Move a file or directory with **force** set to **true**.
+Example 2: Copy a file or directory with **force** set to **true**.
 
 ```ts
 import { BusinessError } from '@ohos.base';
@@ -2348,7 +2440,7 @@ async function moveItemFunc02() {
     if (fileAccessHelper != undefined) {
       let moveResult = await fileAccessHelper.moveItem(sourceUri, destUri, true);
       if (moveResult.length === 0) {
-        console.log("moveItem success");
+        console.info("moveItem success");
       } else {
         for (let i = 0; i < moveResult.length; i++) {
           console.error("errCode" + moveResult[i].errCode);
@@ -2369,11 +2461,13 @@ async function moveItemFunc02() {
 
 moveItem(sourceUri: string, destUri: string, callback: AsyncCallback&lt;Array&lt;MoveResult&gt;&gt;) : void
 
-Moves a file or directory. This API uses an asynchronous callback to return the result.
+Moves a file or folder. This API uses an asynchronous callback to return the result.
 
-Currently, this API does not support move of files or directories across devices.
+Currently, this API does not support moving files or folders across devices.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -2384,7 +2478,7 @@ Currently, this API does not support move of files or directories across devices
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                                       | Yes  | URI of the source file or directory to move.                                   |
-| destUri   | string                                                       | Yes  | URI of the destination directory, to which the file or directory is moved.                                           |
+| destUri   | string                                                       | Yes  | URI of the destination directory, to which the file or folder is moved.                                           |
 | callback  | AsyncCallback&lt;Array&lt;[MoveResult](#moveresult11)&gt;&gt; | Yes  | Callback invoked to return the result. If the operation is successful, no information is returned. If the operation fails, a **MoveResult** array is returned.|
 
 **Example**
@@ -2405,7 +2499,7 @@ try {
         console.error("moveItem failed, errCode:" + err.code + ", errMessage:" + err.message);
       }
       if (moveResult.length === 0) {
-        console.log("moveItem success");
+        console.info("moveItem success");
       } else {
         for (let i = 0; i < moveResult.length; i++) {
           console.error("errCode" + moveResult[i].errCode);
@@ -2426,13 +2520,15 @@ try {
 
 moveItem(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback&lt;Array&lt;MoveResult&gt;&gt;) : void
 
-Moves a file or directory. This API uses an asynchronous callback to return the result.
+Moves a file or folder. This API uses an asynchronous callback to return the result.
 
 You can forcibly overwrite the file with the same name in the destination directory.
 
-Currently, this API does not support move of files or directories across devices.
+Currently, this API does not support moving files or folders across devices.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -2443,7 +2539,7 @@ Currently, this API does not support move of files or directories across devices
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                                       | Yes  | URI of the source file or directory to move.                                   |
-| destUri   | string                                                       | Yes  | URI of the destination directory, to which the file or directory is moved.                                           |
+| destUri   | string                                                       | Yes  | URI of the destination directory, to which the file or folder is moved.                                           |
 | force     | boolean                                                      | Yes  | Whether to forcibly overwrite the file with the same name. The value **true** means to overwrite the file forcibly; the value **false** means the opposite. The default value is **false**.|
 | callback  | AsyncCallback&lt;Array&lt;[MoveResult](#moveresult11)&gt;&gt; | Yes  | Callback invoked to return the result. If the operation is successful, no information is returned. If the operation fails, a **MoveResult** array is returned.|
 
@@ -2465,7 +2561,7 @@ try {
         console.error("moveItem failed, errCode:" + err.code + ", errMessage:" + err.message);
       }
       if (moveResult.length === 0) {
-        console.log("moveItem success");
+        console.info("moveItem success");
       } else {
         for (let i = 0; i < moveResult.length; i++) {
           console.error("errCode" + moveResult[i].errCode);
@@ -2486,13 +2582,15 @@ try {
 
 moveFile(sourceUri: string, destUri: string, fileName: string) : Promise&lt;string&gt;
 
-Moves a file, and renames it if a file with the same name already exists in the destination directory. This API uses a promise to return the result.
+Moves a file, and renames it if a file with the same name already exists in the destination directory. This API returns the result asynchronously through a promise.
 
 If a file with the same name exists (that is, a file moving conflict occurs), you can rename the file to be moved and save it to the destination directory.
 
-Currently, this API does not support move of files across devices.
+Currently, this API does not support moving files across devices.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -2519,7 +2617,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function moveFile01() {
     // A built-in storage directory is used as an example.
     // In the sample code, sourceUri and destUri indicate the files or directories in the Download directory. The URI is the URI in fileInfo.
@@ -2532,7 +2630,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
     try {
     if (fileAccessHelper != undefined) {
         let fileUri = await fileAccessHelper.moveFile(sourceUri, destUri, fileName);
-        console.log("moveFile success, fileUri: " + JSON.stringify(fileUri));
+        console.info("moveFile success, fileUri: " + JSON.stringify(fileUri));
     }
     } catch (err) {
       let error: BusinessError = err as BusinessError;
@@ -2549,9 +2647,11 @@ Moves a file, and renames it if a file with the same name already exists in the 
 
 If a file with the same name exists (that is, a file moving conflict occurs), you can rename the file to be moved and save it to the destination directory.
 
-Currently, this API does not support move of files across devices.
+Currently, this API does not support moving files across devices.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -2564,7 +2664,7 @@ Currently, this API does not support move of files across devices.
 | sourceFile | string                      | Yes  | URI of the source file to move.|
 | destFile   | string                      | Yes  | URI of the destination directory, to which the file is moved.    |
 | fileName   | string                      | Yes  | New name of the file.   |
-| callback   | AsyncCallback&lt;string&gt; | Yes  | Callback invoked to return the URI of the file in the destination directory.  |
+| callback   | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the URI of the file in the destination directory.  |
 
 **Error codes**
 
@@ -2573,7 +2673,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // A built-in storage directory is used as an example.
   // In the sample code, sourceUri and destUri indicate the files or directories in the Download directory. The URI is the URI in fileInfo.
   // You can use the URI obtained.
@@ -2588,7 +2688,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         if (err) {
           console.error("Failed to moveFile in async, errCode:" + err.code + ", errMessage:" + err.message);
         }
-        console.log("moveFile success, fileUri: " + JSON.stringify(fileUri));
+        console.info("moveFile success, fileUri: " + JSON.stringify(fileUri));
       });
     }
   } catch (err) {
@@ -2600,6 +2700,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 ## CopyResult<sup>10+</sup>
 
 Defines the information returned when the file copy operation fails. If the copy operation is successful, no information is returned.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -2615,6 +2717,8 @@ Defines the information returned when the file copy operation fails. If the copy
 ## OPENFLAGS
 
 Enumerates the file open modes.
+
+**System API**: This is a system API.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2632,6 +2736,8 @@ Enumerates the keys of the file attributes to query.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 | Name         | Value           | Description                               |
@@ -2647,6 +2753,8 @@ Enumerates the keys of the file attributes to query.
 Enumerates the notification types.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -2666,6 +2774,8 @@ Represents the notification message.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
@@ -2680,6 +2790,8 @@ Represents the notification message.
 Represents the information returned when the move operation fails. If the operation is successful, no information is returned.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 

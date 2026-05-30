@@ -1,4 +1,10 @@
 # @ohos.request (Upload and Download) (System API)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Request-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **request** module provides applications with basic upload, download, and background transmission agent capabilities.
 
@@ -23,9 +29,9 @@ Defines the filter criteria.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| bundle | string | No| Bundle name of the application.<br>**System API**: This is a system API.|
+| Name  | Type    | Read-Only| Optional| Description                           |
+|------|--------|----|----|-------------------------------|
+| bundle | string | No| Yes| Bundle name of the application.<br>**System API**: This is a system API.|
 
 
 ## TaskInfo<sup>10+</sup> 
@@ -34,10 +40,10 @@ Defines the data structure of the task information for query. The fields availab
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| uid | string | No| UID of the application. It is only available for query by system applications.<br>**System API**: This is a system API.|
-| bundle | string | No| Bundle name of the application. It is only available for query by system applications.<br>**System API**: This is a system API.|
+| Name  | Type    | Read-Only| Optional| Description                           |
+|------|--------|----|----|-------------------------------|
+| uid | string | Yes| Yes| UID of the application. It is only available for query by system applications.<br>**System API**: This is a system API.|
+| bundle | string | Yes| Yes| Bundle name of the application. It is only available for query by system applications.<br>**System API**: This is a system API.|
 
 ## Notification<sup>15+</sup>
 
@@ -48,10 +54,9 @@ Describes the custom information of the notification bar.
 **System capability**: SystemCapability.Request.FileTransferAgent
 
 
-
-| Name| Type| Mandatory| Description                                                                     |
-| -------- | -------- | -------- |-------------------------------------------------------------------------|
-| disable<sup>20+</sup> | boolean | No| Whether to disable the display of the notification bar. The value **true** means to disable the display of the notification bar; **false** means the opposite.<br>Default value: **false**.<br>**System API**: This is a system API.|
+| Name  | Type    | Read-Only| Optional| Description                           |
+|------|--------|----|----|-------------------------------|
+| disable<sup>20+</sup> | boolean | No| Yes| Whether to disable the display of the notification bar. The value **true** means to disable the display of the notification bar; **false** means the opposite.<br>Default value: **false**.<br>**System API**: This is a system API.|
 
 ## request.agent.query<sup>10+</sup>
 
@@ -78,11 +83,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | permission denied. |
+| 201 | Permission denied. |
 | 202 | permission verification failed, application which is not a system application uses system API. |
-| 401 | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
-| 13400003 | task service ability error. |
-| 21900006 | task not found. |
+| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
+| 13400003 | Task service ability error. |
+| 21900006 | Task removed or not found. |
 
 **Example**
 
@@ -129,11 +134,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | permission denied. |
+| 201 | Permission denied. |
 | 202 | permission verification failed, application which is not a system application uses system API. |
-| 401 | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
-| 13400003 | task service ability error. |
-| 21900006 | task not found. |
+| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
+| 13400003 | Task service ability error. |
+| 21900006 | Task removed or not found. |
 
 **Example**
 

@@ -1,5 +1,12 @@
 # context_constant.h
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
 ## 概述
 
 提供AbilityRuntime模块上下文常量的定义。
@@ -29,7 +36,7 @@
 
 ### AbilityRuntime_AreaMode
 
-```
+```c
 enum AbilityRuntime_AreaMode
 ```
 
@@ -49,7 +56,7 @@ enum AbilityRuntime_AreaMode
 
 ### AbilityRuntime_StartVisibility
 
-```
+```c
 enum AbilityRuntime_StartVisibility
 ```
 
@@ -66,7 +73,7 @@ enum AbilityRuntime_StartVisibility
 
 ### AbilityRuntime_WindowMode
 
-```
+```c
 enum AbilityRuntime_WindowMode
 ```
 
@@ -83,7 +90,7 @@ enum AbilityRuntime_WindowMode
 
 ### AbilityRuntime_SupportedWindowMode
 
-```
+```c
 enum AbilityRuntime_SupportedWindowMode
 ```
 

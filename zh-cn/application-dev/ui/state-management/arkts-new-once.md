@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -15,6 +15,8 @@
 > 从API version 12开始，在\@ComponentV2装饰的自定义组件中支持使用\@Once装饰器。
 >
 > 从API version 12开始，该装饰器支持在原子化服务中使用。
+>
+> 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
 ## 概述
 
@@ -37,14 +39,17 @@
 
 ## 限制条件
 
-- \@Once仅在[\@ComponentV2](arkts-new-componentV2.md)装饰的自定义组件中与\@Param搭配使用。
+- \@Once仅在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中与\@Param搭配使用。
 
-  ```ts
+  <!-- @[once_param_componentV2_pair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) -->
+  
+  ``` TypeScript
   @ComponentV2
   struct MyComponent {
     @Param @Once onceParam: string = 'onceParam'; // 正确用法
     @Once onceStr: string = 'Once'; // 错误用法，@Once无法单独使用
     @Local @Once onceLocal: string = 'onceLocal'; // 错误用法，@Once不能与@Local一起使用
+  // ···
   }
   @Component
   struct Index {
@@ -54,11 +59,15 @@
 
 - \@Once与\@Param的先后顺序无关，可以写成\@Param \@Once也可以写成\@Once \@Param。
 
-  ```ts
+  <!-- @[once_param_order_irrelevant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) -->
+  
+  ``` TypeScript
   @ComponentV2
   struct MyComponent {
-    @Param @Once param1: number;
-    @Once @Param param2: number;
+  // ···
+    @Param @Once param1: number = 0;
+    @Once @Param param2: number = 0;
+  // ···
   }
   ```
 
@@ -68,29 +77,36 @@
 
 \@Once用于期望变量仅初始化同步数据源一次，之后不再继续同步变化的场景。
 
-```ts
+<!-- @[once_init_sync_noMore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) --> 
+
+``` TypeScript
 @ComponentV2
 struct ChildComponent {
+  // @Once装饰的onceParam仅初始化同步一次
   @Param @Once onceParam: string = '';
+
   build() {
-  	Column() {
-  	  Text(`onceParam: ${this.onceParam}`)
-  	}
+    Column() {
+      Text(`onceParam: ${this.onceParam}`)
+    }
   }
 }
+
 @Entry
 @ComponentV2
 struct MyComponent {
+  // ...
   @Local message: string = 'Hello World';
+
   build() {
-  	Column() {
+    Column() {
       Text(`Parent message: ${this.message}`)
       Button('change message')
         .onClick(() => {
           this.message = 'Hello Tomorrow';
         })
       ChildComponent({ onceParam: this.message })
-  	}
+    }
   }
 }
 ```
@@ -99,7 +115,9 @@ struct MyComponent {
 
 当\@Once与\@Param结合使用时，可以解除\@Param无法在本地修改的限制，并能够触发UI刷新。此时，使用\@Param和\@Once的效果类似于[\@Local](arkts-new-local.md)，但\@Param和\@Once还能接收外部传入的初始值。
 
-```ts
+<!-- @[once_param_modify_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 @ObservedV2
 class Info {
   @Trace name: string;
@@ -109,6 +127,7 @@ class Info {
 }
 @ComponentV2
 struct Child {
+  // @Once与@Param结合使用时，可以在本地修改，并能够触发UI刷新
   @Param @Once onceParamNum: number = 0;
   @Param @Once @Require onceParamInfo: Info;
 

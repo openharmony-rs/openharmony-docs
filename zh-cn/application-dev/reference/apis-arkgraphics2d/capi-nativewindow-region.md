@@ -1,10 +1,14 @@
 # Region
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @li_hui180; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```c
+typedef struct {...} Region
+```
+
 ## 概述
 
 表示本地窗口OHNativeWindow需要更新内容的矩形区域（脏区）。

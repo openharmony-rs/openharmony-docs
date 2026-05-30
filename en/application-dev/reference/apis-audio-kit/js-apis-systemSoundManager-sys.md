@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The systemSoundManager module provides basic capabilities for managing system sounds, including setting and obtaining ringtones and obtaining a player to play the ringtones.
 
@@ -32,6 +32,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | number | 4   | Notification tone.|
 | TONE_CATEGORY_ALARM<sup>12+</sup>        | number | 8   | Alarm tone.|
 | TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | Contacts tone.|
+| TONE_CATEGORY_NOTIFICATION_APP<sup>22+</sup>     | number | 32  | Application-level notification tone.|
 
 ## RingtoneType
 
@@ -164,7 +165,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
@@ -228,7 +229,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
@@ -321,7 +322,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
@@ -615,12 +616,103 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 toneHapticsAttrs.getFileName();
 ```
+### getGentleUri<sup>22+</sup>
+
+getGentleUri(): string | null
+
+Obtains the URI of the gentle haptics resource.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Return value**
+
+| Type   | Description |
+|--------|-----|
+| string \| null | URI of the gentle haptics resource (for example, '/data/storage/el2/base/haptics/synchronized/alarms/test.json'). If no gentle haptics resource exists, null is returned. A gentle haptic effect has a weaker motor vibration than the standard one.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message             |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**Example**
+
+```ts
+toneHapticsAttrs.getGentleUri();
+```
+
+### getGentleTitle<sup>22+</sup>
+
+getGentleTitle(): string | null
+
+Obtains the title of the gentle haptics resource.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Return value**
+
+| Type   | Description |
+|--------|-----|
+| string \| null | Title of the gentle haptics resource. If no gentle haptics resource exists, null is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message             |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**Example**
+
+```ts
+toneHapticsAttrs.getGentleTitle();
+```
+
+### getGentleFileName<sup>22+</sup>
+
+getGentleFileName(): string | null
+
+Obtains the file name of the gentle haptics resource.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Return value**
+
+| Type   | Description |
+|--------|-----|
+| string \| null | File name of the gentle haptics resource, in JSON format. If no gentle haptics resource exists, null is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message             |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**Example**
+
+```ts
+toneHapticsAttrs.getGentleFileName();
+```
 
 ## ToneHapticsAttrsArray<sup>14+</sup>
 
 type ToneHapticsAttrsArray = Array&lt;ToneHapticsAttrs&gt;
 
 Describes the haptics attribute array of a tone.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
@@ -660,7 +752,6 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 Sets a URI for a ringtone. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [setRingtoneUri](#setringtoneuri11) instead.
 
 **System API**: This is a system API.
@@ -684,7 +775,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_DEFAULT;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -704,7 +795,6 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 Sets a URI for a ringtone. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [setRingtoneUri](#setringtoneuri11) instead.
 
 **System API**: This is a system API.
@@ -733,7 +823,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_DEFAULT;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -751,7 +841,6 @@ getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallba
 Obtains the URI of a ringtone. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getRingtoneUri](#getringtoneuri11) instead.
 
 **System API**: This is a system API.
@@ -793,7 +882,6 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise&lt;string&gt
 Obtains the URI of a ringtone. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getRingtoneUri](#getringtoneuri11) instead.
 
 **System API**: This is a system API.
@@ -838,7 +926,6 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCal
 Obtains a player to play a ringtone. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getRingtonePlayer](#getringtoneplayer11) instead.
 
 **System API**: This is a system API.
@@ -882,7 +969,6 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise&lt;Ringto
 Obtains a player to play a ringtone. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getRingtonePlayer](#getringtoneplayer11) instead.
 
 **System API**: This is a system API.
@@ -964,7 +1050,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -1120,7 +1206,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -1264,7 +1350,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1315,7 +1401,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1366,7 +1452,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1417,7 +1503,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1467,7 +1553,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1489,7 +1575,7 @@ systemSoundManagerInstance.getDefaultAlarmToneAttrs(context).then((value: system
 
 ### setAlarmToneUri<sup>12+</sup>
 
-setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
+setAlarmToneUri(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 Sets a URI for an alarm tone. This API uses a promise to return the result.
 
@@ -1501,7 +1587,7 @@ Sets a URI for an alarm tone. This API uses a promise to return the result.
 
 | Name  | Type       | Mandatory| Description  |
 | -------- | --------- | ---- |--------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.                                                                          |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.                                                                          |
 | uri      | string    | Yes  | URI of the alarm tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 
 **Return value**
@@ -1509,6 +1595,17 @@ Sets a URI for an alarm tone. This API uses a promise to return the result.
 | Type               | Description                  |
 | ------------------- |----------------------|
 | Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Media Error Codes](../apis-media-kit/errorcode-media.md), and [Ringtone Error Codes](./errorcode-ringtone.md).
+
+| ID| Error Message             |
+| ------- | --------------------- |
+| 202 | Caller is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400103 | I/O error. |
+| 20700001 | Tone type mismatch, e.g. tone of input uri is not an alarm tone. |
 
 **Example**
 
@@ -1518,7 +1615,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
@@ -1530,7 +1627,7 @@ systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
 
 ### getAlarmToneUri<sup>12+</sup>
 
-getAlarmToneUri(context: Context): Promise&lt;string&gt;
+getAlarmToneUri(context: BaseContext): Promise&lt;string&gt;
 
 Obtains the URI of the current alarm tone. This API uses a promise to return the result.
 
@@ -1542,13 +1639,23 @@ Obtains the URI of the current alarm tone. This API uses a promise to return the
 
 | Name  | Type     | Mandatory| Description             |
 | -------- | --------| ---- |-----------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context. |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context. |
 
 **Return value**
 
 | Type                   | Description                   |
 |-----------------------|-----------------------|
 | Promise&lt;string&gt; | Promise used to return the URI of the current alarm tone.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+
+| ID| Error Message             |
+| ------- | --------------------- |
+| 202 | Caller is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400103 | I/O error. |
 
 **Example**
 
@@ -1596,7 +1703,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1618,7 +1725,7 @@ systemSoundManagerInstance.getAlarmToneAttrList(context).then((value: systemSoun
 
 ### openAlarmTone<sup>12+</sup>
 
-openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
+openAlarmTone(context: BaseContext, uri: string): Promise&lt;number&gt;
 
 Enables an alarm tone. This API uses a promise to return the result.
 
@@ -1630,7 +1737,7 @@ Enables an alarm tone. This API uses a promise to return the result.
 
 | Name  | Type      | Mandatory| Description                                                                                 |
 | -------- | ---------| ---- |-------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.                                                                          |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.                                                                          |
 | uri      | string   | Yes  | URI of the alarm tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 
 **Return value**
@@ -1646,7 +1753,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700001 | Tone type mismatch, e.g. tone of uri is notification instead of alarm. |
 
@@ -1658,7 +1765,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.openAlarmTone(context, uri).then((value: number) => {
@@ -1697,7 +1804,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1752,10 +1859,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
-| 5400103 | I/O error. |
-| 20700004 | Data size exceeds the limit. |
+| 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. System sound manager service error.|
+| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.|
 | 20700005 | The number of files exceeds the limit. |
 | 20700006 | Insufficient ROM space. |
 
@@ -1767,8 +1874,8 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let title = 'test'; // Set the title of the target tone.
-let fileName = 'displayName_test'; // Set the file name of the target tone.
+let title = 'test'; // Change it to the actual name.
+let fileName = 'displayName_test'; // Change it to the actual file name.
 let categoryValue = systemSoundManager.TONE_CATEGORY_ALARM;
 
 let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
@@ -1776,7 +1883,7 @@ toneAttrs.setTitle(title);
 toneAttrs.setFileName(fileName);
 toneAttrs.setCategory(categoryValue);
 
-let path = 'file://data/test.ogg'; // Set the URI of the target tone.
+let path = 'file://data/test.ogg'; // Change it to the URI of the actual tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((value: string) => {
@@ -1804,7 +1911,7 @@ Adds a custom tone with a given FD to the tone library. This API uses a promise 
 |-----|-----------|----|------------------------------------------------------------------------|
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes | Application context.                                                             |
 | toneAttr | [ToneAttrs](#toneattrs12) | Yes | Attributes of the tone.                                                                 |
-| fd  | number    | Yes | File descriptor, which is obtained by calling [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).|
+| fd  | number    | Yes | File descriptor, which can be obtained using [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).|
 | offset | number    | No | Offset from which the data is read, in bytes. The default value is **0**.                                             |
 | length | number    | No | Length of the data to read, in bytes. By default, the length is the total number of remaining bytes after the offset.                                |
 
@@ -1822,10 +1929,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
-| 5400103 | I/O error. |
-| 20700004 | Data size exceeds the limit. |
+| 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error.|
+| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.|
 | 20700005 | The number of files exceeds the limit. |
 | 20700006 | Insufficient ROM space. |
 
@@ -1837,8 +1944,8 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let title = 'test'; // Set the title of the target tone.
-let fileName = 'displayName_test'; // Set the file name of the target tone.
+let title = 'test'; // Change it to the actual name.
+let fileName = 'displayName_test'; // Change it to the actual file name.
 let categoryValue = systemSoundManager.TONE_CATEGORY_ALARM;
 
 let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
@@ -1891,8 +1998,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102     | Operation is not allowed, e.g. ringtone of this uri is not customized. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1903,7 +2010,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.removeCustomizedTone(context, uri).then(() => {
@@ -1943,7 +2050,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID  | Error Message             |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -1996,8 +2103,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID  | Error Message             |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102 | Operation not allowed. For example, the input URI is not valid. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2012,7 +2119,7 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let type: systemSoundManager.ToneHapticsType = systemSoundManager.ToneHapticsType.CALL_SIM_CARD_0;
 let toneHapticsSettings: systemSoundManager.ToneHapticsSettings = {
   mode: systemSoundManager.ToneHapticsMode.NON_SYNC,
-  hapticsUri: '/data/storage/el2/base/haptics/synchronized/alarms/test.json', // Use the URI obtained through getToneHapticsList.
+  hapticsUri: '/data/storage/el2/base/haptics/synchronized/alarms/test.json', // Change it to the URI obtained through getToneHapticsList.
 }
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -2053,7 +2160,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID  | Error Message             |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2104,8 +2211,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID  | Error Message             |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102 | Operation not allowed. For example, the input URI is not used for tones. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2117,7 +2224,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let toneUri: string = '/data/storage/el2/base/RingTone/alarms/test.ogg'; // Use the actual URI of the ringtone.
+let toneUri: string = '/data/storage/el2/base/RingTone/alarms/test.ogg'; // Change it to the URI of the actual tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then((value: systemSoundManager.ToneHapticsAttrs) => {
@@ -2129,7 +2236,7 @@ systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then(
 
 ### openToneHaptics<sup>14+</sup>
 
-openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
+openToneHaptics(context: BaseContext, hapticsUri: string): Promise&lt;number&gt;
 
 Enables haptics for the tone. This API uses a promise to return the result.
 
@@ -2141,7 +2248,7 @@ Enables haptics for the tone. This API uses a promise to return the result.
 
 | Name  | Type      | Mandatory| Description                                                                                 |
 | -------- | ---------| ---- |-------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.          |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.          |
 | hapticsUri      | string   | Yes  | URI of the haptics resource. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 
 **Return value**
@@ -2157,8 +2264,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102 | Operation not allowed. For example, the input URI is not one for haptics. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2170,7 +2277,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // Use the actual URI of the haptics resource.
+let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // Change it to the URI of the target haptics resource.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: number) => {
@@ -2250,7 +2357,7 @@ Obtains an array of attributes of ringtones. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ring Error Codes](./errorcode-ringtone.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID| Error Message             |
 | ------- | --------------------- |
@@ -2262,15 +2369,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let ringPath: string = '';
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrentRingtoneAttribute(systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0 );
-ringPath = result.getUri();
 
-systemSoundManagerInstance.openToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info('Succeeded in doing openToneList.');
+systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) => {
+  console.info('Succeeded in getting current ringtone attribute.');
+  systemSoundManagerInstance.openToneList([toneAttrs.getUri()]).then((value) => {
+    console.info('Succeeded in opening tone list.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to open tone list. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to openToneList. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current ringtone attribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2300,7 +2410,7 @@ Removes a list of custom tones in batch. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ring Error Codes](./errorcode-ringtone.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ringtone Error Codes](./errorcode-ringtone.md).
 
 | ID| Error Message             |
 | ------- | --------------------- |
@@ -2313,62 +2423,73 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let ringPath: string = '';
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrentRingtoneAttribute(systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0 );
-ringPath = result.getUri();
 
-systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info('Succeeded in doing removeCustomizedToneList.');
+systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) => {
+  console.info('Succeeded in getting current ringtone attribute.');
+  systemSoundManagerInstance.removeCustomizedToneList([toneAttrs.getUri()]).then((value) => {
+    console.info('Succeeded in using removeCustomizedToneList function.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to use removeCustomizedToneList function. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to removeCustomizedToneList. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current ringtone attribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
-## RingtonePlayer<sup>10+</sup>
+## RingtonePlayer
 
-type RingtonePlayer = _RingtonePlayer;
+type RingtonePlayer = _RingtonePlayer
 
 Defines a ringtone player.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 | Type             |Description    |
 |-----------------|-------|
-| _RingtonePlayer | Ringtone player.|
+| [_RingtonePlayer](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneplayer) | Ringtone player.|
 
 ## SystemTonePlayer<sup>11+</sup>
 
-type SystemTonePlayer = _SystemTonePlayer;
+type SystemTonePlayer = _SystemTonePlayer
 
 Defines a system tone player.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 | Type             | Description       |
 |-----------------|-----------|
-| _SystemTonePlayer | System tone player.|
+| [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | System tone player.|
 
-## RingtoneOptions<sup>10+</sup>
+## RingtoneOptions
 
-type RingtoneOptions = _RingtoneOptions;
+type RingtoneOptions = _RingtoneOptions
 
 Defines the configuration of a ringtone player.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 | Type             | Description         |
 |-----------------|-------------|
-| _RingtoneOptions | Configuration of a ringtone player.|
+| [_RingtoneOptions](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneoptions) | Configuration of a ringtone player.|
 
 ## SystemToneOptions<sup>11+</sup>
 
-type SystemToneOptions = _SystemToneOptions;
+type SystemToneOptions = _SystemToneOptions
 
 Defines the configuration of a system tone player.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 | Type             | Description           |
 |-----------------|---------------|
-| _SystemToneOptions | Configuration of a system tone player.|
+| [_SystemToneOptions](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneoptions) | Configuration of a system tone player.|

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AutoFillExtensionContext模块是AutoFillExtensionAbility的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 
@@ -35,7 +35,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 reloadInModal(customData: CustomData): Promise\<void>
 
-拉起模态页面。
+拉起模态页面。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -49,7 +49,7 @@ reloadInModal(customData: CustomData): Promise\<void>
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

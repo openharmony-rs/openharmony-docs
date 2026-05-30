@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供免安装相关的设置和查询能力，支持BundlePackInfo、DispatchInfo等信息的查询。
 
@@ -72,11 +72,11 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 | bundleName  | string                      | 是   | 应用Bundle名称。     |
 | moduleName  | string                      | 是   | 应用程序模块名称。           |
 | upgradeFlag | [UpgradeFlag](#upgradeflag) | 是   | 仅供内部系统使用标志位。       |
-| callback    | AsyncCallback\<void>        | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为null，否则为错误对象。 |
+| callback    | AsyncCallback\<void>        | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|---------------------------------------- |
@@ -91,19 +91,20 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
 try {
-    freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag, err => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed');
-        }
-    });
+  freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag, err => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed');
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -131,11 +132,11 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 | 类型          | 说明                                 |
 | ------------- | ------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|----------------------------------------|
@@ -151,17 +152,18 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
 try {
-    freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag).then(() => {
-        console.info('Operation succeed')
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag).then(() => {
+    console.info('Operation succeed')
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -183,11 +185,11 @@ isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCall
 | ---------- | ---------------------- | ---- | --------------------------------------------- |
 | bundleName | string                 | 是   | 应用Bundle名称。                      |
 | moduleName | string                 | 是   | 应用程序模块名称。                            |
-| callback   | AsyncCallback\<boolean> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当获取成功时，err为null，data为bool值，true表示可以移除；false表示不可移除；否则为错误对象。 |
+| callback   | AsyncCallback\<boolean> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当获取成功时，err为undefined，data为bool值，true表示可以移除；false表示不可移除；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|----------------------------------------|
@@ -202,18 +204,19 @@ isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCall
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
-    freeInstall.isHapModuleRemovable(bundleName, moduleName, (err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.isHapModuleRemovable(bundleName, moduleName, (err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -244,7 +247,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|----------------------------------------|
@@ -260,16 +263,17 @@ isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
-    freeInstall.isHapModuleRemovable(bundleName, moduleName).then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.isHapModuleRemovable(bundleName, moduleName).then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -291,11 +295,11 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback:
 | -------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName     | string                                                       | 是   | 应用Bundle名称。                                             |
 | bundlePackFlag | [BundlePackFlag](#bundlepackflag)                            | 是   | 指示要查询的应用包标志。                                     |
-| callback       | AsyncCallback<[BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md)> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为null，data为获取到的BundlePackInfo信息。否则为错误对象。 |
+| callback       | AsyncCallback<[BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md)> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为获取到的BundlePackInfo信息。否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|----------------------------------------|
@@ -309,18 +313,19 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback:
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
-    freeInstall.getBundlePackInfo(bundleName, bundlePackFlag, (err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag, (err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 ## getBundlePackInfo
@@ -350,7 +355,7 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID |    错误信息                            |
 |----------|----------------------------------------|
@@ -365,16 +370,17 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
-    freeInstall.getBundlePackInfo(bundleName, bundlePackFlag).then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag).then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -394,7 +400,7 @@ getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback<[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为null，data为获取到的[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)信息。否则为错误对象。 |
+| callback | AsyncCallback<[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为获取到的[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -410,16 +416,17 @@ getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 try {
-    freeInstall.getDispatchInfo((err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.getDispatchInfo((err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -456,14 +463,15 @@ getDispatchInfo(): Promise\<DispatchInfo>
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    freeInstall.getDispatchInfo().then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.getDispatchInfo().then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 

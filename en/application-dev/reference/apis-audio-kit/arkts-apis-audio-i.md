@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -30,9 +30,9 @@ Describes audio renderer information.
 
 | Name         | Type                       | Read-Only| Optional| Description           |
 | ------------- | --------------------------- | ---- |---| --------------- |
-| content       | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | No| Yes| Audio content type.<br>**System capability**: SystemCapability.Multimedia.Audio.Core<br>This parameter is mandatory in API versions 8 and 9 and optional since API version 10. The default value is **CONTENT_TYPE_UNKNOWN**.<br>This API is supported since API version 7 and deprecated since API version 10. You are advised to use [StreamUsage](arkts-apis-audio-e.md#streamusage) instead.|
+| content<sup>(deprecated)</sup> | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | No| Yes| Audio content type.<br>**System capability**: SystemCapability.Multimedia.Audio.Core<br>This parameter is mandatory in API versions 8 and 9 and optional since API version 10. The default value is **CONTENT_TYPE_UNKNOWN**.<br>This parameter is supported since API version 8 and deprecated since API version 10. You are advised to use **usage** instead.|
 | usage         | [StreamUsage](arkts-apis-audio-e.md#streamusage) | No| No| Audio stream usage.<br>**System capability**: SystemCapability.Multimedia.Audio.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| rendererFlags | number                      | No| No| Audio renderer flags.<br>The value **0** means an audio renderer.<br>**System capability**: SystemCapability.Multimedia.Audio.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| rendererFlags | number                      | No| No| Flags that control the renderer behavior.<br>Set this parameter to **0**.<br>**System capability**: SystemCapability.Multimedia.Audio.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | No| Yes| Audio volume mode. The default value is **SYSTEM_GLOBAL**.<br>**System capability**: SystemCapability.Multimedia.Audio.Volume|
 
 ## AudioRendererOptions<sup>8+</sup>
@@ -41,8 +41,8 @@ Describes audio renderer configurations.
 
 | Name        | Type                                    | Read-Only| Optional| Description            |
 | ------------ | ---------------------------------------- | ---- |---| ---------------- |
-| streamInfo   | [AudioStreamInfo](#audiostreaminfo8)     | No| No| Audio stream information.<br>**System capability**: SystemCapability.Multimedia.Audio.Renderer|
-| rendererInfo | [AudioRendererInfo](#audiorendererinfo8) | No| No| Audio renderer information.<br>**System capability**: SystemCapability.Multimedia.Audio.Renderer|
+| streamInfo   | [AudioStreamInfo](#audiostreaminfo8)     | No| No| Describes audio stream information.<br>**System capability**: SystemCapability.Multimedia.Audio.Renderer|
+| rendererInfo | [AudioRendererInfo](#audiorendererinfo8) | No| No| Describes audio renderer information.<br>**System capability**: SystemCapability.Multimedia.Audio.Renderer|
 | privacyType<sup>10+</sup> | [AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10) | No| Yes| Whether the audio stream can be recorded by other applications. The default value is **0**.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture|
 
 ## InterruptEvent<sup>9+</sup>
@@ -135,13 +135,15 @@ Describes an audio device.
 | deviceType                    | [DeviceType](arkts-apis-audio-e.md#devicetype)  | Yes  | No  | Device type.<br> **System capability**: SystemCapability.Multimedia.Audio.Device<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | id<sup>9+</sup>               | number                     | Yes  | No  | Unique device ID.<br> **System capability**: SystemCapability.Multimedia.Audio.Device<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | name<sup>9+</sup>             | string                     | Yes  | No  | Device name.<br>For a Bluetooth device, you must request the ohos.permission.USE_BLUETOOTH permission.<br> **System capability**: SystemCapability.Multimedia.Audio.Device<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| address<sup>9+</sup>          | string                     | Yes  | No  | Device address.<br>For a Bluetooth device, you must request the ohos.permission.USE_BLUETOOTH permission.<br> **System capability**: SystemCapability.Multimedia.Audio.Device<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| address<sup>9+</sup>          | string                     | Yes  | No  | Static MAC address of the device.<br>For a Bluetooth device, you must request the ohos.permission.USE_BLUETOOTH permission.<br> **System capability**: SystemCapability.Multimedia.Audio.Device<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | sampleRates<sup>9+</sup>      | Array&lt;number&gt;        | Yes  | No  | Supported sampling rates.<br> **System capability**: SystemCapability.Multimedia.Audio.Device<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | channelCounts<sup>9+</sup>    | Array&lt;number&gt;        | Yes  | No  | Number of channels supported.<br> **System capability**: SystemCapability.Multimedia.Audio.Device<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | channelMasks<sup>9+</sup>     | Array&lt;number&gt;        | Yes  | No  | Supported channel masks.<br> **System capability**: SystemCapability.Multimedia.Audio.Device<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | displayName<sup>10+</sup>     | string                     | Yes  | No  | Display name of the device.<br> **System capability**: SystemCapability.Multimedia.Audio.Device<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | encodingTypes<sup>11+</sup>    | Array&lt;[AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)&gt;                     | Yes  | Yes| Supported encoding types.<br> **System capability**: SystemCapability.Multimedia.Audio.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | spatializationSupported<sup>18+</sup>     | boolean                     | Yes  | Yes| Whether the device supports spatial audio rendering. **true** if supported, **false** otherwise.<br> **System capability**: SystemCapability.Multimedia.Audio.Spatialization|
+| model<sup>22+</sup>           | string                     | Yes  | Yes| Model of the device.<br> **System capability**: SystemCapability.Multimedia.Audio.Device|
+| capabilities<sup>22+</sup>    | Array&lt;[AudioStreamInfo](#audiostreaminfo8)&gt;| Yes  | Yes| Audio stream capabilities supported by the device.<br> **System capability**: SystemCapability.Multimedia.Audio.Device|
 
 ## VolumeEvent<sup>9+</sup>
 
@@ -151,7 +153,7 @@ Describes the event received by the application when the volume is changed.
 
 | Name      | Type                               | Read-Only| Optional| Description                                       |
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | No| No| Audio stream type.                                   |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | No| No| Audio volume type.                                   |
 | volume     | number                              | No| No|Volume to set. The value range can be obtained by calling **getMinVolume** and **getMaxVolume**. |
 | updateUi   | boolean                             | No| No|  Whether to show the volume change in UI. **true** to show, **false** otherwise.            |
 | volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | No| Yes| Audio volume mode. The default value is **SYSTEM_GLOBAL**.|
@@ -179,6 +181,7 @@ Describes the event received by the application when the audio stream volume is 
 | streamUsage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | No| No| Audio stream for which the volume changes.         |
 | volume | number | No| No| Volume.         |
 | updateUi | boolean | No| No| Whether to show the volume change in UI. **true** to show, **false** otherwise.         |
+| previousVolume<sup>23+</sup> | number | No| Yes| Volume level before change.|
 
 ## DeviceChangeAction
 
@@ -216,6 +219,17 @@ Describes the event indicating that the output device changes.
 | changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | No| No| Reason for the device change.|
 | recommendedAction | [OutputDeviceChangeRecommendedAction](arkts-apis-audio-e.md#outputdevicechangerecommendedaction20) | No| No| Recommended action after the device change.|
 
+## CurrentInputDeviceChangedEvent<sup>21+</sup>
+
+Describes the event indicating that the input device changes.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name             | Type                                                               | Read-Only| Optional| Description              |
+| :---------------- |:------------------------------------------------------------------| :--- |---| :----------------- |
+| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | No| No| Device information.|
+| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | No| No| Reason for the device change.|
+
 ## AudioTimestampInfo<sup>19+</sup>
 
 Describes the information about the audio stream timestamp and the current data frame position.
@@ -225,7 +239,7 @@ Describes the information about the audio stream timestamp and the current data 
 | Name| Type| Read-Only| Optional| Description                               |
 | ---------| ------ | ---- | ---- |-----------------------------------|
 | framePos | number | Yes  | No  | Position of the current data frame for playback or recording.                  |
-| timestamp | number | Yes  | No  | Timestamp corresponding to the current data frame position during playback or recording.|
+| timestamp | number | Yes  | No  | Timestamp corresponding to the current data frame position during playback or recording, in nanoseconds.|
 
 ## AudioCapturerInfo<sup>8+</sup>
 
@@ -236,7 +250,7 @@ Describes audio capturer information.
 | Name         | Type                     | Read-Only| Optional| Description            |
 | :------------ | :------------------------ | :--- |---| :--------------- |
 | source        | [SourceType](arkts-apis-audio-e.md#sourcetype8) | No| No| Audio source type.      |
-| capturerFlags | number                    | No| No| Audio capturer flags.<br>The value **0** means an audio capturer.|
+| capturerFlags | number                    | No| No| Flags that control the capturer behavior.<br>Set this parameter to **0**.|
 
 ## AudioCapturerOptions<sup>8+</sup>
 
@@ -246,7 +260,7 @@ Describes audio capturer configurations.
 | ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
 | streamInfo                          | [AudioStreamInfo](#audiostreaminfo8)                      | No| No| Audio stream information.<br>**System capability**: SystemCapability.Multimedia.Audio.Capturer  |
 | capturerInfo                        | [AudioCapturerInfo](#audiocapturerinfo8)                   | No| No| Audio capturer information.<br>**System capability**: SystemCapability.Multimedia.Audio.Capturer       |
-| playbackCaptureConfig<sup>(deprecated)</sup> | [AudioPlaybackCaptureConfig](#audioplaybackcaptureconfigdeprecated) | No| Yes| Configuration of internal audio recording.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture<br> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead. |
+| playbackCaptureConfig<sup>(deprecated)</sup> | [AudioPlaybackCaptureConfig](#audioplaybackcaptureconfigdeprecated) | No| Yes| Defines configuration for capturing played audio.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture<br> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead. |
 
 ## AudioInterrupt<sup>(deprecated)</sup>
 
@@ -279,7 +293,7 @@ Defines the options for filtering the played audio streams to be recorded.
 
 ## AudioPlaybackCaptureConfig<sup>(deprecated)</sup>
 
-Defines the configuration of internal audio recording.
+Defines configuration for capturing played audio.
 
 > **NOTE**
 > This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead.

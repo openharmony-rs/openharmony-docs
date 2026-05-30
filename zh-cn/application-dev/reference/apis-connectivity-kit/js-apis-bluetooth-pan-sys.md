@@ -35,7 +35,7 @@ disconnect(deviceId: string): void
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -61,7 +61,7 @@ disconnect(deviceId: string): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
     panProfile.disconnect('XX:XX:XX:XX:XX:XX');
@@ -81,7 +81,7 @@ setTethering(enable: boolean): void
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -107,7 +107,7 @@ setTethering(enable: boolean): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
     panProfile.setTethering(false);
@@ -127,7 +127,7 @@ isTetheringOn(): boolean
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **返回值：**
 
@@ -149,7 +149,7 @@ isTetheringOn(): boolean
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
     panProfile.isTetheringOn();

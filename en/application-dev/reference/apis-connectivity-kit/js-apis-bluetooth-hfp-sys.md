@@ -1,5 +1,12 @@
 # @ohos.bluetooth.hfp (Bluetooth HFP Module) (System API)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 The **hfp** module provides APIs for using the Bluetooth Hands-Free Profile (HFP).
 
 > **NOTE**
@@ -31,7 +38,7 @@ Connects to the HFP service of a device.
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 
 **Error codes**
 
@@ -51,7 +58,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hfpAg = hfp.createHfpAgProfile();
     hfpAg.connect('XX:XX:XX:XX:XX:XX');
@@ -77,7 +84,7 @@ Disconnects the HFP service of a device.
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 
 **Error codes**
 
@@ -97,7 +104,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hfpAg = hfp.createHfpAgProfile();
     hfpAg.disconnect('XX:XX:XX:XX:XX:XX');

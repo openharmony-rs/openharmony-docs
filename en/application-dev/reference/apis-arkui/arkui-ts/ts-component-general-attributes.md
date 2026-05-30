@@ -1,9 +1,16 @@
 # Universal Attributes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 <!--Del-->
 - [Size](ts-universal-attributes-size.md)
 - [Location](ts-universal-attributes-location.md)
 - [Layout Constraints](ts-universal-attributes-layout-constraints.md)
-- [Component-Level Pixel Rounding](ts-universal-attributes-pixelRound.md)
+- [Component-Level Pixel Rounding](ts-universal-attributes-pixelRoundForComponent.md)
+- [Page-Level Pixel Rounding](ts-universal-attributes-pixelRoundForPage.md)
 - [Flex Layout](ts-universal-attributes-flex-layout.md)
 - [Border](ts-universal-attributes-border.md)
 - [Border Image](ts-universal-attributes-border-image.md)
@@ -30,6 +37,7 @@
 - [Foreground Blur](ts-universal-attributes-foreground-blur-style.md)
 - [Motion Blur](ts-universal-attributes-motionBlur.md)
 - [Click Feedback Effect](ts-universal-attributes-click-effect.md)
+- [Click Sound Effect](ts-universal-attributes-click-sound.md)
 - [Accessibility](ts-universal-attributes-accessibility.md)
 - [Attribute Modifier](ts-universal-attributes-attribute-modifier.md)
 - [Gesture Modifier](ts-universal-attributes-gesture-modifier.md)
@@ -46,7 +54,7 @@
   - [Sheet Transition](ts-universal-attributes-sheet-transition.md)
   - [Sheet Transition (System API)](ts-universal-attributes-sheet-transition-sys.md)
 - [Obscuring](ts-universal-attributes-obscured.md)
-- [Universal Text Attributes](ts-universal-attributes-text-style.md)
+- [Text Box Component Common APIs](ts-universal-attributes-text-style.md)
 - [Drag and Drop Control](ts-universal-attributes-drag-drop.md)
 - [Drag-and-Drop Sorting](ts-universal-attributes-drag-sorting.md)
 - [Safe Area](ts-universal-attributes-expand-safe-area.md)

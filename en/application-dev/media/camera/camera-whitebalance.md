@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Starting from API version 20, you can configure white balance effects. White balance is a color correction technique used by cameras to produce different visual effects in photos. Currently, white balance effects are supported in the following sessions: photo session (for taking photos), video session (for recording videos), and secure session (for secure camera operations).
 

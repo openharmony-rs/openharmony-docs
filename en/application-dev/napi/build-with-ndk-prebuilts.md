@@ -1,6 +1,12 @@
 # Building an NDK Project with Prebuilt Libraries
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
-In an NDK project, you can use the CMake syntax to import and use prebuilt libraries. When prebuilt libraries are referenced, both those in the module's **libs** directory and those declared in the **CMakeList.txt** build script are packaged.
+In an NDK project, you can use the CMake syntax to import and use prebuilt libraries. When prebuilt libraries are referenced, both those in the module's **libs** directory and those declared in the **CMakeLists.txt** build script are packaged.
 
 ## Constraints for Using Prebuilt Libraries
 
@@ -31,7 +37,7 @@ Add **include_directories** in the module's **CMakeLists.txt** build script.
 
 ```cmake
 include_directories(
-    ...
+    # ...
     ${CMAKE_CURRENT_SOURCE_DIR}/third_party/FFmpeg/include
 )
 ```
@@ -47,6 +53,7 @@ Ensure that the imported prebuilt dynamic libraries (.so files) have the correct
 If a prebuilt .so file lacks a SONAME, the linker will embed the absolute path of the .so file into the **dynamic section** of dependent binaries. When these binaries are packaged into a HAP for release, the dynamic loader may fail to locate the .so file, leading to runtime errors.
 
 Use the **llvm-readelf** tool to verify whether a .so file has a SONAME set. The tool's path depends on your installation: **${*DevEco Studio installation directory*}/sdk/default/openharmony/native/llvm/bin** or **${*command-line-tools installation directory*}/sdk/default/openharmony/native/llvm/bin/llvm-readelf**.
+
 Example:
 
 ```bash
@@ -54,7 +61,8 @@ Example:
 0x000000000000000e (SONAME)             Library soname: [libavcodec_ffmpeg.so]
 ```
 
-For prebuilt dynamic libraries (.so files) built with CMake, no additional configuration is required for setting the SONAME, since CMake automatically sets the SONAME for them as long as the target platform supports it. 
+For prebuilt dynamic libraries (.so files) built with CMake, no additional configuration is required for setting the SONAME, since CMake automatically sets the SONAME for them as long as the target platform supports it.
+
 For prebuilt dynamic libraries (.so files) built with other tools, explicitly configure **ldflags** to set the SONAME.
 
 ```bash

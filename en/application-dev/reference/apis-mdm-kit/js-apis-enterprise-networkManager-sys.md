@@ -1,16 +1,22 @@
 # @ohos.enterprise.networkManager (Network Management) (System API)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @hp_guo-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @zhang_yixin13-->
 
 The **networkManager** module provides APIs for network management of enterprise devices, including obtaining the device IP address and MAC address.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-guide.md#introduction) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.networkManager](js-apis-enterprise-networkManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.networkManager](js-apis-enterprise-networkManager.md).
 
 ## Modules to Import
 
@@ -28,12 +34,15 @@ Obtains all activated wired network interfaces. This API uses an asynchronous ca
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null** and **data** is an array of network ports obtained. If the operation fails, **err** is an error object.    |
 
 **Error codes**
@@ -51,11 +60,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getAllNetworkInterfaces(wantTemp, (err, result) => {
@@ -77,12 +88,15 @@ Obtains all activated wired network interfaces. This API uses a promise to retur
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -105,12 +119,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getAllNetworkInterfaces(wantTemp).then((result) => {
@@ -130,12 +146,15 @@ Obtains the device IP address based on the network interface. This API uses an a
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | networkInterface    | string     | Yes   | Network port.                 |
 | callback | AsyncCallback&lt;string&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null** and **data** is the IP address obtained. If the operation fails, **err** is an error object.      |
 
@@ -154,13 +173,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// Replace parameters with actual values.
 networkManager.getIpAddress(wantTemp, 'eth0', (err, result) => {
   if (err) {
     console.error(`Failed to get ip address. Code: ${err.code}, message: ${err.message}`);
@@ -180,12 +202,15 @@ Obtains the device IP address based on the network interface. This API uses a pr
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | networkInterface    | string     | Yes   | Network port.                 |
 
 **Return value**
@@ -209,14 +234,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// Replace parameters with actual values.
 networkManager.getIpAddress(wantTemp, 'eth0').then((result) => {
   console.info(`Succeeded in getting ip address, result : ${result}`);
 }).catch((err: BusinessError) => {
@@ -234,12 +262,15 @@ Obtains the MAC address of a device based on the network interface. This API use
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | networkInterface    | string     | Yes   | Network port.                 |
 | callback | AsyncCallback&lt;string&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null** and **data** is the MAC address obtained. If the operation fails, **err** is an error object.      |
 
@@ -258,13 +289,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// Replace parameters with actual values.
 networkManager.getMac(wantTemp, 'eth0', (err, result) => {
   if (err) {
     console.error(`Failed to get mac. Code: ${err.code}, message: ${err.message}`);
@@ -284,12 +318,15 @@ Obtains the MAC address of a device based on the network interface. This API use
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | networkInterface    | string     | Yes   | Network port.                 |
 
 **Return value**
@@ -313,14 +350,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// Replace parameters with actual values.
 networkManager.getMac(wantTemp, 'eth0').then((result) => {
   console.info(`Succeeded in getting mac, result : ${result}`);
 }).catch((err: BusinessError) => {
@@ -338,12 +378,15 @@ Queries whether a specified network interface is disabled. This API uses an asyn
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | networkInterface    | string     | Yes   | Network port.                 |
 | callback | AsyncCallback&lt;boolean&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**, and **data** indicates whether the network port is disabled. The value **true** means the network port is disabled; and **false** means the opposite. If the operation fails, **err** is an error object.      |
 
@@ -362,13 +405,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// Replace parameters with actual values.
 networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0', (err, result) => {
   if (err) {
     console.error(`Failed to query network interface is disabled or not. Code: ${err.code}, message: ${err.message}`);
@@ -388,12 +434,15 @@ Queries whether a specified network interface is disabled. This API uses a promi
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | networkInterface    | string     | Yes   | Network port.                 |
 
 **Return value**
@@ -417,14 +466,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// Replace parameters with actual values.
 networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0').then((result) => {
   console.info(`Succeeded in querying network interface is disabled or not, result : ${result}`);
 }).catch((err: BusinessError) => {
@@ -442,12 +494,15 @@ Disables a network interface. This API uses an asynchronous callback to return t
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | networkInterface    | string     | Yes   | Network port.                 |
 | isDisabled    | boolean     | Yes   | Network port status to set. The value **true** means to disable the network port, and **false** means to enable the network port.                 |
 | callback | AsyncCallback&lt;void&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.      |
@@ -467,13 +522,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// Replace parameters with actual values.
 networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true, (err) => {
   if (err) {
     console.error(`Failed to set network interface disabled. Code: ${err.code}, message: ${err.message}`);
@@ -493,12 +551,15 @@ Disables a network interface. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | networkInterface    | string     | Yes   | Network port.                 |
 | isDisabled    | boolean     | Yes   | Network port status to set. The value **true** means to disable the network port, and **false** means to enable the network port.                 |
 
@@ -523,14 +584,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// Replace parameters with actual values.
 networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true).then(() => {
   console.info(`Succeeded in setting network interface disabled`);
 }).catch((err: BusinessError) => {
@@ -548,12 +612,15 @@ Sets the global network proxy. This API uses an asynchronous callback to return 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | httpProxy    | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10)     | Yes   | Global HTTP proxy to set.                 |
 | callback | AsyncCallback&lt;void&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.      |
 
@@ -572,13 +639,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { connection } from '@kit.NetworkKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+
+// Replace parameters with actual values.
 let exclusionStr: string = "192.168,baidu.com"
 let exclusionArray: Array<string> = exclusionStr.split(',');
 let httpProxy: connection.HttpProxy = {
@@ -600,18 +671,21 @@ networkManager.setGlobalProxy(wantTemp, httpProxy, (err) => {
 
 setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise\<void>
 
-Sets the global network proxy. This API uses an asynchronous promise to return the result.
+Sets the global network proxy. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | httpProxy    | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10)     | Yes   | Global HTTP proxy to set.                 |
 
 **Return value**
@@ -635,14 +709,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { connection } from '@kit.NetworkKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+
+// Replace with actual values.
 let exclusionStr: string = "192.168,baidu.com"
 let exclusionArray: Array<string> = exclusionStr.split(',');
 let httpProxy: connection.HttpProxy = {
@@ -668,12 +746,15 @@ Obtains the global network proxy. This API uses an asynchronous callback to retu
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | callback | AsyncCallback&lt;[connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10)&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.      |
 
 **Error codes**
@@ -691,11 +772,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getGlobalProxy(wantTemp, (err, result) => {
@@ -711,18 +794,21 @@ networkManager.getGlobalProxy(wantTemp, (err, result) => {
 
 getGlobalProxy(admin: Want): Promise\<connection.HttpProxy>
 
-Obtains the global network proxy. This API uses an asynchronous promise to return the result.
+Obtains the global network proxy. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -745,12 +831,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getGlobalProxy(wantTemp).then(() => {
@@ -770,12 +858,15 @@ Adds a network packet filtering rule for the device. Only IPv4 is supported. Thi
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | filterRule    | [AddFilterRule](#addfilterrule)     | Yes   | Network packet filtering rule to add.                 |
 | callback | AsyncCallback&lt;void&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.      |
 
@@ -794,13 +885,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.AddFilterRule = {
+  // Replace with actual values.
   "ruleNo": 1,
   "srcAddr": "192.168.1.1-192.168.255.255",
   "destAddr": "10.1.1.1",
@@ -810,8 +904,8 @@ let filterRule: networkManager.AddFilterRule = {
   "method": networkManager.AddMethod.APPEND,
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP,
-}
+  "protocol": networkManager.Protocol.UDP
+};
 
 networkManager.addIptablesFilterRule(wantTemp, filterRule, (err) => {
   if (err) {
@@ -832,12 +926,15 @@ Adds a network packet filtering rule for the device. Only IPv4 is supported. Thi
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | filterRule    | [AddFilterRule](#addfilterrule)     | Yes   | Network packet filtering rule to add.                 |
 
 **Return value**
@@ -861,14 +958,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.AddFilterRule = {
+  // Replace with actual values.
   "ruleNo": 1,
   "srcAddr": "192.168.1.1-192.168.255.255",
   "destAddr": "10.1.1.1",
@@ -878,8 +978,8 @@ let filterRule: networkManager.AddFilterRule = {
   "method": networkManager.AddMethod.APPEND,
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP,
-}
+  "protocol": networkManager.Protocol.UDP
+};
 
 networkManager.addIptablesFilterRule(wantTemp, filterRule).then(() => {
   console.info(`Succeeded in setting iptables filter rule`);
@@ -898,12 +998,15 @@ Removes the network packet filtering rule. Only IPv4 is supported. This API uses
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | filterRule    | [RemoveFilterRule](#removefilterrule)     | Yes   | Network packet filtering rule to remove.                 |
 | callback | AsyncCallback&lt;void&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.      |
 
@@ -922,13 +1025,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.RemoveFilterRule = {
+  // Replace with actual values.
   "srcAddr": "192.168.1.1-192.168.255.255",
   "destAddr": "10.1.1.1",
   "srcPort": "8080",
@@ -936,8 +1042,8 @@ let filterRule: networkManager.RemoveFilterRule = {
   "uid": "9696",
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP,
-}
+  "protocol": networkManager.Protocol.UDP
+};
 
 networkManager.removeIptablesFilterRule(wantTemp, filterRule, (err) => {
   if (err) {
@@ -958,12 +1064,15 @@ Removes the network packet filtering rule. Only IPv4 is supported. This API uses
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | filterRule    | [RemoveFilterRule](#removefilterrule)     | Yes   | Network packet filtering rule to remove.                 |
 
 **Return value**
@@ -987,14 +1096,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.RemoveFilterRule = {
+  // Replace with actual values.
   "srcAddr": "192.168.1.1-192.168.255.255",
   "destAddr": "10.1.1.1",
   "srcPort": "8080",
@@ -1002,8 +1114,8 @@ let filterRule: networkManager.RemoveFilterRule = {
   "uid": "9696",
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP,
-}
+  "protocol": networkManager.Protocol.UDP
+};
 
 networkManager.removeIptablesFilterRule(wantTemp, filterRule).then(() => {
   console.info(`Succeeded in removing iptables filter rule`);
@@ -1022,12 +1134,15 @@ Obtains the network packet filtering rule. Only IPv4 is supported. This API uses
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility.           |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
 | callback | AsyncCallback&lt;string&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.      |
 
 **Error codes**
@@ -1045,11 +1160,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.listIptablesFilterRules(wantTemp, (err, result) => {
@@ -1071,12 +1188,15 @@ Obtains the network packet filtering rule. Only IPv4 is supported. This API uses
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -1099,12 +1219,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.listIptablesFilterRules(wantTemp).then((result) => {
@@ -1116,10 +1238,11 @@ networkManager.listIptablesFilterRules(wantTemp).then((result) => {
 
 ## AddFilterRule
 
-Network packet filtering rule to add.
+Defines the network packet filtering rule to add.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**System API**: This is a system API.
 
 | Name        | Type    | Read-Only| Optional| Description                           |
 | ----------- | --------| ---- | ---- | ------------------------------- |
@@ -1136,10 +1259,11 @@ Network packet filtering rule to add.
 
 ## RemoveFilterRule
 
-Network packet filtering rule to remove.
+Defines the network packet filtering rule to remove.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**System API**: This is a system API.
 
 | Name        | Type    | Read-Only| Optional| Description                           |
 | ----------- | --------| ---- | ---- | ------------------------------ |
@@ -1158,6 +1282,7 @@ Enumerates the methods used to add the network packets.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**System API**: This is a system API.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |

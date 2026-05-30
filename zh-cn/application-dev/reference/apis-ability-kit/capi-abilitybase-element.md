@@ -1,5 +1,16 @@
 # AbilityBase_Element
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
+```c
+typedef struct AbilityBase_Element {...} AbilityBase_Element
+```
+
 ## 概述
 
 声明[Want](capi-want-h.md)中Element结构体。

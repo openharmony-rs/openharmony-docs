@@ -1,4 +1,10 @@
 # Text Component Common APIs (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This topic covers the common APIs of text components.
 
@@ -74,7 +80,47 @@ Describes the keyboard visual style configuration.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                   | Mandatory| Description                                                   |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20) | No  | Keyboard gradient effect.<br>Default value: **KeyboardGradientMode.NONE**.|
-| fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20) | No  | Keyboard fluid lighting effect.<br>Default value: **KeyboardFluidLightMode.NONE**.|
+| Name   | Type                                                   | Read-Only| Optional| Description                                                   |
+| ------- | ----------------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
+| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20) | No  | Yes  | Keyboard gradient effect.<br>Default value: **KeyboardGradientMode.NONE**|
+| fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20) | No  | Yes  | Keyboard fluid lighting effect.<br>Default value: **KeyboardFluidLightMode.NONE**|
+
+## TextChangeReason<sup>20+</sup>
+
+Enumerates the reasons for component content changes.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Value| Description|
+| ------- | ---- | ------------------- |
+| UNKNOWN | 0 | Unknown reason.|
+| INPUT | 1 | User input.|
+| PASTE | 2 | Paste operation.|
+| CUT | 3 | Cut operation.|
+| DRAG | 4 | Drag and drop operation.|
+| AUTO_FILL | 5 | Auto-fill operation.|
+| AI_WRITE | 6 | AI-assisted writing.|
+| REDO | 7 | Redo operation.|
+| UNDO | 8 | Undo operation.|
+| CONTROLLER | 9 | Component API call.|
+| ACCESSIBILITY | 10 | Accessibility API.|
+| COLLABORATION | 11 | Cross-device photographing.|
+| STYLUS | 12 | Stylus input.|
+
+## VoiceButtonOptions<sup>23+</sup>
+
+Sets the voice button options.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name               | Type                                             | Read-Only| Optional| Description                                                                                 |
+|--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
+| enabled              | boolean                                         | No | Yes| Whether to enable or disable the voice button for the input box.<br>**true**: The voice button is enabled. **false**: The voice button is disabled.<br> Default value: **false**|

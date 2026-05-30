@@ -1,4 +1,14 @@
 # OH_Drawing_MaskFilter
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_Drawing_MaskFilter OH_Drawing_MaskFilter
+```
 
 ## 概述
 

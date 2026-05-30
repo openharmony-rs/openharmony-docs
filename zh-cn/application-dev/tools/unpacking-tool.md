@@ -25,7 +25,7 @@
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> [--force true]
 ```
 
@@ -45,7 +45,7 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> [--force true]
 ```
 
@@ -64,7 +64,7 @@ java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out-path <path> [--force true]
 ```
 
@@ -84,7 +84,7 @@ java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> [--force true] [--libs true] [--cpu-abis option]
 ```
 
@@ -105,7 +105,7 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> [--force true]
 ```
 
@@ -124,7 +124,7 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> [--force true] [--libs true] [--cpu-abis option]
 ```
 
@@ -145,7 +145,7 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <path> [--force true]
 ```
 
@@ -235,6 +235,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | compileSdkType                 | String  | 标识编译该应用时使用的sdk类别。   | 仅限API10及以后的应用。   |
 | labels                         | HashMap\<String, String> | 标识多语言应用程序AppJson的标签。 | NA          |
 | descriptions                   | HashMap\<String, String> | 标识多语言应用程序AppJson的说明。 | NA          |
+| buildVersion                    | String  | 标识App中的[buildVersion](../quick-start/app-configuration-file.md#配置文件标签)信息。  | 从API version 23开始支持。          |
 
 ### HapInfo结构体信息
 
@@ -251,7 +252,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | defPermissionsGroups | List\<DefPermissionsGroups> | 标识HAP包DefPermissionsGroups 信息。  | NA                             |
 | distro               | Distro结构体                 | 标识HAP包的distro信息。               | NA                      |
 | reqCapabilities      | List\<String>               | 标识HAP包reqCapabilities信息。        | NA                           |
-| deviceType           | List\<String>               | 标识HAP可以运行在哪类设备上。   对应stage模型中的deviceTypes。       |
+| deviceType           | List\<String>               | 标识HAP可以运行在哪类设备上。   对应stage模型中的deviceTypes。       |  NA |
 | metaData             | MetaData结构体（见下述metaData）| 标识HAP的自定义元信息。                | NA           |
 | dependencies         | List\<DependencyItem>       | 标识HAP包DependencyItem信息。         | NA                   |
 | isJs                 | boolean                     | 标识该应用是否是js应用。true表示是js应用，false表示不是js应用。              | FA模型特有。            |
@@ -270,6 +271,9 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | descriptions         | HashMap\<String, String>    | 标识HAP的说明信息。                    | NA             |
 | compressedSize       | long                        | 标识HAP包压缩后的大小，单位字节。         | NA              |
 | originalSize         | long                        | 标识HAP包的原始大小，单位字节。         | NA             |
+| isModuleAbcCompressed  | boolean                   | 标识[modules.abc](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)文件是否为压缩状态。true表示压缩状态，false表示非压缩状态。         | NA             |
+| skillProfiles    | List\<[SkillProfileInfo](#skillprofileinfo)\>  | 标识当前模块的技能配置信息列表，用于定义AI代理的技能能力。   | 从API版本26.0.0开始支持。  |
+<!--RP1--><!--RP1End-->
 
 ### AbilityInfo结构体信息
 
@@ -496,8 +500,8 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | ---------- | ------------- | -------------------------------------- | ------------------------------------------------ |
 | name       | String        | 当前静态公共事件对应的类名。             | Stage模型从staticSubscriber类型的Extension中获取。 |
 | permission | String        | 标识实现该静态公共事件需要申请的权限。   | Stage模型从staticSubscriber类型的Extension中获取。 |
-| data       | List\<String> | 当前静态公共时间需要携带的额外数据数组。 | Stage模型从staticSubscriber类型的Extension中获取。 |
-| type       | List\<String> | 配置当前静态公共时间的类别数组。         | Stage模型从staticSubscriber类型的Extension中获取。 |
+| data       | List\<String> | 当前静态公共事件需要携带的额外数据数组。 | Stage模型从staticSubscriber类型的Extension中获取。 |
+| type       | List\<String> | 配置当前静态公共事件的类别数组。         | Stage模型从staticSubscriber类型的Extension中获取。 |
 | events     | List\<String> | 标识能够接收的意图的event值的集合。      | Stage模型从staticSubscriber类型的Extension中获取。 |
 
 ### DependencyItem结构体信息
@@ -566,7 +570,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | 字段        | 类型    | 描述                         | 备注 |
 |-------------|---------|------------------------------| ---- |
 | name        | String  | 标识DefPermissionGroup的名称。 | NA   |
-| order       | String  | 标识DefPermissionGrou的顺序。  | NA   |
+| order       | String  | 标识DefPermissionGroup的顺序。  | NA   |
 | icon        | String  | 标识DefPermissionGroup的图标。 | NA   |
 | label       | String  | 标识DefPermissionGroup的标签。 | NA   |
 | description | String  | 标识DefPermissionGroup的描述。 | NA   |
@@ -596,3 +600,14 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 |-----------------|---------|-------------------------------------| ---- |
 | designWidth     | int     | 标识模块已用场景的设计宽度。           | NA   |
 | autoDesignWidth | boolean | 标识ModuleUsedScene的autoDesignWidth。true表示designWidth将会被忽略，设计基准宽度由设备宽度与屏幕密度计算得出，false表示设计基准宽度为designWidth。 | NA   |
+
+### SkillProfileInfo
+
+> 从API版本26.0.0开始支持。
+
+| 字段               | 类型           | 描述                                                         | 备注 |
+| ------------------ | -------------- | ------------------------------------------------------------ | ---- |
+| name               | String         | 标识技能的名称，在当前模块中唯一。仅允许使用小写字母、数字和`-`（连字符），必须以小写字母或数字开头和结尾，最大长度为64字节。 | NA   |
+| abilityName        | String         | 标识与该技能关联的组件名称。仅适用于entry、feature、shared类型的模块，对于skill类型的模块不支持该字段。缺省值为入口Ability名称。 | NA   |
+| srcEntries         | List\<String\> | 标识实现技能的代码文件路径列表，指向技能实现逻辑的.ets文件。每个元素为相对于当前模块skills目录的文件路径。 | NA   |
+| permissions        | List\<String\> | 标识调用该技能所需要的权限列表。 | NA   |

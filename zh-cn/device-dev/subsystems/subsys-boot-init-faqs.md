@@ -118,7 +118,7 @@
   **解决方法：**
 
   1. 查看服务是否在反复重启， 重启服务是否配置critical。
-  2. ps -ef | grep ohos, 确定系统应用是否存在；日志中有 permission denied，init进程报权限问题。 确认系统应用权限，关闭selinux， 重新验证，如果正常， 则是selinux 策略配置不正确导致，重新配置或添加对应的selinux权限。 [selinux 策略配置](https://gitee.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF) 请参考base/security/selinux_adapter 仓中的说明。
+  2. ps -ef | grep ohos, 确定系统应用是否存在；日志中有 permission denied，init进程报权限问题。 确认系统应用权限，关闭selinux， 重新验证，如果正常， 则是selinux 策略配置不正确导致，重新配置或添加对应的selinux权限。 [selinux 策略配置](https://gitcode.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF) 请参考base/security/selinux_adapter 仓中的说明。
   3. 通过bootevent事件分析， 通过排查没有上报的bootevent的服务， 可能会导致开机动画卡死，比如systemUI。
 
 ### 自动重启
@@ -156,7 +156,7 @@
 ​    查看 reboot 命令， reboot命令不超过96。
 
  3. hdc shell 执行param set ohos.startup.powerctrl reboot， 观察是否重启， 重启表示系统参数设置成功。
- 4. 日志中有 permission denied，init 进程报权限问题。关闭selinux, 重新验证， 如果验证成功，则是selnux策略配置不正确导致， 重新配置或添加对应的selinux权限。 [selinux 策略配置](https://gitee.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF) 请参考base/security/selinux_adapter 仓中的说明。
+ 4. 日志中有 permission denied，init 进程报权限问题。关闭selinux, 重新验证， 如果验证成功，则是selnux策略配置不正确导致， 重新配置或添加对应的selinux权限。 [selinux 策略配置](https://gitcode.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF) 请参考base/security/selinux_adapter 仓中的说明。
 
 ### 系统启动过程中打印“Cfg error!”错误后停止启动
 

@@ -1,10 +1,14 @@
 # OH_AudioBuffer
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioBuffer {...} OH_AudioBuffer
+```
 
 ## 概述
 
@@ -24,7 +28,7 @@
 | -- | -- |
 | uint8_t* buf | 音频buffer内存。 |
 | int32_t size | 音频buffer内存大小。 |
-| int64_t timestamp | 音频buffer时间戳。 |
+| int64_t timestamp | 音频buffer时间戳。单位为纳秒（ns）。 |
 | [OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) type | 音频录制源类型。 |
 
 

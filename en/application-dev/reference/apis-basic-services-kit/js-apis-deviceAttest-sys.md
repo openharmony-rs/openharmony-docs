@@ -1,6 +1,14 @@
 # @ohos.deviceAttest (Device Attestation) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: XTS-->
+<!--Owner: @fengqiang-->
+<!--Designer: @fengqiang-->
+<!--Tester: @jiyong_sd-->
+<!--Adviser: @fang-jinxu-->
+
 The **deviceAttest** module provides attestation of devices in OpenHarmony by comparing the device information with that stored in the cloud.
+
 You can use the APIs provided by the **deviceAttest** module to obtain the device attestation result.
 
 > **NOTE**
@@ -12,7 +20,7 @@ You can use the APIs provided by the **deviceAttest** module to obtain the devic
 ## Modules to Import
 
 ```ts
-import deviceAttest from '@ohos.deviceAttest';
+import { deviceAttest } from '@kit.BasicServicesKit';
 ```
 
 ## deviceAttest.getAttestStatus
@@ -40,10 +48,10 @@ For details about error codes, see [Device Attestation Error Codes](./errorcode-
 **Example**
 
 ```ts
-import base from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    deviceAttest.getAttestStatus((error: base.BusinessError, value: deviceAttest.AttestResultInfo) => {
+    deviceAttest.getAttestStatus((error: BusinessError, value: deviceAttest.AttestResultInfo) => {
     if (typeof error != 'undefined') {
         console.error("error code:" + error.code + " message:" + error.message);
     } else {
@@ -56,8 +64,8 @@ try {
     }
     })
 } catch (error) {
-    let code: number = (error as base.BusinessError).code;
-    let message: string = (error as base.BusinessError).message;
+    let code: number = (error as BusinessError).code;
+    let message: string = (error as BusinessError).message;
     console.error("error code:" + code + " message:" + message);
 }
 ```
@@ -87,7 +95,7 @@ For details about error codes, see [Device Attestation Error Codes](./errorcode-
 **Example**
 
 ```ts
-import base from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     deviceAttest.getAttestStatus().then((value: deviceAttest.AttestResultInfo) => {
@@ -97,12 +105,12 @@ try {
         " rootHashResult:" + value.softwareResultDetail[2],
         " PCIDResult:" + value.softwareResultDetail[3],
         " reserver:" + value.softwareResultDetail[4]);
-    }).catch((error: base.BusinessError) => {
+    }).catch((error: BusinessError) => {
         console.error("error code:" + error.code + " message:" + error.message);
     });
 } catch (error) {
-    let code: number = (error as base.BusinessError).code;
-    let message: string = (error as base.BusinessError).message;
+    let code: number = (error as BusinessError).code;
+    let message: string = (error as BusinessError).message;
     console.error("error code:" + code + " message:" + message);
 }
 ```
@@ -132,7 +140,7 @@ For details about error codes, see [Device Attestation Error Codes](./errorcode-
 **Example**
 
 ```ts
-import base from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let value: deviceAttest.AttestResultInfo = deviceAttest.getAttestStatusSync();
@@ -143,8 +151,8 @@ try {
     " PCIDResult:" + value.softwareResultDetail[3],
     " reserver:" + value.softwareResultDetail[4]);
 } catch (error) {
-    let code: number = (error as base.BusinessError).code;
-    let message: string = (error as base.BusinessError).message;
+    let code: number = (error as BusinessError).code;
+    let message: string = (error as BusinessError).message;
     console.error("error code:" + code + " message:" + message);
 }
 ```
@@ -164,4 +172,4 @@ Defines the device attestation result information.
 
 > **NOTE**
 >
-> - The attestation result of device hardware and software information can be any of the following:<br> - **-2**: No attestation is performed.<br>- **-1**: The attestation fails.<br>- **0**: The attestation is successful.
+> - The attestation result of device hardware and software information can be any of the following:<br>- **-2**: No attestation is performed.<br>- **-1**: The attestation fails.<br>- **0**: The attestation is successful.

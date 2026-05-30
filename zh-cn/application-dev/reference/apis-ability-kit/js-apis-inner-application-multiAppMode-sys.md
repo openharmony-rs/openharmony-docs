@@ -1,5 +1,12 @@
 # MultiAppMode (系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wendel-->
+<!--Designer: @wendel-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
 定义应用是否支持多开模式。
 
 > **说明：**

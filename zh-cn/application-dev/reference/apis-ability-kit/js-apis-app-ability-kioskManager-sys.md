@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 KioskManager模块提供Kiosk模式管理能力，包括系统进入/退出Kiosk模式操作、查询当前系统Kiosk模式状态。
 
@@ -32,7 +32,7 @@ getKioskStatus(): Promise&lt;KioskStatus&gt;
 
 **系统接口：** 此接口为系统接口。
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -62,7 +62,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     Column() {
-      Button('getKioskinfo').margin({ top: 10 })
+      Button('getKioskInfo').margin({ top: 10 })
         .onClick(() => {
           kioskManager.getKioskStatus()
             .then((data: kioskManager.KioskStatus) => {

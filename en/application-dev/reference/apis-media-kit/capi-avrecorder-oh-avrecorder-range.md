@@ -1,10 +1,14 @@
 # OH_AVRecorder_Range
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVRecorder_Range {...} OH_AVRecorder_Range
+```
 
 ## Overview
 

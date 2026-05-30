@@ -1,16 +1,22 @@
 # @ohos.enterprise.bluetoothManager (Bluetooth Management) (System API)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @hp_guo-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @zhang_yixin13-->
 
 The **bluetoothManager** module provides Bluetooth management capabilities, including setting and obtaining Bluetooth information.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-guide.md#introduction) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.bluetoothManager](js-apis-enterprise-bluetoothManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.bluetoothManager](js-apis-enterprise-bluetoothManager.md).
 
 ## Modules to Import
 
@@ -28,13 +34,15 @@ Queries whether Bluetooth is disabled.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -57,16 +65,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
   let isDisabled: boolean = bluetoothManager.isBluetoothDisabled(wantTemp);
-  console.info(`Succeeded in query the bluetooth is disabled or not, isDisabled : ${isDisabled}`);
+  console.info(`Succeeded in querying the bluetooth is disabled or not, isDisabled : ${isDisabled}`);
 } catch(err) {
   console.error(`Failed to query the bluetooth is disabled or not. Code: ${err.code}, message: ${err.message}`);
 };
@@ -82,13 +92,15 @@ Sets the policy for disabling Bluetooth.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                                   | Mandatory| Description                                     |
 | -------- | ------------------------------------------------------- | ---- | ----------------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                   |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                   |
 | disabled | boolean                                                 | Yes  | Whether to disable Bluetooth. The value **true** means to disable Bluetooth; **false** means the opposite.|
 
 **Error codes**
@@ -106,16 +118,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
   bluetoothManager.setBluetoothDisabled(wantTemp, true);
-  console.info('Succeeded in set the bluetooth disabled.');
+  console.info('Succeeded in setting the bluetooth disabled.');
 } catch(err) {
   console.error(`Failed to set the bluetooth disabled. Code: ${err.code}, message: ${err.message}`);
 };

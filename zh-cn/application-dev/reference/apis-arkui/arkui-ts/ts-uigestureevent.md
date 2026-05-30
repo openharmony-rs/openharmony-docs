@@ -1,18 +1,20 @@
 # 设置组件绑定的手势
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于设置组件绑定的手势。可以通过UIGestureEvent对象调用其接口添加或删除手势。
 
 >**说明：**
 >
->本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为空。建议优先使用fingerInfos。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为空。建议优先使用fingerInfos。
 
 ## UIGestureEvent
 
@@ -34,7 +36,7 @@ addGesture\<T>(gesture: GestureHandler\<T>, priority?: GesturePriority, mask?: G
 | ------ | ------ | ---- | -------------------------- |
 | gesture  |  [GestureHandler\<T>](./ts-gesturehandler.md#gesturehandlert) | 是   | 手势处理器对象。 |
 | priority  |  [GesturePriority](./ts-gesturehandler.md#gesturepriority枚举说明) | 否   | 绑定手势的优先级。<br>默认值：GesturePriority.NORMAL |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
 
 ### addParallelGesture
 
@@ -51,7 +53,7 @@ addParallelGesture\<T>(gesture: GestureHandler\<T>, mask?: GestureMask): void
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
 | gesture  |  [GestureHandler\<T>](./ts-gesturehandler.md#gesturehandlert) | 是   | 手势处理器对象。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
 
 ### removeGestureByTag
 

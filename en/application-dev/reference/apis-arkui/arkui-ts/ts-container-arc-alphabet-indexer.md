@@ -1,16 +1,37 @@
 # ArcAlphabetIndexer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **ArcAlphabetIndexer** component is a circular component designed for quick navigation through alphabetically sorted items. It can be integrated with container components to quickly locate items within the visible area.
+The **ArcAlphabetIndexer** component is an arc-shaped component designed for quick navigation through alphabetically sorted items. It can be integrated with container components to quickly locate items within the visible area.
 
 >  **NOTE**
 >
->  This component is supported since API version 16. Updates will be marked with a superscript to indicate their earliest API version.
+>  - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
+>  - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
 
 
 ## Modules to Import
 
+> **NOTE**
+>
+> - **ArcAlphabetIndexerAttribute** is essential for configuring the **ArcAlphabetIndexer** component. In API version 21 and earlier, you must manually import **ArcAlphabetIndexerAttribute** after importing the **ArcAlphabetIndexer** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcAlphabetIndexerAttribute** when it detects the **ArcAlphabetIndexer** component, so manual import is no longer necessary.
+>
+> - If you manually import **ArcAlphabetIndexerAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+
+API version 21 and earlier:
+
+```ts
+import { ArcAlphabetIndexer, ArcAlphabetIndexerAttribute } from '@kit.ArkUI';
 ```
-import { ArcAlphabetIndexer, ArcAlphabetIndexerAttribute } from '@kit.ArkUI'
+
+API version 22 and later:
+
+```ts
+import { ArcAlphabetIndexer } from '@kit.ArkUI';
 ```
 
 
@@ -25,7 +46,7 @@ ArcAlphabetIndexer(info: ArcAlphabetIndexerInitInfo)
 
 Creates an instance of the **ArcAlphabetIndexer** component with initialization parameters.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -38,7 +59,7 @@ Creates an instance of the **ArcAlphabetIndexer** component with initialization 
 
 ## Attributes
 
-In addition to the [universal attributes](ts-universal-attributes-size.md), the following attributes are supported.
+In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
 
 ### color
 
@@ -46,7 +67,7 @@ color(color: Optional&lt;ColorMetrics&gt;)
 
 Sets the text color of the index items in the normal state.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -54,7 +75,7 @@ Sets the text color of the index items in the normal state.
 
 | Name| Type                                      | Mandatory| Description                               |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Text color of the index items in the normal state.<br>Default value: **0xFFFFFF**|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes  | Text color.<br>Default value: **0xFFFFFF**, displayed as white|
 
 ### selectedColor
 
@@ -62,7 +83,7 @@ selectedColor(color: Optional&lt;ColorMetrics&gt;)
 
 Sets the text color of the selected item.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -70,7 +91,7 @@ Sets the text color of the selected item.
 
 | Name| Type                                      | Mandatory| Description                                     |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Text color of the selected item.<br>Default value: **0xFFFFFF**|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes  | Text color of the selected item.<br>Default value: **0xFFFFFF**, displayed as white|
 
 ### popupColor
 
@@ -78,7 +99,7 @@ popupColor(color: Optional&lt;ColorMetrics&gt;)
 
 Sets the text color for the pop-up window.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -86,7 +107,7 @@ Sets the text color for the pop-up window.
 
 | Name| Type                                      | Mandatory| Description                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Text color of the pop-up window.<br>Default value: **0xFFFFFF**|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes  | Text color of the pop-up window.<br>Default value: **0xFFFFFF**, displayed as white|
 
 ### selectedBackgroundColor
 
@@ -94,7 +115,7 @@ selectedBackgroundColor(color: Optional&lt;ColorMetrics&gt;)
 
 Sets the background color of the selected item.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -102,7 +123,7 @@ Sets the background color of the selected item.
 
 | Name| Type                                      | Mandatory| Description                                     |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Background color of the selected item.<br>Default value: **0x1F71FF**|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes  | Background color of the selected item.<br>Default value: **0x1F71FF**, displayed as dark blue|
 
 ### popupBackground
 
@@ -110,7 +131,7 @@ popupBackground(color: Optional&lt;ColorMetrics&gt;)
 
 Sets the background color of the pop-up window.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -118,7 +139,11 @@ Sets the background color of the pop-up window.
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Background color of the pop-up window.<br>Default value: **0xD8404040**|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes  | Background color of the pop-up window.<br>Default value: **0xD8404040**, displayed as dark gray with slight transparency|
+
+>  **NOTE**
+>
+>  After configuring the popup background color with **popupBackground**, avoid applying background blur effects via [popupBackgroundBlurStyle](#popupbackgroundblurstyle).
 
 ### usePopup
 
@@ -126,7 +151,7 @@ usePopup(enabled: Optional&lt;boolean&gt;)
 
 Sets whether to display the pop-up window.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -134,7 +159,7 @@ Sets whether to display the pop-up window.
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------- | ---- | -------------------------------------- |
-| enabled | Optional&lt;boolean&gt; | Yes  | Whether to display the pop-up window.<br>Default value: **false**|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | Yes  | Whether to display the pop-up window.<br>**true**: yes; **false**: no<br>Default value: **false**|
 
 ### selectedFont
 
@@ -142,7 +167,7 @@ selectedFont(font: Optional&lt;Font&gt;)
 
 Sets the font style of the selected item, including size, weight, style, and font family.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -150,15 +175,15 @@ Sets the font style of the selected item, including size, weight, style, and fon
 
 | Name| Type                                    | Mandatory| Description                                                        |
 | ------ | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| font   | [Optional&lt;Font&gt;](ts-types.md#font) | Yes  | Font style of the selected item.<br>Default value: {<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | Yes  | Font style of the selected item.<br>Default value: {<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
 
 ### popupFont
 
-popupFont(value: Optional&lt;Font&gt;)
+popupFont(font: Optional&lt;Font&gt;)
 
 Sets the font style of the pop-up window.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -166,7 +191,7 @@ Sets the font style of the pop-up window.
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Optional&lt;Font&gt;](ts-types.md#font) | Yes  | Font style of the pop-up window.<br>Default value:<br>{<br>size:'19.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | Yes  | Font style of the pop-up window.<br>Default value:<br>{<br>size:'19.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
 
 ### font
 
@@ -174,7 +199,7 @@ font(font: Optional&lt;Font&gt;)
 
 Sets the default font style of the index items.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -182,7 +207,7 @@ Sets the default font style of the index items.
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font   | [Optional&lt;Font&gt;](ts-types.md#font) | Yes  | Default font style of the index items.<br>Default value:<br>{<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | Yes  | Default font style of the index items.<br>Default value:<br>{<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
 
 ### itemSize
 
@@ -190,7 +215,7 @@ itemSize(size: Optional&lt;LengthMetrics&gt;)
 
 Sets the size of the index item area.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -198,7 +223,7 @@ Sets the size of the index item area.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| size  | Optional&lt;LengthMetrics&gt; | Yes  | Size of the index item area. For the circular item area, this represents the diameter of the circle. Percentage values are not supported.<br>Default value: **24.0**<br>Unit: vp|
+| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | Yes  | Size of the index item area. For the circular item area, this represents the diameter of the circle. Percentage values are not supported.<br>Default value: **24.0**<br>Unit: vp|
 
 ### selected
 
@@ -206,7 +231,7 @@ selected(index: Optional&lt;number&gt;)
 
 Sets the index of the selected item.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -214,15 +239,15 @@ Sets the index of the selected item.
 
 | Name| Type  | Mandatory| Description                        |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | Optional&lt;number&gt; | Yes  | Index of the selected item.<br>Default value: **0**<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).|
+| index  | Optional&lt;number&gt; | Yes  | Index of the selected item.<br>Default value: **0**<br>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md).|
 
 ### autoCollapse
 
 autoCollapse(enable: Optional&lt;boolean&gt;)
 
-Sets whether to auto-collapse or expand the indexer.
+Sets whether to enable the adaptive collapse behavior for the indexer.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -230,15 +255,19 @@ Sets whether to auto-collapse or expand the indexer.
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| enable  | Optional&lt;boolean&gt; | Yes  | Whether to auto-collapse or expand the indexer.<br>Default value: **false**|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | Yes  | Whether to enable the adaptive collapse behavior for the indexer.<br>Default value: **true**.<br>**true**: Enable the adaptive collapse behavior.<br>**false**: Disable the adaptive collapse behavior.|
 
 ### popupBackgroundBlurStyle
 
 popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 
-Sets the background blur style of the pop-up window.
+Sets the background blur style of the pop-up window. If this API is not used, the blur is disabled by default. The corresponding value is **NONE** in **BlurStyle**.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+> **NOTE**
+>
+> After configuring the pop-up window background blur style with **popupBackgroundBlurStyle**, avoid applying background colors via [popupBackground](#popupbackground).
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -246,11 +275,11 @@ Sets the background blur style of the pop-up window.
 
 | Name| Type                                        | Mandatory| Description                                                        |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style  | [Optional&lt;BlurStyle&gt;](ts-universal-attributes-background.md#blurstyle9) | Yes  | Background blur style of the pop-up window.<br>Default value: **COMPONENT_REGULAR**|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | Yes  | Background blur style of the pop-up window.|
 
 ## Events
 
-In addition to the [universal events](ts-universal-events-click.md), the following events are supported.
+In addition to the [universal events](ts-component-general-events.md), the following events are supported.
 
 ### onSelect
 
@@ -258,7 +287,7 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 Triggered when an index item is selected. The return value is the index of the selected item.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -266,23 +295,21 @@ Triggered when an index item is selected. The return value is the index of the s
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| handler  | Optional&lt;[OnSelectCallback](#onselectcallback)&gt; | Yes  | Callback used to return the result.|
+| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | Yes  | Callback used to return the result.|
 
 
 ## ArcAlphabetIndexerInitInfo
 
-Defines the initialization parameters for the **ArcAlphabetIndexer** component.
+Initialization parameters for the **ArcAlphabetIndexer** component.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| arrayValue | string[] | Yes| Array of alphabet index strings. It cannot be set to empty.|
-| selected   | number              | Yes| Index of the initial selected item. If the value is out of range, the default value **0** is used.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | ---- | ---- | -------- |
+| arrayValue | string[] | No| No| Array of alphabet index strings. It cannot be set to empty.|
+| selected   | number              | No| No| Index of the initial selected item. If the value is out of range, the default value **0** is used.<br>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md).|
 
 ## OnSelectCallback
 
@@ -290,7 +317,7 @@ type OnSelectCallback =  (index: number) => void
 
 Defines the callback used in [onSelect](#onselect).
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
@@ -317,20 +344,7 @@ import {
   ArcAlphabetIndexer,
   ArcAlphabetIndexerAttribute
 } from '@kit.ArkUI';
-
-@Builder
-function buildText() {
-  Stack() {
-    Text("head")
-      .fontSize(30)
-      .padding(10)
-      .backgroundColor(0xF9CF93)
-      .border({ width: '1px', color: Color.Black })
-
-    Divider().width('100%').height('1px')
-  }
-  .alignContent(Alignment.Bottom)
-}
+// Starting from API version 22, you do not need to manually import ArcListAttribute, ArcListItemAttribute, and ArcAlphabetIndexerAttribute. For details, refer to the Modules to Import section of ArcList, ArcListItem, and ArcAlphabetIndexer.
 
 @Entry
 @Component
@@ -338,18 +352,18 @@ struct ArcListAndIndexer {
   private fullValue: string[] = [
     '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-  ]
+  ];
   private arrName : string[] = [
     '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20',
     '21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38',
     '39','40', '41','42',
   ];
 
-  private scrollerForList: Scroller = new Scroller()
+  private scrollerForList: Scroller = new Scroller();
   @State indexerIndex: number = 0;
 
-  private watchSize: string = '466px' // Default watch size: 233*233
-  private itemSize: number = 16  // Default size of the index item area: 24
+  private watchSize: string = '466px'; // Default watch size: 233*233
+  private itemSize: number = 24;  // Default size of the index item area: 24
 
   build() {
     Column() {
@@ -385,8 +399,8 @@ struct ArcListAndIndexer {
             .usePopup(false)
             .selected(this.indexerIndex)
             .onSelect((index: number) => {
-              this.indexerIndex = index
-              this.scrollerForList.scrollToIndex(this.indexerIndex)
+              this.indexerIndex = index;
+              this.scrollerForList.scrollToIndex(this.indexerIndex);
             })
             .borderWidth(1)
             .hitTestBehavior(HitTestMode.Transparent)

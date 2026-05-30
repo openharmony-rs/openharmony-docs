@@ -25,13 +25,13 @@ Provides model-related APIs for model creation and inference. These APIs are non
 
 ### Structs
 
-| Name                                                                  | Description                             |
-|----------------------------------------------------------------------|---------------------------------|
-| [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | Defines the tensor array structure, which is used to store the tensor array pointer and tensor array length.     |
-| [OH_AI_ShapeInfo](capi-mindspore-oh-ai-shapeinfo.md)                 | Maximum number of shapes. The maximum value reserved is **32**, and the maximum number currently supported is **8**.|
-| [OH_AI_CallBackParam](capi-mindspore-oh-ai-callbackparam.md)         | Defines the operator information passed in a callback.                  |
-| [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md)                                                | Defines the pointer to a model object.                               |
-| [OH_AI_TrainCfgHandle](capi-mindspore-oh-ai-traincfghandle.md)                                             | Defines the pointer to a training configuration object.                               |
+| Name   | typedef Keyword                                                              | Description                             |
+|----------------------------------------------------------------------|--|---------------------------------|
+| OH_AI_TensorHandleArray | [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | Defines the tensor array structure, which is used to store the tensor array pointer and tensor array length.     |
+| OH_AI_ShapeInfo | [OH_AI_ShapeInfo](capi-mindspore-oh-ai-shapeinfo.md)                 | Maximum number of shapes. The maximum value reserved is **32**, and the maximum number currently supported is **8**.|
+| OH_AI_CallBackParam | [OH_AI_CallBackParam](capi-mindspore-oh-ai-callbackparam.md)         | Defines the operator information passed in a callback.                  |
+| void * | [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md)                                                | Defines the pointer to a model object.                               |
+| void * |[OH_AI_TrainCfgHandle](capi-mindspore-oh-ai-traincfghandle.md)                                             | Defines the pointer to a training configuration object.                               |
 
 ### Functions
 
@@ -40,8 +40,8 @@ Provides model-related APIs for model creation and inference. These APIs are non
 | [typedef bool (\*OH_AI_KernelCallBack)(const OH_AI_TensorHandleArray inputs, const OH_AI_TensorHandleArray outputs,const OH_AI_CallBackParam kernel_Info)](#oh_ai_kernelcallback) | OH_AI_KernelCallBack | Defines the pointer to a callback.<br> This pointer is used to set the two callback functions in [OH_AI_ModelPredict](capi-model-h.md#oh_ai_modelpredict).<br> Each callback function must contain three parameters, where **inputs** and **outputs** indicate the input and output tensors of the operator, and **kernel_Info** indicates information about the current operator.<br> You can use the callback functions to monitor the operator execution status, for example, operator execution time and the operator correctness.                                 |
 | [OH_AI_API OH_AI_ModelHandle OH_AI_ModelCreate(void)](#oh_ai_modelcreate) | - | Creates a model object.                                                                                                                                                                                                                                          |
 | [OH_AI_API void OH_AI_ModelDestroy(OH_AI_ModelHandle *model)](#oh_ai_modeldestroy) | - | Destroys a model object.                                                                                                                                                                                                                                          |
-| [OH_AI_API OH_AI_Status OH_AI_ModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)](#oh_ai_modelbuild) | - | Loads and builds a MindSpore model from the memory buffer.<br> Note that the same [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) object can only be passed to [OH_AI_ModelBuild](capi-model-h.md#oh_ai_modelbuild) or [OH_AI_ModelBuildFromFile](capi-model-h.md#oh_ai_modelbuildfromfile) once. If you call this function multiple times, make sure that you create multiple [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) objects accordingly.|
-| [OH_AI_API OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)](#oh_ai_modelbuildfromfile) | - | Loads and builds a MindSpore model from a model file.<br> Note that the same [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) object can only be passed to [OH_AI_ModelBuild](capi-model-h.md#oh_ai_modelbuild) or [OH_AI_ModelBuildFromFile](capi-model-h.md#oh_ai_modelbuildfromfile) once. If you call this function multiple times, make sure that you create multiple [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) objects accordingly.    |
+| [OH_AI_API OH_AI_Status OH_AI_ModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)](#oh_ai_modelbuild) | - | Loads and builds a MindSpore Lite model from the memory buffer.<br> Note that the same [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) object can only be passed to [OH_AI_ModelBuild](capi-model-h.md#oh_ai_modelbuild) or [OH_AI_ModelBuildFromFile](capi-model-h.md#oh_ai_modelbuildfromfile) once. If you call this function multiple times, make sure that you create multiple [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) objects accordingly.|
+| [OH_AI_API OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)](#oh_ai_modelbuildfromfile) | - | Loads and builds a MindSpore Lite model from a model file.<br> Note that the same [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) object can only be passed to [OH_AI_ModelBuild](capi-model-h.md#oh_ai_modelbuild) or [OH_AI_ModelBuildFromFile](capi-model-h.md#oh_ai_modelbuildfromfile) once. If you call this function multiple times, make sure that you create multiple [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) objects accordingly.    |
 | [OH_AI_API OH_AI_Status OH_AI_ModelResize(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs,OH_AI_ShapeInfo *shape_infos, size_t shape_info_num)](#oh_ai_modelresize) | - | Adjusts the input tensor shapes of a built model.                                                                                                                                                                                                                                      |
 | [OH_AI_API OH_AI_Status OH_AI_ModelPredict(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs,OH_AI_TensorHandleArray *outputs, const OH_AI_KernelCallBack before,const OH_AI_KernelCallBack after)](#oh_ai_modelpredict) | - | Performs model inference.                                                                                                                                                                                                                                            |
 | [OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetInputs(const OH_AI_ModelHandle model)](#oh_ai_modelgetinputs) | - | Obtains the input tensor array structure of a model.                                                                                                                                                                                                                                    |
@@ -68,12 +68,13 @@ Provides model-related APIs for model creation and inference. These APIs are non
 | [OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_ModelType model_type, void *model_data,size_t *data_size, OH_AI_QuantizationType quantization_type,bool export_inference_only, char **output_tensor_name, size_t num)](#oh_ai_exportmodelbuffer) | - | Exports the memory cache of the training model. This API is used only for on-device training.                                                                                                                                                                                                                                |
 | [OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle model, OH_AI_ModelType model_type,const char *weight_file, bool is_inference,bool enable_fp16, char **changeable_weights_name,size_t num)](#oh_ai_exportweightscollaboratewithmicro) | - | Exports the weight file of the training model for micro inference. This API is used only for on-device training.                                                                                                                                                                                                                        |
 | [OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char *config_path)](#oh_ai_modelloadconfig) | - | Loads the model configuration file.|
+| [OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)](#oh_ai_modelpredictwithconfig) | - | Performs model inference. Different inference parameters can be set for each inference.|
 
 ## Function Description
 
 ### OH_AI_KernelCallBack()
 
-```
+```c
 typedef bool (*OH_AI_KernelCallBack)(const OH_AI_TensorHandleArray inputs, const OH_AI_TensorHandleArray outputs,const OH_AI_CallBackParam kernel_Info)
 ```
 
@@ -100,7 +101,7 @@ Defines the pointer to a callback.<br>This pointer is used to set the two callba
 
 ### OH_AI_ModelCreate()
 
-```
+```c
 OH_AI_API OH_AI_ModelHandle OH_AI_ModelCreate(void)
 ```
 
@@ -118,7 +119,7 @@ Creates a model object.
 
 ### OH_AI_ModelDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_ModelDestroy(OH_AI_ModelHandle *model)
 ```
 
@@ -137,13 +138,13 @@ Destroys a model object.
 
 ### OH_AI_ModelBuild()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)
 ```
 
 **Description**
 
-Loads and builds a MindSpore model from the memory buffer.<br>Note that the same [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) object can only be passed to [OH_AI_ModelBuild](capi-model-h.md#oh_ai_modelbuild) or [OH_AI_ModelBuildFromFile](capi-model-h.md#oh_ai_modelbuildfromfile) once. If you call this function multiple times, make sure that you create multiple [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) objects accordingly.
+Loads and builds a MindSpore Lite model from the memory buffer.<br>Note that the same [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) object can only be passed to [OH_AI_ModelBuild](capi-model-h.md#oh_ai_modelbuild) or [OH_AI_ModelBuildFromFile](capi-model-h.md#oh_ai_modelbuildfromfile) once. If you call this function multiple times, make sure that you create multiple [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) objects accordingly.
 
 **Since**: 9
 
@@ -166,13 +167,13 @@ Loads and builds a MindSpore model from the memory buffer.<br>Note that the same
 
 ### OH_AI_ModelBuildFromFile()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)
 ```
 
 **Description**
 
-Loads and builds a MindSpore model from a model file.<br>Note that the same [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) object can only be passed to [OH_AI_ModelBuild](capi-model-h.md#oh_ai_modelbuild) or [OH_AI_ModelBuildFromFile](capi-model-h.md#oh_ai_modelbuildfromfile) once. If you call this function multiple times, make sure that you create multiple [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) objects accordingly.
+Loads and builds a MindSpore Lite model from a model file.<br>Note that the same [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) object can only be passed to [OH_AI_ModelBuild](capi-model-h.md#oh_ai_modelbuild) or [OH_AI_ModelBuildFromFile](capi-model-h.md#oh_ai_modelbuildfromfile) once. If you call this function multiple times, make sure that you create multiple [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) objects accordingly.
 
 **Since**: 9
 
@@ -182,7 +183,7 @@ Loads and builds a MindSpore model from a model file.<br>Note that the same [OH_
 | Name| Description|
 | -- | -- |
 | [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.|
-| const char *model_path | Path of the model file.|
+| const char *model_path | Path of the model file. The string length is subject to the file system.|
 | [OH_AI_ModelType](capi-types-h.md#oh_ai_modeltype) model_type | Model file type, which is specified by [OH_AI_ModelType](capi-types-h.md#oh_ai_modeltype).|
 | const [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) model_context | Model runtime context, which is specified by [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md).|
 
@@ -194,7 +195,7 @@ Loads and builds a MindSpore model from a model file.<br>Note that the same [OH_
 
 ### OH_AI_ModelResize()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelResize(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs,OH_AI_ShapeInfo *shape_infos, size_t shape_info_num)
 ```
 
@@ -222,7 +223,7 @@ Adjusts the input tensor shapes of a built model.
 
 ### OH_AI_ModelPredict()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelPredict(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs,OH_AI_TensorHandleArray *outputs, const OH_AI_KernelCallBack before,const OH_AI_KernelCallBack after)
 ```
 
@@ -251,7 +252,7 @@ Performs model inference.
 
 ### OH_AI_ModelGetInputs()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetInputs(const OH_AI_ModelHandle model)
 ```
 
@@ -276,7 +277,7 @@ Obtains the input tensor array structure of a model.
 
 ### OH_AI_ModelGetOutputs()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetOutputs(const OH_AI_ModelHandle model)
 ```
 
@@ -301,7 +302,7 @@ Obtains the output tensor array structure of a model.
 
 ### OH_AI_ModelGetInputByTensorName()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetInputByTensorName(const OH_AI_ModelHandle model, const char *tensor_name)
 ```
 
@@ -317,7 +318,7 @@ Obtains the input tensor of a model by tensor name.
 | Name| Description|
 | -- | -- |
 | const [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.|
-| const char *tensor_name | Tensor name.|
+| const char *tensor_name | Tensor name. The string length is subject to system restrictions.|
 
 **Returns**
 
@@ -327,7 +328,7 @@ Obtains the input tensor of a model by tensor name.
 
 ### OH_AI_ModelGetOutputByTensorName()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetOutputByTensorName(const OH_AI_ModelHandle model, const char *tensor_name)
 ```
 
@@ -343,17 +344,17 @@ Obtains the output tensor of a model by tensor name.
 | Name| Description|
 | -- | -- |
 | const [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.|
-| const char *tensor_name | Tensor name.|
+| const char *tensor_name | Tensor name. The string length is subject to system restrictions.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| OH_AI_API [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) | Pointer to the input tensor indicated by **tensor_name**. If the tensor does not exist, **null** will be returned.|
+| OH_AI_API [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) | Pointer to the output tensor indicated by **tensor_name**. If the tensor does not exist, **null** will be returned.|
 
 ### OH_AI_TrainCfgCreate()
 
-```
+```c
 OH_AI_API OH_AI_TrainCfgHandle OH_AI_TrainCfgCreate()
 ```
 
@@ -371,7 +372,7 @@ Creates the pointer to the training configuration object. This API is used only 
 
 ### OH_AI_TrainCfgDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_TrainCfgDestroy(OH_AI_TrainCfgHandle *train_cfg)
 ```
 
@@ -390,7 +391,7 @@ Destroys the pointer to the training configuration object. This API is used only
 
 ### OH_AI_TrainCfgGetLossName()
 
-```
+```c
 OH_AI_API char **OH_AI_TrainCfgGetLossName(OH_AI_TrainCfgHandle train_cfg, size_t *num)
 ```
 
@@ -416,7 +417,7 @@ Obtains the list of loss functions, which are used only for on-device training.
 
 ### OH_AI_TrainCfgSetLossName()
 
-```
+```c
 OH_AI_API void OH_AI_TrainCfgSetLossName(OH_AI_TrainCfgHandle train_cfg, const char **loss_name, size_t num)
 ```
 
@@ -437,7 +438,7 @@ Sets the list of loss functions, which are used only for on-device training.
 
 ### OH_AI_TrainCfgGetOptimizationLevel()
 
-```
+```c
 OH_AI_API OH_AI_OptimizationLevel OH_AI_TrainCfgGetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg)
 ```
 
@@ -462,7 +463,7 @@ Obtains the optimization level of the training configuration object. This API is
 
 ### OH_AI_TrainCfgSetOptimizationLevel()
 
-```
+```c
 OH_AI_API void OH_AI_TrainCfgSetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg, OH_AI_OptimizationLevel level)
 ```
 
@@ -482,7 +483,7 @@ Sets the optimization level of the training configuration object. This API is us
 
 ### OH_AI_TrainModelBuild()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TrainModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context,const OH_AI_TrainCfgHandle train_cfg)
 ```
 
@@ -512,7 +513,7 @@ Loads a training model from the memory buffer and compiles the model to a state 
 
 ### OH_AI_TrainModelBuildFromFile()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TrainModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path,OH_AI_ModelType model_type,const OH_AI_ContextHandle model_context,const OH_AI_TrainCfgHandle train_cfg)
 ```
 
@@ -528,7 +529,7 @@ Loads the training model from the specified path and compiles the model to a sta
 | Name| Description|
 | -- | -- |
 | [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.|
-| const char *model_path | Path of the model file.|
+| const char *model_path | Path of the model file. The string length is subject to the file system.|
 | [OH_AI_ModelType](capi-types-h.md#oh_ai_modeltype) model_type | Model file type, which is specified by [OH_AI_ModelType](capi-types-h.md#oh_ai_modeltype).|
 | const [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) model_context | Model runtime context, which is specified by [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md).|
 | const [OH_AI_TrainCfgHandle](capi-mindspore-oh-ai-traincfghandle.md) train_cfg | Pointer to the training configuration object.|
@@ -541,7 +542,7 @@ Loads the training model from the specified path and compiles the model to a sta
 
 ### OH_AI_RunStep()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_RunStep(OH_AI_ModelHandle model, const OH_AI_KernelCallBack before,const OH_AI_KernelCallBack after)
 ```
 
@@ -568,7 +569,7 @@ Defines a single-step training model. This API is used only for on-device traini
 
 ### OH_AI_ModelSetLearningRate()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelSetLearningRate(OH_AI_ModelHandle model, float learning_rate)
 ```
 
@@ -594,7 +595,7 @@ Sets the learning rate for model training. This API is used only for on-device t
 
 ### OH_AI_ModelGetLearningRate()
 
-```
+```c
 OH_AI_API float OH_AI_ModelGetLearningRate(OH_AI_ModelHandle model)
 ```
 
@@ -619,7 +620,7 @@ Obtains the learning rate for model training. This API is used only for on-devic
 
 ### OH_AI_ModelGetWeights()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetWeights(OH_AI_ModelHandle model)
 ```
 
@@ -644,7 +645,7 @@ Obtains all weight tensors of a model. This API is used only for on-device train
 
 ### OH_AI_ModelUpdateWeights()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelUpdateWeights(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray new_weights)
 ```
 
@@ -670,7 +671,7 @@ Updates the weight tensors of a model. This API is used only for on-device train
 
 ### OH_AI_ModelGetTrainMode()
 
-```
+```c
 OH_AI_API bool OH_AI_ModelGetTrainMode(OH_AI_ModelHandle model)
 ```
 
@@ -691,11 +692,11 @@ Obtains the training mode.
 
 | Type| Description|
 | -- | -- |
-| OH_AI_API bool | Whether the training mode is used.|
+| OH_AI_API bool | Whether the training mode is used. The value **true** indicates that the training mode is used, and the value **false** indicates the opposite.|
 
 ### OH_AI_ModelSetTrainMode()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelSetTrainMode(OH_AI_ModelHandle model, bool train)
 ```
 
@@ -711,7 +712,7 @@ Sets the training mode. This API is used only for on-device training.
 | Name| Description|
 | -- | -- |
 | [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.|
-| bool train | Whether the training mode is used.|
+| bool train | Whether the training mode is used. The value **true** indicates that the training mode is used, and the value **false** indicates the opposite.|
 
 **Returns**
 
@@ -721,7 +722,7 @@ Sets the training mode. This API is used only for on-device training.
 
 ### OH_AI_ModelSetupVirtualBatch()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelSetupVirtualBatch(OH_AI_ModelHandle model, int virtual_batch_multiplier, float lr,float momentum)
 ```
 
@@ -737,7 +738,7 @@ Sets the virtual batch for training. This API is used only for on-device trainin
 | Name| Description|
 | -- | -- |
 | [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.|
-| int virtual_batch_multiplier | Virtual batch multiplier. If the value is less than **1**, the virtual batch is disabled.|
+| int virtual_batch_multiplier | Virtual batch multiplier. If the value is less than **1**, the virtual batch is disabled. The length is subject to system restrictions.|
 | float lr | Learning rate. The default value is **-1.0f**.|
 | float momentum | Momentum. The default value is **-1.0f**.|
 
@@ -749,7 +750,7 @@ Sets the virtual batch for training. This API is used only for on-device trainin
 
 ### OH_AI_ExportModel()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ExportModel(OH_AI_ModelHandle model, OH_AI_ModelType model_type, const char *model_file,OH_AI_QuantizationType quantization_type, bool export_inference_only,char **output_tensor_name, size_t num)
 ```
 
@@ -766,9 +767,9 @@ Exports a training model. This API is used only for on-device training.
 |------------------------------------------------------------------------------------| -- |
 | [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model                     | Pointer to the model object.|
 | [OH_AI_ModelType](capi-types-h.md#oh_ai_modeltype) model_type                      | Model file type, which is specified by [OH_AI_ModelType](capi-types-h.md#oh_ai_modeltype).|
-| const char *model_file                                                             | Path of the exported model file.|
+| const char *model_file                                                             | Path of the exported model file. The string length is subject to the file system.|
 | [OH_AI_QuantizationType](capi-types-h.md#oh_ai_quantizationtype) quantization_type | Quantization type.|
-| bool export_inference_only                                                         | Whether to export an inference model.|
+| bool export_inference_only                                                         | Whether to export an inference model. The value **true** means to export an inference model, and the value **false** means the opposite.|
 | char **output_tensor_name                                                          | Output tensor of the exported model. This parameter is left blank by default, which indicates full export.|
 | size_t num                                                                         | Number of output tensors.|
 
@@ -780,7 +781,7 @@ Exports a training model. This API is used only for on-device training.
 
 ### OH_AI_ExportModelBuffer()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_ModelType model_type, void *model_data,size_t *data_size, OH_AI_QuantizationType quantization_type,bool export_inference_only, char **output_tensor_name, size_t num)
 ```
 
@@ -800,7 +801,7 @@ Exports the memory cache of the training model. This API is used only for on-dev
 | void *model_data | Pointer to the buffer that stores the exported model file.|
 | size_t *data_size | Buffer size.|
 | [OH_AI_QuantizationType](capi-types-h.md#oh_ai_quantizationtype) quantization_type | Quantization type.|
-| bool export_inference_only | Whether to export an inference model.|
+| bool export_inference_only | Whether to export an inference model. The value **true** means to export an inference model, and the value **false** means the opposite.|
 | char **output_tensor_name | Output tensor of the exported model. This parameter is left blank by default, which indicates full export.|
 | size_t num | Number of output tensors.|
 
@@ -812,7 +813,7 @@ Exports the memory cache of the training model. This API is used only for on-dev
 
 ### OH_AI_ExportWeightsCollaborateWithMicro()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle model, OH_AI_ModelType model_type,const char *weight_file, bool is_inference,bool enable_fp16, char **changeable_weights_name,size_t num)
 ```
 
@@ -829,9 +830,9 @@ Exports the weight file of the training model for micro inference. This API is u
 | -- | -- |
 | [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.|
 | [OH_AI_ModelType](capi-types-h.md#oh_ai_modeltype) model_type | Model file type, which is specified by [OH_AI_ModelType](capi-types-h.md#oh_ai_modeltype).|
-| const char *weight_file | Path of the exported weight file.|
+| const char *weight_file | Path of the exported weight file. The string length is subject to the file system.|
 | bool is_inference | Whether to export inference models. Currently, this parameter can only be set to **true**.|
-| bool enable_fp16 | Whether to save floating-point weights in float16 format.|
+| bool enable_fp16 | Whether to save floating-point weights in float16 format. The value **true** means to save floating-point weights in float16 format, and the value **false** means the opposite.|
 | char **changeable_weights_name | Name of the weight tensor with a variable shape.|
 | size_t num | Number of weight tensors with a variable shape.|
 
@@ -843,7 +844,7 @@ Exports the weight file of the training model for micro inference. This API is u
 
 ### OH_AI_ModelLoadConfig()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char *config_path);
 ```
 
@@ -855,13 +856,43 @@ Loads the model configuration file.
 
 **Parameters**
 
-| Name                                                      | Description          |
-| ------------------------------------------------------------ | -------------- |
-| [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.|
-| const char *config_path                                      | Configuration file path.|
+| Name                                                      | Description                                      |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.                            |
+| const char *config_path                                      | Configuration file path. The string length is subject to the file system.|
 
 **Returns**
 
 | Type                                                   | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | Status code enumerated by [OH_AI_Status](capi-status-h.md#oh_ai_status). The value **OH_AI_STATUS_SUCCESS** indicates that the operation is successful. If the operation fails, an error code is returned.|
+
+### OH_AI_ModelPredictWithConfig()
+
+```c
+OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)
+
+```
+
+**Description**
+
+Performs model inference. Different inference parameters can be set for each inference.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.|
+| [const OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) inputs | Tensor array structure corresponding to the model input.|
+| [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) *outputs | Pointer to the tensor array structure corresponding to the model output.|
+| const char *config | Model configuration file. The string length is subject to the file system.|
+| [const OH_AI_KernelCallBack](capi-model-h.md#oh_ai_kernelcallback) before | Callback function executed before model inference.|
+| [const OH_AI_KernelCallBack](capi-model-h.md#oh_ai_kernelcallback) after | Callback function executed after model inference.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
 | OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | Status code enumerated by [OH_AI_Status](capi-status-h.md#oh_ai_status). The value **OH_AI_STATUS_SUCCESS** indicates that the operation is successful. If the operation fails, an error code is returned.|

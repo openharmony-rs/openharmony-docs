@@ -1,10 +1,10 @@
 # 从OpenSL ES切换到OHAudio(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 由于OpenSL ES无法满足音频系统的能力拓展，建议开发者使用OHAudio替代OpenSL ES开发音频业务。本文将介绍如何从使用OpenSL ES接口开发音频业务，切换为使用OHAudio接口。
 
@@ -14,7 +14,7 @@
 
 具体差异如下表所示。
 
-| | OpenSL ES| OHAudio |
+| 功能 | OpenSL ES| OHAudio |
 | --- | --- | --- |
 | 音频流式播放 | √ | √ |
 | 音频流式录制 | √ | √ |
@@ -42,7 +42,7 @@ OpenSL ES:
 通过全局接口获取到Engine对象，基于Engine结合不同输入输出配置参数，构造出不同音频播放对象。
 
 ```cpp
-// 生成Engine Inteface对象。
+// 生成Engine Interface对象。
 SLEngineItf engine;
 // ...
 

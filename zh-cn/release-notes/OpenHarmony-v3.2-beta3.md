@@ -66,9 +66,9 @@ DeviceProfile适配分布式数据库自动同步策略，以及采集信息补�
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
   
    ```
    git config --global user.name "yourname"
@@ -79,7 +79,7 @@ DeviceProfile适配分布式数据库自动同步策略，以及采集信息补�
 4. 安装码云repo工具，可以执行如下命令。
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -88,18 +88,18 @@ DeviceProfile适配分布式数据库自动同步策略，以及采集信息补�
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta3 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta3 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta3 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta3 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -110,14 +110,14 @@ DeviceProfile适配分布式数据库自动同步策略，以及采集信息补�
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-3.2-Beta3 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-3.2-Beta3 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta3 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta3 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -181,7 +181,7 @@ API变更请参考：
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ### Samples
@@ -190,15 +190,15 @@ API变更请参考：
 
 | 子系统 | 名称 | 简介 | 开发语言 |
 | -------- | -------- | -------- | -------- |
-| ArkUI | [HealthyDiet：健康饮食](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/HealthyDiet) | 这是一个记录饮食和查看食物信息的应用，主要用于管理饮食健康。可以添加饮食信息，包括食物的种类、重量以及用餐时间，如早餐、&nbsp;午餐、晚餐和夜宵，并能统计得到相应用餐时间的总热量值、总蛋白质、总脂肪和总碳水值，并且用柱状图的形式展示出来。 | ArkTS |
-| ArkUI | [MusicAlbum：一多音乐专辑主页](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/MusicAlbum) | 本示例展示了音乐专辑主页，使用一次开发多端部署中介绍的自适应布局能力和响应式布局能力进行多设备（或多窗口尺寸）适配，保证应用在不同设备或不同窗口尺寸下可以正常显示。 | ArkTS |
-| 元能力、文件管理 | [CustomShare：自定义分享](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/CustomShare) | 分享的主要工作是实现：发送方将文本，链接，图片文件三种类型分享给三方应用,同时能够在三方应用中分别呈现出来。 | ArkTS |
-| 元能力 | [FormExtAbility：Stage模型卡片](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/Widget/FormExtAbility) | 本示例展示了Stage模型卡片提供方的创建与使用。 | ArkTS |
-| ArkUI | [AppMarket：一多应用市场首页](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/AppMarket) | 本示例展示了应用市场首页，页面中包括Tab栏、运营横幅、精品应用、精品游戏等。 | ArkTS |
-| ArkUI | [Weather：一多天气](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Weather) | 本示例展示一个天气应用界面，包括首页、城市管理、添加城市、更新时间弹窗，体现一次开发，多端部署的能力。 | ArkTS |
-| 媒体 | [MediaCollections：媒体管理合集](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/MediaCollections) | 本示例展示了网络流播放能力、音视频播控能力、音量调节能力等。 | ArkTS |
+| ArkUI | [HealthyDiet：健康饮食](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/HealthyDiet) | 这是一个记录饮食和查看食物信息的应用，主要用于管理饮食健康。可以添加饮食信息，包括食物的种类、重量以及用餐时间，如早餐、&nbsp;午餐、晚餐和夜宵，并能统计得到相应用餐时间的总热量值、总蛋白质、总脂肪和总碳水值，并且用柱状图的形式展示出来。 | ArkTS |
+| ArkUI | [MusicAlbum：一多音乐专辑主页](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/MusicAlbum) | 本示例展示了音乐专辑主页，使用一次开发多端部署中介绍的自适应布局能力和响应式布局能力进行多设备（或多窗口尺寸）适配，保证应用在不同设备或不同窗口尺寸下可以正常显示。 | ArkTS |
+| 元能力、文件管理 | [CustomShare：自定义分享](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/CustomShare) | 分享的主要工作是实现：发送方将文本，链接，图片文件三种类型分享给三方应用,同时能够在三方应用中分别呈现出来。 | ArkTS |
+| 元能力 | [FormExtAbility：Stage模型卡片](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/Widget/FormExtAbility) | 本示例展示了Stage模型卡片提供方的创建与使用。 | ArkTS |
+| ArkUI | [AppMarket：一多应用市场首页](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/AppMarket) | 本示例展示了应用市场首页，页面中包括Tab栏、运营横幅、精品应用、精品游戏等。 | ArkTS |
+| ArkUI | [Weather：一多天气](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Weather) | 本示例展示一个天气应用界面，包括首页、城市管理、添加城市、更新时间弹窗，体现一次开发，多端部署的能力。 | ArkTS |
+| 媒体 | [MediaCollections：媒体管理合集](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/MediaCollections) | 本示例展示了网络流播放能力、音视频播控能力、音量调节能力等。 | ArkTS |
 
-请访问[Samples](https://gitee.com/openharmony/applications_app_samples)仓了解更多信息。
+请访问[Samples](https://gitcode.com/openharmony/applications_app_samples)仓了解更多信息。
 
 
 ## 修复缺陷列表

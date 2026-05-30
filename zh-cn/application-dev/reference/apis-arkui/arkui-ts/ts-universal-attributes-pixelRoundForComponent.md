@@ -4,13 +4,15 @@
 <!--Owner: @Lichtschein-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件级像素取整的目标是将像素取整功能作为组件的属性，从而在组件层面实现系统像素取整的开启或关闭。
 
 >  **说明：**
 >
->  本模块从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## pixelRound
 
@@ -20,7 +22,9 @@ pixelRound(value: PixelRoundPolicy): T
 
 > **说明：**
 > 
-> 在API version 11，本接口采用半像素对齐方式（即0\~0.25取0，0.25\~0.75取0.5，0.75\~1.0取1）。从API version 12开始，本接口采用四舍五入的取整方式，并支持组件级关闭像素取整的能力。
+> - 在API version 11，本接口采用半像素对齐方式（即0\~0.25取0，0.25\~0.75取0.5，0.75\~1.0取1）。从API version 12开始，本接口采用四舍五入的取整方式，并支持组件级关闭像素取整的能力。
+>
+> - 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 正常计算时，上下方向与组件高度相对应，左右方向（镜像的起始方向称为左）与宽度相对应。为方便描述将两组方向称为左上和右下。
 
@@ -58,16 +62,16 @@ pixelRound(value: PixelRoundPolicy): T
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| start | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件前部边界取整对齐方式。 |
-| top | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件上部边界取整对齐方式。 |
-| end | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件尾部边界取整对齐方式。 |
-| bottom | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件底部边界取整对齐方式。 |
+| start | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件前部边界取整对齐方式。<br/>不设置[pixelRound](#pixelround)或者设置异常值时按四舍五入规则取整。|
+| top | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件上部边界取整对齐方式。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
+| end | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件尾部边界取整对齐方式。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
+| bottom | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件底部边界取整对齐方式。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
 
 ## 常见问题
 
 | 问题描述                                                     | 解决方法                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 子容器100%填充父容器，在偏移量与大小刚好使父容器向上取整而子组件向下取整时，父容器会露出1px。 | 1.子组件向露出方向采用ceil取整方式。<br>2. 同时关闭父子组件的像素取整。 |
+| 子容器100%填充父容器，在偏移量与大小刚好使父容器向上取整而子组件向下取整时，父容器会露出1px。 | 1. 子组件向露出方向采用ceil取整方式。<br>2. 同时关闭父子组件的像素取整。 |
 | 使用List组件并设置分割线，在特定场景下分割线消失。           | 1. 在List组件上设置2px的space。<br/>2. 关闭相应组件上的像素取整。 |
 | 特定设备上出现重叠。                                         | 1. 在List组件上设置2px的space。<br>2. 关闭相应组件上的像素取整。<br>3. 通过@ohos.mediaquery（媒体查询）获取设备的dpi进行定制化适配。 |
 | 组件渲染时带有动画且有轻微抖动。                             | 关闭相应组件上的像素取整。                                   |
@@ -85,7 +89,7 @@ struct PixelRoundExample {
 
     build() {
         Column() {
-            Button(){
+            Button() {
                 Text(this.curWidth.toString())
             }
             .onClick(() => {
@@ -116,14 +120,14 @@ struct PixelRoundExample {
                 end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
             })
         }
-        .width("100%")
+        .width('100%')
         .height('100%')
         .backgroundColor('#ffe5e5e5')
     }
 }
 ```
 
-在本示例中，当取消像素取整功能（即不设置父子组件上的pixelRound属性）后，初始状态表现为正常。用户可通过点击按钮来增加父组件的宽度，当前示例父组件宽度为301.2px，以此测试在不同宽度下的表现差异。测试中会发现，当父组件达到特定宽度时，右侧会出现1px的显示。同样地，适当调整示例代码后，也可进行上下方向的测试，以观察类似现象。
+在本示例中，当取消像素取整功能（即不设置父子组件上的pixelRound属性）后，初始状态表现为正常。用户可通过点击按钮来增加父组件的宽度，当前示例父组件宽度为301.2px，以此测试在不同宽度下的表现差异。测试中会发现，当父组件达到特定宽度时，右侧会出现1px的缝隙。同样地，适当调整示例代码后，也可进行上下方向的测试，以观察类似现象。
 
 **图1** 使用pixelRound指导布局效果图
 

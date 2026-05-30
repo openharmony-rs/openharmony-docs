@@ -1,0 +1,27 @@
+| Change Type | Old Version | New Version | d.ts File |
+| ---- | ------ | ------ | -------- |
+|Deleted error code|Class name: pointer;<br>API declaration: function setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void;<br>DIfferences: 801|Class name: pointer;<br>API declaration: function setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void;<br>DIfferences: NA|api/@ohos.multimodalInput.pointer.d.ts|
+|Deleted error code|Class name: pointer;<br>API declaration: function setPointerVisible(visible: boolean): Promise\<void>;<br>DIfferences: 801|Class name: pointer;<br>API declaration: function setPointerVisible(visible: boolean): Promise\<void>;<br>DIfferences: NA|api/@ohos.multimodalInput.pointer.d.ts|
+| Deleted API|Class name: inputConsumer;<br>API declaration: interface KeyPressedConfig<br>DIfferences: interface KeyPressedConfig|NA|api/@ohos.multimodalInput.inputConsumer.d.ts|
+| Deleted API|Class name: KeyPressedConfig;<br>API declaration: key: number;<br>DIfferences: key: number;|NA|api/@ohos.multimodalInput.inputConsumer.d.ts|
+| Deleted API|Class name: KeyPressedConfig;<br>API declaration: action: number;<br>DIfferences: action: number;|NA|api/@ohos.multimodalInput.inputConsumer.d.ts|
+| Deleted API|Class name: KeyPressedConfig;<br>API declaration: isRepeat: boolean;<br>DIfferences: isRepeat: boolean;|NA|api/@ohos.multimodalInput.inputConsumer.d.ts|
+| Deleted API|Class name: inputConsumer;<br>API declaration: function on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback\<KeyEvent>): void;<br>DIfferences: function on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback\<KeyEvent>): void;|NA|api/@ohos.multimodalInput.inputConsumer.d.ts|
+| Deleted API|Class name: inputConsumer;<br>API declaration: function off(type: 'keyPressed', callback?: Callback\<KeyEvent>): void;<br>DIfferences: function off(type: 'keyPressed', callback?: Callback\<KeyEvent>): void;|NA|api/@ohos.multimodalInput.inputConsumer.d.ts|
+| Deleted API|Class name: KeyCode;<br>API declaration: KEYCODE_DAGGER_CLICK = 3211<br>DIfferences: KEYCODE_DAGGER_CLICK = 3211|NA|api/@ohos.multimodalInput.keyCode.d.ts|
+| Deleted API|Class name: KeyCode;<br>API declaration: KEYCODE_DAGGER_DOUBLE_CLICK = 3212<br>DIfferences: KEYCODE_DAGGER_DOUBLE_CLICK = 3212|NA|api/@ohos.multimodalInput.keyCode.d.ts|
+| Deleted API|Class name: KeyCode;<br>API declaration: KEYCODE_DAGGER_LONG_PRESS = 3213<br>DIfferences: KEYCODE_DAGGER_LONG_PRESS = 3213|NA|api/@ohos.multimodalInput.keyCode.d.ts|
+| Deleted API|Class name: KeyCode;<br>API declaration: KEYCODE_DIV = 3220<br>DIfferences: KEYCODE_DIV = 3220|NA|api/@ohos.multimodalInput.keyCode.d.ts|
+| Deleted API|Class name: MouseEvent;<br>API declaration: globalX?: number;<br>DIfferences: globalX?: number;|NA|api/@ohos.multimodalInput.mouseEvent.d.ts|
+| Deleted API|Class name: MouseEvent;<br>API declaration: globalY?: number;<br>DIfferences: globalY?: number;|NA|api/@ohos.multimodalInput.mouseEvent.d.ts|
+| Deleted API|Class name: PointerStyle;<br>API declaration: MIDDLE_BTN_EAST_WEST<br>DIfferences: MIDDLE_BTN_EAST_WEST|NA|api/@ohos.multimodalInput.pointer.d.ts|
+| Deleted API|Class name: PointerStyle;<br>API declaration: SCREENRECORDER_CURSOR = 48<br>DIfferences: SCREENRECORDER_CURSOR = 48|NA|api/@ohos.multimodalInput.pointer.d.ts|
+| Deleted API|Class name: RightClickType;<br>API declaration: TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON = 4<br>DIfferences: TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON = 4|NA|api/@ohos.multimodalInput.pointer.d.ts|
+| Deleted API|Class name: RightClickType;<br>API declaration: TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON = 5<br>DIfferences: TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON = 5|NA|api/@ohos.multimodalInput.pointer.d.ts|
+| Deleted API|Class name: Touch;<br>API declaration: globalX?: number;<br>DIfferences: globalX?: number;|NA|api/@ohos.multimodalInput.touchEvent.d.ts|
+| Deleted API|Class name: Touch;<br>API declaration: globalY?: number;<br>DIfferences: globalY?: number;|NA|api/@ohos.multimodalInput.touchEvent.d.ts|
+|Initial version change|Class name: infraredEmitter;<br>API declaration: interface InfraredFrequency<br>DIfferences: 15|Class name: infraredEmitter;<br>API declaration: interface InfraredFrequency<br>DIfferences: 12|api/@ohos.multimodalInput.infraredEmitter.d.ts|
+|Initial version change|Class name: InfraredFrequency;<br>API declaration: max: number;<br>DIfferences: 15|Class name: InfraredFrequency;<br>API declaration: max: number;<br>DIfferences: 12|api/@ohos.multimodalInput.infraredEmitter.d.ts|
+|Initial version change|Class name: InfraredFrequency;<br>API declaration: min: number;<br>DIfferences: 15|Class name: InfraredFrequency;<br>API declaration: min: number;<br>DIfferences: 12|api/@ohos.multimodalInput.infraredEmitter.d.ts|
+|Initial version change|Class name: infraredEmitter;<br>API declaration: function transmitInfrared(infraredFrequency: number, pattern: Array\<number>): void;<br>DIfferences: 15|Class name: infraredEmitter;<br>API declaration: function transmitInfrared(infraredFrequency: number, pattern: Array\<number>): void;<br>DIfferences: 12|api/@ohos.multimodalInput.infraredEmitter.d.ts|
+|Initial version change|Class name: infraredEmitter;<br>API declaration: function getInfraredFrequencies(): Array\<InfraredFrequency>;<br>DIfferences: 15|Class name: infraredEmitter;<br>API declaration: function getInfraredFrequencies(): Array\<InfraredFrequency>;<br>DIfferences: 12|api/@ohos.multimodalInput.infraredEmitter.d.ts|

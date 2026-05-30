@@ -1,10 +1,10 @@
 # @ohos.multimedia.avInputCastPicker (录音设备选择组件)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 本模块提供创建录音设备选择组件AVInputCastPicker的功能，提供录音设备发现连接的统一入口。
 
@@ -17,7 +17,7 @@
 
 ## 导入模块
 
-```js
+```ts
 import { AVInputCastPicker } from '@kit.AVSessionKit';
 ```
 
@@ -27,7 +27,7 @@ import { AVInputCastPicker } from '@kit.AVSessionKit';
 
 ## AVInputCastPicker
 
-```
+```ts
 AVInputCastPicker({
   customPicker?: CustomBuilder;
   onStateChange?: OnPickerStateCallback;
@@ -48,7 +48,7 @@ AVInputCastPicker({
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议应用自定义组件样式，可有效提升组件显示速度。 |
+| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议应用自定义组件样式，可有效提升组件渲染性能。 |
 | onStateChange | [OnPickerStateCallback](#onpickerstatecallback) | 否 | - | 设备列表状态变更回调。 |
 
 ## OnPickerStateCallback
@@ -62,7 +62,7 @@ type OnPickerStateCallback = (state: AVCastPickerState) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| state | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11) | 是 | 设备列表状态。 |
+| state | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate) | 是 | 设备列表状态。 |
 
 ## 事件
 
@@ -79,7 +79,7 @@ import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
 @Component
 struct Index {
 
-  @State pickerImage: ResourceStr = $r('app.media.castPicker'); // 自定义资源。
+  @State pickerImage: ResourceStr = $r('app.media.layered_image'); // 自定义资源。
 
   private onStateChange(state: AVCastPickerState) {
     if (state == AVCastPickerState.STATE_APPEARING) {
@@ -90,7 +90,7 @@ struct Index {
   }
 
   @Builder
-  customPickerBuilder(): void {
+  customPickerBuilder() {
     Image(this.pickerImage)
       .width('100%')
       .height('100%')

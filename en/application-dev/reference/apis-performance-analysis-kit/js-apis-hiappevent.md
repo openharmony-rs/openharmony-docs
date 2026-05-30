@@ -3,14 +3,15 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--SE: @junjie_shi-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @jinqiuheng-->
 
 The **hiAppEvent** module provides the application event logging functions, such as writing application events to the event file and managing the event logging configuration.
 
 > **NOTE**
 >
-> - The APIs provided by this module are deprecated since API version 9. You are advised to use [`@ohos.hiviewdfx.hiAppEvent`](js-apis-hiviewdfx-hiappevent.md).
+> - The APIs provided by this module are deprecated since API version 9. You are advised to use [@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md).
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
@@ -71,7 +72,8 @@ Writes event information to the event file of the current day. This API uses an 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base'
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let eventParams: Record<string, number | string> = {
   "int_data": 100,
@@ -80,11 +82,11 @@ let eventParams: Record<string, number | string> = {
 hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams, (err: BusinessError) => {
   if (err) {
     // Event writing error: Write the event to the event file after the invalid parameters in the event are ignored, or stop writing the event if the event verification fails.
-    console.error(`failed to write event, code=${err.code}`);
+    hilog.error(0x0000, 'hiAppEvent', `failed to write event, code: ${err.code}, message: ${err.message}`);
     return;
   }
   // Event writing success
-  console.log(`success to write event`);
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
 });
 ```
 
@@ -114,7 +116,8 @@ Writes event information to the event file of the current day. This API uses a p
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base'
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let eventParams: Record<string, number | string> = {
   "int_data": 100,
@@ -122,10 +125,10 @@ let eventParams: Record<string, number | string> = {
 };
 hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams).then(() => {
   // Event writing success
-  console.log(`success to write event`);
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
 }).catch((err: BusinessError) => {
   // Event writing error: Write the event to the event file after the invalid parameters in the event are ignored, or stop writing the event if the event verification fails.
-  console.error(`failed to write event, code=${err.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -171,10 +174,10 @@ Provides the configuration items for application event logging.
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
-| Name      | Type   | Mandatory| Description                                                        |
-| ---------- | ------- | ---- | ------------------------------------------------------------ |
-| disable    | boolean | No  | Application event logging switch. The value **true** means to disable the application event logging function, and the value **false** means the opposite.|
-| maxStorage | string  | No  | Maximum size of the event file storage directory. The default value is **10M**. If the specified size is exceeded, the oldest event logging files in the directory will be deleted to free up space.|
+| Name      | Type   | Read-Only| Optional| Description                                                        |
+| ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| disable    | boolean | No| Yes| Application event logging switch. The value **true** means to disable the application event logging function, and the value **false** means the opposite.|
+| maxStorage | string  | No| Yes| Maximum size of the event file storage directory. The default value is **10M**. If the specified size is exceeded, the oldest event logging files in the directory will be deleted to free up space.|
 
 
 ## EventType

@@ -1,4 +1,10 @@
 # @ohos.arkui.drawableDescriptor (DrawableDescriptor) (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **DrawableDescriptor** module provides APIs for obtaining **pixelMap** objects, including the foreground, background, mask, and layered icons.
 
@@ -25,5 +31,7 @@ constructor()
 Creates a **DrawableDescriptor** or **LayeredDrawableDescriptor** object. The [getDrawableDescriptor](../apis-localization-kit/js-apis-resource-manager.md#getdrawabledescriptor10) or [getDrawableDescriptorByName](../apis-localization-kit/js-apis-resource-manager.md#getdrawabledescriptorbyname10) API is required for object construction.
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full

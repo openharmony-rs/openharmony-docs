@@ -1,4 +1,10 @@
 # Interaction Event Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -16,11 +22,29 @@ This error code is reported when an attempt is made to call **preventDefault** o
 
 **Possible Causes**
 
-The target component does not support the **preventDefault()** functionality.
+The target component does not support the **preventDefault** functionality.
 
 **Solution**
 
-N/A
+Use the component that supports the **preventDefault** functionality.
+
+## 106102 Unsupported Component Attributes or Events
+
+**Error Message**
+
+The component does not support specific properties or events.
+
+**Description**
+
+This error code is reported when an attempt is made to use attributes or events that are not supported by the component.
+
+**Possible Causes**
+
+The component does not support the currently set attribute or event.
+
+**Solution**
+
+Use alternative components that support the required attribute or event.
 
 ## 180001 Component Is Not a Scrollable Container
 
@@ -38,7 +62,7 @@ The component being used is not a scrollable container.
 
 **Solution**
 
-N/A
+Use a scrollable container.
 
 ## 180002 Buffer Is Not Large Enough
 
@@ -68,9 +92,31 @@ The input event pointer is not a cloned event pointer.
 
 This error code is reported when the input event is not a cloned event.
 
+**Possible Causes**
+
+A non-cloned event pointer is passed to the clone event API.
+
 **Solution**
 
-N/A
+Use the cloned event pointer as the API parameter.
+
+## 180004 Abnormal Component State
+
+**Error Message**
+
+The component status is abnormal.
+
+**Description**
+
+This error code is reported when the component state is abnormal.
+
+**Possible Causes**
+
+The component state is abnormal when the clone event is dispatched to the component.
+
+**Solution**
+
+Use the component that has been mounted but is not destroyed.
 
 ## 180005 No Component Hit to Respond to the Event
 
@@ -82,9 +128,13 @@ No component hit to response to the event.
 
 This error code is reported when no component is found to handle the event.
 
+**Possible Causes**
+
+No component is available to handle the event when the clone event is dispatched.
+
 **Solution**
 
-N/A
+Add an event listener for the component, or use a component that supports response to the event.
 
 ## 180102 Gesture Recognizer Type Is Not Supported
 
@@ -96,6 +146,10 @@ The gesture recognizer type is not supported.
 
 This error code is reported when the gesture recognizer type is not supported.
 
+**Possible Causes**
+
+The gesture recognizer type specified in the gesture API is not supported.
+
 **Solution**
 
-N/A
+Invoke the gesture recognizer that matches the type.

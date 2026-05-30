@@ -1,8 +1,15 @@
 # background_process_manager.h
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @hongjianfeng-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @HelloCrease-->
+
 ## 概述
 
-本模块提供了后台子进程管控接口。开发者可以通过本模块接口对子进程进行压制、解压制，避免子进程过多占用系统资源，导致系统使用卡顿。本模块接口仅对通过OH_Ability_StartNativeChildProcess接口创建的子进程生效。
+本模块提供了后台子进程管控接口。开发者可以通过本模块接口对子进程进行压制、解压制，避免子进程过多占用系统资源，导致系统使用卡顿。本模块接口仅对通过[OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess)接口创建的子进程生效。
 
 **引用文件：** <background_process_manager/background_process_manager.h>
 
@@ -34,7 +41,7 @@
 
 ### BackgroundProcessManager_ProcessPriority
 
-```
+```c
 enum BackgroundProcessManager_ProcessPriority
 ```
 
@@ -51,7 +58,7 @@ enum BackgroundProcessManager_ProcessPriority
 
 ### BackgroundProcessManager_ErrorCode
 
-```
+```c
 enum BackgroundProcessManager_ErrorCode
 ```
 
@@ -72,7 +79,7 @@ enum BackgroundProcessManager_ErrorCode
 
 ### OH_BackgroundProcessManager_SetProcessPriority()
 
-```
+```c
 int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessManager_ProcessPriority priority)
 ```
 
@@ -87,7 +94,7 @@ int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessMan
 
 | 参数项 | 描述 |
 | -- | -- |
-| int pid | 需要被压制子进程的进程号，OH_Ability_StartNativeChildProcess接口创建子进程后的pid参数，即为子进程进程号。 |
+| int pid | 需要被压制子进程的进程号，[OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess)接口创建子进程后的pid参数，即为子进程进程号。 |
 | [BackgroundProcessManager_ProcessPriority](capi-background-process-manager-h.md#backgroundprocessmanager_processpriority) priority | 压制档位。 |
 
 **返回：**
@@ -98,7 +105,7 @@ int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessMan
 
 ### OH_BackgroundProcessManager_ResetProcessPriority()
 
-```
+```c
 int OH_BackgroundProcessManager_ResetProcessPriority(int pid)
 ```
 
@@ -113,7 +120,7 @@ int OH_BackgroundProcessManager_ResetProcessPriority(int pid)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int pid | 子进程的进程号，OH_Ability_StartNativeChildProcess接口创建子进程后的pid参数，即为子进程进程号。 |
+| int pid | 子进程的进程号，[OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess)接口创建子进程后的pid参数，即为子进程进程号。 |
 
 **返回：**
 

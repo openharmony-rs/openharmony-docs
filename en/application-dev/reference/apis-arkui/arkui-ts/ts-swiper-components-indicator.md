@@ -1,4 +1,10 @@
 # Indicator
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @Giacinta-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Indicator** component provides two types of navigation indicators: dot indicators and digit indicators.
 
@@ -18,6 +24,8 @@ Conversely, if an **Indicator** is bound to multiple **Swiper** components, only
 Not supported
 
 ## APIs
+
+### IndicatorComponent
 
 IndicatorComponent(controller?: IndicatorComponentController)
 
@@ -55,11 +63,11 @@ Sets the style of the navigation indicator.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| indicatorStyle  | [DotIndicator](ts-container-swiper.md#dotindicator10) \| [DigitIndicator](ts-container-swiper.md#digitindicator10) | Yes  | Style of the navigation indicator.<br> \- **DotIndicator**: dot style.<br> \- **DigitIndicator**: digit style.<br>  Default style: **DotIndicator**|
+| indicatorStyle  | [DotIndicator](ts-container-swiper.md#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](ts-container-swiper.md#digitindicator10)&nbsp;| Yes  | Style of the navigation indicator.<br> \- **DotIndicator**: dot style.<br> \- **DigitIndicator**: digit style.<br>  Default style: **DotIndicator**|
 
 > **NOTE**
 >
-> When **indicatorStyle** is set to **DotIndicator**, [maxDisplayCount](ts-container-swiper.md#maxdisplaycount12) does not take effect.
+> The **maxDisplayCount** property has no effect when the **DotIndicator** type (configured in **indicatorStyle**) is not bound to a **Swiper** component.
 
 ### count
 
@@ -207,7 +215,7 @@ Moves to the previous navigation point.
 
 changeIndex(index: number, useAnimation?: boolean): void
 
-Moves to a specific navigation index.
+Navigates to the specified indicator.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 15.
 
@@ -219,14 +227,14 @@ Moves to a specific navigation index.
 
 | Name     | Type      | Mandatory | Description    |
 | -------- | ---------- | ---- | -------- |
-| index| number | Yes   | Target navigation index.|
+| index| number | Yes   | Target indicator index.<br>**NOTE**<br>If the value specified is less than 0 or greater than the maximum indicator index, the value **0** is used.|
 | useAnimation| boolean | No   | Whether to use an animation for when the target index is reached. The value **true** means to use an animation, and **false** means the opposite.<br>Default value: **false**.|
 
 ## Example
 
 ### Example 1: Using a Dot Indicator with a Swiper Component
-This example shows how to bind a dot-style **Indicator** component to a **Swiper** component using **IndicatorComponentController**.
-```
+This example binds the same [IndicatorComponentController](#indicatorcomponentcontroller) object to both the [indicator](ts-container-swiper.md#indicator) API of the [Swiper](ts-container-swiper.md) component and the [IndicatorComponent](#indicatorcomponent) constructor, enabling interaction between the dot indicator and the **Swiper** component.
+```ts
 @Entry
 @Component
 struct DotIndicatorDemo {
@@ -278,7 +286,7 @@ struct DotIndicatorDemo {
         .count(6)
         .vertical(true)
         .onChange((index: number) => {
-          console.log("current index: " + index );
+          console.info("current index: " + index );
         })
     }
   }
@@ -288,9 +296,9 @@ struct DotIndicatorDemo {
 
 ### Example 2: Using a Digit Indicator with a Swiper Component
 
-This example shows how to bind a digit-style **Indicator** component to a **Swiper** component using **IndicatorComponentController**.
+This example binds the same [IndicatorComponentController](#indicatorcomponentcontroller) object to both the [indicator](ts-container-swiper.md#indicator) API of the [Swiper](ts-container-swiper.md) component and the [IndicatorComponent](#indicatorcomponent) constructor, enabling interaction between the digit indicator and the **Swiper** component.
 
-```
+```ts
 @Entry
 @Component
 struct DigitIndicatorDemo {
@@ -339,7 +347,7 @@ struct DigitIndicatorDemo {
         .count(6)
         .vertical(true)
         .onChange((index: number) => {
-          console.log("current index: " + index );
+          console.info("current index: " + index );
         })
     }
   }

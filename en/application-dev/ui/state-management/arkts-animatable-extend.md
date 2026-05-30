@@ -1,8 +1,14 @@
 # \@AnimatableExtend Decorator: Defining Animatable Properties
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
+<!--Tester: @lxl007-->
+<!--Adviser: @zhang_yixin13-->
 
 The @AnimatableExtend decorator enables animation capabilities for normally non-animatable component properties. During animation execution, frame-by-frame callbacks are executed to change the values of non-animatable properties to allow them to achieve animation effects. Additionally, you can implement frame-by-frame layout effects by changing the values of animatable properties in the per-frame callback function.
 
-- Animatable property: A property is considered animatable if, when its method is called before the **animation** attribute, changing its value triggers the animation effect specified by **animation**. Examples include **height**, **width**, **backgroundColor**, **translate**, and **fontSize** (of the **Text** component).
+- Animatable property: A property is considered animatable if, when its method is called before the [animation](../arkts-animation.md) attribute, changing its value triggers the animation effect specified by **animation**. Examples include **height**, **width**, **backgroundColor**, **translate**, and **fontSize** (of the **Text** component).
 
 - Non-animatable property: A property is non-animatable if, when its method is called before the **animation** attribute, changing its value does not trigger the animation effect specified by **animation**. For example, the **points** property of the **Polyline** component is a non-animatable.
 
@@ -12,7 +18,7 @@ The @AnimatableExtend decorator enables animation capabilities for normally non-
 >
 > This decorator can be used in atomic services since API version 11.
 
-## Usage Rules
+## How to Use
 
 
 ### Syntax
@@ -26,24 +32,26 @@ The @AnimatableExtend decorator enables animation capabilities for normally non-
 
 - \@AnimatableExtend can be defined only globally.
 - The parameter of the \@AnimatableExtend decorated function must be of the number type or a custom type that implements the **AnimatableArithmetic\<T\>** API.
-- The function body of an @AnimatableExtend decorated function can only access property methods of the component type specified within the parentheses of @AnimatableExtend.
+- The function body of an \@AnimatableExtend decorated function can only access attribute methods of the component type specified within the parentheses of @AnimatableExtend.
 
 ### Available APIs
-The **AnimatableArithmetic\<T\>** API defines the animation operation rules for non-number data types. To animate non-number data (such as arrays, structs, and colors), implement the addition, subtraction, multiplication, and equality judgment functions in the **AnimatableArithmetic\<T\>** API.
-In this way, the data can be involved in an interpolation operation of the animation and identify whether the data changes, that is, the non-number data is defined as the types that implement the **AnimatableArithmetic\<T\>** API.
-| Name| Input Parameter Type| Return Value Type| Description
+The **AnimatableArithmetic\<T\>** API defines the animation operation rules for non-number data types. To animate non-number data (such as arrays, structs, and colors), you need to implement the addition, subtraction, multiplication, and equality checking functions in the **AnimatableArithmetic\<T\>** API. This enables the data to participate in animation interpolation calculations and to detect whether the data has changed. that is, the non-number data is defined as the types that implement the **AnimatableArithmetic\<T\>** API.
+
+| Name| Input Parameter Type| Return Value Type| Description|
 | -------- | -------- |-------- |-------- |
 | plus | AnimatableArithmetic\<T\> | AnimatableArithmetic\<T\> | Defines the addition rule of the data type.|
 | subtract | AnimatableArithmetic\<T\> | AnimatableArithmetic\<T\> | Defines the subtraction rule of the data type.|
 | multiply | number | AnimatableArithmetic\<T\> | Defines the multiplication rule of the data type.|
 | equals | AnimatableArithmetic\<T\> | boolean | Defines the equality judgment rule of the data type.|
 
-## Example
+## When to Use
 
 The following example implements the frame-by-frame layout effects by changing the width of the **Text** component.
 
 
-```ts
+<!-- @[animatable_extend_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyText.ets) -->
+
+``` TypeScript
 @AnimatableExtend(Text)
 function animatableWidth(width: number) {
   .width(width)
@@ -51,37 +59,40 @@ function animatableWidth(width: number) {
 
 @Entry
 @Component
-struct AnimatablePropertyExample {
+struct AnimatablePropertyText {
   @State textWidth: number = 80;
 
   build() {
     Column() {
-      Text("AnimatableProperty")
+      Text('AnimatableProperty')
         .animatableWidth(this.textWidth)
         .animation({ duration: 2000, curve: Curve.Ease })
-      Button("Play")
+      Button('Play')
         .onClick(() => {
           this.textWidth = this.textWidth == 80 ? 160 : 80;
         })
-    }.width("100%")
+    }.width('100%')
     .padding(10)
   }
 }
 ```
+
 ![image](figures/AnimatableProperty.gif)
 
 
 The following example implements a polyline animation effect. 
 
 
-```ts
+<!-- @[animatable_extend_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyExample.ets) -->
+
+``` TypeScript
 class Point {
-  x: number
-  y: number
+  x: number;
+  y: number;
 
   constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
+    this.x = x;
+    this.y = y;
   }
 
   plus(rhs: Point): Point {
@@ -160,7 +171,7 @@ function animatablePoints(points: PointVector) {
 
 @Entry
 @Component
-struct AnimatablePropertyExample {
+struct  AnimatablePropertyExample {
   @State points: PointVector = new PointVector([
     new Point(50, Math.random() * 200),
     new Point(100, Math.random() * 200),
@@ -178,7 +189,7 @@ struct AnimatablePropertyExample {
         .fill(Color.Green)
         .stroke(Color.Red)
         .backgroundColor('#eeaacc')
-      Button("Play")
+      Button('Play')
         .onClick(() => {
           // points is a data type that implements the animation protocol. During the animation, points can be changed from the previous PointVector data to the new one based on the defined operation rules and animation parameters to generate the PointVector data of each frame and then generate an animation.
           this.points = new PointVector([
@@ -189,9 +200,10 @@ struct AnimatablePropertyExample {
             new Point(250, Math.random() * 200),
           ]);
         })
-    }.width("100%")
+    }.width('100%')
     .padding(10)
   }
 }
 ```
+
 ![image](figures/animatable-points.gif)

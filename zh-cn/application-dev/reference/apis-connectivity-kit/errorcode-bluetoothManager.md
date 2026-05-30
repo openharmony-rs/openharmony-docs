@@ -154,6 +154,7 @@ Fails to start scan as it is out of hardware resources.
 **处理步骤**
 
 本应用未启动过扫描，可重新关开蓝牙，释放其他应用占用的扫描资源；
+
 本应用已启动过其他通道的扫描，可调用停止扫描接口，停止其他已启动的扫描，释放硬件资源后再重新启动本次扫描。
 
 ## 2900010
@@ -187,6 +188,7 @@ The operation is busy. The last operation is not complete.
 **可能原因**
 
 上一个执行的操作还未完成即执行本次操作，例如[readCharacteristicValue](js-apis-bluetooth-ble.md#readcharacteristicvalue)未结束即进行下一次操作。
+
 其他涉及的接口有[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)、[readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue)、[writeDescriptorValue](js-apis-bluetooth-ble.md#writedescriptorvalue)、[getRssiValue](js-apis-bluetooth-ble.md#getrssivalue)、[setCharacteristicChangeNotification](js-apis-bluetooth-ble.md#setcharacteristicchangenotification)、[setCharacteristicChangeIndication](js-apis-bluetooth-ble.md#setcharacteristicchangeindication)，如调用未完成均可能阻塞下一次操作。
 
 **处理步骤**
@@ -229,6 +231,42 @@ User refuse the action.
 
 重新执行前置操作。
 
+## 2900015 参数格式与规范不一致
+
+**错误信息**
+
+Parameter format mismatch with specification.
+
+**错误描述**
+
+参数格式与规范不一致。
+
+**可能原因**
+
+例如，参数长度不符合规范，或本应使用大写字母的参数却传入了小写字母。
+
+**处理步骤**
+
+检查参数格式，是否与规范保持一致。
+
+## 2900016 设备未配对
+
+**错误信息**
+
+Device unpaired.
+
+**错误描述**
+
+设备未配对。
+
+**可能原因**
+
+查询的地址与设备未配对。
+
+**处理步骤**
+
+在蓝牙设置界面检查是否与该设备配对。
+
 ## 2900099
 
 **错误信息**
@@ -237,15 +275,17 @@ Operation failed.
 
 **错误描述**
 
-操作失败。
+操作失败。发生内部系统错误，包括SA异常，IPC异常等。
 
 **可能原因**
 
-该配置文件在当前设备环境不支持。
+蓝牙接口调用失败的通用错误码，常见可能原因如下：
+1. 未满足接口调用的前置依赖条件。
+2. 指定的虚拟地址不存在。
 
 **处理步骤**
 
-请重试该操作。
+1. 检查接口调用的前置依赖条件，具体处理步骤可参考[蓝牙接口调用报错2900099](../../connectivity/bluetooth/bluetooth-faq-2900099-errorcode.md)
 
 ## 2900100
 
@@ -391,6 +431,24 @@ GATT未授权。
 
 检查GATT是否已授权。
 
+## 2901008
+
+**错误信息**
+
+GATT service is not found.
+
+**错误描述**
+
+GATT服务不存在。在获取指定的GATT服务之前，该服务应当已经被添加。
+
+**可能原因**
+
+GATT服务尚未被添加。
+
+**处理步骤**
+
+先调用[addService](js-apis-bluetooth-ble.md#addservice)添加该服务。
+
 ## 2901054
 
 **错误信息**
@@ -462,3 +520,76 @@ Invalid advertising id.
 **处理步骤**
 
 检查传入的广播标识符是否为[startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising11)接口返回的有效标识符。
+
+## 2903050 HID不在前台
+
+**错误信息**
+
+HID application is not int the foreground.
+
+**错误描述**
+
+注册HID设备能力的应用不在前台。
+
+**可能原因**
+
+当前注册HID设备能力的应用处于后台。
+
+**处理步骤**
+
+检查注册HID能力的应用是否处于前台。
+
+## 2903051 HID已注册
+
+**错误信息**
+
+Any HID application has been registered.
+
+**错误描述**
+
+其他应用已经注册过HID设备能力。
+
+**可能原因**
+
+只允许一个应用注册HID设备能力。
+
+**处理步骤**
+
+检查是否已经有其他应用注册HID设备能力。
+
+## 2903052 HID未注册
+
+**错误信息**
+
+HID application does not register.
+
+**错误描述**
+
+当前应用还没有注册HID设备能力。
+
+**可能原因**
+
+应用只有在注册HID设备能力之后才能和HID主机进行连接并进行数据交互。
+
+**处理步骤**
+
+检查当前应用注册HID设备能力是否成功。
+
+## 2903053 HID未连接
+
+**错误信息**
+
+HID device is not connected.
+
+**错误描述**
+
+当前HID设备还没有连接HID主机。
+
+**可能原因**
+
+只有在连接完成之后HID设备才能和HID主机进行数据交互。
+
+**处理步骤**
+
+检查当前应用是否注册HID设备能力并连接HID主机成功。
+

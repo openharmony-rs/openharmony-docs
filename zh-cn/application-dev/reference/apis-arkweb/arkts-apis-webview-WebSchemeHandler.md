@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 用于拦截指定scheme的请求的拦截器。
 
@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 导入模块
 
@@ -26,7 +26,11 @@ import { webview } from '@kit.ArkWeb';
 
 onRequestStart(callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void
 
-当请求开始时的回调，在该回调函数中可以决定是否拦截该请求。当回调返回false是表示不拦截此请求，此时handler失效；当回调返回true，表示拦截此请求。
+当请求开始时的回调，在该回调函数中可以决定是否拦截该请求。当回调返回false时，表示不拦截此请求，此时handler失效；当回调返回true时，表示拦截此请求。
+
+> **说明：**
+>
+> - 重定向后的URL无法单独拦截。如需拦截，必须同时对原始请求URL进行拦截。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -48,10 +52,9 @@ onRequestStart(callback: (request: WebSchemeHandlerRequest, handler: WebResource
 
 ```ts
 // xxx.ets
-import { webview } from '@kit.ArkWeb';
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { buffer } from '@kit.ArkTS';
-import { WebNetErrorList } from '@ohos.web.netErrorList';
 
 @Entry
 @Component
@@ -145,11 +148,11 @@ struct WebComponent {
 
 onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
 
-当请求完成时的回调，仅当前面onRequestStart中回调决定拦截此请求中触发。触发的时机有以下两点：
+当请求完成时的回调，仅当[onRequestStart](#onrequeststart12)回调决定拦截此请求时触发。触发的时机有以下两点：
 
-1.WebResourceHandler调用didFail或者didFinish。
+1. WebResourceHandler调用didFail或者didFinish。
 
-2.此请求因为其他原因中断。
+2. 此请求因为其他原因中断。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

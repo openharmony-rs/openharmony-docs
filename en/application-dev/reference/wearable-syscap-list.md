@@ -1,4 +1,11 @@
-# SystemCapability List
+# Wearable
+
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 
@@ -47,7 +54,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 - SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 - SystemCapability.PowerManager.BatteryManager.Core
-- SystemCapability.PowerManager.BatteryManager.Extension
 - SystemCapability.PowerManager.BatteryStatistics
 - SystemCapability.Communication.Bluetooth.Core
 - SystemCapability.BundleManager.BundleFramework
@@ -64,7 +70,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Telephony.CallManager
 - SystemCapability.Telephony.CellularData
 - SystemCapability.Security.Cert
-- SystemCapability.Notification.CommonEvent
 - SystemCapability.Customization.ConfigPolicy
 - SystemCapability.Customization.CustomConfig
 - SystemCapability.Telephony.CoreService
@@ -91,11 +96,12 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.PowerManager.DisplayPowerManager
 - SystemCapability.BundleManager.DistributedBundleFramework
 - SystemCapability.DistributedHardware.DistributedHardwareFWK
-- SystemCapability.Notification.Notification
-- SystemCapability.Notification.ReminderAgent
 - SystemCapability.Ability.DistributedAbilityManager
 - SystemCapability.Multimedia.Drm.Core
 - SystemCapability.Utils.Lang
+- SystemCapability.Notification.CommonEvent
+- SystemCapability.Notification.Notification
+- SystemCapability.Notification.ReminderAgent
 - SystemCapability.Notification.Emitter
 - SystemCapability.Resourceschedule.Ffrt.Core
 - SystemCapability.Ability.Form
@@ -164,7 +170,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Multimedia.Media.VideoRecorder
 - SystemCapability.Multimedia.SystemSound.Core
 - SystemCapability.PowerManager.PowerManager.Core
-- SystemCapability.PowerManager.PowerManager.Extension
 - SystemCapability.DistributedDataManager.Preferences.Core
 - SystemCapability.DistributedDataManager.CloudSync.Client
 - SystemCapability.DistributedDataManager.CloudSync.Config

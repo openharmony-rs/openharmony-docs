@@ -1,16 +1,16 @@
 # 动画帧
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 请求动画帧
 
-请求动画帧时通过requestAnimationFrame函数逐帧回调，在调用该函数时传入一个回调函数。
+请求动画帧时通过requestAnimationFrame函数逐帧回调，传入一个回调函数。
 
-runframe在调用requestAnimationFrame时传入带有timestamp参数的回调函数step，将step中的timestamp赋予起始的startTime。当timestamp与startTime的差值小于规定的时间时将再次调用requestAnimationFrame，最终动画将会停止。
+runframe在调用requestAnimationFrame时传入带有timestamp参数的回调函数step，将step中的timestamp赋予起始的startTime。当timestamp与startTime的差值小于规定的时间时，会再次调用requestAnimationFrame，最终动画将会停止。
 
 ```html
 <!-- xxx.hml -->
@@ -81,7 +81,7 @@ export default {
       }
       var elapsed = timestamp - this.startTime;
         if (elapsed < 500) {
-          console.log('callback step timestamp: ' + timestamp);
+          console.info('callback step timestamp: ' + timestamp);
           this.animation = requestAnimationFrame(this.step);
         }
       } else {

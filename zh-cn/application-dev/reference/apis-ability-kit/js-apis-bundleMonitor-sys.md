@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供监听应用安装，卸载，更新的能力。
 
@@ -34,23 +34,27 @@ import { bundleMonitor } from '@kit.AbilityKit';
 
 ## BundleChangedEvent
 
+type BundleChangedEvent = 'add' | 'update' | 'remove'
+
 监听的事件类型。
+
+取值类型为下表类型中的一个。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：**  此接口为系统接口。
 
-| 名称       | 说明             |
-| ---------- | --------------- |
-| add        | 监听应用安装事件。   |
-| update     | 监听应用更新事件。   |
-| remove     | 监听应用卸载事件。   |
+| 类型       | 说明                                      |
+| ---------- | ----------------------------------------- |
+| 'add'      | 监听应用安装事件，值固定为'add'字符串。      |
+| 'update'   | 监听应用更新事件，值固定为'update'字符串。   |
+| 'remove'   | 监听应用卸载事件，值固定为'remove'字符串。   |
 
 ## bundleMonitor.on
 
 on(type: BundleChangedEvent, callback: Callback\<BundleChangedInfo>): void
 
-注册监听应用的安装、卸载、更新，使用callback异步回调。
+注册监听应用的安装、卸载、更新。使用callback异步回调。
 >**说明:**
 >
 >该方法需要与[bundleMonitor.off](#bundlemonitoroff)配合使用，在组件、页面、应用的生命周期结束时，使用[bundleMonitor.off](#bundlemonitoroff)注销对应用的安装、卸载、更新等事件的监听。
@@ -66,7 +70,7 @@ on(type: BundleChangedEvent, callback: Callback\<BundleChangedInfo>): void
 | 参数名                       | 类型     | 必填 | 说明               |
 | ---------------------------- | -------- | ---- | ------------------ |
 | type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| 是   | 注册监听的事件类型。 |
-| callback | callback\<BundleChangedInfo>| 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为null，data为应用变更信息；否则为错误对象。 |
+| callback | callback\<BundleChangedInfo>| 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -82,16 +86,17 @@ on(type: BundleChangedEvent, callback: Callback\<BundleChangedInfo>): void
 
 ```ts
 import { bundleMonitor } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
   console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
 };
 try {
-    bundleMonitor.on('add', callbackFun);
+  bundleMonitor.on('add', callbackFun);
 } catch (errData) {
-    let message = (errData as BusinessError).message;
-    let errCode = (errData as BusinessError).code;
-    console.error(`errData is errCode:${errCode}  message:${message}`);
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
 }
 ```
 
@@ -99,7 +104,7 @@ try {
 
 off(type: BundleChangedEvent, callback?: Callback\<BundleChangedInfo>): void
 
-注销监听应用的安装，卸载，更新，使用callback异步回调。
+注销监听应用的安装，卸载，更新。使用callback异步回调。
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -112,7 +117,7 @@ off(type: BundleChangedEvent, callback?: Callback\<BundleChangedInfo>): void
 | 参数名                       | 类型     | 必填 | 说明                                                       |
 | ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
 | type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| 是   | 注销监听的事件类型。                                         |
-| callback | callback\<BundleChangedInfo>| 否   | [回调函数](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为null，data为应用变更信息；否则为错误对象。 |
+| callback | callback\<BundleChangedInfo>| 否   | [回调函数](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -128,7 +133,7 @@ off(type: BundleChangedEvent, callback?: Callback\<BundleChangedInfo>): void
 
 ```ts
 import { bundleMonitor } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 该方法变量需要和bundleMonitor.on方法是同一个，才能移除对应监听的方法，否则注销监听无效
 let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
@@ -136,10 +141,10 @@ let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
 };
 
 try {
-    bundleMonitor.off('add', callbackFun);
+  bundleMonitor.off('add', callbackFun);
 } catch (errData) {
-    let message = (errData as BusinessError).message;
-    let errCode = (errData as BusinessError).code;
-    console.error(`errData is errCode:${errCode}  message:${message}`);
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
 }
 ```

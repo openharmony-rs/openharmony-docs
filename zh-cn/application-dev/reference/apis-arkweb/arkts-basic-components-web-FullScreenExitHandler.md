@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 通知开发者Web组件退出全屏。示例代码参考[onFullScreenEnter事件](./arkts-basic-components-web-events.md#onfullscreenenter9)。
 
@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor<sup>9+</sup>
 

@@ -2,10 +2,10 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @huchuyun-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用来展示列表具体item，必须配合List来使用。
 
@@ -13,7 +13,7 @@
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 该组件的父组件只能是[List](ts-container-list.md)或者[ListItemGroup](ts-container-listitemgroup.md)。
-> - 当ListItem配合LazyForEach使用时，ListItem子组件在ListItem创建时创建。配合if/else、ForEach使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
+> - 当ListItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，ListItem子组件在ListItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
 
 ## 子组件
 
@@ -31,13 +31,15 @@ ListItem(value?: ListItemOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                      | 必填 | 说明                                                     |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ListItemOptions](#listitemoptions10对象说明) | 否   | 为ListItem提供可选参数，该对象内含有ListItemStyle枚举类型的style参数。<br/>默认值：{ style: ListItemStyle.NONE } |
+| value  | [ListItemOptions](#listitemoptions10对象说明) | 否   | 为ListItem提供可选参数，该对象内含有[ListItemStyle](#listitemstyle10枚举说明)枚举类型的style参数。<br/>默认值：{ style: ListItemStyle.NONE } |
 
 ### ListItem<sup>(deprecated)</sup>
 
@@ -45,7 +47,9 @@ ListItem(value?: string)
 
 创建ListItem组件。
 
-从API version 10开始，该接口不再维护，推荐使用[ListItem<sup>10+</sup>](#listitem10)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[ListItem<sup>10+</sup>](#listitem10)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -67,7 +71,9 @@ sticky(value: Sticky)
 
 设置ListItem吸顶效果。
 
-从API version 9开始废弃不再使用，推荐使用[List组件sticky属性](ts-container-list.md#sticky9)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[sticky](ts-container-list.md#sticky9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,7 +89,9 @@ editable(value: boolean | EditMode)
 
 设置当前ListItem元素是否可编辑，进入编辑模式后可删除或移动列表项。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,11 +123,13 @@ selectable(value: boolean)
 
 selected(value: boolean)
 
-设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[选中态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
+设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[多态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,7 +159,9 @@ swipeAction(value: SwipeActionOptions)
 
 ListItem吸顶效果枚举。
 
-从API version 9开始废弃不再使用，推荐使用[List组件stickyStyle枚举](ts-container-list.md#stickystyle9枚举说明)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用List组件的[StickyStyle](ts-container-list.md#stickystyle9枚举说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,7 +175,9 @@ ListItem吸顶效果枚举。
 
 ListItem元素编辑模式枚举。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,7 +202,7 @@ ListItem元素编辑模式枚举。
 
 ## SwipeActionOptions<sup>9+</sup>对象说明
 
-start和end对应的@builder函数中顶层必须是单个组件，不能是if/else、ForEach、LazyForEach语句。
+start和end对应的@builder函数中顶层必须是单个组件，否则会引发未定义行为。如果@builder函数中顶层是if/else、ForEach等语句，那么需要保证if/else、ForEach等语句必须能生成单个组件。
 
 滑动手势只在listItem区域上，如果子组件划出ListItem区域外，在ListItem以外部分不会响应划动手势。所以在多列模式下，建议不要将划出组件设置太宽。
 
@@ -199,12 +213,15 @@ start和end对应的@builder函数中顶层必须是单个组件，不能是if/e
 | start                        | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否   | 是 | ListItem向右划动时item左边的组件（List垂直布局时）或ListItem向下划动时item上方的组件（List水平布局时）。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | end                          | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否   | 是 | ListItem向左划动时item右边的组件（List垂直布局时）或ListItem向上划动时item下方的组件（List水平布局时）。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | edgeEffect                   | [SwipeEdgeEffect](#swipeedgeeffect9枚举说明)                 | 否   | 是 | 滑动效果。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                |
-| onOffsetChange<sup>11+</sup> | (offset: number) => void                                     | 否   | 是 | 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）位置发生变化触发，以vp为单位。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| onOffsetChange<sup>11+</sup> | (offset: number) => void                                     | 否   | 是 | 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）位置发生变化触发，以vp为单位。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## SwipeActionItem<sup>10+</sup>对象说明
 
 List垂直布局，ListItem向右滑动时，item左边的长距离滑动删除选项。向左滑动时，item右边的长距离滑动删除选项。
-</br>List水平布局，ListItem向上滑动时，item下边的长距离滑动删除选项。向下滑动时，item上边的长距离滑动删除选项。
+
+List水平布局，ListItem向上滑动时，item下边的长距离滑动删除选项。向下滑动时，item上边的长距离滑动删除选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -223,8 +240,11 @@ ListItem组件参数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; auto; 10%; 10%; auto-->
 | 名称  | 类型                                  | 只读 | 可选 | 说明                                                         |
 | ----- | ----------------------------------------- | ---- | -- | ------------------------------------------------------------ |
 | style | [ListItemStyle](#listitemstyle10枚举说明) | 否   | 是 | 设置List组件卡片样式。<br/>默认值：ListItemStyle.NONE<br/>设置为ListItemStyle.NONE时无样式。<br/>设置为ListItemStyle.CARD时，建议配合[ListItemGroup](ts-container-listitemgroup.md)的ListItemGroupStyle.CARD同时使用，显示默认卡片样式。  <br/>卡片样式下，ListItem默认规格：高度48vp，宽度100%，左右内边距8vp。如果需要实现ListItem高度自适应，可以把height设置为undefined。<br/>卡片样式下，为卡片内的列表选项提供了默认的focus、hover、press、selected和disable样式。<br/>**说明：**<br/>当设置为ListItemStyle.CARD时，List的listDirection属性值须为Axis.Vertical，如果设置为Axis.Horizontal，会导致显示混乱；List属性alignListItem默认为ListItemAlign.Center，居中对齐显示。 |
@@ -234,6 +254,8 @@ ListItem组件参数。
 List组件卡片样式枚举。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -247,6 +269,8 @@ List组件卡片样式枚举。
 列表项滑动状态枚举。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -281,11 +305,13 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 ListItem划出菜单的管理器。
 
 ### expand<sup>21+</sup>
-expand(node: FrameNode, direction: ListItemSwipeActionDirection)
+expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 展开指定ListItem的划出菜单。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -303,18 +329,20 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection)
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
 | 100023   | The component type of the node is incorrect. |
-| 106203   | The node is not mounted to the component tree. |
+| 106203   | The node not mounted to component tree. |
 
 > **说明：**
 >
 > - 如果List组件cachedCount属性isShow参数设置为true，List显示区域外已预加载完成的ListItem支持展开，否则List显示区域外节点不支持展开。
 
 ### collapse<sup>21+</sup>
-collapse(node: FrameNode)
+collapse(node: FrameNode): void
 
 收起指定ListItem的划出菜单。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -331,13 +359,15 @@ collapse(node: FrameNode)
 | 错误码ID    | 错误信息                                                                                             |
 |----------|--------------------------------------------------------------------------------------------------|
 | 100023   | The component type of the node is incorrect. |
-| 106203   | The node is not mounted to the component tree. |
+| 106203   | The node not mounted to component tree. |
 
 ## ListItemSwipeActionDirection<sup>21+</sup>枚举说明
 
 ListItem划出菜单的展开方向。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -416,11 +446,16 @@ struct ListItemExample2 {
   @State exitEndDeleteAreaString: string = 'not exitEndDeleteArea';
   private scroller: ListScroller = new ListScroller();
 
-  @Builder itemEnd() {
+  @Builder
+  itemEnd() {
     Row() {
       Button('Delete').margin('4vp')
       Button('Set').margin('4vp').onClick(() => {
-        this.scroller.closeAllSwipeActions();
+        try {
+          this.scroller.closeAllSwipeActions();
+        } catch (error) {
+          console.info('Failed to close all swipe actions:', error);
+        }
       })
     }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
   }
@@ -438,10 +473,12 @@ struct ListItemExample2 {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-          .transition({ type: TransitionType.Delete, opacity: 0 })
+          .transition(TransitionEffect.OPACITY)
           .swipeAction({
             end: {
-              builder: () => { this.itemEnd() },
+              builder: () => {
+                this.itemEnd()
+              },
               onAction: () => {
                 this.getUIContext()?.animateTo({ duration: 1000 }, () => {
                   let index = this.arr.indexOf(item);
@@ -461,6 +498,7 @@ struct ListItemExample2 {
           })
         }, (item: number) => item.toString())
       }
+
       Text(this.enterEndDeleteAreaString).fontSize(20)
       Text(this.exitEndDeleteAreaString).fontSize(20)
     }
@@ -493,6 +531,7 @@ struct ListItemExample3 {
             }
           })
         }
+
         ForEach([ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE], (itemStyle: number, index?: number) => {
           ListItem({ style: itemStyle }) {
             Text('' + index)
@@ -514,7 +553,7 @@ struct ListItemExample3 {
 
 ### 示例4（通过ComponentContent设置划出组件）
 
-该示例通过ComponentContent设置ListItem中的划出组件操作时显示的操作项。
+该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置ListItem中的划出组件操作时显示的操作项。
 
 ```ts
 // xxx.ets
@@ -523,6 +562,7 @@ import { ComponentContent } from '@kit.ArkUI';
 class BuilderParams {
   text: string | Resource;
   scroller: ListScroller;
+
   constructor(text: string | Resource, scroller: ListScroller) {
     this.text = text;
     this.scroller = scroller;
@@ -538,6 +578,7 @@ function itemBuilder(params: BuilderParams) {
     })
   }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
 }
+
 @Component
 struct MyListItem {
   scroller: ListScroller = new ListScroller();
@@ -545,21 +586,23 @@ struct MyListItem {
   @State project ?: number = 0;
   startBuilder ?: ComponentContent<BuilderParams> = undefined;
   endBuilder ?: ComponentContent<BuilderParams> = undefined;
-
   builderParam = new BuilderParams('delete', this.scroller);
 
   aboutToAppear(): void {
     this.startBuilder = new ComponentContent(this.getUIContext(), wrapBuilder(itemBuilder), this.builderParam);
     this.endBuilder = new ComponentContent(this.getUIContext(), wrapBuilder(itemBuilder), this.builderParam);
   }
+
   GetStartBuilder() {
     this.startBuilder?.update(new BuilderParams('StartDelete', this.scroller));
     return this.startBuilder;
   }
+
   GetEndBuilder() {
     this.endBuilder?.update(new BuilderParams('EndDelete', this.scroller));
     return this.endBuilder;
   }
+
   build() {
     ListItem() {
       Text('item' + this.project)
@@ -570,7 +613,7 @@ struct MyListItem {
         .borderRadius(10)
         .backgroundColor(0xFFFFFF)
     }
-    .transition({ type: TransitionType.Delete, opacity: 0 })
+    .transition(TransitionEffect.OPACITY)
     .swipeAction({
       end: {
         builderComponent: this.GetEndBuilder(),
@@ -608,7 +651,7 @@ struct ListItemExample {
       List({ space: 10, scroller: this.scroller }) {
         ListItemGroup() {
           ForEach(this.arr, (project: number) => {
-            MyListItem({ scroller: this.scroller, project: project, arr:this.arr })
+            MyListItem({ scroller: this.scroller, project: project, arr: this.arr })
           }, (item: string) => item)
         }
       }
@@ -623,7 +666,7 @@ struct ListItemExample {
 ![ListItemStyle](figures/deleteListItem_example04.gif)
 
 ### 示例5（通过ListItemSwipeActionManager管理划出菜单）
-该示例通过ListItemSwipeActionManager管理ListItem的划出菜单。
+从API version 21开始，该示例通过[ListItemSwipeActionManager](#listitemswipeactionmanager21)管理ListItem的划出菜单。
 
 ```ts
 // xxx.ets
@@ -642,31 +685,31 @@ struct ListItemExample5 {
   build() {
     Flex({ wrap: FlexWrap.Wrap }) {
       Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
-        Button("expand start")
+        Button('expand start')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.START)
             } catch (error) {
-              console.error("Error expand item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
-        Button("expand end")
+        Button('expand end')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.END)
             } catch (error) {
-              console.error("Error expand item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
-        Button("collapse")
+        Button('collapse')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.collapse(node)
             } catch (error) {
-              console.error("Error collapse item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error collapse item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
       }
@@ -674,7 +717,7 @@ struct ListItemExample5 {
 
       List({ space: 10 }) {
         ListItem() {
-          Text("item")
+          Text('item')
             .width('100%')
             .height(100)
             .fontSize(16)
@@ -683,7 +726,7 @@ struct ListItemExample5 {
             .backgroundColor(0xFFFFFF)
         }
         .id('listItem')
-        .transition({ type: TransitionType.Delete, opacity: 0 })
+        .transition(TransitionEffect.OPACITY)
         .swipeAction({
           start: {
             builder: () => {

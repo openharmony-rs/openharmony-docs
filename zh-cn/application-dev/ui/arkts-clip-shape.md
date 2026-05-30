@@ -1,4 +1,10 @@
 # 形状裁剪（clipShape）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 可利用[clipShape](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)接口将组件裁剪为所需的形状。调用该接口后，可以保留该形状覆盖的组件部分，同时移除组件的其余部分。裁剪形状本身是不可见的。
 
@@ -13,8 +19,9 @@
 ## 裁剪圆形
 
 通过设置CircleShape，将图片裁剪为圆形。
+<!-- @[ClipShapeExampleA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample1.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { CircleShape } from '@kit.ArkUI';
 
@@ -24,11 +31,13 @@ struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
       // 用一个280px直径的圆对图片进行裁剪
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new CircleShape({ width: '280px', height: '280px' }))
         .width('500px').height('280px')
 
       // 用一个350px直径的圆对图片进行裁剪
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new CircleShape({ width: '350px', height: '350px' }))
         .width('500px').height('370px')
@@ -44,8 +53,9 @@ struct ClipShapeExample {
 ## 裁剪椭圆形
 
 通过设置EllipseShape，将图片裁剪为椭圆形。
+<!-- @[ClipShapeExampleB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample2.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { EllipseShape } from '@kit.ArkUI';
 
@@ -54,10 +64,12 @@ import { EllipseShape } from '@kit.ArkUI';
 struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new EllipseShape({ width: '280px', height: '200px' }))
         .width('500px').height('400px')
 
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new EllipseShape({ width: '380px', height: '280px' }))
         .width('500px').height('400px')
@@ -73,8 +85,9 @@ struct ClipShapeExample {
 ## 裁剪矩形
 
 通过设置RectShape，将图片裁剪为矩形。
+<!-- @[ClipShapeExampleC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample3.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { RectShape } from '@kit.ArkUI';
 
@@ -83,10 +96,12 @@ import { RectShape } from '@kit.ArkUI';
 struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new RectShape({ width: '200px', height: '200px' }))
         .width('500px').height('400px')
 
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new RectShape({ width: '380px', height: '280px' }))
         .width('500px').height('400px')
@@ -102,8 +117,9 @@ struct ClipShapeExample {
 ## 裁剪不规则形状
 
 通过设置PathShape，将图片裁剪为不规则形状。
+<!-- @[ClipShapeExampleD](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample4.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { PathShape } from '@kit.ArkUI';
 
@@ -113,6 +129,7 @@ struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
       Row() {
+        // 请将$r('app.media.background')替换为实际资源文件
         Image($r('app.media.background'))
           .clipShape(new PathShape({ commands: 'M0 0 H400 V200 H0 Z' }))
           .width('500px').height('300px')

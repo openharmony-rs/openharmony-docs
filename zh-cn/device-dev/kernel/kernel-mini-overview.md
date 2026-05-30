@@ -144,5 +144,5 @@ LiteOS-M内核移植的具体开发板的工程由社区开发者提供，可以
 
 [内核子系统](../../readme/内核子系统.md)
 
-[kernel\_liteos\_m](https://gitee.com/openharmony/kernel_liteos_m/blob/master/README_zh.md)
+[kernel\_liteos\_m](https://gitcode.com/openharmony/kernel_liteos_m/blob/master/README_zh.md)
 

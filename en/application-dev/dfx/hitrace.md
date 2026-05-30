@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @qq_437963121-->
-<!--Designer: @MontSaintMichel-->
+<!--Designer: @kutcherzhou1; @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
@@ -19,32 +19,33 @@ hitrace provides the capability of collecting trace information in text or binar
 
 ## Command Description
 
-| Command| Description| 
+| Command| Description|
 | -------- | -------- |
-| -h/--help | Displays the help information.| 
-| -l/--list_categories | Displays the tag list.| 
-| --trace_begin | Starts capturing trace data.| 
-| --trace_finish | Stops capturing trace data.| 
-| --trace_finish_nodump | Stops capturing trace data. Unlike **--trace_finish**, this command does not output trace information.| 
-| --trace_dump | Dumps trace information.| 
-| --record | Enables the recording mode, which allows long-time trace data collection and persisting. This command must be used together with **--trace_begin** or **--trace_finish**.| 
-| --overwrite | Sets the behavior after the kernel buffer is full. If this option is not set, the earliest data is discarded by default. Otherwise, the latest data is discarded.| 
-| --file_size | Sets the file size, in KB. This option is valid only for collecting trace data in binary format.| 
-| -b N/--buffer_size N | Sets the buffer size for storing and reading trace data, in KB. The minimum value is 512, and the maximum value depends on the available memory of the device.| 
-| -t N/--time N | Sets the collection duration, in seconds.| 
-| -o/--output filename | Specifies the name of the target file. If the exported trace data is in text format, the default value is **stdout**. If you want to save the trace data to a file, you are advised to use the **/data/local/tmp** directory. This option is not supported if the exported trace data is in binary format.| 
-| -z | Compresses the captured trace data.| 
-| --text | Exports trace data in text format (text format is used by default).| 
-| --raw | Exports trace data in binary format (text format is used by default).| 
-| --trace_clock | Sets the clock type used by the timestamp in the trace data. The value can be **boot** (default), **global**, **mono**, **uptime**, or **perf**. Supported clock types vary according to devices. You are advised to use the default **boot** to collect data, which is the timestamp of the current startup, in seconds. The time types are described as follows:<br>- **boot**: timestamp that starts at system startup and continues to accumulate while the system is hibernated or suspended.<br>- **global**: global clock, which may cause performance overhead.<br>- **mono**: timestamp that starts at system startup and does not accumulate when the system is hibernated or suspended.<br>- **uptime**: timestamp that starts at system startup, which is similar to **mono**.<br>- **perf**: high-performance counter, which is suitable for performance analysis.| 
-| --start_bgsrv | Starts trace collection in the snapshot mode.| 
-| --dump_bgsrv | Dumps the trace data in the snapshot mode to a file.| 
-| --stop_bgsrv | Stops trace collection in the snapshot mode.| 
-| --trace_level | Sets the trace level threshold. The value can be **Debug**, **Info**, **Critical**, **Commercial**, or **D**, **I**, **C**, or **M**.<br>**Note**: This command is supported since API version 19.| 
+| -h/--help | Displays the help information.|
+| -l/--list_categories | Displays the tag list.|
+| --trace_begin | Starts capturing trace data.|
+| --trace_finish | Stops capturing trace data.|
+| --trace_finish_nodump | Stops capturing trace data. Unlike **--trace_finish**, this command does not output trace information.|
+| --trace_dump | Dumps trace information.|
+| --record | Enables the recording mode, which allows long-time trace data collection and persisting. This command must be used together with **--trace_begin** or **--trace_finish**.|
+| --overwrite | Sets the behavior after the kernel buffer is full. If this option is not set, the earliest data is discarded by default. Otherwise, the latest data is discarded.|
+| --file_size | Sets the file size, in KB. This option is valid only for collecting trace data in binary format.|
+| -b N/--buffer_size N | Sets the buffer size for storing and reading trace data, in KB. The minimum value is 512, and the maximum value depends on the available memory of the device.|
+| -t N/--time N | Sets the collection duration, in seconds.|
+| -o/--output filename | Specifies the name of the target file. If the exported trace data is in text format, the default value is **stdout**. If you want to save the trace data to a file, you are advised to use the **/data/local/tmp** directory. This option is not supported if the exported trace data is in binary format.|
+| -z | Compresses the captured trace data.|
+| --text | Exports trace data in text format (text format is used by default).|
+| --raw | Exports trace data in binary format (text format is used by default).|
+| --trace_clock | Sets the clock type used by the timestamp in the trace data. The value can be **boot** (default), **global**, **mono**, **uptime**, or **perf**. Supported clock types vary according to devices. You are advised to use the default **boot** to collect data, which is the timestamp of the current startup, in seconds. The time types are described as follows:<br>- **boot**: timestamp that starts at system startup and continues to accumulate while the system is hibernated or suspended.<br>- **global**: global clock, which may cause performance overhead.<br>- **mono**: timestamp that starts at system startup and does not accumulate when the system is hibernated or suspended.<br>- **uptime**: timestamp that starts at system startup, which is similar to **mono**.<br>- **perf**: high-performance counter, which is suitable for performance analysis.|
+| --start_bgsrv | Starts trace collection in the snapshot mode.|
+| --dump_bgsrv | Dumps the trace data in the snapshot mode to a file.|
+| --stop_bgsrv | Stops trace collection in the snapshot mode.|
+| --trace_level | Sets the trace level threshold. The value can be **Debug**, **Info**, **Critical**, **Commercial**, or **D**, **I**, **C**, or **M**.<br>**Note**: This command is supported since API version 19.|
+| --get_level | Queries the trace level threshold.<br>Note: This command is supported since API version 20.|
 
 > **NOTE**
 >
-> Trace information can be saved in text or binary format. The trace information in text format can be viewed using a text editor, and the trace information in binary format can be analyzed using the [Smartperf_Host](https://gitee.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitee.com/openharmony/developtools_smartperf_host/releases).
+> Trace information can be saved in text or binary format. The trace information in text format can be viewed using a text editor, and the trace information in binary format can be analyzed using the [Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
 
 
 ## Examples
@@ -96,8 +97,10 @@ options include:
   --file_size            Sets the size of the raw trace (KB). The default file size is 102400 KB.
                          Only effective in raw trace mode
   --trace_level level    Set the system parameter "persist.hitrace.level.threshold", which can control
-                         the level threshold of trace dotting. Valid values for "level" include
+                         the level threshold of tracing. Valid values for "level" include
                          D or Debug, I or Info, C or Critical, M or Commercial.
+  --get_level            Query the system parameter "persist.hitrace.level.threshold",
+                         which can control the level threshold of tracing.
 ```
 
 
@@ -106,6 +109,89 @@ options include:
 ```shell
 hitrace -l
 ```
+
+For details about the tags, see the following table.
+
+| Name           | Description                                                        |
+| :----------------- | :----------------------------------------------------------- |
+| ability            | Ability manager service, which is a user-mode trace tag.                           |
+| accesscontrol      | Access control module, which is a user-mode trace tag.                             |
+| accessibility      | Accessibility software service manager, which is a user-mode trace tag.                     |
+| ace                | ArkUI cross-platform engine development framework, which is a user-mode trace tag.                  |
+| animation          | Animation module, which is a user-mode trace tag.                                 |
+| app                | Application module, which is a user-mode trace tag. Trace points generated by the [HiTraceMeter](hitracemeter-intro.md) API are categorized under the app tag.|
+| ark                | Ark module, which is a user-mode trace tag.                                  |
+| account            | Account manager, which is a user-mode trace tag.                               |
+| binder             | Binder communication kernel information, which is a kernel-mode trace tag.                       |
+| bluetooth          | Bluetooth communication, which is a user-mode trace tag.                                 |
+| cloud              | Cloud subsystem, which is a user-mode trace tag.                                 |
+| commercial         | Nolog version, which is a user-mode trace tag.                            |
+| commonlibrary      | Common library, which is a user-mode trace tag.                                   |
+| dcamera            | Distributed camera, which is a user-mode trace tag.                               |
+| daudio             | Distributed audio, which is a user-mode trace tag.                               |
+| devicemanager      | Device manager, which is a user-mode trace tag.                               |
+| deviceauth         | Device authentication, which is a user-mode trace tag.                                 |
+| deviceprofile      | Device profile, which is a user-mode trace tag.                             |
+| dhfwk              | Distributed hardware framework, which is a user-mode trace tag.                           |
+| dinput             | Distributed input, which is a user-mode trace tag.                               |
+| dlpcre             | Data leak prevention credential service, which is a user-mode trace tag.                       |
+| disk               | Disk I/O, which is a kernel-mode trace tag.                                  |
+| distributeddatamgr | Distributed data manager, which is a user-mode trace tag.                         |
+| dscreen            | Distributed screen, which is a user-mode trace tag.                               |
+| dsched             | Distributed scheduling, which is a user-mode trace tag.                               |
+| dsoftbus           | Distributed soft bus, which is a user-mode trace tag.                             |
+| drm                | Digital rights management, which is a user-mode trace tag.                             |
+| erofs              | Enhanced read-only file system, which is a kernel-mode trace tag.                       |
+| ffrt               | FFRT task, which is a user-mode trace tag.                                 |
+| filemanagement     | File management, which is a user-mode trace tag.                                 |
+| freq               | CPU frequency, which is a kernel-mode trace tag.                                  |
+| gresource          | Global resource manager, which is a user-mode trace tag.                           |
+| graphic            | Graphics module, which is a user-mode trace tag.                                 |
+| hdcd               | hdcd tool, which is a user-mode trace tag.                                 |
+| hdf                | Hardware driver framework, which is a user-mode trace tag.                             |
+| huks               | Universal keystore, which is a user-mode trace tag.                               |
+| idle               | CPU idle information, which is a kernel-mode trace tag.                              |
+| interconn          | Interconnection subsystem, which is a user-mode trace tag.                               |
+| ipa                | Thermal power consumption distributor, which is a kernel-mode trace tag.                             |
+| irq                | IRQ event, which is a kernel-mode trace tag.                                  |
+| irqoff             | IRQ-disabled code segment tracing, which is a kernel-mode trace tag.                        |
+| i2c                | I2C bus event, which is a kernel-mode trace tag.                              |
+| load               | CPU load, which is a kernel-mode trace tag.                                  |
+| membus             | Memory bus usage, which is a kernel-mode trace tag.                           |
+| memory             | Memory information, which is a kernel-mode trace tag.                                 |
+| memreclaim         | Kernel memory reclamation, which is a kernel-mode trace tag.                             |
+| misc               | MISC module, which is a user-mode trace tag.                                 |
+| mdfs               | Mobile distributed file system, which is a user-mode trace tag.                       |
+| mmc                | eMMC command, which is a kernel-mode trace tag.                       |
+| multimodalinput    | Multi-modal input, which is a user-mode trace tag.                               |
+| musl               | musl module, which is a user-mode trace tag.                                 |
+| net                | Network module, which is a user-mode trace tag.                                 |
+| notification       | Notification module, which is a user-mode trace tag.                                 |
+| nweb               | NWeb module, which is a user-mode trace tag.                                 |
+| ohos               | System common tag, which is a user-mode trace tag.                             |
+| pagecache          | Page cache, which is a kernel-mode trace tag.                                   |
+| power              | Power manager, which is a user-mode trace tag.                               |
+| preemptoff         | Preemption-disabled code segment tracing, which is a kernel-mode trace tag.                       |
+| push               | Push subsystem, which is a user-mode trace tag.                               |
+| regulators         | Voltage and current regulator, which is a kernel-mode trace tag.                           |
+| rpc                | RPC and IPC communication, which is a user-mode trace tag.                             |
+| samgr              | Service ability management group, which is a user-mode trace tag.                           |
+| sched              | CPU scheduling, which is a kernel-mode trace tag.                                  |
+| schedlt            | Lightweight CPU scheduling, which is a kernel-mode trace tag.<br>Note: This tag is supported since API version 23.|
+| security           | Security subsystem, which is a user-mode trace tag.                               |
+| sensors            | Sensor module, which is a user-mode trace tag.                               |
+| sync               | DMA synchronization, which is a kernel-mode trace tag.                                  |
+| useriam            | User identity and access management, which is a user-mode trace tag.                       |
+| ufs                | Universal flash storage command, which is a kernel-mode trace tag.                         |
+| usb                | USB subsystem, which is a user-mode trace tag.                                |
+| virse              | Virtualization service, which is a user-mode trace tag.                               |
+| workq              | Kernel worker queue, which is a kernel-mode trace tag.                           |
+| window             | Window manager, which is a user-mode trace tag.                               |
+| zbinder            | ZBinder event, which is a kernel-mode trace tag.                              |
+| zcamera            | Camera module, which is a user-mode trace tag.                                 |
+| zimage             | Image module, which is a user-mode trace tag.                                 |
+| zmedia             | Media module, which is a user-mode trace tag.                                 |
+| zaudio             | Audio module, which is a user-mode trace tag.                                 |
 
 **Example**
 
@@ -117,81 +203,7 @@ $ hitrace -l
        accesscontrol - Access Control Module
        accessibility - Accessibility Manager
              account - Account Manager
-                 ace - ACE development framework
-           animation - Animation
-                 app - APP Module
-                 ark - ARK Module
-              binder - Binder kernel Info
-           bluetooth - communication bluetooth
-               cloud - Cloud subsystem tag
-          commercial - Commercial version tag
-       commonlibrary - commonlibrary subsystem
-              daudio - Distributed Audio
-             dcamera - Distributed Camera
-          deviceauth - Device Auth
-       devicemanager - Device Manager
-       deviceprofile - Device Profile
-               dhfwk - Distributed Hardware FWK
-              dinput - Distributed Input
-                disk - Disk I/O
-  distributeddatamgr - Distributed Data Manager
-              dlpcre - Dlp Credential Service
-                 drm - Digital Rights Management
-              dsched - Distributed Schedule
-             dscreen - Distributed Screen
-                dslm - device security level
-            dsoftbus - Distributed Softbus
-                ffrt - ffrt tasks
-      filemanagement - filemanagement
-                freq - CPU Frequency
-             graphic - Graphic Module
-           gresource - Global Resource Manager
-                hdcd - hdcd
-                 hdf - hdf subsystem
-                hmfs - HMFS commands
-                huks - Universal KeyStore
-                 i2c - I2C Events
-                idle - CPU Idle
-           interconn - Interconnection subsystem
-                 ipa - thermal power allocator
-                 irq - IRQ Events
-              irqoff - IRQ-disabled code section tracing
-                load - CPU Load
-                mdfs - Mobile Distributed File System
-              membus - Memory Bus Utilization
-              memory - Memory
-          memreclaim - Kernel Memory Reclaim
-                misc - Misc Module
-                 mmc - eMMC commands
-                msdp - Multimodal Sensor Data Platform
-     multimodalinput - HITRACE_TAG_MULTIMODALINPUT
-                musl - musl module
-                 net - net
-        notification - Notification Module
-                nweb - NWEB Module
-                ohos - OpenHarmony
-           pagecache - Page cache
-               power - Power Manager
-          preemptoff - Preempt-disabled code section tracing
-                push - Push subsystem
-          regulators - Voltage and Current Regulators
-                 rpc - RPC and IPC
-               samgr - samgr
-               sched - CPU Scheduling
-            security - Security subsystem
-             sensors - Sensors Module
-                sync - Synchronization
-                 ufs - UFS commands
-                 usb - usb subsystem
-             useriam - useriam
-               virse - Virtualization Service
-              window - Window Manager
-               workq - Kernel Workqueues
-              zaudio - OpenHarmony Audio Module
-             zbinder - OpenHarmony binder communication
-             zcamera - OpenHarmony Camera Module
-              zimage - OpenHarmony Image Module
-              zmedia - OpenHarmony Media Module
+......
 ```
 
 
@@ -202,7 +214,6 @@ If the **-o** parameter is not specified, the captured trace content is displaye
 ```shell
 hitrace -t 10 -b 204800 app
 ```
-
 
 **Example**
 
@@ -464,7 +475,7 @@ $ hitrace --stop_bgsrv
 
 In record mode, the system continuously saves binary trace data generated during running. When the file size exceeds the preset value, a new file is generated. The save path cannot be specified.
 
-Run the following command to enable the record mode, with the buffer size set to **204800** KB, the file size to **102400** KB, and the collection tags to **app** and **graphic**.
+Run the following command to enable the record mode. Set the buffer size to 204800 KB, the file size to 102400 KB, and the tags to **app** and **graphic**.
 
 ```shell
 hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
@@ -518,24 +529,29 @@ $ hitrace -z -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
 ```
 
 
-### Setting the Trace Output Level Threshold
+### Setting and Querying the Trace Level Threshold
 
 The priority of the trace level is as follows: **M** (**Commercial**), **C** (**Critical**), **I** (**Info**) and **D** (**Debug**). The trace level lower than the threshold does not take effect.
 
 You can use the logging APIs with the trace level (for details, see the logging APIs of API version 19 in [js-apis-hitracemeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) and [_hitrace](../reference/apis-performance-analysis-kit/capi-trace-h.md)) to test whether the trace output under different thresholds meets the expectation.
 
 ```shell
-// Set the trace output level threshold.
+// Set the trace level threshold.
 hitrace --trace_level D/I/C/M
 hitrace --trace_level Debug/Info/Critical/Commercial
+// Query the trace level threshold.
+hitrace --get_level
 ```
 
 **Example**
 
 ```shell
 $ hitrace --trace_level Info
-2024/11/14 12:05:07 hitrace enter, running_state is SET_TRACE_LEVEL
-2024/11/14 12:05:07 success to set trace level.
+2025/08/16 10:34:23 hitrace enter, running_state is SET_TRACE_LEVEL
+2025/08/16 10:34:23 success to set trace level.
+$ hitrace --get_level
+2025/08/16 10:34:29 hitrace enter, running_state is GET_TRACE_LEVEL
+2025/08/16 10:34:29 the current trace level threshold is Info
 ```
 
 

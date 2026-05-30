@@ -2,8 +2,9 @@
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
-<!--SE: @zhaopeng_gitee-->
-<!--TSE: @maxiaorong2-->
+<!--Designer: @zhaopeng_gitee-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Overview
 
@@ -13,7 +14,7 @@ Provides C APIs for managing the token IDs, credentials, process IDs (PIDs), use
 
 **Since**: 12
 
-**Files**
+## Files
 
 | Name| Description|
 | ---- | ---- |

@@ -1,5 +1,11 @@
 # Locale ID and Cultural Habit Division
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Use Cases
 
@@ -10,7 +16,9 @@ Regarding internationalization, a locale ID is an abstraction of a user group, i
 
 ## How It Works
 
-A locale ID consists of four parts: language, script, country/region, and extended parameters. The language is mandatory. For details, see Table 1. For supported extended parameters, see Table 2. For numeral systems corresponding to different languages, see Table 3. The Arabic numeral system is used for languages that are not listed in the table by default. 
+A locale ID consists of four parts: language, script, country/region, and extended parameters. The language is mandatory, and other parts are optional. These parts are connected by hyphens (-) in the sequence of language, script, country/region, and extended parameters. For details, see Table 1. For supported extended parameters, see Table 2. For numeral systems corresponding to different languages, see Table 3. The Arabic numeral system is used for languages that are not listed in the table by default.
+
+A language ID consists of the language, script, and country/region, and does not contain extended parameters. The other rules are the same as those of the locale ID.
 
 **Table 1** Description of the locale ID
 
@@ -49,43 +57,4 @@ A locale ID consists of four parts: language, script, country/region, and extend
 
 ## How to Develop
 
-The following uses date and time formatting as an example. For details about APIs, see [DateTimeFormat](../reference/apis-localization-kit/js-apis-intl.md#datetimeformat).
-
-1. Import the **intl** module.
-   ```ts
-   import { intl } from '@kit.LocalizationKit';
-   ```
-
-2. Create a **Locale** object using any of the following methods:
-   - According to the format provided in [How It Works](#how-it-works), pass in the locale ID to the **Locale** constructor to create a **Locale** object.
-   - Configure locale features in **LocaleOptions**, and then use the locale ID and **LocaleOptions** to create a **Locale** object. The attributes configured in **LocaleOptions** automatically overwrite the corresponding attributes in the locale string.
-   - Use the default **Locale** constructor to create a **Locale** object. This object will be used to represent the current system locale.
-
-   ```ts
-   let zhLocale: intl.Locale = new intl.Locale('zh-Hans-CN-u-nu-latn');
-
-   // Method 2: Create a Locale object using the locale ID and LocaleOptions.
-   let enLocale: intl.Locale = new intl.Locale('en', { numberingSystem: 'latn' });
-
-   // Method 3: Create a Locale object using the default Locale constructor.
-   let systemLocale: intl.Locale = new intl.Locale();
-   ```
-
-3. Format the date and time.
-   Pass the **Locale** object to the **DateTimeFormat** constructor to create a **DateTimeFormat** class to implement date and time formatting for the specified locale ID. Similarly, three methods are provided.
-
-   ```ts
-   let date: Date = new Date(2023, 9, 15);
-
-   // Method 1
-   let zhDateTimeFmt: intl.DateTimeFormat = new intl.DateTimeFormat(zhLocale.toString());
-   let formattedResult: string = zhDateTimeFmt.format(date); // formattedResult = '2023/10/15'
-
-   // Method 2
-   let enDateTimeFmt: intl.DateTimeFormat = new intl.DateTimeFormat(enLocale.toString());
-   formattedResult = enDateTimeFmt.format(date); // formattedResult = '10/15/23'
-
-   // Method 3
-   let systemDateTimeFmt: intl.DateTimeFormat = new intl.DateTimeFormat(systemLocale.toString());
-   formattedResult = systemDateTimeFmt.format(date); // formattedResult = "2023/10/15" (The display effect is subject to the system environment.)
-   ```
+For details, see [Intl.Locale](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale).

@@ -35,7 +35,7 @@ Enumerates the options for using **UnifiedData** in a device.
 
 type GetDelayData = (type: string) => UnifiedData
 
-A type that defines a function used to obtain a deferred **UnifiedData** object. Currently, it can be used only in the pasteboard application of the same device.
+Defines a function used to obtain a deferred **UnifiedData** object. Currently, it can be used only in the pasteboard application of the same device.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -110,11 +110,11 @@ Defines the properties of the data records in the unified data object, including
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| extras<sup>12+</sup> | Record<string, object> | No| Yes| Object of the dictionary type used to set other properties. The default value is an empty dictionary object.|
-| tag<sup>12+</sup> | string | No| Yes| Customized tag. The default value is an empty string.|
-| timestamp<sup>12+</sup> | Date | Yes| Yes| Timestamp when [UnifiedData](#unifieddata) is generated. The default value is January 1, 1970 (UTC).|
-| shareOptions<sup>12+</sup> | [ShareOptions](#shareoptions12) | No| Yes| Range, in which [UnifiedData](#unifieddata) can be used. The default value is **CROSS_APP**.|
-| getDelayData<sup>12+</sup> | [GetDelayData](#getdelaydata12) | No| Yes| Callback for obtaining the deferred data. Currently, it can be used only in the pasteboard application of the same device. The default value is **undefined**.|
+| extras | Record<string, object> | No| Yes| Object of the dictionary type used to set other properties. The default value is an empty dictionary object.|
+| tag | string | No| Yes| Customized tag. The default value is an empty string.|
+| timestamp | Date | Yes| Yes| Timestamp when [UnifiedData](#unifieddata) is generated. The default value is January 1, 1970 (UTC).|
+| shareOptions | [ShareOptions](#shareoptions12) | No| Yes| Range, in which [UnifiedData](#unifieddata) can be used. The default value is **CROSS_APP**.|
+| getDelayData | [GetDelayData](#getdelaydata12) | No| Yes| Callback for obtaining the deferred data. Currently, it can be used only in the pasteboard application of the same device. The default value is **undefined**.|
 
 **Example**
 
@@ -166,7 +166,7 @@ Provides APIs for encapsulating a set of data records.
 
 constructor()
 
-A constructor used to create a **UnifiedData** object.
+Defines a constructor used to create a **UnifiedData** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -182,7 +182,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData();
 
 constructor(record: UnifiedRecord)
 
-A constructor used to create a **UnifiedData** object with a data record.
+Defines a constructor used to create a **UnifiedData** object with a data record.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -317,7 +317,7 @@ hasType(type: string): boolean
 
 Checks whether this **UnifiedData** object contains the specified data type, including the data types added by using the [addEntry](#addentry15) function.
 
-For file types, if the type set of **UnifiedData** contains **general.jpeg**, **true** is returned when the **hasType** API is called to check whether the **general.image** type is included because the **general.jpeg** type belongs to the **general.image** type.
+For file types, if the type set of **UnifiedData** includes **general.jpeg**, calling the **hasType** API to check for the **general.image** type will return **true**. This is because the **general.jpeg** type belongs to the **general.image** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -412,14 +412,13 @@ let types = unifiedData.getTypes();
 
 Summarizes the data information of the **unifiedData** object, including the data type and size.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| summary   | Record<string, number> | No| No| Dictionary type object, where the key indicates the data type (see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)), and the value indicates the total size (in bytes) of this type of records in the unified data object.|
-| totalSize | number | No| No| Total size of all the records in the **UnifiedData** object, in bytes.|
+| summary   | Record<string, number> | No| No| Dictionary type object, where the key indicates the data type (see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)), and the value indicates the total size (in bytes) of this type of records in the unified data object.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| totalSize | number | No| No| Total size of all the records in the **UnifiedData** object, in bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| overview<sup>22+</sup>   | Record<string, number> | Yes| No| Mapping between all types of unified data objects and the size of data records of the types (in bytes). If the obtained unified data object is empty, the **overview** property is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 **Example**
 
@@ -440,6 +439,8 @@ function parseSummary(summary : unifiedDataChannel.Summary) {
       let value : string = info[1];
     }
   }
+  let overviewRecord = summary.overview as Record<string, number>;
+  let totalSize = summary.totalSize;
 }
 ```
 
@@ -451,7 +452,7 @@ An abstract definition of the data content supported by the UDMF. A **UnifiedRec
 
 constructor()
 
-A constructor used to create a **UnfiedRecord** object.
+Defines a constructor used to create a **UnfiedRecord** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -467,7 +468,7 @@ let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
 
 constructor(type: string, value: ValueType)
 
-A constructor used to create a data record with the specified type and value.<br>If **value** is of the [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) type, **type** must be the value of **OPENHARMONY_PIXEL_MAP** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).<br>If **value** is of the [Want](../apis-ability-kit/js-apis-app-ability-want.md) type, **type** must be the value of **OPENHARMONY_WANT** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).
+Defines a constructor used to create a data record with the specified type and value.<br>If **value** is of the [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) type, **type** must be the value of **OPENHARMONY_PIXEL_MAP** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).<br>If **value** is of the [Want](../apis-ability-kit/js-apis-app-ability-want.md) type, **type** must be the value of **OPENHARMONY_WANT** in [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -856,7 +857,7 @@ Represents the text data. It is a child class of [UnifiedRecord](#unifiedrecord)
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| details | Record<string, string> | No| Yes| A dictionary type object, where both the key and value are of the string type and are used to describe the text content. For example, a data object with the following content can be created to describe a text file:<br>{<br>"title":"Title",<br>"content":"Content"<br>}<br> The default value is an empty dictionary object.|
+| details | Record<string, string> | No| Yes| A dictionary type object, where both the key and value are of the string type and are used to describe the text content. For example, a data object with the following content can be created to describe a text file:<br>{<br>"title":"Title of the file",<br>"content":"Content of the file"<br>}<br> The default value is an empty dictionary object.|
 
 **Example**
 
@@ -871,7 +872,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ## PlainText
 
-Represents the plaintext data. It is a child class of [Text](#text) and is used to describe plaintext data.
+Represents the plain text data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -892,7 +893,7 @@ text.abstract = 'This is abstract';
 
 ## Hyperlink
 
-Represents hyperlink data. It is a child class of [Text](#text) and is used to describe data of the hyperlink type.
+Represents the hyperlink data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -913,7 +914,7 @@ link.description = 'This is description';
 
 ## HTML
 
-Represents the HTML data. It is a child class of [Text](#text) and is used to describe HTML data.
+Represents the HTML data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1163,8 +1164,8 @@ Represents the data of the home screen icon defined by the system. It is a child
 | -------- | -------- | -------- | -------- | -------- |
 | appId       | string | No| No| ID of the application, for which the icon is used.     |
 | appName     | string | No| No| Name of the application, for which the icon is used.      |
-| appIconId   | string | No| No| Image ID of the icon.       |
-| appLabelId  | string | No| No| Label ID corresponding to the icon name.   |
+| appIconId   | string | No| No| Image ID of the icon.<br>**Model restriction**: This API can be used only in the stage model.<br>       |
+| appLabelId  | string | No| No| Label ID corresponding to the icon name.<br>**Model restriction**: This API can be used only in the stage model.<br>   |
 | bundleName  | string | No| No| Bundle name corresponding to the icon.|
 | abilityName | string | No| No| Application ability name corresponding to the icon.|
 
@@ -1189,7 +1190,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(appItem);
 
 ## SystemDefinedPixelMap
 
-Represents the image data type corresponding to [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) defined by the system. It is a child class of [SystemDefinedRecord](#systemdefinedrecord) and holds only binary data of PixelMap.
+Represents the image data type corresponding to [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) defined by the system. It is a child class of [SystemDefinedRecord](#systemdefinedrecord) and holds only binary data of **PixelMap**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1202,7 +1203,7 @@ Represents the image data type corresponding to [PixelMap](../apis-image-kit/ark
 **Example**
 
 ```ts
-import { image } from '@kit.ImageKit';  // Module where the PixelMap class is defined.
+import { image } from '@kit.ImageKit'; // Module where the PixelMap class is defined.
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1416,7 +1417,9 @@ Defines type and quantity of the data to load.
 
 type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 
-Defines a processing function for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies.
+Defines a handler for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies.
+
+This API is a synchronous function and is applicable to simple service logic. If the service logic is complex and the execution time lasts for more than 3s, you are advised to use the asynchronous handler [DelayedDataLoadHandler](#delayeddataloadhandler22).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1434,11 +1437,37 @@ Defines a processing function for lazy data loading. The data sender can dynamic
 |-----------------------|-----------------------------------|
 | [UnifiedData](#unifieddata) \| null | Returns **UnifiedData** or **null** when the processing function for lazy data loading is triggered.|
 
+## DelayedDataLoadHandler<sup>22+</sup>
+
+type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<UnifiedData | null>
+
+Defines a handler for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies.
+
+This API is an asynchronous function, which uses a promise to return the result. It does not block the main thread and can be used to process time-consuming tasks with complex service logic.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+
+**Parameters**
+
+| Name     | Type                           | Mandatory   | Description          |
+|----------|-------------------------------|-------|--------------|
+| acceptableInfo | [DataLoadInfo](#dataloadinfo20) | No    | Data type and quantity to receive. The default value is empty.|
+
+**Return value**
+
+| Type                   | Description                               |
+|-----------------------|-----------------------------------|
+| Promise&lt;[UnifiedData](#unifieddata) \| null&gt; | Promise used to return the result.|
+
 ## DataLoadParams<sup>20+</sup>
 
 Defines the data loading policy for the data sender in the lazy loading scenario.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+If both **loadHandler** and **delayedDataLoadHandler** are passed, **delayedDataLoadHandler** is preferentially used, and **loadHandler** does not take effect.
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1446,8 +1475,9 @@ Defines the data loading policy for the data sender in the lazy loading scenario
 
 | Name                  | Type                                             | Read-Only| Optional| Description                                                                                                                                                |
 |----------------------|-------------------------------------------------| ---- |-----|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | No| No| Processing function used for lazy data loading.            |
-| dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | No| No| Data type and quantity that can be generated by the sender.             |
+| loadHandler    | [DataLoadHandler](#dataloadhandler20)       | No| No| Processing function used for lazy data loading.<br>**Atomic service API**: This API can be used in atomic services since API version 20.            |
+| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#delayeddataloadhandler22) | No| Yes| Asynchronous handler used for lazy data loading.<br>**Atomic service API**: This API can be used in atomic services since API version 22.<br>**Model restriction**: This API can be used only in the stage model.             |
+| dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | No| No| Data type and quantity that can be generated by the sender.<br>**Atomic service API**: This API can be used in atomic services since API version 20.             |
 
 ## unifiedDataChannel.insertData
 
@@ -1801,7 +1831,7 @@ Queries data in the UDMF public data channel. This API uses a promise to return 
 
 | Type                                                     | Description                                                                                                                                 |
 |---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Promise&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Promise used to return the result.<br>If only the **key** is specified in **options**, the data corresponding to the key is returned.<br>If only the **intention** is specified in **options**, all data in the **intention** is returned.<br>If both **intention** and **key** are specified, the intersection of the two is returned, which is the result obtained when only **key** is specified. If there is no intersection between the specified **intention** and **key**, an error object is returned.|
+| Promise&lt;Array&lt;[UnifiedData](#unifieddata)&gt;&gt; | Promise used to return the result queried.<br>If only the **key** is specified in **options**, the data corresponding to the key is returned.<br>If only the **intention** is specified in **options**, all data in the **intention** is returned.<br>If both **intention** and **key** are specified, the intersection of the two is returned, which is the result obtained when only **key** is specified. If there is no intersection between the specified **intention** and **key**, an error object is returned.|
 
 **Error codes**
 

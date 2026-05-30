@@ -16,7 +16,7 @@ The **DataShare** module allows an application to manage its own data and share 
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - The callback in **on('rdbDataChange')** cannot transfer data larger than 10 M in size.
+> - The callback in **on('rdbDataChange')** cannot transfer data larger than 10 MB in size.
 
 
 ## Modules to Import
@@ -63,7 +63,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.samples.datasharetest.DataShare");
+    let uri = "datashare:///com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -87,7 +87,7 @@ export default class EntryAbility extends UIAbility {
 ## dataShare.createDataShareHelper<sup>10+</sup>
 createDataShareHelper(context: Context, uri: string, options: DataShareHelperOptions, callback: AsyncCallback&lt;DataShareHelper&gt;): void 
 
-Creates a **DataShareHelper** instance. This API uses an asynchronous callback to return the result.
+Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whether **DataShareHelper** is in proxy mode. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -100,7 +100,7 @@ Creates a **DataShareHelper** instance. This API uses an asynchronous callback t
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)        | Yes  | Context of the application.                                          |
 | uri      | string                                                   | Yes  | URI of the server application to connect.                              |
-| options | [DataShareHelperOptions](#datasharehelperoptions10)| Yes  | Whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
+| options | [DataShareHelperOptions](#datasharehelperoptions10)| Yes  | Specifies whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
 | callback | AsyncCallback&lt;[DataShareHelper](#datasharehelper)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DataShareHelper** instance created. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -121,7 +121,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -145,7 +145,7 @@ export default class EntryAbility extends UIAbility {
 
 createDataShareHelper(context: Context, uri: string, options?: DataShareHelperOptions): Promise&lt;DataShareHelper&gt;
 
-Creates a **DataShareHelper** instance. This API uses a promise to return the result.
+Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whether **DataShareHelper** is in proxy mode. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -159,7 +159,7 @@ Creates a **DataShareHelper** instance. This API uses a promise to return the re
 | ------- | ------------------------------------------------- | ---- | ------------------------------ |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | Yes  | Context of the application.            |
 | uri     | string                                            | Yes  | URI of the server application to connect.|
-| options<sup>10+</sup> | [DataShareHelperOptions](#datasharehelperoptions10) | No| Optional configuration of the **DataShareHelper** instance. It specifies whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned. |
+| options<sup>10+</sup> | [DataShareHelperOptions](#datasharehelperoptions10) | No| Optional configuration of the **DataShareHelper** instance. It specifies whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
 
 **Return value**
 
@@ -185,7 +185,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -212,7 +212,7 @@ Enables silent access. This API uses a promise to return the result.
 
 Observe the following when using this API:
  - The data provider calls this API to enable silent access.
- - Whether silent access is enabled is determined based on the return value of this API and the **isSilentProxyEnable** field in the [data_share_config.json](../../database/share-data-by-datashareextensionability.md) file together.
+ - Whether silent access is enabled is determined based on the return value of this API and the **isSilentProxyEnable** field in the [data_share_config.json](../../database/share-data-by-datashareextensionability-sys.md) file together.
  - If silent access is enabled for a URI using this API, the setting takes effect when the related **datashareHelper** API is called. Otherwise, the setting of **isSilentProxyEnable** in the **data_share_config.json** file is used to determine whether to enable silent access.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -248,7 +248,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true");
+    let uri = "datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true";
     let context = this.context;
     dataShare.enableSilentProxy(context, uri).then(() => {
       console.info("enableSilentProxy succeed");
@@ -267,7 +267,7 @@ Disables silent access. This API uses a promise to return the result.
 
 Observe the following when using this API:
  - The data provider calls this API to disable silent access.
- - Whether silent access is disabled is determined based on the return value of this API and the **isSilentProxyEnable** field in the [data_share_config.json](../../database/share-data-by-datashareextensionability.md) file together.
+ - Whether silent access is disabled is determined based on the return value of this API and the **isSilentProxyEnable** field in the [data_share_config.json](../../database/share-data-by-datashareextensionability-sys.md) file together.
  - If silent access is disabled for a URI using this API, the setting takes effect when the related **datashareHelper** API is called. Otherwise, the setting of **isSilentProxyEnable** in the **data_share_config.json** file is used to determine whether to disable silent access.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -303,7 +303,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true");
+    let uri = "datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true";
     let context = this.context;
     dataShare.disableSilentProxy(context, uri).then(() => {
       console.info("disableSilentProxy succeed");
@@ -321,10 +321,10 @@ Represents the optional parameters of [DataShareHelper](#datasharehelper).
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| isProxy | boolean | No| Whether the [DataShareHelper](#datasharehelper) is in proxy mode. The default value is **false**.<br>If the value is **true**, the [DataShareHelper](#datasharehelper) to be created is in proxy mode, and all operations will not open the data provider application unless the database does not exist. If the database does not exist, [createDataShareHelper](#datasharecreatedatasharehelper10) will start the data provider to create a database.|
-| waitTime<sup>18+</sup> | number | No| Waiting time for starting the data provider process, in seconds. The default value is **2**.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| isProxy | boolean | No| Yes| Whether the [DataShareHelper](#datasharehelper) is in proxy mode. The default value is **false**.<br>If the value is **true**, the [DataShareHelper](#datasharehelper) to be created is in proxy mode, and all operations will not open the data provider application unless the database does not exist. If the database does not exist, [createDataShareHelper](#datasharecreatedatasharehelper10) will start the data provider to create a database.|
+| waitTime<sup>18+</sup> | number | No| Yes| Waiting time for starting the data provider process, in seconds. The default value is **2**.|
 
 ## TemplateId<sup>10+</sup>
 
@@ -332,10 +332,10 @@ Defines the **TemplateId** struct. **TemplateId** is generated by [**addTemplate
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| subscriberId | string | Yes| ID of the subscriber who handles the callback. The value must the same as the **subscriberId** in [**addTemplate**](#addtemplate10). The ID of each subscriber must be unique.|
-| bundleNameOfOwner | string | Yes| Bundle name of the template owner. The value must be the same as the **bundleName** in [**addTemplate**](#addtemplate10).|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| subscriberId | string | No| No| ID of the subscriber who handles the callback. The value must the same as the **subscriberId** in [**addTemplate**](#addtemplate10). The ID of each subscriber must be unique.|
+| bundleNameOfOwner | string | No| No| Bundle name of the template owner. The value must be the same as the **bundleName** in [**addTemplate**](#addtemplate10).|
 
 ## PublishedItem<sup>10+</sup>
 
@@ -343,23 +343,23 @@ Defines the data to publish.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| key | string | Yes| Key of the data to publish.|
-| data | string \| ArrayBuffer | Yes| Data to publish. If the data to publish exceeds 20 KB, you are advised to use the data in ArrayBuffer format.|
-| subscriberId | string | Yes| Subscriber ID.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| key | string | No| No| Key of the data to publish.|
+| data | string \| ArrayBuffer | No| No| Data to publish. If the data to publish exceeds 20 KB, you are advised to use the data in ArrayBuffer format.|
+| subscriberId | string | No| No| Subscriber ID.|
 
 ## RdbDataChangeNode<sup>10+</sup>
 
-Represents the RDB data change result. The data returned by the callback is not larger than 10 M in size.
+Represents the RDB data change result. The data returned by the callback is not larger than 10 MB in size.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| uri | string | Yes| URI of the callback.|
-| templateId | [TemplateId](#templateid10) | Yes| ID of the template that triggers the callback.|
-| data | Array&lt;string&gt; | Yes| Data of the callback. If an error occurs during callback data processing, the callback will not be triggered.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| uri | string | No| No| URI of the callback.|
+| templateId | [TemplateId](#templateid10) | No| No| ID of the template that triggers the callback.|
+| data | Array&lt;string&gt; | No| No| Data of the callback. If an error occurs during callback data processing, the callback will not be triggered.|
 
 ## PublishedDataChangeNode<sup>10+</sup>
 
@@ -367,10 +367,10 @@ Defines the subscription/unsubscription result of the changes in the published d
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name of the callback.|
-| data | Array&lt;[PublishedItem](#publisheditem10)&gt; | Yes| Data of the callback.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| bundleName | string | No| No| Bundle name of the callback.|
+| data | Array&lt;[PublishedItem](#publisheditem10)&gt; | No| No| Data of the callback.|
 
 ## Template<sup>10+</sup>
 
@@ -378,11 +378,11 @@ Defines the struct of the template used in a subscription.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| predicates | Record<string, string> | Yes| Predicates to use. When [**on**](#onrdbdatachange10) is called, the predicates are used to generate data. This parameter applies only to RDB data storage. |
-| scheduler | string | Yes| Template scheduler SQL, which is embedded with a custom function. Currently, the **remindTimer** function is embedded. The **remindTimer** triggers a subscription-based update in specified scenarios.<br>The scheduler SQL statement is triggered when:<br>1. The subscribed data is modified.<br>2. The first subscription is added to the corresponding database.|
-| update<sup>18+<sup> | string | No| Update SQL statement of a specified template. The default value is an empty string. When [on](#onrdbdatachange10) is called, the **update** parameter is used to update data. This parameter applies only to RDB data storage. |
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| predicates | Record<string, string> | No| No| Predicates to use. When [**on**](#onrdbdatachange10) is called, the predicates are used to generate data. This parameter applies only to RDB data storage. |
+| scheduler | string | No| No| Template scheduler SQL, which is embedded with a custom function. Currently, the **remindTimer** function is embedded. The **remindTimer** triggers a subscription-based update in specified scenarios.<br>The scheduler SQL statement is triggered when:<br>1. The subscribed data is modified.<br>2. The first subscription is added to the corresponding database.|
+| update<sup>18+<sup> | string | No| Yes| Update SQL statement of a specified template. The default value is an empty string. When [on](#onrdbdatachange10) is called, the **update** parameter is used to update data. This parameter applies only to RDB data storage. |
 
 ## OperationResult<sup>10+</sup>
 
@@ -390,20 +390,20 @@ Defines the result of the operation for subscribing to or unsubscribing from the
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | ----- | -------- |
-| key | string | Yes| Key of the operation result.|
-| result | number | Yes| Operation result. If the operation is successful, **0** is returned; otherwise, an error code is returned. |
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | ----- | ----- | -------- |
+| key | string | No| No| Key of the operation result.|
+| result | number | No| No| Operation result. If the operation is successful, **0** is returned; otherwise, an error code is returned. |
 ## UpdateOperation<sup>12+</sup>
 
 Represents the batch update operation information.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| Name      | Type                                                        | Mandatory| Description          |
-| ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| values     | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Data to be updated.|
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for updating data.    |
+| Name      | Type                                                        | Read-Only| Optional| Description          |
+| ---------- | ------------------------------------------------------------ | ---- |  ---- | -------------- |
+| values     | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | No  | No  | Data to be updated.|
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | No  | No  | Conditions for updating data.    |
 
 ## SubscriptionType<sup>12+</sup>
 
@@ -421,11 +421,11 @@ Represents the data change information, including the data change type, URI of t
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| Name      | Type                                                        | Mandatory| Description          |
-| ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| type       | [ChangeType](js-apis-data-dataShare.md#changetype20)      | Yes  | Data change type.|
-| uri        | string                                                       | Yes  | URI of the data changed.     |
-| values     | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt;| Yes  | Changed data.  |
+| Name      | Type                                                        | Read-Only| Optional| Description          |
+| ---------- | ------------------------------------------------------------ | ---- | ---- | -------------- |
+| type       | [ChangeType](js-apis-data-dataShare.md#changetype20)      | No| No  | Data change type.|
+| uri        | string                                                       | No| No  | URI of the data changed.     |
+| values     | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt;| No| No  | Changed data.  |
 
 ## DataShareHelper
 
@@ -465,7 +465,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 let onCallback: () => void = (): void => {
   console.info("**** Observer on callback ****");
 }
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper !== undefined) {
   (dataShareHelper as dataShare.DataShareHelper).on("dataChange", uri, onCallback);
 }
@@ -488,7 +488,7 @@ Notification triggering: In non-silent scenarios, a notification is published if
 | event     | string               | Yes  | Event/callback type. The value is **dataChange**, which indicates the data change.|
 | type     | [SubscriptionType](#subscriptiontype12)| Yes  | Subscription type.|
 | uri      | string               | Yes  | URI of the data to be observed.|
-| callback | AsyncCallback&lt;[ChangeInfo](#changeinfo12)&gt; | Yes  | Callback used to return the data change when the change notification is triggered.|
+| callback | AsyncCallback&lt;[ChangeInfo](#changeinfo12)&gt; | Yes  | Callback to be invoked when data is changed.|
 
 **Error codes**
 
@@ -506,7 +506,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.acts.datasharetest");
+let uri = "datashare:///com.acts.datasharetest";
 export function callback(error:BusinessError, ChangeInfo:dataShare.ChangeInfo) {
     console.info(' **** Observer callback **** ChangeInfo:' + JSON.stringify(ChangeInfo));
 }
@@ -519,7 +519,7 @@ if (dataShareHelper !== undefined) {
 
 off(type: 'dataChange', uri: string, callback?: AsyncCallback&lt;void&gt;): void
 
-Unsubscribes from the data change of the specified URI.
+Unsubscribes from the data change of the specified URI. This API corresponds to the [on](#ondatachange) API.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -547,7 +547,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 let callback: () => void = (): void => {
   console.info("**** Observer on callback ****");
 }
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).on("dataChange", uri, callback);
   (dataShareHelper as dataShare.DataShareHelper).off("dataChange", uri, callback);
@@ -559,7 +559,7 @@ if (dataShareHelper != undefined) {
 
 off(event: 'dataChange', type:SubscriptionType, uri: string, callback?: AsyncCallback&lt;ChangeInfo&gt;): void
 
-Unsubscribes from the data change of the specified URI.
+Unsubscribes from the data change of the specified URI. This API corresponds to the [on](#ondatachange12) API.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -588,7 +588,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.acts.datasharetest");
+let uri = "datashare:///com.acts.datasharetest";
 export function callback(error:BusinessError, ChangeInfo:dataShare.ChangeInfo) {
     console.info(' **** Observer callback **** ChangeInfo:' + JSON.stringify(ChangeInfo));
 }
@@ -603,6 +603,8 @@ if (dataShareHelper !== undefined) {
 addTemplate(uri: string, subscriberId: string, template: Template): void
 
 Adds a data template with the specified subscriber. Only silent access is supported.
+
+In silent scenarios, the total size of the **uri**, **subscriberId**, and **template** parameters passed in this API cannot exceed 200 KB. If the size exceeds the limit, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -628,12 +630,12 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let subscriberId = '11';
 let key1: string = "p1";
-let value1: string = "select cityColumn as city_1, visitedCilumn as visited_1 from citys where like = true";
+let value1: string = "select cityColumn as city_1, visitedColumn as visited_1 from citys where like = true";
 let key2: string = "p2";
-let value2: string = "select cityColumn as city_2, visitedCilumn as visited_2 from citys where like = false";
+let value2: string = "select cityColumn as city_2, visitedColumn as visited_2 from citys where like = false";
 let template: dataShare.Template = {
   predicates : {
     key1 : value1,
@@ -652,6 +654,8 @@ if (dataShareHelper != undefined) {
 delTemplate(uri: string, subscriberId: string): void
 
 Deletes a data template based on the specified subscriber. Only silent access is supported.
+
+In silent scenarios, the total size of the **uri** and **subscriberId** parameters passed in this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -676,12 +680,12 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let subscriberId = '11';
 let key1: string = "p1";
-let value1: string = "select cityColumn as city_1, visitedCilumn as visited_1 from citys where like = true";
+let value1: string = "select cityColumn as city_1, visitedColumn as visited_1 from citys where like = true";
 let key2: string = "p2";
-let value2: string = "select cityColumn as city_2, visitedCilumn as visited_2 from citys where like = false";
+let value2: string = "select cityColumn as city_2, visitedColumn as visited_2 from citys where like = false";
 let template: dataShare.Template = {
   predicates : {
     key1 : value1,
@@ -746,7 +750,7 @@ let onCallback: (err: BusinessError, node: dataShare.RdbDataChangeNode) => void 
   }
 }
 
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let templateId:dataShare.TemplateId = {subscriberId:"11", bundleNameOfOwner:"com.acts.ohos.data.datasharetest"};
 if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).on("rdbDataChange", [uri], templateId, onCallback);
@@ -789,7 +793,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let templateId:dataShare.TemplateId = {subscriberId:"11", bundleNameOfOwner:"com.acts.ohos.data.datasharetest"};
 if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).off("rdbDataChange", [uri], templateId);
@@ -906,7 +910,9 @@ if (dataShareHelper != undefined) {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version: number, callback: AsyncCallback&lt;Array&lt;OperationResult&gt;&gt;): void
 
-Publishes data to the database. Only silent access is supported.
+Publishes data to the database. You should pass in the version of the data to be published. If the passed version is later than the version recorded in the current database, the operation is successful. Only silent access is supported. This API uses an asynchronous callback to return the result.
+
+In silent scenarios, the total size of the **data** and **bundleName** parameters passed in this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -955,7 +961,9 @@ try {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, callback: AsyncCallback&lt;Array&lt;OperationResult&gt;&gt;): void
 
-Publishes data to the database. Only silent access is supported.
+Publishes data to the database. Only silent access is supported. This API uses an asynchronous callback to return the result.
+
+In silent scenarios, the total size of the **data** and **bundleName** parameters passed in this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -999,7 +1007,9 @@ if (dataShareHelper != undefined) {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version?: number): Promise&lt;Array&lt;OperationResult&gt;&gt;
 
-Publishes data to the database. Only silent access is supported.
+Publishes data to the database. You should pass in the version of the data to be published. If the passed version is later than the version recorded in the current database, the operation is successful. Only silent access is supported. This API uses a promise to return the result.
+
+In silent scenarios, the total size of the **data** and **bundleName** parameters passed in this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1044,7 +1054,9 @@ if (dataShareHelper != undefined) {
 
 getPublishedData(bundleName: string, callback: AsyncCallback&lt;Array&lt;PublishedItem&gt;&gt;): void
 
-Obtains the published data of an application. Only silent access is supported.
+Obtains the published data of an application. Only silent access is supported. This API uses an asynchronous callback to return the result.
+
+In silent scenarios, the size of the **bundleName** parameter passed in this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1083,7 +1095,9 @@ if (dataShareHelper != undefined) {
 
 getPublishedData(bundleName: string): Promise&lt;Array&lt;PublishedItem&gt;&gt;
 
-Obtains the published data of an application. Only silent access is supported.
+Obtains the published data of an application. Only silent access is supported. This API uses a promise to return the result.
+
+In silent scenarios, the size of the **bundleName** parameter passed in this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1124,6 +1138,10 @@ insert(uri: string, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;):
 
 Inserts a single data record into the database. This API uses an asynchronous callback to return the result.
 
+In non-silent scenarios, the total size of the **uri** and **value** parameters passed in this API cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
+
+In silent scenarios, the total size of the **uri** and **value** parameters passed in this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters**
@@ -1131,7 +1149,7 @@ Inserts a single data record into the database. This API uses an asynchronous ca
 | Name    | Type                                                     | Mandatory| Description                                                       |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | uri      | string                                                    | Yes  | URI of the data to insert.                                    |
-| value    | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes  | Data to insert. If this parameter is left empty, a blank row will be inserted.          |
+| value    | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes  | Value of the data to insert.          |
 | callback | AsyncCallback&lt;number&gt;                               | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the index of the inserted data record. Otherwise, **err** is an error object.<br>The data index is not returned if the APIs of the database in use, for example, the key-value database (KVDB), do not support the return of indexes.|
 
 **Error codes**
@@ -1150,7 +1168,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let key1: string = "name";
 let value1: string = "rose";
 let key2: string = "age";
@@ -1185,6 +1203,10 @@ insert(uri: string, value: ValuesBucket): Promise&lt;number&gt;
 
 Inserts a single data record into the database. This API uses a promise to return the result.
 
+In non-silent scenarios, the total size of the **uri** and **value** parameters passed in this API cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
+
+In silent scenarios, the total size of the **uri** and **value** parameters passed in this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters**
@@ -1192,13 +1214,13 @@ Inserts a single data record into the database. This API uses a promise to retur
 | Name | Type                                                     | Mandatory| Description                                              |
 | ----- | --------------------------------------------------------- | ---- | -------------------------------------------------- |
 | uri   | string                                                    | Yes  | URI of the data to insert.                          |
-| value | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes  | Data to insert. If this parameter is left empty, a blank row will be inserted.|
+| value | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes  | Value of the data to insert.|
 
 **Return value**
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the index of the inserted data record.<br>The data index is not returned if the APIs of the database in use (for example, KVDB) do not support the return of indexes.|
+| Promise&lt;number&gt; | Promise used to return the index of the inserted data record.<br>The data index is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
 
 **Error codes**
 
@@ -1216,7 +1238,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let key1: string = "name";
 let value1: string = "rose1";
 let key2: string = "age";
@@ -1249,6 +1271,10 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates, callbac
 
 Deletes one or more data records from the database. This API uses an asynchronous callback to return the result.
 
+In non-silent scenarios, the total size of the **uri** and **predicates** parameters passed in this API cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
+
+In silent scenarios, the total size of the **uri** and **predicates** parameters passed in this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters**
@@ -1275,7 +1301,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 try {
@@ -1300,6 +1326,10 @@ try {
 delete(uri: string, predicates: dataSharePredicates.DataSharePredicates): Promise&lt;number&gt;
 
 Deletes one or more data records from the database. This API uses a promise to return the result.
+
+In non-silent scenarios, the total size of the **uri** and **predicates** parameters passed in this API cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
+
+In silent scenarios, the total size of the **uri** and **predicates** parameters passed in this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1332,7 +1362,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 try {
@@ -1355,6 +1385,12 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;DataShareResultSet&gt;): void
 
 Queries data in the database. This API uses an asynchronous callback to return the result.
+
+In non-silent scenarios, the size of the **predicates** parameter and the total size of the **uri** and **columns** parameters passed in this API cannot exceed 128 MB and 200 KB, respectively. Otherwise, the operation fails or an exception is thrown.
+
+In silent scenarios, the total size of the **uri**, **predicates**, and **columns** parameters passed in this API cannot exceed 200 KB. If the size exceeds the limit, the operation fails or an exception is thrown.
+
+When this API is used to query database data, if the query content exceeds the resource limit, the operation fails and an error is returned. You can retry the operation based on the scenario. For details about the resource limit, see [Silent Access via DatamgrService](../../database/share-data-by-silent-access-sys.md#constraints) and [Sharing Data Using DataShareExtensionAbility](../../database/share-data-by-datashareextensionability-sys.md#constraints).
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1383,7 +1419,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates, DataShareResultSet } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let columns = ["*"];
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
@@ -1409,6 +1445,12 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;): Promise&lt;DataShareResultSet&gt;
 
 Queries data in the database. This API uses a promise to return the result.
+
+In non-silent scenarios, the size of the **predicates** parameter and the total size of the **uri** and **columns** parameters passed in this API cannot exceed 128 MB and 200 KB, respectively. Otherwise, the operation fails or an exception is thrown.
+
+In silent scenarios, the total size of the **uri**, **predicates**, and **columns** parameters passed in this API cannot exceed 200 KB. If the size exceeds the limit, the operation fails or an exception is thrown.
+
+When this API is used to query database data, if the query content exceeds the resource limit, the operation fails and an error is returned. You can retry the operation based on the scenario. For details about the resource limit, see [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](../../database/share-data-by-silent-access-sys.md#constraints) and [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](../../database/share-data-by-datashareextensionability-sys.md#constraints).
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1442,7 +1484,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates, DataShareResultSet } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let columns = ["*"];
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
@@ -1467,6 +1509,10 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 
 Updates data in the database. This API uses an asynchronous callback to return the result.
 
+In non-silent scenarios, the total size of the **uri**, **predicates**, and **value** parameters passed in this API cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
+
+In silent scenarios, the total size of the **uri**, **predicates**, and **value** parameters passed when this API is called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters**
@@ -1475,7 +1521,7 @@ Updates data in the database. This API uses an asynchronous callback to return t
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | Yes  | URI of the data to update.                                    |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for updating data.<br>The predicate methods supported by **update()** vary depending on the database in use. For example, only the relational database (RDB) supports predicates. If this parameter is left empty, the entire table will be updated by default.|
-| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Data to be updated, which can be null.                                 |
+| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Value of the data to update.                                 |
 | callback   | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of updated data records. Otherwise, **err** is an error object.<br>The number of updated data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
 
 **Error codes**
@@ -1494,7 +1540,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates, ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 let key1: string = "name";
@@ -1531,6 +1577,10 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 
 Updates data in the database. This API uses a promise to return the result.
 
+In non-silent scenarios, the total size of the **uri**, **predicates**, and **value** parameters passed in this API cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
+
+In silent scenarios, the total size of the **uri**, **predicates**, and **value** parameters passed when this API is called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters**
@@ -1539,7 +1589,7 @@ Updates data in the database. This API uses a promise to return the result.
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | Yes  | URI of the data to update.                                    |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for updating data.<br>The predicate methods supported by **update()** vary depending on the database in use. For example, only the relational database (RDB) supports predicates. If this parameter is left empty, the entire table will be updated by default.|
-| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Data to be updated, which can be null.                                  |
+| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Value of the data to update.                                  |
 
 **Return value**
 
@@ -1563,7 +1613,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates, ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 let key1: string = "name";
@@ -1596,7 +1646,9 @@ try {
 
 batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;
 
-Batch updates data in the database. A maximum of 900 KB data can be updated at a time. The total number of objects for operations (that is, KV pairs of the objects) cannot exceed 4000. If the number exceeds 4000, the update will fail. The transaction of this API depends on the data provider. This API uses a promise to return the result. Silent access is not supported currently.
+Batch updates data in the database. The total number of objects for operations (that is, KV pairs of the objects) cannot exceed 4000. If the number exceeds 4000, the update will fail. The transaction of this API depends on the data provider. This API uses a promise to return the result. Silent access is not supported currently.
+
+In non-silent scenarios, the size of the **operations** parameter passed in this API called cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1687,6 +1739,8 @@ batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallb
 
 Batch inserts data into the database. This API uses an asynchronous callback to return the result. Silent access is not supported currently.
 
+In non-silent scenarios, the size of the **values** parameter and the **uri** parameter passed in this API cannot exceed 128 MB and 900 KB, respectively. Otherwise, the operation fails or an exception is thrown.
+
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters**
@@ -1713,7 +1767,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let vbs: ValuesBucket[] = [
   { "name": "roe11", "age": 21, "salary": 20.5 }
 ]
@@ -1741,6 +1795,8 @@ batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&g
 
 Batch inserts data into the database. This API uses a promise to return the result. Silent access is not supported currently.
 
+In non-silent scenarios, the size of the **values** parameter and the **uri** parameter passed in this API cannot exceed 128 MB and 900 KB, respectively. Otherwise, the operation fails or an exception is thrown.
+
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters**
@@ -1754,7 +1810,7 @@ Batch inserts data into the database. This API uses a promise to return the resu
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the number of data records inserted.<br>The number of inserted data records is not returned if the APIs of the database (for example, KVDB) in use do not the return of the number of data records.|
+| Promise&lt;number&gt; | Promise used to return the number of data records inserted.<br>The number of inserted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
 
 **Error codes**
 
@@ -1772,7 +1828,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let vbs: ValuesBucket[] = [
   { "name": "roe11", "age": 21, "salary": 20.5 }
 ]
@@ -1853,7 +1909,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
@@ -1900,7 +1956,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri).then((data: string) => {
     console.info("normalizeUri = " + data);
@@ -1940,7 +1996,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).denormalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
@@ -1987,7 +2043,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).denormalizeUri(uri).then((data: string) => {
     console.info("denormalizeUri = " + data);
@@ -2002,6 +2058,8 @@ if (dataShareHelper != undefined) {
 notifyChange(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 Notifies the registered observer of data changes. This API uses an asynchronous callback to return the result. Silent access is not supported currently.
+
+In non-silent scenarios, the size of the **uri** parameter passed in this API called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -2025,7 +2083,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(uri, () => {
     console.info("***** notifyChange *****");
@@ -2038,6 +2096,8 @@ if (dataShareHelper != undefined) {
 notifyChange(uri: string): Promise&lt;void&gt;
 
 Notifies the registered observer of data changes. This API uses a promise to return the result. Silent access is not supported currently.
+
+In non-silent scenarios, the size of the **uri** parameter passed in this API called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -2066,7 +2126,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(uri);
 }
@@ -2077,6 +2137,8 @@ if (dataShareHelper != undefined) {
 notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 
 Notifies the observer of the data change of the specified URI. This API uses a promise to return the result. Silent access is not supported currently.
+
+In non-silent scenarios, the size of the **data** parameter passed in this API called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -2090,7 +2152,7 @@ Notifies the observer of the data change of the specified URI. This API uses a p
 
 | Type          | Description                 |
 | -------------- | --------------------- |
-| Promise&lt;void&gt; |  returns no value.|
+| Promise&lt;void&gt; |  Promise that returns no value.|
 
 **Error codes**
 
@@ -2107,7 +2169,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { ValuesBucket } from '@kit.ArkData';
 
-let dsUri = ("datashare:///com.acts.datasharetest");
+let dsUri = "datashare:///com.acts.datasharetest";
 let people: ValuesBucket[] = [
   { "name": "LiSi" },
   { "name": "WangWu" },
@@ -2119,3 +2181,5 @@ if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(changeData);
 }
 ```
+
+  <!--no_check-->

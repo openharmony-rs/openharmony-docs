@@ -4,11 +4,11 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 场景介绍
 
-FileIO模块提供了部分文件基础操作能力，其他能力请参考[libc标准库](../reference/native-lib/musl.md)/[标准C++库](../reference/native-lib/cpp.md)。
+FileIO模块提供了部分文件基础操作能力，其他能力请参考[libc标准库](../reference/native-lib/musl.md)/[c++标准库](../reference/native-lib/cpp.md)。
 
 ## 约束限制
 
@@ -43,21 +43,24 @@ target_link_libraries(sample PUBLIC libohfileio.so)
 ```
 
 调用OH_FileIO_GetFileLocation接口获取文件存储位置。示例代码如下所示：
-```c
-void GetFileLocationExample() {
-    char *uri = "file://com.example.demo/data/storage/el2/base/files/test.txt";
+
+<!--@[get_file_location_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp)-->
+
+``` C++
+void GetFileLocationExample(char *uri)
+{
     FileIO_FileLocation location;
     FileManagement_ErrCode ret = OH_FileIO_GetFileLocation(uri, strlen(uri), &location);
     if (ret == 0) {
         if (location == FileIO_FileLocation::LOCAL) {
-            printf("This file is on local.");
+            printf("Succeeded in getting file location, this file is on local.");
         } else if (location == FileIO_FileLocation::CLOUD) {
-            printf("This file is on cloud.");
+            printf("Succeeded in getting file location, this file is on cloud.");
         } else if (location == FileIO_FileLocation::LOCAL_AND_CLOUD) {
-            printf("This file is both on local and cloud.");
+            printf("Succeeded in getting file location, this file is on  local and cloud.");
         }
     } else {
-        printf("GetFileLocation failed, error code is %d", ret);
+        printf("Failed to get file location, error code is %d", ret);
     }
 }
 ```

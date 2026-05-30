@@ -1,4 +1,14 @@
 # OH_Drawing_Font_Metrics
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_Drawing_Font_Metrics {...} OH_Drawing_Font_Metrics
+```
 
 ## 概述
 

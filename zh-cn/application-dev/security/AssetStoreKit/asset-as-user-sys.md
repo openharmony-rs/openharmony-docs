@@ -1,9 +1,9 @@
-# 操作指定用户空间下的关键资产(仅对系统应用开放)
+# 操作指定用户空间下的关键资产(仅对系统应用开放)(ArkTS)
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 

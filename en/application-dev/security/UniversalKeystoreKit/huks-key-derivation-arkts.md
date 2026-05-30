@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-This topic walks you through on how to derive a 256-bit key using HKDF. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-key-generation-overview.md#supported-algorithms).
+This topic walks you through on how to derive a key using PBKDF2 and HKDF256. For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-derivation-overview.md#supported-algorithms).
 
 ## How to Develop
 
@@ -57,30 +57,25 @@ Use [deleteKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#
 ## Development Cases
 
 ### HKDF
-```ts
+Prepare the HKDF key derivation material.
+<!-- @[the_key_is_derived_from_hkdf_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/HKDF.ets) -->
+
+``` TypeScript
 /*
  * Derive an HKDF key using promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = new Array();
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
-
 /*
  * Set the key alias and encapsulate the key property set.
  */
-let srcKeyAlias = "hkdf_Key";
-let deriveHkdfInData = "deriveHkdfTestIndata";
+let srcKeyAlias = 'hkdf_Key';
+let deriveHkdfInData = 'deriveHkdfTestIndata';
 let handle: number;
 let finishOutData: Uint8Array;
-let HuksKeyDeriveKeySize = 32;
+let huksKeyDeriveKeySize = 32;
 /* Set the parameter set used for key generation. */
-let properties: Array<huks.HuksParam> = [
+let properties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES,
@@ -92,7 +87,7 @@ let properties: Array<huks.HuksParam> = [
   value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
 }, {
   tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-  value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+  value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
 }, {
   tag: huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
   value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
@@ -100,10 +95,10 @@ let properties: Array<huks.HuksParam> = [
 
 let huksOptions: huks.HuksOptions = {
   properties: properties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 /* Set the parameter set used for init(). */
-let initProperties: Array<huks.HuksParam> = [{
+let initProperties: huks.HuksParam[] = [{
   tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
   value: huks.HuksKeyAlg.HUKS_ALG_HKDF,
 }, {
@@ -114,15 +109,15 @@ let initProperties: Array<huks.HuksParam> = [{
   value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
 }, {
   tag: huks.HuksTag.HUKS_TAG_DERIVE_KEY_SIZE,
-  value: HuksKeyDeriveKeySize,
+  value: huksKeyDeriveKeySize,
 }];
 
 let initOptions: huks.HuksOptions = {
   properties: initProperties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 /* Set the parameter set used for finish(). */
-let finishProperties: Array<huks.HuksParam> = [{
+let finishProperties: huks.HuksParam[] = [{
   tag: huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
   value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
 }, {
@@ -144,7 +139,7 @@ let finishProperties: Array<huks.HuksParam> = [{
   value: huks.HuksKeyDigest.HUKS_DIGEST_NONE,
 }, {
   tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS,
-  value: StringToUint8Array(srcKeyAlias),
+  value: stringToUint8Array(srcKeyAlias),
 }, {
   tag: huks.HuksTag.HUKS_TAG_PADDING,
   value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
@@ -154,13 +149,25 @@ let finishProperties: Array<huks.HuksParam> = [{
 }];
 let finishOptions: huks.HuksOptions = {
   properties: finishProperties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
+}
+
+function stringToUint8Array(str: String) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
 }
 
 class ThrowObject {
-  isThrow = false;
+  public isThrow = false;
 }
+```
+Derive a key.
+<!-- @[the_key_is_derived_from_hkdf_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/HKDF.ets) -->
 
+``` TypeScript
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
@@ -191,10 +198,12 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
           throw (error as Error);
         } else {
           console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: generateKeyItem input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
@@ -229,10 +238,12 @@ async function publicInitFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doInit failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doInit input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
@@ -266,10 +277,12 @@ async function publicUpdateFunc(handle: number, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doUpdate failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doUpdate input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
@@ -304,10 +317,12 @@ async function publicFinishFunc(handle: number, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doFinish failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doFinish input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
@@ -341,10 +356,12 @@ async function publicDeleteKeyFunc(keyAlias: string, huksOptions: huks.HuksOptio
           throw (error as Error);
         } else {
           console.error(`promise: deleteKeyItem failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: deleteKeyItem input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
@@ -353,132 +370,139 @@ async function testDerive() {
   await publicGenKeyFunc(srcKeyAlias, huksOptions);
   /* Perform key derivation. */
   await publicInitFunc(srcKeyAlias, initOptions);
-  initOptions.inData = StringToUint8Array(deriveHkdfInData);
+  initOptions.inData = stringToUint8Array(deriveHkdfInData);
   await publicUpdateFunc(handle, initOptions);
   await publicFinishFunc(handle, finishOptions);
   await publicDeleteKeyFunc(srcKeyAlias, huksOptions);
 }
 ```
-### PBKDF2
 
-```ts
+### PBKDF2
+Prepare the PBKDF2 key derivation material.
+<!-- @[the_key_is_derived_from_pbkdf2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/PBKDF2.ets) -->
+
+``` TypeScript
 /*
  * Derive a PBKDF2 key using promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = new Array();
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
-
 /*
  * Set the key alias and encapsulate the key property set.
  */
-let srcKeyAlias = "pbkdf2_Key";
-let salt = "mySalt";
+let srcKeyAlias = 'pbkdf2_Key';
+let salt = 'mySalt';
 let iterationCount = 10000;
 let derivedKeySize = 32;
 let handle: number;
 let finishOutData: Uint8Array;
 
 /* Set the parameter set used for key generation. */
-let properties: Array<huks.HuksParam> = [
+let properties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES,
   }, {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_DIGEST,
-    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
-    value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
-  }
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DIGEST,
+  value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+  value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
+}
 ];
 
 let huksOptions: huks.HuksOptions = {
   properties: properties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 
 /* Set the parameter set used for init(). */
-let initProperties: Array<huks.HuksParam> = [
+let initProperties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_PBKDF2,
   }, {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_DIGEST,
-    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_DERIVE_KEY_SIZE,
-    value: derivedKeySize,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_ITERATION,
-    value: iterationCount,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_SALT,
-    value: StringToUint8Array(salt),
-  }
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DIGEST,
+  value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DERIVE_KEY_SIZE,
+  value: derivedKeySize,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_ITERATION,
+  value: iterationCount,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_SALT,
+  value: stringToUint8Array(salt),
+}
 ];
 
 let initOptions: huks.HuksOptions = {
   properties: initProperties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 
 /* Set the parameter set used for finish(). */
-let finishProperties: Array<huks.HuksParam> = [
+let finishProperties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
     value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
   }, {
-    tag: huks.HuksTag.HUKS_TAG_IS_KEY_ALIAS,
-    value: true,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_AES,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_DIGEST,
-    value: huks.HuksKeyDigest.HUKS_DIGEST_NONE,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS,
-    value: StringToUint8Array(srcKeyAlias),
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_PADDING,
-    value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-    value: huks.HuksCipherMode.HUKS_MODE_ECB,
-  }
+  tag: huks.HuksTag.HUKS_TAG_IS_KEY_ALIAS,
+  value: true,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_AES,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DIGEST,
+  value: huks.HuksKeyDigest.HUKS_DIGEST_NONE,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS,
+  value: stringToUint8Array(srcKeyAlias),
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PADDING,
+  value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+  value: huks.HuksCipherMode.HUKS_MODE_ECB,
+}
 ];
 
 let finishOptions: huks.HuksOptions = {
   properties: finishProperties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
+}
+
+function stringToUint8Array(str: String) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
 }
 
 class ThrowObject {
-  isThrow = false;
+  public isThrow = false;
 }
+```
+Derive a key.
+<!-- @[the_key_is_derived_from_pbkdf2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/PBKDF2.ets) -->
 
+``` TypeScript
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
@@ -509,10 +533,12 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
           throw (error as Error);
         } else {
           console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: generateKeyItem input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
@@ -547,10 +573,12 @@ async function publicInitFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doInit failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doInit input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
@@ -584,10 +612,12 @@ async function publicUpdateFunc(handle: number, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doUpdate failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doUpdate input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
@@ -622,10 +652,12 @@ async function publicFinishFunc(handle: number, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doFinish failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doFinish input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
@@ -659,10 +691,12 @@ async function publicDeleteKeyFunc(keyAlias: string, huksOptions: huks.HuksOptio
           throw (error as Error);
         } else {
           console.error(`promise: deleteKeyItem failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: deleteKeyItem input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 

@@ -1,16 +1,22 @@
 # @ohos.enterprise.usbManager (USB Management) (System API)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @hp_guo-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @zhang_yixin13-->
 
 The **usbManager** module provides APIs for USB management.
 
 > **NOTE**
 > 
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-guide.md#introduction) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.usbManager](js-apis-enterprise-usbManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.usbManager](js-apis-enterprise-usbManager.md).
 
 ## Modules to Import
 
@@ -24,17 +30,19 @@ setUsbPolicy(admin: Want, usbPolicy: UsbPolicy, callback: AsyncCallback\<void>):
 
 Sets the USB read/write policy. This API uses an asynchronous callback to return the result.
 
-Required permissions: ohos.permission.ENTERPRISE_MANAGE_USB
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_USB
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | usbPolicy  | [UsbPolicy](js-apis-enterprise-usbManager.md#usbpolicy) | Yes| USB access policy. This API supports **READ_WRITE** and **READ_ONLY** only.|
 | callback | AsyncCallback\<void> | Yes| Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -53,11 +61,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.READ_WRITE;
 
@@ -76,17 +86,19 @@ setUsbPolicy(admin: Want, usbPolicy: UsbPolicy): Promise\<void>
 
 Sets the USB read/write policy. This API uses a promise to return the result.
 
-Required permissions: ohos.permission.ENTERPRISE_MANAGE_USB
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_USB
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | usbPolicy  | [UsbPolicy](js-apis-enterprise-usbManager.md#usbpolicy) | Yes| USB access policy. This API supports **READ_WRITE** and **READ_ONLY** only.|
 
 **Return value**
@@ -110,14 +122,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
-let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.READ_WRITE
+let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.READ_WRITE;
 
 usbManager.setUsbPolicy(wantTemp, policy).then(() => {
   console.info('Succeeded in setting usb policy');
@@ -132,17 +146,19 @@ disableUsb(admin: Want, disable: boolean): void
 
 Enables or disables USB.
 
-Required permissions: ohos.permission.ENTERPRISE_MANAGE_USB
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_USB
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name | Type                                                   | Mandatory| Description                                            |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.          |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.          |
 | disable | boolean                                                 | Yes  | Whether to disable USB. The value **true** means to disable USB; the value **false** means the opposite.|
 
 **Error codes**
@@ -161,17 +177,19 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   usbManager.disableUsb(wantTemp, true);
   console.info(`Succeeded in disabling USB`);
 } catch (err) {
-  console.error(`Failed to disabling USB. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to disable USB. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -181,17 +199,19 @@ isUsbDisabled(admin: Want): boolean
 
 Queries whether the USB is disabled.
 
-Required permissions: ohos.permission.ENTERPRISE_MANAGE_USB
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_USB
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -214,11 +234,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let isDisabled = usbManager.isUsbDisabled(wantTemp);

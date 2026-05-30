@@ -4,15 +4,16 @@
 <!--Owner: @xuchangda-->
 <!--Designer: @guxinggang-->
 <!--Tester: @wangbeibei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
-The AlbumPickerComponent embedded in the UI of an application allows the application to access the albums in the user directory without any permission.
+The **AlbumPickerComponent** embedded in the UI of an application allows the application to access the albums in the user directory without any permission.
 
 This component must be used together with [PhotoPickerComponent](ohos-file-PhotoPickerComponent.md). When a user selects an album by using the **AlbumPickerComponent**, the **PhotoPickerComponent** is instructed to update the images and videos in the album.
 
 > **NOTE**
 >
-> This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component does not support [same-layer rendering](../../../application-dev/web/web-same-layer.md).
 
 ## Modules to Import
 
@@ -20,18 +21,13 @@ This component must be used together with [PhotoPickerComponent](ohos-file-Photo
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo, photoAccessHelper, EmptyAreaClickCallback } from '@kit.MediaLibraryKit';
 ```
 
-## Properties
+## Attributes
 
-The [universal properties](../apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
+The [universal attributes](../apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
 
 ## AlbumPickerComponent
 
-AlbumPickerComponent({
-  albumPickerOptions?: AlbumPickerOptions,
-  onAlbumClick?: (albumInfo: AlbumInfo) => boolean,
-  onEmptyAreaClick?: EmptyAreaClickCallback,
-  albumPickerController?: AlbumPickerController
-})
+AlbumPickerComponent( {albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (albumInfo: AlbumInfo) => boolean, onEmptyAreaClick?: EmptyAreaClickCallback, albumPickerController?: AlbumPickerController })
 
 Allows the application to access the albums in the user directory without any permission.
 
@@ -44,7 +40,7 @@ Allows the application to access the albums in the user directory without any pe
 | Name                | Type                                                 | Mandatory | Description                             |
 |--------------------|-----------------------------------------------------|-----|---------------------------------|
 | albumPickerOptions | [AlbumPickerOptions](#albumpickeroptions)           | No  | **AlbumPicker** configuration.<br> **Atomic service API**: This API can be used in atomic services since API version 12.             |
-| onAlbumClick       | (albumInfo: [AlbumInfo](#albuminfo)) => boolean     | No  | Callback used to return the album URI when an album is selected by a user.<br> **Atomic service API**: This API can be used in atomic services since API version 12.   |
+| onAlbumClick       | (albumInfo: [AlbumInfo](#albuminfo)) => boolean     | No  | Callback used to return the album URI when an album is selected by a user. No special processing is performed on the return value.<br> **Atomic service API**: This API can be used in atomic services since API version 12.   |
 | onEmptyAreaClick<sup>13+</sup>   | [EmptyAreaClickCallback](#emptyareaclickcallback13) | No  | Callback to be invoked when the blank area of the **AlbumPickerComponent** is tapped, which is used to notify the application of the tap.<br> **Atomic service API**: This API can be used in atomic services since API version 13.|
 | albumPickerController<sup>20+</sup>   | [AlbumPickerController](#albumpickercontroller20) | No  | A controller that enables applications to send data to the **AlbumPickerComponent**.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
@@ -54,11 +50,11 @@ Represents the **AlbumPicker** configuration.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name            | Type | Mandatory | Description                                                         |
-|----------------|-------|-----|-------------------------------------------------------------|
-| themeColorMode | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode) | No  | Theme color of the album page. The options are **AUTO**, **Light**, and **Dark**. The default value is **AUTO**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                        |
-| filterType<sup>13+</sup>     | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | No  | Type of the filter. You can use it to display images, videos, or both. If this parameter is not specified, images and videos are displayed in a specific album.<br> **Atomic service API**: This API can be used in atomic services since API version 13.|
-| fontSize<sup>20+</sup> | number \| string | No| Font size. For details about the value range, see [fontsize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize).<br> **Atomic service API**: This API can be used in atomic services since API version 20. |
+| Name            | Type | Read-Only| Optional | Description                                                         |
+|----------------|-------|-----|-----|-------------------------------------------------------------|
+| themeColorMode | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode) | No| Yes  | Theme color of the album page. The options are **AUTO**, **Light**, and **Dark**. The default value is **AUTO**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                        |
+| filterType<sup>13+</sup>     | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | No| Yes  | Type of the filter. You can use it to display images, videos, or both. If this parameter is not specified, images and videos are displayed in a specific album.<br> **Atomic service API**: This API can be used in atomic services since API version 13.|
+| fontSize<sup>20+</sup> | number \| string | No| Yes| Font size. For details about the value range, see [fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize).<br> **Atomic service API**: This API can be used in atomic services since API version 20. |
 
 ## EmptyAreaClickCallback<sup>13+</sup>
 
@@ -78,10 +74,10 @@ Represents album information.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name | Type | Mandatory | Description   |
-|------|------|-----|---------|
-| uri  | string | No  | Album URI.|
-| albumName  | string | No  | Album name.|
+| Name | Type |Read-Only| Optional | Description   |
+|------|------|-----|-----|---------|
+| uri  | string | No| Yes | Album URI.|
+| albumName  | string | No| Yes | Album name.|
 
 ## AlbumPickerController<sup>20+</sup>
 
@@ -105,7 +101,7 @@ Sets the font size of the album list.
 
 |  Name       | Type                                   | Mandatory | Description |
 | ------------------------- | ------------------ | ----- | --------------- |
-| fontSize | number \| string | Yes| Font size. For details about the value range, see [fontsize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize).|
+| fontSize | number \| string | Yes| Font size. For details about the value range, see [fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize).|
 
 ## Example
 
@@ -148,3 +144,4 @@ struct PickerDemo {
     }
   }
 }
+```

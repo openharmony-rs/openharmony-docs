@@ -2,9 +2,9 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -52,7 +52,7 @@
 
 ### 图像格式
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -69,7 +69,7 @@ enum anonymous enum
 
 ### 图像颜色通道类型
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -84,14 +84,14 @@ enum anonymous enum
 | OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1 | 亮度信息。 |
 | OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2 | 色度信息。 |
 | OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3 | 色差值信息。 |
-| OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | Jpeg格式。 |
+| OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | JPEG格式。 |
 
 
 ## 函数说明
 
 ### OH_Image_InitImageNative()
 
-```
+```c
 ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)
 ```
 
@@ -121,7 +121,7 @@ ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)
 
 ### OH_Image_ClipRect()
 
-```
+```c
 int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)
 ```
 
@@ -147,7 +147,7 @@ int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)
 
 ### OH_Image_Size()
 
-```
+```c
 int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)
 ```
 
@@ -177,7 +177,7 @@ ImageNative对象所存储的数据是预览流还是拍照流，取决于应用
 
 ### OH_Image_Format()
 
-```
+```c
 int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 ```
 
@@ -203,7 +203,7 @@ int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 
 ### OH_Image_GetComponent()
 
-```
+```c
 int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, struct OhosImageComponent* componentNative)
 ```
 
@@ -230,7 +230,7 @@ int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, 
 
 ### OH_Image_Release()
 
-```
+```c
 int32_t OH_Image_Release(ImageNative* native)
 ```
 

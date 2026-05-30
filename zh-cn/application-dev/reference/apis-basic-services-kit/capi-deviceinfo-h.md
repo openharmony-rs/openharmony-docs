@@ -1,8 +1,16 @@
 # deviceinfo.h
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @chenjinxiang3-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 ## 概述
 
 声明用于查询终端设备信息的API。
+
+**引用文件：** <deviceinfo.h>
 
 **库：** libdeviceinfo_ndk.z.so
 
@@ -50,7 +58,7 @@
 
 ### OH_GetDeviceType()
 
-```
+```c
 const char *OH_GetDeviceType(void)
 ```
 
@@ -68,7 +76,7 @@ const char *OH_GetDeviceType(void)
 
 ### OH_GetManufacture()
 
-```
+```c
 const char *OH_GetManufacture(void)
 ```
 
@@ -86,7 +94,7 @@ const char *OH_GetManufacture(void)
 
 ### OH_GetBrand()
 
-```
+```c
 const char *OH_GetBrand(void)
 ```
 
@@ -104,7 +112,7 @@ const char *OH_GetBrand(void)
 
 ### OH_GetMarketName()
 
-```
+```c
 const char *OH_GetMarketName(void)
 ```
 
@@ -122,7 +130,7 @@ const char *OH_GetMarketName(void)
 
 ### OH_GetProductSeries()
 
-```
+```c
 const char *OH_GetProductSeries(void)
 ```
 
@@ -140,7 +148,7 @@ const char *OH_GetProductSeries(void)
 
 ### OH_GetProductModel()
 
-```
+```c
 const char *OH_GetProductModel(void)
 ```
 
@@ -158,7 +166,7 @@ const char *OH_GetProductModel(void)
 
 ### OH_GetSoftwareModel()
 
-```
+```c
 const char *OH_GetSoftwareModel(void)
 ```
 
@@ -176,7 +184,7 @@ const char *OH_GetSoftwareModel(void)
 
 ### OH_GetHardwareModel()
 
-```
+```c
 const char *OH_GetHardwareModel(void)
 ```
 
@@ -194,7 +202,7 @@ const char *OH_GetHardwareModel(void)
 
 ### OH_GetBootloaderVersion()
 
-```
+```c
 const char *OH_GetBootloaderVersion(void)
 ```
 
@@ -212,7 +220,7 @@ const char *OH_GetBootloaderVersion(void)
 
 ### OH_GetAbiList()
 
-```
+```c
 const char *OH_GetAbiList(void)
 ```
 
@@ -230,7 +238,7 @@ const char *OH_GetAbiList(void)
 
 ### OH_GetSecurityPatchTag()
 
-```
+```c
 const char *OH_GetSecurityPatchTag(void)
 ```
 
@@ -248,7 +256,7 @@ const char *OH_GetSecurityPatchTag(void)
 
 ### OH_GetDisplayVersion()
 
-```
+```c
 const char *OH_GetDisplayVersion(void)
 ```
 
@@ -266,7 +274,7 @@ const char *OH_GetDisplayVersion(void)
 
 ### OH_GetIncrementalVersion()
 
-```
+```c
 const char *OH_GetIncrementalVersion(void)
 ```
 
@@ -284,7 +292,7 @@ const char *OH_GetIncrementalVersion(void)
 
 ### OH_GetOsReleaseType()
 
-```
+```c
 const char *OH_GetOsReleaseType(void)
 ```
 
@@ -302,7 +310,7 @@ const char *OH_GetOsReleaseType(void)
 
 ### OH_GetOSFullName()
 
-```
+```c
 const char *OH_GetOSFullName(void)
 ```
 
@@ -320,7 +328,7 @@ const char *OH_GetOSFullName(void)
 
 ### OH_GetSdkApiVersion()
 
-```
+```c
 int OH_GetSdkApiVersion(void)
 ```
 
@@ -338,7 +346,7 @@ int OH_GetSdkApiVersion(void)
 
 ### OH_GetFirstApiVersion()
 
-```
+```c
 int OH_GetFirstApiVersion(void)
 ```
 
@@ -356,7 +364,7 @@ int OH_GetFirstApiVersion(void)
 
 ### OH_GetVersionId()
 
-```
+```c
 const char *OH_GetVersionId(void)
 ```
 
@@ -374,7 +382,7 @@ const char *OH_GetVersionId(void)
 
 ### OH_GetBuildType()
 
-```
+```c
 const char *OH_GetBuildType(void)
 ```
 
@@ -392,7 +400,7 @@ const char *OH_GetBuildType(void)
 
 ### OH_GetBuildUser()
 
-```
+```c
 const char *OH_GetBuildUser(void)
 ```
 
@@ -410,7 +418,7 @@ const char *OH_GetBuildUser(void)
 
 ### OH_GetBuildHost()
 
-```
+```c
 const char *OH_GetBuildHost(void)
 ```
 
@@ -428,7 +436,7 @@ const char *OH_GetBuildHost(void)
 
 ### OH_GetBuildTime()
 
-```
+```c
 const char *OH_GetBuildTime(void)
 ```
 
@@ -446,7 +454,7 @@ const char *OH_GetBuildTime(void)
 
 ### OH_GetBuildRootHash()
 
-```
+```c
 const char *OH_GetBuildRootHash(void)
 ```
 
@@ -464,7 +472,7 @@ const char *OH_GetBuildRootHash(void)
 
 ### OH_GetDistributionOSName()
 
-```
+```c
 const char *OH_GetDistributionOSName(void)
 ```
 
@@ -482,7 +490,7 @@ const char *OH_GetDistributionOSName(void)
 
 ### OH_GetDistributionOSVersion()
 
-```
+```c
 const char *OH_GetDistributionOSVersion(void)
 ```
 
@@ -500,7 +508,7 @@ const char *OH_GetDistributionOSVersion(void)
 
 ### OH_GetDistributionOSApiVersion()
 
-```
+```c
 int OH_GetDistributionOSApiVersion(void)
 ```
 
@@ -518,7 +526,7 @@ int OH_GetDistributionOSApiVersion(void)
 
 ### OH_GetDistributionOSReleaseType()
 
-```
+```c
 const char *OH_GetDistributionOSReleaseType(void)
 ```
 

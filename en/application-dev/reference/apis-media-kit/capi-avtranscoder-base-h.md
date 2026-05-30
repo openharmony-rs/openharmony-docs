@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -47,7 +47,7 @@ The file declares the struct and enums used by the AVTranscoder.
 
 ### OH_AVTranscoder_State
 
-```
+```c
 enum OH_AVTranscoder_State
 ```
 
@@ -72,7 +72,7 @@ Enumerates the transcoding states.
 
 ### OH_AVTranscoder_OnStateChange()
 
-```
+```c
 typedef void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state, void *userData)
 ```
 
@@ -95,7 +95,7 @@ Defines a callback invoked when the state of the transcoding process changes.
 
 ### OH_AVTranscoder_OnError()
 
-```
+```c
 typedef void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg,void *userData)
 ```
 
@@ -119,7 +119,7 @@ Defines a callback invoked when an error occurs during the transcoding process.
 
 ### OH_AVTranscoder_OnProgressUpdate()
 
-```
+```c
 typedef void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, int32_t progress, void *userData)
 ```
 
@@ -137,5 +137,5 @@ Defines a callback invoked when the progress of the transcoding process is updat
 | Name| Description|
 | -- | -- |
 | [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | Pointer to an OH_AVTranscoder instance.|
-| int32_t progress | Transcoding progress.|
+| int32_t progress | Transcoding progress, in percentage.|
 | void *userData | Pointer to user-defined data.|

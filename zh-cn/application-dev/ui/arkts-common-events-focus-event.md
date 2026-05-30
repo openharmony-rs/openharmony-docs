@@ -1,10 +1,10 @@
 # 支持焦点处理
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 基础概念与规范
 
@@ -13,31 +13,52 @@
 **焦点、焦点链和走焦**
 
 - 焦点：指向当前应用界面上唯一的一个可交互元素，当用户使用键盘、电视遥控器、车机摇杆/旋钮等非指向性输入设备与应用程序进行间接交互时，基于焦点的导航和交互是重要的输入手段。
-- 焦点链：在应用的组件树形结构中，当一个组件获得焦点时，从根节点到该组件节点的整条路径上的所有节点都会被视为处于焦点状态，形成一条连续的焦点链。
+- 焦点链：在应用的组件树形结构中，当一个组件获得焦点时，从根节点到该组件节点的整条路径上的所有节点都会处于焦点状态，形成一条连续的焦点链。
 - 走焦：指焦点在应用内的组件之间转移的行为。这一过程对用户是透明的，但开发者可以通过监听onFocus（焦点获取）和onBlur（焦点失去）事件来捕捉这些变化。关于走焦的具体方式和规则，详见[走焦规范](#走焦规范)。
 
 
 **焦点激活态**
 
-用来指向当前获焦组件的样式。
+焦点激活态是用来显示当前获焦组件焦点框的视觉样式。
 
-- 显示规则：默认情况下焦点激活态不会显示，只有当应用进入激活态后，焦点激活态才会显示。因此，虽然获得焦点的组件不一定显示焦点激活态（取决于是否处于激活态），但显示焦点激活态的组件必然是获得焦点的。大部分组件内置了焦点激活态样式，开发者同样可以使用样式接口进行自定义，一旦自定义，组件将不再显示内置的焦点激活态样式。关于焦点激活态样式设置的具体方式，详见[焦点样式](#焦点样式)。在焦点链中，若多个组件同时拥有焦点激活态，系统将采用子组件优先的策略，优先显示子组件的焦点激活态，并且仅显示一个焦点激活态。
-- 进入激活态：使用外接键盘按下Tab键/使用FocusController的activate(true)方法才会进入焦点的激活态，进入激活态后，才可以使用键盘Tab键/方向键进行走焦。首次用来激活焦点激活态的Tab键不会触发走焦。
-- 退出激活态：当应用收到FocusController的active(false)方法/点击事件时（包括手指触屏的按下事件和鼠标左键的按下事件），焦点的激活态会退出。
+- 显示规则
 
-```ts
+  - 默认状态：焦点激活态默认是隐藏的。
+  - 激活条件：只有当应用程序进入"激活态"时，焦点激活态才会显示。
+  - 重要关系：
+    - 获得焦点的组件不一定显示激活态（取决于应用是否处于激活态）。
+    - 显示激活态的组件必定是当前获得焦点的组件。
+  - 样式定制：组件通常有内置的激活态样式，开发者可以通过样式接口自定义，自定义后会覆盖默认样式。
+  - 显示优先级：当多个组件同时拥有焦点时，系统优先显示子组件的激活态，且同一时间只显示一个激活态。
+
+- 如何进入激活态
+
+  - 按下外接键盘的Tab键（注意：首次激活时的Tab键仅用于激活，不会触发焦点移动）。
+  - 调用[FocusController](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md)的activate(true)方法。
+
+- 如何退出激活态
+
+  - 调用FocusController的activate(false)方法。
+  - 发生点击事件时（包括触屏点击或鼠标左键点击）。
+
+<!-- @[dynamic_focus_active](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusActive.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct FocusActiveExample {
+export struct FocusActiveExample {
   build() {
-    Column() {
-      Button('Set Active').width(140).height(45).margin(5).onClick(() => {
-        this.getUIContext().getFocusController().activate(true, true);
-      })
-      Button('Set Not Active').width(140).height(45).margin(5).onClick(() => {
-        this.getUIContext().getFocusController().activate(false, true);
-      })
-    }.width('100%')
+    NavDestination() {
+      Column() {
+        Button('Set Active').width(140).height(45).margin(5).onClick(() => {
+          this.getUIContext().getFocusController().activate(true, true);
+        })
+        Button('Set Not Active').width(140).height(45).margin(5).onClick(() => {
+          this.getUIContext().getFocusController().activate(false, true);
+        })
+      }.width('100%')
+    }
+    // ...
   }
 }
 ```
@@ -54,11 +75,11 @@ struct FocusActiveExample {
 
 示例操作步骤：
 1. 点击Set Active按钮，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口进入焦点激活态。
-2. Tab走焦至Set Not Active按钮，Enter键触发按键事件，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口退出焦点激活态。
+2. Tab键走焦至Set Not Active按钮，Enter键触发按键事件，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口退出焦点激活态。
 
 **层级页面**
 
-层级页面是焦点框架中特定容器组件的统称，涵盖Page、Dialog、SheetPage、ModalPage、Menu、Popup、NavBar、NavDestination等。这些组件通常具有以下关键特性：
+层级页面是焦点框架中特定容器组件的统称，涵盖普通页面、[全屏模态](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md)页面、[半模态](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)页面、[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)、[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)等。这些组件通常具有以下关键特性：
 
 - 视觉层级独立性：从视觉呈现上看，这些组件独立于其他页面内容，并通常位于其上方，形成视觉上的层级差异。
 - 焦点跟随：此类组件在首次创建并展示之后，会立即将应用内焦点抢占。
@@ -78,7 +99,89 @@ struct FocusActiveExample {
 
 在缺省状态下，[层级页面](#基础概念)的默认焦点位于其根容器上，但开发者可以通过defaultFocus属性来自定义这一行为。
 
-当焦点位于根容器时，首次按下Tab键不仅会使焦点进入激活状态，还会触发焦点向子组件的传递。如果子组件本身也是一个容器，则焦点会继续向下传递，直至到达叶子节点。传递规则是：优先传递给上一次获得焦点的子节点，如果不存在这样的节点，则默认传递给第一个子节点。
+当焦点位于根容器时，首次按下Tab键不仅会使焦点进入激活状态，还会根据[焦点传递规则](#焦点传递规则)进行传递。
+
+### 焦点传递规则
+
+焦点传递是指当用户首次激活应用焦点系统时，焦点如何从根节点逐级向下传递到具体组件的过程。
+
+在焦点链上的组件，都会处于获焦状态。同时组件在获焦时，会继续向下递归传递获焦状态，每次传递给第一个子组件，直到叶子节点。
+
+<!-- @[dynamic_focus_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets) -->
+
+``` TypeScript
+@Entry
+export struct FocusTransferExample {
+  @State logText: string = '\n';
+  context = this.getUIContext().getHostContext();
+
+  addText(message: string) {
+    this.logText += `${message}\n`;
+  };
+
+  build() {
+    NavDestination() {
+      Column() {
+        Row() {
+          Column() {
+            Button('Button 1')
+              .margin(20)
+              .onClick(() => {
+                // 请将$r('app.string.Focus_Event')替换为实际资源文件，在本示例中该资源文件的value值为"获焦信息"
+                this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
+                this.getUIContext().getFocusController().requestFocus('Row 2');
+              })
+          }
+        }
+
+        Column() {
+          Row() {
+            Button('Button 2')
+              .margin(20)
+              .onFocus(() => {
+                // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
+                this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+              })
+            Button('button 3')
+              .margin(20)
+              .onFocus(() => {
+                // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
+                this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+              })
+          }
+          .id('Row 2')
+          .onFocus(() => {
+            // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
+            this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+          })
+        }
+        .onFocus(() => {
+          // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
+          this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+        })
+
+        Scroll() {
+          Text(this.logText)
+            .fontSize(14)
+            .textAlign(TextAlign.Start)
+            .padding(10)
+        }
+        .height('40%')
+        .width('100%')
+        .border({ width: 1, color: '#ccc' })
+        .margin(10)
+      }
+      .height('100%')
+      .padding(20)
+    }
+    // ...
+  }
+}
+```
+
+运行后点击Button1，请求焦点给Row组件，Row组件的第一个可获焦子节点Button2获焦。
+
+![Liner_Focus_1](figures/Focus_transfer.gif)
 
 ### 走焦规范
 
@@ -91,24 +194,32 @@ struct FocusActiveExample {
 
 
 - 按键走焦
-1. 前提：当前应用需处于焦点激活态。
-2. 范围限制：按键走焦仅在当前获得焦点的层级页面内进行，具体参见“层级页面”中的“走焦范围限制”部分。
-3. 按键类型：
-Tab键：遵循Z字型遍历逻辑，完成当前范围内所有叶子节点的遍历，到达当前范围内的最后一个组件后，继续按下Tab键，焦点将循环至范围内的第一个可获焦组件，实现循环走焦。
-Shift+Tab键：与Tab键具有相反的焦点转移效果。
-方向键（上、下、左、右）：遵循十字型移动策略，在单层容器中，焦点的转移由该容器的特定走焦算法决定。若算法判定下一个焦点应落在某个容器组件上，系统将采用中心点距离优先的算法来进一步确定容器内的目标子节点。
-4. 走焦算法：每个可获焦的容器组件都有其特定的走焦算法，用于定义焦点转移的规则。
-5. 子组件优先：当子组件处理按键走焦事件，父组件将不再介入。
+
+  1. 前提：当前应用需处于焦点激活态。
+  2. 范围限制：按键走焦仅在当前获得焦点的层级页面内进行，具体参见“层级页面”中的“走焦范围限制”部分。
+  3. 按键类型：
+
+     Tab键：遵循Z字型遍历逻辑，完成当前范围内所有叶子节点的遍历，到达当前范围内的最后一个组件后，继续按下Tab键，焦点将循环至范围内的第一个可获焦组件，实现循环走焦。
+
+     Shift+Tab键：与Tab键具有相反的焦点转移效果。
+
+     方向键（上、下、左、右）：遵循十字型移动策略，在单层容器中，焦点的转移由该容器的特定走焦算法决定。若算法判定下一个焦点应落在某个容器组件上，系统将采用中心点距离优先的算法来进一步确定容器内的目标子节点。
+  4. 走焦算法：每个可获焦的容器组件都有其特定的走焦算法，用于定义焦点转移的规则。
+  5. 子组件优先：当子组件处理按键走焦事件，父组件将不再介入。
 
 - requestFocus
-详见[主动获焦失焦](#主动获焦失焦)，可以主动将焦点转移到指定组件上。
-不可跨窗口或跨ArkUI实例申请焦点，但可以跨层级页面申请焦点。
+
+  详见[主动获焦失焦](#主动获焦失焦)，可以主动将焦点转移到指定组件上。
+
+  不可跨窗口或跨ArkUI实例申请焦点，但可以跨层级页面申请焦点。
 
 - clearFocus
-详见[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)，会清除当前层级页面中的焦点，最终焦点停留在根容器上。
+
+  详见[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)，会清除当前层级页面中的焦点，最终焦点停留在根容器上。
 
 - focusOnTouch
-详见[focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)，使绑定组件具备点击后获得焦点的能力。若组件本身不可获焦，则此功能无效。若绑定的是容器组件，点击后优先将焦点转移给上一次获焦的子组件，否则转移给第一个可获焦的子组件。
+
+  详见[focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)，使绑定组件具备点击后获得焦点的能力。若组件本身不可获焦，则此功能无效。若绑定的是容器组件，点击后优先将焦点转移给上一次获焦的子组件，否则转移给第一个可获焦的子组件。
 
 
 **被动走焦**
@@ -140,39 +251,43 @@ Shift+Tab键：与Tab键具有相反的焦点转移效果。
 - 方向键走焦：当使用与容器定义方向垂直的方向键时，容器不接受该方向的走焦请求。例如，在横向的Row容器中，无法使用方向键进行上下移动。
 - 边界处理：当焦点位于容器的首尾子节点时，容器将拒绝与当前焦点方向相反的方向键走焦请求。例如，焦点在一个横向的Row容器的第一个子节点上时，该容器无法处理方向键左的走焦请求。
 
-```ts
+<!-- @[dynamic_focus_liner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTraversalGuidelines.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct FocusLinerExample {
+export struct FocusLinerExample {
   build() {
-    Column() {
+    NavDestination() {
       Column() {
-        Button("Column Button1")
-          .width(150)
-          .height(45)
-          .fontColor(Color.White)
-          .margin(10)
-        Button("Column Button2")
-          .width(150)
-          .height(45)
-          .fontColor(Color.White)
-          .margin(10)
-      }
-      .margin(10)
-
-      Row() {
-        Button("Row Button1")
-          .width(150)
-          .height(45)
-          .fontColor(Color.White)
-          .margin(10)
-        Button("Row Button2")
-          .width(150)
-          .height(45)
-          .fontColor(Color.White)
-          .margin(10)
+        Column() {
+          Button('Column Button1')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin(10)
+          Button('Column Button2')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin(10)
+        }
+        .margin(10)
+        Row() {
+          Button('Row Button1')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin(10)
+          Button('Row Button2')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin(10)
+        }
       }
     }
+    // ...
   }
 }
 ```
@@ -192,51 +307,60 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 
 **投影走焦算法**
 
-投影走焦算法基于当前获焦组件在走焦方向上的投影，结合子组件与投影的重叠面积和中心点距离进行胜出判定。该算法适用于子组件大小不一的容器，目前仅支持配置了wrap属性的Flex组件。运行规则如下：
+投影走焦算法基于当前获焦组件在走焦方向上的投影，结合子组件与投影的重叠面积和中心点距离进行胜出判定。该算法适用于子组件大小不一的容器，目前仅支持RelativeContainer组件、配置了wrap属性的Flex组件。运行规则如下：
 
 
 - 方向键走焦时，判断投影与子组件区域的重叠面积，在所有面积不为0的子组件中，计算它们与当前获焦组件的中心点直线距离，选择距离最短的子组件。若存在多个备选子组件，则选择节点树上更靠前的子组件。若无任何子组件与投影有重叠，说明该容器无法处理该方向键的走焦请求。
 - Tab键走焦时，先使用规格1，按照方向键右进行判定，若找到则成功退出，若无法找到，则将当前获焦子组件的位置模拟往下移动该获焦子组件的高度，然后再按照方向键左进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次Tab键走焦请求。
 - Shift+Tab键走焦时，先使用规格1，按照方向键左进行判定，找到则成功退出。若无法找到，则将当前获焦子组件的位置模拟向上移动该获焦子组件的高度，然后再按照方向键右进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次的Shift+Tab键走焦请求。
 
-```ts
-@Entry
-@Component
-struct ProjectAreaFocusExample {
-  build() {
-    Column() {
-      Column({ space: 5 }) {
-        Text('Wrap').fontSize(12).width('90%')
-        // 子组件多行布局
-        Flex({ wrap: FlexWrap.Wrap }) {
-          Button('1').width(140).height(50).margin(5)
-          Button('2').width(140).height(50).margin(5)
-          Button('3').width(140).height(50).margin(5)
-          Button('4').width(140).height(50).margin(5)
-          Button('5').width(140).height(50).margin(5)
-        }
-        .width('90%')
-        .padding(10)
-      }.width('100%').margin({ top: 5 })
-    }.width('100%')
-  }
-}
-```
+ <!-- @[dynamic_focus_project_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectionBasedFocus.ets) -->
+ 
+ ``` TypeScript
+ @Entry
+ @Component
+ export struct ProjectAreaFocusExample {
+   build() {
+     NavDestination() {
+       Column() {
+         Column({ space: 5 }) {
+           Text('Wrap').fontSize(12).width('90%')
+           // 子组件多行布局
+           Flex({ wrap: FlexWrap.Wrap }) {
+             Button('1').width(140).height(50).margin(5)
+             Button('2').width(140).height(50).margin(5)
+             Button('3').width(140).height(50).margin(5)
+             Button('4').width(140).height(50).margin(5)
+             Button('5').width(140).height(50).margin(5)
+           }
+           .width('90%')
+           .padding(10)
+         }.width('100%').margin({ top: 5 })
+       }.width('100%')
+     }
+     // ...
+   }
+ }
+ ```
 
 > **说明：**
 >
-> - 这种投影聚焦算法计算的聚焦顺序与组件布局和大小密切相关，建议在组件排列非常规整的场景下使用。如果组件大小不一且存在横向或纵向的交叠关系，则可能会导致聚焦顺序与开发者预期不符。
+> - 这种投影走焦算法计算的走焦顺序与组件布局和大小密切相关，建议在组件排列非常规整的场景下使用。如果组件大小不一且存在横向或纵向的交叠关系，则可能会导致走焦顺序与开发者预期不符。
+>
 > - 如果开发者希望有明确的走焦顺序，建议使用Column/Row等顺序走焦的容器实现。
 
 Flex多行组件布局，组件大小一致，走焦正常。
 
 ![Project_Area_Focus_1](figures/Project_Area_Focus_1.gif)
 
-```ts
+<!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FrojectAreaFocusFlex.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ProjectAreaFocusExample2 {
+export struct ProjectAreaFocusFlexExample {
   build() {
+    NavDestination() {
     Column() {
       Column({ space: 5 }) {
         Text('Wrap').fontSize(12).width('90%')
@@ -252,11 +376,13 @@ struct ProjectAreaFocusExample2 {
         .padding(10)
       }.width('100%').margin({ top: 5 })
     }.width('100%')
+    }
+    // ...
   }
 }
 ```
 
-Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab走焦至下方3、4、5按钮组件。
+Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab键走焦至下方4、5按钮组件。
 
 ![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
 
@@ -282,60 +408,64 @@ onBlur(event:() => void)
 
 onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
 
-```ts
-// xxx.ets
+<!-- @[focus_dynamic_reflect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/onFocusBlur.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct FocusEventExample {
+export struct OnFocusBlur {
   @State oneButtonColor: Color = Color.Gray;
   @State twoButtonColor: Color = Color.Gray;
   @State threeButtonColor: Color = Color.Gray;
 
   build() {
-    Column({ space: 20 }) {
-      // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
-      Button('First Button')
-        .width(260)
-        .height(70)
-        .backgroundColor(this.oneButtonColor)
-        .fontColor(Color.Black)
+    NavDestination() {
+      Column({ space: 20 }) {
+        // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
+        Button('First Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.oneButtonColor)
+          .fontColor(Color.Black)
           // 监听第一个组件的获焦事件，获焦后改变颜色
-        .onFocus(() => {
-          this.oneButtonColor = Color.Green;
-        })
+          .onFocus(() => {
+            this.oneButtonColor = Color.Green;
+          })
           // 监听第一个组件的失焦事件，失焦后改变颜色
-        .onBlur(() => {
-          this.oneButtonColor = Color.Gray;
-        })
+          .onBlur(() => {
+            this.oneButtonColor = Color.Gray;
+          })
 
-      Button('Second Button')
-        .width(260)
-        .height(70)
-        .backgroundColor(this.twoButtonColor)
-        .fontColor(Color.Black)
+        Button('Second Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.twoButtonColor)
+          .fontColor(Color.Black)
           // 监听第二个组件的获焦事件，获焦后改变颜色
-        .onFocus(() => {
-          this.twoButtonColor = Color.Green;
-        })
+          .onFocus(() => {
+            this.twoButtonColor = Color.Green;
+          })
           // 监听第二个组件的失焦事件，失焦后改变颜色
-        .onBlur(() => {
-          this.twoButtonColor = Color.Gray;
-        })
+          .onBlur(() => {
+            this.twoButtonColor = Color.Gray;
+          })
 
-      Button('Third Button')
-        .width(260)
-        .height(70)
-        .backgroundColor(this.threeButtonColor)
-        .fontColor(Color.Black)
+        Button('Third Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.threeButtonColor)
+          .fontColor(Color.Black)
           // 监听第三个组件的获焦事件，获焦后改变颜色
-        .onFocus(() => {
-          this.threeButtonColor = Color.Green;
-        })
+          .onFocus(() => {
+            this.threeButtonColor = Color.Green;
+          })
           // 监听第三个组件的失焦事件，失焦后改变颜色
-        .onBlur(() => {
-          this.threeButtonColor = Color.Gray ;
-        })
-    }.width('100%').margin({ top: 20 })
+          .onBlur(() => {
+            this.threeButtonColor = Color.Gray;
+          })
+      }.width('100%').margin({ top: 20 })
+    }
+    // ...
   }
 }
 ```
@@ -354,52 +484,63 @@ struct FocusEventExample {
 
 父节点Row1失焦 —> 子节点Button1失焦 —> 子节点Button2获焦 —> 父节点Row2获焦。
 
-```ts
+<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_FocusAndBlurExample]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_FocusAndBlurExample';
+
 @Entry
 @Component
-struct FocusAndBlurExample {
+export struct FocusAndBlurExample {
   build() {
-    Column() {
-      Column({ space: 5 }) {
-        Row() { // 父节点Row1
-          Button('Button1') // 子节点Button1
-            .width(140)
-            .height(45)
-            .margin(5)
-            .onFocus(() => {
-              console.info("Button1 onFocus");
-            })
-            .onBlur(() => {
-              console.info("Button1 onBlur");
-            })
-        }
-        .onFocus(() => {
-          console.info("Row1 onFocus");
-        })
-        .onBlur(() => {
-          console.info("Row1 onBlur");
-        })
+    NavDestination() {
+      Column() {
+        Column({ space: 5 }) {
+          Row() { // 父节点Row1
+            Button('Button1') // 子节点Button1
+              .width(140)
+              .height(45)
+              .margin(5)
+              .onFocus(() => {
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button1 onFocus`);
+              })
+              .onBlur(() => {
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button1 onBlur`);
+              })
+          }
+          .onFocus(() => {
+            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onFocus');
+          })
+          .onBlur(() => {
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onBlur`);
+          })
 
-        Row() { // 父节点Row2
-          Button('Button2') // 子节点Button2
-            .width(140)
-            .height(45)
-            .margin(5)
-            .onFocus(() => {
-              console.info("Button2 onFocus");
-            })
-            .onBlur(() => {
-              console.info("Button2 onBlur");
-            })
-        }
-        .onFocus(() => {
-          console.info("Row2 onFocus");
-        })
-        .onBlur(() => {
-          console.info("Row2 onBlur");
-        })
-      }.width('100%').margin({ top: 5 })
-    }.width('100%')
+          Row() { // 父节点Row2
+            Button('Button2') // 子节点Button2
+              .width(140)
+              .height(45)
+              .margin(5)
+              .onFocus(() => {
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button2 onFocus`);
+              })
+              .onBlur(() => {
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button2 onBlur`);
+              })
+          }
+          .onFocus(() => {
+            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onFocus');
+          })
+          .onBlur(() => {
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onBlur`);
+          })
+        }.width('100%').margin({ top: 5 })
+      }.width('100%')
+    }
+    // ...
   }
 }
 ```
@@ -426,8 +567,17 @@ focusable(value: boolean)
 
 - 有获焦能力，但默认不可获焦的组件，典型的是Text、Image组件，此类组件缺省情况下无法获焦，若需要使其获焦，可使用通用属性focusable(true)使能。对于没有配置focusable属性，有获焦能力但默认不可获焦的组件，例如没有可获焦子组件的容器组件，为其配置onClick或是单指单击的Tap手势，该组件会隐式地成为可获焦组件。如果其focusable属性被设置为false，即使配置了上述事件，该组件依然不可获焦。
 
-- 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如Blank、Circle组件，此类组件即使使用focusable属性也无法使其可获焦。
+- 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如[Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md)、[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)、[Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)组件，此类组件即使使用focusable属性也无法使其可获焦。
 
+设置容器组件可获焦：
+
+获焦的主要目的是为了响应用户交互，如果组件不具备交互能力，则其也不会具有可获焦能力。容器组件通常不具备交互能力，因此如果一个容器组件（如Stack、Column）作为叶子节点，即使通过.focusable(true)也无法使其具备可获焦能力。需要注意的是通过动态方式创建的[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点也受限于这个规则。
+
+如果想让作为叶子节点的容器组件可获焦，可通过以下任一方式实现：
+
+- 在其内添加一个具备获焦能力的叶子节点组件(如button)。
+
+- 为其配置onClick、Tap手势等使其能响应点击交互。
 
 ```ts
 enabled(value: boolean)
@@ -451,89 +601,103 @@ focusOnTouch(value: boolean)
 >
 >当某组件处于获焦状态时，将其的focusable属性或enabled属性设置为false，会自动使该组件失焦，然后焦点按照[走焦规范](#走焦规范)将焦点转移给其他组件。
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct FocusableExample {
-  @State textFocusable: boolean = true;
-  @State textEnabled: boolean = true;
-  @State color1: Color = Color.Yellow;
-  @State color2: Color = Color.Yellow;
-  @State color3: Color = Color.Yellow;
 
-  build() {
-    Column({ space: 5 }) {
-      Text('Default Text')    // 第一个Text组件未设置focusable属性，默认不可获焦
-        .borderColor(this.color1)
-        .borderWidth(2)
-        .width(300)
-        .height(70)
-        .onFocus(() => {
-          this.color1 = Color.Blue;
-        })
-        .onBlur(() => {
-          this.color1 = Color.Yellow;
-        })
-      Divider()
-
-      Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusableOnTouch为true
-        .borderColor(this.color2)
-        .borderWidth(2)
-        .width(300)
-        .height(70)
-        .focusable(this.textFocusable)
-        .focusOnTouch(true)
-        .onFocus(() => {
-          this.color2 = Color.Blue;
-        })
-        .onBlur(() => {
-          this.color2 = Color.Yellow;
-        })
-
-      Text('enabled: ' + this.textEnabled)    // 第三个Text设置了focusable为true，enabled初始为true
-        .borderColor(this.color3)
-        .borderWidth(2)
-        .width(300)
-        .height(70)
-        .focusable(true)
-        .enabled(this.textEnabled)
-        .focusOnTouch(true)
-        .onFocus(() => {
-          this.color3 = Color.Blue;
-        })
-        .onBlur(() => {
-          this.color3 = Color.Yellow;
-        })
-
-      Divider()
-
-      Row() {
-        Button('Button1')
-          .width(140).height(70)
-        Button('Button2')
-          .width(160).height(70)
-      }
-
-      Divider()
-      Button('Button3')
-        .width(300).height(70)
-
-      Divider()
-    }.width('100%').justifyContent(FlexAlign.Center)
-    .onKeyEvent((e) => {
-      // 绑定onKeyEvent，在该Column组件获焦时，按下'F'键，可将第二个Text的focusable置反
-      if (e.keyCode === 2022 && e.type === KeyType.Down) {
-        this.textFocusable = !this.textFocusable;
-      }
-      // 绑定onKeyEvent，在该Column组件获焦时，按下'G'键，可将第三个Text的enabled置反
-      if (e.keyCode === 2023 && e.type === KeyType.Down) {
-        this.textEnabled = !this.textEnabled;
-      }
-    })
-  }
-}
-```
+ <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) -->
+ 
+ ``` TypeScript
+ @Entry
+ @Component
+ export struct FocusableExample {
+   @State textFocusable: boolean = true;
+   @State textEnabled: boolean = true;
+   @State color1: Color = Color.Yellow;
+   @State color2: Color = Color.Yellow;
+   @State color3: Color = Color.Yellow;
+ 
+   build() {
+     NavDestination() {
+       Column({ space: 12 }) {
+         // 请将$r('app.string.Focus_Focusable_text')替换为实际资源文件，在本示例中该资源文件的value值为"当某组件处于获焦状态"
+         Text($r('app.string.Focus_Focusable_text'))
+           .fontSize(14)
+           .fontColor('#666')
+         Column({ space: 5 }) {
+           Text('Default Text')    // 第一个Text组件未设置focusable属性，默认不可获焦
+             .borderColor(this.color1)
+             .borderWidth(2)
+             .width(300)
+             .height(70)
+             .onFocus(() => {
+               this.color1 = Color.Blue;
+             })
+             .onBlur(() => {
+               this.color1 = Color.Yellow;
+             })
+           Divider()
+ 
+           Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusableOnTouch为true
+             .borderColor(this.color2)
+             .borderWidth(2)
+             .width(300)
+             .height(70)
+             .focusable(this.textFocusable)
+             .focusOnTouch(true)
+             .onFocus(() => {
+               this.color2 = Color.Blue;
+             })
+             .onBlur(() => {
+               this.color2 = Color.Yellow;
+             })
+ 
+           Text('enabled: ' + this.textEnabled)    // 第三个Text设置了focusable为true，enabled初始为true
+             .borderColor(this.color3)
+             .borderWidth(2)
+             .width(300)
+             .height(70)
+             .focusable(true)
+             .enabled(this.textEnabled)
+             .focusOnTouch(true)
+             .onFocus(() => {
+               this.color3 = Color.Blue;
+             })
+             .onBlur(() => {
+               this.color3 = Color.Yellow;
+             })
+ 
+           Divider()
+ 
+           Row({ space: 20 }) {
+             Button('Button1')
+               .width(140).height(70)
+             Button('Button2')
+               .width(140).height(70)
+           }
+ 
+           Divider()
+           Button('Button3')
+             .width(300).height(70)
+ 
+           Divider()
+         }.width('100%').justifyContent(FlexAlign.Center)
+         .onKeyEvent((e) => {
+           // 绑定onKeyEvent，在该Column组件获焦时，按下'F'键，可将第二个Text的focusable置反
+           if (e.keyCode === 2022 && e.type === KeyType.Down) {
+             this.textFocusable = !this.textFocusable;
+           }
+           // 绑定onKeyEvent，在该Column组件获焦时，按下'G'键，可将第三个Text的enabled置反
+           if (e.keyCode === 2023 && e.type === KeyType.Down) {
+             this.textEnabled = !this.textEnabled;
+           }
+         })
+       }
+       .width('100%')
+       .height('100%')
+       .padding({ left: 12, right: 12 })
+     }
+     // ...
+   }
+ }
+ ```
 
 
 运行效果：
@@ -558,38 +722,51 @@ struct FocusableExample {
 > - 容器配置有onClick或是单指单击的Tap手势。
 > - 容器本身未设置focusable属性，或设置在onClick或是单指单击的Tap手势之后。
 
-```ts
+<!-- @[dynamic_focus_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ScopeFocus.ets) -->
+
+``` TypeScript
+
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_FocusAndBlurExample]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_FocusAndBlurExample';
+
 @Entry
 @Component
-struct ScopeFocusExample {
+export struct ScopeFocusExample {
   @State scopeFocusState: boolean = true;
 
   build() {
-    Column() {
-      Column({ space: 5 }) {
-        Text("容器获焦").textAlign(TextAlign.Center)
-      }
-      .justifyContent(FlexAlign.Center)
-      .width('80%')
-      .height(50)
-      .margin({ top: 5, bottom: 5 })
-      .onClick(() => {
-      })
-      .focusable(this.scopeFocusState)
-
-      Button('Button1')
-        .width(140)
-        .height(45)
-        .margin(5)
+    NavDestination() {
+      Column() {
+        Column({ space: 5 }) {
+          // 请将$r('app.string.Container_Coking')替换为实际资源文件，在本示例中该资源文件的value值为"容器获焦"
+          Text($r('app.string.Container_Coking')).textAlign(TextAlign.Center)
+        }
+        .justifyContent(FlexAlign.Center)
+        .width('80%')
+        .height(50)
+        .margin({ top: 5, bottom: 5 })
         .onClick(() => {
-          this.scopeFocusState = !this.scopeFocusState;
-          console.info("Button1 onFocus");
         })
-      Button('Button2')
-        .width(140)
-        .height(45)
-        .margin(5)
-    }.width('100%')
+        .focusable(this.scopeFocusState)
+
+        Button('Button1')
+          .width(140)
+          .height(45)
+          .margin(5)
+          .onClick(() => {
+            this.scopeFocusState = !this.scopeFocusState;
+            hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onFocus');
+          })
+        Button('Button2')
+          .width(140)
+          .height(45)
+          .margin(5)
+      }.width('100%')
+    }
+    // ...
   }
 }
 ```
@@ -609,27 +786,32 @@ tabStop(isTabStop: boolean)
 ```
 设置当前容器组件的[tabStop](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabstop14)属性，可决定在走焦时焦点是否会停留在当前容器。
 
-```ts
+<!-- @[dynamic_focus_tab_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabStop.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct TabStopExample {
+export struct TabStopExample {
   build() {
-    Column({ space: 20 }) {
-      Button('Button1')
-        .width(140)
-        .height(45)
-        .margin(5)
-      Column() {
-        Button('Button2')
+    NavDestination() {
+      Column({ space: 20 }) {
+        Button('Button1')
           .width(140)
           .height(45)
           .margin(5)
-        Button('Button3')
-          .width(140)
-          .height(45)
-          .margin(5)
-      }.tabStop(true)
-    }.width('100%')
+        Column() {
+          Button('Button2')
+            .width(140)
+            .height(45)
+            .margin(5)
+          Button('Button3')
+            .width(140)
+            .height(45)
+            .margin(5)
+        }.tabStop(true)
+      }.width('100%')
+    }
+    // ...
   }
 }
 ```
@@ -651,63 +833,66 @@ defaultFocus(value: boolean)
 
 设置当前组件是否为当前[层级页面](#基础概念)上的默认焦点。
 
+<!-- @[focus_visualization_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/DefaultFocus.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 @Entry
 @Component
-struct morenjiaodian {
+export struct DefaultFocus {
   @State oneButtonColor: Color = Color.Gray;
   @State twoButtonColor: Color = Color.Gray;
   @State threeButtonColor: Color = Color.Gray;
 
   build() {
-    Column({ space: 20 }) {
-      // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
-      Button('First Button')
-        .width(260)
-        .height(70)
-        .backgroundColor(this.oneButtonColor)
-        .fontColor(Color.Black)
+    NavDestination() {
+      Column({ space: 20 }) {
+        // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
+        Button('First Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.oneButtonColor)
+          .fontColor(Color.Black)
           // 监听第一个组件的获焦事件，获焦后改变颜色
-        .onFocus(() => {
-          this.oneButtonColor = Color.Green;
-        })
+          .onFocus(() => {
+            this.oneButtonColor = Color.Green;
+          })
           // 监听第一个组件的失焦事件，失焦后改变颜色
-        .onBlur(() => {
-          this.oneButtonColor = Color.Gray;
-        })
+          .onBlur(() => {
+            this.oneButtonColor = Color.Gray;
+          })
 
-      Button('Second Button')
-        .width(260)
-        .height(70)
-        .backgroundColor(this.twoButtonColor)
-        .fontColor(Color.Black)
+        Button('Second Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.twoButtonColor)
+          .fontColor(Color.Black)
           // 监听第二个组件的获焦事件，获焦后改变颜色
-        .onFocus(() => {
-          this.twoButtonColor = Color.Green;
-        })
+          .onFocus(() => {
+            this.twoButtonColor = Color.Green;
+          })
           // 监听第二个组件的失焦事件，失焦后改变颜色
-        .onBlur(() => {
-          this.twoButtonColor = Color.Gray;
-        })
+          .onBlur(() => {
+            this.twoButtonColor = Color.Gray;
+          })
 
-      Button('Third Button')
-        .width(260)
-        .height(70)
-        .backgroundColor(this.threeButtonColor)
-        .fontColor(Color.Black)
+        Button('Third Button')
+          .width(260)
+          .height(70)
+          .backgroundColor(this.threeButtonColor)
+          .fontColor(Color.Black)
           // 设置默认焦点
-        .defaultFocus(true)
+          .defaultFocus(true)
           // 监听第三个组件的获焦事件，获焦后改变颜色
-        .onFocus(() => {
-          this.threeButtonColor = Color.Green;
-        })
+          .onFocus(() => {
+            this.threeButtonColor = Color.Green;
+          })
           // 监听第三个组件的失焦事件，失焦后改变颜色
-        .onBlur(() => {
-          this.threeButtonColor = Color.Gray ;
-        })
-    }.width('100%').margin({ top: 20 })
+          .onBlur(() => {
+            this.threeButtonColor = Color.Gray;
+          })
+      }.width('100%').margin({ top: 20 })
+    }
+    // ...
   }
 }
 ```
@@ -729,17 +914,22 @@ struct morenjiaodian {
 
 示例
 
-```ts
+<!-- @[dynamic_focus_scope_priority_previous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopePriorityPrevious.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Index {
+export struct FocusScopePriorityPrevious {
   build() {
-    Row() {
-      Button('Button1')
-        .defaultFocus(true)
-      Button('Button2')
-        .focusScopePriority('RowScope', FocusPriority.PREVIOUS)
-    }.focusScopeId('RowScope')
+    NavDestination() {
+      Row() {
+        Button('Button1')
+          .defaultFocus(true)
+        Button('Button2')
+          .focusScopePriority('RowScope', FocusPriority.PREVIOUS)
+      }.focusScopeId('RowScope')
+    }
+    // ···
   }
 }
 ```
@@ -782,28 +972,33 @@ focusBox(style: FocusBoxStyle)
 
 设置当前组件系统焦点框样式。
 
-```ts
-import { ColorMetrics, LengthMetrics } from '@kit.ArkUI'
+<!-- @[dynamic_focus_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/RequestFocus.ets) -->
+
+``` TypeScript
+import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct RequestFocusExample {
+export struct RequestFocusExample {
   build() {
-    Column({ space: 30 }) {
-      Button("small black focus box")
-        .focusBox({
-          margin: new LengthMetrics(0),
-          strokeColor: ColorMetrics.rgba(0, 0, 0),
-        })
-      Button("large red focus box")
-        .focusBox({
-          margin: LengthMetrics.px(20),
-          strokeColor: ColorMetrics.rgba(255, 0, 0),
-          strokeWidth: LengthMetrics.px(10)
-        })
+    NavDestination() {
+      Column({ space: 30 }) {
+        Button('small black focus box')
+          .focusBox({
+            margin: new LengthMetrics(0),
+            strokeColor: ColorMetrics.rgba(0, 0, 0),
+          })
+        Button('large red focus box')
+          .focusBox({
+            margin: LengthMetrics.px(20),
+            strokeColor: ColorMetrics.rgba(255, 0, 0),
+            strokeWidth: LengthMetrics.px(10)
+          })
+      }
+      .alignItems(HorizontalAlign.Center)
+      .width('100%')
     }
-    .alignItems(HorizontalAlign.Center)
-    .width('100%')
+    // ...
   }
 }
 ```
@@ -813,7 +1008,7 @@ struct RequestFocusExample {
 
 上述示例包含以下2步：
 
-- 进入[层级页面](#基础概念)，按下Tab键触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的蓝色细框。
+- 进入[层级页面](#基础概念)，按下Tab键触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的黑色细框。
 - 按下Tab键，走焦到第二个Button，焦点框样式为远离边缘的红色粗框。
 
 ## 主动获焦/失焦
@@ -844,79 +1039,82 @@ struct RequestFocusExample {
 
   调用此接口可以主动让焦点转移至参数指定的组件上，焦点转移生效时间为下一个帧信号。
 
-
-```ts
-// focusTest.ets
-@Entry
-@Component
-struct RequestExample {
-  @State btColor: string = '#ff2787d9'
-  @State btColor2: string = '#ff2787d9'
-
-  build() {
-    Column({ space: 20 }) {
-      Column({ space: 5 }) {
-        Button('Button')
-          .width(200)
-          .height(70)
-          .fontColor(Color.White)
-          .focusOnTouch(true)
-          .backgroundColor(this.btColor)
-          .onFocus(() => {
-            this.btColor = '#ffd5d5d5'
-          })
-          .onBlur(() => {
-            this.btColor = '#ff2787d9'
-          })
-          .id("testButton")
-
-        Button('Button')
-          .width(200)
-          .height(70)
-          .fontColor(Color.White)
-          .focusOnTouch(true)
-          .backgroundColor(this.btColor2)
-          .onFocus(() => {
-            this.btColor2 = '#ffd5d5d5'
-          })
-          .onBlur(() => {
-            this.btColor2 = '#ff2787d9'
-          })
-          .id("testButton2")
-
-        Divider()
-          .vertical(false)
-          .width("80%")
-          .backgroundColor('#ff707070')
-          .height(10)
-
-        Button('FocusController.requestFocus')
-          .width(200).height(70).fontColor(Color.White)
-          .onClick(() => {
-            this.getUIContext().getFocusController().requestFocus("testButton")
-          })
-          .backgroundColor('#ff2787d9')
-
-        Button("focusControl.requestFocus")
-          .width(200).height(70).fontColor(Color.White)
-          .onClick(() => {
-            focusControl.requestFocus("testButton2")
-          })
-          .backgroundColor('#ff2787d9')
-
-        Button("clearFocus")
-          .width(200).height(70).fontColor(Color.White)
-          .onClick(() => {
-            this.getUIContext().getFocusController().clearFocus()
-          })
-          .backgroundColor('#ff2787d9')
+  <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct FocusControl {
+    @State btColor: string = '#ff2787d9';
+    @State btColor2: string = '#ff2787d9';
+  
+    build() {
+      NavDestination() {
+          Column({ space: 20 }) {
+            Column({ space: 5 }) {
+              Button('Button')
+                .width(200)
+                .height(70)
+                .fontColor(Color.White)
+                .focusOnTouch(true)
+                .backgroundColor(this.btColor)
+                .onFocus(() => {
+                  this.btColor = '#ffd5d5d5';
+                })
+                .onBlur(() => {
+                  this.btColor = '#ff2787d9';
+                })
+                .id('testButton')
+  
+              Button('Button')
+                .width(200)
+                .height(70)
+                .fontColor(Color.White)
+                .focusOnTouch(true)
+                .backgroundColor(this.btColor2)
+                .onFocus(() => {
+                  this.btColor2 = '#ffd5d5d5';
+                })
+                .onBlur(() => {
+                  this.btColor2 = '#ff2787d9';
+                })
+                .id('testButton2')
+  
+              Divider()
+                .vertical(false)
+                .width('80%')
+                .backgroundColor('#ff707070')
+                .height(10)
+  
+              Button('FocusController.requestFocus')
+                .width(200).height(70).fontColor(Color.White)
+                .onClick(() => {
+                  this.getUIContext().getFocusController().requestFocus('testButton');
+                })
+                .backgroundColor('#ff2787d9')
+  
+              Button('focusControl.requestFocus')
+                .width(200).height(70).fontColor(Color.White)
+                .onClick(() => {
+                  focusControl.requestFocus('testButton2');
+                })
+                .backgroundColor('#ff2787d9')
+  
+              Button('clearFocus')
+                .width(200).height(70).fontColor(Color.White)
+                .onClick(() => {
+                  this.getUIContext().getFocusController().clearFocus();
+                })
+                .backgroundColor('#ff2787d9')
+            }
+          }
+          .width('100%')
+          .height('100%')
       }
+      // ...
     }
-    .width('100%')
-    .height('100%')
   }
-}
-```
+  ```
 
 ![focus-2](figures/focus-2.gif)
 
@@ -940,39 +1138,52 @@ nextFocus(nextStep: Optional<FocusMovement>): T
 >
 >  - 该能力从API version 18开始支持。
 
-```ts
-@Entry
-@Component
-struct NextFocusExample {
-  build() {
-    Column({space: 30}) {
-      Row().height('30%')
-      Row({space: 10}) {
-        Button('A')
-          .id('A')
-          .nextFocus({forward: 'F', backward: 'C', down: 'B'})
-        Button('B')
-          .id('B')
-          .nextFocus({ down: 'C'})
-        Button('C')
-          .id('C')
+  <!-- @[dynamic_focus_next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/NextFocus.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct NextFocusExample {
+    build() {
+      NavDestination() {
+        Column({ space: 30 }) {
+          Row().height('30%')
+          Row({ space: 10 }) {
+            Button('A')
+              .id('A')
+              .nextFocus({ forward: 'F', backward: 'C', down: 'B' })
+            Button('B')
+              .id('B')
+              .nextFocus({ down: 'C' })
+            Button('C')
+              .id('C')
+          }
+  
+          Column({ space: 10 }) {
+            Button('D')
+              .id('D')
+            Button('E')
+              .id('E')
+              .nextFocus({
+                forward: 'A',
+                backward: 'M',
+                up: 'E',
+                right: 'F'
+              })
+          }
+  
+          Row({ space: 10 }) {
+            Button('F')
+              .id('F')
+              .nextFocus({ forward: 'B', down: 'A' })
+          }
+        }.width('100%')
       }
-      Column({space: 10}) {
-        Button('D')
-          .id('D')
-        Button('E')
-          .id('E')
-          .nextFocus({forward: 'A', backward: 'M', up: 'E', right: 'F'})
-      }
-      Row({space: 10}) {
-        Button('F')
-          .id('F')
-          .nextFocus({forward: 'B', down: 'A'});
-      }
-    }.width('100%')
+      // ...
+    }
   }
-}
-```
+  ```
+
 Tab键走焦：未配置nextFocus时，Tab键走焦顺序为A->B->C->D->E->F。配置nextFocus之后，Tab键走焦顺序为A->F->B->C->D->E->A。
 
 ![NextFocus_Focus_1.gif](figures/NextFocus_Focus_1.gif)
@@ -999,32 +1210,37 @@ tabIndex自定义组件Tab键走焦顺序。
 > 
 > tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextfocus](#nextfocus自定义走焦)。
 
-```ts
-@Entry
-@Component
-struct TabIndexExample {
-  build() {
-    Column() {
-      Button('Button1')
-        .width(140)
-        .height(45)
-        .margin(5)
-      Button('Focus Button1')
-        .width(140)
-        .height(45)
-        .margin(5).tabIndex(1)
-      Button('Button2')
-        .width(140)
-        .height(45)
-        .margin(5)
-      Button('Focus Button2')
-        .width(140)
-        .height(45)
-        .margin(5).tabIndex(2)
-    }.width('100%')
+  <!-- @[dynamic_focus_tab_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndex.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct TabIndexExample {
+    build() {
+      NavDestination() {
+        Column() {
+          Button('Button1')
+            .width(140)
+            .height(45)
+            .margin(5)
+          Button('Focus Button1')
+            .width(140)
+            .height(45)
+            .margin(5).tabIndex(1)
+          Button('Button2')
+            .width(140)
+            .height(45)
+            .margin(5)
+          Button('Focus Button2')
+            .width(140)
+            .height(45)
+            .margin(5).tabIndex(2)
+        }.width('100%')
+      }
+      // ...
+    }
   }
-}
-```
+  ```
 
 Tab键走焦：只在配置TabIndex的节点间循环走焦。
 
@@ -1032,27 +1248,32 @@ Tab键走焦：只在配置TabIndex的节点间循环走焦。
 
 tabIndex配置在容器上时，如果容器中的所有组件都没有获焦过，则走到第一个可获焦组件上，否则会走到上次获焦的节点。
 
-```ts
+<!-- @[dynamic_focus_tab_index_focus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndexFocus.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct TabIndexExample2 {
+export struct TabIndexFocusExample {
   build() {
-    Column() {
-      Button('Button1')
-        .width(140)
-        .height(45)
-        .margin(5).tabIndex(1)
+    NavDestination() {
       Column() {
-        Button('Button2')
+        Button('Button1')
           .width(140)
           .height(45)
-          .margin(5)
-        Button('Button3')
-          .width(140)
-          .height(45)
-          .margin(5)
-      }.tabIndex(2)
-    }.width('100%')
+          .margin(5).tabIndex(1)
+        Column() {
+          Button('Button2')
+            .width(140)
+            .height(45)
+            .margin(5)
+          Button('Button3')
+            .width(140)
+            .height(45)
+            .margin(5)
+        }.tabIndex(2)
+      }.width('100%')
+    }
+    // ...
   }
 }
 ```
@@ -1063,9 +1284,9 @@ Tab键走焦：tabIndex配置在容器上。
 
 上述示例包含以下3步：
 
-- 使用Tab走焦，焦点在Button1和Button2之间循环走焦（tabIndex配置在Button2和Button3的父组件上）。
+- 使用Tab键走焦，焦点在Button1和Button2之间循环走焦（tabIndex配置在Button2和Button3的父组件上）。
 - 在走焦至Button2时，使用方向下键，将焦点转移至Button3上。
-- 使用Tab走焦，焦点在Button1和Button3之间循环走焦。
+- 使用Tab键走焦，焦点在Button1和Button3之间循环走焦。
 
 ## 焦点组与获焦优先级
 
@@ -1082,125 +1303,136 @@ focusScopeId(id: string, isGroup?: boolean)
 
 设置当前容器组件的id标识，设置当前容器组件是否为焦点组。焦点组与tabIndex不能混用。
 
-```ts
-// focusTest.ets
+<!-- @[focus_scope_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopePriority.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct FocusableExample {
-  @State inputValue: string = ''
+export struct FocusScopePriority {
+  @State inputValue: string = '';
 
   build() {
-    Scroll() {
-      Row({ space: 20 }) {
-        Column({ space: 20 }) {  // 标记为Column1
-          Column({ space: 5 }) {
-            Button('Group1')
-              .width(165)
-              .height(40)
-              .fontColor(Color.White)
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Scroll() {
+          Row({ space: 20 }) {
+            Column({ space: 20 }) {  // 标记为Column1
+              Column({ space: 5 }) {
+                Button('Group1')
+                  .width(165)
+                  .height(40)
+                  .fontColor(Color.White)
+                Row({ space: 5 }) {
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                }
+                Row({ space: 5 }) {
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                }
+              }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+              Column({ space: 5 }) {
+                Button('Group2')
+                  .width(165)
+                  .height(40)
+                  .fontColor(Color.White)
+                Row({ space: 5 }) {
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                    .focusScopePriority('ColumnScope1', FocusPriority.PRIOR)  // Column1首次获焦时获焦
+                }
+                Row({ space: 5 }) {
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                  Button()
+                    .width(80)
+                    .height(40)
+                    .fontColor(Color.White)
+                }
+              }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
             }
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
+            .focusScopeId('ColumnScope1')
+            Column({ space: 5 }) {  // 标记为Column2
+              TextInput({placeholder: 'input', text: this.inputValue})
+                .onChange((value: string) => {
+                  this.inputValue = value;
+                })
+                .width(156)
+              Button('Group3')
+                .width(165)
                 .height(40)
                 .fontColor(Color.White)
+              Row({ space: 5 }) {
+                Button()
+                  .width(80)
+                  .height(40)
+                  .fontColor(Color.White)
+                Button()
+                  .width(80)
+                  .height(40)
+                  .fontColor(Color.White)
+              }
               Button()
-                .width(80)
+                .width(165)
                 .height(40)
                 .fontColor(Color.White)
-            }
-          }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
-          Column({ space: 5 }) {
-            Button('Group2')
-              .width(165)
-              .height(40)
-              .fontColor(Color.White)
-            Row({ space: 5 }) {
+                .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Column2获焦时获焦
+              Row({ space: 5 }) {
+                Button()
+                  .width(80)
+                  .height(40)
+                  .fontColor(Color.White)
+                Button()
+                  .width(80)
+                  .height(40)
+                  .fontColor(Color.White)
+              }
               Button()
-                .width(80)
+                .width(165)
                 .height(40)
                 .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-                .focusScopePriority('ColumnScope1', FocusPriority.PRIOR)  // Column1首次获焦时获焦
-            }
-            Row({ space: 5 }) {
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-              Button()
-                .width(80)
-                .height(40)
-                .fontColor(Color.White)
-            }
-          }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
+              Row({ space: 5 }) {
+                Button()
+                  .width(80)
+                  .height(40)
+                  .fontColor(Color.White)
+                Button()
+                  .width(80)
+                  .height(40)
+                  .fontColor(Color.White)
+              }
+            }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
+            .focusScopeId('ColumnScope2', true)  // Column2为焦点组
+          }.alignItems(VerticalAlign.Top)
         }
-        .focusScopeId('ColumnScope1')
-        Column({ space: 5 }) {  // 标记为Column2
-          TextInput({placeholder: 'input', text: this.inputValue})
-            .onChange((value: string) => {
-              this.inputValue = value
-            })
-            .width(156)
-          Button('Group3')
-            .width(165)
-            .height(40)
-            .fontColor(Color.White)
-          Row({ space: 5 }) {
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-          }
-          Button()
-            .width(165)
-            .height(40)
-            .fontColor(Color.White)
-            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Column2获焦时获焦
-          Row({ space: 5 }) {
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-          }
-          Button()
-            .width(165)
-            .height(40)
-            .fontColor(Color.White)
-          Row({ space: 5 }) {
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-            Button()
-              .width(80)
-              .height(40)
-              .fontColor(Color.White)
-          }
-        }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
-        .focusScopeId('ColumnScope2', true)  // Column2为焦点组
-      }.alignItems(VerticalAlign.Top)
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
+    // ...
   }
 }
 ```
@@ -1213,7 +1445,7 @@ struct FocusableExample {
 上述示例包含以下2步：
 
 - input方框内设置了焦点组，因此按下Tab键后焦点会快速从input中走出去，而按下方向键后可以在input内走焦。
-- 左上角的Column没有设置焦点组，因此只能通过Tab键一个一个地走焦。
+- 左侧的两个Column没有设置焦点组，因此只能通过Tab键一个一个地走焦。
 
 
 在API version 14，焦点组新增参数arrowStepOut，用于设置能否使用方向键走焦出当前焦点组。
@@ -1221,57 +1453,62 @@ struct FocusableExample {
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean)
 ```
 
-```ts
+<!-- @[dynamic_focus_scope_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopeId.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct FocusScopeIdExample {
+export struct FocusScopeIdExample {
   build() {
-    Column({ space: 20 }) {
-      Column() {
-        Button('Group1')
-          .width(165)
-          .height(40)
-          .margin(5)
-          .fontColor(Color.White)
-        Row({ space: 5 }) {
-          Button("Button1")
-            .width(80)
+    NavDestination() {
+      Column({ space: 20 }) {
+        Column() {
+          Button('Group1')
+            .width(165)
             .height(40)
             .margin(5)
             .fontColor(Color.White)
-          Button("Button2")
-            .width(80)
-            .height(40)
-            .margin(5)
-            .fontColor(Color.White)
-        }
-      }.focusScopeId("1", true, true)
-      .borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+          Row({ space: 5 }) {
+            Button('Button1')
+              .width(80)
+              .height(40)
+              .margin(5)
+              .fontColor(Color.White)
+            Button('Button2')
+              .width(80)
+              .height(40)
+              .margin(5)
+              .fontColor(Color.White)
+          }
+        }.focusScopeId('1', true, true)
+        .borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
 
-      TextInput()
-      Column() {
-        Button('Group2')
-          .width(165)
-          .height(40)
-          .margin(5)
-          .fontColor(Color.White)
-        Row({ space: 5 }) {
-          Button("Button3")
-            .width(80)
+        TextInput()
+        Column() {
+          Button('Group2')
+            .width(165)
             .height(40)
             .margin(5)
             .fontColor(Color.White)
-          Button("Button4")
-            .width(80)
-            .height(40)
-            .margin(5)
-            .fontColor(Color.White)
-        }
-      }.focusScopeId("2", true, false)
-      .borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
+          Row({ space: 5 }) {
+            Button('Button3')
+              .width(80)
+              .height(40)
+              .margin(5)
+              .fontColor(Color.White)
+            Button('Button4')
+              .width(80)
+              .height(40)
+              .margin(5)
+              .fontColor(Color.White)
+          }
+        }.focusScopeId('2', true, false)
+        .borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
 
-      TextInput()
-    }.width('100%')
+        TextInput()
+      }.width('100%')
+    }
+    // ...
   }
 }
 ```
@@ -1292,36 +1529,45 @@ struct FocusScopeIdExample {
 
 当组件获焦且存在点击事件（`onClick`）或单指单击事件（`TapGesture`）时，回车和空格会触发对应的事件回调。
 
->  **说明：**
+> **说明：**
 >
->  1. 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)不会被同步触发。
->  2. 按键事件（`onKeyEvent`）默认冒泡传递，即同时会触发父组件的按键事件回调。
->  3. 组件同时存在点击事件（`onClick`）和按键事件（`onKeyEvent`），在回车、空格触发时，两者都会响应。
->  4. 获焦组件响应点击事件（`onClick`），与焦点激活态无关。
+> - 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)不会被同步触发。
+>
+> - 按键事件（`onKeyEvent`）默认冒泡传递，即同时会触发父组件的按键事件回调。
+>
+> - 组件同时存在点击事件（`onClick`）和按键事件（`onKeyEvent`），在回车、空格触发时，两者都会响应。
+>
+> - 从API version 18开始，获焦组件只有在焦点激活态时才会响应点击事件（`onClick`）。
 
-```ts
-@Entry
-@Component
-struct FocusOnclickExample {
-  @State count: number = 0
-  @State name: string = 'Button'
+   <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   export struct FocusOnclickExample {
+     @State count: number = 0;
+     @State name: string = 'Button';
+   
+     build() {
+       NavDestination() {
+         Column() {
+           Button(this.name)
+             .fontSize(30)
+             .onClick(() => {
+               this.count++;
+               if (this.count % 2 === 0) {
+                 this.name = 'count is even number';
+               } else {
+                 this.name = 'count is odd number';
+               }
+             }).height(60)
+         }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+       }
+       // ...
+     }
+   }
+   ```
 
-  build() {
-    Column() {
-      Button(this.name)
-        .fontSize(30)
-        .onClick(() => {
-          this.count++
-          if (this.count % 2 === 0) {
-            this.name = "count is even number"
-          } else {
-            this.name = "count is odd number"
-          }
-        }).height(60)
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-  }
-}
-```
 ![focus-4](figures/focus-4.gif)
 
 ## 组件获焦能力说明
@@ -1335,34 +1581,46 @@ struct FocusOnclickExample {
 | [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md) | 否       | false        |
 | [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) | 是       | true         |
 | [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md) | 是       | true         |
+| [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)                 | 否       | false        |
 | [Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md) | 是       | true         |
 | [CheckboxGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md) | 是       | true         |
+| [Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)                 | 否       | false        |
+| [Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md) | 否       | false         |
 | [ContainerSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md) | 否       | false         |
 | [DataPanel](../reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md) | 是       | false        |
 | [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md) | 是       | true         |
 | [Divider](../reference/apis-arkui/arkui-ts/ts-basic-components-divider.md) | 是       | false        |
+| [Ellipse](../reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md)                 | 否       | false        |
 | [Gauge](../reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md) | 是       | false        |
 | [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) | 是       | false        |
 | [ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md) | 否       | false        |
 | [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)                 | 否       | false        |
+| [Indicator](../reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md) | 是       | true        |
+| [Line](../reference/apis-arkui/arkui-ts/ts-drawing-components-line.md)                 | 否       | false        |
 | [LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md) | 是       | true        |
 | [Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md) | 否       | false        |
 | [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) | 是       | true         |
 | [MenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md) | 是       | true         |
 | [MenuItemGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-menuitemgroup.md) | 否       | false         |
+| [MultiNavigation](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-MultiNavigation.md) | 否       | false         |
 | [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | 是       | true       |
 | [NavRouter](../reference/apis-arkui/arkui-ts/ts-basic-components-navrouter.md) | 否       | false        |
 | [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) | 是       | true        |
+| [Path](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md) | 否       | false        |
 | [PatternLock](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md) | 是       | true        |
+| [Polygon](../reference/apis-arkui/arkui-ts/ts-drawing-components-polygon.md)                 | 否       | false        |
+| [Polyline](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)                 | 否       | false        |
 | [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md) | 是       | true        |
 | [QRCode](../reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md) | 是       | true        |
 | [Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md) | 是       | true         |
 | [Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md) | 是       | true         |
+| [Rect](../reference/apis-arkui/arkui-ts/ts-drawing-components-rect.md) | 否       | false        |
 | [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md) | 是       | true         |
 | [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) | 否       | false        |
 | [ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md) | 否       | false        |
 | [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md) | 是       | true         |
 | [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md) | 是       | true         |
+| [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md) | 否       | false        |
 | [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) | 是       | true         |
 | [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) | 否       | false        |
 | [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md) | 是       | true         |
@@ -1370,7 +1628,7 @@ struct FocusOnclickExample {
 | [SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md) | 否       | false         |
 | [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) | 否       | false         |
 | [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) | 是       | false        |
-| [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md) | 否       | false         |
+| [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md) | 是       | true         |
 | [TextClock](../reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md) | 否       | false        |
 | [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) | 是       | true         |
 | [TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md) | 是       | true         |
@@ -1397,6 +1655,7 @@ struct FocusOnclickExample {
 | [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) | 是     | true         |
 | [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md) | 是     | true         |
 | [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)         | 是     | true         |
+| [LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md) | 否     | false         |
 | [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) | 是     | true         |
 | [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) | 是     | true         |
 | [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) | 是     | true         |
@@ -1410,7 +1669,7 @@ struct FocusOnclickExample {
 | [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) | 是     | true         |
 | [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md) | 是     | true         |
 | [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) | 是     | true         |
-| [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) | 是     | true         |
+| [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) | 否     | false         |
 | [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)         | 否     | false         |
 | [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)         | 是     | true         |
 

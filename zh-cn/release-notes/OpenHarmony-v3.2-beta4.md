@@ -58,9 +58,9 @@ ArkTS API新增支持错误码的上报，帮助开发者快速捕捉异常，�
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
   
    ```
    git config --global user.name "yourname"
@@ -71,7 +71,7 @@ ArkTS API新增支持错误码的上报，帮助开发者快速捕捉异常，�
 4. 安装码云repo工具，可以执行如下命令。
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -80,18 +80,18 @@ ArkTS API新增支持错误码的上报，帮助开发者快速捕捉异常，�
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta4 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta4 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta4 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta4 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -102,14 +102,14 @@ ArkTS API新增支持错误码的上报，帮助开发者快速捕捉异常，�
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-3.2-Beta4 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-3.2-Beta4 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta4 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta4 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -135,9 +135,9 @@ ArkTS API新增支持错误码的上报，帮助开发者快速捕捉异常，�
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
   
    ```
    git config --global user.name "yourname"
@@ -148,7 +148,7 @@ ArkTS API新增支持错误码的上报，帮助开发者快速捕捉异常，�
 4. 安装码云repo工具，可以执行如下命令。
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -193,7 +193,7 @@ API变更请参考：
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 ### Samples
 
@@ -203,16 +203,16 @@ API变更请参考：
 
 | 子系统<div style="width:100px"></div> | 名称 | 简介 |
 | -------- | -------- | -------- |
-| 事件通知 | [CustomEmitter: 事件通知](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Notification/CustomEmitter) | 本示例主要展示进程内事件通知，用户通过选择对应商品并提交订单后在订单列表显示所选商品。 |
-| 数据管理 | [CrossAppDataShare: 跨应用数据共享](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DataManagement/CrossAppDataShare) | 本示例实现了一个跨应用数据共享实例，分为联系人（数据提供方）和联系人助手（数据使用方）两部分：联系人支持联系人数据的增、删、改、查等功能；联系人助手支持同步联系人数据，当联系人与联系人助手数据不一致时，支持合并重复数据。 |
-| 资源调度 | [ReminderAgentManager: 后台代理提醒](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ReminderAgentManager) | 本示例通过使用后台代理提醒的能力，创建闹钟、日历、计时器三种类型的定时提醒，保证应用被冻结或退出时，计时和弹出提醒的功能可以被后台系统服务代理。 |
-| 文件管理 | [StorageStatistic: 存储空间统计](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DeviceManagement/StorageStatistic) | 本示例通过应用程序包管理、应用空间统计与卷管理模块，实现了查看当前设备存储空间信息、所有安装的应用的存储信息、所有可用卷的存储信息的功能。 |
-| 窗口 | [Screenshot: 截屏](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Media/Screenshot) | 本示例通过screenshot模块实现屏幕截图 ，通过window模块实现隐私窗口切换，通过display模块查询当前隐私窗口。 |
-| 包管理 | [MultiHap: 多HAP](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Project/ApplicationHap/MultiHap) | 本示例展示多HAP开发，简单介绍了多HAP的使用场景，应用包含了一个entry HAP和两个feature HAP，两个feature HAP分别提供了音频和视频播放组件，entry中使用了音频和视频播放组件。 |
-| 元能力 | [AbilityStartMode: Ability的启动模式](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/AbilityStartMode) | 本示例展示了在一个Stage模型中，实现standard、singleton、specified多种模式场景。 |
-| 资源管理 | [ApplicationThemeSwitch: 应用主题切换](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Project/ResourceAllocation/ApplicationThemeSwitch) | 本示例通过创建base同级资源文件夹dark和light完成深色浅色主题相关资源配置，实现深色浅色主题切换，在ThemeConst文件中配置自定义主题文件，通过控制变量实现多主题切换。 |
+| 事件通知 | [CustomEmitter: 事件通知](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Notification/CustomEmitter) | 本示例主要展示进程内事件通知，用户通过选择对应商品并提交订单后在订单列表显示所选商品。 |
+| 数据管理 | [CrossAppDataShare: 跨应用数据共享](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DataManagement/CrossAppDataShare) | 本示例实现了一个跨应用数据共享实例，分为联系人（数据提供方）和联系人助手（数据使用方）两部分：联系人支持联系人数据的增、删、改、查等功能；联系人助手支持同步联系人数据，当联系人与联系人助手数据不一致时，支持合并重复数据。 |
+| 资源调度 | [ReminderAgentManager: 后台代理提醒](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ReminderAgentManager) | 本示例通过使用后台代理提醒的能力，创建闹钟、日历、计时器三种类型的定时提醒，保证应用被冻结或退出时，计时和弹出提醒的功能可以被后台系统服务代理。 |
+| 文件管理 | [StorageStatistic: 存储空间统计](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DeviceManagement/StorageStatistic) | 本示例通过应用程序包管理、应用空间统计与卷管理模块，实现了查看当前设备存储空间信息、所有安装的应用的存储信息、所有可用卷的存储信息的功能。 |
+| 窗口 | [Screenshot: 截屏](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Media/Screenshot) | 本示例通过screenshot模块实现屏幕截图 ，通过window模块实现隐私窗口切换，通过display模块查询当前隐私窗口。 |
+| 包管理 | [MultiHap: 多HAP](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Project/ApplicationHap/MultiHap) | 本示例展示多HAP开发，简单介绍了多HAP的使用场景，应用包含了一个entry HAP和两个feature HAP，两个feature HAP分别提供了音频和视频播放组件，entry中使用了音频和视频播放组件。 |
+| 元能力 | [AbilityStartMode: Ability的启动模式](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/AbilityStartMode) | 本示例展示了在一个Stage模型中，实现standard、singleton、specified多种模式场景。 |
+| 资源管理 | [ApplicationThemeSwitch: 应用主题切换](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Project/ResourceAllocation/ApplicationThemeSwitch) | 本示例通过创建base同级资源文件夹dark和light完成深色浅色主题相关资源配置，实现深色浅色主题切换，在ThemeConst文件中配置自定义主题文件，通过控制变量实现多主题切换。 |
 
-请访问[Samples](https://gitee.com/openharmony/applications_app_samples)仓了解更多信息。
+请访问[Samples](https://gitcode.com/openharmony/applications_app_samples)仓了解更多信息。
 
 
 

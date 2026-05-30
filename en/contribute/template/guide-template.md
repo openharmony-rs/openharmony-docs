@@ -3,6 +3,7 @@
 ### Change History
 | Change Description                                                                | Date        |
 | ----------------------------------------------------------------------- | ------------ |
+| Added the writing requirements for kit-specific support of the Emulator.|  2025/07  |
 | The development guide is provided by kit, and therefore this template is updated accordingly.|  March 2024 |
 
 
@@ -215,7 +216,21 @@ _**[Key Writing Points]**_
 
 ***[Example]***
 
-- Device constraints: XXX (the official device category name, such as 2-in-1) devices do not support using this kit. or  This kit is only applicable to (the official device category name, such as 2-in-1) devices. or  Only XXX devices of version XXXXXX and above can use this kit.
+####  Device Constraints
+
+XXX (the official device category name, such as 2-in-1) devices do not support using this kit. or  This kit is only applicable to (the official device category name, such as 2-in-1) devices. or  Only XXX devices of version XXXXXX and above can use this kit.
+
+####  Emulator Support
+_Choose the appropriate fixed sentence structure based on the actual Emulator support of the Kit. The first option is for kits that do not support the Emulator; the second is for kits that fully support the Emulator; the third is for kits with partial Emulator support.
+Note: For OpenHarmony kits, this section will be replaced with tags. The approach to handling differences between domestic and international versions is still to be determined._
+
+- This kit does not support development with the Emulator.
+
+- This kit supports development with the Emulator.
+
+- This kit supports development with the Emulator, but there are some differences in capabilities compared to real devices. For more information, refer to "Differences Between the Emulator and the Real Device" (link to the relevant section in DevEco Studio as precisely as possible).
+
+####  Specification Limitations
 
 - Data synchronization can be implemented across devices only for the applications with the same bundleName.
 
@@ -247,7 +262,7 @@ _Provide links (generally Gitee links) to the released sample code, codelabs, an
 
 The following sample is provided to help you better understand how to develop abilities:
 
-- [Intra-UIAbility and Inter-UIAbility Page Redirection (ArkTS)](https://gitee.com/openharmony/codelabs/tree/master/Ability/StageAbility)
+- [Intra-UIAbility and Inter-UIAbility Page Redirection (ArkTS)](https://gitcode.com/openharmony/codelabs/tree/master/Ability/StageAbility)
 
 
 ## Setting Up the Environment
@@ -291,13 +306,13 @@ _Describe the procedure for setting up the development environment. If there is 
 
 2. Run the following command to install the tool installation package:
    
-   ```
+   ```txt
    xxxxx
    ```
 
 3. Run the following command to check whether the tool is successfully installed.
    
-   ```
+   ```txt
    xxxxx
    ```
 
@@ -396,7 +411,7 @@ _Mandatory._
      - *Error prevention/correction information. Provide guidance for preventing, locating, or rectifying typical problems that may occur in the development process.* *This type of information can be provided in "How to Develop" or "FAQs", depending on the content amount.*
 
 - _Standardization_
-  - _Provide both logically and syntactically correct sample code and write it in a standard manner. Anonymize sensitive information, such as mobile numbers, ID cards, and account names, for example, 186\*\*\*\*\*\*\*\*. Use private IP addresses or a corresponding format, for example, xx.xx.xx.xx and www.example.com, rather than real IP addresses and domain names._
+  - _Anonymize sensitive information, such as mobile numbers, ID cards, and account names, for example, 186\*\*\*\*\*\*\*\*. Use private IP addresses or a corresponding format, for example, xx.xx.xx.xx and www.example.com, rather than real IP addresses and domain names._
   - _Provide code that complies with the code indentation requirements. Do not use the Tab key to indent code. Instead, use four spaces, to avoid incorrect display._
 
 **[Example (Excerpt)]**

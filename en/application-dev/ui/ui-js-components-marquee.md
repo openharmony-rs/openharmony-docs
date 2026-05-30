@@ -1,4 +1,10 @@
-# &lt;marquee&gt; Development
+# marquee Development
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **&lt;marquee&gt;** component displays single-line scrolling text. For details, see [marquee](../reference/apis-arkui/arkui-js/js-components-basic-marquee.md).
@@ -218,13 +224,13 @@ export default {
   onInit(){
   },
   setfinish(e) {
-    this.loopval=  this.loopval + 1,
+    this.loopval = this.loopval + 1,
     this.r = Math.floor(Math.random()*255),
     this.g = Math.floor(Math.random()*255),
     this.b = Math.floor(Math.random()*255),
     this.color1 = 'rgba('+ this.r +','+ this.g +','+ this.b +',0.8)',
     this.$element('testmarquee').start(),
-    this.loopval=  this.loopval - 1
+    this.loopval = this.loopval - 1
   },
   makestart(e) {
     this.$element('testmarquee').start()

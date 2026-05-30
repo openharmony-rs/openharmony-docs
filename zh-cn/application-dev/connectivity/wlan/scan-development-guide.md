@@ -39,8 +39,8 @@ Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用
 4. 开启设备的Wi-Fi。
 5. 示例代码：
 
-> **说明：**
-> 主动扫描接口，从API version 10开始废弃。替代接口仅向系统应用开放。
+   > **说明：**
+   > 主动扫描接口，从API version 10开始废弃。替代接口仅向系统应用开放。
 
    ```ts
    import { wifiManager } from '@kit.ConnectivityKit';
@@ -86,7 +86,7 @@ Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用
    }
    ```
 
- 5. 错误码详情请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
+6. 错误码详情请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
 
  ### PNO扫描
 

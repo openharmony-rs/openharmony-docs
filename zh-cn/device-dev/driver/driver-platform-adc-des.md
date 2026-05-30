@@ -45,7 +45,7 @@ ADC设备通常用于将模拟电压或电流转换为数字量，例如与NTC�
 
 ### 接口说明<a name="section8"></a>
 
-ADC模块提供的主要接口如表1所示，具体API[详见](https://gitee.com/openharmony/drivers_hdf_core/blob/master/framework/include/platform/adc_if.h)。
+ADC模块提供的主要接口如表1所示，具体API[详见](https://gitcode.com/openharmony/drivers_hdf_core/blob/master/framework/include/platform/adc_if.h)。
 
 **表 1**  ADC驱动API接口功能介绍
 

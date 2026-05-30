@@ -4,9 +4,9 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-The **Environment** module provides APIs for obtaining the root directories of the storage and user files.
+This module provides ArkTS APIs for obtaining the root directories of the storage and user files.
 
 > **NOTE**
 >
@@ -22,9 +22,11 @@ import { Environment } from '@kit.CoreFileKit';
 
 getUserDownloadDir(): string
 
-Obtains the sandbox path of the pre-authorized **Download** directory. Currently, only 2-in-1 devices are supported.
+Obtains the sandbox path of the pre-authorized **Download** directory.
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**Device behavior differences**: This API can be called on 2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Return value**
 
@@ -34,7 +36,7 @@ Obtains the sandbox path of the pre-authorized **Download** directory. Currently
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID   | Error Message      |
 |----------| --------- |
@@ -59,9 +61,11 @@ function getUserDownloadDirExample() {
 
 getUserDesktopDir(): string
 
-Obtains the sandbox path of the pre-authorized **Desktop** directory. Currently, only 2-in-1 devices are supported.
+Obtains the sandbox path of the pre-authorized **Desktop** directory.
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**Device behavior differences**: This API can be called on 2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Return value**
 
@@ -71,7 +75,7 @@ Obtains the sandbox path of the pre-authorized **Desktop** directory. Currently,
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID   | Error Message      |
 |----------| --------- |
@@ -96,9 +100,11 @@ function getUserDesktopDirExample() {
 
 getUserDocumentDir(): string
 
-Obtains the sandbox path of the pre-authorized **Document** directory. Currently, only 2-in-1 devices are supported.
+Obtains the sandbox path of the pre-authorized **Document** directory.
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**Device behavior differences**: This API can be called on 2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Return value**
 
@@ -108,7 +114,7 @@ Obtains the sandbox path of the pre-authorized **Document** directory. Currently
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID   | Error Message      |
 |----------| --------- |

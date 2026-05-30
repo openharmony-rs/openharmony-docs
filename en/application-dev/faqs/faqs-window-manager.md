@@ -1,5 +1,10 @@
 # Window Management Development
-
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## How do I obtain the height of the status bar and navigation bar? (API version 9)
 
@@ -108,7 +113,7 @@ Applicable to: stage model
 
 **Solution**
 
-In effect, the **isStatusBarLightIcon** and **isNavigationBarLightIcon** attributes turn the font white when set to **true**. If **statusBarContentColor** is also set in **setWindowSystemBarProperties**, the **isStatusBarLightIcon** attribute does not take effect. Similarly, if **navigationBarContentColor** is set, the **isNavigationBarLightIcon** attribute does not take effect.
+In effect, the **isStatusBarLightIcon** and **isNavigationBarLightIcon** attributes turn the icon white when set to **true**. If **statusBarContentColor** is also set in **setWindowSystemBarProperties**, the **isStatusBarLightIcon** attribute does not take effect. Similarly, if **navigationBarContentColor** is set, the **isNavigationBarLightIcon** attribute does not take effect.
 
 **References**
 
@@ -250,7 +255,7 @@ struct ScreenTest {
 
 [Subscribing to Display Changes](../reference/apis-arkui/js-apis-display.md#displayonaddremovechange)
 
-## Why a window instance cannot be used to obtain the updated window size in the display.on('change') callback? (API version 10)
+## Why can't a window instance be used to obtain the updated window size in the display.on('change') callback? (API version 10)
 
 **Solution**
 
@@ -277,11 +282,9 @@ display.on('change', async (data) => {
 
 ```ts
 display.on('change', (data) => {
-  console.info('Succeeded in enabling the listener for display changes. Data: ' +
-  JSON.stringify(data));
+  console.info(`Succeeded in enabling the listener for display changes. Data: ${data}`);
   let newDisplay: display.Display = display.getDefaultDisplaySync();
-  console.info('Orientation: ' + newDisplay.orientation + 'width: ' +
-  newDisplay.width + ', height: ' + newDisplay.height);
+  console.info(`Orientation: ${newDisplay.orientation} , width: ${newDisplay.width} , height: ${newDisplay.height}`);
 });
 ```
 

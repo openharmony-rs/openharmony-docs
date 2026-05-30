@@ -3,8 +3,8 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie; @hongjin-li_admin-->
 <!--Designer: @chenxi0605; @JerryH1011-->
-<!--Tester: @leiyuqian-->
-<!--Adviser: @foryourself-->
+<!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
+<!--Adviser: @jinqiuheng-->
 
 The **FileShare** module provides APIs for granting permissions on a user file to another application based on the file Uniform Resource Identifier (URI). Then, the authorized application can call [@ohos.file.fs](js-apis-file-fs.md) APIs to access the file.
 
@@ -15,7 +15,7 @@ The **FileShare** module provides APIs for granting permissions on a user file t
 ## Modules to Import
 
 ```ts
-import fileShare from '@ohos.fileshare';
+import { fileShare } from '@kit.CoreFileKit';
 ```
 
 ## OperationMode<sup>11+</sup>
@@ -49,13 +49,17 @@ Enumerates the error codes for a permission policy.
 
 Represents the detailed permission policy error result, which can be used when **persistPermission**, **revokePermission**, **activatePermission**, or **deactivatePermission** throws an error.
 
+> **NOTE**
+>
+> Since API version 23, the type of **PolicyErrorResult** is changed from **type** to **interface**.
+
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
-| Name| Type| Mandatory| Description|
-|--------|--------|--------|---------|
-| uri     | string| Yes | URI of the file, on which the permission fails to be granted or activated.|
-| code    | [PolicyErrorCode](#policyerrorcode11) | Yes | Error code.|
-| message | string| Yes  | Error message. |
+| Name| Type| Read-Only| Optional| Description|
+|--------|--------|--------|--------|---------|
+| uri     | string| No | No| URI of the file, on which the permission fails to be granted or activated.|
+| code    | [PolicyErrorCode](#policyerrorcode11) | No | No| Error code.|
+| message | string| No  | No| Error message. |
 
 ## PolicyInfo<sup>11+</sup>
 
@@ -63,10 +67,10 @@ Represents a permission policy, that is, a policy for granting or activating the
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
-| Name | Type | Mandatory | Description                                                  |
-|------|-------|------|------------------------------------------------------|
-| uri| string | Yes  | URI of the file, on which the permission is to be granted or activated.                                      |
-| operationMode | number | Yes  | URI operation mode. For details, see [OperationMode](#operationmode11).|
+| Name | Type | Read-Only| Optional| Description                                                  |
+|------|-------|------|-----|------------------------------------------------------|
+| uri| string | No  | No| URI of the file, on which the permission is to be granted or activated.                                      |
+| operationMode | number | No  | No| URI operation mode. For details, see [OperationMode](#operationmode11). To grant multiple permissions, you can combine them, for example, use READ_MODE | WRITE_MODE to grant the read and write permissions.|
 
 ## PathPolicyInfo<sup>15+</sup>
 
@@ -74,10 +78,10 @@ Represents the information about the file or directory to be queried.
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
-| Name| Type | Mandatory | Description |
-|------|-------|-----|--------|
-| path          | string        | Yes  | Path to be queried.|
-| operationMode | OperationMode | Yes  | Operation mode of the path to be queried. For details, see [OperationMode](#operationmode11).|
+| Name| Type | Read-Only| Optional| Description |
+|------|-------|-----|-----|--------|
+| path          | string        | No| No  | Path to be queried.|
+| operationMode | OperationMode | No| No  | Operation mode of the path to be queried. For details, see [OperationMode](#operationmode11).|
 
 ## PolicyType<sup>15+</sup>
 
@@ -94,7 +98,12 @@ Enumerates the authorization modes corresponding to the queried policy informati
 
 persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-Checks persistent permissions. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for media URIs and remote URIs.)
+Checks persistent permissions. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for remote URIs.)
+> **NOTE**
+>
+> Starting from API version 22, this API supports persistent permissions for media URIs.
+>
+> Multiple permissions can be granted in combination. Only obtained temporary permissions can be granted persistently. Otherwise, an error is reported.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -114,7 +123,8 @@ Checks persistent permissions. This API uses a promise to return the result. Thi
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+ 
 If the permission persistence of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID   | Error Message      |
@@ -123,7 +133,7 @@ If the permission persistence of some URIs fails, error code 13900001 will be re
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **Example**
 
@@ -138,7 +148,8 @@ If the permission persistence of some URIs fails, error code 13900001 will be re
       let uris = await documentPicker.select(DocumentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
-        operationMode: fileShare.OperationMode.READ_MODE,
+        // Multiple permissions can be granted in combination. For example, the read and write permissions can be granted using fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
+        operationMode: fileShare.OperationMode.READ_MODE
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
       fileShare.persistPermission(policies).then(() => {
@@ -164,7 +175,12 @@ If the permission persistence of some URIs fails, error code 13900001 will be re
 
 revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-Revokes permissions from multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for media URIs and remote URIs.)
+Revokes permissions from multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for remote URIs.)
+> **NOTE**
+>
+> Starting from API version 22, this API supports persistent permissions for media URIs.
+>
+> Multiple permissions can be revoked in combination. Only persistent permissions can be revoked. Otherwise, an error is reported.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -185,6 +201,7 @@ Revokes permissions from multiple files or directories. This API uses a promise 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+
 If the permission revocation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID| Error Message|
@@ -193,7 +210,7 @@ If the permission revocation of some URIs fails, error code 13900001 will be ret
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **Example**
 
@@ -208,6 +225,7 @@ If the permission revocation of some URIs fails, error code 13900001 will be ret
       let uris = await documentPicker.select(DocumentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
+        // Multiple permissions can be revoked in combination. For example, the read and write permissions can be revoked using fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -234,7 +252,12 @@ If the permission revocation of some URIs fails, error code 13900001 will be ret
 
 activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-Activates the permissions that have been persisted on multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for media URIs and remote URIs.)
+Activates the permissions that have been persisted on multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for remote URIs.)
+> **NOTE**
+>
+> Starting from API version 22, this API supports persistent permissions for media URIs.
+>
+> Multiple permissions can be activated in combination. Only persistent permissions can be activated. Otherwise, an error is reported.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -254,7 +277,8 @@ Activates the permissions that have been persisted on multiple files or director
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+
 If the permission activation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID   | Error Message      |
@@ -263,19 +287,19 @@ If the permission activation of some URIs fails, error code 13900001 will be ret
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **Example**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
   
   async function activatePermissionExample() {
     try {
       let uri = "file://docs/storage/Users/username/tmp.txt";
       let policyInfo: fileShare.PolicyInfo = {
         uri: uri,
+        // Multiple permissions can be activated in combination. For example, the read and write permissions can be activated using fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -305,7 +329,12 @@ If the permission activation of some URIs fails, error code 13900001 will be ret
 
 deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-Deactivates the permissions on multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for media URIs and remote URIs.)
+Deactivates the permissions on multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for remote URIs.)
+> **NOTE**
+>
+> Starting from API version 22, this API supports persistent permissions for media URIs.
+>
+> Multiple permissions can be deactivated in combination. Only persistent permissions can be deactivated. Otherwise, an error is reported.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -325,7 +354,8 @@ Deactivates the permissions on multiple files or directories. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+
 If the permission deactivation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID   | Error Message      |
@@ -334,19 +364,19 @@ If the permission deactivation of some URIs fails, error code 13900001 will be r
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **Example**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
   
   async function deactivatePermissionExample() {
     try {
       let uri = "file://docs/storage/Users/username/tmp.txt";
       let policyInfo: fileShare.PolicyInfo = {
         uri: uri,
+        // Multiple permissions can be deactivated in combination. For example, the read and write permissions can be deactivated using fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -397,7 +427,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 |----------| --------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **Example**
 
@@ -412,13 +442,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       let uris = await documentPicker.select(documentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
+        // Multiple permissions can be checked in combination. For example, the read and write permissions can be checked using fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
       fileShare.checkPersistentPermission(policies).then(async (data) => {
         let result: Array<boolean> = data;
         for (let i = 0; i < result.length; i++) {
-          console.log("checkPersistentPermission result: " + JSON.stringify(result[i]));
+          console.info("checkPersistentPermission result: " + JSON.stringify(result[i]));
           if(!result[i]){
             let info: fileShare.PolicyInfo = {
               uri: policies[i].uri, 

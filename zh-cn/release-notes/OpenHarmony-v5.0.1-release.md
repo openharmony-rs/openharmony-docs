@@ -190,9 +190,9 @@ OpenHarmony 5.0.1 Release版本对标准系统的能力进行持续完善，以�
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -201,7 +201,7 @@ OpenHarmony 5.0.1 Release版本对标准系统的能力进行持续完善，以�
 
 4. 安装码云repo工具，可以执行如下命令。
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -210,18 +210,18 @@ OpenHarmony 5.0.1 Release版本对标准系统的能力进行持续完善，以�
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-5.0.1-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-5.0.1-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v5.0.1-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v5.0.1-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -232,14 +232,14 @@ OpenHarmony 5.0.1 Release版本对标准系统的能力进行持续完善，以�
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-5.0.1-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-5.0.1-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v5.0.1-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v5.0.1-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -268,18 +268,18 @@ OpenHarmony 5.0.1 Release版本对标准系统的能力进行持续完善，以�
 
 | ISSUE单 | 问题描述 | 
 | -------- | -------- |
-| I9S5ZN | 进程com.ohos.settings小概率出现因THREAD_BLOCK_6S卡在libunwind.z.so导致的appfrreze。 |
-| I9S600 | 进程com.ohos.settings小概率出现因THREAD_BLOCK_6S卡在libark_jsruntime.so导致的appfrreze。 |
-| IAB2U3<br>IAK2J2 | 进程audio_server下的OS_APAsyncRunne线程小概率出现因libaudio_client.z.so崩溃导致的cppcrash。 |
-| IAIRFB | 进程com.ohos.note下的com.ohos.note线程小概率出现因libweb_engine.so崩溃导致的cppcrash。 |
-| IAKLLD | 进程audio_server下的SaInit2线程小概率出现因libaudio_policy_service.z.so崩溃导致的cppcrash。 |
-| IA56CU | 进程com.ohos.note下的com.ohos.note线程小概率出现因libweb_engine.so导致的cppcrash。 |
-| IA5AMJ | 进程com.ohos.launcher小概率出现因THREAD_BLOCK_6S卡在libark_jsruntime.so导致的appfreeze。 |
-| IA5AIT | render_service小概率出现因SERVICE_BLOCK导致的sysfreeze。 |
-| IA6RFX | 进程bluetooth_service下的OSaInit0线程有较高概率出现因libbtservice.z.so崩溃导致的cppcrash。 |
-| IA8KGR | 进程bluetooth_service下的OS_IPC_12_22172线程小概率出现因libbluetooth_server.z.so崩溃导致的cppcrash。 |
-| IAQC64 | 随机打开几个应用，再打开设置。返回到桌面，再反复进入后台界面，设置会出现泄露，操作1次大概增长32KB。 |
-| IASE04 | 在RK3568开发板对OpenHarmony进行内存测试，render_service进程的常驻内存实测值超规格基线31 MB。 |
+| [206](https://gitcode.com/openharmony/communication_bluetooth/issues/206) | 进程com.ohos.settings小概率出现因THREAD_BLOCK_6S卡在libunwind.z.so导致的appfrreze。 |
+| [205](https://gitcode.com/openharmony/communication_bluetooth/issues/205) | 进程com.ohos.settings小概率出现因THREAD_BLOCK_6S卡在libark_jsruntime.so导致的appfrreze。 |
+| [1573](https://gitcode.com/openharmony/multimedia_audio_framework/issues/1573)<br>[1114](https://gitcode.com/openharmony/multimedia_audio_framework/issues/1114) | 进程audio_server下的OS_APAsyncRunne线程小概率出现因libaudio_client.z.so崩溃导致的cppcrash。 |
+| [615](https://gitcode.com/openharmony/web_webview/issues/615) | 进程com.ohos.note下的com.ohos.note线程小概率出现因libweb_engine.so崩溃导致的cppcrash。 |
+| [1097](https://gitcode.com/openharmony/multimedia_audio_framework/issues/1097) | 进程audio_server下的SaInit2线程小概率出现因libaudio_policy_service.z.so崩溃导致的cppcrash。 |
+| [1616](https://gitcode.com/openharmony/web_webview/issues/1616) | 进程com.ohos.note下的com.ohos.note线程小概率出现因libweb_engine.so导致的cppcrash。 |
+| [2207](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/2207) | 进程com.ohos.launcher小概率出现因THREAD_BLOCK_6S卡在libark_jsruntime.so导致的appfreeze。 |
+| [9](https://gitcode.com/openharmony/device_soc_rockchip/issues/9) | render_service小概率出现因SERVICE_BLOCK导致的sysfreeze。 |
+| [178](https://gitcode.com/openharmony/communication_bluetooth/issues/178) | 进程bluetooth_service下的OSaInit0线程有较高概率出现因libbtservice.z.so崩溃导致的cppcrash。 |
+| [53](https://gitcode.com/openharmony/communication_bluetooth_service/issues/53) | 进程bluetooth_service下的OS_IPC_12_22172线程小概率出现因libbluetooth_server.z.so崩溃导致的cppcrash。 |
+| [28](https://gitcode.com/openharmony/applications_settings/issues/28) | 随机打开几个应用，再打开设置。返回到桌面，再反复进入后台界面，设置会出现泄露，操作1次大概增长32KB。 |
+| [1202](https://gitcode.com/openharmony/graphic_graphic_2d/issues/1202) | 在RK3568开发板对OpenHarmony进行内存测试，render_service进程的常驻内存实测值超规格基线31 MB。 |
 
 
 
@@ -289,12 +289,12 @@ OpenHarmony 5.0.1 Release版本对标准系统的能力进行持续完善，以�
 
 | ISSUE | 问题描述 | 影响 | 计划解决日期 | 
 | -------- | -------- | -------- | -------- |
-| I9SXZ8 | 进程com.ohos.contacts小概率出现因THREAD_BLOCK_6S卡在libark_jsruntime.so导致的appfreez。 | 异常出现后联系人应用进入通话记录查询通话记录卡顿，重启联系人应用可恢复。 | 12月15日 | 
-| IA6RH6 | 进程com.ohos.settings有较高概率出现因THREAD_BLOCK_6S卡在libbtframework.z.so导致的appfreeze。 | 会又低概率造成“设置”应用卡死，重新打开“设置”可恢复。 | 12月15日 | 
-| IASDWO | 通过浏览器访问微博首页的滑动帧率低于规格基线。 | 影响浏览体验。 | 12月15日 | 
-| IAZYOO | RK3568开发板在执行WuKong整机随机压力测试过程有较高概率出现卡死现象。 | SystemUI进程长时间没有主线程日志打印，锁屏侧未收到多模相关事件分发导致该问题，按电源键可恢复，对用户影响有限，无需规避。 | 12月15日 | 
-| IANQF3 | 在执行WuKong压测过程有较高概率出现重启现象。 | 问题出现会导致设备重启。<br/>该问题暂时无法规避。 | 12月15日 | 
-| IB4L3E | 进程com.ohos.camera有较高概率出现因LIFECYCLE_TIMEOUT卡在libcamera_framework.z.so导致的appfreeze。 | 该问题因camera_host进程导致应用卡死，重启应用可解决。 | 12月15日 | 
-| IAP85P | 启动进程优先级过低有小概率会被优先kill掉导致出现sysfreeze。 | 该问题会导致应用被关闭，重启应用可解决。 | 12月15日 | 
-| I9SXZ8 | 进程com.ohos.contacts小概率因THREAD_BLOCK_6S卡在libark_jsruntime.so出现appfreeze。 | 该问题因联系人应用卡在了窗口的 windowStage.loadContent()方法产生，会导致应用卡死，重启应用可解决。 | 12月15日 | 
-| IB36B2 | 进程com.ohos.mms小概率出现jscrash，问题栈为close。 | 该问题会导致短信应用闪退，重启应用可解决。 | 12月15日 | 
+| [33](https://gitcode.com/openharmony/applications_contacts/issues/33) | 进程com.ohos.contacts小概率出现因THREAD_BLOCK_6S卡在libark_jsruntime.so导致的appfreez。 | 异常出现后联系人应用进入通话记录查询通话记录卡顿，重启联系人应用可恢复。 | 12月15日 | 
+| [174](https://gitcode.com/openharmony/communication_bluetooth/issues/174) | 进程com.ohos.settings有较高概率出现因THREAD_BLOCK_6S卡在libbtframework.z.so导致的appfreeze。 | 会又低概率造成“设置”应用卡死，重新打开“设置”可恢复。 | 12月15日 | 
+| [222](https://gitcode.com/openharmony/web_webview/issues/222) | 通过浏览器访问微博首页的滑动帧率低于规格基线。 | 影响浏览体验。 | 12月15日 | 
+| [9](https://gitcode.com/openharmony/applications_screenlock/issues/9) | RK3568开发板在执行WuKong整机随机压力测试过程有较高概率出现卡死现象。 | SystemUI进程长时间没有主线程日志打印，锁屏侧未收到多模相关事件分发导致该问题，按电源键可恢复，对用户影响有限，无需规避。 | 12月15日 | 
+| [481](https://gitcode.com/openharmony/kernel_linux_5.10/issues/481) | 在执行WuKong压测过程有较高概率出现重启现象。 | 问题出现会导致设备重启。<br/>该问题暂时无法规避。 | 12月15日 | 
+| [4740](https://gitcode.com/openharmony/drivers_peripheral/issues/4740) | 进程com.ohos.camera有较高概率出现因LIFECYCLE_TIMEOUT卡在libcamera_framework.z.so导致的appfreeze。 | 该问题因camera_host进程导致应用卡死，重启应用可解决。 | 12月15日 | 
+| [11](https://gitcode.com/openharmony/resourceschedule_memmgr/issues/11) | 启动进程优先级过低有小概率会被优先kill掉导致出现sysfreeze。 | 该问题会导致应用被关闭，重启应用可解决。 | 12月15日 | 
+| [33](https://gitcode.com/openharmony/applications_contacts/issues/33) | 进程com.ohos.contacts小概率因THREAD_BLOCK_6S卡在libark_jsruntime.so出现appfreeze。 | 该问题因联系人应用卡在了窗口的 windowStage.loadContent()方法产生，会导致应用卡死，重启应用可解决。 | 12月15日 | 
+| [231](https://gitcode.com/openharmony/applications_mms/issues/231) | 进程com.ohos.mms小概率出现jscrash，问题栈为close。 | 该问题会导致短信应用闪退，重启应用可解决。 | 12月15日 | 

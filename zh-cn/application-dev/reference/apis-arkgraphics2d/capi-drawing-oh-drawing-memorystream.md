@@ -1,4 +1,14 @@
 # OH_Drawing_MemoryStream
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_Drawing_MemoryStream OH_Drawing_MemoryStream
+```
 
 ## 概述
 

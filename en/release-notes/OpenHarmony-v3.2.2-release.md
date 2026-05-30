@@ -26,7 +26,7 @@ OpenHarmony 3.2.2 Release provides enhanced system security over OpenHarmony 3.2
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
   
    ```
    git config --global user.name "yourname"
@@ -37,7 +37,7 @@ OpenHarmony 3.2.2 Release provides enhanced system security over OpenHarmony 3.2
 4. Run the following commands to install the **repo** tool:
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -49,7 +49,7 @@ OpenHarmony 3.2.2 Release provides enhanced system security over OpenHarmony 3.2
 Use the **repo** tool to download the source code over SSH. (You must have an SSH public key for access to Gitee.)
 
  ```
- repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2.2-Release --no-repo-verify
+ repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2.2-Release --no-repo-verify
  repo sync -c
  repo forall -c 'git lfs pull'
  ```
@@ -60,7 +60,7 @@ Use the **repo** tool to download the source code over HTTPS.
 
 Obtain the source code from the version tag, which is the same as that released with the version.
  ```
- repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2.2-Release --no-repo-verify
+ repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2.2-Release --no-repo-verify
  repo sync -c
  repo forall -c 'git lfs pull'
  ```
@@ -88,7 +88,7 @@ This version does not involve API updates.
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 ## Resolved Issues
 
@@ -96,17 +96,17 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.                                                    | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I70T6E](https://gitee.com/openharmony/web_webview/issues/I70T6E) | [OpenHarmony 3.2.12.2] [RK3568] [Pressure test] [ToC] [Low probability 1/10] [wukong] A C++ crash occurs in libweb_engine.so of the Chrome_IOThread thread in the com.ohos.note process. This problem occurs once. |
-| [I76JRL](https://gitee.com/openharmony/drivers_peripheral/issues/I76JRL) | [OpenHarmony 3.2.11.9] [RK3568] [Pressure test] [ToC] [Low probability 1/10] [wukong] A C++ crash occurs in libcamera_pipeline_core.z.so of the offlinepipeline thread in the camera_host process. This problem occurs once. |
-| [I7C0LX](https://gitee.com/openharmony/developtools_profiler/issues/I7C0LX) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability 6/10] [wukong] A JS crash occurs in initDb of the com.ohos.smartperf process. This problem occurs 650 times. |
-| [I7C0SA](https://gitee.com/openharmony/vendor_hihope/issues/I7C0SA) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability] [wukong] A C++ crash occurs in libmali-bifrost-g52-g2p0-ohos.so of the RSRenderThread thread in the com.ohos.systemui process. This problem occurs 27 times. |
-| [I7C10M](https://gitee.com/openharmony/security_privacy_center/issues/I7C10M) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability 6/10] [wukong] A JS crash occurs in saveAllMaps of the com.ohos.certmanager process. This problem occurs 39 times. |
+| [I70T6E](https://gitcode.com/openharmony/web_webview/issues/I70T6E) | [OpenHarmony 3.2.12.2] [RK3568] [Pressure test] [ToC] [Low probability 1/10] [wukong] A C++ crash occurs in libweb_engine.so of the Chrome_IOThread thread in the com.ohos.note process. This problem occurs once. |
+| [I76JRL](https://gitcode.com/openharmony/drivers_peripheral/issues/I76JRL) | [OpenHarmony 3.2.11.9] [RK3568] [Pressure test] [ToC] [Low probability 1/10] [wukong] A C++ crash occurs in libcamera_pipeline_core.z.so of the offlinepipeline thread in the camera_host process. This problem occurs once. |
+| [I7C0LX](https://gitcode.com/openharmony/developtools_profiler/issues/I7C0LX) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability 6/10] [wukong] A JS crash occurs in initDb of the com.ohos.smartperf process. This problem occurs 650 times. |
+| [I7C0SA](https://gitcode.com/openharmony/vendor_hihope/issues/I7C0SA) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability] [wukong] A C++ crash occurs in libmali-bifrost-g52-g2p0-ohos.so of the RSRenderThread thread in the com.ohos.systemui process. This problem occurs 27 times. |
+| [I7C10M](https://gitcode.com/openharmony/security_privacy_center/issues/I7C10M) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability 6/10] [wukong] A JS crash occurs in saveAllMaps of the com.ohos.certmanager process. This problem occurs 39 times. |
 | I7CA2W                                                       | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability] [wukong] A C++ crash occurs in libmedialibrary_data_extension.z.so of the com.ohos.medial thread in the com.ohos.medialibrary.medialibrarydata process. This problem occurs 358 times. |
-| [I7CA7A](https://gitee.com/openharmony/distributeddatamgr_relational_store/issues/I7CA7A) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability 8/10] [wukong] A C++ crash occurs in librdb_data_share_adapter.z.so of the IPC_2_4692 thread in the com.ohos.contactsdataability process. This problem occurs 1131 times. |
-| [I7CBLV](https://gitee.com/openharmony/bundlemanager_bundle_framework/issues/I7CBLV) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability] [wukong] A JS crash occurs in getFolderText and createRdbStore of the com.ohos.note process. This problem occurs 1249 times. |
-| [I7CBWQ](https://gitee.com/openharmony/applications_mms/issues/I7CBWQ) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [Low probability] [wukong] Due to STRINGID: APPLICATION_BLOCK_INPUT, libeventhandler.z.so in the key process com.ohos.mms is stuck. This problem occurs 6 times. |
-| [I7CWA0](https://gitee.com/openharmony/communication_ipc/issues/I7CWA0) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [Low probability] [wukong] A C++ crash occurs in libipc_core.z.so of the IPC_3_17363 thread in the key process com.ohos.contacts. This problem occurs once. |
-| [I7CYM3](https://gitee.com/openharmony/applications_camera/issues/I7CYM3) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability 8/10] [wukong] A JS crash occurs in getInstance of the com.ohos.camera process. This problem occurs 1800 times. |
+| [I7CA7A](https://gitcode.com/openharmony/distributeddatamgr_relational_store/issues/I7CA7A) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability 8/10] [wukong] A C++ crash occurs in librdb_data_share_adapter.z.so of the IPC_2_4692 thread in the com.ohos.contactsdataability process. This problem occurs 1131 times. |
+| [I7CBLV](https://gitcode.com/openharmony/bundlemanager_bundle_framework/issues/I7CBLV) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability] [wukong] A JS crash occurs in getFolderText and createRdbStore of the com.ohos.note process. This problem occurs 1249 times. |
+| [I7CBWQ](https://gitcode.com/openharmony/applications_mms/issues/I7CBWQ) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [Low probability] [wukong] Due to STRINGID: APPLICATION_BLOCK_INPUT, libeventhandler.z.so in the key process com.ohos.mms is stuck. This problem occurs 6 times. |
+| [I7CWA0](https://gitcode.com/openharmony/communication_ipc/issues/I7CWA0) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [Low probability] [wukong] A C++ crash occurs in libipc_core.z.so of the IPC_3_17363 thread in the key process com.ohos.contacts. This problem occurs once. |
+| [I7CYM3](https://gitcode.com/openharmony/applications_camera/issues/I7CYM3) | [OpenHarmony 3.2.13.1] [RK3568] [Pressure test] [ToC] [High probability 8/10] [wukong] A JS crash occurs in getInstance of the com.ohos.camera process. This problem occurs 1800 times. |
 
 
 ## Fixed Security Vulnerabilities

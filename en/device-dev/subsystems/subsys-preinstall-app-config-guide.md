@@ -55,7 +55,7 @@ After the pre-installed applications are updated, use either of the following me
 ```
 - Method 2: Run the following command to restart the device. The applications will be installed.
 
-    If an application has been installed, the application version No. ([versionCode](../../application-dev/quick-start/app-configuration-file.md) configured in **app.json5** for the stage model or [code](../../application-dev/quick-start/app-structure.md#internal-structure-of-the-version-atttribute) in the configuration file for the FA model) sent to the **/system/app/** directory must be later than the version number of the application installed.
+    If an application has been installed, the application version No. ([versionCode](../../application-dev/quick-start/app-configuration-file.md) configured in **app.json5** for the stage model or [code](../../application-dev/quick-start/app-structure.md#internal-structure-of-the-version-attribute) in the configuration file for the FA model) sent to the **/system/app/** directory must be later than the version number of the application installed.
 
 ```
     hdc shell mount -o rw,remount /
@@ -65,7 +65,7 @@ After the pre-installed applications are updated, use either of the following me
 
 # Configuring Applications Not Installed
 
-The [**uninstall_list.json**](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/uninstall_list.json) has higher configuration priority than **install_list.json**. The applications added to **uninstall_list.json** will not be installed.
+The [**uninstall_list.json**](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/uninstall_list.json) has higher configuration priority than **install_list.json**. The applications added to **uninstall_list.json** will not be installed.
 
 ## Example 1
 

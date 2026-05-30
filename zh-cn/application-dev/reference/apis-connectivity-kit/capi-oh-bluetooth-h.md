@@ -13,7 +13,7 @@
 
 **引用文件：** <ConnectivityKit/bluetooth/oh_bluetooth.h>
 
-**库：** libbluetooth.so
+**库：** libbluetooth_ndk.so
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -40,7 +40,7 @@
 
 ### Bluetooth_SwitchState
 
-```
+```c
 enum Bluetooth_SwitchState
 ```
 
@@ -62,7 +62,7 @@ enum Bluetooth_SwitchState
 
 ### Bluetooth_ResultCode
 
-```
+```c
 enum Bluetooth_ResultCode
 ```
 
@@ -82,7 +82,7 @@ enum Bluetooth_ResultCode
 
 ### OH_Bluetooth_GetBluetoothSwitchState()
 
-```
+```c
 Bluetooth_ResultCode OH_Bluetooth_GetBluetoothSwitchState(Bluetooth_SwitchState *state)
 ```
 

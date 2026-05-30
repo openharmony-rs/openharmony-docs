@@ -1,6 +1,6 @@
 ## Introduction
 
-OpenHarmony has organized a Special Interest Group (SIG) [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md) to provide support for third-party development boards.
+OpenHarmony has organized a Special Interest Group (SIG) [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md) to provide support for third-party development boards.
 
 Before learning about how to port the code of a development board, take a look at the device classification on OpenHarmony. The porting methods vary according to the device type.
 
@@ -15,7 +15,7 @@ Before learning about how to port the code of a development board, take a look a
 OpenHarmony has created repositories for vendors in openharmony-sig. To participate in the repository development, you need to use the following method to initialize and download the code.
 
 ```shell
-repo init -u https://gitee.com/openharmony-sig/manifest.git -b master -m devboard.xml --no-repo-verify
+repo init -u https://gitcode.com/openharmony-sig/manifest.git -b master -m devboard.xml --no-repo-verify
 ```
 
 The download steps for other resources are the same as those in the mainline version.
@@ -67,5 +67,5 @@ The download steps for other resources are the same as those in the mainline ver
     - [Mini-System Devices – STM32MP1 SoC Porting Case](porting-stm32mp15xx-on-smallsystem.md)
 - Standard System SoC Porting Cases
     - [Standard System Solution – Rockchip RK3568 Porting Case](porting-dayu200-on_standard-demo.md)
-    - [Standard System Solution – Rockchip RK3566 Porting Case](https://gitee.com/openharmony/vendor_kaihong/blob/master/khdvk_3566b/porting-khdvk_3566b-on_standard-demo.md)
+    - [Standard System Solution – Rockchip RK3566 Porting Case](https://gitcode.com/openharmony/vendor_kaihong/blob/master/khdvk_3566b/porting-khdvk_3566b-on_standard-demo.md)
     - [Standard System Solution – Yangfan Porting Case](porting-yangfan-on_standard-demo.md)

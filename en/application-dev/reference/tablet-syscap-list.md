@@ -1,4 +1,11 @@
-# SystemCapability List
+# Tablet
+
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 
@@ -54,12 +61,10 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.MultimodalInput.Input.InputSimulator
 - SystemCapability.MultimodalInput.Input.Pointer
 - SystemCapability.MultimodalInput.Input.ShortKey
-- SystemCapability.PowerManager.BatteryManager.Extension
 - SystemCapability.PowerManager.DisplayPowerManager
 - SystemCapability.PowerManager.ThermalManager
 - SystemCapability.PowerManager.PowerManager.Core
 - SystemCapability.PowerManager.BatteryManager.Core
-- SystemCapability.PowerManager.PowerManager.Extension
 - SystemCapability.Multimedia.Media.Core
 - SystemCapability.Multimedia.Media.AudioPlayer
 - SystemCapability.Multimedia.Media.AudioRecorder
@@ -234,3 +239,4 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Graphic.Graphic2D.WebGL2
 - SystemCapability.Ability.AppStartup
 - SystemCapability.Ability.AppExtension.PhotoEditorExtension
+- SystemCapability.Multimedia.Audio.SuiteEngine

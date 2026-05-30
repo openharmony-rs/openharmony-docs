@@ -11,7 +11,7 @@ PerfTest提供白盒性能测试能力，供开发者在测试场景使用，支
 
 > **说明：**
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
+> - 本模块接口在<!--RP1-->[单元测试框架](../../application-test/unittest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
 > - 本模块接口适用于手机、平板、PC/2in1、智慧屏、车机。
 
@@ -81,7 +81,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 > **说明**
 >
 > 属性actionCode和resetCode的入参类型为回调函数"Callback\<boolean>"。在代码段中需要主动调用此回调函数，通知框架代码段执行完成，否则会导致代码段执行超时。
-> 其中，回调函数的参数为boolean类型，true代表代码段执行符合预期，false代码段执行不符合预期。[代码示例](#create)。
+> 其中，回调函数的参数为boolean类型，true代表代码段执行符合预期，false代表代码段执行不符合预期。[代码示例](#create)。
 
 ## PerfMeasureResult
 
@@ -151,7 +151,7 @@ async function demo() {
     }
     finish(true); // 调用finish回调函数，通知代码段执行结束，且执行符合预期
   }
-  let resetCode = async (finish: Callback<boolean>) => {  // 定义测试结束环境重置代码段
+  let resetCode = async (finish: Callback<boolean>) => { // 定义测试结束环境重置代码段
     num = 0;
     finish(true);
   }

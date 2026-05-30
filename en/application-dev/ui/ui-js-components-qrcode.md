@@ -1,12 +1,17 @@
-# &lt;qrcode&gt; Development
+# qrcode Development
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
+
+The **\<qrcode>** component is used to generate and display a QR code. For details, see [qrcode](../reference/apis-arkui/arkui-js/js-components-basic-qrcode.md).
 
 
-The **&lt;qrcode&gt;** component is used to generate and display a QR code. For details, see [qrcode](../reference/apis-arkui/arkui-js/js-components-basic-qrcode.md).
+## Creating a \<qrcode> Component
 
-
-## Creating a &lt;qrcode&gt; Component
-
-Create a **&lt;qrcode&gt;** component in the .hml file under **pages/index**.
+Create a **\<qrcode>** component in the .hml file under **pages/index**.
 
 
 ```html
@@ -29,22 +34,22 @@ Create a **&lt;qrcode&gt;** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001275803133](figures/en-us_image_0000001275803133.png)
+![en-us_image_0000001229155403](figures/en-us_image_0000001229155403.png)
 
 > **NOTE**
 >
-> The **value** parameter must be set.
+> The **value** attribute is mandatory and must be specified.
 
 
 ## Setting the Component Type
 
-Set the **type** attribute to select the QR code type from rectangle and circle.
+Set the **type** attribute to select the QR code type, such as rectangle or circle.
 
 
 ```html
 <!-- xxx.hml-->
 <div class="container">
-  <select onchange="setType">
+  <select onchange="settype">
     <option for="{{bcol_list}}" value="{{$item}}">{{$item}}</option>
   </select>
   <qrcode value="Hello" type="{{qr_type}}"></qrcode>
@@ -76,13 +81,13 @@ export default {
     qr_type: 'rect',
     bcol_list: ['rect','circle']
   },
-  setType(e) {
+  settype(e) {
     this.qr_type = e.newValue 
   },
 }
 ```
 
-![en-us_image_0000001275922965](figures/en-us_image_0000001275922965.gif)
+![en-us_image_0000001218439850](figures/en-us_image_0000001218439850.gif)
 
 
 ## Setting Styles
@@ -115,16 +120,16 @@ qrcode{
 }
 ```
 
-![en-us_image_0000001231683116](figures/en-us_image_0000001231683116.png)
+![en-us_image_0000001183595750](figures/en-us_image_0000001183595750.png)
 
 > **NOTE**
 > - If the values of **width** and **height** are different, the smaller value is used as the length of the QR code. The generated QR code is center displayed.
-> 
+>
 > - If either **width** or **height** is set, the value is used as the length of the QR code. If neither of them is set, the default length of 200 px is used.
-> 
+>
 
 
-## Example Scenario
+## Example Scenarios
 
 In this example, you can bind a QR code to a text box, and change the QR code by replacing the content in the text box.
 
@@ -167,4 +172,4 @@ export default{
 }
 ```
 
-![en-us_image_0000001232002972](figures/en-us_image_0000001232002972.gif)
+![en-us_image_0000001183431656](figures/en-us_image_0000001183431656.gif)

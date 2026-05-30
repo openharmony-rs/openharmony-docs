@@ -2,8 +2,8 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -14,6 +14,8 @@
 **引用文件：** <native_drawing/drawing_filter.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -36,7 +38,7 @@
 
 ### OH_Drawing_FilterCreate()
 
-```
+```c
 OH_Drawing_Filter* OH_Drawing_FilterCreate(void)
 ```
 
@@ -56,7 +58,7 @@ OH_Drawing_Filter* OH_Drawing_FilterCreate(void)
 
 ### OH_Drawing_FilterSetImageFilter()
 
-```
+```c
 void OH_Drawing_FilterSetImageFilter(OH_Drawing_Filter* filter, OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -78,7 +80,7 @@ void OH_Drawing_FilterSetImageFilter(OH_Drawing_Filter* filter, OH_Drawing_Image
 
 ### OH_Drawing_FilterSetMaskFilter()
 
-```
+```c
 void OH_Drawing_FilterSetMaskFilter(OH_Drawing_Filter* filter, OH_Drawing_MaskFilter* maskFilter)
 ```
 
@@ -96,11 +98,11 @@ void OH_Drawing_FilterSetMaskFilter(OH_Drawing_Filter* filter, OH_Drawing_MaskFi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md)* filter | 指示指向滤波器对象[OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md)的指针。 |
-| [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md)* maskFilter | 指示指向蒙版滤波器对象[OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)的指针，为NULL表示清空滤波器对象中的蒙版滤波器效果。 |
+| [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md)* maskFilter | 指示指向蒙版滤波器对象[OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md)的指针，为NULL表示清空滤波器对象中的蒙版滤波器效果。 |
 
 ### OH_Drawing_FilterSetColorFilter()
 
-```
+```c
 void OH_Drawing_FilterSetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_ColorFilter* colorFilter)
 ```
 
@@ -122,7 +124,7 @@ void OH_Drawing_FilterSetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_Color
 
 ### OH_Drawing_FilterGetColorFilter()
 
-```
+```c
 void OH_Drawing_FilterGetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_ColorFilter* colorFilter)
 ```
 
@@ -144,7 +146,7 @@ void OH_Drawing_FilterGetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_Color
 
 ### OH_Drawing_FilterDestroy()
 
-```
+```c
 void OH_Drawing_FilterDestroy(OH_Drawing_Filter* filter)
 ```
 

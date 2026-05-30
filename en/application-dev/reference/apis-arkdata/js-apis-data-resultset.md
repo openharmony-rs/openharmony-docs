@@ -37,17 +37,17 @@ promise.then((resultSet) => {
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| columnNames | Array&lt;string&gt; | Yes| Names of all columns in the result set.|
-| columnCount | number | Yes| Number of columns in the result set.|
-| rowCount | number | Yes| Number of rows in the result set.|
-| rowIndex | number | Yes| Index of the current row in the result set.|
-| isAtFirstRow | boolean | Yes| Whether the cursor is in the first row of the result set.|
-| isAtLastRow | boolean | Yes| Whether the cursor is in the last row of the result set.|
-| isEnded | boolean | Yes| Whether the cursor is after the last row of the result set.|
-| isStarted | boolean | Yes| Whether the cursor has been moved.|
-| isClosed | boolean | Yes| Whether the result set is closed.|
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| columnNames | Array&lt;string&gt; | Yes| No| Names of all columns in the result set.|
+| columnCount | number | Yes| No| Number of columns in the result set.|
+| rowCount | number | Yes| No| Number of rows in the result set.|
+| rowIndex | number | Yes| No| Index of the current row in the result set.|
+| isAtFirstRow | boolean | Yes| No| Whether the cursor is in the first row of the result set.|
+| isAtLastRow | boolean | Yes| No| Whether the cursor is in the last row of the result set.|
+| isEnded | boolean | Yes| No| Whether the cursor is after the last row of the result set.|
+| isStarted | boolean | Yes| No| Whether the cursor has been moved.|
+| isClosed | boolean | Yes| No| Whether the result set is closed.|
 
 ### getColumnIndex
 
@@ -113,7 +113,7 @@ const age = resultSet.getColumnName(2);
 
 goTo(offset:number): boolean
 
-Moves the cursor to the row based on the specified offset.
+Moves the result set forward or backward to the specified row with an offset relative to the current position.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -287,7 +287,7 @@ promisequerygoPrev.then((resultSet) => {
 
 getBlob(columnIndex: number): Uint8Array
 
-Obtains the value in the specified column in the current row as a byte array.
+Obtains the value from the specified column in the current row as a byte array.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -313,7 +313,7 @@ const codes = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
 
 getString(columnIndex: number): string
 
-Obtains the value in the specified column in the current row as a string.
+Obtains the value from the specified column in the current row as a string.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -339,7 +339,7 @@ const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
 
 getLong(columnIndex: number): number
 
-Obtains the value in the specified column in the current row as a Long.
+Obtains the value from the specified column in the current row as a Long.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -365,7 +365,7 @@ const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
 
 getDouble(columnIndex: number): number
 
-Obtains the value in the specified column in the current row as a double.
+Obtains the value from the specified column in the current row as a Double.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -379,7 +379,7 @@ Obtains the value in the specified column in the current row as a double.
 
   | Type| Description|
   | -------- | -------- |
-  | number | Value in the specified column as a double.|
+  | number | Value in the specified column as a Double.|
 
 **Example**
 

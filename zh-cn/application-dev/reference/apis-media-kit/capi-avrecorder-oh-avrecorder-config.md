@@ -1,10 +1,14 @@
 # OH_AVRecorder_Config
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVRecorder_Config {...} OH_AVRecorder_Config
+```
 
 ## 概述
 
@@ -28,6 +32,6 @@
 | char* url | 定义文件URL，格式为fd://xx。 |
 | [OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode) fileGenerationMode | 指定录制输出文件的生成模式。 |
 | [OH_AVRecorder_Metadata](capi-avrecorder-oh-avrecorder-metadata.md) metadata | 包含录制媒体的附加元数据。 |
-| int32_t maxDuration | 指定录制的最大时长。 |
+| int32_t maxDuration | 指定录制的最大时长，单位为秒。 |
 
 

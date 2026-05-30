@@ -1,9 +1,10 @@
 # @ohos.multimedia.avInputCastPicker (AVInputCastPicker)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--SE: @ccfriend-->
-<!--TSE: @chenmingxi1_huawei-->
+<!--Owner: @ccfriend; @devil_red-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides the functionality to create an **AVInputCastPicker** component, which offers a unified entry for discovering and connecting recording devices.
 
@@ -16,7 +17,7 @@ The module provides the functionality to create an **AVInputCastPicker** compone
 
 ## Modules to Import
 
-```js
+```ts
 import { AVInputCastPicker } from '@kit.AVSessionKit';
 ```
 
@@ -26,10 +27,10 @@ The [universal properties](../apis-arkui/arkui-ts/ts-component-general-attribute
 
 ## AVInputCastPicker
 
-```
+```ts
 AVInputCastPicker({
   customPicker?: CustomBuilder;
-  onStateChange?: (state: AVCastPickerState) => void;
+  onStateChange?: OnPickerStateCallback;
 })
 ```
 
@@ -47,11 +48,13 @@ This component is a custom component. Some basic knowledge of [@Component](../..
 
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| @Prop | Custom style. You are advised to customize a component style so that the component can be displayed quickly.|
-| onStateChange | (state: [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)) => void | No| - | Callback invoked when the device list state changes.<br>**state**: callback parameter for device list state changes.|
+| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| @Prop | Custom style. You are advised to customize a component style for higher component rendering performance.|
+| onStateChange | [OnPickerStateCallback](#onpickerstatecallback) | No| - | Callback invoked when the device list state changes.|
 
 ## OnPickerStateCallback
 type OnPickerStateCallback = (state: AVCastPickerState) => void
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Multimedia.AVSession.AVInputCast
 
@@ -59,7 +62,7 @@ type OnPickerStateCallback = (state: AVCastPickerState) => void
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| state | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11) | No| Device list state.|
+| state | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate) | Yes| Device list state.|
 
 ## Events
 
@@ -76,7 +79,7 @@ import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
 @Component
 struct Index {
 
-  @State pickerImage: ResourceStr = $r('app.media.castPicker'); // Custom resources.
+  @State pickerImage: ResourceStr = $r('app.media.layered_image'); // Custom resources.
 
   private onStateChange(state: AVCastPickerState) {
     if (state == AVCastPickerState.STATE_APPEARING) {
@@ -87,7 +90,7 @@ struct Index {
   }
 
   @Builder
-  customPickerBuilder(): void {
+  customPickerBuilder() {
     Image(this.pickerImage)
       .width('100%')
       .height('100%')

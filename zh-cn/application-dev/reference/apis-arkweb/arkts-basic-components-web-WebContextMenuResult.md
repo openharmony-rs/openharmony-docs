@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 实现长按页面元素或鼠标右键弹出来的菜单所执行的响应事件。示例代码参考[onContextMenuShow事件](./arkts-basic-components-web-events.md#oncontextmenushow9)。
 
@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor<sup>9+</sup>
 
@@ -36,7 +36,7 @@ closeContextMenu(): void
 
 copyImage(): void
 
-WebContextMenuParam有图片内容则复制图片。
+当WebContextMenuParam包含图片内容时，用于复制该图片，从API version 24开始支持对canvas图片进行复制。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,7 +44,7 @@ WebContextMenuParam有图片内容则复制图片。
 
 copy(): void
 
-执行与此上下文菜单相关的拷贝文本操作。
+执行复制文本操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -52,11 +52,11 @@ copy(): void
 
 paste(): void
 
-执行与此上下文菜单相关的粘贴操作。
+执行粘贴操作。
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.READ_PASTEBOARD。
+> 需要配置权限：[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,7 +64,7 @@ paste(): void
 
 cut(): void
 
-执行与此上下文菜单相关的剪切操作。
+执行剪切操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -72,7 +72,7 @@ cut(): void
 
 selectAll(): void
 
-执行与此上下文菜单相关的全选操作。
+执行全选操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -80,7 +80,7 @@ selectAll(): void
 
 undo(): void
 
-执行与此上下文菜单相关的撤销操作。
+执行撤销操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -88,7 +88,7 @@ undo(): void
 
 redo(): void
 
-执行与此上下文菜单相关的重做操作，即取消用户上一次的撤销操作。
+执行重做操作，即取消用户上一次的撤销操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -96,10 +96,28 @@ redo(): void
 
 pasteAndMatchStyle(): void
 
-执行一个和上下文菜单相关的粘贴操作，粘贴的内容会匹配目标格式，以纯文本形式呈现。
+执行与此上下文菜单相关的粘贴操作，粘贴的内容会匹配目标格式，以纯文本形式呈现。
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.READ_PASTEBOARD。
+> 需要配置权限：[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## requestPasswordAutoFill<sup>23+</sup>
+
+requestPasswordAutoFill(): void
+
+请求密码保险箱中的用户名或密码数据自动填充到当前获得焦点的输入框中。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## saveImage<sup>24+</sup>
+
+saveImage(): void
+
+保存上下文菜单相关的图片，调用后将触发下载流程。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

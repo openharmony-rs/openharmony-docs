@@ -1,5 +1,16 @@
 # WebSocket_Header
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+struct WebSocket_Header {...}
+```
+
 ## Overview
 
 Defines the header linked list added to the WebSocket client.
@@ -16,6 +27,6 @@ Defines the header linked list added to the WebSocket client.
 
 | Name| Description|
 | -- | -- |
-| const char *fieldName | Header field name.|
-| const char *fieldValue | Header field content.|
+| const char *fieldName | Pointer to the field name of a header.|
+| const char *fieldValue | Pointer to the field value of a header.|
 | struct [WebSocket_Header](capi-netstack-websocket-header.md) *next | Next pointer of the header linked list.|

@@ -1,5 +1,16 @@
 # OH_AVMemory
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AVMemory OH_AVMemory
+```
+
 ## 概述
 
 为音视频内存接口定义native层对象。

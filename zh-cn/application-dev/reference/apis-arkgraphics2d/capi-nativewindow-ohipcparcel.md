@@ -1,10 +1,14 @@
 # OHIPCParcel
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @li_hui180; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```c
+typedef struct OHIPCParcel OHIPCParcel
+```
+
 ## 概述
 
 提供对IPC序列化对象的访问功能。

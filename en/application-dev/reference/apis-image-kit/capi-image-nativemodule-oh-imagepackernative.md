@@ -1,8 +1,18 @@
 # OH_ImagePackerNative
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_ImagePackerNative OH_ImagePackerNative
+```
 
 ## Overview
 
-The OH_ImagePackerNative struct describes the image packer, which is used to perform operations related to an image packer.
+The struct describes the image packer, which is used to perform operations related to an image packer.
 
 The struct cannot be directly operated. Instead, its fields must be operated by calling functions. The table below describes the content and operation mode of the OH_ImageNative struct.
 

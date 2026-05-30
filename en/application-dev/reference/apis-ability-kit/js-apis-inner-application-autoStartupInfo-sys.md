@@ -1,7 +1,7 @@
 # AutoStartupInfo (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao-->
+<!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -26,10 +26,10 @@ The module defines information about the application component that automaticall
 | moduleName                  | string  | No  | Yes  | Module name.                        |
 | abilityName                 | string  | No  | No  | Ability name.                       |
 | abilityTypeName             | string  | No  | Yes  | Ability type.                       |
-| appCloneIndex               | number  | No  | Yes  | Index of an application clone.                                |
+| appCloneIndex<sup>12+</sup> | number  | No  | Yes  | Index of an application clone.                                |
 | userId<sup>20+</sup>        | number  | Yes  | Yes  | User ID associated with the application, used to differentiate applications belonging to different user accounts on the same device.     |
 | setterUserId<sup>20+</sup>  | number  | Yes  | Yes  | User ID of the person who set the application to automatically start upon system boot.        |
-| canUserModify<sup>20+</sup> | boolean | Yes  | Yes  | Whether the developer can change the auto-start status of this application.|
+| canUserModify<sup>20+</sup> | boolean | Yes  | Yes  | Whether the developer is allowed to modify the auto-startup status of this application. The options include **true** (yes) and **false** (no).|
 
 **Example**
 

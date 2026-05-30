@@ -4,14 +4,14 @@
 <!--Owner: @lanshouren-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 堆叠容器，子组件按照顺序依次入栈，后一个子组件覆盖前一个子组件。
 
 > **说明：**
 >
->从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -78,7 +78,7 @@
   border-radius: 16px;
 }
 ```
-**4*4卡片**
+**4×4卡片**
 
 ![卡片 stack](figures/stack.PNG)
 

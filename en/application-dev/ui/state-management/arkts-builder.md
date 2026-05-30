@@ -1,42 +1,61 @@
 # \@Builder Decorator: Custom Builder Function
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-ArkUI provides the \@Builder decorator that is a lightweight UI element reuse mechanism. This decorator has a fixed internal UI structure and passes the data only to the user. You can abstract reused UI elements into a method and call the method in the **build** method.
+ArkUI provides a lightweight UI element reuse mechanism \@Builder. The internal UI structure of ArkUI is fixed and only data is transferred with the user. Developers can abstract UI elements that are repeatedly used as functions and call them in the build function.
 
-For simplicity, here we refer to an \@Builder decorated function also as a custom builder function.
+Functions decorated by \@Builder are also called custom build functions.
 
 Before reading this topic, you are advised to read [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), and [Creating a Custom Component](./arkts-create-custom-components.md).
 
+The differences between the @Builder decorator and [@Component decorator](./arkts-create-custom-components.md#component) in functions and usage are as follows:
+
+1. The @Builder decorator is used to encapsulate reusable UI structures and extract repeated layout code to improve development efficiency. It is strictly prohibited to define [state variable](./arkts-state-management-glossary.md#state-variables) or use [custom-component-lifecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md) in the decorator. Data interaction must be completed through parameter transfer or access to the state variable of the component to which the decorator belongs.
+
+2. In the ArkUI framework, the @Component decorator is the core mechanism for encapsulating complex UI components. It allows developers to combine multiple basic components to build a reusable composite UI. This decorator not only supports the definition of internal state variables, but also manages the lifecycle of components.
+
 > **NOTE**
+>
+> The initial APIs of this module are supported since API version 7.
 >
 > This decorator can be used in ArkTS widgets since API version 9.
 >
 > This decorator can be used in atomic services since API version 11.
 
 
-## Usage Rules
+## How to Use
 
-The \@Builder decorator can be used for the private custom build function defined in the custom component and global custom build function defined globally.
+The \@Builder decorator can be used in two modes: as a [private custom builder function](#private-custom-builder-function) within a custom component, or as a [global custom builder function](#global-custom-builder-function) defined at global scope.
 
 ### Private Custom Builder Function
 
-Syntax:
+The following is an example:
 
-```ts
+<!-- @[private_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/PrivateCustomConstructor.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct BuilderDemo {
   @Builder
   showTextBuilder() {
+    // @Builder decorates this function so that the Text component can be configured and built in chain mode.
     Text('Hello World')
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
   }
+
   @Builder
   showTextValueBuilder(param: string) {
     Text(param)
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
   }
+
   build() {
     Column() {
       // Without parameter.
@@ -48,33 +67,32 @@ struct BuilderDemo {
 }
 ```
 
-Usage:
+Invocation pattern:
 
-```ts
-this.showTextBuilder()
-```
-
-- You can define one or more @Builder decorated methods in a custom component. Such a method is considered as a private, special type of member function of the component.
+- One or more @Builder functions can be defined in a custom component. These functions are treated as private and special member functions of the owning component.
 
 - Private custom builder functions can be called in custom components, **build()**, and other custom builder functions.
 
-- Inside the custom builder function body, **this** refers to the owning component. Component state variables are accessible from within the custom builder function implementation. Using **this** to access the custom components' state variables is recommended over parameter passing.
-
+- In a custom component, **this** indicates the component to which the component belongs. The status variables of the component can be accessed in the custom builder functions. It is recommended that **this** be used to access the status variable of the component instead of being transferred through parameters.
 
 ### Global Custom Builder Function
 
-Syntax:
+The following is an example:
 
-```ts
+<!-- @[global_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomConstructor.ets) -->  
+
+``` TypeScript
+// Global custom builder function showTextBuilder.
 @Builder
 function showTextBuilder() {
   Text('Hello World')
     .fontSize(30)
     .fontWeight(FontWeight.Bold)
 }
+
 @Entry
 @Component
-struct BuilderDemo {
+struct BuilderSample {
   build() {
     Column() {
       showTextBuilder()
@@ -83,46 +101,68 @@ struct BuilderDemo {
 }
 ```
 
-Usage:
+- If the component status variable does not change, you are advised to use the global custom build function.
 
-```ts
-showTextBuilder()
-```
-
-- Use of a global custom builder function is recommended if no own state is involved.
-
-- Global custom builder functions can be called in **build()** and other custom builder functions.
+- Global custom build functions can be called in the **build** function and other custom build functions.
 
 
 ## Parameter Passing Rules
 
-For custom builder functions, parameters can be passed [by value](#by-value-parameter-passing) and [by reference](#by-reference-parameter-passing). Both of them must comply with the following rules:
+Parameters for custom builder functions can be passed [by callback](#passing-parameters-by-callback), [by reference](#by-reference-parameter-passing), or [by value](#by-value-parameter-passing). The following rules must be followed:
 
-- The parameter type must be the same as the declared parameter type. The **undefined** or **null** constants as well as expressions evaluating to these values are not allowed.
+- The parameter type of the function decorated by \@Builder cannot be undefined, null, or an expression that returns undefined or null.
 
-- All parameters must be immutable inside the custom builder function.
+- All parameters must be immutable inside the custom builder function decorated by \@Builder.
 
-- The custom builder function body follows the same [syntax rules](arkts-create-custom-components.md#build) as **build()**.
+- The \@Builder function body follows the same [syntax rules](arkts-create-custom-components.md#build-implementation-rules) as the **build()** function.
 
-- Parameters are passed by value in all cases except when only one parameter is passed in and the parameter needs to be directly passed to the object literal.
+- The UI components in the \@Builder function can be updated during callback-based transfer and reference-based transfer. Passing by reference takes effect only when one parameter is passed and the parameter is directly passed to the object literal. If there are multiple parameters, the UI component in the @Builder function cannot be refreshed.
 
-### By-Value Parameter Passing
+- When a reference is passed, the attribute of the parameter cannot be modified in the @Builder function. However, when **UIUtils.makeBinding** is used and the write callback is passed, the attribute can be modified in the @Builder function and synchronized to the component that calls the @Builder function.
 
-By default, parameters in the \@Builder decorated functions are passed by value. In this case, when the passed parameter is a state variable, the change of the state variable does not cause UI re-rendering in the \@Builder decorated function. Therefore, when passing state variables, you are advised to use [by-reference parameter passing](#by-reference-parameter-passing).
+### Passing Parameters by Callback
 
-```ts
-@Builder function overBuilder(paramA1: string) {
+From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh state variables in the \@Builder function. For details, see [State Variables Can Be Refreshed in the \@Builder](#state-variables-can-be-refreshed-in-the-builder).
+
+Use **UIUtils.makeBinding()** to wrap the callback function for reading status variables and transfer the callback function as a parameter to the @Builder function. The UI component in the @Builder function can be refreshed. The callback function of the write status variable transferred in **UIUtils.makeBinding()** can transfer the parameter changes in @Builder to the component that calls the @Builder function.
+
+<!-- @[by_makebinding_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterMakeBinding.ets) -->
+
+``` TypeScript
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@Builder
+function customButton(num1: Binding<number>, num2: MutableBinding<number>) {
   Row() {
-    Text(`UseStateVarByValue: ${paramA1} `)
+    Column() {
+      Text(`number1: ${num1.value}, number2: ${num2.value}`)
+      Button(`only change number2`)
+        .onClick(() => {
+          // Assign a value of the MutableBinding type and transfer the modification to the parent component.
+          num2.value += 1;
+        })
+    }
   }
 }
+
 @Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
+@ComponentV2
+struct ParameterMakeBinding {
+  @Local number1: number = 5;
+  @Local number2: number = 12;
+
   build() {
     Column() {
-      overBuilder(this.label)
+      customButton(
+        // Use makeBinding to pass parameters. The read callback needs to be passed. The Binding type is returned. The UI of the component in @Builder can be refreshed.
+        UIUtils.makeBinding<number>(() => this.number1),
+        // The MutableBinding type is returned when the write callback is passed to makeBinding. The UI of the component in @Builder can be refreshed and the attribute modification can be synchronized.
+        UIUtils.makeBinding<number>(
+          () => this.number2,
+          (val: number) => {
+            this.number2 = val;
+          })
+      )
     }
   }
 }
@@ -130,27 +170,32 @@ struct Parent {
 
 ### By-Reference Parameter Passing
 
-In by-reference parameter passing, state variables can be passed, and the change of these state variables causes the UI re-rendering in the \@Builder decorated method.
+In by-reference parameter passing, state variables can be passed, and the change of these state variables causes the UI re-rendering in the \@Builder function.
 
-```ts
+<!-- @[by_reference_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterReference.ets) -->
+
+``` TypeScript
 class Tmp {
-  paramA1: string = '';
+  public paramA1: string = '';
 }
 
-@Builder function overBuilder(params: Tmp) {
+@Builder
+function overBuilderByReference(params: Tmp) {
   Row() {
     Text(`UseStateVarByReference: ${params.paramA1} `)
   }
 }
+
 @Entry
 @Component
-struct Parent {
+struct ParameterReference {
   @State label: string = 'Hello';
+
   build() {
     Column() {
-      // When the overBuilder component is called in the parent component,
-      // pass this.label to the overBuilder component by reference.
-      overBuilder({ paramA1: this.label })
+      // When the overBuilderByReference component is called in the parent component:
+      // Transfer this.label to the overBuilderByReference component by reference.
+      overBuilderByReference({ paramA1: this.label })
       Button('Click me').onClick(() => {
         // After you click "Click me", the UI text changes from "Hello" to "ArkUI".
         this.label = 'ArkUI';
@@ -160,164 +205,273 @@ struct Parent {
 }
 ```
 
-## Constraints
+### By-Value Parameter Passing
 
-1. Parameter values cannot be changed in \@Builder decorated functions. Otherwise, the framework throws a runtime error. You can change the parameters in the \@Builder decorated custom components. For details, see [Changing the Input Parameters in the \@Builder Decorated Function](#changing-the-input-parameters-in-the-builder-decorated-function).
+By default, parameters in the \@Builder decorated functions are passed by value. If the transferred parameter is a status variable, the change of the status variable does not cause the UI update in the \@Builder function. Therefore, when using state variables, you are advised to use [Passing Parameters By Callback](#passing-parameters-by-callback) or [Passing Parameters By Reference](#by-reference-parameter-passing).
 
-2. The \@Builder triggers dynamic UI rendering for only when parameters are passed in by reference. Only one parameter can be passed. For details, see [By-Reference Parameter Passing](#by-reference-parameter-passing).
+<!-- @[by_value_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterValue.ets) --> 
 
-3. If the \@Builder passes in two or more parameters, dynamic UI rendering is not triggered. For details, see [Two or More Parameters Are Used in \@Builder](#two-or-more-parameters-are-used-in-builder).
+``` TypeScript
+@Builder
+function overBuilderByValue(paramA1: string) {
+  Row() {
+    Text(`UseStateVarByValue: ${paramA1} `)
+  }
+}
 
-4. If the \@Builder passes in parameters by value and by reference, dynamic UI rendering is not triggered. For details, see [Two or More Parameters Are Used in \@Builder](#two-or-more-parameters-are-used-in-builder).
-
-5. \@Builder parameters must be passed in one by one in the form of object literals to trigger dynamic UI rendering. For details, see [Two or More Parameters Are Used in \@Builder](#two-or-more-parameters-are-used-in-builder).
-
-
-## Use Scenarios
-
-### Using Custom Builder Function in Custom Component
-
-Create a private \@Builder method, call this method by using **this.builder()** in **Column**, and change the content of **builder_value** through the **aboutToAppear** lifecycle function and Button click event to dynamically render the UI.
-
-```ts
 @Entry
 @Component
-struct PrivateBuilder {
-  @State builder_value: string = 'Hello';
-
-  @Builder builder() {
-    Column(){
-      Text(this.builder_value)
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-    }
-  }
-
-  aboutToAppear(): void {
-    setTimeout(() => {
-      this.builder_value = 'Hello World';
-    },3000)
-  }
+struct ParameterValue {
+  @State label: string = 'Hello';
 
   build() {
-    Row() {
-      Column() {
-        Text(this.builder_value)
-          .fontSize(30)
-          .fontWeight(FontWeight.Bold)
-        this.builder()
-        Button('Click to change builder_value')
-          .onClick(() => {
-            this.builder_value = 'builder_value is clicked'
-          })
-      }
+    Column() {
+      // Pass parameters by value. Changes to state variables will not trigger UI refresh inside overBuilderByValue.
+      overBuilderByValue(this.label)
     }
   }
 }
 ```
 
-### Using Global Custom Builder Function
+## Constraints
 
-Create a global \@Builder method and call this method by using **overBuilder()** in **Column**. Pass the simple type or complex type parameters in the form of object literals, value changes will trigger UI re-rendering.
+1. \@If [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) is not used in a function decorated by Builder, the parameter value cannot be modified. The modification does not trigger UI update. If [passing parameters by reference](#by-reference-parameter-passing) and only one parameter is passed, modifying the internal attributes of the parameter will throw a runtime error. You can use MutableBinding to modify parameter values in the function decorated by \@Builder. For details, see [Changing the Input Parameters in the @Builder Decorated Function](#changing-the-input-parameters-in-the-builder-decorated-function).
 
-```ts
+2. When an @Builder passes a parameter by reference, dynamic UI rendering can be triggered. Refer to [By-Reference Parameter Passing](#by-reference-parameter-passing).
+
+3. If an @Builder receives two or more parameters and does not [pass parameters by callback](#passing-parameters-by-callback), dynamic UI rendering will not be triggered. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
+
+4. If the parameters passed to \@Builder contain both value passing and reference passing, dynamic UI rendering will not be triggered. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
+
+5. Modifying properties of a parameter inside an @Builder function is not allowed; doing so will cause a runtime error. Starting from API version 23, error code [140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder-triggers-invalid-parameter-settings) will be returned. For an example, see [Changing the Input Parameters in the @Builder Decorated Function](#changing-the-input-parameters-in-the-builder-decorated-function).
+
+
+## Use Cases
+
+### Using Custom Builder Function in Custom Component
+
+Create a private **@Builder** function and use **this.builder()** to call the function in **Column**. Update **builderValue** through the [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) lifecycle function and button click event, implementing dynamic UI rendering.
+
+<!-- @[using_custom_builder_function_in_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/InCustomComponent.ets) --> 
+
+``` TypeScript
+@Entry
+@Component
+struct PrivateBuilder {
+  @State builderValue: string = 'Hello';
+
+  @Builder
+  builder() {
+    Column() {
+      Text(this.builderValue)
+        .width(230)
+        .height(40)
+        .backgroundColor('#ffeae5e5')
+        .borderRadius(20)
+        .margin(12)
+        .textAlign(TextAlign.Center)
+    }
+  }
+
+  aboutToAppear(): void {
+    setTimeout(() => {
+      this.builderValue = 'Hello World';
+    }, 2000);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.builderValue)
+          .width(230)
+          .height(40)
+          .backgroundColor('#ffeae5e5')
+          .borderRadius(20)
+          .textAlign(TextAlign.Center)
+        this.builder()
+        // Click the button to update builderValue to update the text display.
+        Button('Click to change the builderValue')
+          .onClick(() => {
+            this.builderValue = 'builderValue was clicked';
+          })
+      }
+      .height('100%')
+      .width('100%')
+    }
+  }
+}
+```
+Effect
+
+![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1.gif)
+
+### Global Custom Builder Function
+
+Create a global **@Builder** function and call it in **overBuilder()** mode in **Column**. When transferring parameters, you can use the object literal form. Any change of the value will trigger the refresh of the UI, regardless of the simple or complex type.
+
+<!-- @[global_custom_builder_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomBuilder.ets) -->  
+
+``` TypeScript
 class ChildTmp {
-  val: number = 1;
+  public val: number = 1;
 }
 
-class Tmp {
-  str_value: string = 'Hello';
-  num_value: number = 0;
-  tmp_value: ChildTmp = new ChildTmp();
-  arrayTmp_value: Array<ChildTmp> = [];
+class ParamTmp {
+  public strValue: string = 'Hello';
+  public numValue: number = 0;
+  public tmpValue: ChildTmp = new ChildTmp();
+  public arrayTmpValue: Array<ChildTmp> = [];
 }
 
-@Builder function overBuilder(param: Tmp) {
+@Builder
+function overBuilder(param: ParamTmp) {
   Column() {
-    Text(`str_value: ${param.str_value}`)
-    Text(`num_value: ${param.num_value}`)
-    Text(`tmp_value: ${param.tmp_value.val}`)
-    ForEach(param.arrayTmp_value, (item: ChildTmp) => {
-      Text(`arrayTmp_value: ${item.val}`)
+    Text(`strValue: ${param.strValue}`)
+      .width(230)
+      .height(40)
+      .margin(12)
+      .backgroundColor('#0d000000')
+      .fontColor('#e6000000')
+      .borderRadius(20)
+      .textAlign(TextAlign.Center)
+    Text(`numValue: ${param.numValue}`)
+      .width(230)
+      .height(40)
+      .margin(12)
+      .backgroundColor('#0d000000')
+      .fontColor('#e6000000')
+      .borderRadius(20)
+      .textAlign(TextAlign.Center)
+    Text(`tmpValue: ${param.tmpValue.val}`)
+      .width(230)
+      .height(40)
+      .margin(12)
+      .backgroundColor('#0d000000')
+      .fontColor('#e6000000')
+      .borderRadius(20)
+      .textAlign(TextAlign.Center)
+    ForEach(param.arrayTmpValue, (item: ChildTmp) => {
+      ListItem() {
+        Text(`arrayTmpValue: ${item.val}`)
+          .width(230)
+          .height(40)
+          .margin(12)
+          .backgroundColor('#0d000000')
+          .fontColor('#e6000000')
+          .borderRadius(20)
+          .textAlign(TextAlign.Center)
+      }
     }, (item: ChildTmp) => JSON.stringify(item))
   }
 }
 
 @Entry
 @Component
-struct Parent {
-  @State objParam: Tmp = new Tmp();
+struct ParentDemo {
+  @State objParam: ParamTmp = new ParamTmp();
+
   build() {
     Column() {
-      Text('Render the UI by calling the @Builder')
+      Text('UI Rendered via @Builder')
         .fontSize(20)
-      overBuilder({str_value: this.objParam.str_value, num_value: this.objParam.num_value,
-       tmp_value: this.objParam.tmp_value, arrayTmp_value: this.objParam.arrayTmp_value})
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000').margin(10)
-      Button('Click to change parameter').onClick(() => {
-        this.objParam.str_value = 'Hello World';
-        this.objParam.num_value = 1;
-        this.objParam.tmp_value.val = 8;
-        const child_value: ChildTmp = {
+        .margin(12)
+      // Call the global @Builder function overBuilder.
+      overBuilder({
+        strValue: this.objParam.strValue,
+        numValue: this.objParam.numValue,
+        tmpValue: this.objParam.tmpValue,
+        arrayTmpValue: this.objParam.arrayTmpValue
+      })
+      // Click the button to update objParam and trigger the refresh of components in overBuilder.
+      Button('Update Values').onClick(() => {
+        this.objParam.strValue = 'Hello World';
+        this.objParam.numValue = 1;
+        this.objParam.tmpValue.val = 8;
+        const childValue: ChildTmp = {
           val: 2
         }
-        this.objParam.arrayTmp_value.push(child_value)
+        this.objParam.arrayTmpValue.push(childValue);
       })
     }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
+Effect
+
+![arkts-builder-usage-scenario2](figures/arkts-builder-usage-scenario2.gif)
 
 ### Changing the Variables Decorated by the Decorator Triggers UI Re-rendering
 
-In this scenario, @Builder is used only to display the **Text** component instead of directly triggering dynamic UI re-rendering. UI re-rendering is triggered by the value change of the **Text** component listened by the decorator.
+In this scenario, @Builder defines the **Text** component layout but does not handle dynamic UI updates. UI re-rendering occurs when decorator-observed values change, not through @Builder's reactive capabilities.
 
-```ts
-class Tmp {
-  str_value: string = 'Hello';
+<!-- @[changing_by_the_decorator_triggers_ui_rerendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingByDecorator.ets) --> 
+
+``` TypeScript
+class ChildrenTmp {
+  public strValue: string = 'Hello';
 }
 
 @Entry
 @Component
-struct Parent {
-  @State objParam: Tmp = new Tmp();
+struct ParentSample {
+  @State objParam: ChildrenTmp = new ChildrenTmp();
   @State label: string = 'World';
 
-  @Builder privateBuilder() {
+  @Builder
+  privateBuilder() {
     Column() {
-      Text(`wrapBuilder str_value: ${this.objParam.str_value}`)
+      Text(`wrapBuilder strValue: ${this.objParam.strValue}`)
+        .width(350)
+        .height(40)
+        .margin(12)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
       Text(`wrapBuilder num: ${this.label}`)
+        .width(350)
+        .height(40)
+        .margin(12)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
     }
   }
 
   build() {
     Column() {
-      Text('Render the UI by calling the @Builder')
+      Text('UI Rendered via @Builder')
         .fontSize(20)
       this.privateBuilder()
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000').margin(10)
-      Button('Click to change parameter').onClick(() => {
-        this.objParam.str_value = 'str_value Hello World';
-        this.label = 'label Hello World'
+      // Click the button to update label and trigger the refresh of Text components.
+      Button('Update Values').onClick(() => {
+        this.objParam.strValue = 'strValue Hello World';
+        this.label = 'label Hello World';
       })
     }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
+Effect
 
-### Using the Global and Local @Builder to Pass in Parameters of the customBuilder Type
+![arkts-builder-usage-scenario3](figures/arkts-builder-usage-scenario3.gif)
 
-When a parameter is of the **customBuilder** type, the defined \@Builder function can be passed in because **customBuilder** is a **Function(() => any)** or **void** type and \@Builder is also a function type. In this case, \@Builder is passed to implement a specific effect.
+### Using Functions Decorated with @Builder as CustomBuilder Types
 
-```ts
+When the parameter type is [CustomBuilder](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8), the defined @Builder function can be passed. **CustomBuilder** is actually of the **Function(() => any)** or **void** type, and @Builder is also of the **Function** type. Therefore, a specific effect can be implemented by transferring **@Builder**.
+
+When the global @Builder function is transferred as the **CustomBuilder** type, the **this** context needs to be bound. You can directly call the global @Builder function. The compilation tool chain automatically generates the code bound to the this context.
+
+<!-- @[using_function_decorated_with_builder_as_custom_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AsCustomBuilder.ets) -->
+
+``` TypeScript
 @Builder
-function overBuilder() {
+function overBuilderDemo() {
   Row() {
     Text('Global Builder')
       .fontSize(30)
@@ -333,7 +487,7 @@ struct customBuilderDemo {
   @Builder
   privateBuilder() {
     Row() {
-      Text('Local Builder')
+      Text('Private Builder')
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
     }
@@ -354,10 +508,11 @@ struct customBuilderDemo {
           }
           .swipeAction({
             start: {
-              builder: overBuilder()
+              builder: overBuilderDemo() // The compilation toolchain automatically binds this context.
             },
             end: {
               builder: () => {
+                // When the local @Builder is called in the arrow function, the this context is automatically bound and does not need to be processed by the compilation toolchain.
                 this.privateBuilder()
               }
             }
@@ -368,24 +523,37 @@ struct customBuilderDemo {
   }
 }
 ```
+Effect
 
-### Nesting of Multi-layer \@Builder Method
+![arkts-builder-usage-scenario4](figures/arkts-builder-usage-scenario4.gif)
 
-Call the custom component or other \@Builder methods in the \@Builder method to implement a nesting of multiple \@Builder methods. To trigger the dynamic UI re-rendering in the innermost \@Builder, you should ensure that \@Builder is called by reference at each layer. [\$$](./arkts-two-way-sync.md) can be replaced with another name, which is not a mandatory parameter.
+### Multi-Layer \@Builder Function Nesting
 
-```ts
-class Tmp {
-  paramA1: string = '';
+Invoke customized components or other \@Builder functions in the \@Builder function to implement nested use of multiple \@Builders. To implement the dynamic UI refresh function of the \@Builder at the innermost layer, the \@Builder must be called by reference at each layer. Here, **$$** is not a mandatory parameter. You can replace it with another name.
+
+<!-- @[nested_builder_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/NestedBuilderFunctions.ets) --> 
+
+``` TypeScript
+class ThisTmp {
+  public paramA1: string = '';
 }
 
-@Builder function parentBuilder($$: Tmp) {
+@Builder
+function parentBuilder($$: ThisTmp) {
   Row() {
     Column() {
       Text(`parentBuilder===${$$.paramA1}`)
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-      HelloComponent({message: $$.paramA1})
-      childBuilder({paramA1: $$.paramA1})
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      // Call the custom component HelloComponent.
+      HelloComponent({ message: $$.paramA1 })
+      // Call the global @Builder function childBuilder.
+      childBuilder({ paramA1: $$.paramA1 })
     }
   }
 }
@@ -397,21 +565,33 @@ struct HelloComponent {
   build() {
     Row() {
       Text(`HelloComponent===${this.message}`)
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
     }
   }
 }
 
 @Builder
-function childBuilder($$: Tmp) {
+function childBuilder($$: ThisTmp) {
   Row() {
     Column() {
       Text(`childBuilder===${$$.paramA1}`)
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-      HelloChildComponent({message: $$.paramA1})
-      grandsonBuilder({paramA1: $$.paramA1})
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      // Call the custom component HelloChildComponent.
+      HelloChildComponent({ message: $$.paramA1 })
+      // Call the global @Builder function grandsonBuilder.
+      grandsonBuilder({ paramA1: $$.paramA1 })
     }
   }
 }
@@ -419,22 +599,35 @@ function childBuilder($$: Tmp) {
 @Component
 struct HelloChildComponent {
   @Prop message: string = '';
+
   build() {
     Row() {
       Text(`HelloChildComponent===${this.message}`)
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
     }
   }
 }
 
-@Builder function grandsonBuilder($$: Tmp) {
+@Builder
+function grandsonBuilder($$: ThisTmp) {
   Row() {
     Column() {
       Text(`grandsonBuilder===${$$.paramA1}`)
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-      HelloGrandsonComponent({message: $$.paramA1})
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      // Call the custom component HelloGrandsonComponent.
+      HelloGrandsonComponent({ message: $$.paramA1 })
     }
   }
 }
@@ -442,160 +635,503 @@ struct HelloChildComponent {
 @Component
 struct HelloGrandsonComponent {
   @Prop message: string;
+
   build() {
     Row() {
       Text(`HelloGrandsonComponent===${this.message}`)
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
     }
   }
 }
 
 @Entry
 @Component
-struct Parent {
+struct ParentExample {
   @State label: string = 'Hello';
+
   build() {
     Column() {
-      parentBuilder({paramA1: this.label})
+      // Call the global @Builder function parentBuilder.
+      parentBuilder({ paramA1: this.label })
       Button('Click me').onClick(() => {
         this.label = 'ArkUI';
       })
     }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
+Effect
 
-### Using \@Builder Functions Together with the Decorators in V2
+![arkts-builder-usage-scenario5](figures/arkts-builder-usage-scenario5.gif)
 
-Use the global @Builder and local @Builder in the @ComponentV2 decorated custom components and use the @ObservedV2 and @Trace decorators to listen for specific value changes to trigger UI re-rendering.
+### \@Builder Function Union V2 Decorator
 
-```ts
+Class object instances decorated by [@ObservedV2](./arkts-new-observedV2-and-trace.md) and [@Trace](./arkts-new-observedV2-and-trace.md) have the capability of deeply observing attribute changes. In a custom component decorated by @ComponentV2, when the global builder or local builder is called and parameters are transferred in value transfer mode, modifying the object attributes decorated by @Trace can trigger UI refresh.
+<!-- @[builder_function_combined_with_the_v2_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCombined.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Info {
-  @Trace name: string = '';
-  @Trace age: number = 0;
+  @Trace public name: string;
+  @Trace public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
 }
 
 @Builder
-function overBuilder(param: Info) {
+function overBuilderTest(param: Info) {
   Column() {
-    Text(`Global @Builder name :${param.name}`)
-      .fontSize(30)
-      .fontWeight(FontWeight.Bold)
-    Text(`Global @Builder age :${param.age}`)
-      .fontSize(30)
-      .fontWeight(FontWeight.Bold)
+    Text(`Global@Builder name: ${param.name}`)
+    Text(`Global@Builder age: ${param.age}`)
   }
+  .width(230)
+  .height(40)
+  .margin(10)
+  .padding({ left: 20 })
+  .backgroundColor('#0d000000')
+  .borderRadius(20)
 }
 
 @ComponentV2
 struct ChildPage {
   @Require @Param childInfo: Info;
+
   build() {
-    overBuilder({name: this.childInfo.name, age: this.childInfo.age})
+    Column() {
+      // The value must be transferred. If the reference transfer mode is used, the request will be intercepted by the ArkTS syntax.
+      overBuilderTest(this.childInfo)
+    }
   }
 }
 
 @Entry
 @ComponentV2
 struct ParentPage {
-  info1: Info = { name: "Tom", age: 25 };
-  @Local info2: Info = { name: "Tom", age: 25 };
+  info1: Info = new Info('Tom', 25);
+  info2: Info = new Info('Tom', 25);
 
   @Builder
   privateBuilder() {
     Column() {
-      Text(`Local @Builder name :${this.info1.name}`)
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-      Text(`Local @Builder age :${this.info1.age}`)
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+      Text(`Private@Builder name: ${this.info1.name}`)
+      Text(`Private@Builder age: ${this.info1.age}`)
     }
+    .width(230)
+    .height(40)
+    .margin(10)
+    .backgroundColor('#0d000000')
+    .borderRadius(20)
   }
 
   build() {
     Column() {
-      Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-      this.privateBuilder() // Call the local @Builder.
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000').margin(10)
-      Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-      overBuilder({ name: this.info2.name, age: this.info2.age}) // Call the global @Builder.
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000').margin(10)
-      Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-      ChildPage ({childInfo: this.info1}) // Call the custom component.
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000').margin(10)
-      Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-      ChildPage ({childInfo: this.info2}) // Call the custom component.
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000').margin(10)
-      Button("change info1&info2")
+      Flex() {
+        Column() {
+          Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
+          Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
+        }
+      }
+      .width(230)
+      .height(40)
+      .margin(10)
+      .padding({ left: 60 })
+      .backgroundColor('#0d000000')
+      .borderRadius(20)
+
+      // Call the local @Builder.
+      this.privateBuilder()
+      // Call the global @Builder. The value must be transferred. If the value is transferred by reference, it will be intercepted by the ArkTS syntax.
+      overBuilderTest(this.info2)
+      ChildPage({ childInfo: this.info1 }) // Call the custom component.
+      ChildPage({ childInfo: this.info2 }) // Call the custom component.
+      Button('change info1&info2')
         .onClick(() => {
-          this.info1 = { name: "Cat", age: 18}; // Text1 is not re-rendered because no decorator is used to listen for value changes.
-          this.info2 = { name: "Cat", age: 18}; // Text2 is re-rendered because a decorator is used to listen for value changes.
+          this.info1.name = 'Cat'; // Change the name value of info1 displayed in Text1.
+          this.info1.age = 18; // Change the age value of info1 displayed in Text1.
+          this.info2.name = 'Cat'; // Change the name value of info2 displayed in Text2.
+          this.info2.age = 18; // Change the age value of info2 displayed in Text2.
         })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+Effect
+
+![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6.gif)
+
+When passing parameters to **@Builder** by reference, if the parameter is an object decorated with **@Local**, assigning a value to the entire object triggers a UI refresh within **@Builder**.
+
+<!-- @[builder_function_combined_with_the_v2_decorator_and_local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedLocal.ets) -->
+
+``` TypeScript
+class LocalInfo {
+  public name: string = 'Tom';
+  public age: number = 25;
+}
+
+@Builder
+function overBuilderLocal(param: LocalInfo) {
+  Column() {
+    Text(`Global@Builder name: ${param.name}`)
+    Text(`Global@Builder age: ${param.age}`)
+  }
+  .width(230)
+  .height(40)
+  .margin(10)
+  .padding({ left: 20 })
+  .backgroundColor('#0d000000')
+  .borderRadius(20)
+}
+
+@ComponentV2
+struct ChildLocalPage {
+  @Require @Param childLocalInfo: LocalInfo;
+
+  build() {
+    Column() {
+      // By-reference parameter passing is used.
+      overBuilderLocal({ name: this.childLocalInfo.name, age: this.childLocalInfo.age })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct ParentLocalPage {
+  LocalInfo1: LocalInfo = { name: 'Tom', age: 25 };
+  @Local LocalInfo2: LocalInfo = { name: 'Tom', age: 25 };
+
+  @Builder
+  privateBuilder() {
+    Column() {
+      Text(`Private@Builder name: ${this.LocalInfo1.name}`)
+      Text(`Private@Builder age: ${this.LocalInfo1.age}`)
+    }
+    .width(230)
+    .height(40)
+    .margin(10)
+    .backgroundColor('#0d000000')
+    .borderRadius(20)
+  }
+
+  build() {
+    Column() {
+      Flex() {
+        Column() {
+          Text(`LocalInfo1: ${this.LocalInfo1.name}  ${this.LocalInfo1.age}`) // Text1
+          Text(`LocalInfo2: ${this.LocalInfo2.name}  ${this.LocalInfo2.age}`) // Text2
+        }
+      }
+      .width(230)
+      .height(40)
+      .margin(10)
+      .padding({ left: 60 })
+      .backgroundColor('#0d000000')
+      .borderRadius(20)
+
+      // Call the local @Builder.
+      this.privateBuilder()
+      // Call the global @Builder. Here, the reference transfer mode is used.
+      overBuilderLocal({ name: this.LocalInfo2.name, age: this.LocalInfo2.age })
+      ChildLocalPage({ childLocalInfo: this.LocalInfo1 }) // Invoke the custom component.
+      ChildLocalPage({ childLocalInfo: this.LocalInfo2 }) // Invoke the custom component.
+      Button('change LocalInfo1&LocalInfo2')
+        .onClick(() => {
+          this.LocalInfo1 = { name: 'Cat', age: 18 }; // Text1 is not re-rendered because no decorator is used to listen for value changes.
+          this.LocalInfo2 = { name: 'Cat', age: 18 }; // Text2 is re-rendered because a decorator is used to listen for value changes.
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+Effect
+
+![arkts-builder-usage-scenario8](figures/arkts-builder-usage-scenario8.gif)
+
+### Global @Builder Reused Across Components
+
+In the cross-component scenario, the global \@Builder is called to transfer parameters by reference to implement the dynamic UI update function.
+
+<!-- @[global_builder_reused_across_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AcrossComponents.ets) --> 
+
+``` TypeScript
+class ReusableTmp {
+  public componentName: string = 'Child';
+}
+
+@Builder
+function itemBuilder(params: ReusableTmp) {
+  Column() {
+    Text(`Builder ===${params.componentName}`)
+      .width(300)
+      .height(40)
+      .margin(10)
+      .backgroundColor('#0d000000')
+      .fontColor('#e6000000')
+      .borderRadius(20)
+      .textAlign(TextAlign.Center)
+  }
+}
+
+@Entry
+@Component
+struct ReusablePage {
+  @State switchFlag: boolean = true;
+
+  build() {
+    Column() {
+      if (this.switchFlag) {
+        // Invoke the customized component ReusableChildPage.
+        ReusableChildPage({ message: 'Child' })
+      } else {
+        // Invoke the customized component ReusableChildTwoPage.
+        ReusableChildTwoPage({ message: 'ChildTwo' })
+      }
+      Button('Click me')
+        .onClick(() => {
+          this.switchFlag = !this.switchFlag;
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct ReusableChildPage {
+  @State message: string = 'Child';
+
+  aboutToReuse(params: Record<string, ESObject>): void {
+    console.info('Recycle ====Child');
+    this.message = params.message;
+  }
+
+  build() {
+    Column() {
+      Text(`ReusableChildPage ===${this.message}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      // Invoke the global @Builder function itemBuilder.
+      itemBuilder({ componentName: this.message })
+    }
+  }
+}
+
+@Reusable
+@Component
+struct ReusableChildTwoPage {
+  @State message: string = 'ChildTwo';
+
+  aboutToReuse(params: Record<string, ESObject>): void {
+    console.info('Recycle ====ChildTwo');
+    this.message = params.message;
+  }
+
+  build() {
+    Column() {
+      Text(`ReusableChildTwoPage ===${this.message}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      // Invoke the global @Builder function itemBuilder.
+      itemBuilder({ componentName: this.message })
     }
   }
 }
 ```
+Effect
+
+![arkts-builder-usage-scenario7](figures/arkts-builder-usage-scenario7.gif)
+
+### State Variables Can Be Refreshed in the \@Builder
+
+From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh state variables in the \@Builder function. For details, see [makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20).
+
+<!-- @[builder_supports_state_variable_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderSupports.ets) --> 
+
+``` TypeScript
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@ObservedV2
+class ClassA {
+  @Trace public props: string = 'Hello';
+}
+
+@Builder
+function customButton(num1: Binding<number>, num2: MutableBinding<number>) {
+  Row() {
+    Column() {
+      Text(`number1 === ${num1.value},  number2 === ${num2.value}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+
+      Button(`only change number2`)
+        .onClick(() => {
+          num2.value += 1;
+        })
+    }
+  }
+}
+
+@Builder
+function customButtonObj(obj1: MutableBinding<ClassA>) {
+  Row() {
+    Column() {
+      Text(`props === ${obj1.value.props}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+
+      Button(`change props`)
+        .onClick(() => {
+          obj1.value.props += 'Hi';
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Single {
+  @Local number1: number = 5;
+  @Local number2: number = 12;
+  @Local classA: ClassA = new ClassA();
+
+  build() {
+    Column() {
+      Button(`change both number1 and number2`)
+        .onClick(() => {
+          this.number1 += 1;
+          this.number2 += 2;
+        })
+      Text(`number1 === ${this.number1}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      Text(`number2 === ${this.number2}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      // Call the global @Builder function customButton.
+      customButton(
+        UIUtils.makeBinding<number>(() => this.number1), // Use the UIUtils.makeBinding() function to update the state variables in the @Builder function.
+        UIUtils.makeBinding<number>(
+          () => this.number2,
+          (val: number) => {
+            this.number2 = val;
+          })
+      )
+      Text(`classA.props === ${this.classA.props}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      // Call the global @Builder function customButtonObj.
+      customButtonObj(
+        UIUtils.makeBinding<ClassA>( // Use the UIUtils.makeBinding () function to refresh state variables in the @Builder function.
+          () => this.classA,
+          (val: ClassA) => {
+            this.classA = val;
+          })
+      )
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+Effect
+
+![arkts-builder-refresh](figures/arkts-builder-refresh.gif)
 
 ## FAQs
 
-### Two or More Parameters Are Used in \@Builder
+### Multiple Parameters in @Builder
 
-When two or more parameters are used, the value change does not trigger the UI re-rendering even if the parameters are passed in the form of object literals.
+When @Builder functions have two or more parameters, UI re-rendering is not triggered by value changes, even when parameters are passed via object literals.
 
-[Negative Example]
+**Incorrect Usage**
 
-```ts
-class GlobalTmp {
-  str_value: string = 'Hello';
+<!-- @[multiple_parameters_in_builder_incorrect_usage_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/MultipleIncorrectUsage1.ets) --> 
+
+``` TypeScript
+class GlobalTmp1 {
+  public strValue: string = 'Hello';
 }
 
-@Builder function overBuilder(param: GlobalTmp, num: number) {
+@Builder
+function overBuilder1(param: GlobalTmp1, num: number) {
   Column() {
-    Text(`str_value: ${param.str_value}`)
+    Text(`strValue: ${param.strValue}`)
     Text(`num: ${num}`)
   }
 }
 
 @Entry
 @Component
-struct Parent {
-  @State objParam: GlobalTmp = new GlobalTmp();
+struct Parent1 {
+  @State objParam: GlobalTmp1 = new GlobalTmp1();
   @State num: number = 0;
+
   build() {
     Column() {
-      Text('Render the UI by calling the @Builder')
+      Text('UI Rendered via @Builder')
         .fontSize(20)
       // Two parameters are used, which is incorrect.
-      overBuilder({str_value: this.objParam.str_value}, this.num)
+      overBuilder1({ strValue: this.objParam.strValue }, this.num)
       Line()
         .width('100%')
         .height(10)
         .backgroundColor('#000000').margin(10)
-      Button('Click to change parameter').onClick(() => {
-        this.objParam.str_value = 'Hello World';
+      Button('Update Values').onClick(() => {
+        this.objParam.strValue = 'Hello World';
         this.num = 1;
       })
     }
@@ -603,96 +1139,110 @@ struct Parent {
 }
 ```
 
-[Negative Example]
+**Incorrect Usage**
 
-```ts
-class GlobalTmp {
-  str_value: string = 'Hello';
+<!-- @[multiple_parameters_in_builder_incorrect_usage_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/MultipleIncorrectUsage2.ets) --> 
+
+``` TypeScript
+class GlobalTmp2 {
+  public strValue: string = 'Hello';
 }
+
 class SecondTmp {
-  num_value: number = 0;
+  public numValue: number = 0;
 }
-@Builder function overBuilder(param: GlobalTmp, num: SecondTmp) {
+
+@Builder
+function overBuilder2(param: GlobalTmp2, num: SecondTmp) {
   Column() {
-    Text(`str_value: ${param.str_value}`)
-    Text(`num: ${num.num_value}`)
+    Text(`strValue: ${param.strValue}`)
+    Text(`num: ${num.numValue}`)
   }
 }
 
 @Entry
 @Component
-struct Parent {
-  @State strParam: GlobalTmp = new GlobalTmp();
+struct Parent2 {
+  @State strParam: GlobalTmp2 = new GlobalTmp2();
   @State numParam: SecondTmp = new SecondTmp();
+
   build() {
     Column() {
-      Text('Render the UI by calling the @Builder')
+      Text('UI Rendered via @Builder')
         .fontSize(20)
       // Two parameters are used, which is incorrect.
-      overBuilder({str_value: this.strParam.str_value}, {num_value: this.numParam.num_value})
+      overBuilder2({ strValue: this.strParam.strValue }, { numValue: this.numParam.numValue })
       Line()
         .width('100%')
         .height(10)
         .backgroundColor('#000000').margin(10)
-      Button('Click to change parameter').onClick(() => {
-        this.strParam.str_value = 'Hello World';
-        this.numParam.num_value = 1;
+      Button('Update Values').onClick(() => {
+        this.strParam.strValue = 'Hello World';
+        this.numParam.numValue = 1;
       })
     }
   }
 }
 ```
 
-Only one parameter can be used in the \@Builder. When one parameter is passed in the form of object literals, the value change triggers the UI re-rendering.
+\@Builder functions accept only one parameter, which must be passed as an object literal. Changes to this parameter's value trigger UI re-rendering.
 
-[Positive Example]
+**Correct Usage**
 
-```ts
-class GlobalTmp {
-  str_value: string = 'Hello';
-  num_value: number = 0;
+<!-- @[multiple_parameters_in_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/MultipleCorrectUsage.ets) --> 
+
+``` TypeScript
+class GlobalTmp3 {
+  public strValue: string = 'Hello';
+  public numValue: number = 0;
 }
-@Builder function overBuilder(param: GlobalTmp) {
+
+@Builder
+function overBuilder3(param: GlobalTmp3) {
   Column() {
-    Text(`str_value: ${param.str_value}`)
-    Text(`num: ${param.num_value}`)
+    Text(`strValue: ${param.strValue}`)
+    Text(`num: ${param.numValue}`)
   }
 }
 
 @Entry
 @Component
-struct Parent {
-  @State objParam: GlobalTmp = new GlobalTmp();
+struct Parent3 {
+  @State objParam: GlobalTmp3 = new GlobalTmp3();
+
   build() {
     Column() {
-      Text('Render the UI by calling the @Builder')
+      Text('UI Rendered via @Builder')
         .fontSize(20)
-      overBuilder({str_value: this.objParam.str_value, num_value: this.objParam.num_value})
+      // Input a parameter. This is a correct usage.
+      overBuilder3({ strValue: this.objParam.strValue, numValue: this.objParam.numValue })
       Line()
         .width('100%')
         .height(10)
         .backgroundColor('#000000').margin(10)
-      Button('Click to change parameter').onClick(() => {
-        this.objParam.str_value = 'Hello World';
-        this.objParam.num_value = 1;
+      Button('Update Values').onClick(() => {
+        this.objParam.strValue = 'Hello World';
+        this.objParam.numValue = 1;
       })
     }
   }
 }
 ```
 
-### Using the @ComponentV2 Decorator to Trigger Dynamic Re-render
+### Dynamic Re-rendering with @ComponentV2
 
-In the way of passing parameters by value, the @ObservedV2 and @Trace decorators can be used together in the @ComponentV2 decorated custom component to re-render the UI.
+In @ComponentV2 decorated components, combine @ObservedV2 and @Trace decorators to enable UI re-rendering through value-based change detection.
 
-[Negative Example]
+**Incorrect Usage**
 
-In the @ComponentV2 decorated custom component, the use of simple data types cannot trigger UI re-render.
+In the custom component decorated with [@ComponentV2](arkts-create-custom-components.md#componentv2), using primitive data types cannot trigger UI refresh.
 
-```ts
+<!-- @[dynamic_rerendering_with_component_v2_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicIncorrectUsage.ets) -->
+
+``` TypeScript
 @ObservedV2
-class ParamTmp {
-  @Trace count : number = 0;
+class ParamTemp {
+  @Trace public count : number = 0;
 }
 
 @Builder
@@ -704,17 +1254,17 @@ function renderNumber(paramNum: number) {
 
 @Entry
 @ComponentV2
-struct PageBuilder {
-  @Local class_value: ParamTmp = new ParamTmp();
-  // Using simple data type cannot trigger UI re-render
-  @Local num_value: number = 0;
+struct PageBuilderIncorrectUsage {
+  @Local classValue: ParamTemp = new ParamTemp();
+  // Using primitive data type cannot trigger UI re-rendering.
+  @Local numValue: number = 0;
   private progressTimer: number = -1;
 
   aboutToAppear(): void {
     this.progressTimer = setInterval(() => {
-      if (this.class_value.count < 100) {
-        this.class_value.count += 5;
-        this.num_value += 5;
+      if (this.classValue.count < 100) {
+        this.classValue.count += 5;
+        this.numValue += 5;
       } else {
         clearInterval(this.progressTimer);
       }
@@ -723,7 +1273,7 @@ struct PageBuilder {
 
   build() {
     Column() {
-      renderNumber(this.num_value)
+      renderNumber(this.numValue)
     }
     .width('100%')
     .height('100%')
@@ -732,18 +1282,20 @@ struct PageBuilder {
 }
 ```
 
-[Positive Example]
+**Correct Usage**
 
-In @ComponentV2, only the @ObservedV2 decorated **ParamTmp** class and the @Trace decorated **count** property can trigger the UI re-render.
+In a custom component decorated by @ComponentV2, only the ParamTmpClass class decorated by @ObservedV2 and the count attribute decorated by @Trace can trigger UI refresh.
 
-```ts
+<!-- @[dynamic_rerendering_with_component_v2_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicCorrectUsage.ets) -->  
+
+``` TypeScript
 @ObservedV2
-class ParamTmp {
-  @Trace count : number = 0;
+class ParamTmpClass {
+  @Trace public count: number = 0;
 }
 
 @Builder
-function renderText(param: ParamTmp) {
+function renderText(param: ParamTmpClass) {
   Column() {
     Text(`param : ${param.count}`)
       .fontSize(20)
@@ -752,7 +1304,7 @@ function renderText(param: ParamTmp) {
 }
 
 @Builder
-function renderMap(paramMap: Map<string,number>) {
+function renderMap(paramMap: Map<string, number>) {
   Text(`paramMap : ${paramMap.get('name')}`)
     .fontSize(20)
     .fontWeight(FontWeight.Bold)
@@ -774,20 +1326,23 @@ function renderNumberArr(paramNumArr: number[]) {
 
 @Entry
 @ComponentV2
-struct PageBuilder {
-  @Local builderParams: ParamTmp = new ParamTmp();
-  @Local map_value: Map<string,number> = new Map();
-  @Local set_value: Set<number> = new Set([0]);
-  @Local numArr_value: number[] = [0];
+struct PageBuilderCorrectUsage {
+  @Local builderParams: ParamTmpClass = new ParamTmpClass();
+  @Local mapValue: Map<string, number> = new Map();
+  @Local setValue: Set<number> = new Set([0]);
+  @Local numArrValue: number[] = [0];
   private progressTimer: number = -1;
 
   aboutToAppear(): void {
     this.progressTimer = setInterval(() => {
       if (this.builderParams.count < 100) {
+        // builderParams is a ParamTmpClass class decorated with @ObservedV2.
+        // The count attribute is decorated with @Trace.
+        // The count change will trigger UI re-rendering.
         this.builderParams.count += 5;
-        this.map_value.set('name', this.builderParams.count);
-        this.set_value.add(this.builderParams.count);
-        this.numArr_value[0] = this.builderParams.count;
+        this.mapValue.set('name', this.builderParams.count);
+        this.setValue.add(this.builderParams.count);
+        this.numArrValue[0] = this.builderParams.count;
       } else {
         clearInterval(this.progressTimer);
       }
@@ -811,9 +1366,9 @@ struct PageBuilder {
         .fontWeight(FontWeight.Bold)
       renderText(this.builderParams)
       renderText({ count: this.builderParams.count })
-      renderMap(this.map_value)
-      renderSet(this.set_value)
-      renderNumberArr(this.numArr_value)
+      renderMap(this.mapValue)
+      renderSet(this.setValue)
+      renderNumberArr(this.numArrValue)
     }
     .width('100%')
     .height('100%')
@@ -821,71 +1376,566 @@ struct PageBuilder {
 }
 ```
 
-### Changing the Input Parameters in the \@Builder Decorated Function
+### Component Creation in \@Builder Prevents Parameter Update Propagation
 
-[Negative Example]
+Create the customized component HelloComponent1 in the parentBuilder1 function, transfer the class object as the parameter, and change the value in the object. The UI does not trigger the refresh function.
 
-```ts
-interface Temp {
-  paramA: string;
+**Incorrect Usage**
+
+<!-- @[builder_parameter_update_propagation_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderIncorrectUsage.ets) -->
+
+``` TypeScript
+class Tmp4 {
+  public name: string = 'Hello';
+  public age: number = 16;
 }
 
-@Builder function overBuilder(param: Temp) {
+@Builder
+function parentBuilder1(params: Tmp4) {
   Row() {
     Column() {
-      Button(`overBuilder === ${param.paramA}`)
-        .onClick(() => {
-          // Incorrect format. Parameter values cannot be changed in the function decorated by @Builder.
-          param.paramA = 'Yes';
-      })
+      Text(`parentBuilder1===${params.name}===${params.age}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+      // This is not a reference-based transfer mode. The usage is incorrect. As a result, the UI is not refreshed.
+      HelloComponent1({ info: params })
+    }
+  }
+}
+
+@Component
+struct HelloComponent1 {
+  @Prop info: Tmp4 = new Tmp4();
+
+  build() {
+    Row() {
+      Text(`HelloComponent1===${this.info.name}===${this.info.age}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
     }
   }
 }
 
 @Entry
 @Component
-struct Parent {
-  @State label: string = 'Hello';
+struct ParentPage1 {
+  @State nameValue: string = 'Zhang San';
+  @State ageValue: number = 18;
 
   build() {
     Column() {
-      overBuilder({paramA: this.label})
-      Button('click me')
+      parentBuilder1({ name: this.nameValue, age: this.ageValue })
+      Button('Click me')
         .onClick(() => {
-          this.label = 'ArkUI';
+          // The modification does not cause the change of HelloComponent1.
+          this.nameValue = 'Li Si';
+          this.ageValue = 20;
         })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+Create the customized component HelloComponent2 in the parentBuilder2 function, transfer the parameter in the object literal format, and change the value in the object. The UI triggers the refresh function.
+
+**Correct Usage**
+
+<!-- @[builder_parameter_update_propagation_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCorrectUsage.ets) -->
+
+``` TypeScript
+class Tmp5 {
+  public name: string = 'Hello';
+  public age: number = 16;
+}
+
+@Builder
+function parentBuilder2(params: Tmp5) {
+  Row() {
+    Column() {
+      Text(`parentBuilder2===${params.name}===${params.age}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+      // Split the entire object into simple types, which is transferred by reference. Modifying attributes can trigger UI refresh.
+      HelloComponent2({ childName: params.name, childAge: params.age })
+    }
+  }
+}
+
+@Component
+struct HelloComponent2 {
+  @Prop childName: string = '';
+  @Prop childAge: number = 0;
+
+  build() {
+    Row() {
+      Text(`HelloComponent2===${this.childName}===${this.childAge}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+}
+
+@Entry
+@Component
+struct ParentPage2 {
+  @State nameValue: string = 'Zhang San';
+  @State ageValue: number = 18;
+
+  build() {
+    Column() {
+      parentBuilder2({ name: this.nameValue, age: this.ageValue })
+      Button('Click me')
+        .onClick(() => {
+          // Modifying the content here will cause the change of HelloComponent2.
+          this.nameValue = 'Li Si';
+          this.ageValue = 20;
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### Invoking the \@Builder function or method outside the UI statement affects the normal refreshing of the node.
+
+When the \@Builder method assigns a value to a variable or array, the method cannot be used in the UI method, and the node display is abnormal during refresh.
+
+**Incorrect Usage**
+<!-- @[calling_builder_outside_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/OutsideIncorrectUsage.ets) --> 
+
+``` TypeScript
+@Entry
+@Component
+struct BackGround1 {
+  @Builder
+  myImages() {
+    Column() {
+      // Load the image resource named startIcon from the media directory of the application. 'app.media.startIcon' is only an example. Replace it with the actual one.
+      Image($r('app.media.startIcon')).width('100%').height('100%')
+    }
+  };
+
+  @Builder
+  myImages2() {
+    Column() {
+      // Load the image resource named startIcon from the media directory of the application. 'app.media.startIcon' is only an example. Replace it with the actual one.
+      Image($r('app.media.startIcon')).width('100%').height('100%')
+    }
+  };
+
+  private bgList: Array<CustomBuilder> = [this.myImages(), this.myImages2()]; // Incorrect usage. Do not invoke the @Builder method outside the UI method.
+  @State bgBuilder: CustomBuilder = this.myImages(); // Incorrect usage. Do not call the @Builder method outside the UI method.
+  @State bgColor: ResourceColor = Color.Orange;
+  @State bgColor2: ResourceColor = Color.Orange;
+  @State index: number = 0;
+
+  build() {
+    Column({ space: 10 }) {
+      Text('1').width(100).height(50)
+      Text('2').width(100).height(50)
+      Text('3').width(100).height(50)
+
+      Text('4-1').width(100).height(50).fontColor(this.bgColor)
+      Text('5-1').width(100).height(50)
+      Text('4-2').width(100).height(50)
+      Text('5-2').width(100).height(50)
+      Stack() {
+        Column() {
+          Text('Vsync2')
+        }
+        .size({ width: '100%', height: '100%' })
+        .border({ width: 1, color: Color.Black })
+      }
+      .size({ width: 100, height: 80 })
+      .backgroundColor('#ffbbd4bb')
+
+      Button('change').onClick((event: ClickEvent) => {
+        this.index = 1;
+        this.bgColor = Color.Red;
+        this.bgColor2 = Color.Red;
+      })
+    }
+    .margin(10)
+  }
+}
+```
+The \@Builder method cannot be used in UI methods after it is assigned to a variable or array. You should avoid using the \@Builder method after it is assigned to a variable or array.
+
+**Correct Usage**
+<!-- @[calling_builder_outside_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/OutsideCorrectUsage.ets) --> 
+
+``` TypeScript
+@Entry
+@Component
+struct BackGround2 {
+  @Builder
+  myImages() {
+    Column() {
+      // Load the image resource named startIcon from the media directory of the application. 'app.media.startIcon' is only an example. Replace it with the actual one.
+      Image($r('app.media.startIcon')).width('100%').height('100%')
+    }
+  }
+
+  @Builder
+  myImages2() {
+    Column() {
+      // Load the image resource named startIcon from the media directory of the application. 'app.media.startIcon' is only an example. Replace it with the actual one.
+      Image($r('app.media.startIcon')).width('100%').height('100%')
+    }
+  }
+
+  @State bgColor: ResourceColor = Color.Orange;
+  @State bgColor2: ResourceColor = Color.Orange;
+  @State index: number = 0;
+
+  build() {
+    Column({ space: 10 }) {
+      Text('1').width(100).height(50)
+      Text('2').width(100).height(50).background(this.myImages) // Directly pass the @Builder method.
+      Text('3').width(100).height(50).background(this.myImages()) // Directly calls the @Builder method.
+
+      Text('4-1').width(100).height(50).fontColor(this.bgColor)
+      Text('5-1').width(100).height(50)
+      Text('4-2').width(100).height(50)
+      Text('5-2').width(100).height(50)
+      Stack() {
+        Column() {
+          Text('Vsync2')
+        }
+        .size({ width: '100%', height: '100%' })
+        .border({ width: 1, color: Color.Black })
+      }
+      .size({ width: 100, height: 80 })
+      .backgroundColor('#ffbbd4bb')
+
+      Button('change').onClick((event: ClickEvent) => {
+        this.index = 1;
+        this.bgColor = Color.Red;
+        this.bgColor2 = Color.Red;
+      })
+    }
+    .margin(10)
+  }
+}
+```
+
+### The Set Accessor Is Not Passed When MutableBinding Is Used in the \@Builder Method
+
+When MutableBinding is used in the \@Builder method definition, the set accessor is not passed to the MutableBinding type parameter during construction. As a result, a runtime error occurs when the set accessor is triggered.
+
+**Incorrect Usage**
+<!-- @[not_passed_set_accessor_builder_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorIncorrectUsage.ets) --> 
+
+``` TypeScript
+import { UIUtils, Binding, MutableBinding } from '@kit.ArkUI';
+
+@ObservedV2
+class GlobalTmp1 {
+  @Trace public strValue: string = 'Hello';
+}
+
+@Builder
+function builderWithTwoParams1(param1: Binding<GlobalTmp1>, param2: MutableBinding<number>) {
+  Column() {
+    Text(`strValue: ${param1.value.strValue}`)
+    Button(`num: ${param2.value}`)
+      .onClick(() => {
+        param2.value += 1; // Click the button to trigger the set accessor, which causes a runtime error.
+      })
+  }.borderWidth(1)
+}
+
+@Entry
+@ComponentV2
+struct MakeBindingTest1 {
+  @Local GlobalTmp1: GlobalTmp1 = new GlobalTmp1();
+  @Local num: number = 0;
+
+  build() {
+    Column() {
+      Text(`${this.GlobalTmp1.strValue}`)
+      builderWithTwoParams1(UIUtils.makeBinding(() => this.GlobalTmp1),
+        UIUtils.makeBinding<number>(() => this.num)) // SetterCallback is not passed when a parameter of the MutableBinding type is constructed.
+      Button('Update Values').onClick(() => {
+        this.GlobalTmp1.strValue = 'Hello World 2025';
+        this.num = 1;
+      })
+    }
+  }
+}
+```
+For details, see [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) in the statement management API reference.
+
+**Correct Usage**
+<!-- @[not_passed_set_accessor_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorCorrectUsage.ets) -->
+
+``` TypeScript
+import { UIUtils, Binding, MutableBinding } from '@kit.ArkUI';
+
+@ObservedV2
+class GlobalTmp2 {
+  @Trace public strValue: string = 'Hello';
+}
+
+@Builder
+function builderWithTwoParams2(param1: Binding<GlobalTmp2>, param2: MutableBinding<number>) {
+  Column() {
+    Text(`strValue: ${param1.value.strValue}`)
+    Button(`num: ${param2.value}`)
+      .onClick(() => {
+        param2.value += 1; // The value attribute of the MutableBinding parameter is modified.
+      })
+  }.borderWidth(1)
+}
+
+@Entry
+@ComponentV2
+struct MakeBindingTest2 {
+  @Local GlobalTmp2: GlobalTmp2 = new GlobalTmp2();
+  @Local num: number = 0;
+
+  build() {
+    Column() {
+      Text(`${this.GlobalTmp2.strValue}`)
+      builderWithTwoParams2(UIUtils.makeBinding(() => this.GlobalTmp2),
+        UIUtils.makeBinding<number>(() => this.num,
+          val => {
+            this.num = val;
+          }))
+      Button('Update Values').onClick(() => {
+        this.GlobalTmp2.strValue = 'Hello World 2025';
+        this.num = 1;
+      })
     }
   }
 }
 ```
 
-[Positive Example]
+### Changing the Input Parameters in the @Builder Decorated Function
 
-```ts
-interface Temp {
+If [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) is not used, the modification of parameter values in the function decorated by \@Builder does not take effect and may cause runtime errors. Since API version 23, error code [140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder-triggers-invalid-parameter-settings) will be returned.
+
+**Incorrect Usage**
+<!-- @[changing_input_parameters_builder_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingIncorrectUsage.ets) -->
+
+``` TypeScript
+@Builder
+function myGlobalBuilder(value: string) {
+  Column() {
+    Text(`myGlobalBuilder: ${value} `)
+      .fontSize(16)
+      .onClick(() => {
+        // Modify parameters in the @Builder function of the simple type transferred by value. The UI does not refresh but does not exit unexpectedly.
+        value = 'value change';
+      })
+  }.borderWidth(1)
+}
+
+interface TempMod1 {
   paramA: string;
 }
 
-@Builder function overBuilder(param: Temp) {
+@Builder
+function overBuilderMod1(param: TempMod1) {
   Row() {
     Column() {
-      Button(`overBuilder === ${param.paramA}`)
+      Button(`overBuilderMod1 === ${param.paramA}`)
+        .onClick(() => {
+          // Incorrect format. The attributes of object type parameters cannot be modified in the function decorated by @Builder. As a result, the system crashes and the UI is not refreshed.
+          param.paramA = 'Yes';
+        })
+      Button('change')
+        .onClick(() => {
+          // Incorrect format. The reference of the object type parameter cannot be modified in the function decorated by @Builder. The UI does not refresh but does not exit unexpectedly.
+          param = { paramA: 'change trial' };
+        })
     }
   }
 }
 
 @Entry
 @Component
-struct Parent {
+struct ParentMod1 {
   @State label: string = 'Hello';
+  @State message1: string = 'Value Passing';
+
+  @Builder
+  extendBlank() {
+    Row() {
+      Blank()
+    }
+    .height(20)
+  }
 
   build() {
     Column() {
-      overBuilder({paramA: this.label})
+      // Passing by reference can implement UI refresh when parameters change, but parameters cannot be modified in the @Builder function.
+      overBuilderMod1({ paramA: this.label });
+      this.extendBlank();
       Button('click me')
         .onClick(() => {
           this.label = 'ArkUI';
         })
+      this.extendBlank();
+      myGlobalBuilder(this.message1);
+    }
+  }
+}
+```
+Correct use of [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) helps developers modify parameter values in functions decorated by \@Builder.
+
+**Correct Usage**
+<!-- @[changing_input_parameters_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingCorrectUsage.ets) -->
+
+``` TypeScript
+import { UIUtils, MutableBinding } from '@kit.ArkUI';
+
+// Use MutableBinding to modify parameter values in the @Builder decorated function.
+@Builder
+function myGlobalBuilderMod(str: MutableBinding<string>) {
+  Column() {
+    Text(`Mod--MyGlobalBuilder: ${str.value}`)
+      .fontSize(16)
+      .onClick(() => {
+        str.value = 'value change mod';
+      })
+  }
+}
+
+interface TempMod2 {
+  paramA: string;
+}
+
+// Use MutableBinding to modify parameter values in the function decorated by @Builder.
+@Builder
+function overBuilderMod2(param: MutableBinding<TempMod2>) {
+  Column() {
+    Button(`Mod--overBuilder === ${param.value.paramA}`)
+      .onClick(() => {
+        param.value.paramA = 'Yes';
+      })
+    Button(`change`)
+      .onClick(() => {
+        param.value = { paramA: 'trialOne' };
+      })
+  }
+}
+
+@Entry
+@Component
+struct ParentMod2 {
+  @State label: string = 'Hello';
+  @State message1: string = 'Value Passing';
+  @State objectOne: TempMod2 = {
+    paramA: this.label
+  };
+
+  @Builder
+  extendBlank() {
+    Row() {
+      Blank()
+    }
+    .height(20)
+  }
+
+  build() {
+    Column() {
+      // When MutableBinding is used, the object literal cannot be transferred. You need to extract the literal object as a state variable first.
+      overBuilderMod2(
+        UIUtils.makeBinding<TempMod2>(
+          () => this.objectOne,
+          value => {
+            this.objectOne = value; // SetterCallback must be transferred. Otherwise, a runtime error occurs when this function is triggered.
+          }
+        )
+      )
+      this.extendBlank();
+      Button('click me')
+        .onClick(() => {
+          this.objectOne.paramA = 'ArkUI';
+        })
+      this.extendBlank();
+      myGlobalBuilderMod(
+        UIUtils.makeBinding<string>(
+          () => this.message1,
+          value => {
+            this.message1 = value; // SetterCallback must be transferred. Otherwise, a runtime error occurs when this function is triggered.
+          }
+        )
+      );
+    }
+  }
+}
+```
+
+### Execute the \@Builder function in the \@Watch function.
+
+If the \@Builder function is executed in the [\@Watch](./arkts-watch.md) function, the UI refresh is abnormal.
+
+**Incorrect Usage**
+<!-- @[executing_builder_function_watch_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchIncorrectUsage.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Child1 {
+  @Provide @Watch('provideWatch') content: string = 'Index: hello world';
+
+  @Builder
+  watchBuilder(content: string) {
+    Row() {
+      Text(`${content}`)
+    }
+  }
+
+  provideWatch() {
+    this.watchBuilder(this.content); // Incorrect format. Use the @Builder function in the @Watch function.
+  }
+
+  build() {
+    Column() {
+      Button(`content value: ${this.content}`)
+        .onClick(() => {
+          this.content += '_world';
+        })
+      this.watchBuilder(this.content);
+    }
+  }
+}
+```
+The UI of the button may be abnormal. Therefore, you need to avoid using the \@Builder function in the \@Watch function.
+
+**Correct Usage**
+<!-- @[executing_builder_function_watch_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets) --> 
+
+``` TypeScript
+@Entry
+@Component
+struct Child2 {
+  @Provide @Watch('provideWatch') content: string = 'Index: hello world';
+
+  @Builder
+  watchBuilder(content: string) {
+    Row() {
+      Text(`${content}`)
+    }
+  }
+
+  provideWatch() {
+    // Correct format. Do not use the @Builder function in the @Watch function.
+    console.info(`content value has changed.`);
+  }
+
+  build() {
+    Column() {
+      Button(`content value: ${this.content}`)
+        .onClick(() => {
+          this.content += '_world';
+        })
+      this.watchBuilder(this.content);
     }
   }
 }

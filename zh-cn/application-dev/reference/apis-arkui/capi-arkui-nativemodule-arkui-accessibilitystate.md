@@ -1,4 +1,14 @@
 # ArkUI_AccessibilityState
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @wangyinhua-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_AccessibilityState ArkUI_AccessibilityState
+```
 
 ## 概述
 

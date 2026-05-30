@@ -1,10 +1,14 @@
 # OH_AudioSession_StateChangedEvent
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @hao-liangfei-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioSession_StateChangedEvent {...} OH_AudioSession_StateChangedEvent
+```
 ## 概述
 
 音频会话状态变更事件。

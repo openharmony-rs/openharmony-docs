@@ -5,7 +5,11 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+
+```c
+typedef struct {...} ffrt_mutex_t
+```
 
 ## Overview
 
@@ -21,6 +25,6 @@ The **ffrt_mutex_t** struct describes an FFRT mutex.
 
 ### Member Variables
 
-| Name| Description|	
-| -- | -- |	
+| Name| Description|
+| -- | -- |
 | uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Storage size of a mutex.|

@@ -1,4 +1,14 @@
 # ArkUI_NodeComponentEvent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_NodeComponentEvent
+```
 
 ## 概述
 
@@ -16,6 +26,6 @@
 
 | 名称                                                      | 描述 |
 |---------------------------------------------------------| -- |
-| [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) data[MAX_COMPONENT_EVENT_ARG_NUM] | 数据数组对象。 |
+| [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) data[[MAX_COMPONENT_EVENT_ARG_NUM](capi-native-node-h.md#宏定义)] | 数据数组对象。 |
 
 

@@ -1,4 +1,14 @@
 # ImageEffect_Size
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @XiaoYao555-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct ImageEffect_Size {...} ImageEffect_Size
+```
 
 ## 概述
 

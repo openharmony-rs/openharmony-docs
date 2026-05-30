@@ -8,11 +8,11 @@
 
 - ### AppLinking
 
-    A service provided based on basic operating system capabilities (such as DeepLink and URL scheme for developers to create deep links across platforms. If the application is installed on a device, the links can direct users to specific content within the application. If the application is not installed a device, redirected targets can be customized. Moreover, AppLinking can ensure the security of the redirections and prevent phishing and other malicious activities.
+   A service provided based on basic operating system capabilities (such as DeepLink and URL scheme for developers to create deep links across platforms. If the application is installed on a device, the links can direct users to specific content within the application. If the application is not installed a device, redirected targets can be customized. Moreover, AppLinking can ensure the security of the redirections and prevent phishing and other malicious activities.
 
 - ### ArkCompiler
 
-    A component-based, configurable multi-language compilation and running platform built in OpenHarmony. Bolstered by key components such as the compiler, toolchain, and runtime, ArkCompiler is able to compile and run code written in various advanced programming languages on multiple chip platforms. It also enables the OpenHarmony standard system and its applications and services to run on a variety of device types, from phones and PCs, tablets, TVs, automobiles, to smart wearables.
+   A component-based, configurable multi-language compilation and running platform built in OpenHarmony. Bolstered by key components such as the compiler, toolchain, and runtime, ArkCompiler is able to compile and run code written in various advanced programming languages on multiple chip platforms. It also enables the OpenHarmony standard system and its applications and services to run on a variety of device types, from phones and PCs, tablets, TVs, automobiles, to smart wearables.
 
 - ### ArkTS
 
@@ -20,27 +20,27 @@
 
 - ### ArkUI
 
-  Native UI framework of OpenHarmony. ArkUI is a simplified, high-performance UI development framework for cross-device application design and development, increasing your productivity when creating application UIs for use across devices. For details, see [ArkUI Overview](application-dev/ui/arkui-overview.md).
+  Native UI framework of OpenHarmony. ArkUI is a simplified, high-performance UI development framework for cross-device application design and development, increasing your productivity when creating application UIs for use across devices.
 
 
 ## B
 
-- ### BMS
+- ### Bundle Manager Service (BMS)
 
-    Bundle Manager Service, a service that manages application bundles.
+    A service that manages application bundles.
 
 ## C
 
-- ### CES
+- ### Common Event Service (CES)
 
-    Common Event Service, a system service in OpenHarmony to handle operations specific to common events, such as subscription, publishing, and unsubscription
+    A system service in OpenHarmony to handle operations specific to common events, such as subscription, publishing, and unsubscription
 
 
 ## D
 
-- ### DMS
+- ### Distributed Management Service (DMS)
 
-    Distributed Management Service, a service used for distributed data management.
+    A service used for distributed data management.
 
 
 ## E
@@ -51,36 +51,32 @@
 
 
 ## F
-
-- ### FA
-
-    Feature Ability, an ability with a UI to interact with users in the FA model.
-    
+   
 - ### FA model
 
     Application model supported by versions earlier than API version 8. The stage model is recommended for developing OpenHarmony applications.
+    
 
 
 ## H
 
-- ### HAP
+- ### Harmony Ability Package (HAP)
 
-    Harmony Ability Package, released with the file name extension .hap. A HAP provides all content of an application, including the code, resources, third-party libraries, and application configuration file.
+    A file that contains all the contents of the application, which is composed of code, resources, third-party libraries, and application configuration files. Its file extension is .hap.
 
+- ### Hardware Driver Foundation (HDF)
 
-- ### HCS
-
-    HDF Configuration Source (HCS), providing the [Hardware Driver Foundation (HDF)](#hdf) configuration in key-value pairs. HCS removes the dependency between configuration code and driver code, simplifies configuration management.
-
-
-- ### HC-GEN
-
-    HDF Configuration Generator, a tool for converting a configuration file into a file that can be read by the target software.
+    A framework that provides unified access to hardware peripherals and supports the development and management of device drivers.
 
 
-- ### HDF
+- ### HDF Configuration Generator (HC-GEN)
 
-    Hardware Driver Foundation that provides a unified access interface for peripherals and the framework for driver development and management in OpenHarmony.
+    A tool for converting a configuration file into a file that can be read by the target software.
+    
+- ### HDF Configuration Source (HCS)
+
+    An HDF configuration description language that uses a key-value-based text format to decouple configuration code from driver code, thereby simplifying configuration management.
+
 
 - ### Hypium
 
@@ -89,16 +85,16 @@
 
 ## I
 
-- ### IDN
+- ###  Intelligent Distributed Networking (IDN)
 
-    Intelligent Distributed Networking, a distributed networking unit of OpenHarmony. You can use IDN to obtain the device list and device states and subscribe to the connection state changes of devices on a distributed network.
+   A distributed networking unit of OpenHarmony. You can use IDN to obtain the device list and device states and subscribe to the connection state changes of devices on a distributed network.
 
 
-## P
+## M
 
-- ### PA
+- ### Module
 
-    Particle Ability, an ability without a UI in the FA model. PAs are invoked to implement FA functionalities. For example, a PA runs in the background to provide the computing capability or acts as a data warehouse to provide the data access capability.
+    Part of an application. Each module has an independent module.json5 configuration file. In a project, Entry, Feature, HSP, and HAR are application modules.
 
 
 ## S
@@ -115,12 +111,12 @@
 
     A virtual device that integrates multiple physical devices and allows one device to control others and sharing data among devices with distributed communication capabilities.
 
-- ### SysCap
+- ### System Capability (SysCap)
 
-    System capability, a relatively independent feature in OpenHarmony, such as Bluetooth, Wi-Fi, and NFC. A system capability corresponds to multiple APIs, and the definition of each API contains the corresponding SysCap tag.
+    A relatively independent feature or capability in OpenHarmony, such as Bluetooth, Wi-Fi, and NFC. A system capability corresponds to multiple APIs, and the definition of each API contains the corresponding SysCap tag.
 
 - ### System type
-    - Mini system, an operating system for devices with Microcontroller Unit (MCU) processors (such as Arm Cortex-M and 32-bit RISC-V) and memory greater than or equal to 128 KiB. This system provides a variety of short-range connection capabilities and peripheral access buses. The mini system applies to smart home products, such as LinkIoT module devices and sensors.
+    - Mini system, an operating system for devices with Microcontroller Unit (MCU) processors (such as Arm Cortex-M and 32-bit RISC-V) and memory greater than or equal to 128 KiB. This system provides a variety of short-range connection capabilities and peripheral access buses. The mini system applies to smart home products such as LinkIoT module devices and sensors.
     - Small system, an operating system for devices with application processors (such as Arm Cortex-A) and memory greater than or equal to 1 MiB. This system provides higher security capabilities, a standard graphics framework, and video encoding and decoding capabilities. The small system applies to smart home products, such as IP cameras, peephole cameras, and routers as well as smart travel products such as event data recorders (EDRs).
     - Standard system, an operating system for devices with application processors (such as Arm Cortex-A) and memory greater than or equal to 128 MiB. This system provides a complete application framework supporting enhanced interaction, 3D GPU, hardware composer, diverse components, and rich animations. The standard system applies to high-end refrigerator displays.
 

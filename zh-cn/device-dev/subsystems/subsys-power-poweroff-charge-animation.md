@@ -9,7 +9,7 @@ OpenHarmony默认提供了关机充电动画的特性，展示关机状态下的
 ### 约束与限制
 
 配置策略：
-产品定制的配置路径，需要根据[配置策略](https://gitee.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以/vendor进行举例，请开发者根据具体的产品配置策略，修改定制路径。
+产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以/vendor进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
 
@@ -25,11 +25,11 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 开发步骤 
 
-本文以[DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍关机充电动画的定制方法。
+本文以[DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍关机充电动画的定制方法。
 
-1. 在产品目录[（/vendor/hihope/rk3568）](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)下创建animation文件夹。
+1. 在产品目录[（/vendor/hihope/rk3568）](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)下创建animation文件夹。
 
-2. 参考[默认关机充电动画配置文件夹](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/charger/sa_profile)创建目标文件夹，并安装到`//vendor/hihope/rk3568/animation`目录下，文件格式如下：
+2. 参考[默认关机充电动画配置文件夹](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/charger/sa_profile)创建目标文件夹，并安装到`//vendor/hihope/rk3568/animation`目录下，文件格式如下：
 
     ```text
     profile
@@ -37,7 +37,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ├── animation.json
     ```
 
-3. 参考[关机充电动画图片资源](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/charger/resources)创建resources文件夹放置构成动画的图片文件，并安装到`//vendor/hihope/rk3568/animation`目录下，文件格式如下：
+3. 参考[关机充电动画图片资源](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/charger/resources)创建resources文件夹放置构成动画的图片文件，并安装到`//vendor/hihope/rk3568/animation`目录下，文件格式如下：
 
     ```text
     animation
@@ -45,7 +45,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ├── profile
     ```
 
-4. 参考[关机充电动画图片资源中的BUILD.gn](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/charger/resources/BUILD.gn)编写BUILD.gn文件，放入`//vendor/hihope/rk3568/animation/resource`目录下，例如：
+4. 参考[关机充电动画图片资源中的BUILD.gn](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/charger/resources/BUILD.gn)编写BUILD.gn文件，放入`//vendor/hihope/rk3568/animation/resource`目录下，例如：
     ```gn
     import("//build/ohos.gni")
 
@@ -57,7 +57,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     }
     ```
 
-5. 参考[默认关机充电动画的配置文件夹中的animation.json](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/animation.json)编写定制的animation.json。包含定制后的关机充电动画配置如下：
+5. 参考[默认关机充电动画的配置文件夹中的animation.json](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/animation.json)编写定制的animation.json。包含定制后的关机充电动画配置如下：
 
     ```json
     {
@@ -151,7 +151,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 
 
-6. 参考[默认关机充电动画的配置文件夹中的BUILD.gn](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/BUILD.gn)编写BUILD.gn文件，将animation.json打包到`/vendor/etc/charger`目录下，配置如下：
+6. 参考[默认关机充电动画的配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/BUILD.gn)编写BUILD.gn文件，将animation.json打包到`/vendor/etc/charger`目录下，配置如下：
 
     ```gn
     import("//build/ohos.gni")
@@ -164,7 +164,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     }
     ```
 
-7. 将编译目标添加到`/vendor/hihope/rk3568`目录下[ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
+7. 将编译目标添加到`/vendor/hihope/rk3568`目录下[ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
 
     ```json
     {
@@ -319,7 +319,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 
 ## 参考 
-开发过程中可参考的配置文件路径：[默认关机充电动画配置源码路径](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/animation.json)
+开发过程中可参考的配置文件路径：[默认关机充电动画配置源码路径](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/animation.json)
 
 默认配置：
 ```json

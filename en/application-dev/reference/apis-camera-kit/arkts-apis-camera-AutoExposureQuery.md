@@ -4,15 +4,15 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+AutoExposureQuery provides APIs to query the automatic exposure feature of a camera device.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 12.
 > - In this version, a compatibility change was made that preserved the initial version information of inner elements. As a result, you might see outer element's @since version number being higher than that of the inner elements. However, this discrepancy does not affect the functionality of the interface.
-
-AutoExposureQuery provides APIs to query the automatic exposure feature of a camera device.
 
 ## Modules to Import
 
@@ -40,7 +40,7 @@ Checks whether an exposure mode is supported.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of the exposure mode. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| boolean    | Check result for the support of the exposure mode. **true** if supported, **false** otherwise. If the operation fails, undefined is returned and an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is thrown.|
 
 **Error codes**
 
@@ -107,5 +107,53 @@ function getExposureBiasRange(photoSession: camera.PhotoSession): Array<number> 
     console.error(`The getExposureBiasRange call failed. error code: ${err.code}`);
   }
   return biasRangeArray;
+}
+```
+
+## isExposureMeteringModeSupported<sup>24+</sup>
+
+isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
+
+Checks whether the specified exposure metering mode is supported.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type                          | Mandatory | Description                          |
+| -------- | -------------------------------| ---- | ----------------------------- |
+| aeMeteringMode   | [ExposureMeteringMode](arkts-apis-camera-e.md#exposuremeteringmode24)  | Yes  | Exposure metering mode.                |
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| boolean    | Whether the exposure metering mode is supported. **true** if supported, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400103                |  Session not config, only throw in session usage.          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isExposureMeteringModeSupported(photoSession: camera.PhotoSession, aeMeteringMode: camera.ExposureMeteringMode): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoSession.isExposureMeteringModeSupported(aeMeteringMode);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The isExposureMeteringModeSupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
 }
 ```

@@ -1,9 +1,15 @@
 # Accessing a DataShareExtensionAbility from the FA Model
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 ## Overview
 
-Regardless of the FA model or stage model, the data read/write function consists of the client and server.
+Regardless of the [FA model](ability-terminology.md#fa-model) or [stage model](ability-terminology.md#stage-model), the data read/write function consists of the client and server.
 
 - In the FA model, the client uses [DataAbilityHelper](../reference/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md) to provide external APIs, and the server uses [DataAbility](dataability-overview.md) to provide database read and write services.
 

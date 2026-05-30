@@ -47,7 +47,7 @@ Defines the predicates for an RDB store.
 
 ### OH_OrderType
 
-```
+```c
 enum OH_OrderType
 ```
 
@@ -67,7 +67,7 @@ Enumerates the sorting types.
 
 ### OH_Predicates_NotLike()
 
-```
+```c
 int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)
 ```
 
@@ -94,7 +94,7 @@ Sets an **OH_Predicates** object to match a string that is not similar to the sp
 
 ### OH_Predicates_Glob()
 
-```
+```c
 int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)
 ```
 
@@ -121,7 +121,7 @@ Sets an **OH_Predicates** object to match a string containing a wildcard.<br>Dif
 
 ### OH_Predicates_NotGlob()
 
-```
+```c
 int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)
 ```
 
@@ -148,7 +148,7 @@ Sets an **OH_Predicates** object to not match a string containing a wildcard.<br
 
 ### OH_Predicates_Having()
 
-```
+```c
 int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, const OH_Data_Values *values)
 ```
 

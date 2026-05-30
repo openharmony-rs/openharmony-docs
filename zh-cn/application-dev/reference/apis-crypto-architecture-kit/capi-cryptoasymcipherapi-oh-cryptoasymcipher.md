@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoAsymCipher OH_CryptoAsymCipher
+```
+
 ## 概述
 
 定义非对称加密结构。

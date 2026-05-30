@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The following universal events are supported: [onAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear), [onDisAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear), [onBlur](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur), [onFocus](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus), [onDragEnd](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10), [onDragEnter](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter), [onDragStart](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart), [onDragMove](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove), [onDragLeave](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave), [onDrop](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop), [onHover](../apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover), [onMouse](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse), [onKeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent), [onTouch](../apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch), [onVisibleAreaChange](../apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)
 
@@ -12,13 +12,13 @@ The following universal events are supported: [onAppear](../apis-arkui/arkui-ts/
 >
 > - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## onAlert
 
 onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
-Triggered when **alert()** is invoked to display an alert dialog box on the web page.
+Triggered when **alert()** is invoked to display an alert dialog box on the web page. Call the [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm) API when this callback is triggered. Otherwise, the render process is blocked.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -177,7 +177,7 @@ Called when the page refresh is about to complete or the current page is closed.
 
 onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
-Triggered when **confirm()** is invoked by the web page.
+Triggered when **confirm()** is invoked by the web page. Call the [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm) API when this callback is triggered. Otherwise, the render process is blocked.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -266,7 +266,7 @@ Triggered when **confirm()** is invoked by the web page.
 
 onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
-Triggered when **prompt()** is invoked by the web page.
+Triggered when **prompt()** is invoked by the web page. Call the [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9) API when this callback is triggered. Otherwise, the render process is blocked.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -419,6 +419,7 @@ Triggered to notify the host application of a JavaScript console message.
               console.info('getSourceId:' + event.message.getSourceId());
               console.info('getLineNumber:' + event.message.getLineNumber());
               console.info('getMessageLevel:' + event.message.getMessageLevel());
+              console.info('getSource:' + event.message.getSource());
             }
             return false;
           })
@@ -671,6 +672,10 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 Triggered to notify the host application that the page loading starts. This method is called once each time the main frame content is loaded. Therefore, for pages that contain iframes or frameset, **onLoadStarted** is called only once for the main frame. This means that when the content of the embedded frame changes, for example, a link or a fragment navigation in the iframe is clicked (navigation to **#fragment_id**), **onLoadStarted** is not invoked.
 
+> **NOTE**
+>
+> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. **onPageBegin** will not be simulated.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Parameters**
@@ -708,6 +713,12 @@ Triggered to notify the host application that the page loading starts. This meth
 onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 Triggered to notify the host application that the page has been loaded. This method is called only when the main frame loading is complete. For fragment navigations (navigations to **#fragment_id**), **onLoadFinished** is also triggered.
+
+> **NOTE**
+>
+> - Fragment navigation also triggers **onLoadFinished**, but **onPageEnd** is not triggered.
+> - If the main frame is automatically redirected before the page is fully loaded, **onLoadFinished** is triggered only once. **onPageEnd** is triggered each time the main frame is navigated.
+> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. <b class="+ topic/ph hi-d/b " id="b145733136532">onPageBegin</b> will not be simulated.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -848,6 +859,7 @@ Triggered for the application to update its access history when the navigation i
           .onRefreshAccessedHistory((event) => {
             if (event) {
               console.info('url:' + event.url + ' isReload:' + event.isRefreshed);
+              console.info('isMainFrame:' + event.isMainFrame);
             }
           })
       }
@@ -1352,12 +1364,15 @@ Triggered when an HTTP authentication request is received.
 onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
 Triggered to notify the host application when an SSL error occurs while loading the main-frame resource.
+
 To support errors for loading subframe resources, use the [OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12) API.
 
 > **NOTE**
 >
 > - Main resource: Entry file for the browser to load web pages, which is usually an HTML document. 
 > - Subresource: Dependency file referenced by the main resource, which is loaded when a specific tag is encountered during main resource parsing.
+> - The application needs to call [handler.handleCancel()](./arkts-basic-components-web-SslErrorHandler.md#handlecancel9) or [handler.handleConfirm()](./arkts-basic-components-web-SslErrorHandler.md#handleconfirm9) to process the callback. Otherwise, resource loading is canceled by default. The behavior of **handleConfirm()** or **handleCancel()** may be recorded to respond to future SSL errors.
+> - The application can display a custom error page or silently record the problem.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1376,7 +1391,7 @@ To support errors for loading subframe resources, use the [OnSslErrorEvent](./ar
   
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
-      console.info('failed, cert chain data type is not array');
+      console.error('failed, cert chain data type is not array');
       return;
     }
 
@@ -1479,7 +1494,7 @@ Triggered to notify users when an SSL error occurs during the loading of main-fr
 
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
-      console.info('failed, cert chain data type is not array');
+      console.error('failed, cert chain data type is not array');
       return;
     }
 
@@ -1566,6 +1581,11 @@ Triggered to notify users when an SSL error occurs during the loading of main-fr
 onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
 
 Triggered when an SSL client certificate request is received.
+
+> **NOTE**
+>
+> - The **Web** component can respond with [ClientAuthenticationHandler.confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10), [ClientAuthenticationHandler.cancel](./arkts-basic-components-web-ClientAuthenticationHandler.md#cancel9), or [ClientAuthenticationHandler.ignore](./arkts-basic-components-web-ClientAuthenticationHandler.md#ignore9).
+> - If **ClientAuthenticationHandler.confirm** or **ClientAuthenticationHandler.cancel** is called, the **Web** component stores the authentication result in the memory (within the application lifecycle) and does not call **onClientAuthenticationRequest()** again for the same host and port. If **onClientAuthenticationRequest.ignore** is called, the **Web** component does not store the authentication result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1684,7 +1704,7 @@ Interconnect with certificate management to implement two-way authentication.
     ```
 
 2. Construct a **CertManagerService** object to interconnect with certificate management.
-<!--code_no_check-->
+    <!--code_no_check-->
     ```ts
     // CertMgrService.ets
     import { bundleManager, common, Want } from "@kit.AbilityKit";
@@ -1742,7 +1762,7 @@ Interconnect with certificate management to implement two-way authentication.
     }
     ```
 3. Implement two-way authentication.
-<!--code_no_check-->
+    <!--code_no_check-->
     ```ts
     import { webview } from '@kit.ArkWeb';
     import CertManagerService from './CertMgrService';
@@ -1803,6 +1823,112 @@ Interconnect with certificate management to implement two-way authentication.
       }
     }
     ```
+
+## onVerifyPin<sup>22+</sup>
+onVerifyPin(callback: OnVerifyPinCallback)
+
+Triggered to notify the user of PIN verification. This API uses an asynchronous callback to return the result.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                 |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22) | Yes| Callback triggered to notify the user of PIN authentication. |
+
+  **Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  controller: WebviewController = new webview.WebviewController();
+  uiContext : UIContext = this.getUIContext();
+  context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+
+  aboutToAppear(): void {
+    webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE)
+  }
+
+  build() {
+    Column() {
+      Button('Load the website that requires the client SSL certificate')
+        .onClick(() => {
+          this.controller.loadUrl("https://client.badssl.com")
+        })
+      Web({
+        src: "https://www.bing.com/",
+        controller: this.controller,
+      }).domStorageAccess(true)
+        .fileAccess(true)
+        .onPageBegin(event => {
+          console.info("extensions onpagebegin url " + event.url);
+        })
+        .onClientAuthenticationRequest((event) => {
+          // Receive the client certificate request event.
+          console.info(`onClientAuthenticationRequest`);
+          try {
+            let certTypes: Array<certificateManagerDialog.CertificateType> = [
+              certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
+            ];
+            // Invoke the certificate management to open the certificate selection dialog box.
+            certificateManagerDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
+              .then((data: certificateManagerDialog.CertReference) => {
+                console.info(`openAuthorizeDialog request cred auth success`)
+                // Notify the web page that the UKey certificate is selected.
+                event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
+              }).catch((err: BusinessError) => {
+              console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(err)}`);
+            })
+          } catch (e) {
+            console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(e)}`);
+          }
+          return true;
+        })
+        .onVerifyPin((event) => {
+          // Receive the PIN verification request event.
+          console.info(`onVerifyPin`);
+          // Invoke the certificate management to open the PIN input box.
+          certificateManagerDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
+            .then(() => {
+              // Notify the web page that the PIN verification is successful.
+              console.info(`onVerifyPin success`);
+              event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
+            }).catch((err: BusinessError) => {
+            // Notify the web page that the PIN verification fails.
+            console.info(`onVerifyPin fail`);
+            event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
+          })
+        })
+        .onSslErrorEventReceive(e => {
+          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+        })
+        .onErrorReceive((event) => {
+          if (event) {
+            this.getUIContext().getPromptAction().showToast({
+              message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
+              alignment: Alignment.Center
+            })
+            console.info('getErrorInfo:' + event.error.getErrorInfo());
+            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.info('url:' + event.request.getRequestUrl());
+          }
+        })
+        .onTitleReceive(event  => {
+          console.info("title received " + event.title);
+        })
+
+    }
+  }
+}
+```
 
 ## onPermissionRequest<sup>9+</sup>
 
@@ -2181,7 +2307,7 @@ Triggered to notify the global scrolling position of the web page.
 
 onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
-Called to notify the user that the geolocation information obtaining request is received. To use this API, the **ohos.permission.LOCATION** and **ohos.permission.APPROXIMATELY_LOCATION** permissions must be configured.
+Called to notify the user that the geolocation information obtaining request is received. To use this API, the **ohos.permission.LOCATION** and **ohos.permission.APPROXIMATELY_LOCATION** permissions must be configured. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2189,7 +2315,7 @@ Called to notify the user that the geolocation information obtaining request is 
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | Yes| Callback invoked when a request to obtain the geolocation information is received.    |
+| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | Yes| Callback triggered when the geolocation permission is requested, returning the geolocation information request object.    |
 
 **Example**
 
@@ -2258,7 +2384,7 @@ Called to notify the user that the geolocation information obtaining request is 
   <html>
   <body>
   <p id="locationInfo">Location information</p>
-  <button onclick="getLocation()">Obtain location</button>
+  <button onclick="getLocation()">Obtain Location</button>
   <script>
   var locationInfo=document.getElementById("locationInfo");
   function getLocation(){
@@ -2400,10 +2526,13 @@ Triggered when the **Web** component exits full screen mode.
 onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 Triggered to notify the user of a new window creation request, when **multiWindowAccess** is enabled.
+
 If the [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) API is not called, the render process will be blocked.
+
 If no new window is created, set this parameter to **null** when invoking the [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) API to notify the **Web** component that no new window is created.
 
 The new window cannot be directly overlaid on the original **Web** component, and its URL (for example, address bar) must be clearly displayed in the same way as the main page to prevent confusion. If visible management of trusted URLs cannot be implemented, consider prohibiting the creation of new windows.
+
 Note that the source of a new window request cannot be reliably traced. The request may be initiated by a third-party iframe. By default, the application needs to take defense measures such as sandbox isolation and permission restriction to ensure security.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -2491,6 +2620,113 @@ Note that the source of a new window request cannot be reliably traced. The requ
   </script>
   </body>
   </html>
+  ```
+
+## onWindowNewExt<sup>23+</sup>
+
+onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
+
+Triggered to notify the user of a new window creation request when [multiWindowAccess](./arkts-basic-components-web-attributes.md#multiwindowaccess9) is enabled.
+
+> **NOTE**
+>
+> - If the [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) API is not called, the render process will be blocked.
+>
+> - If no new window is created, the [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) API is called and set to **null**, notifying the web page that no new window is created.
+>
+> - The new window cannot be directly overlaid on the original **Web** component, and its URL (for example, address bar) must be clearly displayed in the same way as the main page to prevent confusion. If the URL display and verification mechanism cannot be ensured to be reliable, you need to disable the creation of new windows.
+>
+> - The source of a new window request cannot be reliably traced. The request may be initiated by a third-party iframe. By default, the application needs to take defense measures such as sandbox isolation and permission restriction to ensure security.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                 |
+| ------ | ------ | ---- | --------------------- |
+| callback       | Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23)\>           | Yes| Callback invoked when the web page requests the user to create a window.   |
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  // There are two Web components on the same page. When the WebComponent object opens a new window, the NewWebViewComp object is displayed.
+  @CustomDialog
+  struct NewWebViewComp {
+  controller?: CustomDialogController;
+  webviewController1: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: "www.example.com", controller: this.webviewController1 })
+        .javaScriptAccess(true)
+        .multiWindowAccess(false)
+        .onWindowExit(() => {
+          console.info("NewWebViewComp onWindowExit");
+          if (this.controller) {
+            this.controller.close();
+          }
+        })
+      }
+    }
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  dialogController: CustomDialogController | null = null;
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("window.html"), controller: this.controller })
+        .javaScriptAccess(true)
+        // Enable multiWindowAccess.
+        .multiWindowAccess(true)
+        .allowWindowOpenMethod(true)
+        .onWindowNewExt((event) => {
+          // Open a new window using the event.navigationPolicy request.
+          console.info("navigationAction: ", event.navigationPolicy)
+          // Create a new window based on the size and position information in event.windowFeatures.
+          console.info("windowFeatures: ", JSON.stringify(event.windowFeatures))
+          if (this.dialogController) {
+            this.dialogController.close();
+          }
+          let popController: webview.WebviewController = new webview.WebviewController();
+          this.dialogController = new CustomDialogController({
+            builder: NewWebViewComp({ webviewController1: popController })
+          })
+          this.dialogController.open();
+          // Return the WebviewController object corresponding to the new window to the web kernel.
+          // If the event.handler.setWebController API is not called, the render process will be blocked.
+          // If no new window is created, set the value of event.handler.setWebController to null to notify the Web component that no new window is created.
+          event.handler.setWebController(popController);
+        })
+      }
+    }
+  }
+  ```
+
+  ```html
+  <!-- Code of the window.html page -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <a href="#" onclick="openNewWindow('https://www.example.com')">Open a new page</a>
+    <script type="text/javascript">
+        function openNewWindow(url) {
+          window.open(url, 'example', 'left=60,top=80,width=800,height=600');
+          return false;
+        }
+    </script>
+    </body>
+    </html>
   ```
 
 ## onActivateContent<sup>20+</sup>
@@ -2935,7 +3171,7 @@ Triggered when the first content paint occurs on the web page.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | Yes| Callback invoked when the first content paint occurs on the web page.         |
+| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | Yes| Callback invoked when the first content paint occurs on the web page.      |
 
 **Example**
 
@@ -2992,7 +3228,7 @@ Triggered when the first meaningful paint occurs on the web page.
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onFirstMeaningfulPaint((details) => {
-            console.log("onFirstMeaningfulPaint: [navigationStartTime]= " + details.navigationStartTime +
+            console.info("onFirstMeaningfulPaint: [navigationStartTime]= " + details.navigationStartTime +
               ", [firstMeaningfulPaintTime]=" + details.firstMeaningfulPaintTime);
           })
       }
@@ -3053,7 +3289,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | Yes| Callback triggered when a navigation (including iframe navigation) occurs, allowing the application to approve or cancel it.<br>The return value is of the Boolean type. The value **true** means to cancel the navigation, and **false** means the opposite.<br>If **undefined** or **null** is returned, the navigation is allowed.|
+| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | Yes| Callback triggered when a navigation (including iframe navigation) occurs, allowing the application to approve or cancel it.<br>The return value is of the Boolean type. The value **true** means to cancel the navigation, and **false** means the opposite.<br>If **undefined** or **null** is returned, the value is **false**.|
 
 **Example**
 
@@ -3215,6 +3451,7 @@ Triggered when the web page is overscrolled. It is used to notify the applicatio
 onControllerAttached(callback: () => void)
 
 Triggered when the controller is successfully bound to the **Web** component. The controller must be **WebviewController**. Do not call APIs related to the **Web** component before this callback event. Otherwise, a js-error exception will be thrown.
+
 The web page has not been loaded when the callback is called. Therefore, APIs related to web page operations, such as [zoomIn](./arkts-apis-webview-WebviewController.md#zoomin), [zoomOut](./arkts-apis-webview-WebviewController.md#zoomout), cannot be used in the callback. You can use APIs irrelevant to web page operations, such as [loadUrl](./arkts-apis-webview-WebviewController.md#loadurl), [getWebId](./arkts-apis-webview-WebviewController.md#getwebid).
 
 For details about the component lifecycle, see [Lifecycle of the Web Component](../../web/web-event-sequence.md).
@@ -3349,18 +3586,6 @@ Called when the safe browsing check result is received.
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
-  export enum ThreatType {
-    UNKNOWN = -1,
-    THREAT_ILLEGAL = 0,
-    THREAT_FRAUD = 1,
-    THREAT_RISK = 2,
-    THREAT_WARNING = 3,
-  }
-
-  export class OnSafeBrowsingCheckResultCallback {
-    threatType: ThreatType = ThreatType.UNKNOWN;
-  }
-
   @Entry
   @Component
   struct WebComponent {
@@ -3370,9 +3595,45 @@ Called when the safe browsing check result is received.
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckResult((callback) => {
-            let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
-            console.info("onSafeBrowsingCheckResult: [threatType]= " + json.threatType);
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
+            console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
+          })
+      }
+    }
+  }
+  ```
+
+## onSafeBrowsingCheckFinish<sup>21+</sup>
+
+onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
+
+Called when the safe browsing check is complete.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                 |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | Yes| Callback invoked when the safe browsing check result is received.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onSafeBrowsingCheckFinish((callback) => {
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
+            console.info("onSafeBrowsingCheckFinish: [threatType]= " + json);
           })
       }
     }
@@ -3780,7 +4041,7 @@ Triggered when the URL is about to be loaded in the current web page, allowing t
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | Yes| Callback for **onOverrideUrlLoading**.<br>Return value: boolean<br> The value **true** means to stop loading the URL, and the value **false** means the opposite.|
+| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | Yes| Callback for **onOverrideUrlLoading**.<br>Return value: boolean<br> The value **true** means to stop loading the URL, and the value **false** means the opposite. |
 
 **Example**
 
@@ -3972,7 +4233,7 @@ Triggered before any editable element (such as the **input** tag) on the web pag
           // Traverse attributes.
           let attributeKeys = Object.keys(attributes)
           for (let i = 0; i < attributeKeys.length; i++) {
-            console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
+            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
           }
 
           if (attributes) {
@@ -4347,13 +4608,162 @@ HTML file to be loaded:
   </html>
   ```
 
+## onNativeEmbedObjectParamChange<sup>21+</sup>
+
+onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
+
+Called when the **param** element embedded in the same-layer rendering tag **object** changes.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                 |
+| ------ | ------ | ---- | --------------------- |
+| callback       | [OnNativeEmbedObjectParamChangeCallback](./arkts-basic-components-web-t.md#onnativeembedobjectparamchangecallback21) | Yes| Callback triggered when the **param** element embedded in the same-layer rendering tag **object** is added, modified, or deleted.|
+
+**Example**
+
+```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { NodeController, BuilderNode, NodeRenderType, FrameNode, UIContext } from '@kit.ArkUI';
+
+  declare class Params {
+    text: string;
+    width: number;
+    height: number;
+  }
+
+  declare class NodeControllerParams {
+    surfaceId: string;
+    renderType: NodeRenderType;
+    width: number;
+    height: number;
+  }
+
+  class MyNodeController extends NodeController {
+    private rootNode: BuilderNode<[Params]> | undefined | null;
+    private surfaceId_: string = "";
+    private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    private width_: number = 0;
+    private height_: number = 0;
+
+    setRenderOption(params: NodeControllerParams) {
+      this.surfaceId_ = params.surfaceId;
+      this.renderType_ = params.renderType;
+      this.width_ = params.width;
+      this.height_ = params.height;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
+      this.rootNode.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ });
+      return this.rootNode.getFrameNode();
+    }
+
+    postInputEvent(event: TouchEvent | MouseEvent | undefined): boolean {
+      return this.rootNode?.postInputEvent(event) as boolean;
+    }
+  }
+
+  @Component
+  struct ButtonComponent {
+    @Prop params: Params;
+    @State bkColor: Color = Color.Red;
+
+    build() {
+      Column() {
+        Button(this.params.text)
+          .height(50)
+          .width(200)
+          .border({ width: 2, color: Color.Red })
+          .backgroundColor(this.bkColor)
+
+      }
+      .width(this.params.width)
+      .height(this.params.height)
+    }
+  }
+
+  @Builder
+  function ButtonBuilder(params: Params) {
+    ButtonComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private nodeController: MyNodeController = new MyNodeController();
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Stack() {
+          NodeContainer(this.nodeController)
+          Web({ src: $rawfile('index.html'), controller: this.controller })
+            .enableNativeEmbedMode(true)
+            .registerNativeEmbedRule("object", "native")
+            .onNativeEmbedLifecycleChange((embed) => {
+              if (embed.status == NativeEmbedStatus.CREATE) {
+                this.nodeController.setRenderOption({
+                  surfaceId: embed.surfaceId as string,
+                  renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                  width: this.uiContext!.px2vp(embed.info?.width),
+                  height: this.uiContext!.px2vp(embed.info?.height)
+                });
+                this.nodeController.rebuild();
+              }
+            })
+            .onNativeEmbedObjectParamChange((event) => {
+              console.info("embed id: " + event.embedId);
+              let paramItems = event.paramItems;
+              if (paramItems) {
+                for (let i = 0; i < paramItems.length; ++i) {
+                  console.info("param info: " + JSON.stringify(paramItems[i]));
+                }
+              }
+            })
+        }
+      }
+    }
+  }
+  ```
+
+HTML file to be loaded:
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Same-Layer Rendering Test</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+  <div>
+      <div id="bodyId">
+          <object id="nativeButton" type ="native/button" width="300" height="300" style="background-color:red">
+            <param id="param-1" name="name-1" value="value1"/>
+          </object>
+      </div>
+  </div>
+  </body>
+  </html>
+  ```
+
 ## onOverrideErrorPage<sup>20+</sup>
 
 onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 Triggered when an error occurs during web page loading of main resources. You can use this API to customize the error display page.
 
-In addition, this feature takes effect only after the default error page is enabled by calling the [setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20) API.
+> **NOTE**
+>
+> This feature takes effect only after the default error page is enabled by calling the [setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20) API.
+>
+> If the error code obtained through [errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode) is greater than 0, it indicates an HTTP error. If the error code is less than 0, it indicates a network error.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4366,30 +4776,30 @@ In addition, this feature takes effect only after the default error page is enab
 **Example**
 
   ```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-  build() {
-    Column() {
-      Web({ src: "www.error-test.com", controller: this.controller })
-       .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true);
-            if (!this.controller.getErrorPageEnabled()) {
-                this.controller.setErrorPageEnabled(true);
-            }
-        })
-        .onOverrideErrorPage(event => {
-              let htmlStr = "<html><h1>error occur : ";
-              htmlStr += event.error.getErrorCode();
-              htmlStr += "</h1></html>";
-              return htmlStr;
-        })
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    build() {
+      Column() {
+        Web({ src: "www.error-test.com", controller: this.controller })
+         .onControllerAttached(() => {
+              this.controller.setErrorPageEnabled(true);
+              if (!this.controller.getErrorPageEnabled()) {
+                  this.controller.setErrorPageEnabled(true);
+              }
+          })
+          .onOverrideErrorPage(event => {
+                let htmlStr = "<html><h1>error occur : ";
+                htmlStr += event.error.getErrorCode();
+                htmlStr += "</h1></html>";
+                return htmlStr;
+          })
+      }
     }
   }
-}
   ```
 
 ## onSslErrorReceive<sup>(deprecated)</sup>
@@ -4434,7 +4844,10 @@ Triggered to process an HTML form whose input type is **file**, in response to t
 onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => boolean)
 
 Triggered when the **Web** component is about to access a URL. This API is used to determine whether to block the access.
-This API is deprecated since API version 10. You are advised to use [onLoadIntercept<sup>10+</sup>](#onloadintercept10) instead.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 10. You are advised to use [onLoadIntercept<sup>10+</sup>](#onloadintercept10) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4537,6 +4950,462 @@ Called to notify the user that the PDF page has been scrolled to the bottom.
         Web({ src: 'https://www.example.com/xxx.pdf', controller: this.controller })
           .onPdfScrollAtBottom((eventInfo: OnPdfScrollEvent) => {
             console.info(`Scroll at bottom callback called. url: ${eventInfo.url}.`)
+          })
+      }
+    }
+  }
+  ```
+
+## onDetectedBlankScreen<sup>22+</sup>
+
+onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
+
+Called when the **Web** component detects a blank screen.
+
+> **NOTE**
+>
+> - This method must be used with [blankScreenDetectionConfig](./arkts-basic-components-web-attributes.md#blankscreendetectionconfig22). Otherwise, the blank screen detection is disabled by default, and the callback is not returned when a blank screen is detected.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name       | Type   | Mandatory  | Description         |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | Yes   | Callback triggered when the **Web** component detects a blank screen.|
+
+**Example**
+
+  ```ts
+  // onDetectedBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .blankScreenDetectionConfig({
+            enable: true,
+            detectionTiming: [2, 4, 6, 8],
+            contentfulNodesCountThreshold: 4,
+            detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]
+          })
+          .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo)=>{
+            console.info(`Found blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.blankScreenReason}.`);
+            console.info(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+          })
+      }
+    }
+  }
+  ```
+## onRenderExited<sup>(deprecated)</sup>
+
+onRenderExited(callback: (event?: { detail: object }) => boolean)
+
+Triggered when the rendering process exits due to an error or crash.
+
+A rendering process may be shared by multiple **Web** components. Each affected **Web** component triggers this callback.
+
+You can call the bound **WebViewController** APIs to restore the web page when this callback is triggered. For example, [refresh](./arkts-apis-webview-WebviewController.md#refresh) and [loadUrl](./arkts-apis-webview-WebviewController.md#loadurl).
+
+For details, see [Lifecycle of the Web Component](../../web/web-event-sequence.md).
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [onRenderExited<sup>9+</sup>](#onrenderexited9) instead.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description|
+| ---------------- | ---------------------------------------- | ---- | ---------------- |
+| callback |(event?: { detail: object }) => boolean | Yes   | Callback triggered when the rendering process exits abnormally.|
+
+## onCameraCaptureStateChange<sup>23+</sup>
+
+onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
+
+Triggered to notify the user of the camera state on the current web page, which can be **None**, **Active**, or **Paused**. This API uses an asynchronous callback to return the result.
+
+You can use the **startCamera**, **stopCamera**, and **closeCamera** APIs to enable, pause, and stop the camera respectively. For details about how to use them, see [startCamera](arkts-apis-webview-WebviewController.md#startcamera12).
+
+> **NOTE**
+>
+> **Active** is returned when the camera is being used on the current web page.
+>
+> **Paused** is returned when the camera is paused on the current web page.
+>
+> **None** is returned when the camera is not being used on the current web page.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| Callback  | [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | Yes  | Callback triggered when the camera capture state changes. It returns the original and new states.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityAccessCtrl, PermissionRequestResult, common } from '@kit.AbilityKit';
+
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    uiContext: UIContext = this.getUIContext();
+
+    aboutToAppear(): void {
+      let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+      atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
+        console.info('data:' + JSON.stringify(data));
+        console.info('data permissions:' + data.permissions);
+        console.info('data authResults:' + data.authResults);
+      })
+    }
+
+    build() {
+      Column() {
+        Button("startCamera").onClick(() => {
+          try {
+            this.controller.startCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("stopCamera").onClick(() => {
+          try {
+            this.controller.stopCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("closeCamera").onClick(() => {
+          try {
+            this.controller.closeCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPermissionRequest((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  }
+                },
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  }
+                },
+                cancel: () => {
+                  event.request.deny();
+                }
+              })
+            }
+          })
+         .onCameraCaptureStateChange((event: CameraCaptureStateChangeInfo) => {
+            console.info("CameraCapture from ", event.originalState, " to ", event.newState);
+         })
+      }
+    }
+  }
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+   <head>
+     <meta charset="UTF-8">
+   </head>
+   <body>
+     <video id="video" width="400px" height="400px" autoplay="autoplay">
+     </video>
+     <input type="button" title="HTML5 Camera" value="Enable Camera" onclick="getMedia()" />
+     <script>
+       function getMedia() {
+         let constraints = {
+           video: {
+             width: 500,
+             height: 500
+           },
+           audio: true
+         }
+         let video = document.getElementById("video");
+         let promise = navigator.mediaDevices.getUserMedia(constraints);
+         promise.then(function(MediaStream) {
+           video.srcObject = MediaStream;
+           video.play();
+         })
+       }
+     </script>
+   </body>
+  </html>
+  ```
+
+## onMicrophoneCaptureStateChange<sup>23+</sup>
+
+onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
+
+Triggered to notify the user of the microphone state on the current web page, which can be **None**, **Active**, or **Paused**. This API uses an asynchronous callback to return the result.
+
+You can use the **resumeMicrophone**, **pauseMicrophone**, and **stopMicrophone** APIs to resume, pause, and stop the microphone. For details about how to use them, see [resumeMicrophone](./arkts-apis-webview-WebviewController.md#resumemicrophone23).
+
+> **NOTE**
+>
+> **Active** is returned when the current web page is using the microphone; **Paused** is returned when the current web page pauses using the microphone; **None** is returned when the current web page does not use the microphone.
+>
+> When the microphone is being used and the **pauseMicrophone** API is called, the microphone pauses capturing audio and **Paused** is returned. You can call the **resumeMicrophone** API using ArkWeb to resume the capture.
+>
+> When the microphone is being used and the **stopMicrophone** API is called, the microphone stops capturing audio and **None** is returned. Capture cannot be resumed unless the frontend capture is restarted.
+>
+> When the microphone is paused and the **resumeMicrophone** API is called, the microphone continues capturing audio and **Active** is returned.
+>
+> When the microphone is paused and the **stopMicrophone** API is called, the microphone stops capturing audio and **None** is returned. Capture cannot be resumed unless the frontend capture is restarted.
+>
+> When the microphone is in the **None** state and the **resumeMicrophone** or **pauseMicrophone** API is called, the microphone state remains unchanged.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| Callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | Yes  | Callback triggered when the microphone capture state changes. It returns the original and new states.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityAccessCtrl, PermissionRequestResult, common } from '@kit.AbilityKit';
+
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    uiContext: UIContext = this.getUIContext();
+
+    aboutToAppear(): void {
+      let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+      atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'], (err: BusinessError, data: PermissionRequestResult) => {
+        console.info('data:' + JSON.stringify(data));
+        console.info('data permissions:' + data.permissions);
+        console.info('data authResults:' + data.authResults);
+      })
+    }
+
+    build() {
+      Column() {
+        Button("resumeMicrophone").onClick(() => {
+          try {
+            this.controller.resumeMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("pauseMicrophone").onClick(() => {
+          try {
+            this.controller.pauseMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("stopMicrophone").onClick(() => {
+          try {
+            this.controller.stopMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPermissionRequest((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  }
+                },
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  }
+                },
+                cancel: () => {
+                  event.request.deny();
+                }
+              })
+            }
+          })
+          .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateChangeInfo) => {
+            console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
+        })
+      }
+    }
+  }    
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+   <head>
+     <meta charset="UTF-8">
+   </head>
+   <body>
+     <video id="video" width="400px" height="400px" autoplay="autoplay">
+     </video>
+     <input type="button" title="HTML5 Microphone" value="Enable Microphone" onclick="getMedia()" />
+     <script>
+       function getMedia() {
+         let constraints = {
+           video: {
+             width: 500,
+             height: 500
+           },
+           audio: true
+         }
+         let video = document.getElementById("video");
+         let promise = navigator.mediaDevices.getUserMedia(constraints);
+         promise.then(function(MediaStream) {
+           video.srcObject = MediaStream;
+           video.play();
+         })
+       }
+     </script>
+   </body>
+  </html>
+  ```
+
+## onTextSelectionChange<sup>23+</sup>
+
+onTextSelectionChange(callback: TextSelectionChangeCallback)
+
+Triggered when the text selection of the **Web** component changes. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - The gesture selection, mouse selection, and JS selection are supported.
+>
+> - This callback is triggered when the selection ends.
+>
+> - If the same selection is made using the same method as the previous one, this callback is not triggered. If the same selection is made using a different method from the previous one, this callback is triggered.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory  | Description                                  |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | [TextSelectionChangeCallback](./arkts-basic-components-web-t.md#textselectionchangecallback23) | Yes   | Callback triggered when the text selection changes.|
+
+**Example**
+
+  ```ts
+  // onTextSelectionChange.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onTextSelectionChange((selectionText: string) => {
+            console.info(`Selected text is ${selectionText}.`);
+          })
+      }
+    }
+  }
+  ```
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Example page</title>
+  </head>
+  <body>
+      Sample text
+  </body>
+  </html>
+  ```
+
+## onFirstScreenPaint<sup>23+</sup>
+
+onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
+
+Triggered when the first screen paint of a web page is complete.<br>
+
+> **NOTE**
+>
+> - First Screen Paint (FSP) records the time taken to render images, texts, and videos in the viewport. It is a core performance metric for measuring the duration from a page's initial load to the completion of rendering. When no visible elements within the viewport extend beyond the historical rendering area for a certain period of time, the moment when the maximum historical rendering of elements in the viewport is achieved is regarded as the completion time of first screen paint.
+>
+> - After the first screen is drawn, the API waits for a period of time and reports the callback when no new rendering information needs to be processed. The callback time is different from the first screen paint completion time.
+>
+> - If the user performs input operations or scrolls the page while rendering is still in progress, the callback function will be reported immediately.
+>
+> - This API is used to obtain the first screen rendering time in instant loading scenarios, but it will not deliver the expected results if used in preloading or prerendering scenarios.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name       | Type   | Mandatory  | Description         |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) | Yes   | Callback triggered when the first screen paint of the **Web** component is detected.|
+
+**Example**
+
+  ```ts
+  // onFirstScreenPaint.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onFirstScreenPaint((event: FirstScreenPaint)=>{
+            console.info(`Found first screen paint on ${event.url}.`);
+            console.info(`The navigation start time is ${event.navigationStartTime}.`);
+            console.info(`The first screen paint time is ${event.firstScreenPaintTime}.`);
           })
       }
     }

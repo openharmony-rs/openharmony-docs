@@ -1,5 +1,12 @@
 # ability_base_common.h
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
 ## 概述
 
 声明AbilityBase定义的相关错误码。
@@ -26,7 +33,7 @@
 
 ### AbilityBase_ErrorCode
 
-```
+```c
 enum AbilityBase_ErrorCode
 ```
 

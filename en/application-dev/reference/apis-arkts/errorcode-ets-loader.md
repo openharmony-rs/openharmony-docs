@@ -4,7 +4,7 @@
 <!--Owner: @aftott-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 > **NOTE**
 >
@@ -121,7 +121,7 @@ The file uses the namespace of the kit for import or export.
 
 **Solution**
 
-Replace the namespace import or export of the kit with a named import or export. Example: `import * as ArkTS from "@kit.ArkUI";` -> `import { AlertDialog } from "@kit.ArkUI";`;
+Replace the namespace import or export of the kit with a named import or export. Example: import * as ArkTS from "@kit.ArkUI"; -> import { AlertDialog } from "@kit.ArkUI";
 
 ## 10311008 Kit Empty Import Error
 
@@ -131,7 +131,7 @@ Can not use empty import(side-effect import) statement with Kit `${(kitNode.modu
 
 **Description**
 
-Empty import (side-effect import) statements cannot be used in Kit `${(kitNode.moduleSpecifier as ts.StringLiteral).text.replace(/'|"/g, '')}`.
+Empty import (side-effect import) statements cannot be used in Kit ${(kitNode.moduleSpecifier as ts.StringLiteral).text.replace(/'|"/g, '')}.
 
 **Possible Causes**
 
@@ -139,7 +139,7 @@ The empty import (side-effect import) statement of the kit is used in the file.
 
 **Solution**
 
-Specify the symbol to be imported. Example: `import "@kit.ArkUI";` -> `import { lang } from "@kit.ArkUI";`
+Specify the symbol to be imported. Example: import "@kit.ArkUI"; -> import { lang } from "@kit.ArkUI";
 
 ## 10311009 es2abc Execution Error
 
@@ -157,7 +157,7 @@ An error occurred during the execution of es2abc.
 
 **Solution**
 
-Rectify the fault by referring to [es2abc Compiler Error Codes](./errorcode-es2abc.md).
+For details, see [es2abc Compiler Error Codes](errorcode-es2abc.md).
 
 ## 10311010 Lazy Import Re-export Error
 

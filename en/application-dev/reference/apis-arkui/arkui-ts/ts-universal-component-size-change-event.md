@@ -1,16 +1,30 @@
 # Component Size Change Event
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The size change event is triggered whenever the component's size changes.
 
 >  **NOTE**
 >
->  This feature is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+>  
+>  The width and height returned by this event represent the component's post-rendering size, which may differ from the preset width and height values of the component.
 
 ## onSizeChange
 
 onSizeChange(event: SizeChangeCallback): T
 
-Triggered when the component size changes due to layout updates. This event is not triggered for render attribute changes caused by re-rendering, such as changes of **translate** and **offset**.
+Triggered when the component size changes due to layout updates.
+
+>**NOTE**
+>
+> 1. This API is triggered upon layout changes. Due to calculation precision limitations, the return value may deviate slightly from the actual physical size.
+>
+> 2. **onSizeChange** is a synchronous callback triggered during the layout process. Directly modifying state variables within **onSizeChange** may cause the changes to be included in the animation closure. Specifically, animations compare the layout state before the animation starts with the state after the animation closure is executed. If the **onSizeChange** callback is triggered synchronously during the pre-animation layout phase, the changes made in this callback will be processed as part of the animation, along with the changes in the animation closure. To avoid this issue, you can use [setTimeout](../../../reference/common/js-apis-timer.md#settimeout) or [postFrameCallback](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#postframecallback12) (with a 0 ms delay) inside **onSizeChange** to defer the UI processing logic to asynchronous execution.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -32,7 +46,7 @@ Triggered when the component size changes due to layout updates. This event is n
 
 ## SizeChangeCallback
 
-SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void
+type SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void
 
 Invoked when the component size changes.
 

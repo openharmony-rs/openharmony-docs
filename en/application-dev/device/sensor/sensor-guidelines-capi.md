@@ -1,21 +1,26 @@
 # Sensor Development (C/C++)
-
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## When to Use
 
 With the sensor module, a device can obtain sensor data. For example, the device can subscribe to data of the orientation sensor to detect its own orientation, and data of the pedometer sensor to learn the number of steps the user walks every day.
 
-For details about the APIs, see [Sensor API Reference](../../reference/apis-sensor-service-kit/_sensor.md).
+For details about the APIs, see [Sensor](../../reference/apis-sensor-service-kit/capi-sensor.md).
 
 ## Function Description
 
 | Name                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)     | Obtains the list of all sensors on the device.                                |
+| OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)     | Obtains information about all sensors on the device.                                |
 | OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_SubscriptionAttribute *attribute, const Sensor_Subscriber *subscriber) | Subscribe to sensor data. The system will report sensor data to the subscriber at the specified frequency.<br>To subscribe to data of acceleration sensors, request the **ohos.permission.ACCELEROMETER** permission.<br>To subscribe to data of gyroscope sensors, request the **ohos.permission.GYROSCOPE** permission.<br>To subscribe to data of pedometer-related sensors, request the **ohos.permission.ACTIVITY_MOTION** permission.<br>To subscribe to data of health-related sensors, such as heart rate sensors, request the **ohos.permission.READ_HEALTH_DATA** permission. Otherwise, the subscription fails.<br>You do not need to request any permission to subscribe to data of other types of sensors.|
 | OH_Sensor_Unsubscribe(const Sensor_SubscriptionId *id, const Sensor_Subscriber *subscriber) | Unsubscribes from sensor data.<br>To unsubscribe from data of acceleration sensors, request the **ohos.permission.ACCELEROMETER** permission.<br>To unsubscribe from data of gyroscope sensors, request the **ohos.permission.GYROSCOPE** permission.<br>To unsubscribe from data of pedometer-related sensors, request the **ohos.permission.ACTIVITY_MOTION** permission.<br>To unsubscribe from data of health-related sensors, request the **ohos.permission.READ_HEALTH_DATA** permission. Otherwise, the unsubscription fails.<br>You do not need to request any permission to unsubscribe from data of other types of sensors.|
-| OH_Sensor_CreateInfos(uint32_t count)                        | Creates an array of instances with the given number. For details, see [Sensor_Info](../../reference/apis-sensor-service-kit/_sensor.md#sensor_info).|
-| OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count) | Destroys the array of instances and reclaims the memory. For details, see [Sensor_Info](../../reference/apis-sensor-service-kit/_sensor.md#sensor_info).|
+| OH_Sensor_CreateInfos(uint32_t count)                        | Creates an array of instances with the given number. For details, see [Sensor_Info](../../reference/apis-sensor-service-kit/capi-sensor-sensor-info.md).|
+| OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count) | Destroys the array of instances and reclaims the memory. For details, see [Sensor_Info](../../reference/apis-sensor-service-kit/capi-sensor-sensor-info.md).|
 | OH_SensorInfo_GetName(Sensor_Info *sensor, char *sensorName, uint32_t *length) | Obtains the sensor name.                                            |
 | OH_SensorInfo_GetVendorName(Sensor_Info* sensor, char *vendorName, uint32_t *length) | Obtains the sensor's vendor name.                                      |
 | OH_SensorInfo_GetType(Sensor_Info* sensor, Sensor_Type *sensorType) | Obtains the sensor type.                                            |
@@ -43,29 +48,33 @@ The following uses the acceleration sensor as an example to describe the develop
 
 1. Create a native C++ project.
 
-   ![Create a project](figures/004.png)
+   ![](figures/005.png)
 
 2. Configure the acceleration sensor permission. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
-   ```json
+   <!-- @[sensor_capi_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/module.json5) --> 
+   
+   ``` JSON5
    "requestPermissions": [
-         {
-           "name": "ohos.permission.ACCELEROMETER"
-         },
-       ]
+     {
+       "name": "ohos.permission.ACCELEROMETER"
+     }
+   ]
    ```
 
 3. Add the dynamic dependency libraries into the **CMakeLists.txt** file.
 
-   ```c
+   ```C
    target_link_libraries(entry PUBLIC libace_napi.z.so)
    target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    target_link_libraries(entry PUBLIC libohsensor.so)
    ```
 
-4. Write the **napi_init.cpp** file to import related modules.
+4. Write the **oh_sensor_capi.cpp** file to import related modules.
 
-   ```c
+   <!-- @[sensor_capi_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   
+   ``` C++
    #include "sensors/oh_sensor.h"
    #include "napi/native_api.h"
    #include "hilog/log.h"
@@ -74,8 +83,10 @@ The following uses the acceleration sensor as an example to describe the develop
 
 5. Define constants.
 
-   ```c
-   const int GLOBAL_RESMGR = 0xFF00;
+   <!-- @[sensor_capi_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   
+   ``` C++
+   const int SENSOR_LOG_DOMAIN = 0xD002700;
    const char *TAG = "[Sensor]";
    constexpr Sensor_Type SENSOR_ID { SENSOR_TYPE_ACCELEROMETER };
    constexpr uint32_t SENSOR_NAME_LENGTH_MAX = 64;
@@ -88,161 +99,226 @@ The following uses the acceleration sensor as an example to describe the develop
 
 6. Define a callback function to receive sensor data.
 
-   ```c
-   void SensorDataCallbackImpl(Sensor_Event *event) {
+   <!-- @[sensor_capi_define_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   
+   ``` C++
+   // Define the callback.
+   void SensorDataCallbackImpl(Sensor_Event *event)
+   {
        if (event == nullptr) {
-           OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "event is null");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "event is null");
            return;
        }
        int64_t timestamp = INVALID_VALUE;
-       int32_t ret = OH_SensorEvent_GetTimestamp(event, &timestamp); // Obtain the timestamp of sensor data.
+       // Obtain the timestamp of sensor data.
+       int32_t ret = OH_SensorEvent_GetTimestamp(event, &timestamp);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get timestamp is failed");
            return;
        }
        Sensor_Type sensorType;
-       ret = OH_SensorEvent_GetType(event, &sensorType); // Obtain the sensor type.
+       // Obtain the sensor type.
+       ret = OH_SensorEvent_GetType(event, &sensorType);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type is failed");
            return;
        }
        Sensor_Accuracy accuracy = SENSOR_ACCURACY_UNRELIABLE;
-       ret = OH_SensorEvent_GetAccuracy(event, &accuracy); // Obtain the accuracy of sensor data.
+       // Obtain the accuracy of sensor data.
+       ret = OH_SensorEvent_GetAccuracy(event, &accuracy);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor accuracy is failed");
            return;
        }
        float *data = nullptr;
        uint32_t length = 0;
-       ret = OH_SensorEvent_GetData(event, &data, &length); // Obtain sensor data.
+       // Obtain sensor data.
+       ret = OH_SensorEvent_GetData(event, &data, &length);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor data is failed");
            return;
        }
-       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "sensorType:%{public}d, dataLen:%{public}d, accuracy:%{public}d", sensorType, length, accuracy);
+       if (data == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "sensor data is null");
+           return;
+       }
+       OH_LOG_Print(LOG_APP, LOG_INFO, SENSOR_LOG_DOMAIN, TAG,
+           "sensorType:%{public}d, dataLen:%{public}d, accuracy:%{public}d", sensorType, length, accuracy);
        for (uint32_t i = 0; i < length; ++i) {
-           OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "data[%{public}d]:%{public}f", i, data[i]);
+           OH_LOG_Print(LOG_APP, LOG_INFO, SENSOR_LOG_DOMAIN, TAG, "data[%{public}d]:%{public}f", i, data[i]);
        }
    }
    ```
 
-7. Obtain the list of all sensors on the device. 
+7. Obtain information about all sensors on the device. 
 
-   ```c
+   <!-- @[sensor_capi_get_sensors_info_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   
+   ``` C++
+   static int32_t GetSensorInfo(Sensor_Info *sensorInfoTemp)
+   {
+       char sensorName[SENSOR_NAME_LENGTH_MAX] = {};
+       uint32_t length = SENSOR_NAME_LENGTH_MAX;
+       // Obtain the sensor name.
+       int32_t ret = OH_SensorInfo_GetName(sensorInfoTemp, sensorName, &length);
+       if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor name is failed");
+           return ret;
+       }
+       char vendorName[SENSOR_NAME_LENGTH_MAX] = {};
+       length = SENSOR_NAME_LENGTH_MAX;
+       // Obtain the sensor's vendor name.
+       ret = OH_SensorInfo_GetVendorName(sensorInfoTemp, vendorName, &length);
+       if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor vender name is failed");
+           return ret;
+       }
+       Sensor_Type sensorType;
+       // Obtain the sensor type.
+       ret = OH_SensorInfo_GetType(sensorInfoTemp, &sensorType);
+       if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type is failed");
+           return ret;
+       }
+       float resolution = INVALID_RESOLUTION;
+       // Obtain the sensor resolution.
+       ret = OH_SensorInfo_GetResolution(sensorInfoTemp, &resolution);
+       if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor resolution is failed");
+           return ret;
+       }
+       int64_t minSamplePeriod = INVALID_VALUE;
+       // Obtain the minimum data reporting interval of a sensor.
+       ret = OH_SensorInfo_GetMinSamplingInterval(sensorInfoTemp, &minSamplePeriod);
+       if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor min sampling interval is failed");
+           return ret;
+       }
+       int64_t maxSamplePeriod = INVALID_VALUE;
+       // Obtain the maximum data reporting interval of a sensor.
+       ret = OH_SensorInfo_GetMaxSamplingInterval(sensorInfoTemp, &maxSamplePeriod);
+       if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor max sampling interval is failed");
+       }
+       return ret;
+   }
+   
    static napi_value GetSensorInfos(napi_env env, napi_callback_info info)
    {
        uint32_t count = 0;
-       int32_t ret = OH_Sensor_GetInfos(nullptr, &count); // Obtain the number of all sensors on the device.
+       // Obtain the number of all sensors on the device.
+       int32_t ret = OH_Sensor_GetInfos(nullptr, &count);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor count is failed");
            return nullptr;
        }
-       Sensor_Info **sensors = OH_Sensor_CreateInfos(count); // Create an array of instances with the given number.
+       // Create an array of instances with the given number.
+       Sensor_Info **sensors = OH_Sensor_CreateInfos(count);
        if (sensors == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "create sensorInfo array is failed");
            return nullptr;
-       }        
-       ret = OH_Sensor_GetInfos(sensors, &count); // Obtain information about all sensors on the device.
+       }
+       // Obtain information about all sensors on the device.
+       ret = OH_Sensor_GetInfos(sensors, &count);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get all sensor info is failed");
            return nullptr;
        }
        for (uint32_t i = 0; i < count; ++i) {
-           char sensorName[SENSOR_NAME_LENGTH_MAX] = {};
-           uint32_t length = SENSOR_NAME_LENGTH_MAX;
-           ret = OH_SensorInfo_GetName(sensors[i], sensorName, &length); // Obtain the sensor name.
+           Sensor_Info *sensorInfoTemp = sensors[i];
+           ret = GetSensorInfo(sensorInfoTemp);
            if (ret != SENSOR_SUCCESS) {
-               return nullptr;
-           }
-           char vendorName[SENSOR_NAME_LENGTH_MAX] = {};
-           length = SENSOR_NAME_LENGTH_MAX;
-           ret = OH_SensorInfo_GetVendorName(sensors[i], vendorName, &length); // Obtain the manufacturer name of the sensor.
-           if (ret != SENSOR_SUCCESS) {
-               return nullptr;
-           }
-           Sensor_Type sensorType;
-           ret = OH_SensorInfo_GetType(sensors[i], &sensorType); // Obtain the sensor type.
-           if (ret != SENSOR_SUCCESS) {
-               return nullptr;
-           }
-           float resolution = INVALID_RESOLUTION;
-           ret = OH_SensorInfo_GetResolution(sensors[i], &resolution); // Obtain the sensor resolution.
-           if (ret != SENSOR_SUCCESS) {
-               return nullptr;
-           }
-           int64_t minSamplePeriod = INVALID_VALUE;
-           ret = OH_SensorInfo_GetMinSamplingInterval(sensors[i], &minSamplePeriod); // Obtain the minimum data reporting interval of a sensor.
-           if (ret != SENSOR_SUCCESS) {
-               return nullptr;
-           }
-           int64_t maxSamplePeriod = INVALID_VALUE;
-           ret = OH_SensorInfo_GetMaxSamplingInterval(sensors[i], &maxSamplePeriod); // Obtain the maximum data reporting interval of a sensor.
-           if (ret != SENSOR_SUCCESS) {
+               OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor info failed");
                return nullptr;
            }
        }
-       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "GetSensorInfos successful");
-       ret = OH_Sensor_DestroyInfos(sensors, count); // Destroy an array of instances and reclaim the memory.
+       OH_LOG_Print(LOG_APP, LOG_INFO, SENSOR_LOG_DOMAIN, TAG, "GetSensorInfos successful");
+       // Destroy the instance array and reclaim memory.
+       ret = OH_Sensor_DestroyInfos(sensors, count);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "destroy sensor info is failed");
            return nullptr;
        }
-       napi_value result = nullptr;
-       napi_create_int32(env, ret, &result);
-       return result;
+       return nullptr;
    }
    ```
 
 8. Subscribe to and unsubscribe from sensor data.
 
-   ```c
+   <!-- @[sensor_capi_subscriber_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   
+   ``` C++
    static napi_value Subscriber(napi_env env, napi_callback_info info)
    {
-       g_user = OH_Sensor_CreateSubscriber();                                         // Create a Sensor_Subscriber instance.
-       int32_t ret = OH_SensorSubscriber_SetCallback(g_user, SensorDataCallbackImpl); // Set a callback function to report sensor data.
+       // Create a Sensor_Subscriber instance.
+       g_user = OH_Sensor_CreateSubscriber();
+       // Set the callback used to return sensor data.
+       int32_t ret = OH_SensorSubscriber_SetCallback(g_user, SensorDataCallbackImpl);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "OH_SensorSubscriber_SetCallback failed");
            return nullptr;
        }
-   
-       Sensor_SubscriptionId *id = OH_Sensor_CreateSubscriptionId(); // Create a Sensor_SubscriptionId instance.
-       ret = OH_SensorSubscriptionId_SetType(id, SENSOR_ID); // Set the sensor type.
+       // Create a Sensor_SubscriptionId instance.
+       Sensor_SubscriptionId *id = OH_Sensor_CreateSubscriptionId();
+       // Set the sensor type. For example, if you use SENSOR_TYPE_ACCELEROMETER, you need to request the ohos.permission.ACCELEROMETER permission.
+       // Configure the required permission as instructed in step 2 in the Sensor Development.
+       ret = OH_SensorSubscriptionId_SetType(id, SENSOR_ID);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "OH_SensorSubscriptionId_SetType failed");
            return nullptr;
        }
-   
-       Sensor_SubscriptionAttribute *attr = OH_Sensor_CreateSubscriptionAttribute(); // Create a Sensor_SubscriptionAttribute instance.
-       ret = OH_SensorSubscriptionAttribute_SetSamplingInterval(attr, SENSOR_SAMPLE_PERIOD); // Set the interval for reporting sensor data.
+       // Create a Sensor_SubscriptionAttribute instance.
+       Sensor_SubscriptionAttribute *attr = OH_Sensor_CreateSubscriptionAttribute();
+       // Set the sensor data reporting interval.
+       ret = OH_SensorSubscriptionAttribute_SetSamplingInterval(attr, SENSOR_SAMPLE_PERIOD);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG,
+               "OH_SensorSubscriptionAttribute_SetSamplingInterval failed");
            return nullptr;
        }
-   
-       ret = OH_Sensor_Subscribe(id, attr, g_user); // Subscribe to sensor data.
+       // Subscribe to sensor data.
+       ret = OH_Sensor_Subscribe(id, attr, g_user);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "OH_Sensor_Subscribe failed");
            return nullptr;
        }
-       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "Subscriber successful");
+       OH_LOG_Print(LOG_APP, LOG_INFO, SENSOR_LOG_DOMAIN, TAG, "OH_Sensor_Subscribe successful");
        std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
-       ret = OH_Sensor_Unsubscribe(id, g_user); // Unsubscribe from sensor data.
+       // Unsubscribe from sensor data.
+       ret = OH_Sensor_Unsubscribe(id, g_user);
        if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "OH_Sensor_Unsubscribe failed");
            return nullptr;
        }
+       OH_LOG_Print(LOG_APP, LOG_INFO, SENSOR_LOG_DOMAIN, TAG, "OH_Sensor_Unsubscribe successful");
        if (id != nullptr) {
-           OH_Sensor_DestroySubscriptionId(id); // Destroy the Sensor_SubscriptionId instance and reclaim the memory.
+           // Destroy the Sensor_SubscriptionId instance.
+           OH_Sensor_DestroySubscriptionId(id);
        }
        if (attr != nullptr) {
-           OH_Sensor_DestroySubscriptionAttribute(attr); // Destroy the Sensor_SubscriptionAttribute instance and reclaim the memory.
+           // Destroy the Sensor_SubscriptionAttribute instance.
+           OH_Sensor_DestroySubscriptionAttribute(attr);
        }
        if (g_user != nullptr) {
-           OH_Sensor_DestroySubscriber(g_user); // Destroy the Sensor_Subscriber instance and reclaim the memory.
+           // Destroy the Sensor_Subscriber instance and reclaim memory.
+           OH_Sensor_DestroySubscriber(g_user);
            g_user = nullptr;
        }
-       napi_value result = nullptr;
-       napi_create_int32(env, ret, &result);
-       return result;
+       return nullptr;
    }
    ```
-   
+
 9. Add related APIs to the **Init** function.
 
-   ```c
+   <!-- @[sensor_capi_init_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   
+   ``` C++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
    {
        napi_property_descriptor desc[] = {
-           { "getSensorInfos", nullptr, GetSensorInfos, nullptr, nullptr, nullptr, napi_default, nullptr },
-           { "subscriber", nullptr, Subscriber, nullptr, nullptr, nullptr, napi_default, nullptr }
+           {"getSensorInfos", nullptr, GetSensorInfos, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"subscriber", nullptr, Subscriber, nullptr, nullptr, nullptr, napi_default, nullptr}
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;
@@ -252,15 +328,37 @@ The following uses the acceleration sensor as an example to describe the develop
 
 10. Introduce the NAPI APIs to the **index.d.ts** file in **types/libentry**.
 
-    ```c
-     export const getSensorInfos: () => number;
-     export const subscriber: () => number;
+    <!-- @[sensor_capi_dependency_napi_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+    
+    ``` TypeScript
+    export const getSensorInfos: () => object;
+    export const subscriber: () => object;
     ```
 
-11. Delete deprecated functions from the **Index.ets** file.
+11. Write the application entry call code.
 
-    ```js
-    .onClick(() => {
-        hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
-    })
+    <!-- @[sensor_capi_index_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/ets/pages/Index.ets) --> 
+    
+    ``` TypeScript
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import sensorCapi from 'libentry.so';
+    
+    const DOMAIN = 0xD002700;
+    // ...
+              try {
+                sensorCapi.getSensorInfos();
+                // ...
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                hilog.error(DOMAIN, 'testTag', `Failed to invoke getSensorInfos. Code: ${e.code}, message: ${e.message}`);
+              }
+              // ...
+              try {
+                sensorCapi.subscriber();
+                // ...
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                hilog.error(DOMAIN, 'testTag', `Failed to invoke getSensorInfos. Code: ${e.code}, message: ${e.message}`);
+              }
     ```

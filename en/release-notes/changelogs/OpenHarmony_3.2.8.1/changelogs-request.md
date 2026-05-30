@@ -4,7 +4,7 @@ Compared with OpenHarmony 3.2 Beta3, OpenHarmony 3.2.8.1 has the following chang
 
 ## cl.request.1 Changes of Error Code Definitions and Some API Names
 
-- The processing of the [upload and download error codes](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/errorcodes/errorcode-request.md) is added to the upload and download APIs.
+- The processing of the [upload and download error codes](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/errorcodes/errorcode-request.md) is added to the upload and download APIs.
 - An error message is returned via **AsyncCallback** or the **error** object of **Promise**. An error message related to the parameter type or quantity is returned via an exception.
 - Some APIs need to be replaced with new APIs, and the parameters remain unchanged.
 
@@ -25,42 +25,42 @@ The application developed based on earlier versions needs to adapt the method fo
 | ohos.request   | request                    | EXCEPTION_OTHERS                                             | Added    |
 | ohos.request   | request                    | ERROR_OFFLINE                                                | Added    |
 | ohos.request   | request                    | ERROR_UNSUPPORTED_NETWORK_TYPE                               | Added    |
-| ohos.request   | request                    | function downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void; | Added    |
-| ohos.request   | request                    | function downloadFile(context: BaseContext, config: DownloadConfig): Promise<DownloadTask>; | Added    |
-| ohos.request   | request                    | function uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback<UploadTask>): void; | Added    |
-| ohos.request   | request                    | function uploadFile(context: BaseContext, config: UploadConfig): Promise<UploadTask>; | Added    |
-| ohos.request   | DownloadTask               | delete(callback: AsyncCallback<boolean>): void;              | Added    |
-| ohos.request   | DownloadTask               | delete(): Promise<boolean>;                                  | Added    |
-| ohos.request   | DownloadTask               | suspend(callback: AsyncCallback<boolean>): void;             | Added    |
-| ohos.request   | DownloadTask               | suspend(): Promise<boolean>;                                 | Added    |
-| ohos.request   | DownloadTask               | restore(callback: AsyncCallback<boolean>): void;             | Added    |
-| ohos.request   | DownloadTask               | restore(): Promise<boolean>;                                 | Added    |
-| ohos.request   | DownloadTask               | getTaskInfo(callback: AsyncCallback<DownloadInfo>): void;    | Added    |
-| ohos.request   | DownloadTask               | getTaskInfo(): Promise<DownloadInfo>;                        | Added    |
-| ohos.request   | DownloadTask               | getTaskMimeType(callback: AsyncCallback<string>): void;      | Added    |
-| ohos.request   | DownloadTask               | getTaskMimeType(): Promise<string>;                          | Added    |
-| ohos.request   | UploadTask                 | delete(callback: AsyncCallback<boolean>): void;              | Added    |
-| ohos.request   | UploadTask                 | delete(): Promise<boolean>;                                  | Added    |
-| ohos.request   | request                    | function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void;<br>Substitute API: function downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void;| Deprecated    |
-| ohos.request   | request                    | function download(config: DownloadConfig): Promise<DownloadTask>;<br>Substitute API: function downloadFile(context: BaseContext, config: DownloadConfig): Promise<DownloadTask>; | Deprecated    |
-| ohos.request   | request                    | function download(context: BaseContext, config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void;<br>Substitute API: function downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void; | Deprecated    |
-| ohos.request   | request                    | function download(context: BaseContext, config: DownloadConfig): Promise<DownloadTask>;<br>Substitute API: function downloadFile(context: BaseContext, config: DownloadConfig): Promise<DownloadTask>; | Deprecated    |
-| ohos.request   | request                    | function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void;<br>Substitute API: function uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback<UploadTask>): void; | Deprecated    |
-| ohos.request   | request                    | function upload(config: UploadConfig): Promise<UploadTask>;<br>Substitute API: function uploadFile(context: BaseContext, config: UploadConfig): Promise<UploadTask>; | Deprecated    |
-| ohos.request   | request                    | function upload(context: BaseContext, config: UploadConfig, callback: AsyncCallback<UploadTask>): void;<br>Substitute API: function uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback<UploadTask>): void; | Deprecated    |
-| ohos.request   | request                    | function upload(context: BaseContext, config: UploadConfig): Promise<UploadTask>;<br>Substitute API: function uploadFile(context: BaseContext, config: UploadConfig): Promise<UploadTask>; | Deprecated    |
-| ohos.request   | DownloadTask               | remove(callback: AsyncCallback<boolean>): void;<br>Substitute API: delete(callback: AsyncCallback<boolean>): void | Deprecated    |
-| ohos.request   | DownloadTask               | remove(): Promise<boolean>;<br>Substitute API: delete(): Promise<boolean>; | Deprecated    |
-| ohos.request   | DownloadTask               | pause(callback: AsyncCallback<boolean>): void;<br>Substitute API: suspend(callback: AsyncCallback<boolean>): void; | Deprecated    |
-| ohos.request   | DownloadTask               | pause(): Promise<boolean>;<br>Substitute API: suspend(): Promise<boolean>; | Deprecated    |
-| ohos.request   | DownloadTask               | resume(callback: AsyncCallback<boolean>): void;<br>Substitute API: restore(callback: AsyncCallback<boolean>): void; | Deprecated    |
-| ohos.request   | DownloadTask               | resume(): Promise<boolean>;<br>Substitute API: restore(): Promise<boolean>; | Deprecated    |
-| ohos.request   | DownloadTask               | query(callback: AsyncCallback<DownloadInfo>): void;<br>Substitute API: getTaskInfo(callback: AsyncCallback<DownloadInfo>): void; | Deprecated    |
-| ohos.request   | DownloadTask               | query(): Promise<DownloadInfo>;<br>Substitute API: getTaskInfo(): Promise<DownloadInfo>; | Deprecated    |
-| ohos.request   | DownloadTask               | queryMimeType(callback: AsyncCallback<string>): void;<br>Substitute API: getTaskMimeType(callback: AsyncCallback<string>): void; | Deprecated    |
-| ohos.request   | DownloadTask               | queryMimeType(): Promise<string>;<br>Substitute API: getTaskMimeType(): Promise<string>; | Deprecated    |
-| ohos.request   | UploadTask                 | remove(callback: AsyncCallback<boolean>): void;<br>Substitute API: delete(callback: AsyncCallback<boolean>): void; | Deprecated    |
-| ohos.request   | UploadTask                 | remove(): Promise<boolean>;<br>Substitute API: delete(): Promise<boolean>; | Deprecated    |
+| ohos.request   | request                    | function downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallback\<DownloadTask>): void; | Added    |
+| ohos.request   | request                    | function downloadFile(context: BaseContext, config: DownloadConfig): Promise\<DownloadTask>; | Added    |
+| ohos.request   | request                    | function uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback\<UploadTask>): void; | Added    |
+| ohos.request   | request                    | function uploadFile(context: BaseContext, config: UploadConfig): Promise\<UploadTask>; | Added    |
+| ohos.request   | DownloadTask               | delete(callback: AsyncCallback\<boolean>): void;             | Added    |
+| ohos.request   | DownloadTask               | delete(): Promise\<boolean>;                                 | Added    |
+| ohos.request   | DownloadTask               | suspend(callback: AsyncCallback\<boolean>): void;            | Added    |
+| ohos.request   | DownloadTask               | suspend(): Promise\<boolean>;                                | Added    |
+| ohos.request   | DownloadTask               | restore(callback: AsyncCallback\<boolean>): void;            | Added    |
+| ohos.request   | DownloadTask               | restore(): Promise\<boolean>;                                | Added    |
+| ohos.request   | DownloadTask               | getTaskInfo(callback: AsyncCallback\<DownloadInfo>): void;   | Added    |
+| ohos.request   | DownloadTask               | getTaskInfo(): Promise\<DownloadInfo>;                       | Added    |
+| ohos.request   | DownloadTask               | getTaskMimeType(callback: AsyncCallback\<string>): void;     | Added    |
+| ohos.request   | DownloadTask               | getTaskMimeType(): Promise\<string>;                         | Added    |
+| ohos.request   | UploadTask                 | delete(callback: AsyncCallback\<boolean>): void;             | Added    |
+| ohos.request   | UploadTask                 | delete(): Promise\<boolean>;                                 | Added    |
+| ohos.request   | request                    | function download(config: DownloadConfig, callback: AsyncCallback\<DownloadTask>): void;<br>Substitute API: function downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallback\<DownloadTask>): void; | Deprecated    |
+| ohos.request   | request                    | function download(config: DownloadConfig): Promise\<DownloadTask>;<br>Substitute API: function downloadFile(context: BaseContext, config: DownloadConfig): Promise\<DownloadTask>; | Deprecated    |
+| ohos.request   | request                    | function download(context: BaseContext, config: DownloadConfig, callback: AsyncCallback\<DownloadTask>): void;<br>Substitute API: function downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallback\<DownloadTask>): void; | Deprecated    |
+| ohos.request   | request                    | function download(context: BaseContext, config: DownloadConfig): Promise\<DownloadTask>;<br>Substitute API: function downloadFile(context: BaseContext, config: DownloadConfig): Promise\<DownloadTask>; | Deprecated    |
+| ohos.request   | request                    | function upload(config: UploadConfig, callback: AsyncCallback\<UploadTask>): void;<br>Substitute API: function uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback\<UploadTask>): void; | Deprecated    |
+| ohos.request   | request                    | function upload(config: UploadConfig): Promise\<UploadTask>;<br>Substitute API: function uploadFile(context: BaseContext, config: UploadConfig): Promise\<UploadTask>; | Deprecated    |
+| ohos.request   | request                    | function upload(context: BaseContext, config: UploadConfig, callback: AsyncCallback\<UploadTask>): void;<br>Substitute API: function uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback\<UploadTask>): void; | Deprecated    |
+| ohos.request   | request                    | function upload(context: BaseContext, config: UploadConfig): Promise\<UploadTask>;<br>Substitute API: function uploadFile(context: BaseContext, config: UploadConfig): Promise\<UploadTask>; | Deprecated    |
+| ohos.request   | DownloadTask               | remove(callback: AsyncCallback\<boolean>): void;<br>Substitute API: delete(callback: AsyncCallback\<boolean>): void | Deprecated    |
+| ohos.request   | DownloadTask               | remove(): Promise\<boolean>;<br>Substitute API: delete(): Promise\<boolean>; | Deprecated    |
+| ohos.request   | DownloadTask               | pause(callback: AsyncCallback\<boolean>): void;<br>Substitute API: suspend(callback: AsyncCallback\<boolean>): void; | Deprecated    |
+| ohos.request   | DownloadTask               | pause(): Promise\<boolean>;<br>Substitute API: suspend(): Promise\<boolean>; | Deprecated    |
+| ohos.request   | DownloadTask               | resume(callback: AsyncCallback\<boolean>): void;<br>Substitute API: restore(callback: AsyncCallback\<boolean>): void; | Deprecated    |
+| ohos.request   | DownloadTask               | resume(): Promise\<boolean>;<br>Substitute API: restore(): Promise\<boolean>; | Deprecated    |
+| ohos.request   | DownloadTask               | query(callback: AsyncCallback\<DownloadInfo>): void;<br>Substitute API: getTaskInfo(callback: AsyncCallback\<DownloadInfo>): void; | Deprecated    |
+| ohos.request   | DownloadTask               | query(): Promise\<DownloadInfo>;<br>Substitute API: getTaskInfo(): Promise\<DownloadInfo>; | Deprecated    |
+| ohos.request   | DownloadTask               | queryMimeType(callback: AsyncCallback\<string>): void;<br>Substitute API: getTaskMimeType(callback: AsyncCallback\<string>): void; | Deprecated    |
+| ohos.request   | DownloadTask               | queryMimeType(): Promise\<string>;<br>Substitute API: getTaskMimeType(): Promise\<string>; | Deprecated    |
+| ohos.request   | UploadTask                 | remove(callback: AsyncCallback\<boolean>): void;<br>Substitute API: delete(callback: AsyncCallback\<boolean>): void; | Deprecated    |
+| ohos.request   | UploadTask                 | remove(): Promise\<boolean>;<br>Substitute API: delete(): Promise\<boolean>; | Deprecated    |
 | system.request | UploadResponse             | code                                                         | Deprecated    |
 | system.request | UploadResponse             | data                                                         | Deprecated    |
 | system.request | UploadResponse             | headers                                                      | Deprecated    |

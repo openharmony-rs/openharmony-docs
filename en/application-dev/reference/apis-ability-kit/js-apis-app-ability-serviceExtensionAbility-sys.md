@@ -41,7 +41,7 @@ None.
 
 ### onCreate
 
-onCreate(want: Want): void;
+onCreate(want: Want): void
 
 Called to initialize the service logic when a ServiceExtensionAbility is being created.
 
@@ -70,7 +70,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ### onDestroy
 
-onDestroy(): void;
+onDestroy(): void
 
 Called to clear resources when this ServiceExtensionAbility is being destroyed.
 
@@ -93,7 +93,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ### onRequest
 
-onRequest(want: Want, startId: number): void;
+onRequest(want: Want, startId: number): void
 
 Called following **onCreate()** when a ServiceExtensionAbility is started by calling **startAbility()** or **startServiceExtensionAbility()**. The value of **startId** is incremented for each ServiceExtensionAbility that is started.
 
@@ -123,7 +123,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ### onConnect
 
-onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>;
+onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>
 
 Called following **onCreate()** when a ServiceExtensionAbility is started by calling **connectAbility()**. A RemoteObject is returned for communication between the server and client.
 
@@ -192,9 +192,17 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ### onDisconnect
 
-onDisconnect(want: Want): void | Promise\<void>;
+onDisconnect(want: Want): void | Promise\<void>
 
 Called when a client is disconnected from this ServiceExtensionAbility.
+
+This API returns the result synchronously or uses a promise to return the result.
+
+> **NOTE**
+>
+> - Once the **onDisconnect** lifecycle callback completes, the application may exit. This can interrupt any pending asynchronous operations (such as asynchronously writing data to a database), preventing them from finishing successfully. For any non-instantaneous tasks, you are advised to use Promise-based asynchronous callbacks.
+>
+> - Be aware that asynchronous operations are subject to a default timeout of approximately 1 second. Even if this timeout is exceeded, the system may still force-terminate the application. Note that the exact timeout duration can vary by device.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -214,32 +222,34 @@ Called when a client is disconnected from this ServiceExtensionAbility.
 
 **Example**
 
-```ts
-import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+- A synchronous callback example is as follows:
 
-class ServiceExt extends ServiceExtensionAbility {
-  onDisconnect(want: Want) {
-    console.info('onDisconnect, want: ${want.abilityName}');
+  ```ts
+  import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+  
+  class ServiceExt extends ServiceExtensionAbility {
+    onDisconnect(want: Want) {
+      console.info(`onDisconnect, want: ${want.abilityName}`);
+    }
   }
-}
-```
+  ```
 
-After the **onDisconnect()** lifecycle callback is executed, the application may exit. Consequently, the asynchronous function (for example, asynchronously writing data to the database) in **onDisconnect()** may fail to be executed. The asynchronous lifecycle can be used to ensure that the subsequent lifecycle continues after the asynchronous **onDisconnect()** is complete.
+- A promise asynchronous callback example is as follows:
 
-```ts
-import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
-
-class ServiceExt extends ServiceExtensionAbility {
-  async onDisconnect(want: Want) {
-    console.info('onDisconnect, want: ${want.abilityName}');
-    // Call the asynchronous function.
+  ```ts
+  import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+  
+  class ServiceExt extends ServiceExtensionAbility {
+    async onDisconnect(want: Want) {
+      console.info(`onDisconnect, want: ${want.abilityName}`);
+      // Call the asynchronous function.
+    }
   }
-}
-```
+  ```
 
 ### onReconnect
 
-onReconnect(want: Want): void;
+onReconnect(want: Want): void
 
 Called when a new client attempts to connect to this ServiceExtensionAbility after all previous clients are disconnected. This capability is reserved.
 
@@ -267,7 +277,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ### onConfigurationUpdate
 
-onConfigurationUpdate(newConfig: Configuration): void;
+onConfigurationUpdate(newConfig: Configuration): void
 
 Called when the configuration of this ServiceExtensionAbility is updated.
 
@@ -295,7 +305,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 ### onDump
 
-onDump(params: Array\<string>): Array\<string>;
+onDump(params: Array\<string>): Array\<string>
 
 Dumps the client information.
 

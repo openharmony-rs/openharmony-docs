@@ -4,21 +4,24 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
-`deviceConfig` 包含设备上的应用配置信息，支持 `default`、`tv`、`car`、`wearable` 等属性。`default` 标签内的配置适用于所有通用设备，其他设备类型如需特定配置，需在相应标签下进行配置。
+`deviceConfig` 包含设备上的应用配置信息，支持 `default`、`tv`、`car`、`wearable` 等属性。
 
 ## deviceConfig对象内部结构
 
 **表1** **deviceConfig对象内部结构说明**
 
+<!--RP1-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| default | 能够使用全部系统能力的设备。 | 对象 | 可缺省，缺省值为空。 |
+| default | 默认设备类型，详情参考[标准系统开发板](../../device-dev/dev-board-on-the-master.md#标准系统开发板)。 | 对象 | 可缺省，缺省值为空。 |
 | tablet | 标识平板特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
 | tv | 标识智慧屏特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
 | car | 标识车机特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
 | wearable | 标识智能穿戴特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
+| 2in1 | 标识PC设备，主要交互方式以多窗口、多任务及键盘鼠标操作为主，充分发挥设备的生产力属性。| 对象 | 可缺省，缺省值为空。 |
+<!--RP1End-->
 
 
 上表中各设备对象的内部结构说明参见[deviceConfig设备对象内部结构](#deviceconfig设备对象内部结构)。
@@ -27,6 +30,7 @@
 
 **表2** **deviceConfig设备对象内部结构说明**
 
+<!--Table: 10%; 60%; 15%; 15%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | process | 标识应用或Ability的进程名。如果在deviceConfig标签下配置了process标签，则应用的所有Ability运行在此进程中。如果在abilities标签下为某个Ability配置了process标签，则该Ability运行在此进程中。该标签最大长度为31。 | 字符串 | 可缺省，缺省值为空。 |
@@ -50,7 +54,7 @@
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| domainSettings | 标识自定义网域范围的安全配置，支持多层嵌套。一个domainSettings对象中可嵌套更小网域范围的domainSettings对象。 | 对象类型 | 可缺省，缺省为空。 |
+| domainSettings | 标识自定义域名范围的安全配置，支持多层嵌套。一个domainSettings对象中可嵌套更小域名范围的domainSettings对象。 | 对象类型 | 可缺省，缺省为空。 |
 
 ## domainSettings对象内部结构
 
@@ -58,8 +62,8 @@
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| cleartextPermitted | 标识自定义网域范围内是否允许明文流量传输。cleartextTraffic和securityConfig同时存在时，以cleartextPermitted的值为准。<br/>-&nbsp;true：允许明文流量传输。<br/>-&nbsp;false：拒绝明文流量传输。 | 布尔类型 | 可缺省，缺省值为false。 |
-| domains | 标识域名配置信息，包含两个参数：subdomains和name。<br/>-&nbsp;subdomains：表示是否包含子域名。取值为"true"时，表示该规则将与相应网域及所有子网域（包括子网域的子网域）匹配；取值为"false"时，规则仅适用于精确匹配项。<br/>-&nbsp;name：表示域名名称，为字符串类型。 | 对象数组 | 可缺省，缺省值为空。 |
+| cleartextPermitted | 标识自定义域名范围内是否允许明文流量传输。cleartextTraffic和securityConfig同时存在时，以cleartextPermitted的值为准。<br/>-&nbsp;true：允许明文流量传输。<br/>-&nbsp;false：拒绝明文流量传输。 | 布尔类型 | 可缺省，缺省值为false。 |
+| domains | 标识域名配置信息，包含两个参数：subdomains和name。<br/>-&nbsp;subdomains：表示是否包含子域名。取值为"true"时，表示该规则将与相应域名及所有子域名（包括子域名的子域名）匹配；取值为"false"时，规则仅适用于精确匹配项。<br/>-&nbsp;name：表示域名名称，为字符串类型。 | 对象数组 | 可缺省，缺省值为空。 |
 
 以下是deviceConfig的示例：
 

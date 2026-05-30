@@ -4,12 +4,12 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+MediaKeySystem manages MediaKeySystem instances, handles device certificate (DRM certificate) requests and processing, creates sessions, manages offline media keys, obtains DRM metrics, and obtain device configurations. Before calling any API in MediaKeySystem, you must use [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem) to create a MediaKeySystem instance.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-MediaKeySystem implements MediaKeySystem instance management. Specifically, it provides APIs to request and process DRM certificates, creates session, manages offline media key, obtain DRM statistical information, and obtain device configuration information. Before calling any API in MediaKeySystem, you must use [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem) to create a MediaKeySystem instance.
 
 ## Modules to Import
 
@@ -36,7 +36,7 @@ Sets a configuration item in the form of a string.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -48,15 +48,9 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  mediaKeySystem.setConfigurationString("stringConfigName", "stringConfigValue"); // Ensure that stringConfigName is configurable.
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`setConfigurationString ERROR: ${error}`);
-}
+mediaKeySystem.setConfigurationString("stringConfigName", "stringConfigValue"); // Ensure that stringConfigName is configurable.
 ```
 
 ## getConfigurationString
@@ -73,7 +67,7 @@ Obtains the value of a configuration item in the form of a string.
 
 | Name    | Type                                            | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| configName  | string     | Yes  | Name of the configuration item, which is determined by the DRM solution on the device and cannot be empty. For details about available options, see [PreDefinedConfigName](arkts-apis-drm-e.md#predefinedconfigname).                  |
+| configName  | string     | Yes  | Configuration item name, which cannot be empty and can contain a maximum of 4096 bytes.<br>If the parameter value exceeds 4096 bytes, error code 401 will be returned.<br>The configuration item name is determined by the DRM solution on the device. For details about available options, see [PreDefinedConfigName](arkts-apis-drm-e.md#predefinedconfigname).                  |
 
 **Return value**
 
@@ -83,7 +77,7 @@ Obtains the value of a configuration item in the form of a string.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -95,15 +89,9 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let configValue: string = mediaKeySystem.getConfigurationString("vendor");
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getConfigurationString ERROR: ${error}`);  
-}
+let configValue: string = mediaKeySystem.getConfigurationString("vendor");
 ```
 
 ## setConfigurationByteArray
@@ -125,7 +113,7 @@ Sets a configuration item in the form of a byte array.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -137,18 +125,12 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 // Set configValue based on project requirements.
 let configValue: Uint8Array = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
-try {
-  // Ensure that byteArrayConfigName of the current DRM solution is configurable.
-  mediaKeySystem.setConfigurationByteArray("byteArrayConfigName", configValue);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`setConfigurationByteArray ERROR: ${error}`);  
-}
+// Ensure that byteArrayConfigName of the current DRM solution is configurable.
+mediaKeySystem.setConfigurationByteArray("byteArrayConfigName", configValue);
 ```
 
 ## getConfigurationByteArray
@@ -175,7 +157,7 @@ Obtains the value of a configuration item in the form of a byte array.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -187,22 +169,16 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let configValue: Uint8Array = mediaKeySystem.getConfigurationByteArray("deviceUniqueId"); // Ensure that deviceUniqueId exists.
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getConfigurationByteArray ERROR: ${error}`);  
-}
+let configValue: Uint8Array = mediaKeySystem.getConfigurationByteArray("deviceUniqueId"); // Ensure that deviceUniqueId exists.
 ```
 
 ## getStatistics
 
 getStatistics(): StatisticKeyValue[]
 
-Obtains the statistical information, including the number of current sessions, plugin version, maximum decryption duration for each session, number of decryption times, and number of decryption failures.
+Obtains the DRM metrics, including the number of active sessions, plugin version details, the maximum decryption time for each session (over three attempts), the total count of decryption operations, and the number of decryption failures.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -212,7 +188,7 @@ Obtains the statistical information, including the number of current sessions, p
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| [StatisticKeyValue[]](arkts-apis-drm-i.md#statistickeyvalue)          | Statistical information.                  |
+| [StatisticKeyValue[]](arkts-apis-drm-i.md#statistickeyvalue)          | Metrics.                  |
 
 **Error codes**
 
@@ -227,15 +203,9 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let statisticKeyValue: drm.StatisticKeyValue[] = mediaKeySystem.getStatistics();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getConfigurationByteArray ERROR: ${error}`);
-}
+let statisticKeyValue: drm.StatisticKeyValue[] = mediaKeySystem.getStatistics();
 ```
 
 ## getMaxContentProtectionLevel
@@ -267,22 +237,18 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let maxLevel: drm.ContentProtectionLevel = mediaKeySystem.getMaxContentProtectionLevel();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getConfigurationByteArray ERROR: ${error}`);
-}
+let maxLevel: drm.ContentProtectionLevel = mediaKeySystem.getMaxContentProtectionLevel();
 ```
 
 ## generateKeySystemRequest
 
 generateKeySystemRequest(): Promise<ProvisionRequest\>
 
-Generates a provision request.
+Generates a request to obtain a device certificate for the MediaKeySystem. This API uses a promise to return the result.
+
+If a device certificate already exists on the device, the API will return a failure.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -292,7 +258,7 @@ Generates a provision request.
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise<[ProvisionRequest](arkts-apis-drm-i.md#provisionrequest)\>          | Promise used to return the provision request obtained. If a DRM certificate already exists on the device, a failure message is returned.  |
+| Promise<[ProvisionRequest](arkts-apis-drm-i.md#provisionrequest)\>          | Promise used to return the request for a device certificate. If a device certificate already exists on the device, this operation fails.  |
 
 **Error codes**
 
@@ -307,14 +273,12 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-// Do not call this API if a DRM certificate already exists on the device.
-mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionRequest) => {
-  console.log("generateKeySystemRequest");
-}).catch((err: BusinessError) => {
-  console.error(`generateKeySystemRequest: ERROR: ${err}`);
+// Do not call this API if a device certificate already exists on the device.
+mediaKeySystem.generateKeySystemRequest().then((provisionRequest: drm.ProvisionRequest) => {
+  // provisionRequest is the device certificate request object returned by the API, including the request data and default URL.
+  console.info("generateKeySystemRequest, defaultURL: " + provisionRequest.defaultURL);
 });
 ```
 
@@ -322,7 +286,9 @@ mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionR
 
 processKeySystemResponse(response: Uint8Array): Promise<void\>
 
-Processes a provision response.
+Processes the response to a previously generated device certificate request. This API uses a promise to return the result.
+
+If a device certificate already exists on the device, the API will return a failure.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -332,17 +298,17 @@ Processes a provision response.
 
 | Name    | Type                                            | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| response  | Uint8Array     | Yes  | Provision response.                  |
+| response  | Uint8Array     | Yes  | Device certificate response obtained from the DRM service.                  |
 
 **Return value**
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise<void\>          | Promise                  |
+| Promise<void\>          | Promise that returns no value.                  |
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -354,15 +320,12 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-// keySystemResponse is the response obtained from the DRM service. Pass in the actual data obtained.
+// keySystemResponse is the device certificate response obtained from the DRM service. Pass in the actual value as required.
 let keySystemResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
-  console.log("processKeySystemResponse");
-}).catch((err: BusinessError) => {
-  console.error(`processKeySystemResponse: ERROR: ${err}`);
+  console.info("processKeySystemResponse");
 });
 ```
 
@@ -370,7 +333,7 @@ mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
 
 getCertificateStatus():CertificateStatus
 
-Obtains the status of the DRM certificate.
+Obtains the status of the device certificate.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -395,22 +358,16 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let certificateStatus: drm.CertificateStatus = mediaKeySystem.getCertificateStatus();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getCertificateStatus ERROR: ${error}`);
-}
+let certificateStatus: drm.CertificateStatus = mediaKeySystem.getCertificateStatus();
 ```
 
 ## on('keySystemRequired')
 
 on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
-Subscribes to events indicating that the application requires a DRM certificate.
+Subscribes to events indicating that the application requests a device certificate. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -420,12 +377,12 @@ Subscribes to events indicating that the application requires a DRM certificate.
 
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
-| type     | string               | Yes  | Event type. The event can be listened for when a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem). This event is triggered when the application requests a DRM certificate.|
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | Yes  | Callback used to return the event information. If this event callback is returned, a DRM certificate must be requested.                |
+| type     | string               | Yes  | Event type. This event is available for listening after a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem). It is triggered when a device certificate is required.|
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | Yes  | Callback used to return the event information. The occurrence of this event signals the need to request a device certificate.                |
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -439,7 +396,7 @@ import { drm } from '@kit.DrmKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
-  console.log('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -447,7 +404,7 @@ mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
 
 off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
-Unsubscribes from events indicating that the application requests a DRM certificate.
+Unsubscribes from events indicating that the application requests a device certificate. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -457,12 +414,12 @@ Unsubscribes from events indicating that the application requests a DRM certific
 
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
-| type     | string               | Yes  | Event type. The event can be listened for when a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem).|
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information.                 |
+| type     | string               | Yes  | Event type. This event is available for listening after a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem).|
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information. This parameter is optional. If it is not passed, all listeners for the event type are unregistered.               |
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -501,7 +458,7 @@ Creates a MediaKeySession instance with the specified content protection level.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -514,22 +471,16 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`createMediaKeySession ERROR: ${error}`);
-}
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
 ```
 
 ## createMediaKeySession
 
 createMediaKeySession(): MediaKeySession
 
-Creates a MediaKeySession instance with the default content protection level of the DRM solution.
+Creates a MediaKeySession instance with the default content protection level.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -555,15 +506,9 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`createMediaKeySession ERROR: ${error}`);
-}
+let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 ```
 
 ## getOfflineMediaKeyIds
@@ -580,7 +525,7 @@ Obtains the IDs of offline media keys.
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Uint8Array[]          | Array holding the IDs of offline media keys.                  |
+| Uint8Array[]          | Array of offline media key IDs.                  |
 
 **Error codes**
 
@@ -595,15 +540,9 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  let offlineMediaKeyIds: Uint8Array[] = mediaKeySystem.getOfflineMediaKeyIds();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getOfflineMediaKeyIds ERROR: ${error}`);
-}
+let offlineMediaKeyIds: Uint8Array[] = mediaKeySystem.getOfflineMediaKeyIds();
 ```
 
 ## getOfflineMediaKeyStatus
@@ -620,7 +559,7 @@ Obtains the status of offline media keys with the specified IDs.
 
 | Name    | Type                                            | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| mediaKeyId | Uint8Array     | Yes  | Array holding the IDs of offline media keys.                  |
+| mediaKeyId | Uint8Array     | Yes  | Array of offline media key IDs.                  |
 
 **Return value**
 
@@ -630,7 +569,7 @@ Obtains the status of offline media keys with the specified IDs.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -642,24 +581,18 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-// mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual data returned.
+// mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual value as required.
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
-try {
-  let configValue: drm.OfflineMediaKeyStatus = mediaKeySystem.getOfflineMediaKeyStatus(mediaKeyId);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getOfflineMediaKeyStatus ERROR: ${error}`);
-}
+let configValue: drm.OfflineMediaKeyStatus = mediaKeySystem.getOfflineMediaKeyStatus(mediaKeyId);
 ```
 
 ## clearOfflineMediaKeys
 
 clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
-Clears offline media keys by ID.
+Clears offline media keys with the specified IDs.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -669,11 +602,11 @@ Clears offline media keys by ID.
 
 | Name    | Type                                            | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| mediaKeyId  | Uint8Array     | Yes  | Array holding the IDs of offline media keys.           |
+| mediaKeyId  | Uint8Array     | Yes  | Array of offline media key IDs.           |
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -685,17 +618,11 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-// mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual data returned.
+// mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual value as required.
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
-try {
-  mediaKeySystem.clearOfflineMediaKeys(mediaKeyId);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`clearOfflineMediaKeys ERROR: ${error}`);
-}
+mediaKeySystem.clearOfflineMediaKeys(mediaKeyId);
 ```
 
 ## destroy
@@ -721,13 +648,7 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-try {
-  mediaKeySystem.destroy();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`mediaKeySystem destroy ERROR: ${error}`);
-}
+mediaKeySystem.destroy();
 ```

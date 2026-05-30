@@ -2,15 +2,15 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 The **Sensor** module provides APIs for obtaining the sensor list and subscribing to sensor data. It also provides some common sensor algorithms.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version. You can call [getSingleSensor](#sensorgetsinglesensor9) to obtain the target sensor before subscribing to the sensor data. Ensure that the **on** and **off** APIs are used in pairs.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version. Before subscribing to sensor data, call [getSingleSensor](#sensorgetsinglesensor9) to obtain the target sensor. For details about how to use the API, see [Sensor Development](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/sensor-guidelines#how-to-develop). If any error occurs, see the error code description of the API. When you subscribe to the sensor data, ensure that the **on** and **off** APIs are used in pairs.
 
 
 ## Modules to Import
@@ -18,9 +18,8 @@ The **Sensor** module provides APIs for obtaining the sensor list and subscribin
 ```ts
 import { sensor } from '@kit.SensorServiceKit';
 ```
-## sensor.on
 
-### ACCELEROMETER<sup>9+</sup>
+## sensor.on('SensorId.ACCELEROMETER')<sup>9+</sup>
 
 on(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options): void
 
@@ -72,7 +71,52 @@ try {
 }
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>9+</sup>
+## sensor.on('SensorId.FUSION_PRESSURE')<sup>22+</sup>
+
+on(type: SensorId.FUSION_PRESSURE, callback: Callback&lt;FusionPressureResponse&gt;, options?: Options): void
+
+Subscribes to the fused pressure sensor data.
+
+**System capability**: SystemCapability.Sensors.Sensor
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | [SensorId](#sensorid9).FUSION_PRESSURE            | Yes  | Sensor type. The value is fixed at SensorId.FUSION_PRESSURE. |
+| callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | Yes  | Callback used to report the sensor data, which is a **FusionPressureResponse** object.|
+| options  | [Options](#options)                                          | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+
+**Error codes**
+
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**Example**
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Use try catch to capture possible exceptions.
+try {
+  sensor.on(sensor.SensorId.FUSION_PRESSURE, (data: sensor.FusionPressureResponse) => {
+    console.info('Succeeded in invoking on. fusionPressure: ' + data.fusionPressure);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.FUSION_PRESSURE);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+## sensor.on('SensorId.ACCELEROMETER_UNCALIBRATED')<sup>9+</sup>
 
 on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options): void
 
@@ -125,7 +169,7 @@ try {
 }
 ```
 
-### AMBIENT_LIGHT<sup>9+</sup>
+## sensor.on('SensorId.AMBIENT_LIGHT')<sup>9+</sup>
 
 on(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options): void
 
@@ -170,7 +214,7 @@ try {
 }
 ```
 
-###  AMBIENT_TEMPERATURE<sup>9+</sup>
+## sensor.on('SensorId.AMBIENT_TEMPERATURE')<sup>9+</sup>
 
 on(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options): void
 
@@ -215,7 +259,7 @@ try {
 }
 ```
 
-### BAROMETER<sup>9+</sup>
+## sensor.on('SensorId.BAROMETER')<sup>9+</sup>
 
 on(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options): void
 
@@ -260,7 +304,7 @@ try {
 }
 ```
 
-###  GRAVITY<sup>9+</sup>
+## sensor.on('SensorId.GRAVITY')<sup>9+</sup>
 
 on(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: Options): void
 
@@ -307,7 +351,7 @@ try {
 }
 ```
 
-###  GYROSCOPE<sup>9+</sup>
+## sensor.on('SensorId.GYROSCOPE')<sup>9+</sup>
 
 on(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options): void
 
@@ -359,10 +403,9 @@ try {
 }
 ```
 
-###  GYROSCOPE_UNCALIBRATED<sup>9+</sup>
+## sensor.on('SensorId.GYROSCOPE_UNCALIBRATED')<sup>9+</sup>
 
-on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;,
-      options?: Options): void
+on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
 Subscribes to data of the uncalibrated gyroscope sensor.
 
@@ -414,7 +457,7 @@ try {
 
 ```
 
-###  HALL<sup>9+</sup>
+## sensor.on('SensorId.HALL')<sup>9+</sup>
 
 on(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Options): void
 
@@ -460,7 +503,7 @@ try {
 
 ```
 
-###   HEART_RATE<sup>9+</sup>
+## sensor.on('SensorId.HEART_RATE')<sup>9+</sup>
 
 on(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options): void
 
@@ -508,7 +551,7 @@ try {
 }
 ```
 
-###  HUMIDITY<sup>9+</sup>
+## sensor.on('SensorId.HUMIDITY')<sup>9+</sup>
 
 on(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?: Options): void
 
@@ -553,10 +596,9 @@ try {
 }
 ```
 
-###   LINEAR_ACCELEROMETER<sup>9+</sup>
+## sensor.on('SensorId.LINEAR_ACCELEROMETER')<sup>9+</sup>
 
-on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;,
-        options?: Options): void
+on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
 Subscribes to data of the linear acceleration sensor.
 
@@ -604,7 +646,7 @@ try {
 }
 ```
 
-###  MAGNETIC_FIELD<sup>9+</sup>
+## sensor.on('SensorId.MAGNETIC_FIELD')<sup>9+</sup>
 
 on(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options): void
 
@@ -651,7 +693,7 @@ try {
 }
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>9+</sup>
+## sensor.on('SensorId.MAGNETIC_FIELD_UNCALIBRATED')<sup>9+</sup>
 
 on(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options): void
 
@@ -701,7 +743,7 @@ try {
 }
 ```
 
-### ORIENTATION<sup>9+</sup>
+## sensor.on('SensorId.ORIENTATION')<sup>9+</sup>
 
 on(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options): void
 
@@ -715,6 +757,14 @@ Subscribes to data of the orientation sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
+**Parameters**
+
+| Name  | Type                                                       | Mandatory| Description                                                       |
+| -------- | ----------------------------------------------------------- | ---- | ----------------------------------------------------------- |
+| type     | [SensorId](#sensorid9).ORIENTATION                          | Yes  | Sensor type. The value is fixed at **SensorId.ORIENTATION**.               |
+| callback | Callback&lt;[OrientationResponse](#orientationresponse)&gt; | Yes  | Callback used to report the sensor data, which is a **OrientationResponse** object.  |
+| options  | [Options](#options)                                         | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns.|
+
 **Error codes**
 
 For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
@@ -723,14 +773,6 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-
-**Parameters**
-
-| Name  | Type                                                       | Mandatory| Description                                                       |
-| -------- | ----------------------------------------------------------- | ---- | ----------------------------------------------------------- |
-| type     | [SensorId](#sensorid9).ORIENTATION                          | Yes  | Sensor type. The value is fixed at **SensorId.ORIENTATION**.               |
-| callback | Callback&lt;[OrientationResponse](#orientationresponse)&gt; | Yes  | Callback used to report the sensor data, which is a **OrientationResponse** object.  |
-| options  | [Options](#options)                                         | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns.|
 
 **Example**
 
@@ -754,7 +796,7 @@ try {
 }
 ```
 
-### PEDOMETER<sup>9+</sup>
+## sensor.on('SensorId.PEDOMETER')<sup>9+</sup>
 
 on(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options): void
 
@@ -763,6 +805,14 @@ Subscribes to data of the pedometer sensor. The step counter sensor's data repor
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
 **System capability**: SystemCapability.Sensors.Sensor
+
+**Parameters**
+
+| Name  | Type                                                   | Mandatory| Description                                                       |
+| -------- | ------------------------------------------------------- | ---- | ----------------------------------------------------------- |
+| type     | [SensorId](#sensorid9).PEDOMETER                        | Yes  | Sensor type. The value is fixed at **SensorId.PEDOMETER**.                 |
+| callback | Callback&lt;[PedometerResponse](#pedometerresponse)&gt; | Yes  | Callback used to report the sensor data, which is a **PedometerResponse** object.    |
+| options  | [Options](#options)                                     | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns.|
 
 **Error codes**
 
@@ -773,14 +823,6 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 | 201      | Permission denied.                                           |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-
-**Parameters**
-
-| Name  | Type                                                   | Mandatory| Description                                                       |
-| -------- | ------------------------------------------------------- | ---- | ----------------------------------------------------------- |
-| type     | [SensorId](#sensorid9).PEDOMETER                        | Yes  | Sensor type. The value is fixed at **SensorId.PEDOMETER**.                 |
-| callback | Callback&lt;[PedometerResponse](#pedometerresponse)&gt; | Yes  | Callback used to report the sensor data, which is a **PedometerResponse** object.    |
-| options  | [Options](#options)                                     | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns.|
 
 **Example**
 
@@ -802,10 +844,9 @@ try {
 }
 ```
 
-### PEDOMETER_DETECTION<sup>9+</sup>
+## sensor.on('SensorId.PEDOMETER_DETECTION')<sup>9+</sup>
 
-on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
 Subscribes to data of the pedometer detection sensor.
 
@@ -851,7 +892,7 @@ try {
 }
 ```
 
-### PROXIMITY<sup>9+</sup>
+## sensor.on('SensorId.PROXIMITY')<sup>9+</sup>
 
 on(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, options?: Options): void
 
@@ -896,10 +937,9 @@ try {
 }
 ```
 
-### ROTATION_VECTOR<sup>9+</sup>
+## sensor.on('SensorId.ROTATION_VECTOR')<sup>9+</sup>
 
-on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;,
-        options?: Options): void
+on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options): void
 
 Subscribes to data of the rotation vector sensor.
 
@@ -945,10 +985,9 @@ try {
 }
 ```
 
-### SIGNIFICANT_MOTION<sup>9+</sup>
+## sensor.on('SensorId.SIGNIFICANT_MOTION')<sup>9+</sup>
 
-on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options): void
 
 Subscribes to the significant motion sensor data.
 
@@ -991,10 +1030,9 @@ try {
 }
 ```
 
-###  WEAR_DETECTION<sup>9+</sup>
+## sensor.on('SensorId.WEAR_DETECTION')<sup>9+</sup>
 
-on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options): void
 
 Subscribes to data of the wear detection sensor.
 
@@ -1004,7 +1042,7 @@ Subscribes to data of the wear detection sensor.
 
 | Name  | Type                                                        | Mandatory| Description                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | [SensorId](#sensorid9).WEAR_DETECTION                        | Yes  | Sensor type. The value is fixed at **SensorId.WEAR_DETECTION**.            |
+| type     | [SensorId](#sensorid9)                       | Yes  | Sensor type. The value is fixed at [SensorId](#sensorid9).WEAR_DETECTION.                       |
 | callback | Callback&lt;[WearDetectionResponse](#weardetectionresponse)&gt; | Yes  | Callback used to report the sensor data, which is a **WearDetectionResponse** object.|
 | options  | [Options](#options)                                          | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns.|
 
@@ -1037,7 +1075,7 @@ try {
 }
 ```
 
-### sensorStatusChange<sup>19+</sup>
+## sensor.on('sensorStatusChange')<sup>19+</sup>
 
 on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): void
 
@@ -1049,12 +1087,12 @@ Enables listening for sensor status changes. This API asynchronously returns the
 
 | Name  | Type                                                        | Mandatory| Description                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     |  'sensorStatusChange'         | Yes  | Event type. The value **sensorStatusChange** indicates the sensor status change event.            |
+| type     | string         | Yes  | Event type. The value **sensorStatusChange** indicates the sensor status change event.            |
 | callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | Yes  | Callback used to return the sensor status change event.|
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1081,9 +1119,8 @@ try {
 ```
 
 
-## sensor.once<sup>9+</sup>
 
-### ACCELEROMETER<sup>9+</sup>
+## sensor.once('SensorId.ACCELEROMETER')<sup>9+</sup>
 
 once(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;): void
 
@@ -1129,7 +1166,7 @@ try {
 }
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>9+</sup>
+## sensor.once('SensorId.ACCELEROMETER_UNCALIBRATED')<sup>9+</sup>
 
 once(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
@@ -1178,7 +1215,7 @@ try {
 }
 ```
 
-### AMBIENT_LIGHT<sup>9+</sup>
+## sensor.once('SensorId.AMBIENT_LIGHT')<sup>9+</sup>
 
 once(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;): void
 
@@ -1219,7 +1256,7 @@ try {
 }
 ```
 
-### AMBIENT_TEMPERATURE<sup>9+</sup>
+## sensor.once('SensorId.AMBIENT_TEMPERATURE')<sup>9+</sup>
 
 once(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;): void
 
@@ -1260,7 +1297,7 @@ try {
 }
 ```
 
-### BAROMETER<sup>9+</sup>
+## sensor.once('SensorId.BAROMETER')<sup>9+</sup>
 
 once(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;): void
 
@@ -1301,7 +1338,7 @@ try {
 }
 ```
 
-### GRAVITY<sup>9+</sup>
+## sensor.once('SensorId.GRAVITY')<sup>9+</sup>
 
 once(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;): void
 
@@ -1344,11 +1381,11 @@ try {
 }
 ```
 
-### GYROSCOPE<sup>9+</sup>
+## sensor.once('SensorId.GYROSCOPE')<sup>9+</sup>
 
 once(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;): void
 
-Obtains to data of the gyroscope sensor once.
+Obtains data of the gyroscope sensor once.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -1390,7 +1427,7 @@ try {
 }
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>9+</sup>
+## sensor.once('SensorId.GYROSCOPE_UNCALIBRATED')<sup>9+</sup>
 
 once(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -1439,7 +1476,7 @@ try {
 }
 ```
 
-### HALL<sup>9+</sup>
+## sensor.once('SensorId.HALL')<sup>9+</sup>
 
 once(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;): void
 
@@ -1480,7 +1517,7 @@ try {
 }
 ```
 
-### HEART_RATE<sup>9+</sup>
+## sensor.once('SensorId.HEART_RATE')<sup>9+</sup>
 
 once(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;): void
 
@@ -1524,7 +1561,7 @@ try {
 }
 ```
 
-### HUMIDITY<sup>9+</sup>
+## sensor.once('SensorId.HUMIDITY')<sup>9+</sup>
 
 once(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;): void
 
@@ -1565,7 +1602,7 @@ try {
 }
 ```
 
-### LINEAR_ACCELEROMETER<sup>9+</sup>
+## sensor.once('SensorId.LINEAR_ACCELEROMETER')<sup>9+</sup>
 
 once(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;): void
 
@@ -1611,7 +1648,7 @@ try {
 }
 ```
 
-### MAGNETIC_FIELD<sup>9+</sup>
+## sensor.once('SensorId.MAGNETIC_FIELD')<sup>9+</sup>
 
 once(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;): void
 
@@ -1654,7 +1691,7 @@ try {
 }
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>9+</sup>
+## sensor.once('SensorId.MAGNETIC_FIELD_UNCALIBRATED')<sup>9+</sup>
 
 once(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
@@ -1700,7 +1737,7 @@ try {
 }
 ```
 
-### ORIENTATION<sup>9+</sup>
+## sensor.once('SensorId.ORIENTATION')<sup>9+</sup>
 
 once(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;): void
 
@@ -1743,7 +1780,7 @@ try {
 }
 ```
 
-### PEDOMETER<sup>9+</sup>
+## sensor.once('SensorId.PEDOMETER')<sup>9+</sup>
 
 once(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;): void
 
@@ -1787,7 +1824,7 @@ try {
 }
 ```
 
-### PEDOMETER_DETECTION<sup>9+</sup>
+## sensor.once('SensorId.PEDOMETER_DETECTION')<sup>9+</sup>
 
 once(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;): void
 
@@ -1831,7 +1868,7 @@ try {
 }
 ```
 
-### PROXIMITY<sup>9+</sup>
+## sensor.once('SensorId.PROXIMITY')<sup>9+</sup>
 
 once(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;): void
 
@@ -1872,7 +1909,7 @@ try {
 }
 ```
 
-### ROTATION_VECTOR<sup>9+</sup>
+## sensor.once('SensorId.ROTATION_VECTOR')<sup>9+</sup>
 
 once(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;): void
 
@@ -1916,7 +1953,7 @@ try {
 }
 ```
 
-### SIGNIFICANT_MOTION<sup>9+</sup>
+## sensor.once('SensorId.SIGNIFICANT_MOTION')<sup>9+</sup>
 
 once(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;): void
 
@@ -1957,7 +1994,7 @@ try {
 }
 ```
 
-### WEAR_DETECTION<sup>9+</sup>
+## sensor.once('SensorId.WEAR_DETECTION')<sup>9+</sup>
 
 once(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;): void
 
@@ -1969,7 +2006,7 @@ Obtains data of the wear detection sensor once.
 
 | Name  | Type                                                        | Mandatory| Description                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | [SensorId](#sensorid9).WEAR_DETECTION                        | Yes  | Sensor type. The value is fixed at **SensorId.WEAR_DETECTION**.            |
+| type     | [SensorId](#sensorid9)                        | Yes  | Sensor type. The value is fixed at [SensorId](#sensorid9).WEAR_DETECTION.            |
 | callback | Callback&lt;[WearDetectionResponse](#weardetectionresponse)&gt; | Yes  | Callback used to report the sensor data, which is a **WearDetectionResponse** object.|
 
 **Error codes**
@@ -1998,9 +2035,8 @@ try {
 }
 ```
 
-## sensor.off
 
-### ACCELEROMETER<sup>9+</sup> 
+## sensor.off('SensorId.ACCELEROMETER')<sup>9+</sup>
 
 off(type: SensorId.ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
@@ -2056,7 +2092,7 @@ try {
 }
 ```
 
-### ACCELEROMETER<sup>19+</sup>
+## sensor.off('SensorId.ACCELEROMETER')<sup>19+</sup>
 
 off(type: SensorId.ACCELEROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
@@ -2078,7 +2114,7 @@ Unsubscribes from data of the acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2095,7 +2131,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.AccelerometerResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.ACCELEROMETER;
@@ -2145,7 +2181,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>9+</sup>  
+## sensor.off('SensorId.ACCELEROMETER_UNCALIBRATED')<sup>9+</sup>  
 
 off(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
@@ -2199,7 +2235,92 @@ try {
 }
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>19+</sup>
+## sensor.off('SensorId.FUSION_PRESSURE')<sup>22+</sup>
+
+off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;FusionPressureResponse&gt;): void
+
+Unsubscribes from the fused pressure sensor data.
+
+**System capability**: SystemCapability.Sensors.Sensor
+
+**Parameters**
+
+| Name             | Type                                                        | Mandatory| Description                                                        |
+|------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type             | [SensorId](#sensorid9).FUSION_PRESSURE            | Yes  | Sensor type. The value is fixed at SensorId.FUSION_PRESSURE. |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  No| Sensor parameters, including **deviceId** and **sensorIndex**.|
+| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | No  | Callback used for unsubscription. If this parameter is not specified, all callbacks of the specified sensor type are unsubscribed from.|
+
+**Error codes**
+
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**Example**
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+enum Ret { OK, Failed = -1 }
+
+// Sensor callback
+const sensorCallback = (response: sensor.FusionPressureResponse) => {
+  console.info(`callback response: ${JSON.stringify(response)}`);
+}
+// Sensor type
+const sensorType = sensor.SensorId.FUSION_PRESSURE;
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
+
+function sensorSubscribe(): Ret {
+  let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
+  try {
+    // Query all sensors.
+    const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
+    if (!sensorList.length) {
+      return Ret.Failed;
+    }
+    // Obtain the target sensor based on the actual service logic.
+    const targetSensor = sensorList
+      // Filter all sensors with deviceId 1 and sensorId 2 as required. This example is for reference only. You need to adjust the filtering logic accordingly.
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // Select the sensor with sensorIndex 0 among all sensors of the same type.
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
+    // Subscribe to sensor events.
+    sensor.on(sensorType, sensorCallback, { sensorInfoParam });
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`Failed to invoke sensor.on. Code: ${e.code}, message: ${e.message}`);
+    ret = Ret.Failed;
+  }
+  return ret;
+}
+
+function sensorUnsubscribe(): Ret {
+  let ret: Ret = Ret.OK;
+  // Use try catch to capture possible exceptions.
+  try {
+    sensor.off(sensorType, sensorInfoParam, sensorCallback);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`Failed to invoke sensor.off. Code: ${e.code}, message: ${e.message}`);
+    ret = Ret.Failed;
+  }
+  return ret;
+}
+```
+
+## sensor.off('SensorId.ACCELEROMETER_UNCALIBRATED')<sup>19+</sup>
 
 off(type: SensorId.ACCELEROMETER_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
@@ -2219,7 +2340,7 @@ Unsubscribes from data of the uncalibrated acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2236,7 +2357,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.AccelerometerUncalibratedResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.ACCELEROMETER_UNCALIBRATED;
@@ -2286,7 +2407,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### AMBIENT_LIGHT<sup>9+</sup> 
+## sensor.off('SensorId.AMBIENT_LIGHT')<sup>9+</sup> 
 
 off(type: SensorId.AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;): void
 
@@ -2337,7 +2458,7 @@ try {
 }
 ```
 
-### AMBIENT_LIGHT<sup>19+</sup>
+## sensor.off('SensorId.AMBIENT_LIGHT')<sup>19+</sup>
 
 off(type: SensorId.AMBIENT_LIGHT, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;LightResponse&gt;): void
 
@@ -2355,7 +2476,7 @@ Unsubscribes from data of the ambient light sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2371,7 +2492,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.LightResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.AMBIENT_LIGHT;
@@ -2421,7 +2542,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### AMBIENT_TEMPERATURE<sup>9+</sup> 
+## sensor.off('SensorId.AMBIENT_TEMPERATURE')<sup>9+</sup> 
 
 off(type: SensorId.AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
@@ -2472,7 +2593,7 @@ try {
 }
 ```
 
-### AMBIENT_TEMPERATURE<sup>19+</sup>
+## sensor.off('SensorId.AMBIENT_TEMPERATURE')<sup>19+</sup>
 
 off(type: SensorId.AMBIENT_TEMPERATURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
@@ -2490,7 +2611,7 @@ Unsubscribes from data of the ambient temperature sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2506,7 +2627,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.AmbientTemperatureResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.AMBIENT_TEMPERATURE;
@@ -2557,7 +2678,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-### BAROMETER<sup>9+</sup>  
+## sensor.off('SensorId.BAROMETER')<sup>9+</sup>  
 
 off(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): void
 
@@ -2608,7 +2729,7 @@ try {
 }
 ```
 
-### BAROMETER<sup>19+</sup>
+## sensor.off('SensorId.BAROMETER')<sup>19+</sup>
 
 off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;BarometerResponse&gt;): void
 
@@ -2626,7 +2747,7 @@ Unsubscribes from data of the barometer sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2642,7 +2763,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.BarometerResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.BAROMETER;
@@ -2692,7 +2813,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### GRAVITY<sup>9+</sup> 
+## sensor.off('SensorId.GRAVITY')<sup>9+</sup> 
 
 off(type: SensorId.GRAVITY, callback?: Callback&lt;GravityResponse&gt;): void
 
@@ -2744,7 +2865,7 @@ try {
 
 ```
 
-### GRAVITY<sup>19+</sup>
+## sensor.off('SensorId.GRAVITY')<sup>19+</sup>
 
 off(type: SensorId.GRAVITY, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GravityResponse&gt;): void
 
@@ -2762,7 +2883,7 @@ Unsubscribes from data of the gravity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2778,7 +2899,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.GravityResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.GRAVITY;
@@ -2828,7 +2949,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### GYROSCOPE<sup>9+</sup> 
+## sensor.off('SensorId.GYROSCOPE')<sup>9+</sup> 
 
 off(type: SensorId.GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
@@ -2884,7 +3005,7 @@ try {
 }
 ```
 
-### GYROSCOPE<sup>19+</sup>
+## sensor.off('SensorId.GYROSCOPE')<sup>19+</sup>
 
 off(type: SensorId.GYROSCOPE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
@@ -2906,7 +3027,7 @@ Unsubscribes from data of the gyroscope sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -2923,7 +3044,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.GyroscopeResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.GYROSCOPE;
@@ -2973,7 +3094,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>9+</sup> 
+## sensor.off('SensorId.GYROSCOPE_UNCALIBRATED')<sup>9+</sup> 
 
 off(type: SensorId.GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -3027,7 +3148,7 @@ try {
 }
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>19+</sup>
+## sensor.off('SensorId.GYROSCOPE_UNCALIBRATED')<sup>19+</sup>
 
 off(type: SensorId.GYROSCOPE_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -3047,7 +3168,7 @@ Unsubscribes from data of the uncalibrated gyroscope sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3064,7 +3185,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.GyroscopeUncalibratedResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.GYROSCOPE_UNCALIBRATED;
@@ -3114,7 +3235,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### HALL<sup>9+</sup> 
+## sensor.off('SensorId.HALL')<sup>9+</sup> 
 
 off(type: SensorId.HALL, callback?: Callback&lt;HallResponse&gt;): void
 
@@ -3165,7 +3286,7 @@ try {
 }
 ```
 
-### HALL<sup>19+</sup>
+## sensor.off('SensorId.HALL')<sup>19+</sup>
 
 off(type: SensorId.HALL, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HallResponse&gt;): void
 
@@ -3183,7 +3304,7 @@ Unsubscribes from data of the Hall effect sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3199,7 +3320,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.HallResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.HALL;
@@ -3249,7 +3370,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### HEART_RATE<sup>9+</sup> 
+## sensor.off('SensorId.HEART_RATE')<sup>9+</sup> 
 
 off(type: SensorId.HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;): void
 
@@ -3303,7 +3424,7 @@ try {
 }
 ```
 
-### HEART_RATE<sup>19+</sup>
+## sensor.off('SensorId.HEART_RATE')<sup>19+</sup>
 
 off(type: SensorId.HEART_RATE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HeartRateResponse&gt;): void
 
@@ -3323,7 +3444,7 @@ Unsubscribes from data of the heart rate sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3340,7 +3461,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.HeartRateResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.HEART_RATE;
@@ -3390,7 +3511,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### HUMIDITY<sup>9+</sup> 
+## sensor.off('SensorId.HUMIDITY')<sup>9+</sup> 
 
 off(type: SensorId.HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;): void
 
@@ -3441,7 +3562,7 @@ try {
 }
 ```
 
-### HUMIDITY<sup>19+</sup>
+## sensor.off('SensorId.HUMIDITY')<sup>19+</sup>
 
 off(type: SensorId.HUMIDITY, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HumidityResponse&gt;): void
 
@@ -3459,7 +3580,7 @@ Unsubscribes from data of the humidity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3475,7 +3596,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.HumidityResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.HUMIDITY;
@@ -3525,7 +3646,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### LINEAR_ACCELEROMETER<sup>9+</sup> 
+## sensor.off('SensorId.LINEAR_ACCELEROMETER')<sup>9+</sup> 
 
 off(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
@@ -3579,7 +3700,7 @@ try {
 }
 ```
 
-### LINEAR_ACCELEROMETER<sup>19+</sup>
+## sensor.off('SensorId.LINEAR_ACCELEROMETER')<sup>19+</sup>
 
 off(type: SensorId.LINEAR_ACCELEROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
@@ -3599,7 +3720,7 @@ Unsubscribes from data of the linear acceleration sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3616,7 +3737,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.LinearAccelerometerResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.LINEAR_ACCELEROMETER;
@@ -3666,7 +3787,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### MAGNETIC_FIELD<sup>9+</sup> 
+## sensor.off('SensorId.MAGNETIC_FIELD')<sup>9+</sup> 
 
 off(type: SensorId.MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
@@ -3717,7 +3838,7 @@ try {
 }
 ```
 
-### MAGNETIC_FIELD<sup>19+</sup>
+## sensor.off('SensorId.MAGNETIC_FIELD')<sup>19+</sup>
 
 off(type: SensorId.MAGNETIC_FIELD, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
@@ -3735,7 +3856,7 @@ Unsubscribes from data of the magnetic field sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3751,7 +3872,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.MagneticFieldResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.MAGNETIC_FIELD;
@@ -3801,7 +3922,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>9+</sup> 
+## sensor.off('SensorId.MAGNETIC_FIELD_UNCALIBRATED')<sup>9+</sup> 
 
 off(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
@@ -3852,7 +3973,7 @@ try {
 }
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>19+</sup>
+## sensor.off('SensorId.MAGNETIC_FIELD_UNCALIBRATED')<sup>19+</sup>
 
 off(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
@@ -3886,7 +4007,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.MagneticFieldUncalibratedResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED;
@@ -3936,7 +4057,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### ORIENTATION<sup>9+</sup> 
+## sensor.off('SensorId.ORIENTATION')<sup>9+</sup>
 
 off(type: SensorId.ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;): void
 
@@ -3989,7 +4110,7 @@ try {
 }
 ```
 
-### ORIENTATION<sup>19+</sup>
+## sensor.off('SensorId.ORIENTATION')<sup>19+</sup>
 
 off(type: SensorId.ORIENTATION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;OrientationResponse&gt;): void
 
@@ -4009,7 +4130,7 @@ Unsubscribes from data of the orientation sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4025,7 +4146,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.OrientationResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.ORIENTATION;
@@ -4075,7 +4196,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### PEDOMETER<sup>9+</sup>
+## sensor.off('SensorId.PEDOMETER')<sup>9+</sup>
 
 off(type: SensorId.PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;): void
 
@@ -4129,7 +4250,7 @@ try {
 }
 ```
 
-### PEDOMETER<sup>19+</sup>
+## sensor.off('SensorId.PEDOMETER')<sup>19+</sup>
 
 off(type: SensorId.PEDOMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;PedometerResponse&gt;): void
 
@@ -4149,7 +4270,7 @@ Unsubscribes from data of the pedometer sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4166,7 +4287,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.PedometerResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.PEDOMETER;
@@ -4216,7 +4337,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### PEDOMETER_DETECTION<sup>9+</sup> 
+## sensor.off('SensorId.PEDOMETER_DETECTION')<sup>9+</sup> 
 
 off(type: SensorId.PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
@@ -4270,7 +4391,7 @@ try {
 }
 ```
 
-### PEDOMETER_DETECTION<sup>19+</sup>
+## sensor.off('SensorId.PEDOMETER_DETECTION')<sup>19+</sup>
 
 off(type: SensorId.PEDOMETER_DETECTION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
@@ -4290,7 +4411,7 @@ Unsubscribes from data of the pedometer detection sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4307,7 +4428,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.PedometerDetectionResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.PEDOMETER_DETECTION;
@@ -4357,7 +4478,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### PROXIMITY<sup>9+</sup>  
+## sensor.off('SensorId.PROXIMITY')<sup>9+</sup>  
 
 off(type: SensorId.PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;): void
 
@@ -4408,7 +4529,7 @@ try {
 }
 ```
 
-### PROXIMITY<sup>19+</sup>
+## sensor.off('SensorId.PROXIMITY')<sup>19+</sup>
 
 off(type: SensorId.PROXIMITY, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;ProximityResponse&gt;): void
 
@@ -4426,7 +4547,7 @@ Unsubscribes from data of the proximity sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4442,7 +4563,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.ProximityResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.PROXIMITY;
@@ -4492,7 +4613,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### ROTATION_VECTOR<sup>9+</sup> 
+## sensor.off('SensorId.ROTATION_VECTOR')<sup>9+</sup>
 
 off(type: SensorId.ROTATION_VECTOR, callback?: Callback&lt;RotationVectorResponse&gt;): void
 
@@ -4543,7 +4664,7 @@ try {
 }
 ```
 
-### ROTATION_VECTOR<sup>19+</sup>
+## sensor.off('SensorId.ROTATION_VECTOR')<sup>19+</sup>
 
 off(type: SensorId.ROTATION_VECTOR, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;RotationVectorResponse&gt;): void
 
@@ -4561,7 +4682,7 @@ Unsubscribes from data of the rotation vector sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4577,7 +4698,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.RotationVectorResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.ROTATION_VECTOR;
@@ -4627,7 +4748,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### SIGNIFICANT_MOTION<sup>9+</sup> 
+## sensor.off('SensorId.SIGNIFICANT_MOTION')<sup>9+</sup>
 
 off(type: SensorId.SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
@@ -4678,7 +4799,7 @@ try {
 }
 ```
 
-### SIGNIFICANT_MOTION<sup>19+</sup>
+## sensor.off('SensorId.SIGNIFICANT_MOTION')<sup>19+</sup>
 
 off(type: SensorId.SIGNIFICANT_MOTION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
@@ -4696,7 +4817,7 @@ Unsubscribes from valid motion sensor data.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4712,7 +4833,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.SignificantMotionResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.SIGNIFICANT_MOTION;
@@ -4762,7 +4883,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### WEAR_DETECTION<sup>9+</sup> 
+## sensor.off('SensorId.WEAR_DETECTION')<sup>9+</sup>
 
 off(type: SensorId.WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;): void
 
@@ -4774,7 +4895,7 @@ Unsubscribes from data of the wear detection sensor.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | [SensorId](#sensorid9).WEAR_DETECTION                        | Yes  | Sensor type. The value is fixed at **SensorId.WEAR_DETECTION**.             |
+| type     | [SensorId](#sensorid9)                        | Yes  | Sensor type. The value is fixed at [SensorId](#sensorid9).WEAR_DETECTION.             |
 | callback | Callback&lt;[WearDetectionResponse](#weardetectionresponse)&gt; | No  | Callback used for unsubscription. If this parameter is not specified, all callbacks of the specified sensor type are unsubscribed from.|
 
 **Error codes**
@@ -4813,7 +4934,7 @@ try {
 }
 ```
 
-### WEAR_DETECTION<sup>19+</sup>
+## sensor.off('SensorId.WEAR_DETECTION')<sup>19+</sup>
 
 off(type: SensorId.WEAR_DETECTION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;WearDetectionResponse&gt;): void
 
@@ -4831,7 +4952,7 @@ Unsubscribes from data of the wear detection sensor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Sensor Error Codes](errorcode-sensor.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4847,7 +4968,7 @@ enum Ret { OK, Failed = -1 }
 
 // Sensor callback
 const sensorCallback = (response: sensor.WearDetectionResponse) => {
-  console.log(`callback response: ${JSON.stringify(response)}`);
+  console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // Sensor type
 const sensorType = sensor.SensorId.WEAR_DETECTION;
@@ -4897,7 +5018,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### sensorStatusChange<sup>19+<sup>
+## sensor.off('sensorStatusChange')<sup>19+<sup>
 
 off(type: 'sensorStatusChange', callback?: Callback&lt;SensorStatusEvent&gt;): void
 
@@ -4909,7 +5030,7 @@ Disables listening for sensor status changes.
 
 | Name  | Type                                                        | Mandatory| Description                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     |  'sensorStatusChange'         | Yes  | Event type. The value **sensorStatusChange** indicates the sensor status change event.            |
+| type     | string         | Yes  | Event type. The value **sensorStatusChange** indicates the sensor status change event.            |
 | callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | No  | Callback passed to **sensor.on**. If this parameter is left unspecified, listening will be disabled for all callbacks.|
 
 **Error codes**
@@ -4965,7 +5086,7 @@ Obtains the information about all sensors on the device.
 
 | Name         | Type                                                        | Mandatory| Description    |
 | --------------- | ------------------------------------------------------------ | ---- |--------|
-| deviceId | number                 | No  | Device ID. The default value is **-1**, indicating the local device. To query the ID of other devices, call [getSensorListByDeviceSync](#sensorgetsensorlistbydevicesync19).|
+| deviceId | number                 | No  | Device ID. The default value is **-1**, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [sensorStatusChange](#sensoronsensorstatuschange19) to obtain the device ID.|
 
 
 **Return value**
@@ -4985,8 +5106,8 @@ try {
   const deviceId = 1;
   // The first deviceId is optional. By default, it is set to the ID of the local device.
   const sensorList: sensor.Sensor[] = sensor.getSensorListByDeviceSync(deviceId);
-  console.log(`sensorList length: ${sensorList.length}`);
-  console.log(`sensorList: ${JSON.stringify(sensorList)}`);
+  console.info(`sensorList length: ${sensorList.length}`);
+  console.info(`sensorList: ${JSON.stringify(sensorList)}`);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
@@ -5007,7 +5128,7 @@ Obtains information about the sensor of a specific type.
 | Name         | Type                                                        | Mandatory| Description      |
 | --------------- | ------------------------------------------------------------ | ---- |----------|
 | type     | [SensorId](#sensorid9) | Yes  | Sensor type.|
-| deviceId | number                 | No  | Device ID. The default value is **-1**, indicating the local device. To query the ID of other devices, call [getSensorListByDeviceSync](#sensorgetsensorlistbydevicesync19).|
+| deviceId | number                 | No  | Device ID. The default value is **-1**, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [sensorStatusChange](#sensoronsensorstatuschange19) to obtain the device ID.|
 
 
 **Return value**
@@ -5026,8 +5147,8 @@ try {
   const deviceId = 1;
   // The second deviceId is optional.
   const sensorList: sensor.Sensor[] = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELEROMETER, deviceId);
-  console.log(`sensorList length: ${sensorList.length}`);
-  console.log(`sensorList Json: ${JSON.stringify(sensorList)}`);
+  console.info(`sensorList length: ${sensorList.length}`);
+  console.info(`sensorList Json: ${JSON.stringify(sensorList)}`);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
@@ -5352,8 +5473,7 @@ try {
 
 ## sensor.getAngleVariation<sup>9+</sup>
 
- getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;,
-        callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 Obtains the angle change between two rotation matrices. This API uses an asynchronous callback to return the result.
 
@@ -5365,7 +5485,7 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 | --------------------- | ---------------------------------------- | ---- | --------------------------------- |
 | currentRotationMatrix | Array&lt;number&gt;                      | Yes  | Current rotation matrix.               |
 | preRotationMatrix     | Array&lt;number&gt;                      | Yes  | The other rotation matrix.                   |
-| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the angle change around the z, x, and y axes.|
+| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -5433,7 +5553,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 | Type                              | Description                             |
 | ---------------------------------- | --------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the angle change around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -5583,8 +5703,7 @@ try {
 
 ## sensor.transformRotationMatrix<sup>9+</sup> 
 
-transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions,
-        callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 Transforms a rotation vector based on the coordinate system. This API uses an asynchronous callback to return the result.
 
@@ -5805,7 +5924,7 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 | Name        | Type                                    | Mandatory| Description                             |
 | -------------- | ---------------------------------------- | ---- | --------------------------------- |
 | rotationMatrix | Array&lt;number&gt;                      | Yes  | Rotation matrix.                   |
-| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the rotation angle around the z, x, and y axes.|
+| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -5859,13 +5978,13 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Name        | Type               | Mandatory| Description          |
 | -------------- | ------------------- | ---- | -------------- |
-| rotationMatrix | Array&lt;number&gt; | Yes  | Rotation vector.|
+| rotationMatrix | Array&lt;number&gt; | Yes  | Rotation matrix.|
 
 **Return value**
 
 | Type                              | Description                             |
 | ---------------------------------- | --------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angle around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -6172,6 +6291,14 @@ try {
       return;
     }
     console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
+    sensor.on(sensor.SensorId.ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
+      console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+      console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+      console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+    }, { interval: 100000000 });
+    setTimeout(() => {
+      sensor.off(sensor.SensorId.ACCELEROMETER);
+    }, 500);
   });
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -6303,6 +6430,7 @@ Enumerates the sensor types.
 | HEART_RATE                  | 278  | Heart rate sensor.                                                |
 | WEAR_DETECTION              | 280  | Wear detection sensor.                                            |
 | ACCELEROMETER_UNCALIBRATED  | 281  | Uncalibrated acceleration sensor.                                      |
+| FUSION_PRESSURE<sup>22+</sup>             | 283  | Fused pressure sensor.<br>This sensor is available only on smart watches.                       |
 
 
 ## SensorInfoParam<sup>19+</sup>
@@ -6314,10 +6442,10 @@ Defines sensor parameters, including **deviceId** and **sensorIndex**.
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
 
-| Name         | Type    | Mandatory| Description                                                                                                                                                    |
-|-------------|--------|----|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| deviceId    | number | No | Device ID. The default value is **-1**, which indicates the local device. You can use [getSensorListByDeviceSync](#sensorgetsensorlistbydevicesync19) to query other device IDs.<br>**Atomic service API**: This API can be used in atomic services since API version 19.     |
-| sensorIndex | number | No | Sensor index. The default value is **0**, which indicates the default sensor on the device. You can use [getSensorListByDeviceSync](#sensorgetsensorlistbydevicesync19) to query other sensor IDs.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| Name         | Type    | Read-Only | Optional | Description            |
+|--------------|----------|-------|------|----------------- |
+| deviceId    | number    | No   | Yes   | Device ID. The default value is -1, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [sensorStatusChange](#sensoronsensorstatuschange19) to obtain the device ID.     |
+| sensorIndex | number    | No   | Yes   | Sensor index. The default value is **0**, indicating the default sensor on the device. You can use [getSensorList](#sensorgetsensorlist9) or [sensorStatusChange](#sensoronsensorstatuschange19) to obtain the sensor index.|
 
 
 ## SensorStatusEvent<sup>19+</sup>
@@ -6326,45 +6454,14 @@ Defines a device status change event.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
-| Name            | Type     | Read-Only| Optional| Description                         |
-|----------------|---------|----|----|-----------------------------|
-| timestamp      | number  | Yes | No | Timestamp when an event occurs.                  |
-| sensorId       | number  | Yes | No | Sensor ID.                     |
-| sensorIndex    | number  | Yes | No | Sensor index.                     |
-| isSensorOnline | boolean | Yes | No | Sensor status. The value **true** indicates that the sensor is online, and the value **false** indicates the opposite.|
-| deviceId       | number  | Yes | No | Device ID.                      |
-| deviceName     | string  | Yes | No | Device name.                      |
-
-## SensorType<sup>(deprecated)</sup>
-
-Enumerates the sensor types.
-
-**System capability**: SystemCapability.Sensors.Sensor
-
-
-| Name                                      | Value  | Description                  |
-| ------------------------------------------ | ---- | ---------------------- |
-| SENSOR_TYPE_ID_ACCELEROMETER               | 1    | Acceleration sensor.        |
-| SENSOR_TYPE_ID_GYROSCOPE                   | 2    | Gyroscope sensor.        |
-| SENSOR_TYPE_ID_AMBIENT_LIGHT               | 5    | Ambient light sensor.        |
-| SENSOR_TYPE_ID_MAGNETIC_FIELD              | 6    | Magnetic field sensor.          |
-| SENSOR_TYPE_ID_BAROMETER                   | 8    | Barometer sensor.        |
-| SENSOR_TYPE_ID_HALL                        | 10   | Hall effect sensor.          |
-| SENSOR_TYPE_ID_PROXIMITY                   | 12   | Proximity sensor.        |
-| SENSOR_TYPE_ID_HUMIDITY                    | 13   | Humidity sensor.          |
-| SENSOR_TYPE_ID_ORIENTATION                 | 256  | Orientation sensor.          |
-| SENSOR_TYPE_ID_GRAVITY                     | 257  | Gravity sensor.          |
-| SENSOR_TYPE_ID_LINEAR_ACCELERATION         | 258  | Linear acceleration sensor.    |
-| SENSOR_TYPE_ID_ROTATION_VECTOR             | 259  | Rotation vector sensor.      |
-| SENSOR_TYPE_ID_AMBIENT_TEMPERATURE         | 260  | Ambient temperature sensor.      |
-| SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED | 261  | Uncalibrated magnetic field sensor.    |
-| SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED      | 263  | Uncalibrated gyroscope sensor.  |
-| SENSOR_TYPE_ID_SIGNIFICANT_MOTION          | 264  | Significant motion sensor.      |
-| SENSOR_TYPE_ID_PEDOMETER_DETECTION         | 265  | Pedometer detection sensor.      |
-| SENSOR_TYPE_ID_PEDOMETER                   | 266  | Pedometer sensor.          |
-| SENSOR_TYPE_ID_HEART_RATE                  | 278  | Heart rate sensor.          |
-| SENSOR_TYPE_ID_WEAR_DETECTION              | 280  | Wear detection sensor.      |
-| SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED  | 281  | Uncalibrated acceleration sensor.|
+| Name          | Type    | Read-Only| Optional| Description                         |
+|----------------|---------|-----|-----|-----------------------------|
+| timestamp      | number  | No | No | Timestamp when the event occurs, in milliseconds.                  |
+| sensorId       | number  | No | No | Sensor ID.                     |
+| sensorIndex    | number  | No | No | Sensor index.                     |
+| isSensorOnline | boolean | No | No | Sensor status. The value **true** indicates that the sensor is online, and the value **false** indicates the opposite.|
+| deviceId       | number  | No | No | Device ID.                      |
+| deviceName     | string  | No | No | Device name.                      |
 
 ## SensorAccuracy<sup>11+</sup>
 
@@ -6391,8 +6488,8 @@ Describes the timestamp of the sensor data.
 
 | Name     | Type  | Read-Only| Optional| Description                    |
 | --------- | ------ | ---- | ---- | ------------------------ |
-| timestamp | number | Yes  | Yes  | Timestamp when the sensor reports data. Time from device startup to data reporting, in nanoseconds.|
-| accuracy<sup>11+</sup> | [SensorAccuracy](#sensoraccuracy11)<sup>11+</sup> | Yes  | No  | Accuracy of the sensor data.|
+| timestamp | number | No  | No  | Timestamp when the sensor reports data. Time from device startup to data reporting, in nanoseconds.|
+| accuracy<sup>11+</sup> | [SensorAccuracy](#sensoraccuracy11)<sup>11+</sup> | No  | No  | Accuracy of the sensor data.|
 
 ## Sensor<sup>9+</sup>
 
@@ -6402,20 +6499,21 @@ Describes the sensor information.
 
 | Name                         | Type     | Read-Only| Optional| Description              |
 |-----------------------------|---------|----|----|------------------|
-| sensorName                  | string  | Yes | No | Sensor name.          |
-| vendorName                  | string  | Yes | No | Vendor of the sensor.         |
-| firmwareVersion             | string  | Yes | No | Firmware version of the sensor.        |
-| hardwareVersion             | string  | Yes | No | Hardware version of the sensor.        |
-| sensorId                    | number  | Yes | No | Sensor type ID.        |
-| maxRange                    | number  | Yes | No | Maximum measurement range of the sensor.    |
-| minSamplePeriod             | number  | Yes | No | Minimum sampling period.      |
-| maxSamplePeriod             | number  | Yes | No | Maximum sampling period.      |
-| precision                   | number  | Yes | No | Precision of the sensor.          |
-| power                       | number  | Yes | No | Estimated sensor power, in mA.|
-| sensorIndex<sup>19+</sup>   | number  | Yes | Yes | Sensor index.          |
-| deviceId<sup>19+</sup>      | number  | Yes | Yes | Device ID.           |
-| deviceName<sup>19+</sup>    | string  | Yes | Yes | Device name.           |
-| isLocalSensor<sup>19+</sup> | boolean | Yes | Yes | Whether the sensor is a local sensor.        |
+| sensorName                  | string  | No | No | Sensor name.          |
+| vendorName                  | string  | No | No | Vendor of the sensor.         |
+| firmwareVersion             | string  | No | No | Firmware version of the sensor.        |
+| hardwareVersion             | string  | No | No | Hardware version of the sensor.        |
+| sensorId                    | number  | No | No | Sensor type ID.        |
+| maxRange                    | number  | No | No | Maximum measurement range of the sensor.    |
+| minSamplePeriod             | number  | No | No | Minimum sampling period.      |
+| maxSamplePeriod             | number  | No | No | Maximum sampling period.      |
+| precision                   | number  | No | No | Precision of the sensor.          |
+| power                       | number  | No | No | Estimated sensor power, in mA.|
+| sensorIndex<sup>19+</sup>   | number  | No | Yes | Sensor index.          |
+| deviceId<sup>19+</sup>      | number  | No | Yes | Device ID.           |
+| deviceName<sup>19+</sup>    | string  | No | Yes | Device name.           |
+| isLocalSensor<sup>19+</sup> | boolean | No | Yes | Whether the sensor is a local sensor. The value **true** indicates a local sensor, and the value **false** indicates the opposite.|
+| isMockSensor<sup>23+</sup> | boolean | No | Yes | Whether the sensor is a mock sensor. The value **true** indicates a mock sensor, and the value **false** indicates the opposite.|
 
 ## AccelerometerResponse
 
@@ -6428,9 +6526,9 @@ Describes the acceleration sensor data. It extends from [Response](#response).
 
 | Name| Type  | Read-Only| Optional| Description                                                      |
 | ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| x    | number | Yes  | Yes  | Acceleration along the x-axis of the device, in m/s². The value is equal to the reported physical quantity.|
-| y    | number | Yes  | Yes  | Acceleration along the y-axis of the device, in m/s². The value is equal to the reported physical quantity.|
-| z    | number | Yes  | Yes  | Acceleration along the z-axis of the device, in m/s². The value is equal to the reported physical quantity.|
+| x    | number | No  | No  | Acceleration along the x-axis of the device, in m/s². The value is equal to the reported physical quantity.|
+| y    | number | No  | No  | Acceleration along the y-axis of the device, in m/s². The value is equal to the reported physical quantity.|
+| z    | number | No  | No  | Acceleration along the z-axis of the device, in m/s². The value is equal to the reported physical quantity.|
 
 
 ## LinearAccelerometerResponse
@@ -6442,26 +6540,38 @@ Describes the linear acceleration sensor data. It extends from [Response](#respo
 
 | Name| Type  | Read-Only| Optional| Description                                    |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| x    | number | Yes  | Yes  | Linear acceleration along the x-axis of the device, in m/s².|
-| y    | number | Yes  | Yes  | Linear acceleration along the y-axis of the device, in m/s².|
-| z    | number | Yes  | Yes  | Linear acceleration along the z-axis of the device, in m/s².|
+| x    | number | No  | No  | Linear acceleration along the x-axis of the device, in m/s².|
+| y    | number | No  | No  | Linear acceleration along the y-axis of the device, in m/s².|
+| z    | number | No  | No  | Linear acceleration along the z-axis of the device, in m/s².|
 
 
 ## AccelerometerUncalibratedResponse
 
-Describes the uncalibrated acceleration sensor data. It extends from [Response](#response).
+Describes the uncalibrated acceleration sensor data. It is inherited from [Response](#response).
 
 **System capability**: SystemCapability.Sensors.Sensor
 
 
 | Name | Type  | Read-Only| Optional| Description                                          |
 | ----- | ------ | ---- | ---- | ---------------------------------------------- |
-| x     | number | Yes  | Yes  | Uncalibrated acceleration along the x-axis of the device, in m/s².    |
-| y     | number | Yes  | Yes  | Uncalibrated acceleration along the y-axis of the device, in m/s².    |
-| z     | number | Yes  | Yes  | Uncalibrated acceleration along the z-axis of the device, in m/s².    |
-| biasX | number | Yes  | Yes  | Uncalibrated acceleration bias along the x-axis of the device, in m/s².|
-| biasY | number | Yes  | Yes  | Uncalibrated acceleration bias along the y-axis of the device, in m/s².|
-| biasZ | number | Yes  | Yes  | Uncalibrated acceleration bias along the z-axis of the device, in m/s².|
+| x     | number | No  | No  | Uncalibrated acceleration along the x-axis of the device, in m/s².    |
+| y     | number | No  | No  | Uncalibrated acceleration along the y-axis of the device, in m/s².    |
+| z     | number | No  | No  | Uncalibrated acceleration along the z-axis of the device, in m/s².    |
+| biasX | number | No  | No  | Uncalibrated acceleration bias along the x-axis of the device, in m/s².|
+| biasY | number | No  | No  | Uncalibrated acceleration bias along the y-axis of the device, in m/s².|
+| biasZ | number | No  | No  | Uncalibrated acceleration bias along the z-axis of the device, in m/s².|
+
+
+## FusionPressureResponse<sup>22+</sup>
+
+Describes the fusion pressure sensor data. It extends from [Response](#response).
+
+**System capability**: SystemCapability.Sensors.Sensor
+
+
+| Name           | Type  | Read-Only| Optional| Description                                          |
+| -------------- | ------ | ---- | ---- | ---------------------------------------------- |
+| fusionPressure | number | No  | No  | Pressure percentage on the fused pressure sensor, in percentage (%)    |
 
 
 ## GravityResponse
@@ -6473,9 +6583,9 @@ Describes the gravity sensor data. It extends from [Response](#response).
 
 | Name| Type  | Read-Only| Optional| Description                                    |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| x    | number | Yes  | Yes  | Gravitational acceleration along the x-axis of the device, in m/s².|
-| y    | number | Yes  | Yes  | Gravitational acceleration along the y-axis of the device, in m/s².|
-| z    | number | Yes  | Yes  | Gravitational acceleration along the z-axis of the device, in m/s².|
+| x    | number | No  | No  | Gravitational acceleration along the x-axis of the device, in m/s².|
+| y    | number | No  | No  | Gravitational acceleration along the y-axis of the device, in m/s².|
+| z    | number | No  | No  | Gravitational acceleration along the z-axis of the device, in m/s².|
 
 
 ## OrientationResponse
@@ -6489,9 +6599,9 @@ Describes the orientation sensor data. It extends from [Response](#response).
 
 | Name | Type  | Read-Only| Optional| Description                                                 |
 | ----- | ------ | ---- | ---- | ----------------------------------------------------- |
-| alpha | number | Yes  | Yes  | Rotation angle of the device around the z-axis, in degrees. The value ranges from 0 to 360. |
-| beta  | number | Yes  | Yes  | Rotation angle of the device around the x-axis, in degrees. The value ranges from 0 to ±180.|
-| gamma | number | Yes  | Yes  | Rotation angle of the device around the y-axis, in degrees. The value ranges from 0 to ±90. |
+| alpha | number | No  | No  | Rotation angle of the device around the z-axis, in degrees. The value ranges from 0 to 360. |
+| beta  | number | No  | No  | Rotation angle of the device around the x-axis, in degrees. The value ranges from 0 to ±180.|
+| gamma | number | No  | No  | Rotation angle of the device around the y-axis, in degrees. The value ranges from 0 to ±90. |
 
 
 ## RotationVectorResponse
@@ -6503,10 +6613,10 @@ Describes the rotation vector sensor data. It extends from [Response](#response)
 
 | Name| Type  | Read-Only| Optional| Description             |
 | ---- | ------ | ---- | ---- | ----------------- |
-| x    | number | Yes  | Yes  | X-component of the rotation vector.|
-| y    | number | Yes  | Yes  | Y-component of the rotation vector.|
-| z    | number | Yes  | Yes  | Z-component of the rotation vector.|
-| w    | number | Yes  | Yes  | Scalar, which describes the rotation status of the device relative to a reference direction, in radians           |
+| x    | number | No  | No  | X-component of the rotation vector.|
+| y    | number | No  | No  | Y-component of the rotation vector.|
+| z    | number | No  | No  | Z-component of the rotation vector.|
+| w    | number | No  | No  | Scalar, which describes the rotation status of the device relative to a reference direction, in radians           |
 
 
 ## GyroscopeResponse
@@ -6520,9 +6630,9 @@ Describes the gyroscope sensor data. It extends from [Response](#response).
 
 | Name| Type  | Read-Only| Optional| Description                                                  |
 | ---- | ------ | ---- | ---- | ------------------------------------------------------ |
-| x    | number | Yes  | Yes  | Angular velocity of rotation around the x-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
-| y    | number | Yes  | Yes  | Angular velocity of rotation around the y-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
-| z    | number | Yes  | Yes  | Angular velocity of rotation around the z-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
+| x    | number | No  | No  | Angular velocity of rotation around the x-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
+| y    | number | No  | No  | Angular velocity of rotation around the y-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
+| z    | number | No  | No  | Angular velocity of rotation around the z-axis of the device, in rad/s. The value is equal to the reported physical quantity.|
 
 
 ## GyroscopeUncalibratedResponse
@@ -6534,12 +6644,12 @@ Describes the uncalibrated gyroscope sensor data. It extends from [Response](#re
 
 | Name | Type  | Read-Only| Optional| Description                                      |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
-| x     | number | Yes  | Yes  | Uncalibrated angular velocity of rotation around the x-axis of the device, in rad/s.    |
-| y     | number | Yes  | Yes  | Uncalibrated angular velocity of rotation around the y-axis of the device, in rad/s.    |
-| z     | number | Yes  | Yes  | Uncalibrated angular velocity of rotation around the z-axis of the device, in rad/s.    |
-| biasX | number | Yes  | Yes  | Uncalibrated angular velocity bias of rotation around the x-axis of the device, in rad/s.|
-| biasY | number | Yes  | Yes  | Uncalibrated angular velocity bias of rotation around the y-axis of the device, in rad/s.|
-| biasZ | number | Yes  | Yes  | Uncalibrated angular velocity bias of rotation around the z-axis of the device, in rad/s.|
+| x     | number | No  | No  | Uncalibrated angular velocity of rotation around the x-axis of the device, in rad/s.    |
+| y     | number | No  | No  | Uncalibrated angular velocity of rotation around the y-axis of the device, in rad/s.    |
+| z     | number | No  | No  | Uncalibrated angular velocity of rotation around the z-axis of the device, in rad/s.    |
+| biasX | number | No  | No  | Uncalibrated angular velocity bias of rotation around the x-axis of the device, in rad/s.|
+| biasY | number | No  | No  | Uncalibrated angular velocity bias of rotation around the y-axis of the device, in rad/s.|
+| biasZ | number | No  | No  | Uncalibrated angular velocity bias of rotation around the z-axis of the device, in rad/s.|
 
 
 ## SignificantMotionResponse
@@ -6551,7 +6661,7 @@ Describes the significant motion sensor data. It extends from [Response](#respon
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| scalar | number | Yes  | Yes  | Intensity of a motion. This parameter specifies whether a device has a significant motion on three physical axes (X, Y, and Z). The value **1** is reported when the device has a significant motion.|
+| scalar | number | No  | No  | Intensity of a motion. This parameter specifies whether a device has a significant motion on three physical axes (X, Y, and Z). The value **1** is reported when the device has a significant motion.|
 
 
 ## ProximityResponse
@@ -6563,7 +6673,7 @@ Describes the proximity sensor data. It extends from [Response](#response).
 
 | Name    | Type  | Read-Only| Optional| Description                                                      |
 | -------- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| distance | number | Yes  | Yes  | Proximity between the visible object and the device monitor. The value **0** means the two are close to each other, and a value greater than 0 means that they are far away from each other.|
+| distance | number | No  | No  | Proximity between the visible object and the device monitor. The value **0** means the two are close to each other, and a value greater than 0 means that they are far away from each other.|
 
 
 ## LightResponse
@@ -6575,9 +6685,9 @@ Describes the ambient light sensor data. It extends from [Response](#response).
 
 | Name                           | Type  | Read-Only| Optional| Description                                                        |
 | ------------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| intensity                       | number | Yes  | Yes  | Illumination, in lux.                                      |
-| colorTemperature<sup>12+</sup>  | number | Yes  | Yes  | Color temperature, in Kelvin. This parameter is optional. If this parameter is not supported, **undefined** is returned. If this parameter is supported, a normal value is returned.|
-| infraredLuminance<sup>12+</sup> | number | Yes  | Yes  | IR luminance, in cd/m2. This parameter is optional. If this parameter is not supported, **undefined** is returned. If this parameter is supported, a normal value is returned.|
+| intensity                       | number | No  | No  | Illumination, in lux.                                      |
+| colorTemperature<sup>12+</sup>  | number | No  | Yes  | Color temperature, in Kelvin. This parameter is optional. If this parameter is not supported, a fixed value (customized by the sensor) is returned. If this parameter is supported, a normal value is returned.|
+| infraredLuminance<sup>12+</sup> | number | No  | Yes  | Infrared luminance, in cd/m². This parameter is optional. If this parameter is not supported, a fixed value (customized by the sensor) is returned. If this parameter is supported, a normal value is returned.|
 
 
 ## HallResponse
@@ -6589,7 +6699,7 @@ Describes the Hall effect sensor data. It extends from [Response](#response).
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| status | number | Yes  | Yes  | Hall effect sensor status. This parameter specifies whether a magnetic field exists around a device. The value **0** means that a magnetic field does not exist, and a value greater than **0** means the opposite.|
+| status | number | No  | No  | Hall effect sensor status. This parameter specifies whether a magnetic field exists around a device. The value **0** means that a magnetic field does not exist, and a value greater than **0** means the opposite.|
 
 
 ## MagneticFieldResponse
@@ -6601,9 +6711,9 @@ Describes the magnetic field sensor data. It extends from [Response](#response).
 
 | Name| Type  | Read-Only| Optional| Description                        |
 | ---- | ------ | ---- | ---- | ---------------------------- |
-| x    | number | Yes  | Yes  | Magnetic field strength on the x-axis, in μT.|
-| y    | number | Yes  | Yes  | Magnetic field strength on the y-axis, in μT.|
-| z    | number | Yes  | Yes  | Magnetic field strength on the z-axis, in μT.|
+| x    | number | No  | No  | Magnetic field strength on the x-axis, in μT.|
+| y    | number | No  | No  | Magnetic field strength on the y-axis, in μT.|
+| z    | number | No  | No  | Magnetic field strength on the z-axis, in μT.|
 
 
 ## MagneticFieldUncalibratedResponse
@@ -6615,12 +6725,12 @@ Describes the uncalibrated magnetic field sensor data. It extends from [Response
 
 | Name | Type  | Read-Only| Optional| Description                                  |
 | ----- | ------ | ---- | ---- | -------------------------------------- |
-| x     | number | Yes  | Yes  | Uncalibrated magnetic field strength on the x-axis, in μT.    |
-| y     | number | Yes  | Yes  | Uncalibrated magnetic field strength on the y-axis, in μT.    |
-| z     | number | Yes  | Yes  | Uncalibrated magnetic field strength on the z-axis, in μT.    |
-| biasX | number | Yes  | Yes  | Bias of the uncalibrated magnetic field strength on the x-axis, in μT.|
-| biasY | number | Yes  | Yes  | Bias of the uncalibrated magnetic field strength on the y-axis, in μT.|
-| biasZ | number | Yes  | Yes  | Bias of the uncalibrated magnetic field strength on the z-axis, in μT.|
+| x     | number | No  | No  | Uncalibrated magnetic field strength on the x-axis, in μT.    |
+| y     | number | No  | No  | Uncalibrated magnetic field strength on the y-axis, in μT.    |
+| z     | number | No  | No  | Uncalibrated magnetic field strength on the z-axis, in μT.    |
+| biasX | number | No  | No  | Bias of the uncalibrated magnetic field strength on the x-axis, in μT.|
+| biasY | number | No  | No  | Bias of the uncalibrated magnetic field strength on the y-axis, in μT.|
+| biasZ | number | No  | No  | Bias of the uncalibrated magnetic field strength on the z-axis, in μT.|
 
 
 ## PedometerResponse
@@ -6632,7 +6742,7 @@ Describes the pedometer sensor data. It extends from [Response](#response).
 
 | Name | Type  | Read-Only| Optional| Description            |
 | ----- | ------ | ---- | ---- | ---------------- |
-| steps | number | Yes  | Yes  | Number of steps a user has walked.|
+| steps | number | No  | No  | Number of steps a user has walked.|
 
 
 ## HumidityResponse
@@ -6644,7 +6754,7 @@ Describes the humidity sensor data. It extends from [Response](#response).
 
 | Name    | Type  | Read-Only| Optional| Description                                                     |
 | -------- | ------ | ---- | ---- | --------------------------------------------------------- |
-| humidity | number | Yes  | Yes  | Ambient relative humidity, in a percentage (%).|
+| humidity | number | No  | No  | Ambient relative humidity, in a percentage (%).|
 
 
 ## PedometerDetectionResponse
@@ -6656,7 +6766,7 @@ Describes the pedometer detection sensor data. It extends from [Response](#respo
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| scalar | number | Yes  | Yes  | Pedometer detection. This parameter specifies whether a user takes a step. The value **0** means that the user does not take a step, and **1** means that the user takes a step.|
+| scalar | number | No  | No  | Pedometer detection. This parameter specifies whether a user takes a step. The value **0** means that the user does not take a step, and **1** means that the user takes a step.|
 
 
 ## AmbientTemperatureResponse
@@ -6668,7 +6778,7 @@ Describes the ambient temperature sensor data. It extends from [Response](#respo
 
 | Name       | Type  | Read-Only| Optional| Description                      |
 | ----------- | ------ | ---- | ---- | -------------------------- |
-| temperature | number | Yes  | Yes  | Ambient temperature, in degree Celsius.|
+| temperature | number | No  | No  | Ambient temperature, in degree Celsius.|
 
 
 ## BarometerResponse
@@ -6680,7 +6790,7 @@ Describes the barometer sensor data. It extends from [Response](#response).
 
 | Name    | Type  | Read-Only| Optional| Description                  |
 | -------- | ------ | ---- | ---- | ---------------------- |
-| pressure | number | Yes  | Yes  | Atmospheric pressure, in units of hPa.|
+| pressure | number | No  | No  | Atmospheric pressure, in units of hPa.|
 
 
 ## HeartRateResponse
@@ -6692,7 +6802,7 @@ Describes the heart rate sensor data. It extends from [Response](#response).
 
 | Name     | Type  | Read-Only| Optional| Description                                   |
 | --------- | ------ | ---- | ---- | --------------------------------------- |
-| heartRate | number | Yes  | Yes  | Heart rate, in beats per minute (bpm).|
+| heartRate | number | No  | No  | Heart rate, in beats per minute (bpm).|
 
 
 ## WearDetectionResponse
@@ -6704,7 +6814,7 @@ Describes the wear detection sensor data. It extends from [Response](#response).
 
 | Name | Type  | Read-Only| Optional| Description                                            |
 | ----- | ------ | ---- | ---- | ------------------------------------------------ |
-| value | number | Yes  | Yes  | Whether the device is being worn. The value **1** means that the device is being worn, and **0** means the opposite.|
+| value | number | No  | No  | Whether the device is being worn. The value **1** means that the device is being worn, and **0** means the opposite.|
 
 
 ## Options
@@ -6717,8 +6827,8 @@ Describes the sensor data reporting frequency.
 
 | Name    | Type                                                       | Read-Only| Optional| Description                                                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ---- |--------------------------------------------------------------------------------------------|
-| interval | number\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> | Yes  | Yes  | Frequency at which a sensor reports data. The default value is 200,000,000 ns. The maximum and minimum values of this parameter are determined by the reporting frequency supported by the hardware. If the configured frequency is greater than the maximum value, the maximum value is used for data reporting. If the configured frequency is less than the minimum value, the minimum value is used for data reporting.|
-| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) | Yes| Yes| Sensor parameters, including **deviceId** and **sensorIndex**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                        |
+| interval | number\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> | No  | Yes  | Frequency at which a sensor reports data. The default value is 200,000,000 ns. The maximum and minimum values of this parameter are determined by the reporting frequency supported by the hardware. If the configured frequency is greater than the maximum value, the maximum value is used for data reporting. If the configured frequency is less than the minimum value, the minimum value is used for data reporting.|
+| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) | No| Yes| Sensor parameters, including **deviceId** and **sensorIndex**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                        |
 
 ## SensorFrequency<sup>11+</sup>
 
@@ -6744,8 +6854,8 @@ Describes the response for setting the rotation matrix.
 
 | Name       | Type               | Read-Only| Optional| Description      |
 | ----------- | ------------------- | ---- | ---- | ---------- |
-| rotation    | Array&lt;number&gt; | Yes  | Yes  | Rotation matrix.|
-| inclination | Array&lt;number&gt; | Yes  | Yes  | Inclination matrix.|
+| rotation    | Array&lt;number&gt; | No  | No  | Rotation matrix.|
+| inclination | Array&lt;number&gt; | No  | No  | Inclination matrix.|
 
 
 ## CoordinatesOptions
@@ -6756,8 +6866,8 @@ Describes the coordinate options.
 
 | Name| Type  | Read-Only| Optional| Description       |
 | ---- | ------ | ---- | ---- | ----------- |
-| x    | number | Yes  | Yes  | X coordinate direction.|
-| y    | number | Yes  | Yes  | Y coordinate direction.|
+| x    | number | No  | No  | X coordinate direction.|
+| y    | number | No  | No  | Y coordinate direction.|
 
 
 ## GeomagneticResponse
@@ -6768,13 +6878,13 @@ Describes a geomagnetic response object.
 
 | Name           | Type  | Read-Only| Optional| Description                                              |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| x               | number | Yes  | Yes  | North component of the geomagnetic field.                                  |
-| y               | number | Yes  | Yes  | East component of the geomagnetic field.                                  |
-| z               | number | Yes  | Yes  | Vertical component of the geomagnetic field.                                |
-| geomagneticDip  | number | Yes  | Yes  | Magnetic dip, also called magnetic inclination, which is the angle measured from the horizontal plane to the magnetic field vector.            |
-| deflectionAngle | number | Yes  | Yes  | Magnetic declination, which is the angle between true north (geographic north) and the magnetic north (the horizontal component of the field).|
-| levelIntensity  | number | Yes  | Yes  | Horizontal intensity of the magnetic field vector field.                                |
-| totalIntensity  | number | Yes  | Yes  | Total intensity of the magnetic field vector.                                  |
+| x               | number | No  | No  | North component of the geomagnetic field, in nT.                                  |
+| y               | number | No  | No  | East component of the geomagnetic field, in nT.                                  |
+| z               | number | No  | No  | Vertical component of the geomagnetic field, in nT.                                |
+| geomagneticDip  | number | No  | No  | Magnetic dip, also called magnetic inclination, which is the angle measured from the horizontal plane to the magnetic field vector, in degrees (°).            |
+| deflectionAngle | number | No  | No  | Magnetic declination, which is the angle between true north (geographic north) and the magnetic north (the horizontal component of the field), in degrees (°).|
+| levelIntensity  | number | No  | No  | Horizontal intensity of the geomagnetic field, in nT.                                |
+| totalIntensity  | number | No  | No  | Total intensity of the geomagnetic field, in nT.                                  |
 
 ## LocationOptions
 
@@ -6784,21 +6894,20 @@ Describes the geographical location.
 
 | Name     | Type  | Read-Only| Optional| Description      |
 | --------- | ------ | ---- | ---- | ---------- |
-| latitude  | number | Yes  | Yes  | Latitude.    |
-| longitude | number | Yes  | Yes  | Longitude.    |
-| altitude  | number | Yes  | Yes  | Altitude.|
+| latitude  | number | No  | No  | Latitude, in degrees (°).    |
+| longitude | number | No  | No  | Longitude, in degrees (°).    |
+| altitude  | number | No  | No  | Altitude, in meters.|
 
-## sensor.on<sup>(deprecated)</sup>
 
-### ACCELEROMETER<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_ACCELEROMETER')<sup>(deprecated)</sup>
 
-on(type:  SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;,options?: Options): void
+on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;,options?: Options): void
 
 Subscribes to data changes of the acceleration sensor. If this API is called multiple times for the same application, the last call takes effect.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.ACCELEROMETER](#accelerometer9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.ACCELEROMETER](#sensoronsensoridaccelerometer9) instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -6826,7 +6935,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accelero
 );
 ```
 
-### LINEAR_ACCELERATION<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
@@ -6834,7 +6943,7 @@ Subscribes to data changes of the linear acceleration sensor. If this API is cal
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.LINEAR_ACCELEROMETER](#linear_accelerometer9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.LINEAR_ACCELEROMETER](#sensoronsensoridlinear_accelerometer9) instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -6848,7 +6957,7 @@ Subscribes to data changes of the linear acceleration sensor. If this API is cal
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | Yes  | Callback used to return the linear acceleration sensor data. The reported data type in the callback is **LinearAccelerometerResponse**.|
 | options  | [Options](#options)                                          | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
 
-### ACCELEROMETER_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options): void
 
@@ -6856,7 +6965,7 @@ Subscribes to data changes of the uncalibrated acceleration sensor. If this API 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.ACCELEROMETER_UNCALIBRATED](#sensoronsensoridaccelerometer_uncalibrated9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -6888,7 +6997,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: se
 
 ```
 
-### GRAVITY<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_GRAVITY')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityResponse&gt;,options?: Options): void
 
@@ -6896,7 +7005,7 @@ Subscribes to data changes of the gravity sensor. If this API is called multiple
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.GRAVITY](#gravity9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.GRAVITY](#sensoronsensoridgravity9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -6922,7 +7031,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityRespons
 );
 ```
 
-### GYROSCOPE<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_GYROSCOPE')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options): void
 
@@ -6930,7 +7039,7 @@ Subscribes to data changes of the gyroscope sensor. If this API is called multip
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.GYROSCOPE](#gyroscope9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.GYROSCOPE](#sensoronsensoridgyroscope9) instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -6958,7 +7067,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeRes
 );
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback:Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
@@ -6966,7 +7075,7 @@ Subscribes to data changes of the uncalibrated gyroscope sensor. If this API is 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.GYROSCOPE_UNCALIBRATED](#sensoronsensoridgyroscope_uncalibrated9) instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -6997,7 +7106,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sensor
 );
 ```
 
-### SIGNIFICANT_MOTION<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options): void
 
@@ -7005,7 +7114,7 @@ Subscribes to data changes of the significant motion sensor. If this API is call
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.SIGNIFICANT_MOTION](#significant_motion9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.SIGNIFICANT_MOTION](#sensoronsensoridsignificant_motion9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7029,7 +7138,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.Sig
 );
 ```
 
-### PEDOMETER_DETECTION<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
@@ -7037,7 +7146,7 @@ Subscribes to data changes of the pedometer detection sensor. If this API is cal
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER_DETECTION](#pedometer_detection9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER_DETECTION](#sensoronsensoridpedometer_detection9) instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -7063,7 +7172,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.Pe
 );
 ```
 
-### PEDOMETER<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_PEDOMETER')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options): void
 
@@ -7071,7 +7180,7 @@ Subscribes to data changes of the pedometer sensor. If this API is called multip
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER](#pedometer9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER](#sensoronsensoridpedometer9) instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -7097,15 +7206,15 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerRes
 );
 ```
 
-### AMBIENT_TEMPERATURE<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE')<sup>(deprecated)</sup>
 
-on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE,callback:Callback&lt;AmbientTemperatureResponse&gt;,  options?: Options): void
+on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback:Callback&lt;AmbientTemperatureResponse&gt;,  options?: Options): void
 
 Subscribes to data changes of the ambient temperature sensor. If this API is called multiple times for the same application, the last call takes effect.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.AMBIENT_TEMPERATURE](#ambient_temperature9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.AMBIENT_TEMPERATURE](#sensoronsensoridambient_temperature9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7129,7 +7238,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.Am
 );
 ```
 
-### MAGNETIC_FIELD<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;,options?: Options): void
 
@@ -7137,7 +7246,7 @@ Subscribes to data changes of the magnetic field sensor. If this API is called m
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD](#magnetic_field9)<sup>9+</sup> instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD](#sensoronsensoridmagnetic_field9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7163,15 +7272,15 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.Magneti
 );
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED')<sup>(deprecated)</sup>
 
-on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED,callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options): void
+on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options): void
 
 Subscribes to data changes of the uncalibrated magnetic field sensor. If this API is called multiple times for the same application, the last call takes effect.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#sensoronsensoridmagnetic_field_uncalibrated9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7200,7 +7309,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data: s
 );
 ```
 
-### PROXIMITY<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_PROXIMITY')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityResponse&gt;,options?: Options): void
 
@@ -7208,7 +7317,7 @@ Subscribes to data changes of the proximity sensor. If this API is called multip
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.PROXIMITY](#proximity9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PROXIMITY](#sensoronsensoridproximity9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7232,7 +7341,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityRes
 );
 ```
 
-### HUMIDITY<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_HUMIDITY')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityResponse&gt;,options?: Options): void
 
@@ -7240,7 +7349,7 @@ Subscribes to data changes of the humidity sensor. If this API is called multipl
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.HUMIDITY](#humidity9)<sup>9+</sup> instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.HUMIDITY](#sensoronsensoridhumidity9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7264,7 +7373,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityRespo
 );
 ```
 
-### BAROMETER<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_BAROMETER')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerResponse&gt;,options?: Options): void
 
@@ -7272,7 +7381,7 @@ Subscribes to data changes of the barometer sensor. If this API is called multip
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.BAROMETER](#barometer9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.BAROMETER](#sensoronsensoridbarometer9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7296,7 +7405,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerRes
 );
 ```
 
-### HALL<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_HALL')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt;, options?: Options): void
 
@@ -7304,7 +7413,7 @@ Subscribes to data changes of the Hall effect sensor. If this API is called mult
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.HALL](#hall9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.HALL](#sensoronsensoridhall9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7328,7 +7437,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) => 
 );
 ```
 
-### AMBIENT_LIGHT<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options): void
 
@@ -7336,7 +7445,7 @@ Subscribes to data changes of the ambient light sensor. If this API is called mu
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.AMBIENT_LIGHT](#ambient_light9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.AMBIENT_LIGHT](#sensoronsensoridambient_light9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7360,7 +7469,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightRes
 );
 ```
 
-### ORIENTATION<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_ORIENTATION')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options): void
 
@@ -7368,7 +7477,7 @@ Subscribes to data changes of the orientation sensor. If this API is called mult
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.ORIENTATION](#orientation9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.ORIENTATION](#sensoronsensoridorientation9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7394,7 +7503,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.Orientatio
 );
 ```
 
-### HEART_RATE<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_HEART_RATE')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options): void
 
@@ -7402,7 +7511,7 @@ Subscribes to data changes of the heart rate sensor. If this API is called multi
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.HEART_RATE](#heart_rate9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.HEART_RATE](#sensoronsensoridheart_rate9) instead.
 
 **Required permissions**: ohos.permission.HEALTH_DATA
 
@@ -7416,15 +7525,15 @@ Subscribes to data changes of the heart rate sensor. If this API is called multi
 | callback | Callback&lt;[HeartRateResponse](#heartrateresponse)&gt;      | Yes  | Callback used to return the heart rate sensor data. The reported data type in the callback is **HeartRateResponse**.|
 | options  | [Options](#options)                                          | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
 
-### ROTATION_VECTOR<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR')<sup>(deprecated)</sup>
 
-on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,callback: Callback&lt;RotationVectorResponse&gt;,options?: Options): void
+on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;,options?: Options): void
 
 Subscribes to data changes of the rotation vector sensor. If this API is called multiple times for the same application, the last call takes effect.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.ROTATION_VECTOR](#rotation_vector9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.ROTATION_VECTOR](#sensoronsensoridrotation_vector9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7451,7 +7560,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.Rotati
 );
 ```
 
-### WEAR_DETECTION<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_WEAR_DETECTION')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;,options?: Options): void
 
@@ -7459,7 +7568,7 @@ Subscribes to data changes of the wear detection sensor. If this API is called m
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.WEAR_DETECTION](#wear_detection9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.WEAR_DETECTION](#sensoronsensoridwear_detection9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7483,9 +7592,8 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, (data: sensor.WearDet
 );
 ```
 
-## sensor.once<sup>(deprecated)</sup>
 
-### ACCELEROMETER<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_ACCELEROMETER')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;): void
 
@@ -7493,7 +7601,7 @@ Subscribes to only one data change of the acceleration sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.ACCELEROMETER](#accelerometer9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ACCELEROMETER](#sensoroncesensoridaccelerometer9) instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -7518,17 +7626,17 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accele
 });
 ```
 
-### LINEAR_ACCELERATION<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION')<sup>(deprecated)</sup>
 
-once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;LinearAccelerometerResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback:Callback&lt;LinearAccelerometerResponse&gt;): void
 
 Subscribes to only one data change of the linear acceleration sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.LINEAR_ACCELEROMETER](#linear_accelerometer9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.LINEAR_ACCELEROMETER](#sensoroncesensoridlinear_accelerometer9) instead.
 
-**Required permissions**: ohos.permission.ACCELERATION
+**Required permissions**: ohos.permission.ACCELEROMETER
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7539,7 +7647,7 @@ Subscribes to only one data change of the linear acceleration sensor.
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_LINEAR_ACCELERATION | Yes  | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_LINEAR_ACCELERATION**.  |
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | Yes  | One-shot callback used to return the linear acceleration sensor data. The reported data type in the callback is **LinearAccelerometerResponse**.|
 
-### ACCELEROMETER_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
@@ -7547,7 +7655,7 @@ Subscribes to only one data change of the uncalibrated acceleration sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ACCELEROMETER_UNCALIBRATED](#sensoroncesensoridaccelerometer_uncalibrated9) instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -7575,7 +7683,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: 
 });
 ```
 
-### GRAVITY<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_GRAVITY')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityResponse&gt;): void
 
@@ -7583,7 +7691,7 @@ Subscribes to only one data change of the gravity sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.GRAVITY](#gravity9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.GRAVITY](#sensoroncesensoridgravity9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7606,7 +7714,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityRespo
   });
 ```
 
-### GYROSCOPE<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_GYROSCOPE')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;): void
 
@@ -7614,7 +7722,7 @@ Subscribes to only one data change of the gyroscope sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.GYROSCOPE](#gyroscope9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.GYROSCOPE](#sensoroncesensoridgyroscope9) instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -7639,7 +7747,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeR
 });
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -7647,7 +7755,7 @@ Subscribes to only one data change of the uncalibrated gyroscope sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.GYROSCOPE_UNCALIBRATED](#sensoroncesensoridgyroscope_uncalibrated9)> instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -7676,15 +7784,15 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sens
 });
 ```
 
-### SIGNIFICANT_MOTION<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION')<sup>(deprecated)</sup>
 
-once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION,callback: Callback&lt;SignificantMotionResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;): void
 
 Subscribes to only one data change of the significant motion sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.SIGNIFICANT_MOTION](#significant_motion9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.SIGNIFICANT_MOTION](#sensoroncesensoridsignificant_motion9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7705,15 +7813,15 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.S
 });
 ```
 
-### PEDOMETER_DETECTION<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION')<sup>(deprecated)</sup>
 
-once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION,callback: Callback&lt;PedometerDetectionResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;): void
 
 Subscribes to only one data change of the pedometer detection sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.PEDOMETER_DETECTION](#pedometer_detection9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.PEDOMETER_DETECTION](#sensoroncesensoridpedometer_detection9) instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -7736,7 +7844,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.
 });
 ```
 
-### PEDOMETER<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_PEDOMETER')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerResponse&gt;): void
 
@@ -7744,7 +7852,7 @@ Subscribes to only one data change of the pedometer sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.PEDOMETER](#pedometer9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.PEDOMETER](#sensoroncesensoridpedometer9) instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -7767,15 +7875,15 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerR
 });
 ```
 
-### AMBIENT_TEMPERATURE<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE')<sup>(deprecated)</sup>
 
-once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE,callback: Callback&lt;AmbientTemperatureResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;): void
 
 Subscribes to only one data change of the ambient temperature sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.AMBIENT_TEMPERATURE](#ambient_temperature9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.AMBIENT_TEMPERATURE](#sensoroncesensoridambient_temperature9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7796,7 +7904,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.
 });
 ```
 
-### MAGNETIC_FIELD<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;): void
 
@@ -7804,7 +7912,7 @@ Subscribes to only one data change of the magnetic field sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.MAGNETIC_FIELD](#magnetic_field9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.MAGNETIC_FIELD](#sensoroncesensoridmagnetic_field9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7827,15 +7935,15 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.Magne
 });
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED')<sup>(deprecated)</sup>
 
-once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED,callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
 Subscribes to only one data change of the uncalibrated magnetic field sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.MAGNETIC_FIELD_UNCALIBRATED](#sensoroncesensoridmagnetic_field_uncalibrated9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7861,7 +7969,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data:
 });
 ```
 
-### PROXIMITY<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_PROXIMITY')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityResponse&gt;): void
 
@@ -7869,7 +7977,7 @@ Subscribes to only one data change of the proximity sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.PROXIMITY](#proximity9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.PROXIMITY](#sensoroncesensoridproximity9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7891,7 +7999,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityR
 );
 ```
 
-### HUMIDITY<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_HUMIDITY')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityResponse&gt;): void
 
@@ -7899,7 +8007,7 @@ Subscribes to only one data change of the humidity sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.HUMIDITY](#humidity9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.HUMIDITY](#sensoroncesensoridhumidity9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7920,7 +8028,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityRes
 });
 ```
 
-### BAROMETER<sup>(deprecated)</sup>
+## sensor.once('type: SensorType.SENSOR_TYPE_ID_BAROMETER')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerResponse&gt;): void
 
@@ -7928,7 +8036,7 @@ Subscribes to only one data change of the barometer sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.BAROMETER](#barometer9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.BAROMETER](#sensoroncesensoridbarometer9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7949,7 +8057,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerR
 });
 ```
 
-### HALL<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_HALL')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt;): void
 
@@ -7957,7 +8065,7 @@ Subscribes to only one data change of the Hall effect sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.HALL](#hall9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.HALL](#sensoroncesensoridhall9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7978,7 +8086,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) =
 });
 ```
 
-### AMBIENT_LIGHT<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;): void
 
@@ -7986,7 +8094,7 @@ Subscribes to only one data change of the ambient light sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.AMBIENT_LIGHT](#ambient_light9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.AMBIENT_LIGHT](#sensoroncesensoridambient_light9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8007,7 +8115,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightR
 });
 ```
 
-### ORIENTATION<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_ORIENTATION')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;OrientationResponse&gt;): void
 
@@ -8015,7 +8123,7 @@ Subscribes to only one data change of the orientation sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.ORIENTATION](#orientation9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ORIENTATION](#sensoroncesensoridorientation9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8038,7 +8146,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.Orientat
 });
 ```
 
-### ROTATION_VECTOR<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;): void
 
@@ -8046,7 +8154,7 @@ Subscribes to only one data change of the rotation vector sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.ROTATION_VECTOR](#rotation_vector9-1)<sup>9+</sup> instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ROTATION_VECTOR](#sensoroncesensoridrotation_vector9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8070,7 +8178,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.Rota
 });
 ```
 
-### HEART_RATE<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_HEART_RATE')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;): void
 
@@ -8078,7 +8186,7 @@ Subscribes to only one data change of the heart rate sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.HEART_RATE](#heart_rate9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.HEART_RATE](#sensoroncesensoridheart_rate9) instead.
 
 **Required permissions**: ohos.permission.HEART_RATE 
 
@@ -8102,7 +8210,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, (data: sensor.HeartRate
 });
 ```
 
-### WEAR_DETECTION<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_WEAR_DETECTION')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;): void
 
@@ -8110,7 +8218,7 @@ Subscribes to only one data change of the wear detection sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.WEAR_DETECTION](#wear_detection9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.WEAR_DETECTION](#sensoroncesensoridwear_detection9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8132,9 +8240,8 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, (data: sensor.WearD
 });
 ```
 
-## sensor.off<sup>(deprecated)</sup>
 
-### ACCELEROMETER<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_ACCELEROMETER')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
@@ -8142,7 +8249,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.ACCELEROMETER<sup>9+</sup>](#accelerometer9-2) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ACCELEROMETER](#sensoroffsensoridaccelerometer9) instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -8169,7 +8276,7 @@ function callback(data: sensor.AccelerometerResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback);
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
@@ -8177,7 +8284,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ACCELEROMETER_UNCALIBRATED](#sensoroffsensoridaccelerometer_uncalibrated9) instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -8207,7 +8314,7 @@ function callback(data: sensor.AccelerometerUncalibratedResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback);
 ```
 
-### AMBIENT_LIGHT<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;): void
 
@@ -8215,7 +8322,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_LIGHT](#ambient_light9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_LIGHT](#sensoroffsensoridambient_light9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8238,7 +8345,7 @@ function callback(data: sensor.LightResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
 ```
 
-### AMBIENT_TEMPERATURE<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
@@ -8246,7 +8353,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_TEMPERATURE](#ambient_temperature9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_TEMPERATURE](#sensoroffsensoridambient_temperature9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8269,7 +8376,7 @@ function callback(data: sensor.AmbientTemperatureResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback);
 ```
 
-### BAROMETER<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_BAROMETER')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): void
 
@@ -8277,7 +8384,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.BAROMETER](#barometer9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.BAROMETER](#sensoroffsensoridbarometer9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8300,7 +8407,7 @@ function callback(data: sensor.BarometerResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, callback);
 ```
 
-### GRAVITY<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_GRAVITY')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback?: Callback&lt;GravityResponse&gt;): void
 
@@ -8308,7 +8415,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.GRAVITY](#gravity9-2)<sup>9+</sup> instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.GRAVITY](#sensoroffsensoridgravity9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8333,7 +8440,7 @@ function callback(data: sensor.GravityResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
 ```
 
-### GYROSCOPE<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_GYROSCOPE')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
@@ -8341,7 +8448,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.GYROSCOPE](#gyroscope9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.GYROSCOPE](#sensoroffsensoridgyroscope9) instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -8368,7 +8475,7 @@ function callback(data: sensor.GyroscopeResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback);
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -8376,7 +8483,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.GYROSCOPE_UNCALIBRATED](#sensoroffsensoridgyroscope_uncalibrated9) instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -8403,7 +8510,7 @@ function callback(data: sensor.GyroscopeUncalibratedResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback);
 ```
 
-### HALL<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_HALL')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_HALL, callback?: Callback&lt;HallResponse&gt;): void
 
@@ -8411,7 +8518,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.HALL](#hall9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HALL](#sensoroffsensoridhall9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8434,7 +8541,7 @@ function callback(data: sensor.HallResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
 ```
 
-### HEART_RATE<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_HEART_RATE')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;): void
 
@@ -8442,7 +8549,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.HEART_RATE](#heart_rate9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HEART_RATE](#sensoroffsensoridheart_rate9) instead.
 
 **Required permissions**: ohos.permission.HEALTH_DATA
 
@@ -8467,7 +8574,7 @@ function callback(data: sensor.HeartRateResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, callback);
 ```
 
-### HUMIDITY<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_HUMIDITY')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;): void
 
@@ -8475,7 +8582,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.HUMIDITY](#humidity9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HUMIDITY](#sensoroffsensoridhumidity9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8498,7 +8605,7 @@ function callback(data: sensor.HumidityResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, callback);
 ```
 
-### LINEAR_ACCELERATION<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
@@ -8506,7 +8613,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.LINEAR_ACCELEROMETER](#linear_accelerometer9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.LINEAR_ACCELEROMETER](#sensoroffsensoridlinear_accelerometer9) instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -8533,7 +8640,7 @@ function callback(data: sensor.LinearAccelerometerResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
 ```
 
-### MAGNETIC_FIELD<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD')<sup>(deprecated)</sup>
 
  off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
@@ -8541,7 +8648,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.MAGNETIC_FIELD](#magnetic_field9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.MAGNETIC_FIELD](#sensoroffsensoridmagnetic_field9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8566,7 +8673,7 @@ function callback(data: sensor.MagneticFieldResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED')<sup>(deprecated)</sup>
 
  off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
@@ -8574,7 +8681,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.MAGNETIC_FIELD_UNCALIBRATED](#sensoroffsensoridmagnetic_field_uncalibrated9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8602,7 +8709,7 @@ function callback(data: sensor.MagneticFieldUncalibratedResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback);
 ```
 
-### ORIENTATION<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_ORIENTATION')<sup>(deprecated)</sup>
 
  off(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;): void
 
@@ -8610,7 +8717,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.ORIENTATION](#orientation9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ORIENTATION](#sensoroffsensoridorientation9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8635,7 +8742,7 @@ function callback(data: sensor.OrientationResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
 ```
 
-### PEDOMETER<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_PEDOMETER')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;): void
 
@@ -8643,7 +8750,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER](#pedometer9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER](#sensoroffsensoridpedometer9) instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -8668,7 +8775,7 @@ function callback(data: sensor.PedometerResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, callback);
 ```
 
-### PEDOMETER_DETECTION<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
@@ -8676,7 +8783,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER_DETECTION](#pedometer_detection9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER_DETECTION](#sensoroffsensoridpedometer_detection9) instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -8701,7 +8808,7 @@ function callback(data: sensor.PedometerDetectionResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback);
 ```
 
-### PROXIMITY<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_PROXIMITY')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;): void
 
@@ -8709,7 +8816,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.PROXIMITY](#proximity9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PROXIMITY](#sensoroffsensoridproximity9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8732,7 +8839,7 @@ function callback(data: sensor.ProximityResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, callback);
 ```
 
-### ROTATION_VECTOR<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback?: Callback&lt;RotationVectorResponse&gt;): void
 
@@ -8740,7 +8847,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.ROTATION_VECTOR](#rotation_vector9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ROTATION_VECTOR](#sensoroffsensoridrotation_vector9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8766,15 +8873,15 @@ function callback(data: sensor.RotationVectorResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
 ```
 
-### SIGNIFICANT_MOTION<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
-Unsubscribes from the significant motion sensor data.
+Unsubscribes from valid motion sensor data.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.SIGNIFICANT_MOTION](#significant_motion9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.SIGNIFICANT_MOTION](#sensoroffsensoridsignificant_motion9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8797,7 +8904,7 @@ function callback(data: sensor.SignificantMotionResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback);
 ```
 
-### WEAR_DETECTION<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_WEAR_DETECTION')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;): void
 
@@ -8805,7 +8912,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.WEAR_DETECTION](#wear_detection9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.WEAR_DETECTION](#sensoroffsensoridwear_detection9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8836,7 +8943,7 @@ Rotates a rotation vector so that it can represent the coordinate system in diff
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.transformRotationMatrix](#sensortransformrotationmatrix9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.transformRotationMatrix](#sensortransformrotationmatrix9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8844,7 +8951,7 @@ Rotates a rotation vector so that it can represent the coordinate system in diff
 
 | Name          | Type                                     | Mandatory| Description                      |
 | ---------------- | ----------------------------------------- | ---- | -------------------------- |
-| inRotationVector | Array&lt;number&gt;                       | Yes  | Rotation vector to rotate.            |
+| inRotationVector | Array&lt;number&gt;                       | Yes  | Rotation vector.            |
 | coordinates      | [CoordinatesOptions](#coordinatesoptions) | Yes  | Direction of the coordinate system.          |
 | callback         | AsyncCallback&lt;Array&lt;number&gt;&gt;  | Yes  | Callback used to return the rotation vector after being rotated.|
 
@@ -8874,7 +8981,7 @@ Rotates a rotation vector so that it can represent the coordinate system in diff
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.transformRotationMatrix](#sensortransformrotationmatrix9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.transformRotationMatrix](#sensortransformrotationmatrix9-1) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8882,7 +8989,7 @@ Rotates a rotation vector so that it can represent the coordinate system in diff
 
 | Name             | Type                                      | Mandatory  | Description      |
 | ---------------- | ---------------------------------------- | ---- | -------- |
-| inRotationVector | Array&lt;number&gt;                      | Yes   | Rotation vector to rotate. |
+| inRotationVector | Array&lt;number&gt;                      | Yes   | Rotation vector. |
 | coordinates      | [CoordinatesOptions](#coordinatesoptions) | Yes   | Direction of the coordinate system.|
 
 **Return value**
@@ -8916,7 +9023,7 @@ Obtains the geomagnetic field of a geographic location. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8953,7 +9060,7 @@ Obtains the geomagnetic field of a geographic location. This API uses a promise 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9-1) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8994,7 +9101,7 @@ Obtains the altitude at which the device is located based on the sea-level atmos
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getDeviceAltitude](#sensorgetdevicealtitude9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getDeviceAltitude](#sensorgetdevicealtitude9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9029,7 +9136,7 @@ Obtains the altitude at which the device is located based on the sea-level atmos
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getDeviceAltitude](#sensorgetdevicealtitude9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getDeviceAltitude](#sensorgetdevicealtitude9-1) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9069,7 +9176,7 @@ Obtains the magnetic dip based on the inclination matrix. This API uses an async
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getInclination](#sensorgetinclination9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getInclination](#sensorgetinclination9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9103,7 +9210,7 @@ Obtains the magnetic dip based on the inclination matrix. This API uses a promis
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getInclination](#sensorgetinclination9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getInclination](#sensorgetinclination9-1) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9141,7 +9248,7 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getAngleVariation](#sensorgetanglevariation9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getAngleVariation](#sensorgetanglevariation9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9150,8 +9257,8 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 | Name               | Type                                    | Mandatory| Description                                 |
 | --------------------- | ---------------------------------------- | ---- | ------------------------------------- |
 | currentRotationMatrix | Array&lt;number&gt;                      | Yes  | Current rotation matrix.                   |
-| preRotationMatrix     | Array&lt;number&gt;                      | Yes  | Peer rotation matrix.                       |
-| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the angle change around the z, x, and y axes.|
+| preRotationMatrix     | Array&lt;number&gt;                      | Yes  | The other rotation matrix.                       |
+| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angle changes around the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9179,7 +9286,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getAngleVariation](#sensorgetanglevariation9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getAngleVariation](#sensorgetanglevariation9-1) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9188,13 +9295,13 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 | Name                  | Type                 | Mandatory  | Description       |
 | --------------------- | ------------------- | ---- | --------- |
 | currentRotationMatrix | Array&lt;number&gt; | Yes   | Current rotation matrix.|
-| preRotationMatrix     | Array&lt;number&gt; | Yes   | Rotation vector to rotate.  |
+| preRotationMatrix     | Array&lt;number&gt; | Yes   | The other rotation matrix.  |
 
 **Return value**
 
 | Type                              | Description                                         |
 | ---------------------------------- | --------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the angle change around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angle changes of the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9222,7 +9329,7 @@ Converts a rotation vector into a rotation matrix. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9259,7 +9366,7 @@ Converts a rotation vector into a rotation matrix. This API uses a promise to re
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-1) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9277,7 +9384,7 @@ Converts a rotation vector into a rotation matrix. This API uses a promise to re
 
 **Example**
 
- ```ts
+```ts
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9290,7 +9397,7 @@ promise.then((data: Array<number>) => {
 }).catch((reason: BusinessError) => {
   console.info("Succeeded in getting promise::catch", reason);
 })
- ```
+```
 
 ## sensor.createQuaternion<sup>(deprecated)</sup>
 
@@ -9300,7 +9407,7 @@ Converts a rotation vector into a quaternion. This API uses an asynchronous call
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getQuaternion](#sensorgetquaternion9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getQuaternion](#sensorgetquaternion9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9337,7 +9444,7 @@ Converts a rotation vector into a quaternion. This API uses a promise to return 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getQuaternion](#sensorgetquaternion9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getQuaternion](#sensorgetquaternion9-1)> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9366,7 +9473,7 @@ promise.then((data: Array<number>) => {
     console.info("data[" + i + "]: " + data[i]);
   }
 }).catch((err: BusinessError) => {
-  console.info(`Failed to get promise.`);
+  console.error(`Failed to get promise.`);
 })
 ```
 
@@ -9378,7 +9485,7 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getOrientation](#sensorgetorientation9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getOrientation](#sensorgetorientation9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9386,8 +9493,8 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 
 | Name        | Type                                    | Mandatory| Description                                 |
 | -------------- | ---------------------------------------- | ---- | ------------------------------------- |
-| rotationMatrix | Array&lt;number&gt;                      | Yes  | Peer rotation matrix.                       |
-| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the rotation angle around the z, x, and y axes.|
+| rotationMatrix | Array&lt;number&gt;                      | Yes  | Rotation matrix.                       |
+| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9415,7 +9522,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getOrientation](#sensorgetorientation9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getOrientation](#sensorgetorientation9-1) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9423,13 +9530,13 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Name           | Type                 | Mandatory  | Description     |
 | -------------- | ------------------- | ---- | ------- |
-| rotationMatrix | Array&lt;number&gt; | Yes   | Rotation vector to rotate.|
+| rotationMatrix | Array&lt;number&gt; | Yes   | Rotation matrix.|
 
 **Return value**
 
 | Type                              | Description                                         |
 | ---------------------------------- | --------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angle around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9444,7 +9551,7 @@ promise.then((data: Array<number>) => {
     console.info("Succeeded in getting sensor_getDirection_promise" + data[i]);
   }
 }).catch((err: BusinessError) => {
-  console.info(`Failed to get promise.`);
+  console.error(`Failed to get promise.`);
 })
 ```
 
@@ -9452,11 +9559,11 @@ promise.then((data: Array<number>) => {
 
 createRotationMatrix(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&gt;, callback: AsyncCallback&lt;RotationMatrixResponse&gt;): void
 
-Creates a rotation matrix based on the gravity vector and geomagnetic vector. This API uses an asynchronous callback to return the result.
+Obtains the rotation matrix based on a gravity vector and geomagnetic vector. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-2) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9488,11 +9595,11 @@ sensor.createRotationMatrix([-0.27775216, 0.5351276, 9.788099], [210.87253, -78.
 
 createRotationMatrix(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&gt;): Promise&lt;RotationMatrixResponse&gt;
 
-Creates a rotation matrix based on the gravity vector and geomagnetic vector. This API uses a promise to return the result.
+Obtains the rotation matrix based on a gravity vector and geomagnetic vector. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-3)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-3) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9519,6 +9626,40 @@ const promise = sensor.createRotationMatrix([-0.27775216, 0.5351276, 9.788099], 
 promise.then((data: sensor.RotationMatrixResponse) => {
   console.info(JSON.stringify(data));
 }).catch((err: BusinessError) => {
-  console.info(`Failed to get promise.`);
+  console.error(`Failed to get promise.`);
 })
 ```
+
+## SensorType<sup>(deprecated)</sup>
+
+Enumerates the sensor types.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.SensorId](#sensorid9) instead.
+
+**System capability**: SystemCapability.Sensors.Sensor
+
+| Name                                      | Value  | Description                  |
+| ------------------------------------------ | ---- | ---------------------- |
+| SENSOR_TYPE_ID_ACCELEROMETER               | 1    | Acceleration sensor.        |
+| SENSOR_TYPE_ID_GYROSCOPE                   | 2    | Gyroscope sensor.        |
+| SENSOR_TYPE_ID_AMBIENT_LIGHT               | 5    | Ambient light sensor.        |
+| SENSOR_TYPE_ID_MAGNETIC_FIELD              | 6    | Magnetic field sensor.          |
+| SENSOR_TYPE_ID_BAROMETER                   | 8    | Barometer sensor.        |
+| SENSOR_TYPE_ID_HALL                        | 10   | Hall effect sensor.          |
+| SENSOR_TYPE_ID_PROXIMITY                   | 12   | Proximity sensor.        |
+| SENSOR_TYPE_ID_HUMIDITY                    | 13   | Humidity sensor.          |
+| SENSOR_TYPE_ID_ORIENTATION                 | 256  | Orientation sensor.          |
+| SENSOR_TYPE_ID_GRAVITY                     | 257  | Gravity sensor.          |
+| SENSOR_TYPE_ID_LINEAR_ACCELERATION         | 258  | Linear acceleration sensor.    |
+| SENSOR_TYPE_ID_ROTATION_VECTOR             | 259  | Rotation vector sensor.      |
+| SENSOR_TYPE_ID_AMBIENT_TEMPERATURE         | 260  | Ambient temperature sensor.      |
+| SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED | 261  | Uncalibrated magnetic field sensor.    |
+| SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED      | 263  | Uncalibrated gyroscope sensor.  |
+| SENSOR_TYPE_ID_SIGNIFICANT_MOTION          | 264  | Significant motion sensor.      |
+| SENSOR_TYPE_ID_PEDOMETER_DETECTION         | 265  | Pedometer detection sensor.      |
+| SENSOR_TYPE_ID_PEDOMETER                   | 266  | Pedometer sensor.          |
+| SENSOR_TYPE_ID_HEART_RATE                  | 278  | Heart rate sensor.          |
+| SENSOR_TYPE_ID_WEAR_DETECTION              | 280  | Wear detection sensor.      |
+| SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED  | 281  | Uncalibrated acceleration sensor.|

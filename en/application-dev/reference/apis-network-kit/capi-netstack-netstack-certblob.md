@@ -1,5 +1,16 @@
 # NetStack_CertBlob
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+struct NetStack_CertBlob {...}
+```
+
 ## Overview
 
 Defines the certificate data structure.

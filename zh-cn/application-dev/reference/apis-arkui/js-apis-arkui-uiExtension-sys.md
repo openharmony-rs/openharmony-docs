@@ -1,8 +1,8 @@
 # @ohos.arkui.uiExtension (uiExtension)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @Pakoo007-->
+<!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -10,13 +10,13 @@
 
 > **说明**
 >
-> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 本文仅介绍当前模块的系统接口，其他公开接口参见[@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)。
+> - 本文仅介绍当前模块的系统接口，其他公开接口参见[@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)。
 
 ## 导入模块
 
-```
+```ts
 import { uiExtension } from '@kit.ArkUI';
 ```
 
@@ -39,6 +39,8 @@ hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 **需要权限**：ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -66,7 +68,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 **示例**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -81,6 +83,7 @@ export default class EntryAbility extends UIExtensionAbility {
       console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
     })
   }
+  
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // 取消隐藏非安全窗口
@@ -103,6 +106,8 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 > 添加安全水印标志后，窗口在前台时会将当前全屏幕覆盖水印。全屏、悬浮窗、分屏等场景下只要有添加了安全水印标志的窗口在前台，就会显示全屏水印。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -129,7 +134,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 **示例** 
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

@@ -3,8 +3,9 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 The **userAccessCtrl** module provides APIs for setting and obtaining user identity authentication policies and verifying user identity authentication results.
 
@@ -57,7 +58,7 @@ Represents the AuthToken data returned after a successful verification.
 
 verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<AuthToken>
 
-Verifies an authentication token.
+Verifies an authentication token. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.USE_USER_ACCESS_MANAGER
 
@@ -80,13 +81,13 @@ Verifies an authentication token.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
 | 201      | Permission denied.        |
 | 202      | Permission denied. Called by non-system application. |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.    |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
 | 12500002 | General operation error.                |
 | 12500015 | AuthToken integrity check failed.     |
 | 12500016 | AuthToken has expired.                |
@@ -125,7 +126,7 @@ try {
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // The authentication result is returned by onResult() only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.on('result', {
     onResult (result) {
@@ -142,20 +143,20 @@ try {
                       console.info(`retAuthToken key:${key}`);
                   })
               }).catch ((error: BusinessError) => {
-                  console.error(`verify authToken error. Code is ${error?.code}, message is ${error?.message}`);
+                  console.error(`verify authToken failed. Code is ${error?.code}, message is ${error?.message}`);
               })
         } catch (error) {
           const err: BusinessError = error as BusinessError;
-          console.error(`verify authToken error. Code is ${err?.code}, message is ${err?.message}`);
+          console.error(`verify authToken failed. Code is ${err?.code}, message is ${err?.message}`);
         }
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   // Start authentication.
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```

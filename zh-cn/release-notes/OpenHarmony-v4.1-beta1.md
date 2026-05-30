@@ -492,9 +492,9 @@ OpenHarmony 4.1 Beta1版本开始提供首批API Level 11接口。
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -503,7 +503,7 @@ OpenHarmony 4.1 Beta1版本开始提供首批API Level 11接口。
 
 4. 安装码云repo工具，可以执行如下命令。
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -512,18 +512,18 @@ OpenHarmony 4.1 Beta1版本开始提供首批API Level 11接口。
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-4.1-Beta1 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-4.1-Beta1 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.1-Beta1 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.1-Beta1 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -534,14 +534,14 @@ OpenHarmony 4.1 Beta1版本开始提供首批API Level 11接口。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-4.1-Beta1 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-4.1-Beta1 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.1-Beta1 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.1-Beta1 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -569,14 +569,14 @@ OpenHarmony 4.1 Beta1版本开始提供首批API Level 11接口。
 
 ### API变更
 
-OpenHarmony 4.1 Beta1相比4.0 Release的API差异请[点击这里查看](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.1-Beta1/zh-cn/release-notes/api-diff/v4.1-beta1/Readme-CN.md)。
+OpenHarmony 4.1 Beta1相比4.0 Release的API差异请[点击这里查看](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.1-Beta1/zh-cn/release-notes/api-diff/v4.1-beta1/Readme-CN.md)。
 
-此外，从4.0 Release至今，有少量接口变更可能影响此前应用工程的兼容性或需要您关注，详细的变更说明请[点击这里查看](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.1-Beta1/zh-cn/release-notes/changelogs/v4.1-beta1/Readme-CN.md)。
+此外，从4.0 Release至今，有少量接口变更可能影响此前应用工程的兼容性或需要您关注，详细的变更说明请[点击这里查看](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.1-Beta1/zh-cn/release-notes/changelogs/v4.1-beta1/Readme-CN.md)。
 
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ### Samples
@@ -585,16 +585,16 @@ OpenHarmony 4.1 Beta1相比4.0 Release的API差异请[点击这里查看](https:
 
 | 特性 | 名称 | 简介 | 开发语言 | 
 | -------- | -------- | -------- | -------- |
-| 基础能力 | [基础能力增强](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/SystemFeature/Ability/AbilityFeatureSystem)（fullSDK,API等级为system_basic） | 本示例使用 [ohos.app.ability.appManager](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-appManager.md), [UIAbilityContext](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-inner-application-uiAbilityContext.md) , [UIExtensionContentSession](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-uiExtensionContentSession.md) 等接口实现了以下功能：提供查询单个应用是否正在运行接口;新增系统接口请求创建模系统或模应用的UIExtension;UIExtension支持同步返回数据的能力；提供隐式启动UIExtension接口;UIExtension提供StartAsCaller接口; | ArkTS | 
-| 系统功能 | [AutoFill自动填充能力](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/SystemFeature/AutoFill/AutoFill)（fullSDK,API等级为system_basic） | 本示例使用[application/AutoFillRequest](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/application/AutoFillRequest.d.ts)，[@ohos.app.ability.AutoFillExtensionAbility](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.app.ability.AutoFillExtensionAbility.d.ts)，[application/ViewData](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/application/ViewData.d.ts)，[@ohos.app.ability.autoFillManager ](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.app.ability.autoFillManager.d.ts)等接口，展示了如何使用AutoFill自动填充框架。 | ArkTS | 
-| 卡片 | [ArkTS卡片能力增强](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/SystemFeature/ArkTSCard/ArkTSCard)（fullSDK,API等级为system_basic） | 本示例使用动态和静态(form_config.json中isDynamic字段false为静态，true为动态)两种状态的锁屏卡片/deeplink卡片。 | ArkTS | 
-| 系统功能 | [意图执行](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/SystemFeature/InsightIntent/IntentExecute)<br/>（fullSDK,API等级为system_basic） | 本示例使用[@ohos.app.ability.InsightIntentExecutor](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-insightIntentExecutor.md)、[@ohos.app.ability.insightIntent](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-insightIntent.md)、[@ohos.app.ability.insightIntentDriver](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-insightIntentDriver.md)等接口，展示了意图绑定到UIAbility前台执行、意图绑定到ServiceExtension执行两种意图执行方法，主要包括构造意图配置文件、构造意图调用执行参数、触发意图调用的执行、取得意图调用结果等。 | ArkTS | 
-| 基础特性 | [Native Window](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/BasicFeature/Native/NdkNativeWindow) | 本示例中主要介绍开发者在利用[Native XComponent](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/native-apis/native__interface__xcomponent_8h.md)来获取[NativeWindow](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/native-apis/_native_window.md)实例，通过数据填充改变矩形框颜色。并提供从[NativeImage](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/native-apis/_o_h___native_image.md)中获取NativeWindow进行buffer轮转的案例，通过NativeWindow生产buffer来触发NativeImage的可用帧回调。 | ArkTS | 
-| 基础特性 | [标准化数据定义与描述](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/BasicFeature/DataManagement/UDMF/UniformTypeDescriptor/UTDType)（fullSDK） | 本示例主要展示了标准化数据定义与描述的功能 ，使用[@ohos.data.uniformTypeDescriptor](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-data-uniformTypeDescriptor.md) 、[@ohos.file.fs](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-file-fs.md) 、[@ohos.router](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-router.md)等接口，实现了增添预制媒体文件、媒体文件的utd标准类型获取、utd类型归属类型查询、获取文件对应的utd类型的默认图标、支持自定义数据类型等功能。 | ArkTS | 
-| 媒体 | [音频管理](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/SystemFeature/Media/Audio)（fullSDK,API等级为system_basic） | 此Sample展示 [空间音频API](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.multimedia.audio.d.ts) 的用法，相关API包括:<br/>isSpatializationSupported(): 查询系统是否支持空间音频，<br/>isHeadTrackingSupported()：查询系统是否支持头动跟踪，<br/>isSpatializationSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor)：查询设备是否支持空间音频，<br/>isHeadTrackingSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor)：查询设备是否支持头动跟踪，<br/>isSpatializationEnabled()：查询空间音频是否开启，<br/>isHeadTrackingEnabled(): 查询头动跟踪是否开启，<br/>setSpatializationEnabled(enable: boolean)：设置空间音频开启状态，<br/>setHeadTrackingEnabled(enable: boolean)：设置头动跟踪开启状态， | ArkTS | 
-| 基础能力 | [基础能力增强](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/BasicFeature/Ability/AbilityFeature) | 本示例使用 [ApplicationContext](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-inner-application-applicationContext.md) ,[ohos.ability.wantConstant](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-ability-wantConstant.md) ,[ohos.app.ability.StartOptions](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-startOptions.md)等接口实现了以下功能：支持应用定制系统环境参数;支持隐式启动个数为0时不触发提示弹框--增加了一个flag;支持应用清理自己的数据;Ability启动参数支持传递初始位置/初始大小/是否携带动效; | ArkTS | 
+| 基础能力 | [基础能力增强](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/SystemFeature/Ability/AbilityFeatureSystem)（fullSDK,API等级为system_basic） | 本示例使用 [ohos.app.ability.appManager](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-appManager.md), [UIAbilityContext](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-inner-application-uiAbilityContext.md) , [UIExtensionContentSession](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-uiExtensionContentSession.md) 等接口实现了以下功能：提供查询单个应用是否正在运行接口;新增系统接口请求创建模系统或模应用的UIExtension;UIExtension支持同步返回数据的能力；提供隐式启动UIExtension接口;UIExtension提供StartAsCaller接口; | ArkTS | 
+| 系统功能 | [AutoFill自动填充能力](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/SystemFeature/AutoFill/AutoFill)（fullSDK,API等级为system_basic） | 本示例使用[application/AutoFillRequest](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/application/AutoFillRequest.d.ts)，[@ohos.app.ability.AutoFillExtensionAbility](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.app.ability.AutoFillExtensionAbility.d.ts)，[application/ViewData](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/application/ViewData.d.ts)，[@ohos.app.ability.autoFillManager ](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.app.ability.autoFillManager.d.ts)等接口，展示了如何使用AutoFill自动填充框架。 | ArkTS | 
+| 卡片 | [ArkTS卡片能力增强](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/SystemFeature/ArkTSCard/ArkTSCard)（fullSDK,API等级为system_basic） | 本示例使用动态和静态(form_config.json中isDynamic字段false为静态，true为动态)两种状态的锁屏卡片/deeplink卡片。 | ArkTS | 
+| 系统功能 | [意图执行](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/SystemFeature/InsightIntent/IntentExecute)<br/>（fullSDK,API等级为system_basic） | 本示例使用[@ohos.app.ability.InsightIntentExecutor](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-insightIntentExecutor.md)、[@ohos.app.ability.insightIntent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-insightIntent.md)、[@ohos.app.ability.insightIntentDriver](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-insightIntentDriver.md)等接口，展示了意图绑定到UIAbility前台执行、意图绑定到ServiceExtension执行两种意图执行方法，主要包括构造意图配置文件、构造意图调用执行参数、触发意图调用的执行、取得意图调用结果等。 | ArkTS | 
+| 基础特性 | [Native Window](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/BasicFeature/Native/NdkNativeWindow) | 本示例中主要介绍开发者在利用[Native XComponent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/native-apis/native__interface__xcomponent_8h.md)来获取[NativeWindow](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/native-apis/_native_window.md)实例，通过数据填充改变矩形框颜色。并提供从[NativeImage](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/native-apis/_o_h___native_image.md)中获取NativeWindow进行buffer轮转的案例，通过NativeWindow生产buffer来触发NativeImage的可用帧回调。 | ArkTS | 
+| 基础特性 | [标准化数据定义与描述](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/BasicFeature/DataManagement/UDMF/UniformTypeDescriptor/UTDType)（fullSDK） | 本示例主要展示了标准化数据定义与描述的功能 ，使用[@ohos.data.uniformTypeDescriptor](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-data-uniformTypeDescriptor.md) 、[@ohos.file.fs](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-file-fs.md) 、[@ohos.router](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-router.md)等接口，实现了增添预制媒体文件、媒体文件的utd标准类型获取、utd类型归属类型查询、获取文件对应的utd类型的默认图标、支持自定义数据类型等功能。 | ArkTS | 
+| 媒体 | [音频管理](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/SystemFeature/Media/Audio)（fullSDK,API等级为system_basic） | 此Sample展示 [空间音频API](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.multimedia.audio.d.ts) 的用法，相关API包括:<br/>isSpatializationSupported(): 查询系统是否支持空间音频，<br/>isHeadTrackingSupported()：查询系统是否支持头动跟踪，<br/>isSpatializationSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor)：查询设备是否支持空间音频，<br/>isHeadTrackingSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor)：查询设备是否支持头动跟踪，<br/>isSpatializationEnabled()：查询空间音频是否开启，<br/>isHeadTrackingEnabled(): 查询头动跟踪是否开启，<br/>setSpatializationEnabled(enable: boolean)：设置空间音频开启状态，<br/>setHeadTrackingEnabled(enable: boolean)：设置头动跟踪开启状态， | ArkTS | 
+| 基础能力 | [基础能力增强](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.1-Beta1/code/BasicFeature/Ability/AbilityFeature) | 本示例使用 [ApplicationContext](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-inner-application-applicationContext.md) ,[ohos.ability.wantConstant](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-ability-wantConstant.md) ,[ohos.app.ability.StartOptions](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-app-ability-startOptions.md)等接口实现了以下功能：支持应用定制系统环境参数;支持隐式启动个数为0时不触发提示弹框--增加了一个flag;支持应用清理自己的数据;Ability启动参数支持传递初始位置/初始大小/是否携带动效; | ArkTS | 
 
-请访问[Samples](https://gitee.com/openharmony/applications_app_samples)仓了解更多信息。
+请访问[Samples](https://gitcode.com/openharmony/applications_app_samples)仓了解更多信息。
 
 
 ## 修复缺陷列表

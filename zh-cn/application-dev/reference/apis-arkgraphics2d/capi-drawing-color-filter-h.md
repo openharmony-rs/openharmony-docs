@@ -2,8 +2,8 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -14,6 +14,8 @@
 **引用文件：** <native_drawing/drawing_color_filter.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -32,13 +34,13 @@
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateSrgbGammaToLinear(void)](#oh_drawing_colorfiltercreatesrgbgammatolinear) | 创建颜色滤波器将RGB颜色通道应用于SRGB的伽玛曲线。 |
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLuma(void)](#oh_drawing_colorfiltercreateluma) | 创建一个颜色滤波器将其输入的亮度值乘以透明度通道，并将红色、绿色和蓝色通道设置为零。 |
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLighting(uint32_t mulColor, uint32_t addColor)](#oh_drawing_colorfiltercreatelighting) | 创建一个光照颜色滤波器，此滤波器会将RGB通道的颜色值乘以一种颜色值并加上另一种颜色值，计算结果会被限制在0到255范围内。 |
-| [void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)](#oh_drawing_colorfilterdestroy) | 销毁颜色滤波器对象，并收回该对象占用的内存。 |
+| [void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)](#oh_drawing_colorfilterdestroy) | 销毁颜色滤波器对象，并回收该对象占用的内存。 |
 
 ## 函数说明
 
 ### OH_Drawing_ColorFilterCreateBlendMode()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateBlendMode(uint32_t color, OH_Drawing_BlendMode blendMode)
 ```
 
@@ -66,7 +68,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateBlendMode(uint32_t color, OH
 
 ### OH_Drawing_ColorFilterCreateCompose()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilter* outerColorFilter,OH_Drawing_ColorFilter* innerColorFilter)
 ```
 
@@ -94,7 +96,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilt
 
 ### OH_Drawing_ColorFilterCreateMatrix()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20])
 ```
 
@@ -121,7 +123,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20
 
 ### OH_Drawing_ColorFilterCreateLinearToSrgbGamma()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLinearToSrgbGamma(void)
 ```
 
@@ -141,7 +143,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLinearToSrgbGamma(void)
 
 ### OH_Drawing_ColorFilterCreateSrgbGammaToLinear()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateSrgbGammaToLinear(void)
 ```
 
@@ -161,7 +163,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateSrgbGammaToLinear(void)
 
 ### OH_Drawing_ColorFilterCreateLuma()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLuma(void)
 ```
 
@@ -181,7 +183,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLuma(void)
 
 ### OH_Drawing_ColorFilterCreateLighting()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLighting(uint32_t mulColor, uint32_t addColor)
 ```
 
@@ -209,13 +211,13 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLighting(uint32_t mulColor, 
 
 ### OH_Drawing_ColorFilterDestroy()
 
-```
+```c
 void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)
 ```
 
 **描述**
 
-销毁颜色滤波器对象，并收回该对象占用的内存。
+销毁颜色滤波器对象，并回收该对象占用的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

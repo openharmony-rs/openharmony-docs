@@ -1,8 +1,15 @@
 # image_effect.h
 
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zyj208-->
+<!--Designer: @wangshoucheng-->
+<!--Tester: @gengfei-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
-The **image_effect.h** file declares the APIs related to an image effector.<br> You can use the APIs to add, delete, and query image effect filters. You can connect multiple filters in series to implement complex effect adjustment.<br> The effector supports multiple input types, such as PixelMap, URI, surface, and picture. Different input types are converted into buffer objects in the effector, and effect processing is implemented through the filters.
+The file declares the APIs related to an image effector.<br> You can use the APIs to add, delete, and query image effect filters. You can connect multiple filters in series to implement complex effect adjustment.<br> The effector supports multiple input types, such as PixelMap, URI, surface, and picture. Different input types are converted into buffer objects in the effector, and effect processing is implemented through the filters.
 
 **File to include**: <multimedia/image_effect/image_effect.h>
 
@@ -30,14 +37,14 @@ The **image_effect.h** file declares the APIs related to an image effector.<br> 
 | [OH_EffectFilter *OH_ImageEffect_AddFilter(OH_ImageEffect *imageEffect, const char *filterName)](#oh_imageeffect_addfilter) | Adds a filter.|
 | [ImageEffect_ErrorCode OH_ImageEffect_AddFilterByFilter(OH_ImageEffect *imageEffect, OH_EffectFilter *filter)](#oh_imageeffect_addfilterbyfilter) | Adds a specified filter.|
 | [OH_EffectFilter *OH_ImageEffect_InsertFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)](#oh_imageeffect_insertfilter) | Inserts a filter.|
-| [ImageEffect_ErrorCode OH_ImageEffect_InsertFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index,OH_EffectFilter *filter)](#oh_imageeffect_insertfilterbyfilter) | Inserts a filter to the specified position.|
+| [ImageEffect_ErrorCode OH_ImageEffect_InsertFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index, OH_EffectFilter *filter)](#oh_imageeffect_insertfilterbyfilter) | Inserts a filter to the specified position.|
 | [int32_t OH_ImageEffect_RemoveFilter(OH_ImageEffect *imageEffect, const char *filterName)](#oh_imageeffect_removefilter) | Removes a filter.|
 | [ImageEffect_ErrorCode OH_ImageEffect_RemoveFilterByIndex(OH_ImageEffect *imageEffect, uint32_t index)](#oh_imageeffect_removefilterbyindex) | Removes a filter from the specified position.|
 | [OH_EffectFilter *OH_ImageEffect_ReplaceFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)](#oh_imageeffect_replacefilter) | Replaces a filter.|
-| [ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index,const char *filterName)](#oh_imageeffect_replacefilterbyfilter) | Replaces a filter at the specified position.|
+| [ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index, OH_EffectFilter *filter)](#oh_imageeffect_replacefilterbyfilter) | Replaces a filter at the specified position.|
 | [int32_t OH_ImageEffect_GetFilterCount(OH_ImageEffect *imageEffect)](#oh_imageeffect_getfiltercount) | Obtains the number of added filters.|
 | [OH_EffectFilter *OH_ImageEffect_GetFilter(OH_ImageEffect *imageEffect, uint32_t index)](#oh_imageeffect_getfilter) | Obtains the information about a filter.|
-| [ImageEffect_ErrorCode OH_ImageEffect_Configure(OH_ImageEffect *imageEffect, const char *key,const ImageEffect_Any *value)](#oh_imageeffect_configure) | Configures an image effector.|
+| [ImageEffect_ErrorCode OH_ImageEffect_Configure(OH_ImageEffect *imageEffect, const char *key, const ImageEffect_Any *value)](#oh_imageeffect_configure) | Configures an image effector.|
 | [ImageEffect_ErrorCode OH_ImageEffect_SetOutputSurface(OH_ImageEffect *imageEffect, OHNativeWindow *nativeWindow)](#oh_imageeffect_setoutputsurface) | Sets an output surface.|
 | [ImageEffect_ErrorCode OH_ImageEffect_GetInputSurface(OH_ImageEffect *imageEffect, OHNativeWindow **nativeWindow)](#oh_imageeffect_getinputsurface) | Obtains an input surface.|
 | [ImageEffect_ErrorCode OH_ImageEffect_SetInputPixelmap(OH_ImageEffect *imageEffect, OH_PixelmapNative *pixelmap)](#oh_imageeffect_setinputpixelmap) | Sets an input PixelMap.|
@@ -60,7 +67,7 @@ The **image_effect.h** file declares the APIs related to an image effector.<br> 
 
 ### OH_ImageEffect_Create()
 
-```
+```c
 OH_ImageEffect *OH_ImageEffect_Create(const char *name)
 ```
 
@@ -83,11 +90,11 @@ Creates an OH_ImageEffect instance. The instance must be released by calling [OH
 
 | Type| Description|
 | -- | -- |
-| [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) * | Pointer to the OH_EffectFilterInfo instance created. If the operation fails, a null pointer is returned.|
+| [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) * | Pointer to the OH_ImageEffect instance created. If the operation fails, a null pointer is returned.|
 
 ### OH_ImageEffect_AddFilter()
 
-```
+```c
 OH_EffectFilter *OH_ImageEffect_AddFilter(OH_ImageEffect *imageEffect, const char *filterName)
 ```
 
@@ -115,7 +122,7 @@ Adds a filter.
 
 ### OH_ImageEffect_AddFilterByFilter()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_AddFilterByFilter(OH_ImageEffect *imageEffect, OH_EffectFilter *filter)
 ```
 
@@ -143,7 +150,7 @@ Adds a specified filter.
 
 ### OH_ImageEffect_InsertFilter()
 
-```
+```c
 OH_EffectFilter *OH_ImageEffect_InsertFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)
 ```
 
@@ -172,7 +179,7 @@ Inserts a filter.
 
 ### OH_ImageEffect_InsertFilterByFilter()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_InsertFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index,OH_EffectFilter *filter)
 ```
 
@@ -201,7 +208,7 @@ Inserts a filter to the specified position.
 
 ### OH_ImageEffect_RemoveFilter()
 
-```
+```c
 int32_t OH_ImageEffect_RemoveFilter(OH_ImageEffect *imageEffect, const char *filterName)
 ```
 
@@ -229,7 +236,7 @@ Removes a filter.
 
 ### OH_ImageEffect_RemoveFilterByIndex()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_RemoveFilterByIndex(OH_ImageEffect *imageEffect, uint32_t index)
 ```
 
@@ -257,7 +264,7 @@ Removes a filter from the specified position.
 
 ### OH_ImageEffect_ReplaceFilter()
 
-```
+```c
 OH_EffectFilter *OH_ImageEffect_ReplaceFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)
 ```
 
@@ -285,8 +292,8 @@ Replaces a filter.
 
 ### OH_ImageEffect_ReplaceFilterByFilter()
 
-```
-ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index,const char *filterName)
+```c
+ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index, OH_EffectFilter *filter)
 ```
 
 **Description**
@@ -304,7 +311,7 @@ Replaces a filter at the specified position.
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | Pointer to the image effector.|
 | uint32_t index | Index of the filter.|
-| const char *filterName | Pointer to the filter name.|
+| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | Pointer to the filter.|
 
 **Returns**
 
@@ -314,7 +321,7 @@ Replaces a filter at the specified position.
 
 ### OH_ImageEffect_GetFilterCount()
 
-```
+```c
 int32_t OH_ImageEffect_GetFilterCount(OH_ImageEffect *imageEffect)
 ```
 
@@ -341,7 +348,7 @@ Obtains the number of added filters.
 
 ### OH_ImageEffect_GetFilter()
 
-```
+```c
 OH_EffectFilter *OH_ImageEffect_GetFilter(OH_ImageEffect *imageEffect, uint32_t index)
 ```
 
@@ -369,7 +376,7 @@ Obtains the information about a filter.
 
 ### OH_ImageEffect_Configure()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_Configure(OH_ImageEffect *imageEffect, const char *key,const ImageEffect_Any *value)
 ```
 
@@ -398,7 +405,7 @@ Configures an image effector.
 
 ### OH_ImageEffect_SetOutputSurface()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputSurface(OH_ImageEffect *imageEffect, OHNativeWindow *nativeWindow)
 ```
 
@@ -426,7 +433,7 @@ Sets an output surface.
 
 ### OH_ImageEffect_GetInputSurface()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_GetInputSurface(OH_ImageEffect *imageEffect, OHNativeWindow **nativeWindow)
 ```
 
@@ -454,7 +461,7 @@ Obtains an input surface.
 
 ### OH_ImageEffect_SetInputPixelmap()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetInputPixelmap(OH_ImageEffect *imageEffect, OH_PixelmapNative *pixelmap)
 ```
 
@@ -482,7 +489,7 @@ Sets an input PixelMap.
 
 ### OH_ImageEffect_SetOutputPixelmap()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputPixelmap(OH_ImageEffect *imageEffect, OH_PixelmapNative *pixelmap)
 ```
 
@@ -510,7 +517,7 @@ Sets an output PixelMap.
 
 ### OH_ImageEffect_SetInputNativeBuffer()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetInputNativeBuffer(OH_ImageEffect *imageEffect, OH_NativeBuffer *nativeBuffer)
 ```
 
@@ -538,7 +545,7 @@ Sets an input native buffer.
 
 ### OH_ImageEffect_SetOutputNativeBuffer()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputNativeBuffer(OH_ImageEffect *imageEffect, OH_NativeBuffer *nativeBuffer)
 ```
 
@@ -566,7 +573,7 @@ Sets an output native buffer.
 
 ### OH_ImageEffect_SetInputUri()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetInputUri(OH_ImageEffect *imageEffect, const char *uri)
 ```
 
@@ -594,7 +601,7 @@ Sets an input URI.
 
 ### OH_ImageEffect_SetOutputUri()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputUri(OH_ImageEffect *imageEffect, const char *uri)
 ```
 
@@ -622,7 +629,7 @@ Sets an output URI.
 
 ### OH_ImageEffect_SetInputPicture()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetInputPicture(OH_ImageEffect *imageEffect, OH_PictureNative *picture)
 ```
 
@@ -650,7 +657,7 @@ Sets an input picture.
 
 ### OH_ImageEffect_SetOutputPicture()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputPicture(OH_ImageEffect *imageEffect, OH_PictureNative *picture)
 ```
 
@@ -678,7 +685,7 @@ Sets an output picture.
 
 ### OH_ImageEffect_SetInputTextureId()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetInputTextureId(OH_ImageEffect *imageEffect, int32_t textureId,int32_t colorSpace)
 ```
 
@@ -707,7 +714,7 @@ Sets the ID of the input texture that contains the image information.
 
 ### OH_ImageEffect_SetOutputTextureId()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_SetOutputTextureId(OH_ImageEffect *imageEffect, int32_t textureId)
 ```
 
@@ -735,7 +742,7 @@ Sets the ID of the output texture that contains the rendered image information.
 
 ### OH_ImageEffect_Start()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_Start(OH_ImageEffect *imageEffect)
 ```
 
@@ -758,11 +765,11 @@ Starts an image effector.
 
 | Type| Description|
 | -- | -- |
-| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | **EFFECT_SUCCESS**: The function is successfully called.<br>         **EFFECT_ERROR_PARAM_INVALID**: A parameter is a null pointer.<br>         **EFFECT_INPUT_OUTPUT_NOT_SUPPORTED**: The data types of the input and output images to be processed are different.<br>         **EFFECT_COLOR_SPACE_NOT_MATCH**: The color spaces of the input and output images are different.<br>         **EFFECT_ALLOCATE_MEMORY_FAILED**: Memory allocation fails.|
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | **EFFECT_SUCCESS**: The function is successfully called.<br>         **EFFECT_ERROR_PARAM_INVALID**: A parameter is a null pointer.<br>         **EFFECT_INPUT_OUTPUT_NOT_SUPPORTED**: The data types of the input and output images to be processed are different.<br>         **EFFECT_COLOR_SPACE_NOT_MATCH**: The color spaces of the input and output images do not match.<br>         **EFFECT_ALLOCATE_MEMORY_FAILED**: Memory allocation fails.|
 
 ### OH_ImageEffect_Stop()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)
 ```
 
@@ -789,7 +796,7 @@ Stops an image effector.
 
 ### OH_ImageEffect_Release()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_Release(OH_ImageEffect *imageEffect)
 ```
 
@@ -816,7 +823,7 @@ Releases an OH_ImageEffect instance.
 
 ### OH_ImageEffect_Save()
 
-```
+```c
 ImageEffect_ErrorCode OH_ImageEffect_Save(OH_ImageEffect *imageEffect, char **info)
 ```
 
@@ -844,7 +851,7 @@ Serializes an image effector.
 
 ### OH_ImageEffect_Restore()
 
-```
+```c
 OH_ImageEffect *OH_ImageEffect_Restore(const char *info)
 ```
 
@@ -868,4 +875,3 @@ Deserializes an image effector.
 | Type| Description|
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) * | OH_ImageEffect instance. If the deserialization fails, a null pointer is returned.|
-<!--no_check-->

@@ -1,8 +1,15 @@
 # Input Device Error Codes
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @zhang_yixin13-->
+
 > **NOTE**
 >
-> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+> - This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 <!--Del-->
 ## 3900001 Device Not Exist
@@ -51,12 +58,30 @@ It is prohibited for non-input applications.
 
 **Description**
 
-Non-input applications are not allowed to call this API.
+This error code is reported if the API is called by a non-input application.
 
 **Possible Causes**
 
-This API is not supported for a third-party application or a non-input system application.
+Non-input applications call this API.
 
 **Procedure**
 
 Use an input application to call this API.
+
+## 3800001 Multimodal input internal error
+
+**Error Message**
+
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
+
+**Description**
+
+Internal error of the multimodal input service.
+
+**Possible Causes**
+
+Unexpected errors occurred, such as memory allocation failure, busy thread, and service execution.
+
+**Procedure**
+
+Try again later.

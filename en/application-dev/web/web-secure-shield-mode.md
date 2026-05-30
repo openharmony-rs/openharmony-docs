@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The Secure Shield mode is a system-level security mode provided for users with high security requirements. This mode restricts basic device capabilities to enhance security and effectively defend against targeted attacks through the remote attack surface.
 

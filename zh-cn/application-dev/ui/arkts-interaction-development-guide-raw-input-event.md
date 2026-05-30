@@ -1,10 +1,10 @@
 # 输入设备与事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 不同的输入设备会产生不同的事件类型。只有在用户操作特定输入设备和工具时，才会触发基础事件。通过输入设备和工具类型，可以区分这些事件。
 
@@ -24,6 +24,8 @@
 
 [支持触控板输入事件](./arkts-interaction-development-guide-touchpad.md)：触控板设备及如何处理其产生的事件。
 
-[支持按键输入事件](./arkts-interaction-development-guide-keyboard.md)：键盘类设备及如何处理其产生的事件。
+[支持键盘输入事件](./arkts-interaction-development-guide-keyboard.md)：键盘类设备及如何处理其产生的事件。
+
+[支持游戏手柄输入事件](./arkts-interaction-development-guide-gamepad.md)：游戏手柄设备及如何处理其产生的事件。
 
 [支持表冠输入事件](./arkts-common-events-crown-event.md)：旋转表冠及其如何处理其产生的事件。

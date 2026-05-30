@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component provides the focus management functionality for you to effectively manage the focus and defocus of the **Web** component. In addition, you can use the W3C standards-compliant API on the HTML5 side to manage the focus and defocus of the only interactive element on the Web page.
 
@@ -64,7 +64,7 @@ Passive focus traversal occurs in the following scenarios:
 - **autofocus**: Elements with the **autofocus** style are focused by default after web pages are loaded. If the element supports text input, the cursor blinks in the text box, but the soft keyboard is not displayed. For details about how to automatically display the soft keyboard, see [Automatically Displaying the Soft Keyboard](web-docking-softkeyboard.md#automatically-displaying-the-soft-keyboard).
 
 
-- Menu display: By default, the ArkUI component with the **overlay** attribute is focused. When the **Web** component is used together with this type of component such as [menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md), [datepicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md), [timepicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md), drop-down list box, and dialog box, the **Web** component loses focus.
+- Menu display: By default, the ArkUI component with the **overlay** attribute is focused. When the **Web** component is used together with this type of component such as [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md), [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md), [TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md), drop-down list box, and dialog box, the **Web** component loses focus.
 
 ## Controlling the Focus of the Web Component and ArkUI Component
 
@@ -77,8 +77,9 @@ Passive focus traversal occurs in the following scenarios:
 1. Use the **requestFocus** API to allow the **Web** component to proactively obtain the focus.
 2. The **onFocus** and **onBlur** APIs are usually used in pairs to listen for the focus changes of the component.
 
-```ts
-// xxx.ets
+<!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -117,10 +118,11 @@ struct WebComponent {
         .onBlur(() => {
           this.webBorderColor = Color.Red;
         })
+        // ···
         .margin(3)
         .borderWidth(10)
         .borderColor(this.webBorderColor)
-        .height("45%")
+        .height('45%')
 
       Web({ src: 'www.example.com', controller: this.controller2 })
         .onFocus(() => {
@@ -132,7 +134,7 @@ struct WebComponent {
         .margin(3)
         .borderWidth(10)
         .borderColor(this.webBorderColor2)
-        .height("45%")
+        .height('45%')
     }
   }
 }
@@ -145,28 +147,29 @@ Use **requestFocus** to request focus, and change the border color of the **Web*
 
 ## Controlling the Focus of HTML5 Elements in the Web Component
 - Use the **focus** event of the W3C standards to detect whether an element is focused on a web page.
-```
+```js
 addEventListener("focus", (event) => {});
 
 onfocus = (event) => {};
 ```
 - Use the **blur** event of the W3C standards to detect whether an element loses focus on a web page.
-```
+```js
 addEventListener("blur", (event) => {});
 
 onblur = (event) => {};
 ```
 - Use W3C **autofocus** to focus an element when the page is loaded or the **dialog** to which the element belongs is displayed.
-```
+```js
 <input name="q" autofocus />
 ```
 In a document or dialog box, only one element can have the **autofocus** attribute. If you apply this attribute to multiple elements, the first element will be focused.
 
 **Example**
-```ts
-// xxx.ets
+
+<!-- @[WebFocusManagement2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement2.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -175,13 +178,14 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("test.html"), controller: this.controller })
+      Web({ src: $rawfile('test.html'), controller: this.controller })
     }
   }
 }
 ```
 
-```js
+HTML file to be loaded:
+```html
 // test.html
 <!DOCTYPE html>
 <html>

@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebContextMenuParam** object, which is displayed after the user clicks the right mouse button or long presses a specific element, such as an image or a link. For details about the sample code, see [onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9).
 
@@ -14,7 +14,7 @@ Implements a **WebContextMenuParam** object, which is displayed after the user c
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>9+</sup>
 
@@ -34,9 +34,9 @@ Obtains the X coordinate of the context menu.
 
 **Return value**
 
-| Type    | Description                |
-| ------ | ------------------ |
-| number | If the display is normal, a non-negative integer is returned. Otherwise, **-1** is returned.<br>Unit: vp.|
+| Type    | Description                                |
+| ------ |------------------------------------|
+| number | If the display is normal, a non-negative integer is returned. Otherwise, **-1** is returned.<br>Unit: px (physical pixel)|
 
 ## y<sup>9+</sup>
 
@@ -50,13 +50,13 @@ Obtains the Y coordinate of the context menu.
 
 | Type    | Description                |
 | ------ | ------------------ |
-| number | If the display is normal, a non-negative integer is returned. Otherwise, **-1** is returned.<br>Unit: vp.|
+| number | If the display is normal, a non-negative integer is returned. Otherwise, **-1** is returned.<br>Unit: px (physical pixel)|
 
 ## getLinkUrl<sup>9+</sup>
 
 getLinkUrl(): string
 
-Obtains the URL of the link.
+Obtains the URL that has passed the security check.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -70,7 +70,7 @@ Obtains the URL of the link.
 
 getUnfilteredLinkUrl(): string
 
-Obtains the URL of the unfiltered link.
+Obtains the original URL.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -92,7 +92,7 @@ Obtains the source URL.
 
 | Type    | Description                      |
 | ------ | ------------------------ |
-| string | If the selected element has the **src** attribute, the URL in the **src** is returned.|
+| string | If the selected element has the **src** attribute, the URL in the **src** is returned. The maximum size of the returned URL is 2 MB. If the size exceeds the upper limit, an empty string is returned.|
 
 ## existsImageContents<sup>9+</sup>
 
@@ -168,7 +168,7 @@ Obtains the input field type of this web page element.
 
 isEditable(): boolean
 
-Checks whether this web page element is editable.
+Checks whether a web page element is editable.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -204,7 +204,7 @@ Obtains the width of a preview image.
 
 | Type    | Description      |
 | ------ | ----------- |
-| number | Width of a preview image.<br>Unit: vp.|
+| number | Width of a preview image.<br>Unit: px (physical pixel)|
 
 ## getPreviewHeight<sup>13+</sup>
 
@@ -218,4 +218,18 @@ Obtains the height of a preview image.
 
 | Type    | Description      |
 | ------ | ----------  |
-| number | Height of a preview image.<br>Unit: vp.|
+| number | Height of a preview image.<br>Unit: px (physical pixel)|
+
+## getContextMenuMediaType<sup>22+</sup>
+
+getContextMenuMediaType(): ContextMenuDataMediaType
+
+Obtains the type of the web page element that the user taps when the context menu event is reported.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type    | Description      |
+| ------ | ----------  |
+| [ContextMenuDataMediaType](./arkts-basic-components-web-e.md#contextmenudatamediatype22) | Media type of the web page element.|

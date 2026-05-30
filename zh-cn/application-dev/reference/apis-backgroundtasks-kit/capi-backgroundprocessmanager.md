@@ -1,5 +1,12 @@
 # BackgroundProcessManager
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @hongjianfeng-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @HelloCrease-->
+
 ## 概述
 
 提供后台子进程调度策略管控C接口。

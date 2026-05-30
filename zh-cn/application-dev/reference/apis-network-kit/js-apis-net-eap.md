@@ -7,7 +7,7 @@
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
 
-该模块提供了第三方客户端介入802.1X认证（一种基于端口的网络接入控制协议）流程的机制，支撑客户端的定制认证等功能。
+该模块提供了第三方客户端接入802.1X认证（一种基于端口的网络接入控制协议）流程的机制，支撑客户端的定制认证等功能。
 
 > **说明：** 
 >
@@ -38,7 +38,7 @@ regCustomEapHandler(netType: number, eapCode: number, eapType: number, callback:
 | netType| number|是|网络类型，取值为1或2。<br>netType=1表示WLAN，netType=2表示以太网。|
 | eapCode|number |是|需要进行定制的EAP code，取值为1、2、3、4 。<br>code=1 Request、 code=2 Response、 code=3 Success、 code=4 Failure。|
 | eapType| number |是|需要进行定制处理的EAP method类型，取值范围[0, 255]。<br>常用取值包括：eapType=1 Identity，eapType=2 Notification，eapType=3 NAK，eapType=4 MD5-Challenge，eapType=5 OTP（One-Time Password），eapType=6 GTC（Generic Token Card），eapType=13 EAP-TLS，eapType=21 EAP-TTLS，eapType=25 EAP-PEAP，eapType=254 Expanded Types，eapType=255 Experimental use。|
-| callback| Callback\<[EapData](#eapdata)\> |是|对指定的code+type的报文进行回调处理。|
+| callback| Callback\<[EapData](#eapdata)\> |是|回调函数，返回指定的eapCode+eapType的报文。|
 
 **错误码**：
 
@@ -60,16 +60,12 @@ import {eap} from '@kit.NetworkKit';
 let netType = 1;
 let eapCode = 1;
 let eapType = 25;
-let  eapData = (eapData:eap.EapData):void => {
-  console.info("rsp result",JSON.stringify(eapData))
-}
-    
-try {
-  eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
-  console.info('regCustomEapHandler success');
-} catch (err) {
-  console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-}
+let eapData = (eapData:eap.EapData):void => {
+  console.info("rsp result", JSON.stringify(eapData));
+};
+
+eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
+console.info('regCustomEapHandler success');
 ```
 
 ## eap.unregCustomEapHandler
@@ -89,7 +85,7 @@ unregCustomEapHandler(netType:number, eapCode: number, eapType: number, callback
 | netType| number|是|网络类型，取值为1或2。<br>netType=1表示WLAN，netType=2表示以太网。|
 | eapCode|number |是|需要进行定制的EAP code，取值为1、2、3、4 。<br>code=1 Request、 code=2 Response、 code=3 Success、 code=4 Failure。|
 | eapType| number |是|需要进行定制处理的EAP method类型，取值范围[0, 255]。<br>常用取值包括：eapType=1 Identity，eapType=2 Notification，eapType=3 NAK，eapType=4 MD5-Challenge，eapType=5 OTP（One-Time Password），eapType=6 GTC（Generic Token Card），eapType=13 EAP-TLS，eapType=21 EAP-TTLS，eapType=25 EAP-PEAP，eapType=254 Expanded Types，eapType=255 Experimental use。|
-| callback| Callback\<[EapData](#eapdata)\> |是|对指定的code+type的报文进行回调处理。|
+| callback| Callback\<[EapData](#eapdata)\> |是|回调函数，返回指定的eapCode+eapType的报文。|
 
 **错误码**：
 
@@ -111,16 +107,12 @@ import {eap} from '@kit.NetworkKit';
 let netType = 1;
 let eapCode = 1;
 let eapType = 25;
-let  eapData = (eapData:eap.EapData):void => {
-  console.info("rsp result",JSON.stringify(eapData))
-}
-    
-try {
-  eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
-  console.info('unregCustomEapHandler success');
-} catch (err) {
-  console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-}
+let eapData = (eapData:eap.EapData):void => {
+  console.info("rsp result", JSON.stringify(eapData));
+};
+
+eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
+console.info('unregCustomEapHandler success');
 ```
 
 ## eap.replyCustomEapData
@@ -188,7 +180,7 @@ startEthEap(netId: number, profile: EthEapProfile): void
 
 | 参数名                            | 类型|必填|说明|
 | ----------------------------- | ---------- |---------- |---------- |
-| netId| number|是|以太网卡Id。|
+| netId| number|是|以太网卡Id。（传入默认参数-1，系统将自动匹配以太网卡发起EAP认证）|
 | profile|[EthEapProfile](#etheapprofile) |是|EAP配置信息。|
 
 **错误码**：
@@ -249,7 +241,7 @@ logOffEthEap(netId: number): void
 
 | 参数名                            | 类型|必填|说明|
 | ----------------------------- | ---------- |---------- |---------- |
-| netId | number|是|以太网卡Id。|
+| netId | number|是|以太网卡Id。（传入默认参数-1，系统将自动匹配以太网卡发起EAP认证）|
 
 **错误码**：
 
@@ -271,7 +263,7 @@ import {eap} from '@kit.NetworkKit';
 let netId = 100;    
 try{
   eap.logOffEthEap(netId);
-  console.info("logOffEthEap succes");
+  console.info("logOffEthEap success");
 } catch (err) {
   console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
 }

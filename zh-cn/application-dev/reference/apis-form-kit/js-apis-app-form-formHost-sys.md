@@ -1,10 +1,10 @@
 # @ohos.app.form.formHost (formHost)(系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 
 formHost模块提供了卡片使用方相关接口的能力，包括对使用方同一用户下安装的卡片进行删除、释放、请求更新、获取卡片信息、状态等操作。
 
@@ -63,7 +63,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log('formHost deleteForm success');
+      console.info('formHost deleteForm success');
     }
   });
 } catch (error) {
@@ -113,17 +113,16 @@ deleteForm(formId: string): Promise&lt;void&gt;
 
 ```ts
 import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let formId: string = '12400633174999288';
   formHost.deleteForm(formId).then(() => {
-    console.log('formHost deleteForm success');
+    console.info('formHost deleteForm success');
   }).catch((error: BusinessError) => {
-    console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
+    console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -223,7 +222,7 @@ try {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -275,11 +274,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.releaseForm(formId, true).then(() => {
-    console.log('formHost releaseForm success');
+    console.info('formHost releaseForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -329,7 +328,7 @@ try {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -380,11 +379,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.requestForm(formId).then(() => {
-    console.log('formHost requestForm success');
+    console.info('formHost requestForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -439,11 +438,11 @@ try {
     'ohos.extra.param.key.host_bg_inverse_color': '#ff000000' as Object
   };
   formHost.requestFormWithParams(formId, params).then(() => {
-    console.log('formHost requestFormWithParams success');
+    console.info('formHost requestFormWithParams success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -493,7 +492,7 @@ try {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -544,11 +543,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.castToNormalForm(formId).then(() => {
-    console.log('formHost castTempForm success');
+    console.info('formHost castTempForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -645,11 +644,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.notifyVisibleForms(formId).then(() => {
-    console.log('formHost notifyVisibleForms success');
+    console.info('formHost notifyVisibleForms success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -697,7 +696,7 @@ try {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -746,11 +745,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.notifyInvisibleForms(formId).then(() => {
-    console.log('formHost notifyInvisibleForms success');
+    console.info('formHost notifyInvisibleForms success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -799,7 +798,7 @@ try {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -849,11 +848,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.enableFormsUpdate(formId).then(() => {
-    console.log('formHost enableFormsUpdate success');
+    console.info('formHost enableFormsUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -903,7 +902,7 @@ try {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -954,11 +953,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.disableFormsUpdate(formId).then(() => {
-    console.log('formHost disableFormsUpdate success');
+    console.info('formHost disableFormsUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -998,7 +997,7 @@ try {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1033,11 +1032,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.isSystemReady().then(() => {
-    console.log('formHost isSystemReady success');
+    console.info('formHost isSystemReady success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1046,7 +1045,7 @@ try {
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-获取设备上所有应用提供的卡片信息。使用callback异步回调。
+获取设备上所有应用提供的卡片信息（不包含模板卡片）。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1075,18 +1074,17 @@ getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): 
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllFormsInfo((error: BusinessError, data: formInfo.FormInfo[]) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info('formHost getAllFormsInfo success.');
     }
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1094,7 +1092,7 @@ try {
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-获取设备上所有应用提供的卡片信息。使用Promise异步回调。
+获取设备上所有应用提供的卡片信息（不包含模板卡片）。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1122,16 +1120,15 @@ getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
+    console.info('formHost getAllFormsInfo success.');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1139,7 +1136,7 @@ try {
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-获取设备上指定应用程序提供的卡片信息。使用callback异步回调。
+获取设备上指定应用程序提供的卡片信息（不包含模板卡片）。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1170,18 +1167,17 @@ getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.Fo
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', (error: BusinessError, data: formInfo.FormInfo[]) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info('formHost getFormsInfo success.');
     }
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1189,7 +1185,7 @@ try {
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-获取设备上指定应用程序提供的卡片信息。使用callback异步回调。
+获取设备上指定应用程序提供的卡片信息（不包含模板卡片）。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1221,18 +1217,17 @@ getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: BusinessError, data: formInfo.FormInfo[]) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info('formHost getFormsInfo success.');
     }
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1240,7 +1235,7 @@ try {
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-获取设备上指定应用程序提供的卡片信息。使用Promise异步回调。
+获取设备上指定应用程序提供的卡片信息（不包含模板卡片）。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1277,16 +1272,15 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info('formHost getFormsInfo success.');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1294,7 +1288,7 @@ try {
 
 getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-获取设备上指定应用程序提供的卡片信息。使用Promise异步回调。
+获取设备上指定应用程序提供的卡片信息（不包含模板卡片）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1330,7 +1324,6 @@ getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.Form
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
   bundleName: 'ohos.samples.FormApplication',
@@ -1339,12 +1332,12 @@ const filter: formInfo.FormInfoFilter = {
 };
 try {
   formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info('formHost getFormsInfo success.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1382,7 +1375,6 @@ deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;numb
 
 ```ts
 import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let formIds: string[] = new Array('12400633174999288', '12400633174999289');
@@ -1390,11 +1382,11 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+      console.info(`formHost deleteInvalidForms, data: ${data}`);
     }
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1437,17 +1429,16 @@ deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
 ```ts
 import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let formIds: string[] = new Array('12400633174999288', '12400633174999289');
   formHost.deleteInvalidForms(formIds).then((data: number) => {
-    console.log(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+    console.info(`formHost deleteInvalidForms, data: ${data}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1504,11 +1495,11 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormState, data: ${data.formState}`);
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1567,12 +1558,12 @@ let want: Want = {
 };
 try {
   formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
-    console.log(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+    console.info(`formHost acquireFormState, data: ${data.formState}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1610,7 +1601,7 @@ on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 import { formHost } from '@kit.FormKit';
 
 formHost.on('formUninstall', (formId: string) => {
-  console.log(`formHost on formUninstall, formId: ${formId}`);
+  console.info(`formHost on formUninstall, formId: ${formId}`);
 });
 ```
 
@@ -1648,7 +1639,7 @@ off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 import { formHost } from '@kit.FormKit';
 
 formHost.off('formUninstall', (formId: string) => {
-  console.log(`formHost on formUninstall, formId: ${formId}`);
+  console.info(`formHost on formUninstall, formId: ${formId}`);
 });
 ```
 
@@ -1748,11 +1739,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsVisible(formIds, true).then(() => {
-    console.log('formHost notifyFormsVisible success');
+    console.info('formHost notifyFormsVisible success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1802,7 +1793,7 @@ try {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1853,11 +1844,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
-    console.log('formHost notifyFormsEnableUpdate success');
+    console.info('formHost notifyFormsEnableUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1907,7 +1898,7 @@ try {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1959,11 +1950,11 @@ let formId: string = '12400633174999288';
 let deviceId: string = 'EFC11C0C53628D8CC2F8CB5052477E130D075917034613B9884C55CD22B3DEF2';
 try {
   formHost.shareForm(formId, deviceId).then(() => {
-    console.log('formHost shareForm success');
+    console.info('formHost shareForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -2012,7 +2003,7 @@ try {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -2060,11 +2051,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsPrivacyProtected(formIds, true).then(() => {
-    console.log('formHost notifyFormsPrivacyProtected success');
+    console.info('formHost notifyFormsPrivacyProtected success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -2099,13 +2090,12 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
+| 16501000 | An internal functional error occurred. invalid input parameter during form operation. |
 
 **示例：**
 
 ```ts
 import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let formId: string = '12400633174999288';
 try {
@@ -2113,11 +2103,11 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost acquireFormData, data: ${JSON.stringify(data)}`);
+      console.info('formHost acquireFormData success.');
     }
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2156,7 +2146,7 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
+| 16501000 | An internal functional error occurred. invalid input parameter during form operation. |
 
 **示例：**
 
@@ -2167,7 +2157,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formHost.acquireFormData(formId).then((data) => {
-    console.log('formHost acquireFormData success' + data);
+    console.info('formHost acquireFormData success' + data);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -2227,10 +2217,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct CardExample {
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State formId: number = 0;
   @State fwidth: number = 420;
   @State fheight: number = 280;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   build() {
     Column() {
@@ -2247,21 +2237,21 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.log(`testTag form info : ${JSON.stringify(form)}`);
+          console.info('testTag onAcquired.');
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
             formHost.setRouterProxy(formIds, (want: Want) => {
-              console.info(`formHost recv router event, want: ${JSON.stringify(want)}`);
+              console.info('formHost recv router event.');
               // 卡片使用方自己处理跳转
               this.context.startAbility(want, (err: BusinessError) => {
-                console.info(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
+                console.error(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
               });
             }, (err: BusinessError) => {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.log('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error(`formHost setRouterProxy, code: ${e.code}, message: ${e.message}`);
           }
         })
     }
@@ -2275,7 +2265,7 @@ struct CardExample {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。
+设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2326,10 +2316,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct CardExample {
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State formId: number = 0;
   @State fwidth: number = 420;
   @State fheight: number = 280;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   build() {
     Column() {
@@ -2346,12 +2336,12 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.log(`testTag form info : ${JSON.stringify(form)}`);
+          console.info('testTag onAcquired.');
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
             formHost.setRouterProxy(formIds, (want: Want) => {
-              console.info(`formHost recv router event, want: ${JSON.stringify(want)}`);
+              console.info('formHost recv router event.');
               // 卡片使用方自己处理跳转
               this.context.startAbility(want, (err: BusinessError) => {
                 console.info(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
@@ -2362,7 +2352,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.log('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error(`formHost setRouterProxy, code: ${e.code}, message: ${e.message}`);
           }
         })
     }
@@ -2374,7 +2364,7 @@ struct CardExample {
 
 ## clearRouterProxy<sup>11+</sup>
 
-clearRouterProxy(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
+clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 清除卡片跳转代理。使用callback异步回调。
 
@@ -2386,7 +2376,7 @@ clearRouterProxy(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| formIds  | Array&lt;string&gt;;      | 是   | 卡片标识数组。                                               |
+| formIds  | Array&lt;string&gt;      | 是   | 卡片标识数组。                                               |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，当指定卡片取消router跳转代理成功时，error为undefined；否则抛出异常。 |
 
 **错误码：**
@@ -2423,7 +2413,7 @@ try {
 
 ## clearRouterProxy<sup>11+</sup>
 
-clearRouterProxy(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
+clearRouterProxy(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 清除卡片跳转代理。使用Promise异步回调。
 
@@ -2466,7 +2456,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.clearRouterProxy(formIds).then(() => {
-    console.log('formHost clear rourter proxy success');
+    console.info('formHost clear router proxy success');
   }).catch((err: BusinessError) => {
     console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2476,7 +2466,7 @@ try {
 ```
 ## setFormsRecyclable<sup>11+</sup>
 
-setFormsRecyclable(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
+setFormsRecyclable(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 设置卡片可回收。使用callback异步回调。
 
@@ -2490,7 +2480,7 @@ setFormsRecyclable(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| formIds  | Array&lt;string&gt;;      | 是   | 卡片标识数组。                                               |
+| formIds  | Array&lt;string&gt;      | 是   | 卡片标识数组。                                               |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，当设置卡片可回收成功时，error为undefined；否则抛出异常。 |
 
 **错误码：**
@@ -2500,7 +2490,7 @@ setFormsRecyclable(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                 |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2526,7 +2516,7 @@ try {
 
 ## setFormsRecyclable<sup>11+</sup>
 
-setFormsRecyclable(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
+setFormsRecyclable(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 设置卡片可回收。使用Promise异步回调。
 
@@ -2555,7 +2545,7 @@ setFormsRecyclable(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                 |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2570,7 +2560,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.setFormsRecyclable(formIds).then(() => {
-    console.log('setFormsRecyclable success');
+    console.info('setFormsRecyclable success');
   }).catch((err: BusinessError) => {
     console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2580,7 +2570,7 @@ try {
 ```
 ## recoverForms<sup>11+</sup>
 
-recoverForms(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
+recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 恢复卡片。使用callback异步回调。
 
@@ -2594,7 +2584,7 @@ recoverForms(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): 
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| formIds  | Array&lt;string&gt;;      | 是   | 卡片标识数组。                                               |
+| formIds  | Array&lt;string&gt;      | 是   | 卡片标识数组。                                               |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，当恢复卡片成功时，error为undefined；否则抛出异常。 |
 
 **错误码：**
@@ -2604,7 +2594,7 @@ recoverForms(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                 |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2659,7 +2649,7 @@ recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                 |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2679,7 +2669,7 @@ try {
     console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
-  console.info(`catch error, code: ${e.code}, message: ${e.message}`);
+  console.error(`catch error, code: ${e.code}, message: ${e.message}`);
 }
 ```
 ## recycleForms<sup>12+</sup>
@@ -2763,7 +2753,7 @@ updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                                    |
+| 202      | caller is not system app.                                    |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2826,22 +2816,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let formId: string = '12400633174999288';
-  let res: formInfo.PublishFormResult = {code: formInfo.PublishFormErrorCode.SUCCESS, message: ''};
+  let res: formInfo.PublishFormResult = { code: formInfo.PublishFormErrorCode.SUCCESS, message: '' };
   formHost.setPublishFormResult(formId, res);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## updateFormLockedState<sup>18+</sup>
+## updateFormLockedState<sup>22+</sup>
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
-通知卡片管控状态更新。
+通知卡片管控状态更新。使用Promise异步回调。
 
 卡片管控状态是指，应用使能了应用锁管控，对应应用的卡片也会跟随使能应用锁管控，此时卡片页面会使用加锁的蒙板样式遮罩卡片。在管控状态下，操作和使用卡片需要输入加锁时设置的密码。
-
-**模型约束**: 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.REQUIRE_FORM
 
@@ -2867,7 +2855,6 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
 | 202      | caller is not a system app.                 |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
 | 16501000 | An internal functional error occurred.                       |
@@ -2884,20 +2871,19 @@ let formId: string = '12400633174999288';
 let isLocked: boolean = true;
 
 try {
-  formHost.updateFormLockedState(this.formId, this.isLocked).then(() => {
-    console.log(`formHost updateFormLockedState success`);
+  formHost.updateFormLockedState(formId, isLocked).then(() => {
+    console.info(`formHost updateFormLockedState success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
-
 ```
 
 ## formHost.on('formOverflow')<sup>20+</sup>
 
 on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-订阅互动卡片动效请求事件。
+订阅互动卡片动效请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -2926,7 +2912,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.on('formOverflow', (request: formInfo.OverflowRequest) => {
-    console.log(`formHost on formOverflow, formId is ${request.formId}`);
+    console.info(`formHost on formOverflow, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2937,7 +2923,7 @@ try {
 
 off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-取消订阅互动卡片动效请求事件。
+取消订阅互动卡片动效请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -2966,7 +2952,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.off('formOverflow', (request: formInfo.OverflowRequest) => {
-    console.log(`formHost off formOverflow, formId is ${request.formId}`);
+    console.info(`formHost off formOverflow, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2977,7 +2963,7 @@ try {
 
 on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
-订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
+订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3006,7 +2992,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.on('changeSceneAnimationState', (request: formInfo.ChangeSceneAnimationStateRequest): void => {
-    console.log(`formHost on changeSceneAnimationState, formId is ${request.formId}`);
+    console.info(`formHost on changeSceneAnimationState, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -3015,9 +3001,9 @@ try {
 
 ## formHost.off('changeSceneAnimationState')<sup>20+</sup>
 
-off(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.changeSceneAnimationState&gt;): void
+off(type: 'changeSceneAnimationState', callback?: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
-取消订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
+取消订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3046,7 +3032,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.off('changeSceneAnimationState', (request: formInfo.ChangeSceneAnimationStateRequest): void => {
-    console.log(`formHost off changeSceneAnimationState, formId is ${request.formId}`);
+    console.info(`formHost off changeSceneAnimationState, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -3057,7 +3043,7 @@ try {
 
 on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 
-订阅卡片位置尺寸查询请求事件。
+订阅卡片位置尺寸查询请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3068,7 +3054,7 @@ on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 | 参数名 | 类型    | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
 | type | string | 是   | 事件回调类型，支持的事件为'getFormRect'，表示卡片位置尺寸查询。|
-| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息，单位vp。|
+| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。|
 
 **错误码：**
 
@@ -3088,8 +3074,13 @@ try {
   formHost.on('getFormRect', (formId: string): Promise<formInfo.Rect> => {
     // 卡片使用方需要对查询请求进行处理，计算并返回卡片尺寸、位置信息
     return new Promise<formInfo.Rect>((resolve: Function) => {
-      console.log(`formHost on getFormRect, formId is ${formId}`);
-      let formRect: formInfo.Rect = {left: 0, top: 0, width: 0, height: 0};
+      console.info(`formHost on getFormRect, formId is ${formId}`);
+      let formRect: formInfo.Rect = {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      };
       resolve(formRect);
     })
   });
@@ -3102,7 +3093,7 @@ try {
 
 off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
 
-取消订阅卡片位置尺寸查询请求事件。
+取消订阅卡片位置尺寸查询请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3163,7 +3154,7 @@ updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: fo
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | caller is not system app. |
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501012 | The dimension parameter is incorrect. |
@@ -3177,8 +3168,365 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   let newDimension = formInfo.FormDimension.Dimension_1_2;
-  let newRect: formInfo.Rect = {left: 1, top: 2, width: 100, height: 100};
+  let newRect: formInfo.Rect = {
+    left: 1,
+    top: 2,
+    width: 100,
+    height: 100
+  };
   formHost.updateFormSize(formId, newDimension, newRect);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## getAllTemplateFormsInfo<sup>23+</sup>
+
+getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
+
+获取设备上所有应用提供的模板卡片信息。使用Promise异步回调。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型                                                                                     | 说明                    |
+|:---------------------------------------------------------------------------------------|:----------------------|
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getAllTemplateFormsInfo().then((data: formInfo.FormInfo[]) => {
+    for (let formInfo of data) {
+      console.info(`getAllTemplateFormsInfo bundleName: ${formInfo.bundleName}, moduleName: ${formInfo.moduleName}, name: ${formInfo.name}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+
+## getTemplateFormsInfo<sup>23+</sup>
+
+getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
+
+获取设备上指定应用程序提供的模板卡片信息。使用Promise异步回调。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| bundleName | string | 是 | 要查询的应用Bundle名称。 |
+| moduleName | string | 否 |  要查询的模块名称，缺省默认为空。 |
+
+**返回值：**
+
+| 类型                                                                                     | 说明                                |
+|:---------------------------------------------------------------------------------------| :---------------------------------- |
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getTemplateFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
+    for (let formInfo of data) {
+      console.info(`getTemplateFormsInfo bundleName: ${formInfo.bundleName}, moduleName: ${formInfo.moduleName}, name: ${formInfo.name}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.onTemplateFormDetailInfoChange<sup>23+</sup>
+
+onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void
+
+订阅模板卡片静态配置信息变化。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo-sys.md#templateformdetailinfocallback23) | 是   | 回调函数，监控模板卡片静态配置信息变化。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | Permissions denied.Called by non-system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const callback: formInfo.TemplateFormDetailInfoCallback = (info: formInfo.TemplateFormDetailInfo[]) => {
+    for (let templateFormDetailInfo of info) {
+      console.info(`TemplateFormDetailInfoCallback bundleName: ${templateFormDetailInfo.bundleName}, moduleName: ${templateFormDetailInfo.moduleName}, formName: ${templateFormDetailInfo.formName}`);
+    }
+  };
+  formHost.onTemplateFormDetailInfoChange(callback);
+  console.info(`onTemplateFormDetailInfoChange success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+
+## formHost.offTemplateFormDetailInfoChange<sup>23+</sup>
+
+offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void
+
+取消订阅模板卡片静态配置信息变化。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo-sys.md#templateformdetailinfocallback23) | 否   | 回调函数，监控模板卡片静态配置信息变化。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | Permissions denied.Called by non-system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offTemplateFormDetailInfoChange();
+  console.info(`offTemplateFormDetailInfoChange success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.getFormIdsByFormLocation<sup>24+</sup>
+
+getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;string&gt;&gt;
+
+获取设备上指定卡片位置的卡片标识列表。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| location | [formInfo.FormLocation](js-apis-app-form-formInfo-sys.md#formlocation12) | 是 | 卡片位置。 |
+
+**返回值：**
+
+| 类型                                                                                     | 说明                                |
+|:---------------------------------------------------------------------------------------| :---------------------------------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回查询到的卡片标识列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501016 | The location of the widget is invalid. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getFormIdsByFormLocation(formInfo.FormLocation.DESKTOP).then((formIds: Array<string>) => {
+    console.info('formHost getFormIdsByFormLocation success.');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## formHost.onGetWantParamsCallback
+
+onGetWantParamsCallback(callback: formInfo.GetWantParamsCallback): void
+
+订阅获取卡片参数事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.GetWantParamsCallback](js-apis-app-form-formInfo-sys.md#getwantparamscallback) | 是   | 回调函数，返回卡片参数信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const callback = (formInfos: formInfo.FormInfo[]): Array<Record<string, Object>> => {
+    console.info(`onGetWantParamsCallback formInfos length: ${formInfos.length}`);
+    let wantParamsList: Array<Record<string, Object>> = [];
+    for (let formInfoItem of formInfos) {
+      let wantParams: Record<string, Object> = {};
+      wantParams['key'] = 'value';
+      wantParamsList.push(wantParams);
+    }
+    return wantParamsList;
+  };
+  formHost.onGetWantParamsCallback(callback);
+  console.info(`onGetWantParamsCallback success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.offGetWantParamsCallback
+
+offGetWantParamsCallback(callback?: formInfo.GetWantParamsCallback): void
+
+取消订阅获取卡片参数事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.GetWantParamsCallback](js-apis-app-form-formInfo-sys.md#getwantparamscallback) | 否   | 回调函数，返回卡片参数信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offGetWantParamsCallback();
+  console.info(`offGetWantParamsCallback success`);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }

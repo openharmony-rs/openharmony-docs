@@ -58,4 +58,8 @@ After the change, the output of this example is:
 [0,0]
 ```
 
+> **NOTE**
+> 
+> The [delete operator is not supported](../../../application-dev/quick-start/typescript-to-arkts-migration-guide.md#delete-operator-is-not-supported) in ETS files, but remains available for use in third-party libraries and JavaScript files.
+
 This change fixes the issue, ensuring that when an array defined by a literal has elements deleted and is redefined with the same literal, the new array contains the elements as originally defined by the literal.

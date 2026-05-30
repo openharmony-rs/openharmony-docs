@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
@@ -365,12 +365,17 @@ struct Index {
   private uiContext: UIContext = this.getUIContext();
   private context: Context | undefined = this.uiContext.getHostContext();
   private cameraPermission: Permissions = 'ohos.permission.CAMERA'; // 申请权限相关问题可参考本篇开头的申请相关权限文档
+  private mXComponentOptions: XComponentOptions = {
+    type: XComponentType.SURFACE,
+    controller: this.mXComponentController
+  }
+
 
   async requestPermissionsFn(): Promise<void> {
     let atManager = abilityAccessCtrl.createAtManager();
     if (this.context) {
       let res = await atManager.requestPermissionsFromUser(this.context, [this.cameraPermission]);
-      for (let i =0; i < res.permissions.length; i++) {
+      for (let i = 0; i < res.permissions.length; i++) {
         if (this.cameraPermission.toString() === res.permissions[i] && res.authResults[i] === 0) {
           this.isShow = true;
         }
@@ -386,11 +391,7 @@ struct Index {
     Column() {
       Column() {
         if (this.isShow) {
-          XComponent({
-            id: 'componentId',
-            type: XComponentType.SURFACE,
-            controller: this.mXComponentController
-          })
+          XComponent(this.mXComponentOptions)
           .onLoad(async () => {
             console.info('onLoad is called');
             if (this.context) {

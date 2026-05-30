@@ -1,5 +1,12 @@
 # net_ssl_c.h
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ## Overview
 
 Defines data structures for the C APIs of the SSL/TLS certificate chain verification module.
@@ -26,13 +33,14 @@ Defines data structures for the C APIs of the SSL/TLS certificate chain verifica
 | [void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)](#oh_netstack_destroycertificatescontent) | Releases the certificate content.|
 | [int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)](#oh_netstack_iscleartextpermitted) | Boolean value indicating whether plaintext HTTP is allowed.|
 | [int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)](#oh_netstack_iscleartextpermittedbyhostname) | Boolean value indicating whether host name–based plaintext HTTP is allowed.|
+| [int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)](#oh_netstack_iscleartextcfgbycomponent) | Checks whether plaintext HTTP interception is enabled.|
 
 
 ## Function Description
 
 ### OH_NetStack_CertVerification()
 
-```
+```c
 uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, const struct NetStack_CertBlob *caCert)
 ```
 
@@ -60,7 +68,7 @@ Provides certificate chain verification APIs for external systems.
 
 ### OH_NetStack_GetPinSetForHostName()
 
-```
+```c
 int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_CertificatePinning *pin)
 ```
 
@@ -88,7 +96,7 @@ Obtains the certificate lock information.
 
 ### OH_NetStack_GetCertificatesForHostName()
 
-```
+```c
 int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Certificates *certs)
 ```
 
@@ -116,7 +124,7 @@ Obtains the certificate information.
 
 ### OH_Netstack_DestroyCertificatesContent()
 
-```
+```c
 void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 ```
 
@@ -137,7 +145,7 @@ Releases the certificate content.
 
 ### OH_Netstack_IsCleartextPermitted()
 
-```
+```c
 int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 ```
 
@@ -164,7 +172,7 @@ Boolean value indicating whether plaintext HTTP is allowed.
 
 ### OH_Netstack_IsCleartextPermittedByHostName()
 
-```
+```c
 int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)
 ```
 
@@ -189,3 +197,29 @@ Boolean value indicating whether host name–based plaintext HTTP is allowed.
 | Type| Description|
 | -- | -- |
 | int32_t | **0**: Success.<br>         **201**: Permission denied.<br>         **401**: Parameter error.|
+
+### OH_Netstack_IsCleartextCfgByComponent
+
+```c
+int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg);
+```
+
+**Description**
+
+Checks whether plaintext HTTP interception is enabled.
+
+**Since**: 20
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const char *component | Component name. The following components are supported: Network Kit and ArkWeb.|
+| bool *componentCfg | Output parameter, which indicates whether plaintext HTTP interception is enabled. The value **true** indicates that plaintext HTTP interception is enabled, and the value **false** indicates the opposite.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | **0**: Success.<br>         **2100001**: Invalid parameter value.|

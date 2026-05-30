@@ -2,10 +2,10 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong-->
+<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @huchuyun-->
+<!--Adviser: @Brilliantry_Rui-->
 
 可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。
 
@@ -13,7 +13,7 @@
 >  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >  - 该组件嵌套List子组件滚动时，若List不设置宽高，则默认全部加载，在对性能有要求的场景下建议指定List的宽高，最佳实践请参考[懒加载优化性能-Scroll嵌套List导致按需加载失效](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization#section6296154115367)。
 >  - 该组件滚动的前提是主轴方向大小小于内容大小。
->  - Scroll组件[通用属性clip](ts-universal-attributes-sharp-clipping.md)的默认值为true。
+>  - Scroll组件通用属性[clip](ts-universal-attributes-sharp-clipping.md#clip12)的默认值为true。
 >  - Scroll组件的高度超出屏幕显示范围时，可以通过设置通用属性[layoutWeight](ts-universal-attributes-size.md#layoutweight)让Scroll高度适应主轴的剩余空间。
 >  - 手指触摸屏幕时，会停止当前触摸范围内所有滚动组件的滚动动画（[scrollTo](#scrollto)和[scrollToIndex](#scrolltoindex)接口触发的滚动动画除外），包括边缘回弹动画。
 >  - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
@@ -48,7 +48,7 @@ Scroll(scroller?: Scroller)
 
 scrollable(value: ScrollDirection)
 
-设置滚动方向。
+设置滚动方向。该值被修改后会重置滚动偏移量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -60,7 +60,7 @@ scrollable(value: ScrollDirection)
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
 | value  | [ScrollDirection](#scrolldirection枚举说明) | 是   | 滚动方向。<br/>默认值：ScrollDirection.Vertical |
 
-当滚动方向设置为[ScrollDirection.FREE](#scrolldirection枚举说明)时，Scroll组件仅支持部分能力，见[自由滚动模式下支持的能力](#scrolldirection枚举说明)。
+当滚动方向设置为[ScrollDirection.FREE](#scrolldirection枚举说明)时，Scroll组件仅支持部分能力，见[ScrollDirection.FREE](#scrolldirection枚举说明)中自由滚动模式下支持的能力。
 
 ### scrollBar
 
@@ -94,7 +94,26 @@ scrollBarColor(color: Color | number | string)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。   |
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。<br/>string为rgb或者argb格式颜色，示例：'#ffffff'。   |
+
+### scrollBarColor<sup>22+</sup>
+
+scrollBarColor(color: Color | number | string | Resource)
+
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比，color参数开始支持Resource类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明           |
+| ------ | ------------------------------------------------------------ | ---- | -------------- |
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。   |
+
 
 ### scrollBarWidth
 
@@ -112,15 +131,39 @@ scrollBarWidth(value: number | string)
 | ------ | -------------------------- | ---- | ----------------------------------------- |
 | value  | number&nbsp;\|&nbsp;string | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。|
 
+### scrollBarWidth
+
+scrollBarWidth(value: number | string | Resource)
+
+设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Scroll组件主轴方向的高度，则滚动条的宽度会变为4vp，支持Resource资源类型。
+
+未通过该接口设置时，设置滚动条的宽度为4vp。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                       | 必填 | 说明                                      |
+| ------ | -------------------------- | ---- | ----------------------------------------- |
+| value  | number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource) | 是   | 滚动条的宽度。<br/>单位：vp <br/>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理。设置为0时，不显示滚动条。|
+
 ### scrollSnap<sup>10+</sup>
 
 scrollSnap(value: ScrollSnapOptions)
 
 设置Scroll组件的限位滚动模式。
 
-限位动画期间onWillScroll事件上报的滚动操作来源类型为ScrollSource.FLING。
+限位动画期间[onWillScroll](#onwillscroll12)事件上报的滚动操作来源类型为ScrollSource.FLING。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,7 +188,7 @@ edgeEffect(edgeEffect: EdgeEffect, options?: EdgeEffectOptions)
 | 参数名                | 类型                                              | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | edgeEffect            | [EdgeEffect](ts-appendix-enums.md#edgeeffect)     | 是   | Scroll组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：EdgeEffect.None |
-| options<sup>11+</sup> | [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: true } |
+| options<sup>11+</sup> | [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: true }<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### enableScrollInteraction<sup>10+</sup>
 
@@ -154,6 +197,8 @@ enableScrollInteraction(value: boolean)
 设置是否支持滚动手势。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -175,6 +220,8 @@ nestedScroll(value: NestedScrollOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -190,6 +237,8 @@ friction(value: number | Resource)
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,6 +256,8 @@ enablePaging(value: boolean)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -222,6 +273,8 @@ initialOffset(value: OffsetOptions)
 设置初始滚动偏移量。只在首次布局时生效，后续动态修改该属性值不生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,6 +292,8 @@ maxZoomScale(scale: number)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -254,6 +309,8 @@ minZoomScale(scale: number)
 设置Scroll组件内容的最小手势缩放比例。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -275,6 +332,8 @@ zoomScale(scale: number)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -290,6 +349,8 @@ enableBouncesZoom(enable: boolean)
 启用过缩放回弹效果。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -309,9 +370,9 @@ enableBouncesZoom(enable: boolean)
 | ---------- | -- | ------------------------ |
 | Vertical   | 0  | 仅支持竖直方向滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | Horizontal | 1  | 仅支持水平方向滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> 从API version 9开始废弃，从API version 20开始推荐使用FREE。|
+| Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用FREE替代。FREE枚举值从API version 20开始支持。|
 | None       | 3 | 不可滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 FREE（自由滚动）模式下支持的能力：
 
@@ -321,9 +382,9 @@ FREE（自由滚动）模式下支持的能力：
 | [scrollBarColor](#scrollbarcolor) | [onDidScroll](#ondidscroll12) | [scrollEdge](#scrolledge) |
 | [scrollBarWidth](#scrollbarwidth) | [onScrollEdge](#onscrolledge) | [scrollPage](#scrollpage9) |
 | [scrollBarMargin](./ts-container-scrollable-common.md#scrollbarmargin20) | [onScrollStart](#onscrollstart9) | [currentOffset](#currentoffset) |
-| [edgeEffect](#edgeeffect) | [onScrollStop](#onscrollstop9) | [scrollBy](#scrollby9) |
-| [enableScrollInteraction](#enablescrollinteraction10) | - | [getItemRect](#getitemrect11) |
-| [friction](#friction10) | - | - |
+| [edgeEffect](#edgeeffect) | [onScrollStop](#onscrollstop9) | [offset](#offset23) |
+| [enableScrollInteraction](#enablescrollinteraction10) | - | [scrollBy](#scrollby9) |
+| [friction](#friction10) | - | [getItemRect](#getitemrect11) |
 | [clipContent](./ts-container-scrollable-common.md#clipcontent14) | - | - |
 | [initialOffset](#initialoffset12) | - | - |
 | [scrollable](#scrollable) | - | - |
@@ -339,6 +400,8 @@ FREE（自由滚动）模式下支持的能力：
 限位滚动模式对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -362,9 +425,9 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 该接口回调时，事件参数传入即将发生的滚动量，事件处理函数中可根据应用场景计算实际需要的滚动量并作为事件处理函数的返回值返回，Scroll将按照返回值的实际滚动量进行滚动。
 
-支持offsetRemain为负值。
+支持[offsetRemain](#onscrollframebeginhandlerresult18对象说明)为负值。
 
-若通过onScrollFrameBegin事件和scrollBy方法实现容器嵌套滚动，需设置子滚动节点的EdgeEffect为None。如Scroll嵌套List滚动时，List组件的edgeEffect属性需设置为EdgeEffect.None。
+若通过onScrollFrameBegin事件和[scrollBy](#scrollby9)方法实现容器嵌套滚动，需设置子滚动节点的[EdgeEffect](#edgeeffect)为None。如Scroll嵌套List滚动时，List组件的[edgeEffect](ts-container-list.md#edgeeffect)属性需设置为EdgeEffect.None，否则抛滑List，会触发List的边缘回弹动画，导致嵌套滚动失效。
 
 满足以下任一条件时触发该事件：
 
@@ -402,7 +465,9 @@ onScroll(event: (xOffset: number, yOffset: number) => void)
 
 3、越界回弹。
 
-从API version 12开始废弃不再使用，推荐使用[onWillScroll](#onwillscroll12)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃，建议使用[onWillScroll](#onwillscroll12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -412,8 +477,8 @@ onScroll(event: (xOffset: number, yOffset: number) => void)
 
 | 参数名  | 类型                                                      | 必填 | 说明                   |
 | ------- | --------------------------------------------------------- | ---- | ---------------------- |
-| xOffset     | number                                                  | 是   | 每帧滚动时水平方向的偏移量，Scroll的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
-| yOffset     | number                                                  | 是   | 每帧滚动时竖直方向的偏移量，Scroll的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| xOffset     | number                                                  | 是   | 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
+| yOffset     | number                                                  | 是   | 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 
 ### onWillScroll<sup>12+</sup>
 
@@ -436,6 +501,8 @@ onWillScroll(handler: ScrollOnWillScrollCallback)
 >  滚动事件的回调函数在滚动过程中会被频繁触发，因此应避免在该回调函数中执行耗时操作，以防止应用出现卡顿和丢帧的问题。最佳实践请参考[主线程耗时操作优化指导-高频回调场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section10112623611)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -462,6 +529,8 @@ onDidScroll(handler: ScrollOnScrollCallback)
 3、越界回弹。 
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -491,7 +560,7 @@ onScrollEdge(event: OnScrollEdgeCallback)
 | ------ | --------------------------------- | ---- | ------------------ |
 | event   | [OnScrollEdgeCallback](#onscrolledgecallback18) | 是   | 滚动到的边缘位置。<br/>当Scroll设置为水平方向滚动时，上报[Edge.Center](ts-appendix-enums.md#edge)表示水平方向起始位置，上报[Edge.Baseline](ts-appendix-enums.md#edge)表示水平方向末尾位置。由于[Edge.Center](ts-appendix-enums.md#edge)和[Edge.Baseline](ts-appendix-enums.md#edge)枚举值已经废弃，推荐使用[onReachStart](ts-container-scrollable-common.md#onreachstart11)、[onReachEnd](ts-container-scrollable-common.md#onreachend11)事件监听是否滚动到边界。 |
 
-### onScrollEnd<sup>(deprecated) </sup>
+### onScrollEnd<sup>(deprecated)</sup>
 
 onScrollEnd(event: () => void)
 
@@ -501,7 +570,9 @@ onScrollEnd(event: () => void)
 
 1、滚动组件触发滚动后停止，支持键鼠操作等其他触发滚动的输入设置。<br/>2、通过滚动控制器API接口调用后停止，带过渡动效。
 
-该事件从API version 9开始废弃，使用[onScrollStop](#onscrollstop9)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[onScrollStop](#onscrollstop9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -559,6 +630,8 @@ onDidZoom(event: ScrollOnDidZoomCallback)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -574,6 +647,8 @@ onZoomStart(event: VoidCallback)
 手势缩放开始触发。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -591,6 +666,8 @@ onZoomStop(event: VoidCallback)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -607,19 +684,21 @@ Scroll滚动时触发的回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名      | 类型                                                    | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| xOffset     | number                                                  | 是   | 每帧滚动时水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
-| yOffset     | number                                                  | 是   | 每帧滚动时竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| xOffset     | number                                                  | 是   | 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
+| yOffset     | number                                                  | 是   | 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是  | 当前滚动状态。                                               |
 
 >  **说明：**
 >
->  若通过onScrollFrameBegin事件和scrollBy方法实现容器嵌套滚动，需设置子滚动节点的EdgeEffect为None。如Scroll嵌套List滚动时，List组件的edgeEffect属性需设置为EdgeEffect.None。
+>  若通过[onScrollFrameBegin](#onscrollframebegin9)事件和[scrollBy](#scrollby9)方法实现容器嵌套滚动，需设置子滚动节点的EdgeEffect为None。如Scroll嵌套List滚动时，List组件的[edgeEffect](ts-container-list.md#edgeeffect)属性需设置为EdgeEffect.None。
 
 ## ScrollOnWillScrollCallback<sup>12+</sup>
 
@@ -629,14 +708,16 @@ Scroll滚动前触发的回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名      | 类型                                                    | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| xOffset     | number                                                  | 是   | 每帧滚动时水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
-| yOffset     | number                                                  | 是   | 每帧滚动时竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| xOffset     | number                                                  | 是   | 相对于上一帧水平方向的偏移量，Scroll中的内容向左滚动时偏移量为正，向右滚动时偏移量为负。<br/>单位vp。 |
+| yOffset     | number                                                  | 是   | 相对于上一帧竖直方向的偏移量，Scroll中的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是  | 当前滚动状态。                                               |
 | scrollSource | [ScrollSource](ts-appendix-enums.md#scrollsource12) | 是 | 当前滚动操作的来源。 |
 
@@ -654,6 +735,8 @@ type OnScrollEdgeCallback = (side: Edge) => void
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -669,6 +752,8 @@ type OnScrollFrameBeginCallback = (offset: number, state: ScrollState) => OnScro
 Scroll每帧滚动前触发的回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -687,19 +772,21 @@ Scroll每帧滚动前触发的回调。
 
 ## OnScrollFrameBeginHandlerResult<sup>18+</sup>对象说明
 
-[OnScrollFrameBeginCallback](#onscrollframebegincallback18)返回的实际滚动偏移量。
+[OnScrollFrameBeginCallback](#onscrollframebegincallback18)返回的实际相对上一帧滚动偏移量。
 
 > **说明：**
 >
-> 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
+> 为规范匿名对象的定义，API version 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 类型  | 只读 | 可选 | 说明  |
 | ----- | ------ | ---- | -- | ----- |
-| offsetRemain<sup>9+</sup>     | number | 否   | 否 | 实际滚动偏移量。<br/>单位vp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| offsetRemain<sup>9+</sup>     | number | 否   | 否 | 实际相对上一帧的滚动偏移量。<br/>单位vp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## ScrollOnDidZoomCallback<sup>20+</sup>
 
@@ -708,6 +795,8 @@ type ScrollOnDidZoomCallback = (scale: number) => void
 Scroll每帧缩放完成时触发的回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -731,7 +820,7 @@ Scroll每帧缩放完成时触发的回调。
 
 ### 导入对象
 
-```
+```ts
 scroller: Scroller = new Scroller();
 ```
 
@@ -749,8 +838,19 @@ Scroller的构造函数。
 
 scrollTo(options: ScrollOptions)
 
-
 滑动到指定位置。
+
+>  **说明：**
+>
+> - scrollTo动画速度大于200vp/s时，滚动组件区域内的组件不响应点击事件。
+>
+> - 各组件行为存在差异：
+>
+>   - [ArcList](ts-container-arclist.md)和[List](ts-container-list.md)组件会对所有经过的item进行加载和布局。
+>
+>   - Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的[WaterFlow](ts-container-waterflow.md)组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。
+>
+>   - [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件向后跳转（即dx或dy为正值时）会加载和布局所有经过的item，向前跳转（即dx或dy为负值时）会直接跳转到对应位置。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -760,18 +860,14 @@ scrollTo(options: ScrollOptions)
 
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
-| options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数。 
-
->  **说明：**
->
-> ScrollTo动画速度大于200vp/s时，滚动组件区域内的组件不响应点击事件。
->
+| options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数。 |
 
 ### scrollEdge
 
 scrollEdge(value: Edge, options?: ScrollEdgeOptions)
 
 滚动到容器边缘，不区分滚动轴方向，Edge.Top和Edge.Start表现相同，Edge.Bottom和Edge.End表现相同。
+
 Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -783,7 +879,7 @@ Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
 | value | [Edge](ts-appendix-enums.md#edge) | 是    | 滚动到的边缘位置。|
-| options<sup>12+</sup>&nbsp; | [ScrollEdgeOptions](#scrolledgeoptions12对象说明) | 否    | 设置滚动到边缘位置的模式。 |
+| options<sup>12+</sup>&nbsp; | [ScrollEdgeOptions](#scrolledgeoptions12对象说明) | 否    | 设置滚动到边缘位置的模式。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### fling<sup>12+</sup>
 
@@ -794,13 +890,15 @@ fling(velocity: number): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明                                                     |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| velocity | number   | 是   | 惯性滚动的初始速度值。单位：vp/s<br/>**说明：**<br/>velocity值设置为0，视为异常值，本次滚动不生效。如果值为正数，则向顶部滚动；如果值为负数，则向底部滚动。 <br/>取值范围：(-∞, +∞)|
+| velocity | number   | 是   | 惯性滚动的初始速度值。单位：vp/s<br/>**说明：**<br/>velocity值设置为0，视为异常值，本次滚动不生效。如果值为正数，则向顶部滚动；如果值为负数，则向底部滚动。|
 
 **错误码**：
 
@@ -809,7 +907,7 @@ fling(velocity: number): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 ### scrollPage<sup>9+</sup>
 
@@ -831,7 +929,11 @@ scrollPage(value:   ScrollPageOptions)
 
 scrollPage(value: { next: boolean, direction?: Axis })
 
-滚动到下一页或者上一页。从API version 9开始，该接口不再维护，推荐使用[scrollPage<sup>9+</sup>](#scrollpage9)。
+滚动到下一页或者上一页。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[scrollPage<sup>9+</sup>](#scrollpage9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -846,7 +948,13 @@ scrollPage(value: { next: boolean, direction?: Axis })
 
 currentOffset(): OffsetResult
 
-获取当前的滚动偏移量。
+获取当前的滚动总偏移量。
+
+> **说明：**
+> 
+> 1. 当Scroller没有和组件绑定时，该接口会返回undefined，但是接口中没有声明，推荐使用[offset](#offset23)函数。
+>
+> 2. Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布局完成时，内容总偏移量通过估算得到，估算结果可能会有误差。其中List组件可以通过[childrenMainSize](./ts-container-list.md#childrenmainsize12)属性解决估算不准确的问题，Grid与WaterFlow估算不准暂无解决方案。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -856,7 +964,25 @@ currentOffset(): OffsetResult
 
 | 类型  | 说明 |
 | -------- | -------- |
-|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为空。|
+|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+
+### offset<sup>23+</sup>
+
+offset(): OffsetResult | undefined
+
+获取当前的滚动总偏移量。除接口声明有undefined以外，其他与[currentOffset](#currentoffset)接口保持一致。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型  | 说明 |
+| -------- | -------- |
+|  [OffsetResult](#offsetresult11对象说明) \| undefined | 返回当前的滚动总偏移量。当Scroller没有和组件绑定时，该接口会返回undefined。|
 
 ### scrollToIndex
 
@@ -871,7 +997,16 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 >
 > 1.仅支持ArcList、Grid、List、WaterFlow组件。
 >
-> 2.在LazyForEach、ForEach、Repeat刷新数据源时，需确保在数据刷新完成之后再调用此接口。
+> 2.在[LazyForEach](ts-rendering-control-lazyforeach.md)、[ForEach](ts-rendering-control-foreach.md)、[Repeat](ts-rendering-control-repeat.md)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
+>
+> 3.从API version 11开始，在List中支持[contentStartOffset](ts-container-list.md#contentstartoffset11)和[contentEndOffset](ts-container-list.md#contentendoffset11)。从API version 22开始，在Grid和Waterflow组件中支持设置[contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22)和[contentEndOffset](ts-container-scrollable-common.md#contentendoffset22)。
+>
+> - 当滚动容器组件设置contentStartOffset时，如果ScrollAlign设置为START，滚动结束时，指定item首部会与滚动容器组件contentStartOffset处对齐。
+> 
+> - 当滚动容器组件设置contentEndOffset时，如果ScrollAlign设置为END，滚动结束时，指定item尾部会与滚动容器组件contentEndOffset处对齐。
+> 
+> - 当滚动容器组件设置contentStartOffset或contentEndOffset时，如果ScrollAlign设置为AUTO，且指定item完全处于显示区内，不做调整；否则依照滚动距离最短的原则，将指定item首部与滚动组件contentStartOffset处对齐，或指定item尾部与滚动组件contentEndOffset处对齐，使指定item完全显示。
+> 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -884,19 +1019,25 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 | value | number   | 是   | 要滑动到的目标元素在当前容器中的索引值。      <br/>**说明：** <br/>value值设置成负值或者大于当前容器子组件的最大索引值，视为异常值，本次跳转不生效。                     |
 | smooth | boolean  | 否   | 设置滑动到列表项在列表中的索引值时是否有动效，true表示有动效，false表示没有动效。<br/>默认值：false。|
 | align | [ScrollAlign](#scrollalign10枚举说明)  | 否   | 指定滑动到的元素与当前容器的对齐方式。<br/>List中的默认值为：ScrollAlign.START。Grid中默认值为：ScrollAlign.AUTO。WaterFlow中的默认值为：ScrollAlign.START。<br/>**说明：** <br/>仅List、Grid、WaterFlow组件支持该参数。 |
-| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12对象说明)  | 否   | 设置滑动到指定Index的选项，如额外偏移量。<br/>默认值：0，单位：vp。 |
+| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12对象说明)  | 否   | 设置滑动到指定Index的选项，如额外偏移量。<br/>默认值：0，单位：vp。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### scrollBy<sup>9+</sup>
 
 scrollBy(dx: Length, dy: Length)
 
-
 滑动指定距离。
 
-
->  **说明：**
+> **说明：**
 >
->  支持ArcList、Scroll、List、Grid、WaterFlow组件。
+> - 支持ArcList、Scroll、List、Grid、WaterFlow组件。
+>
+> - 各组件行为存在差异：
+>
+>   - [ArcList](ts-container-arclist.md)和[List](ts-container-list.md)组件会对所有经过的item进行加载和布局。
+>
+>   - Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。
+>
+>   - [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件向后跳转（即dx或dy为正值时）会加载和布局所有经过的item，向前跳转（即dx或dy为负值时）会直接跳转到对应位置。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -921,6 +1062,8 @@ isAtEnd(): boolean
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -940,6 +1083,8 @@ getItemRect(index: number): RectResult
 >  支持ArcList、Scroll、List、Grid、WaterFlow组件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -967,7 +1112,7 @@ getItemRect(index: number): RectResult
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 ### getItemIndex<sup>14+</sup>
 
 getItemIndex(x: number, y: number): number
@@ -979,6 +1124,8 @@ getItemIndex(x: number, y: number): number
 >  支持List、Grid、WaterFlow组件。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1006,13 +1153,75 @@ getItemIndex(x: number, y: number): number
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |The controller not bound to component.                              |
+| 100004   |Controller not bound to a component.                              |
+
+### contentSize<sup>22+</sup>
+
+contentSize(): SizeResult
+
+获取滚动组件内容总大小。
+
+> **说明：**
+>
+> - Grid、List、WaterFlow和Scroll组件主轴方向内容大小为所有子组件布局后的总大小，交叉轴方向内容大小为组件自身交叉轴方向大小减去padding和border后的大小。
+>
+> - Grid、List、WaterFlow组件有懒加载机制，该接口依赖已布局的子节点进行估算。如果组件内容没有布局完成且子组件高度不一致，估算结果可能会有误差，需要开发者去适配，比如List组件可以通过childrenMainSize属性解决估算不准问题。
+>
+> - 如果应用动态增删子节点，则需要应用动态获取内容总大小，来保证接口获取结果的即时性。
+>
+> - 当Scroll组件设置scrollable为ScrollDirection.FREE自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
+>
+> - 当Scroll组件设置scrollable为ScrollDirection.None不可滚动时，获取到的内容总大小为0。
+>
+> - 当Grid组件同时设置columnsTemplate和rowsTemplate，或columnsTemplate和rowsTemplate都不设置时即为不可滚动场景，此时获取到的内容总大小高度为0，宽度为Grid组件内容区宽度。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                     | 说明                                               |
+| -------------------------------------------------------- | -------------------------------------------------- |
+| [SizeResult](ts-custom-component-layout.md#sizeresult10) | 滚动组件内容总大小，包括内容宽度和高度。<br/>单位：vp |
+
+**错误码**：
+
+以下错误码详细介绍请参考[滚动类组件错误码](../errorcode-scroll.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 100004   | Controller not bound to a component. |
+
+### getFrameNode
+
+getFrameNode(): FrameNode | undefined
+
+获取与当前Scroller绑定的FrameNode。
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [FrameNode](../js-apis-arkui-frameNode.md) \| undefined | 当Scroller已绑定到Scroll、List、Grid、WaterFlow等滚动类组件时，返回对应组件的FrameNode；如果Scroller未绑定组件，则返回undefined。 |
 
 ## OffsetResult<sup>11+</sup>对象说明
 
 滑动偏移量对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1027,11 +1236,13 @@ getItemIndex(x: number, y: number): number
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型   | 只读   | 可选 | 说明              |
 | ----- | ------ | ------ | -- | ----------------- |
-| duration | number | 否 | 是 | 设置滚动时长。<br/>默认值：1000<br/>**说明：** <br/>设置为小于0的值时，按默认值显示。 |
+| duration | number | 否 | 是 | 设置滚动时长。<br/>默认值：1000<br/>单位：毫秒<br/>**说明：** <br/>设置为小于0的值时，按默认值显示。 |
 | curve | [Curve](ts-appendix-enums.md#curve) \| [ICurve](../js-apis-curve.md#icurve9) | 否 | 是 | 设置滚动曲线。<br/>默认值：Curve.Ease |
 | canOverScroll | boolean | 否 | 是 | 设置滚动动画滚动到边界后，是否转换成越界回弹动画。<br/>默认值：false<br/>**说明：** <br/> 仅在设置为true，且组件的edgeEffect设置为[EdgeEffect.Spring](ts-appendix-enums.md#edgeeffect)时，使用动画滚动到边界会转换为越界回弹动画，设置为false时，滚动到边界会直接停止动画，不会转换为越界回弹动画。 <br>从API version 20开始，如果[ScrollOptions](#scrolloptions18对象说明)中的canOverScroll设置为true，表示滚动可以停留在过界位置，滚动动画过界后不会转换为回弹动画。|
 
@@ -1041,20 +1252,24 @@ getItemIndex(x: number, y: number): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                           |
-| ------ | ------------------------------ |
-| START   | 首部对齐。指定item首部与滚动容器组件首部对齐。  |
-| CENTER | 居中对齐。指定item主轴方向居中对齐于滚动容器组件。        |
-| END  | 尾部对齐。指定item尾部与滚动容器组件尾部对齐。 |
-| AUTO  | 自动对齐。<br/>若指定item完全处于显示区，不做调整。否则依照滑动距离最短的原则，将指定item首部对齐或尾部对齐于滚动容器组件，使指定item完全处于显示区。|
+| 名称     | 值 | 说明                           |
+| ------ | --- | ------------------------------ |
+| START   | 0 | 首部对齐。指定item首部与滚动容器组件首部对齐。  |
+| CENTER | 1 | 居中对齐。指定item主轴方向居中对齐于滚动容器组件。        |
+| END  | 2 | 尾部对齐。指定item尾部与滚动容器组件尾部对齐。 |
+| AUTO  | 3 | 自动对齐。<br/>若指定item完全处于显示区，不做调整。否则依照滑动距离最短的原则，将指定item首部对齐或尾部对齐于滚动容器组件，使指定item完全处于显示区。|
 
 ## ScrollToIndexOptions<sup>12+</sup>对象说明
 
 滑动到指定Index的参数选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1067,6 +1282,8 @@ getItemIndex(x: number, y: number): number
 翻页模式的参数选项。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1081,6 +1298,8 @@ getItemIndex(x: number, y: number): number
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型  | 只读 | 可选 | 说明              |
@@ -1093,6 +1312,8 @@ getItemIndex(x: number, y: number): number
 滚动到边缘位置的参数选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1110,12 +1331,14 @@ getItemIndex(x: number, y: number): number
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 类型                                                     | 只读 | 可选 | 说明                                                     |
 | --------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| xOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 水平滚动偏移。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| yOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 垂直滚动偏移。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| xOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 水平滚动总偏移量。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>参数类型为number时单位为vp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| yOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 垂直滚动总偏移量。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>参数类型为number时单位为vp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | animation<sup>10+</sup> | [ScrollAnimationOptions](#scrollanimationoptions12对象说明)&nbsp;\|&nbsp;boolean | 否   | 是 | 动画配置。<br/>- ScrollAnimationOptions:&nbsp; 自定义滚动动效。 <br/>- boolean:&nbsp;使能默认弹簧动效。<br/>默认值：<br/>ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false } <br/>boolean:&nbsp;false<br/>**说明：** <br/>当前List、Scroll、Grid、WaterFlow均支持boolean类型和ICurve曲线。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | canOverScroll<sup>20+</sup>   | boolean                                   | 否   | 是 | 滚动目标位置是否可以超出边界停留。仅当组件的edgeEffect设置为EdgeEffect.Spring时，滚动能够越界停留。<br/>设置为true时滚动可以在过界后停留，设置为false时滚动无法在过界后停留。<br/>默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
@@ -1134,6 +1357,8 @@ setOnWillScroll(callback:  ScrollOnWillScrollCallback | undefined): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1151,6 +1376,8 @@ setOnDidScroll(callback: ScrollOnScrollCallback | undefined): void
 方法入参为undefined时，会重置事件回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1222,7 +1449,7 @@ struct ScrollExample {
       Button('scroll 100')
         .height('5%')
         .onClick(() => { // 点击后滑动到指定位置，即下滑100.0vp的距离，滑动过程配置有动画
-          let curve = curves.interpolatingSpring(10, 1, 228, 30); //创建一个弹簧曲线
+          let curve = curves.interpolatingSpring(10, 1, 228, 30); // 创建一个弹簧曲线
           const yOffset: number = this.scroller.currentOffset().yOffset;
           this.scroller.scrollTo({ xOffset: 0, yOffset: yOffset + 100, animation: { duration: 1000, curve: curve } });
         })
@@ -1242,7 +1469,11 @@ struct ScrollExample {
       Button('fling -3000')
         .height('5%')
         .onClick(() => { // 点击后触发初始速度为-3000vp/s的惯性滚动
-          this.scroller.fling(-3000);
+          try {
+            this.scroller.fling(-3000);
+          } catch (error) {
+            console.error('Failed to execute fling scroll:', error);
+          }
         })
         .margin({ top: 260, left: 20 })
       Button('scroll to bottom 700')
@@ -1275,9 +1506,9 @@ struct NestedScroll {
     Flex() {
       Scroll(this.scrollerForScroll) {
         Column() {
-          Text("Scroll Area")
-            .width("100%")
-            .height("40%")
+          Text('Scroll Area')
+            .width('100%')
+            .height('40%')
             .backgroundColor(0X330000FF)
             .fontSize(16)
             .textAlign(TextAlign.Center)
@@ -1288,18 +1519,18 @@ struct NestedScroll {
           List({ space: 20, scroller: this.scrollerForList }) {
             ForEach(this.arr, (item: number) => {
               ListItem() {
-                Text("ListItem" + item)
-                  .width("100%")
-                  .height("100%")
+                Text('ListItem' + item)
+                  .width('100%')
+                  .height('100%')
                   .borderRadius(15)
                   .fontSize(16)
                   .textAlign(TextAlign.Center)
                   .backgroundColor(Color.White)
-              }.width("100%").height(100)
+              }.width('100%').height(100)
             }, (item: string) => item)
           }
-          .width("100%")
-          .height("50%")
+          .width('100%')
+          .height('50%')
           .edgeEffect(EdgeEffect.None)
           .friction(0.6)
           .onReachStart(() => {
@@ -1317,15 +1548,15 @@ struct NestedScroll {
             return { offsetRemain: offset };
           })
 
-          Text("Scroll Area")
-            .width("100%")
-            .height("40%")
+          Text('Scroll Area')
+            .width('100%')
+            .height('40%')
             .backgroundColor(0X330000FF)
             .fontSize(16)
             .textAlign(TextAlign.Center)
         }
       }
-      .width("100%").height("100%")
+      .width('100%').height('100%')
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding(20)
   }
 }
@@ -1334,7 +1565,7 @@ struct NestedScroll {
 ![NestedScroll](figures/NestedScroll.gif)
 
 ### 示例3（嵌套滚动实现方式二）
-该示例使用nestedScroll属性实现了内层List组件和外层Scroll组件的嵌套滚动。
+该示例使用[nestedScroll](#nestedscroll10)属性实现了内层List组件和外层Scroll组件的嵌套滚动。
 ```ts
 @Entry
 @Component
@@ -1345,16 +1576,16 @@ struct StickyNestedScroll {
   listCard() {
     .backgroundColor(Color.White)
     .height(72)
-    .width("100%")
+    .width('100%')
     .borderRadius(12)
   }
 
   build() {
     Scroll() {
       Column() {
-        Text("Scroll Area")
-          .width("100%")
-          .height("40%")
+        Text('Scroll Area')
+          .width('100%')
+          .height('40%')
           .backgroundColor('#0080DC')
           .textAlign(TextAlign.Center)
         Tabs({ barPosition: BarPosition.Start }) {
@@ -1362,24 +1593,24 @@ struct StickyNestedScroll {
             List({ space: 10 }) {
               ForEach(this.arr, (item: number) => {
                 ListItem() {
-                  Text("item" + item)
+                  Text('item' + item)
                     .fontSize(16)
                 }.listCard()
               }, (item: number) => item.toString())
-            }.width("100%")
+            }.width('100%')
             .edgeEffect(EdgeEffect.Spring)
             .nestedScroll({
               scrollForward: NestedScrollMode.PARENT_FIRST,
               scrollBackward: NestedScrollMode.SELF_FIRST
             })
-          }.tabBar("Tab1")
+          }.tabBar('Tab1')
 
           TabContent() {
-          }.tabBar("Tab2")
+          }.tabBar('Tab2')
         }
         .vertical(false)
-        .height("100%")
-      }.width("100%")
+        .height('100%')
+      }.width('100%')
     }
     .edgeEffect(EdgeEffect.Spring)
     .friction(0.6)
@@ -1398,7 +1629,7 @@ struct StickyNestedScroll {
 ```
 ![NestedScroll2](figures/NestedScroll2.gif)
 ### 示例4（嵌套滚动父组件向子组件传递滚动）
-该示例使用enableScrollInteraction属性和onScrollFrameBegin事件实现了父组件向子组件传递滚动。
+该示例使用[enableScrollInteraction](#enablescrollinteraction10)属性和[onScrollFrameBegin](#onscrollframebegin9)事件实现了父组件向子组件传递滚动。
 ```ts
 @Entry
 @Component
@@ -1417,9 +1648,9 @@ struct NestedScroll {
   build() {
     Scroll(this.scrollerForParent) {
       Column() {
-        Text("Scroll Area")
-          .width("100%")
-          .height("40%")
+        Text('Scroll Area')
+          .width('100%')
+          .height('40%')
           .backgroundColor(0X330000FF)
           .fontSize(16)
           .textAlign(TextAlign.Center)
@@ -1432,25 +1663,25 @@ struct NestedScroll {
         List({ space: 20, scroller: this.scrollerForChild }) {
           ForEach(this.arr, (item: number) => {
             ListItem() {
-              Text("ListItem" + item)
-                .width("100%")
-                .height("100%")
+              Text('ListItem' + item)
+                .width('100%')
+                .height('100%')
                 .borderRadius(15)
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .backgroundColor(Color.White)
-            }.width("100%").height(100)
+            }.width('100%').height(100)
           }, (item: number) => item.toString())
         }
-        .width("100%")
-        .height("100%")
+        .width('100%')
+        .height('100%')
         .edgeEffect(EdgeEffect.None)
         .scrollBar(BarState.Off)
         .enableScrollInteraction(false)
 
-        Text("Scroll Area")
-          .width("100%")
-          .height("40%")
+        Text('Scroll Area')
+          .width('100%')
+          .height('40%')
           .backgroundColor(0X330000FF)
           .fontSize(16)
           .textAlign(TextAlign.Center)
@@ -1481,8 +1712,8 @@ struct NestedScroll {
       }
       return { offsetRemain: retOffset };
     })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .backgroundColor(0xDCDCDC)
   }
 }
@@ -1540,7 +1771,11 @@ struct ListExample {
     for (let i = 0; i < 10; i++) {
       this.arr.push(i);
     }
-    this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+    try {
+      this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+    } catch (error) {
+      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+    }
   }
   build() {
     Column() {
@@ -1566,7 +1801,11 @@ struct ListExample {
         PanGesture()
           .onActionUpdate((event: GestureEvent) => {
             if (event.fingerList[0] != undefined && event.fingerList[0].localX != undefined && event.fingerList[0].localY != undefined) {
-              this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
+              try {
+                this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
+              } catch (error) {
+                console.error('Failed to get item index from scroller:', error);
+              }
               this.itemBackgroundColorArr[this.listIndex] = true;
             }
           })
@@ -1631,7 +1870,7 @@ struct ScrollExample {
 
 ### 示例8（单边边缘效果）
 
-该示例通过edgeEffect接口，实现了Scroll组件设置单边边缘效果。
+该示例通过[edgeEffect](#edgeeffect)接口，实现了Scroll组件设置单边边缘效果。
 
 ```ts
 // xxx.ets
@@ -1667,7 +1906,7 @@ struct ScrollExample {
 
 ### 示例9（划动翻页效果）
 
-该示例通过enablePaging接口，实现了Scroll组件划动翻页效果。
+该示例通过[enablePaging](#enablepaging11)接口，实现了Scroll组件滑动翻页效果。
 
 ```ts
 // xxx.ets
@@ -1701,7 +1940,7 @@ struct EnablePagingExample {
 
 ### 示例10（设置过界停留）
 
-该示例通过scrollTo接口，实现了Scroll组件设置过界停留效果。
+该示例通过[scrollTo](#scrollto)接口，实现了Scroll组件设置过界停留效果。
 
 ```ts
 // xxx.ets
@@ -1716,7 +1955,7 @@ struct StickyNestedScroll {
     Column() {
       Row() {
         Button('有动画scrollTo').onClick(() => {
-          let curve = curves.interpolatingSpring(0.5, 5, 10, 15) //创建一个弹簧曲线
+          let curve = curves.interpolatingSpring(0.5, 5, 10, 15) // 创建一个弹簧曲线
           const yOffset: number = this.scroller.currentOffset().yOffset;
           this.scroller.scrollTo({
             xOffset: 0,
@@ -1748,8 +1987,8 @@ struct StickyNestedScroll {
         .height('100%')
       }
       .scrollable(ScrollDirection.Vertical)
-      .edgeEffect(EdgeEffect.Spring) //设置边缘效果
-      .fadingEdge(false) //关闭边缘渐隐效果
+      .edgeEffect(EdgeEffect.Spring) // 设置边缘效果
+      .fadingEdge(false) // 关闭边缘渐隐效果
       .scrollBar(BarState.Auto)
       .friction(undefined)
       .backgroundColor('#DCDCDC')
@@ -1765,7 +2004,7 @@ struct StickyNestedScroll {
 
 ### 示例11（自由滚动和缩放）
 
-该示例实现了Scroll组件自由滚动和缩放效果。
+从API version 20开始，该示例实现了Scroll组件自由滚动和缩放效果。
 ```ts
 @Entry
 @Component
@@ -1796,3 +2035,185 @@ struct ScrollZoomExample {
 }
 ```
 ![free_scroll_zoom](figures/free_scroll_zoom.gif)
+
+### 示例12（获取内容总大小）
+
+从API version 22 开始，该示例实现了获取内容总大小的功能。
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct ScrollExample1 {
+  scroller: Scroller = new Scroller();
+  private arr: number[] = []
+
+  aboutToAppear() {
+    for (let j = 0; j < 10; j++) {
+      this.arr.push(j);
+    }
+  }
+
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+
+  build() {
+    Column() {
+      Text('设置scroller控制器和ForEach')
+      Row() {
+        // 点击按钮来调用contentSize函数获取内容尺寸
+        Button('GetContentSize')
+          .onClick(() => {
+            // Scroller未绑定组件时会抛异常，需要加上try catch保护
+            try {
+              // 通过调用contentSize函数获取内容尺寸的宽度值
+              this.contentWidth = this.scroller.contentSize().width;
+              // 通过调用contentSize函数获取内容尺寸的高度值
+              this.contentHeight = this.scroller.contentSize().height;
+            } catch (error) {
+              let err: BusinessError = error as BusinessError;
+              console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            }
+          })
+        // 将获取到的内容尺寸信息通过文本进行呈现
+        Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
+          .fontColor(Color.Red)
+          .height(50)
+      }
+
+      Stack({ alignContent: Alignment.TopStart }) {
+        Scroll(this.scroller) {
+          Column() {
+            ForEach(this.arr, (item: number) => {
+              Text(item.toString())
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
+            }, (item: number) => item.toString())
+          }.width('100%')
+        }
+        .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
+        .scrollBar(BarState.On) // 滚动条常驻显示
+        .scrollBarColor(Color.Gray) // 滚动条颜色
+        .scrollBarWidth(10) // 滚动条宽度
+        .friction(0.6)
+        .edgeEffect(EdgeEffect.None)
+      }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+    }
+  }
+}
+```
+![scrollContentSize](figures/scrollContentSize.gif)
+
+### 示例13（设置滚动事件）
+
+该示例通过FrameNode中的[getEvent('Scroll')](../js-apis-arkui-frameNode.md#geteventscroll19)获取[UIScrollEvent](#uiscrollevent19)，并为Scroll设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
+
+从API version 19开始，新增UIScrollEvent接口。
+
+```ts
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute.width(100);
+    return this.rootNode;
+  }
+
+  addCommonEvent(frameNode: FrameNode) {
+    // 获取Scroll事件
+    let scrollEvent: UIScrollEvent | undefined = typeNode.getEvent(frameNode, 'Scroll');
+
+    // 设置OnWillScroll事件
+    scrollEvent?.setOnWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState,
+      scrollSource: ScrollSource) => {
+      console.info('onWillScroll xOffset = ${xOffset}, yOffset = ${yOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}');
+    });
+
+    // 设置OnDidScroll事件
+    scrollEvent?.setOnDidScroll((scrollOffset: number, scrollState: ScrollState) => {
+      console.info('onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}');
+    });
+
+    // 设置OnReachStart事件
+    scrollEvent?.setOnReachStart(() => {
+      console.info('onReachStart');
+    });
+
+    // 设置OnReachEnd事件
+    scrollEvent?.setOnReachEnd(() => {
+      console.info('onReachEnd');
+    });
+
+    // 设置OnScrollStart事件
+    scrollEvent?.setOnScrollStart(() => {
+      console.info('onScrollStart');
+    });
+
+    // 设置OnScrollStop事件
+    scrollEvent?.setOnScrollStop(() => {
+      console.info('onScrollStop');
+    });
+
+    // 设置OnScrollFrameBegin事件
+    scrollEvent?.setOnScrollFrameBegin((offset: number, state: ScrollState) => {
+      console.info('onScrollFrameBegin offset = ${offset}, state = ${state}');
+      return undefined;
+    });
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State index: number = 0;
+  private myNodeController: MyNodeController = new MyNodeController();
+  @State numbers: string[] = [];
+
+  aboutToAppear() {
+    for (let i = 0; i < 30; i++) {
+      this.numbers.push('${i+1}');
+    }
+  }
+
+  build() {
+    Column() {
+      Button('add CommonEvent to Scroll')
+        .onClick(() => {
+          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!)
+        })
+      Scroll() {
+        Column() {
+          ForEach(this.numbers, (day: string, index: number) => {
+            Column() {
+              Text(day)
+                .fontSize(16)
+                .backgroundColor(0xF9CF93)
+                .width('90%')
+                .height(80)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
+            }
+            .width('100%')
+            .justifyContent(FlexAlign.Center)
+            .alignItems(HorizontalAlign.Center)
+          }, (day: string, index: number) => index.toString() + day)
+        }
+      }
+      .scrollable(ScrollDirection.Vertical)
+      .edgeEffect(EdgeEffect.Spring)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```

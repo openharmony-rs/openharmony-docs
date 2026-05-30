@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## 概述
@@ -30,16 +30,26 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - 对齐方式：通过对齐方式，设置当前元素是基于锚点的上中下对齐，还是基于锚点的左中右对齐。
 
+- 链：将一系列组件以首尾相连的方式对齐，可以形成一条链。通过设置链的模式，可以指定链上元素的排列方式。
+
+- 辅助线：辅助线是在容器内虚拟出的额外水平或垂直锚点，便于统一对齐至某个偏移位置。
+
+- 屏障：屏障是指容器内一组指定组件在特定方向上的共同最远边界，例如，一组组件下方的屏障，是指这些组件底部边缘中最底部的那个边界。
+
 
 ## 设置依赖关系
 
 ### 设置参考边界
 
 设置当前组件的哪个边界对齐到锚点。容器内子组件的参考边界区分水平方向和垂直方向。
+
 * 在水平方向上，可以按照起始（left）、居中（middle）或尾端（right）的组件边界与锚点对齐。当设置三个边界时，仅起始（left）和居中（middle）的边界设置生效。
-![relative-layout-alignrules01](figures/relative-layout-alignrules01.png)
+
+  ![relative-layout-alignrules01](figures/relative-layout-alignrules01.png)
+
 * 在垂直方向上，可以设置组件边界与锚点对齐，具体包括顶部（top）、居中（center）和底部（bottom）。当设置三个边界时，仅顶部（top）和居中（center）生效。
-![relative-layout-alignrules02](figures/relative-layout-alignrules02.png)
+
+  ![relative-layout-alignrules02](figures/relative-layout-alignrules02.png)
 
 ### 设置锚点
 
@@ -54,21 +64,23 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - RelativeContainer父组件为锚点，__container__代表父容器的组件标识（id）。
 
-  ```ts
-  let AlignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
+  <!-- @[RelativeContainerParentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerParentComponentId.ets) -->
+  
+  ``` TypeScript
+  let alignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
     'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
     'left': { 'anchor': '__container__', 'align': HorizontalAlign.Start }
   }
-  let AlignRue: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
+  let alignRue: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
     'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
     'right': { 'anchor': '__container__', 'align': HorizontalAlign.End }
   }
-  let Mleft: Record<string, number> = { 'left': 20 }
-  let BWC: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  let marginLeft: Record<string, number> = { 'left': 20 }
+  let bwc: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
   @Component
-  struct Index {
+  struct ParentRefRelativeContainer {
     build() {
       RelativeContainer() {
         Row() {
@@ -78,8 +90,8 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .width(100)
         .height(100)
         .backgroundColor('#a3cf62')
-        .alignRules(AlignRus)
-        .id("row1")
+        .alignRules(alignRus)
+        .id('row1')
   
         Row() {
           Text('row2')
@@ -88,11 +100,11 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .width(100)
         .height(100)
         .backgroundColor('#00ae9d')
-        .alignRules(AlignRue)
-        .id("row2")
+        .alignRules(alignRue)
+        .id('row2')
       }.width(300).height(300)
-      .margin(Mleft)
-      .border(BWC)
+      .margin(marginLeft)
+      .border(bwc)
     }
   }
   ```
@@ -101,21 +113,23 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - 以兄弟元素为锚点。
 
-  ```ts
-  let AlignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
+  <!-- @[RelativeContainerSiblingComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerSiblingComponentId.ets) -->
+  
+  ``` TypeScript
+  let alignRus001: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
     'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
     'left': { 'anchor': '__container__', 'align': HorizontalAlign.Start }
   }
-  let RelConB: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
+  let relConB: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
     'top': { 'anchor': 'row1', 'align': VerticalAlign.Bottom },
     'left': { 'anchor': 'row1', 'align': HorizontalAlign.Start }
   }
-  let Mleft: Record<string, number> = { 'left': 20 }
-  let BWC: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  let marginLeft001: Record<string, number> = { 'left': 20 }
+  let bwc001: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
   @Component
-  struct Index {
+  struct SiblingRefRelativeContainer {
     build() {
       RelativeContainer() {
         Row() {
@@ -125,8 +139,8 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .width(100)
         .height(100)
         .backgroundColor('#00ae9d')
-        .alignRules(AlignRus)
-        .id("row1")
+        .alignRules(alignRus001)
+        .id('row1')
   
         Row() {
           Text('row2')
@@ -135,11 +149,11 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .width(100)
         .height(100)
         .backgroundColor('#a3cf62')
-        .alignRules(RelConB)
-        .id("row2")
+        .alignRules(relConB)
+        .id('row2')
       }.width(300).height(300)
-      .margin(Mleft)
-      .border(BWC)
+      .margin(marginLeft001)
+      .border(bwc001)
     }
   }
   ```
@@ -148,57 +162,75 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - 子组件锚点可以任意选择，但需注意不要相互依赖。
 
-  ```ts
+  <!-- @[RelativeContainerChildComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentId.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct ChildRefRelativeContainer {
     build() {
       Row() {
         RelativeContainer() {
-          Row(){Text('row1')}.justifyContent(FlexAlign.Center).width(100).height(100)
+          Row() {
+            Text('row1')
+          }
+          .justifyContent(FlexAlign.Center)
+          .width(100)
+          .height(100)
           .backgroundColor('#a3cf62')
           .alignRules({
-            top: {anchor: "__container__", align: VerticalAlign.Top},
-            left: {anchor: "__container__", align: HorizontalAlign.Start}
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            left: { anchor: '__container__', align: HorizontalAlign.Start }
           })
-          .id("row1")
+          .id('row1')
 
-          Row(){Text('row2')}.justifyContent(FlexAlign.Center).width(100)
+          Row() {
+            Text('row2')
+          }
+          .justifyContent(FlexAlign.Center)
+          .width(100)
           .backgroundColor('#00ae9d')
           .alignRules({
-            top: {anchor: "__container__", align: VerticalAlign.Top},
-            right: {anchor: "__container__", align: HorizontalAlign.End},
-            bottom: {anchor: "row1", align: VerticalAlign.Center},
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            right: { anchor: '__container__', align: HorizontalAlign.End },
+            bottom: { anchor: 'row1', align: VerticalAlign.Center },
           })
-          .id("row2")
+          .id('row2')
 
-          Row(){Text('row3')}.justifyContent(FlexAlign.Center).height(100)
+          Row() {
+            Text('row3')
+          }
+          .justifyContent(FlexAlign.Center)
+          .height(100)
           .backgroundColor('#0a59f7')
           .alignRules({
-            top: {anchor: "row1", align: VerticalAlign.Bottom},
-            left: {anchor: "row1", align: HorizontalAlign.Start},
-            right: {anchor: "row2", align: HorizontalAlign.Start}
+            top: { anchor: 'row1', align: VerticalAlign.Bottom },
+            left: { anchor: 'row1', align: HorizontalAlign.Start },
+            right: { anchor: 'row2', align: HorizontalAlign.Start }
           })
-          .id("row3")
+          .id('row3')
 
-          Row(){Text('row4')}.justifyContent(FlexAlign.Center)
+          Row() {
+            Text('row4')
+          }.justifyContent(FlexAlign.Center)
           .backgroundColor('#2ca9e0')
           .alignRules({
-            top: {anchor: "row3", align: VerticalAlign.Bottom},
-            left: {anchor: "row1", align: HorizontalAlign.Center},
-            right: {anchor: "row2", align: HorizontalAlign.End},
-            bottom: {anchor: "__container__", align: VerticalAlign.Bottom}
+            top: { anchor: 'row3', align: VerticalAlign.Bottom },
+            left: { anchor: 'row1', align: HorizontalAlign.Center },
+            right: { anchor: 'row2', align: HorizontalAlign.End },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom }
           })
-          .id("row4")
+          .id('row4')
         }
         .width(300).height(300)
-        .margin({left: 50})
-        .border({width:2, color: "#6699FF"})
+        .margin({ left: 50 })
+        .border({ width: 2, color: '#6699FF' })
       }
       .height('100%')
     }
   }
   ```
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image1.png)
 
 ### 设置相对于锚点的对齐位置
@@ -217,195 +249,203 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 子组件经过相对位置对齐后，可能尚未达到目标位置。开发者可根据需要设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。从API Version 11开始，新增了[Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias对象说明)对象，建议API Version 11及以后的版本使用bias来设置额外偏移。使用bias的示例可以参考[示例4（设置偏移）](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md#示例4设置偏移)。
 
-  ```ts
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      RelativeContainer() {
-        Row() {
-          Text('row1')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .height(100)
-        .backgroundColor('#a3cf62')
-        .alignRules({
-          top: { anchor: "__container__", align: VerticalAlign.Top },
-          left: { anchor: "__container__", align: HorizontalAlign.Start }
-        })
-        .id("row1")
-
-        Row() {
-          Text('row2')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .backgroundColor('#00ae9d')
-        .alignRules({
-          top: { anchor: "__container__", align: VerticalAlign.Top },
-          right: { anchor: "__container__", align: HorizontalAlign.End },
-          bottom: { anchor: "row1", align: VerticalAlign.Center },
-        })
-        .offset({
-          x: -40,
-          y: -20
-        })
-        .id("row2")
-
-        Row() {
-          Text('row3')
-        }
-        .justifyContent(FlexAlign.Center)
-        .height(100)
-        .backgroundColor('#0a59f7')
-        .alignRules({
-          top: { anchor: "row1", align: VerticalAlign.Bottom },
-          left: { anchor: "row1", align: HorizontalAlign.End },
-          right: { anchor: "row2", align: HorizontalAlign.Start }
-        })
-        .offset({
-          x: -10,
-          y: -20
-        })
-        .id("row3")
-
-        Row() {
-          Text('row4')
-        }
-        .justifyContent(FlexAlign.Center)
-        .backgroundColor('#2ca9e0')
-        .alignRules({
-          top: { anchor: "row3", align: VerticalAlign.Bottom },
-          bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
-          left: { anchor: "__container__", align: HorizontalAlign.Start },
-          right: { anchor: "row1", align: HorizontalAlign.End }
-        })
-        .offset({
-          x: -10,
-          y: -30
-        })
-        .id("row4")
-
-        Row() {
-          Text('row5')
-        }
-        .justifyContent(FlexAlign.Center)
-        .backgroundColor('#30c9f7')
-        .alignRules({
-          top: { anchor: "row3", align: VerticalAlign.Bottom },
-          bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
-          left: { anchor: "row2", align: HorizontalAlign.Start },
-          right: { anchor: "row2", align: HorizontalAlign.End }
-        })
-        .offset({
-          x: 10,
-          y: 20
-        })
-        .id("row5")
-
-        Row() {
-          Text('row6')
-        }
-        .justifyContent(FlexAlign.Center)
-        .backgroundColor('#ff33ffb5')
-        .alignRules({
-          top: { anchor: "row3", align: VerticalAlign.Bottom },
-          bottom: { anchor: "row4", align: VerticalAlign.Bottom },
-          left: { anchor: "row3", align: HorizontalAlign.Start },
-          right: { anchor: "row3", align: HorizontalAlign.End }
-        })
-        .offset({
-          x: -15,
-          y: 10
-        })
-        .backgroundImagePosition(Alignment.Bottom)
-        .backgroundImageSize(ImageSize.Cover)
-        .id("row6")
-      }
-      .width(300).height(300)
-      .margin({ left: 50 })
-      .border({ width: 2, color: "#6699FF" })
-    }
-    .height('100%')
-  }
-}
-  ```
-  ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image2.png)
-
-## 多种组件的对齐布局
-
-Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组件规则进行对齐排布。
-
-  ```ts
-@Entry
-@Component
-struct Index {
-  @State value: number = 0
-
-  build() {
-    Row() {
-
-      RelativeContainer() {
-        Row()
+  <!-- @[RelativeContainerChildComponentOffset_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentOffset.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct ChildComponentOffsetExample {
+    build() {
+      Row() {
+        RelativeContainer() {
+          Row() {
+            Text('row1')
+          }
+          .justifyContent(FlexAlign.Center)
           .width(100)
           .height(100)
           .backgroundColor('#a3cf62')
           .alignRules({
-            top: { anchor: "__container__", align: VerticalAlign.Top },
-            left: { anchor: "__container__", align: HorizontalAlign.Start }
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            left: { anchor: '__container__', align: HorizontalAlign.Start }
           })
-          .id("row1")
-
-        Column()
-          .width('50%')
-          .height(30)
+          .id('row1')
+  
+          Row() {
+            Text('row2')
+          }
+          .justifyContent(FlexAlign.Center)
+          .width(100)
           .backgroundColor('#00ae9d')
           .alignRules({
-            top: { anchor: "__container__", align: VerticalAlign.Top },
-            left: { anchor: "__container__", align: HorizontalAlign.Center }
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            right: { anchor: '__container__', align: HorizontalAlign.End },
+            bottom: { anchor: 'row1', align: VerticalAlign.Center },
           })
-          .id("row2")
-
-        Flex({ direction: FlexDirection.Row }) {
-          Text('1').width('20%').height(50).backgroundColor('#0a59f7')
-          Text('2').width('20%').height(50).backgroundColor('#2ca9e0')
-          Text('3').width('20%').height(50).backgroundColor('#0a59f7')
-          Text('4').width('20%').height(50).backgroundColor('#2ca9e0')
+          .offset({
+            x: -40,
+            y: -20
+          })
+          .id('row2')
+  
+          Row() {
+            Text('row3')
+          }
+          .justifyContent(FlexAlign.Center)
+          .height(100)
+          .backgroundColor('#0a59f7')
+          .alignRules({
+            top: { anchor: 'row1', align: VerticalAlign.Bottom },
+            left: { anchor: 'row1', align: HorizontalAlign.End },
+            right: { anchor: 'row2', align: HorizontalAlign.Start }
+          })
+          .offset({
+            x: -10,
+            y: -20
+          })
+          .id('row3')
+  
+          Row() {
+            Text('row4')
+          }
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#2ca9e0')
+          .alignRules({
+            top: { anchor: 'row3', align: VerticalAlign.Bottom },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+            left: { anchor: '__container__', align: HorizontalAlign.Start },
+            right: { anchor: 'row1', align: HorizontalAlign.End }
+          })
+          .offset({
+            x: -10,
+            y: -30
+          })
+          .id('row4')
+  
+          Row() {
+            Text('row5')
+          }
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#30c9f7')
+          .alignRules({
+            top: { anchor: 'row3', align: VerticalAlign.Bottom },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+            left: { anchor: 'row2', align: HorizontalAlign.Start },
+            right: { anchor: 'row2', align: HorizontalAlign.End }
+          })
+          .offset({
+            x: 10,
+            y: 20
+          })
+          .id('row5')
+  
+          Row() {
+            Text('row6')
+          }
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#ff33ffb5')
+          .alignRules({
+            top: { anchor: 'row3', align: VerticalAlign.Bottom },
+            bottom: { anchor: 'row4', align: VerticalAlign.Bottom },
+            left: { anchor: 'row3', align: HorizontalAlign.Start },
+            right: { anchor: 'row3', align: HorizontalAlign.End }
+          })
+          .offset({
+            x: -15,
+            y: 10
+          })
+          .backgroundImagePosition(Alignment.Bottom)
+          .backgroundImageSize(ImageSize.Cover)
+          .id('row6')
         }
-        .padding(10)
-        .backgroundColor('#30c9f7')
-        .alignRules({
-          top: { anchor: "row2", align: VerticalAlign.Bottom },
-          left: { anchor: "__container__", align: HorizontalAlign.Start },
-          bottom: { anchor: "__container__", align: VerticalAlign.Center },
-          right: { anchor: "row2", align: HorizontalAlign.Center }
-        })
-        .id("row3")
-
-        Stack({ alignContent: Alignment.Bottom }) {
-          Text('First child, show in bottom').width('90%').height('100%').backgroundColor('#a3cf62').align(Alignment.Top)
-          Text('Second child, show in top').width('70%').height('60%').backgroundColor('#00ae9d').align(Alignment.Top)
-        }
-        .margin({ top: 5 })
-        .alignRules({
-          top: { anchor: "row3", align: VerticalAlign.Bottom },
-          left: { anchor: "__container__", align: HorizontalAlign.Start },
-          bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
-          right: { anchor: "row3", align: HorizontalAlign.End }
-        })
-        .id("row4")
-
+        .width(300).height(300)
+        .margin({ left: 50 })
+        .border({ width: 2, color: '#6699FF' })
       }
-      .width(300).height(300)
-      .margin({ left: 50 })
-      .border({ width: 2, color: "#6699FF" })
+      .height('100%')
     }
-    .height('100%')
   }
-}
   ```
+
+  ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image2.png)
+
+## 多种组件的对齐布局
+
+[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)等多种布局组件，可按照RelativeContainer组件规则进行对齐排布。
+
+  <!-- @[RelativeContainerDifferentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerDifferentComponentId.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct RelativeContainerExample {
+    build() {
+      Row() {
+
+        RelativeContainer() {
+          Row()
+            .width(100)
+            .height(100)
+            .backgroundColor('#a3cf62')
+            .alignRules({
+              top: { anchor: '__container__', align: VerticalAlign.Top },
+              left: { anchor: '__container__', align: HorizontalAlign.Start }
+            })
+            .id('row1')
+
+          Column()
+            .width('50%')
+            .height(30)
+            .backgroundColor('#00ae9d')
+            .alignRules({
+              top: { anchor: '__container__', align: VerticalAlign.Top },
+              left: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+            .id('row2')
+
+          Flex({ direction: FlexDirection.Row }) {
+            Text('1').width('20%').height(50).backgroundColor('#0a59f7')
+            Text('2').width('20%').height(50).backgroundColor('#2ca9e0')
+            Text('3').width('20%').height(50).backgroundColor('#0a59f7')
+            Text('4').width('20%').height(50).backgroundColor('#2ca9e0')
+          }
+          .padding(10)
+          .backgroundColor('#30c9f7')
+          .alignRules({
+            top: { anchor: 'row2', align: VerticalAlign.Bottom },
+            left: { anchor: '__container__', align: HorizontalAlign.Start },
+            bottom: { anchor: '__container__', align: VerticalAlign.Center },
+            right: { anchor: 'row2', align: HorizontalAlign.Center }
+          })
+          .id('row3')
+
+          Stack({ alignContent: Alignment.Bottom }) {
+            Text('First child, show in bottom')
+              .width('90%')
+              .height('100%')
+              .backgroundColor('#a3cf62')
+              .align(Alignment.Top)
+            Text('Second child, show in top').width('70%').height('60%').backgroundColor('#00ae9d').align(Alignment.Top)
+          }
+          .margin({ top: 5 })
+          .alignRules({
+            top: { anchor: 'row3', align: VerticalAlign.Bottom },
+            left: { anchor: '__container__', align: HorizontalAlign.Start },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+            right: { anchor: 'row3', align: HorizontalAlign.End }
+          })
+          .id('row4')
+
+        }
+        .width(300).height(300)
+        .margin({ left: 50 })
+        .border({ width: 2, color: '#6699FF' })
+      }
+      .height('100%')
+    }
+  }
+  ```
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image3.png)
 
 ## 组件尺寸
@@ -416,10 +456,12 @@ struct Index {
 >
 > * 根据约束条件和子组件自身的size属性无法确定子组件的大小，此时，不绘制该子组件。
 > * 在同一方向上设置两个或更多锚点时，若这些锚点的位置顺序有误，该子组件将被视为大小为0而不予绘制。
-```ts
+<!-- @[RelativeContainerComponentSize_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentSize.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Index {
+struct RelativeAlignRulesExample {
   build() {
     Row() {
       RelativeContainer() {
@@ -431,10 +473,10 @@ struct Index {
         .height(100)
         .backgroundColor('#a3cf62')
         .alignRules({
-          top: { anchor: "__container__", align: VerticalAlign.Top },
-          left: { anchor: "__container__", align: HorizontalAlign.Start }
+          top: { anchor: '__container__', align: VerticalAlign.Top },
+          left: { anchor: '__container__', align: HorizontalAlign.Start }
         })
-        .id("row1")
+        .id('row1')
 
         Row() {
           Text('row2')
@@ -443,11 +485,11 @@ struct Index {
         .width(100)
         .backgroundColor('#00ae9d')
         .alignRules({
-          top: { anchor: "__container__", align: VerticalAlign.Top },
-          right: { anchor: "__container__", align: HorizontalAlign.End },
-          bottom: { anchor: "row1", align: VerticalAlign.Center },
+          top: { anchor: '__container__', align: VerticalAlign.Top },
+          right: { anchor: '__container__', align: HorizontalAlign.End },
+          bottom: { anchor: 'row1', align: VerticalAlign.Center },
         })
-        .id("row2")
+        .id('row2')
 
         Row() {
           Text('row3')
@@ -456,35 +498,35 @@ struct Index {
         .height(100)
         .backgroundColor('#0a59f7')
         .alignRules({
-          top: { anchor: "row1", align: VerticalAlign.Bottom },
-          left: { anchor: "row1", align: HorizontalAlign.End },
-          right: { anchor: "row2", align: HorizontalAlign.Start }
+          top: { anchor: 'row1', align: VerticalAlign.Bottom },
+          left: { anchor: 'row1', align: HorizontalAlign.End },
+          right: { anchor: 'row2', align: HorizontalAlign.Start }
         })
-        .id("row3")
+        .id('row3')
 
         Row() {
           Text('row4')
         }.justifyContent(FlexAlign.Center)
         .backgroundColor('#2ca9e0')
         .alignRules({
-          top: { anchor: "row3", align: VerticalAlign.Bottom },
-          bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
-          left: { anchor: "__container__", align: HorizontalAlign.Start },
-          right: { anchor: "row1", align: HorizontalAlign.End }
+          top: { anchor: 'row3', align: VerticalAlign.Bottom },
+          bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+          left: { anchor: '__container__', align: HorizontalAlign.Start },
+          right: { anchor: 'row1', align: HorizontalAlign.End }
         })
-        .id("row4")
+        .id('row4')
 
         Row() {
           Text('row5')
         }.justifyContent(FlexAlign.Center)
         .backgroundColor('#30c9f7')
         .alignRules({
-          top: { anchor: "row3", align: VerticalAlign.Bottom },
-          bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
-          left: { anchor: "row2", align: HorizontalAlign.Start },
-          right: { anchor: "row2", align: HorizontalAlign.End }
+          top: { anchor: 'row3', align: VerticalAlign.Bottom },
+          bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+          left: { anchor: 'row2', align: HorizontalAlign.Start },
+          right: { anchor: 'row2', align: HorizontalAlign.End }
         })
-        .id("row5")
+        .id('row5')
 
         Row() {
           Text('row6')
@@ -492,37 +534,41 @@ struct Index {
         .justifyContent(FlexAlign.Center)
         .backgroundColor('#ff33ffb5')
         .alignRules({
-          top: { anchor: "row3", align: VerticalAlign.Bottom },
-          bottom: { anchor: "row4", align: VerticalAlign.Bottom },
-          left: { anchor: "row3", align: HorizontalAlign.Start },
-          right: { anchor: "row3", align: HorizontalAlign.End }
+          top: { anchor: 'row3', align: VerticalAlign.Bottom },
+          bottom: { anchor: 'row4', align: VerticalAlign.Bottom },
+          left: { anchor: 'row3', align: HorizontalAlign.Start },
+          right: { anchor: 'row3', align: HorizontalAlign.End }
         })
-        .id("row6")
+        .id('row6')
         .backgroundImagePosition(Alignment.Bottom)
         .backgroundImageSize(ImageSize.Cover)
       }
       .width(300).height(300)
       .margin({ left: 50 })
-      .border({ width: 2, color: "#6699FF" })
+      .border({ width: 2, color: '#6699FF' })
     }
     .height('100%')
   }
 }
 ```
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image4.png)
 
 
 ## 多个组件形成链
 
-链的形成依赖于组件之间的关联关系。以组件A和组件B构成的最简水平链为例，其依赖关系为：锚点1 <-- 组件A <---> 组件B --> 锚点2，即A具有left锚点，B具有right锚点，同时A的right锚点与B的HorizontalAlign.Start对齐，B的left锚点与A的HorizontalAlign.End对齐。
+链的形成依赖于组件之间的关联关系。以组件A和组件B构成的最简水平链为例，其依赖关系为：锚点1 <-- 组件A <---> 组件B --> 锚点2，即A具有left锚点，B具有right锚点，同时A的right锚点与B的[HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign).Start对齐，B的left锚点与A的[HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign).End对齐。
 * 链的方向和格式在链头组件的[chainMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainmode12)接口中声明；链内元素的bias属性全部失效，链头元素的bias属性作为整个链的bias生效。链头是指在满足成链规则时链的第一个组件（在水平方向上，从左边开始，镜像语言中从右边开始；在垂直方向上，从上边开始）。
 * 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[PACKED](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12)链中，可以通过[Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias对象说明)设置超出部分的分布。
 
+在以下示例代码中，通过alignRules和chainMode将九个在容器内的Row组件分为三组水平链式排列。组件row1、组件row2和组件row3顶部对齐，水平方向成SPREAD链，链内组件在锚点间均匀分布。组件row4、组件row5、组件row6垂直方向基于容器居中，水平方向成SPREAD_INSIDE链，链内除首尾2个组件对齐锚点外，其他组件在链中均匀分布。组件row7、组件row8、组件row9底部对齐，水平方向组成PACKED链，链内组件无间隙。
 
-```ts
+<!-- @[RelativeContainerMultipleComponentsChainMode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerMultipleComponentsChainMode.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Index {
+struct RelativeChainModeExample {
   build() {
     Row() {
       RelativeContainer() {
@@ -534,11 +580,11 @@ struct Index {
         .height(80)
         .backgroundColor('#a3cf62')
         .alignRules({
-          left: { anchor: "__container__", align: HorizontalAlign.Start },
-          right: { anchor: "row2", align: HorizontalAlign.Start },
-          top: { anchor: "__container__", align: VerticalAlign.Top }
+          left: { anchor: '__container__', align: HorizontalAlign.Start },
+          right: { anchor: 'row2', align: HorizontalAlign.Start },
+          top: { anchor: '__container__', align: VerticalAlign.Top }
         })
-        .id("row1")
+        .id('row1')
         .chainMode(Axis.Horizontal, ChainStyle.SPREAD)
 
         Row() {
@@ -549,11 +595,11 @@ struct Index {
         .height(80)
         .backgroundColor('#00ae9d')
         .alignRules({
-          left: { anchor: "row1", align: HorizontalAlign.End },
-          right: { anchor: "row3", align: HorizontalAlign.Start },
-          top: { anchor: "row1", align: VerticalAlign.Top }
+          left: { anchor: 'row1', align: HorizontalAlign.End },
+          right: { anchor: 'row3', align: HorizontalAlign.Start },
+          top: { anchor: 'row1', align: VerticalAlign.Top }
         })
-        .id("row2")
+        .id('row2')
 
         Row() {
           Text('row3')
@@ -563,11 +609,11 @@ struct Index {
         .height(80)
         .backgroundColor('#0a59f7')
         .alignRules({
-          left: { anchor: "row2", align: HorizontalAlign.End },
-          right: { anchor: "__container__", align: HorizontalAlign.End },
-          top: { anchor: "row1", align: VerticalAlign.Top }
+          left: { anchor: 'row2', align: HorizontalAlign.End },
+          right: { anchor: '__container__', align: HorizontalAlign.End },
+          top: { anchor: 'row1', align: VerticalAlign.Top }
         })
-        .id("row3")
+        .id('row3')
 
         Row() {
           Text('row4')
@@ -577,11 +623,11 @@ struct Index {
         .height(80)
         .backgroundColor('#a3cf62')
         .alignRules({
-          left: { anchor: "__container__", align: HorizontalAlign.Start },
-          right: { anchor: "row5", align: HorizontalAlign.Start },
-          center: { anchor: "__container__", align: VerticalAlign.Center }
+          left: { anchor: '__container__', align: HorizontalAlign.Start },
+          right: { anchor: 'row5', align: HorizontalAlign.Start },
+          center: { anchor: '__container__', align: VerticalAlign.Center }
         })
-        .id("row4")
+        .id('row4')
         .chainMode(Axis.Horizontal, ChainStyle.SPREAD_INSIDE)
 
         Row() {
@@ -592,11 +638,11 @@ struct Index {
         .height(80)
         .backgroundColor('#00ae9d')
         .alignRules({
-          left: { anchor: "row4", align: HorizontalAlign.End },
-          right: { anchor: "row6", align: HorizontalAlign.Start },
-          top: { anchor: "row4", align: VerticalAlign.Top }
+          left: { anchor: 'row4', align: HorizontalAlign.End },
+          right: { anchor: 'row6', align: HorizontalAlign.Start },
+          top: { anchor: 'row4', align: VerticalAlign.Top }
         })
-        .id("row5")
+        .id('row5')
 
         Row() {
           Text('row6')
@@ -606,11 +652,11 @@ struct Index {
         .height(80)
         .backgroundColor('#0a59f7')
         .alignRules({
-          left: { anchor: "row5", align: HorizontalAlign.End },
-          right: { anchor: "__container__", align: HorizontalAlign.End },
-          top: { anchor: "row4", align: VerticalAlign.Top }
+          left: { anchor: 'row5', align: HorizontalAlign.End },
+          right: { anchor: '__container__', align: HorizontalAlign.End },
+          top: { anchor: 'row4', align: VerticalAlign.Top }
         })
-        .id("row6")
+        .id('row6')
 
         Row() {
           Text('row7')
@@ -620,11 +666,11 @@ struct Index {
         .height(80)
         .backgroundColor('#a3cf62')
         .alignRules({
-          left: { anchor: "__container__", align: HorizontalAlign.Start },
-          right: { anchor: "row8", align: HorizontalAlign.Start },
-          bottom: { anchor: "__container__", align: VerticalAlign.Bottom }
+          left: { anchor: '__container__', align: HorizontalAlign.Start },
+          right: { anchor: 'row8', align: HorizontalAlign.Start },
+          bottom: { anchor: '__container__', align: VerticalAlign.Bottom }
         })
-        .id("row7")
+        .id('row7')
         .chainMode(Axis.Horizontal, ChainStyle.PACKED)
 
         Row() {
@@ -635,11 +681,11 @@ struct Index {
         .height(80)
         .backgroundColor('#00ae9d')
         .alignRules({
-          left: { anchor: "row7", align: HorizontalAlign.End },
-          right: { anchor: "row9", align: HorizontalAlign.Start },
-          top: { anchor: "row7", align: VerticalAlign.Top }
+          left: { anchor: 'row7', align: HorizontalAlign.End },
+          right: { anchor: 'row9', align: HorizontalAlign.Start },
+          top: { anchor: 'row7', align: VerticalAlign.Top }
         })
-        .id("row8")
+        .id('row8')
 
         Row() {
           Text('row9')
@@ -649,18 +695,192 @@ struct Index {
         .height(80)
         .backgroundColor('#0a59f7')
         .alignRules({
-          left: { anchor: "row8", align: HorizontalAlign.End },
-          right: { anchor: "__container__", align: HorizontalAlign.End },
-          top: { anchor: "row7", align: VerticalAlign.Top }
+          left: { anchor: 'row8', align: HorizontalAlign.End },
+          right: { anchor: '__container__', align: HorizontalAlign.End },
+          top: { anchor: 'row7', align: VerticalAlign.Top }
         })
-        .id("row9")
+        .id('row9')
       }
       .width(300).height(300)
       .margin({ left: 50 })
-      .border({ width: 2, color: "#6699FF" })
+      .border({ width: 2, color: '#6699FF' })
     }
     .height('100%')
   }
 }
 ```
+
 ![relative container](figures/relativecontainer6.png)
+
+## 使用辅助线辅助定位子组件
+
+辅助线（guideLine）是在容器内虚拟出的额外水平或垂直锚点，便于统一对齐到特定偏移位置，从而避免为每个组件单独编写重复的偏移设置。
+
+辅助线分为垂直（Vertical）和水平（Horizontal）两种：垂直辅助线通过start和end属性指定其距离容器左侧和右侧的距离；水平辅助线通过start和end属性指定其距离容器顶部和底部的距离。
+* 如果同时设置了start和end，当两者规则冲突时，仅start属性生效。
+* 若容器在某个方向的尺寸被声明为"auto"，则该方向上的guideLine位置只能使用start属性声明（不允许使用百分比）。
+
+在以下示例代码中，定义了一条垂直辅助线guideline1，距离容器左侧50vp，以及另一条水平辅助线guideline2，距离容器顶部50vp。组件row1通过这两条辅助线来定位自身位置，无需设置bias。
+
+<!-- @[RelativeContainerComponentGuideLine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentGuideLine.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct RelativeGuideLineExample {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row()
+          .width(100)
+          .height(100)
+          .backgroundColor('#a3cf62')
+          .alignRules({
+            left: { anchor: 'guideline1', align: HorizontalAlign.End },
+            top: { anchor: 'guideline2', align: VerticalAlign.Top }
+          })
+          .id('row1')
+      }
+      .width(300)
+      .height(300)
+      .margin({ left: 50 })
+      .border({ width: 2, color: '#6699FF' })
+      .guideLine([{ id: 'guideline1', direction: Axis.Vertical, position: { start: 50 } },
+        { id: 'guideline2', direction: Axis.Horizontal, position: { start: 50 } }])
+    }
+    .height('100%')
+  }
+}
+```
+
+![relative container](figures/relativecontainer4.png)
+
+## 多个组件的屏障
+
+屏障（barrier）是容器的一种动态参考边界，它基于一组指定组件的实际位置，计算出它们在特定方向上的公共最远边界。当需要让某个组件参照多个组件的集体边界时使用，例如实现“位于这些组件右侧”或“不与其他任何组件重叠”等效果。
+
+屏障可以有上下左右四个方向。垂直方向（TOP，BOTTOM）的屏障仅能作为组件的水平方向锚点，用作垂直方向锚点时值为0；水平方向（LEFT，RIGHT）的屏障仅能作为组件的垂直方向锚点，用作水平方向锚点时值为0。
+
+与静态的guideline不同，barrier会随参照组件位置变化而自动更新，只需定义实际需要的方向即可。
+
+在下列示例代码中，item1，item2，item3三个组件可以视为由一个隐形的矩形区域包围着，outer1基于这个“隐形区域”的底部边界进行布局，位于该区域的下方；outer2基于这个“隐形区域”的右侧边界进行布局，位于该区域的右侧。
+
+<!-- @[testRelativeContainerComponentBarrier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentBarrier.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text('item 1')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#a3cf62')
+        .id('item1')
+        .alignRules({
+          top: {
+            anchor: '__container__',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: '__container__',
+            align: HorizontalAlign.Start
+          }
+        })
+      Text('item 2')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#a3cf62')
+        .id('item2')
+        .alignRules({
+          top: {
+            anchor: 'item1',
+            align: VerticalAlign.Bottom
+          },
+          left: {
+            anchor: 'item1',
+            align: HorizontalAlign.End
+          }
+        })
+      Text('item 3')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#a3cf62')
+        .id('item3')
+        .alignRules({
+          bottom: {
+            anchor: 'item2',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'item2',
+            align: HorizontalAlign.End
+          }
+        })
+      Text('outer 1')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#00ae9d')
+        // 定义其位置
+        .alignRules({
+          top: {
+            anchor: 'barrier_bottom',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'barrier_left',
+            align: HorizontalAlign.Start
+          }
+        })
+
+      Text('outer 2')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#00ae9d')
+        // 定义其位置
+        .alignRules({
+          top: {
+            anchor: 'barrier_top',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'barrier_right',
+            align: HorizontalAlign.Start
+          }
+        })
+    }
+    .width('100%')
+    .padding(10)
+    .barrier([
+      {
+        id: 'barrier_left',
+        direction: BarrierDirection.LEFT,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_right',
+        direction: BarrierDirection.RIGHT,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_top',
+        direction: BarrierDirection.TOP,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_bottom',
+        direction: BarrierDirection.BOTTOM,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+    ])
+  }
+}
+```
+
+![relative container](figures/relativecontainer10.png)

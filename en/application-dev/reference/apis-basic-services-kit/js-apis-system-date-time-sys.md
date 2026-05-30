@@ -3,8 +3,8 @@
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **systemDateTime** module provides system time and time zone features. You can use the APIs of this module to set and obtain the system time and time zone.
 
@@ -56,6 +56,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -64,7 +65,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set the system time to 2021-01-20 02:36:25.
-let time = 1611081385000;
+let time: number = 1611081385000;
 try {
   systemDateTime.setTime(time, (error: BusinessError) => {
     if (error) {
@@ -111,6 +112,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -119,7 +121,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set the system time to 2021-01-20 02:36:25.
-let time = 1611081385000;
+let time: number = 1611081385000;
 try {
   systemDateTime.setTime(time).then(() => {
     console.info(`Succeeded in setting time.`);
@@ -268,6 +270,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -321,6 +324,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -372,7 +376,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   systemDateTime.updateNtpTime().then(() => {
-    console.info(`Succeeded in update ntp time.`);
+    console.info(`Succeeded in updating ntp time.`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
   });
@@ -404,7 +408,7 @@ For details about the error codes, see [Time and Time Zone Service Error Codes](
 
 | ID| Error Message                                                                                                   |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 13000002    | Location NTP time of the system is invalid.                                                           |
+| 13000002    | updateNtpTime() is not called successfully.                                                           |
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 
 **Example**
@@ -413,7 +417,7 @@ For details about the error codes, see [Time and Time Zone Service Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let time = systemDateTime.getNtpTime();
+  let time: number = systemDateTime.getNtpTime();
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get ntp time. message: ${error.message}, code: ${error.code}`);
@@ -423,3 +427,57 @@ try {
 ## Supported System Time Zones
 
 For details about the supported system time zones, see API [I18n.SystemLocaleManager.getTimeZoneCityItemArray()](../apis-localization-kit/js-apis-i18n-sys.md#gettimezonecityitemarray10).
+
+
+## systemDateTime.setAutoTimeStatus<sup>21+</sup>
+
+setAutoTimeStatus(status: boolean): Promise&lt;void&gt;
+
+Sets the status of the automatic time setting. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.MiscServices.Time
+
+**Required permissions**: ohos.permission.SET_TIME
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description      |
+| -------- | ------ | ---- | ---------- |
+| status | boolean | Yes  | Whether to enable the automatic time setting.<br>- **true**: Enable the automatic time setting.<br>- **false**: Disable the automatic time setting.|
+
+**Return value**
+
+| Type               | Description                |
+| ------------------- | -------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                                                                       |
+| -------- |-------------------------------------------------------------------------------------------------------------|
+| 201       | Permission denied.                                                                                          |
+| 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint; 2. The required privilege for the operation has not been granted. |
+| 13000001  | Network connection error or OS error. Possible causes: 1. System memory is insufficient; 2. Calls the underlying system interface failed.|
+
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemDateTime.setAutoTimeStatus(true).then(() => {
+    console.info(`Succeeded in setting autotime.`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to set autotime. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to set autotime. message: ${error.message}, code: ${error.code}`);
+}
+```

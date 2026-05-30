@@ -1,0 +1,82 @@
+# vibrator_type.h
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @hu-zhiqiong-->
+
+## Overview
+
+Declares the APIs for starting or stopping vibration.
+
+**Reference file**: <sensors/vibrator_type.h>
+
+**Library**: libohvibrator.z.so
+
+**System capability**: SystemCapability.Sensors.MiscDevice
+
+**Since**: 11
+
+**Related module**: [Vibrator](capi-vibrator.md)
+
+## Summary
+
+### Structs
+
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) | Vibrator_Attribute | Defines a struct for the vibrator attribute.|
+| [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md) | Vibrator_FileDescription | Defines a struct for the vibration file description.|
+
+### Enumeration
+
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [Vibrator_ErrorCode](#vibrator_errorcode) | Vibrator_ErrorCode | Enumerates the vibrator error codes.|
+| [Vibrator_Usage](#vibrator_usage) | Vibrator_Usage | Enumerates the vibration scenarios.|
+
+## Enum Description
+
+### Vibrator_ErrorCode
+
+```c
+enum Vibrator_ErrorCode
+```
+
+**Description**
+
+Enumerates the vibrator error codes.
+
+**Since**: 11
+
+| Enum Item| Description|
+| -- | -- |
+| PERMISSION_DENIED = 201 | Permission denied.|
+| PARAMETER_ERROR = 401 | Parameter check failed. For example, a mandatory parameter is not passed in, or the parameter type passed in is incorrect.|
+| UNSUPPORTED = 801 | The device does not support this API. Generally, this enumerated value is used for a device that supports the corresponding system capability but only parts of APIs.|
+| DEVICE_OPERATION_FAILED = 14600101 | Device operation failed.|
+
+### Vibrator_Usage
+
+```c
+enum Vibrator_Usage
+```
+
+**Description**
+
+Enumerates the vibration scenarios.
+
+**Since**: 11
+
+| Enum Item| Description|
+| -- | -- |
+| VIBRATOR_USAGE_UNKNOWN = 0 | Unknown scenario, with the lowest priority|
+| VIBRATOR_USAGE_ALARM = 1 | Alarming|
+| VIBRATOR_USAGE_RING = 2 | Ringing|
+| VIBRATOR_USAGE_NOTIFICATION = 3 | Notification|
+| VIBRATOR_USAGE_COMMUNICATION = 4 | Telecommunications|
+| VIBRATOR_USAGE_TOUCH = 5 | Touch|
+| VIBRATOR_USAGE_MEDIA = 6 | Multimedia|
+| VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | Physical feedback|
+| VIBRATOR_USAGE_SIMULATED_REALITY = 8 | Simulated reality|

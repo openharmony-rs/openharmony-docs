@@ -1,5 +1,12 @@
 # start_options.h
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo; @yangxuguang-huawei-->
+<!--Designer: @ccllee1-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
 ## 概述
 
 提供应用启动参数数据结构[AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md)以及设置和获取相关函数。
@@ -63,7 +70,7 @@
 
 ### OH_AbilityRuntime_CreateStartOptions()
 
-```
+```c
 AbilityRuntime_StartOptions* OH_AbilityRuntime_CreateStartOptions(void)
 ```
 
@@ -99,7 +106,7 @@ void createStartOptionsTest()
 
 ### OH_AbilityRuntime_DestroyStartOptions()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyStartOptions(AbilityRuntime_StartOptions **startOptions)
 ```
 
@@ -141,7 +148,7 @@ void destroyStartOptionsTest()
 
 ### OH_AbilityRuntime_SetStartOptionsWindowMode()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowMode(AbilityRuntime_StartOptions *startOptions,AbilityRuntime_WindowMode windowMode)
 ```
 
@@ -190,7 +197,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWindowMode()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowMode(AbilityRuntime_StartOptions *startOptions,AbilityRuntime_WindowMode &windowMode)
 ```
 
@@ -238,7 +245,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsDisplayId()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsDisplayId(AbilityRuntime_StartOptions *startOptions,int32_t displayId)
 ```
 
@@ -285,7 +292,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsDisplayId()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsDisplayId(AbilityRuntime_StartOptions *startOptions,int32_t &displayId)
 ```
 
@@ -333,7 +340,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsWithAnimation()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWithAnimation(AbilityRuntime_StartOptions *startOptions,bool withAnimation)
 ```
 
@@ -380,7 +387,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWithAnimation()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWithAnimation(AbilityRuntime_StartOptions *startOptions,bool &withAnimation)
 ```
 
@@ -428,7 +435,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsWindowLeft()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowLeft(AbilityRuntime_StartOptions *startOptions,int32_t windowLeft)
 ```
 
@@ -475,7 +482,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWindowLeft()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowLeft(AbilityRuntime_StartOptions *startOptions,int32_t &windowLeft)
 ```
 
@@ -523,7 +530,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsWindowTop()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowTop(AbilityRuntime_StartOptions *startOptions,int32_t windowTop)
 ```
 
@@ -570,7 +577,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWindowTop()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowTop(AbilityRuntime_StartOptions *startOptions,int32_t &windowTop)
 ```
 
@@ -618,7 +625,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsWindowHeight()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowHeight(AbilityRuntime_StartOptions *startOptions,int32_t windowHeight)
 ```
 
@@ -665,7 +672,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWindowHeight()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowHeight(AbilityRuntime_StartOptions *startOptions,int32_t &windowHeight)
 ```
 
@@ -713,7 +720,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsWindowWidth()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowWidth(AbilityRuntime_StartOptions *startOptions,int32_t windowWidth)
 ```
 
@@ -760,7 +767,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsWindowWidth()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowWidth(AbilityRuntime_StartOptions *startOptions,int32_t &windowWidth)
 ```
 
@@ -808,7 +815,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsStartVisibility()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartVisibility(AbilityRuntime_StartOptions *startOptions,AbilityRuntime_StartVisibility startVisibility)
 ```
 
@@ -856,7 +863,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsStartVisibility()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartVisibility(AbilityRuntime_StartOptions *startOptions,AbilityRuntime_StartVisibility &startVisibility)
 ```
 
@@ -871,7 +878,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartVisibility(Abilit
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | StartOptions结构体。 |
-| [bilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) &startVisibility | 获取到的显示模式。取值范围参见AbilityRuntime_StartVisibility。 |
+| [AbilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) &startVisibility | 获取到的显示模式。取值范围参见AbilityRuntime_StartVisibility。 |
 
 **返回：**
 
@@ -904,7 +911,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsStartWindowIcon()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowIcon(AbilityRuntime_StartOptions *startOptions,OH_PixelmapNative *startWindowIcon)
 ```
 
@@ -925,7 +932,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowIcon(Abilit
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者OH_PixelmapNative没有置为空指针。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者startWindowIcon为空指针。 |
 
 **示例代码：**
 
@@ -940,7 +947,7 @@ void demo()
         data[i] = i + 1;
     }
 
-    //创建参数结构体实例，并设置参数
+    // 创建参数结构体实例，并设置参数
     OH_Pixelmap_InitializationOptions *createOpts = nullptr;
     OH_PixelmapInitializationOptions_Create(&createOpts);
     OH_PixelmapInitializationOptions_SetWidth(createOpts, 6);
@@ -948,7 +955,7 @@ void demo()
     OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNKNOWN);
 
-    //创建Pixelmap实例
+    // 创建Pixelmap实例
     OH_PixelmapNative *startWindowIcon = nullptr;
     Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &startWindowIcon);
     if (errCode != IMAGE_SUCCESS) {
@@ -988,7 +995,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsStartWindowIcon()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowIcon(AbilityRuntime_StartOptions *startOptions,OH_PixelmapNative **startWindowIcon)
 ```
 
@@ -1009,7 +1016,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowIcon(Abilit
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions或者StartWindowBackgroundColor为空。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者startWindowIcon没有设置为空指针。 |
 
 **示例代码：**
 
@@ -1040,7 +1047,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsStartWindowBackgroundColor()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowBackgroundColor(AbilityRuntime_StartOptions *startOptions, const char *startWindowBackgroundColor)
 ```
 
@@ -1088,7 +1095,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundColor()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundColor(AbilityRuntime_StartOptions *startOptions, char **startWindowBackgroundColor, size_t &size)
 ```
 
@@ -1111,7 +1118,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundC
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions或者SupportedWindowModes为空，或者Size为0。<br>在返回ABILITY_RUNTIME_ERROR_CODE_INTERNAL时，表示开发者无法恢复的内部错误，比如内部调用malloc错误，或者字符串拷贝函数出错。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示startOptions为空，或者startWindowBackgroundColor没有置为空指针。<br>在返回ABILITY_RUNTIME_ERROR_CODE_INTERNAL时，表示开发者无法恢复的内部错误，比如内部调用malloc错误，或者字符串拷贝函数出错。 |
 
 **示例代码：**
 
@@ -1149,7 +1156,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsSupportedWindowModes()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(AbilityRuntime_StartOptions *startOptions, AbilityRuntime_SupportedWindowMode *supportedWindowModes,size_t size)
 ```
 
@@ -1206,7 +1213,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsSupportedWindowModes()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsSupportedWindowModes(AbilityRuntime_StartOptions *startOptions, AbilityRuntime_SupportedWindowMode **supportedWindowModes,size_t &size)
 ```
 
@@ -1265,7 +1272,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsMinWindowWidth()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMinWindowWidth(AbilityRuntime_StartOptions *startOptions, int32_t minWindowWidth)
 ```
 
@@ -1314,7 +1321,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsMinWindowWidth()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowWidth(AbilityRuntime_StartOptions *startOptions, int32_t &minWindowWidth)
 ```
 
@@ -1363,7 +1370,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsMaxWindowWidth()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMaxWindowWidth(AbilityRuntime_StartOptions *startOptions, int32_t maxWindowWidth)
 ```
 
@@ -1412,7 +1419,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsMaxWindowWidth()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowWidth(AbilityRuntime_StartOptions *startOptions, int32_t &maxWindowWidth)
 ```
 
@@ -1462,7 +1469,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsMinWindowHeight()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMinWindowHeight(AbilityRuntime_StartOptions *startOptions, int32_t minWindowHeight)
 ```
 
@@ -1510,7 +1517,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsMinWindowHeight()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowHeight(AbilityRuntime_StartOptions *startOptions, int32_t &minWindowHeight)
 ```
 
@@ -1560,7 +1567,7 @@ void demo()
 
 ### OH_AbilityRuntime_SetStartOptionsMaxWindowHeight()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMaxWindowHeight(AbilityRuntime_StartOptions *startOptions, int32_t maxWindowHeight)
 ```
 
@@ -1609,7 +1616,7 @@ void demo()
 
 ### OH_AbilityRuntime_GetStartOptionsMaxWindowHeight()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeight(AbilityRuntime_StartOptions *startOptions, int32_t &maxWindowHeight)
 ```
 

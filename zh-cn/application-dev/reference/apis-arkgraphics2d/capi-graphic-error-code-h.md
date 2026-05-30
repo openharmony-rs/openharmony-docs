@@ -1,4 +1,10 @@
 # graphic_error_code.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -26,7 +32,7 @@
 
 ### OHNativeErrorCode
 
-```
+```c
 enum OHNativeErrorCode
 ```
 
@@ -43,6 +49,7 @@ enum OHNativeErrorCode
 | NATIVE_ERROR_INVALID_ARGUMENTS = 40001000 | 入参无效。 |
 | NATIVE_ERROR_NO_PERMISSION = 40301000 | 无权限操作。 |
 | NATIVE_ERROR_NO_BUFFER = 40601000 | 无空闲可用的buffer。 |
+| NATIVE_ERROR_INVALID_OPERATION = 41201000 | 无效操作。<br/>**起始版本：** 26.0.0 |
 | NATIVE_ERROR_NO_CONSUMER = 41202000 | 消费端不存在。 |
 | NATIVE_ERROR_NOT_INIT = 41203000 | 未初始化。 |
 | NATIVE_ERROR_CONSUMER_CONNECTED = 41206000 | 消费端已经被连接。 |

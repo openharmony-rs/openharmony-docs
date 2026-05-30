@@ -1,4 +1,14 @@
 # OH_Drawing_TextBlob
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_Drawing_TextBlob OH_Drawing_TextBlob
+```
 
 ## 概述
 

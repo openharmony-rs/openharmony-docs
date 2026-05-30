@@ -19,7 +19,7 @@ Websocket connect failed.
 
 **Description**
 
-This error code is reported if the WebSocket connection fails.
+WebSocket connection failed.
 
 **Possible Causes**
 
@@ -39,11 +39,17 @@ Websocket url error.
 
 **Description**
 
-This error code is reported if the WebSocket URL is incorrect.
+The WebSocket URL is incorrect.
 
 **Possible Causes**
 
 The WebSocket URL is incorrect.
+
+**Solution**
+
+1. Check whether the WebSocket URL is empty or does not contain the correct protocol (ws:// or wss://).
+
+2. Check whether the WebSocket URL length exceeds 2048 characters.
 
 ## 2302002 WebSocket Certificate Does Not Exist
 
@@ -53,11 +59,18 @@ Websocket certificate file does not exist.
 
 **Description**
 
-The WebSocket certificate does not exist.
+The WebSocket certificate is not found.
 
 **Possible Causes**
 
 The certificate path is incorrect or no certificate is configured.
+
+**Solution**
+
+1. Check whether the CA certificate path is valid.
+
+2. If the **WebSocketRequestOptions.clientCert** is specified, check whether the certificate path and private key path are valid.
+
 
 ## 2302003 WebSocket Connection Already Exists
 
@@ -73,6 +86,10 @@ The WebSocket connection already exists.
 
 The WebSocket connection has been established.
 
+**Solution**
+
+The WebSocket connection has been established. You do not need to call the **WebSocket.connect** API again. No further action is required.
+
 ## 2302004 Listening Failed on the Specified NIC
 
 **Error Message**
@@ -85,7 +102,7 @@ This error code is reported if the WebSocketServer failed to perform listening o
 
 **Possible Causes**
 
-The IP address in the WebSocketServer server configuration file is invalid.
+The IP address in the WebSocketServer configuration file is invalid.
 
 **Solution**
 
@@ -103,11 +120,29 @@ This error code is reported if the WebSocketServer failed to perform listening o
 
 **Possible Causes**
 
-The port number in the WebSocketServer server configuration file is invalid.
+The port number in the WebSocketServer configuration file is invalid.
 
 **Solution**
 
 Check whether the port number is valid.
+
+## 2302007 Listening Port Already Occupied
+
+**Error Message**
+
+Websocket port already occupied.
+
+**Description**
+
+This error code is reported if the port listened by the WebSocketServer is occupied.
+
+**Possible Causes**
+
+The specified listening port has been occupied by another process.
+
+**Solution**
+
+Replace the port with an idle one.
 
 ## 2302998 Domain Access Denied
 
@@ -125,7 +160,7 @@ An incorrect server domain name is configured for the atomic service.
 
 **Solution**
 
-Configure a correct server domain name for the atomic service. For details, see [Network Connection Management](https://developer.huawei.com/consumer/en/doc/atomic-guides-V5/atomic-net-connection-manager-V5).
+Configure a correct server domain name for the atomic service. For details, see [Configuring Server Domain Names](https://developer.huawei.com/consumer/en/doc/atomic-guides/agc-help-harmonyos-server-domain).
 
 ## 2302999 Internal Error
 
@@ -139,4 +174,8 @@ This error code is reported if an internal error occurs.
 
 **Possible Causes**
 
-Other system faults occur.
+Null pointer, memory allocation error, or other errors occur.
+
+**Solution**
+
+Reboot the system.

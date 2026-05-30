@@ -8,7 +8,7 @@ OpenHarmony provides battery temperature protection by default. When a device is
 
 ### Constraints
 
-The configuration path for battery level customization is subject to the [configuration policy](https://gitee.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
+The configuration path for battery level customization is subject to the [configuration policy](https://gitcode.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
 
 ## How to Develop
 
@@ -23,11 +23,11 @@ Development board running the standard system, for example, the DAYU200 or Hi351
 For details about the requirements on the Linux environment, see [Quick Start](../quick-start/quickstart-overview.md).
 
 ### Getting Started with Development
-The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate charging type customization.
+The following uses [DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate charging type customization.
 
-1. Create the battery folder in the product directory [/vendor/hihope/rk3568](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568).
+1. Create the battery folder in the product directory [/vendor/hihope/rk3568](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568).
 
-2. Create a target folder by referring to the [default folder of power temperature projection configuration](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile), and install it in `//vendor/hihope/rk3568/battery`. The content is as follows:
+2. Create a target folder by referring to the [default folder of power temperature projection configuration](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile), and install it in `//vendor/hihope/rk3568/battery`. The content is as follows:
 
     ```text
     profile
@@ -66,7 +66,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     }
     ```
 
-5. Add the build target to `module_list` in [ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
+5. Add the build target to `module_list` in [ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
 
     ```json
     {
@@ -162,7 +162,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     The device is powered off.
 
 ## Reference
-During development, you can refer to the [default power temperature protection configuration](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile/), as shown below:
+During development, you can refer to the [default power temperature protection configuration](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile/), as shown below:
 
 ```json
 {

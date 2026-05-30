@@ -2,7 +2,7 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
-<!--Designer: @weng-changcheng-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -20,11 +20,13 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 
 - 实现任务的函数需要使用[@Concurrent装饰器](#concurrent装饰器)标注，且仅支持在.ets文件中使用。
 
-- 从API version 11开始，跨并发实例传递带方法的实例对象时，该类必须使用装饰器[@Sendable装饰器](arkts-sendable.md#sendable装饰器)标注，且仅支持在.ets文件中使用。
+- 从API version 11开始，跨并发实例传递带方法的实例对象时，该类必须使用装饰器[@Sendable装饰器](arkts-sendable.md#sendable装饰器)标注，且仅支持在.ets文件中使用。如果不考虑使用@Sendable装饰器标注，可以考虑worker方法，请参考[Worker同步调用宿主线程的接口](worker-invoke-mainthread-interface.md)。
 
-- 任务函数（[LongTask](../reference/apis-arkts/js-apis-taskpool.md#longtask12)除外）在TaskPool工作线程中的执行时长不能超过3分钟。否则，任务将被强制终止。需要注意的是，这里的3分钟限制仅统计TaskPool线程的​​同步运行时长​​，不包含异步操作（如Promise或async/await）的等待时长。例如，数据库的插入、删除、更新等操作，如果是异步操作，仅计入CPU实际处理时长（如SQL解析），网络传输或磁盘I/O等待时长不计入；如果是同步操作，整个操作时长（含I/O阻塞时间）均计入限制。开发者可通过[Task](../reference/apis-arkts/js-apis-taskpool.md#task)的属性ioDuration、cpuDuration获取执行当前任务的异步IO耗时和CPU耗时。
+- 任务函数（[LongTask](../reference/apis-arkts/js-apis-taskpool.md#longtask12)除外）的CPU执行时长不能超过3分钟（通过Task的cpuDuration属性获取）。异步I/O等待时间不计入此限制，可通过ioDuration属性获取。否则，若因任务逻辑导致阻塞，使任务无法完成，将导致该线程后续无法调度其他任务。当所有线程均被超时占用时，后续提交的任务将无法正常调度执行。需要注意的是，这里的3分钟限制仅统计TaskPool线程的​​同步执行时长​​，不包含异步操作（如Promise或async/await）的等待时长。例如，数据库的插入、删除、更新等操作，如果是异步操作，仅计入CPU实际处理时长（如SQL解析），网络传输或磁盘I/O等待时长不计入；如果是同步操作，整个操作时长（含I/O阻塞时间）均计入限制。开发者可通过[Task](../reference/apis-arkts/js-apis-taskpool.md#task)的属性ioDuration、cpuDuration获取执行当前任务的异步IO耗时和CPU耗时。
 
-- 实现任务的函数入参需满足序列化支持的类型。详情请参见[线程间通信对象](interthread-communication-overview.md)。目前不支持使用[@State装饰器](../ui/state-management/arkts-state.md)、[@Prop装饰器](../ui/state-management/arkts-prop.md)、[@Link装饰器](../ui/state-management/arkts-link.md)等装饰器修饰的复杂类型。
+
+
+- 实现任务的函数入参需满足序列化支持的类型。详情请参见[线程间通信对象概述](serializable-overview.md)。目前不支持使用[@State装饰器](../ui/state-management/arkts-state.md)、[@Prop装饰器](../ui/state-management/arkts-prop.md)、[@Link装饰器](../ui/state-management/arkts-link.md)等装饰器修饰的复杂类型。
 
 - ArrayBuffer参数在TaskPool中默认转移，需要设置转移列表的话可通过接口[setTransferList()](../reference/apis-arkts/js-apis-taskpool.md#settransferlist10)设置。如果需要多次调用使用ArrayBuffer作为参数的task，则需要通过接口[setCloneList()](../reference/apis-arkts/js-apis-taskpool.md#setclonelist11)把ArrayBuffer在线程中的传输行为改成拷贝传递，避免对原有对象产生影响。
 
@@ -55,7 +57,7 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
   }
   ```
 
-- 由于不同线程中上下文对象不同，TaskPool工作线程只能使用线程安全的库。例如，不能使用UI相关的非线程安全库。
+- 由于不同线程中上下文对象不同，TaskPool工作线程只能使用线程安全的模块。例如，不能使用UI相关的非线程安全模块。TaskPool/Worker等工作线程不支持使用操作UI的模块、线程不安全的模块以及其他只支持在主线程中使用的模块。不支持UI模块是因为目前工作线程不支持操作UI，不支持线程不安全的模块是因为多线程使用该模块可能会导致多线程问题，只支持在主线程中使用的模块明确在文档中说明的有[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)等。线程安全的模块是指多线程同时使用该模块也不会引入多线程问题，如TaskPool/[Worker](./worker-introduction.md)/[hilog](../dfx/hilog.md)等。
 
 - 序列化传输的数据量限制为16MB。
 
@@ -65,7 +67,7 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 
 - 不支持在TaskPool工作线程中使用[AppStorage](../ui/state-management/arkts-appstorage.md)。
 
-- TaskPool支持在宿主线程封装任务并提交给任务队列，理论上支持的任务数量没有上限。然而，任务的执行效率受限于任务的优先级和系统资源。当工作线程达到最大数量时，任务的执行效率可能会下降
+- TaskPool支持在宿主线程封装任务并提交给任务队列，理论上支持的任务数量没有上限。然而，任务的执行效率受限于任务的优先级和系统资源。当工作线程达到最大数量时，任务的执行效率可能会下降。
 
 - TaskPool不支持指定任务所运行的线程，任务会被分配到空闲的线程中执行。如果需要指定任务所运行的线程，建议使用[Worker](worker-introduction.md)。
 
@@ -83,21 +85,19 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 | 使用场景 | 仅支持在Stage模型的工程中使用。仅支持在.ets文件中使用。 |
 | 装饰的函数类型 | 允许标注为async函数或普通函数。禁止标注为generator、箭头函数、类方法。不支持类成员函数或者匿名函数。 |
 | 装饰的函数内的变量类型 | 允许使用局部变量、入参和通过import引入的变量，禁止使用闭包变量。 |
-| 装饰的函数内的返回值类型 | 支持的类型请查[线程间通信对象](interthread-communication-overview.md)。 |
+| 装饰的函数内的返回值类型 | 支持的类型请查[线程间通信对象概述](serializable-overview.md)。 |
 
-> **说明：**
->
-> 由于\@Concurrent标记的函数不能访问闭包，因此函数内部不能调用当前文件的其他函数，例如：
->
-> ```ts
-> function bar() {
-> }
-> 
-> @Concurrent
-> function foo() {
->   bar(); // 违反闭包原则，报错
-> }
-> ```
+由于\@Concurrent标记的函数不能访问闭包，因此函数内部不能调用当前文件的其他函数，例如：
+
+```ts
+function bar() {
+}
+
+@Concurrent
+function foo() {
+  bar(); // 违反闭包原则，报错
+}
+```
 
 ## 装饰器使用示例
 
@@ -107,7 +107,9 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 
 示例：
 
-```ts
+<!-- @[concurrent_taskpool_common_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets) -->
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 
 @Concurrent
@@ -137,6 +139,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             concurrentFunc();
+            this.message = 'success';
           })
       }
       .width('100%')
@@ -145,7 +148,6 @@ struct Index {
   }
 }
 ```
-<!-- @[concurrent_taskpool_common_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets) -->
 
 ### 并发函数返回Promise
 
@@ -153,7 +155,9 @@ struct Index {
 
 示例：
 
-```ts
+<!-- @[concurrent_taskpool_promise_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/returnpromise.ets) -->
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 
 @Concurrent
@@ -249,6 +253,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             testConcurrentFunc();
+            this.message = 'success';
           })
       }
       .width('100%')
@@ -257,7 +262,6 @@ struct Index {
   }
 }
 ```
-<!-- @[concurrent_taskpool_promise_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/returnpromise.ets) -->
 
 ### 并发函数中使用自定义类或函数
 
@@ -265,8 +269,9 @@ struct Index {
 
 示例：
 
-```ts
-// Index.ets
+<!-- @[concurrent_taskpool_custom_class_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/customclasses.ets) -->
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { testAdd, MyTestA, MyTestB } from './Test';
@@ -279,7 +284,6 @@ class TestA {
   constructor(name: string) {
     this.name = name;
   }
-
   name: string = 'ClassA';
 }
 
@@ -288,14 +292,17 @@ class TestB {
 }
 
 @Concurrent
-function TestFunc() {
+function testFunc() {
   // case1：在并发函数中直接调用同文件内定义的类或函数
 
-  // 直接调用同文件定义的函数add()，add飘红报错：Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
+  // 直接调用同文件定义的函数add()，add飘红报错：
+  // Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
   // add(1);
-  // 直接使用同文件定义的TestA构造，TestA飘红报错：Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
-  // const a = new TestA('aaa');
-  // 直接访问同文件定义的TestB的成员nameStr，TestB飘红报错：Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
+  // 直接使用同文件定义的TestA构造，TestA飘红报错：
+  // Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
+  // let a = new TestA('aaa');
+  // 直接访问同文件定义的TestB的成员nameStr，TestB飘红报错：
+  // Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
   // console.info(`TestB name is: ${TestB.nameStr}`);
 
   // case2：在并发函数中调用定义在Test.ets文件并导入当前文件的类或函数
@@ -326,12 +333,13 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          const task = new taskpool.Task(TestFunc);
+          const task = new taskpool.Task(testFunc);
           taskpool.execute(task).then(() => {
             console.info('taskpool: execute task success!');
-          }).catch((e: BusinessError) => {
+          }).catch((e:BusinessError) => {
             console.error(`taskpool: execute: Code: ${e.code}, message: ${e.message}`);
           })
+          this.message = 'success';
         })
     }
     .height('100%')
@@ -339,10 +347,10 @@ struct Index {
   }
 }
 ```
-<!-- @[concurrent_taskpool_custom_class_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/customclasses.ets) -->
 
-```ts
-// Test.ets
+<!-- @[concurrent_taskpool_test_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/Test.ets) -->
+
+``` TypeScript
 export function testAdd(arg: number) {
   return ++arg;
 }
@@ -359,7 +367,6 @@ export class MyTestB {
   static nameStr:string = 'MyTestB';
 }
 ```
-<!-- @[concurrent_taskpool_test_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/Test.ets) -->
 
 ### 并发异步函数中使用Promise
 
@@ -367,29 +374,31 @@ export class MyTestB {
 
 示例：
 
-```ts
+<!-- @[concurrent_taskpool_async_promise_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/asynchronousfunctions.ets) -->
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 
 @Concurrent
 async function testPromiseError() {
   await new Promise<number>((resolve, reject) => {
     resolve(1);
-  }).then(() => {
-    throw new Error('testPromise error');
+  }).then(()=>{
+    throw new Error('testPromise Error');
   })
 }
 
 @Concurrent
 async function testPromiseError1() {
   await new Promise<string>((resolve, reject) => {
-    reject('testPromiseError1 error msg');
+    reject('testPromiseError1 Error msg');
   })
 }
 
 @Concurrent
 function testPromiseError2() {
   return new Promise<string>((resolve, reject) => {
-    reject('testPromiseError2 error msg');
+    reject('testPromiseError2 Error msg');
   })
 }
 
@@ -401,17 +410,17 @@ async function testConcurrentFunc() {
   taskpool.execute(task1).then((d: object) => {
     console.info(`task1 res is: ${d}`);
   }).catch((e: object) => {
-    console.error(`task1 catch e: ${e}`); // task1 catch e: Error: testPromise error
+    console.error(`task1 catch e: ${e}`); // task1 catch e: Error: testPromise Error
   })
   taskpool.execute(task2).then((d: object) => {
     console.info(`task2 res is: ${d}`);
   }).catch((e: object) => {
-    console.error(`task2 catch e: ${e}`); // task2 catch e: testPromiseError1 error msg
+    console.error(`task2 catch e: ${e}`); // task2 catch e: testPromiseError1 Error msg
   })
   taskpool.execute(task3).then((d: object) => {
     console.info(`task3 res is: ${d}`);
   }).catch((e: object) => {
-    console.error(`task3 catch e: ${e}`); // task3 catch e: testPromiseError2 error msg
+    console.error(`task3 catch e: ${e}`); // task3 catch e: testPromiseError2 Error msg
   })
 }
 
@@ -428,6 +437,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             testConcurrentFunc();
+            // ...
           })
       }
       .width('100%')
@@ -436,7 +446,6 @@ struct Index {
   }
 }
 ```
-<!-- @[concurrent_taskpool_async_promise_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/asynchronousfunctions.ets) -->
 
 ## TaskPool扩缩容机制
 
@@ -452,7 +461,7 @@ struct Index {
 
 - 该线程上未执行长时任务（[LongTask](../reference/apis-arkts/js-apis-taskpool.md#longtask12)）。
 
-- 该线程上没有业务申请且未释放的句柄，例如[Timer(定时器)](../reference/common/js-apis-timer.md)。
+- 该线程上没有业务申请且未释放的句柄，例如[Timer (定时器)](../reference/common/js-apis-timer.md)。
 
 - 该线程处于非调试调优阶段。
 

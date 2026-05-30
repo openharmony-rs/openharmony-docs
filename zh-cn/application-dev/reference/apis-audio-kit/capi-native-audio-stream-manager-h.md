@@ -1,14 +1,14 @@
 # native_audio_stream_manager.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
-声明与音频流管理器相关的接口。<br> 该文件接口用于创建audioStreamManager以及音频流设置和管理。
+声明音频流管理器相关的接口。<br> 该文件接口用于创建AudioStreamManager以及音频流设置和管理。
 
 **引用文件：** <ohaudio/native_audio_stream_manager.h>
 
@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | 声明音频流管理器，用于管理音频流相关功能。 |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | 声明音频流管理器。用于管理音频流相关功能。 |
 
 ### 函数
 
@@ -37,12 +37,16 @@
 | [OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType sourceType, bool *supported)](#oh_audiostreammanager_isacousticechocancelersupported) | 查询指定的录音流类型使用场景是否支持回声消除。 |
 | [bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isfastplaybacksupported) | 查询当前设备在特定音频流信息和使用场景下是否支持低时延播放。 |
 | [bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_SourceType source)](#oh_audiostreammanager_isfastrecordingsupported) | 查询当前设备在特定音频流信息和使用场景下是否支持低时延录制。 |
+| [bool OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType source)](#oh_audiostreammanager_isintelligentnoisereductionenabledforcurrentdevice) | 查询指定录音流类型的智能降噪开关是否已开启。 |
+| [bool OH_AudioStreamManager_IsMultichannelPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_ismultichannelplaybacksupported) | 查询当前设备在特定音频流信息和使用场景下是否支持多声道播放。 |
+| [bool OH_AudioStreamManager_IsDirectPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isdirectplaybacksupported) | 查询当前设备在特定音频流信息和使用场景下是否支持直通播放。 |
+| [bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isoffloadplaybacksupported) | 查询当前设备在特定音频流信息和使用场景下是否支持低功耗播放。 |
 
 ## 函数说明
 
 ### OH_AudioManager_GetAudioStreamManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManager **streamManager)
 ```
 
@@ -51,7 +55,6 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManage
 获取音频流管理器句柄。
 
 **起始版本：** 19
-
 
 **参数：**
 
@@ -67,7 +70,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManage
 
 ### OH_AudioStreamManager_GetDirectPlaybackSupport()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStreamManager *audioStreamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, OH_AudioStream_DirectPlaybackMode *directPlaybackMode)
 ```
 
@@ -76,7 +79,6 @@ OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStr
 获取当前音频流支持的direct通路播放模式。
 
 **起始版本：** 19
-
 
 **参数：**
 
@@ -95,7 +97,7 @@ OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStr
 
 ### OH_AudioStreamManager_IsAcousticEchoCancelerSupported()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType sourceType, bool *supported)
 ```
 
@@ -104,7 +106,6 @@ OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_A
 查询指定的录音流类型使用场景是否支持回声消除。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -122,7 +123,7 @@ OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_A
 
 ### OH_AudioStreamManager_IsFastPlaybackSupported()
 
-```
+```c
 bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)
 ```
 
@@ -131,7 +132,6 @@ bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *stream
 查询当前设备在特定音频流信息和使用场景下是否支持低时延播放。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -149,7 +149,7 @@ bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *stream
 
 ### OH_AudioStreamManager_IsFastRecordingSupported()
 
-```
+```c
 bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_SourceType source)
 ```
 
@@ -158,7 +158,6 @@ bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *strea
 查询当前设备在特定音频流信息和使用场景下是否支持低时延录制。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -173,5 +172,108 @@ bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *strea
 | 类型 | 说明 |
 | -- | -- |
 | bool | 返回true时表示支持低时延录制，返回false时表示不支持。 |
+
+### OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice()
+
+```c
+bool OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType source)
+```
+
+**描述**
+
+查询指定录音流类型的智能降噪开关是否已开启。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | 音频流管理器句柄。通过[OH_AudioManager_GetAudioStreamManager](#oh_audiomanager_getaudiostreammanager)获取句柄。 |
+| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) source | 根据音频设备和管道类型选择结果得出的音频流使用场景。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回true时表示智能降噪开关已打开，返回false时表示开关已关闭。 |
+
+### OH_AudioStreamManager_IsMultichannelPlaybackSupported()
+
+```c
+bool OH_AudioStreamManager_IsMultichannelPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)
+```
+
+**描述**
+
+查询当前设备在特定音频流信息和使用场景下是否支持多声道播放。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | 音频流管理器句柄。通过[OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager)获取句柄。 |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | 音频流信息指针，用于描述基础音频格式。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回true时表示支持多声道播放，返回false时表示不支持。 |
+
+### OH_AudioStreamManager_IsDirectPlaybackSupported()
+
+```c
+bool OH_AudioStreamManager_IsDirectPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)
+```
+
+**描述**
+
+查询当前设备在特定音频流信息和使用场景下是否支持直通播放。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | 音频流管理器句柄。通过[OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager)获取句柄。 |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | 音频流信息指针，用于描述基础音频格式。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回true时表示支持直通播放，返回false时表示不支持。 |
+
+### OH_AudioStreamManager_IsOffloadPlaybackSupported()
+
+```c
+bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)
+```
+
+**描述**
+
+查询当前设备在特定音频流信息和使用场景下是否支持低功耗播放。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | 音频流管理器句柄。通过[OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager)获取句柄。 |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | 音频流信息指针，用于描述基础音频格式。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回true时表示支持低功耗播放，返回false时表示不支持。 |
 
 

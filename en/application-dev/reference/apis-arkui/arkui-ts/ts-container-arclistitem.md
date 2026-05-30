@@ -1,17 +1,40 @@
 # ArcListItem
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
+<!--Designer: @yylong-->
+<!--Tester: @huchuyun-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The **ArcListItem** component is used to display individual child components in an [ArcList](ts-container-arclist.md) component and must be used in conjunction with **ArcList**.
 
 > **NOTE**
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 > - This component can be used only as a child of [ArcList](ts-container-arclist.md).
-> - When this component is used with [LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md), its child components are created when it is created. When this component is used with [if/else](../../../ui/state-management/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/state-management/arkts-rendering-control-foreach.md), or when the parent component is [ArcList](ts-container-arclist.md), its child components are created when it is laid out.
+> - When this component is used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), its child components are created when it is created. When this component is used with [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), or when the parent component is [ArcList](ts-container-arclist.md), its child components are created when it is laid out.
+> - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
 
 ## Modules to Import
 
+> **NOTE**
+>
+> - **ArcListItemAttribute** is a key API used to configure the attributes of the **ArcListItem** component. In API version 21 and earlier, you must manually import **ArcListItemAttribute** after importing the **ArcListItem** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcListItemAttribute** when it detects the **ArcListItem** component, so manual import is no longer necessary.
+>
+> - If you manually import **ArcListItemAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+
+
+API version 21 and earlier:
+
 ```ts
 import { ArcListItem, ArcListItemAttribute } from '@kit.ArkUI';
+```
+
+API version 22 and later:
+
+```ts
+import { ArcListItem } from '@kit.ArkUI';
 ```
 
 ## Child Components
@@ -19,8 +42,6 @@ import { ArcListItem, ArcListItemAttribute } from '@kit.ArkUI';
 This component can contain a single child component.
 
 ## APIs
-
-### ArcListItem
 
 ArcListItem()
 
@@ -48,7 +69,7 @@ Sets whether to enable auto-scaling for the **ArcListItem** component.
 
 | Name| Type              | Mandatory| Description                                       |
 | ------ | ------------------ | ---- | ------------------------------------------- |
-| enable | Optional\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
 
 ### swipeAction
 
@@ -64,7 +85,7 @@ Sets the swipe action item displayed when the **ArcListItem** component is swipe
 
 | Name | Type                                                        | Mandatory| Description                   |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------- |
-| options | [Optional\<SwipeActionOptions>](ts-container-listitem.md#swipeactionoptions9) | No  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9)&gt;| Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
 
 ## Example
 
@@ -72,14 +93,15 @@ This example demonstrates the visual differences when auto-scaling is enabled or
 
 ```ts
 // xxx.ets
-import { LengthMetrics } from "@kit.ArkUI";
+import { LengthMetrics, CircleShape } from '@kit.ArkUI';
+// Starting from API version 22, you do not need to manually import ArcListAttribute and ArcListItemAttribute. For details, refer to the Modules to Import section of the ArcList and ArcListItem reference documents.
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct ArcListItemExample {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  private watchSize: string = '466px' // Default watch size: 466*466
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  private watchSize: string = '466px'; // Default watch size: 466 x 466
   private itemSize: string = '414px' // Item width
 
   @Builder
@@ -89,7 +111,7 @@ struct ArcListItemExample {
       }
       .width(this.watchSize)
       .height(this.watchSize)
-      .clip(new Circle({ width: '100%', height: '100%' }))
+      .clipShape(new CircleShape({ width: '100%', height: '100%' }))
       .backgroundColor(0x707070)
 
       ArcList({ initialIndex: 3}) {
@@ -102,7 +124,7 @@ struct ArcListItemExample {
               .backgroundColor(0x17A98D)
           }
           .autoScale(item % 3 == 0 || item % 5 == 0)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .space(LengthMetrics.px(10))
       .borderRadius(this.watchSize)
@@ -113,7 +135,7 @@ struct ArcListItemExample {
 
   build() {
     Column() {
-      this.buildList()
+      this.buildList();
     }
     .width('100%')
     .height('100%')

@@ -1011,6 +1011,6 @@ function foo1() : number {
 
 # 参考
 
-1. 《OpenHarmony JS通用编程规范》：[https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/OpenHarmony-JavaScript-coding-style-guide.md](https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/OpenHarmony-JavaScript-coding-style-guide.md)
+1. 《OpenHarmony JS通用编程规范》：[https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/OpenHarmony-JavaScript-coding-style-guide.md](https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/OpenHarmony-JavaScript-coding-style-guide.md)
 1. ESLint Rules：[https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules)
 1. 《高性能JavaScript》

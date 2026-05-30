@@ -16,7 +16,10 @@ HUKS提供了完备的密钥访问控制能力，以保证存储在HUKS中的密
 - 支持严格限制密钥的使用用途，如支持只允许AES密钥进行加密解密，只允许RSA密钥进行签名验签。
 
 > **说明：**
+>
 > <!--RP3-->轻量级设备<!--RP3End-->不支持用户身份认证访问控制功能。
+
+从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
 
 ## 使用场景及开发流程
 
@@ -84,9 +87,9 @@ HUKS提供了完备的密钥访问控制能力，以保证存储在HUKS中的密
 
   使用方式：HUKS 每次生成的Challenge为8字节，而传入UserIAM中的Challenge可扩展为32字节，因而支持一次授权4个密钥的访问。业务调用HUKS为每个密钥生成8字节的Challenge，而后将多个Challenge拼接为一个Challenge传入UserIAM进行认证。
 
-- **支持基于timestamp的访问控制**
+- **支持基于Timestamp的访问控制**
 
-  对于某些特殊场景，如高性能场景，支持基于timestamp的免Challenge实现。在生成密钥时设置超时时间，业务使用时直接请求UserIAM发起认证，而后将包含了timestamp的AuthToken传给HUKS，HUKS校验AuthToken后，对比当前时间与timestamp差值是否大于超时时间，从而判断密钥是否允许使用。
+  对于某些特殊场景，如高性能场景，支持基于Timestamp的免Challenge实现。在生成密钥时设置超时时间，业务使用时直接请求UserIAM发起认证，而后将包含了Timestamp的AuthToken传给HUKS，HUKS校验AuthToken后，对比当前时间与Timestamp差值是否大于超时时间，从而判断密钥是否允许使用。
 
 ## 用户身份认证和授权访问类型详细规格
 

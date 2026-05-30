@@ -1,5 +1,12 @@
 # @ohos.net.networkSecurity (网络安全校验)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 本模块提供网络安全校验能力。应用可以通过证书校验API完成证书校验功能。
 
 > **说明：**
@@ -12,11 +19,10 @@
 import { networkSecurity } from '@kit.NetworkKit';
 ```
 
-## 完整实例
+## 完整示例
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -61,17 +67,17 @@ networkSecurity.certVerification(cert, caCert)
 
 **系统能力**: SystemCapability.Communication.NetStack
 
-| 名称  | 类型                   | 必填      | 说明           |
-| ----- | --------------------- | --------- | -------------- |
-| type  | CertType              | 是      | 证书编码类型。  |
-| data  | string \| ArrayBuffer | 是       | 证书内容。      |
+| 名称  | 类型                   | 只读      |可选| 说明           |
+| ----- | --------------------- | --------- | ----|---------- |
+| type  | CertType              | 否    |否 |证书编码类型。  |
+| data  | string \| ArrayBuffer | 否    | 否|证书内容。      |
 
 
 ## networkSecurity.certVerification
 
 certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
-从证书管理获取系统预置的CA证书和用户安装的CA证书，对应用传入的证书进行校验。
+系统将使用证书管理中的预置CA证书和用户安装的CA证书来校验应用传入的证书。使用Promise异步回调。
 
 **系统能力**: SystemCapability.Communication.NetStack
 
@@ -121,7 +127,6 @@ certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert:networkSecurity.CertBlob = {
@@ -153,7 +158,7 @@ networkSecurity.certVerification(cert, caCert)
 
 certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
-从证书管理获取系统预置的CA证书和用户安装的CA证书，对应用传入的证书进行校验。
+系统将使用证书管理中的预置CA证书和用户安装的CA证书来校验应用传入的证书，使用同步方式返回。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -203,7 +208,6 @@ certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Create certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -262,7 +266,6 @@ isCleartextPermitted(): boolean
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let result: boolean = networkSecurity.isCleartextPermitted();
@@ -306,7 +309,6 @@ isCleartextPermittedByHostName(hostName: string): boolean
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let result: boolean = networkSecurity.isCleartextPermittedByHostName("xxx");

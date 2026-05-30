@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 OpenSL ES, short for Open Sound Library for Embedded Systems, is an embedded, cross-platform audio processing library that is free of charge. It provides high-performance and low-latency APIs for you to develop applications running on embedded mobile multimedia devices. OpenHarmony has implemented certain native APIs based on [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specifications developed by the [Khronos Group](https://www.khronos.org/). You can use these APIs through <OpenSLES.h\> and <OpenSLES_OpenHarmony.h\>.
 
@@ -14,13 +14,13 @@ OpenHarmony provides the OpenSL ES APIs for audio development at the native laye
 
 In SDK 10, OpenHarmony provides the OHAudio APIs, which open up all audio functions of the system. The OHAudio APIs cover all the capabilities provided by OpenSL ES in OpenHarmony. They also support new features such as audio focus events and low latency.
 
-For details about how to use the OHAudio APIs for audio development, see [Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md).
+For details about the OHAudio development guide, please refer to [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md).
 
-If you have used the OpenSL ES APIs in your code, you can switch them to the OHAudio APIs. For details, see [Switching from OpenSL ES to OHAudio (C/C++)](replace-opensles-by-ohaudio.md).
+For application developers who integrated with OpenHarmony at an early stage, we provide a reference comparison for [Switching from OpenSL ES to OHAudio (C/C++)](replace-opensles-by-ohaudio.md), to help you switch to using the new APIs in the latest version more quickly.
 
 ## OpenSL ES on OpenHarmony
 
-Currently, OpenHarmony implements parts of [OpenSL ES APIs](https://gitee.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h) to implement basic audio playback functionalities.
+Currently, OpenHarmony implements parts of [OpenSL ES APIs](https://gitcode.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h) to implement basic audio playback functionalities.
 
 If an API that has not been implemented on OpenHarmony is called, **SL_RESULT_FEATURE_UNSUPPORTED** is returned.
 

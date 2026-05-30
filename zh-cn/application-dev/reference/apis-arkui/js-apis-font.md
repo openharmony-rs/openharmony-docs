@@ -2,19 +2,19 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供注册自定义字体。
 
-> **说明**
+> **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](./arkts-apis-uicontext-uicontext.md)说明。
+> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](./arkts-apis-uicontext-uicontext.md)说明。
 >
-> 推荐使用字体引擎的[loadFontSync](../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口注册自定义字体。
+> - 推荐使用字体引擎的[loadFontSync](../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口注册自定义字体。
 
 ## 导入模块
 
@@ -32,9 +32,9 @@ registerFont(options: FontOptions): void
 
 > **说明：**
 >
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)获取[Font](arkts-apis-uicontext-font.md)实例，再通过此实例调用替代方法[registerFont](arkts-apis-uicontext-font.md#registerfont)。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[registerFont](arkts-apis-uicontext-font.md#registerfont)替代。registerFont需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取[Font](arkts-apis-uicontext-font.md)对象，然后通过该对象进行调用。且直接使用registerFont可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 >
-> 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -59,11 +59,11 @@ registerFont(options: FontOptions): void
 | familyName | string \| [Resource](arkui-ts/ts-types.md#resource)<sup>10+</sup> | 否  | 否  | 设置注册的字体名称。   |
 | familySrc  | string \| [Resource](arkui-ts/ts-types.md#resource)<sup>10+</sup> | 否  | 否  | 设置注册字体文件的路径。<br/>**说明：**<br/>读取系统沙箱路径内的资源时，建议使用file://路径前缀的字符串，需要确保沙箱目录路径下的文件存在并且有可读权限。 |
 
-**示例：**
-
-> **说明**
+> **说明：**
 >
 > 直接使用font可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用[UIContext](./arkts-apis-uicontext-uicontext.md)中的[getFont](./arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
+
+**示例：**
 
 ```ts
 // xxx.ets
@@ -134,7 +134,7 @@ struct FontExample {
 
 getSystemFontList(): Array\<string>
 
-获取风格字体列表。
+获取系统字体列表。
 
 该接口仅在PC/2in1设备上生效，在其他设备上返回空数组。
 
@@ -142,11 +142,13 @@ getSystemFontList(): Array\<string>
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)获取[Font](arkts-apis-uicontext-font.md)实例，再通过此实例调用替代方法[getSystemFontList](arkts-apis-uicontext-font.md#getsystemfontlist)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[getSystemFontList](arkts-apis-uicontext-font.md#getsystemfontlist)替代。getSystemFontList需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取[Font](arkts-apis-uicontext-font.md)对象，然后通过该对象进行调用。且直接使用getSystemFontList可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 >
-> 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,11 +158,11 @@ getSystemFontList(): Array\<string>
 | -------------------- | ----------------- |
 | Array\<string>       | 系统的字体名列表。  |
 
-**示例：**
-
-> **说明**
+> **说明：**
 >
 > 直接使用font可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
+
+**示例：**
 
 <!--deprecated_code_no_check-->
 
@@ -194,11 +196,13 @@ getFontByName(fontName: string): FontInfo
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)获取[Font](arkts-apis-uicontext-font.md)实例，再通过此实例调用替代方法[getFontByName](arkts-apis-uicontext-font.md#getfontbyname)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[getFontByName](arkts-apis-uicontext-font.md#getfontbyname)替代。getFontByName需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取[Font](arkts-apis-uicontext-font.md)对象，然后通过该对象进行调用。且直接使用getFontByName可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 >
-> 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -220,6 +224,8 @@ getFontByName(fontName: string): FontInfo
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称            | 类型    | 只读 | 可选  | 说明                       |
@@ -237,7 +243,7 @@ getFontByName(fontName: string): FontInfo
 
 **示例：**
 
-> **说明**
+> **说明：**
 >
 > 直接使用font可能导致实例不明确的问题，推荐通过使用[UIContext](./arkts-apis-uicontext-uicontext.md)中的[getFont](./arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
 
@@ -275,11 +281,16 @@ struct FontExample {
 ```
 
 ## font.getUIFontConfig<sup>11+</sup>
+
 getUIFontConfig() : UIFontConfig
 
-获取系统的UI字体配置。
+获取系统字体配置文件的UI字体配置信息。
+
+该接口仅支持获取配置文件内的信息以及当UI上下文不明确时可能返回undefined，如果想要获取全量的字体配置信息，推荐使用字体引擎的[getSystemFontFullNamesByType](../apis-arkgraphics2d/js-apis-graphics-text.md#textgetsystemfontfullnamesbytype14)接口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,6 +305,8 @@ getUIFontConfig() : UIFontConfig
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 | 名称            | 类型    | 只读 | 可选  | 说明                       |
 | -------------- | ------- | ------------------------- | ------- | ------------------------- |
@@ -306,6 +319,8 @@ getUIFontConfig() : UIFontConfig
 系统所支持的通用字体集列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 | 名称            | 类型    | 只读 | 可选  | 说明                       |
@@ -320,6 +335,8 @@ getUIFontConfig() : UIFontConfig
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 | 名称            | 类型    | 只读 | 可选  | 说明                       |
 | -------------- | ------- | ------------------------- | ------------------------- | ------------------------- |
@@ -331,6 +348,8 @@ getUIFontConfig() : UIFontConfig
 别名列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 | 名称            | 类型    | 只读 | 可选  | 说明                       |
@@ -344,6 +363,8 @@ getUIFontConfig() : UIFontConfig
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 | 名称            | 类型    | 只读 | 可选  | 说明                       |
 | -------------- | ------- | ------- | ------------------------- | ------------------------- |
@@ -355,6 +376,8 @@ getUIFontConfig() : UIFontConfig
 该字体集的备用字体。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 | 名称            | 类型    | 只读 | 可选  | 说明                       |

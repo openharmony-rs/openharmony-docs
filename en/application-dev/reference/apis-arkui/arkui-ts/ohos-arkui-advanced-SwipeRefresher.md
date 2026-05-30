@@ -1,18 +1,26 @@
 # SwipeRefresher
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The swipe refresher is a component used to obtain and load content, typically with a pull-down gesture.
 
 > **NOTE**
 >
-> This component and its child components are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component and its child components are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This component is not supported on wearables.
+> - This component can be used only in the stage model.
+>
+> - If the **SwipeRefresher** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SwipeRefresher** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SwipeRefresher** component.
 
 
 ## Modules to Import
 
-```
+```ts
 import { SwipeRefresher } from '@kit.ArkUI';
 ```
 
@@ -21,13 +29,11 @@ import { SwipeRefresher } from '@kit.ArkUI';
 
 Not supported
 
-## Attributes
-The [universal attributes](ts-component-general-attributes.md) are not supported.
-
-
 ## SwipeRefresher
 
 SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
+
+Implements the pull-down refresh feature. When a user pulls down the page, it triggers a content loading operation, fetching new content from the data source and dynamically displaying it on the page.
 
 **Decorator**: @Component
 
@@ -35,12 +41,12 @@ SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name| Type| Mandatory| Decorator| Description                                                                |
 | -------- | -------- | -------- | -------- |--------------------------------------------------------------------|
 | content | [ResourceStr](ts-types.md#resourcestr) | No| @Prop | Text displayed when the content is loaded.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated. The Resource type is supported since API version 20.  |
-| isLoading | boolean | Yes | \@Prop | Whether content is being loaded.<br> The value **true** means that content is being loaded,<br> and **false** means the opposite.|
+| isLoading | boolean | Yes| \@Prop | Whether content is being loaded.<br> **true**: yes<br>**false**: no|
 
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.
@@ -72,4 +78,4 @@ struct Index {
 }
 ```
 
-![Snipaste_2023-07-24_11-35-40](figures/Snipaste_2023-07-24_11-35-40.gif)
+

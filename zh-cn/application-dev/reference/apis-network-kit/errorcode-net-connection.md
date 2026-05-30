@@ -129,3 +129,57 @@ The number of requests exceeded the maximum allowed.
 1.建议通过日志信息“Over the max request number”定位问题。
 
 2.使用完NetConnection.register接口后，及时调用unregister接口取消注册。
+
+## 2100301 调用方身份验证不通过（非VPN应用）
+
+**错误信息**
+
+Incorrect usage in non-VPN application.
+
+**错误描述**
+
+接口调用方不是VPN应用。
+
+**可能原因**
+
+接口调用方不是VPN应用。
+
+**处理步骤**
+
+确保在VPN应用中调用接口。
+
+## 2100400 传入网卡名不正确（非以太网）
+
+**错误信息**
+
+The input network interface is incorrect.
+
+**错误描述**
+
+接口调用传入的网卡名不正确。
+
+**可能原因**
+
+接口调用传入的网卡名不是eth0等以太网网卡名。
+
+**处理步骤**
+
+确保传入的网卡名为eth0等以太网网卡名。
+
+## 2100401 未找到VLAN上配置的IP地址
+
+**错误信息**
+
+The input ip address not found.
+
+**错误描述**
+
+未找到传入的IP地址。
+
+**可能原因**
+
+未在VLAN上找到传入的IP地址。
+
+**处理步骤**
+
+确保传入的IP地址已配置在VLAN上。

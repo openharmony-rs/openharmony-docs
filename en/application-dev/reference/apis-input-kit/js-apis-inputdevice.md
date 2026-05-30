@@ -1,12 +1,18 @@
 # @ohos.multimodalInput.inputDevice (Input Device)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @zhang_yixin13-->
 
 The inputDevice module implements input device management functions such as listening for the connection and disconnection of input devices and querying input device information such as the device name.
 
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -41,16 +47,30 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  inputDevice.getDeviceList((error: Error, ids: Array<Number>) => {
-    if (error) {
-      console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
-      return;
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.getDeviceList((error: BusinessError, ids: Array<number>) => {
+              if (error) {
+                console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                return;
+              }
+              console.info(`Device id list: ${JSON.stringify(ids)}`);
+            });
+          } catch (error) {
+            console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
     }
-    console.log(`Device id list: ${JSON.stringify(ids)}`);
-  });
-} catch (error) {
-  console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  }
 }
 ```
 
@@ -66,17 +86,33 @@ Obtains the IDs of all input devices. This API uses a promise to return the resu
 
 | Type                              | Description                                       |
 | ---------------------------------- | ------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the IDs of all input devices.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the IDs of all input devices. **id** is the unique ID of an input device.|
 
 **Example**
 
 ```js
-try {
-  inputDevice.getDeviceList().then((ids: Array<Number>) => {
-    console.log(`Device id list: ${JSON.stringify(ids)}`);
-  });
-} catch (error) {
-  console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.getDeviceList().then((ids: Array<number>) => {
+              console.info(`Device id list: ${JSON.stringify(ids)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            });
+          } catch (error) {
+            console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -92,8 +128,8 @@ Obtains information about the specified input device. This API uses an asynchron
 
 | Name    | Type                                                    | Mandatory| Description                                   |
 | -------- | -------------------------------------------------------- | ---- | --------------------------------------- |
-| deviceId | number                                                   | Yes  | ID of the input device.                 |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | Yes  | Callback used to return information about the input device, including device ID, name, supported source, physical address, version information, and product information.|
+| deviceId | number                                                   | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.                 |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | Yes  | Callback used to return information about the input device, including the device ID, name, supported source, physical address, version information, and product information.|
 
 **Error codes**
 
@@ -106,17 +142,31 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-// Obtain the name of the device whose ID is 1.
-try {
-  inputDevice.getDeviceInfo(1, (error: Error, deviceData: inputDevice.InputDeviceData) => {
-    if (error) {
-      console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
-      return;
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Obtain the name of the device whose ID is 1.
+          try {
+            inputDevice.getDeviceInfo(1, (error: BusinessError, deviceData: inputDevice.InputDeviceData) => {
+              if (error) {
+                console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                return;
+              }
+              console.info(`Device info: ${JSON.stringify(deviceData)}`);
+            });
+          } catch (error) {
+            console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
     }
-    console.log(`Device info: ${JSON.stringify(deviceData)}`);
-  });
-} catch (error) {
-  console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  }
 }
 ```
 
@@ -132,13 +182,13 @@ Obtains the information about the input device with the specified ID. This API u
 
 | Name    | Type  | Mandatory| Description                  |
 | -------- | ------ | ---- | ---------------------- |
-| deviceId | number | Yes  | ID of the input device.|
+| deviceId | number | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
 
 **Return value**
 
 | Type                                              | Description                           |
 | -------------------------------------------------- | ------------------------------- |
-| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise used to return the information about the input device.|
+| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise used to return information about the input device, including device ID, name, supported source, physical address, version information, and product information.|
 
 **Error codes**
 
@@ -151,13 +201,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-// Obtain the name of the device whose ID is 1.
-try {
-  inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
-    console.log(`Device info: ${JSON.stringify(deviceData)}`);
-  });
-} catch (error) {
-  console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Obtain the name of the device whose ID is 1.
+          try {
+            inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
+              console.info(`Device info: ${JSON.stringify(deviceData)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get device info failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            });
+          } catch (error) {
+            console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -173,13 +239,13 @@ Obtains information about the specified input device.
 
 | Name    | Type  | Mandatory| Description                  |
 | -------- | ------ | ---- | ---------------------- |
-| deviceId | number | Yes  | ID of the input device.|
+| deviceId | number | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
 
 **Return value**
 
 | Type                                              | Description                           |
 | -------------------------------------------------- | ------------------------------- |
-| [InputDeviceData](#inputdevicedata) | Information about the input device, including device ID, name, supported source, physical address, version information, and product information.|
+| [InputDeviceData](#inputdevicedata) | Information about the input device, including the device ID, name, supported source, physical address, version information, and product information.|
 
 **Error codes**
 
@@ -192,20 +258,33 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-// Obtain the name of the device whose ID is 1.
-try {
-  let deviceData: inputDevice.InputDeviceData = inputDevice.getDeviceInfoSync(1);
-  console.log(`Device info: ${JSON.stringify(deviceData)}`);
-} catch (error) {
-  console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Obtain the name of the device whose ID is 1.
+          try {
+            let deviceData: inputDevice.InputDeviceData = inputDevice.getDeviceInfoSync(1);
+            console.info(`Device info: ${JSON.stringify(deviceData)}`);
+          } catch (error) {
+            console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
-## inputDevice.on<sup>9+</sup>
+## inputDevice.on('change')<sup>9+</sup>
 
 on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
-Enables listening for device hot swap events. When performing this operation, you need to connect to external devices such as a mouse, keyboard, and touchscreen.
+Enables listening for device hot swap events. When performing this operation, you need to connect to external devices such as a mouse, keyboard, and touchscreen. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -227,32 +306,73 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-let isPhysicalKeyboardExist = true;
-try {
-  inputDevice.on("change", (data: inputDevice.DeviceListener) => {
-    console.log(`Device event info: ${JSON.stringify(data)}`);
-    inputDevice.getKeyboardType(data.deviceId, (err: Error, type: inputDevice.KeyboardType) => {
-      console.log("The keyboard type is: " + type);
-      if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'add') {
-        // The physical keyboard is connected.
-        isPhysicalKeyboardExist = true;
-      } else if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'remove') {
-        // The physical keyboard is disconnected.
-        isPhysicalKeyboardExist = false;
+import { inputDevice } from '@kit.InputKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  @State isPhysicalKeyboardExist: boolean = false;
+  @State message: string = "Click to obtain the device list and monitor device hot-plug events";
+  keyboards: Map<number, inputDevice.KeyboardType> = new Map();
+
+  build() {
+    RelativeContainer() {
+      Column() {
+        Text(this.message)
+          .onClick(() => {
+            try {
+              // 1. Obtain the list of input devices and check whether a physical keyboard is connected.
+              inputDevice.getDeviceList().then(data => {
+                for (let i = 0; i < data.length; ++i) {
+                  inputDevice.getKeyboardType(data[i]).then(type => {
+                    if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
+                      // The physical keyboard is connected.
+                      this.isPhysicalKeyboardExist = true;
+                      this.keyboards.set(data[i], type);
+                    }
+                  });
+                }
+              });
+              // 2. Listen for device hot-swap events.
+              inputDevice.on("change", (data) => {
+                hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
+                inputDevice.getKeyboardType(data.deviceId).then((type) => {
+                  hilog.info(DOMAIN, 'InputDevice', 'The keyboard type is: %{public}d', type);
+                  if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type === 'add') {
+                    // The physical keyboard is inserted.
+                    this.isPhysicalKeyboardExist = true;
+                    this.keyboards.set(data.deviceId, type);
+                  }
+                });
+                if (this.keyboards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
+                  data.type === 'remove') {
+                  // The physical keyboard is removed.
+                  this.isPhysicalKeyboardExist = false;
+                  this.keyboards.delete(data.deviceId);
+                }
+              });
+              this.message = "Device monitoring enabled successfully"
+            } catch (error) {
+              hilog.error(DOMAIN, 'InputDevice', `Execute failed, error: %{public}s`,
+                JSON.stringify(error, ["code", "message"]));
+              this.message = `Failed to enable device monitoring. Click to retry. Error message:${JSON.stringify(error,
+                ["code", "message"])}`
+            }
+          })
       }
-    });
-  });
-  // Check whether the soft keyboard is open based on the value of isPhysicalKeyboardExist.
-} catch (error) {
-  console.error(`Get device info failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    }
+  }
 }
 ```
 
-## inputDevice.off<sup>9+</sup>
+## inputDevice.off('change')<sup>9+</sup>
 
 off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
-Disables listening for device hot swap events. This API is called before the application exits.
+Disables listening for device hot swap events. This API is called before the application exits. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -274,28 +394,41 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-let callback = (data: inputDevice.DeviceListener) => {
-  console.log(`Report device event info: ${JSON.stringify(data, [`type`, `deviceId`])}`);
-};
+import { inputDevice } from '@kit.InputKit';
 
-try {
-  inputDevice.on("change", callback);
-} catch (error) {
-  console.error(`Listen device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let callback = (data: inputDevice.DeviceListener) => {
+            console.info(`Report device event info: ${JSON.stringify(data, [`type`, `deviceId`])}`);
+          };
 
-// Disable this listener.
-try {
-  inputDevice.off("change", callback);
-} catch (error) {
-  console.error(`Cancel listening device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
+          try {
+            inputDevice.on("change", callback);
+          } catch (error) {
+            console.error(`Listen device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
 
-// Disable all listeners.
-try {
-  inputDevice.off("change");
-} catch (error) {
-  console.error(`Cancel all listening device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          // Disable this listener.
+          try {
+            inputDevice.off("change", callback);
+          } catch (error) {
+            console.error(`Cancel listening device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+
+          // Disable all listeners.
+          try {
+            inputDevice.off("change");
+          } catch (error) {
+            console.error(`Cancel all listening device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -305,7 +438,9 @@ getDeviceIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 Obtains the IDs of all input devices. This API uses an asynchronous callback to return the result.
 
-> This API is deprecated since API version 9. You are advised to use [inputDevice.getDeviceList](#inputdevicegetdevicelist9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. Use [inputDevice.getDeviceList](#inputdevicegetdevicelist9) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -313,18 +448,32 @@ Obtains the IDs of all input devices. This API uses an asynchronous callback to 
 
 | Name    | Type                                    | Mandatory| Description                                    |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the IDs of all input devices.|
+| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the IDs of all input devices. **id** is the unique ID of an input device.|
 
 **Example**
 
 ```js
-inputDevice.getDeviceIds((error: Error, ids: Array<Number>) => {
-  if (error) {
-    console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
-    return;
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          inputDevice.getDeviceIds((error: BusinessError, ids: Array<number>) => {
+            if (error) {
+              console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              return;
+            }
+            console.info(`Device id list: ${JSON.stringify(ids)}`);
+          });
+        })
+    }
   }
-  console.log(`Device id list: ${JSON.stringify(ids)}`);
-});
+}
 ```
 
 ## inputDevice.getDeviceIds<sup>(deprecated)</sup>
@@ -333,7 +482,9 @@ getDeviceIds(): Promise&lt;Array&lt;number&gt;&gt;
 
 Obtains the IDs of all input devices. This API uses a promise to return the result.
 
-> This API is deprecated since API version 9. You are advised to use [inputDevice.getDeviceList](#inputdevicegetdevicelist9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. Use [inputDevice.getDeviceList](#inputdevicegetdevicelist9) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -341,14 +492,30 @@ Obtains the IDs of all input devices. This API uses a promise to return the resu
 
 | Type                              | Description                                       |
 | ---------------------------------- | ------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the IDs of all input devices.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the IDs of all input devices. **id** is the unique ID of an input device.|
 
 **Example**
 
 ```js
-inputDevice.getDeviceIds().then((ids: Array<Number>) => {
-  console.log(`Device id list: ${JSON.stringify(ids)}`);
-});
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          inputDevice.getDeviceIds().then((ids: Array<number>) => {
+            console.info(`Device id list: ${JSON.stringify(ids)}`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          })
+        })
+    }
+  }
+}
 ```
 
 ## inputDevice.getDevice<sup>(deprecated)</sup>
@@ -357,7 +524,9 @@ getDevice(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): voi
 
 Obtains the information about the input device with the specified ID. This API uses an asynchronous callback to return the result.
 
-> This API is deprecated since API version 9. You are advised to use [inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. Use [inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -365,20 +534,34 @@ Obtains the information about the input device with the specified ID. This API u
 
 | Name    | Type                                                    | Mandatory| Description                            |
 | -------- | -------------------------------------------------------- | ---- | -------------------------------- |
-| deviceId | number                                                   | Yes  | ID of the input device.                    |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | Yes  | Callback used to return the information about the input device.|
+| deviceId | number                                                   | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.                    |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | Yes  | Callback used to return information about the input device, including device ID, name, supported source, physical address, version information, and product information.|
 
 **Example**
 
 ```js
-// Obtain the name of the device whose ID is 1.
-inputDevice.getDevice(1, (error: Error, deviceData: inputDevice.InputDeviceData) => {
-  if (error) {
-    console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
-    return;
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Obtain the name of the device whose ID is 1.
+          inputDevice.getDevice(1, (error: BusinessError, deviceData: inputDevice.InputDeviceData) => {
+            if (error) {
+              console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              return;
+            }
+            console.info(`Device info: ${JSON.stringify(deviceData)}`);
+          });
+        })
+    }
   }
-  console.log(`Device info: ${JSON.stringify(deviceData)}`);
-});
+}
 ```
 
 ## inputDevice.getDevice<sup>(deprecated)</sup>
@@ -387,7 +570,9 @@ getDevice(deviceId: number): Promise&lt;InputDeviceData&gt;
 
 Obtains the information about the input device with the specified ID. This API uses a promise to return the result.
 
-> This API is deprecated since API version 9. You are advised to use [inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. Use [inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -395,21 +580,37 @@ Obtains the information about the input device with the specified ID. This API u
 
 | Name    | Type  | Mandatory| Description        |
 | -------- | ------ | ---- | ------------ |
-| deviceId | number | Yes  | ID of the input device.|
+| deviceId | number | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
 
 **Return value**
 
 | Type                                              | Description                               |
 | -------------------------------------------------- | ----------------------------------- |
-| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise used to return the information about the input device.|
+| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise used to return information about the input device, including device ID, name, supported source, physical address, version information, and product information.|
 
 **Example**
 
 ```js
-// Obtain the name of the device whose ID is 1.
-inputDevice.getDevice(1).then((deviceData: inputDevice.InputDeviceData) => {
-  console.log(`Device info: ${JSON.stringify(deviceData)}`);
-});
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Obtain the name of the device whose ID is 1.
+          inputDevice.getDevice(1).then((deviceData: inputDevice.InputDeviceData) => {
+            console.info(`Device info: ${JSON.stringify(deviceData)}`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          })
+        })
+    }
+  }
+}
 ```
 
 ## inputDevice.supportKeys<sup>9+</sup>
@@ -424,8 +625,8 @@ Checks whether the input device supports the specified keys. This API uses an as
 
 | Name    | Type                                     | Mandatory| Description                                                  |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------ |
-| deviceId | number                                    | Yes  | ID of the input device. The device ID changes if the same physical device is repeatedly removed and inserted.|
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode)  | Yes  | Keycodes to be queried. A maximum of five keycodes can be specified.               |
+| deviceId | number                                    | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt;  | Yes  | Keys to be queried. A maximum of five keys can be specified.               |
 | callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | Yes  | Callback used to return the result.                          |
 
 **Error codes**
@@ -439,13 +640,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-// Check whether the input device whose ID is 1 supports keycodes 17, 22, and 2055.
-try {
-  inputDevice.supportKeys(1, [17, 22, 2055], (error: Error, supportResult: Array<Boolean>) => {
-    console.log(`Query result: ${JSON.stringify(supportResult)}`);
-  });
-} catch (error) {
-  console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Check whether the input device whose ID is 1 supports keys 17, 22, and 2055.
+          try {
+            inputDevice.supportKeys(1, [17, 22, 2055], (error: BusinessError, supportResult: Array<Boolean>) => {
+              console.info(`Query result: ${JSON.stringify(supportResult)}`);
+            });
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -461,8 +676,8 @@ Checks whether the input device supports the specified keys. This API uses a pro
 
 | Name    | Type                | Mandatory| Description                                                  |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
-| deviceId | number               | Yes  | ID of the input device. The device ID changes if the same physical device is repeatedly removed and inserted.|
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | Yes  | Keycodes to be queried. A maximum of five keycodes can be specified.               |
+| deviceId | number               | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt; | Yes  | Keys to be queried. A maximum of five keys can be specified.               |
 
 **Return value**
 
@@ -481,13 +696,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-// Check whether the input device whose ID is 1 supports keycodes 17, 22, and 2055.
-try {
-  inputDevice.supportKeys(1, [17, 22, 2055]).then((supportResult: Array<Boolean>) => {
-    console.log(`Query result: ${JSON.stringify(supportResult)}`);
-  });
-} catch (error) {
-  console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Check whether the input device whose ID is 1 supports keys 17, 22, and 2055.
+          try {
+            inputDevice.supportKeys(1, [17, 22, 2055]).then((supportResult: Array<Boolean>) => {
+              console.info(`Query result: ${JSON.stringify(supportResult)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Query support Keys failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            });
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -503,8 +734,8 @@ Checks whether the input device supports the specified keys.
 
 | Name    | Type                | Mandatory| Description                                                  |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
-| deviceId | number               | Yes  | ID of the input device. The device ID changes if the same physical device is repeatedly removed and inserted.|
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | Yes  | Keycodes to be queried. A maximum of five keycodes can be specified.               |
+| deviceId | number               | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt; | Yes  | Keys to be queried. A maximum of five keys can be specified.               |
 
 **Return value**
 
@@ -523,12 +754,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-// Check whether the input device whose ID is 1 supports keycodes 17, 22, and 2055.
-try {
-  let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, [17, 22, 2055])
-  console.log(`Query result: ${JSON.stringify(supportResult)}`)
-} catch (error) {
-  console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`)
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Check whether the input device whose ID is 1 supports keys 17, 22, and 2055.
+          try {
+            let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, [17, 22, 2055])
+            console.info(`Query result: ${JSON.stringify(supportResult)}`)
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`)
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -544,7 +788,7 @@ Obtains the keyboard type of the input device, such as full keyboard and numeric
 
 | Name    | Type                                               | Mandatory| Description                                                        |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| deviceId | number                                              | Yes  | Unique ID of the input device. If the same physical device is repeatedly reinstalled or restarted, its ID may change.|
+| deviceId | number                                              | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
 | callback | AsyncCallback&lt;[KeyboardType](#keyboardtype9)&gt; | Yes  | Callback used to return the result.                                |
 
 **Error codes**
@@ -558,17 +802,31 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-// Query the keyboard type of the input device whose ID is 1.
-try {
-  inputDevice.getKeyboardType(1, (error: Error, type: Number) => {
-    if (error) {
-      console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
-      return;
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Query the keyboard type of the input device whose ID is 1.
+          try {
+            inputDevice.getKeyboardType(1, (error: BusinessError, type: inputDevice.KeyboardType) => {
+              if (error) {
+                console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                return;
+              }
+              console.info(`Keyboard type: ${JSON.stringify(type)}`);
+            });
+          } catch (error) {
+            console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
     }
-    console.log(`Keyboard type: ${JSON.stringify(type)}`);
-  });
-} catch (error) {
-  console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  }
 }
 ```
 
@@ -584,7 +842,7 @@ Obtains the keyboard type of an input device. This API uses a promise to return 
 
 | Name   | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| deviceId | number | Yes  | Unique ID of the input device. If the same physical device is repeatedly reinstalled or restarted, its ID may change.|
+| deviceId | number | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
 
 **Return value**
 
@@ -603,13 +861,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-// Query the keyboard type of the input device whose ID is 1.
-try {
-  inputDevice.getKeyboardType(1).then((type: Number) => {
-    console.log(`Keyboard type: ${JSON.stringify(type)}`);
-  });
-} catch (error) {
-  console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Query the keyboard type of the input device whose ID is 1.
+          try {
+            inputDevice.getKeyboardType(1).then((type: inputDevice.KeyboardType) => {
+              console.info(`Keyboard type: ${JSON.stringify(type)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get keyboard type failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
+          } catch (error) {
+            console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -625,7 +899,7 @@ Obtains the keyboard type of the input device.
 
 | Name    | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| deviceId | number | Yes  | Unique ID of the input device. If the same physical device is repeatedly reinstalled or restarted, its ID may change.|
+| deviceId | number | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
 
 **Return value**
 
@@ -644,12 +918,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-// Query the keyboard type of the input device whose ID is 1.
-try {
-  let type: number = inputDevice.getKeyboardTypeSync(1)
-  console.log(`Keyboard type: ${JSON.stringify(type)}`)
-} catch (error) {
-  console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`)
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Query the keyboard type of the input device whose ID is 1.
+          try {
+            let type: inputDevice.KeyboardType = inputDevice.getKeyboardTypeSync(1)
+            console.info(`Keyboard type: ${JSON.stringify(type)}`)
+          } catch (error) {
+            console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`)
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -686,13 +973,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputDevice.isFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK).then((state: boolean) => {
-    console.log(`capslock state: ${JSON.stringify(state)}`);
-  });
-} catch (error) {
-  console.error(`Failed to get capslock state, error: ${JSON.stringify(error, [`code`, `message`])}`);
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.isFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK).then((state: boolean) => {
+              console.info(`capslock state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get capslock state failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
+          } catch (error) {
+            console.error(`Failed to get capslock state, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -713,6 +1014,12 @@ Specifies whether to enable a function key (for example, **CapsLock**). This API
 | functionKey | [FunctionKey](#functionkey15) | Yes  | Type of the function key.|
 | enabled  | boolean | Yes  | Status of the function key. The value **true** indicates that the function key is enabled, and the value **false** indicates the opposite.|
 
+**Return value**
+
+| Type                  | Description                                                        |
+| ---------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Device Error Codes](errorcode-inputdevice.md).
@@ -731,14 +1038,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputDevice.setFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK, true).then(() => {
-    console.info(`Set capslock state success`);
-  }).catch((error: BusinessError) => {
-    console.error(`Set capslock state failed, error=${JSON.stringify(error)}`);
-  });
-} catch (error) {
-    console.error(`Set capslock enable error`);
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK, true).then(() => {
+              console.info(`Set capslock state success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set capslock state failed, error=${JSON.stringify(error)}`);
+            });
+          } catch (error) {
+            console.error(`Set capslock enable error`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -752,16 +1070,32 @@ Obtains the interval (including the device sleep time) elapsed since the last sy
 
 **Return value**
 
-| Parameters                                         | Description                           |
+| Type                                         | Description                           |
 | --------------------------------------------- | ------------------------------- |
 | Promise&lt;number&gt; | Promise used to return the interval since the last system input event, in μs.|
 
 **Example**
 
 ```js
-  inputDevice.getIntervalSinceLastInput().then((timeInterval: number) => {
-    console.log(`Interval since last input: ${JSON.stringify(timeInterval)}`);
-  });
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          inputDevice.getIntervalSinceLastInput().then((timeInterval: number) => {
+            console.info(`Interval since last input: ${JSON.stringify(timeInterval)}`);
+          }).catch((error: BusinessError) => {
+            console.error(`Get interval since last input failed, error: ${JSON.stringify(error)}`);
+          })
+        })
+    }
+  }
+}
 ```
 
 ## DeviceListener<sup>9+</sup>
@@ -770,10 +1104,10 @@ Provides hot swap information about an input device.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
-| Name       | Type  | Readable  | Writable  | Description     |
+| Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| type     | [ChangedType](#changedtype9)| Yes| No| Device change type, which indicates whether an input device is inserted or removed.|
-| deviceId | number                      | Yes| No| Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
+| type     | [ChangedType](#changedtype9)| No| No| Device change type, which indicates whether an input device is inserted or removed.|
+| deviceId | number                      | No| No| Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
 
 ## InputDeviceData
 
@@ -781,18 +1115,21 @@ Provides information about an input device.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
-| Name       | Type  | Readable  | Writable  | Description     |
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
+| Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| id                   | number                                 | Yes| No| Unique ID of the input device. If the same physical device is repeatedly reinstalled or restarted, its ID may change.|
-| name                 | string                                 | Yes| No| Name of the input device.                                            |
-| sources              | Array&lt;[SourceType](#sourcetype9)&gt; | Yes| No| Input sources supported by the input device. An input device can have multiple input sources. For example, if a keyboard is equipped with a touchpad, the input device supports both keyboard and touchpad input capabilities.|
-| axisRanges           | Array&lt;[AxisRange](#axisrange)&gt;  | Yes| No| Axis information of the input device.                                          |
-| bus<sup>9+</sup>     | number                                 | Yes| No| Bus type of the input device. By default, the bus type reported by the input device prevails.            |
-| product<sup>9+</sup> | number                                 | Yes| No| Product information of the input device.                                        |
-| vendor<sup>9+</sup>  | number                                 | Yes| No| Vendor information of the input device.                                        |
-| version<sup>9+</sup> | number                                 | Yes| No| Version information of the input device.                                        |
-| phys<sup>9+</sup>    | string                                 | Yes| No| Physical address of the input device.                                        |
-| uniq<sup>9+</sup>    | string                                 | Yes| No| Unique ID of the input device.                                        |
+| id                   | number                                 | No| No| Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
+| name                 | string                                 | No| No| Name of the input device.                                            |
+| sources              | Array&lt;[SourceType](#sourcetype9)&gt; | No| No| Input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.|
+| axisRanges           | Array&lt;[AxisRange](#axisrange)&gt;  | No| No| Axis information of the input device.                                          |
+| bus<sup>9+</sup>     | number                                 | No| No| Bus type of the input device. By default, the bus type reported by the input device prevails.            |
+| product<sup>9+</sup> | number                                 | No| No| Product information of the input device.                                        |
+| vendor<sup>9+</sup>  | number                                 | No| No| Vendor information of the input device.                                        |
+| version<sup>9+</sup> | number                                 | No| No| Version information of the input device.                                        |
+| phys<sup>9+</sup>    | string                                 | No| No| Physical address of the input device.                                        |
+| uniq<sup>9+</sup>    | string                                 | No| No| Unique ID of the input device.                                        |
+| isVirtual<sup>23+</sup>    | boolean                                 | No| Yes| Whether the input device is a virtual device.<br>The value **true** indicates that the device is a virtual device, and the value **false** indicates that the device is a non-virtual device.                                     |
+| isLocal<sup>23+</sup>    | boolean                                 | No| Yes| Whether the input device is a local device.<br>The value **true** indicates that the device is a local device, and the value **false** indicates that the device is a non-local device.                                      |
 
 ## AxisType<sup>9+</sup>
 
@@ -820,21 +1157,21 @@ Defines the axis range of an input device.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
-| Name       | Type  | Readable  | Writable  | Description     |
+| Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| source                  | [SourceType](#sourcetype9) | Yes| No| Input source of the axis.|
-| axis                    | [AxisType](#axistype9)    | Yes| No| Axis type.   |
-| max                     | number                    | Yes| No| Maximum value of the axis.  |
-| min                     | number                    | Yes| No| Minimum value of the axis.  |
-| fuzz<sup>9+</sup>       | number                    | Yes| No| Fuzzy value of the axis.  |
-| flat<sup>9+</sup>       | number                    | Yes| No| Benchmark value of the axis.  |
-| resolution<sup>9+</sup> | number                    | Yes| No| Resolution of the axis.  |
+| source                  | [SourceType](#sourcetype9) | No| No| Input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.|
+| axis                    | [AxisType](#axistype9)    | No| No| Axis type of an input device.   |
+| max                     | number                    | No| No| Maximum value of the axis.  |
+| min                     | number                    | No| No| Minimum value of the axis.  |
+| fuzz<sup>9+</sup>       | number                    | No| No| Fuzzy value of the axis.  |
+| flat<sup>9+</sup>       | number                    | No| No| Benchmark value of the axis.  |
+| resolution<sup>9+</sup> | number                    | No| No| Resolution of the axis.  |
 
 ## SourceType<sup>9+</sup>
 
 type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick' | 'trackball'
 
-Enumerates input sources of the axis. For example, if a mouse reports an x-axis event, the input source of the x-axis is the mouse.
+Input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 

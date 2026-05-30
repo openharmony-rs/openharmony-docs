@@ -7,9 +7,13 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_KeyMaterialDh {...}
+```
+
 ## 概述
 
-定义Dh密钥的结构体类型。
+定义DH密钥的结构体类型。
 
 **起始版本：** 9
 
@@ -24,7 +28,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | 密钥的算法类型。 |
-| uint32_t keySize | Dh密钥的长度。 |
+| uint32_t keySize | DH密钥的长度。 |
 | uint32_t pubKeySize | 公钥的长度。 |
 | uint32_t priKeySize | 私钥的长度。 |
 | uint32_t reserved | 保留。 |

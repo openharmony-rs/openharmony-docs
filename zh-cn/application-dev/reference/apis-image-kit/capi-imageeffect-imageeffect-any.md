@@ -4,7 +4,12 @@
 <!--Owner: @zyj208-->
 <!--Designer: @wangshoucheng-->
 <!--Tester: @gengfei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct ImageEffect_Any {...} ImageEffect_Any
+```
+
 ## 概述
 
 参数结构体。
@@ -18,10 +23,15 @@
 ## 汇总
 
 ### 成员变量
-
+**支持C++语言语法的声明如下：**
 | 名称 | 描述 |
 | -- | -- |
 | [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype) dataType = [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype)::EFFECT_DATA_TYPE_UNKNOWN | 参数类型，默认为未定义类型。 |
 | [ImageEffect_DataValue](capi-imageeffect-imageeffect-datavalue.md) dataValue = { 0 } | 参数值，默认为空。 |
 
+**支持C语言语法的声明如下：**
+| 名称 | 描述 |
+| -- | -- |
+| [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype) dataType  | 参数类型。|
+| [ImageEffect_DataValue](capi-imageeffect-imageeffect-datavalue.md) dataValue  | 参数值。|
 

@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ExtensionRunningInfo模块封装了Extension运行的相关信息，可以通过[getExtensionRunningInfos接口](js-apis-app-ability-abilityManager-sys.md#getextensionrunninginfos)获取。
 

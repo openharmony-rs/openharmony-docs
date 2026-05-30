@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 slider为滑动条组件，用来快速调节音量、亮度等。具体用法请参考[slider](../reference/apis-arkui/arkui-js/js-components-basic-slider.md)。
@@ -172,8 +172,8 @@ export default {
   <image src="common/landscape3.jpg" style=" width: {{WidthVal}}px;height:{{HeightVal}}px;margin-top: -150px;"></image>
   <div class="txt">
     <slider min="0" max="100" value="{{value}}" onchange="setValue"></slider>
-    <text>The width of this picture is    {{WidthVal}}</text>
-    <text>The height of this picture is  {{HeightVal}}</text>
+    <text>The width of this picture is {{WidthVal}}</text>
+    <text>The height of this picture is {{HeightVal}}</text>
   </div>
 </div>
 ```
@@ -224,6 +224,6 @@ export default{
 
 针对slider开发，有以下相关实例可供参考：
 
-- [slider组件的使用（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/JSUI/SliderApplication)
+- [slider组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/SliderApplication)
 
-- [简易视频播放器（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)
+- [简易视频播放器（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)

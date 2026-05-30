@@ -1,0 +1,22 @@
+| 操作 | 旧版本 | 新版本 | d.ts文件 |
+| ---- | ------ | ------ | -------- |
+|删除错误码|类名：AudioStreamManager；<br>API声明：off(type: 'audioRendererChange'): void;<br>差异内容：401|类名：AudioStreamManager；<br>API声明：off(type: 'audioRendererChange', callback?: Callback\<AudioRendererChangeInfoArray>): void;<br>差异内容：NA|api/@ohos.multimedia.audio.d.ts|
+|删除错误码|类名：AudioStreamManager；<br>API声明：off(type: 'audioCapturerChange'): void;<br>差异内容：401|类名：AudioStreamManager；<br>API声明：off(type: 'audioCapturerChange', callback?: Callback\<AudioCapturerChangeInfoArray>): void;<br>差异内容：NA|api/@ohos.multimedia.audio.d.ts|
+|函数变更|类名：AudioStreamManager；<br>API声明：off(type: 'audioRendererChange'): void;<br>差异内容：NA|类名：AudioStreamManager；<br>API声明：off(type: 'audioRendererChange', callback?: Callback\<AudioRendererChangeInfoArray>): void;<br>差异内容：callback?: Callback\<AudioRendererChangeInfoArray>|api/@ohos.multimedia.audio.d.ts|
+|函数变更|类名：AudioStreamManager；<br>API声明：off(type: 'audioCapturerChange'): void;<br>差异内容：NA|类名：AudioStreamManager；<br>API声明：off(type: 'audioCapturerChange', callback?: Callback\<AudioCapturerChangeInfoArray>): void;<br>差异内容：callback?: Callback\<AudioCapturerChangeInfoArray>|api/@ohos.multimedia.audio.d.ts|
+|函数变更|类名：AudioRenderer；<br>API声明：off(type: 'markReach'): void;<br>差异内容：NA|类名：AudioRenderer；<br>API声明：off(type: 'markReach', callback?: Callback\<number>): void;<br>差异内容：callback?: Callback\<number>|api/@ohos.multimedia.audio.d.ts|
+|函数变更|类名：AudioRenderer；<br>API声明：off(type: 'periodReach'): void;<br>差异内容：NA|类名：AudioRenderer；<br>API声明：off(type: 'periodReach', callback?: Callback\<number>): void;<br>差异内容：callback?: Callback\<number>|api/@ohos.multimedia.audio.d.ts|
+|函数变更|类名：AudioCapturer；<br>API声明：off(type: 'markReach'): void;<br>差异内容：NA|类名：AudioCapturer；<br>API声明：off(type: 'markReach', callback?: Callback\<number>): void;<br>差异内容：callback?: Callback\<number>|api/@ohos.multimedia.audio.d.ts|
+|函数变更|类名：AudioCapturer；<br>API声明：off(type: 'periodReach'): void;<br>差异内容：NA|类名：AudioCapturer；<br>API声明：off(type: 'periodReach', callback?: Callback\<number>): void;<br>差异内容：callback?: Callback\<number>|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：DeviceType；<br>API声明：USB_DEVICE = 25<br>差异内容：USB_DEVICE = 25|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：DeviceType；<br>API声明：REMOTE_DAUDIO = 29<br>差异内容：REMOTE_DAUDIO = 29|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：AudioManager；<br>API声明：getSpatializationManager(): AudioSpatializationManager;<br>差异内容：getSpatializationManager(): AudioSpatializationManager;|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：AudioVolumeGroupManager；<br>API声明：off(type: 'ringerModeChange', callback?: Callback\<AudioRingMode>): void;<br>差异内容：off(type: 'ringerModeChange', callback?: Callback\<AudioRingMode>): void;|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：audio；<br>API声明：interface AudioSpatializationManager<br>差异内容：interface AudioSpatializationManager|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：AudioSpatializationManager；<br>API声明：isSpatializationEnabledForCurrentDevice(): boolean;<br>差异内容：isSpatializationEnabledForCurrentDevice(): boolean;|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：AudioSpatializationManager；<br>API声明：on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback\<boolean>): void;<br>差异内容：on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback\<boolean>): void;|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：AudioSpatializationManager；<br>API声明：off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback\<boolean>): void;<br>差异内容：off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback\<boolean>): void;|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：AudioDeviceDescriptor；<br>API声明：readonly spatializationSupported?: boolean;<br>差异内容：readonly spatializationSupported?: boolean;|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：AudioRenderer；<br>API声明：off(type: 'audioInterrupt', callback?: Callback\<InterruptEvent>): void;<br>差异内容：off(type: 'audioInterrupt', callback?: Callback\<InterruptEvent>): void;|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：AudioRenderer；<br>API声明：off(type: 'stateChange', callback?: Callback\<AudioState>): void;<br>差异内容：off(type: 'stateChange', callback?: Callback\<AudioState>): void;|api/@ohos.multimedia.audio.d.ts|
+|新增API|NA|类名：AudioCapturer；<br>API声明：off(type: 'stateChange', callback?: Callback\<AudioState>): void;<br>差异内容：off(type: 'stateChange', callback?: Callback\<AudioState>): void;|api/@ohos.multimedia.audio.d.ts|

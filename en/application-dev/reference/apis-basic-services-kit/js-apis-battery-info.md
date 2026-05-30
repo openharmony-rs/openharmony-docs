@@ -20,24 +20,25 @@ The **batteryInfo** module provides APIs for querying the charger type, battery 
 import {batteryInfo} from '@kit.BasicServicesKit';
 ```
 
-## batteryInfo
+## Constants
 
 Describes battery information.
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
-| Name     | Type       | Read-Only| Optional|  Description    |
-| --------------- | ------------------- | ---- | ---- | ---------------------|
-| batterySOC                                | number                                         | Yes  | No  | Battery state of charge (SoC) of the device, in unit of percentage.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                          |
-| chargingStatus                            | [BatteryChargeState](#batterychargestate)      | Yes  | No  | Battery charging state of the current device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                              |
-| healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | Yes  | No  | Battery health status of the device.                              |
-| pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | Yes  | No  | Charger type of the device.                            |
-| voltage                                   | number                                         | Yes  | No  | Battery voltage of the device, in unit of microvolt.                        |
-| technology                                | string                                         | Yes  | No  | Battery technology of the device.                              |
-| batteryTemperature                        | number                                         | Yes  | No  | Battery temperature of the device, in unit of 0.1°C.                   |
-| isBatteryPresent<sup>7+</sup>             | boolean                                        | Yes  | No  | Whether the battery is supported or present. The value **true** means that the battery is supported or present; **false** means the opposite.<br>Default value: **false**.                |
-| batteryCapacityLevel<sup>9+</sup> | [BatteryCapacityLevel](#batterycapacitylevel9) | Yes       | No       | Battery level of the device. |
-| nowCurrent<sup>12+</sup> | number                                         | Yes       | No       | Battery current of the device, in unit of mA. |
+| Name     | Type       | Read-Only|  Description    |
+| --------------- | ------------------- | ---- | ---------------------|
+| batterySOC                                | number                                         | Yes  | Battery state of charge (SoC) of the device, in unit of percentage, which ranges from 0 to 100.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                          |
+| chargingStatus                            | [BatteryChargeState](#batterychargestate)      | Yes  | Battery charging state of the current device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                              |
+| healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | Yes  | Battery health status of the device.                              |
+| pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | Yes  | Charger type of the device.                            |
+| voltage                                   | number                                         | Yes  | Battery voltage of the device, in unit of microvolt.                        |
+| technology                                | string                                         | Yes  | Battery technology of the device.                              |
+| batteryTemperature                        | number                                         | Yes  | Battery temperature of the device, in unit of 0.1°C.                   |
+| isBatteryPresent<sup>7+</sup>             | boolean                                        | Yes  | Whether the battery is supported or present. The value **true** means that the battery is supported or present; **false** means the opposite.<br>Default value: **false**.|
+| batteryCapacityLevel<sup>9+</sup>         | [BatteryCapacityLevel](#batterycapacitylevel9) | Yes  | Battery level of the device.                             |
+| nowCurrent<sup>12+</sup>                  | number                                         | Yes  | Battery current of the device, in unit of mA.                       |
+
 **Example**
 
   ```ts
@@ -97,9 +98,9 @@ Enumerates charging states.
 
 | Name     | Value | Description           |
 | ------- | ---- | --------------- |
-| NONE    | 0    | Unknown state.    |
+| NONE    | 0    | The battery is not being charged.    |
 | ENABLE  | 1    | The battery is being charged. |
-| DISABLE | 2    | The battery is not being charged. |
+| DISABLE | 2    | The battery charging is stopped. |
 | FULL    | 3    | The battery is fully charged.|
 
 ## BatteryHealthState
@@ -125,6 +126,7 @@ Enumerates battery levels.
 
 | Name          | Value| Description                      |
 | -------------- | ------ | ---------------------------- |
+| LEVEL_NONE<sup>23+</sup> | 0      | Unknown battery level.|
 | LEVEL_FULL     | 1      | Full battery level.  |
 | LEVEL_HIGH     | 2      | High battery level.  |
 | LEVEL_NORMAL   | 3      | Normal battery level.|

@@ -13,7 +13,7 @@
 
 | 类型    | 说明                                           |
 | ------- | ---------------------------------------------- |
-| Reader  | 此类的实例表示该设备支持的SE，如果支持eSE和SIM，则返回两个实例。 |
+| Reader  | 此类的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例，其中SIM2从API version 22开始支持。 |
 | Session | 此类的实例表示在某个SE Reader实例上创建连接会话。 |
 | Channel | 此类的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。   |
 
@@ -66,7 +66,7 @@ newSEService(type: 'serviceState', callback: Callback\<ServiceState>): SEService
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
@@ -115,7 +115,7 @@ createService(): Promise\<SEService>;
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -163,7 +163,7 @@ on(type: 'stateChanged', callback: Callback\<ServiceState>): void;
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -190,7 +190,7 @@ off(type: 'stateChanged', callback?: Callback\<ServiceState>): void;
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -205,11 +205,12 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let seService: omapi.SEService;
 function seStateOnCb(data: omapi.ServiceState) {
-    console.log("omapi.on ServiceState: ", data);
+    hilog.info(0x0000, 'testTag', 'omapi.on ServiceState: %{public}s', JSON.stringify(data));
 }
 
 function seStateOffCb(data: omapi.ServiceState) {
-    console.log("omapi.off ServiceState: ", data);
+    hilog.info(0x0000, 'testTag', 'omapi.off ServiceState: %{public}s', JSON.stringify(data));
+
 }
 
 function secureElementDemo() {
@@ -227,14 +228,14 @@ function secureElementDemo() {
         omapi.on('stateChanged', seStateOnCb);
     } catch (error) {
         if (error as BusinessError) {
-            console.error(`omapi on error catch Code: ${(error as BusinessError).code}, ` + `message: ${(error as BusinessError).message}`);
+            hilog.error(0x0000, 'testTag', 'omapi on error %{public}s', JSON.stringify(error));
         }
     }
     try{
         omapi.off('stateChanged', seStateOffCb);
     } catch (error) {
         if (error as BusinessError) {
-            console.error(`omapi off error catch Code: ${(error as BusinessError).code}, ` + `message: ${(error as BusinessError).message}`);
+            hilog.error(0x0000, 'testTag', 'omapi off error %{public}s', JSON.stringify(error));
         }
     }
 }
@@ -260,7 +261,7 @@ getReaders(): Reader[]
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -309,7 +310,7 @@ isConnected(): boolean
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -349,7 +350,7 @@ shutdown(): void
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -390,7 +391,7 @@ getVersion(): string
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -417,13 +418,13 @@ try {
 ```
 ## Reader
 
-Reader的实例表示该设备支持的SE，如果支持eSE和SIM，则返回两个实例。通过[SEService.getReaders](#seservicegetreaders)获取Reader实例。
+Reader的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例，其中SIM2从API version 22开始支持。通过[SEService.getReaders](#seservicegetreaders)获取Reader实例。
 
 ### Reader.getName
 
 getName(): string
 
-返回此Reader的名称。如果此读卡器是SIM Reader，则其名称必须为“SIM”。如果读卡器是eSE，则其名称须为“eSE”。
+返回此Reader的名称。如果此读卡器是SIM Reader，则其名称必须为“SIM”。如果此读卡器是SIM2 Reader，则其名称必须为“SIM2”。如果读卡器是eSE，则其名称须为“eSE”。
 
 **系统能力：**  SystemCapability.Communication.SecureElement
 
@@ -453,7 +454,7 @@ let seReaders : omapi.Reader[];
 // 在使用seReaders之前，需要对seReaders进行初始化
 
 try {
-    let reader = seReaders[0]; // 将其更改为所选的reader：ese 或 sim
+    let reader = seReaders[0]; // 将其更改为所选的reader：eSE、SIM、SIM2
     let name = reader.getName();
     hilog.info(0x0000, 'testTag', 'name %{public}s', JSON.stringify(name));
 } catch (error) {
@@ -477,7 +478,7 @@ isSecureElementPresent(): boolean
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -496,7 +497,7 @@ let seReaders : omapi.Reader[];
 // 在使用seReaders之前，需要对seReaders进行初始化
 
 try {
-    let reader = seReaders[0]; // 将其更改为所选的reader：ese 或 sim
+    let reader = seReaders[0]; // 将其更改为所选的reader：eSE、SIM、SIM2
     let isPresent = reader.isSecureElementPresent();
     hilog.info(0x0000, 'testTag', 'isPresent %{public}s', JSON.stringify(isPresent));
 } catch (error) {
@@ -520,7 +521,7 @@ try {
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -541,7 +542,7 @@ let seSession : omapi.Session;
 // 在使用seReaders之前，需要对seReaders进行初始化
 function secureElementDemo() {
     try {
-        let reader = seReaders[0]; // 将其更改为所选的reader：ese 或 sim
+        let reader = seReaders[0]; // 将其更改为所选的reader：eSE、SIM、SIM2
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));
@@ -563,7 +564,7 @@ function secureElementDemo() {
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -584,7 +585,7 @@ let reader : omapi.Reader;
 // 在使用seReaders之前，需要对seReaders进行初始化
 function secureElementDemo() {
     try {
-        reader = seReaders[0]; // 将其更改为所选的reader：ese 或 sim
+        reader = seReaders[0]; // 将其更改为所选的reader：eSE、SIM、SIM2
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));
@@ -623,7 +624,7 @@ getReader(): Reader
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -643,7 +644,7 @@ let reader : omapi.Reader;
 // 在使用seReaders之前，需要对seReaders进行初始化
 function secureElementDemo() {
     try {
-        reader = seReaders[0]; // 将其更改为所选的reader：ese 或 sim
+        reader = seReaders[0]; // 将其更改为所选的reader：eSE、SIM、SIM2
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));
@@ -676,7 +677,7 @@ getATR(): number[]
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -712,7 +713,7 @@ close(): void
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -753,7 +754,7 @@ isClosed(): boolean
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -788,7 +789,7 @@ closeChannels(): void
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -835,7 +836,7 @@ openBasicChannel(aid: number[]): Promise\<Channel>
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -893,7 +894,7 @@ function secureElementDemo() {
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -959,7 +960,7 @@ openBasicChannel(aid: number[], p2: number): Promise\<Channel>
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1019,7 +1020,7 @@ openBasicChannel(aid: number[], p2:number, callback: AsyncCallback\<Channel>): v
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1085,7 +1086,7 @@ openLogicalChannel(aid: number[]): Promise\<Channel>
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1143,7 +1144,7 @@ function secureElementDemo() {
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1209,7 +1210,7 @@ openLogicalChannel(aid: number[], p2: number): Promise\<Channel>
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1269,7 +1270,7 @@ openLogicalChannel(aid: number[], p2: number, callback: AsyncCallback\<Channel>)
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1332,7 +1333,7 @@ Channel的实例表示在某个Session实例上创建通道，可能为基础通
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1367,7 +1368,7 @@ close(): void
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1406,7 +1407,7 @@ isBasicChannel(): boolean
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1446,7 +1447,7 @@ isClosed(): boolean
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1486,7 +1487,7 @@ getSelectResponse(): number[]
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1528,11 +1529,11 @@ transmit(command: number[]): Promise\<number[]>
 
 | **类型** | **说明**       |
 | -------- | -------------- |
-| Promise\<number[]> | 以Promise形式异步返回接收到的响应APDU数据，number数组。 |
+| Promise\<number[]> | 以Promise形式异步返回接收到的响应APDU数据，number数组。若芯片捕获未知异常则返回全0。 |
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1555,6 +1556,7 @@ let seChannel : omapi.Channel;
 let cmdData = [0x01, 0x02, 0x03, 0x04]; // 请更改为正确的data
 try {
     seChannel.transmit(cmdData).then((response) => {
+        // 若芯片捕获未知异常则response返回全0
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }).catch((error : BusinessError) => {
         hilog.error(0x0000, 'testTag', 'transmit error = %{public}s.', JSON.stringify(error));
@@ -1577,11 +1579,11 @@ transmit(command: number[], callback: AsyncCallback\<number[]>): void
 | **参数名** | **类型**                | **必填** | **说明**                              |
 | ---------- | ----------------------- | ------ | ------------------------------------- |
 | command    | number[]                | 是      | 需要发送到SE的APDU数据。 |
-| callback   | AsyncCallback\<number[]> | 是      | 返回接收到的响应APDU数据，number数组。  |
+| callback   | AsyncCallback\<number[]> | 是      | 返回接收到的响应APDU数据，number数组。若芯片捕获未知异常则返回全0。 |
 
 **错误码：**
 
-错误码的详细介绍请参见[SE错误码](errorcode-se.md)。
+错误码的详细介绍请参见[SE(secureElement)错误码](errorcode-se.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1607,6 +1609,7 @@ try {
     if (error) {
         hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
     } else {
+        // 若芯片捕获未知异常则response返回全0
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }
     });

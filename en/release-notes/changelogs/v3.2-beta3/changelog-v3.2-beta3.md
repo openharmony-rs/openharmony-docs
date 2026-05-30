@@ -20,7 +20,7 @@ N/A
 
 **Adaptation Guide**
 
-Configure related fields in the [/system/etc/app/install_list.json](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list.json) file. The **app_dir** field specifies the directory where the HAP file is located, and **removable** specifies whether the HAP file can be uninstalled after being installed. 
+Configure related fields in the [/system/etc/app/install_list.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list.json) file. The **app_dir** field specifies the directory where the HAP file is located, and **removable** specifies whether the HAP file can be uninstalled after being installed. 
 
 Example:
 
@@ -56,7 +56,7 @@ In earlier versions, these privileges are configured in the **config.json** or *
 
 **Change Impacts**
 
-JS and native APIs are not involved. If your application needs to use any of these privileges, apply for it. For details about how to apply for and configure the privileges, see [Application Privilege Configuration](../../../device-dev/subsystems/subsys-app-privilege-config-guide.md).
+JS and native APIs are not involved. If your application needs to use any of these privileges, apply for it. For details about how to apply for and configure the privileges, see [Application Privilege Configuration](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-app-privilege-config-guide.md).
 
 **Key API/Component Changes**
 
@@ -91,11 +91,11 @@ In addition to general application privileges, device vendors can define device-
 | associatedWakeUp      | bool     | false  | Allows the application in the FA model to be woken up by an associated application.                     |
 | runningResourcesApply | bool     | false  | Allows the application to request running resources, such as CPU, event notifications, and Bluetooth.|
 
-In earlier versions, these privileges are configured in the **config.json** or **module.json** file and distinguished based on the application type (preset or system application). From this version, the privileges can be configured based on the preset trustlist. For details, see [install_list_capability.json](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json).
+In earlier versions, these privileges are configured in the **config.json** or **module.json** file and distinguished based on the application type (preset or system application). From this version, the privileges can be configured based on the preset trustlist. For details, see [install_list_capability.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json).
 
 **Change Impacts**
 
-JS and native APIs are not involved. If your application needs to use any of these privileges, apply for it. For details, see [Configuration Mode](../../../device-dev/subsystems/subsys-app-privilege-config-guide.md#configuration-1).
+JS and native APIs are not involved. If your application needs to use any of these privileges, apply for it. For details, see [Configuration Mode](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-app-privilege-config-guide.md#how-to-configure-1).
 
 **Key API/Component Changes**
 
@@ -103,7 +103,7 @@ N/A
 
 **Adaptation Guide**
 
-See [Configuration Mode](../../../device-dev/subsystems/subsys-app-privilege-config-guide.md#configuration-1).
+See [Configuration Mode](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-app-privilege-config-guide.md#how-to-configure-1).
 
 ```json
 {
@@ -122,7 +122,7 @@ See [Configuration Mode](../../../device-dev/subsystems/subsys-app-privilege-con
 
 ### Fingerprint Verification for Pre-authorization Trustlist
 
-The pre-authorization file [install_list_permissions.json](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_permissions.json) is moved from **system/etc/permission** to **system/etc/app/** on the development board. The **app_signature** field is added to specify the fingerprint of the HAP file. Multiple fingerprints can be configured. Authorization can be performed only when the fingerprint is matched.
+The pre-authorization file [install_list_permissions.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_permissions.json) is moved from **system/etc/permission** to **system/etc/app/** on the development board. The **app_signature** field is added to specify the fingerprint of the HAP file. Multiple fingerprints can be configured. Authorization can be performed only when the fingerprint is matched.
 
 **Change Impacts**
 

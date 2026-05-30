@@ -1,10 +1,10 @@
 # LiveFormExtensionContext
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 > **说明：**
@@ -15,8 +15,14 @@ LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFor
 
 ## 导入模块
 ```ts
-import { LiveFormExtensionAbility } from '@kit.FormKit';
+import { common } from '@kit.AbilityKit';
 ```
+
+>  **说明：**
+>
+> - 在API version 22以前，需要通过`import LiveFormExtensionContext from 'application/LiveFormExtensionContext'; `导入LiveFormExtensionContext。该导入方式在DevEco Studio中标红，但不影响编译运行，可以直接使用LiveFormExtensionContext。
+>
+> - 在API version 22及以后，支持通过`import { common } from '@kit.AbilityKit'; `导入LiveFormExtensionContext，并通过common.LiveFormExtensionContext的方式使用。
 
 ## LiveFormExtensionContext
 
@@ -30,9 +36,7 @@ startAbilityByLiveForm(want: Want): Promise&lt;void&gt;
 
 该接口仅支持拉起互动卡片提供方（应用）的页面，不支持拉起其他应用的页面，否则会抛出错误码16501011。
 
-该接口建议在点击事件回调中调用，不建议在其他手势事件回调中调用，不支持非手势事件直接调用，否则会抛出错误码16501011。
-
-另外，在点击事件回调中，支持直接调用，不支持延时后调用，否则会抛出错误码16501011。
+该接口仅限在点击事件回调中调用，且需要直接调用，不支持延时后调用，否则会抛出错误码16501011。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,19 +85,19 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 ```
 ```ts
 // pages/MyLiveFormPage.ets
+import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
 @Component
 struct MyLiveFormPage {
   private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
-  private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+  private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
     // 2.获取LiveFormExtensionContext
     this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
-    this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+    this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
   }
 
    private startAbilityByLiveForm(): void {
@@ -115,9 +119,15 @@ struct MyLiveFormPage {
   }
 
   build() {
+    // 请开发者替换为实际的页面
     Stack() {
-      // 请开发者替换为实际的页面
+      Column()
+        .width('50%')
+        .height('50%')
+        .backgroundColor('#2875F5')
     }
+    .width('100%')
+    .height('100%')
     .onClick(() => {
       // 3.在点击事件回调中直接使用该接口
       console.info('MyLiveFormPage click to start ability');

@@ -1,8 +1,17 @@
 # Gesture Binding
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 You can bind to each component different gesture events and design the logic for responding to these events. When a gesture is successfully recognized, the ArkUI framework notifies the component of the gesture recognition result through event callback.
 
+>  **NOTE**
+>
+>  The **gesture**, **priorityGesture**, and **parallelGesture** APIs currently do not support switching gesture bindings using the ternary operator (condition ? expression1 : expression2).
 
 ## gesture (Common Gesture Binding Method)
 
@@ -16,27 +25,28 @@ You can bind to each component different gesture events and design the logic for
 For example, you can use it to bind the tap gesture to the **Text** component.
 
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Text('Gesture').fontSize(28)
+  <!-- @[regular_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/Gesture.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct RegularBinding {
+    build() {
+      Column() {
+        Text('Gesture').fontSize(28)
         // Use the gesture API to bind the tap gesture.
-        .gesture(
-          TapGesture()
-            .onAction(() => {
-              console.info('TapGesture is onAction');
-            }))
+          .gesture(
+            TapGesture()
+              .onAction(() => {
+                console.info('TapGesture is onAction');
+              }))
+      }
+      .height(200)
+      .width(250)
     }
-    .height(200)
-    .width(250)
   }
-}
-```
-
+  ```
 
 ## priorityGesture (Gesture Binding Method with Priority)
 
@@ -47,39 +57,41 @@ struct Index {
 
 The **priorityGesture** API binds gestures that are preferentially recognized to a component.
 
-By default, the child component preferentially recognizes the gesture specified by **gesture**, and the parent component preferentially recognizes the gesture specified by **priorityGesture** (if set).
+By default, when the parent and child components are bound to the same gesture type using **gesture**, the child component's gesture is preferentially recognized. and the parent component preferentially recognizes the gesture specified by **priorityGesture** (if set).
 
-With regard to long press gestures, the component with the shortest minimum hold-down time responds first, ignoring the **priorityGesture** settings.
+For components bound with a long press gesture, you can set the minimum trigger duration using [duration](../reference/apis-arkui/arkui-ts/ts-gesturehandler.md#longpressgesturehandleroptions). When a long press gesture is triggered, the system prioritizes responding to the component with the shortest long press trigger time, ignoring the **priorityGesture** setting.
 
 In the following example, the parent component **Column** and child component **Text** are both bound to the tap gesture. As the **Column** is bound to the gesture through **priorityGesture**, the tap gesture recognized by the parent component is preferentially responded to.
 
 
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Text('Gesture').fontSize(28)
-        .gesture(
-          TapGesture()
-            .onAction(() => {
-              console.info('Text TapGesture is onAction');
-            }))
+  <!-- @[priority_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/PriorityGesture.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct PriorityBinding {
+    build() {
+      Column() {
+        Text('Gesture').fontSize(28)
+          .gesture(
+            TapGesture()
+              .onAction(() => {
+                hilog.info(DOMAIN, TAG,'Text TapGesture is onAction');
+              }))
+      }
+      .height(200)
+      .width(250)
+      // When the tap gesture is bound to the parent Column component with priorityGesture, any tap gesture events from the Text component are ignored. This means that when the text area is tapped, the Column component's tap gesture event is given priority and responded to first.
+      .priorityGesture(
+        TapGesture()
+          .onAction(() => {
+            hilog.info(DOMAIN, TAG,'Column TapGesture is onAction');
+          }), GestureMask.IgnoreInternal)
     }
-    .height(200)
-    .width(250)
-    // When the tap gesture is bound to the parent Column component with priorityGesture, any tap gesture events from the Text component are ignored. This means that when the text area is tapped, the Column component's tap gesture event is given priority and responded to first.
-    .priorityGesture(
-      TapGesture()
-        .onAction(() => {
-          console.info('Column TapGesture is onAction');
-        }), GestureMask.IgnoreInternal)
   }
-}
-```
+  ```
 
 
 ## parallelGesture (Parallel Gesture Binding Method)
@@ -95,28 +107,30 @@ By default, the gesture event does not bubble up. When a parent component and a 
 
 
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Text('Gesture').fontSize(28)
-        .gesture(
-          TapGesture()
-            .onAction(() => {
-              console.info('Text TapGesture is onAction');
-            }))
+  <!-- @[parallel_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/ParallelGesture.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct ParallelBinding {
+    build() {
+      Column() {
+        Text('Gesture').fontSize(28)
+          .gesture(
+            TapGesture()
+              .onAction(() => {
+                hilog.info(DOMAIN, TAG,'Text TapGesture is onAction');
+              }))
+      }
+      .height(200)
+      .width(250)
+      // When parallelGesture is set, the tap gestures on the Column component and on the child Text component are both recognized.
+      .parallelGesture(
+        TapGesture()
+          .onAction(() => {
+            hilog.info(DOMAIN, TAG,'Column TapGesture is onAction');
+          }), GestureMask.Normal)
     }
-    .height(200)
-    .width(250)
-    // When parallelGesture is set, the tap gestures on the Column component and on the child Text component are both recognized.
-    .parallelGesture(
-      TapGesture()
-        .onAction(() => {
-          console.info('Column TapGesture is onAction');
-        }), GestureMask.Normal)
   }
-}
-```
+  ```

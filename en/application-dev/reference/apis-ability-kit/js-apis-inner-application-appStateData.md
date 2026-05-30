@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The module defines the application state data, which can be obtained through [appManager.on('applicationState')](./js-apis-app-ability-appManager.md#appmanageronapplicationstate14).
+The module defines the application state information. Once an application state change listener is registered using [on](js-apis-app-ability-appManager.md#appmanageronapplicationstate14), the system triggers the [onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged) callback of [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) to deliver notifications whenever the state of an application, process, or ability changes.
 
 > **NOTE**
 > 
@@ -22,13 +22,13 @@ import { appManager } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name                     | Type  | Mandatory | Description      |
-| ------------------------- | ------ | ---- | --------- |
-| bundleName  | string | Yes  | Bundle name.|
-| uid          | number | Yes  | UID of the application.  |
-| state        | number | Yes  | Application state.<br>**0**: The application is being initialized.<br>**1**: The application has been initialized and is ready.<br>**2**: The application is running in the foreground.<br>**3**: The application is having the focus. (This state is reserved.)<br>**4**: The application is running in the background.<br>**5**: The application has exited.|
-| isSplitScreenMode | boolean | Yes| Whether the application is in split-screen mode.<br>**true**: The application is in split-screen mode.<br>**false**: The application is not in split-screen mode.|
-| isFloatingWindowMode | boolean | Yes| Whether the application is in floating window mode.<br>**true**: The application is in floating window mode.<br>**false**: The application is not in floating window mode.|
+| Name                     | Type  | Read-Only | Optional | Description      |
+| ------------------------- | ------ | ---- | ---- | ---------- |
+| bundleName  | string | No  | No  | Bundle name.|
+| uid          | number | No  | No  | UID of the application.  |
+| state        | number | No  | No  | Application state.<br>**0**: The application is being initialized.<br>**1**: The application has been initialized and is ready.<br>**2**: The application is running in the foreground.<br>**3**: The application is having the focus. (This state is reserved.)<br>**4**: The application is running in the background.<br>**5**: The application has exited.|
+| isSplitScreenMode | boolean | No| No| Whether the application is in split-screen mode.<br>**true**: The application is in split-screen mode.<br>**false**: The application is not in split-screen mode.|
+| isFloatingWindowMode | boolean | No| No| Whether the application is in floating window mode.<br>**true**: The application is in floating window mode.<br>**false**: The application is not in floating window mode.|
 
 **Example**
 
@@ -37,40 +37,40 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
-    console.log(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
-    console.log(`appStateData.bundleName: ${appStateData.bundleName}`);
-    console.log(`appStateData.uid: ${appStateData.uid}`);
-    console.log(`appStateData.state: ${appStateData.state}`);
-    console.log(`appStateData.isSplitScreenMode: ${appStateData.isSplitScreenMode}`);
-    console.log(`appStateData.isFloatingWindowMode: ${appStateData.isFloatingWindowMode}`);
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+    console.info(`appStateData.bundleName: ${appStateData.bundleName}`);
+    console.info(`appStateData.uid: ${appStateData.uid}`);
+    console.info(`appStateData.state: ${appStateData.state}`);
+    console.info(`appStateData.isSplitScreenMode: ${appStateData.isSplitScreenMode}`);
+    console.info(`appStateData.isFloatingWindowMode: ${appStateData.isFloatingWindowMode}`);
   },
-  onAbilityStateChanged(abilityStateData) {
-    console.log(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
-    console.log(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+  onProcessCreated(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
-    console.log(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+  onProcessDied(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
-    console.log(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+  onProcessStateChanged(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
-    console.log(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+  onAppStarted(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
-    console.log(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+  onAppStopped(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
 
 try {
   const observerId = appManager.on('applicationState', applicationStateObserver);
-  console.log(`[appManager] observerCode: ${observerId}`);
+  console.info(`[appManager] observerCode: ${observerId}`);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
+  console.error(`[appManager] error code: ${code}, error msg: ${message}`);
 }
 ```

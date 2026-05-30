@@ -1,13 +1,20 @@
 # API Switching Overview
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-Due to the differences in the thread model and process model, certain APIs can be used only in the FA model. They are marked with **FAModelOnly** in the SDK. When switching an application from the FA model to the stage model, replace the APIs marked with **FAModelOnly** in the application with the APIs supported in the stage model. This topic uses the switching of **startAbility()** as an example.
+
+Due to the differences in the thread model and process model, certain APIs can be used only in the [FA model](ability-terminology.md#fa-model). They are marked with **FAModelOnly** in the SDK. When switching an application from the FA model to the stage model, replace the APIs marked with **FAModelOnly** in the application with the APIs supported in the stage model. This topic uses the switching of **startAbility()** as an example.
 
 ![api-switch-overview](figures/api-switch-overview.png)
 
  
 
-- Sample code of **startAbility()** in the FA model:
+- Sample code in the FA model:
 
   ```ts
   import featureAbility from '@ohos.ability.featureAbility';
@@ -20,13 +27,12 @@ Due to the differences in the thread model and process model, certain APIs can b
   @Entry
   @Component
   struct PagePageAbilityFirst {
-    
     build() {
       Column() {
         List({ initialIndex: 0 }) {
           ListItem() {
             Flex({ justifyContent: FlexAlign.SpaceBetween, alignContent: FlexAlign.Center }) {
-              //...
+              // ...
             }
             .onClick(() => {
               (async (): Promise<void> => {
@@ -39,24 +45,19 @@ Due to the differences in the thread model and process model, certain APIs can b
                   };
                   await featureAbility.startAbility({ want: want });
                   hilog.info(domain, TAG, `Start ability succeed`);
-                }
-                catch (error) {
+                } catch (error) {
                   hilog.error(domain, TAG, 'Start ability failed with ' + error);
                 }
               })()
             })
           }
-          //...
         }
-        //...
       }
-      //...
     }
   }
-
   ```
 
-- Sample code of **startAbility()** in the stage model:
+- Sample code in the stage model:
 
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -71,13 +72,12 @@ Due to the differences in the thread model and process model, certain APIs can b
   struct Page_UIAbilityComponentsInteractive {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     caller: Caller | undefined = undefined;
+
     build() {
       Column() {
-        //...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
             }
             .onClick(() => {
               // Context is a member of the ability object and is required for invoking inside a non-ability object.
@@ -99,11 +99,8 @@ Due to the differences in the thread model and process model, certain APIs can b
               });
             })
           }
-          //...
         }
-        //...
       }
-      //...
     }
   }
   ```

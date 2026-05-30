@@ -1,15 +1,22 @@
 # Mouse Event
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
-If a mouse action triggers multiple events, the order of these events is fixed. By default, mouse events are transmitted transparently.
+If a mouse action triggers multiple events, the order of these events is fixed. By default, mouse events bubble.
 
->  **NOTE**
+> **NOTE**
 >
->  - The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
->  - For the time being, a mouse event can be triggered only by an external mouse device.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - For the time being, a mouse event can be triggered only by an external mouse device.
 
 ## onMouse
 
-onMouse(event: (event: MouseEvent) => void)
+onMouse(event: (event: MouseEvent) => void): T
 
 Triggered when the component is clicked by a mouse button or the mouse pointer moves on the component.
 
@@ -21,8 +28,13 @@ Triggered when the component is clicked by a mouse button or the mouse pointer m
 
 | Name | Type                             | Mandatory| Description                                                        |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| event | [MouseEvent](#mouseevent) | Yes  | Timestamp, mouse button, action, coordinates of the clicked point on the entire screen, and coordinates of the clicked point relative to the component when the event is triggered.|
+| event | (event: [MouseEvent](#mouseevent)) => void | Yes  | Timestamp, mouse button, action, coordinates of the clicked point on the entire screen, and coordinates of the clicked point relative to the component when the event is triggered.|
 
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
 
 ## MouseEvent
 
@@ -30,26 +42,30 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                    | Type                                    | Description                          |
-| ---------------------- | ---------------------------------------- | ---------------------------- |
-| x                      | number                                   | X coordinate of the mouse pointer relative to the upper left corner of the component being clicked.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
-| y                      | number                                   | Y coordinate of the mouse pointer relative to the upper left corner of the component being clicked.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
-| button                 | [MouseButton](ts-appendix-enums.md#mousebutton8) | Mouse button.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| action                 | [MouseAction](ts-appendix-enums.md#mouseaction8) | Mouse action.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| stopPropagation        | () => void                               | Stops the event from bubbling upwards or downwards.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
-| windowX<sup>10+</sup> | number                          | X coordinate of the mouse pointer relative to the upper left corner of the application window.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| windowY<sup>10+</sup> | number                          | Y coordinate of the mouse pointer relative to the upper left corner of the application window.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| displayX<sup>10+</sup> | number                         | X coordinate of the mouse pointer relative to the upper left corner of the application screen.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| displayY<sup>10+</sup> | number                         | Y coordinate of the mouse pointer relative to the upper left corner of the application screen.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| screenX<sup>(deprecated)</sup> | number                 | X coordinate of the mouse pointer relative to the upper left corner of the application window.<br>This API is deprecated since API version 10. You are advised to use **windowX** instead.|
-| screenY<sup>(deprecated)</sup> | number                 | Y coordinate of the mouse pointer relative to the upper left corner of the application window.<br>This API is deprecated since API version 10. You are advised to use **windowY** instead.|
-| rawDeltaX<sup>15+</sup> | number | X-axis offset relative to the previously reported mouse pointer position. This value may be less than the difference between the two reported X coordinates when the mouse pointer is near the screen edge.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| rawDeltaY<sup>15+</sup> | number | Y-axis offset relative to the previously reported mouse pointer position.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| pressedButtons<sup>15+</sup> | MouseButton[] | Array of all mouse buttons that are currently pressed.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| Name                   | Type                   | Read-Only   |  Optional  |     Description                         |
+| ---------------------- | -------------------------------------- |-------------- |------------- |  --------------------------- |
+| x                      | number                                  | No          |  No    |X coordinate of the mouse point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
+| y                      | number                                    |  No        |  No    |Y coordinate of the mouse point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
+| button                 | [MouseButton](ts-appendix-enums.md#mousebutton8)      |  No    |  No    |Mouse button.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
+| action                 | [MouseAction](ts-appendix-enums.md#mouseaction8)       |  No  |  No    |Mouse action.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
+| stopPropagation        | () => void                            |  No         |  No    |Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
+| windowX<sup>10+</sup> | number                           |  No         |  No    |X coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| windowY<sup>10+</sup> | number                           |  No        |  No    |Y coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| displayX<sup>10+</sup> | number                          |  No        |  No    |X coordinate of the mouse position in the coordinate system of the current screen window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| displayY<sup>10+</sup> | number                         |  No         |  No    |Y coordinate of the mouse position in the coordinate system of the current screen window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| screenX<sup>(deprecated)</sup> | number                 |  No        |  No    |X coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>Note: This API is supported since API version 8 and deprecated since API version 10. You are advised to use **windowX** instead.|
+| screenY<sup>(deprecated)</sup> | number                 |  No         |  No    |Y coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>Note: This API is supported since API version 8 and deprecated since API version 10. You are advised to use **windowY** instead.|
+| rawDeltaX<sup>15+</sup> | number      |  No  |  Yes    |Movement increment of the mouse along the X axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| rawDeltaY<sup>15+</sup> | number      |  No    |  Yes   |Movement increment of the mouse along the Y axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| pressedButtons<sup>15+</sup> | MouseButton[]      |  No     | Yes    |Set of buttons being pressed.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| globalDisplayX<sup>20+</sup> | number       |  No   |  Yes   |X coordinate of the mouse position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayY<sup>20+</sup> | number      | No     |  Yes   |Y coordinate of the mouse position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## Example
 
-This example demonstrates how to set a mouse event on a button. When the button is clicked using a mouse device, the **onMouse** event is triggered to obtain relevant mouse event parameters.
+This example demonstrates how to set a mouse event on a button. When the button is clicked using a mouse device, the [onMouse](#onmouse) event is triggered to obtain relevant mouse event parameters. Starting from API version 15, the [MouseEvent](#mouseevent) object provides access to the **targetDisplayId**, **rawDeltaX**, **rawDeltaY**, and **pressedButtons** parameters.
+
+For mouse wheel event examples, see [Axis Event](ts-universal-events-axis.md#example).
 
 ```ts
 // xxx.ets
@@ -65,8 +81,10 @@ struct MouseEventExample {
   build() {
     Column({ space: 20 }) {
       Button(this.hoverText)
-        .width(180).height(80)
+        .width(180)
+        .height(80)
         .backgroundColor(this.color)
+        .fontSize(24)
         .onHover((isHover: boolean, event: HoverEvent) => {
           // Use the onHover event to dynamically change the text content and background color of a button when the mouse pointer is hovered on it.
           if (isHover) {
@@ -79,8 +97,11 @@ struct MouseEventExample {
         })
       Button('onMouse')
         .width(180).height(80)
-        .onMouse((event: MouseEvent):void => {
-          if(event){
+        .fontSize(24)
+        // Use onMouse to listen for mouse events, parse the buttons, actions, coordinates, and other information, and combines the information.
+        .onMouse((event: MouseEvent): void => {
+          if (event) {
+            // Determine the type of the pressed mouse button.
             switch (event.button) {
               case MouseButton.None:
                 this.mouseBtn = 'None';
@@ -101,6 +122,7 @@ struct MouseEventExample {
                 this.mouseBtn = 'Middle';
                 break;
             }
+            // Determine the type of the triggered mouse action.
             switch (event.action) {
               case MouseAction.Hover:
                 this.action = 'Hover';
@@ -115,13 +137,14 @@ struct MouseEventExample {
                 this.action = 'Release';
                 break;
             }
+            // Combine and display all information about the mouse event.
             this.mouseText = 'onMouse:\nButton = ' + this.mouseBtn +
-            '\nAction = ' + this.action + '\nXY=(' + event.x + ',' + event.y + ')' +
-            '\nwindowXY=(' + event.windowX + ',' + event.windowY + ')' +
-            '\ntargetDisplayId = ' + event.targetDisplayId +
-            '\nrawDeltaX = ' + event.rawDeltaX +
-            '\nrawDeltaY = ' + event.rawDeltaY +
-            '\nlength = ' + event.pressedButtons?.length;
+              '\nAction = ' + this.action + '\nXY=(' + event.x + ',' + event.y + ')' +
+              '\nwindowXY=(' + event.windowX + ',' + event.windowY + ')' +
+              '\ntargetDisplayId = ' + event.targetDisplayId +
+              '\nrawDeltaX = ' + event.rawDeltaX +
+              '\nrawDeltaY = ' + event.rawDeltaY +
+              '\nlength = ' + event.pressedButtons?.length;
           }
         })
       Text(this.mouseText)

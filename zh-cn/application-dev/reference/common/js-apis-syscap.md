@@ -1,4 +1,10 @@
 # SysCap (系统能力)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @chenjinxiang3-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 系统能力（SystemCapability，简称SysCap），指操作系统中每一个相对独立的特性。不同的设备对应不同的系统能力集，每个系统能力对应一个或多个API。开发者可根据系统能力来判断是否可以使用某接口。
 
@@ -12,7 +18,7 @@ canIUse(syscap: string): boolean
 
 查询系统是否具备某个系统能力。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,7 +36,7 @@ canIUse(syscap: string): boolean
 
 **示例：**
 
-  ```js
+```js
 import { geoLocationManager } from '@kit.LocationKit'
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -41,10 +47,10 @@ if (isLocationAvailable) {
             console.error('err=' + JSON.stringify(err));
         }
         if (location) {
-            console.log('location=' + JSON.stringify(location));
+            console.info('location=' + JSON.stringify(location));
         }
     });
 } else {
-    console.log('Location not by this device.');
+    console.info('Location not by this device.');
 }
-  ```
+```

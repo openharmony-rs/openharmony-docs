@@ -1,4 +1,10 @@
 # SMS Service Development
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 ## When to Use
 
@@ -50,7 +56,8 @@ Typical development scenarios are as follows:
    - To send SMS messages, call the **sendShortMessage** API and declare the **ohos.permission.SEND\_MESSAGES** permission. The permission is of the **system\_basic** level.
    - To set the SMSC address, call the** setSmscAddr** API and declare the **ohos.permission.SET\_TELEPHONY\_STATE** permission. The permission is of the **system\_basic** level.
    - To obtain the SMSC address, call the** getSmscAddr** API and declare the **ohos.permission.GET\_TELEPHONY\_STATE** permission. The permission is of the **system\_basic** level.
-   Before requesting the permission, ensure that the [basic principles for using permissions](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Then, declare the required permission by referring to [Requesting Application Permissions](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
+  
+     Before requesting the permission, ensure that the [basic principles for using permissions](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Then, declare the required permission by referring to [Requesting Application Permissions](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 2. Import the required modules.
 
 3. Send an SMS message.
@@ -61,10 +68,10 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
 }
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
 }
 let slotId: number = 0;
 let content: string = 'Message content';
@@ -123,7 +130,7 @@ struct JumpMessage {
         };
 
         this.context.startAbilityForResult(want).then((data) => {
-            console.log("Success" + JSON.stringify(data));
+            console.info("Success" + JSON.stringify(data));
         }).catch(() => {
             console.error("error");
         });
@@ -155,7 +162,7 @@ Through the SMS protocol, you can create a hyperlink pointing to the SMS recipie
 
 The standard SMS protocol format is as follows:
 
-```
+```txt
 sms:106XXXXXXXXXX?body=SMS message content
 ```
 
@@ -166,21 +173,24 @@ sms:106XXXXXXXXXX?body=SMS message content
 
 ### Developing a Caller Application
 
-#### On Web Pages
+ **Starting from a Web Page**
 
 Hyperlinks on web pages must comply with the SMS protocol. The sample code is as follows:
 
-```
+```txt
 <a href="sms:106XXXXXXXXXX?body=%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%86%85%E5%AE%B9">Send Message</a>;
 ```
 
 In actual development, replace the recipient number with the actual number. The SMS message content can be configured as required.
 
-#### On Applications
+ **Starting from an Application**
 
 Pass the sms string to the **uri** parameter. In the application, the context can be obtained through **this.getUIContext().getHostContext()** for a page and through **this.context** for an ability.
 
 ```ts
+// Sample code
+import { common, Want } from '@kit.AbilityKit';
+
 @Entry
 @Component
 struct Index {
@@ -199,7 +209,7 @@ struct Index {
             }
         
           context.startAbility(want).then((data) => {
-              console.log("Success" + JSON.stringify(data));
+              console.info("Success" + JSON.stringify(data));
           }).catch(() => {
               console.error("error");
           });
@@ -209,3 +219,9 @@ struct Index {
   }
 }
 ```
+
+## Samples
+
+The following sample is provided to help you better understand how to develop the SMS service:
+
+- [SMS Service (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Telephony/Message)

@@ -1,16 +1,16 @@
 # Using AVRecorder to Record Videos (C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the AVRecorder to develop the audio and video recording service. The AVRecorder supports audio capture, audio encoding, video encoding, audio encapsulation, and video encapsulation. It is applicable to simple video recording scenarios and can be used to generate local media files directly.
 
 In this topic, you will learn how to use the AVRecorder to complete the process of starting, pausing, resuming, and stopping video recording.
 
-During application development, you can use the **state** property of the AVRecorder to obtain the AVRecorder state or call **OH_AVRecorder_SetStateCallback** to listen for state changes. Your code must meet the state machine requirements. For example, **OH_AVRecorder_Pause()** is called only when the AVRecorder is in the **started** state, and **OH_AVRecorder_Resume()** is called only when it is in the **paused** state.
+During application development, you can use the **state** property of the AVRecorder to obtain the AVRecorder state or call **OH_AVRecorder_SetStateCallback** to listen for state changes. Your code must meet the state machine requirements. For example, **pause()** is called only when the AVRecorder is in the **started** state, and **resume()** is called only when it is in the **paused** state.
 
 **Figure 1** Recording state transition
 
@@ -29,7 +29,7 @@ Before your development, configure the following permissions for your applicatio
 
 > **NOTE**
 >
-> To clone, back up, or synchronize images and videos in users' public directory, request the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions for reading and writing audio files. For details, see <!--RP1-->[Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->.
+> To clone, back up, or synchronize images and videos in users' public directory, request the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions for reading and writing audio/video files. For details, see <!--RP1-->[Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->.
 
 
 ## How to Develop
@@ -37,36 +37,35 @@ Before your development, configure the following permissions for your applicatio
 > **NOTE**
 >
 > The AVRecorder only processes video data. To complete video recording, it must work with the video data collection module, which transfers the captured video data to the AVRecorder for data processing through the surface. Currently, the commonly used data collection module is the camera module. For details, see [Camera Recording](../camera/native-camera-recording.md).
->
 > For details about how to create and save a file, see [Accessing Application Files](../../file-management/app-file-access.md). By default, files are saved in the sandbox path of the application. To save them to Gallery, use the [security components](../medialibrary/photoAccessHelper-savebutton.md).
 
 
-You can use C/C++ APIs related to video recording by including the header files [avrecorder.h](../../reference/apis-media-kit/capi-avrecorder-h.md), [avrecorder_base.h](../../reference/apis-media-kit/capi-avrecorder-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/native__averrors_8h.md).
+You can use C/C++ APIs related to video recording by including the header files [avrecorder.h](../../reference/apis-media-kit/capi-avrecorder-h.md), [avrecorder_base.h](../../reference/apis-media-kit/capi-avrecorder-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md).
 
 Read [AVRecorder](../../reference/apis-media-kit/capi-avrecorder.md) for the API reference.
 
-Link the dynamic libraries in the CMake script.
-```
+Link the dynamic library in the CMake script.
+```C++
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-To use [OH_AVFormat](../../reference/apis-avcodec-kit/_core.md#oh_avformat) APIs, include the following header file:
-```
+To use [OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md) APIs, include the following header file:
+```C++
 #include <multimedia/player_framework/native_avformat.h>
 ```
 
-In addition, link the following dynamic libraries in the CMake script:
-```
+In addition, link the following dynamic library in the CMake script:
+```C++
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
 To use system logging, include the following header file:
-```
+```C++
 #include <hilog/log.h>
 ```
 
-In addition, link the following dynamic libraries in the CMake script:
-```
+In addition, link the following dynamic library in the CMake script:
+```C++
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 ```
 
@@ -223,8 +222,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         SetConfig(*config);
     
         // 1. Set the URL. (This operation is required when APP_CREATE is selected for fileGenerationMode.)
-        const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-        int32_t outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
+        const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+        int32_t outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
         std::string fileUrl = "fd://" + std::to_string(outputFd);
         config->url = const_cast<char *>(fileUrl.c_str());
         OH_LOG_INFO(LOG_APP, "config.url is: %s", const_cast<char *>(fileUrl.c_str()));
@@ -250,7 +249,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
             OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Prepare failed %{public}d", result);
         }
       
-        // Release the memory.
+        // 4. Release the memory.
         delete config->metadata.videoOrientation;
         delete config;
         config = nullptr;
@@ -277,37 +276,32 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    }
    ```
 
-5. Initialize the video data input source.
+5. Initialize the video data input source. This step is performed in the video data collection module. For the camera module, you need to create a Camera instance, obtain the camera list, create a camera input stream, and create a video output stream. For details, see [Video Recording](../camera/native-camera-recording.md).
 
-   This step is performed in the video data collection module. For the camera module, you need to create a Camera instance, obtain the camera list, create a camera input stream, and create a video output stream. For details, see [Video Recording](../camera/native-camera-recording.md).
-
-6. Start recording.
-
-   Start the input source to input video data, for example, by calling **OH_VideoOutput_Start()** of the camera module. Then call **OH_AVRecorder_Start()** to switch the AVRecorder to the **started** state.
-   
-   ```
+6. Start recording. Start the input source to input video data, for example, by calling **OH_VideoOutput_Start()** of the camera module. Then call **OH_AVRecorder_Start()** to switch the AVRecorder to the **started** state.
+   ```C++
    OH_AVRecorder_Start(g_avRecorder);
    ```
 7. Call **OH_AVRecorder_Pause()** to pause recording. The AVRecorder enters the **paused** state. In addition, pause data input, for example, by calling **OH_VideoOutput_Stop()** of the camera module.
-   ```
+   ```C++
    OH_AVRecorder_Pause(g_avRecorder);
    ```
 8. Call **OH_AVRecorder_Resume()** to resume recording. The AVRecorder enters the **started** state again.
-   ```
+   ```C++
    OH_AVRecorder_Resume(g_avRecorder);
    ```
 9. Call **OH_AVRecorder_Stop()** to stop recording. The AVRecorder enters the **stopped** state again. In addition, stop camera recording.
-   ```
+   ```C++
    OH_AVRecorder_Stop(g_avRecorder);
    ```
 10. Call **OH_AVRecorder_Reset()** to reset the resources. The AVRecorder enters the **idle** state. In this case, you can reconfigure the recording parameters.
-      ```
-      OH_AVRecorder_Reset(g_avRecorder);
-      ```
+    ```C++
+    OH_AVRecorder_Reset(g_avRecorder);
+    ```
 11. Call **OH_AVRecorder_Release()** to release the resources. The AVRecorder enters the **released** state. In addition, release the video data input source resources (camera resources in this example).
-      ```
-      OH_AVRecorder_Release(g_avRecorder);
-      ```
+    ```C++
+    OH_AVRecorder_Release(g_avRecorder);
+    ```
 
 
 ## Complete Sample Code
@@ -451,8 +445,8 @@ Refer to the sample code below to complete the process of creating a recorder in
       SetConfig(*config);
 
       // 1.1 Set the URL. (This operation is required when APP_CREATE is selected for fileGenerationMode.)
-      const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-      g_outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
+      const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+      g_outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
       std::string fileUrl = "fd://" + std::to_string(g_outputFd);
       config->url = const_cast<char *>(fileUrl.c_str());
 

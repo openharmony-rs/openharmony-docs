@@ -21,11 +21,15 @@
 
     HuksParam和HuksOptions的含义参考：[HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) 和 [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)
 
+
 ### 导入AES256密钥
-```ts
+<!-- @[import_keys_in_plaintext_AES256](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/AES256.ets) -->
+
+``` TypeScript
+
 /* 以下以导入AES256密钥的Callback操作使用为例。 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 密钥材料。 */
 let plainTextSize32 = new Uint8Array([
@@ -36,16 +40,16 @@ let plainTextSize32 = new Uint8Array([
 let keyAlias = 'AES256Alias_sample';
 
 /* 2.封装密钥属性集和密钥材料。 */
-let properties: Array<huks.HuksParam> = [{
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_AES
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-  },
+let properties: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_AES
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+},
 ]
 let options: huks.HuksOptions = {
   properties: properties,
@@ -54,7 +58,7 @@ let options: huks.HuksOptions = {
 
 /* 3.明文导入密钥。 */
 async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): Promise<boolean> {
-  console.info("promise: enter importKeyItem");
+  console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
@@ -62,7 +66,7 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
         console.info(`promise: importKeyItem success`);
         ret = true;
       }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failedm errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: importKeyItem input arg invalid`);
@@ -79,11 +83,15 @@ async function testImport() {
   console.info(`testImport success`);
 }
 ```
+<!-- -->
+
 ### 导入RSA2048密钥对
-```ts
+<!-- @[import_keys_in_plaintext_RSA2048](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/RSA2048.ets) -->
+
+``` TypeScript
 /* 以下以导入RSA2048密钥的Callback操作使用为例。 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let rsa2048KeyPairMaterial = new Uint8Array([
   0x01, 0x00, 0x00, 0x00, // 密钥算法(小端表示)huks.HuksKeyAlg.HUKS_ALG_RSA = 1。
@@ -132,22 +140,22 @@ let rsa2048KeyPairMaterial = new Uint8Array([
 /* 1.确定密钥别名。 */
 let keyAlias = 'RSA_sample';
 /* 2.封装密钥属性集和密钥材料。 */
-let properties: Array<huks.HuksParam> = [{
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_RSA
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
-  }, {
-    // 此tag表示密钥导入后的用途，导入后将不可更改。
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-  }, {
-    // 此tag表示需导入的密钥类型。
-    tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
-    // 此value表示导入密钥对，若改为HUKS_KEY_TYPE_PUBLIC_KEY时表示仅导入公钥。
-    value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR
-  },
+let properties: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_RSA
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+}, {
+  // 此tag表示密钥导入后的用途，导入后将不可更改。
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+}, {
+  // 此tag表示需导入的密钥类型。
+  tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
+  // 此value表示导入密钥对，若改为HUKS_KEY_TYPE_PUBLIC_KEY时表示仅导入公钥。
+  value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR
+}
 ]
 let options: huks.HuksOptions = {
   properties: properties,
@@ -156,7 +164,7 @@ let options: huks.HuksOptions = {
 
 /* 3.明文导入密钥。 */
 async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): Promise<boolean> {
-  console.info("promise: enter importKeyItem");
+  console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
@@ -164,7 +172,7 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
         console.info(`promise: importKeyItem success`);
         ret = true;
       }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failedm errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: importKeyItem input arg invalid`);
@@ -181,13 +189,17 @@ async function testImport() {
   console.info(`testImport success`);
 }
 ```
+<!-- -->
+
 ### 导入X25519密钥公钥
-```ts
+<!-- @[import_keys_in_plaintext_X25519](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/X25519.ets) -->
+
+``` TypeScript
 /* 以下以导入X25519密钥的Callback操作使用为例。 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
-// X25519的公钥数据。X25519密钥对中的私钥和公钥都是32字节（256位），关于算法原理请自行参考相关密钥学资料。
+// X25519的公钥数据。X25519密钥对中的私钥和公钥都是32字节（256位），关于算法原理请自行参考相关密码学资料。
 let x25519KeyPubMaterial = new Uint8Array([
   0x30, 0x2A, 0x30, 0x05, 0x06, 0x03, 0x2B, 0x65, 0x6E, 0x03, 0x21, 0x00, 0xD2, 0x36, 0x9E, 0xCF,
   0xF0, 0x61, 0x5B, 0x73, 0xCE, 0x4F, 0xF0, 0x40, 0x2B, 0x89, 0x18, 0x3E, 0x06, 0x33, 0x60, 0xC6
@@ -196,22 +208,22 @@ let x25519KeyPubMaterial = new Uint8Array([
 /* 1.确定密钥别名。 */
 let keyAlias = 'X25519_Pub_import_sample';
 /* 2.封装密钥属性集和密钥材料。 */
-let properties: Array<huks.HuksParam> = [{
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_X25519
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
-  }, {
-    // 此tag表示密钥导入后的用途，导入后将不可更改。
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-  }, {
-    // 此tag表示需导入的密钥类型。
-    tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
-    // 此value表示导入密钥的公钥，若改为HUKS_KEY_TYPE_KEY_PAIR时表示导入密钥对。
-    value: huks.HuksImportKeyType.HUKS_KEY_TYPE_PUBLIC_KEY
-  },
+let properties: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_X25519
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
+}, {
+  // 此tag表示密钥导入后的用途，导入后将不可更改。
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+}, {
+  // 此tag表示需导入的密钥类型。
+  tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
+  // 此value表示导入密钥的公钥，若改为HUKS_KEY_TYPE_KEY_PAIR时表示导入密钥对。
+  value: huks.HuksImportKeyType.HUKS_KEY_TYPE_PUBLIC_KEY
+},
 ]
 let options: huks.HuksOptions = {
   properties: properties,
@@ -220,7 +232,7 @@ let options: huks.HuksOptions = {
 
 /* 3.明文导入密钥。 */
 async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): Promise<boolean> {
-  console.info("promise: enter importKeyItem");
+  console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
@@ -228,7 +240,7 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
         console.info(`promise: importKeyItem success`);
         ret = true;
       }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failedm errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: importKeyItem input arg invalid`);
@@ -245,6 +257,8 @@ async function testImport() {
   console.info(`testImport success`);
 }
 ```
+<!-- -->
+
 ## 调测验证
 
 调用[huks.isKeyItemExist](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksiskeyitemexist9)验证密钥是否存在，如密钥存在即表示密钥导入成功。
@@ -284,9 +298,9 @@ async function isKeyItemExist(keyAlias: string, options: huks.HuksOptions): Prom
 async function testImportKeyExist() {
   let retExist = await isKeyItemExist(keyAlias, huksOptions);
   if (retExist == false) {
-    console.error(`testImportKeyExistd failed`);
+    console.error(`testImportKeyExist failed`);
     return;
   }
-  console.info(`testImportKeyExistd success`);
+  console.info(`testImportKeyExist success`);
 }
 ```

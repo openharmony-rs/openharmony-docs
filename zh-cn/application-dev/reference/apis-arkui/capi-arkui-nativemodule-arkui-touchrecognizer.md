@@ -1,10 +1,14 @@
 # ArkUI_TouchRecognizer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_TouchRecognizer ArkUI_TouchRecognizer
+```
 
 ## 概述
 

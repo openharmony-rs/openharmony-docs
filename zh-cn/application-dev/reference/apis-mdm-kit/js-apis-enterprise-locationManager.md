@@ -1,10 +1,10 @@
 # @ohos.enterprise.locationManager（位置服务管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供设备位置服务策略管理的能力，包括设置和查询位置服务开关策略等。
 
@@ -35,11 +35,13 @@ setLocationPolicy(admin: Want, policy: LocationPolicy): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)。
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [LocationPolicy](#locationpolicy) | 是    | 位置服务策略。<br>- 0：默认策略。<br>- 1：禁用。<br>- 2：强制启用。 |
 
 **错误码**：
@@ -62,14 +64,14 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
-    locationManager.setLocationPolicy(wantTemp, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
-    console.info(`Succeeded in setting location patch tag.`);
+  locationManager.setLocationPolicy(wantTemp, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
+  console.info(`Succeeded in setting location patch tag.`);
 } catch(err) {
-    console.error(`Failed to get location patch tag. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set location policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ## locationManager.getLocationPolicy
@@ -88,7 +90,7 @@ getLocationPolicy(admin: Want): LocationPolicy
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。        |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。        |
 
 **返回值：**
 
@@ -116,14 +118,14 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
-    let result: locationManager.LocationPolicy = locationManager.getLocationPolicy(wantTemp);
-    console.info(`Succeeded in getting location policy. policy: ${result}`);
+  let result: locationManager.LocationPolicy = locationManager.getLocationPolicy(wantTemp);
+  console.info(`Succeeded in getting location policy. policy: ${result}`);
 } catch(err) {
-    console.error(`Failed to get location policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get location policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

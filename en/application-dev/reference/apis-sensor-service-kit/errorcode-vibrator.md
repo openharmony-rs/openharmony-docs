@@ -1,4 +1,10 @@
 # Vibrator Error Codes
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @hu-zhiqiong-->
 
 > **NOTE**
 >

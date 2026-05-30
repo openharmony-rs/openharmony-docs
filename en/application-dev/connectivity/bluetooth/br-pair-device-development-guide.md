@@ -18,14 +18,14 @@ Apply for the **ohos.permission.ACCESS_BLUETOOTH** permission. For details about
 ### Importing Required Modules
 Import the **connection**, **a2dp**, **hfp**, **hid**, **baseProfile**, **constant**, and error code modules.
 ```ts
-import { connection, a2dp, hfp, hid, baseProfile, constant } from '@kit.ConnectivityKit';
+import { connection, a2dp, hfp, hid, baseProfile, constant, common } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ### Subscribing to Pairing Status Change Events
-You can subscribe to pairing status change events to obtain the real-time pairing status. Multiple status transitions occur during the pairing process.
+You can subscribe to pairing status change events to obtain the real-time pairing status. Multiple status transitions occur during the pairing process. Through the [BOND_STATE_BONDED](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate) event,
 
-Through the [BOND_STATE_BONDED](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate) event, you can obtain the pairing status of the device that initiates pairing proactively or is paired.
+you can obtain the pairing status of the device that initiates pairing proactively or is paired.
 ```ts
 // Define the callback for pairing status changes.
 function onReceiveEvent(data: connection.BondStateParam) {
@@ -42,6 +42,7 @@ try {
 
 ### Initiating Pairing
 If the pairing status of the target device is [BOND_STATE_INVALID](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate), the current device can proactively pair with the target device.
+
 - You can obtain the target device through the device discovery process. For details, see [Bluetooth Discovery](br-discovery-development-guide.md) or [BLE Device Discovery](ble-development-guide.md).
 
 During the pairing process, a dialog box is displayed. The dialog box style varies according to the pairing type. The following figure shows the **Confirm Passkey** dialog box. The pairing can proceed only when the user agrees to the authorization.
@@ -49,19 +50,48 @@ During the pairing process, a dialog box is displayed. The dialog box style vari
 ![pair request dialog](figures/pair-request-dialog.png)
 
 **Figure 1** Bluetooth pairing request dialog box
+
+The actual MAC address of a Bluetooth device is private information. During device discovery, the Bluetooth subsystem assigns a virtual MAC address to each Bluetooth device and saves the mapping between the virtual MAC address and the actual MAC address.
+
+If you do not know the [address type](../../reference/apis-connectivity-kit/js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, you are advised to use the pairing mode of API version 20 or earlier. For details, see [connection.pairDevice](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionpairdevice).
+
+- In this pairing mode, you do not need to know the MAC address type of the target device.
+
 ```ts
-// Obtain the device address through the device discovery process.
-let device = 'XX:XX:XX:XX:XX:XX';
+// Obtain the address of the target device through the device discovery process.
+let device = '11:22:33:44:55:66';
 
 try {
   // Initiate pairing.
   connection.pairDevice(device).then(() => {
     console.info('pairDevice');
   }, (error: BusinessError) => {
-    console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
+    console.error('pairDevice: errCode:' + error.code + ', errMessage:' + error.message);
   });
 } catch (err) {
-  console.error('startPair: errCode:' + err.code + ',errMessage' + err.message);
+  console.error('startPair: errCode:' + err.code + ', errMessage:' + err.message);
+}
+```
+
+If you know the [address type](../../reference/apis-connectivity-kit/js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, you are advised to use the pairing mode supported since API version 21. For details, see [connection.pairDevice](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionpairdevice21).
+
+- In this pairing mode, you need to specify both the MAC address and address type of the target device.
+
+```js
+let btAddr: common.BluetoothAddress = {
+    "address": '11:22:33:44:55:66', // Actual or virtual MAC address of the target device.
+    "addressType": common.BluetoothAddressType.REAL, // Address type of the target device
+}
+
+try {
+    // Initiate pairing.
+    connection.pairDevice(btAddr).then(() => {
+        console.info('pairDevice');
+    }, (error: BusinessError) => {
+        console.error('pairDevice: errCode:' + error.code + ', errMessage:' + error.message);
+    });
+} catch (err) {
+  console.error('startPair: errCode:' + err.code + ', errMessage:' + err.message);
 }
 ```
 

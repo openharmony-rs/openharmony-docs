@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 [runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)接口执行脚本返回的数据对象。
 
@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 10开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## getType<sup>10+</sup>
 
@@ -139,3 +139,16 @@ getArray(): Array\<string | number | boolean\>
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
 | 17100014 | The type and value of the message do not match. |
+## getErrorDescription<sup>22+</sup>
+
+getErrorDescription(): string \| null
+
+获取JS执行的异常信息。完整示例代码参考[runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型           | 说明                                                      |
+| --------------| --------------------------------------------------------- |
+| string \| null | 若JavaScript脚本执行过程中发生异常，或返回值为object类型，系统会将其格式化为"Not support type: <{exception\|object}>"字符串返回，该字符串长度不超过2048个字符，超长部分将被截断；若object对象中包含callback类型的成员，则序列化时将自动忽略该成员；其余情况，接口均返回null。 |

@@ -1,4 +1,4 @@
-# Introduction to Universal Keystore Kit
+# About This Kit
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -20,8 +20,10 @@ The HUKS module consists of the following:
 - HUKS service layer: implements key session management and storage management.
 
 - HUKS core layer: implements core functionalities, including cryptographic operations, encryption and decryption, and key access control.
+
   > **NOTE**
-  > The HUKS core layer must run in a secure environment, such as the [TEE](huks-concepts.md) or secure chipset of a system or device. The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.
+  >
+  > For systems and devices that have a secure environment (for example, [TEE] (huks-concepts.md#tee)), the HUKS core layer must run within the secure environment. <!--Del-->The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.<!--DelEnd-->
 
 ![en_image_0000001736030930](figures/huks_architecture.png)
 
@@ -57,6 +59,8 @@ HUKS provides the following key management functionalities throughout their life
 | Functionality| Description|
 | -------- | -------- |
 | **[Key attestation](huks-key-attestation-overview.md)**| Issues a certificate for the public key in an asymmetric key pair stored in HUKS to prove the validity of the key (the key is generated in a secure environment).|
+
+<!--RP1--><!--RP1End-->
 
 ## Related Kits
 

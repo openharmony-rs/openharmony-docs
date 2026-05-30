@@ -1,10 +1,10 @@
 # 自定义绘制修改器 (DrawModifier)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -23,39 +23,48 @@ declare class DrawModifier {
 
   drawForeground?(drawContext: DrawContext): void;
 
+  drawOverlay(drawContext: DrawContext): void;
+
   invalidate(): void;
 }
 ```
 
-DrawModifier可设置前景(drawForeground)、内容前景(drawFront)、内容(drawContent)和内容背景(drawBehind)的绘制方法，开发者需要重载这些方法，并通过[Canvas](arkts-drawing-customization-on-canvas.md)的接口进行自定义绘制。自定义绘制层级图如下所示。
+DrawModifier可设置遮罩层前景（[drawOverlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawoverlay23)）、前景（[drawForeground](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawforeground20)）、内容前景（[drawFront](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawfront)）、内容（[drawContent](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawcontent)）和内容背景（[drawBehind](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawbehind)）的绘制方法，开发者需要重载这些方法，并通过[Canvas](arkts-drawing-customization-on-canvas.md)的接口进行自定义绘制。自定义绘制层级图如下所示。
 
 ![](figures/drawModifier.png)
 
-DrawModifier还提供主动触发重绘的方法invalidate，该接口开发者无需也无法重载，调用会触发所绑定组件的重绘。
+DrawModifier还提供主动触发重绘的方法[invalidate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#invalidate)，该接口开发者无需也无法重载，调用会触发所绑定组件的重绘。
 
 > **说明：**
 >
-> 每个DrawModifier实例只能设置到一个组件上，禁止进行重复设置。
+> * 每个DrawModifier实例只能设置到一个组件上，禁止进行重复设置。
 >
-> drawContent方法会替换组件原本的内容绘制函数。
+> * drawContent方法会替换组件原本的内容绘制函数。
 >
-> drawForeground方法从API version 20开始支持。
+> * drawForeground方法从API version 20开始支持。
 >
-> NDK的自定义绘制能力和示例请参考[自定义绘制](./arkts-user-defined-draw.md)。
+> * drawOverlay方法从API version 23开始支持。
+>
+> * NDK的自定义绘制能力和示例请参考[自定义绘制](./arkts-user-defined-draw.md)。
 
 ## 通过drawFront、drawContent、drawBehind进行自定义绘制
 
 通过drawFront、drawContent、drawBehind接口，在内容前景、内容和内容背景三个层级上对Text组件进行了自定义绘制，从而按需改变组件的绘制效果。
 
-```ts
-// xxx.ets
+<!-- @[drawFront_drawContent_drawBehind_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/DrawFrontDrawContentDrawBehind.ets) -->
+
+``` TypeScript
 import { drawing } from '@kit.ArkGraphics2D';
 import { AnimatorResult } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const LOG_PRINT_DOMAIN: number = 0xFF00;
+const PREFIX: string = '[Sample]'
 
 class MyFullDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
-  uiContext: UIContext;
+  public uiContext: UIContext;
 
   constructor(uiContext: UIContext) {
     super();
@@ -115,14 +124,15 @@ class MyFullDrawModifier extends DrawModifier {
     const halfWidth = context.size.width / 2;
     const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
   }
 }
 
 class MyFrontDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
-  uiContext: UIContext;
+  public uiContext: UIContext;
 
   constructor(uiContext: UIContext) {
     super();
@@ -142,7 +152,8 @@ class MyFrontDrawModifier extends DrawModifier {
     const halfWidth = context.size.width / 2;
     const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
   }
 }
 
@@ -170,7 +181,7 @@ struct DrawModifierExample {
       end: 2
     });
     this.drawAnimator.onFrame = (value: number) => {
-      console.log('frame value =', value);
+      hilog.info(LOG_PRINT_DOMAIN, PREFIX, 'frame value = %{public}', value);
       const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
       tempModifier.scaleX = Math.abs(value - 1);
       tempModifier.scaleY = Math.abs(value - 1);
@@ -181,7 +192,8 @@ struct DrawModifierExample {
   build() {
     Column() {
       Row() {
-        Text('Text组件绑定drawModifier')
+        // $r('app.string.Modifier')需要替换为开发者所需的资源文件
+        Text($r('app.string.Modifier'))
           .width(100)
           .height(100)
           .margin(10)
@@ -207,6 +219,7 @@ struct DrawModifierExample {
             this.create();
           })
         Button('play')
+          .id('play')
           .width(100)
           .height(100)
           .margin(10)
@@ -226,10 +239,10 @@ struct DrawModifierExample {
             // 切换modifier
             this.count += 1;
             if (this.count % 2 === 1) {
-              console.log('change to full modifier');
+              hilog.info(LOG_PRINT_DOMAIN, PREFIX, 'change to full modifier');
               this.modifier = this.fullModifier;
             } else {
-              console.log('change to front modifier');
+              hilog.info(LOG_PRINT_DOMAIN, PREFIX, 'change to front modifier');
               this.modifier = this.frontModifier;
             }
           })
@@ -247,14 +260,15 @@ struct DrawModifierExample {
 
 通过drawForeground接口，在组件前景层级上对Column组件进行了自定义绘制，从而改变组件前景的绘制效果。
 
-```ts
-// xxx.ets
+<!-- @[drawForeground_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/DrawForeground.ets) -->
+
+``` TypeScript
 import { drawing } from '@kit.ArkGraphics2D';
 
 class MyForegroundDrawModifier extends DrawModifier {
   public scaleX: number = 3;
   public scaleY: number = 3;
-  uiContext: UIContext;
+  public uiContext: UIContext;
 
   constructor(uiContext: UIContext) {
     super();
@@ -290,7 +304,8 @@ struct DrawModifierExample {
 
   build() {
     Column() {
-      Text('此文本是子节点')
+      // $r('app.string.TestNode')需要替换为开发者所需的资源文件。
+      Text($r('app.string.TestNode'))
         .fontSize(36)
         .width('100%')
         .height('100%')
@@ -305,4 +320,131 @@ struct DrawModifierExample {
   }
 }
 ```
+
 ![drawForeground.png](figures/drawForeground.png)
+
+## 调整自定义绘制Canvas的变换矩阵
+
+从API version 12开始，通过重写DrawModifier中的[drawContent](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawcontent)方法，可以替换组件原本的内容绘制函数。
+
+通过[concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)可以调整自定义绘制画布的变换矩阵。
+
+> **说明：**
+> 
+> - [getTotalMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#gettotalmatrix12)获取的是用来记录绘制指令的临时canvas的变换矩阵。
+> 
+> - 如果开发者希望这个画布进行一个预期的变换，应该使用[concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)而不是[setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12)，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵。
+
+**ArkTS接口调用示例：**
+
+<!-- @[Canvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/Canvas.ets) -->
+
+``` TypeScript
+import { DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+function drawImage(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+  canvas.concatMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+function drawImage1(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+
+  // 1. getTotalMatrix获取的是用来记录绘制指令的临时canvas的变换矩阵
+  // 2. 如果开发者希望这个画布进行一个预期的变换，应该使用concatMatrix而不是setMatrix，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵
+  canvas.getTotalMatrix();
+  canvas.setMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+class MyDrawModifier1 extends DrawModifier {
+  drawContent(drawContext: DrawContext): void {
+    drawImage1(drawContext.canvas)
+  }
+}
+
+class MyDrawModifier extends DrawModifier {
+  drawContent(drawContext: DrawContext): void {
+    drawImage(drawContext.canvas)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  myDrawModifier: MyDrawModifier = new MyDrawModifier();
+  myDrawModifier1: MyDrawModifier = new MyDrawModifier1();
+
+  build() {
+    Row() {
+      Column() {
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier).position({ x: 10, y: 10 })
+      }
+      .borderWidth(1)
+      .height(200)
+      .width('45%')
+
+      Column() {
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier1).position({ x: 10, y: 10 })
+      }
+      .borderWidth(1)
+      .height(200)
+      .width('45%')
+    }.height('100%')
+    .width('100%').position({ x: 10, y: 10 })
+
+  }
+}
+```
+
+![drawModifier-canvas](./figures/drawModifier-canvas.png)

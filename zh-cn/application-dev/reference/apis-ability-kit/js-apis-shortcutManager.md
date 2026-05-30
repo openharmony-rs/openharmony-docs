@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用对于[快捷方式](../../quick-start/typical-scenario-configuration.md)的管理能力，包括设置快捷方式是否显示等。
 
@@ -22,7 +22,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
 
-设置当前应用指定的快捷方式是否显示，使用Promise异步回调。
+设置当前应用指定的快捷方式是否显示。使用Promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -37,7 +37,7 @@ setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
 
 | 类型             | 说明              |
 | -------------- | --------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -66,7 +66,7 @@ shortcutManager.setShortcutVisibleForSelf("shortcut_id", false)
 
 getAllShortcutInfoForSelf(): Promise\<Array\<ShortcutInfo>>
 
-查询当前应用[配置文件](../../quick-start/module-configuration-file.md#shortcuts标签)中定义的所有快捷方式信息，使用Promise异步回调。
+查询当前应用[配置文件](../../quick-start/module-configuration-file.md#shortcuts标签)中定义的所有快捷方式信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -86,9 +86,43 @@ shortcutManager.getAllShortcutInfoForSelf()
   .then((data: shortcutManager.ShortcutInfo[]) => {
     console.info('getAllShortcutInfoForSelf shortcut data is' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(`getAllShortcutInfoForSelf errData is errCode:${err.code}  message:${err.message}`);
-  });
+  console.error(`getAllShortcutInfoForSelf errData is errCode:${err.code}  message:${err.message}`);
+});
 ```
+
+## shortcutManager.isShortcutSupported
+
+isShortcutSupported(): boolean
+
+查询当前设备是否支持快捷方式。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| boolean | 表示当前设备是否支持快捷方式。<br/>返回值为true表示当前设备支持快捷方式；返回值为false表示当前设备不支持快捷方式。 |
+
+**示例：**
+
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = shortcutManager.isShortcutSupported();
+  console.info('isShortcutSupported data is' + JSON.stringify(data));
+} catch (err) {
+  let message = (err as BusinessError).message;
+  console.error(`isShortcutSupported errData is errCode:${err.code}  message:${err.message}`);
+}
+```
+
 ## ShortcutInfo
 
 type ShortcutInfo = _ShortcutInfo

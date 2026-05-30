@@ -1,7 +1,7 @@
-# 使用JSVM进行class相关开发
+# 使用JSVM-API接口进行class相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -326,7 +326,9 @@ JSVM OH_JSVM_RemoveWrap success
 JSVM deref_item
 ```
 ### OH_JSVM_DefineClassWithOptions
-**Note:** 传入的父类class必须是通过OH_JSVM_DefineClass系列接口创建出来的，否则被视为无效参数，返回JSVM_INVALID_ARG错误码。
+> **Note:**
+>
+> 传入的父类class必须是通过OH_JSVM_DefineClass系列接口创建出来的，否则被视为无效参数，返回JSVM_INVALID_ARG错误码。
 目前支持以下的DefineClassOptions:
 - JSVM_DEFINE_CLASS_NORMAL: 按正常模式创建Class。默认缺省状态为JSVM_DEFINE_CLASS_NORMAL状态。
 - JSVM_DEFINE_CLASS_WITH_COUNT: 为所创建的Class预留interfield槽位。

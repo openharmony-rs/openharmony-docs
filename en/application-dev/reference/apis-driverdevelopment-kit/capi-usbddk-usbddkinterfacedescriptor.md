@@ -1,10 +1,14 @@
 # UsbDdkInterfaceDescriptor
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct UsbDdkInterfaceDescriptor {...} UsbDdkInterfaceDescriptor
+```
 
 ## Overview
 
@@ -12,7 +16,7 @@ Defines USB interface descriptors.
 
 **Since**: 10
 
-**Related module**: [UsbDDK](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-usbddk.md)
 
 **Header file:** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 
@@ -24,5 +28,5 @@ Defines USB interface descriptors.
 | -- | -- |
 | struct UsbInterfaceDescriptor interfaceDescriptor | Standard USB interface descriptor.|
 | struct UsbDdkEndpointDescriptor* endPoint | Endpoint descriptor contained in the interface.|
-| uint8_t* extra | Unresolved descriptor, including class- or vendor-specific descriptors.|
+| const uint8_t* extra | Unresolved descriptor, including class- or vendor-specific descriptors.|
 | uint32_t extraLength | Length of the unresolved descriptor.|

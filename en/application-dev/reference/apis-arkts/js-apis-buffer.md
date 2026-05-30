@@ -22,6 +22,8 @@ import { buffer } from '@kit.ArkTS';
 
 ## BufferEncoding
 
+type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
+
 Enumerates the supported encoding formats.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -94,6 +96,7 @@ console.info(JSON.stringify(buf3)); // {"type":"Buffer","data":[104,101,108,108,
 allocUninitializedFromPool(size: number): Buffer
 
 Creates a **Buffer** object of the specified size from the buffer pool, without initializing it.
+
 You need to use [fill()](#fill) to initialize the **Buffer** object created.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -135,6 +138,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0,0,0,0,0,0,0,0
 allocUninitialized(size: number): Buffer
 
 Creates a **Buffer** object of the specified size, without initializing it. This API does not allocate memory from the buffer pool.
+
 You need to use [fill()](#fill) to initialize the **Buffer** object created.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -270,7 +274,7 @@ Concatenates an array of **Buffer** objects of the specified length into a new o
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| list | Buffer[]&nbsp;\|&nbsp;Uint8Array[] | Yes| Array of objects to concatenate.|
+| list | [Buffer](#buffer)[]&nbsp;\|&nbsp;Uint8Array[] | Yes| Array of objects to concatenate.|
 | totalLength | number | No| Total length of bytes to be copied. The default value is **0**.|
 
 **Return value**
@@ -354,9 +358,9 @@ Creates a **Buffer** object of the specified length that shares memory with Arra
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | Yes| **ArrayBuffer** or **SharedArrayBuffer** object whose memory is to be shared.|
+| arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | Yes| Instance object.|
 | byteOffset | number | No| Byte offset. The default value is **0**.|
-| length | number | No| Length of the **Buffer** object to create, in bytes. The default value is **arrayBuffer.byteLength** minus **byteOffset**.|
+| length | number | No| Length of the **Buffer** object to create, in bytes. The default value is **arrayBuffer.byteLength** minus **byteOffset**. If null is passed, the byte length is 0.|
 
 **Return value**
 
@@ -388,6 +392,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 from(buffer: Buffer | Uint8Array): Buffer
 
 Copies the data of a passed **Buffer** object to create a new **Buffer** object and returns the new one.
+
 Creates a **Buffer** object based on the memory of a passed **Uint8Array** object and returns the new object, maintaining the memory association of the data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -613,7 +618,7 @@ Transcodes a **Buffer** or **Uint8Array** object from one encoding format to ano
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| source | [Buffer](#buffer) \| Uint8Array | Yes| Object to encode.|
+| source | [Buffer](#buffer) \| Uint8Array | Yes| Instance object.|
 | fromEnc | string | Yes| Current encoding format. For details about the supported formats, see [BufferEncoding](#bufferencoding).|
 | toEnc | string | Yes| Target encoding format. For details about the supported formats, see [BufferEncoding](#bufferencoding).|
 
@@ -653,7 +658,7 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 | -------- | -------- | -------- | -------- | -------- |
 | length | number | Yes| No| Length of the **Buffer** object, in bytes.|
 | buffer | ArrayBuffer | Yes| No| **ArrayBuffer** object.|
-| byteOffset | number | Yes| No| Offset of the **Buffer** object in the memory pool.|
+| byteOffset | number | Yes| No| Offset of the **Buffer** object in the memory pool.<br>- When a Buffer is created using a memory pool (for example, using [allocUninitializedFromPool](#bufferallocuninitializedfrompool) to create a Buffer or using buffer.from() to pass a string whose length plus the offset of the current memory pool is less than 4 KB), the offset relative to the memory pool is returned.<br>- When a Buffer allocates memory directly (for example, using [alloc](#bufferalloc)), the return value is 0.|
 
 **Error codes**
 
@@ -668,14 +673,17 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 ```ts
 import { buffer } from '@kit.ArkTS';
 
-let buf = buffer.from("1236");
+let buf = buffer.from("12345678");
 console.info(JSON.stringify(buf.length));
-// Output: 4
+// Output: 8
 let arrayBuffer = buf.buffer;
 console.info(JSON.stringify(new Uint8Array(arrayBuffer)));
-// Output: {"0":49,"1":50,"2":51,"3":54}
+// Output: {"0":49,"1":50,"2":51,"3":52,"4":53,"5":54,"6":55,"7":56}
 console.info(JSON.stringify(buf.byteOffset));
 // Output: 0
+let buf1 = buffer.from("abcd");
+console.info(JSON.stringify(buf1.byteOffset));
+// Output: 8
 ```
 
 ### compare
@@ -711,7 +719,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **Example**
 
@@ -761,7 +769,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **Example**
 
@@ -813,7 +821,7 @@ while (!next.done) {
            buffer: 3,102
            buffer: 4,101
            buffer: 5,114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -895,7 +903,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[offset/end]" is out of range. |
+| 10200001 | The value of "[offset/end]" is out of range. It must be >= 0 and <= [right range]. Received value is: [offset/end] |
 
 **Example**
 
@@ -1029,7 +1037,7 @@ Output: 0
         3
         4
         5
-*/
+ */
 ```
 
 ### lastIndexOf
@@ -2112,7 +2120,7 @@ Truncates this **Buffer** object from the specified position to create a new **B
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | start | number | No| Offset to the start position in this **Buffer** object where data is truncated. The default value is **0**.|
-| end | number | No|  Offset to the end position in this **Buffer** object (not inclusive). The default value is the length of this **Buffer** object.|
+| end | number | No|  Offset to the end position in this **Buffer** object (not inclusive). The default value is the length of this **Buffer** object. If null is passed, an empty Buffer is returned.|
 
 **Return value**
 
@@ -2293,7 +2301,7 @@ Converts the data at the specified position in this **Buffer** object into a str
 | -------- | -------- | -------- | -------- |
 | encoding | string | No| Encoding format (valid only when **value** is a string). The default value is **'utf8'**.|
 | start  | number | No|  Offset to the start position of the data to convert. The default value is **0**.|
-| end  | number | No|  Offset to the end position of the data to convert. The default value is the length of this **Buffer** object.|
+| end  | number | No|  Offset to the end position of data. The default value is the length of this **Buffer** object.|
 
 **Return value**
 
@@ -2355,7 +2363,7 @@ while (!next.done) {
            102
            101
            114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -3499,8 +3507,8 @@ Creates and returns a **Blob** object that contains specified data from this **B
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| start | number | No| Offset to the start position of the data to copy. The default value is **0**.|
-| end | number | No| Offset to the end position of the data to copy. The default value is the data length in the original **Blob** object.|
+| start | number | No| Offset to the start position of data. The default value is **0**.|
+| end | number | No| Offset to the end position of data. The default value is the data length in the original **Blob** object.|
 | type | string | No| Type of the data in the new **Blob** object. The default value is **''**.|
 
 **Return value**

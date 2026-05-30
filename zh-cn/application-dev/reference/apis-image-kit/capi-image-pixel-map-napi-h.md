@@ -4,13 +4,13 @@
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
 声明可以锁定并访问pixelmap数据的方法，声明解锁的方法。
 
-**库：** libpixelmap_ndk.so
+**库：** libpixelmap_ndk.z.so
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -40,7 +40,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)](#oh_getimageinfo) | 获取PixelMap的信息，并记录信息到[OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)结构中。 |
+| [int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)](#oh_getimageinfo) | 获取PixelMap的信息，并记录信息到[OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)结构体中。 |
 | [int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)](#oh_accesspixels) | 获取PixelMap对象数据的内存地址，并锁定该内存。<br>函数执行成功后，\*addrPtr就是获取的待访问的内存地址。访问操作完成后，必须要使用[OH_UnAccessPixels](#oh_unaccesspixels)来释放锁，否则的话资源无法被释放。待解锁后，内存地址就不可以再被访问和操作。 |
 | [int32_t OH_UnAccessPixels(napi_env env, napi_value value)](#oh_unaccesspixels) | 释放PixelMap对象数据的内存锁，用于匹配方法[OH_AccessPixels](#oh_accesspixels)。 |
 
@@ -48,7 +48,7 @@
 
 ### 方法返回的错误码
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -67,7 +67,7 @@ enum anonymous enum
 
 ### 像素格式
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -87,7 +87,7 @@ enum anonymous enum
 
 ### PixelMap缩放类型
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -107,13 +107,13 @@ PixelMap缩放类型的枚举。
 
 ### OH_GetImageInfo()
 
-```
+```c
 int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 ```
 
 **描述**
 
-获取PixelMap的信息，并记录信息到[OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)结构中。
+获取PixelMap的信息，并记录信息到[OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)结构体中。
 
 **起始版本：** 8
 
@@ -136,7 +136,7 @@ int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 
 ### OH_AccessPixels()
 
-```
+```c
 int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)
 ```
 
@@ -167,7 +167,7 @@ int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)
 
 ### OH_UnAccessPixels()
 
-```
+```c
 int32_t OH_UnAccessPixels(napi_env env, napi_value value)
 ```
 

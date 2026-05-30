@@ -3,9 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -40,14 +40,17 @@
 | [EVENT_ADDRESS_SANITIZER](#event_address_sanitizer) "ADDRESS_SANITIZER"                                    | 地址越界事件。<br>**起始版本：** 12      |
 | [EVENT_MAIN_THREAD_JANK](#event_main_thread_jank) "MAIN_THREAD_JANK"                                       | 主线程超时事件。<br>**起始版本：** 12    |
 | [EVENT_APP_HICOLLIE](#event_app_hicollie) "APP_HICOLLIE"                                                   | 任务执行超时事件。<br>**起始版本：** 18   |
-| [EVENT_APP_KILLED](#event_app_killed) "APP_KILLED"                                                         | 应用查杀事件。<br>**起始版本：** 20      |
+| [EVENT_APP_KILLED](#event_app_killed) "APP_KILLED"                                                         | 应用终止事件。<br>**起始版本：** 20      |
+| [EVENT_AUDIO_JANK_FRAME](#event_audio_jank_frame) "AUDIO_JANK_FRAME"                                       | 音频卡顿事件。<br>**起始版本：** 21      |
 | [DOMAIN_OS](#domain_os) "OS"                                                                               | OS作用域。<br>**起始版本：** 12        |
+| [EVENT_MAIN_THREAD_JANK_V2](#event_main_thread_jank_v2) "MAIN_THREAD_JANK_V2"                              | 用于设置主线程超时事件配置策略。<br>**起始版本：** 22    |
+| [OH_EVENT_APP_FREEZE_WARNING](#oh_event_app_freeze_warning) "APPFREEZE_WARNING"                            | 应用冻屏告警事件。<br>**起始版本：** 26.0.0    |
 
 ## 宏定义说明
 
 ### EVENT_USER_LOGIN
 
-```
+```c
 #define EVENT_USER_LOGIN "hiappevent.user_login"
 ```
 
@@ -59,7 +62,7 @@
 
 ### EVENT_USER_LOGOUT
 
-```
+```c
 #define EVENT_USER_LOGOUT "hiappevent.user_logout"
 ```
 
@@ -71,7 +74,7 @@
 
 ### EVENT_DISTRIBUTED_SERVICE_START
 
-```
+```c
 #define EVENT_DISTRIBUTED_SERVICE_START "hiappevent.distributed_service_start"
 ```
 
@@ -83,7 +86,7 @@
 
 ### EVENT_APP_CRASH
 
-```
+```c
 #define EVENT_APP_CRASH "APP_CRASH"
 ```
 
@@ -95,7 +98,7 @@
 
 ### EVENT_APP_FREEZE
 
-```
+```c
 #define EVENT_APP_FREEZE "APP_FREEZE"
 ```
 
@@ -107,7 +110,7 @@
 
 ### EVENT_APP_LAUNCH
 
-```
+```c
 #define EVENT_APP_LAUNCH "APP_LAUNCH"
 ```
 
@@ -119,7 +122,7 @@
 
 ### EVENT_SCROLL_JANK
 
-```
+```c
 #define EVENT_SCROLL_JANK "SCROLL_JANK"
 ```
 
@@ -131,7 +134,7 @@
 
 ### EVENT_CPU_USAGE_HIGH
 
-```
+```c
 #define EVENT_CPU_USAGE_HIGH "CPU_USAGE_HIGH"
 ```
 
@@ -143,7 +146,7 @@ CPU高负载事件。
 
 ### EVENT_BATTERY_USAGE
 
-```
+```c
 #define EVENT_BATTERY_USAGE "BATTERY_USAGE"
 ```
 
@@ -155,7 +158,7 @@ CPU高负载事件。
 
 ### EVENT_RESOURCE_OVERLIMIT
 
-```
+```c
 #define EVENT_RESOURCE_OVERLIMIT "RESOURCE_OVERLIMIT"
 ```
 
@@ -167,7 +170,7 @@ CPU高负载事件。
 
 ### EVENT_ADDRESS_SANITIZER
 
-```
+```c
 #define EVENT_ADDRESS_SANITIZER "ADDRESS_SANITIZER"
 ```
 
@@ -179,7 +182,7 @@ CPU高负载事件。
 
 ### EVENT_MAIN_THREAD_JANK
 
-```
+```c
 #define EVENT_MAIN_THREAD_JANK "MAIN_THREAD_JANK"
 ```
 
@@ -191,7 +194,7 @@ CPU高负载事件。
 
 ### EVENT_APP_HICOLLIE
 
-```
+```c
 #define EVENT_APP_HICOLLIE "APP_HICOLLIE"
 ```
 
@@ -203,19 +206,31 @@ CPU高负载事件。
 
 ### EVENT_APP_KILLED
 
-```
+```c
 #define EVENT_APP_KILLED "APP_KILLED"
 ```
 
 **描述**
 
-应用查杀事件。
+应用终止事件。
 
 **起始版本：** 20
 
+### EVENT_AUDIO_JANK_FRAME
+
+```c
+#define EVENT_AUDIO_JANK_FRAME "AUDIO_JANK_FRAME"
+```
+
+**描述**
+
+音频卡顿事件。
+
+**起始版本：** 21
+
 ### DOMAIN_OS
 
-```
+```c
 #define DOMAIN_OS "OS"
 ```
 
@@ -224,4 +239,28 @@ CPU高负载事件。
 OS作用域。
 
 **起始版本：** 12
+
+### EVENT_MAIN_THREAD_JANK_V2
+
+```c
+#define EVENT_MAIN_THREAD_JANK_V2 "MAIN_THREAD_JANK_V2"
+```
+
+**描述**
+
+用于设置主线程超时事件配置策略。
+
+**起始版本：** 22
+
+### OH_EVENT_APP_FREEZE_WARNING
+
+```c
+#define OH_EVENT_APP_FREEZE_WARNING "APPFREEZE_WARNING"
+```
+
+**描述**
+
+应用冻屏告警事件。
+
+**起始版本：** 26.0.0
 

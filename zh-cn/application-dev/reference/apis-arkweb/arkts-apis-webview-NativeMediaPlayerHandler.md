@@ -2,12 +2,11 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
-[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) 回调函数的参数。
-应用通过该对象，将播放器的状态报告给ArkWeb内核。
+[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的参数。应用通过该对象，将播放器的状态通知给 ArkWeb 内核。
 
 > **说明：**
 >
@@ -15,9 +14,9 @@
 >
 > - 本Interface首批接口从API version 12开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
-## handleStatusChanged<sup>12+<sup>
+## handleStatusChanged<sup>12+</sup>
 
 handleStatusChanged(status: PlaybackStatus): void
 
@@ -35,7 +34,7 @@ handleStatusChanged(status: PlaybackStatus): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleVolumeChanged<sup>12+<sup>
+## handleVolumeChanged<sup>12+</sup>
 
 handleVolumeChanged(volume: number): void
 
@@ -53,7 +52,7 @@ handleVolumeChanged(volume: number): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleMutedChanged<sup>12+<sup>
+## handleMutedChanged<sup>12+</sup>
 
 handleMutedChanged(muted: boolean): void
 
@@ -71,11 +70,11 @@ handleMutedChanged(muted: boolean): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handlePlaybackRateChanged<sup>12+<sup>
+## handlePlaybackRateChanged<sup>12+</sup>
 
 handlePlaybackRateChanged(playbackRate: number): void
 
-当播放器的播放速度发生变化时，调用该方法将播放速度通知给 ArkWeb 内核。
+当播放器的播放速率发生变化时，调用该方法将播放速率通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -89,7 +88,7 @@ handlePlaybackRateChanged(playbackRate: number): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleDurationChanged<sup>12+<sup>
+## handleDurationChanged<sup>12+</sup>
 
 handleDurationChanged(duration: number): void
 
@@ -107,7 +106,7 @@ handleDurationChanged(duration: number): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleTimeUpdate<sup>12+<sup>
+## handleTimeUpdate<sup>12+</sup>
 
 handleTimeUpdate(currentPlayTime: number): void
 
@@ -125,7 +124,7 @@ handleTimeUpdate(currentPlayTime: number): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleBufferedEndTimeChanged<sup>12+<sup>
+## handleBufferedEndTimeChanged<sup>12+</sup>
 
 handleBufferedEndTimeChanged(bufferedEndTime: number): void
 
@@ -143,11 +142,11 @@ handleBufferedEndTimeChanged(bufferedEndTime: number): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleEnded<sup>12+<sup>
+## handleEnded<sup>12+</sup>
 
 handleEnded(): void
 
-当媒体播放结束时，调用该方法通知给 ArkWeb 内核。
+当媒体播放结束时，调用该方法将播放结束事件通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -155,7 +154,7 @@ handleEnded(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleNetworkStateChanged<sup>12+<sup>
+## handleNetworkStateChanged<sup>12+</sup>
 
 handleNetworkStateChanged(state: NetworkState): void
 
@@ -173,7 +172,7 @@ handleNetworkStateChanged(state: NetworkState): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleReadyStateChanged<sup>12+<sup>
+## handleReadyStateChanged<sup>12+</sup>
 
 handleReadyStateChanged(state: ReadyState): void
 
@@ -191,7 +190,7 @@ handleReadyStateChanged(state: ReadyState): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleFullscreenChanged<sup>12+<sup>
+## handleFullscreenChanged<sup>12+</sup>
 
 handleFullscreenChanged(fullscreen: boolean): void
 
@@ -209,11 +208,11 @@ handleFullscreenChanged(fullscreen: boolean): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleSeeking<sup>12+<sup>
+## handleSeeking<sup>12+</sup>
 
 handleSeeking(): void
 
-当播放器进入seek 状态时，调用该方法通知 ArkWeb 内核。
+当播放器进入seek状态时，调用该方法将seek进入事件通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -221,11 +220,11 @@ handleSeeking(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleSeekFinished<sup>12+<sup>
+## handleSeekFinished<sup>12+</sup>
 
 handleSeekFinished(): void
 
-当播放器 seek 完成后，调用该方法通知 ArkWeb 内核。
+当播放器seek完成后，调用该方法将seek完成事件通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -233,11 +232,11 @@ handleSeekFinished(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleError<sup>12+<sup>
+## handleError<sup>12+</sup>
 
 handleError(error: MediaError, errorMessage: string): void
 
-当播放器发生错误时， 调用该方法通知 ArkWeb 内核。
+当播放器发生错误时，调用该方法将错误通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -252,11 +251,11 @@ handleError(error: MediaError, errorMessage: string): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleVideoSizeChanged<sup>12+<sup>
+## handleVideoSizeChanged<sup>12+</sup>
 
 handleVideoSizeChanged(width: number, height: number): void
 
-当播放器解析出视频的尺寸时， 调用该方法通知 ArkWeb 内核。
+当播放器解析出视频的尺寸时， 调用该方法将视频尺寸通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -264,8 +263,8 @@ handleVideoSizeChanged(width: number, height: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| width  | number | 是 | 视频的宽，单位为像素，取值范围：[0, +∞) |
-| height | number | 是 | 视频的高，单位为像素，取值范围：[0, +∞) |
+| width  | number | 是 | 视频的宽，单位：像素，取值范围：[0, +∞) |
+| height | number | 是 | 视频的高，单位：像素，取值范围：[0, +∞) |
 
 **示例：**
 

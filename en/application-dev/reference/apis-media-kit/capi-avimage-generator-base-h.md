@@ -1,10 +1,10 @@
 # avimage_generator_base.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -32,7 +32,7 @@ The file declares the enums used by the AVImageGenerator.
 
 ### OH_AVImageGenerator_QueryOptions
 
-```
+```c
 enum OH_AVImageGenerator_QueryOptions
 ```
 

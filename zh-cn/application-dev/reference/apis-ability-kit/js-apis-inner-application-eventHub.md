@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 EventHub是系统提供的基于发布-订阅模式实现的事件通信机制。通过事件名，实现了发送方和订阅方之间的解耦，支持不同业务模块间的高效数据传递和状态同步。
+
 主要用于[UIAbility组件与UI的数据通信](../../application-models/uiability-data-sync-with-ui.md)。
 
 不同的Context对象拥有不同的EventHub对象，不同EventHub对象之间无法直接通信。事件的订阅、取消订阅、触发都作用在某一个具体的EventHub对象上。
@@ -42,7 +43,7 @@ import { common, UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   eventFunc() {
-    console.log('eventFunc is called');
+    console.info('eventFunc is called');
   }
 
   onCreate() {
@@ -117,7 +118,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc() {
-    console.log(`eventFunc is called, value: ${this.value}`);
+    console.info(`eventFunc is called, value: ${this.value}`);
   }
 }
 ```
@@ -136,7 +137,7 @@ export default class EntryAbility extends UIAbility {
     try {
       // 支持使用匿名函数订阅事件
       this.context.eventHub.on('myEvent', () => {
-        console.log(`anonymous eventFunc is called, value: ${this.value}`);
+        console.info(`anonymous eventFunc is called, value: ${this.value}`);
       });
     } catch (e) {
       let code: number = (e as BusinessError).code;
@@ -158,7 +159,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc() {
-    console.log(`eventFunc is called, value: ${this.value}`);
+    console.info(`eventFunc is called, value: ${this.value}`);
   }
 }
 ```
@@ -212,11 +213,11 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc1() {
-    console.log('eventFunc1 is called');
+    console.info('eventFunc1 is called');
   }
 
   eventFunc2() {
-    console.log('eventFunc2 is called');
+    console.info('eventFunc2 is called');
   }
 }
 ```
@@ -276,7 +277,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   eventFunc(argOne: number, argTwo: number) {
-    console.log(`eventFunc is called, ${argOne}, ${argTwo}`);
+    console.info(`eventFunc is called, ${argOne}, ${argTwo}`);
   }
 }
 ```

@@ -1,22 +1,28 @@
 # 视效设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供接口设置组件视觉效果，包括滤镜效果（如：模糊，像素扩展等）和非滤镜效果（如：点光源等）。
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## visualEffect
 
 visualEffect(effect: VisualEffect): T
 
 设置非滤镜视觉效果。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -26,7 +32,7 @@ visualEffect(effect: VisualEffect): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| effect | [VisualEffect](#visualeffect) | 是   | 非滤镜视觉效果。 |
+| effect | [VisualEffect](#visualeffect-1) | 是   | 非滤镜视觉效果。 |
 
 **返回值：**
 
@@ -39,6 +45,10 @@ visualEffect(effect: VisualEffect): T
 backgroundFilter(filter: Filter): T
 
 设置背景滤镜视觉效果。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -62,6 +72,10 @@ foregroundFilter(filter: Filter): T
 
 设置前景滤镜（内容）视觉效果。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -84,6 +98,10 @@ compositingFilter(filter: Filter): T
 
 设置合成滤镜视觉效果。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -93,6 +111,32 @@ compositingFilter(filter: Filter): T
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
 | filter | [Filter](#filter) | 是   | 合成滤镜视觉效果。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## materialFilter<sup>23+</sup>
+
+materialFilter(filter: Filter | undefined): T
+
+设置系统材质滤镜效果，系统材质滤镜的绘制早于[backgroundFilter](#backgroundfilter)绘制，即位于backgroundFilter的更底层。
+
+>**说明：**
+>
+> 该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                 |
+| ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
+| filter | [Filter](#filter) &nbsp;\|&nbsp; undefined | 是   | 系统材质滤镜视觉效果。设置为undefined时恢复为无系统材质滤镜效果。 |
 
 **返回值：**
 
@@ -151,6 +195,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // $r("app.media.app_icon")需替换为开发者所需的资源文件
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .foregroundFilter(this.filterTest1) // 通过 foregroundFilter 设置模糊效果
@@ -160,6 +205,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // $r("app.media.app_icon")需替换为开发者所需的资源文件
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .backgroundFilter(this.filterTest2) // 通过 backgroundFilter 设置模糊效果
@@ -169,6 +215,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // $r("app.media.app_icon")需替换为开发者所需的资源文件
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .compositingFilter(this.filterTest3) // 通过 compositingFilter 设置模糊效果

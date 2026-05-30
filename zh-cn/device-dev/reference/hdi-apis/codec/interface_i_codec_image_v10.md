@@ -58,7 +58,7 @@ ICodecImage::AllocateInBuffer ([out] struct CodecImageBuffer inBuffer, [in] unsi
 
 失败返回HDF_FAILURE
 
-如果vendor层返回失败，则返回其他值。其他错误代码详见[HDF_STATUS](https://gitee.com/openharmony/drivers_hdf_core/blob/master/interfaces/inner_api/utils/hdf_base.h)的定义。
+如果vendor层返回失败，则返回其他值。其他错误代码详见[HDF_STATUS](https://gitcode.com/openharmony/drivers_hdf_core/blob/master/interfaces/inner_api/utils/hdf_base.h)的定义。
 
 
 ### DeInit()
@@ -85,7 +85,7 @@ ICodecImage::DeInit ([in] enum CodecImageRole role)
 
 成功返回HDF_SUCCESS
 
-如果vendor层返回失败，则返回其他值。其他错误代码详见[HDF_STATUS](https://gitee.com/openharmony/drivers_hdf_core/blob/master/interfaces/inner_api/utils/hdf_base.h)的定义。
+如果vendor层返回失败，则返回其他值。其他错误代码详见[HDF_STATUS](https://gitcode.com/openharmony/drivers_hdf_core/blob/master/interfaces/inner_api/utils/hdf_base.h)的定义。
 
 
 ### DoJpegDecode()
@@ -118,7 +118,7 @@ ICodecImage::DoJpegDecode ([in] struct CodecImageBuffer inBuffer, [in] struct Co
 
 失败返回HDF_FAILURE
 
-如果vendor层返回失败，则返回其他值。其他错误代码详见[HDF_STATUS](https://gitee.com/openharmony/drivers_hdf_core/blob/master/interfaces/inner_api/utils/hdf_base.h)的定义。
+如果vendor层返回失败，则返回其他值。其他错误代码详见[HDF_STATUS](https://gitcode.com/openharmony/drivers_hdf_core/blob/master/interfaces/inner_api/utils/hdf_base.h)的定义。
 
 
 ### FreeInBuffer()
@@ -145,7 +145,7 @@ ICodecImage::FreeInBuffer ([in] struct CodecImageBuffer inBuffer)
 
 成功返回HDF_SUCCESS
 
-如果vendor层返回失败，则返回其他值。其他错误代码详见[HDF_STATUS](https://gitee.com/openharmony/drivers_hdf_core/blob/master/interfaces/inner_api/utils/hdf_base.h)的定义。
+如果vendor层返回失败，则返回其他值。其他错误代码详见[HDF_STATUS](https://gitcode.com/openharmony/drivers_hdf_core/blob/master/interfaces/inner_api/utils/hdf_base.h)的定义。
 
 
 ### GetImageCapability()
@@ -199,4 +199,4 @@ ICodecImage::Init ([in] enum CodecImageRole role)
 
 成功返回HDF_SUCCESS
 
-如果vendor层返回失败，则返回其他值。其他错误代码详见[HDF_STATUS](https://gitee.com/openharmony/drivers_hdf_core/blob/master/interfaces/inner_api/utils/hdf_base.h)的定义。
+如果vendor层返回失败，则返回其他值。其他错误代码详见[HDF_STATUS](https://gitcode.com/openharmony/drivers_hdf_core/blob/master/interfaces/inner_api/utils/hdf_base.h)的定义。

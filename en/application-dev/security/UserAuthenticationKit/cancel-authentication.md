@@ -3,14 +3,15 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
-Use **cancel()** to terminate the authentication process when needed.
+The unified user authentication framework provides **cancel()** for terminating the authentication process.
 
 ## Available APIs
 
-For details about the parameters, return value, and error codes, see [cancel](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#cancel10).
+For details about the parameters, return values, and error codes, see [cancel](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#cancel10).
 
 This topic describes only the API for canceling authentication. For details about the APIs for initiating authentication, see [Initiating Authentication](start-authentication.md) and [User Authentication](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md).
 
@@ -28,47 +29,53 @@ This topic describes only the API for canceling authentication. For details abou
 
 Example: Initiate facial and lock screen password authentication at ATL3 or higher and then cancel it.
 
-```ts
-import { BusinessError } from  '@kit.BasicServicesKit';
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+<!-- @[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
-try {
-  const rand = cryptoFramework.createRandom();
-  const len: number = 16;
-  let randData: Uint8Array | null = null;
-  let retryCount = 0;
-  while(retryCount < 3){
-    randData = rand?.generateRandomSync(len)?.data;
-    if(randData){
-      break;
+``` TypeScript
+handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
+  // ...
+    // Start authentication.
+    userAuthInstance.start();
+    Logger.info('auth start successfully.');
+    // ...
+      // Cancel the authentication.
+      userAuthInstance.cancel();
+      Logger.info('auth cancel successfully.');
+      // ...
+}
+
+/*
+ * cancel-authentication.md
+ * Initiate facial and lock screen password authentication at ATL3 or higher and then cancel it.
+ * */
+cancelingUserAuthentication() {
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
     }
-    retryCount++;
+    // Set authentication parameters.
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+    };
+    // Set the authentication page.
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // Obtain an authentication object.
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully.');
+    this.handleAuthResultAndCanceling(userAuthInstance, ResultIndex.CANCEL);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code as number}, message is ${err?.message}`);
   }
-  if(!randData){
-    return;
-  }
-  // Set authentication parameters.
-  const authParam: userAuth.AuthParam = {
-    challenge: randData,
-    authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE],
-    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-  };
-  // Set the authentication page.
-  const widgetParam: userAuth.WidgetParam = {
-    title: 'Verify identity',
-  };
-  // Obtain an authentication object.
-  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
-  // Start user authentication.
-  userAuthInstance.start();
-  console.info('auth start success');
-  // Cancel the authentication.
-  userAuthInstance.cancel();
-  console.info('auth cancel success');
-} catch (error) {
-  const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
+
+
+## Sample Code
+
+  - [Cancel authentication in progress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)

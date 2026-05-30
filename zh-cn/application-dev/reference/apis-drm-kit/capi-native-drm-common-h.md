@@ -5,7 +5,7 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -13,7 +13,7 @@
 
 **引用文件：** <multimedia/drm_framework/native_drm_common.h>
 
-**库：** libnative_drm.z.so
+**库：** libnative_drm.so
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -54,7 +54,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | 应用为从媒体源获取DRM信息而设置的回调。 |
+| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | 应用为从媒体源获取DRM信息而设置的回调函数。 |
 
 ### 宏定义
 
@@ -88,7 +88,7 @@
 
 ### DRM_EventType
 
-```
+```c
 enum DRM_EventType
 ```
 
@@ -111,7 +111,7 @@ enum DRM_EventType
 
 ### DRM_ContentProtectionLevel
 
-```
+```c
 enum DRM_ContentProtectionLevel
 ```
 
@@ -133,7 +133,7 @@ enum DRM_ContentProtectionLevel
 
 ### DRM_MediaKeyType
 
-```
+```c
 enum DRM_MediaKeyType
 ```
 
@@ -152,7 +152,7 @@ enum DRM_MediaKeyType
 
 ### DRM_MediaKeyRequestType
 
-```
+```c
 enum DRM_MediaKeyRequestType
 ```
 
@@ -175,7 +175,7 @@ enum DRM_MediaKeyRequestType
 
 ### DRM_OfflineMediaKeyStatus
 
-```
+```c
 enum DRM_OfflineMediaKeyStatus
 ```
 
@@ -195,7 +195,7 @@ enum DRM_OfflineMediaKeyStatus
 
 ### DRM_CertificateStatus
 
-```
+```c
 enum DRM_CertificateStatus
 ```
 
@@ -220,13 +220,13 @@ enum DRM_CertificateStatus
 
 ### DRM_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 
 **描述**
 
-应用为从媒体源获取DRM信息而设置的回调。
+应用为从媒体源获取DRM信息而设置的回调函数。
 
 **起始版本：** 11
 
@@ -235,6 +235,6 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | 从媒体源获取的DRM信息。 |
+| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | 输出参数，从媒体源获取的DRM信息，包含DRM内容保护系统的唯一标识和PSSH数据。 |
 
 

@@ -1,14 +1,14 @@
 # inputmethod_cursor_info_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
-提供光标信息对象的创建、销毁与读写方法。
+提供光标信息（即用于描述文本输入时光标的位置与尺寸信息，在输入法服务中用于确定光标所在区域以实现精准输入）对象的创建、销毁与读写方法。
 
 **引用文件：** <inputmethod/inputmethod_cursor_info_capi.h>
 
@@ -41,7 +41,7 @@
 
 ### OH_CursorInfo_Create()
 
-```
+```c
 InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double width, double height)
 ```
 
@@ -56,20 +56,20 @@ InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double wid
 
 | 参数项 | 描述 |
 | -- | -- |
-| double left | 光标靠左点与物理屏幕左侧距离的绝对值。 |
-| double top | 光标顶点与物理屏幕上侧距离的绝对值。 |
-| double width | 宽度。 |
-| double height | 高度。 |
+| double left | 光标靠左点相对于物理屏幕左侧的距离的绝对值，单位px。 |
+| double top | 光标顶点与物理屏幕上侧距离的绝对值，单位px。 |
+| double width | 宽度，单位px。 |
+| double height | 高度，单位px。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | 如果创建成功，返回一个指向新创建的[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例的指针。<br> 成功时返回实例。如果创建失败，对象返回NULL，可能的失败原因有应用地址空间满。 |
+| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | 如果创建成功，返回一个指向新创建的[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例的指针。<br> 如果创建失败，对象返回NULL，可能的失败原因有应用程序的地址空间耗尽。 |
 
 ### OH_CursorInfo_Destroy()
 
-```
+```c
 void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 ```
 
@@ -88,7 +88,7 @@ void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 
 ### OH_CursorInfo_SetRect()
 
-```
+```c
 InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, double left, double top, double width, double height)
 ```
 
@@ -104,10 +104,10 @@ InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, 
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) *cursorInfo | 表示指向[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例的指针。 |
-| double left | 光标靠左点与物理屏幕左侧距离的绝对值。 |
-| double top | 光标顶点与物理屏幕上侧距离的绝对值。 |
-| double width | 宽度。 |
-| double height | 高度。 |
+| double left | 光标靠左点与物理屏幕左侧距离的绝对值，单位px。 |
+| double top | 光标顶点与物理屏幕上侧距离的绝对值，单位px。 |
+| double width | 宽度，单位px。 |
+| double height | 高度，单位px。 |
 
 **返回：**
 
@@ -117,7 +117,7 @@ InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, 
 
 ### OH_CursorInfo_GetRect()
 
-```
+```c
 InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, double *left, double *top, double *width, double *height)
 ```
 
@@ -133,10 +133,10 @@ InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, 
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) *cursorInfo | 表示指向[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例的指针。 |
-| double *left | 靠左点与物理屏幕左侧距离的绝对值。 |
-| double *top | 顶点与物理屏幕上侧距离的绝对值。 |
-| double *width | 宽度。 |
-| double *height | 高度。 |
+| double *left | 靠左点与物理屏幕左侧距离的绝对值，单位px。 |
+| double *top | 顶点与物理屏幕上侧距离的绝对值，单位px。 |
+| double *width | 宽度，单位px。 |
+| double *height | 高度，单位px。 |
 
 **返回：**
 

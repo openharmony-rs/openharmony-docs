@@ -1,9 +1,9 @@
 # inputmethod_cursor_info_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -41,7 +41,7 @@ Provides methods for creating, destroying, reading, and writing cursor informati
 
 ### OH_CursorInfo_Create()
 
-```
+```c
 InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double width, double height)
 ```
 
@@ -56,20 +56,20 @@ Creates an [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) 
 
 | Name| Description|
 | -- | -- |
-| double left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen.|
-| double top | Absolute value of the distance between the cursor's top vertex and the top edge of the physical screen.|
-| double width | Width.|
-| double height | Height.|
+| double left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen, in px.|
+| double top | Absolute value of the distance between the cursor's top point and the top edge of the physical screen, in px.|
+| double width | Width, in px.|
+| double height | Height, in px.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | If the operation is successful, a pointer to the created [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance is returned.<br>  If the operation failed, **NULL** is returned, which may be caused by insufficient application address space.|
+| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | If the operation is successful, a pointer to the created [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance is returned.<br> If the operation fails, **NULL** is returned. This may occur when the application's address space is exhausted.|
 
 ### OH_CursorInfo_Destroy()
 
-```
+```c
 void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 ```
 
@@ -88,7 +88,7 @@ Destroys an [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)
 
 ### OH_CursorInfo_SetRect()
 
-```
+```c
 InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, double left, double top, double width, double height)
 ```
 
@@ -104,10 +104,10 @@ Sets the cursor information.
 | Name| Description|
 | -- | -- |
 | [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) *cursorInfo | Pointer to the [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance.|
-| double left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen.|
-| double top | Absolute value of the distance between the cursor's top vertex and the top edge of the physical screen.|
-| double width | Width.|
-| double height | Height.|
+| double left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen, in px.|
+| double top | Absolute value of the distance between the cursor's top point and the top edge of the physical screen, in px.|
+| double width | Width, in px.|
+| double height | Height, in px.|
 
 **Returns**
 
@@ -117,7 +117,7 @@ Sets the cursor information.
 
 ### OH_CursorInfo_GetRect()
 
-```
+```c
 InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, double *left, double *top, double *width, double *height)
 ```
 
@@ -133,10 +133,10 @@ Obtains the cursor information.
 | Name| Description|
 | -- | -- |
 | [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) *cursorInfo | Pointer to the [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance.|
-| double *left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen.|
-| double *top | Absolute value of the distance between the cursor's top vertex and the top edge of the physical screen.|
-| double *width | Width.|
-| double *height | Height.|
+| double *left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen, in px.|
+| double *top | Absolute value of the distance between the cursor's top point and the top edge of the physical screen, in px.|
+| double *width | Width, in px.|
+| double *height | Height, in px.|
 
 **Returns**
 

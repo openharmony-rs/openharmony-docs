@@ -1,5 +1,12 @@
 # Context (系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
 Context模块提供了ability或application的上下文的能力，包括访问特定应用程序的资源等。
 
 > **说明：**
@@ -24,9 +31,9 @@ createBundleContext(bundleName: string): Context
 
 > **说明：**
 >
-> stage模型多module的情况下可能发生资源id冲突的情况，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12)替代。
+> stage模型多module的情况下可能发生资源id冲突的情况，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext)替代。
 >
-> 从 API Version 12 开始废弃，建议使用[application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext12)替代。
+> 从API version 9 开始支持，从API version 12 开始废弃，建议使用[application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -52,6 +59,8 @@ createBundleContext(bundleName: string): Context
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
@@ -62,7 +71,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let bundleContext: common.Context;
     try {
       bundleContext = this.context.createBundleContext('com.example.test');
@@ -81,7 +90,7 @@ createModuleContext(bundleName: string, moduleName: string): Context
 
 > **说明：**
 >
-> 从 API Version 12 开始废弃，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12)替代。
+> 从API version 9 开始支持，从API version 12 开始废弃，建议使用[application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext)替代。
 
 **系统接口**：此接口为系统接口。
 
@@ -116,7 +125,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let moduleContext: common.Context;
     try {
       moduleContext = this.context.createModuleContext('com.example.test', 'entry');
@@ -171,7 +180,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let ModuleResourceManager: resourceManager.ResourceManager;
     try {
       ModuleResourceManager = this.context.createModuleResourceManager('com.example.test', 'entry');
@@ -214,7 +223,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     this.context.createSystemHspModuleResourceManager("com.example.myapplication", "library");
   }
 }

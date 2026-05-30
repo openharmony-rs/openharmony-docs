@@ -1,10 +1,10 @@
 # 组件内转场 (transition)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件内转场主要通过transition属性配置转场参数，在组件插入和删除时显示过渡动效，主要用于容器组件中的子组件插入和删除时，提升用户体验。 
 
@@ -14,7 +14,7 @@
 >
 >  当前有两种方式触发组件的transition：
 >  1. 当组件插入或删除时（如if条件改变、ForEach新增删除组件），会递归的触发所有新插入/删除的组件的transition效果。
->  2. 当组件[Visibility](ts-universal-attributes-visibility.md)属性在可见和不可见之间改变时，只触发该组件的transition效果。
+>  2. 当组件[visibility](ts-universal-attributes-visibility.md#visibility)属性在可见和不可见（Visibility.Hidden或Visibility.None）之间改变时，只触发该组件的transition效果。在Visibility.Visible与Visibility.None之间切换时，若直接设置为Visibility.None，会导致组件布局大小为0，此时无法观察到transition效果。而当在动画中修改visibility属性为Visibility.None时，组件布局为0是带动画的，将呈现transition与布局动画的叠加效果，形成双动画的复合表现。
 
 
 ## transition
@@ -45,7 +45,13 @@ transition(value: TransitionOptions | TransitionEffect): T
 
 transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallback&gt;): T
 
-组件插入显示和删除隐藏的过渡效果。
+组件插入显示和删除隐藏的过渡效果。同[transition](#transition)相比，增加了转场动画结束的回调。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,22 +74,28 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 ## TransitionEdge<sup>10+</sup>
 
+转场边缘类型。
+
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值 | 说明     |
 | ------ | ------ | ------ |
-| TOP    | - | 窗口的上边缘。 |
-| BOTTOM | - | 窗口的下边缘。 |
-| START  | - | 窗口的起始边缘，LTR时为左边缘，RTL时为右边缘。 |
-| END    | - | 窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。 |
+| TOP    | 0 | 窗口的上边缘。 |
+| BOTTOM | 1 | 窗口的下边缘。 |
+| START  | 2 | 窗口的起始边缘，LTR时为左边缘，RTL时为右边缘。 |
+| END    | 3 | 窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。 |
 
 ## TransitionEffect<sup>10+</sup>对象说明
 
 TransitionEffect以函数的形式指定转场效果。提供了以下接口：
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +110,7 @@ TransitionEffect以函数的形式指定转场效果。提供了以下接口：
 | IDENTITY | [TransitionEffect](#transitioneffect10对象说明)\<"identity"> | 是 | 否| 禁用转场效果。 |
 | OPACITY | [TransitionEffect](#transitioneffect10对象说明)\<"opacity"> | 是 | 否| 为组件添加透明度转场效果，出现时透明度从0到1、消失时透明度从1到0，相当于TransitionEffect.opacity(0)。 |
 | SLIDE | [TransitionEffect](#transitioneffect10对象说明)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; }> | 是 | 否 | 相当于TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))。从START边滑入，END边滑出。即在LTR模式下，从左侧滑入，右侧滑出；在RTL模式下，从右侧滑入，左侧滑出。 |
-| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10对象说明)\<"slideSwitch"> | 是 | 否 | 指定出现时从右先缩小再放大侧滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。|
+| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10对象说明)\<"slideSwitch"> | 是 | 否 | 指定出现时从右侧先缩小再放大滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。|
 
 >  **说明：**
 >
@@ -107,7 +119,7 @@ TransitionEffect以函数的形式指定转场效果。提供了以下接口：
 >  3. 如果未使用animateTo触发转场动画且TransitionEffect中也无animation参数，则该组件直接出现或者消失。
 >  4. TransitionEffect中指定的属性值如与默认值相同，则该属性不会产生转场动画。如TransitionEffect.opacity(1).animation({duration:1000})，由于opacity默认值也为1，未产生透明度动画，该组件直接出现或者消失。
 >  5. 更详细的关于scale、rotate效果的介绍可参考[图形变换](ts-universal-attributes-transformation.md)。
->  6. 如果在动画范围([animateTo](../arkts-apis-uicontext-uicontext.md#animateto)、[animation](ts-animatorproperty.md))内触发组件的上下树或可见性([Visibility](ts-universal-attributes-visibility.md))改变，而根组件没有配置transition，会给该组件加上默认透明度转场，即TransitionEffect.OPACITY，动画参数跟随所处动画环境的参数。如不需要可通过主动配置TransitionEffect.IDENTITY来禁用，使该组件直接出现或消失。
+>  6. 如果在动画范围([animateTo](../arkts-apis-uicontext-uicontext.md#animateto)、[animation](ts-animatorproperty.md))内触发组件的上下树或可见性([visibility](ts-universal-attributes-visibility.md#visibility))改变，而根组件没有配置transition，会给该组件加上默认透明度转场，即TransitionEffect.OPACITY，动画参数跟随所处动画环境的参数。如不需要可通过主动配置TransitionEffect.IDENTITY来禁用，使该组件直接出现或消失。
 >  7. 当通过删除整棵子树的方式触发消失转场，如需看到完整的消失转场过程，需要保证被删除子树的根组件的有充足的消失转场时间，见示例3。
 
 ### translate<sup>10+</sup>
@@ -119,6 +131,8 @@ translate(options: TranslateOptions): TransitionEffect\<"translate">
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +158,8 @@ rotate(options: RotateOptions): TransitionEffect\<"rotate">
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -168,13 +184,15 @@ scale(options: ScaleOptions): TransitionEffect\<"scale">
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                   | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明)      | 是   | 组件转场时的缩放效果，为插入时起点和删除时终点的值。<br/>-x：横向放大倍数（或缩小比例）。<br/>-y：纵向放大倍数（或缩小比例）。<br/>-z：当前为二维显示，该参数无效。<br/>-&nbsp;centerX、centerY指缩放中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br/>-&nbsp;中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串时（例如，"illegalString"），默认值为"0"。 |
+| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明)      | 是   | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时，组件入场动画的缩放值将从0.4开始执行。<br/>-x：横向放大倍数（或缩小比例）。<br/>-y：纵向放大倍数（或缩小比例）。<br/>-z：当前为二维显示，该参数无效。<br/>-&nbsp;centerX、centerY指缩放中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br/>-&nbsp;中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串时（例如，"illegalString"），默认值为"0"。 |
 
 **返回值：**
 
@@ -191,6 +209,8 @@ opacity(alpha: number): TransitionEffect\<"opacity">
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -216,6 +236,8 @@ move(edge: TransitionEdge): TransitionEffect\<"move">
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -234,11 +256,13 @@ move(edge: TransitionEdge): TransitionEffect\<"move">
 
 asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect\<"asymmetric">
 
-设置非对称的转场效果。
+设置非对称的转场效果，即出现、消失为两套独立不同的动画，效果不互为逆过程。具体效果可参考[示例2](#示例2使用不同接口实现图片出现消失)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -265,6 +289,8 @@ constructor(type: Type, effect: Effect)
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -283,6 +309,8 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -307,6 +335,8 @@ animation(value: AnimateParam): TransitionEffect
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -333,6 +363,8 @@ type TransitionFinishCallback = (transitionIn: boolean) => void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -349,7 +381,9 @@ type TransitionFinishCallback = (transitionIn: boolean) => void
 
 TransitionOptions通过指定结构体内的参数来指定转场效果。
 
-从API version 10开始不再维护，建议使用[TransitionEffect](#transitioneffect10对象说明)代替。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[TransitionEffect](#transitioneffect10对象说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -370,7 +404,7 @@ TransitionOptions通过指定结构体内的参数来指定转场效果。
 
 ### 示例1（使用同一接口实现图片出现消失）
 
-该示例主要演示如何通过同一TransitionEffect来实现图片的出现与消失，出现和消失互为逆过程。
+该示例主要演示如何通过同一[TransitionEffect](#transitioneffect10对象说明)来实现图片的出现与消失，出现和消失互为逆过程。
 ```ts
 // xxx.ets
 @Entry
@@ -410,7 +444,7 @@ struct TransitionEffectExample1 {
 
 ### 示例2（使用不同接口实现图片出现消失）
 
-该示例主要演示使用不同TransitionEffect来实现图片的出现和消失。
+该示例主要演示使用不同[TransitionEffect](#transitioneffect10对象说明)来实现图片的出现和消失。
 ```ts
 // xxx.ets
 @Entry
@@ -470,7 +504,7 @@ struct TransitionEffectExample2 {
 
 ### 示例3（设置父子组件为transition）
 
-该示例主要演示通过父子组件都配置transition来实现图片的出现和消失。
+该示例主要演示通过父子组件都配置[transition](#transition)来实现图片的出现和消失。
 ```ts
 // xxx.ets
 @Entry
@@ -492,7 +526,7 @@ struct TransitionEffectExample3 {
           this.flag = !this.flag;
         })
       if (this.flag) {
-        // 改flag条件时，会触发id为"column1"、"image1"、"image2"的transition动画。
+        // 当flag条件改变时，会触发id为"column1"、"image1"、"image2"的transition动画。
         // id为"column1"的组件是这棵新出现/消失的子树的根节点。
         Column() {
           Row() {

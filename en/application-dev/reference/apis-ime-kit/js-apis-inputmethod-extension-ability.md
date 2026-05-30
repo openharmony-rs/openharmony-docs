@@ -1,12 +1,12 @@
 # @ohos.InputMethodExtensionAbility (InputMethodExtensionAbility)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-The **InputMethodExtensionAbility** module provides APIs for developing input methods and managing their lifecycles.
+The **InputMethodExtensionAbility** module provides APIs for developing input methods and managing the lifecycle of input method extensions.
 
 > **NOTE**
 >
@@ -54,6 +54,7 @@ Called when the **InputMethodExtensionAbility** is started to implement initiali
 ```ts
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
 import { Want } from '@kit.AbilityKit';
+
 class InputMethodExt extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
     console.info('onCreate, want:' + want.abilityName);
@@ -73,6 +74,7 @@ Called when this **InputMethodExtensionAbility** is destroyed to clear resources
 
 ```ts
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
+
 class InputMethodExt extends InputMethodExtensionAbility {
   onDestroy(): void {
     console.info('onDestroy');

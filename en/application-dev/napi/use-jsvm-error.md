@@ -8,7 +8,7 @@
 
 ## Introduction
 
-The JSVM-API interface is used for error handling to better manage and respond to errors. Properly using these APIs helps improve module stability and reliability.
+JSVM-API provides APIs for handling errors occurred in JS code using exceptions. Properly using these APIs helps improve module stability and reliability.
 
 ## Basic Concepts
 
@@ -36,7 +36,7 @@ These concepts are important in exception and error handling. Properly using met
 
 ## Example
 
-For details about the JSVM-API development process, see [Using JSVM-API to Implement Interactive Development Between JS and C/C++](use-jsvm-process.md). This document describes only the C++ code corresponding to the APIs.
+If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in related APIs.
 
 ### OH_JSVM_Throw
 
@@ -60,11 +60,11 @@ static void GetLastErrorAndClean(JSVM_Env env) {
     JSVM_Value errorCode = nullptr;
     OH_JSVM_GetNamedProperty((env), result, "message", &message);
     OH_JSVM_GetNamedProperty((env), result, "code", &errorCode);
-    char messagestr[256];
+    char messageStr[256];
     char codeStr[256];
-    OH_JSVM_GetValueStringUtf8(env, message, messagestr, 256, nullptr);
+    OH_JSVM_GetValueStringUtf8(env, message, messageStr, 256, nullptr);
     OH_JSVM_GetValueStringUtf8(env, errorCode, codeStr, 256, nullptr);
-    OH_LOG_INFO(LOG_APP, "JSVM error message: %{public}s, error code: %{public}s", messagestr, codeStr);
+    OH_LOG_INFO(LOG_APP, "JSVM error message: %{public}s, error code: %{public}s", messageStr, codeStr);
 }
 
 // Define OH_JSVM_CreateError.
@@ -97,7 +97,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *srcCallNative = R"JS(jsVmCreateThrowError();)JS";
 ```
 <!-- @[oh_jsvm_create_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/createerror/src/main/cpp/hello.cpp) -->
-**Expected output**
+Expected result:
 ```ts
 JSVM error message: HasError, error code: -1
 ```
@@ -572,6 +572,7 @@ JSVM API OH_JSVM_IsExceptionPending: SUCCESS
 ### OH_JSVM_GetLastErrorInfo
 
 Call **OH_JSVM_GetLastErrorInfo** to obtain the last error information (the return value is not **JSVM_OK**), including the error code, error message, and stack information. This API can also be used for suspended JS errors.
+
 Note that the errors triggered by APIs such as **OH_JSVM_ThrowError** will not be captured by the APIs unless the return value is not **JSVM_OK**.
 
 CPP code:

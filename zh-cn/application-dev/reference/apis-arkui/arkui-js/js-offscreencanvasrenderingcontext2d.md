@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -19,13 +19,13 @@
 
 | 属性     | 类型     | 描述                                       |
 | ------ | ------ | ---------------------------------------- |
-| filter | string | 设置图像的滤镜。<br/>支持的滤镜效果如下：<br/>-&nbsp;blur：给图像设置高斯模糊。<br/>-&nbsp;brightness：给图片应用一种线性乘法，使其看起来更亮或更暗。<br/>-&nbsp;contrast：调整图像的对比度。<br/>-&nbsp;drop-shadow：给图像设置一个阴影效果。<br/>-&nbsp;grayscale：将图像转换为灰度图像。<br/>-&nbsp;hue-rotate：给图像应用色相旋转。<br/>-&nbsp;invert：反转输入图像。<br/>-&nbsp;opacity：转化图像的透明程度。<br/>-&nbsp;saturate：转换图像饱和度。<br/>-&nbsp;sepia：将图像转换为深褐色。 |
+| filter | string | 设置图像的滤镜。<br/>支持的滤镜效果如下：<br/>-&nbsp;blur：给图像设置高斯模糊。<br/>-&nbsp;brightness：给图片应用一种线性乘法，使其看起来更亮或更暗。<br/>-&nbsp;contrast：调整图像的对比度。<br/>-&nbsp;drop-shadow：给图像设置一个阴影效果。<br/>-&nbsp;grayscale：将图像转换为灰度图像。<br/>-&nbsp;hue-rotate：给图像应用色相旋转。<br/>-&nbsp;invert：反转输入图像。<br/>-&nbsp;opacity：调整图像的透明程度。<br/>-&nbsp;saturate：转换图像饱和度。<br/>-&nbsp;sepia：将图像转换为深褐色。 |
 
 **示例：** 
 ```html
 <!-- xxx.hml -->
 <div style="width: 500px; height: 500px;">
-  <canvas ref="canvasId" style="width: 500px; height: 500px; background-color: #ffff00;"></canvas>
+  <canvas ref="canvasId" style="width: 500px; height: 500px; padding: 80px; background-color: rgb(213, 213, 213);"></canvas>
 </div>
 ```
 
@@ -75,6 +75,8 @@ export default {
 }
 ```
 
+![zh-cn_image_js_offsetscreencanvas_rendering](figures/zh-cn_image_js_offsetscreencanvas_rendering.png)
+
 ## 方法
 
 除支持与CanvasRenderingContext2D对象相同的方法外，还支持如下方法：
@@ -96,7 +98,7 @@ isPointInPath(path?: Path2D, x: number, y: number): boolean
 **返回值：** 
 | 类型      | 说明            |
 | ------- | ------------- |
-| boolean | 指定点是否在路径的区域内。返回true时，指定点在路径区域内。返回false时，指定点不在路径路径区域内。 |
+| boolean | 指定点是否在路径的区域内。返回true时，指定点在路径区域内。返回false时，指定点不在路径区域内。 |
 
 **示例：** 
 ```html
@@ -158,7 +160,7 @@ export default {
 
 isPointInStroke(path?: Path2D, x: number, y: number): boolean
 
-判断指定点是否在路径的边缘线上。
+判断指定点是否位于路径描边区域内。
 
 **参数：** 
 | 参数名  | 参数类型   | 必填   | 描述                            |
@@ -170,7 +172,7 @@ isPointInStroke(path?: Path2D, x: number, y: number): boolean
 **返回值：** 
 | 类型      | 说明            |
 | ------- | ------------- |
-| boolean | 指定点是否在路径的区域内。 |
+| boolean | 指定点是否位于路径描边区域内。返回true时，指定点在路径描边区域内。返回false时，指定点不在路径描边区域内。 |
 
 **示例：** 
 ```html
@@ -231,6 +233,8 @@ export default {
 ### resetTransform
 
 resetTransform(): void
+
+重置当前变换矩阵为单位矩阵。
 
 **示例：** 
 ```html

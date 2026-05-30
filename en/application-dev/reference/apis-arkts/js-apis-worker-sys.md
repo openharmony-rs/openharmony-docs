@@ -12,7 +12,7 @@ With the Worker module, you can provide a multithreaded environment for an appli
 
 The Context object of the Worker thread is different from that of the UI main thread. The Worker thread does not support UI operations.
 
-For details about the precautions for using Worker, see [Precautions for Worker](../../arkts-utils/worker-introduction.md#precautions-for-worker).
+For details about the precautions for using Worker, see [Precautions for Worker](../../arkts-utils/worker-introduction.md).
 
 > **NOTE**
 >
@@ -29,6 +29,7 @@ import { worker } from '@kit.ArkTS';
 ## RestrictedWorker<sup>11+</sup>
 
 The RestrictedWorker class inherits [ThreadWorker<sup>9+</sup>](js-apis-worker.md#threadworker9) and supports all APIs in ThreadWorker.
+
 RestrictedWorker provides a restricted environment for running the Worker thread. In this environment, only the Worker module can be imported.
 
 ### constructor<sup>11+</sup>
@@ -36,8 +37,6 @@ RestrictedWorker provides a restricted environment for running the Worker thread
 constructor(scriptURL: string, options?: WorkerOptions)
 
 A constructor used to create a RestrictedWorker instance. Before using the following APIs, you must create a RestrictedWorker instance.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System API**: This is a system API.
 

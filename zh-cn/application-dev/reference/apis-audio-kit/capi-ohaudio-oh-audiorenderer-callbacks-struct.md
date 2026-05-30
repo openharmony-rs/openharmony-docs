@@ -1,10 +1,14 @@
 # OH_AudioRenderer_Callbacks_Struct
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callbacks
+```
 
 ## 概述
 
@@ -12,7 +16,7 @@
 
 为了避免不可预期的行为，在设置音频回调函数时，请确保该结构体的每一个成员变量都被自定义的回调方法或空指针初始化。
 
-可参考[使用OHAudio开发音频播放功能](../../media/audio/using-ohaudio-for-playback.md)。
+可参考[推荐使用OHAudio开发音频播放功能(C/C++)](../../media/audio/using-ohaudio-for-playback.md)。
 
 **起始版本：** 10
 
@@ -46,7 +50,7 @@
 
 ### OH_AudioRenderer_OnWriteData()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer, void* userData, void* buffer, int32_t length)
 ```
 
@@ -71,7 +75,7 @@ int32_t (*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer, void* userDa
 
 ### OH_AudioRenderer_OnStreamEvent()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Event event)
 ```
 
@@ -79,7 +83,7 @@ int32_t (*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer, void* user
 
 该函数指针将指向用于处理音频播放流事件的回调函数。
 
-OH_AudioRenderer_OnStreamEvent无触发回调场景，为预留接口。从API 11开始，开发者如果需要监听设备变化，可直接使用[OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback)替代。
+OH_AudioRenderer_OnStreamEvent无触发回调场景，为预留接口。从API version 11开始，开发者如果需要监听设备变化，可直接使用[OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback)替代。
 
 **起始版本：** 10
 
@@ -97,7 +101,7 @@ OH_AudioRenderer_OnStreamEvent无触发回调场景，为预留接口。从API 1
 
 ### OH_AudioRenderer_OnInterruptEvent()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnInterruptEvent)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)
 ```
 
@@ -122,7 +126,7 @@ int32_t (*OH_AudioRenderer_OnInterruptEvent)(OH_AudioRenderer* renderer, void* u
 
 ### OH_AudioRenderer_OnError()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnError)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error)
 ```
 

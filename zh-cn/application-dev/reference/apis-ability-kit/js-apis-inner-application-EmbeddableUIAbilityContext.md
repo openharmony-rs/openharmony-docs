@@ -3,9 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 EmbeddableUIAbilityContext是[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)组件的上下文，继承自[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。
 

@@ -1,4 +1,12 @@
 # Starting a Specified Page
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @lidongrui-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 <!--deprecated_code_no_check-->
 
 When the launch type of a PageAbility is set to **singleton** (default), the **onNewWant()** callback is triggered if the PageAbility is not started for the first time. For details about the launch type, see [PageAbility Launch Type](pageability-launch-type.md). In this case, you can use the **want** parameter to transfer startup information. For example, if you want to start a PageAbility with a specified page, pass the pages information in **parameters** of **want**.
@@ -149,12 +157,12 @@ const domain: number = 0xFF00;
 struct PagePageAbilityFirst {
   build() {
     Column() {
-      //...
+      // ...
       List({ initialIndex: 0 }) {
-        //...
+        // ...
         ListItem() {
           Flex({ justifyContent: FlexAlign.SpaceBetween, alignContent: FlexAlign.Center }) {
-          //...
+          // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -169,10 +177,10 @@ struct PagePageAbilityFirst {
             })
           })
         }
-        //...
+        // ...
         ListItem() {
           Flex({ justifyContent: FlexAlign.SpaceBetween, alignContent: FlexAlign.Center }) {
-          //...
+          // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -187,11 +195,11 @@ struct PagePageAbilityFirst {
             })
           })
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
-    //...
+    // ...
   }
 }
 ```

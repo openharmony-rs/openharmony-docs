@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_CertChain {...}
+```
+
 ## 概述
 
 定义证书链的结构体类型。
@@ -24,6 +28,4 @@
 | 名称 | 描述 |
 | -- | -- |
 | struct [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *certs | 指向证书数据的指针。 |
-| uint32_t certsCount | 证书本数。 |
-
-
+| uint32_t certsCount | 证书数量。 |

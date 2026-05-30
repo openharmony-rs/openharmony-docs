@@ -1,4 +1,10 @@
 # @ohos.telephony.sms (短信服务)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 短信服务提供了管理短信的一些基础能力，包括创建、发送短信，获取发送短信的默认SIM卡槽ID、检查当前设备是否具备短信发送和接收能力等。
 
@@ -30,7 +36,7 @@ createMessage\(pdu: Array&lt;number&gt;, specification: string, callback: AsyncC
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -50,7 +56,7 @@ const specification: string = '3gpp';
 // 以数组的形式显示协议数据单元(PDU)，类型为number。
 const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
 sms.createMessage(pdu, specification, (err: BusinessError, data: sms.ShortMessage) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -78,7 +84,7 @@ createMessage\(pdu: Array&lt;number&gt;, specification: string\): Promise\<Short
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -98,7 +104,7 @@ const specification: string = '3gpp';
 // 以数组的形式显示协议数据单元(PDU)，类型为number。
 const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
 sms.createMessage(pdu, specification).then((data: sms.ShortMessage) => {
-    console.log(`createMessage success, promise: data->${JSON.stringify(data)}`);
+    console.info(`createMessage success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`createMessage failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -126,7 +132,7 @@ sendMessage\(options: SendMessageOptions\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -144,10 +150,10 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -180,7 +186,7 @@ sendShortMessage\(options: SendMessageOptions, callback: AsyncCallback&lt;void&g
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -198,10 +204,10 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -213,7 +219,7 @@ let options: sms.SendMessageOptions = {
     deliveryCallback: deliveryCallback
 };
 sms.sendShortMessage(options, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -241,7 +247,7 @@ sendShortMessage\(options: SendMessageOptions\): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -259,10 +265,10 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -275,7 +281,7 @@ let options: sms.SendMessageOptions = {
 };
 let promise = sms.sendShortMessage(options);
 promise.then(() => {
-    console.log(`sendShortMessage success`);
+    console.info(`sendShortMessage success`);
 }).catch((err: BusinessError) => {
     console.error(`sendShortMessage failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -304,7 +310,7 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSlotId((err: BusinessError, data: number) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -330,7 +336,7 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSlotId().then((data: number) => {
-    console.log(`getDefaultSmsSlotId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getDefaultSmsSlotId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getDefaultSmsSlotId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -354,7 +360,7 @@ hasSmsCapability\(\): boolean
 import { sms } from '@kit.TelephonyKit';
 
 let result = sms.hasSmsCapability(); 
-console.log(`hasSmsCapability: ${JSON.stringify(result)}`);
+console.info(`hasSmsCapability: ${JSON.stringify(result)}`);
 ```
 
 ## sms.getDefaultSmsSimId<sup>10+</sup>
@@ -373,7 +379,7 @@ getDefaultSmsSimId\(callback: AsyncCallback&lt;number&gt;\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -392,7 +398,7 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSimId((err: BusinessError, data: number) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -413,7 +419,7 @@ getDefaultSmsSimId\(\): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -432,7 +438,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let promise = sms.getDefaultSmsSimId();
 promise.then((data: number) => {
-    console.log(`getDefaultSmsSimId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getDefaultSmsSimId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getDefaultSmsSimId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -445,19 +451,19 @@ promise.then((data: number) => {
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
-|         名称             |                  类型                   | 必填 | 说明                                                         |
-| ------------------------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| hasReplyPath             | boolean                                 |  是  | 收到的短信是否包含“TP-Reply-Path”，默认为false。<br/>-true：是<br/>-false：否<br/>“TP-Reply-Path”：设备根据发送SMS消息的短消息中心进行回复。  |
-| isReplaceMessage         | boolean                                 |  是  | 收到的短信是否为“替换短信”，默认为false。<br/>-true：是<br/>-false：否<br/>“替换短信”有关详细信息，参见 [“3GPP TS 23.040 9.2.3.9”](https://www.3gpp.org/ftp/specs/archive/23_series/23.040)。 |
-| isSmsStatusReportMessage | boolean                                 |  是  | 当前消息是否为“短信状态报告”，默认为false。<br/>-true：是<br/>-false：否<br/>“短信状态报告”是一种特定格式的短信，被用来从Service Center到Mobile Station传送状态报告。|
-| messageClass             | [ShortMessageClass](#shortmessageclass) |  是  | 短信类型。                                                   |
-| pdu                      | Array&lt;number&gt;                     |  是  | SMS消息中的协议数据单元 (PDU)。                            |
-| protocolId               | number                                  |  是  | 发送短信时使用的协议标识。                                   |
-| scAddress                | string                                  |  是  | 短消息服务中心(SMSC)地址。                                 |
-| scTimestamp              | number                                  |  是  | SMSC时间戳。                                                 |
-| status                   | number                                  |  是  | SMS-STATUS-REPORT消息中的短信状态指示短信服务中心(SMSC)发送的短信状态。 |
-| visibleMessageBody       | string                                  |  是  | 短信正文。                                                   |
-| visibleRawAddress        | string                                  |  是  | 发送者地址。                                                 |
+|         名称             |                  类型                   | 只读  | 可选 | 说明                                                         |
+| ------------------------ | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| hasReplyPath             | boolean                                 |  否  |  否  | 收到的短信是否包含“TP-Reply-Path”，默认为false。<br/>-true：是<br/>-false：否<br/>“TP-Reply-Path”：设备根据发送SMS消息的短消息中心进行回复。  |
+| isReplaceMessage         | boolean                                 |  否  |  否  | 收到的短信是否为“替换短信”，默认为false。<br/>-true：是<br/>-false：否<br/>“替换短信”有关详细信息，参见 [“3GPP TS 23.040 9.2.3.9”](https://www.3gpp.org/ftp/specs/archive/23_series/23.040)。 |
+| isSmsStatusReportMessage | boolean                                 |  否  |  否  | 当前消息是否为“短信状态报告”，默认为false。<br/>-true：是<br/>-false：否<br/>“短信状态报告”是一种特定格式的短信，被用来从Service Center到Mobile Station传输状态报告。|
+| messageClass             | [ShortMessageClass](#shortmessageclass) |  否  |  否  | 短信类型。                                                   |
+| pdu                      | Array&lt;number&gt;                     |  否  |  否  | SMS消息中的协议数据单元 (PDU)。                            |
+| protocolId               | number                                  |  否  |  否  | 发送短信时使用的协议标识。                                   |
+| scAddress                | string                                  |  否  |  否  | 短消息服务中心(SMSC)地址。                                 |
+| scTimestamp              | number                                  |  否  |  否  | SMSC时间戳。                                                 |
+| status                   | number                                  |  否  |  否  | SMS-STATUS-REPORT消息中的短信状态指示短信服务中心(SMSC)发送的短信状态。 |
+| visibleMessageBody       | string                                  |  否  |  否  | 短信正文。                                                   |
+| visibleRawAddress        | string                                  |  否  |  否  | 发送者地址。                                                 |
 
 
 ## ShortMessageClass
@@ -481,15 +487,15 @@ promise.then((data: number) => {
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
-|       名称       | 类型                                                         | 必填 | 说明                                                         |
-| ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| slotId           | number                                                       | 是   | 用于发送短信的SIM卡槽ID：<br/>- 0：卡槽1。<br/>- 1：卡槽2。      |
-| destinationHost  | string                                                       | 是   | 短信的发送地址。                                             |
-| content          | string \| Array&lt;number&gt;                                | 是   | 如果内容是字符串，则这是一条文本短信。如果内容是字节数组，则这是一条数据短信。 |
-| serviceCenter    | string                                                       | 否   | 短信中心地址。默认使用SIM卡中的短信中心地址。                |
-| destinationPort  | number                                                       | 否   | 如果发送数据消息，destinationPort 是必需的。否则是可选的。   |
-| sendCallback     | AsyncCallback&lt;[ISendShortMessageCallback](#isendshortmessagecallback)&gt; | 否   | 短信发送结果回调，返回短信发送的结果，参考[ISendShortMessageCallback](#isendshortmessagecallback)。发送数据短信时，此项必填。|
-| deliveryCallback | AsyncCallback&lt;[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)&gt; | 否   | 短信送达结果回调，返回短信递送报告，参考[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)。发送数据短信时，此项必填。|
+|       名称       | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| slotId           | number                                                       |  否  |  否  | 用于发送短信的SIM卡槽ID：<br/>- 0：卡槽1。<br/>- 1：卡槽2。      |
+| destinationHost  | string                                                       |  否  |  否  | 短信的发送地址。                                             |
+| content          | string \| Array&lt;number&gt;                                |  否  |  否  | 如果内容是字符串，则这是一条文本短信。如果内容是字节数组，则这是一条数据短信。 |
+| serviceCenter    | string                                                       |  否  |  是  | 短信中心地址。默认使用SIM卡中的短信中心地址。                |
+| destinationPort  | number                                                       |  否  |  是  | 如果发送数据消息，destinationPort 是必需的。否则是可选的。   |
+| sendCallback     | AsyncCallback&lt;[ISendShortMessageCallback](#isendshortmessagecallback)&gt; |  否  |  是  | 短信发送结果回调，返回短信发送的结果，参考[ISendShortMessageCallback](#isendshortmessagecallback)。发送数据短信时，此项必填。|
+| deliveryCallback | AsyncCallback&lt;[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)&gt; |  否  |  是  | 短信送达结果回调，返回短信递送报告，参考[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)。发送数据短信时，此项必填。|
 
 
 
@@ -499,11 +505,11 @@ promise.then((data: number) => {
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
-|   名称     | 类型                            | 必填 |                                               说明                                         |
-| ---------- | ------------------------------- | ---- | ----------------------------------------------------------------------------------------- |
-| isLastPart | boolean                         | 是   | 指定这是否是长短信的最后一部分。默认为false。<br/>-true：是<br/>-false：否<br/> |
-| result     | [SendSmsResult](#sendsmsresult) | 是   | 短信发送结果。                                                                             |
-| url        | string                          | 是   | 存储发送短信的URI。                                                                        |
+|   名称     | 类型                            | 只读 | 可选 |                                               说明                                         |
+| ---------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------- |
+| isLastPart | boolean                         | 否   | 否   | 指定这是否是长短信的最后一部分。默认为false。<br/>-true：是<br/>-false：否<br/> |
+| result     | [SendSmsResult](#sendsmsresult) | 否   | 否   | 短信发送结果。                                                                             |
+| url        | string                          | 否   | 否   | 存储发送短信的URI。                                                                        |
 
 
 ## IDeliveryShortMessageCallback
@@ -512,9 +518,9 @@ promise.then((data: number) => {
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
-| 名称 | 类型                | 必填 | 说明           |
-| ---- | ------------------- | ---- | -------------- |
-| pdu  | Array&lt;number&gt; | 是   | 短信送达报告。 |
+| 名称 | 类型                | 只读 | 可选 | 说明           |
+| ---- | ------------------- | ---- | ---- | -------------- |
+| pdu  | Array&lt;number&gt; | 否   | 否   | 短信送达报告。 |
 
 
 ## SendSmsResult

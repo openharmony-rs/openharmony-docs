@@ -4,7 +4,11 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct {...} ArkWeb_JavaScriptValueAPI
+```
 
 ## 概述
 
@@ -34,13 +38,13 @@
 
 ### createJavaScriptValue()
 
-```
+```c
 ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)
 ```
 
 **描述：**
 
-设置按键事件处理的优先级。
+创建一个JavaScript值，用于返回给HTML。
 
 **起始版本：** 18
 
@@ -50,11 +54,11 @@ ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType ty
 |---------------------------------|----|
 | ArkWeb_JavaScriptValueType type | JavaScript值的类型。   |
 | void* data                                | JavaScript值的数据缓冲区。   |
-| size_t dataLength                               | avaScript值的缓冲区大小。   |
+| size_t dataLength                         | JavaScript值的缓冲区大小。   |
 
 **返回：**
 
 | 类型                            | 说明 |
 |-------------------------------|----|
-| [ArkWeb_JavaScriptValuePtr](capi-web-arkweb-javascriptvalue8h.md) | 创建出来的JavaScript值。   |
+| [ArkWeb_JavaScriptValuePtr](capi-web-arkweb-javascriptvalue8h.md) | 创建出来的JavaScript值。当输入参数无效或内存分配失败时，返回NULL。 |
 

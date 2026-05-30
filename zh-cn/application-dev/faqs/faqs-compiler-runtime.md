@@ -1,5 +1,11 @@
 # 语言编译运行时常见问题
 
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 从rawfile中获取json格式的字符串后，转换成对应的object对象后，再去调用实例方法时直接崩溃(API 9)
 
@@ -22,18 +28,18 @@
 **问题场景**
 
 场景：napi_call_function调用ArkTs函数异常时，系统行为是pending exception而不是Crash。
+
 后果：导致pending时，如果开发者未作安全校验，则会在下一次使用napi方法时出错，且出错行为无法预期，这种情况下应该如何处理？
 
 **解决方案**
 
-考虑ArkTS侧调用一个native方法，在native方法中使用了napi_call_function，如果产生异常系统就jscrash，那么开发者在ArkTS侧try..catch就会失效。
-调用napi_call_function，如果有异常就需要及时返回。
+考虑ArkTS侧调用一个native方法，在native方法中使用了napi_call_function，如果产生异常系统就jscrash，那么开发者在ArkTS侧try..catch就会失效。调用napi_call_function，如果有异常就需要及时返回。
 
 ## 除了napi_call_function会有pending exception，是否还有其他异常场景？(API 10)
 
 **解决方案**
 
-调用NAPI接口理论上都有可能产生异常；所以在业务的关键流程需要对接口调用的返结果进行判断，查看否有异常产生。比如：
+调用NAPI接口理论上都有可能产生异常；所以在业务的关键流程需要对接口调用的返回结果进行判断，查看是否有异常产生。比如：
 ```cpp
 napi_status status = napi_create_object(env, &object);
 if (status != napi_ok) {
@@ -42,7 +48,7 @@ if (status != napi_ok) {
 }
 ```
 
-## 使用HSP的多包场景下场景，直接崩溃并产生cppcrash异常日志，错误信息为resolveBufferCallback get buffer failed
+## 使用HSP的多包场景下，直接崩溃并产生cppcrash异常日志，错误信息为resolveBufferCallback get buffer failed
 
 **解决方案**
 
@@ -91,7 +97,7 @@ bar()
 开发者可以通过IDE中Code Linter检查工具识别应用代码中的循环依赖并进行代码重构，消除循环依赖影响，工具详情请参考[Deveco Studio代码Code Linter检查](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-code-linter-V5)。操作步骤如下：
 
 1. 在工程根目录下创建code-linter.json5配置文件，配置如下：
-    ```json
+    ```json5
     {
       "files": [ // 用于表示配置适用的文件范围的 glob 模式数组。
         "**/*.js",
@@ -118,11 +124,11 @@ bar()
 **定位方案**
 
 在windows上，可以打开事件管理器，Windows日志，应用程序，找到对应的时间，如果能找到es2abc.exe的崩溃日志，同时异常代码为 0xc00000fd, 那么表示该编译由于爆栈导致崩溃。<br>
-![事件查看器](compiler/WinCrashLog.png)<br>
+![事件查看器](figures/WinCrashLog.png)<br>
 在mac上，可以进入控制台，点击崩溃报告，找到es2abc,双击查看崩溃日志。<br>
-![控制台](compiler/MacConsole.png)<br>
+![控制台](figures/MacConsole.png)<br>
 如果出现下图中所示，调用栈出现大量反复的调用相同的函数，那么极有可能是出现了大量递归导致爆栈。<br>
-![崩溃日志](compiler/CrashLog.png)
+![崩溃日志](figures/CrashLog.png)
 
 **解决方案**
 

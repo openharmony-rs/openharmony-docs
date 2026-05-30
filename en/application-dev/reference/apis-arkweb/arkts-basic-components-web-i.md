@@ -4,13 +4,13 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
 > - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## WebOptions
 
@@ -21,10 +21,11 @@ Defines web options through the [APIs](./arkts-basic-components-web.md).
 | Name       | Type                         | Read-Only    | Optional  | Description                                    |
 | ---------- | ------------------------------|---- | ---- | ---------------------------------------- |
 | src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | No   | No   | Address of a web page resource. To access local resource files, use the $rawfile or resource protocol. To load a local resource file (in HTML or TXT format) in the sandbox outside of the application package, use **file://** to specify the path of the sandbox.<br>**src** cannot be dynamically changed through a state variable (for example, @State). To change the value, call [loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl).|
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | No   | No  | Controller that controls various behaviors of **Web** components, including page navigation, declaration period status, and JavaScript interaction. This API is deprecated since API version 9. You are advised to use **WebviewController** instead.|
+| controller | [WebController](./arkts-basic-components-web-WebController.md) \| WebviewController  | No   | No  | Controller that controls various behaviors of **Web** components, including page navigation, declaration period status, and JavaScript interaction. **WebController** is deprecated since API version 9. You are advised to use [WebviewController](./arkts-basic-components-web-t.md#webviewcontroller9) instead.|
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| No   | Yes  | Rendering mode.<br>**RenderMode.ASYNC_RENDER** (default, cannot be dynamically adjusted): The **Web** component is rendered asynchronously.<br>**RenderMode.SYNC_RENDER**: The **Web** component is rendered synchronously.|
-| incognitoMode<sup>11+</sup> | boolean | No   | Yes| Whether to enable incognito mode. The value **true** means to enable incognito mode, and **false** means the opposite.<br> Default value: **false**.|
+| incognitoMode<sup>11+</sup> | boolean | No   | Yes| Whether to enable incognito mode. The value **true** means to enable incognito mode, and **false** means the opposite.<br> Default value: **false**.<br>If **undefined** or **null** is passed, the value is **false**.|
 | sharedRenderProcessToken<sup>12+</sup> | string | No   | Yes| Token of the shared rendering process specified by the **Web** component. In multi-rendering process mode, the **Web** component with the same token preferentially attempts to reuse the rendering process bound to the token. The token is bound to the rendering process when the rendering process is initialized. When the rendering process is not associated with a **Web** component, its binding to the token is removed.<br> Default value: **""**. |
+| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | No   | Yes|  Whether to convert mouse events into touch events.<br> Default value: **false**.|
 
 ## WebMediaOptions<sup>10+</sup>
 
@@ -48,6 +49,20 @@ Describes the **ScriptItem** object registered with the **Web** component throug
 | ----------- | -------------- | --- | ------|--------------- |
 | script      | string         | No |  No   | JavaScript script to be registered and executed.|
 | scriptRules | Array\<string> | No |  No   | Matching rules for allowed sources.<br>1. To allow URLs from all sources, use the wildcard (\*).<br>2. If exact match is required, specify the exact URL, for example, **https:\//www\.example.com**.<br>3. For fuzzy match, you can use a wildcard (\*) in the website URL, for example, **https://*.example.com**. Websites such as "x,*.y.com" and "* foobar.com" are not allowed.<br>4. If the source is an IP address, follow rule 2.<br>5. For protocols other than HTTP/HTTPS (custom protocols), exact match and fuzzy match are not supported, and the protocol must end with **://**, for example, **resource://**.<br>6. If one of the preceding rules is not met in **scriptRules**, the **scriptRules** does not take effect.|
+| urlRegexRules<sup>23+</sup>  | Array\<[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)\> | No |  Yes   | Regular expression matching rules for allowed sources. **urlRegexRules** is used for matching only when **scriptRules** is set to **[]**.<br> **Model restriction**: This API can be used only in the stage model.|
+
+## UrlRegexRule<sup>23+</sup>
+
+Defines the URL regular expression rule.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name         | Type | Read-Only| Optional| Description           |
+| ----------- | ------ | --- | -----|---------------- |
+| secondLevelDomain | string | No | No   | Exact match of the second-level domain. For example, the second-level domain name of "https://www.example.com" is **example.com**, and that of "https://www.example.com.cn" is **example.com.cn**. If the URL does not have a second-level domain name, the value is empty.|
+| rule | string | No | No   | URL regular expression. URL regular expression matching is performed only after **secondLevelDomain** is matched successfully.|
 
 ## NestedScrollOptionsExt<sup>14+</sup>
 
@@ -73,8 +88,11 @@ Represents the configuration for [enabling the application to take over web page
 |  enable  | boolean | No| No| Whether to enable the application to take over web page media playback.<br> The value **true** means to enable the application to take over web page media playback, and **false** means the opposite.<br> Default value: **false**.|
 |  shouldOverlay | boolean | No| No| Whether the video player's display overlays the web page content when the application takes over the web page's video player.<br> The value **true** indicates that the video player's display overlays the web page content. This means that the height of the video layer is adjusted to cover the web page content. The value **false** indicates that the video player's display does not overlay the web page content. This means that the video player maintains its original height and is embedded within the web page.<br>Default value: **false**.|
 
-## ExpandedMenuItemOptions<sup>12+</sup>
+## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
+> **NOTE**
+>
+> This API is supported from API version 12 and deprecated from API version 20. You are advised to use [editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12) instead.
 Represents the custom expanded menu item options.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -151,7 +169,7 @@ Represents the callback invoked when this page is about to exit after the user r
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-| Name                  | Type    | Read Only| Optional | Description                             |
+| Name                  | Type    | Read-Only| Optional | Description                             |
 | --------------------- | -------- | -- | ----|--------------------------------- |
 | url                   | string   | No| No | URL of the web page where the dialog box is displayed.                |
 | message               | string   | No| No | Message displayed in the dialog box.                             |
@@ -239,6 +257,7 @@ Defines the callback triggered when the navigation is complete.
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | url         | string  | No| No| URL to be accessed.                                 |
 | isRefreshed | boolean | No| No| Whether the page is reloaded. The value **true** means that the page is reloaded by invoking the [refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh) API, and **false** means the opposite.|
+| isMainFrame<sup>22+</sup> | boolean | No| Yes| Whether the event is triggered by the main frame.<br>The value **true** indicates that the event is triggered by the main frame, and **false** indicates the opposite.|
 
 ## OnRenderExitedEvent<sup>12+</sup>
 
@@ -401,6 +420,17 @@ Represents the callback invoked when an SSL client certificate is required from 
 | keyTypes | Array<string\>                           | No| No| Acceptable asymmetric private key types.   |
 | issuers  | Array<string\>                           | No| No| Issuer of the certificate that matches the private key.|
 
+
+## VerifyPinEvent<sup>22+</sup>
+Defines the callback triggered to notify the user of PIN verification.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ------------|---------------------------- |
+| handler  | [VerifyPinHandler](./arkts-basic-components-web-VerifyPinHandler.md) | No| No| User operation. |
+| identity     | string                                   | No| No| Certificate credential ID used for verification.   |
+
 ## OnWindowNewEvent<sup>12+</sup>
 
 Represents the callback invoked when the web page requests the user to create a window.
@@ -413,6 +443,34 @@ Represents the callback invoked when the web page requests the user to create a 
 | isUserTrigger | boolean                                  | No| No| Whether the creation is triggered by the user. The value **true** means that the creation is triggered by the user, and **false** means the opposite.     |
 | targetUrl     | string                                   | No| No| Target URL.                       |
 | handler       | [ControllerHandler](./arkts-basic-components-web-ControllerHandler.md) | No| No| **WebviewController** instance for setting the new window.|
+
+## WindowFeatures<sup>23+</sup>
+
+Represents the feature information of the new window requested to be created by the web page, including the size and location.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name               | Type                                 | Read-Only| Optional| Description                       |
+|-------------------| ------------------------------------ | ---- | ---- |---------------------------|
+| x                 | number                              | No   | No| X coordinate of the top-left corner of the new window, in pixels.  |
+| y                 | number                              | No   | No| Y coordinate of the top-left corner of the new window, in pixels.           |
+| width             | number                              | No   | No| Width of the new window, in pixels.         |
+| height            | number                              | No   | No| Height of the new window, in pixels.         |
+
+## OnWindowNewExtEvent<sup>23+</sup>
+
+Defines the callback invoked when the web page requests the user to create a window.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only  | Optional  | Description                                      |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| isAlert       | boolean                                  | No| No| The value **true** indicates that a dialog box is requested to be created, and the value **false** indicates that a new tab page is requested to be created.   |
+| isUserTrigger | boolean                                  | No| No| Whether the creation is triggered by the user. The value **true** means that the creation is triggered by the user, and **false** means the opposite.     |
+| targetUrl     | string                                   | No| No| URL to be opened in the new window.                       |
+| handler       | [ControllerHandler](./arkts-basic-components-web-ControllerHandler.md) | No| No| **WebviewController** instance for setting the new window.|
+| windowFeatures | [WindowFeatures](./arkts-basic-components-web-i.md#windowfeatures23)                                | No| No| Feature information of the new window requested to be created by the web page.|
+| navigationPolicy | [NavigationPolicy](./arkts-basic-components-web-e.md#navigationpolicy23)                            | No| No| Window opening mode when the web page requests a user to create a new window.|
 
 ## OnTouchIconUrlReceivedEvent<sup>12+</sup>
 
@@ -510,7 +568,7 @@ Represents the JavaScript object to be injected.
 | methodList | Array\<string\>                          | No| No   | Synchronous methods of the JavaScript object to be registered at the application side.                |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | No| No   |  Controller. This API is deprecated since API version 9. You are advised to use **WebviewController** instead.|
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | No| Yes   | Asynchronous methods of the JavaScript object to be registered at the application side. Asynchronous methods cannot obtain return values.  |
-| permission<sup>12+</sup>  | string  | No| Yes   | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels.<br>For the example, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).|
+| permission<sup>12+</sup>  | string  | No| Yes   | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels.<br>The **permission** parameter of JavaScriptProxy supports the resource, HTTP, and HTTPS protocols, but does not support the file protocol.<br>For the example, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).|
 
 ## OnPageEndEvent<sup>12+</sup>
 
@@ -629,7 +687,20 @@ Provides detailed information about the same-layer tag.
 | url               | string                              | No   | Yes| URL of the same-layer tag.           |
 | tag<sup>12+</sup> | string              | No   | Yes| Tag name, which is in uppercase.             |
 | params<sup>12+</sup>            | Map<string, string> | No   | Yes| List of key-value pairs contained in the **object** tag that form a map of the Object type. Use the methods provided by the Object type, such as **embed.info?.param?.["name"]** to operate the map object. |
-| position<sup>12+</sup>          | Position            | No   | Yes| Position of the same-layer tag relative to the **Web** component in the screen coordinate system, which is different from the standard **Position**. The unit is px.|
+| position<sup>12+</sup>          | Position            | No   | Yes| Position of the same-layer tag relative to the upper left corner of the **Web** component as the coordinate origin, in pixels. This position is different from the standard position.|
+
+## NativeEmbedParamItem<sup>21+</sup>
+
+Provides details about the **param** element embedded in the same-layer rendering tag **object**.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name               | Type                                 | Read-Only| Optional| Description                       |
+|-------------------| ------------------------------------ | ---- | ---- |---------------------------|
+| status     | [NativeEmbedParamStatus](./arkts-basic-components-web-e.md#nativeembedparamstatus21)             | No   | No   | Status change type of the **param** element.|
+| id                | string                              | No   | No| ID of the **param** element.            |
+| name              | string                              | No   | Yes| Name of the **param** element.          |
+| value             | string                              | No   | Yes| Value of the **param** element.         |
 
 ## IntelligentTrackingPreventionDetails<sup>12+</sup>
 
@@ -651,7 +722,7 @@ Represents input parameters of the callback used to intercept the soft keyboard 
 | Name            | Type  | Read-Only  | Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | controller | [WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)  | No| No| Controller used to control the input, deletion, and closure of the custom keyboard.|
-| attributes | Record<string, string> | No| No| Attribute of the web page element that triggers the display of the soft keyboard.
+| attributes | Record<string, string> | No| No| Attribute of the web page element that triggers the display of the soft keyboard.|
 
 ## WebKeyboardOptions<sup>12+</sup>
 
@@ -663,7 +734,7 @@ Represents the return value of the callback that intercepts the soft keyboard st
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | No| No| Whether to use the system's default soft keyboard.<br>The value **true** means to use the system's default soft keyboard, and **false** means the opposite.<br>Default value: **true**.|
 | enterKeyType | number | No| Yes| Type of the **Enter** key on the system soft keyboard. For details about the value range, see [EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10). This parameter is optional and the default value is **UNSPECIFIED**. This parameter is valid only when **useSystemKeyboard** is set to **true** and **enterKeyType** is set to a valid value.|
-| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| Yes| Builder of a custom keyboard. This parameter is required when **useSystemKeyboard** is set to **false**. After it is set, the **Web** component starts the custom keyboard as configured.
+| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| Yes| Builder of a custom keyboard. This parameter is required when **useSystemKeyboard** is set to **false**. After it is set, the **Web** component starts the custom keyboard as configured.|
 
 
 ## FirstMeaningfulPaint<sup>12+</sup>
@@ -679,7 +750,7 @@ Provides detailed information about the first meaningful paint.
 
 ## LargestContentfulPaint<sup>12+</sup>
 
-Provides detailed information about the largest content paint.
+Provides detailed information about the largest contentful paint.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -728,6 +799,18 @@ Provides detailed information about clicking or touching and holding a same-laye
 | embedId     | string   | No   | Yes   | Unique ID of the same-layer tag.|
 | mouseEvent  | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) | No   | Yes   | Information about clicking or touching and holding using the mouse or touchpad.|
 | result     | [EventResult](./arkts-basic-components-web-EventResult.md)   | No   | Yes  | Mouse event consumption result.|
+
+## NativeEmbedParamDataInfo<sup>21+</sup>
+
+Provides details about the same-layer tag when the **param** element embedded in the **object** tag changes.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type                                 | Read-Only| Optional  | Description                   |
+| -----------     | ------------------------------------ | ---- | ---- | --------------------- |
+| embedId | string                              | No| No   | Unique ID of the same-layer tag. |
+| objectAttributeId      | string             | No   | Yes| ID of the same-layer tag.            |
+| paramItems  | Array\<[NativeEmbedParamItem](./arkts-basic-components-web-i.md#nativeembedparamitem21)\>   | No| Yes   | Details of the changed **param** element, including the status change type, ID, name, and value of each **param** element.      |
 
 ## OnLoadStartedEvent<sup>20+</sup>
 
@@ -790,3 +873,83 @@ Provides the web screen capture configuration.
 | Name         | Type                                     | Read-Only| Optional | Description        |
 | ----------- | --------------------------------------- | ---- |----| ---------- |
 | captureMode | [WebCaptureMode](./arkts-basic-components-web-e.md#webcapturemode10) | No| No| Web screen capture mode.|
+
+## BlankScreenDetectionEventInfo<sup>22+</sup>
+
+Defines the event information when a blank screen is detected.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| url | string | No| No| URL of the page when a blank screen is detected.   |
+| blankScreenReason | [DetectedBlankScreenReason](./arkts-basic-components-web-e.md#detectedblankscreenreason22) | No| No| Reason for the blank screen issue, which depends on the detection method.   |
+| blankScreenDetails | [BlankScreenDetails](./arkts-basic-components-web-i.md#blankscreendetails22) | No| Yes| Details of the blank screen issue detected.<br>For example, if a near-blank screen issue is detected, the details contain the number of points that match the blank screen issue. Otherwise, this attribute does not exist.|
+
+## BlankScreenDetails<sup>22+</sup>
+
+Defines details of the blank screen issue detected.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| detectedContentfulNodesCount | number | No| Yes| This attribute may exist when the contentful node detection policy is used and the threshold for the number of detected nodes is set. Otherwise, this attribute does not exist.<br>Number of contentful nodes that are detected.   |
+
+## BlankScreenDetectionConfig<sup>22+</sup>
+
+Defines the configuration options of the blank screen detection policy.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| enable | boolean | No| No| Whether to enable the blank screen policy.  |
+| detectionTiming | number[] | No| Yes| Interval for checking whether a blank screen occurs after the loading, in seconds.<br> <br>**NOTE**<br>1. Duplicate values are ignored.<br>2. The value must be greater than 0. Otherwise, the value is ignored.<br>Default value: **[1.0, 3.0, 5.0]**.|
+| detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | No| Yes| Methods of the detection policy. The value is an array.<br>**NOTE**<br>1. Duplicate values are ignored.<br>Default value: **[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]**. |
+| contentfulNodesCountThreshold | number | No| Yes| Threshold for number of detected contentful nodes. This parameter takes effect only when the contentful node detection policy is used.<br>The value ranges from 0 to the maximum number of nodes in the detection policy. If the value is less than or equal to the threshold, the near-blank screen is triggered.<br>Default value: **0**.|
+
+## CameraCaptureStateChangeInfo<sup>23+</sup>
+
+Defines the state information of the camera before and after the callback is triggered.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | No| No| Original state.  |
+| newState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | No| No| New state.  |
+
+## MicrophoneCaptureStateChangeInfo<sup>23+</sup>
+
+Defines the state information of the microphone before and after the callback is triggered.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No| No| Original state.  |
+| newState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No| No| New state.  |
+
+## AcceptableFileType<sup>23+</sup>
+
+Defines the file types recommended by the web page when the file selector pulls files.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name | Type                    | Read-Only| Optional| Description            |
+| :---- | :------------------------- | :--- | :--- | :--------------- |
+| mimeType | string | No| No  | MIME type of the file.|
+| acceptableType | Array\<string\> | No| No  | Array of acceptable file types.|
+
+## FirstScreenPaint<sup>23+</sup>
+
+Defines the event information when the first screen paint is detected.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| url | string | No| No| URL of the first screen paint statistics.   |
+| navigationStartTime | number | No| No| Time when the navigation to the page specified by **url** starts.   |
+| firstScreenPaintTime | number | No| No| Time when the first screen paint of the page specified **url** is complete.   |

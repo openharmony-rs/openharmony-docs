@@ -1,4 +1,14 @@
 # OH_DisplaySoloist
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_DisplaySoloist OH_DisplaySoloist
+```
 
 ## 概述
 

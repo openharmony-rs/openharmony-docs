@@ -1,13 +1,17 @@
-# @ohos.app.ability.EmbeddedUIExtensionAbility (ExtensionAbility for Embedded UIs Across Processes)
+# @ohos.app.ability.EmbeddedUIExtensionAbility (ExtensionAbility for Cross-Process UI Embedding)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @zhangyafei-echo-->
-<!--Designer: @zhangyafei-echo-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-EmbeddedUIExtensionAbility provides extended capabilities for the embedded UI across processes. It inherits from [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). For details about the inheritance relationship of each ability, see [Inheritance Relationship](./js-apis-app-ability-ability.md#ability-inheritance-relationship).
+EmbeddedUIExtensionAbility is a component that enables cross-process UI embedding. It inherits from [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md).
+
+You can implement this class to add cross-process UI embedding capabilities to your applications. A typical use case is embedding a UI, provided by the application's own EmbeddedUIExtensionAbility, into a [UIAbility](js-apis-app-ability-uiAbility.md) page using an [EmbeddedComponent](../apis-arkui/arkui-ts/ts-container-embedded-component.md).
+
+For details about the inheritance relationship of each ability, see [Inheritance Relationship](./js-apis-app-ability-ability.md#ability-inheritance-relationship).
 
 > **NOTE**
 >
@@ -23,8 +27,10 @@ import { EmbeddedUIExtensionAbility } from '@kit.AbilityKit';
 
 ## EmbeddedUIExtensionAbility
 
-EmbeddedUIExtensionAbility provides extended capabilities for the embedded UI across processes. It inherits from [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md).
+EmbeddedUIExtensionAbility is a component that enables cross-process UI embedding. It inherits from [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md).
 
-Currently, the EmbeddedUIExtensionAbility can be started only by a UIAbility of the same application and takes effect only on 2-in-1 devices and tablets.
+Currently, an EmbeddedUIExtensionAbility instance can be started only by a UIAbility that belongs to the same application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. It is unavailable on other devices.

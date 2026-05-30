@@ -78,7 +78,6 @@ OpenHarmony系统采用ELF文件格式作为全系统的二进制文件格式，
             "path": "./src/main/cpp/CMakeLists.txt",
             "arguments": "",
             "abiFilters": [
-                "armeabi-v7a",
                 "arm64-v8a"
             ]
         }

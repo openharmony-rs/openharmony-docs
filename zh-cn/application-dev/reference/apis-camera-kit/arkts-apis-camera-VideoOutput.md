@@ -4,13 +4,13 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+录像会话中使用的输出信息，继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-录像会话中使用的输出信息，继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
 ## 导入模块
 
@@ -117,8 +117,6 @@ stop(callback: AsyncCallback\<void\>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function stopVideoOutput(videoOutput: camera.VideoOutput): void {
   videoOutput.stop(() => {
     console.info('Callback invoked to indicate the video output stop success.');
@@ -359,7 +357,7 @@ getSupportedFrameRates(): Array\<FrameRateRange\>
 
 |      类型      |     说明     |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表 |
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表。若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -495,7 +493,7 @@ isMirrorSupported(): boolean
 
 | 类型            | 说明                              |
 | -------------- |---------------------------------|
-| boolean | 返回是否支持镜像录像，true表示支持，false表示不支持。 |
+| boolean | 返回是否支持镜像录像，true表示支持，false表示不支持。若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -555,13 +553,14 @@ function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRe
 
 ## getVideoRotation<sup>12+</sup>
 
-getVideoRotation(deviceDegree: number): ImageRotation
+getVideoRotation(deviceDegree?: number): ImageRotation
 
 获取录像旋转角度。
 
-- 设备自然方向：设备默认使用方向，手机为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-- 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
+- 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
+- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -571,13 +570,13 @@ getVideoRotation(deviceDegree: number): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | 是   | 设备旋转角度，单位度，取值范围0-360。 |
+| deviceDegree | number | 否   | 设备旋转角度，单位度，取值范围[0, 360]。<br> 从API version 23开始，入参deviceDegree为可选参数，当不传入参数时，由系统获取deviceDegree进行录像旋转角度计算。 |
 
 **返回值：**
 
 |      类型      | 说明        |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 获取录像旋转角度。 |
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 返回录像旋转角度。若接口调用失败，返回undefined。 |
 
 **错误码：**
 
@@ -585,7 +584,7 @@ getVideoRotation(deviceDegree: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
+| 7400101 | Parameter missing or parameter type incorrect.<br>适用版本：12-22    |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
@@ -604,6 +603,19 @@ async function getVideoRotation(videoOutput: camera.VideoOutput): Promise<camera
   } catch (error) {
     let err = error as BusinessError;
     console.error('Failed to get video rotation: ' + JSON.stringify(err));
+  }
+  return videoRotation;
+}
+
+function testGetVideoRotationWithOutParam(videoOutput: camera.VideoOutput): camera.ImageRotation {
+  let videoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    videoRotation = videoOutput.getVideoRotation();
+    console.info(`Video rotation is: ${videoRotation}`);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The videoOutput.testGetVideoRotationWithOutParam call failed. error code: ${err.code}`);
   }
   return videoRotation;
 }
@@ -638,3 +650,4 @@ function getDeviceDegree(): Promise<number> {
   });
 }
 ```
+

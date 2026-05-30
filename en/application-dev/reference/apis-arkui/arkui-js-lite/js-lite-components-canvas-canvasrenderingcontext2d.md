@@ -1,4 +1,10 @@
 # CanvasRenderingContext2D
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 **CanvasRenderingContext2D** allows you to draw rectangles and text on a canvas.
@@ -7,9 +13,10 @@
 
 ```html
 <!-- xxx.hml -->
-<canvas ref="canvas1" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
-<input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
-
+<div>
+    <canvas ref="canvas1" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
+    <input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
+</div>
 ```
 
 
@@ -192,7 +199,7 @@ Creates a drawing path.
   ctx.lineWidth = '6';
   ctx.strokeStyle = '#0000ff';
   ctx.moveTo(15, 80); 
-  ctx.lineTo(280, 160);
+  ctx.lineTo(280, 80);
   ctx.stroke();
   ```
 
@@ -329,7 +336,7 @@ Draws an arc on the canvas.
 | radius | number | Radius of the arc.|
 | startAngle | number | Start radian of the arc.|
 | endAngle | number | End radian of the arc.|
-| anticlockwise | boolean | Whether to draw the arc counterclockwise.|
+| anticlockwise | boolean | Whether to draw the arc counterclockwise.<br/>**true**: Draw the arc in a counterclockwise direction.<br/>**false**: Draw the arc in a clockwise direction.<br/>Default value: **false**. |
 
 **Example**
 

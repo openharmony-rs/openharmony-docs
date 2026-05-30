@@ -23,8 +23,8 @@ napi_status napi_load_module_with_info(napi_env env, const char* path, const cha
 
 > **注意**
 >
-> 1. bundleName表示AppScope/app.json5中配置的工程名；
-> 2. moduleName指的是待加载模块所在的HAP下module.json5中配置的名字；
+> 1. bundleName表示AppScope/app.json5中配置的工程名。
+> 2. moduleName指的是待加载模块所在的HAP下module.json5中配置的名字。
 
 ## napi_load_module_with_info支持的场景
 
@@ -42,10 +42,13 @@ napi_status napi_load_module_with_info(napi_env env, const char* path, const cha
 > 1. 加载一个模块名，实际的行为是加载该模块的入口文件，一般为index.ets/ts。
 > 2. 如果在HAR中加载另外一个HAR，需要确保module_info的配置正确，尤其注意moduleName应为HAP的moduleName或者HSP的moduleName。
 > 3. 如果在HAP/HSP中直接或间接使用了三方包，该三方包中使用napi_load_module_with_info接口加载其他模块A，则需要在HAP/HSP中也添加A的依赖。
+> 4. 在信号函数中调用不安全，直接调用可能导致栈溢出。
 
 ## 异常场景
 1. 在模块加载过程中，若出现包内未找到对应文件或build-profile.json5配置错误等问题，返回错误码`napi_generic_failure`，并打印报错日志。
-![napi_load_module_with_info](figures/napi_load_module_with_info.png)
+
+   ![napi_load_module_with_info](figures/napi_load_module_with_info.png)
+
 2. 系统侧发生非预期行为导致加载模块无法正常执行，将抛出cppcrash。
 
 ## 使用示例

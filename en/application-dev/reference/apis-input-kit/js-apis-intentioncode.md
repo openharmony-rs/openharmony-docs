@@ -1,10 +1,17 @@
 # @ohos.multimodalInput.intentionCode (Intention Code)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @zhang_yixin13-->
+
 The **intentionCode** module maps the original events of the keyboard to intention codes for normalized interaction. For example, if the mapped event of the space bar on the keyboard is **INTENTION_SELECT**, the intent is to select an item.
 
 >  **NOTE**
 > 
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -16,7 +23,7 @@ import { IntentionCode } from '@kit.InputKit';
 
 Enumerates intention codes.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 

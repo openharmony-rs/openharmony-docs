@@ -1,312 +1,33 @@
-# 使用动画
+# 动画概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
+[ArkUI](arkui-overview.md)开发框架在[NDK](../napi/ndk-development-overview.md)接口里提供了动画相关接口，能够在应用中使用C和C++代码实现高效精致的动画效果，其中包括属性动画，组件出现/消失转场，关键帧动画，同时支持通过Node-API桥接ArkTS侧帧动画能力，覆盖Native端UI开发中绝大多数动效场景。其核心动画能力主要包括：
 
-## 使用属性动画
+- **属性动画**
 
-ArkUI开发框架在NDK接口主要提供属性动画，实现组件出现/消失转场。同时，可以通过Node-API桥接ArkTS侧帧动画能力，实现Native侧的动画效果。
+  [属性动画](arkts-attribute-animation-overview.md)是指部分属性（如尺寸属性、布局属性、位置属性等多种类型）的变化引起的UI的变化，添加属性动画可以让属性值从起点逐渐变化到终点，从而产生连续的动画效果。利用提供的全局[animateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto)显式动画接口可以实现属性动画，通过在闭包函数中设置状态变化，系统就会自动插入过渡动画。对于改变布局类属性（如宽高）的动画，内容通常会直接跳转到最终状态，例如文字。如果希望内容跟随宽高变化，可以使用[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_RENDER_FIT属性进行配置。具体使用场景可参考示例[使用属性动画](ndk-use-animation-scene.md#使用属性动画)。
 
-> **说明：**
->
-> - 需要从ArkTS侧获取[this.getUIContext()](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)，传入到Native侧。
-> 
-> - 在Native侧通过[OH_ArkUI_GetContextFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md)方法获取context。
-> 
-> - 需要执行的动画属性变化必须写在[ArkUI_ContextCallback](../reference/apis-arkui/capi-arkui-nativemodule-arkui-contextcallback.md)中callback中。
-> 
-> - 需要执行的动画属性，必须在执行动画之前设置过。
+- **组件出现/消失转场**
 
-提供全局animateTo显式动画接口，来指定由于闭包代码导致的状态变化插入过渡动效。同属性动画，布局类改变宽高的动画，内容都是直接到终点状态。
+  [组件出现/消失转场](arkts-enter-exit-transition.md)主要用于容器组件中插入和删除子组件时，自动触发入场/出场过渡动效，提升用户体验。支持通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_ROTATE_TRANSITION、NODE_SCALE_TRANSITION、NODE_TRANSLATE_TRANSITION、NODE_OPACITY_TRANSITION、NODE_MOVE_TRANSITION属性配置转场参数，分别对应旋转、缩放、位移、透明度、移动五种转场类型，支持独立配置转场动画的时长、动画曲线等，且无需手动控制动画启停，组件上下树时自动触发对应动效。具体使用场景可参考示例[组件出现/消失转场](ndk-use-animation-scene.md#组件出现消失转场)。
 
-1. 在.ets文件中获取[UIContext](../reference//apis-arkui/arkts-apis-uicontext-uicontext.md)，把this.getUIContext()当做参数输出到Native方法中。
-   ```ts
-   // createNativeNode是Native侧暴露的方法
-   nativeNode.createNativeNode("xcomponentId", this.getUIContext());
-   ```
+- **一镜到底转场**
 
-2. 解析UIContext转换C中的context对象。
-   ```
-   // 获取ets测传入的context
-   ArkUI_ContextHandle context = nullptr;
-   // 通过code 判断是否获取成功
-   auto code = OH_ArkUI_GetContextFromNapiValue(env, args[1], &context);
-   ```
+  [一镜到底转场](arkts-shared-element-transition.md)主要用于界面切换时对相同或者相似的两个元素做的一种位置和大小匹配的过渡动画效果，也称一镜到底动效。一镜到底的效果能够让两个元素的出现消失产生联动，使得内容切换过程灵动自然而不生硬。
 
-3. 获取ArkUI_NativeAnimateAPI_1 对象。
-   ```
-   // 获取ArkUI_NativeAnimateAPI接口
-   ArkUI_NativeAnimateAPI_1 *animateApi = nullptr;
-   OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
-   ```
+  [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性用于组件内隐式共享元素转场，在视图状态切换过程中提供丝滑的上下文继承过渡体验。通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性为两个组件绑定同一id，这样在移除一个组件并添加另一个组件的时候，系统会对二者切换添加一镜到底动效。通过绑定两个对象的实现方式使得[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性区别于其他方法，最适合用于两个不同对象之间完成一镜到底。具体使用场景可参考示例[一镜到底转场](ndk-use-animation-scene.md#一镜到底转场)。
 
-4. 设置 ArkUI_AnimateOption参数，通过提供的C方法设置对应的参数。
-   ```
-   ArkUI_AnimateOption *option = OH_ArkUI_AnimateOption_Create();
-   OH_ArkUI_AnimateOption_SetDuration(option, 2000);
-   OH_ArkUI_AnimateOption_SetTempo(option, 1.1);
-   OH_ArkUI_AnimateOption_SetCurve(option, ARKUI_CURVE_EASE);
-   OH_ArkUI_AnimateOption_SetDelay(option, 20);
-   OH_ArkUI_AnimateOption_SetIterations(option, 1);
-   OH_ArkUI_AnimateOption_SetPlayMode(option, ARKUI_ANIMATION_PLAY_MODE_REVERSE);
-   ArkUI_ExpectedFrameRateRange *range = new ArkUI_ExpectedFrameRateRange;
-   range->min = 10;
-   range->max = 120;
-   range->expected = 60;
-   OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(option, range);
-   ```
+- **关键帧动画**
 
-5. 设置回调参数。
-   ```
-   // 用户自定义参数
-   struct UserData{
-       int32_t data;
-   };
-   UserData *onFinishUser = new UserData;
-   onFinishUser->data= 101;
-   // 设置完成的回调
-   ArkUI_AnimateCompleteCallback *completeCallback = new ArkUI_AnimateCompleteCallback;
-   completeCallback->userData = onFinishUser;
-   completeCallback->type = ARKUI_FINISH_CALLBACK_REMOVED;
-   completeCallback->callback = [](void *userData) {
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "CreateNativeNode  onFinishCallback %{public}d",
-                    reinterpret_cast<AA *>(userData)->a);
-   };
-   // 用户自定义参数
-   UserData *eventUser = new UserData ;
-   eventUser->data= 201;
-   static bool isback = true;
-   ArkUI_ContextCallback *update = new ArkUI_ContextCallback;
-   update->userData = eventUser;
-   update->callback = [](void *user) {
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "CreateNativeNode  animateTo %{public}d",
-                    reinterpret_cast<UserData*>(user)->data);
-       // 对应的属性变化 width height
-       if (isback) {
-           ArkUI_NumberValue custom_widthValue[] = {200};
-           ArkUI_AttributeItem custom_widthItem = {custom_widthValue, 1};
-           ArkUI_NumberValue custom_heightValue1[] = {80};
-           ArkUI_AttributeItem custom_heightItem1 = {custom_heightValue1, 1};
-           nodeAPI->setAttribute(textInput, NODE_WIDTH, &custom_widthItem);
-           nodeAPI->setAttribute(textInput, NODE_HEIGHT, &custom_heightItem1);
-       } else {
-           ArkUI_NumberValue custom_widthValue[] = {100};
-           ArkUI_AttributeItem custom_widthItem = {custom_widthValue, 1};
-           ArkUI_NumberValue custom_heightValue1[] = {40};
-           ArkUI_AttributeItem custom_heightItem1 = {custom_heightValue1, 1};
-           nodeAPI->setAttribute(textInput, NODE_WIDTH, &custom_widthItem);
-           nodeAPI->setAttribute(textInput, NODE_HEIGHT, &custom_heightItem1);
-       }
-   };
-   // 执行对应的动画
-   animateApi->animateTo(context, option, update, completeCallback);
-   ```
+  关键帧动画通过[keyframeAnimateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#keyframeanimateto)接口来指定若干个关键帧状态，实现分段式、多阶段的复杂动画效果，支持为不同关键帧节点独立设置动画时长，实现非线性、多节奏的动效变化。可以自定义整体动画的循环播放次数、期望帧率范围，支持每个关键帧的状态变更闭包与全局动画结束回调，用于适配更复杂的动效开发场景。具体使用场景可参考示例[使用关键帧动画](ndk-use-animation-scene.md#使用关键帧动画)。
 
-   ![GIF](figures/animateTo.gif)
+- **帧动画**
 
+  [帧动画](arkts-animator.md)具有逐帧回调的特性，便于开发者在每一帧中调整所需属性。通过提供[OH_ArkUI_AnimatorOption_RegisterOnFrameCallback](../reference/apis-arkui/capi-native-animate-h.md#oh_arkui_animatoroption_registeronframecallback)逐帧回调函数，帧动画允许开发者在应用的每一帧设置属性值，从而实现组件属性值变化的自然过渡，营造出流畅的动画效果。帧动画接口可参考[createAnimator](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#createanimator)。
 
-
-
-
-## 组件出现/消失转场
-
-组件内转场通过NODE_XX_TRANSITION属性（XX包括：OPACITY、TRANSLATE、SCALE、ROTATE、MOVE）配置转场参数，在组件插入和删除时显示过渡动效（通过NODE_TRANSFORM_CENTER属性设置NODE_SCALE_TRANSITION和NODE_ROTATE_ROTATE动效的中心点坐标）。主要用于容器组件中子组件插入和删除时，提升用户体验。
-
-1. 创建可交互界面，界面中包含Button，点击可以控制转场节点的添加和移除。其中 ArkUI_NodeContentHandle 类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
-   ```
-   constexpr int32_t BUTTON_CLICK_ID = 1;
-   bool flag = false;
-   ArkUI_NodeHandle parentNode;
-   ArkUI_NodeHandle childNode;
-   ArkUI_NodeHandle buttonNode;
-   
-   void mainViewMethod(ArkUI_NodeContentHandle handle)
-   {
-       ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-           OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-       ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-       ArkUI_NumberValue widthValue[] = {{.f32 = 500}};
-       ArkUI_AttributeItem widthItem = {.value = widthValue, .size = sizeof(widthValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(column, NODE_WIDTH, &widthItem);
-       ArkUI_NumberValue heightValue[] = {{.f32 = 500}};
-       ArkUI_AttributeItem heightItem = {.value = heightValue, .size = sizeof(heightValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(column, NODE_HEIGHT, &heightItem);
-       ArkUI_NodeHandle buttonShow = nodeAPI->createNode(ARKUI_NODE_BUTTON);
-       ArkUI_NumberValue buttonWidthValue[] = {{.f32 = 200}};
-       ArkUI_AttributeItem buttonWidthItem = {.value = buttonWidthValue,
-                                              .size = sizeof(buttonWidthValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(buttonShow, NODE_WIDTH, &buttonWidthItem);
-       ArkUI_NumberValue buttonHeightValue[] = {{.f32 = 50}};
-       ArkUI_AttributeItem buttonHeightItem = {.value = buttonHeightValue,
-                                               .size = sizeof(buttonHeightValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(buttonShow, NODE_HEIGHT, &buttonHeightItem);
-       ArkUI_AttributeItem labelItem = {.string = "show"};
-       nodeAPI->setAttribute(buttonShow, NODE_BUTTON_LABEL, &labelItem);
-       ArkUI_NumberValue buttonOpenTypeValue[] = {{.i32 = static_cast<int32_t>(ARKUI_BUTTON_TYPE_NORMAL)}};
-       ArkUI_AttributeItem buttonOpenTypeItem = {.value = buttonOpenTypeValue,
-                                                 .size = sizeof(buttonOpenTypeValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(buttonShow, NODE_BUTTON_TYPE, &buttonOpenTypeItem);
-       ArkUI_NumberValue buttonShowMarginValue[] = {{.f32 = 20}};
-       ArkUI_AttributeItem buttonShowMarginItem = {.value = buttonShowMarginValue,
-                                                    .size = sizeof(buttonShowMarginValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(buttonShow, NODE_MARGIN, &buttonShowMarginItem);
-       nodeAPI->registerNodeEvent(buttonShow, NODE_ON_CLICK, BUTTON_CLICK_ID, nullptr);
-       nodeAPI->addNodeEventReceiver(buttonShow, OnButtonShowClicked);
-       parentNode = column;
-       buttonNode = buttonShow;
-       nodeAPI->addChild(column, buttonShow);
-       OH_ArkUI_NodeContent_AddNode(handle, column);
-   }
-   ```
-
-2. 创建一个设置了Transition属性的节点，当目标节点上下树时会播放转场动画。
-   ```
-   ArkUI_NodeHandle CreateChildNode() {
-       ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-           OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-       ArkUI_NodeHandle image = nodeAPI->createNode(ARKUI_NODE_IMAGE);
-       ArkUI_AttributeItem imageSrcItem = {.string = "/pages/common/scenery.jpg"};
-       nodeAPI->setAttribute(image, NODE_IMAGE_SRC, &imageSrcItem);
-       ArkUI_NumberValue textWidthValue[] = {{.f32 = 300}};
-       ArkUI_AttributeItem textWidthItem = {.value = textWidthValue,
-                                            .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_WIDTH, &textWidthItem);
-       ArkUI_NumberValue textHeightValue[] = {{.f32 = 300}};
-       ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_HEIGHT, &textHeightItem);
-       ArkUI_NumberValue transformCenterValue[] = {0.0f, 0.0f, 0.0f, 0.5f, 0.5f};
-       ArkUI_AttributeItem transformCenterItem = {.value = transformCenterValue,
-                                             .size = sizeof(transformCenterValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_TRANSFORM_CENTER, &transformCenterItem);
-       ArkUI_NumberValue rotateAnimationValue[] = {0.0f, 0.0f, 1.0f, 360.0f, 0.0f, {.i32 = 500}, {.i32 = static_cast<int32_t>(ARKUI_CURVE_SHARP)}};
-       ArkUI_AttributeItem rotateAnimationItem = {.value = rotateAnimationValue,
-                                                  .size = sizeof(rotateAnimationValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_ROTATE_TRANSITION, &rotateAnimationItem);
-       ArkUI_NumberValue scaleAnimationValue[] = {
-           0.0f, 0.0f, 0.0f, {.i32 = 500}, {.i32 = static_cast<int32_t>(ARKUI_CURVE_SHARP)}};
-       ArkUI_AttributeItem scaleAnimationItem = {.value = scaleAnimationValue,
-                                                  .size = sizeof(scaleAnimationValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_SCALE_TRANSITION, &scaleAnimationItem);
-       ArkUI_NumberValue translateAnimationValue[] = {
-           200, 200, 0.0f, {.i32 = 500}, {.i32 = static_cast<int32_t>(ARKUI_CURVE_SHARP)}};
-       ArkUI_AttributeItem translateAnimationItem = {.value = translateAnimationValue,
-                                                 .size = sizeof(translateAnimationValue) / sizeof(ArkUI_NumberValue)};
-       nodeAPI->setAttribute(image, NODE_TRANSLATE_TRANSITION, &translateAnimationItem);
-       return image;
-   }
-   ```
-
-3. 在Button的监听回调里添加转场节点上下树逻辑，以此控制转场节点的入场和出场。
-   ```
-   void OnButtonShowClicked(ArkUI_NodeEvent* event)
-   {
-       if (!event) {
-           return;
-       }
-       if (!childNode) {
-           childNode = CreateChildNode();
-       }
-       ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-           OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-       if (flag) {
-           flag = false;
-           ArkUI_AttributeItem labelItem = {.string = "show"};
-           nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
-           nodeAPI->removeChild(parentNode, childNode);
-       } else {
-           flag = true;
-           ArkUI_AttributeItem labelItem = {.string = "hide"};
-           nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
-           nodeAPI->addChild(parentNode, childNode);
-       }
-   }
-   ```
-
-   ![zh-cn_image_0000001903284256](figures/zh-cn_image_0000001903284256.gif)
-
-
-
-## 使用关键帧动画
-
-[keyframeAnimateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#keyframeanimateto)接口来指定若干个关键帧状态，实现分段的动画。同属性动画，布局类改变宽高的动画，内容都是直接到终点状态。
-
-该示例主要演示如何通过[keyframeAnimateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#keyframeanimateto)来设置关键帧动画，NDK接口开发的UI界面挂载到ArkTS主页面的完整流程可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
-
-```
-auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-
-// 创建button，后续创建的关键帧动画作用在button组件上
-auto button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
-ArkUI_NumberValue widthValue0[] = {100};
-ArkUI_AttributeItem widthItem0 = {widthValue0, 1};
-ArkUI_NumberValue heightValue0[] = {100};
-ArkUI_AttributeItem heightItem0 = {heightValue0, 1};
-nodeAPI->setAttribute(button, NODE_WIDTH, &widthItem0);
-nodeAPI->setAttribute(button, NODE_HEIGHT, &heightItem0);
-ArkUI_NumberValue typeValue[] = {{.i32 = ArkUI_ButtonType::ARKUI_BUTTON_TYPE_CIRCLE}};
-ArkUI_AttributeItem typeItem = {typeValue, 1};
-nodeAPI->setAttribute(button, NODE_BUTTON_TYPE, &typeItem); // 设置button的形状为圆形
-
-static ArkUI_NodeHandle buttonSelf = button;
-static ArkUI_NativeNodeAPI_1 *nodeAPISelf = nodeAPI;
-
-// 注册点击事件到button上
-nodeAPI->registerNodeEvent(button, NODE_ON_CLICK, 1, nullptr);
-auto onTouch = [](ArkUI_NodeEvent *event) {
-    
-    // 点击button按钮时触发该逻辑
-    if (OH_ArkUI_NodeEvent_GetTargetId(event) == 1) {
-        
-        // 获取context对象
-        static ArkUI_ContextHandle context = nullptr;
-        context = OH_ArkUI_GetContextByNode(buttonSelf);
-        
-        // 获取ArkUI_NativeAnimateAPI接口
-        ArkUI_NativeAnimateAPI_1 *animateApi = nullptr;
-        OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
-        
-        // 以下代码为创建关键帧动画的关键流程，包括设置关键帧动画参数、开启关键帧动画
-        // 设置ArkUI_KeyframeAnimateOption参数，通过提供的C方法设置对应的参数
-        static ArkUI_KeyframeAnimateOption *option =  OH_ArkUI_KeyframeAnimateOption_Create(2); // 关键帧动画状态数
-        OH_ArkUI_KeyframeAnimateOption_SetDuration(option, 1000, 0); // 第一段关键帧动画的持续时间
-        OH_ArkUI_KeyframeAnimateOption_SetDuration(option, 2000, 1); // 第二段关键帧动画的持续时间
-        OH_ArkUI_KeyframeAnimateOption_SetIterations(option, 5); // 关键帧动画播放次数
-        OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(option, nullptr, [](void *user) {
-            ArkUI_NumberValue widthValue0[] = {150};
-            ArkUI_AttributeItem widthItem0 = {widthValue0, 1};
-            ArkUI_NumberValue heightValue0[] = {150};
-            ArkUI_AttributeItem heightItem0 = {heightValue0, 1};
-            nodeAPISelf->setAttribute(buttonSelf, NODE_WIDTH, &widthItem0);
-            nodeAPISelf->setAttribute(buttonSelf, NODE_HEIGHT, &heightItem0);
-        }, 0); // 第一段关键帧时刻状态的闭包函数
-        OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(option, nullptr, [](void *user) {
-            ArkUI_NumberValue widthValue0[] = {80};
-            ArkUI_AttributeItem widthItem0 = {widthValue0, 1};
-            ArkUI_NumberValue heightValue0[] = {80};
-            ArkUI_AttributeItem heightItem0 = {heightValue0, 1};
-            nodeAPISelf->setAttribute(buttonSelf, NODE_WIDTH, &widthItem0);
-            nodeAPISelf->setAttribute(buttonSelf, NODE_HEIGHT, &heightItem0);
-        }, 1); // 第二段关键帧时刻状态的闭包函数
-        OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(option, nullptr, [](void *user) {
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "keyframe animate finish");
-        }); // 关键帧动画结束回调
-        ArkUI_ExpectedFrameRateRange *range = new ArkUI_ExpectedFrameRateRange;
-        range->max = 120;
-        range->expected = 60;
-        range->min = 30;
-        OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(option, range); // 关键帧设置期望帧率
-        
-        // 执行对应的动画
-        animateApi->keyframeAnimateTo(context, option);
-    }
-};
-nodeAPI->registerNodeEventReceiver(onTouch);
-nodeAPI->addChild(column, button);
-```
-
-![zh-cn_image_0000001903284256](figures/zh-cn_image_keyframeAnimateTo.gif)
+  与属性动画相比，帧动画能让开发者实时感知动画进程，即时调整UI值，并具备事件即时响应和可暂停的优势，但在性能方面略逊于属性动画。当属性动画能满足需求时，建议优先采用属性动画接口实现。[animateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto)接口的使用可参考[使用属性动画](ndk-use-animation-scene.md#使用属性动画)。帧动画具体使用场景可参考示例[使用帧动画](ndk-use-animation-scene.md#使用帧动画)。

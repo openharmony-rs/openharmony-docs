@@ -1,4 +1,10 @@
 # 获取设备的位置信息开发指导(ArkTS)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
 
 ## 场景概述
 
@@ -8,18 +14,18 @@
 
 ## 接口说明
 
-获取设备的位置信息所使用的接口如下，详细说明参见：[Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+获取设备的位置信息所使用的接口如下，详细说明参见Location Kit API参考：[@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
 
-本模块能力仅支持WGS-84坐标系。
+本模块能力仅支持WGS-84坐标系。<!--RP2--><!--RP2End-->
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |
-| [on(type: 'locationChange', request: LocationRequest &#124; ContinuousLocationRequest, callback: Callback&lt;Location&gt;): void](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanageronlocationchange) | 开启位置变化订阅，并发起定位请求。 | 
-| [off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerofflocationchange) | 关闭位置变化订阅，并删除对应的定位请求。 | 
-| [getCurrentLocation(request: CurrentLocationRequest &#124; SingleLocationRequest, callback: AsyncCallback&lt;Location&gt;): void](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) | 获取当前位置，使用callback回调异步返回结果。| 
-| [getCurrentLocation(request?: CurrentLocationRequest &#124; SingleLocationRequest): Promise&lt;Location&gt;](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation-2) | 获取当前位置，使用Promise方式异步返回结果。| 
-| [getLastLocation(): Location](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetlastlocation) | 获取最近一次定位结果。 | 
-| [isLocationEnabled(): boolean](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerislocationenabled) | 判断位置服务是否已经开启。 | 
+| [geoLocationManager.on('locationChange')](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanageronlocationchange) | 开启位置变化订阅，并发起定位请求。 | 
+| [geoLocationManager.off('locationChange')](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerofflocationchange) | 关闭位置变化订阅，并删除对应的定位请求。 | 
+| [geoLocationManager.getCurrentLocation](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) | 获取当前位置，使用callback回调异步返回结果。| 
+| [geoLocationManager.getCurrentLocation](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation-2) | 获取当前位置，使用Promise方式异步返回结果。| 
+| [geoLocationManager.getLastLocation](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetlastlocation) | 获取最近一次定位结果。 | 
+| [geoLocationManager.isLocationEnabled](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerislocationenabled) | 判断位置服务是否已经开启。 | 
 
 ## 开发步骤
 
@@ -30,7 +36,7 @@
    ```ts
    import { geoLocationManager } from '@kit.LocationKit';
    ```
-3. 调用获取位置接口之前需要先判断位置开关是否打开。
+3. 调用获取位置接口之前需要先判断位置开关是否打开。<br/>
    查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下：
 
    ```ts
@@ -41,7 +47,7 @@
        console.error("errCode:" + err.code + ", message:"  + err.message);
    }
    ```
-   如果位置开关未开启，可以拉起全局开关设置弹框，引导用户打开位置开关，具体可参考[拉起全局开关设置弹框](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestglobalswitch12)。
+   如果位置开关未开启，可以拉起全局开关设置弹框，引导用户打开位置开关，具体可参考[requestGlobalSwitch](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestglobalswitch12)。
 
 4. 单次获取当前设备位置。多用于查看当前位置、签到打卡、服务推荐等场景。
    - 方式一：获取系统缓存的最新位置。<br/>

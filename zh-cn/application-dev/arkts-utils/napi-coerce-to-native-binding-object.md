@@ -12,7 +12,9 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
 
 1. Native实现各项功能。
 
-   ```cpp
+   <!-- @[define_customNativeObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    // napi_init.cpp
    #include <mutex>
    #include <unordered_set>
@@ -206,7 +208,7 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
        std::mutex numberSetMutex_{};
    };
    
-   void FinializeCallback(napi_env env, void *data, void *hint)
+   void FinalizeCallback(napi_env env, void *data, void *hint)
    {
        return;
    }
@@ -239,7 +241,7 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
            {"clear", nullptr, CustomNativeObject::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
        napi_define_properties(env, object, sizeof(desc) / sizeof(desc[0]), desc);
        // 将JS对象object和native对象value生命周期进行绑定
-       napi_wrap(env, object, value, FinializeCallback, nullptr, nullptr);
+       napi_wrap(env, object, value, FinalizeCallback, nullptr, nullptr);
        // JS对象携带native信息
        napi_coerce_to_native_binding_object(env, object, DetachCallback, AttachCallback, value, nullptr);
        return object;
@@ -254,13 +256,15 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
            {"store", nullptr, CustomNativeObject::Store, nullptr, nullptr, nullptr, napi_default, nullptr},
            {"erase", nullptr, CustomNativeObject::Erase, nullptr, nullptr, nullptr, napi_default, nullptr},
            {"clear", nullptr, CustomNativeObject::Clear, nullptr, nullptr, nullptr, napi_default, nullptr},
-           {"setTransferDetached", nullptr, CustomNativeObject::SetTransferDetached, nullptr, nullptr, nullptr, napi_default, nullptr}};
+           {"setTransferDetached", nullptr, CustomNativeObject::SetTransferDetached,
+               nullptr, nullptr, nullptr, napi_default, nullptr}};
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        auto &object = CustomNativeObject::GetInstance();
-       napi_wrap(env, exports, reinterpret_cast<void*>(&object), FinializeCallback, nullptr, nullptr);
+       napi_wrap(env, exports, reinterpret_cast<void*>(&object), FinalizeCallback, nullptr, nullptr);
        napi_ref exportsRef;
        napi_create_reference(env, exports, 1, &exportsRef);
-       napi_coerce_to_native_binding_object(env, exports, DetachCallback, AttachCallback, reinterpret_cast<void*>(&object), exportsRef);
+       napi_coerce_to_native_binding_object(env, exports, DetachCallback,
+           AttachCallback, reinterpret_cast<void*>(&object), exportsRef);
        return exports;
    }
    EXTERN_C_END
@@ -281,10 +285,11 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
    }
    ```
 
-
 2. 在ArkTS中声明接口。
 
-   ```ts
+   <!-- @[declare_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+   
+   ``` TypeScript
    // Index.d.ts
    export const getAddress: () => number;
    export const getSetSize: () => number;
@@ -295,45 +300,48 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
    ```
 
 3. ArkTS对象调用Native侧实现的各项功能。
-   
+
    在转移模式下，跨线程传递后，原来的ArkTS对象与Native对象解绑，因此不能继续访问。示例如下：
-   ```ts
+   
+   <!-- @[load_trans](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/ets/pages/TransferableCase.ets) -->  
+   
+   ``` TypeScript
    import testNapi from 'libentry.so';
    import { taskpool } from '@kit.ArkTS';
    
    @Concurrent
    function getAddress() {
      let address: number = testNapi.getAddress();
-     console.info("taskpool:: address is " + address);
+     console.info('taskpool:: address is ' + address);
    }
    
    @Concurrent
    function store(a:number, b:number, c:number) {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before store");
+     console.info('set size is ' + size + ' before store');
      testNapi.store(a);
      testNapi.store(b);
      testNapi.store(c);
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after store");
+     console.info('set size is ' + size + ' after store');
    }
    
    @Concurrent
    function erase(a:number) {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before erase");
+     console.info('set size is ' + size + ' before erase');
      testNapi.erase(a);
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after erase");
+     console.info('set size is ' + size + ' after erase');
    }
    
    @Concurrent
    function clear() {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before clear");
+     console.info('set size is ' + size + ' before clear');
      testNapi.clear();
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after clear");
+     console.info('set size is ' + size + ' after clear');
    }
    
    // 转移模式
@@ -341,21 +349,21 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
      // setTransferDetached 设置为true，表示传输方式为转移模式
      testNapi.setTransferDetached(true);
      let address:number = testNapi.getAddress();
-     console.info("host thread address is " + address);
+     console.info('host thread address is ' + address);
    
      let task1 = new taskpool.Task(getAddress, testNapi);
      await taskpool.execute(task1);
-     
+   
      let task2 = new taskpool.Task(store, 1, 2, 3);
      await taskpool.execute(task2);
    
      let task3 = new taskpool.Task(store, 4, 5, 6);
      await taskpool.execute(task3);
-
+   
      // 由于已经设置了转移模式，且testNapi已跨线程传递，所以主线程无法继续访问到Native对象的值
      let size:number = testNapi.getSetSize();
      // 输出的日志为“host thread size is undefined”
-     console.info("host thread size is " + size);
+     console.info('host thread size is ' + size);
    
      let task4 = new taskpool.Task(erase, 3);
      await taskpool.execute(task4);
@@ -390,7 +398,10 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
    ```
 
    在共享模式下，跨线程传递后，原来的ArkTS对象还可以继续访问Native对象。示例如下：
-   ```ts
+
+   <!-- @[load_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/ets/pages/ShareCase.ets) --> 
+   
+   ``` TypeScript
    // Index.ets
    import testNapi from 'libentry.so';
    import { taskpool } from '@kit.ArkTS';
@@ -398,42 +409,42 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
    @Concurrent
    function getAddress() {
      let address: number = testNapi.getAddress();
-     console.info("taskpool:: address is " + address);
+     console.info('taskpool:: address is ' + address);
    }
    
    @Concurrent
    function store(a:number, b:number, c:number) {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before store");
+     console.info('set size is ' + size + ' before store');
      testNapi.store(a);
      testNapi.store(b);
      testNapi.store(c);
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after store");
+     console.info('set size is ' + size + ' after store');
    }
    
    @Concurrent
    function erase(a:number) {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before erase");
+     console.info('set size is ' + size + ' before erase');
      testNapi.erase(a);
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after erase");
+     console.info('set size is ' + size + ' after erase');
    }
    
    @Concurrent
    function clear() {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before clear");
+     console.info('set size is ' + size + ' before clear');
      testNapi.clear();
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after clear");
+     console.info('set size is ' + size + ' after clear');
    }
    
    // 共享模式
    async function test(): Promise<void> {
      let address:number = testNapi.getAddress();
-     console.info("host thread address is " + address);
+     console.info('host thread address is ' + address);
    
      let task1 = new taskpool.Task(getAddress, testNapi);
      await taskpool.execute(task1);
@@ -447,7 +458,7 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
      // 由于默认的传输模式为共享模式，testNapi跨线程传递后，主线程可以继续访问Native对象的值
      let size:number = testNapi.getSetSize();
      // 输出的日志为“host thread size is 6”
-     console.info("host thread size is " + size);
+     console.info('host thread size is ' + size);
    
      let task4 = new taskpool.Task(erase, 3);
      await taskpool.execute(task4);

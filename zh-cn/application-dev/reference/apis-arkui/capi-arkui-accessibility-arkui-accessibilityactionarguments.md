@@ -1,10 +1,14 @@
 # ArkUI_AccessibilityActionArguments
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Owner: @wangyinhua-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_AccessibilityActionArguments ArkUI_AccessibilityActionArguments
+```
 
 ## 概述
 

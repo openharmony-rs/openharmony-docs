@@ -4,7 +4,11 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Camera_Location {...} Camera_Location
+```
 
 ## Overview
 
@@ -24,4 +28,4 @@ The struct describes the location where a photo is taken.
 | -- | -- |
 | double latitude | Latitude.|
 | double longitude | Longitude.|
-| double altitude | Altitude, in pixels.|
+| double altitude | Altitude, in meters.|

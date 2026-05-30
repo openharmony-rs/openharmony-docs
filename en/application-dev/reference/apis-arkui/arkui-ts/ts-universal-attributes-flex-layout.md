@@ -1,9 +1,17 @@
 # Flex Layout
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @camlostshi-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+The flex layout enables flexible arrangement, alignment, and space distribution among child components within a container. It allows elements to dynamically expand or shrink based on available space, meeting responsive layout requirements across different screen sizes.
 
 >  **NOTE**
 >  - The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  - The flex layout is valid only when the parent container is a [Flex](ts-container-flex.md), [Column](ts-container-column.md), [Row](ts-container-row.md), or [GridRow](ts-container-gridrow.md) (only for [alignSelf](#alignself)) component.
+>  - [GridRow](ts-container-gridrow.md) supports only [alignSelf](#alignself), but [Flex](ts-container-flex.md), [Column](ts-container-column.md), and [Row](ts-container-row.md) supports the following four attributes.
 
 ## flexBasis
 
@@ -21,7 +29,7 @@ Sets the base size of the component.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number \| string | Yes  | Base size of the component in the main axis of the parent container.<br>Default value: **'auto'** (indicating that the base size of the component in the main axis is the original size of the component)<br>For the string type, the value must be a string that can be converted into a number (for example, **'10'**), a string that includes a length unit (for example, **'10px'**), or the literal string **'auto'**; percentage-based strings are not supported.<br>For the number type, the value range is (0, +∞), and the unit is vp.<br>Invalid values are treated as the default value **'auto'**.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Base size of the component in the main axis of the parent container.<br>Default value: **'auto'** (indicating that the base size of the component in the main axis is the original size of the component)<br>For the string type, the value must be a string that can be converted into a number (for example, **'10'**), a string that includes a length unit (for example, **'10px'**), or the literal string **'auto'**; percentage-based strings are not supported.<br>For the number type, the value range is (0, +∞), and the unit is vp.<br>Invalid values are treated as the default value **'auto'**.|
 
 **Return value**
 
@@ -45,7 +53,7 @@ Sets the percentage of the parent container's remaining space that is allocated 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Percentage of the parent container's remaining space that is allocated to the component.<br>Value range: (0, +∞).<br>Default value: **0**.|
+| value  | number | Yes  | Percentage of the parent container's remaining space that is allocated to the component.<br>Value range: [0, +∞).<br>Default value: **0**<br>If this parameter is set to an invalid value, the default value will be used.|
 
 **Return value**
 
@@ -59,6 +67,10 @@ flexShrink(value: number): T
 
 Sets the percentage of the parent container's shrink size that is allocated to the component. When the parent container is **Column** or **Row**, you must set the size along the main axis.
 
+>  **NOTE**
+>
+>  When [getInspectorByKey](ts-universal-attributes-component-id.md#getinspectorbykey9) is used to obtain the **flexShrink** attribute, if the node does not have **flexShrink** set, the default value of **1** is returned by default.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -69,7 +81,7 @@ Sets the percentage of the parent container's shrink size that is allocated to t
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Percentage of the parent container's shrink size that is allocated to the component.<br>If the parent container is [Column](ts-container-column.md) or [Row](ts-container-row.md), the default value is **0**, and the value range is (0, +∞).<br> If the parent container is [Flex](ts-container-flex.md), the default value is **1**.<br>[constraintSize](ts-universal-attributes-size.md#constraintsize) limits the component's size range. For [Column](ts-container-column.md) and [Row](ts-container-row.md) components without explicit main axis size specified (through [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), or [size](ts-universal-attributes-size.md#size)), the default layout behavior (adapt-to-fit child components) applies, and **flexShrink** has no effect.|
+| value  | number | Yes  | Percentage of the parent container's shrink size that is allocated to the component.<br>If the parent container is [Column](ts-container-column.md) or [Row](ts-container-row.md), the default value is **0**, and the value range is (0, +∞).<br> If the parent container is [Flex](ts-container-flex.md), the default value is **1**.<br>[constraintSize](ts-universal-attributes-size.md#constraintsize) limits the component's size range. For [Column](ts-container-column.md) and [Row](ts-container-row.md) components without explicit main axis size specified (through [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), or [size](ts-universal-attributes-size.md#size)), the default layout behavior (adapt-to-fit child components) applies, even when [constraintSize](ts-universal-attributes-size.md#constraintsize) is configured. In this case, **flexShrink** has no effect.<br>If this parameter is set to an invalid value, the default value will be used.|
 
 **Return value**
 

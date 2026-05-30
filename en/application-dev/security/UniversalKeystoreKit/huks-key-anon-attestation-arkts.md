@@ -21,34 +21,30 @@ Ensure network connection during the operation.
 
 4. Use [anonAttestKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksanonattestkeyitem11) with the key alias and parameter set to perform key attestation.
 
-```ts
+## Development Case
+<!-- @[anonymous_key_proof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/AnonymousKeyProof/entry/src/main/ets/pages/AnonymousKeyProof.ets) -->
+
+``` TypeScript
 /*
  * Perform anonymous key attestation. This example uses promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = [];
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
-
 /* 1. Set the key alias. */
-let keyAliasString = "key anon attest";
-let aliasUint8 = StringToUint8Array(keyAliasString);
-let securityLevel = StringToUint8Array('sec_level');
-let challenge = StringToUint8Array('challenge_data');
-let versionInfo = StringToUint8Array('version_info');
-let anonAttestCertChain: Array<string>;
+let keyAliasString = 'key anon attest';
+let aliasString = keyAliasString;
+let aliasUint8 = stringToUint8Array(keyAliasString);
+let securityLevel = stringToUint8Array('sec_level');
+let challenge = stringToUint8Array('challenge_data');
+let versionInfo = stringToUint8Array('version_info');
+let anonAttestCertChain: string[];
 
-class throwObject {
-  isThrow: boolean = false;
+class ThrowObject {
+  public isThrow: boolean = false;
 }
 
 /* Encapsulate the key parameter set. */
-let genKeyProperties: Array<huks.HuksParam> = [
+let genKeyProperties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_RSA
@@ -83,7 +79,7 @@ let genOptions: huks.HuksOptions = {
 };
 
 /* 2. Encapsulate the parameter set for key attestation. */
-let anonAttestKeyProperties: Array<huks.HuksParam> = [
+let anonAttestKeyProperties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
     value: securityLevel
@@ -105,7 +101,15 @@ let huksOptions: huks.HuksOptions = {
   properties: anonAttestKeyProperties
 };
 
-function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
       huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
@@ -125,7 +129,7 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwO
 /* 3. Generate a key. */
 async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
   console.info(`enter promise generateKeyItem`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
       .then((data) => {
@@ -144,7 +148,7 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
 }
 
 /* 4. Attest the key. */
-function anonAttestKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+function anonAttestKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<huks.HuksReturnResult>((resolve, reject) => {
     try {
       huks.anonAttestKeyItem(keyAlias, huksOptions, (error, data) => {
@@ -161,9 +165,9 @@ function anonAttestKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, thro
   });
 }
 
-async function publicAnonAttestKey(keyAlias: string, huksOptions: huks.HuksOptions) {
+async function publicAnonAttestKey(keyAlias: string, huksOptions: huks.HuksOptions): Promise<string> {
   console.info(`enter promise anonAttestKeyItem`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await anonAttestKeyItem(keyAlias, huksOptions, throwObject)
       .then((data) => {
@@ -179,14 +183,17 @@ async function publicAnonAttestKey(keyAlias: string, huksOptions: huks.HuksOptio
           console.error(`promise: anonAttestKeyItem failed, ${JSON.stringify(error)}`);
         }
       });
+    return 'Success';
   } catch (error) {
     console.error(`promise: anonAttestKeyItem input arg invalid, ${JSON.stringify(error)}`);
+    return 'Failed';
   }
 }
 
-async function AnonAttestKeyTest() {
-  await publicGenKeyFunc(keyAliasString, genOptions);
-  await publicAnonAttestKey(keyAliasString, huksOptions);
+async function anonAttestKeyTest(): Promise<string> {
+  await publicGenKeyFunc(aliasString, genOptions);
+  let ret = await publicAnonAttestKey(aliasString, huksOptions);
   console.info('anon attest certChain data: ' + anonAttestCertChain)
+  return ret;
 }
 ```

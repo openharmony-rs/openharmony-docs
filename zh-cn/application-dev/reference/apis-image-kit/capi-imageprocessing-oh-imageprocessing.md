@@ -1,4 +1,14 @@
 # OH_ImageProcessing
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @XiaoYao555-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_ImageProcessing OH_ImageProcessing
+```
 
 ## 概述
 

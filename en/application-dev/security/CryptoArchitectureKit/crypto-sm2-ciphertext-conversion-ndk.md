@@ -93,6 +93,8 @@ static OH_Crypto_ErrCode doTestGenCipherTextBySpec()
 3. Call [OH_CryptoSm2CiphertextSpec_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_destroy) to destroy the SM2 ciphertext specification object.
 
 ```C++
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+
 static OH_Crypto_ErrCode doTestGetCipherTextSpec()
 {
     // Prepare the standard ASN.1 ciphertext.

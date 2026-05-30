@@ -3,8 +3,9 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 > **NOTE**
 >
@@ -16,6 +17,10 @@
 
 Authentication failed.
 
+**Description**
+
+The authentication failed.
+
 **Possible Causes**
 
 The credential does not match the credential enrolled.
@@ -24,11 +29,15 @@ The credential does not match the credential enrolled.
 
 Initiate authentication again.
 
-## 12500002 General Operation Error
+## 12500002 Common Error Code of the Identity Authentication System
 
 **Error Message**
 
 General operation error.
+
+**Description**
+
+The internal error of the identity authentication system cannot be rectified.
 
 **Possible Causes**
 
@@ -48,9 +57,14 @@ Call the API again later or restart the device.
 
 Authentication canceled.
 
+**Description**
+
+The authentication operation is canceled.
+
 **Possible Causes**
 
-The authentication operation has been canceled.
+1. The authentication is canceled manually by the user.
+2. The authentication is preempted by the subsequent authentication request.
 
 **Solution**
 
@@ -61,6 +75,10 @@ Initiate authentication again.
 **Error Message**
 
 Authentication timeout.
+
+**Description**
+
+The authentication operation times out.
 
 **Possible Causes**
 
@@ -76,9 +94,13 @@ Initiate authentication again.
 
 The authentication type is not supported.
 
+**Description**
+
+The authentication type is not supported.
+
 **Possible Causes**
 
-1. The input authentication type parameter is not supported. For example, if the authentication type passed in **getAvailableStatus** of the **userAuth** module is not **FACE** or **FINGERPRINT**, error code 12500005 is returned.
+1. The input authentication type is not supported. For example, if the parameter input when the [getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9) API of the **userAuth** module is called is not of the FACE or FINGERPRINT type, error code 12500005 is returned.
 2. The device does not support the authentication type. For example, if fingerprint authentication is initiated on a device that has no fingerprint sensor, error code 12500005 is returned.
 
 **Solution**
@@ -91,24 +113,32 @@ Check the authentication type parameter and call the API again.
 
 The authentication trust level is not supported.
 
+**Description**
+
+The authentication trust level is not supported.
+
 **Possible Causes**
 
-1. The **authTrustLevel** value in **getAvailableStatus** or **getAuthInstance** of the **userAuth** module is not in the range [ATL1, ATL2, ATL3, ATL4].
+1. When the [getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9) or [getUserAuthInstance](js-apis-useriam-userauth.md#userauthgetuserauthinstance10) API of the **userAuth** module is called, the value of **authTrustLevel** is not within the range of [ATL1, ATL2, ATL3, ATL4].
 2. The device does not support the authentication trust level. For example, if facial authentication for payment is initiated on a device that has only 2D cameras, error code 12500006 is returned.
 
 **Solution**
 
 Check that the **authTrustLevel** passed in is within the value range, and the device supports the specified authentication trust level.
 
-## 12500007 Authentication Service Unavailable
+## 12500007 Authentication Service Is Busy
 
 **Error Message**
 
 Authentication service is busy.
 
+**Description**
+
+The authentication service is busy.
+
 **Possible Causes**
 
-Another authentication is initiated when the current authentication has not been finished yet.
+This error code is returned when the user taps the navigation button on the identity authentication control page, indicating that the caller needs to open the custom authentication page.
 
 **Solution**
 
@@ -122,7 +152,7 @@ The parameter is out of range.
 
 **Description**
 
-Parameter verification failed.
+The parameter value is out of the valid range.
 
 **Possible Causes**
 
@@ -138,6 +168,10 @@ Check the API parameters and initiate the request again.
 
 Authentication is locked out.
 
+**Description**
+
+Authentication is locked.
+
 **Possible Causes**
 
 The number of authentication failures exceeds the limit.
@@ -152,9 +186,13 @@ Initiate authentication later.
 
 The type of credential has not been enrolled.
 
+**Description**
+
+No credential of this type is enrolled.
+
 **Possible Causes**
 
-The **authType** parameter set in **getAvailableStatus** of the **userAuth** module is **FACE**, but no facial credential is enrolled in the device. **start()** is called to initiate facial authentication, but no facial credential is enrolled in the device.
+For example, if the [getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9) API of the **userAuth** module is called, the **authType** parameter is set to **FACE**, but no facial credential is enrolled in the device, error code 12500010 is returned. **start()** is called to initiate facial authentication, but no facial credential is enrolled in the device.
 
 **Solution**
 
@@ -165,6 +203,10 @@ Check that the related type of credential has been enrolled in the device.
 **Error Message**
 
 Switched to the custom authentication process.
+
+**Description**
+
+The system switches to the custom authentication process.
 
 **Possible Causes**
 
@@ -179,6 +221,10 @@ Initiate authentication again.
 **Error Message**
 
 Operation failed because of PIN expired.
+
+**Description**
+
+The password has expired.
 
 **Possible Causes**
 
@@ -195,6 +241,10 @@ Initiate an authentication again after the user sets a new lock screen password.
 
 Operation failed because of authToken integrity check failed.
 
+**Description**
+
+The AuthToken integrity check fails.
+
 **Possible Causes**
 
 The authentication token is invalid.
@@ -209,6 +259,10 @@ Initiate authentication again and issue a valid token.
 
 Operation failed because of authToken has expired.
 
+**Description**
+
+The AuthToken has expired.
+
 **Possible Causes**
 
 The authentication token has expired. The interval between the time when the AuthToken is issued and the time when the verification is initiated exceeds the AuthToken validity period passed in.
@@ -221,7 +275,7 @@ Initiate authentication again and issue a valid token.
 
 **Error Message**
 
-Failed to reuse authtication result.
+Failed to reuse authentication result.
 
 **Description**
 
@@ -242,6 +296,10 @@ Initiate an authentication request to obtain a valid authentication token with t
 
 The service is unavailable.
 
+**Description**
+
+The facial authentication service is unavailable.
+
 **Possible Causes**
 
 1. The facial authentication service is not started when **setSurfaceId()** of the **faceAuth** module is called.
@@ -252,4 +310,60 @@ The service is unavailable.
 **Solution**
 
 Call the API again later or restart the device.
+
+## 32600001 System Service Not Working Properly
+
+**Error Message**
+
+The system service is not working properly. Please try again later.
+
+**Description**
+
+The system service is unavailable.
+
+**Possible Causes**
+
+1. The process of the user authentication service is not started.
+2. The proxy client fails to write data over IPC.
+3. The stub server fails to parse data over IPC.
+
+**Solution**
+
+Call the API again later or restart the device.
+
+## 32600002 Template Not Found
+
+**Error Message**
+
+The template is not found.
+
+**Description**
+
+The template is not found.
+
+**Possible Causes**
+
+The template ID is incorrect.
+
+**Solution**
+
+Check whether the template ID is correct.
+
+## 32600003 Invalid Service ID
+
+**Error Message**
+
+The business id is invalid.
+
+**Description**
+
+The service ID is invalid.
+
+**Possible Causes**
+
+The service ID is incorrect.
+
+**Solution**
+
+Check whether the service ID is correct.
 <!--DelEnd-->

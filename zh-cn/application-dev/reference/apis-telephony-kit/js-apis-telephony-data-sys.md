@@ -44,7 +44,7 @@ setDefaultCellularDataSlotId(slotId: number, callback: AsyncCallback\<void\>): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -68,7 +68,7 @@ data.setDefaultCellularDataSlotId(0, (err: BusinessError) => {
     if(err) {
         console.error(`setDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}`);
     } else {
-        console.log(`setDefaultCellularDataSlotId success`);
+        console.info(`setDefaultCellularDataSlotId success`);
     }
 });
 ```
@@ -99,7 +99,7 @@ setDefaultCellularDataSlotId(slotId: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -120,7 +120,7 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.setDefaultCellularDataSlotId(0).then(() => {
-    console.log(`setDefaultCellularDataSlotId success.`);
+    console.info(`setDefaultCellularDataSlotId success.`);
 }).catch((err: BusinessError) => {
     console.error(`setDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}`);
 });
@@ -147,13 +147,13 @@ enableCellularData(callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.     |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
@@ -169,7 +169,7 @@ data.enableCellularData((err: BusinessError) => {
     if(err) {
         console.error(`enableCellularData fail. code: ${err.code}, message: ${err.message}`);
     } else {
-        console.log(`enableCellularData success`);
+        console.info(`enableCellularData success`);
     }
 });
 ```
@@ -194,7 +194,7 @@ enableCellularData(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -211,7 +211,7 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.enableCellularData().then(() => {
-    console.log(`enableCellularData success.`);
+    console.info(`enableCellularData success.`);
 }).catch((err: BusinessError) => {
     console.error(`enableCellularData fail. code: ${err.code}, message: ${err.message}`);
 });
@@ -237,7 +237,7 @@ disableCellularData(callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -259,7 +259,7 @@ data.disableCellularData((err: BusinessError) => {
     if(err) {
         console.error(`disableCellularData fail. code: ${err.code}, message: ${err.message}`);
     } else {
-        console.log(`disableCellularData success`);
+        console.info(`disableCellularData success`);
     }
 });
 ```
@@ -284,7 +284,7 @@ disableCellularData(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -301,7 +301,7 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.disableCellularData().then(() => {
-    console.log(`disableCellularData success.`);
+    console.info(`disableCellularData success.`);
 }).catch((err: BusinessError) => {
     console.error(`disableCellularData fail. code: ${err.code}, message: ${err.message}`);
 });
@@ -328,7 +328,7 @@ enableCellularDataRoaming(slotId: number, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -350,7 +350,7 @@ data.enableCellularDataRoaming(0, (err: BusinessError) => {
     if(err) {
         console.error(`enableCellularDataRoaming fail. code: ${err.code}, message: ${err.message}`);
     } else {
-        console.log(`enableCellularDataRoaming success`);
+        console.info(`enableCellularDataRoaming success`);
     }
 });
 ```
@@ -381,7 +381,7 @@ enableCellularDataRoaming(slotId: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -400,7 +400,7 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.enableCellularDataRoaming(0).then(() => {
-    console.log(`enableCellularDataRoaming success.`);
+    console.info(`enableCellularDataRoaming success.`);
 }).catch((err: BusinessError) => {
     console.error(`enableCellularDataRoaming fail. code: ${err.code}, message: ${err.message}`);
 });
@@ -427,7 +427,7 @@ disableCellularDataRoaming(slotId: number, callback: AsyncCallback\<void\>): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -449,7 +449,7 @@ data.disableCellularDataRoaming(0, (err: BusinessError) => {
     if(err) {
         console.error(`disableCellularDataRoaming fail. code: ${err.code}, message: ${err.message}`);
     } else {
-        console.log(`disableCellularDataRoaming success`);
+        console.info(`disableCellularDataRoaming success`);
     }
 });
 ```
@@ -480,7 +480,7 @@ disableCellularDataRoaming(slotId: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -499,7 +499,7 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.disableCellularDataRoaming(0).then(() => {
-    console.log(`disableCellularDataRoaming success.`);
+    console.info(`disableCellularDataRoaming success.`);
 }).catch((err: BusinessError) => {
     console.error(`disableCellularDataRoaming fail. code: ${err.code}, message: ${err.message}`);
 });

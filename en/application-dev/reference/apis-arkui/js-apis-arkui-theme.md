@@ -1,15 +1,23 @@
-# @ohos.arkui.theme(Theme)
+# @ohos.arkui.theme (Theme)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can define a custom theme to apply to components in your application.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
 ```ts
-import { Theme, ThemeControl, CustomColors, Colors, CustomTheme } from '@kit.ArkUI';
+import { Theme, ThemeControl, CustomColors, Colors, CustomTheme, CustomDarkColors } from '@kit.ArkUI';
 ```
 
 ## Theme
@@ -20,9 +28,9 @@ Defines the **Theme** object in use, which can be obtained through [onWillApplyT
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type               | Readable | Writable | Description      |
+| Name| Type               | Read-Only| Optional| Description      |
 | ------ |-------------------|-----|-----|----------|
-| colors | [Colors](#colors) | No  | No  |  Color resources of the theme. |
+| colors | [Colors](#colors) | No  | No  |  Color resources of the theme.|
 
 ## Colors
 
@@ -32,77 +40,79 @@ Defines the color resources of a theme.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                          | Type                                                | Readable | Writable | Description              |
+<!--RP1--><!--RP1End-->
+
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
+| Name                          | Type                                                | Read-Only| Optional| Description              |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------------|
-| brand                         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Brand color.            |
-| warning                       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Warning color.          |
-| alert                         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Alert color.          |
-| confirm                       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Confirmation color.            |
-| fontPrimary                   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary font color.       |
-| fontSecondary                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary font color.       |
-| fontTertiary                  | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary font color.       |
-| fontFourth                    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Fourth-level font color.       |
-| fontEmphasize                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Emphasis font color.         |
-| fontOnPrimary                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary inverted font color used on color background. |
-| fontOnSecondary               | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary inverted font color used on color background. |
-| fontOnTertiary                | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary inverted font color used on color background. |
-| fontOnFourth                  | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Fourth-level inverted font color used on color background. |
-| iconPrimary                   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary icon color.         |
-| iconSecondary                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary icon color.         |
-| iconTertiary                  | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary icon color.         |
-| iconFourth                    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Fourth-level icon color.         |
-| iconEmphasize                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Emphasis icon color.         |
-| iconSubEmphasize              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Color of the emphasis auxiliary icon.       |
-| iconOnPrimary                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary inverted icon color used on color background. |
-| iconOnSecondary               | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary inverted icon color used on color background. |
-| iconOnTertiary                | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary inverted icon color used on color background. |
-| iconOnFourth                  | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Fourth-level inverted icon color used on color background. |
-| backgroundPrimary             | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary background color (solid, opaque). |
-| backgroundSecondary           | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary background color (solid, opaque). |
-| backgroundTertiary            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary background color (solid, opaque). |
-| backgroundFourth              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Fourth-level background color (solid, opaque). |
-| backgroundEmphasize           | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Emphasis background color (solid, opaque). |
-| compForegroundPrimary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Foreground.            |
-| compBackgroundPrimary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | White background.           |
-| compBackgroundPrimaryTran     | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | White transparent background.         |
-| compBackgroundPrimaryContrary | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Always-on background.           |
-| compBackgroundGray            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Gray background.           |
-| compBackgroundSecondary       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary background.           |
-| compBackgroundTertiary        | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary background.           |
-| compBackgroundEmphasize       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Emphasis background.           |
-| compBackgroundNeutral         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Black, neutral, emphasis background.     |
-| compEmphasizeSecondary        | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | 20% emphasis background color.      |
-| compEmphasizeTertiary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | 10% emphasis background color.      |
-| compDivider                   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common divider color.        |
-| compCommonContrary            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common inverted color.         |
-| compBackgroundFocus           | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Background color in the focused state.        |
-| compFocusedPrimary            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary inverted color in the focused state.      |
-| compFocusedSecondary          | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary inverted color in the focused state.      |
-| compFocusedTertiary           | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary inverted color in the focused state.      |
-| interactiveHover              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the hover state.      |
-| interactivePressed            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the pressed state.      |
-| interactiveFocus              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the focused state.      |
-| interactiveActive             | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the active state.      |
-| interactiveSelect             | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the selected state.      |
-| interactiveClick              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the clicked state.      |
+| brand                         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Brand color.<br>**Affected components**: [TextInput](./arkui-ts/ts-basic-components-textinput.md) and [Search](./arkui-ts/ts-basic-components-search.md)       |
+| warning                       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Warning color.<br>Affected components: [TipsDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#tipsdialog), [AlertDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog), [CustomContentDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12),<br>[Badge](./arkui-ts/ts-container-badge.md), and [Button](./arkui-ts/ts-basic-components-button.md)         |
+| alert                         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Alert color.<br>**Affected components**: N/A          |
+| confirm                       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Confirmation color.<br>**Affected components**: N/A            |
+| fontPrimary                   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary font color.<br>**Affected components**: [EditableTitleBar](./arkui-ts/ohos-arkui-advanced-EditableTitleBar.md), [LoadingDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#loadingdialog), [TipsDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#tipsdialog), [ConfirmDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog), [AlertDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog), [SelectDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#selectdialog), [CustomContentDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12), [Swiper](./arkui-ts/ts-container-swiper.md), [Text](./arkui-ts/ts-basic-components-text.md), [SubHeader](./arkui-ts/ohos-arkui-advanced-SubHeader.md), [ProgressButton](./arkui-ts/ohos-arkui-advanced-ProgressButton.md), [AlphabetIndexer](./arkui-ts/ts-container-alphabet-indexer.md), [Popup](./arkui-ts/ohos-arkui-advanced-Popup.md), [Select](./arkui-ts/ts-basic-components-select.md), [Chip](./arkui-ts/ohos-arkui-advanced-Chip.md), [ToolBar](./arkui-ts/ohos-arkui-advanced-ToolBar.md), [Menu](./arkui-ts/ts-basic-components-menu.md), [TextInput](./arkui-ts/ts-basic-components-textinput.md), [Search](./arkui-ts/ts-basic-components-search.md), [TimePicker](./arkui-ts/ts-basic-components-timepicker.md), [DatePicker](./arkui-ts/ts-basic-components-datepicker.md), [TextPicker](./arkui-ts/ts-basic-components-textpicker.md), [ComposeListItem](./arkui-ts/ohos-arkui-advanced-ComposeListItem.md), and [TreeView](./arkui-ts/ohos-arkui-advanced-TreeView.md). Since API version 26.0.0, [CalendarPicker](./arkui-ts/ts-basic-components-calendarpicker.md), [UIPickerComponent](./arkui-ts/ts-container-ui-picker-component.md), [RichEditor](./arkui-ts/ts-basic-components-richeditor.md), [MenuItem](./arkui-ts/ts-basic-components-menuitem.md), [MenuItemGroup](./arkui-ts/ts-basic-components-menuitemgroup.md), and [Counter](./arkui-ts/ts-container-counter.md) are added.       |
+| fontSecondary                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary font color.<br>**Affected components**: [EditableTitleBar](./arkui-ts/ohos-arkui-advanced-EditableTitleBar.md), [AlertDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog), [CustomContentDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12), [SubHeader](./arkui-ts/ohos-arkui-advanced-SubHeader.md), [AlphabetIndexer](./arkui-ts/ts-container-alphabet-indexer.md), [Popup](./arkui-ts/ohos-arkui-advanced-Popup.md), [TextInput](./arkui-ts/ts-basic-components-textinput.md), [Search](./arkui-ts/ts-basic-components-search.md), [ComposeListItem](./arkui-ts/ohos-arkui-advanced-ComposeListItem.md), [TreeView](./arkui-ts/ohos-arkui-advanced-TreeView.md), and [TextClock](./arkui-ts/ts-basic-components-textclock.md). Since API version 26.0.0, [MenuItem](./arkui-ts/ts-basic-components-menuitem.md) and [MenuItemGroup](./arkui-ts/ts-basic-components-menuitemgroup.md) are added.       |
+| fontTertiary                  | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary font color.<br>**Affected components**: [ComposeListItem](./arkui-ts/ohos-arkui-advanced-ComposeListItem.md)       |
+| fontFourth                    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Fourth-level font color.<br>**Affected components**: N/A       |
+| fontEmphasize                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Emphasis font color.<br>**Affected components**: [TipsDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#tipsdialog), [ConfirmDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog), [AlertDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog), [SelectDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#selectdialog), [CustomContentDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12), [SubHeader](./arkui-ts/ohos-arkui-advanced-SubHeader.md), [AlphabetIndexer](./arkui-ts/ts-container-alphabet-indexer.md), [Popup](./arkui-ts/ohos-arkui-advanced-Popup.md), [Button](./arkui-ts/ts-basic-components-button.md), [Select](./arkui-ts/ts-basic-components-select.md), [ToolBar](./arkui-ts/ohos-arkui-advanced-ToolBar.md), [Search](./arkui-ts/ts-basic-components-search.md), [TimePicker](./arkui-ts/ts-basic-components-timepicker.md), [DatePicker](./arkui-ts/ts-basic-components-datepicker.md), and [TextPicker](./arkui-ts/ts-basic-components-textpicker.md). Since API version 26.0.0, [RichEditor](./arkui-ts/ts-basic-components-richeditor.md) is added.         |
+| fontOnPrimary                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary inverted font color used on color background.<br>**Affected components**: [Badge](./arkui-ts/ts-container-badge.md), [Button](./arkui-ts/ts-basic-components-button.md), and [Chip](./arkui-ts/ohos-arkui-advanced-Chip.md)|
+| fontOnSecondary               | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary inverted font color used on color background.<br>**Affected components**: N/A|
+| fontOnTertiary                | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary inverted font color used on color background.<br>**Affected components**: N/A|
+| fontOnFourth                  | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Fourth-level inverted font color used on color background.<br>**Affected components**: N/A|
+| iconPrimary                   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary icon color.<br>**Affected components**: [EditableTitleBar](./arkui-ts/ohos-arkui-advanced-EditableTitleBar.md), [Swiper](./arkui-ts/ts-container-swiper.md), [ToolBar](./arkui-ts/ohos-arkui-advanced-ToolBar.md), and [TreeView](./arkui-ts/ohos-arkui-advanced-TreeView.md). Since API version 26.0.0, [MenuItem](./arkui-ts/ts-basic-components-menuitem.md) is added.        |
+| iconSecondary                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary icon color.<br>**Affected components**: [LoadingDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#loadingdialog), [SubHeader](./arkui-ts/ohos-arkui-advanced-SubHeader.md), [Popup](./arkui-ts/ohos-arkui-advanced-Popup.md), [Chip](./arkui-ts/ohos-arkui-advanced-Chip.md), [Search](./arkui-ts/ts-basic-components-search.md), and [TreeView](./arkui-ts/ohos-arkui-advanced-TreeView.md). Since API version 26.0.0, [LoadingProgress](./arkui-ts/ts-basic-components-loadingprogress.md) is added.         |
+| iconTertiary                  | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary icon color.<br>**Affected components**: [SubHeader](./arkui-ts/ohos-arkui-advanced-SubHeader.md)         |
+| iconFourth                    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Fourth-level icon color.<br>**Affected components**: [Checkbox](./arkui-ts/ts-basic-components-checkbox.md), [CheckboxGroup](arkui-ts/ts-basic-components-checkboxgroup.md), and [Radio](./arkui-ts/ts-basic-components-radio.md)         |
+| iconEmphasize                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Emphasis icon color.<br>**Affected components**: [ToolBar](./arkui-ts/ohos-arkui-advanced-ToolBar.md)         |
+| iconSubEmphasize              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Color of the emphasis auxiliary icon.<br>**Affected components**: N/A       |
+| iconOnPrimary                 | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary inverted icon color used on color background.<br>**Affected components**: [Checkbox](./arkui-ts/ts-basic-components-checkbox.md), [CheckboxGroup](arkui-ts/ts-basic-components-checkboxgroup.md), and [Radio](./arkui-ts/ts-basic-components-radio.md)|
+| iconOnSecondary               | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary inverted icon color used on color background.<br>**Affected components**: [Chip](./arkui-ts/ohos-arkui-advanced-Chip.md)|
+| iconOnTertiary                | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary inverted icon color used on color background.<br>**Affected components**: N/A|
+| iconOnFourth                  | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Fourth-level inverted icon color used on color background.<br>**Affected components**: [ProgressButton](./arkui-ts/ohos-arkui-advanced-ProgressButton.md)|
+| backgroundPrimary             | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary background color (solid, opaque).<br>**Affected components**: [TextInput](./arkui-ts/ts-basic-components-textinput.md) and [QRCode](./arkui-ts/ts-basic-components-qrcode.md) |
+| backgroundSecondary           | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary background color (solid, opaque).<br>**Affected components**: N/A |
+| backgroundTertiary            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary background color (solid, opaque).<br>**Affected components**: N/A |
+| backgroundFourth              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Fourth-level background color (solid, opaque).<br>**Affected components**: N/A |
+| backgroundEmphasize           | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Emphasis background color (solid, opaque).<br>**Affected components**: [Progress](./arkui-ts/ts-basic-components-progress.md), [Button](./arkui-ts/ts-basic-components-button.md), and [Slider](./arkui-ts/ts-basic-components-slider.md) |
+| compForegroundPrimary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Foreground.<br>**Affected components**: [QRCode](./arkui-ts/ts-basic-components-qrcode.md)           |
+| compBackgroundPrimary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | White background.<br>**Affected components**: N/A           |
+| compBackgroundPrimaryTran     | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | White transparent background.<br>**Affected components**: N/A        |
+| compBackgroundPrimaryContrary | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Always-on background.<br>**Affected components**: [Toggle](./arkui-ts/ts-basic-components-toggle.md) and [Slider](./arkui-ts/ts-basic-components-slider.md)          |
+| compBackgroundGray            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Gray background.<br>**Affected components**: N/A           |
+| compBackgroundSecondary       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary background.<br>**Affected components**: [Swiper](./arkui-ts/ts-container-swiper.md) and [Slider](./arkui-ts/ts-basic-components-slider.md)           |
+| compBackgroundTertiary        | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary background.<br>**Affected components**: [EditableTitleBar](./arkui-ts/ohos-arkui-advanced-EditableTitleBar.md), [Progress](./arkui-ts/ts-basic-components-progress.md), [AlphabetIndexer](./arkui-ts/ts-container-alphabet-indexer.md), [Button](./arkui-ts/ts-basic-components-button.md), [Select](./arkui-ts/ts-basic-components-select.md), [Toggle](./arkui-ts/ts-basic-components-toggle.md), [Chip](./arkui-ts/ohos-arkui-advanced-Chip.md), [TextInput](./arkui-ts/ts-basic-components-textinput.md), and [Search](./arkui-ts/ts-basic-components-search.md). Since API version 26.0.0, [UIPickerComponent](./arkui-ts/ts-container-ui-picker-component.md) and [TextPicker](./arkui-ts/ts-basic-components-textpicker.md) are added.           |
+| compBackgroundEmphasize       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Emphasis background.<br>**Affected components**: [Swiper](./arkui-ts/ts-container-swiper.md), [Toggle](./arkui-ts/ts-basic-components-toggle.md), [Chip](./arkui-ts/ohos-arkui-advanced-Chip.md),<br>[Checkbox](./arkui-ts/ts-basic-components-checkbox.md), [CheckboxGroup](arkui-ts/ts-basic-components-checkboxgroup.md), and [Radio](./arkui-ts/ts-basic-components-radio.md)           |
+| compBackgroundNeutral         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Black, neutral, emphasis background.<br>**Affected components**: [PatternLock](./arkui-ts/ts-basic-components-patternlock.md)     |
+| compEmphasizeSecondary        | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | 20% emphasis background color.<br>**Affected components**: [Progress](./arkui-ts/ts-basic-components-progress.md), [ProgressButton](./arkui-ts/ohos-arkui-advanced-ProgressButton.md), [AlphabetIndexer](./arkui-ts/ts-container-alphabet-indexer.md),<br>[Select](./arkui-ts/ts-basic-components-select.md), and [Toggle](./arkui-ts/ts-basic-components-toggle.md)      |
+| compEmphasizeTertiary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | 10% emphasis background color.<br>**Affected components**: N/A      |
+| compDivider                   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common divider color.<br>**Affected components**: [SelectDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#selectdialog), [PatternLock](./arkui-ts/ts-basic-components-patternlock.md), and [Divider](./arkui-ts/ts-basic-components-divider.md). Since API version 26.0.0, [UIPickerComponent](./arkui-ts/ts-container-ui-picker-component.md), [TextPicker](./arkui-ts/ts-basic-components-textpicker.md), [MenuItem](./arkui-ts/ts-basic-components-menuitem.md), [MenuItemGroup](./arkui-ts/ts-basic-components-menuitemgroup.md), and [Select](./arkui-ts/ts-basic-components-select.md) are added.        |
+| compCommonContrary            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common inverted color.<br>**Affected components**: N/A         |
+| compBackgroundFocus           | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Background color in the focused state.<br>**Affected components**: N/A        |
+| compFocusedPrimary            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Primary inverted color in the focused state.<br>**Affected components**: N/A      |
+| compFocusedSecondary          | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Secondary inverted color in the focused state.<br>**Affected components**: N/A      |
+| compFocusedTertiary           | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Tertiary inverted color in the focused state.<br>**Affected components**: [Scroll](arkui-ts/ts-container-scroll.md)      |
+| interactiveHover              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the hover state.<br>**Affected components**: [EditableTitleBar](./arkui-ts/ohos-arkui-advanced-EditableTitleBar.md), [Chip](./arkui-ts/ohos-arkui-advanced-Chip.md), and [TreeView](./arkui-ts/ohos-arkui-advanced-TreeView.md). Since API version 26.0.0, [RichEditor](./arkui-ts/ts-basic-components-richeditor.md), [MenuItem](./arkui-ts/ts-basic-components-menuitem.md), and [Select](./arkui-ts/ts-basic-components-select.md) are added.     |
+| interactivePressed            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the pressed state.<br>**Affected components**: [EditableTitleBar](./arkui-ts/ohos-arkui-advanced-EditableTitleBar.md), [Chip](./arkui-ts/ohos-arkui-advanced-Chip.md), and [TreeView](./arkui-ts/ohos-arkui-advanced-TreeView.md). Since API version 26.0.0, [RichEditor](./arkui-ts/ts-basic-components-richeditor.md) is added.      |
+| interactiveFocus              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the focused state.<br>**Affected components**: [EditableTitleBar](./arkui-ts/ohos-arkui-advanced-EditableTitleBar.md), [Chip](./arkui-ts/ohos-arkui-advanced-Chip.md), and [TreeView](./arkui-ts/ohos-arkui-advanced-TreeView.md)      |
+| interactiveActive             | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the active state.<br>**Affected components**: [TreeView](./arkui-ts/ohos-arkui-advanced-TreeView.md)      |
+| interactiveSelect             | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the selected state.<br>**Affected components**: [TreeView](./arkui-ts/ohos-arkui-advanced-TreeView.md)      |
+| interactiveClick              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Common interactive color for the clicked state.<br>**Affected components**: [MenuItem](./arkui-ts/ts-basic-components-menuitem.md) and [Select](./arkui-ts/ts-basic-components-select.md) are added since API version 26.0.0.      |
 
 ## CustomTheme
 
 Defines a custom theme object.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                          | Type                                                | Read Only | Optional | Description        |
+| Name                          | Type                                                | Read-Only | Optional | Description        |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------|
-| colors | [CustomColors](#customcolors) | No  | Yes  | Color resources of the custom theme. |
+| colors | [CustomColors](#customcolors) | No  | Yes  | Custom light theme color resources.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | No  | Yes  | Custom dark theme color resources.<br>Note: If **darkColors** is not configured, the color values will default to those specified in the **colors** configuration for light mode and will not adapt to dark mode changes, unless the colors are defined using resources from the **dark** directory.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## CustomColors
 
 type CustomColors = Partial\<Colors>
 
-Defines the color resources of a custom theme.
+Defines the type for custom theme color resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -110,7 +120,21 @@ Defines the color resources of a custom theme.
 
 | Type | Description          |
 |-----|--------------|
-| Partial<[Colors](#colors)>   | Color resources of the custom theme. |
+| Partial<[Colors](#colors)>   | Type representing customizable theme color resources.|
+
+## CustomDarkColors<sup>20+</sup>
+
+type CustomDarkColors = Partial\<Colors>
+
+Defines the type for dark theme color resources.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type | Description          |
+|-----|--------------|
+| Partial<[Colors](#colors)>   | Type representing customizable dark theme color resources.|
 
 ## ThemeControl
 
@@ -124,15 +148,17 @@ Implements a **ThemeControl** object to apply the custom theme to the components
 
 setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 
-Sets a custom theme as the default, application-level theme so that it is applied to components in the application.
+Sets a custom theme as the default, application-level theme, applying it to all components within the application. When using this API within a page, ensure that the API is called before the page's **build** API executes. When using this API within a UIAbility, ensure that the API is called in the callback after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) during the **onWindowStageCreate** lifecycle phase. For a complete implementation example, see [Setting Custom Theme Colors for Application Components](../../ui/theme_skinning.md#setting-custom-theme-colors-for-application-components).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type                          | Mandatory | Description            |
+**Parameters**
+
+| Name      | Type                          | Mandatory| Description            |
 |--------------|------------------------------|------|----------------|
-| theme | [CustomTheme](#customtheme)  | Yes   | Custom theme to set. |
+| theme | [CustomTheme](#customtheme)  | Yes   | Custom theme to set.|
 
 **Example**
 
@@ -140,9 +166,9 @@ Sets a custom theme as the default, application-level theme so that it is applie
 import { CustomTheme, CustomColors, ThemeControl } from '@kit.ArkUI';
 // Custom theme color
 class BlueColors implements CustomColors {
-  fontPrimary = Color.White;
-  backgroundPrimary = Color.Blue;
-  brand = Color.Blue; // Brand color
+  fontPrimary = "#FF707070";
+  backgroundPrimary = "#FF2787D9";
+  brand = "#FFEEAAFF"; // Brand color.
 }
 
 class PageCustomTheme implements CustomTheme {
@@ -156,4 +182,36 @@ class PageCustomTheme implements CustomTheme {
 const BlueColorsTheme = new PageCustomTheme(new BlueColors());
 // Call ThemeControl.setDefaultTheme before page build to set the default application style to BlueColorsTheme.
 ThemeControl.setDefaultTheme(BlueColorsTheme);
+
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Row() {
+      Column() {
+        // Apply fontPrimary to the text color.
+        Text('This is a piece of text.')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .margin('5%')
+        // Apply backgroundPrimary to the QR code background color.
+        QRCode('Hello')
+          .width(100)
+          .height(100)
+        // Apply brand to the input box cursor color.
+        TextInput({placeholder: 'input your word...'})
+          .width('80%')
+          .height(40)
+          .margin(20)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
 ```
+
+![en-us_image_setDefaultTheme_light](figures/en-us_image_setDefaultTheme_lights.png)
+
+![en-us_image_setDefaultTheme_night](figures/en-us_image_setDefaultTheme_nights.png)

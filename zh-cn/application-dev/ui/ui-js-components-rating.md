@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 rating是评分组件，用于展示用户对某项内容的评价等级。具体用法请参考[rating](../reference/apis-arkui/arkui-js/js-components-basic-rating.md)。
@@ -83,7 +83,7 @@ rating组件通过star-background、star-foreground和star-secondary属性设置
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;;">
+  <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;">
     <rating numstars="5" rating="1" class="myrating" style="width: {{ratewidth}}; height:{{rateheight}};
     star-background: {{backstar}}; star-secondary: {{secstar}};star-foreground: {{forestar}};rtl-flip: true;">
     </rating>
@@ -181,7 +181,7 @@ export default {
 ```html
 <!-- xxx.hml -->
 <div style="width: 100%;height:100%;flex-direction: column;align-items: center;background-color: #F1F3F5;">
-    <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;;">
+    <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;">
         <rating numstars="{{stars}}" rating="{{rate}}" stepsize="{{step}}" onchange="showrating" class="myrating"
                 style="width: {{ratewidth}};height:{{rateheight}};star-background: {{backstar}};star-secondary: {{secstar}};
                         star-foreground: {{forestar}};rtl-flip: true;"></rating>
@@ -269,4 +269,4 @@ export default {
 
 针对rating组件的开发，有以下相关实例可供参考：
 
-- [rating组件的使用（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/JSUI/RatingApplication)
+- [rating组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/RatingApplication)

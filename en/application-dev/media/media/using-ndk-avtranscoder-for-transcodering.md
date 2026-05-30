@@ -4,7 +4,9 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+Starting from API version 20, NDK (C/C++) APIs are provided for video transcoding.
 
 You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding. <!--RP1--><!--RP1End--> You can call [canIUse](../../reference/common/init.md#caniuse) to check whether the device supports AVTranscoder and continue the operations described in this topic only when the return value of **canIUse("SystemCapability.Multimedia.Media.AVTranscoder")** is **true**.
 
@@ -20,7 +22,7 @@ For details about the states, see [OH_AVTranscoder_State](../../reference/apis-m
 
 Link the dynamic libraries in the CMake script.
 
-```
+```c
 target_link_libraries(entry PUBLIC libavtranscoder.so libace_napi.z.so)
 ```
 
@@ -32,11 +34,12 @@ To use system logging, include the following header file:
 
 In addition, link the following dynamic libraries in the CMake script:
 
-```
+```c
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```
 
 Import the **avtranscoder.h** and **avtranscoder_base.h** header files to use the transcoding APIs.
+
 Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the API reference.
 
 1. Call **OH_AVTranscoder_Create()** to create a transcoding instance.
@@ -193,7 +196,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
 5. Call **OH_AVTranscoderConfig_SetDstFD()** to set the file descriptor of the output video.
 
     ```c++
-    OH_AVTranscoderConfig_SetDstFD(config, dstFd); // Set the file descriptor of the output video.
+    OH_AVTranscoderConfig_SetDstFD(config, dstFd); // Set the target file descriptor dstFd for transcoding.
     ```
 
 6. (Optional) Call **OH_AVTranscoderConfig_SetDstVideoType()** to set the encoding format of the output video.
@@ -205,7 +208,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
 7. (Optional) Call **OH_AVTranscoderConfig_SetDstAudioType()** to set the encoding format of the output audio.
 
     ```c++
-    OH_AVTranscoderConfig_SetDstAudioType(config, "audio/mp4a-latm"); // (Optional) Audio encoding format.
+    OH_AVTranscoderConfig_SetDstAudioType(config, "audio/mp4a-latm"); // (Optional) Set the audio encoding format.
     ```
 
 8. Call **OH_AVTranscoderConfig_SetDstFileType()** to set the container format of the output video.
@@ -227,7 +230,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
     const std::int32_t VIDEO_BITRATE = 3000000;
     OH_AVTranscoderConfig_SetDstVideoBitrate(config, VIDEO_BITRATE); // (Optional) Video bit rate.
     ```
-<!--RP2--><!--RP2End-->
+    <!--RP2--><!--RP2End-->
 11. Call **OH_AVTranscoder_Prepare()** to prepare for transcoding. After a successful call, the instance transitions to the **AVTRANSCODER_PREPARED** state.
 
     ```c++
@@ -281,26 +284,26 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK), and copy its resources to the corresponding directories.
 
-    ```
-    AVTranscoderNDK
-    entry/src/main/ets/
-    └── pages
-        │    └── Index.ets (transcoding UI)
-    entry/src/main/
-    ├── cpp
-    │   ├── types
-    │   │   └── libentry
-    │   │       └── Index.d.ts (JavaScript mapping of NDK functions)
-    │   ├── CMakeLists.txt (CMake script)
-    │   └── napi_init.cpp (NDK functions)
-    └── resources
-        ├── base
-        │   └── element
-        │       ├── color.json
-        │       ├── float.json
-        │       └── string.json
-        └── rawfile
-            └── src.mp4 (video resource)
-    ```
+   ```txt
+   AVTranscoderNDK
+   entry/src/main/ets/
+   └── pages
+       │    └── Index.ets (transcoding UI)
+   entry/src/main/
+   ├── cpp
+   │   ├── types
+   │   │   └── libentry
+   │   │       └── Index.d.ts (JavaScript mapping of NDK functions)
+   │   ├── CMakeLists.txt (CMake script)
+   │   └── napi_init.cpp (NDK functions)
+   └── resources
+       ├── base
+       │   └── element
+       │       ├── color.json
+       │       ├── float.json
+       │       └── string.json
+       └── rawfile
+           └── src.mp4 (video resource)
+   ```
 
 2. Compile and run the project.

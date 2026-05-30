@@ -1,6 +1,12 @@
 # Focus Control
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
-Focus control attributes set whether a component is focusable and how it participates in focus navigation.
+Focus control attributes determine whether a component can receive focus and how it participates in focus navigation. Users can switch focus between components using the Tab key or arrow keys.
 
 >  **NOTE**
 >
@@ -10,7 +16,7 @@ Focus control attributes set whether a component is focusable and how it partici
 >  
 >  - Components can actively acquire focus independently of the window's focus state.
 >  
->  - For details about focus development, see [Focus Event](../../../ui/arkts-common-events-focus-event.md).
+>  - For details about focus development, see [Implementing Focus Support](../../../ui/arkts-common-events-focus-event.md).
 
 ## focusable
 
@@ -38,7 +44,11 @@ Sets whether the component is focusable.
 
 tabIndex(index: number): T
 
-Sets the Tab order of the component in sequential focus navigation with the **Tab** key.
+Sets the tab navigation order of the component in sequential focus navigation with the **Tab** key. Components without explicit **tabIndex** settings follow default focus navigation rules.
+
+>  **NOTE**
+>
+>  - **tabIndex** only customizes **Tab** key navigation. For arrow key navigation customization, use [nextFocus](#nextfocus18).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -46,10 +56,9 @@ Sets the Tab order of the component in sequential focus navigation with the **Ta
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| index  | number | Yes  | Tab order of the component in sequential focus navigation with the **Tab** key. When components with positive **tabIndex** values are present, only these components are reachable through sequential focus navigation, and they are navigated cyclically in ascending order based on the **tabIndex** value. When components with positive **tabIndex** values are not present, those components with a **tabIndex** value of **0** are navigated based on the preset focus navigation rule.<br>The [UiExtension](../js-apis-arkui-uiExtension.md) component does not support **tabIndex**. As such, using **tabIndex** on [hierarchical pages](../../../ui/arkts-common-events-focus-event.md#basic-concepts) that contain **UiExtension** components may lead to disordered focus navigation.<br>- **tabIndex** >= 0: The component is focusable and can be reached through sequential keyboard navigation.<br>- **tabIndex** < 0 (usually **tabIndex** = -1): The component is focusable, but cannot be reached through sequential keyboard navigation.<br>Default value: **0**<br> **NOTE**<br> **tabIndex** and **focusScopeId** cannot be used together.
-|
+| Name| Type  | Mandatory| Description           |
+| ------ | ------ | ---- | ------------------------------------ |
+| index  | number | Yes  | Tab navigation order of the component in sequential focus navigation with the **Tab** key. When components with positive **tabIndex** values are present, only these components are reachable through sequential focus navigation, and they are navigated cyclically in ascending order based on the **tabIndex** value. When components with positive **tabIndex** values are not present, those components with a **tabIndex** value of **0** are navigated based on the preset focus navigation rule.<br>The [UiExtension](../js-apis-arkui-uiExtension.md) component does not support **tabIndex**. As such, using **tabIndex** on [hierarchical pages](../../../ui/arkts-common-events-focus-event.md#basic-concepts) that contain **UiExtension** components may lead to disordered focus navigation.<br>- **tabIndex** >= 0: The component is focusable and can be reached through sequential keyboard navigation.<br>- **tabIndex** < 0 (usually **tabIndex** = -1): The component is focusable, but cannot be reached through sequential keyboard navigation.<br> **NOTE**<br> **tabIndex** and **focusScopeId** cannot be used together.|
 
 **Return value**
 
@@ -61,7 +70,7 @@ Sets the Tab order of the component in sequential focus navigation with the **Ta
 
 defaultFocus(value: boolean): T
 
-Specifies whether to set this component as the default focus of the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts).
+Specifies whether to set this component as the default focus of the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts). If **defaultFocus** is not set, the component will not receive initial focus on the current page.
 
 >  **NOTE**
 >
@@ -75,7 +84,7 @@ Specifies whether to set this component as the default focus of the current [hie
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to set the component as the default focus of the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts). This parameter takes effect only when the hierarchical page is new and accessed for the first time.<br>Default value: **false**<br>**NOTE**<br>The value **true** means to set the component as the default focus, and the value **false** has no effect.<br>If no component on the hierarchical page has **defaultFocus(true)** set:<br>For API version 11 and earlier, the default focus is on the first focusable non-container component.<br>For API version versions later than 11, the default focus is on the hierarchical page's root container.<br>If **defaultFocus(true)** is set for multiple components on the hierarchical page, the first component found in the component tree depth-first traversal is used as the default focus.|
+| value  | boolean | Yes  | Whether to set the component as the default focus of the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts). This parameter takes effect only when the hierarchical page is new and accessed for the first time.<br>**NOTE**<br>The value **true** means to set the component as the default focus, and the value **false** has no effect.<br>If no component on the hierarchical page has **defaultFocus(true)** set:<br>For API version 11 and earlier, the default focus is on the first focusable non-container component.<br>For API version versions later than 11, the default focus is on the hierarchical page's root container.<br>If **defaultFocus(true)** is set for multiple components on the hierarchical page, the first component found in the component tree depth-first traversal is used as the default focus.|
 
 **Return value**
 
@@ -87,7 +96,7 @@ Specifies whether to set this component as the default focus of the current [hie
 
 groupDefaultFocus(value: boolean): T
 
-Specifies whether to set the component as the default focus of the container.
+Specifies whether to set the component as the default focus of the container. If **groupDefaultFocus** is not set, the component will not receive focus by default when its container is focused.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -97,7 +106,7 @@ Specifies whether to set the component as the default focus of the container.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to set the component as the default focus of the parent container. This parameter takes effect only when the container is new and obtains focus for the first time. <br>**true**: The component is the default focus of the parent container.<br>**false**: The component is not the default focus of the parent container.<br>Default value: **false**<br>**NOTE**<br>This parameter must be used together with [tabIndex](#tabindex9). When **tabIndex** is set for a container and **groupDefaultFocus(true)** is set for a child in the container or for the container itself, then when the container obtains focus for the first time through sequential Tab navigation, the focus automatically moves to the specified component. If **groupDefaultFocus(true)** is set for multiple components in the container (including the container itself), the first component found in the component tree in-depth traversal receives the focus.|
+| value  | boolean | Yes  | Whether to set the component as the default focus of the parent container. This parameter takes effect only when the container is new and obtains focus for the first time. <br>**true**: The component is the default focus of the parent container.<br>**false**: The component is not the default focus of the parent container.<br>**NOTE**<br>This parameter must be used together with [tabIndex](#tabindex9). When **tabIndex** is set for a container and **groupDefaultFocus(true)** is set for a child in the container or for the container itself, then when the container obtains focus for the first time through sequential Tab navigation, the focus automatically moves to the specified component. If **groupDefaultFocus(true)** is set for multiple components in the container (including the container itself), the first component found in the component tree in-depth traversal receives the focus.|
 
 **Return value**
 
@@ -109,7 +118,7 @@ Specifies whether to set the component as the default focus of the container.
 
 focusOnTouch(value: boolean): T
 
-Sets whether the component is focusable on touch.
+Sets whether the component is focusable on touch. If **focusOnTouch** is not set, the component is not focusable on touch by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -119,7 +128,7 @@ Sets whether the component is focusable on touch.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether the component is focusable on touch. <br>**true**: The component is focusable on touch.<br>**false**: The component is not focusable on touch.<br>Default value: **false**<br>**NOTE**<br>The component is focusable only when it is touchable.|
+| value  | boolean | Yes  | Whether the component is focusable on touch. <br>**true**: The component is focusable on touch.<br>**false**: The component is not focusable on touch.<br>**NOTE**<br>This setting requires the component to be touchable.|
 
 **Return value**
 
@@ -155,14 +164,19 @@ Implements focus control.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 ### requestFocus<sup>9+</sup>
 
 requestFocus(value: string): boolean
 
 Requests focus transfer to the specified component during the next frame rendering. This global API provides asynchronous focus control.
-For scenarios requiring immediate focus changes, it is recommended that you use the focus synchronization transfer API [requestFocus](../js-apis-arkui-UIContext.md#requestfocus12) in **FocusController**.
+
+For scenarios requiring immediate focus changes, it is recommended that you use the focus synchronization transfer API [requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12) in **FocusController**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -174,7 +188,7 @@ For scenarios requiring immediate focus changes, it is recommended that you use 
 
 | Type| Description|
 | ------- | ---- |
-| boolean | Returns whether focus transfer is successfully requested for the target component. Returns **true** if the target component exists and can receive focus; returns **false** otherwise.|
+| boolean | Returns whether focus transfer is successfully requested for the target component. If the target component pointed to by the parameter exists, is mounted to the component tree, and is focusable, **true** is returned. Otherwise, **false** is returned.|
 
 >  **NOTE**
 >
@@ -182,19 +196,23 @@ For scenarios requiring immediate focus changes, it is recommended that you use 
 
 ## FocusBoxStyle<sup>12+</sup>
 
+Sets the system focus box style for the component.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-| Name| Type| Mandatory| Description|
-| ---- | ---- | ---- | ---- |
-| margin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Distance of the focus box from the component's edge.<br>A positive number indicates the outside, and a negative number indicates the inside. The value cannot be in percentage.|
-| strokeColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Stroke color of the focus box.|
-| strokeWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Stroke width of the focus box.<br>Negative numbers and percentages are not supported.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type|  Read-Only| Optional| Description |
+| ---- | ---- | ---- |  ---- | ---- |
+| margin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes|Distance of the focus box from the component's edge.<br>A positive number indicates the outside, and a negative number indicates the inside. The value cannot be in percentage.|
+| strokeColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes|Stroke color of the focus box.|
+| strokeWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes|Stroke width of the focus box.<br>Negative numbers and percentages are not supported.|
 
 ## focusScopePriority<sup>12+</sup>
 
 focusScopePriority(scopeId: string, priority?: FocusPriority): T
 
-Sets the focus priority of this component in a specified container. It must be used together with **focusScopeId**.
+Sets the focus priority of this component in a specified container. It must be used together with [focusScopeId](#focusscopeid12).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -205,7 +223,7 @@ Sets the focus priority of this component in a specified container. It must be u
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | scopeId  | string | Yes  | ID of the container component where the current component's focus priority takes effect.<br>**NOTE**<br>1. The current component must be inside the container identified by **scopeId** or inside a sub-container of that container.<br>2. A component cannot set multiple priorities.<br>3. A container component with **focusScopeId** set cannot have its priority set.|
-| priority  | [FocusPriority](#focuspriority12)  | No  | Focus priority.<br>**NOTE**<br>If **priority** is not set, **AUTO** is used by default.<br>Impact of the priority on focus traversal and component focus:<br>1. When the container gains focus as a whole (hierarchical page level switching/focus switching to a focus group/container component requesting focus with **requestFocus**), if there is a component with a priority of **PREVIOUS** within the container, that component gains focus; otherwise, the last focused component does.<br>2. When a container does not gain focus as a whole (using **Tab** or arrow keys in non-focus group scenarios), the highest priority component gets focus on first focus; subsequent focus follows position order regardless of priority.|
+| priority  | [FocusPriority](#focuspriority12)  | No  | Focus priority.<br>**NOTE**<br>If **priority** is not set, **AUTO** is used by default.<br>Impact of the priority on focus traversal and component focus:<br>1. When the container gains focus as a whole ([hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) switching/focus switching to a focus group/container component requesting focus with **requestFocus**), if there is a component with a priority of **PREVIOUS** within the container, that component gains focus; otherwise, the last focused component does.<br>2. When a container does not gain focus as a whole (using **Tab** or arrow keys in non-focus group scenarios), the highest priority component gets focus on first focus; subsequent focus follows position order regardless of priority.|
 
 **Return value**
 
@@ -215,15 +233,17 @@ Sets the focus priority of this component in a specified container. It must be u
 
 ### FocusPriority<sup>12+</sup>
 
+Sets the focus priority of a component.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Description       |
-| ----------- | --------- |
-| AUTO | Default priority, that is, the focus priority assigned by default.|
-| PRIOR | Priority that indicates the component is prioritized in the container. This level is higher than **AUTO**.|
-| PREVIOUS | Priority of a previously focused node in the container. This level is higher than **PRIOR**.|
+| Name   | Value     | Description       |
+| ----------- | ----- |-------- |
+| AUTO | 0|Default priority, that is, the focus priority assigned by default.|
+| PRIOR | 2000|Priority that indicates the component is prioritized in the container. This level is higher than **AUTO**.|
+| PREVIOUS | 3000|Priority of a previously focused node in the container. This level is higher than **PRIOR**.|
 
 ### KeyProcessingMode<sup>15+</sup>
 
@@ -265,7 +285,9 @@ Assigns an ID to this container component and specifies whether the container is
 
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 
-Assigns an ID to this container component and specifies whether the container is a focus group.
+Assigns an ID to this container component and specifies whether the container is a focus group. Added the arrowStepOut parameter, which specifies whether the arrow keys can be used to move the focus out of the current focus group.
+
+**Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -273,9 +295,9 @@ Assigns an ID to this container component and specifies whether the container is
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| id  | string | Yes  | ID of the current container component.<br>**NOTE**<br>The ID must be unique within a single [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| isGroup  | boolean | No  | Whether the current container component is a focus group. <br>**true**: The current container component is a focus group.<br>**false**: The current container component is not a focus group.<br> Default value: **false**.<br>**NOTE**<br>Focus groups cannot be nested and should not be configured repeatedly.<br> The focus group and **tabIndex** cannot be used together.<br>The focus group enables the container and its elements to navigate focus according to the focus group rules as follows:<br>1. Only arrow keys are allowed for focus traversal within the focus group; the **Tab** key will move the focus out of the focus group.<br>2. When arrow keys are used to move the focus from outside the focus group to inside, if there is a component with a priority of **PREVIOUS** within the focus group, that component gains focus; otherwise, the last focused component does.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| arrowStepOut<sup>14+</sup>  | boolean | No  | Whether the focus can be moved out of the current focus group using arrow keys. <br>**true**: The focus can be moved out of the current focus group using arrow keys.<br>**false**: The focus cannot be moved out of the current focus group using arrow keys.<br> The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| id  | string | Yes  | ID of the current container component.<br>**NOTE**<br>The ID must be unique within a single [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts).|
+| isGroup  | boolean | No  | Whether the current container component is a focus group. <br>**true**: The current container component is a focus group.<br>**false**: The current container component is not a focus group.<br> Default value: **false**.<br>**NOTE**<br>Focus groups cannot be nested and should not be configured repeatedly.<br> The focus group and **tabIndex** cannot be used together.<br>The focus group enables the container and its elements to navigate focus according to the focus group rules as follows:<br>1. Only arrow keys are allowed for focus traversal within the focus group; the **Tab** key will move the focus out of the focus group.<br>2. When arrow keys are used to move the focus from outside the focus group to inside, if there is a component with a priority of **PREVIOUS** within the focus group, that component gains focus; otherwise, the last focused component does.|
+| arrowStepOut  | boolean | No  | Whether the focus can be moved out of the current focus group using arrow keys. <br>**true**: The focus can be moved out of the current focus group using arrow keys.<br>**false**: The focus cannot be moved out of the current focus group using arrow keys.<br> The default value is **true**.|
 
 **Return value**
 
@@ -297,7 +319,7 @@ Sets whether this container component is a focus stop. During focus traversal, t
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isTabStop  | boolean | Yes  | Whether the current container component is a focus stop. <br>**true**: The current container component is a focus stop.<br>**false**: The current container component is not a focus stop.<br>**NOTE**<br>1. To configure **tabStop**, make sure the component is a container and has focusable child components. By default, container components cannot directly gain focus.<br> 2. When [requestFocus](../js-apis-arkui-UIContext.md#requestfocus12) is used for requesting focus, if the component is a container and **tabStop** is configured, the focus can stop at the container. If **tabStop** is not configured, the component can still gain focus, even if there are other components in the focus chain with **tabStop** configured.<br>3. Containers with **tabStop** configured should not be nested more than two levels deep.<br>Focus traversal rules with **tabStop**:<br>1. During focus traversal using the **Tab** key or arrow keys, the focus stops at components with **tabStop** configured. If the focus is inside a container with **tabStop** configured, it can move to the next focusable component within the container. If the focus is outside such a container, it can move to the next focusable component outside the container.<br>2. When the focus is on a container with **tabStop** configured: Pressing **Enter** moves the focus to the first focusable component inside the container.<br>Pressing **ESC** moves the focus back to the last component with **tabStop** configured within the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts).<br>Pressing the spacebar triggers the **onClick** event of the container.<br>3. Whenever possible, avoid configuring **tabStop** on the root container. If **tabStop** is configured on the root container, the following behaviors will occur:<br>- Using [clearFocus](../js-apis-arkui-UIContext.md#clearfocus12) to clear the focus to the root container and then pressing **Enter** will move the focus to the previously focused component inside the root container.<br>- Using **ESC** to clear the focus to the root container and then pressing **Enter** will move the focus to the first focusable component inside the root container.|
+| isTabStop  | boolean | Yes  | Whether the current container component is a focus stop. <br>**true**: The current container component is a focus stop.<br>**false**: The current container component is not a focus stop.<br>**NOTE**<br>1. To configure **tabStop**, make sure the component is a container and has focusable child components. By default, container components cannot directly gain focus.<br> 2. When [requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12) is used for requesting focus, if the component is a container and **tabStop** is configured, the focus can stop at the container. If **tabStop** is not configured, the component can still gain focus, even if there are other components in the focus chain with **tabStop** configured.<br>3. Containers with **tabStop** configured should not be nested more than two levels deep.<br>Focus traversal rules with **tabStop**:<br>1. During focus traversal using the **Tab** key or arrow keys, the focus stops at components with **tabStop** configured. If the focus is inside a container with **tabStop** configured, it can move to the next focusable component within the container. If the focus is outside such a container, it can move to the next focusable component outside the container.<br>2. When the focus is on a container with **tabStop** configured: Pressing **Enter** moves the focus to the first focusable component inside the container.<br>Pressing **ESC** moves the focus back to the last component with **tabStop** configured within the current [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts).<br>Pressing the spacebar triggers the **onClick** event of the container.<br>3. Whenever possible, avoid configuring **tabStop** on the root container. If **tabStop** is configured on the root container, the following behaviors will occur:<br>- Using [clearFocus](../arkts-apis-uicontext-focuscontroller.md#clearfocus12) to clear the focus to the root container and then pressing **Enter** will move the focus to the previously focused component inside the root container.<br>- Using **ESC** to clear the focus to the root container and then pressing **Enter** will move the focus to the first focusable component inside the root container.|
 
 **Return value**
 
@@ -325,7 +347,7 @@ Sets the custom focus movement logic for the component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| nextStep  | [FocusMovement](#focusmovement18) | No| Custom focus movement logic of the component.<br>**NOTE**<br>The default value resets **nextStep** to empty.<br>If custom focus movement is not set or the specified component does not exist, the default focus movement logic applies.|
+| nextStep  | Optional\<[FocusMovement](#focusmovement18)> | Yes| Custom focus movement logic of the component.<br>**NOTE**<br>The default value resets **nextStep** to empty.<br>If custom focus movement is not set or the specified component does not exist, the default focus movement logic applies.|
 
 **Return value**
 
@@ -341,20 +363,24 @@ Sets the target component for focus movement based on key presses. If it is not 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read-Only/Optional| Description|
-| ---- | ---- | ---- | ---- |
-| forward  | string | Optional| ID of the component to focus on when the **Tab** key is pressed.<br>The default value resets **forward** to empty.|
-| backward  | string | Optional| ID of the component to focus on when **Shift+Tab** is pressed.<br>The default value resets **backward** to empty.|
-| up  | string | Optional| ID of the component to focus on when the up arrow key is pressed.<br>The default value resets **up** to empty.|
-| down  | string | Optional| ID of the component to focus on when the down arrow key is pressed.<br>The default value resets **down** to empty.|
-| left  | string | Optional| ID of the component to focus on when the left arrow key is pressed.<br>The default value resets **left** to empty.|
-| right  | string | Optional| ID of the component to focus on when the right arrow key is pressed.<br>The default value resets **right** to empty.|
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| forward  | string | No| Yes| ID of the component to focus on when the **Tab** key is pressed.<br>The default value resets **forward** to empty.|
+| backward  | string | No| Yes| ID of the component to focus on when **Shift+Tab** is pressed.<br>The default value resets **backward** to empty.|
+| up  | string | No| Yes| ID of the component to focus on when the up arrow key is pressed.<br>The default value resets **up** to empty.|
+| down  | string | No| Yes| ID of the component to focus on when the down arrow key is pressed.<br>The default value resets **down** to empty.|
+| left  | string | No| Yes| ID of the component to focus on when the left arrow key is pressed.<br>The default value resets **left** to empty.|
+| right  | string | No| Yes| ID of the component to focus on when the right arrow key is pressed.<br>The default value resets **right** to empty.|
+
+> **NOTE**
+> 
+> Directly using **focusControl** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then obtain the **focusControl** bound to the instance using the [getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12) API.
 
 ## Example
 
 ### Example 1: Setting Focus and Focus Traversal Effects for Components
 
-This example shows how to use **defaultFocus**, **groupDefaultFocus**, and **focusOnTouch**. **defaultFocus** sets the bound component as the initial focus after the [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is created. **groupDefaultFocus** sets the bound component as the initial focus after the container with the specified **tabIndex** is created. **focusOnTouch** sets the bound component to obtain focus upon being clicked.
+This example shows how to use [defaultFocus](#defaultfocus9), [groupDefaultFocus](#groupdefaultfocus9), and [focusOnTouch](#focusontouch9). **defaultFocus** sets the bound component as the initial focus after the [hierarchical page](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is created. **groupDefaultFocus** sets the bound component as the initial focus after the container with the specified **tabIndex** is created. **focusOnTouch** sets the bound component to obtain focus upon being clicked.
 
 ```ts
 // focusTest.ets
@@ -372,7 +398,7 @@ struct FocusableExample {
               .width(165)
               .height(40)
               .fontColor(Color.White)
-              .focusOnTouch(true)           // The button is focusable on touch.
+              .focusOnTouch(true) // The button is focusable on touch.
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -382,8 +408,9 @@ struct FocusableExample {
                 .width(80)
                 .height(40)
                 .fontColor(Color.White)
-                .focusOnTouch(true)           // The button is focusable on touch.
+                .focusOnTouch(true) // The button is focusable on touch.
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -395,7 +422,7 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
-          .tabIndex(1)                      // The column is the initial component to have focus in sequential keyboard navigation.
+          .tabIndex(1) // The Column component is the first component that obtains the focus when the Tab key is pressed.
           Column({ space: 5 }) {
             Button('Group2')
               .width(165)
@@ -410,8 +437,9 @@ struct FocusableExample {
                 .width(80)
                 .height(40)
                 .fontColor(Color.White)
-                .groupDefaultFocus(true)      // The button obtains focus when its upper-level column is in focus.
+                .groupDefaultFocus(true) // The button obtains focus when its upper-level column is in focus.
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -423,15 +451,16 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
-          .tabIndex(2)                      // The column is the second component to have focus in sequential keyboard navigation.
+          .tabIndex(2) // The Column component is the second component that obtains the focus when the Tab key is pressed.
         }
+
         Column({ space: 5 }) {
-          TextInput({placeholder: 'input', text: this.inputValue})
+          TextInput({ placeholder: 'input', text: this.inputValue })
             .onChange((value: string) => {
               this.inputValue = value
             })
             .width(156)
-            .defaultFocus(true)             // The TextInput component is the initial default focus of the hierarchical page.
+            .defaultFocus(true) // The TextInput component is the initial default focus of the hierarchical page.
           Button('Group3')
             .width(165)
             .height(40)
@@ -446,6 +475,7 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
@@ -460,6 +490,7 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
@@ -475,7 +506,7 @@ struct FocusableExample {
               .fontColor(Color.White)
           }
         }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
-        .tabIndex(3)                      // The column is the third component to have focus in sequential keyboard navigation.
+        .tabIndex(3) // The Column component is the third component that obtains the focus when the Tab key is pressed.
       }.alignItems(VerticalAlign.Top)
     }
   }
@@ -505,11 +536,7 @@ Clicking the component bound to **focusOnTouch** sets the focus on the component
 
 ### Example 2: Setting Focus on a Specific Component
 
-This example demonstrates how to set focus on a specific component using **focusControl.requestFocus**.
-
-> **NOTE**
-> 
-> Directly using **focusControl** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a [UIContext](../js-apis-arkui-UIContext.md#uicontext) instance using **getUIContext()**, and then obtain the associated **focusControl** object using [getFocusController](../js-apis-arkui-UIContext.md#getfocuscontroller12).
+This example demonstrates how to set focus on a specific component using [focusControl.requestFocus](#requestfocus9).
 
 ```ts
 // requestFocus.ets
@@ -520,57 +547,62 @@ struct RequestFocusExample {
   @State selectId: string = 'LastPageId';
 
   build() {
-    Column({ space:20 }){
-      Row({space: 5}) {
+    Column({ space: 20 }) {
+      Row({ space: 5 }) {
         Button("id: " + this.idList[0] + " focusable(false)")
-          .width(200).height(70).fontColor(Color.White)
+          .width(180)
+          .height(70)
+          .fontColor(Color.White)
           .id(this.idList[0])
           .focusable(false)
         Button("id: " + this.idList[1])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[1])
       }
-      Row({space: 5}) {
+
+      Row({ space: 5 }) {
         Button("id: " + this.idList[2])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[2])
         Button("id: " + this.idList[3])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[3])
       }
-      Row({space: 5}) {
+
+      Row({ space: 5 }) {
         Button("id: " + this.idList[4])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[4])
         Button("id: " + this.idList[5])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[5])
       }
-      Row({space: 5}) {
-        Select([{value: this.idList[0]},
-                {value: this.idList[1]},
-                {value: this.idList[2]},
-                {value: this.idList[3]},
-                {value: this.idList[4]},
-                {value: this.idList[5]},
-                {value: this.idList[6]}])
+
+      Row({ space: 5 }) {
+        Select([{ value: this.idList[0] },
+          { value: this.idList[1] },
+          { value: this.idList[2] },
+          { value: this.idList[3] },
+          { value: this.idList[4] },
+          { value: this.idList[5] },
+          { value: this.idList[6] }])
           .value(this.selectId)
           .onSelect((index: number) => {
             this.selectId = this.idList[index]
           })
         Button("RequestFocus")
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .onClick(() => {
             // You are advised to use this.getUIContext().getFocusController().requestFocus().
-            let res = focusControl.requestFocus(this.selectId)      // Move the focus to the component specified by this.selectId.
+            let res = focusControl.requestFocus(this.selectId) // Move the focus to the component specified by this.selectId.
             if (res) {
-              this.getUIContext().getPromptAction().showToast({message: 'Request success'})
+              this.getUIContext().getPromptAction().showToast({ message: 'Request success' })
             } else {
-              this.getUIContext().getPromptAction().showToast({message: 'Request failed'})
+              this.getUIContext().getPromptAction().showToast({ message: 'Request failed' })
             }
           })
       }
-    }.width('100%').margin({ top:20 })
+    }.width('100%').margin({ top: 20 })
   }
 }
 ```
@@ -578,6 +610,7 @@ struct RequestFocusExample {
 Diagrams:
 
 Press the **Tab** key to activate the focus state.
+
 Below shows how the UI behaves when you request focus for a component that does not exist.
 
 ![requestFocus1](figures/requestFocus1.png)
@@ -592,7 +625,7 @@ Below shows how the UI behaves when you request focus for a focusable component.
 
 ### Example 3: Customizing the Focus Box Style
 
-This example shows how to change the focus box style of a component by configuring **focusBox**.
+This example shows how to change the focus box style of a component by configuring [focusBox](#focusbox12).
 
 ```ts
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -625,7 +658,7 @@ struct RequestFocusExample {
 
 ### Example 4: Setting Focus Group Traversal
 
-This example demonstrates how to set a component as the initial focus when its container gains focus by configuring **focusScopePriority**. Configuring **focusScopeId** allows the bound container component to become a focus group.
+This example demonstrates how to set a component as the initial focus when its container gains focus by configuring [focusScopePriority](#focusscopepriority12). Configuring [focusScopeId](#focusscopeid12) allows the bound container component to become a focus group.
 
 ```ts
 // focusTest.ets
@@ -637,7 +670,7 @@ struct FocusableExample {
   build() {
     Scroll() {
       Row({ space: 20 }) {
-        Column({ space: 20 }) {  // Labeled as Column1.
+        Column({ space: 20 }) { // Labeled as Column1.
           Column({ space: 5 }) {
             Button('Group1')
               .width(165)
@@ -653,6 +686,7 @@ struct FocusableExample {
                 .height(40)
                 .fontColor(Color.White)
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -664,6 +698,7 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+
           Column({ space: 5 }) {
             Button('Group2')
               .width(165)
@@ -680,6 +715,7 @@ struct FocusableExample {
                 .fontColor(Color.White)
                 .focusScopePriority('ColumnScope1', FocusPriority.PRIOR) // Focus when Column1 first gains focus.
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -693,8 +729,9 @@ struct FocusableExample {
           }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
         }
         .focusScopeId('ColumnScope1')
-        Column({ space: 5 }) {  // Labeled as Column2.
-          TextInput({placeholder: 'input', text: this.inputValue})
+
+        Column({ space: 5 }) { // Labeled as Column2.
+          TextInput({ placeholder: 'input', text: this.inputValue })
             .onChange((value: string) => {
               this.inputValue = value
             })
@@ -713,11 +750,12 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
             .fontColor(Color.White)
-            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Focuses when Column2 first gains focus.
+            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS) // Focus when Column2 gains focus.
           Row({ space: 5 }) {
             Button()
               .width(80)
@@ -728,6 +766,7 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
@@ -773,7 +812,7 @@ Pressing the **Tab** key again moves the focus to the component named **Group1**
 
 ### Example 5: Setting Focus Stop
 
-This example illustrates how to use **tabStop** to enable focus stop on a component during focus traversal with the **Tab** key.
+This example illustrates how to use [tabStop](#tabstop14) to enable focus stop on a component during focus traversal with the **Tab** key.
 
 ```ts
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -794,6 +833,7 @@ struct TabStop {
                 strokeWidth: LengthMetrics.px(10)
               })
           }
+
           Row({ space: 5 }) {
             Button("button 2")
               .width(200).height(70).fontColor(Color.White)
@@ -805,6 +845,7 @@ struct TabStop {
           }
         }.width('80%').margin({ top: 30 }).borderColor(Color.Black)
       }.width('95%').margin({ top: 60 }).borderColor(Color.Black)
+
       Column({ space: 20 }) {
         Column({ space: 20 }) {
           Row({ space: 5 }) {
@@ -860,14 +901,15 @@ Pressing **Tab** moves the focus back to **button1**.
 
 ### Example 6: Setting Custom Focus Movement
 
-This example demonstrates how to implement custom focus movement logic using the **nextFocus** API.
-Without **nextFocus** configured, the default focus navigation order using the **Tab** key is as follows: M -> A -> B -> C. After **nextFocus** is configured, the order changes to the following: M -> D -> F -> B.
+This example demonstrates how to implement custom focus movement logic using the [nextFocus](#nextfocus18) API, available since API version 18.
+
+Without [nextFocus](#nextfocus18) configured, the default focus navigation order using the **Tab** key is as follows: M -> A -> B -> C. After [nextFocus](#nextfocus18) is configured, the order changes to the following: M -> D -> F -> B.
 
 ```ts
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.id('M')
-    instance.nextFocus({forward: 'D', up: 'C', down: 'D'})
+    instance.nextFocus({ forward: 'D', up: 'C', down: 'D' })
   }
 }
 
@@ -878,29 +920,38 @@ struct Index {
   @State idList: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   build() {
-    Column({space: 10}) {
-      Row({space: 10}) {
+    Column({ space: 10 }) {
+      Row({ space: 10 }) {
         Button("id: M")
           .attributeModifier(this.modifier)
         Button("id: " + this.idList[0])
           .id(this.idList[0])
-          .nextFocus({forward: 'C', backward: 'M', up: 'E', right: 'F', down: 'B', left: 'D'});
+          .nextFocus({
+            forward: 'C',
+            backward: 'M',
+            up: 'E',
+            right: 'F',
+            down: 'B',
+            left: 'D'
+          });
         Button("id: " + this.idList[1])
           .id(this.idList[1])
       }
-      Column({space: 10}) {
+
+      Column({ space: 10 }) {
         Button("id: " + this.idList[2])
           .id(this.idList[2]);
         Button("id: " + this.idList[3])
           .id(this.idList[3])
-          .nextFocus({forward: 'F'});
+          .nextFocus({ forward: 'F' });
       }
-      Row({space: 10}) {
+
+      Row({ space: 10 }) {
         Button("id: " + this.idList[4])
           .id(this.idList[4]);
         Button("id: " + this.idList[5])
           .id(this.idList[5])
-          .nextFocus({forward: 'B'});
+          .nextFocus({ forward: 'B' });
       }
     }
   }

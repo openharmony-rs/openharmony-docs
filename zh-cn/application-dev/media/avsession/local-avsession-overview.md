@@ -1,10 +1,10 @@
 # 本地媒体会话概述
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 交互过程
 
@@ -30,7 +30,7 @@
 
 5. 媒体会话控制方通过AVSessionController对象还可以向媒体会话发送控制命令。
 
-6. 媒体会话提供方通过AVSession对象可以监听来自媒体会话控制方的控制命令，例如：“play”播放、“playNext”播放下一首、“fastForward”快进、 “setSpeed”设置播放倍数等。
+6. 媒体会话提供方通过AVSession对象可以监听来自媒体会话控制方的控制命令，例如：“play”播放、“playNext”播放下一首、“fastForward”快进、 “setSpeed”设置播放倍速等。
 
 ## 媒体会话管理器
 
@@ -38,7 +38,9 @@
 
 实际上，AVSessionManager与AVSession、AVSessionController对象不同，并不是一个具体的对象，它是媒体会话的根命名域。在实际编程过程中，可以通过如下方式引入：
 
-```ts
+<!-- @[avSession_manager_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 ```
 
@@ -50,11 +52,10 @@ import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 >
 > 以下示例代码仅展示创建AVSession对象的接口调用，应用在真正使用时，需要确保AVSession对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
  
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+<!-- @[avSession_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 @Entry
 @Component
 struct Index {
@@ -93,4 +94,4 @@ async function createController() {
 ```
 <!--DelEnd-->
 
-更多关于AVSessionManager的方法，可以参考[API文档](../../reference/apis-avsession-kit/arkts-apis-avsession.md)。
+更多关于AVSessionManager的方法，请参考API文档：[模块描述](../../reference/apis-avsession-kit/arkts-apis-avsession.md)。

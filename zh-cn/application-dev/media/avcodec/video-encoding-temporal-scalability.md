@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 基础概念
 
@@ -63,7 +63,7 @@
 
   参考帧仅在GOP内有效，刷新I帧后，DPB随之清空，参考帧也会被清空，因此参考关系的指定受I帧刷新位置影响很大。
 
-  使能时域分层能力后，若需要通过`OH_MD_KEY_REQUEST_I_FRAME`临时请求I帧，应使用生效时机确定的随帧通路配置方式准确告知系统I帧刷新位置以避免参考关系错乱，参考随帧通路配置相关指导，避免使用生效时机不确定的`OH_VideoEncoder_SetParameter`方式。详情请参考[视频编码Surface模式](video-encoding.md#surface模式)"步骤-4：调用OH_VideoEncoder_RegisterParameterCallback()在Configur接口之前注册随帧通路回调。"。
+  使能时域分层能力后，若需要通过`OH_MD_KEY_REQUEST_I_FRAME`临时请求I帧，应使用生效时机确定的随帧通路配置方式准确告知系统I帧刷新位置以避免参考关系错乱，参考随帧通路配置相关指导，避免使用生效时机不确定的`OH_VideoEncoder_SetParameter`方式。详情请参考[视频编码Surface模式](video-encoding.md#surface模式)"步骤-4"。
 
 - 支持`OH_AVBuffer`回调通路，不支持`OH_AVMemory`回调通路。
 
@@ -79,7 +79,7 @@
 
 ### 接口介绍
 
-全局时域可分层特性，适用于编码稳定和简单的时域分层结构，初始配置全局生效，不支持动态修改。开发配置参数如下。
+全局时域可分层特性，适用于低时延实时视频通信场景。编码器运行中，分层编码模式与普通编码模式支持相互切换。编码器配置时域分层生效后，分层的相关参数不支持动态修改。开发配置参数如下。
 
 | 配置参数 | 语义                         |
 | -------- | ---------------------------- |
@@ -150,7 +150,70 @@
     }
     ```
 
-3. （可选）在输出轮转中，可以获取码流对应时域层级信息。
+3. （可选）在运行过程中，支持动态开启或关闭时域可分层能力。
+
+    动态使能时域可分层能力的示例代码如下：
+
+    ```c++
+    std::unique_lock<std::shared_mutex> lock(codecMutex);
+    // 重置编码器videoEnc。
+    OH_AVErrCode resetRet = OH_VideoEncoder_Reset(videoEnc);
+    if (resetRet != AV_ERR_OK) {
+        // 异常处理。
+    }
+    inQueue.Flush();
+    outQueue.Flush();
+    // 重新配置编码器参数。
+    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
+    if (format == nullptr) {
+        // 异常处理。
+    }
+    // 配置时域可分层编码特性参数。
+    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY, 1);
+    constexpr int32_t TGOP_SIZE = 3;
+    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_SIZE, TGOP_SIZE);
+    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_REFERENCE_MODE, ADJACENT_REFERENCE);
+    OH_AVErrCode configRet = OH_VideoEncoder_Configure(videoEnc, format.get());
+    if (configRet != AV_ERR_OK) {
+        // 异常处理。
+    }
+    // 编码器重新就绪。
+    OH_AVErrCode prepareRet = OH_VideoEncoder_Prepare(videoEnc);
+    if (prepareRet != AV_ERR_OK) {
+        // 异常处理。
+    }
+    ```
+
+    动态关闭时域可分层能力的示例代码如下：
+
+    ```c++
+    std::unique_lock<std::shared_mutex> lock(codecMutex);
+    // 重置编码器videoEnc。
+    OH_AVErrCode resetRet = OH_VideoEncoder_Reset(videoEnc);
+    if (resetRet != AV_ERR_OK) {
+        // 异常处理。
+    }
+    inQueue.Flush();
+    outQueue.Flush();
+    // 重新配置编码器参数。
+    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
+    if (format == nullptr) {
+        // 异常处理。
+    }
+    // 配置时域可分层编码特性参数。
+    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY, 0);
+    OH_AVErrCode configRet = OH_VideoEncoder_Configure(videoEnc, format.get());
+    if (configRet != AV_ERR_OK) {
+        // 异常处理。
+    }
+    // 编码器重新就绪。
+    OH_AVErrCode prepareRet = OH_VideoEncoder_Prepare(videoEnc);
+    if (prepareRet != AV_ERR_OK) {
+        // 异常处理。
+    }
+    ```
+
+4. （可选）在输出轮转中，可以获取码流对应时域层级信息。
 
     开发者可利用已配置的TGOP参数和编码出帧数目获取时域层级信息。
 
@@ -184,7 +247,7 @@
     }
     ```
 
-4. （可选）在输出轮转中，使用步骤3获取的时域层级信息，自适应传输或自适应解码。
+5. （可选）在输出轮转中，使用步骤3获取的时域层级信息，自适应传输或自适应解码。
 
     根据获取的时域可分层码流和对应的层级信息，开发者可选择需要的层级进行传输，或携带至对端自适应选帧解码。
 

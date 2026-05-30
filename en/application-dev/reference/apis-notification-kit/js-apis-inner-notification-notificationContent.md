@@ -1,4 +1,10 @@
 # NotificationContent
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationContent** module provides APIs for defining the notification content.
 
@@ -14,7 +20,7 @@ Describes the notification contents.
 
 | Name          | Type                                                                       | Read-Only| Optional| Description              |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | No | Yes | Notification content type.<br>This API is deprecated since API version 11. You are advised to use **notificationContentType** instead.      |
+| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | No | Yes | Notification content type.<br>This attribute is supported since API version 7 and deprecated since API version 11. You are advised to use **notificationContentType** instead.      |
 | notificationContentType<sup>11+</sup>    | [notificationManager.ContentType](./js-apis-notificationManager.md#contenttype)                | No | Yes | Notification content type.      |
 | normal         | [NotificationBasicContent](#notificationbasiccontent)                      | No | Yes | Normal text.  |
 | longText       | [NotificationLongTextContent](#notificationlongtextcontent)                | No | Yes | Long text.|
@@ -30,10 +36,10 @@ Describes the normal text notification.
 
 | Name          | Type   | Read-Only| Optional| Description                              |
 | -------------- | ------ | ---- |-----| ---------------------------------- |
-| title          | string |  No |  No | Notification title. It cannot be empty or exceed 1024 bytes. Excess content will be truncated.        |
-| text           | string |  No |  No | Notification content. It cannot be empty or exceed 3072 bytes. Excess content will be truncated.        |
-| additionalText | string |  No |  Yes | Additional information of the notification. It cannot exceed 3072 bytes. Excess content will be truncated.  |
-| lockscreenPicture<sup>12+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  No |  Yes | Picture of a notification displayed on the lock screen. Currently, only the live view notification is supported. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.  |
+| title          | string |  No |  No | Notification title. It cannot be empty or exceed 1,024 bytes. Excess content will be truncated.        |
+| text           | string |  No |  No | Notification content. It cannot be empty or exceed 3,072 bytes. Excess content will be truncated.        |
+| additionalText | string |  No |  Yes | Additional information of the notification. It cannot exceed 3,072 bytes. Excess content will be truncated. This parameter is left empty by default.  |
+| lockscreenPicture<sup>12+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  No |  Yes | Picture displayed on the lock screen. This parameter is left empty by default. Currently, only the live view notification is supported. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.  |
 
 ## NotificationLongTextContent
 
@@ -47,9 +53,9 @@ Describes the long text notification. This API is inherited from [NotificationBa
 
 | Name          | Type   | Read-Only| Optional| Description                            |
 | -------------- | ------ | ---- | --- | -------------------------------- |
-| longText       | string |  No | No | Long text of the notification. It cannot be an empty string and exceed 3072 bytes. Excess content will be truncated.                    |
-| briefText      | string |  No | No | Brief text of the notification. It cannot be empty or exceed 1024 bytes. Excess content will be truncated.  |
-| expandedTitle  | string |  No | No | Title of the notification in the expanded state. It cannot be empty or exceed 1024 bytes. Excess content will be truncated.                |
+| longText       | string |  No | No | Long text of the notification. It cannot be empty or exceed 3,072 bytes. Excess content will be truncated.                    |
+| briefText      | string |  No | No | Brief text of the notification. It cannot be empty or exceed 1,024 bytes. Excess content will be truncated.  |
+| expandedTitle  | string |  No | No | Title of the notification in the expanded state. It cannot be empty or exceed 1,024 bytes. Excess content will be truncated.                |
 
 
 ## NotificationMultiLineContent
@@ -66,9 +72,9 @@ Describes the multi-line text notification. This API is inherited from [Notifica
 
 | Name          | Type           | Read-Only| Optional| Description                            |
 | -------------- | --------------- | --- | --- | -------------------------------- |
-| briefText      | string          | No | No | Brief text of the notification. It cannot be empty or exceed 1024 bytes. Excess content will be truncated.|
-| longTitle      | string          | No | No | Title of the notification in the expanded state. It cannot be empty or exceed 1024 bytes. Excess content will be truncated.|
-| lines          | Array\<string\> | No | No | Multi-line text of a notification. A maximum of three lines are supported, and each line cannot exceed 1024 bytes. Excess content will be truncated.                 |
+| briefText      | string          | No | No | Brief text of the notification. It cannot be empty or exceed 1,024 bytes. Excess content will be truncated.|
+| longTitle      | string          | No | No | Title of the notification in the expanded state. It cannot be empty or exceed 1,024 bytes. Excess content will be truncated.|
+| lines          | Array\<string\> | No | No | Multi-line text of a notification. A maximum of three lines are supported, and each line cannot exceed 1,024 bytes. Excess content will be truncated.                 |
 
 
 ## NotificationPictureContent
@@ -83,9 +89,9 @@ Describes the picture-attached notification. This API is inherited from [Notific
 
 | Name          | Type                                         | Read-Only| Optional| Description                              |
 | -------------- | -------------------------------------------- | ---- | --- |------------------------------------|
-| briefText      | string                                       |  No | No | Brief text of the notification. It cannot be empty or exceed 1024 bytes. Excess content will be truncated.|
-| expandedTitle  | string                                       |  No | No | Title of the notification in the expanded state. It cannot be empty or exceed 1024 bytes. Excess content will be truncated.   |
-| picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  No | No | Picture content of the notification. The total number of bytes of image pixels cannot exceed 2 MB.|
+| briefText      | string                                       |  No | No | Brief text of the notification. It cannot be empty or exceed 1,024 bytes. Excess content will be truncated.|
+| expandedTitle  | string                                       |  No | No | Title of the notification in the expanded state. It cannot be empty or exceed 1,024 bytes. Excess content will be truncated.   |
+| picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  No | No | Picture content of the notification. The total pixel data size of the image cannot exceed 2 MB.|
 
 
 ## NotificationSystemLiveViewContent
@@ -97,10 +103,10 @@ Describes the system live view notification. A third-party application cannot di
 | Name                        | Type                                            | Read-Only| Optional| Description                              |
 | ---------------------------- | ----------------------------------------------- | --- | --- | -----------------------------------|
 | typeCode<sup>11+</sup>       | number                                          | No | No | Type code, which identifies the type of the service that invokes the API.      |
-| capsule<sup>11+</sup>        | [NotificationCapsule](#notificationcapsule11)   | No | Yes | Capsule of the notification.                    |
-| button<sup>11+</sup>         | [NotificationButton](#notificationbutton11)     | No | Yes | Button in the notification.                    |
-| time<sup>11+</sup>           | [NotificationTime](#notificationtime11)         | No | Yes | Time of the notification.                    |
-| progress<sup>11+</sup>       | [NotificationProgress](#notificationprogress11) | No | Yes | Progress of the notification.                    |
+| capsule<sup>11+</sup>        | [NotificationCapsule](#notificationcapsule11)   | No | Yes | Capsule of the notification. This parameter is left empty by default.           |
+| button<sup>11+</sup>         | [NotificationButton](#notificationbutton11)     | No | Yes | Button in the notification. This parameter is left empty by default.           |
+| time<sup>11+</sup>           | [NotificationTime](#notificationtime11)         | No | Yes | Time of the notification. This parameter is left empty by default.           |
+| progress<sup>11+</sup>       | [NotificationProgress](#notificationprogress11) | No | Yes | Progress of the notification. This parameter is left empty by default.           |
 
 
 ## NotificationCapsule<sup>11+</sup>
@@ -112,7 +118,7 @@ Describe the notification capsule.
 | Name           | Type                                         | Read-Only| Optional| Description                           |
 | --------------- | -------------------------------------------- | --- | --- | -------------------------------- |
 | title           | string                                       | No | Yes | Title of the capsule, with a maximum of 200 bytes. Excess part will be truncated.                       |
-| icon            | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No | Yes | Icon of the capsule.                       |
+| icon            | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No | Yes | Icon of the capsule. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.                       |
 | backgroundColor | string                                       | No | Yes | Background color of the capsule.                       |
 
 
@@ -125,7 +131,7 @@ Describes the notification button.
 | Name | Type                                                  | Read-Only| Optional| Description            |
 | ----- | ----------------------------------------------------- | --- | --- | ----------------- |
 | names | Array\<string\>                                       | No |  Yes| Button names. A maximum of three names are supported.  |
-| icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | No |  Yes| Button icons. A maximum of three icons are supported.  |
+| icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | No |  Yes| Button icons. A maximum of three icons are supported. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.  |
 | iconsResource<sup>12+</sup> | Array\<[Resource](../apis-arkui/arkui-ts/ts-types.md#resource)\> | No |  Yes| Button icon resources. A maximum of three icon resources are supported.  |
 
 ## NotificationTime<sup>11+</sup>
@@ -137,12 +143,13 @@ Describes the notification timing information.
 | Name          | Type             | Read-Only| Optional| Description                            |
 | -------------- | ---------------- | --- | --- | -------------------------------- |
 | initialTime    | number           | No | Yes | Start time, in milliseconds.               |
-| isCountDown    | boolean          | No | Yes | Whether to count down. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No. |
-| isPaused       | boolean          | No | Yes | Whether to pause the progress. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No.  |
-| isInTitle      | boolean          | No | Yes | Whether the time is displayed in the title. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No. |
+| isCountDown    | boolean          | No | Yes | Whether to count down. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.|
+| isPaused       | boolean          | No | Yes | Whether to pause the progress. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.  |
+| isInTitle      | boolean          | No | Yes | Whether the time is displayed in the title. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.|
 
 **Example**:
 
+<!--code_no_check-->
 ```ts
 // The notification counts down from three seconds and the time is displayed in the title.
 time: {
@@ -164,4 +171,4 @@ Describes the notification progress.
 | -------------- | --------------- | --- | --- | -------------------------------- |
 | maxValue        | number         | No | Yes | Maximum progress value.                      |
 | currentValue    | number         | No | Yes | Current progress value.                      |
-| isPercentage    | boolean        | No | Yes | Whether to show the progress in percentage. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No. |
+| isPercentage    | boolean        | No | Yes | Whether to show the progress in percentage. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.|

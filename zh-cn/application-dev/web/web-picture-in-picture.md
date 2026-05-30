@@ -2,19 +2,20 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @gzweioh-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @zhangyao75477-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Picture API在网页中创建浮动窗口以播放视频，使用户在浏览其他网页或与其他应用交互时，可通过该画中画窗口继续观看视频。  
 
 若使用线上视频资源，则需在配置文件中设置网络权限。权限的添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-```json
-// src/main/module.json5
+<!-- @[web_picture_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/module.json5) -->
+
+``` JSON5
 "requestPermissions": [
   {
     "name": "ohos.permission.INTERNET"
-  },
+  }
 ]
 ```
 
@@ -32,7 +33,7 @@ Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Pic
 <button id="togglePipButton">开启画中画</button>
 ```
 
-HTMLVideoElement接口提供的requestPictureInPicture()方法请求启动画中画，如果系统支持画中画能力，则会以画中画模式显示视频。
+HTMLVideoElement接口提供的requestPictureInPicture()方法请求进入画中画，如果系统支持画中画能力，则会以画中画模式显示视频。
 
 ```js
 togglePipButton.addEventListener("click", async () => {
@@ -64,8 +65,10 @@ try {
 
 ## 监听画中画事件
 
-当用户启动画中画模式播放视频时，会显示一个悬浮窗口用于播放视频。系统规定每次只能播放一个画中画视频。
+当用户进入画中画模式播放视频时，会显示一个浮动窗口用于播放视频。系统规定每次只能播放一个画中画视频。
+
 HTMLVideoElement的enterpictureinpicture事件在HTMLVideoElement成功进入画中画模式时触发，而HTMLVideoElement的leavepictureinpicture事件在HTMLVideoElement成功退出画中画模式时触发。
+
 在监听到这些事件变化时，开发者可以进行相应的处理。
 
 
@@ -81,14 +84,14 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 
 ## 画中画窗口交互
 
-* 画中画整体窗口控制：  
-  支持双击画中画窗口控制放大或缩小窗口尺寸；  
-  支持拖拽画中画窗口到屏幕任意位置；  
-  支持单击画中画窗口控制画中画控制层UI控件的显示与隐藏。  
+* 画中画整体窗口控制：<br/>
+  支持双击画中画窗口控制放大或缩小窗口尺寸。<br/>
+  支持拖拽画中画窗口到屏幕任意位置。<br/>  
+  支持单击画中画窗口控制画中画控制层UI控件的显示与隐藏。<br/>  
 
-* 画中画控制层UI控件：  
-  画中画窗口控制层包含“关闭”（关闭画中画窗口）、“恢复”（从画中画窗口恢复到原应用界面）；  
-  播放控制包含暂停，播放，前进/后退（默认显示前进/后退UI控件，若原视频不支持前进后退，点击无响应）。
+* 画中画控制层UI控件：<br/>  
+  画中画窗口控制层包含“关闭”（关闭画中画窗口）、“恢复”（从画中画窗口恢复到原应用界面）。<br/>  
+  播放控制包含暂停，播放，前进/后退（默认显示前进/后退UI控件，若原视频不支持前进后退，单击无响应）。<br/>
   
   ![web-picture-in-picture](figures/web-picture-in-picture-ui.png)
 
@@ -99,16 +102,17 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 
 * 应用侧ets代码。
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+  <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
 
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  
   @Entry
   @Component
   struct Index {
     @State videoSrc: Resource = $rawfile('PictureInPicture.html');
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Web({src: this.videoSrc, controller: this.controller})
@@ -117,7 +121,7 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
   }
   ```
 
-* 前端页面html代码。
+* 前端页面HTML代码。
 
   ```html
   <!-- PictureInPicture.html -->
@@ -163,7 +167,7 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
       togglePipButton.hidden =
         !document.pictureInPictureEnabled || video.disablePictureInPicture;
 
-      // 监听按钮点击事件，切换画中画模式
+      // 监听按钮单击事件，切换画中画模式
       togglePipButton.addEventListener("click", async () => {
         try {
           if (document.pictureInPictureElement) {

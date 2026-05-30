@@ -3,8 +3,8 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
-<!--Tester: @maxiaorong2-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @fang-jinxu-->
 
 > **NOTE**
 >
@@ -18,7 +18,7 @@ The index is out of range.
 
 **Description**
 
-This error code is reported when the index passed in to the called API, such as **getRecord**, is out of range.
+This error code is reported when the index passed in to the called API, such as **getRecord**, is out of range. The index should be with the range from 0 to value of **recordCount** minus 1.
 
 **Possible Causes**
 
@@ -115,7 +115,7 @@ Settings already exist.
 
 **Description**
 
-This error code is reported when the global pasteable range of the application to be set already exists.
+This error code is reported when the global pasteable range to be set already exists for your application.
 
 **Possible Causes**
 
@@ -178,7 +178,7 @@ The progress is displayed abnormally.
 
 **Solution**
 
-Check whether the pasting is successful. If so, ignore this error; otherwise, contact technical support.
+Check whether the pasting is successful. If yes, ignore this error; otherwise, contact technical support.
 
 ## 12900010 Data Obtaining Failure
 

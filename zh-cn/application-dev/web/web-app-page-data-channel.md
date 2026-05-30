@@ -4,13 +4,13 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 前端页面和应用侧之间可以用[createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports)接口创建消息端口来实现两端的通信。
 
 
-在下面的示例中，应用侧页面中通过createWebMessagePorts方法创建两个消息端口，再把其中一个端口通过[postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage)接口发送到前端页面，便可以在前端页面和应用侧之间互相发送消息。
+在下面的示例中，应用侧页面中通过createWebMessagePorts方法创建两个消息端口，再把其中一个端口通过[postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage)接口发送到前端页面，便可以在前端页面和应用侧之间互相发送消息。端口使用完毕后或Webview对象销毁前通过[close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close)接口关闭端口。
 
 
 - 应用侧代码。
@@ -86,6 +86,21 @@
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
+
+        // 5、关闭端口。  
+        Button('closePort')
+        .onClick(() => {
+          try {
+            if (this.ports && this.ports.length == 2) {
+              this.ports[0].close();
+              this.ports = [];
+            } else {
+              console.error("ports is null, not need close");
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
         Web({ src: $rawfile('index.html'), controller: this.controller })
       }
     }
@@ -156,6 +171,7 @@
 
 ### 为什么H5向应用侧发送消息接收不到？
 检查传递的数据类型是否正确，WebMessage支持的数据类型有string和ArrayBuffer。  
+
 如果想要传递对象类型则需要将对象类型通过JSON.stringify方法转换为string类型再进行传递。示例如下：
 
 ```ts

@@ -1,5 +1,12 @@
 # @ohos.wallpaper (壁纸)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @dreamsky8023-->
+<!--Designer: @dreamsky8023-->
+<!--Tester: @murphy84-->
+<!--Adviser: @fang-jinxu-->
+
 壁纸管理服务为OpenHarmony系统服务，提供壁纸切换功能。从API 9开始壁纸管理的接口调整为系统API，壁纸的切换只能通过系统应用来完成。壁纸管理提供壁纸切换通道，使用壁纸的应用（如：桌面）需订阅壁纸变化通知并刷新壁纸显示。
 
 > **说明：**
@@ -36,12 +43,12 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| red | number | 是 | 是 | 表示红色值，范围为 0 到 255。 |
-| green | number | 是 | 是 | 表示绿色值，范围为 0 到 255。 |
-| blue | number | 是 | 是 | 表示蓝色值，范围为 0 到 255。 |
-| alpha | number | 是 | 是 | 表示 alpha 值，范围为 0 到 255。 |
+| red | number | 否 | 否 | 表示红色值，范围为 0 到 255。 |
+| green | number | 否 | 否 | 表示绿色值，范围为 0 到 255。 |
+| blue | number | 否 | 否 | 表示蓝色值，范围为 0 到 255。 |
+| alpha | number | 否 | 否 | 表示 alpha 值，范围为 0 到 255。 |
 
 
 ## wallpaper.on('colorChange')<sup>(deprecated)</sup>
@@ -68,7 +75,7 @@ on(type: 'colorChange', callback: (colors: Array&lt;RgbaColor&gt;, wallpaperType
 ```ts
 try {
     let listener = (colors: Array<wallpaper.RgbaColor>, wallpaperType: wallpaper.WallpaperType): void => {
-        console.log(`wallpaper color changed.`);
+        console.info(`wallpaper color changed.`);
     };
     wallpaper.on('colorChange', listener);
 } catch (error) {
@@ -99,7 +106,7 @@ off(type: 'colorChange', callback?: (colors: Array&lt;RgbaColor&gt;, wallpaperTy
 
 ```ts
 let listener = (colors: Array<wallpaper.RgbaColor>, wallpaperType: wallpaper.WallpaperType): void => {
-    console.log(`wallpaper color changed.`);
+    console.info(`wallpaper color changed.`);
 };
 try {
     wallpaper.on('colorChange', listener);
@@ -151,7 +158,7 @@ wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessEr
         console.error(`failed to getColors because: ${JSON.stringify(error)}`);
         return;
     }
-    console.log(`success to getColors: ${JSON.stringify(data)}`);
+    console.info(`success to getColors: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -185,7 +192,7 @@ getColors(wallpaperType: WallpaperType): Promise&lt;Array&lt;RgbaColor&gt;&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Array<wallpaper.RgbaColor>) => {
-    console.log(`success to getColors: ${JSON.stringify(data)}`);
+    console.info(`success to getColors: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`failed to getColors because: ${JSON.stringify(error)}`);
 });
@@ -220,7 +227,7 @@ wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError,
         console.error(`failed to getId because: ${JSON.stringify(error)}`);
         return;
     }
-    console.log(`success to getId: ${JSON.stringify(data)}`);
+    console.info(`success to getId: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -254,7 +261,7 @@ getId(wallpaperType: WallpaperType): Promise&lt;number&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Number) => {
-    console.log(`success to getId: ${JSON.stringify(data)}`);
+    console.info(`success to getId: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`failed to getId because: ${JSON.stringify(error)}`);
 });
@@ -288,7 +295,7 @@ wallpaper.getMinHeight((error: BusinessError, data: Number) => {
         console.error(`failed to getMinHeight because: ${JSON.stringify(error)}`);
         return;
     }
-    console.log(`success to getMinHeight: ${JSON.stringify(data)}`);
+    console.info(`success to getMinHeight: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -316,7 +323,7 @@ getMinHeight(): Promise&lt;number&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.getMinHeight().then((data: Number) => {
-    console.log(`success to getMinHeight: ${JSON.stringify(data)}`);
+    console.info(`success to getMinHeight: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
     console.error(`failed to getMinHeight because: ${JSON.stringify(error)}`);
 });
@@ -350,7 +357,7 @@ wallpaper.getMinWidth((error: BusinessError, data: Number) => {
         console.error(`failed to getMinWidth because: ${JSON.stringify(error)}`);
         return;
     }
-    console.log(`success to getMinWidth: ${JSON.stringify(data)}`);
+    console.info(`success to getMinWidth: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -378,7 +385,7 @@ getMinWidth(): Promise&lt;number&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.getMinWidth().then((data: Number) => {
-    console.log(`success to getMinWidth: ${JSON.stringify(data)}`);
+    console.info(`success to getMinWidth: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`failed to getMinWidth because: ${JSON.stringify(error)}`);
 });
@@ -415,7 +422,7 @@ wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
         console.error(`failed to getFile because: ${JSON.stringify(error)}`);
         return;
     }
-    console.log(`success to getFile: ${JSON.stringify(data)}`);
+    console.info(`success to getFile: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -451,7 +458,7 @@ getFile(wallpaperType: WallpaperType): Promise&lt;number&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: number) => {
-    console.log(`success to getFile: ${JSON.stringify(data)}`);
+    console.info(`success to getFile: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`failed to getFile because: ${JSON.stringify(error)}`);
 });
@@ -485,7 +492,7 @@ wallpaper.isChangePermitted((error: BusinessError, data: Boolean) => {
         console.error(`failed to isChangePermitted because: ${JSON.stringify(error)}`);
         return;
     }
-    console.log(`success to isChangePermitted: ${JSON.stringify(data)}`);
+    console.info(`success to isChangePermitted: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -513,7 +520,7 @@ isChangePermitted(): Promise&lt;boolean&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.isChangePermitted().then((data: Boolean) => {
-    console.log(`success to isChangePermitted: ${JSON.stringify(data)}`);
+    console.info(`success to isChangePermitted: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
     console.error(`failed to isChangePermitted because: ${JSON.stringify(error)}`);
 });
@@ -547,7 +554,7 @@ wallpaper.isOperationAllowed((error: BusinessError, data: Boolean) => {
         console.error(`failed to isOperationAllowed because: ${JSON.stringify(error)}`);
         return;
     }
-    console.log(`success to isOperationAllowed: ${JSON.stringify(data)}`);
+    console.info(`success to isOperationAllowed: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -575,7 +582,7 @@ isOperationAllowed(): Promise&lt;boolean&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.isOperationAllowed().then((data: Boolean) => {
-    console.log(`success to isOperationAllowed: ${JSON.stringify(data)}`);
+    console.info(`success to isOperationAllowed: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`failed to isOperationAllowed because: ${JSON.stringify(error)}`);
 });
@@ -612,7 +619,7 @@ wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError)
         console.error(`failed to reset because: ${JSON.stringify(error)}`);
         return;
     }
-    console.log(`success to reset.`);
+    console.info(`success to reset.`);
 });
 ```
 
@@ -648,7 +655,7 @@ reset(wallpaperType: WallpaperType): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-    console.log(`success to reset.`);
+    console.info(`success to reset.`);
 }).catch((error: BusinessError) => {
     console.error(`failed to reset because: ${JSON.stringify(error)}`);
 });
@@ -689,7 +696,7 @@ wallpaper.setWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, 
         console.error(`failed to setWallpaper because: ${JSON.stringify(error)}`);
        return;
        }
-    console.log(`success to setWallpaper.`);
+    console.info(`success to setWallpaper.`);
 });
 
 // source类型为image.PixelMap
@@ -706,7 +713,7 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
             console.error(`failed to setWallpaper because: ${JSON.stringify(error)}`);
             return;
         }
-        console.log(`success to setWallpaper.`);
+        console.info(`success to setWallpaper.`);
     });
 }).catch((error: BusinessError) => {
     console.error(`failed to createPixelMap because: ${JSON.stringify(error)}`);
@@ -749,7 +756,7 @@ import { image } from '@kit.ImageKit';
 // source类型为string
 let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
 wallpaper.setWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-    console.log(`success to setWallpaper.`);
+    console.info(`success to setWallpaper.`);
   }).catch((error: BusinessError) => {
     console.error(`failed to setWallpaper because: ${JSON.stringify(error)}`);
 });
@@ -764,7 +771,7 @@ let opts: image.DecodingOptions = {
 };
 imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setWallpaper(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-        console.log(`success to setWallpaper.`);
+        console.info(`success to setWallpaper.`);
     }).catch((error: BusinessError) => {
         console.error(`failed to setWallpaper because: ${JSON.stringify(error)}`);
     });

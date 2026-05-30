@@ -39,7 +39,7 @@ Currently, **getRdbStore()** does not support multi-thread concurrent operations
 
 | Name  | Type                                          | Mandatory| Description                                                        |
 | -------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
-| context  | Context                                        | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context  | Context                                        | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)               | Yes  | Configuration of the RDB store.                               |
 | callback | AsyncCallback&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | Yes  | Callback invoked to return the RDB store obtained.                  |
 
@@ -52,12 +52,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error.     |
 | 14800010  | Failed to open or delete the database by an invalid database path.   |
-| 14800011  | Failed to open the database because it is corrupted.    |
+| 14800011  | The current operation failed because the database is corrupted.    |
 | 14801001  | The operation is supported in the stage model only.    |
 | 14801002  | Invalid data group ID.   |
 | 14800017  | StoreConfig is changed. |
 | 14800020  | The secret key is corrupted or lost.   |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.    |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.   |
 | 14800023  | SQLite: Access permission denied.    |
 | 14800027  | SQLite: Attempt to write a readonly database.   |
@@ -145,7 +145,7 @@ Currently, **getRdbStore()** does not support multi-thread concurrent operations
 
 | Name | Type                            | Mandatory| Description                                                        |
 | ------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
 
 **Return value**
@@ -163,12 +163,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path. |
-| 14800011  | Failed to open the database because it is corrupted.  |
+| 14800011  | The current operation failed because the database is corrupted.  |
 | 14801001  | The operation is supported in the stage model only.                               |
 | 14801002  | Invalid data group ID.                             |
 | 14800017  | StoreConfig is changed. |
 | 14800020  | The secret key is corrupted or lost.   |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.   |
 | 14800023  | SQLite: Access permission denied.    |
 | 14800027  | SQLite: Attempt to write a readonly database. |
@@ -243,7 +243,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| context  | Context                   | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context  | Context                   | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | name     | string                    | Yes  | Name of the RDB store to delete.                                                |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback invoked to return the result.                                      |
 
@@ -317,7 +317,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 | Name | Type   | Mandatory| Description                                                        |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
-| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | name    | string  | Yes  | Name of the RDB store to delete.                                                |
 
 **Return value**
@@ -392,7 +392,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 | Name  | Type                       | Mandatory| Description                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| context  | Context                     | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context  | Context                     | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
 | callback | AsyncCallback&lt;void&gt;   | Yes  | Callback invoked to return the result.                                      |
 
@@ -477,7 +477,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 | Name | Type                       | Mandatory| Description                                                        |
 | ------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| context | Context                     | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context                     | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
 
 **Return value**
@@ -614,7 +614,7 @@ This API returns **true** if the specified tokenizer is supported; returns **fal
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
 | tokenizer | [Tokenizer](arkts-apis-data-relationalStore-e.md#tokenizer17)               | Yes  | Tokenizer to check.|
 
-**Return Value**
+**Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
@@ -653,7 +653,7 @@ Obtains the SQL statement used to insert data. This API returns the result synch
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes| Field information and corresponding values of the data to be written to the database.|
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No|Resolution used to resolve the conflict. <br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
-**Return Value**
+**Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
@@ -700,7 +700,7 @@ Obtains the SQL statement used to update data. This API returns the result synch
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes| Field information and corresponding values of the data to be written to the database.|
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No| Resolution used to resolve the conflict. <br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
-**Return Value**
+**Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
@@ -746,7 +746,7 @@ Obtains the SQL statement used to delete data. This API returns the result synch
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | **RdbPredicates** object that matches the specified field.|
 
-**Return Value**
+**Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
@@ -785,7 +785,7 @@ Obtains the SQL statement used to query data. This API returns the result synchr
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | **RdbPredicates** object that matches the specified field.|
 | columns | Array\<string> | No| Columns to be queried. If this parameter is not specified, all columns are queried.|
 
-**Return Value**
+**Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |

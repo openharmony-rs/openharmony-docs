@@ -1,32 +1,14 @@
 # 截图错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
-
-## 100001 内部错误
-
-**错误信息**
-
-The builder is not a valid build function.
-
-**错误描述**
-
-该错误码在内部状态出现异常时被触发。
-
-**可能原因**
-
-无法获取正确的UI实例、空指针异常、UI实例内部状态校验异常、组件未上树无法查询到节点、截图尺寸超过硬件限制（硬件限制可能根据不同硬件平台有所不同）等。
-
-**处理步骤**
-
-NA
 
 ## 160001 图像加载错误
 
@@ -44,7 +26,7 @@ An image component in builder is not ready for taking a snapshot. The check for 
 
 **处理步骤**
 
-NA
+设置相应截图接口的delay延时参数，以确保图像加载成功。
 
 ## 160002 截图超时
 
@@ -62,4 +44,40 @@ Timeout.
 
 **处理步骤**
 
-NA
+改用当前截图接口对应的异步接口。
+
+## 160003 截图选项不支持的色彩空间或动态范围模式
+
+**错误信息**
+
+Unsupported color space or dynamic range mode in snapshot options.
+
+**错误描述**
+
+截图选项中设置了不支持的色彩空间或动态范围模式。
+
+**可能原因**
+
+截图选项中设置的色彩空间或动态范围模式值不在支持范围内。
+
+**处理步骤**
+
+修改截图选项中设置的色彩空间或动态范围模式值为支持范围内的值。
+
+## 160004 离屏节点截图不支持色彩空间或动态范围模式的isAuto参数设置为true
+
+**错误信息**
+
+isAuto(true) is not supported for offscreen node snapshots.
+
+**错误描述**
+
+对离屏节点截图时，色彩空间或动态范围模式的isAuto参数被设置为true。
+
+**可能原因**
+
+对离屏节点截图时，不支持截图选项中的色彩空间或动态范围模式的isAuto参数设置为true。
+
+**处理步骤**
+
+将截图选项中色彩空间或动态范围模式的isAuto参数设置为false。

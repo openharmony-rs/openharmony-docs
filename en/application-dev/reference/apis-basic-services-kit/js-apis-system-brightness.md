@@ -5,14 +5,20 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **brightness** module provides APIs for querying and adjusting the screen brightness and mode.
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 7.<!--Del--> You are advised to use APIs of [@ohos.brightness](js-apis-brightness-sys.md). <!--DelEnd-->The substitute APIs are available only for system applications.
-> - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>- Module maintenance policy:
+>
+>    \- For lite wearables, this module is constantly maintained and available.
+>
+>    \- For other device types, this module is no longer maintained since API version 7.<!--Del--> You are advised to use APIs of [@ohos.brightness](js-apis-brightness-sys.md). <!--DelEnd-->The substitute APIs are available only for system applications.
+>
+>- The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
 
 
 ## Modules to Import
@@ -22,8 +28,11 @@ The **brightness** module provides APIs for querying and adjusting the screen br
 import brightness, { BrightnessModeResponse, BrightnessResponse } from '@system.brightness';
 ```
 
+## Brightness
 
-## brightness.getValue<sup>(deprecated)</sup>
+Provides APIs for querying and adjusting the screen brightness and mode.
+
+### getValue<sup>(deprecated)</sup>
 
 getValue(options?: GetBrightnessOptions): void
 
@@ -39,10 +48,11 @@ Obtains the current screen brightness.
 
 **Example**
 
+ArkTS example:
   ```js
   brightness.getValue({
       success: (data: BrightnessResponse) => {
-        console.log('success get brightness value:' + data.value);
+        console.info('success get brightness value:' + data.value);
       },
       fail: (data: string, code: number) => {
         console.error('get brightness fail, code: ' + code + ', data: ' + data);
@@ -50,8 +60,56 @@ Obtains the current screen brightness.
   });
   ```
 
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Value" style="width: 240px; height: 50px; margin: 5px;" onclick="getValue"></input>
+    <text class="title">getValue: {{ value }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
 
-## brightness.setValue<sup>(deprecated)</sup>
+export default {
+    data: {
+        value: ''
+    },
+    getValue() {
+        let TAG = 'get_value_success_test';
+        brightness.getValue({
+            success: (brightnessResponse) => {
+                this.value = brightnessResponse.value;
+                console.info(`${TAG} brightnessResponse.value: ${brightnessResponse.value}`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} getValue complete`);
+            }
+        });
+    },
+}
+```
+
+### setValue<sup>(deprecated)</sup>
 
 setValue(options?: SetBrightnessOptions): void
 
@@ -67,11 +125,12 @@ Sets the screen brightness.
 
 **Example**
 
+ArkTS example:
   ```js
   brightness.setValue({
       value: 100,
       success: () => {
-        console.log('handling set brightness success.');
+        console.info('handling set brightness success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set brightness value fail, code:' + code + ', data: ' + data);
@@ -79,8 +138,56 @@ Sets the screen brightness.
   });
   ```
 
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Set Value" style="width: 240px; height: 50px; margin: 5px;" onclick="setValue"></input>
+    <text class="title">setValue: {{ value }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
 
-## brightness.getMode<sup>(deprecated)</sup>
+export default {
+    data: {
+        value: 100
+    },
+    setValue() {
+        let TAG = 'set_value_success_test';
+        brightness.setValue({
+            value: this.value,
+            success: () => {
+                console.info(`${TAG} setValue success!`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} setValue complete`);
+            }
+        });
+    },
+}
+```
+
+### getMode<sup>(deprecated)</sup>
 
 getMode(options?: GetBrightnessModeOptions): void
 
@@ -96,10 +203,11 @@ Obtains the screen brightness adjustment mode.
 
 **Example**
 
+ArkTS example:
   ```js
   brightness.getMode({
       success: (data: BrightnessModeResponse) => {
-        console.log('success get mode:' + data.mode);
+        console.info('success get mode:' + data.mode);
       },
       fail: (data: string, code: number) => {
         console.error('handling get mode fail, code:' + code + ', data: ' + data);
@@ -107,12 +215,60 @@ Obtains the screen brightness adjustment mode.
   });
   ```
 
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Mode" style="width: 240px; height: 50px; margin: 5px;" onclick="getMode"></input>
+    <text class="title">getMode: {{ mode }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
 
-## brightness.setMode<sup>(deprecated)</sup>
+export default {
+    data: {
+        mode: ''
+    },
+    getMode() {
+        let TAG = 'get_mode_success_test';
+        brightness.getMode({
+            success: (brightnessModeResponse) => {
+                this.mode = brightnessModeResponse.mode;
+                console.info(`${TAG} brightnessModeResponse mode: ${brightnessModeResponse.mode}`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} getMode complete`);
+            }
+        });
+    },
+}
+```
+
+### setMode<sup>(deprecated)</sup>
 
 setMode(options?: SetBrightnessModeOptions): void
 
-Sets the screen brightness mode.
+Sets the screen brightness adjustment mode.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -123,11 +279,12 @@ Sets the screen brightness mode.
 
 **Example**
 
+ArkTS example:
   ```js
   brightness.setMode({
       mode: 1,
       success: () => {
-        console.log('handling set mode success.');
+        console.info('handling set mode success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set mode fail, code:' + code + ', data: ' + data);
@@ -135,14 +292,65 @@ Sets the screen brightness mode.
   });
   ```
 
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Set Mode" style="width: 240px; height: 50px; margin: 5px;" onclick="setMode"></input>
+    <text class="title">setMode: {{ mode }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
 
-## brightness.setKeepScreenOn<sup>(deprecated)</sup>
+export default {
+    data: {
+        mode: 1
+    },
+    setMode() {
+        let TAG = 'set_mode_success_test';
+        brightness.setMode({
+            mode: this.mode,
+            success: () => {
+                console.info(`${TAG} setMode success`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} setMode complete`);
+            }
+        });
+    },
+}
+```
+
+### setKeepScreenOn<sup>(deprecated)</sup>
 
 setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
->This API is no longer maintained since API version 7. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9).
-
 Sets whether to always keep the screen on. Call this API in **onShow()**.
+
+> **NOTE**
+>
+> - This API is no longer maintained since API version 7 except for lite wearables. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9) instead.
+> - On Lite Wearables, this API can only prevent the system from turning off the screen due to inactivity timeout (automatic). It cannot prevent screen-off caused by user actions (such as covering the screen) or the end of the keep-screen-on period.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -154,17 +362,68 @@ Sets whether to always keep the screen on. Call this API in **onShow()**.
 
 **Example**
 
+ArkTS example:
   ```js
   brightness.setKeepScreenOn({
       keepScreenOn: true,
       success: () => {
-        console.log('handling set keep screen on success.');
+        console.info('handling set keep screen on success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set keep screen on fail, code:' + code + ', data: ' + data);
       }
   });
   ```
+
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="SetKeepScreenOn" style="width: 240px; height: 50px; margin: 5px;" onclick="setKeepScreenOn"></input>
+    <text class="title">setKeepScreenOn: {{ keepScreenOn }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
+
+export default {
+    data: {
+        keepScreenOn: true
+    },
+    setKeepScreenOn() {
+        let TAG = 'set_keep_screen_on_success_test';
+        brightness.setKeepScreenOn({
+            keepScreenOn: this.keepScreenOn,
+            success: () => {
+                console.info(`${TAG} setKeepScreenOn success`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} setKeepScreenOn complete`);
+            }
+        });
+    },
+}
+```
+
 ## GetBrightnessOptions<sup>(deprecated)</sup>
 
 Options for obtaining the screen brightness.
@@ -186,7 +445,7 @@ Options for setting the screen brightness.
 | Name    | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | value    | number                               | Yes  | Screen brightness. The value is an integer ranging from **1** to **255**.<br>- If the value is less than or equal to **0**, value **1** will be used.<br>- If the value is greater than **255**, value **255** will be used.<br>- If the value contains decimals, the integral part of the value will be used. For example, if value **8.1** is set, value **8** will be used.|
-| success  | () => void                           | No  | Called when API call is successful.                                    |
+| success  | () => void                           | No  | Called when an API call is successful.                                    |
 | fail     | (data: string, code: number) => void | No  | Called when an API call has failed. **data** indicates the error information, and **code** indicates the error code.      |
 | complete | () => void                           | No  | Called when an API call is complete.                                    |
 
@@ -221,7 +480,7 @@ Options for setting the screen brightness mode.
 | Name    | Type                                | Mandatory| Description                                                  |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------ |
 | mode     | number                               | Yes  | The value **0** indicates the manual adjustment mode, and the value **1** indicates the automatic adjustment mode.|
-| success  | () => void                           | No  | Called when API call is successful.                              |
+| success  | () => void                           | No  | Called when an API call is successful.                              |
 | fail     | (data: string, code: number) => void | No  | Called when an API call has failed. **data** indicates the error information, and **code** indicates the error code.|
 | complete | () => void                           | No  | Called when an API call is complete.                              |
 
@@ -244,6 +503,6 @@ Options for setting the screen to be steady on.
 | Name        | Type                                | Mandatory| Description                                                  |
 | ------------ | ------------------------------------ | ---- | ------------------------------------------------------ |
 | keepScreenOn | boolean                              | Yes  | The value **true** means to keep the screen steady on, and the value **false** indicates the opposite.         |
-| success      | () => void                           | No  | Called when API call is successful.                              |
+| success      | () => void                           | No  | Called when an API call is successful.                              |
 | fail         | (data: string, code: number) => void | No  | Called when an API call has failed. **data** indicates the error information, and **code** indicates the error code.|
 | complete     | () => void                           | No  | Called when an API call is complete.                              |

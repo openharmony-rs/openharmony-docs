@@ -1,10 +1,10 @@
 # 属性动画概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 属性接口（以下简称属性）包含尺寸属性、布局属性、位置属性等多种类型，用于控制组件的行为。针对当前界面上的组件，其部分属性（如位置属性）的变化会引起UI的变化。添加动画可以让属性值从起点逐渐变化到终点，从而产生连续的动画效果。为保障动画起点和终点的正确性，属性动画会将当前在标脏队列内的所有节点进行刷新。如果发现当前动画时长较长时，需要确认当前是否有额外的节点刷新。根据变化时是否能够添加动画，可以将属性分为可动画属性和不可动画属性。判断一种属性是否适合作为可动画属性主要有两个标准：
@@ -33,7 +33,7 @@
 
   - 自定义可动画属性：通过自定义属性动画机制抽象出的可动画属性。
 
-- 不可动画属性：zIndex、focusable等。
+- 不可动画属性：[zIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)、[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)等。
 
 
 通常，可动画属性的参数数据类型必须具备连续性，即可以通过插值方法来填补数据点之间的空隙，达到视觉上的连续效果。但属性的参数数据类型是否能够进行插值并非决定属性是否可动画的关键因素。例如，对于设置元素水平方向布局的[direction](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction)属性，其参数数据类型是枚举值。但是，由于位置属性是可动画属性，ArkUI同样支持在其属性值改变引起组件位置变化时添加动画。

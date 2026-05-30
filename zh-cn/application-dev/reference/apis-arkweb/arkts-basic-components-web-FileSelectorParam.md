@@ -4,9 +4,9 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
-Web组件获取文件对象。示例代码参考[onShowFileSelector事件](./arkts-basic-components-web-events.md#onshowfileselector9)。
+Web组件获取文件对象。示例代码参考[onShowFileSelector](./arkts-basic-components-web-events.md#onshowfileselector9)。
 
 > **说明：**
 >
@@ -14,7 +14,7 @@ Web组件获取文件对象。示例代码参考[onShowFileSelector事件](./ark
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor<sup>9+</sup>
 
@@ -78,7 +78,7 @@ isCapture(): boolean
 
 | 类型      | 说明           |
 | ------- | ------------ |
-| boolean | 返回是否调用多媒体能力。<br>true表示返回调用多媒体能力，false表示返回未调用多媒体能力。 |
+| boolean | 返回是否调用多媒体能力。<br>true表示需要调用摄像头或麦克风等多媒体设备来获取文件（如拍照或录音），false表示仅从存储设备中选择已有文件。|
 
 ## getMimeTypes<sup>18+</sup>
 
@@ -93,3 +93,73 @@ getMimeTypes(): Array\<string\>
 | 类型              | 说明        |
 | --------------- | --------- |
 | Array\<string\> | 返回文件MIME类型。 |
+
+## getSuggestedName<sup>23+</sup>
+
+getSuggestedName(): string
+
+获取建议选择的文件名。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`suggestedName`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型     | 说明         |
+| ------ | ---------- |
+| string | 返回建议选择的文件名。 |
+
+## getDefaultPath<sup>23+</sup>
+
+getDefaultPath(): string
+
+获取文件选择器默认起始路径。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`startIn`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型     | 说明         |
+| ------ | ---------- |
+| string | 返回默认起始路径。<br>当前端startIn设置为公共目录`downloads`、`pictures`时，要注意应分别转化为OpenHarmony系统下的`download`和`images`，请参考[获取并使用公共目录](../../file-management/request-dir-permission.md)。 |
+
+## getDescriptions<sup>23+</sup>
+
+getDescriptions(): Array\<string\>
+
+获取允许的各组文件类型的可选描述。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`description`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型              | 说明        |
+| --------------- | --------- |
+| Array\<string\> | 返回文件类型的描述数组。 |
+
+## isAcceptAllOptionExcluded<sup>23+</sup>
+
+isAcceptAllOptionExcluded(): boolean
+
+获取文件选择器是否包含选项（\*\/\*），即所有文件。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`excludeAcceptAllOption`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型      | 说明           |
+| ------- | ------------ |
+| boolean | 返回是否排除“所有文件类型”选项。<br>true表示排除（不包含“所有文件类型”选项）。false表示不排除，开发者需要在文件选择器中添加“所有文件类型”选项。 |
+
+## getAcceptableFileTypes<sup>23+</sup>
+
+getAcceptableFileTypes(): Array\<Array\<AcceptableFileType\>>
+
+获取文件类型信息。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`types`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型              | 说明        |
+| --------------- | --------- |
+| Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | 返回文件类型信息。 |

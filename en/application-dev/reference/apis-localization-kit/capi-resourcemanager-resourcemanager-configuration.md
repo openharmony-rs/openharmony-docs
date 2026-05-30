@@ -1,5 +1,16 @@
 # ResourceManager_Configuration
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @ningningW-->
+
+```c
+typedef struct ResourceManager_Configuration {...} ResourceManager_Configuration
+```
+
 ## Overview
 
 Enumerates device states.

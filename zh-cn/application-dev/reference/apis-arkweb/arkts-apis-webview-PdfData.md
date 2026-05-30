@@ -2,11 +2,11 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhang-yinglie-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
-createPdf函数输出数据流类。
+PdfData类用于封装createPdf函数输出的数据流。
 
 > **说明：**
 >
@@ -14,7 +14,7 @@ createPdf函数输出数据流类。
 >
 > - 本Class首批接口从API version 14开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 >
 > - 在网页生成PDF过程中，返回的是数据流，由PdfData类封装。
 
@@ -22,7 +22,7 @@ createPdf函数输出数据流类。
 
 pdfArrayBuffer(): Uint8Array
 
-获取网页生成的数据流。完整示例代码参考[createPdf](./arkts-apis-webview-WebviewController.md#createpdf14)。
+获取网页生成的PDF数据流。完整示例代码参考[createPdf](./arkts-apis-webview-WebviewController.md#createpdf14)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

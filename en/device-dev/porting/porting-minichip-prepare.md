@@ -14,7 +14,7 @@ Before porting, set up the build environment as instructed in [Setting Up the Wi
 
 ### Procedure
 
-Download and compile the source code by following instructions in [Obtaining Source Code](https://gitee.com/openharmony/docs/blob/master/en/device-dev/get-code/sourcecode-acquire.md).
+Download and compile the source code by following instructions in [Obtaining Source Code](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/get-code/sourcecode-acquire.md).
 
 > ![icon-note.gif](public_sys-resources/icon-note.gif) **NOTE**
 >

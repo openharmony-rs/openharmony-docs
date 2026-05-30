@@ -5,7 +5,11 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+
+```c
+typedef struct {...} ffrt_fiber_t
+```
 
 ## 概述
 
@@ -23,6 +27,6 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| uintptr_t storage[ffrt_fiber_storage_size] | 纤程上下文所占空间。 |
+| uintptr_t storage[ffrt_fiber_storage_size] | 纤程上下文占用空间。 |
 
 

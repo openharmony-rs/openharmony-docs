@@ -2,16 +2,20 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+AuxiliaryPicture类，用于读取或写入图像的辅助图数据以及获取图像的辅助图信息。目前支持的辅助图类型可参考[AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)。
+
+在调用AuxiliaryPicture的方法前，需要通过[image.createAuxiliaryPicture](arkts-apis-image-f.md#imagecreateauxiliarypicture13)或Picture的[getAuxiliaryPicture](./arkts-apis-image-Picture.md#getauxiliarypicture13)创建一个AuxiliaryPicture实例。
+
+由于图片占用内存较大，所以当AuxiliaryPicture对象使用完成后，应主动调用[release](#release13)方法及时释放对象。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该对象。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 13开始支持。
-
-辅助图一般用于辅助主图进行特殊信息的展示，使图像包含更丰富的信息。辅助图图像类，用于读取或写入图像的辅助图数据以及获取图像的辅助图信息。在调用AuxiliaryPicture的方法前，需要先通过[createAuxiliaryPicture](arkts-apis-image-f.md#imagecreateauxiliarypicture13)创建一个AuxiliaryPicture实例。
 
 ## 导入模块
 
@@ -23,7 +27,7 @@ import { image } from '@kit.ImageKit';
 
 writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 
-读取ArrayBuffer中的辅助图片数据，并将数据写入AuxiliaryPicture对象，使用Promise形式返回。
+读取ArrayBuffer中的辅助图片数据，并将数据写入AuxiliaryPicture对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -37,11 +41,11 @@ writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 
 | 类型           | 说明                                   |
 | -------------- | -------------------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -63,7 +67,7 @@ async function WritePixelsFromBuffer(context: Context) {
   if(auxPictureObj != null) {
     let auxBuffer: ArrayBuffer = await auxPictureObj.readPixelsToBuffer();
     await auxPictureObj.writePixelsFromBuffer(auxBuffer);
-    console.info('Write pixels from buffer success.');
+    console.info('Succeeded in writing pixels from buffer.');
   } else {
     console.error('AuxPictureObj is null.');
   }
@@ -74,7 +78,7 @@ async function WritePixelsFromBuffer(context: Context) {
 
 readPixelsToBuffer(): Promise\<ArrayBuffer>
 
-读取图像像素映射数据并将数据写入ArrayBuffer，使用Promise形式返回。
+读取图像像素映射数据并将数据写入ArrayBuffer。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -101,9 +105,9 @@ async function ReadPixelsToBuffer(context: Context) {
   let auxPictureObj: image.AuxiliaryPicture | null = pictureObj.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
   if(auxPictureObj != null) {
     await auxPictureObj.readPixelsToBuffer().then((pixelsBuffer: ArrayBuffer) => {
-      console.info('Read pixels to buffer success.' );
+      console.info('Succeeded in reading pixels to buffer success.' );
     }).catch((error: BusinessError) => {
-      console.error(`Read pixels to buffer failed error.code: ${error.code}, error.message: ${error.message}`);
+      console.error(`Failed to read pixels to buffer. error.code: ${error.code}, error.message: ${error.message}`);
     });
   } else {
     console.error('AuxPictureObj is null.');
@@ -131,9 +135,9 @@ getType(): AuxiliaryPictureType
 async function GetAuxiliaryPictureType(auxPictureObj : image.AuxiliaryPicture) {
   if (auxPictureObj != null) {
     let type: image.AuxiliaryPictureType = auxPictureObj.getType();
-    console.info('Success get auxiliary picture type ' +  JSON.stringify(type));
+    console.info('Succeeded in getting auxiliary picture type ' +  JSON.stringify(type));
   } else {
-    console.error('Failed get auxiliary picture type ');
+    console.error('Failed to get auxiliary picture type.');
   }
 }
 ```
@@ -142,7 +146,7 @@ async function GetAuxiliaryPictureType(auxPictureObj : image.AuxiliaryPicture) {
 
 setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
-设置辅助图元数据。
+设置辅助图元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -157,11 +161,11 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 | 类型           | 说明                                   |
 | -------------- | -------------------------------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -183,18 +187,18 @@ async function SetAuxPictureObjMetadata(exifContext: Context, auxPictureObj: ima
   let exifCommodityPixelMap: image.PixelMap = await exifImageSource.createPixelMap();
   let exifPictureObj: image.Picture = image.createPicture(exifCommodityPixelMap);
   if (exifPictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture.');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture.');
   }
 
   if (auxPictureObj != null) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let exifMetaData: image.Metadata = await exifPictureObj.getMetadata(metadataType);
     auxPictureObj.setMetadata(metadataType, exifMetaData).then(() => {
-      console.info('Set metadata success');
+      console.info('Succeeded in setting metadata.');
     }).catch((error: BusinessError) => {
-      console.error(`Set metadata failed.error.code: ${error.code}, error.message: ${error.message}`);
+      console.error(`Failed to set metadata. error.code: ${error.code}, error.message: ${error.message}`);
     });
   } else {
     console.error('AuxPictureObjMetaData is null');
@@ -206,7 +210,7 @@ async function SetAuxPictureObjMetadata(exifContext: Context, auxPictureObj: ima
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-从辅助图中获取元数据。
+从辅助图中获取元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -220,11 +224,11 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
 | 类型                             | 说明             |
 | -------------------------------- | ---------------- |
-| Promise<[Metadata](arkts-apis-image-Metadata.md)> | 返回元数据对象。 |
+| Promise<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象，返回元数据的Promise对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -239,9 +243,9 @@ async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let auxPictureObjMetaData: image.Metadata | null = await auxPictureObj.getMetadata(metadataType);
     if (auxPictureObjMetaData != null) {
-      console.info('Get AuxPictureObj Metadata success' );
+      console.info('Succeeded in getting AuxPictureObj Metadata.' );
     } else {
-      console.error('Get AuxPictureObj Metadata failed');
+      console.error('Failed to get AuxPictureObj Metadata.');
     }
   } else {
     console.error('Get AuxPictureObj is null.');
@@ -249,7 +253,7 @@ async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
 }
 ```
 
-## getAuxiliaryPictureinfo<sup>13+</sup>
+## getAuxiliaryPictureInfo<sup>13+</sup>
 
 getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 
@@ -261,7 +265,7 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 
 | 类型                                            | 说明                              |
 | ----------------------------------------------- | --------------------------------- |
-| [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) | Promise对象，返回辅助图图像信息。 |
+| [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) | 返回辅助图图像信息。 |
 
 **示例：**
 
@@ -274,12 +278,12 @@ async function GetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
       ' rowStride: ' +  auxinfo.rowStride +  ' pixelFormat: ' + auxinfo.pixelFormat +
       ' colorSpace: ' +  auxinfo.colorSpace);
   } else {
-    console.error('Get auxiliary picture information failed');
+    console.error('Failed to get auxiliary picture information.');
   }
 }
 ```
 
-## setAuxiliaryPictureinfo<sup>13+</sup>
+## setAuxiliaryPictureInfo<sup>13+</sup>
 
 setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 
@@ -295,7 +299,7 @@ setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | :----------------------------------------------------------- |
@@ -326,6 +330,10 @@ async function SetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
 release():void
 
 释放辅助图对象，无返回值。
+
+由于图片占用内存较大，所以当AuxiliaryPicture对象使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

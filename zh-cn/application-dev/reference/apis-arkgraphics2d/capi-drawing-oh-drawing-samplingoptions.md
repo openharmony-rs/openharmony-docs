@@ -1,4 +1,14 @@
 # OH_Drawing_SamplingOptions
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_Drawing_SamplingOptions OH_Drawing_SamplingOptions
+```
 
 ## 概述
 

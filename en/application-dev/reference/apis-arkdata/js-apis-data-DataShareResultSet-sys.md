@@ -15,8 +15,6 @@ The **DataShareResultSet** module provides APIs for accessing the result set obt
 > - The APIs provided by this module are system APIs.
 >
 > - The APIs of this module can be used only in the stage model.
->
-> - The system allows a maximum of 32 data share result sets. Release the data share result sets that are no longer used in a timely manner.
 
 ## Modules to Import
 
@@ -36,7 +34,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
-    let uri = ("datashare:///com.samples.datasharetest.DataShare");
+    let uri = "datashare:///com.samples.datasharetest.DataShare";
     let context = this.context;
     dataShare.createDataShareHelper(context, uri, (err:BusinessError, data:dataShare.DataShareHelper) => {
       if (err != undefined) {
@@ -71,12 +69,12 @@ The column or key names are returned as a string array, in which the strings are
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
-| Name       | Type     | Mandatory| Description                    |
-| ----------- | ------------- | ---- | ------------------------ |
-| columnNames | Array&lt;string&gt; | Yes  | Names of all columns in the result set.  |
-| columnCount | number        | Yes  | Number of columns in the result set.        |
-| rowCount    | number        | Yes  | Number of rows in the result set.        |
-| isClosed    | boolean       | Yes  | Whether the result set is closed. The value **true** means the result set is closed; the value **false** means the opposite.|
+| Name       | Type     | Read-Only| Optional| Description                    |
+| ----------- | ------------- | ---- | ---- | ------------------------ |
+| columnNames | Array&lt;string&gt; | No| No  | Names of all columns in the result set.  |
+| columnCount | number        | No| No  | Number of columns in the result set.        |
+| rowCount    | number        | No| No  | Number of rows in the result set.        |
+| isClosed    | boolean       | No| No  | Whether the result set is closed. The value **true** means the result set is closed; the value **false** means the opposite.|
 
 ### goToFirstRow
 
@@ -183,7 +181,7 @@ Moves based on the specified offset.
 
 | **Name**| **Type**| **Mandatory**| Description                                                        |
 | ---------- | -------- | -------- | ------------------------------------------------------------ |
-| offset     | number   | Yes      | Offset relative to the current position. A negative value means to move backward, and a positive value means to move forward.|
+| offset     | number   | Yes      | Offset relative to the current position. A negative value means to move forward, and a positive value means to move backward.|
 
 **Return value**
 

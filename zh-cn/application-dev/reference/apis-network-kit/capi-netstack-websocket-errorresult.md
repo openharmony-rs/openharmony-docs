@@ -1,5 +1,16 @@
 # WebSocket_ErrorResult
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+struct WebSocket_ErrorResult {...}
+```
+
 ## 概述
 
 websocket客户端来自服务端连接错误的参数。

@@ -1,5 +1,12 @@
 # @ohos.settings (Data Item Settings) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Applications-->
+<!--Owner: @YingCong-->
+<!--Designer: @Kun_Wu-->
+<!--Tester: @dyx118186878-->
+<!--Adviser: @fang-jinxu-->
+
 The **settings** module provides APIs for setting data items.
 
 > **NOTE**
@@ -10,20 +17,20 @@ The **settings** module provides APIs for setting data items.
 ## Modules to Import
 
 ```js
-import settings from '@ohos.settings';
+import { settings } from '@kit.BasicServicesKit';
 ```
 
 ## domainName
 
 Provides the domain name.
 
-### Attributes
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name               | Type  | Readable| Writable| Description                                                        |
-| ------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| USER_SECURITY<sup>11+</sup>      | string | Yes  | Yes  | User security attribute domain.                                         |
+| Name               | Type  | Value     | Description                                                        |
+| ------------------- | ------ |--------| ------------------------------------------------------------ |
+| USER_SECURITY<sup>11+</sup>      | string | secure | User security attribute domain.                                         |
 
 ## settings.setValue<sup>(deprecated)</sup>
 

@@ -1,4 +1,14 @@
 # OH_Drawing_TextBox
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_Drawing_TextBox OH_Drawing_TextBox
+```
 
 ## 概述
 

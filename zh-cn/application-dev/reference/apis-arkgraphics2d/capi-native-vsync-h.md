@@ -1,4 +1,10 @@
 # native_vsync.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @opasser-->
+<!--Designer: @opasser-->
+<!--Tester: @zhouhuan31-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -9,6 +15,8 @@
 **引用文件：** <native_vsync/native_vsync.h>
 
 **库：** libnative_vsync.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **起始版本：** 9
 
@@ -41,7 +49,7 @@
 
 ### OH_NativeVSync_FrameCallback()
 
-```
+```c
 typedef void (*OH_NativeVSync_FrameCallback)(long long timestamp, void *data)
 ```
 
@@ -63,7 +71,7 @@ VSync回调函数类型。
 
 ### OH_NativeVSync_Create()
 
-```
+```c
 OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)
 ```
 
@@ -81,7 +89,7 @@ OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)
 | 参数项 | 描述 |
 | -- | -- |
 | const char* name | 表示一个名字，与创建的OH_NativeVSync实例关联。 |
-| unsigned int length | ame的长度（字符数）。 |
+| unsigned int length | name的长度（字符数）。 |
 
 **返回：**
 
@@ -91,7 +99,7 @@ OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)
 
 ### OH_NativeVSync_Create_ForAssociatedWindow()
 
-```
+```c
 OH_NativeVSync* OH_NativeVSync_Create_ForAssociatedWindow(uint64_t windowID, const char* name, unsigned int length)
 ```
 
@@ -110,7 +118,7 @@ OH_NativeVSync* OH_NativeVSync_Create_ForAssociatedWindow(uint64_t windowID, con
 | -- | -- |
 | uint64_t windowID | 表示窗口ID，窗口子进程索引标识符，可以通过[OH_NativeWindow_GetSurfaceId](capi-external-window-h.md#oh_nativewindow_getsurfaceid)接口获取。 |
 | const char* name | 表示一个名称，与创建的OH_NativeVSync实例关联。 |
-| unsigned int length | ame的长度（字符数）。 |
+| unsigned int length | name的长度（字符数）。 |
 
 **返回：**
 
@@ -120,7 +128,7 @@ OH_NativeVSync* OH_NativeVSync_Create_ForAssociatedWindow(uint64_t windowID, con
 
 ### OH_NativeVSync_Destroy()
 
-```
+```c
 void OH_NativeVSync_Destroy(OH_NativeVSync* nativeVsync)
 ```
 
@@ -141,7 +149,7 @@ void OH_NativeVSync_Destroy(OH_NativeVSync* nativeVsync)
 
 ### OH_NativeVSync_RequestFrame()
 
-```
+```c
 int OH_NativeVSync_RequestFrame(OH_NativeVSync* nativeVsync, OH_NativeVSync_FrameCallback callback, void* data)
 ```
 
@@ -170,7 +178,7 @@ int OH_NativeVSync_RequestFrame(OH_NativeVSync* nativeVsync, OH_NativeVSync_Fram
 
 ### OH_NativeVSync_RequestFrameWithMultiCallback()
 
-```
+```c
 int OH_NativeVSync_RequestFrameWithMultiCallback(OH_NativeVSync* nativeVsync, OH_NativeVSync_FrameCallback callback, void* data)
 ```
 
@@ -199,7 +207,7 @@ int OH_NativeVSync_RequestFrameWithMultiCallback(OH_NativeVSync* nativeVsync, OH
 
 ### OH_NativeVSync_GetPeriod()
 
-```
+```c
 int OH_NativeVSync_GetPeriod(OH_NativeVSync* nativeVsync, long long* period)
 ```
 
@@ -227,7 +235,7 @@ int OH_NativeVSync_GetPeriod(OH_NativeVSync* nativeVsync, long long* period)
 
 ### OH_NativeVSync_DVSyncSwitch()
 
-```
+```c
 int OH_NativeVSync_DVSyncSwitch(OH_NativeVSync* nativeVsync, bool enable)
 ```
 
@@ -255,7 +263,7 @@ int OH_NativeVSync_DVSyncSwitch(OH_NativeVSync* nativeVsync, bool enable)
 
 ### OH_NativeVSync_SetExpectedFrameRateRange()
 
-```
+```c
 int OH_NativeVSync_SetExpectedFrameRateRange(OH_NativeVSync* nativeVsync, OH_NativeVSync_ExpectedRateRange* range)
 ```
 

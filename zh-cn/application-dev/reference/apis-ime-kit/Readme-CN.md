@@ -1,9 +1,9 @@
 # IME Kit（输入法开发服务）<!--ime-api-->
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 - ArkTS API<!--ime-arkts-->
@@ -11,15 +11,19 @@
   - [@ohos.InputMethodExtensionContext (InputMethodExtensionContext)](js-apis-inputmethod-extension-context.md)
   - [@ohos.inputMethod.Panel (输入法面板)](js-apis-inputmethod-panel.md)
   - [@ohos.InputMethodSubtype (输入法子类型)](js-apis-inputmethod-subtype.md)
+  <!--Del-->
   - [@ohos.inputMethod (输入法框架)(系统接口)](js-apis-inputmethod-sys.md)
+  - [@ohos.inputMethodEngine (输入法服务)(系统接口)](js-apis-inputmethodengine-sys.md)
+  <!--DelEnd-->
   - [@ohos.inputMethod (输入法框架)](js-apis-inputmethod.md)
   - [@ohos.inputMethodEngine (输入法服务)](js-apis-inputmethodengine.md)
-  - [@ohos.inputMethodEngine (输入法服务)(系统接口)](js-apis-inputmethodengine-sys.md)
   - [@ohos.inputMethodList (输入法切换列表控件)](js-apis-inputmethodlist.md)
+  - [@ohos.inputMethod.ExtraConfig (输入法扩展信息)](js-apis-inputmethod-extraconfig.md)
+  - [@ohos.inputMethodSystemPanelManager (输入法系统面板管理器)(系统接口)](js-apis-inputmethod-system-panel-manager-sys.md)
 - C API<!--ime-c-->
-  - 模块
+  - 模块<!--ime-module-->
     - [InputMethod](capi-inputmethod.md)
-  - 头文件
+  - 头文件<!--ime-headerfile-->
     - [inputmethod_attach_options_capi.h](capi-inputmethod-attach-options-capi-h.md)
     - [inputmethod_controller_capi.h](capi-inputmethod-controller-capi-h.md)
     - [inputmethod_cursor_info_capi.h](capi-inputmethod-cursor-info-capi-h.md)
@@ -29,7 +33,7 @@
     - [inputmethod_text_config_capi.h](capi-inputmethod-text-config-capi-h.md)
     - [inputmethod_text_editor_proxy_capi.h](capi-inputmethod-text-editor-proxy-capi-h.md)
     - [inputmethod_types_capi.h](capi-inputmethod-types-capi-h.md)
-  - 结构体
+  - 结构体<!--ime-struct-->
     - [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)
     - [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)
     - [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md)

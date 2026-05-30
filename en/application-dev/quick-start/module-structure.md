@@ -10,6 +10,7 @@ The **module** tag contains the HAP configuration.
 
  **Table 1** Internal structure of the module tag
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | mainAbility | Ability whose icon is displayed in the Service Center. When the resident process is started, the **mainAbility** is started.| String| Yes (initial value: left empty)|
@@ -100,9 +101,10 @@ Example of the **module** tag structure:
 
 **Table 2** Internal structure of the distro attribute
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
-| moduleName | Name of the HAP file. The maximum length is 31 bytes. This name can be changed during application update. However, if it is changed, you need to adapt the application to the migration of module-related directories. You can use the [file operation API](../reference/apis-core-file-kit/js-apis-file-fs.md) for this purpose.| String| No|
+| moduleName | Name of the HAP file. The maximum length is 31 bytes. This name can be changed during application updates. However, if it is changed, directories related to the module must be migrated. For details, see [@ohos.file.fs (File Management)](../reference/apis-core-file-kit/js-apis-file-fs.md).| String| No|
 | moduleType | Type of the HAP file, which can **entry**, **feature**, or **har**.| String| No|
 | installationFree | Whether the HAP file supports the installation-free feature. **true**: The HAP file supports the installation-free feature and meets installation-free constraints. **false**: The HAP file does not support the installation-free feature. If this tag is set to **true** for an entry-type HAP file (**entry.hap**), it must also be set to **true** for feature-type HAP files (**feature.hap**) of the same application. If this tag is set to **false** for an entry-type HAP file, it can be set to **true** or **false** for feature-type modules of the same application based on service requirements.| Boolean| No|
 | deliveryWithInstall | Whether the HAP file will be installed when the user installs the application. **true**: The HAP file will be installed when the user installs the application. **false**: The HAP file will not be installed when the user installs the application.| Boolean| No|
@@ -167,7 +169,6 @@ Example of the metadata attribute:
   "parameters" : [{
     "name" : "a test for metadata parameter",
     "type" : "Float",
-    // "$string:parameters_description" is a file resource index.
     "description" : "$string:parameters_description"
   }],
   "results" : [{
@@ -193,31 +194,33 @@ Example of the metadata attribute:
 | Tablet| tablet | - |
 | Smart TV| tv | - |
 | Smart watch| wearable | Watch that provides call features.|
-| Sports watch| litewearable | - |
-| Head unit| car | - |
-| Default device| default | Device that provides full access to system capabilities.|
+| Sports watch| liteWearable | - |
+| Telematics device| car | - |
+| Default device| default | Default device type. For details, see [Standard-System Development Boards](../../device-dev/dev-board-on-the-master.md#standard-system-development-boards).|
+| 2-in-1 device| 2-in-1 device| PC, mainly used for multi-window and multi-task interactions, and keyboard and mouse operations. It fully showcases the device productivity.|
 <!--RP2End-->
 
 ## Internal Structure of the abilities Attribute
 
 **Table 8** Internal structure of the abilities attribute
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | process | Name of the process running the application or ability. If the **process** attribute is configured in the **deviceConfig** tag, all abilities of the application run in this process. You can set the **process** attribute for a specific ability in the **abilities** attribute, so that the ability can run in the particular process. If this attribute is set to the name of the process running other applications, all these applications can run in the same process, provided they have the same unified user ID and the same signature. The value can contain a maximum of 31 bytes.| String| Yes (initial value: left empty)|
-| name | Ability name. The value can be a reverse domain name, in the format of "*bundleName*.*className*", for example, **"com.example.myapplication.EntryAbility"**. Alternatively, the value can start with a period (.) followed by the class name, for example, **".EntryAbility"**.<br>The ability name must be unique in an application. Note: If you use DevEco Studio to create the project, an ability named **EntryAbility** will be created by default, and its configuration will be saved to the **config.json** file. If you use other tools in DevEco Studio, the value of this attribute can be customized. The value can contain a maximum of 127 bytes.| String| No|
+| name | Ability name. The value can be a reverse domain name, in the format of *bundleName*.*className*, for example, **com.example.myapplication.EntryAbility**. Alternatively, the value can start with a period (.) followed by the class name, for example, **.EntryAbility**.<br>The ability name must be unique in an application. Note: If you use DevEco Studio to create the project, an ability named **EntryAbility** will be created by default, and its configuration will be saved to the **config.json** file. If you use other tools in DevEco Studio, the value of this attribute can be customized. The value can contain a maximum of 127 bytes.| String| No|
 | description | Description of the ability. The value can be a string or a resource index to descriptions in multiple languages. The value can contain a maximum of 255 bytes.| String| Yes (initial value: left empty)|
 | icon | Index to the ability icon file. Example value: **$media:ability_icon**. In the **skills** attribute of the ability, if the **actions** value contains **action.system.home** and the **entities** value contains **entity.system.home**, the icon of the ability is also used as the icon of the application. If multiple abilities address this condition, the icon of the first candidate ability is used as the application icon.<br>Note: The **icon** and **label** values of an application are visible to users. Ensure that at least one of them is different from any existing icons or labels.| String| Yes (initial value: left empty)|
 | label | Ability name displayed to users. The value can be a name string or a resource index to names in multiple languages, for example, **$string:ability_label**. In the **skills** attribute of the ability, if the **actions** value contains **action.system.home** and the **entities** value contains **entity.system.home**, the label of the ability is also used as the label of the application. If multiple abilities address this condition, the label of the first candidate ability is used as the application label.<br>Note: The **icon** and **label** values of an application are visible to users. Ensure that at least one of them is different from any existing icons or labels. The value can be a reference to a string defined in a resource file or a string enclosed in brackets ({}). The value can contain a maximum of 255 bytes.| String| Yes (initial value: left empty)|
 | uri | Uniform Resource Identifier (URI) of the ability. The value can contain a maximum of 255 bytes.| String| Yes (No for abilities using the Data template)|
-| launchType | Launch type of the ability. The value can be **multiton** or **singleton**.<br>**standard**: Multiple **Ability** instances can be created during startup. Most abilities can use this type.<br>**singleton**: Only a single **Ability** instance can be created across all task stacks during startup. For example, a globally unique incoming call screen uses the singleton launch type. This attribute applies only to the default, tablet, smart TV, a telematics device, and wearable device types.| String| Yes (initial value: **"singleton"**)|
+| launchType | Launch type of the ability. The value can be **multiton** or **singleton**.<br>**multiton**: Multiple **Ability** instances can be created during startup. Most abilities can use this type.<br>**singleton**: Only a single **Ability** instance can be created across all task stacks during startup. For example, a globally unique incoming call screen uses the singleton launch type. This attribute applies only to the default, tablet, smart TV, a telematics device, and wearable device types.| String| Yes (initial value: **singleton**)|
 | visible | Whether the ability can be called by other applications.<br>**true**: The ability can be called by other applications.<br>**false**: The ability cannot be called by other applications, not even by aa commands.| Boolean| Yes (initial value: **false**)|
 | permissions | Permissions required for abilities of another application to call the current ability. The value is an array of permission names predefined by the system, generally in the reverse domain name notation. It contains a maximum of 255 bytes.| String array| Yes (initial value: left empty)|
 |skills | Types of the **want** that can be accepted by the ability.| Object array| Yes (initial value: left empty)|
 | deviceCapability | Device capabilities required to run the ability. The value is an array of up to 512 elements, each of which contains a maximum of 64 bytes.| String array| Yes (initial value: left empty)|
 | metaData | Metadata.| Object| Yes (initial value: left empty)|
 | type | Ability type. The options are as follows:<br>**page**: FA developed using the Page template to provide the capability of interacting with users.<br>**service**: PA developed using the Service template to provide the capability of running tasks in the background.<br>**data**: PA developed using the Data template to provide unified data access for external systems.<br>**CA**: ability that can be started by other applications as a window.| String| No|
-| orientation | Display orientations of the ability. This attribute applies only to the ability using the Page template. The options are as follows:<br>**unspecified**: indicates that the system automatically determines the display orientation of the ability.<br>**landscape**: indicates the landscape orientation.<br>**portrait**: indicates the portrait orientation.<br>**followRecent**: indicates that the orientation follows the most recent application in the stack.| String| Yes (initial value: **"unspecified"**)|
+| orientation | Display orientations of the ability. This attribute applies only to the ability using the Page template. The options are as follows:<br>**unspecified**: indicates that the system automatically determines the display orientation of the ability.<br>**landscape**: indicates the landscape orientation.<br>**portrait**: indicates the portrait orientation.<br>**followRecent**: indicates that the orientation follows the most recent application in the stack.| String| Yes (initial value: **unspecified**)|
 | backgroundModes | Background service type of the ability. You can assign multiple background service types to a specific ability. This field applies only to the ability using the Service template. The options are as follows:<br>**dataTransfer**: data transfer through the network or peer device, such as download, backup, and share<br>**audioPlayback**: audio playback<br>**audioRecording**: audio recording<br>**pictureInPicture**: video playback in picture-in-picture (PiP) mode or in a small window<br>**voip**: voice and video calls over VoIP<br>**location**: location and navigation<br>**bluetoothInteraction**: Bluetooth scanning, connection, and transmission<br>**wifiInteraction**: Wi-Fi scanning, connection, and transmission<br>**screenFetch**: screen recording and screenshot<br>**multiDeviceConnection**: multi-device connection| String array| Yes (initial value: left empty)|
 | grantPermission | Whether permissions can be granted for any data in the ability.<br>- **true**: The permission can be granted for any data in the ability.<br>- **false**: The permission cannot be granted for any data in the ability.| Boolean| Yes (initial value: left empty)|
 | readPermission | Permission required for reading data in the ability. This attribute applies only to the ability using the Data template. The value is a string with a maximum of 255 bytes. This attribute applies only to the default, tablet, smart TV, a telematics device, and wearable device types.| String| Yes (initial value: left empty)|
@@ -227,7 +230,7 @@ Example of the metadata attribute:
 | targetAbility | Target ability that this ability alias points to. This attribute applies only to the ability using the Page template. If the **targetAbility** attribute is set, only **name**, **icon**, **label**, **visible**, **permissions**, and **skills** take effect in the current ability (ability alias). Other attributes use the values of the **targetAbility** attribute. The target ability must belong to the same application as the alias and must be declared in **config.json** ahead of the alias.| String| Yes (initial value: left empty, indicating that the current ability is not an alias)|
 | formsEnabled | Whether the ability can provide widgets. This attribute applies only to the ability using the Page template.<br>**true**: This ability can provide widgets.<br>**false**: This ability cannot provide widgets.| Boolean| Yes (initial value: **false**)|
 | forms | Information about the widgets used by the ability. This attribute is valid only when **formsEnabled** is set to **true**.| Object array| Yes (initial value: left empty)|
-| srcLanguage | Programming language of the ability, which you can specify when creating the project. The options are **"js"**, **"ets"**, and **"java"**.| String| Yes (initial value: **"js"**)|
+| srcLanguage | Programming language of the ability, which you can specify when creating the project. The options are **js**, **ets**, and **java**.| String| Yes (initial value: **js**)|
 | srcPath | JS code path corresponding to the ability. The value can contain a maximum of 127 bytes.| String| No|
 | uriPermission | Application data that the ability can access. This attribute consists of the **mode** and **path** sub-attributes. This attribute is valid only for the capability of the type provider.| Object| Yes (initial value: left empty)|
 | startWindowIcon | Index to the icon file of the ability startup page. This attribute applies only to the ability using the Page template. Example: **$media:icon**.| String| Yes (initial value: left empty)|
@@ -240,12 +243,9 @@ Application icons cannot be hidden from the home screen:
 The system strictly controls applications without icons to prevent malicious applications from deliberately configuring no icon to block uninstall attempts.
 
 Setting the application icon to be displayed on the home screen:<br>Set **icon**, **label**, and **skills** under **abilities** in the **config.json** file. Make sure the **skills** configuration contains **action.system.home** and **entity.system.home**.
-```
+```json
 {
   "module":{
-
-    // ...
-
     "abilities": [{
       "icon": "$media:icon",
       "label": "Login",
@@ -255,9 +255,6 @@ Setting the application icon to be displayed on the home screen:<br>Set **icon**
         "uris": []
       }]
     }],
-
-    // ...
-
   }
 }
 ```
@@ -305,9 +302,7 @@ Example of the **abilities** attribute structure:
   {
     "name": ".EntryAbility",
     "description": "test main ability",
-    // $media:ic_launcher is a media resource.
     "icon": "$media:ic_launcher",
-    // $string:example is a string resource.
     "label": "$string:example",
     "launchType": "multiton",
     "orientation": "unspecified",
@@ -370,11 +365,12 @@ Example of the **abilities** attribute structure:
 
 **Table 10** Internal structure of the skills attribute
 
+<!--Table: 10%; 60%; 15%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | actions | Actions of the **want** that can be accepted by the ability. Generally, the value is an **action** value predefined in the system.| String array| Yes (initial value: left empty)|
 | entities | Entities of the **want** that can be accepted by the ability, such as video and home applications.| String array| Yes (initial value: left empty)|
-| uris | Data specifications to be added to the want filter. The specification is a data type (using the **mimeType** attribute), a URI, or both a data type and a URI.<br>The URI is specified by separate attributes of each part: &lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;[&lt;path&gt;\|&lt;pathStartWith&gt;\|&lt;pathRegex&gt;].  <br>The field **scheme** is mandatory when the specification is of the URI type and is optional when the specification is a data type.| Object array| Yes (initial value: left empty)|
+| uris | Data specifications to be added to the want filter. The specification is a data type (using the **mimeType** attribute), a URI, or both a data type and a URI.<br>The URI is specified by separate attributes for each of its components: **&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;[&lt;path&gt;\|&lt;pathStartWith&gt;\|&lt;pathRegex&gt;]**.  <br>The field **scheme** is mandatory when the specification is of the URI type and is optional when the specification is a data type.| Object array| Yes (initial value: left empty)|
 
 ## Internal Structure of the uris Attribute
 
@@ -388,7 +384,7 @@ Example of the **abilities** attribute structure:
 | pathStartWith | **pathStartWith** value of the URI.| String| Yes (initial value: left empty)|
 | path | **path** value of the URI.| String| Yes (initial value: left empty)|
 | pathRegx | **pathRegx** value of the URI.| String| Yes (initial value: left empty)|
-| type | **type** value of the URI. The value is a MIME type. Typical values include **"audio/aac"** and **"text/css"**.<br>The wildcard formats of ***/*** or **mainType/*** is supported but **mainType/subType.*** is not. The **mainType** is a standard media type.| String| Yes (initial value: left empty)|
+| type | **type** value of the URI. The value is a MIME type. Typical values include **audio/aac** and **text/css**.<br>The wildcard formats of ***/*** or **mainType/*** is supported but **mainType/subType.*** is not. The **mainType** is a standard media type.| String| Yes (initial value: left empty)|
 
 
 Example of the **skills** attribute structure:
@@ -438,12 +434,13 @@ Example of the **skills** attribute structure:
 
 **Table 14** Internal structure of the js attribute
 
+<!--Table: 10%; 60%; 15%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | name | Name of the JavaScript component.| String| No|
 | pages | Route information of pages in the JavaScript component, in the format of "Page path + Page name". The page path is based on the value of **srcPath** of the current ability. For example, if the value of **srcPath** is **EntryAbility**, the page path starts from the lower level of **EntryAbility**. The value is an array, the first element of which represents the home page of the JavaScript FA.| String array| No|
 | window | Window-related configurations.| Object| Yes (initial value: see Table 15)|
-| type | Type of the JS component. The options are as follows:<br>**normal**: indicates an application instance.<br>**form**: indicates a widget instance.| String| Yes (initial value: **"normal"**)|
+| type | Type of the JS component. The options are as follows:<br>**normal**: indicates an application instance.<br>**form**: indicates a widget instance.| String| Yes (initial value: **normal**)|
 |mode | Development mode of the JS component.| Object| Yes (initial value: left empty)|
 
 ## Internal Structure of the window Attribute
@@ -452,7 +449,7 @@ Example of the **skills** attribute structure:
 
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
-| designWidth | Baseline width for page design. The size of an element is scaled by the actual device width.| Number| Yes (initial value: 720px)|
+| designWidth | Baseline width for page design. The size of an element is scaled by the actual device width.| Number| Yes (initial value: **720 px**)|
 | autoDesignWidth | Whether to automatically calculate the baseline width for page design. If it is set to **true**, the **designWidth** attribute becomes invalid. The baseline width is calculated based on the device width and screen density. If it is set to **false**, the design reference width is **designWidth**.| Boolean| Yes (initial value: **false**)|
 
 ## Internal Structure of the mode Attribute
@@ -462,7 +459,7 @@ Example of the **skills** attribute structure:
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | type | Type of the JS component.| String. The value can be **pageAbility** or **form**.| Yes (initial value: **pageAbility**)|
-| syntax | Syntax type of the JS component.| String.The value can be **hml** or **ets**.| Yes (initial value: **hml**)|
+| syntax | Syntax type of the JS component.| String. The value can be **hml** or **ets**.| Yes (initial value: **hml**)|
 
 
 Example of the **js** attribute structure:
@@ -515,7 +512,6 @@ Example of the **shortcuts** attribute structure:
 "shortcuts": [
   {
     "shortcutId": "id",
-    // $string:shortcut is a string resource index.
     "label": "$string:shortcut",
     "intents": [
       {
@@ -531,6 +527,7 @@ Example of the **shortcuts** attribute structure:
 
 **Table 19** Internal structure of the forms attribute
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | name | Class name of the widget. The value is a string with a maximum of 127 bytes.| String| No|
@@ -541,7 +538,7 @@ Example of the **shortcuts** attribute structure:
 | supportDimensions | Grid styles supported by the widget. Available values are as follows:<br>**1 * 2**: indicates a grid with one row and two columns.<br>**2 * 1**: indicates a grid with two rows and one column.<br>**2 * 2**: indicates a grid with two rows and two columns.<br>**2 * 4**: indicates a grid with two rows and four columns.<br>**4 * 4**: indicates a grid with four rows and four columns.| String array| No|
 | defaultDimension | Default grid style of the widget. The value must be from the **supportDimensions** array of the widget.| String| No|
 | updateEnabled | Whether the widget can be updated periodically. Available values are as follows:<br>**true**: The widget can be updated at a specified interval (**updateDuration**) or at the scheduled time (**scheduledUpdateTime**). **updateDuration** takes precedence over **scheduledUpdateTime**.<br>**false**: The widget cannot be updated periodically.| Boolean| No|
-| scheduledUpdateTime | Scheduled time to update the widget. The value is in 24-hour format and accurate to minute.| String| Yes (initial value: **"0:0"**)|
+| scheduledUpdateTime | Scheduled time to update the widget. The value is in 24-hour format and accurate to minute.| String| Yes (initial value: **0:0**)|
 | updateDuration | Interval to update the widget. The value is a natural number, in the unit of 30 minutes.<br>If the value is **0**, this attribute does not take effect.<br>If the value is a positive integer *N*, the interval is calculated by multiplying *N* and 30 minutes.| Number| Yes (initial value: **0**)|
 | formConfigAbility | Name of the ability used to adjust the widget.| String| Yes (initial value: left empty)|
 | jsComponentName | Component name of the widget. The value is a string with a maximum of 127 bytes. This attribute is required only by JavaScript-programmed widgets.| String| Yes (initial value: left empty)|
@@ -564,7 +561,7 @@ Example of the **forms** attribute structure:
 ```json
 "forms": [
   {
-    "name": "Form_Js",
+    "name": "Form_Js1",
     "description": "It's Js Form",
     "type": "JS",
     "jsComponentName": "card",
@@ -581,9 +578,9 @@ Example of the **forms** attribute structure:
     ]
   },
   {
-    "name": "Form_Js",
+    "name": "Form_Js2",
     "description": "It's JS Form",
-    "type": "Js",
+    "type": "JS",
     "colorMode": "auto",
     "isDefault": false,
     "updateEnabled": true,
@@ -622,7 +619,7 @@ Example of the **forms** attribute structure:
 |screenShape | Supported screen shapes.| Object array| Yes (initial value: left empty)|
 | screenWindow | Supported window resolutions for when the application is running. This attribute applies only to the lite wearables.| Object array| Yes (initial value: left empty)|
 |screenDensity | Pixel density of the screen, in dots per inch (DPI).| Object array| Yes (initial value: left empty)|
-| countryCode | Country code used for distributing the application. For details, see the ISO-3166-1 standard. Multiple enumerated values of countries and regions are supported.| Object array| Yes (initial value: left empty)|
+| countryCode | Country/Region code used for distributing the application. For details, see the ISO-3166-1 standard. Multiple enumerated values of countries and regions are supported.| Object array| Yes (initial value: left empty)|
 
 ## Internal Structure of the apiVersion Attribute
 
@@ -640,7 +637,7 @@ Example of the **forms** attribute structure:
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
-| value | API versions, for example, 4, 5, or 6. Example: If an application comes with two versions developed using API version 5 and API version 6 for the same device model, two installation packages of the entry type can be released for the application.| Array| No|
+| value | Shape.<br>Valid values:<br>- **circle**<br>- **rect**| String array| No|
 
 ## Internal Structure of the screenWindow Attribute
 
@@ -649,12 +646,13 @@ Example of the **forms** attribute structure:
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
-| value | API versions, for example, 4, 5, or 6. Example: If an application comes with two versions developed using API version 5 and API version 6 for the same device model, two installation packages of the entry type can be released for the application.| Array| No|
+| value | Resolution of the application runtime window. The value is in the format of *number***number*, for example, **466*466**.| String array| No|
 
 ## Internal Structure of the screenDensity Attribute
 
 **Table 25** Internal structure of the screenDensity attribute
 
+<!--Table: 10%; 60%; 15%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
@@ -667,7 +665,7 @@ Example of the **forms** attribute structure:
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
-| value | Country code of the area to which the application is to be distributed. The value is a string array, of which each substring indicates a country or region. The substring consists of two uppercase letters.| String array| No|
+| value | Country/Region code of the area to which the application is to be distributed. The value is a string array, of which each substring indicates a country or region. The substring consists of two uppercase letters.| String array| No|
 
 
 Example of the **distroFilter** attribute structure:

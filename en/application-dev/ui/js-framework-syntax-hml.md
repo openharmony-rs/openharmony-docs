@@ -1,4 +1,10 @@
 # HML
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sunfei2021-->
+<!--Designer: @sunfei2021-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 HML is an HTML-like language that allows you to build pages based on components and events. Pages built using HML have advanced capabilities such as data binding, event binding, loop rendering, conditional rendering, and logic control.
 
@@ -145,17 +151,17 @@ Binding for event bubbling covers the following:
   <!-- xxx.hml -->
   <div>
      <!-- Bind an event callback for event bubbling.5+ -->
-      <div on:touchstart.bubble="touchstartfunc"></div>
-      <div on:touchstart="touchstartfunc"></div>
+      <div on:touchstart.bubble="touchstartfunc" style="background-color: red; width: 10%; height: 100%"></div>
+      <div on:touchstart="touchstartfunc" style="background-color: orange; width: 10%; height: 100%"></div>
       <!-- Bind an event callback, but stop the event from bubbling upwards.5+ -->
-      <div grab:touchstart.bubble="touchstartfunc"></div>
-      <div grab:touchstart="touchstartfunc"></div>
+      <div grab:touchstart.bubble="touchstartfunc" style="background-color: yellow; width: 10%; height: 100%"></div>
+      <div grab:touchstart="touchstartfunc" style="background-color: greenyellow; width: 10%; height: 100%"></div>
       <!-- Bind an event callback for event bubbling.6+ -->
-      <div on:click.bubble="clickfunc"></div>
-      <div on:click="clickfunc"></div>
+      <div on:click.bubble="clickfunc" style="background-color: lightskyblue; width: 10%; height: 100%"></div>
+      <div on:click="clickfunc" style="background-color: cornflowerblue; width: 10%; height: 100%"></div>
       <!-- Bind an event callback, but stop the event from bubbling upwards.6+ -->
-      <div grab:click.bubble="clickfunc"></div>
-      <div grab:click="clickfunc"></div>
+      <div grab:click.bubble="clickfunc" style="background-color: mediumslateblue; width: 10%; height: 100%"></div>
+      <div grab:click="clickfunc" style="background-color: purple; width: 10%; height: 100%"></div>
   </div>
   ```
 
@@ -163,16 +169,15 @@ Binding for event bubbling covers the following:
   // xxx.js
   export default {
       clickfunc: function(e) {
-          console.log(e);
+          console.info(e);
       },
-      touchstartfuc: function(e) {
-          console.log(e);
+      touchstartfunc: function(e) {
+          console.info(e);
       },
   }
   ```
 
 > **NOTE**
->
 > Events bound using a traditional statement (such as **onclick**) will bubble only when the API version in use is 6 or later.
 
 ## Binding for Event Capturing<sup>5+</sup>
@@ -199,8 +204,8 @@ Binding for event capturing covers the following:
   ```js
   // xxx.js
   export default {
-      touchstartfuc: function(e) {
-          console.log(e);
+      touchstartfunc: function(e) {
+          console.info(e);
       },
   }
   ```
@@ -346,7 +351,6 @@ export default {
 ```
 
 > **NOTE**
->
 > Do not use **for** and **if** attributes at the same time in an element.
 
 ![en-us_image_0000001118642005](figures/en-us_image_0000001118642005.gif)

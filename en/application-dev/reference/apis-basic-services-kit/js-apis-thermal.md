@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **thermal** module provides thermal level-related callback and query APIs to obtain the information required for thermal control.
 
@@ -23,7 +23,7 @@ import {thermal} from '@kit.BasicServicesKit';
 
 registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 
-Subscribes to thermal level changes.
+Registers a callback to be invoked when the thermal level changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -31,7 +31,7 @@ Subscribes to thermal level changes.
 
 | Name  | Type                        | Mandatory| Description                          |
 | -------- | ---------------------------- | ---- | ------------------------------ |
-| callback | Callback&lt;ThermalLevel&gt; | Yes  | Callback used to return thermal level. This parameter is of the function type.|
+| callback | Callback&lt;[ThermalLevel](#thermallevel)&gt; | Yes  | Callback used to return thermal level. This parameter is of the function type.|
 
 **Error codes**
 
@@ -58,7 +58,7 @@ try {
 
 unregisterThermalLevelCallback(callback?: Callback\<void>): void
 
-Unsubscribes from thermal level changes.
+Unregisters from the thermal level changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -97,11 +97,12 @@ Obtains the current thermal level.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
+
 **Return value**
 
 | Type        | Description        |
 | ------------ | ------------ |
-| ThermalLevel | Thermal level.|
+| [ThermalLevel](#thermallevel) | Thermal level.|
 
 **Example**
 
@@ -114,9 +115,9 @@ console.info('thermal level is: ' + level);
 
 subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9).
+Subscribes to thermal level changes. This API uses an asynchronous callback to return the result.
 
-Subscribes to thermal level changes.
+> **NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9) instead.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -124,7 +125,7 @@ Subscribes to thermal level changes.
 
 | Name  | Type                             | Mandatory| Description                                                        |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;ThermalLevel&gt; | Yes  | Callback used to return the result. The return value contains only one parameter, that is, thermal level.|
+| callback | AsyncCallback&lt;[ThermalLevel](#thermallevel)&gt; | Yes  | Callback used to return thermal level. This parameter is of the function type.|
 
 **Example**
 
@@ -138,9 +139,9 @@ thermal.subscribeThermalLevel((err: Error, level: thermal.ThermalLevel) => {
 
 unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9).
+Unsubscribes from the thermal level changes. This API uses an asynchronous callback to return the result.
 
-Unsubscribes from thermal level changes.
+> **NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9) instead.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -162,9 +163,9 @@ thermal.unsubscribeThermalLevel(() => {
 
 getThermalLevel(): ThermalLevel
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [thermal.getLevel](#thermalgetlevel9).
-
 Obtains the current thermal level.
+
+> **NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [thermal.getLevel](#thermalgetlevel9) instead.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -172,7 +173,7 @@ Obtains the current thermal level.
 
 | Type          | Description    |
 | ------------ | ------ |
-| ThermalLevel | Thermal level.|
+| [ThermalLevel](#thermallevel) | Thermal level.|
 
 **Example**
 

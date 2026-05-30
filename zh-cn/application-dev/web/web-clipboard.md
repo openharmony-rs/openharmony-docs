@@ -4,21 +4,21 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
-开发者能够通过Web组件和系统剪贴板进行交互，实现各种类型数据的复制和粘贴。支持通过[菜单](web_menu.md)、键盘快捷键以及[W3C剪贴板接口](https://www.w3.org/TR/clipboard-apis/)对网页内容执行剪切、复制和粘贴操作。
+开发者能够通过Web组件和系统剪贴板进行交互，实现各种类型数据的复制和粘贴。支持通过[菜单](web-menu.md)、键盘快捷键以及[W3C剪贴板接口](https://www.w3.org/TR/clipboard-apis/)对网页内容执行剪切、复制和粘贴操作。
 
 ## 通过菜单或键盘快捷键与系统剪贴板交互
 
 开发者能够自定义菜单中的功能选项，当用户选择特定选项时，开发者可以通过调用[cut](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#cut9)、[copy](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copy9)、[copyImage](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copyimage9)、[paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9)、[pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20)等接口，将网页中的文本、HTML或图片数据复制到系统剪贴板，或从系统剪贴板粘贴到网页的可输入区域。
 
-菜单功能接口的使用可参考[使用Web组件菜单处理网页内容](web_menu.md)。
+菜单功能接口的使用可参考[使用Web组件菜单处理网页内容](web-menu.md)。
 
 当设备有物理键盘时，用户也能够通过键盘快捷键：CTRL + X（剪切）、CTRL + C（复制）、CTRL + V（粘贴），与剪贴板进行交互。
 
 > **说明：**
 >
-> 通过[paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9)、[pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20)接口访问系统剪贴板内容，需[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)：ohos.permission.READ_PASTEBOARD。
+> 通过[paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9)、[pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20)接口读取系统剪贴板数据，需[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)：ohos.permission.READ_PASTEBOARD。
 
 ## 通过W3C异步剪贴板接口与系统剪贴板交互
 
@@ -58,10 +58,11 @@ const htmlBlob = await clipboardItems[0].getType('text/html');
 
 > **说明：**
 >
-> 通过异步剪贴板接口read()和readText()方法访问系统剪贴板内容，需[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)：ohos.permission.READ_PASTEBOARD。
+> 通过异步剪贴板接口read()和readText()方法读取系统剪贴板数据，需[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)：ohos.permission.READ_PASTEBOARD。
 
-```ts
-// xxx.ets
+<!-- @[web_clipboard_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboard.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -71,11 +72,12 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("clipboard.html"), controller: this.controller })
+      Web({ src: $rawfile('clipboard.html'), controller: this.controller })
     }
   }
 }
 ```
+
 
 加载的html：
 
@@ -175,12 +177,13 @@ module.json5权限配置：
 
 **需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。
 
-```json
-// module.json5
+<!-- @[web_clipboard_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/module.json5) -->
+
+``` JSON5
 {
-  "module" : {
-    // ...
-    "requestPermissions":[
+  "module": {
+    // ···
+    "requestPermissions": [
       {
         "name" : "ohos.permission.READ_PASTEBOARD",
         "reason": "$string:module_desc",
@@ -196,14 +199,16 @@ module.json5权限配置：
 }
 ```
 
+
 ![clipboard_api](./figures/web-clipboard_api.gif)
 
 ## 通过W3C剪贴板事件接口与系统剪贴板交互
 
-[剪贴板事件（Clipboard Event）](https://www.w3.org/TR/clipboard-apis/#clipboard-events-and-interfaces)描述了与剪切板相关的cut、copy和paste事件。当用户执行剪切、复制或粘贴操作时，相应的事件将被触发。开发者可以通过监听这些事件，对系统剪贴板进行读写操作，或拦截默认行为，以更改复制或粘贴的结果。
+[剪贴板事件（Clipboard Event）](https://www.w3.org/TR/clipboard-apis/#clipboard-events-and-interfaces)描述了与剪贴板相关的cut、copy和paste事件。当用户执行剪切、复制或粘贴操作时，相应的事件将被触发。开发者可以通过监听这些事件，对系统剪贴板进行读写操作，或拦截默认行为，以更改复制或粘贴的结果。
 
-```ts
-// xxx.ets
+<!-- @[web_clipboard_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboardEvent.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -213,11 +218,12 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("clipboard_event.html"), controller: this.controller })
+      Web({ src: $rawfile('clipboard_event.html'), controller: this.controller })
     }
   }
 }
 ```
+
 
 加载的html：
 
@@ -286,8 +292,9 @@ struct WebComponent {
 
 开发者可以通过设置Web组件的[copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)属性，来指定Web组件上剪贴板复制的范围。可以指定的选项有：CopyOptions.None（不支持复制）、CopyOptions.InApp（支持应用内复制）以及CopyOptions.LocalDevice（支持设备内复制）。默认值为：CopyOptions.LocalDevice，即默认支持设备内部的复制。
 
-```ts
-// xxx.ets
+<!-- @[web_clipboard_copyOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebCopyOptions.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -298,12 +305,13 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("copyOptions.html"), controller: this.controller })
+      Web({ src: $rawfile('copyOptions.html'), controller: this.controller })
         .copyOptions(this.copyOption)
     }
   }
 }
 ```
+
 
 加载的html：
 

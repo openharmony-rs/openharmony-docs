@@ -1,10 +1,10 @@
-# \<picker> Development
+# picker Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<picker>** component supports common, date, time, date and time, and multi-column text selectors. For details, see [picker](../reference/apis-arkui/arkui-js/js-components-basic-picker.md).
 
@@ -16,7 +16,7 @@ Create a **\<picker>** component in the .hml file under **pages/index**.
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <picker>    picker  </picker>
+  <picker>picker</picker>
 </div>
 ```
 
@@ -80,7 +80,7 @@ export default {
 > When setting the value range of a common selector, you must use the data binding mode.
 
 
-## Setting the Time Format
+## Setting the Time Display Format
 
 Set the **hours** attribute to specify the time format used by the time picker. Available values include **12** and **24**, indicating the 12-hour format and 24-hour format, respectively.
 

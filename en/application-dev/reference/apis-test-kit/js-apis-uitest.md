@@ -1,5 +1,13 @@
 # @ohos.UiTest
 
+<!--Kit: Test Kit-->
+<!--Subsystem: Test-->
+<!--Owner: @inter515-->
+<!--Designer: @inter515-->
+<!--Tester: @laonie666-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 The **UiTest** module provides APIs that you can use to simulate UI actions during testing, such as clicks, double-clicks, long-clicks, and swipes.
 
 This module provides the following functions:
@@ -8,21 +16,19 @@ This module provides the following functions:
 - [Component<sup>9+</sup>](#component9): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
 - [Driver<sup>9+</sup>](#driver9): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 - [UiWindow<sup>9+</sup>](#uiwindow9): works as the entry class and provides APIs for obtaining window attributes, dragging windows, and adjusting window sizes.
-- [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This class is deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
-- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This class is deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
-- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This class is deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
+- [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
+- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
+- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs of this module can be used only in <!--RP1-->[arkxtest](../../application-test/arkxtest-guidelines.md)<!--RP1End-->.
+> - The APIs of this module can be used only in <!--RP1-->[UITest](../../application-test/uitest-guidelines.md)<!--RP1End-->.
 > - The APIs of this module do not support concurrent calls.
-> - The APIs of this module are applicable to phones, tablets, PCs/2-in-1devices, wearables, smart visions, and head units.
-
 
 ## Modules to Import
 
 ```ts
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY, KeyOptions, TouchOptions } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -64,6 +70,7 @@ Provides the coordinates of a point.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type  | Read-Only|  Optional| Description       |
 | ---- | ------ | ---- | ---- |-----------|
 | x    | number |  No  | No  | Horizontal coordinate of a coordinate point. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -76,6 +83,7 @@ Provides bounds information of a component.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | Name  | Type  | Read-Only| Optional| Description                     |
 | ------ | ------ | ---- | ---- | ------------------------- |
 | left   | number |  No  | No|X coordinate of the upper left corner of the component border. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -120,6 +128,7 @@ Provides the flag attributes of this window.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | Name                | Type   | Read-Only| Optional| Description                                                                                    |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
 | bundleName           | string  | No | Yes | Bundle name of the application to which the window belongs. The default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
@@ -158,19 +167,85 @@ Describes the injected simulated mouse button.
 | MOUSE_BUTTON_RIGHT  | 1    | Right button on the mouse.  |
 | MOUSE_BUTTON_MIDDLE | 2    | Middle button on the mouse.|
 
-## UIElementInfo<sup>10+</sup>
 
-Provides information about the UI event.
+## WindowChangeType<sup>22+</sup>
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+Enumerates the window change event types that can be listened for.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name               | Value  | Description        |
+| ------------------- | ---- | ------------ |
+| WINDOW_UNDEFINED   | 0    | Non-window change event.<br>Note: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
+| WINDOW_ADDED  | 1    | Window adding event.  |
+| WINDOW_REMOVED | 2    | Window removing event.|
+| WINDOW_BOUNDS_CHANGED | 3    | Window bounds change event.|
+
+
+## ComponentEventType<sup>22+</sup>
+
+Enumerates the component operation event types that can be listened for.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name               | Value  | Description        |
+| ------------------- | ---- | ------------ |
+| COMPONENT_UNDEFINED   | 0    | Non-component operation event.<br>Note: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
+| COMPONENT_CLICKED  | 1    | Component clicked event.  |
+| COMPONENT_LONG_CLICKED | 2    | Component long-clicked event.|
+| COMPONENT_SCROLL_START | 3    | Component scroll start event.|
+| COMPONENT_SCROLL_END  | 4    | Component scroll end event.  |
+| COMPONENT_TEXT_CHANGED | 5    | Text change event of the [text input component](../../ui/arkts-common-components-text-input.md).|
+
+
+## WindowChangeOptions<sup>22+</sup>
+
+Describes the extended configuration of window change event listening, which is used to specify the listening process configuration and event filtering conditions.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Test.UiTest
 
 | Name      | Type  | Read-Only| Optional| Description                 |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| bundleName | string | Yes  | No  | Bundle name of the home application.     |
-| type       | string | Yes  | No  | Component or window type.      |
-| text       | string | Yes  | No  | Text information of the component or window.|
+| timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The default value is 10000.     |
+| bundleName       | string | No  | Yes  | Bundle name of the window to be listened for. By default, all windows are listened for.      |
+
+
+## ComponentEventOptions<sup>22+</sup>
+
+Describes the extended configuration of component operation event listening, which is used to specify the listening process configuration and event filtering conditions.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name      | Type  | Read-Only| Optional| Description                 |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The default value is 10000.     |
+| on       | [On](#on9) | No  | Yes  | Attribute requirements of the target component to listen for. By default, all components are listened for.<br> **Note**: Only components with specified attributes can be listened for. Components with relative positions such as **On.isBefore**, **On.isAfter**, and **On.within** cannot be listened for.      |
+
+## UIElementInfo<sup>10+</sup>
+
+Provides information about the UI event.
+
+**System capability**: SystemCapability.Test.UiTest
+
+<!--Table: 25%; 25%; 10%; 10%; 30%-->
+| Name      | Type  | Read-Only| Optional| Description                 |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| bundleName | string | Yes  | No  | Bundle name of the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
+| type       | string | Yes  | No  | Component or window type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
+| text       | string | Yes  | No  | Text information of the component or window.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | Yes  | Yes  | Window change event type. If the event is not a window change event, **WindowChangeType.WINDOW_UNDEFINED** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | Yes  | Yes  | Component operation event type. If it is not a component operation event, **ComponentEventType.COMPONENT_UNDEFINED** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| windowId<sup>22+</sup>       | number | Yes  | Yes  | ID of the window where the component belongs.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| componentId<sup>22+</sup>       | string | Yes  | Yes  | Component ID. If it is not a component operation event, an empty string is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| componentRect<sup>22+</sup>       | [Rect](#rect9) | Yes  | Yes  | Component border information. If it is not a component operation event, a **Rect** object with all attribute values being **0** is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 
 ## TouchPadSwipeOptions<sup>18+</sup>
@@ -184,7 +259,7 @@ Describes information about the touchpad swipe gesture option.
 | Name      | Type  | Read-Only| Optional| Description                                                    |
 | ---------- | ------ |----|----|--------------------------------------------------------|
 | stay | boolean | No | Yes | Whether the swipe gesture stays on the touchpad for 1s before it is lifted. The value **true** indicates that the swipe gesture stays on the touchpad for 1s, and **false** indicates the opposite. The default value is **false**.|
-| speed       | number | No | Yes | Swipe speed, in px/s. The value is an integer ranges from 200 to 40000. If the set value is not in the range, the default value **2000** is used. |
+| speed       | number | No | Yes | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **2000**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value 2000 is used. If the value is a negative number, an error code indicating a parameter error is returned. |
 
 
 ## InputTextMode<sup>20+</sup>
@@ -197,9 +272,40 @@ Describes the text input mode.
 
 | Name      | Type  | Read-Only| Optional| Description                                                      |
 | ---------- | ------ |----|----|----------------------------------------------------------|
-| paste | boolean | No | Yes | Whether to copy and paste text. The value **true** means to copy and paste text, and **false** means to type text. Default value: **false**<br> **NOTE**<br>1. If the input text contains Chinese characters or special characters or contains more than 200 characters, the text is copied and pasted regardless of the value of this parameter.<br>2. For smart wearable devices, this API does not support input in copy and paste mode.|
+| paste | boolean | No | Yes | Whether to copy and paste text. The value **true** means to copy and paste text, and **false** means to type text. Default value: **false**<br> **Note**: If the input text contains Chinese characters, special characters, or the text length exceeds 200 characters, the text is copied and pasted regardless of the value of this parameter.|
 | addition       | boolean | No | Yes | Whether to input text in addition mode. The value **true** means to input text in addition mode, and **false** means the opposite. Default value: **false**|
 
+
+## KeyOptions
+
+Describes key options.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Type| Read-Only| Optional| Description|
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| key1 | number | No | Yes | First key value injected during the operation. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). If this parameter is not set, no key event is injected.|
+| key2 | number | No | Yes | Second key value injected during the operation. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). If this parameter is not set, no key event is injected.<br> Note: If only **key2** is set, the 17000007 parameter verification failure error will be thrown.|
+
+## TouchOptions
+
+Describes common touch options.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Type| Read-Only| Optional| Description|
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| speed | number | No | Yes | Operation speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number beyond the value range or is **null**/**undefined**, the default value **600** is used. If the value is a negative number, the error code 17000007 is thrown.|
+| duration | number | No | Yes | Operation duration, in ms. The value is an integer greater than or equal to 1500. The default value is **1500**. If the value is less than 1500, the 17000007 error code is thrown. If the value is **null** or **undefined**, the default value is used.|
+| pressure | number | No | Yes | Pressure value of the touch. The value ranges from 0 to 1. The default value is **0**. If the value is **null** or **undefined**, the default value is used. If the value is out of the value range, the 17000007 error code is thrown.|
 
 ## On<sup>9+</sup>
 
@@ -207,6 +313,7 @@ Since API version 9, the UiTest framework provides a wide range of UI component 
 The APIs provided by the **On** class exhibit the following features:<br>1. Allow one or more attributes as the match conditions. For example, you can specify both the **text** and **id** attributes to find the target component.<br>2. Provide multiple match patterns for component attributes.<br>3. Support absolute positioning and relative positioning for components. APIs such as [ON.isBefore](#isbefore9) and [ON.isAfter](#isafter9) can be used to specify the features of adjacent components to assist positioning.<br>All APIs provided in the **On** class are synchronous. You are advised to use the static constructor **ON** to create an **On** object in chain mode.
 
 ```ts
+// xxx.test.ets
 import { ON } from '@kit.TestKit';
 
 ON.text('123').type('Button');
@@ -220,7 +327,7 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 
 > **NOTE**
 >
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) of a component is set to **no** or **no-hide-descendants**, this API cannot be used to specify the text attribute of the target component for searching for the component. In this case, you can use the [On.originalText ()](#originaltext20) API.
+> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) of a component is set to **no** or **no-hide-descendants**, this API cannot be used to specify the text attribute of the target component for searching for the component. In this case, you can use the [On.originalText()](#originaltext20) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -230,7 +337,7 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 
 | Name | Type                         | Mandatory| Description                                               |
 | ------- | ----------------------------- | ---- | --------------------------------------------------- |
-| txt     | string                        | Yes  | Component text, used to match the target component.               |
+| txt     | string                        | Yes  | Component text, used to match the target component.<!--RP2--><!--RP2End--> |
 | pattern | [MatchPattern](#matchpattern) | No  | Match pattern. The default value is [EQUALS](#matchpattern).|
 
 **Return value**
@@ -250,8 +357,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.text('123'); // Use the static constructor ON to create an On object and specify the text attribute of the target component.
+
+let on: On = ON.text('123'); // Use the static constructor ON to create an On object and specify the text attribute of the target component.
 ```
 
 ### id<sup>9+</sup>
@@ -268,7 +377,7 @@ Specifies the ID attribute of the target component.
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| id     | string | Yes  | Component ID.|
+| id     | string | Yes  | Component ID.<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -287,16 +396,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('123'); // Use the static constructor ON to create an On object and specify the id attribute of the target component.
+let on: On = ON.id('123'); // Use the static constructor ON to create an On object and specify the ID attribute of the target component.
 ```
 
 ### id<sup>18+</sup>
 
 id(id: string, pattern: MatchPattern): On
 
-Specifies the ID attribute of the target component.
+Specifies the **id** attribute and match pattern of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -306,7 +416,7 @@ Specifies the ID attribute of the target component.
 
 | Name                  | Type  | Mandatory| Description                                   |
 |-----------------------| ------ |----|---------------------------------------|
-| id                    | string | Yes | Component ID.                            |
+| id                    | string | Yes | Component ID.<!--RP2--><!--RP2End-->  |
 | pattern | [MatchPattern](#matchpattern) | Yes | Text matching pattern.|
 
 **Return value**
@@ -326,9 +436,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('id', MatchPattern.REG_EXP_ICASE) // Use case-insensitive regular expression to match the ID attribute value of the component.
+let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // Use case-insensitive regular expression to match the ID attribute value of the component.
 ```
 
 ### type<sup>9+</sup>
@@ -336,10 +447,6 @@ let on:On = ON.id('id', MatchPattern.REG_EXP_ICASE) // Use case-insensitive regu
 type(tp: string): On
 
 Specifies the type attribute of the target component.
-
->**NOTE**
->
->You can define the type of the component. In addition, you can use [DevEco Testing](https://developer.huawei.com/consumer/en/download) to query the type information of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -349,7 +456,7 @@ Specifies the type attribute of the target component.
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| tp     | string | Yes  | Component type.|
+| tp     | string | Yes  | Component type.<!--RP2--><!--RP2End--> |
 
 **Return value**
 
@@ -368,19 +475,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
+
+let on: On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
 ```
 
 ### type<sup>18+</sup>
 
 type(tp: string, pattern: MatchPattern): On
 
-Specifies the type attribute of the target component.
-
->**NOTE**
->
->You can define the type of the component. In addition, you can use [DevEco Testing](https://developer.huawei.com/consumer/en/download) to query the type information of the component.
+Specifies the **type** attribute and match pattern of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -390,7 +495,7 @@ Specifies the type attribute of the target component.
 
 | Name                  | Type  | Mandatory| Description                                   |
 |-----------------------| ------ |----|---------------------------------------|
-| tp                    | string | Yes | Component type.                              |
+| tp                    | string | Yes | Component type.<!--RP2--><!--RP2End-->  |
 | pattern | [MatchPattern](#matchpattern) | Yes | Text matching pattern.|
 
 **Return value**
@@ -410,8 +515,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { On, ON } from '@kit.TestKit';
-let on:On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
+// xxx.test.ets
+import { On, ON, MatchPattern } from '@kit.TestKit';
+
+let on: On = ON.type('Button', MatchPattern.EQUALS); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
 ```
 
 ### clickable<sup>9+</sup>
@@ -428,7 +535,7 @@ Specifies the clickable attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Clickable status of the component. The value **true** indicates that the component is clickable, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Clickable status of the component. The value **true** indicates that the component is clickable, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -447,8 +554,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.clickable(true); // Use the static constructor ON to create an On object and specify the clickable attribute of the target component.
+
+let on: On = ON.clickable(true); // Use the static constructor ON to create an On object and specify the clickable attribute of the target component.
 ```
 
 ### longClickable<sup>9+</sup>
@@ -465,7 +574,7 @@ Specifies the long-clickable attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Long-clickable status of the component. The value **true** indicates that the component is long-clickable, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Long-clickable status of the component. The value **true** indicates that the component is long-clickable, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End--> |
 
 **Return value**
 
@@ -484,8 +593,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.longClickable(true); // Use the static constructor ON to create an On object and specify the longClickable attribute of the target component.
+
+let on: On = ON.longClickable(true); // Use the static constructor ON to create an On object and specify the longClickable attribute of the target component.
 ```
 
 ### scrollable<sup>9+</sup>
@@ -502,7 +613,7 @@ Specifies the scrollable attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                       |
 | ------ | ------- | ---- | ----------------------------------------------------------- |
-| b      | boolean | No  | Scrollable status of the component. The value **true** indicates that the component is scrollable, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Scrollable status of the component. The value **true** indicates that the component is scrollable, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -521,8 +632,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.scrollable(true); // Use the static constructor ON to create an On object and specify the scrollable attribute of the target component.
+
+let on: On = ON.scrollable(true); // Use the static constructor ON to create an On object and specify the scrollable attribute of the target component.
 ```
 
 ### enabled<sup>9+</sup>
@@ -539,7 +652,7 @@ Specifies the enabled attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                     |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| b      | boolean | No  | Enabled status of the component. The value **true** indicates that the component is enabled, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Enabled status of the component. The value **true** indicates that the component is enabled, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -558,8 +671,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.enabled(true); // Use the static constructor ON to create an On object and specify the enabled attribute of the target component.
+
+let on: On = ON.enabled(true); // Use the static constructor ON to create an On object and specify the enabled attribute of the target component.
 ```
 
 ### focused<sup>9+</sup>
@@ -576,7 +691,7 @@ Specifies the focused attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                 |
 | ------ | ------- | ---- | ----------------------------------------------------- |
-| b      | boolean | No  | Focused status of the component. The value **true** indicates that the component is focused, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Focused status of the component. The value **true** indicates that the component is focused, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -595,8 +710,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.focused(true); // Use the static constructor ON to create an On object and specify the focused attribute of the target component.
+
+let on: On = ON.focused(true); // Use the static constructor ON to create an On object and specify the focused attribute of the target component.
 ```
 
 ### selected<sup>9+</sup>
@@ -613,7 +730,7 @@ Specifies the selected attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Selected status of the component. The value **true** indicates that the component is selected, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Selected status of the component. The value **true** indicates that the component is selected, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -632,8 +749,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.selected(true); // Use the static constructor ON to create an On object and specify the selected attribute of the target component.
+
+let on: On = ON.selected(true); // Use the static constructor ON to create an On object and specify the selected attribute of the target component.
 ```
 
 ### checked<sup>9+</sup>
@@ -650,7 +769,7 @@ Specifies the checked attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Checked status of the component. The value **true** indicates that the component is checked, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Checked status of the component. The value **true** indicates that the component is checked, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -669,8 +788,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checked(true); // Use the static constructor ON to create an On object and specify the checked attribute of the target component.
+
+let on: On = ON.checked(true); // Use the static constructor ON to create an On object and specify the checked attribute of the target component.
 ```
 
 ### checkable<sup>9+</sup>
@@ -687,7 +808,7 @@ Specifies the checkable attribute of the target component.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | No  | Checkable status of the component. The value **true** indicates that the component is checkable, and **false** indicates the opposite. Default value: **true**|
+| b      | boolean | No  | Checkable status of the component. The value **true** indicates that the component is checkable, and **false** indicates the opposite. Default value: **true**<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -706,8 +827,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checkable(true); // Use the static constructor ON to create an On object and specify the checkable attribute of the target component.
+
+let on: On = ON.checkable(true); // Use the static constructor ON to create an On object and specify the checkable attribute of the target component.
 ```
 
 ### isBefore<sup>9+</sup>
@@ -724,7 +847,7 @@ Specifies that the target component is located before the given attribute compon
 
 | Name| Type      | Mandatory| Description                |
 | ------ | ---------- | ---- | -------------------- |
-| on     | [On](#on9) | Yes  | Information about the attribute component.|
+| on     | [On](#on9) | Yes  | Information about the attribute component.<!--RP3--><!--RP3End-->  |
 
 **Return value**
 
@@ -743,10 +866,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located before the given attribute component.
-let on:On = ON.type('Button').isBefore(ON.text('123')); // Search for the first <Button> component located before the component whose text is 123.
+let on: On = ON.type('Button').isBefore(ON.text('123')); // Search for the first Button component located before the component whose text is 123.
 ```
 
 ### isAfter<sup>9+</sup>
@@ -763,13 +887,13 @@ Specifies that the target component is located after the given attribute compone
 
 | Name| Type      | Mandatory| Description                |
 | ------ | ---------- | ---- | -------------------- |
-| on     | [On](#on9) | Yes  | Information about the attribute component.|
+| on     | [On](#on9) | Yes  | Information about the attribute component.<!--RP3--><!--RP3End-->  |
 
 **Return value**
 
 | Type      | Description                                                |
 | ---------- | ---------------------------------------------------- |
-| [On](#on9) | **On** object.|
+| [On](#on9) | **On** object. |
 
 **Error codes**
 
@@ -782,10 +906,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located after the given attribute component.
-let on:On = ON.type('Text').isAfter(ON.text('123'));  // Search for the first <Text> component located after the component whose text is 123.
+let on: On = ON.type('Text').isAfter(ON.text('123')); // Search for the first Text component located after the component whose text is 123.
 ```
 
 ### within<sup>10+</sup>
@@ -802,7 +927,7 @@ Specifies that the target component is located within the given attribute compon
 
 | Name| Type      | Mandatory| Description                |
 | ------ | ---------- | ---- | -------------------- |
-| on     | [On](#on9) | Yes  | Information about the attribute component.|
+| on     | [On](#on9) | Yes  | Information about the attribute component.<!--RP3--><!--RP3End-->  |
 
 **Return value**
 
@@ -821,9 +946,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
+
 // Use the static constructor ON to create an On object and specify that the target component is located within the given attribute component.
-let on:On = ON.text('java').within(ON.type('Scroll'));  // Search for the child component whose text is java within the <Scroller> component.
+let on: On = ON.text('java').within(ON.type('Scroll')); // Search for the child component whose text is java within the Scroller component.
 ```
 
 ### inWindow<sup>10+</sup>
@@ -840,7 +967,7 @@ Specifies that the target component is located within the given application wind
 
 | Name    | Type  | Mandatory| Description            |
 | ---------- | ------ | ---- | ---------------- |
-| bundleName | string | Yes  | Bundle name of the application window.|
+| bundleName | string | Yes  | Bundle name of the application window.<!--RP2--><!--RP2End-->  |
 
 **Return value**
 
@@ -859,8 +986,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.inWindow('com.uitestScene.acts'); // Use the static constructor ON to create an On object and specify that the target component is located within the given application window.
+
+let on: On = ON.inWindow('com.uitestScene.acts'); // Use the static constructor ON to create an On object and specify that the target component is located within the given application window.
 ```
 
 ### description<sup>11+</sup>
@@ -877,7 +1006,7 @@ Specifies the description of the target component. Multiple match patterns are s
 
 | Name | Type                         | Mandatory| Description                                               |
 | ------- | ----------------------------- | ---- | --------------------------------------------------- |
-| val     | string                        | Yes  | Description of the component.                                   |
+| val     | string                        | Yes  | Description of the component.<!--RP2--><!--RP2End-->   |
 | pattern | [MatchPattern](#matchpattern) | No  | Match pattern. The default value is [EQUALS](#matchpattern).|
 
 **Return value**
@@ -897,8 +1026,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.description('123'); // Use the static constructor ON to create an On object and specify the description attribute of the target component.
+
+let on: On = ON.description('123'); // Use the static constructor ON to create an On object and specify the description attribute of the target component.
 ```
 
 ### hint<sup>18+</sup>
@@ -915,7 +1046,7 @@ Obtains the component object of the specified hint text and returns the **On** o
 
 | Name| Type  | Mandatory| Description                                   |
 | ------ | ------ |----|---------------------------------------|
-| val     | string | Yes | The specified hint text of the component.                             |
+| val     | string | Yes | The specified hint text of the component.<!--RP2--><!--RP2End-->   |
 | pattern | [MatchPattern](#matchpattern) | No | Match pattern. The default value is [EQUALS](#matchpattern).|
 
 **Return value**
@@ -935,9 +1066,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
- import { MatchPattern, On, ON } from '@kit.TestKit';
- 
- let on:On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static constructor ON to create an On object with the hint text attribute of the target component specified.
+// xxx.test.ets
+import { MatchPattern, On, ON } from '@kit.TestKit';
+
+let on: On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static constructor ON to create an On object with the hint text attribute of the target component specified.
 ```
 
 ### belongingDisplay<sup>20+</sup>
@@ -954,7 +1086,7 @@ Obtains the component object on the specified display.
 
 | Name| Type  | Mandatory| Description                                   |
 | ------ | ------ |----|---------------------------------------|
-| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. You can use [getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9) to obtain all current **display** objects and use them to obtain the corresponding display IDs.|
+| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported. You can use [getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9) to obtain all current **display** objects and use them to obtain the corresponding display IDs.<!--RP2--><!--RP2End--> |
 
 **Return value**
 
@@ -973,16 +1105,17 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
- import { On, ON } from '@kit.TestKit';
- 
- let on:On = ON.belongingDisplay (0); // Use the static constructor ON to create an On object and specify the ID of the display to which the target component belongs.
+// xxx.test.ets
+import { On, ON } from '@kit.TestKit';
+
+let on: On = ON.belongingDisplay(0); // Use the static constructor ON to create an On object and specify the ID of the display to which the target component belongs.
 ```
 
 ### originalText<sup>20+</sup>
 
 originalText(text: string, pattern?: MatchPattern): On
 
-Specifies the text attribute of the target component. Multiple match patterns are supported.
+Specifies the text content and text matching pattern of the component.
 
 > **NOTE**
 >
@@ -996,7 +1129,7 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 
 | Name | Type                         | Mandatory| Description                                               |
 | ------- | ----------------------------- | ---- | --------------------------------------------------- |
-| text     | string                        | Yes  | Component text, used to match the target component.               |
+| text     | string                        | Yes  | Component text, used to match the target component.<!--RP2--><!--RP2End-->  |
 | pattern | [MatchPattern](#matchpattern) | No  | Match pattern. The default value is [EQUALS](#matchpattern).|
 
 **Return value**
@@ -1016,21 +1149,23 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.originalText('123'); // Use the static constructor ON to create an On object and specify the originalText attribute of the target component.
+let on: On = ON.originalText('123'); // Use the static constructor ON to create an On object and specify the originalText attribute of the target component.
 ```
 
 ## Component<sup>9+</sup>
 
 Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 ### click<sup>9+</sup>
 
 click(): Promise\<void>
 
-Clicks a component object. This API uses a promise to return the result.
+Clicks this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1048,15 +1183,17 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON, Component } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
   await button.click();
 }
@@ -1066,7 +1203,7 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-Double-clicks a component object. This API uses a promise to return the result.
+Double-clicks this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1084,13 +1221,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
-import {Component, Driver, ON } from '@kit.TestKit';
+// xxx.test.ets
+import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1102,7 +1241,7 @@ async function demo() {
 
 longClick(): Promise\<void>
 
-Long-clicks a component object. This API uses a promise to return the result.
+Long-clicks this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1120,13 +1259,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1138,7 +1279,7 @@ async function demo() {
 
 getId(): Promise\<string>
 
-Obtains the ID of a component object. This API uses a promise to return the result.
+Obtains the ID of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1156,13 +1297,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1178,7 +1321,7 @@ Obtains the text information of this component. This API uses a promise to retur
 
 > **NOTE**
 >
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the text information of the component. In this case, you can use [Component.getOriginalText ()](#getoriginaltext20) to obtain the text information of the component.
+> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the text information of the component. In this case, you can use [Component.getOriginalText ()](#getoriginaltext20) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1196,13 +1339,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1214,7 +1359,7 @@ async function demo() {
 
 getType(): Promise\<string>
 
-Obtains the type of a component object. This API uses a promise to return the result.
+Obtains the type of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1232,13 +1377,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1250,7 +1397,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-Obtains the bound information of this component. This API uses a promise to return the result.
+Obtains the bounds information of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1268,13 +1415,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1286,7 +1435,7 @@ async function demo() {
 
 getBoundsCenter(): Promise\<Point>
 
-Obtains the center point of the area occupied by a component object. This API uses a promise to return the result.
+Obtains the center point of the area occupied by this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1304,13 +1453,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1322,7 +1473,7 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-Obtains the clickable attribute of a component object. This API uses a promise to return the result.
+Obtains the clickable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1340,20 +1491,22 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isClickable()) {
-    console.info('This button can be Clicked');
+  if (await button.isClickable()) {
+    console.info('This button can be clicked');
   } else {
-    console.info('This button can not be Clicked');
+    console.info('This button can not be clicked');
   }
 }
 ```
@@ -1362,7 +1515,7 @@ async function demo() {
 
 isLongClickable(): Promise\<boolean>
 
-Obtains the long-clickable attribute of a component object. This API uses a promise to return the result.
+Obtains the long-clickable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1380,20 +1533,22 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isLongClickable()) {
-    console.info('This button can longClick');
+  if (await button.isLongClickable()) {
+    console.info('This button supports long click');
   } else {
-    console.info('This button can not longClick');
+    console.info('This button can not support long click');
   }
 }
 ```
@@ -1402,7 +1557,7 @@ async function demo() {
 
 isChecked(): Promise\<boolean>
 
-Obtains the checked status of a component object. This API uses a promise to return the result.
+Obtains the checked status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1420,17 +1575,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isChecked()) {
+  if (await checkBox.isChecked()) {
     console.info('This checkBox is checked');
   } else {
     console.info('This checkBox is not checked');
@@ -1442,7 +1599,7 @@ async function demo() {
 
 isCheckable(): Promise\<boolean>
 
-Obtains whether a component object is checkable. This API uses a promise to return the result.
+Obtains the checkable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1460,17 +1617,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isCheckable()) {
+  if (await checkBox.isCheckable()) {
     console.info('This checkBox is checkable');
   } else {
     console.info('This checkBox is not checkable');
@@ -1482,7 +1641,7 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-Obtains whether a component object is scrollable. This API uses a promise to return the result.
+Obtains the scrollable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1500,17 +1659,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.scrollable(true));
-  if(await scrollBar.isScrollable()) {
+  if (await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
     console.info('This scrollBar can not be operated');
@@ -1523,7 +1684,7 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-Obtains whether the component is enabled. This API uses a promise to return the result.
+Obtains the enabled status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1541,17 +1702,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isEnabled()) {
+  if (await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
     console.info('This button can not be operated');
@@ -1563,7 +1726,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-Checks whether the component is focused. This API uses a promise to return the result.
+Checks whether a component is focused. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1581,17 +1744,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isFocused()) {
+  if (await button.isFocused()) {
     console.info('This button is focused');
   } else {
     console.info('This button is not focused');
@@ -1603,7 +1768,7 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-Obtains whether a component is selected. This API uses a promise to return the result.
+Obtains the selected status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1621,17 +1786,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isSelected()) {
+  if (await button.isSelected()) {
     console.info('This button is selected');
   } else {
     console.info('This button is not selected');
@@ -1643,7 +1810,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-Inputs text in a text box component after clearing its original text. This API uses a promise to return the result.
+Clears the original text in a component and inputs the specified text. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1659,22 +1826,24 @@ Inputs text in a text box component after clearing its original text. This API u
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
-| text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.<br> **Note**: For wearables, this API does not support Chinese characters.|
+| text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.|
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1686,7 +1855,7 @@ async function demo() {
 
 inputText(text: string, mode: InputTextMode): Promise\<void>
 
-Inputs text to a text box component with a specified text input mode supported. This API uses a promise to return the result.
+Inputs text to a component in a specified text input mode. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1696,7 +1865,7 @@ Inputs text to a text box component with a specified text input mode supported. 
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
-| text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.<br> **Note**: For wearables, this API does not support Chinese characters.|
+| text   | string | Yes  | Input text. Currently, English, Chinese, and special characters are supported.|
 | mode | [InputTextMode](#inputtextmode20)  | Yes  | Text input mode. For details, see [InputTextMode](#inputtextmode20).<br> **Note**: If **InputTextMode.addition** is set to **true**, the specified text is added to the end of the existing text in the component. Otherwise, the specified text overwrites the existing text of the component.|
 
 **Return value**
@@ -1707,17 +1876,18 @@ Inputs text to a text box component with a specified text input mode supported. 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not support, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
 
 **Example**
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function mode_demo() {
@@ -1732,7 +1902,7 @@ async function mode_demo() {
 
 clearText(): Promise\<void>
 
-Clears the text in a text box component. This API uses a promise to return the result.
+Clears the text information of a component. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1749,13 +1919,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1767,7 +1939,7 @@ async function demo() {
 
 scrollSearch(on: On): Promise\<Component>
 
-Scrolls on this component to search for the target component. This API is applicable to components that support scrolling and uses a promise to return the result.
+Scrolls on this component to search for the target component. This API is applicable to components that support scrolling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1787,17 +1959,18 @@ Scrolls on this component to search for the target component. This API is applic
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1811,7 +1984,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-Scrolls on this component to search for the target component. This API is applicable to components that support scrolling and uses a promise to return the result.
+Scrolls on this component to search for the target component. This API is applicable to components that support scrolling. You can specify the scrolling direction and the offset between the scrolling start and end points and the component border. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1833,18 +2006,20 @@ Scrolls on this component to search for the target component. This API is applic
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1856,7 +2031,7 @@ async function demo() {
 
 scrollToTop(speed?: number): Promise\<void>
 
-Scrolls to the top of a scrollable component. This API uses a promise to return the result.
+Scrolls to the top of this component. This API is applicable to components that support scrolling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1866,7 +2041,7 @@ Scrolls to the top of a scrollable component. This API uses a promise to return 
 
 | Name| Type  | Mandatory| Description                                                    |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -1876,18 +2051,20 @@ Scrolls to the top of a scrollable component. This API uses a promise to return 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1899,7 +2076,7 @@ async function demo() {
 
 scrollToBottom(speed?: number): Promise\<void>
 
-Scrolls to the bottom of a scrollable component. This API uses a promise to return the result.
+Scrolls to the bottom of this component. This API is applicable to components that support scrolling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1909,7 +2086,7 @@ Scrolls to the bottom of a scrollable component. This API uses a promise to retu
 
 | Name| Type  | Mandatory| Description                                                    |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -1919,18 +2096,20 @@ Scrolls to the bottom of a scrollable component. This API uses a promise to retu
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1944,13 +2123,11 @@ dragTo(target: Component): Promise\<void>
 
 Drags a component to the target component. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -1966,18 +2143,20 @@ Drags a component to the target component. This API uses a promise to return the
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1990,7 +2169,7 @@ async function demo() {
 
 pinchOut(scale: number): Promise\<void>
 
-Pinches a component to zoom in based on the specified scale. This API uses a promise to return the result.
+Pinches out a component at the specified scale. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2010,18 +2189,20 @@ Pinches a component to zoom in based on the specified scale. This API uses a pro
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2033,7 +2214,7 @@ async function demo() {
 
 pinchIn(scale: number): Promise\<void>
 
-Pinches a component to zoom out based on the specified scale. This API uses a promise to return the result.
+Pinches in a component at the specified scale. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2053,18 +2234,20 @@ Pinches a component to zoom out based on the specified scale. This API uses a pr
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2094,13 +2277,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000004 | The window or component is invisible or destroyed.                  |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -2129,13 +2314,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('TextInput'));
@@ -2164,12 +2351,13 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2183,11 +2371,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-Obtains the original text information of this component. This API uses a promise to return the result.
-
-> **NOTE**
->
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
+Obtains the text information of this component. This API uses a promise to return the result. If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2197,7 +2381,7 @@ Obtains the original text information of this component. This API uses a promise
 
 | Type            | Description                             |
 | ---------------- | --------------------------------- |
-| Promise\<string> | Promise used to return the original text information of the component.|
+| Promise\<string> | Promise used to return the text information of the component.|
 
 **Error codes**
 
@@ -2205,12 +2389,13 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2223,7 +2408,8 @@ async function demo() {
 ## Driver<sup>9+</sup>
 
 The **Driver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
-All APIs provided by this class, except **Driver.create()**, use a promise to return the result and must be invoked using **await**.
+
+All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use a promise to return the result and must be invoked using **await**.
 
 ### create<sup>9+</sup>
 
@@ -2252,7 +2438,9 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
 }
@@ -2262,7 +2450,7 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-Delays within a specified period. This API uses a promise to return the result.
+Delays execution for the specified duration. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2282,17 +2470,19 @@ Delays within a specified period. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.delayMs(1000);
@@ -2323,17 +2513,19 @@ Searches for the target component based on the specified attributes. This API us
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.text('next page'));
@@ -2344,7 +2536,7 @@ async function demo() {
 
 findComponents(on: On): Promise\<Array\<Component>>
 
-Searches for all matched components based on the given attributes and saves them in a list. This API uses a promise to return the result.
+Searches for all matched components based on the specified attributes and saves them in a list. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2364,17 +2556,19 @@ Searches for all matched components based on the given attributes and saves them
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let buttonList: Array<Component> = await driver.findComponents(ON.text('next page'));
@@ -2385,7 +2579,7 @@ async function demo() {
 
 findWindow(filter: WindowFilter): Promise\<UiWindow>
 
-Searches for a window based on the attributes. This API uses a promise to return the result.
+Searches for a window based on the specified attributes. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2405,20 +2599,22 @@ Searches for a window based on the attributes. This API uses a promise to return
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
 }
 ```
 
@@ -2447,20 +2643,22 @@ Searches for the target component based on the attributes within a specified tim
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.waitForComponent(ON.text('next page'),500);
+  let button: Component = await driver.waitForComponent(ON.text('next page'), 500);
 }
 ```
 
@@ -2488,18 +2686,20 @@ Asserts whether a component matches the specified attributes exists on the curre
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000003 | Assertion failed.   |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.assertComponentExist(ON.text('next page'));
@@ -2510,7 +2710,7 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-Presses the BACK button. This API uses a promise to return the result.
+Presses the Back button. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2528,12 +2728,14 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack();
@@ -2544,7 +2746,7 @@ async function demo() {
 
 pressBack(displayId: number): Promise\<void>
 
-Presses the **BACK** button on a specified display. This API uses a promise to return the result.
+Presses the Back button on the specified screen. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2554,7 +2756,7 @@ Presses the **BACK** button on a specified display. This API uses a promise to r
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. |
+| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported. |
 
 **Return value**
 
@@ -2568,13 +2770,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack(0);
@@ -2585,7 +2789,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-Triggers a key event based on the key value. This API uses a promise to return the result.
+Triggers a key event by passing the key value. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2595,7 +2799,7 @@ Triggers a key event based on the key value. This API uses a promise to return t
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | Yes  | Key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
+| keyCode | number | Yes  | Key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
 
 **Return value**
 
@@ -2605,20 +2809,23 @@ Triggers a key event based on the key value. This API uses a promise to return t
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+import { KeyCode } from '@kit.InputKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.triggerKey(123);
+  await driver.triggerKey(KeyCode.KEYCODE_BACK); // Back button
 }
 ```
 
@@ -2626,7 +2833,7 @@ async function demo() {
 
 triggerKey(keyCode: number, displayId: number): Promise\<void>
 
-Triggers a key event on the specified display based on the key value. This API uses a promise to return the result.
+Triggers a key event by passing the key value on the specified screen. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2636,8 +2843,8 @@ Triggers a key event on the specified display based on the key value. This API u
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | Yes  | Key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
-| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. |
+| keyCode | number | Yes  | Key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
+| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported. |
 
 **Return value**
 
@@ -2647,21 +2854,23 @@ Triggers a key event on the specified display based on the key value. This API u
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+import { KeyCode } from '@kit.InputKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.triggerKey(123, 0);
+  await driver.triggerKey(KeyCode.KEYCODE_BACK, 0); // Back button
 }
 ```
 
@@ -2669,7 +2878,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
-Triggers a combination key event based on the specified key values. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key that matches the value is found and clicked, for example, **Ctrl+C**.
+Triggers a combination key event based on the specified key values. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key **Ctrl+C** that matches the value is found and clicked.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2679,9 +2888,9 @@ Triggers a combination key event based on the specified key values. This API use
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | Yes  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key1   | number | Yes  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key2   | number | No  | Third key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key0   | number | Yes  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key1   | number | Yes  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key2   | number | No  | Third key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -2691,17 +2900,19 @@ Triggers a combination key event based on the specified key values. This API use
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.triggerCombineKeys(2072, 2047, 2035);
@@ -2712,7 +2923,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
 
-Triggers a combination key event on the specified display based on the specified key values. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key that matches the value is found and clicked, for example, **Ctrl+C**.
+Triggers a combination key event based on the specified key values on the specified screen. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key **Ctrl+C** that matches the value is found and clicked.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2722,9 +2933,9 @@ Triggers a combination key event on the specified display based on the specified
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | Yes  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key1   | number | Yes  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key2   | number | No  | Third key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key0   | number | Yes  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key1   | number | Yes  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key2   | number | No  | Third key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 | displayId | number | No | Display ID. The value is an integer greater than or equal to 0. The default value is the default display ID of the device.|
 
 **Return value**
@@ -2735,16 +2946,17 @@ Triggers a combination key event on the specified display based on the specified
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2757,7 +2969,7 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-Clicks the target coordinate. This API uses a promise to return the result.
+Clicks the target coordinate point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2778,20 +2990,22 @@ Clicks the target coordinate. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.click(100,100);
+  await driver.click(100, 100);
 }
 ```
 
@@ -2823,12 +3037,13 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2837,11 +3052,61 @@ async function demo() {
 }
 ```
 
+### clickAt
+
+clickAt(point: Point, options?: TouchOptions): Promise\<void>
+
+Clicks the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                           |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| point      | [Point](#point9) | Yes  | Point object, which is used to transfer the target point information.|
+| options      | [TouchOptions](#touchoptions) | No  | Touch options. Only the **pressure** property in **TouchOptions** can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    pressure: 0.5
+  };
+  // Clicks the target coordinate point and specifies the touch pressure.
+  await driver.clickAt({ x: 100, y: 100, displayId: 0 }, options);
+}
+```
+
 ### doubleClick<sup>9+</sup>
 
 doubleClick(x: number, y: number): Promise\<void>
 
-Double-clicks the target point. This API uses a promise to return the result.
+Double-clicks the target coordinate point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2862,20 +3127,22 @@ Double-clicks the target point. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.doubleClick(100,100);
+  await driver.doubleClick(100, 100);
 }
 ```
 
@@ -2907,12 +3174,13 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2925,7 +3193,7 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-Long-clicks the target point. This API uses a promise to return the result.
+Long-clicks the target coordinate point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2946,20 +3214,22 @@ Long-clicks the target point. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.longClick(100,100);
+  await driver.longClick(100, 100);
 }
 ```
 
@@ -2967,7 +3237,7 @@ async function demo() {
 
 longClickAt(point: Point, duration?: number): Promise\<void>
 
-Long-clicks the target coordinate point for a specified duration. This promise uses a promise to return the result.
+Long-clicks the target coordinate point for a specified duration. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2992,17 +3262,69 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.longClickAt({ x: 100, y: 100, displayId: 0 }, 1500);
+}
+```
+
+### longClickAt
+
+longClickAt(point: Point, options?: TouchOptions): Promise\<void>
+
+Long-clicks the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type  | Mandatory|Description                                           |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| point      | [Point](#point9) | Yes  | Point object, which is used to transfer the target point information.|
+| options      | [TouchOptions](#touchoptions) | No  | Touch options. Only the **duration** and **pressure** properties in **TouchOptions** can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    duration: 2000, // The click duration is 2000 ms.
+    pressure: 0.8 // Touch pressure value.
+  };
+  // Long-click the target coordinate point, and specify the touch duration and pressure.
+  await driver.longClickAt({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
 
@@ -3024,7 +3346,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.                      |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.                      |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3034,20 +3356,22 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipe(100,100,200,200,600);
+  await driver.swipe(100, 100, 200, 200, 600);
 }
 ```
 
@@ -3066,8 +3390,8 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
-| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
 
@@ -3081,43 +3405,40 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipeBetween({x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800);
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800);
 }
 ```
 
-### drag<sup>9+</sup>
+### swipeBetween
 
-drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
+swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
-Drags from the start coordinate point to the target coordinate point. This API uses a promise to return the result.
+Swipes from the start coordinate point to the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
+**Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Test.UiTest
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| startx | number | Yes  | Number, which indicates the horizontal coordinate of the start point. The value is an integer greater than or equal to 0.             |
-| starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.             |
-| endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| Name| Type  | Mandatory| Description                                                  |
+| ------ | ------ | ---- |------------------------------------------------------|
+| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
+| options  | [TouchOptions](#touchoptions) | No  | Touch options. Only the **speed** and **pressure** properties in **TouchOptions** can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
 
 **Return value**
 
@@ -3127,16 +3448,71 @@ Drags from the start coordinate point to the target coordinate point. This API u
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    speed: 800,   // Swipe speed: 800 px/s
+    pressure: 0.5  // Touch pressure value.
+  };
+  // Swipes from the start coordinate point to the target coordinate point, and specifies the swipe speed and touch pressure.
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
+}
+```
+
+### drag<sup>9+</sup>
+
+drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
+
+Drags from the start coordinate point to the target coordinate point. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| startx | number | Yes  | Number, which indicates the horizontal coordinate of the start point. The value is an integer greater than or equal to 0.             |
+| starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.             |
+| endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.             |
+| endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.             |
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3151,21 +3527,19 @@ dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\
 
 Drags from the start point to the target point. You can specify the drag speed and the click duration before dragging. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description                                                    |
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
-| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -3180,17 +3554,73 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.dragBetween( {x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800, 1500);
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800, 1500);
+}
+```
+
+### dragBetween
+
+dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+
+Drags from the start coordinate point to the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                    |
+| ------ | ------ | ---- |--------------------------------------------------------|
+| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
+| options  | [TouchOptions](#touchoptions) | No  | Touch options. Only the **pressure**, **speed**, and **duration** properties in **TouchOptions** can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    speed: 800,     // Drag speed: 800 px/s
+    duration: 2000, // Click duration before dragging: 2000 ms.
+    pressure: 0.5   // Touch pressure value.
+  };
+  // Drag from the start coordinate point to the target coordinate point, and specify the drag speed, click duration, and touch pressure.
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -3198,7 +3628,7 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-Captures the current screen and saves it as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
+Captures the current screen and saves it as a PNG image to the given save path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3214,21 +3644,23 @@ Captures the current screen and saves it as a PNG image to the specified path. T
 
 | Type             | Description                                       |
 | ----------------- |-------------------------------------------|
-| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates that the screen capture operation is successful, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');
@@ -3239,7 +3671,7 @@ async function demo() {
 
 screenCap(savePath: string, displayId: number): Promise\<boolean>
 
-Captures the specified screen and saves it as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
+Captures the specified screen and saves it as a PNG image to the given save path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3250,7 +3682,7 @@ Captures the specified screen and saves it as a PNG image to the specified path.
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | Yes  | File save path. The path must be the [sandbox path](../../file-management/app-sandbox-directory.md) of the current application.|
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3260,16 +3692,17 @@ Captures the specified screen and saves it as a PNG image to the specified path.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3278,19 +3711,64 @@ async function demo() {
 }
 ```
 
+### dumpLayout
+
+dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
+
+Dumps the current layout information and saves it as a JSON file. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                                      |
+| -------- | ------ | ---- | ------------------------------------------ |
+| savePath | string | Yes  | Path for saving the JSON file. The path must be the sandbox directory of the current application.|
+| displayId     | number | No | Display ID. The default value is the display ID of the main screen.|
+
+**Return value**
+
+| Type             | Description                                       |
+| ----------------- |-------------------------------------------|
+| Promise\<boolean> | Promise used to return whether the layout information is successfully dumped and stored in the file storage. The value **true** indicates that the screen capture operation is successful, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Obtain the current layout information and save it as a JSON file.
+  await driver.dumpLayout('/data/storage/el2/base/cache/layout.json', 0);
+}
+```
+
 ### setDisplayRotation<sup>9+</sup>
 
 setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
-Sets the display rotation of the current scene to the specified direction. This API uses a promise to return the result. It applies to rotatable scenarios.
-
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
+Sets the display rotation of the current scene. This API uses a promise to return the result. It applies to rotatable scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -3306,17 +3784,19 @@ Sets the display rotation of the current scene to the specified direction. This 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, DisplayRotation } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotation(DisplayRotation.ROTATION_180);
@@ -3345,12 +3825,14 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { DisplayRotation, Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let rotation: DisplayRotation = await driver.getDisplayRotation();
@@ -3371,7 +3853,7 @@ Obtains the display rotation of the specified device. This API uses a promise to
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3385,12 +3867,13 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { DisplayRotation, Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3403,15 +3886,13 @@ async function demo() {
 
 setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
-Sets whether to enable the screen rotation feature. This API uses a promise to return the result.
-
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
+Enables or disables display rotation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -3427,17 +3908,19 @@ Sets whether to enable the screen rotation feature. This API uses a promise to r
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotationEnabled(false);
@@ -3466,11 +3949,12 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3483,7 +3967,7 @@ async function demo() {
 
 getDisplaySize(displayId: number): Promise\<Point>
 
-Obtains the size of the specified display of the current device. This API uses a promise to return the result.
+Obtains the size of the specified display on the current device. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3493,7 +3977,7 @@ Obtains the size of the specified display of the current device. This API uses a
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.              |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.              |
 
 **Return value**
 
@@ -3507,12 +3991,13 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3543,12 +4028,14 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let density = await driver.getDisplayDensity();
@@ -3569,7 +4056,7 @@ Obtains the density of the specified display of the current device. This API use
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3583,12 +4070,13 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3619,12 +4107,14 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.wakeUpDisplay();
@@ -3637,13 +4127,11 @@ pressHome(): Promise\<void>
 
 Injects an operation of returning to the home screen on the device. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Return value**
 
@@ -3657,12 +4145,14 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressHome();
@@ -3673,21 +4163,19 @@ async function demo() {
 
 pressHome(displayId: number): Promise\<void>
 
-Injects the operation of returning to the home screen on the specified display. This API uses a promise to return the result.
-
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
+Injects an operation of returning to the home screen on the specified display. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Test.UiTest
 
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
+
 **Parameters**
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3701,12 +4189,13 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3719,7 +4208,7 @@ async function demo() {
 
 waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
-Checks whether all components on the current page are idle. This API uses a promise to return the result.
+Checks whether all components on the current UI are idle. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3740,20 +4229,22 @@ Checks whether all components on the current page are idle. This API uses a prom
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let idled:boolean = await driver.waitForIdle(4000,5000);
+  let idled: boolean = await driver.waitForIdle(4000, 5000);
 }
 ```
 
@@ -3774,7 +4265,7 @@ Simulates a fling operation. This API uses a promise to return the result.
 | from    | [Point](#point9) | Yes  | Coordinates of the point where the finger touches the screen.                                       |
 | to      | [Point](#point9) | Yes  | Coordinates of the point where the finger leaves the screen.                                        |
 | stepLen | number           | Yes  | Step length, in pixels. The value is an integer greater than or equal to 0.                                        |
-| speed   | number           | Yes  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed   | number           | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3784,21 +4275,22 @@ Simulates a fling operation. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.fling({x: 500, y: 480},{x: 450, y: 480}, 5, 600);
+  await driver.fling({ x: 500, y: 480 }, { x: 450, y: 480 }, 5, 600);
 }
 ```
 
@@ -3817,7 +4309,7 @@ Injects a multi-finger operation into a device. This API uses a promise to retur
 | Name  | Type                            | Mandatory| Description                                                    |
 | -------- | -------------------------------- | ---- |--------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.                                 |
-| speed    | number                           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3827,38 +4319,39 @@ Injects a multi-finger operation into a device. This API uses a promise to retur
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
   await driver.injectMultiPointerAction(pointers);
 }
 ```
 
 ### fling<sup>10+</sup>
 
-fling(direction: UiDirection, speed: number): Promise\<void>;
+fling(direction: UiDirection, speed: number): Promise\<void>
 
 Simulates a fling operation with the specified direction and speed. This API uses a promise to return the result.
 
@@ -3871,7 +4364,7 @@ Simulates a fling operation with the specified direction and speed. This API use
 | Name   | Type                         | Mandatory| Description                                                    |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | Yes  | Direction of the fling operation.                                              |
-| speed     | number                        | Yes  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed     | number                        | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3881,17 +4374,19 @@ Simulates a fling operation with the specified direction and speed. This API use
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.fling(UiDirection.DOWN, 10000);
@@ -3913,8 +4408,8 @@ Simulates a fling operation on a specified display with the specified direction 
 | Name   | Type                         | Mandatory| Description                                                    |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | Yes  | Direction of the fling operation.                                              |
-| speed     | number                        | Yes  | Fling speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| speed     | number                        | Yes  | Fling speed, in px/s. The value ranges from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3924,16 +4419,17 @@ Simulates a fling operation on a specified display with the specified direction 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
@@ -3944,9 +4440,9 @@ async function demo() {
 
 ### screenCapture<sup>10+</sup>
 
-screenCapture(savePath: string, rect?: Rect): Promise\<boolean>;
+screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
-Captures the specified area of the current screen and saves it as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
+Captures the specified area of the current screen and saves the captured screenshot as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3967,28 +4463,35 @@ Captures the specified area of the current screen and saves it as a PNG image to
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {left: 0, top: 0, right: 100, bottom: 100});
+  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {
+    left: 0,
+    top: 0,
+    right: 100,
+    bottom: 100
+  });
 }
 ```
 
 ### mouseClick<sup>10+</sup>
 
-mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>;
+mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse click action at a specified coordinate point and presses the corresponding combination key at the same time. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with the mouse click.
+Injects a mouse click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with the mouse click.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4000,8 +4503,8 @@ Injects a mouse click action at a specified coordinate point and presses the cor
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | Yes  | Coordinates of the mouse click.              |
 | btnId  | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1   | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2   | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1   | number                        | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2   | number                        | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -4011,28 +4514,30 @@ Injects a mouse click action at a specified coordinate point and presses the cor
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+// xxx.test.ets
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
 ### mouseScroll<sup>10+</sup>
 
-mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>;
+mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse scrolling action at a specified coordinate point and presses the corresponding combination key at the same time. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with mouse scrolling.
+Injects a mouse scroll action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with mouse scrolling.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4043,10 +4548,10 @@ Injects a mouse scrolling action at a specified coordinate point and presses the
 | Name| Type            | Mandatory| Description                                                       |
 | ------ | ---------------- | ---- | ----------------------------------------------------------- |
 | p      | [Point](#point9) | Yes  | Coordinates of the mouse click.                                           |
-| down   | boolean          | Yes  | Whether the scroll wheel scrolls downward. The value **true** indicates the scroll wheel scrolls downward, and **false** indicates the scroll wheel scrolls upward.|
+| down   | boolean          | Yes  | Whether the mouse wheel scrolls downward. The value **true** indicates the mouse wheel scrolls downward, and **false** indicates the mouse wheel scrolls upward.|
 | d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.        |
-| key1   | number           | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                             |
-| key2   | number           | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                             |
+| key1   | number           | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                             |
+| key2   | number           | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                             |
 
 **Return value**
 
@@ -4056,29 +4561,30 @@ Injects a mouse scrolling action at a specified coordinate point and presses the
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072);
 }
 ```
 
 ### mouseMoveTo<sup>10+</sup>
 
-mouseMoveTo(p: Point): Promise\<void>;
+mouseMoveTo(p: Point): Promise\<void>
 
-Moves the cursor to the target point. This API uses a promise to return the result.
+Moves the mouse cursor to the target point. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -4098,21 +4604,22 @@ Moves the cursor to the target point. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveTo({x:100, y:100});
+  await driver.mouseMoveTo({ x: 100, y: 100 });
 }
 ```
 
@@ -4138,16 +4645,17 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let observer: UIEventObserver = driver.createUIEventObserver();
 }
 ```
 
@@ -4155,7 +4663,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>
 
-Injects a mouse wheel scrolling action at the specified coordinate point. The corresponding combination key can be pressed at the same time and the scrolling speed can be specified. This API uses a promise to return the result.
+Injects a mouse scroll action at the specified coordinates, with the optional key or key combination and the specified scroll speed. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4166,11 +4674,11 @@ Injects a mouse wheel scrolling action at the specified coordinate point. The co
 | Name| Type            | Mandatory| Description                                                        |
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
 | p      | [Point](#point9) | Yes  | Coordinates of the mouse click.                                            |
-| down   | boolean          | Yes  | Whether the scroll wheel scrolls downward. The value **true** indicates the scroll wheel scrolls downward, and **false** indicates the scroll wheel scrolls upward. |
+| down   | boolean          | Yes  | Whether the mouse wheel scrolls downward. The value **true** indicates the mouse wheel scrolls downward, and **false** indicates the mouse wheel scrolls upward. |
 | d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.         |
-| key1   | number           | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
-| key2   | number           | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
-| speed  | number           | No  | Scroll speed of the mouse wheel, in ticks/second. The value is an integer ranging from 1 to 500. If the value is not within the range, the default value **20** will be used.|
+| key1   | number           | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                              |
+| key2   | number           | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                              |
+| speed  | number           | No  | Scrolling speed of the mouse wheel, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4180,21 +4688,22 @@ Injects a mouse wheel scrolling action at the specified coordinate point. The co
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072,20);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072, 20);
 }
 ```
 
@@ -4202,7 +4711,7 @@ async function demo() {
 
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse double-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time. This API uses a promise to return the result. For example, if the value of **key** is **2072**, the **Ctrl** button is pressed with the double-click.
+Injects a double-click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key** is **2072**, the **Ctrl** button is pressed with the double-click.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4214,8 +4723,8 @@ Injects a mouse double-click action at a specified coordinate point. The corresp
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | Yes  | Coordinates of the double-click.              |
 | btnId  | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1   | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2   | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1   | number                        | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2   | number                        | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -4225,20 +4734,22 @@ Injects a mouse double-click action at a specified coordinate point. The corresp
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+// xxx.test.ets
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDoubleClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseDoubleClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4246,7 +4757,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse long-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
+Injects a mouse long-click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4258,8 +4769,8 @@ Injects a mouse long-click action at a specified coordinate point. The correspon
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | Yes  | Coordinates of the long-click of the mouse device.              |
 | btnId  | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1   | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2   | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1   | number                        | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2   | number                        | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -4269,20 +4780,22 @@ Injects a mouse long-click action at a specified coordinate point. The correspon
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+// xxx.test.ets
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4290,7 +4803,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
 
-Injects a mouse long-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time and the click duration can be specified. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
+Injects a mouse long-click action at the specified coordinates, with the optional key or key combination and the specified duration. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4302,8 +4815,8 @@ Injects a mouse long-click action at a specified coordinate point. The correspon
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | p        | [Point](#point9)              | Yes  | Coordinates of the long-click of the mouse device.              |
 | btnId    | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1     | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2     | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1     | number                        | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2     | number                        | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 | duration | number | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -4314,21 +4827,22 @@ Injects a mouse long-click action at a specified coordinate point. The correspon
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+// xxx.test.ets
+import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
 }
 ```
 
@@ -4336,7 +4850,7 @@ async function demo() {
 
 mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
-Moves the mouse from the start point to the end point. This API uses a promise to return the result.
+Moves the mouse pointer from the start point to the end point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4348,7 +4862,7 @@ Moves the mouse from the start point to the end point. This API uses a promise t
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to     | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
-| speed  | number           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4358,21 +4872,22 @@ Moves the mouse from the start point to the end point. This API uses a promise t
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveWithTrack({x:100, y:100}, {x:200, y:200}, 600);
+  await driver.mouseMoveWithTrack({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4380,15 +4895,13 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-Drags the mouse from the start point to the end point with the left mouse button clicked. This API uses a promise to return the result.
-
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
+Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -4396,7 +4909,7 @@ Drags the mouse from the start point to the end point with the left mouse button
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to     | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
-| speed  | number           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4406,21 +4919,22 @@ Drags the mouse from the start point to the end point with the left mouse button
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4428,15 +4942,13 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-Drags the mouse from the start point to the end point with the left mouse button clicked. You can specify the drag speed and click duration before dragging. This API uses a promise to return the result.
-
-> **NOTE**
->
-> This API takes effect only on phones, tablets, and PCs/2-in-1 devices.
+Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
 
 **Parameters**
 
@@ -4444,7 +4956,7 @@ Drags the mouse from the start point to the end point with the left mouse button
 | --------- | ---------------- | ---- |--------------------------------------------------------|
 | from      | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to        | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
-| speed     | number           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -4455,21 +4967,81 @@ Drags the mouse from the start point to the end point with the left mouse button
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600, 2000);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600, 2000);
+}
+```
+
+### mouseDrag
+
+mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
+
+Drags from the start coordinate point to the end coordinate point by holding down the left mouse button. Touch options and key options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
+
+**Parameters**
+
+| Name | Type            | Mandatory| Description                                                    |
+| --------- | ---------------- | ---- |--------------------------------------------------------|
+| from      | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
+| to        | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
+| touchOptions  | [TouchOptions](#touchoptions) | No  | Touch options. Only the **speed** and **duration** properties in **TouchOptions** can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+| keyOptions  | [KeyOptions](#keyoptions) | No  | Key options. This parameter is used to specify the keys to be clicked during the dragging. The default values are inherited from the default values of the properties in [KeyOptions](#keyoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions, KeyOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let touchOptions: TouchOptions = {
+    speed: 800,     // Drag speed: 800 px/s
+    duration: 2000  // Click duration before dragging: 2000 ms.
+  };
+  let keyOptions: KeyOptions = {
+    key1: 2072,  // Ctrl key
+    key2: 2019   // C key
+  };
+  // Drag the mouse and press Ctrl+C.
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
 }
 ```
 
@@ -4488,7 +5060,7 @@ Inputs text at a specified coordinate without clearing the original text in the 
 | Name| Type            | Mandatory| Description              |
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | Yes  | Coordinates of the end point.|
-| text   | string           | Yes  |Input text. Currently, English, Chinese, and special characters are supported.<br> **Note**: For wearables, this API does not support Chinese characters.|
+| text   | string           | Yes  |Input text. Currently, English, Chinese, and special characters are supported.|
 
 **Return value**
 
@@ -4498,19 +5070,21 @@ Inputs text at a specified coordinate without clearing the original text in the 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
   await driver.inputText(point, '123');
@@ -4532,8 +5106,8 @@ Inputs text at a specified coordinate point in a specified input mode. This API 
 | Name| Type            | Mandatory| Description              |
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | Yes  | Coordinates of the end point.|
-| text   | string           | Yes  |Input text. Currently, English, Chinese, and special characters are supported.<br> **Note**: For wearables, this API does not support Chinese characters.|
-| mode | [InputTextMode](#inputtextmode20) | Yes  | Text input mode. For details, see [InputTextMode](#inputtextmode20).<br> **Note**: If **InputTextMode.addition** is set to true, the cursor moves to the end of the text and the specified text is input. If the value is **false**, the specified text is input at the coordinate point.|
+| text   | string           | Yes  |Input text. Currently, English, Chinese, and special characters are supported.|
+| mode | [InputTextMode](#inputtextmode20) | Yes  | Text input mode. For details, see [InputTextMode](#inputtextmode20).<br> **NOTE**<br> If **InputTextMode.addition** is set to **true**, the cursor moves to the end of the text and the specified text is input. If the value is **false**, the specified text is input at the coordinate point.|
 
 **Return value**
 
@@ -4543,24 +5117,25 @@ Inputs text at a specified coordinate point in a specified input mode. This API 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not support, function can not work correctly due to limited device capabilities.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
-  await driver.inputText(point, '123', {paste: true, addition: false});
+  await driver.inputText(point, '123', { paste: true, addition: false });
 }
 
 async function demo_Chinese() {
@@ -4578,13 +5153,11 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 Simulates a multi-finger swipe gesture on the touchpad. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 17000005 is returned.
 
 **Parameters**
 
@@ -4592,7 +5165,7 @@ Simulates a multi-finger swipe gesture on the touchpad. This API uses a promise 
 | ------ |-----------------------------------------------|----|-----------------------|
 | fingers      | number                                        | Yes | Number of fingers. The value can be 3 or 4.|
 | direction | [UiDirection](#uidirection10)                 | Yes | Swipe direction.          |
-| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | No | Additional options.       |
+| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | No | Additional options for the multi-finger swipe gesture on the touchpad. The default values of the attributes in **TouchPadSwipeOptions** are used by default.       |
 
 **Return value**
 
@@ -4602,21 +5175,72 @@ Simulates a multi-finger swipe gesture on the touchpad. This API uses a promise 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.        |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
+}
+```
+
+### touchPadTwoFingersScroll<sup>22+</sup>
+
+touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
+
+Simulates a two-finger scroll gesture on the touchpad. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 17000005 is returned.
+
+**Parameters**
+
+| Name| Type                                           | Mandatory| Description                   |
+| ------ |-----------------------------------------------|----|-----------------------|
+| point       | [Point](#point9) | Yes  | Point of the mouse cursor when the two-finger scrolling is performed on the touchpad.                                           |
+| direction   | [UiDirection](#uidirection10)                 | Yes | Direction of two-finger scrolling on the touchpad.          |
+| d           | number           | Yes  | Number of grids scrolled by two fingers on the touchpad. A grid indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.        |
+| speed       | number           | No  | Scrolling speed of two fingers on the touchpad, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, the 17000007 error code is returned.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000005 | This operation is not supported.        |
+| 17000007 | Parameter verification failed.     |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, UiDirection } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.touchPadTwoFingersScroll({ x: 100, y: 100 }, UiDirection.UP, 20, 10);
 }
 ```
 
@@ -4624,7 +5248,7 @@ async function demo() {
 
 penClick(point: Point): Promise\<void>
 
-Simulates a pen click. This API uses a promise to return the result.
+Simulates a pen click operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4644,20 +5268,22 @@ Simulates a pen click. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penClick({x: 100, y: 100});
+  await driver.penClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4665,7 +5291,7 @@ async function demo() {
 
 penLongClick(point: Point, pressure?: number): Promise\<void>
 
-Simulates a pen long-click. This API uses a promise to return the result.
+Simulates a pen long-click operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4686,20 +5312,22 @@ Simulates a pen long-click. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penLongClick({x: 100, y: 100}, 0.5);
+  await driver.penLongClick({ x: 100, y: 100 }, 0.5);
 }
 ```
 
@@ -4707,7 +5335,7 @@ async function demo() {
 
 penDoubleClick(point: Point): Promise\<void>
 
-Simulates a pen double-click. This API uses a promise to return the result.
+Simulates a pen double-click operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4728,20 +5356,22 @@ Simulates a pen double-click. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penDoubleClick({x: 100, y: 100});
+  await driver.penDoubleClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4749,7 +5379,7 @@ async function demo() {
 
 penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number): Promise\<void>
 
-Simulates a pen swipe. This API uses a promise to return the result.
+Simulates a pen swipe operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4761,7 +5391,7 @@ Simulates a pen swipe. This API uses a promise to return the result.
 | ------ |-----------------------------------------------|----|--------------------------------------------------------|
 | startPoint      | [Point](#point9) | Yes | Coordinates of the start point.                                             |
 | endPoint      | [Point](#point9) | Yes | Coordinates of the end point.                                             |
-| speed      | number | No | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 | pressure      | number | No | Swipe pressure of the pen. The value ranges from 0.0 to 1.0. The default value is **1.0**.                       |
 
 **Return value**
@@ -4772,20 +5402,22 @@ Simulates a pen swipe. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
- import { Driver } from '@kit.TestKit';
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
+  await driver.penSwipe({ x: 100, y: 100 }, { x: 100, y: 500 }, 600, 0.5);
 }
 ```
 
@@ -4793,7 +5425,7 @@ async function demo() {
 
 injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
 
-Simulates a continuous multi-point pen injection. This API uses a promise to return the result.
+Simulates a continuous multi-point pen injection operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4803,8 +5435,8 @@ Simulates a continuous multi-point pen injection. This API uses a promise to ret
 
 | Name| Type                                           | Mandatory| Description                                                               |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | Yes |Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory. Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to 1.|
-| speed      | number| No | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.           |
+| pointers | [PointerMatrix](#pointermatrix9) | Yes |Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**.|
+| speed      | number| No | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.           |
 | pressure      | number | No | Injection pressure. The value ranges from 0.0 to 1.0. The default value is **1.0**.                                |
 
 
@@ -4816,22 +5448,24 @@ Simulates a continuous multi-point pen injection. This API uses a promise to ret
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, PointerMatrix } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let pointer = PointerMatrix.create(1, 8);
   for (let step = 0; step < 8; step++) {
-    pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
+    pointer.setPoint(0, step, { x: 500, y: 1100 - 100 * step });
   }
   await driver.injectPenPointerAction(pointer, 600, 0.5);
 }
@@ -4843,18 +5477,18 @@ crownRotate(d: number, speed?: number): Promise\<void>
 
 Injects a crown rotation event. You can specify the rotation speed. This API uses a promise to return the result.
 
-This API takes effect only on wearables.
-
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called on wearables. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
 | Name| Type                                        | Mandatory| Description                                                            |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | d      | number   | Yes  | Number of rotation ticks. A positive value indicates rotation, and a negative value indicates counterclockwise rotation. The value must be an integer.        |
-| speed  | number   | No  | Rotation speed, in ticks/s. The value is an integer ranging from 1 to 500. The default value is 20.<br> **Note**: If the set value is not in the range, the default value 20 is used.|
+| speed  | number   | No  | Rotation speed, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, the 17000007 error code is returned.<br> **Note**: If the set value is not in the range, the default value 20 is used.|
 
 **Return value**
 
@@ -4864,17 +5498,18 @@ This API takes effect only on wearables.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
 | 801 | Capability not support, function can not work correctly due to limited device capabilities. |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4883,6 +5518,256 @@ async function demo() {
   await driver.crownRotate(50, 30);
   // Rotate 20 ticks counterclockwise at a speed of 30 ticks per second.
   await driver.crownRotate(-20, 30);
+}
+```
+
+### knuckleKnock<sup>22+</sup>
+
+knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
+
+Simulates a knuckle knock on the display. This API uses a promise to return the result.
+
+> **NOTE**
+> 
+> If the knuckle gesture is disabled on the device<!--RP4--><!--RP4End-->, 17000005 is returned.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called on phones and tablets that support knuckle operations. On other devices, the error code 17000005 is returned.
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| pointers  | Array<[Point](#point9)>   | Yes  | Array of knuckle knock coordinates on the display. The array length can be 1 or 2.        |
+| times     | number   | Yes  | Number of consecutive knocks on the display. The value can be 1 or 2.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000005 | This operation is not supported.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, Point } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Simulate a single-knuckle double-knock gesture.
+  let points: Array<Point> = [{ x: 100, y: 100 }];
+  await driver.knuckleKnock(points, 2);
+}
+```
+
+### injectKnucklePointerAction<sup>22+</sup>
+
+injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
+
+Simulates a multi-point knuckle scrolling operation. This API uses a promise to return the result.
+
+> **NOTE**
+> 
+> If the knuckle gesture is disabled on the device<!--RP4--><!--RP4End-->, 17000005 is returned.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called on phones and tablets that support knuckle operations. On other devices, the error code 17000005 is returned.
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| pointers  | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**.|
+| speed    | number                           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000005 | This operation is not supported.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, PointerMatrix } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Simulate a knuckle gesture to draw an S on the display.
+  let pointers: PointerMatrix = PointerMatrix.create(1, 6);
+  pointers.setPoint(0, 0, { x: 750, y: 300 });
+  pointers.setPoint(0, 1, { x: 500, y: 100 });
+  pointers.setPoint(0, 2, { x: 250, y: 300 });
+  pointers.setPoint(0, 3, { x: 750, y: 800 });
+  pointers.setPoint(0, 4, { x: 500, y: 1000 });
+  pointers.setPoint(0, 5, { x: 250, y: 800 });
+  await driver.injectKnucklePointerAction(pointers);
+}
+```
+
+### isComponentPresentWhenLongClick<sup>22+</sup>
+
+isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
+
+Long-clicks at the specified coordinates and checks whether the target component exists. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | Yes  | Attributes of the target component.|
+| point  | [Point](#point9) | Yes  | Coordinates of the long-clicked point.|
+| duration   | number     | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is **1500**.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<boolean> | Promise used to return whether the target component exists during a long-click operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenLongClick(ON.id('123'), { x: 100, y: 100 }, 2000);
+}
+```
+
+### isComponentPresentWhenDrag<sup>22+</sup>
+
+isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
+
+Drags from the start point to the end point and checks whether the target component exists. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | Yes  | Attributes of the target component.|
+| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
+| duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<boolean> | Promise used to return whether the target component exists during the dragging operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenDrag(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000, 2000);
+}
+```
+
+### isComponentPresentWhenSwipe<sup>22+</sup>
+
+isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
+
+Swipes from the start point to the end point and checks whether the target component exists. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | Yes  | Attributes of the target component.|
+| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<boolean> | Promise used to return whether the target component exists during the swiping operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenSwipe(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000);
 }
 ```
 
@@ -4924,6 +5809,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -4960,33 +5846,35 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
 }
 ```
 
 ## UiWindow<sup>9+</sup>
 
 The **UiWindow** class represents a window on the UI and provides APIs for obtaining window attributes, dragging a window, and adjusting the window size.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 ### getBundleName<sup>9+</sup>
 
 getBundleName(): Promise\<string>
 
-Obtains the bundle name of the application to which the window belongs. This API uses a promise to return the result.
+Obtains the bundle name of the application to which a window belongs. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5004,17 +5892,18 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let name: string = await window.getBundleName();
 }
 ```
@@ -5023,7 +5912,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-Obtains the border information of a window. This API uses a promise to return the result.
+Obtains the bounds information of a window. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5041,16 +5930,18 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let rect = await window.getBounds();
 }
 ```
@@ -5077,16 +5968,18 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let title = await window.getTitle();
 }
 ```
@@ -5095,7 +5988,7 @@ async function demo() {
 
 getWindowMode(): Promise\<WindowMode>
 
-Obtains the window mode information. This API uses a promise to return the result.
+Obtains the window mode. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5113,16 +6006,18 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let mode = await window.getWindowMode();
 }
 ```
@@ -5131,7 +6026,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-Checks whether the window is focused. This API uses a promise to return the result.
+Checks whether a window is focused. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5141,7 +6036,7 @@ Checks whether the window is focused. This API uses a promise to return the resu
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the window is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the window is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5149,16 +6044,18 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isFocused();
 }
 ```
@@ -5167,9 +6064,11 @@ async function demo() {
 
 isActived(): Promise\<boolean>
 
-Checks whether this window is active. This API uses a promise to return the result.
+Checks whether a window is active. This API uses a promise to return the result.
 
-This API is supported since API version 9 and deprecated since API version 11. You are advised to use [isActive<sup>11+</sup>](#isactive11) instead.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 11. You are advised to use [isActive<sup>11+</sup>](#isactive11) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5185,16 +6084,18 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isActived();
 }
 ```
@@ -5203,7 +6104,7 @@ async function demo() {
 
 focus(): Promise\<void>
 
-Focuses the window. This API uses a promise to return the result.
+Focuses a window. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5221,16 +6122,18 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.focus();
 }
 ```
@@ -5244,6 +6147,8 @@ Moves a window to the target point. This API uses a promise to return the result
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Parameters**
 
@@ -5260,11 +6165,11 @@ Moves a window to the target point. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
@@ -5272,10 +6177,12 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.moveTo(100, 100);
 }
 ```
@@ -5284,11 +6191,13 @@ async function demo() {
 
 resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
-Resizes the window based on the specified width, height, and direction. This API uses a promise to return the result. This API is applicable to resizable windows.
+Resizes a window based on the specified width, height, and direction. This API uses a promise to return the result. This API is applicable to resizable windows.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Parameters**
 
@@ -5306,22 +6215,22 @@ Resizes the window based on the specified width, height, and direction. This API
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
-| ID| Error Message                              |
-| -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.                   |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 17000005 | This operation is not supported.         |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-
-**Example**
+| 17000005 | This operation is not supported.                             |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ```ts
+// xxx.test.ets
 import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resize(100, 100, ResizeDirection.LEFT);
 }
 ```
@@ -5332,13 +6241,11 @@ split(): Promise\<void>
 
 Switches to the split-screen mode. This API uses a promise to return the result. This API is applicable to windows that support screen splitting.
 
-> **NOTE**
->
-> This API takes effect only on tablets and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5352,17 +6259,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.         |
 | 17000005 | This operation is not supported.         |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.split();
 }
 ```
@@ -5373,13 +6282,11 @@ maximize(): Promise\<void>
 
 Maximizes a window. This API uses a promise to return the result. This API is applicable to windows that can be maximized.
 
-> **NOTE**
->
-> This API takes effect only on tablets and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5393,17 +6300,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.maximize();
 }
 ```
@@ -5414,13 +6323,11 @@ minimize(): Promise\<void>
 
 Minimizes a window. This API uses a promise to return the result. This API is applicable to windows that can be minimized.
 
-> **NOTE**
->
-> This API takes effect only on tablets and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5434,17 +6341,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 | 17000005 | This operation is not supported.         |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.minimize();
 }
 ```
@@ -5453,15 +6362,13 @@ async function demo() {
 
 resume(): Promise\<void>
 
-Restores a window to its previous mode. This API uses a promise to return the result.
-
-> **NOTE**
->
-> This API takes effect only on tablets and PCs/2-in-1 devices.
+Resumes a window to its previous mode. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5475,17 +6382,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 | 17000005 | This operation is not supported.         |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resume();
 }
 ```
@@ -5496,13 +6405,11 @@ close(): Promise\<void>
 
 Closes a window. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API takes effect only on tablets and PCs/2-in-1 devices.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5516,17 +6423,19 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let driver: Driver = Driver.create();
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.close();
 }
 ```
@@ -5535,7 +6444,7 @@ async function demo() {
 
 isActive(): Promise\<boolean>
 
-Checks whether this window is active. This API uses a promise to return the result.
+Checks whether a window is active. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5553,16 +6462,18 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.         |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let focused = await window.isActive();
 }
 ```
@@ -5571,7 +6482,7 @@ async function demo() {
 
 getDisplayId(): Promise\<number>
 
-Obtains the ID of the display to which the window belongs. This API uses a promise to return the result.
+Obtains the ID of the display to which a window belongs. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -5589,17 +6500,18 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiWindow, Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let id = await window.getDisplayId();
 }
 ```
@@ -5608,9 +6520,9 @@ async function demo() {
 
 UI event listener.
 
-### once('toastShow')
+### once('toastShow')<sup>10+</sup>
 
-once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 
 Subscribes to events of the toast component. This API uses a callback to return the result.
 
@@ -5636,12 +6548,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer:  UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -5650,9 +6563,9 @@ async function demo() {
 }
 ```
 
-### once('dialogShow')
+### once('dialogShow')<sup>10+</sup>
 
-once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void
 
 Subscribes to events of the dialog component. This API uses a callback to return the result.
 
@@ -5678,12 +6591,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer: UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -5692,15 +6606,128 @@ async function demo() {
 }
 ```
 
+### once('windowChange')<sup>22+</sup>
+
+once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback\<UIElementInfo>): void
+
+Starts listening for window change events of the specified type with extended configuration supported. This API triggers a callback when a specified window change event is detected. This API can be used only in [free windows](../../windowmanager/window-terminology.md#free-windows) mode.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name  | Type                                        | Mandatory| Description                              |
+| -------- | -------------------------------------------- | ---- | ---------------------------------- |
+| type     | string    | Yes  | Type of the event to subscribe to, which can be **windowChange**. This event is triggered when the window changes.|
+| windowChangeType     | [WindowChangeType](#windowchangetype22)   | Yes  | Type of the window change event.|
+| options  | [WindowChangeOptions](#windowchangeoptions22)   | Yes  | Extended configuration, including the listening timeout interval and the bundle name of the window to be listened for.|
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | Yes  | Callback triggered to return event information when an event occurs. |
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000005 | This operation is not supported.        |
+| 17000007  | Parameter verification failed.|
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver, WindowChangeOptions, WindowChangeType } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let options: WindowChangeOptions = {
+    timeout: 20000,
+    bundleName: 'com.example.myapplication'  // Use the actual bundle name.
+  }
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.windowChangeType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+  }
+  observer.once('windowChange', WindowChangeType.WINDOW_ADDED, options, callback);
+}
+```
+
+### once('componentEventOccur')<sup>22+</sup>
+
+once(type: 'componentEventOccur', componentEventType: ComponentEventType, options: ComponentEventOptions, callback: Callback\<UIElementInfo>): void
+
+Starts listening for component operation events of the specified type with extended configuration supported. This API triggers a callback when a specified component operation event is detected.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name  | Type                                        | Mandatory| Description                              |
+| -------- | -------------------------------------------- | ---- | ---------------------------------- |
+| type     | string    | Yes  | Type of the event to subscribe to, which can be **componentEventOccur**. This event is triggered when the component operation is detected.|
+| componentEventType   | [ComponentEventType](#componenteventtype22)   | Yes  | Type of the component operation event.|
+| options  | [ComponentEventOptions](#componenteventoptions22)  | Yes| Extended configuration, including the listening timeout interval and the matching condition of the component to be listened for.|
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | Yes  | Callback used to return the result. |
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000005 | This operation is not supported.        |
+| 17000007  | Parameter verification failed.|
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, UIElementInfo, UIEventObserver, ComponentEventOptions, ComponentEventType, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let option: ComponentEventOptions = {
+    timeout: 20000,
+    on: ON.id('123')  // Use the actual component ID.
+  };
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.componentEventType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+    console.info(UIElementInfo.componentId);
+    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.top.toString());
+    console.info(UIElementInfo.componentRect?.right.toString());
+    console.info(UIElementInfo.componentRect?.bottom.toString());
+  };
+  observer.once('componentEventOccur', ComponentEventType.COMPONENT_CLICKED, option, callback);
+}
+```
+
 ## By<sup>(deprecated)</sup>
 
 The UiTest framework provides a wide range of UI component feature description APIs in the **By** class to filter and match components.<br>
 The APIs provided by the **By** class exhibit the following features:<br>1. Allow one or more attributes as the match conditions. For example, you can specify both the **text** and **id** attributes to find the target component.<br>2. Provide multiple match patterns for component attributes.<br>3. Support absolute positioning and relative positioning for components. APIs such as [By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated) and [By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated) can be used to specify the features of adjacent components to assist positioning.<br>All APIs provided in the **By** class are synchronous. You are advised to use the static constructor **BY** to create a **By** object in chain mode.
 
-This class is deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
 
 ```ts
+// xxx.test.ets
 import { BY } from '@kit.TestKit';
+
 BY.text('123').type('Button');
 ```
 
@@ -5710,7 +6737,9 @@ text(txt: string, pattern?: MatchPattern): By
 
 Specifies the text attribute of the target component. Multiple match patterns are supported.
 
-This API is deprecated since API version 9. You are advised to use [text<sup>9+</sup>](#text9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [text<sup>9+</sup>](#text9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5730,7 +6759,9 @@ This API is deprecated since API version 9. You are advised to use [text<sup>9+<
 **Example**
 
 ```ts
+// xxx.test.ets
 import { BY, By } from '@kit.TestKit';
+
 let by: By = BY.text('123'); // Use the static constructor BY to create a By object and specify the text attribute of the target component.
 ```
 
@@ -5741,7 +6772,9 @@ key(key: string): By
 
 Specifies the key attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [id<sup>9+</sup>](#id9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [id<sup>9+</sup>](#id9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5760,7 +6793,9 @@ This API is deprecated since API version 9. You are advised to use [id<sup>9+</s
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.key('123'); // Use the static constructor BY to create a By object and specify the key attribute of the target component.
 ```
 
@@ -5771,7 +6806,9 @@ id(id: number): By
 
 Specifies the ID attribute of the target component.
 
-This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [id<sup>9+</sup>](#id9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5790,7 +6827,9 @@ This API is deprecated since API version 9.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.id(123); // Use the static constructor BY to create a By object and specify the id attribute of the target component.
 ```
 
@@ -5801,7 +6840,9 @@ type(tp: string): By
 
 Specifies the type attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [type<sup>9+</sup>](#type9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [type<sup>9+</sup>](#type9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5820,7 +6861,9 @@ This API is deprecated since API version 9. You are advised to use [type<sup>9+<
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.type('Button'); // Use the static constructor BY to create a By object and specify the type attribute of the target component.
 ```
 
@@ -5831,7 +6874,9 @@ clickable(b?: boolean): By
 
 Specifies the clickable attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [clickable<sup>9+</sup>](#clickable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [clickable<sup>9+</sup>](#clickable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5850,7 +6895,9 @@ This API is deprecated since API version 9. You are advised to use [clickable<su
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.clickable(true); // Use the static constructor BY to create a By object and specify the clickable attribute of the target component.
 ```
 
@@ -5861,7 +6908,9 @@ scrollable(b?: boolean): By
 
 Specifies the scrollable attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [scrollable<sup>9+</sup>](#scrollable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [scrollable<sup>9+</sup>](#scrollable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5880,7 +6929,9 @@ This API is deprecated since API version 9. You are advised to use [scrollable<s
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.scrollable(true); // Use the static constructor BY to create a By object and specify the scrollable attribute of the target component.
 ```
 
@@ -5890,7 +6941,9 @@ enabled(b?: boolean): By
 
 Specifies the enabled attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [enabled<sup>9+</sup>](#enabled9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [enabled<sup>9+</sup>](#enabled9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5909,7 +6962,9 @@ This API is deprecated since API version 9. You are advised to use [enabled<sup>
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.enabled(true); // Use the static constructor BY to create a By object and specify the enabled attribute of the target component.
 ```
 
@@ -5919,7 +6974,9 @@ focused(b?: boolean): By
 
 Specifies the focused attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [focused<sup>9+</sup>](#focused9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [focused<sup>9+</sup>](#focused9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5938,7 +6995,9 @@ This API is deprecated since API version 9. You are advised to use [focused<sup>
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.focused(true); // Use the static constructor BY to create a By object and specify the focused attribute of the target component.
 ```
 
@@ -5948,7 +7007,9 @@ selected(b?: boolean): By
 
 Specifies the selected status of the target component.
 
-This API is deprecated since API version 9. You are advised to use [selected<sup>9+</sup>](#selected9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [selected<sup>9+</sup>](#selected9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5967,7 +7028,9 @@ This API is deprecated since API version 9. You are advised to use [selected<sup
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.selected(true); // Use the static constructor BY to create a By object and specify the selected attribute of the target component.
 ```
 
@@ -5977,7 +7040,9 @@ isBefore(by: By): By
 
 Specifies that the target component is located before the given attribute component.
 
-This API is deprecated since API version 9. You are advised to use [isBefore<sup>9+</sup>](#isbefore9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isBefore<sup>9+</sup>](#isbefore9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5996,10 +7061,11 @@ This API is deprecated since API version 9. You are advised to use [isBefore<sup
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located before the given attribute component.
-let by: By = BY.type('Button').isBefore(BY.text('123')); // Search for the first <Button> component located before the component whose text is 123.
+let by: By = BY.type('Button').isBefore(BY.text('123')); // Search for the first Button component located before the component whose text is 123.
 ```
 
 ### isAfter<sup>(deprecated)</sup>
@@ -6008,7 +7074,9 @@ isAfter(by: By): By
 
 Specifies that the target component is located after the given attribute component.
 
-This API is deprecated since API version 9. You are advised to use [isAfter<sup>9+</sup>](#isafter9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isAfter<sup>9+</sup>](#isafter9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6027,33 +7095,48 @@ This API is deprecated since API version 9. You are advised to use [isAfter<sup>
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located after the given attribute component.
-let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first <Text> component located after the component whose text is 123.
+let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first Text component located after the component whose text is 123.
 ```
+
 
 ## UiComponent<sup>(deprecated)</sup>
 
 In **UiTest**, the **UiComponent** class represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
-This class is deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
 
 ### click<sup>(deprecated)</sup>
 
 click(): Promise\<void>
 
-Clicks this component.
+Clicks this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, Driver, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6065,16 +7148,26 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-Double-clicks this component.
+Double-clicks this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6086,16 +7179,26 @@ async function demo() {
 
 longClick(): Promise\<void>
 
-Long-clicks this component.
+Long-clicks this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6107,9 +7210,11 @@ async function demo() {
 
 getId(): Promise\<number>
 
-Obtains the ID of this component.
+Obtains the ID of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getId<sup>9+</sup>](#getid9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6122,7 +7227,9 @@ This API is deprecated since API version 9.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6134,9 +7241,11 @@ async function demo() {
 
 getKey(): Promise\<string>
 
-Obtains the key of this component.
+Obtains the key of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [getId<sup>9+</sup>](#getid9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getId<sup>9+</sup>](#getid9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6149,7 +7258,9 @@ This API is deprecated since API version 9. You are advised to use [getId<sup>9+
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6161,9 +7272,11 @@ async function demo() {
 
 getText(): Promise\<string>
 
-Obtains the text information of this component.
+Obtains the text information of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [getText<sup>9+</sup>](#gettext9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getText<sup>9+</sup>](#gettext9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6171,12 +7284,14 @@ This API is deprecated since API version 9. You are advised to use [getText<sup>
 
 | Type            | Description                             |
 | ---------------- | --------------------------------- |
-| Promise\<string> | Promise used to return the original text information of the component.|
+| Promise\<string> | Promise used to return the text information of the component.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6188,9 +7303,11 @@ async function demo() {
 
 getType(): Promise\<string>
 
-Obtains the type of this component.
+Obtains the type of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [getType<sup>9+</sup>](#gettype9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getType<sup>9+</sup>](#gettype9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6203,7 +7320,9 @@ This API is deprecated since API version 9. You are advised to use [getType<sup>
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6215,9 +7334,11 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-Obtains the clickable status of this component.
+Obtains the clickable status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isClickable<sup>9+</sup>](#isclickable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isClickable<sup>9+</sup>](#isclickable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6230,7 +7351,9 @@ This API is deprecated since API version 9. You are advised to use [isClickable<
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6246,9 +7369,11 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-Obtains the scrollable status of this component.
+Obtains the scrollable status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isScrollable<sup>9+</sup>](#isscrollable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isScrollable<sup>9+</sup>](#isscrollable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6261,7 +7386,9 @@ This API is deprecated since API version 9. You are advised to use [isScrollable
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.scrollable(true));
@@ -6278,9 +7405,11 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-Obtains the enabled status of this component.
+Obtains the enabled status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isEnabled<sup>9+</sup>](#isenabled9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isEnabled<sup>9+</sup>](#isenabled9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6293,7 +7422,9 @@ This API is deprecated since API version 9. You are advised to use [isEnabled<su
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6310,9 +7441,11 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-Obtains the focused status of this component.
+Obtains the focused status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isFocused<sup>9+</sup>](#isfocused9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isFocused<sup>9+</sup>](#isfocused9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6320,12 +7453,14 @@ This API is deprecated since API version 9. You are advised to use [isFocused<su
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6341,9 +7476,11 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-Obtains the selected status of this component.
+Obtains the selected status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isSelected<sup>9+</sup>](#isselected9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isSelected<sup>9+</sup>](#isselected9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6356,7 +7493,9 @@ This API is deprecated since API version 9. You are advised to use [isSelected<s
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6372,9 +7511,11 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-Inputs text into a component (applicable to text box components).
+Inputs text to a component. This API takes effect only for editable text components. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6384,10 +7525,18 @@ This API is deprecated since API version 9. You are advised to use [inputText<su
 | ------ | ------ | ---- | ---------------- |
 | text   | string | Yes  | Text to enter.|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let text: UiComponent = await driver.findComponent(BY.text('hello world'));
@@ -6399,9 +7548,11 @@ async function demo() {
 
 scrollSearch(by: By): Promise\<UiComponent>
 
-Scrolls on this component to search for the target component (applicable to components that support scrolling, such as **List**).
+Scrolls on this component to search for the target component (applicable to components that support scrolling, such as **List**). This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [scrollSearch<sup>9+</sup>](#scrollsearch9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [scrollSearch<sup>9+</sup>](#scrollsearch9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6420,7 +7571,9 @@ This API is deprecated since API version 9. You are advised to use [scrollSearch
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.type('Scroll'));
@@ -6431,9 +7584,12 @@ async function demo() {
 ## UiDriver<sup>(deprecated)</sup>
 
 The **UiDriver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+
 All APIs provided by this class, except **UiDriver.create()**, use a promise to return the result and must be invoked using **await**.
 
-This class is deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 ### create<sup>(deprecated)</sup>
 
@@ -6441,7 +7597,9 @@ static create(): UiDriver
 
 Creates a **UiDriver** object and returns the object created. This API is a static API.
 
-This API is deprecated since API version 9. You are advised to use [create<sup>9+</sup>](#create9) instead.
+> **NOTE**
+>
+> This method is supported since API version 8 and deprecated since API version 9. You are advised to use [create<sup>9+</sup>](#create9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6454,7 +7612,9 @@ This API is deprecated since API version 9. You are advised to use [create<sup>9
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
 }
@@ -6464,9 +7624,11 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-Delays this **UiDriver** object within the specified duration.
+Delays this **UiDriver** object within the specified duration. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [delayMs<sup>9+</sup>](#delayms9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [delayMs<sup>9+</sup>](#delayms9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6476,10 +7638,18 @@ This API is deprecated since API version 9. You are advised to use [delayMs<sup>
 | -------- | ------ | ---- | ------------ |
 | duration | number | Yes  | Duration of time.|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.delayMs(1000);
@@ -6490,9 +7660,11 @@ async function demo() {
 
 findComponent(by: By): Promise\<UiComponent>
 
-Searches this **UiDriver** object for the target component that matches the given attributes.
+Searches this **UiDriver** object for the target component that matches the given attributes. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [findComponent<sup>9+</sup>](#findcomponent9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [findComponent<sup>9+</sup>](#findcomponent9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6511,7 +7683,9 @@ This API is deprecated since API version 9. You are advised to use [findComponen
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.text('next page'));
@@ -6522,9 +7696,11 @@ async function demo() {
 
 findComponents(by: By): Promise\<Array\<UiComponent>>
 
-Searches this **UiDriver** object for all components that match the given attributes.
+Searches this **UiDriver** object for all components that match the given attributes. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [findComponents<sup>9+</sup>](#findcomponents9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [findComponents<sup>9+</sup>](#findcomponents9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6543,7 +7719,9 @@ This API is deprecated since API version 9. You are advised to use [findComponen
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let buttonList: Array<UiComponent> = await driver.findComponents(BY.text('next page'));
@@ -6554,9 +7732,11 @@ async function demo() {
 
 assertComponentExist(by: By): Promise\<void>
 
-Asserts that a component that matches the given attributes exists on the current page. If the component does not exist, the API throws a JS exception, causing the current test case to fail.
+Asserts that a component that matches the given attributes exists on the current page. If the component does not exist, the API throws a JS exception, causing the current test case to fail. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [assertComponentExist<sup>9+</sup>](#assertcomponentexist9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [assertComponentExist<sup>9+</sup>](#assertcomponentexist9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6566,6 +7746,12 @@ This API is deprecated since API version 9. You are advised to use [assertCompon
 | ------ | ------------------- | ---- | -------------------- |
 | by     | [By](#bydeprecated) | Yes  | Attributes of the target component.|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Error codes**
 
 For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
@@ -6573,13 +7759,15 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 | ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
 | 401      | if the input parameters are invalid.             |
-| 17000002 | if the async function was not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000003 | if the assertion failed.                         |
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.assertComponentExist(BY.text('next page'));
@@ -6590,16 +7778,26 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-Presses the Back button on this **UiDriver** object.
+Presses the Back button on this **UiDriver** object. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [pressBack<sup>9+</sup>](#pressback9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [pressBack<sup>9+</sup>](#pressback9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.pressBack();
@@ -6610,9 +7808,11 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-Triggers the key of this **UiDriver** object that matches the given key code.
+Triggers the key of this **UiDriver** object that matches the given key code. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [triggerKey<sup>9+</sup>](#triggerkey9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [triggerKey<sup>9+</sup>](#triggerkey9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6620,15 +7820,24 @@ This API is deprecated since API version 9. You are advised to use [triggerKey<s
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | Yes  | Key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
+| keyCode | number | Yes  | Key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDriver } from '@kit.TestKit';
+import { KeyCode } from '@kit.InputKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
-  await driver.triggerKey(123);
+  await driver.triggerKey(KeyCode.KEYCODE_BACK); // Back button
 }
 ```
 
@@ -6637,9 +7846,11 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-Clicks a specific point of this **UiDriver** object based on the given coordinates.
+Clicks a specific point of this **UiDriver** object based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6650,9 +7861,16 @@ This API is deprecated since API version 9. You are advised to use [click<sup>9+
 | x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
 | y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -6665,9 +7883,11 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-Double-clicks a specific point of this **UiDriver** object based on the given coordinates.
+Double-clicks a specific point of this **UiDriver** object based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6678,9 +7898,16 @@ This API is deprecated since API version 9. You are advised to use [doubleClick<
 | x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
 | y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -6693,9 +7920,11 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-Long-clicks a specific point of this **UiDriver** object based on the given coordinates.
+Long-clicks a specific point of this **UiDriver** object based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6706,10 +7935,18 @@ This API is deprecated since API version 9. You are advised to use [longClick<su
 | x      | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
 | y      | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.longClick(100, 100);
@@ -6720,9 +7957,11 @@ async function demo() {
 
 swipe(startx: number, starty: number, endx: number, endy: number): Promise\<void>
 
-Swipes on this **UiDriver** object from the start point to the end point based on the given coordinates.
+Swipes on this **UiDriver** object from the start point to the end point based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [swipe<sup>9+</sup>](#swipe9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [swipe<sup>9+</sup>](#swipe9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6735,9 +7974,16 @@ This API is deprecated since API version 9. You are advised to use [swipe<sup>9+
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.|
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.|
 
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -6750,9 +7996,11 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-Captures the current screen of this **UiDriver** object and saves it as a PNG image to the given save path.
+Captures the current screen of this **UiDriver** object and saves it as a PNG image to the given save path. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [screenCap<sup>9+</sup>](#screencap9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [screenCap<sup>9+</sup>](#screencap9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6772,7 +8020,9 @@ This API is deprecated since API version 9. You are advised to use [screenCap<su
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');

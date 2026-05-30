@@ -1,29 +1,36 @@
 # @ohos.multimodalInput.gestureEvent (Gesture Event) (System API)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @zhang_yixin13-->
+
 The **gestureEvent** module provides gesture events reported by devices.
 
 >  **NOTE**
 >
-> The initial APIs of this module are supported since API version 14. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
 ```js
-import { Touch } from '@kit.InputKit';
+import { Touch , SwipeInward } from '@kit.InputKit';
 ```
 
-## TouchGestureEvent
+## TouchGestureEvent<sup>18+</sup>
 
 Defines a touchscreen gesture event.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| Name              | Type                     | Readable| Writable| Description            |
+| Name              | Type                     | Read-Only| Optional| Description            |
 | ------------------ | ------------------------- | ---- | ---- | ---------------- |
-| action | [TouchGestureAction](#touchgestureaction18) | Yes  | No  | Enumerates touchscreen gesture types.|
-| touches | [Touch](js-apis-touchevent.md#touch)[] | Yes| No| Touch point information.|
+| action | [TouchGestureAction](#touchgestureaction18) | No  | No  | Enumerates touchscreen gesture types.|
+| touches | [Touch](js-apis-touchevent.md#touch)[] | No| No| Touch point information.|
 
 ## TouchGestureAction<sup>18+</sup>
 
@@ -40,3 +47,15 @@ Enumerates touchscreen gesture types.
 | PINCH_CLOSED | 4   | Multi-finger pinch closed.      |
 | PINCH_OPENED | 5   | Multi-finger pinch opened.      |
 | GESTURE_END | 6   | Gesture ended.      |
+
+## SwipeInward
+
+Defines an inward swipe event.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
+| Name              | Type                     | Read-Only| Optional| Description            |
+| ------------------ | ------------------------- | ---- | ---- | ---------------- |
+| type      | [ActionType](js-apis-multimodalinput-gestureevent.md#actiontype)  | No  | No  |        Type of the inward swipe event. The value is fixed at **SwipeInward**.    |
+| x      | number  | No  | No  |    X-coordinate of the swipe event trigger point, in pixels.     |
+| y      | number  | No  | No  |     Y-coordinate of the swipe event trigger point, in pixels.    |

@@ -25,7 +25,7 @@
 
 ### 按需加载
 
-按需加载可以避免一次性初始化和加载所有元素，从而使首帧绘制时加载页面阶段的创建列表元素时间大大减少，从而提升性能表现。具体可参考文档[列表场景性能提升实践](list-perf-improvment.md#懒加载)。
+按需加载可以避免一次性初始化和加载所有元素，从而使首帧绘制时加载页面阶段的创建列表元素时间大大减少，从而提升性能表现。具体可参考文档[列表场景性能提升实践](list-perf-improvement.md#懒加载)。
 
 **案例：每一个列表元素都被初始化和加载，为了突出效果，方便观察，设定数组中的元素有1000个，使其在加载页面阶段创建列表内元素耗时大大增加。**
 
@@ -33,7 +33,8 @@
 @Entry
 @Component
 struct AllLoad {
-  @State arr: String[] = Array.from(Array<string>(1000), (val,i) =>i.toString());
+  @State arr: String[] = Array.from(Array<string>(1000), (val, i) => i.toString());
+
   build() {
     List() {
       ForEach(this.arr, (item: string) => {
@@ -151,7 +152,7 @@ struct SmartLoad {
             .fontSize(20)
             .margin({ left: 10 })
         }
-      }, (item:string) => item)
+      }, (item: string) => item)
     }
   }
 }
@@ -188,7 +189,7 @@ struct TaskSync {
   }
 
   build() {
-    Column({space: 10}) {
+    Column({ space: 10 }) {
       Text(this.text).fontSize(50)
     }
     .width('100%')
@@ -216,11 +217,11 @@ import { worker } from "@kit.ArkTS";
 @Component
 struct TaskAsync {
   @State private text: string = '';
-  private workerInstance:worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
+  private workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
 
   aboutToAppear() {
     // 处理来自子线程的消息
-    this.workerInstance.onmessage = (message)=> {
+    this.workerInstance.onmessage = (message) => {
       console.info(`message from worker: ${JSON.stringify(message)}`);
       this.text = JSON.parse(JSON.stringify(message)).data;
       this.workerInstance.terminate();
@@ -231,14 +232,15 @@ struct TaskAsync {
   }
 
   build() {
-    Column({space: 10}) {
+    Column({ space: 10 }) {
       Text(this.text).fontSize(50)
     }
     .width('100%')
     .height('100%')
     .padding(10)
   }
-  private async computeTaskAsync(){
+
+  private async computeTaskAsync() {
     // 发送消息到子线程
     this.workerInstance.postMessage('hello world')
   }
@@ -257,6 +259,7 @@ function computeTask(count: number) {
   }
   return 'task complete';
 }
+
 // 处理来自主线程的消息
 parentPort.onmessage = (message) => {
   console.info(`onmessage: ${JSON.stringify(message)}`);
@@ -291,7 +294,8 @@ parentPort.onmessage = (message) => {
 @Entry
 @Component
 struct SyncLoadImage {
-  @State arr: String[] = Array.from(Array<string>(100), (val,i) =>i.toString());
+  @State arr: String[] = Array.from(Array<string>(100), (val, i) => i.toString());
+
   build() {
     Column() {
       Row() {
@@ -319,23 +323,24 @@ struct SyncLoadImage {
 @Entry
 @Component
 struct AsyncLoadImage {
-  @State arr: String[] = Array.from(Array<string>(100), (val,i) =>i.toString());
-    build() {
-      Column() {
-        Row() {
-          List() {
-            ForEach(this.arr, (item: string) => {
-              ListItem() {
-                Image($r('app.media.4k'))
-                  .border({ width: 1 })
-                  .borderStyle(BorderStyle.Dashed)
-                  .height(100)
-                  .width(100)
-              }
-            }, (item: string) => item.toString())
-          }
+  @State arr: String[] = Array.from(Array<string>(100), (val, i) => i.toString());
+
+  build() {
+    Column() {
+      Row() {
+        List() {
+          ForEach(this.arr, (item: string) => {
+            ListItem() {
+              Image($r('app.media.4k'))
+                .border({ width: 1 })
+                .borderStyle(BorderStyle.Dashed)
+                .height(100)
+                .width(100)
+            }
+          }, (item: string) => item.toString())
         }
       }
+    }
   }
 }
 ```
@@ -379,12 +384,12 @@ struct Depth1 {
                     .width('100%')
                     .height(80)
                     .textAlign(TextAlign.Center)
-                    .border({width:1})
+                    .border({ width: 1 })
                 }
               }
             }
           }
-        }, (item:string) => item)
+        }, (item: string) => item)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .columnsGap(0)
@@ -518,6 +523,8 @@ struct IsVisibleExample {
 
 ![reduce-redundant-operations-when-render-first-frame-ifelse-rs](figures/reduce-redundant-operations-when-render-first-frame-ifelse-rs.png)
 
-**说明**：在App泳道找到页面加载后第一个ReceiveVsync，其中的Trace标签H:MarshRSTransactionData携带参数transactionFlag，在render_service泳道找到相同transactionFlag的标签H:RSMainThread::ProcessCommandUni，其所属的ReceiveVsync时长就是render_service首帧耗时。
+>**说明**：
+>
+>在App泳道找到页面加载后第一个ReceiveVsync，其中的Trace标签H:MarshRSTransactionData携带参数transactionFlag，在render_service泳道找到相同transactionFlag的标签H:RSMainThread::ProcessCommandUni，其所属的ReceiveVsync时长就是render_service首帧耗时。
 
 从trace图可以看出，优化前使用Visibility.None隐藏图片后在Build阶段仍然有Image元素创建，Build耗时82ms230μs，使用if else隐藏图片后Build阶段耗时减少到660μs，显著减少页面加载耗时。同时优化前应用的render_service首帧耗时为10ms55μs，而优化后减少到了1ms604μs，渲染时间明显减少。

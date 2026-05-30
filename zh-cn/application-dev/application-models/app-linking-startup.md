@@ -1,5 +1,12 @@
 # 使用App Linking实现应用间跳转
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45-->
+<!--Designer: @ccllee1-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+
 ## 简介
 
 使用App Linking进行跳转时，系统会根据接口传入的uri信息（HTTPS链接）将用户引导至目标应用中的特定内容，无论应用是否已安装，用户都可以访问到链接对应的内容，整个跳转体验相比[Deep Linking](deep-linking-startup.md)方式更加顺畅。
@@ -41,15 +48,17 @@
 > skills标签下默认包含一个skill对象，用于标识应用入口。应用跳转链接不能在该skill对象中配置，需要创建独立的skill对象。如果存在多个跳转场景，需要在skills标签下创建不同的skill对象，否则会导致配置无法生效。
 
 
-例如，声明应用关联在域名是www.example.com，则需进行如下配置：
+例如，声明应用关联的域名是www.example.com，则需进行如下配置：
 
-```json
+<!-- @[app_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
       {
-        // ...
+        // ···
         "skills": [
           {
             "entities": [
@@ -79,15 +88,16 @@
               }
             ],
             // domainVerify须设置为true
-           "domainVerify": true
+            "domainVerify": true
           } // 新增一个skill对象，用于跳转场景。如果存在多个跳转场景，需配置多个skill对象。
         ]
-      }
-    ]
+      },
+    // ···
+    ],
+    // ···
   }
 }
 ```
-
 
 ### 在开发者网站上关联应用
 
@@ -109,13 +119,15 @@
    }
    ```
 
-   `app-identifer`是在应用签名阶段为应用分配的唯一标识，即[HarmonyAppProvision配置文件](../security/app-provision-structure.md)中声明的`app-identifer`字段的值。
+   `app-identifier`是在应用签名阶段为应用分配的唯一标识，即[HarmonyAppProvision配置文件](../security/app-provision-structure.md)中声明的`app-identifier`字段的值。
 
 1. 将配置文件放在域名服务器的固定目录下。
+
    固定目录为：
    > https://*your.domain.name*/.well-known/applinking.json
 
    例如开发者的域名为www.example.com，则需将applinking.json文件放在如下位置：
+
    `https://www.example.com/.well-known/applinking.json`
 
 
@@ -123,29 +135,29 @@
 
 在应用的Ability(如EntryAbility)的onCreate()或者onNewWant()生命周期回调中添加代码，以处理传入的链接。
 
-```ts
+<!-- @[applink_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/entryability/AppLinkEntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
 
-export default class EntryAbility extends UIAbility {
+export default class AppLinkEntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // 从want中获取传入的链接信息。
     // 如传入的url为：https://www.example.com/programs?action=showall
-    let uri = want?.uri 
+    let uri = want?.uri;
     if (uri) {
-      // 从链接中解析query参数，拿到参数后，开发者可根据自己的的务需求进行后续的处理。
+      // 从链接中解析query参数，拿到参数后，开发者可根据自己的业务需求进行后续的处理。
       let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action')
+      let action = urlObject.params.get('action');
       // 例如，当action为showall时，展示所有的节目。
-      if (action === "showall") {
-         // ...
+      if (action === 'showall') {
+        // ...
       }
     }
   }
 }
 ```
-
-
 
 ## 拉起方应用实现应用跳转
 
@@ -154,16 +166,24 @@ export default class EntryAbility extends UIAbility {
 openLink接口提供了两种拉起目标应用的方式，开发者可根据业务需求进行选择。
 
   - **方式一：** 仅以App Linking的方式打开应用
+
      将`appLinkingOnly`参数设为true，若有匹配的应用，则直接打开目标应用。若无App Linking匹配的应用，则抛异常给开发者进行处理。
 
   - **方式二：** 以App Linking优先的方式打开应用
+
      将`appLinkingOnly`参数设为false或者默认，则为App Linking优先的方式打开应用。若有App Linking匹配的应用，则直接打开目标应用。若无App Linking匹配的应用，则尝试以Deep Linking的方式打开应用。
 
 本文为了方便验证App Linking的配置是否正确，选择方式一，示例如下。
 
-```ts
-import common from '@ohos.app.ability.common';
-import { BusinessError } from '@ohos.base';
+<!-- @[applink_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER = 0xF811;
+const TAG = '[Sample_AppLinking]';
 
 @Entry
 @Component
@@ -175,19 +195,20 @@ struct Index {
       .margin({ bottom: '12vp' })
       .onClick(() => {
         let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let link: string = "https://www.example.com/programs?action=showall";
+        let link: string = 'https://www.example.com/programs?action=showall'; // 此处为实际应用链接
         // 仅以App Linking的方式打开应用
         context.openLink(link, { appLinkingOnly: true })
           .then(() => {
-            console.info('openlink success.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'openlink success.');
           })
           .catch((error: BusinessError) => {
-            console.error(`openlink failed. error:${JSON.stringify(error)}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `openlink failed. error:${JSON.stringify(error)}`);
           });
       })
   }
 }
 ```
+
 
 在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应的App Linking配置正确。
 
@@ -214,5 +235,6 @@ struct Index {
 5. 如果同一域名关联了多个应用，那么该域名的链接将拉起哪个应用呢？
 
    开发者可以通过配置applinking.json以关联多个应用。如果每个应用的module.json5的uris字段配置的都是一样的，那么系统将弹出列表框供用户选择要拉起的目标应用。
+   
    为了更好的体验，开发者也可以通过链接的path去区分拉起的目标应用，如链接`https://www.example.com/path1`拉起目标应用1，链接`https://www.example.com/path2`拉起目标应用2。
   

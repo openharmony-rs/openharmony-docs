@@ -4,15 +4,15 @@
 <!--Owner: @yp99ustc-->
 <!--Designer: @ctqctq99-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
-- [Introduction to ArkWeb](web-component-overview.md)
+- [About This Kit](web-component-overview.md)
 - [ArkWeb Process](web_component_process.md)
 - [Lifecycle of Web Components](web-event-sequence.md)
 - Setting Basic Attributes and Events<!--web-set-attributes-events-->
   - [Developing User-Agent](web-default-userAgent.md)
   - [Managing Cookies and Data Storage](web-cookie-and-data-storage-mgmt.md)
-  - [Setting the Dark Mode](web-set-dark-mode.md)
+  - [Setting Dark Mode](web-set-dark-mode.md)
   - [Opening Pages in a New Window](web-open-in-new-window.md)
   - [Managing Location Permissions](web-geolocation-permission.md)
   - [Using Incognito Mode](web-incognito-mode.md)
@@ -21,6 +21,7 @@
   - [Rendering Modes of the Web Component](web-render-mode.md)
   - [Fitting In the Page Content Layout](web-fit-content.md)
   - [Optimizing the Page Flash During the Redirection](web-router-flash-optimization.md)
+  - [Obtaining the Web Page Content Height](web-getpage-height.md)
 - Using Frontend Page JavaScript Code on the Application<!--web-use-frontend-page-js-->
   - [Invoking Frontend Page Functions on the Application](web-in-app-frontend-page-function-invoking.md)
   - [Invoking Application Functions on the Frontend Page](web-in-page-app-function-invoking.md)
@@ -35,7 +36,7 @@
   - [Interacting with Applications Using Gestures](web-gesture.md)
   - [Zooming Web Pages](web-scale-zoom.md)
   - [Displaying Web Page Dialog Boxes](web-dialog.md)
-  - [Implementing the Drag Functionality](web_drag.md)
+  - [Implementing the Drag Functionality](web_drag.md)<!--RP2--><!--RP2End-->
 - Managing Cyber Security and Privacy for the Web Component<!--web-manage-cyber-security-privacy-->
   - [Resolving Cross-Origin Resource Access](web-cross-origin.md)
   - [Intelligent Tracking Prevention](web-intelligent-tracking-prevention.md)
@@ -64,9 +65,11 @@
   - [Calculating and Adjusting Safe Area Insets](web-safe-area-insets.md)
   - [Using Web Menus](web_menu.md)
   - [Interacting with the System Clipboard](web-clipboard.md)
+  - [Using Smart Text Data Detector](web-data-detector.md)
 - [Using Same-Layer Rendering](web-same-layer.md)
 - [Using Offline Web Components](web-offline-mode.md)
+- [Using WebNativeMessagingExtensionAbility to Implement Communication Between Browser Extensions and Native Applications](web-native-messaging.md)
 - Web Debugging<!--web-debugging-->
   - [Debugging Frontend Pages by Using DevTools](web-debugging-with-devtools.md)
   - [Using Crashpad to Collect Web Component Crash Information](web-crashpad.md)
-  - [Troubleshooting White Screen Issues on Web Pages](web-white-screen.md)
+  - [Troubleshooting White Screen Issues on Web Pages](web-white-screen.md)<!--RP1--><!--RP1End-->

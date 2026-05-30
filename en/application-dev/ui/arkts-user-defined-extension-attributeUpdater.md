@@ -1,4 +1,10 @@
 # Attribute Updater (AttributeUpdater)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -10,7 +16,9 @@ This flexibility, however, comes with a trade-off: It does not enforce the "sing
 
 ## API Definition
 
-```ts
+<!-- @[att_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/Common.ets) -->
+
+``` TypeScript
 export declare class AttributeUpdater<T, C = Initializer<T>> implements AttributeModifier<T> {
 
   applyNormalAttribute?(instance: T): void;
@@ -19,7 +27,7 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 
   get attribute(): T | undefined;
 
-  updateConstructorParams: C;
+  public updateConstructorParams: C;
 }
 ```
 
@@ -38,8 +46,10 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 
 After a component is initialized, you can use the **attribute** method of the **AttributeUpdater** instance to obtain the attribute object. Modifying attributes directly through this object will immediately trigger an update to the component's attributes.
 
-```ts
-import { AttributeUpdater } from '@ohos.arkui.modifier'
+<!-- @[att_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttModifier.ets) -->
+
+``` TypeScript
+import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
   // The initializeModifier method is triggered upon the first binding, initializing the attributes.
@@ -58,7 +68,7 @@ struct updaterDemo {
   build() {
     Row() {
       Column() {
-        Button("Button")
+        Button('Button')
           .attributeModifier(this.modifier)
           .onClick(() => {
             // Directly modify the component's attributes through attribute, which will trigger an immediate update.
@@ -78,8 +88,10 @@ struct updaterDemo {
 
 You can directly update the constructor parameters of a component using the **updateConstructorParams** method of an **AttributeUpdater** instance.
 
-```ts
-import { AttributeUpdater } from '@ohos.arkui.modifier'
+<!-- @[att_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttUpdate.ets) -->
+
+``` TypeScript
+import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyTextModifier extends AttributeUpdater<TextAttribute, TextInterface> {
   initializeModifier(instance: TextAttribute): void {
@@ -89,12 +101,12 @@ class MyTextModifier extends AttributeUpdater<TextAttribute, TextInterface> {
 @Entry
 @Component
 struct updaterDemo {
-  modifier: MyTextModifier = new MyTextModifier()
+  modifier: MyTextModifier = new MyTextModifier();
 
   build() {
     Row() {
       Column() {
-        Text("Text")
+        Text('Text')
           .attributeModifier(this.modifier)
           .fontColor(Color.White)
           .fontSize(14)

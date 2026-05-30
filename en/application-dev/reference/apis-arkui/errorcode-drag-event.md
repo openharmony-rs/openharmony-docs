@@ -1,4 +1,10 @@
 # Drag Event Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -8,13 +14,13 @@
 
 **Error Message**
 
-GetData failed, data not found.
+Data not found.
 
-**Error Description**
+**Description**
 
-This error code is reported if no data is obtained after an application calls the **GetData()** API of **DragEvent**.
+This error code is reported when no data has been obtained using the [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) API of **DragEvent**.
 
-**Possible Cause**
+**Possible Causes**
 
 The **DragEvent** data has not been obtained.
 
@@ -22,20 +28,56 @@ The **DragEvent** data has not been obtained.
 
 N/A
 
-## 190002 Data Error
+## 190002 Data Retrieval Error
 
 **Error Message**
 
-GetData failed, data error.
+Data error.
 
-**Error Description**
+**Description**
 
-This error code is reported if the obtained data is incorrect after an application calls the **GetData()** API of **DragEvent**.
+This error code is reported when the data obtained via the [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) API of **DragEvent** is incorrect.
 
-**Possible Cause**
+**Possible Causes**
 
 The obtained data is incorrect.
 
 **Solution**
 
 N/A
+
+## 190003 Operation Not Allowed in the Current Phase
+
+**Error Message**
+
+Operation not allowed for current phase.
+
+**Description**
+
+This error code is reported when you call an API that is only supported during the [onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop) phase outside of that phase.
+
+**Possible Causes**
+
+The operation is not allowed in the current phase.
+
+**Solution**
+
+Call the corresponding API in the [onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop) phase.
+
+## 190004 Operation Failed
+
+**Error Message**
+
+Operation failed.
+
+**Description**
+
+This error code is reported if the [cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15) API is called when data has not been loaded or loading is complete.
+
+**Possible Causes**
+
+The API is called at a wrong time.
+
+**Solution**
+
+Call the [cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15) API during data loading.

@@ -1,5 +1,12 @@
 # native_avbuffer_info.h
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## 概述
 
 声明了媒体数据结构AVBuffer属性的定义。
@@ -34,7 +41,7 @@
 
 ### OH_AVCodecBufferFlags
 
-```
+```c
 enum OH_AVCodecBufferFlags
 ```
 

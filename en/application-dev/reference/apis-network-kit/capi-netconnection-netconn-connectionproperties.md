@@ -1,5 +1,16 @@
 # NetConn_ConnectionProperties
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+typedef struct NetConn_ConnectionProperties {...} NetConn_ConnectionProperties
+```
+
 ## Overview
 
 Defines the network connection properties.

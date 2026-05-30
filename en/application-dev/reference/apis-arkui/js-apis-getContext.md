@@ -1,9 +1,15 @@
 # getContext
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **getContext** API enables you to obtain the context of the ability (either UIAbilityContext or ExtensionContext) on the current page.
+To obtain the current Ability's Context within a page, call the **getContext** API to obtain the [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) or [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) associated with the current page.
 
 > **NOTE**
-> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [getHostContext](js-apis-arkui-UIContext.md#gethostcontext12) in [UIContext](js-apis-arkui-UIContext.md#uicontext) instead.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - This API applies only to the stage model.
 
 ## getContext<sup>(deprecated)</sup>
@@ -14,13 +20,14 @@ Obtains the **Context** object associated with an ability on the page.
 
 > **NOTE**
 > 
-> This API deprecated since API version 18. You are advised to use [getHostContext](js-apis-arkui-UIContext.md#gethostcontext12) in [UIContext](js-apis-arkui-UIContext.md#uicontext) instead.
->
-> Since API version 12, you can use the [getHostContext](js-apis-arkui-UIContext.md#gethostcontext12) API in [UIContext](js-apis-arkui-UIContext.md#uicontext) to obtain the UI context.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use **getHostContext** instead. [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12) has effect only after first a [UIContext](arkts-apis-uicontext-uicontext.md) instance is obtained.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -32,15 +39,29 @@ Obtains the **Context** object associated with an ability on the page.
 
 | Type| Description                            |
 | ------ | ------------------------------- |
-| [Context](../../application-models/application-context-stage.md) | Context of the ability. The context type depends on the ability type. For example, if this API is called on a page of the UIAbility, the return value type is UIAbilityContext; if this API is called on a page of the ExtensionAbility, the return value type is ExtensionContext.   |
+| [Context](#context)  | Context of the ability. The context type depends on the ability type. For example, if this API is called on a page of the UIAbility, the return value type is UIAbilityContext; if this API is called on a page of the ExtensionAbility, the return value type is ExtensionContext.   |
+
+## Context
+
+type Context = Context
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Type| Description                            |
+| ------ | ------------------------------- |
+| [Context](../../application-models/application-context-stage.md)  | Context of the ability. The context type depends on the ability type. For example, if this API is called on a page of the UIAbility, the return value type is UIAbilityContext; if this API is called on a page of the ExtensionAbility, the return value type is ExtensionContext.   |
+
+> **NOTE**
+> 
+> Directly using **getContext** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a **UIContext** instance using **getUIContext()**, and then obtain the associated **Context** object using [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12).
 
 **Example**
 
 Load a page by calling **windowStage.loadContent** in the UIAbility.
-
-> **NOTE**
-> 
-> Directly using **getContext** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a **UIContext** instance using [getUIContext](js-apis-arkui-UIContext.md#uicontext), and then obtain the associated **Context** object using [getHostContext](js-apis-arkui-UIContext.md#gethostcontext12).
 
 ```ts
 // EntryAbility.ets
@@ -84,6 +105,7 @@ export default class EntryAbility extends UIAbility {
 ```
 In **Index.ets**, **getContext** is used to obtain the context. In this example, the return value type is UIAbilityContext.
 
+<!--deprecated_code_no_check-->
 ```ts
 //pages/Index.ets
 @Entry

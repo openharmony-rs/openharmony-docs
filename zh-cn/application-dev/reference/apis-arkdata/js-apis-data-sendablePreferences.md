@@ -1,8 +1,8 @@
 # @ohos.data.sendablePreferences (共享用户首选项)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @yanhuii-->
-<!--Designer: @houpengtao1-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -52,7 +52,7 @@ getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
 | 参数名  | 类型             | 必填 | 说明                                                                                                                                                                           |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)          | 是   | 应用上下文。 |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | 是   | 应用上下文。 |
 | options | [Options](#options) | 是   | 与Preferences实例相关的配置选项。        |
 
 **返回值：**
@@ -110,7 +110,7 @@ getPreferencesSync(context: Context, options: Options): Preferences
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)               | 是   | 应用上下文。 |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | 是   | 应用上下文。 |
 | options | [Options](#options) | 是   | 与Preferences实例相关的配置选项。                            |
 
 **返回值：**
@@ -163,7 +163,7 @@ deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
 
 | 参数名  | 类型             | 必填 | 说明                                                                         |
 | ------- | ---------------- | ---- | ----------------------------------------------------------------------------|
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)          | 是   | 应用上下文。 |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | 是   | 应用上下文。 |
 | options | [Options](#options) | 是   | 与Preferences实例相关的配置选项。                                                                            |
 
 **返回值：**
@@ -221,7 +221,7 @@ removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&
 
 | 参数名  | 类型             | 必填 | 说明                                                                                                                      |
 | ------- | ---------------- | ---- | ----------------------------------------------------------------------------------------------------------------------- |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)          | 是   | 应用上下文。 |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | 是   | 应用上下文。 |
 | options | [Options](#options) | 是   | 与Preferences实例相关的配置选项。                                                                                    |
 
 **返回值：**
@@ -278,7 +278,7 @@ removePreferencesFromCacheSync(context: Context, options: Options):void
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)               | 是   | 应用上下文。 |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | 是   | 应用上下文。 |
 | options | [Options](#options) | 是   | 与Preferences实例相关的配置选项。                            |
 
 **错误码：**
@@ -315,10 +315,10 @@ Preferences实例配置选项。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-| 名称        | 类型   | 必填 | 说明                                                         |
-| ----------- | ------ | ---- | ------------------------------------------------------------ |
-| name        | string | 是   | Preferences实例的名称。                                      |
-| dataGroupId | string\|null | 否   | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。|
+| 名称        | 类型   | 只读| 可选 | 说明                                                         |
+| ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
+| name        | string | 否  | 否  | Preferences实例的名称。                                      |
+| dataGroupId | string\|null | 否  | 是  | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。|
 
 
 ## Preferences
@@ -341,7 +341,7 @@ get(key: string, defValue: lang.ISendable): Promise&lt;lang.ISendable&gt;
 
 | 参数名   | 类型                    | 必填 | 说明  |
 | -------- | ----------------------- | ---- |--------|
-| key      | string                  | 是   | 要获取的存储Key名称，不能为空。  |
+| key      | string                  | 是   | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。  |
 | defValue | [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | 是   | 默认返回值。 |
 
 **返回值：**
@@ -388,7 +388,7 @@ getSync(key: string, defValue: lang.ISendable): lang.ISendable
 
 | 参数名   | 类型                    | 必填 | 说明            |
 | -------- | ----------------------- | ---- |---------------------|
-| key      | string                  | 是   | 要获取的存储Key名称，不能为空。  |
+| key      | string                  | 是   | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。  |
 | defValue | [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | 是   | 默认返回值。 |
 
 **返回值：**
@@ -508,7 +508,7 @@ put(key: string, value: lang.ISendable): Promise&lt;void&gt;
 
 | 参数名 | 类型                    | 必填 | 说明                         |
 | ------ | ----------------------- | ---- |--------------------------|
-| key    | string                  | 是   | 要修改的存储的Key，不能为空。  |
+| key    | string                  | 是   | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。  |
 | value  | [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | 是   | 存储的新值。 |
 
 **返回值：**
@@ -559,7 +559,7 @@ putSync(key: string, value: lang.ISendable): void
 
 | 参数名 | 类型                    | 必填 | 说明                                                         |
 | ------ | ----------------------- | ---- | ------------------------ |
-| key    | string                  | 是   | 要修改的存储的Key，不能为空。 |
+| key    | string                  | 是   | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 | value  | [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | 是   | 存储的新值。 |
 
 **错误码：**
@@ -591,7 +591,7 @@ has(key: string): Promise&lt;boolean&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空。 |
+| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -639,7 +639,7 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空。 |
+| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -681,7 +681,7 @@ delete(key: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空。 |
+| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -725,7 +725,7 @@ deleteSync(key: string): void
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空。 |
+| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **错误码：**
 

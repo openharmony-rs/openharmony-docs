@@ -6,11 +6,11 @@
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
-The UserStatus module, designed for user state awareness, empowers the system to perceive specific conditions of users, such as determining their age group.
+The **UserStatus** module, designed for user state awareness, empowers the system to perceive specific conditions of users, such as determining their age group.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 20. This API is deprecated since API version 24. No substitute API is provided.
 
 
 ## Modules to Import
@@ -19,7 +19,7 @@ The UserStatus module, designed for user state awareness, empowers the system to
 import { userStatus } from '@kit.MultimodalAwarenessKit';
 ```
 
-## UserAgeGroup
+## UserAgeGroup<sup>(deprecated)</sup>
 
 Enumerates the user age groups, for example, child or adult.
 
@@ -30,36 +30,40 @@ Enumerates the user age groups, for example, child or adult.
 | OTHERS  | 0    | Adult.|
 | CHILD  | 1    | Child.|
 
-## UserClassification
+## UserClassification<sup>(deprecated)</sup>
 
 Defines the user age group detection result.
 
 **System capability**: SystemCapability.MultimodalAwareness.UserStatus
 
-| Name               | Type  |Readable|Writable| Description                  |
+| Name               | Type  |Read-Only|Optional| Description                  |
 | ------------------- | ---- |----|----| ---------------------- |
-| ageGroup  | [UserAgeGroup](#useragegroup)   |Yes|No| User age group, for example, child or adult.|
-| confidence  | float    |Yes|No| Confidence of the detection result. The value is a floating point number ranging from 0 to 1. A larger value indicates a higher confidence.|
+| ageGroup  | [UserAgeGroup](#useragegroupdeprecated)   |No|Yes| User age group, for example, child or adult.|
+| confidence  | float    |No|Yes| Confidence of the detection result. The value is a floating point number ranging from 0 to 1. A larger value indicates a higher confidence.|
 
 
-## userStatus.on('userAgeGroupDetected')
+## userStatus.on('userAgeGroupDetected')<sup>(deprecated)</sup>
 
- on(type: 'userAgeGroupDetected', callback: Callback&lt;UserClassification&gt;): void;
+ on(type: 'userAgeGroupDetected', callback: Callback&lt;UserClassification&gt;): void
 
 Enables the age group detection function.
 
 When the function is enabled, the application can recommend content based on the age group detection result.
 
-If the device does not support the function, error code 801 is returned.
-
 **System capability**: SystemCapability.MultimodalAwareness.UserStatus
+
+**Device behavior differences**: This API can be called on phones. If it is called on other devices, error code **801** is returned.
+
+> **NOTE**
+>
+> This API is supported only on some phones. Error code **801** is returned if it is called on unsupported phones.
 
 **Parameters**
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- |------------------------------------------------------------ |
 | type     | string                           | Yes  | Event type. The value **userAgeGroupDetected** indicates the event of enabling age group detection.|
-| callback | Callback&lt;[UserClassification](#userclassification)&gt; | Yes  | Callback used to return the detection result.|
+| callback | Callback&lt;[UserClassification](#userclassificationdeprecated)&gt; | Yes  | Callback used to return the detection result.|
 
 **Error codes**
 
@@ -89,20 +93,26 @@ try {
 
 
 
-## userStatus.off('userAgeGroupDetected')
+## userStatus.off('userAgeGroupDetected')<sup>(deprecated)</sup>
 
-off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;): void;
+off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;): void
 
 Disables the age group detection function.
 
 **System capability**: SystemCapability.MultimodalAwareness.UserStatus
+
+**Device behavior differences**: This API can be called on phones. If it is called on other devices, error code **33900003** is returned.
+
+> **NOTE**
+>
+> This API is supported only on some phones. Error code **33900003** is returned if it is called on unsupported phones.
 
 **Parameters**
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                           | Yes  | Event type. The value **userAgeGroupDetected** indicates the event of enabling age group detection.|
-| callback | Callback&lt;[UserClassification](#userclassification)&gt; | No  | Callback used to return the detection result.|
+| callback | Callback&lt;[UserClassification](#userclassificationdeprecated)&gt; | No  | Callback used to return the detection result.|
 
 **Error codes**
 

@@ -1,5 +1,12 @@
 # workScheduler Error Codes
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @xufu7-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -51,7 +58,7 @@ System service operation failed.
 
 **Description**
 
-This error code is reported when the client process fails to obtain the system service.
+This error code is reported when the client process fails to request the system service.
 
 **Possible Causes**
 

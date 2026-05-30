@@ -4,11 +4,13 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## 概述
 
 声明ArkWeb NDK接口异常错误码。
+
+**引用文件：** <web/arkweb_error_code.h>
 
 **库：** libohweb.so
 
@@ -31,7 +33,7 @@
 
 ### ArkWeb_ErrorCode
 
-```
+```c
 enum ArkWeb_ErrorCode
 ```
 
@@ -58,7 +60,7 @@ enum ArkWeb_ErrorCode
 
 ### ArkWeb_BlanklessErrorCode
 
-```
+```c
 enum ArkWeb_BlanklessErrorCode
 ```
 

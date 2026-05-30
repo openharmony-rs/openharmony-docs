@@ -4,22 +4,22 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
 
 独立显示Ability的容器。
 
 >  **说明：**
 >
->  从API Version 10开始，该组件不再维护，推荐使用[UIExtensionComponent](ts-container-ui-extension-component-sys.md)。
+>  从API version 10开始，该组件不再维护，推荐使用[UIExtensionComponent](ts-container-ui-extension-component-sys.md)。
 >
->  该组件从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  本模块为系统接口。
 
 ## 使用约束
 
-AbilityComponent为独立层次渲染，不能再之上叠加其他显示内容。
+AbilityComponent为独立层次渲染，不能在之上叠加其他显示内容。
 
 AbilityComponent不支持处理输入事件，事件不经过当前Ability，直接分发给内部的Ability处理。
 

@@ -1,10 +1,15 @@
 # 全局自定义组件复用实现
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 简介
 
 默认的组件复用行为，是将子组件放在父组件的缓存池里，受到这个限制，不同父组件中的相同子组件无法复用，推荐的解决方案是将父组件改为builder函数，让子组件共享组件复用池，但是由于在一些应用场景下，父组件承载了复杂的带状态的业务逻辑，而builder是无状态的，修改会导致难以维护，因此开发者可以使用BuilderNode自行管理组件复用池。
-
-
 
 ## 实现思路
 
@@ -233,7 +238,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 6. 使用NodeContainer占位轮播图组件和瀑布流子组件的位置，在最外层的Swiper切换时，会根据LazyForEach的懒加载机制回收页面，此时会触发NodeItem中的aboutToDisappear方法，将组件回收到复用池中。而新加载的页面则可以通过自定义的组件复用池获取可用的子组件，如果未获取到对应type类型的组件，则会重新创建新的组件，否则直接获取之前回收的子组件进行复用。
 
    ```ts
-   ...
+   // ...
    @Builder
    function FlowItemBuilder(data: ESObject) {
      FlowItemNode({
@@ -420,7 +425,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
 3. 系统通过onIdle回调方法，将帧尾空闲时间通过参数idleTimeInNano（单位：ns）传递出来。在接收到帧尾空闲时间后，如果有需要预创建的组件，可根据单个组件的预创建耗时，设置预创建的剩余空闲时间上限（示例代码中设置了1ms）。
 
-   ```
+   ```typescript
    // onIdle回调，返回帧尾空闲时间idleTimeInNano。
    onIdle(idleTimeInNano: number): void {
    
@@ -467,7 +472,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
 6. 在冷启动时通过帧回调的方式预创建组件。
 
-   ```
+   ```typescript
    @Entry
    @Component
    struct Index {
@@ -534,4 +539,4 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
 ## 参考资料
 
-[场景示例代码](https://gitee.com/harmonyos-cases/cases/tree/master/CommonAppDevelopment/feature/perfermance/customreusablepool)
+[场景示例代码](https://gitee.com/harmonyos_samples/arkweb-same-level-rendering)

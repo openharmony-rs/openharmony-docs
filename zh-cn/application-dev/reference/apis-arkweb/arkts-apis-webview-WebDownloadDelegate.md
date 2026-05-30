@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 下载任务的状态会通过该类的回调接口通知给用户。
 
@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 11开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 导入模块
 
@@ -30,7 +30,7 @@ onBeforeDownload(callback: Callback\<WebDownloadItem>): void
 
 > **说明：**
 >
->处于PENDING状态的下载任务会首先将文件保存至临时目录。在调用WebDownloadItem.start并指定目标路径后，临时文件将被重命名为目标文件名，未完成下载的部分会在调用WebDownloadItem.start并指定目标路径后直接下载到目标路径。若希望避免在调用WebDownloadItem.start前生成临时文件，可先通过WebDownloadItem.cancel来取消当前的下载任务，之后再使用WebDownloadManager.resumeDownload来恢复被取消的下载任务。
+>处于PENDING状态的下载任务会首先将文件保存至临时目录。在调用[WebDownloadItem.start](./arkts-apis-webview-WebDownloadItem.md#start11)并指定目标路径后，临时文件将被重命名为目标文件名，未完成下载的部分会在调用WebDownloadItem.start并指定目标路径后直接下载到目标路径。若希望避免在调用WebDownloadItem.start前生成临时文件，可先通过[WebDownloadItem.cancel](./arkts-apis-webview-WebDownloadItem.md#cancel11)来取消当前的下载任务，之后再使用[WebDownloadManager.resumeDownload](./arkts-apis-webview-WebDownloadManager.md#resumedownload11)来恢复被取消的下载任务。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -70,7 +70,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
@@ -140,7 +140,7 @@ onDownloadUpdated(callback: Callback\<WebDownloadItem>): void
 
 | 参数名  | 类型   | 必填 | 说明           |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载的回调已更新。 |
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载更新的回调。 |
 
 **示例：**
 
@@ -172,7 +172,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
@@ -242,7 +242,7 @@ onDownloadFinish(callback: Callback\<WebDownloadItem>): void
 
 | 参数名  | 类型   | 必填 | 说明           |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载的回调已完成。 |
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载完成的回调。 |
 
 **示例：**
 
@@ -274,7 +274,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
@@ -344,7 +344,7 @@ onDownloadFailed(callback: Callback\<WebDownloadItem>): void
 
 | 参数名  | 类型   | 必填 | 说明           |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载回调失败。 |
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载失败的回调。 |
 
 **示例：**
 
@@ -376,7 +376,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })

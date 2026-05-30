@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AppServiceExtensionContext模块是[AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 
@@ -30,7 +30,7 @@ import { common } from '@kit.AbilityKit';
 **示例：**
 
 ```ts
-import { AppServiceExtensionAbility } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 export default class AppServiceExtension extends AppServiceExtensionAbility {
   onCreate(want: Want) {
@@ -280,7 +280,7 @@ terminateSelf(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { AppServiceExtensionAbility } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 

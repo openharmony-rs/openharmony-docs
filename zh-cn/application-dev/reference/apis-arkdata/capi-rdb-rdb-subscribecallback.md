@@ -2,9 +2,13 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+
+```c
+typedef union Rdb_SubscribeCallback {...} Rdb_SubscribeCallback
+```
 
 ## 概述
 

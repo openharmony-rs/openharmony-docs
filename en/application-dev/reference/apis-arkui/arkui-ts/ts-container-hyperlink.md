@@ -1,4 +1,10 @@
 # Hyperlink
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Hyperlink** component implements a link from a location in the component to another location.
 
@@ -9,7 +15,7 @@ The **Hyperlink** component implements a link from a location in the component t
 
 ## Required Permissions
 
-If Internet access is required, you need to apply for the **ohos.permission.INTERNET** permission. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
+If Internet access is required, you must apply for the **ohos.permission.INTERNET** permission. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
 
 ## Child Components
 
@@ -27,8 +33,8 @@ Hyperlink(address: string | Resource, content?: string | Resource)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| address | string \| [Resource](ts-types.md#resource) | Yes| Web page to which the hyperlink is redirected.|
-| content | string \| [Resource](ts-types.md#resource) | No| Text displayed in the hyperlink.<br>**NOTE**<br>If this component has child components, the hyperlink text is not displayed.|
+| address | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes| Web page to which the hyperlink is redirected.|
+| content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Text displayed in the hyperlink.<br>Default value: **''**. If this parameter is not passed and the component does not have child components, the value of the **address** parameter is displayed by default.<br>**NOTE**<br>If this component has child components, the hyperlink text is not displayed.|
 
 ## Attributes
 
@@ -48,7 +54,7 @@ Sets the color of the hyperlink text.
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | [Color](ts-appendix-enums.md#color) \| number \| string \| [Resource](ts-types.md#resource) | Yes  | Color of the hyperlink text<br><!--RP1-->Default value: **'#ff007dff'**.<br>Default value on wearable devices: **'ff1f71ff'**.<!--RP1End-->
+| value  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Color of the hyperlink text<br><!--RP1-->Default value: '#ff007dff', indicating blue.<!--RP1End-->|
 
 ## Example
 
@@ -62,6 +68,7 @@ struct HyperlinkExample {
     Column() {
       Column() {
         Hyperlink('https://example.com/') {
+          // Replace $r('app.media.bg') with the image resource file you use.
           Image($r('app.media.bg'))
             .width(200)
             .height(100)

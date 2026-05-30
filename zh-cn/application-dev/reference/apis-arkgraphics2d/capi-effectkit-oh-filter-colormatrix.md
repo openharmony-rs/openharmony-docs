@@ -1,5 +1,16 @@
 # OH_Filter_ColorMatrix
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @hanamaru-->
+<!--Designer: @gaoweihua-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
+```c
+struct OH_Filter_ColorMatrix {...}
+```
+
 ## 概述
 
 定义一个用来创建滤镜效果的矩阵。
@@ -16,5 +27,5 @@
 
 | 名称          | 描述                               |
 | ------------- | ---------------------------------- |
-| float val[20] | 自定义颜色矩阵，值是一个54的数组。 |
+| float val[20] | 自定义颜色矩阵，值是一个5*4的数组。 |
 

@@ -1,10 +1,10 @@
 # @ohos.enterprise.bundleManager（包管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供包管理能力，包括添加包安装允许名单、获取包安装允许名单、移除包安装允许名单等。
 
@@ -14,9 +14,9 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需通过[enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)接口将设备管理应用激活后调用。
 > 
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.bundleManager](js-apis-enterprise-bundleManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.bundleManager](js-apis-enterprise-bundleManager.md)。
 
 ## 导入模块
 
@@ -42,8 +42,8 @@ addAllowedInstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCal
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。  |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码**：
@@ -67,7 +67,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -99,8 +99,8 @@ addAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number, ca
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。    |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
@@ -125,7 +125,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -143,7 +143,7 @@ bundleManager.addAllowedInstallBundles(wantTemp, appIds, 100, (err) => {
 
 addAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
-添加应用至应用程序包安装允许名单，添加至允许名单的应用允许在当前/指定用户下安装，否则不允许安装。使用promise异步回调。
+添加应用至应用程序包安装允许名单，添加至允许名单的应用允许在当前/指定用户下安装，否则不允许安装。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -157,8 +157,8 @@ addAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): 
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。        |
 | userId     | number                             | 否    |用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**
@@ -189,7 +189,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -219,8 +219,8 @@ removeAllowedInstallBundles(admin: Want, appIds: Array\<string>, callback: Async
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。     |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码**：
@@ -244,7 +244,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -276,8 +276,8 @@ removeAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number,
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。      |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
@@ -302,7 +302,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -320,7 +320,7 @@ bundleManager.removeAllowedInstallBundles(wantTemp, appIds, 100, (err) => {
 
 removeAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
-移除在应用程序包安装允许名单中的应用，在允许名单存在的情况下，不在允许名单中的应用不允许在当前/指定用户下安装。使用promise异步回调。
+移除在应用程序包安装允许名单中的应用，在允许名单存在的情况下，不在允许名单中的应用不允许在当前/指定用户下安装。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -334,8 +334,8 @@ removeAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;         | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;         | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。                  |
 | userId     | number                             | 否    | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**
@@ -366,7 +366,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -396,7 +396,7 @@ getAllowedInstallBundles(admin: Want, callback: AsyncCallback&lt;Array&lt;string
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
 
 **错误码**：
@@ -420,7 +420,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.getAllowedInstallBundles(wantTemp, (err, result) => {
@@ -450,7 +450,7 @@ getAllowedInstallBundles(admin: Want, userId: number, callback: AsyncCallback&lt
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
 
@@ -475,7 +475,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.getAllowedInstallBundles(wantTemp, 100, (err, result) => {
@@ -491,7 +491,7 @@ bundleManager.getAllowedInstallBundles(wantTemp, 100, (err, result) => {
 
 getAllowedInstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
-获取当前/指定用户下的应用程序包安装允许名单，使用promise异步回调。
+获取当前/指定用户下的应用程序包安装允许名单，使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -505,7 +505,7 @@ getAllowedInstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;stri
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | userId     | number                             | 否    | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**
@@ -536,7 +536,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.getAllowedInstallBundles(wantTemp, 100).then((result) => {
@@ -564,8 +564,8 @@ addDisallowedInstallBundles(admin: Want, appIds: Array\<string>, callback: Async
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。    |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码**：
@@ -589,7 +589,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -621,8 +621,8 @@ addDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number,
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。      |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
@@ -647,7 +647,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -665,7 +665,7 @@ bundleManager.addDisallowedInstallBundles(wantTemp, appIds, 100, (err) => {
 
 addDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
-添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在当前/指定用户下安装。使用promise异步回调。
+添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在当前/指定用户下安装。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -679,8 +679,8 @@ addDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。                  |
 | userId     | number                             | 否    | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**
@@ -711,7 +711,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -741,8 +741,8 @@ removeDisallowedInstallBundles(admin: Want, appIds: Array\<string>, callback: As
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。         |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码**：
@@ -766,7 +766,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -798,8 +798,8 @@ removeDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId: numb
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。                  |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
@@ -824,7 +824,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -842,7 +842,7 @@ bundleManager.removeDisallowedInstallBundles(wantTemp, appIds, 100, (err) => {
 
 removeDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
-移除在应用程序包安装禁止名单中的应用，在禁止名单存在的情况下，在禁止名单中的应用不允许在当前/指定用户下安装。使用promise异步回调。
+移除在应用程序包安装禁止名单中的应用，在禁止名单存在的情况下，在禁止名单中的应用不允许在当前/指定用户下安装。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -856,8 +856,8 @@ removeDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: num
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;        | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;        | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。        |
 | userId     | number                             | 否    | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**
@@ -888,7 +888,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -918,7 +918,7 @@ getDisallowedInstallBundles(admin: Want, callback: AsyncCallback&lt;Array&lt;str
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
 
 **错误码**：
@@ -942,7 +942,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.getDisallowedInstallBundles(wantTemp, (err, result) => {
@@ -972,7 +972,7 @@ getDisallowedInstallBundles(admin: Want, userId: number, callback: AsyncCallback
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
 
@@ -997,7 +997,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.getDisallowedInstallBundles(wantTemp, 100, (err, result) => {
@@ -1013,7 +1013,7 @@ bundleManager.getDisallowedInstallBundles(wantTemp, 100, (err, result) => {
 
 getDisallowedInstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
-获取当前/指定用户下的应用程序包安装禁止名单，使用promise异步回调。
+获取当前/指定用户下的应用程序包安装禁止名单，使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1027,7 +1027,7 @@ getDisallowedInstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;s
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | userId     | number                             | 否    | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**
@@ -1058,7 +1058,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.getDisallowedInstallBundles(wantTemp, 100).then((result) => {
@@ -1086,8 +1086,8 @@ addDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, callback: Asy
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。                  |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码**：
@@ -1111,7 +1111,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -1143,8 +1143,8 @@ addDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId: numbe
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。                  |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
@@ -1169,7 +1169,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -1187,7 +1187,7 @@ bundleManager.addDisallowedUninstallBundles(wantTemp, appIds, 100, (err) => {
 
 addDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
-添加应用至应用程序包卸载禁止名单，添加至禁止名单的应用不允许在当前/指定用户下卸载。使用promise异步回调。
+添加应用至应用程序包卸载禁止名单，添加至禁止名单的应用不允许在当前/指定用户下卸载。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1201,8 +1201,8 @@ addDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId?: numb
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。           |
 | userId     | number                             | 否    | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**
@@ -1233,7 +1233,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -1263,8 +1263,8 @@ removeDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, callback: 
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。         |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码**：
@@ -1288,7 +1288,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -1320,8 +1320,8 @@ removeDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId: nu
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;                | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。            |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
@@ -1346,7 +1346,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -1364,7 +1364,7 @@ bundleManager.removeDisallowedUninstallBundles(wantTemp, appIds, 100, (err) => {
 
 removeDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
-移除在应用程序包卸载禁止名单中的应用。在禁止名单存在的情况下，在禁止名单中的应用不允许在当前/指定用户下卸载。使用promise异步回调。
+移除在应用程序包卸载禁止名单中的应用。在禁止名单存在的情况下，在禁止名单中的应用不允许在当前/指定用户下卸载。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1378,8 +1378,8 @@ removeDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId?: n
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| appIds    | Array&lt;string&gt;        | 是    | 应用ID数组。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| appIds    | Array&lt;string&gt;        | 是    | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。                  |
 | userId     | number                             | 否    | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**
@@ -1410,7 +1410,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
@@ -1440,7 +1440,7 @@ getDisallowedUninstallBundles(admin: Want, callback: AsyncCallback&lt;Array&lt;s
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
 
 **错误码**：
@@ -1464,7 +1464,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.getDisallowedUninstallBundles(wantTemp, (err, result) => {
@@ -1494,7 +1494,7 @@ getDisallowedUninstallBundles(admin: Want, userId: number, callback: AsyncCallba
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
 
@@ -1519,7 +1519,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.getDisallowedUninstallBundles(wantTemp, 100, (err, result) => {
@@ -1535,7 +1535,7 @@ bundleManager.getDisallowedUninstallBundles(wantTemp, 100, (err, result) => {
 
 getDisallowedUninstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
-获取当前/指定用户下应用程序包卸载禁止名单接口，使用promise异步回调。
+获取当前/指定用户下应用程序包卸载禁止名单接口，使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1549,7 +1549,7 @@ getDisallowedUninstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | userId     | number                             | 否    | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**
@@ -1580,7 +1580,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.getDisallowedUninstallBundles(wantTemp, 100).then((result) => {
@@ -1596,6 +1596,10 @@ uninstall(admin: Want, bundleName: string, callback: AsyncCallback&lt;void&gt;):
 
 卸载当前用户下的指定应用程序包，且不保留应用程序包数据。使用callback异步回调。
 
+> **说明：**
+>
+> 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
+
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1608,7 +1612,7 @@ uninstall(admin: Want, bundleName: string, callback: AsyncCallback&lt;void&gt;):
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | bundleName     | string                             | 是    | 包名。 |
 | callback | AsyncCallback&lt;void&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
 
@@ -1633,7 +1637,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.uninstall(wantTemp, 'bundleName', (err) => {
@@ -1651,6 +1655,10 @@ uninstall(admin: Want, bundleName: string, userId: number, callback: AsyncCallba
 
 卸载指定用户下（由参数userId指定）的指定应用程序包，且不保留应用程序包数据。使用callback异步回调。
 
+> **说明：**
+>
+> 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
+
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1663,7 +1671,7 @@ uninstall(admin: Want, bundleName: string, userId: number, callback: AsyncCallba
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | bundleName     | string                             | 是    | 包名。 |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | callback | AsyncCallback&lt;void&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
@@ -1689,7 +1697,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.uninstall(wantTemp, 'bundleName', 100, (err) => {
@@ -1707,6 +1715,10 @@ uninstall(admin: Want, bundleName: string, isKeepData: boolean, callback: AsyncC
 
 卸载当前用户下的指定应用程序包，选择是否保留应用程序包数据（由isKeepData指定）。使用callback异步回调。
 
+> **说明：**
+>
+> 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
+
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1719,7 +1731,7 @@ uninstall(admin: Want, bundleName: string, isKeepData: boolean, callback: AsyncC
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | bundleName     | string                             | 是    | 包名。 |
 | isKeepData     | boolean                             | 是    | 是否保留包数据，true表示保留，false表示不保留。 |
 | callback | AsyncCallback&lt;void&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
@@ -1745,7 +1757,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.uninstall(wantTemp, 'bundleName', true, (err) => {
@@ -1763,6 +1775,10 @@ uninstall(admin: Want, bundleName: string, userId: number, isKeepData: boolean, 
 
 卸载指定用户下（由参数userId指定）的指定应用程序包接口，选择是否保留应用程序包数据（由isKeepData指定）。使用callback异步回调。
 
+> **说明：**
+>
+> 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
+
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1775,7 +1791,7 @@ uninstall(admin: Want, bundleName: string, userId: number, isKeepData: boolean, 
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | bundleName     | string                             | 是    | 包名。 |
 | userId     | number                             | 是    | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | isKeepData     | boolean                             | 是    | 是否保留包数据，true表示保留，false表示不保留。 |
@@ -1802,7 +1818,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 bundleManager.uninstall(wantTemp, 'bundleName', 100, true, (err) => {
@@ -1832,7 +1848,7 @@ install(admin: Want, hapFilePaths: Array\<string>, callback: AsyncCallback\<void
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | hapFilePaths     | Array\<string>                           | 是    | 待安装应用包路径数组。 |
 | callback | AsyncCallback&lt;void&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
 
@@ -1858,7 +1874,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let hapFilePaths: Array<string> = ['/data/storage/el2/base/haps/entry/testinstall/ExtensionTest.hap'];
@@ -1890,7 +1906,7 @@ install(admin: Want, hapFilePaths: Array\<string>, installParam: InstallParam, c
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | hapFilePaths     | Array\<string>                       | 是    | 待安装应用包路径数组。 |
 | installParam     | [InstallParam](js-apis-enterprise-bundleManager.md#installparam) | 是    | 应用包安装参数。 |
 | callback | AsyncCallback&lt;void&gt;       | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。       |
@@ -1917,7 +1933,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let hapFilePaths: Array<string> = ['/data/storage/el2/base/haps/entry/testinstall/ExtensionTest.hap'];

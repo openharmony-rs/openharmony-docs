@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **brightness** module provides an API for setting the screen brightness.
 
@@ -18,7 +18,7 @@ The **brightness** module provides an API for setting the screen brightness.
 ## Modules to Import
 
 ```js
-import brightness from '@ohos.brightness';
+import {brightness} from '@kit.BasicServicesKit';
 ```
 
 ## brightness.setValue

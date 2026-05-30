@@ -2,20 +2,20 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
 ## 接口介绍
 
-可通过API文档查看更新关键资产的接口[OH_Asset_Update](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_update)的详细介绍。
+开发者可以查阅API文档，获取关键资产更新接口的详细说明：[OH_Asset_Update](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_update)。
 
 在更新关键资产时，关键资产属性的内容参数如下表所示：
 
->**注意：**
+> **注意：**
 >
->下表中“ASSET_TAG_ALIAS”和名称包含“ASSET_TAG_DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
+> 下表中“ASSET_TAG_ALIAS”和名称包含“ASSET_TAG_DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
 
 - **query的参数列表：**
 
@@ -58,6 +58,10 @@
 
 ## 代码示例
 
+> **说明：**
+>
+> 在更新前，需确保已有关键资产，可参考[指南文档](./asset-native-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
+
 更新别名是demo_alias的关键资产，将关键资产明文更新为demo_pwd_new，附属信息更新成demo_label_new。
 
 在指定群组中更新一条关键资产的示例代码详见[更新群组关键资产](asset-native-group-access-control.md#更新群组关键资产)。
@@ -67,27 +71,34 @@
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
-2. 参考如下示例代码，进行业务功能开发。
-   ```c
+2. 引用头文件。
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
+   ```
 
+3. 参考如下示例代码，进行业务功能开发。
+   <!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    static napi_value UpdateAsset(napi_env env, napi_callback_info info)
    {
-       static const char *ALIAS = "demo_alias";
-       static const char *SECRET = "demo_pwd_new";
-       static const char *LABEL = "demo_label_new";
-
-       Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
-       Asset_Blob new_secret = {(uint32_t)(strlen(SECRET)), (uint8_t *)SECRET};
-       Asset_Blob new_label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
+       const char *aliasStr = "demo_alias";
+       const char *secretStr = "demo_pwd_new";
+       const char *labelStr = "demo_label_new";
+   
+       Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+       Asset_Blob new_secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
+       Asset_Blob new_label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
        Asset_Attr query[] = {{.tag = ASSET_TAG_ALIAS, .value.blob = alias }};
        Asset_Attr attributesToUpdate[] = {
            {.tag = ASSET_TAG_SECRET, .value.blob = new_secret},
            {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = new_label},
        };
-
+   
        int32_t updateResult = OH_Asset_Update(query, sizeof(query) / sizeof(query[0]), attributesToUpdate,
                                               sizeof(attributesToUpdate) / sizeof(attributesToUpdate[0]));
        napi_value ret;

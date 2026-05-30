@@ -5,7 +5,11 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+
+```c
+typedef struct {...} ffrt_queue_attr_t
+```
 
 ## Overview
 
@@ -21,6 +25,6 @@ The **ffrt_queue_attr_t** struct describes a serial queue attribute.
 
 ### Member Variables
 
-| Name| Description|	
-| -- | -- |	
+| Name| Description|
+| -- | -- |
 | uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Storage size of a serial queue attribute.|

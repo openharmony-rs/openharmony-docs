@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_AI_CallBackParam {...} OH_AI_CallBackParam
+```
+
 ## 概述
 
 回调函数中传入的算子信息。

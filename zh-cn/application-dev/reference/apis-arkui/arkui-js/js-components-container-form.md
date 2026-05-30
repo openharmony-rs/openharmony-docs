@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 > 从API version 6开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -77,11 +77,11 @@
 // xxx.js
 export default{
   onSubmit(result) {
-    console.log(result.value.radioGroup) // radio1 or radio2
-    console.log(result.value.user) // text input value
+    console.info(result.value.radioGroup) // radio1 or radio2
+    console.info(result.value.user) // text input value
   },
   onReset() {
-    console.log('reset all value')
+    console.info('reset all value')
   }
 }
 ```

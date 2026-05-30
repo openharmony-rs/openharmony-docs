@@ -4,15 +4,15 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
-
-> **NOTE**
->
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+<!--Adviser: @w_Machine_cc-->
 
 Album extends [AbsAlbum](arkts-apis-photoAccessHelper-AbsAlbum.md).
 
 Album provides APIs to manage albums.
+
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -43,7 +43,7 @@ Commits the modification on the album attributes to the database. This API uses 
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the album properties are modified successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -72,7 +72,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
   let albumList: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  if (albumList === undefined) {
+    console.error('albumList is undefined');
+    return;
+  }
   let album: photoAccessHelper.Album = await albumList.getFirstObject();
+  if (album === undefined) {
+    console.error('album is undefined');
+    return;
+  }
   album.albumName = 'hello';
   album.commitModify((err) => {
     if (err !== undefined) {
@@ -128,7 +136,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
   let albumList: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  if (albumList === undefined) {
+    console.error('albumList is undefined');
+    return;
+  }
   let album: photoAccessHelper.Album = await albumList.getFirstObject();
+  if (album === undefined) {
+    console.error('album is undefined');
+    return;
+  }
   album.albumName = 'hello';
   album.commitModify().then(() => {
     console.info('commitModify successfully');
@@ -157,7 +173,7 @@ Adds image and video assets to a user album. Before the operation, ensure that t
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Yes  | Array of the image and video assets to add.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If an image or video is added successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -190,6 +206,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('addAssetsDemoCallback asset is undefined');
+      return;
+    }
     album.addAssets([asset], (err) => {
       if (err === undefined) {
         console.info('album addAssets successfully');
@@ -261,6 +281,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('addAssetsDemoPromise asset is undefined');
+      return;
+    }
     album.addAssets([asset]).then(() => {
       console.info('album addAssets successfully');
     }).catch((err: BusinessError) => {
@@ -291,7 +315,7 @@ Removes image and video assets from a user album. The album and file resources m
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Yes  | Array of the image and video assets to remove.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If an image or video is removed successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -324,6 +348,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOption);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('removeAssetsDemoCallback asset is undefined');
+      return;
+    }
     album.removeAssets([asset], (err) => {
       if (err === undefined) {
         console.info('album removeAssets successfully');
@@ -393,8 +421,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('removeAssetsPromise albums is undefined');
+      return;
+    }
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOption);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (asset === undefined) {
+      console.error('removeAssetsPromise asset is undefined');
+      return;
+    }
     album.removeAssets([asset]).then(() => {
       console.info('album removeAssets successfully');
     }).catch((err: BusinessError) => {

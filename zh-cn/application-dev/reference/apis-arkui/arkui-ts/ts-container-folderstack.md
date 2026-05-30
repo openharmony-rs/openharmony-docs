@@ -4,22 +4,23 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-FolderStack继承于Stack(层叠布局)控件，新增了<!--RP1-->折叠屏悬停<!--RP1End-->能力，通过在配置项[FolderStackOptions](#folderstackoptions18对象说明)的upperItems数组上设置子组件id，使相应子组件自动避让折叠屏折痕区后移到上半屏。
+FolderStack继承于[Stack](ts-container-stack.md)(层叠布局)控件，新增了<!--RP1-->折叠屏悬停<!--RP1End-->能力，通过在FolderStack的配置项[FolderStackOptions](#folderstackoptions18对象说明)的upperItems数组上设置子组件id，使相应子组件自动避让折叠屏折痕区后移到上半屏。
 
 >  **说明：**
 >
->  该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  该组件的悬停态能力针对<!--RP2-->双折叠<!--RP2End-->设计，只在双折叠设备生效。
+> - 本模块接口仅可在Stage模型下使用。
 >
->  当该组件的父组件为[if/else条件渲染节点](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)时，折叠屏悬停能力将会失效。
+> - 该组件的悬停态能力针对<!--RP2-->双折叠<!--RP2End-->设计，只在双折叠设备生效。
+>
+> - 当该组件的父组件为[if/else：条件渲染](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)节点时，折叠屏悬停能力将会失效。
 
 ## 子组件
 
 可以包含多个子组件。
-
 
 ## 接口
 
@@ -51,7 +52,7 @@ FolderStack(options?: FolderStackOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| upperItems<sup>11+</sup> |    Array<string\>  | 否 | 是  | FolderStack的配置项。<br/>upperItems：定义悬停态会被移到上半屏的子组件的id，组件id在此数组中的子组件悬停触发时自动避让折叠屏折痕区后移到上半屏，其它组件堆叠在下半屏区域。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| upperItems<sup>11+</sup> |    Array<string\>  | 否 | 是  | 定义悬停态会被移到上半屏的子组件的id数组。<br/>当悬停触发时，upperItems数组中的子组件自动避让折叠屏折痕区后移到上半屏，其它组件堆叠在下半屏区域。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -65,7 +66,11 @@ FolderStack(options?: FolderStackOptions)
 
 alignContent(value: Alignment)
 
-设置子组件在容器内的对齐方式。该属性与[通用属性align](ts-universal-attributes-location.md)同时设置时，后设置的属性生效。
+设置子组件在容器内的对齐方式。该属性与[align](ts-universal-attributes-location.md#align)同时设置时，后设置的属性生效。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -85,6 +90,10 @@ enableAnimation(value: boolean)
 
 设置是否使用默认动效。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -103,6 +112,10 @@ autoHalfFold(value: boolean)
 
 设置是否开启自动旋转，仅在系统自动旋转关闭时该属性生效。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -113,7 +126,7 @@ autoHalfFold(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | boolean | 是   | 是否开启自动旋转。<br/>默认值：true，设置true表示FolderStack在[半折叠状态](ts-appendix-enums.md#foldstatus11)进行布局时开启自动旋转，设置false表示关闭自动旋转。该属性不区分设备类型。<br />非法值：按默认值处理。 |
+| value  | boolean | 是   | 是否开启自动旋转。<br/>默认值：true，设置true表示FolderStack在半折叠状态（见[FoldStatus](ts-appendix-enums.md#foldstatus11)）进行布局时开启自动旋转，设置false表示关闭自动旋转。该属性不区分设备类型。<br />非法值：按默认值处理。 |
 
 ## 事件
 
@@ -123,7 +136,11 @@ autoHalfFold(value: boolean)
 
 onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
-当折叠状态改变的时候回调，仅在横屏状态下生效。
+当前设备的折叠状态改变时触发回调，仅在横屏状态下生效。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -135,14 +152,17 @@ onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
 | 参数名     | 类型                                            | 必填 | 说明                 |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| callback | [OnFoldStatusChangeCallback](#onfoldstatuschangecallback18) | 是   | 当前设备的折叠状态。 |
-
+| callback | [OnFoldStatusChangeCallback](#onfoldstatuschangecallback18) | 是   | 当前设备的折叠状态改变时触发的回调。 |
 
 ### onHoverStatusChange<sup>12+</sup>
 
 onHoverStatusChange(handler: OnHoverStatusChangeCallback)
 
-当悬停状态改变的时候回调。
+当前设备的悬停状态改变时触发回调。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -154,13 +174,13 @@ onHoverStatusChange(handler: OnHoverStatusChangeCallback)
 
 | 参数名     | 类型                                            | 必填 | 说明                 |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| handler | [OnHoverStatusChangeCallback](#onhoverstatuschangecallback18) | 是   | 当悬停状态改变的时候触发回调。 |
+| handler | [OnHoverStatusChangeCallback](#onhoverstatuschangecallback18) | 是   | 当前设备的悬停状态改变时触发的回调。 |
 
 ## OnHoverStatusChangeCallback<sup>18+</sup>
 
 type OnHoverStatusChangeCallback = (param: HoverEventParam) => void
 
-当悬停状态改变的时候触发回调。
+当前设备的悬停状态改变时触发的回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -172,7 +192,7 @@ type OnHoverStatusChangeCallback = (param: HoverEventParam) => void
 
 | 参数名     | 类型                                            | 必填 | 说明                 |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| param | [HoverEventParam](#hovereventparam12对象说明) | 是   | 当悬停状态改变的时候触发回调。 |
+| param | [HoverEventParam](#hovereventparam12对象说明) | 是   | 当前设备与悬停状态相关的参数，包括设备的折叠状态、悬停状态、应用方向以及窗口模式枚举。 |
 
 ## OnFoldStatusChangeCallback<sup>18+</sup>
 
@@ -222,7 +242,7 @@ type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | foldStatus       | [FoldStatus](ts-appendix-enums.md#foldstatus11)             | 否 | 否   | 当前设备的折叠状态。 |
-| isHoverMode      | boolean                                                     | 否 | 否   | 当前是否为悬停态。设置为true时表示当前为悬停态，设置为false时表示当前为非悬停态。  |
+| isHoverMode      | boolean                                                     | 否 | 否   | 当前是否为悬停态。设置为true时表示当前为悬停态，设置为false时表示当前为非悬停态。|
 | appRotation      | [AppRotation](ts-appendix-enums.md#approtation12)           | 否 | 否   | 当前应用方向。    |
 | windowStatusType | [WindowStatusType](#windowstatustype12) | 否 | 否   | 窗口模式枚举。    |
 
@@ -252,9 +272,6 @@ type WindowStatusType = WindowStatusType
 @Entry
 @Component
 struct Index {
-  @State len_wid: number = 480
-  @State w: string = "40%"
-
   build() {
     Column() {
       // upperItems将所需要的悬停到上半屏的id放入upperItems传入，其余组件会堆叠在下半屏区域
@@ -321,10 +338,10 @@ struct Index {
   }
 }
 ```
-**图1** 横屏展开
-</br> ![FolderStack01.png](figures/FolderStack01.png)
-</br> **图2** 横屏半折叠
-</br> ![FolderStack02.png](figures/FolderStack02.png)
+**图1** 横屏展开</br>
+![FolderStack01.png](figures/FolderStack01.png)</br>
+**图2** 横屏半折叠</br>
+![FolderStack02.png](figures/FolderStack02.png)
 
 ### 示例2（使用attributeModifier动态设置FolderStack组件的属性及方法）
 
@@ -411,19 +428,19 @@ struct attributeDemo {
 }
 ```
 
-**图1** 横屏展开
-</br> 预期日志：
-</br> The device is currently in the expanded state
-</br> this foldStatus:1
-</br> this isHoverMode:0
-</br> this appRotation:3
-</br> this windowStatusType:1
-</br> ![FolderStack03](figures/FolderStack03.png)
-</br> **图2** 横屏半折叠
-</br> 预期日志：
-</br> The device is currently in the half folded state
-</br> this foldStatus:3
-</br> this isHoverMode:1
-</br> this appRotation:3
-</br> this windowStatusType:1
-</br> ![FolderStack04](figures/FolderStack04.png)
+**图1** 横屏展开</br>
+预期日志：</br>
+The device is currently in the expanded state</br>
+this foldStatus:1</br>
+this isHoverMode:0</br>
+this appRotation:3</br>
+this windowStatusType:1</br>
+![FolderStack03](figures/FolderStack03.png)</br>
+**图2** 横屏半折叠</br>
+预期日志：</br>
+The device is currently in the half folded state</br>
+this foldStatus:3</br>
+this isHoverMode:1</br>
+this appRotation:3</br>
+this windowStatusType:1</br>
+![FolderStack04](figures/FolderStack04.png)

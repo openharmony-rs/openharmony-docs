@@ -11,41 +11,35 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
 
 ## How to Develop
 
-1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) and specify the string parameter **HKDF** to create a key derivation parameter object.
+1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) with the string parameter **HKDF** to create a key derivation parameter object.
 
 2. Call [OH_CryptoKdfParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_setparam) to set the parameters required by HKDF. Example:
    - **CRYPTO_KDF_KEY_DATABLOB**: original key material used to generate a derived key.
    - **CRYPTO_KDF_SALT_DATABLOB**: salt value.
    - **CRYPTO_KDF_INFO_DATABLOB**: (optional) application-specific information.
 
-3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) and specify the string parameter **HKDF|SHA256|EXTRACT_AND_EXPAND** to create a key derivation function object.
+3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) with the string parameter **HKDF|SHA256|EXTRACT_AND_EXPAND** to create a key derivation function object.
 
 4. Call [OH_CryptoKdf_Derive](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive) and specify the byte length of the target key.
 
-```C++
+<!-- @[hkdf_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/cpp/types/project/hkdf_test.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestHkdf()
+static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
 {
-    // Create an HKDF parameter object.
-    OH_CryptoKdfParams *params = nullptr;
-    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_Create("HKDF", &params);
-    if (ret != CRYPTO_SUCCESS) {
-        return ret;
-    }
-
-    // Set the original key material.
     const char *keyData = "012345678901234567890123456789";
     Crypto_DataBlob key = {
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(keyData)),
         .len = strlen(keyData)
     };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_KEY_DATABLOB, &key);
+    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &key);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
-        return ret;
+        goto end;
     }
 
     // Set the salt value.
@@ -54,10 +48,9 @@ static OH_Crypto_ErrCode doTestHkdf()
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(saltData)),
         .len = strlen(saltData)
     };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_SALT_DATABLOB, &salt);
+    ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &salt);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
-        return ret;
+        goto end;
     }
 
     // (Optional) Set application-specific information.
@@ -66,9 +59,27 @@ static OH_Crypto_ErrCode doTestHkdf()
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(infoData)),
         .len = strlen(infoData)
     };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_INFO_DATABLOB, &info);
+    ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_INFO_DATABLOB, &info);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
+        goto end;
+    }
+end:
+    OH_CryptoKdfParams_Destroy(*params);
+    *params = nullptr;
+    return ret;
+}
+
+OH_Crypto_ErrCode doTestHkdf()
+{
+    // Create an HKDF parameter object.
+    OH_CryptoKdfParams *params = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_Create("HKDF", &params);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+
+    ret = setParams(&params);
+    if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
 

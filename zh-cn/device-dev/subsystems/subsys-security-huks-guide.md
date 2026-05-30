@@ -135,7 +135,7 @@ HUKS Core的初始化，一般用于初始化全局变量，比如全局线程�
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 #### ModuleDestroy
 
@@ -159,7 +159,7 @@ HUKS Core的销毁，一般用于释放全局变量，包括锁，销毁内存�
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### GenerateKey
@@ -191,7 +191,7 @@ int32_t GenerateKey(struct IHuks *self, const struct HuksBlob *keyAlias, const s
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### ImportKey
@@ -223,7 +223,7 @@ int32_t ImportKey(struct IHuks *self, const struct HuksBlob *keyAlias, const str
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### ImportWrappedKey
@@ -256,7 +256,7 @@ int32_t ImportWrappedKey(struct IHuks *self, const struct HuksBlob *wrappingKeyA
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### ExportPublicKey
@@ -282,7 +282,7 @@ int32_t ExportPublicKey(struct IHuks *self, const struct HuksBlob *encKey, const
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### Init
@@ -313,7 +313,7 @@ int32_t Init(struct IHuks *self, const struct HuksBlob *encKey, const struct Huk
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### Update
@@ -345,7 +345,7 @@ int32_t Update(struct IHuks *self, const struct HuksBlob *handle, const struct H
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### Finish
@@ -377,7 +377,7 @@ int32_t Finish(struct IHuks *self, const struct HuksBlob *handle, const struct H
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### Abort
@@ -406,7 +406,7 @@ int32_t Abort(struct IHuks *self, const struct HuksBlob *handle, const struct Hu
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### CheckKeyValidity
@@ -431,7 +431,7 @@ int32_t CheckKeyValidity(struct IHuks *self, const struct HuksParamSet *paramSet
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 
@@ -463,7 +463,7 @@ certChain的格式需遵循[约束与限制第二点](#约束与限制)。
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### ExportChipsetPlatformPublicKey
@@ -496,7 +496,7 @@ int32_t ExportChipsetPlatformPublicKey(struct IHuks *self, const struct HuksBlob
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### UpgradeKey
@@ -522,7 +522,7 @@ int32_t UpgradeKey(struct IHuks *self, const struct HuksBlob *encOldKey, const s
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 
@@ -548,7 +548,7 @@ int32_t GenerateRandom(struct IHuks *self, const struct HuksParamSet *paramSet, 
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### Sign
@@ -575,7 +575,7 @@ int32_t Sign(struct IHuks *self, const struct HuksBlob *encKey, const struct Huk
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### Verify
@@ -602,7 +602,7 @@ int32_t Verify(struct IHuks *self, const struct HuksBlob *encKey, const struct H
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### Encrypt
@@ -629,7 +629,7 @@ int32_t Encrypt(struct IHuks *self, const struct HuksBlob *encKey, const struct 
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### Decrypt
@@ -656,7 +656,7 @@ int32_t Decrypt(struct IHuks *self, const struct HuksBlob *encKey, const struct 
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### AgreeKey
@@ -683,7 +683,7 @@ int32_t AgreeKey(struct IHuks *self, const struct HuksParamSet *paramSet, const 
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 #### DeriveKey
 
@@ -709,7 +709,7 @@ int32_t DeriveKey(struct IHuks *self, const struct HuksParamSet *paramSet, const
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 #### Mac
@@ -737,7 +737,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
 **返回值**
 
 - HKS_SUCCESS：表示成功，值为0。
-- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitee.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
+- 其他：表示失败，值为负数，具体参考[HksErrorCode枚举值定义](https://gitcode.com/openharmony/security_huks/blob/master/interfaces/inner_api/huks_standard/main/include/hks_type_enum.h)。
 
 
 ### 开发步骤
@@ -783,23 +783,23 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
 
    - **根密钥**
 
-     用于加密HUKS业务密钥，一般由设备根密钥派生而来，HUKS Core软实现中硬编码在代码中，详细代码见[hks_core_get_main_key.c](https://gitee.com/openharmony/security_huks/blob/master/frameworks/huks_standard/main/crypto_engine/crypto_common/src/hks_core_get_main_key.c)。
+     用于加密HUKS业务密钥，一般由设备根密钥派生而来，HUKS Core软实现中硬编码在代码中，详细代码见[hks_core_get_main_key.c](https://gitcode.com/openharmony/security_huks/blob/master/frameworks/huks_standard/main/crypto_engine/crypto_common/src/hks_core_get_main_key.c)。
 
    - **访问控制用于对AuthToken做HMAC的密钥**   
 
-     用于UserIAM对AuthToken进行HMAC，HUKS Core软实现中硬编码在代码中，值为"huks_default_user_auth_token_key"，详细代码见[hks_keyblob.c](https://gitee.com/openharmony/security_huks/blob/master/services/huks_standard/huks_engine/main/core/src/hks_keyblob.c)。
+     用于UserIAM对AuthToken进行HMAC，HUKS Core软实现中硬编码在代码中，值为"huks_default_user_auth_token_key"，详细代码见[hks_keyblob.c](https://gitcode.com/openharmony/security_huks/blob/master/services/huks_standard/huks_engine/main/core/src/hks_keyblob.c)。
 
    - **访问控制用于对AuthToken敏感字段加密的密钥**
 
-     用于UserIAM对AuthToken敏感字段进行加密的密钥，HUKS Core软实现中硬编码在代码中，值为"huks_default_user_auth_token_key"，详细代码见[hks_keyblob.c](https://gitee.com/openharmony/security_huks/blob/master/services/huks_standard/huks_engine/main/core/src/hks_keyblob.c)。
+     用于UserIAM对AuthToken敏感字段进行加密的密钥，HUKS Core软实现中硬编码在代码中，值为"huks_default_user_auth_token_key"，详细代码见[hks_keyblob.c](https://gitcode.com/openharmony/security_huks/blob/master/services/huks_standard/huks_engine/main/core/src/hks_keyblob.c)。
 
    - **根证书、设备CA、设备证书**
 
-     用于密钥证明，一般由设备证书管理模块预置在硬件设备安全存储当中，HUKS Core软实现中硬编码在代码中，详细代码见[dcm_certs_and_key.h](https://gitee.com/openharmony/security_huks/blob/master/services/huks_standard/huks_engine/main/device_cert_manager/include/dcm_certs_and_key.h)。
+     用于密钥证明，一般由设备证书管理模块预置在硬件设备安全存储当中，HUKS Core软实现中硬编码在代码中，详细代码见[dcm_certs_and_key.h](https://gitcode.com/openharmony/security_huks/blob/master/services/huks_standard/huks_engine/main/device_cert_manager/include/dcm_certs_and_key.h)。
 
 #### 适配样例
 
-下文以HUKS Core中的密钥会话Init\Update\Finish接口适配作为一个样例，介绍基本流程，仅供参考不可实际运行，实际可运行代码参考[HUKS源码目录](https://gitee.com/openharmony/security_huks)
+下文以HUKS Core中的密钥会话Init\Update\Finish接口适配作为一个样例，介绍基本流程，仅供参考不可实际运行，实际可运行代码参考[HUKS源码目录](https://gitcode.com/openharmony/security_huks)
 
 1. 创建一个句柄，通过这个句柄在session中存储密钥操作相关的信息，使得外部可以通过这个句柄分多次进行同一密钥操作。
 
@@ -1008,7 +1008,7 @@ int32_t Mac(struct IHuks *self, const struct HuksBlob *encKey, const struct Huks
 
 ### 调测验证
 
-开发完成后，通过[HUKS JS接口](hhttps://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.security.huks.d.ts)开发JS应用来验证能力是否完备。
+开发完成后，通过[HUKS JS接口](hhttps://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.security.huks.d.ts)开发JS应用来验证能力是否完备。
 
 对于每个HDI接口，[接口说明](#接口说明)都提供了对应的JS接口。可以通过调用JS接口组合来验证对应的HDI接口的能力，也可以通过完整的密钥操作来验证接口的能力。
 

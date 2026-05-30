@@ -1,10 +1,14 @@
 # JSVM_PropertyHandlerConfigurationStruct*
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+
+```c
+typedef JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg
+```
 
 ## 概述
 

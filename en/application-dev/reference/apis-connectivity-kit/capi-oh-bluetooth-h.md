@@ -13,7 +13,7 @@ Defines the API for obtaining the Bluetooth switch state.
 
 **File to include**: <ConnectivityKit/bluetooth/oh_bluetooth.h>
 
-**Library:** libbluetooth.so
+**Library**: libbluetooth_ndk.so
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -40,7 +40,7 @@ Defines the API for obtaining the Bluetooth switch state.
 
 ### Bluetooth_SwitchState
 
-```
+```c
 enum Bluetooth_SwitchState
 ```
 
@@ -62,7 +62,7 @@ Enumerates the Bluetooth switch states.
 
 ### Bluetooth_ResultCode
 
-```
+```c
 enum Bluetooth_ResultCode
 ```
 
@@ -82,7 +82,7 @@ Defines the Bluetooth return value.
 
 ### OH_Bluetooth_GetBluetoothSwitchState()
 
-```
+```c
 Bluetooth_ResultCode OH_Bluetooth_GetBluetoothSwitchState(Bluetooth_SwitchState *state)
 ```
 

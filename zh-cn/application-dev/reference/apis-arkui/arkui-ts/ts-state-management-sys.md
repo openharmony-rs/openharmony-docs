@@ -4,7 +4,7 @@
 <!--Owner: @zzq212050299-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和应用程序需要的环境状态。
@@ -123,7 +123,7 @@ createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 
 |类型   |说明       |
 |-----------|--------------|
-|[SyncedPropertyOneWay\<T\>](#syncedpropertytwowayt)  |返回单向同步属性。 |
+|[SyncedPropertyOneWay\<T\>](#syncedpropertyonewayt)  |返回单向同步属性。 |
 
 ### unlinkSuscriber
 
@@ -225,7 +225,7 @@ private source_;
 
 constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string);
 
-构造函数参数。
+构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -319,7 +319,7 @@ private source_;
 
 constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string);
 
-构造函数参数。
+构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,5 +1,12 @@
 # context_constant.h
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## Overview
 
 The file declares the context constants of the AbilityRuntime module.
@@ -29,7 +36,7 @@ The file declares the context constants of the AbilityRuntime module.
 
 ### AbilityRuntime_AreaMode
 
-```
+```c
 enum AbilityRuntime_AreaMode
 ```
 
@@ -49,7 +56,7 @@ Enumerates the data encryption levels.
 
 ### AbilityRuntime_StartVisibility
 
-```
+```c
 enum AbilityRuntime_StartVisibility
 ```
 
@@ -66,7 +73,7 @@ Enumerates the visibility modes of the window and dock bar icons when the abilit
 
 ### AbilityRuntime_WindowMode
 
-```
+```c
 enum AbilityRuntime_WindowMode
 ```
 
@@ -83,7 +90,7 @@ Enumerates the window modes.
 
 ### AbilityRuntime_SupportedWindowMode
 
-```
+```c
 enum AbilityRuntime_SupportedWindowMode
 ```
 

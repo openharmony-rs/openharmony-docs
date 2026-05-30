@@ -1,8 +1,8 @@
 # oh_preferences_err_code.h
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @yanhuii-->
-<!--Designer: @houpengtao1-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -32,7 +32,7 @@
 
 ### OH_Preferences_ErrCode
 
-```
+```c
 enum OH_Preferences_ErrCode
 ```
 

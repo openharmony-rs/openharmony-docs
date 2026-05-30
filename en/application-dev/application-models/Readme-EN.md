@@ -8,7 +8,7 @@
 <!--Adviser: @huipeizi-->
 
 
-- [Introduction to Ability Kit](abilitykit-overview.md)
+- [About This Kit](abilitykit-overview.md)
 - [Application Models](application-models.md)
 - Stage Model Development<!--stage-model-development-->
   - [Stage Model Development Overview](stage-model-development-overview.md)
@@ -20,14 +20,15 @@
       - [UIAbility Launch Type](uiability-launch-type.md)
       - [UIAbility Usage](uiability-usage.md)
       - [Data Synchronization Between UIAbility and UI Page](uiability-data-sync-with-ui.md)
-      - [Starting UIAbility in the Same Application](uiability-intra-device-interaction.md)
+      - [Starting UIAbility Within the Same Application](uiability-intra-device-interaction.md)
+      - [Cross-Device Migration Through Call Invocation](uiability-cross-device-interaction.md)
       - [UIAbility Backup and Restore](ability-recover-guideline.md)
     - [ExtensionAbility Component](extensionability-overview.md)
       <!--Del-->
-      - [ServiceExtensionAbility (for System Applications Only)](serviceextensionability.md)
+      - [ServiceExtensionAbility (for System Applications Only)](serviceextensionability-sys.md)
       - [UIServiceExtensionAbility (for System Applications Only)](uiserviceextension-sys.md)
-      - [UIExtensionAbility (for System Applications Only)](uiextensionability.md)
-      - [Using AutoFillExtensionAbility for Auto-Fill (for System Applications Only)](autofillextensionablility-guide.md)
+      - [UIExtensionAbility (for System Applications Only)](uiextensionability-sys.md)
+      - [Using AutoFillExtensionAbility for Auto-Fill (for System Applications Only)](autofillextensionability-guide-sys.md)
       - [Using UIServiceExtensionAbility for System Floating Windows](uiserviceextension.md)
       <!--DelEnd-->
       - [EmbeddedUIExtensionAbility](embeddeduiextensionability.md)
@@ -56,9 +57,7 @@
       - [Overview of Starting a Specified Application](app-startup-overview.md)
       - [(Optional) Using canOpenLink to Check Application Accessibility](canopenlink.md)
       - [Using Deep Linking for Application Redirection](deep-linking-startup.md)
-      <!--Del-->
       - [Using App Linking for Application Redirection](app-linking-startup.md)
-      <!--DelEnd-->
       - [Switching from Explicit Want Redirection to Linking Redirection](uiability-startup-adjust.md)
       - [Application Link Description](app-uri-config.md)
     - Starting an Application of the Specified Type<!--specified-type-app-redirection-->
@@ -76,10 +75,10 @@
   - [Thread Model (Stage Model)](thread-model-stage.md)
   <!--Del-->
   - Mission Management (for System Applications Only)<!--mission-management-->
-    - [Mission Management Scenarios](mission-management-overview.md)
-    - [Mission Management and Launch Type](mission-management-launch-type.md)
-    - [Page Stack and Mission List](page-mission-stack.md)
-    - [Setting the Icon and Name of a Mission Snapshot](mission-set-icon-name-for-task-snapshot.md)
+    - [Mission Management Scenarios (for System Applications Only)](mission-management-overview-sys.md)
+    - [Mission Management and Launch Type (for System Applications Only)](mission-management-launch-type-sys.md)
+    - [Page Stack and MissionList (for System Applications Only)](page-mission-stack-sys.md)
+    - [Setting the Icon and Name of a Mission Snapshot (for System Applications Only)](mission-set-icon-name-for-task-snapshot-sys.md)
   <!--DelEnd-->
   - [Application Configuration File](config-file-stage.md)
   - InsightIntent Framework Development<!--insight-intent-->
@@ -103,7 +102,7 @@
       - [Starting a Local PageAbility](start-local-pageability.md)
       - [Stopping a PageAbility](stop-pageability.md)
       <!--Del-->
-      - [Starting a Remote PageAbility (for System Applications Only)](start-remote-pageability.md)
+      - [Starting a Remote PageAbility (for System Applications Only)](start-remote-pageability-sys.md)
       <!--DelEnd-->
       - [Starting a Specified Page](start-page.md)
       - [Window Properties](window-properties.md)
@@ -127,10 +126,10 @@
     - [Context](application-context-fa.md)
     - [Want](want-fa.md)
     - [Component Startup Rules (FA Model)](component-startup-rules-fa.md)
-  - [Process Model (Stage Model)](process-model-fa.md)
-  - [Thread Model (Stage Model)](thread-model-fa.md)
+  - [Process Model (FA Model)](process-model-fa.md)
+  - [Thread Model (FA Model)](thread-model-fa.md)
   <!--Del-->
-  - [Mission Management (for System Applications Only)](mission-management-fa.md)
+  - [Mission Management (for System Applications Only)](mission-management-fa-sys.md)
   <!--DelEnd-->
   - [Application Configuration File](config-file-fa.md)
 <!--Del-->
@@ -141,7 +140,7 @@
   - [Accessing a DataShareExtensionAbility from the FA Model](access-datashareextensionability-from-fa.md)
   - [Starting a PageAbility from the Stage Model](start-pageability-from-stage.md)
   - [Connecting to a ServiceAbility from the Stage Model](bind-serviceability-from-stage.md)
-- Switching from the FA Model to the Stage Model<!--fa-to-stage-switc-->
+- Switching from the FA Model to the Stage Model<!--fa-to-stage-switch-->
   - [Model Switching Overview](model-switch-overview.md)
   - Configuration File Switching<!--configuration-file-switch-->
     - [Differences in Configuration Files](configuration-file-diff.md)
@@ -168,6 +167,6 @@
     - [Storage Switching](storage-switch.md)
 <!--DelEnd-->
 - Native Child Process Development<!--native-childprocess-development-->
-    - [Creating Native Child Processes](capi_nativechildprocess_development_guideline.md)
+    - [Creating/Terminating Native Child Processes (C/C++)](capi-nativechildprocess-development-guideline.md)
     - [Obtaining Exit Information of Native Child Processes](capi-nativechildprocess-exit-info.md)
 - [Ability Kit Terminology](ability-terminology.md)

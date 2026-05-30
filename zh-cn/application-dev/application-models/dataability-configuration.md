@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 
 ## URI介绍
@@ -49,7 +49,7 @@ URI示例：
 config.json配置样例
 
 
-```json
+```json5
 "abilities": [
   ...
   {

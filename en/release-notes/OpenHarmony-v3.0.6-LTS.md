@@ -26,7 +26,7 @@ OpenHarmony 3.0.6 LTS is a maintenance version of OpenHarmony 3.0 LTS. It has re
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
      
    ```
    git config --global user.name "yourname"
@@ -37,7 +37,7 @@ OpenHarmony 3.0.6 LTS is a maintenance version of OpenHarmony 3.0 LTS. It has re
 4. Run the following commands to install the **repo** tool:
      
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -48,7 +48,7 @@ OpenHarmony 3.0.6 LTS is a maintenance version of OpenHarmony 3.0 LTS. It has re
 
   
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.6-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.6-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -57,7 +57,7 @@ repo forall -c 'git lfs pull'
 
   
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.6-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.6-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -91,7 +91,7 @@ This version does not involve API updates.
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 
 ## Fixed Security Vulnerabilities
@@ -100,8 +100,8 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.| Description| PR Link| 
 | -------- | -------- | -------- |
-| I5MTWL | Security vulnerabilities of the kernel_linux_5.10 component: CVE-2022-36123, CVE-2022-20369, CVE-2022-2588, CVE-2022-2586, CVE-2022-2585, and CVE-2022-20368.| [PR](https://gitee.com/openharmony/kernel_linux_5.10/pulls/402) | 
-| 5FYFI | Security vulnerabilities of the kernel_linux_5.10 component: CVE-2022-34918, CVE-2022-2318, and CVE-2022-2380.| [PR](https://gitee.com/openharmony/kernel_linux_5.10/pulls/331) | 
-| 5FYFI | Security vulnerabilities of the kernel_linux_5.10 component: CVE-2022-26365, CVE-2022-33742, CVE-2022-33743, CVE-2022-33740, and CVE-2022-33741.| [PR](https://gitee.com/openharmony/kernel_linux_5.10/pulls/352) | 
-| I5LUE0 | Security vulnerability of the third_party_zlib component: CVE-2022-37434.| [PR](https://gitee.com/openharmony/third_party_zlib/pulls/44) | 
-| I5NCH4 | When **/bin/wms_server** is run over the serial port of the Hi3516 development board in the small system, the memory address and layout information are printed.| [PR](https://gitee.com/openharmony/distributedschedule_samgr_lite/pulls/1) | 
+| I5MTWL | Security vulnerabilities of the kernel_linux_5.10 component: CVE-2022-36123, CVE-2022-20369, CVE-2022-2588, CVE-2022-2586, CVE-2022-2585, and CVE-2022-20368.| [PR](https://gitcode.com/openharmony/kernel_linux_5.10/pulls/402) | 
+| 5FYFI | Security vulnerabilities of the kernel_linux_5.10 component: CVE-2022-34918, CVE-2022-2318, and CVE-2022-2380.| [PR](https://gitcode.com/openharmony/kernel_linux_5.10/pulls/331) | 
+| 5FYFI | Security vulnerabilities of the kernel_linux_5.10 component: CVE-2022-26365, CVE-2022-33742, CVE-2022-33743, CVE-2022-33740, and CVE-2022-33741.| [PR](https://gitcode.com/openharmony/kernel_linux_5.10/pulls/352) | 
+| I5LUE0 | Security vulnerability of the third_party_zlib component: CVE-2022-37434.| [PR](https://gitcode.com/openharmony/third_party_zlib/pulls/44) | 
+| I5NCH4 | When **/bin/wms_server** is run over the serial port of the Hi3516 development board in the small system, the memory address and layout information are printed.| [PR](https://gitcode.com/openharmony/distributedschedule_samgr_lite/pulls/1) | 

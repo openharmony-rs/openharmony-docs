@@ -5,11 +5,11 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的C/C++接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[HiAppEvent C API文档](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
+本文介绍如何使用HiAppEvent提供的C/C++接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
 
 ## 接口说明
 
@@ -21,7 +21,7 @@
 ## 开发步骤
 
 ### 添加事件观察者
-1. 参考[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)README中**Using JsonCpp in your project**介绍的使用方法获取到jsoncpp.cpp、json.h和json-forwards.h三个文件。
+1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
 
 2. 新建Native C++工程，并将上述文件导入到新建工程内，目录结构如下。
 
@@ -74,7 +74,7 @@
       编辑“napi_init.cpp”文件，定义onReceive类型观察者相关方法：
 
       ```c++
-      //定义一变量，用来缓存创建的观察者的指针。
+      // 定义一个变量，用来缓存创建的观察者的指针。
       static HiAppEvent_Watcher *systemEventWatcher; 
       
       static void OnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen) {
@@ -127,7 +127,7 @@
           const char *names[] = {EVENT_MAIN_THREAD_JANK};
           // 开发者订阅感兴趣的事件，此处订阅了系统事件。
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive回调。
+          // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive回调。
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcher);
@@ -167,7 +167,7 @@
    testNapi.registerWatcher();
    ```
 
-8. 编辑工程中的“entry > src > main > ets > pages> Index.ets”文件，添加一个Button控件onClick中实现主线程超时代码，示例代码如下：
+8. 编辑工程中的“entry > src > main > ets > pages> Index.ets”文件，添加一个Button按钮，并在其onClick函数中模拟触发主线程超时场景，示例代码如下：
 
    ```typescript
       Button("timeOut350")
@@ -179,7 +179,7 @@
       })
    ```
 
-9. 点击DevEco Studio界面中的运行按钮，运行应用工程，连续点击两次timeOut350按钮，会触发主线程超时事件。
+9. 点击DevEco Studio界面中的运行按钮，运行应用工程，可以快速点击2~3次timeOut350按钮，以触发主线程超时事件。
 
 ### 验证观察者是否订阅到主线程超时事件
 

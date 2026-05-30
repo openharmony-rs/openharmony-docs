@@ -1,4 +1,10 @@
 # native_drm_err.h
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -6,7 +12,7 @@
 
 **引用文件：** <multimedia/drm_framework/native_drm_err.h>
 
-**库：** libnative_drm.z.so
+**库：** libnative_drm.so
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -26,7 +32,7 @@
 
 ### Drm_ErrCode
 
-```
+```c
 enum Drm_ErrCode
 ```
 
@@ -48,7 +54,7 @@ DRM错误码。
 | DRM_ERR_IO = DRM_CAPI_ERR_BASE + 4 | IO错误。 |
 | DRM_ERR_TIMEOUT = DRM_CAPI_ERR_BASE + 5 | 网络超时。 |
 | DRM_ERR_UNKNOWN = DRM_CAPI_ERR_BASE + 6 | 未知错误。 |
-| DRM_ERR_SERVICE_DIED = DRM_CAPI_ERR_BASE + 7 | drm服务死亡。 |
+| DRM_ERR_SERVICE_DIED = DRM_CAPI_ERR_BASE + 7 | DRM服务死亡。 |
 | DRM_ERR_INVALID_STATE = DRM_CAPI_ERR_BASE + 8 | 无效的操作状态。 |
 | DRM_ERR_UNSUPPORTED = DRM_CAPI_ERR_BASE + 9 | 不支持的操作。 |
 | DRM_ERR_MAX_SYSTEM_NUM_REACHED = DRM_CAPI_ERR_BASE + 10 | MediaKeySystem最大实例数。 |

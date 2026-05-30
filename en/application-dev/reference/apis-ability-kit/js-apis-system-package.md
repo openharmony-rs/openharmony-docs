@@ -9,7 +9,7 @@
 
 > **NOTE**
 >
-> - This module is deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager.md) instead.
+> - The APIs of this module have been deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager.md) instead.
 >
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
@@ -17,13 +17,16 @@
 ## Modules to Import
 
 
-```
-import package from '@system.package';
+```ts
+import Package from '@system.package';
 ```
 
 
 ## package.hasInstalled<sup>(deprecated)</sup>
-> This API is deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager.md) instead.
+
+> **NOTE**
+>
+> This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) instead.
 
 hasInstalled(options: CheckPackageHasInstalledOptions): void
 
@@ -40,24 +43,32 @@ Checks whether an application exists, or whether a native application has been i
 **Example**
 
 ``` ts
-export default {
+import Package from '@system.package';
+
+@Entry
+@Component
+struct MainPage {
   hasInstalled() {
-    package.hasInstalled({
+    Package.hasInstalled({
       bundleName: 'com.example.bundlename',
-      success: function(data) {
+      success: (data) => {
         console.log('package has installed: ' + data);
       },
-      fail: function(data, code) {
-        console.log('query package fail, code: ' + code + ', data: ' + data);
+      fail: (msg:string, code) => {
+        console.log('query package fail, code: ' + code + ', data: ' + msg);
       },
     });
-  },
+  }
+  build() {
+  }
 }
 ```
 
 ## CheckPackageHasInstalledResponse
 
-> This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API has been supported since API version 3 and deprecated since API version 9.
 
 Checks whether a bundle has been installed.
 
@@ -69,7 +80,9 @@ Checks whether a bundle has been installed.
 
 ## CheckPackageHasInstalledOptions
 
-> This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API has been supported since API version 3 and deprecated since API version 9.
 
 Defines the options used for checking whether a bundle has been installed.
 

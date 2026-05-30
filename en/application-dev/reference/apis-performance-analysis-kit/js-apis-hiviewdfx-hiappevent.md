@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--SE: @junjie_shi-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @jinqiuheng-->
 
 This module provides application logging and event subscription capabilities, including event storage, event subscription, event clearance, and logging configuration. HiAppEvent records the events triggered during application running in [AppEventInfo](#appeventinfo), and classifies the events into system events and application events.
 
@@ -48,7 +49,7 @@ Adds an event watcher. You can use the callback of the event watcher to subscrib
 
 **Error codes**
 
-For details about the error codes, see [Application Event Logging Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message                       |
 | -------- | ------------------------------- |
@@ -58,6 +59,16 @@ For details about the error codes, see [Application Event Logging Error Codes](e
 | 11102003 | Invalid row value. Possible caused by the row value is less than zero. |
 | 11102004 | Invalid size value. Possible caused by the size value is less than zero. |
 | 11102005 | Invalid timeout value. Possible caused by the timeout value is less than zero. |
+
+> **NOTE**
+>
+> The **addWatcher** API involves I/O operations. In performance-sensitive service scenarios, you need to determine whether to call this API in the main thread or a child thread based on the actual service requirements.
+>
+> To call **addWatcher** in a child thread, ensure that the child thread is not destroyed in the entire API usage period.
+>
+> For details about how to call the API in a child thread, see [Worker](../../arkts-utils/worker-introduction.md).
+>
+> The name passed to the **addWatcher** API should be unique. If the same name is passed, the previous subscription will be overwritten.
 
 **Example**
 
@@ -103,8 +114,10 @@ hiAppEvent.addWatcher({
 ```
 
 Method 2: If the **triggerCondition** parameter is not set, use the **holder** object returned by the event subscription to obtain the subscribed event.
-<br>For crash events (**hiAppEvent.event.APP_CRASH**) and freeze events (**hiAppEvent.event.APP_FREEZE**) generated during abnormal exits, the system needs time to capture debug logs. Typically, capture completes within 30 seconds; in extreme cases, it may take up to about 2 minutes.
-<br>When the subscription data holder is used to manually process subscription events, the events may not be generated or the log capture is not complete. Therefore, you are advised to call **takeNext()** to obtain such events again after the process is started.
+
+For crash events (**hiAppEvent.event.APP_CRASH**) and freeze events (**hiAppEvent.event.APP_FREEZE**) generated during abnormal exits, the system needs time to capture debug logs. Typically, capture completes within 30 seconds; in extreme cases, it may take up to about 2 minutes.
+
+When the subscription data holder is used to manually process subscription events, the events may not be generated or the log capture is not complete. Therefore, you are advised to call **takeNext()** to obtain such events again after the process is started.
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -179,7 +192,7 @@ Removes an event watcher.
 
 **Error codes**
 
-For details about the error codes, see [Application Event Logging Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message             |
 | -------- | --------------------- |
@@ -206,11 +219,7 @@ hiAppEvent.removeWatcher(watcher);
 
 setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: string): Promise&lt;void&gt;
 
-Sets custom event parameters. This API uses a promise to return the result. In the same lifecycle, system events and application events can be associated by event domain and event name. System events support only JS memory leaks in [crash events](../../dfx/hiappevent-watcher-crash-events.md), [freeze events](../../dfx/hiappevent-watcher-freeze-events.md), and [resource leak events](../../dfx/hiappevent-watcher-resourceleak-events.md).
-
->**NOTE**
->
-> Since API version 20, JS memory leak in the [resource leak event](../../dfx/hiappevent-watcher-resourceleak-events.md) is supported.
+Sets custom event parameters. This API uses a promise to return the result. During the same lifecycle, system events and application events can be associated through event domain and event name.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -222,17 +231,17 @@ Sets custom event parameters. This API uses a promise to return the result. In t
 | ------ | ------------------------------ | ---- | -------------- |
 | params | Record&lt;string, [ParamType](#paramtype12)&gt; | Yes| Custom parameter object. The parameter name and value are defined as follows:<br>- A parameter name is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter.  <br>- The parameter value is of the [ParamType](#paramtype12) and contains a maximum of 1024 characters.<br>- The number of parameters must be less than 64.|
 | domain | string                        | Yes| Event domain. The event domain can be associated with application events and system events (hiAppEvent.domain.OS).|
-| name   | string                        | No| Event name. The default value is an empty string, which indicates all event names in the associated event domain. You can use event names to associate application events with system events. System events can be associated only with crash events (**hiAppEvent.event.APP_CRASH**) and freeze events (**hiAppEvent.event.APP_FREEZE**).|
+| name   | string                        | No| Event name. The default value is an empty string, which indicates all event names in the associated event domain. Event names can be used to associate application events and system events. System events can only be associated with the following events:<br>- [Crash event](../../dfx/hiappevent-watcher-crash-events.md) (**hiAppEvent.event.APP_CRASH**)<br>- [Application freeze event](../../dfx/hiappevent-watcher-freeze-events.md) (**hiAppEvent.event.APP_FREEZE**)<br>- [Resource leak event](../../dfx/hiappevent-watcher-resourceleak-events.md) (**hiAppEvent.event.RESOURCE_OVERLIMIT**).<br>**Note**: Since API version 20, the [resource leak event](../../dfx/hiappevent-watcher-resourceleak-events.md) is supported.|
 
 **Return value**
 
 | Type               | Description         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise that returns no value.  |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Application Event Logging Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
@@ -268,7 +277,10 @@ hiAppEvent.setEventParam(params, "test_domain", "test_event").then(() => {
 
 setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&lt;void&gt;
 
-Sets event configuration. This method uses a promise to return the result. In the same lifecycle, you can set event configuration by event name.<br>Different events have different configuration items. Currently, only the **MAIN_THREAD_JANK** (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#custom-parameters).) and **APP_CRASH** (For details about the parameter configuration, see [Customizing Crash Log Specifications](../../dfx/hiappevent-watcher-crash-events.md#customizing-crash-log-specifications).) events are supported.
+Sets event configuration. This method uses a promise to return the result. In the same lifecycle, you can set event configuration by event name.<br>Configuration items vary depending on events. Currently, only the following events are supported:
+- **MAIN_THREAD_JANK**. (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-seteventconfig).)
+- **APP_CRASH** (For details about the parameter configuration, see [Customizing Crash Log Specifications](../../dfx/hiappevent-watcher-crash-events.md#customizing-crash-log-specifications).)
+- **RESOURCE_OVERLIMIT** (For details about the parameter configuration, see [Resource Leak Event Overview](../../dfx/hiappevent-watcher-resourceleak-events.md#customizing-specifications).)
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -279,17 +291,17 @@ Sets event configuration. This method uses a promise to return the result. In th
 | Name| Type                          | Mandatory| Description          |
 | ------ | ------------------------------ | ---- | -------------- |
 | name   | string                        | Yes| Event name.|
-| config | Record<string, ParamType> | Yes| Custom parameter object. The parameter name and value are defined as follows:<br>- The parameter name contains a maximum of 1024 characters, which is of the string type and cannot be empty.<br>- The parameter value is of the ParamType and contains a maximum of 1024 characters.|
+| config | Record<string, [ParamType](#paramtype12)> | Yes| Custom parameter object. The parameter name and value are defined as follows:<br>- The parameter name contains a maximum of 1024 characters, which is of the string type and cannot be empty.<br>- The parameter value is of the ParamType and contains a maximum of 1024 characters.|
 
 **Return value**
 
 | Type               | Description         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Application Event Logging Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
@@ -317,6 +329,56 @@ hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err
 });
 ```
 
+
+## hiAppEvent.configEventPolicy<sup>22+</sup>
+
+configEventPolicy(policy: EventPolicy): Promise&lt;void&gt;
+
+Sets a system event configuration policy. This API uses a promise to return the result.
+
+In the same lifecycle, you can set system event configuration by policy.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+**Parameters**
+
+| Name| Type                         | Mandatory| Description          |
+| ------ | ---------------------------- | ---- | -------------- |
+| policy | [EventPolicy](#eventpolicy22)  | Yes  | System event configuration policy.|
+
+**Return value**
+
+| Type               | Description         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | Promise that returns no value.<br>For details about the event configuration policy, see [EventPolicy](#eventpolicy22). If the configuration policy is incorrect, the API returns a failure message.<br>- If the parameter type is incorrect, error code 401 is returned.<br>- If the parameter specifications are incorrect, the error information is output in HiLog logs.|
+
+**Example**
+
+The following example shows how to configure a policy for the **MAIN_THREAD_JANK** event:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let policy: hiAppEvent.EventPolicy = {
+  "mainThreadJankPolicy":{
+    "logType": 1,
+    "sampleInterval": 100,
+    "ignoreStartupTime": 11,
+    "sampleCount": 21,
+    "reportTimesPerApp": 3,
+    "autoStopSampling": true
+  }
+};
+hiAppEvent.configEventPolicy(policy).then(() => {
+  hilog.info(0x0000, 'hiAppEvent', `Successfully set main thread jank event policy.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set main thread jank event policy. Code: ${err?.code}, message: ${err?.message}`);
+});
+```
+
 ## Watcher
 
 Defines parameters for a **Watcher** object. This API is used to configure and manage event watchers to subscribe to and process specified events.
@@ -333,6 +395,9 @@ Defines parameters for a **Watcher** object. This API is used to configure and m
 | onTrigger        | (curRow: number, curSize: number, holder: [AppEventPackageHolder](#appeventpackageholder)) => void |  No  | Yes  | Subscription callback. This parameter takes effect only when it is passed together with **triggerCondition**. The input arguments are described as follows:<br>**curRow**: total number of subscription events when the callback is triggered.<br>**curSize**: total size of subscribed events when the callback is triggered, in bytes.<br>**holder**: subscription data holder, which can be used to process subscribed events.|
 | onReceive<sup>11+</sup>        | (domain: string, appEventGroups: Array<[AppEventGroup](#appeventgroup11)>) => void |  No  | Yes| Real-time subscription callback. Only this callback function is triggered if it is passed together with **onTrigger**. The input arguments are described as follows:<br>domain: domain name.<br>appEventGroups: event group.|
 
+> **NOTE**
+>
+> You are not advised to [remove watchers](#hiappeventremovewatcher) in the callback. Once a watcher is removed, the subscription callback of the watcher becomes invalid, and the callback may not be triggered when an event occurs.
 
 ## TriggerCondition
 
@@ -365,7 +430,8 @@ Defines parameters of subscription filtering conditions of a [Watcher](#watcher)
 
 > **NOTE**
 >
-> In system events, address sanitizer events and task execution timeout events cannot be subscribed to in atomic services. Time-consuming launch events, frame loss events, high CPU load events, and battery usage statistics events cannot be subscribed to in atomic services and application clones.
+> The subscription specifications of system events vary according to application types. For details, see [HiAppEvent Constraints](../../dfx/hiappevent-intro.md#constraints).
+
 
 ## AppEventPackageHolder
 
@@ -422,7 +488,7 @@ Sets the threshold for the data size of the event package obtained each time.
 
 **Error codes**
 
-For details about the error codes, see [Application Event Logging Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message           |
 | -------- | ------------------- |
@@ -456,7 +522,7 @@ Sets the number of data records of the event package obtained each time. When **
 
 **Error codes**
 
-For details about the error codes, see [Application Event Logging Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message           |
 | -------- | ------------------- |
@@ -515,7 +581,7 @@ Defines parameters of the event information.
 | domain    | string                  | No| No  | Event domain. The value is a string of up to 32 characters, including digits (0 to 9), letters (a to z), and underscores (\_). It must start with a letter and cannot end with an underscore (\_).|
 | name      | string                  | No| No  | Event name. The value is string that contains a maximum of 48 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter.|
 | eventType | [EventType](#eventtype) | No| No  | Event type.                                                  |
-| params    | object                  | No| No  | Event parameter object, which consists of a parameter name and a parameter value. In system events, the fields contained in **params** are defined by system. For details about the fields, you can see the overviews of system events, for example, [Crash Event Overview](../../dfx/hiappevent-watcher-crash-events.md). For application events, you need to define the parameters of the [Write](#hiappeventwrite-1) API. The specifications are as follows:<br>- A parameter name is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter. For example, **testName** and **\$123_name**.<br>- The parameter value can be a string, number, boolean, or array. The string type parameter can contain a maximum of 8 x 1024 characters. If the length exceeds the limit, the parameter and its name will be discarded. The value of the number type parameter must be within the range of **Number.MIN_SAFE_INTEGER** to **Number.MAX_SAFE_INTEGER**. If the value exceeds the range, an uncertain value may be generated. The element type in the array type parameter can only be string, number, or boolean. The number of elements must be less than 100. If this limit is exceeded, excess elements will be discarded.<br>- The maximum number of parameters is 32. If this limit is exceeded, excess parameters will be discarded.|
+| params    | object                  | No| No  | Event parameter object, which consists of a parameter name and a parameter value. In system events, the fields contained in **params** are defined by system. For details about the fields, you can see the overviews of system events, for example, [Crash Event Overview](../../dfx/hiappevent-watcher-crash-events.md). For application events, you need to define the parameters of the [Write](#hiappeventwrite-1) API. The specifications are as follows:<br>- A parameter name is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter. For example, **testName** and **\$123_name**.<br>- The parameter value can be a string, number, boolean, or array. The string type parameter can contain a maximum of 8 × 1024 characters. If the length exceeds the limit, the parameter and its name will be discarded. The value of the number type parameter must be within the range of **Number.MIN_SAFE_INTEGER** to **Number.MAX_SAFE_INTEGER**. If the value exceeds the range, an uncertain value may be generated. The element type in the array type parameter can only be string, number, or boolean. The number of elements must be less than 100. If this limit is exceeded, excess elements will be discarded.<br>- The maximum number of parameters is 32. If this limit is exceeded, excess parameters will be discarded.|
 
 
 ## AppEventPackage
@@ -526,11 +592,11 @@ Defines parameters of an **AppEventPackage** object. This API is used to obtain 
 
 | Name     | Type    | Read Only| Optional| Description                          |
 | --------- | -------- | ---- | ---- | ------------------------------ |
-| packageId | number   | No| No  | Event package ID, which is named from **0** in ascending order.<br>**Atomic service API**: This API can be used in atomic services since API version 11.   |
-| row       | number   | No| No  | Number of events in the event package.<br>**Atomic service API**: This API can be used in atomic services since API version 11.            |
-| size      | number   | No| No  | Event size of the event package, in bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| data      | string[] | No| No  | Event data in the event package.<br>**Atomic service API**: This API can be used in atomic services since API version 11.            |
-| appEventInfos<sup>12+</sup> | Array<[AppEventInfo](#appeventinfo)> | No| No  | Event object group.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| packageId | number   | No| No  | Event package ID, which is named from **0** in ascending order.<br>**Atomic service API**: This parameter can be used in atomic services since API version 11.   |
+| row       | number   | No| No  | Number of events in the event package.<br>**Atomic service API**: This parameter can be used in atomic services since API version 11.            |
+| size      | number   | No| No  | Event size of the event package, in bytes.<br>**Atomic service API**: This parameter can be used in atomic services since API version 11.|
+| data      | string[] | No| No  | Event data in the event package.<br>**Atomic service API**: This parameter can be used in atomic services since API version 11.            |
+| appEventInfos<sup>12+</sup> | Array<[AppEventInfo](#appeventinfo)> | No| No  | Event object group.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.|
 
 
 ## AppEventGroup<sup>11+</sup>
@@ -566,7 +632,7 @@ Writes events of the **AppEventInfo** type. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see [Application Event Logging Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
@@ -578,6 +644,12 @@ For details about the error codes, see [Application Event Logging Error Codes](e
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
+
+> **NOTE**
+>
+> The **write** API involves I/O operations, and the execution time is usually at the millisecond level. Therefore, you need to determine whether to call this API in the main thread or a child thread based on the actual service requirements.
+>
+> For details about how to call an API in a child thread, see [Overview of Multithreaded Concurrency](../../arkts-utils/multi-thread-concurrency-overview.md).
 
 **Example**
 
@@ -626,11 +698,11 @@ Writes events of the **AppEventInfo** type. This API uses a promise to return th
 
 | Type               | Description         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise that returns no value.  |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Application Event Logging Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
@@ -642,6 +714,12 @@ For details about the error codes, see [Application Event Logging Error Codes](e
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
+
+> **NOTE**
+>
+> The **write** API involves I/O operations, and the execution time is usually at the millisecond level. Therefore, you need to determine whether to call this API in the main thread or a child thread based on the actual service requirements.
+>
+> For details about how to call an API in a child thread, see [Overview of Multithreaded Concurrency](../../arkts-utils/multi-thread-concurrency-overview.md).
 
 **Example**
 
@@ -694,6 +772,8 @@ This is a synchronous API and involves time-consuming operations. To ensure perf
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message         |
 | ------- | ----------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
@@ -732,16 +812,18 @@ Adds the configuration information of the data processor. The configuration file
 
 | Name    | Type       | Mandatory| Description             |
 | ---------  | ---------- | ---- | -------------    |
-| processorName  |  string  | Yes  | <!--RP2-->Name of a data processor, which can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP2End-->|
+| processorName  |  string  | Yes  | <!--RP2-->Name of a data processor. It can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP2End-->|
 | configName  |  string  | No  | <!--RP3-->Name of the data processor configuration. The corresponding configuration can be loaded from the configuration file. The default value is **SDK_OCG**. It can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP3End-->|
 
 **Return value**
 
 | Type   | Description                  |
 | ------ | ---------------------- |
-| Promise&lt;number&gt; | Promise that returns the unique ID of the added event data processor, which can be used to remove the data processor. If the adding fails, error code **11105001** is returned.|
+| Promise&lt;number&gt; |  Promise that returns the unique ID of the added event data processor, which can be used to remove the data processor. If the adding fails, error code **11105001** is returned.|
 
 **Error codes**
+
+For details about the error codes, see [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message         |
 | ------- | ----------------- |
@@ -775,9 +857,11 @@ Removes the data processor of a reported event.
 
 | Name| Type   | Mandatory| Description                        |
 | ------| ------- | ---- | --------------------------- |
-| id    | number  | Yes  | ID of a data processor. The value must be greater than **0**. The value is obtained by calling [addProcessor](#hiappeventaddprocessor11).|
+| id    | number  | Yes  | ID of a data processor. The value must be greater than **0**. The value is obtained by calling [addProcessor](#hiappeventaddprocessor11) or [addProcessorFromConfig](#hiappeventaddprocessorfromconfig20).|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | ------- | ----------------- |
@@ -820,6 +904,8 @@ Sets a user ID, which is used for association when a [Processor](#processor11) i
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message         |
 | ------- | ----------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
@@ -861,6 +947,8 @@ Obtains the value set through **setUserId**.
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message         |
 | ------- | ----------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
@@ -898,6 +986,8 @@ Sets a user property, which is used for association when a [Processor](#processo
 | value     | string                    | Yes  | Value of a user property. It can contain a maximum of 1024 characters. If the value is **null** or left empty, the user property is cleared. |
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | ------- | ----------------- |
@@ -939,6 +1029,8 @@ Obtains the value set through **setUserProperty**.
 | string | Value of a user property. If no user ID is found, an empty string is returned.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | ------- | ----------------- |
@@ -994,7 +1086,7 @@ Configures the application event logging function, such as setting the logging s
 
 **Error codes**
 
-For details about the error codes, see [Application Event Logging Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1029,8 +1121,110 @@ Provides configuration options for application event logging.
 | Name      | Type   | Read Only| Optional| Description                                                        |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | disable    | boolean | No| Yes  | Whether to enable the event logging function. The default value is **false**. If this parameter is set to **true**, the logging function is disabled. Otherwise, the logging function is enabled.|
-| maxStorage | string  | No| Yes  | Quota for the directory that stores event logging files. The default value is **10M**. It is recommended that the quota be less than or equal to 10 MB. Otherwise, the API efficiency may be affected.<br>If the directory size exceeds the specified quota when application event logging is performed, event logging files in the directory will be cleared one by one based on the generation time to ensure that directory size does not exceed the quota.<br>The quota value must meet the following requirements:<br>- The quota value consists of only digits and a unit (which can be one of [b\|k\|kb\|m\|mb\|g\|gb\|t\|tb], which are case insensitive.)<br>- The quota value must start with a digit. You can determine whether to pass the unit. If the unit is left empty, **b** (that is, byte) is used by default.|
+| maxStorage | string  | No| Yes  | Quota for the directory that stores event logging files. The default value is **10M**. It is recommended that the quota be less than or equal to 10 MB. Otherwise, the API efficiency may be affected.<br>If the directory size exceeds the specified quota when application event logging is performed, event logging files in the directory will be cleared one by one based on the generation time to ensure that directory size does not exceed the quota.<br>The quota value must meet the following requirements:<br>- The quota value consists of only digits and a unit (including b\|k\|kb\|m\|mb\|g\|gb\|t\|tb, which are case-insensitive).<br>- The quota value must start with a digit. You can determine whether to pass the unit. If the unit is left empty, **b** (that is, byte) is used by default.|
 
+
+## EventPolicy<sup>22+</sup>
+
+Defines the system event configuration policy, which is set by calling [configEventPolicy](#hiappeventconfigeventpolicy22).
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+| Name      | Type   | Read Only| Optional| Description                                        |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | No| Yes  | Configuration policy for the main thread jank event.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | No| Yes  | Configuration policy for the high CPU usage event.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| appCrashPolicy<sup>24+</sup> | [AppCrashPolicy](#appcrashpolicy24) | No| Yes  | Crash event configuration policy.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| appFreezePolicy<sup>24+</sup> | [AppFreezePolicy](#appfreezepolicy24) | No| Yes  | Application freeze event configuration policy.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| resourceOverlimitPolicy<sup>24+</sup> | [ResourceOverlimitPolicy](#resourceoverlimitpolicy24) | No| Yes  | Resource leak event configuration policy.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| addressSanitizerPolicy<sup>24+</sup> | [AddressSanitizerPolicy](#addresssanitizerpolicy24) | No| Yes  | Address sanitizer event configuration policy.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+
+
+## MainThreadJankPolicy<sup>22+</sup>
+
+Defines the configuration policy for the main thread jank event.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+<!--Table: auto; auto; 10%; 10%; auto-->
+| Name      | Type   | Read Only| Optional| Description                                        |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| logType | number | No| Yes| Type of logs to collect. Default value: **0**<br>**logType = 0**: The default values of other parameters are used. When the main thread experiences two consecutive timeouts between 150 ms and 450 ms, a call stack capture is triggered. When the timeout exceeds 450 ms, a trace capture is triggered.<br>**logType=1**: Only the call stack is captured, and the threshold for triggering the detection is customized.<br>**logType=2**: Only traces are captured.<br>**NOTE**<br> - When **logType** is set to **0**, you only need to set **autoStopSampling**. Default values are used for other parameters.<br> - When **logType** is set to **2**, other parameters do not take effect and do not need to be set.|
+| ignoreStartupTime | number | No| Yes| Mainthread jank event detection time ignored during application startup, in seconds. The default value is **10**, and the minimum value is **3**.|
+| sampleInterval | number | No| Yes| Interval for the main thread jank event detection and sampling, in milliseconds. The default value is **150**. The value range is [50, 500].|
+| sampleCount | number | No| Yes | Number of samplings for the main thread jank event. The default value is **10**. The minimum value is 1.<br>The maximum value is calculated using the following formula: **sampleCount** ≤ (2500/**sampleInterval** - 4).<br>**NOTE**<br> - The value **2500** (ms) indicates the maximum time allowed for a main thread jank event to be reported after being detected. Therefore, the value of **sampleCount** cannot be greater than the maximum value calculated based on the formula.<br> - The value **4** indicates the number of check intervals, that is, the first check interval, the twice second check intervals, and the interval for collecting and reporting stack information.<br> - You need to set the parameters as required.|
+| reportTimesPerApp | number | No| Yes| Number of sampling reporting times for the main thread jank event of the processes with the same PID of an application. This parameter can be set only once for the processes with the same PID.<br>The default value is **1**.<br>The number of times that the sampling is reported per minute ranges from 1 to 3.|
+| autoStopSampling | boolean | No| Yes| Whether to automatically stop sampling the main thread stack when the main thread jank event ends.<br>The value **true** means to stop sampling when the main thread jank event ends or the number of samplings reaches the specified value.<br>The value **false** means to stop sampling when the number of samplings reaches the specified value.<br>The default value is **false**.|
+
+## CpuUsageHighPolicy<sup>22+</sup>
+ 
+Defines the configuration policy for the high CPU usage event.
+ 
+> **NOTE**
+> 
+> After this API is called, the setting is persisted. If this API is called again and the corresponding parameter is not set, the value used by the system last time is used.
+ 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+ 
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+ 
+| Name      | Type   | Read Only| Optional| Description    |
+| ---------- | ------- | ---- | ---- | ------------- |
+| foregroundLoadThreshold    | number | No| Yes  | High CPU usage threshold of the application foreground, in percentage. The value range is **[1, 100]**. The default value is **30**. If the value is not within the threshold range, the default value **30** is used.<br>**Note**: It is recommended that the value be less than **30**.|
+| backgroundLoadThreshold | number  | No| Yes  | High CPU usage threshold of the application background, in percentage. The value range is **[1, 100]**. The default value is **10**. If the value is not within the threshold range, the default value **10** is used.<br>**Note**: It is recommended that the value be less than **10**.|
+| threadLoadThreshold | number  | No| Yes  | High CPU usage threshold of the application thread, in percentage. The value range is **[15, 100]**. The default value is **70**. If the value is not within the threshold range, the default value **70** is used.|
+| perfLogCaptureCount | number  | No| Yes  | Number of log collection times per day. Once the system detects that the number of log collection times exceeds the set value, the system still reports the event normally, but the **external_log** field in the exception event is not attached with the log file path information.<br> For debug-type applications, the threshold range is **[-1, 100]**.<br> For release-type applications, the threshold range is **[0, 20]**.<br> Unit: times. Default value: **1**.<br> If the value is not within the threshold range, the default value **1** is used.<br>**NOTE**<br> 1. The value **-1** indicates that log collection times are not limited.<br> 2. The value **0** indicates that logs are not collected.<br> 3. A value greater than **0** indicates the maximum number of daily collection times.|
+| threadLoadInterval | number  | No| Yes  | Interval for detecting high CPU usage of application threads, in seconds. The value range is **[5, 3600]**. The default value is **60**.<br>If the value is not within the threshold range, the default value **60** is used.|
+
+## AppCrashPolicy<sup>24+</sup>
+
+Defines the crash event configuration policy.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+| Name      | Type   | Read Only| Optional| Description    |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for crash events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.|
+
+## AppFreezePolicy<sup>24+</sup>
+
+Defines the application freeze event configuration policy.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+| Name      | Type   | Read Only| Optional| Description    |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for application freeze events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.|
+
+## ResourceOverlimitPolicy<sup>24+</sup>
+
+Defines the resource leak event configuration policy.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+| Name      | Type   | Read Only| Optional| Description    |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for resource leak events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.|
+
+## AddressSanitizerPolicy<sup>24+</sup>
+
+Defines the address sanitizer event configuration policy.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+| Name      | Type   | Read Only| Optional| Description    |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for address sanitizer events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.|
 
 ## Processor<sup>11+</sup>
 
@@ -1120,26 +1314,30 @@ Provides domain name constants.
 
 ## hiAppEvent.event
 
+### Constants
+
 Provides event name constants, including system event name constants and application event name constants. The application event name constants are optional custom event names reserved when you call [Write](#hiappeventwrite-1) for application event logging.
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 | Name                     | Type  | Read Only  | Description                |
 | ------------------------- | ------ | ------ | -------------------- |
-| USER_LOGIN                | string | Yes| User login event. This is a reserved application event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
-| USER_LOGOUT               | string | Yes| User logout event. This is a reserved application event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
-| DISTRIBUTED_SERVICE_START | string | Yes| Distributed service startup event. This is a reserved application event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| APP_CRASH<sup>11+</sup>   | string | Yes| Application crash event. This is a system event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
-| APP_FREEZE<sup>11+</sup>  | string | Yes| Application freeze event. This is a system event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
-| APP_LAUNCH<sup>12+</sup>  | string | Yes| Event indicating the application launch duration. This is a system event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 12.  |
-| SCROLL_JANK<sup>12+</sup> | string | Yes| Event indicating frame loss during swiping. This is a system event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 12.  |
-| CPU_USAGE_HIGH<sup>12+</sup> | string | Yes| Event indicating a high CPU usage. This is a system event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| BATTERY_USAGE<sup>12+</sup> | string | Yes| Event indicating battery usage statistics. This is a system event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| RESOURCE_OVERLIMIT<sup>12+</sup> | string | Yes| Event indicating an application resource leakage. This is a system event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| ADDRESS_SANITIZER<sup>12+</sup> | string | Yes| Application address sanitizer event. This is a system event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MAIN_THREAD_JANK<sup>12+</sup> | string | Yes| Main thread jank event. This is a system event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| APP_KILLED<sup>20+</sup> | string | Yes| Application killing event. This is a system event name constant.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-
+| USER_LOGIN                | string | Yes| User login event. This is a reserved application event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 11.      |
+| USER_LOGOUT               | string | Yes| User logout event. This is a reserved application event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 11.      |
+| DISTRIBUTED_SERVICE_START | string | Yes| Distributed service startup event. This is a reserved application event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 11.|
+| APP_CRASH<sup>11+</sup>   | string | Yes| Application crash event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 11.      |
+| APP_FREEZE<sup>11+</sup>  | string | Yes| Application freeze event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 11.      |
+| APP_LAUNCH<sup>12+</sup>  | string | Yes| Event indicating the application launch duration. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.  |
+| SCROLL_JANK<sup>12+</sup> | string | Yes| Event indicating frame loss during swiping. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.  |
+| CPU_USAGE_HIGH<sup>12+</sup> | string | Yes| Event indicating a high CPU usage. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.|
+| BATTERY_USAGE<sup>12+</sup> | string | Yes| Event indicating battery usage statistics. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.|
+| RESOURCE_OVERLIMIT<sup>12+</sup> | string | Yes| Application resource leak event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.|
+| ADDRESS_SANITIZER<sup>12+</sup> | string | Yes| Application address sanitizer event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.|
+| MAIN_THREAD_JANK<sup>12+</sup> | string | Yes| Main thread jank event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.|
+| APP_KILLED<sup>20+</sup> | string | Yes| Application killed event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 20.|
+| APP_HICOLLIE<sup>21+</sup> | string | Yes| Task execution timeout event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 21.|
+| AUDIO_JANK_FRAME<sup>21+</sup> | string | Yes| Audio jank event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 21.|
+| SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | Yes| ArkWeb fling jank event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 23.|
 
 ## hiAppEvent.param
 

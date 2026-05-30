@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides APIs for playing and configuring SMS tones and notification tones and obtaining related information.
 
@@ -29,14 +29,14 @@ Describes the options of system tones.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
-| Name       | Type   | Mandatory| Description                                         |
-| ----------- | ------- | ---- | --------------------------------------------- |
-| muteAudio   | boolean | No  | Whether the sound is muted. **true** if muted, **false** otherwise.  |
-| muteHaptics | boolean | No  | Whether haptics feedback is turned off. **true** if turned off, **false** otherwise.|
+| Name       | Type   | Read-Only| Optional| Description                                         |
+| ----------- | ------- | ---- | ---- | --------------------------------------------- |
+| muteAudio   | boolean | No  | Yes  | Whether to mute the audio. **true** to mute, **false** otherwise.  |
+| muteHaptics | boolean | No  | Yes  | Whether to turn off haptics feedback when a system tone is played. **true** to turn off, **false** otherwise.|
 
 ## SystemTonePlayer
 
-Implements APIs for playing and configuring SMS tones and notification tones and obtaining related information. Before calling any API in SystemTonePlayer, you must use [getSystemTonePlayer](js-apis-systemSoundManager-sys.md#getsystemtoneplayer11) to create a SystemTonePlayer instance.
+The module provides APIs for playing and configuring SMS tones and notification tones and obtaining related information. Before calling any API in SystemTonePlayer, you must use [getSystemTonePlayer](js-apis-systemSoundManager-sys.md#getsystemtoneplayer11) to create a SystemTonePlayer instance.
 
 ### getTitle
 
@@ -180,7 +180,7 @@ Stops playing a system tone. This API uses a promise to return the result.
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | ------------------------- |
-| id     | number | Yes  | Stream ID.|
+| id     | number | Yes  | Promise used to return the stream ID.|
 
 **Return value**
 
@@ -272,7 +272,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202      | Caller is not a system application.                                                                         |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102  | Operation not allowed.                                                                                      |
-| 20700002 | Parameter check error, For example, value is out side [0, 1].                                                |
+| 20700002 | Parameter check error. For example, value is outside [0,1]. |
 
 **Example**
 
@@ -301,10 +301,9 @@ Obtains the scale of the audio volume. This API returns the result synchronously
 
 **Return value**
 
-
 | Type  | Description        |
 | ------ | ------------ |
-| number | Scale of the audio volume.|
+| number | Current audio volume. The value range is [0, 1].|
 
 **Error codes**
 
@@ -455,6 +454,8 @@ Subscribes to the event indicating that the ringtone playback is finished. This 
 
 The object to listen for is an audio stream specified by **streamId**. If **streamId** is set to **0**, this API subscribes to the playback complete event of all audio streams of the player.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 **Parameters**
@@ -500,6 +501,8 @@ off(type: 'playFinished', callback?: Callback\<number>): void
 
 Unsubscribes from the event indicating that the ringtone playback is finished. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 **Parameters**
@@ -540,6 +543,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 Subscribes to error events that occur during ringtone playback. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 **Parameters**
@@ -564,7 +569,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemTonePlayer.on('error', (err: BusinessError) => {
-  console.log("on error, err:" + JSON.stringify(err));
+  console.info(`Succeeded in using on function. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -573,6 +578,8 @@ systemTonePlayer.on('error', (err: BusinessError) => {
 off(type: 'error', callback?: ErrorCallback): void
 
 Unsubscribes from error events that occur during ringtone playback. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
@@ -602,7 +609,7 @@ systemTonePlayer.off('error');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let callback = (err: BusinessError) => {
-  console.log("on error, err:" + JSON.stringify(err));
+  console.info(`Succeeded in using on or off function. code: ${err.code}, message: ${err.message}`);
 };
 
 systemTonePlayer.on('error', callback);

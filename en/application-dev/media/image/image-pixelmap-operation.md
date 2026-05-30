@@ -1,4 +1,10 @@
 # Using PixelMap for PixelMap Operations
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yaozhupeng-->
+<!--Designer: @yaozhupeng-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @w_Machine_cc-->
 
 To process a certain area in an image, you can perform PixelMap operations, which are usually used to beautify the image.
 
@@ -18,12 +24,13 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-PixelMa
 
    ```ts
    import { image } from '@kit.ImageKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    // Obtain the total number of bytes of this PixelMap object.
-   let pixelBytesNumber : number = pixelMap.getPixelBytesNumber();
+   let pixelBytesNumber: number = pixelMap.getPixelBytesNumber();
    // Obtain the number of bytes per row of this PixelMap object.
-   let rowBytes : number = pixelMap.getBytesNumberPerRow();
+   let rowBytes: number = pixelMap.getBytesNumberPerRow();
    // Obtain the pixel density of this PixelMap object. Pixel density refers to the number of pixels per inch of an image. A larger value of the pixel density indicates a finer image.
-   let density : number = pixelMap.getDensity();
+   let density: number = pixelMap.getDensity();
    ```
 
 3. Read and modify the pixel data of the target area, and write the modified data back to the original image.
@@ -32,6 +39,7 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-PixelMa
    > To prevent issues with the PixelMap due to inconsistent pixel formats, you are advised to use **readPixelsToBuffer** with **writeBufferToPixels** and **readPixels** with **writePixels** in corresponding pairs.
 
    ```ts
+   import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    // Scenario 1: Read and modify data of the entire image.
    // Read the pixel data of the PixelMap based on the PixelMap's pixel format and write the data to the buffer.

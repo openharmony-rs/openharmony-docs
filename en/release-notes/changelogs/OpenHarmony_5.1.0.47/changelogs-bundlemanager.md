@@ -44,8 +44,8 @@ OpenHarmony 5.1.0.47
 
 **Key API/Component Changes**
 
-**installSource** field in [ApplicationInfo](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md)
+**installSource** field in [ApplicationInfo](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md)
 
 **Adaptation Guide**
 
-Adapt the preset application to the new specifications. This way, you can determine whether an application is a preset one based on the **installSource** field in [ApplicationInfo](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md).
+Adapt the preset application to the new specifications. This way, you can determine whether an application is a preset one based on the **installSource** field in [ApplicationInfo](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md).

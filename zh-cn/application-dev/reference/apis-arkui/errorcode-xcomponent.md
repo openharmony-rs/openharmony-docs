@@ -1,10 +1,10 @@
 # XComponent组件错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
-<!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @dutie123-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >

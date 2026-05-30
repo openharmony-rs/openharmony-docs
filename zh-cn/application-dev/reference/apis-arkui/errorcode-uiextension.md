@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -248,4 +248,4 @@ Transparent node is detected in the UIExtension ability.
 
 **处理步骤**
 
-查杀透明节点，避免阻塞事件。
+终止透明节点，避免阻塞事件。

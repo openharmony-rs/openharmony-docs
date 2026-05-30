@@ -9,24 +9,24 @@
 
 Check whether a key exists.
 
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
+
 ## How to Develop
 
 1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
-2. Initialize the key property set to specify [the property tags of keys](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag). When a single key is queried, **TAG** can be empty.
+2. Initialize the key property set. This is used to specify the properties for querying a key. To query a single key or non-group key, this set can be left empty.
 
 3. Use [hasKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukshaskeyitem11) to check whether the key exists.
 
-```ts
+<!-- @[querying_the_existence_of_a_key_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/CheckKeyExists/entry/src/main/ets/pages/CheckKeyExists.ets) -->
+
+``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-/* 1. Set the key alias. */
+
 let keyAlias = 'test_key';
 let isKeyExist: Boolean;
-/* 2. Construct an empty object. */
-let huksOptions: huks.HuksOptions = {
-  properties: []
-}
-/* 3. Initialize the key property set. */
+
 let generateProperties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -41,11 +41,13 @@ let generateProperties: huks.HuksParam[] = [
     value: huks.HuksKeySize.HUKS_DH_KEY_SIZE_2048
   }
 ];
+
 let generateHuksOptions: huks.HuksOptions = {
   properties: generateProperties,
   inData: new Uint8Array([])
 }
-/* 3. Generate a key. */
+
+/* 1. Generate a key. */
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<void>((resolve, reject) => {
     try {
@@ -61,27 +63,18 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
     }
   });
 }
-async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions): Promise<string> {
+
+async function generateKey(keyAlias: string, huksOptions: huks.HuksOptions): Promise<void> {
   console.info(`enter promise generateKeyItem`);
-  try {
-    await generateKeyItem(keyAlias, huksOptions)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
-      })
-      .catch((error: Error) => {
-        console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
-      });
-    return 'Success';
-  } catch (error) {
-    console.error(`promise: generateKeyItem input arg invalid, ` + JSON.stringify(error));
-    return 'Failed';
-  }
+  await generateKeyItem(keyAlias, huksOptions);
+  console.info(`promise: generateKeyItem success`);
 }
-async function testGenKey(): Promise<string> {
-  let ret = await publicGenKeyFunc(keyAlias, generateHuksOptions);
-  return ret;
+
+/* 2. Check whether the key exists. */
+let huksOptions: huks.HuksOptions = {
+  properties: []
 }
-/* Check whether the key exists. */
+
 function hasKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<boolean>((resolve, reject) => {
     try {
@@ -89,11 +82,7 @@ function hasKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
         if (error) {
           reject(error);
         } else {
-          if (data !== null && data.valueOf() !== null) {
-            resolve(data.valueOf());
-          } else {
-            resolve(false);
-          }
+          resolve(data.valueOf());
         }
       });
     } catch (error) {
@@ -101,21 +90,26 @@ function hasKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
     }
   });
 }
-async function check(): Promise<string> {
+
+async function checkKeyExistence(keyAlias: string, huksOptions: huks.HuksOptions): Promise<boolean> {
+  console.info(`enter promise hasKeyItem`);
+  const exists = await hasKeyItem(keyAlias, huksOptions);
+  console.info(`promise: hasKeyItem success, isKeyExist = ${exists}`);
+  return exists;
+}
+
+async function executeCheckKey(): Promise<string> {
   try {
     /* 1. Generate a key. */
-    let genResult = await testGenKey();
+    await generateKey(keyAlias, generateHuksOptions);
+
     /* 2. Check whether the key exists. */
-    if (genResult === 'Success') {
-      isKeyExist = await hasKeyItem(keyAlias, huksOptions);
-      console.info(`callback: hasKeyItem success, isKeyExist = ${isKeyExist}`);
-    } else {
-      console.error('Key generation failed, skipping query');
-      return 'Failed';
-    }
+    isKeyExist = await checkKeyExistence(keyAlias, huksOptions);
+
+    console.info(`Key check completed, isKeyExist = ${isKeyExist}`);
     return 'Success';
   } catch (error) {
-    console.error(`callback: hasKeyItem input arg invalid, ` + JSON.stringify(error));
+    console.error(`Key check failed: ${JSON.stringify(error)}`);
     return 'Failed';
   }
 }

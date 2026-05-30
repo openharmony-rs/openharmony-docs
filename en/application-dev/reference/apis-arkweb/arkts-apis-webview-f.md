@@ -4,13 +4,13 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## Module to Import
 
@@ -37,7 +37,7 @@ When the first **Web** component is loaded in an application, the web engine is 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                 |
 | -------- | ----------------------- |
@@ -50,7 +50,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 import { webview } from '@kit.ArkWeb';
 
 webview.once("webInited", () => {
-  console.log("configCookieSync");
+  console.info("configCookieSync");
   webview.WebCookieManager.configCookieSync("https://www.example.com", "a=b");
 })
 

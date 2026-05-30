@@ -1,4 +1,10 @@
 # @ohos.telephony.call (Call) (System API)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 The **call** module provides call management functions, including making calls, redirecting to the dial screen, obtaining the call status, and formatting phone numbers.
 
@@ -37,7 +43,7 @@ Initiates a call. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -60,7 +66,7 @@ call.dialCall("138xxxxxxxx", (err: BusinessError) => {
     if (err) {
         console.error(`dialCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`dialCall success.`);
+        console.info(`dialCall success.`);
     }
 });
 ```
@@ -88,7 +94,7 @@ Initiates a call. You can set call options as needed. This API uses an asynchron
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -117,7 +123,7 @@ call.dialCall("138xxxxxxxx", dialCallOptions, (err: BusinessError) => {
     if (err) {
         console.error(`dialCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`dialCall success.`);
+        console.info(`dialCall success.`);
     }
 });
 ```
@@ -150,7 +156,7 @@ Initiates a call. You can set call options as needed. This API uses a promise to
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -176,7 +182,7 @@ let dialCallOptions: call.DialCallOptions = {
     dialType: 0
 }
 call.dialCall("138xxxxxxxx", dialCallOptions).then(() => {
-    console.log(`dialCall success.`);
+    console.info(`dialCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`dialCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -203,7 +209,7 @@ Mutes the ringtone while it is playing. It does not work if the ringtone has bee
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -224,7 +230,7 @@ call.muteRinger((err: BusinessError) => {
     if (err) {
         console.error(`muteRinger fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`muteRinger success.`);
+        console.info(`muteRinger success.`);
     }
 });
 ```
@@ -250,7 +256,7 @@ Mutes the ringtone while it is playing. It does not work if the ringtone has bee
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -266,7 +272,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.muteRinger().then(() => {
-    console.log(`muteRinger success.`);
+    console.info(`muteRinger success.`);
 }).catch((err: BusinessError) => {
     console.error(`muteRinger fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -294,7 +300,7 @@ Answers a call. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -315,7 +321,7 @@ call.answerCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`answerCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`answerCall success.`);
+        console.info(`answerCall success.`);
     }
 });
 ```
@@ -347,7 +353,7 @@ Answers a call. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -365,59 +371,11 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.answerCall(1).then(() => {
-    console.log(`answerCall success.`);
+    console.info(`answerCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
-
-
-## call.answerCall<sup>9+</sup>
-
-answerCall\(callback: AsyncCallback\<void\>\): void
-
-Answers a call. This API uses an asynchronous callback to return the result.
-
-**System API**: This is a system API.
-
-**Required permission**: ohos.permission.ANSWER_CALL
-
-**System capability**: SystemCapability.Telephony.CallManager
-
-**Parameters**
-
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
-
-**Error codes**
-
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                    |
-| -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.answerCall((err: BusinessError) => {
-    if (err) {
-        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.log(`answerCall success.`);
-    }
-});
-```
-
 
 ## call.hangUpCall<sup>9+</sup>
 
@@ -427,7 +385,7 @@ Ends a call. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.ANSWER_CALL
+**Required permissions**: ohos.permission.ANSWER_CALL and ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CallManager
 
@@ -440,7 +398,7 @@ Ends a call. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -461,7 +419,7 @@ call.hangUpCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`hangUpCall success.`);
+        console.info(`hangUpCall success.`);
     }
 });
 ```
@@ -493,7 +451,7 @@ Ends a call. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -511,57 +469,9 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hangUpCall(1).then(() => {
-    console.log(`hangUpCall success.`);
+    console.info(`hangUpCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`hangUpCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
-
-## call.hangUpCall<sup>9+</sup>
-
-hangUpCall\(callback: AsyncCallback\<void\>\): void
-
-Ends a call. This API uses an asynchronous callback to return the result.
-
-**System API**: This is a system API.
-
-**Required permission**: ohos.permission.ANSWER_CALL
-
-**System capability**: SystemCapability.Telephony.CallManager
-
-**Parameters**
-
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
-
-**Error codes**
-
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                    |
-| -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
-
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.hangUpCall((err: BusinessError) => {
-    if (err) {
-        console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.log(`hangUpCall success.`);
-    }
 });
 ```
 
@@ -587,7 +497,7 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -609,7 +519,7 @@ call.rejectCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`rejectCall success.`);
+        console.info(`rejectCall success.`);
     }
 });
 ```
@@ -637,7 +547,7 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -661,7 +571,7 @@ call.rejectCall(1, rejectMessageOptions, (err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`rejectCall success.`);
+        console.info(`rejectCall success.`);
     }
 });
 ```
@@ -694,7 +604,7 @@ Rejects a call. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -715,59 +625,11 @@ let rejectMessageOptions: call.RejectMessageOptions = {
     messageContent: "Unknown number blocked"
 }
 call.rejectCall(1, rejectMessageOptions).then(() => {
-    console.log(`rejectCall success.`);
+    console.info(`rejectCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`rejectCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
-
-
-## call.rejectCall<sup>9+</sup>
-
-rejectCall\(callback: AsyncCallback\<void\>\): void
-
-Rejects a call. This API uses an asynchronous callback to return the result.
-
-**System API**: This is a system API.
-
-**Required permission**: ohos.permission.ANSWER_CALL
-
-**System capability**: SystemCapability.Telephony.CallManager
-
-**Parameters**
-
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
-
-**Error codes**
-
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                    |
-| -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.rejectCall((err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.log(`rejectCall success.`);
-    }
-});
-```
-
 
 ## call.rejectCall<sup>9+</sup>
 
@@ -790,7 +652,7 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -814,7 +676,7 @@ call.rejectCall(rejectMessageOptions, (err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`rejectCall success.`);
+        console.info(`rejectCall success.`);
     }
 });
 ```
@@ -841,7 +703,7 @@ Holds a call based on the specified call ID. This API uses an asynchronous callb
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -862,7 +724,7 @@ call.holdCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`holdCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`holdCall success.`);
+        console.info(`holdCall success.`);
     }
 });
 ```
@@ -894,7 +756,7 @@ Holds a call based on the specified call ID. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -912,7 +774,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.holdCall(1).then(() => {
-    console.log(`holdCall success.`);
+    console.info(`holdCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`holdCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -939,7 +801,7 @@ Unholds a call based on the specified call ID. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -960,7 +822,7 @@ call.unHoldCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`unHoldCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`unHoldCall success.`);
+        console.info(`unHoldCall success.`);
     }
 });
 ```
@@ -992,7 +854,7 @@ Unholds a call based on the specified call ID. This API uses a promise to return
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -1010,7 +872,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.unHoldCall(1).then(() => {
-    console.log(`unHoldCall success.`);
+    console.info(`unHoldCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`unHoldCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1037,7 +899,7 @@ Switches a call. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -1058,7 +920,7 @@ call.switchCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`switchCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`switchCall success.`);
+        console.info(`switchCall success.`);
     }
 });
 ```
@@ -1090,7 +952,7 @@ Switches a call. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -1108,7 +970,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.switchCall(1).then(() => {
-    console.log(`switchCall success.`);
+    console.info(`switchCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`switchCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1133,7 +995,7 @@ Combines two calls into a conference call. This API uses an asynchronous callbac
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1154,7 +1016,7 @@ call.combineConference(1, (err: BusinessError) => {
     if (err) {
         console.error(`combineConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`combineConference success.`);
+        console.info(`combineConference success.`);
     }
 });
 ```
@@ -1184,7 +1046,7 @@ Combines two calls into a conference call. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1202,7 +1064,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.combineConference(1).then(() => {
-    console.log(`combineConference success.`);
+    console.info(`combineConference success.`);
 }).catch((err: BusinessError) => {
     console.error(`combineConference fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1229,7 +1091,7 @@ Removes a specified call from a conference call. This API uses an asynchronous c
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1250,7 +1112,7 @@ call.kickOutFromConference(1, (err: BusinessError) => {
     if (err) {
         console.error(`kickOutFromConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`kickOutFromConference success.`);
+        console.info(`kickOutFromConference success.`);
     }
 });
 ```
@@ -1281,7 +1143,7 @@ Removes a specified call from a conference call. This API uses a promise to retu
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1299,7 +1161,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.kickOutFromConference(1).then(() => {
-    console.log(`kickOutFromConference success.`);
+    console.info(`kickOutFromConference success.`);
 }).catch((err: BusinessError) => {
     console.error(`kickOutFromConference fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1324,7 +1186,7 @@ Obtains the main call ID. This API uses an asynchronous callback to return the r
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1345,7 +1207,7 @@ call.getMainCallId(1, (err: BusinessError, data: number) => {
     if (err) {
         console.error(`getMainCallId fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getMainCallId success, data->${JSON.stringify(data)}`);
+        console.info(`getMainCallId success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1375,7 +1237,7 @@ Obtains the main call ID. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1393,7 +1255,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getMainCallId(1).then((data: number) => {
-    console.log(`getMainCallId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getMainCallId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getMainCallId fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1418,7 +1280,7 @@ Obtains the list of subcall IDs. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1438,7 +1300,7 @@ call.getSubCallIdList(1, (err: BusinessError, data: Array<string>) => {
     if (err) {
         console.error(`getSubCallIdList fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getSubCallIdList success, data->${JSON.stringify(data)}`);
+        console.info(`getSubCallIdList success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1468,7 +1330,7 @@ Obtains the list of subcall IDs. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1485,7 +1347,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getSubCallIdList(1).then((data: Array<string>) => {
-    console.log(`getSubCallIdList success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSubCallIdList success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSubCallIdList fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1510,7 +1372,7 @@ Obtains the list of call IDs in a conference. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1530,7 +1392,7 @@ call.getCallIdListForConference(1, (err: BusinessError, data: Array<string>) => 
     if (err) {
         console.error(`getCallIdListForConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallIdListForConference success, data->${JSON.stringify(data)}`);
+        console.info(`getCallIdListForConference success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1560,7 +1422,7 @@ Obtains the list of call IDs in a conference. This API uses a promise to return 
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1577,7 +1439,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallIdListForConference(1).then((data: Array<string>) => {
-    console.log(`getCallIdListForConference success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallIdListForConference success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallIdListForConference fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1604,7 +1466,7 @@ Obtains the call waiting status. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1625,7 +1487,7 @@ call.getCallWaitingStatus(0, (err: BusinessError, data: call.CallWaitingStatus) 
     if (err) {
         console.error(`getCallWaitingStatus fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallWaitingStatus success, data->${JSON.stringify(data)}`);
+        console.info(`getCallWaitingStatus success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1657,7 +1519,7 @@ Obtains the call waiting status. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1675,7 +1537,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallWaitingStatus(0).then((data: call.CallWaitingStatus) => {
-    console.log(`getCallWaitingStatus success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallWaitingStatus success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallWaitingStatus fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1703,7 +1565,7 @@ Specifies whether to enable the call waiting service. This API uses an asynchron
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1724,7 +1586,7 @@ call.setCallWaiting(0, true, (err: BusinessError) => {
     if (err) {
         console.error(`setCallWaiting fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallWaiting success.`);
+        console.info(`setCallWaiting success.`);
     }
 });
 ```
@@ -1757,7 +1619,7 @@ Specifies whether to enable the call waiting service. This API uses a promise to
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1775,7 +1637,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setCallWaiting(0, true).then(() => {
-    console.log(`setCallWaiting success.`);
+    console.info(`setCallWaiting success.`);
 }).catch((err: BusinessError) => {
     console.error(`setCallWaiting fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1789,6 +1651,8 @@ Starts playing DTMF tones. This API uses an asynchronous callback to return the 
 
 **System API**: This is a system API.
 
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -1801,7 +1665,7 @@ Starts playing DTMF tones. This API uses an asynchronous callback to return the 
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1821,7 +1685,7 @@ call.startDTMF(1, "0", (err: BusinessError) => {
     if (err) {
         console.error(`startDTMF fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`startDTMF success.`);
+        console.info(`startDTMF success.`);
     }
 });
 ```
@@ -1852,7 +1716,7 @@ Starts playing DTMF tones. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1869,7 +1733,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.startDTMF(1, "0").then(() => {
-    console.log(`startDTMF success.`);
+    console.info(`startDTMF success.`);
 }).catch((err: BusinessError) => {
     console.error(`startDTMF fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1883,6 +1747,8 @@ Stops playing DTMF tones. This API uses an asynchronous callback to return the r
 
 **System API**: This is a system API.
 
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -1894,7 +1760,7 @@ Stops playing DTMF tones. This API uses an asynchronous callback to return the r
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1914,7 +1780,7 @@ call.stopDTMF(1, (err: BusinessError) => {
     if (err) {
         console.error(`stopDTMF fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`stopDTMF success.`);
+        console.info(`stopDTMF success.`);
     }
 });
 ```
@@ -1944,7 +1810,7 @@ Stops playing DTMF tones. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1961,7 +1827,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.stopDTMF(1).then(() => {
-    console.log(`stopDTMF success.`);
+    console.info(`stopDTMF success.`);
 }).catch((err: BusinessError) => {
     console.error(`stopDTMF fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1973,8 +1839,7 @@ postDialProceed\(callId: number, proceed: boolean, callback: AsyncCallback\<void
 
 Continues a call by playing a post-dial DTMF string. This API uses an asynchronous callback to return the result.
 
-If the called number is in the format of "common phone number + semicolon (;) + DTMF string", for example, **400xxxxxxx;123**, and the listening for **postDialDelay** events is enabled,
-the system reports a **postDialDelay** event when the call is connected. The application can then call this API to send DTMF tones.
+If the called number is in the format of "common phone number + semicolon (;) + DTMF string", for example, **400xxxxxxx;123**, and the listening for **postDialDelay** events is enabled, the system reports a **postDialDelay** event when the call is connected. The application can then call this API to send DTMF tones.
 
 **System API**: This is a system API.
 
@@ -1987,12 +1852,12 @@ the system reports a **postDialDelay** event when the call is connected. The app
 | Name  | Type                     | Mandatory| Description                                                          |
 | -------- | ------------------------- | ---- | -------------------------------------------------------------- |
 | callId   | number                    | Yes  | Call ID.                                                      |
-| proceed  | boolean                   | Yes  | Whether to send DTMF tones. The default value is **false**.<br>- **true**: Send DTMF tones.<br>- **false**: Do not send DTMF tones.|
+| proceed  | boolean                   | Yes  | Whether to send DTMF tones. The default value is **false**.<br>- **true**: yes<br>- **false**: no|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                   |
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2010,7 +1875,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.postDialProceed(1, true, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2021,8 +1886,7 @@ postDialProceed\(callId: number, proceed: boolean\): Promise\<void\>
 
 Continues a call by playing a post-dial DTMF string. This API uses a promise to return the result.
 
-If the called number is in the format of "common phone number + semicolon (;) + DTMF string", for example, **400xxxxxxx;123**, and the listening for **postDialDelay** events is enabled,
-the system reports a **postDialDelay** event when the call is connected. The application can then call this API to send DTMF tones.
+If the called number is in the format of "common phone number + semicolon (;) + DTMF string", for example, **400xxxxxxx;123**, and the listening for **postDialDelay** events is enabled, the system reports a **postDialDelay** event when the call is connected. The application can then call this API to send DTMF tones.
 
 **System API**: This is a system API.
 
@@ -2035,7 +1899,7 @@ the system reports a **postDialDelay** event when the call is connected. The app
 | Name  | Type                     | Mandatory| Description                   |
 | -------- | ------------------------- | ---- | ----------------------- |
 | callId   | number                    | Yes  | Call ID.               |
-| proceed  | boolean                   | Yes  | Whether to send DTMF tones. The default value is **false**.<br>- **true**: Send DTMF tones.<br>- **false**: Do not send DTMF tones.|
+| proceed  | boolean                   | Yes  | Whether to send DTMF tones. The default value is **false**.<br>- **true**: yes<br>- **false**: no|
 
 **Return value**
 
@@ -2045,7 +1909,7 @@ the system reports a **postDialDelay** event when the call is connected. The app
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2063,7 +1927,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.postDialProceed(1, true).then(() => {
-    console.log(`postDialProceed success.`);
+    console.info(`postDialProceed success.`);
 }).catch((err: BusinessError) => {
     console.error(`postDialProceed fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2089,7 +1953,7 @@ Checks whether a call is an emergency call. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2110,7 +1974,7 @@ call.isInEmergencyCall((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isInEmergencyCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isInEmergencyCall success, data->${JSON.stringify(data)}`);
+        console.info(`isInEmergencyCall success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -2136,7 +2000,7 @@ Checks whether a call is an emergency call. This API uses a promise to return th
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2152,7 +2016,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isInEmergencyCall().then((data: boolean) => {
-    console.log(`isInEmergencyCall success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isInEmergencyCall success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isInEmergencyCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2179,7 +2043,7 @@ Subscribes to **callDetailsChange** events. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2195,7 +2059,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.on('callDetailsChange', (data: call.CallAttributeOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2220,7 +2084,7 @@ Subscribes to **callEventChange** events. This API uses an asynchronous callback
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2236,7 +2100,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.on('callEventChange', (data: call.CallEventOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2261,7 +2125,7 @@ Subscribes to **callDisconnectedCause** events. This API uses an asynchronous ca
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2277,7 +2141,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.on('callDisconnectedCause', (data: call.DisconnectedDetails) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2302,7 +2166,7 @@ Subscribes to **mmiCodeResult** events. This API uses an asynchronous callback t
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2318,7 +2182,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.on('mmiCodeResult', (data: call.MmiCodeResults) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2343,7 +2207,7 @@ Unsubscribes from **callDetailsChange** events. This API uses an asynchronous ca
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2359,7 +2223,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.off('callDetailsChange', (data: call.CallAttributeOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2384,7 +2248,7 @@ Unsubscribes from **callEventChange** events. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2400,7 +2264,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.off('callEventChange', (data: call.CallEventOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2425,7 +2289,7 @@ Unsubscribes from **callDisconnectedCause** events. This API uses an asynchronou
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2441,7 +2305,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.off('callDisconnectedCause', (data: call.DisconnectedDetails) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2466,7 +2330,7 @@ Unsubscribes from **mmiCodeResult** events. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2482,7 +2346,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.off('mmiCodeResult', (data: call.MmiCodeResults) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2508,7 +2372,7 @@ Subscribes to audio device change events. This API uses an asynchronous callback
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2524,7 +2388,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2550,7 +2414,7 @@ Unsubscribes from **audioDeviceChange** events. This API uses an asynchronous ca
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2566,7 +2430,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2591,7 +2455,7 @@ Subscribes to **postDialDelay** events. This API uses an asynchronous callback t
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2607,7 +2471,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.on('postDialDelay', (data: string) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2632,7 +2496,7 @@ Unsubscribes from **postDialDelay** events. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2648,7 +2512,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.off('postDialDelay', (data: string) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2670,7 +2534,7 @@ Checks whether a new call is allowed. This API uses an asynchronous callback to 
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2690,7 +2554,7 @@ call.isNewCallAllowed((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isNewCallAllowed fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isNewCallAllowed success, data->${JSON.stringify(data)}`);
+        console.info(`isNewCallAllowed success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -2714,7 +2578,7 @@ Checks whether a new call is allowed. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2729,7 +2593,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isNewCallAllowed().then((data: boolean) => {
-    console.log(`isNewCallAllowed success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isNewCallAllowed success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isNewCallAllowed fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2743,6 +2607,8 @@ Separates calls from a conference call. This API uses an asynchronous callback t
 
 **System API**: This is a system API.
 
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -2754,7 +2620,7 @@ Separates calls from a conference call. This API uses an asynchronous callback t
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2775,7 +2641,7 @@ call.separateConference(1, (err: BusinessError) => {
     if (err) {
         console.error(`separateConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`separateConference success.`);
+        console.info(`separateConference success.`);
     }
 });
 ```
@@ -2805,7 +2671,7 @@ Separates calls from a conference call. This API uses a promise to return the re
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2823,7 +2689,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.separateConference(1).then(() => {
-    console.log(`separateConference success.`);
+    console.info(`separateConference success.`);
 }).catch((err: BusinessError) => {
     console.error(`separateConference fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2851,7 +2717,7 @@ Obtains the call restriction status. This API uses an asynchronous callback to r
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2872,7 +2738,7 @@ call.getCallRestrictionStatus(0, 1, (err: BusinessError, data: call.RestrictionS
     if (err) {
         console.error(`getCallRestrictionStatus fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallRestrictionStatus success, data->${JSON.stringify(data)}`);
+        console.info(`getCallRestrictionStatus success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -2905,7 +2771,7 @@ Obtains the call restriction status. This API uses a promise to return the resul
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2923,7 +2789,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallRestrictionStatus(0, 1).then((data: call.RestrictionStatus) => {
-    console.log(`getCallRestrictionStatus success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallRestrictionStatus success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallRestrictionStatus fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2951,7 +2817,7 @@ Sets the call restriction status. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2977,7 +2843,7 @@ call.setCallRestriction(0, callRestrictionInfo, (err: BusinessError) => {
     if (err) {
         console.error(`setCallRestriction fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallRestriction success.`);
+        console.info(`setCallRestriction success.`);
     }
 });
 ```
@@ -3010,7 +2876,7 @@ Sets the call restriction status. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3033,7 +2899,7 @@ let callRestrictionInfo: call.CallRestrictionInfo = {
     mode: call.CallRestrictionMode.RESTRICTION_MODE_ACTIVATION
 }
 call.setCallRestriction(0, callRestrictionInfo).then(() => {
-    console.log(`setCallRestriction success.`);
+    console.info(`setCallRestriction success.`);
 }).catch((err: BusinessError) => {
     console.error(`setCallRestriction fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3062,7 +2928,7 @@ Changes the call barring password. This API uses an asynchronous callback to ret
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3083,7 +2949,7 @@ call.setCallRestrictionPassword(0, "123456", "654321", (err: BusinessError) => {
     if (err) {
         console.error(`setCallRestrictionPassword fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallRestrictionPassword success.`);
+        console.info(`setCallRestrictionPassword success.`);
     }
 });
 ```
@@ -3116,7 +2982,7 @@ Changes the call barring password. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3134,7 +3000,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setCallRestrictionPassword(0, "123456", "654321").then(() => {
-    console.log(`setCallRestrictionPassword success.`);
+    console.info(`setCallRestrictionPassword success.`);
 }).catch((err: BusinessError) => {
     console.error(`setCallRestrictionPassword fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3162,7 +3028,7 @@ Obtains call transfer information. This API uses an asynchronous callback to ret
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3183,7 +3049,7 @@ call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY, (err: Busi
     if (err) {
         console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
+        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -3216,7 +3082,7 @@ Obtains call transfer information. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3234,7 +3100,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY).then((data: call.CallTransferResult) => {
-    console.log(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallTransferInfo fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3262,7 +3128,7 @@ Sets call transfer information. This API uses an asynchronous callback to return
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3288,7 +3154,7 @@ call.setCallTransfer(0, callTransferInfo, (err: BusinessError) => {
     if (err) {
         console.error(`setCallTransfer fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallTransfer success.`);
+        console.info(`setCallTransfer success.`);
     }
 });
 ```
@@ -3321,7 +3187,7 @@ Sets call transfer information. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3344,7 +3210,7 @@ let callTransferInfo: call.CallTransferInfo = {
     settingType: call.CallTransferSettingType.CALL_TRANSFER_ENABLE
 }
 call.setCallTransfer(0, callTransferInfo).then(() => {
-    console.log(`setCallTransfer success.`);
+    console.info(`setCallTransfer success.`);
 }).catch((err: BusinessError) => {
     console.error(`setCallTransfer fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3370,7 +3236,7 @@ Checks whether the ringtone is playing. This API uses an asynchronous callback t
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3391,7 +3257,7 @@ call.isRinging((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isRinging fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isRinging success, data->${JSON.stringify(data)}`);
+        console.info(`isRinging success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -3417,7 +3283,7 @@ Checks whether the ringtone is playing. This API uses a promise to return the re
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3433,7 +3299,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isRinging().then((data: boolean) => {
-    console.log(`isRinging success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isRinging success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isRinging fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3457,7 +3323,7 @@ Sets call muting. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3477,7 +3343,7 @@ call.setMuted((err: BusinessError) => {
     if (err) {
         console.error(`setMuted fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setMuted success.`);
+        console.info(`setMuted success.`);
     }
 });
 ```
@@ -3501,7 +3367,7 @@ Sets call muting. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3516,7 +3382,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setMuted().then(() => {
-    console.log(`setMuted success.`);
+    console.info(`setMuted success.`);
 }).catch((err: BusinessError) => {
     console.error(`setMuted fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3540,7 +3406,7 @@ Cancels call muting. This API uses an asynchronous callback to return the result
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3560,7 +3426,7 @@ call.cancelMuted((err: BusinessError) => {
     if (err) {
         console.error(`cancelMuted fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`cancelMuted success.`);
+        console.info(`cancelMuted success.`);
     }
 });
 ```
@@ -3584,7 +3450,7 @@ Cancels call muting. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3599,7 +3465,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.cancelMuted().then(() => {
-    console.log(`cancelMuted success.`);
+    console.info(`cancelMuted success.`);
 }).catch((err: BusinessError) => {
     console.error(`cancelMuted fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3626,7 +3492,7 @@ Sets the audio device for a call. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3650,7 +3516,7 @@ call.setAudioDevice(audioDevice, (err: BusinessError) => {
     if (err) {
         console.error(`setAudioDevice fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setAudioDevice success.`);
+        console.info(`setAudioDevice success.`);
     }
 });
 ```
@@ -3681,7 +3547,7 @@ Sets the audio device for a call. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3702,7 +3568,7 @@ let audioDevice: call.AudioDevice = {
     deviceType: call.AudioDeviceType.DEVICE_EARPIECE
 }
 call.setAudioDevice(audioDevice).then(() => {
-    console.log(`setAudioDevice success.`);
+    console.info(`setAudioDevice success.`);
 }).catch((err: BusinessError) => {
     console.error(`setAudioDevice fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3728,7 +3594,7 @@ Joins a conference call. This API uses an asynchronous callback to return the re
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3751,7 +3617,7 @@ call.joinConference(1, callNumberList, (err: BusinessError) => {
     if (err) {
         console.error(`joinConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`joinConference success.`);
+        console.info(`joinConference success.`);
     }
 });
 ```
@@ -3781,7 +3647,7 @@ Joins a conference call. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3801,7 +3667,7 @@ let callNumberList: Array<string> = [
     "138XXXXXXXX"
 ];
 call.joinConference(1, callNumberList).then(() => {
-    console.log(`joinConference success.`);
+    console.info(`joinConference success.`);
 }).catch((err: BusinessError) => {
     console.error(`joinConference fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3815,6 +3681,8 @@ Updates the IMS call mode. This API uses an asynchronous callback to return the 
 
 **System API**: This is a system API.
 
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -3827,7 +3695,7 @@ Updates the IMS call mode. This API uses an asynchronous callback to return the 
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3847,7 +3715,7 @@ call.updateImsCallMode(1, 1, (err: BusinessError) => {
     if (err) {
         console.error(`updateImsCallMode fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`updateImsCallMode success.`);
+        console.info(`updateImsCallMode success.`);
     }
 });
 ```
@@ -3877,7 +3745,7 @@ Updates the IMS call mode. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3894,7 +3762,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.updateImsCallMode(1, 1).then(() => {
-    console.log(`updateImsCallMode success.`);
+    console.info(`updateImsCallMode success.`);
 }).catch((err: BusinessError) => {
     console.error(`updateImsCallMode fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3921,7 +3789,7 @@ Enables the IMS service. This API uses an asynchronous callback to return the re
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3942,7 +3810,7 @@ call.enableImsSwitch(0, (err: BusinessError) => {
     if (err) {
         console.error(`enableImsSwitch fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`enableImsSwitch success.`);
+        console.info(`enableImsSwitch success.`);
     }
 });
 ```
@@ -3973,7 +3841,7 @@ Enables the IMS service. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -3991,7 +3859,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.enableImsSwitch(0).then(() => {
-    console.log(`enableImsSwitch success.`);
+    console.info(`enableImsSwitch success.`);
 }).catch((err: BusinessError) => {
     console.error(`enableImsSwitch fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4018,7 +3886,7 @@ Disables the IMS service. This API uses an asynchronous callback to return the r
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -4039,7 +3907,7 @@ call.disableImsSwitch(0, (err: BusinessError) => {
     if (err) {
         console.error(`disableImsSwitch fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`disableImsSwitch success.`);
+        console.info(`disableImsSwitch success.`);
     }
 });
 ```
@@ -4070,7 +3938,7 @@ Disables the IMS service. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -4088,7 +3956,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.disableImsSwitch(0).then(() => {
-    console.log(`disableImsSwitch success.`);
+    console.info(`disableImsSwitch success.`);
 }).catch((err: BusinessError) => {
     console.error(`disableImsSwitch fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4113,7 +3981,7 @@ Checks whether the IMS service is enabled. This API uses an asynchronous callbac
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -4133,7 +4001,7 @@ call.isImsSwitchEnabled(0, (err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isImsSwitchEnabled fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isImsSwitchEnabled success, data->${JSON.stringify(data)}`);
+        console.info(`isImsSwitchEnabled success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -4162,7 +4030,7 @@ Checks whether the IMS service is enabled. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -4179,7 +4047,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isImsSwitchEnabled(0).then((data: boolean) => {
-    console.log(`isImsSwitchEnabled success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isImsSwitchEnabled success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isImsSwitchEnabled fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4209,7 +4077,7 @@ Checks whether the IMS service is enabled. This API returns the result synchrono
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4228,7 +4096,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 let slotId: number = 0;
 try {
     let isEnabled: boolean = call.isImsSwitchEnabledSync(slotId);
-    console.log(`isImsSwitchEnabledSync success : ${isEnabled}`);
+    console.info(`isImsSwitchEnabledSync success : ${isEnabled}`);
 } catch (error) {
     console.error(`isImsSwitchEnabledSync fail : err->${JSON.stringify(error)}`);  
 }
@@ -4255,7 +4123,7 @@ Cancels the unfinished USSD services. This API uses an asynchronous callback to 
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -4277,7 +4145,7 @@ call.closeUnfinishedUssd(slotId, (err: BusinessError) => {
     if (err) {
         console.error(`closeUnfinishedUssd fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`closeUnfinishedUssd success.`);
+        console.info(`closeUnfinishedUssd success.`);
     }
 });
 ```
@@ -4308,7 +4176,7 @@ Cancels the unfinished USSD services. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -4327,7 +4195,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 call.closeUnfinishedUssd(slotId).then(() => {
-    console.log(`closeUnfinishedUssd success.`);
+    console.info(`closeUnfinishedUssd success.`);
 }).catch((err: BusinessError) => {
     console.error(`closeUnfinishedUssd fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4356,7 +4224,7 @@ Sets the status of the VoNR switch. This API uses an asynchronous callback to re
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -4379,7 +4247,7 @@ call.setVoNRState(slotId, state, (err: BusinessError) => {
     if (err) {
         console.error(`setVoNRState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setVoNRState success`);
+        console.info(`setVoNRState success`);
     }
 });
 ```
@@ -4412,7 +4280,7 @@ Sets the status of the VoNR switch. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -4432,7 +4300,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let state: call.VoNRState = call.VoNRState.VONR_STATE_ON;
 call.setVoNRState(slotId, state).then(() => {
-    console.log(`setVoNRState success`);
+    console.info(`setVoNRState success`);
 }).catch((err: BusinessError) => {
     console.error(`setVoNRState fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4460,7 +4328,7 @@ Obtains the status of the VoNR switch. This API uses an asynchronous callback to
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -4482,7 +4350,7 @@ call.getVoNRState(slotId, (err: BusinessError, data: call.VoNRState) => {
     if (err) {
         console.error(`getVoNRState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getVoNRState success, data->${JSON.stringify(data)}`);
+        console.info(`getVoNRState success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -4514,7 +4382,7 @@ Obtains the status of the VoNR switch. This API uses a promise to return the res
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -4533,7 +4401,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 call.getVoNRState(slotId).then((data: call.VoNRState) => {
-    console.log(`getVoNRState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getVoNRState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getVoNRState fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4561,7 +4429,7 @@ Checks whether the call forwarding time can be set. This API uses an asynchronou
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -4583,7 +4451,7 @@ call.canSetCallTransferTime(slotId, (err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`canSetCallTransferTime fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`canSetCallTransferTime success, data->${JSON.stringify(data)}`);
+        console.info(`canSetCallTransferTime success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -4615,7 +4483,7 @@ Checks whether the call forwarding time can be set. This API uses a promise to r
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -4634,7 +4502,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 call.canSetCallTransferTime(slotId).then((data: boolean) => {
-    console.log(`canSetCallTransferTime success, promise: data->${JSON.stringify(data)}`);
+    console.info(`canSetCallTransferTime success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`canSetCallTransferTime fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4662,7 +4530,7 @@ Performs a secret code broadcast. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -4682,7 +4550,7 @@ call.inputDialerSpecialCode('*#*#2846579#*#*', (err: BusinessError) => {
     if (err) {
         console.error(`inputDialerSpecialCode fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`inputDialerSpecialCode success`);
+        console.info(`inputDialerSpecialCode success`);
     }
 });
 ```
@@ -4713,7 +4581,7 @@ Performs a secret code broadcast. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -4731,7 +4599,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     call.inputDialerSpecialCode('*#*#2846579#*#*');
-    console.log(`inputDialerSpecialCode success`);
+    console.info(`inputDialerSpecialCode success`);
 } catch (error) {
     console.error(`inputDialerSpecialCode fail, promise: err->${JSON.stringify(error)}`);
 }
@@ -4758,7 +4626,7 @@ Removes missed call notifications. This API uses an asynchronous callback to ret
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -4778,7 +4646,7 @@ call.removeMissedIncomingCallNotification((err: BusinessError) => {
     if (err) {
         console.error(`removeMissedIncomingCallNotification failed, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`removeMissedIncomingCallNotification success`);
+        console.info(`removeMissedIncomingCallNotification success`);
     }
 });
 ```
@@ -4804,7 +4672,7 @@ Removes missed call notifications. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -4820,7 +4688,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.removeMissedIncomingCallNotification().then(() => {
-    console.log(`removeMissedIncomingCallNotification success`);
+    console.info(`removeMissedIncomingCallNotification success`);
 }).catch((err: BusinessError) => {
     console.error(`removeMissedIncomingCallNotification failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -4853,16 +4721,17 @@ Sends a call UI event. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID|                 Error Message                    |
+| ID| Error Message                                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error.                             |
-| 801      | Capability not supported.                    |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
 
 **Example**
 
@@ -4871,7 +4740,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let callId: number = 0;
 call.sendCallUiEvent(callId, 'eventName').then(() => {
-    console.log(`sendCallUiEvent success.`);
+    console.info(`sendCallUiEvent success.`);
 }).catch((err: BusinessError) => {
     console.error(`sendCallUiEvent fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4945,8 +4814,8 @@ Enumerates audio devices.
 
 |                Name              |                  Type                | Mandatory |        Description     |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| deviceType <sup>10+</sup>         | [AudioDeviceType](#audiodevicetype10) | Yes  | Audio device type.   |
-| address <sup>10+</sup>            | string                                | No  | Audio device address.   |
+| deviceType         | [AudioDeviceType](#audiodevicetype10) | Yes  | Audio device type.   |
+| address            | string                                | No  | Audio device address.   |
 | deviceName <sup>11+</sup>         | string                                | No  | Audio device name.   |
 
 ## AudioDeviceType<sup>10+</sup>
@@ -4975,9 +4844,9 @@ Defines the audio device information.
 
 |                Name              |                  Type                | Mandatory |        Description     |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| audioDeviceList <sup>10+</sup>    | [Array\<AudioDevice\>](#audiodevice10) | Yes  | Audio device list.   |
-| currentAudioDevice <sup>10+</sup> | [AudioDevice](#audiodevice10)          | Yes  | Current audio device.   |
-| isMuted <sup>10+</sup>            | boolean                               | Yes  | Whether the audio device is muted.       |
+| audioDeviceList   | [Array\<AudioDevice\>](#audiodevice10) | Yes  | Audio device list.   |
+| currentAudioDevice | [AudioDevice](#audiodevice10)          | Yes  | Current audio device.   |
+| isMuted            | boolean                               | Yes  | Whether the audio device is muted.       |
 
 
 ## CallRestrictionType<sup>8+</sup>
@@ -5058,11 +4927,11 @@ Defines the call attribute options.
 |      Name      | Type                                    | Mandatory| Description          |
 | --------------- | ---------------------------------------- | ---- | -------------- |
 | accountNumber   | string                                   | Yes  | Account number.      |
-| speakerphoneOn  | boolean                                  | Yes  | Speakerphone on.|
+| speakerphoneOn  | boolean                                  | Yes  | Whether the speakerphone is used to answer a call. The default value is **false**.<br>- **true**: yes<br>- **false**: no|
 | accountId       | number                                   | Yes  | Account ID.        |
 | videoState      | [VideoStateType](#videostatetype7)       | Yes  | Video state type.  |
 | startTime       | number                                   | Yes  | Start time.      |
-| isEcc           | boolean                                  | Yes  | Whether the call is an ECC.     |
+| isEcc           | boolean                                  | Yes  | Whether the call is an ECC. The default value is **false**.<br>- **true**: yes<br>- **false**: no     |
 | callType        | [CallType](#calltype7)                   | Yes  | Enumerates call types.      |
 | callId          | number                                   | Yes  | Call ID.        |
 | callState       | [DetailedCallState](#detailedcallstate7) | Yes  | Detailed call state.  |
@@ -5470,7 +5339,7 @@ Answers a call. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -5488,7 +5357,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.answerCall(0, 1).then(() => {
-    console.log(`answerCall success.`);
+    console.info(`answerCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5520,7 +5389,7 @@ Cancels the upgrade of a video call. This API uses a promise to return the resul
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -5538,7 +5407,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.cancelCallUpgrade(1).then(() => {
-    console.log(`cancelCallUpgrade success.`);
+    console.info(`cancelCallUpgrade success.`);
 }).catch((err: BusinessError) => {
     console.error(`cancelCallUpgrade fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5571,7 +5440,7 @@ Uses the specified camera to make a video call. If **cameraId** is left empty, t
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -5589,7 +5458,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.controlCamera(1, "1").then(() => {
-    console.log(`controlCamera success.`);
+    console.info(`controlCamera success.`);
 }).catch((err: BusinessError) => {
     console.error(`controlCamera fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5622,7 +5491,7 @@ Sets the local preview window. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -5640,7 +5509,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setPreviewSurface(1, "surfaceId1").then(() => {
-    console.log(`setPreviewSurface success.`);
+    console.info(`setPreviewSurface success.`);
 }).catch((err: BusinessError) => {
     console.error(`setPreviewSurface fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5673,7 +5542,7 @@ Sets the remote display window. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -5691,7 +5560,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setDisplaySurface(1, "surfaceId1").then(() => {
-    console.log(`setDisplaySurface success.`);
+    console.info(`setDisplaySurface success.`);
 }).catch((err: BusinessError) => {
     console.error(`setDisplaySurface fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5724,7 +5593,7 @@ Sets the video call screen to follow the device direction. This API uses a promi
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -5742,7 +5611,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setDeviceDirection(1, 0).then(() => {
-    console.log(`setDeviceDirection success.`);
+    console.info(`setDeviceDirection success.`);
 }).catch((err: BusinessError) => {
     console.error(`setDeviceDirection fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5769,7 +5638,7 @@ Subscribes to **imsCallModeChange** events. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -5787,7 +5656,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('imsCallModeChange', (data: call.ImsCallModeInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5812,7 +5681,7 @@ Unsubscribes from **imsCallModeChange** events. This API uses an asynchronous ca
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -5830,7 +5699,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('imsCallModeChange', (data: call.ImsCallModeInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5855,7 +5724,7 @@ Subscribes to **callSessionEvent** events. This API uses an asynchronous callbac
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -5873,7 +5742,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('callSessionEvent', (data: call.CallSessionEvent) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5898,7 +5767,7 @@ Unsubscribes from **callSessionEvent** events. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -5916,7 +5785,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('callSessionEvent', (data: call.CallSessionEvent) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5941,7 +5810,7 @@ Subscribes to **peerDimensionsChange** events. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -5959,7 +5828,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('peerDimensionsChange', (data: call.PeerDimensionsDetail) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5984,7 +5853,7 @@ Unsubscribes from **peerDimensionsChange** events. This API uses an asynchronous
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -6002,7 +5871,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('peerDimensionsChange', (data: call.PeerDimensionsDetail) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -6027,7 +5896,7 @@ Subscribes to **cameraCapabilitiesChange** events. This API uses an asynchronous
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -6043,7 +5912,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.on('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -6068,7 +5937,7 @@ Unsubscribes from **cameraCapabilitiesChange** events. This API uses an asynchro
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -6084,7 +5953,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 
 ```ts
 call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -6207,7 +6076,7 @@ Defines a number mark.
 | markContent | string | No | Mark content. When **markType** is set to **MARK_TYPE_ENTERPRISE**, the returned information consists of the employee name and ID.|
 | markCount | number       | No | Mark count.|
 | markSource | string | No| Mark source.|
-| isCloud | boolean | No| Whether the number mark is from the cloud. The default value is **false**.<br>- **true**: The number mark is from the cloud.<br>- **false**: The number mark is not from the cloud.|
+| isCloud | boolean | No| Whether the number mark is from the cloud. The default value is **false**.<br>- **true**: yes<br>- **false**: no|
 | markDetails<sup>14+</sup> | string | No| Mark details. When **markType** is set to **MARK_TYPE_ENTERPRISE**, the value of this parameter is the department position.|
 
 ## MarkType<sup>12+</sup>
@@ -6232,5 +6101,3 @@ Enumerates number mark types.
 | MARK_TYPE_OTHERS | 9 | Other.|
 | MARK_TYPE_YELLOW_PAGE | 10 | Yellow page.|
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | Enterprise contact.|
-
-<!--no_check-->

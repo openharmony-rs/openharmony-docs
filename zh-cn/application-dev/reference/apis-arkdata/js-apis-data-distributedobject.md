@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
-<!--Designer: @hollokin; @yuchaozhng-->
-<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Designer: @yuchaozhng-->
+<!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供管理基本数据对象的相关能力，包括创建、查询、删除、修改、订阅等；同时支持相同应用多设备间的分布式数据对象协同能力。分布式数据对象处理数据时，不会解析用户数据的内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。
@@ -255,6 +255,10 @@ setSessionId(callback: AsyncCallback&lt;void&gt;): void
 
 退出所有已加入的session，使用callback方式异步回调。
 
+**需要权限：**
+- API版本20+：N/A
+- API版本9-19：ohos.permission.DISTRIBUTED_DATASYNC
+ 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 **参数：**
@@ -269,6 +273,7 @@ setSessionId(callback: AsyncCallback&lt;void&gt;): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
+  | 201      | Permission verification failed. <br/> 适用版本：9-19|
   | 401      | Parameter error. Incorrect parameter types. |
   | 15400001 | Failed to create the in-memory database. |
 
@@ -305,7 +310,7 @@ setSessionId(sessionId?: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -582,6 +587,7 @@ revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void
 撤回保存的分布式数据对象。使用callback方式作为异步方法。
 
 如果对象保存在本地设备，那么将删除所有受信任设备上所保存的数据。
+
 如果对象保存在其他设备，那么将删除本地设备上的数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -636,6 +642,7 @@ revokeSave(): Promise&lt;RevokeSaveSuccessResponse&gt;
 撤回保存的分布式数据对象。使用Promise方式作为异步方法。
 
 如果对象保存在本地设备，那么将删除所有受信任设备上所保存的数据。
+
 如果对象保存在其他设备，那么将删除本地设备上的数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -1059,7 +1066,7 @@ try {
 
   g_object.on("progressChanged", progressChangedCallback1);
   g_object.on("progressChanged", progressChangedCallback2);
-  //取消对资产传输进度的所有监听
+  // 取消对资产传输进度的所有监听
   g_object.off("progressChanged");
 } catch (error) {
   console.error("Execute failed, error code =  " + error.code);
@@ -1255,7 +1262,7 @@ createDistributedObject(source: object): DistributedObject
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[distributedDataObject.create](#distributeddataobjectcreate9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[distributedDataObject.create](#distributeddataobjectcreate9)替代。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -1302,7 +1309,7 @@ setSessionId(sessionId?: string): boolean
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[setSessionId](#setsessionid9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setSessionId](#setsessionid9)替代。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1351,7 +1358,7 @@ on(type: 'change', callback: (sessionId: string, fields: Array&lt;string&gt;) =>
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[on('change')](#onchange9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[on('change')](#onchange9)替代。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -1397,7 +1404,7 @@ off(type: 'change', callback?: (sessionId: string, fields: Array&lt;string&gt;) 
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[off('change')](#offchange9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[off('change')](#offchange9)替代。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -1446,7 +1453,7 @@ on(type: 'status', callback: (sessionId: string, networkId: string, status: 'onl
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[on('status')](#onstatus9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[on('status')](#onstatus9)替代。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -1488,7 +1495,7 @@ off(type: 'status', callback?: (sessionId: string, networkId: string, status: 'o
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[off('status')](#offstatus9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[off('status')](#offstatus9)替代。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 

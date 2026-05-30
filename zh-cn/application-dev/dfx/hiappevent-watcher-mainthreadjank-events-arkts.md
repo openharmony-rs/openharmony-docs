@@ -5,11 +5,11 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent (应用事件打点)ArkTS API文档](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 ## 接口说明
 
@@ -22,17 +22,17 @@
 
 ### 添加事件观察者
 
-以实现对发生主线程超时场景生成的主线程超时事件订阅为例，说明开发步骤。
+以主线程超时事件订阅为例，说明开发步骤。
 
 1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
 
    ```ts
     import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
     import { buffer, util } from '@kit.ArkTS'
-    import { fileIo as fs } from '@kit.CoreFileKit';
+    import { fileIo } from '@kit.CoreFileKit';
    ```
 
-2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，可在onCreate、onForeground等其他接口中添加系统事件的订阅（结合业务需求，在合适的位置添加订阅方法），示例代码如下：
+2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，可在onCreate、onForeground等生命周期接口中添加系统事件的订阅（结合业务需求，在合适的位置添加订阅方法），示例代码如下：
 
    ```ts
     hiAppEvent.addWatcher({
@@ -85,7 +85,7 @@
             } else if (path.endsWith(".trace")) {
               targetPath= "/data/storage/el2/base/mainThreadJank.trace";
             }
-            fs.copyFileSync(path.toString(), targetPath.toString());
+            fileIo.copyFileSync(path.toString(), targetPath.toString());
           }
         }
       }
@@ -129,7 +129,7 @@
      import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
      import { BusinessError } from '@kit.BasicServicesKit';
    
-     //模拟超时事件函数定义，示例代码：
+     // 模拟超时事件函数定义，示例代码：
      function wait150ms() {
        let t = Date.now();
        while (Date.now() - t <= 150){
@@ -148,7 +148,7 @@
        build() {
          RelativeContainer() {
            Column() {
-             //自定义设置采样栈参数按钮
+             // 自定义设置采样栈参数按钮
              Button("customSample", { stateEffect:true, type: ButtonType.Capsule})
                .width('75%')
                .height(50)
@@ -175,7 +175,7 @@
                    hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`)
                  });
                })
-             //触发150ms超时事件按钮
+             // 触发150ms超时事件按钮
              Button("timeOut150", { stateEffect:true, type: ButtonType.Capsule})
                .width('75%')
                .height(50)
@@ -195,11 +195,11 @@
 
 5. 该步骤可用于模拟主线程超时采样trace事件。
 
-   编辑工程中的“entry > src > main > ets  > pages> Index.ets”文件，添加按钮并在其onClick函数触发主线程超时采集trace功能，具体如下：
+   编辑工程中的“entry > src > main > ets > pages> Index.ets”文件，添加按钮并在其onClick函数触发主线程超时采集trace功能，具体如下：
 
    > **注意：**
    >
-   > 启动主线程超时检测抓取trace的功能的前提是开发者使用nolog版本并且关闭开发者模式。
+   > 启动主线程超时检测抓取trace的功能的前提是开发者使用[nolog版本](performance-analysis-kit-terminology.md#nolog版本)并且关闭开发者模式。
 
    ```ts
      @Entry
@@ -228,7 +228,15 @@
 
 6. 点击DevEco Studio界面中的运行按钮，运行应用工程。
 
-  由于主线程超时触发的条件是连续两次检测到超时事件后，才会开启采集堆栈，因此用户可以多次尝试：连续快速点击两次触发超时的按钮，触发主线程超时事件。
+   > **注意：**
+   >
+   > 默认情况下，由于应用启动过程本身较为耗时，系统将在**应用启动10s后再进行测试，开始主线程超时事件检测**；
+   >
+   > 若开发者使用setEventConfig接口设置自定义设置采样栈参数，系统将**在开发者设定的ignore_startup_time时间后，开始主线程超时事件检测**。
+
+   主线程超时触发的条件：在检测任务的间隔内，检测到连续两次超时事件后，才会开启采集堆栈。
+  
+   用户可以快速点击2~3次触发超时的按钮（如：timeOut350、timeOut150或timeOut500三种不同卡顿场景的按钮），以触发主线程超时事件。
 
 ### 验证观察者是否订阅到主线程超时事件
 

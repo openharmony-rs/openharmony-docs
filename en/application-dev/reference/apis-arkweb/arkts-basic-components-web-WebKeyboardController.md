@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a controller to control the input, deletion, and closure of the custom keyboard. For details about the sample code, see [onInterceptKeyboardAttach](./arkts-basic-components-web-events.md#oninterceptkeyboardattach12).
 
@@ -14,7 +14,7 @@ Implements a controller to control the input, deletion, and closure of the custo
 >
 > - The initial APIs of this class are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>12+</sup>
 

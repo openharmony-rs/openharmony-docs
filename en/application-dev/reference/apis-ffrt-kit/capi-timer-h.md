@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -34,7 +34,7 @@ The **timer.h** file declares the timer APIs in C.
 
 ### ffrt_timer_start()
 
-```
+```c
 FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)
 ```
 
@@ -42,28 +42,29 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 
 Starts the timer.
 
-**Since**: 12
+You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
+**Since**: 12
 
 **Parameters**
 
-| Name                                                 | Description|
-|------------------------------------------------------| -- |
-| [ffrt_qos_t](capi-type-def-h.md#variables) qos             | QoS.|
-| uint64_t timeout                                     | Timeout, in milliseconds.|
-| void* data                                           | Pointer to the input parameter in the callback function invoked upon a timeout.|
+| Name| Description|
+| -- | -- |
+| [ffrt_qos_t](capi-type-def-h.md#variables) qos| QoS.|
+| uint64_t timeout | Timeout, in milliseconds.|
+| void* data | Pointer to the input parameter in the callback function invoked upon a timeout.|
 | [ffrt_timer_cb](capi-type-def-h.md#ffrt_timer_cb) cb | Callback function invoked upon a timeout.|
-| bool repeat                                          | Whether to repeat the timer (not supported yet).|
+| bool repeat | Whether to repeat the timer (not supported yet).|
 
 **Returns**
 
-| Type                         | Description|
-|-----------------------------| -- |
+| Type| Description|
+| -- | -- |
 | FFRT_C_API [ffrt_timer_t](capi-type-def-h.md#variables)| Returns the timer handle.|
 
 ### ffrt_timer_stop()
 
-```
+```c
 FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 ```
 
@@ -71,8 +72,13 @@ FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 
 Stops the timer.
 
-**Since**: 12
+> **NOTE**
+>
+> - This is a blocking API and must not be used inside callback functions to prevent deadlocks or synchronization issues.
+>
+> - If the callback corresponding to the passed handle is being executed, this function will wait for the callback to complete before resuming its own execution.
 
+**Since**: 12
 
 **Parameters**
 
@@ -85,4 +91,4 @@ Stops the timer.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **0** if the timer is stopped successfully;<br>          returns **-1** otherwise.|
+| FFRT_C_API int | Returns **0** if the timer is stopped successfully; returns **-1** otherwise.|

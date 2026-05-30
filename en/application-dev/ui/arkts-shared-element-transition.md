@@ -1,11 +1,18 @@
 # Shared Element Transition
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @ge-yafang-->
 
 Shared element transition is a type of transition achieved by animating the size and position between styles of the same or similar elements during page switching.
 
 Let's look at an example. After an image is clicked, it disappears, and a new image appears in another position. Because the two images have the same content, we can add shared element transition to them. The figures below show the results with and without a shared element transition. Clearly, the presence of the shared element transition renders the transition natural and smooth.
 
-![en-us_image_0000001599644876](figures/en-us_image_0000001599644876.gif)|![en-us_image_0000001599644877](figures/en-us_image_0000001599644877.gif)
----|---
+| Frame-by-Frame Transition Effect| Shared Element Transition|
+| ------ | ---- |
+| ![en-us_image_0000001599644876](figures/en-us_image_0000001599644876.gif)|![en-us_image_0000001599644877](figures/en-us_image_0000001599644877.gif)|
 
 There are multiple methods for implementing the shared element transition. During real-world development, choose the method that best meets the requirements of your project.
 
@@ -29,11 +36,16 @@ This example implements a shared element transition for the scenario where, as a
 
 Below is the complete sample code and effect.
 
-```ts
+<!-- @[post_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template2/Index.ets) -->
+
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+
 class PostData {
+  // Replace $r('app.media.flower') with the actual resource file.
   avatar: Resource = $r('app.media.flower');
   name: string = '';
-  message: string = '';
+  message: ResourceStr = '';
   images: Resource[] = [];
 }
 
@@ -42,14 +54,39 @@ class PostData {
 struct Index {
   @State isExpand: boolean = false;
   @State @Watch('onItemClicked') selectedIndex: number = -1;
-
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  // Customize the image resource paths in the array as needed.
   private allPostData: PostData[] = [
-    { avatar: $r('app.media.flower'), name: 'Alice', message: 'It is sunny.',
-      images: [$r('app.media.spring'), $r('app.media.tree')] },
-    { avatar: $r('app.media.sky'), name: 'Bob', message: 'Hello World',
-      images: [$r('app.media.island')] },
-    { avatar: $r('app.media.tree'), name: 'Carl', message: 'Everything grows.',
-      images: [$r('app.media.flower'), $r('app.media.sky'), $r('app.media.spring')] }];
+    {
+      // Replace $r('app.media.flower') with the actual resource file.
+      avatar: $r('app.media.flower'),
+      name: 'Alice',
+      // Replace $r('app.string.shareTransition_text1') with the actual resource file. In this example, the value in the resource file is "Weather is fine."
+      message: $r('app.string.shareTransition_text1'),
+      // Replace $r('app.media.spring') with the actual resource file.
+      // Replace $r('app.media.tall_tree') with the actual resource file.
+      images: [$r('app.media.spring'), $r('app.media.tall_tree')]
+    },
+    {
+      // Replace $r('app.media.sunset_sky') with the actual resource file.
+      avatar: $r('app.media.sunset_sky'),
+      name: 'Bob',
+      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello, world."
+      message: $r('app.string.shareTransition_text2'),
+      // Replace $r('app.media.island') with the actual resource file.
+      images: [$r('app.media.island')]
+    },
+    {
+      // Replace $r('app.media.tall_tree') with the actual resource file.
+      avatar: $r('app.media.tall_tree'),
+      name: 'Carl',
+      // Replace $r('app.string.shareTransition_text3') with the actual resource file. In this example, the value in the resource file is "All things grow."
+      message: $r('app.string.shareTransition_text3'),
+      // Replace $r('app.media.flower') with the actual resource file.
+      // Replace $r('app.media.sunset_sky') with the actual resource file.
+      // Replace $r('app.media.spring') with the actual resource file.
+      images: [$r('app.media.flower'), $r('app.media.sunset_sky'), $r('app.media.spring')]
+    }];
 
   private onItemClicked(): void {
     if (this.selectedIndex < 0) {
@@ -75,7 +112,7 @@ struct Index {
           // Apply opacity and translate transition effects to the disappearing posts.
           .transition(TransitionEffect.OPACITY
             .combine(TransitionEffect.translate({ y: index < this.selectedIndex ? -250 : 250 }))
-            .animation({ duration: 350, curve: Curve.Friction}))
+            .animation({ duration: 350, curve: Curve.Friction }))
         }
       }, (postData: PostData, index: number) => index.toString())
     }
@@ -85,12 +122,10 @@ struct Index {
 }
 
 @Component
-export default struct  Post {
+export default struct Post {
   @Link selectedIndex: number;
-
   @Prop data: PostData;
   @Prop index: number;
-
   @State itemHeight: number = 250;
   @State isExpand: boolean = false;
   @State expandImageSize: number = 100;
@@ -120,9 +155,10 @@ export default struct  Post {
       // Additional content for the expanded state
       if (this.isExpand) {
         Column() {
-          Text('Comments')
-            // Apply enter/exit transition effects to the text in the comments area.
-            .transition( TransitionEffect.OPACITY
+          // Replace $r('app.string.shareTransition_text4') with the actual resource file. In this example, the value in the resource file is "Comments."
+          Text($r('app.string.shareTransition_text4'))
+          // Apply enter/exit transition effects to the text in the comments area.
+            .transition(TransitionEffect.OPACITY
               .animation({ duration: 350, curve: Curve.Friction }))
             .padding({ top: 10 })
         }
@@ -131,7 +167,7 @@ export default struct  Post {
             .animation({ duration: 350, curve: Curve.Friction }),
           TransitionEffect.OPACITY.animation({ duration: 0 })
         ))
-        .size({ width: '100%'})
+        .size({ width: '100%' })
       }
     }
     .backgroundColor(Color.White)
@@ -148,7 +184,7 @@ export default struct  Post {
         // Animate the width and height of the expanded post, and apply animations to the profile picture and image sizes.
         this.isExpand = !this.isExpand;
         this.itemHeight = this.isExpand ? 780 : 250;
-        this.avatarSize = this.isExpand ? 75: 50;
+        this.avatarSize = this.isExpand ? 75 : 50;
         this.expandImageSize = (this.isExpand && this.data.images.length > 0)
           ? (360 - (this.data.images.length + 1) * 15) / this.data.images.length : 100;
       })
@@ -165,19 +201,21 @@ Use [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecon
 
 ### Using with Stack
 
-With the **Stack** container, where later defined components appear on top, you can control the z-order to ensure that the component is on top after being migrated across nodes. For example, in the scenario of expanding and collapsing widgets, the implementation steps are as follows:
+You can leverage the characteristic of **Stack** where components defined later are placed on top to control the stacking order of components after cross-node migration. Taking the scenario of expanding and collapsing a widget as an example, the implementation steps are as follows:
 
-- When expanding a widget, obtain the source node (node A)'s position and migrate the components to a higher-level node (node B) with the same position.
+- When expanding a widget, obtain the position of the clicked widget A and migrate widget A to the expanded page B, which is positioned at the same location as widget A. The expanded page B has a higher stacking order than the clicked widget A.
 
-- Add a property animation to node B to make it expand and move to the expanded position, creating a shared element transition.
+- Add a property animation to the expanded page B to expand and move it to the expanded position, completing a shared element transition effect.
 
-- When collapsing the widget, add a property animation to node B to make it collapse and move back to the position of node A, creating a shared element transition.
+- When collapsing the widget, add a property animation to the expanded page B to collapse and move it back to its original position (the position of clicked widget A), achieving a shared element transition effect.
 
-- At the end of the animation, use a callback to migrate the components from node B back to node A.
+- In the animation completion callback, migrate the components from the expanded page B back to the clicked widget A.
 
-```ts
+<!-- @[stack_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template3/Index.ets) -->
+
+``` TypeScript
 // Index.ets
-import { createPostNode, getPostNode, PostNode } from "./PostNode";
+import { createPostNode, getPostNode, PostNode } from './PostNode';
 import { componentUtils, curves, UIContext } from '@kit.ArkUI';
 
 @Entry
@@ -185,7 +223,7 @@ import { componentUtils, curves, UIContext } from '@kit.ArkUI';
 struct Index {
   // Create an animation class.
   private uiContext: UIContext = this.getUIContext();
-  @State AnimationProperties: AnimationProperties = new AnimationProperties(this.uiContext);
+  @State animationProperties: AnimationProperties = new AnimationProperties(this.uiContext);
   private listArray: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   build() {
@@ -195,27 +233,27 @@ struct Index {
         ForEach(this.listArray, (item: number) => {
           ListItem() {
             // Widget collapsed state
-            PostItem({ index: item, AnimationProperties: this.AnimationProperties })
+            PostItem({ index: item, animationProperties: this.animationProperties })
           }
         })
       }
       .clip(false)
       .alignListItem(ListItemAlign.Center)
 
-      if (this.AnimationProperties.isExpandPageShow) {
+      if (this.animationProperties.isExpandPageShow) {
         // Widget expanded state
-        ExpandPage({ AnimationProperties: this.AnimationProperties })
+        ExpandPage({ animationProperties: this.animationProperties })
       }
     }
     .key('rootStack')
-    .enabled(this.AnimationProperties.isEnabled)
+    .enabled(this.animationProperties.isEnabled)
   }
 }
 
 @Component
 struct PostItem {
   @Prop index: number
-  @Link AnimationProperties: AnimationProperties;
+  @Link animationProperties: AnimationProperties;
   @State nodeController: PostNode | undefined = undefined;
   // Hide detailed content when the widget is collapsed.
   private showDetailContent: boolean = false;
@@ -245,23 +283,23 @@ struct PostItem {
         this.nodeController.onRemove();
       }
       // Trigger the animation for changing from the folded state to the collapsed state.
-      this.AnimationProperties.expandAnimation(this.index);
+      this.animationProperties.expandAnimation(this.index);
     })
   }
 }
 
 @Component
 struct ExpandPage {
-  @Link AnimationProperties: AnimationProperties;
+  @Link animationProperties: AnimationProperties;
   @State nodeController: PostNode | undefined = undefined;
   // Show detailed content when the widget is expanded.
   private showDetailContent: boolean = true;
 
   aboutToAppear(): void {
     // Obtain the corresponding widget component by index.
-    this.nodeController = getPostNode(this.AnimationProperties.curIndex.toString())
+    this.nodeController = getPostNode(this.animationProperties.curIndex.toString());
     // Update to show detailed content.
-    this.nodeController?.update(this.AnimationProperties.curIndex.toString(), this.showDetailContent)
+    this.nodeController?.update(this.animationProperties.curIndex.toString(), this.showDetailContent);
   }
 
   build() {
@@ -269,11 +307,12 @@ struct ExpandPage {
       NodeContainer(this.nodeController)
     }
     .width('100%')
-    .height(this.AnimationProperties.changedHeight ? '100%' : 100)
-    .translate({ x: this.AnimationProperties.translateX, y: this.AnimationProperties.translateY })
-    .position({ x: this.AnimationProperties.positionX, y: this.AnimationProperties.positionY })
+    .height(this.animationProperties.changedHeight ? '100%' : 100)
+    .translate({ x: this.animationProperties.translateX, y: this.animationProperties.translateY })
+    .position({ x: this.animationProperties.positionX, y: this.animationProperties.positionY })
     .onClick(() => {
-      this.getUIContext()?.animateTo({ curve: curves.springMotion(0.6, 0.9),
+      this.getUIContext()?.animateTo({
+        curve: curves.springMotion(0.6, 0.9),
         onFinish: () => {
           if (this.nodeController != undefined) {
             // Execute the callback to obtain the widget component from the folded node.
@@ -282,17 +321,17 @@ struct ExpandPage {
             this.nodeController.onRemove();
           }
           // The widget expands to the expanded state node and is removed from the tree.
-          this.AnimationProperties.isExpandPageShow = false;
-          this.AnimationProperties.isEnabled = true;
+          this.animationProperties.isExpandPageShow = false;
+          this.animationProperties.isEnabled = true;
         }
       }, () => {
         // The widget returns from the expanded state to the collapsed state.
-        this.AnimationProperties.isEnabled = false;
-        this.AnimationProperties.translateX = 0;
-        this.AnimationProperties.translateY = 0;
-        this.AnimationProperties.changedHeight = false;
+        this.animationProperties.isEnabled = false;
+        this.animationProperties.translateX = 0;
+        this.animationProperties.translateY = 0;
+        this.animationProperties.changedHeight = false;
         // Update to hide detailed content.
-        this.nodeController?.update(this.AnimationProperties.curIndex.toString(), false);
+        this.nodeController?.update(this.animationProperties.curIndex.toString(), false);
       })
     })
   }
@@ -341,7 +380,8 @@ class AnimationProperties {
     // The widget in expanded state is added to the tree.
     this.isExpandPageShow = true;
     // Property animation for widget expansion.
-    this.uiContext?.animateTo({ curve: curves.springMotion(0.6, 0.9)
+    this.uiContext?.animateTo({
+      curve: curves.springMotion(0.6, 0.9)
     }, () => {
       this.translateX = this.calculatedTranslateX;
       this.translateY = this.calculatedTranslateY;
@@ -355,7 +395,8 @@ class AnimationProperties {
     let rootStackInfo = this.getRectInfoById(this.uiContext, 'rootStack');
     this.positionX = this.uiContext.px2vp(clickedImageInfo.left - rootStackInfo.left);
     this.positionY = this.uiContext.px2vp(clickedImageInfo.top - rootStackInfo.top);
-    this.calculatedTranslateX = this.uiContext.px2vp(rootStackInfo.left - clickedImageInfo.left) + this.expandTranslateX;
+    this.calculatedTranslateX = this.uiContext.px2vp(rootStackInfo.left - clickedImageInfo.left) +
+      this.expandTranslateX;
     this.calculatedTranslateY = this.uiContext.px2vp(rootStackInfo.top - clickedImageInfo.top) + this.expandTranslateY;
   }
 
@@ -373,9 +414,9 @@ class AnimationProperties {
     rstRect.left = componentInfo.translate.x + componentInfo.windowOffset.x + widthScaleGap;
     rstRect.top = componentInfo.translate.y + componentInfo.windowOffset.y + heightScaleGap;
     rstRect.right =
-    componentInfo.translate.x + componentInfo.windowOffset.x + componentInfo.size.width - widthScaleGap;
+      componentInfo.translate.x + componentInfo.windowOffset.x + componentInfo.size.width - widthScaleGap;
     rstRect.bottom =
-    componentInfo.translate.y + componentInfo.windowOffset.y + componentInfo.size.height - heightScaleGap;
+      componentInfo.translate.y + componentInfo.windowOffset.y + componentInfo.size.height - heightScaleGap;
     rstRect.width = rstRect.right - rstRect.left;
     rstRect.height = rstRect.bottom - rstRect.top;
 
@@ -391,82 +432,86 @@ class AnimationProperties {
 }
 ```
 
-```ts
+<!-- @[stack_post_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template3/PostNode.ets) -->
+
+``` TypeScript
 // PostNode.ets
 // Cross-container migration
-import { UIContext } from '@ohos.arkui.UIContext';
-import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
-import { curves } from '@kit.ArkUI';
+import { UIContext, curves, NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
 class Data {
-  item: string | null = null
-  isExpand: Boolean | false = false
+  public item: string | null = null;
+  public isExpand: boolean = false;
 }
-
+let context: undefined | common.UIAbilityContext = undefined;
 @Builder
-function PostBuilder(data: Data) {
+function postBuilder(data: Data) {
   // Place the cross-container migration component inside @Builder.
   Column() {
-      Row() {
-        Row()
-          .backgroundColor(Color.Pink)
-          .borderRadius(20)
-          .width(80)
-          .height(80)
-
-        Column() {
-          Text('Click to expand Item ' + data.item)
-            .fontSize(20)
-          Text('Shared element transition')
-            .fontSize(12)
-            .fontColor(0x909399)
-        }
-        .alignItems(HorizontalAlign.Start)
-        .justifyContent(FlexAlign.SpaceAround)
-        .margin({ left: 10 })
+    Row() {
+      Row()
+        .backgroundColor(Color.Pink)
+        .borderRadius(20)
+        .width(80)
         .height(80)
+      Column() {
+        // Configure the resource whose name is 'shareTransition_text5' and value is a non-empty string in the resources\base\element\string.json file.
+        Text((context as common.UIAbilityContext)?.resourceManager.getStringByNameSync('shareTransition_text5') + data.item)
+          .fontSize(20)
+        // Replace $r('app.string.shareTransition_text6') with the actual resource file. In this example, the value in the resource file is "Shared element transition."
+        Text($r('app.string.shareTransition_text6'))
+          .fontSize(12)
+          .fontColor(0x909399)
       }
-      .width('90%')
-      .height(100)
-      // Display detailed content in expanded state.
-      if (data.isExpand) {
-        Row() {
-          Text('Expanded')
-            .fontSize(28)
-            .fontColor(0x909399)
-            .textAlign(TextAlign.Center)
-            .transition(TransitionEffect.OPACITY.animation({ curve: curves.springMotion(0.6, 0.9) }))
-        }
-        .width('90%')
-        .justifyContent(FlexAlign.Center)
-      }
+      .alignItems(HorizontalAlign.Start)
+      .justifyContent(FlexAlign.SpaceAround)
+      .margin({ left: 10 })
+      .height(80)
     }
     .width('90%')
-    .height('100%')
-    .alignItems(HorizontalAlign.Center)
-    .borderRadius(10)
-    .margin({ top: 15 })
-    .backgroundColor(Color.White)
-    .shadow({
-      radius: 20,
-      color: 0x909399,
-      offsetX: 20,
-      offsetY: 10
-    })
+    .height(100)
+
+    // Display detailed content in expanded state.
+    if (data.isExpand) {
+      Row() {
+        // Replace $r('app.string.shareTransition_text7') with the actual resource file. In this example, the value in the resource file is "Expanded."
+        Text($r('app.string.shareTransition_text7'))
+          .fontSize(28)
+          .fontColor(0x909399)
+          .textAlign(TextAlign.Center)
+          .transition(TransitionEffect.OPACITY.animation({ curve: curves.springMotion(0.6, 0.9) }))
+      }
+      .width('90%')
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+  .width('90%')
+  .height('100%')
+  .alignItems(HorizontalAlign.Center)
+  .borderRadius(10)
+  .margin({ top: 15 })
+  .backgroundColor(Color.White)
+  .shadow({
+    radius: 20,
+    color: 0x909399,
+    offsetX: 20,
+    offsetY: 10
+  })
 }
 
-class __InternalValue__ {
-  flag:boolean =false;
+class InternalValue {
+  public flag: boolean = false;
 };
 
 export class PostNode extends NodeController {
   private node: BuilderNode<Data[]> | null = null;
-  private isRemove: __InternalValue__ = new __InternalValue__();
-  private callback: Function | undefined = undefined
-  private data: Data | null = null
+  private isRemove: InternalValue = new InternalValue();
+  private callback: Function | undefined = undefined;
+  private data: Data | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
-    if(this.isRemove.flag == true){
+    if (this.isRemove.flag === true) {
       return null;
     }
     if (this.node != null) {
@@ -481,22 +526,23 @@ export class PostNode extends NodeController {
       return;
     }
     // Create a node, during which the UIContext should be passed.
-    this.node = new BuilderNode(uiContext)
+    this.node = new BuilderNode(uiContext);
+    context = uiContext.getHostContext() as common.UIAbilityContext;
     // Create an offline component.
-    this.data = { item: id, isExpand: isExpand }
-    this.node.build(wrapBuilder<Data[]>(PostBuilder), this.data)
+    this.data = { item: id, isExpand: isExpand };
+    this.node.build(wrapBuilder<Data[]>(postBuilder), this.data);
   }
 
   update(id: string, isExpand: boolean) {
     if (this.node !== null) {
       // Call update to perform an update.
-      this.data = { item: id, isExpand: isExpand }
+      this.data = { item: id, isExpand: isExpand };
       this.node.update(this.data);
     }
   }
 
   setCallback(callback: Function | undefined) {
-    this.callback = callback
+    this.callback = callback;
   }
 
   callCallback() {
@@ -505,7 +551,7 @@ export class PostNode extends NodeController {
     }
   }
 
-  onRemove(){
+  onRemove() {
     this.isRemove.flag = true;
     // Trigger rebuild when the component is migrated out of the node.
     this.rebuild();
@@ -525,13 +571,13 @@ export const createPostNode =
 
 export const getPostNode = (id: string): PostNode | undefined => {
   if (!gNodeMap.has(id)) {
-    return undefined
+    return undefined;
   }
   return gNodeMap.get(id);
 }
 
 export const deleteNode = (id: string) => {
-  gNodeMap.delete(id)
+  gNodeMap.delete(id);
 }
 ```
 
@@ -551,7 +597,7 @@ The following is the procedure for implementing the expanding and collapsing of 
 
 - When returning to the thumbnail from the full-screen state, a custom transition animation from **PageTwo** to **PageOne** is triggered, animating the shared element from full-screen to the thumbnail state on **PageOne**, and the component is migrated back to **PageOne** after the transition.
 
-```
+```txt
 ├──entry/src/main/ets                 // Code directory
 │  ├──CustomTransition
 │  │  ├──AnimationProperties.ets      // Encapsulation of shared element transition animation
@@ -570,11 +616,15 @@ The following is the procedure for implementing the expanding and collapsing of 
 └──entry/src/main/resources           // Resource files
 ```
 
-```ts
+<!-- @[navigation_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template4/Index.ets) -->
+
+``` TypeScript
 // Index.ets
-import { AnimateCallback, CustomTransition } from '../CustomTransition/CustomNavigationUtils';
+import { AnimateCallback, CustomTransition } from '../../../CustomTransition/CustomNavigationUtils';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = 'Index';
+const DOMAIN = 0xF811;
 
 @Entry
 @Component
@@ -590,10 +640,10 @@ struct Index {
 
   private isCustomTransitionEnabled(fromName: string, toName: string): boolean {
     // Both clicks and returns require custom transitions, so they need to be judged separately.
-    if ((this.allowedCustomTransitionFromPageName.includes(fromName)
-      && this.allowedCustomTransitionToPageName.includes(toName))
-      || (this.allowedCustomTransitionFromPageName.includes(toName)
-        && this.allowedCustomTransitionToPageName.includes(fromName))) {
+    if ((this.allowedCustomTransitionFromPageName.includes(fromName) &&
+      this.allowedCustomTransitionToPageName.includes(toName)) ||
+      (this.allowedCustomTransitionFromPageName.includes(toName) &&
+      this.allowedCustomTransitionToPageName.includes(fromName))) {
       return true;
     }
     return false;
@@ -622,16 +672,16 @@ struct Index {
         // After all judgments are made, construct customAnimation for the system side to call and execute the custom transition animation.
         let customAnimation: NavigationAnimatedTransition = {
           onTransitionEnd: (isSuccess: boolean) => {
-            console.log(TAG, `current transition result is ${isSuccess}`);
+            hilog.info(DOMAIN, 'current transition result is', 'isSuccess: %s', isSuccess.toString());
           },
           timeout: 2000,
           transition: (transitionProxy: NavigationTransitionProxy) => {
-            console.log(TAG, 'trigger transition callback');
+            hilog.info(DOMAIN, TAG, 'trigger transition callback');
             if (fromParam.animation) {
-              fromParam.animation(operation == NavigationOperation.PUSH, true, transitionProxy);
+              fromParam.animation(operation === NavigationOperation.PUSH, true, transitionProxy);
             }
             if (toParam.animation) {
-              toParam.animation(operation == NavigationOperation.PUSH, false, transitionProxy);
+              toParam.animation(operation === NavigationOperation.PUSH, false, transitionProxy);
             }
           }
         };
@@ -641,12 +691,14 @@ struct Index {
 }
 ```
 
-```ts
+<!-- @[navigation_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template4/PageOne.ets) -->
+
+``` TypeScript
 // PageOne.ets
-import { CustomTransition } from '../CustomTransition/CustomNavigationUtils';
-import { MyNodeController, createMyNode, getMyNode } from '../NodeContainer/CustomComponent';
-import { ComponentAttrUtils, RectInfoInPx } from '../utils/ComponentAttrUtils';
-import { WindowUtils } from '../utils/WindowUtils';
+import { CustomTransition } from '../../../CustomTransition/CustomNavigationUtils';
+import { MyNodeController, createMyNode, getMyNode } from '../../../NodeContainer/CustomComponent';
+import { ComponentAttrUtils, RectInfoInPx } from '../../../utils/ComponentAttrUtils';
+import { WindowUtils } from '../../../utils/WindowUtils';
 
 @Builder
 export function PageOneBuilder() {
@@ -661,7 +713,7 @@ export struct PageOne {
 
   aboutToAppear(): void {
     let node = getMyNode();
-    if (node == undefined) {
+    if (node === undefined) {
       // Create a custom node.
       createMyNode(this.getUIContext());
     }
@@ -676,7 +728,8 @@ export struct PageOne {
   private registerCustomTransition(): void {
     // Register the custom animation protocol.
     CustomTransition.getInstance().registerNavParam(this.pageId,
-      (isPush: boolean, isExit: boolean, transitionProxy: NavigationTransitionProxy) => {}, 500);
+      (isPush: boolean, isExit: boolean, transitionProxy: NavigationTransitionProxy) => {
+      }, 500);
   }
 
   private onCardClicked(): void {
@@ -685,7 +738,7 @@ export struct PageOne {
     let param: Record<string, Object> = {};
     param['cardItemInfo'] = cardItemInfo;
     param['doDefaultTransition'] = (myController: MyNodeController) => {
-      this.doFinishTransition()
+      this.doFinishTransition();
     };
     this.pageInfos.pushPath({ name: 'PageTwo', param: param });
     // The custom node is removed from the tree of PageOne.
@@ -699,7 +752,8 @@ export struct PageOne {
       Stack() {
         Column({ space: 20 }) {
           Row({ space: 10 }) {
-            Image($r("app.media.avatar"))
+            // Replace $r('app.media.avatar') with the actual resource file.
+            Image($r('app.media.avatar'))
               .size({ width: 50, height: 50 })
               .borderRadius(25)
               .clip(true)
@@ -708,12 +762,13 @@ export struct PageOne {
           }
           .justifyContent(FlexAlign.Start)
 
-          Text('Hello World')
+          // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello World."
+          Text($r('app.string.shareTransition_text2'))
 
           NodeContainer(this.myNodeController)
             .size({ width: 320, height: 250 })
             .onClick(() => {
-              this.onCardClicked()
+              this.onCardClicked();
             })
         }
         .alignItems(HorizontalAlign.Start)
@@ -736,12 +791,14 @@ export struct PageOne {
 }
 ```
 
-```ts
+<!-- @[navigation_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template4/PageTwo.ets) -->
+
+``` TypeScript
 // PageTwo.ets
-import { CustomTransition } from '../CustomTransition/CustomNavigationUtils';
-import { AnimationProperties } from '../CustomTransition/AnimationProperties';
-import { RectInfoInPx } from '../utils/ComponentAttrUtils';
-import { getMyNode, MyNodeController } from '../NodeContainer/CustomComponent';
+import { CustomTransition } from '../../../CustomTransition/CustomNavigationUtils';
+import { AnimationProperties } from '../../../CustomTransition/AnimationProperties';
+import { RectInfoInPx } from '../../../utils/ComponentAttrUtils';
+import { getMyNode, MyNodeController } from '../../../NodeContainer/CustomComponent';
 
 @Builder
 export function PageTwoBuilder() {
@@ -751,15 +808,12 @@ export function PageTwoBuilder() {
 @Component
 export struct PageTwo {
   @State pageInfos: NavPathStack = new NavPathStack();
-  @State AnimationProperties: AnimationProperties = new AnimationProperties(this.getUIContext());
+  @State animationProperties: AnimationProperties = new AnimationProperties(this.getUIContext());
   @State myNodeController: MyNodeController | undefined = new MyNodeController(false);
-
   private pageId: number = -1;
-
   private shouldDoDefaultTransition: boolean = false;
   private prePageDoFinishTransition: () => void = () => {};
   private cardItemInfo: RectInfoInPx = new RectInfoInPx();
-
   @StorageProp('windowSizeChanged') @Watch('unRegisterNavParam') windowSizeChangedTime: number = 0;
   @StorageProp('onConfigurationUpdate') @Watch('unRegisterNavParam') onConfigurationUpdateTime: number = 0;
 
@@ -789,29 +843,31 @@ export struct PageTwo {
       // Set alignContent to TopStart for Stack; otherwise, during height changes, both the snapshot and content will be repositioned with the height relayout.
       Stack({ alignContent: Alignment.TopStart }) {
         Stack({ alignContent: Alignment.TopStart }) {
-          Column({space: 20}) {
-            NodeContainer(this.myNodeController)
-            if (this.AnimationProperties.showDetailContent)
-              Text('Expanded content')
+          Column({ space: 20 }) {
+            NodeContainer(this.myNodeController);
+            if (this.animationProperties.showDetailContent) {
+              // Replace $r('app.string.shareTransition_text8') with the actual resource file. In this example, the value in the resource file is "Expanded."
+              Text($r('app.string.shareTransition_text8'))
                 .fontSize(20)
                 .transition(TransitionEffect.OPACITY)
                 .margin(30)
+            }
           }
           .alignItems(HorizontalAlign.Start)
         }
-        .position({ y: this.AnimationProperties.positionValue })
+        .position({ y: this.animationProperties.positionValue });
       }
-      .scale({ x: this.AnimationProperties.scaleValue, y: this.AnimationProperties.scaleValue })
-      .translate({ x: this.AnimationProperties.translateX, y: this.AnimationProperties.translateY })
-      .width(this.AnimationProperties.clipWidth)
-      .height(this.AnimationProperties.clipHeight)
-      .borderRadius(this.AnimationProperties.radius)
+      .scale({ x: this.animationProperties.scaleValue, y: this.animationProperties.scaleValue })
+      .translate({ x: this.animationProperties.translateX, y: this.animationProperties.translateY })
+      .width(this.animationProperties.clipWidth)
+      .height(this.animationProperties.clipHeight)
+      .borderRadius(this.animationProperties.radius)
       // Use expandSafeArea to create an immersive effect for Stack, expanding it upwards to the status bar and downwards to the navigation bar.
       .expandSafeArea([SafeAreaType.SYSTEM])
       // Clip the height.
       .clip(true)
     }
-    .backgroundColor(this.AnimationProperties.navDestinationBgColor)
+    .backgroundColor(this.animationProperties.navDestinationBgColor)
     .hideTitleBar(true)
     .onReady((context: NavDestinationContext) => {
       this.pageInfos = context.pathStack;
@@ -821,7 +877,7 @@ export struct PageTwo {
       this.cardItemInfo = param['cardItemInfo'] as RectInfoInPx;
       CustomTransition.getInstance().registerNavParam(this.pageId,
         (isPush: boolean, isExit: boolean, transitionProxy: NavigationTransitionProxy) => {
-          this.AnimationProperties.doAnimation(
+          this.animationProperties.doAnimation(
             this.cardItemInfo, isPush, isExit, transitionProxy, 0,
             this.prePageDoFinishTransition, this.myNodeController);
         }, 500);
@@ -836,7 +892,9 @@ export struct PageTwo {
 }
 ```
 
-```ts
+<!-- @[custom_navigation_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/CustomTransition/CustomNavigationUtils.ets) -->
+
+``` TypeScript
 // CustomNavigationUtils.ets
 // Configure custom transition animations for Navigation.
 export interface AnimateCallback {
@@ -848,7 +906,8 @@ export interface AnimateCallback {
 const customTransitionMap: Map<number, AnimateCallback> = new Map();
 
 export class CustomTransition {
-  private constructor() {};
+  private constructor() {
+  };
 
   static delegate = new CustomTransition();
 
@@ -888,8 +947,9 @@ export class CustomTransition {
 }
 ```
 
+<!-- -->
 ```ts
-// Add the {"routerMap": "$profile:route_map"} configuration to the project configuration file module.json5.
+// Configure {"routerMap": "$profile:route_map"} in the project configuration file module.json5.
 // route_map.json
 {
   "routerMap": [
@@ -907,16 +967,19 @@ export class CustomTransition {
 }
 ```
 
-```ts
+<!-- @[navigation_animation_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/CustomTransition/AnimationProperties.ets) -->
+
+``` TypeScript
 // AnimationProperties.ets
 // Encapsulation of shared element transition animation
 import { curves, UIContext } from '@kit.ArkUI';
 import { RectInfoInPx } from '../utils/ComponentAttrUtils';
 import { WindowUtils } from '../utils/WindowUtils';
 import { MyNodeController } from '../NodeContainer/CustomComponent';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = 'AnimationProperties';
-
+const DOMAIN = 0xF811;
 const DEVICE_BORDER_RADIUS: number = 34;
 
 // Encapsulate the custom shared element transition animation, which can be directly reused by other APIs to reduce workload.
@@ -934,14 +997,15 @@ export class AnimationProperties {
   private uiContext: UIContext;
 
   constructor(uiContext: UIContext) {
-    this.uiContext = uiContext
+    this.uiContext = uiContext;
   }
 
-  public doAnimation(cardItemInfo_px: RectInfoInPx, isPush: boolean, isExit: boolean,
-                     transitionProxy: NavigationTransitionProxy, extraTranslateValue: number, prePageOnFinish: (index: MyNodeController) => void, myNodeController: MyNodeController | undefined): void {
+  public doAnimation(cardItemInfoPx: RectInfoInPx, isPush: boolean, isExit: boolean,
+    transitionProxy: NavigationTransitionProxy, extraTranslateValue: number,
+    prePageOnFinish: (index: MyNodeController) => void, myNodeController: MyNodeController | undefined): void {
     // Calculate the ratio of the widget's width and height to the window's width and height.
-    let widthScaleRatio = cardItemInfo_px.width / WindowUtils.windowWidth_px;
-    let heightScaleRatio = cardItemInfo_px.height / WindowUtils.windowHeight_px;
+    let widthScaleRatio = cardItemInfoPx.width / WindowUtils.windowWidthPx;
+    let heightScaleRatio = cardItemInfoPx.height / WindowUtils.windowHeightPx;
     let isUseWidthScale = widthScaleRatio > heightScaleRatio;
     let initScale: number = isUseWidthScale ? widthScaleRatio : heightScaleRatio;
 
@@ -950,24 +1014,29 @@ export class AnimationProperties {
     let initClipWidth: Dimension = 0;
     let initClipHeight: Dimension = 0;
     // Ensure that the widget on PageTwo expands to the status bar at the top.
-    let initPositionValue: number = -this.uiContext.px2vp(WindowUtils.topAvoidAreaHeight_px + extraTranslateValue);
+    let initPositionValue: number = -this.uiContext.px2vp(WindowUtils.topAvoidAreaHeightPx + extraTranslateValue);
 
     if (isUseWidthScale) {
-      initTranslateX = this.uiContext.px2vp(cardItemInfo_px.left - (WindowUtils.windowWidth_px - cardItemInfo_px.width) / 2);
+      initTranslateX = this.uiContext.px2vp(cardItemInfoPx.left -
+        (WindowUtils.windowWidthPx - cardItemInfoPx.width) / 2);
       initClipWidth = '100%';
-      initClipHeight = this.uiContext.px2vp((cardItemInfo_px.height) / initScale);
-      initTranslateY = this.uiContext.px2vp(cardItemInfo_px.top - ((this.uiContext.vp2px(initClipHeight) - this.uiContext.vp2px(initClipHeight) * initScale) / 2));
+      initClipHeight = this.uiContext.px2vp((cardItemInfoPx.height) / initScale);
+      initTranslateY = this.uiContext.px2vp(cardItemInfoPx.top - ((this.uiContext.vp2px(initClipHeight) -
+        this.uiContext.vp2px(initClipHeight) * initScale) / 2));
     } else {
-      initTranslateY = this.uiContext.px2vp(cardItemInfo_px.top - (WindowUtils.windowHeight_px - cardItemInfo_px.height) / 2);
+      initTranslateY = this.uiContext.px2vp(cardItemInfoPx.top -
+        (WindowUtils.windowHeightPx - cardItemInfoPx.height) / 2);
       initClipHeight = '100%';
-      initClipWidth = this.uiContext.px2vp((cardItemInfo_px.width) / initScale);
-      initTranslateX = this.uiContext.px2vp(cardItemInfo_px.left - (WindowUtils.windowWidth_px / 2 - cardItemInfo_px.width / 2));
+      initClipWidth = this.uiContext.px2vp((cardItemInfoPx.width) / initScale);
+      initTranslateX = this.uiContext.px2vp(cardItemInfoPx.left -
+        (WindowUtils.windowWidthPx / 2 - cardItemInfoPx.width / 2));
     }
 
     // Before the transition animation starts, calculate scale, translate, position, and clip height & width to ensure that the node's position is consistent before and after migration.
-    console.log(TAG, 'initScale: ' + initScale + ' initTranslateX ' + initTranslateX +
-    ' initTranslateY ' + initTranslateY + ' initClipWidth ' + initClipWidth +
-    ' initClipHeight ' + initClipHeight + ' initPositionValue ' + initPositionValue);
+    hilog.info(DOMAIN, TAG, 'initScale: ' + initScale + ' initTranslateX ' + initTranslateX +
+      ' initTranslateY ' + initTranslateY + ' initClipWidth ' + initClipWidth +
+      ' initClipHeight ' + initClipHeight + ' initPositionValue ' + initPositionValue);
+
     // Transition to the new page
     if (isPush && !isExit) {
       this.scaleValue = initScale;
@@ -1041,7 +1110,9 @@ export class AnimationProperties {
 }
 ```
 
-```ts
+<!-- @[bind_sheet_component_attr_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/utils/ComponentAttrUtils.ets) -->
+
+``` TypeScript
 // ComponentAttrUtils.ets
 // Obtain the position of the component relative to the window.
 import { componentUtils, UIContext } from '@kit.ArkUI';
@@ -1082,108 +1153,113 @@ export class ComponentAttrUtils {
 }
 
 export class RectInfoInPx {
-  left: number = 0;
-  top: number = 0;
-  right: number = 0;
-  bottom: number = 0;
-  width: number = 0;
-  height: number = 0;
+  public left: number = 0;
+  public top: number = 0;
+  public right: number = 0;
+  public bottom: number = 0;
+  public width: number = 0;
+  public height: number = 0;
 }
 
 export class RectJson {
-  $rect: Array<number> = [];
+  public $rect: Array<number> = [];
 }
 ```
 
-```ts
+<!-- @[bind_sheet_window_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/utils/WindowUtils.ets) -->
+
+``` TypeScript
 // WindowUtils.ets
 // Window information
 import { window } from '@kit.ArkUI';
 
 export class WindowUtils {
   public static window: window.Window;
-  public static windowWidth_px: number;
-  public static windowHeight_px: number;
-  public static topAvoidAreaHeight_px: number;
-  public static navigationIndicatorHeight_px: number;
+  public static windowWidthPx: number;
+  public static windowHeightPx: number;
+  public static topAvoidAreaHeightPx: number;
+  public static navigationIndicatorHeightPx: number;
 }
 ```
 
-```ts
+<!-- @[bind_sheet_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 // EntryAbility.ets
 // Add capture of window width and height in onWindowStageCreate at the application entry.
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { display, window } from '@kit.ArkUI';
 import { WindowUtils } from '../utils/WindowUtils';
+import { display, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const DOMAIN = 0x0000;
 const TAG: string = 'EntryAbility';
 
 export default class EntryAbility extends UIAbility {
   private currentBreakPoint: string = '';
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onCreate');
   }
 
   onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
+    // ...
     // Obtain the window width and height.
     WindowUtils.window = windowStage.getMainWindowSync();
-    WindowUtils.windowWidth_px = WindowUtils.window.getWindowProperties().windowRect.width;
-    WindowUtils.windowHeight_px = WindowUtils.window.getWindowProperties().windowRect.height;
+    WindowUtils.windowWidthPx = WindowUtils.window.getWindowProperties().windowRect.width;
+    WindowUtils.windowHeightPx = WindowUtils.window.getWindowProperties().windowRect.height;
 
-    this.updateBreakpoint(WindowUtils.windowWidth_px);
+    this.updateBreakpoint(WindowUtils.windowWidthPx);
 
     // Obtain the height of the upper avoid area (such as the status bar).
     let avoidArea = WindowUtils.window.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-    WindowUtils.topAvoidAreaHeight_px = avoidArea.topRect.height;
+    WindowUtils.topAvoidAreaHeightPx = avoidArea.topRect.height;
 
     // Obtain the height of the navigation bar.
     let navigationArea = WindowUtils.window.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
-    WindowUtils.navigationIndicatorHeight_px = navigationArea.bottomRect.height;
+    WindowUtils.navigationIndicatorHeightPx = navigationArea.bottomRect.height;
 
-    console.log(TAG, 'the width is ' + WindowUtils.windowWidth_px + '  ' + WindowUtils.windowHeight_px + '  ' +
-    WindowUtils.topAvoidAreaHeight_px + '  ' + WindowUtils.navigationIndicatorHeight_px);
+    hilog.info(DOMAIN, TAG, 'the width is ' + WindowUtils.windowWidthPx + '  ' + WindowUtils.windowHeightPx + '  ' +
+    WindowUtils.topAvoidAreaHeightPx + '  ' + WindowUtils.navigationIndicatorHeightPx);
 
     // Listen for changes in the window size, status bar height, and navigation bar height, and update accordingly.
     try {
       WindowUtils.window.on('windowSizeChange', (data) => {
-        console.log(TAG, 'on windowSizeChange, the width is ' + data.width + ', the height is ' + data.height);
-        WindowUtils.windowWidth_px = data.width;
-        WindowUtils.windowHeight_px = data.height;
+        hilog.info(DOMAIN, TAG, 'on windowSizeChange, the width is ' + data.width + ', the height is ' + data.height);
+        WindowUtils.windowWidthPx = data.width;
+        WindowUtils.windowHeightPx = data.height;
         this.updateBreakpoint(data.width);
-        AppStorage.setOrCreate('windowSizeChanged', Date.now())
+        AppStorage.setOrCreate('windowSizeChanged', Date.now());
       })
 
       WindowUtils.window.on('avoidAreaChange', (data) => {
-        if (data.type == window.AvoidAreaType.TYPE_SYSTEM) {
+        if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
           let topRectHeight = data.area.topRect.height;
-          console.log(TAG, 'on avoidAreaChange, the top avoid area height is ' + topRectHeight);
-          WindowUtils.topAvoidAreaHeight_px = topRectHeight;
-        } else if (data.type == window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
+          hilog.info(DOMAIN, TAG, 'on avoidAreaChange, the top avoid area height is ' + topRectHeight);
+          WindowUtils.topAvoidAreaHeightPx = topRectHeight;
+        } else if (data.type === window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
           let bottomRectHeight = data.area.bottomRect.height;
-          console.log(TAG, 'on avoidAreaChange, the navigation indicator height is ' + bottomRectHeight);
-          WindowUtils.navigationIndicatorHeight_px = bottomRectHeight;
+          hilog.info(DOMAIN, TAG, 'on avoidAreaChange, the navigation indicator height is ' + bottomRectHeight);
+          WindowUtils.navigationIndicatorHeightPx = bottomRectHeight;
         }
       })
     } catch (exception) {
-      console.log('register failed ' + JSON.stringify(exception));
+      hilog.error(DOMAIN, TAG, `register failed. code: ${exception.code}, message: ${exception.message}`);
     }
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+      hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
     });
   }
 
@@ -1205,39 +1281,41 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('currentBreakpoint', this.currentBreakPoint);
     }
   }
-
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
     // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onForeground');
   }
 
   onBackground(): void {
     // Ability has back to background
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onBackground');
   }
 }
 ```
 
-```ts
+<!-- @[navigation_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/NodeContainer/CustomComponent.ets) -->
+
+``` TypeScript
 // CustomComponent.ets
 // Custom placeholder node with cross-container migration capability
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 @Builder
-function CardBuilder() {
-  Image($r("app.media.card"))
+function cardBuilder() {
+  // Replace $r('app.media.card') with the actual resource file.
+  Image($r('app.media.card'))
     .width('100%')
     .id('card')
 }
 
 export class MyNodeController extends NodeController {
-  private CardNode: BuilderNode<[]> | null = null;
-  private wrapBuilder: WrappedBuilder<[]> = wrapBuilder(CardBuilder);
+  private cardNode: BuilderNode<[]> | null = null;
+  private wrapBuilder: WrappedBuilder<[]> = wrapBuilder(cardBuilder);
   private needCreate: boolean = false;
   private isRemove: boolean = false;
 
@@ -1247,25 +1325,25 @@ export class MyNodeController extends NodeController {
   }
 
   makeNode(uiContext: UIContext): FrameNode | null {
-    if(this.isRemove == true){
+    if (this.isRemove === true) {
       return null;
     }
-    if (this.needCreate && this.CardNode == null) {
-      this.CardNode = new BuilderNode(uiContext);
-      this.CardNode.build(this.wrapBuilder)
+    if (this.needCreate && this.cardNode === null) {
+      this.cardNode = new BuilderNode(uiContext);
+      this.cardNode.build(this.wrapBuilder);
     }
-    if (this.CardNode == null) {
+    if (this.cardNode === null) {
       return null;
     }
-    return this.CardNode!.getFrameNode()!;
+    return this.cardNode!.getFrameNode()!;
   }
 
   getNode(): BuilderNode<[]> | null {
-    return this.CardNode;
+    return this.cardNode;
   }
 
   setNode(node: BuilderNode<[]> | null) {
-    this.CardNode = node;
+    this.cardNode = node;
     this.rebuild();
   }
 
@@ -1276,8 +1354,8 @@ export class MyNodeController extends NodeController {
   }
 
   init(uiContext: UIContext) {
-    this.CardNode = new BuilderNode(uiContext);
-    this.CardNode.build(this.wrapBuilder)
+    this.cardNode = new BuilderNode(uiContext);
+    this.cardNode.build(this.wrapBuilder);
   }
 }
 
@@ -1312,7 +1390,7 @@ To implement a shared element transition to a sheet when an image is clicked:
 
 - Enhance with additional animation: Optionally, add an animation to the initial image that transitions from transparent to visible to smooth the overall effect.
 
-```
+```txt
 ├──entry/src/main/ets                 // Code directory
 │  ├──entryability
 │  │  └──EntryAbility.ets             // Entry point class
@@ -1456,6 +1534,7 @@ struct Index {
         .width('100%')
         .fontSize(30)
         .padding(20)
+      // Customize the image resource path as needed.
       Image($r("app.media.flower"))
         .opacity(this.opacityDegree)
         .width('90%')
@@ -1525,6 +1604,7 @@ struct Index {
           }
           else {
             // For capturing layout and placeholder use, not actually displayed.
+            // Customize the image resource path as needed.
             Image($r("app.media.flower"))
               .visibility(Visibility.Hidden)
           }
@@ -1584,21 +1664,24 @@ struct ImageNode {
 }
 ```
 
-```ts
+<!-- @[bind_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/NodeContainer/CustomComponentBindSheet.ets) -->
+
+``` TypeScript
 // CustomComponent.ets
 // Custom placeholder node with cross-container migration capability
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 @Builder
-function CardBuilder() {
-  Image($r("app.media.flower"))
-    // Prevent flickering of the image during the first load.
-    .syncLoad(true)
+function flowerBuilder() {
+  // Replace $r('app.media.longevity_flower') with the actual resource file.
+  Image($r('app.media.longevity_flower'))
+  // Prevent flickering of the image during the first load.
+    .syncLoad(true);
 }
 
 export class MyNodeController extends NodeController {
-  private CardNode: BuilderNode<[]> | null = null;
-  private wrapBuilder: WrappedBuilder<[]> = wrapBuilder(CardBuilder);
+  private flowerNode: BuilderNode<[]> | null = null;
+  private wrapBuilder: WrappedBuilder<[]> = wrapBuilder(flowerBuilder);
   private needCreate: boolean = false;
   private isRemove: boolean = false;
 
@@ -1608,25 +1691,25 @@ export class MyNodeController extends NodeController {
   }
 
   makeNode(uiContext: UIContext): FrameNode | null {
-    if(this.isRemove == true){
+    if (this.isRemove === true) {
       return null;
     }
-    if (this.needCreate && this.CardNode == null) {
-      this.CardNode = new BuilderNode(uiContext);
-      this.CardNode.build(this.wrapBuilder)
+    if (this.needCreate && this.flowerNode === null) {
+      this.flowerNode = new BuilderNode(uiContext);
+      this.flowerNode.build(this.wrapBuilder);
     }
-    if (this.CardNode == null) {
+    if (this.flowerNode === null) {
       return null;
     }
-    return this.CardNode!.getFrameNode()!;
+    return this.flowerNode!.getFrameNode()!;
   }
 
   getNode(): BuilderNode<[]> | null {
-    return this.CardNode;
+    return this.flowerNode;
   }
 
   setNode(node: BuilderNode<[]> | null) {
-    this.CardNode = node;
+    this.flowerNode = node;
     this.rebuild();
   }
 
@@ -1637,8 +1720,8 @@ export class MyNodeController extends NodeController {
   }
 
   init(uiContext: UIContext) {
-    this.CardNode = new BuilderNode(uiContext);
-    this.CardNode.build(this.wrapBuilder)
+    this.flowerNode = new BuilderNode(uiContext);
+    this.flowerNode.build(this.wrapBuilder);
   }
 }
 
@@ -1655,7 +1738,9 @@ export const getMyNode = (): MyNodeController | undefined => {
 }
 ```
 
-```ts
+<!-- @[bind_sheet_component_attr_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/utils/ComponentAttrUtils.ets) -->
+
+``` TypeScript
 // ComponentAttrUtils.ets
 // Obtain the position of the component relative to the window.
 import { componentUtils, UIContext } from '@kit.ArkUI';
@@ -1696,108 +1781,113 @@ export class ComponentAttrUtils {
 }
 
 export class RectInfoInPx {
-  left: number = 0;
-  top: number = 0;
-  right: number = 0;
-  bottom: number = 0;
-  width: number = 0;
-  height: number = 0;
+  public left: number = 0;
+  public top: number = 0;
+  public right: number = 0;
+  public bottom: number = 0;
+  public width: number = 0;
+  public height: number = 0;
 }
 
 export class RectJson {
-  $rect: Array<number> = [];
+  public $rect: Array<number> = [];
 }
 ```
 
-```ts
+<!-- @[bind_sheet_window_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/utils/WindowUtils.ets) -->
+
+``` TypeScript
 // WindowUtils.ets
 // Window information
 import { window } from '@kit.ArkUI';
 
 export class WindowUtils {
   public static window: window.Window;
-  public static windowWidth_px: number;
-  public static windowHeight_px: number;
-  public static topAvoidAreaHeight_px: number;
-  public static navigationIndicatorHeight_px: number;
+  public static windowWidthPx: number;
+  public static windowHeightPx: number;
+  public static topAvoidAreaHeightPx: number;
+  public static navigationIndicatorHeightPx: number;
 }
 ```
 
-```ts
+<!-- @[bind_sheet_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 // EntryAbility.ets
 // Add capture of window width and height in onWindowStageCreate at the application entry.
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { display, window } from '@kit.ArkUI';
 import { WindowUtils } from '../utils/WindowUtils';
+import { display, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const DOMAIN = 0x0000;
 const TAG: string = 'EntryAbility';
 
 export default class EntryAbility extends UIAbility {
   private currentBreakPoint: string = '';
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onCreate');
   }
 
   onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
+    // ...
     // Obtain the window width and height.
     WindowUtils.window = windowStage.getMainWindowSync();
-    WindowUtils.windowWidth_px = WindowUtils.window.getWindowProperties().windowRect.width;
-    WindowUtils.windowHeight_px = WindowUtils.window.getWindowProperties().windowRect.height;
+    WindowUtils.windowWidthPx = WindowUtils.window.getWindowProperties().windowRect.width;
+    WindowUtils.windowHeightPx = WindowUtils.window.getWindowProperties().windowRect.height;
 
-    this.updateBreakpoint(WindowUtils.windowWidth_px);
+    this.updateBreakpoint(WindowUtils.windowWidthPx);
 
     // Obtain the height of the upper avoid area (such as the status bar).
     let avoidArea = WindowUtils.window.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-    WindowUtils.topAvoidAreaHeight_px = avoidArea.topRect.height;
+    WindowUtils.topAvoidAreaHeightPx = avoidArea.topRect.height;
 
     // Obtain the height of the navigation bar.
     let navigationArea = WindowUtils.window.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
-    WindowUtils.navigationIndicatorHeight_px = navigationArea.bottomRect.height;
+    WindowUtils.navigationIndicatorHeightPx = navigationArea.bottomRect.height;
 
-    console.log(TAG, 'the width is ' + WindowUtils.windowWidth_px + '  ' + WindowUtils.windowHeight_px + '  ' +
-    WindowUtils.topAvoidAreaHeight_px + '  ' + WindowUtils.navigationIndicatorHeight_px);
+    hilog.info(DOMAIN, TAG, 'the width is ' + WindowUtils.windowWidthPx + '  ' + WindowUtils.windowHeightPx + '  ' +
+    WindowUtils.topAvoidAreaHeightPx + '  ' + WindowUtils.navigationIndicatorHeightPx);
 
     // Listen for changes in the window size, status bar height, and navigation bar height, and update accordingly.
     try {
       WindowUtils.window.on('windowSizeChange', (data) => {
-        console.log(TAG, 'on windowSizeChange, the width is ' + data.width + ', the height is ' + data.height);
-        WindowUtils.windowWidth_px = data.width;
-        WindowUtils.windowHeight_px = data.height;
+        hilog.info(DOMAIN, TAG, 'on windowSizeChange, the width is ' + data.width + ', the height is ' + data.height);
+        WindowUtils.windowWidthPx = data.width;
+        WindowUtils.windowHeightPx = data.height;
         this.updateBreakpoint(data.width);
-        AppStorage.setOrCreate('windowSizeChanged', Date.now())
+        AppStorage.setOrCreate('windowSizeChanged', Date.now());
       })
 
       WindowUtils.window.on('avoidAreaChange', (data) => {
-        if (data.type == window.AvoidAreaType.TYPE_SYSTEM) {
+        if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
           let topRectHeight = data.area.topRect.height;
-          console.log(TAG, 'on avoidAreaChange, the top avoid area height is ' + topRectHeight);
-          WindowUtils.topAvoidAreaHeight_px = topRectHeight;
-        } else if (data.type == window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
+          hilog.info(DOMAIN, TAG, 'on avoidAreaChange, the top avoid area height is ' + topRectHeight);
+          WindowUtils.topAvoidAreaHeightPx = topRectHeight;
+        } else if (data.type === window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
           let bottomRectHeight = data.area.bottomRect.height;
-          console.log(TAG, 'on avoidAreaChange, the navigation indicator height is ' + bottomRectHeight);
-          WindowUtils.navigationIndicatorHeight_px = bottomRectHeight;
+          hilog.info(DOMAIN, TAG, 'on avoidAreaChange, the navigation indicator height is ' + bottomRectHeight);
+          WindowUtils.navigationIndicatorHeightPx = bottomRectHeight;
         }
       })
     } catch (exception) {
-      console.log('register failed ' + JSON.stringify(exception));
+      hilog.error(DOMAIN, TAG, `register failed. code: ${exception.code}, message: ${exception.message}`);
     }
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+      hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
     });
   }
 
@@ -1819,20 +1909,19 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('currentBreakpoint', this.currentBreakPoint);
     }
   }
-
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
     // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onForeground');
   }
 
   onBackground(): void {
     // Ability has back to background
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onBackground');
   }
 }
 ```
@@ -1851,7 +1940,9 @@ This method is ideal for shared element transitions between two distinct objects
 
 Below is a simple example of using **geometryTransition** to implement shared element transition for two elements on the same page:
 
-```ts
+<!-- @[geometry_transition_simple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets) -->
+
+``` TypeScript
 import { curves } from '@kit.ArkUI';
 
 @Entry
@@ -1862,13 +1953,14 @@ struct IfElseGeometryTransition {
   build() {
     Stack({ alignContent: Alignment.Center }) {
       if (this.isShow) {
+        // Replace $r('app.media.spring') with the actual resource file.
         Image($r('app.media.spring'))
           .autoResize(false)
           .clip(true)
           .width(200)
           .height(200)
           .borderRadius(100)
-          .geometryTransition("picture")
+          .geometryTransition('picture')
           .transition(TransitionEffect.OPACITY)
           // If a new transition is triggered during the animation, ghosting occurs when id is not specified.
           // With id specified, the new spring image reuses the previous spring image node instead of creating a new node. Therefore, ghosting does not occur.
@@ -1879,7 +1971,8 @@ struct IfElseGeometryTransition {
         // The multiple levels of containers here are used to demonstrate passing of relative layout constraints.
         Column() {
           Column() {
-            Image($r('app.media.sky'))
+            // Replace $r('app.media.sunset_sky') with the actual resource file.
+            Image($r('app.media.sunset_sky'))
               .size({ width: '100%', height: '100%' })
           }
           .size({ width: '100%', height: '100%' })
@@ -1890,7 +1983,7 @@ struct IfElseGeometryTransition {
         // In other words, corner radius settings of the container are synchronized, and those of the child components are not.
         .borderRadius(50)
         .clip(true)
-        .geometryTransition("picture")
+        .geometryTransition('picture')
         // transition ensures that the component is not destroyed immediately when it exits. You can customize the transition effect.
         .transition(TransitionEffect.OPACITY)
         .position({ x: 40, y: 40 })
@@ -1915,11 +2008,16 @@ struct IfElseGeometryTransition {
 
 By combining **geometryTransition** with a modal transition API, you can implement a shared element transition between two elements on different pages. The following example implements a demo where clicking a profile picture displays the corresponding profile page.
 
-```ts
+<!-- @[geometry_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template7/Index.ets) -->
+
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+
 class PostData {
+  // Replace $r('app.media.flower') with the actual resource file.
   avatar: Resource = $r('app.media.flower');
   name: string = '';
-  message: string = '';
+  message: ResourceStr = '';
   images: Resource[] = [];
 }
 
@@ -1929,14 +2027,40 @@ struct Index {
   @State isPersonalPageShow: boolean = false;
   @State selectedIndex: number = 0;
   @State alphaValue: number = 1;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+  // Customize the image resource paths in the array as needed.
   private allPostData: PostData[] = [
-    { avatar: $r('app.media.flower'), name: 'Alice', message: 'It is sunny.',
-      images: [$r('app.media.spring'), $r('app.media.tree')] },
-    { avatar: $r('app.media.sky'), name: 'Bob', message: 'Hello World',
-      images: [$r('app.media.island')] },
-    { avatar: $r('app.media.tree'), name: 'Carl', message: 'Everything grows.',
-      images: [$r('app.media.flower'), $r('app.media.sky'), $r('app.media.spring')] }];
+    {
+      // Replace $r('app.media.flower') with the actual resource file.
+      avatar: $r('app.media.flower'),
+      name: 'Alice',
+      // Replace $r('app.string.shareTransition_text1') with the actual resource file. In this example, the value in the resource file is "Weather is fine."
+      message: $r('app.string.shareTransition_text1'),
+      // Replace $r('app.media.spring') with the actual resource file.
+      // Replace $r('app.media.tall_tree') with the actual resource file.
+      images: [$r('app.media.spring'), $r('app.media.tall_tree')]
+    },
+    {
+      // Replace $r('app.media.sunset_sky') with the actual resource file.
+      avatar: $r('app.media.sunset_sky'),
+      name: 'Bob',
+      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello World."
+      message: $r('app.string.shareTransition_text2'),
+      // Replace $r('app.media.island') with the actual resource file.
+      images: [$r('app.media.island')]
+    },
+    {
+      // Replace $r('app.media.tall_tree') with the actual resource file.
+      avatar: $r('app.media.tall_tree'),
+      name: 'Carl',
+      // Replace $r('app.string.shareTransition_text3') with the actual resource file. In this example, the value in the resource file is "All things grow."
+      message: $r('app.string.shareTransition_text3'),
+      // Replace $r('app.media.flower') with the actual resource file.
+      // Replace $r('app.media.sunset_sky') with the actual resource file.
+      // Replace $r('app.media.spring') with the actual resource file.
+      images: [$r('app.media.flower'), $r('app.media.sunset_sky'), $r('app.media.spring')]
+    }];
 
   private onAvatarClicked(index: number): void {
     this.selectedIndex = index;
@@ -1979,8 +2103,9 @@ struct Index {
           TransitionEffect.OPACITY.animation({ duration: 0 })
         ))
 
-      Text('Hello, this is' + this.allPostData[index].name)
-        // Apply a transition effect to the text.
+      // Configure the resource whose name is 'shareTransition_text11' and value is a non-empty string in the resources\base\element\string.json file.
+      Text(this.context.resourceManager.getStringByNameSync('shareTransition_text11') + this.allPostData[index].name)
+      // Apply a transition effect to the text.
         .transition(TransitionEffect.asymmetric(
           TransitionEffect.OPACITY
             .combine(TransitionEffect.translate({ y: 100 })),
@@ -2003,7 +2128,11 @@ struct Index {
     Column({ space: 20 }) {
       ForEach(this.allPostData, (postData: PostData, index: number) => {
         Column() {
-          Post({ data: postData, index: index, onAvatarClicked: (index: number) => { this.onAvatarClicked(index) } })
+          Post({
+            data: postData, index: index, onAvatarClicked: (index: number) => {
+              this.onAvatarClicked(index);
+            }
+          })
         }
         .width('100%')
       }, (postData: PostData, index: number) => index.toString())
@@ -2017,13 +2146,11 @@ struct Index {
 }
 
 @Component
-export default struct  Post {
+export default struct Post {
   @Prop data: PostData;
   @Prop index: number;
-
   @State expandImageSize: number = 100;
   @State avatarSize: number = 50;
-
   private onAvatarClicked: (index: number) => void = (index: number) => { };
 
   build() {
@@ -2037,7 +2164,7 @@ export default struct  Post {
             this.onAvatarClicked(this.index);
           })
           // ID of the shared element transition bound to the profile picture.
-          .geometryTransition(this.index.toString(), {follow:true})
+          .geometryTransition(this.index.toString(), { follow: true })
           .transition(TransitionEffect.OPACITY.animation({ duration: 350, curve: Curve.Friction }))
 
         Text(this.data.name)
@@ -2063,6 +2190,6 @@ export default struct  Post {
 
 After a profile picture on the home page is clicked, the corresponding profile page is displayed in a modal, and there is a shared element transition between the profile pictures on the two pages.
 
-
+![en-us_image_0000001597320327](figures/en-us_image_0000001597320327.gif)
 
 <!--RP1--><!--RP1End-->

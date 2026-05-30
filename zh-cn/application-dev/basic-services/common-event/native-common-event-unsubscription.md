@@ -1,9 +1,8 @@
 # 取消订阅公共事件（C/C++）
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -13,7 +12,7 @@
 
 ## 接口说明
 
-详细的API说明请参考[CommonEvent API参考](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md)。
+详细的API说明请参考[oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md)。
 
 | 接口名                               | 描述                                                             |
 | ------------------------------------ | ---------------------------------------------------------------- |
@@ -23,11 +22,13 @@
 
 1. 引用头文件。
 
-   ```c++
-   #include <cstdint>
+   <!-- @[event_unsubscriber_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_unsubscribe.h) -->
+   
+   ``` C
    #include "hilog/log.h"
    #include "BasicServicesKit/oh_commonevent.h"
    ```
+
 
 2. 在CMake脚本中添加动态链接库。
 
@@ -44,8 +45,11 @@
 
    订阅者订阅公共事件并完成业务需求后，可以通过[OH_CommonEvent_UnSubscribe](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_unsubscribe)主动取消订阅事件。
 
-   ```c++
-   void Unsubscribe(CommonEvent_Subscriber* subscriber) {
+   <!-- @[event_unsubscriber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_unsubscribe.cpp) -->
+   
+   ``` C++
+   void Unsubscribe(CommonEvent_Subscriber *subscriber)
+   {
        // 通过传入订阅者来退订事件
        int32_t ret = OH_CommonEvent_UnSubscribe(subscriber);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_UnSubscribe ret <%{public}d>.", ret);

@@ -1,11 +1,17 @@
 # @ohos.app.form.formObserver (formObserver) (System API)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 
 The **formObserver** module provides APIs related to widget listeners. You can use the APIs to subscribe to and unsubscribe from widget addition, removal, and visibility change events, and obtain information about running widgets.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs provided by this module are system APIs.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -45,7 +51,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.on('formAdd', callback);
@@ -86,7 +92,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.on('formAdd', bundleName, callback);
@@ -94,7 +100,7 @@ formObserver.on('formAdd', bundleName, callback);
 
 ## off('formAdd')
 
- off(type: "formAdd", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
+off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void;
 
 Unsubscribes from widget addition events. This API uses an asynchronous callback to return the information about the new widget.
 
@@ -127,11 +133,10 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.off('formAdd', bundleName, callback);
-
 ```
 > **NOTE**
 >
@@ -171,7 +176,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`form deleted, data: ${JSON.stringify(data)}`);
+  console.info(`form deleted, formId: ${data.formId}`);
 }
 
 formObserver.on('formRemove', callback);
@@ -212,7 +217,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`form deleted, data: ${JSON.stringify(data)}`);
+  console.info(`form deleted, formId: ${data.formId}`);
 }
 
 formObserver.on('formRemove', bundleName, callback);
@@ -220,7 +225,7 @@ formObserver.on('formRemove', bundleName, callback);
 
 ## off('formRemove')
 
-off(type: "formRemove", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
+off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
 Unsubscribes from widget removal events. This API uses an asynchronous callback to return the information about the widget removed.
 
@@ -253,16 +258,16 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.off('formRemove', bundleName, callback);
 ```
 > **NOTE**
 >
-> **on('formRemove', callback)** and **off('formRemove', callback)** must be used in pairs.
-> **on('formRemove', bundleName, callback)** and **off('formRemove', bundleName, callback)** must be used in pairs.
-> To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
+> - **on('formRemove', callback)** and **off('formRemove', callback)** must be used in pairs.
+> - **on('formRemove', bundleName, callback)** and **off('formRemove', bundleName, callback)** must be used in pairs.
+> - To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
 
 ## on('notifyVisible')
 
@@ -298,11 +303,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change visibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change visibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.on('notifyVisible', callback);
-
 ```
 
 ## on('notifyVisible')
@@ -343,7 +349,9 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change visibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change visibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.on('notifyVisible', bundleName, callback);
@@ -351,7 +359,7 @@ formObserver.on('notifyVisible', bundleName, callback);
 
 ## off('notifyVisible')
 
- off(type: "notifyVisible", hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
+ off(type: 'notifyVisible', hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
 Unsubscribes from events indicating that a widget becomes visible. This API uses an asynchronous callback to return the result.
 
@@ -384,7 +392,9 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change visibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change visibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.off('notifyVisible', bundleName, callback);
@@ -392,9 +402,9 @@ formObserver.off('notifyVisible', bundleName, callback);
 
 > **NOTE**
 >
-> **on('notifyVisible', callback)** and **off('notifyVisible', callback)** must be used in pairs.
-> **on('notifyVisible', bundleName, callback)** and **off('notifyVisible', bundleName, callback)** must be used in pairs.
-> To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
+> - **on('notifyVisible', callback)** and **off('notifyVisible', callback)** must be used in pairs.
+> - **on('notifyVisible', bundleName, callback)** and **off('notifyVisible', bundleName, callback)** must be used in pairs.
+> - To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
 
 ## on('notifyInvisible')
 
@@ -430,7 +440,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change invisibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change invisibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.on('notifyInvisible', callback);
@@ -474,7 +486,9 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change invisibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change invisibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.on('notifyInvisible', bundleName, callback);
@@ -482,7 +496,7 @@ formObserver.on('notifyInvisible', bundleName, callback);
 
 ## off('notifyInvisible')
 
- off(type: "notifyInvisible", hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo>&gt;): void
+ off(type: 'notifyInvisible', hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo>&gt;): void
 
 Unsubscribes from events indicating that a widget becomes invisible. This API uses an asynchronous callback to return the result.
 
@@ -515,7 +529,9 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change invisibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change invisibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.off('notifyInvisible', bundleName, callback);
@@ -523,9 +539,9 @@ formObserver.off('notifyInvisible', bundleName, callback);
 
 > **NOTE**
 >
-> **on('notifyInvisible', callback)** and **off('notifyInvisible', callback)** must be used in pairs.
-> **on('notifyInvisible', bundleName, callback)** and **off('notifyInvisible', bundleName, callback)** must be used in pairs.
-> To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
+> - **on('notifyInvisible', callback)** and **off('notifyInvisible', callback)** must be used in pairs.
+> - **on('notifyInvisible', bundleName, callback)** and **off('notifyInvisible', bundleName, callback)** must be used in pairs.
+> - To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
 
 
 ## getRunningFormInfos
@@ -568,10 +584,12 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      data.forEach(data => {
+        console.info(`formObserver getRunningFormInfos, formId: ${data.formId}`);
+      });
     }
   }, 'com.example.ohos.formjsdemo');
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -617,10 +635,12 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      data.forEach(data => {
+        console.info(`formObserver getRunningFormInfos, formId: ${data.formId}`);
+      });
     }
   }, true, 'com.example.ohos.formjsdemo');
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -667,12 +687,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos('com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
-    console.log(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+    console.info('formObserver getRunningFormInfos success.');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -719,12 +739,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos(true, 'com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
-    console.log(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+    console.info('formObserver getRunningFormInfos success.');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -778,11 +798,13 @@ let formInstanceFilter: formInfo.FormProviderFilter = {
 }
 try {
   formObserver.getRunningFormInfosByFilter(formInstanceFilter).then((data: formInfo.RunningFormInfo[]) => {
-    console.info('formObserver getRunningFormInfosByFilter success, data:' + JSON.stringify(data));
+    data.forEach(data => {
+      console.info(`formObserver getRunningFormInfosByFilter success, formId: ${data.formId}`);
+    });
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -832,14 +854,17 @@ let formInstanceFilter: formInfo.FormProviderFilter = {
   moduleName: "entry"
 }
 try {
-  formObserver.getRunningFormInfosByFilter(formInstanceFilter,(error: BusinessError, data: formInfo.RunningFormInfo[]) => {
-    if (error) {
-      console.error(`error, code: ${error.code}, message: ${error.message}`);
-    } else {
-      console.log(`formObserver getRunningFormInfosByFilter, data: ${JSON.stringify(data)}`);
-    }
-  });
-} catch(error) {
+  formObserver.getRunningFormInfosByFilter(formInstanceFilter,
+    (error: BusinessError, data: formInfo.RunningFormInfo[]) => {
+      if (error) {
+        console.error(`error, code: ${error.code}, message: ${error.message}`);
+      } else {
+        data.forEach(data => {
+          console.info(`formObserver getRunningFormInfosByFilter success, formId: ${data.formId}`);
+        });
+      }
+    });
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -890,11 +915,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formObserver.getRunningFormInfoById(formId).then((data: formInfo.RunningFormInfo) => {
-    console.info('formObserver getRunningFormInfoById success, data:' + JSON.stringify(data));
+    console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -946,11 +971,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formObserver.getRunningFormInfoById(formId, true).then((data: formInfo.RunningFormInfo) => {
-    console.info('formObserver getRunningFormInfoById success, data:' + JSON.stringify(data));
+    console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -995,14 +1020,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let formId: string = '12400633174999288';
 try {
-  formObserver.getRunningFormInfoById(formId,(error: BusinessError, data: formInfo.RunningFormInfo) => {
+  formObserver.getRunningFormInfoById(formId, (error: BusinessError, data: formInfo.RunningFormInfo) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formObserver getRunningFormInfoById, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfoById, formId: ${data.formId}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1052,10 +1077,10 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formObserver getRunningFormInfoById, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfoById, formId: ${data.formId}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1092,7 +1117,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Router event listening in registered form.' + JSON.stringify(data));
+  console.info(`Router event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('router', callback);
 ```
@@ -1131,14 +1156,14 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Router event listening in registered form.' + JSON.stringify(data));
+  console.info(`Router event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('router', hostBundleName, callback);
 ```
 
 ## off('router')<sup>11+</sup>
 
- off(type: "router", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
+ off(type: 'router', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
 Unsubscribes from widget router events. This API uses an asynchronous callback to return the information of the widget that triggers the router event.
 
@@ -1170,7 +1195,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Unregister form router event Listening.' + JSON.stringify(data));
+  console.info(`Unregister form router event Listening. ID: ${data.formId}`);
 };
 formObserver.off('router', hostBundleName, callback);
 ```
@@ -1207,7 +1232,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Message event listening in registered form.' + JSON.stringify(data));
+  console.info(`Message event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('message', callback);
 ```
@@ -1246,14 +1271,14 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Message event listening in registered form.' + JSON.stringify(data));
+  console.info(`Message event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('message', hostBundleName, callback);
 ```
 
 ## off('message')<sup>11+</sup>
 
- off(type: "message", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
+ off(type: 'message', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
 Unsubscribes from widget message events. This API uses an asynchronous callback to return the information of the widget that triggers the message event.
 
@@ -1285,7 +1310,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Unregister form Message event Listening.' + JSON.stringify(data));
+  console.info(`Unregister form Message event Listening. ID: ${data.formId}`);
 };
 formObserver.off('message', hostBundleName, callback);
 ```
@@ -1322,7 +1347,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Call event listening in registered form.' + JSON.stringify(data));
+  console.info(`Call event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('call', callback);
 ```
@@ -1361,14 +1386,14 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Call event listening in registered form.' + JSON.stringify(data));
+  console.info(`Call event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('call', hostBundleName, callback);
 ```
 
 ## off('call')<sup>11+</sup>
 
- off(type: "call", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
+ off(type: 'call', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
 Unsubscribes from widget call events. This API uses an asynchronous callback to return the information of the widget that triggers the call event.
 
@@ -1400,7 +1425,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Unregister form Call event Listening.' + JSON.stringify(data));
+  console.info(`Unregister form Call event Listening. ID: ${data.formId}`);
 };
 formObserver.off('call', hostBundleName, callback);
 ```

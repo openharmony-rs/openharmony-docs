@@ -4,7 +4,11 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Camera_Location {...} Camera_Location
+```
 
 ## 概述
 
@@ -24,6 +28,6 @@
 | -- | -- |
 | double latitude | 纬度。 |
 | double longitude | 经度。 |
-| double altitude | 海拔高度，单位为像素。 |
+| double altitude | 海拔高度，单位为米。 |
 
 

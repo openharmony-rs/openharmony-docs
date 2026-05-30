@@ -2,9 +2,9 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Designer: @chenxi0605-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 **BackupExtensionContext** is the context of **BackupExtension** and inherits from **ExtensionContext**.
 
@@ -29,7 +29,7 @@ import  { BackupExtensionContext } from '@kit.CoreFileKit';
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- |-------| -------- | -------- |
-| backupDir<sup>12+</sup> | string | Yes| No| Temporary directory used for backup or restore. This directory cannot be used for other purposes. Currently, only **el1/** and **el2/** are supported.|
+| backupDir | string | Yes| No| Temporary directory used for backup or restore. This directory cannot be used for other purposes. Currently, only the **el1** and **el2** directories are supported. If other directories are used, null is returned.|
 
 ### When to Use
 **BackupExtensionContext** is used to obtain a temporary directory for backup or restore.
@@ -37,32 +37,32 @@ import  { BackupExtensionContext } from '@kit.CoreFileKit';
 **Example**
 
 ```ts
-import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
 import { contextConstant } from '@kit.AbilityKit';
 
 export default class MyBackupExtAbility extends BackupExtensionAbility {
     async onBackup() {
-        console.log("onBackup begin");
+        console.info("onBackup begin");
         // You can modify this.context.area to change the sandbox path corresponding to el1/ or el2/.
         this.context.area = contextConstant.AreaMode.EL1;
         // Use this.context.backupDir to obtain the sandbox path.
         let dir = this.context.backupDir;
-        console.log(`onBackup el1 dir: ${dir}`);
+        console.info(`onBackup el1 dir: ${dir}`);
         this.context.area = contextConstant.AreaMode.EL2;
         dir = this.context.backupDir;
-        console.log(`onBackup el2 dir: ${dir}`);
-        console.log("onBackup end");
+        console.info(`onBackup el2 dir: ${dir}`);
+        console.info("onBackup end");
     }
 
     async onRestore() {
-        console.log("onRestore begin");
+        console.info("onRestore begin");
         this.context.area = contextConstant.AreaMode.EL1;
         let dir = this.context.backupDir;
-        console.log(`onRestore el1 dir: ${dir}`);
+        console.info(`onRestore el1 dir: ${dir}`);
         this.context.area = contextConstant.AreaMode.EL2;
         dir = this.context.backupDir;
-        console.log(`onRestore el2 dir: ${dir}`);
-        console.log("onRestore end");
+        console.info(`onRestore el2 dir: ${dir}`);
+        console.info("onRestore end");
     }
 }
 ```

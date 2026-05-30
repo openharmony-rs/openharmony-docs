@@ -4,21 +4,33 @@
 <!--Owner: @tangye123456-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @tinygreyy-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The **MovingPhotoView** component is used to play moving photos and control the playback status.
 
 > **NOTE**
 >
 > This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
->
 > Currently, the **MovingPhotoView** component cannot be used in Previewer.
 
 ## Modules to Import
 
-```
-import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
-```
+> **NOTE**
+>
+> - **MovingPhotoViewAttribute** is essential for configuring the **MovingPhotoView** component. In API version 21 and earlier, you must manually import **MovingPhotoViewAttribute** after importing the **MovingPhotoView** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **MovingPhotoViewAttribute** when it detects the **MovingPhotoView** component, so manual import is no longer necessary.
+> - If you manually import **MovingPhotoViewAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+ 
+   API version 21 and earlier:
+
+   ```ts
+   import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+   ```
+
+   API version 22 and later:
+   
+   ```ts
+   import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
+   ```
 
 ## MovingPhotoView
 
@@ -41,15 +53,15 @@ MovingPhotoView(options: MovingPhotoViewOptions)
 ## MovingPhotoViewOptions
 
 
-| Name     | Type                                                                                        | Mandatory| Description                                                                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| movingPhoto | [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | Yes  | MovingPhoto instance. For details, see [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| controller  | [MovingPhotoViewController](#movingphotoviewcontroller)                                          | No  | Controller used to control the playback status of the moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
-| imageAIOptions<sup>18+</sup>   | [ImageAIOptions](../apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) | No  | AI options. You can set the image analyzer type or bind an image analyzer controller.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| Name     | Type                                                                                        | Read-Only| Optional| Description                                                                                                                                       |
+| ----------- | ------------------------------------------------------------------------------------------------ | ----------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| movingPhoto | [photoAccessHelper.MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | No| No | MovingPhoto data source from the media library. For details, see [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| controller  | [MovingPhotoViewController](#movingphotoviewcontroller)                                          | No| Yes  | Controller used to control the playback status of the moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
+| imageAIOptions<sup>18+</sup>   | [ImageAIOptions](../apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) | No| Yes| AI options. You can set the image analyzer type or bind an image analyzer controller.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
-## Properties
+## Attributes
 
-In addition to the [universal properties](../apis-arkui/arkui-ts/ts-component-general-attributes.md), the following properties are supported.
+In addition to the [universal attributes](../apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
 
 ### muted
 
@@ -166,7 +178,7 @@ In addition to [universal events](../apis-arkui/arkui-ts/ts-component-general-ev
 
 onComplete(callback: MovingPhotoViewEventCallback)
 
-Called when the image of a moving photo is loaded.
+Called when the image of a moving photo is loaded. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -183,7 +195,7 @@ Called when the image of a moving photo is loaded.
 
 onStart(callback: MovingPhotoViewEventCallback)
 
-Called when a moving photo starts playing.
+Called when a moving photo starts playing. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -200,7 +212,7 @@ Called when a moving photo starts playing.
 
 onPause(callback: MovingPhotoViewEventCallback)
 
-Called when the playback is paused.
+Called when the playback is paused. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -217,7 +229,7 @@ Called when the playback is paused.
 
 onFinish(callback: MovingPhotoViewEventCallback)
 
-Called when the playback is finished.
+Called when the playback is finished. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -234,7 +246,7 @@ Called when the playback is finished.
 
 onError(callback: MovingPhotoViewEventCallback)
 
-Called when the playback fails.
+Called when the playback fails. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -251,7 +263,7 @@ Called when the playback fails.
 
 onStop(callback: MovingPhotoViewEventCallback)
 
-Called when the playback is stopped by **stop()**.
+Called when the playback is stopped by **stop()**. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -268,7 +280,7 @@ Called when the playback is stopped by **stop()**.
 
 onPrepared(callback: MovingPhotoViewEventCallback)
 
-Called when a moving photo is ready for playback.
+Called when a moving photo is ready for playback. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -342,7 +354,9 @@ Forcibly refreshes the video and image resources loaded by the **MovingPhotoView
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { emitter } from '@kit.BasicServicesKit';
 import { dataSharePredicates } from '@kit.ArkData';
-import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 21 and earlier, use the following: import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 22 and later, use the following:
+import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 
 const PHOTO_SELECT_EVENT_ID: number = 80001
 
@@ -407,19 +421,19 @@ struct MovingPhotoViewDemo {
             .autoPlayPeriod(0, 600)
             .objectFit(ImageFit.Cover)
             .onComplete(() => {
-              console.log('Completed');
+              console.info('Completed');
             })
             .onStart(() => {
-              console.log('onStart')
+              console.info('onStart')
             })
             .onFinish(() => {
-              console.log('onFinish')
+              console.info('onFinish')
             })
             .onStop(() => {
-              console.log('onStop')
+              console.info('onStop')
             })
             .onError(() => {
-              console.log('onError')
+              console.error('onError')
             })
         }
       }
@@ -485,7 +499,9 @@ class MediaDataHandlerMovingPhoto implements photoAccessHelper.MediaAssetDataHan
 
 ```ts
 // xxx.ets
-import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 21 and earlier, use the following: import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 22 and later, use the following:
+import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 
 let data: photoAccessHelper.MovingPhoto
 async function loading(context: Context) {
@@ -572,8 +588,6 @@ struct Index {
   }
 }
 ```
-![AutomicEnergy](figures/AutomicEnergy.gif)
+![AutomaticEnergy](figures/AutomaticEnergy.gif)
 
 <!--RP1--><!--RP1End-->
-
-<!--no_check-->

@@ -14,10 +14,10 @@
 该变更为兼容性变更。
 
 变更前：
-关系型数据管理[@ohos.data.relationalStore.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts)中getRdbStore接口如果发生加密方式变更（从加密变非加密或者相反），会返回14800011。
+关系型数据管理[@ohos.data.relationalStore.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts)中getRdbStore接口如果发生加密方式变更（从加密变非加密或者相反），会返回14800011。
 
 变更后：
-关系型数据管理[@ohos.data.relationalStore.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts)中getRdbStore接口如果发生加密方式变更（从加密变非加密或者相反），会按实际加密方式打开。
+关系型数据管理[@ohos.data.relationalStore.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts)中getRdbStore接口如果发生加密方式变更（从加密变非加密或者相反），会按实际加密方式打开。
 
 
 **起始API Level**
@@ -30,7 +30,7 @@ API 9
 
 **变更的接口/组件**
 
-[@ohos.data.relationalStore.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts)中如下接口：
+[@ohos.data.relationalStore.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts)中如下接口：
 
 1. function getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<RdbStore\>): void;
 

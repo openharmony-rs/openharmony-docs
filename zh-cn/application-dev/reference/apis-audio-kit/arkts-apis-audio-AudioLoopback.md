@@ -1,15 +1,10 @@
 # Interface (AudioLoopback)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @tom_guo-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
-
-> **说明：**
->
-> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本Interface首批接口从API version 20开始支持。
+<!--Adviser: @w_Machine_cc-->
 
 提供音频返听的相关接口。
 
@@ -18,6 +13,11 @@
 当启用音频返听时，系统会创建低时延渲染器与低时延采集器，实现低时延耳返功能。采集的音频直接通过内部路由返回到渲染器。对于渲染器，其音频焦点策略与[STREAM_USAGE_MUSIC](arkts-apis-audio-e.md#streamusage)相匹配。对于采集器，其音频焦点策略与[SOURCE_TYPE_MIC](arkts-apis-audio-e.md#sourcetype8)相匹配。
 
 输入\输出设备由系统自动选择。如果当前输入\输出不支持低时延，则音频返听无法启用。在运行过程中，如果音频焦点被另一个音频流抢占，输入\输出设备切换到不支持低时延的设备，系统会自动禁用音频返听。
+
+> **说明：**
+>
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Interface首批接口从API version 20开始支持。
 
 ## 导入模块
 
@@ -77,7 +77,7 @@ setVolume(volume: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed, form 0.0 to 1.0. |
+| 6800101 | Parameter verification failed, from 0.0 to 1.0. |
 
 **示例：**
 
@@ -89,6 +89,31 @@ audioLoopback.setVolume(0.5).then(() => {
 }).catch((err: BusinessError) => {
   console.error(`setVolume Fail: ${err}`);
 });
+```
+
+## getVolume
+
+getVolume(): number
+
+获取音频返听输出音量。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| number | 返回当前音频返听输出音量，范围为[0.0, 1.0]。 |
+
+**示例：**
+
+```ts
+let volume = audioLoopback.getVolume();
+console.info(`Current loopback volume is ${volume}.`);
 ```
 
 ## on('statusChange')<sup>20+</sup>
@@ -175,6 +200,60 @@ let statusChangeCallback = (status: audio.AudioLoopbackStatus) => {
 audioLoopback.on('statusChange', statusChangeCallback);
 
 audioLoopback.off('statusChange', statusChangeCallback);
+```
+
+## getSupportedDevicePairs
+
+getSupportedDevicePairs(): Array<AudioDevicePair\>
+
+获取当前设备连接状态下支持返听的音频输入输出设备组合。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| Array<[AudioDevicePair](arkts-apis-audio-i.md#audiodevicepair)\> | 返回支持返听的音频输入输出设备数组。<br>如果没有可用的输入输出设备组合，则返回空数组。 |
+
+**示例：**
+
+```ts
+let supportedPairs = audioLoopback.getSupportedDevicePairs();
+if (supportedPairs.length === 0) {
+  console.info('No supported loopback device pair found.');
+}
+```
+
+## getPreferredDevicePair
+
+getPreferredDevicePair(): AudioDevicePair | null
+
+获取当前设备连接状态下系统推荐的返听音频输入输出设备组合。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| [AudioDevicePair](arkts-apis-audio-i.md#audiodevicepair) \| null | 返回系统推荐的音频输入输出设备组合。<br>如果没有可用的输入输出设备组合，则返回null。 |
+
+**示例：**
+
+```ts
+let preferredPair = audioLoopback.getPreferredDevicePair();
+if (preferredPair === null) {
+  console.info('No preferred loopback device pair found.');
+}
 ```
 
 ## enable<sup>20+</sup>

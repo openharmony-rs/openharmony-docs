@@ -1,4 +1,10 @@
 # drawing_sampling_options.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -7,6 +13,8 @@
 **引用文件：** <native_drawing/drawing_sampling_options.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -33,7 +41,7 @@
 
 ### OH_Drawing_FilterMode
 
-```
+```c
 enum OH_Drawing_FilterMode
 ```
 
@@ -50,7 +58,7 @@ enum OH_Drawing_FilterMode
 
 ### OH_Drawing_MipmapMode
 
-```
+```c
 enum OH_Drawing_MipmapMode
 ```
 
@@ -71,7 +79,7 @@ enum OH_Drawing_MipmapMode
 
 ### OH_Drawing_SamplingOptionsCreate()
 
-```
+```c
 OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode filterMode,OH_Drawing_MipmapMode mipmapMode)
 ```
 
@@ -99,7 +107,7 @@ OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMo
 
 ### OH_Drawing_SamplingOptionsCopy()
 
-```
+```c
 OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)
 ```
 
@@ -130,7 +138,7 @@ samplingOptions为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 ### OH_Drawing_SamplingOptionsDestroy()
 
-```
+```c
 void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptions)
 ```
 

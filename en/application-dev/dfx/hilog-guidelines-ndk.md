@@ -27,8 +27,17 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 | \#define OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, **VA_ARGS**)) | Outputs WARN logs. This is a function-like macro.|
 | \#define OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, **VA_ARGS**)) | Outputs ERROR logs. This is a function-like macro.|
 | \#define OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, **VA_ARGS**)) | Outputs FATAL logs. This is a function-like macro.|
-| void OH_LOG_SetCallback(LogCallback callback) | Registers a callback function to return all logs for the process.|
-| void OH_LOG_SetMinLogLevel(LogLevel level) | Sets the minimum log level.<br>Note: This API is supported since API version 15.<br>Note: If the set log level is lower than the [global log level](hilog.md#displaying-and-setting-log-levels), the setting does not take effect.|
+| void OH_LOG_SetCallback(LogCallback callback) | Registers a callback to return the HiLog logs for the process. When the **OH_LOG_IsLoggable** API returns true, the callback can obtain the log.|
+| void OH_LOG_SetMinLogLevel(LogLevel level) | Sets the minimum log level.<br>Note: This API is supported since API version 15.|
+| void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer) | Sets the minimum log level of the current application process. You can configure different preference strategies.<br>Note: This API is supported since API version 21.| 
+
+> **NOTE**
+>
+> The HiLog APIs are not signal-safe functions. Do not call the HiLog APIs in signal processing functions.
+>
+> If the set log level is lower than the [global log level](hilog.md#displaying-and-setting-log-levels), the **OH_LOG_SetMinLogLevel()** setting does not take effect.
+>
+> In the debug applications, the **OH_LOG_SetMinLogLevel()** and **OH_LOG_SetLogLevel()** functions do not take effect.
 
 ### Parameters
 
@@ -37,6 +46,8 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 - **tag**: log identifier. It can be any string. You are advised to use this parameter to identify the class or service behavior of a method call. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur.
 
 - **level**: log level. For details, see [LogLevel](../reference/apis-performance-analysis-kit/capi-log-h.md#loglevel).
+
+- **prefer**: preference strategy. For details, see [PreferStrategy](../reference/apis-performance-analysis-kit/capi-log-h.md#preferstrategy).
 
 - **fmt**: format of the log to output. The value is a string in the "%{private flag}specifier" format.
 
@@ -52,6 +63,8 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
   | s | The char\* type can be printed.| "123" |
 
   You can set multiple parameters in the **format** string, for example, **%s World**, where **%s** is a variable of the string type and its value is defined by **args**. 
+
+  The debug application does not have a privacy control mechanism. Parameters can be displayed in plaintext when any of the preceding private flags is used to print logs.
 
 - **args**: parameters of the types specified by **specifier** in **format**. This parameter can be left blank. The number and type of parameters must match **specifier**.
 
@@ -88,25 +101,31 @@ The maximum size of a log file is 4096 bytes. Excess content will be discarded.
    #undef LOG_DOMAIN
    #undef LOG_TAG
    #define LOG_DOMAIN 0x3200 // Global domain, which identifies the service domain.
-   #define LOG_TAG "MY_TAG" // Global tag, which identifies the module log tag.
+   #define LOG_TAG "MY_TAG"   // Global tag, which identifies the module log tag.
    ```
 
 3. Print logs.
 
    ```c++
-   OH_LOG_INFO(LOG_APP, "Failed to visit %{private}s, reason:%{public}d.", url, errno);
+   OH_LOG_INFO(LOG_APP, "Failed to visit path.");
    // Set the minimum log level to Warn.
    OH_LOG_SetMinLogLevel(LOG_WARN);
    OH_LOG_INFO(LOG_APP, "this is an info level log");
    OH_LOG_ERROR(LOG_APP, "this is an error level log");
+   // Set the minimum log level to the PREFER_OPEN_LOG strategy so that logs whose levels are not lower than INFO can be printed.
+   OH_LOG_SetLogLevel(LOG_WARN, PREFER_OPEN_LOG);
+   OH_LOG_INFO(LOG_APP, "this is an another info level log");
+   OH_LOG_ERROR(LOG_APP, "this is an another error level log");
    ```
 
 4. The output is as follows:
 
 <!--RP2-->
    ```txt
-   01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     Failed to visit <private>, reason:11.
+   01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     Failed to visit path.
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              E     this is an error level log
+   01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     this is an another info level log
+   01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              E     this is an another error level log
    ```
 <!--RP2End-->
 
@@ -114,7 +133,9 @@ The maximum size of a log file is 4096 bytes. Excess content will be discarded.
 
 > **NOTE**
 >
-> Do not call the HiLog API recursively in the callback function. Otherwise, a cyclic call issue occurs.
+> 1. Do not call the HiLog API recursively in the callback. Otherwise, a cyclic call issue occurs.
+> 
+> 2. Register the callback only once for a process. If the callback is registered multiple times, the last registered one takes effect.
 
 ```c++
 #include "hilog/log.h"
@@ -131,7 +152,7 @@ static void Test(void)
    // 1. Register a callback.
    OH_LOG_SetCallback(MyHiLog);
     
-   // 2. Call the hilog API to print logs. Logs are output to HiLog and returned to MyHiLog() through the registered callback. Then, MyHiLog() is called to process the logs.
+   // 2. Call the HiLog API to print logs. Logs are output to HiLog and returned to MyHiLog() through the registered callback. Then, MyHiLog() is called to process the logs.
    OH_LOG_INFO(LOG_APP, "hello world");
 }
 ```

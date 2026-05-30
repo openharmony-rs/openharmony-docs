@@ -1,5 +1,12 @@
 # @ohos.net.statistics (Traffic Management)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 The **statistics** module provides APIs to obtain the real-time uplink and downlink data traffic of the specified NIC.
 
 > **NOTE**
@@ -12,7 +19,7 @@ The **statistics** module provides APIs to obtain the real-time uplink and downl
 import { statistics } from '@kit.NetworkKit';
 ```
 
-## statistics.getIfaceRxBytes<sup>10+</sup>
+## statistics.getIfaceRxBytes
 
 getIfaceRxBytes(nic: string, callback: AsyncCallback\<number>): void
 
@@ -48,11 +55,11 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getIfaceRxBytes("wlan0", (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getIfaceRxBytes<sup>10+</sup>
+## statistics.getIfaceRxBytes
 
 getIfaceRxBytes(nic: string): Promise\<number>
 
@@ -90,11 +97,11 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getIfaceRxBytes("wlan0").then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getIfaceTxBytes<sup>10+</sup>
+## statistics.getIfaceTxBytes
 
 getIfaceTxBytes(nic: string, callback: AsyncCallback\<number>): void
 
@@ -130,11 +137,11 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getIfaceTxBytes("wlan0", (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getIfaceTxBytes<sup>10+</sup>
+## statistics.getIfaceTxBytes
 
 getIfaceTxBytes(nic: string): Promise\<number>
 
@@ -172,11 +179,11 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getCellularRxBytes<sup>10+</sup>
+## statistics.getCellularRxBytes
 
 getCellularRxBytes(callback: AsyncCallback\<number>): void
 
@@ -210,11 +217,11 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getCellularRxBytes((error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getCellularRxBytes<sup>10+</sup>
+## statistics.getCellularRxBytes
 
 getCellularRxBytes(): Promise\<number>
 
@@ -245,11 +252,11 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getCellularRxBytes().then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getCellularTxBytes<sup>10+</sup>
+## statistics.getCellularTxBytes
 
 getCellularTxBytes(callback: AsyncCallback\<number>): void
 
@@ -283,11 +290,11 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getCellularTxBytes((error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getCellularTxBytes<sup>10+</sup>
+## statistics.getCellularTxBytes
 
 getCellularTxBytes(): Promise\<number>
 
@@ -318,11 +325,11 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getCellularTxBytes().then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getAllRxBytes<sup>10+</sup>
+## statistics.getAllRxBytes
 
 getAllRxBytes(callback: AsyncCallback\<number>): void
 
@@ -357,11 +364,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 statistics.getAllRxBytes((error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getAllRxBytes<sup>10+</sup>
+## statistics.getAllRxBytes
 
 getAllRxBytes(): Promise\<number>
 
@@ -393,11 +400,11 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getAllRxBytes().then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getAllTxBytes<sup>10+</sup>
+## statistics.getAllTxBytes
 
 getAllTxBytes(callback: AsyncCallback\<number>): void
 
@@ -432,11 +439,11 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getAllTxBytes((error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getAllTxBytes<sup>10+</sup>
+## statistics.getAllTxBytes
 
 getAllTxBytes(): Promise\<number>
 
@@ -468,15 +475,20 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getAllTxBytes().then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getUidRxBytes<sup>10+</sup>
+## statistics.getUidRxBytes
 
 getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 
 Obtains the real-time downlink data traffic of the specified application. This API uses an asynchronous callback to return the result.
+
+**Required permissions**
+
+- API versions earlier than API version 26.0.0: N/A
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -507,17 +519,22 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getUidRxBytes(20010038, (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getUidRxBytes<sup>10+</sup>
+## statistics.getUidRxBytes
 
 getUidRxBytes(uid: number): Promise\<number>
 
 Obtains the real-time downlink data traffic of the specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
+
+**Required permissions**
+
+- API versions earlier than API version 26.0.0: N/A
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **Parameters**
 
@@ -548,17 +565,22 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getUidRxBytes(20010038).then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getUidTxBytes<sup>10+</sup>
+## statistics.getUidTxBytes
 
 getUidTxBytes(uid: number, callback: AsyncCallback\<number>): void
 
 Obtains the real-time uplink data traffic of the specified application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
+
+**Required permissions**
+
+- API versions earlier than API version 26.0.0: N/A
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **Parameters**
 
@@ -587,17 +609,22 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getUidTxBytes(20010038, (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
-## statistics.getUidTxBytes<sup>10+</sup>
+## statistics.getUidTxBytes
 
 getUidTxBytes(uid: number): Promise\<number>
 
 Obtains the real-time uplink data traffic of the specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
+
+**Required permissions**
+
+- API versions earlier than API version 26.0.0: N/A
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **Parameters**
 
@@ -628,7 +655,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getUidTxBytes(20010038).then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -637,7 +664,7 @@ statistics.getUidTxBytes(20010038).then((stats: number) => {
 
 getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
-Obtains the downlink data traffic (in bytes) of the specified socket. This API uses an asynchronous callback to return the result.
+Obtains the downlink data traffic of the specified socket. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -668,7 +695,7 @@ import { statistics } from '@kit.NetworkKit';
 let sockfd = 50; // FD of the socket you created.
 statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -676,7 +703,7 @@ statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
 
 getSockfdRxBytes(sockfd: number): Promise\<number\>
 
-Obtains the downlink data traffic (in bytes) of the specified socket. This API uses a promise to return the result.
+Obtains the downlink data traffic of the specified socket. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -711,7 +738,7 @@ import { statistics } from '@kit.NetworkKit';
 
 let sockfd = 50; // FD of the socket you created.
 statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 }).catch((err: BusinessError) => {
   console.error(JSON.stringify(err));
 });
@@ -721,7 +748,7 @@ statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
 
 getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
-Obtains the uplink data traffic (in bytes) of the specified socket. This API uses an asynchronous callback to return the result.
+Obtains the uplink data traffic of the specified socket. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -752,7 +779,7 @@ import { statistics } from '@kit.NetworkKit';
 let sockfd = 50; // FD of the socket you created.
 statistics.getSockfdTxBytes(sockfd, (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -760,7 +787,7 @@ statistics.getSockfdTxBytes(sockfd, (error: BusinessError, stats: number) => {
 
 getSockfdTxBytes(sockfd: number): Promise\<number\>
 
-Obtains the uplink data traffic (in bytes) of the specified socket. This API uses a promise to return the result.
+Obtains the uplink data traffic of the specified socket. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -795,9 +822,66 @@ import { statistics } from '@kit.NetworkKit';
 
 let sockfd = 50; // FD of the socket you created.
 statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 }).catch((err: BusinessError) => {
   console.error(JSON.stringify(err));
+});
+```
+            
+## statistics.getSelfTrafficStats<sup>22+</sup>
+
+getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
+
+Obtains the traffic statistics of the specified application on the specified network within the specified period. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>- Currently, this API can only obtain the traffic statistics of the cellular and Wi-Fi networks.<br>
+>- This API can only obtain the traffic statistics within 31 days. If the timestamp specified by the parameter is more than 31 days earlier than the current system time, the error code 2103019 is reported.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                    |
+| ------ | ------ | ---- | ---------------------------------------- |
+| networkInfo | [NetworkInfo](#networkinfo22) | Yes  | Network information.|
+
+**Return value**
+
+| Type            | Description                                                        |
+| ---------------- | ------------------------------------------------------------ |
+| Promise\<[NetStatsInfo](#netstatsinfo22)> | Promise used to return the historical traffic statistics of the application.|
+
+**Error codes**
+
+For details about the error codes, see [Traffic Management Error Codes](errorcode-net-statistics.md).
+
+| ID| Error Message                                    |
+| --------- | -------------------------------------------- |
+| 2100001   | Invalid parameter value.                     |
+| 2100002   | Failed to connect to the service.            |
+| 2100003   | System internal error.                       |
+| 2103017   | Failed to read the database.                      |
+| 2103019   | The timestamp in param is invalid.                      |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { connection, statistics } from '@kit.NetworkKit';
+
+let networkInfo: statistics.NetworkInfo = {
+    type: connection.NetBearType.BEARER_CELLULAR,
+    startTime: Math.floor(Date.now() / 1000) - 86400 * 31,
+    endTime: Math.floor(Date.now() / 1000),
+    simId: 1,
+}
+
+statistics.getSelfTrafficStats(networkInfo).then((stats: statistics.NetStatsInfo) => {
+    console.info('getSelfTrafficStats success : ' + JSON.stringify(stats));
+}).catch((err: BusinessError) => {
+    console.error('getSelfTrafficStats error. code: ' + `${err.code}` + ', message: ' + `${err.message}`);
 });
 ```
 
@@ -805,10 +889,36 @@ statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
 
 type NetBearType = connection.NetBearType
 
-Enumerates network types.
+Defines the network type.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 |       Type      |            Description            |
 | ---------------- | --------------------------- |
 | [connection.NetBearType](js-apis-net-connection.md#netbeartype) | Network type.   |
+
+## NetworkInfo<sup>22+</sup>
+
+Defines the network information.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name       | Type                                                  | Read-Only|Optional| Description          |
+|-----------|------------------------------------------------------|----|---|--------------|
+| type      | [NetBearType](#netbeartype12) | No | No|Network type.<br>**Note**: If **type** is set to **cellular**, the **simId** field must be specified.      |
+| startTime | number                                               | No |No| Start timestamp, in seconds.|
+| endTime   | number                                               | No |No|End timestamp, in seconds.|
+| simId     | number                                               | No | Yes|SIM card ID. The default value is the maximum value of the uint32_t type.<br>**Note**: If **type** is set to **cellular**, this field must be specified.  |
+
+## NetStatsInfo<sup>22+</sup>
+
+Defines the historical traffic information.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name     | Type  | Read-Only|Optional| Description                     |
+| --------- | ------ | ---- |---| ------------------------ |
+| rxBytes   | number | No  |No|Downlink traffic, in bytes.|
+| txBytes   | number | No  |No|Uplink traffic, in bytes.|
+| rxPackets | number | No  |No|Number of downlink packets.         |
+| txPackets | number | No  |No|Number of uplink packets.         |

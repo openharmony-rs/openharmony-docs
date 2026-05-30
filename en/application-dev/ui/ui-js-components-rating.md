@@ -1,7 +1,13 @@
-# \<rating> Development
+# rating Development
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
-The **\<rating>** component provides a rating bar used for reviews and ratings. For details, see [rating](../reference/apis-arkui/arkui-js/js-components-basic-rating.md).
+The **\<rating>** component provides a rating bar, commonly used for reviews and ratings. For details, see [rating](../reference/apis-arkui/arkui-js/js-components-basic-rating.md)
 
 
 ## Creating a \<rating> Component
@@ -27,7 +33,7 @@ Create a **\<rating>** component in the .hml file under **pages/index**.
   align-items: center;
   background-color: #F1F3F5;
 }
-rating {
+.rating {
   width: 80%;
   height: 150px;
 }
@@ -60,7 +66,7 @@ Use the **\<rating>** component to set the number of stars in a rating bar and t
   align-items: center;
   background-color: #F1F3F5;
 }
-rating {
+.rating {
   width: 80%;
   height: 150px;
 }
@@ -77,7 +83,7 @@ Use the **\<rating>** component to set the background images when a rating star 
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;;">
+  <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;">
     <rating numstars="5" rating="1" class="myrating" style="width: {{ratewidth}}; height:{{rateheight}};
     star-background: {{backstar}}; star-secondary: {{secstar}};star-foreground: {{forestar}};rtl-flip: true;">
     </rating>
@@ -117,9 +123,9 @@ export default {
 ![en-us_image_0000001178685854](figures/en-us_image_0000001178685854.gif)
 
 > **NOTE**
-> - You must set **star-background**, **star-secondary**, and **star-foreground**. Otherwise, the grey rating star applies, indicating that the image source is incorrectly set.
+> - You must set **star-background**, **star-secondary**, and **star-foreground**. If they are not set, gray rating stars will be displayed, indicating an incorrect image source configuration
 >
-> - The **star-background**, **star-secondary**, and **star-foreground** attributes support only PNG and JPG images in the local path.
+> - These three attributes support only PNG and JPG images from local file paths.
 
 
 ## Binding Events
@@ -145,7 +151,7 @@ Add the **change** event to the **\<rating>** component to display the current r
   align-items: center;
   background-color: #F1F3F5;
 }
-rating {
+.rating {
   width: 80%;
   height: 150px;
 }
@@ -175,7 +181,7 @@ Change the switch status to toggle between the star background images and drag t
 ```html
 <!-- xxx.hml -->
 <div style="width: 100%;height:100%;flex-direction: column;align-items: center;background-color: #F1F3F5;">
-    <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;;">
+    <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;">
         <rating numstars="{{stars}}" rating="{{rate}}" stepsize="{{step}}" onchange="showrating" class="myrating"
                 style="width: {{ratewidth}};height:{{rateheight}};star-background: {{backstar}};star-secondary: {{secstar}};
                         star-foreground: {{forestar}};rtl-flip: true;"></rating>
@@ -205,7 +211,7 @@ Change the switch status to toggle between the star background images and drag t
     width: 500px;
     height: 100px;
 }
-switch{
+.switch{
     font-size: 40px;
 }
 ```
@@ -229,7 +235,7 @@ export default {
     },
     setstar(e) {
         if (e.checked == true) {
-            this.backstar = '/common/love.PNG'
+            this.backstar = '/common/love.png'
             this.secstar = 'common/love.png'
             this.forestar = 'common/love1.png'
         } else {

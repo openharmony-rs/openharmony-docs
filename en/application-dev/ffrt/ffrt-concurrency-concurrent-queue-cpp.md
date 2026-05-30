@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -16,8 +16,9 @@ The FFRT concurrent queue provides the capability of setting the priority and qu
 
 ## Example: Bank Service System
 
-For example, each customer (common customer or VIP customer) submits a service request to the bank service system. The service request of the VIP customer can be processed first.
-The bank system has two windows for handling service requests submitted by customers. You can use the FFRT paradigm to perform the following modeling:
+For example, each customer (common customer or VIP customer) submits a service request to the bank service system. The service request of the VIP customer can be processed first. The bank system has two windows for handling service requests submitted by customers.
+
+You can use the FFRT paradigm to perform the following modeling:
 
 - **Queuing logic**: concurrent queue.
 - **Service window**: concurrency of the concurrent queue, which also equals the number of FFRT Worker threads.
@@ -105,15 +106,15 @@ The main FFRT APIs involved in the preceding example are as follows:
 
 | Name                                                                                                                         | Description        |
 | ----------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| class [task_attr](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#task_attr)   | Task attribute class.|
-| class [queue_attr](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue_attr) | Queue attribute class.|
-| class [queue](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue)           | Queue class.    |
+| class [task_attr](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#task_attr)   | Task attribute class.|
+| class [queue_attr](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue_attr) | Queue attribute class.|
+| class [queue](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue)           | Queue class.    |
 
 > **NOTE**
 >
 > - For details about how to use FFRT C++ APIs, see [Using FFRT C++ APIs](ffrt-development-guideline.md#using-ffrt-c-api-1).
-> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify the header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file to include statements.
+> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file to include statements.
 
 ## Constraints
 
-1. It is recommended that the maximum concurrency of a concurrent queue be within a proper range. If the value is too large, it is meaningless to exceed the number of Worker threads. If the value is too small, the system resource utilization may be low.
+It is recommended that the maximum concurrency of a concurrent queue be within a proper range. If the value is too large, it is meaningless to exceed the number of Worker threads. If the value is too small, the system resource utilization may be low.

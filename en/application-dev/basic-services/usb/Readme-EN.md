@@ -20,4 +20,8 @@
   - [USB Serial Configuration Management](usbSerial/usbSerial-configuration.md)
   - [USB Serial Communication Management](usbSerial/usbSerial-communication.md)
 - [FAQs](faqs-usb.md)
-- [Glossary](usb-glossary.md)
+- [USB Service Glossary](usb-glossary.md)
+<!--Del-->
+- [USB Service Development](usb-guidelines.md)
+- [USB Service Overview](usb-overview.md)
+<!--DelEnd-->

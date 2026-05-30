@@ -4,15 +4,15 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+**CameraInput** defines the camera input object.
+
+It provides camera device information used in [Session](arkts-apis-camera-Session.md).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-CameraInput defines the camera input object.
-
-It provides camera device information used in [Session](arkts-apis-camera-Session.md).
 
 ## Modules to Import
 
@@ -54,7 +54,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to open the camera, error code: ${err.code}.`);
+      console.error(`Failed to open camera, error code: ${err.code}.`);
       return;
     }
     console.info('Callback returned with camera opened.');
@@ -98,7 +98,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open().then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -144,7 +144,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open(true).then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -191,7 +191,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open(0).then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -326,12 +326,188 @@ Unsubscribes from CameraInput error events.
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | type     | string                           | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a CameraInput instance is created. This event is triggered and the result is returned when an error occurs on the camera device. For example, if the camera device is unavailable or a conflict occurs, the error information is returned.|
 | camera   | [CameraDevice](arkts-apis-camera-i.md#cameradevice)    | Yes  | Camera device.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the result. If this parameter is specified, only the corresponding callback will be unregistered (the callback object cannot be an anonymous function); otherwise, all registered callbacks will be unregistered.|
 
 **Example**
 
 ```ts
 function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: camera.CameraDevice): void {
   cameraInput.off('error', camera);
+}
+```
+
+## isPhysicalCameraOrientationVariable<sup>22+</sup>
+
+isPhysicalCameraOrientationVariable(): boolean
+
+Checks whether the physical camera orientation is adjustable in different fold states of the device.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type       | Description                                        |
+| ---------- | -------------------------------------------- |
+| boolean    | Checks whether the physical camera orientation is adjustable in different fold states of the device. **true** if adjustable, **false** otherwise. If the API call fails, undefined is returned.|
+
+**Example**
+
+```ts
+function isPhysicalCameraOrientationVariable(cameraInput: camera.CameraInput): boolean {
+  let isVariable: boolean = cameraInput.isPhysicalCameraOrientationVariable();
+  return isVariable;
+}
+```
+
+## getPhysicalCameraOrientation<sup>22+</sup>
+
+getPhysicalCameraOrientation(): number
+
+Obtains the physical camera orientation in the current fold state of the device.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type       | Description                                        |
+| ---------- | -------------------------------------------- |
+| number    | Physical camera orientation.|
+
+**Example**
+
+```ts
+function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
+  let physicalCameraOrientation: number = cameraInput.getPhysicalCameraOrientation();
+  return physicalCameraOrientation;
+}
+```
+
+## usePhysicalCameraOrientation<sup>22+</sup>
+
+usePhysicalCameraOrientation(isUsed: boolean): void
+
+Enables or disables the use of the physical camera orientation.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type                                        | Mandatory| Description                                              |
+| -------- | ------------------------------------------- | ---- |--------------------------------------------------|
+| isUsed  | boolean         | Yes  | Enables or disables the use of the physical camera orientation. **true** to enable, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID  | Error Message                                     |
+|---------|-------------------------------------------|
+| 7400102 | Operation not allowed.                    |
+| 7400201 | Camera service fatal error.               |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function usePhysicalCameraOrientation(cameraInput: camera.CameraInput, isUsed: boolean): void {
+  try {
+    cameraInput.usePhysicalCameraOrientation(isUsed);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The usePhysicalCameraOrientation call failed. error code: ${err.code}`);
+  }
+}
+```
+
+## on('cameraOcclusionDetection')<sup>23+</sup>
+
+on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDetectionResult\>): void
+
+Subscribes to **CameraInput** occlusion events. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type                                                                                                         | Mandatory| Description                                                                                                    |
+| -------- |-------------------------------------------------------------------------------------------------------------| --- |--------------------------------------------------------------------------------------------------------|
+| type     | string                                                                                                      | Yes  | Event type. The value is fixed at **'cameraOcclusionDetection'**. The event can be listened for when a **CameraInput** instance is created. It is triggered when the occlusion status of the camera lens changes, and the occlusion status is returned.|
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](arkts-apis-camera-i.md#cameraocclusiondetectionresult23)\> | Yes  | Callback used to return the occlusion status.                                                                                   |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, result: camera.CameraOcclusionDetectionResult): void {
+  if (err !== undefined && err.code !== 0) {
+      console.error('cameraOcclusionDetection with errorCode = ' + err.code);
+      return;
+  }
+  if (!result) {
+      console.error(`cameraOcclusionDetection result: undefined`);
+      return;
+  }
+  console.info(`onCameraOcclusionDetection isCameraOccluded: ${result.isCameraOccluded}`);
+  console.info(`onCameraOcclusionDetection isCameraLensDirty: ${result.isCameraLensDirty}`);
+}
+
+function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+  cameraInput.on('cameraOcclusionDetection', callback);
+}
+```
+
+## off('cameraOcclusionDetection')<sup>23+</sup>
+
+off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void
+
+Unsubscribes from **CameraInput** occlusion events. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type                             | Mandatory| Description                                                                                                    |
+| -------- | -------------------------------- | --- |--------------------------------------------------------------------------------------------------------|
+| type     | string                           | Yes  | Event type. The value is fixed at **'cameraOcclusionDetection'**. The event can be listened for when a **CameraInput** instance is created. It is triggered when the occlusion status of the camera lens changes, and the occlusion status is returned.|
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](arkts-apis-camera-i.md#cameraocclusiondetectionresult23)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.                                           |
+
+**Example**
+
+```ts
+function callback(err: BusinessError, result: camera.CameraOcclusionDetectionResult): void {
+  if (err !== undefined && err.code !== 0) {
+      console.error('cameraOcclusionDetection with errorCode = ' + err.code);
+      return;
+  }
+  if (!result) {
+      console.error(`cameraOcclusionDetection result: undefined`);
+      return;
+  }
+  console.info(`onCameraOcclusionDetection isCameraOccluded: ${result.isCameraOccluded}`);
+  console.info(`onCameraOcclusionDetection isCameraLensDirty: ${result.isCameraLensDirty}`);
+}
+
+function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+    cameraInput.off('cameraOcclusionDetection', callback);
+}
+
+function unregisterAllCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+    cameraInput.off('cameraOcclusionDetection');
 }
 ```

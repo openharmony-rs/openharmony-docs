@@ -939,11 +939,11 @@ The WLAN Driver module provides two types of capability interfaces for the upper
 
 - Code repositories:
 
-  **[drivers\_hdf\_core](https://gitee.com/openharmony/drivers_hdf_core)**
+  **[drivers\_hdf\_core](https://gitcode.com/openharmony/drivers_hdf_core)**
 
-  [drivers\_peripheral](https://gitee.com/openharmony/drivers_peripheral)
+  [drivers\_peripheral](https://gitcode.com/openharmony/drivers_peripheral)
 
-  [drivers\_interface](https://gitee.com/openharmony/drivers_interface)
+  [drivers\_interface](https://gitcode.com/openharmony/drivers_interface)
 
 - Code paths:
 

@@ -1,15 +1,15 @@
-# Using hiTraceChain (C/C++)
+# Using HiTraceChain (C/C++)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @qq_437963121-->
-<!--Designer: @MontSaintMichel-->
+<!--Designer: @kutcherzhou1; @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## Available APIs
 
-The APIs for distributed call chain tracing are provided by the HiTraceChain module. For details, see [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md).
+The APIs for distributed call chain tracing are provided by the **HiTraceChain** module. For details, see [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md).
 
 The following table lists the APIs provided by HiTraceChain for implementing the basic distributed tracing functionality. The corresponding APIs are also available in ArkTS.
 
@@ -91,7 +91,9 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
 
 3. In the **entry > src > main > cpp > napi_init.cpp** file, use HiTraceChain to trace multi-thread tasks. The sample code is as follows:
 
-   ```cpp
+   <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    #include <thread>
    
    #include "hilog/log.h"
@@ -114,7 +116,7 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
        OH_HiTrace_ClearId();
        OH_LOG_INFO(LogType::LOG_APP, "Print2, HiTraceChain end");
    }
-
+   
    void Print1(HiTraceId id)
    {
        // Set a HiTraceId for the thread.
@@ -148,7 +150,7 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
        size_t argc = 2;
        napi_value args[2] = {nullptr};
    
-       napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
    
        napi_valuetype valuetype0;
        napi_typeof(env, args[0], &valuetype0);
@@ -200,10 +202,12 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
        napi_module_register(&demoModule);
    }
    ```
-
+   
    In the **entry > src > main > ets > pages > Index.ets** file, call the **Add** method in the button click event. The sample code is as follows:
-
-   ```ts
+   
+   <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import testNapi from 'libentry.so';
    
@@ -212,7 +216,7 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
    @Entry
    @Component
    struct Index {
-     @State message: string = "clickTime=0";
+     @State message: string = 'clickTime=0';
      @State clickTime: number = 0;
    
      build() {
@@ -226,7 +230,7 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
              .fontWeight(FontWeight.Bold)
              .onClick(() => {
                this.clickTime++;
-               this.message = "clickTime=" + this.clickTime;
+               this.message = 'clickTime=' + this.clickTime;
                hilog.info(DOMAIN, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
              })
          }
@@ -236,7 +240,7 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
      }
    }
    ```
-
+   
 4. Click the **Run** button in DevEco Studio to run the project. Then, click **clickTime=0** on the device to trigger the service logic.
 
 5. In the **Log** window of DevEco Studio, view the distributed tracing information.
@@ -257,4 +261,4 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
 
    - The **[chainId spanId parentSpanId]** information added before the HiLog log is **HiTraceId** information. For example, **[a92ab19ae90197d 236699a 2544fdb]** indicates that the trace chain ID (**chainId**) is **a92ab19ae90197d**, the span ID (**spanId**) is **236699a**, and the parent span ID (**parentSpanId**) is **2544fdb**.
    - Transfer the **HiTraceId**, create a **spanId**, and set it to the child thread created by **std::thread**. The HiLog logs of the Print1 and Print2 services running in the child thread also carry the same trace ID **a92ab19ae90197d** as that of the main thread.
-   - After the distributed tracing is ended using **OH_HiTrace_EndChain** or **OH_HiTrace_ClearId**, the HiLog print information does not carry the **HiTraceId** information.
+   - After the distributed tracing is ended using **OH_HiTrace_EndChain()** or **OH_HiTrace_ClearId()**, the HiLog print information does not carry the **HiTraceId** information.

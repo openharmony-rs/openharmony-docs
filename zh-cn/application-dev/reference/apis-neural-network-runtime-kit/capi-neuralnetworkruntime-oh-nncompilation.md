@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NNCompilation OH_NNCompilation
+```
+
 ## 概述
 
 编译器句柄。

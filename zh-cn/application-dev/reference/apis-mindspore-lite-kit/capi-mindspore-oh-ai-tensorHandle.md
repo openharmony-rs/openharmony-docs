@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef void *OH_AI_TensorHandle
+```
+
 ## 概述
 
 指向张量对象句柄。

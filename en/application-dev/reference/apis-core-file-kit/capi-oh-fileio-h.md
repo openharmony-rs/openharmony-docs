@@ -1,8 +1,15 @@
 # oh_fileio.h
 
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @jinqiuheng-->
+
 ## Overview
 
-Defines the native APIs for basic file operations.
+Defines the native APIs used to obtain the location of a file.
 
 **File to include**: <filemanagement/fileio/oh_fileio.h>
 
@@ -26,13 +33,13 @@ Defines the native APIs for basic file operations.
 
 | Name| Description|
 | -- | -- |
-| [FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO_FileLocation *location)](#oh_fileio_getfilelocation) | Obtains the location of a file.|
+| [FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)](#oh_fileio_getfilelocation) | Obtains the location of a file.|
 
 ## Enum Description
 
 ### FileIO_FileLocation
 
-```
+```c
 enum FileIO_FileLocation
 ```
 
@@ -53,8 +60,8 @@ Enumerates the file locations.
 
 ### OH_FileIO_GetFileLocation()
 
-```
-FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO_FileLocation *location)
+```c
+FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)
 ```
 
 **Description**
@@ -62,7 +69,6 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO
 Obtains the location of a file.
 
 **Since**: 12
-
 
 **Parameters**
 

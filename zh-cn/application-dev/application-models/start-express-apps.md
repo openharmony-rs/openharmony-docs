@@ -5,7 +5,7 @@
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
 <!--Tester: @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本章节介绍如何拉起快递类应用扩展面板。
 
@@ -74,7 +74,8 @@ startAbilityByType接口中type字段为express，支持查询快递意图，对
     }
     ```
     
-    效果示例图：    
+    效果示例图：
+        
     ![效果示例图](./figures/start-express-panel.png)
 
 ## 目标方开发步骤

@@ -8,7 +8,7 @@
 
 A SharedArrayBuffer object contains a block of native memory, and its JS object wrapper is allocated in the local heap of the virtual machine. It allows sharing native memory across concurrent instances but requires the use of the Atomics class to access and modify the shared native memory, thereby preventing data races. It is suitable for sharing state or data among multiple concurrent instances. The following figure shows the communication process.
 
-![sharedarraybufer](figures/sharedarraybufer.png)
+![sharedarraybuffer](figures/sharedarraybuffer.png)
 
 
 ## Usage Example

@@ -8,13 +8,13 @@ By default, OpenHarmony provides the power consumption statistics feature. Howev
 
 ### Basic Concepts
 
-Power consumption statistics: When a user uses a device, software and hardware services running on the device report usage events through [HiSysEvent](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-dfx-hisysevent-overview.md). The usage duration of software and hardware can be calculated based on these reported events. Then, the power consumption of the software and hardware can be calculated based on the hardware power consumption benchmarks.
+Power consumption statistics: When a user uses a device, software and hardware services running on the device report usage events through [HiSysEvent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-dfx-hisysevent-overview.md). The usage duration of software and hardware can be calculated based on these reported events. Then, the power consumption of the software and hardware can be calculated based on the hardware power consumption benchmarks.
 
 Power consumption benchmark: baseline power consumption (unit: mA) of the product hardware in various states, for example, the baseline power consumption when the camera is turned on and the baseline power consumption of the CPU at different frequencies.
 
 ### Constraints
 
-The configuration path for power consumption statistics customization is subject to the [configuration policy](https://gitee.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
+The configuration path for power consumption statistics customization is subject to the [configuration policy](https://gitcode.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
 
 ## How to Develop
 
@@ -30,12 +30,12 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ### Getting Started with Development
 
-The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate power consumption statistics customization.
+The following uses [DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate power consumption statistics customization.
 
-1. Create the `battery_statistics` folder in the product directory [/vendor/hihope/rk3568](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568).
+1. Create the `battery_statistics` folder in the product directory [/vendor/hihope/rk3568](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568).
 
 
-2. Create a target folder by referring to the [default folder of power consumption statistics configuration](https://gitee.com/openharmony/powermgr_battery_statistics/tree/master/services/profile), and install it in `//vendor/hihope/rk3568/battery_statistics`. The content is as follows:
+2. Create a target folder by referring to the [default folder of power consumption statistics configuration](https://gitcode.com/openharmony/powermgr_battery_statistics/tree/master/services/profile), and install it in `//vendor/hihope/rk3568/battery_statistics`. The content is as follows:
 
     ```shell
     profile
@@ -43,7 +43,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     └── power_average.json # Configuration file for power consumption statistics, including the hardware power consumption benchmarks
     ```
 
-3. Write the custom `power_average.json` file by referring to the [power_average.json](https://gitee.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/power_average.json) file in the default folder of power consumption statistics configuration. The following table describes the configuration items for power consumption benchmarks.
+3. Write the custom `power_average.json` file by referring to the [power_average.json](https://gitcode.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/power_average.json) file in the default folder of power consumption statistics configuration. The following table describes the configuration items for power consumption benchmarks.
 
     **Table 1** Description of the configuration items for power consumption benchmarks
     | Configuration Item| Hardware Type| Data Type| Description|
@@ -72,7 +72,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
 
     >**NOTE**<br>The hardware type described in the table is the actual hardware name and does not represent the power consumption statistics type. For details about the power consumption statistics type, see [ConsumptionType](../../application-dev/reference/apis-basic-services-kit/js-apis-batteryStatistics-sys.md#consumptiontype).
 
-4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitee.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/BUILD.gn) file in the default folder of power consumption statistics configuration to pack the `power_average.json` file to the `//vendor/etc/profile` directory. The configuration is as follows:
+4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitcode.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/BUILD.gn) file in the default folder of power consumption statistics configuration to pack the `power_average.json` file to the `//vendor/etc/profile` directory. The configuration is as follows:
 
     ```shell
     import("//build/ohos.gni")                  # Reference build/ohos.gni.
@@ -86,7 +86,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     }
     ```
 
-5. Add the build target to `module_list` in [ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
+5. Add the build target to `module_list` in [ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
 
     ```json
     {
@@ -191,11 +191,11 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
 
 6. Check whether the power consumption statistics are calculated according to the custom power consumption benchmark in the `power_average_config` file.
 
-7. You can use the [JS APIs](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.batteryStatistics.d.ts) or [Inner APIs](https://gitee.com/openharmony/powermgr_battery_statistics/blob/master/interfaces/inner_api/include/battery_stats_client.h) provided by the **batterystatistics** module to obtain detailed power consumption information and verify the custom power consumption benchmark.
+7. You can use the [JS APIs](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.batteryStatistics.d.ts) or [Inner APIs](https://gitcode.com/openharmony/powermgr_battery_statistics/blob/master/interfaces/inner_api/include/battery_stats_client.h) provided by the **batterystatistics** module to obtain detailed power consumption information and verify the custom power consumption benchmark.
 
 ## Reference
 
-During development, you can refer to the [default power consumption statistics configuration](https://gitee.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/power_average.json).
+During development, you can refer to the [default power consumption statistics configuration](https://gitcode.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/power_average.json).
 
 Default packing path: /system/etc/profile
 

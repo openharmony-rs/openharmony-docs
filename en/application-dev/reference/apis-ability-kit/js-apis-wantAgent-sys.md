@@ -1,4 +1,12 @@
-# @ohos.wantAgent (WantAgent) (System API)
+# @ohos.wantAgent (WantAgent Module) (System API)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 <!--deprecated_code_no_check-->
 
 The WantAgent module provides APIs for creating and comparing WantAgent objects, and obtaining the user ID and bundle name of a WantAgent object.
@@ -44,9 +52,9 @@ let wantAgent: _WantAgent;
 
 // getWantAgent callback
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgent = data;
+        wantAgent = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
@@ -144,7 +152,7 @@ WantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgent = data;
     if (wantAgent) {        
         WantAgent.getWant(wantAgent).then((data) => {

@@ -4,7 +4,11 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct CameraManager_Callbacks {...} CameraManager_Callbacks
+```
 
 ## Overview
 

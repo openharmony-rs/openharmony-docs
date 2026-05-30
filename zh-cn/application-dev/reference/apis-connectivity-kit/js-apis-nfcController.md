@@ -166,7 +166,7 @@ getNfcState(): [NfcState](#nfcstate)
 
 on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): void
 
-注册NFC开关状态事件，通过Callback方式获取NFC状态的变化通知。
+注册NFC开关状态事件，获取NFC状态的变化通知。使用callback异步回调。
 
 **系统能力：** SystemCapability.Communication.NFC.Core
 
@@ -177,13 +177,13 @@ on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): voi
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"nfcStateChange"字符串。 |
-| callback | Callback&lt;[NfcState](#nfcstate)&gt; | 是 | NFC状态改变通知的回调函数。 |
+| callback | Callback&lt;[NfcState](#nfcstate)&gt; | 是 | 回调函数，返回NFC状态的枚举值。 |
 
 ## nfcController.off('nfcStateChange')
 
 off(type: 'nfcStateChange', callback?: Callback&lt;[NfcState](#nfcstate)&gt;): void
 
-取消NFC开关状态事件的注册，取消后NFC状态变化时，就不会再收到Callback的通知。
+取消NFC开关状态事件的注册，取消后NFC状态变化时，就不会再收到Callback的通知。使用callback异步回调。
 
 **系统能力：** SystemCapability.Communication.NFC.Core
 
@@ -203,7 +203,7 @@ import { nfcController } from '@kit.ConnectivityKit';
 
 // 注册回调以接收nfc状态更改通知
 nfcController.on("nfcStateChange", (nfcState : number)=> {
-  console.log("nfcController on callback nfcState: " + nfcState);
+  console.info("nfcController on callback nfcState: " + nfcState);
 });
 
 // 打开nfc需要权限: ohos.permission.MANAGE_SECURE_SETTINGS（此权限仅系统应用可申请）
@@ -211,12 +211,12 @@ if (!nfcController.isNfcOpen()) {
   // 从api9开始,使用'enableNfc'打开nfc
   try {
     nfcController.enableNfc();
-    console.log("nfcController enableNfc success");
+    console.info("nfcController enableNfc success");
   } catch (businessError) {
     console.error("nfcController enableNfc businessError: " + businessError);
   }
 } else {
-  console.log("nfcController NFC has been opened");
+  console.info("nfcController NFC has been opened");
 }
 
 // 关闭nfc需要权限: ohos.permission.MANAGE_SECURE_SETTINGS（此权限仅系统应用可申请）
@@ -224,12 +224,12 @@ if (nfcController.isNfcOpen()) {
   // 从api9开始,使用'disableNfc'关闭nfc
   try {
     nfcController.disableNfc();
-    console.log("nfcController disableNfc success");
+    console.info("nfcController disableNfc success");
   } catch (businessError) {
     console.error("nfcController disableNfc businessError: " + businessError);
   }
 } else {
-  console.log("nfcController NFC has been closed");
+  console.info("nfcController NFC has been closed");
 }
 
 // 取消注册回调

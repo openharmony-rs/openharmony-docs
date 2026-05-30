@@ -4,7 +4,11 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct ArkWeb_WebMessagePort* ArkWeb_WebMessagePortPtr
+```
 
 
 ## 概述

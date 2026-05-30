@@ -2,14 +2,14 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
-> 当前开发指导使用的接口为[Image](../../reference/apis-image-kit/capi-image.md)模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
-> 开发者可使用[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。这部分API从API 12开始支持，并将持续演进，**推荐开发者使用**。<br>
+> 当前开发指导使用的接口为[Image](../../reference/apis-image-kit/capi-image.md)模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
+> 开发者可使用[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
 > 两套C API不建议同时使用，在部分场景下存在不兼容的问题。
 
 图片接收类，用于获取组件surface id，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。
@@ -134,7 +134,7 @@ EXTERN_C_END
 
 ### Native接口调用
 
-具体接口说明请参考[API文档](../../reference/apis-image-kit/capi-image.md)。
+具体接口说明请参考[Image](../../reference/apis-image-kit/capi-image.md)。
 
 在hello.cpp文件中获取JS的资源对象，并转为Native的资源对象，即可调用Native接口，调用方式示例代码如下：
 
@@ -172,11 +172,10 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    OhosImageSize size;
    OH_Image_Receiver_GetSize(imgReceiver_c, &size);
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "OH_Image_Receiver_GetSize  width: %{public}d, height:%{public}d", size.width, size.height);
-   
-   int32_t ret;
+
    napi_value nextImage;
    // 或调用 OH_Image_Receiver_ReadNextImage(imgReceiver_c, &nextImage);
-   ret = OH_Image_Receiver_ReadLatestImage(imgReceiver_c, &nextImage);
+   OH_Image_Receiver_ReadLatestImage(imgReceiver_c, &nextImage);
    
    ImageNative * nextImage_native = OH_Image_InitImageNative(env, nextImage);
 
@@ -185,12 +184,12 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "OH_Image_Size  width: %{public}d, height:%{public}d", imageSize.width, imageSize.height);
 
    OhosImageComponent imgComponent;
-   ret = OH_Image_GetComponent(nextImage_native, 4, &imgComponent); // 4=jpeg
+   OH_Image_GetComponent(nextImage_native, 4, &imgComponent); // 4=jpeg
    
    uint8_t *img_buffer = imgComponent.byteBuffer;
    
-   ret = OH_Image_Release(nextImage_native);
-   ret = OH_Image_Receiver_Release(imgReceiver_c);
+   OH_Image_Release(nextImage_native);
+   OH_Image_Receiver_Release(imgReceiver_c);
    return nextImage;
 }
 ```

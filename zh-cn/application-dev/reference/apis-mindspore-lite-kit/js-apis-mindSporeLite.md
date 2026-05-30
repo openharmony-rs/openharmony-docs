@@ -27,7 +27,7 @@ import { mindSporeLite } from '@kit.MindSporeLiteKit';
 
 loadModelFromFile(model: string, callback: Callback&lt;Model&gt;): void
 
-从完整路径加载输入模型用于推理。使用callback异步回调。
+从完整路径加载输入模型，用于CPU推理。使用callback异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
@@ -41,9 +41,9 @@ loadModelFromFile(model: string, callback: Callback&lt;Model&gt;): void
 **示例：** 
 
 ```ts
-let modelFile : string = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile, (mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+let modelFile: string = '/path/to/xxx.ms';
+mindSporeLite.loadModelFromFile(modelFile, (mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
     console.error('MS_LITE_ERR: getInputs failed.')
   } else {
@@ -72,9 +72,9 @@ loadModelFromFile(model: string, context: Context, callback: Callback&lt;Model&g
 ```ts
 let context: mindSporeLite.Context = {};
 context.target = ['cpu'];
-let modelFile : string = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile, context, (mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+let modelFile: string = '/path/to/xxx.ms';
+mindSporeLite.loadModelFromFile(modelFile, context, (mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
     console.error('MS_LITE_ERR: getInputs failed.')
   } else {
@@ -107,8 +107,8 @@ loadModelFromFile(model: string, context?: Context): Promise&lt;Model&gt;
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
     console.error('MS_LITE_ERR: getInputs failed.')
   } else {
@@ -120,7 +120,7 @@ mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeL
 
 loadModelFromBuffer(model: ArrayBuffer, callback: Callback&lt;Model&gt;): void
 
-从内存加载输入模型用于推理。使用callback异步回调。
+从内存加载输入模型，用于CPU推理。使用callback异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
@@ -140,15 +140,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((buffer: Uint8Array) => {
-  let modelBuffer = buffer.buffer;
-  mindSporeLite.loadModelFromBuffer(modelBuffer, (mindSporeLiteModel: mindSporeLite.Model) => {
-    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-    console.info('MS_LITE_LOG: ' + modelInputs[0].name);
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((buffer: Uint8Array) => {
+    let modelBuffer = buffer.buffer;
+    mindSporeLite.loadModelFromBuffer(modelBuffer, (mindSporeLiteModel: mindSporeLite.Model) => {
+      let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+      console.info('MS_LITE_LOG: ' + modelInputs[0].name);
+    })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 ## mindSporeLite.loadModelFromBuffer
 
@@ -175,17 +179,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((buffer: Uint8Array) => {
-  let modelBuffer = buffer.buffer;
-  let context: mindSporeLite.Context = {};
-  context.target = ['cpu'];
-  mindSporeLite.loadModelFromBuffer(modelBuffer, context, (mindSporeLiteModel: mindSporeLite.Model) => {
-    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-    console.info('MS_LITE_LOG: ' + modelInputs[0].name);
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((buffer: Uint8Array) => {
+    let modelBuffer = buffer.buffer;
+    let context: mindSporeLite.Context = {};
+    context.target = ['cpu'];
+    mindSporeLite.loadModelFromBuffer(modelBuffer, context, (mindSporeLiteModel: mindSporeLite.Model) => {
+      let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+      console.info('MS_LITE_LOG: ' + modelInputs[0].name);
+    })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 ## mindSporeLite.loadModelFromBuffer
 
@@ -217,21 +225,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((buffer: Uint8Array) => {
-  let modelBuffer = buffer.buffer;
-  mindSporeLite.loadModelFromBuffer(modelBuffer).then((mindSporeLiteModel: mindSporeLite.Model) => {
-    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-    console.info('MS_LITE_LOG: ' + modelInputs[0].name);
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((buffer: Uint8Array) => {
+    let modelBuffer = buffer.buffer;
+    mindSporeLite.loadModelFromBuffer(modelBuffer).then((mindSporeLiteModel: mindSporeLite.Model) => {
+      let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+      console.info('MS_LITE_LOG: ' + modelInputs[0].name);
+    })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 ## mindSporeLite.loadModelFromFd
 
 loadModelFromFd(model: number, callback: Callback&lt;Model&gt;): void
 
-从文件描述符加载输入模型用于推理。使用callback异步回调。
+从文件描述符加载输入模型，用于CPU推理。使用callback异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
@@ -246,10 +258,11 @@ loadModelFromFd(model: number, callback: Callback&lt;Model&gt;): void
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+
 let modelFile = '/path/to/xxx.ms';
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
-mindSporeLite.loadModelFromFd(file.fd, (mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadModelFromFd(file.fd, (mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
     console.error('MS_LITE_ERR: getInputs failed.')
   } else {
@@ -277,12 +290,13 @@ loadModelFromFd(model: number, context: Context, callback: Callback&lt;Model&gt;
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+
 let modelFile = '/path/to/xxx.ms';
-let context : mindSporeLite.Context = {};
+let context: mindSporeLite.Context = {};
 context.target = ['cpu'];
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
-mindSporeLite.loadModelFromFd(file.fd, context, (mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadModelFromFd(file.fd, context, (mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
     console.error('MS_LITE_ERR: getInputs failed.')
   } else {
@@ -315,6 +329,7 @@ loadModelFromFd(model: number, context?: Context): Promise&lt;Model&gt;
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+
 let modelFile = '/path/to/xxx.ms';
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
 mindSporeLite.loadModelFromFd(file.fd).then((mindSporeLiteModel: mindSporeLite.Model) => {
@@ -353,8 +368,8 @@ loadTrainModelFromFile(model: string, trainCfg?: TrainCfg, context?: Context): P
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
-mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
     console.error('MS_LITE_ERR: getInputs failed.')
   } else {
@@ -394,14 +409,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((buffer: Uint8Array) => {
-  let modelBuffer = buffer.buffer;
-  mindSporeLite.loadTrainModelFromBuffer(modelBuffer).then((mindSporeLiteModel: mindSporeLite.Model) => {
-    console.info("MSLITE trainMode: ", mindSporeLiteModel.trainMode);
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((buffer: Uint8Array) => {
+    let modelBuffer = buffer.buffer;
+    mindSporeLite.loadTrainModelFromBuffer(modelBuffer).then((mindSporeLiteModel: mindSporeLite.Model) => {
+      console.info("MSLITE trainMode: ", mindSporeLiteModel.trainMode);
+    })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 
 ## mindSporeLite.loadTrainModelFromFd<sup>12+</sup>
@@ -430,6 +449,7 @@ loadTrainModelFromFd(model: number, trainCfg?: TrainCfg, context?: Context): Pro
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+
 let modelFile = '/path/to/xxx.ms';
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
 mindSporeLite.loadTrainModelFromFd(file.fd).then((mindSporeLiteModel: mindSporeLite.Model) => {
@@ -464,8 +484,6 @@ if (allDevices == null) {
 
 定义运行环境的配置信息。
 
-### 属性
-
 **系统能力：** SystemCapability.AI.MindSporeLite
 
 
@@ -485,8 +503,6 @@ context.target = ['cpu','nnrt'];
 ## CpuDevice
 
 CPU后端设备选项。
-
-### 属性
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
@@ -526,8 +542,6 @@ context.cpu.threadAffinityCoreList = [0, 1, 2];
 ## NNRTDevice
 
 Neural Network Runtime表示神经网络运行时，简称NNRt。作为中间桥梁，连通上层 AI 推理框架和底层加速芯片，实现 AI 模型的跨芯片推理计算。MindSpore Lite 可配置NNRt后端。
-
-### 属性
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
@@ -569,14 +583,12 @@ NNRt推理任务优先级枚举。
 
 定义NNRt设备的扩展信息。
 
-### 属性
-
 **系统能力：** SystemCapability.AI.MindSporeLite
 
 | 名称                | 类型        | 只读 | 可选 | 说明             |
 | ------------------- | ----------- | ---- | ---- | ---------------- |
-| name<sup>12+</sup>  | string      | 否   | 否   | 扩展名称。       |
-| value<sup>12+</sup> | ArrayBuffer | 否   | 否   | 包含扩展的内存。 |
+| name  | string      | 否   | 否   | 扩展名称。       |
+| value | ArrayBuffer | 否   | 否   | 包含扩展的内存。 |
 
 ## NNRTDeviceDescription<sup>12+</sup>
 
@@ -691,14 +703,12 @@ NNRt设备类型枚举。
 
 端侧训练相关参数的配置文件。
 
-### 属性
-
 **系统能力：** SystemCapability.AI.MindSporeLite
 
 | 名称                            | 类型                                      | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| lossName<sup>12+</sup>          | string[]                                  | 否   | 是   | 损失函数的名称列表。默认值为["loss_fct", "_loss_fn", "SigmoidCrossEntropy"]。 |
-| optimizationLevel<sup>12+</sup> | [OptimizationLevel](#optimizationlevel12) | 否   | 是   | 端侧训练的网络优化等级。默认值为O0。                         |
+| lossName         | string[]                                  | 否   | 是   | 损失函数的名称列表。默认值为["loss_fct", "_loss_fn", "SigmoidCrossEntropy"]。 |
+| optimizationLevel | [OptimizationLevel](#optimizationlevel12) | 否   | 是   | 端侧训练的网络优化等级。默认值为O0。                         |
 
 **示例：** 
 
@@ -767,8 +777,8 @@ getInputs(): MSTensor[]
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
     console.error('MS_LITE_ERR: getInputs failed.')
   } else {
@@ -800,22 +810,26 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(inputName).then(async (buffer : Uint8Array) => {
-  let inputBuffer = buffer.buffer;
-  let modelFile : string = '/path/to/xxx.ms';
-  let mindSporeLiteModel : mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(inputName)
+  .then(async (buffer: Uint8Array) => {
+    let inputBuffer = buffer.buffer;
+    let modelFile: string = '/path/to/xxx.ms';
+    let mindSporeLiteModel: mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
+    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
 
-  modelInputs[0].setData(inputBuffer);
-  mindSporeLiteModel.predict(modelInputs, (mindSporeLiteTensor : mindSporeLite.MSTensor[]) => {
-    let output = new Float32Array(mindSporeLiteTensor[0].getData());
-    for (let i = 0; i < output.length; i++) {
-      console.info('MS_LITE_LOG: ' + output[i].toString());
-    }
+    modelInputs[0].setData(inputBuffer);
+    mindSporeLiteModel.predict(modelInputs, (mindSporeLiteTensor: mindSporeLite.MSTensor[]) => {
+      let output = new Float32Array(mindSporeLiteTensor[0].getData());
+      for (let i = 0; i < output.length; i++) {
+        console.info('MS_LITE_LOG: ' + output[i].toString());
+      }
+    })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 ### predict
 
@@ -846,21 +860,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(inputName).then(async (buffer : Uint8Array) => {
-  let inputBuffer = buffer.buffer;
-  let modelFile = '/path/to/xxx.ms';
-  let mindSporeLiteModel : mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  modelInputs[0].setData(inputBuffer);
-  mindSporeLiteModel.predict(modelInputs).then((mindSporeLiteTensor : mindSporeLite.MSTensor[]) => {
-    let output = new Float32Array(mindSporeLiteTensor[0].getData());
-    for (let i = 0; i < output.length; i++) {
-      console.info(output[i].toString());
-    }
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(inputName)
+  .then(async (buffer: Uint8Array) => {
+    let inputBuffer = buffer.buffer;
+    let modelFile = '/path/to/xxx.ms';
+    let mindSporeLiteModel: mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
+    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+    modelInputs[0].setData(inputBuffer);
+    mindSporeLiteModel.predict(modelInputs).then((mindSporeLiteTensor: mindSporeLite.MSTensor[]) => {
+      let output = new Float32Array(mindSporeLiteTensor[0].getData());
+      for (let i = 0; i < output.length; i++) {
+        console.info(output[i].toString());
+      }
+    })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 
 ### resize
@@ -888,9 +906,9 @@ resize(inputs: MSTensor[], dims: Array&lt;Array&lt;number&gt;&gt;): boolean
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  let new_dim = new Array([1,32,32,1]);
+mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+  let new_dim = new Array([1, 32, 32, 1]);
   mindSporeLiteModel.resize(modelInputs, new_dim);
 })
 ```
@@ -952,22 +970,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((modelBuffer : Uint8Array) => {
-  mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0)).then((mindSporeLiteModel: mindSporeLite.Model) => {
-    mindSporeLiteModel.trainMode = true;
-    const weights = mindSporeLiteModel.getWeights();
-    for (let i = 0; i < weights.length; i++) {
-      let printStr = weights[i].name + ", ";
-      printStr += weights[i].shape + ", ";
-      printStr += weights[i].dtype + ", ";
-      printStr += weights[i].dataSize + ", ";
-      printStr += weights[i].getData();
-      console.info("MS_LITE weights: ", printStr);
-    }
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((modelBuffer: Uint8Array) => {
+    mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0))
+      .then((mindSporeLiteModel: mindSporeLite.Model) => {
+        mindSporeLiteModel.trainMode = true;
+        const weights = mindSporeLiteModel.getWeights();
+        for (let i = 0; i < weights.length; i++) {
+          let printStr = weights[i].name + ", ";
+          printStr += weights[i].shape + ", ";
+          printStr += weights[i].dtype + ", ";
+          printStr += weights[i].dataSize + ", ";
+          printStr += weights[i].getData();
+          console.info("MS_LITE weights: ", printStr);
+        }
+      })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 
 ### updateWeights<sup>12+</sup>
@@ -999,18 +1022,23 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((modelBuffer : Uint8Array) => {
-  mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0)).then((mindSporeLiteModel: mindSporeLite.Model) => {
-    mindSporeLiteModel.trainMode = true;
-    const weights = mindSporeLiteModel.getWeights();
-    let ret = mindSporeLiteModel.updateWeights(weights);
-    if (ret == false) {
-      console.error('MS_LITE_LOG: updateWeights failed.')
-    }
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((modelBuffer: Uint8Array) => {
+    mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0))
+      .then((mindSporeLiteModel: mindSporeLite.Model) => {
+        mindSporeLiteModel.trainMode = true;
+        const weights = mindSporeLiteModel.getWeights();
+        let ret = mindSporeLiteModel.updateWeights(weights);
+        if (ret == false) {
+          console.error('MS_LITE_LOG: updateWeights failed.')
+        }
+      })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 
 ### setupVirtualBatch<sup>12+</sup>
@@ -1044,17 +1072,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((modelBuffer : Uint8Array) => {
-  mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0)).then((mindSporeLiteModel: mindSporeLite.Model) => {
-    mindSporeLiteModel.trainMode = true;
-    let ret = mindSporeLiteModel.setupVirtualBatch(2,-1,-1);
-    if (ret == false) {
-      console.error('MS_LITE setupVirtualBatch failed.')
-    }
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((modelBuffer: Uint8Array) => {
+    mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0))
+      .then((mindSporeLiteModel: mindSporeLite.Model) => {
+        mindSporeLiteModel.trainMode = true;
+        let ret = mindSporeLiteModel.setupVirtualBatch(2, -1, -1);
+        if (ret == false) {
+          console.error('MS_LITE setupVirtualBatch failed.')
+        }
+      })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 
 ### exportModel<sup>12+</sup>
@@ -1156,8 +1189,8 @@ mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSp
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   console.info(modelInputs[0].name);
   console.info(modelInputs[0].shape.toString());
   console.info(modelInputs[0].elementNum.toString());
@@ -1190,21 +1223,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(inputName).then(async (buffer : Uint8Array) => {
-  let inputBuffer = buffer.buffer;
-  let modelFile = '/path/to/xxx.ms';
-  let mindSporeLiteModel : mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  modelInputs[0].setData(inputBuffer);
-  mindSporeLiteModel.predict(modelInputs).then((mindSporeLiteTensor : mindSporeLite.MSTensor[]) => {
-    let output = new Float32Array(mindSporeLiteTensor[0].getData());
-    for (let i = 0; i < output.length; i++) {
-      console.info(output[i].toString());
-    }
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(inputName)
+  .then(async (buffer: Uint8Array) => {
+    let inputBuffer = buffer.buffer;
+    let modelFile = '/path/to/xxx.ms';
+    let mindSporeLiteModel: mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
+    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+    modelInputs[0].setData(inputBuffer);
+    mindSporeLiteModel.predict(modelInputs).then((mindSporeLiteTensor: mindSporeLite.MSTensor[]) => {
+      let output = new Float32Array(mindSporeLiteTensor[0].getData());
+      for (let i = 0; i < output.length; i++) {
+        console.info(output[i].toString());
+      }
+    })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 
 ### setData
@@ -1230,15 +1267,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(inputName).then(async (buffer : Uint8Array) => {
-  let inputBuffer = buffer.buffer;
-  let modelFile = '/path/to/xxx.ms';
-  let mindSporeLiteModel : mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  modelInputs[0].setData(inputBuffer);
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(inputName)
+  .then(async (buffer: Uint8Array) => {
+    let inputBuffer = buffer.buffer;
+    let modelFile = '/path/to/xxx.ms';
+    let mindSporeLiteModel: mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
+    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+    modelInputs[0].setData(inputBuffer);
+  })
+  .catch((error: BusinessError) => {
+    console.error("getRawFileContent promise error is " + error);
+  });
 ```
 
 ## DataType

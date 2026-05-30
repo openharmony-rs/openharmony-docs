@@ -4,7 +4,7 @@
 <!--Owner: @zhang-yinglie-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Since API version 9, the **Web** component supports the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class and [onGeolocationShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#ongeolocationshow) method for managing web page location permissions. For details, see <!--RP1-->[Privacy Protection](../../device-dev/security/security-privacy-protection.md)<!--RP1End-->.
 
@@ -13,7 +13,7 @@ The **Web** component determines whether to grant the frontend page permission b
 ## Required Permissions
 To obtain the location, you need to configure the location permission in **module.json5**. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-   ```
+   ```json
    "requestPermissions":[
       {
         "name" : "ohos.permission.LOCATION" // Precise location
@@ -27,7 +27,7 @@ To obtain the location, you need to configure the location permission in **modul
     ]
    ```
 
-## Requesting Location Permission
+## Requesting Location Permissions
 In the following example, when a user clicks the **Get Location** button on the frontend page, the **Web** component notifies the application of the location permission request in a dialog box.
 
 
@@ -43,7 +43,7 @@ In the following example, when a user clicks the **Get Location** button on the 
   </head>
   <body>
       <p id="locationInfo">Location information</p>
-      <button onclick="getLocation()">Get Location</button>
+      <button onclick="getLocation()">Obtain Location</button>
 
       <script>
           var locationInfo=document.getElementById("locationInfo");
@@ -103,7 +103,7 @@ In the following example, when a user clicks the **Get Location** button on the 
             // The location permission request is notified only to the current Web component. Other Web components in the application are not affected.
             this.uiContext.showAlertDialog({
               title: 'Location Permission',
-              message:'Grant access to the device location?',
+              message: 'Grant access to the device location?',
               primaryButton: {
                 value: 'cancel',
                 action: () => {
@@ -139,7 +139,7 @@ In the following example, when a user clicks the **Get Location** button on the 
   ```
 
 ## Managing Location Permissions
-The Web component provides the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class for managing web page location permissions, including [allowgeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation) for adding a location permission, [getaccessiblegeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation) for viewing location permissions, and [deleteallgeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deleteallgeolocation) for deleting a location permission.  
+The **Web** component provides the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class for managing web page location permissions, including [allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation) for adding a location permission, [getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation) for viewing location permissions, and [deleteAllGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deleteallgeolocation) for deleting a location permission.  
 
 
 ```ts

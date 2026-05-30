@@ -1,5 +1,12 @@
 # Using App Linking for Application Redirection
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## Overview
 
 In App Linking, the system directs users to specific content in the target application based on the passed-in URI (HTTPS link). Unlike [Deep Linking](deep-linking-startup.md), users can directly access the content regardless of whether the target application is installed.
@@ -41,15 +48,17 @@ Configure the [module.json5 file](../quick-start/module-configuration-file.md) o
 > By default, the **skills** field contains a skill object, which is used to identify the application entry. Application redirection links should not be configured in this object. Instead, separate skill objects should be used. If there are multiple redirection scenarios, create different skill objects under **skills**. Otherwise, the configuration does not take effect.
 
 
-For example, the configuration below declares that the application is associated with the domain name www.example.com.
+For example, the configuration below declares that the application is associated with the domain name **www.example.com**.
 
-```json
+<!-- @[app_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
       {
-        // ...
+        // ···
         "skills": [
           {
             "entities": [
@@ -79,15 +88,16 @@ For example, the configuration below declares that the application is associated
               }
             ],
             // domainVerify must be set to true.
-           "domainVerify": true
+            "domainVerify": true
           } // Add a skill object for redirection. If there are multiple redirection scenarios, create multiple skill objects.
         ]
-      }
-    ]
+      },
+    // ···
+    ],
+    // ···
   }
 }
 ```
-
 
 ### Associating the Application on the Developer Website
 
@@ -109,15 +119,15 @@ Perform the following operations on the developer website to associate the appli
    }
    ```
 
-   **app-identifer** is the unique identifier allocated to an application during application signing. It is also the value of the **app-identifer** field declared in the [HarmonyAppProvision configuration file](../security/app-provision-structure.md).
+   **app-identifier** is the unique identifier allocated to an application during application signing. It is also the value of the **app-identifier** field declared in the [HarmonyAppProvision configuration file](../security/app-provision-structure.md).
 
 1. Place the domain name configuration file in a fixed directory on the DNS.
-   
-   The fixed directory is as follows:
 
+   The fixed directory is as follows:
    > https://*your.domain.name*/.well-known/applinking.json
 
    For example, if the domain name is www.example.com, place the **applinking.json** file in the following directory:
+
    `https://www.example.com/.well-known/applinking.json`
 
 
@@ -125,22 +135,24 @@ Perform the following operations on the developer website to associate the appli
 
 Add code to the **onCreate()** or **onNewWant()** lifecycle callback of the ability (such as EntryAbility) of the application to handle the passed-in link.
 
-```ts
+<!-- @[applink_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/entryability/AppLinkEntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
 
-export default class EntryAbility extends UIAbility {
+export default class AppLinkEntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // Obtain the input link information from want.
     // For example, the input URL is https://www.example.com/programs?action=showall.
-    let uri = want?.uri 
+    let uri = want?.uri;
     if (uri) {
       // Parse the query parameter from the link. You can perform subsequent processing based on service requirements.
       let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action')
+      let action = urlObject.params.get('action');
       // For example, if action is set to showall, all programs are displayed.
-      if (action === "showall") {
-         // ...
+      if (action === 'showall') {
+        // ...
       }
     }
   }
@@ -154,18 +166,24 @@ The caller application passes in the link of the target application through the 
 The **openLink** API provides two methods for starting the target application.
 
   - Method 1: Open the application only in App Linking mode.
-    
-    In this mode, **appLinkingOnly** is set to **true**. If a matching application is found, that application is directly opened. If no application matches, an exception is thrown.
+
+     In this mode, **appLinkingOnly** is set to **true**. If a matching application is found, that application is directly opened. If no application matches, an exception is thrown.
 
   - Method 2: Open the application preferentially in App Linking mode.
 
-    In this mode, **appLinkingOnly** is set to **false** or uses the default value. App Linking is preferentially used to start the target application. If a matching application is found, that application is directly opened. If no application matches, the system attempts to open the application in Deep Linking mode.
+     In this mode, **appLinkingOnly** is set to **false** or uses the default value. App Linking is preferentially used to start the target application. If a matching application is found, that application is directly opened. If no application matches, the system attempts to open the application in Deep Linking mode.
 
 This section describes method 1, in order to check whether the App Linking configuration is correct. The following is an example.
 
-```ts
-import common from '@ohos.app.ability.common';
-import { BusinessError } from '@ohos.base';
+<!-- @[applink_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER = 0xF811;
+const TAG = '[Sample_AppLinking]';
 
 @Entry
 @Component
@@ -177,19 +195,20 @@ struct Index {
       .margin({ bottom: '12vp' })
       .onClick(() => {
         let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let link: string = "https://www.example.com/programs?action=showall";
+        let link: string = 'https://www.example.com/programs?action=showall'; // Use the actual application link.
         // Open the application only in App Linking mode.
         context.openLink(link, { appLinkingOnly: true })
           .then(() => {
-            console.info('openlink success.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'openlink success.');
           })
           .catch((error: BusinessError) => {
-            console.error(`openlink failed. error:${JSON.stringify(error)}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `openlink failed. error:${JSON.stringify(error)}`);
           });
       })
   }
 }
 ```
+
 
 If the target application is started, the App Linking configuration of the target application is correct.
 

@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @hongjin-li_admin-->
-<!--Designer: @JerryH1011-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
@@ -17,6 +17,17 @@
 ```ts
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
+
+## DataType
+
+枚举，指定锁屏下访问的敏感数据类型。
+
+ **系统能力：** SystemCapability.Security.ScreenLockFileManager
+
+| 名称       | 值         | 说明           |
+| ---------- | ---------- | -------------- |
+| MEDIA_DATA | 0x00000001 | 媒体类型数据。 |
+| ALL_DATA   | 0xffffffff | 所有敏感加密数据。     |
 
 ## AccessStatus
 
@@ -51,7 +62,7 @@ import { screenLockFileManager } from '@kit.AbilityKit';
 |-----------------|----|----|
 | KEY_NOT_EXIST |  -2 | 应用未开启锁屏敏感数据保护功能。 |
 | KEY_RELEASED |  -1 | 锁屏敏感数据访问权限已释放。 |
-| KEY_EXIST |  0  |  应用可以访问锁屏敏感数据。  |
+| KEY_EXIST |  0  |  当前应用已获得锁屏状态下访问敏感数据的权限，可正常获取相关数据。  |
 
 ## screenLockFileManager.acquireAccess
 
@@ -69,7 +80,7 @@ acquireAccess(): AccessStatus
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.screenLockFileManager错误码](errorcode-screenLockFileManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -113,7 +124,7 @@ releaseAccess(): ReleaseStatus
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.screenLockFileManager错误码](errorcode-screenLockFileManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -157,7 +168,7 @@ queryAppKeyState(): KeyStatus
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.screenLockFileManager错误码](errorcode-screenLockFileManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |

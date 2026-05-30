@@ -1,5 +1,12 @@
 # @ohos.customization.customConfig (定制配置)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @liule_123-->
+<!--Designer: @sunshine_1984-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @fang-jinxu-->
+
 本模块接口为应用提供定制配置的获取能力，如渠道号等。
 
 >  **说明：**
@@ -16,11 +23,11 @@ import { customConfig } from '@kit.BasicServicesKit';
 
 getChannelId(): string
 
-根据应用的BundleName获取渠道号。
+获取应用的预装渠道号。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Customization.CustomConfig
+**系统能力：**SystemCapability.Customization.CustomConfig
 
 **返回值：**
 
@@ -31,6 +38,8 @@ getChannelId(): string
 **示例：**
 
   ```ts
-    let channelId: string = customConfig.getChannelId();
-    console.log('app channelId is ' + channelId);
+  import { customConfig } from '@kit.BasicServicesKit';
+
+  let channelId: string = customConfig.getChannelId();
+  console.info('app channelId is ' + channelId);
   ```

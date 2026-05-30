@@ -5,11 +5,11 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用冻屏事件。接口的详细使用说明（参数限制、取值范围等）请参考[HiAppEvent C API文档](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
+本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用冻屏事件。接口的详细使用说明（参数限制、取值范围等）请参考[hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
 
 ## 接口说明
 
@@ -22,9 +22,11 @@
 
 ### 添加事件观察者
 
-以实现对用户点击按钮触发应用无响应场景生成的应用冻屏事件订阅为例，说明开发步骤。
+以订阅应用冻屏事件为例，说明开发步骤。
 
-1. 新建Native C++工程，并将jsoncpp导入到新建工程内，目录结构如下。
+1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
+
+2. 新建Native C++工程，并将jsoncpp导入到新建工程内，目录结构如下。
 
    ```yml
    entry:
@@ -47,7 +49,7 @@
              - Index.ets
    ```
 
-2. 编辑“CMakeLists.txt”文件，添加源文件及动态库。
+3. 编辑“CMakeLists.txt”文件，添加源文件及动态库。
 
    ```cmake
    # 新增jsoncpp.cpp(解析订阅事件中的json字符串)源文件
@@ -56,7 +58,7 @@
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    ```
 
-3. 编辑“napi_init.cpp”文件，导入依赖的文件，并定义LOG_TAG。
+4. 编辑“napi_init.cpp”文件，导入依赖的文件，并定义LOG_TAG。
 
    ```c++
    #include "napi/native_api.h"
@@ -68,14 +70,14 @@
    #define LOG_TAG "testTag"
    ```
 
-4. 订阅系统事件。
+5. 订阅系统事件。
 
    - onReceive类型观察者
 
       编辑“napi_init.cpp”文件，定义onReceive类型观察者相关方法：
 
       ```c++
-      //定义一变量，用来缓存创建的观察者的指针。
+      // 定义一个变量，用来缓存创建的观察者的指针。
       static HiAppEvent_Watcher *systemEventWatcher; 
       
       static void OnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen) {
@@ -92,6 +94,7 @@
                       if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
                           auto time = params["time"].asInt64();
                           auto foreground = params["foreground"].asBool();
+                          auto appRunningUniqueId = params["app_running_unique_id"].asString();
                           auto bundleVersion = params["bundle_version"].asString();
                           auto bundleName = params["bundle_name"].asString();
                           auto processName = params["process_name"].asString();
@@ -108,8 +111,10 @@
                           auto memory = writer.write(params["memory"]);
                           auto externalLog = writer.write(params["external_log"]);
                           auto logOverLimit = params["log_over_limit"].asBool();
+                          auto externalCallbackLog = params["external_callback_log"].asString();
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s", appRunningUniqueId.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s", bundleName.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_name=%{public}s", processName.c_str());
@@ -126,6 +131,7 @@
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s", externalCallbackLog.c_str());
                       }
                   }
               }
@@ -139,7 +145,7 @@
           const char *names[] = {EVENT_APP_FREEZE};
           // 开发者订阅感兴趣的事件，此处订阅了系统事件。
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive回调。
+          // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive回调。
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcher);
@@ -152,7 +158,7 @@
       编辑“napi_init.cpp”文件，定义OnTrigger类型观察者相关方法：
 
       ```c++
-      //定义一变量，用来缓存创建的观察者的指针。
+      // 定义一个变量，用来缓存创建的观察者的指针。
       static HiAppEvent_Watcher *systemEventWatcher;
       
       // 开发者可以自行实现获取已监听到事件的回调函数，其中events指针指向内容仅在该函数内有效。
@@ -171,6 +177,7 @@
                   if (domain ==  DOMAIN_OS && name == EVENT_APP_FREEZE) {
                       auto time = eventInfo["time"].asInt64();
                       auto foreground = eventInfo["foreground"].asBool();
+                      auto appRunningUniqueId = eventInfo["app_running_unique_id"].asString();
                       auto bundleVersion = eventInfo["bundle_version"].asString();
                       auto bundleName = eventInfo["bundle_name"].asString();
                       auto processName = eventInfo["process_name"].asString();
@@ -184,11 +191,14 @@
                       auto handleSize6s =  eventInfo["event_handler_size_6s"].asString();
                       auto peerBindSize =  eventInfo["peer_binder"].size();
                       auto threadSize =  eventInfo["threads"].size();
-                       auto memory =  writer.write(eventInfo["memory"]);
+                      auto memory =  writer.write(eventInfo["memory"]);
                       auto externalLog = writer.write(eventInfo["external_log"]);
                       auto logOverLimit = eventInfo["log_over_limit"].asBool();
+                      auto process_life_time = eventInfo["process_life_time"].asString();
+                      auto externalCallbackLog = params["external_callback_log"].asString();
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s", appRunningUniqueId.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s", bundleName.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_name=%{public}s", processName.c_str());
@@ -205,6 +215,8 @@
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_life_time=%{public}s", process_life_time.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s", externalCallbackLog.c_str());
                   }
               }
           }
@@ -233,7 +245,7 @@
       }
       ```
 
-5. 将RegisterWatcher注册为ArkTS接口。
+6. 将RegisterWatcher注册为ArkTS接口。
 
    编辑“napi_init.cpp”文件，将RegisterWatcher注册为ArkTS接口：
 
@@ -254,7 +266,7 @@
    export const registerWatcher: () => void;
    ```
 
-6. 编辑“EntryAbility.ets”文件，在onCreate()函数中新增接口调用。
+7. 编辑“EntryAbility.ets”文件，在onCreate()函数中新增接口调用。
 
    ```typescript
    // 导入依赖模块
@@ -265,7 +277,7 @@
    testNapi.registerWatcher();
    ```
 
-7. 编辑“Index.ets”文件，新增按钮触发卡顿事件。
+8. 编辑“Index.ets”文件，新增按钮触发卡顿事件。
 
    ```typescript
    Button("appFreeze").onClick(() => {
@@ -275,7 +287,7 @@
    })
    ```
 
-8. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“appFreeze”，触发一次应用无响应事件。
+9. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“appFreeze”，触发一次应用无响应事件。
 
 ### 验证观察者是否订阅到应用无响应事件
 
@@ -287,6 +299,7 @@
    HiAppEvent eventInfo.eventType=1
    HiAppEvent eventInfo.params.time=1502049167732
    HiAppEvent eventInfo.params.foreground=1
+   HiAppEvent eventInfo.params.app_running_unique_id=382145346984526931478
    HiAppEvent eventInfo.params.bundle_version=1.0.0
    HiAppEvent eventInfo.params.bundle_name=com.example.myapplication
    HiAppEvent eventInfo.params.process_name=com.example.myapplication
@@ -300,10 +313,14 @@
    HiAppEvent eventInfo.params.event_handler_6s.size=16
    HiAppEvent eventInfo.params.peer_binder.size=0
    HiAppEvent eventInfo.params.threads.size=28
-   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1326520,"sys_free_mem":940588,"sys_total_mem":1992340,"vss":0}
+   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1326520,"sys_free_mem":940588,"sys_total_mem":1992340,"vm_heap_total_size":"9961472","vm_heap_used_size":"7596424","vss":0}
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_FREEZE_1502049185239_1587.log"]
    HiAppEvent eventInfo.params.log_over_limit=0
+   HiAppEvent eventInfo.params.process_life_time=18
+   HiAppEvent eventInfo.params.external_callback_log=THREAD_BLOCK_3S:log3s THREAD_BLOCK_6S:log6s
    ```
+
+2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
 
 ### 移除并销毁事件观察者
 

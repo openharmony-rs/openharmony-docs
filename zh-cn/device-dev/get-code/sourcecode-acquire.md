@@ -7,14 +7,14 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
 
 
 
-开源代码仓库地址：[https://openharmony.gitee.com](https://openharmony.gitee.com)。
+开源代码仓库地址：[https://gitcode.com/openharmony](https://gitcode.com/openharmony)。
 
 
 ## 获取源码概述
 
 本文档将介绍如何获取OpenHarmony源码并说明OpenHarmony的源码目录结构。OpenHarmony的代码以[组件](../hpm-part/hpm-part-about.md)的形式开放，开发者可以通过如下其中一种方式获取：
 
-- **获取方式1**：从码云代码仓库获取。通过repo或git工具从代码仓库中下载，此方式可获取最新代码。
+- **获取方式1**：从gitcode代码仓库获取。通过repo或git工具从代码仓库中下载，此方式可获取最新代码。
 
 - **获取方式2**：通过[DevEco Marketplace](https://repo.harmonyos.com/#/cn/home)网站获取。访问[DevEco Marketplace](https://repo.harmonyos.com/#/cn/home)网站，查找满足需求的开源发行版，直接下载（或者定制后下载），再通过hpm-cli命令工具将所需的组件及工具链下载、安装到本地。
 
@@ -23,7 +23,7 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
 - **获取方式4**：从github代码仓库获取。通过repo或git工具从代码仓库中下载，此方式可获取最新代码。
 
 
-## 获取方式1：从码云仓库获取
+## 获取方式1：从gitcode仓库获取
 
 
 ### 适用场景
@@ -41,11 +41,11 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
 
 ### 前提条件
 
-1. 注册码云gitee帐号。
+1. 注册gitcode帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册gitcode的SSH公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)。
 
-3. 安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitcode.com/gh_mirrors/gi/git-lfs?source_module=search_result_repo)并配置用户信息。
   
    ```shell
    git config --global user.name "yourname"
@@ -53,13 +53,13 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
    git config --global credential.helper store
    ```
 
-4. 执行如下命令安装码云repo工具。
+4. 执行如下命令安装gitcode的repo工具。
 
    下述命令中的安装路径以"~/bin"为例，请用户自行创建所需目录。
   
    ```shell
    mkdir ~/bin
-   curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo 
+   curl https://raw.gitcode.com/gitcode-dev/repo/raw/main/repo-py3 -o ~/bin/repo
    chmod a+x ~/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
@@ -86,10 +86,10 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
 
 - **OpenHarmony主干代码获取**
   
-  方式一（推荐）：通过repo + ssh下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+  方式一（推荐）：通过repo + ssh下载（需注册公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)）。
   
   ```shell
-  repo init -u git@gitee.com:openharmony/manifest.git -b master --no-repo-verify
+  repo init -u git@gitcode.com:openharmony/manifest.git -b master --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
@@ -98,7 +98,7 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
 
   
   ```shell
-  repo init -u https://gitee.com/openharmony/manifest.git -b master --no-repo-verify
+  repo init -u https://gitcode.com/openharmony/manifest.git -b master --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
@@ -199,7 +199,7 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
 | Hi3518解决方案（二进制） | 3.0 | [站点](https://repo.huaweicloud.com/openharmony/os/3.0/hispark_aries.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/3.0/hispark_aries.tar.gz.sha256) | 158.1 MB |
 | Hi3516解决方案-LiteOS（二进制） | 3.0 | [站点](https://repo.huaweicloud.com/openharmony/os/3.0/hispark_taurus.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/3.0/hispark_taurus.tar.gz.sha256) | 248.9 MB |
 | Hi3516解决方案-Linux（二进制） | 3.0 | [站点](https://repo.huaweicloud.com/openharmony/os/3.0/hispark_taurus_linux.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/3.0/hispark_taurus_linux.tar.gz.sha256) | 418.1 MB |
-| RELEASE-NOTES | 3.0 | [站点](https://gitee.com/openharmony/docs/blob/OpenHarmony-3.0-LTS/zh-cn/release-notes/OpenHarmony-v3.0-LTS.md) | - | - |
+| RELEASE-NOTES | 3.0 | [站点](https://gitcode.com/openharmony/docs/blob/OpenHarmony-3.0-LTS/zh-cn/release-notes/OpenHarmony-v3.0-LTS.md) | - | - |
 | **最新发布版本源码** | **版本信息** | **下载站点** | **SHA256校验码** | **软件包容量** |
 | 全量代码（标准、轻量和小型系统）        | 4.1 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/4.1-Release/code-v4.1-Release.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/4.1-Release/code-v4.1-Release.tar.gz.sha256) | 31.6 GB |
 | Hi3861解决方案（二进制）        | 4.1 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/4.1-Release/hispark_pegasus.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/4.1-Release/hispark_pegasus.tar.gz.sha256) | 29.2 MB |

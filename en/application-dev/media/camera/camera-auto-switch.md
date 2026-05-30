@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 This document describes the scenario of automatic front-camera switching on foldable devices. The system selects the appropriate front camera depending on the device's fold state.
 

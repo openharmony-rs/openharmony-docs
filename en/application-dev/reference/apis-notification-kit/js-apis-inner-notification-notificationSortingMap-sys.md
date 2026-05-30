@@ -1,4 +1,10 @@
 # NotificationSortingMap (System API)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationSortingMap** module provides APIs for defining the sorting information of active notifications in all subscribed notifications.
 
@@ -8,7 +14,7 @@ The **NotificationSortingMap** module provides APIs for defining the sorting inf
 >
 > The APIs provided by this module are system APIs.
 
-## Properties
+## NotificationSortingMap
 
 **System capability**: SystemCapability.Notification.Notification
 

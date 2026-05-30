@@ -1,10 +1,10 @@
 # 事件
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 通用事件仅支持[onAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)、[onDisAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)、[onBlur](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur)、[onFocus](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus)、[onDragEnd](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10)、[onDragEnter](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter)、[onDragStart](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)、[onDragMove](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove)、[onDragLeave](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)、[onDrop](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop)、[onHover](../apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover)、[onMouse](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse)、[onKeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent)、[onTouch](../apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)、[onVisibleAreaChange](../apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)。
 
@@ -12,13 +12,13 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## onAlert
 
 onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
-网页触发alert()告警弹窗时触发回调。
+网页触发alert()告警弹窗时触发回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -177,7 +177,7 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
 onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
-网页调用confirm()告警时触发此回调。
+网页调用confirm()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -266,7 +266,7 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
-网页调用prompt()告警时触发此回调。
+网页调用prompt()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -419,6 +419,7 @@ onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
               console.info('getSourceId:' + event.message.getSourceId());
               console.info('getLineNumber:' + event.message.getLineNumber());
               console.info('getMessageLevel:' + event.message.getMessageLevel());
+              console.info('getSource:' + event.message.getSource());
             }
             return false;
           })
@@ -671,6 +672,10 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 通知宿主应用页面开始加载。此方法在每次主frame加载时调用一次，因此对于包含iframes或frameset的页面，onLoadStarted仅针对主frame调用一次。这意味着当嵌入式frame的内容发生变化时，如点击iframe中的链接或Fragment跳转（即跳转到#fragment_id的导航）等，不会调用onLoadStarted。
 
+> **说明：**
+>
+> - 当弹出窗口的文档在加载之前被JavaScript修改时，它将模拟触发onLoadStarted，并将URL设置为空，因为显示当前正在加载的URL可能不安全。onPageBegin将不会被模拟。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -708,6 +713,12 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 通知宿主应用页面已加载完成。此方法仅在主frame加载完成时被调用。对于片段跳转（即导航至#fragment_id），onLoadFinished同样会被触发。
+
+> **说明：**
+>
+> - 片段导航也会触发onLoadFinished，但onPageEnd不会被触发。
+> - 如果主框架在页面完全加载之前被自动重定向，onLoadFinished只会触发一次。onPageEnd会在每次主框架导航时触发。
+> - 当弹出窗口的文档在加载之前被JavaScript修改时，它将模拟触发onLoadStarted，并将URL设置为空，因为显示当前正在加载的URL可能不安全。onPageBegin将不会被模拟。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -790,7 +801,7 @@ onTitleReceive(callback: Callback\<OnTitleReceiveEvent\>)
 
 | 参数名   | 类型   | 必填   | 说明          |
 | ----- | ------ | ---- | ------------- |
-| callback | Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> | 是    | 页面文档标题发生变更时触发 |
+| callback | Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> | 是    | 页面文档标题发生变更时触发。 |
 
 **示例：**
 
@@ -848,6 +859,7 @@ onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\>)
           .onRefreshAccessedHistory((event) => {
             if (event) {
               console.info('url:' + event.url + ' isReload:' + event.isRefreshed);
+              console.info('isMainFrame:' + event.isMainFrame);
             }
           })
       }
@@ -979,7 +991,7 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 
 onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
 
-调用此函数以处理具有“文件”输入类型的HTML表单。如果不调用此函数或返回false，Web组件会提供默认的“选择文件”处理界面。如果返回true，应用可以自定义“选择文件”的响应行为。
+调用此函数以处理具有“文件”输入类型的HTML表单。若不调用此函数或返回false，Web组件会提供默认的“选择文件”处理界面。若返回true，应用可以自定义“选择文件”的响应行为。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1352,12 +1364,15 @@ onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
 onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
 通知用户加载资源时发生SSL错误，只支持主资源。
+
 如果需要支持子资源，请使用[OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)接口。
 
 > **说明：**
 >
 > - 主资源：浏览器加载网页的入口文件，通常是HTML文档。  
 > - 子资源：主资源中引用的依赖文件，由主资源解析过程中遇到特定标签时触发加载。
+> - 应用程序需要调用[handler.handleCancel()](./arkts-basic-components-web-SslErrorHandler.md#handlecancel9)或[handler.handleConfirm()](./arkts-basic-components-web-SslErrorHandler.md#handleconfirm9)处理该回调，如果没有处理该回调则默认取消资源加载。handleConfirm()或者handleCancel()的行为可能会被记录下来，以便为将来的SSL错误做出响应。
+> - 应用程序可以用于显示自定义错误页面或静默记录问题。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1376,7 +1391,7 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
   
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
-      console.info('failed, cert chain data type is not array');
+      console.error('failed, cert chain data type is not array');
       return;
     }
 
@@ -1479,7 +1494,7 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
 
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
-      console.info('failed, cert chain data type is not array');
+      console.error('failed, cert chain data type is not array');
       return;
     }
 
@@ -1567,6 +1582,12 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
 
 通知用户收到SSL客户端证书请求事件。
 
+> **说明：**
+>
+> - Web组件有三种响应方式：[ClientAuthenticationHandler.confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10)（继续）、[ClientAuthenticationHandler.cancel](./arkts-basic-components-web-ClientAuthenticationHandler.md#cancel9)（取消）或[ClientAuthenticationHandler.ignore](./arkts-basic-components-web-ClientAuthenticationHandler.md#ignore9)（忽略）。
+> - 如果调用ClientAuthenticationHandler.confirm或ClientAuthenticationHandler.cancel，ArkWeb会将认证结果存储在内存中（在应用程序的生命周期内），并且不会对相同的主机和端口再次调用onClientAuthenticationRequest()。如果调用onClientAuthenticationRequest.ignore，ArkWeb则不会存储该认证结果。
+> - 需配置"ohos.permission.ACCESS_CERT_MANAGER"权限。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1584,7 +1605,6 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
 import { certificateManager } from '@kit.DeviceCertificateKit';
-import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1606,7 +1626,7 @@ struct Index {
           return;
         }
 
-        //注：badssl.com-client.p12需要替换为实际使用的证书文件
+        // 注：badssl.com-client.p12需要替换为实际使用的证书文件
         let value: Uint8Array = this.context.resourceManager.getRawFileContentSync("badssl.com-client.p12");
         certificateManager.installPrivateCertificate(value, 'badssl.com', "1",
           async (err: BusinessError, data: certificateManager.CMResult) => {
@@ -1631,7 +1651,6 @@ struct Index {
         .onClientAuthenticationRequest((event) => {
           console.info("onClientAuthenticationRequest ");
           event.handler.confirm(this.uri);
-          return true;
         })
         .onSslErrorEventReceive(e => {
           console.info(`onSslErrorEventReceive->${e.error.toString()}`);
@@ -1684,7 +1703,7 @@ struct Index {
     ```
 
 2. 构造 `CertManagerService` 对象以对接证书管理。
-<!--code_no_check-->
+    <!--code_no_check-->
     ```ts
     // CertMgrService.ets
     import { bundleManager, common, Want } from "@kit.AbilityKit";
@@ -1741,12 +1760,66 @@ struct Index {
       }
     }
     ```
-3. 实现双向认证功能。
-<!--code_no_check-->
+3. 将当前Ability的上下文存储到GlobalContext中。
+    <!--code_no_check-->
+    ```ts
+    // EntryAbility.ets
+    import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { window } from '@kit.ArkUI';
+    import { GlobalContext } from '../pages/GlobalContext';
+
+    const DOMAIN = 0x0000;
+
+    export default class EntryAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+          this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+          GlobalContext.getContext().setObject("AbilityContext", this.context);
+        } catch (err) {
+          hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
+        }
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+      }
+
+      onDestroy(): void {
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+      }
+
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        // Main window is created, set main page for this ability
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+        windowStage.loadContent('pages/Index', (err) => {
+          if (err.code) {
+            hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+            return;
+          }
+          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+        });
+      }
+
+      onWindowStageDestroy(): void {
+        // Main window is destroyed, release UI related resources
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+      }
+
+      onForeground(): void {
+        // Ability has brought to foreground
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
+      }
+
+      onBackground(): void {
+        // Ability has back to background
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
+      }
+    }
+    ```
+4. 实现双向认证功能。
+    <!--code_no_check-->
     ```ts
     import { webview } from '@kit.ArkWeb';
     import CertManagerService from './CertMgrService';
-    import { promptAction } from '@kit.ArkUI';
 
     @Entry
     @Component
@@ -1779,7 +1852,6 @@ struct Index {
                 console.info(`grantAppPm, URI==========${result}`);
                 event.handler.confirm(result);
               })
-              return true;
             })
             .onSslErrorEventReceive(e => {
               console.info(`onSslErrorEventReceive->${e.error.toString()}`);
@@ -1803,6 +1875,111 @@ struct Index {
       }
     }
     ```
+
+## onVerifyPin<sup>22+</sup>
+onVerifyPin(callback: OnVerifyPinCallback)
+
+通知用户进行PIN码认证。使用callback异步回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22) | 是 | 当需要用户进行PIN码认证时触发的回调。  |
+
+  **示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  controller: WebviewController = new webview.WebviewController();
+  uiContext : UIContext = this.getUIContext();
+  context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+
+  aboutToAppear(): void {
+    webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE)
+  }
+
+  build() {
+    Column() {
+      Button('加载需要客户端SSL证书的网站')
+        .onClick(() => {
+          this.controller.loadUrl("https://client.badssl.com")
+        })
+      Web({
+        src: "https://www.bing.com/",
+        controller: this.controller,
+      }).domStorageAccess(true)
+        .fileAccess(true)
+        .onPageBegin(event => {
+          console.info("extensions onpagebegin url " + event.url);
+        })
+        .onClientAuthenticationRequest((event) => {
+          // 收到客户端证书请求事件
+          console.info(`onClientAuthenticationRequest`);
+          try {
+            let certTypes: Array<certificateManagerDialog.CertificateType> = [
+              certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
+            ];
+            // 调用证书管理，打开证书选择框
+            certificateManagerDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
+              .then((data: certificateManagerDialog.CertReference) => {
+                console.info(`openAuthorizeDialog request cred auth success`)
+                // 通知web选择的为ukey证书
+                event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
+              }).catch((err: BusinessError) => {
+              console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(err)}`);
+            })
+          } catch (e) {
+            console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(e)}`);
+          }
+        })
+        .onVerifyPin((event) => {
+          // 收到PIN码认证请求事件
+          console.info(`onVerifyPin`);
+          // 调用证书管理，打开PIN码输入框
+          certificateManagerDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
+            .then(() => {
+              // 通知webPIN码认证成功
+              console.info(`onVerifyPin success`);
+              event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
+            }).catch((err: BusinessError) => {
+            // 通知webPIN码认证失败
+            console.info(`onVerifyPin fail`);
+            event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
+          })
+        })
+        .onSslErrorEventReceive(e => {
+          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+        })
+        .onErrorReceive((event) => {
+          if (event) {
+            this.getUIContext().getPromptAction().showToast({
+              message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
+              alignment: Alignment.Center
+            })
+            console.info('getErrorInfo:' + event.error.getErrorInfo());
+            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.info('url:' + event.request.getRequestUrl());
+          }
+        })
+        .onTitleReceive(event  => {
+          console.info("title received " + event.title);
+        })
+
+    }
+  }
+}
+```
 
 ## onPermissionRequest<sup>9+</sup>
 
@@ -1918,7 +2095,7 @@ onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
 
 onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
-长按特定元素（例如图片，链接）或鼠标右键，跳出菜单。
+长按特定元素（例如图片，链接）或鼠标右键，弹出菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1988,6 +2165,15 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
           .height(50)
           .onClick(() => {
             this.result?.copyImage();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '保存图片',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.saveImage();
             this.showMenu = false;
           })
         MenuItem({
@@ -2142,9 +2328,9 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 >
 > 通知的是页面全局滚动位置，局部滚动位置的变化是无法触发此回调。
 >
-> 判断页面是否是全局滚动，在滚动前后打印window.pagYOffset或者window.pagXOffset。
+> 判断页面是否是全局滚动，在滚动前后打印window.pageYOffset或者window.pageXOffset。
 >
-> 如果是全局滚动，window.pagYOffset或者window.pagXOffset的值在滚动前后会有变化，反之没有变化。
+> 如果是全局滚动，window.pageYOffset或者window.pageXOffset的值在滚动前后会有变化，反之没有变化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2152,7 +2338,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> | 是 | 当页面滑动到指定位置时触发。 |
+| callback | Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> | 是 | 当页面滚动到指定位置时触发。 |
 
 **示例：**
 
@@ -2181,7 +2367,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
-通知用户收到地理位置信息获取请求，需配置"ohos.permission.LOCATION"、"ohos.permission.APPROXIMATELY_LOCATION"权限。
+通知用户收到地理位置信息获取请求，需配置"ohos.permission.LOCATION"、"ohos.permission.APPROXIMATELY_LOCATION"权限。使用callback异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2189,7 +2375,7 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | 是 | 请求显示地理位置权限时触发。     |
+| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | 是 | 回调函数，请求显示地理位置权限时触发，返回地理位置信息请求对象。     |
 
 **示例：**
 
@@ -2400,10 +2586,13 @@ onFullScreenExit(callback: () => void)
 onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 使能multiWindowAccess情况下，通知用户新建窗口请求。
+
 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
+
 如果没有创建新窗口，调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口时设置成null，通知Web没有创建新窗口。
 
 新窗口需避免直接覆盖在原Web组件上，且应与主页面以相同形式明确显示其URL（如地址栏）以防止用户混淆。若无法实现可信的URL可视化管理，则需考虑禁止创建新窗口。
+
 需注意：新窗口请求来源无法可靠追溯，可能由第三方iframe发起，应用需默认采取沙箱隔离、限制权限等防御性措施以确保安全。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2493,6 +2682,113 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
   </html>
   ```
 
+## onWindowNewExt<sup>23+</sup>
+
+onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
+
+在启用[multiWindowAccess](./arkts-basic-components-web-attributes.md#multiwindowaccess9)的情况下，通知用户新建窗口请求。
+
+> **说明：**
+>
+> - 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
+>
+> - 若未创建新窗口，调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口并设置成null，通知Web未创建新窗口。
+>
+> - 新窗口需避免直接覆盖在原Web组件上，且应与主页面以相同形式明确显示其URL（如地址栏）以防止用户混淆。若无法确保URL的显示和验证机制可靠，则需考虑禁止创建新窗口。
+>
+> - 新窗口请求来源无法可靠追溯，可能由第三方iframe发起，应用需默认采取沙箱隔离、限制权限等防御性措施以确保安全。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback       | Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23)\>           | 是 | 网页要求用户创建窗口时触发的回调。    |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  // 在同一page页有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+  @CustomDialog
+  struct NewWebViewComp {
+  controller?: CustomDialogController;
+  webviewController1: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: "www.example.com", controller: this.webviewController1 })
+        .javaScriptAccess(true)
+        .multiWindowAccess(false)
+        .onWindowExit(() => {
+          console.info("NewWebViewComp onWindowExit");
+          if (this.controller) {
+            this.controller.close();
+          }
+        })
+      }
+    }
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  dialogController: CustomDialogController | null = null;
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("window.html"), controller: this.controller })
+        .javaScriptAccess(true)
+        // 需要开启multiWindowAccess
+        .multiWindowAccess(true)
+        .allowWindowOpenMethod(true)
+        .onWindowNewExt((event) => {
+          // 以event.navigationPolicy请求的方式打开新窗口
+          console.info("navigationAction: ", event.navigationPolicy)
+          // 以event.windowFeatures中的大小及位置信息创建新窗口
+          console.info("windowFeatures: ", JSON.stringify(event.windowFeatures))
+          if (this.dialogController) {
+            this.dialogController.close();
+          }
+          let popController: webview.WebviewController = new webview.WebviewController();
+          this.dialogController = new CustomDialogController({
+            builder: NewWebViewComp({ webviewController1: popController })
+          })
+          this.dialogController.open();
+          // 将新窗口对应WebviewController返回给Web内核。
+          // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+          // 如果没有创建新窗口，在调用event.handler.setWebController接口时应设置成null，以通知Web没有创建新窗口。
+          event.handler.setWebController(popController);
+        })
+      }
+    }
+  }
+  ```
+
+  ```html
+  <!-- window.html页面代码 -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <a href="#" onclick="openNewWindow('https://www.example.com')">打开新页面</a>
+    <script type="text/javascript">
+        function openNewWindow(url) {
+          window.open(url, 'example', 'left=60,top=80,width=800,height=600');
+          return false;
+        }
+    </script>
+    </body>
+    </html>
+  ```
+
 ## onActivateContent<sup>20+</sup>
 
 onActivateContent(callback: Callback\<void>)
@@ -2535,7 +2831,7 @@ onActivateContent(callback: Callback\<void>)
             }
           })
           .onActivateContent(() => {
-            //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web
+            // 该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web
             console.info("NewWebViewComp onActivateContent")
           })
       }.height("50%")
@@ -2782,7 +3078,7 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean | 是 | 触发的KeyEvent事件。<br>返回值为boolean类型，true表示将该KeyEvent传入Webview内核，false表示不将该KeyEvent传入ArkWeb内核。 |
+| callback | (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean | 是 | 触发的KeyEvent事件。<br>返回值为boolean类型，true表示将该KeyEvent传入Webview内核，false表示不将该KeyEvent传入Webview内核。 |
 
 **示例：**
 
@@ -2935,7 +3231,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | 是 | 网页首次内容绘制回调函数。          |
+| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | 是 | 网页首次内容绘制回调函数。       |
 
 **示例：**
 
@@ -2992,7 +3288,7 @@ onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onFirstMeaningfulPaint((details) => {
-            console.log("onFirstMeaningfulPaint: [navigationStartTime]= " + details.navigationStartTime +
+            console.info("onFirstMeaningfulPaint: [navigationStartTime]= " + details.navigationStartTime +
               ", [firstMeaningfulPaintTime]=" + details.firstMeaningfulPaintTime);
           })
       }
@@ -3047,13 +3343,17 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
+> **说明：**
+>
+> - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在[onInterceptRequest](#oninterceptrequest9)或者通过WebSchemeHandler的[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)中获取。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | 是 | 导航触发时的回调包括iframe导航，在回调中可以选择允许或者取消此次导航。<br>返回值为boolean类型。返回true表示取消此次导航，false表示允许此次导航。<br>返回undefined或null时允许此次导航。 |
+| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | 是 | 导航触发时的回调包括iframe导航，在回调中可以选择允许或者取消此次导航。<br>返回值为boolean类型。返回true表示取消此次导航，false表示允许此次导航。<br>返回undefined或null时为false。 |
 
 **示例：**
 
@@ -3215,6 +3515,7 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 onControllerAttached(callback: () => void)
 
 当Controller成功绑定到Web组件时触发该回调，并且该Controller必须为WebviewController，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。
+
 因该回调调用时网页还未加载，无法在回调中使用有关操作网页的接口，例如[zoomIn](./arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](./arkts-apis-webview-WebviewController.md#zoomout)等，可以使用[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)、[getWebId](./arkts-apis-webview-WebviewController.md#getwebid)等操作网页不相关的接口。
 
 组件生命周期详情可参考[Web组件的生命周期](../../web/web-event-sequence.md)。
@@ -3335,6 +3636,11 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 
 收到网站安全风险检查结果时触发的回调。
 
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
+> - 开启未成年模式，设置网页内容拦截，触发回调。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3349,18 +3655,6 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
-  export enum ThreatType {
-    UNKNOWN = -1,
-    THREAT_ILLEGAL = 0,
-    THREAT_FRAUD = 1,
-    THREAT_RISK = 2,
-    THREAT_WARNING = 3,
-  }
-
-  export class OnSafeBrowsingCheckResultCallback {
-    threatType: ThreatType = ThreatType.UNKNOWN;
-  }
-
   @Entry
   @Component
   struct WebComponent {
@@ -3370,9 +3664,50 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckResult((callback) => {
-            let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
-            console.info("onSafeBrowsingCheckResult: [threatType]= " + json.threatType);
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
+            console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
+          })
+      }
+    }
+  }
+  ```
+
+## onSafeBrowsingCheckFinish<sup>21+</sup>
+
+onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
+
+网站安全风险检查结束时触发的回调。
+
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
+> - 开启未成年模式，设置网页内容拦截，触发回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | 是 | 收到网站安全风险检查结果时触发的回调。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onSafeBrowsingCheckFinish((callback) => {
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
+            console.info("onSafeBrowsingCheckFinish: [threatType]= " + json);
           })
       }
     }
@@ -3391,7 +3726,7 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void | 是 | 同层标签生命周期变化时触发该回调。 |
+| callback       | (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void | 是 | 同层标签生命周期变化时触发该回调。|
 
 **示例：**
 
@@ -3721,6 +4056,10 @@ onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionC
 
 智能防跟踪功能使能时，当追踪者cookie被拦截时触发该回调。
 
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3780,7 +4119,7 @@ onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | 是 | onOverrideUrlLoading的回调。<br>返回值boolean。返回true表示中止加载URL，返回false表示继续在Web中加载URL |
+| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | 是 | onOverrideUrlLoading的回调。<br>返回值boolean。返回true表示中止加载URL，返回false表示继续在Web中加载URL。  |
 
 **示例：**
 
@@ -3972,7 +4311,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
           // 遍历attributes
           let attributeKeys = Object.keys(attributes)
           for (let i = 0; i < attributeKeys.length; i++) {
-            console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
+            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
           }
 
           if (attributes) {
@@ -4457,11 +4796,11 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
               }
             })
             .onNativeEmbedObjectParamChange((event) => {
-              console.log("embed id: " + event.embedId);
+              console.info("embed id: " + event.embedId);
               let paramItems = event.paramItems;
               if (paramItems) {
                 for (let i = 0; i < paramItems.length; ++i) {
-                  console.log("param info: " + JSON.stringify(paramItems[i]));
+                  console.info("param info: " + JSON.stringify(paramItems[i]));
                 }
               }
             })
@@ -4498,7 +4837,11 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 网页加载遇到错误时触发，只有主资源出错才会回调该接口，可以使用该接口自定义错误展示页。
 
-此外，该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)接口启用默认错误页后，才会生效。
+> **说明：**
+>
+> 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)接口启用默认错误页后，才会生效。
+>
+> 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4511,30 +4854,30 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 **示例：**
 
   ```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-  build() {
-    Column() {
-      Web({ src: "www.error-test.com", controller: this.controller })
-       .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true);
-            if (!this.controller.getErrorPageEnabled()) {
-                this.controller.setErrorPageEnabled(true);
-            }
-        })
-        .onOverrideErrorPage(event => {
-              let htmlStr = "<html><h1>error occur : ";
-              htmlStr += event.error.getErrorCode();
-              htmlStr += "</h1></html>";
-              return htmlStr;
-        })
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    build() {
+      Column() {
+        Web({ src: "www.error-test.com", controller: this.controller })
+         .onControllerAttached(() => {
+              this.controller.setErrorPageEnabled(true);
+              if (!this.controller.getErrorPageEnabled()) {
+                  this.controller.setErrorPageEnabled(true);
+              }
+          })
+          .onOverrideErrorPage(event => {
+                let htmlStr = "<html><h1>error occur : ";
+                htmlStr += event.error.getErrorCode();
+                htmlStr += "</h1></html>";
+                return htmlStr;
+          })
+      }
     }
   }
-}
   ```
 
 ## onSslErrorReceive<sup>(deprecated)</sup>
@@ -4579,7 +4922,10 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => boolean)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
-从API version 10开始不再维护，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+
+> **说明：**
+>
+> API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4687,3 +5033,513 @@ onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
     }
   }
   ```
+
+## onDetectedBlankScreen<sup>22+</sup>
+
+onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
+
+Web组件检测到白屏时触发此回调。
+
+> **说明：**
+>
+> - 需配合[blankScreenDetectionConfig](./arkts-basic-components-web-attributes.md#blankscreendetectionconfig22)使用。否则，默认关闭白屏检测功能，不会返回检测到白屏时的回调函数。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | Web组件检测到白屏时的回调函数。 |
+
+**示例：**
+
+  ```ts
+  // onDetectedBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .blankScreenDetectionConfig({
+            enable: true,
+            detectionTiming: [2, 4, 6, 8],
+            contentfulNodesCountThreshold: 4,
+            detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]
+          })
+          .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo)=>{
+            console.info(`Found blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.blankScreenReason}.`);
+            console.info(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+          })
+      }
+    }
+  }
+  ```
+## onRenderExited<sup>(deprecated)</sup>
+
+onRenderExited(callback: (event?: { detail: object }) => boolean)
+
+应用渲染进程因错误或崩溃退出时触发回调。
+
+多个Web组件可能共享单个渲染进程，每个受影响的Web组件都会触发该回调。
+
+应用处理该回调时，可以调用绑定的WebViewController接口来恢复页面。例如[refresh](./arkts-apis-webview-WebviewController.md#refresh)、[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)等。
+
+详情可参考[Web组件的生命周期](../../web/web-event-sequence.md)。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onRenderExited<sup>9+</sup>](#onrenderexited9)代替。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名  | 类型  | 必填  | 说明 |
+| ---------------- | ---------------------------------------- | ---- | ---------------- |
+| callback |(event?: { detail: object }) => boolean | 是    | 渲染过程退出时触发。 |
+
+## onCameraCaptureStateChange<sup>23+</sup>
+
+onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
+
+通知用户当前网页的摄像头状态，摄像头有三个状态，无状态（None），捕获中（Active），暂停中（Paused）。使用callback异步回调。
+
+可以通过startCamera，stopCamera，closeCamera这三个接口来切换摄像头的状态。这三个接口分别对应开启，暂停，停止摄像头功能。示例使用场景详见[startCamera](arkts-apis-webview-WebviewController.md#startcamera12)。
+
+> **说明：**
+>
+> 当前网页正在使用摄像头时，返回在捕获中状态。
+>
+> 当前网页暂停使用摄像头时，返回暂停中状态。
+>
+> 当前网页完全没有使用摄像头时，返回无状态。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| callback  | [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityAccessCtrl, PermissionRequestResult, common } from '@kit.AbilityKit';
+
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    uiContext: UIContext = this.getUIContext();
+
+    aboutToAppear(): void {
+      let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+      atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
+        console.info('data:' + JSON.stringify(data));
+        console.info('data permissions:' + data.permissions);
+        console.info('data authResults:' + data.authResults);
+      })
+    }
+
+    build() {
+      Column() {
+        Button("startCamera").onClick(() => {
+          try {
+            this.controller.startCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("stopCamera").onClick(() => {
+          try {
+            this.controller.stopCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("closeCamera").onClick(() => {
+          try {
+            this.controller.closeCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPermissionRequest((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  }
+                },
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  }
+                },
+                cancel: () => {
+                  event.request.deny();
+                }
+              })
+            }
+          })
+         .onCameraCaptureStateChange((event: CameraCaptureStateChangeInfo) => {
+            console.info("CameraCapture from ", event.originalState, " to ", event.newState);
+         })
+      }
+    }
+  }
+  ```
+
+  加载的html文件
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+   <head>
+     <meta charset="UTF-8">
+   </head>
+   <body>
+     <video id="video" width="400px" height="400px" autoplay="autoplay">
+     </video>
+     <input type="button" title="HTML5摄像头" value="开启摄像头" onclick="getMedia()" />
+     <script>
+       function getMedia() {
+         let constraints = {
+           video: {
+             width: 500,
+             height: 500
+           },
+           audio: true
+         }
+         let video = document.getElementById("video");
+         let promise = navigator.mediaDevices.getUserMedia(constraints);
+         promise.then(function(MediaStream) {
+           video.srcObject = MediaStream;
+           video.play();
+         })
+       }
+     </script>
+   </body>
+  </html>
+  ```
+
+## onMicrophoneCaptureStateChange<sup>23+</sup>
+
+onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
+
+通知用户当前网页中麦克风状态，麦克风有三个状态，未工作（None），捕获中（Active），暂停中（Paused）。使用callback异步回调。
+
+可以通过resumeMicrophone，pauseMicrophone，stopMicrophone这三个接口来切换麦克风的状态。这三个接口功能分别对应解除暂停，暂停，停止麦克风。示例使用场景详见[网页中麦克风的使用](./arkts-apis-webview-WebviewController.md#resumemicrophone23)。
+
+> **说明：**
+>
+> 当前网页正在使用麦克风时，返回捕获中状态；当前网页暂停使用麦克风时，返回暂停中状态；当前网页完全没有使用麦克风时，返回未工作状态。
+>
+> 当前麦克风处于捕获中状态时，设置暂停使用，当前麦克风变为暂停中状态。可通过ArkWeb设置麦克风开始使用状态进行恢复捕捉。
+>
+> 当前麦克风处于捕获中状态时，设置停止使用，当前麦克风停止捕捉，麦克风变为未工作状态。除非重新前端开始捕捉，否则无法恢复。
+>
+> 当前麦克风处于暂停中状态时，设置开始使用，当前麦克风继续捕捉，变为捕获中状态。
+>
+> 当前麦克风处于暂停中状态时，设置停止使用，当前麦克风停止捕捉，变为未工作状态。除非重新前端开始捕捉，否则无法恢复。
+>
+> 当前麦克风处于未工作状态时，设置开始使用以及暂停使用，麦克风状态均不发生变化。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | 是   | 回调函数。当麦克风捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityAccessCtrl, PermissionRequestResult, common } from '@kit.AbilityKit';
+
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    uiContext: UIContext = this.getUIContext();
+
+    aboutToAppear(): void {
+      let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+      atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'], (err: BusinessError, data: PermissionRequestResult) => {
+        console.info('data:' + JSON.stringify(data));
+        console.info('data permissions:' + data.permissions);
+        console.info('data authResults:' + data.authResults);
+      })
+    }
+
+    build() {
+      Column() {
+        Button("resumeMicrophone").onClick(() => {
+          try {
+            this.controller.resumeMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("pauseMicrophone").onClick(() => {
+          try {
+            this.controller.pauseMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("stopMicrophone").onClick(() => {
+          try {
+            this.controller.stopMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPermissionRequest((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  }
+                },
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  }
+                },
+                cancel: () => {
+                  event.request.deny();
+                }
+              })
+            }
+          })
+          .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateChangeInfo) => {
+            console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
+        })
+      }
+    }
+  }    
+  ```
+
+  加载的html文件
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+   <head>
+     <meta charset="UTF-8">
+   </head>
+   <body>
+     <video id="video" width="400px" height="400px" autoplay="autoplay">
+     </video>
+     <input type="button" title="HTML5麦克风" value="开启麦克风" onclick="getMedia()" />
+     <script>
+       function getMedia() {
+         let constraints = {
+           video: {
+             width: 500,
+             height: 500
+           },
+           audio: true
+         }
+         let video = document.getElementById("video");
+         let promise = navigator.mediaDevices.getUserMedia(constraints);
+         promise.then(function(MediaStream) {
+           video.srcObject = MediaStream;
+           video.play();
+         })
+       }
+     </script>
+   </body>
+  </html>
+  ```
+
+## onTextSelectionChange<sup>23+</sup>
+
+onTextSelectionChange(callback: TextSelectionChangeCallback)
+
+设置Web组件选区文本改变时的回调函数，使用callback异步回调。
+
+> **说明：**
+>
+> - 支持手势选中、鼠标选中以及JS选中选区。
+>
+> - 使用上述方式选中内容结束后触发回调。
+>
+> - 使用同样方式选中和上一次相同内容时，不触发回调；使用不同方式选中和上一次相同内容时，依然触发。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填   | 说明                                   |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | [TextSelectionChangeCallback](./arkts-basic-components-web-t.md#textselectionchangecallback23) | 是    | 回调函数，所选区域文本内容改变时触发。 |
+
+**示例：**
+
+  ```ts
+  // onTextSelectionChange.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onTextSelectionChange((selectionText: string) => {
+            console.info(`Selected text is ${selectionText}.`);
+          })
+      }
+    }
+  }
+  ```
+  加载的html文件
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>示例页面</title>
+  </head>
+  <body>
+      示例文本
+  </body>
+  </html>
+  ```
+
+## onFirstScreenPaint<sup>23+</sup>
+
+onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
+
+网页首屏渲染结束时触发此回调，使用callback异步回调。<br>
+
+> **说明：**
+>
+> - 首屏渲染（First Screen Paint，FSP），记录了视口内图片、文本或视频元素完成渲染所需的时间，是衡量页面首次加载到渲染完成的核心性能指标。当一定时间内视口内没有可见元素超出历史绘制区域时，将视口内元素绘制的历史最大的时刻视为首屏渲染完成时刻。
+>
+> - 接口在首屏绘制完成后，需要等待一定时间没有新的渲染信息需要处理后，才会上报回调。接口回调时刻和首屏渲染完成时刻不同。
+>
+> - 渲染未完成时，若用户输入或滚动页面，将会立即上报回调函数。
+>
+> - 该接口适用于在即时加载场景下获取首屏渲染时间，在预加载或预渲染场景下使用无法达到预期。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) | 是    | 回调函数，设置Web组件的检测到首屏渲染。 |
+
+**示例：**
+
+  ```ts
+  // onFirstScreenPaint.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onFirstScreenPaint((event: FirstScreenPaint)=>{
+            console.info(`Found first screen paint on ${event.url}.`);
+            console.info(`The navigation start time is ${event.navigationStartTime}.`);
+            console.info(`The first screen paint time is ${event.firstScreenPaintTime}.`);
+          })
+      }
+    }
+  }
+  ```
+
+## onInputmethodAttached
+
+onInputmethodAttached(callback: OnInputmethodAttachedCallback)
+
+网页绑定输入法成功时触发此回调，使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnInputmethodAttachedCallback](./arkts-basic-components-web-t.md#oninputmethodattachedcallback) | 是    | 回调函数，设置Web组件检测到输入法绑定成功时的回调。 |
+
+**示例：**
+
+  ```ts
+  import { webview } from '@kit.ArkWeb'
+  import { inputMethod } from '@kit.IMEKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller }).onInputmethodAttached(() => {
+          inputMethod.getController().showTextInput();
+        })
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+```html
+<!--test.html-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta charset="UTF-8"><title>示例页面</title></head>
+  <body>
+    <div>
+      <label for="main-input">输入框</label>
+      <input type="text" id="main-input" name="keyword" placeholder="请输入关键词..." autofocus>
+    </div>
+  </body>
+</html>
+```

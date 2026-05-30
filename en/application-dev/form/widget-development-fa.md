@@ -1,10 +1,10 @@
 # Developing a JS Widget (FA Model)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 The FA model is supported since API version 7, and no longer recommended. Application components are specified by exporting anonymous objects and fixed entry files. You cannot perform derivation for capability expansion. Now, the stage model is recommended for application development.
 
 ## Available APIs
@@ -30,7 +30,7 @@ The **FormProvider** class has the following APIs. For details, see [FormProvide
 | -------- | -------- |
 | setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void;| Sets the next refresh time for a widget. This API uses an asynchronous callback to return the result.|
 | setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;;| Sets the next refresh time for a widget. This API uses a promise to return the result.|
-| updateForm(formId: string, formBindingData: FormBindingData, callback: AsyncCallback&lt;void&gt;): void; | Updates a widget. This API uses an asynchronous callback to return the result.|
+| updateForm(formId: string, formBindingData: formBindingData.FormBindingData,callback: AsyncCallback&lt;void&gt;): void; | Updates a widget. This API uses an asynchronous callback to return the result.|
 | updateForm(formId: string, formBindingData: FormBindingData): Promise&lt;void&gt;; | Updates a widget. This API uses a promise to return the result.|
 
 
@@ -61,7 +61,7 @@ The widget provider development based on the [FA model](../application-models/fa
 
 ### Implementing Widget Lifecycle Callbacks
 
-To create a widget in the FA model, implement the widget lifecycle callbacks. For details about how to generate a service widget template, see <!--RP1-->[Creating a Service Widget](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-service-widget-V5)<!--RP1End-->.
+To create a widget in the FA model, implement the widget lifecycle callbacks. Before that, generate a widget template by referring to <!--RP1-->[Creating an ArkTS Widget](./arkts-ui-widget-creation.md)<!--RP1End-->.
 
 1. Import related modules to **form.ts**.
    
@@ -159,7 +159,7 @@ To create a widget in the FA model, implement the widget lifecycle callbacks. Fo
         return formData;
       },
       onCastToNormal(formId: string) {
-        // Called when the widget host converts the temporary widget into a normal one. The widget provider should do something to respond to the conversion.
+        // Called when the widget host converts a temporary widget into a normal one. The widget provider should respond to the conversion. (Currently, there is no temporary widget scenario.)
         hilog.info(domain, TAG, 'FormAbility onCastToNormal');
       },
       onUpdate(formId: string) {
@@ -208,8 +208,7 @@ To create a widget in the FA model, implement the widget lifecycle callbacks. Fo
     export default obj;
     ```
 
-> **NOTE**
->
+> **NOTE**<br>
 > FormAbility cannot reside in the background. Therefore, continuous tasks cannot be processed in the widget lifecycle callbacks.
 
 ### Configuring the Widget Configuration File
@@ -221,7 +220,7 @@ The widget configuration file is named **config.json**. Find the **config.json**
   | -------- | -------- | -------- | -------- |
   | name | Name of a JavaScript component. The default value is **default**.| String| No|
   | pages | Route information about all pages in the JavaScript component, including the page path and page name. The value is an array, in which each element represents a page. The first element in the array represents the home page of the JavaScript FA.| Array| No|
-  | window | Window-related configurations.| Object| Yes|
+  | window | Window-related configurations.| Object| Yes. For details about the default value, see the [window](./arkts-ui-widget-configuration.md#window-field) field.|
   | type | Type of the JavaScript component. The value can be:<br>**normal**: indicates an application instance.<br>**form**: indicates a widget instance.| String| Yes (initial value: **normal**)|
   | mode | Development mode of the JavaScript component.| Object| Yes (initial value: left empty)|
 
@@ -256,7 +255,7 @@ The widget configuration file is named **config.json**. Find the **config.json**
   | supportDimensions | Grid styles supported by the widget.<br>**1 * 2**: indicates a grid with one row and two columns.<br>**2 * 2**: indicates a grid with two rows and two columns.<br>**2 * 4**: indicates a grid with two rows and four columns.<br>**4 * 4**: indicates a grid with four rows and four columns.| String array| No|
   | defaultDimension | Default grid style of the widget. The value must be available in the **supportDimensions** array of the widget.| String| No|
   | updateEnabled | Whether the widget can be updated periodically.<br>**true**: The widget can be updated at a specified interval (**updateDuration**) or at the scheduled time (**scheduledUpdateTime**). **updateDuration** takes precedence over **scheduledUpdateTime**.<br>**false**: The widget cannot be updated periodically.| Boolean| No|
-  | scheduledUpdateTime | Scheduled time to update the widget. The value is in 24-hour format and accurate to minute.<br>**updateDuration** takes precedence over **scheduledUpdateTime**. If both are specified, the value specified by **updateDuration** is used.| String| Yes (initial value: **0:0**)|
+  | scheduledUpdateTime | Scheduled time to update the widget. The value is in 24-hour format and accurate to minute.<br>**updateDuration** takes precedence over **scheduledUpdateTime**. If both are specified, the value specified by **updateDuration** is used.| String| Yes (initial value: **0:0**). By default, the widget is not updated at the scheduled time.|
   | updateDuration | Interval to update the widget. The value is a natural number, in the unit of 30 minutes.<br>If the value is **0**, this field does not take effect.<br>If the value is a positive integer *N*, the interval is calculated by multiplying *N* and 30 minutes.<br>**updateDuration** takes precedence over **scheduledUpdateTime**. If both are specified, the value specified by **updateDuration** is used.| Number| Yes (initial value: **0**)|
   | formConfigAbility | Link to a specific page of the application. The value is a URI.| String| Yes (initial value: left empty)|
   | formVisibleNotify | Whether the widget is allowed to use the widget visibility notification.| String| Yes (initial value: left empty)|
@@ -395,7 +394,7 @@ The **Want** object passed in by the widget host to the widget provider contains
 
 - Normal widget: a widget persistently used by the widget host, for example, a widget added to the home screen.
 
-- Temporary widget: a widget temporarily used by the widget host, for example, the widget displayed when you swipe up on a widget application.
+- Temporary widget: a widget temporarily used by the widget host. Currently, there is no temporary widget used by the widget host.
 
 Converting a temporary widget to a normal one: After you swipe up on a widget application, a temporary widget is displayed. If you touch the pin button on the widget, it is displayed as a normal widget on the home screen.
 
@@ -433,8 +432,7 @@ You can use the web-like paradigm (HML+CSS+JSON) to develop JS widget pages. Thi
 
 ![widget-development-fa](figures/widget-development-fa.png)
 
-> **NOTE**
->
+> **NOTE**<br>
 > In the FA model, only the JavaScript-based web-like development paradigm is supported when developing the widget UI.
 
 - HML: uses web-like paradigm components to describe the widget page information.

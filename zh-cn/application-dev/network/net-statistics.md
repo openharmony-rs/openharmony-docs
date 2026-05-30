@@ -17,185 +17,219 @@
 - 支持基于网卡/UID 的流量变化订阅。
 
 > **说明：**
-> 为了保证应用的运行效率，大部分 API 调用都是异步的，对于异步调用的 API 均提供了 callback 和 Promise 两种方式，以下示例均采用 Promise 函数，更多方式可以查阅[API 参考](../reference/apis-network-kit/js-apis-net-statistics.md)。
+> 为了保证应用的运行效率，大部分 API 调用都是异步的，对于异步调用的 API 均提供了 callback 和 Promise 两种方式，以下示例均采用 Promise 函数，更多方式可以查阅[@ohos.net.statistics (流量管理)](../reference/apis-network-kit/js-apis-net-statistics.md)。
 
 以下分别介绍具体开发方式。
 
 ## 开发步骤
 
-1. 导入statistics、socket以及错误码模块。
+1. 导入[statistics](../reference/apis-network-kit/js-apis-net-statistics.md)、[socket](../reference/apis-network-kit/js-apis-socket.md)以及错误码模块。
 
-    ```ts
-    import { statistics, socket } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    ```
-
+   <!-- @[flow_management_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { socket, statistics } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 2. 获取指定网卡实时流量数据
 
-    调用getIfaceRxBytes接口传入网卡名获取实时下行流量数据。
+    调用[getIfaceRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetifacerxbytes-1)接口传入网卡名获取实时下行流量数据。
 
-    ```ts
-    // wlan0为主WiFi网卡名，获取主WiFi实时下行流量数据。
-    statistics.getIfaceRxBytes("wlan0").then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-
-    // wlan0为主WiFi网卡名，获取主WiFi实时上行流量数据。
-    statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-    ```
-
+   <!-- @[flow_management_getIfaceRxBytes_and_getIfaceTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+     // wlan0为主WiFi网卡名，获取主WiFi实时下行流量数据。
+     statistics.getIfaceRxBytes('wlan0').then((stats: number) => {
+       hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+       // ...
+     })
+     .catch((err: BusinessError) => {
+       hilog.error(0x0000, 'testTag', JSON.stringify(err));
+       // ...
+     });
+     // ...
+     // wlan0为主WiFi网卡名，获取主WiFi实时上行流量数据。
+     statistics.getIfaceTxBytes('wlan0').then((stats: number) => {
+       hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+       // ...
+     })
+     .catch((err: BusinessError) => {
+       hilog.error(0x0000, 'testTag', JSON.stringify(err));
+       // ...
+     });
+   // ...
+   ```
 3. 获取蜂窝实时流量数据
 
-    调用getCellularRxBytes接口获取蜂窝实时上下行流量数据。
+    调用[getCellularRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetcellularrxbytes-1)接口获取蜂窝实时上下行流量数据。
 
-    ```ts
-    // 获取蜂窝实时下行流量数据。
-    statistics.getCellularRxBytes().then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-
-    // 获取蜂窝实时上行流量数据。
-    statistics.getCellularTxBytes().then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-    ```
-
+   <!-- @[flow_management_getCellularRxBytes_and_getCellularTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取蜂窝实时下行流量数据。
+   statistics.getCellularRxBytes().then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   // 获取蜂窝实时上行流量数据。
+   statistics.getCellularTxBytes().then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   ```
 4. 获取所有网卡实时流量数据
 
-    调用getAllRxBytes接口获取所有网卡实时上下行流量数据。
+    调用[getAllRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetallrxbytes-1)接口获取所有网卡实时上下行流量数据。
 
-    ```ts
-    // 获取所有网卡实时下行流量数据。
-    statistics.getAllRxBytes().then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-
-    // 获取所有网卡实时上行流量数据。
-    statistics.getAllTxBytes().then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-    ```
-
+   <!-- @[flow_management_getAllRxBytes_and_getAllTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取所有网卡实时下行流量数据。
+   statistics.getAllRxBytes().then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   // 获取所有网卡实时上行流量数据。
+   statistics.getAllTxBytes().then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   ```
 5. 获取指定应用实时流量数据
 
-    调用getUidRxBytes接口，传入UID获取指定应用实时上下行流量数据。
-
-    ```ts
-    // 获取指定应用实时下行流量数据。
-    let uid = 20010038;
-    statistics.getUidRxBytes(uid).then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-
-    // 获取指定应用实时上行流量数据。
-    let uid = 20010038;
-    statistics.getUidTxBytes(uid).then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-    ```
-
+    调用[getUidRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetuidrxbytes-1)接口，传入UID获取指定应用实时上下行流量数据。
+   ```ts
+    let UID = 20010038;
+   ```
+   <!-- @[flow_management_getUidRxBytes_and_getUidTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取指定应用实时下行流量数据。
+   // ...
+   statistics.getUidRxBytes(UID).then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   // 获取指定应用实时上行流量数据。
+   // ...
+   statistics.getUidTxBytes(UID).then((stats: number) => {
+     hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+     // ...
+   })
+   // ...
+   ```
 6. 获取指定socket实时流量数据
 
-    调用getSockfdRxBytes接口，传入指定的sockFd获取指定socket实时上下行流量数据。
+    调用[getSockfdRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdrxbytes11-1)接口，传入指定的sockFd获取指定socket实时上下行流量数据。
 
-    ```ts
-    // 获取指定socket实时下行流量数据。
-    let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-    tcp.getSocketFd().then((sockfd: number) => {
-      statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
-        console.info(JSON.stringify(stats));
-      }).catch((err: BusinessError) => {
-        console.error(JSON.stringify(err));
-      });
-    });
-
-    // 获取指定socket实时上行流量数据。
-    tcp.getSocketFd().then((sockfd: number) => {
-      statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
-        console.info(JSON.stringify(stats));
-      }).catch((err: BusinessError) => {
-        console.error(JSON.stringify(err));
-      });
-    });
-    ```
-
+   <!-- @[flow_management_getSockfdRxBytes_and_getSockfdTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取指定socket实时下行流量数据。
+   let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+   // ...
+   tcp.getSocketFd().then((sockfd: number) => {
+     statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
+       hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+       // ...
+     }).catch((err: BusinessError) => {
+       hilog.error(0x0000, 'testTag', JSON.stringify(err));
+       // ...
+     });
+   })
+   // ...
+   // 获取指定socket实时上行流量数据。
+   tcp.getSocketFd().then((sockfd: number) => {
+     statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
+       hilog.info(0x0000, 'testTag', JSON.stringify(stats));
+       // ...
+     }).catch((err: BusinessError) => {
+       hilog.error(0x0000, 'testTag', JSON.stringify(err));
+       // ...
+     });
+   })
+   // ...
+   ```
 <!--Del-->
 ## 获取网卡/UID 的历史流量统计数据
 
 1. 获取指定网卡历史流量信息。
 2. 获取指定应用历史流量信息。
 
-```ts
-import { statistics } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+      ```ts
+      import { statistics } from '@kit.NetworkKit';
 
-class IfaceInfo {
-  iface: string = "wlan0"
-  startTime: number = 1685948465
-  endTime: number = 16859485670
-}
-// 获取指定网卡历史流量信息。
-statistics.getTrafficStatsByIface(new IfaceInfo()).then((statsInfo: statistics.NetStatsInfo) => {
-  console.info(
-    "getTrafficStatsByIface bytes of received = " +
-    JSON.stringify(statsInfo.rxBytes)
-  );
-  console.info(
-    "getTrafficStatsByIface bytes of sent = " +
-    JSON.stringify(statsInfo.txBytes)
-  );
-  console.info(
-    "getTrafficStatsByIface packets of received = " +
-    JSON.stringify(statsInfo.rxPackets)
-  );
-  console.info(
-    "getTrafficStatsByIface packets of sent = " +
-    JSON.stringify(statsInfo.txPackets)
-  );
-});
+      class IfaceInfo {
+        iface: string = "wlan0"
+        startTime: number = 1685948465
+        endTime: number = 16859485670
+      }
+      // 获取指定网卡历史流量信息。
+      statistics.getTrafficStatsByIface(new IfaceInfo()).then((statsInfo: statistics.NetStatsInfo) => {
+        console.info(
+          "getTrafficStatsByIface bytes of received = " +
+          JSON.stringify(statsInfo.rxBytes)
+        );
+        console.info(
+          "getTrafficStatsByIface bytes of sent = " +
+          JSON.stringify(statsInfo.txBytes)
+        );
+        console.info(
+          "getTrafficStatsByIface packets of received = " +
+          JSON.stringify(statsInfo.rxPackets)
+        );
+        console.info(
+          "getTrafficStatsByIface packets of sent = " +
+          JSON.stringify(statsInfo.txPackets)
+        );
+      });
 
-class UidInfo {
-  uid: number = 20010037
-  ifaceInfo: IfaceInfo = new IfaceInfo()
-}
+      class UidInfo {
+        uid: number = 20010037
+        ifaceInfo: IfaceInfo = new IfaceInfo()
+      }
 
-let uidInfo = new UidInfo()
+      let uidInfo = new UidInfo()
 
-// 获取指定应用历史流量信息。
-statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
-  console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
-  console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
-  console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
-  console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
-})
-```
+      // 获取指定应用历史流量信息。
+      statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
+        console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+        console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+        console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
+        console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
+      })
+      ```
 
 ## 订阅流量变化事件
 
 1. 订阅流量改变事件通知。
 2. 取消订阅流量改变事件通知。
 
-```ts
-import { statistics } from '@kit.NetworkKit';
+      ```ts
+      import { statistics } from '@kit.NetworkKit';
 
-class Data {
-  iface: string = ""
-  uid?: number = 0
-}
+      class Data {
+        iface: string = ""
+        uid?: number = 0
+      }
 
-let callback = (data: Data) => {
-  console.info('on netStatsChange, data:' + JSON.stringify(data));
-};
-// 订阅流量改变事件通知。
-statistics.on('netStatsChange', callback);
+      let callback = (data: Data) => {
+        console.info('on netStatsChange, data:' + JSON.stringify(data));
+      };
+      // 订阅流量改变事件通知。
+      statistics.on('netStatsChange', callback);
 
-// 取消订阅流量改变事件通知。可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
-statistics.off('netStatsChange', callback);
-statistics.off('netStatsChange');
-```
-<!--DelEnd-->
+      // 取消订阅流量改变事件通知。可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+      statistics.off('netStatsChange', callback);
+      statistics.off('netStatsChange');
+      ```
+      <!--DelEnd-->
 
 ## 相关实例
 

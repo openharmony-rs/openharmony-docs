@@ -2,15 +2,15 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供文本宽度、高度等相关计算。
 
 > **说明：**
 >
-> - 本模块首批接口从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
 >
@@ -20,15 +20,21 @@
 >
 > - 调用文本计算接口时，不推荐同时用[ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)设置应用字体大小缩放比例。为了确保时序正确性，建议开发者自行监听字体缩放变化，以保证测算结果的准确性。
 >
-> - 在测算裁剪后的文本时，由于某些Unicode字符（如emoji）的码位长度大于1，直接按字符串长度裁剪会导致不准确的结果。建议基于Unicode码点进行迭代处理，避免错误截断字符，确保测算结果准确。
+> - 在测算裁剪后的文本时，由于某些Unicode字符（如emoji）的码位长度大于1，直接按字符串长度裁剪会导致不准确的结果。建议基于Unicode码点进行迭代处理，避免错误截断字符，确保测算结果准确，请参考[measureTextSize](#measuretextsize12)的示例2。
 
 ## measureText<sup>12+</sup>
 
 measureText(options: MeasureOptions): number
 
-计算指定文本单行布局下的宽度。
+计算指定文本作为单行文本显示时的宽度。如果文本包含多行（由换行符`\n`分隔），则返回其中最长的行的宽度。
+
+> **说明：**
+>
+> measureText接口的计算结果始终是单行文本的宽度，入参options中配置的布局约束（如constraintWidth、maxLines）对measureText的结果没有影响。如果需要计算布局约束下的宽度，请使用[measureTextSize](#measuretextsize12)方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ measureTextSize(options: MeasureOptions): SizeOptions
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -97,7 +105,7 @@ measureTextSize(options: MeasureOptions): SizeOptions
 | [SizeOptions](arkui-ts/ts-types.md#sizeoptions)   | 返回文本所占布局宽度和高度。<br/>**说明:**<br/>没有传参constraintWidth的情况下，文本宽度返回值浮点数会向上取整。<br/>文本宽度以及高度返回值单位均为px。 |
 
 
-**示例：** 
+**示例1：** 
 
 通过MeasureUtils的measureTextSize方法获取"Hello World"文字的宽度和高度。
 
@@ -126,12 +134,126 @@ struct Index {
 }
 ```
 
+**示例2：** 
+
+通过MeasureUtils的measureTextSize方法和unicode码点计算，手动实现文本截断。与设置[maxLines](./arkui-ts/ts-basic-components-text.md#maxlines)、[textOverflow](./arkui-ts/ts-basic-components-text.md#textoverflow)实现同样的效果。
+
+```ts
+@Entry
+@Component
+struct TextDemo {
+  @State isExpanded: boolean = false;
+  @State displayedText: string = '';
+  @State defaultFontSize: number = 16;
+  @State textWidth: number = 150;
+  @State numLength: number = 0;
+  @State numUnicode: number = 0;
+  private fullText: string =
+    '这是一个超长文本示例，当文本内容超过三行时，超出部😀😀分会显示省略号。点击省略号可展开全部内容。此处为测试文本，用于验证多行文本截断效果。';
+  private maxLines: number = 3;
+
+  aboutToAppear() {
+    const codePoints = this.getCodePoints(this.fullText);
+    this.numLength = this.fullText.length;
+    this.numUnicode = codePoints.length;
+    this.calculateText(this.maxLines, this.fullText);
+  }
+
+  getCodePoints(text: string): number[] { // 使用codePointAt分割文本
+    const codePoints: number[] = [];
+    let index = 0;
+    while (index < text.length) {
+      const codePoint = text.codePointAt(index);
+      if (codePoint === undefined) {
+        break;
+      }
+      codePoints.push(codePoint);
+      index += codePoint > 0xFFFF ? 2 : 1; // 处理四字节字符
+    }
+    return codePoints;
+  }
+
+  lastUnicodeLength(str: string) { // 获得字符串最后一个字符的unicode长度
+    if (!str || str.length < 1) {
+      return 0;
+    }
+    if (str.length < 2) {
+      return 1;
+    }
+    let lastCodePoint = str.codePointAt(str.length - 2);
+    if (lastCodePoint == undefined) {
+      return 1;
+    }
+    let lastStr = String.fromCodePoint(lastCodePoint);
+    return lastStr.length;
+  }
+
+  calculateText(maxLines: number, fullText: string) { // 计算文本是否需要截断
+    const noMaxLinesSize = this.getUIContext().getMeasureUtils().measureTextSize({
+      textContent: fullText,
+      constraintWidth: this.textWidth
+    });
+    const hasMaxLinesSize = this.getUIContext().getMeasureUtils().measureTextSize({
+      textContent: fullText,
+      constraintWidth: this.textWidth,
+      maxLines: this.maxLines
+    });
+
+    this.displayedText = this.displayedText = this.fullText;
+    if (Number(noMaxLinesSize.height) > Number(hasMaxLinesSize.height)) { // 存在截断
+      while (this.displayedText.length > 0) {
+        this.displayedText =
+          this.displayedText.slice(0,
+            this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // 删掉几个字
+        let textAfterCut = this.displayedText + "…"; // 加上省略号
+        let sizeAfterCut = this.getUIContext().getMeasureUtils().measureTextSize({
+          textContent: textAfterCut,
+          constraintWidth: this.textWidth
+        });
+        if (Number(sizeAfterCut.height) <= Number(hasMaxLinesSize.height)) {
+          break;
+        } else {
+          console.info("displayedText: " + this.displayedText);
+        }
+      }
+      this.displayedText = this.displayedText + "…";
+    }
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Text(`用length计算的文本长度 ${this.numLength}`)
+      Text(`用codePointAt计算的文本长度 ${this.numUnicode}`)
+      Text('下面是需要截断的文本')
+      Text(this.fullText)
+        .borderWidth(1)
+
+      Text('下面是设置了maxLines和texOverflow')
+      Text(this.fullText)
+        .maxLines(this.maxLines)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .width(this.textWidth)
+        .borderWidth(1)
+
+      Text('下面是计算后分割的文本')
+      Text(this.displayedText)
+        .width(this.textWidth)
+        .borderWidth(1)
+    }
+    .padding(20)
+  }
+}
+```
+
+![](figures/unicodeTextLength.png)
 
 ## getParagraphs<sup>20+</sup>
 
 getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array\<Paragraph\>
 
 将属性字符串根据文本布局选项转换成对应的[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)数组。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

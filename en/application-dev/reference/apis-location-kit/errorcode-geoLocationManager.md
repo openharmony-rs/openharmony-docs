@@ -1,4 +1,10 @@
 # Location Kit Error Codes
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 > **NOTE**
 >
@@ -26,7 +32,7 @@ This error code is reported if the location service is unavailable and relevant 
 
 Add a retry mechanism.
 
-## 3301100 Positioning Failed Due to Location Service Switch Turning-off
+## 3301100 Positioning Failed Because the Location Switch Is Turned Off
 
 **Error Message**
 
@@ -34,17 +40,19 @@ The location switch is off.
 
 **Description**
 
-This error code is reported if positioning fails because the location service switch is turned off.
+This error code is reported if positioning fails because the location switch is turned off.
 
 **Possible Cause**
 
-The location service switch is turned off, which makes basic functions such as continuous positioning and immediate positioning unavailable.
+The location switch is turned off, which makes basic functions such as continuous positioning and immediate positioning unavailable.
 
 **Procedure**
 
 Display a prompt asking for enabling the location service.
 
 ## 3301200 Failed to Obtain the Positioning Result
+
+### 1. The positioning fails due to network unavailability.
 
 **Error Message**
 
@@ -54,10 +62,15 @@ The network locating is failed because the network cannot be accessed.
 
 This error code is reported if network positioning fails because network access is denied.
 
+**Possible Cause**
+
+The device cannot access the network.
+
 **Procedure**
 
 Check the device for Internet or Wi-Fi connectivity and an installed SIM card.<br>
-</br>
+
+### 2. The positioning result does not meet the precision requirement. As a result, the positioning times out.
 
 **Error Message**
 
@@ -67,6 +80,10 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 This error code is reported if positioning times out because the positioning result does not meet the requirement of **maxAccuracy**.
 
+**Possible Cause**
+
+The value of **maxAccuracy** in the positioning request parameters [LocationRequest](./js-apis-geoLocationManager.md#locationrequest) and [CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest) is too small.
+
 **Procedure**
 
 Increase the value of **maxAccuracy** for [LocationRequest](./js-apis-geoLocationManager.md#locationrequest) and [CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest) as follows:
@@ -74,6 +91,8 @@ Increase the value of **maxAccuracy** for [LocationRequest](./js-apis-geoLocatio
 - If [scenario](./js-apis-geoLocationManager.md#locationrequestscenario) is set to **NAVIGATION**, **TRAJECTORY_TRACKING** or **CAR_HAILING**, or [priority](./js-apis-geoLocationManager.md#locationrequestpriority) is set to **ACCURACY**, you are advised to set **maxAccuracy** to a value greater than **10**.
 
 - If [scenario](./js-apis-geoLocationManager.md#locationrequestscenario) is set to **DAILY_LIFE_SERVICE** or **NO_POWER**, or [priority](./js-apis-geoLocationManager.md#locationrequestpriority) is set to **LOW_POWER** or **FIRST_FIX**, you are advised to set **maxAccuracy** to a value greater than **100**.<br>
+
+### 3. Unable to obtain the cached location.
 
 **Error Message**
 
@@ -83,10 +102,15 @@ The system does not have a cache location.
 
 This error code is reported if the application fails to obtain the previous location because the system has not cached the location information.
 
+**Possible Cause**
+
+If the system has not cached the location information, the application attempts to obtain the cached location information.
+
 **Procedure**
 
 If the system has not cached the location information, call [getCurrentLocation](./js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) to obtain the real-time location information.<br>
-</br>
+
+### 4. Location failed due to other reasons.
 
 **Error Message**
 
@@ -98,15 +122,15 @@ This error code is reported if the location service fails, leading to a failure 
 
 **Possible Cause**
 
-1. Positioning times out because of weak GNSS signals.
+- Positioning times out because of weak GNSS signals.
 
-2. The system time is incorrectly set.
+- The system time is incorrectly set.
 
 **Procedure**
 
-1. Move to an open area and try again.
+- Move to an open area and initiate positioning again.
 
-2. Enable automatic setting on the **Time & Date** page.
+- Enable automatic setting on the **Time & Date** page.
 
 
 ## 3301300 Query Failed During Reverse Geocoding
@@ -191,7 +215,7 @@ This error code is reported if a geofence operation, for example, adding, deleti
 
 2. Add a retry mechanism.
 
-## 3301601 Failed to Add a Geofence Due to a Limit on the Maximum Number
+## 3301601 Failed to Add a Geofence Because the Maximum Number Is Exceeded
 
 **Error Message**
 
@@ -199,7 +223,7 @@ The number of geofences exceeds the maximum.
 
 **Description**
 
-This error code is reported if the attempt to add a geofence fails because the number of geofences exceeds the maximum.
+This error code is reported if the attempt to add a geofence fails because the number of geofences has reached the maximum.
 
 **Possible Cause**
 
@@ -292,3 +316,93 @@ This error code is reported if the attempt to obtain the MAC address of the Wi-F
 1. Enable Wi-Fi.
 
 2. Connect to a router or Wi-Fi hotspot.
+
+## 3501100 Failed to Add a Beacon Fence Because the Location Switch Is Turned Off
+
+**Error Message**
+
+Failed to add a beacon fence because the location switch is off.
+
+**Description**
+
+This error code is reported if the attempt to add a beacon fence fails because the location switch is turned off.
+
+**Possible Cause**
+
+The location switch is turned off.
+
+**Procedure**
+
+Display a prompt asking the user to enable the location service.
+
+## 3501101 Failed to Add a Beacon Fence Because Bluetooth Is Disabled
+
+**Error Message**
+
+Failed to add a beacon fence because the bluetooth switch is off.
+
+**Description**
+
+This error code is reported if the attempt to add a beacon fence fails because the Bluetooth is disabled.
+
+**Possible Cause**
+
+Bluetooth is disabled.
+
+**Procedure**
+
+Display a prompt asking the user to enable Bluetooth.
+
+## 3501601 Failed to Add a Beacon Fence Because the Maximum Number Is Exceeded
+
+**Error Message**
+
+The number of beacon fence exceeds the maximum.
+
+**Description**
+
+This error code is reported if the attempt to add a beacon fence fails because the number of beacon fences has reached the maximum.
+
+**Possible Cause**
+
+The number of beacon fences has reached the maximum (that is, 16).
+
+**Procedure**
+
+Delete unnecessary geofences before adding new ones.
+
+## 3501602 Failed to Delete a Beacon Fence Because of Incorrect Information
+
+**Error Message**
+
+Failed to delete the fence due to incorrect beacon fence information.
+
+**Description**
+
+This error code is reported if the attempt to delete a beacon fence fails because the beacon fence information is incorrect.
+
+**Possible Cause**
+
+The information about the beacon fence to be deleted is incorrect.
+
+**Procedure**
+
+Pass the correct beacon fence information to the beacon fence deletion API.
+
+## 3501603 Failed to Add a Beacon Fence Because of Duplication
+
+**Error Message**
+
+Duplicate beacon fence information.
+
+**Description**
+
+This error code is reported if the attempt to add a beacon fence fails because the beacon fence already exists.
+
+**Possible Cause**
+
+The beacon fence already exists in the system.
+
+**Procedure**
+
+Delete unnecessary beacon fences before adding new ones.

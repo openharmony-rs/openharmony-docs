@@ -1,10 +1,10 @@
 # Functions
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -20,13 +20,13 @@ import { media } from '@kit.MediaKit';
 
 createAVPlayer(callback: AsyncCallback\<AVPlayer>): void
 
-异步方式创建音视频播放实例，通过注册回调函数获取返回值。
+创建音视频播放实例。使用callback异步回调。
 
 > **说明：**
 >
 > - 推荐单个应用创建的音视频播放实例（即音频、视频、音视频三类相加）不超过16个。<!--Del-->
 > - 可创建的音视频播放实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放实例。<!--DelEnd-->
-> - 应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统查杀应用。
+> - 应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统终止应用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -40,7 +40,7 @@ createAVPlayer(callback: AsyncCallback\<AVPlayer>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
@@ -53,7 +53,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avPlayer: media.AVPlayer;
 media.createAVPlayer((error: BusinessError, video: media.AVPlayer) => {
-  if (video != null) {
+  if (video) {
     avPlayer = video;
     console.info('Succeeded in creating AVPlayer');
   } else {
@@ -72,7 +72,7 @@ createAVPlayer(): Promise\<AVPlayer>
 >
 > - 推荐单个应用创建的音视频播放实例（即音频、视频、音视频三类相加）不超过16个。<!--Del-->
 > - 可创建的音视频播放实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放实例。<!--DelEnd-->
-> - 应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统查杀应用。
+> - 应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，导致系统终止应用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -82,11 +82,11 @@ createAVPlayer(): Promise\<AVPlayer>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)> | Promise对象。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
+| Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)> | Promise对象。成功时异步返回AVPlayer实例，可用于音视频播放。失败时返回null。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
@@ -99,7 +99,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avPlayer: media.AVPlayer;
 media.createAVPlayer().then((video: media.AVPlayer) => {
-  if (video != null) {
+  if (video) {
     avPlayer = video;
     console.info('Succeeded in creating AVPlayer');
   } else {
@@ -114,7 +114,7 @@ media.createAVPlayer().then((video: media.AVPlayer) => {
 
 createAVRecorder(callback: AsyncCallback\<AVRecorder>): void
 
-异步方式创建音视频录制实例。通过注册回调函数获取返回值。
+创建音视频录制实例。使用callback异步回调。
 
 > **说明：**
 >
@@ -126,11 +126,11 @@ createAVRecorder(callback: AsyncCallback\<AVRecorder>): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | 是   | 回调函数。异步返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
+| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | 是   | 回调函数，返回AVRecorder实例，可用于录制音视频媒体。失败时返回null。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
@@ -143,7 +143,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let avRecorder: media.AVRecorder;
 
 media.createAVRecorder((error: BusinessError, recorder: media.AVRecorder) => {
-  if (recorder != null) {
+  if (recorder) {
     avRecorder = recorder;
     console.info('Succeeded in creating AVRecorder');
   } else {
@@ -156,7 +156,7 @@ media.createAVRecorder((error: BusinessError, recorder: media.AVRecorder) => {
 
 createAVRecorder(): Promise\<AVRecorder>
 
-异步方式创建音视频录制实例。通过Promise获取返回值。
+创建音视频录制实例。使用Promise异步回调。
 
 > **说明：**
 >
@@ -170,11 +170,11 @@ createAVRecorder(): Promise\<AVRecorder>
 
 | 类型                                 | 说明                                                         |
 | ------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise对象。异步返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
+| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise对象，返回AVRecorder实例，可用于录制音视频媒体。失败时返回null。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
@@ -186,7 +186,7 @@ createAVRecorder(): Promise\<AVRecorder>
 import { BusinessError } from '@kit.BasicServicesKit';
 let avRecorder: media.AVRecorder;
 media.createAVRecorder().then((recorder: media.AVRecorder) => {
-  if (recorder != null) {
+  if (recorder) {
     avRecorder = recorder;
     console.info('Succeeded in creating AVRecorder');
   } else {
@@ -201,11 +201,13 @@ media.createAVRecorder().then((recorder: media.AVRecorder) => {
 
 createAVTranscoder(): Promise\<AVTranscoder>
 
-异步方式创建视频转码实例，通过Promise获取返回值。
+创建视频转码实例。使用Promise异步回调。
 
 > **说明：**
-
+>
 > 可创建的视频转码实例不能超过2个。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -217,7 +219,7 @@ createAVTranscoder(): Promise\<AVTranscoder>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
@@ -230,7 +232,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avTranscoder: media.AVTranscoder | undefined = undefined;
 media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
-  if (transcoder != null) {
+  if (transcoder) {
     avTranscoder = transcoder;
     console.info('Succeeded in creating AVTranscoder');
   } else {
@@ -245,7 +247,7 @@ media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
 
 createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor>): void
 
-异步方式创建AVMetadataExtractor实例，通过注册回调函数获取返回值。
+创建AVMetadataExtractor实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -257,7 +259,7 @@ createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
@@ -270,7 +272,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor;
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
   } else {
@@ -283,7 +285,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 createAVMetadataExtractor(): Promise\<AVMetadataExtractor>
 
-异步方式创建AVMetadataExtractor实例，通过Promise获取返回值。
+创建AVMetadataExtractor实例。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -295,7 +297,7 @@ createAVMetadataExtractor(): Promise\<AVMetadataExtractor>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
@@ -308,7 +310,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor;
 media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
   } else {
@@ -323,12 +325,12 @@ media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) =>
 
 createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool>): void
 
-创建音频池实例，使用callback方式异步获取返回值。
+创建音频池实例。使用callback异步回调。
 
 > **说明：**
 >
-> - API 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
-> - API 18及API 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
+> - API version 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
+> - API version 18及API version 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -337,12 +339,12 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, ca
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | maxStreams | number | 是   | soundPool实例的最大播放的流数，设置范围为1-32的正整数。 |
-| audioRenderInfo | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)  | 是   | 音频播放参数信息。其中audioRenderInfo中的参数usage取值为STREAM_USAGE_UNKNOWN，STREAM_USAGE_MUSIC，STREAM_USAGE_MOVIE，STREAM_USAGE_AUDIOBOOK时，SoundPool播放短音时为混音模式，不会打断其他音频播放。 |
+| audioRenderInfo | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)  | 是   | 音频播放参数信息。其中audioRenderInfo中的参数usage取值为STREAM_USAGE_UNKNOWN，STREAM_USAGE_MUSIC，STREAM_USAGE_MOVIE，STREAM_USAGE_AUDIOBOOK时，SoundPool播放短音时为混音模式，不会打断其他音频播放。SoundPool支持将rendererFlags设置为1用于低时延通路播放。 |
 | callback | AsyncCallback<[SoundPool](js-apis-inner-multimedia-soundPool.md)> | 是   | 回调函数。异步返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
@@ -374,12 +376,12 @@ media.createSoundPool(5, audioRendererInfo, (error, soundPool_: media.SoundPool)
 
 createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool>
 
-创建音频池实例，通过Promise获取返回值。
+创建音频池实例。使用Promise异步回调。
 
 > **说明：**
 >
-> - API 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
-> - API 18及API 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
+> - API version 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
+> - API version 18及API version 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -398,7 +400,7 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
@@ -417,7 +419,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 };
 
 media.createSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) => {
-  if (soundpool_ != null) {
+  if (soundpool_) {
     soundPool = soundpool_;
     console.info('Succeeded in creating SoundPool');
   } else {
@@ -432,7 +434,7 @@ media.createSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) =
 
 createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder>
 
-创建屏幕录制实例，通过Promise获取返回值。
+创建屏幕录制实例，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -440,9 +442,11 @@ createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder>
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)> | Promise对象。异步返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
+| Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)> | Promise对象，返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
@@ -455,7 +459,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avScreenCaptureRecorder: media.AVScreenCaptureRecorder;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
+  if (captureRecorder) {
     avScreenCaptureRecorder = captureRecorder;
     console.info('Succeeded in createAVScreenCaptureRecorder');
   } else {
@@ -470,7 +474,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
 
 createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator>): void
 
-创建AVImageGenerator实例，通过回调函数获取返回值。
+创建AVImageGenerator实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -482,7 +486,7 @@ createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
@@ -495,11 +499,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avImageGenerator: media.AVImageGenerator;
 media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
-    console.error(`Failed to creat AVImageGenerator, error message:${error.message}`);
+    console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
   }
 });
 ```
@@ -508,7 +512,7 @@ media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGene
 
 createAVImageGenerator(): Promise\<AVImageGenerator>
 
-创建AVImageGenerator对象，通过Promise获取返回值。
+创建AVImageGenerator对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -520,7 +524,7 @@ createAVImageGenerator(): Promise\<AVImageGenerator>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
@@ -533,14 +537,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avImageGenerator: media.AVImageGenerator;
 media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
-    console.error('Failed to creat AVImageGenerator');
+    console.error('Failed to create AVImageGenerator');
   }
 }).catch((error: BusinessError) => {
-  console.error(`Failed to creat AVImageGenerator, error message:${error.message}`);
+  console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
 });
 ```
 
@@ -559,7 +563,7 @@ createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaS
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
 | url | string | 是   | - 流媒体预下载媒体来源url，支持的流媒体格式：HLS、HTTP-FLV、Dash、Https。<br> - 本地m3u8的fd路径。  |
-| headers | Record\<string, string> | 否   | 支持流媒体预下载HttpHeader自定义。 |
+| headers | Record\<string, string> | 否   | 支持流媒体预下载HttpHeader自定义。不传时为网络请求默认的HttpHeader。 |
 
 **返回值：**
 
@@ -569,7 +573,7 @@ createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaS
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -639,6 +643,94 @@ streams.push({url: "http://xxx/1080p.flv", width: 1920, height: 1080, bitrate: 2
 let mediaSource : media.MediaSource = media.createMediaSourceWithStreamData(streams);
 ```
 
+## media.createMediaSourceWithFd
+
+createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined
+
+通过文件描述符创建媒体源。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**参数：**
+
+| 参数名  | 类型                                 | 必填 | 说明                                                  |
+| ------- | ------------------------------------ | ---- | ----------------------------------------------------- |
+| fdSrc | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9) | 是 | 媒体文件描述符。 |
+
+**返回值：**
+
+| 类型                          | 说明                |
+| ----------------------------- | ------------------- |
+| [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | 返回MediaSource，用于媒体资源设置。 |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
+let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithFd(fdSrc);
+```
+
+## media.createMediaSourceWithDataSource
+
+createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | undefined
+
+通过自定义数据源创建媒体源。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**参数：**
+
+| 参数名  | 类型                                 | 必填 | 说明                                                  |
+| ------- | ------------------------------------ | ---- | ----------------------------------------------------- |
+| dataSrc | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10) | 是 | 流式媒体资源描述符。 |
+
+**返回值：**
+
+| 类型                          | 说明                |
+| ----------------------------- | ------------------- |
+| [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | 返回MediaSource，用于媒体资源设置。 |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
+let file = fs.openSync("xxx.mp4");
+let dataSrc: media.AVDataSrcDescriptor = {
+  fileSize: fileDescriptor.length,
+  callback: (buf: ArrayBuffer, length: number, pos?: number) => {
+    let readLen = 0;
+    if (pos) {
+      let option: ReadOptions = {
+        offset: pos,
+        length: length,
+      };
+      readLen = fs.readSync(file.fd, buf, option);
+    }
+    return readLen > 0 ? readLen : -1;
+  }
+}
+let mediaSource : media.MediaSource | undefined =  media.createMediaSourceWithDataSource(dataSrc);
+```
+
 ## media.createAudioPlayer<sup>(deprecated)</sup>
 
 createAudioPlayer(): AudioPlayer
@@ -666,7 +758,7 @@ let audioPlayer: media.AudioPlayer = media.createAudioPlayer();
 
 createVideoPlayer(callback: AsyncCallback\<VideoPlayer>): void
 
-异步方式创建视频播放实例，通过注册回调函数获取返回值。
+异步方式创建视频播放实例，使用callback异步回调。
 
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9)替代。
@@ -686,7 +778,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let videoPlayer: media.VideoPlayer;
 media.createVideoPlayer((error: BusinessError, video: media.VideoPlayer) => {
-  if (video != null) {
+  if (video) {
     videoPlayer = video;
     console.info('Succeeded in creating VideoPlayer');
   } else {
@@ -719,7 +811,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let videoPlayer: media.VideoPlayer;
 media.createVideoPlayer().then((video: media.VideoPlayer) => {
-  if (video != null) {
+  if (video) {
     videoPlayer = video;
     console.info('Succeeded in creating VideoPlayer');
   } else {
@@ -734,8 +826,7 @@ media.createVideoPlayer().then((video: media.VideoPlayer) => {
 
 createAudioRecorder(): AudioRecorder
 
-创建音频录制的实例来控制音频的录制。
-一台设备只允许创建一个录制实例。
+创建音频录制的实例来控制音频的录制。一台设备只允许创建一个录制实例。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[createAVRecorder](#mediacreateavrecorder9)替代。

@@ -6,7 +6,7 @@ The small-system graphics framework, a lightweight graphics framework, includes 
 ### Relationship Between UIs in OpenHarmony
 You may have learned different development paradigms of OpenHarmony. What is the relationship between them and the small-system graphics framework?
 
-Currently, the [ace_engine repository](https://gitee.com/openharmony/arkui_ace_engine) implements two development frameworks: ArkUI declarative development paradigm and ArkUI web-like development paradigm. For details about their differences, see [ArkUI Overview](../../application-dev/ui/arkui-overview.md). Based on the characteristics of the small system, the [ace_engine_lite repository](https://gitee.com/openharmony/arkui_ace_engine_lite) implements the lightweight ArkUI web-like development paradigm, which is named ArkUI web-like development paradigm lite. Its capabilities are a subset of the ArkUI web-like development paradigm.
+Currently, the [ace_engine repository](https://gitcode.com/openharmony/arkui_ace_engine) implements two development frameworks: ArkUI declarative development paradigm and ArkUI web-like development paradigm. For details about their differences, see [ArkUI Overview](../../application-dev/ui/arkui-overview.md). Based on the characteristics of the small system, the [ace_engine_lite repository](https://gitcode.com/openharmony/arkui_ace_engine_lite) implements the lightweight ArkUI web-like development paradigm, which is named ArkUI web-like development paradigm lite. Its capabilities are a subset of the ArkUI web-like development paradigm.
 
 OpenHarmony supports the following development modes by system type:
 - Standard system:
@@ -16,7 +16,7 @@ OpenHarmony supports the following development modes by system type:
   - ArkUI web-like development paradigm lite
   - C++ development (for system applications)
 
-The figure below shows the code implementation relationship between [ui_lite](https://gitee.com/openharmony/arkui_ui_lite), [ace_engine_lite](https://gitee.com/openharmony/arkui_ace_engine_lite), and [ace_engine](https://gitee.com/openharmony/arkui_ace_engine) in the small-system graphics framework.
+The figure below shows the code implementation relationship between [ui_lite](https://gitcode.com/openharmony/arkui_ui_lite), [ace_engine_lite](https://gitcode.com/openharmony/arkui_ace_engine_lite), and [ace_engine](https://gitcode.com/openharmony/arkui_ace_engine) in the small-system graphics framework.
 
 ![ui relationship](figures/openharmony_ui.png)
 

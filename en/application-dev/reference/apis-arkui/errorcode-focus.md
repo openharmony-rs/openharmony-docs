@@ -1,4 +1,10 @@
 # Focus Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -8,7 +14,7 @@
 
 **Error Message**
 
-This component is not focusable.
+the component cannot be focused.
 
 **Description**
 
@@ -16,11 +22,11 @@ This error code is reported when the current component is not focusable.
 
 **Possible Causes**
 
-The component is not focusable by default or has been set to not focusable through attribute methods such as **focusable**.
+The component is not focusable by default or has been configured through attribute methods such as **focusable**.
 
 **Solution**
 
-N/A
+Check whether the current component is focusable and whether **focusable** is set to **true**.
 
 ## 150002 Ancestor Component Not Focusable
 
@@ -34,17 +40,17 @@ This error code is reported when an ancestor of the current component is not foc
 
 **Possible Causes**
 
-The ancestor component is not focusable by default or has been set to not focusable through attribute methods such as **focusable**.
+The ancestor component is not focusable by default or has been configured through attribute methods such as **focusable**.
 
 **Solution**
 
-N/A
+Check whether the ancestor component is focusable and whether **focusable** is set to **true**.
 
-## 150003 Component Doesn't Exist
+## 150003 Component Does Not Exist
 
 **Error Message**
 
-The component doesn't exist, is currently invisible, or has been disabled.
+the component is not on tree or does not exist.
 
 **Description**
 
@@ -52,8 +58,10 @@ This error code is reported when the provided ID points to a non-existent, detac
 
 **Possible Causes**
 
-The provided ID is incorrect, or the component has been destroyed.
+- The provided ID is incorrect, or the component has been destroyed.
+
+- Focus is requested for a component that is not focusable. For details about such components, see [Component Focusability](../../ui/arkts-common-events-focus-event.md#component-focusability).
 
 **Solution**
 
-N/A
+Use the correct ID or component.

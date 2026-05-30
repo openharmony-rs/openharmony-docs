@@ -1,4 +1,14 @@
 # OH_Drawing_PositionAndAffinity
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_Drawing_PositionAndAffinity OH_Drawing_PositionAndAffinity
+```
 
 ## 概述
 

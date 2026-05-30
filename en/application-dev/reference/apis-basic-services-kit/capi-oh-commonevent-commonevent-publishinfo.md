@@ -5,7 +5,11 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
+
+```c
+typedef struct CommonEvent_PublishInfo CommonEvent_PublishInfo
+```
 
 ## Overview
 

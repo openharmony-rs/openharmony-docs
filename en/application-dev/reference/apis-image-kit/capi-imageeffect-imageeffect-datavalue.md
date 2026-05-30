@@ -1,8 +1,18 @@
 # ImageEffect_DataValue
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef union ImageEffect_DataValue {...} ImageEffect_DataValue
+```
 
 ## Overview
 
-The ImageEffect_DataValue union describes the data values.
+The union describes the data values.
 
 **Since**: 12
 
@@ -22,4 +32,4 @@ The ImageEffect_DataValue union describes the data values.
 | char charValue | Byte value, corresponding to [EFFECT_DATA_TYPE_CHAR](capi-image-effect-filter-h.md#imageeffect_datatype).|
 | long longValue | Long integer, corresponding to [EFFECT_DATA_TYPE_LONG](capi-image-effect-filter-h.md#imageeffect_datatype).|
 | bool boolValue | Boolean value, corresponding to [EFFECT_DATA_TYPE_BOOL](capi-image-effect-filter-h.md#imageeffect_datatype).|
-| void* ptrValue | Pointer value, corresponding to [EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype).|
+| void *ptrValue | Pointer value, corresponding to [EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype).|

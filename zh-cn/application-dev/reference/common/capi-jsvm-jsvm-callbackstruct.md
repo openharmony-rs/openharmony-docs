@@ -1,10 +1,14 @@
 # JSVM_CallbackStruct
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+
+```c
+typedef struct {...} JSVM_CallbackStruct
+```
 
 ## 概述
 
@@ -35,7 +39,7 @@
 
 ### callback()
 
-```
+```c
 JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)
 ```
 

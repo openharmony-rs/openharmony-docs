@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **JsMessageExt** object that is returned after the [runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10) API is invoked.
 
@@ -14,7 +14,7 @@ Implements a **JsMessageExt** object that is returned after the [runJavaScriptEx
 >
 > - The initial APIs of this class are supported since API version 10.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## getType<sup>10+</sup>
 
@@ -139,3 +139,16 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |
 | 17100014 | The type and value of the message do not match. |
+## getErrorDescription<sup>22+</sup>
+
+getErrorDescription(): string \| null
+
+Obtains the error information about the JavaScript execution. For details about the sample code, see [runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10).
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type          | Description                                                     |
+| --------------| --------------------------------------------------------- |
+| string \| null | If an exception occurs during JavaScript execution or the return value is of the object type, **"Not support type: <{exception\object}>"** is returned.|The maximum string length is 2048 characters, and the excessive part will be truncated. If the object contains a member of the **callback** type, the member will be automatically ignored during serialization. In other cases, **null** is returned.|

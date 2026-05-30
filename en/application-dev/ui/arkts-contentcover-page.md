@@ -1,4 +1,10 @@
 # Binding a Full-Modal Page (bindContentCover)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A full-modal page, implemented using [bindContentCover](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover), is a full-screen modal interaction page that completely covers the underlying parent view. It is ideal for scenarios such as viewing large images or full-screen documents.
 
@@ -25,22 +31,31 @@ There is a popup-style layer interaction between full-modal and semi-modal pages
 
 For details about how to use **bindContentCover** to create a full-screen modal transition effect, see [Modal Transition](arkts-modal-transition.md#creating-modal-transition-with-bindcontentcover)
 
-```ts
+<!-- @[bindContentCover_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindContentCover/template6/BindContentCoverDemo.ets) -->
+
+``` TypeScript
 import { curves } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
 interface PersonList {
   name: string,
-  cardnum: string
+  cardNum: string
 }
 
 @Entry
 @Component
 struct BindContentCoverDemo {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private manager = this.context.resourceManager;
   private personList: Array<PersonList> = [
-    { name: 'Wang **', cardnum: '1234***********789' },
-    { name: 'Song *', cardnum: '2345***********789' },
-    { name: 'Xu **', cardnum: '3456***********789' },
-    { name: 'Tang *', cardnum: '4567***********789' }
+    // The value in the 'Person_example1' resource file is 'Wang **.'
+    { name: this.manager.getStringByNameSync('Person_example1'), cardNum: '1234***********789' },
+    // The value in the 'Person_example2' resource file is 'Song *.'
+    { name: this.manager.getStringByNameSync('Person_example2'), cardNum: '2345***********789' },
+    // The value in the 'Person_example3' resource file is 'Xu **.'
+    { name: this.manager.getStringByNameSync('Person_example3'), cardNum: '3456***********789' },
+    // The value in the 'Person_example4' resource file is 'Tang *.'
+    { name: this.manager.getStringByNameSync('Person_example4'), cardNum: '4567***********789' }
   ];
   // Define the state variable to control the semi-modal visibility.
   @State isSheetShow: boolean = false;
@@ -51,7 +66,8 @@ struct BindContentCoverDemo {
   MyContentCoverBuilder() {
     Column() {
       Row() {
-        Text('Select passengers')
+        // Replace $r('app.string.Text_choose_person') with the actual resource file. In this example, the value in the resource file is "Select passengers."
+        Text($r('app.string.Text_choose_person'))
           .fontSize(20)
           .fontColor(Color.White)
           .width('100%')
@@ -61,7 +77,8 @@ struct BindContentCoverDemo {
       .backgroundColor(0x007dfe)
 
       Row() {
-        Text('+ Add')
+        // Replace $r('app.string.Text_add_person') with the actual resource file. In this example, the value in the resource file is "+ Add."
+        Text($r('app.string.Text_add_person'))
           .fontSize(16)
           .fontColor(0x333333)
           .margin({ top: 10 })
@@ -95,7 +112,7 @@ struct BindContentCoverDemo {
               Text(item.name)
                 .fontColor(0x333333)
                 .fontSize(18)
-              Text(item.cardnum)
+              Text(item.cardNum)
                 .fontColor(0x666666)
                 .fontSize(14)
             }
@@ -103,7 +120,8 @@ struct BindContentCoverDemo {
             .alignItems(HorizontalAlign.Start)
 
             Column() {
-              Text('Edit')
+              // Replace $r('app.string.Text_edit') with the actual resource file. In this example, the value in the resource file is "Edit."
+              Text($r('app.string.Text_edit'))
                 .fontColor(0x007dfe)
                 .fontSize(16)
             }
@@ -117,7 +135,8 @@ struct BindContentCoverDemo {
       }
       .padding({ top: 20, bottom: 20 })
 
-      Text('OK')
+      // Replace r('app.string.Text_confirm') with the actual resource file. In this example, the value in the resource file is "OK."
+      Text($r('app.string.Text_confirm'))
         .width('90%')
         .height(40)
         .textAlign(TextAlign.Center)
@@ -137,19 +156,22 @@ struct BindContentCoverDemo {
     Row() {
       Column() {
         Text('00:25')
-        Text('From')
+        // Replace $r('app.string.Label_origin_station') with the actual resource file. In this example, the value in the resource file is "Departure."
+        Text($r('app.string.Label_origin_station'))
       }
       .width('25%')
 
       Column() {
         Text('G1234')
-        Text('8 h 1 min')
+        // Replace $r('app.string.Label_start_time') with the actual resource file. In this example, the value in the resource file is "8 h 1 min."
+        Text($r('app.string.Label_start_time'))
       }
       .width('25%')
 
       Column() {
         Text('08:26')
-        Text('To')
+        // Replace $r('app.string.Label_destination_station') with the actual resource file. In this example, the value in the resource file is "Arrival."
+        Text($r('app.string.Label_destination_station'))
       }
       .width('25%')
     }
@@ -170,7 +192,8 @@ struct BindContentCoverDemo {
       .borderRadius(10)
 
       Column() {
-        Text('+ Select passengers')
+        // Replace $r('app.string.Sheet_choose_person') with the actual resource file. In this example, the value in the resource file is "+ Select passengers."
+        Text($r('app.string.Sheet_choose_person'))
           .fontSize(18)
           .fontColor(Color.Orange)
           .fontWeight(FontWeight.Bold)
@@ -182,7 +205,7 @@ struct BindContentCoverDemo {
             // Step 3: Launch the full-modal view using the full-modal API. The newly launched modal panel is displayed on the top by default.
             this.isPresent = !this.isPresent;
           })
-            // Bind the modal view MyContentCoverBuilder using the full-modal API. The transition property supports custom transition effects. Here a horizontal entry along the x-axis is defined.
+          // Bind the modal view MyContentCoverBuilder using the full-modal API. The transition property supports custom transition effects. Here a horizontal entry along the x-axis is defined.
           .bindContentCover($$this.isPresent, this.MyContentCoverBuilder(), {
             transition: TransitionEffect.translate({ x: 500 }).animation({ curve: curves.springMotion(0.6, 0.8) })
           })
@@ -195,7 +218,8 @@ struct BindContentCoverDemo {
     Column() {
       Row() {
         this.TripInfo()
-        Text('Tickets available')
+        // Replace $r('app.string.Sheet_tickets_available') with the actual resource file. In this example, the value in the resource file is "Tickets available."
+        Text($r('app.string.Sheet_tickets_available'))
           .fontColor(Color.Blue)
           .width('25%')
       }
@@ -204,12 +228,13 @@ struct BindContentCoverDemo {
       .borderRadius(10)
       .backgroundColor(Color.White)
       .onClick(()=>{
-        this.isSheetShow = !this.isSheetShow
+        this.isSheetShow = !this.isSheetShow;
       })
       // Step 1: Define the semi-modal transition effect.
       .bindSheet($$this.isSheetShow, this.MySheetBuilder(), {
         height: SheetSize.MEDIUM,
-        title: {title: "Confirm Order"},
+        // Replace $r('app.string.Text_confirm_order') with the actual resource file. In this example, the value in the resource file is "Confirm Order."
+        title: {title: $r('app.string.Text_confirm_order')},
       })
     }
     .width('100%')
@@ -218,3 +243,5 @@ struct BindContentCoverDemo {
   }
 }
 ```
+
+![modalTransition](figures/modalTransition.gif)

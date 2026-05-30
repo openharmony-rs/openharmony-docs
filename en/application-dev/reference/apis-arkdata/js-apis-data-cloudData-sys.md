@@ -45,6 +45,7 @@ Enumerates the operations for clearing the downloaded cloud data locally.
 | --------- | ---------------------------- |
 | CLEAR_CLOUD_INFO | Clear the cloud identifier of the data downloaded from the cloud and retain the data locally.|
 | CLEAR_CLOUD_DATA_AND_INFO |Clear the data downloaded from the cloud, excluding the cloud data that has been modified locally.  |
+| CLEAR_CLOUD_NONE<sup>23+</sup> |Does not clear any data.  |
 
 ## ExtraData<sup>11+</sup>
 
@@ -52,10 +53,10 @@ Represents the transparently transmitted data, which contains information requir
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
-| Name     | Type  | Mandatory| Description                                                        |
-| --------- | ------ | ---- | ------------------------------------------------------------ |
-| eventId   | string | Yes  | Event ID. The value **cloud_data_change** indicates cloud data changes.             |
-| extraData | string | Yes  | Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application name, database name, database type, and database table name. All the fields cannot be empty.
+| Name     | Type  | Read-Only| Optional| Description                                                        |
+| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| eventId   | string | No  | No  | Event ID. The value **cloud_data_change** indicates cloud data changes.             |
+| extraData | string | No  | No  | Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application name, database name, database type, and database table name. All the fields cannot be empty.
 
 **Example**
 
@@ -66,17 +67,9 @@ Represents the transparently transmitted data, which contains information requir
 // databaseScopes: type of the cloud database.
 // recordTypes: names of the tables in the cloud database.
 
-interface ExtraData {
+let extraData: cloudData.ExtraData = {
   eventId: "cloud_data_change",
-  extraData: '{
-    "data": "{
-     "accountId": "aaa",
-     "bundleName": "com.bbb.xxx",
-     "containerName": "alias",
-     "databaseScopes": ["private", "shared"],
-     "recordTypes": ["xxx", "yyy", "zzz"]
-    }"
-  }'
+  extraData: '{"data": "{"accountId": "aaa", "bundleName": "com.bbb.xxx", "containerName": "alias", "databaseScopes": ["private", "shared"], "recordTypes": ["xxx", "yyy", "zzz"]}"}',
 }
 
 ```
@@ -87,12 +80,12 @@ Represents the device-cloud sync statistics.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
-| Name     | Type  | Mandatory| Description                                                 |
-| --------- | ------ | ---- |-----------------------------------------------------|
-| table   | string | Yes  | Name of the table queried. For example, the value **cloud_notes** indicates that the sync information of the **cloud_notes** table is queried.|
-| inserted   | number | Yes  | Number of data records that are added locally and have not been synced to the cloud. For example, the value **2** indicates that the table has two data records that are added locally but not synced to the cloud.         |
-| updated   | number | Yes  | Number of data records that are modified locally or on the cloud but have not been synced. For example, the value **2** indicates that the table has two data records that are updated locally or on the cloud but not synced.    |
-| normal | number | Yes  | Number of consistent data records between the device and the cloud. For example, the value **2** indicates that table has two data records that are consistent between the device and the cloud.                    |
+| Name     | Type  | Read-Only| Optional| Description                                                 |
+| --------- | ------ | ---- | ---- |-----------------------------------------------------|
+| table   | string | No  | No  | Name of the table queried. For example, the value **cloud_notes** indicates that the sync information of the **cloud_notes** table is queried.|
+| inserted   | number | No  | No  | Number of data records that are added locally and have not been synced to the cloud. For example, the value **2** indicates that the table has two data records that are added locally but not synced to the cloud.         |
+| updated   | number | No  | No  | Number of data records that are modified locally or on the cloud but have not been synced. For example, the value **2** indicates that the table has two data records that are updated locally or on the cloud but not synced.    |
+| normal | number | No  | No  | Number of consistent data records between the device and the cloud. For example, the value **2** indicates that table has two data records that are consistent between the device and the cloud.                    |
 
 ## SyncStatus<sup>18+</sup>
 
@@ -111,12 +104,46 @@ Represents information about the last device-cloud sync.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
-| Name      | Type                                                        | Mandatory| Description                      |
-| ---------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| startTime  | Date                                                         | Yes  | Start time of the last device-cloud sync.|
-| finishTime | Date                                                         | Yes  | End time of the last device-cloud sync.|
-| code       | [relationalStore.ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10) | Yes  | Result of the last device-cloud sync.|
-| syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | No| Status of the last device-cloud sync. The default value is **cloudData.SyncStatus.RUNNING**.|
+| Name      | Type                                                        | Read-Only| Optional| Description                      |
+| ---------- | ------------------------------------------------------------ | ---- | ---- | -------------------------- |
+| startTime  | Date                                                         | No  | No  | Start time of the last device-cloud sync.|
+| finishTime | Date                                                         | No  | No  | End time of the last device-cloud sync.|
+| code       | [relationalStore.ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10) | No| No| Result of the last device-cloud sync.|
+| syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | No| Yes| Status of the last device-cloud sync. The default value is **cloudData.SyncStatus.RUNNING**.|
+
+## DBSwitchInfo<sup>23+</sup>
+
+Defines the switch information of a device-cloud synergy database.
+
+| Name      | Type           | Read-Only| Optional| Description                      |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| enable     | boolean           | No  | No  | Whether to enable device-cloud synergy for the database. The value **true** indicates that device-cloud synergy is enabled, and the value **false** indicates the opposite.|
+| tableInfo  | Record<string, boolean> | No  | Yes  | Device-cloud synergy configuration of a table. The key is the table name, and the value is the switch status of the table. The value **true** indicates that device-cloud synergy is enabled for the table, and the value **false** indicates the opposite. If this parameter is not set, the device-cloud synergy is enabled for the database by default.|
+
+## SwitchConfig<sup>23+</sup>
+
+Defines the switch configuration of a device-cloud synergy database.
+
+| Name      | Type           | Read-Only| Optional| Description                      |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| dbInfo     | Record<string, [DBSwitchInfo](#dbswitchinfo23)>    | No  | No  | Switch configuration information of a database. The key is the database name, and the value is the configuration information of the database.  |
+
+## DBActionInfo<sup>23+</sup>
+
+Defines the clearance information of a device-cloud synergy database.
+
+| Name      | Type           | Read-Only| Optional| Description                      |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| action     | [ClearAction](#clearaction)           | No  | No  | Default data clearance mode of the database.|
+| tableInfo  | Record<string, [ClearAction](#clearaction)> | No  | Yes  | Information about the table whose data is to be cleared and the clearance rules. The key is the table name, and the value is the clearance mode of the table. If this parameter is not set, the data clearance mode of database is used by default.  |
+
+## ClearConfig<sup>23+</sup>
+
+Defines the clearance configuration of a device-cloud synergy database.
+
+| Name      | Type           | Read-Only| Optional| Description                      |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| dbInfo     | Record<string, [DBActionInfo](#dbactioninfo23)>    | No  | No  | Information about the database whose data is to be cleared and the clearance rules. The key is the database name, and the value is the clearance configuration of the database.  |
 
 ## Config
 
@@ -419,6 +446,73 @@ let account: string = 'test_id';
 let bundleName: string = 'test_bundleName';
 try {
   cloudData.Config.changeAppCloudSwitch(account, bundleName, true).then(() => {
+    console.info('Succeeded in changing App cloud switch');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### changeAppCloudSwitch<sup>23+</sup>
+
+static changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, config?: SwitchConfig): Promise&lt;void&gt;
+
+Changes the device-cloud synergy setting for an application. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CLOUDDATA_CONFIG
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+**Parameters**
+
+| Name   | Type                           | Mandatory| Description                        |
+| --------- | ------------------------------- | ---- | ---------------------------- |
+| accountId | string                          | Yes  | ID of the cloud account.|
+| bundleName| string                         | Yes  | Bundle name of the application.|
+| status    | boolean                        | Yes  | New device-cloud synergy setting. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.|
+| config    | [SwitchConfig](#switchconfig23)   | No  | Switch configuration of a device-cloud synergy database. Device-cloud synergy priority: application > database > table. If this parameter is not set, the application-level device-cloud synergy is used by default.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let account: string = 'test_id';
+let bundleName: string = 'test_bundleName';
+let config: cloudData.SwitchConfig = {
+  dbInfo: {
+    'test_storeName1': {
+      enable: true,
+      tableInfo: {
+        'test_tableName1': true,
+        'test_tableName2': false
+      }
+    }
+  }
+}
+try {
+  cloudData.Config.changeAppCloudSwitch(account, bundleName, true, config).then(() => {
     console.info('Succeeded in changing App cloud switch');
   }).catch((err: BusinessError) => {
     console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
@@ -1011,6 +1105,78 @@ try {
 }
 ```
 
+### clear<sup>23+</sup>
+
+static clear(accountId: string, appActions: Record<string, ClearAction>, config?: Record<string, ClearConfig>): Promise&lt;void&gt;
+
+Clears the cloud data locally. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CLOUDDATA_CONFIG
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+**Parameters**
+
+| Name    | Type                                               | Mandatory| Description                            |
+| ---------- | --------------------------------------------------- | ---- | -------------------------------- |
+| accountId  | string                                              | Yes  | ID of the cloud account.            |
+| appActions | Record<string, [ClearAction](#clearaction)>         | Yes  | Information about the application whose data is to be cleared and the operation to perform.|
+| config | Record<string, [ClearConfig](#clearconfig23)>         | No  | Clearance information of a device-cloud synergy database. The key is the application name, and the value is the database clearance rules of the application. Clearance priority: table > database > application. If this parameter is not set, the application-level data clearance mode is used by default.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let account: string = "test_id";
+let appActions: Record<string, cloudData.ClearAction> = {
+  'test_bundleName1': cloudData.ClearAction.CLEAR_CLOUD_INFO,
+  'test_bundleName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
+  'test_bundleName3': cloudData.ClearAction.CLEAR_CLOUD_NONE,
+};
+let config: Record<stringm, cloudData.ClearConfig> = {
+  'test_bundleName': {
+    dbInfo: {
+      'test_storeName': {
+        action: cloudData.ClearAction.CLEAR_CLOUD_INFO,
+        tableInfo: {
+          'test_tableName1': cloudData.ClearAction.CLEAR_CLOUD_INFO,
+          'test_tableName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
+        }
+      }
+    }
+  }
+}
+try {
+  cloudData.Config.clear(account, appActions, config).then(() => {
+    console.info('Succeeding in clearing cloud data');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## sharing<sup>11+</sup>
 
 Provides APIs for device-cloud data sharing, including sharing or unsharing data, exiting a share, changing the privilege on the shared data, querying participants, confirming an invitation, changing the invitation confirmation state, and querying the shared resource.
@@ -1069,11 +1235,11 @@ Represents the device-cloud sharing result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
-| Name         | Type                         | Mandatory | Description          |
-| ----------- | --------------------------- | --- | ------------ |
-| code        | number                      | Yes  | Error code.      |
-| description | string                      | No  | Detailed description of the error code. The default value is **undefined**.      |
-| value       | T                           | No  | Value returned. The specific type is specified by the **T** parameter. The default value is **undefined**.|
+| Name         | Type                         | Read-Only| Optional | Description          |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| code        | number                      | No  | No  | Error code.      |
+| description | string                      | No  | Yes  | Detailed description of the error code. The default value is **undefined**.      |
+| value       | T                           | No  | Yes  | Value returned. The specific type is specified by the **T** parameter. The default value is **undefined**.|
 
 ### Privilege<sup>11+</sup>
 
@@ -1081,13 +1247,13 @@ Defines the privilege (permissions) on the shared data.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
-| Name         | Type                         | Mandatory | Description          |
-| ----------- | --------------------------- | --- | ------------ |
-| writable    | boolean              | No  | Whether the participant can modify the shared data. The value **true** means the participant can modify the data; the value **false** means the opposite. The default value is **false**.  |
-| readable    | boolean              | No  | Whether the participant can read the shared data. The value **true** means the participant can read the data; the value **false** means the opposite. The default value is **false**.  |
-| creatable   | boolean              | No  | Whether the participant can create data to share. The value **true** means the participant can create data; the value **false** means the opposite. The default value is **false**. |
-| deletable   | boolean              | No  | Whether the participant can delete the shared data. The value **true** means the participant can delete the data; the value **false** means the opposite. The default value is **false**. |
-| shareable   | boolean              | No  | Whether the participant can share the data to others. The value **true** means the participant can share the data; the value **false** means the opposite. The default value is **false**. |
+| Name         | Type                         | Read-Only| Optional | Description          |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| writable    | boolean              | No  | Yes  | Whether the participant can modify the shared data. The value **true** means the participant can modify the data; the value **false** means the opposite. The default value is **false**.  |
+| readable    | boolean              | No  | Yes  | Whether the participant can read the shared data. The value **true** means the participant can read the data; the value **false** means the opposite. The default value is **false**.  |
+| creatable   | boolean              | No  | Yes  | Whether the participant can create data to share. The value **true** means the participant can create data; the value **false** means the opposite. The default value is **false**. |
+| deletable   | boolean              | No  | Yes  | Whether the participant can delete the shared data. The value **true** means the participant can delete the data; the value **false** means the opposite. The default value is **false**. |
+| shareable   | boolean              | No  | Yes  | Whether the participant can share the data to others. The value **true** means the participant can share the data; the value **false** means the opposite. The default value is **false**. |
 
 ### Participant<sup>11+</sup>
 
@@ -1095,13 +1261,13 @@ Represents information about a participant of device-cloud sharing.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
-| Name         | Type                         | Mandatory | Description          |
-| ----------- | --------------------------- | --- | ------------ |
-| identity    | string                  | Yes  | ID of the participant.             |
-| role        | [Role](#role11)           | No  | Role of the participant, inviter or invitee. The default value is **undefined**. |
-| state       | [State](#state11)         | No  | State of the device-cloud sharing. The default value is **undefined**.|
-| privilege   | [Privilege](#privilege11) | No  | Permissions on the shared data. The [Privilege](#privilege11) defaults are used by default.|
-| attachInfo  | string                  | No  | Additional information, such as the verification code used for participant identity verification. The default value is an empty string.|
+| Name         | Type                         | Read-Only| Optional| Description          |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| identity    | string                    | No  | No  | ID of the participant.             |
+| role        | [Role](#role11)           | No  | Yes  | Role of the participant, inviter or invitee. The default value is **undefined**. |
+| state       | [State](#state11)         | No  | Yes  | State of the device-cloud sharing. The default value is **undefined**.|
+| privilege   | [Privilege](#privilege11) | No  | Yes  | Permissions on the shared data. The [Privilege](#privilege11) defaults are used by default.|
+| attachInfo  | string                    | No  | Yes  | Additional information, such as the verification code used for participant identity verification. The default value is an empty string.|
 
 ### allocResourceAndShare<sup>11+</sup>
 
@@ -2069,4 +2235,4 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
 }))
 
 ```
-
+ 

@@ -1,26 +1,28 @@
 # @ohos.animator (动画)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供组件动画效果，包括定义动画、启动动画和以相反的顺序播放动画等。
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块从API version 9开始支持在ArkTS中使用。
+> - 本模块从API version 9开始支持在ArkTS中使用。
 >
-> 该模块不支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的文件声明处使用，即不能在UIAbility的生命周期中调用，需要在创建组件实例后使用。
+> - 该模块不支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的文件声明处使用，即不能在UIAbility的生命周期中调用，需要在创建组件实例后使用。
 >
-> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
+> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
 >
-> 自定义组件中一般会持有一个[create](#create18)接口返回的[AnimatorResult](#animatorresult)对象，以保证动画对象不在动画过程中析构，而这个对象也通过回调捕获了自定义组件对象。则需要在自定义组件销毁时的[aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中释放动画对象，来避免因为循环依赖导致内存泄漏，详细示例可参考：[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+> - 自定义组件中通常会持有一个由[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)接口返回的[AnimatorResult](#animatorresult)对象，以确保动画对象在动画过程中不被析构，该对象通过回调捕获了自定义组件对象，因此需要在自定义组件销毁时的[aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)生命周期中释放动画对象，以避免因循环依赖导致内存泄漏。详细示例可参考：[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 >
-> Animator对象析构或主动调用[cancel](#cancel)都会有一次额外的[onFrame](#onframe12)，返回值是动画终点的值。
+> - Animator对象析构或主动调用[cancel](#cancel)、[finish](#finish)方法时，都会触发一次额外的[onFrame](#属性)，返回值是动画终点值。因此，如果在动画过程中调用[cancel](#cancel)、[finish](#finish)，会导致属性值在一帧内跳变至终点。若希望动画在中途暂停，可先将onFrame设置为空函数，再调用[finish](#finish)。
+>
+> - 对于无限循环的Animator动画，即使开发者选项中将全局动画速率设置为0（关闭动画），循环动画仍会继续执行。
 
 ## 导入模块
 
@@ -44,9 +46,9 @@ create(options: AnimatorOptions): AnimatorResult
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)替代。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)替代。
 >
-> 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)来明确UI的执行上下文。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)来明确UI的执行上下文。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -105,6 +107,8 @@ create(options: AnimatorOptions \| SimpleAnimatorOptions): AnimatorResult
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -146,9 +150,11 @@ animator.create(options);// 建议使用 UIContext.createAnimator()接口
 
 createAnimator(options: AnimatorOptions): AnimatorResult
 
-创建动画
+创建动画。
 
-从API version 9开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)
+> **说明：**
+> 
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[create](#createdeprecated)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,6 +195,21 @@ this.animator = animator.createAnimator(options);
 
 定义Animator结果接口。
 
+### 属性
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+| 名称       | 类型                                                        | 只读 | 可选 | 说明                                                         |
+| ---------- | ------------------------------ | ---- | ------- | ----------------------------------------------------- |
+| onFrame<sup>12+</sup>   | (progress: number) => void                    | 否 | 否   | 接收到帧时回调。<br/>progress表示动画的当前值。取值范围为[AnimatorOptions](#animatoroptions)定义的[begin, end]，默认取值范围为[0, 1]。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                        |
+| onFinish<sup>12+</sup>   | () => void                    | 否 | 否   | 动画完成时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                        |
+| onCancel<sup>12+</sup>   | () => void                    | 否 | 否   | 动画被取消时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                        |
+| onRepeat<sup>12+</sup>   | () => void                    | 否 | 否   | 动画重复时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                        |
+| onframe<sup>(deprecated)</sup>   | (progress: number) => void                   | 否 | 否   | 接收到帧时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFrame。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| onfinish<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画完成时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFinish。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| oncancel<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画被取消时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onCancel。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| onrepeat<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画重复时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onRepeat。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+
 ### reset<sup>9+</sup>
 
 reset(options: AnimatorOptions): void
@@ -207,7 +228,7 @@ reset(options: AnimatorOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.animator(动画)](errorcode-animator.md)错误码。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -262,6 +283,8 @@ reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -272,7 +295,7 @@ reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[ohos.animator(动画)](errorcode-animator.md)错误码。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -286,6 +309,7 @@ reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 <!--deprecated_code_no_check-->
 ```ts
 import { Animator as animator, AnimatorResult, AnimatorOptions, SimpleAnimatorOptions } from '@kit.ArkUI';
+
 let options: AnimatorOptions = {
   duration: 1500,
   easing: "ease",
@@ -299,8 +323,8 @@ let options: AnimatorOptions = {
 let optionsNew: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200)
   .duration(2000)
   .iterations(3)
-  .delay(1000)
-let animatorResult:AnimatorResult = animator.create(options);
+  .delay(1000);
+let animatorResult: AnimatorResult = animator.create(options);
 animatorResult.reset(optionsNew);
 ```
 
@@ -326,7 +350,7 @@ animator.play();
 
 finish(): void
 
-结束动画，会触发[onFinish](#onfinish12)回调。
+结束动画，会触发[onFinish](#属性)回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -362,7 +386,7 @@ animator.pause();
 
 cancel(): void
 
-取消动画，会触发[onCancel](#oncancel12)回调。此接口和[finish](#finish)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
+取消动画，会触发[onCancel](#属性)回调。此接口和[finish](#finish)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -394,296 +418,6 @@ reverse(): void
 animator.reverse();
 ```
 
-### onFrame<sup>12+</sup>
-
-onFrame: (progress: number) => void
-
-接收到帧时回调。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名      | 类型     | 必填   | 说明       |
-| -------- | ------ | ---- | -------- |
-| progress | number | 是    | 动画的当前值。<br/>取值范围为[AnimatorOptions](#animatoroptions)定义的[begin, end]，默认取值范围为[0, 1]。 |
-
-**示例：**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
-    })
-    this.backAnimator.onFrame = (value: number) => {
-      console.info("onFrame callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onFinish<sup>12+</sup>
-
-onFinish: () => void
-
-动画完成时回调。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
-    })
-    this.backAnimator.onFinish = ()=> {
-      console.info("onFinish callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onCancel<sup>12+</sup>
-
-onCancel: () => void
-
-动画被取消时回调。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
-    })
-    this.backAnimator.onCancel = () => {
-      console.info("onCancel callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onRepeat<sup>12+</sup>
-
-onRepeat: () => void
-
-动画重复时回调。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
-    })
-    this.backAnimator.onRepeat = () => {
-      console.info("onRepeat callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onframe<sup>(deprecated)</sup>
-
-> **说明：**
->
-> 从API version 12开始废弃，推荐使用[onFrame](#onframe12)。
-
-onframe: (progress: number) => void
-
-接收到帧时回调。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名      | 类型     | 必填   | 说明       |
-| -------- | ------ | ---- | -------- |
-| progress | number | 是    | 动画的当前进度。 |
-
-**示例：**
-
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
-
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.onframe = (value) => {
-  console.info("onframe callback")
-}
-```
-
-### onfinish<sup>(deprecated)</sup>
-
-> **说明：**
->
-> 从API version 12开始废弃，推荐使用[onFinish](#onfinish12)。
-
-onfinish: () => void
-
-动画完成时回调。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
-
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.onfinish = () => {
-  console.info("onfinish callback")
-}
-```
-
-### oncancel<sup>(deprecated)</sup>
-
-> **说明：**
->
-> 从API version 12开始废弃，推荐使用[onCancel](#oncancel12)。
-
-
-oncancel: () => void
-
-动画被取消时回调。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
-
-<!--deprecated_code_no_check-->
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.oncancel = () => {
-  console.info("oncancel callback")
-}
-```
-
-### onrepeat<sup>(deprecated)</sup>
-
-> **说明：**
->
-> 从API version 12开始废弃，推荐使用[onRepeat](#onrepeat12)。
-
-onrepeat: () => void
-
-动画重复时回调。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
-
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.onrepeat = () => {
-  console.info("onrepeat callback")
-}
-```
-
 ### setExpectedFrameRateRange<sup>12+</sup>
 
 setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
@@ -692,6 +426,8 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -699,6 +435,10 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
 | 参数名           | 类型                                       | 必填 | 说明                          |
 | --------------- | ------------------------------------------ | ---- | -----------------------------|
 | rateRange       | [ExpectedFrameRateRange](../apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11)| 是   | 设置期望的帧率范围。|
+
+> **说明：**
+>
+> 开发者通过设置有效的期望帧率后，系统会收集设置的请求帧率，进行决策和分发，在渲染管线上进行分频，尽量能够满足开发者的期望帧率。开发者设置的期望帧率值不能代表最终实际效果，会受限于系统能力和屏幕刷新率。
 
 **示例：**
 
@@ -724,8 +464,8 @@ struct AnimatorTest {
       fill: "forwards",
       direction: "normal",
       iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
+      begin: 100, // 动画插值起点
+      end: 200 // 动画插值终点
     })
     this.backAnimator.setExpectedFrameRateRange(expectedFrameRate);
   }
@@ -742,7 +482,9 @@ update(options: AnimatorOptions): void
 
 更新当前动画器。
 
-从API version 9开始废弃，建议使用[reset<sup>9+</sup>](#reset9)。
+> **说明：**  
+>
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[reset](#reset9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -773,13 +515,34 @@ animator.update(options);
 | 名称       | 类型                                                        | 只读 | 可选 | 说明                                                         |
 | ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
 | duration   | number                                                      | 否 | 否   | 动画播放的时长，单位毫秒。<br/> 取值范围：[0, +∞)  <br/>默认值：0                         |
-| easing     | string                                                      | 否 | 否   | 动画插值曲线，仅支持以下可选值：<br/>"linear"：动画线性变化。<br/>"ease"：动画开始和结束时的速度较慢，cubic-bezier(0.25、0.1、0.25、1.0)。<br/>"ease-in"：动画播放速度先慢后快，cubic-bezier(0.42, 0.0, 1.0, 1.0)。<br/>"ease-out"：动画播放速度先快后慢，cubic-bezier(0.0, 0.0, 0.58, 1.0)。<br/>"ease-in-out"：动画播放速度先加速后减速，cubic-bezier(0.42, 0.0, 0.58, 1.0)。<br/>"fast-out-slow-in"：标准曲线，cubic-bezier(0.4，0.0，0.2，1.0)。<br/>"linear-out-slow-in"：减速曲线，cubic-bezier(0.0，0.0，0.2，1.0)。<br>"fast-out-linear-in"：加速曲线，cubic-bezier(0.4, 0.0, 1.0, 1.0)。<br/>"friction"：阻尼曲线，cubic-bezier(0.2, 0.0, 0.2, 1.0)。<br/>"extreme-deceleration"：急缓曲线，cubic-bezier(0.0, 0.0, 0.0, 1.0)。<br/>"rhythm"：节奏曲线，cubic-bezier(0.7, 0.0, 0.2, 1.0)。<br/>"sharp"：锐利曲线，cubic-bezier(0.33, 0.0, 0.67, 1.0)。<br/>"smooth"：平滑曲线，cubic-bezier(0.4, 0.0, 0.4, 1.0)。<br/>"cubic-bezier(x1,y1,x2,y2)"：三次贝塞尔曲线，x1、x2的值必须处于0-1之间。例如"cubic-bezier(0.42,0.0,0.58,1.0)"。<br/>"steps(number,step-position)"：阶梯曲线，number必须设置，为正整数，step-position参数可选，支持设置start或end，默认值为end。例如"steps(3,start)"。<br/>"interpolating-spring(velocity,mass,stiffness,damping)"：插值弹簧曲线，从API version 11开始支持且仅在ArkTS中支持使用。velocity、mass、stiffness、damping都是数值类型，且mass、stiffness、damping参数均应该大于0，具体参数含义参考[插值弹簧曲线](./js-apis-curve.md#curvesinterpolatingspring10)。使用interpolating-spring时，duration不生效，由弹簧参数决定；fill、direction、iterations设置无效，fill固定设置为"forwards"，direction固定设置为"normal"，iterations固定设置为1，且对animator的[reverse](#reverse)函数调用无效。即animator使用interpolating-spring时只能正向播放1次。<br/>非法字符串时取:"ease"。 |
+| easing     | string                                                      | 否 | 否   | 动画插值曲线，支持的曲线类型可参考表1。<br/>非法字符串时取:"ease"。 |
 | delay      | number                                                      | 否 | 否   | 动画延时播放时长，单位毫秒，设置为0时，表示不延时。设置为负数时动画提前播放，如果提前播放的时长大于动画总时长，动画直接过渡到终点。 <br/>默认值：0        |
 | fill       | 'none' \| 'forwards' \| 'backwards' \| 'both'               | 否 | 否   | 动画执行后是否恢复到初始状态，动画执行后，动画结束时的状态（在最后一个关键帧中定义）将保留。<br/>'none'：在动画执行之前和之后都不会应用任何样式到目标上。<br/>'forwards'：在动画结束后，目标将保留动画结束时的状态（在最后一个关键帧中定义）。<br/>'backwards'：动画将在[AnimatorOptions](#animatoroptions)中的delay期间应用第一个关键帧中定义的值。当[AnimatorOptions](#animatoroptions)中的direction为'normal'或'alternate'时应用from关键帧中的值，当[AnimatorOptions](#animatoroptions)中的direction为'reverse'或'alternate-reverse'时应用to关键帧中的值。<br/>'both'：动画将遵循forwards和backwards的规则，从而在两个方向上扩展动画属性。 |
 | direction  | 'normal' \| 'reverse' \| 'alternate' \| 'alternate-reverse' | 否 | 否   | 动画播放模式。<br/>'normal'： 动画正向循环播放。<br/>'reverse'： 动画反向循环播放。<br/>'alternate'：动画交替循环播放，奇数次正向播放，偶数次反向播放。<br/>'alternate-reverse'：动画反向交替循环播放，奇数次反向播放，偶数次正向播放。<br/>默认值：'normal' |
 | iterations | number                                                      | 否 | 否   | 动画播放次数。设置为0时不播放，设置为-1时无限次播放，设置大于0时为播放次数。<br/>**说明:** 设置为除-1外其他负数视为无效取值，无效取值动画默认播放1次。 |
-| begin      | number                                                      | 否 | 否   | 动画插值起点。<br/>**说明:** 会影响[onFrame](#onframe12)回调的入参值。<br/>默认值：0                                              |
-| end        | number                                                      | 否 | 否   | 动画插值终点。<br/>**说明:** 会影响[onFrame](#onframe12)回调的入参值。   <br/>默认值：1                                            |
+| begin      | number                                                      | 否 | 否   | 动画插值起点。<br/>**说明:** 会影响[onFrame](#属性)回调的入参值。<br/>默认值：0                                              |
+| end        | number                                                      | 否 | 否   | 动画插值终点。<br/>**说明:** 会影响[onFrame](#属性)回调的入参值。   <br/>默认值：1                                            |
+
+**表1 支持的曲线类型：** 
+
+| 类型       | 说明                                                       |
+| ---------- | ----------------------------------------------------- |
+| "linear"    | 动画线性变化。 |
+| "ease" | 动画开始和结束时的速度较慢，cubic-bezier(0.25, 0.1, 0.25, 1.0)。 |
+| "ease-in" | 动画播放速度先慢后快，cubic-bezier(0.42, 0.0, 1.0, 1.0)。|
+| "ease-out" | 动画播放速度先快后慢，cubic-bezier(0.0, 0.0, 0.58, 1.0)。|
+| "ease-in-out" | 动画播放速度先加速后减速，cubic-bezier(0.42, 0.0, 0.58, 1.0)。 |
+| "fast-out-slow-in" | 标准曲线，cubic-bezier(0.4, 0.0, 0.2, 1.0)。 |
+| "linear-out-slow-in" | 减速曲线，cubic-bezier(0.0, 0.0, 0.2, 1.0)。 |
+| "fast-out-linear-in" | 加速曲线，cubic-bezier(0.4, 0.0, 1.0, 1.0)。 |
+| "friction" | 阻尼曲线，cubic-bezier(0.2, 0.0, 0.2, 1.0)。 |
+| "extreme-deceleration" | 急缓曲线，cubic-bezier(0.0, 0.0, 0.0, 1.0)。 |
+| "rhythm" | 节奏曲线，cubic-bezier(0.7, 0.0, 0.2, 1.0)。 |
+| "sharp" | 锐利曲线，cubic-bezier(0.33, 0.0, 0.67, 1.0)。 |
+| "smooth" | 平滑曲线，cubic-bezier(0.4, 0.0, 0.4, 1.0)。 |
+| "cubic-bezier(x1, y1, x2, y2)" | 三次贝塞尔曲线，x1、x2的值必须处于0-1之间。例如"cubic-bezier(0.42, 0.0, 0.58, 1.0)"。 |
+| "steps(number, step-position)" | 阶梯曲线，number必须设置，为正整数，step-position参数可选，支持设置start或end，默认值为end。例如"steps(3, start)"。 |
+| interpolating-spring(velocity, mass, stiffness, damping) | 插值弹簧曲线。<br/>velocity、mass、stiffness、damping都是数值类型，且mass、stiffness、damping参数均应该大于0，具体参数含义参考插值弹簧曲线[curves.interpolatingSpring](./js-apis-curve.md#curvesinterpolatingspring10)。<br/>使用interpolating-spring时，duration不生效，由弹簧参数决定；fill、direction、iterations设置无效，fill固定设置为"forwards"，direction固定设置为"normal"，iterations固定设置为1，且对animator的[reverse](#reverse)函数调用无效。即animator使用interpolating-spring时只能正向播放1次。<br/>从API version 11开始支持且仅在ArkTS中支持使用。|
 
 ## SimpleAnimatorOptions<sup>18+</sup>
 
@@ -793,6 +556,8 @@ SimpleAnimatorOptions的构造函数。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -800,17 +565,29 @@ SimpleAnimatorOptions的构造函数。
 | 参数名       | 类型                                                        | 必填 | 说明                                                         |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 |  begin      | number                                                      | 是   | 动画插值起点。                                               |
-|  end        | number                                                      | 是   | 动画插值终点。
+|  end        | number                                                      | 是   | 动画插值终点。                                               |
 
 **示例：**
 
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200); // 动画插值过程从100到200，其余动画参数使用默认值。
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200); // 动画插值过程从100到200，其余动画参数使用默认值。
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### duration<sup>18+</sup>
@@ -820,6 +597,8 @@ duration(duration: number): SimpleAnimatorOptions
 设置animator动画时长。 
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -840,10 +619,22 @@ duration(duration: number): SimpleAnimatorOptions
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(500);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(500);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### easing<sup>18+</sup>
@@ -853,6 +644,8 @@ easing(curve: string): SimpleAnimatorOptions
 设置animator动画插值曲线。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -873,10 +666,22 @@ easing(curve: string): SimpleAnimatorOptions
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).easing("ease-in");
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).easing("ease-in");
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### delay<sup>18+</sup>
@@ -886,6 +691,8 @@ delay(delay: number): SimpleAnimatorOptions
 设置animator动画播放时延。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -906,10 +713,22 @@ delay(delay: number): SimpleAnimatorOptions
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).delay(500);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).delay(500);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### fill<sup>18+</sup>
@@ -919,6 +738,8 @@ fill(fillMode: [FillMode](./arkui-ts/ts-appendix-enums.md#fillmode)): SimpleAnim
 设置animator动画填充方式。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -939,10 +760,22 @@ fill(fillMode: [FillMode](./arkui-ts/ts-appendix-enums.md#fillmode)): SimpleAnim
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).fill(FillMode.Forwards);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).fill(FillMode.Forwards);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### direction<sup>18+</sup>
@@ -952,6 +785,8 @@ direction(direction: [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode)): Simp
 设置animator动画播放方向。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -972,10 +807,22 @@ direction(direction: [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode)): Simp
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).direction(PlayMode.Alternate);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).direction(PlayMode.Alternate);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### iterations<sup>18+</sup>
@@ -985,6 +832,8 @@ iterations(iterations: number): SimpleAnimatorOptions
 设置animator动画播放次数。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -1005,10 +854,22 @@ iterations(iterations: number): SimpleAnimatorOptions
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).iterations(3);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).iterations(3);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ## 完整示例
@@ -1136,8 +997,8 @@ struct AnimatorTest {
       fill: "forwards",
       direction: "normal",
       iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
+      begin: 100, // 动画插值起点
+      end: 200 // 动画插值终点
     })
     this.backAnimator.onFinish = () => {
       this.flag = true
@@ -1157,7 +1018,7 @@ struct AnimatorTest {
 
   aboutToDisappear() {
     // 自定义组件消失时调用finish使未完成的动画结束，避免动画继续运行。
-    // 由于backAnimator在onframe中引用了this, this中保存了backAnimator，
+    // 由于backAnimator在onFrame中引用了this, this中保存了backAnimator，
     // 在自定义组件消失时应该将保存在组件中的backAnimator置空，避免内存泄漏
     this.backAnimator?.finish();
     this.backAnimator = undefined;
@@ -1169,7 +1030,7 @@ struct AnimatorTest {
         Column()
           .width(this.columnWidth)
           .height(this.columnHeight)
-          .backgroundColor(Color.Red)
+          .backgroundColor(Color.Blue)
       }
       .width('100%')
       .height(300)
@@ -1279,6 +1140,8 @@ struct AnimatorTest {
 }
 ```
 
+![animator_01](figures/animator_result.gif)
+
 ### 位移动画示例（简易入参）
 
 ```ts
@@ -1296,18 +1159,18 @@ struct AnimatorTest {
     this.backAnimator = this.getUIContext()?.createAnimator(
       new SimpleAnimatorOptions(0, 100)
     )
-    this.backAnimator.onFinish = ()=> {
+    this.backAnimator.onFinish = () => {
       this.flag = true
       console.info(this.TAG, 'backAnimator onFinish')
     }
-    this.backAnimator.onFrame = (value:number)=> {
+    this.backAnimator.onFrame = (value:number) => {
       this.translate_ = value
     }
   }
 
   aboutToDisappear() {
     // 自定义组件消失时调用finish使未完成的动画结束，避免动画继续运行。
-    // 由于backAnimator在onframe中引用了this, this中保存了backAnimator，
+    // 由于backAnimator在onFrame中引用了this, this中保存了backAnimator，
     // 在自定义组件消失时应该将保存在组件中的backAnimator置空，避免内存泄漏
     this.backAnimator?.finish();
     this.backAnimator = undefined;

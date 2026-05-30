@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoVerify OH_CryptoVerify
+```
+
 ## Overview
 
 Defines the data used for signature verification.

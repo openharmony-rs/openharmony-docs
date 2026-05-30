@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1; @wendel; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 CompletionHandlerForAtomicService作为[AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md)的可选参数，用于接收打开原子化服务请求的结果。
 
@@ -84,10 +84,9 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 ### CompletionHandlerForAtomicService示例
 
 ```ts
-import { AbilityConstant, AtomicServiceOptions, common, UIAbility, Want, CompletionHandlerForAtomicService } from '@kit.AbilityKit';
+import { AbilityConstant, AtomicServiceOptions, common, UIAbility, Want, CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { FailureCode } from '@ohos.app.ability.CompletionHandlerForAtomicService';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -110,5 +109,4 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
-
 ```

@@ -1,32 +1,27 @@
 # @ohos.uiAppearance (UI Appearance) (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **uiAppearance** module provides basic capabilities for managing the system appearance. It allows for color mode configuration currently, and will introduce more features over time.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are system APIs.
+> - The APIs of this module can be used only in the stage model.
+>
+> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.uiAppearance (UI Appearance)](js-apis-uiappearance.md).
 
 
 ## Modules to Import
 
 ```ts
-import { uiAppearance } from '@kit.ArkUI'
+import { uiAppearance } from '@kit.ArkUI';
 ```
-
-
-## DarkMode
-
-Enumerates the color modes.
-
-
-**System capability**: SystemCapability.ArkUI.UiAppearance
-
-| Name| Value| Description|
-| -- | -- | -- |
-| ALWAYS_DARK | 0 | The system is always in dark mode. |
-| ALWAYS_LIGHT | 1 | The system is always in light mode.|
 
 
 ## uiAppearance.setDarkMode
@@ -39,11 +34,13 @@ Sets the system color mode. This API uses an asynchronous callback to return the
 
 **System capability**: SystemCapability.ArkUI.UiAppearance
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -- | -- | -- | -- |
-| mode | [DarkMode](#darkmode) | Yes| Color mode to set.|
+| mode | [DarkMode](js-apis-uiappearance.md#darkmode) | Yes| Color mode to set.|
 | callback | AsyncCallback\<void>| Yes| Callback used to return the result.|
 
 **Error codes**
@@ -53,27 +50,28 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -- | -- |
 | 201 | Permission denied. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | 500001 | Internal error. |
 
 **Example**
 
-  ```ts
-import { uiAppearance } from '@kit.ArkUI'
+```ts
+import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (error) => {
-      if (error) {
-        console.error('Set dark-mode failed, ' + error.message);
-      } else {
-        console.info('Set dark-mode successfully.');
-      }
-    })
+  uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (error) => {
+    if (error) {
+      console.error('Set dark-mode failed, ' + error.message);
+    } else {
+      console.info('Set dark-mode successfully.');
+    }
+  })
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set dark-mode failed, ' + message);
+  let message = (error as BusinessError).message;
+  console.error('Set dark-mode failed, ' + message);
 }
-  ```
+```
 
 
 ## uiAppearance.setDarkMode
@@ -86,11 +84,13 @@ Sets the system color mode. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ArkUI.UiAppearance
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -- | -- | -- | -- |
-| mode | [DarkMode](#darkmode) | Yes| Color mode to set.|
+| mode | [DarkMode](js-apis-uiappearance.md#darkmode) | Yes| Color mode to set.|
 
 **Return value**
 
@@ -105,69 +105,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -- | -- |
 | 201 | Permission denied. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | 500001 | Internal error. |
 
 **Example**
 
-  ```ts
-import { uiAppearance } from '@kit.ArkUI'
+```ts
+import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
-      console.info('Set dark-mode successfully.');
-    }).catch((error:Error) => {
-      console.error('Set dark-mode failed, ' + error.message);
-    });
+  uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
+    console.info('Set dark-mode successfully.');
+  }).catch((error: Error) => {
+    console.error('Set dark-mode failed, ' + error.message);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set dark-mode failed, ' + message);
+  let message = (error as BusinessError).message;
+  console.error('Set dark-mode failed, ' + message);
 }
-  ```
+```
 
 
-## uiAppearance.getDarkMode
-
-getDarkMode(): DarkMode;
-
-Obtains the system color mode.
-
-**Permission required**: ohos.permission.UPDATE_CONFIGURATION
-
-**System capability**: SystemCapability.ArkUI.UiAppearance
-
-**Return value**
-
-| Type| Description|
-| -- | -- |
-|[DarkMode](#darkmode) | Color mode obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UI Appearance Error Codes](errorcode-uiappearance.md).
-
-| ID| Error Message|
-| -- | -- |
-| 201 | Permission denied. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 500001 | Internal error. |
-
-**Example**
-
-  ```ts
-import { uiAppearance } from '@kit.ArkUI'
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-    let darkMode = uiAppearance.getDarkMode();
-    console.info('Get dark-mode ' + darkMode);
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Get dark-mode failed, ' + message);
-}
-  ```
-
-
-## uiAppearance.setFontScale<sup>12+<sup>
+## uiAppearance.setFontScale<sup>12+</sup>
 
 setFontScale(fontScale: number): Promise\<void>
 
@@ -183,7 +143,7 @@ Sets the system font scale.
 
 | Name| Type| Mandatory| Description|
 | -- | -- | -- | -- |
-| fontScale | number | Yes| Font scale to be set.|
+| fontScale | number | Yes| Font scale to be set.<br> Value range: (0, 5.0]. If the value is outside this range, error code 401 is thrown.|
 
 **Return value**
 
@@ -195,17 +155,21 @@ Sets the system font scale.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UI Appearance Error Codes](errorcode-uiappearance.md).
 
+> **NOTE**
+>
+> If the ohos.permission.UPDATE_CONFIGURATION permission is not requested, the application installation will fail, and error code 202 will not be returned.
+
 | ID| Error Message|
 | -- | -- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
 | 500001 | Internal error. |
 
 **Example**
 
-  ```ts
-import { uiAppearance } from '@kit.ArkUI'
+```ts
+import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let fontScale = 10;
@@ -220,53 +184,10 @@ try {
     let message = (error as BusinessError).message;
     console.error('Set fontScale failed, ' + message);
 }
-  ```
+```
 
 
-## uiAppearance.getFontScale<sup>12+<sup>
-
-getFontScale(): number
-
-Obtains the system font scale.
-
-**Permission required**: ohos.permission.UPDATE_CONFIGURATION
-
-**System capability**: SystemCapability.ArkUI.UiAppearance
-
-**System API**: This is a system API.
-
-**Return value**
-
-| Type| Description|
-| -- | -- |
-| number | System font scale.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UI Appearance Error Codes](errorcode-uiappearance.md).
-
-| ID| Error Message|
-| -- | -- |
-| 201 | Permission denied. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 500001 | Internal error. |
-
-**Example**
-
-  ```ts
-import { uiAppearance } from '@kit.ArkUI'
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-    let fontScale = uiAppearance.getFontScale();
-    console.info('Get fontScale ' + fontScale);
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Get fontScale failed, ' + message);
-}
-  ```
-
-## uiAppearance.setFontWeightScale<sup>12+<sup>
+## uiAppearance.setFontWeightScale<sup>12+</sup>
 
 setFontWeightScale(fontWeightScale: number): Promise\<void>
 
@@ -282,7 +203,7 @@ Sets the system font weight scale.
 
 | Name| Type| Mandatory| Description|
 | -- | -- | -- | -- |
-| fontWeightScale | number | Yes| Font weight scale to set.|
+| fontWeightScale | number | Yes| Font weight scale to set.<br> Value range: (0, 5.0]. If the value is outside this range, error code 401 is thrown.|
 
 **Return value**
 
@@ -294,17 +215,21 @@ Sets the system font weight scale.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UI Appearance Error Codes](errorcode-uiappearance.md).
 
+> **NOTE**
+>
+> If the ohos.permission.UPDATE_CONFIGURATION permission is not requested, the application installation will fail, and error code 202 will not be returned.
+
 | ID| Error Message|
 | -- | -- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed.  |
 | 500001 | Internal error. |
 
 **Example**
 
-  ```ts
-import { uiAppearance } from '@kit.ArkUI'
+```ts
+import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let fontWeightScale = 1;
@@ -319,48 +244,4 @@ try {
     let message = (error as BusinessError).message;
     console.error('Set fontWeightScale failed, ' + message);
 }
-  ```
-
-
-## uiAppearance.getFontWeightScale<sup>12+<sup>
-
-getFontWeightScale(): number
-
-Obtains the system font weight scale.
-
-**Permission required**: ohos.permission.UPDATE_CONFIGURATION
-
-**System capability**: SystemCapability.ArkUI.UiAppearance
-
-**System API**: This is a system API.
-
-**Return value**
-
-| Type| Description|
-| -- | -- |
-| number | System font weight scale.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UI Appearance Error Codes](errorcode-uiappearance.md).
-
-| ID| Error Message|
-| -- | -- |
-| 201 | Permission denied. |
-| 202 | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 500001 | Internal error. |
-
-**Example**
-
-  ```ts
-import { uiAppearance } from '@kit.ArkUI'
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-    let fontWeightScale = uiAppearance.getFontWeightScale();
-    console.info('Get fontScale ' + fontWeightScale);
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Get fontWeightScale failed, ' + message);
-}
-  ```
+```

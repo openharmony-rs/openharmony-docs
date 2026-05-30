@@ -4,9 +4,11 @@
 <!--Owner: @yp99ustc-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
-使用Web组件大小自适应页面内容布局模式`layoutMode(WebLayoutMode.FIT_CONTENT)`时，能使Web组件的大小根据页面内容自适应变化。
+使用Web组件大小自适应页面内容布局模式[layoutMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)([WebLayoutMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#weblayoutmode11).FIT_CONTENT)时，能使Web组件的大小根据页面内容自适应变化。
+
+<!--RP1--><!--RP1End-->
 
 ## 使用场景
 
@@ -34,8 +36,8 @@
 ## 规格与约束
 
 1. 建议配置[渲染模式](web-render-mode.md)为[同步渲染模式](web-render-mode.md#同步渲染模式)，避免因为组件大小超出限制导致异常场景（白屏，布局错误）。
-2. 建议配置[过滚动模式(overScrollMode)](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11)为关闭状态。当过滚动模式开启时，当用户在Web界面上滑动到边缘时，Web会通过弹性动画弹回界面，会与Scroll组件的回弹相互冲突，影响体验。
-3. [键盘避让(keyboardAvoidMode)](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12)属性配置为RESIZE_CONTENT时，该避让模式不生效。
+2. 建议配置[overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11)（过滚动模式）为关闭状态。当过滚动模式开启时，当用户在Web界面上滑动到边缘时，Web会通过弹性动画弹回界面，会与Scroll组件的回弹相互冲突，影响体验。
+3. [keyboardAvoidMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12)（键盘避让）属性配置为RESIZE_CONTENT时，该避让模式不生效。
 4. 不支持对页面进行缩放。
 5. 不支持通过Web组件的height属性修改组件高度。
 6. 仅支持根据页面内容自适应组件高度，不支持自适应宽度。
@@ -43,15 +45,16 @@
 
 ## 示例代码
 
-```typescript
-// fit_content_test.ets
+<!-- @[a_page_that_contains_a_webview_and_text_in_the_comment_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebRenderLayout/entry/src/main/ets/pages/FitPageContent.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct WebHeightPage {
-  private webviewController: WebviewController = new webview.WebviewController()
-  private scroller: Scroller = new Scroller()
+  private webviewController: WebviewController = new webview.WebviewController();
+  private scroller: Scroller = new Scroller();
 
   build() {
     Navigation() {
@@ -59,30 +62,31 @@ struct WebHeightPage {
         Scroll(this.scroller) {
           Column() {
             Web({
-              src: $rawfile("fit_content.html"),
+              src: $rawfile('fit_content.html'),
               controller: this.webviewController,
               renderMode: RenderMode.SYNC_RENDER // 设置为同步渲染模式
             })
               .layoutMode(WebLayoutMode.FIT_CONTENT) // 设置为Web组件大小自适应页面内容
               .overScrollMode(OverScrollMode.NEVER) // 设置过滚动模式为关闭状态
-            Text("评论区")
+            Text('Comments')
               .fontSize(28)
-              .fontColor("#FF0F0F")
+              .fontColor('#FF0F0F')
               .height(100)
-              .width("100%")
-              .backgroundColor("#f89f0f")
+              .width('100%')
+              .backgroundColor('#f89f0f')
           }
         }
-
       }
     }
-    .title("标题栏")
+    .title('Title')
   }
 }
 ```
 
+fit_content.html页面代码如下：
+
 ```html
-<!--fit_content.html-->
+<!-- fit_content.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,7 +129,7 @@ struct WebHeightPage {
     </div>
     <div><h2 id="约束与限制">约束与限制</h2>
         <ul>
-            <li>Web内核版本：ArkWeb基于谷歌Chromium内核开发，使用的Chromium版本为M114。</li>
+            <li>Web内核版本：ArkWeb基于Chromium内核开发，使用的Chromium版本为M114。</li>
         </ul>
     </div>
 </div>
@@ -140,7 +144,7 @@ struct WebHeightPage {
 **可能原因：**
 
 - 内部H5页面高度超过了7680px（物理像素），但没有设置渲染模式为[同步渲染模式](web-render-mode.md#同步渲染模式)。
-- 未配置metaviewport属性。
+- 未配置[metaviewport](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#metaviewport12)属性。
 
 **解决方案：**
 
@@ -152,39 +156,39 @@ struct WebHeightPage {
 
 **可能的原因：**
 
-核心内容dom节点高度为0。
+核心内容DOM节点高度为0。
 
-css样式`height：<number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height：<number> vh`是否是由body节点而内的第一个高度css样式。如以下结构，id为2的dom节点高度将为0。
+CSS样式`height：<number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height：<number> vh`是否是由body节点以内的第一个高度CSS样式。如以下结构，id为2的DOM节点高度将为0。
 
-```
+```html
 <body>
   <div id = "1">
-    <div id = "2" style = "height: 100vh">子dom</div>
-    <div id = "3" style = "height: 20px">子dom</div>
+    <div id = "2" style = "height: 100vh">子DOM</div>
+    <div id = "3" style = "height: 20px">子DOM</div>
   </div>
 </body>
 ```
 
 **解决方案：**
 
-- 子dom使用具体高度样式撑开父元素。
+- 子DOM使用具体高度样式撑开父元素。
 
-  ```
+  ```html
   <body>
     <div id = "1">
       <div id = "2"><div style = "height: 20px"></div></div>
-      <div id = "3" style = "height: 20px">子dom</div>
+      <div id = "3" style = "height: 20px">子DOM</div>
     </div>
   </body>
   ```
 
 - 父元素使用实际高度样式。
 
-  ```
+  ```html
   <body>
     <div id = "1">
-      <div id = "2" style = "height: 20px">子dom</div>
-      <div id = "3" style = "height: 20px">子dom</div>
+      <div id = "2" style = "height: 20px">子DOM</div>
+      <div id = "3" style = "height: 20px">子DOM</div>
     </div>
   </body>
   ```

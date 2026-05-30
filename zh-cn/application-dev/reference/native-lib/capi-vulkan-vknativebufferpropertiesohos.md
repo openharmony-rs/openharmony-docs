@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct VkNativeBufferPropertiesOHOS {...} VkNativeBufferPropertiesOHOS
+```
+
 ## 概述
 
 包含了NativeBuffer的属性。

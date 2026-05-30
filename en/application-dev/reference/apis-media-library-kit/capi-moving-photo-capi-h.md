@@ -5,7 +5,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -37,7 +37,7 @@ The file declares the APIs related to moving photos. You can use the APIs to obt
 
 ### OH_MovingPhoto_GetUri()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MovingPhoto_GetUri(OH_MovingPhoto* movingPhoto, const char** uri)
 ```
 
@@ -59,11 +59,11 @@ Obtains the URI of a moving photo.
 
 | Type| Description|
 | -- | -- |
-| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>**MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>1. A mandatory parameter is not specified.<br>2. A parameter type is incorrect.<br>3. Parameter verification fails.<br>**MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.<br>      **MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
 
 ### OH_MovingPhoto_RequestContentWithUris()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUris(OH_MovingPhoto* movingPhoto, char* imageUri,char* videoUri)
 ```
 
@@ -88,11 +88,11 @@ Requests the image data and video data of a moving photo and writes them to the 
 
 | Type| Description|
 | -- | -- |
-| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>**MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>1. A mandatory parameter is not specified.<br>2. A parameter type is incorrect.<br>3. Parameter verification fails.<br>**MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>**MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.<br>      **MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>      **MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
 
 ### OH_MovingPhoto_RequestContentWithUri()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUri(OH_MovingPhoto* movingPhoto,MediaLibrary_ResourceType resourceType, char* uri)
 ```
 
@@ -117,11 +117,11 @@ Requests the moving photo content of the specified resource type and writes it t
 
 | Type| Description|
 | -- | -- |
-| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>**MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>1. A mandatory parameter is not specified.<br>2. A parameter type is incorrect.<br>3. Parameter verification fails.<br>**MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>**MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error. |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.<br>      **MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>      **MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
 
 ### OH_MovingPhoto_RequestContentWithBuffer()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithBuffer(OH_MovingPhoto* movingPhoto,MediaLibrary_ResourceType resourceType, const uint8_t** buffer, uint32_t* size)
 ```
 
@@ -147,11 +147,11 @@ Requests the moving photo content of the specified resource type and returns it 
 
 | Type| Description|
 | -- | -- |
-| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>**MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>1. A mandatory parameter is not specified.<br>2. A parameter type is incorrect.<br>3. Parameter verification fails.<br>**MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>**MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.<br>      **MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>      **MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
 
 ### OH_MovingPhoto_Release()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MovingPhoto_Release(OH_MovingPhoto* movingPhoto)
 ```
 
@@ -172,4 +172,4 @@ Releases an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>**MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>1. A mandatory parameter is not specified.<br>2. A parameter type is incorrect.<br>3. Parameter verification fails.|
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.|

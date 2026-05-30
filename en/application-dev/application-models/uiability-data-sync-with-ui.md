@@ -1,5 +1,12 @@
 # Data Synchronization Between UIAbility and UI Page
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wendel-->
+<!--Designer: @wendel-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 
 Based on the application model, you can use any of the following ways to implement data synchronization between [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) components and UI pages:
 
@@ -11,17 +18,20 @@ Based on the application model, you can use any of the following ways to impleme
 
 [EventHub](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md) provides an event mechanism for the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) component so that they can subscribe to, unsubscribe from, and trigger events.
 
-In the [base class Context](../reference/apis-ability-kit/js-apis-inner-application-context.md), the EventHub object is provided for communication within the UIAbility component instance. Before using EventHub to implement data communication between the UIAbility and UI, you must obtain an EventHub object. This section uses EventHub as an example. 
+In the [base class Context](../reference/apis-ability-kit/js-apis-inner-application-context.md), the EventHub object is provided for communication within the UIAbility component instance. Before using EventHub to implement data communication between the UIAbility and UI, you must obtain an EventHub object. This section uses EventHub as an example.
 
 1. Call [eventHub.on()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhubon) in the UIAbility in either of the following ways to register a custom event **event1**.
 
-    ```ts
+    <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { UIAbility, Context, Want, AbilityConstant } from '@kit.AbilityKit';
-
-    const DOMAIN_NUMBER: number = 0xFF00;
+    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+    // ···
+    
+    const DOMAIN = 0x0000;
     const TAG: string = '[EventAbility]';
-
+    
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Obtain an eventHub object.
@@ -31,25 +41,28 @@ In the [base class Context](../reference/apis-ability-kit/js-apis-inner-applicat
         eventhub.on('event1', (data: string) => {
           // Trigger the event to complete the service operation.
         });
-        hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onCreate');
+        hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onCreate');
       }
-
-      // ...
-      eventFunc(argOne: Context, argTwo: Context): void {
-        hilog.info(DOMAIN_NUMBER, TAG, '1. ' + `${argOne}, ${argTwo}`);
+    
+      eventFunc(argOne: object, argTwo: object): void {
+        hilog.info(DOMAIN, TAG, '1. ' + `${argOne}, ${argTwo}`);
         return;
       }
+    
+    // ···
     }
     ```
 
 2. Call [eventHub.emit()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhubemit) on the UI page to trigger the event, and pass in the parameters as required.
 
-    ```ts
+    <!-- @[EventHubPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/pages/EventHubPage.ets) -->
+
+    ``` TypeScript
     import { common } from '@kit.AbilityKit';
 
     @Entry
     @Component
-    struct Page_EventHub {
+    struct EventHubPage {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
       eventHubFunc(): void {
@@ -64,11 +77,10 @@ In the [base class Context](../reference/apis-ability-kit/js-apis-inner-applicat
 
       build() {
         Column() {
-          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                // ...
+                // ···
               }
               .onClick(() => {
                 this.eventHubFunc();
@@ -76,12 +88,12 @@ In the [base class Context](../reference/apis-ability-kit/js-apis-inner-applicat
                   message: 'EventHubFuncA'
                 });
               })
+            // ···
             }
 
-            // ...
             ListItem() {
               Row() {
-                // ...
+                // ···
               }
               .onClick(() => {
                 this.context.eventHub.off('event1');
@@ -89,12 +101,12 @@ In the [base class Context](../reference/apis-ability-kit/js-apis-inner-applicat
                   message: 'EventHubFuncB'
                 });
               })
+            // ···
             }
-            // ...
           }
-          // ...
+        // ···
         }
-        // ...
+        // ···
       }
     }
     ```
@@ -109,14 +121,21 @@ In the [base class Context](../reference/apis-ability-kit/js-apis-inner-applicat
    
 4. When **event1** is not needed, call [eventHub.off()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhuboff) to unsubscribe from the event.
 
-    ```ts
+    <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    // ···
     import { UIAbility } from '@kit.AbilityKit';
-
+    // ···
+    
     export default class EntryAbility extends UIAbility {
-      // ... 
+    // ···
+    
       onDestroy(): void {
         this.context.eventHub.off('event1');
       }
+    
+    // ···
     }
     ```
 

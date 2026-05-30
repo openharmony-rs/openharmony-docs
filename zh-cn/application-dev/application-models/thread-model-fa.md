@@ -4,13 +4,14 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 [FA模型](ability-terminology.md#fa模型)下的线程主要有如下三类：
 
 
 - 主线程：
+
   负责管理其他线程。
 
 - Ability线程：
@@ -21,6 +22,7 @@
   - 接收Worker发送的消息。
 
 - Worker线程：
+
   执行耗时操作。
 
 

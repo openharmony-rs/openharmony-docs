@@ -1,4 +1,14 @@
 # ArkUI_SystemFontStyleEvent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_SystemFontStyleEvent ArkUI_SystemFontStyleEvent
+```
 
 ## 概述
 

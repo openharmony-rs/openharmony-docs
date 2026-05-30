@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Represents a request response. You can create a response for an intercepted request, fill in custom content, and return the response to the **Web** component.
 
@@ -14,7 +14,7 @@ Represents a request response. You can create a response for an intercepted requ
 >
 > - The initial APIs of this class are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## Modules to Import
 
@@ -34,9 +34,8 @@ Constructs a **Response** object.
 
 ```ts
 // xxx.ets
-import { webview } from '@kit.ArkWeb';
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { WebNetErrorList } from '@ohos.web.netErrorList';
 
 @Entry
 @Component
@@ -95,7 +94,7 @@ For details about the sample code, see [constructor](#constructor12).
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -117,7 +116,7 @@ Sets the network error code for this response.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -143,7 +142,7 @@ Sets the HTTP status code for this response.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -169,7 +168,7 @@ Sets the status text for this response.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -195,7 +194,7 @@ Sets the MIME type for this response.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -221,7 +220,7 @@ Sets the character set for this response.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -249,7 +248,7 @@ Sets the header information for this response.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ----------------------- |
@@ -264,6 +263,7 @@ For details about the sample code, see [constructor](#constructor12).
 getUrl(): string
 
 Obtains the redirection URL or the URL changed due to HSTS.
+
 NOTE: To obtain a URL for the JavaScriptProxy communication API authentication, use [getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](./arkts-apis-webview-WebviewController.md#getlastjavascriptproxycallingframeurl12).
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -372,7 +372,7 @@ For details about the sample code, see [constructor](#constructor12).
 
 getHeaderByName(name: string): string
 
-Obtains the character set of this response.
+Obtains the value of a response header field by name.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

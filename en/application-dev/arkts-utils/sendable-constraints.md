@@ -199,6 +199,38 @@ class A {
 }
 ```
 
+### Member Variables Cannot Use Type Aliases
+
+Member variables of the Sendable class cannot use type aliases (that is, aliases defined using the `type` keyword).
+
+**Correct Example**
+
+```ts
+@Sendable
+class B {
+  num1: number = 1;
+  num2: number = 2;
+  add(): number {
+    return this.num1 + this.num2;
+  }
+}
+```
+
+**Incorrect Example**
+
+```ts
+type A = number;
+
+@Sendable
+class B {
+  num1: A = 1; // A runtime error is reported. Type aliases are not supported.
+  num2: A = 2; // A runtime error is reported. Type aliases are not supported.
+  add(): number {
+    return this.num1 + this.num2;
+  }
+}
+```
+
 ## Generic Rules
 
 ### Template Types for Sendable Classes, SendableLruCache, collections.Array, collections.Map, and collections.Set Must Be Sendable
@@ -365,6 +397,36 @@ class C {
 }
 ```
 
+### Custom Decorators Can Be Added to Sendable Classes
+
+Since API version 22, custom decorators other than @Sendable can be added to Sendable classes.
+
+You can add the **disableSendableCheckRules** field to **strictMode** under the **buildOption** field in the [project-level build-profile.json5 file](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app).
+
+The following is an example of the **disableSendableCheckRules** field and its value:
+
+```json5
+"buildOption": {
+  "strictMode": {
+    "caseSensitiveCheck": true,
+    "useNormalizedOHMUrl": true,
+    "disableSendableCheckRules": ["arkts-sendable-class-decorator"]
+  }
+}
+```
+
+> **NOTE**
+>
+> - The value of **disableSendableCheckRules** is an array containing Sendable rules.
+> 
+>   - By default, this field is not displayed. That is, custom decorators other than @Sendable cannot be added to Sendable classes.
+>
+>   - Configuring it as an empty array is prohibited.
+>   
+>   - When the **arkts-sendable-class-decorator** rule is configured in the array, custom decorators other than @Sendable can be added to Sendable classes.
+>   
+> - Using @Sendable with other custom decorators may cause runtime exceptions. Therefore, you need to adapt the implementation of the decorator function.
+
 ## Initialization Rules
 
 ### Object Literals/Array Literals Cannot Be Used to Initialize Sendable Objects
@@ -498,9 +560,30 @@ For details about Node-APIs, see [Sendable-related Operations](../napi/use-napi-
 
 ## Rules for Interaction with the UI
 
-To observe data changes in Sendable objects when interacting with UI, Sendable data must be used in conjunction with [makeObserved](../ui/state-management/arkts-new-makeObserved.md). For more information, see [Using makeObserved and @Sendable Decorated Class Together](../ui/state-management/arkts-new-makeObserved.md#using-makeobserved-and-sendable-decorated-class-together).
+To observe data changes in Sendable objects when interacting with UI, Sendable data must be used in conjunction with [makeObserved](../ui/state-management/arkts-new-makeObserved.md). For more information, see [Using makeObserved with @Sendable Decorated Classes](../ui/state-management/arkts-new-makeObserved.md#using-makeobserved-with-sendable-decorated-classes).
 
 
 ## Rules for Using Sendable in HARs
 
-When using Sendable in HAR, you must enable the configuration for compiling and generating TS files. For details, see [Building TS Files](../quick-start/har-package.md#building-ts-files).
+Sendable can be used in [HARs](../quick-start/har-package.md). When Sendable is used in a bytecode HAR, no additional configuration is required. When Sendable is used in a TS HAR, set **name** under **metadata** to **UseTsHar** in the **module.json5** file of the HAR module. The configuration is as follows:
+
+<!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    "name": "library",
+    "type": "har",
+    "deviceTypes": [
+      "tablet",
+      "2in1"
+    ],
+    "metadata": [
+      {
+        "name": "UseTsHar",
+        "value": "true"
+      }
+    ]
+  }
+}
+```

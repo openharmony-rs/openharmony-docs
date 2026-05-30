@@ -5,11 +5,13 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
 A fiber is a lightweight user mode thread that enables efficient task scheduling and context switching within the user space. The **fiber.h** file declares the related APIs in C.
+
+**File to include**: <ffrt/fiber.h>
 
 **Library**: libffrt.z.so
 
@@ -32,7 +34,7 @@ A fiber is a lightweight user mode thread that enables efficient task scheduling
 
 ### ffrt_fiber_init()
 
-```
+```c
 FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* arg, void* stack, size_t stack_size)
 ```
 
@@ -42,26 +44,25 @@ Initializes a fiber. The initialized fiber instance can store contexts.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | fiber | Pointer to the fiber to be initialized. For details, see [ffrt_fiber_t](capi-ffrt-ffrt-fiber-t.md).|
 | func | Method to be executed after fiber switching.|
-|  void* arg | Pointer to the argument of the method.|
-|  void* stack | Pointer to the fiber stack memory.|
-|  size_t stack_size | Fiber stack size. For details, see [ffrt_storage_size_t](capi-type-def-h.md#ffrt_storage_size_t).|
+| void\* arg | Pointer to the argument of the method.|
+| void\* stack | Pointer to the fiber stack memory.|
+| size_t stack_size | Fiber stack size. For details, see [ffrt_storage_size_t](capi-type-def-h.md#ffrt_storage_size_t).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int (ffrt_fiber_t* fiber, void(*func) | If the initialization is successful, **ffrt_success** is returned. Otherwise, **ffrt_error** is returned.|
+| FFRT_C_API int | If the initialization is successful, **ffrt_success** is returned. Otherwise, **ffrt_error** is returned.|
 
 ### ffrt_fiber_switch()
 
-```
+```c
 FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to)
 ```
 
@@ -70,7 +71,6 @@ FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to)
 Switches between fibers. The thread that calls this function suspends the current task, saves the context to the **from** fiber, and restores the context of the **to** fiber.
 
 **Since**: 20
-
 
 **Parameters**
 

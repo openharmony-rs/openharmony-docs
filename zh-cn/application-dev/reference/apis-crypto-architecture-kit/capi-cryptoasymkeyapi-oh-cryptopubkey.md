@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoPubKey OH_CryptoPubKey
+```
+
 ## 概述
 
 定义公钥结构体。

@@ -4,7 +4,11 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_NativeDialogAPI_1
+```
 
 ## 概述
 
@@ -38,14 +42,14 @@ ArkUI提供的Native侧自定义弹窗接口集合。
 | [int32_t (\*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)](#enablecustomanimation) | 弹窗容器是否使用自定义弹窗动画。 |
 | [int32_t (\*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)](#registeronwilldismiss) | 当触发系统定义的返回操作、键盘ESC关闭交互操作时，如果注册了该回调函数，弹窗不会立即关闭，而是由用户决定是否关闭。 |
 | [int32_t (\*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)](#show) | 显示自定义弹窗。 |
-| [int32_t (\*close)(ArkUI_NativeDialogHandle handle)](#close) | 关闭自定义弹窗，如已关闭，则不生效。 |
+| [int32_t (\*close)(ArkUI_NativeDialogHandle handle)](#close) | 关闭自定义弹窗，如已关闭，则不生效。该接口后台执行是异步的，在关闭动画执行完成后弹窗节点才会下树。如需关闭后再次打开弹窗，请在延迟300ms以后再执行。 |
 | [int32_t (\*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(ArkUI_DialogDismissEvent* event))](#registeronwilldismisswithuserdata) | 注册系统关闭自定义弹窗的监听事件。 |
 
 ## 成员函数说明
 
 ### create()
 
-```
+```c
 ArkUI_NativeDialogHandle (*create)()
 ```
 
@@ -65,7 +69,7 @@ ArkUI_NativeDialogHandle (*create)()
 
 ### dispose()
 
-```
+```c
 void (*dispose)(ArkUI_NativeDialogHandle handle)
 ```
 
@@ -74,9 +78,13 @@ void (*dispose)(ArkUI_NativeDialogHandle handle)
 
 销毁自定义弹窗。
 
+| 参数项                                                                                | 描述 |
+|------------------------------------------------------------------------------------| -- |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
+
 ### setContent()
 
-```
+```c
 int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)
 ```
 
@@ -103,7 +111,7 @@ int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)
 
 ### removeContent()
 
-```
+```c
 int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)
 ```
 
@@ -129,7 +137,7 @@ int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)
 
 ### setContentAlignment()
 
-```
+```c
 int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignment, float offsetX, float offsetY)
 ```
 
@@ -146,9 +154,9 @@ int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignmen
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  int32_t alignment | 对齐方式，参数类型ArkUI_Alignment。 |
-|  float offsetX | 弹窗的水平偏移量，浮点型。 |
-|  float offsetY | 弹窗的垂直偏移量，浮点型。 |
+|  int32_t alignment | 对齐方式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。 |
+|  float offsetX | 弹窗的水平偏移量，浮点型，单位：vp。 |
+|  float offsetY | 弹窗的垂直偏移量，浮点型，单位：vp。 |
 
 **返回：**
 
@@ -158,13 +166,13 @@ int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignmen
 
 ### resetContentAlignment()
 
-```
+```c
 int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 ```
 
 **描述：**
 
-重置setContentAlignment方法设置的属性，使用系统默认的对齐方式。
+重置setContentAlignment方法设置的属性，使用系统默认的对齐方式，默认值：ARKUI_ALIGNMENT_TOP_START，参考[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。
 
 > **说明：** 
 >
@@ -184,7 +192,7 @@ int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 
 ### setModalMode()
 
-```
+```c
 int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)
 ```
 
@@ -211,7 +219,7 @@ int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)
 
 ### setAutoCancel()
 
-```
+```c
 int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)
 ```
 
@@ -238,7 +246,7 @@ int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)
 
 ### setMask()
 
-```
+```c
 int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const ArkUI_Rect* maskRect)
 ```
 
@@ -266,7 +274,7 @@ int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const Ar
 
 ### setBackgroundColor()
 
-```
+```c
 int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgroundColor)
 ```
 
@@ -293,7 +301,7 @@ int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgrou
 
 ### setCornerRadius()
 
-```
+```c
 int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight,float bottomLeft, float bottomRight)
 ```
 
@@ -310,10 +318,10 @@ int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  float topLeft | 设置弹窗背板左上角圆角半径。 |
-|  float topRight | 设置弹窗背板右上角圆角半径。 |
-| float bottomLeft | 设置弹窗背板左下圆角半径。 |
-|  float bottomRight | 设置弹窗背板右下角圆角半径。 |
+|  float topLeft | 设置弹窗背板左上角圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。|
+|  float topRight | 设置弹窗背板右上角圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。|
+| float bottomLeft | 设置弹窗背板左下圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。|
+|  float bottomRight | 设置弹窗背板右下角圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。|
 
 **返回：**
 
@@ -323,7 +331,7 @@ int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float
 
 ### setGridColumnCount()
 
-```
+```c
 int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount)
 ```
 
@@ -340,7 +348,7 @@ int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  int32_t gridCount | 默认为按照窗口大小自适应，最大栅格数为系统最大栅格数。 |
+|  int32_t gridCount | 默认为按照窗口大小自适应，最大栅格数为[系统最大栅格数](../../ui/arkts-layout-development-grid-layout.md#布局的总列数)。<br/>取值范围：大于等于0的整数。 |
 
 **返回：**
 
@@ -350,7 +358,7 @@ int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount
 
 ### enableCustomStyle()
 
-```
+```c
 int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomStyle)
 ```
 
@@ -367,7 +375,7 @@ int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomS
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  bool enableCustomStyle | true:宽度自适应子节点，圆角为0，弹窗背景色透明；false:高度自适应子节点，宽度由栅格系统定义, 圆角半径24vp。 |
+|  bool enableCustomStyle | 弹窗容器样式是否可以自定义。<br/>默认值：false<br/>true：弹窗容器样式不能自定义，宽度自适应子节点，圆角为0，弹窗背景色透明；false：弹窗容器样式可以自定义，高度自适应子节点，宽度由栅格系统定义，圆角半径24vp，PC/2in1设备避让屏幕边缘以及窗口标题栏。 |
 
 **返回：**
 
@@ -377,7 +385,7 @@ int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomS
 
 ### enableCustomAnimation()
 
-```
+```c
 int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)
 ```
 
@@ -404,7 +412,7 @@ int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCus
 
 ### registerOnWillDismiss()
 
-```
+```c
 int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)
 ```
 
@@ -431,7 +439,7 @@ int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDi
 
 ### show()
 
-```
+```c
 int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)
 ```
 
@@ -454,14 +462,14 @@ int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)
 
 ### close()
 
-```
+```c
 int32_t (*close)(ArkUI_NativeDialogHandle handle)
 ```
 
 **描述：**
 
 
-关闭自定义弹窗，如已关闭，则不生效。
+关闭自定义弹窗，如已关闭，则不生效。该接口后台执行是异步的，在关闭动画执行完成后弹窗节点才会下树。如需关闭后再次打开弹窗，请在延迟300ms以后再执行。
 
 **参数：**
 
@@ -473,11 +481,11 @@ int32_t (*close)(ArkUI_NativeDialogHandle handle)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。此时仅表示关闭指令下发成功，不代表弹窗完全关闭。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### registerOnWillDismissWithUserData()
 
-```
+```c
 int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))
 ```
 

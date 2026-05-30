@@ -1,4 +1,10 @@
 # tspan
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 添加文本样式。
 
@@ -8,7 +14,7 @@
 >
 >  - 文本的展示内容需要写在元素标签内，可嵌套子元素标签tspan分段。
 >
->  - 文本分段，只支持被父元素标签svg嵌套。
+>  - 文本分段，只支持被父元素标签text嵌套。
 
 ## 权限列表
 
@@ -36,7 +42,7 @@
 | opacity        | number                             | 1     | 否    | 元素的透明度，取值范围为0到1，1表示为不透明，0表示为完全透明。支持属性动画。 |
 | fill-opacity   | number                             | 1.0   | 否    | 字体填充透明度。                                 |
 | stroke         | &lt;color&gt;                      | black | 否    | 绘制字体边框并指定颜色。                             |
-| stroke-width   | number                             | 1px   | 否    | 字体边框宽度。                                  |
+| stroke-width   | number                             | 1     | 否    | 字体边框宽度。</br>默认单位：px                             |
 | stroke-opacity | number                             | 1.0   | 否    | 字体边框透明度。                                 |
 
 ## 示例

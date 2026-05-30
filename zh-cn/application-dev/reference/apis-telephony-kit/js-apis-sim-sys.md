@@ -44,7 +44,7 @@ isOperatorSimCard\(slotId: number, operator: OperatorSimCard\): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -65,7 +65,7 @@ let slotId : number = 0;
 let operator : sim.OperatorSimCard = sim.OperatorSimCard.CHINA_TELECOM_CARD;
 try {
     let isOperatorSimCard: boolean = sim.isOperatorSimCard(slotId, operator);
-    console.log(`is operator sim card: ` + isOperatorSimCard);
+    console.info(`is operator sim card: ` + isOperatorSimCard);
 } catch (err) {
     console.error("isOperatorSimCard err: " + JSON.stringify(err));
 }
@@ -92,7 +92,7 @@ setDefaultVoiceSlotId\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -113,7 +113,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.setDefaultVoiceSlotId(0, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -144,7 +144,7 @@ setDefaultVoiceSlotId\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -165,7 +165,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.setDefaultVoiceSlotId(0).then(() => {
-    console.log(`setDefaultVoiceSlotId success.`);
+    console.info(`setDefaultVoiceSlotId success.`);
 }).catch((err: BusinessError) => {
     console.error(`setDefaultVoiceSlotId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -193,7 +193,7 @@ setShowName\(slotId: number, name: string, callback: AsyncCallback\<void\>\): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -214,7 +214,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let name: string = "ShowName";
 sim.setShowName(0, name, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -245,7 +245,7 @@ setShowName\(slotId: number, name: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -266,7 +266,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let name: string = "ShowName";
 sim.setShowName(0, name).then(() => {
-    console.log(`setShowName success.`);
+    console.info(`setShowName success.`);
 }).catch((err: BusinessError) => {
     console.error(`setShowName failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -293,7 +293,7 @@ getShowName\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -313,7 +313,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getShowName(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -344,7 +344,7 @@ getShowName\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -364,7 +364,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getShowName(0).then((data: string) => {
-    console.log(`getShowName success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getShowName success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getShowName failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -372,7 +372,7 @@ sim.getShowName(0).then((data: string) => {
 
 ## sim.setShowNumber<sup>8+</sup>
 
-setShowNumber\(slotId: number, number: string, callback: AsyncCallback\<void\>\): void
+setShowNumber\(slotId: number, teleNumber: string, callback: AsyncCallback\<void\>\): void
 
 设置指定卡槽SIM卡的号码。使用callback异步回调。
 
@@ -387,12 +387,12 @@ setShowNumber\(slotId: number, number: string, callback: AsyncCallback\<void\>\)
 | 参数名   | 类型                      | 必填 | 说明                                   |
 | -------- | ------------------------- | ---- | -------------------------------------- |
 | slotId   | number                    | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| number   | string                    | 是   | SIM卡号码。                              |
+| teleNumber   | string                    | 是   | SIM卡号码。                              |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                             |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -413,14 +413,14 @@ import { sim } from '@kit.TelephonyKit';
 
 let number: string = '+861xxxxxxxxxx';
 sim.setShowNumber(0, number, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
 
 ## sim.setShowNumber<sup>8+</sup>
 
-setShowNumber\(slotId: number, number: string\): Promise\<void\>
+setShowNumber\(slotId: number, teleNumber: string\): Promise\<void\>
 
 设置指定卡槽SIM卡的号码。使用Promise异步回调。
 
@@ -435,7 +435,7 @@ setShowNumber\(slotId: number, number: string\): Promise\<void\>
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| number | string | 是   | SIM卡号码。                              |
+| teleNumber | string | 是   | SIM卡号码。                              |
 
 **返回值：**
 
@@ -445,7 +445,7 @@ setShowNumber\(slotId: number, number: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -466,7 +466,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let number: string = '+861xxxxxxxxxx';
 sim.setShowNumber(0, number).then(() => {
-    console.log(`setShowNumber success.`);
+    console.info(`setShowNumber success.`);
 }).catch((err: BusinessError) => {
     console.error(`setShowNumber failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -493,7 +493,7 @@ getShowNumber\(slotId: number, callback: AsyncCallback\<string\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -513,7 +513,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getShowNumber(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -544,7 +544,7 @@ getShowNumber\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -564,7 +564,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getShowNumber(0).then((data: string) => {
-    console.log(`getShowNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getShowNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getShowNumber failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -591,7 +591,7 @@ activateSim\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -611,7 +611,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.activateSim(0, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -642,7 +642,7 @@ activateSim\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -662,7 +662,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.activateSim(0).then(() => {
-    console.log(`activateSim success.`);
+    console.info(`activateSim success.`);
 }).catch((err: BusinessError) => {
     console.error(`activateSim failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -689,7 +689,7 @@ deactivateSim\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -709,7 +709,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.deactivateSim(0, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -740,7 +740,7 @@ deactivateSim\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -760,7 +760,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.deactivateSim(0).then(() => {
-    console.log(`deactivateSim success.`);
+    console.info(`deactivateSim success.`);
 }).catch((err: BusinessError) => {
     console.error(`deactivateSim failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -788,7 +788,7 @@ setLockState\(slotId: number, options: LockInfo, callback: AsyncCallback\<LockSt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -814,7 +814,7 @@ let lockInfo: sim.LockInfo = {
     state: sim.LockState.LOCK_OFF
 };
 sim.setLockState(0, lockInfo, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -846,7 +846,7 @@ setLockState\(slotId: number, options: LockInfo\): Promise\<LockStatusResponse\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -872,7 +872,7 @@ let lockInfo: sim.LockInfo = {
     state: sim.LockState.LOCK_OFF
 };
 sim.setLockState(0, lockInfo).then((data: sim.LockStatusResponse) => {
-    console.log(`setLockState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`setLockState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`setLockState failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -900,7 +900,7 @@ getLockState\(slotId: number, lockType: LockType, callback: AsyncCallback\<LockS
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -921,7 +921,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getLockState(0, 1, (err: BusinessError, data: sim.LockState) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -953,7 +953,7 @@ getLockState\(slotId: number, lockType: LockType\): Promise\<LockState\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -974,7 +974,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getLockState(0, 1).then((data: sim.LockState) => {
-    console.log(`getLockState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getLockState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getLockState failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1003,7 +1003,7 @@ alterPin\(slotId: number, newPin: string, oldPin: string, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1024,7 +1024,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.alterPin(0, "1234", "0000", (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1057,7 +1057,7 @@ alterPin\(slotId: number, newPin: string, oldPin: string\): Promise\<LockStatusR
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1078,7 +1078,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.alterPin(0, "1234", "0000").then((data: sim.LockStatusResponse) => {
-    console.log(`alterPin success, promise: data->${JSON.stringify(data)}`);
+    console.info(`alterPin success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`alterPin failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1107,7 +1107,7 @@ alterPin2\(slotId: number, newPin2: string, oldPin2: string, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1128,7 +1128,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.alterPin2(0, "1234", "0000", (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1161,7 +1161,7 @@ alterPin2\(slotId: number, newPin2: string, oldPin2: string\): Promise\<LockStat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1182,7 +1182,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.alterPin2(0, "1234", "0000").then((data: sim.LockStatusResponse) => {
-    console.log(`alterPin2 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`alterPin2 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`alterPin2 failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1210,7 +1210,7 @@ unlockPin\(slotId: number, pin: string, callback: AsyncCallback\<LockStatusRespo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1232,7 +1232,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let pin: string = '1234';
 sim.unlockPin(0, pin, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1264,7 +1264,7 @@ unlockPin\(slotId: number, pin: string\): Promise\<LockStatusResponse\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1286,7 +1286,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let pin: string = '1234';
 sim.unlockPin(0, pin).then((data: sim.LockStatusResponse) => {
-    console.log(`unlockPin success, promise: data->${JSON.stringify(data)}`);
+    console.info(`unlockPin success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`unlockPin failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1315,7 +1315,7 @@ unlockPuk\(slotId: number, newPin: string, puk: string, callback: AsyncCallback\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1338,7 +1338,7 @@ import { sim } from '@kit.TelephonyKit';
 let puk: string = '1xxxxxxx';
 let newPin: string = '1235';
 sim.unlockPuk(0, newPin, puk, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1371,7 +1371,7 @@ unlockPuk\(slotId: number, newPin: string, puk: string\): Promise\<LockStatusRes
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1394,7 +1394,7 @@ import { sim } from '@kit.TelephonyKit';
 let puk: string = '1xxxxxxx';
 let newPin: string = '1235';
 sim.unlockPuk(0, newPin, puk).then((data: sim.LockStatusResponse) => {
-    console.log(`unlockPuk success, promise: data->${JSON.stringify(data)}`);
+    console.info(`unlockPuk success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`unlockPuk failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1422,7 +1422,7 @@ unlockPin2\(slotId: number, pin2: string, callback: AsyncCallback\<LockStatusRes
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1444,7 +1444,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let pin2: string = '1234';
 sim.unlockPin2(0, pin2, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1476,7 +1476,7 @@ unlockPin2\(slotId: number, pin2: string\): Promise\<LockStatusResponse\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1498,7 +1498,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let pin2: string = '1234';
 sim.unlockPin2(0, pin2).then((data: sim.LockStatusResponse) => {
-    console.log(`unlockPin2 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`unlockPin2 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`unlockPin2 failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1527,7 +1527,7 @@ unlockPuk2\(slotId: number, newPin2: string, puk2: string, callback: AsyncCallba
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1550,7 +1550,7 @@ import { sim } from '@kit.TelephonyKit';
 let puk2: string = '1xxxxxxx';
 let newPin2: string = '1235';
 sim.unlockPuk2(0, newPin2, puk2, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1583,7 +1583,7 @@ unlockPuk2\(slotId: number, newPin2: string, puk2: string\): Promise\<LockStatus
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1606,7 +1606,7 @@ import { sim } from '@kit.TelephonyKit';
 let puk2: string = '1xxxxxxx';
 let newPin2: string = '1235';
 sim.unlockPuk2(0, newPin2, puk2).then((data: sim.LockStatusResponse) => {
-    console.log(`unlockPuk2 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`unlockPuk2 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`unlockPuk2 failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1633,7 +1633,7 @@ getSimIccId\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1653,7 +1653,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimIccId(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1684,7 +1684,7 @@ getSimIccId\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1704,7 +1704,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimIccId(0).then((data:string) => {
-    console.log(`getSimIccId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSimIccId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSimIccId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1731,7 +1731,7 @@ getVoiceMailIdentifier\(slotId: number, callback: AsyncCallback\<string\>\): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1751,7 +1751,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getVoiceMailIdentifier(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1782,7 +1782,7 @@ getVoiceMailIdentifier\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1802,7 +1802,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getVoiceMailIdentifier(0).then((data: string) => {
-    console.log(`getVoiceMailIdentifier success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getVoiceMailIdentifier success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getVoiceMailIdentifier failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1829,7 +1829,7 @@ getVoiceMailNumber\(slotId: number, callback: AsyncCallback\<string\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1849,7 +1849,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getVoiceMailNumber(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1880,7 +1880,7 @@ getVoiceMailNumber\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1900,7 +1900,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getVoiceMailNumber(0).then((data: string) => {
-    console.log(`getVoiceMailNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getVoiceMailNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getVoiceMailNumber failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1930,7 +1930,7 @@ setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string, callback
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1951,7 +1951,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.setVoiceMailInfo(0, "mail", "xxx@xxx.com", (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -1984,7 +1984,7 @@ setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string\): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2005,7 +2005,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.setVoiceMailInfo(0, "mail", "xxx@xxx.com").then(() => {
-    console.log(`setVoiceMailInfo success.`);
+    console.info(`setVoiceMailInfo success.`);
 }).catch((err: BusinessError) => {
     console.error(`setVoiceMailInfo failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2032,7 +2032,7 @@ getSimTelephoneNumber\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2052,7 +2052,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimTelephoneNumber(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2083,7 +2083,7 @@ getSimTelephoneNumber\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2103,7 +2103,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimTelephoneNumber(0).then((data: string) => {
-    console.log(`getSimTelephoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSimTelephoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSimTelephoneNumber failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2130,7 +2130,7 @@ getSimGid1\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2150,7 +2150,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimGid1(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2181,7 +2181,7 @@ getSimGid1\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2201,7 +2201,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimGid1(0).then((data: string) => {
-    console.log(`getSimGid1 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSimGid1 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSimGid1 failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2228,7 +2228,7 @@ getIMSI\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2248,7 +2248,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getIMSI(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2279,7 +2279,7 @@ getIMSI\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2299,7 +2299,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getIMSI(0).then((data: string) => {
-    console.log(`getIMSI success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getIMSI success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getIMSI failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2326,7 +2326,7 @@ getOperatorConfigs\(slotId: number, callback: AsyncCallback\<Array\<OperatorConf
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2345,7 +2345,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getOperatorConfigs(0, (err: BusinessError, data: Array<sim.OperatorConfig>) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2376,7 +2376,7 @@ getOperatorConfigs\(slotId: number\): Promise\<Array\<OperatorConfig\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2395,7 +2395,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getOperatorConfigs(0).then((data: Array<sim.OperatorConfig>) => {
-    console.log(`getOperatorConfigs success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getOperatorConfigs success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getOperatorConfigs failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2428,7 +2428,7 @@ queryIccDiallingNumbers\(slotId: number, type: ContactType, callback: AsyncCallb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2449,7 +2449,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.queryIccDiallingNumbers(0, 1, (err: BusinessError, data: Array<sim.DiallingNumbersInfo>) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2486,7 +2486,7 @@ queryIccDiallingNumbers\(slotId: number, type: ContactType\): Promise\<Array\<Di
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2507,7 +2507,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.queryIccDiallingNumbers(0, 1).then((data:  Array<sim.DiallingNumbersInfo>) => {
-    console.log(`queryIccDiallingNumbers success, promise: data->${JSON.stringify(data)}`);
+    console.info(`queryIccDiallingNumbers success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`queryIccDiallingNumbers failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2541,7 +2541,7 @@ addIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2567,7 +2567,7 @@ let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     pin2: "1234"
 };
 sim.addIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2605,7 +2605,7 @@ addIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2630,7 +2630,7 @@ let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     number: "138xxxxxxxx"
 };
 sim.addIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo).then(() => {
-    console.log(`addIccDiallingNumbers success.`);
+    console.info(`addIccDiallingNumbers success.`);
 }).catch((err: BusinessError) => {
     console.error(`addIccDiallingNumbers failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2664,7 +2664,7 @@ delIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2691,7 +2691,7 @@ let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     pin2: "1234"
 };
 sim.delIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2729,7 +2729,7 @@ delIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2754,7 +2754,7 @@ let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     number: "138xxxxxxxx"
 };
 sim.delIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo).then(() => {
-    console.log(`delIccDiallingNumbers success.`);
+    console.info(`delIccDiallingNumbers success.`);
 }).catch((err: BusinessError) => {
     console.error(`delIccDiallingNumbers failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2788,7 +2788,7 @@ updateIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Di
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2815,7 +2815,7 @@ let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     pin2: "1234"
 };
 sim.updateIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2853,7 +2853,7 @@ updateIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Di
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2879,7 +2879,7 @@ let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     recordNumber: 123
 };
 sim.updateIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo).then(() => {
-    console.log(`updateIccDiallingNumbers success.`);
+    console.info(`updateIccDiallingNumbers success.`);
 }).catch((err: BusinessError) => {
     console.error(`updateIccDiallingNumbers failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2907,7 +2907,7 @@ sendEnvelopeCmd\(slotId: number, cmd: string, callback: AsyncCallback\<void\>\):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2927,7 +2927,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.sendEnvelopeCmd(0, "ls", (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2959,7 +2959,7 @@ sendEnvelopeCmd\(slotId: number, cmd: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2979,7 +2979,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.sendEnvelopeCmd(0, "ls").then(() => {
-    console.log(`sendEnvelopeCmd success.`);
+    console.info(`sendEnvelopeCmd success.`);
 }).catch((err: BusinessError) => {
     console.error(`sendEnvelopeCmd failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -3007,7 +3007,7 @@ sendTerminalResponseCmd\(slotId: number, cmd: string, callback: AsyncCallback\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3027,7 +3027,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.sendTerminalResponseCmd(0, "ls", (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -3059,7 +3059,7 @@ sendTerminalResponseCmd\(slotId: number, cmd: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3079,7 +3079,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.sendTerminalResponseCmd(0, "ls").then(() => {
-    console.log(`sendTerminalResponseCmd success.`);
+    console.info(`sendTerminalResponseCmd success.`);
 }).catch((err: BusinessError) => {
     console.error(`sendTerminalResponseCmd failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -3108,7 +3108,7 @@ unlockSimLock\(slotId: number, lockInfo: PersoLockInfo, callback: AsyncCallback\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3133,7 +3133,7 @@ let persoLockInfo: sim.PersoLockInfo = {
     password: "1234"
 };
 sim.unlockSimLock(0, persoLockInfo, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -3165,7 +3165,7 @@ unlockSimLock\(slotId: number, lockInfo: PersoLockInfo\): Promise\<LockStatusRes
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3190,7 +3190,7 @@ let persoLockInfo: sim.PersoLockInfo = {
     password: "1234"
 };
 sim.unlockSimLock(0, persoLockInfo).then((data: sim.LockStatusResponse) => {
-    console.log(`unlockSimLock success, promise: data->${JSON.stringify(data)}`);
+    console.info(`unlockSimLock success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`unlockSimLock failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -3216,7 +3216,7 @@ getDsdsMode\(callback: AsyncCallback\<DsdsMode\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3237,7 +3237,7 @@ sim.getDsdsMode((err: BusinessError, data: sim.DsdsMode) => {
     if (err) {
         console.error(`getDsdsMode failed, callback: err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getDsdsMode success, callback: data->${JSON.stringify(data)}`);
+        console.info(`getDsdsMode success, callback: data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -3262,7 +3262,7 @@ getDsdsMode\(\): Promise\<DsdsMode\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3281,7 +3281,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let promise = sim.getDsdsMode();
 promise.then((data: sim.DsdsMode) => {
-    console.log(`getDsdsMode success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getDsdsMode success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getDsdsMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -3315,7 +3315,7 @@ SIM卡鉴权。使用Promise异步回调。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3336,7 +3336,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimAuthentication(0, sim.AuthType.SIM_AUTH_EAP_SIM_TYPE, "test").then(() => {
-    console.log(`getSimAuthentication success.`);
+    console.info(`getSimAuthentication success.`);
 }).catch((err: BusinessError) => {
     console.error(`getSimAuthentication failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -3365,8 +3365,8 @@ getAllSimAccountInfoList(callback: AsyncCallback\<Array\<IccAccountInfo\>\>): vo
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
-| 202 | Non-system applications use system APIs.
-| 8300001 | Invalid parameter value.                 |                    |
+| 202 | Non-system applications use system APIs.         |
+| 8300001 | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service.                      |
 | 8300003 | System internal error.                               |
 | 8300004  |Do not have sim card.|
@@ -3378,13 +3378,9 @@ getAllSimAccountInfoList(callback: AsyncCallback\<Array\<IccAccountInfo\>\>): vo
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-async function getAllSimAccountInfoList((err, accountInfoList) => {
-    if (err) {
-      console.error('获取SIM卡账户信息失败:', err);
-    } else {
-      console.info('获取到的SIM卡账户信息:', accountInfoList);
-    }
-  });
+sim.getAllSimAccountInfoList((err: BusinessError) => {
+    console.info(`callback: err->${JSON.stringify(err)}`);
+});
 ```
 
 ## sim.getAllSimAccountInfoList<sup>20+</sup>
@@ -3431,6 +3427,57 @@ async getAllSimAccountInfoList(): Promise<ResponseData<sim.IccAccountInfo[] | nu
       return this.handleError(this.getAllSimAccountInfoList.name, err);
     }
   }
+```
+
+## sim.setSimLabelIndex<sup>23+</sup>
+
+setSimLabelIndex(simId: number, simLabelIndex: number): Promise\<void\>
+
+设置SIM卡的标签索引。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| simId | number | 是   | SIM账户信息标识的simId。<br/>范围：[1, 500]。 |
+| simLabelIndex    | number | 是   | SIM卡的标签索引。<br/>范围：[1, 10]。                                   |
+
+**返回值：**
+
+| 类型           | 说明                        |
+| -------------- | --------------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.|
+| 202 | Non-system applications use system APIs.                     |
+| 8300001  | Invalid parameter value.                      |
+| 8300002 | Service connection failed.                               |
+| 8300003  |Do not have sim card.|
+| 8300999  |Unknown error code.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.setSimLabelIndex(1,  0).then(() => {
+    console.info(`setSimLabelIndex success.`);
+}).catch((err: BusinessError) => {
+    console.error(`setSimLabelIndex failed, promise: err->${JSON.stringify(err)}`);
+});
 ```
 
 ## LockType<sup>8+</sup>

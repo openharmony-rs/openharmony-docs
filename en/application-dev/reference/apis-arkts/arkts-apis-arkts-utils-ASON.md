@@ -50,7 +50,7 @@ Defines the type of the conversion result function.
 | ------ | ------ | ---- | --------------- |
 | this   | [ISendable](#isendable) | Yes| Object to which the key-value pair to parse belongs.|
 | key  | string | Yes| Key to parse.|
-| value  | [ISendable](#isendable) \| undefined \| null| Yes| Value of the key.|
+| value  | [ISendable](#isendable) \| undefined \| null| Yes| Value of the key-value pair to parse.|
 
 **Return value**
 
@@ -76,6 +76,8 @@ Enumerates the modes for processing BigInt.
 
 Enumerates the return types of the parsing result.
 
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
 **System capability**: SystemCapability.Utils.Lang
 
 | Name| Value| Description           |
@@ -91,10 +93,10 @@ Describes the parsing options, which define the BigInt processing mode and the r
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory| Description           |
-| ------ | ------ | ---- | --------------- |
-| bigIntMode   | [BigIntMode](#bigintmode) | Yes|Mode for processing BigInt.|
-| parseReturnType   | [ParseReturnType](#parsereturntype) | Yes|Return type of the parsing result.|
+| Name| Type| Read-Only| Optional| Description           |
+| ------ | ------ | ---- | ---- |--------------- |
+| bigIntMode   | [BigIntMode](#bigintmode) | No | No|Mode for processing BigInt.|
+| parseReturnType   | [ParseReturnType](#parsereturntype) | No | No|Return type of the parsing result.|
 
 ## parse
 
@@ -111,7 +113,7 @@ Parses a JSON string to generate ISendable data or null.
 | Name| Type  | Mandatory| Description           |
 | ------ | ------ | ---- | --------------- |
 | text   | string | Yes| Valid JSON string.|
-| reviver   | [Transformer](#transformer) | No| Conversion function. This parameter can be used to modify the value generated after parsing. The default value is undefined. Currently, only undefined can be passed in.|
+| reviver   | [Transformer](#transformer) | No| Conversion function. This parameter can be used to modify the value generated after parsing. The default value is undefined. Currently, only the value **undefined** is supported. Other values will be ignored or considered invalid.|
 | options   | [ParseOptions](#parseoptions) | No| Parsing options. This parameter is used to control the type of the parsing result. The default value is undefined.|
 
 **Return value**
@@ -131,8 +133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { lang } from '@kit.ArkTS';
-import { collections } from '@kit.ArkTS';
+import { ArkTSUtils, collections, lang} from '@kit.ArkTS';
 
 type ISendable = lang.ISendable;
 let jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';
@@ -211,14 +212,14 @@ hashMap.set("sh","b");
 hashMap.set("map","c");
 let str1 = ArkTSUtils.ASON.stringify(hashMap);
 console.info(str1);
-// Expected output: '{"sh":"b","ha":"a","map":"c"}'
+// The storage sequence of HashMap is determined by hashCode. Therefore, the storage location is uncertain. The output may be '{"sh":"b","ha":"a","map":"c"}'.
 let hashSet = new HashSet<string>();
 hashSet.add("ha");
 hashSet.add("sh");
 hashSet.add("set");
 let str2 = ArkTSUtils.ASON.stringify(hashSet);
 console.info(str2);
-// Expected output: '["set","sh","ha"]'
+// The storage sequence of HashSet is determined by hashCode. Therefore, the storage location is uncertain. The output may be '["set","sh","ha"]'.
 let map = new Map<string,string>();
 map.set("m","a");
 map.set("a","b");

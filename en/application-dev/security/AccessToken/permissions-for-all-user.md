@@ -1,10 +1,11 @@
 # Open user_grant Permissions
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Owner: @xia-bubai-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 All the permissions in this topic are available to all applications and granted by the user.
 
@@ -12,7 +13,7 @@ This type of permissions must be declared in the application installation packag
 
 <!--Del-->
 > **NOTE**
-> "Enable via ACL" is not involved for permissions of the normal level.
+> **Certificate-based authorization** is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -57,11 +58,13 @@ Allows an application to read the open anonymous device identifier (OAID).
 
 Allows an application to read the current workout status of the user, such as detecting whether the user is working out and recording the number of steps the user has taken.
 
-For example, to determine whether the user is in motion or to record the number of steps that the user has walked.
+For example, the application can determine whether the user is in motion or to record the number of steps that the user has walked.
 
 **Permission level**: normal
 
 **Authorization mode**: user_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -89,24 +92,17 @@ Allows the application data to be exchanged between devices.
 
 Allows an application running in the background to obtain the device location.
 
-For security purposes, this permission cannot be granted to applications in a dialog box. If an application needs this permission, direct the user to manually grant this permission on the **Settings** screen.
-
 **Procedure**:
 
 1. [Declare permissions](declare-permissions.md) in the **module.json5** file.
 
-   You must request the foreground location permission before requesting the background permission. Therefore, you must declare both the ohos.permission.LOCATION_IN_BACKGROUND permission and the foreground location permission. The foreground location permissions include the following:
-   - Request [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location).
-   - Request [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location) and [ohos.permission.LOCATION](#ohospermissionlocation).
-2. Request the foreground location permission from the user through a pop-up window.
-3. After the user grants the foreground location permissions, display a message to direct the user to go to the **Settings** screen to grant the ohos.permission.LOCATION_IN_BACKGROUND permission.
-4. The permission is granted to the application if the user selects **Always allow** on the **Settings** screen.
+   You must request the foreground location permission before requesting the background location permission. Therefore, you must declare both of them. The foreground location permissions include the following:
+   - Apply for the foreground approximate location permission: Declare [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location).
+   - Apply for the foreground precise location permission: Declare both the [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location) and [ohos.permission.LOCATION](#ohospermissionlocation) permissions.
+2. The application calls [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) to display a dialog box to request the foreground location permission from the user.
+3. If the user clicks to allow the application to use the foreground location permission in the pop-up window, the application can guide the user to grant the background location permission in the system settings. If the user denies the application's use of the foreground location permission, the application can guide the user to grant the permission in the system settings, or call [requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12) to open the permission settings pop-up window again to guide the user to grant the permission.
 
-   Paths:
-   <!--RP1-->
-   - Path 1: **Settings** > **Privacy** > **Permission manager** > **Permissions** > **Location** > *Target application*
-   - Path 2: **Settings** > **Privacy** > **Permission manager** > **Apps** > *Target application* > Location
-   <!--RP1End-->
+The system provides the continuous task mechanism. For applications that need to use the location in the background, you can request the continuous task of the **LOCATION** type and the foreground location permission to obtain the location in the background without requesting the background location permission. For details, see [Continuous Task](../../task-management/continuous-task.md).
 
 **Permission level**: normal
 
@@ -118,7 +114,7 @@ For security purposes, this permission cannot be granted to applications in a di
 
 Allows an application to obtain the device location.
 
-**Prerequisites**: This permission must be requested with [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location) together.
+**Prerequisites**: This permission must be requested with [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location).
 
 **Permission level**: normal
 
@@ -168,17 +164,19 @@ Allows an application to add, remove, and modify Calendar events.
 
 ## ohos.permission.READ_HEALTH_DATA
 
-Allows an application to read the health data of the user.
+Allows an application to obtain users' health data, such as heart rate.
 
 **Permission level**: normal
 
 **Authorization mode**: user_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
+
 **Valid since**: 7
 
 ## ohos.permission.ACCESS_NEARLINK
 
-Allows an application to use NearLink, such as device pairing and connecting to nearby devices.
+Allows an application to access and use NearLink, such as device pairing and connecting to nearby devices.
 
 **Permission level**: normal
 
@@ -188,7 +186,7 @@ Allows an application to use NearLink, such as device pairing and connecting to 
 
 ## ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY
 
-Allows an application to access the **Download** directory and its subdirectories in the user directory.
+Allows an application to access the **Download** directory and its subdirectories in the public directory.
 
 <!--RP2--><!--RP2End-->
 
@@ -204,7 +202,7 @@ Allows an application to access the **Download** directory and its subdirectorie
 
 ## ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY
 
-Allows an application to access the **Documents** directory and its subdirectories in the user directory.
+Allows an application to access the **Documents** directory and its subdirectories in the public directory.
 
 <!--RP2--><!--RP2End-->
 
@@ -228,9 +226,11 @@ With this permission, the application can perform operations such as taking scre
 
 **Authorization mode**: user_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices | tablets | phones
 
 **Valid since**: 14
+
+**Changelog**: This permission is available only on tablets and PCs/2-in-1 devices from API versions 14 to 20. Since API version 21, this permission is also available on phones.
 
 ## ohos.permission.READ_MEDIA
 
@@ -242,7 +242,7 @@ Allows an application to read media files from the user's external storage.
 
 **Valid since**: 7
 
-**Deprecated from**: 12
+**Deprecated from**: 22
 
 **Substitute**:
 
@@ -258,7 +258,7 @@ Allows an application to read media files from and write media files into the us
 
 **Valid since**: 7
 
-**Deprecated from**: 12
+**Deprecated from**: 22
 
 **Substitute**:
 

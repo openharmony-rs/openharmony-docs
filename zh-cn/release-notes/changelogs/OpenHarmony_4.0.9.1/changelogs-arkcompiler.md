@@ -14,7 +14,7 @@ arkcompiler前端编译器中的ts2abc下线
 
 **适配指导**
 1. 对于利用DevEco进行应用开发的开发者而言，ts2abc编译器的下线不会造成任何影响，不需要做适配
-2. 对于自己开发脚本调用sdk中的ts2abc编译器的开发者而言，需要切换为调用es2abc编译器来生成abc文件。es2abc编译器的使用说明以及与ts2abc编译器的对比请参考[es2abc和ts2abc使用说明](https://gitee.com/openharmony/arkcompiler_ets_frontend#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E). 假设编译的文件名叫a.js文件，对于使用频率最高的生成abc文件，两者的编译命令如下：
+2. 对于自己开发脚本调用sdk中的ts2abc编译器的开发者而言，需要切换为调用es2abc编译器来生成abc文件。es2abc编译器的使用说明以及与ts2abc编译器的对比请参考[es2abc和ts2abc使用说明](https://gitcode.com/openharmony/arkcompiler_ets_frontend#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E). 假设编译的文件名叫a.js文件，对于使用频率最高的生成abc文件，两者的编译命令如下：
     - script模式编译
         1. es2abc: es2abc a.js --output a.abc
         2. ts2abc: node --expose-gc pathToIndex/index.js a.js --output a.abc

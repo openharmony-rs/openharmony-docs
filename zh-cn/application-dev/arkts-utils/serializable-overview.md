@@ -16,6 +16,7 @@
 目前ArkTS支持线程间通信的对象有以下几种：
 
 - [普通对象](normal-object.md)：可直接传递基本数据类型及自定义对象（需满足序列化规范）。
+- [容器类对象](container-object.md)：可直接传递已经支持的容器类对象（需满足序列化规范）。
 - [ArrayBuffer对象](arraybuffer-object.md)：用于二进制数据的高效传递，适用于大段连续内存数据（如图片、音频原始数据）。
 - [SharedArrayBuffer对象](shared-arraybuffer-object.md)：支持多线程共享内存，允许线程间直接访问同一块内存区域，提升数据传递效率。
 - [Transferable对象（NativeBinding对象）](transferabled-object.md)：支持跨线程转移对象所有权（如文件描述符、图形资源等），转移后原线程不再拥有访问权限。

@@ -25,7 +25,7 @@ import { GesturePath } from '@kit.AccessibilityKit';
 
 表示手势路径信息。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
@@ -42,7 +42,7 @@ constructor(durationTime: number);
 
 > **说明：**
 >
-> 从API version 12开始废弃。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 

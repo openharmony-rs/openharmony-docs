@@ -20,6 +20,7 @@
     - [Functions](arkts-apis-data-relationalStore-f.md)
     - [Interface (RdbStore)](arkts-apis-data-relationalStore-RdbStore.md)
     - [Interface (ResultSet)](arkts-apis-data-relationalStore-ResultSet.md)
+    - [Class (LiteResultSet)](arkts-apis-data-relationalStore-LiteResultSet.md)
     - [Interface (Transaction)](arkts-apis-data-relationalStore-Transaction.md)
     - [Interfaces (Others)](arkts-apis-data-relationalStore-i.md)
     - [Class (RdbPredicates)](arkts-apis-data-relationalStore-RdbPredicates.md)
@@ -43,14 +44,15 @@
   - [@ohos.data.dataShareResultSet (DataShare Result Set) (System API)](js-apis-data-DataShareResultSet-sys.md)
   - [@ohos.data.distributedKVStore (Distributed KV Store) (System API)](js-apis-distributedKVStore-sys.md)
   - [@ohos.data.relationalStore (RDB Store) (System API)](js-apis-data-relationalStore-sys.md)
+  - [@ohos.data.uniformTypeDescriptor (Uniform Data Definition and Description) (System API)](js-apis-data-uniformTypeDescriptor-sys.md)
   <!--DelEnd-->
   - APIs No Longer Maintained<!--arkdata-arkts-dep-->
     - [@ohos.data.distributedData (Distributed Data Management)](js-apis-distributed-data.md)
     - [@ohos.data.rdb (RDB)](js-apis-data-rdb.md)
     - [@ohos.data.storage (Lightweight Data Storage)](js-apis-data-storage.md)
     - [@system.storage (Data Storage)](js-apis-system-storage.md)
-    - data/rdb
-      - [resultSet (Result Set)](js-apis-data-resultset.md) 
+    - data/rdb<!--data-rdb-->
+      - [resultSet](js-apis-data-resultset.md)
 - ArkTS Components<!--arkdata-comp-->
   - [@ohos.data.UdmfComponents (Content Card)](js-apis-data-UdmfComponents.md)
 - C APIs<!--arkdata-c-->
@@ -84,6 +86,7 @@
   - Structs<!--arkdata-struct-->
     - [OH_Cursor](capi-rdb-oh-cursor.md)
     - [OH_Predicates](capi-rdb-oh-predicates.md)
+    - [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
     - [OH_VObject](capi-rdb-oh-vobject.md)
     - [OH_VBucket](capi-rdb-oh-vbucket.md)
     - [OH_Rdb_Config](capi-rdb-oh-rdb-config.md)
@@ -127,6 +130,7 @@
     - [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)
     - [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)
     - [OH_UdsContentForm](capi-udmf-oh-udscontentform.md)
+    - [OH_UdsDetails](capi-udmf-oh-udsdetails.md)
     - [OH_Utd](capi-udmf-oh-utd.md)
 - Error Codes<!--arkdata-arkts-errcode-->
   - [RDB Error Codes](errorcode-data-rdb.md)

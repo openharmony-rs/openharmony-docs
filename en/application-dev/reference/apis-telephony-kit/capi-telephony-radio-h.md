@@ -1,8 +1,16 @@
 # telephony_radio.h
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Terence_Super-->
+<!--Designer: @Terence_Super-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Overview
 
 Defines C APIs for the radio module.
+
+**File to include**: <telephony/core_service/telephony_radio.h>
 
 **Library**: libtelephony_radio.so
 
@@ -25,7 +33,7 @@ Defines C APIs for the radio module.
 
 ### OH_Telephony_GetNetworkState()
 
-```
+```c
 Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state)
 ```
 
@@ -54,7 +62,7 @@ Obtains the network status.
 
 ### OH_Telephony_GetNetworkStateForSlot()
 
-```
+```c
 Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Telephony_NetworkState *state)
 ```
 

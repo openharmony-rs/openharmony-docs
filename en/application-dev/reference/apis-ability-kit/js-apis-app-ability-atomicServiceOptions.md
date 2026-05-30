@@ -1,4 +1,4 @@
-# @ohos.app.ability.AtomicServiceOptions (AtomicServiceOptions)
+# @ohos.app.ability.AtomicServiceOptions (Optional Parameters of openAtomicService)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1; @wendel; @Luobniz21-->
@@ -22,6 +22,8 @@ import { AtomicServiceOptions } from '@kit.AbilityKit';
 
 ## AtomicServiceOptions
 
+### Properties
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
@@ -35,9 +37,8 @@ import { AtomicServiceOptions } from '@kit.AbilityKit';
 **Example**
 
 ```ts
-import { UIAbility, AtomicServiceOptions, common, wantConstant, CompletionHandlerForAtomicService } from '@kit.AbilityKit';
+import { UIAbility, AtomicServiceOptions, common, wantConstant, CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { FailureCode } from '@ohos.app.ability.CompletionHandlerForAtomicService';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class EntryAbility extends UIAbility {

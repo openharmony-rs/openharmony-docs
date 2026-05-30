@@ -1,7 +1,12 @@
 # 绘制文本
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
-
-Svg组件还可以绘制文本。
+svg组件还可以绘制文本。
 
 
 ## 文本

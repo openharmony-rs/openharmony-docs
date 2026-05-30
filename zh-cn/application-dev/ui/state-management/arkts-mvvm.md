@@ -1,12 +1,12 @@
-# MVVM模式
+# MVVM模式（V1）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者掌握了状态管理的基本概念后，通常会尝试开发自己的应用，在应用开发初期，如果未能精心规划项目结构，随着项目扩展和复杂化，状态变量的增多将导致组件间关系变得错综复杂。此时，开发新功能可能引起连锁反应，维护成本也会增加。为此，本文旨在介绍MVVM模式以及ArkUI的UI开发模式与MVVM的关系，指导开发者如何设计项目结构，以便在产品迭代和升级时，能更轻松的开发和维护。
+当开发者掌握了状态管理的基本概念后，通常会尝试开发自己的应用，在应用开发初期，如果未能精心规划项目结构，随着项目扩展和复杂化，状态变量的增多将导致组件间关系变得错综复杂。此时，开发新功能可能引起连锁反应，维护成本也会增加。为此，本文旨在介绍MVVM模式以及ArkUI的UI开发模式与MVVM的关系，指导开发者如何设计项目结构，以便在产品迭代和升级时能更轻松地开发和维护。
 
 
 本文档涵盖了大多数状态管理V1装饰器，所以在阅读本文档前，建议开发者对状态管理V1有一定的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)和状态管理V1装饰器相关文档。
@@ -19,9 +19,10 @@
 
 - View：用户界面层。负责用户界面展示并与用户交互，不包含任何业务逻辑。它通过绑定ViewModel层提供的数据实现动态更新。
 - Model：数据访问层。以数据为中心，不直接与用户界面交互。负责数据结构定义，数据管理（获取、存储、更新等），以及业务逻辑处理。
-- ViewModel：表示逻辑层。作为连接Model和View的桥梁，通常一个View对应一个ViewModel。View和ViewModel有两种通信方式：  
-  1.方法调用：View通过事件监听用户行为，在回调里面触发ViewModel层的方法。例如当View监听到用户Button点击行为，调用ViewModel对应的方法，处理用户操作。  
-  2.双向绑定：View绑定ViewModel的数据，实现双向同步。  
+- ViewModel：表示逻辑层。作为连接Model和View的桥梁，通常一个View对应一个ViewModel。View和ViewModel有两种通信方式：
+
+  1. 方法调用：View通过事件监听用户行为，在回调里面触发ViewModel层的方法。例如当View监听到用户Button点击行为，调用ViewModel对应的方法，处理用户操作。  
+  2. 双向绑定：View绑定ViewModel的数据，实现双向同步。  
 
 ArkUI的UI开发模式就属于MVVM模式，通过对MVVM概念的基本介绍，开发者大致能猜到状态管理能在MVVM中起什么样的作用，状态管理旨在数据驱动更新，让开发者只用关注页面设计，而不去关注整个UI的刷新逻辑，数据的维护也无需开发者进行感知，由状态变量自动更新完成，而这就是属于ViewModel层所需要支持的内容，因此开发者使用MVVM模式开发自己的应用是最省心省力的。
 
@@ -59,7 +60,7 @@ Model层是应用的原始数据提供者，代表应用的核心业务逻辑和
 **不可跨层访问**
 
 * View层不可以直接调用Model层的数据，只能通过ViewModel提供的方法进行调用。
-* Model层数据，不可以直接操作UI，Model层只能通知ViewModel层数据有更新，由ViewModel层更新对应的数据。
+* Model层不能直接操作UI，只能通知ViewModel层数据有更新，由ViewModel层更新对应的数据。
 
 **下层不可访问上层数据**
 
@@ -76,7 +77,7 @@ Model层是应用的原始数据提供者，代表应用的核心业务逻辑和
 
 * 组件自己使用了哪些子组件是明确的，因此可以访问。
 * 组件被放置于哪个父节点下是未知的，因此组件想访问父节点，就只能通过通知或者事件能力完成。
-* 组件不可能知道自己的兄弟节点是谁，因此组件不可以操纵兄弟节点。
+* 组件不可能知道自己的兄弟节点是谁，因此组件不可以操作兄弟节点。
 
 ## 备忘录开发实战
 
@@ -84,53 +85,56 @@ Model层是应用的原始数据提供者，代表应用的核心业务逻辑和
 
 ### @State状态变量
 
-* @State装饰器是最常用的装饰器之一，用于定义状态变量。通常，这些状态变量作为父组件的数据源，开发者点击时，触发状态变量的更新，刷新UI。
+* [@State](./arkts-state.md)装饰器是最常用的装饰器之一，用于定义状态变量。通常，这些状态变量作为父组件的数据源，开发者点击时，触发状态变量的更新，刷新UI。
 
-```typescript
+<!-- @[state_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/StateIndex.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Index {
+struct StateIndex {
   @State isFinished: boolean = false;
 
   build() {
     Column() {
       Row() {
-        Text('全部待办')
+        // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
+        Text($r('app.string.all_tasks'))
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
       }
       .width('100%')
-      .margin({top: 10, bottom: 10})
+      .margin({ top: 10, bottom: 10 })
 
       // 待办事项
-      Row({space: 15}) {
+      Row({ space: 15 }) {
         if (this.isFinished) {
-          // 此处'app.media.finished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+          // 请将$r('app.media.finished')替换为实际资源文件
           Image($r('app.media.finished'))
             .width(28)
             .height(28)
-        }
-        else {
-          // 此处'app.media.unfinished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+        } else {
+          // 请将$r('app.media.unfinished')替换为实际资源文件
           Image($r('app.media.unfinished'))
             .width(28)
             .height(28)
         }
-        Text('学习高数')
+        // 请将$r('app.string.all_learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
+        Text($r('app.string.learn_advanced_math'))
           .fontSize(24)
-          .decoration({type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None})
+          .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
       }
       .height('40%')
       .width('100%')
-      .border({width: 5})
-      .padding({left: 15})
+      .border({ width: 5 })
+      .padding({ left: 15 })
       .onClick(() => {
         this.isFinished = !this.isFinished;
       })
     }
     .height('100%')
     .width('100%')
-    .margin({top: 5, bottom: 5})
+    .margin({ top: 5, bottom: 5 })
     .backgroundColor('#90f1f3f5')
   }
 }
@@ -144,30 +148,34 @@ struct Index {
 
 上述示例中，所有代码都写在了`@Entry`组件中。随着需要渲染的组件越来越多，`@Entry`组件必然需要进行拆分，为此，拆分出的子组件就需要使用\@Prop和\@Link装饰器：
 
-* \@Prop是父子间单向传递，子组件会深拷贝父组件数据，可从父组件更新，也可自己更新数据，但不会同步回父组件。
-* \@Link是父子间双向传递，父组件改变，会通知所有的\@Link，同时\@Link的更新也会通知父组件的数据源进行刷新。
+* [\@Prop](./arkts-prop.md)是父子间单向传递，子组件会深拷贝父组件数据，可从父组件更新，也可自己更新数据，但不会同步回父组件。
+* [\@Link](./arkts-link.md)是父子间双向传递，父组件改变，会通知所有的\@Link，同时\@Link的更新也会通知父组件的数据源进行刷新。
 
-```typescript
+<!-- @[prop_link_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/PropLinkIndex.ets) -->
+
+``` TypeScript
 @Component
-struct TodoComponent {
+struct PropLinkTodoComponent {
   build() {
     Row() {
-      Text('全部待办')
+      // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
+      Text($r('app.string.all_tasks'))
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
     }
     .width('100%')
-    .margin({top: 10, bottom: 10})
+    .margin({ top: 10, bottom: 10 })
   }
 }
 
 @Component
-struct AllChooseComponent {
+struct PropLinkAllChooseComponent {
   @Link isFinished: boolean;
 
   build() {
     Row() {
-      Button('全选', {type: ButtonType.Normal})
+      // 请将$r('app.string.check_all')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
+      Button($r('app.string.check_all'), { type: ButtonType.Normal })
         .onClick(() => {
           this.isFinished = !this.isFinished;
         })
@@ -175,39 +183,39 @@ struct AllChooseComponent {
         .fontWeight(FontWeight.Bold)
         .backgroundColor('#f7f6cc74')
     }
-    .padding({left: 15})
+    .padding({ left: 15 })
     .width('100%')
-    .margin({top: 10, bottom: 10})
+    .margin({ top: 10, bottom: 10 })
   }
 }
 
 @Component
-struct ThingsComponent1 {
+struct ThingComponent1 {
   @Prop isFinished: boolean;
 
   build() {
     // 待办事项1
-    Row({space: 15}) {
+    Row({ space: 15 }) {
       if (this.isFinished) {
-        // 此处'app.media.finished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+        // 请将$r('app.media.finished')替换为实际资源文件
         Image($r('app.media.finished'))
           .width(28)
           .height(28)
-      }
-      else {
-        // 此处'app.media.unfinished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+      } else {
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         Image($r('app.media.unfinished'))
           .width(28)
           .height(28)
       }
-      Text('学习语文')
+      // 请将$r('app.string.learn_chinese')替换为实际资源文件，在本示例中该资源文件的value值为"学习语文"
+      Text($r('app.string.learn_chinese'))
         .fontSize(24)
-        .decoration({type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None})
+        .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
     }
     .height('40%')
     .width('100%')
-    .border({width: 5})
-    .padding({left: 15})
+    .border({ width: 5 })
+    .padding({ left: 15 })
     .onClick(() => {
       this.isFinished = !this.isFinished;
     })
@@ -215,32 +223,32 @@ struct ThingsComponent1 {
 }
 
 @Component
-struct ThingsComponent2 {
+struct ThingComponent2 {
   @Prop isFinished: boolean;
 
   build() {
     // 待办事项1
-    Row({space: 15}) {
+    Row({ space: 15 }) {
       if (this.isFinished) {
-        // 此处'app.media.finished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+        // 请将$r('app.media.finished')替换为实际资源文件
         Image($r('app.media.finished'))
           .width(28)
           .height(28)
-      }
-      else {
-        // 此处'app.media.unfinished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+      } else {
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         Image($r('app.media.unfinished'))
           .width(28)
           .height(28)
       }
-      Text('学习高数')
+      // 请将$r('app.string.learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
+      Text($r('app.string.learn_advanced_math'))
         .fontSize(24)
-        .decoration({type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None})
+        .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
     }
     .height('40%')
     .width('100%')
-    .border({width: 5})
-    .padding({left: 15})
+    .border({ width: 5 })
+    .padding({ left: 15 })
     .onClick(() => {
       this.isFinished = !this.isFinished;
     })
@@ -249,30 +257,31 @@ struct ThingsComponent2 {
 
 @Entry
 @Component
-struct Index {
+struct PropLinkIndex {
   @State isFinished: boolean = false;
 
   build() {
     Column() {
       // 全部待办
-      TodoComponent()
+      PropLinkTodoComponent()
 
       // 全选
-      AllChooseComponent({isFinished: this.isFinished})
+      PropLinkAllChooseComponent({ isFinished: this.isFinished })
 
       // 待办事项1
-      ThingsComponent1({isFinished: this.isFinished})
+      ThingComponent1({ isFinished: this.isFinished })
 
       // 待办事项2
-      ThingsComponent2({isFinished: this.isFinished})
+      ThingComponent2({ isFinished: this.isFinished })
     }
     .height('100%')
     .width('100%')
-    .margin({top: 5, bottom: 5})
+    .margin({ top: 5, bottom: 5 })
     .backgroundColor('#90f1f3f5')
   }
 }
 ```
+
 
 效果图如下：
 
@@ -280,30 +289,34 @@ struct Index {
 
 ### 循环渲染组件
 
-* 上个示例虽然拆分出了子组件，但发现组件1和组件2的代码非常相似，当渲染的组件除了数据外，其他设置都相同时，此时就需要使用ForEach循环渲染。
+* 上个示例虽然拆分出了子组件，但发现组件1和组件2的代码非常相似，当渲染的组件除了数据外，其他设置都相同时，此时就需要使用[ForEach循环渲染](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)。
 * ForEach使用之后，冗余代码变得更少，并且代码结构更加清晰。
 
-```typescript
+<!-- @[foreach_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/ForEachIndex.ets) --> 
+
+``` TypeScript
 @Component
-struct TodoComponent {
+struct ForEachTodoComponent {
   build() {
     Row() {
-      Text('全部待办')
+      // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
+      Text($r('app.string.all_tasks'))
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
     }
     .width('100%')
-    .margin({top: 10, bottom: 10})
+    .margin({ top: 10, bottom: 10 })
   }
 }
 
 @Component
-struct AllChooseComponent {
+struct ForEachAllChooseComponent {
   @Link isFinished: boolean;
 
   build() {
     Row() {
-      Button('全选', {type: ButtonType.Normal})
+      // 请将$r('app.string.check_all')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
+      Button($r('app.string.check_all'), { type: ButtonType.Normal })
         .onClick(() => {
           this.isFinished = !this.isFinished;
         })
@@ -311,40 +324,41 @@ struct AllChooseComponent {
         .fontWeight(FontWeight.Bold)
         .backgroundColor('#f7f6cc74')
     }
-    .padding({left: 15})
+    .padding({ left: 15 })
     .width('100%')
-    .margin({top: 10, bottom: 10})
+    .margin({ top: 10, bottom: 10 })
   }
 }
 
 @Component
-struct ThingsComponent {
+struct ForEachThingComponent {
   @Prop isFinished: boolean;
-  @Prop things: string;
+  @Prop thing: string;
+
   build() {
     // 待办事项1
-    Row({space: 15}) {
+    Row({ space: 15 }) {
       if (this.isFinished) {
-        // 此处'app.media.finished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+        // 请将$r('app.media.finished')替换为实际资源文件
         Image($r('app.media.finished'))
           .width(28)
           .height(28)
-      }
-      else {
-        // 此处'app.media.unfinished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+      } else {
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         Image($r('app.media.unfinished'))
           .width(28)
           .height(28)
+          // ...
       }
-      Text(`${this.things}`)
+      Text(`${this.thing}`)
         .fontSize(24)
-        .decoration({type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None})
+        .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
     }
     .height('8%')
     .width('90%')
-    .padding({left: 15})
-    .opacity(this.isFinished ? 0.3: 1)
-    .border({width:1})
+    .padding({ left: 15 })
+    .opacity(this.isFinished ? 0.3 : 1)
+    .border({ width: 1 })
     .borderColor(Color.White)
     .borderRadius(25)
     .backgroundColor(Color.White)
@@ -356,42 +370,56 @@ struct ThingsComponent {
 
 @Entry
 @Component
-struct Index {
+struct ForEachIndex {
   @State isFinished: boolean = false;
-  @State planList: string[] = [
-    '7.30 起床',
-    '8.30 早餐',
-    '11.30 中餐',
-    '17.30 晚餐',
-    '21.30 夜宵',
-    '22.30 洗澡',
-    '1.30 起床'
+  @State planList: ResourceStr[] = [
+    // 请将$r('app.string.get_up')替换为实际资源文件，在本示例中该资源文件的value值为"7.30 起床"
+    $r('app.string.get_up'),
+    // 请将$r('app.string.breakfast')替换为实际资源文件，在本示例中该资源文件的value值为"8.30 早餐"
+    $r('app.string.breakfast'),
+    // 请将$r('app.string.lunch')替换为实际资源文件，在本示例中该资源文件的value值为"11.30 中餐"
+    $r('app.string.lunch'),
+    // 请将$r('app.string.dinner')替换为实际资源文件，在本示例中该资源文件的value值为"17.30 晚餐"
+    $r('app.string.dinner'),
+    // 请将$r('app.string.midnight_snack')替换为实际资源文件，在本示例中该资源文件的value值为"21.30 夜宵"
+    $r('app.string.midnight_snack'),
+    // 请将$r('app.string.bathe')替换为实际资源文件，在本示例中该资源文件的value值为"22.30 洗澡"
+    $r('app.string.bathe'),
+    // 请将$r('app.string.sleep')替换为实际资源文件，在本示例中该资源文件的value值为"1.30 睡觉"
+    $r('app.string.sleep')
   ];
+  context1 = this.getUIContext().getHostContext();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < this.planList.length; i++) {
+      this.planList[i] = resource.resourceToString(this.planList[i] as Resource);
+    };
+  }
 
   build() {
     Column() {
       // 全部待办
-      TodoComponent()
+      ForEachTodoComponent()
 
       // 全选
-      AllChooseComponent({isFinished: this.isFinished})
+      ForEachAllChooseComponent({ isFinished: this.isFinished })
 
       List() {
         ForEach(this.planList, (item: string) => {
           // 待办事项1
-          ThingsComponent({isFinished: this.isFinished, things: item})
+          ForEachThingComponent({ isFinished: this.isFinished, thing: item })
             .margin(5)
         })
       }
-
     }
     .height('100%')
     .width('100%')
-    .margin({top: 5, bottom: 5})
+    .margin({ top: 5, bottom: 5 })
     .backgroundColor('#90f1f3f5')
   }
 }
 ```
+
 
 效果图如下：
 
@@ -400,42 +428,53 @@ struct Index {
 ### @Builder方法
 
 * Builder方法用于组件内定义方法，可以使得相同代码可以在组件内进行复用。
-* 本示例不仅使用了@Builder方法进行去重，还对数据进行了移除，可以看到此时代码更加清晰易读，相对于最开始的代码，`@Entry`组件基本只用于处理页面构建逻辑，而不处理大量与页面设计无关的内容。
+* 本示例不仅使用了[@Builder](./arkts-builder.md)方法进行去重，还对数据进行了移除，可以看到此时代码更加清晰易读，相对于最开始的代码，`@Entry`组件基本只用于处理页面构建逻辑，而不处理大量与页面设计无关的内容。
 
-```typescript
+<!-- @[builder_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/BuilderIndex.ets) --> 
+
+``` TypeScript
 @Observed
 class TodoListData {
-  planList: string[] = [
-    '7.30 起床',
-    '8.30 早餐',
-    '11.30 中餐',
-    '17.30 晚餐',
-    '21.30 夜宵',
-    '22.30 洗澡',
-    '1.30 起床'
+  public planList: ResourceStr[] = [
+    // 请将$r('app.string.get_up')替换为实际资源文件，在本示例中该资源文件的value值为"7.30 起床"
+    $r('app.string.get_up'),
+    // 请将$r('app.string.breakfast')替换为实际资源文件，在本示例中该资源文件的value值为"8.30 早餐"
+    $r('app.string.breakfast'),
+    // 请将$r('app.string.lunch')替换为实际资源文件，在本示例中该资源文件的value值为"11.30 中餐"
+    $r('app.string.lunch'),
+    // 请将$r('app.string.dinner')替换为实际资源文件，在本示例中该资源文件的value值为"17.30 晚餐"
+    $r('app.string.dinner'),
+    // 请将$r('app.string.midnight_snack')替换为实际资源文件，在本示例中该资源文件的value值为"21.30 夜宵"
+    $r('app.string.midnight_snack'),
+    // 请将$r('app.string.bathe')替换为实际资源文件，在本示例中该资源文件的value值为"22.30 洗澡"
+    $r('app.string.bathe'),
+    // 请将$r('app.string.sleep')替换为实际资源文件，在本示例中该资源文件的value值为"1.30 睡觉"
+    $r('app.string.sleep')
   ];
 }
 
 @Component
-struct TodoComponent {
+struct StateTodoComponent {
   build() {
     Row() {
-      Text('全部待办')
+      // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
+      Text($r('app.string.all_tasks'))
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
     }
     .width('100%')
-    .margin({top: 10, bottom: 10})
+    .margin({ top: 10, bottom: 10 })
   }
 }
 
 @Component
-struct AllChooseComponent {
+struct BuilderAllChooseComponent {
   @Link isFinished: boolean;
 
   build() {
     Row() {
-      Button('全选', {type: ButtonType.Capsule})
+      // 请将$r('app.string.check_all')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
+      Button($r('app.string.check_all'), { type: ButtonType.Capsule })
         .onClick(() => {
           this.isFinished = !this.isFinished;
         })
@@ -443,49 +482,50 @@ struct AllChooseComponent {
         .fontWeight(FontWeight.Bold)
         .backgroundColor('#f7f6cc74')
     }
-    .padding({left: 15})
+    .padding({ left: 15 })
     .width('100%')
-    .margin({top: 10, bottom: 10})
+    .margin({ top: 10, bottom: 10 })
   }
 }
 
 @Component
-struct ThingsComponent {
+struct BuilderThingComponent {
   @Prop isFinished: boolean;
-  @Prop things: string;
+  @Prop thing: string;
 
-  @Builder displayIcon(icon: Resource) {
+  @Builder
+  displayIcon(icon: Resource) {
     Image(icon)
       .width(28)
       .height(28)
       .onClick(() => {
         this.isFinished = !this.isFinished;
       })
+      // ...
   }
 
   build() {
     // 待办事项1
-    Row({space: 15}) {
+    Row({ space: 15 }) {
       if (this.isFinished) {
-        // 此处'app.media.finished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+        // 请将$r('app.media.finished')替换为实际资源文件
         this.displayIcon($r('app.media.finished'));
-      }
-      else {
-        // 此处'app.media.unfinished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+      } else {
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         this.displayIcon($r('app.media.unfinished'));
       }
-      Text(`${this.things}`)
+      Text(`${this.thing}`)
         .fontSize(24)
-        .decoration({type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None})
+        .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
         .onClick(() => {
-          this.things += '啦';
+          this.thing += 'lala';
         })
     }
     .height('8%')
     .width('90%')
-    .padding({left: 15})
-    .opacity(this.isFinished ? 0.3: 1)
-    .border({width:1})
+    .padding({ left: 15 })
+    .opacity(this.isFinished ? 0.3 : 1)
+    .border({ width: 1 })
     .borderColor(Color.White)
     .borderRadius(25)
     .backgroundColor(Color.White)
@@ -494,34 +534,41 @@ struct ThingsComponent {
 
 @Entry
 @Component
-struct Index {
+struct BuilderIndex {
   @State isFinished: boolean = false;
   @State data: TodoListData = new TodoListData(); // View绑定ViewModel的数据
+
+  aboutToAppear(): void {
+    for (let i = 0; i < this.data.planList.length; i++) {
+      this.data.planList[i] =
+        resource.resourceToString(this.data.planList[i] as Resource);
+    }
+  }
 
   build() {
     Column() {
       // 全部待办
-      TodoComponent()
+      StateTodoComponent()
 
       // 全选
-      AllChooseComponent({isFinished: this.isFinished})
+      BuilderAllChooseComponent({ isFinished: this.isFinished })
 
       List() {
         ForEach(this.data.planList, (item: string) => {
           // 待办事项1
-          ThingsComponent({isFinished: this.isFinished, things: item})
+          BuilderThingComponent({ isFinished: this.isFinished, thing: item })
             .margin(5)
         })
       }
-
     }
     .height('100%')
     .width('100%')
-    .margin({top: 5, bottom: 5})
+    .margin({ top: 5, bottom: 5 })
     .backgroundColor('#90f1f3f5')
   }
 }
 ```
+
 
  效果图如下：
 
@@ -529,7 +576,7 @@ struct Index {
 
 ### 总结
 
-* 通过逐步优化代码结构，可以看到`\@Entry`组件作为页面的入口，其build函数应该仅考虑将需要的组件组合起来，类似于搭积木。被page调用的子组件则如同积木，等着被需要的page进行调用。状态变量类似于粘合剂，当触发UI刷新事件时，状态变量自动刷新绑定的组件，实现page的按需刷新。
+* 通过逐步优化代码结构，可以看到`@Entry`组件作为页面的入口，其build函数应该仅考虑将需要的组件组合起来，类似于搭积木。被page调用的子组件则如同积木，等着被需要的page进行调用。状态变量类似于粘合剂，当触发UI刷新事件时，状态变量自动刷新绑定的组件，实现page的按需刷新。
 * 虽然现有的架构并未使用到MVVM的设计理念，但MVVM的核心理念已初见端倪。ArkUI的UI开发天然适合MVVM模式。在ArkUI中，page和组件构成View层，page负责组织组件，组件则作为构成元素。当组件需要更新时，通过状态变量驱动组件刷新，从而更新page。ViewModel的数据则来源于Model层。
 * 示例中的代码功能较为简单，但随着功能的增加，主页面的代码量也会逐渐增多。当备忘录需要添加更多功能，且其他页面也需要使用到主页面的组件时，可以考虑采用MVVM模式来组织项目结构。
 
@@ -539,14 +586,17 @@ struct Index {
 
 ### MVVM文件结构说明
 
-* src
-  * ets
-    * pages ------ 存放页面组件
-    * views ------ 存放业务组件
-    * shares ------ 存放通用组件
-    * viewModel ------ 数据服务
-      * LoginViewModel ----- 登录页ViewModel
-      * xxxViewModel ------ 其他页ViewModel
+```txt
+├── src
+│   ├── ets
+│   │   ├── pages 存放页面组件。
+│   │   ├── views 存放业务组件。
+│   │   ├── shares 存放通用组件。
+│   │   └── viewmodel 数据服务。
+│   │   │   ├── LoginViewModel.ets 登录页ViewModel。
+│   │   │   └── xxxViewModel.ets 其他页ViewModel。
+│
+```
 
 ### 分层设计技巧
 
@@ -582,49 +632,100 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 按MVVM模式组织结构，重构如下：
 
-* src
-  * ets
-    * model
-      * ThingModel
-      * TodoListModel
-    * pages
-      * Index
-    * view
-      * AllChooseComponent
-      * ThingsComponent
-      * TodoComponent
-      * TodoListComponent
-    * viewModel
-      * ThingsViewModel
-      * TodoListViewModel
-  * resources
-    * rawfile
-      * default_tasks.json
+```txt
+├── src
+│   ├── ets
+│   │   ├── model
+│   │   │   ├── ThingModel.ets
+│   │   │   └── TodoListModel.ets
+│   │   ├── pages
+│   │   │   ├── Index.ets
+│   │   ├── views
+│   │   │   ├── AllChooseComponent.ets
+│   │   │   ├── ThingComponent.ets
+│   │   │   ├── TodoComponent.ets
+│   │   │   └── TodoListComponent.ets
+│   │   ├── viewmodel
+│   │   │   ├── ThingViewModel.ets
+│   │   │   └── TodoListViewModel.ets
+│   └── resources
+│   │   ├── rawfile
+│   │   │   ├── default_tasks.json
+│
+```
 
 文件代码如下：
 
-* Index.ets
+  * ThingModel.ets
 
-  ```typescript
+  <!-- @[thing_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/ThingModel.ets) -->
+  
+  ``` TypeScript
+  export default class ThingModel {
+    public thingName: string = 'Todo';
+    public isFinish: boolean = false;
+  }
+  ```
+
+  * TodoListModel.ets
+
+  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) -->   
+  
+  ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  import { util } from '@kit.ArkTS';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import ThingModel from './ThingModel';
+  
+  const DOMAIN = 0x0001;
+  const TAG = 'TodoListModel';
+  
+  export default class TodoListModel {
+    public things: Array<ThingModel> = [];
+  
+    constructor(things: Array<ThingModel>) {
+      this.things = things;
+    }
+  
+    async loadTasks(context: common.UIAbilityContext) {
+      try {
+        let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
+        let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+        let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+        let result = textDecoder.decodeToString(getJson, { stream: false });
+        this.things = JSON.parse(result);
+      } catch (error) {
+        // 任务加载失败，输出error信息，便于排查失败原因
+        hilog.error(DOMAIN, TAG, 'Failed to load tasks. Cause: %{public}s', JSON.stringify(error.message));
+      }
+    }
+  }
+  ```
+
+  * Index.ets
+
+  <!-- @[mvvm_model_main_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   import { common } from '@kit.AbilityKit';
   // import ViewModel
-  import TodoListViewModel from '../ViewModel/TodoListViewModel';
-
+  import TodoListViewModel from '../viewmodel/TodoListViewModel';
+  
   // import View
-  import { TodoComponent } from '../View/TodoComponent';
-  import { AllChooseComponent } from '../View/AllChooseComponent';
-  import { TodoListComponent } from '../View/TodoListComponent';
-
+  import { TodoComponent } from '../views/TodoComponent';
+  import { AllChooseComponent } from '../views/AllChooseComponent';
+  import { TodoListComponent } from '../views/TodoListComponent';
+  
   @Entry
   @Component
   struct TodoList {
     @State todoListViewModel: TodoListViewModel = new TodoListViewModel(); // View绑定ViewModel的数据
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+  
     async aboutToAppear() {
       await this.todoListViewModel.loadTasks(this.context);
     }
-
+  
     build() {
       Column() {
         Row({ space: 40 }) {
@@ -633,9 +734,9 @@ View层根据需要来组织，但View层需要区分一下三种组件：
           // 全选
           AllChooseComponent({ todoListViewModel: this.todoListViewModel })
         }
-
+  
         Column() {
-          TodoListComponent({ thingsViewModelArray: this.todoListViewModel.things })
+          TodoListComponent({ thingViewModelArray: this.todoListViewModel.things })
         }
       }
       .height('100%')
@@ -646,108 +747,88 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   }
   ```
 
-  * ThingModel.ets
-
-  ```typescript
-  export default class ThingModel {
-    thingsName: string = 'Todo';
-    isFinish: boolean = false;
-  }
-  ```
-
-  * TodoListModel.ets
-
-  ```typescript
-  import { common } from '@kit.AbilityKit';
-  import { util } from '@kit.ArkTs';
-  import ThingModel from './ThingModel';
-
-  export default class TodoListModel {
-    things: Array<ThingModel> = [];
-
-    constructor(things: Array<ThingModel>) {
-      this.things = things;
-    }
-
-    async loadTasks(context: common.UIAbilityContext) {
-      let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
-      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
-      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
-      let result = textDecoder.decodeToString(getJson, { stream: false });
-      this.things = JSON.parse(result);
-    }
-  }
-  ```
-
   * AllChooseComponent.ets
 
-  ```typescript
-  import TodoListViewModel from "../ViewModel/TodoListViewModel";
-
+  <!-- @[all_choose_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/AllChooseComponent.ets) -->  
+  
+  ``` TypeScript
+  import TodoListViewModel from '../viewmodel/TodoListViewModel';
+  import { common } from '@kit.AbilityKit';
+  
   @Component
   export struct AllChooseComponent {
-    @State titleName: string = '全选';
+    context1 = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // 请在resources\base\element\string.json文件中配置name为'check_all'，value为非空字符串的资源
+    @State titleName: ResourceStr = this.context1.resourceManager.getStringSync($r('app.string.check_all').id);
     @Link todoListViewModel: TodoListViewModel;
-
+  
     build() {
       Row() {
         Button(`${this.titleName}`, { type: ButtonType.Capsule })
           .onClick(() => {
             this.todoListViewModel.chooseAll(); // View层点击事件发生时，调用ViewModel层方法chooseAll处理逻辑
-            this.titleName = this.todoListViewModel.isChoosen ? '全选' : '取消全选';
+            this.titleName = this.todoListViewModel.isChosen ?
+              // 请在resources\base\element\string.json文件中配置name为'check_all'，value为非空字符串的资源
+              this.context1.resourceManager.getStringSync($r('app.string.check_all').id)
+              // 请在resources\base\element\string.json文件中配置name为'deselect_all'，value为非空字符串的资源
+              : this.context1.resourceManager.getStringSync($r('app.string.deselect_all').id);
           })
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .backgroundColor('#f7f6cc74')
       }
-      .padding({ left: this.todoListViewModel.isChoosen ? 15 : 0 })
+      .padding({ left: this.todoListViewModel.isChosen ? 15 : 0 })
       .width('100%')
       .margin({ top: 10, bottom: 10 })
     }
   }
   ```
 
-  * ThingsComponent.ets
 
-  ```typescript
-  import ThingsViewModel from "../ViewModel/ThingsViewModel";
+  * ThingComponent.ets
 
+  <!-- @[thing_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/ThingComponent.ets) -->
+  
+  ``` TypeScript
+  import ThingViewModel from '../viewmodel/ThingViewModel';
+  
   @Component
-  export struct ThingsComponent {
-    @Prop things: ThingsViewModel;
-
+  export struct ThingComponent {
+    @ObjectLink thing: ThingViewModel;
+  
     @Builder
     displayIcon(icon: Resource) {
       Image(icon)
         .width(28)
         .height(28)
         .onClick(() => {
-          this.things.updateIsFinish(); // View层点击事件发生时，调用ViewModel层方法updateIsFinish处理逻辑
+          this.thing.updateIsFinish(); // View层点击事件发生时，调用ViewModel层方法updateIsFinish处理逻辑
         })
+        .id(this.thing.thingName)
     }
-
+  
     build() {
       // 待办事项
       Row({ space: 15 }) {
-        if(this.things.isFinish) {
-          // 此处'app.media.finished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+        if (this.thing.isFinish) {
+          // 请将$r('app.media.finished')替换为实际资源文件
           this.displayIcon($r('app.media.finished'));
         } else {
-          // 此处'app.media.unfinished'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+          // 请将$r('app.media.unfinished')替换为实际资源文件
           this.displayIcon($r('app.media.unfinished'));
         }
-
-        Text(`${this.things.thingsName}`)
+  
+        Text(`${this.thing.thingName}`)
           .fontSize(24)
-          .decoration({ type: this.things.isFinish ? TextDecorationType.LineThrough: TextDecorationType.None })
+          .decoration({ type: this.thing.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
           .onClick(() => {
-            this.things.addSuffixes(); // View层点击事件发生时，调用ViewModel层方法addSuffixes处理逻辑
+            this.thing.addSuffixes(); // View层点击事件发生时，调用ViewModel层方法addSuffixes处理逻辑
           })
       }
       .height('8%')
       .width('90%')
       .padding({ left: 15 })
-      .opacity(this.things.isFinish ? 0.3 : 1)
+      .opacity(this.thing.isFinish ? 0.3 : 1)
       .border({ width: 1 })
       .borderColor(Color.White)
       .borderRadius(25)
@@ -758,12 +839,15 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * TodoComponent.ets
 
-  ```typescript
+  <!-- @[to_do_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/TodoComponent.ets) -->
+  
+  ``` TypeScript
   @Component
   export struct TodoComponent {
     build() {
       Row() {
-        Text('全部待办')
+        // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
+        Text($r('app.string.all_tasks'))
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
       }
@@ -774,28 +858,31 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   }
   ```
 
+
   * TodoListComponent.ets
 
-  ```typescript
-  import ThingsViewModel from "../ViewModel/ThingsViewModel";
-  import { ThingsViewModelArray } from "../ViewModel/TodoListViewModel"
-  import { ThingsComponent } from "./ThingsComponent";
-
+  <!-- @[to_do_list_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/TodoListComponent.ets) -->
+  
+  ``` TypeScript
+  import ThingViewModel from '../viewmodel/ThingViewModel';
+  import { ThingViewModelArray } from '../viewmodel/TodoListViewModel'
+  import { ThingComponent } from './ThingComponent';
+  
   @Component
   export struct TodoListComponent {
-    @ObjectLink thingsViewModelArray: ThingsViewModelArray;
-
+    @ObjectLink thingViewModelArray: ThingViewModelArray;
+  
     build() {
       Column() {
         List() {
-          ForEach(this.thingsViewModelArray, (item: ThingsViewModel) => {
+          ForEach(this.thingViewModelArray, (item: ThingViewModel) => {
             // 待办事项
             ListItem() {
-              ThingsComponent({ things: item })
+              ThingComponent({ thing: item })
                 .margin(5)
             }
-          }, (item: ThingsViewModel) => {
-            return item.thingsName;
+          }, (item: ThingViewModel) => {
+            return item.thingName;
           })
         }
       }
@@ -803,62 +890,69 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   }
   ```
 
-  * ThingsViewModel.ets
+  * ThingViewModel.ets
 
-  ```typescript
-  import ThingModel from "../Model/ThingModel";
-
+  <!-- @[thing_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/ThingViewModel.ets) --> 
+  
+  ``` TypeScript
+  import ThingModel from '../model/ThingModel';
+  
   @Observed
-  export default class ThingsViewModel {
-    @Track thingsName: string = 'Todo';
-    @Track isFinish: boolean = false;
-
-    updateTask(things: ThingModel) {
-      this.thingsName = things.thingsName;
-      this.isFinish = things.isFinish;
+  export default class ThingViewModel {
+    @Track public thingName: string = 'Todo';
+    @Track public isFinish: boolean = false;
+    public context: Context = AppStorage.get('context')!;
+  
+    updateTask(thing: ThingModel) {
+      this.thingName = thing.thingName;
+      this.isFinish = thing.isFinish;
     }
-
+  
     updateIsFinish(): void {
       this.isFinish = !this.isFinish;
     }
-
+  
     addSuffixes(): void {
-      this.thingsName += '啦';
+      this.thingName += 'lala';
     }
   }
   ```
+  
 
   * TodoListViewModel.ets
 
-  ```typescript
-  import ThingsViewModel from "./ThingsViewModel";
-  import { common } from "@kit.AbilityKit";
-  import TodoListModel from "../Model/TodoListModel";
-
+  <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) -->  
+  
+  ``` TypeScript
+  import ThingViewModel from './ThingViewModel';
+  import { common } from '@kit.AbilityKit';
+  import TodoListModel from '../model/TodoListModel';
+  
   @Observed
-  export class ThingsViewModelArray extends Array<ThingsViewModel> {
+  export class ThingViewModelArray extends Array<ThingViewModel> {
   }
-
+  
   @Observed
   export default class TodoListViewModel {
-    @Track isChoosen: boolean = true;
-    @Track things: ThingsViewModelArray = new ThingsViewModelArray();
-
+    @Track public isChosen: boolean = true;
+    @Track public things: ThingViewModelArray = new ThingViewModelArray();
+  
     async loadTasks(context: common.UIAbilityContext) {
       let todoList = new TodoListModel([]);
       await todoList.loadTasks(context);
-      for(let things of todoList.things) {
-        let todoListViewModel = new ThingsViewModel();
-        todoListViewModel.updateTask(things);
+      for (let thing of todoList.things) {
+        let todoListViewModel = new ThingViewModel();
+        todoListViewModel.updateTask(thing);
         this.things.push(todoListViewModel);
       }
     }
-
+  
     chooseAll(): void {
-      for(let things of this.things) {
-        things.isFinish = this.isChoosen;
+      // 遍历所有待办事项，设置其完成状态
+      for (let thing of this.things) {
+        thing.isFinish = this.isChosen;
       }
-      this.isChoosen = !this.isChoosen;
+      this.isChosen = !this.isChosen;
     }
   }
   ```
@@ -867,13 +961,13 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   ```typescript
   [
-    {"thingsName": "7.30起床", "isFinish": false},
-    {"thingsName": "8.30早餐", "isFinish": false},
-    {"thingsName": "11.30中餐", "isFinish": false},
-    {"thingsName": "17.30晚餐", "isFinish": false},
-    {"thingsName": "21.30夜宵", "isFinish": false},
-    {"thingsName": "22.30洗澡", "isFinish": false},
-    {"thingsName": "1.30睡觉", "isFinish": false}
+    {"thingName": "7.30起床", "isFinish": false},
+    {"thingName": "8.30早餐", "isFinish": false},
+    {"thingName": "11.30中餐", "isFinish": false},
+    {"thingName": "17.30晚餐", "isFinish": false},
+    {"thingName": "21.30夜宵", "isFinish": false},
+    {"thingName": "22.30洗澡", "isFinish": false},
+    {"thingName": "1.30睡觉", "isFinish": false}
   ]
   ```
 

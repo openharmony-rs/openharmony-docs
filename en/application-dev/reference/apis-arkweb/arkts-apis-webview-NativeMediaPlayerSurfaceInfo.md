@@ -4,7 +4,7 @@
 <!--Owner: @zhangyao75477-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **NativeMediaPlayerSurfaceInfo** object to provide the surface information used for same-layer rendering [when the application takes over the media playback of the web page](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12).
 
@@ -14,7 +14,7 @@ Implements a **NativeMediaPlayerSurfaceInfo** object to provide the surface info
 >
 > - The initial APIs of this class are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## Attributes
 

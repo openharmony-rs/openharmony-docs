@@ -4,16 +4,16 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+This interface implements audio session management.
+
+Before calling any API in AudioSessionManager, you must use [getSessionManager](arkts-apis-audio-AudioManager.md#getsessionmanager12) to obtain an AudioSessionManager instance.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 12.
-
-This interface implements audio session management.
-
-Before calling any API in AudioSessionManager, you must use [getSessionManager](arkts-apis-audio-AudioManager.md#getsessionmanager12) to obtain an AudioSessionManager instance.
 
 ## Modules to Import
 
@@ -148,7 +148,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+audioSessionManager.on('audioSessionDeactivated',
+  (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
   console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
 });
 ```
@@ -305,12 +306,11 @@ Sets the default audio output device. This API uses a promise to return the resu
 > **NOTE**
 >
 > - This API applies to the following scenario: When [AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20) is set to **VoIP**, the setting takes effect immediately after the AudioSession is activated. For non-VoIP scenarios, the setting does not take effect upon AudioSession activation. Instead, the setting applies when [StreamUsage](arkts-apis-audio-e.md#streamusage) for playback is voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
->
 > - This API can be called at any time after an AudioSessionManager instance is created. The system records the device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application starts playing, if an external device like Bluetooth headsets or wired headsets is connected, the system prioritizes audio output through the external device. Otherwise, the system uses the device set by the application.
->
-> - This API has a lower priority than [AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker). If you have already switched the audio device using AVCastPicker, subsequent calls to this API does not take effect.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
 
 **Parameters**
 
@@ -450,4 +450,509 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
 audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
 
 audioSessionManager.off('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
+```
+
+## getAvailableDevices<sup>21+</sup>
+
+getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
+
+Obtains the available audio devices.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name  | Type                                                | Mandatory| Description                                                     |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| deviceUsage| [DeviceUsage](arkts-apis-audio-e.md#deviceusage12) | Yes  | Audio device type (classified by usage).|
+
+**Return value**
+
+| Type                                                        | Description                     |
+| ------------------------------------------------------------ | ------------------------- |
+| [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | Device list.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
+  console.info('Succeeded in doing getAvailableDevices.');
+} catch (err) {
+  let error = err as BusinessError;
+   console.error(`Failed to getAvailableDevices. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## on('availableDeviceChange')<sup>21+</sup>
+
+on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback\<DeviceChangeAction>): void
+
+Subscribes to the event indicating that the connection status of an available audio device is changed.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name  | Type                                                | Mandatory| Description                                                     |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| type     | string                                               | Yes  | Event type. The event **'availableDeviceChange'** is triggered when the connection status of available audio devices is changed.|
+| deviceUsage | [DeviceUsage](arkts-apis-audio-e.md#deviceusage12)                       | Yes  | Audio device type (classified by usage).    |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)\> | Yes  | Callback used to return the available device change details.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+audioSessionManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_INPUT_DEVICES, (deviceChanged: audio.DeviceChangeAction) => {
+  console.info('device change type : ' + deviceChanged.type);
+  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+});
+```
+
+## off('availableDeviceChange')<sup>21+</sup>
+
+off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction\>): void
+
+Unsubscribes from the event indicating that the connection status of an available audio device is changed.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name  | Type                                               | Mandatory| Description                                      |
+| -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
+| type     | string                                              | Yes  | Event type. The event **'availableDeviceChange'** is triggered when the connection status of available audio devices is changed.|
+| callback | Callback\<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)\> | No  | Callback used to return the available device change details.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+// Cancel all subscriptions to the event.
+audioSessionManager.off('availableDeviceChange');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let availableDeviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
+  console.info('device change type : ' + deviceChanged.type);
+  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+};
+
+audioSessionManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_INPUT_DEVICES, availableDeviceChangeCallback);
+
+audioSessionManager.off('availableDeviceChange', availableDeviceChangeCallback);
+```
+
+## selectMediaInputDevice<sup>21+</sup>
+
+selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
+
+Selects a media input device. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API is not suitable for VoIP call recording; that is, it does not apply to scenarios where [SourceType](arkts-apis-audio-e.md#sourcetype8) is **SOURCE_TYPE_VOICE_COMMUNICATION**.
+> - Before calling this API, call [getAvailableDevices](#getavailabledevices21) to query the list of available input devices and select an input device from the list.
+> - If there are recording streams of other applications with higher priorities in the system, the actual input device used will follow the input device selected by these applications.
+> - Applications can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged21) event to find out the actual input device being used.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name  | Type                                                | Mandatory| Description                                                     |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| inputAudioDevice| [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | Yes  | Media input device.|
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed, for example, the selected device does not exist. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
+  console.info('Succeeded in doing getAvailableDevices.');
+
+  if (data[0]) {
+    audioSessionManager.selectMediaInputDevice(data[0]).then(() => {
+      console.info('Succeeded in doing selectMediaInputDevice.');
+    }).catch((selectErr: BusinessError) => {
+      console.error(`Failed to selectMediaInputDevice. Code: ${selectErr.code}, message: ${selectErr.message}`);
+    });
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getAvailableDevices. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## getSelectedMediaInputDevice<sup>21+</sup>
+
+getSelectedMediaInputDevice(): AudioDeviceDescriptor
+
+Obtains the media input device set by calling [selectMediaInputDevice](#selectmediainputdevice21). If no device has been specified, the device with **deviceType** set to **INVALID** is returned.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | Media input device.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let device: audio.AudioDeviceDescriptor = audioSessionManager.getSelectedMediaInputDevice();
+  console.info('Succeeded in doing getSelectedMediaInputDevice.');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getSelectedMediaInputDevice. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## clearSelectedMediaInputDevice<sup>21+</sup>
+
+clearSelectedMediaInputDevice(): Promise<void\>
+
+Clears the media input device set by calling [selectMediaInputDevice](#selectmediainputdevice21). This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.clearSelectedMediaInputDevice().then(() => {
+  console.info('Succeeded in doing clearSelectedMediaInputDevice.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to clearSelectedMediaInputDevice. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## setBluetoothAndNearlinkPreferredRecordCategory<sup>21+</sup>
+
+setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPreferredRecordCategory): Promise<void\>
+
+Sets the preferred device category for recording with Bluetooth or NearLink. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - Applications can set this category before connecting to Bluetooth or NearLink devices, and the system prioritizes using the device for recording when the device is connected.
+> - If there are recording streams of other applications with higher priorities in the system, the actual input device used will follow the input device selected by these applications.
+> - Applications can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged21) event to find out the actual input device being used.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name  | Type                                                | Mandatory| Description                                                     |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| category| [BluetoothAndNearlinkPreferredRecordCategory](arkts-apis-audio-e.md#bluetoothandnearlinkpreferredrecordcategory21) | Yes  | Preferred device category for recording with Bluetooth or NearLink.|
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const category = audio.BluetoothAndNearlinkPreferredRecordCategory.PREFERRED_LOW_LATENCY;
+audioSessionManager.setBluetoothAndNearlinkPreferredRecordCategory(category).then(() => {
+  console.info('Succeeded in doing setBluetoothAndNearlinkPreferredRecordCategory.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setBluetoothAndNearlinkPreferredRecordCategory. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## getBluetoothAndNearlinkPreferredRecordCategory<sup>21+</sup>
+
+getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredRecordCategory
+
+Obtains the preferred device category for recording with Bluetooth or NearLink, which is set by calling [setBluetoothAndNearlinkPreferredRecordCategory](#setbluetoothandnearlinkpreferredrecordcategory21).
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| [BluetoothAndNearlinkPreferredRecordCategory](arkts-apis-audio-e.md#bluetoothandnearlinkpreferredrecordcategory21) | Preferred device category for recording with Bluetooth or NearLink.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let category: audio.BluetoothAndNearlinkPreferredRecordCategory = audioSessionManager.getBluetoothAndNearlinkPreferredRecordCategory();
+  console.info('Succeeded in doing getBluetoothAndNearlinkPreferredRecordCategory.');
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getBluetoothAndNearlinkPreferredRecordCategory. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## on('currentInputDeviceChanged')<sup>21+</sup>
+
+on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChangedEvent\>): void
+
+Subscribes to the current input device change event, which is triggered when the current input device is changed.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name  | Type                                                | Mandatory| Description                                      |
+| :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
+| type     | string | Yes  | Event type. The event **'currentInputDeviceChanged'** is triggered when the current input device is changed.|
+| callback | Callback\<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)\> | Yes  | Callback used to return the information about the current input device.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
+  console.info(`reason of currentInputDeviceChanged: ${currentInputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+```
+
+## off('currentInputDeviceChanged')<sup>21+</sup>
+
+off(type: 'currentInputDeviceChanged', callback?: Callback<CurrentInputDeviceChangedEvent\>): void
+
+Unsubscribes from the current input device change event.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name  | Type                                                | Mandatory| Description                                                     |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| type     | string | Yes  | Event type. The event **'currentInputDeviceChanged'** is triggered when the current input device is changed.|
+| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | No| Callback used to return the information about the current input device.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800301 | Audio client call audio service error, System error. |
+
+**Example**
+
+```ts
+// Cancel all subscriptions to the event.
+audioSessionManager.off('currentInputDeviceChanged');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
+  console.info(`reason of currentInputDeviceChanged: ${currentInputDeviceChangedEvent.changeReason} `);
+};
+
+audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+
+audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+```
+
+## enableMuteSuggestionWhenMixWithOthers<sup>23+</sup>
+
+enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
+
+Enables mute suggestion notifications for mixed playback.
+
+Typically, when the audio mixing mode is used, if two applications plays audio at the same time, their audio streams are mixed. In certain scenarios (such as games or broadcasts), applications can mute their own audio to provide a better user experience.
+
+If this feature is enabled, mute and unmute suggestions will be sent through the [AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20) callback after the audio session state change event is subscribed to. Receiving the muted suggestion indicates that another application starts to play audio, and the played audio and the audio of this application cannot be mixed.
+
+This feature can be used only by audio sessions for which [AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20) has been set and the **CONCURRENCY_MIX_WITH_OTHERS** mode has been activated. This feature takes effect only once when the audio session is activated. You need to enable it again before each activation of the audio session.
+
+For details, see [Enabling Mute Suggestion Notifications for Mixed Playback](../../media/audio/audio-session-management.md#enabling-mute-suggestion-notifications-for-mixed-playback).
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Parameters**
+
+| Name  | Type              | Mandatory| Description     |
+| -------- | ----------------- | ---- | --------- |
+| enable   | boolean           | Yes  | Whether to enable mute suggestion notifications for mixed playback. **true** to enable, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | ---------------------------------------------|
+| 6800103 | Function is called without setting [AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20) or called after audio session activation.|
+| 6800301 | Audio client call audio service error, system internal error. |
+
+**Example**
+
+```ts
+audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
+```
+
+## isOtherMediaPlaying<sup>23+</sup>
+
+isOtherMediaPlaying(): boolean
+
+Check whether any other application is currently playing audio of the four media types: **MUSIC**, **MOVIE**, **AUDIOBOOK**, and **GAME**. Audio sessions that have activated these media types will also be checked.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Return value**
+
+| Type                                             | Description                                   |
+| ------------------------------------------------- |---------------------------------------|
+| boolean | Whether another application is playing audio of certain media types. **true** means yes; **false** otherwise.|
+
+**Example**
+
+```ts
+let isExistence = audioSessionManager.isOtherMediaPlaying();
+```
+
+## setAudioSessionBehavior<sup>24+</sup>
+
+setAudioSessionBehavior(behavior: number): void
+
+Sets audio session behavior parameters. (Multiple flags can be combined.)
+
+> **NOTE**
+>
+> If this API is called while an audio session is active, you must call the [activateAudioSession](./arkts-apis-audio-AudioSessionManager.md#activateaudiosession12) API again for the settings to take effect.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Parameters**
+
+| Name  | Type              | Mandatory| Description     |
+| -------- | ----------------- | ---- | --------- |
+| behavior   | number           | Yes  | Specifies the audio session behavior.<br>This can be a single flag or a bitwise OR combination of multiple flags.<br>For details about the supported audio session behaviors, see [AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24).|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permitted in the current state. |
+
+**Example**
+
+```ts
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioSessionManager.setAudioSessionBehavior(behavior);
 ```

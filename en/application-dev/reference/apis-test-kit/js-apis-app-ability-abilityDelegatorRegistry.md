@@ -1,12 +1,19 @@
 # @ohos.app.ability.abilityDelegatorRegistry (AbilityDelegatorRegistry)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024; @xuzhihao666-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 **AbilityDelegatorRegistry**, a module of the automatic test framework, is used to obtain [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) and [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md) objects. **AbilityDelegator** provides APIs for creating [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md#abilitymonitor-1) objects, which can be used to listen for ability lifecycle changes. **AbilityDelegatorArgs** provides APIs for obtaining test parameters.
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module can be used only in <!--RP1-->[arkxtest](../../application-test/arkxtest-guidelines.md)<!--RP1End-->.
+> The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 
 ## Modules to Import
 
@@ -62,7 +69,7 @@ abilityDelegator.startAbility(want, (err) => {
   if (err) {
     console.error(`Failed start ability, error: ${JSON.stringify(err)}`);
   } else {
-    console.log('Success start ability.');
+    console.info('Success start ability.');
   }
 });
 ```
@@ -99,7 +106,7 @@ console.info(`getArguments testRunnerClassName: ${args.testRunnerClassName}`);
 
 type AbilityDelegator = _AbilityDelegator
 
-Represents the **AbilityDelegator** module.
+Provides the capability of listening for and managing the lifecycle changes of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) instances through [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) instances. For example, you can obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the **onForeground** state), start a specified UIAbility, and set the timeout mechanism.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -113,7 +120,7 @@ Represents the **AbilityDelegator** module.
 
 type AbilityDelegatorArgs = _AbilityDelegatorArgs
 
-Represents the **AbilityDelegatorArgs** module.
+Provides the capability of obtaining an **AbilityDelegatorArgs** object during the execution of test cases.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -127,7 +134,7 @@ Represents the **AbilityDelegatorArgs** module.
 
 type AbilityMonitor = _AbilityMonitor
 
-Represents the **AbilityMonitor** module.
+Provides input parameters of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9) in **abilityDelegator** to listen for lifecycle changes of a UIAbility.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -141,7 +148,7 @@ Represents the **AbilityMonitor** module.
 
 type ShellCmdResult = _ShellCmdResult
 
-Represents the **ShellCmdResult** module.
+Provides the shell command execution result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -155,7 +162,7 @@ Represents the **ShellCmdResult** module.
 
 type AbilityStageMonitor = _AbilityStageMonitor
 
-Represents the **AbilityStageMonitor** module.
+Provides the capability of listening for a specified [AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md) object. You can use AbilityStageMonitor as an input parameter of [abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor9) to register a listener.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 

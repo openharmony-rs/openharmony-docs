@@ -14,10 +14,10 @@ If the value of **encrypt** contained in the **config** parameter of **getRdbSto
 This change is a compatible change.
 
 Before the change: 
-If the encryption mode in **getRdbStore()** in [@ohos.data.relationalStore.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts) is changed, error 14800011 is returned.
+If the encryption mode in **getRdbStore()** in [@ohos.data.relationalStore.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts) is changed, error 14800011 is returned.
 
 After the change:
-If the encryption mode in **getRdbStore()** in [@ohos.data.relationalStore.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts) is changed, the RDB store will be opened in the specified encryption mode.
+If the encryption mode in **getRdbStore()** in [@ohos.data.relationalStore.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts) is changed, the RDB store will be opened in the specified encryption mode.
 
 
 **Start API Level**
@@ -30,7 +30,7 @@ OpenHarmony 5.0.1.1
 
 **Key API/Component Changes**
 
-The following APIs in [@ohos.data.relationalStore.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts):
+The following APIs in [@ohos.data.relationalStore.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts):
 
 1. function getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<RdbStore\>): void;
 

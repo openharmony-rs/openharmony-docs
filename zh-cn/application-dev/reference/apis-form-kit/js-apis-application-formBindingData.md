@@ -1,21 +1,20 @@
 # @ohos.application.formBindingData (卡片数据绑定类)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 卡片数据绑定模块提供卡片数据绑定的能力。包括FormBindingData对象的创建、相关信息的描述。
 
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 从API version 9开始不再维护，建议使用[formBindingData](js-apis-app-form-formBindingData.md)替代。
+> 从API version 9开始废弃，建议使用[formBindingData](js-apis-app-form-formBindingData.md)替代。
 ## 导入模块
 
 ```ts
-import formBindingData from '@ohos.application.formBindingData';
+import { formBindingData } from '@kit.FormKit';
 ```
 
 ## FormBindingData
@@ -24,9 +23,9 @@ FormBindingData相关描述。
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| data | Object | 是 | js卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。|
+| 名称 | 类型 | 只读 | 可选| 说明 |
+| -------- | -------- |-------- | -------- | -------- |
+| data | Object | 否 |否 | js卡片要展示的数据。可以是包含若干键值对的Object或者 json 格式的字符串。|
 
 
 ## formBindingData.createFormBindingData
@@ -57,11 +56,13 @@ createFormBindingData(obj?: Object | string): FormBindingData
 import { formBindingData } from '@kit.FormKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
+
 @Entry
 @Component
 struct Index {
   content = this.getUIContext().getHostContext() as common.UIAbilityContext;
   pathDir: string = this.content.filesDir;
+
   createFormBindingData() {
     try {
       let filePath = this.pathDir + "/form.png";
@@ -79,9 +80,10 @@ struct Index {
       console.error(`catch error, error: ${JSON.stringify(error)}`);
     }
   }
+
   build() {
     Button('createFormBindingData')
-      .onClick((event: ClickEvent)=>{
+      .onClick((event: ClickEvent) => {
         this.createFormBindingData();
       })
   }

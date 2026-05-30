@@ -1,4 +1,10 @@
 # @ohos.app.ability.FenceExtensionAbility (FenceExtensionAbility)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 The **FenceExtensionAbility** class provides geofence-related capabilities. It is inherited from the **ExtensionAbility** class.
 
@@ -13,15 +19,19 @@ The **FenceExtensionAbility** class provides geofence-related capabilities. It i
 import { FenceExtensionAbility } from '@kit.LocationKit';
 ```
 
-## Attributes
+## FenceExtensionAbility
+
+Provides geofence-related capabilities. It is inherited from the **ExtensionAbility** class.
+
+### Attributes
 
 **System capability**: SystemCapability.Location.Location.Geofence
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| context | [FenceExtensionContext](js-apis-app-ability-FenceExtensionContext.md) | Yes| No| Context of the Geofence service.|
+| context | [FenceExtensionContext](js-apis-app-ability-FenceExtensionContext.md) | No| No| Context of the Geofence service.|
 
-## FenceExtensionAbility.onFenceStatusChange
+### onFenceStatusChange
 
 onFenceStatusChange(transition: geoLocationManager.GeofenceTransition, additions: Record&lt;string, string&gt;): void;
 
@@ -32,7 +42,7 @@ Represents the callback triggered when a geofence status change event is receive
 **Parameters**
 | Name|  Type| Mandatory | Description |
 | ------------ | ------------ | ------------ | ------------ |
-|  transition |  [geoLocationManager.GeofenceTransition](js-apis-geoLocationManager.md#geofencetransition12) |  Yes| Geofence transition information, including the geofence ID and geofence event. |
+| transition |  [geoLocationManager.GeofenceTransition](js-apis-geoLocationManager.md#geofencetransition12) |  Yes| Geofence transition information, including the geofence ID and geofence event. |
 | additions  | Record&lt;string, string&gt;  | Yes | Additional information. |
 
 **Example**
@@ -81,7 +91,7 @@ export class MyFenceExtensionAbility extends FenceExtensionAbility {
   }
 }
 ```
-## FenceExtensionAbility.onDestroy
+### onDestroy
 
 onDestroy(): void;
 

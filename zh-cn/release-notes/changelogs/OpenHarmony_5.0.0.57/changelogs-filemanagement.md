@@ -28,7 +28,7 @@ API 10
 
 **变更的接口/组件**
 
-[@ohos.file.fileAccess.d.ts](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileAccess-sys.md)中如下接口：CopyResult、sourceUri、destUri、errCode、errMsg
+[@ohos.file.fileAccess.d.ts](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileAccess-sys.md)中如下接口：CopyResult、sourceUri、destUri、errCode、errMsg
 
 **适配指导**
 

@@ -8,8 +8,11 @@
 <!--Adviser: @zengyawen-->
 
 This topic describes how to obtain properties of a key. Before the operation, ensure that the key exists in HUKS.
->**NOTE**<br>
+>**NOTE**
+>
 > <!--RP1-->The mini-system devices<!--RP1End--> do not allow for obtaining key properties.
+
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
 ## How to Develop
 
@@ -19,11 +22,14 @@ This topic describes how to obtain properties of a key. Before the operation, en
 
 3. You can find the key properties in the **properties** field in the [HuksReturnResult](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksreturnresult9) object.
 
-```ts
+<!-- @[obtaining_key_attribute_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/GetKeyAttributes/entry/src/main/ets/pages/GetKeyAttributes.ets) -->
+
+``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* 1. Set the key alias. */
 let keyAlias = 'keyAlias';
-/* 2. Set key properties. */
+/* Leave options empty. */
 let emptyOptions: huks.HuksOptions = {
   properties: []
 };
@@ -41,10 +47,12 @@ let properties1: huks.HuksParam[] = [
     value: huks.HuksKeySize.HUKS_DH_KEY_SIZE_2048
   }
 ];
+
 let huksOptions: huks.HuksOptions = {
   properties: properties1,
   inData: new Uint8Array([])
 }
+
 /* 3. Generate a key. */
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<void>((resolve, reject) => {
@@ -61,6 +69,7 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
     }
   });
 }
+
 async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions): Promise<string> {
   console.info(`enter promise generateKeyItem`);
   try {
@@ -77,38 +86,24 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
     return 'Failed';
   }
 }
+
 async function testGenKey(): Promise<string> {
   let ret = await publicGenKeyFunc(keyAlias, huksOptions);
   return ret;
 }
-/* Obtain key properties. */
-function getKeyItemProperties(keyAlias: string, emptyOptions: huks.HuksOptions) {
-  return new Promise<huks.HuksReturnResult>((resolve, reject) => {
-    try {
-      huks.getKeyItemProperties(keyAlias, emptyOptions, (error, data) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(data);
-        }
-      });
-    } catch (error) {
-      throw (error as Error);
-    }
-  });
-}
-async function check(): Promise<string> {
+
+function check(): string {
   try {
     /* 1. Generate a key. */
-    let genResult = await testGenKey();
+    testGenKey();
     /* 2. Obtain key properties. */
-    if (genResult === 'Success') {
-      let data = await getKeyItemProperties(keyAlias, emptyOptions);
-      console.info(`callback: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
-    } else {
-      console.error('Key generation failed, skipping get properties');
-      return 'Failed';
-    }
+    huks.getKeyItemProperties(keyAlias, emptyOptions, (error, data) => {
+      if (error) {
+        console.error(`callback: getKeyItemProperties failed, ${JSON.stringify(error)}`);
+      } else {
+        console.info(`callback: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
+      }
+    });
     return 'Success';
   } catch (error) {
     console.error(`callback: getKeyItemProperties input arg invalid, ${JSON.stringify(error)}`);
@@ -116,3 +111,4 @@ async function check(): Promise<string> {
   }
 }
 ```
+<!--no_check-->

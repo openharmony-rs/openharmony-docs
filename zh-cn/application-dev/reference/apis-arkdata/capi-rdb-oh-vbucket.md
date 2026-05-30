@@ -2,9 +2,13 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+
+```c
+typedef struct {...} OH_VBucket
+```
 
 ## 概述
 
@@ -41,7 +45,7 @@
 
 ### putText()
 
-```
+```c
 int (*putText)(OH_VBucket *bucket, const char *field, const char *value)
 ```
 
@@ -67,7 +71,7 @@ int (*putText)(OH_VBucket *bucket, const char *field, const char *value)
 
 ### putInt64()
 
-```
+```c
 int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)
 ```
 
@@ -93,7 +97,7 @@ int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)
 
 ### putReal()
 
-```
+```c
 int (*putReal)(OH_VBucket *bucket, const char *field, double value)
 ```
 
@@ -119,7 +123,7 @@ int (*putReal)(OH_VBucket *bucket, const char *field, double value)
 
 ### putBlob()
 
-```
+```c
 int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)
 ```
 
@@ -146,7 +150,7 @@ int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint
 
 ### putNull()
 
-```
+```c
 int (*putNull)(OH_VBucket *bucket, const char *field)
 ```
 
@@ -171,13 +175,13 @@ int (*putNull)(OH_VBucket *bucket, const char *field)
 
 ### clear()
 
-```
+```c
 int (*clear)(OH_VBucket *bucket)
 ```
 
 **描述**
 
-将char*值放入给定列名的OH_VBucket对象中。
+清空[OH_VBucket](capi-rdb-oh-vbucket.md)对象。
 
 **起始版本：** 10
 
@@ -195,13 +199,13 @@ int (*clear)(OH_VBucket *bucket)
 
 ### destroy()
 
-```
+```c
 int (*destroy)(OH_VBucket *bucket)
 ```
 
 **描述**
 
-将char*值放入给定列名的OH_VBucket对象中。
+销毁[OH_VBucket](capi-rdb-oh-vbucket.md)对象，并回收该对象占用的内存。
 
 **起始版本：** 10
 

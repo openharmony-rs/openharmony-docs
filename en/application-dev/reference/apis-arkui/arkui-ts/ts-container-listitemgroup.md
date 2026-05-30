@@ -1,25 +1,49 @@
 # ListItemGroup
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
+<!--Designer: @yylong-->
+<!--Tester: @huchuyun-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The **ListItemGroup** component is used to display list item groups. It must be used with the [List](ts-container-list.md) component. Unless specified otherwise, it spans the entire width of the **List** component.
+
+Lazy loading of **ListItemGroup** loads the child components in the visible area as required. Compared with full loading, lazy loading can improve the application startup speed and reduce the memory usage. The lazy loading capabilities vary when the **ListItemGroup** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
+
+ - When **ListItemGroup** is used together with **ForEach**, all child nodes are created at a time. The nodes within the screen range are laid out and rendered when needed. When a user swipes, the nodes that are out of the screen range are not removed from the tree, and the nodes that are within the screen range are laid out and rendered.
+
+ - When **ListItemGroup** is used together with **LazyForEach**, all nodes within the screen range are created, laid out, and rendered at a time. When a user swipes, the nodes that are out of the screen range are removed from the tree, and the nodes that are within the screen range are created, laid out, and rendered.
+
+ - When the **ListItemGroup** component is used together with **Repeat** with [virtualScroll](./ts-rendering-control-repeat.md#virtualscroll), the lazy loading behavior is the same as that of **LazyForEach**. When the **ListItemGroup** component is used together with **Repeat** without **virtualScroll**, the lazy loading behavior is the same as that of **ForEach**.
+
+Preloading in **ListItemGroup** refers to loading not only the visible child components within the display area but also some invisible child components outside the display area during idle time. Preloading can reduce frame loss during scrolling and improve smoothness. Preloading takes effect only when lazy loading is used. The preloading capabilities vary when the **ListItemGroup** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
+
+ - When the **ListItemGroup** component is used together with **ForEach** and [cachedCount](./ts-container-list.md#cachedcount) is set, in addition to laying out child components within the display area, child components within the range of **cachedCount** outside the display area are pre-laid out during idle time based on the **cachedCount** attribute of the **List** component.
+
+ - When the **ListItemGroup** component is used together with **LazyForEach** and [cachedCount](./ts-container-list.md#cachedcount) is set, in addition to creating and laying out child components within the display area, child components within the range of **cachedCount** outside the display area are created and pre-laid out during idle time based on the **cachedCount** attribute of the **List** component.
+
+ - When the **ListItemGroup** component is used together with **Repeat** with [virtualScroll](./ts-rendering-control-repeat.md#virtualscroll), the preloading behavior is the same as that of **LazyForEach**. When the **ListItemGroup** component is used together with **Repeat** without **virtualScroll**, the preloading behavior is the same as that of **ForEach**.
 
 > **NOTE**
 >
 > - This component is supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
 > - This component can be used only as a child of [List](ts-container-list.md).
-> - The **ListItemGroup** component does not support the universal attribute [aspectRatio](ts-universal-attributes-layout-constraints.md).
-> - If the parent **List** component of **ListItemGroup** has its **listDirection** attribute set to **Axis.Vertical**, setting the [universal attribute height](ts-universal-attributes-size.md) has no effect. In this case, the height of the **ListItemGroup** component is fixed at the sum of the component's header height, footer height, and total height of the list items.
-> - If the parent **List** component of **ListItemGroup** has its **listDirection** attribute set to **Axis.Horizontal**, setting the [universal attribute width](ts-universal-attributes-size.md) has no effect. In this case, the width of the **ListItemGroup** component is fixed at the sum of the component's header width, footer width, and total width of the list items.
-> - The list items in the **ListItemGroup** component cannot be edited or dragged. This means that their **editable** attribute does not take effect.
+> - The **ListItemGroup** component does not support the universal attribute [aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio).
+> - If the parent **List** component of **ListItemGroup** has its [listDirection](./ts-container-list.md#listdirection) attribute set to **Axis.Vertical**, setting the [universal attribute height](ts-universal-attributes-size.md#height) has no effect. In this case, the height of the **ListItemGroup** component is fixed at the sum of the component's header height, footer height, and total height of the list items.
+> - If the parent **List** component of **ListItemGroup** has its **listDirection** attribute set to **Axis.Horizontal**, setting the [universal attribute width](ts-universal-attributes-size.md#width) has no effect. In this case, the width of the **ListItemGroup** component is fixed at the sum of the component's header width, footer width, and total width of the list items.
+> - The list items in the **ListItemGroup** component cannot be edited or dragged. This means that their [editable](./ts-container-listitem.md#editabledeprecated) attribute does not take effect.
 > - The **ListItemGroup** ignores the **direction** attribute for setting the layout direction; instead, it adopts the layout direction of its parent **List** component.
 
 ## Child Components
 
-This component supports the [ListItem](ts-container-listitem.md) child component.
-
+Contains the [ListItem](ts-container-listitem.md) child component. Child components can be dynamically generated using rendering control types [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md). **LazyForEach** or **Repeat** is recommended to optimize performance.
 
 ## APIs
 
 ListItemGroup(options?: ListItemGroupOptions)
+
+Creates a **ListItemGroup** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -33,16 +57,22 @@ ListItemGroup(options?: ListItemGroupOptions)
 
 ## ListItemGroupOptions
 
+Describes the **ListItemGroup** component parameter.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name             | Type                                           | Mandatory| Description                                                    |
-| ------------------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| header              | [CustomBuilder](ts-types.md#custombuilder8)     | No  | Header of the list item group.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
-| headerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No  | Header of the list item group, in the type of ComponentContent.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside. This parameter takes precedence over the **header** parameter. This means that, if both **header** and **headerComponent** are set, the value of **headerComponent** is used.<br>To avoid display issues, do not assign the same **headerComponent** to different **ListItemGroup** components.<br>**Atomic service API**: This API can be used in atomic services since API version 13.             |
-| footer              | [CustomBuilder](ts-types.md#custombuilder8)       | No  | Footer of the list item group.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
-| footerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No  | Footer of the list item group, in the type of ComponentContent.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside. This parameter takes precedence over the **footer** parameter. This means that, if both **footer** and **footerComponent** are set, the value of **footerComponent** is used.<br>To avoid display issues, do not assign the same **footerComponent** to different **ListItemGroup** components.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                          |
-| space               | number \| string                          | No  | Spacing between list items. This parameter only affects the spacing between list items, but not spacing between the header and list items or between the footer and list items.<br>Default value: **0**<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| style<sup>10+</sup> | [ListItemGroupStyle](#listitemgroupstyle10) | No  | Style of the list item group.<br>Default value: **ListItemGroupStyle.NONE**<br>If this parameter is set to **ListItemGroupStyle.NONE**, no style is applied.<br>When **ListItemGroupStyle.CARD** is used, you are advised to pair it with **ListItemStyle.CARD** from [ListItem](ts-container-listitem.md) to apply the default card style.<br>In the card style, the default specifications for the **ListItemGroup** are as follows: horizontal margin of 12 vp on both left and right sides, and vertical as well as horizontal padding of 4 vp.<br>In the default card style, list items can be in focus, hover, press, selected, or disable style depending on their state.<br>**NOTE**<br>In the card style, by default, the list runs along the vertical axis, that is, **listDirection** is at **Axis.Vertical**. If **listDirection** is set to **Axis.Horizontal**, a disordered display may result. The **alignListItem** attribute of the list is set to **ListItemAlign.Center** by default, which aligns the list items in the center.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
+| Name             | Type                                           | Read-Only| Optional  | Description                                                    |
+| ------------------- | --------------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
+| header              | [CustomBuilder](ts-types.md#custombuilder8) &nbsp;   | No  | Yes| Header of the list item group.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
+| headerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No  | Yes| Header of the list item group, in the type of ComponentContent.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside. This parameter takes precedence over the **header** parameter. This means that, if both **header** and **headerComponent** are set, the value of **headerComponent** is used.<br>To avoid display issues, do not assign the same **headerComponent** to different **ListItemGroup** components.<br>**Atomic service API**: This API can be used in atomic services since API version 13.             |
+| footer              | [CustomBuilder](ts-types.md#custombuilder8) &nbsp;     | No  | Yes| Footer of the list item group.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
+| footerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No  | Yes| Footer of the list item group, in the type of ComponentContent.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside. This parameter takes precedence over the **footer** parameter. This means that, if both **footer** and **footerComponent** are set, the value of **footerComponent** is used.<br>To avoid display issues, do not assign the same **footerComponent** to different **ListItemGroup** components.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                          |
+| space               | number&nbsp;\|&nbsp;string                          | No  | Yes| Spacing between list items. This parameter only affects the spacing between list items, but not spacing between the header and list items or between the footer and list items.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number or a value greater than or equal to the length of the list content area, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| spaceWidth          | [Dimension](ts-types.md#dimension10)                          | No  | Yes| Spacing between list items. This parameter only affects the spacing between list items, but not spacing between the header and list items or between the footer and list items.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number or a value greater than or equal to the length of the list content area, the default value is used. If both **spaceWidth** and **space** are set, **spaceWidth** takes precedence. When **spaceWidth** is **undefined** or **null**, **space** takes effect.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0. |
+| style<sup>10+</sup> | [ListItemGroupStyle](#listitemgroupstyle10) | No  | Yes| Style of the list item.<br>Default value: **ListItemGroupStyle.NONE**<br>If this parameter is set to **ListItemGroupStyle.NONE**, no style is applied.<br>When **ListItemGroupStyle.CARD** is used, you are advised to pair it with **ListItemStyle.CARD** from [ListItem](ts-container-listitem.md) to apply the default card style.<br>In the card style, the default specifications for the **ListItemGroup** are as follows: horizontal margin of 12 vp on both left and right sides, and vertical as well as horizontal padding of 4 vp.<br>The card style provides default focused, hover, pressed, selected, and disabled states for list items.<br>**NOTE**<br>When **ListItemStyle.CARD** is set, the **listDirection** attribute of **List** must be **Axis.Vertical**. If **listDirection** is set to **Axis.Horizontal**, the display will be disordered. The default value of [alignListItem](./ts-container-list.md#alignlistitem9) is **ListItemAlign.Center**, which centers the items vertically.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| headerStyle | [ListItemGroupHeaderFooterStyle](#listitemgroupheaderfooterstyle) | No  | Yes| Header style of **ListItemGroup**.<br>Default value: **ListItemGroupHeaderFooterStyle.NONE**<br>If this parameter is set to **ListItemGroupHeaderFooterStyle.FLOATING**, the header component is displayed in floating mode during scrolling.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| footerStyle | [ListItemGroupHeaderFooterStyle](#listitemgroupheaderfooterstyle) | No  | Yes| Footer style of **ListItemGroup**.<br>Default value: **ListItemGroupHeaderFooterStyle.NONE**<br>If this parameter is set to **ListItemGroupHeaderFooterStyle.FLOATING**, the footer component is displayed in floating mode during scrolling.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## Attributes
 
@@ -64,13 +94,17 @@ When a list item has [polymorphic styles](ts-universal-attributes-polymorphic-st
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ListDividerOptions](ts-container-list.md#listdivideroptions18) \| null | Yes  | Style of the divider for the list items.<br> Default value: **null**|
+| value  | [ListDividerOptions](ts-container-list.md#listdivideroptions18)&nbsp;\|&nbsp;null| Yes  | Style of the divider for the list items.<br> Default value: **null**|
 
 ### childrenMainSize<sup>12+</sup>
 
 childrenMainSize(value: ChildrenMainSize)
 
 Sets the size information of the child components of a **ListItemGroup** component along the main axis.
+
+> **NOTE**
+>
+> - The **childrenMainSize** attribute of the **List** component must be set at the same time for the attribute to take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -80,9 +114,11 @@ Sets the size information of the child components of a **ListItemGroup** compone
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
-| value | [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12) | Yes  | Size information of all list items along the main axis, provided through a **ChildrenMainSize** object to the **ListItemGroup** component.<br>The provided size along the main axis must be consistent with the actual size of the child components on the main axis.<br>For the setting to take effect, this attribute must be used together with the **childrenMainSize** attribute of the **List** component.<br>Any changes in size or additions/removals of child components must be communicated to the **ListItemGroup** component through the **ChildrenMainSize** object method.|
+| value | [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12) | Yes  | Size information of child components in the main axis direction.|
 
 ## ListItemGroupStyle<sup>10+</sup>
+
+Enumerates the card styles of the **ListItemGroup** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -93,44 +129,143 @@ Sets the size information of the child components of a **ListItemGroup** compone
 | NONE | 0 | No style.          |
 | CARD | 1 | Default card style.|
 
+## ListItemGroupHeaderFooterStyle
+
+Enumerates the header and footer styles of **ListItemGroup**.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+ 
+| Name    | Value | Description      |
+| -------- | ---- | ---------- |
+| NONE     | 0    | No style.  |
+| FLOATING | 1    | Floating style.|
 
 
 ## Example
 
 ### Example 1: Setting a Sticky Header and Footer
 
-This example demonstrates how to set a sticky header and footer using the **stick** attribute.
+This example uses [sticky](ts-container-list.md#sticky9) to implement the sticky header and footer.
 
+**ListDataSource** implements the **LazyForEach** data source API [IDataSource](ts-rendering-control-lazyforeach.md#idatasource), which is used to provide child components for **List** and **ListItemGroup** through **LazyForEach**.
+
+<!--code_no_check-->
+```ts
+// ListDataSource.ets
+export class TimeTableDataSource implements IDataSource {
+  private list: TimeTable[] = [];
+  private listeners: DataChangeListener[] = [];
+
+  constructor(list: TimeTable[]) {
+    this.list = list;
+  }
+
+  totalCount(): number {
+    return this.list.length;
+  }
+
+  getData(index: number): TimeTable {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // Notify the controller of data changes.
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    });
+  }
+
+  // Modify the first element.
+  public change1stItem(temp: TimeTable): void {
+    this.list[0] = temp;
+    this.notifyDataChange(0);
+  }
+}
+
+export class ProjectsDataSource implements IDataSource {
+  private list: string[] = [];
+
+  constructor(list: string[]) {
+    this.list = list;
+  }
+
+  totalCount(): number {
+    return this.list.length;
+  }
+
+  getData(index: number): string {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+
+export interface TimeTable {
+  title: string;
+  projects: string[];
+}
+```
+
+<!--code_no_check-->
 ```ts
 // xxx.ets
+import { TimeTable, ProjectsDataSource, TimeTableDataSource } from './ListDataSource';
 @Entry
 @Component
 struct ListItemGroupExample {
-  private timeTable: TimeTable[] = [
-    {
-      title: 'Monday',
-      projects: ['Language', 'Math', 'English']
-    },
-    {
-      title: 'Tuesday',
-      projects: ['Physics', 'Chemistry', 'Biology']
-    },
-    {
-      title: 'Wednesday',
-      projects: ['History', 'Geography', 'Politics']
-    },
-    {
-      title: 'Thursday',
-      projects: ['Art', 'Music', 'Sports']
-    }
-  ]
+  itemGroupArray: TimeTableDataSource = new TimeTableDataSource([]);
+
+  aboutToAppear(): void {
+    let timeTable: TimeTable[] = [
+      {
+        title: 'Monday',
+        projects: ['Language', 'Math', 'English']
+      },
+      {
+        title: 'Tuesday',
+        projects: ['Physics', 'Chemistry', 'Biology']
+      },
+      {
+        title: 'Wednesday',
+        projects: ['History', 'Geography', 'Politics']
+      },
+      {
+        title: 'Thursday',
+        projects: ['Art', 'Music', 'Sports']
+      }
+    ];
+    this.itemGroupArray = new TimeTableDataSource(timeTable);
+  }
 
   @Builder
   itemHead(text: string) {
     Text(text)
       .fontSize(20)
       .backgroundColor(0xAABBCC)
-      .width("100%")
+      .width('100%')
       .padding(10)
   }
 
@@ -139,19 +274,19 @@ struct ListItemGroupExample {
     Text('Total lessons: ' + num)
       .fontSize(16)
       .backgroundColor(0xAABBCC)
-      .width("100%")
+      .width('100%')
       .padding(5)
   }
 
   build() {
     Column() {
       List({ space: 20 }) {
-        ForEach(this.timeTable, (item: TimeTable) => {
+        LazyForEach(this.itemGroupArray, (item: TimeTable) => {
           ListItemGroup({ header: this.itemHead(item.title), footer: this.itemFoot(item.projects.length) }) {
-            ForEach(item.projects, (project: string) => {
+            LazyForEach(new ProjectsDataSource(item.projects), (project: string) => {
               ListItem() {
                 Text(project)
-                  .width("100%")
+                  .width('100%')
                   .height(100)
                   .fontSize(20)
                   .textAlign(TextAlign.Center)
@@ -168,16 +303,11 @@ struct ListItemGroupExample {
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
   }
 }
-
-interface TimeTable {
-  title: string;
-  projects: string[];
-}
 ```
 
 ![en-us_image_0000001219864159](figures/en-us_image_listitemgroup.gif)
 
-### Example 2: Setting the Card Style
+### Example 2: Applying a Card-style Effect
 
 This example illustrates the card-style effect of the **ListItemGroup** component.
 
@@ -203,18 +333,18 @@ struct ListItemGroupExample2 {
       style: ListItemGroupStyle.NONE,
       itemStyles: [ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE]
     }
-  ]
+  ];
 
   build() {
     Column() {
-      List({ space: "4vp", initialIndex: 0 }) {
+      List({ space: '4vp', initialIndex: 0 }) {
         ForEach(this.arr, (item: ArrObject, index?: number) => {
           ListItemGroup({ style: item.style }) {
             ForEach(item.itemStyles, (itemStyle: number, itemIndex?: number) => {
               ListItem({ style: itemStyle }) {
                 if (index != undefined && itemIndex != undefined) {
-                  Text("Item " + (itemIndex + 1) +" in group " + (index + 1))
-                    .width("100%")
+                  Text('Item ' + (itemIndex + 1) + ' in group ' + (index + 1))
+                    .width('100%')
                     .textAlign(TextAlign.Center)
                 }
               }
@@ -240,16 +370,15 @@ interface ArrObject {
 
 ### Example 3: Setting Header and Footer
 
-This example demonstrates how to set the header and footer using **ComponentContent**.
+This example uses [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) to set the header and footer.
 
+For details about **ListDataSource** and the complete code, see [Example 1: Setting a Sticky Header and Footer](#example-1-setting-a-sticky-header-and-footer).
+
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';
-
-interface TimeTable {
-  title: string;
-  projects: string[];
-}
+import { TimeTable, ProjectsDataSource, TimeTableDataSource } from './ListDataSource';
 
 class HeadBuilderParams {
   text: string | Resource;
@@ -270,32 +399,34 @@ function itemHead(params: HeadBuilderParams) {
   Text(params.text)
     .fontSize(20)
     .height('48vp')
-    .width("100%")
+    .width('100%')
     .padding(10)
     .backgroundColor($r('sys.color.background_tertiary'))
 }
 
 @Builder
 function itemFoot(params: FootBuilderParams) {
-  Text('Total lessons: ' + params.num)
+  Text('Total lessons: ' + params.num.toString())
     .fontSize(20)
     .height('48vp')
-    .width("100%")
+    .width('100%')
     .padding(10)
     .backgroundColor($r('sys.color.background_tertiary'))
 }
 
 @Component
 struct MyItemGroup {
-  item: TimeTable = { title: "", projects: [] }
-  header?: ComponentContent<HeadBuilderParams> = undefined
-  footer?: ComponentContent<FootBuilderParams> = undefined
-  headerParam = new HeadBuilderParams(this.item.title)
-  footerParam = new FootBuilderParams(this.item.projects.length)
+  item: TimeTable = { title: '', projects: [] };
+  header?: ComponentContent<HeadBuilderParams> = undefined;
+  footer?: ComponentContent<FootBuilderParams> = undefined;
+  headerParam = new HeadBuilderParams(this.item.title);
+  footerParam = new FootBuilderParams(this.item.projects.length);
+  itemArr: ProjectsDataSource = new ProjectsDataSource([]);
 
   aboutToAppear(): void {
-    this.header = new ComponentContent(this.getUIContext(), wrapBuilder(itemHead), this.headerParam)
-    this.footer = new ComponentContent(this.getUIContext(), wrapBuilder(itemFoot), this.footerParam)
+    this.header = new ComponentContent(this.getUIContext(), wrapBuilder(itemHead), this.headerParam);
+    this.footer = new ComponentContent(this.getUIContext(), wrapBuilder(itemFoot), this.footerParam);
+    this.itemArr = new ProjectsDataSource(this.item.projects);
   }
   GetHeader() {
     this.header?.update(new HeadBuilderParams(this.item.title));
@@ -312,10 +443,10 @@ struct MyItemGroup {
       headerComponent: this.GetHeader(),
       footerComponent: this.GetFooter()
     }) {
-      ForEach(this.item.projects, (project: string) => {
+      LazyForEach(this.itemArr, (project: string) => {
         ListItem() {
           Text(project)
-            .width("100%")
+            .width('100%')
             .height(100)
             .fontSize(20)
             .textAlign(TextAlign.Center)
@@ -329,37 +460,41 @@ struct MyItemGroup {
 @Entry
 @Component
 struct ListItemGroupExample {
-  @State timeTable: TimeTable[] = [
-    {
-      title: 'Monday',
-      projects: ['Language', 'Math', 'English']
-    },
-    {
-      title: 'Tuesday',
-      projects: ['Physics', 'Chemistry', 'Biology']
-    },
-    {
-      title: 'Wednesday',
-      projects: ['History', 'Geography', 'Politics', 'Sports']
-    },
-    {
-      title: 'Thursday',
-      projects: ['Art', 'Music']
-    }
-  ]
+  itemGroupArray: TimeTableDataSource = new TimeTableDataSource([]);
+  aboutToAppear(): void {
+    let timeTable: TimeTable[] = [
+      {
+        title: 'Monday',
+        projects: ['Language', 'Math', 'English']
+      },
+      {
+        title: 'Tuesday',
+        projects: ['Physics', 'Chemistry', 'Biology']
+      },
+      {
+        title: 'Wednesday',
+        projects: ['History', 'Geography', 'Politics', 'Sports']
+      },
+      {
+        title: 'Thursday',
+        projects: ['Art', 'Music']
+      }
+    ];
+    this.itemGroupArray = new TimeTableDataSource(timeTable);
+  }
 
   build() {
     Column() {
-      Button("Update").width(100).height(50).onClick(() => {
-        this.timeTable[0] = {
-          title: 'Monday after update',
+      Button('update').width(100).height(50).onClick(() => {
+        this.itemGroupArray.change1stItem({
+          title: 'Updated Monday',
           projects: ['Language', 'Physics', 'History', 'Art']
-        }
+        });
       })
       List({ space: 20 }) {
-        ForEach(this.timeTable, (item: TimeTable) => {
+        LazyForEach(this.itemGroupArray, (item: TimeTable) => {
           MyItemGroup({ item: item })
-        })
+        }, (item: TimeTable) => item.title) // LazyForEach determines whether to refresh the child component based on the key value.
       }
       .layoutWeight(1)
       .sticky(StickyStyle.Header | StickyStyle.Footer)
@@ -371,3 +506,168 @@ struct ListItemGroupExample {
 ```
 
 ![en-us_image_listitemgroup_example03](figures/en-us_image_listitemgroup_example03.gif)
+
+### Example 4: Setting a Multi-Column Layout
+
+This example shows how to use **ListItemGroup** in a multi-column layout. The [lanes](./ts-container-list.md#lanes9) attribute of the **List** component is set to implement the multi-column layout.
+
+For details about **ListDataSource** and the complete code, see [Example 1: Setting a Sticky Header and Footer](#example-1-setting-a-sticky-header-and-footer).
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+import { TimeTable, ProjectsDataSource, TimeTableDataSource } from './ListDataSource';
+
+class HeadBuilderParams {
+  text: string | Resource;
+
+  constructor(text: string | Resource) {
+    this.text = text;
+  }
+}
+
+class FootBuilderParams {
+  num: number | Resource;
+
+  constructor(num: number | Resource) {
+    this.num = num;
+  }
+}
+
+@Builder
+function itemHead(params: HeadBuilderParams) {
+  Text(params.text)
+    .fontSize(20)
+    .height('48vp')
+    .width('100%')
+    .padding(10)
+    .backgroundColor($r('sys.color.background_tertiary'))
+}
+
+@Builder
+function itemFoot(params: FootBuilderParams) {
+  Text('Total lessons: ' + params.num.toString())
+    .fontSize(20)
+    .height('48vp')
+    .width('100%')
+    .padding(10)
+    .backgroundColor($r('sys.color.background_tertiary'))
+}
+
+@Component
+struct MyItemGroup {
+  item: TimeTable = { title: '', projects: [] };
+  header?: ComponentContent<HeadBuilderParams> = undefined;
+  footer?: ComponentContent<FootBuilderParams> = undefined;
+  headerParam = new HeadBuilderParams(this.item.title);
+  footerParam = new FootBuilderParams(this.item.projects.length);
+  itemArr: ProjectsDataSource = new ProjectsDataSource([]);
+
+  aboutToAppear(): void {
+    this.header = new ComponentContent(this.getUIContext(), wrapBuilder(itemHead), this.headerParam);
+    this.footer = new ComponentContent(this.getUIContext(), wrapBuilder(itemFoot), this.footerParam);
+    this.itemArr = new ProjectsDataSource(this.item.projects);
+  }
+
+  GetHeader() {
+    this.header?.update(new HeadBuilderParams(this.item.title));
+    return this.header;
+  }
+
+  GetFooter() {
+    this.footer?.update(new FootBuilderParams(this.item.projects.length));
+    return this.footer;
+  }
+
+  build() {
+    ListItemGroup({
+      headerComponent: this.GetHeader(),
+      footerComponent: this.GetFooter()
+    }) {
+      LazyForEach(this.itemArr, (project: string) => {
+        ListItem() {
+          // Modify the ListItem style to adapt to the multi-column layout.
+          Column() {
+            Text(project)
+              .fontSize(20)
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(80)
+          .padding(8)
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor($r('sys.color.background_secondary'))
+          .borderRadius(12)
+          .shadow({
+            radius: 4,
+            color: '#20000000',
+            offsetX: 0,
+            offsetY: 2
+          })
+        }
+      }, (item: string) => item)
+    }
+    .divider({
+      strokeWidth: 2,
+      color: $r('sys.color.background_tertiary'),
+      startMargin: 20,
+      endMargin: 20
+    })
+  }
+}
+
+@Entry
+@Component
+struct ListItemGroupExample {
+  itemGroupArray: TimeTableDataSource = new TimeTableDataSource([]);
+
+  aboutToAppear(): void {
+    let timeTable: TimeTable[] = [
+      {
+        title: 'Monday',
+        projects: ['Chinese', 'Math', 'English', 'Physics', 'Chemistry', 'Biology']
+      },
+      {
+        title: 'Tuesday',
+        projects: ['History', 'Geography', 'Politics', 'Physical Education', 'Art', 'Music']
+      },
+      {
+        title: 'Wednesday',
+        projects: ['Computer', 'Programming', 'Algorithm', 'Data Structure', 'Network']
+      },
+      {
+        title: 'Thursday',
+        projects: ['Literature', 'Writing', 'Reading', 'Calligraphy']
+      },
+      {
+        title: 'Friday',
+        projects: ['Experiment', 'Life', 'Olympiad Mathematics', 'Advanced Mathematics', 'Traditional Chinese Medicine']
+      }
+    ];
+    this.itemGroupArray = new TimeTableDataSource(timeTable);
+  }
+
+  build() {
+    Column() {
+      List({ space: 15 }) {
+        LazyForEach(this.itemGroupArray, (item: TimeTable) => {
+          MyItemGroup({ item: item })
+        }, (item: TimeTable) => item.title)
+      }
+      .lanes(3) // Set the three-column layout.
+      .alignListItem(ListItemAlign.Center) // Align items in the center of the cross axis.
+      .layoutWeight(1)
+      .scrollBar(BarState.Auto)
+      .width('100%')
+      .margin(10)
+    }
+    .backgroundColor($r('sys.color.background_primary'))
+    .width('100%')
+    .height('100%')
+    .padding(10)
+  }
+}
+```
+
+![list_multicolumn_layout](figures/list_multicolumn_layout.gif)

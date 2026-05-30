@@ -31,9 +31,7 @@
 
 ## IDL接口描述语言构成
 
-### 数据类型
-
-#### 基础数据类型
+### 基础数据类型
 | IDL基本数据类型 | C++基本数据类型 | TS基本数据类型 |
 |   --------    |  --------     | --------     |
 |void           | void          | void         |
@@ -48,10 +46,10 @@
 
 IDL支持的基本数据类型及其映射到C++、TS上的数据类型的对应关系如上表所示。
 
-#### sequenceable数据类型
+### sequenceable数据类型
 sequenceable数据类型是指使用“sequenceable”关键字声明的数据，表明该数据类型可以被序列化进行跨进程或跨设备传递。sequenceable在C++与TS中声明方式存在一定差异。
 
-在C++中sequenceable数据类型的声明放在文件的头部，以“sequenceable includedir..namespace.typename”的形式声明。具体而言。声明可以有如下三个形式：
+在C++中sequenceable数据类型的声明放在文件的头部，以“sequenceable includedir..namespace.typename”的形式声明。具体而言，声明可以有如下三个形式：
 
 ```cpp
 sequenceable includedir..namespace.typename
@@ -65,7 +63,7 @@ sequenceable namespace.typename
 sequenceable a.b..C.D
 ```
 
- 上述声明在生成的的C++头文件中将被解析为如下代码：
+ 上述声明在生成的C++头文件中将被解析为如下代码：
 
 ```cpp
 #include  "a/b/d.h"
@@ -86,7 +84,7 @@ import MySequenceable from "./my_sequenceable"
 
 需要注意的是，IDL并不负责该类型的代码实现，仅仅按照指定的形式引入该头文件或import指定模块，并使用该类型，因此开发者需要自行保证引入目录、命名空间及类型的正确性。
 
-#### 接口类型
+### 接口类型
  接口类型是指OpenHarmony IDL文件中定义的接口。对于当前IDL文件中定义的接口，可以直接使用它作为方法参数类型或返回值类型。而在其它OpenHarmony IDL文件中定义的接口，则需要在文件的头部进行前置声明。 
 
  C++中声明的形式与sequenceable类型相似，具体而言可以有如下形式： 
@@ -107,15 +105,18 @@ interface namespace.interfacename
 import IIdlTestObserver from "./i_idl_test_observer"
 ```
 
-#### 数组类型
-数组类型使用“T[]”表示，其中T可以是基本数据类型、sequenceable数据类型、interface类型和数组类型。该类型在C++生成代码中将被生成为std::vector&lt;T&gt;类型。
+### 数组类型
+数组类型使用“T[]”表示，其中T可以是基本数据类型、sequenceable数据类型、interface类型和数组类型。
+
+该类型在C++生成代码中将被生成为std::vector&lt;T&gt;类型。
+
 OpenHarmony IDL数组数据类型与TS数据类型、C++数据类型的对应关系如下表所示：
 
 |OpenHarmony IDL数据类型  | C++数据类型           | TS数据类型     |
 |   -------              |  --------            |  --------    |
 |T[]                     | std::vector&lt;T&gt; | T[]          |
 
-#### 容器类型
+### 容器类型
 IDL支持两种容器类型，即List和Map。其中List类型容器的用法为List&lt;T&gt;;Map容器的用法为Map<KT,VT>,其中T、KT、VT为基本数据类型、sequenceable类型、interface类型、数组类型或容器类型。
 
 List类型在C++代码中被映射为std::list,Map容器被映射为std::map。
@@ -133,36 +134,37 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 ### IDL文件编写规范
 一个idl文件只能定义一个interface类型，且该interface名称必须和文件名相同。idl文件的接口定义使用BNF范式描述，其基本定义的形式如下：
 
-```
+```text
 [<*interface_attr_declaration*>]interface<*interface_name_with_namespace*>{<*method_declaration*>}
 ```
 
 其中，<*interface_attr_declaration*>表示接口属性声明。当前仅支持“oneway”属性，表示该接口中的接口都是单向方法，即调用方法后不用等待该方法执行即可返回。这个属性为可选项，如果未声明该属性，则默认为同步调用方法。接口名需要包含完整的接口头文件目录及命名空间，且必须包含方法声明，不允许出现空接口。
+
 接口内的方法声明形式为：
 
-```
+```text
 [<*method_attr_declaration*>]<*result_type*><*method_declaration*>
 ```
 
 其中，<*method_attr_declaration*>表示接口属性说明。当前仅支持“oneway”属性，表示该方法为单向方法，即调用方法后不用等待该方法执行即可返回。这个属性为可选项，如果未声明该属性，则默认为同步调用方法。<*result_type*>为返回值类型，<*method_declaration*>是方法名和各个参数声明。
+
 参数声明的形式为：
 
-```
+```text
 [<*formal_param_attr*>]<*type*><*identifier*>
 ```
 
 其中<*formal_param_attr*>的值为“in”，“out”，“inout”,分别表示该参数是输入参数，输出参数或输入输出参数。需要注意的是，如果一个方法被声明为oneway，则该方法不允许有输出类型的参数（及输入输出类型）和返回值。
 
-## 开发步骤
-
-### 获取IDL工具
-#### 方法一（推荐）：
-1. 在linux系统，下载OpenHarmony的两个仓：[ability_idl_tool](https://gitee.com/openharmony/ability_idl_tool)代码仓、[third_party_bounds_checking_function](https://gitee.com/openharmony/third_party_bounds_checking_function)代码仓。
-2. 进入[ability_idl_tool](https://gitee.com/openharmony/ability_idl_tool)代码仓，在Makefile所在目录执行make命令（**注意修改MakefileLinux中关于bounds_checking_function的相对位置**）。
+## 获取IDL工具
+### 方法一（推荐）：
+1. 在linux系统，下载OpenHarmony的两个仓：[ability_idl_tool](https://gitcode.com/openharmony/ability_idl_tool)代码仓、[third_party_bounds_checking_function](https://gitcode.com/openharmony/third_party_bounds_checking_function)代码仓。
+2. 进入[ability_idl_tool](https://gitcode.com/openharmony/ability_idl_tool)代码仓，在Makefile所在目录执行make命令。注意修改MakefileLinux中关于bounds_checking_function的相对位置。
 3. make执行完成后，在当前目录下会生成idl-gen可执行文件，可用于idl文件本地调试。
 
-#### 方法二：
+### 方法二：
 首先，打开DevEco Studio—>Tools—>SDK Manager，查看OpenHarmony SDK的本地安装路径，此处以DevEco Studio 3.0.0.993版本为例，查看方式如下图所示。
+
 ![SDKpath](./figures/SDKpath.png)
 ![SDKpath](./figures/SDKpath2.png)
 
@@ -172,15 +174,15 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 > 
 > 请保证使用最新版的SDK，版本老旧可能导致部分语句报错。
 
-若不存在，可对应版本前往[docs仓版本目录](../../release-notes)下载SDK包，以[3.2Beta3版本](../../release-notes/OpenHarmony-v3.2-beta3.md)为例，可通过镜像站点获取。
+若不存在，可对应版本前往[docs仓版本目录](../../release-notes/Readme.md)下载SDK包，以[3.2Beta3版本](../../release-notes/OpenHarmony-v3.2-beta3.md)为例，可通过镜像站点获取。
 
 关于如何替换DevEco Studio的SDK包具体操作，参考[full-SDK替换指南](../faqs/full-sdk-compile-guide.md)中的替换方法。
 
 得到idl工具的可执行文件后，根据具体场景进行后续开发步骤。
 
-### TS开发步骤
+## TS开发步骤
 
-#### 创建.idl文件
+### 创建.idl文件
 
  开发者可以使用TS编程语言构建.idl文件。
 
@@ -199,11 +201,13 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 
 -d后的dir为目标输出目录，以输出文件夹名为IIdlTestServiceTs为例，在idl可执行文件所在目录下执行`idl -gen-ts -d IIdlTestServiceTs -c IIdlTestServiceTs/IIdlTestService.idl`，将会在执行环境的dir目录（即IIdlTestServiceTs目录）中生成接口文件、Stub文件、Proxy文件。
 
-> **注意**：生成的接口类文件名称和.idl文件名称保持一致，否则会生成代码时会出现错误。
+> **注意**：<br>
+> 
+> 生成的接口类文件名称和.idl文件名称保持一致，否则会生成代码时会出现错误。
 
 以名为`IIdlTestService.idl`的.idl文件、目标输出文件夹为IIdlTestServiceTs为例，其目录结构应类似于:
 
-```
+```text
 ├── IIdlTestServiceTs  # idl代码输出文件夹
 │   ├── i_idl_test_service.ts  # 生成文件
 │   ├── idl_test_service_proxy.ts  # 生成文件
@@ -212,7 +216,7 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 └── idl.exe  # idl的可执行文件
 ```
 
-#### 服务端公开接口
+### 服务端公开接口
 
 OpenHarmony IDL工具生成的Stub类是接口类的抽象实现，并且会声明.idl文件中的所有方法。 
 
@@ -354,7 +358,7 @@ class ServiceAbility {
 export default new ServiceAbility()
 ```
 
-#### 客户端调用IPC方法
+### 客户端调用IPC方法
 
 客户端调用connectServiceExtensionAbility()以连接服务时，客户端的onAbilityConnectDone中的onConnect回调会接收服务的onConnect()方法返回的IRemoteObject实例。由于客户端和服务在不同应用内，所以客户端应用的目录内必须包含.idl文件(SDK工具会自动生成Proxy代理类)的副本。客户端的onAbilityConnectDone中的onConnect回调会接收服务的onConnect()方法返回的IRemoteObject实例，使用IRemoteObject创建IdlTestServiceProxy类的实例对象testProxy，然后调用相关IPC方法。示例代码如下：
 
@@ -418,7 +422,7 @@ function connectAbility(): void {
 
 ```
 
-#### IPC传递sequenceable对象
+### IPC传递sequenceable对象
 
 开发者可以通过 IPC 接口，将某个类从一个进程发送至另一个进程。但是，必须确保 IPC 通道的另一端可使用该类的代码，并且该类必须支持marshalling和unmarshalling方法。系统需要通过marshalling和unmarshalling方法将对象序列化和反序列化成各进程能识别的对象。
 
@@ -458,15 +462,15 @@ export default class MySequenceable implements rpc.Parcelable {
 }
 ```
 
-### C++开发SA步骤（编译期自动生成SA接口模板代码）
+## C++开发SA步骤（编译期自动生成SA接口模板代码）
 
-#### 创建.idl文件
+### 创建.idl文件
 
 开发者使用C++编程语言构建.idl文件。
 
 例如，此处构建一个名为IQuickFixManager.idl的文件，文件内具体内容如下：
 
-```
+```text
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -485,15 +489,12 @@ export default class MySequenceable implements rpc.Parcelable {
 sequenceable QuickFixInfo..OHOS.AAFwk.ApplicationQuickFixInfo;
 interface OHOS.AAFwk.IQuickFixManager {
     void ApplyQuickFix([in] String[] quickFixFiles, [in] boolean isDebug);
-    void GetApplyedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
+    void GetAppliedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
     void RevokeQuickFix([in] String bundleName);
 }
 ```
 
-#### 修改BUILD.gn文件
-提供两种配置方法，选择其中一种即可
-
-##### 修改方法一（推荐，支持批量处理idl文件并编译为so）
+### BUILD.gn文件修改方法一（推荐，支持批量处理idl文件并编译为so）
 
 1. 导入IDL工具模板到当前BUILD.gn文件。
 
@@ -589,9 +590,10 @@ interface OHOS.AAFwk.IQuickFixManager {
    ]
    ```
 
-6. 在BUILD.gn中添加模板文件的外部依赖。
+4. 在BUILD.gn中添加模板文件的外部依赖。
 
    模板文件的外部依赖需要自己添加到external_deps里。
+
    若之前已存在，不需要重复添加，若重复添加会导致编译错误。
 
    ```bash
@@ -607,7 +609,7 @@ interface OHOS.AAFwk.IQuickFixManager {
    ]
    ```
 
-##### 修改方法二
+### BUILD.gn文件修改方法二
 
 1. 导入IDL工具模板到当前BUILD.gn文件。
 
@@ -658,7 +660,7 @@ interface OHOS.AAFwk.IQuickFixManager {
    # .idl文件中的定义
    interface OHOS.AAFwk.IQuickFixManager {
        void ApplyQuickFix([in] String[] quickFixFiles, [in] boolean isDebug);
-       void GetApplyedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
+       void GetAppliedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
        void RevokeQuickFix([in] String bundleName);
    }
    ```
@@ -738,7 +740,7 @@ interface OHOS.AAFwk.IQuickFixManager {
    ]
    ```
 
-#### 实例
+### 实例
 
 **以应用快速修复服务为例：**
 
@@ -769,7 +771,7 @@ interface OHOS.AAFwk.IQuickFixManager {
    sequenceable QuickFixInfo..OHOS.AAFwk.ApplicationQuickFixInfo;
    interface OHOS.AAFwk.IQuickFixManager {
        void ApplyQuickFix([in] String[] quickFixFiles, [in] boolean isDebug);
-       void GetApplyedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
+       void GetAppliedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
        void RevokeQuickFix([in] String bundleName);
    }
    ```
@@ -779,12 +781,12 @@ interface OHOS.AAFwk.IQuickFixManager {
    ```bash
    # 例 quick_fix_manager_client.h中的函数
        int32_t ApplyQuickFix(const std::vector<std::string> &quickFixFiles);
-       int32_t GetApplyedQuickFixInfo(const std::string &bundleName, ApplicationQuickFixInfo &quickFixInfo);
+       int32_t GetAppliedQuickFixInfo(const std::string &bundleName, ApplicationQuickFixInfo &quickFixInfo);
        int32_t RevokeQuickFix(const std::string &bundleName);
    # .idl文件中的定义
    interface OHOS.AAFwk.QuickFixManager {
        void ApplyQuickFix([in] String[] quickFixFiles);
-       void GetApplyedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
+       void GetAppliedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
        void RevokeQuickFix([in] String bundleName);
    }
    ```

@@ -1,5 +1,12 @@
 # @ohos.settings (设置数据项名称)(系统接口)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Applications-->
+<!--Owner: @YingCong-->
+<!--Designer: @Kun_Wu-->
+<!--Tester: @dyx118186878-->
+<!--Adviser: @fang-jinxu-->
+
 本模块提供访问设置数据项的能力。
 
 > **说明：**
@@ -10,20 +17,20 @@
 ## 导入模块
 
 ```js
-import settings from '@ohos.settings';
+import { settings } from '@kit.BasicServicesKit';
 ```
 
 ## domainName
 
 提供查询的域名。
 
-### 属性
+### 常量
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-| 名称                | 类型   | 可读 | 可写 | 说明                                                         |
-| ------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| USER_SECURITY<sup>11+</sup>      | string | 是   | 是   | 用户安全属性域                                          |
+| 名称                | 类型   | 值      | 说明                                                         |
+| ------------------- | ------ |--------| ------------------------------------------------------------ |
+| USER_SECURITY<sup>11+</sup>      | string | secure | 用户安全属性域                                          |
 
 ## settings.setValue<sup>(deprecated)</sup>
 

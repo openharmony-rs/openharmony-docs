@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -34,7 +34,7 @@
 
 ### ffrt_timer_start()
 
-```
+```c
 FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)
 ```
 
@@ -42,8 +42,9 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 
 启动计时器。
 
-**起始版本：** 12
+不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
+**起始版本：** 12
 
 **参数：**
 
@@ -63,7 +64,7 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 
 ### ffrt_timer_stop()
 
-```
+```c
 FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 ```
 
@@ -71,8 +72,13 @@ FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 
 关闭计时器。
 
-**起始版本：** 12
+> **说明：** 
+>
+> 为阻塞接口，请避免在回调函数callback内使用，防止死锁或同步问题。
+>
+> 当传入的handle对应的callback正在执行时，该函数会等待callback完成后再继续执行。
 
+**起始版本：** 12
 
 **参数：**
 

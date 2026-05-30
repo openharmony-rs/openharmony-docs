@@ -5,7 +5,7 @@
 <!--Owner: @YingCong-->
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 The **settings** module provides APIs for setting data items.
 
@@ -24,185 +24,185 @@ import { settings } from '@kit.BasicServicesKit';
 
 Provides the domain name.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                         | Type  | Readable| Writable| Description                  |
-|-----------------------------| ------ | ---- | ---- |----------------------|
-| DEVICE_SHARED<sup>11+</sup> | string | Yes  | Yes  | Shared device domain. All configurations in this domain are not distinguished between multiple users.|
-| USER_PROPERTY<sup>11+</sup> | string | Yes  | Yes  | User attribute domain. All configurations in this domain are distinguished between multiple users.|
+| Name                         | Type  | Read-Only| Description                  |
+|-----------------------------| ------ | ---- | ----------------------|
+| DEVICE_SHARED<sup>11+</sup> | string | Yes  | Shared device domain. All configurations in this domain are not distinguished between multiple users.|
+| USER_PROPERTY<sup>11+</sup> | string | Yes  | User attribute domain. All configurations in this domain are distinguished between multiple users.|
 
 ## date
 
-Provides data items for setting the time and date formats. (Not supported yet.)
+Provides data items for setting the time and date formats.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name               | Type  | Readable| Writable| Description                                                                        |
-| ------------------- | ------ | ---- | ---- |----------------------------------------------------------------------------|
-| DATE_FORMAT         | string | Yes  | Yes  | Date format.<br>The value can be **mm/dd/yyyy**, **dd/mm/yyyy**, or **yyyy/mm/dd**, where **mm** indicates the month, **dd** indicates the day, and **yyyy** indicates the year.|
-| TIME_FORMAT         | string | Yes  | Yes  | Time format. The options are as follows:<br>- **12**: 12-hour format.<br>- **24**: 24-hour format.           |
-| AUTO_GAIN_TIME      | string | Yes  | Yes  | Whether the date, time, and time zone are automatically obtained from the Network Identity and Time Zone (NITZ).<br>- **true**: Information is automatically obtained.<br>- **false**: Information is not automatically obtained.     |
-| AUTO_GAIN_TIME_ZONE | string | Yes  | Yes  | Whether the time zone is automatically obtained from NITZ.<br>- **1**: Time zone is automatically obtained.<br>- **false**: Time zone is not automatically obtained.                |
+| Name                                          | Type  | Read-Only| Description                                                                                  |
+|----------------------------------------------| ------ |----|--------------------------------------------------------------------------------------|
+| DATE_FORMAT<sup>(deprecated21)</sup>         | string | Yes | Date format.<br>The value can be **mm/dd/yyyy**, **dd/mm/yyyy**, or **yyyy/mm/dd**, where **mm** indicates the month, **dd** indicates the day, and **yyyy** indicates the year. (This constant is deprecated.)|
+| TIME_FORMAT                                  | string | Yes | Time format. The options are as follows:<br>- **12**: 12-hour format.<br>- **24**: 24-hour format.                     |
+| AUTO_GAIN_TIME<sup>(deprecated21)</sup>      | string | Yes | Whether the date, time, and time zone are automatically obtained from the Network Identity and Time Zone (NITZ).<br>- **true**: Information is automatically obtained.<br>- **false**: Information is not automatically obtained. (This constant is deprecated.)     |
+| AUTO_GAIN_TIME_ZONE<sup>(deprecated21)</sup> | string | Yes | Whether the time zone is automatically obtained from NITZ.<br>- **true**: Time zone is automatically obtained.<br>- **false**: Time zone is not automatically obtained. (This constant is deprecated.)                        |
 
 ## display
 
-Provides data items for setting the display effects. (Not supported yet.)
+Provides data items for setting the display effects.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                         | Type  | Readable| Writable| Description                                                                                                                  |
-| ----------------------------- | ------ | ---- | ---- |----------------------------------------------------------------------------------------------------------------------|
-| FONT_SCALE                    | string | Yes  | Yes  | Scale factor of the font. The value is a floating point number.                                                                                     |
-| SCREEN_BRIGHTNESS_STATUS      | string | Yes  | Yes  | Screen brightness, with the value ranging from 0 to 255.                                                                                                    |
-| AUTO_SCREEN_BRIGHTNESS        | string | Yes  | Yes  | Whether automatic screen brightness adjustment is enabled.<br>- **AUTO_SCREEN_BRIGHTNESS_MODE**: Automatic screen brightness adjustment is enabled.<br>- **MANUAL_SCREEN_BRIGHTNESS_MODE**: Automatic screen brightness adjustment is disabled.        |
-| AUTO_SCREEN_BRIGHTNESS_MODE   | number | Yes  | Yes  | Value of **AUTO_SCREEN_BRIGHTNESS** when automatic screen brightness adjustment is enabled.                                                                                |
-| MANUAL_SCREEN_BRIGHTNESS_MODE | number | Yes  | Yes  | Value of **AUTO_SCREEN_BRIGHTNESS** when automatic screen brightness adjustment is disabled.                                                                                |
-| SCREEN_OFF_TIMEOUT            | string | Yes  | Yes  | Waiting time for the device to enter the sleep state when not in use (unit: ms).                                                                                     |
-| DEFAULT_SCREEN_ROTATION       | string | Yes  | Yes  | This attribute is invalid when screen auto-rotation is enabled; otherwise, the following options are available:<br>- **0**: The screen rotates by 0 degrees.<br>- **1**: The screen rotates by 90 degrees.<br>- **2**: The screen rotates by 180 degrees.<br>- **3**: The screen rotates by 270 degrees.|
-| ANIMATOR_DURATION_SCALE       | string | Yes  | Yes  | Scale factor for the animation duration, which affects the start delay and duration of all such animations.<br>- **0**: The animation ends immediately. The default value is **1**.                                                            |
-| TRANSITION_ANIMATION_SCALE    | string | Yes  | Yes  | Scale factor for transition animations.<br>The value **0** indicates that the transition animations are disabled.                                                                                        |
-| WINDOW_ANIMATION_SCALE        | string | Yes  | Yes  | Scale factor for normal window animations.<br>The value **0** indicates that window animations are disabled.                                                                                      |
-| DISPLAY_INVERSION_STATUS      | string | Yes  | Yes  | Whether display color inversion is enabled.<br>- **1**: Display color inversion is enabled.<br>- **0**: Display color inversion is disabled.                                                            |
+| Name                                                 | Type  | Read-Only| Description                                                                                                                            |
+|-----------------------------------------------------| ------ |----|--------------------------------------------------------------------------------------------------------------------------------|
+| FONT_SCALE                                          | string | Yes | Scale factor of the font (**domainName**: **USER_PROPERTY**). The value is a floating point number. The standard scale factor is **1**, and allowed scale factors include **0.85**, **1.15**, **1.3**, and **1.45**. In care mode, **1.75**, **2**, and **3.2** are available.                           |
+| SCREEN_BRIGHTNESS_STATUS                            | string | Yes | Screen brightness, with the value ranging from 0 to 255.                                                                                                              |
+| AUTO_SCREEN_BRIGHTNESS                              | string | Yes | Whether automatic screen brightness adjustment is enabled.<br>- **AUTO_SCREEN_BRIGHTNESS_MODE**: Automatic screen brightness adjustment is enabled.<br>- **MANUAL_SCREEN_BRIGHTNESS_MODE**: Automatic screen brightness adjustment is disabled.                  |
+| AUTO_SCREEN_BRIGHTNESS_MODE                         | number | Yes | Value of **AUTO_SCREEN_BRIGHTNESS** when automatic screen brightness adjustment is enabled.                                                                                          |
+| MANUAL_SCREEN_BRIGHTNESS_MODE                       | number | Yes | Value of **AUTO_SCREEN_BRIGHTNESS** when automatic screen brightness adjustment is disabled.                                                                                          |
+| SCREEN_OFF_TIMEOUT                                  | string | Yes | Waiting time for the device to enter the sleep state when not in use (unit: ms).                                                                                               |
+| DEFAULT_SCREEN_ROTATION<sup>(deprecated21)</sup>    | string | Yes | This attribute is invalid when screen auto-rotation is enabled; otherwise, the following options are available:<br>- **0**: The screen rotates by 0 degrees.<br>- **1**: The screen rotates by 90 degrees.<br>- **2**: The screen rotates by 180 degrees.<br>- **3**: The screen rotates by 270 degrees. (This constant is deprecated.)|
+| ANIMATOR_DURATION_SCALE<sup>(deprecated21)</sup>    | string | Yes | Scale factor for the animation duration, which affects the start delay and duration of all such animations.<br>- **0**: The animation ends immediately.<br> - **1**: default value. (This constant is deprecated.)                                                            |
+| TRANSITION_ANIMATION_SCALE<sup>(deprecated21)</sup> | string | Yes | Scale factor for transition animations.<br>- **0**: Transition animations are disabled. (This constant is deprecated.)                                                                                        |
+| WINDOW_ANIMATION_SCALE<sup>(deprecated21)</sup>     | string | Yes | Scale factor for normal window animations.<br>- **0**: Window animations are disabled (This constant is deprecated.)                                                                                      |
+| DISPLAY_INVERSION_STATUS<sup>(deprecated21)</sup>   | string | Yes | Whether display color inversion is enabled.<br>- **1**: Display color inversion is enabled.<br>- **0**: Display color inversion is disabled. (This constant is deprecated.)                                                                    |
 
 ## general
 
-Provides data items for setting the general information about the device. (Not supported yet.)
+Provides data items for setting the general information about the device.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                            | Type  | Readable| Writable| Description                                                                                                                                 |
-| -------------------------------- | ------ | ---- | ---- |-------------------------------------------------------------------------------------------------------------------------------------|
-| SETUP_WIZARD_FINISHED            | string | Yes  | Yes  | Whether the startup wizard has been run.<br>- **0**: The startup wizard is not run.<br>- Other than **0**: The startup wizard has been run.                                                                              |
-| END_BUTTON_ACTION                | string | Yes  | Yes  | Action after the call end button is pressed if the user is not in a call.<br>- **0**: Nothing happens.<br>- **1**: The home screen is displayed.<br>- **2**: The device enters sleep mode and the screen is locked.<br>- **3**: The home screen is displayed. If the focus is already on the home screen, the device will enter sleep mode.|
-| ACCELEROMETER_ROTATION_STATUS    | string | Yes  | Yes  | Whether the accelerometer is used to change screen orientation, that is, whether to enable auto-rotation.<br>- **1**: The accelerometer is used.<br>- **0**: The accelerometer is not used.                                                                     |
-| DEVICE_PROVISION_STATUS          | string | Yes  | Yes  | Whether the device is preconfigured.<br>On a multi-user device with a single system user, the screen may be locked when the value is **true**. In addition, other features cannot be started on the system user unless they are marked to display on the lock screen.                                                     |
-| HDC_STATUS                       | string | Yes  | Yes  | Whether the hard disk controller (HDC) on the USB device is enabled.<br>- **true**: HDC is enabled.<br>- **false**: HDC is disabled.                                                                     |
-| BOOT_COUNTING                    | string | Yes  | Yes  | Number of boot operations after the device is powered on.                                                                                                                       |
-| CONTACT_METADATA_SYNC_STATUS     | string | Yes  | Yes  | Whether contacts metadata synchronization is enabled.<br>- **true**: Contacts metadata synchronization is enabled.<br>- **false**: Contacts metadata synchronization is disabled.                                                                           |
-| DEVICE_NAME                      | string | Yes  | Yes  | Device name.                                                                                                                              |
-| USB_STORAGE_STATUS               | string | Yes  | Yes  | Whether USB mass storage is enabled.<br>- **true**: USB mass storage is enabled.<br>- **false**: USB mass storage is disabled.                                                               |
-| DEBUGGER_WAITING                 | string | Yes  | Yes  | Whether the device waits for the debugger when starting an application to debug.<br>- **1**: The device waits for the debugger.<br>- **0**: The device does not wait for the debugger. In this case, the application runs normally.                                                    |
-| DEBUG_APP_PACKAGE                | string | Yes  | Yes  | Bundle name of the application to be debugged.                                                                                                              |
-| ACCESSIBILITY_STATUS             | string | Yes  | Yes  | Whether accessibility is enabled.<br>- **1**: Accessibility is enabled.<br>- **0**: Accessibility is disabled.                                                                                  |
-| ACTIVATED_ACCESSIBILITY_SERVICES | string | Yes  | Yes  | List of activated accessibility features.                                                                                                                       |
-| GEOLOCATION_ORIGINS_ALLOWED      | string | Yes  | Yes  | Default geographic location that can be used by the browser. Multiple geographic locations are separated by spaces.                                                                                                        |
-| SKIP_USE_HINTS                   | string | Yes  | Yes  | Whether the application should attempt to skip all introductory hints at the first startup. This feature is intended for temporary or experienced users.<br>- **1**: The application will skip all introductory hints at the first startup.<br>- **0**: The application does not skip all introductory hints at the first startup.                        |
-| TOUCH_EXPLORATION_STATUS         | string | Yes  | Yes  | Whether touch exploration is enabled.<br>- **1**: Touch exploration is enabled.<br>- **0**: Touch exploration is disabled.                                                                                  |
+| Name                                                       | Type  | Read-Only| Description                                                                                                                                               |
+|-----------------------------------------------------------| ------ |----|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| SETUP_WIZARD_FINISHED<sup>(deprecated21)</sup>            | string | Yes | Whether the startup wizard has been run.<br>- **0**: The startup wizard is not run.<br>- non-zero value: The startup wizard has been run. (This constant is deprecated.)                                                                                  |
+| END_BUTTON_ACTION<sup>(deprecated21)</sup>                | string | Yes | Action after the call end button is pressed if the user is not in a call.<br>- **0**: Nothing happens.<br>- **1**: The home screen is displayed.<br>- **2**: The device enters the sleep state and the screen is locked.<br>- **3**: The home screen is displayed. If the user is on the home screen, the device will enter sleep mode automatically. (This constant is deprecated.)|
+| ACCELEROMETER_ROTATION_STATUS                             | string | Yes | Whether the accelerometer is used to change screen orientation, that is, whether to enable auto-rotation.<br>- **1**: The accelerometer is used.<br>- **0**: The accelerometer is not used.                                                                                   |
+| DEVICE_PROVISION_STATUS<sup>(deprecated21)</sup>          | string | Yes | Whether the device is preconfigured.<br>On a multi-user device with a single system user, the screen may be locked when the value is **true**. In addition, other features cannot be started on the system user unless they are marked to display on the lock screen. (This constant is deprecated.)                                                         |
+| HDC_STATUS<sup>(deprecated21)</sup>                       | string | Yes | Whether the hard disk controller (HDC) on the USB device is enabled.<br>- **true**: HDC is enabled.<br>- **false**: HDC is disabled. (This constant is deprecated.)                                                                    |
+| BOOT_COUNTING<sup>(deprecated21)</sup>                    | string | Yes | Number of boot operations after the device is powered on. (This constant is deprecated.)                                                                                                                           |
+| CONTACT_METADATA_SYNC_STATUS<sup>(deprecated21)</sup>     | string | Yes | Whether contacts metadata synchronization is enabled.<br>- **true**: Contacts metadata synchronization is enabled.<br>- **false**: Contacts metadata synchronization is disabled. (This constant is deprecated.)                                                                               |
+| DEVICE_NAME                                               | string | Yes | Device name.                                                                                                                                            |
+| USB_STORAGE_STATUS<sup>(deprecated21)</sup>               | string | Yes | Whether USB mass storage is enabled.<br>- **true**: USB mass storage is enabled.<br>- **false**: USB mass storage is disabled. (This constant is deprecated.)                                                                   |
+| DEBUGGER_WAITING<sup>(deprecated21)</sup>                 | string | Yes | Whether the device waits for the debugger when starting an application to debug.<br>- **1**: The device waits for the debugger.<br>- **0**: The device does not wait for the debugger and the application runs normally. (This constant is deprecated.)                                                         |
+| DEBUG_APP_PACKAGE<sup>(deprecated21)</sup>                | string | Yes | Bundle name of the application to be debugged. (This constant is deprecated.)                                                                                                                  |
+| ACCESSIBILITY_STATUS<sup>(deprecated21)</sup>             | string | Yes | Whether accessibility is enabled.<br>- **1**: Accessibility is enabled.<br>- **0**: Accessibility is disabled. (This constant is deprecated.)                                                                                      |
+| ACTIVATED_ACCESSIBILITY_SERVICES<sup>(deprecated21)</sup> | string | Yes | List of activated accessibility features. (This constant is deprecated.)                                                                                                                           |
+| GEOLOCATION_ORIGINS_ALLOWED<sup>(deprecated21)</sup>      | string | Yes | Default geographic location that can be used by the browser. Multiple geographical locations are separated by spaces. (This constant is deprecated.)                                                                                                            |
+| SKIP_USE_HINTS<sup>(deprecated21)</sup>                   | string | Yes | Whether the application should attempt to skip all introductory hints at the first startup. This feature is intended for temporary or experienced users.<br>- **1**: The application will skip all introductory hints at the first startup.<br>- **0**: The application will not skip introductory hints at the first startup. (This constant is deprecated.)                            |
+| TOUCH_EXPLORATION_STATUS<sup>(deprecated21)</sup>         | string | Yes | Whether touch exploration is enabled.<br>- **1**: Touch exploration is enabled.<br>- **0**: Touch exploration is disabled. (This constant is deprecated.)                                                                                              |
 
 ## input
 
-Provides data items for setting input methods. (Not supported yet.)
+Provides data items for setting input methods.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                                | Type  | Readable| Writable| Description                                                                                                                                                                                     |
-| ------------------------------------ | ------ | ---- | ---- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| DEFAULT_INPUT_METHOD                 | string | Yes  | Yes  | Default input method and its ID.                                                                                                                                                                             |
-| ACTIVATED_INPUT_METHOD_SUB_MODE      | string | Yes  | Yes  | Type and ID of the default input method keyboard.                                                                                                                                                                         |
-| ACTIVATED_INPUT_METHODS              | string | Yes  | Yes  | List of activated input methods.<br>The list is a string that contains the IDs and keyboard types of activated input methods.<br>The IDs are separated by colons (:), and keyboard types are separated by semicolons (;).<br>An example format is **ima0:keyboardType0;keyboardType1;ima1:ima2:keyboardTypes0,** where **ima** indicates the ID of an input method, and **keyboardType** indicates the keyboard type.|
-| SELECTOR_VISIBILITY_FOR_INPUT_METHOD | string | Yes  | Yes  | Whether the input method selector is visible.<br>- **1**: The input method selector is visible.<br>- **0**: The input method selector is invisible.                                                                                                                                |
-| AUTO_CAPS_TEXT_INPUT                 | string | Yes  | Yes  | Whether automatic capitalization is enabled for the text editor.<br>- **0**: Automatic capitalization is disabled.<br>- **1**: Automatic capitalization is enabled.                                                                                                                                |
-| AUTO_PUNCTUATE_TEXT_INPUT            | string | Yes  | Yes  | Whether automatic punctuation is enabled for the text editor. Automatic punctuation enables the text editor to convert two spaces into a period (.) and a space.<br>- **0**: Automatic punctuation is disabled.<br>- **1**: Automatic punctuation is enabled.                                                                                           |
-| AUTO_REPLACE_TEXT_INPUT              | string | Yes  | Yes  | Whether autocorrect is enabled for the text editor. Autocorrect enables the text editor to correct typos.<br>- **0**: Autocorrect is disabled.<br>- **1**: Autocorrect is enabled                                                                                                              |
-| SHOW_PASSWORD_TEXT_INPUT             | string | Yes  | Yes  | Whether password presentation is enabled in the text editor. Password presentation enables the text editor to show password characters when the user types them.<br>- **0**: Password presentation is disabled.<br>- **1**: Password presentation is enabled.                                                                                                  |
+| Name                                                           | Type  | Read-Only| Description                                                                                                                                                                                               |
+|---------------------------------------------------------------| ------ |----|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| DEFAULT_INPUT_METHOD<sup>(deprecated21)</sup>                 | string | Yes | Default input method and its ID. (This constant is deprecated.)                                                                                                                                                                             |
+| ACTIVATED_INPUT_METHOD_SUB_MODE                               | string | Yes | Type and ID of the default input method keyboard.                                                                                                                                                                                   |
+| ACTIVATED_INPUT_METHODS<sup>(deprecated21)</sup>              | string | Yes | List of activated input methods.<br>The list is a string that contains the IDs and keyboard types of activated input methods.<br>The IDs are separated by colons (:), and keyboard types are separated by semicolons (;).<br>An example format is **ima0:keyboardType0;keyboardType1;ima1:ima2:keyboardTypes0**, where **ima** indicates the ID of an input method, and **keyboardType** indicates the keyboard type. (This constant is deprecated.)|
+| SELECTOR_VISIBILITY_FOR_INPUT_METHOD<sup>(deprecated21)</sup> | string | Yes | Whether the input method selector is visible.<br>- **1**: The input method selector is visible.<br>- **0**: The input method selector is invisible. (This constant is deprecated.)                                                                                                                                |
+| AUTO_CAPS_TEXT_INPUT<sup>(deprecated21)</sup>                 | string | Yes | Whether automatic capitalization is enabled for the text editor.<br>- **0**: Automatic capitalization is disabled.<br>- **1**: Automatic capitalization is enabled. (This constant is deprecated.)                                                                                                                                |
+| AUTO_PUNCTUATE_TEXT_INPUT<sup>(deprecated21)</sup>            | string | Yes | Whether automatic punctuation is enabled for the text editor. Automatic punctuation enables the text editor to convert two spaces into a period (.) and a space.<br>- **0**: Automatic punctuation is disabled.<br>- **1**: Automatic punctuation is enabled. (This constant is deprecated.)                                                                                           |
+| AUTO_REPLACE_TEXT_INPUT<sup>(deprecated21)</sup>              | string | Yes | Whether autocorrect is enabled for the text editor. Autocorrect enables the text editor to correct typos.<br>- **0**: Autocorrect is disabled.<br>- **1**: Autocorrect is enabled. (This constant is deprecated.)                                                                                                             |
+| SHOW_PASSWORD_TEXT_INPUT<sup>(deprecated21)</sup>             | string | Yes | Whether password presentation is enabled in the text editor. Password presentation enables the text editor to show password characters when the user types them.<br>- **0**: Password presentation is disabled.<br>- **1**: Password presentation is enabled. (This constant is deprecated.)                                                                                                          |
 
 ## network
 
-Provides data items for setting network information. (Not supported yet.)
+Provides data items for setting network information.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                    | Type  | Readable| Writable| Description                                                      |
-| ------------------------ | ------ | ---- | ---- |----------------------------------------------------------|
-| DATA_ROAMING_STATUS      | string | Yes  | Yes  | Whether data roaming is enabled.<br>- **true**: Data roaming is enabled.<br>- **false**: Data roaming is disabled.|
-| HTTP_PROXY_CFG           | string | Yes  | Yes  | Host name and port number of the global HTTP proxy. The host name and port number are separated by a colon (:).                       |
-| NETWORK_PREFERENCE_USAGE | string | Yes  | Yes  | User preferences for the network to use.                                            |
+| Name                                               | Type  | Read-Only| Description                                                                |
+|---------------------------------------------------| ------ |----|--------------------------------------------------------------------|
+| DATA_ROAMING_STATUS<sup>(deprecated21)</sup>      | string | Yes | Whether data roaming is enabled.<br>- **true**: Data roaming is enabled.<br>- **false**: Data roaming is disabled. (This constant is deprecated.)|
+| HTTP_PROXY_CFG<sup>(deprecated21)</sup>           | string | Yes | Host name and port number of the global HTTP proxy. The host name and port number are separated by a colon (:). (This constant is deprecated.)                       |
+| NETWORK_PREFERENCE_USAGE<sup>(deprecated21)</sup> | string | Yes | User preferences for the network to use. (This constant is deprecated.)                                                    |
 
 ## phone
 
-Provides data items for setting the modes of answering incoming and outgoing calls. (Not supported yet.)
+Provides data items for setting the modes of answering incoming and outgoing calls.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name              | Type  | Readable| Writable| Description                                                                                        |
-| ------------------ | ------ | ---- | ---- |--------------------------------------------------------------------------------------------|
-| RTT_CALLING_STATUS | string | Yes  | Yes  | Whether the real-time text (RTT) call feature is enabled. If this feature is enabled, incoming and outgoing calls are answered as RTT calls when supported by the device and carrier.<br>- **1**: RTT is enabled.<br>- **0**: RTT is disabled.|
+| Name                                         | Type  | Read-Only| Description                                                                                          |
+|---------------------------------------------| ------ |----|----------------------------------------------------------------------------------------------|
+| RTT_CALLING_STATUS<sup>(deprecated21)</sup> | string | Yes | Whether the real-time text (RTT) call feature is enabled. If this feature is enabled, incoming and outgoing calls are answered as RTT calls when supported by the device and carrier.<br>- **1**: RTT is enabled.<br>- **0**: RTT is disabled. (This constant is deprecated.)|
 
 ## sound
 
-Provides data items for setting the sound effects. (Not supported yet.)
+Provides data items for setting the sound effects.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                        | Type  | Readable| Writable| Description                                                                      |
-| ---------------------------- | ------ | ---- | ---- |--------------------------------------------------------------------------|
-| VIBRATE_WHILE_RINGING        | string | Yes  | Yes  | Whether the device vibrates when it is ringing for an incoming call. This attribute is applicable to the phone and settings applications<br>and affects only the scenario where the device rings for an incoming call. It does not affect any other application or scenario.|
-| DEFAULT_ALARM_ALERT          | string | Yes  | Yes  | Storage area of the system default alarms and alerts.                                                            |
-| DTMF_TONE_TYPE_WHILE_DIALING | string | Yes  | Yes  | Type of the dual tone multi-frequency (DTMF) tone played while dialing.<br>- **0**: normal short tone.<br>- **1**: long tone.              |
-| DTMF_TONE_WHILE_DIALING      | string | Yes  | Yes  | Whether the DTMF tone is played when dialing.<br>- **1**: DTMF tone is played when dialing.<br>- **0**: DTMF tone is not played when dialing.                      |
-| AFFECTED_MODE_RINGER_STREAMS | string | Yes  | Yes  | Effect on audio streams determined by changes in the ringing mode and Do Not Disturb (DND) mode. If you want a specific audio stream to be affected by changes of the ringing mode and DND mode, set the corresponding bit to **1**.         |
-| AFFECTED_MUTE_STREAMS        | string | Yes  | Yes  | Audio streams affected by the mute mode. If you want a specific audio stream to remain muted in mute mode, set the corresponding bit to **1**.                                  |
-| DEFAULT_NOTIFICATION_SOUND   | string | Yes  | Yes  | Storage area of the system default notification tone.                                                           |
-| DEFAULT_RINGTONE             | string | Yes  | Yes  | Storage area of the system default ringtone.                                                            |
-| SOUND_EFFECTS_STATUS         | string | Yes  | Yes  | Whether the sound feature is available.<br>- **0**: The feature is not available.<br>- **1**: The feature is available.                              |
-| VIBRATE_STATUS               | string | Yes  | Yes  | Whether the device vibrates for an event. This attribute is used inside the system.<br>- **1**: The device vibrates for an event.<br>- **0**: The device does not vibrate for an event.     |
-| HAPTIC_FEEDBACK_STATUS       | string | Yes  | Yes  | Whether haptic feedback is enabled.<br>- **true**: Haptic feedback is enabled.<br>- **false**: Haptic feedback is disabled.             |
+| Name                                                   | Type  | Read-Only| Description                                                                           |
+|-------------------------------------------------------| ------ |----|-------------------------------------------------------------------------------|
+| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | Yes | Whether the device vibrates when it is ringing for an incoming call. This property is applicable to the phone and settings applications<br>and affects only the scenario where the device rings for an incoming call. It does not affect any other application or scenario. (This constant is deprecated.) |
+| DEFAULT_ALARM_ALERT<sup>(deprecated21)</sup>          | string | Yes | Storage area of the system default alarms and alerts. (This constant is deprecated.)                                                       |
+| DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated21)</sup> | string | Yes | Type of the dual tone multi-frequency (DTMF) tone played while dialing.<br>- **0**: normal short tone.<br>- **1**: long tone. (This constant is deprecated.)         |
+| DTMF_TONE_WHILE_DIALING<sup>(deprecated21)</sup>      | string | Yes | Whether the DTMF tone is played when dialing.<br>- **1**: DTMF tone is played when dialing.<br>- **0**: DTMF tone is not played when dialing. (This constant is deprecated.)                 |
+| AFFECTED_MODE_RINGER_STREAMS<sup>(deprecated21)</sup> | string | Yes | Effect on audio streams determined by changes in the ringing mode and Do Not Disturb (DND) mode. If you want a specific audio stream to be affected by changes of the ringing mode and DND mode, set the corresponding bit to **1**. (This constant is deprecated.)    |
+| AFFECTED_MUTE_STREAMS<sup>(deprecated21)</sup>        | string | Yes | Audio streams affected by the mute mode. If you want a specific audio stream to remain muted in mute mode, set the corresponding bit to **1**. (This constant is deprecated.)                             |
+| DEFAULT_NOTIFICATION_SOUND<sup>(deprecated21)</sup>   | string | Yes | Storage area of the system default notification tone. (This constant is deprecated.)                                                      |
+| DEFAULT_RINGTONE<sup>(deprecated21)</sup>             | string | Yes | Storage area of the system default ringtone. (This constant is deprecated.)                                                       |
+| SOUND_EFFECTS_STATUS<sup>(deprecated21)</sup>         | string | Yes | Whether the sound feature is available.<br>- **0**: The sound feature is not available.<br>- **1**: The sound feature is available. (This constant is deprecated.)                         |
+| VIBRATE_STATUS<sup>(deprecated21)</sup>               | string | Yes | Whether the device vibrates for an event. This attribute is used inside the system.<br>- **1**: The device vibrates for an event.<br>- **0**: The device does not vibrate for an event. (This constant is deprecated.)|
+| HAPTIC_FEEDBACK_STATUS<sup>(deprecated21)</sup>       | string | Yes | Whether haptic feedback is enabled.<br>- **true**: Haptic feedback is enabled.<br>- **false**: Haptic feedback is disabled. (This constant is deprecated.)        |
 
 ## TTS
 
-Provides data items for setting text-to-speech (TTS) information. (Not supported yet.)
+Provides data items for setting text-to-speech (TTS) information.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name               | Type  | Readable| Writable| Description                                                        |
-| ------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| DEFAULT_TTS_PITCH   | string | Yes  | Yes  | Default pitch of the TTS engine.<br>100 = 1x. If the value is set to **200**, the frequency is twice the normal sound frequency.|
-| DEFAULT_TTS_RATE    | string | Yes  | Yes  | Default voice rate of the TTS engine.<br>100 = 1x.                        |
-| DEFAULT_TTS_SYNTH   | string | Yes  | Yes  | Default TTS engine.                                               |
-| ENABLED_TTS_PLUGINS | string | Yes  | Yes  | List of activated plug-in packages used for TTS. Multiple plug-in packages are separated by spaces.          |
+| Name                                          | Type  | Read-Only| Description                                                       |
+|----------------------------------------------| ------ |----| ----------------------------------------------------------- |
+| DEFAULT_TTS_PITCH<sup>(deprecated21)</sup>   | string | Yes | Default pitch of the TTS engine.<br>100 = 1x. If the value is set to **200**, the frequency is twice the normal sound frequency. (This constant is deprecated.)|
+| DEFAULT_TTS_RATE<sup>(deprecated21)</sup>    | string | Yes | Default voice rate of the TTS engine.<br>100 = 1x. (This constant is deprecated.)                       |
+| DEFAULT_TTS_SYNTH<sup>(deprecated21)</sup>   | string | Yes | Default TTS engine. (This constant is deprecated.)                                              |
+| ENABLED_TTS_PLUGINS<sup>(deprecated21)</sup> | string | Yes | List of activated plug-in packages used for TTS. Multiple plug-in packages are separated by spaces. (This constant is deprecated.)          |
 
 
 ## wireless
 
-Provides data items for setting wireless network information. (Not supported yet.)
+Provides data items for setting wireless network information.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                             | Type  | Readable| Writable| Description                                                                                                      |
-| --------------------------------- | ------ | ---- | ---- |----------------------------------------------------------------------------------------------------------|
-| BLUETOOTH_DISCOVER_ABILITY_STATUS | string | Yes  | Yes  | Whether the device can be discovered or connected by other devices through Bluetooth.<br>- **0**: The device cannot be discovered or connected.<br>- **1**: The device can be connected but cannot be discovered.<br>- **2**: The device can be discovered and connected.       |
-| BLUETOOTH_DISCOVER_TIMEOUT        | string | Yes  | Yes  | Duration for discovering a device through Bluetooth, in seconds.<br>After the duration expires, the device cannot be discovered through Bluetooth.                                                             |
-| AIRPLANE_MODE_RADIOS              | string | Yes  | Yes  | List of radio signals to be disabled when airplane mode is enabled.<br>Multiple radio signals are separated by commas (,).<br>The list can include the following: **BLUETOOTH_RADIO**, **CELL_RADIO**, **NFC_RADIO**, and **WIFI_RADIO**.|
-| BLUETOOTH_RADIO                   | string | Yes  | No  | A value of **AIRPLANE_MODE_RADIOS** to indicate that Bluetooth is disabled in airplane mode.                                                              |
-| CELL_RADIO                        | string | Yes  | No  | A value of **AIRPLANE_MODE_RADIOS** to indicate that cellular radio is disabled in airplane mode.                                                           |
-| NFC_RADIO                         | string | Yes  | No  | A value of **AIRPLANE_MODE_RADIOS** to indicate that NFC is disabled in airplane mode.                                                             |
-| WIFI_RADIO                        | string | Yes  | No  | A value of **AIRPLANE_MODE_RADIOS** to indicate that Wi-Fi is disabled in airplane mode.                                                           |
-| BLUETOOTH_STATUS                  | string | Yes  | Yes  | Whether Bluetooth is available.<br>- **true**: Bluetooth is available.<br>- **false**: Bluetooth is unavailable.                                                     |
-| OWNER_LOCKDOWN_WIFI_CFG           | string | Yes  | Yes  | Whether the Wi-Fi configuration created by the application of the device owner should be locked down.<br>- **true**: The Wi-Fi configuration should be locked down.<br>- **false**: The Wi-Fi configuration should not be locked down.                         |
-| WIFI_DHCP_MAX_RETRY_COUNT         | string | Yes  | Yes  | Maximum number of attempts to obtain an IP address from the DHCP server.                                                                                  |
-| WIFI_TO_MOBILE_DATA_AWAKE_TIMEOUT | string | Yes  | Yes  | Maximum duration to hold a wake lock when waiting for the mobile data connection after the Wi-Fi connection is disconnected.                                                                          |
-| WIFI_STATUS                       | string | Yes  | Yes  | Whether Wi-Fi is available.<br>- **true**: Wi-Fi is available.<br>- **false**: Wi-Fi is unavailable.                                             |
-| WIFI_WATCHDOG_STATUS              | string | Yes  | Yes  | Whether Wi-Fi watchdog is available.<br>- **true**: Wi-Fi watchdog is available.<br>- **false**: Wi-Fi watchdog is unavailable.                                             |
+| Name                                                        | Type  | Read-Only| Description                                                                                                      |
+|------------------------------------------------------------| ------ |----|----------------------------------------------------------------------------------------------------------|
+| BLUETOOTH_DISCOVER_ABILITY_STATUS<sup>(deprecated21)</sup> | string | Yes | Whether the device can be discovered or connected by other devices through Bluetooth.<br>- **0**: The device cannot be discovered or connected.<br>- **1**: The device can be connected but cannot be discovered.<br>- **2**: The device can be connected and discovered. (This constant is deprecated.)       |
+| BLUETOOTH_DISCOVER_TIMEOUT<sup>(deprecated21)</sup>        | string | Yes | Duration for discovering a device through Bluetooth, in seconds.<br>After the duration expires, the device cannot be discovered through Bluetooth. (This constant is deprecated.)                                                             |
+| AIRPLANE_MODE_RADIOS<sup>(deprecated21)</sup>              | string | Yes | List of radio signals to be disabled when airplane mode is enabled.<br>Multiple radio signals are separated by commas (,).<br>The list can include the following: **BLUETOOTH_RADIO**, **CELL_RADIO**, **NFC_RADIO**, and **WIFI_RADIO**. (This constant is deprecated.)|
+| BLUETOOTH_RADIO<sup>(deprecated21)</sup>                   | string | Yes | A value of **AIRPLANE_MODE_RADIOS**, indicating that Bluetooth is disabled in airplane mode. (This constant is deprecated.)                                                              |
+| CELL_RADIO<sup>(deprecated21)</sup>                        | string | Yes | A value of **AIRPLANE_MODE_RADIOS**, indicating that cellular radio is disabled in airplane mode. (This constant is deprecated.)                                                           |
+| NFC_RADIO<sup>(deprecated21)</sup>                         | string | Yes | A value of **AIRPLANE_MODE_RADIOS**, indicating that NFC is disabled in airplane mode (This constant is deprecated.)                                                             |
+| WIFI_RADIO<sup>(deprecated21)</sup>                        | string | Yes | A value of **AIRPLANE_MODE_RADIOS**, indicating that Wi-Fi is disabled in airplane mode (This constant is deprecated.)                                                           |
+| BLUETOOTH_STATUS<sup>(deprecated21)</sup>                  | string | Yes | Whether Bluetooth is available.<br>- **true**: Bluetooth is available.<br>- **false**: Bluetooth is unavailable. (This constant is deprecated.)                                                     |
+| OWNER_LOCKDOWN_WIFI_CFG<sup>(deprecated21)</sup>           | string | Yes | Whether the Wi-Fi configuration created by the application of the device owner should be locked down.<br>- **true**: The Wi-Fi configuration should be locked down.<br>- **false**: The Wi-Fi configuration should not be locked down. (This constant is deprecated.)                         |
+| WIFI_DHCP_MAX_RETRY_COUNT<sup>(deprecated21)</sup>         | string | Yes | Maximum number of attempts to obtain an IP address from the DHCP server. (This constant is deprecated.)                                                                                  |
+| WIFI_TO_MOBILE_DATA_AWAKE_TIMEOUT<sup>(deprecated21)</sup> | string | Yes | Maximum duration to hold a wake lock when waiting for the mobile data connection after the Wi-Fi connection is disconnected. (This constant is deprecated.)                                                                          |
+| WIFI_STATUS<sup>(deprecated21)</sup>                       | string | Yes | Whether Wi-Fi is available.<br>- **true**: Wi-Fi is available.<br>- **false**: Wi-Fi is unavailable. (This constant is deprecated.)                                             |
+| WIFI_WATCHDOG_STATUS<sup>(deprecated21)</sup>              | string | Yes | Whether Wi-Fi watchdog is available.<br>- **true**: Wi-Fi watchdog is available.<br>- **false**: Wi-Fi watchdog is unavailable. (This constant is deprecated.)                                             |
 
 
 ## settings.setValue<sup>10+</sup>
@@ -237,7 +237,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', (status) => {
-  console.log('Callback return whether value is set.');
+  console.info('Callback return whether value is set.');
 });
 ```
 
@@ -278,7 +278,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100').then((status) => {
-  console.log('Callback return whether value is set.');
+  console.info('Callback return whether value is set.');
 });
 ```
 
@@ -330,7 +330,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', settings.domainName.DEVICE_SHARED).then((status) => {
-  console.log(`callback:return whether value is set.`)
+  console.info(`callback:return whether value is set.`)
 });
 ```
 
@@ -366,7 +366,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
     console.error(`Failed to get the setting. ${err.message} `);
     return;
   }
-  console.log(`callback:value -> ${value}`)
+  console.info(`callback:value -> ${value}`)
 });
 ```
 
@@ -403,7 +403,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value) => {
-  console.log(`promise:value -> ${value}`)
+  console.info(`promise:value -> ${value}`)
 });
 ```
 
@@ -445,7 +445,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED).then((value) => {
-  console.log(`Promise:value -> ${value}`);
+  console.info(`Promise:value -> ${value}`);
 });
 ```
 
@@ -453,7 +453,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.d
 
 getValueSync(context: Context, name: string, defValue: string): string
 
-Obtains the value of a data item. Unlike **getValue**, this API returns the result synchronously.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. Unlike **getValue**, this API returns the result synchronously.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -522,7 +522,7 @@ Obtains the value of a data item. Unlike **getValue**, this API returns the resu
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// Update the value of .SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
+// Update the value of SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100',  settings.domainName.DEVICE_SHARED);
@@ -532,7 +532,7 @@ let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_ST
 
 setValueSync(context: Context, name: string, value: string): boolean
 
-Sets the value for a data item. Unlike **setValue**, this API returns the result synchronously.
+Sets the value for a data item in the **DEVICE_SHARED** domain of the database. Unlike **setValue**, this API returns the result synchronously.
 
 - If the specified data item exists in the database, the **setValueSync** method updates the value of the data item.
 - If the data item does not exist in the database, the **setValueSync** method inserts the data item into the database.
@@ -659,7 +659,7 @@ import { common } from '@kit.AbilityKit';
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.registerKeyObserver(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED, () => {
   let value:string = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '10');
-  console.log(`Promise:value -> ${value}`);
+  console.info(`Promise:value -> ${value}`);
 });
 ```
 
@@ -703,11 +703,13 @@ let ret = settings.unregisterKeyObserver(context, settings.display.SCREEN_BRIGHT
 
 openNetworkManagerSettings(context: Context): Promise\<boolean>
 
-Opens the network manager settings page. This API uses a promise to return the result.
+Opens the WLAN settings window. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Applications.Settings.Core
+
+**Devices supported**: This API can be called on phones, PCs/2-in-1 devices, and tablets.
 
 **Parameters**
 
@@ -741,7 +743,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.openNetworkManagerSettings(context).then((status) => {
-  console.log(`callback:return whether settings is open.`)
+  console.info(`callback:return whether settings is open.`);
 });
 ```
 
@@ -769,7 +771,7 @@ settings.enableAirplaneMode(isEnabled, (err:Error) => {
         console.error('Failed to enable AirplaneMode.');
         return;
     }
-    console.log('Return true if enable.');
+    console.info('Return true if enable.');
 })
 ```
 
@@ -798,7 +800,7 @@ Enables or disables airplane mode. This API uses a promise to return the result.
 ```js
 let isEnabled :boolean = true;
 settings.enableAirplaneMode(isEnabled).then(() => {
-  console.log('Succeeded in enabling AirplaneMode.');
+  console.info('Succeeded in enabling AirplaneMode.');
 }).catch((err:Error) => {
   console.error(`Failed to enable AirplaneMode. Cause: ${err}`);
 })
@@ -826,7 +828,7 @@ settings.canShowFloating((err:Error, status: boolean) => {
     console.error(`Failed to Checks whether a specified application can show as float window ${err.message} `);
     return;
   }
-  console.log('Checks whether a specified application can show as float window.');
+  console.info('Checks whether a specified application can show as float window.');
 });
 ```
 
@@ -848,7 +850,7 @@ Checks whether the application can be displayed in a floating window. This API u
 
 ```js
 settings.canShowFloating().then((status:boolean) => {
-    console.log('Checks whether a specified application can show as float window.');
+    console.info('Checks whether a specified application can show as float window.');
 });
 ```
 
@@ -902,7 +904,7 @@ Obtains the URI of a data item. This API uses an asynchronous callback to return
 
 ```js
 settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS, (uri:string) => {
-    console.log(`callback:uri -> ${JSON.stringify(uri)}`)
+    console.info(`callback:uri -> ${JSON.stringify(uri)}`)
 })
 ```
 
@@ -934,7 +936,7 @@ Obtains the URI of a data item. This API uses a promise to return the result. (N
 
 ```js
 settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => {
-    console.log(`promise:uri -> ${JSON.stringify(uri)}`)
+    console.info(`promise:uri -> ${JSON.stringify(uri)}`)
 })
 ```
 
@@ -974,7 +976,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
         console.error(`Failed to get the setting. ${err.message} `);
         return;
     }
-    console.log(`callback:value -> ${JSON.stringify(value)}`)
+    console.info(`callback:value -> ${JSON.stringify(value)}`)
 });
 ```
 
@@ -1013,7 +1015,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 let uri:string = settings.getUriSync(settings.display.SCREEN_BRIGHTNESS_STATUS);
 let helper = featureAbility.acquireDataAbilityHelper(uri);
 settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value:string) => {
-    console.log(`promise:value -> ${JSON.stringify(value)}`)
+    console.info(`promise:value -> ${JSON.stringify(value)}`)
 });
 ```
 
@@ -1098,4 +1100,436 @@ import featureAbility from '@ohos.ability.featureAbility';
 let uri:string = settings.getUriSync(settings.display.SCREEN_BRIGHTNESS_STATUS);
 let helper = featureAbility.acquireDataAbilityHelper(uri);
 let ret:string = settings.setValueSync(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, '100');
+```
+
+## settings.openInputMethodSettings<sup>23+</sup>
+
+openInputMethodSettings(context: Context): void
+
+Open the input method settings page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | Context                | Yes  | Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+
+**Example**
+
+<!--code_no_check-->
+```js
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Go to the input method settings page.
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+settings.openInputMethodSettings(context);
+```
+
+## settings.openInputMethodDetail<sup>23+</sup>
+
+openInputMethodDetail(context: Context, bundleName: string, inputMethodId: string): void
+
+Opens the input method details page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | Context                | Yes  | Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| bundleName      | string          | Yes  | Bundle name of the input method to be started.|
+| inputMethodId   | string          | Yes  | Unique [ID](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8) of the input method extension in the application.|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+
+**Example**
+
+<!--code_no_check-->
+```js
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Go to the input method details page.
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let bundleName: string = "target inputMethod bundle name";
+let inputMethodId: string = "target inputMethod id";
+settings.openInputMethodDetail(context, bundleName, inputMethodId);
+```
+
+## settings.openBiometricsSettingsPage<sup>24+</sup>
+
+openBiometricsSettingsPage(context: Context): void
+
+Opens the biometric recognition and password settings page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openBiometricsSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the biometrics and password settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openNfcSettingsPage<sup>24+</sup>
+
+openNfcSettingsPage(context: Context): void
+
+Opens the NFC settings page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openNfcSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the NFC settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openMobileNetworkSettingsPage
+
+openMobileNetworkSettingsPage(context: Context): void
+
+Opens the mobile network settings page.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openMobileNetworkSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the mobile network settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openDisplaySettingsPage
+
+openDisplaySettingsPage(context: Context): void
+
+Opens the display and brightness setting page.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openDisplaySettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the display settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openScreenRefreshRateSettingsPage
+
+openScreenRefreshRateSettingsPage(context: Context): void
+
+Opens the screen refresh rate setting page.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openScreenRefreshRateSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the screen refresh rate settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openSoundSettingsPage
+
+openSoundSettingsPage(context: Context): void
+
+Opens the sound and vibration setting page.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openSoundSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the sound settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openAboutDeviceSettingsPage
+
+openAboutDeviceSettingsPage(context: Context): void
+
+Opens the about device setting page.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openAboutDeviceSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the about device settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openAppDetailSettingsPage
+
+openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int): void
+
+Opens the application details setting page.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| bundleName  | string | Yes| Bundle name.|
+| appIndex  | int | No| Index of an application clone.|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openAppDetailSettingsPage(context, 'com.example');
+} catch (err) {
+  console.error(`Failed to open the app detail settings page. code: ${err?.code}, message: ${err?.message}`);
+}
 ```

@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1; @wendel; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AtomicServiceOptions可以作为[openAtomicService()](js-apis-inner-application-uiAbilityContext.md#openatomicservice12)的入参，用于携带参数。继承于[StartOptions](js-apis-app-ability-startOptions.md)。
 
@@ -37,9 +37,8 @@ import { AtomicServiceOptions } from '@kit.AbilityKit';
 **示例：**
 
 ```ts
-import { UIAbility, AtomicServiceOptions, common, wantConstant, CompletionHandlerForAtomicService } from '@kit.AbilityKit';
+import { UIAbility, AtomicServiceOptions, common, wantConstant, CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { FailureCode } from '@ohos.app.ability.CompletionHandlerForAtomicService';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class EntryAbility extends UIAbility {

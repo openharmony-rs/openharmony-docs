@@ -2,12 +2,15 @@
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
-<!--SE: @zhaopeng_gitee-->
-<!--TSE: @maxiaorong2-->
+<!--Designer: @zhaopeng_gitee-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Overview
 
 Provides an entry to the IPC header files for you to reference.
+
+**File to include**: <IPCKit/ipc_kit.h>
 
 **Library**: libipc_capi.so
 
