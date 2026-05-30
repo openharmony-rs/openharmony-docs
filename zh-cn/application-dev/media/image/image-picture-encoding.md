@@ -72,13 +72,22 @@
      
      ``` TypeScript
      async function packToFile(picture: image.Picture, packOpts: image.PackingOption, context: Context) {
+       let imagePackerApi: image.ImagePacker | undefined = undefined;
+       let file: fileIo.File | undefined = undefined;
        try {
          const path : string = context.cacheDir + '/picture.jpg';
-         let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-         const imagePackerApi = image.createImagePacker();
+         file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+         imagePackerApi = image.createImagePacker();
          await imagePackerApi.packToFile(picture, file.fd, packOpts);
        } catch (error) {
          console.error('Failed to pack the picture to file. And the error is: ' + error);
+       } finally {
+         if (file) {
+           fileIo.closeSync(file.fd);
+         }
+         if (imagePackerApi) {
+           await imagePackerApi.release();
+         }
        }
      }
      ```
