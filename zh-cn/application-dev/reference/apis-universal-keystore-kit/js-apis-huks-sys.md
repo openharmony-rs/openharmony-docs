@@ -36,7 +36,7 @@ generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions
 | 参数名   | 类型                        | 必填 | 说明                     |
 | -------- | --------------------------- | ---- | ------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias | string                      | 是   | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。               |
+| keyAlias | string                      | 是   | 密钥别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。               |
 | huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于存放生成key所需的[属性标签](capi-native-huks-type-h.md#枚举)。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
 
 **返回值：**
@@ -252,7 +252,7 @@ importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 | 参数名   | 类型                        | 必填 | 说明                                |
 | -------- | --------------------------- | ---- | ----------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias | string                      | 是   | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。                          |
+| keyAlias | string                      | 是   | 密钥别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。                          |
 | huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于导入时所需TAG和需要导入的密钥。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
 
 **返回值：**
@@ -654,7 +654,7 @@ export default function HuksAsUserTest() {
 
 ## huks.anonAttestKeyItemOfflineAsUser
 
-anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params[]: HuksParam) : Promise\<HuksReturnResult>
+anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksParam[]) : Promise\<HuksReturnResult>
 
 离线模式下，指定用户身份并获取匿名化密钥证书。使用Promise异步回调。
 

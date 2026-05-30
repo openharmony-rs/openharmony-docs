@@ -1,4 +1,4 @@
-# Ukey PIN码认证(ArkTS)
+﻿# Ukey PIN码认证(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -61,12 +61,12 @@ async function authUkeyPin(): Promise<void> {
     /* 3.验证PIN码 */
     await huksExternalCrypto.authUkeyPin(testResourceId, extProperties)
       .then(() => {
-        console.info(`promise: getUkeyPinAuthState success`);
+        console.info('promise: getUkeyPinAuthState success.');
       }).catch((error: BusinessError) => {
         console.error(`promise: getUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: getUkeyPinAuthState input arg invalid`);
+    console.error('promise: getUkeyPinAuthState input arg invalid.');
   }
 }
 

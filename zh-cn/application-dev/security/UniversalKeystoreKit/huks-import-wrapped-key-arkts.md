@@ -1,4 +1,4 @@
-# 安全导入密钥(ArkTS)
+﻿# 安全导入密钥(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -295,7 +295,7 @@ let importWrappedAes192Params: huks.HuksOptions = {
 
 ``` TypeScript
 async function publicGenerateItemFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise generateKeyItem`);
+  console.info('enter promise generateKeyItem.');
   try {
     await huks.generateKeyItem(keyAlias, huksOptions)
       .then(data => {
@@ -312,7 +312,7 @@ async function publicGenerateItemFunc(keyAlias: string, huksOptions: huks.HuksOp
 }
 
 async function publicImportKeyItemFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise importKeyItem`);
+  console.info('enter promise importKeyItem.');
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
       .then(data => {
@@ -328,7 +328,7 @@ async function publicImportKeyItemFunc(keyAlias: string, huksOptions: huks.HuksO
 }
 
 async function publicDeleteKeyItemFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise deleteKeyItem`);
+  console.info('enter promise deleteKeyItem.');
   try {
     await huks.deleteKeyItem(keyAlias, huksOptions)
       .then(data => {
@@ -361,7 +361,7 @@ function importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, huksOp
 }
 
 async function publicImportWrappedKeyFunc(keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise importWrappedKeyItem`);
+  console.info('enter promise importWrappedKeyItem.');
   for (let i = 0; i < huksOptions.inData!.length; i++) {
     console.error(`${i}: ${huksOptions.inData![i]}`);
   }
@@ -382,7 +382,7 @@ async function publicImportWrappedKeyFunc(keyAlias: string, wrappingKeyAlias: st
 
 async function publicImportWrappedKeyPromise(keyAlias: string, wrappingKeyAlias: string,
   huksOptions: huks.HuksOptions) {
-  console.info(`enter promise importWrappedKeyItem`);
+  console.info('enter promise importWrappedKeyItem.');
   try {
     await huks.importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
       .then((data) => {
@@ -400,7 +400,7 @@ async function publicImportWrappedKeyPromise(keyAlias: string, wrappingKeyAlias:
 
 async function publicInitFunc(srcKeyAlias: string, huksOptions: huks.HuksOptions) {
   let handle: number = 0;
-  console.info(`enter promise doInit`);
+  console.info('enter promise doInit.');
   try {
     await huks.initSession(srcKeyAlias, huksOptions)
       .then((data) => {
@@ -431,13 +431,13 @@ async function publicUpdateSessionFunction(handle: number, huksOptions: huks.Huk
     if (inDataSegPosition + maxUpdateSize > lastInDataPosition) {
       isFinished = true;
       inDataSegSize = lastInDataPosition - inDataSegPosition + 1;
-      console.info(`enter promise doUpdate`);
+      console.info('enter promise doUpdate.');
       break;
     }
     huksOptions.inData = new Uint8Array(
       Array.from(inData).slice(inDataSegPosition, inDataSegPosition + inDataSegSize)
     );
-    console.info(`enter promise doUpdate`);
+    console.info('enter promise doUpdate.');
     try {
       await huks.updateSession(handle, huksOptions)
         .then((data) => {
@@ -465,7 +465,7 @@ async function publicUpdateSessionFunction(handle: number, huksOptions: huks.Huk
 
 async function publicFinishSession(handle: number, huksOptions: huks.HuksOptions, inData: number[]) {
   let outData: number[] = [];
-  console.info(`enter promise doFinish`);
+  console.info('enter promise doFinish.');
   try {
     await huks.finishSession(handle, huksOptions)
       .then((data) => {
@@ -500,7 +500,7 @@ async function agreeFunction(keyAlias: string, huksOptions: huks.HuksOptions, hu
   let handle = await publicInitFunc(keyAlias, huksOptions);
   let outSharedKey: Uint8Array = new Uint8Array;
   huksOptions.inData = huksPublicKey;
-  console.info(`enter promise doUpdate`);
+  console.info('enter promise doUpdate.');
   try {
     await huks.updateSession(handle, huksOptions)
       .then((data) => {
@@ -514,7 +514,7 @@ async function agreeFunction(keyAlias: string, huksOptions: huks.HuksOptions, hu
     console.error(`promise: doUpdate input arg invalid, ${JSON.stringify(error)}`);
     throw (error as Error);
   }
-  console.info(`enter promise doInit`);
+  console.info('enter promise doInit.');
   try {
     await huks.finishSession(handle, huksOptions)
       .then((data) => {
@@ -727,7 +727,7 @@ let huksOptions: huks.HuksOptions = {
 }
 
 async function isKeyItemExist(keyAlias: string, options: huks.HuksOptions): Promise<boolean> {
-  console.info(`promise: enter isKeyItemExist`);
+  console.info('promise: enter isKeyItemExist.');
   let ret: boolean = false;
   try {
     await huks.isKeyItemExist(keyAlias, options)
@@ -738,7 +738,7 @@ async function isKeyItemExist(keyAlias: string, options: huks.HuksOptions): Prom
         console.error(`promise: isKeyItemExist failed, errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
-    console.error(`promise: isKeyItemExist input arg invalid`);
+    console.error('promise: isKeyItemExist input arg invalid.');
   }
   return ret;
 }

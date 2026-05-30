@@ -193,7 +193,10 @@ This authentication token timed out.
 
 **可能原因**
 
-该密钥设置了用户认证访问控制属性，由于使用时间窗timeout导致无法通过认证。
+该密钥设置了用户认证访问控制属性，并指定了认证超时时间（timeout），可能原因如下。
+
+1. 在密钥init操作后的timeout时间窗内未完成用户认证，导致认证令牌超时失效。
+2. 认证超时后，当前密钥会话已失效，需要重新init后再次认证。
 
 **处理步骤**
 
@@ -253,7 +256,9 @@ Device environment or input parameter abnormal.
 
 **处理步骤**
 
-将错误码与日志提交到社区进行反馈。
+1. 检查传入的参数是否合法，确认参数类型和取值范围符合要求。
+2. 检查设备环境是否正常，确认硬件和系统状态无异常。
+3. 如以上排查均未发现问题，将错误码与日志提交到社区进行反馈。
 
 ## 12000013 密钥设置生物访问控制时，待绑定的凭据不存在
 
@@ -446,7 +451,7 @@ UKey PIN码未认证。
 
 **处理步骤**
 
-先完成UKey PIN码认证，再执行需要认证的操作。
+请先调用[huksExternalCrypto.authUkeyPin](js-apis-huksExternalCrypto.md#huksexternalcryptoauthukeypin)完成PIN码认证后，再执行后续操作。
 
 ## 12000024 设备或资源繁忙
 

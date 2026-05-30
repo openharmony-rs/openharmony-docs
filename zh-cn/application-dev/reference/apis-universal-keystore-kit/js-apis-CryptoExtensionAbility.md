@@ -9,7 +9,7 @@
 
 模块提供外部密钥扩展能力，包括资源管理、PIN码认证管理、密码操作、通用操作等接口能力。
 
-ExtensionAbility实现约束：
+ExtensionAbility功能与约束：
 1. 设备管理，单个ExtensionAbility实现，最多支持10个UKey接入。
 2. 句柄管理，针对同一个UKey资源（例如，容器下的密钥），支持应用维度资源句柄管理。
    - 支持多个OpenHarmony应用，打开同一个UKey密钥资源。例如：OpenHarmony应用1打开容器A后，OpenHarmony应用2也可以再次打开容器A。
@@ -44,7 +44,7 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 | HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL | 34800000 | 密钥扩展错误。可能的原因：<br>1. 输入参数无效。<br>2. 密钥扩展出现无法解决的错误状态。 |
 | HUKS_CRYPTO_EXTENSION_ERR_UKEY_NOT_EXIST | 34800001 | UKey不存在。可能的原因：<br>1. UKey已被移除。<br>2. 密钥扩展陷入错误的UKey状态。 |
 | HUKS_CRYPTO_EXTENSION_ERR_UKEY_DRIVER_FAIL | 34800002 | UKey驱动出现未知错误。 |
-| HUKS_CRYPTO_EXTENSION_ERR_PIN_NO_AUTH | 34800003 | UKey PIN码未认证，需要先认证UKey PIN码。 |
+| HUKS_CRYPTO_EXTENSION_ERR_PIN_NO_AUTH | 34800003 | UKey PIN码未认证，需要先通过[onAuthUkeyPin](#cryptoextensionabilityonauthukeypin)认证Ukey PIN码。 |
 | HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST | 34800004 | 句柄不存在。可能的原因：<br>1. 句柄无效。<br>2. HUKS服务和密钥扩展的状态不一致。由于异常情况，HUKS服务持有的句柄未能释放。 |
 | HUKS_CRYPTO_EXTENSION_ERR_HANDLE_UNAVAILABLE | 34800005 | 句柄不可用。可能的原因：<br>密钥扩展和UKey的状态不一致。 |
 | HUKS_CRYPTO_EXTENSION_ERR_PIN_INCORRECT | 34800006 | UKey PIN码错误，需要检查输入的PIN码。 |
@@ -53,6 +53,8 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 ## HuksCryptoExtensionCertInfo
 
 [HuksCryptoExtensionResult](#hukscryptoextensionresult)中的certs数组中的元素。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -66,6 +68,8 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 
 接口返回值的通用类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 | 名称 | 类型  | 只读 | 可选 | 说明 |
@@ -73,17 +77,19 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 | resultCode  | number | 否   | 否   | 返回值的错误码。 |
 | handle  | string | 否   | 是   | 资源句柄。 |
 | authState  | number | 否   | 是   | 认证状态。 |
-| retryCount  | number | 否   | 是   | 重试次数。 |
+| retryCount  | number | 否   | 是   | 重试次数，表示PIN码认证剩余可用次数，为0时表示无剩余重试机会。 |
 | certs  | Array<[HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo)> | 否   | 是   | 证书。 |
 | property  | Array<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 否   | 是   | 属性。 |
 | outData  | Uint8Array | 否   | 是   | 返回的数据。 |
-| resourceId | string | 否 | 是 | 返回的资源ID。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| resourceId | string | 否 | 是 | 返回的资源ID。不返回此字段时默认为空。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CryptoExtensionAbility.onOpenResource
 
 onOpenResource(resourceId: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
 根据参数中的resourceId，打开UKey的密钥资源。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -125,6 +131,8 @@ onCloseResource(handle: string, params: Array\<huksExternalCrypto.HuksExternalCr
 
 根据参数中的handle，关闭UKey的密钥资源。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -163,6 +171,8 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onGetProperty(handle: string, propertyId: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
 根据参数中的handle和propertyId获取属性。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -250,6 +260,8 @@ onAuthUkeyPin(handle: string, params: Array\<huksExternalCrypto.HuksExternalCryp
 
 请求UKey认证PIN码。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -289,6 +301,8 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onGetUkeyPinAuthState(handle: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
 获取UKey的PIN码认证状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -330,6 +344,8 @@ onClearUkeyPinAuthState(handle: string, params: Array\<huksExternalCrypto.HuksEx
 
 清除应用维度PIN码的认证状态。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -367,6 +383,8 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onInitSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
 三段式初始化密钥会话操作。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -406,6 +424,8 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onUpdateSession(initHandle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
 三段式密钥会话更新数据操作。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -447,6 +467,8 @@ onFinishSession(initHandle: string, params: huks.HuksOptions): Promise\<HuksCryp
 
 三段式密钥会话结束操作。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -486,6 +508,8 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onExportCertificate(resourceId: string, params?: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
 查询指定resourceId下的证书。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -527,6 +551,8 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onEnumCertificates(params?: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
 枚举Extension下所有UKey设备的证书信息。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 

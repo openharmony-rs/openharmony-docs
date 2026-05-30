@@ -1,4 +1,4 @@
-# 明文导入密钥(ArkTS)
+﻿# 明文导入密钥(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -63,13 +63,13 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
       .then(() => {
-        console.info(`promise: importKeyItem success`);
+        console.info('promise: importKeyItem success.');
         ret = true;
       }).catch((error: BusinessError) => {
         console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
-    console.error(`promise: importKeyItem input arg invalid`);
+    console.error('promise: importKeyItem input arg invalid.');
   }
   return ret;
 }
@@ -77,10 +77,10 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
 async function testImport() {
   let retImp = await importKeyItem(keyAlias, options);
   if (retImp == false) {
-    console.error(`testImport failed`);
+    console.error('testImport failed.');
     return;
   }
-  console.info(`testImport success`);
+  console.info('testImport success.');
 }
 ```
 <!-- -->
@@ -169,13 +169,13 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
       .then(() => {
-        console.info(`promise: importKeyItem success`);
+        console.info('promise: importKeyItem success.');
         ret = true;
       }).catch((error: BusinessError) => {
         console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
-    console.error(`promise: importKeyItem input arg invalid`);
+    console.error('promise: importKeyItem input arg invalid.');
   }
   return ret;
 }
@@ -183,10 +183,10 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
 async function testImport() {
   let retImp = await importKeyItem(keyAlias, options);
   if (retImp == false) {
-    console.error(`testImport failed`);
+    console.error('testImport failed.');
     return;
   }
-  console.info(`testImport success`);
+  console.info('testImport success.');
 }
 ```
 <!-- -->
@@ -237,13 +237,13 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
       .then(() => {
-        console.info(`promise: importKeyItem success`);
+        console.info('promise: importKeyItem success.');
         ret = true;
       }).catch((error: BusinessError) => {
         console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
-    console.error(`promise: importKeyItem input arg invalid`);
+    console.error('promise: importKeyItem input arg invalid.');
   }
   return ret;
 }
@@ -251,10 +251,10 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
 async function testImport() {
   let retImp = await importKeyItem(keyAlias, options);
   if (retImp == false) {
-    console.error(`testImport failed`);
+    console.error('testImport failed.');
     return;
   }
-  console.info(`testImport success`);
+  console.info('testImport success.');
 }
 ```
 <!-- -->
@@ -279,7 +279,7 @@ let huksOptions: huks.HuksOptions = {
 }
 
 async function isKeyItemExist(keyAlias: string, options: huks.HuksOptions): Promise<boolean> {
-  console.info(`promise: enter isKeyItemExist success`);
+  console.info('promise: enter isKeyItemExist success.');
   let ret: boolean = false;
   try {
     await huks.isKeyItemExist(keyAlias, options)
@@ -290,7 +290,7 @@ async function isKeyItemExist(keyAlias: string, options: huks.HuksOptions): Prom
         console.error(`promise: isKeyItemExist success, errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
-    console.error(`promise: isKeyItemExist input arg invalid`);
+    console.error('promise: isKeyItemExist input arg invalid.');
   }
   return ret;
 }
@@ -298,9 +298,9 @@ async function isKeyItemExist(keyAlias: string, options: huks.HuksOptions): Prom
 async function testImportKeyExist() {
   let retExist = await isKeyItemExist(keyAlias, huksOptions);
   if (retExist == false) {
-    console.error(`testImportKeyExist failed`);
+    console.error('testImportKeyExist failed.');
     return;
   }
-  console.info(`testImportKeyExist success`);
+  console.info('testImportKeyExist success.');
 }
 ```
