@@ -828,3 +828,50 @@ struct AlertDialogExample {
 ```
 
 ![zh-cn_image_alert_backgroundEffect](figures/zh-cn_image_alert_backgroundEffect.png)
+
+### 示例9（设置弹窗的系统材质）
+
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的systemMaterial属性，实现系统材质效果。
+
+从API版本26.0.0开始，在AlertDialogParam中新增了systemMaterial属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      Column() {
+        Button("AlertDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showAlertDialog({
+              title: 'AlertDialog Title',
+              message: 'AlertDialog Text',
+              primaryButton: {
+                value: '确定',
+                action: () => {
+                  console.info('primaryButton');
+                }
+              },
+              secondaryButton: {
+                value: '取消',
+                action: () => {
+                  console.info('secondaryButton');
+                }
+              },
+              systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+            });
+          })
+      }
+      .height('100%')
+      .width('100%')
+      .backgroundColor(Color.Gray)
+    }
+  }
+}
+```
+
+![zh-cn_image_alert_systemMaterial](figures/zh-cn_image_alert_systemMaterial.png)
