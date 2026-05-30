@@ -531,7 +531,7 @@ struct Index {
 * 点击Text组件更改age时，Text组件会刷新。
 
    <!-- @[TraceObjectArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceObjectArray.ets) --> 
-
+   
    ``` TypeScript
    import { Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace, Button } from '@kit.ArkUI';
    
