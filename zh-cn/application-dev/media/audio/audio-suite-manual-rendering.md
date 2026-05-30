@@ -48,6 +48,18 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 1. 创建引擎和管线。
    
    <!-- @[audioSuite_CreateEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 创建引擎。
+   OH_AudioSuiteEngine *audioSuiteEngine = nullptr;
+   OH_AudioSuiteEngine_Create(&audioSuiteEngine);
+       
+   // 创建管线。
+   OH_AudioSuitePipeline *audioSuitePipeline = nullptr;
+   OH_AudioSuiteEngine_CreatePipeline(audioSuiteEngine, &audioSuitePipeline,
+                                      OH_AudioSuite_PipelineWorkMode::AUDIOSUITE_PIPELINE_EDIT_MODE);
+   ```
 
 2. 创建输入、输出、均衡器节点并连接组网。
 
