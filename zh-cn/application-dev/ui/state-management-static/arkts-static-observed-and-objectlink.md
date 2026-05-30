@@ -328,21 +328,21 @@ this.parent.child.num = 5;
     class Info {
       count: int = 99;
     }
-
+    
     @Component
     struct Child {
       @ObjectLink count: Info;
-
+    
       build() {
         Text(`${this.count.count}`)
       }
     }
-
+    
     @Entry
     @Component
     struct Parent {
       @State propInfo: Info = { count: 0 } as Info;
-
+    
       build() {
         Column() {
           // 特例：当且仅当字面量为this.xxx结构时，可正常编译通过
