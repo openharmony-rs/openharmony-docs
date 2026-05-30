@@ -80,8 +80,10 @@ export async function reEncoding(context : Context, fd : number | undefined) {
     }).catch((error : BusinessError) => {
       promptAction.showToast({ message: 'Failed to pack the image. And the error is: ' + error});
       console.error('Failed to pack the image. And the error is: ' + error);
-    }).finally(()=>{
+    }).finally(async () => {
       fileIo.closeSync(file.fd);
+      await imageSource.release();
+      await imagePackerApi.release();
     })
   } catch (error) {
     console.error('Failed to pack the image. And the error is: ' + error);
