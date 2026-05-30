@@ -65,47 +65,7 @@
 
 使用示例：
 
-```ts
-// Index.ets
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-
-// ...
-private setWindowAspectRatioEnabled(enabled: boolean): void {
-  const mainWindow = this.getMainWindow();
-  if (!mainWindow) {
-    this.resultText = '找不到主窗口';
-    return;
-  }
-  if (enabled) {
-    const ratio = 1.5;
-    // 设置可布局内容宽高比限制
-    mainWindow.setContentAspectRatio(ratio)
-      .then(() => {
-        AppStorage.setOrCreate<boolean>('WINDOW_ASPECT_RATIO_ENABLED', enabled);
-        this.resultText = '已开启比例限制';
-      })
-      .catch((err: Error) => {
-        const businessError = err as BusinessError;
-        this.resultText = `设置比例限制失败: ${JSON.stringify(businessError)}`;
-        hilog.error(DOMAIN, TAG, `set aspect ratio failed: ${JSON.stringify(businessError)}`);
-      });
-  } else {
-    // 取消可布局内容宽高比限制
-    mainWindow.resetAspectRatio()
-      .then(() => {
-        AppStorage.setOrCreate<boolean>('WINDOW_ASPECT_RATIO_ENABLED', enabled);
-        this.resultText = '已关闭比例限制';
-      })
-      .catch((err: Error) => {
-        const businessError = err as BusinessError;
-        this.resultText = `重置比例限制失败: ${JSON.stringify(businessError)}`;
-        hilog.error(DOMAIN, TAG, `reset aspect ratio failed: ${JSON.stringify(businessError)}`);
-      });
-  }
-}
-```
+<!-- @[aspectRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets) -->
 
 ## 调整窗口位置与大小
 
@@ -182,64 +142,7 @@ private setWindowAspectRatioEnabled(enabled: boolean): void {
 
   使用示例：
 
-  ```ts
-  // EntryAbility.ets
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window, display } from '@kit.ArkUI';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import hilog from '@ohos.hilog';
-    
-  /**
-   * 创建子窗口并调整位置大小
-   */
-  private createSubWindow(windowStage: window.WindowStage): void {
-    if (!this.mainWindow) {
-      return;
-    }
-
-    const mainRect = this.mainWindow.getWindowProperties().windowRect;
-    const subWidth = 600;
-    const subHeight = 300;
-    const margin = 24;
-
-    // 计算子窗口位置：放在主窗口右下角
-    const subX = Math.max(
-      mainRect.left + margin,
-      mainRect.left + mainRect.width - subWidth - margin
-    );
-
-    const subY = Math.max(
-      mainRect.top + margin,
-      mainRect.top + mainRect.height - subHeight - margin
-    );
-
-    // 创建子窗口
-    windowStage.createSubWindow('DemoSubWindow').then((subWindow: window.Window) => {
-      hilog.info(DOMAIN, TAG, 'createSubWindow success');
-
-      this.subWindow = subWindow;
-      AppStorage.setOrCreate<window.Window>('SUB_WINDOW', subWindow);
-      AppStorage.setOrCreate<window.Size>('WINDOW_SIZE', {
-        width: subWidth,
-        height: subHeight
-      }); 
-
-      // 注册子窗口尺寸变化监听
-      this.registerSubWindowRectChange(subWindow);
-      // 设置子窗口尺寸
-      this.subWindow!.resizeAsync(subWidth, subHeight);
-      // 移动子窗口位置
-      this.subWindow!.moveWindowToAsync(subX, subY);
-      // 子窗口设置为默认可拖拽
-      this.subWindow!.enableDrag(true);
-      // 加载子窗口内容页面
-      this.loadSubWindowContent(this.subWindow!);
-      }).catch((err: Error) => {
-        const businessError = err as BusinessError;
-        hilog.error(DOMAIN, TAG, `createSubWindow failed: ${JSON.stringify(businessError)}`);
-      });
-    }
-  ```   
+  <!-- @[sub_move_resize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ### 通过拖拽改变窗口的位置大小
 
@@ -262,81 +165,7 @@ private setWindowAspectRatioEnabled(enabled: boolean): void {
 
   使用示例：
 
-  ```ts
-  // SubWindowPage.ets
-  import { window } from '@kit.ArkUI';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import hilog from '@ohos.hilog';
-
-  const DOMAIN = 0x0000;
-  const TAG = 'IndexPage';
-
-  @Entry
-  @Component
-  struct SubWindowPage {
-    @StorageProp('WINDOW_SIZE') windowSize: window.Size = {
-      width: 600,
-      height: 300
-    };
-
-    @StorageLink('SUB_WINDOW_VISIBILITY_ENABLED') showSubWindowEnabled: boolean = false;
-    @StorageProp('SUB_WINDOW_RESIZE_ENABLED') resizeEnabled: boolean = true;
-    @StorageProp('SUB_WINDOW_MOVE_ENABLED') moveEnabled: boolean = true;
-
-    private isCompact(): boolean {
-      return this.windowSize.width < 500 || this.windowSize.height < 240;
-    }
-
-    /**
-     * 通过startMoving为子窗口接入系统拖拽移动
-     */
-    private startMoveSubWindow(): void {
-      const subWindow = AppStorage.get<window.Window>('SUB_WINDOW');
-      if (!subWindow) {
-        return;
-      }
-      subWindow.startMoving().then(() => {
-        hilog.info(DOMAIN, TAG, 'startMoving success');
-      }).catch((err: Error) => {
-        const businessError = err as BusinessError;
-        hilog.error(DOMAIN, TAG, `startMoving failed: ${JSON.stringify(businessError)}`);
-      });
-    }
-
-    build() {
-      Column() {
-        Row() {
-          Text(this.moveEnabled ? 'Sub Window - Move Enabled' : 'Sub Window - Move Disabled')
-          .fontSize(14)
-          .fontWeight(FontWeight.Bold)
-          .fontColor(Color.White)
-          Blank()
-          Text(`${this.windowSize.width} × ${this.windowSize.height}`)
-          .fontSize(12)
-          .fontColor('#DDE7FF')
-        }
-        .height(44)
-        .width('100%')
-        .padding({ left: 16, right: 16 })
-        .backgroundColor(this.moveEnabled ? '#2F5BEA' : '#666666')
-        .onTouch((event: TouchEvent) => {
-          if (event.type === TouchType.Down && this.moveEnabled) {
-            this.startMoveSubWindow();
-          }
-        })
-        // ...
-      }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#FFFFFF')
-      .border({
-        width: 4,
-        color: '#FF4D4F',
-        radius: 0
-      })
-    }
-  }
-  ```
+  <!-- @[startMoving](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/SubWindowPage.ets) -->
 
 - 可通过[enableDrag()](../reference/apis-arkui/arkts-apis-window-Window.md#enabledrag20)使能/禁止拖拽窗口。使能后，将允许通过鼠标操作或触摸对窗口进行拖拽缩放操作。 
 
@@ -344,32 +173,7 @@ private setWindowAspectRatioEnabled(enabled: boolean): void {
   > 
   > 拖拽缩放时，窗口尺寸受到[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)的限制。
 
-  ```ts
-  // Index.ets
-  import { window } from '@kit.ArkUI';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import hilog from '@ohos.hilog';
-    
-  // 通过enableDrag控制子窗口的拖拽缩放功能
-  private setSubWindowResizeEnabled(enabled: boolean): void {
-    const subWindow = this.getSubWindow();
-
-    if (!subWindow) {
-      this.resultText = '子窗口未创建';
-      return;
-    }
-
-    subWindow.enableDrag(enabled).then(() => {
-      AppStorage.setOrCreate<boolean>('SUB_WINDOW_RESIZE_ENABLED', enabled);
-      this.resultText = enabled ? '已开启子窗拖拽大小' : '已关闭子窗拖拽大小';
-    })
-    .catch((err: Error) => {
-      const businessError = err as BusinessError;
-      this.resultText = `设置拖拽大小失败: ${JSON.stringify(businessError)}`;
-      hilog.error(DOMAIN, TAG, `set resize drag failed: ${JSON.stringify(businessError)}`);
-    });
-  } 
-  ```
+  <!-- @[enableDrag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets) -->
 
 ### 感知窗口位置与大小的变化
 
