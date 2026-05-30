@@ -69,15 +69,9 @@ columnsTemplate(value: string | ItemFillPolicy | undefined)
 | ------ | ------ | ---- | ---------------------------------- |
 | value  | string \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) \| undefined | 是   | 当前瀑布流布局列的数量或最小列宽值。<br/>方法入参为undefined时，恢复为默认值（1列）。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| T | 返回当前组件。 |
-
 ### columnsGap
 
-columnsGap(value: LengthMetrics | undefined): T
+columnsGap(value: LengthMetrics | undefined)
 
 设置列与列的间距。默认值为0vp，设置为小于0的值时，按默认值显示。
 
@@ -95,15 +89,9 @@ columnsGap(value: LengthMetrics | undefined): T
 | ------ | ---------------------------- | ---- | ---------------------------- |
 | value  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 列与列的间距。<br/>方法入参为undefined时，恢复为默认值（0vp）。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| T | 返回当前组件。 |
-
 ### rowsGap
 
-rowsGap(value: LengthMetrics | undefined): T
+rowsGap(value: LengthMetrics | undefined)
 
 设置行与行的间距。默认值为0vp，设置为小于0的值时，按默认值显示。
 
@@ -121,19 +109,13 @@ rowsGap(value: LengthMetrics | undefined): T
 | ------ | ---------------------------- | ---- | ---------------------------- |
 | value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 行与行的间距。<br/>方法入参为undefined时，恢复为默认值（0vp）。|
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| T | 返回当前组件。 |
-
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
 
 ### onVisibleIndexesChange
 
-onVisibleIndexesChange(callback: onVisibleIndexesChangeCallback | undefined): T
+onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
 
 当前瀑布流显示的起始位置或终止位置的子组件发生变化时触发。瀑布流初始化时会触发一次。
 
@@ -149,13 +131,7 @@ onVisibleIndexesChange(callback: onVisibleIndexesChangeCallback | undefined): T
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| callback  | [onVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，当可见区域内的子组件索引发生变化时触发。<br/>方法入参为undefined时，取消监听。 |
-
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| T | 返回当前组件。 |
+| callback  | [OnVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，当可见区域内的子组件索引发生变化时触发。<br/>方法入参为undefined时，取消监听。 |
 
 ## 示例
 
