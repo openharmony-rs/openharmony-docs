@@ -205,13 +205,13 @@ import { Param } from '@kit.ArkUI';
   
   ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local numArr: number[] = [1, 2, 3, 4, 5];
     @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]];
-
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
@@ -255,12 +255,12 @@ import { Param } from '@kit.ArkUI';
       .width('100%')
     }
   }
-
+  
   @ComponentV2
   struct Child {
     @Require @Param numArr: number[];
     @Require @Param dimensionTwo: number[][];
-
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
