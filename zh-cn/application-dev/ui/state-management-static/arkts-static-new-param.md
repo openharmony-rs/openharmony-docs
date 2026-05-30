@@ -47,12 +47,21 @@ import { Param } from '@kit.ArkUI';
     @Local count: number = 0;
     @Local message: string = 'Hello';
     @Local flag: boolean = false;
+  
     build() {
       Column() {
         Text(`${this.count}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.message}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.flag}`)
+          .fontSize(20)
+          .margin(10)
         Button('change Local')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 数据源变量修改，会同步给@Param
             this.count++;
@@ -65,6 +74,7 @@ import { Param } from '@kit.ArkUI';
           flag: this.flag
         })
       }
+      .width('100%')
     }
   }
   @ComponentV2
@@ -72,12 +82,20 @@ import { Param } from '@kit.ArkUI';
     @Require @Param count: number;
     @Require @Param message: string;
     @Require @Param flag: boolean;
+  
     build() {
       Column() {
         Text(`Param ${this.count}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Param ${this.message}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Param ${this.flag}`)
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
   ```
@@ -87,59 +105,92 @@ import { Param } from '@kit.ArkUI';
   <!-- @[ParamClassObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamClassObject.ets) -->
   
   ``` TypeScript
-  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Param, Require, Text, Trace } from '@kit.ArkUI';
+  import {
+    Button,
+    ClickEvent,
+    Column,
+    ComponentV2,
+    Entry,
+    Local,
+    ObservedV2,
+    Param,
+    Require,
+    Text,
+    Trace
+  } from '@kit.ArkUI';
   
   class RawObject {
     name: string;
+  
     constructor(name: string) {
       this.name = name;
     }
   }
+  
   @ObservedV2
   class ObservedObject {
     @Trace name: string;
+  
     constructor(name: string) {
       this.name = name;
     }
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local rawObject: RawObject = new RawObject('rawObject');
     @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.observedObject.name}`)
+          .fontSize(20)
+          .margin(10)
         Button('change object')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 对类对象整体的修改均能观察到
             this.rawObject = new RawObject('new rawObject');
             this.observedObject = new ObservedObject('new observedObject');
-        })
+          })
         Button('change name')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // @Local与@Param均不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
             this.rawObject.name = 'new rawObject name';
             // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
             this.observedObject.name = 'new observedObject name';
-        })
+          })
         Child({
           rawObject: this.rawObject,
           observedObject: this.observedObject
         })
       }
+      .width('100%')
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param rawObject: RawObject;
     @Require @Param observedObject: ObservedObject;
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.observedObject.name}`)
-      }  
+          .fontSize(20)
+          .margin(10)
+      }
+      .width('100%')
     }
   }
   ```
@@ -156,14 +207,27 @@ import { Param } from '@kit.ArkUI';
   struct Index {
     @Local numArr: number[] = [1, 2, 3, 4, 5];
     @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]];
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[1]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[2]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[0][0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[1][1]}`)
+          .fontSize(20)
+          .margin(10)
         Button('change array item')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 修改数组项的值，变化可观察到
             this.numArr[0]++;
@@ -172,6 +236,8 @@ import { Param } from '@kit.ArkUI';
             this.dimensionTwo[1][1] = 0;
           })
         Button('change whole array')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 对数组整体赋值，变化可观察到
             this.numArr = [5, 4, 3, 2, 1];
@@ -182,21 +248,34 @@ import { Param } from '@kit.ArkUI';
           dimensionTwo: this.dimensionTwo
         })
       }
+      .width('100%')
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param numArr: number[];
     @Require @Param dimensionTwo: number[][];
-    
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[1]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[2]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[0][0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[1][1]}`)
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
   ```
@@ -222,39 +301,59 @@ import { Param } from '@kit.ArkUI';
     name: string;
     age: number;
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     // 装饰字面量
     @Local info: Info = { name: 'Jack', age: 25 } as Info;
+  
     build() {
       Column() {
         Text(`Local info.name: ${this.info.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Local info.age: ${this.info.age}`)
+          .fontSize(20)
+          .margin(10)
         Button('Local change info')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.info = { name: 'Tom', age: 18 } as Info; // 变化可观察
           })
         Button('Local change info.name')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.info.name = 'Lucy'; // 变化无法观察
           })
-        Child({info: this.info})
+        Child({ info: this.info })
       }
+      .width('100%')
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param info: Info;
+  
     build() {
       Column() {
         Text(`Param info.name: ${this.info.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Param info.age: ${this.info.age}`)
+          .fontSize(20)
+          .margin(10)
         Button('Param change info.name')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.info.name = 'Mary'; // 变化无法观察
           })
       }
+      .width('100%')
     }
   }
   ```
@@ -372,38 +471,58 @@ import { Param } from '@kit.ArkUI';
 <!-- @[ParamFromParentToChild](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamFromParentToChild.ets) -->
 
 ``` TypeScript
-import { Button, ClickEvent, Column, ComponentV2, Entry, ForEach, Local, ObservedV2, Param, Require, Text, Trace } from '@kit.ArkUI';
+import {
+  Button,
+  ClickEvent,
+  Column,
+  ComponentV2,
+  Entry,
+  ForEach,
+  Local,
+  ObservedV2,
+  Param,
+  Require,
+  Text,
+  Trace
+} from '@kit.ArkUI';
 
 @ObservedV2
 class Region {
   @Trace x: number;
   @Trace y: number;
+
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
 }
+
 @ObservedV2
 class Info {
   @Trace name: string;
   @Trace age: number;
   @Trace region: Region;
+
   constructor(name: string, age: number, x: number, y: number) {
     this.name = name;
     this.age = age;
     this.region = new Region(x, y);
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local infoList: Info[] = [new Info('Alice', 8, 0, 0), new Info('Barry', 10, 1, 20), new Info('Cindy', 18, 24, 40)];
+
   build() {
     Column() {
       ForEach(this.infoList, (info: Info, index: int) => {
         MiddleComponent({ info: info })
       })
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 对数组项整体赋值，变化同步给子组件的@Param
           this.infoList[0] = new Info('Atom', 40, 27, 90);
@@ -413,26 +532,39 @@ struct Index {
           this.infoList[2].region = new Region(7, 9);
         })
     }
+    .width('100%')
   }
 }
+
 @ComponentV2
 struct MiddleComponent {
   @Require @Param info: Info;
+
   build() {
     Column() {
       Text(`name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
       Text(`age: ${this.info.age}`)
+        .fontSize(20)
+        .margin(10)
       SubComponent({ region: this.info.region })
     }
+    .width('100%')
   }
 }
+
 @ComponentV2
 struct SubComponent {
   @Require @Param region: Region;
+
   build() {
     Column() {
       Text(`region: ${this.region.x}-${this.region.y}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```

@@ -270,19 +270,23 @@ struct Page {
   isRender(id: number): number {
     console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
     this.renderTimes++;
-    return 40;
+    return 20;
   }
 
   build() {
     Column() {
       Text('pencil length' + this.son.bag.pencil.length) // UINode (1)
         .fontSize(this.isRender(1))
+        .margin(10)
       Button('change length')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           // 点击更改length值，UINode（1）会刷新
           this.son.bag.pencil.length += 100;
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -341,7 +345,7 @@ struct Index {
   isRender(id: number): number {
     console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
     this.renderTimes++;
-    return 40;
+    return 20;
   }
 
   build() {
@@ -349,22 +353,29 @@ struct Index {
       Column() {
         Text(`Son ${this.son.age}`)
           .fontSize(this.isRender(1))
+          .margin(10)
           .fontWeight(FontWeight.Bold)
         Text(`Cousin ${this.cousin.age}`)
           .fontSize(this.isRender(2))
+          .margin(10)
           .fontWeight(FontWeight.Bold)
+        // son实例的age属性可观测
         Button('change Son age')
+          .width(300)
+          .margin(10)
           .onClick((e) => {
             this.son.age++;
           })
+        // cousin实例的age属性可观测
         Button('change Cousin age')
+          .width(300)
+          .margin(10)
           .onClick((e) => {
             this.cousin.age++;
           })
       }
       .width('100%')
     }
-    .height('100%')
   }
 }
 ```
@@ -378,8 +389,21 @@ struct Index {
 <!-- @[TraceBasicArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceBasicArray.ets) -->
 
 ``` TypeScript
-import { Button, Column, ComponentV2, Divider, Entry, FontWeight, 
-         ForEach, Row, Text, ObservedV2, Trace, List, ListItem } from '@kit.ArkUI';
+import {
+  Button,
+  Column,
+  ComponentV2,
+  Divider,
+  Entry,
+  FontWeight,
+  ForEach,
+  Row,
+  Text,
+  ObservedV2,
+  Trace,
+  List,
+  ListItem
+} from '@kit.ArkUI';
 
 let nextId: number = 0;
 
@@ -401,87 +425,96 @@ struct Index {
 
   build() {
     Column() {
-      Text(`length: ${this.arr.numberArr.length}`)
-        .fontSize(40)
-      Divider()
+      // 展开arr.numberArr数组内容
+      Text(`arr.numberArr: ${this.arr.numberArr}`)
+        .fontSize(20)
+        .margin(10)
       if (this.arr.numberArr.length >= 3) {
         Text(`${this.arr.numberArr[0]}`)
-          .fontSize(40)
+          .fontSize(20)
+          .margin(10)
           .onClick((e) => {
             this.arr.numberArr[0]++;
           })
         Text(`${this.arr.numberArr[1]}`)
-          .fontSize(40)
+          .fontSize(20)
+          .margin(10)
           .onClick((e) => {
             this.arr.numberArr[1]++;
           })
         Text(`${this.arr.numberArr[2]}`)
-          .fontSize(40)
+          .fontSize(20)
+          .margin(10)
           .onClick((e) => {
             this.arr.numberArr[2]++;
           })
       }
 
-      Divider()
-
-      List() {
-        ForEach(this.arr.numberArr, (item: number, index: int) => {
-          ListItem() {
-            Row() {
-              Text(`${index} ${item}`)
-                .fontSize(40)
-            }
-          }
-        })
-      }
-      .height('20%')
-
       Button('push')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.push(50);
         })
 
       Button('pop')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.pop();
         })
 
       Button('shift')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.shift();
         })
 
       Button('splice')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.splice(1, 0 as int, 60);
         })
 
 
       Button('unshift')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.unshift(100);
         })
 
       Button('copywithin')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.copyWithin(0, 1, 2);
         })
 
       Button('fill')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.fill(0, 2, 4);
         })
 
       Button('reverse')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.reverse();
         })
 
       Button('sort')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.sort();
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -494,7 +527,7 @@ struct Index {
    <!-- @[TraceObjectArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceObjectArray.ets) -->
    
    ``` TypeScript
-   import { Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
+   import { Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace, Button } from '@kit.ArkUI';
    
    let nextId: number = 0;
    
@@ -525,36 +558,39 @@ struct Index {
    
      build() {
        Column() {
+         // 遍历展示对象数组中每个元素的age值。
+         ForEach(this.info.personList, (item: Person, index: int) => {
+           Text(`${index} ${item.age}`)
+             .fontSize(20)
+             .margin(10)
+         })
          Text(`length: ${this.info.personList.length}`)
-           .fontSize(40)
-         Divider()
+           .fontSize(20)
+           .margin(10)
          if (this.info.personList.length >= 3) {
-           Text(`${this.info.personList[0].age}`)
-             .fontSize(40)
+           Button(`${this.info.personList[0].age}`)
+             .fontSize(20)
+             .margin(10)
              .onClick((e) => {
                this.info.personList[0].age++;
              })
    
-           Text(`${this.info.personList[1].age}`)
-             .fontSize(40)
+           Button(`${this.info.personList[1].age}`)
+             .fontSize(20)
+             .margin(10)
              .onClick((e) => {
                this.info.personList[1].age++;
              })
    
-           Text(`${this.info.personList[2].age}`)
-             .fontSize(40)
+           Button(`${this.info.personList[2].age}`)
+             .fontSize(20)
+             .margin(10)
              .onClick((e) => {
                this.info.personList[2].age++;
              })
          }
-   
-         Divider()
-   
-         ForEach(this.info.personList, (item: Person, index: int) => {
-           Text(`${index} ${item.age}`)
-             .fontSize(40)
-         })
        }
+       .width('100%')
      }
    }
    ```
@@ -748,20 +784,29 @@ struct Index {
   build() {
     Column() {
       Text(`Source ${this.source.source} and message ${this.message}`)
+        .fontSize(20)
+        .margin(10)
       Button('+1')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.source.source += 1;
         })
       Button('Serialize')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.message = JSON.stringify(this.source);
         })
       Button('Deserialize')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           // 反序列化生成@Observed类并赋值
           this.source = JSON.parse<Source>('{"source": 123}', Type.from<Source>())!;
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -797,20 +842,29 @@ struct Index {
   build() {
     Column() {
       Text(`Source ${this.source.source} and message ${this.message}`)
+        .fontSize(20)
+        .margin(10)
       Button('+1')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.source.source += 1;
         })
       Button('Serialize')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.message = JSON.stringify(this.source);
         })
       Button('Deserialize')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           // 使用JSON.parseJsonElement反序列生成JSONElement，再传入静态方法构建实例
           this.source = Source.FromJSON(JSON.parseJsonElement('{"source": 123}'));
         })
     }
+    .width('100%')
   }
 }
 ```

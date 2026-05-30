@@ -347,16 +347,23 @@ struct Parent {
   build() {
     Column() {
       Text(`parent name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('parent change whole interface')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info = { name: 'Tom' } as Info; // 变化可观察
         })
       Button('parent change interface name')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info.name += '~'; // 变化无法观察
         })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -368,15 +375,22 @@ struct Child {
   build() {
     Column() {
       Text(`child name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('child change whole interface')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info = { name: 'Jerry' } as Info; // 变化可观察
         })
       Button('child change interface name')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info.name += '*'; // 变化无法观察
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -608,6 +622,7 @@ import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Local, Provid
 struct Parent {
   @Local childSub: number = 0;
   @Local childSum: number = 1;
+  // 父组件通过@Provider向下传递箭头函数。
   @Provider() onChange: (axisX: number, axisY: number) => void = (axisX: number, axisY: number): void => {
     this.childSub = axisX - axisY;
     this.childSum = axisX + axisY;
@@ -616,8 +631,11 @@ struct Parent {
   build() {
     Column() {
       Text(`childSub: ${this.childSub}, childSum: ${this.childSum}`)
+        .fontSize(20)
+        .margin(10)
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -630,7 +648,10 @@ struct Child {
 
   build() {
     Button('changed')
+      .width(300)
+      .margin(10)
       .onClick((e: ClickEvent) => {
+        // 子组件中调用该箭头函数，会修改父组件中childSub与childSum变量的值。
         this.onChange(this.axisX, this.axisY);
       })
   }
@@ -645,7 +666,20 @@ struct Child {
 <!-- @[ProviderConsumerComplexType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerComplexType.ets) -->
 
 ``` TypeScript
-import { Button, ClickEvent, Column, ComponentV2, Consumer, Divider, Entry, ForEach, ObservedV2, Provider, Text, Trace } from '@kit.ArkUI';
+import {
+  Button,
+  ClickEvent,
+  Column,
+  ComponentV2,
+  Consumer,
+  Divider,
+  Entry,
+  ForEach,
+  ObservedV2,
+  Provider,
+  Text,
+  Trace
+} from '@kit.ArkUI';
 
 @ObservedV2
 class User {
@@ -668,23 +702,32 @@ struct Parent {
   build() {
     Column() {
       Button('add new user')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users.push(new User('Molly', 18));
         })
       Button('age++')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users[0].age++;
         })
       Button('change name')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users[0].name = 'Shelly';
         })
       Button('reset users')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users = [new User('Json', 10), new User('Eric', 15)];
-        })       
+        })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -696,12 +739,18 @@ struct Child {
     Column() {
       ForEach(this.users, (item: User) => {
         Column() {
-          Text(`name: ${item.name}`).fontSize(30)
-          Text(`age: ${item.age}`).fontSize(30)
+          Text(`name: ${item.name}`)
+            .fontSize(20)
+            .margin(10)
+          Text(`age: ${item.age}`)
+            .fontSize(20)
+            .margin(10)
           Divider()
         }
+        .width('100%')
       })
     }
+    .width('100%')
   }
 }
 ```
