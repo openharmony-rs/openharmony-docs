@@ -142,7 +142,69 @@ const TAG = 'IndexPage';
   > - 窗口大小取值范围受minWindowWidth/maxWindowWidth和minWindowHeight/maxWindowHeight限制，可通过[getWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimits11)接口获取当前窗口的尺寸限制。
   > 
   > - 建议同时配置windowLeft和windowTop，当窗口位置超出指定屏幕区域时，系统会限制窗口在屏幕范围内可见。
-
+  <!-- @[sub_move_resize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  // EntryAbility.ets
+  import { UIAbility } from '@kit.AbilityKit';
+  import { window, display } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import hilog from '@ohos.hilog';
+  
+  const DOMAIN = 0x0000;
+  const TAG = 'Sample_AdjustLayout';
+  
+  // ...
+    /**
+     * 创建子窗口并调整位置大小
+     */
+    private createSubWindow(windowStage: window.WindowStage): void {
+      if (!this.mainWindow) {
+        return;
+      }
+      const mainRect = this.mainWindow.getWindowProperties().windowRect;
+      const subWidth = 600;
+      const subHeight = 300;
+      const margin = 24;
+  
+      // 计算子窗口位置：放在主窗口右下角
+      const subX = Math.max(
+        mainRect.left + margin,
+        mainRect.left + mainRect.width - subWidth - margin
+      );
+  
+      const subY = Math.max(
+        mainRect.top + margin,
+        mainRect.top + mainRect.height - subHeight - margin
+      );
+  
+      // 创建子窗口
+      windowStage.createSubWindow('DemoSubWindow').then((subWindow: window.Window) => {
+        hilog.info(DOMAIN, TAG, 'createSubWindow success');
+  
+        this.subWindow = subWindow;
+        AppStorage.setOrCreate<window.Window>('SUB_WINDOW', subWindow);
+        AppStorage.setOrCreate<window.Size>('WINDOW_SIZE', {
+          width: subWidth,
+          height: subHeight
+        });
+  
+        // 注册子窗口尺寸变化监听
+        this.registerSubWindowRectChange(subWindow);
+        // 设置子窗口尺寸
+        this.subWindow!.resizeAsync(subWidth, subHeight);
+        // 移动子窗口位置
+        this.subWindow!.moveWindowToAsync(subX, subY);
+        // 子窗口设置为默认可拖拽
+        this.subWindow!.enableDrag(true);
+        // 加载子窗口内容页面
+        this.loadSubWindowContent(this.subWindow!);
+      }).catch((err: Error) => {
+        const businessError = err as BusinessError;
+        hilog.error(DOMAIN, TAG, `createSubWindow failed: ${JSON.stringify(businessError)}`);
+      });
+    }
+  ```
 - 通过[module.json5配置文件](../quick-start/module-configuration-file.md)中[abilities](../quick-start/module-configuration-file.md#abilities标签)标签下的[metadata标签](window-config-m.md#metadata标签)，配置应用主窗口的默认大小和位置。  
 
   其中name取值及对应value的含义如下所示：
