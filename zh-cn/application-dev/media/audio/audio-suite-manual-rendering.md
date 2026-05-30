@@ -22,6 +22,11 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 <!-- @[audioSuite_ManualRenderingInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
 
+``` C++
+#include <ohaudiosuite/native_audio_suite_base.h>
+#include <ohaudiosuite/native_audio_suite_engine.h>
+```
+
 ## 开发步骤
 
 详细的API说明请参考：[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)。
