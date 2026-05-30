@@ -1165,7 +1165,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -1239,7 +1239,7 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_ALPHA
 
@@ -2007,9 +2007,9 @@ setDragKeyFramePolicy(keyFramePolicy: KeyFramePolicy): Promise&lt;KeyFramePolicy
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1设备、其他设备的电脑模式中可正常调用；在其他设备和其他模式中不生效不报错。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在PC/2in1设备、其他设备的电脑模式中可正常调用；在其他设备和其他模式中不生效不报错。
 
 **参数：**
 
@@ -6192,7 +6192,7 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：**
-- 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+- 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)或[电脑模式](../../windowmanager/window-terminology.md#电脑模式)下生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
@@ -7734,7 +7734,7 @@ restore(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -8083,7 +8083,7 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 **设备行为差异：**
 
-在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从<!--RP2-->OpenHarmony 6.0<!--RP2End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
@@ -8839,7 +8839,7 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 **设备行为差异：**
 
-在OpenHarmony 5.1.0之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+在OpenHarmony 5.1.0之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
@@ -8904,7 +8904,7 @@ getDecorButtonStyle(): DecorButtonStyle
 
 **设备行为差异：**
 
-在OpenHarmony 5.1.0之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+在OpenHarmony 5.1.0之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
@@ -9193,7 +9193,7 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 
 **设备行为差异：**
 
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
@@ -9253,7 +9253,7 @@ getParentWindow(): Window
 
 **设备行为差异：**
 
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。
 
@@ -10426,7 +10426,7 @@ setWindowShadowRadius(radius: number): void
 
 **设备行为差异：** 
 
-在OpenHarmony 5.1.0之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+在OpenHarmony 5.1.0之前，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 从OpenHarmony 5.1.0开始，该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
 
@@ -11355,7 +11355,7 @@ try {
 
 setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用callback异步回调，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
+设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用callback异步回调，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
 
 子窗口调用后不生效。
 
@@ -11433,7 +11433,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallback&lt;void&gt;): void
 
-<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
+<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
 
 调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
@@ -12279,7 +12279,7 @@ export default class EntryAbility extends UIAbility {
 
 setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallback&lt;void&gt;): void
 
-<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
+<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
 
 调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
@@ -12336,7 +12336,7 @@ export default class EntryAbility extends UIAbility {
 
 setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
-<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用Promise异步回调。<br>从API version 12开始，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
+<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用Promise异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
 
 调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
@@ -12396,7 +12396,7 @@ export default class EntryAbility extends UIAbility {
 
 setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用callback异步回调，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
+设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用callback异步回调，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
 
 子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
@@ -12457,7 +12457,7 @@ export default class EntryAbility extends UIAbility {
 
 setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt;
 
-设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用Promise异步回调，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
+设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用Promise异步回调，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
 
 子窗口调用后不生效。
 
