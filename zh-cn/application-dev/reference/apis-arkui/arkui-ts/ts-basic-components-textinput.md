@@ -1840,7 +1840,7 @@ onSecurityStateChange(callback: Callback\<boolean>)
 
 | 参数名       | 类型   | 必填 | 说明                               |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | Callback\<boolean> | 是   | 回调函数。<br/>true表示状态切换；false表示状态未切换。|
+| callback | Callback\<boolean> | 是   | 回调函数。<br/>true表示密码显示；false表示密码隐藏。|
 
 ### onWillInsert<sup>12+</sup>
 
