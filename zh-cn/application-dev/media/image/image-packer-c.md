@@ -107,7 +107,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 7. 创建ImagePacker实例后，指定编码参数，将ImageSource或PixelMap编码至文件或者缓冲区。
 
-   <!-- @[pack_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+   <!-- @[pack_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
    ``` C++
    // 获取编码能力范围。
