@@ -21,14 +21,14 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 ### 添加头文件
 开发者通过引入头文件<[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)>、<[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)>、<[native_audiostreambuilder.h](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md)>和<[native_audiorenderer.h](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md)>使用音频编创和音频播放相关API。
 
-   <!-- @[audioSuite_RealTimeRenderingInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
+<!-- @[audioSuite_RealTimeRenderingInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
    
-   ``` C++
-   #include <ohaudiosuite/native_audio_suite_base.h>
-   #include <ohaudiosuite/native_audio_suite_engine.h>
-   #include <ohaudio/native_audiorenderer.h>
-   #include <ohaudio/native_audiostreambuilder.h>
-   ```
+``` C++
+#include <ohaudiosuite/native_audio_suite_base.h>
+#include <ohaudiosuite/native_audio_suite_engine.h>
+#include <ohaudio/native_audiorenderer.h>
+#include <ohaudio/native_audiostreambuilder.h>
+```
 
 ## 开发步骤
 
