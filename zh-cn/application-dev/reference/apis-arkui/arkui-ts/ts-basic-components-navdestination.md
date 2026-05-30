@@ -978,7 +978,7 @@ ArkTS-Sta: onSaveState(callback: SaveStateCallback | undefined)
 
 该回调配合Navigation的[configuration](./ts-basic-components-navigation.md#configuration)接口使用。页面创建时传入的初始参数由Navigation单独保留，开发者只需在该回调中返回自定义页面状态。返回的状态对象必须可序列化；页面重建时，保存的状态会通过[onRestoreState](#onrestorestate)回调传入。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1004,7 +1004,7 @@ ArkTS-Sta: onRestoreState(callback: RestoreStateCallback | undefined)
 
 该回调配合Navigation的[configuration](./ts-basic-components-navigation.md#configuration)接口使用。页面重建时，系统会将[onSaveState](#onsavestate)返回并保存的状态作为入参传入该回调；如果没有保存自定义状态，则入参为null。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1131,7 +1131,7 @@ type SaveStateCallback = () =&gt; Record&lt;string, Object&gt; | null
 
 页面状态保存回调。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1153,7 +1153,7 @@ type RestoreStateCallback = (savedState: Record&lt;string, Object&gt; | null) =&
 
 页面状态恢复回调。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
