@@ -99,6 +99,20 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 4. 资源销毁。
    
    <!-- @[audioSuite_DestroySeparation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 销毁节点。
+   OH_AudioSuiteEngine_DestroyNode(nodes.inputNode);
+   OH_AudioSuiteEngine_DestroyNode(nodes.aissNode);
+   OH_AudioSuiteEngine_DestroyNode(nodes.outputNode);
+   
+   // 销毁管线。
+   OH_AudioSuiteEngine_DestroyPipeline(audioSuitePipeline);
+   
+   // 销毁引擎。
+   OH_AudioSuiteEngine_Destroy(audioSuiteEngine);
+   ```
 
 ### 混音与级联
 
