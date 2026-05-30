@@ -31,6 +31,6 @@ import { InputEvent } from '@kit.InputKit';
 | ---------- | ------ | ---- | ---- | -------------- |
 | id         | number | 否    | 否    | 事件ID。 |
 | deviceId   | number | 否    | 否    | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。    |
-| actionTime | number | 否    | 否    | 上报输入事件的时间。      |
+| actionTime | number | 否    | 否    | 上报输入事件的时间，单位为微秒。    |
 | screenId   | number | 否    | 否    | 目标屏幕ID。         |
 | windowId   | number | 否    | 否    | 目标窗口ID。         |
