@@ -899,7 +899,9 @@ enableAutoCookie(enable: boolean): void
 >
 > (1) 默认值为false，表示默认不自动携带Cookie。<br>
 > (2) 当配置由false切换为true后，会在后续调用request接口发起请求时生效，并自动共享Cookie。<br>
-> (3) 当配置由true切换为false时，会清空当前实例内保存的Cookie共享状态。
+> (3) 当配置由true切换为false时，会清空当前实例内保存的Cookie共享状态。<br>
+> (4) 关于重定向场景的Cookie处理：通过header字段手动配置的Cookie在发生重定向时不会自动发送给重定向后的目标主机，仅服务端通过Set-Cookie下发的Cookie会根据域名规则自动携带。<br>
+> (5) 关于跨域Cookie携带规则：Cookie的自动携带仅在相同域名或相同子域名之间生效，不同域名之间不支持Cookie的自动携带。
 
 **起始版本：** 26.0.0
 
