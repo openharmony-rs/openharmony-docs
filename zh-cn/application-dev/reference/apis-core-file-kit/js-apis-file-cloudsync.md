@@ -161,6 +161,8 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 云盘同步对象添加同步过程事件监听。
 
+当应用首次注册callback时，SyncProgress中的SyncState初始返回值为4，代表COMPLETED；后续重新注册时，该值将反映实际同步结果，例如若上次上行失败，返回值为1，代表UPLOAD_FAILED。
+
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onProgress](#onprogress23)。
