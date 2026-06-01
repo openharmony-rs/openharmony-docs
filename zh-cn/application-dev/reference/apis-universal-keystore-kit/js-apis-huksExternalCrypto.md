@@ -746,12 +746,19 @@ getErrorInfo(): HuksExternalErrorInfo
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-const testResourceId = JSON.stringify({
+const resourceId = JSON.stringify({
   providerName: "testProviderName",
   bundleName: "com.example.cryptoapplication",
   abilityName: "CryptoExtension",
   index: "testKey"
 });
+
+const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
+  {
+    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
+    value: StringToUint8Array(pin)
+  }
+];
 
 try {
   await huksExternalCrypto.authUkeyPin(resourceId, params);
