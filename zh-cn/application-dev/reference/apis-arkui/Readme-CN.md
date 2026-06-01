@@ -491,7 +491,9 @@
     - [组件预览](arkui-ts/ts-universal-component-previewer.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
     - [Chip](arkui-ts/ohos-arkui-advanced-Chip.md)
+    - [ChipV2](arkui-ts/ohos-arkui-advanced-ChipV2.md)
     - [ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)
+    - [ChipGroupV2](arkui-ts/ohos-arkui-advanced-ChipGroupV2.md)
     - [ComposeListItem](arkui-ts/ohos-arkui-advanced-ComposeListItem.md)
     - [ComposeTitleBar](arkui-ts/ohos-arkui-advanced-ComposeTitleBar.md)
     - [DownloadFileButton](arkui-ts/ohos-arkui-advanced-DownloadFileButton.md)
