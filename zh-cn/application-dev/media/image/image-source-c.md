@@ -215,8 +215,20 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
          
          uint32_t width;
          uint32_t height;
-         OH_ImageSourceInfo_GetWidth(g_thisImageSource->imageInfo, &width);
-         OH_ImageSourceInfo_GetHeight(g_thisImageSource->imageInfo, &height);
+         errCode = OH_ImageSourceInfo_GetWidth(g_thisImageSource->imageInfo, &width);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceInfo_GetWidth failed, errCode: %{public}d.", errCode);
+             OH_ImageSourceInfo_Release(g_thisImageSource->imageInfo);
+             g_thisImageSource->imageInfo = nullptr;
+             return GetJsResult(env, errCode);
+         }
+         errCode = OH_ImageSourceInfo_GetHeight(g_thisImageSource->imageInfo, &height);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceInfo_GetHeight failed, errCode: %{public}d.", errCode);
+             OH_ImageSourceInfo_Release(g_thisImageSource->imageInfo);
+             g_thisImageSource->imageInfo = nullptr;
+             return GetJsResult(env, errCode);
+         }
          OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_GetImageInfo success,"
                     "width: %{public}d, height: %{public}d.", width, height);
          OH_ImageSourceInfo_Release(g_thisImageSource->imageInfo);
