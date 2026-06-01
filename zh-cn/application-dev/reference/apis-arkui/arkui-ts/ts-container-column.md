@@ -40,7 +40,7 @@ Column(options?: ColumnOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -98,7 +98,7 @@ ArkTS-Sta: Column(options?: ColumnOptions | ColumnOptions | ColumnOptionsV2)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| space<sup>7+</sup> | ArkTS-Dyn: string&nbsp;\|&nbsp;number<br>ArkTS-Sta: string&nbsp;\|&nbsp;double | 否 | 是 | 纵向布局元素垂直方向间距。<br/>space为负数或者[justifyContent](ts-container-column.md#justifycontent8)设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时，space不生效。<br/>默认值：0 <br />非法值：按默认值处理。<br/>单位：vp<br/>**说明：**<br/>space取值是大于等于0的数字，或者可以转换为数字的字符串。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| space<sup>7+</sup> | ArkTS-Dyn: string&nbsp;\|&nbsp;number<br>ArkTS-Sta: string&nbsp;\|&nbsp;double | 否 | 是 | 纵向布局元素垂直方向间距。<br/>space为负数或者[justifyContent](ts-container-column.md#justifycontent8)设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时，space不生效。<br/>默认值：0 <br />非法值：按默认值处理。<br/>单位：vp<br/>**说明：**<br/>space取值是大于等于0的数字，或者可以转换为数字的字符串。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ColumnOptionsV2<sup>18+</sup>对象说明
 
@@ -142,8 +142,8 @@ Column组件构造函数中space支持的数据类型，取值类型为下表类
 
 |类型|说明|
 |---|---|
-|ArkTS-Dyn: number<br/>ArkTS-Sta: double|表示类型为数字，可取任意值。|
 |string|表示值类型为字符串，可取任意值。|
+|ArkTS-Dyn: number<br/>ArkTS-Sta: double|表示类型为数字，可取任意值。|
 |[Resource](ts-types.md#resource)|表示值为资源引用类型，取值为从系统资源或者应用资源中引入的数据值。|
 
 
@@ -233,19 +233,15 @@ ArkTS-Sta: reverse(isReversed: boolean | undefined)
 >
 >  若未设置reverse属性，主轴方向不反转；若设置了reverse属性，且参数值为undefined，则视为默认值true，主轴方向反转。<br/>通用属性direction只能改变Column交叉轴方向，不改变Column主轴方向，因此与reverse属性互不影响。
 
-### attributeModifier<sup>12+</sup>
+### attributeModifier<sup>23+</sup>
 
-ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<ColumnAttribute>)
-
-ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ColumnAttribute> | AttributeModifier\<CommonMethod> | undefined)
+attributeModifier(modifier: AttributeModifier\<ColumnAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
 设置组件的动态属性。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -253,7 +249,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ColumnAttribute> | Att
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Column组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Column组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## 事件
 
