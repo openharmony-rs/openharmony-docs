@@ -342,50 +342,6 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    包含音源分离节点的管线使用[OH_AudioSuiteEngine_MultiRenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_multirenderframe)接口渲染并获取两路PCM音频数据。
 
    <!-- @[audioSuite_StartSeparationPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-   
-   ``` C++
-   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
-   // 根据输出节点的格式计算单帧处理数据大小。如果samplingRate为11025请使用40ms来计算。
-   int32_t frameSize = RENDER_FRAME_DURATION_MS * OH_Audio_SampleRate::SAMPLE_RATE_48000 * CHANNEL_COUNT *
-                       SAMPLE_FORMAT_S16LE_BYTE_SIZE / MS_PER_SECOND;
-   // 用于接收渲染后的输出音频数据。
-   OH_AudioDataArray audioDataArray;
-   int32_t outPutNum = 2;
-   audioDataArray.audioDataArray = (void **)malloc(outPutNum * sizeof(void *));
-   for (int32_t i = 0; i < outPutNum; i++) {
-       audioDataArray.audioDataArray[i] = (void *)malloc(frameSize);
-   }
-   audioDataArray.arraySize = outPutNum;
-   audioDataArray.requestFrameSize = frameSize;
-   int32_t responseSize = 0;
-   bool finished = false;
-   
-   // 渲染。
-   OH_AudioSuiteEngine_StartPipeline(audioSuitePipeline);
-   // ...
-   do {
-       OH_AudioSuite_Result result =
-           OH_AudioSuiteEngine_MultiRenderFrame(audioSuitePipeline, &audioDataArray, &responseSize, &finished);
-       if ((result != OH_AudioSuite_Result::AUDIOSUITE_SUCCESS) || (responseSize <= 0)) {
-           // 本次音频编创渲染失败。
-           break;
-       } else {
-           // audioDataArray.audioDataArray[0]是提取的人声。
-           // audioDataArray.audioDataArray[1]是提取的背景声。
-           // 音频数据长度为responseSize，开发者根据业务场景自行使用或者保存。
-           // ...
-       }
-   } while (!finished);
-   // ...
-   OH_AudioSuiteEngine_StopPipeline(audioSuitePipeline);
-   
-   for (int32_t i = 0; i < outPutNum; i++) {
-       free(audioDataArray.audioDataArray[i]);
-       audioDataArray.audioDataArray[i] = nullptr;
-   }
-   free(audioDataArray.audioDataArray);
-   audioDataArray.audioDataArray = nullptr;
-   ```
 
 4. 资源销毁。
    
