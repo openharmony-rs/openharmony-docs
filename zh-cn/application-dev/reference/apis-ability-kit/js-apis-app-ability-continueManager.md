@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-continueManager提供了应用跨端迁移的管理能力，如获取应用跨端迁移过程中快速拉起目标应用的结果。
+continueManager提供了应用跨端迁移的管理能力，如获取应用跨端迁移过程中快速拉起目标应用的结果。跨端迁移通过在源端和目标端之间建立数据传输通道，将应用状态和数据从源端迁移到目标端。详细的设计逻辑和实现机制请参见[跨端迁移开发指南](../../application-models/hop-cross-device-migration.md)。
 
 > **说明：**
 > 
@@ -24,7 +24,7 @@ import { continueManager } from '@kit.AbilityKit';
 
 on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
 
-在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。
+在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。用于跨设备应用迁移场景，如游戏进度从手机迁移到平板、视频播放跨端同步、文档编辑协作等需要保持应用连续性的场景。
 
 > **说明：**
 >
@@ -48,7 +48,7 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 16300501 | the system ability work abnormally. |
+| 16300501 | the system ability work abnormally.请检查分布式调度服务是否正常运行，稍后重试。 |
 
 **示例**：
 
@@ -71,13 +71,13 @@ export default class MigrationAbility extends UIAbility {
             try {
               continueManager.on("prepareContinue", this.context, (err, continueResultInfo) => {
                 if (err.code != 0) {
-                  console.error('register failed, cause: ' + JSON.stringify(err));
+                  hilog.error(DOMAIN_NUMBER, TAG, 'register failed, cause: %{public}s', JSON.stringify(err));
                   return;
                 }
-                console.info('register finished, ' + JSON.stringify(continueResultInfo));
+                hilog.info(DOMAIN_NUMBER, TAG, 'register finished, %{public}s', JSON.stringify(continueResultInfo));
               });
             } catch (e) {
-              console.error('register failed, cause: ' + JSON.stringify(e));
+              hilog.error(DOMAIN_NUMBER, TAG, 'register failed, cause: %{public}s', JSON.stringify(e));
             }
             // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
             // 可处理应用自定义跳转、时序等问题
@@ -91,11 +91,7 @@ export default class MigrationAbility extends UIAbility {
 
 off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;ContinueResultInfo&gt;): void
 
-在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。
-
-> **说明：**
->
-> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
+在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。用于迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -107,7 +103,7 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 | -------- |------------------------------------| -------- |--------------------------------------|
 | type | string                             | 是 | 固定值：prepareContinue。                 |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                            | 是 | Ability的Context。                     |
-| callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获回调函数注销结果。否则为错误对象。 |
+| callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获取到的回调函数注销结果。否则为错误对象。若callback参数未填写，则注销所有已注册的回调；若callback参数已填写，则注销指定的回调函数。 |
 
 **错误码：**
 
@@ -115,7 +111,7 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 
 | 错误码ID    | 错误信息 |
 |----------| -------------------------------- |
-| 16300501 | the system ability work abnormally. |
+| 16300501 | the system ability work abnormally.请检查分布式调度服务是否正常运行，稍后重试。 |
 
 **示例**：
 
@@ -156,14 +152,14 @@ export default class MigrationAbility extends UIAbility {
 
 ## ContinueResultInfo
 
-注册或注销回调函数返回的快速拉起的结果。
+注册或注销回调函数返回的快速拉起结果。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
 | -------- |-------------------------------------------------------------------------------|----|----|----------|
-| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。 |
+| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明。 |
 
 ## ContinueStateCode
 
@@ -171,8 +167,8 @@ export default class MigrationAbility extends UIAbility {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
-| 名称 | 值  | 说明    | 
+| 名称 | 值  | 说明    |
 | -------- |----|-------|
-| SUCCESS  | 0  | 操作成功。<br>**模型约束**：此接口仅可在Stage模型下使用。 | 
-| SYSTEM_ERROR | 1 | 操作失败。<br>**模型约束**：此接口仅可在Stage模型下使用。 | 
+| SUCCESS  | 0  | 操作成功。表示快速拉起已成功完成，应用可以继续执行跨端迁移流程。 |
+| SYSTEM_ERROR | 1 | 操作失败。表示快速拉起过程中发生系统错误，应用需要提示用户迁移失败，并根据业务场景决定是否需要重试。 |
 

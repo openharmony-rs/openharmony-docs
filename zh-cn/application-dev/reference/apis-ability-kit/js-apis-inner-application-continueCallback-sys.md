@@ -18,7 +18,7 @@
 
 onContinueDone(result: number): void;
 
-Mission迁移完成后调用，返回迁移结果。
+Mission迁移完成后调用，通过回调参数result返回迁移结果。开发者应根据返回的result参数判断迁移是否成功，并据此执行相应的后续操作，如提示用户、重试或终止任务。
 
 **系统接口**：此接口为系统接口。
 
@@ -30,7 +30,7 @@ Mission迁移完成后调用，返回迁移结果。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| result |  number | 是 | 迁移任务的结果，0表示迁移成功，其他表示迁移失败。 |
+| result |  number | 是 | 迁移任务的结果，0表示迁移成功，非0值表示迁移失败。 |
 
 **示例：**
 
@@ -38,16 +38,18 @@ Mission迁移完成后调用，返回迁移结果。
 import { distributedMissionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 调用continueMission方法，发起任务迁移 
 distributedMissionManager.continueMission(
   {
-    srcDeviceId: '123',
-    dstDeviceId: '456',
-    missionId: 123,
+    srcDeviceId: '123', // 源设备ID 
+    dstDeviceId: '456', // 目标设备ID
+    missionId: 123, // 任务ID
     wantParam: {
-      'key': 'value'
+      'key': 'value' // 迁移数据
     }
   },
   {
+    // 迁移完成回调函数，接收迁移结果  
     onContinueDone(result: number) {
       console.info(`onContinueDone, result: ${JSON.stringify(result)}`);
     }
