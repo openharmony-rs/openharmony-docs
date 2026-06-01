@@ -360,7 +360,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
          size_t size = g_thisImageSource->frameCnt;
          OH_LOG_INFO(LOG_APP, "GetDelayTimeList size: %{public}zu.", size);
          Image_ErrorCode errCode = OH_ImageSourceNative_GetDelayTimeList(g_thisImageSource->source, delayTimeList, size);
+         if (errCode == IMAGE_SUCCESS) {
+             for (size_t index = 0; index < size; index++) {
+                 OH_LOG_INFO(LOG_APP, "Frame %{public}zu delay time: %{public}d ms.", index, delayTimeList[index]);
+             }
+         }
          delete[] delayTimeList;
+         delayTimeList = nullptr;
          return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_GetDelayTimeList");
      }
      ```
