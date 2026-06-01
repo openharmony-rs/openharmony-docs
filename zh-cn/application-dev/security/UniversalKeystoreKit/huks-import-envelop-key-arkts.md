@@ -1,4 +1,4 @@
-﻿# 数字信封导入密钥(ArkTS)
+# 数字信封导入密钥(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -125,7 +125,7 @@ async function EnvelopRsaTest()
     .then((data) => {
       handle = data.handle;
     }).catch((error: BusinessError) => {
-      console.error(`decrypt init fail, errorCode: ${error.code}`)
+      console.error('decrypt init fail, errorCode: ${error.code}')
     })
   await huks.finishSession(handle, enOption)
     .then((data) => {

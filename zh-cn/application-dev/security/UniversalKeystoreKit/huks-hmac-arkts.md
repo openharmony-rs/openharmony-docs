@@ -1,4 +1,4 @@
-﻿# HMAC(ArkTS)
+# HMAC(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -85,7 +85,7 @@ async function generateHMACKey() {
 
   await huks.generateKeyItem(hmacKeyAlias, options)
     .then((data) => {
-      console.info('promise: generate HMAC Key success.');
+      console.info(`promise: generate HMAC Key success`);
     }).catch((error: Error) => {
       console.error(`promise: generate HMAC Key failed, ${JSON.stringify(error)}`);
       throw (error as Error);
