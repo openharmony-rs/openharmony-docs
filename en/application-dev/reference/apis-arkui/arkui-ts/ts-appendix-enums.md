@@ -529,7 +529,7 @@ Sets the alignment mode of an element on the main axis of the container.
 | Center       | 1 | The child components are aligned in the center of the main axis. The space between the first component and the main-start is the same as that between the last component and the main-end.  |
 | End          | 2 | The child components are aligned with the end edge of the main axis. The last component is aligned with the main-end, and other components are aligned with the next one.     |
 | SpaceBetween | 3 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, the last component is aligned with the main-end, and the remaining components are distributed so that the space between any two adjacent components is the same.|
-| SpaceAround  | 4 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and cross-main are both half the size of the space between two adjacent components.|
+| SpaceAround  | 4 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and main-end are both half the size of the space between two adjacent components.|
 | SpaceEvenly  | 5 | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent components are the same.|
 
 ## FlexDirection
