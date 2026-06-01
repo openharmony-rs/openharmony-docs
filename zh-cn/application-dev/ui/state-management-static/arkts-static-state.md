@@ -48,19 +48,19 @@ import { State } from '@kit.ArkUI';
    
    ``` TypeScript
    import { Button, Column, ColumnOptions, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
-
+   
    @Observed
    class ObservedClass {
      value: string = '';
    }
-
+   
    class NotObservedClass {
      value: string;
      constructor(value: string) {
        this.value = value;
      }
    }
-
+   
    @Entry
    @Component
    struct Index {
