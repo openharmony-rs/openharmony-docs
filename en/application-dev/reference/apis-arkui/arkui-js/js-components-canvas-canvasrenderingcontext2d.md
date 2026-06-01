@@ -763,7 +763,7 @@ Draws a text stroke on the canvas.
   }
   ```
 
-  ![example-strokeText](figures/example-strokeTextpng)
+  ![example-strokeText](figures/example-strokeText.png)
 
 ### measureText
 
