@@ -26,6 +26,11 @@
 
   ArkTs-Sta示例:
   <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+  
+  ``` TypeScript
+  let audioCapturerState: audio.AudioState = capturer.state;
+  console.info(`Current state is: ${audioCapturerState}`)
+  ```
 
 - 方法2：注册stateChange监听AudioCapturer的状态变化：
 
