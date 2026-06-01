@@ -22,10 +22,10 @@
 
    ArkTS-Dyn示例：
    <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
-
+   
    let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
    // 创建audioVolumeGroupManager对象。
    async function loadVolumeGroupManager(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
