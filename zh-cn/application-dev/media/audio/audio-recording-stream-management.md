@@ -184,6 +184,11 @@
 
    ArkTS-Sta示例：
    <!-- @[cancel_ListenAudioStreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+   
+   ``` TypeScript
+   audioStreamManager.offAudioCapturerChange(audioCapturerChangeCallback);
+   console.info('CapturerChange Off is called');
+   ```
 
 4. （可选）使用[getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiocapturerinfoarray9)获取当前音频录制流的信息。该接口可获取音频录制流唯一ID、音频采集器信息以及音频录制设备信息。
 
