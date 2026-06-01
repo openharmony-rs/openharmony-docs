@@ -174,6 +174,7 @@
     - [If：条件渲染(ArkTS-Sta)](rendering-control/arkts-rendering-control-ifelse-sta.md)
   - 学习响应式环境变量<!--arkts-env-property-->
     - [\@Env：环境变量](arkts-env-system-property.md)
+    - [\@CustomEnv：自定义环境变量](arkts-custom-env-property.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
     - 组件导航(Navigation) (推荐)<!--arkts-navigation-navigation-->
