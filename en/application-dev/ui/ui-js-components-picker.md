@@ -73,7 +73,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001267647893](figures/en-us_image_0000001267647893.gif)
+
 
 > **NOTE**
 >
@@ -300,4 +300,4 @@ export default {
 ```
 
 
-![en-us_image_0000001267887877](figures/en-us_image_0000001267887877.gif)
+

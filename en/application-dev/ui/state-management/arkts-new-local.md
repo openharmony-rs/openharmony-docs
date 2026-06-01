@@ -504,7 +504,7 @@ struct DatePickerExample {
 }
 ```
 
-![local-date](figures/local-date.gif)
+
 
 ### Decorating Variables of the Map Type
 
