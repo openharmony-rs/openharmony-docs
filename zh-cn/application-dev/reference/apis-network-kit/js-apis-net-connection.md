@@ -2505,7 +2505,7 @@ try {
   console.info(`Succeeded to get uid: ${uid}`);
 } catch (e) {
   let err = e as BusinessError;
-   console.error(`Failed to get ConnectOwnerUid. errorCode: ${error.code} message:${error.message}`);
+   console.error(`Failed to get ConnectOwnerUid. errorCode: ${err.code} message:${err.message}`);
 }
 ```
 
