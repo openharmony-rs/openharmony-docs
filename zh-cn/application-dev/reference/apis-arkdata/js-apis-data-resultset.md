@@ -135,6 +135,7 @@ goTo(offset:number): boolean
 let predicatesgoto = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoto = rdbStore.query(predicatesgoto, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoto.then((resultSet) => {
+  resultSet.goTo(1);
   resultSet.close();
 }).catch((err) => {
   console.error('query failed');
@@ -167,6 +168,7 @@ goToRow(position: number): boolean
 let predicatesgotorow = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygotorow = rdbStore.query(predicatesgotorow, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygotorow.then((resultSet) => {
+  resultSet.goToRow(5);
   resultSet.close();
 }).catch((err) => {
   console.error('query failed');
@@ -193,6 +195,7 @@ goToFirstRow(): boolean
 let predicatesgoFirst = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoFirst = rdbStore.query(predicatesgoFirst, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoFirst.then((resultSet) => {
+  resultSet.goToFirstRow();
   resultSet.close();
 }).catch((err) => {
   console.error('query failed');
@@ -219,6 +222,7 @@ goToLastRow(): boolean
 let predicatesgoLast = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoLast = rdbStore.query(predicatesgoLast, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoLast.then((resultSet) => {
+  resultSet.goToLastRow();
   resultSet.close();
 }).catch((err) => {
   console.error('query failed');
