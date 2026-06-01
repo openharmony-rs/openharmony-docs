@@ -1504,7 +1504,7 @@ selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 
 selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入[筛选条件](#contactselectionoptions10)）。使用callback异步回调。
+调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入筛选条件[ContactSelectionOptions](#contactselectionoptions10)）。使用callback异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -4552,6 +4552,224 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 });
 ```
 
+## contact.syncContacts
+
+syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
+
+批量同步多个联系人至联系人数据库。每次最多可批量同步400个联系人。同步三方应用自身联系人至本机。调用方必须处于前台。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.WRITE_CONTACTS
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+**参数：**
+
+| 参数名  | 类型                | 必填 | 说明                                                         |
+| ------- | ------------------- | ---- | ------------------------------------------------------------ |
+| context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| mode | [ContactSyncMode](#contactsyncmode)                                  | 是   | 表示联系人同步模式的类型。                                           |
+| progress      | [ContactSyncProgress](#contactsyncprogress)                       | 是   | 表示联系人同步进度的相关信息。       |
+| contacts      | Array&lt;[Contact](#contact)&gt;                      | 是   | 表示需要同步至数据库的联系人信息数组。       |
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- | --------------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID表示创建成功。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
+| 16700002      | Invalid parameter value. |
+| 16700003      | Background usage is prohibited. |
+| 16700004      | The number of contacts exceeds the limit. |
+| 16700103      | User canceled. |
+
+**示例：**
+
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```js
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let mode = contact.ContactSyncMode.MODE_INCREMENTAL;
+const totalBatches: number = 3;
+const syncId: number = Date.now();
+const totalCount = 300;
+const batchSize = 100;
+for (let batch: number = 1; batch <= totalBatches; batch++) {
+  try {
+    const remaining: number = totalCount - (batch - 1) * batchSize;
+    const currentBatchSize: number = Math.min(batchSize, remaining);
+    const contacts: contact.Contact[] = [];
+    for (let i: number = 0; i < currentBatchSize; i++) {
+      const contactData: contact.Contact = {
+        name: {
+          fullName: `同步联系人${i + 1}_${batch}批次`
+          },
+        phoneNumbers: [{
+          phoneNumber: `1380000${String(i + 1).padStart(4, '0')}`,
+          labelName: '手机'
+        }],
+        emails: [{
+          email: `contact${i + 1}@example.com`,
+          labelName: '工作'
+          }]
+        };
+      contacts.push(contactData);
+    }
+    const progress: ContactSyncProgress = {
+      syncId: syncId,
+      currentBatch: batch,
+      totalBatches: totalBatches
+    };
+    console.info(`同步批次 ${batch}/${totalBatches}, 联系人数量: ${currentBatchSize}`);
+    let result = await contact.syncContacts(context, mode, progress, contacts);
+    console.info(`批次 ${batch} 同步成功，result: `  + JSON.stringify(result));
+  }
+  catch (err) {
+    const e = err as BusinessError;
+    console.error(`syncContacts 失败: code=${e.code}, message=${e.message}`);
+  }
+}
+```
+
+## contact.queryContactSyncInfo
+
+queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&gt;
+
+查询当前应用的联系人信息同步状态。返回空值表示应用未发起同步或同步已完成。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.WRITE_CONTACTS
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+**参数：**
+
+| 参数名  | 类型                | 必填 | 说明                                                         |
+| ------- | ------------------- | ---- | ------------------------------------------------------------ |
+| context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- | --------------------------------- |
+| Promise&lt;Array&lt;[ContactSyncInfo](#contactsyncinfo)&gt;&gt; | Promise对象，返回调用应用程序的联系人同步信息数组。如果没有正在同步的联系人，则返回null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
+
+**示例：**
+
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```js
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+const syncInfoList: ContactSyncInfo[] = await contact.queryContactSyncInfo(context) as ContactSyncInfo[];
+console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList));
+```
+
+## contact.importContactsViaUI
+
+importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
+
+通过UI交互批量导入多个联系人。每次最多可导入100个联系人。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+**参数：**
+
+| 参数名  | 类型                | 必填 | 说明                                                         |
+| ------- | ------------------- | ---- | ------------------------------------------------------------ |
+| context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| contacts      | Array&lt;[Contact](#contact)&gt;                      | 是   | 表示待导入数据库的联系人信息数组。       |
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- | --------------------------------- |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回联系人创建结果的数组。数组中返回值大于0表示该联系人创建成功，返回值为-1表示创建失败，返回值为-2表示用户未选择该联系人。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 801       | The specified SystemCapability name was not found. |
+| 16700001      | General error. |
+| 16700002      | Invalid parameter value. |
+| 16700004      | The number of contacts exceeds the limit. |
+| 16700103      | User canceled. |
+
+**示例：**
+
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```js
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let contactList: contact.Contact[] = [];
+let contactInfo: contact.Contact = {
+  name: {
+    fullName: 'xxx'
+  },
+  phoneNumbers: [{
+    phoneNumber: '138xxxxxx'
+  }]
+}
+contactList.push(contactInfo);
+let promise = contact.importContactsViaUI(context, contactList);
+promise.then((data) => {
+  console.info(`Succeeded in importing Contact via UI: data -> ${JSON.stringify(data)}`);
+});
+```
+
 ## ContactSelectionOptions<sup>10+</sup>
 
 选择联系人条件。
@@ -5314,3 +5532,51 @@ let website: contact.Website = {
 };
 ```
 
+## ContactSyncMode
+
+枚举，同步模式的类型。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+| 名称                  | 值 | 说明                               |
+| --------------------- | ---- | ---------------------------------- |
+| MODE_INCREMENTAL    | 1 | 表示将在数据库中插入或更新云端和本地之间不同的联系人。<br/>**系统能力**：SystemCapability.Applications.Contacts |
+| MODE_CLOUD_BASED            | 2 | 表示所有本地联系人将被云联系人替换。当使用云覆盖本地模式进行批量同步时，在第一次批量同步期间会删除所有本地联系人（第三方联系人除外）。<br/>**系统能力**：SystemCapability.Applications.Contacts                 |
+
+## ContactSyncProgress
+
+联系人同步进度的信息。包含同步ID、当前批次和总批次。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+|                名称               |                  类型                 |  只读  | 可选    |        说明      |
+| --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
+| syncId        | number |  否  |  否   |  表示用于同步所有联系人的同步标识符。该值应从0开始。     |
+| currentBatch        | number |  否  |  否    | 表示要同步的当前联系人批次的标识符。值的范围是从1到totalBatches。     |
+| totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
+
+## ContactSyncInfo
+
+调用应用程序相关的联系人同步的信息。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+|                名称               |                  类型                 |  只读  | 可选    |        说明      |
+| --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
+| mode        | [ContactSyncMode](#contactsyncmode) |  否  |  否   |  联系人同步模式。     |
+| syncId        | number |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
+| completedBatches        | Array&lt;number&gt; |  否  |  否    | 表示已成功同步的联系人批次标识符数组。取值范围为1到totalBatches。      |
+| totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
+| lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳（毫秒）。|
