@@ -712,7 +712,7 @@ struct Index {
     this.toolbarList.push(
       new ToolBarV2Item({
         content: new ToolBarV2ItemText({
-          text: Long long long long long',
+          text: 'Long long long long long',
         }),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_share')
