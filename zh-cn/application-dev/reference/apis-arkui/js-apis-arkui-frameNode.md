@@ -5093,7 +5093,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 15 and will not be threw above API 24. [since 15 - 24] |
 
 **示例：**
 
@@ -5968,7 +5968,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
 
 **示例：**
 
@@ -6673,7 +6673,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): vo
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24]|
 
 **示例：** 
 
@@ -7288,7 +7288,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
 
 **示例：** 
 
