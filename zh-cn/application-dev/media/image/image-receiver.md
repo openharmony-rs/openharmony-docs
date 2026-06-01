@@ -38,6 +38,7 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
    async function initImageReceiver(): Promise<void> {
      // 创建ImageReceiver对象。createImageReceiver的参数不会对接收到的数据产生实际影响。
      let size: image.Size = { width: imageWidth, height: imageHeight };
+     // capacity为期望缓存数量，实际值由设备能力决定，此处8仅为示例值。
      let imageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
      // 获取预览流SurfaceId。
      let imageReceiverSurfaceId = await imageReceiver.getReceivingSurfaceId();
