@@ -119,7 +119,7 @@ rowsGap(value: LengthMetrics): T
 
 ### onVisibleIndexesChange
 
-onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
+onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 
 设置onVisibleIndexesChange回调函数。当LazyVGridLayout可视区域内子组件的索引值发生变化时触发回调，返回可视区域内子组件的起始索引值和结束索引值。使用callback异步回调。
 
@@ -136,6 +136,12 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
 | callback  | [OnVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback)&nbsp;\|&nbsp;undefined | 是  | onVisibleIndexesChange事件的回调函数。方法入参为undefined时，取消监听。 |
+
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前组件。 |
 
 ## 示例
 
