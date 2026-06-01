@@ -43,7 +43,7 @@ import { SegmentButton, SegmentButtonOptions } from '@kit.ArkUI';
 
 ## SegmentButton
 
-ArkTS-Dyn: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
+ArkTS-Dyn: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked?: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
 
 ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[], onItemClicked: Callback\<int\>, maxFontScale: double \| Resource, enableStateAnimation: boolean })
 
