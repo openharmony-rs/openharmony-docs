@@ -46,6 +46,13 @@
 
   ArkTs-Sta示例：
   <!-- @[listen_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+  
+  ``` TypeScript
+  capturer.onStateChange((capturerState: audio.AudioState) => {
+    console.info(`State change to: ${capturerState}`)
+    // ...
+  });
+  ```
 
 获取state后可对照[AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8)来进行相应的操作，比如显示录制结束的提示等。
 
