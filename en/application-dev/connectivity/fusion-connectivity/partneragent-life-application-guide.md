@@ -97,7 +97,7 @@ Call [bindDevice](../../reference/apis-connectivity-kit/js-apis-fusionConnectivi
 
 - Before registration, ensure that the device is paired with the local device over Bluetooth.
 
-- The name of the ability to be started is the name of the ability registered as **PartnerAgentExtensionAbility** in the [module.json5 configuration file](../../quick-start/module-configuration-file.md) of the project module, with the type tag set to **partnerAgent**. It must be the same as the **name** property of [extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities-tag) in the module-level [module.json5 configuration file](../../quick-start/module-configuration-file.md) of the application.
+- The name of the ability to be started is the name of the ability registered as **PartnerAgentExtensionAbility** in the [module.json5 configuration file](../../quick-start/module-configuration-file.md) of the project module, with the type tag set to **partnerAgent**. It must be the same as the **name** property of [extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities) in the module-level [module.json5 configuration file](../../quick-start/module-configuration-file.md) of the application.
 
 ```ts
 // Address information of the device to register.
