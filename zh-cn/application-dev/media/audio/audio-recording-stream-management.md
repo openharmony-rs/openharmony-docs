@@ -249,3 +249,49 @@
 
    ArkTS-Sta示例：
    <!-- @[get_CurrentAudioCapturerInfoArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+   
+   ``` TypeScript
+   async function getCurrentAudioCapturerInfoArray(updateCallback?:
+     (msg: string, isError: boolean) => void): Promise<void>{
+     // ...
+   
+     try {
+       let audioCapturerChangeInfoArray = await audioStreamManager.getCurrentAudioCapturerInfoArray();
+       console.info('getCurrentAudioCapturerInfoArray Get Promise Called');
+       // ...
+       audioCapturerChangeInfoArray.forEach((capturerChangeInfo: Readonly<audio.AudioCapturerChangeInfo>, i: int): void => {
+         console.info(`StreamId for ${i} is: ${capturerChangeInfo.streamId}`);
+         console.info(`Source for ${i} is: ${capturerChangeInfo.capturerInfo.source}`);
+         console.info(`Flag  ${i} is: ${capturerChangeInfo.capturerInfo.capturerFlags}`);
+   
+         // ...
+   
+         capturerChangeInfo.deviceDescriptors.forEach((descriptor: Readonly<audio.AudioDeviceDescriptor>, j: int): void => {
+           let sampleRate = descriptor.sampleRates.find((value: int, index: int, array: Array<int>): boolean => {
+             return index === 0;
+           });
+           let channelCount = descriptor.channelCounts.find((value: int, index: int, array: Array<int>): boolean => {
+             return index === 0;
+           });
+           console.info(`Id: ${i} : ${descriptor.id}`);
+           console.info(`Type: ${i} : ${descriptor.deviceType}`);
+           console.info(`Role: ${i} : ${descriptor.deviceRole}`);
+           console.info(`Name: ${i} : ${descriptor.name}`);
+           console.info(`Address: ${i} : ${descriptor.address}`);
+           console.info(`SampleRates: ${i} : ${sampleRate}`);
+           console.info(`ChannelCounts ${i} : ${channelCount}`);
+           console.info(`ChannelMask: ${i} : ${descriptor.channelMasks}`);
+         });
+       });
+       if (updateCallback) {
+         // ...
+       }
+     } catch (err) {
+       let error = err as Error;
+       console.error(`Invoke getCurrentAudioCapturerInfoArray failed, message is ${error.message}`);
+       // ...
+     }
+   
+     // ...
+   }
+   ```
