@@ -188,6 +188,27 @@ An error occurs when the Wi-Fi service performs a P2P-related operation.
 1. Disable and then enable the Wi-Fi function again.
 2. If the error persists, restart the device.
 
+## 2801001 P2P Module Error
+
+**Error Message**
+
+Wi-Fi P2P disabled.
+
+**Description**
+ 
+An error occurs when the Wi-Fi service performs a P2P-related operation.
+
+**Possible Causes**
+
+1. An exception occurs when the device is connecting to the Wi-Fi.
+2. Failed to enable the P2P service.
+3. An unknown error has occurred.
+
+**Solution**
+
+1. Disable and then enable the Wi-Fi function again.
+2. If the error persists, restart the device.
+
 ## 2501003 Failed to Open the Service
 
 **Error Message**
