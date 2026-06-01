@@ -209,7 +209,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
    
    // 开发者可以自行创建renderer流，播放音频。
    // ...
-       
+   
    // ...
    // 停止管线。
    OH_AudioSuiteEngine_StopPipeline(audioSuitePipeline);
