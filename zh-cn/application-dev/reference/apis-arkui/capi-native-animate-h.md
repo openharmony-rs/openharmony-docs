@@ -1,8 +1,8 @@
 # native_animate.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang-->
+<!--Designer: @hehongyang-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
