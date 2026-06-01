@@ -1198,6 +1198,7 @@ export class UIStyle {
   @Trace fontSize: number = 45;
   @Monitor(['info.value'])
   onValueChange(monitor: IMonitor): void {
+    // lastValue与curValue决定了如何修改this.color与this.fontSize变量的值
     let lastValue: number = monitor.value<number>()?.before as number;
     let curValue: number = monitor.value<number>()?.now as number;
     if (lastValue != 0) {
@@ -1222,13 +1223,19 @@ struct Index {
   build() {
     Column() {
       Text(`Important Value: ${this.textStyle.info.value}`)
+        .fontSize(20)
+        .margin(10)
         .fontColor(this.textStyle.color)
         .fontSize(this.textStyle.fontSize)
       Button('change!')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
+          // 使用随机数改变this.textStyle.info.value的值
           this.textStyle.info.value = Math.floor(Math.random() * 100) + 1;
         })
     }
+    .width('100%')
   }
 }
 ```

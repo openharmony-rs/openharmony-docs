@@ -80,6 +80,7 @@ struct Index {
         }
       })
     }
+    .width('100%')
   }
 }
 
@@ -92,16 +93,23 @@ struct Child {
   build() {
     Column() {
       Text(`${this.title}`)
+        .fontSize(20)
+        .margin(10)
         .fontColor(this.fontColor)
       Button('change to Title Two')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.changeFactory(2);
         })
       Button('change to Title One')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.changeFactory(1);
         })
     }
+    .width('100%')
   }
 }
 ```
