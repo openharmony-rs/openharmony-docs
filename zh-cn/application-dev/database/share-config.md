@@ -349,3 +349,34 @@ function watchConfigChanges() {
 ArkTs-Sta示例：
 <!-- @[watch_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+function watchConfigChanges() {
+  dataShare.createDataProxyHandle().then((dsProxyHelper: dataShare.DataProxyHandle) => {
+    const uris: string[] = [
+      'datashareproxy://com.samples.shareconfig.static/config1',
+      'datashareproxy://com.samples.shareconfig.static/config2'
+    ];
+    const config: dataShare.DataProxyConfig = {
+      type: dataShare.DataProxyType.SHARED_CONFIG,
+    };
+    const callback = (changes: dataShare.DataProxyChangeInfo[]): void => {
+      changes.forEach((change) => {
+        console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
+      });
+    };
+    // 监听配置变化
+    const listenResults: dataShare.DataProxyResult[] = dsProxyHelper.onDataChange(uris, config, callback);
+    listenResults.forEach((result) => {
+      console.info(`URI: ${result.uri}, Result: ${result.result}`);
+    });
+    // 取消监听配置变化
+    const unListenResults: dataShare.DataProxyResult[] = dsProxyHelper.offDataChange(uris, config, callback);
+    unListenResults.forEach((result) => {
+      console.info(`URI: ${result.uri}, Result: ${result.result}`);
+    });
+  }).catch((error: Error) => {
+    console.info('Error creating DataProxyHandle:', error);
+  });
+}
+```
+
