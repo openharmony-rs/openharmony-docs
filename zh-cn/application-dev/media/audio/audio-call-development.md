@@ -18,6 +18,8 @@
 
 该过程与[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)过程相似，关键区别在于audioRendererInfo参数和音频数据来源。audioRendererInfo参数中，音频流使用类型usage需设置为VoIP通话：STREAM_USAGE_VOICE_COMMUNICATION。
 
+ArkTs-Dyn示例：
+
 <!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
 
 ``` TypeScript
@@ -199,11 +201,17 @@ async function release() {
 }
 ```
 
+ArkTs-Sta示例：
+
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
+
 ## 使用AudioCapturer录制本端的通话声音
 
 该过程与[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)过程相似，关键区别在于audioCapturerInfo参数和音频数据流向。audioCapturerInfo参数中音源类型source需设置为语音通话：SOURCE_TYPE_VOICE_COMMUNICATION。
 
 所有录制均需要申请麦克风权限：ohos.permission.MICROPHONE，申请方式请参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+
+ArkTs-Dyn示例：
 
 <!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
 
@@ -348,3 +356,7 @@ async function release() {
   }
 }
 ```
+
+ArkTs-Sta示例：
+
+<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
