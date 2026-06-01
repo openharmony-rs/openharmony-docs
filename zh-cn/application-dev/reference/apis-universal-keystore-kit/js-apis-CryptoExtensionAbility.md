@@ -54,8 +54,6 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 
 [HuksCryptoExtensionResult](#hukscryptoextensionresult)中的certs数组中的元素。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 | 名称 | 类型    | 只读 | 可选 | 说明  |
@@ -68,8 +66,6 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 
 接口返回值的通用类型。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 | 名称 | 类型  | 只读 | 可选 | 说明 |
@@ -81,15 +77,13 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 | certs  | Array<[HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo)> | 否   | 是   | 证书。 |
 | property  | Array<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 否   | 是   | 属性。 |
 | outData  | Uint8Array | 否   | 是   | 返回的数据。 |
-| resourceId | string | 否 | 是 | 返回的资源ID。不返回此字段时默认为空。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| resourceId | string | 否 | 是 | 返回的资源ID。默认值为空。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CryptoExtensionAbility.onOpenResource
 
 onOpenResource(resourceId: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
 根据参数中的resourceId，打开UKey的密钥资源。使用Promise异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -131,8 +125,6 @@ onCloseResource(handle: string, params: Array\<huksExternalCrypto.HuksExternalCr
 
 根据参数中的handle，关闭UKey的密钥资源。使用Promise异步回调。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -171,8 +163,6 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onGetProperty(handle: string, propertyId: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
 根据参数中的handle和propertyId获取属性。使用Promise异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -260,8 +250,6 @@ onAuthUkeyPin(handle: string, params: Array\<huksExternalCrypto.HuksExternalCryp
 
 请求UKey认证PIN码。使用Promise异步回调。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -301,8 +289,6 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onGetUkeyPinAuthState(handle: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
 获取UKey的PIN码认证状态。使用Promise异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -344,8 +330,6 @@ onClearUkeyPinAuthState(handle: string, params: Array\<huksExternalCrypto.HuksEx
 
 清除应用维度PIN码的认证状态。使用Promise异步回调。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -383,8 +367,6 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onInitSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
 三段式初始化密钥会话操作。使用Promise异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -424,8 +406,6 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onUpdateSession(initHandle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
 三段式密钥会话更新数据操作。使用Promise异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -467,8 +447,6 @@ onFinishSession(initHandle: string, params: huks.HuksOptions): Promise\<HuksCryp
 
 三段式密钥会话结束操作。使用Promise异步回调。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -508,8 +486,6 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onExportCertificate(resourceId: string, params?: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
 查询指定resourceId下的证书。使用Promise异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -551,8 +527,6 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 onEnumCertificates(params?: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
 枚举Extension下所有UKey设备的证书信息。使用Promise异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
