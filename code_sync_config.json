@@ -6861,7 +6861,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventDecorator/entry/src/main/ets/pages/EventChangeParent.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":77,
 						"name":"EventChangeParent",
 						"start_line":18
 					}
@@ -7026,7 +7026,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorDeepStyle.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":74,
 						"name":"MonitorDeepStyle",
 						"start_line":19
 					}
