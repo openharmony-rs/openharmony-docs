@@ -267,6 +267,12 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
         case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION:
           // 此分支表示其他应用的非混音音频播放结束，系统可自行决定是否取消静音。
             break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_MUTE:
+          // 此分支表示系统已将音频静音。
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE:
+          // 此分支表示系统已将音频解除静音。
+            break;
         default:
             break;
     }
