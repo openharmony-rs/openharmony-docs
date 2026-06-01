@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @piggyguy; @jiyujia926; @hehongyang3-->
+<!--Designer: @piggyguy; @s10021109; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -314,7 +314,7 @@ Enumerates the crown actions.
 
 |Name               | Value| Description                                  |
 |-------------------| -- | ------------------------------------- |
-| BEGIN             | 0  | The crown starts to rotate.                         |
+| BEGIN<sup>(deprecated) </sup>             | 0  | The crown starts to rotate.<br> Note: This API is supported since API version 18 and deprecated since API version 24.                         |
 | UPDATE            | 1  | The crown is rotating.                           |
 | END                | 2  | The crown stops rotating.                         |
 
@@ -402,7 +402,7 @@ Enumerates divider modes.
 
 ## Edge
 
-Controls the alignment position of the scrollable component in the layout..
+Controls the alignment position of the scrollable component in the layout.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -436,15 +436,15 @@ Defines the sliding effect of the scrollable container.
 
 Sets the position of ellipsis.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Value| Description                                  |
 | ----- | --- | -------------------------------------- |
-| START  | 0 | An ellipsis is used at the start of the line of text.|
-| CENTER | 1 | An ellipsis is used at the center of the line of text.|
-| END | 2 | An ellipsis is used at the end of the line of text.|
+| START  | 0 | An ellipsis is used at the start of the line of text. This applies to single-line text scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| CENTER | 1 | An ellipsis is used at the center of the line of text. This applies to single-line text scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| END | 2 | An ellipsis is used at the end of the line of text. This applies to single-line and multi-line text scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MULTILINE_START<sup>24+</sup> | 3 | An ellipsis is used at the start of the line of text. This applies to single-line and multi-line text scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| MULTILINE_CENTER<sup>24+</sup> | 4 | An ellipsis is used at the center of the line of text. This applies to single-line and multi-line text scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## EmbeddedType<sup>12+</sup>
 Enumerates the types of the providers that can be started by the **EmbeddedComponent**.
@@ -523,14 +523,14 @@ Sets the alignment mode of an element on the main axis of the container.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name          | Description                                      |
-| ------------ | ---------------------------------------- |
-| Start        | The child components are aligned with the start edge of the main axis. The first component is aligned with the main-start, and subsequent components are aligned with the previous one.   |
-| Center       | The child components are aligned in the center of the main axis. The space between the first component and the main-start is the same as that between the last component and the main-end.  |
-| End          | The child components are aligned with the end edge of the main axis. The last component is aligned with the main-end, and other components are aligned with the next one.     |
-| SpaceBetween | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, the last component is aligned with the main-end, and the remaining components are distributed so that the space between any two adjacent components is the same.|
-| SpaceAround  | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and cross-main are both half the size of the space between two adjacent components.|
-| SpaceEvenly  | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent components are the same.|
+| Name          | Value| Description                                      |
+| ------------ | ------ | ---------------------------------------- |
+| Start        | 0 | The child components are aligned with the start edge of the main axis. The first component is aligned with the main-start, and subsequent components are aligned with the previous one.   |
+| Center       | 1 | The child components are aligned in the center of the main axis. The space between the first component and the main-start is the same as that between the last component and the main-end.  |
+| End          | 2 | The child components are aligned with the end edge of the main axis. The last component is aligned with the main-end, and other components are aligned with the next one.     |
+| SpaceBetween | 3 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, the last component is aligned with the main-end, and the remaining components are distributed so that the space between any two adjacent components is the same.|
+| SpaceAround  | 4 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and main-end are both half the size of the space between two adjacent components.|
+| SpaceEvenly  | 5 | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent components are the same.|
 
 ## FlexDirection
 
@@ -542,12 +542,12 @@ Sets the direction in which child components are arranged in the **Flex** compon
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           | Description              |
-| ------------- | ---------------- |
-| Row           | The child components are arranged in the same direction as the main axis runs along the rows. |
-| RowReverse    | The child components are arranged opposite to the **Row** direction. |
-| Column        | The child components are arranged in the same direction as the main axis runs down the columns. |
-| ColumnReverse | The child components are arranged opposite to the **Column** direction.|
+| Name           | Value| Description              |
+| ------------- | ------ | ---------------- |
+| Row           | 0 | The child components are arranged in the same direction as the main axis runs along the rows. |
+| RowReverse    | 1 | The child components are arranged opposite to the **Row** direction. |
+| Column        | 2 | The child components are arranged in the same direction as the main axis runs down the columns. |
+| ColumnReverse | 3 | The child components are arranged opposite to the **Column** direction.|
 
 ## FlexWrap
 
@@ -559,11 +559,11 @@ Sets whether elements are arranged in a single row/column or multiple rows/colum
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Description                         |
-| ----------- | --------------------------- |
-| NoWrap      | The child components in the flex container are arranged in a single line. If any of them have minimum size constraints applied, the flex container does not forcibly shrink them when overflow occurs. |
-| Wrap        | The child components in the flex container are arranged in multiple lines, and they may overflow.  |
-| WrapReverse | The child components in the flex container are reversely arranged in multiple lines, and they may overflow.|
+| Name         | Value| Description                         |
+| ----------- | ------ | --------------------------- |
+| NoWrap      | 0 | The child components in the flex container are arranged in a single line. If any of them have minimum size constraints applied, the flex container does not forcibly shrink them when overflow occurs. |
+| Wrap        | 1 | The child components in the flex container are arranged in multiple lines, and they may overflow.  |
+| WrapReverse | 2 | The child components in the flex container are reversely arranged in multiple lines, and they may overflow.|
 
 ## FontStyle
 
@@ -665,7 +665,7 @@ Sets the direction of the linear gradient.
 
 | Name         | Description   |
 | ----------- | ----- |
-| Left        | Right to left.|
+| Left        | From right to left.|
 | Top         | From bottom to top.|
 | Right       | From left to right.|
 | Bottom      | From top to bottom.|
@@ -685,11 +685,11 @@ Sets the horizontal alignment mode of child components.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Description          |
-| ------ | ------------ |
-| Start  | Aligned with the start edge in the same direction as the language in use.|
-| Center | Aligned with the center. This is the default alignment mode.|
-| End    | Aligned with the end edge in the same direction as the language in use. |
+| Name    | Value| Description          |
+| ------ | ------ | ------------ |
+| Start  | 0 | Aligned with the start edge in the same direction as the language in use.|
+| Center | 1 | Aligned with the center. This is the default alignment mode.|
+| End    | 2 | Aligned with the end edge in the same direction as the language in use. |
 
 ## HoverEffect<sup>8+</sup>
 
@@ -699,12 +699,12 @@ Sets the hover effect of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Description            |
-| --------- | -------------- |
-| Auto      | Default hover effect.|
-| Scale     | Zoom-in and zoom-out effect.       |
-| Highlight | Background fade-in and fade-out effect.  |
-| None      | No effect.        |
+| Name       | Value| Description            |
+| --------- | --- | -------------- |
+| None      | 0 | No effect.        |
+| Scale     | 2 | Zoom-in/Zoom-out effect.       |
+| Highlight | 3 | Background fade-in/fade-out effect.  |
+| Auto      | 4 | Default hover effect.|
 
 ## HitTestMode<sup>9+</sup>
 
@@ -716,14 +716,14 @@ Sets the response logic and node blocking rules for the hit test.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Description                                      |
-| ----------- | ---------------------------------------- |
-| Default     | Default hit test mode. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Block       | The node itself responds to the hit test and blocks the hit test of child nodes, sibling nodes, and ancestor nodes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Transparent | Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| None        | The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
-| BLOCK_HIERARCHY<sup>20+</sup>   | The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| BLOCK_DESCENDANTS<sup>20+</sup> | The node itself does not respond to the hit test, and all its descendants (children, grandchildren, and more) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| Name         | Value| Description                                      |
+| ----------- | --- | ---------------------------------------- |
+| Default     | 0 | Default hit test mode. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Block       | 1 | The node itself responds to the hit test and blocks the hit test of child nodes, sibling nodes, and ancestor nodes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Transparent | 2 | Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| None        | 3 | The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
+| BLOCK_HIERARCHY<sup>20+</sup>   | 4 | The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | The node itself does not respond to the hit test, and all its descendants (children, grandchildren, and more) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## HeightBreakpoint<sup>13+</sup>
 
@@ -776,14 +776,14 @@ Sets the alignment mode of an element on the cross axis of the container.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Description                                      |
-| -------- | ---------------------------------------- |
-| Auto     | The default configuration of the flex container is used.                          |
-| Start    | The items in the flex container are aligned with the cross-start edge.                   |
-| Center   | The items in the flex container are centered along the cross axis.                   |
-| End      | The items in the flex container are aligned with the cross-end edge.                   |
-| Stretch  | The items in the flex container are stretched and padded along the cross axis. If the flex container has the **Wrap** attribute set to **FlexWrap.Wrap** or **FlexWrap.WrapReverse**, the items are stretched to the cross size of the widest element on the current row or column. In other cases, the items are stretched to the container size regardless of whether their size is set.|
-| Baseline | The items in the flex container are aligned in such a manner that their text baselines are aligned along the cross axis.                 |
+| Name      | Value| Description                                      |
+| -------- | ------ | ---------------------------------------- |
+| Auto     | 0 | The default configuration of the flex container is used.                          |
+| Start    | 1 | The items in the flex container are aligned with the cross-start edge.                   |
+| Center   | 2 | The items in the flex container are centered along the cross axis.                   |
+| End      | 3 | The items in the flex container are aligned with the cross-end edge.                   |
+| Stretch  | 4 | The items in the flex container are stretched and padded along the cross axis. If the flex container has the **Wrap** attribute set to **FlexWrap.Wrap** or **FlexWrap.WrapReverse**, the items are stretched to the cross size of the widest element on the current row or column. In other cases, the items are stretched to the container size regardless of whether their size is set.|
+| Baseline | 5 | The items in the flex container are aligned in such a manner that their text baselines are aligned along the cross axis.                 |
 
 ## ImageRepeat
 
@@ -939,6 +939,8 @@ Sets the line break rule.
 | BALANCED     | 2 | Without splitting words, the width of each line in a paragraph is the same as much as possible.  |
 
 ## MouseButton<sup>8+</sup>
+
+Enumerates the mouse button types.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1190,7 +1192,7 @@ Sets how menu display is triggered.
 | Name        | Description           |
 | ---------- | ------------- |
 | LongPress  | The menu is displayed when the component is long-pressed.  |
-| RightClick | Shows the shortcut menu by right-clicking the text.|
+| RightClick | The menu is displayed when the component is right-clicked.|
 
 ## RenderFit<sup>10+</sup>
 
@@ -1240,7 +1242,7 @@ Enumerates rendering strategies for drawing rounded corners.
 | Name                                | Value| Description                                      |
 | ---------------------------------- | --- | ---------------------------------------- |
 | FAST | 0 | Online rendering mode. The content to be rendered is clipped with rounded corners and directly rendered to the main canvas.<br> Note: Online rendering may cause display anomalies in certain scenarios. For example, when blur effects are applied within rounded corner components, background colors may interact and create gradient overlay effects. For detailed behavior, see [Example 3: Configuring Offscreen Rounded Corners](./ts-universal-attributes-border.md#example-3-configuring-offscreen-rounded-corners).|
-| OFFSCREEN | 1 | Offscreen rendering mode. The content to be rendered is first rendered to the offscreen canvas without rounded corners, and then clipped with rounded corners and rendered to the main canvas.<br> **NOTE**<br>1. Compared with online rendering, offscreen rendering requires additional performance overhead.<br>2. In offscreen rendering, the content is first rendered on an additional canvas, and then rendered on the main canvas.<br>3. Use offscreen rendering primarily for multi-layer components requiring rounded corners. For single components, it has effect only when the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, [background color](./ts-universal-attributes-background.md), or [foreground color](./ts-universal-attributes-foreground-color.md) is configured. |
+| OFFSCREEN | 1 | Offscreen rendering mode. The content to be rendered is first rendered to the offscreen canvas without rounded corners, and then clipped with rounded corners and rendered to the main canvas.<br> **NOTE**<br>1. Compared with online rendering, offscreen rendering requires additional performance overhead.<br>2. In offscreen rendering, the content is first rendered on an additional canvas, and then rendered on the main canvas.<br>3. Use offscreen rendering primarily for multi-layer components requiring rounded corners. For single components, it has effect only when the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, [background](./ts-universal-attributes-background.md), or [foreground color](./ts-universal-attributes-foreground-color.md) is configured. |
 
 ## ScrollSource<sup>12+</sup>
 
@@ -1282,10 +1284,10 @@ Sets the trigger status type of a touch operation.
 
 | Name   | Value  | Description                              |
 | ------- | ---- | ---------------------------------- |
-| Down   | -    | A finger is pressed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| Up     | -    | A finger is lifted.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| Move   | -    | A finger moves on the screen in pressed state.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| Cancel | -    | A touch event is canceled. Examples: 1. touching the home button to return to the home screen while keeping a finger on the screen; 2. folding a foldable phone to switch to the external screen while keeping a finger on the screen.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
+| Down   | 0    | A finger is pressed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
+| Up     | 1    | A finger is lifted.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
+| Move   | 2    | A finger moves on the screen in pressed state.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
+| Cancel | 3    | A touch event is canceled. For example: 1. A cancel event is fired when the user holds a finger on the screen and taps the home button to return to the home screen. 2. <!--RP2--><!--RP2End-->A cancel event is fired when a stylus is used during an active finger touch.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
 | HOVER_ENTER<sup>20+</sup> | 9    | A finger is pressed in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
 | HOVER_MOVE<sup>20+</sup>   | 10    | The mouse pointer moves in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
 | HOVER_EXIT<sup>20+</sup> | 11    | The mouse pointer exits the component in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
@@ -1299,10 +1301,10 @@ Sets the recommended height of the title bar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Description                        |
-| ----------- | -------------------------- |
-| MainOnly    | Recommended height (56 vp) of the title bar when only the main title is available.     |
-| MainWithSub | Recommended height (82 vp) of the title bar when both the main title and subtitle exist.|
+| Name         | Value|Description                        |
+| ----------- | ----| -------------------------- |
+| MainOnly    | 0 | Recommended height (56 vp) of the title bar when only the main title is available.     |
+| MainWithSub | 1 | Recommended height (82 vp) of the title bar when both the main title and subtitle exist.|
 
 ## TransitionType
 
@@ -1319,6 +1321,21 @@ Sets the transition type.
 | All    | 0 | The transition takes effect in all scenarios.|
 | Insert | 1 | The transition takes effect when a component is inserted or displayed.|
 | Delete | 2 | The transition takes effect when a component is deleted or hidden.|
+
+## CompetitionStrategy<sup>24+</sup>
+
+Defines whether the dispatched event is a competitive gesture. In the competitive scenario, only one of the original node and target node of the gesture responds. In the non‑competitive scenario, both nodes can respond simultaneously.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name               | Value | Description                        |
+| ------------------- | --- | ---------------------------- |
+| DEFAULT | 0   | Indicates that the dispatched event is a non‑competitive gesture.|
+| COMPETITION | 1   | Indicates that the dispatched event is a competitive gesture.|
 
 ## TextAlign
 
@@ -1463,11 +1480,11 @@ Sets the vertical alignment mode of child components.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Description          |
-| ------ | ------------ |
-| Top    | Top aligned.       |
-| Center | Center aligned. This is the default alignment mode.|
-| Bottom | Bottom aligned.       |
+| Name    | Value| Description          |
+| ------ | ------ | ------------ |
+| Top    | 0 | Top aligned.       |
+| Center | 1 | Center aligned. This is the default alignment mode.|
+| Bottom | 2 | Bottom aligned.       |
 
 ## Visibility
 
@@ -1481,8 +1498,8 @@ Defines the visibility and layout placeholder status of the component.
 
 | Name     | Value| Description              |
 | ------- | ---------------- | ---------------- |
-| Hidden  | 1 | The component is hidden, and a placeholder is used for it in the layout.   |
 | Visible | 0 | The component is visible.             |
+| Hidden  | 1 | The component is hidden, and a placeholder is used for it in the layout.   |
 | None    | 2 | The component is hidden. It is not involved in the layout, and no placeholder is used for it.|
 
 ## Week
@@ -1529,7 +1546,7 @@ Sets the word break rule.
 | ----- | --- | -------------------------------------- |
 | NORMAL  | 0 | Word breaks can occur between any two characters for Chinese, Japanese, and Korean (CJK) text, but can occur only at a space character for non-CJK text (such as English).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | BREAK_ALL | 1 | Line breaks can occur between any two characters for non-CJK text. For CJK text, the effect is the same as that of **NORMAL**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| BREAK_WORD | 2 | This option has the same effect as **BREAK_ALL** for non-CJK text, except that it preferentially wraps lines at appropriate characters (for example, spaces) If no breakpoints are found, it breaks between any two characters. For CJK text, the effect is the same as that of **NORMAL**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| BREAK_WORD | 2 | This option has the same effect as **BREAK_ALL** for non-CJK text, except that it preferentially wraps lines at appropriate characters (for example, spaces). If no breakpoints are found, it breaks between any two characters. For CJK text, the effect is the same as that of **NORMAL**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | HYPHENATION<sup>18+</sup> | 3 | Attempts are made to hyphenate words at the end of each line using a hyphen. If a hyphen cannot be added, this option behaves like **BREAK_WORD**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## XComponentType<sup>10+</sup>
