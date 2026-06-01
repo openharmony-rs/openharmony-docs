@@ -161,3 +161,4 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 | ---------------------- | ---- | ------------------------------ |
 | COMPATIBILITY     | compatibility    | 支持消除兼容性告警。 |
 | SYSCAP     | syscap    | 支持消除多设备告警。 |
+| PERMISSION     | permission    | 支持消除权限告警。<br/>**起始版本：** 26.0.0 |
