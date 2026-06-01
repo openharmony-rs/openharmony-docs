@@ -717,9 +717,23 @@ Taihe提供了丰富的容器类型来满足不同的数据存储需求。这些
 - **持有者类型**：`taihe::string`
 - **视图类型**：`taihe::string_view`
 
+此外，Taihe既提供仅支持UTF-16编码字符串的C++类型，也支持同时兼容UTF-8和UTF-16编码的C++类型。
+
+UTF-16编码的字符串C++类型：
+
+- **持有者类型**：`taihe::u16string`
+- **视图类型**：`taihe::u16string_view`
+
+支持多种编码的字符串C++类型：
+
+- **持有者类型**：`taihe::common_string`
+- **视图类型**：`taihe::common_string_view`
+
 **创建字符串**
 
-`taihe::string`可以从C字符串、`std::string`或`std::string_view`创建，以下是一些示例：
+`taihe::string`可以从C字符串、`std::string`或`std::string_view`创建。
+
+`taihe::string`创建示例：
 
 ```cpp
 #include <taihe/string.hpp>
@@ -739,14 +753,64 @@ taihe::string str3 = std_sv;
 taihe::string str4("Hello", 5);
 ```
 
+`taihe::u16string`可以从`std::u16string`或`std::u16string_view`创建。
+
+`taihe::u16string`创建示例：
+
+```cpp
+// 从std::u16string创建
+std::u16string std_u16str = u"Hello";
+taihe::u16string u16str1 = std_u16str;
+
+// 从std::u16string_view创建
+std::u16string_view std_u16sv = u"World";
+taihe::u16string u16str2 = std_u16sv;
+
+// 指定长度创建UTF-16编码字符串
+taihe::u16string u16str3(u"Hello", 5);
+```
+
+`taihe::common_string`可以从C字符串、`std::string`、`std::string_view`、`std::u16string`或`std::u16string_view`创建。
+
+`taihe::common_string`创建示例：
+
+```cpp
+// 从C字符串创建
+taihe::common_string cmstr1 = "Hello, Taihe!";
+
+// 从std::string创建
+std::string std_str = "Hello";
+taihe::common_string cmstr2 = std_str;
+
+// 从std::string_view创建
+std::string_view std_sv = "World";
+taihe::common_string cmstr3 = std_sv;
+
+// 从std::u16string创建
+std::u16string std_u16str = u"Hello";
+taihe::common_string cmstr4 = std_u16str;
+
+// 从std::u16string_view创建
+std::u16string_view std_u16sv = u"World";
+taihe::common_string cmstr5 = std_u16sv;
+
+// 指定长度创建UTF-8编码字符串
+taihe::common_string cmstr6("Hello", 5);
+
+// 指定长度创建UTF-16编码字符串
+taihe::common_string cmstr7(u"Hello", 5);
+```
+
 **字符串操作**
 
-以下是一些常用的字符串操作示例：
+Taihe字符串提供常用的字符串操作。
+
+`taihe::string`常用操作示例：
 
 ```cpp
 // 字符串连接
-taihe::string hello = "Hello";
-taihe::string world = "World";
+taihe::string hello{"Hello"};
+taihe::string world{"World"};
 taihe::string greeting = hello + ", " + world + "!";
 
 // 使用concat函数连接多个字符串
@@ -770,9 +834,54 @@ std::string_view view = greeting;  // 隐式转换
 const char* c_str = greeting.c_str();
 ```
 
+`taihe::u16string`常用操作示例：
+
+```cpp
+// 字符串连接
+taihe::u16string hello{u"Hello", 5};
+taihe::u16string world{u"World", 5};
+std::u16string tmp1{u", "};
+std::u16string tmp2{u"!"};
+taihe::u16string greeting = hello + tmp1 + world + tmp2;
+
+// 使用concat函数连接多个字符串
+taihe::u16string result = taihe::concat({hello, tmp1, world, tmp2});
+
+// 获取子串
+taihe::u16string sub = greeting.substr(0, 5);  // "Hello"
+
+// 访问字符
+char16_t first = greeting[0];  // u'H'
+char16_t last = greeting.back();  // u'!'
+
+// 获取长度和判空
+size_t len = greeting.size();
+bool is_empty = greeting.empty();
+
+// 转换为std::u16string_view
+std::u16string_view view = greeting;  // 隐式转换
+```
+
+`taihe::common_string`常用操作示例：
+
+```cpp
+// common_string作为支持多编码字符串，支持通用的操作
+
+// 字符串判空
+taihe::common_string hello = "Hello";
+bool is_empty = hello.empty();
+
+// 判断字符串编码
+taihe::string_encoding str_encoding = hello.encoding();
+bool is_utf8 = hello.is_utf8(); // true
+bool is_utf16 = hello.is_utf16(); // false
+```
+
 **字符串视图**
 
-在函数参数中建议使用`taihe::string_view`以避免引用计数的开销：
+在函数参数中建议使用`taihe::string_view`、`taihe::u16string_view`与`taihe::common_string_view`以避免引用计数的开销：
+
+`taihe::string_view`使用示例：
 
 ```cpp
 void process_string(taihe::string_view sv) {
@@ -780,7 +889,7 @@ void process_string(taihe::string_view sv) {
 }
 
 // 调用时可以传入string或string_view
-taihe::string str = "Hello";
+taihe::string str{"Hello"};
 process_string(str);  // 自动转换为string_view
 process_string("World");  // 直接从C字符串创建string_view
 
@@ -789,6 +898,57 @@ std::string std_str = "Taihe";
 process_string(std_str);
 std::string_view std_sv = "Taihe";
 process_string(std_sv);
+```
+
+`taihe::u16string_view`使用示例：
+
+```cpp
+void using_u16string(taihe::u16string_view sv) {}
+
+// 调用时可以传入u16string或u16string_view
+taihe::u16string u16str{u"Hello", 5};
+using_u16string(u16str);  // 自动转换为u16string_view
+
+// 也可以传入std::string或std::string_view
+std::u16string std_u16str = u"Taihe";
+using_u16string(std_u16str);
+std::u16string_view std_u16sv = u"Taihe";
+using_u16string(std_u16sv);
+```
+
+`taihe::common_string_view`使用示例：
+
+```cpp
+void using_cmstring(taihe::common_string_view sv) {}
+
+// 调用时可以传入string、string_view、u16string或u16string_view
+taihe::string str{"Hello"};
+using_cmstring(str);  // 自动转换为common_string_view
+using_cmstring("World");  // 直接从C字符串创建common_string_view
+taihe::u16string u16str{u"Hello", 5};
+using_cmstring(u16str);  // 自动转换为common_string_view
+
+// 也可以传入std::string、std::string_view、std::string或std::string_view
+std::string std_str = "Taihe";
+using_cmstring(std_str);
+std::string_view std_sv = "Taihe";
+using_cmstring(std_sv);
+std::u16string std_u16str = u"Taihe";
+using_cmstring(std_u16str);
+std::u16string_view std_u16sv = u"Taihe";
+using_cmstring(std_u16sv);
+```
+
+**编码转换操作**
+
+```cpp
+// UTF-8编码字符串转UTF-16编码字符串
+taihe::string u8str1("Hello");
+taihe::u16string u16str1{taihe::common_string(u8str1)};
+
+// UTF-16编码字符串转UTF-8编码字符串
+taihe::u16string u16str2(u"Hello", 5);
+taihe::u16string u8str2{taihe::common_string(u16str2)};
 ```
 
 ### 数组（Array）
