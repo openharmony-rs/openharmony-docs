@@ -91,6 +91,17 @@
 
    ArkTS-Sta示例：
    <!-- @[get_StreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+   
+   ``` TypeScript
+   import audio from '@ohos.multimedia.audio';
+   import { Callback } from '@ohos.base';
+   import {
+     Entry, Component, State, Scroll, Column, Text, Color, FlexAlign, HorizontalAlign, ClickEvent
+   } from '@kit.ArkUI';
+   
+   let audioManager = audio.getAudioManager();
+   let audioStreamManager = audioManager.getStreamManager();
+   ```
 
 2. 使用[on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)监听音频录制流更改事件。 如果音频流监听应用需要在音频录制流状态变化、设备变化时获取通知，可以订阅该事件。
 
