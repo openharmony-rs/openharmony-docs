@@ -26,7 +26,9 @@ getUserDownloadDir(): string
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
-**设备行为差异**：该接口在2in1中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异**：
+- API版本26.0.0+：该接口在2in1和tablet中可正常调用，在其他设备类型中返回801错误码。
+- API版本11-24：该接口在2in1可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -65,7 +67,9 @@ getUserDesktopDir(): string
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
-**设备行为差异**：该接口在2in1中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异**：
+- API版本26.0.0+：该接口在2in1和tablet中可正常调用，在其他设备类型中返回801错误码。
+- API版本11-24：该接口在2in1可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -104,7 +108,9 @@ getUserDocumentDir(): string
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
-**设备行为差异**：该接口在2in1中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异**：
+- API版本26.0.0+：该接口在2in1和tablet中可正常调用，在其他设备类型中返回801错误码。
+- API版本11-24：该接口在2in1可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
