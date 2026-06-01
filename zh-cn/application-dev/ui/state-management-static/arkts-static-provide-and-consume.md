@@ -238,7 +238,7 @@ import { Consume, Provide } from '@kit.ArkUI';
    <!-- @[ConsumeDefaultValueExample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ConsumeDefaultValueExample.ets) -->
    
    ``` TypeScript
-   import { Column, Component, Consume, Entry, Provide, State, Text } from '@kit.ArkUI';
+   import { Column, Component, Consume, Entry, State, Text } from '@kit.ArkUI';
    
    @Component
    struct Child {
