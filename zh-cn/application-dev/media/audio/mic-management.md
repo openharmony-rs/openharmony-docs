@@ -78,6 +78,18 @@
 
    ArkTS-Sta示例：
    <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
+   
+   ``` TypeScript
+   async function on() {
+     let manager = audioVolumeGroupManager;
+     if (manager === undefined) {
+       return;
+     }
+     manager.onMicStateChange((micStateChange: audio.MicStateChangeEvent) => {
+       console.info(`Current microphone status is: ${micStateChange.mute} `);
+     });
+   }
+   ```
 
 3. 调用[isMicrophoneMute](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9)查询麦克风当前静音状态，返回true为静音，false为非静音。
 
