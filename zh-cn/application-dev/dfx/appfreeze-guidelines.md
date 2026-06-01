@@ -600,7 +600,9 @@ DisplayPowerInfo:powerState:AWAKE
 
 **方式一：通过HiAppEvent接口订阅**
 
-应用需要在AppScope/app.json5文件中配置如下环境变量：
+从API版本26.0.0开始，系统默认将AppFreeze增强日志内容合并到APP_FREEZE事件的[external_log](hiappevent-watcher-freeze-events.md#事件字段说明)指向的日志结尾。
+
+如果开发者需要单独的AppFreeze增强日志文件，可以在AppScope/app.json5文件中配置如下环境变量：
 
    ```text
    "appEnvironments": [
