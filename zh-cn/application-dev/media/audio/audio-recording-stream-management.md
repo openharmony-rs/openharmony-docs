@@ -16,7 +16,7 @@
 
 - 方法1：直接查看AudioCapturer的[属性](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#属性)state：
 
-  ArkTs-Dyn示例：
+ArkTS-Dyn示例：
   <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
   ``` TypeScript
