@@ -3958,7 +3958,7 @@ async function test(){
     console.info('Succeeded in getting CurrentTrack');
     myTrackId = trackId;
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get CurrentTrack, error:${error}`);
+    console.error(`Failed to get CurrentTrack, error: ${error}`);
   });
 }
 ```
