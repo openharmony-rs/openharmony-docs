@@ -703,7 +703,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 
 **描述**
 
-调整屏幕的分辨率。<br> 调用该方法可以设置录屏屏幕数据的分辨率，width为屏幕的宽度，height为屏幕的高度。<br> 该接口目前仅支持录屏取码流的场景，不支持录屏存文件的场景。并且调用该接口的调用者以及视频数据的消费者需要确保自身能够支持收到的视频数据分辨率发生变化。<br> 设置自动跟随旋转配置[OH_AVScreenCapture_StrategyForCanvasFollowRotation](#oh_avscreencapture_strategyforcanvasfollowrotation)时，不支持同时调用该接口设置录屏屏幕数据的分辨率。该接口仅允许在录屏运行阶段调用。
+调整屏幕的分辨率。<br> 调用该方法可以设置录屏屏幕数据的分辨率，width为屏幕的宽度，height为屏幕的高度。<br> 该接口目前仅支持录屏取码流的场景，不支持录屏存文件的场景。并且调用该接口的调用者以及视频数据的消费者需要确保自身能够支持收到的视频数据分辨率发生变化。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -716,6 +716,11 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | int32_t width | 录屏屏幕的宽度。单位为像素（px）。 |
 | int32_t height | 录屏屏幕的高度。单位为像素（px）。|
+
+**约束与限制**
+
+- 该接口仅允许在录屏运行阶段调用。
+- 设置自动跟随旋转配置[OH_AVScreenCapture_StrategyForCanvasFollowRotation](#oh_avscreencapture_strategyforcanvasfollowrotation)时，不支持同时调用该接口调整录屏分辨率。
 
 **返回：**
 
