@@ -64,7 +64,7 @@
 
    目前此订阅接口在单进程多[AudioManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md)实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
 
-  ArkTs-Dyn示例：
+  ArkTS-Dyn示例：
    <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
 
    ``` TypeScript
@@ -76,7 +76,7 @@
    }
    ```
 
-  ArkTs-Sta示例：
+  ArkTS-Sta示例：
   <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
   
   ``` TypeScript
@@ -93,7 +93,7 @@
 
 3. 调用[isMicrophoneMute](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9)查询麦克风当前静音状态，返回true为静音，false为非静音。
 
-  ArkTs-Dyn示例：
+  ArkTS-Dyn示例：
    <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
 
    ``` TypeScript
@@ -106,7 +106,7 @@
    }
    ```
 
-  ArkTs-Sta示例：
+  ArkTS-Sta示例：
   <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
   
   ``` TypeScript
