@@ -22,8 +22,8 @@ API版本26.0.0之前，其父组件支持[WaterFlow](ts-container-waterflow.md)
 > - LazyVGridLayout组件高度默认自适应内容，不建议设置高度、高度约束或宽高比，设置后会导致显示异常。
 > - 当父组件设置主轴方向尺寸时，LazyVGridLayout按照父组件可视区域进行懒加载；当父组件未设置主轴方向尺寸时，LazyVGridLayout会被内容撑开，导致所有子组件都会被加载布局。
 > - 该组件在不同父组件下的懒加载支持条件如下：
->   1. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向[FlexDirection](ts-appendix-enums.md#flexdirection)设置为FlexDirection.Column的情况下支持懒加载。在WaterFlow的多列模式或布局方向为FlexDirection.Row或FlexDirection.RowReverse的情况下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
->   2. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](ts-container-list.md#listdirection)属性设置为Axis.Vertical）。在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了lanes、chainAnimation、scrollSnapAlign属性中的任意一个时，该组件的懒加载功能会失效。
+>   1. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向[FlexDirection](ts-appendix-enums.md#flexdirection)设置为FlexDirection.Column的情况下支持懒加载。在WaterFlow的多列模式或横向布局（FlexDirection.Row或FlexDirection.RowReverse）下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
+>   2. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](ts-container-list.md#listdirection)属性设置为Axis.Vertical）。在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个时，该组件的懒加载功能会失效。
 >   3. 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](ts-container-scroll.md#scrollable)属性设置为ScrollDirection.Vertical）。在非竖直方向的Scroll中使用该组件会导致应用崩溃。
 > - 当懒加载功能生效时，该组件仅加载父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容。
 > - 此处的父组件指最靠近当前组件的上层滚动组件，其他文档下的具体含义请参考对应内容。
@@ -56,8 +56,10 @@ columnsTemplate('repeat(auto-fill, track-size)')是设置固定列宽值为track
 
 columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用columnsGap为最小列间距，自动计算列数和实际列间距。
 
-其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包含一个有效列宽。<br/>
-auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
+其中repeat、auto-fit、auto-fill、auto-stretch为关键字。<br>
+track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包含一个有效列宽。<br/>
+auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。<br>
+auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
 
 设置为'0fr'时，该列的列宽为0，不显示子组件。设置为其他非法值时，子组件显示为固定1列。
 
@@ -85,7 +87,7 @@ columnsGap(value: LengthMetrics): T
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 列与列的间距。<br/>默认值：0vp |
+| value  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 列与列的间距。<br/>默认值：LengthMetrics.vp(0) |
 
 **返回值：**
 
@@ -107,7 +109,7 @@ rowsGap(value: LengthMetrics): T
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 行与行的间距。<br/>默认值：0vp |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 行与行的间距。<br/>默认值：LengthMetrics.vp(0) |
 
 **返回值：**
 
@@ -248,6 +250,7 @@ struct LazyVGridLayoutSample1 {
   build() {
     Column() {
       WaterFlow() {
+        // 第一个LazyVGridLayout：单列布局
         LazyVGridLayout() {
           LazyForEach(this.arr1, (item:number)=>{
             Text('item' + item.toString())
@@ -258,13 +261,14 @@ struct LazyVGridLayoutSample1 {
               .textAlign(TextAlign.Center)
           })
         }
-        .columnsTemplate('1fr')
-        .rowsGap(LengthMetrics.vp(10))
+        .columnsTemplate('1fr') // 单列布局
+        .rowsGap(LengthMetrics.vp(10)) // 行间距10vp
         // 从API版本26.0.0开始，新增onVisibleIndexesChange事件。
         .onVisibleIndexesChange((start: number, end: number) => {
           console.info('visible indexes: start= ' + 'start,' + 'end= ' + 'end');
       })
 
+        // 第二个LazyVGridLayout：双列布局
         LazyVGridLayout() {
           LazyForEach(this.arr2, (item:number)=>{
             Text('item' + item.toString())
@@ -275,9 +279,9 @@ struct LazyVGridLayoutSample1 {
               .textAlign(TextAlign.Center)
           })
         }
-        .columnsTemplate('1fr 1fr')
-        .rowsGap(LengthMetrics.vp(10))
-        .columnsGap(LengthMetrics.vp(10))
+        .columnsTemplate('1fr 1fr') // 双列布局，两列等宽
+        .rowsGap(LengthMetrics.vp(10)) // 行间距10vp
+        .columnsGap(LengthMetrics.vp(10)) // 列间距10vp
       }.padding(10)
       .rowsGap(10)
     }
@@ -285,6 +289,7 @@ struct LazyVGridLayoutSample1 {
     .backgroundColor('#DCDCDC')
   }
 
+  // 初始化数据源
   aboutToAppear(): void {
     for (let i = 0; i < 6; i++) {
       this.arr1.pushData(i);
