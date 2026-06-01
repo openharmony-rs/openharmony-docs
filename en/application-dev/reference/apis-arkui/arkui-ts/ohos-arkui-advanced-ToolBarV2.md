@@ -448,7 +448,7 @@ struct Index {
     this.toolbarList.push(new ToolBarV2Item({
       content: new ToolBarV2ItemText(
         {
-          text: Long long long long long'
+          text: 'Long long long long long'
         }
       ),
       icon: new ToolBarV2ItemImage({
@@ -582,7 +582,7 @@ struct Index {
     this.toolbarList.push(
       new ToolBarV2Item({
         content: new ToolBarV2ItemText({
-          text: 'Long long long long long long long long text',
+          text: 'Long long long long long',
           activatedColor: ColorMetrics.resourceColor($r('sys.color.font_primary'))
         }),
         icon: new ToolBarV2SymbolGlyph({
