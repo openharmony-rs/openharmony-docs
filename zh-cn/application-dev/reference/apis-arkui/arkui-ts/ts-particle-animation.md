@@ -1077,7 +1077,7 @@ struct ParticleExample {
                     {
                       from: 50,
                       to: -50,
-                      startMillis: 0,
+                      startMillis: 1000,
                       endMillis: 3000,
                       curve: Curve.EaseIn
                     },
@@ -1477,8 +1477,8 @@ struct ParticleExample5 {
               shape: ParticleEmitterShape.ANNULUS, // 环形发射器
               annulusRegion:{
                 center:{x:LengthMetrics.percent(0.5),y:LengthMetrics.percent(0.5)}, // 圆环的圆心坐标
-                innerRadius:LengthMetrics.vp(100), // 圆环的外圆半径
-                outerRadius:LengthMetrics.vp(120), // 圆环的内圆半径
+                innerRadius:LengthMetrics.vp(100), // 圆环的内圆半径
+                outerRadius:LengthMetrics.vp(120), // 圆环的外圆半径
                 startAngle:0, // 圆环的起始角度
                 endAngle:360 // 圆环的结束角度
               }
