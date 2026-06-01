@@ -343,13 +343,13 @@ ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguratio
 >
 > - 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用addWatermark接口。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
-
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **参数：**
 
@@ -381,8 +381,8 @@ ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import image from '@ohos.multimedia.image';
-import media from '@ohos.multimedia.media';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
 
 let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
 let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
@@ -400,8 +400,8 @@ if (watermark) {
 ArkTS-Sta示例：
 
 ```ts
-import image from '@ohos.multimedia.image';
-import media from '@ohos.multimedia.media';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
 
 let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
 let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
