@@ -6283,5 +6283,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/using-ohmidi.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":916,
+						"name":"create_midi_client",
+						"start_line":888
+					},
+					{
+						"end_line":1940,
+						"name":"open_ble_device",
+						"start_line":1888
+					},
+					{
+						"end_line":1273,
+						"name":"close_device",
+						"start_line":1218
+					},
+					{
+						"end_line":1288,
+						"name":"midi_received_callback",
+						"start_line":1276
+					},
+					{
+						"end_line":1368,
+						"name":"open_input_port",
+						"start_line":1318
+					},
+					{
+						"end_line":1420,
+						"name":"close_input_port",
+						"start_line":1370
+					},
+					{
+						"end_line":1473,
+						"name":"open_output_port",
+						"start_line":1423
+					},
+					{
+						"end_line":1519,
+						"name":"close_output_port",
+						"start_line":1475
+					},
+					{
+						"end_line":1568,
+						"name":"send_midi",
+						"start_line":1522
+					},
+					{
+						"end_line":1626,
+						"name":"ump_helper_functions",
+						"start_line":1604
+					}
+				]
+			}
+		]
 	}
 ]
