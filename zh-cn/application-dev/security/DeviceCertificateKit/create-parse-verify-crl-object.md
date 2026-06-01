@@ -11,7 +11,7 @@
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)和[加解密算法库模块](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)和[加解密算法库框架](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md)。
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    import { cryptoFramework } from '@kit.CryptoArchitectureKit';
