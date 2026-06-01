@@ -1912,7 +1912,7 @@ The available area is the space left for applications after the system UI (such 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on PC/2-in-1 devices and tablets. It does not work for other device types. To obtain the available screen area on the current device, you can use the **width** and **height** properties in [Display](#properties).
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices and tablets. It does not work for other device types. To obtain the available screen area on the current device, you can use the **width** and **height** properties in [Display](#attributes).
 
 **Return value**
 
