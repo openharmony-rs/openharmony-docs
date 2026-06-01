@@ -122,7 +122,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    napi_value GetSupportedFormats(napi_env env, napi_callback_info info)
    {
        Image_MimeType* mimeType = nullptr;
-       size_t length = 10;
+       size_t length = 0;
        Image_ErrorCode errCode = OH_ImageSourceNative_GetSupportedFormats(&mimeType, &length);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetSupportedFormats failed, "
