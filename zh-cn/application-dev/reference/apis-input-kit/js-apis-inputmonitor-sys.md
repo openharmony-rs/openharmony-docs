@@ -1758,7 +1758,7 @@ struct Index {
 
 queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
-查询最近的触屏输入事件，最多支持查询 100 条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。
+查询最近的触屏输入事件，最多支持查询100条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
