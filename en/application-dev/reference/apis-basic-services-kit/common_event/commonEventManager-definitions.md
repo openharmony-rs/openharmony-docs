@@ -239,7 +239,7 @@ Notifies the low memory state and package management should be started.
 
 ## Account Kit
 
-### COMMON_EVENT_MINORSMODE_ON<sup>12+<sup>
+### COMMON_EVENT_MINORSMODE_ON<sup>12+</sup>
 
 Indicates that the minor mode is enabled.
 
@@ -255,7 +255,7 @@ When the minor mode is enabled on the device, the event notification service is 
 
 
 
-### COMMON_EVENT_MINORSMODE_OFF<sup>12+<sup>
+### COMMON_EVENT_MINORSMODE_OFF<sup>12+</sup>
 
 Indicates that the minor mode is disabled.
 
@@ -664,7 +664,7 @@ When the system starts charging the battery, the event notification service is t
 
 
 
-### COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED<sup>10+</sup>
 
 Indicates that the device enters the charging idle mode.
 
@@ -742,7 +742,7 @@ When the device's thermal level changes, the event notification service is trigg
 **Value**: usual.event.THERMAL_LEVEL_CHANGED
 
 
-### COMMON_EVENT_ENTER_FORCE_SLEEP<sup>12+<sup>
+### COMMON_EVENT_ENTER_FORCE_SLEEP<sup>12+</sup>
 
 Indicates that the device is about to enter the forced sleep mode.
 
@@ -755,7 +755,7 @@ When the device is about to enter the forced sleep mode, the event notification 
 
 **Value**: usual.event.ENTER_FORCE_SLEEP
 
-### COMMON_EVENT_EXIT_FORCE_SLEEP<sup>12+<sup>
+### COMMON_EVENT_EXIT_FORCE_SLEEP<sup>12+</sup>
 
 Indicates that the device exits the forced sleep mode.
 
@@ -768,7 +768,7 @@ When the device exits the forced sleep mode, the event notification service is t
 
 **Value**: usual.event.EXIT_FORCE_SLEEP
 
-### COMMON_EVENT_ENTER_HIBERNATE<sup>15+<sup>
+### COMMON_EVENT_ENTER_HIBERNATE<sup>15+</sup>
 
 Indicates that the device is about to enter the hibernation mode.
 
@@ -780,7 +780,7 @@ When the device is about to enter the hibernation mode, the event notification s
 
 **Value**: usual.event.ENTER_HIBERNATE
 
-### COMMON_EVENT_EXIT_HIBERNATE<sup>15+<sup>
+### COMMON_EVENT_EXIT_HIBERNATE<sup>15+</sup>
 
 Indicates that the device exits the hibernation mode.
 
@@ -1179,7 +1179,7 @@ When the system language is set, the event notification service is triggered to 
 
 ## Network Kit
 
-### COMMON_EVENT_CONNECTIVITY_CHANGE<sup>10+<sup>
+### COMMON_EVENT_CONNECTIVITY_CHANGE<sup>10+</sup>
 
 Indicates that the network connection state has changed.
 
@@ -1202,7 +1202,7 @@ The following table lists the enum values and their corresponding connection sta
 **Value**: usual.event.CONNECTIVITY_CHANGE
 
 
-### COMMON_EVENT_AIRPLANE_MODE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_AIRPLANE_MODE_CHANGED<sup>10+</sup>
 
 Indicates that the airplane mode state has changed.
 
@@ -1215,7 +1215,7 @@ When the airplane mode is enabled or disabled, the event notification service is
 **Value**: usual.event.AIRPLANE_MODE
 
 
-### COMMON_EVENT_HTTP_PROXY_CHANGE<sup>10+<sup>
+### COMMON_EVENT_HTTP_PROXY_CHANGE<sup>10+</sup>
 
 Indicates that the HTTP proxy configuration has changed.
 
@@ -1233,7 +1233,7 @@ When the configuration information of the system global proxy or HTTP proxy on v
 
 This topic lists the common system events provided by the telephony subsystem to applications.
 
-### COMMON_EVENT_SIM_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_STATE_CHANGED<sup>10+</sup>
 
 Indicates that the SIM card status has changed.
 
@@ -1247,7 +1247,7 @@ When there is a change in the SIM card status of the device, the event notificat
 
 
 
-### COMMON_EVENT_CALL_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_CALL_STATE_CHANGED<sup>10+</sup>
 
 Indicates that the call state has been updated.
 
@@ -1261,7 +1261,7 @@ When the call state of the device is updated, the event notification service is 
 
 
 
-### COMMON_EVENT_NETWORK_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_NETWORK_STATE_CHANGED<sup>10+</sup>
 
 Indicates that the network state has been updated.
 
@@ -1274,7 +1274,7 @@ When the network state of the device is updated, the event notification service 
 **Value**: usual.event.NETWORK_STATE_CHANGED
 
 
-### COMMON_EVENT_SIGNAL_INFO_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIGNAL_INFO_CHANGED<sup>10+</sup>
 
 Indicates that the signal information has been updated.
 
@@ -1291,7 +1291,7 @@ When the signal information of the device is updated, the event notification ser
 ## AppGallery Kit
 This topic lists the common system events provided by the AppGallery Kit to applications.
 
-### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+<sup>
+### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+</sup>
 Indicates the privacy state has been changed.
 When a user clicks **Agree** in a privacy dialog box, the event notification service is triggered to publish this event.
 
@@ -1304,7 +1304,7 @@ When a user clicks **Agree** in a privacy dialog box, the event notification ser
 ## Multimodalinput Kit
 This topic lists the common system events provided by the Multimodalinput Kit to applications.
 
-### COMMON_EVENT_TABLET_MODE_CHANGED<sup>23+<sup>
+### COMMON_EVENT_TABLET_MODE_CHANGED<sup>23+</sup>
 
 Indicates that the tablet mode of a device (such as a tablet with bracket) has been changed.
 When the tablet mode of a device has been changed, the event notification service is triggered to publish this event.
@@ -1313,7 +1313,7 @@ When the tablet mode of a device has been changed, the event notification servic
 
 **Value**: usual.event.TABLET_MODE_CHANGED
 
-### COMMON_EVENT_LID_STATE_CHANGED<sup>23+<sup>
+### COMMON_EVENT_LID_STATE_CHANGED<sup>23+</sup>
 
 Indicates that the lid state of a device (such as a laptop) has been changed.
 When the lid state of a device has been changed, the event notification service is triggered to publish this event.
