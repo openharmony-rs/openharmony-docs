@@ -17,8 +17,8 @@
 
 **系统能力：**
 
-API版本9-19：SystemCapability.Security.Huks
-API版本20+：SystemCapability.Security.Huks.Core
+- API version 20+：SystemCapability.Security.Huks.Core
+- API version 9-19：SystemCapability.Security.Huks
 
 **起始版本：** 9
 

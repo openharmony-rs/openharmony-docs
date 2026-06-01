@@ -15,10 +15,10 @@
 
 **库：** libhuks_ndk.z.so
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：**
 
-API版本9-19：SystemCapability.Security.Huks
-API版本20+：SystemCapability.Security.Huks.Core
+- API version 20+：SystemCapability.Security.Huks.Core
+- API version 9-19：SystemCapability.Security.Huks
 
 **起始版本：** 9
 
@@ -143,7 +143,7 @@ struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *ke
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | 待导入密钥的别名，需要保证业务所在进程内唯一，否则会发生覆盖。 |
-| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappingKeyAlias | 密钥别名，该别名对应的密钥用于执行密钥协商或解密数字信封，协商或还原出的密钥进而用于解密待导入密钥。 |
+| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappingKeyAlias | 密钥别名，该别名对应的密钥用于执行密钥协商或解密数字信封，协商或解密出的密钥进而用于解密待导入密钥。 |
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | 待导入加密密钥的属性参数。 |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappedKeyData | 需要导入的加密的密钥数据，需要符合Huks定义的格式，具体见[OH_Huks_AlgSuite](capi-native-huks-type-h.md#oh_huks_algsuite)。 |
 
@@ -265,7 +265,7 @@ struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias,
 
 获取密钥证书链。该API仅面向系统应用开放。
 
-**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
+**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
 
 **起始版本：** 9
 
