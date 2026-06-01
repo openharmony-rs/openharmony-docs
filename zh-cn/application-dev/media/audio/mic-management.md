@@ -36,7 +36,7 @@
    }
    ```
 
-  ArkTs-Sta示例：
+  ArkTS-Sta示例：
   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
   
   ``` TypeScript
