@@ -1,4 +1,4 @@
-# 视频可变帧率（流畅播放体验下的低功耗策略）
+# 视频可变帧率
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->

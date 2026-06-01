@@ -21,18 +21,18 @@
     - [同步模式音频解码](synchronous-audio-decoding.md)
     - [同步模式视频编码](synchronous-video-encoding.md)
     - [同步模式视频解码](synchronous-video-decoding.md)
-  - 流畅低功耗<!--audio-video-low-power-consumption-codec-->
-    - [视频可变帧率（流畅播放体验下的低功耗策略）](video-variable-refreshrate.md)<!--RP1--><!--RP1End--><!--RP3--><!--RP3End-->
+  - 视频流畅播放体验下的低功耗策略<!--audio-video-low-power-consumption-codec-->
+    - [视频可变帧率](video-variable-refreshrate.md)<!--RP1--><!--RP1End--><!--RP3--><!--RP3End-->
   - 音视频编解码典型场景<!--audio-video-typical-scenarios-codec-->
      - 典型场景的视频编码配置<!--video-typical-scenarios-codec-->
        - [典型场景的视频编码配置](video-encoding-configuration-typical-scenarios.md)
        - [B帧视频编码](video-encoding-b-frame.md)
-     - 低时延场景下视频编码的最佳实践<!--video-low-latency-codec-->
+     - 低时延场景下视频编码的开发实践<!--video-low-latency-codec-->
        - [时域可分层视频编码](video-encoding-temporal-scalability.md)
        - [ROI视频编码](video-encoding-ROI.md)
 - 媒体数据封装与解析<!--file-muxing-demuxing-->
   - [媒体数据封装](audio-video-muxer.md)
   - [媒体数据解封装](audio-video-demuxer.md)<!--RP2--><!--RP2End-->
 - AVCodec Kit常见问题<!--file-avcodec-kit-faq-->
-  - [如何创建视频解码器和NativeWindow初始化并行](parallel-decoding-nativeWindow.md)
+  - [创建视频解码器和NativeWindow初始化并行](parallel-decoding-nativeWindow.md)
   - [视频编解码宽高、跨距与裁剪信息说明](video-dimension-guide.md)

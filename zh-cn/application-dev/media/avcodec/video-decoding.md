@@ -420,7 +420,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    >
    > 可以采用以下方案进行更改：
    > 1. 等1号解码器完全释放后，再调用OH_VideoDecoder_Start接口启动2号解码器。
-   > 2. 1号解码器用surface1，2号解码器先调用OH_ConsumerSurface_Create接口创建临时surface，等1号解码器释放后，再调用OH_VideoDecoder_SetSurface接口将2号解码器绑定至surface1上，详情请参见：[如何创建视频解码器和NativeWindow初始化并行](../../media/avcodec/parallel-decoding-nativeWindow.md)。
+   > 2. 1号解码器用surface1，2号解码器先调用OH_ConsumerSurface_Create接口创建临时surface，等1号解码器释放后，再调用OH_VideoDecoder_SetSurface接口将2号解码器绑定至surface1上，详情请参见：[创建视频解码器和NativeWindow初始化并行](../../media/avcodec/parallel-decoding-nativeWindow.md)。
 
 
 7. 调用OH_VideoDecoder_Prepare()解码器就绪。

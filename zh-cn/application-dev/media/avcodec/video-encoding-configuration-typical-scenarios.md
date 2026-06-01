@@ -74,7 +74,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    如下以低时延视频通话场景为示例，其示例中的变量说明如下：
 
-   videoEnc：视频编码器实例的指针。创建方式可参考[异步模式视频编码Surface模式](video-encoding.md#surface模式)“步骤-2：创建编码器实例对象”。
+   videoEnc：视频编码器实例的指针。创建方式可参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)“步骤-2：创建编码器实例对象”。
 
    ```c++
    // 1. 创建AVFormat参数实例。
@@ -103,7 +103,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 2. （可选）在运行过程中动态配置编码器参数。
 
-   详情可参考[异步模式视频编码Surface模式](video-encoding.md#surface模式)“步骤-9：OH_VideoEncoder_SetParameter()在运行过程中动态配置编码器参数”。
+   详情可参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)“步骤-9：OH_VideoEncoder_SetParameter()在运行过程中动态配置编码器参数”。
 
    ```c++
    // 1. 创建AVFormat参数实例。

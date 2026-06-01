@@ -145,7 +145,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    示例中的变量说明如下：
 
-   nativeWindow：获取方式请参考[异步模式视频编码Surface模式](video-encoding.md#surface模式)的“步骤-6：设置surface”。
+   nativeWindow：获取方式请参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)的“步骤-6：设置surface”。
 
    ```c++
    // 获取需要输入的surface，以进行编码。
