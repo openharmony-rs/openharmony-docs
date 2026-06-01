@@ -156,7 +156,7 @@ import { State } from '@kit.ArkUI';
 
   <!-- @[StateInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateInterface.ets) -->
   
-  ``` TypeScript  
+  ``` TypeScript
   import { ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
   interface Info {
     name: string;
