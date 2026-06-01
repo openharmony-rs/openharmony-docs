@@ -112,7 +112,7 @@ import lottie from '@ohos/lottie'
 
 ## Initializing the Canvas Component
 
-**onReady(event: () =&gt; void)** is the event callback triggered when the **Canvas** component is initialized. After this event is called, you can obtain the [width](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#width) and [height]../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#height) of the canvas. Then, you can use the **CanvasRenderingContext2D** and **OffscreenCanvasRenderingContext2D** objects to call related APIs for drawing.
+**onReady(event: () =&gt; void)** is the event callback triggered when the **Canvas** component is initialized. After this event is called, you can obtain the [width](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#width) and [height](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#height) of the canvas. Then, you can use the **CanvasRenderingContext2D** and **OffscreenCanvasRenderingContext2D** objects to call related APIs for drawing.
 
 
 <!-- @[initCanvasComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/InitCanvasComponent.ets) -->

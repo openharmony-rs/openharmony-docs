@@ -5,7 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-In ArkUI, dialog boxes are directly mounted to the root node by default in ascending order of their levels. Under the root node, a dialog box  at a higher level is displayed above a dialog box at a lower level. The newly created dialog box is inserted into the corresponding position based on its level. Dialog boxes with the same level are mounted in the order they were created.
+In ArkUI, dialog boxes are directly mounted to the root node by default in ascending order of their levels. Under the root node, a dialog box at a higher level is displayed above a dialog box at a lower level. The newly created dialog box is inserted into the corresponding position based on its level. Dialog boxes with the same level are mounted in the order they were created.
 
 Since API version 18, you can set the [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) parameter to manage the display sequence of dialog boxes. This lets you control which dialog box appears on top of others.
 

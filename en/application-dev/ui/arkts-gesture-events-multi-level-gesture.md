@@ -18,9 +18,9 @@ The [touch event](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)
 
 1. A component that listens to the **onTouch** event will receive the **onTouch** callback whenever it is touched by a finger press, subject to the touch target and touch control settings.
 
-2. The callback of the **onTouch** event is closed-loop. If a component receives a Down event with a specific finger ID (such as **0**), it will also receive subsequent Move and Up events for that same finger ID.
+2. The **onTouch** event callbacks follow a closed-loop pattern. If a component receives a Down event with a specific finger ID (such as **0**), it will also receive subsequent Move and Up events for that same finger ID.
 
-3. The callback of the **onTouch** event is the same. If a component receives a Down event for finger ID 0 but not for finger ID 1, it will only receive touch events for finger ID 0 and will not receive any subsequent touch events for finger ID 1.
+3. The **onTouch** event callbacks maintain consistency. If a component receives a Down event for finger ID 0 but not for finger ID 1, it will only receive touch events for finger ID 0 and will not receive any subsequent touch events for finger ID 1.
 
 4. The **onTouch** event triggers a **Cancel** event in the following scenarios:
 
