@@ -1427,7 +1427,7 @@ let alias2 = "wrappingKeyAlias";
 
 async function TestGenFunc(alias: string, options: huks.HuksOptions) {
   await genKey(alias, options)
-    .then((data) => {
+    .then(() => {
       console.info(`callback: generateKeyItem success`);
     });
 }
@@ -1465,7 +1465,7 @@ function exportKey(alias: string, options: huks.HuksOptions) {
 
 async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
   await importWrappedKey(alias, wrappingAlias, options)
-    .then((data) => {
+    .then(() => {
       console.info(`callback: importWrappedKeyItem success`);
     });
 }
@@ -3238,8 +3238,14 @@ async function testListAliases() {
     properties: queryProperties
   };
 
-  let result: huks.HuksListAliasesReturnResult = await huks.listAliases(queryOptions);
-  console.info(`promise: listAliases success`);
+  try{
+    await huks.listAliases(queryOptions)
+      .then((data) => {
+      console.info(`promise: listAliases success, data: ` + JSON.stringify(data));
+    });
+  } catch (error) {
+    console.error(`promise: listAliases failed, errCode : ${error.code}, errMsg : ${error.message}`);
+  }
 }
 ```
 
