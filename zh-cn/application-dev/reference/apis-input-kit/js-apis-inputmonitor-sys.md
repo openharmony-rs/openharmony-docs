@@ -3496,7 +3496,7 @@ ArkTS-Dyn: queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&g
 
 ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
-查询最近的触屏输入事件，最多支持查询 100 条事件，使用Promise异步回调。
+查询最近的触屏输入事件，最多支持查询100条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -3510,7 +3510,7 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                    | 是   | 需要查询的触屏输入事件数量，取值范围为0到100的整数。小于0时取值为0、大于100时取值为100。如果实际触屏输入事件只有30个，但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
+| count     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                    | 是   | 需要查询的触屏输入事件数量，取值范围为0到100的整数。小于0时取值为0、大于100时取值为100。从API版本26.0.0开始，大于60时取值为60。如果实际触屏输入事件只有30个，但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
 
 **返回值：**
 
