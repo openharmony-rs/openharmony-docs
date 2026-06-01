@@ -15,7 +15,7 @@ For details about how to create a list, see [Integrating with ArkTS Pages](../ui
 
 ## Listening for Scroll Events
 
-For details, see [Listening for Component Events](ndk-listen-to-component-events.md).
+For details about how to listen for list scrolling events, see [Adding an Event Listener](ndk-add-component-events.md).
 
 ## Implementing Lazy Loading
 
