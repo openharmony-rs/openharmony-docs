@@ -107,6 +107,7 @@ crossAppSharedConfig字段配置说明：
 
 - 通过调用publish接口发布或修改配置项。
 
+  ArkTs-Dyn示例：
   <!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
@@ -145,11 +146,14 @@ crossAppSharedConfig字段配置说明：
     });
   }
   ```
+  ArkTs-Sta示例：
+  <!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
 
 
 - 通过调用delete接口删除配置项。
 
+  ArkTs-Dyn示例：
   <!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
@@ -174,7 +178,8 @@ crossAppSharedConfig字段配置说明：
     });
   }
   ```
-
+  ArkTs-Sta示例：
+  <!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
 
 ## 配置访问方
@@ -185,6 +190,7 @@ crossAppSharedConfig字段配置说明：
 
 使用get接口获取配置信息。
 
+ArkTs-Dyn示例：
 <!-- @[get_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -210,13 +216,15 @@ function getSharedConfig() {
 }
 
 ```
-
+ArkTs-Sta示例：
+<!-- @[get_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
 
 ### 监听/取消监听配置变化
 
 使用on接口监听配置变化，使用off接口取消监听配置变化。
 
+ArkTs-Dyn示例：
 <!-- @[watch_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -254,5 +262,6 @@ function watchConfigChanges() {
 }
 
 ```
-
+ArkTs-Sta示例：
+<!-- @[watch_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
