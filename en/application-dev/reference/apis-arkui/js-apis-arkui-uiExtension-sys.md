@@ -1,7 +1,7 @@
 # @ohos.arkui.uiExtension (uiExtension) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
@@ -39,6 +39,8 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 **Required permissions**: ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -104,6 +106,8 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 > With the watermark flag added, the watermark is applied on the full screen when the window is in the foreground, regardless of whether the window is displayed in full screen, floating, and split screen mode.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 

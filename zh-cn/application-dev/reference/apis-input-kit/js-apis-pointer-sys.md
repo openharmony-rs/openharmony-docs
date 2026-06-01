@@ -25,7 +25,7 @@ import { pointer } from '@kit.InputKit';
 
 setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标移动速度，使用AsyncCallback异步方式返回结果。
+设置鼠标移动速度，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -36,7 +36,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | speed    | number                    | 是    | 鼠标移动速度，范围1-20，默认为10。   |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标移动速度成功时，err为undefined，否则为错误对象。|
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标移动速度成功，err为undefined，否则为错误对象。|
 
 **错误码：**
 
@@ -99,7 +99,7 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -193,7 +193,7 @@ struct Index {
 
 getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
-获取鼠标移动速度，使用AsyncCallback异步方式返回结果。
+获取鼠标移动速度，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -260,7 +260,7 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，异步返回鼠标移动速度。 |
+| Promise&lt;number&gt; | Promise对象，返回鼠标移动速度。 |
 
 **错误码**：
 
@@ -313,7 +313,7 @@ getPointerSpeedSync(): number
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 返回鼠标移动速度。 |
+| number | 返回鼠标移动速度，范围1-20。  |
 
 **错误码**：
 
@@ -352,7 +352,7 @@ struct Index {
 
 setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标悬停滚动开关状态，使用AsyncCallback异步方式返回结果。
+设置鼠标悬停滚动开关状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -363,7 +363,7 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state    | boolean                    | 是    | 鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。   |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标悬停滚动开关状态成功时，err为undefined，否则为错误对象。|
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标悬停滚动开关状态成功，err为undefined，否则为错误对象。|
 
 **错误码**：
 
@@ -425,7 +425,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -469,7 +469,7 @@ struct Index {
 
 getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
-获取鼠标悬停滚动开关状态，使用AsyncCallback异步方式返回结果。
+获取鼠标悬停滚动开关状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -479,7 +479,7 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，当获取鼠标悬停滚动开关状态成功，err为undefined，true代表开关开启，false代表开关关闭，默认开启；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当获取鼠标悬停滚动开关状态成功，err为undefined，true代表开关开启，false代表开关关闭，默认开启；否则为错误对象。 |
 
 **错误码**：
 
@@ -535,7 +535,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise对象，异步返回鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示鼠标悬停滚动开关开启；返回false表示鼠标悬停滚动开关关闭。默认开启。 |
 
 **错误码**：
 
@@ -579,7 +579,7 @@ struct Index {
 
 setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标主键，使用AsyncCallback异步方式返回结果。
+设置鼠标主键，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -590,7 +590,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 | 参数名    | 类型                      | 必填  | 说明                                    |
 | -------- | ------------------------- | ----  | ------------------------------------- |
 | primary  | [PrimaryButton](js-apis-pointer.md#primarybutton10)   | 是    | 鼠标主键类型。   |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标主键成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标主键成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -652,7 +652,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -696,7 +696,7 @@ struct Index {
 
 getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
-获取当前鼠标主键，使用AsyncCallback异步方式返回结果。
+获取当前鼠标主键，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -706,7 +706,7 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | 是    | 回调函数，当获取当前鼠标主键成功，err为undefined，PrimaryButton为获取到的键值；否则为错误对象。 |
+| callback | AsyncCallback&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | 是    | 回调函数。当获取当前鼠标主键成功，err为undefined，PrimaryButton为获取到的键值；否则为错误对象。 |
 
 **错误码**：
 
@@ -762,7 +762,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise对象，异步返回鼠标主键。 |
+| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise对象，返回鼠标主键。 |
 
 **错误码**：
 
@@ -806,7 +806,7 @@ struct Index {
 
 setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标滚动行数，使用AsyncCallback异步方式返回结果。
+设置鼠标滚动行数，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -817,7 +817,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | rows     | number                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标滚动行数成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标滚动行数成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -879,7 +879,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -923,7 +923,7 @@ struct Index {
 
 getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 
-获取鼠标滚动行数，使用AsyncCallback异步方式返回结果。
+获取鼠标滚动行数，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -933,7 +933,7 @@ getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数，当获取鼠标滚动行数成功，err为undefined，number为获取到的滚动行数；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标滚动行数成功，err为undefined，number为获取到的滚动行数；否则为错误对象。 |
 
 **错误码**：
 
@@ -989,7 +989,7 @@ getMouseScrollRows(): Promise&lt;number&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，异步返回鼠标滚动行数。 |
+| Promise&lt;number&gt; | Promise对象，返回鼠标滚动行数。 |
 
 **错误码**：
 
@@ -1033,7 +1033,7 @@ struct Index {
 
 setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-设置触控板滚轴开关，使用AsyncCallback异步方式返回结果。
+设置触控板滚轴开关，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1044,7 +1044,7 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | 是    | 滚轴开关开启的状态，true代表开启，false代表关闭，默认为开启。   |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板滚轴开关成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板滚轴开关成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1106,7 +1106,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -1150,7 +1150,7 @@ struct Index {
 
 getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 
-获取触控板滚轴能力开启状态，使用AsyncCallback异步方式返回结果。
+获取触控板滚轴能力开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1160,7 +1160,7 @@ getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板滚轴能力开启状态成功，err为undefined，state是true代表开启，false代表关闭，默认为开启；否则为错误对象。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板滚轴能力开启状态成功，err为undefined，state是true代表开启，false代表关闭，默认开启；否则为错误对象。 |
 
 **错误码**：
 
@@ -1216,7 +1216,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise对象，异步返回触控板滚轴能力开启状态。true代表开启，false代表关闭，默认为开启。 |
+| Promise\<boolean> | Promise对象。返回true表示触控板滚轴能力开启；返回false表示触控板滚轴能力关闭。默认为开启。 |
 
 **错误码**：
 
@@ -1260,7 +1260,7 @@ struct Index {
 
 setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 
-设置触控板滚轴的方向，使用AsyncCallback异步方式返回结果。
+设置触控板滚轴的方向，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1271,7 +1271,7 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | 是    | state为触控板滚轴的方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。   |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板滚轴方向成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板滚轴方向成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1333,7 +1333,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -1377,7 +1377,7 @@ struct Index {
 
 getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 
-获取触控板滚轴方向，使用AsyncCallback异步方式返回结果。
+获取触控板滚轴方向，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1387,7 +1387,7 @@ getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数，当获取触控板滚轴方向成功，err为undefined，state是true与手指滑动的方向一致，false与手指滑动的方向相反，默认为true；否则为错误对象。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板滚轴方向成功，err为undefined，state是true与手指滑动的方向一致；否则为错误对象。 |
 
 **错误码**：
 
@@ -1439,7 +1439,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise对象，异步返回触控板滚轴方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。 |
+| Promise\<boolean> | Promise对象。返回true表示触控板滚轴方向与手指滑动的方向一致；返回false表示触控板滚轴方向与手指滑动的方向相反。默认为true。 |
 
 **错误码**：
 
@@ -1483,7 +1483,7 @@ struct Index {
 
 setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-设置触控板轻触功能开关，使用AsyncCallback异步方式返回结果。
+设置触控板轻触功能开关，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1494,7 +1494,7 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | 是    |触控板轻触功能开关开启状态。 true代表轻触开启，false代表轻触关闭，默认开启。   |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板轻触功能开关成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板轻触功能开关成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1556,7 +1556,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -1600,7 +1600,7 @@ struct Index {
 
 getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 
-获取触控板轻触能力开启状态，使用AsyncCallback异步方式返回结果。
+获取触控板轻触能力开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1611,7 +1611,6 @@ getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
 | callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板轻触功能开启状态成功，err为undefined，state是true代表开启，false代表关闭，默认开启；否则为错误对象。 |
-
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -1666,7 +1665,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise对象，异步返回触控板轻触功能开启状态，true代表开启，false代表关闭，默认开启。 |
+| Promise\<boolean> | Promise对象。返回true表示触控板轻触功能开启；返回false表示触控板轻触功能关闭。默认开启。 |
 
 **错误码**：
 
@@ -1710,7 +1709,7 @@ struct Index {
 
 setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 
-设置触控板光标移动速度，使用AsyncCallback异步方式返回结果。
+设置触控板光标移动速度，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1721,7 +1720,7 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | speed | number                    | 是    |speed代表光标移动速度。speed取值范围[1,11]，默认6。  |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板光标移动速度成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板光标移动速度成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1783,7 +1782,7 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -1827,7 +1826,7 @@ struct Index {
 
 getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 
-获取触控板光标移动速度，使用AsyncCallback异步方式返回结果。
+获取触控板光标移动速度，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1837,7 +1836,7 @@ getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<number> | 是    | 回调函数，当获取触控板光标移动速度成功，err为undefined，number是获取的触控板光标移动速度；否则为错误对象。 |
+| callback | AsyncCallback\<number> | 是    | 回调函数。当获取触控板光标移动速度成功，err为undefined，number是获取的触控板光标移动速度；否则为错误对象。 |
 
 **错误码**：
 
@@ -1893,7 +1892,7 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise对象，异步返回触控板光标移动速度。 |
+| Promise\<number> | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
 
 **错误码**：
 
@@ -1937,7 +1936,7 @@ struct Index {
 
 setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-设置触控板双指捏合功能开关，使用AsyncCallback异步方式返回结果。
+设置触控板双指捏合功能开关，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1948,7 +1947,7 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | 是    |触控板双指捏合功能开关开启状态。 true代表开启，false代表关闭，默认开启。   |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板双指捏合功能开关成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板双指捏合功能开关成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -2010,7 +2009,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -2054,7 +2053,7 @@ struct Index {
 
 getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 
-获取触控板双指捏合功能开启状态，使用AsyncCallback异步方式返回结果。
+获取触控板双指捏合功能开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2064,7 +2063,7 @@ getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数，当获取触控板双指捏合功能开启状态成功，err为undefined，state是true代表功能开启，false代表功能关闭，默认开启；否则为错误对象。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板双指捏合功能开启状态成功，err为undefined，state是true代表功能开启，false代表功能关闭，默认开启；否则为错误对象。 |
 
 **错误码**：
 
@@ -2120,7 +2119,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise对象，异步返回触控板双指捏合功能开启状态。true代表功能开启，false代表功能关闭，默认开启。 |
+| Promise\<boolean> | Promise对象。返回true表示触控板双指捏合功能开启；返回false表示触控板双指捏合功能关闭。默认开启。 |
 
 **错误码**：
 
@@ -2164,7 +2163,7 @@ struct Index {
 
 setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-设置触控板多指滑动功能开关，使用AsyncCallback异步方式返回结果。
+设置触控板多指滑动功能开关，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2175,7 +2174,7 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | 是    |触控板多指滑动开关开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。   |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板多指滑动功能开关成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板多指滑动功能开关成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -2237,7 +2236,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -2281,7 +2280,7 @@ struct Index {
 
 getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 
-获取触控板多指滑动功能开启状态，使用AsyncCallback异步方式返回结果。
+获取触控板多指滑动功能开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2291,7 +2290,7 @@ getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数，当获取触控板多指滑动功能开启状态成功，err为undefined，state是true代表多指滑动开启，false代表多指滑动关闭，默认开启；否则为错误对象。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板多指滑动功能开启状态成功，err为undefined，state是true代表多指滑动开启，false代表多指滑动关闭，默认开启；否则为错误对象。 |
 
 **错误码**：
 
@@ -2343,7 +2342,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise对象，异步返回触控板多指滑动功能开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。 |
+| Promise\<boolean> | Promise对象。返回true表示触控板多指滑动功能开启；返回false表示触控板多指滑动功能关闭。默认开启。 |
 
 **错误码**：
 
@@ -2387,7 +2386,7 @@ struct Index {
 
 setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>): void
 
-设置触控板右键菜单类型，使用AsyncCallback异步方式返回结果。
+设置触控板右键菜单类型，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2398,7 +2397,7 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | type| [RightClickType](js-apis-pointer.md#rightclicktype10)| 是    |type代表触控板右键菜单类型。<br>- TOUCHPAD_RIGHT_BUTTON：按压触控板右键区域。<br>- TOUCHPAD_LEFT_BUTTON：按压触控板左键区域。<br>- TOUCHPAD_TWO_FINGER_TAP：双指轻击或双指按压触控板。<br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>：双指轻击或双指按压触控板、或按压触控板右键区域。<br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>：双指轻击或双指按压触控板、或按压触控板左键区域。<br>默认值为TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON。|
-| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板右键菜单类型成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板右键菜单类型成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -2460,7 +2459,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -2504,7 +2503,7 @@ struct Index {
 
 getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
-获取触控板右键菜单类型，使用AsyncCallback异步方式返回结果。
+获取触控板右键菜单类型，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2514,7 +2513,7 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<[RightClickType](js-apis-pointer.md#rightclicktype10)> | 是    | 回调函数，当获取触控板右键菜单类型成功，err为undefined，对象是触控板右键菜单类型；否则为错误对象。 |
+| callback | AsyncCallback\<[RightClickType](js-apis-pointer.md#rightclicktype10)> | 是    | 回调函数。当获取触控板右键菜单类型成功，err为undefined，对象是触控板右键菜单类型；否则为错误对象。 |
 
 **错误码**：
 
@@ -2566,7 +2565,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise对象，异步返回触控板右键菜单类型。 |
+| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise对象，返回触控板右键菜单类型。 |
 
 **错误码**：
 
@@ -2610,7 +2609,7 @@ struct Index {
 
 setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标光标大小，使用AsyncCallback异步方式返回结果。
+设置鼠标光标大小，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2621,7 +2620,7 @@ setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | size     | number                    | 是    | 鼠标光标大小，范围为[1-7]，默认为1。   |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，当设置成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -2683,7 +2682,7 @@ setPointerSize(size: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -2777,7 +2776,7 @@ struct Index {
 
 getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
-获取鼠标光标大小，使用AsyncCallback异步方式返回结果。
+获取鼠标光标大小，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2787,7 +2786,7 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小，范围为[1-7]；否则为错误对象。 |
 
 **错误码**：
 
@@ -2843,7 +2842,7 @@ getPointerSize(): Promise&lt;number&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，异步返回鼠标光标大小。 |
+| Promise&lt;number&gt; | Promise对象，返回鼠标光标大小，范围为[1-7]。 |
 
 **错误码**：
 
@@ -2897,7 +2896,7 @@ getPointerSizeSync(): number
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 鼠标光标大小。 |
+| number | 鼠标光标大小，范围为[1-7]。 |
 
 **错误码**：
 
@@ -2936,7 +2935,7 @@ struct Index {
 
 setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标光标颜色，使用AsyncCallback异步方式返回结果。
+设置鼠标光标颜色，使用callback异步回调。
 
 > **说明**：
 >
@@ -2951,7 +2950,7 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | color     | number                    | 是    | 鼠标光标颜色，默认为黑色：0x000000。   |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，当设置成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -3017,7 +3016,7 @@ setPointerColor(color: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -3115,7 +3114,7 @@ struct Index {
 
 getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 
-获取鼠标光标颜色，使用AsyncCallback异步方式返回结果。
+获取鼠标光标颜色，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3181,7 +3180,7 @@ getPointerColor(): Promise&lt;number&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，异步返回鼠标光标颜色。 |
+| Promise&lt;number&gt; | Promise对象，返回鼠标光标颜色。 |
 
 **错误码**：
 
@@ -3274,7 +3273,7 @@ struct Index {
 
 setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>): void
 
-设置触控板双击拖拽开关状态，使用AsyncCallback异步方式返回结果。
+设置触控板双击拖拽开关状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3285,7 +3284,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板双击拖拽开关状态成功时，err为undefined，否则为错误对象。|
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板双击拖拽开关状态成功，err为undefined，否则为错误对象。|
 
 **错误码**：
 
@@ -3347,7 +3346,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -3391,7 +3390,7 @@ struct Index {
 
 getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 
-获取触控板双击拖拽开关的开启状态，使用AsyncCallback异步方式返回结果。
+获取触控板双击拖拽开关的开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3457,7 +3456,7 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise对象，异步返回触控板双击拖拽开启状态。true代表开启，false代表关闭。|
+| Promise\<boolean> | Promise对象。返回true表示触控板双击拖拽功能开启；返回false表示触控板双击拖拽功能关闭。|
 
 **错误码**：
 
@@ -3518,7 +3517,7 @@ setMouseScrollDirection(inverted: boolean): Promise\<void>
 
 | 类型           | 说明                                   |
 | -------------- | -------------------------------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -3575,7 +3574,7 @@ getMouseScrollDirection(): Promise\<boolean>
 
 | 类型              | 说明                                                                                                                         |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Promise\<boolean> | Promise对象，异步返回获取鼠标滚轮滚动方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
+| Promise\<boolean> | Promise对象。返回true表示鼠标滚轮滚动方向与手指方向一致；返回false表示鼠标滚轮滚动方向与手指方向相反。默认为true。 |
 
 **错误码**：
 

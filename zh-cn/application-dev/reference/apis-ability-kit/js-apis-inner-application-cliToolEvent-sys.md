@@ -57,15 +57,3 @@ CLI工具会话事件类型。
 | STDERR | 'stderr' | 标准错误事件。 |
 | EXIT   | 'exit'   | 进程退出事件。 |
 | ERROR  | 'error'  | 进程错误事件。 |
-
-**示例：**
-
-```ts
-import { common } from '@kit.AbilityKit';
-
-function handleEvent(event: common.CliToolEvent): void {
-  if (event.toolEventType === common.ToolEventType.STDOUT) {
-    console.info('stdout data: ' + event.data);
-  }
-}
-```

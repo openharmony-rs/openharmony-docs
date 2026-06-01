@@ -51,3 +51,4 @@
     - [图像变换](image-transformation-native.md)
     - [位图操作](image-pixelmap-operation-native.md)
     - [图片接收](image-receiver-native.md)
+- [Image Kit术语](image-glossary.md)

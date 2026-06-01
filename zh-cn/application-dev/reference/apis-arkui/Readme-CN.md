@@ -206,8 +206,8 @@
       - [点击回弹效果](arkui-ts/ts-universal-attributes-click-effect.md)
       - [特效绘制合并](arkui-ts/ts-universal-attributes-use-effect.md)
       - [组件内容填充方式](arkui-ts/ts-universal-attributes-renderfit.md)
-      - [空间效果](arkui-ts/ts-universal-attributes-spatial-effect.md)
       <!--Del-->
+      - [空间效果 (系统接口)](arkui-ts/ts-universal-attributes-spatial-effect-sys.md)
       - [点光源设置 (系统接口)](arkui-ts/ts-universal-attributes-point-light-style-sys.md)
       - [图像效果 (系统接口)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
       - [融合效果 (系统接口)](arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
@@ -290,7 +290,7 @@
     - [SideBarContainer](arkui-ts/ts-container-sidebarcontainer.md)
   - 动态布局<!--dynamic-layout-->
     - [DynamicLayout](arkui-ts/ts-container-dynamiclayout.md)
-  - 断点容器<!--container-reader-->
+  - 容器断点<!--container-reader-->
     - [ContainerReader](arkui-ts/ts-container-containerreader.md)
   - 滚动与滑动<!--scroll-and-swipe-->
     - [List](arkui-ts/ts-container-list.md)
@@ -353,6 +353,7 @@
     - [Span](arkui-ts/ts-basic-components-span.md)
     - [ImageSpan](arkui-ts/ts-basic-components-imagespan.md)
     - [ContainerSpan](arkui-ts/ts-basic-components-containerspan.md)
+    - [SelectionContainer](arkui-ts/ts-basic-components-selectioncontainer.md)
     - [SymbolSpan](arkui-ts/ts-basic-components-symbolSpan.md)
     - [SymbolGlyph](arkui-ts/ts-basic-components-symbolGlyph.md)
     - [Hyperlink](arkui-ts/ts-container-hyperlink.md)
@@ -425,8 +426,6 @@
     <!--Del-->
     - [XComponent (系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
     <!--DelEnd-->
-  - 景深效果<!--depth-of-field -->
-    - [DepthComponent](arkui-ts/ts-basic-components-depthcomponent.md)
     <!--Del-->
     - [DepthComponent (系统接口)](arkui-ts/ts-basic-components-depthcomponent-sys.md)
     <!--DelEnd-->
@@ -543,6 +542,7 @@
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
     - [CounterV2](arkui-ts/ohos-arkui-advanced-CounterV2.md)
+    - [DatePickerComponent](arkui-ts/ohos-arkui-advanced-DatePickerComponent.md)
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
     - [状态管理V1装饰器参数](arkui-ts/ts-state-management-v1-parameter.md)

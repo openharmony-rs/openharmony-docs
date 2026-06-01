@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @qq_36417014-->
-<!--Designer: @zhangbeilei-->
+<!--Designer: @autojuan-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
 
@@ -30,7 +30,7 @@ import { AtomicServiceNavigation } from '@kit.ArkUI';
 ``` ts
 AtomicServiceNavigation({
     navPathStack?: NavPathStack,
-    navigationContent: Callback<void>,
+    navigationContent?: Callback<void>,
     title?: ResourceStr,
     titleOptions?: TitleOptions,
     gradientBackground?: GradientBackground,

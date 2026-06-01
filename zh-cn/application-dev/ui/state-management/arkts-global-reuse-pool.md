@@ -95,10 +95,24 @@ struct ReusableComponent { // 复用组件
 适配全局复用能力的示例如下：
 
 ```ts
+@ReusableV2
+@ComponentV2
+struct ReusableComponent { // 复用组件
+  aboutToRecycle() {
+    // 在Index组件中if分支切换时，该组件由上层组件Index声明的全局复用池接纳，并复用到ChildComponentB中的ReusableComponent创建过程中
+    console.info('Reusable component is being recycled'); 
+  }
+  aboutToDisappear() {
+    console.info('Reusable component is being destroyed'); 
+  }
+  build() {
+    Text('ReusableComponent')
+  }
+}
 @Entry
 @ComponentV2({
   reusePool: 'shared', // 配置全局复用池模式，使能全局复用能力
-  poolAccepts: ['ReusableComponent'], // 配置全局复用池接纳名称为ReuseComponent的自定义组件
+  poolAccepts: [ReusableComponent], // 配置全局复用池接纳名称为ReuseComponent的自定义组件
   freezeWhenInactive: false // 组件冻结默认配置 
 })
 struct Index {
@@ -133,20 +147,6 @@ struct ChildComponentB {
       Text('Component B')
       ReusableComponent() // 子组件ComponentA和ComponentB共用复用组件ReusableComponent
     }
-  }
-}
-@ReusableV2
-@ComponentV2
-struct ReusableComponent { // 复用组件
-  aboutToRecycle() {
-    // 在Index组件中if分支切换时，该组件由上层组件Index声明的全局复用池接纳，并复用到ChildComponentB中的ReusableComponent创建过程中
-    console.info('Reusable component is being recycled'); 
-  }
-  aboutToDisappear() {
-    console.info('Reusable component is being destroyed'); 
-  }
-  build() {
-    Text('ReusableComponent')
   }
 }
 ```
@@ -241,6 +241,8 @@ struct ReusableComponent { // 复用组件
 
 - 建议不要在[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)中修改会触发重新渲染的状态变量，因为组件此时正从UI树中移除。
 
+- 由于ArkTS语法限制，`poolAccepts`参数配置的自定义组件，必须在`poolAccepts`上方的代码中有定义或者从其他文件导入。如果在poolAccepts传入的组件在下方定义，则会编译报错，报错消息是“Class '...' used before its declaration.”。
+
 ## 使用场景
 
 ### 多个父组件间共享复用池
@@ -281,6 +283,7 @@ struct Parent {
         if (this.show[2]) CompA({ label: 'A3' })
       }
     }
+    .width('100%')
   }
 }
 
@@ -310,7 +313,7 @@ struct ReusableCompA {
 }
 
 // 多个CompA组件实例共用一个ReusableCompA的全局复用池。
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableCompA'], freezeWhenInactive: false})
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableCompA], freezeWhenInactive: false})
 struct CompA {
   @Require @Param label: string;
 
@@ -327,6 +330,8 @@ struct CompA {
   }
 }
 ```
+
+![arkts-global-reuse-shared.gif](./figures/arkts-global-reuse-shared.gif)
 
 **启动** — 3个CompA实例，6个ReusableCompA子组件：
 ```plaintext
@@ -384,7 +389,6 @@ struct ReusableChild {
     Column({ space: 20 }) {
       Text(`ReusableChild @Consumer: ${this.provide}`)
         .fontSize(20)
-        .fontColor(Color.Green)
       SubChild()
     }
   }
@@ -392,7 +396,7 @@ struct ReusableChild {
 
 @Entry
 // 声明全局复用池，接纳ReusableChild复用组件。
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct Parent {
   @Provider() provide: number = 100;
   @Local boolVal: boolean = false;
@@ -415,15 +419,14 @@ struct Parent {
       if (this.boolVal) {
         Text('非可复用组件')
           .fontSize(24)
-          .fontColor(Color.Red)
         Child()
       } else {
         Text('可复用组件')
           .fontSize(24)
-          .fontColor(Color.Red)
         ReusableChild()
       }
     }
+    .width('100%')
   }
 }
 
@@ -464,12 +467,13 @@ struct Child {
     Column({ space: 20 }) {
       Text(`Child @Consumer: ${this.provide}`)
         .fontSize(20)
-        .fontColor(Color.Green)
       SubChild()
     }
   }
 }
 ```
+
+![arkts-global-reuse-per-instance.gif](./figures/arkts-global-reuse-per-instance.gif)
 
 **从ReusableChild切换到Child**：
 ```plaintext
@@ -591,7 +595,7 @@ struct SubChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['LegacyComp', 'GlobalChild', 'ReusableChild', 'SubChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [LegacyComp, GlobalChild, ReusableChild, SubChild], freezeWhenInactive: false })
 struct Index {
   @Provider() provide: number = 100;
   @Local boolVal: boolean = true;
@@ -634,14 +638,18 @@ struct Index {
         .onClick(() => {
           this.boolVal = !this.boolVal;
         })
+        .width(150)
 
       // 手动池检查按钮
       Button('检查GlobalChild')
         .onClick(() => this.verifyPool('GlobalChild', GlobalChild))
+        .width(150)
       Button('检查LegacyComp')
         .onClick(() => this.verifyPool('LegacyComp', LegacyComp))
+        .width(150)
       Button('设置复用池大小')
         .onClick(() => this.setPoolMaxCount('LegacyComp', LegacyComp))
+        .width(150)
 
       if (this.boolVal) {
         GlobalChild()
@@ -649,6 +657,7 @@ struct Index {
         LegacyComp()
       }
     }
+    .width('100%')
   }
 }
 ```
@@ -685,9 +694,12 @@ SubChild aboutToReuse         // 和GlobalChild一起被复用
 
 ```plaintext
 LegacyComp aboutToDisappear
+ReusableChild aboutToRecycle
 ```
 
 再点击"检查LegacyComp": `count=0, maxCount=0`（复用池被手动清空了）
+
+![arkts-global-reuse-getreusableinfo.gif](./figures/arkts-global-reuse-getreusableinfo.gif)
 
 ### 使用`reuseId`控制缓存大小
 
@@ -718,7 +730,7 @@ struct TestChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['TestChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showA: boolean = true;
   @Local showB: boolean = true;
@@ -744,24 +756,28 @@ struct PoolOwner {
   }
 
   build() {
-    Column() {
+    Column({ space: 3 }) {
       Button('切换A')
         .onClick(() => {
           this.showA = !this.showA;
         })
+        .width(150)
       Button('切换B')
         .onClick(() => {
           this.showB = !this.showB;
         })
+        .width(150)
       Button('切换C')
         .onClick(() => {
           this.showC = !this.showC;
         })
+        .width(150)
       Button('仅清除B')
         .onClick(() => this.purgeReuseId('B'))
+        .width(150)
       Button('打印复用池信息')
         .onClick(() => this.printReusePool())
-
+        .width(150)
 
       if (this.showA) {
         TestChild({ label: 'A' })
@@ -776,9 +792,12 @@ struct PoolOwner {
           .reuse({ reuseId: () => 'C' })
       }
     }
+    .width('100%')
   }
 }
 ```
+
+![arkts-global-reuse-reuseid.gif](./figures/arkts-global-reuse-reuseid.gif)
 
 当所有3个都被关闭时，`getReusableInfo(TestChild)`（不带reuseId）返回一个数组：
 ```typescript
@@ -828,6 +847,7 @@ struct Parent {
         Index2()
       }
     }
+    .width('100%')
   }
 }
 
@@ -876,7 +896,7 @@ struct ReusableChild {
   }
 }
 
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct Index2 {
   @Local showChild: boolean = true;
 
@@ -895,10 +915,12 @@ struct Index2 {
 }
 ```
 
+![arkts-global-reuse-cross-branch.gif](./figures/arkts-global-reuse-cross-branch.gif)
+
 **测试序列**：
 
 1. **关闭Index1** — 来自Index1分支的ReusableChild 进入共享池。
-2. **关闭再打开Index2的ReusableChild** — 池化的实例（最初来自Index1）在Index2中被复用。日志中的实例ID确认了同一实例跨越了分支。
+2. **关闭再打开Index2的ReusableChild** — 池化的实例（最初来自Index1）在Index2中被复用。
 3. **打开Index1** — Index1和ChildComp被复用。ReusableChild从池中被复用。
 
 ### 多级复用池结构
@@ -956,7 +978,7 @@ struct ReusableLeaf {
 
 @Entry
 // 配置全局复用池，接纳ChildA复用组件
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ChildA'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ChildA], freezeWhenInactive: false })
 struct EntryComp {
   @Local showParent: boolean = true;
 
@@ -975,11 +997,12 @@ struct EntryComp {
         ParentA()
       }
     }
+    .width('100%')
   }
 }
 
 // 配置全局复用池，接纳ReusableLeaf复用组件
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableLeaf'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableLeaf], freezeWhenInactive: false })
 struct ParentA {
   @Local showChild: boolean = true;
 
@@ -1005,6 +1028,8 @@ struct ParentA {
   }
 }
 ```
+
+![arkts-global-reuse-multi-level.gif](./figures/arkts-global-reuse-multi-level.gif)
 
 - `ChildA`使用`EntryComp`上声明的全局复用池，因为`EntryComp`复用池配置`poolAccepts`接受`ChildA`。
 - `ReusableLeaf`和它的父组件`ChildA`一起进入`EntryComp`的复用池中，不会进入`ParentA`上配置的全局复用池。
@@ -1057,7 +1082,7 @@ function preRenderBuilder() {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableComponent'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
 struct Index {
   @Local onUIFullyLoaded: boolean = false;
 
@@ -1089,6 +1114,8 @@ struct CompA {
   }
 }
 ```
+
+![arkts-global-reuse-prerender.png](./figures/arkts-global-reuse-prerender.png)
 
 执行序列：
 

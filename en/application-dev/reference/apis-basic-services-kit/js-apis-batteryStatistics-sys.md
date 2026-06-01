@@ -100,7 +100,7 @@ batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]
 
 getAppPowerValue(uid: number): number
 
-Obtains the power consumption of an application.
+Obtains the power consumption of an application, in unit of mAh.
 
 **System API**: This is a system API.
 
@@ -186,7 +186,7 @@ try {
 
 getHardwareUnitPowerValue(type: ConsumptionType): number
 
-Obtains the power consumption of a hardware unit according to the consumption type.
+Obtains the power consumption of a hardware unit according to the consumption type, in unit of mAh.
 
 **System API**: This is a system API.
 
@@ -280,9 +280,9 @@ Describes the device power consumption information.
 
 | Name | Type                               | Read-Only| Optional| Description                  |
 | ----- | ----------------------------------- | ---- | ---- | ---------------------- |
-| uid   | number                              | No  | No  | UID related to power consumption information.   |
-| type  | [ConsumptionType](#consumptiontype) | No  | No  | Power consumption type.  |
-| power | number                              | No  | No  | Power consumption, in unit of mAh.|
+| uid   | number                              | No  | No  | The uid related to power consumption information.   |
+| type  | [ConsumptionType](#consumptiontype) | No  | No  | The power consumption type.  |
+| power | number                              | No  | No  | The power consumption, in unit of mAh.       |
 
 ## ConsumptionType
 

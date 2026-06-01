@@ -37,7 +37,7 @@ setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | delay    | number                    | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置键盘按键重复延迟时间成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置键盘按键重复延迟时间成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -99,7 +99,7 @@ setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -153,7 +153,7 @@ getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback   | AsyncCallback&lt;number&gt;                    | 是    | 回调函数。当获取成功时，err为undefined，data为键盘按键重复延迟时间；否则为错误对象。 |
+| callback   | AsyncCallback&lt;number&gt;                    | 是    | 回调函数。当获取成功，err为undefined，data为键盘按键重复延迟时间；否则为错误对象。 |
 
 **错误码**：
 
@@ -264,7 +264,7 @@ setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | rate    | number                    | 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置键盘按键重复速率成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置键盘按键重复速率成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -326,7 +326,7 @@ setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -380,7 +380,7 @@ getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取成功时，err为undefined，data为键盘按键的重复速率；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取成功，err为undefined，data为键盘按键的重复速率；否则为错误对象。 |
 
 **错误码**：
 
@@ -499,7 +499,7 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 

@@ -109,7 +109,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ## AccessibilityExtensionAbility.onAccessibilityEventInfo
 
-onAccessibilityEventInfo(event: AccessibilityEventInfo): void;
+onAccessibilityEventInfo(event: AccessibilityEventInfo): void
 
 在应用和事件发生时回调该接口，根据事件信息处理业务逻辑。通常需要重写。
 
@@ -151,7 +151,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ## AccessibilityExtensionAbility.onAccessibilityKeyEvent
 
-onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean;
+onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 
 在物理按键按下时回调该方法，在该方法中根据业务判断是否消费事件。
 

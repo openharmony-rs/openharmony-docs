@@ -90,6 +90,8 @@ import { insightIntent } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | ALL | 'all' | 查询全量的意图实体。 |
@@ -104,6 +106,8 @@ import { insightIntent } from '@kit.AbilityKit';
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -128,7 +132,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 ### onQueryEntity
 
-onQueryEntity(params: QueryEntityParam): Promise\<Array\<T>>
+abstract onQueryEntity(params: QueryEntityParam): Promise\<Array\<T>>
 
 当系统入口触发意图实体查询时，系统将会加载该类，并触发该回调，开发者可以在该回调中实现需要执行的意图实体操作，根据传入的参数[QueryEntityParam](#queryentityparam)返回符合条件的实体信息。使用Promise异步回调。<br/>推荐在[queryType](#querytype)为[ALL](#querytype)时返回意图实体全部的信息，在[queryType](#querytype)为[BY_PROPERTY](#querytype)时，根据[parameters](#queryentityparam)中的属性值返回符合条件的信息。
 

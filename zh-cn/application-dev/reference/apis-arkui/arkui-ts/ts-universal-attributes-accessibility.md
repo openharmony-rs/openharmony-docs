@@ -481,6 +481,35 @@ accessibilityNextFocusId(nextId: string): T
 | -------- | -------- |
 | T | 返回当前对象。 |
 
+## accessibilityNextFocusId
+
+accessibilityNextFocusId(nextId: string, nextFocusParams: AccessibilityNextFocusParams | undefined): T
+
+指定屏幕朗读扫动走焦过程中组件的下一个焦点，并支持配置详细参数。
+
+通过[AccessibilityNextFocusParams](ts-types.md#accessibilitynextfocusparams)参数，可以配置是否在无障碍下一个焦点处理过程中查找后代节点中的焦点。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| nextId | string | 否 | 否   | 下一个被指定聚焦组件的[唯一标识id](ts-universal-attributes-component-id.md#id)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
+| nextFocusParams | [AccessibilityNextFocusParams](ts-types.md#accessibilitynextfocusparams) \| undefined | 否 | 否   | 无障碍下一个焦点处理的详细参数，用于配置是否在后代节点中查找可聚焦节点。<br/>取值为undefined时，不配置下一个焦点处理的详细参数，不在后代节点中查找焦点。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前对象。 |
+
 ## accessibilityDefaultFocus<sup>18+</sup>
 
 accessibilityDefaultFocus(focus: boolean): T

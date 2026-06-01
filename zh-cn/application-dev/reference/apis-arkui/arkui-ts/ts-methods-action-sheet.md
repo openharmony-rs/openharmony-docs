@@ -746,3 +746,59 @@ struct ActionSheetExample {
 }
 ```
 ![zh-cn_image_action_backgroundEffect](figures/zh-cn_image_action_backgroundEffect.png)
+
+### 示例9（设置弹窗的系统材质）
+
+该示例通过配置[ActionSheetOptions](#actionsheetoptions对象说明)中的systemMaterial属性，实现系统材质效果。
+
+从API版本26.0.0开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了systemMaterial属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      Column() {
+        Button("ActionSheet")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showActionSheet({
+              title: 'ActionSheet Title',
+              subtitle: 'ActionSheet Subtitle',
+              message: 'ActionSheet Text',
+              sheets: [
+                {
+                  title: 'Apples',
+                  action: () => {
+                    console.info('apples');
+                  }
+                },
+                {
+                  title: 'Bananas',
+                  action: () => {
+                    console.info('bananas');
+                  }
+                },
+                {
+                  title: 'Pears',
+                  action: () => {
+                    console.info('pears');
+                  }
+                }
+              ],
+              alignment: DialogAlignment.Center,
+              systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+            });
+          })
+      }
+      .height('100%')
+      .width('100%')
+      .backgroundColor(Color.Gray)
+    }
+  }
+}
+```
+![zh-cn_image_action_sheet_systemMaterial](figures/zh-cn_image_action_systemMaterial.png)

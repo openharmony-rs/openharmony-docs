@@ -53,8 +53,8 @@ Video(value: VideoOptions)
 | currentProgressRate | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[PlaybackSpeed<sup>8+</sup>](#playbackspeed8枚举说明) | 否   | 是 | 视频播放倍速。<br/>**说明：**<br/>number格式取值仅支持：0.75，1.0，1.25，1.75，2.0。从API version 22开始，新增支持取值0.5，1.5，3，0.25和0.125。<br/>string格式支持number格式取值的字符串形式："0.75"，"1.0"，"1.25"，"1.75"，"2.0"。从API version 22开始，新增支持取值"0.5"，"1.5"，"3"，"0.25"和"0.125"。<br/>除此之外的取值，比如"abc"或"1.5+1.5"会按照异常值处理。<br/>默认值：1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br/>异常值：按默认值处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | previewUri          | string&nbsp;\| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  | 否  | 是  | 视频未播放时的预览图片路径，默认不显示图片。<br/>string格式可用于加载本地图片和网络图片，<br/>- 支持网络图片地址。<br/>- 支持相对路径引用本地图片，例如：previewUri: “common/test.jpg”。当使用相对路径引用本地图片时，不支持跨包/跨模块调用。<br/>- 支持file://路径前缀的字符串，即应用沙箱URI（见[uriOrPath](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)）：file://\<bundleName>/\<sandboxPath>。用于读取应用沙箱路径内的资源。需要保证目录包路径下的文件有可读权限。<br/>Resource格式可以跨包/跨模块访问资源文件。<br/>- 支持rawfile文件下的资源，即通过\$rawfile引用图片。<br/>- 支持通过\$r引用系统资源或者应用资源中的图片。<br/>默认值：空字符串<br/>异常值：按默认值处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
 | controller          | [VideoController](#videocontroller)                          | 否 | 是   | 设置视频控制器，可以控制视频的播放状态。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| imageAIOptions<sup>12+</sup>  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否 | 是   | 设置图像AI分析选项，可配置分析类型或绑定一个分析控制器。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| posterOptions<sup>18+</sup>  | [PosterOptions](#posteroptions18对象说明) | 否 | 是   | 设置视频播放的首帧送显选项，可以控制视频是否支持首帧送显。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| imageAIOptions<sup>12+</sup>  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否 | 是   | 设置图像AI分析选项，可配置分析类型或绑定一个分析控制器。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| posterOptions<sup>18+</sup>  | [PosterOptions](#posteroptions18对象说明) | 否 | 是   | 设置视频播放的首帧送显选项，可以控制视频是否支持首帧送显。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## PlaybackSpeed<sup>8+</sup>枚举说明
 
@@ -69,11 +69,11 @@ Video(value: VideoOptions)
 | Speed_Forward_1_25_X | 1.25 | 1.25倍速播放。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Speed_Forward_1_75_X | 1.75 | 1.75倍速播放。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Speed_Forward_2_00_X | 2 | 2倍速播放。   <br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_0_50_X<sup>22+</sup> | 0.5 | 0.5倍速播放。 <br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_1_50_X<sup>22+</sup> | 1.5 | 1.5倍速播放。 <br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_3_00_X<sup>22+</sup> | 3 | 3倍速播放。   <br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_0_25_X<sup>22+</sup> | 0.25 | 0.25倍速播放。<br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_0_125_X<sup>22+</sup> | 0.125 | 0.125倍速播放。<br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| SPEED_FORWARD_0_50_X<sup>22+</sup> | 0.5 | 0.5倍速播放。 <br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SPEED_FORWARD_1_50_X<sup>22+</sup> | 1.5 | 1.5倍速播放。 <br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SPEED_FORWARD_3_00_X<sup>22+</sup> | 3 | 3倍速播放。   <br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SPEED_FORWARD_0_25_X<sup>22+</sup> | 0.25 | 0.25倍速播放。<br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SPEED_FORWARD_0_125_X<sup>22+</sup> | 0.125 | 0.125倍速播放。<br/> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## 属性
 
@@ -187,6 +187,8 @@ enableAnalyzer(enable: boolean)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -212,6 +214,8 @@ analyzerConfig(config: ImageAnalyzerConfig)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -229,6 +233,8 @@ enableShortcutKey(enabled: boolean)
 目前支持在组件获焦后响应空格键播放/暂停、上下方向键调整视频音量、左右方向键快进/快退。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -317,6 +323,8 @@ onStop(event: Callback&lt;void&gt;)
 播放停止时触发该事件(当stop()方法被调用后触发)，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -416,6 +424,8 @@ onFullscreenChange(callback: Callback\<FullscreenInfo>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称       | 类型    | 只读 | 可选 | 说明                         |
@@ -431,6 +441,8 @@ onFullscreenChange(callback: Callback\<FullscreenInfo>)
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -448,6 +460,8 @@ onFullscreenChange(callback: Callback\<FullscreenInfo>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称       | 类型    | 只读 | 可选 | 说明                         |
@@ -457,6 +471,8 @@ onFullscreenChange(callback: Callback\<FullscreenInfo>)
 ## PosterOptions<sup>18+</sup>对象说明
 
 用于描述当前视频是否配置首帧送显。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -526,6 +542,8 @@ reset(): void
 Video组件重置AVPlayer。显示当前帧，再次播放时从头开始播放。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

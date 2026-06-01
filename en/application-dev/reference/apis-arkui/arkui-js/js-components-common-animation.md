@@ -1,10 +1,12 @@
 # Animation Styles
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=09270f91b417ea5ec4bcdbc08e1efeacfd1ff910 translatedAt=2026-05-26T06:26:35.195Z pushedAt=2026-05-26T09:30:58.498Z -->
 
 > **NOTE**
 >
@@ -15,18 +17,17 @@ Components support dynamic rotation, translation, and scaling effects. These eff
 | Name                      | Type                                                         | Description                                                  |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | transform-origin          | string<sup>6+</sup> \| \<percentage> \| \<length> string<sup>6+</sup> \| \<percentage> \| \<length> | Origin position of the transformed element. The unit can be px or a percentage (relative to the animation target component). If only one value is specified, the other one is **50%**. The available values for the first string are **left**, **center**, and **right**. The available values for the second string are **top**, **center**, and **bottom**.<br>Example:<br/>transform-origin: 200px 30%<br/>transform-origin: 100px top<br/>transform-origin: center center<br/>Default value: **center center** |
-| transform                 | string                                                       | Translation, rotation, and scaling attributes.<br/>For details, see **transform**. |
-| animation<sup>6+</sup>               | string                                                       | Animation attributes in the format of **duration \| timing-function \| delay \| iteration-count \| direction \| fill-mode \| play-state \| name**. The order of the parameters is not specified, but the **duration** and **delay** parameters are parsed based on where they are placed.<br/>Default value: 0s&nbsp;ease&nbsp;0s&nbsp;1&nbsp;normal&nbsp;none&nbsp;running&nbsp;none |
-| animation-name            | string                                                       | @keyframes rule. For details, see **@keyframes**. |
-| animation-delay           | \<time>                                                      | Delay for playing the animation, in ms or s, for example, **1000 ms** or **1s**. The default unit is ms.<br/>Default value: 0 |
+| transform                         | string                                   | Translation, rotation, and scaling attributes.<br/>For details, see Table 1 transform. |
+| animation<sup>6+</sup>               | string                                                       | Animation attributes in the format of **duration \| timing-function \| delay \| iteration-count \| direction \| fill-mode \| play-state \| name**. The order of the parameters is not specified, but the **duration** and **delay** parameters are parsed based on where they are placed.<br/>Default value: **0s&nbsp;ease&nbsp;0s&nbsp;1&nbsp;normal&nbsp;none&nbsp;running&nbsp;none** |
+| animation-name                    | string                                   | \@keyframes. For details, see Table 2 @keyframes.        |
+| animation-delay           | \<time>                                                      | Delay for playing the animation, in ms or s, for example, **1000 ms** or **1s**. The default unit is ms.<br/>Default value: **0** |
 | animation-duration        | \<time>                                                      | Animation duration, in ms or s, for example, **1000 ms** or **1s**. The default unit is ms.<br/>**NOTE**<br/>**animation-duration** must be specified. Otherwise, the duration is **0**, which means the animation will not be played.<br/>Default value: **0** |
 | animation-iteration-count | number \| infinite                                           | Number of times that an animation is played. The animation is played once by default. You can set the value to **infinite** to play the animation infinitely.<br/>Default value: **1** |
-| animation-timing-function | string                                                       | Speed curve of an animation, which makes the animation more fluent.Available values are as follows:  <br>- **linear**: The animation speed keeps unchanged. <br>- **ease**: The animation starts slowly, accelerates, and then slows down towards the end. The cubic-bezier curve (0.25, 0.1, 0.25, 1.0) is used.<br>- **ease-in**: The animation starts at a low speed. The cubic-bezier curve (0.42, 0.0, 1.0, 1.0) is used.<br>- **ease-out**: The animation ends at a low speed. The cubic-bezier curve (0.0, 0.0, 0.58, 1.0) is used.<br>- **ease-in-out**: The animation starts and ends at a low speed. The cubic-bezier curve (0.42, 0.0, 0.58, 1.0) is used.<br>- **friction**: The animation uses the friction cubic-bezier curve (0.2, 0.0, 0.2, 1.0).<br>- **extreme-deceleration**: The animation uses the extreme deceleration cubic-bezier curve (0.0, 0.0, 0.0, 1.0).<br>- **sharp**: The animation uses the sharp cubic-bezier curve (0.33, 0.0, 0.67, 1.0).<br>- **rhythm**: The animation uses the rhythm cubic-bezier curve (0.7, 0.0, 0.2, 1.0).<br>- **smooth**: The animation uses the smooth cubic-bezier curve (0.4, 0.0, 0.4, 1.0).<br>- **cubic-bezier**: You can customize an animation speed curve in the **cubic-bezier()** function. The x and y values of each input parameter must be between 0 and 1.<br>- **steps**: The animation uses the step curve<sup>6+</sup>. The syntax is as follows: steps(number[, end\|start]), where the first parameter **number** is mandatory and must be a positive integer; the second parameter is optional and indicates that the start point or end point (default) of each interval changes step by step.<br/>Default value: **ease** |
+| animation-timing-function | string                                                       | Speed curve of an animation, which makes the animation more fluent. Available values are as follows:  <br>- **linear**: The animation speed keeps unchanged. <br>- **ease**: The animation starts slowly, accelerates, and then slows down towards the end. The cubic-bezier curve (0.25, 0.1, 0.25, 1.0) is used.<br>- **ease-in**: The animation starts at a low speed. The cubic-bezier curve (0.42, 0.0, 1.0, 1.0) is used.<br>- **ease-out**: The animation ends at a low speed. The cubic-bezier curve (0.0, 0.0, 0.58, 1.0) is used.<br>- **ease-in-out**: The animation starts and ends at a low speed. The cubic-bezier curve (0.42, 0.0, 0.58, 1.0) is used.<br>- **friction**: The animation uses the friction cubic-bezier curve (0.2, 0.0, 0.2, 1.0).<br>- **extreme-deceleration**: The animation uses the extreme deceleration cubic-bezier curve (0.0, 0.0, 0.0, 1.0).<br>- **sharp**: The animation uses the sharp cubic-bezier curve (0.33, 0.0, 0.67, 1.0).<br>- **rhythm**: The animation uses the rhythm cubic-bezier curve (0.7, 0.0, 0.2, 1.0).<br>- **smooth**: The animation uses the smooth cubic-bezier curve (0.4, 0.0, 0.4, 1.0).<br>- **cubic-bezier**: You can customize an animation speed curve in the **cubic-bezier()** function. The x and y values of each input parameter must be between 0 and 1.<br>- **steps**: The animation uses the step curve<sup>6+</sup>. The syntax is as follows: steps(number[, end\|start]), where the first parameter **number** is mandatory and must be a positive integer; the second parameter is optional and indicates that the start point or end point (default) of each interval changes step by step.<br/>Default value: **ease** |
 | animation-direction<sup>6+</sup>     | string                                                       | Mode of playing the animation.   <br>- **normal**: Plays the animation in forward loop mode.  <br>- **reverse**: Plays the animation in reverse loop mode.  <br>- **alternate**: Plays the animation in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in backward direction.  <br>- **alternate-reverse**: Plays the animation in reverse-alternating loop mode. When the animation is played for an odd number of times, the playback is in backward direction. When the animation is played for an even number of times, the playback is in forward direction.<br/>Default value: **normal** |
 | animation-fill-mode       | string                                                       | Start and end styles of the animation   <br>- **none**: No style is applied to the target before or after the animation is executed.  <br>- **forwards**: The target keeps the state at the end of the animation (defined in the last key frame) after the animation is executed.  <br>- **backwards**<sup>6+</sup>: The animation uses the value defined in the first key frame during the **animation-delay**. When **animation-direction** is set to **normal** or **alternate**, the value in the **from** key frame is used. When **animation-direction** is set to **reverse** or **alternate-reverse**, the value in the **to** key frame is used.  <br>- **both**<sup>6+</sup>: The animation follows the **forwards** and **backwards** rules.<br/>Default value: none |
 | animation-play-state<sup>6+</sup>    | string                                                       | Current state of the animation.  <br>- **paused**: paused  <br>- **running**: playing<br/>Default value: **running** |
 | transition<sup>6+</sup>              | string                                                       | Transition effect when the component status is switched. The following four attributes can be set through the **transition** attribute.<br>- **transition-property**: name of the CSS property for setting the transition effect. Currently, the width, height, and background color are supported.  <br>- **transition-duration**: duration required for completing the transition effect, in seconds.  <br>- **transition-timing-function**: time curve of the transition effect. The curve provided by the style animation is supported.  <br>- **transition-delay**: delay for starting the transition effect, in seconds.<br/>Default value: **all&nbsp;0&nbsp;ease&nbsp;0** |
-
 
 **Table 1** transform
 
@@ -63,10 +64,10 @@ Components support dynamic rotation, translation, and scaling effects. These eff
 | opacity               | number                                                       | 1             | Opacity value applied to the component after the animation is played. The value ranges from **0** to **1**. The default value is **1**. |
 | width                 | \<length>                                                    | -             | Width value applied to the component after the animation is played. |
 | height                | \<length>                                                    | -             | Height value applied to the component after the animation is played. |
-| transform             | string                                                       | -             | Transformation type applied to the component. For details, see **transform**. |
-| background-position<sup>6+</sup> | string \| \<percentage> \| \<length> string \| \<percentage> \| \<length> | 50% 50%       | Position of the background image. The unit can be percentage or px. The first value indicates the horizontal position, and the second value indicates the vertical position. If only one value is specified, the other one is **50%**. The available values for the first string are **left**, **center**, and **right**. The available values for the second string are **top**, **center**, and **bottom**.<br>Example:<br>- background-position: 200px 30%<br>- background-position: 100px top<br>- background-position: center center |
+| transform                        | string                                   | -            | Transform type applied to the component. For details, see Table 1 transform.          |
+| background-position<sup>6+</sup> | string \| \<percentage> \| \<length> string \| \<percentage> \| \<length> | 50% 50%       | Position of the background image. The unit can be a percentage or px. The first value indicates the horizontal position, and the second value indicates the vertical position. If only one value is specified, the other one is **50%**. The available values for the first string are **left**, **center**, and **right**. The available values for the second string are **top**, **center**, and **bottom**.<br>Example:<br>- background-position: 200px 30%<br>- background-position: 100px top<br>- background-position: center center |
 
-If there is no default value for when an animation will start or end, use **from** and **to** to specify the start and end of the display. You can use a percentage value to specify an intermediate state of the animation.<sup>6+</sup> The following is an example:
+If there is no default value for when an animation will start or end, you can explicitly specify the start and end using **from** and **to**. You can use a percentage value to specify an intermediate state of the animation<sup>6+</sup>. The following is an example:
 
 ```html
 <!-- xxx.hml -->
@@ -107,7 +108,6 @@ If there is no default value for when an animation will start or end, use **from
   }
 }
 ```
-
 
 ![en-us_image_0000001173324797](figures/en-us_image_0000001173324797.gif)
 
@@ -156,7 +156,6 @@ export default {
   }
 }
 ```
-
 
 ![en-us_image_0000001127285034](figures/en-us_image_0000001127285034.gif)
 
@@ -215,7 +214,6 @@ export default {
     transition: all 5s linear 0s;
 }
 ```
-
 
 ![en-us_image_0000001152833768](figures/en-us_image_0000001152833768.gif)
 

@@ -1,8 +1,8 @@
 # 图像效果
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -1205,7 +1205,7 @@ systemMaterial(material: SystemUiMaterial | undefined): T
 
 ## SystemUiMaterial
 
-type SystemUiMaterial = uiMaterial.Material
+type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material
 
 **起始版本：** 26.0.0
 
@@ -1219,7 +1219,7 @@ type SystemUiMaterial = uiMaterial.Material
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| uiMaterial.[Material](../arkts-apis-uimaterial.md#material)     | 系统材质对象。 |
+| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial.md#material)     | 系统材质对象。 |
 
 ## doubleSided
 

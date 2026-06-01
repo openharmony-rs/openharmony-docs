@@ -6,36 +6,14 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-## 窗口类型
+## WindowStage
 
-窗口有系统窗口、应用窗口两种分类。
+**WindowStage**是OpenHarmony中的窗口管理器，负责管理一个UIAbility所对应的主窗口。
 
-### 系统窗口
+## Window
 
-系统窗口指完成系统特定功能的窗口。如音量条、壁纸、通知栏、状态栏、导航栏等。
+**Window**是OpenHarmony中的窗口实例。每个Window实例代表一个独立的窗口。
 
-系统窗口仅系统应用可用。
-
-### 应用窗口
-
-应用窗口区别于系统窗口，指与应用显示相关的窗口，用来显示应用的内容。根据管理方式和用途的不同，应用窗口又可以分为主窗口、辅助窗口两种类型。
-
-- 主窗口
-
-  主窗口由UIAbility创建时默认创建，会在“任务管理界面”中以一个独立的任务卡片显示，用于显示应用UIAbility主界面。
-
-- 辅助窗口
-
-  辅助窗口由应用自行管理创建和销毁，不会在“任务管理界面”中以一个独立的任务卡片显示，可以用于显示应用的辅助内容，例如弹窗等。
-
-  辅助窗口包括子窗口、全局悬浮窗、模态窗口、画中画、闪控球和[标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)。其中子窗口分为独立子窗、非独立子窗。
-
-  - 独立子窗：
-  
-    从API version 26.0.0开始，支持在创建子窗时设置[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened为true，此时创建的子窗称为独立子窗。独立子窗在[自由窗口](#自由窗口)状态下，不跟随主窗前后台的切换，仅跟随主窗一起销毁，独立子窗与主窗可通过点击调整层级。
-  - 非独立子窗：
-  
-    默认创建的子窗均为非独立子窗。创建子窗时[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened默认为false，此时创建的子窗为非独立子窗。
 ## 悬浮窗
 
 悬浮窗分为智慧多窗悬浮窗、全局悬浮窗和[标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)。
@@ -52,8 +30,7 @@
 
   应用在创建全局悬浮窗前，需要申请对应的权限。
   
-  <!--RP1-->
-  相关参考：[设置全局悬浮窗](application-window-stage.md#设置全局悬浮窗受限开放)。<!--RP1End-->
+  相关参考：[全局悬浮窗开发指导](global-floating-window-guide.md)。
 
 ## 自由窗口
 

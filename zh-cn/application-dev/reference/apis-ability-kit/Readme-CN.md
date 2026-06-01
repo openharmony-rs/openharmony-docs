@@ -230,7 +230,6 @@
       - [ViewData (系统接口)](js-apis-inner-application-viewData-sys.md)
       - [AgentExtensionConnectCallback (系统接口)](js-apis-inner-application-agentExtensionConnectCallback-sys.md)
       - [AgentProxy (系统接口)](js-apis-inner-application-agentProxy-sys.md)
-      - [ToolInfo (系统接口)](js-apis-inner-application-ToolInfo-sys.md)
       <!--DelEnd-->
     - bundleManager<!--bundlemanager-->
       - [abilityInfo](js-apis-bundleManager-abilityInfo.md)

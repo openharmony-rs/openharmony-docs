@@ -45,8 +45,9 @@ console.info('power is active: ' + isActive);
 
 rebootDevice(reason: string): void
 
+重启系统。
+
 > **说明：**<br>从API version 7开始支持，从API version 9开始不再维护<!--Del-->。建议使用[power.reboot](js-apis-power-sys.md#powerreboot9)替代<!--DelEnd-->，替代接口能力仅对系统应用开放。
-重启设备。
 
 **需要权限：** ohos.permission.REBOOT,该权限仅系统应用可申请。
 
@@ -57,7 +58,7 @@ rebootDevice(reason: string): void
 
 | 参数名    | 类型     | 必填   | 说明    |
 | ------ | ------ | ---- | ----- |
-| reason | string | 是    | 重启原因。 |
+| reason | string | 是    | 重启原因。例如，“updater”表示重启后进入更新模式。如果未指定该参数，系统将在重启后进入正常模式。 |
 
 **示例：**
 
@@ -123,9 +124,9 @@ try {
 
 isScreenOn(callback: AsyncCallback&lt;boolean&gt;): void
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[power.isActive](#powerisactive9)替代。
-
 检测当前设备的亮灭屏状态。使用callback异步回调。
+
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[power.isActive](#powerisactive9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -151,9 +152,9 @@ power.isScreenOn((err: Error, data: boolean) => {
 
 isScreenOn(): Promise&lt;boolean&gt;
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[power.isActive](#powerisactive9)替代。
-
 检测当前设备的亮灭屏状态。使用Promise异步回调。
+
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[power.isActive](#powerisactive9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -196,5 +197,5 @@ power.isScreenOn()
 
 | 名称                    | 值   | 说明                   |
 | ----------------------- | ---- | ---------------------- |
-| DISABLE_LONG_PRESS_FILTERING | 0  | 表示不使能电源键过滤策略，默认值。 |
+| DISABLE_LONG_PRESS_FILTERING | 0  | 表示不使能电源键长按事件的过滤策略，默认值。 |
 | LONG_PRESS_FILTERING_ONCE | 1  | 表示仅过滤当前电源键长按事件，下一次不过滤。 |

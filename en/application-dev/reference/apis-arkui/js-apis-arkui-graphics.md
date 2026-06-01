@@ -11,6 +11,8 @@ The **Graphics** module provides APIs for defining attributes of a custom node.
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -1984,3 +1986,53 @@ struct Index {
 }
 ```
 ![](figures/borderRadiuses_demo.png)
+
+## BackgroundBlur
+
+Sets a background blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name    | Type    | Read-Only| Optional| Description                                    |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**, indicating that the background is not blurred. A larger value indicates a more obvious blur effect.|
+| grayscale | [number, number] | No  | Yes  | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.     |
+
+## ContentBlur
+
+Sets a content blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name    | Type    | Read-Only| Optional| Description                                    |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**, indicating that the content is not blurred. A larger value indicates a more obvious blur effect.|
+| grayscale | [number, number] | No  | Yes  | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.     |
+
+## ForegroundBlur
+
+Sets a foreground blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type  | Read-Only| Optional| Description                               |
+| ------ | ------ | ---- | ---- | ----------------------------------- |
+| radius | number | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**, indicating that the foreground is not blurred. A larger value indicates a more obvious blur effect.|

@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（交互类相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW; @zju_ljz-->
-<!--Designer: @CCFFWW; @lanshouren-->
+<!--Owner: @hehongyang3; @zju_ljz-->
+<!--Designer: @hehongyang3; @lanshouren-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 

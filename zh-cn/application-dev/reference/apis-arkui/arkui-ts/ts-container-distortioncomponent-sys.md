@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -124,7 +124,7 @@ type Vector4 = Vector4
 
 ## 属性
 
-仅支持系统材质属性[systemMaterial](ts-universal-attributes-image-effect-sys.md#systemmaterial23)。
+仅支持系统材质属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)。
 
 ## 示例
 

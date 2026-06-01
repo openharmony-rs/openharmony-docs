@@ -493,7 +493,7 @@ struct Comp {
    - `ComponentUnderBuilderNode`在被挂载到新的窗口下时，会触发\@Env重新获取新的环境变量。
    - \@Env重新获取新的环境变量后，触发其关联组件的刷新。其中`ComponentUnderBuilderNode`中`@Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo`会通知`CompV2`内的`@Param breakpoint`刷新，但是并不会通知`Comp`内的常规变量`breakpoint`触发UI刷新。所以在切换窗口，\@Env重新获取环境变量的场景下，建议开发者不要将\@Env传递给常规变量，以避免常规变量不能被通知UI刷新的问题。
 
-下面的示例包含了创建子窗的流程，具体可参考[管理应用窗口（Stage模型）](../windowmanager/application-window-stage.md)。
+下面的示例包含了创建子窗的流程，具体可参考[子窗口开发指导](../windowmanager/subwindow-guide.md)。
 
 ```Typescript
 // EntryAbility.ets

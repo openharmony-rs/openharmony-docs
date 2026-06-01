@@ -1,8 +1,8 @@
 # Interface (AtomicServiceBar)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
-<!--Designer: @piggyguy-->
+<!--Owner: @pengzhiwen3-->
+<!--Designer: @dutie123-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -13,6 +13,8 @@
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Interface首批接口从API version 11开始支持。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 以下接口需要先使用UIContext中的[getAtomicServiceBar](arkts-apis-uicontext-uicontext.md#getatomicservicebar11)方法获取到AtomicServiceBar对象，再通过该对象调用对应方法。
 >
@@ -300,8 +302,6 @@ onBarRectChange(callback: Callback\<Frame\>): void
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

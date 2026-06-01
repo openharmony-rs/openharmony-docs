@@ -292,7 +292,7 @@ type TouchGuideType = 'touchBegin' | 'touchEnd'
 
 ## AccessibilityExtensionAbility.onConnect<sup>(deprecated)</sup>
 
-onConnect(): void;
+onConnect(): void
 
 用户启用AccessibilityExtensionAbility时，系统服务完成连接后，回调此接口，可以该方法中执行初始化业务逻辑操作。该方法可以选择性重写。
 
@@ -316,7 +316,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ## AccessibilityExtensionAbility.onDisconnect<sup>(deprecated)</sup>
 
-onDisconnect(): void;
+onDisconnect(): void
 
 用户停用AccessibilityExtensionAbility时，系统服务完成断开连接后，回调此接口，可以该方法中执行资源回收退出业务逻辑操作。该方法可以选择性重写。
 
@@ -340,7 +340,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ## AccessibilityExtensionAbility.onAccessibilityEvent<sup>(deprecated)</sup>
 
-onAccessibilityEvent(event: AccessibilityEvent): void;
+onAccessibilityEvent(event: AccessibilityEvent): void
 
 在关注的应用及事件类型对应的事件发生时回调此接口，可以在该方法中根据事件信息进行业务逻辑处理。一般情况下需要重写该方法完成业务。
 
@@ -373,7 +373,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ## AccessibilityExtensionAbility.onKeyEvent<sup>(deprecated)</sup>
 
-onKeyEvent(keyEvent: KeyEvent): boolean;
+onKeyEvent(keyEvent: KeyEvent): boolean
 
 在物理按键按下时回调此方法，可以在该方法中根据业务判断是否对事件进行拦截。
 

@@ -1546,7 +1546,7 @@ struct ReusableChild {
 @Entry
 @ComponentV2({ 
   reusePool: 'shared', // 声明共享全局复用池
-  poolAccepts: ['ReusableChild'], // 全局复用池接纳子组件类型ReusableChild 
+  poolAccepts: [ReusableChild], // 全局复用池接纳子组件类型ReusableChild
   freezeWhenInactive: false // 关闭组件冻结功能。该参数必须声明reusePools时提供，也可以开启组件冻结。
 })
 struct Index {
@@ -2211,7 +2211,7 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   checkPool() {
     const context = UIUtils.getCustomComponentContext(this);
@@ -2295,7 +2295,7 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showChild: boolean = true;
 
@@ -2406,7 +2406,7 @@ function preRenderBuilder() {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableComponent'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
 struct Index {
   @Local onUIFullyLoaded: boolean = false;
 
@@ -2489,7 +2489,7 @@ struct TestChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['TestChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showA: boolean = true;
   @Local showB: boolean = true;

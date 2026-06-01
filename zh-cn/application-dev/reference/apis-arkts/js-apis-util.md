@@ -660,6 +660,71 @@ napi_value dangerous_function(napi_env env, napi_callback_info info) {
 }
 ```
 
+### setTrackGlobalRef
+
+static setTrackGlobalRef(enable: boolean): void
+
+开启或关闭napi_ref与全局对象之间的关联追踪。开启后，堆快照中全局对象节点将包含napi_ref的地址信息；关闭后（enable为false），将停止追踪，堆快照中不再显示napi_ref与全局对象之间的关联关系。
+
+开启追踪后，虚拟机会额外记录napi_ref与全局对象的关联关系，可能带来一定的内存和性能开销。在不需要调试时，建议调用`util.ArkTSVM.setTrackGlobalRef(false)`关闭追踪。
+
+关于napi_ref的详细说明，请参考[napi_ref](../../napi/use-napi-life-cycle.md#napi_ref)使用指导。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| enable | boolean | 是 | 是否开启追踪。true表示开启追踪，false表示关闭追踪。 |
+
+**示例：**
+
+``` C++
+// napi_init.cpp C++侧示例代码
+#include "napi/native_api.h"
+
+static napi_value CreateGlobalRef(napi_env env, napi_callback_info info)
+{
+    napi_value js_obj = nullptr;
+    napi_create_object(env, &js_obj);
+    // 创建napi_ref，与全局handle建立关联
+    napi_ref ref = nullptr;
+    napi_create_reference(env, js_obj, 1, &ref);
+    // 开启setTrackGlobalRef后，堆快照中将包含该ref对应的native引用地址信息
+    return nullptr;
+}
+```
+
+``` TypeScript
+// Index.d.ts 接口声明
+export const createGlobalRef: () => void;
+```
+
+``` TypeScript
+// Index.ets ArkTS侧示例代码
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+import { util } from '@kit.ArkTS';
+
+try {
+  // 开启napi_ref与全局handle的关联追踪，开启后堆快照中将包含native引用地址信息
+  util.ArkTSVM.setTrackGlobalRef(true);
+  testNapi.createGlobalRef();
+  hilog.info(0x0000, 'testTag', 'Test Node-API createGlobalRef success');
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'Test Node-API createGlobalRef failed error: %{public}s', error.message);
+}
+```
+
+开启追踪后，堆快照中全局对象节点将显示napi_ref的地址信息，效果如下图所示：
+
+![setTrackGlobalRef堆快照效果图](figures/setTrackGlobalRef_heap_snapshot.png)
+
 ### onVMHeapMemoryPressure<sup>24+</sup>
 
 static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold: HeapMemoryThreshold): boolean

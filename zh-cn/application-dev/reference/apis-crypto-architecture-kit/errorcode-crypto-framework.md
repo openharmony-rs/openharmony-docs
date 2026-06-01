@@ -30,15 +30,15 @@ Memory operation failed.
 1. 检查当前系统功能是否正常。
 2. 业务检查数据是否超长，导致系统无法分配内存。
 
-## 17620002 ArkTS和C之间转换参数失败
+## 17620002 获取Native对象失败或参数转换失败
 
 **错误信息**
 
-Failed to convert parameters between arkts and c.
+Failed to obtain the native object or convert parameters.
 
 **错误描述**
 
-ArkTS和C之间转换参数失败。
+获取Native对象失败或参数转换失败。
 
 **可能原因**
 
@@ -48,7 +48,7 @@ ArkTS和C之间转换参数失败。
 
 检查当前系统功能是否正常。
 
-## 17620003 参数校验失败
+## 17620003 参数检查失败
 
 **错误信息**
 
@@ -56,7 +56,7 @@ Parameter check failed.
 
 **错误描述**
 
-参数校验失败。
+参数检查失败。
 
 **可能原因**
 
@@ -70,7 +70,7 @@ Parameter check failed.
 
 **错误信息**
 
-invalid function call. 
+Invalid function call. 
 
 **错误描述**
 
@@ -84,7 +84,7 @@ invalid function call.
 
 检查当前函数调用是否合理。
 
-## 17630001 算法相关的操作错误，调用三方算法库API出错
+## 17630001 密码操作错误
 
 **错误信息**
 
@@ -92,7 +92,7 @@ Crypto operation error.
 
 **错误描述**
 
-调用三方算法库API出错。
+密码操作错误。
 
 **可能原因**
 
