@@ -6,7 +6,7 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
-In multi-device development scenarios, you can use the [\@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md) decorator to listen for changes of system environment variables and determine the scenario based on the system environment variables, reducing the adaptation logic and repeated development between different devices.
+In multi-device development scenarios, you can use the [@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md) decorator to listen for changes of system environment variables and determine the scenario based on the system environment variables, reducing the adaptation logic and repeated development between different devices.
 
 >**NOTE**
 >
@@ -23,7 +23,7 @@ In multi-device development scenarios, you can use the [\@Env](../reference/apis
   - [SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the avoid area of a window, in vp.
   - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the avoid area of a window, in px.
 - When the system environment variable changes, the \@Env-decorated variable is updated and the component associated with \@Env is refreshed, implementing synchronous update of the UI content.
-- You are not allowed to initialize the variables decorated by \@Env. @Env returns an instance of an observable environment variable class decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md), whose attributes are in turn decorated by [\@Trace](./state-management/arkts-new-observedV2-and-trace.md). To listen for the change of an environment variable, use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For details, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
+- You are not allowed to initialize the variables decorated by \@Env. @Env returns an instance of an observable environment variable class decorated by @ObservedV2, whose attributes are in turn decorated by @Trace. To listen for the change of an environment variable, use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For details, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
 
 ## Supported Parameters
 
@@ -229,6 +229,7 @@ struct Index {
 
 @Component
 struct Child1 {
+  // @Env reads system environment variables.
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
 
   build() {
@@ -474,7 +475,7 @@ struct Comp {
 
 ### Switching Windows Through BuilderNode
 
-\@Env is used to display the environment variable information of the [window](../reference/apis-arkui/arkts-apis-window-Window.md) where \@Component or \@ComponentV2 is located. When you switch the window instance where @Component or @ComponentV2 is located through **BuilderNode**, \@Env obtains the corresponding environment variable information based on the new window and triggers refreshes of the associated UI component. **SystemProperties.BREAK_POINT** is used as an example.
+\@Env is used to display the environment variable information of the [window](../reference/apis-arkui/arkts-apis-window.md) where \@Component or \@ComponentV2 is located. When you switch the window instance where @Component or @ComponentV2 is located through **BuilderNode**, \@Env obtains the corresponding environment variable information based on the new window and triggers refreshes of the associated UI component. **SystemProperties.BREAK_POINT** is used as an example.
 
 In the following example:
 1. Click **Button('add node to tree')** to create a **BuilderNode** and mount it to **NodeContainer**.
