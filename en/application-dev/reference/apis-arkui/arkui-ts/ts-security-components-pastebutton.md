@@ -208,4 +208,4 @@ struct Index {
 }
 ```
 
-![en-us_image_0000001593677984](figures/en-us_image_0000001593677984.png)
+![PasteButton-Basic-demo](figures/PasteButton-Basic-demo.png)
