@@ -276,20 +276,28 @@
 - Using NDK APIs to Build UIs<!--arkts-use-ndk-->
   - [NDK-Based UI Development Overview](ndk-build-ui-overview.md)
   - [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md)
-  - Adding Interaction Events<!--arkts-add-event-->
-    - [Listening for Component Events](ndk-listen-to-component-events.md)
+  - [Adding Event Responses](ndk-add-event-response.md)
+    - [Adding Event Listeners](ndk-add-component-events.md)
+    - [Binding Basic Input Events](ndk-bind-input-events.md)
     - [Binding Gesture Events](ndk-bind-gesture-events.md)
-    - [Drag Event](ndk-drag-event.md)
-    - [Listening for Component Layout and Drawing Events](ndk-inspector-component-observer.md)
+    - [Binding Drag Events](ndk-drag-event.md)
   - [Using Animations](ndk-use-animation.md)
+  - Building a Layout<!--arkts-build-layout-ndk-->
+    - [Using Layout Components](ndk-layout-container.md)
+    - [Setting the Common Layout Attributes](ndk-common-attribute-layout.md)
   - List and Grid<!--arkts-list-and-grid-ndk-->
     - [Implementing a List Layout](ndk-loading-long-list.md)
     - [Implementing a Waterfall Flow Layout](ndk-waterflow.md)
     - [Using Grids](ndk-grid.md)
   - Using Text<!--arkts-build-text-ndk-->
-      - [Drawing and Displaying Text in Text Components](ndk-styled-string.md)
+      - [Using the Text Component](ndk-use-text-component.md)
+      - [Using Attribute Strings](ndk-styled-string.md)
       - [Adding a Text Event Listener for a Text Box](ndk-textarea-event.md)
   - [Building Dialog Boxes](ndk-build-pop-up-window.md)
+  - [Building Form Components](ndk-build-form-components.md)
+  - Media Display <!--arkts-build-media-ndk-->
+    - [Using the Swiper Component](ndk-swiper.md)
+  - [Using Navigation Components](ndk-navigation-query.md)
   - [Building Custom Components](ndk-build-custom-components.md)
   - [Embedding ArkTS Components](ndk-embed-arkts-components.md)
   - [Building a Rendering Node](ndk-embed-render-components.md)

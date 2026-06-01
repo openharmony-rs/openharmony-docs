@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides information about an ability. Unless otherwise specified, the information is obtained through [bundle.getAbilityInfo](js-apis-Bundle.md#bundlegetabilityinfodeprecated).
 
@@ -14,7 +14,7 @@ The module provides information about an ability. Unless otherwise specified, th
 >
 > The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md) instead.
 
-## AbilityInfo<sup>(deprecated)<sup>
+## AbilityInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -50,4 +50,4 @@ The module provides information about an ability. Unless otherwise specified, th
 | labelId               | number                                                       | Yes  | No  | ID of the ability label.                                           |
 | subType               | bundle.AbilitySubType                                               | Yes  | No  | Subtype of the template that can be used by the ability.<br>**Model restriction**: This API can be used only in the FA model.|
 | metaData<sup>8+</sup> | Array\<[CustomizeData](js-apis-bundle-CustomizeData.md)>     | Yes  | No  | Metadata of the ability.<br>The value is obtained by passing in GET_ABILITY_INFO_WITH_METADATA to [bundle.getAbilityInfo](js-apis-Bundle.md#bundlegetabilityinfodeprecated).|
-| enabled<sup>8+</sup>  | boolean                                                      | Yes  | No  | Whether the ability is enabled. **true** if enabled, **false** otherwise.                                           |
+| enabled<sup>8+</sup>  | boolean                                                      | Yes  | No  | Whether the ability is available. The value **true** indicates that the ability is available, and the value **false** means the opposite.                                           |

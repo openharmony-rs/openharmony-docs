@@ -21,6 +21,6 @@ Compared with raw input events, gestures are the preferred method for handling u
 [Supporting Focus Processing](arkts-common-events-focus-event.md): shows how to manage component focus within the UI.
 
 When developing UI components using the NDK, you can add interaction responses through the following resources:
-- [Listening for Component Events](ndk-listen-to-component-events.md): Learn how to bind basic input events to components.
-- [Binding Gesture Events](ndk-bind-gesture-events.md): Add gesture support to components for richer interaction using NDK APIs.
-- [Drag Event](ndk-drag-event.md): Implement unified drag and drop functionality using NDK APIs.
+- [Binding Basic Input Events](ndk-bind-input-events.md): Add basic input event responses to components using NDK APIs.
+- [Binding Gesture Events](ndk-bind-gesture-events.md): Add gesture support to components for richer interaction.
+- [Binding Drag Events](ndk-drag-event.md): Implement unified drag and drop functionality using NDK APIs.

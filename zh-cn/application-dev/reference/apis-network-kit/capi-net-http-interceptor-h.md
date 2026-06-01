@@ -57,6 +57,8 @@ int32_t OH_Http_AddReadOnlyInterceptor(struct OH_Http_Interceptor *interceptor)
 
 **系统能力：** SystemCapability.Communication.NetStack
 
+**需要权限：** ohos.permission.INTERNET
+
 **起始版本：** 24
 
 **参数：**
@@ -79,6 +81,8 @@ int32_t OH_Http_RemoveInterceptor(struct OH_Http_Interceptor *interceptor)
 删除指定的HTTP全局拦截器。
 
 **系统能力：** SystemCapability.Communication.NetStack
+
+**需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 24
 
@@ -107,6 +111,8 @@ int32_t OH_Http_RemoveAllInterceptors(int32_t groupId)
 
 **系统能力：** SystemCapability.Communication.NetStack
 
+**需要权限：** ohos.permission.INTERNET
+
 **起始版本：** 24
 
 **参数：**
@@ -132,6 +138,8 @@ int32_t OH_Http_StartAllInterceptors(int32_t groupId)
 
 **系统能力：** SystemCapability.Communication.NetStack
 
+**需要权限：** ohos.permission.INTERNET
+
 **起始版本：** 24
 
 **参数：**
@@ -156,6 +164,8 @@ int32_t OH_Http_StopAllInterceptors(int32_t groupId)
 - 调用[OH_Http_StartAllInterceptors](#oh_http_startallinterceptors)重新启用拦截器。
 
 **系统能力：** SystemCapability.Communication.NetStack
+
+**需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 24
 

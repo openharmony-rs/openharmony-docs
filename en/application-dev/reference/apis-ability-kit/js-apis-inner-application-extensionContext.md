@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ExtensionContext provides the context environment for an [ExtensionAbility](js-apis-app-ability-extensionAbility.md). It inherits from [Context](js-apis-inner-application-context.md#context).
 

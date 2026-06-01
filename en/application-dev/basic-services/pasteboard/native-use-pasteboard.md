@@ -18,7 +18,7 @@ The pasteboard allows you to copy and paste data of the plain text, hypertext, a
 
 ## Constraints
 
-- The pasteboard content, including system service metadata and application settings, has a maximum size of 128 MB by default. For PCs/2-in-1 devices, the maximum size can be changed through system settings, with a valid range from 128 MB to 2 GB.
+- The pasteboard content, including system service metadata and application settings, has a maximum size of 128 MB by default. For PCs/2-in-1 devices, the maximum size can be changed through system settings, with a valid range from 1 MB to 2 GB.
 - To ensure the accuracy of the pasteboard data, only one copy can be performed at a time.
 - Currently, supported data types include **OH_UdsPlainText** (plain text), **OH_UdsHtml** (hypertext markup language), **OH_UdsFileUri** (file URI). **OH_UdsPixelMap** (pixel map), **OH_UdsHyperlink** (hyperlink), **OH_UdsAppItem** (application icon), and custom type. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to match the data types with the corresponding APIs during usage. For details, see [Using the Pasteboard to Copy and Paste](../pasteboard/use-pasteboard-to-copy-and-paste.md#mapping-between-arkts-and-ndk-data-types).
 - When you copy and paste data of a custom type, the specified type name cannot be the same as an existing one.

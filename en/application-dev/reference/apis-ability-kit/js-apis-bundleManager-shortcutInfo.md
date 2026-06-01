@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module describes the shortcut information defined in the [module.json5](../../quick-start/module-configuration-file.md#shortcuts) file of an application. The information can be obtained by running [getAllShortcutInfoForSelf](js-apis-shortcutManager.md#shortcutmanagergetallshortcutinfoforself)<!--Del--> or [getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo)<!--DelEnd-->.
 
@@ -35,6 +35,7 @@ Describes a collection of target [Wants](../../quick-start/module-configuration-
 
 Describes the configuration information for a shortcut.
 
+<!--Table: 20%; 21%; 8%; 8%; 43%-->
 **System capability**: SystemCapability.BundleManager.BundleFramework.Launcher
 
 | Name               | Type                                      | Read-Only| Optional| Description                        |

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides information about the shared bundle. The information can be obtained by calling [bundleManager.getSharedBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetsharedbundleinfo10).
 
@@ -22,7 +22,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 ## SharedBundleInfo
 
-Defines the shared bundle information.
+ Defines the shared bundle information.
 
 **System API**: This is a system API.
 
@@ -38,7 +38,7 @@ Defines the shared bundle information.
 
 Defines the shared module information.
 
-**System API**: This is a system API.
+ **System API**: This is a system API.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 

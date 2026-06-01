@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -18,7 +18,7 @@ Before reading this topic, you are advised to read [Creating a Custom Component]
 >
 > Since API version 18, custom components can be frozen and used together.
 > 
-> Since API version 20, you can set the [inheritFreezeOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) API of [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) to true to inherit freezing capability. For details, see [BuilderNode Object Freeze Inheritance](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20).
+> Since API version 20, you can set the [inheritFreezeOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) API of [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) to true to inherit freezing capability.
 
 
 ## **Overview**
@@ -93,7 +93,7 @@ struct PageOne {
 ```
 
 Page 2:
-<!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets) -->
+<!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -116,6 +116,7 @@ struct PageTwo {
         .onClick(() => {
           this.getUIContext().getRouter().back();
         })
+      // Click Button to modify storageLink and check whether the first callback is triggered when page 1 is hidden.
       Button('second page storageLink + 2').fontSize(30)
         .onClick(() => {
           this.storageLink += 2;
@@ -145,7 +146,7 @@ Note that when the tab is rendered for the first time, only the TabContent that 
 For details, see the following.
 
 ![freezeWithTab](./figures/freezewithTabs.png)
-<!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) -->
+<!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -165,6 +166,7 @@ struct TabContentTest {
   build() {
     Row() {
       Column() {
+        // Click Button to modify the message and trigger the onMessageUpdated callback of the visible TabContent component.
         Button('change message').onClick(() => {
           this.message++;
         })
@@ -373,7 +375,7 @@ In the preceding example:
 When a **NavDestination** component becomes invisible, its child custom components enter an inactive state. In this state, modifying state variables does not trigger UI re-rendering of these components. When return to this page, its child custom components are restored to the active state and the @Watch callback is triggered to re-render the page.
 
 In the following example, **NavigationContentMsgStack** is set to the inactive state, which does not respond to the change of the state variables, and does not trigger component re-rendering.
-<!-- @[arkts_custom_components_freeze5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/MyNavigationTestStack.ets) -->
+<!-- @[arkts_custom_components_freeze5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/MyNavigationTestStack.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -596,7 +598,7 @@ In the preceding example:
 **Mixed Use of Component Reuse, if, and Component Freezing**
 
 The following example shows that when the state variable bound to the **if** component changes to **false**, the detach of **ChildComponent** is triggered. Because **ChildComponent** is marked as component reuse, it is not destroyed but enters the reuse pool, in this case, if the component freezing is enabled at the same time, the component will not be re-rendered in the reuse pool.
-<!-- @[arkts_custom_components_freeze6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets) -->
+<!-- @[arkts_custom_components_freeze6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -618,6 +620,7 @@ struct ChildComponent {
   }
 
   aboutToRecycle(): void {
+    // Output the recycled message to confirm that the component has been added to the reuse pool.
     hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
   }
 
@@ -1045,7 +1048,7 @@ When scenarios that support component freezing are used together, the freezing b
 **Mixed Use of Navigation and TabContent**
 
 The sample code is as follows:
-<!-- @[arkts_custom_components_freeze9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing.ets) -->    
+<!-- @[arkts_custom_components_freeze9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing.ets) --> 
 
 ``` TypeScript
 // index.ets
@@ -1440,7 +1443,7 @@ Turn off and on the screen to trigger **OnPageShow** and then click **add sum**.
 
 In versions earlier than API version 20, BuilderNode cannot inherit the parent component freezing. The **FreezeBuildNode** example below demonstrates the constraint for using a [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) with component freezing. When a BuilderNode is used within a frozen component hierarchy, its imperative mounting mechanism conflicts with the functionality of component freezing, which relies on parent-child relationships. As a result, the child components of the BuilderNode remain active, regardless of their parent's frozen state.
 
-In API version 20 and later, you can set inheritFreezeOptions of BuilderNode to true to inherit the freezing capability of BuilderNode. For details, see [BuilderNode Object Freeze Inheritance](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20).
+In API version 20 and later, you can set inheritFreezeOptions of BuilderNode to true to inherit the freezing capability of BuilderNode.
 <!-- @[arkts_custom_components_freeze11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Constraints.ets) -->
 
 ``` TypeScript
@@ -1555,3 +1558,73 @@ In the preceding example:
 When **change** is clicked, the value of **message** is changed. The onMessageUpdated method registered by @Watch in the TabContent component that is being displayed is triggered. Unexpected: For **TabContent** components that are not being displayed, the @Watch decorated **onMessageUpdated** callbacks of child components under the BuilderNode are also triggered, indicating that these components are not frozen.
 
 ![builderNode.gif](figures/builderNode.gif)
+
+### **Watch Not Triggered by Unfreezing When Component Freezing and Reuse Are Mixed**
+
+In the following example, component freezing is enabled for the **ChildComponent**, and the component is marked for reuse. When the state variable **condition** bound to the **if** component is modified to **false**, the **ChildComponent** is removed from the tree and enters the reuse pool. Because component freezing is enabled for the child component, the component is also frozen when it enters the reuse pool. In the reuse pool, if the state variable **count** is modified, the component is not refreshed or the **Watch** callback is not triggered because the component is in the **inactive** state.
+
+When the state variable **condition** bound to the **if** component is modified to **true**, the **ChildComponent** is removed from the reuse pool and marked as **active**, but the **Watch** callback bound to the state variable **count** is not triggered. This is because the execution logic of component reuse precedes that of component unfreezing. When a child component is reused, it [refreshes dirty nodes](./arkts-state-management-introduce.md#triggering-updates) (including [system components bound to variables](./arkts-state-management-introduce.md#collecting-dependencies) that require delayed refresh during freezing) and clears the dirty node list. After the child component is reused, it is marked as **active** again. In this case, the child component executes the unfreezing logic. Because the dirty node list is cleared during reuse, the system determines that no variable is changed during freezing and does not trigger the **Watch** callback.
+
+<!-- @[Freeze_and_Reuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/FreezeReuse.ets) --> 
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Reusable
+@Component({ freezeWhenInactive: true })
+struct ChildComponent {
+  @Link @Watch('onChange') count: number;
+
+  onChange() {
+    hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.count}`);
+  }
+
+  aboutToReuse(params: Record<string, ESObject>): void {
+    // Change the value in aboutToReuse. The Watch callback will not be triggered when the component is unfrozen.
+    this.count++;
+    hilog.info(DOMAIN, TAG, `ChildComponent has been reused`);
+  }
+
+  aboutToRecycle(): void {
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
+  }
+
+  build() {
+    Column() {
+      Text(`ChildComponent count: ${this.count}`)
+        .fontSize(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State flag: boolean = true;
+  @State count: number = 0;
+
+  build() {
+    Column() {
+      Button(`change flag`)
+        .onClick(() => {
+          this.flag = !this.flag;
+        })
+        .margin(10)
+        .width('50%')
+      Button(`change count`)
+        .onClick(() => {
+          this.count++;
+        })
+        .margin(10)
+        .width('50%')
+      if (this.flag) {
+        ChildComponent({ count: this.count })
+      }
+    }
+    .height('100%')
+  }
+}
+```

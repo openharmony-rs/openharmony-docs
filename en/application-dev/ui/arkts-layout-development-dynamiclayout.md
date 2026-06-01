@@ -852,6 +852,7 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
     let currentLineWidth = 0;
     let totalHeight = 0;
     let maxLineWidth = 0;
+    let currentLineHeight = 0;
 
     for (let i = 0; i < childCount; i++) {
       const child = self.getChild(i);
@@ -864,23 +865,25 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
         };
         child.measure(childConstraint);
         const childSize = child.getMeasuredSize();
+
         // Check whether a line break is required.
         if (currentLineWidth + childSize.width > maxWidth && currentLineWidth > 0) {
-          // Line break.
-          totalHeight += this.verticalGap;
-          currentLineWidth = childSize.width;
-          totalHeight += childSize.height;
+          // Before wrapping, accumulate the height of the previous line.
+          totalHeight += currentLineHeight + this.verticalGap;
+          currentLineWidth = childSize.width + this.horizontalGap;
+          currentLineHeight = childSize.height;
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         } else {
           // Continue the current line.
           currentLineWidth += childSize.width + this.horizontalGap;
-          if (i === 0) {
-            totalHeight = childSize.height;
-          }
+          currentLineHeight = Math.max(currentLineHeight, childSize.height);
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         }
       }
     }
+    // Accumulate the height of the last line.
+    totalHeight += currentLineHeight;
+
     self.setMeasuredSize({
       width: Math.min(maxLineWidth, maxWidth),
       height: totalHeight

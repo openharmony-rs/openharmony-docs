@@ -154,8 +154,8 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
 
 > **说明：**
 >
-> - 封装格式为mp4，音频编解码类型为MPEG（MP3）时采样率需大于等于16000Hz。  
-> - 封装格式为mp4/m4a，音频编解码类型为AAC时声道数范围为1~7。
+> - 封装格式为mp4时，音频编解码类型为MPEG（MP3）时采样率需大于等于16000Hz。
+> - 封装格式为mp4/m4a时，音频编解码类型为AAC时声道数范围为[1, 7]。
 
 文件级数据已定义的key如下所示：
    |                key                 |                       描述                    |
@@ -169,7 +169,7 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
 
 > **说明：**
 >
-> 用户自定义的key必须以"com.openharmony."为开头。值类型可以为int32_t、float、string，从API20开始增加支持uint8_t*。
+> 封装格式为mp4时，用户自定义的key必须以"com.openharmony."为开头。值类型可以为int32_t、float、string，从API version 20开始增加支持uint8_t*。
 
 配置选项key值说明：
 

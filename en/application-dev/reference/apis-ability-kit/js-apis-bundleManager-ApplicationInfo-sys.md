@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module defines the application information. An application can obtain its own application information through [bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself), with **GET_BUNDLE_INFO_WITH_APPLICATION** passed in to [bundleFlags](js-apis-bundleManager.md#bundleflag).
 
@@ -43,3 +43,4 @@ import { bundleManager } from '@kit.AbilityKit';
 | moduleName | string         | Yes  | No  | Module name of the application. The value is **moduleName** configured for the entry module. If the entry module does not exist, the value is **moduleName** configured for the feature module.           |
 | iconId | number         | Yes  | No  | Icon ID of the application.           |
 | labelId | number         | Yes  | No  | Label ID of the application.           |
+| descriptionId<sup>24+</sup> | number         | Yes  | Yes  | Description ID of the application.<br>**Model restriction**: This API can be used only in the stage model.           |

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides APIs to query whether the current application is the default application of a specific type.
 
@@ -40,7 +40,7 @@ Enumerates the default application types.
 
 isDefaultApplication(type: string): Promise\<boolean>
 
-Checks whether this application is the default application of a system-defined application type or a [uniform data type](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md). This API uses a promise to return the result.
+Checks whether this application is the default application of a system-defined application type or a [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -92,7 +92,7 @@ Checks whether this application is the default application of a system-defined a
 | Name        | Type                             | Mandatory  | Description                                     |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
 | type  | string                          | Yes   | Type of the target application. It must be set to a value defined by [ApplicationType](#applicationtype) or [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md).                           |
-| callback    | AsyncCallback\<boolean> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is a Boolean value (**true** if the application is the default application, **false** otherwise). If the operation fails, **err** is an error object.|
+| callback    | AsyncCallback\<boolean> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined** and **data** is a Boolean value (**true** if the application is the default application, **false** otherwise). If the operation fails, **err** is an error object.|
 
 **Error codes**
 

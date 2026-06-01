@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module providers APIs for launcher applications (applications with icons on the home screen) to obtain the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md).
 

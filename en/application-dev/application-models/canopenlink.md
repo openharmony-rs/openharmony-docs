@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## When to Use
 Before starting application B, application A can call **canOpenLink** to check whether application B is accessible.
@@ -27,7 +27,7 @@ For details about the matching rules, see [Matching Rules of Explicit Want and I
     ```json5
     {
       "module": {
-        //...
+        // ...
         "querySchemes": [
           "app1Scheme"
         ]
@@ -59,10 +59,10 @@ Configure the [uris](../quick-start/module-configuration-file.md#skills) field i
 ```json5
 {
   "module": {
-    //...
+    // ...
     "abilities": [
       {
-        //...
+        // ...
         "skills": [
           {
             // actions cannot be empty. Otherwise, matching the target application fails.

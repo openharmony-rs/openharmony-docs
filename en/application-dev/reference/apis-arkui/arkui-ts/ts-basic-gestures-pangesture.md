@@ -12,12 +12,12 @@ The table below describes the scenarios that can trigger a pan gesture:
 
 | Trigger Mode             | Input Source Type          | Input Device Type           | Remarks                             | 
 |----------------------|---------------------|------------------------|-----------------------------------|
-| Swiping with a finger press         | [SourceTool](ts-gesture-settings.md#sourcetool9).Finger   | [SourceType](ts-gesture-settings.md#sourcetype8).TouchScreen | Both **axisVertical** and **axisHorizontal** are 0.|
-| Swiping with a left mouse button press     | [SourceTool](ts-gesture-settings.md#sourcetool9).MOUSE    | [SourceType](ts-gesture-settings.md#sourcetype8).Mouse        | Both **axisVertical** and **axisHorizontal** are 0.|
+| Swiping with a finger press         | [SourceTool](ts-gesture-settings.md#sourcetool9).Finger   | [SourceType](ts-gesture-settings.md#sourcetype8).TouchScreen | Both **axisVertical** and **axisHorizontal** are **0**.|
+| Swiping with a left mouse button press     | [SourceTool](ts-gesture-settings.md#sourcetool9).MOUSE    | [SourceType](ts-gesture-settings.md#sourcetype8).Mouse        | Both **axisVertical** and **axisHorizontal** are **0**.|
 | Scrolling with a mouse wheel         | [SourceTool](ts-gesture-settings.md#sourcetool9).MOUSE    | [SourceType](ts-gesture-settings.md#sourcetype8).Mouse        | Either **axisVertical** or **axisHorizontal** is non-zero.|
-| Swiping after pressing the left button on a touchpad | [SourceTool](ts-gesture-settings.md#sourcetool9).MOUSE  | [SourceType](ts-gesture-settings.md#sourcetype8).Mouse     | Both **axisVertical** and **axisHorizontal** are 0.|
+| Swiping after pressing the left button on a touchpad | [SourceTool](ts-gesture-settings.md#sourcetool9).MOUSE  | [SourceType](ts-gesture-settings.md#sourcetype8).Mouse     | Both **axisVertical** and **axisHorizontal** are **0**.|
 | Swiping with two fingers on a touchpad      | [SourceTool](ts-gesture-settings.md#sourcetool9).TOUCHPAD  | [SourceType](ts-gesture-settings.md#sourcetype8).Mouse      | Either **axisVertical** or **axisHorizontal** is non-zero.|
-| Swiping with a stylus      | [SourceTool](ts-gesture-settings.md#sourcetool9).Pen  | [SourceType](ts-gesture-settings.md#sourcetype8).TouchScreen      | Both **axisVertical** and **axisHorizontal** are 0.|
+| Swiping with a stylus      | [SourceTool](ts-gesture-settings.md#sourcetool9).Pen  | [SourceType](ts-gesture-settings.md#sourcetype8).TouchScreen      | Both **axisVertical** and **axisHorizontal** are **0**.|
 
 >  **NOTE**
 >
@@ -68,14 +68,14 @@ Enumerates the pan directions. Unlike **SwipeDirection**, **PanDirection** has n
 
 | Name| Value| Description|
 | ---- | -- | ----- |
-| All | - | All directions.|
-| Horizontal | - | Horizontal direction.|
-| Vertical | - | Vertical direction.|
-| Left | - | Leftward.|
-| Right | - | Rightward.|
-| Up | - | Upward.|
-| Down | - | Downward.|
-| None | - | Panning disabled.|
+| None | 0 | Panning disabled.|
+| Left | 1 | Leftward.|
+| Right | 2 | Rightward.|
+| Horizontal | 3 | Horizontal direction.|
+| Up | 4 | Upward.|
+| Down | 8 | Downward.|
+| Vertical | 12 | Vertical direction.|
+| All | 15 | All directions.|
 
 
 ## PanGestureOptions
@@ -116,7 +116,7 @@ Sets the pan direction.
 
 setDistance(value: number)
 
-Sets the minimum pan distance to trigger the gesture, in vp. To avoid performance degradation due to excessive response delays or accidental releases, avoid excessively large values. For best practices, see [Reducing the Pan Distance for Gesture Recognition](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-application-latency-optimization-cases#section1116134115286).
+Sets the minimum pan distance to trigger the gesture, in vp. An excessively large value can result in delayed responses and accidental gesture releases, which may lead to performance degradation. For best practices, see [Reducing the Pan Distance for Gesture Recognition](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-application-latency-optimization-cases#section1116134115286).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

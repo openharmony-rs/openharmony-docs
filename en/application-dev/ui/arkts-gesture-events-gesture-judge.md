@@ -65,7 +65,7 @@ In the following example, the **Image** and **Stack** components are located in 
             // ...
             /*
             Replace $r('app.string.Stop_dragging_prompt') with the actual resource file.
-            The value in the resource file is "Long-pressing the upper half of Stack triggers the Stack response."
+            The value in the resource file is "LongPressGesture: Long-pressing the upper half of the gray area triggers the area's response."
              */
             promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt')  });
           })
@@ -125,7 +125,11 @@ In the following example, the **Image** and **Stack** components are located in 
                .draggable(true)
                .onDragStart(() => {
                  // Replace $r('app.string.Allow_dragging_prompt') with the actual resource file. In this example, the value in the resource file is "Dragging the lower half of Stack triggers the Image response."
-                 this.promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
+                 try {
+                   this.promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
+                 } catch (error) {
+                   console.error('ShowToast failed!')
+                 }
                })
                .width('200vp').height('200vp')
              // The upper half of the Stack component is the floating area bound to the long press gesture.
@@ -136,14 +140,18 @@ In the following example, the **Image** and **Stack** components are located in 
              .hitTestBehavior(HitTestMode.Transparent)
              .gesture(GestureGroup(GestureMode.Parallel,
                LongPressGesture()
-                 .onAction((event: GestureEvent) => {
+                 .onAction(() => {
                    /*
                    Replace $r('app.string.Stop_dragging_prompt') with the actual resource file.
-                   The value in the resource file is "Long-pressing the upper half of Stack triggers the Stack response."
+                   The value in the resource file is "LongPressGesture: Long-pressing the upper half of the gray area triggers the area's response."
                     */
-                   this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
+                   try {
+                     this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
+                   } catch (error) {
+                     console.error('ShowToast failed!')
+                   }
                  })
-                 .tag('longpress')
+                 .tag('longPress')
              ))
              .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
                // If it is a long press gesture, determine whether the touch position is in the upper half area.

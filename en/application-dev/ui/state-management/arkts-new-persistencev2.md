@@ -1,8 +1,8 @@
 # PersistenceV2: Persisting UI States
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -20,7 +20,7 @@ Before reading this topic, you are advised to read [\@ComponentV2](./arkts-creat
 >
 >**globalConnect** is supported since API version 18. The behavior of **globalConnect** is the same as that of **connect**. The only difference is that the underlying storage path of **connect** is a module-level path, while that of **globalConnect** is an application-level path. For details, see the section [Using connect and globalConnect in Different Modules](#using-connect-and-globalconnect-in-different-modules).
 >
->Since API version 23, GlobalConnect supports the persistence of [collection types](#collection-types-supported-by-globalconnect) (Array, Map, Set, Date, collections.Array, collections.Map, collections.Set), the persistence of data of the @Sendable type in the UI thread, the persistence of objects referenced cyclically, and the persistence of data whose single key exceeds 8 KB. Currently, you are advised to use the globalConnect API of API version 23.
+>Since API version 23, globalConnect supports the persistence of [collection types](#collection-types-supported-by-globalconnect) (Array, Map, Set, Date, collections.Array, collections.Map, collections.Set), the persistence of data of the @Sendable type in the UI thread, the persistence of objects referenced cyclically, and the persistence of data whose single key exceeds 8 KB. Currently, you are advised to use the globalConnect API of API version 23.
 
 ## Overview
 
@@ -46,7 +46,7 @@ PersistenceV2 inherits from [AppStorageV2](../../reference/apis-arkui/js-apis-st
 - **save**: manually persists data.
 - **notifyOnError**: callback for responding to a serialization or deserialization failure. When data is stored to disks, the data needs to be serialized. If a key fails to be serialized, the error is unpredictable. As a result, this API can be called to capture exceptions.
 
-For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Management)](../../reference/apis-arkui/js-apis-stateManagement.md).
+For details about the preceding APIs, see [PersistenceV2-API Reference](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2) and [AppStorageV2-API Reference](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2).
 
 ## Constraints
 
@@ -57,7 +57,7 @@ For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Ma
 
 2. Types such as **collections.Set** and **collections.Map** are not supported before API version 23.
 
-- Since API version 23, the GlobalConnect API is provided and supports [collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md), [collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md), and [collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md). **collections.Set**, **collections.Map**, and **collections.Array** cannot be observed. When **defaultCreator** is used in the **globalConnect** API, [UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) needs to be used to automatically save the data when the value changes. Otherwise, you need to manually call [PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save) to save the changed data.
+- Since API version 23, the **globalConnect** API is provided and supports [collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md), [collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md), and [collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md). **collections.Set**, **collections.Map**, and **collections.Array** cannot be observed. When **defaultCreator** is used in the **globalConnect** API, [UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) needs to be used to automatically save the data when the value changes. Otherwise, you need to manually call [PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save) to save the changed data.
 
    The following is the sample code for the newly added **globalConnect** API that supports **collections.Array**.
     
@@ -178,7 +178,7 @@ For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Ma
 
 5. Before API version 23, the data to be persisted must be a **class** object. Container types (such as **Array**, **Set**, and **Map**), built-in constructed objects (such as **String** and **Number**), and basic types (such as **string**, **number**, and **boolean**) are not supported. To persist non-class objects, you need to use [Preferences](../../database/preferences-guidelines.md) for data persistence.
 
-- Since API version 23, class types and container types (**Array**, **Set**, **Map**, and **Date**) can be persisted. Built-in constructed types (such as **String** and **Number**) and basic types (such as **string**, **number**, and **boolean**) can be persisted as **class** attributes. **String** and **Number** are immutable data objects and cannot be directly persisted as [top-level data types](#globalconnect-top-level-persistent-data-types-and-non-top-level-persistent-data-types).
+- Since API version 23, class types and container types (**Array**, **Set**, **Map**, and **Date**) can be persisted. Built-in constructed types (such as **String** and **Number**) and basic types (such as **string**, **number**, and **boolean**) can be persisted as **class** attributes. **String** and **Number** are immutable data objects and cannot be directly persisted as [top-level data types](#globalconnect-top-level-persistent-data-types-and-non-top-level-persistent-data-types). For supported types, a runtime error is reported. Since API version 23, the error code [140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2-and-persistencev2-use-unsupported-data-types) will be returned in this case.
 
    The following is an example of newly added globalConnect that supports the persistence of the **Array\<ClassA>** type:
 
@@ -232,7 +232,7 @@ For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Ma
    }
    ```
 
-   The following is an example of the persistence of the Date type supported by GlobalConnect:
+   The following is an example of the persistence of the Date type supported by globalConnect:
 
     <!-- @[top_level_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelDate.ets) -->
     
@@ -374,7 +374,7 @@ For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Ma
 
 7. Automatic persistency is triggered only when [\@Trace](./arkts-new-observedV2-and-trace.md) data is changed. The change of state variables in V1, [\@Observed](./arkts-observed-and-objectlink.md) objects, and common data does not trigger persistency.
 
-8. Do not use **connect** and **globalConnect** together. If you have to, their keys must be different; otherwise, a crash occurs.
+8. It is not recommended to mix **connect** and **globalConnect**. If they are mixed, the keys must be different; otherwise, the application will crash. Starting from API version 23, error code [140105](../../reference/apis-arkui/errorcode-stateManagement.md#140105-persistencev2-mixes-connect-and-globalconnect-that-use-the-same-key) will be returned.
 
 9. PersistenceV2 must be associated with a UI instance. The persistence operation must be called after the UI instance is initialized (that is, after the [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) callback is triggered).
 ```ts
@@ -400,6 +400,12 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 ```
 
 10. If you have strong requirements on data persistence, for example, the persistence time, you are advised to use [Preferences](../../database/preferences-guidelines.md) for data persistence. Note: PersistenceV2 and Preferences cannot be used together because the data stored in Preferences does not have state variable information, and the deserialized data cannot trigger automatic storage of PersistenceV2.
+
+11. When you use **globalConnect** to persist data and read data from the disk, ensure that the type of the key remains consistent before and after persistence. Since API version 23, the error code [140107](../../reference/apis-arkui/errorcode-stateManagement.md#140107-data-types-of-appstoragev2-and-persistencev2-do-not-match) will be returned in this case.
+
+12. **globalConnect** supports only the EL1 to EL5 encryption levels. Otherwise, a runtime exception will be thrown. Since API version 23, the error code [140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-using-persistencev2-to-store-data-at-an-unsupported-encryption-level) will be returned. For details, see [Using globalConnect to Store Data](#using-globalconnect-to-store-data).
+
+13. [\@Computed](./arkts-new-computed.md) cannot be used in classes that use **connect** or **globalConnect**. \@Computed is read-only and does not support value assignment. As a result, deserialization fails.
 
 ## Types Supported by globalConnect
 
@@ -472,9 +478,10 @@ class PersistClass {
 }
 ```
 
-### Collection Types Supported by GlobalConnect
+### Collection Types Supported by globalConnect
 
 The collection types are **Array\<V>**, **Map\<K, V>**, **Set\<V>**, **collections.Array\<V>**, **collections.Map\<K, V>** and **collections.Set\<V>**.
+
 The key value type (**K**) in **Map\<K, V>** and **collections.Map\<k, V>** is **string** or **number**.
 
 The value type (**V**) in **Array\<V>**, **Map\<K, V>**, **Set\<V>** can be **boolean**, **number**, **string**, **Date**, **Number**, **Boolean**, **String**, **interface**, or **class**.
@@ -749,7 +756,7 @@ When using **Navigation**, create a **route_map.json** file as shown below in th
 
 ### Using globalConnect to Store Data
 
-<!-- @[persistence_v2_global_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2GlobalConnect.ets) -->
+<!-- @[persistence_v2_global_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2GlobalConnect.ets) --> 
 
 ``` TypeScript
 import { PersistenceV2, Type, ConnectOptions } from '@kit.ArkUI';
@@ -803,7 +810,7 @@ struct Page1 {
 
   build() {
     Column() {
-      /**************************** Display data **************************/
+      // Display data.
       // Data decorated by @Trace can be automatically persisted to disks.
       Text('Key SampleGlobalConnect: ' + this.p.father.childId.toString())
         .onClick(() => {
@@ -829,54 +836,54 @@ struct Page1 {
         })
         .fontSize(25)
         .fontColor(Color.Red)
-      /**************************** The keys API **************************/
-      // keys() is not updated by itself. You need to use the state variable to update it.
+      // keys() API.
+      // keys() itself does not trigger a refresh. It requires a state variable to trigger a refresh.
       Text('Persist keys: ' + PersistenceV2.keys().toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
           this.refresh += 1;
         })
         .fontSize(25)
 
-      /**************************** The remove API **************************/
+      // remove() API.
       Text('Remove key SampleGlobalConnect: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // Removing this key will disconnect from PersistenceV2. After that, PersistenceV2 cannot store data even if it is reconnected.
+          // Deleting this key will cause it to lose connection with p. Even if a reconnection occurs, p will not be able to store data.
           PersistenceV2.remove(SampleGlobalConnect);
           this.refresh += 1;
         })
         .fontSize(25)
       Text('Remove key global1: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // Removing this key will disconnect from PersistenceV2. After that, PersistenceV2 cannot store data even if it is reconnected.
+          // Deleting this key will cause it to lose connection with p1. Even if a reconnection occurs, p1 will not be able to store data.
           PersistenceV2.remove('global1');
           this.refresh += 1;
         })
         .fontSize(25)
       Text('Remove key global2: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // Removing this key will disconnect from PersistenceV2. After that, PersistenceV2 cannot store data even if it is reconnected.
+          // Deleting this key will cause it to lose connection with p2. Even if a reconnection occurs, p2 will not be able to store data.
           PersistenceV2.remove('global2');
           this.refresh += 1;
         })
         .fontSize(25)
       Text('Remove key global3: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // Removing this key will disconnect from PersistenceV2. After that, PersistenceV2 cannot store data even if it is reconnected.
+          // Deleting this key will cause it to lose connection with p3. Even if a reconnection occurs, p3 will not be able to store data.
           PersistenceV2.remove('global3');
           this.refresh += 1;
         })
         .fontSize(25)
-      /**************************** reConnect **************************/
+      // reConnect
       // Fail to connect to the previous state variable after reconnection. Therefore, data cannot be saved.
       Text('ReConnect key global2: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // Removing this key will disconnect from PersistenceV2. After that, PersistenceV2 cannot store data even if it is reconnected.
+          // At this point, a variable with the key global2 will be stored again, but this variable has nothing to do with p2.
           PersistenceV2.globalConnect(this.options);
           this.refresh += 1;
         })
         .fontSize(25)
 
-      /**************************** The save API **************************/
+      // save() API.
       Text('not save key SampleGlobalConnect: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
           // Objects that are not saved by @Trace cannot be automatically stored.
@@ -912,7 +919,7 @@ Although **globalConnect** is an application-level path, you can set different e
 
 Create a module based on the project and redirect to the new module based on the sample code. The sample code is as follows:
 
-<!-- @[persistence_v2_module_connect_storage_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets) --> 
+<!-- @[persistence_v2_module_connect_storage_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets) -->
 
 ``` TypeScript
 module 1
@@ -959,7 +966,7 @@ struct Page1 {
 
   build() {
     Column() {
-      /**************************** Display data **************************/
+      // Display data.
       Text('Key globalConnect1: ' + this.p1.father.childId.toString())
         .onClick(() => {
           this.p1.father.childId += 1;
@@ -973,7 +980,7 @@ struct Page1 {
         .fontSize(25)
         .fontColor(Color.Red)
 
-      /**************************** Redirection **************************/
+      // Jump
       Button('Jump to newModule')
         .onClick (() => { // Used between different modules. You are advised to use globalConnect.
           let want: Want = {
@@ -1000,7 +1007,7 @@ struct Page1 {
 }
 ```
 
-<!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/demo/src/main/ets/pages/Index.ets) -->
+<!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/demo/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // Module 2
@@ -1039,7 +1046,7 @@ struct Page1 {
 
   build() {
     Column() {
-      /**************************** Display data **************************/
+      // Display data.
       Text('Key globalConnect1: ' + this.p1.father.childId.toString())
         .onClick(() => {
           this.p1.father.childId += 1;
@@ -1070,7 +1077,7 @@ You are advised to use the new API **globalConnect** to create and obtain data. 
 
 ### Migrating from connect to globalConnect
 
-<!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) --> 
+<!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) -->
 
 ``` TypeScript
 // Use connect to store data.
@@ -1106,7 +1113,7 @@ struct Page1 {
 
   build() {
     Column({ space: 5 }) {
-      /**************************** Display data **************************/
+      // Display data.
       Text('Key connect3: ' + this.p.father.childId.toString())
         .onClick(() => {
           this.p.father.childId += 1;
@@ -1114,7 +1121,7 @@ struct Page1 {
         .fontSize(25)
         .fontColor(Color.Red)
 
-      /**************************** The save API **************************/
+      // save() API.
       // Variables that are not decorated by @Trace can be refreshed only by using the status variable refresh.
       Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
@@ -1130,7 +1137,7 @@ struct Page1 {
 }
 ```
 
-<!-- @[persistence_v2_connect_migration_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration2.ets) -->
+<!-- @[persistence_v2_connect_migration_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration2.ets) --> 
 
 ``` TypeScript
 // Migrate to globalConnect.
@@ -1188,7 +1195,7 @@ struct Page1 {
 
   build() {
     Column({ space: 5 }) {
-      /**************************** Display data **************************/
+      // Display data.
       Text('Key connect4: ' + this.p.father.childId.toString())
         .onClick(() => {
           this.p.father.childId += 1;
@@ -1196,7 +1203,7 @@ struct Page1 {
         .fontSize(25)
         .fontColor(Color.Red)
 
-      /**************************** The save API **************************/
+      // save() API.
       // Variables that are not decorated by @Trace can be refreshed only by using the status variable refresh.
       Text('save key connect4: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {

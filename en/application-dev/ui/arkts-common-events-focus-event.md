@@ -79,7 +79,7 @@ Example flow:
 
 **Hierarchical Pages**
 
-Hierarchical pages are specialized container components, such as **Page**, **Dialog**, **SheetPage**, **ModalPage**, **Menu**, **Popup**, **NavBar**, and **NavDestination**, within a focus framework. These components typically have the following key features:
+"Hierarchical pages" is a collective term for specific container components in the focus framework, covering ordinary pages, [full-screen modal pages](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md), [sheet modal pages](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md), [Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md), [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md), [Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md), [NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12), [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md), and so on. These components typically have the following key features:
 
 - Visual layering: They appear on top of other content, creating a distinct visual hierarchy.
 - Focus capture: They automatically take focus when first displayed.
@@ -181,7 +181,7 @@ export struct FocusTransferExample {
 
 After the application runs, click **Button 1** to request focus for the **Row** component. The **Row** component's first focusable child node, **Button 2**, will gain focus.
 
-![Liner_Focus_1](figures/Focus_transfer.gif)
+
 
 ### Focus Traversal Guidelines
 
@@ -307,7 +307,7 @@ In a horizontal **Row** container, use the left and right arrow keys to navigate
 
 **Projection-based Focus Traversal Algorithm**
 
-The projection-based focus traversal algorithm determines the next focus based on the overlap area and center-point distance of the projection of the current focused component in the direction of focus movement. This algorithm is designed for containers whose children vary in size. Currently, it is supported only by the **Flex** component when its **wrap** attribute is set. Its operation rules are as follows:
+The projection-based focus traversal algorithm determines the next focus based on the overlap area and center-point distance of the projection of the current focused component in the direction of focus movement. This algorithm is designed for containers whose children vary in size. Currently, it is supported only by the **RelativeContainer** component and the **Flex** component with a **wrap** attribute. Its operation rules are as follows:
 
 
 - **Arrow key navigation**: When an arrow key is pressed, the algorithm first checks for any overlap between the projection and the areas of child components. Among all child components whose overlapping area is greater than zero, the straight‑line distance from each child's center to the center of the currently focused component is calculated. The child with the shortest distance is selected. If multiple candidates have the same minimal distance, the child that appears earlier in the node tree is chosen. If no child overlaps with the projection, the container cannot process the arrow key focus movement request.
@@ -666,11 +666,11 @@ Sets whether the component is focusable on touch.
  
            Divider()
  
-           Row() {
+           Row({ space: 20 }) {
              Button('Button1')
                .width(140).height(70)
              Button('Button2')
-               .width(160).height(70)
+               .width(140).height(70)
            }
  
            Divider()

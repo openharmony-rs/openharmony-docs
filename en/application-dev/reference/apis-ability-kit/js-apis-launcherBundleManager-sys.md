@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module providers APIs for launcher applications (applications with icons on the home screen) to obtain the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) and [shortcut information](js-apis-bundleManager-shortcutInfo.md).
 
@@ -39,7 +39,7 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | Yes  | Bundle name.|
 | userId     | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the array of [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the array of [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects contained in the bundle. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -151,7 +151,7 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | -------------- |
 | userId | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the array of [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the array of [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects of all applications of the specified user. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -261,7 +261,7 @@ No permission is required for obtaining the caller's own information.
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | Yes  | Bundle name.|
-| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the array of [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) objects obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the array of [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) objects of the specified application of the current user. Otherwise, **err** is an error object.|
 
 **Error codes**
 

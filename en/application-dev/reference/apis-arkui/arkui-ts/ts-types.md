@@ -368,7 +368,7 @@ Area type, which is used to store the area information of an element.
 | -------------- | ---------------------- | ------------------------------ |
 | width          | [Length](#length)      | Width of the target element.<br>Unit: vp|
 | height         | [Length](#length)      | Height of the target element.<br>Unit: vp|
-| position       | [Position](#position) | Position of the upper left corner of the target element in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) of the parent element.           |
+| position       | [Position](#position) | Position of the upper left corner of the target element in the component coordinate system of the parent element.           |
 | globalPosition | [Position](#position) | Position of the upper left corner of the target element in the current window coordinate system.            |
 
 ## Position
