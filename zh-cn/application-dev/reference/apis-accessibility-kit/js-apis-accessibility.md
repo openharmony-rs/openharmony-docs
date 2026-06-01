@@ -116,13 +116,13 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 | 'setText'                 | 表示设置文本操作，需配置参数setText。 |
 | 'delete'                  | 表示删除操作。当前版本暂不支持。   |
 | 'setSelection'            | 表示选择操作，需配置参数selectTextBegin、selectTextEnd、selectTextInForWard。   |
-| 'common'            | 表示没有特定操作，用于主动聚焦、主动播报等场景。   |
-| 'home'                | 表示返回桌面操作。   |
-| 'back'                | 表示返回上一级操作。   |
-| 'recentTask'          | 表示打开最近任务操作。   |
-| 'notificationCenter'      | 表示打开通知栏操作。   |
-| 'controlCenter'       | 表示打开控制中心操作。   |
-| 'setCursorPosition'     | 表示设置光标位置操作，需配置参数offset。   |
+| 'common'<sup>12+</sup>            | 表示没有特定操作，用于主动聚焦、主动播报等场景。   |
+| 'home'<sup>12+</sup>                | 表示返回桌面操作。   |
+| 'back'<sup>12+</sup>                | 表示返回上一级操作。   |
+| 'recentTask'<sup>12+</sup>          | 表示打开最近任务操作。   |
+| 'notificationCenter'<sup>12+</sup>      | 表示打开通知栏操作。   |
+| 'controlCenter'<sup>12+</sup>       | 表示打开控制中心操作。   |
+| 'setCursorPosition'<sup>12+</sup>     | 表示设置光标位置操作，需配置参数offset。   |
 | 'injectAction'    | 表示注入动作，需配置参数injectActionType。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction。<br>**起始版本：** 26.0.0   |
 
@@ -228,9 +228,9 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 ### on('enableChange')<sup>(deprecated)</sup>
 
-on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
+on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void
 
-监听字幕配置启用状态变化事件，使用callback异步回调。
+监听字幕配置启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -282,9 +282,9 @@ struct Index {
 
 ### on('styleChange')<sup>(deprecated)</sup>
 
-on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void;
+on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void
 
-监听字幕风格变化事件，使用callback异步回调。
+监听字幕风格变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -337,9 +337,9 @@ struct Index {
 
 ### off('enableChange')<sup>(deprecated)</sup>
 
-off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void;
+off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听字幕配置启用状态变化事件，使用callback异步回调。
+取消监听字幕配置启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -394,9 +394,9 @@ struct Index {
 
 ### off('styleChange')<sup>(deprecated)</sup>
 
-off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void;
+off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void
 
-取消字幕风格变化监听事件，使用callback异步回调。
+取消字幕风格变化监听事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -569,8 +569,8 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'textUpdate'              | 表示组件文本已更改的事件。 |
 | 'textSelectionUpdate'     | 表示选定文本已更改的事件，当前版本暂不支持。 |
 | 'scroll'                  | 表示滚动视图的事件。    |
-| 'requestFocusForAccessibility'     | 表示主动聚焦的事件。 |
-| 'announceForAccessibility'         | 表示主动播报的事件。 |
+| 'requestFocusForAccessibility'<sup>12+</sup>     | 表示主动聚焦的事件。 |
+| 'announceForAccessibility'<sup>12+</sup>         | 表示主动播报的事件。 |
 | 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | 表示主动聚焦不打断的事件。|
 | 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | 表示主动播报不打断的事件。|
 | 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。|
@@ -622,7 +622,7 @@ type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'
 
 getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;
 
-查询辅助应用列表，使用Promise异步回调。
+查询辅助应用列表。使用Promise异步回调。
 
 > **说明：**
 >
@@ -655,7 +655,7 @@ let abilityState: accessibility.AbilityState = 'enable';
 accessibility.getAbilityLists(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
   console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
+  console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -663,7 +663,7 @@ accessibility.getAbilityLists(abilityType, abilityState).then((data: accessibili
 
 getAbilityLists(abilityType: AbilityType, stateType: AbilityState,callback: AsyncCallback&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;): void
 
-查询辅助应用列表，使用callback异步回调。
+查询辅助应用列表。使用callback异步回调。
 
 > **说明：**
 >
@@ -690,7 +690,7 @@ let abilityState: accessibility.AbilityState = 'enable';
 
 accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
   if (err) {
-    console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
     return;
   }
   console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
@@ -701,7 +701,7 @@ accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, da
 
 getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState): Promise&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;
 
-查询辅助应用列表，使用Promise异步回调。
+查询辅助应用列表。使用Promise异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -740,51 +740,55 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
 |**visual**| 查询已启用的具有视觉反馈的辅助应用 |查询已禁用的具有视觉反馈的辅助应用|查询已安装的具有视觉反馈的辅助应用|
 |**all**| 查询所有已启用的辅助应用 |查询所有已禁用的辅助应用|查询所有已安装的辅助应用|
 
-**查询所有已安装的辅助应用示例：**
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+**示例：**
 
-let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
-let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+- 查询所有已安装的辅助应用。
 
-accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
-});
+  ```ts
+  import { accessibility } from '@kit.AccessibilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
-// 日志打印结果为：
-// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
-// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
-// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
-// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
-// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
-// "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
-```
+  let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型。
+  let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装。
 
-**查询所有已启用的具有语音反馈的辅助应用示例：**
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+  accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
+    console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
+  });
 
-let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
-let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
+  // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用。
+  // 日志打印结果为：
+  // [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+  // "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+  // "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+  // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+  // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+  // "announceForAccessibility","announceForAccessibilityNotInterrupt",
+  // "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+  ```
 
-accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
-});
-```
+- 查询所有已启用的具有语音反馈的辅助应用。
+
+  ```ts
+  import { accessibility } from '@kit.AccessibilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型。
+  let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用。
+
+  accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
+    console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 ## accessibility.getAccessibilityExtensionList<sup>9+</sup>
 
 getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState, callback: AsyncCallback&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;): void
 
-查询辅助应用列表，使用callback异步回调。
+查询辅助应用列表。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -818,51 +822,53 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState,
 |**visual**| 查询已启用的具有视觉反馈的辅助应用 |查询已禁用的具有视觉反馈的辅助应用|查询已安装的具有视觉反馈的辅助应用|
 |**all**| 查询所有已启用的辅助应用 |查询所有已禁用的辅助应用|查询所有已安装的辅助应用|
 
-**查询所有已安装的辅助应用示例：**
+**示例：**
 
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+- 查询所有已安装的辅助应用。
 
-let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
-let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+  ```ts
+  import { accessibility } from '@kit.AccessibilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
-  if (err) {
-    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-});
+  let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型。
+  let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装。
 
-// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
-// 日志打印结果为：
-// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
-// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
-// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
-// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
-// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
-// "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
-```
+  accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
+    if (err) {
+      console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+  });
 
-**查询所有已启用的具有语音反馈的辅助应用示例：**
+  // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用。
+  // 日志打印结果为：
+  // [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+  // "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+  // "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+  // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+  // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+  // "announceForAccessibility","announceForAccessibilityNotInterrupt",
+  // "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+  ```
 
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+- 查询所有已启用的具有语音反馈的辅助应用。
 
-let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
-let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
+  ```ts
+  import { accessibility } from '@kit.AccessibilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
-  if (err) {
-    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-});
-```
+  let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型。
+  let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用。
+
+  accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
+    if (err) {
+      console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+  });
+  ```
 
 ## accessibility.getAccessibilityExtensionListSync<sup>12+</sup>
 
@@ -899,53 +905,55 @@ getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilitySt
 |**visual**| 查询已启用的具有视觉反馈的辅助应用 |查询已禁用的具有视觉反馈的辅助应用|查询已安装的具有视觉反馈的辅助应用|
 |**all**| 查询所有已启用的辅助应用 |查询所有已禁用的辅助应用|查询所有已安装的辅助应用|
 
-**查询所有已安装的辅助应用示例：**
+**示例：**
 
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+- 查询所有已安装的辅助应用。
 
-let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
-let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
-let data: accessibility.AccessibilityAbilityInfo[];
+  ```ts
+  import { accessibility } from '@kit.AccessibilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
-}
+  let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型。
+  let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装。
+  let data: accessibility.AccessibilityAbilityInfo[];
 
-// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
-// 日志打印结果为：
-// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
-// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
-// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
-// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
-// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
-// "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
-```
+  try {
+    data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+    console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
+  }
 
-**查询所有已启用的具有语音反馈的辅助应用示例：**
+  // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用。
+  // 日志打印结果为：
+  // [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+  // "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+  // "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+  // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+  // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+  // "announceForAccessibility","announceForAccessibilityNotInterrupt",
+  // "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+  ```
 
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+- 查询所有已启用的具有语音反馈的辅助应用。
 
-let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
-let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
-let data: accessibility.AccessibilityAbilityInfo[];
+  ```ts
+  import { accessibility } from '@kit.AccessibilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
-}
-```
+  let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型。
+  let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用。
+  let data: accessibility.AccessibilityAbilityInfo[];
+
+  try {
+    data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+    console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
+  }
+  ```
 
 <!--RP1-->
 <!--RP1End-->
@@ -980,7 +988,7 @@ let captionsManager = accessibility.getCaptionsManager();
 
 on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听辅助应用启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+监听辅助应用启用状态变化事件。使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
 > **说明：**
 >
@@ -1014,8 +1022,8 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 import { accessibility } from '@kit.AccessibilityKit';
 
 // 系统内已安装一个或多个辅助应用时:
-// 1. 启用辅助应用场景：第一个辅助应用启用后，回调函数会返回true
-// 2. 禁用辅助应用场景：若一个或多个辅助应用已启用，最后一个已启用的辅助应用被禁用时，回调函数会返回false
+// 1. 启用辅助应用场景：第一个辅助应用启用后，回调函数会返回true。
+// 2. 禁用辅助应用场景：若一个或多个辅助应用已启用，最后一个已启用的辅助应用被禁用时，回调函数会返回false。
 accessibility.on('accessibilityStateChange', (data: boolean) => {
   console.info(`subscribe accessibility state change, result: ${JSON.stringify(data)}`);
 });
@@ -1028,7 +1036,7 @@ accessibility.on('accessibilityStateChange', (data: boolean) => {
 
 on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听触摸浏览功能启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+监听触摸浏览功能启用状态变化事件。使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
 > **说明：**
 >
@@ -1062,8 +1070,8 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 import { accessibility } from '@kit.AccessibilityKit';
 
 // 系统内已安装一个或多个具备触摸浏览能力的辅助应用（Capability配置中含有'touchGuide'的辅助应用）时：
-// 1. 启用触摸浏览辅助应用场景：第一个触摸浏览辅助应用启用后，回调函数会返回true
-// 2. 禁用触摸浏览辅助应用场景：若一个或多个触摸浏览辅助应用已启用，最后一个已启用的触摸浏览辅助应用被禁用时，回调函数会返回false
+// 1. 启用触摸浏览辅助应用场景：第一个触摸浏览辅助应用启用后，回调函数会返回true。
+// 2. 禁用触摸浏览辅助应用场景：若一个或多个触摸浏览辅助应用已启用，最后一个已启用的触摸浏览辅助应用被禁用时，回调函数会返回false。
 accessibility.on('touchGuideStateChange', (data: boolean) => {
   console.info(`subscribe touch guide state change, result: ${JSON.stringify(data)}`);
 });
@@ -1073,7 +1081,7 @@ accessibility.on('touchGuideStateChange', (data: boolean) => {
 
 on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听屏幕朗读功能启用状态变化事件，使用callback异步回调。
+监听屏幕朗读功能启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -1115,7 +1123,7 @@ accessibility.on('screenReaderStateChange', (data: boolean) => {
 
 on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 
-监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -1399,7 +1407,7 @@ struct Index {
 
 off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听辅助应用启用状态变化事件，使用callback异步回调。
+取消监听辅助应用启用状态变化事件。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1436,7 +1444,7 @@ accessibility.off('accessibilityStateChange', (data: boolean) => {
 
 off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听触摸浏览启用状态变化事件，使用callback异步回调。
+取消监听触摸浏览启用状态变化事件。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1473,7 +1481,7 @@ accessibility.off('touchGuideStateChange', (data: boolean) => {
 
 off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听屏幕朗读启用状态变化事件，使用callback异步回调。
+取消监听屏幕朗读启用状态变化事件。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1510,7 +1518,7 @@ accessibility.off('screenReaderStateChange', (data: boolean) => {
 
 off(type: 'touchModeChange', callback?: Callback&lt;string&gt;): void
 
-取消监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+取消监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1788,7 +1796,7 @@ struct Index {
 
 isOpenAccessibility(): Promise&lt;boolean&gt;
 
-判断是否启用了辅助应用，使用Promise异步回调。
+判断是否启用了辅助应用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1819,7 +1827,7 @@ accessibility.isOpenAccessibility().then((data: boolean) => {
 
 isOpenAccessibility(callback: AsyncCallback&lt;boolean&gt;): void
 
-判断是否启用了辅助应用，使用callback异步回调。
+判断是否启用了辅助应用。使用callback异步回调。
 
 > **说明：**
 >
@@ -1873,8 +1881,8 @@ isOpenAccessibilitySync(): boolean
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 1、系统内已安装多个辅助应用，若都没有开启，返回false
-// 2、系统内已安装多个辅助应用，若开启任意一个，返回true
+// 1、系统内已安装多个辅助应用，若都没有开启，返回false。
+// 2、系统内已安装多个辅助应用，若开启任意一个，返回true。
 let status: boolean = accessibility.isOpenAccessibilitySync();
 ```
 
@@ -1882,7 +1890,7 @@ let status: boolean = accessibility.isOpenAccessibilitySync();
 
 isOpenTouchGuide(): Promise&lt;boolean&gt;
 
-判断触摸浏览模式是否开启，使用Promise异步回调。
+判断触摸浏览模式是否开启。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1913,7 +1921,7 @@ accessibility.isOpenTouchGuide().then((data: boolean) => {
 
 isOpenTouchGuide(callback: AsyncCallback&lt;boolean&gt;): void
 
-判断触摸浏览模式是否开启，使用callback异步回调。
+判断触摸浏览模式是否开启。使用callback异步回调。
 
 > **说明：**
 >
@@ -2382,7 +2390,7 @@ struct Index {
 
 sendEvent(event: EventInfo): Promise&lt;void&gt;
 
-发送无障碍事件，使用Promise异步回调。
+发送无障碍事件。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2425,7 +2433,7 @@ accessibility.sendEvent(eventInfo).then(() => {
 
 sendEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-发送无障碍事件，使用callback异步回调。
+发送无障碍事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -2465,7 +2473,7 @@ accessibility.sendEvent(eventInfo, (err: BusinessError) => {
 
 sendAccessibilityEvent(event: EventInfo): Promise&lt;void&gt;
 
-发送无障碍事件，使用Promise异步回调。
+发送无障碍事件。使用Promise异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -2516,7 +2524,7 @@ accessibility.sendAccessibilityEvent(eventInfo).then(() => {
 
 sendAccessibilityEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-发送无障碍事件，使用callback异步回调。
+发送无障碍事件。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -2569,7 +2577,7 @@ struct Index {
 
   build() {
     Column() {
-      // 待聚焦组件添加id属性，id唯一性由使用者保证
+      // 待聚焦组件添加id属性，id唯一性由使用者保证。
       Button('待聚焦组件').id('click')
     }
   }
@@ -2583,7 +2591,7 @@ let eventInfo: accessibility.EventInfo = ({
   type: 'requestFocusForAccessibility',
   bundleName: 'com.example.MyApplication',
   triggerAction: 'common',
-  customId: 'click' // 对应待聚焦组件id属性值
+  customId: 'click' // 对应待聚焦组件id属性值。
 });
 
 accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
@@ -2634,6 +2642,8 @@ getTouchModeSync(): string
 | 类型        | 说明                                  |
 | ----------- | ------------------------------------- |
 | string | 表示当前操作模式。<br>- singleTouchMode：表示单击操作模式。<br>- doubleTouchMode：表示双击操作模式。<br>- none：表示未开启触摸浏览功能。 |
+
+**示例：**
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
