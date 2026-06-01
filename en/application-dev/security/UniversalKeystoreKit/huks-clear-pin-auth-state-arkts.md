@@ -11,7 +11,7 @@ Since API version 26.0.0, **huksExternalCrypto** provides the API for clearing t
 
 ## Development Procedure
 
-1. Obtains the resource ID. You can obtain the key URI as the resource ID by calling the [certificate selection API](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) or obtain the resource ID extended by the external key manager by calling [getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid).
+1. Obtain the resource ID. You can obtain the key URI as the resource ID by calling the [certificate selection API](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) or obtain the resource ID extended by the external key manager by calling [getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid).
 
 2. Call [clearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoclearukeypinauthstate) to clear the PIN authentication status.
 

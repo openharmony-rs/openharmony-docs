@@ -123,7 +123,7 @@ The key management service specifications include mandatory specifications and o
 >
 > - The SM2 encryption result is in ASN.1 format, and bigint is stored in big-endian mode.
 
-**Specifications****<!--RP1--> for standard devices<!--RP1End-->**
+**Specifications<!--RP1--> for standard devices<!--RP1End-->**
 
 | Algorithm| Supported Key Length (Bit)| API Version| <!--DelCol4-->Mandatory|
 | -------- | -------- | -------- | -------- |
@@ -145,7 +145,7 @@ The key management service specifications include mandatory specifications and o
 | 3DES | 128, 192| 18+ | Yes|
 | ML-DSA | Security parameter set: 44, 65, and 87| 26.0.0+ | Yes|
 
-**Specifications****<!--RP2--> for mini-system devices<!--RP2End-->**
+**Specifications<!--RP2--> for mini-system devices<!--RP2End-->**
 
 <!--Del-->
 Before implementing the specifications for mini-system devices, determine whether your device supports the related specifications.

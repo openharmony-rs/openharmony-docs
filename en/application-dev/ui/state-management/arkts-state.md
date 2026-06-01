@@ -564,7 +564,7 @@ struct DatePickerExample {
 }
 ```
 
-![state-date](figures/state-date.gif)
+
 
 ### Using Union Types
 

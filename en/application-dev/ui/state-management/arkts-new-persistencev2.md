@@ -406,7 +406,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 12. **globalConnect** supports only the EL1 to EL5 encryption levels. Otherwise, a runtime exception will be thrown. Since API version 23, the error code [140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-using-persistencev2-to-store-data-at-an-unsupported-encryption-level) will be returned. For details, see [Using globalConnect to Store Data](#using-globalconnect-to-store-data).
 
 13. If the structure of the stored data is inconsistent with the current data structure, deserialization may fail. In versions earlier than API version 26.0.0, you cannot obtain the old serialized data, and therefore cannot determine the changes in your data structure.
-- From API version 26.0.0, [PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback) supports the **oldValue** parameter, which can be used to obtain the old serialized data stored on the disk. For details, see [Obtaining the Old Serialized Data Through notifyOnError](#obtaining-the-old-serialized-data-through-notifyOnError).
+- From API version 26.0.0, [PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback) supports the **oldValue** parameter, which can be used to obtain the old serialized data stored on the disk. For details, see [Obtaining the Old Serialized Data Through notifyOnError](#obtaining-the-old-serialized-data-through-notifyonerror).
 
 14. The [\@Computed](./arkts-new-computed.md) attribute cannot be used in classes that use **connect** or **globalConnect**. \@Computed is read-only and does not support value assignment. As a result, deserialization fails.
 

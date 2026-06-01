@@ -30,7 +30,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
 
 ## Use Scenarios
 
-1. If a member variable is modified by both the **private** access modifier and the \@State, \@Prop, \@Provide, or \@BuilderParam decorator, initializing it through the parent component will trigger a warning log.
+1. If a member variable is decorated with both the **private** access modifier and the \@State, \@Prop, \@Provide, or \@BuilderParam decorator, initializing it through the parent component will trigger a warning log.
 
    **Incorrect Usage**
     <!-- @[LlinkWithPrivate_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LlinkWithPrivateErrorCase.ets) -->
@@ -146,7 +146,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
-2. If a member variable is modified by both the **public** access modifier and the \@StorageLink, \@StorageProp, \@LocalStorageLink, \@LocalStorageProp, or \@Consume decorator, a build error is reported.
+2. If a member variable is decorated with both the **public** access modifier and the \@StorageLink, \@StorageProp, \@LocalStorageLink, \@LocalStorageProp, or \@Consume decorator, a build error is reported.
 
    **Incorrect Usage**
     <!-- @[PublicWithStorageProp_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropErrorCase.ets) -->
@@ -234,7 +234,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
-3. If a member variable is modified by both the **private** access modifier and the \@Link or \@ObjectLink decorator, a build error is reported.
+3. If a member variable is decorated with both the **private** access modifier and the \@Link or \@ObjectLink decorator, a build error is reported.
 
    **Incorrect Usage**
     <!-- @[PrivateWithLink_EerrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkEerrorCase.ets) -->
@@ -321,7 +321,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
-4. If a member variable is modified by the **protected** access modifier, a build error is reported.
+4. If a member variable is decorated with the **protected** access modifier, a build error is reported.
 
    **Incorrect Usage**
    <!-- @[ProtectedInStruct_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructErrorCase.ets) -->
@@ -390,7 +390,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     ```
 
 
-5. If a member variable is modified by the **private** access modifier, the \@Require decorator, and the \@State, \@Prop, \@Provide, or \@BuilderParam decorator, ArkTS will perform validation and generate warning logs..
+5. If a member variable is decorated with the **private** access modifier, the \@Require decorator, and the \@State, \@Prop, \@Provide, or \@BuilderParam decorator, ArkTS will perform validation and generate warning logs..
 
    **Incorrect Usage**
     <!-- @[PrivateWithRequire_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireErrorCase.ets) -->
