@@ -205,6 +205,226 @@ ArkTs-Sta示例：
 
 <!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
 
+``` TypeScript
+import audio from '@ohos.multimedia.audio'; // 导入audio模块。
+import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit'; // 导入文件操作模块。
+import { common } from '@kit.AbilityKit'; // 导入UIAbilityContext。
+import {
+  Color,
+  ClickEvent,
+  Column,
+  Component,
+  Entry,
+  FlexAlign,
+  HorizontalAlign,
+  Row,
+  Scroll,
+  Text
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// 与使用AudioRenderer开发音频播放功能过程相似,关键区别在于audioRendererInfo参数和音频数据来源。
+const TAG = 'VoIPDemoForAudioRenderer';
+const SAMPLE_RATE_48000: int = 48000;
+
+let bufferSize: long = 0;
+let audioRenderer: audio.AudioRenderer | undefined = undefined;
+let file: fs.File | undefined = undefined;
+let writeDataCallback: audio.AudioRendererWriteDataCallback = (_buffer: ArrayBuffer): audio.AudioDataCallbackResult => {
+  return audio.AudioDataCallbackResult.INVALID;
+};
+
+class RendererAudioStreamInfo implements audio.AudioStreamInfo {
+  samplingRate: audio.AudioSamplingRate | int = SAMPLE_RATE_48000;
+  channels: audio.AudioChannel = audio.AudioChannel.CHANNEL_2;
+  sampleFormat: audio.AudioSampleFormat = audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE;
+  encodingType: audio.AudioEncodingType = audio.AudioEncodingType.ENCODING_TYPE_RAW;
+}
+
+class VoipAudioRendererInfo implements audio.AudioRendererInfo {
+  // 需使用通话场景相应的参数。
+  usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION;
+  rendererFlags: int = 0;
+}
+
+class VoipAudioRendererOptions implements audio.AudioRendererOptions {
+  streamInfo: audio.AudioStreamInfo = new RendererAudioStreamInfo();
+  rendererInfo: audio.AudioRendererInfo = new VoipAudioRendererInfo();
+}
+
+function createAudioRendererOptions(): audio.AudioRendererOptions {
+  return new VoipAudioRendererOptions();
+}
+// ...
+async function initArguments(context: common.UIAbilityContext) {
+  let path = context.cacheDir;
+  // 此处仅作示例,实际使用时需要将文件替换为应用要播放的PCM文件。
+  let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  bufferSize = 0;
+  writeDataCallback = (buffer: ArrayBuffer) => {
+    const openedFile = file;
+    if (openedFile === undefined) {
+      return audio.AudioDataCallbackResult.INVALID;
+    }
+    let options: ReadOptions = {
+      offset: bufferSize,
+      length: buffer.byteLength.toLong()
+    };
+
+    try {
+      let bufferLength = fs.readSync(openedFile.fd, buffer, options);
+      bufferSize += buffer.byteLength.toLong();
+      // 如果当前回调传入的数据不足一帧,空白区域需要使用静音数据填充,否则会导致播放出现杂音。
+      if (bufferLength < buffer.byteLength.toLong()) {
+        let view = new DataView(buffer);
+        let startIndex = bufferLength.toInt();
+        let endIndex = buffer.byteLength.toInt();
+        for (let i: int = startIndex; i < endIndex; i++) {
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据,使用其他采样格式时0为静音数据。
+          view.setUint8(i, 0);
+        }
+      }
+      // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
+      // 如果开发者不希望播放某段buffer,返回audio.AudioDataCallbackResult.INVALID即可。
+      return audio.AudioDataCallbackResult.VALID;
+    } catch (error) {
+      console.error('Error reading file:', error);
+
+      if (globalLogUpdate) {
+        globalLogUpdate(`Error reading file: ${error}`, true);
+      }
+      // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
+      return audio.AudioDataCallbackResult.INVALID;
+    }
+  };
+}
+
+// 初始化,创建实例,设置监听事件。
+async function init() {
+  try {
+    let renderer = await audio.createAudioRenderer(createAudioRendererOptions()); // 创建AudioRenderer实例。
+    if (renderer === null) {
+      const errorMsg = `${TAG}: creating AudioRenderer failed, renderer is null`;
+      console.info(errorMsg);
+      if (globalLogUpdate) {
+        globalLogUpdate(errorMsg, true);
+      }
+      return;
+    }
+    console.info(`${TAG}: creating AudioRenderer success`);
+    // ...
+    audioRenderer = renderer;
+    renderer.onWriteData(writeDataCallback);
+  } catch (error) {
+    console.info(`${TAG}: creating AudioRenderer failed, error: ${error}`);
+    // ...
+  }
+}
+
+// 开始一次音频渲染。
+async function start() {
+  const renderer = audioRenderer;
+  if (renderer === undefined) {
+    return;
+  }
+  const state = renderer.state;
+  if (state !== audio.AudioState.STATE_PREPARED &&
+    state !== audio.AudioState.STATE_PAUSED &&
+    state !== audio.AudioState.STATE_STOPPED) { // 当且仅当状态为prepared、paused和stopped之一时才能启动渲染。
+    console.error(TAG + 'start failed');
+    // ...
+    return;
+  }
+  try {
+    // 启动渲染。
+    await renderer.start();
+    console.info('Renderer start success.');
+    // ...
+  } catch (error) {
+    console.error(`Renderer start failed: ${error}`);
+    // ...
+  }
+}
+
+// 暂停渲染。
+async function pause() {
+  const renderer = audioRenderer;
+  if (renderer === undefined) {
+    return;
+  }
+  // 只有渲染器状态为running的时候才能暂停。
+  if (renderer.state !== audio.AudioState.STATE_RUNNING) {
+    console.info('Renderer is not running');
+    // ...
+    return;
+  }
+  try {
+    // 暂停渲染。
+    await renderer.pause();
+    console.info('Renderer pause success.');
+    // ...
+  } catch (error) {
+    console.error(`Renderer pause failed: ${error}`);
+    // ...
+  }
+}
+
+// 停止渲染。
+async function stop() {
+  const renderer = audioRenderer;
+  if (renderer === undefined) {
+    return;
+  }
+  const state = renderer.state;
+  // 只有渲染器状态为running或paused的时候才可以停止。
+  if (state !== audio.AudioState.STATE_RUNNING &&
+    state !== audio.AudioState.STATE_PAUSED) {
+    console.info('Renderer is not running or paused.');
+    // ...
+    return;
+  }
+  try {
+    // 停止渲染。
+    await renderer.stop();
+    const openedFile = file;
+    if (openedFile !== undefined) {
+      fs.closeSync(openedFile);
+      file = undefined;
+    }
+    console.info('Renderer stop success.');
+    // ...
+  } catch (error) {
+    console.error(`Renderer stop failed: ${error}`);
+    // ...
+  }
+}
+
+// 销毁实例,释放资源。
+async function release() {
+  const renderer = audioRenderer;
+  if (renderer === undefined) {
+    return;
+  }
+  // 渲染器状态不是released状态,才能release。
+  if (renderer.state === audio.AudioState.STATE_RELEASED) {
+    console.info('Renderer already released');
+    // ...
+    return;
+  }
+  try {
+    // 释放资源。
+    await renderer.release();
+    audioRenderer = undefined;
+    console.info('Renderer release success.');
+    // ...
+  } catch (error) {
+    console.error(`Renderer release failed: ${error}`);
+    // ...
+  }
+}
+```
+
 ## 使用AudioCapturer录制本端的通话声音
 
 该过程与[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)过程相似，关键区别在于audioCapturerInfo参数和音频数据流向。audioCapturerInfo参数中音源类型source需设置为语音通话：SOURCE_TYPE_VOICE_COMMUNICATION。
