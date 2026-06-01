@@ -8,7 +8,7 @@
 
 The **wifiManager** module provides basic WLAN functionalities (such as wireless access, wireless encryption, and wireless roaming), basic peer-to-peer (P2P) services, and WLAN notification services. It allows applications to interact with other devices through WLAN.
 
-> **NOTE**<br>
+> **NOTE**
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
@@ -37,9 +37,9 @@ Checks whether WLAN is enabled.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
@@ -69,9 +69,9 @@ Enables the WLAN.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.          |
 | 801  | Capability not supported.|
@@ -104,7 +104,7 @@ Disables WLAN.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -129,7 +129,7 @@ scan(): void
 
 Starts WLAN scanning. Note that WLAN must have been enabled.
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10. Use [wifiManager.startScan](#wifimanagerstartscan21) instead.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO, ohos.permission.LOCATION, and ohos.permission.APPROXIMATELY_LOCATION
@@ -138,9 +138,9 @@ Starts WLAN scanning. Note that WLAN must have been enabled.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -176,7 +176,7 @@ Starts a WLAN scan.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -202,7 +202,7 @@ Obtains the scan result. This API uses a promise to return the result.
 
 - Returns a promise. The resolved value is an array containing multiple WifiScanInfo objects, each of which indicates the scanning information about a WLAN.
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10. Use [wifiManager.getScanInfoList](#wifimanagergetscaninfolist10) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and (ohos.permission.GET_WIFI_PEERS_MAC or (ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION))
@@ -217,9 +217,9 @@ Obtains the scan result. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -233,7 +233,7 @@ Obtains the scan result. This API uses an asynchronous callback to return the re
 
 - Returns an array containing multiple WifiScanInfo objects through the callback function. Each object indicates the scanning information about a WLAN network.
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10. Use [wifiManager.getScanInfoList](#wifimanagergetscaninfolist10) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and (ohos.permission.GET_WIFI_PEERS_MAC or (ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION))
@@ -247,9 +247,9 @@ Obtains the scan result. This API uses an asynchronous callback to return the re
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -305,7 +305,7 @@ getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;
 
 Obtains the scanning result. This API returns an array containing multiple WifiScanInfo objects in synchronous mode. Each object indicates the scanning information about a WLAN network.
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10. Use [wifiManager.getScanInfoList](#wifimanagergetscaninfolist10) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and (ohos.permission.GET_WIFI_PEERS_MAC or (ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION))
@@ -320,9 +320,9 @@ Obtains the scanning result. This API returns an array containing multiple WifiS
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -377,9 +377,9 @@ Obtains the cached scan results within 30s before the current time point.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -539,11 +539,11 @@ Enumerates the WLAN channel widths.
 
 ## WifiDeviceConfig
 
-Represents WLAN configuration.
+Describes the WLAN configuration.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-
+<!--Table: 15%; 19%; 8%; 8%; 50%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -586,7 +586,7 @@ Represents EAP configuration information.
 
 ## WifiWapiConfig<sup>12+</sup>
 
-Configuration of the WAPI(Wireless LAN Authentication and Privacy Infrastructure) authentication protocol.
+Configuration of the Wireless LAN Authentication and Privacy Infrastructure (WAPI) protocol.
 
 When a user connects to the WLAN through the WAPI authentication protocol, the user can configure parameters or certificates in the following ways:
 - Method 1: Configure a certificate for connection. The key fields in WifiDeviceConfig are configured as follows:
@@ -696,9 +696,9 @@ Adds the candidate network configuration. This API uses a promise to return the 
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -749,9 +749,9 @@ Adds the configuration of a candidate network. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -805,9 +805,9 @@ Removes the configuration of a candidate network. This API uses a promise to ret
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -852,13 +852,13 @@ Removes the candidate network configuration of a specified network. This API use
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | networkId | number | Yes| ID of the network configuration to remove.|
-  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0**. If the operation fails, **error** is not **0**.|
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0**. If the operation fails, **err** is not **0**.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -901,9 +901,9 @@ Removes the network configuration.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -949,9 +949,9 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -999,9 +999,9 @@ Connects to a candidate network.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -1028,11 +1028,11 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 This API is used to connect an application to a candidate network added by a user and prompt the user to confirm the trust during the connection. This API uses a promise to return the result.
 
-- When this API is called, the system displays a message, asking the user to confirm whether to trust and connect to the specified candidate network. This API uses a promise to return the result.
+- When this API is called, the system prompts the user to confirm whether to trust and connect to the specified candidate network.
 - User confirmation is a necessary step in the connection process. The connection operation is not performed before the user confirms the trust.
 - You are advised to trigger a WLAN scan by calling the **startScan** API before initiating a connection, and then connect to the candidate network after the updating of the scan result is detected by using the [wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange) method. This improves the connection success rate.
 
-> **NOTE**<br>
+> **NOTE**
 > If [wifiManager.connectToCandidateConfig](#wifimanagerconnecttocandidateconfig) is used to connect to a candidate network, no user response is returned.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
@@ -1057,7 +1057,7 @@ This API is used to connect an application to a candidate network added by a use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1107,9 +1107,9 @@ Adds network configuration. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -1156,9 +1156,9 @@ Adds network configuration. This API uses an asynchronous callback to return the
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -1203,9 +1203,9 @@ Obtains network configuration.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1243,9 +1243,9 @@ Connects to a hotspot.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -1291,9 +1291,9 @@ Obtains the WLAN signal level.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1337,9 +1337,9 @@ If **macType** is set to **1** (device MAC address), you also need to apply for 
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1368,9 +1368,9 @@ Obtains information about the WLAN connection. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1412,9 +1412,9 @@ Obtains the WLAN connection information. This API returns the result synchronous
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1434,10 +1434,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 ## WifiLinkedInfo
 
-Represents WLAN connection information.
+Describes the WLAN connection information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
+<!--Table: 20%; 15%; 8%; 8%; 49%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | No| No| Service set identifier (SSID) of the hotspot, which is used to obtain the public name (name of the wireless network) of the Wi-Fi hotspot connected to the current device. The encoding format is UTF-8.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -1514,9 +1515,9 @@ Checks whether WLAN is connected.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1549,9 +1550,9 @@ Disconnects from a WLAN.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1610,9 +1611,9 @@ Checks whether the device supports the specified WLAN feature.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
@@ -1654,9 +1655,9 @@ This permission is available only to system applications in API versions 8 to 15
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1695,9 +1696,9 @@ Obtains IPv4 information.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1750,9 +1751,9 @@ Obtains IPv6 information.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1805,9 +1806,9 @@ Obtains the country code.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1852,9 +1853,9 @@ Checks whether the current frequency band is supported.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1892,9 +1893,9 @@ Checks whether the Wi-Fi network connected to the device is a smartphone hotspot
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1933,9 +1934,9 @@ Checks whether this hotspot is active.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1974,9 +1975,9 @@ To obtain the value of **groupOwnerAddr**, you also need to apply for the ohos.p
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2003,9 +2004,9 @@ To obtain the value of **groupOwnerAddr**, you also need to apply for the ohos.p
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2032,7 +2033,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 ## WifiP2pLinkedInfo
 
-Represents the P2P link information.
+Describes the WLAN connection information.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
@@ -2074,9 +2075,9 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2102,9 +2103,9 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2147,9 +2148,9 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2175,9 +2176,9 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2252,9 +2253,9 @@ API version 11 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2280,7 +2281,7 @@ API version 11 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2322,9 +2323,9 @@ Creates a P2P group.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
@@ -2393,9 +2394,9 @@ Removes this P2P group.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2433,9 +2434,9 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
@@ -2522,9 +2523,9 @@ Cancels the P2P connection being set up.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2556,9 +2557,9 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2588,9 +2589,9 @@ Stops discovering devices.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2632,7 +2633,7 @@ Obtains WLAN connection information for multi-link operation (MLO).
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 801 | Capability not supported. |
@@ -2687,13 +2688,13 @@ Subscribes to WLAN state changes. When the service exits, call off(type: 'wifiSt
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes. The parameter can be set to **0** (not activated), **1** (activated), **2** (activating), or **3** (deactivating).|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2727,13 +2728,13 @@ Unsubscribes from WLAN state changes. This API uses an asynchronous callback to 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
-  | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+  | callback | Callback&lt;number&gt; | No| Callback for status changes. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2773,7 +2774,7 @@ Subscribes to WLAN connection state changes. When the service exits, call off(ty
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN connection state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes. The parameter can be set to **0** (not connected) or **1** (connected).|
 
 **WLAN connection states**
 
@@ -2784,9 +2785,9 @@ Subscribes to WLAN connection state changes. When the service exits, call off(ty
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2814,9 +2815,9 @@ Unsubscribes from WLAN connection state changes. This API uses an asynchronous c
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2855,7 +2856,7 @@ Subscribes to WLAN scan state changes. When the service exits, call off(type: 'w
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN scan state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes. The value **0** indicates that the scan fails, and the value **1** indicates that the scan is successful.|
 
 **WLAN scan states**
 
@@ -2866,9 +2867,9 @@ Subscribes to WLAN scan state changes. When the service exits, call off(type: 'w
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2892,13 +2893,13 @@ Unsubscribes from WLAN scan state changes. This API uses an asynchronous callbac
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
-| callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+| callback | Callback&lt;number&gt; | No| Callback for status changes. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2939,9 +2940,9 @@ Subscribes to WLAN received signal strength indicator (RSSI) changes. When the s
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2963,13 +2964,13 @@ Unsubscribes from WLAN RSSI changes. This API uses an asynchronous callback to r
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **wifiRssiChange**.|
-| callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+| callback | Callback&lt;number&gt; | No| Callback for status changes. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3006,7 +3007,7 @@ Subscribes to hotspot state changes. When the service exits, call off(type: 'hot
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
-| callback | Callback&lt;number&gt; | Yes| Callback used to return the hotspot state.|
+| callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **Hotspot states**
 
@@ -3019,9 +3020,9 @@ Subscribes to hotspot state changes. When the service exits, call off(type: 'hot
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3043,13 +3044,13 @@ Unsubscribes from hotspot state changes. This API uses an asynchronous callback 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
-| callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+| callback | Callback&lt;number&gt; | No| Callback for status changes. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3087,7 +3088,7 @@ Subscribes to P2P state changes. When the service exits, call off(type: 'p2pStat
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
-| callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P state.|
+| callback | Callback&lt;number&gt; | Yes| Callback for status changes. The parameter can be set to **1** (idle), **2** (enabling), **3** (enabled), **4** (disabling), or **5** (disabled).|
 
 **P2P states**
 
@@ -3101,9 +3102,9 @@ Subscribes to P2P state changes. When the service exits, call off(type: 'p2pStat
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3125,13 +3126,13 @@ Unsubscribes from P2P state changes. This API uses an asynchronous callback to r
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
-  | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+  | callback | Callback&lt;number&gt; | No| Callback for status changes. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3168,13 +3169,13 @@ Subscribes to P2P connection state changes. When the service exits, call off(typ
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | Yes| Callback used to return the P2P connection state.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | Yes| Callback for status changes. The information about the P2P connection is returned.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3196,13 +3197,13 @@ Unsubscribes from P2P connection state changes. This API uses an asynchronous ca
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | No| Callback for status changes. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3241,13 +3242,13 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | Yes| Callback used to return the P2P device state.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | Yes| Callback for status changes. The P2P device information is returned.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3267,13 +3268,13 @@ Unsubscribes from P2P device state changes. This API uses an asynchronous callba
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | No| Callback for status changes. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3312,13 +3313,13 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice)&gt; | Yes| Callback used to return the P2P peer device state. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice)&gt; | Yes| Callback for status changes. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3338,13 +3339,13 @@ Unsubscribes from P2P peer device state changes. This API uses an asynchronous c
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice)&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice)&gt; | No| Callback for status changes. If this parameter is not specified, this API unregisters all callbacks for the specified event. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3381,13 +3382,13 @@ Subscribes to P2P persistent group changes. When the service exits, call off(typ
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
-  | callback | Callback&lt;void&gt; | Yes| Callback used to return the P2P persistent group state.|
+  | callback | Callback&lt;void&gt; | Yes| Callback for status changes.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3409,13 +3410,13 @@ Unsubscribes from P2P persistent group state changes. This API uses an asynchron
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
-| callback | Callback&lt;void&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+| callback | Callback&lt;void&gt; | No| Callback for status changes. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3452,7 +3453,7 @@ Subscribes to P2P device discovery changes. When the service exits, call off(typ
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P device discovery state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes. The value **0** indicates that the status remains unchanged, and the value **1** indicates that the status has changed.|
 
 **P2P discovered device states**
 
@@ -3463,9 +3464,9 @@ Subscribes to P2P device discovery changes. When the service exits, call off(typ
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3487,13 +3488,13 @@ Unsubscribes from P2P device discovery state changes. This API uses an asynchron
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
-  | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+  | callback | Callback&lt;number&gt; | No| Callback for status changes. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
