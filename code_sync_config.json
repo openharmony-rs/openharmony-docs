@@ -36360,7 +36360,7 @@
 						"start_line":57
 					},
 					{
-						"end_line":390,
+						"end_line":425,
 						"name":"SetRendererCallback",
 						"start_line":101
 					},
@@ -36415,7 +36415,7 @@
 						"start_line":285
 					},
 					{
-						"end_line":343,
+						"end_line":378,
 						"name":"SetCapturerReadDataCallback",
 						"start_line":55
 					}
