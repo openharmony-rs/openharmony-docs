@@ -11214,13 +11214,12 @@ struct WebComponent {
 
 executeAIPageCommand(command: string): Promise\<string\>
 
-异步执行AI页面命令操作。该接口作为AI页面命令的统一入口，通过JSON字符串形式的`command`参数指定要执行的方法及其参数，并通过Promise异步返回命令执行结果。
+异步执行`AIPageCommand`。该接口通过JSON字符串形式的`command`参数指定命令类型和命令参数，执行结果通过Promise异步返回。
 
 > **说明：**
 >
-> - `command`参数必须为JSON格式字符串，且必须包含`method`字段。`params`字段为可选字段，用于传入对应命令所需参数。
-> - 当命令执行失败或无返回值时，Promise返回`null`。
-> - 不同`method`对应的`params`参数和返回结果以具体命令定义为准。
+> - 当网页不可用、命令无法执行或无结果返回时，Promise返回空字符串。
+> - 返回值非空时为JSON字符串，应用可通过`JSON.parse`解析后使用。
 
 **起始版本：** 26.0.0
 
@@ -11232,17 +11231,17 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 | 参数名  | 类型   | 必填 | 说明 |
 | ------- | ------ | ---- | ---- |
-| command | string | 是   | JSON格式的命令参数。必须包含`method`字段，`params`字段可选。 |
+| command | string | 是   | JSON格式的命令参数。不同命令的参数格式不同，详细说明请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)。 |
 
 **返回值：**
 
 | 类型             | 说明 |
 | ---------------- | ---- |
-| Promise\<string\> | Promise实例，返回JSON格式的命令执行结果。执行失败或无返回值时，返回`null`。 |
+| Promise\<string\> | Promise实例，返回JSON格式的命令执行结果。不同命令的返回格式不同。执行失败或无返回值时，返回空字符串。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -11256,6 +11255,10 @@ executeAIPageCommand(command: string): Promise\<string\>
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+interface AIPageCommand {
+  method: string;
+}
+
 @Entry
 @Component
 struct WebComponent {
@@ -11266,23 +11269,15 @@ struct WebComponent {
       Button('executeAIPageCommand')
         .onClick(async () => {
           try {
-            let command: string = JSON.stringify({
-              method: 'getFullDom',
-              params: {
-                wants: {
-                  tag: true,
-                  attribute: ['id', 'class'],
-                  visible: true
-                }
-              }
-            });
+            let commandObj: AIPageCommand = { method: 'getFullDom' };
+            let command: string = JSON.stringify(commandObj);
             let result: string = await this.controller.executeAIPageCommand(command);
             console.info(`executeAIPageCommand result: ${result}`);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: 'https://www.example.com', controller: this.controller })
     }
   }
 }
