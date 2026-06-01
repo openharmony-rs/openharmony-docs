@@ -68,6 +68,10 @@ ArkTS-Sta: pixelRound(value: PixelRoundPolicy | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | start | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件前部边界取整对齐方式。<br/>不设置[pixelRound](#pixelround)或者设置异常值时按四舍五入规则取整。|
