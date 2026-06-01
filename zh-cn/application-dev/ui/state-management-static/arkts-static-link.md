@@ -37,9 +37,9 @@ import { Link } from '@kit.ArkUI';
 
 - 当装饰interface字面量类型时，可以观察到字面量整体及其属性的变化。
 
-  ```ts
-  'use static'
+  <!-- @[LinkInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkInterface.ets) -->
   
+  ``` TypeScript
   import { ClickEvent, Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
   
   interface Info {
@@ -143,9 +143,9 @@ import { Link } from '@kit.ArkUI';
 
     【正例】
 
-    ```ts
-    'use static'
-
+    <!-- @[LinkTypeConsistent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkTypeConsistent.ets) -->
+    
+    ``` TypeScript
     import { Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
     
     class Info {
@@ -215,10 +215,10 @@ import { Link } from '@kit.ArkUI';
     ```
     
     【正例】
+
+    <!-- @[LinkStateVarInit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkStateVarInit.ets) -->
     
-    ```ts
-    'use static'
-    
+    ``` TypeScript
     import { Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
     
     class Info {
@@ -262,9 +262,9 @@ import { Link } from '@kit.ArkUI';
 
   2.当点击父组件ShufflingContainer中的Button时，@State会发生变化，并同步给\@Link，子组件也会进行对应的刷新。
 
-```ts
-'use static'
+<!-- @[LinkBasicTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkBasicTypes.ets) -->
 
+``` TypeScript
 import {
   Button,
   ClickEvent,
@@ -372,9 +372,9 @@ struct ShufflingContainer {
 
 当装饰数组时，可以观察到数组整体和数组项的变化，同时可以通过调用Array的接口 `push`、`pop`、`shift`、`unshift`、`splice`、`copyWithin`、`fill`、`reverse`、`sort`更新Array的数据。
 
-```ts
-'use static'
+<!-- @[LinkArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkArray.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, ForEach, Link, State, Text } from '@kit.ArkUI';
 @Component
 struct Child {
@@ -436,9 +436,9 @@ struct Parent {
 
 在下面的示例中，message类型为Map\<int, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[LinkMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkMap.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Link, Row, State, Text } from '@kit.ArkUI';
 @Component
 struct Child {
@@ -491,9 +491,9 @@ struct MapSample {
 
 在下面的示例中，message类型为Set\<int\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[LinkSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkSet.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Link, Row, State, Text } from '@kit.ArkUI';
 
 @Component
@@ -544,9 +544,9 @@ struct SetSample {
 
 在下面的示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[LinkDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkDate.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
 
 @Component
@@ -560,7 +560,7 @@ struct DateComponent {
         .onClick((e: ClickEvent) => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
-      Button('child increace the day by 1')
+      Button('child increase the day by 1')
         .onClick((e: ClickEvent) => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
@@ -599,9 +599,9 @@ struct ParentComponent {
 
 以下示例中，在\@Link的\@Watch回调中修改\@State装饰的状态变量memberMessage，实现父子组件间的变量同步。但是在本地修改\@State装饰的变量memberMessage不会影响到父组件中的变量改变。
 
-```ts
-'use static'
+<!-- @[LinkWatch](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkWatch.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, Link, State, Text, Watch } from '@kit.ArkUI';
 
 @Entry
@@ -649,9 +649,9 @@ struct Child {
 
 `@Link`支持联合类型、`undefined`和`null`。在以下示例中，`name`类型为`string | undefined`。点击父组件`Index`中的按钮可以改变`name`的属性或类型，`Child`组件也会相应刷新。
 
-```ts
-'use static'
+<!-- @[LinkUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkUnionType.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
 
 @Component
