@@ -221,7 +221,6 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ```
 
    ArkTS-Sta示例：
-
    ```ts
    let uris: Array<string> = [];
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
