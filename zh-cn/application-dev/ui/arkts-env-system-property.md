@@ -403,8 +403,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
