@@ -93,7 +93,7 @@
    <!-- @[get_StreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioStreamManager.ets) -->
    
    ``` TypeScript
-   import audio from '@ohos.multimedia.audio';
+   import { audio } from '@kit.AudioKit'; // 导入audio模块。
    import { Callback } from '@ohos.base';
    import {
      Entry, Component, State, Scroll, Column, Text, Color, FlexAlign, HorizontalAlign, ClickEvent
