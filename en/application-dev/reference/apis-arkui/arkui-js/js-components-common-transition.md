@@ -46,7 +46,7 @@
 
 ### Example
 
-In the example below, where page A jumps to Page B, the shared element is **image**, and the **shareid** is **"shareImage"**.
+In the example below, where **PageA** jumps to **PageB**, the shared element is **image**, and the **shareid** is **"shareImage"**.
 
 ```html
 <!-- PageA -->
