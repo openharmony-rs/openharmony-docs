@@ -20,7 +20,7 @@
 
 1. 创建audioVolumeGroupManager对象。
 
-  ArkTs-Dyn示例：
+  ArkTS-Dyn示例：
    <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
    
    ``` TypeScript
