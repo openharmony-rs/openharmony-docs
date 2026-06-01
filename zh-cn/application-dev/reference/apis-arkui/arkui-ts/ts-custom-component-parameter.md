@@ -17,24 +17,15 @@
 
 自定义组件参数，用于配置是否支持组件冻结。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-> **说明：**
->
-> 从API version 11开始，支持通过此参数配置[@Component](../../../ui/state-management/arkts-create-custom-components.md#component)组件冻结。例子可见[自定义组件冻结](../../../ui/state-management/arkts-custom-components-freeze.md)。
->
-> 从API version 12开始，支持通过此参数配置[@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)组件冻结。例子可见[自定义组件冻结](../../../ui/state-management/arkts-custom-components-freezeV2.md)。
->
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选     | 说明   |
 | ------ | ---- | ---- | ------------ | ------------ |
-|freezeWhenInactive|boolean| 否   | 否   |配置自定义组件支持组件冻结。true：开启组件冻结，false：不开启组件冻结。当开发者未指定ComponentOptions时，freezeWhenInactive将使用false作为默认值。|
-| reusePool | [ReusePoolOwnership](#reusepoolownership) | 否 | 是 | 在自定义组件上配置全局复用池的类型，如果不传入，则全局复用池不会生效。<br>**起始版本：** 26.0.0 |
-| poolAccepts | string[] | 否 | 是 | 自定义组件全局复用池接纳的自定义组件名称，reusePool参数被设置时，poolAccepts必须为非空数组。poolAccepts和reusePool都没有赋值时，全局复用不生效。<br>**起始版本：** 26.0.0 |
+|freezeWhenInactive|boolean| 否   | 否   |配置自定义组件支持组件冻结。true：开启组件冻结，false：不开启组件冻结。当开发者未指定ComponentOptions时，freezeWhenInactive将使用false作为默认值。<br>从API version 11开始，支持通过此参数配置[@Component](../../../ui/state-management/arkts-create-custom-components.md#component)组件冻结。例子可见[自定义组件冻结](../../../ui/state-management/arkts-custom-components-freeze.md)。<br>从API version 12开始，支持通过此参数配置[@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)组件冻结。例子可见[自定义组件冻结](../../../ui/state-management/arkts-custom-components-freezeV2.md)。<br>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| reusePool | [ReusePoolOwnership](#reusepoolownership) | 否 | 是 | 在自定义组件上配置全局复用池的类型，如果不传入，则全局复用池不会生效。<br>**起始版本：** 26.0.0<br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| poolAccepts | Function[] | 否 | 是 | 自定义组件全局复用池接纳的自定义组件名称，reusePool参数被设置时，poolAccepts必须为非空数组。poolAccepts和reusePool都没有赋值时，全局复用不生效。<br>**起始版本：** 26.0.0<br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## ReusableOptions
 
@@ -119,4 +110,5 @@ type ReusePoolOwnership = 'shared' | 'perInstance'
 
 | 类型            | 说明                  |
 |-------------    | ------------------- |
-| 'shared' \| 'perInstance' | shared：拥有@Component/@ComponentV2类的所有实例共享单个复用池实例。<br/>perInstance：拥有@Component/@ComponentV2的每个实例都有自己的复用池实例。 |
+| 'shared'        | 拥有@Component/@ComponentV2类的所有实例共享单个复用池实例。 |
+| 'perInstance'   | 拥有@Component/@ComponentV2的每个实例都有自己的复用池实例。 |

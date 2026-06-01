@@ -23,13 +23,12 @@
 开发者可以根据自定义key使用\@CustomEnv装饰器声明响应式环境变量，实现组件间的状态共享。示例如下：
 
 ```ts
-const custom = CustomEnvKey.create<number>();
+const custom = CustomEnvKey.create<string>();
 @CustomEnv(custom) varName: string = 'default value';
 ```
 
 其中：
-- `custom`：开发者自定义的环境变量key，类型为[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)，需使用const关键字全局定义，否则会编译报错。
-
+- `custom`：开发者自定义的环境变量key，类型为[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)，否则会编译报错。
 - `varName`：装饰的变量名。
 - `'default value'`：变量的默认值，当未找到对应的WithEnv组件提供的值时使用。
 
@@ -104,26 +103,48 @@ struct Child {
 |是否有响应式能力|有，当WithEnv设置的值变化时，会通知\@CustomEnv装饰的变量更新，并通知关联组件刷新。|有，当系统环境变量变化时，会通知\@Env装饰的变量更新，并通知关联组件刷新。|
 
 ## 限制条件
-- \@CustomEnv仅支持在\@Component和\@ComponentV2中使用，否则会有编译时报错。如果开发者绕过编译时检查，则会有运行时报错。
+- \@CustomEnv仅支持在\@Component和\@ComponentV2中使用，否则会有编译时报错。
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<string>();
-
+// 错误用法，编译时报错
 class CustomEnvKey {
-  @CustomEnv(custom) customVarName: string = 'hello world'; // 错误用法，编译时报错
+  @CustomEnv(custom) customVarName: string = 'hello world'; 
 }
+// 正确用法
+@Entry
+@Component
+struct Index {
+  @CustomEnv(custom) customVarName: string = 'hello world'; 
 
+  build() {
+    Column() {
+      Text(`this is @CustomEnv page`)
+    }
+  }
+}
+```
+
+- \@CustomEnv的入参必须是通过[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)的[create\<T\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#createt)方法创建的全局常量，且类型为开发者自定义的CustomEnvKey\<S\>，否则会编译报错，若开发者绕过编译检查，则会运行时报错。
+
+```ts
 const custom = CustomEnvKey.create<string>();
-
 @Entry
 @Component
 struct Index {
   @CustomEnv(custom) customVarName: string = 'hello world'; // 正确用法
+  // cus: CustomEnvKey<string> = CustomEnvKey.create<string>()
+  // @CustomEnv(this.cus) customVarName: string = 'hello world';  // 错误用法，会编译报错
+
+  build() {
+    Column() {
+      Text(`this is @CustomEnv page`)
+    }
+  }
 }
 ```
 
-- \@CustomEnv装饰的变量为只读属性，不允许开发者进行赋值操作，否则会有编译时报错。如果开发者绕过编译时检查，则会有运行时报错。
+- \@CustomEnv装饰的变量为只读属性，不允许开发者进行赋值操作，否则会有编译时报错。
 ```ts
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
@@ -153,7 +174,6 @@ struct Index {
 
 - \@CustomEnv装饰的变量不能通过父组件传参进行初始化；若在组件实例化时以参数形式赋值，编译阶段会进行拦截并报错。
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<string>();
 
@@ -181,21 +201,8 @@ struct Child {
 }
 ```
 
-- \@CustomEnv入参类型必须是CustomEnvKey类型，若传入非CustomEnvKey类型，将在编译时进行校验。如果开发者通过类型断言（as）绕过编译检查，则会有运行时报错。
-```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
-
-@Entry
-@ComponentV2
-struct Index {
-  // 传入的非法类型key断言为合法类型，绕过编译检查，运行时会报错
-  @CustomEnv(123 as CustomEnvKey<string>) customVarName: string = 'hello world'; // 错误用法，运行时报错
-}
-```
-
 - \@CustomEnv不会向上查找\@Component/\@ComponentV2中相同Key的\@CustomEnv设置的值。
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<string>();
 
@@ -246,7 +253,6 @@ struct Child {
 新增的状态管理装饰器\@CustomEnv支持自定义key配置，并且可以指定变量的初始值。语法格式为：`@CustomEnv(custom) customVarName: string = 'hello world'`。其中'custom'为开发者自定义的环境变量key，'hello world'为该变量的初始值。
 
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<string>();
 
@@ -258,45 +264,21 @@ struct Index {
 
   build() {
     Column() {
-      Text(this.customVarName)
+      Text(`Parent: ${this.customVarName}`)
     }
   }
 }
 ```
+
+运行效果图如下。
+
+![image](./figures/custom-env-9.png)
 
 ### \@CustomEnv支持多种数据类型
 
 \@CustomEnv支持简单类型和复杂类型的变量声明。简单类型包括string、number、boolean、enum等；复杂类型包括class、Object等对象类型。
 
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
-
-const custom = CustomEnvKey.create<string>();
-
-@Entry
-@ComponentV2
-struct Index {
-  @CustomEnv(custom) customVarName: string = 'hello world';
-
-}
-
-const custom = CustomEnvKey.create<number>();
-
-@Entry
-@ComponentV2
-struct Index {
-  @CustomEnv(custom) customVarName: number = 1;
-
-}
-
-const custom = CustomEnvKey.create<boolean>();
-
-@Entry
-@ComponentV2
-struct Index {
-  @CustomEnv(custom) customVarName: boolean = true;
-
-}
 
 @ObservedV2
 class CustomEnvValue {
@@ -304,22 +286,39 @@ class CustomEnvValue {
   @Trace userName: string = 'admin';
 }
 
-const custom = CustomEnvKey.create<CustomEnvValue>();
+const customStr = CustomEnvKey.create<string>();
+const customNum = CustomEnvKey.create<number>();
+const customBool = CustomEnvKey.create<boolean>();
+const customObj = CustomEnvKey.create<CustomEnvValue>();
 
 @Entry
 @ComponentV2
 struct Index {
-  @CustomEnv(custom) customVarName: CustomEnvValue = new CustomEnvValue();
-  
+  @CustomEnv(customStr) customStrVarName: string = 'hello world';
+  @CustomEnv(customNum) customNumVarName: number = 1;
+  @CustomEnv(customBool) customBoolVarName: boolean = true;
+  @CustomEnv(customObj) customObjVarName: CustomEnvValue = new CustomEnvValue();
+
+  build() {
+    Column() {
+      Text(`customStrVarName type is ${typeof this.customStrVarName}`)
+      Text(`customNumVarName type is ${typeof this.customNumVarName}`)
+      Text(`customBoolVarName type is ${typeof this.customBoolVarName}`)
+      Text(`customObjVarName type is ${typeof this.customObjVarName}`)
+    }
+  }
 }
 ```
+
+运行效果图如下。
+
+![image](./figures/custom-env-11.png)
 
 ### \@CustomEnv支持默认初始值
 
 当子组件中使用\@CustomEnv装饰的变量向上查找环境变量值但未找到匹配的WithEnv组件时，该变量将使用声明时指定的初始值作为默认值。
 
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<string>();
 
@@ -345,6 +344,10 @@ struct Child {
   }
 }
 ```
+
+运行效果图如下。
+
+![image](./figures/custom-env-10.png)
 
 ### 环境变量查找遵循就近原则
 
@@ -386,6 +389,10 @@ struct Child {
   }
 }
 ```
+
+运行效果图如下。
+
+![image](./figures/custom-env-12.png)
 
 ### 响应式更新能力
 
@@ -439,6 +446,7 @@ struct Child {
 
 ```ts
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const custom = CustomEnvKey.create<number>();
 
@@ -501,6 +509,7 @@ struct Child {
 
 ```ts
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const custom = CustomEnvKey.create<number>();
 
@@ -573,7 +582,6 @@ struct FreezeChild {
 当装饰的对象是Array时，可以通过调用Array的接口`push`，`pop`，`shift`，`unshift`，`splice`，`copyWithin`，`fill`，`reverse`，`sort`更新Array中的数据。
 
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
 class Fruit {
   public name: string;
@@ -636,7 +644,6 @@ struct Index {
 当装饰的对象是Date时，可通过调用Date的接口`setFullYear`，`setMonth`，`setDate`，`setHours`，`setMinutes`，`setSeconds`，`setMilliseconds`，`setTime`，`setUTCFullYear`，`setUTCMonth`，`setUTCDate`，`setUTCHours`，`setUTCMinutes`，`setUTCSeconds`，`setUTCMilliseconds`更新Date的属性。
 
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<Date>();
 
@@ -691,7 +698,6 @@ struct DatePickerExample {
 当装饰的对象是Map时，可以通过调用Map的接口`set`，`clear`，`delete`更新Map中的数据。
 
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<Map<string, number>>();
 
@@ -753,7 +759,6 @@ struct MapSample {
 当装饰的对象是Set时，可以通过调用Set的接口`add`，`clear`，`delete`更新Set中的数据。
 
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<Set<string>>();
 
@@ -828,7 +833,7 @@ struct PageOne {
     Column() {
       Text(`Parent Value is :${this.defaultMessage}`)
       Child({ message: this.defaultMessage }) // 正确用法
-      // Child({ message: this.defaultMessage1 }) // 错误用法，编译报错。
+      // Child({ customMessage: this.defaultMessage1 }) // 错误用法，编译报错。
     }
     .height('100%')
     .width('100%')
@@ -838,7 +843,7 @@ struct PageOne {
 @Component
 struct Child {
   @Require @Prop message: string;
-  // @Prop message1: CustomValue; //  错误用法，V1的状态变量不能和ObservedV2连用。
+  // @Prop customMessage: CustomValue; //  错误用法，V1的状态变量不能和ObservedV2连用。
 
   build() {
     Column() {
@@ -849,6 +854,11 @@ struct Child {
   }
 }
 ```
+
+运行效果图如下。
+
+![image](./figures/custom-env-13.png)
+
 - \@CustomEnv装饰的变量传递给V2时，遵循V2只有\@Param可以接收外部变量的规则。
 ```ts
 @ObservedV2
@@ -891,7 +901,11 @@ struct Child {
 }
 ```
 
-- \@CustomEnv是提供状态管理V2的观察能力，当\@CustomEnv装饰的变量是@Observed时，需要调用[enableV2Compatibility](../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)使能其观察类属性的能力，否则将无法观察类属性的变化。
+运行效果图如下。
+
+![image](./figures/custom-env-14.gif)
+
+- \@CustomEnv提供状态管理V2的观察能力，当\@CustomEnv装饰的变量是\@Observed时，需要调用[enableV2Compatibility](../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)使其具有观察类属性的能力，否则将无法观察类属性的变化。
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 
@@ -934,3 +948,7 @@ struct Child {
   }
 }
 ```
+
+运行效果图如下。
+
+![image](./figures/custom-env-15.gif)

@@ -28,8 +28,11 @@ The **brightness** module provides APIs for querying and adjusting the screen br
 import brightness, { BrightnessModeResponse, BrightnessResponse } from '@system.brightness';
 ```
 
+## Brightness
 
-## brightness.getValue<sup>(deprecated)</sup>
+Provides APIs for querying and adjusting the screen brightness and mode.
+
+### getValue<sup>(deprecated)</sup>
 
 getValue(options?: GetBrightnessOptions): void
 
@@ -106,7 +109,7 @@ export default {
 }
 ```
 
-## brightness.setValue<sup>(deprecated)</sup>
+### setValue<sup>(deprecated)</sup>
 
 setValue(options?: SetBrightnessOptions): void
 
@@ -184,7 +187,7 @@ export default {
 }
 ```
 
-## brightness.getMode<sup>(deprecated)</sup>
+### getMode<sup>(deprecated)</sup>
 
 getMode(options?: GetBrightnessModeOptions): void
 
@@ -261,7 +264,7 @@ export default {
 }
 ```
 
-## brightness.setMode<sup>(deprecated)</sup>
+### setMode<sup>(deprecated)</sup>
 
 setMode(options?: SetBrightnessModeOptions): void
 
@@ -338,7 +341,7 @@ export default {
 }
 ```
 
-## brightness.setKeepScreenOn<sup>(deprecated)</sup>
+### setKeepScreenOn<sup>(deprecated)</sup>
 
 setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
