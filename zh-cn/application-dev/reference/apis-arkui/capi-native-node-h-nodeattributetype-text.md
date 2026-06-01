@@ -1361,6 +1361,32 @@ NODE_TEXT_PUNCTUATION_OVERFLOW = 1055
 | -- | -- |
 | .value[0].i32 | 是否启用行尾标点符号悬挂。 |
 
+## NODE_TEXT_TAIL_INDENTS
+ 	 
+```c
+NODE_TEXT_TAIL_INDENTS = 1056
+```
+
+定义文本块中每行的尾部缩进。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 表示文本的尾部缩进值，单位为vp。当大小为1时，所有行共享相同的尾部缩进。 |
+| .size | 尾部缩进值的数量。当size > 1时，第i个值表示第i行的尾部缩进；若文本行数超过size，则剩余行使用最后一个值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 第一个尾部缩进值，单位为vp。 |
+| .size | 尾部缩进值的数量。 |
+
 ## NODE_SPAN_CONTENT
 
 ```c

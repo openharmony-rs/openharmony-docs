@@ -289,6 +289,8 @@
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLinearGradient(const OH_ArkUI_ParagraphStyle* paragraphStyle, OH_ArkUI_LinearGradientOptions* linearGradient)](#oh_arkui_paragraphstyle_getlineargradient) | 获取段落样式的线性渐变。 |
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetRadialGradient(OH_ArkUI_ParagraphStyle* paragraphStyle, const OH_ArkUI_RadialGradientOptions* radialGradient)](#oh_arkui_paragraphstyle_setradialgradient) | 设置段落样式的径向渐变。 |
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetRadialGradient(const OH_ArkUI_ParagraphStyle* paragraphStyle, OH_ArkUI_RadialGradientOptions* radialGradient)](#oh_arkui_paragraphstyle_getradialgradient) | 获取段落样式的径向渐变。 |
+| [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* paragraphStyle, const float* tailIndents, uint32_t size)](#oh_arkui_paragraphstyle_settailindents) | 设置段落样式的尾部缩进 |
+| [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTailIndents(const OH_ArkUI_ParagraphStyle* paragraphStyle, float** tailIndents, uint32_t tailIndentsSize, uint32_t* writeLength)](#oh_arkui_paragraphstyle_gettailindents) | 获取段落样式的尾部缩进。 |
 
 ## 枚举类型说明
 
@@ -6076,3 +6078,62 @@ ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetRadialGradient(const OH_ArkUI_Paragra
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_ParagraphStyle_SetTailIndents()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* paragraphStyle, const float* tailIndents, uint32_t size)
+```
+
+**描述**
+
+设置段落样式的尾部缩进
+
+>**说明：** 
+>所有输入指针参数必须由调用者负责分配、管理和释放。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | 指向[OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)对象的指针。 |
+| const float* tailIndents | 尾缩进值，单位为vp。当尺寸为1时，所有行共享相同的尾缩进。当尺寸大于1时，第i个值指定第i行的尾部缩进；如果文本行数若行数超出size，则剩余行使用最后一个值缩进。 |
+| uint32_t size | 尾部缩进值个数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_ParagraphStyle_GetTailIndents()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTailIndents(const OH_ArkUI_ParagraphStyle* paragraphStyle, float** tailIndents, uint32_t tailIndentsSize, uint32_t* writeLength)
+```
+
+**描述**
+
+获取段落样式的尾部缩进。
+
+>**说明：** 
+>所有输入指针参数必须由调用者负责分配、管理和释放。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | 指向[OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)对象的指针。 |
+| float** tailIndents | 尾部缩进值，单位为vp。 |
+| uint32_t tailIndentsSize | 调用方提供的tailIndents缓冲区大小。 |
+| uint32_t* writeLength | 实际写入缓冲区的尾部缩进值个数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>        [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 缓冲区长度小于最小缓冲区长度。 |
