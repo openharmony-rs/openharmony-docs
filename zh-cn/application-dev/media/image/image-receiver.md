@@ -124,7 +124,7 @@ for (let j = 0; j < height * 1.5; j++) {
 }
 let pixelMap = await image.createPixelMap(dstArr.buffer, {
   size: { height: height, width: width },
-  srcPixelFormat: 8,
+  srcPixelFormat: image.PixelMapFormat.NV21,
 })
 ```
 
