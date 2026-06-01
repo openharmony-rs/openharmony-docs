@@ -38,6 +38,27 @@
 
    ArkTS-Sta示例：
    <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
+   
+   ``` TypeScript
+   import audio from '@ohos.multimedia.audio';
+   import {
+     Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
+   } from '@kit.ArkUI';
+   
+   let audioVolumeGroupManager: audio.AudioVolumeGroupManager | undefined = undefined;
+   
+   // 创建音量组管理器后立即注册麦克风状态监听。
+   async function loadVolumeGroupManager(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     const groupid = audio.DEFAULT_VOLUME_GROUP_ID;
+     audioVolumeGroupManager = await audio.getAudioManager().getVolumeManager().getVolumeGroupManager(groupid);
+     console.info('audioVolumeGroupManager create success.');
+     on();
+     const successMsg = 'audioVolumeGroupManager create success.';
+     if (updateCallback) {
+       updateCallback(successMsg, false);
+     }
+   }
+   ```
 
 2. 调用[on('micStateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#onmicstatechange9)监听麦克风状态变化，当麦克风静音状态发生变化时将通知应用。
 
