@@ -21,11 +21,11 @@
 1. 创建audioVolumeGroupManager对象。
 
   ArkTS-Dyn示例：
-   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
-   
+   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
+
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
-   
+
    let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
    // 创建audioVolumeGroupManager对象。
    async function loadVolumeGroupManager(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
@@ -38,15 +38,15 @@
 
   ArkTS-Sta示例：
   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
-  
+
   ``` TypeScript
   import audio from '@ohos.multimedia.audio';
   import {
     Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
   } from '@kit.ArkUI';
-  
+
   let audioVolumeGroupManager: audio.AudioVolumeGroupManager | undefined = undefined;
-  
+
   // 创建音量组管理器后立即注册麦克风状态监听。
   async function loadVolumeGroupManager(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
     const groupid = audio.DEFAULT_VOLUME_GROUP_ID;
@@ -64,8 +64,8 @@
 
    目前此订阅接口在单进程多[AudioManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md)实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
 
-  ArkTS-Dyn示例：
-   <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
+   ArkTS-Dyn示例：
+   <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
 
    ``` TypeScript
    // 监听麦克风状态变化。
@@ -76,24 +76,24 @@
    }
    ```
 
-  ArkTS-Sta示例：
-  <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
-  
-  ``` TypeScript
-  async function on() {
-    let manager = audioVolumeGroupManager;
-    if (manager === undefined) {
-      return;
-    }
-    manager.onMicStateChange((micStateChange: audio.MicStateChangeEvent) => {
-      console.info(`Current microphone status is: ${micStateChange.mute} `);
-    });
-  }
-  ```
+   ArkTS-Sta示例：
+   <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
+
+   ``` TypeScript
+   async function on() {
+     let manager = audioVolumeGroupManager;
+     if (manager === undefined) {
+       return;
+     }
+     manager.onMicStateChange((micStateChange: audio.MicStateChangeEvent) => {
+       console.info(`Current microphone status is: ${micStateChange.mute} `);
+     });
+   }
+   ```
 
 3. 调用[isMicrophoneMute](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9)查询麦克风当前静音状态，返回true为静音，false为非静音。
 
-  ArkTS-Dyn示例：
+   ArkTS-Dyn示例：
    <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
 
    ``` TypeScript
@@ -106,26 +106,26 @@
    }
    ```
 
-  ArkTS-Sta示例：
-  <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
-  
-  ``` TypeScript
-  async function isMicrophoneMute(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
-    let manager = audioVolumeGroupManager;
-    if (manager === undefined) {
-      const errorMsg = 'audioVolumeGroupManager not created.';
-      if (updateCallback) {
-        updateCallback(errorMsg, true);
-      }
-      return;
-    }
-    let value = await manager.isMicrophoneMute();
-    console.info(`isMicrophoneMute is: ${value}.`);
-    const infoMsg = `isMicrophoneMute is: ${value}.`;
-    if (updateCallback) {
-      updateCallback(infoMsg, false);
-    }
-  }
+   ArkTS-Sta示例：
+   <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
+
+   ``` TypeScript
+   async function isMicrophoneMute(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     let manager = audioVolumeGroupManager;
+     if (manager === undefined) {
+       const errorMsg = 'audioVolumeGroupManager not created.';
+       if (updateCallback) {
+         updateCallback(errorMsg, true);
+       }
+       return;
+     }
+     let value = await manager.isMicrophoneMute();
+     console.info(`isMicrophoneMute is: ${value}.`);
+     const infoMsg = `isMicrophoneMute is: ${value}.`;
+     if (updateCallback) {
+       updateCallback(infoMsg, false);
+     }
+   }
   ```
 
    <!--Del-->
