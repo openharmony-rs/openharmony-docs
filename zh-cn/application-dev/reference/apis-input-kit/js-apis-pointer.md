@@ -795,8 +795,8 @@ setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, foc
 | ----- | ------ | ---- | ----------------------------------- |
 | windowId  | number  | 是    | 窗口ID。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
-| focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
-| focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
+| focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0，单位为px。 |
+| focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0，单位为px。 |
 
 **返回值**：
 
@@ -862,8 +862,8 @@ struct Index {
 | 名称     | 类型     | 只读     | 可选     | 说明     |
 | -------- | ------- | -------- | -------- | ------- |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 否   | 自定义光标。最小限制为资源图本身的最小限制。最大限制为256 x 256px。 |
-| focusX  | number | 否   | 是   | 自定义光标焦点的水平坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的宽度最大值，该参数缺省时默认为0。 |
-| focusY  | number | 否   | 是   | 自定义光标焦点的垂直坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的高度最大值，该参数缺省时默认为0。 |
+| focusX  | number | 否   | 是   | 自定义光标焦点的水平坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的宽度最大值，该参数缺省时默认为0，单位为px。 |
+| focusY  | number | 否   | 是   | 自定义光标焦点的垂直坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的高度最大值，该参数缺省时默认为0，单位为px。 |
 
 ## CursorConfig<sup>15+</sup>
 
@@ -968,8 +968,8 @@ setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number,
 | ----- | ------ | ---- | ----------------------------------- |
 | windowId  | number  | 是    | 窗口ID。取值为大于0的整数。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
-| focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
-| focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
+| focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0，单位为px。 |
+| focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0，单位为px。 |
 
 **错误码**：
 
