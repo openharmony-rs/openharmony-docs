@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides version information about the dispatchInfo struct and dispatch API. The information can be obtained through [freeInstall.getDispatchInfo](js-apis-freeInstall-sys.md#getdispatchinfo).
 

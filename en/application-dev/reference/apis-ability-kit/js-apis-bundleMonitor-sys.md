@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides APIs for listening for bundle installation, uninstall, and updates.
 
@@ -70,7 +70,7 @@ Subscribes to bundle installation, uninstall, and update events. This API uses a
 | Name                      | Type    | Mandatory| Description              |
 | ---------------------------- | -------- | ---- | ------------------ |
 | type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| Yes  | Type of the event to subscribe to.|
-| callback | callback\<BundleChangedInfo>| Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#callback) used to return the result. If the operation is successful, **err** is **null** and **data** is the bundle change information obtained. Otherwise, **err** is an error object.|
+| callback | callback\<BundleChangedInfo>| Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#callback) used to return the result. If the operation is successful, **err** is **undefined** and **data** is the bundle change information obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -117,7 +117,7 @@ Unsubscribes from bundle installation, uninstall, and update events. This API us
 | Name                      | Type    | Mandatory| Description                                                      |
 | ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
 | type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| Yes  | Type of the event to unsubscribe from.                                        |
-| callback | callback\<BundleChangedInfo>| No  | [Callback](../apis-basic-services-kit/js-apis-base.md#callback) used to return the result. If the operation is successful, **err** is **null** and **data** is the bundle change information obtained. Otherwise, **err** is an error object.|
+| callback | callback\<BundleChangedInfo>| No  | [Callback](../apis-basic-services-kit/js-apis-base.md#callback) used to return the result. If the operation is successful, **err** is **undefined** and **data** is the bundle change information obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 

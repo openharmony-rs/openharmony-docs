@@ -4,12 +4,11 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module defines the HAP module information. An application can obtain its own HAP module information through [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself), with **GET_BUNDLE_INFO_WITH_HAP_MODULE** passed in for [bundleFlags](js-apis-bundleManager.md#bundleflag).
 
 > **NOTE**
->
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -22,6 +21,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name                             | Type                                                        | Read-Only| Optional| Description                |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ---- | -------------------- |
 | name                              | string                                                       | Yes  | No  | Module name.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -30,7 +30,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | label                             | string                                                       | Yes  | No  | Label of the entry ability of the current module. It is the index of a string resource and should match the value of **label** in the [abilities](../../quick-start/module-configuration-file.md#abilities) or [extensionAbilities](../../quick-start/module-configuration-file.md#extensionabilities) field in the module configuration file. If no entry ability is configured, this parameter is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | labelId                           | number                                                       | Yes  | No  | [Resource ID](../../quick-start/resource-categories-and-access.md#resource-directories) of the label for the entry ability of the current module. If no entry ability is configured, this parameter is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | description                       | string                                                       | Yes  | No  | Module description.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| descriptionId                     | number                                                       | Yes  | No  | ID of the module description.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| descriptionId                     | number                                                       | Yes  | No  | Resource ID of the description.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | mainElementName                   | string                                                       | Yes  | No  | Name of the UIAbility or ExtensionAbility that serves as the entry of the current module.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | abilitiesInfo                     | Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>         | Yes  | No  | Information about all ability components of the current module. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_HAP_MODULE** and **GET_BUNDLE_INFO_WITH_ABILITY** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | extensionAbilitiesInfo            | Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)> | Yes  | No  | Information about all ExtensionAbility components of the current module. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_HAP_MODULE** and **GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 
 During application development, you must configure tags to identify an application, such as the bundle name and application icon. This topic describes some key tags.
@@ -12,7 +12,7 @@ During application development, you must configure tags to identify an applicati
 
 ## Configuring the Bundle Name
 
-The bundle name is specified by the **bundleName** field under **app** in the **config.json** file. This field identifies an application and must be globally unique. The bundle name can contain only letters, digits, underscores (_), and periods (.). It must start with a letter. It is a string with 7 to 127 bytes of a reverse domain name, for example, **com.example.myapplication**. It is recommended that the first part is the top-level domain **"com"**, and the second part is the vendor or individual name, which can be of multiple levels. For details about the configuration, see [app](../quick-start/app-structure.md).
+The bundle name is specified by the **bundleName** field under **app** in the **config.json** file. This field identifies an application and must be globally unique. The bundle name can contain only letters, digits, underscores (_), and periods (.). It must start with a letter. It is a string with 7 to 127 bytes of a reverse domain name, for example, "com.example.myapplication". It is recommended that the first level be the domain suffix "com" and the second level be the vendor/individual name. More levels are also accepted. For details about the configuration, see [app](../quick-start/app-structure.md).
 
 ## Configuring Icons and Labels
 
@@ -33,21 +33,19 @@ The [FA model](ability-terminology.md#fa-model) does not support direct configur
 
 ### Configuring the Entry Icon and Entry Label
 
-#### Configuration Methods
+1. Configuration Methods
 
 In the FA model, the entry icon and entry label are the values of **icon** and **label** configured for a PageAbility.
 
 For details about the configuration rules, see [PageAbility Component](pageability-configuration.md). Configure the following fields under **abilities** in the **config.json** file:
-* **icon**: index of the resource file. The icon must be configured in the resource file on DevEco Studio, and the path of the icon must be **/resource/base/media**. An example value is **$media:ability_icon**.
+* **icon**: index of the resource file. The icon must be configured in the resource file on DevEco Studio, with the path of **/resources/base/media**. An example value is **$media:ability_icon**.
 * **label**: index of the resource file. It identifies the name of the ability presented to users. The label value can be an ability name or a resource index to the ability name in multiple languages.
 
 In the **skills** attribute of the PageAbility, if the **actions** value contains **action.system.home** and the **entities** value contains **entity.system.home**, the icon and label of this PageAbility is used as the application icon and label. If multiple PageAbilities address this condition, the icon and label of the first candidate PageAbility is used as the application icon and label. For details about the configuration, see [abilities](../quick-start/module-structure.md).
 
 ```json
 {
-  // ...
   "module": {
-    // ...
     "abilities": [
       {
         "skills": [
@@ -72,14 +70,12 @@ In the **skills** attribute of the PageAbility, if the **actions** value contain
         "visible": true,
         "launchType": "singleton"
       },
-      // ...
     ]
-    // ...
   }
 }
 ```
 
-#### Control Rules
+2. Control Rules
 
 The system strictly controls applications without icons to prevent malicious applications from deliberately configuring no icon to block uninstall attempts.
 

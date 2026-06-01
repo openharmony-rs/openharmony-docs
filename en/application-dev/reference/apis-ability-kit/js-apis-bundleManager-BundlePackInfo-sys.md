@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides information in the **pack.info** file. The information can be obtained using [freeInstall.getBundlePackInfo](js-apis-freeInstall-sys.md#getbundlepackinfo).
 
@@ -130,7 +130,7 @@ import { freeInstall } from '@kit.AbilityKit';
 | type                | string         | Yes  | No  | Widget type.                                           |
 | updateEnabled       | boolean        | Yes  | No  | Whether the widget supports periodic update. **true** if the widget supports periodic update, **false** otherwise.|
 | scheduledUpdateTime | string         | Yes  | No  | Scheduled time to update the widget. The value is in 24-hour format and accurate to the minute.        |
-| updateDuration      | number         | Yes  | No  | Interval to update the widget. The unit is 30 minutes. The value is a multiple of 30. A widget can be updated at a specified interval (**updateDuration**) or at the scheduled time (**scheduledUpdateTime**). If both are configured, **updateDuration** takes precedence.|
+| updateDuration      | number         | Yes  | No  | Interval to update the widget. The unit is minute. The value is a multiple of 30. A widget can be updated at a specified interval (**updateDuration**) or at the scheduled time (**scheduledUpdateTime**). If both are configured, **updateDuration** takes precedence.|
 | supportDimensions   | Array\<string> | Yes  | No  | Dimensions of the widget. The value can be **1\*2**, **2\*2**, **2\*4**, **4\*4**, or a combination of these options. At least one option must be specified when defining the widget.|
 | defaultDimension    | string         | Yes  | No  | Default dimensions of the widget. The value must be available in the **supportDimensions** array of the widget.|
 
@@ -143,7 +143,7 @@ import { freeInstall } from '@kit.AbilityKit';
 | Name       | Type  | Read-Only| Optional| Description                |
 | ----------- | ------ | ---- | ---- | -------------------- |
 | releaseType | string | Yes  | No  | Name of the API version.        |
-| compatible  | number | Yes  | No  | Minimum API version.|
+| compatible  | number | Yes  | No  | Minimum compatible version number.|
 | target      | number | Yes  | No  | Target API version.        |
 
 ## Version

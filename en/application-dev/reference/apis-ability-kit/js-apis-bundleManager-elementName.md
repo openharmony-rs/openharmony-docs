@@ -4,12 +4,11 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 A structured identifier for an application component, containing fields such as **bundleName**, **moduleName**, and **abilityName**. It is usually used in [AbilityRunningInfo.ability](../apis-ability-kit/js-apis-inner-application-abilityRunningInfo.md) for component launch information and in the [connectOptions.onConnect](../apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect) callback for component connection.
 
 > **NOTE**
->
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
