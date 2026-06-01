@@ -135,7 +135,7 @@ let pixelMap = await image.createPixelMap(dstArr.buffer, {
 ``` TypeScript
 // 创建pixelMap，width传入行距（stride）的值。
 let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
-  size:{height: height, width: stride}, srcPixelFormat: 8});
+  size:{height: height, width: stride}, srcPixelFormat: image.PixelMapFormat.NV21});
 // 裁剪多余的像素。
 try {
   pixelMap.cropSync({size:{width:width, height:height}, x:0, y:0});
