@@ -108,6 +108,25 @@
 
   ArkTs-Sta示例：
   <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
+  
+  ``` TypeScript
+  async function isMicrophoneMute(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+    let manager = audioVolumeGroupManager;
+    if (manager === undefined) {
+      const errorMsg = 'audioVolumeGroupManager not created.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    let value = await manager.isMicrophoneMute();
+    console.info(`isMicrophoneMute is: ${value}.`);
+    const infoMsg = `isMicrophoneMute is: ${value}.`;
+    if (updateCallback) {
+      updateCallback(infoMsg, false);
+    }
+  }
+  ```
 
    <!--Del-->
 4. **（仅对系统应用开放）** 根据查询结果的实际情况，调用[setMicMute](../../reference/apis-audio-kit/js-apis-audio-sys.md#setmicmute11)设置麦克风静音状态，入参输入true为静音，false为非静音。
