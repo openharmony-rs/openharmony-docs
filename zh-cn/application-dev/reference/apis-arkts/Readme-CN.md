@@ -85,6 +85,7 @@
         - [Job和CompletableJob](job.md)
         - [Message (EAWorker消息)](message.md)
         - [MessageHandler (EAWorker消息处理器)](message_handler.md)
+      - [WorkerLocal (工作线程本地存储)](arkts-sta-workerlocal.md)
       - [Mutex (互斥锁)](arkts-sta-mutex.md)
       - [RWLock (读写锁)](arkts-sta-rwlock.md)
       - [AsyncLock (异步锁)](arkts-sta-asynclock.md)
