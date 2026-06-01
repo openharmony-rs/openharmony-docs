@@ -337,12 +337,18 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
      {
          OH_DecodingOptions *opts = nullptr;
          OH_DecodingOptions_Create(&opts);
-         OH_PixelmapNative** resVecPixMap = new OH_PixelmapNative* [g_thisImageSource->frameCnt];
+         OH_PixelmapNative** resVecPixMap = new OH_PixelmapNative* [g_thisImageSource->frameCnt]();
          size_t outSize = g_thisImageSource->frameCnt;
          Image_ErrorCode errCode = OH_ImageSourceNative_CreatePixelmapList(g_thisImageSource->source,
                                                                            opts, resVecPixMap, outSize);
          OH_DecodingOptions_Release(opts);
          opts = nullptr;
+         for (size_t index = 0; index < outSize; index++) {
+             if (resVecPixMap[index] != nullptr) {
+                 OH_PixelmapNative_Release(resVecPixMap[index]);
+                 resVecPixMap[index] = nullptr;
+             }
+         }
          delete[] resVecPixMap;
          return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_CreatePixelmapList");
      }
