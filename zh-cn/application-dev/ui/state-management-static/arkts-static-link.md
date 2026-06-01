@@ -560,7 +560,7 @@ struct DateComponent {
         .onClick((e: ClickEvent) => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
-      Button('child increase the day by 1')
+      Button('child increace the day by 1')
         .onClick((e: ClickEvent) => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
