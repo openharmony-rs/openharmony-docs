@@ -34,7 +34,7 @@ ArkTS-Sta示例：
 
 - 方法2：注册stateChange监听AudioCapturer的状态变化：
 
-  ArkTs-Dyn示例：
+ArkTS-Dyn示例：
   <!-- @[listen_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
   
   ``` TypeScript
