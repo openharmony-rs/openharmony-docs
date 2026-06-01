@@ -137,6 +137,40 @@
 
    ArkTS-Sta示例：
    <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+   
+   ``` TypeScript
+   // ...
+   audioCapturerChangeInfoArray.forEach((capturerChangeInfo: Readonly<audio.AudioCapturerChangeInfo>, i: int): void => {
+     console.info(`## CapChange on is called for element ${i} ##`);
+     console.info(`StreamId for ${i} is: ${capturerChangeInfo.streamId}`);
+     console.info(`Source for ${i} is: ${capturerChangeInfo.capturerInfo.source}`);
+     console.info(`Flag  ${i} is: ${capturerChangeInfo.capturerInfo.capturerFlags}`);
+   
+     // ...
+   
+     capturerChangeInfo.deviceDescriptors.forEach((descriptor: Readonly<audio.AudioDeviceDescriptor>, j: int): void => {
+       let sampleRate = descriptor.sampleRates.find((value: int, index: int, array: Array<int>): boolean => {
+         return index === 0;
+       });
+       let channelCount = descriptor.channelCounts.find((value: int, index: int, array: Array<int>): boolean => {
+         return index === 0;
+       });
+       console.info(`Id: ${i} : ${descriptor.id}`);
+       console.info(`Type: ${i} : ${descriptor.deviceType}`);
+       console.info(`Role: ${i} : ${descriptor.deviceRole}`);
+       console.info(`Name: ${i} : ${descriptor.name}`);
+       console.info(`Address: ${i} : ${descriptor.address}`);
+       console.info(`SampleRates: ${i} : ${sampleRate}`);
+       console.info(`ChannelCounts ${i} : ${channelCount}`);
+       console.info(`ChannelMask: ${i} : ${descriptor.channelMasks}`);
+     });
+   });
+   
+   let callback = globalCallbackUpdate;
+   if (callback !== undefined) {
+     // ...
+   }
+   ```
 
 3. （可选）使用[off('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#offaudiocapturerchange9)取消监听音频录制流变化。
 
