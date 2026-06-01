@@ -1,4 +1,4 @@
-# 音频格式转换
+# 音频格式转换(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -8,7 +8,7 @@
 
 从API version 26.0.0开始，[AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md)给开发者提供PCM音频格式转换能力，在纯音频转码等场景下支持开发者使用格式转换接口将PCM（Pulse Code Modulation）音频数据从一种格式转换为另一种格式，包括采样率、声道布局、采样格式（位深）的转换。
 
-## 开发基础配置
+## 开发步骤
 
 开发者使用[AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md)提供的PCM音频格式转换能力，添加对应的头文件。
 
@@ -24,11 +24,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 #include <ohaudiosuite/native_audio_converter.h>
 ```
 
-## 开发步骤
-
 详细的API说明请参考：[AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md)。
-
-开发者参考本节内容实现音频格式转换功能。
 
 **功能特性**
 
@@ -80,7 +76,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 格式转换接口支持以下PCM音频格式：
 
-- 采样率：8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000、176400、192000 Hz。
+- 采样率：8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000、176400、192000Hz。
 - 声道布局：CH_LAYOUT_MONO、CH_LAYOUT_STEREO、CH_LAYOUT_STEREO_DOWNMIX、CH_LAYOUT_2POINT1、CH_LAYOUT_3POINT0、CH_LAYOUT_SURROUND、CH_LAYOUT_3POINT1、CH_LAYOUT_4POINT0、CH_LAYOUT_QUAD_SIDE、CH_LAYOUT_QUAD、CH_LAYOUT_2POINT0POINT2、CH_LAYOUT_4POINT1、CH_LAYOUT_5POINT0、CH_LAYOUT_5POINT0_BACK、CH_LAYOUT_2POINT1POINT2、CH_LAYOUT_3POINT0POINT2、CH_LAYOUT_5POINT1、CH_LAYOUT_5POINT1_BACK、CH_LAYOUT_6POINT0、CH_LAYOUT_3POINT1POINT2、CH_LAYOUT_6POINT0_FRONT、CH_LAYOUT_HEXAGONAL、CH_LAYOUT_6POINT1、CH_LAYOUT_6POINT1_BACK、CH_LAYOUT_6POINT1_FRONT、CH_LAYOUT_7POINT0、CH_LAYOUT_7POINT0_FRONT、CH_LAYOUT_7POINT1、CH_LAYOUT_OCTAGONAL、CH_LAYOUT_5POINT1POINT2、CH_LAYOUT_7POINT1_WIDE、CH_LAYOUT_7POINT1_WIDE_BACK。
 - 采样格式：SAMPLE_U8、SAMPLE_S16LE、SAMPLE_S24LE、SAMPLE_S32LE、SAMPLE_F32LE。
 
