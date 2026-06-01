@@ -1,4 +1,4 @@
-# Interface（Transaction）
+# Interface (Transaction)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->

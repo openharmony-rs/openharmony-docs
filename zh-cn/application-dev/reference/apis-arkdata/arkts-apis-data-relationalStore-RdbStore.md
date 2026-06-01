@@ -1,4 +1,4 @@
-# Interface（RdbStore）
+# Interface (RdbStore)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
@@ -6222,7 +6222,7 @@ cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 | 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied.           |
-| 14800024  | SQLite: The database is locked.        |
+| 14800024  | SQLite: The database file is locked.        |
 | 14800025  | SQLite: A table in the database is locked.  |
 | 14800026  | SQLite: The database is out of memory.      |
 | 14800027  | SQLite: Attempt to write a readonly database.   |

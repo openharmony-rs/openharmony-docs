@@ -135,10 +135,6 @@ goTo(offset:number): boolean
 let predicatesgoto = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoto = rdbStore.query(predicatesgoto, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoto.then((resultSet) => {
-  // 向前或向后移至结果集指定行并读取数据
-  if (resultSet.goTo(1)) {
-    const name = resultSet.getString(1);
-  }
   resultSet.close();
 }).catch((err) => {
   console.error('query failed');
@@ -171,10 +167,6 @@ goToRow(position: number): boolean
 let predicatesgotorow = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygotorow = rdbStore.query(predicatesgotorow, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygotorow.then((resultSet) => {
-  // 移动到结果集指定行并读取数据
-  if (resultSet.goToRow(5)) {
-    const name = resultSet.getString(1);
-  }
   resultSet.close();
 }).catch((err) => {
   console.error('query failed');
@@ -201,10 +193,6 @@ goToFirstRow(): boolean
 let predicatesgoFirst = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoFirst = rdbStore.query(predicatesgoFirst, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoFirst.then((resultSet) => {
-  // 移动到结果集第一行并读取数据
-  if (resultSet.goToFirstRow()) {
-    const name = resultSet.getString(1);
-  }
   resultSet.close();
 }).catch((err) => {
   console.error('query failed');
@@ -231,10 +219,6 @@ goToLastRow(): boolean
 let predicatesgoLast = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoLast = rdbStore.query(predicatesgoLast, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoLast.then((resultSet) => {
-  // 移动到结果集最后一行并读取数据
-  if (resultSet.goToLastRow()) {
-    const name = resultSet.getString(1);
-  }
   resultSet.close();
 }).catch((err) => {
   console.error('query failed');
@@ -261,10 +245,6 @@ goToNextRow(): boolean
 let predicatesgoNext = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoNext = rdbStore.query(predicatesgoNext, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoNext.then((resultSet) => {
-  // 移动到结果集下一行并读取数据
-  if (resultSet.goToNextRow()) {
-    const name = resultSet.getString(1);
-  }
   resultSet.close();
 }).catch((err) => {
   console.error('query failed');
@@ -291,10 +271,6 @@ goToPreviousRow(): boolean
 let predicatesgoPrev = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoPrev = rdbStore.query(predicatesgoPrev, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoPrev.then((resultSet) => {
-  // 移动到结果集上一行并读取数据
-  if (resultSet.goToPreviousRow()) {
-    const name = resultSet.getString(1);
-  }
   resultSet.close();
 }).catch((err) => {
   console.error('query failed');
