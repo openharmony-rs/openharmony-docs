@@ -218,6 +218,29 @@ crossAppSharedConfig字段配置说明：
   ```
   ArkTs-Sta示例：
   <!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  function deleteSharedConfig() {
+    dataShare.createDataProxyHandle().then((dataProxyHandle: dataShare.DataProxyHandle) => {
+      const urisToDelete: string[] = [
+        'datashareproxy://com.samples.shareconfig.static/config1',
+        'datashareproxy://com.samples.shareconfig.static/config2'
+      ];
+      const config: dataShare.DataProxyConfig = {
+        type: dataShare.DataProxyType.SHARED_CONFIG,
+      };
+      dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
+        results.forEach((result) => {
+          console.info(`URI: ${result.uri}, Result: ${result.result}`);
+        });
+      }).catch((error: Error) => {
+        console.info('Error deleting config:', error);
+      });
+    }).catch((error: Error) => {
+      console.info('Error creating DataProxyHandle:', error);
+    });
+  }
+  ```
 
 
 ## 配置访问方
