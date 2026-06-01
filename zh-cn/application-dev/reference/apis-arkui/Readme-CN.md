@@ -206,8 +206,8 @@
       - [点击回弹效果](arkui-ts/ts-universal-attributes-click-effect.md)
       - [特效绘制合并](arkui-ts/ts-universal-attributes-use-effect.md)
       - [组件内容填充方式](arkui-ts/ts-universal-attributes-renderfit.md)
-      - [空间效果](arkui-ts/ts-universal-attributes-spatial-effect.md)
       <!--Del-->
+      - [空间效果 (系统接口)](arkui-ts/ts-universal-attributes-spatial-effect-sys.md)
       - [点光源设置 (系统接口)](arkui-ts/ts-universal-attributes-point-light-style-sys.md)
       - [图像效果 (系统接口)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
       - [融合效果 (系统接口)](arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
@@ -426,8 +426,6 @@
     <!--Del-->
     - [XComponent (系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
     <!--DelEnd-->
-  - 景深效果<!--depth-of-field -->
-    - [DepthComponent](arkui-ts/ts-basic-components-depthcomponent.md)
     <!--Del-->
     - [DepthComponent (系统接口)](arkui-ts/ts-basic-components-depthcomponent-sys.md)
     <!--DelEnd-->

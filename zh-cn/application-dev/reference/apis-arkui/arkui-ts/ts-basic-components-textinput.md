@@ -1463,6 +1463,26 @@ shaderStyle(shader: ShaderStyle | undefined)
 | ---------------- | ------- | ---- | ----------------------------------------------- |
 | shader         | [ShaderStyle](ts-text-common.md#shaderstyle20) \| undefined | 是 | 文本着色器效果。<br/>值为undefined时，无渐变效果。 |
 
+### punctuationOverflow
+
+punctuationOverflow(enabled: Optional\<boolean>)
+
+设置是否启用行尾标点符号悬挂。不通过该接口设置，默认标点符号不悬挂。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ----- | ---- | ---- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 是否启用行尾标点符号悬挂。<br/>true表示启用行尾标点符号悬挂，false表示不启用行尾标点符号悬挂。设置为undefined或null时，不启用标点符号悬挂。|
+
 ### includeFontPadding<sup>23+</sup>
 
 includeFontPadding(include: Optional\<boolean>)
@@ -1840,7 +1860,7 @@ onSecurityStateChange(callback: Callback\<boolean>)
 
 | 参数名       | 类型   | 必填 | 说明                               |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | Callback\<boolean> | 是   | 回调函数。<br/>true表示状态切换；false表示状态未切换。|
+| callback | Callback\<boolean> | 是   | 回调函数。<br/>true表示密码显示；false表示密码隐藏。|
 
 ### onWillInsert<sup>12+</sup>
 

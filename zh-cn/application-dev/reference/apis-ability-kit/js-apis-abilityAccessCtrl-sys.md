@@ -21,34 +21,34 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 当前页面仅包含本模块的系统接口，其他公开接口参见[abilityAccessCtrl](js-apis-abilityAccessCtrl.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)。
 
 ## 关键Class/Interface介绍
 
 ### 核心枚举类型
 
-- **[GrantStatus](js-apis-abilityAccessCtrl.md#grantstatus)**：权限授权状态枚举，用于表示权限是否已授权。
-- **[PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20)**：权限状态枚举，用于表示当前权限状态。
-- **[PermissionStateChangeType](js-apis-abilityAccessCtrl.md#permissionstatechangetype18)**：权限状态变化类型枚举，用于表示授权、取消授权等变化。
-- **[PermissionRequestToggleStatus](#permissionrequesttogglestatus12)**：权限申请开关状态枚举，用于表示指定权限的弹窗开关状态。
-- **[PermissionDecisionStatus](#permissiondecisionstatus)**：CLI权限决策状态枚举，用于表示命令权限的判定结果。
+- **[GrantStatus](js-apis-abilityAccessCtrl.md#grantstatus)：** 权限授权状态枚举，用于表示权限是否已授权。
+- **[PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20)：** 权限状态枚举，用于表示当前权限状态。
+- **[PermissionStateChangeType](js-apis-abilityAccessCtrl.md#permissionstatechangetype18)：** 权限状态变化类型枚举，用于表示授权、取消授权等变化。
+- **[PermissionRequestToggleStatus](#permissionrequesttogglestatus12)：** 权限申请开关状态枚举，用于表示指定权限的弹窗开关状态。
+- **[PermissionDecisionStatus](#permissiondecisionstatus)：** CLI权限决策状态枚举，用于表示命令权限的判定结果。
 
 ### 核心接口类型
 
-- **[PermissionStatusInfo](#permissionstatusinfo)**：权限状态信息对象，用于返回应用权限的授权状态、标志位和时间戳。
-- **[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)**：权限状态变化事件对象，用于返回变化类型、应用身份标识和权限名。
-- **[CliInfo](#cliinfo)**：CLI命令信息对象，用于描述命令名称和子命令名称。
-- **[PermissionDialogDetail](#permissiondialogdetail)**：权限弹窗明细对象，用于描述单个CLI权限弹窗的状态和未满足权限。
-- **[PermissionDialogResult](#permissiondialogresult)**：权限弹窗查询结果对象，用于返回命令对应的弹窗信息。
-- **[CliPermissionDetail](#clipermissiondetail)**：CLI权限明细对象，用于描述命令权限、决策状态和映射出的运行时权限。
-- **[CliCommandPermissionResult](#clicommandpermissionresult)**：CLI命令权限结果对象，用于返回单个命令依赖的权限信息。
-- **[CliPermissionsResult](#clipermissionsresult)**：CLI权限查询结果对象，用于返回命令所需权限的映射结果。
-- **[CliAuthInfo](#cliauthinfo)**：CLI授权信息对象，用于描述待生成授权结果的命令授权状态。
-- **[ToolAuthResult](#toolauthresult)**：工具授权结果对象，用于返回生成后的授权结果。
+- **[PermissionStatusInfo](#permissionstatusinfo)：** 权限状态信息对象，用于返回应用权限的授权状态、标志位和时间戳。
+- **[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)** 权限状态变化事件对象，用于返回变化类型、应用身份标识和权限名。
+- **[CliInfo](#cliinfo)：** CLI命令信息对象，用于描述命令名称和子命令名称。
+- **[PermissionDialogDetail](#permissiondialogdetail)：** 权限弹窗明细对象，用于描述单个CLI权限弹窗的状态和未满足权限。
+- **[PermissionDialogResult](#permissiondialogresult)：** 权限弹窗查询结果对象，用于返回命令对应的弹窗信息。
+- **[CliPermissionDetail](#clipermissiondetail)：** CLI权限明细对象，用于描述命令权限、决策状态和映射出的运行时权限。
+- **[CliCommandPermissionResult](#clicommandpermissionresult)：** CLI命令权限结果对象，用于返回单个命令依赖的权限信息。
+- **[CliPermissionsResult](#clipermissionsresult)：** CLI权限查询结果对象，用于返回命令所需权限的映射结果。
+- **[CliAuthInfo](#cliauthinfo)：** CLI授权信息对象，用于描述待生成授权结果的命令授权状态。
+- **[ToolAuthResult](#toolauthresult)：** 工具授权结果对象，用于返回生成后的授权结果。
 
 ### 核心类
 
-- **[AtManager](#atmanager)**：程序访问控制管理类，提供跨应用权限授予、撤销、查询、监听和CLI权限管理等能力。
+- **[AtManager](#atmanager)：** 程序访问控制管理类，提供跨应用权限授予、撤销、查询、监听和CLI权限管理等能力。
 
 ![](figures/accessAccessCtrl-sys.png)
 

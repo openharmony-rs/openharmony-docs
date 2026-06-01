@@ -21,7 +21,7 @@
       - 自定义组件复用<!--arkts-component-reusable-->
         - [\@Reusable装饰器：V1组件复用](state-management/arkts-reusable.md)   
         - [\@ReusableV2装饰器：V2组件复用](state-management/arkts-new-reusableV2.md) 
-        - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End--><!--RP8--><!--RP8End-->
+        - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
@@ -277,8 +277,8 @@
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
   - [接入ArkTS页面](ndk-access-the-arkts-page.md)
-  - [添加事件监听](ndk-add-component-events.md)
-  - 添加交互事件<!--arkts-add-event-->
+  - [添加事件响应](ndk-add-event-response.md)
+    - [添加事件监听](ndk-add-component-events.md)
     - [绑定基础输入事件](ndk-bind-input-events.md)
     - [绑定手势事件](ndk-bind-gesture-events.md)
     - [绑定拖拽事件](ndk-drag-event.md)

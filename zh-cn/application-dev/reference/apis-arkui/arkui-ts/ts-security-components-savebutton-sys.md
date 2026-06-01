@@ -25,7 +25,7 @@
 
 ### 核心枚举类型
 
-- **[SaveIconStyle](#saveiconstyle)**：保存控件图标风格枚举，用于系统接口扩展保存控件图标样式。
+- **[SaveIconStyle](#saveiconstyle)：** 保存控件图标风格枚举，用于系统接口扩展保存控件图标样式。
 
 ## SaveIconStyle
 

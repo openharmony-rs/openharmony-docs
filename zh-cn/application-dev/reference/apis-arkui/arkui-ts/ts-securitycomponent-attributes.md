@@ -9,7 +9,7 @@
 
 ## 模块简介
 
-安全控件的基础属性，用于设置安全控件通用的属性。
+安全控件通用属性模块，提供安全控件的布局、尺寸、文字、图标、颜色、边框和交互等通用属性的统一配置能力。
 
 该模块主要用于以下场景：
 
@@ -25,12 +25,12 @@
 
 ### 核心枚举类型
 
-- **[SecurityComponentLayoutDirection](#securitycomponentlayoutdirection)**：安全控件图标和文字排列方向枚举，用于指定横向或纵向布局。
-- **[ButtonType](#buttontype)**：安全控件按钮样式枚举，用于指定胶囊、圆形、圆角矩形或普通按钮样式。
+- **[SecurityComponentLayoutDirection](#securitycomponentlayoutdirection)：** 安全控件图标和文字排列方向枚举，用于指定横向或纵向布局。
+- **[ButtonType](#buttontype)：** 安全控件按钮样式枚举，用于指定胶囊、圆形、圆角矩形或普通按钮样式。
 
 ### 核心接口类型
 
-- **SecurityComponentMethod&lt;T&gt;**：安全控件通用属性方法集合，用于为具体安全控件配置布局、尺寸、文字、图标、颜色、边框和交互属性。
+- **SecurityComponentMethod&lt;T&gt;：** 安全控件通用属性方法集合，用于为具体安全控件配置布局、尺寸、文字、图标、颜色、边框和交互属性。
 
 ## iconSize
 
@@ -156,7 +156,7 @@ fontSize(value: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) | 是 | 安全控件上文字的尺寸。未显式指定单位时，单位为fp。<br/>默认值：16fp。<br/>该参数不支持百分比字符串。<br/>设置异常值时该属性不生效。 |
+| value | [Dimension](ts-types.md#dimension10) | 是 | 安全控件上文字的尺寸。未显式指定单位时，单位为fp。<br/>默认值：$r('sys.float.ohos_id_text_size_button1')。<br/>该参数不支持百分比字符串。<br/>设置异常值时该属性不生效。<br/>**说明：** 安全控件文本未完全显示时，点击不授权。fontSize的设置会影响文本是否能完整显示，进而影响安全控件的授权行为。 |
 
 **返回值：**
 
@@ -446,7 +446,7 @@ align(alignType: Alignment): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| alignType | [Alignment](ts-appendix-enums.md#alignment) | 是 | 安全控件图标文本的对齐方式。图标文本作为整体在控件背景范围内进行对齐，UX显示受[padding](ts-securitycomponent-attributes.md#padding)影响，在padding生效的基础上按照alignType参数指定的对齐方式进行对齐。<br/>默认值：Alignment.Center。|
+| alignType | [Alignment](ts-appendix-enums.md#alignment) | 是 | 安全控件图标文本的对齐方式。图标文本作为整体在控件背景范围内进行对齐，显示效果受[padding](ts-securitycomponent-attributes.md#padding)影响，在padding生效的基础上按照alignType参数指定的对齐方式进行对齐。<br/>默认值：Alignment.Center。|
 
 **返回值：**
 
@@ -524,7 +524,7 @@ height(value: Length): T
 
 size(value: SizeOptions): T
 
-设置宽高尺寸，缺省时将根据元素内容自适配高宽尺寸。
+设置宽高尺寸，缺省时将根据元素内容自适配宽高尺寸。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -534,7 +534,7 @@ size(value: SizeOptions): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [SizeOptions](ts-types.md#sizeoptions) | 是 | 宽高尺寸，缺省时将根据元素内容自适配高宽尺寸。未显式指定单位时，单位为vp。|
+| value | [SizeOptions](ts-types.md#sizeoptions) | 是 | 宽高尺寸，缺省时将根据元素内容自适配宽高尺寸。未显式指定单位时，单位为vp。<br/>使用自适应字号相关属性时，安全控件文本未完全显示将导致点击不授权。size的设置会影响文本是否能完整显示。|
 
 **返回值：**
 
@@ -556,7 +556,7 @@ constraintSize(value: ConstraintSizeOptions): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是 | 约束尺寸，组件布局时，进行尺寸范围限制。未显式指定单位时，单位为vp。constraintSize的优先级高于Width和Height。取值结果参考[constraintSize取值对width/height影响](ts-universal-attributes-size.md#constraintsize)。<br>默认值：<br>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}。|
+| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是 | 约束尺寸，组件布局时，进行尺寸范围限制。未显式指定单位时，单位为vp。constraintSize的优先级高于width和height。使用自适应字号相关属性时，安全控件文本未完全显示将导致点击不授权。constraintSize的设置会影响文本是否能完整显示。取值结果参考[constraintSize取值对width/height影响](ts-universal-attributes-size.md#constraintsize)。<br>默认值：<br>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}。|
 
 **返回值：**
 
@@ -644,7 +644,7 @@ chainMode(direction: Axis, style: ChainStyle): T
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| direction | [Axis](ts-appendix-enums.md#axis) | 是   | 链式布局的方向，用于指定以该组件为链头的链在[RelativeContainer](ts-container-relativecontainer.md)中的排列方向。Axis.HORIZONTAL表示水平方向排列，Axis.VERTICAL表示垂直方向排列。 |
+| direction | [Axis](ts-appendix-enums.md#axis) | 是   | 链式布局的方向，用于指定以该组件为链头的链在[RelativeContainer](ts-container-relativecontainer.md)中的排列方向。 |
 | style | [ChainStyle](ts-universal-attributes-location.md#chainstyle12) | 是   | 链式布局的样式，用于控制链内子组件的分布方式，如均匀分布、两端对齐或紧凑排列等，具体取值及效果请参考[ChainStyle](ts-universal-attributes-location.md#chainstyle12)。 |
 
 **返回值：**
@@ -669,7 +669,7 @@ minFontScale(scale: number | Resource): T
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最小的字体缩小倍数。<br/>取值范围：[0, 1]。<br/>**说明：** <br/>设置的值小于0时，按值为0处理，即允许缩小到任意倍数；设置的值大于1时，按值为1处理，即不允许缩小字体；设置的值为undefined、null或负数等非法值时，属性不生效。 |
+| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最小的字体缩小倍数。<br/>取值范围：[0, 1]。<br/>**说明：** <br/>设置的值小于0时，按值为0处理，即允许缩小到任意倍数；设置的值大于1时，按值为1处理，即不允许缩小字体；设置的值为undefined或null等非法值时，属性不生效。 |
 
 **返回值：**
 
@@ -683,6 +683,8 @@ maxFontScale(scale: number | Resource): T
 
 设置文本最大的字体放大倍数。调用后，当系统字体缩放使文本放大时，文本放大倍数不会超过设定的最大放大倍数。
 
+与[minFontScale](#minfontscale18)可配合使用，maxFontScale控制放大倍数的上限，minFontScale控制缩小倍数的下限。两者可独立设置，也可同时设置以精确控制字体缩放范围。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -691,7 +693,7 @@ maxFontScale(scale: number | Resource): T
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最大的字体放大倍数。<br/>取值范围：[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按值为1处理；设置的值为undefined、null或负数等非法值时，属性不生效。 |
+| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最大的字体放大倍数。<br/>取值范围：[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按值为1处理；设置的值为undefined或null等非法值时，属性不生效。 |
 
 **返回值：**
 
