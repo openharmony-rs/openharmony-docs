@@ -214,7 +214,7 @@ The **Grid** component supports the use of [NodeAdapter](../reference/apis-arkui
 
 ### Listening for Scrolling Events
 
-Refer to the sample code for listening to the **NODE_LIST_ON_SCROLL_INDEX** event in the [ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) component in [Listening for Component Events](ndk-listen-to-component-events.md) to implement grid scroll event listening.
+Refer to the sample code for listening to the **NODE_LIST_ON_SCROLL_INDEX** event in the [ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) component in [Adding an Event Listener](ndk-add-component-events.md) to implement grid scroll event listening.
 
 The **Grid** component supports the following scroll events:
 
