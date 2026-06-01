@@ -27,38 +27,38 @@
 
 ### 核心枚举类型
 
-- **[PermissionUsageFlag](#permissionusageflag)**：权限使用记录查询方式枚举，用于指定查询汇总数据或明细数据。
-- **[PermissionActiveStatus](#permissionactivestatus)**：权限使用状态变化类型枚举，用于表示未使用、前台使用或后台使用状态。
-- **[PermissionUsedType](#permissionusedtype12)**：敏感权限使用类型枚举，用于表示通过普通授权、Picker或安全控件方式使用敏感权限。
+- **[PermissionUsageFlag](#permissionusageflag)：** 权限使用记录查询方式枚举，用于指定查询汇总数据或明细数据。
+- **[PermissionActiveStatus](#permissionactivestatus)：** 权限使用状态变化类型枚举，用于表示未使用、前台使用或后台使用状态。
+- **[PermissionUsedType](#permissionusedtype12)：** 敏感权限使用类型枚举，用于表示通过普通授权、Picker或安全控件方式使用敏感权限。
 
 ### 核心接口类型
 
-- **[PermissionUsedRequest](#permissionusedrequest)**：权限使用记录查询请求对象，用于指定查询应用、权限、时间范围和查询方式。
-- **[PermissionUsedResponse](#permissionusedresponse)**：权限使用记录查询响应对象，用于返回查询时间范围和应用维度记录集合。
-- **[BundleUsedRecord](#bundleusedrecord)**：应用或设备维度的权限使用记录对象，用于返回某个应用或远端设备的权限访问记录。
-- **[PermissionUsedRecord](#permissionusedrecord)**：单个权限的访问记录对象，用于返回访问次数、拒绝次数、最后访问时间和明细记录。
-- **[UsedRecordDetail](#usedrecorddetail)**：单次访问记录详情对象，用于返回访问状态、时间戳、访问时长和使用类型等信息。
-- **[ActiveChangeResponse](#activechangeresponse)**：权限使用状态变化事件对象，用于返回权限活跃状态变化详情。
-- **[PermissionUsedTypeInfo](#permissionusedtypeinfo12)**：权限使用类型信息对象，用于返回应用访问敏感权限时的使用类型。
-- **[AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12)**：添加权限使用记录可选参数对象，用于指定敏感权限使用类型和扩展身份。
-- **[PermissionUsingOptions](#permissionusingoptions)**：权限使用可选参数对象，用于指定扩展身份。
+- **[PermissionUsedRequest](#permissionusedrequest)：** 权限使用记录查询请求对象，用于指定查询应用、权限、时间范围和查询方式。
+- **[PermissionUsedResponse](#permissionusedresponse)：** 权限使用记录查询响应对象，用于返回查询时间范围和应用维度记录集合。
+- **[BundleUsedRecord](#bundleusedrecord)：** 应用或设备维度的权限使用记录对象，用于返回某个应用或远端设备的权限访问记录。
+- **[PermissionUsedRecord](#permissionusedrecord)：** 单个权限的访问记录对象，用于返回访问次数、拒绝次数、最后访问时间和明细记录。
+- **[UsedRecordDetail](#usedrecorddetail)：** 单次访问记录详情对象，用于返回访问状态、时间戳、访问时长和使用类型等信息。
+- **[ActiveChangeResponse](#activechangeresponse)：** 权限使用状态变化事件对象，用于返回权限活跃状态变化详情。
+- **[PermissionUsedTypeInfo](#permissionusedtypeinfo12)：** 权限使用类型信息对象，用于返回应用访问敏感权限时的使用类型。
+- **[AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12)：** 添加权限使用记录可选参数对象，用于指定敏感权限使用类型和扩展身份。
+- **[PermissionUsingOptions](#permissionusingoptions)：** 权限使用可选参数对象，用于指定扩展身份。
 
 ### 核心函数类型
 
-- **[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord)**：添加权限使用记录。
-- **[getPermissionUsedRecord](#privacymanagergetpermissionusedrecord)**：查询权限使用记录。
-- **[setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18)**：设置权限使用记录开关状态。
-- **[getPermissionUsedRecordToggleStatus](#privacymanagergetpermissionusedrecordtogglestatus18)**：查询权限使用记录开关状态。
-- **[startUsingPermission](#privacymanagerstartusingpermission)**：标记开始使用敏感权限。
-- **[stopUsingPermission](#privacymanagerstopusingpermission)**：标记停止使用敏感权限。
-- **[checkPermissionInUse](#privacymanagercheckpermissioninuse)**：检查指定权限当前是否正在被使用。
-- **[on](#privacymanageron)**：订阅权限使用状态变化事件。
-- **[off](#privacymanageroff)**：取消订阅权限使用状态变化事件。
-- **[getPermissionUsedTypeInfos](#privacymanagergetpermissionusedtypeinfos12)**：查询敏感权限访问类型信息。
+- **[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord)：** 添加权限使用记录。
+- **[getPermissionUsedRecord](#privacymanagergetpermissionusedrecord)：** 查询权限使用记录。
+- **[setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18)：** 设置权限使用记录开关状态。
+- **[getPermissionUsedRecordToggleStatus](#privacymanagergetpermissionusedrecordtogglestatus18)：** 查询权限使用记录开关状态。
+- **[startUsingPermission](#privacymanagerstartusingpermission)：** 标记开始使用敏感权限。
+- **[stopUsingPermission](#privacymanagerstopusingpermission)：** 标记停止使用敏感权限。
+- **[checkPermissionInUse](#privacymanagercheckpermissioninuse)：** 检查指定权限当前是否正在被使用。
+- **[on](#privacymanageron)：** 订阅权限使用状态变化事件。
+- **[off](#privacymanageroff)：** 取消订阅权限使用状态变化事件。
+- **[getPermissionUsedTypeInfos](#privacymanagergetpermissionusedtypeinfos12)：** 查询敏感权限访问类型信息。
 
 ### 核心类
 
-- **privacyManager**：提供隐私管理的核心类。
+- **privacyManager：** 提供隐私管理的核心类。
 
 ![](figures/privacyManager.png)
 
