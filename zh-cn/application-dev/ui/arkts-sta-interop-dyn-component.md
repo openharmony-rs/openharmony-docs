@@ -75,7 +75,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets    # ArkTS-Sta主模块入口页面
+│                   └── StaDynComponent.ets    # 在ArkTS-Sta中使用ArkTS-Dyn自定义组件
 │
 └── dynamic_module/                  # ArkTS-Dyn子模块
     └── src/
@@ -88,6 +88,8 @@ project/
 示例如下：
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
+
+<!-- @[StaDynComponentMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynComponent/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
@@ -125,8 +127,10 @@ export struct ChildComponentV2 {
 }
 ```
 
+<!-- @[StaDynComponentDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynComponent/dynamic_module/Index.ets) -->
+
 ```TypeScript
-// dynamic_module/index.ets
+// dynamic_module/Index.ets
 
 export { ChildComponent, ChildComponentV2 } from './src/main/ets/components/MainPage';
 ```
@@ -143,10 +147,10 @@ export { ChildComponent, ChildComponentV2 } from './src/main/ets/components/Main
 
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn自定义组件。
 
-```TypeScript
-'use static'
+<!-- @[StaDynComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynComponent/entry/src/main/ets/pages/StaDynComponent.ets) -->
 
-// entry/src/main/ets/pages/Index.ets
+```TypeScript
+// entry/src/main/ets/pages/StaDynComponent.ets
 import { Entry, Component, Column, ComponentV2 } from '@ohos.arkui.component';
 
 import { ChildComponent, ChildComponentV2 } from 'dynamic_module';

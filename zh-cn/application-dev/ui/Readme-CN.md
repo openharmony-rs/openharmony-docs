@@ -370,7 +370,7 @@
       - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](arkts-dyn-interop-sta-matrix4.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的资源（Resource）](arkts-dyn-interop-sta-resource.md)
       - 状态管理（V1）互操作<!--ui-arkts-sta-interop-dyn-state-management-->
-        - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](arkts-sta-interop-dyn-statemanager-v1.md)
+        - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](arkts-sta-interop-dyn-statemanagement-v1.md)
         - [在ArkTS-Sta中使用ArkTS-Dyn的@Observed和@ObjectLink（嵌套类对象属性变化）](arkts-sta-interop-dyn-observed.md)
         - [在ArkTS-Sta中使用ArkTS-Dyn管理应用拥有的状态](arkts-sta-interop-dyn-storages.md)
         - [在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态](arkts-dyn-interop-sta-statemanagement-v1.md)
