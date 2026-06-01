@@ -148,6 +148,44 @@ crossAppSharedConfig字段配置说明：
   ```
   ArkTs-Sta示例：
   <!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  function publishSharedConfig(): void {
+    console.info('ttt publishSharedConfig start');
+    dataShare.createDataProxyHandle().then((dataProxyHandle: dataShare.DataProxyHandle) => {
+      const newConfigData: dataShare.ProxyData[] = [
+        {
+          uri: 'datashareproxy://com.samples.shareconfig.static/config1',
+          value: 'Value1',
+          allowList: [
+            'appIdentifier1',
+            'appIdentifier2'
+          ]
+        },
+        {
+          uri: 'datashareproxy://com.samples.shareconfig.static/config2',
+          value: 'Value2',
+          allowList: [
+            'appIdentifier3',
+            'appIdentifier4'
+          ]
+        }
+      ];
+      const config: dataShare.DataProxyConfig = {
+        type: dataShare.DataProxyType.SHARED_CONFIG,
+      };
+      dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
+        results.forEach((result) => {
+          console.info(`ttt URI: ${result.uri}, Result: ${result.result}`);
+        });
+      }).catch((error: Error) => {
+        console.info('ttt Error publishing config:', error);
+      });
+    }).catch((error: Error) => {
+      console.info('ttt Error creating DataProxyHandle:', error);
+    });
+  }
+  ```
 
 
 
