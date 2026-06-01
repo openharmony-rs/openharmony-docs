@@ -2397,7 +2397,7 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | abilityResult | [AbilityResult](js-apis-inner-ability-abilityResult.md) | 是 | 包含目标方返回给拉起方的结果。 |
-| requestCode  |  string | 是 | 通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink12)拉起目标方Ability且需要目标方返回结果时，系统生成的用于标识本次调用的requestCode。该值可以通过want中的[CALLER_REQUEST_CODE](js-apis-app-ability-wantConstant.md)字段获取。|
+| requestCode  |  string | 是 | 通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink12)拉起目标方Ability且需要目标方返回结果时，系统生成的用于标识本次调用的requestCode。该值可以通过[wantConstant](js-apis-app-ability-wantConstant.md)中的CALLER_REQUEST_CODE字段获取。 |
 
 **返回值：**
 
@@ -3045,7 +3045,7 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
 | 参数名 | 类型          | 必填 | 说明                 |
 | ------ | ------------- | ---- | -------------------- |
-| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md) | 是   | 设置颜色模式，包括: <br> - COLOR_MODE_DARK：深色模式 <br> - COLOR_MODE_LIGHT：浅色模式 <br> - COLOR_MODE_NOT_SET：不设置（跟随系统或应用）|
+| colorMode | [ConfigurationConstant](js-apis-app-ability-configurationConstant.md).ColorMode | 是   | 设置颜色模式，包括: <br> - COLOR_MODE_DARK：深色模式 <br> - COLOR_MODE_LIGHT：浅色模式 <br> - COLOR_MODE_NOT_SET：不设置（跟随系统或应用）|
 
 **错误码**：
 
@@ -3685,6 +3685,146 @@ export default class EntryAbility extends UIAbility {
     }).catch((err: BusinessError) => {
       console.error(`createPixelMap failed, code is ${err.code}, message is ${err.message}`);
     });
+  }
+}
+```
+
+### startSelf
+
+startSelf(): Promise\<void>
+
+启动当前UIAbility实例，将UIAbility切换至前台，用于将停留在中间阶段的Native UIAbility拉到前台。使用Promise异步回调。
+
+> **说明：**
+>
+> 对于配置了Native模块的UIAbility，其启动可能因startupPhase配置停留在特定阶段：PRE_WINDOW、PRE_FOREGROUND。
+> 如果UIAbility未配置Native模块，调用该接口会返回801错误码。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 801 | Capability not supported. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000082 | The UIAbility is being started. The UIAbility has not completed onCreate or onWindowStageCreate. |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    try {
+      setTimeout((): void => {
+        this.context.startSelf()
+          .then((): void => {
+            console.info('startSelf succeed');
+          })
+          .catch((err: BusinessError): void => {
+            console.error(`startSelf failed, code is ${err.code}, message is ${err.message}`);
+          });
+      }, 100);
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelf failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+### startSelfUIAbilityInChildProcess
+
+startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<void>
+
+在子进程中启动当前应用的UIAbility，子进程中的UIAbility支持加载Native模块。使用Promise异步回调。
+
+> **说明：**
+>
+> 子进程生命周期跟随父进程，父进程退出时子进程自动退出。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的必要信息。只支持[显式启动](../../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)，不支持[隐式启动](../../application-models/explicit-implicit-want-mappings.md#隐式want匹配原理)。 |
+| specifiedFlag | string  | 是 | 开发者自定义的UIAbility标识。该标识不能与已启动的UIAbility标识相同，否则将返回错误。 <br>**说明：**<br>当通过该接口拉起启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility时，将不会触发[onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant)回调。 |
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 801 | Capability not supported. |
+| 16000001 | The specified ability does not exist. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist.        |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported. |
+| 16000124 | Starting a remote UIAbility is not supported. |
+| 16000130 | The UIAbility not belong to caller. |
+| 16000131 | The UIAbility is already exist, can not start again. |
+
+**示例：**
+
+```ts
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'ChildProcessAbility'
+    };
+    let instanceFlag = 'instance1';
+    try {
+      this.context.startSelfUIAbilityInChildProcess(want, instanceFlag)
+        .then(() => {
+          console.info('startSelfUIAbilityInChildProcess succeed');
+        })
+        .catch((err: BusinessError) => {
+          console.error(`startSelfUIAbilityInChildProcess failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelfUIAbilityInChildProcess failed, code is ${code}, message is ${message}`);
+    }
   }
 }
 ```

@@ -286,6 +286,8 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 
 设置OH_PackingOptions结构体的needsPackProperties参数。
 
+使用场景：当需要在编码输出中保留或写入图片属性信息（例如Exif）时，将needsPackProperties设置为true。如果只关心像素内容、希望减少输出数据体积或目标格式不需要保留属性信息，可设置为false。
+
 **起始版本：** 12
 
 
@@ -294,7 +296,7 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| bool needsPackProperties | 是否需要编码图片属性信息（例如Exif）。true表示需要，false表示不需要。 |
+| bool needsPackProperties | 是否需要编码图片属性信息（例如Exif）。true表示需要，false表示不需要。默认值为false。<br>如果原始图片本身没有Exif数据，那么即使设置needsPackProperties为true，输出文件也不会包含这些属性。 |
 
 **返回：**
 
@@ -320,7 +322,7 @@ Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *opti
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| int32_t* desiredDynamicRange | 期望的动态范围[IMAGE_PACKER_DYNAMIC_RANGE]#image_packer_dynamic_range)。 |
+| int32_t* desiredDynamicRange | 期望的动态范围[IMAGE_PACKER_DYNAMIC_RANGE](#image_packer_dynamic_range)。 |
 
 **返回：**
 
@@ -346,7 +348,7 @@ Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *opti
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| int32_t desiredDynamicRange | 期望的动态范围[IMAGE_PACKER_DYNAMIC_RANGE]#image_packer_dynamic_range)。 |
+| int32_t desiredDynamicRange | 期望的动态范围[IMAGE_PACKER_DYNAMIC_RANGE](#image_packer_dynamic_range)。 |
 
 **返回：**
 
@@ -363,6 +365,8 @@ Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)
 **描述**
 
 释放OH_PackingOptions指针。
+
+资源管理：由[OH_PackingOptions_Create](#oh_packingoptions_create)成功创建的对象，都应在编码完成后调用本接口释放。释放OH_PackingOptions不会影响已经完成的编码输出，也不会释放OH_ImagePackerNative对象。
 
 **起始版本：** 12
 
@@ -651,6 +655,10 @@ Image_ErrorCode OH_ImagePackerNative_Create(OH_ImagePackerNative **imagePacker)
 
 创建OH_ImagePackerNative指针。
 
+使用场景：适用于将ImageSource、PixelMap、Picture或PixelMap序列编码为JPEG、PNG、WebP等格式的数据或文件。创建ImagePacker后，需要结合OH_PackingOptions或OH_PackingOptionsForSequence设置编码格式、质量、是否保留图片属性等参数。
+
+资源管理：成功创建的OH_ImagePackerNative对象由调用方持有，使用完成后必须调用[OH_ImagePackerNative_Release](#oh_imagepackernative_release)释放。Packer不会接管输入ImageSource、PixelMap、Picture或编码参数对象的生命周期。
+
 **起始版本：** 12
 
 
@@ -675,6 +683,10 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNat
 **描述**
 
 将ImageSource编码为指定格式的数据。
+
+使用场景：适用于将已有ImageSource转码为另一种图片格式，或在修改图片属性后重新输出为内存数据。
+
+资源管理：outData由调用方申请和释放。调用前，*size应设置为outData的容量；调用成功后，*size表示实际写入outData的编码数据长度。imagePacker、options和imageSource都由调用方管理，接口不会自动释放。
 
 **起始版本：** 12
 
@@ -705,6 +717,10 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative
 
 将Pixelmap编码为指定格式的数据。
 
+使用场景：适用于将解码、编辑、绘制或算法处理后的PixelMap编码为JPEG、PNG、WebP等格式的内存数据，以便上传、缓存或继续写入文件。
+
+资源管理：outData由调用方申请和释放。调用前，*size应设置为outData的容量；调用成功后，*size表示实际写入outData的编码数据长度。OH_ImagePackerNative、OH_PackingOptions和OH_PixelmapNative对象都需由调用方在合适时机释放。
+
 **起始版本：** 12
 
 
@@ -724,6 +740,64 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_ALLOC_FAILED：申请内存失败。<br> IMAGE_TOO_LARGE：数据或图片过大。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
 
+**示例：**
+
+将PixelMap编码为JPEG内存数据。outData由调用方提供，encodedSize返回实际编码后的数据长度。
+
+```cpp
+#include <cstdint>
+#include <cstddef>
+#include <cstring>
+#include "multimedia/image_framework/image/image_common.h"
+#include "multimedia/image_framework/image/image_packer_native.h"
+#include "multimedia/image_framework/image/pixelmap_native.h"
+
+static Image_ErrorCode PackPixelmapToJpegData(OH_PixelmapNative *pixelmap,
+    uint8_t *outData, size_t outDataCapacity, size_t *encodedSize)
+{
+    if (pixelmap == nullptr || outData == nullptr || outDataCapacity == 0 || encodedSize == nullptr) {
+        return IMAGE_BAD_PARAMETER;
+    }
+
+    OH_ImagePackerNative *packer = nullptr;
+    OH_PackingOptions *options = nullptr;
+    Image_ErrorCode ret = OH_ImagePackerNative_Create(&packer);
+    if (ret != IMAGE_SUCCESS) {
+        return ret;
+    }
+
+    ret = OH_PackingOptions_Create(&options);
+    if (ret != IMAGE_SUCCESS) {
+        OH_ImagePackerNative_Release(packer);
+        return ret;
+    }
+
+    char mimeTypeData[] = "image/jpeg";
+    Image_MimeType mimeType = {
+        .data = mimeTypeData,
+        .size = strlen(mimeTypeData)
+    };
+    ret = OH_PackingOptions_SetMimeType(options, &mimeType);
+    if (ret == IMAGE_SUCCESS) {
+        ret = OH_PackingOptions_SetQuality(options, 90);
+    }
+
+    size_t size = outDataCapacity;
+    if (ret == IMAGE_SUCCESS) {
+        ret = OH_ImagePackerNative_PackToDataFromPixelmap(packer, options, pixelmap,
+            outData, &size);
+    }
+
+    OH_PackingOptions_Release(options);
+    OH_ImagePackerNative_Release(packer);
+
+    if (ret == IMAGE_SUCCESS) {
+        *encodedSize = size;
+    }
+    return ret;
+}
+```
+
 ### OH_ImagePackerNative_PackToDataFromPicture()
 
 ```c
@@ -733,6 +807,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative 
 **描述**
 
 将Picture编码为指定格式的数据。
+
+资源管理：outData由调用方申请和释放。调用前，*size应设置为outData的容量；调用成功后，*size表示实际写入outData的编码数据长度。Picture对象本身不会被该接口释放。
 
 **起始版本：** 13
 
@@ -762,6 +838,10 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePack
 **描述**
 
 将Pixelmap序列编码为数据。
+
+使用场景：适用于将多帧PixelMap编码为动图或其他支持序列帧的图片格式。编码前应通过OH_PackingOptionsForSequence设置帧数、延迟时间、循环次数等参数。
+
+资源管理：outData由调用方申请和释放。调用前，*outDataSize应设置为outData的容量；调用成功后，*outDataSize表示实际写入的编码数据长度。pixelmapSequence中的PixelMap对象仍由调用方持有并负责释放。
 
 **起始版本：** 18
 
@@ -793,6 +873,10 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNat
 
 将一个ImageSource编码到文件中。
 
+使用场景：适用于将ImageSource转码后直接写入文件描述符，避免调用方自行管理编码后的内存缓冲区。
+
+资源管理：fd必须是可写文件描述符，文件描述符的打开和关闭由调用方负责。接口不会释放imagePacker、options或imageSource。
+
 **起始版本：** 12
 
 
@@ -820,6 +904,10 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmap(OH_ImagePackerNative
 **描述**
 
 将一个Pixelmap编码到文件中。
+
+使用场景：适用于将处理后的PixelMap直接保存为文件。与PackToDataFromPixelmap相比，该接口不需要调用方预先分配输出数据缓冲区。
+
+资源管理：fd必须是可写文件描述符，文件描述符的打开和关闭由调用方负责。接口不会释放imagePacker、options或pixelmap。
 
 **起始版本：** 12
 
@@ -906,6 +994,8 @@ Image_ErrorCode OH_ImagePackerNative_GetSupportedFormats(Image_MimeType **suppor
 
 获取支持编码的图片格式。
 
+使用场景：适用于在编码前动态查询当前系统支持的目标格式，并据此设置[OH_PackingOptions_SetMimeType](#oh_packingoptions_setmimetype)的MIME类型。
+
 **起始版本：** 20
 
 
@@ -931,6 +1021,8 @@ Image_ErrorCode OH_ImagePackerNative_Release(OH_ImagePackerNative *imagePacker)
 **描述**
 
 释放OH_ImagePackerNative指针。
+
+资源管理：由[OH_ImagePackerNative_Create](#oh_imagepackernative_create)成功创建的对象，都应在不再使用时调用本接口释放。释放Packer不会释放OH_PackingOptions、OH_PackingOptionsForSequence、OH_ImageSourceNative、OH_PixelmapNative或OH_PictureNative对象。
 
 **起始版本：** 12
 

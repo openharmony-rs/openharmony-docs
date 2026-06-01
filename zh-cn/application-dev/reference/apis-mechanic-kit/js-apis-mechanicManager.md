@@ -1,9 +1,9 @@
 # @ohos.distributedHardware.mechanicManager (机械体控制模块)
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @Marssssss-->
+<!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
 
 本模块提供与机械体设备交互的能力，包括设备连接状态监听、跟踪控制和跟踪状态监听功能。
@@ -302,8 +302,7 @@ isControlSupported(mechDeviceType?: MechDeviceType): boolean
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| true | 当前设备支持某类设备的机械体设备控制。|
-| false | 当前设备不支持某类设备的机械体设备控制。|
+| boolean | 当前设备是否支持某类设备的机械体设备控制。true表示支持，false表示不支持。|
 
 **示例：**
 

@@ -2388,8 +2388,6 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -2445,8 +2443,6 @@ setDistributedEnable(enable: boolean): Promise\<void>
 **替代接口：** [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2505,8 +2501,6 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 **替代接口：** [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2571,8 +2565,6 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -2636,8 +2628,6 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -2696,8 +2686,6 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 **替代接口：** [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2759,8 +2747,6 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -2811,8 +2797,6 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 **废弃版本：** 26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3630,8 +3614,6 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3689,8 +3671,6 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 **废弃版本：** 26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -5369,6 +5349,124 @@ notificationManager.isSilentReminderEnabled(bundle).then((data: notificationMana
     hilog.info(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled success, switchState:  ${JSON.stringify(data)}.`);
 }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setNotificationSwitch
+
+setNotificationSwitch(switchName: string, switchState: boolean, userId: number): Promise\<void\>
+
+设置通知开关状态。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| switchName | string | 是 | 通知开关名称。取值为：DEAL（交易类通知聚合开关）、LOGISTICS（物流类通知聚合开关）。 |
+| switchState | boolean | 是 | 是否开启通知开关。<br> - true：表示开启。<br> - false：表示关闭。 |
+| userId | number | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Database operation failed. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let switchState: boolean = true;
+let userId: number = 100;
+
+notificationManager.setNotificationSwitch(switchName, switchState, userId).then(() => {
+    console.info('setNotificationSwitch success');
+}).catch((err: BusinessError) => {
+    console.error(`setNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getNotificationSwitch
+
+getNotificationSwitch(switchName: string, userId: number): Promise\<SwitchState\>
+
+获取通知开关状态。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| switchName | string | 是 | 通知开关名称。取值为：DEAL（交易类通知聚合开关）、LOGISTICS（物流类通知聚合开关）。 |
+| userId | number | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<[SwitchState](#switchstate20)\> | Promise对象，返回通知开关状态。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Database operation failed. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let userId: number = 100;
+
+notificationManager.getNotificationSwitch(switchName, userId).then((data: notificationManager.SwitchState) => {
+    console.info(`getNotificationSwitch success, switchState: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 

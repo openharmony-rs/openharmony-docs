@@ -24,7 +24,7 @@ Performs internal interactions within a function and processes operations relate
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 

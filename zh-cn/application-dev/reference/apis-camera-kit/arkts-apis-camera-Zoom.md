@@ -88,7 +88,7 @@ getZoomRatio(): number
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 7400201                |  Camera service fatal error.                           |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+           |
 
 **示例：**
 
@@ -125,6 +125,14 @@ setSmoothZoom(targetRatio: number, mode?: SmoothZoomMode): void
 | ------------ | -------------- | ---- | ----------------- |
 | targetRatio  | number         | 是   | 目标值。通过[getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11)获取支持的变焦范围，如果设置超过支持范围的值，则只保留精度范围内数值。      |
 | mode         | [SmoothZoomMode](arkts-apis-camera-e.md#smoothzoommode11) | 否   | 平滑变焦模式。默认为0。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400103                |  Session not config.<br>适用版本：11-17             |
 
 **示例：**
 

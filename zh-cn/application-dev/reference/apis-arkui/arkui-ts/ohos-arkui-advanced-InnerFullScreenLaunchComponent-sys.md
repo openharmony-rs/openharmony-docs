@@ -32,7 +32,7 @@ import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 
 ## InnerFullScreenLaunchComponent
 
-InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchController })
+InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchController, onReceive?: Callback<Record<string, Object>>, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo> })
 
 **装饰器类型：**\@Component
 
@@ -40,9 +40,7 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-
 **参数：**
-
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -75,6 +73,8 @@ type LaunchAtomicServiceCallback = (appId: string, options?: AtomicServiceOption
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------------- | ------ |------ |------ |

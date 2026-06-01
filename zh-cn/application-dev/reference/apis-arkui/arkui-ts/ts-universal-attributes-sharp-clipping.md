@@ -1,8 +1,8 @@
 # 形状裁剪
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -17,6 +17,8 @@
 clip(value: boolean): T
 
 是否对子组件超出当前组件范围外的区域进行裁剪。不设置该接口时，默认不对子组件超出当前组件范围外的区域进行裁剪。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,6 +43,8 @@ clip(value: boolean): T
 clip(clip: Optional\<boolean>): T
 
 是否对子组件超出当前组件范围外的区域进行裁剪。不设置该接口时，默认不对子组件超出当前组件范围外的区域进行裁剪。与[clip<sup>12+</sup>](#clip12)相比，新增了对undefined类型的支持。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +106,8 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 >
 > 形状中的[fill](../js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -134,6 +140,8 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 >
 > 形状中的[fill](../js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
@@ -158,6 +166,8 @@ type CircleShape = CircleShape
 
 导入CircleShape类型对象。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -173,6 +183,8 @@ type CircleShape = CircleShape
 type EllipseShape = EllipseShape
 
 导入EllipseShape类型对象。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,6 +202,8 @@ type PathShape = PathShape
 
 导入PathShape类型对象。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -206,6 +220,8 @@ type RectShape = RectShape
 
 导入RectShape类型对象。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -221,6 +237,8 @@ type RectShape = RectShape
 mask(value: ProgressMask): T
 
 为组件上添加可调节进度的遮罩。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -243,6 +261,8 @@ mask(value: ProgressMask): T
 mask(mask: Optional\<ProgressMask>): T
 
 为组件上添加可调节进度的遮罩。与[mask<sup>12+</sup>](#mask12)相比，新增了对undefined类型的支持。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,6 +314,8 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
 为组件上添加指定形状的遮罩。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -317,6 +339,8 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 maskShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>): T
 
 为组件上添加指定形状的遮罩。与[maskShape<sup>12+</sup>](#maskshape12)相比，新增了对undefined类型的支持。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -342,6 +366,8 @@ ProgressMask设置遮罩的进度、最大值和颜色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### constructor<sup>10+</sup>
@@ -351,6 +377,8 @@ constructor(value: number, total: number, color: ResourceColor)
 构造ProgressMask对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -370,6 +398,8 @@ updateProgress(value: number): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -386,6 +416,8 @@ updateColor(value: ResourceColor): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -401,6 +433,8 @@ enableBreathingAnimation(value: boolean): void
 进度满时的呼吸光晕动画开关。不设置该接口时，默认关闭呼吸光晕动画。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

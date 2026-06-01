@@ -583,7 +583,7 @@ int32_t OH_ArkUI_UIInputEvent_GetAction(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the action type of an input event. The action type defines the phase of a basic event (for example, start or end) and characterizes its behavior, such as touch down or touch up. Action types are specific to the event category: [UI_TOUCH_EVENT_ACTION_XXX](#anonymous1) for touch events and [UI_MOUSE_EVENT_ACTION_XXX](#anonymous4) for mouse events. For an axis event, use [OH_ArkUI_AxisEvent_GetAxisAction](#oh_arkui_axisevent_getaxisaction) to obtain the action types, which returns [UI_AXIS_EVENT_ACTION_XXX](#anonymous7). For a key event, use [OH_ArkUI_KeyEvent_GetType](./capi-native-key-event-h.md#oh_arkui_keyevent_gettype) to obtain the action types, which returns [ArkUI_KeyEventType](./capi-native-key-event-h.md#arkui_keyeventtype).
+Obtains the action type of an input event. The action type defines the phase of a basic event (for example, start or end) and characterizes its behavior, such as touch down or touch up. Action types are specific to the event category: [UI_TOUCH_EVENT_ACTION](#anonymous1) for touch events and [UI_MOUSE_EVENT_ACTION](#anonymous4) for mouse events. For axis events, use [OH_ArkUI_AxisEvent_GetAxisAction](#oh_arkui_axisevent_getaxisaction) to obtain the action type, which returns [UI_AXIS_EVENT_ACTION](#anonymous7). For key events, use [OH_ArkUI_KeyEvent_GetType](./capi-native-key-event-h.md#oh_arkui_keyevent_gettype) to obtain the action type, which returns [ArkUI_KeyEventType](./capi-native-key-event-h.md#arkui_keyeventtype).
 
 **Since**: 12
 
@@ -609,7 +609,7 @@ int32_t OH_ArkUI_UIInputEvent_GetSourceType(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the source type of a UI input event. The source represents the physical device, such as a touchscreen or mouse device, that generates the input event. It is defined by [UI_INPUT_EVENT_SOURCE_TYPE_XXX](#anonymous3). This is different from the input tool, which is the device used to interact with the source, for example, a finger or stylus. However, in certain cases, the input source and the input tool can be the same. For example, a mouse device acts as both the source and tool for click events. For key events, obtaining the source type is not supported, and in such cases, the API will return an **unknown** value.
+Obtains the source type of a UI input event. The source represents the physical device, such as a touchscreen or mouse device, that generates the input event. It is defined by [UI_INPUT_EVENT_SOURCE_TYPE](#anonymous3). This is different from the input tool, which is the device used to interact with the source, for example, a finger or stylus. However, in certain cases, the input source and the input tool can be the same. For example, a mouse device acts as both the source and tool for click events. For key events, obtaining the source type is not supported, and in such cases, the API will return an **unknown** value.
 
 **Since**: 12
 
@@ -635,7 +635,7 @@ int32_t OH_ArkUI_UIInputEvent_GetToolType(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the tool type of a UI input event. The input tool is the device used to interact with the input source, such as a finger or stylus. These tools themselves do not generate events but can drive the input source device to continuously generate events. The returned type is defined by the enumerated value of [UI_INPUT_EVENT_TOOL_TYPE_XXX](#anonymous2). For key events, obtaining the tool type is not supported, and in such cases, the API will return an **unknown** value.
+Obtains the tool type of a UI input event. The input tool is the device used to interact with the input source, such as a finger or stylus. These tools themselves do not generate events but can drive the input source device to continuously generate events. The returned type is defined by the enumerated value of [UI_INPUT_EVENT_TOOL_TYPE](#anonymous2). For key events, obtaining the tool type is not supported, and in such cases, the API will return an **unknown** value.
 
 **Since**: 12
 
@@ -2112,7 +2112,7 @@ Checks whether this axis event contains the specified axis type.
 | Name| Description|
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the UI input event.|
-| int32_t axis | Axis type of the axis event, specified using [UI_AXIS_TYPE_XXX](#anonymous8).|
+| int32_t axis | Axis type of the axis event, specified using [UI_AXIS_TYPE](#anonymous8).|
 
 **Return value**
 
@@ -2621,7 +2621,7 @@ Obtains the movement delta of the mouse along the X axis in a two-dimensional pl
 
 | Type| Description|
 | -- | -- |
-| float | Movement delta of the mouse device along the X axis in the two-dimensional plane, which is expressed in the unit of the mouse movement distance in the physical world. If any parameter error occurs, **0.0f** is returned.|
+| float | Movement delta of the mouse device along the X axis in the two-dimensional plane, which is expressed in the unit of the mouse movement distance in the physical world. If any parameter error occurs, **0.0f** is returned.<br>Note: In versions earlier than API version 26.0.0, the return value is not the original movement data of the mouse hardware. Instead, the original data is scaled down by a factor of *X*, where *X* is the system display size rate. Since API version 26.0.0, the return value is the original movement data of the mouse hardware.|
 
 ### OH_ArkUI_MouseEvent_GetRawDeltaY()
 
@@ -2647,7 +2647,7 @@ Obtains the movement delta of the mouse along the Y axis in a two-dimensional pl
 
 | Type| Description|
 | -- | -- |
-| float | Movement delta of the mouse device along the Y axis in the two-dimensional plane, which is expressed in the unit of the mouse movement distance in the physical world. If any parameter error occurs, **0.0f** is returned.|
+| float | Movement delta of the mouse device along the Y axis in the two-dimensional plane, which is expressed in the unit of the mouse movement distance in the physical world. If any parameter error occurs, **0.0f** is returned.<br>Note: In versions earlier than API version 26.0.0, the return value is not the original movement data of the mouse hardware. Instead, the original data is scaled down by a factor of *X*, where *X* is the system display size rate. Since API version 26.0.0, the return value is the original movement data of the mouse hardware.|
 
 ### OH_ArkUI_MouseEvent_GetPressedButtons()
 
@@ -2993,7 +2993,7 @@ Creates a new event (not clone the existing event). This API applies to touch, m
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_UIInputInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)** event | Double pointer to the new **ArkUI_UIInputEvent** object.|
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)** event | Double pointer to the new **ArkUI_UIInputEvent** object.|
 | [ArkUI_UIInputEvent_Type](#arkui_uiinputevent_type) type | Event type of **ArkUI_UIInputEvent**. The value can be [ARKUI_UIINPUTEVENT_TYPE_TOUCH](#arkui_uiinputevent_type), [ARKUI_UIINPUTEVENT_TYPE_AXIS](#arkui_uiinputevent_type), or [ARKUI_UIINPUTEVENT_TYPE_MOUSE](#arkui_uiinputevent_type).|
 
 **Return value**
@@ -3047,7 +3047,7 @@ Sets an action type for a cloned event. This API applies to touch, mouse, and ax
 | Name| Description|
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object.|
-| int32_t type | Type of the cloned event, including the touch event type [TouchType](#anonymous1), mouse event type [MouseAction](#anonymous4), and axis event type [AxisAction](#anonymous7).|
+| int32_t type | Type of the cloned event, including [UI_TOUCH_EVENT_ACTION](#anonymous1) for the touch event, [UI_MOUSE_EVENT_ACTION](#anonymous4) for the mouse event, and [UI_AXIS_EVENT_ACTION](#anonymous7) for the axis event.|
 
 **Return value**
 
@@ -3101,7 +3101,7 @@ Sets a tool type for a cloned event. This API applies to touch, mouse, and axis 
 | Name| Description|
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object.|
-| int32_t toolType | Tool type of the cloned event. The value is defined by the [UI_INPUT_EVENT_TOOL_TYPE_XXX](#anonymous2) enumeration.|
+| int32_t toolType | Tool type of the cloned event. The value is defined in the [UI_INPUT_EVENT_TOOL_TYPE](#anonymous2) enumeration.|
 
 **Return value**
 
@@ -3997,7 +3997,7 @@ Obtains the coasting axis event from the specified component event. A valid even
 The coasting axis event is triggered only when the user performs a two-finger swipe and releases on the touchpad, so it is exclusive to touchpad devices. This event generates axis values that gradually attenuate based on the initial swipe velocity after finger release. Due to factors such as refresh rate and performance constraints, the axis value of the current event may be higher or lower than the previous one. The following behavior will interrupt the coasting axis event and immediately trigger [ARKUI_COASTING_AXIS_EVENT_PHASE_END](#arkui_coastingaxiseventphase):
 1. Touching the touchpad
 2. Scrolling the mouse wheel
-3. Clicking a node registered for coasting axis events (clicking unregistered nodes has no effect). For example, if node A registers the event and node B is being scrolled during coasting, clicking node B will not interrupt the event. Click event interruption is affected by the [HitTest mode](#oh_arkui_pointerevent_setintercepthittestmode). If the tapped area contains any nodes that can respond to coasting axis events, the coasting axis event will be forcibly terminated.
+3. Clicking a node registered for coasting axis events (clicking unregistered nodes has no effect). For example, if node A registers the event and node B is being scrolled during coasting, clicking node B will not interrupt the event. Click event interruption is affected by [OH_ArkUI_PointerEvent_SetInterceptHitTestMode](#oh_arkui_pointerevent_setintercepthittestmode). If the tapped area contains any nodes that can respond to coasting axis events, the coasting axis event will be forcibly terminated.
 
 4. Application hibernation (such as minimization and screen lock)
 

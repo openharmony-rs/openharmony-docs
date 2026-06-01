@@ -24,12 +24,14 @@
   - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的避让区域信息，单位为px。
   - [SystemProperties.WINDOW_DISPLAY_ID](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口所在屏幕的ID，从API版本26.0.0开始支持。
   - [SystemProperties.WINDOW_SYSTEM_DENSITY](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口所在屏幕的系统显示大小缩放系数，从API版本26.0.0开始支持。
-- 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新。
-- \@Env装饰的变量不允许开发者初始化。\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其由属性[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
+  - [WritableSystemEnvKey.FONT_SCALE](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于为后代组件提供局部字体缩放比例，从API版本26.0.0开始支持。
+  - [WritableSystemEnvKey.DIRECTION](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于获取窗口所在屏幕的布局方向，从API版本26.0.0开始支持。
+  - 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新，\@Env的参数为WritableSystemEnvKey.FONT_SCALE和WritableSystemEnvKey.DIRECTION时，父组件可通过WithEnv中的.env()方法向子组件中的\@Env传值。
+  - \@Env装饰的变量不允许开发者初始化。\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其由属性[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
 
 ## \@Env支持参数
 
-@Env支持的参数请参考[SystemProperties枚举类型说明](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)。
+@Env支持的参数请参考[SystemProperties枚举类型说明](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties) \| [SystemEnvKey\<T\>类型说明](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemenvkeyt)。
 
 ## \@Env和Environment能力对比
 \@Env和[Environment](./state-management/arkts-environment.md)都是系统环境变量相关，但两者能力有较大的不同，具体能力对比见下表。
@@ -37,8 +39,8 @@
 | 能力 | \@Env |Environment|
 | ------------------ | ------------------ | ------------------ |
 |起始API version|从API version 22开始支持。|从API version 7开始支持。|
-|支持参数|[SystemProperties的枚举值](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)| 支持`languageCode`等参数，详情见[Environment内置参数](./state-management/arkts-environment.md#environment内置参数)。|
-|使用形式|\@Env为装饰器，可声明在\@Component或\@ComponentV2中，获取对应参数的环境变量信息。|通过[envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)等接口获取当前应用的环境变量，并存入[AppStorage](./state-management/arkts-appstorage.md)中，开发者可通过AppStorage的接口访问系统环境变量的值，具体例子见[从ui中访问environment参数](./state-management/arkts-environment.md#从ui中访问environment参数)。|
+|支持参数|[SystemProperties的枚举值](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)。<br/>API版本26.0.0之后支持[SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)\|[SystemEnvKey\<T\>类型说明](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemenvkeyt)| 支持`languageCode`等参数，详情见[Environment内置参数](./state-management/arkts-environment.md#environment内置参数)。|
+|使用形式|\@Env为装饰器，可声明在\@Component或\@ComponentV2中，获取对应参数的环境变量信息。<br/>API版本26.0.0之后，开发者可通过WithEnv的env接口设置SystemEnvKey\<T\>类型参数的系统环境变量。|通过[envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)等接口获取当前应用的环境变量，并存入[AppStorage](./state-management/arkts-appstorage.md)中，开发者可通过AppStorage的接口访问系统环境变量的值，具体例子见[从ui中访问environment参数](./state-management/arkts-environment.md#从ui中访问environment参数)。|
 |是否有响应式能力|有，当系统环境变量变化时，会通知\@Env装饰的环境变量的改变，并通知\@Env关联组件刷新。|无，系统环境变量变化时，不会通知Environment改变。|
 
 ## 限制条件
@@ -104,6 +106,8 @@
   - \@Env使用`SystemProperties.WINDOW_AVOID_AREA_PX`时，装饰的变量类型必须为`window.UIEnvWindowAvoidAreaInfoPX`类型。
   - \@Env使用`SystemProperties.WINDOW_DISPLAY_ID`时，装饰的变量类型必须为`number`类型。
   - \@Env使用`SystemProperties.WINDOW_SYSTEM_DENSITY`时，装饰的变量类型必须为`number`类型。
+  - \@Env使用`WritableSystemEnvKey.FONT_SCALE`时，装饰的变量类型必须为`number`类型。
+  - \@Env使用`WritableSystemEnvKey.DIRECTION`时，装饰的变量类型必须为`Direction`类型。
   ```ts
   import { uiObserver } from '@kit.ArkUI';
 
@@ -489,7 +493,7 @@ struct Comp {
    - `ComponentUnderBuilderNode`在被挂载到新的窗口下时，会触发\@Env重新获取新的环境变量。
    - \@Env重新获取新的环境变量后，触发其关联组件的刷新。其中`ComponentUnderBuilderNode`中`@Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo`会通知`CompV2`内的`@Param breakpoint`刷新，但是并不会通知`Comp`内的常规变量`breakpoint`触发UI刷新。所以在切换窗口，\@Env重新获取环境变量的场景下，建议开发者不要将\@Env传递给常规变量，以避免常规变量不能被通知UI刷新的问题。
 
-下面的示例包含了创建子窗的流程，具体可参考[管理应用窗口（Stage模型）](../windowmanager/application-window-stage.md)。
+下面的示例包含了创建子窗的流程，具体可参考[子窗口开发指导](../windowmanager/subwindow-guide.md)。
 
 ```Typescript
 // EntryAbility.ets
@@ -966,3 +970,49 @@ struct Comp {
 运行效果图如下。
 
 ![gif](./figures/env_switch_instance2.gif)
+
+### 通过WithEnv向DIRECTION和FONT_SCALE传值以及响应式更新
+当点击更新按钮导致\@Local装饰的变量值发生变化时，WithEnv组件中通过.env()方法设置的值也会通知\@Env，此时子组件中\@Env装饰的变量将更新最新值并触发界面重新渲染，实现了完整的响应式更新链路。
+```ts
+import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local fontScaleNum: number = 1;
+
+  build() {
+    Column() {
+      Button('update').onClick(() => {
+        this.fontScaleNum++;
+      })
+      WithEnv() {
+        Child()
+      }
+      .env(WritableEnvKey.DIRECTION, Direction.Ltr)
+      .env(WritableEnvKey.FONT_SCALE, this.fontScaleNum)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Env(WritableEnvKey.DIRECTION) directionVal: Direction;
+  @Env(WritableEnvKey.FONT_SCALE) fontScaleVal: number;
+
+  build() {
+    Column() {
+      Text('Direction val is:'  + this.directionVal)
+      Text('FontScale val is:'  + this.fontScaleVal)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+运行效果图如下。
+
+![gif](./figures/env_m.gif)

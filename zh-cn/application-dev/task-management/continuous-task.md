@@ -15,7 +15,7 @@
 
 > **说明：**
 > 
-> 应用退至后台后，在不同类型设备上生命周期变化存在差异，详见[不同设备生命周期的差异化行为](../windowmanager/window-overview.md#不同设备生命周期的差异化行为)。
+> 应用退至后台后，在不同类型设备上生命周期变化存在差异，详见[不同设备UIAbility生命周期的差异化行为](../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
 ### 使用场景
 
@@ -135,20 +135,25 @@
 2. 声明后台模式类型。
 
    在[module.json5配置文件](../quick-start/module-configuration-file.md)中abilities下的backgroundModes字段里，为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的[配置项](continuous-task.md#使用场景)。
+
+   <!-- @[continuous_task_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/module.json5) -->
    
-   ``` json5
+   ``` JSON5
    "module": {
-       "abilities": [
-           {
-              "backgroundModes": [
-              // 长时任务类型的配置项
-              "audioRecording",
-              "bluetoothInteraction",
-              "audioPlayback"
-              ]
-           }
-       ],
-       // ...
+     // ...
+     "abilities": [
+       {
+         // ...
+         "backgroundModes": [
+           // 长时任务类型的配置项
+           "audioRecording",
+           "bluetoothInteraction",
+           "audioPlayback"
+         ],
+         // ...
+       }
+     ],
+     // ...
    }
    ```
 
@@ -156,8 +161,10 @@
    
    长时任务相关的模块为@ohos.resourceschedule.backgroundTaskManager和@ohos.app.ability.wantAgent，其余模块按实际需要导入。
     <!--RP1-->
+
+    <!-- @[continuous_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets) -->
     
-    ```ts
+    ``` TypeScript
     import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
@@ -176,7 +183,7 @@
    
    从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
-   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets) -->
    
    ``` TypeScript
    function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
@@ -188,7 +195,7 @@
    
    @Entry
    @Component
-   struct Index {
+   struct AudioPlaybackIndex {
      @State message: string = 'ContinuousTask';
      // 通过getUIContext().getHostContext()方法，来获取page所在的UIAbility上下文
      private context: Context | undefined = this.getUIContext().getHostContext();
@@ -352,7 +359,7 @@
    
    从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
-   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
+   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/IndexAsyncAndAwait.ets) -->
    
    ``` TypeScript
    @Entry

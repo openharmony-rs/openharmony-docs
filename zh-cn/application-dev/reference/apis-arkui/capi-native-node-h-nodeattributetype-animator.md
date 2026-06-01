@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（动效、视效相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -1380,3 +1380,31 @@ NODE_PIXEL_ROUND = 109
 | 类型 | 说明 |
 | -- | -- |
 | .object | 组件的像素取整策略；参数类型为[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)。 |
+
+## NODE_SYSTEM_MATERIAL
+
+```c
+NODE_SYSTEM_MATERIAL = 127
+```
+
+定义系统材质属性，支持属性设置，属性重置和属性获取接口。
+
+仅支持系统材质的设备可使用此属性。否则，当设置此属性时，将返回错误码[ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](./capi-native-type-h.md#arkui_errorcode)。设备是否支持系统材质可通过调用[OH_ArkUI_NativeModule_GetSystemMaterialSupported](./capi-native-material-h.md#oh_arkui_nativemodule_getsystemmaterialsupported)获取。
+
+材质效果在不同算力的设备上表现不同。算力等级由[ArkUI_MaterialLevel](./capi-native-material-h.md#arkui_materiallevel)定义，可通过[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](./capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。在算力等级为[ARKUI_MATERIAL_LEVEL_SMOOTH](./capi-native-material-h.md#arkui_materiallevel)的设备上，会影响背景颜色、边框宽度、边框颜色、阴影等属性。在算力等级为[ARKUI_MATERIAL_LEVEL_EXQUISITE](./capi-native-material-h.md#arkui_materiallevel)或[ARKUI_MATERIAL_LEVEL_GENTLE](./capi-native-material-h.md#arkui_materiallevel)的设备上，会影响阴影属性并在系统材质层添加滤镜效果，可产生类似玻璃的效果。
+
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .object | 系统材质对象。参数类型为[ArkUI_ImmersiveMaterialHandle](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .object | 系统材质对象。参数类型为[ArkUI_ImmersiveMaterialHandle](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md)。返回值中的ArkUI_ImmersiveMaterialHandle对象是指向静态成员的指针，因此无需也禁止通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)释放返回对象。 |

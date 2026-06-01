@@ -1461,3 +1461,254 @@ export default class MyAbilityStage extends AbilityStage {
   }
 }
 ```
+
+## ApplicationContext.enableDelayedProcessExit
+
+enableDelayedProcessExit(): Promise\<void>
+
+启用当前进程延迟退出功能，使用Promise异步回调。仅支持主线程调用。
+
+在正常情况下，应用进程中最后一个UIAbility退出后，进程将退出。调用此接口，在最后一个UIAbility退出后，进程将延迟10秒退出。如果在当前进程的10秒内启动该进程的新UIAbility，进程将不再退出。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                    |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+| 16000150 | The current process has no UIAbility, and this API cannot be called. |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit'
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.getApplicationContext().enableDelayedProcessExit().then(() => {
+        console.info('enableDelayedProcessExit succeed');
+      }).catch((error: BusinessError) => {
+        console.error(`enableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
+      });
+    } catch(error) {
+      console.error('enableDelayedProcessExit failed. Code=%{public}d, Message=%{public}s', error.code, error.message);
+    }
+  }
+}
+```
+
+## ApplicationContext.disableDelayedProcessExit
+
+disableDelayedProcessExit(): Promise\<void>
+
+禁用当前进程延迟退出功能，使用Promise异步回调。仅支持主线程调用。
+
+调用此API将会取消[ApplicationContext.enableDelayedProcessExit](#applicationcontextenabledelayedprocessexit)的作用。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                    |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+| 16000150 | The current process has no UIAbility, and this API cannot be called. |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit'
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.getApplicationContext().disableDelayedProcessExit().then(() => {
+        console.info('disableDelayedProcessExit succeed');
+      }).catch((error: BusinessError) => {
+        console.error(`disableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
+      });
+    } catch(error) {
+      console.error('disableDelayedProcessExit failed. Code=%{public}d, Message=%{public}s', error.code, error.message);
+    }
+  }
+}
+```
+
+## ApplicationContext.startSelfUIAbility
+
+startSelfUIAbility(want: Want): Promise\<void>
+
+当前进程延迟退出期间，在当前进程启动一个自身UIAbility，启动成功后，当前进程不再退出。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型                                | 必填 | 说明                                        |
+| ------ | ----------------------------------- | ---- | ------------------------------------------- |
+| want   | [Want](js-apis-app-ability-want.md) | 是   | Want类型参数，传入需要启动的UIAbility信息。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                    |
+| 16000001 | The specified ability does not exist.                        |
+| 16000008 | The crowdtesting application expires.                        |
+| 16000009 | An ability cannot be started or stopped in Wukong mode.      |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported.                           |
+| 16000124 | Starting a remote UIAbility is not supported.                |
+| 16000125 | Starting a plugin UIAbility is not supported.                |
+| 16000130 | The UIAbility does not belong to the caller.                 |
+| 16000161 | Delayed process exit is not pending in the current process, and this API cannot be called. |
+| 16000162 | The current process still has another UIAbility, and this API cannot be called. |
+
+**示例：**
+
+```ts
+import { common, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = '延迟启动';
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Button(this.message)
+      .fontSize(50)
+      .align(Alignment.Center)
+      .onClick(() => {
+        try {
+          const newWant: Want = {
+            bundleName: 'com.example.myapplication',
+            abilityName: 'EntryAbility',
+            parameters: {
+              'pageName': 'IndexNew'  // 标记启动主页面
+            }
+          };
+          let applicationContext = this.context.getApplicationContext();
+          // 在延迟退出期间启动主界面
+          this.context.terminateSelf().then(() => {
+            // 设置延时2000 ms以确保主应用完全退出后再调用startSelfUIAbility接口。
+            setTimeout(() => {
+              applicationContext.getApplicationContext().startSelfUIAbility(newWant).then(() => {
+                hilog.info(0x0000, 'testTag', '启动主界面成功');
+              }).catch((error: BusinessError) => {
+                hilog.error(0x0000, 'testTag', `启动主界面失败, code: ${error.code}, error msg: ${error.message}`);
+              });
+            }, 2000);
+          });
+        } catch (error) {
+          hilog.error(0x0000, 'testTag', `启动主界面失败, code: ${error.code}, error msg: ${error.message}`);
+        }
+      });
+  }
+}
+```
+
+## ApplicationContext.getUIAbilityByInstanceId
+
+getUIAbilityByInstanceId(instanceId: string): UIAbility
+
+在多实例场景中，根据实例ID获取特定的UIAbility实例。仅支持主线程调用。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| instanceId | string | 是 | UIAbility的实例ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [UIAbility](js-apis-app-ability-uiAbility.md) | 返回与instanceId对应的UIAbility实例。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000003 | The id does not exist. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      let instanceId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+      let uiAbility = applicationContext.getUIAbilityByInstanceId(instanceId);
+      console.info(`getUIAbilityByInstanceId succeed, ability: ${uiAbility}`);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getUIAbilityByInstanceId fail, code: ${code}, message: ${message}`);
+    }
+  }
+}
+```
