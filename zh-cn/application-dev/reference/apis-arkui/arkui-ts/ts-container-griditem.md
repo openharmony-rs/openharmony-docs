@@ -301,7 +301,7 @@ GridItem元素被鼠标框选的状态改变时触发回调。
 
 | 参数名     | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| isSelected | boolean | 是   | 进入鼠标框选范围即被选中返回true，移出鼠标框选范围即未被选中返回false。 |
+| event | ArkTS-Dyn: (isSelected:&nbsp;boolean)&nbsp;=&gt;&nbsp;void</br>ArkTS-Sta: ((isSelected:&nbsp;boolean)&nbsp;=&gt;&nbsp;void) \| undefined | 是   | 鼠标框选的状态改变时触发的回调。<br/>undefined：不使用该回调函数。isSelected在进入鼠标框选范围即被选中时为true，移出鼠标框选范围即未被选中时为false。 |
 
 ### attributeModifier<sup>23+</sup>
 
