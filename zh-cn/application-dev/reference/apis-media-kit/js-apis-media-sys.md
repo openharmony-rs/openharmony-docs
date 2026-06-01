@@ -1606,7 +1606,7 @@ enableCameraPostprocessing(): Promise\<void>
 | -------- | ----------------------------------------- |
 | 202  | Called from Non-System applications. Return by promise.|
 | 5400102  | Operation not allowed. Return by promise.|
-| 5400105  |  Service died.|
+| 5400105  | Service died.|
 
 **示例：**
 
