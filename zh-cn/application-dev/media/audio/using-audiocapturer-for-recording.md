@@ -588,6 +588,281 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
 ArkTs-Sta示例：
 <!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
 
+``` TypeScript
+import audio from '@ohos.multimedia.audio';
+import fs from '@ohos.file.fs';
+import { ReadOptions, WriteOptions } from '@ohos.file.fs';
+import common from '@ohos.app.ability.common';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import { PermissionRequestResult } from '@ohos.abilityAccessCtrl';
+import { BusinessError, Callback } from '@ohos.base';
+import {
+  Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
+} from '@kit.ArkUI';
+const TAG = 'AudioCapturerDemo';
+let audioRenderer: audio.AudioRenderer | undefined = undefined;
+let audioCapturer: audio.AudioCapturer | undefined = undefined;
+
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC,
+  capturerFlags: 0
+};
+
+// 使用显式兼容类承载静态接口参数，避免生成包含可选字段的对象字面量。
+class AudioCapturerOptionsCompat implements audio.AudioCapturerOptions {
+  streamInfo: audio.AudioStreamInfo;
+  capturerInfo: audio.AudioCapturerInfo;
+
+  constructor(streamInfo: audio.AudioStreamInfo, capturerInfo: audio.AudioCapturerInfo) {
+    this.streamInfo = streamInfo;
+    this.capturerInfo = capturerInfo;
+  }
+}
+
+class AudioRendererOptionsCompat implements audio.AudioRendererOptions {
+  streamInfo: audio.AudioStreamInfo;
+  rendererInfo: audio.AudioRendererInfo;
+
+  constructor(streamInfo: audio.AudioStreamInfo, rendererInfo: audio.AudioRendererInfo) {
+    this.streamInfo = streamInfo;
+    this.rendererInfo = rendererInfo;
+  }
+}
+
+let audioCapturerOptions: AudioCapturerOptionsCompat = new AudioCapturerOptionsCompat(audioStreamInfo, audioCapturerInfo);
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 0
+};
+
+let audioRendererOptions: AudioRendererOptionsCompat = new AudioRendererOptionsCompat(audioStreamInfo, audioRendererInfo);
+
+let file: fs.File | undefined = undefined;
+let readDataCallback: Callback<ArrayBuffer> = (_buffer: ArrayBuffer): void => {};
+let writeDataCallback: audio.AudioRendererWriteDataCallback;
+
+// ...
+
+// 采集回调将麦克风数据写入缓存 PCM 文件，供渲染侧读取。
+async function initArguments(context: common.UIAbilityContext): Promise<void> {
+  let bufferSize: long = 0;
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  readDataCallback = (buffer: ArrayBuffer) => {
+    let options: WriteOptions = {
+      offset: bufferSize,
+      length: Int.toLong(buffer.byteLength)
+    }
+    let targetFile = file;
+    if (targetFile === undefined) {
+      return;
+    }
+    fs.writeSync(targetFile.fd, buffer, options);
+    bufferSize += Int.toLong(buffer.byteLength);
+  };
+}
+
+// 渲染回调从缓存 PCM 文件读取数据，末尾不足一帧时填充静音。
+async function initRender(context: common.UIAbilityContext) {
+  let bufferSize: long = 0;
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  writeDataCallback = (buffer: ArrayBuffer) => {
+    let options: ReadOptions = {
+      offset: bufferSize,
+      length: Int.toLong(buffer.byteLength)
+    };
+
+    try {
+      let sourceFile = file;
+      if (sourceFile === undefined) {
+        return audio.AudioDataCallbackResult.INVALID;
+      }
+      let bufferLength: long = fs.readSync(sourceFile.fd, buffer, options);
+      let frameLength: int = buffer.byteLength;
+      bufferSize += Int.toLong(frameLength);
+      if (bufferLength < Int.toLong(frameLength)) {
+        // PCM S16LE 静音值为 0x00，补齐未读取到的尾部数据。
+        let view = new DataView(buffer);
+        for (let i: int = 0; i < frameLength; i++) {
+          if (Int.toLong(i) < bufferLength) {
+            continue;
+          }
+          view.setUint8(i, 0);
+        }
+      }
+      return audio.AudioDataCallbackResult.VALID;
+    } catch (error) {
+      console.error('Error reading file:', error);
+      return audio.AudioDataCallbackResult.INVALID;
+    }
+  };
+  try {
+    let renderer = await audio.createAudioRenderer(audioRendererOptions);
+    if (renderer === null) {
+      console.info(`${TAG}: creating AudioRenderer failed, renderer is null`);
+      return;
+    }
+    console.info(`${TAG}: creating AudioRenderer success`);
+    audioRenderer = renderer;
+    renderer.onWriteData(writeDataCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.info(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
+  }
+}
+
+// ...
+
+// ...
+
+// ...
+
+// 创建采集器并注册读数据、状态变化回调。
+async function init(updateCallback?: (msg: string, isError: boolean) => void, stateCallback?:
+  (msg: string) => void): Promise<void> {
+  try {
+    let capturer = await audio.createAudioCapturer(audioCapturerOptions);
+    if (capturer === null) {
+      const errorMsg = `Invoke createAudioCapturer failed, capturer is null`;
+      console.error(errorMsg);
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    console.info(`${TAG}: create AudioCapturer success`);
+    const successMsg = `${TAG}: create AudioCapturer success`;
+    if (updateCallback) {
+      updateCallback(successMsg, false);
+    }
+    audioCapturer = capturer;
+    capturer.onReadData(readDataCallback);
+    await listenAudioCapturerState(stateCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Invoke createAudioCapturer failed, message is ${error.message}`);
+    const errorMsg = `Invoke createAudioCapturer failed, message is ${error.message}`;
+    if (updateCallback) {
+      updateCallback(errorMsg, true);
+    }
+  }
+}
+
+// 启动音频采集前先校验采集器状态。
+async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state !== audio.AudioState.STATE_PREPARED && state !== audio.AudioState.STATE_PAUSED &&
+      state !== audio.AudioState.STATE_STOPPED) {
+      console.error(`${TAG}: start failed`);
+      const errorMsg = `${TAG}: start failed`;
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    try {
+      await capturer.start();
+      const successMsg = 'Capturer start success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+      console.info('Capturer start success.');
+    } catch (err) {
+      const errorMsg = 'Capturer start failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer start failed.');
+    }
+
+  }
+}
+
+// 停止音频采集。
+async function stop(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state !== audio.AudioState.STATE_RUNNING && state !== audio.AudioState.STATE_PAUSED) {
+      console.info('Capturer is not running or paused');
+      const infoMsg = 'Capturer is not running or paused';
+      if (updateCallback) {
+        updateCallback(infoMsg, false);
+      }
+      return;
+    }
+    try {
+      await capturer.stop();
+      const successMsg = 'Capturer stop success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+      console.info('Capturer stop success.');
+    } catch (err) {
+      const errorMsg = 'Capturer stop failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer stop failed.');
+    }
+
+  }
+}
+
+// 释放采集器和缓存文件句柄。
+async function release(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state === audio.AudioState.STATE_RELEASED || state === audio.AudioState.STATE_NEW) {
+      console.info('Capturer already released');
+      const infoMsg = 'Capturer already released';
+      if (updateCallback) {
+        updateCallback(infoMsg, false);
+      }
+      return;
+    }
+    try {
+      await capturer.release();
+      let currentFile = file;
+      if (currentFile !== undefined) {
+        fs.closeSync(currentFile);
+        file = undefined;
+      }
+      console.info('Capturer release success.');
+      const successMsg = 'Capturer release success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+    } catch (err) {
+      const errorMsg = 'Capturer release failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer release failed.');
+    }
+
+  }
+}
+
+// ...
+
+// ...
+```
+
 ### 设置静音打断模式
 
 如果需要实现录音全程不被系统基于焦点并发规则打断的效果，提供将打断策略从停止录音切换为静音录制的功能，录音过程中也不影响其他应用启动录音。开发者在创建AudioCapturer实例时，调用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口设置是否开启静音打断模式。默认不开启，此时由音频焦点策略管理并发音频流的执行顺序。开启后，被其他应用打断导致停止或暂停录制时会进入静音录制状态，在此状态下录制的音频没有声音。
