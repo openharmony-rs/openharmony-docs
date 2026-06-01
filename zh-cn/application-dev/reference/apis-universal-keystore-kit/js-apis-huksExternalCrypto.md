@@ -62,9 +62,11 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
 表示外部密钥操作的Extension错误信息。
 
-**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+**起始版本：** 26.0.0
 
-**起始版本：** 26
+**模型约束：** 此结构体仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -719,7 +721,7 @@ async function testFunction() : Promise<void>
 
 getErrorInfo(): HuksExternalErrorInfo
 
-获取最近一次外部密钥操作的Extension错误信息。该接口为同步接口。
+以同步方式获取最近一次外部密钥操作的Extension错误信息。
 
 > **说明：**
 >
@@ -727,9 +729,11 @@ getErrorInfo(): HuksExternalErrorInfo
 > 2. Extension未返回错误信息结构体时（errno为0），保持上一次的错误信息。
 > 3. 建议在操作失败后立即调用此接口获取Extension错误信息。
 
-**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+**起始版本：** 26.0.0
 
-**起始版本：** 26
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **返回值：**
 
