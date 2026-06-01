@@ -59,7 +59,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    // 创建引擎。
    OH_AudioSuiteEngine *audioSuiteEngine = nullptr;
    OH_AudioSuiteEngine_Create(&audioSuiteEngine);
-       
+   
    // 创建管线。
    OH_AudioSuitePipeline *audioSuitePipeline = nullptr;
    OH_AudioSuiteEngine_CreatePipeline(audioSuiteEngine, &audioSuitePipeline,
