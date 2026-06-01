@@ -1,16 +1,18 @@
 # 信息展示公共接口
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 用于修饰组件，为[Gauge](ts-basic-components-gauge.md)和[DataPanel](ts-basic-components-datapanel.md)组件提供信息展示能力的公共接口。
 
 >**说明：**
 >
->本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## MultiShadowOptions

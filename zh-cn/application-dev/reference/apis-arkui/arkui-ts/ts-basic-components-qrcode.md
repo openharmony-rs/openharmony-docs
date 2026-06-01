@@ -28,9 +28,9 @@ QRCode(value: ResourceStr)
 
 创建二维码组件，通过扫描组件显示的二维码图案可以获取二维码中包含的字符串信息。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,9 +74,9 @@ ArkTS-Sta: color(value: ResourceColor | undefined)
 
 设置二维码颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,9 +98,9 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 设置二维码背景颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,7 +122,7 @@ ArkTS-Sta: contentOpacity(value: double | Resource | undefined)
 
 设置二维码内容颜色的不透明度。不透明度最小值为0，最大值为1。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

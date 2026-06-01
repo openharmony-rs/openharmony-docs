@@ -28,7 +28,7 @@ ArkTS-Dyn: Hyperlink(address: string | Resource, content?: string | Resource)
 
 ArkTS-Sta: Hyperlink(address: string | Resource | undefined, content?: string | Resource)
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,7 +55,7 @@ ArkTS-Sta: color(value: Color | int | string | Resource | undefined)
 
 设置超链接文本的颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

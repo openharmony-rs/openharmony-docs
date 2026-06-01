@@ -130,7 +130,7 @@ getInputMethodEngine(): InputMethodEngine
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getInputMethodAbility](#inputmethodenginegetinputmethodability9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.getInputMethodAbility()](#inputmethodenginegetinputmethodability9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -158,7 +158,7 @@ createKeyboardDelegate(): KeyboardDelegate
 
 > **说明：**
 >
->从API version 8开始支持，API version 9开始废弃，建议使用[getKeyboardDelegate](#inputmethodenginegetkeyboarddelegate9)替代。
+>从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -362,7 +362,7 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, textInputCli
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#on](#oninputstart9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[inputMethodEngine.InputMethodAbility.on](#oninputstart9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -394,7 +394,7 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputC
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#off](#offinputstart9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[inputMethodEngine.InputMethodAbility.off](#offinputstart9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -425,7 +425,7 @@ on(type: 'keyboardShow'|'keyboardHide', callback: () => void): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#on](#onkeyboardshowkeyboardhide9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[inputMethodEngine.InputMethodAbility.on](#onkeyboardshowkeyboardhide9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -457,7 +457,7 @@ off(type: 'keyboardShow'|'keyboardHide', callback?: () => void): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#off](#offkeyboardshowkeyboardhide9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[inputMethodEngine.InputMethodAbility.off](#offkeyboardshowkeyboardhide9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -877,8 +877,8 @@ on(type: 'privateCommand', callback: Callback<Record<string, CommandDataType>>):
 ```ts
 let privateCommandCallback: (record: Record<string, inputMethodEngine.CommandDataType>) => void =
   (record: Record<string, inputMethodEngine.CommandDataType>) => {
-    for (let i :number = 0; i < record.length; i++) {
-      console.info(`private command key: ${i}, value: ${record[i]}`);
+    for (const key in record) {
+      console.info(`private command key: ${key}, value: ${record[key]}`);
     }
   }
 inputMethodEngine.getInputMethodAbility().on('privateCommand', privateCommandCallback);
@@ -1115,7 +1115,7 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback\<Panel>):
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 401        | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401        | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12800004   | not an input method application. |
 
 **示例：**
@@ -1182,7 +1182,7 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise\<Panel>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 401        | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401        | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12800004   | not an input method application. |
 
 **示例：**
@@ -1237,7 +1237,7 @@ destroyPanel(panel: Panel, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -1967,7 +1967,7 @@ destroyPanel(panel: Panel): Promise\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -2883,7 +2883,7 @@ setUiContent(path: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -2929,7 +2929,7 @@ setUiContent(path: string): Promise\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -2969,7 +2969,7 @@ setUiContent(path: string, storage: LocalStorage, callback: AsyncCallback\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -3018,7 +3018,7 @@ setUiContent(path: string, storage: LocalStorage): Promise\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -3068,7 +3068,7 @@ ArkTS-Sta: resize(width: long, height: long, callback: AsyncCallback\<void>): vo
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -3123,7 +3123,7 @@ ArkTS-Sta: resize(width: long, height: long): Promise\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -3165,7 +3165,7 @@ ArkTS-Sta: moveTo(x: int, y: int, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3214,7 +3214,7 @@ ArkTS-Sta: moveTo(x: int, y: int): Promise\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3246,7 +3246,7 @@ startMoving(): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801 | capability not supported. |
+| 801 | capability not supported. [since 18] |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. |
@@ -3469,7 +3469,7 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800013 | window manager service error. |
 
 **示例：**
@@ -3534,7 +3534,7 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12800013 | window manager service error.                                |
 | 12800017 | invalid panel type or panel flag.                            |
 
@@ -3874,7 +3874,7 @@ updateRegion(inputRegion: Array&lt;window.Rect&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12800013 | window manager service error.                                |
 | 12800017 | invalid panel type or panel flag.                            |
 
@@ -4065,7 +4065,7 @@ off(type: 'show', callback?: () => void): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -4100,7 +4100,7 @@ off(type: 'hide', callback?: () => void): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -4170,7 +4170,7 @@ changeFlag(flag: PanelFlag): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -4206,7 +4206,7 @@ setPrivacyMode(isPrivacyMode: boolean): void
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 201      | permissions check fails.  |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -4239,7 +4239,7 @@ setImmersiveMode(mode: ImmersiveMode): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.           |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013  | window manager service error.                          |
 
@@ -4760,7 +4760,7 @@ hideKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[hide](#hide9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.KeyboardController.hide](#hide9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -4796,7 +4796,7 @@ hideKeyboard(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[hide](#hide9-1)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.KeyboardController.hide](#hide9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5119,7 +5119,7 @@ ArkTS-Sta: sendKeyFunction(action: int, callback: AsyncCallback&lt;boolean&gt;):
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
  **示例：**
@@ -5196,7 +5196,7 @@ ArkTS-Sta: sendKeyFunction(action: int): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -5262,7 +5262,7 @@ ArkTS-Sta: getForward(length: int, callback: AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -5330,7 +5330,7 @@ ArkTS-Sta: getForward(length: int): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -5394,7 +5394,7 @@ ArkTS-Sta: getForwardSync(length: int): string
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -5443,7 +5443,7 @@ ArkTS-Sta: getBackward(length: int, callback: AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -5511,7 +5511,7 @@ ArkTS-Sta: getBackward(length: int): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -5575,7 +5575,7 @@ ArkTS-Sta: getBackwardSync(length: int): string
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -5624,7 +5624,7 @@ ArkTS-Sta: deleteForward(length: int, callback: AsyncCallback&lt;boolean&gt;): v
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -5700,7 +5700,7 @@ ArkTS-Sta: deleteForward(length: int): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -5766,7 +5766,7 @@ ArkTS-Sta: deleteForwardSync(length: int): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -5813,7 +5813,7 @@ ArkTS-Sta: deleteBackward(length: int, callback: AsyncCallback&lt;boolean&gt;): 
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -5889,7 +5889,7 @@ ArkTS-Sta: deleteBackward(length: int): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -5955,7 +5955,7 @@ ArkTS-Sta: deleteBackwardSync(length: int): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -6000,7 +6000,7 @@ insertText(text:string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -6053,7 +6053,7 @@ insertText(text:string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -6097,7 +6097,7 @@ insertTextSync(text: string): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -6254,7 +6254,7 @@ ArkTS-Sta: moveCursor(direction: int, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -6303,7 +6303,7 @@ ArkTS-Sta: moveCursor(direction: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -6344,7 +6344,7 @@ ArkTS-Sta: moveCursorSync(direction: int): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -6378,7 +6378,7 @@ selectByRange(range: Range, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -6426,7 +6426,7 @@ selectByRange(range: Range): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -6466,7 +6466,7 @@ selectByRangeSync(range: Range): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -6501,7 +6501,7 @@ selectByMovement(movement: Movement, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -6549,7 +6549,7 @@ selectByMovement(movement: Movement): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -6589,7 +6589,7 @@ selectByMovementSync(movement: Movement): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -6789,7 +6789,7 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback&lt;void&gt;): voi
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -6843,7 +6843,7 @@ sendExtendAction(action: ExtendAction): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -6895,7 +6895,7 @@ sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800010 | not the preconfigured default input method. |
 
@@ -6998,7 +6998,7 @@ setPreviewText(text: string, range: Range): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800011 | text preview not supported.                               |
 
@@ -7041,7 +7041,7 @@ setPreviewTextSync(text: string, range: Range): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800011 | text preview not supported.                               |
 
@@ -7163,7 +7163,7 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void&gt;
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length.  |
+| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800009 | input method client detached.               |
 | 12800014 | the input method is in basic mode.          |
@@ -7214,7 +7214,7 @@ recvMessage(msgHandler?: MessageHandler): void
 
 | 错误码ID | 错误信息         |
 | -------- | ---------------- |
-| 401      | parameter error. Possible causes: 1. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -7256,6 +7256,14 @@ ArkTS-Sta: getAttachOptions(): AttachOptions | null
 | ---- | ------------ |
 | ArkTS-Dyn: [AttachOptions](#attachoptions19)<br/>ArkTS-Sta: [AttachOptions](#attachoptions19) \| null | 返回绑定输入法时的附加选项内容。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                       |
+| -------- | ---------------------------------------------- |
+| 801 | Capability not supported. [since 19 - 19]. |
+
 > **注意：**
 >
 > 从API version 20 开始，错误码`801 Capability not supported.`被移除。
@@ -7287,6 +7295,14 @@ on(type: 'attachOptionsDidChange', callback: Callback\<AttachOptions>): void
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 绑定输入法时的附加选项变更事件，固定取值为'attachOptionsDidChange'。 |
 | callback | Callback\<[AttachOptions](#attachoptions19)> | 是   | 回调函数，返回绑定输入法时的附加选项。       |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                       |
+| -------- | ---------------------------------------------- |
+| 801 | Capability not supported. [since 19 - 19]. |
 
 > **注意：**
 >
@@ -7444,20 +7460,21 @@ inputMethodEngine.getInputMethodAbility()
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称         | 类型 | 只读 | 可选 | 说明               |
-| ------------ | -------- | ---- | ---- | ------------------ |
-| enterKeyType | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 是   | 否   | 编辑框的功能属性，详见[常量中的功能键定义](#常量)。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| inputPattern | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 是   | 否   | 编辑框的文本属性，详见[常量中的编辑框定义](#常量)。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| isTextPreviewSupported<sup>12+</sup> | boolean | 否 | 否 | 编辑框是否支持预上屏。<br/>- 值为true，表示支持。<br/>- 值为false，表示不支持。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| bundleName<sup>14+</sup> | string | 是 | 是 | 编辑框所属应用包名；该值可能为""，使用该属性时需要考虑为""的场景。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
-| immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | 是   | 是   | 输入法沉浸模式。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
-| windowId<sup>18+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: int   | 是 | 是 | 编辑框设置所属窗口ID。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| displayId<sup>18+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: long   | 是   | 是   | 编辑框设置窗口对应的屏幕ID。如果没有设置windowId，取当前焦点窗口屏幕ID。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| placeholder<sup>20+</sup> | string | 是 | 是 | 编辑框设置的占位符信息。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| abilityName<sup>20+</sup> | string | 是 | 是 | 编辑框设置的ability名称。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| gradientMode<sup>20+</sup> | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| extraConfig<sup>22+</sup> | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| 名称         | 类型 | 只读 | 可选 | 说明                                                                                                                                                                   |
+| ------------ | -------- | ---- | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| enterKeyType | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 是   | 否   | 编辑框的功能属性，详见[常量中的功能键定义](#常量)。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                                                                                      |
+| inputPattern | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 是   | 否   | 编辑框的文本属性，详见[常量中的编辑框定义](#常量)。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                                                                                      |
+| isTextPreviewSupported<sup>12+</sup> | boolean | 否 | 否 | 编辑框是否支持预上屏。<br/>- 值为true，表示支持。<br/>- 值为false，表示不支持。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                                                              |
+| bundleName<sup>14+</sup> | string | 是 | 是 | 编辑框所属应用包名；该值可能为""，使用该属性时需要考虑为""的场景。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23                                                                              |
+| immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | 是   | 是   | 输入法沉浸模式。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23                                                                                                         |
+| windowId<sup>18+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: int   | 是 | 是 | 编辑框设置所属窗口ID。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                                                                                                     |
+| displayId<sup>18+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: long   | 是   | 是   | 编辑框设置窗口对应的屏幕ID。如果没有设置windowId，取当前焦点窗口屏幕ID。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                                                                       |
+| placeholder<sup>20+</sup> | string | 是 | 是 | 编辑框设置的占位符信息。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23                                                                                                     |
+| abilityName<sup>20+</sup> | string | 是 | 是 | 编辑框设置的ability名称。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23                                                                                                 |
+| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23                                                                          |
+| gradientMode<sup>20+</sup> | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23                                                                                     |
+| extraConfig<sup>22+</sup> | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23                                                                                                         |
+| consumeKeyEvents      | boolean   | 是   | 是   | 编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>- 值为true，表示具备此能力。<br/>- 值为false，表示不具备此能力。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 
 ## KeyEvent
 
@@ -7698,7 +7715,7 @@ getForward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getForward](#getforward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getForward](#getforward9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7736,7 +7753,7 @@ getForward(length:number): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getForward](#getforward9-1)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getForward](#getforward9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7777,7 +7794,7 @@ getBackward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getBackward](#getbackward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7815,7 +7832,7 @@ getBackward(length:number): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getBackward](#getbackward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7856,7 +7873,7 @@ deleteForward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[deleteForward](#deleteforward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7898,7 +7915,7 @@ deleteForward(length:number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[deleteForward](#deleteforward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7943,7 +7960,7 @@ deleteBackward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[deleteBackward](#deletebackward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7985,7 +8002,7 @@ deleteBackward(length:number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[deleteBackward](#deletebackward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -8029,7 +8046,7 @@ sendKeyFunction(action: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[sendKeyFunction](#sendkeyfunction9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -8071,7 +8088,7 @@ sendKeyFunction(action: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[sendKeyFunction](#sendkeyfunction9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -8116,7 +8133,7 @@ insertText(text:string, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[insertText](#inserttext9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -8157,7 +8174,7 @@ insertText(text:string): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[insertText](#inserttext9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -8201,7 +8218,7 @@ getEditorAttribute(callback: AsyncCallback&lt;EditorAttribute&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getEditorAttribute](#geteditorattribute9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -8240,7 +8257,7 @@ getEditorAttribute(): Promise&lt;EditorAttribute&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getEditorAttribute](#geteditorattribute9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

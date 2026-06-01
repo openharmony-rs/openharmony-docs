@@ -183,11 +183,10 @@ ArkTS-Sta: insert(element: T, index: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The insert method cannot be bound. |
 
@@ -420,11 +419,10 @@ ArkTS-Sta: removeByIndex(index: int): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "index" is out of range. |
 | 10200011 | The removeByIndex method cannot be bound. |
 
@@ -541,11 +539,10 @@ ArkTS-Sta: removeByRange(fromIndex: int, toIndex: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The removeByRange method cannot be bound. |
 
@@ -605,11 +602,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The replaceAllElements method cannot be bound. |
 
 **示例：**
@@ -692,11 +688,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**
@@ -772,11 +767,10 @@ sort(comparator?: ArrayListComparatorFn\<T\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 10200011 | The sort method cannot be bound. |
 
 **示例：**
@@ -846,11 +840,10 @@ ArkTS-Sta: subArrayList(fromIndex: int, toIndex: int): ArrayList&lt;T&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The subArrayList method cannot be bound. |
 
@@ -1175,11 +1168,10 @@ ArkTS-Sta: \[index: int\]: T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. |
 | 10200001 | The value of index is out of range. |
 
 **示例：**
@@ -1232,11 +1224,10 @@ ArkTS-Sta: increaseCapacityTo(newCapacity: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The increaseCapacityTo method cannot be bound. |
 
 **示例：**

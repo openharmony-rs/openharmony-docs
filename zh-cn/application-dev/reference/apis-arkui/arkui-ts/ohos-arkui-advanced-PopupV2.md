@@ -32,7 +32,7 @@ PopupV2(options: PopupV2InitInfo): void
 
 **装饰器类型：** @Builder
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +52,7 @@ PopupV2(options: PopupV2InitInfo): void
 
 定义PopupV2的具体样式参数。
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -80,7 +80,7 @@ PopupV2(options: PopupV2InitInfo): void
 
 PopupV2Button定义按钮的相关属性和事件。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

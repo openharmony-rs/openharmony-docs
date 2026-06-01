@@ -8,11 +8,13 @@
 
 分段按钮组件，包含页签类分段按钮、胶囊类单选分段按钮和胶囊类多选分段按钮。
 
->**说明：**
+> **说明：**
 >
->- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->- 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## 导入模块
@@ -41,17 +43,19 @@ import { SegmentButton, SegmentButtonOptions } from '@kit.ArkUI';
 
 ## SegmentButton
 
-ArkTS-Dyn: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
+ArkTS-Dyn: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked?: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
 
 ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[], onItemClicked: Callback\<int\>, maxFontScale: double \| Resource, enableStateAnimation: boolean })
 
 **装饰器类型：**@Component
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
->**说明：** 
+> **说明：** 
 >
 > - 分段按钮不支持[通用属性](ts-component-general-attributes.md)。分段按钮使用当前区域可使用的最大宽度作为组件宽度，并且根据按钮个数平均分配每个按钮宽度；分段按钮高度根据按钮内容（文本及图片）自动适应，其最小高度为28vp。
 >
@@ -59,20 +63,35 @@ ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[]
 
 | 名称            | 类型                                      | 必填 | 装饰器类型  | 说明                                                         |
 | --------------- | --------------------------------------------- | ---- | ----------- | ------------------------------------------------------------ |
-| options         | [SegmentButtonOptions](#segmentbuttonoptions) | 是   | @ObjectLink | 分段按钮选项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedIndexes | ArkTS-Dyn: number[]<br> ArkTS-Sta: int[]                                     | 是   | @Link       | 分段按钮的选中项编号，第一项的编号为0，之后顺序增加。<br/>**说明：**<br/>`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| onItemClicked<sup>13+</sup> | ArkTS-Dyn: Callback\<number\><br/> ArkTS-Sta: Callback\<int\>  | 否 | - | 当分段按钮选项被点击时，触发的回调函数接收被点击的选项下标作为参数。若不传入此参数，则点击时不触发回调。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23|
-| maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 分段按钮选项文字的最大字体放大倍数。<br/>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14 <br/> **ArkTS-Sta起始版本：** 23 |     
-| enableStateAnimation<sup>24+</sup>       | boolean   | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/> **ArkTS-Sta起始版本：** 24 |
+| options         | [SegmentButtonOptions](#segmentbuttonoptions) | 是   | @ObjectLink | 分段按钮选项。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedIndexes | ArkTS-Dyn: number[]<br> ArkTS-Sta: int[]                                     | 是   | @Link       | 分段按钮的选中项编号，第一项的编号为0，之后顺序增加。<br/> **说明：**<br/>`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| onItemClicked<sup>13+</sup> | ArkTS-Dyn: Callback\<number\><br/> ArkTS-Sta: Callback\<int\>  | 否 | - | 当分段按钮选项被点击时，触发的回调函数接收被点击的选项下标作为参数。若不传入此参数，则点击时不触发回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23|
+| maxFontScale<sup>14+</sup> | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 分段按钮选项文字的最大字体放大倍数。<br/>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14 <br/> **ArkTS-Sta起始版本：** 23 |     
+| enableStateAnimation<sup>24+</sup>       | boolean   | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/> **ArkTS-Sta起始版本：** 24 |
 
->**说明：** 
+> **说明：** 
 >
 >分段按钮不支持[通用属性](ts-component-general-attributes.md)。分段按钮使用当前区域可使用的最大宽度作为组件宽度，并且根据按钮个数平均分配每个按钮宽度；分段按钮高度根据按钮内容（文本及图片）自动适应，其最小高度为28vp。
 
+### build<sup>23+</sup>
+
+build(): void
+
+build函数用于构造SegmentButton高级组件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**装饰器类型：** [\@Builder](../../../ui/state-management/arkts-builder.md)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常， 异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Sta起始版本：** 23
 
 ## SegmentButtonOptions
 
->**说明：** 
+> **说明：** 
 > 
 > 不支持设置字体类型。
 
@@ -82,7 +101,7 @@ ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[]
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,27 +110,27 @@ ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[]
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                  | 类型                                                         | 只读                                                     | 可选                                                     | 说明                                                       |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| type                    | "tab" \|"capsule"                                  | 否                                       | 否                                       | 分段按钮组件的类型。<br/>**说明：**<br/>"tab"：页签类分段按钮，适用于页面或内容区域的切换场景。<br/>"capsule"：胶囊类分段按钮，适用于单选或多选的选择场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| multiply                | boolean                                                      | 否                                                  | 否                                               | 分段按钮组件是否可以多选。<br/>true: 可多选；false: 不可多选。页签类分段按钮只支持单选，设置`multiply`为`true`不生效。<br/>值为undefined时，分段按钮不支持多选。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| buttons                 | [SegmentButtonItemOptionsArray](#segmentbuttonitemoptionsarray) | 否 | 否 | 分段按钮组件的按钮信息，包括图标和文本信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否              | 分段按钮组件的按钮未选中态的文本颜色。<br/>值为undefined时，颜色为$r('sys.color.ohos_id_color_text_secondary')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否               | 分段按钮组件的按钮选中态的文本颜色。<br/>值为undefined时，type为"tab"时，颜色为`$r('sys.color.ohos_id_color_text_primary')`。<br/>type为"capsule"时，颜色为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| fontSize                | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 否           | 分段按钮组件的按钮未选中态的字体大小，不支持百分比设置。<br/>值为undefined时，字体大小为$r('sys.float.ohos_id_text_size_body2')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 否           | 分段按钮组件的按钮选中态的字体大小，不支持百分比设置。<br/>值为undefined时，字体大小为$r('sys.float.ohos_id_text_size_body2')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 否             | 分段按钮组件的按钮未选中态的字体粗细。<br/>值为undefined时，字体粗细为FontWeight.Regular。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 否             | 分段按钮组件的按钮选中态的字体粗细。<br/>值为undefined时，字体粗细为FontWeight.Medium。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的背景板颜色。<br/>值为undefined时，背景板颜色为$r('sys.color.ohos_id_color_button_normal')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的按钮选中态背景板颜色。<br/>值为undefined时，type为"tab"时，背景板颜色为`$r('sys.color.segment_button_checked_foreground_color')`。<br/>type为"capsule"时，背景板颜色为`$r('sys.color.ohos_id_color_emphasize')`。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | 否                     | 否                    | 分段按钮组件的图片尺寸。<br>值为undefined时，图片尺寸为{ width: 24, height: 24 }。<br>单位：vp <br>**说明：**<br/>`imageSize`属性对仅图标按钮和图标+文本按钮生效，对仅文字按钮无效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 否 | 分段按钮组件的按钮内边距。<br>值为undefined时，仅图标按钮和仅文字按钮内边距：`{ top: 4, right: 8, bottom: 4, left: 8 }`<br/>图标+文本按钮内边距：`{ top: 6, right: 8, bottom: 6, left: 8 }` <br>单位：vp <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 否 | 分段按钮组件的文本内边距。<br/>值为undefined时，文本内边距为0。<br>单位：vp<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是             | 分段按钮组件的按钮内边距。<br>默认值：<br>仅图标按钮和仅文字按钮默认值：`{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`<br>图标+文本按钮默认值：`{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
-| localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是               | 文本内边距。<br/>默认值：0<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
-| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                           | 是                                           | 分段按钮组件的布局方向。<br/>默认值：Direction.Auto<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
-| backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否               | 否              | 分段按钮组件的背景模糊材质。<br/>值为undefined时，背景模糊材质为BlurStyle.NONE。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
-| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23 |
-| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23  |
+| type                    | "tab" \|"capsule"                                  | 否                                       | 否                                       | 分段按钮组件的类型。<br/> **说明：**<br/>"tab"：页签类分段按钮，适用于页面或内容区域的切换场景。<br/>"capsule"：胶囊类分段按钮，适用于单选或多选的选择场景。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| multiply                | boolean                                                      | 否                                                  | 否                                               | 分段按钮组件是否可以多选。<br/>true: 可多选；false: 不可多选。页签类分段按钮只支持单选，设置`multiply`为`true`不生效。<br/>值为undefined时，分段按钮不支持多选。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| buttons                 | [SegmentButtonItemOptionsArray](#segmentbuttonitemoptionsarray) | 否 | 否 | 分段按钮组件的按钮信息，包括图标和文本信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否              | 分段按钮组件的按钮未选中态的文本颜色。<br/>值为undefined时，颜色为$r('sys.color.ohos_id_color_text_secondary')。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否               | 分段按钮组件的按钮选中态的文本颜色。<br/>值为undefined时，type为"tab"时，颜色为`$r('sys.color.ohos_id_color_text_primary')`。<br/>type为"capsule"时，颜色为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| fontSize                | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 否           | 分段按钮组件的按钮未选中态的字体大小，不支持百分比设置。<br/>值为undefined时，字体大小为$r('sys.float.ohos_id_text_size_body2')。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 否           | 分段按钮组件的按钮选中态的字体大小，不支持百分比设置。<br/>值为undefined时，字体大小为$r('sys.float.ohos_id_text_size_body2')。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 否             | 分段按钮组件的按钮未选中态的字体粗细。<br/>值为undefined时，字体粗细为FontWeight.Regular。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 否             | 分段按钮组件的按钮选中态的字体粗细。<br/>值为undefined时，字体粗细为FontWeight.Medium。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的背景板颜色。<br/>值为undefined时，背景板颜色为$r('sys.color.ohos_id_color_button_normal')。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的按钮选中态背景板颜色。<br/>值为undefined时，type为"tab"时，背景板颜色为`$r('sys.color.segment_button_checked_foreground_color')`。<br/>type为"capsule"时，背景板颜色为`$r('sys.color.ohos_id_color_emphasize')`。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | 否                     | 否                    | 分段按钮组件的图片尺寸。<br>值为undefined时，图片尺寸为{ width: 24, height: 24 }。<br>单位：vp <br> **说明：**<br/>`imageSize`属性对仅图标按钮和图标+文本按钮生效，对仅文字按钮无效果。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 否 | 分段按钮组件的按钮内边距。<br>值为undefined时，仅图标按钮和仅文字按钮内边距：`{ top: 4, right: 8, bottom: 4, left: 8 }`<br/>图标+文本按钮内边距：`{ top: 6, right: 8, bottom: 6, left: 8 }` <br>单位：vp <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 否 | 分段按钮组件的文本内边距。<br/>值为undefined时，文本内边距为0。<br>单位：vp<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是             | 分段按钮组件的按钮内边距。<br>默认值：<br>仅图标按钮和仅文字按钮默认值：`{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`<br>图标+文本按钮默认值：`{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`<br/>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是               | 文本内边距。<br/>默认值：0<br/>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                           | 是                                           | 分段按钮组件的布局方向。<br/>默认值：Direction.Auto<br/>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否               | 否              | 分段按钮组件的背景模糊材质。<br/>值为undefined时，背景模糊材质为BlurStyle.NONE。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23 |
+| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/> **说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23 |
+| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/> **说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23  |
 
 ### constructor
 
@@ -119,7 +138,7 @@ constructor(options: TabSegmentButtonOptions | CapsuleSegmentButtonOptions)
 
 构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,7 +160,7 @@ static tab(options: TabSegmentButtonConstructionOptions): SegmentButtonOptions
 
 创建SegmentButtonOptions类，用于定义页签。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,7 +188,7 @@ static capsule(options: CapsuleSegmentButtonConstructionOptions): SegmentButtonO
 
 创建胶囊类的SegmentButtonOptions。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -197,7 +216,7 @@ type DimensionNoPercentage = PX | VP | FP | LPX | Resource
 
 不支持百分比类型的长度的联合类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,36 +246,36 @@ type DimensionNoPercentage = PX | VP | FP | LPX | Resource
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否 | 是                  | 按钮未选中态的文本颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_secondary')<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | 否 | 是                  | 按钮选中态的文本颜色。<br/>type为"tab"时，默认值为`$r('sys.color.ohos_id_color_text_primary')`。<br/>type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| fontSize                | [DimensionNoPercentage](#dimensionnopercentage)              | 否 | 是             | 按钮未选中态的字体大小（不支持百分比设置）。<br/>默认值：$r('sys.float.ohos_id_text_size_body2')<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | 否 | 是             | 按钮选中态的字体大小（不支持百分比设置）。<br/>默认值：$r('sys.float.ohos_id_text_size_body2')<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | 否 | 是               | 按钮未选中态的字体粗细。<br/>默认值：FontWeight.Regular<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | 否 | 是               | 按钮选中态的字体粗细。<br/>默认值：FontWeight.Medium。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否 | 是                  | 底板颜色。<br/>默认值：$r('sys.color.ohos_id_color_button_normal')<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否 | 是                  | 按钮选中态底板颜色。<br/>type为"tab"时，默认值为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | 否 | 是                      | 图片尺寸，默认值：{ width: 24, height: 24 }。<br/>**说明：**<br/>`imageSize`属性对仅图标按钮和图标+文本按钮生效，对仅文字按钮无效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 是 | 按钮内边距，默认值：仅图标按钮和仅文字按钮`{ top: 4, right: 8, bottom: 4, left: 8 }`，图标+文本按钮`{ top: 6, right: 8, bottom: 6, left: 8 }`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 是 | 文本内边距。<br/>默认值：0<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否 | 是                | 按钮内边距，默认值：仅图标按钮和仅文字按钮`{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`，图标+文本按钮`{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
-| localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否 | 是                | 文本内边距。<br/>默认值：0<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
-| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否 | 是                                            | 布局方向。<br/>默认值：Direction.Auto<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
-| backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否 | 是                | 背景模糊材质。<br/>默认值：BlurStyle.NONE<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23 |
-| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23 |
-| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23|
+| fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否 | 是                  | 按钮未选中态的文本颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_secondary')<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | 否 | 是                  | 按钮选中态的文本颜色。<br/>type为"tab"时，默认值为`$r('sys.color.ohos_id_color_text_primary')`。<br/>type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| fontSize                | [DimensionNoPercentage](#dimensionnopercentage)              | 否 | 是             | 按钮未选中态的字体大小（不支持百分比设置）。<br/>默认值：$r('sys.float.ohos_id_text_size_body2')<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | 否 | 是             | 按钮选中态的字体大小（不支持百分比设置）。<br/>默认值：$r('sys.float.ohos_id_text_size_body2')<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | 否 | 是               | 按钮未选中态的字体粗细。<br/>默认值：FontWeight.Regular<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | 否 | 是               | 按钮选中态的字体粗细。<br/>默认值：FontWeight.Medium。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否 | 是                  | 底板颜色。<br/>默认值：$r('sys.color.ohos_id_color_button_normal')<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否 | 是                  | 按钮选中态底板颜色。<br/>type为"tab"时，默认值为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | 否 | 是                      | 图片尺寸，默认值：{ width: 24, height: 24 }。<br/> **说明：**<br/>`imageSize`属性对仅图标按钮和图标+文本按钮生效，对仅文字按钮无效果。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 是 | 按钮内边距，默认值：仅图标按钮和仅文字按钮`{ top: 4, right: 8, bottom: 4, left: 8 }`，图标+文本按钮`{ top: 6, right: 8, bottom: 6, left: 8 }`。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 是 | 文本内边距。<br/>默认值：0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否 | 是                | 按钮内边距，默认值：仅图标按钮和仅文字按钮`{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`，图标+文本按钮`{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否 | 是                | 文本内边距。<br/>默认值：0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否 | 是                                            | 布局方向。<br/>默认值：Direction.Auto<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否 | 是                | 背景模糊材质。<br/>默认值：BlurStyle.NONE<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23 |
+| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/> **说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23 |
+| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/> **说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23|
 
 ## BorderRadiusMode<sup>20+</sup>
 
 边框圆角模式枚举，用于控制分段按钮的圆角计算方式。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -273,7 +292,7 @@ type DimensionNoPercentage = PX | VP | FP | LPX | Resource
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -295,7 +314,7 @@ type DimensionNoPercentage = PX | VP | FP | LPX | Resource
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -318,11 +337,11 @@ ArkTS-Sta: type ItemRestriction\<T> = Array\<T>
 
 保存按钮信息的元组类型。
 
->**说明：**
+> **说明：**
 >
 >分段按钮组件仅支持2到5个按钮。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -336,7 +355,7 @@ ArkTS-Sta: type ItemRestriction\<T> = Array\<T>
 | ----------------------------------------- | --------------------------------- |
 |ArkTS-Dyn: [T, T, T?, T?, T?]<br/> ArkTS-Sta: Array\<T> | ArkTS-Dyn: 表示包含2~5个相同类型元素的元组。<br/> ArkTS-Sta: 表示元素类型为T的数组，数组大小为2~5，数组元素个数小于2时，按钮无法显示，大于5时，仅显示数组前五个元素的按钮。|
 
->**说明：** 
+> **说明：** 
 > 
 >分段按钮组件仅支持2到5个按钮。
 
@@ -346,7 +365,7 @@ type SegmentButtonItemTuple = ItemRestriction\<SegmentButtonTextItem> | ItemRest
 
 用于保存按钮信息的元组的联合类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -368,7 +387,7 @@ type SegmentButtonItemArray = Array\<SegmentButtonTextItem> | Array\<SegmentButt
 
 用于保存按钮信息的数组的联合类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -390,7 +409,7 @@ type SegmentButtonItemArray = Array\<SegmentButtonTextItem> | Array\<SegmentButt
 
 **装饰器类型：** @Observed
 
->**说明：**
+> **说明：**
 >
 >SegmentButtonItemOptionsArray仅支持保存2到5个按钮信息元素。
 
@@ -400,7 +419,7 @@ constructor(elements: SegmentButtonItemTuple)
 
 构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -422,11 +441,11 @@ push(...items: SegmentButtonItemArray): number
 
 在数组末尾添加新的元素，返回添加元素后数组的长度。
 
->**说明：**
+> **说明：**
 >
->SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
+> SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -454,9 +473,9 @@ push(item: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconText
 
 在数组末尾添加一个新的元素，返回添加元素后数组的长度。
 
->**说明：**
+> **说明：**
 >
->分段按钮组件数组仅支持保存2到5个按钮信息，若超过分段按钮组件数量个数的限制，添加按钮信息元素失败。
+> SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -470,7 +489,7 @@ push(item: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconText
 
 | 参数名 | 类型                                              | 必填 | 说明                   |
 | ------ | ------------------------------------------------- | ---- | ---------------------- |
-| item  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttontextitem) | 是   | 被添加的按钮信息。 |
+| item  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 被添加的按钮信息。 |
 
 **返回值：**
 
@@ -484,9 +503,9 @@ push(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTex
 
 在数组末尾添加两个新的元素，返回添加元素后数组的长度。
 
->**说明：**
+> **说明：**
 >
->SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
+> SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -500,8 +519,8 @@ push(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTex
 
 | 参数名 | 类型                                              | 必填 | 说明                   |
 | ------ | ------------------------------------------------- | ---- | ---------------------- |
-| item1  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonTextItem](#segmentbuttontextitem) | 是   | 被添加的第一个按钮信息。 |
-| item2  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonTextItem](#segmentbuttontextitem) | 是   | 被添加的第二个按钮信息。 |
+| item1  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 被添加的第一个按钮信息。 |
+| item2  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 被添加的第二个按钮信息。 |
 
 **返回值：**
 
@@ -515,9 +534,9 @@ push(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTex
 
 在数组末尾添加三个新的元素，返回添加元素后数组的长度。
 
->**说明：**
+> **说明：**
 >
->SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
+> SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -531,9 +550,9 @@ push(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTex
 
 | 参数名 | 类型                                              | 必填 | 说明                   |
 | ------ | ------------------------------------------------- | ---- | ---------------------- |
-| item1  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonTextItem](#segmentbuttontextitem) | 是   | 被添加的第一个按钮信息。 |
-| item2  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonTextItem](#segmentbuttontextitem) | 是   | 被添加的第二个按钮信息。 |
-| item3  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonTextItem](#segmentbuttontextitem) | 是   | 被添加的第三个按钮信息。 |
+| item1  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 被添加的第一个按钮信息。 |
+| item2  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 被添加的第二个按钮信息。 |
+| item3  | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 被添加的第三个按钮信息。 |
 
 **返回值：**
 
@@ -547,11 +566,11 @@ pop(): SegmentButtonItemOptions | undefined
 
 移除数组末尾最后一个元素，返回被移除的元素。
 
->**说明：**
->
->SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
+> **说明：** 
+> 
+> 分段按钮组件数组仅支持保存2到5个按钮信息，若移除后按钮组件数量不在个数限制范围内，移除按钮信息元素失败。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -566,10 +585,6 @@ pop(): SegmentButtonItemOptions | undefined
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [SegmentButtonItemOptions](#segmentbuttonitemoptions)&nbsp;\|&nbsp;undefined | 被移除的元素。 |
-
->**说明：** 
-> 
->分段按钮组件数组仅支持保存2到5个按钮信息，若移除后按钮组件数量不在个数限制范围内，移除按钮信息元素失败。
 
 ### shift
 
@@ -577,7 +592,11 @@ shift(): SegmentButtonItemOptions | undefined
 
 移除数组开头第一个元素，返回被移除的元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+> **说明：** 
+> 
+> 分段按钮组件数组仅支持保存2到5个按钮信息，若移除后按钮组件数量不在个数限制范围内，移除按钮信息元素失败。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -593,17 +612,17 @@ shift(): SegmentButtonItemOptions | undefined
 | ------------------------------------------------------------ | -------------- |
 | [SegmentButtonItemOptions](#segmentbuttonitemoptions)&nbsp;\|&nbsp;undefined | 被移除的元素。 |
 
->**说明：** 
-> 
->分段按钮组件数组仅支持保存2到5个按钮信息，若移除后按钮组件数量不在个数限制范围内，移除按钮信息元素失败。
-
 ### unshift
 
 unshift(...items: SegmentButtonItemArray): number
 
 在数组开头添加一个新的元素，返回添加元素后数组的长度。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+> **说明：**
+>
+> SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -614,7 +633,6 @@ unshift(...items: SegmentButtonItemArray): number
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：**
-
 
 | 参数名 | 类型                                              | 必填 | 说明                   |
 | ------ | ------------------------------------------------- | ---- | ---------------------- |
@@ -632,9 +650,9 @@ unshift(item: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconT
 
 在数组开头添加一个新的元素，返回添加元素后数组的长度。
 
->**说明：**
+> **说明：**
 >
->SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
+> SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -646,7 +664,7 @@ unshift(item: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconT
 
 | 参数名  | 类型                                              | 必填 | 说明                 |
 | ----- | ------------------------------------------------- | ---- | -------------------- |
-| items | [SegmentButtonItemArray](#segmentbuttonitemarray) | 否 | 添加的按钮信息数组。<br>默认值：0个被添加的按钮信息数组。 |
+| item | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 添加的按钮信息。 |
 
 **返回值：**
 
@@ -660,9 +678,9 @@ unshift(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIcon
 
 在数组开头添加两个新的元素，返回添加元素后数组的长度。
 
->**说明：**
+> **说明：**
 >
->分段按钮组件数组仅支持保存2到5个按钮信息，若超过分段按钮组件数量个数的限制，添加按钮信息元素失败。
+> 分段按钮组件数组仅支持保存2到5个按钮信息，若超过分段按钮组件数量个数的限制，添加按钮信息元素失败。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -674,8 +692,8 @@ unshift(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIcon
 
 | 参数名  | 类型                                              | 必填 | 说明                 |
 | ----- | ------------------------------------------------- | ---- | -------------------- |
-| item1 | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonTextItem](#segmentbuttontextitem) | 是   | 添加的第一个按钮信息。 |
-| item2 | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonTextItem](#segmentbuttontextitem) | 是   | 添加的第二个按钮信息。 |
+| item1 | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 添加的第一个按钮信息。 |
+| item2 | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 添加的第二个按钮信息。 |
 
 **返回值：**
 
@@ -689,9 +707,9 @@ unshift(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIcon
 
 在数组开头添加三个新的元素，返回添加元素后数组的长度。
 
->**说明：**
+> **说明：**
 >
->SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
+> SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -703,9 +721,9 @@ unshift(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIcon
 
 | 参数名  | 类型                                              | 必填 | 说明                 |
 | ----- | ------------------------------------------------- | ---- | -------------------- |
-| item1 | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonTextItem](#segmentbuttontextitem) | 是   | 添加的第一个按钮信息。 |
-| item2 | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonTextItem](#segmentbuttontextitem) | 是   | 添加的第二个按钮信息。 |
-| item3 | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonTextItem](#segmentbuttontextitem) | 是   | 添加的第三个按钮信息。 |
+| item1 | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 添加的第一个按钮信息。 |
+| item2 | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 添加的第二个按钮信息。 |
+| item3 | [SegmentButtonTextItem](#segmentbuttontextitem) &nbsp;\|&nbsp; [SegmentButtonIconItem](#segmentbuttoniconitem) &nbsp;\|&nbsp; [SegmentButtonIconTextItem](#segmentbuttonicontextitem) | 是   | 添加的第三个按钮信息。 |
 
 **返回值：**
 
@@ -721,11 +739,11 @@ ArkTS-Sta: splice(start: int, deleteCount: int, ...items: SegmentButtonItemOptio
 
 在数组中，删除从start位置开始的deleteCount数量的元素，并插入items中的元素，返回一个包含了被删除的元素的数组。
 
->**说明：**
+> **说明：**
 >
->SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
+> SegmentButton是仅支持显示2到5个按钮的分段按钮组件，同时SegmentButtonItemOptionsArray也只保存这2到5个按钮的具体信息，当超过按钮信息个数限制此方法无效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -749,7 +767,7 @@ ArkTS-Sta: splice(start: int, deleteCount: int, ...items: SegmentButtonItemOptio
 | ------------------------------------------------------- | ------------------------------ |
 | [SegmentButtonItemOptions](#segmentbuttonitemoptions)[] | 返回包含了被删除的元素的数组。 |
 
->**说明：** 
+> **说明：** 
 > 
 >分段按钮组件数组仅保存2到5个按钮信息，若超过分段按钮组件数量个数的限制，不再删除和替换按钮信息元素。
 
@@ -759,7 +777,7 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 创建一个SegmentButtonItemOptionsArray对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -786,7 +804,7 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 页签类分段按钮选项。继承自[TabSegmentButtonConstructionOptions](#tabsegmentbuttonconstructionoptions)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -804,7 +822,7 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 胶囊类分段按钮选项。继承自[CapsuleSegmentButtonConstructionOptions](#capsulesegmentbuttonconstructionoptions)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -828,9 +846,9 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 按钮文本。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| accessibilityLevel<sup>13+</sup> | string | 否 | 是   | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br/>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
-| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) |  否  | 是  | 无障碍说明，为用户解释组件操作，设置详细解释文本，帮助用户理解操作后果。若组件有文本和无障碍说明，选中时先播报文本，再播报无障碍说明。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
+| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 按钮文本。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| accessibilityLevel<sup>13+</sup> | string | 否 | 是   | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br/>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
+| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) |  否  | 是  | 无障碍说明，为用户解释组件操作，设置详细解释文本，帮助用户理解操作后果。若组件有文本和无障碍说明，选中时先播报文本，再播报无障碍说明。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## SegmentButtonIconItem
 
@@ -842,14 +860,14 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| icon         | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 未选中态的按钮图标。<br/>值为undefined时，不显示图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 选中态的按钮图标。<br/>值为undefined时，不显示图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23   |
-| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
-| accessibilityLevel<sup>13+</sup> | string | 否 | 是   | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br/>值为undefined时，按默认值处理<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23   |
-| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。默认值为空字符串。<br/>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
+| icon         | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 未选中态的按钮图标。<br/>值为undefined时，不显示图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 选中态的按钮图标。<br/>值为undefined时，不显示图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23   |
+| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
+| accessibilityLevel<sup>13+</sup> | string | 否 | 是   | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br/>值为undefined时，按默认值处理<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23   |
+| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。默认值为空字符串。<br/>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
 
->**说明：**
+> **说明：**
 >
 >未选中态的图标`icon`和选中态的图标`selectedIcon`都需设置，单独设置无效。
 
@@ -865,16 +883,16 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| icon         | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 未选中态的按钮图标。<br/>值为undefined时，不显示图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 选中态的按钮图标。<br/>值为undefined时，不显示图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23   |
-| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23   |
-| text         | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 按钮文本。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   <br/>值为undefined时，不显示文本内容。  <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23      |
-| text         | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 按钮文本。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23      |
-| accessibilityLevel<sup>13+</sup> | string | 否 | 是   | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br/>值为undefined时，按默认值处理<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23   |
-| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。默认值为空字符串。<br/>值为undefined时，按默认值处理<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23   |
+| icon         | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 未选中态的按钮图标。<br/>值为undefined时，不显示图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 选中态的按钮图标。<br/>值为undefined时，不显示图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23   |
+| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23   |
+| text         | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 按钮文本。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。   <br/>值为undefined时，不显示文本内容。  <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23      |
+| text         | [ResourceStr](ts-types.md#resourcestr) | 否 | 否   | 按钮文本。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23      |
+| accessibilityLevel<sup>13+</sup> | string | 否 | 是   | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br/>值为undefined时，按默认值处理<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23   |
+| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。默认值为空字符串。<br/>值为undefined时，按默认值处理<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23   |
 
->**说明：**
+> **说明：**
 >
 >未选中态的图标`icon`和选中态的图标`selectedIcon`都需设置，单独设置无效。
 
@@ -892,13 +910,13 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| icon         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态的按钮图标。默认值为不显示未选中态的按钮图标。<br>值为undefined时，按默认值处理。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。 <br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态的按钮图标。默认值为不显示选中态的按钮图标。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23  |
-| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
-| text         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 按钮文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23        |
-| accessibilityLevel<sup>13+</sup> | string | 否 | 是   | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
-| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
+| icon         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态的按钮图标。默认值为不显示未选中态的按钮图标。<br>值为undefined时，按默认值处理。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态的按钮图标。默认值为不显示选中态的按钮图标。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23  |
+| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
+| text         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 按钮文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。   <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23        |
+| accessibilityLevel<sup>13+</sup> | string | 否 | 是   | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
+| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
 
 ### constructor
 
@@ -906,7 +924,7 @@ constructor(options: SegmentButtonItemOptionsConstructorOptions)
 
 构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -935,13 +953,13 @@ constructor(options: SegmentButtonItemOptionsConstructorOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| icon         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态的按钮图标。默认值为不显示未选中态的按钮图标。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态的按钮图标。默认值为不显示选中态的按钮图标。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23  |
-| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
-| text         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 按钮文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23       |
-| accessibilityLevel<sup>13+</sup> | string | 否 | 是   | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
-| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
+| icon         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态的按钮图标。默认值为不显示未选中态的按钮图标。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 未选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态的按钮图标。默认值为不显示选中态的按钮图标。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23  |
+| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 选中态按钮图标的无障碍文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
+| text         | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 按钮文本。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23       |
+| accessibilityLevel<sup>13+</sup> | string | 否 | 是   | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
+| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。默认值为空字符串。<br>值为undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23  |
 
 ## 示例
 

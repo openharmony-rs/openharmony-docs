@@ -15,6 +15,8 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 以下API需先使用UIContext中的[getComponentSnapshot()](./arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
 >
 > - 缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的还是图形变换前的效果。
@@ -29,7 +31,7 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,7 +114,7 @@ ArkTS-Sta: get(id: string, options?: componentSnapshot.SnapshotOptions): Promise
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,7 +203,7 @@ ArkTS-Sta: createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<ima
 >
 > - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -301,7 +303,7 @@ ArkTS-Sta: createFromBuilder(builder: CustomBuilder, delay?: int, checkImageStat
 >
 > - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -404,7 +406,7 @@ ArkTS-Sta: getSync(id: string, options?: componentSnapshot.SnapshotOptions): ima
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -489,7 +491,7 @@ ArkTS-Sta: getWithUniqueId(uniqueId: int, options?: componentSnapshot.SnapshotOp
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -595,7 +597,7 @@ ArkTS-Sta: getSyncWithUniqueId(uniqueId: int, options?: componentSnapshot.Snapsh
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -694,7 +696,7 @@ ArkTS-Sta: createFromComponent\<T extends Object>(content: ComponentContent\<T>,
 
 将传入的content对象进行截图。使用Promise异步回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -809,3 +811,128 @@ struct Index {
 }
 ```
 
+## getSizeLimitation
+
+getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
+
+查询组件截图的最大尺寸限制。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                                                           | 说明             |
+| ------------------------------------------------------------ | -------------- |
+| componentSnapshot.[SnapshotSizeLimitation](js-apis-arkui-componentSnapshot.md#snapshotsizelimitation) | 组件截图的尺寸限制信息。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct SnapshotColorModeExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image($r('app.media.startIcon'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
+      }
+
+      Button("click to generate UI snapshot")
+        .onClick(() => {
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          // 检查尺寸限制
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+          // 验证节点尺寸是否符合最大尺寸限制
+          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
+            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
+            this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+              if (error) {
+                console.error(`error: ${JSON.stringify(error)}`)
+                return;
+              }
+              this.pixmap = pixmap
+            })
+          }
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Image, $r, Row, HorizontalAlign, Column, Component, Button, Color } from '@kit.ArkUI';
+import { BusinessError } from '@ohos.base';
+import { State } from '@ohos.arkui.stateManagement';
+import image from '@ohos.multimedia.image';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct SnapshotColorModeExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image($r('app.media.startIcon'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id('root')
+      }
+
+      Button('click to generate UI snapshot')
+        .onClick(() => {
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          // 检查尺寸限制
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+          // 验证节点尺寸是否符合最大尺寸限制
+          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
+            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
+            this.getUIContext().getComponentSnapshot().get('root', (error: BusinessError|null, pixmap: image.PixelMap|undefined) => {
+              if (pixmap) {
+                this.pixmap = pixmap
+              } else {
+                console.error('error: ' + JSON.stringify(error))
+                return;
+              }
+            })
+          }
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```

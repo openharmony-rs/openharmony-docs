@@ -2,7 +2,7 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @yhf-->
+<!--Owner: @HarMonkey-->
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
@@ -1234,4 +1234,4 @@ type AssetMap = Map\<Tag, Value>
 | LIMIT_EXCEEDED | 24000016   |缓存数量超限。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | UNSUPPORTED | 24000017   |该子功能不支持。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | PARAM_VERIFICATION_FAILED<sup>20+</sup> | 24000018   |参数校验失败。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| INCONSISTENT_ATTRIBUTE | 24000019   |属性值不一致。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。|
+| INCONSISTENT_ATTRIBUTE | 24000019   |属性值不一致。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|

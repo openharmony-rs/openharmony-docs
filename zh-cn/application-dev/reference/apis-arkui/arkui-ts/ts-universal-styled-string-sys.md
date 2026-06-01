@@ -28,6 +28,10 @@ static marshalling(styledString: StyledString): ArrayBuffer
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -49,6 +53,10 @@ static marshalling(styledString: StyledString, callback: StyledStringMarshallCal
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -72,6 +80,10 @@ static unmarshalling(buffer: ArrayBuffer): Promise\<StyledString>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -103,6 +115,10 @@ static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallba
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -136,6 +152,10 @@ type StyledStringMarshallingValue = UserDataSpan
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型  | 说明   |
 | ------ | ---------- |
 | [UserDataSpan](ts-universal-styled-string.md#userdataspan) | UserDataSpan样式。 |
@@ -149,6 +169,10 @@ type StyledStringMarshallCallback = (marshallableVal: StyledStringMarshallingVal
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -171,6 +195,10 @@ type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledStringMarshall
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

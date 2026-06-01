@@ -32,9 +32,9 @@ Marquee(options: MarqueeOptions)
 
 创建跑马灯组件。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +66,13 @@ Marquee初始化参数。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| start<sup>8+</sup> | boolean | 否 | 否 | 控制跑马灯是否进入播放状态。<br/>true：播放；false：不播放。<br/>**说明：**<br/>有限的滚动次数播放完毕后，不可以通过改变start重置滚动次数重新开始播放。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
-| step<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 滚动动画文本滚动步长。当step大于Marquee的文本宽度时，取默认值。<br/>默认值：6 <br/>单位：[vp](ts-pixel-units.md#基本像素单位) <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
-| loop<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 设置重复滚动的次数，小于等于零时无限循环。<br/>默认值：-1<br/>**说明：**<br/>ArkTS卡片上该参数设置任意值都仅在可见时滚动一次。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
-| fromStart<sup>8+</sup> | boolean | 否 | 是 | 设置文本从头开始滚动或反向滚动。<br/>true：表示从头开始滚动<br/>false：表示反向滚动。<br/>默认值：true<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
-| src<sup>8+</sup> | string | 否 | 否 | 需要滚动的文本。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 两轮跑马灯之间的间距。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br/> 默认值：跑马灯组件宽度。 <br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
-| delay<sup>23+</sup> | ArkTS-Dyn: number <br > ArkTS-Sta: int | 否 | 是 | 设置每次滚动的时间间隔。<br/>默认值：0 <br/>取值范围：[0, +∞)，设置的值小于0时等价于设置0。<br/>单位：毫秒<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
+| start<sup>8+</sup> | boolean | 否 | 否 | 控制跑马灯是否进入播放状态。<br/>true：播放；false：不播放。<br/>**说明：**<br/>有限的滚动次数播放完毕后，不可以通过改变start重置滚动次数重新开始播放。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
+| step<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 滚动动画文本滚动步长。当step大于Marquee的文本宽度时，取默认值。<br/>默认值：6 <br/>单位：[vp](ts-pixel-units.md#基本像素单位) <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
+| loop<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 设置重复滚动的次数，小于等于零时无限循环。<br/>默认值：-1<br/>**说明：**<br/>ArkTS卡片上该参数设置任意值都仅在可见时滚动一次。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
+| fromStart<sup>8+</sup> | boolean | 否 | 是 | 设置文本从头开始滚动或反向滚动。<br/>true：表示从头开始滚动<br/>false：表示反向滚动。<br/>默认值：true<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| src<sup>8+</sup> | string | 否 | 否 | 需要滚动的文本。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 两轮跑马灯之间的间距。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br/> 默认值：跑马灯组件宽度。 <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
+| delay<sup>23+</sup> | ArkTS-Dyn: number <br > ArkTS-Sta: int | 否 | 是 | 设置每次滚动的时间间隔。<br/>默认值：0 <br/>取值范围：[0, +∞)，设置的值小于0时等价于设置0。<br/>单位：毫秒<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## 属性
 
@@ -106,9 +106,9 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 设置字体颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,9 +130,9 @@ ArkTS-Sta: fontSize(value: Length | undefined)
 
 设置字体大小。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,9 +154,9 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
 
 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,9 +178,9 @@ ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 设置字体列表。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -202,9 +202,9 @@ ArkTS-Sta: allowScale(value: boolean | undefined)
 
 设置是否允许文本缩放。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -226,7 +226,7 @@ ArkTS-Sta: marqueeUpdateStrategy(value: MarqueeUpdateStrategy | undefined)
 
 跑马灯组件属性更新后，跑马灯的滚动策略。(当跑马灯为播放状态，且文本内容宽度超过跑马灯组件宽度时，该属性生效。)
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -252,9 +252,9 @@ ArkTS-Sta: onStart(event:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 当滚动的文本内容变化或者开始滚动时触发回调。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -276,9 +276,9 @@ ArkTS-Sta: onBounce(event:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 完成一次滚动时触发，若循环次数不为1，则该事件会多次触发。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -300,9 +300,9 @@ ArkTS-Sta: onFinish(event:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 滚动全部循环次数完成时触发回调。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -326,9 +326,9 @@ ArkTS-Sta: onStop(event: VoidCallback \| undefined)
 
 跑马灯停止表示跑马灯将从开始位置，重新开始循环，不包含暂停场景，暂停不会触发该回调。
 
-**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

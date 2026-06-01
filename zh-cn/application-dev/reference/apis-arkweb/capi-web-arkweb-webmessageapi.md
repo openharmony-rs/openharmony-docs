@@ -56,7 +56,7 @@ ArkWeb_WebMessagePtr (*createWebMessage)()
 
 | 类型                       | 说明 |
 |--------------------------|----|
-| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) | 消息结构体。   |
+| [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) | 消息结构体指针。   |
 
 ### destroyWebMessage()
 

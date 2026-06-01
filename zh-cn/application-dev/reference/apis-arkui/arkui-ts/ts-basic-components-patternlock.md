@@ -26,7 +26,7 @@ PatternLock(controller?: PatternLockController)
 
 创建图案密码锁组件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +74,7 @@ ArkTS-Sta: sideLength(value: Length | undefined)
 > 
 > PatternLock组件设置了通用属性宽高比[aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)，且不等于1时（组件尺寸被设定为长方形），九宫格依然绘制为正方形（超出组件范围）。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,7 +96,7 @@ ArkTS-Sta: circleRadius(value: Length | undefined)
 
 设置宫格中圆点的半径。设置为0或负数时，取默认值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,7 +121,7 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,7 +143,7 @@ ArkTS-Sta: regularColor(value: ResourceColor | undefined)
 
 设置宫格圆点在“未选中”状态的填充颜色。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -165,7 +165,7 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 设置宫格圆点在“选中”状态的填充颜色。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,7 +187,7 @@ ArkTS-Sta: activeColor(value: ResourceColor | undefined)
 
 设置宫格圆点在“激活”状态的填充颜色，“激活”状态为手指经过圆点但还未选中的状态。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,7 +209,7 @@ ArkTS-Sta: pathColor(value: ResourceColor | undefined)
 
 设置连线的颜色。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -231,7 +231,7 @@ ArkTS-Sta: pathStrokeWidth(value: double | string | undefined)
 
 设置连线的宽度。设置为0或负数时连线不显示。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -253,7 +253,7 @@ ArkTS-Sta: autoReset(value: boolean | undefined)
 
 设置在完成密码输入后再次在组件区域按下时是否重置组件状态。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -275,7 +275,7 @@ ArkTS-Sta: activateCircleStyle(options: CircleStyleOptions | undefined)
 
 设置宫格圆点在“激活”状态下的背景圆环样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -299,7 +299,7 @@ ArkTS-Sta: skipUnselectedPoint(skipped: boolean | undefined)
 
 设置未选中的宫格圆点在密码路径经过时是否自动选中。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -325,7 +325,7 @@ onPatternComplete(callback: (input: Array\<number\>) => void)
 
 密码输入结束时触发该回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -375,7 +375,7 @@ ArkTS-Sta: onDotConnect(callback: Callback\<int\> | undefined)
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -402,10 +402,10 @@ ArkTS-Sta: onDotConnect(callback: Callback\<int\> | undefined)
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 背景圆环颜色。 <br/>默认值：'#33182431'。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 背景圆环的半径。<br/>默认值：[circleRadius](#circleradius)的1.833倍（即11/6）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
-| enableWaveEffect | boolean | 否 | 是 | 选中宫格圆点后的波浪效果开关。<br/>true：显示波浪效果；false：不显示波浪效果。<br/>默认值：true。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
-| enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否显示在宫格圆点上层。<br/>true：背景圆环显示在宫格圆点上层，遮盖宫格圆点；false：背景圆环显示在宫格圆点下层，不遮盖宫格圆点。<br/>默认值：false。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 背景圆环颜色。 <br/>默认值：'#33182431'。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 背景圆环的半径。<br/>默认值：[circleRadius](#circleradius)的1.833倍（即11/6）。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
+| enableWaveEffect | boolean | 否 | 是 | 选中宫格圆点后的波浪效果开关。<br/>true：显示波浪效果；false：不显示波浪效果。<br/>默认值：true。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
+| enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否显示在宫格圆点上层。<br/>true：背景圆环显示在宫格圆点上层，遮盖宫格圆点；false：背景圆环显示在宫格圆点下层，不遮盖宫格圆点。<br/>默认值：false。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## PatternLockController
 
@@ -423,7 +423,7 @@ constructor()
 
 PatternLockController的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -439,7 +439,7 @@ ArkTS-Sta: reset(): void
 
 重置组件状态。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -453,7 +453,7 @@ setChallengeResult(result: PatternLockChallengeResult): void
 
 设置图案密码的正确或错误状态。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -471,7 +471,7 @@ setChallengeResult(result: PatternLockChallengeResult): void
 
 图案密码状态。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

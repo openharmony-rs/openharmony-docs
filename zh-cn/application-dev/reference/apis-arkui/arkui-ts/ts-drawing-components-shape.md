@@ -57,6 +57,8 @@ Shape(value?: PixelMap)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -387,9 +389,9 @@ ArkTS-Sta: mesh(value: Array&lt;double&gt; | undefined, column: int | undefined,
 
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: Array&lt;any&gt; <br/>ArkTS-Sta: Array&lt;double&gt; \| undefined | 是   | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>设置异常值undefined、null时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。 |
-| column | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined              | 是   | mesh矩阵列数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
-| row    | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined              | 是   | mesh矩阵行数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
+| value  | ArkTS-Dyn: Array&lt;any&gt; <br/>ArkTS-Sta: Array&lt;double&gt; \| undefined | 是   | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>ArkTS-Dyn: 设置异常值undefined、null时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。<br/>ArkTS-Sta: 设置异常值undefined时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。 |
+| column | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined              | 是   | mesh矩阵列数。<br/>ArkTS-Dyn: 设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。<br/>ArkTS-Sta: 设置异常值undefined时column和row按0处理，value按空数组处理。 |
+| row    | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined              | 是   | mesh矩阵行数。<br/>ArkTS-Dyn: 设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。<br/>ArkTS-Sta: 设置异常值undefined时column和row按0处理，value按空数组处理。 |
 
 ## 示例
 

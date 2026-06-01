@@ -30,9 +30,9 @@
 
 Span(value: string | Resource)
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,9 +59,9 @@ ArkTS-Sta: decoration(value: DecorationStyleInterface | undefined)
 
 设置文本装饰线样式及其颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,9 +89,9 @@ ArkTS-Sta: letterSpacing(value: double | string | undefined)
 
 设置文本字符间距。取值小于0，字符聚集重叠，取值大于0且随着数值变大，字符间距越来越大，稀疏分布。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,9 +113,9 @@ ArkTS-Sta: textCase(value: TextCase | undefined)
 
 设置文本大小写。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,9 +137,9 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 设置字体颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,9 +161,9 @@ ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 设置字体大小。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,9 +185,9 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 设置字体样式。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,9 +209,9 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
 
 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -235,9 +235,9 @@ ArkTS-Sta: fontWeight(weight: int | FontWeight | ResourceStr | undefined, fontWe
 
 设置文本的字体粗细。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -258,9 +258,9 @@ ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 设置字体列表。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -288,7 +288,7 @@ ArkTS-Sta: lineHeight(value: Length | undefined)
 
 设置值不大于0时，不限制文本行高，自适应字体大小。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -312,7 +312,7 @@ ArkTS-Sta: font(value: Font | undefined)
 
 设置文本样式。包括字体大小、字体粗细、字体族和字体风格。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -336,7 +336,7 @@ ArkTS-Sta: font(value: Font | undefined, fontConfigs?: FontConfigs)
 
 设置文本样式。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -357,7 +357,7 @@ ArkTS-Sta: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt; | undefi
 
 设置文字阴影效果。该接口支持以数组形式入参，实现多重文字阴影。不支持fill字段, 不支持智能取色模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -383,7 +383,7 @@ ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -550,7 +550,7 @@ onHover(event: HoverCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -564,7 +564,7 @@ ArkTS-Sta: textBackgroundStyle(style: TextBackgroundStyle | undefined): this
 
 设置背景样式。作为[ContainerSpan](ts-basic-components-containerspan.md)的子组件时可以继承它的此属性值，优先使用其自身的此属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -594,7 +594,7 @@ ArkTS-Sta: baselineOffset(value: LengthMetrics | undefined): this
 
 设置Span基线的偏移量。此属性与父组件的baselineOffset是共存的。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -614,7 +614,7 @@ ArkTS-Sta: baselineOffset(value: LengthMetrics | undefined): this
 
 ## TextBackgroundStyle<sup>11+</sup>对象说明
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

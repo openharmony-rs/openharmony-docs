@@ -1,4 +1,10 @@
 # 在ArkTS-Sta中使用ArkTS-Dyn的@BuilderParam（引用@Builder函数）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -60,6 +66,7 @@ export struct CustomContainer { // 导出ArkTS-Dyn自定义组件
       // 使用传入的@BuilderParam成员属性closer构建UI
       this.closer()
     }
+    .width('100%')
   }
 }
 ```
@@ -99,7 +106,8 @@ struct CustomContainerUser { // 主模块中使用ArkTS-Dyn自定义组件
   @Builder
   localBuilder() {
     Text(`${this.text}`)
-      .fontSize(30)
+      .fontSize(20)
+      .margin(10)
       .onClick((value: ClickEvent) => {
         // 修改成员属性text的值
         this.text++;
@@ -113,7 +121,8 @@ struct CustomContainerUser { // 主模块中使用ArkTS-Dyn自定义组件
       CustomContainer({ text: this.text }) {
         Column() {
           Text(`${this.text}`)
-            .fontSize(30)
+            .fontSize(20)
+            .margin(10)
         }
         .onClick((value: ClickEvent) => {
           this.text++;
@@ -122,6 +131,11 @@ struct CustomContainerUser { // 主模块中使用ArkTS-Dyn自定义组件
       // 通过参数初始化@BuilderParam成员
       CustomContainer({ text: this.text, closer: this.localBuilder })
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-sta-interop-dyn-builderparam-demo1](figures/arkts-sta-interop-dyn-builderparam-demo1.gif)

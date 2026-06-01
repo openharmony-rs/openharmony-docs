@@ -1,4 +1,10 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -68,45 +74,45 @@ export struct Child { // ArkTS-Sta自定义组件
   @Provide provideMessage: string = 'static Provide';
   @Consume consumeMessage: string;
 
-  build() {
+  build(): void {
     Column() {
       Text(this.stateMessage)
-        .fontSize(30)
-        .fontColor(Color.Blue)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           // 点击文本，修改@State状态变量
           this.stateMessage += '!';
         })
       Text(this.linkMessage)
-        .fontSize(30)
-        .fontColor(Color.Blue)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           // 点击文本，修改@Link状态变量
           this.linkMessage += '!';
         })
       Text(this.propMessage)
-        .fontSize(30)
-        .fontColor(Color.Blue)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           // 点击文本，修改@PropRef状态变量
           this.propMessage += '!';
         })
       Text(this.provideMessage)
-        .fontSize(30)
-        .fontColor(Color.Blue)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           // 点击文本，修改@Provide状态变量
           this.provideMessage += '!';
         })
       Text(this.consumeMessage)
-        .fontSize(30)
-        .fontColor(Color.Blue)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           // 点击文本，修改@Consume状态变量
           this.consumeMessage += '!';
         })
     }
-    .padding(20)
+    .width('100%')
   }
 }
 ```
@@ -148,6 +154,8 @@ struct ParentComp {
           // 点击按钮，修改@State状态变量
           this.message += '~';
         })
+        .width(300)
+        .margin(10)
       // 使用ArkTS-Sta子组件Child，并通过状态绑定与其进行交互
       Child({
         stateMessage: this.message,
@@ -161,3 +169,7 @@ struct ParentComp {
   }
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-statemanagement-v1-demo1](figures/arkts-dyn-interop-sta-statemanagement-v1-demo1.gif)
