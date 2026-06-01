@@ -580,3 +580,183 @@ async function release() {
 ArkTs-Sta示例：
 
 <!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
+
+``` TypeScript
+import audio from '@ohos.multimedia.audio'; // 导入audio模块。
+import { Callback } from '@kit.BasicServicesKit';
+import { fileIo as fs, WriteOptions } from '@kit.CoreFileKit'; // 导入文件操作模块。
+import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit'; // 导入UIAbilityContext。
+import {
+  Color,
+  ClickEvent,
+  Column,
+  Component,
+  Entry,
+  FlexAlign,
+  HorizontalAlign,
+  Row,
+  Scroll,
+  Text
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+// 与使用AudioCapturer开发音频录制功能过程相似,关键区别在于audioCapturerInfo参数和音频数据流向。
+const TAG = 'VoIPDemoForAudioCapturer';
+const SAMPLE_RATE_48000: int = 48000;
+
+let bufferSize: long = 0;
+let audioCapturer: audio.AudioCapturer | undefined = undefined;
+let file: fs.File | undefined = undefined;
+let readDataCallback: Callback<ArrayBuffer> = (_buffer: ArrayBuffer): void => {};
+
+class CapturerAudioStreamInfo implements audio.AudioStreamInfo {
+  samplingRate: audio.AudioSamplingRate | int = SAMPLE_RATE_48000;
+  channels: audio.AudioChannel = audio.AudioChannel.CHANNEL_2;
+  sampleFormat: audio.AudioSampleFormat = audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE;
+  encodingType: audio.AudioEncodingType = audio.AudioEncodingType.ENCODING_TYPE_RAW;
+}
+
+class VoipAudioCapturerInfo implements audio.AudioCapturerInfo {
+  // 需使用通话场景相应的参数。
+  source: audio.SourceType = audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION;
+  capturerFlags: int = 0;
+}
+
+class VoipAudioCapturerOptions implements audio.AudioCapturerOptions {
+  streamInfo: audio.AudioStreamInfo = new CapturerAudioStreamInfo();
+  capturerInfo: audio.AudioCapturerInfo = new VoipAudioCapturerInfo();
+}
+
+function createAudioCapturerOptions(): audio.AudioCapturerOptions {
+  return new VoipAudioCapturerOptions();
+}
+
+// ...
+
+async function initArguments(context: common.UIAbilityContext) {
+  let path = context.cacheDir;
+  let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  bufferSize = 0;
+  console.info(`File opened: ${filePath}`);
+
+  readDataCallback = (buffer: ArrayBuffer) => {
+    const openedFile = file;
+    if (openedFile === undefined) {
+      return;
+    }
+    let options: WriteOptions = {
+      offset: bufferSize,
+      length: buffer.byteLength.toLong()
+    }
+    fs.writeSync(openedFile.fd, buffer, options);
+    bufferSize += buffer.byteLength.toLong();
+  }
+}
+
+// 初始化,创建实例,设置监听事件。
+async function init() {
+  try {
+    let capturer = await audio.createAudioCapturer(createAudioCapturerOptions()); // 创建AudioCapturer实例。
+    if (capturer === null) {
+      const errorMsg = 'Invoke createAudioCapturer failed, capturer is null';
+      console.error(errorMsg);
+      if (globalLogUpdate) {
+        globalLogUpdate(errorMsg, true);
+      }
+      return;
+    }
+    console.info(`${TAG}: create AudioCapturer success`);
+    // ...
+    audioCapturer = capturer;
+    capturer.onReadData(readDataCallback);
+  } catch (error) {
+    console.error(`Invoke createAudioCapturer failed: ${error}`);
+    // ...
+  }
+}
+
+// 开始一次音频采集。
+async function start() {
+  const capturer = audioCapturer;
+  if (capturer === undefined) {
+    return;
+  }
+  const state = capturer.state;
+  if (state !== audio.AudioState.STATE_PREPARED &&
+    state !== audio.AudioState.STATE_PAUSED &&
+    state !== audio.AudioState.STATE_STOPPED) {
+    // 当且仅当状态为STATE_PREPARED、STATE_PAUSED和STATE_STOPPED之一时才能启动采集。
+    console.error(`${TAG}: start failed`);
+    // ...
+    return;
+  }
+
+  try {
+    // 启动采集。
+    await capturer.start();
+    console.info('Capturer start success.');
+    // ...
+  } catch (error) {
+    console.error(`Capturer start failed: ${error}`);
+    // ...
+  }
+}
+
+// 停止采集。
+async function stop() {
+  const capturer = audioCapturer;
+  if (capturer === undefined) {
+    return;
+  }
+  const state = capturer.state;
+  // 只有采集器状态为STATE_RUNNING或STATE_PAUSED的时候才可以停止。
+  if (state !== audio.AudioState.STATE_RUNNING &&
+    state !== audio.AudioState.STATE_PAUSED) {
+    console.info('Capturer is not running or paused');
+    // ...
+    return;
+  }
+
+  try {
+    // 停止采集。
+    await capturer.stop();
+    const openedFile = file;
+    if (openedFile !== undefined) {
+      fs.closeSync(openedFile);
+      file = undefined;
+    }
+    console.info('Capturer stop success.');
+    // ...
+  } catch (error) {
+    console.error(`Capturer stop failed: ${error}`);
+    // ...
+  }
+}
+
+// 销毁实例,释放资源。
+async function release() {
+  const capturer = audioCapturer;
+  if (capturer === undefined) {
+    return;
+  }
+  const state = capturer.state;
+  // 采集器状态不是STATE_RELEASED或STATE_NEW状态,才能release。
+  if (state === audio.AudioState.STATE_RELEASED ||
+    state === audio.AudioState.STATE_NEW) {
+    console.info('Capturer already released');
+    // ...
+    return;
+  }
+
+  try {
+    // 释放资源。
+    await capturer.release();
+    audioCapturer = undefined;
+    console.info('Capturer release success.');
+    // ...
+  } catch (error) {
+    console.error(`Capturer release failed: ${error}`);
+    // ...
+  }
+}
+```
