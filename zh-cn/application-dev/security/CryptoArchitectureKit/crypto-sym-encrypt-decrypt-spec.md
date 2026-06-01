@@ -44,7 +44,7 @@
   | CCM | [128\|192\|256] | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
   | XTS | [128\|256] | [NoPadding] | 26.0.0+ | 
 
-- 从API版本10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
+- 从API version 10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
   
   举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding，其字符串参数为"AES|CFB|NoPadding"。
 
@@ -74,7 +74,7 @@
   | OFB | 64 | [NoPadding\|PKCS5\|PKCS7] | 20+ | 
   | CFB | 64 | [NoPadding\|PKCS5\|PKCS7] | 20+ | 
 
-- 从API版本10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
+- 从API version 10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
 
   举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding，其字符串参数为"DES|CFB|NoPadding"。
 
@@ -108,7 +108,7 @@
   | OFB | 192 | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
   | CFB | 192 | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
 
-- 从API版本10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
+- 从API version 10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
 
   举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding，其字符串参数为"3DES|CFB|NoPadding"。
 
@@ -169,7 +169,7 @@
 
 ## ChaCha20
 
-从API版本22开始，算法库支持该算法。
+从API version 22开始，算法库支持该算法。
 
 算法库当前提供了[ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20)加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
