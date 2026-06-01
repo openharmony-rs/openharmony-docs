@@ -3237,3 +3237,5 @@ struct TextExample10 {
 ```
 
 ![textRangePosition](figures/textRange_Position.gif)
+
+<!--no_check-->
