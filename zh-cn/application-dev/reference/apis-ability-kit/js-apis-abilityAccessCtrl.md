@@ -25,21 +25,21 @@
 
 ### 核心枚举类型
 
-- **[GrantStatus](#grantstatus)**：权限授权状态枚举，用于表示当前权限的授权状态。
-- **[SwitchType](#switchtype12)**：全局开关类型枚举，用于表示需要请求的系统全局开关类型。
-- **[PermissionStateChangeType](#permissionstatechangetype18)**：权限状态变化类型枚举，用于表示授权、取消授权等变化。
-- **[PermissionStatus](#permissionstatus20)**：权限状态枚举，用于表示当前权限状态。
-- **[SelectedResult](#selectedresult22)**：设置页授权选择结果枚举，用于表示用户在权限设置弹窗中的选择结果。
+- **[GrantStatus](#grantstatus)：** 权限授权状态枚举，用于表示当前权限的授权状态。
+- **[SwitchType](#switchtype12)：** 全局开关类型枚举，用于表示需要请求的系统全局开关类型。
+- **[PermissionStateChangeType](#permissionstatechangetype18)：** 权限状态变化类型枚举，用于表示授权、取消授权等变化。
+- **[PermissionStatus](#permissionstatus20)：** 权限状态枚举，用于表示当前权限状态。
+- **[SelectedResult](#selectedresult22)：** 设置页授权选择结果枚举，用于表示用户在权限设置弹窗中的选择结果。
 
 ### 核心接口类型
 
-- **[PermissionStateChangeInfo](#permissionstatechangeinfo18)**：权限状态变化事件对象，用于返回变化类型、应用身份标识和权限名。
-- **[PermissionRequestResult](#permissionrequestresult10)**：权限申请结果对象，用于返回权限申请后的权限名列表、授权结果和弹窗展示结果。
-- **[Context](#context10)**：上下文对象，用于发起权限申请或打开权限设置弹窗。
+- **[PermissionStateChangeInfo](#permissionstatechangeinfo18)：** 权限状态变化事件对象，用于返回变化类型、应用身份标识和权限名。
+- **[PermissionRequestResult](#permissionrequestresult10)：** 权限申请结果对象，用于返回权限申请后的权限名列表、授权结果和弹窗展示结果。
+- **[Context](#context10)：** 上下文对象，用于发起权限申请或打开权限设置弹窗。
 
 ### 核心类
 
-- **[AtManager](#atmanager)**：程序访问控制管理类，提供权限校验、权限弹窗申请、设置页授权引导和权限状态监听等能力。
+- **[AtManager](#atmanager)：** 程序访问控制管理类，提供权限校验、权限弹窗申请、设置页授权引导和权限状态监听等能力。
 
 ![](figures/accessAccessCtrl.png)
 

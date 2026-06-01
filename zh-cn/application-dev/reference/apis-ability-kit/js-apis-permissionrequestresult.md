@@ -35,7 +35,7 @@ import { PermissionRequestResult } from '@kit.AbilityKit';
 
 ## 使用说明
 
-PermissionRequestResult是权限申请的结果对象。开发者需先创建atManager实例，再调用requestPermissionsFromUser方法申请权限，该方法返回PermissionRequestResult对象，开发者可通过该对象的属性判断权限申请结果。权限申请整体流程及atManager的详细说明请参见[访问控制](js-apis-abilityAccessCtrl.md)。
+PermissionRequestResult是权限申请的结果对象。开发者需先创建atManager实例，再调用requestPermissionsFromUser方法申请权限，该方法返回PermissionRequestResult对象，开发者可通过该对象的属性判断权限申请结果。权限申请整体流程及atManager的详细说明请参见[@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)。
 
 **示例：**
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。

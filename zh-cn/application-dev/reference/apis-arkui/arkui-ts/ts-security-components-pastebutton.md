@@ -19,14 +19,14 @@
 
 ### 核心枚举类型
 
-- **[PasteIconStyle](#pasteiconstyle)**：粘贴控件图标风格枚举，用于指定控件展示的图标风格。
-- **[PasteDescription](#pastedescription)**：粘贴控件文本描述枚举，用于指定控件展示的文本描述。
-- **[PasteButtonOnClickResult](#pastebuttononclickresult)**：粘贴控件点击结果枚举，用于表示点击后授权是否成功。
+- **[PasteIconStyle](#pasteiconstyle)：** 粘贴控件图标风格枚举，用于指定控件展示的图标风格。
+- **[PasteDescription](#pastedescription)：** 粘贴控件文本描述枚举，用于指定控件展示的文本描述。
+- **[PasteButtonOnClickResult](#pastebuttononclickresult)：** 粘贴控件点击结果枚举，用于表示点击后授权是否成功。
 
 ### 核心接口类型
 
-- **[PasteButtonOptions](#pastebuttonoptions)**：粘贴控件配置对象，用于指定图标、文字和按钮类型等元素属性。
-- **[PasteButtonCallback](#pastebuttoncallback18)**：粘贴控件点击回调类型，用于返回点击事件、授权结果和错误信息。
+- **[PasteButtonOptions](#pastebuttonoptions)：** 粘贴控件配置对象，用于指定图标、文字和按钮类型等元素属性。
+- **[PasteButtonCallback](#pastebuttoncallback18)：** 粘贴控件点击回调类型，用于返回点击事件、授权结果和错误信息。
 
 ## 子组件
 
@@ -52,7 +52,7 @@ PasteButton()
 
 PasteButton(options: PasteButtonOptions)
 
-创建包含指定元素的粘贴控件。控件创建完成后，用户点击时系统会执行授权校验动作；授权成功后，应用可临时获取读取剪贴板权限。
+创建包含指定图标、文本或按钮类型的粘贴控件。控件创建完成后，用户点击时系统会执行授权校验动作；授权成功后，应用可临时获取读取剪贴板权限。
 
 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
@@ -94,7 +94,7 @@ PasteButton(options: PasteButtonOptions)
 | -------- | -------- | -------- | -------- | -------- |
 | icon | [PasteIconStyle](#pasteiconstyle) | 否 | 是 | 设置粘贴控件的图标风格。<br/>不传入该参数表示不显示图标；若同时也不传text，控件将显示为默认样式。 |
 | text | [PasteDescription](#pastedescription) | 否 | 是 | 设置粘贴控件的文本描述。<br/>不传入该参数表示不显示文本描述；若同时也不传icon，控件将显示为默认样式。 |
-| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | 否 | 是 | 设置粘贴控件的背景样式。不传入该参数时默认为ButtonType.Capsule。当需要自定义按钮形状时可传入此参数。 |
+| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | 否 | 是 | 设置粘贴控件的按钮形状。不传入该参数时默认为ButtonType.Capsule。当需要自定义按钮形状时可传入此参数。 |
 
 ## 属性
 
@@ -171,7 +171,7 @@ type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult,
 
 onClick(event: PasteButtonCallback)
 
-点击粘贴控件触发该回调，回调返回授权结果。授权成功后应用可读取剪贴板内容。
+点击粘贴控件触发该回调，回调返回授权结果。授权成功后应用可临时获取读取剪贴板权限。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

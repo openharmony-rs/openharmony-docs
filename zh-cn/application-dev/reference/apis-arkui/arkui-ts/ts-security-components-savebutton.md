@@ -23,14 +23,14 @@
 
 ### 核心枚举类型
 
-- **[SaveIconStyle](#saveiconstyle)**：保存控件图标风格枚举，用于指定控件展示的图标风格。
-- **[SaveDescription](#savedescription)**：保存控件文本描述枚举，用于指定控件展示的文本描述。
-- **[SaveButtonOnClickResult](#savebuttononclickresult)**：保存控件点击结果枚举，用于表示点击后授权是否成功。
+- **[SaveIconStyle](#saveiconstyle)：** 保存控件图标风格枚举，用于指定控件展示的图标风格。
+- **[SaveDescription](#savedescription)：** 保存控件文本描述枚举，用于指定控件展示的文本描述。
+- **[SaveButtonOnClickResult](#savebuttononclickresult)：** 保存控件点击结果枚举，用于表示点击后授权是否成功。
 
 ### 核心接口类型
 
-- **[SaveButtonOptions](#savebuttonoptions)**：保存控件配置对象，用于指定图标、文字和按钮类型等元素属性。
-- **[SaveButtonCallback](#savebuttoncallback18)**：保存控件点击回调类型，用于返回点击事件、授权结果和错误信息。
+- **[SaveButtonOptions](#savebuttonoptions)：** 保存控件配置对象，用于指定图标、文字和按钮类型等元素属性。
+- **[SaveButtonCallback](#savebuttoncallback18)：** 保存控件点击回调类型，用于返回点击事件、授权结果和错误信息。
 
 ## 子组件
 
@@ -60,7 +60,11 @@ SaveButton()
 
 SaveButton(options: SaveButtonOptions)
 
-创建包含指定元素的保存控件。用户首次使用保存控件时会展示弹窗，在点击允许后自动授权，应用会获取访问媒体库接口的临时授权。后续使用无需弹窗授权。
+创建包含指定图标、文本或按钮类型的保存控件。用户首次使用保存控件时会展示弹窗，在点击允许后自动授权，应用会获取访问媒体库接口的临时授权。后续使用无需弹窗授权。
+
+在API version 19及之前的版本中，授权持续时间为10秒。授权到期后，已通过授权获取的文件句柄仍可继续进行读写操作，不受授权时间限制。
+
+在API version 20及之后的版本中，授权持续时间为1分钟。授权到期后，已通过授权获取的文件句柄仍可继续进行读写操作，不受授权时间限制。
 
 为避免控件样式不合法导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
@@ -155,7 +159,7 @@ SaveButton(options: SaveButtonOptions)
 | -------- | -------- | -------- |
 | SUCCESS | 0 | 保存控件点击后权限授权成功。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | TEMPORARY_AUTHORIZATION_FAILED | 1 | 保存控件点击后权限授权失败。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| CANCELED_BY_USER<sup>21+</sup>  | 2 | 保存控件点击后，弹窗中用户取消授权。 <br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| CANCELED_BY_USER<sup>21+</sup>  | 2 | 保存控件点击后，弹窗中用户取消授权。仅在调用[userCancelEvent](#usercancelevent21)并设置参数为true时，回调结果中才会返回该值。 <br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## SaveButtonCallback<sup>18+</sup>
 

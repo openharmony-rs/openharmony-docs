@@ -1,8 +1,8 @@
-# 空间效果
+# 空间效果 (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,9 +10,11 @@
 
 > **说明：**
 >
-> 空间效果仅作用于[DepthComponent](./ts-basic-components-depthcomponent.md)的子组件，且仅当DepthComponent相关参数设置正确才能生效。
+> - 空间效果仅作用于[DepthComponent](./ts-basic-components-depthcomponent-sys.md)的子组件，且仅当DepthComponent相关参数设置正确才能生效。
 >
-> 空间效果不支持[Web](../../../web/web-component-overview.md)、[XComponent](./ts-basic-components-xcomponent.md)、[RichEditor](./ts-basic-components-richeditor.md)、[RichText](./ts-basic-components-richtext.md)、[Video](./ts-media-components-video.md)、[Component3D](./ts-basic-components-component3d.md)、[EmbeddedComponent](./ts-container-embedded-component.md)组件。
+> - 空间效果不支持[Web](../../../web/web-component-overview.md)、[XComponent](./ts-basic-components-xcomponent.md)、[RichEditor](./ts-basic-components-richeditor.md)、[RichText](./ts-basic-components-richtext.md)、[Video](./ts-media-components-video.md)、[Component3D](./ts-basic-components-component3d.md)、[EmbeddedComponent](./ts-container-embedded-component.md)组件。
+>
+> - 本模块为系统接口。
 
 **起始版本：** 26.0.0
 
@@ -26,9 +28,9 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -50,13 +52,13 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| position | [SpatialPosition](#spatialposition) | 否 | 否 | 由四个角点定义的空间位置。 |
+| position | [SpatialPosition](#spatialposition) \| number | 否 | 否 | 组件空间位置。支持结构体类型或数值类型的深度信息。<br/> 结构体类型[SpatialPosition](#spatialposition)，由四个角定义空间位置。 <br/> 数值类型，定义组件空间深度信息。|
 | occlusionWeight | number | 否 | 是 | 空间效果的遮挡权重。取值范围：[0, 1]，默认值：0。<br>0表示不会被遮挡，1表示会被完全遮挡，中间值表示部分遮挡。 |
 
 ## SpatialPosition
@@ -67,9 +69,9 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -86,9 +88,9 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -104,9 +106,9 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -123,9 +125,9 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -135,4 +137,4 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 
 ## 示例
 
-见DepthComponent[示例](./ts-basic-components-depthcomponent.md#示例)。
+见DepthComponent[示例](./ts-basic-components-depthcomponent-sys.md#示例)。
