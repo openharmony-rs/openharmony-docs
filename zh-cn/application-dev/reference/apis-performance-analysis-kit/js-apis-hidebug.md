@@ -1977,7 +1977,7 @@ setJsRawHeapTrimLevel(level: JsRawHeapTrimLevel): void
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数**：
 
