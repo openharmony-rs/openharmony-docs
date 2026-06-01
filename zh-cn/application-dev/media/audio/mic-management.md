@@ -66,7 +66,7 @@
 
    ArkTS-Dyn示例：
    <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
-
+   
    ``` TypeScript
    // 监听麦克风状态变化。
    async function on() {
