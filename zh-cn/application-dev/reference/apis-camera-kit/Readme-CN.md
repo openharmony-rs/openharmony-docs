@@ -71,6 +71,7 @@
     - [camera_manager.h](capi-camera-manager-h.md)
     - [capture_session.h](capi-capture-session-h.md)
     - [metadata_output.h](capi-metadata-output-h.md)
+    - [metadata_object_ext.h](capi-metadata-object-ext-h.md)
     - [photo_native.h](capi-photo-native-h.md)
     - [photo_output.h](capi-photo-output-h.md)
     - [preview_output.h](capi-preview-output-h.md)
