@@ -80,7 +80,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示用户在证书管理对话框中操作失败。<br>例如安装证书失败。 |
 | ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | 表示接口不支持该设备。 |
 | ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示该操作不符合设备安全策略。<br>例如设备不允许用户管理GLOBAL_USER的CA证书。 |
-| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示输入参数校验失败。<br>例如参数格式不正确或取值范围无效 |
+| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示输入参数校验失败。<br>例如参数格式不正确或取值范围无效。 |
 | ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | 表示没有可用证书。 |
 
 ## CertificateDialogProperty<sup>18+</sup>
