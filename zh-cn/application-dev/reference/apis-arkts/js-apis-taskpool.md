@@ -467,10 +467,10 @@ taskGroup2.addTask(task1);
 taskGroup2.addTask(task2);
 taskGroup2.addTask(task3);
 taskpool.execute(taskGroup1).then((res: Array<Object>) => {
-  console.info("Succeeded in excuting task, res is:" + res);
+  console.info("Succeeded in executing task, res is:" + res);
 });
 taskpool.execute(taskGroup2).then((res: Array<Object>) => {
-  console.info("Succeeded in excuting task, res is:" + res);
+  console.info("Succeeded in executing task, res is:" + res);
 });
 ```
 
@@ -868,7 +868,7 @@ function concurrentFunc() {
   let task5: taskpool.Task = new taskpool.Task(inspectStatus, 500); // 500: test number
   let task6: taskpool.Task = new taskpool.Task(inspectStatus, 600); // 600: test number
   taskpool.execute(task1).then((res: Object) => {
-    console.info(`Succeeded in excuting task. result: ` + res);
+    console.info(`Succeeded in executing task. result: ` + res);
   }).catch((err: BusinessError) => {
     console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
   });
@@ -937,12 +937,12 @@ function concurrentFunc() {
   let taskGroup2: taskpool.TaskGroup = new taskpool.TaskGroup();
   taskGroup2.addTask(printArgs, 100); // 100: test number
   taskpool.execute(taskGroup1).then((res: Array<Object>) => {
-    console.info(`Succeeded in excuting task. res is: ` + res);
+    console.info(`Succeeded in executing task. res is: ` + res);
   });
   taskpool.execute(taskGroup2).then((res: Array<Object>) => {
-    console.info(`Succeeded in excuting task. res is: ` + res);
+    console.info(`Succeeded in executing task. res is: ` + res);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to excute task. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
   });
   setTimeout(() => {
     try {
@@ -1014,7 +1014,7 @@ function cancelFunction(taskId: number) {
 function concurrentFunc() {
   let task = new taskpool.Task(printArgs, 100); // 100: test number
   taskpool.execute(task).catch((err: BusinessError) => {
-    console.error(`Failed to excute task. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
   });
   setTimeout(() => {
     let cancelTask = new taskpool.Task(cancelFunction, task.taskId);
@@ -2931,7 +2931,7 @@ async function delayExecute(): Promise<Array<Object>> {
 
 async function taskpoolExecute(): Promise<void> {
   taskpool.execute(delayExecute).then((result: Object) => {
-    console.info("Succeeded in excuting task, result: " + result);
+    console.info("Succeeded in executing task, result: " + result);
   }).catch((e: BusinessError) => {
     console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
@@ -2963,7 +2963,7 @@ export async function func2(): Promise<void> {
   console.info("taskpoolTest2 start");
   let strArray: Array<string> = ['c test string', 'b test string', 'a test string'];
   taskpool.execute(strSort, strArray).then((result: Object) => {
-    console.info("Succeeded in excuting task, result: " + result);
+    console.info("Succeeded in executing task, result: " + result);
   }).catch((e: BusinessError) => {
     console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
@@ -3007,7 +3007,7 @@ function inspectStatus(arg: number): number {
 async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
-    console.info("Succeeded in excuting task, result: " + res);
+    console.info("Succeeded in executing task, result: " + res);
   }).catch((e: BusinessError) => {
     console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
@@ -3051,7 +3051,7 @@ function inspectStatus(arg: number): number {
 async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
-    console.info("Succeeded in excuting task, result: " + res);
+    console.info("Succeeded in executing task, result: " + res);
   }).catch((e: BusinessError) => {
     console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
