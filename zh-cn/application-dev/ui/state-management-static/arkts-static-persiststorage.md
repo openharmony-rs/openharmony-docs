@@ -182,7 +182,7 @@ import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, Per
 
 @Entry
 @Component
-struct MapSample {
+struct UnionTypeSample {
   success: boolean = PersistentStorage.persistProp<number | string | null>('union', 12,
     (val: number | string | null): jsonx.JsonElement => {
       const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
