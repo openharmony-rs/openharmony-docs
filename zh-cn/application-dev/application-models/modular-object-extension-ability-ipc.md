@@ -129,18 +129,22 @@ public:
 ```
 ```
 
-**calculator_proxy.h**
-- `CalculatorProxy`继承`ICalculator`。
-- 包含远端句柄`remoteProxy_`。
-- 每个接口方法都对应一个代理实现。
 <!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.h) -->
-```cpp
+
+``` C
 class CalculatorProxy : public ICalculator {
 public:
-    explicit CalculatorProxy(OHIPCRemoteProxy* remote) : remote_(remote) {}
+    explicit CalculatorProxy(OHIPCRemoteProxy* remote) : remoteProxy_(remote) {}
     ~CalculatorProxy() override = default;
+// ...
+    ErrCode WriteRemoteObject(OHIPCParcel* parcel) const override;
 
     ErrCode Add(int32_t a, int32_t b, int32_t& result) override;
+// ...
+private:
+    OHIPCRemoteProxy* remoteProxy_ = nullptr;
+};
+```
 private:
     OHIPCRemoteProxy* remote_ = nullptr;
 };
