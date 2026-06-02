@@ -24,7 +24,7 @@
    > **注意：**
    > 解码应该与编码传入的算法一致。
 
-2. 调用异步[asyKeyGenerator.convertPemKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkey18)或者同步方法[asyKeyGenerator.convertPemKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkeysync18)，传入编码后的私钥字符串与编码口令。最后返回编码前的私钥字符串。
+2. 调用异步[asyKeyGenerator.convertPemKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkey18)或者同步方法[asyKeyGenerator.convertPemKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkeysync18)，传入编码后的私钥字符串与编码口令。最后返回密钥对对象（KeyPair），其中包含解码后的私钥。
 
 - 编码示例：
 
