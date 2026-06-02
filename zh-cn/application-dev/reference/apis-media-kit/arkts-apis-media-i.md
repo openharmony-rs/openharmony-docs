@@ -145,7 +145,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 ## WatermarkConfiguration
 
-视频录制添加水印的配置参数。水印位置以视频左上角为原点计算。
+添加水印的配置参数。水印位置以视频左上角为原点计算。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
