@@ -862,8 +862,6 @@ struct ParticleExample {
   build() {
     Column() {
       Stack() {
-        Text()
-          .width(300).height(300).backgroundColor(Color.Black)
         Particle({
           particles: [
             {
