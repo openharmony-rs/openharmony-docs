@@ -114,7 +114,7 @@ ArkTS-Sta: width(widthValue: Length | LayoutPolicy | undefined): this
 
 | 参数名   | 类型                           | 必填   | 说明                  |
 | ----- | ---------------------------- | ---- | ------------------- |
-| widthValue | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15) \| undefined | 是    | 要设置的组件宽度。<br/>单位：vp<br/>取值为undefined时，与不设置表现一致。 |
+| widthValue | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15) \| undefined | 是    | 要设置的组件宽度。<br/>单位：vp<br/>取值为undefined时，与不设置表现一致。 |
 
 **返回值：**
 

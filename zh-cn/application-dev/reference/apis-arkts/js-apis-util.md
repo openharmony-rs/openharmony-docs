@@ -643,15 +643,37 @@ console.info(stack);
 // 输出当前主线程的栈追踪信息。
 ```
 
+## MultithreadingDetectionOptions
+
+MultithreadingDetectionOptions是一个接口类，用于配置[ArkTSVM.setMultithreadingDetectionEnabled](#setmultithreadingdetectionenabled23)函数的行为参数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| abort  | boolean  | 否       | 是       | 控制检测到多线程问题时是否崩溃。true表示崩溃，false表示不崩溃。默认true。|
+| frequency  | number  | 否       | 是       | 多线程检测的检测粒度，该值越大，检测越少，性能越好，范围为[100,2147483647]，默认100。|
+| interval  | number  | 否       | 是       | 多线程检测的上报故障时间间隔，仅不崩溃时生效，范围为[0,1440]，单位为分钟，默认5分钟。（不建议设为5分钟以下，有严重的性能影响。）|
+
 ## ArkTSVM<sup>23+</sup>
 
 ArkTSVM是一个类，用于给开发者提供虚拟机的维测能力。
 
 ### setMultithreadingDetectionEnabled<sup>23+</sup>
 
-static setMultithreadingDetectionEnabled(enabled: boolean): void
+static setMultithreadingDetectionEnabled(enabled: boolean, options?: MultithreadingDetectionOptions): void
 
 若enabled为true则开启，为false则关闭。开启多线程检测，多线程问题的cppcrash文件里会包含多线程信息。关闭多线程检测，则多线程问题的cppcrash文件里不会包含多线程信息。
+
+options是用于配置多线程检测的行为参数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -665,7 +687,8 @@ static setMultithreadingDetectionEnabled(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 。true表示开启，false表示关闭。|
+| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭。true表示开启，false表示关闭。|
+| options  | [MultithreadingDetectionOptions](#multithreadingdetectionoptions)  | 否       | 多线程检测的参数配置，此参数不填时，对应各属性取[MultithreadingDetectionOptions](#multithreadingdetectionoptions)的默认值。**ArkTS-Dyn起始版本：** 26.0.0|
 
 **示例：**
 
@@ -676,6 +699,18 @@ import { util } from '@kit.ArkTS';
 util.ArkTSVM.setMultithreadingDetectionEnabled(true);
 // 关闭多线程检测开关
 util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+// 设置崩溃行为
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, { abort: false });
+// 调整检测粒度
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, { frequency: 200 });
+// 调整上报间隔
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, { interval: 10 });
+// 同时设置三个参数
+util.ArkTSVM.setMultithreadingDetectionEnabled(true, {
+  abort: false,
+  frequency: 500,
+  interval: 60
+});
 ```
 
 ### getAllVMHeapMemoryInfo<sup>24+</sup>

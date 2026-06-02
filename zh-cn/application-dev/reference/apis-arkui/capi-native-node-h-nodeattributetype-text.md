@@ -1313,6 +1313,30 @@ NODE_TEXT_CONTROLLER = 1054
 | -- | -- |
 | .object | 文本的控制器，参数类型为[ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)。 |
 
+## NODE_TEXT_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_PUNCTUATION_OVERFLOW = 1055
+```
+
+设置Text组件是否启用行尾标点符号悬挂，支持属性设置，属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。1表示启用标点符号悬挂，0表示不启用标点符号悬挂。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。 |
+
 
 ## NODE_SPAN_CONTENT
 

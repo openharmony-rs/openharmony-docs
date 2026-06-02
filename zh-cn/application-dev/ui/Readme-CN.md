@@ -387,8 +387,8 @@
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
   - [接入ArkTS页面](ndk-access-the-arkts-page.md)
-  - [添加事件监听](ndk-add-component-events.md)
-  - 添加交互事件<!--arkts-add-event-->
+  - [添加事件响应](ndk-add-event-response.md)
+    - [添加事件监听](ndk-add-component-events.md)
     - [绑定基础输入事件](ndk-bind-input-events.md)
     - [绑定手势事件](ndk-bind-gesture-events.md)
     - [绑定拖拽事件](ndk-drag-event.md)
@@ -407,7 +407,7 @@
       - [使用属性字符串](ndk-styled-string.md)
       - [添加输入框文本事件监听](ndk-textarea-event.md)
   - 使用选择类组件<!--arkts-build-picker-ndk-->
-      - [使用滑动选择器Picker](ndk-picker.md)
+      - [使用滑动选择器 (Picker)](ndk-picker.md)
   - [显示图片（Image）](ndk-image-component.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - [构建表单组件](ndk-build-form-components.md)

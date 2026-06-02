@@ -187,15 +187,15 @@ import { Computed } from '@kit.ArkUI';
 ### 当被计算的属性变化时，\@Computed装饰的getter访问器只会被求解一次
 1. 在自定义组件中使用计算属性。
 
-    - 点击第一个Button改变lastName，触发\@Computed fullName重新计算。
-    - `this.fullName`被绑定在两个Text组件上，观察`fullName`日志，可以发现，计算只发生了一次。
-    - 对于前两个Text组件，`this.lastName + ' '+ this.firstName`这段逻辑被求解了两次。
-    - 如果UI中有多处需要使用`this.lastName + ' '+ this.firstName`这段计算逻辑，可以使用计算属性，减少计算次数。
-    - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
+     - 点击第一个Button改变lastName，触发\@Computed fullName重新计算。
+     - `this.fullName`被绑定在两个Text组件上，观察`fullName`日志，可以发现，计算只发生了一次。
+     - 对于前两个Text组件，`this.lastName + ' '+ this.firstName`这段逻辑被求解了两次。
+     - 如果UI中有多处需要使用`this.lastName + ' '+ this.firstName`这段计算逻辑，可以使用计算属性，减少计算次数。
+     - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
-   ```ts
-   'use static'
+   <!-- @[ComputedComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedComponent.ets) -->
    
+   ``` TypeScript
    import { Button, ClickEvent, Column, ComponentV2, Computed, Divider, Entry, Local, Text } from '@kit.ArkUI';
    
    @Entry
@@ -235,11 +235,11 @@ import { Computed } from '@kit.ArkUI';
     - 如果计算逻辑在视图中仅使用一次，则不使用计算属性，直接求解。
 
 2. 在\@ObservedV2装饰的类中使用计算属性。
-    - 点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
+     - 点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
-   ```ts
-   'use static'
+   <!-- @[ComputedObservedV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedObservedV2.ets) -->
    
+   ``` TypeScript
    import { Button, ClickEvent, Column, ComponentV2, Computed, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -278,9 +278,9 @@ import { Computed } from '@kit.ArkUI';
 - 点击“-”，celsius-- -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 - 点击“+”，celsius++ -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 
-   ```ts
-   'use static'
+   <!-- @[ComputedMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedMonitor.ets) -->
    
+   ``` TypeScript
    import { Button, ClickEvent, Column, ComponentV2, Computed, Entry, IMonitor, Local, Monitor, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    @Entry
@@ -333,9 +333,9 @@ import { Computed } from '@kit.ArkUI';
 - `quantity`的改变会触发`total`和`qualifiesForDiscount`重新计算，计算商品总价和是否可以享有优惠。
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
-   ```ts
-   'use static'
+   <!-- @[ComputedInitParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedInitParam.ets) -->
    
+   ``` TypeScript
    import { Button, ClickEvent, Column, ComponentV2, Divider, Entry,
             ForEach, HorizontalAlign, Row, Text } from '@kit.ArkUI';
    import { Computed, Local, ObservedV2, Param, Trace } from '@kit.ArkUI';

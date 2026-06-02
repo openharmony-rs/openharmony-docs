@@ -44,22 +44,23 @@ import { State } from '@kit.ArkUI';
 
 - 当装饰class类型时，需要借助[@Observed](./arkts-static-observed-and-objectlink.md)与[@Track](./arkts-static-track.md)观测类属性，单独的@State仅能观测类整体的赋值。
 
-   ```ts
-   'use static'
+   <!-- @[StateObservedClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateObservedClass.ets) -->
+   
+   ``` TypeScript
    import { Button, Column, ColumnOptions, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
-
+   
    @Observed
    class ObservedClass {
      value: string = '';
    }
-
+   
    class NotObservedClass {
      value: string;
      constructor(value: string) {
        this.value = value;
      }
    }
-
+   
    @Entry
    @Component
    struct Index {
@@ -153,9 +154,9 @@ import { State } from '@kit.ArkUI';
 
 - 当装饰interface字面量类型时，可以观察到字面量整体以及属性的变化。
 
-  ```ts
-  'use static'
+  <!-- @[StateInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateInterface.ets) -->
   
+  ``` TypeScript
   import { ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
   interface Info {
     name: string;
@@ -205,9 +206,9 @@ import { State } from '@kit.ArkUI';
 - 当状态变量count改变时，仅能查询到与之关联的Button组件。
 - 仅Button组件执行更新方法，实现按需刷新。
 
-```ts
-'use static'
+<!-- @[StateSimpleTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateSimpleTypes.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Component, Entry, State, Row, Column } from '@kit.ArkUI';
 
 @Entry
@@ -237,9 +238,9 @@ struct MyComponent {
 
 在下面的示例中，message类型为Map\<string, int\>，点击Button改变其值，视图随之刷新。
 
-```ts
-'use static'
+<!-- @[StateMapVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateMapVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Row, State, Text } from '@kit.ArkUI';
 
 @Entry
@@ -304,9 +305,9 @@ struct MapSample {
 
 在下面的示例中，message类型为Set\<string\>，点击Button改变其值，视图随之刷新。
 
-```ts
-'use static'
+<!-- @[StateSetVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateSetVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Row, State, Text } from '@kit.ArkUI';
 
 @Entry
@@ -364,9 +365,9 @@ struct SetSample {
 
 在下面的示例中，selectedDate类型为Date，点击Button改变其值，视图随之刷新。
 
-```ts
-'use static'
+<!-- @[StateDateVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateDateVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, State, Text, Row, DatePicker } from '@kit.ArkUI';
 
 @Entry
@@ -424,9 +425,9 @@ struct DatePickerExample {
 
 \@State支持联合类型（包括undefined和null）。在下面的示例中，count类型为int | undefined，点击Button改变count的值或类型，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[StateUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateUnionType.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, State, Text, Row } from '@kit.ArkUI';
 
 @Entry

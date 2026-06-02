@@ -94,7 +94,7 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 | 名称    | 类型   | 只读   | 可选   | 说明   |
 | ----- | ------ | ---- | ---- | ---- |
 | axis  | [Axis](#axis)   | 否    | 否    | 鼠标轴类型。  |
-| value |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 鼠标轴的值。  |
+| value |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 鼠标轴的值，滚轮轴表示滚动行数，坐标轴的单位为px。  |
 
 ## ToolType<sup>11+</sup>
 
@@ -122,12 +122,12 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | action         | [Action](#action)      | 否    | 否    | 鼠标事件类型。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                                   |
-| screenX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 该鼠标事件以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                             |
-| screenY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 该鼠标事件以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                             |
-| windowX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标所在窗口左上角为原点的相对坐标系的X坐标。当前仅支持整数。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                               |
-| windowY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标所在窗口左上角为原点的相对坐标系的Y坐标。当前仅支持整数。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                               |
-| rawDeltaX      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标当前事件相对于上次事件的X坐标偏移值。当前仅支持整数。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
-| rawDeltaY      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标当前事件相对于上次事件的Y坐标偏移值。当前仅支持整数。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                          |
+| screenX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 该鼠标事件以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为px。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                             |
+| screenY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 该鼠标事件以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为px。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                             |
+| windowX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标所在窗口左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为px。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                               |
+| windowY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标所在窗口左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为px。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                               |
+| rawDeltaX      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标当前事件相对于上次事件的X坐标偏移值。当前仅支持整数，单位为px。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
+| rawDeltaY      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标当前事件相对于上次事件的Y坐标偏移值。当前仅支持整数，单位为px。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                          |
 | button         | [Button](#button)      | 否    | 否    | 鼠标按键。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                       |
 | pressedButtons | [Button](#button)[]    | 否    | 否    | 当前处于按下状态的鼠标按键。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                              |
 | axes           | [AxisValue](#axisvalue)[] | 否    | 否    | 鼠标轴类型和轴的值。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                               |
@@ -141,5 +141,5 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 | numLock        | boolean     | 否    | 否    | 当前numLock是否处于使能状态。 <br>true表示使能状态，false表示处于未使能状态。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                        |
 | scrollLock     | boolean     | 否    | 否    | 当前scrollLock是否处于使能状态。 <br>true表示使能状态，false表示处于未使能状态。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                     |
 | toolType<sup>11+</sup> | [ToolType](#tooltype11) | 否    | 否    | 工具类型。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：23                     |
-| globalX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 该鼠标事件以主屏左上角为原点的全局坐标系的X坐标。<!--Del-->作为入参时，若接口参数中的[MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的X坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：23 |
-| globalY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 该鼠标事件以主屏左上角为原点的全局坐标系的Y坐标。<!--Del-->作为入参时，若接口参数中的[MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的Y坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：23 |
+| globalX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 该鼠标事件以主屏左上角为原点的全局坐标系的X坐标，单位为px。<!--Del-->作为入参时，若接口参数中的[MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的X坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：23 |
+| globalY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 该鼠标事件以主屏左上角为原点的全局坐标系的Y坐标，单位为px。<!--Del-->作为入参时，若接口参数中的[MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的Y坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：23 |
