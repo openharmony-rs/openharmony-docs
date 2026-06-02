@@ -358,7 +358,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    }
    ```
 
-   ![en-us_image_0000001127125264](figures/en-us_image_0000001127125264.png)
+   ![gauge](figures/gauge.png)
 
 4. Circle chart of progresses, loading progresses, or proportions
    ```html
