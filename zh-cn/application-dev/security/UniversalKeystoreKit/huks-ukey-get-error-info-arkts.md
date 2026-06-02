@@ -54,65 +54,12 @@ async function testExtensionError(): Promise<void> {
 }
 ```
 
-### 错误信息保持场景
-
-```ts
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function testErrorInfoRetain(): Promise<void> {
-  /* 1.假设已打开的资源如下 */
-  const testResourceId1 = JSON.stringify({
-    providerName: "testProviderName",
-    bundleName: "com.example.cryptoapplication",
-    abilityName: "CryptoExtension",
-    index: "resource_id_1"
-  });
-
-  const testResourceId2 = JSON.stringify({
-    providerName: "testProviderName",
-    bundleName: "com.example.cryptoapplication",
-    abilityName: "CryptoExtension",
-    index: "resource_id_2"
-  });
-
-  /* 2.构造参数 */
-  const pin = "123456";
-  const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-    {
-      tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
-      value: StringToUint8Array(pin)
-    }
-  ];
-
-  /* 3.验证PIN码失败后获取错误信息 */
-  try {
-    await huksExternalCrypto.authUkeyPin(testResourceId1, params);
-  } catch (error) {
-    const errorInfo1 = huksExternalCrypto.getErrorInfo();
-    console.info(`First Extension error code: ${errorInfo1.errno}`);
-    console.info(`First Extension error desc: ${errorInfo1.errorDesc}`);
-  }
-  
-  /* 4.验证PIN码成功后获取上一次错误信息 */
-  try {
-    await huksExternalCrypto.authUkeyPin(testResourceId2, params);
-    const errorInfo2 = huksExternalCrypto.getErrorInfo();
-    console.info(`First Extension error code: ${errorInfo2.errno}`);
-    console.info(`First Extension error desc: ${errorInfo2.errorDesc}`);
-  } catch (error) {
-    console.error(`promise: getProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
-  }
-}
-```
-
 ## 错误信息更新规则
 
 | 场景 | errno | errorDesc |
 | ---- | ----- | --------- |
 | 密钥管理扩展返回错误信息 | 具体错误码（非0） | 扩展返回的描述（可能为空） |
-| 密钥管理扩展未返回错误信息 | 0（默认值或保持上次） | 空字符串（默认值或保持上次） |
-| 操作成功或HUKS内部错误 | 不更新，保持上次的值 | 不更新，保持上次的值 |
+| 密钥管理扩展未返回错误信息 | 默认值0或保持上次 | 默认值空字符串或保持上次） |
 
 ## 注意事项
 
