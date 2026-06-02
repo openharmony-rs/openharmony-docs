@@ -661,12 +661,9 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
-import fs from '@ohos.file.fs';
-import { ReadOptions, WriteOptions } from '@ohos.file.fs';
-import common from '@ohos.app.ability.common';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import { PermissionRequestResult } from '@ohos.abilityAccessCtrl';
-import { BusinessError, Callback } from '@ohos.base';
+import { fileIo as fs, ReadOptions, WriteOptions } from '@kit.CoreFileKit';
+import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
 import {
   Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
 } from '@kit.ArkUI';

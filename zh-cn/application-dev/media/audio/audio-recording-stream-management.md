@@ -94,7 +94,7 @@
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit'; // 导入audio模块。
-   import { Callback } from '@ohos.base';
+   import { Callback } from '@kit.BasicServicesKit';
    import {
      Entry, Component, State, Scroll, Column, Text, Color, FlexAlign, HorizontalAlign, ClickEvent
    } from '@kit.ArkUI';
