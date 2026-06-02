@@ -1580,7 +1580,7 @@ async function test(){
 
 enableCameraPostprocessing(): Promise\<void>
 
-开启Camera的后处理功能，进行视频播放。使用Promise异步回调。
+开启后处理功能，在视频播放时做效果处理。使用Promise异步回调。
 
 只有当AVPlayer处于initialized状态时，才能调用此接口。
 
