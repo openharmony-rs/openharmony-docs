@@ -108,7 +108,7 @@
 | lime                 | \#00ff00 | ![lime](figures/lime.png) |
 | limegreen            | \#32cd32 | ![limegreen](figures/limegreen.png) |
 | linen                | \#faf0e6 | ![zh-cn_image_0000001173324739](figures/zh-cn_image_0000001173324739.png) |
-| magenta              | \#ff00ff | ![magenta](figures/zmagenta.png) |
+| magenta              | \#ff00ff | ![magenta](figures/magenta.png) |
 | maroon               | \#800000 | ![maroon](figures/maroon.png) |
 | mediumaquamarine     | \#66cdaa | ![zh-cn_image_0000001173164899](figures/zh-cn_image_0000001173164899.png) |
 | mediumblue           | \#0000cd | ![mediumblue](figures/mediumblue.png) |
