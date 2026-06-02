@@ -57,9 +57,9 @@ class MyText extends ExtendableText {
 
 如下示例中，创建MyText扩展组件，并调用fontSize、height、width属性，其中height属性未被重写，则遵循默认规格。
 
-```ts
-'use static'
+<!-- @[extendable_text_usage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ExtendableInnerComponent/entry/src/main/ets/pages/ExtendableTextUsage.ets) -->
 
+``` TypeScript
 import { ExtendableText, TextOptions, Length, Entry, Component, Text, Column } from '@kit.ArkUI';
 
 class MyText extends ExtendableText {
@@ -78,7 +78,7 @@ class MyText extends ExtendableText {
 
 @Entry
 @Component
-struct Index {
+struct ExtendableTextUsageExample {
   build() {
     Column() {
       MyText('Hello World')
@@ -94,9 +94,9 @@ struct Index {
 
 开发者可以在自定义的内置组件扩展类中定义模板化的属性设置，如下示例中，在MyText中定义了newAttribute属性和fixedNewAttribute属性。其中newAttribute可以接收参数，批量设置属性，实现可变属性样式的模板组件。fixedNewAttribute可以批量设置相同属性，实现固定样式的模板组件。
 
-```ts
-'use static'
+<!-- @[extendable_text_template](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ExtendableInnerComponent/entry/src/main/ets/pages/ExtendableTextTemplate.ets) -->
 
+``` TypeScript
 import { ExtendableText, TextOptions, Length, Entry, Component, Text, Column } from '@kit.ArkUI';
 
 class MyText extends ExtendableText {
@@ -121,7 +121,7 @@ class MyText extends ExtendableText {
 
 @Entry
 @Component
-struct Index {
+struct ExtendableTextTemplateExample {
   build() {
     Column() {
       MyText('Hello World')
