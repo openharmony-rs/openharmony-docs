@@ -121,7 +121,9 @@ attributeModifier(modifier: AttributeModifier\<StackAttribute> | AttributeModifi
 
 ### syncLoad
 
-syncLoad(enable: boolean)
+ArkTS-Dyn: syncLoad(enable: boolean)
+
+ArkTS-Sta: syncLoad(enable: boolean | undefined)
 
 设置是否同步加载Stack区域内所有子组件。
 
@@ -139,7 +141,7 @@ syncLoad(enable: boolean)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enable   | boolean | 是   | 是否同步加载Stack区域内所有子组件。<br/>true表示同步加载；false表示异步加载。<br/>默认值：true<br/>**说明：** <br/>设置为false时，在首次显示场景，若当前帧布局耗时超过50ms，会将Stack区域内尚未布局的子组件延后到下一帧进行布局。 |
+| enable   | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否同步加载Stack区域内所有子组件。<br/>true表示同步加载；false表示异步加载。<br/>默认值：true<br/>取值为undefined时，按默认值处理。<br/>**说明：** <br/>设置为false时，在首次显示场景，若当前帧布局耗时超过50ms，会将Stack区域内尚未布局的子组件延后到下一帧进行布局。 |
 
 ## 事件
 
