@@ -7873,5 +7873,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/device/input/pointerstyle-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/InputKit/ArkTsPointer-Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":162,
+						"name":"pointer_visible",
+						"start_line":120
+					},
+					{
+						"end_line":192,
+						"name":"pointer_style",
+						"start_line":164
+					}
+				]
+			}
+		]
 	}
 ]
