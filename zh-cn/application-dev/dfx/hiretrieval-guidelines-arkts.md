@@ -18,7 +18,9 @@
 
 开发者在云端新建任务时，可以选择上述故障中的任一。在任务激活期间，被圈选的设备发生了对应故障，则会自动采集对应的日志并上传到云端。
 
-当前暂不支持多实例应用，若在多实例应用中使用HiRetrieval功能会抛出异常。
+> **注意：**
+>
+> 当前暂不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码36000002，详细处理步骤请参考[应用灰度错误码](../reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hiretrieval.md#36000002)。
 
 ## 工作原理
 
@@ -56,11 +58,7 @@
          hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
        }
        // 初始化应用灰度采集特性
-       try {
-         hiRetrieval.init();
-       } catch (err) {
-         hilog.error(DOMAIN, 'testTag', 'hiretrieval error: %{public}s', JSON.stringify(err));
-       }
+       hiRetrieval.init();
        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
      }
    
