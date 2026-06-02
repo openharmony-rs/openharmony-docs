@@ -136,7 +136,7 @@ onError(callback: ErrorCallback)
   struct Index {
     @State message: string = 'Message: ';
     private want: Want = {
-      bundleName: "com.example.embeddedComponent",
+      bundleName: "com.example.embeddeddemo",
       abilityName: "ExampleEmbeddedAbility",
     };
 
