@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType (General Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @wangyang2022; @CCFFWW-->
-<!--Designer: @piggyguy; @wangyang2022; @CCFFWW-->
+<!--Owner: @piggyguy; @wangyang2022; @hehongyang3-->
+<!--Designer: @piggyguy; @wangyang2022; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 

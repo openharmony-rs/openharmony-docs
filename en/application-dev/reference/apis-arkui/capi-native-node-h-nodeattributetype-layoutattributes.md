@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType (Layout Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW; @zju_ljz; @camlostshi-->
-<!--Designer: @CCFFWW; @lanshouren-->
+<!--Owner: @hehongyang3; @zju_ljz; @camlostshi-->
+<!--Designer: @hehongyang3; @lanshouren-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -85,7 +85,7 @@ Specify the same padding for the four directions.<br>
 | -- | -- |
 | value[0].f32 | Padding, in vp.|
 
-Specify different paddings for the four directions.<br>
+2: Specify different paddings for the four directions.<br>
 
 | Name| Description|
 | -- | -- |
@@ -124,7 +124,7 @@ Specify the same margin for the four directions.<br>
 | -- | -- |
 | .value[0].f32 | Margin, in vp.|
 
-Specify different margins for the four directions.<br>
+2: Specify different margins for the four directions.<br>
 
 | Name| Description|
 | -- | -- |
@@ -725,7 +725,7 @@ One or four parameters can be passed:
 Specify the same padding for the four borders.<br>
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Padding, in percentage.|
+| .value[0].f32 | Padding, which is the same for the four directions, in percentage.|
 
 Specify different paddings for the four borders.<br>
 
@@ -765,7 +765,7 @@ Specify the same margin for the four borders.
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Margin, in percentage.|
+| .value[0].f32 | Margin, which is the same for the four directions, in percentage.|
 
 Specify different margins for the four borders.
 
@@ -882,7 +882,7 @@ Specify the same width for the four borders.
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Width, in percentage.|
+| .value[0].f32 | Width, which is the same for the four borders, in percentage.|
 
 
 Specify different width values for the four borders.
@@ -921,7 +921,7 @@ Specify the same corner radius for the four borders.
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Radius, in percentage.|
+| .value[0].f32 | Radius, which is the same for the four corners, in percentage.|
 
 Specify different corner radii for the four borders.
 

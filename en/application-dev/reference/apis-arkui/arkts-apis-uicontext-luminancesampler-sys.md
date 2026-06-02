@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xuhang363-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -30,7 +30,7 @@ Sets the color picking parameters. If the luminance threshold is not within the 
 
 **Parameters**
 
-| **Name**    | **Type**   | **Mandatory**  | **Description**     |
+| Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
 | configs | [BackgroundLuminanceSamplingConfigs](arkts-apis-uicontext-i-sys.md#backgroundluminancesamplingconfigs23) | Yes| Color picking parameters.|
 
@@ -38,7 +38,7 @@ Sets the color picking parameters. If the luminance threshold is not within the 
 
 For details about the error codes, see [API Call Error Codes](errorcode-internal.md).
 
-| **ID** | **Error Message**               |
+| ID | Error Message               |
 | ------ | ------- |
 | 100001 | 1. Incorrect parameter values. <br> 2. Incorrect parameters types.  |
 
@@ -62,7 +62,7 @@ The background luminance is divided into three ranges based on the luminance thr
 
 **Parameters**
 
-| **Name**    | **Type**   | **Mandatory**  | **Description**     |
+| Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
 | samplingCallback | Callback&lt;number&gt; | Yes| Callback used to return the current background luminance.|
 
@@ -84,7 +84,7 @@ Unregisters the callback for listening to color picking. If no callback is speci
 
 **Parameters**
 
-| **Name**    | **Type**   | **Mandatory**  | **Description**     |
+| Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
 | samplingCallback | Callback&lt;number&gt; | No| Callback to unregister.|
 
