@@ -366,7 +366,7 @@ static napi_value TestConnect(napi_env env, napi_callback_info info)
 
 ### 通过Proxy与服务端通信
 
-1. 创建calculator_proxy.h和calculator_proxy.cpp文件，实现CalculatorProxy类。CalculatorProxy继承服务端提供的ICalculator接口，并封装OHIPCRemoteProxy。同时在Add方法中将参数序列化并通过OHIPCRemoteProxy发送给服务端，接收服务端返回的结果并反序列化。推荐使用[taiihe工具](./modular-object-extension-ability-ipc.md)生成。
+1. 创建calculator_proxy.h和calculator_proxy.cpp文件，实现CalculatorProxy类。CalculatorProxy继承服务端提供的ICalculator接口，并封装OHIPCRemoteProxy。同时在Add方法中将参数序列化并通过OHIPCRemoteProxy发送给服务端，接收服务端返回的结果并反序列化。推荐使用[Taihe工具](./modular-object-extension-ability-ipc.md)生成。
 
     <!-- @[modular_object_extension_proxy_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionClient/entry/src/main/cpp/calculator_proxy.h) -->
     
