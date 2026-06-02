@@ -17,7 +17,7 @@
 
 设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：
 
-![matrix_xy](figures/matrix_xy.PNG)
+![matrix-xy](figures/matrix-xy.PNG)
 
 
 > **说明：**
