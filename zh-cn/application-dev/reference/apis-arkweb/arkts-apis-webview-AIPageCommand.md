@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-`AIPageCommand`定义[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand26)支持的JSON命令协议，用于获取网页结构信息。调用该接口前，应用需要将命令对象序列化为JSON字符串。
+`AIPageCommand`定义[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand26)支持的JSON命令协议，包括不同命令的入参格式和返回格式。调用该接口前，应用需要将命令对象序列化为JSON字符串。
 
 > **说明：**
 >
@@ -19,8 +19,8 @@
 
 | method | 功能 | 入参格式 | 返回格式 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| getFullDom | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
-| getLiteDom | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
+| [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
+| [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
 
 ## 通用命令格式
 
