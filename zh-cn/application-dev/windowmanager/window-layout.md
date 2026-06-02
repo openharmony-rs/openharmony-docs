@@ -302,7 +302,7 @@ const TAG = 'IndexPage';
     }
   
     /**
-     * 通过startMoving为子窗口接入系统拖拽移动
+     通过startMoving为子窗口接入系统拖拽移动
      */
     private startMoveSubWindow(): void {
       const subWindow = AppStorage.get<window.Window>('SUB_WINDOW');
