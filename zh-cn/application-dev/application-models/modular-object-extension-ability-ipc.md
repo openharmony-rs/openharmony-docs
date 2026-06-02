@@ -368,33 +368,34 @@ int32_t CalculatorStub::HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply)
 | `String`            | `std::string`                | 转为`const char*`后`OH_IPCParcel_WriteString` / `OH_IPCParcel_ReadString` |
 | `enum`              | `enum`                       | 按`int32_t`序列化                                                          |
 | `Vector<T>`         | `std::vector<T>`             | 先写 size，再逐项序列化                                                       |
-| `@size(N) Array<T>` | `std::array<T, N>`           | 先写 size，再逐项序列化                                                       |
-| `Set<T>`            | `std::set<T>`                | 先写 size，再逐项序列化                                                       |
-| `Map<K,V>`          | `std::map<K, V>`             | 先写 size，再顺序写入 key/value                                               |
-| `struct`            | `struct&`                    | 调用生成的`Marshalling/Unmarshalling`                                        |
-| `interface`         | `interface&`                 | 写入`OHIPCRemoteStub`或`OHIPCRemoteProxy`，读取`OHIPCRemoteProxy`         |
-
-
-### 约束与限制
-
-- `Map<K, V>`的键类型仅支持基础类型、`String`、`enum`。
-- 为保证兼容性，多个版本间已有方法不能改变顺序，否则会导致IpcCode不一致。
-- 同一次`modobj-ipc`生成中，无论命名空间是否相同，`interface`、`struct`、`enum`名称都不能重复。
-
-## 开发步骤
-
-### 编写IDL文件
-
-首先用户需在自定义路径下创建IDL文件。
-
  <!-- @[example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampletwo/ITestInterface.ohidl) -->
-```rust
-@!namespace("OHOS", "IPC")
-
-interface ICalculator {
-    Add(a: i32, b: i32): i32;
-}
-
+ 
+ ``` 
+ @!namespace("OHOS", "IPC")
+ 
+ interface ICalculator {
+     Add(a: i32, b: i32): i32;
+ }
+ 
+ struct OnProgressResult {
+     summary: String;
+ }
+ 
+ @callback
+ interface ITestEventCallback {
+     OnConnected(clientId: i32, welcome: String): void;
+     OnProgress(taskId: i32): OnProgressResult;
+ 
+     @oneway
+     OnDisconnected(reason: String): void;
+ }
+ 
+ @main_service(version = "1.0.0")
+ interface ITestCallbackService {
+     RegisterCallback(callback: ITestEventCallback): i32;
+     GetPrimaryCalculatorGetPrimaryCalculator(userId: i32): ICalculator;
+ }
+ ```
 struct OnProgressResult {
     summary: String;
 }
