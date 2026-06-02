@@ -4928,6 +4928,7 @@ IP多媒体系统调用模式。
 | originalCallType<sup>11+</sup> | number                    | 是   | 视频彩振原始呼叫类型。|
 | numberLocation<sup>12+</sup> | string | 否 | 号码归属地信息 |
 | numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 否 | 号码标记信息。 |
+| xCallType<sup>26+</sup> | XCallType | 否 | xcall类型。 |
 
 ## VoipCallAttribute<sup>11+</sup>
 
@@ -4979,6 +4980,7 @@ VoIP通话信息。
 | TYPE_OTT      | 2    | OTT通话。      |
 | TYPE_ERR_CALL | 3    | 其他类型通话。 |
 | TYPE_VOIP<sup>11+</sup> | 4    | VoIP通话。 |
+| TYPE_XCALL<sup>26+</sup> | 5 | XCALL通话。 |
 
 ## VideoStateType<sup>7+</sup>
 
@@ -5101,6 +5103,7 @@ VoIP通话信息。
 | DIAL_CARRIER_TYPE    | 0    | 载波拨号类型。     |
 | DIAL_VOICE_MAIL_TYPE | 1    | 语音邮件拨号类型。 |
 | DIAL_OTT_TYPE        | 2    | OTT拨号类型。      |
+| DIAL_XCALL_TYPE<sup>26+</sup> | 3 | xcall拨号类型。 |
 
 ## RejectMessageOptions<sup>7+</sup>
 
@@ -5114,17 +5117,17 @@ VoIP通话信息。
 | -------------- | ------ | ---- | -------- |
 | messageContent | string | 是   | 消息内容。 |
 
- ## CallTransferResult<sup>8+</sup> 
- 
- 呼叫转移结果。 
- 
- **系统接口：** 此接口为系统接口。 
- 
- **系统能力**：SystemCapability.Telephony.CallManager 
- 
- |          名称            |                 类型               | 必填 |       说明       | 
- | ------------------------ | ---------------------------------- | ---- | ---------------- | 
- | number                   | string                             |  是  | 号码。             | 
+## CallTransferResult<sup>8+</sup>
+
+呼叫转移结果。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+|          名称            |                 类型               | 必填 |       说明       |
+| ------------------------ | ---------------------------------- | ---- | ---------------- |
+| number                   | string                             |  是  | 号码。             |
 
 ## CallWaitingStatus<sup>7+</sup>
 
