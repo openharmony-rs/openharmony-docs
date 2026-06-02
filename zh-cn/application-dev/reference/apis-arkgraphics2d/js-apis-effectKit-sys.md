@@ -146,7 +146,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Top_Proportion_Colors_And_Percentages.png](figures/zh-ch_image_Top_Proportion_Colors_And_Percentages.png)
+![Top-Proportion-Colors-And-Percentages.png](figures/Top-Proportion-Colors-And-Percentages.png)
 
 ### getShadeDegree<sup>22+</sup>
 
