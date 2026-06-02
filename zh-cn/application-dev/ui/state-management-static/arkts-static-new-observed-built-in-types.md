@@ -1,6 +1,6 @@
 # ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型
 
-从API version 26.0.0开始，ArkTS-Sta提供`ObservedArray`、`ObservedMap`、`ObservedSet`和`ObservedDate`，用于创建具有观察能力的Built-in类型。需注意的是，此处的“具有观察能力”，是指具有API操作可观察能力。相关接口定义详见[状态管理API文档](../../reference/apis-arkui/js-apis-stateManagement-static.md#observedarrayt)。
+从API version 26.0.0开始，ArkTS-Sta提供`ObservedArray`、`ObservedMap`、`ObservedSet`和`ObservedDate`，用于创建具有观察能力的Built-in类型。需注意的是，此处的“具有观察能力”，是指具有API操作可观察能力。相关接口定义详见[ObservedArray](../../reference/apis-arkui/js-apis-stateManagement-static.md#observedarrayt)、[ObservedMap](../../reference/apis-arkui/js-apis-stateManagement-static.md#observedmapk-v)、[ObservedSet](../../reference/apis-arkui/js-apis-stateManagement-static.md#observedsetk)、[ObservedDate](../../reference/apis-arkui/js-apis-stateManagement-static.md#observeddate)。
 
 ## 概述
 
@@ -28,9 +28,9 @@ import { ObservedArray, ObservedDate, ObservedMap, ObservedSet } from '@kit.ArkU
 
 示例：
 
-```ts
-'use static'
+<!-- @[observed_array_usage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedBuiltInTypes/entry/src/main/ets/pages/ObservedArrayUsage.ets) -->
 
+``` TypeScript
 import { Button, Column, Component, Entry, Text, ObservedArray } from '@kit.ArkUI';
 
 @Entry
@@ -68,9 +68,9 @@ struct Index {
 
 示例：
 
-```ts
-'use static'
+<!-- @[observed_map_usage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedBuiltInTypes/entry/src/main/ets/pages/ObservedMapUsage.ets) -->
 
+``` TypeScript
 import { Button, Column, Component, Divider, Entry, ForEach, ObservedMap, Row, Text } from '@kit.ArkUI';
 
 @Entry
@@ -115,9 +115,9 @@ struct MapSample {
 
 示例：
 
-```ts
-'use static'
+<!-- @[observed_set_usage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedBuiltInTypes/entry/src/main/ets/pages/ObservedSetUsage.ets) -->
 
+``` TypeScript
 import { Button, Column, Component, Divider, Entry, ForEach, ObservedSet, Row, Text } from '@kit.ArkUI';
 
 @Entry
@@ -160,9 +160,9 @@ struct SetSample {
 
 示例：
 
-```ts
-'use static'
+<!-- @[observed_date_usage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedBuiltInTypes/entry/src/main/ets/pages/ObservedDateUsage.ets) -->
 
+``` TypeScript
 import { Button, Column, Component, Entry, ObservedDate, Text } from '@kit.ArkUI';
 
 @Entry
@@ -195,9 +195,9 @@ struct DateSample {
 - `UIUtils.makeObserved`适用于将已有的built-in对象或interface字面量转换为可观察对象，可通过设置allowDeep参数控制该对象为一层可观察（对于built-in对象则为API操作可观察）或深层可观察（对于built-in对象则为API操作可观察，其中元素也可深层观察）。
 - `ObservedArray`、`ObservedMap`、`ObservedSet`和`ObservedDate`适用于创建可观察API操作的built-in对象。
 
-```ts
-'use static'
+<!-- @[observed_built_in_types_make_observed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedBuiltInTypes/entry/src/main/ets/pages/ObservedBuiltInTypesMakeObserved.ets) -->
 
+``` TypeScript
 import { Button, Column, Component, Entry, Text, ObservedArray, UIUtils } from '@kit.ArkUI';
 
 export interface Info {
@@ -240,9 +240,9 @@ struct Index {
 
 1. ObservedArray/ObservedMap/ObservedSet/ObservedDate创建的实例，仅具备API操作可观察能力，不会对其中的元素添加可观察能力。
 
-    ```ts
-    'use static'
-
+    <!-- @[observed_built_in_types_faq1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedBuiltInTypes/entry/src/main/ets/pages/ObservedBuiltInTypesFAQ1.ets) -->
+    
+    ``` TypeScript
     import { Button, Column, Component, Entry, Text, ObservedArray } from '@kit.ArkUI';
 
     export interface Info {
@@ -271,9 +271,9 @@ struct Index {
 
 2. 继承ObservedArray/ObservedMap/ObservedSet/ObservedDate类型中的自定义属性没有观察能力。如果需要这些自定义属性具有观察能力，可以使用@Observed/@ObservedV2装饰该子类。
 
-    ```ts
-    'use static'
-
+    <!-- @[observed_built_in_types_faq2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedBuiltInTypes/entry/src/main/ets/pages/ObservedBuiltInTypesFAQ2.ets) -->
+    
+    ``` TypeScript
     import { Button, Column, Component, Entry, Text, ObservedSet, Observed, ObservedV2, Track, Trace } from '@kit.ArkUI';
 
     export class UserInfo extends ObservedSet<int> {
