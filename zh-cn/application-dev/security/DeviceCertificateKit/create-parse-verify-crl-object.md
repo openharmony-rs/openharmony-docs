@@ -118,15 +118,15 @@ function crlSample(): void {
     };
     let revokedFlag = true;
     let serial: bigint = BigInt('0');
-    cert.createX509Cert(certBlob, (err, cert) => {
-      serial = cert.getCertSerialNumber();
+    cert.createX509Cert(certBlob, (err, x509Cert) => {
+      serial = x509Cert.getCertSerialNumber();
       if (err == null) {
         try {
           // 检查证书是否被吊销。
-          revokedFlag = x509Crl.isRevoked(cert);
+          revokedFlag = x509Crl.isRevoked(x509Cert);
           console.info(`revokedFlag is: ${revokedFlag}`);
           if (!revokedFlag) {
-            console.info('the given cert is not revoked.');
+            console.info('the given x509Cert is not revoked.');
             return;
           }
           // 根据序列号来获取被吊销的证书。

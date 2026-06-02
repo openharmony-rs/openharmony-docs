@@ -79,10 +79,10 @@ async function createCert(certData: string): Promise<cert.X509Cert> {
   return x509Cert;
 }
 
-export async function createCRL(crmPem: string): Promise<cert.CertCRLCollection> {
+export async function createCRL(crlPem: string): Promise<cert.CertCRLCollection> {
   try {
     let crlEncodingBlob: cert.EncodingBlob = {
-      data: stringToUint8Array(crmPem),
+      data: stringToUint8Array(crlPem),
       encodingFormat: cert.EncodingFormat.FORMAT_PEM
     }
     let crl: cert.X509CRL = await cert.createX509CRL(crlEncodingBlob);
