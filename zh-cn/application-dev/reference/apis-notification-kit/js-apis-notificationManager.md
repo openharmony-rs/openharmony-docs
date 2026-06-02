@@ -1611,15 +1611,11 @@ notificationManager.requestEnableNotification().then(() => {
 });
 ```
 
-## notificationManager.isDistributedEnabled<sup>(deprecated)</sup>
+## notificationManager.isDistributedEnabled
 
 isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 查询设备是否支持跨设备协同通知。使用callback异步回调。
-
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
 
 **设备行为差异**：该接口在Wearable/TV中回调返回恒为false，在其他设备类型中回调正常。
 
@@ -1658,15 +1654,11 @@ let isDistributedEnabledCallback = (err: BusinessError, data: boolean): void => 
 notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
 ```
 
-## notificationManager.isDistributedEnabled<sup>(deprecated)</sup>
+## notificationManager.isDistributedEnabled
 
 isDistributedEnabled(): Promise\<boolean>
 
 查询设备是否支持跨设备协同通知。使用Promise异步回调。
-
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
 
 **设备行为差异**：该接口在Wearable/TV中回调返回恒为false，在其他设备类型中回调正常。
 
