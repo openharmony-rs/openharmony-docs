@@ -83,6 +83,9 @@ export default class EntryAbility extends UIAbility {
 | uri        | string                                                      | 否 | 否  | 共享配置的全局唯一标识。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复。字符串长度不超过256个字节。 |
 | value      | [ValueType](js-apis-data-valuesBucket.md#valuetype)         | 否 | 是   | 共享配置的值。不填则为空字符串。<br/>**说明：** <br/>1. API版本26.0.0之前，字符串长度不超过4096个字节；从API版本26.0.0开始，默认允许的字符串最大长度为4096字节，可以在[DataProxyConfig](#dataproxyconfig20)中配置maxValueLength将最大长度扩展到102400字节。<br/>2. 当首次发布共享配置时，如果未填写，将默认设置为空字符串。在更新共享配置时，如果未填写，共享配置的值将不会被更新。     |
 | allowList  | string\[]                                         | 否 | 是   | 允许订阅和读取共享配置的应用程序列表。不填则为空的字符串数组。数组最大长度为256，超过256的部分不生效。当首次发布共享配置时，如果未填写，将默认为空的允许列表。在更新共享配置时，如果未填写，共享配置的允许列表将不会被更新。一个空的允许列表表示只有发布者能够访问该共享配置。 <br/>API版本26.0.0之前，数组中每个元素为应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，单个appIdentifier最大长度128字节，超过128字节的appIdentifier不会生效。<br/>从API版本26.0.0开始，数组支持配置特殊字符串"all"（区分大小写）表示允许所有应用访问。|
+| isMultiValues      | boolean         | 否 | 是   | 表示是否为使用values的多值类型的共享配置。true表示本次发布的数据是多值类型，则value参数将被忽略。false表示非多值类型。默认为false。 <br/>**起始版本：** 26.0.0 |
+| values      | Record&lt;number, [ValueType](js-apis-data-valuesBucket.md#valuetype)&gt;         | 否 | 是   | 多值类型取值。Record中的第一个参数为key，key由用户指定，必须唯一。第二个参数为key对应的value。单个应用在单个URI下最多支持添加10个value，每个value最大长度为4096字节。同时，所有value的总长度受[DataProxyConfig](#dataproxyconfig20)中maxValueLength字段限制。该参数仅在isMultiValues设置为true时生效，且不允许为空。当isMultivalues为false时默认为undefined。 <br/>**起始版本：** 26.0.0 |
+| trustProviders      | string[]         | 否 | 是   | 可对多值类型共享多值配置进行赋值的App列表。数组最多包含256个元素，超出部分无效。数组中每个元素为某个应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。appIdentifier最大长度为128字节，超过128字节的部分不生效。<br/>若首次发布共享配置时未设置该参数，则默认赋值列表为空。赋值列表为空表示仅发布者可以对多值类型的共享配置进行赋值。该数组支持特殊字符串"all"（区分大小写），表示允许所有应用对多值类型的共享配置进行赋值。该参数仅在isMultiValues设置为true时生效。<br/>**起始版本：** 26.0.0 |
 
 ## DataProxyChangeInfo<sup>20+</sup>
 
@@ -95,6 +98,7 @@ export default class EntryAbility extends UIAbility {
 | type       | [ChangeType](#changetype20)                                | 否 | 否    | 通知变更的类型。 |
 | uri       | string                                                        | 否 | 否    | 通知变更指定URI。|
 | value     | [ValueType](js-apis-data-valuesBucket.md#valuetype)             | 否 | 否     | 更新的数据。     |
+| values     | [ValueType](js-apis-data-valuesBucket.md#valuetype)[]          | 否 | 是     | 多值类型的变更数据。如果变更的数据类型不是多值类型，则values值为undefined。<br/>**起始版本：** 26.0.0     |
 
 ## DataProxyErrorCode<sup>20+</sup>
 
@@ -287,7 +291,17 @@ results.forEach((result) => {
 
 publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
 
-发布共享配置项。使用Promise异步回调。发布后，发布者和允许列表中指定的应用可以访问该共享配置项。如果要发布的URI已经存在，则更新对应的共享配置项。如果发布的配置项中存在任一URI的长度超出上限或者格式校验失败，则当前发布操作失败。只有发布者才允许更新共享配置项。API版本26.0.0之前，每个应用支持最多32个共享配置；从API版本26.0.0开始，每个应用支持最多64个共享配置。
+发布共享配置项。使用Promise异步回调。
+
+发布后，发布者和允许列表中指定的应用可以访问该共享配置项。
+
+如果要发布的URI已经存在，则更新对应的共享配置项。如果发布的配置项中存在任一URI的长度超出上限或者格式校验失败，则当前发布操作失败。
+
+只有发布者才允许更新共享配置项。
+
+API版本26.0.0之前，每个应用支持最多32个共享配置；从API版本26.0.0开始，每个应用支持最多64个共享配置。
+
+从API版本26.0.0开始，支持发布多值类型配置，一个uri只能对应一种值类型。且配置发布后不允许使用publish更新已发布的多值类型uri。多值类型的操作接口见[putValue](#putvalue)，[removeValue](#removevalue)和[getValues](#getvalues)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -475,4 +489,206 @@ dataProxyHandle.get(urisToGet, config).then((results: dataShare.DataProxyGetResu
 }).catch((error: BusinessError) => {
   console.error(`Failed to get config. code: ${error.code}, message: ${error.message}`);
 });
+```
+
+### putValue
+
+putValue(uri: string, key: number, value: ValueType, config: DataProxyConfig): Promise&lt;void&gt;
+
+将一个值写入到已发布的数据中。该操作仅支持对多值类型数据执行。使用Promise异步回调。
+
+若传入的key不存在，则添加新的值；若传入的key已存在，则更新该key对应的值。
+
+默认情况下，单条数据（即URI）在单个应用中最多可添加10个值，每个值最大长度为4096字节。同时，单条数据（即一个URI）在单次应用中所有值总长度受限于数据[publish](#publish20)时指定的maxValueLength参数值。
+
+**起始版本：** 26.0.0
+
+**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**参数：**
+
+| 参数名     | 类型                        | 必填 | 说明                    |
+| -------- | ----------------------------- | ---- | ------------------------ |
+| uri      | string   | 是   | 要操作的数据所对应的URI。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
+| key      | number   | 是   | 添加的值所对应的Key，对同一个应用来说是唯一的。<br>取值范围为全体整数。 |
+| value    | [ValueType](js-apis-data-valuesBucket.md#valuetype)  | 是 | 待添加的值。|
+| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示数据代理操作的配置。配置中maxValueLength参数不生效。 |
+
+**返回值：**
+
+| 类型             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[数据共享错误码](errorcode-datashare.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | -------------------- |
+| 15700000 | Inner error. Possible causes: The service is not ready or is being restarted abnormally. |
+| 15700011 | The URI does not exist. |
+| 15700014 | The parameter format is incorrect or the value range is invalid. |
+| 15700015 | No permission to access the data specified by the URI. |
+
+**示例：**
+
+```ts
+const config: dataShare.DataProxyConfig = {
+  type: dataShare.DataProxyType.SHARED_CONFIG,
+};
+let testUri: string = 'datashareproxy://com.test.dataproxyhandle/test/pv/001';
+let newConfigData: dataShare.ProxyData[] = [{
+  uri: testUri,
+  values: { 0: 'init' },
+  isMultiValues: true,
+  allowList: [],
+  trustProviders: []
+}];
+
+await dataProxyHandle?.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
+  results.forEach((result) => {
+    console.info(`URI: ${result.uri}, Result: ${result.result}`);
+  });
+}).catch((error: BusinessError) => {
+  console.error(`Failed to publish config. code: ${error.code}, message: ${error.message}`);
+});
+
+try {
+  await dataProxyHandle?.putValue(testUri, 1, 'hello', config);
+  console.info(`putValue success`);
+} catch (error) {
+  console.error(`putValue failed: code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### removeValue
+
+removeValue(uri: string, key: number, config: DataProxyConfig): Promise&lt;void&gt;
+
+移除键对应的值。该操作仅能对多值类型数据执行。仅能移除本应用添加过的值。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**参数：**
+
+| 参数名     | 类型                        | 必填 | 说明                    |
+| -------- | ----------------------------- | ---- | ------------------------ |
+| uri      | string   | 是   | 要操作的数据所对应的URI。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
+| key      | number   | 是   | 添加的值所对应的Key。 <br>取值范围为全体整数。 |
+| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示数据代理操作的配置。 |
+
+**返回值：**
+
+| 类型             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[数据共享错误码](errorcode-datashare.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | -------------------- |
+| 15700000 | Inner error. Possible causes: The service is not ready or is being restarted abnormally. |
+| 15700011 | The URI does not exist. |
+| 15700014 | The parameter format is incorrect or the value range is invalid. |
+| 15700015 | No permission to access the data specified by the URI. |
+
+**示例：**
+
+```ts
+const config: dataShare.DataProxyConfig = {
+  type: dataShare.DataProxyType.SHARED_CONFIG,
+};
+let testUri: string = 'datashareproxy://com.test.dataproxyhandle/test/pv/001';
+let newConfigData: dataShare.ProxyData[] = [{
+  uri: testUri,
+  values: { 0: 'init' },
+  isMultiValues: true,
+  allowList: [],
+  trustProviders: []
+}];
+
+await dataProxyHandle?.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
+  results.forEach((result) => {
+    console.info(`URI: ${result.uri}, Result: ${result.result}`);
+  });
+}).catch((error: BusinessError) => {
+  console.error(`Failed to publish config. code: ${error.code}, message: ${error.message}`);
+});
+
+try {
+  await dataProxyHandle?.removeValue(testUri, 0, config);
+  console.info(`removeValue success`);
+} catch (error) {
+  console.error(`removeValue failed: code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### getValues
+
+getValues(uri: string, config: DataProxyConfig): Promise&lt;ValueType[]&gt;
+
+获取指定URI下的所有多值类型数据。只有发布者和位于[allowList](#proxydata20)中的应用程序才能获取此数据。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**参数：**
+
+| 参数名     | 类型                        | 必填 | 说明                    |
+| -------- | ----------------------------- | ---- | ------------------------ |
+| uri      | string   | 是   | 要操作的数据所对应的URI。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
+| config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示数据代理操作的配置。 |
+
+**返回值：**
+
+| 类型             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Promise&lt;[ValueType](js-apis-data-valuesBucket.md#valuetype)[]&gt; | Promise对象，返回URI下所有值的数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[数据共享错误码](errorcode-datashare.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | -------------------- |
+| 15700000 | Inner error. Possible causes: The service is not ready or is being restarted abnormally. |
+| 15700011 | The URI does not exist. |
+| 15700014 | The parameter format is incorrect or the value range is invalid. |
+| 15700015 | No permission to access the data specified by the URI. |
+
+**示例：**
+
+```ts
+const config: dataShare.DataProxyConfig = {
+  type: dataShare.DataProxyType.SHARED_CONFIG,
+};
+let testUri: string = 'datashareproxy://com.test.dataproxyhandle/test/pv/001';
+let newConfigData: dataShare.ProxyData[] = [{
+  uri: testUri,
+  values: { 0: 'init' },
+  isMultiValues: true,
+  allowList: [],
+  trustProviders: []
+}];
+
+await dataProxyHandle!.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
+  results.forEach((result) => {
+    console.info(`URI: ${result.uri}, Result: ${result.result}`);
+  });
+}).catch((error: BusinessError) => {
+  console.error(`Failed to publish config. code: ${error.code}, message: ${error.message}`);
+});
+
+try {
+  let result: ValueType[] = await dataProxyHandle?.getValues(testUri, config);
+  console.info(`getValues success. Values: ` + JSON.stringify(result));
+} catch (error) {
+  console.error(`getValues failed: code: ${error.code}, message: ${error.message}`);
+}
 ```
