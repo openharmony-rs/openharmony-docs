@@ -575,7 +575,7 @@ struct KeyboardAvoid {
 ```
 
 
-![textinputkeyboardavoid](figures/TextInputKeyboardAvoid.gif)
+
 
 ## Implementing Caret Avoidance
 

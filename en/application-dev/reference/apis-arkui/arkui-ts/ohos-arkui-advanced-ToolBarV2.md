@@ -1,7 +1,7 @@
 # ToolBarV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -148,8 +148,8 @@ Defines the text of a toolbar item.
 | Name                 | Type                                                         | Read-Only| Optional| Description                                                      |
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | text                | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Text of the toolbar item.<br>Decorator: @Trace                                               |
-| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**.<br>Decorator: @Trace      |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br></div>Default value: **$r('sys.color.font_emphasize')**.<br>Decorator: @Trace|
+| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**<br>Decorator: @Trace      |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br></div>Default value: **$r('sys.color.font_emphasize')**<br>Decorator: @Trace|
 
 ### constructor
 
@@ -182,8 +182,8 @@ Defines the options for initializing a **ToolBarV2ItemText** object.
 | Name                 | Type                                                         | Read-Only| Optional| Description                                                      |
 | :------------------ |:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | text                | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Text of the toolbar item.                                               |
-| color          | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**.      |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')**.|
+| color          | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**      |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')**|
 
 ## ToolBarV2ItemImage
 
@@ -202,8 +202,8 @@ Defines the icon content of a toolbar item.
 | Name                | Type                                                         | Read-Only| Optional| Description                                                      |
 |:-------------------|:------------------------------------------------------------|:---|:---| :---------------------------------------------------------|
 | src                | [ResourceStr](ts-types.md#resourcestr)                      | No | No|  Icon of the toolbar item.<br>Decorator: @Trace                                               |
-| color              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes|  Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**.<br>Decorator: @Trace      |
-| activatedColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes| Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**.<br>Decorator: @Trace|
+| color              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes|  Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**<br>Decorator: @Trace      |
+| activatedColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes| Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**<br>Decorator: @Trace|
 
 ### constructor
 
@@ -236,8 +236,8 @@ Defines the options for initializing a **ToolBarV2ItemImage** object.
 | Name                 | Type                                                         | Read-Only| Optional| Description                                                      |
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | src                 | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Icon of the toolbar item.                                               |
-| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**.      |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**.|
+| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**      |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**|
 
 ## ToolBarV2ItemIconType
 
@@ -448,7 +448,7 @@ struct Index {
     this.toolbarList.push(new ToolBarV2Item({
       content: new ToolBarV2ItemText(
         {
-          text: Long long long long long'
+          text: 'Long long long long long'
         }
       ),
       icon: new ToolBarV2ItemImage({
@@ -712,7 +712,7 @@ struct Index {
     this.toolbarList.push(
       new ToolBarV2Item({
         content: new ToolBarV2ItemText({
-          text: Long long long long long'
+          text: 'Long long long long long',
         }),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_share')

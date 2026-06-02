@@ -65,8 +65,8 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 | Name| Type| Read Only| Optional| Description|
 | --------------- | ---------- | ----- | ----- | -------------------- |
-| x<sup>15+</sup> |number|No|Yes|X coordinate of the cursor or stylus position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| y<sup>15+</sup> |number|No|Yes|Y coordinate of the cursor or stylus position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| x<sup>15+</sup> |number|No|Yes|X coordinate of the cursor or stylus position in the component coordinate system based on the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| y<sup>15+</sup> |number|No|Yes|Y coordinate of the cursor or stylus position in the component coordinate system based on the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
 | windowX<sup>15+</sup> |number|No|Yes|X coordinate of the cursor or stylus position in the coordinate system of the current application window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
 | windowY<sup>15+</sup> |number|No|Yes|Y coordinate of the cursor or stylus position in the coordinate system of the current application window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
 | displayX<sup>15+</sup> |number|No|Yes|X coordinate of the cursor or stylus position in the coordinate system of the current screen window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|

@@ -16,7 +16,7 @@ Provides APIs for measuring text metrics, such as text height and width.
 >
 > - In the following API examples, you must first use [getMeasureUtils()](arkts-apis-uicontext-uicontext.md#getmeasureutils12) in **UIContext** to obtain a **MeasureUtils** instance, and then call the APIs using the obtained instance.
 >
-> - To perform more complex text measurements, use the [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) API.
+> - If you need more text measurement parameters, such as [includeFontPadding](./arkui-ts/ts-basic-components-text.md#includefontpadding23) and [fallbackLineSpacing](./arkui-ts/ts-basic-components-text.md#fallbacklinespacing23), you are advised to use the corresponding graphics measurement API [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph).
 >
 > - Avoid using [ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13) during text measurement API calls. To ensure timing correctness and the accuracy of measurement results, manually listen for font scale changes.
 >
@@ -145,7 +145,7 @@ struct TextDemo {
   @State numLength: number = 0;
   @State numUnicode: number = 0;
   private fullText: string =
-    'This is a long text example. When the text content exceeds three lines, the excess part 😀😀 will be displayed with an ellipsis. Click the ellipsis to expand all content. This is test text used to verify multi-line text truncation.'
+    'This is a long text example. When the text content exceeds three lines, the excess part will be displayed with an ellipsis. Click the ellipsis to expand all content. This is test text used to verify multi-line text truncation.'
   private maxLines: number = 3;
 
   aboutToAppear() {

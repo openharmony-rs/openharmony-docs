@@ -116,7 +116,7 @@ Obtains the AbilityRuntime context from the OE Extension context.
 | Name| Description|
 | -- | -- |
 | [ContentEmbed_ExtensionContextHandle](capi-contentembed-contentembed-extensioncontext8h.md) ceContext | Pointer to the OE Extension context object.|
-| [AbilityRuntime_ContextHandle](../apis-ability-kit/capi-abilityruntime-abilityruntime-context8h.md) *context | Output parameter. After the call is successful, this pointer points to the [AbilityRuntime_ContextHandle](../apis-ability-kit/capi-abilityruntime-abilityruntime-context8h.md) context object.|
+| AbilityRuntime_ContextHandle *context | Output parameter. After the call is successful, this pointer points to the AbilityRuntime_ContextHandle context object.|
 
 **Returns:**
 
@@ -140,7 +140,7 @@ Obtains the corresponding OE Extension instance from the ExtensionAbility base c
 
 | Name| Description|
 | -- | -- |
-| AbilityRuntime_ExtensionInstanceHandle | AbilityRuntime_ExtensionInstanceHandle instance.|
+| AbilityRuntime_ExtensionInstanceHandle baseInstance | AbilityRuntime_ExtensionInstanceHandle instance.|
 | [ContentEmbed_ExtensionInstanceHandle](capi-contentembed-contentembed-extensioninstance8h.md) *ceInstance | Output parameter. After the call is successful, this pointer points to the OE Extension instance object.|
 
 **Returns:**
@@ -812,4 +812,3 @@ Destroys the OE Extension.
 | Type| Description|
 | -- | -- |
 | [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | The following error codes are returned:<br>     CE_ERR_OK: Operations are successful.<br>     CE_ERR_PARAM_INVALID: Parameter check failed.<br>     CE_ERR_NULL_POINTER: A null pointer is returned.<br>     CE_ERR_SYSTEM_ABNORMAL: The system service is abnormal.<br>     CE_ERR_DEVICE_NOT_SUPPORTED: The device is not supported.<br>     CE_ERR_IN_DLP_SANDBOX: This operation is not supported because the application is in the DLP sandbox.|
-<!--no_check-->

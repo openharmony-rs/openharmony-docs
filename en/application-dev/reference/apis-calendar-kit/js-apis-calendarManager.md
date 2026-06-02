@@ -97,7 +97,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
+    // The main window has been created. Set the main page for the Ability.
     console.info('Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -271,7 +271,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 | Name  | Type                 | Mandatory| Description                                                     |
 | -------- | --------------------- | ---- |---------------------------------------------------------|
 | calendar | [Calendar](#calendar) | Yes  | **Calendar** object to delete. The default account cannot be deleted.                              |
-| callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If an account is deleted successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the account is deleted successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -546,7 +546,7 @@ import { calendarManager } from '@kit.CalendarKit';
 calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  // Check whether the permission has been successfully applied for.
+  // Check whether the permission has been granted.
   console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -646,7 +646,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
     console.info(`account -> ${JSON.stringify(account)}`);
   })
 }).catch((err: BusinessError) => {
-  // Check whether the permission has been successfully applied for.
+  // Check whether the permission has been granted.
   console.error(`Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
   
 });
@@ -656,7 +656,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 editEvent(event: Event): Promise\<number>
 
-Edits an event on the event creation page, with no event ID specified in **Event**. The **instanceStartTime**, **instanceEndTime**, **identifier**, **attendee**, **service**, **isLunar**, and **timeZone** attributes cannot be set. This API uses a promise to return the result.
+Edits an event on the event creation page, with no event ID specified in **Event**. The **instanceStartTime**, **instanceEndTime**, **identifier**, **attendee**, **service**, **isLunar**, and **timeZone** attributes cannot be set. Important events cannot be added either. This API uses a promise to return the result.
 
 Events created using this API can be obtained and modified by the system calendar. Third-party applications can obtain and modify the events after they requested the **READ_WHOLE_CALENDAR** permission and the **WRITE_WHOLE_CALENDAR** permission, respectively.
 
@@ -769,7 +769,7 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
     }
   });
 }).catch((err: BusinessError) => {
-  // Check whether the permission has been successfully applied for.
+  // Check whether the permission has been granted.
   console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -826,7 +826,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -893,7 +893,7 @@ const events: calendarManager.Event[] = [
 ];
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -967,7 +967,7 @@ const events: calendarManager.Event[] = [
 ];
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1017,7 +1017,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1079,7 +1079,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar data->${JSON.stringify(data)}`);
@@ -1142,7 +1142,7 @@ const event2: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1217,7 +1217,7 @@ const event2: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1280,7 +1280,7 @@ const oriEvent: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1344,7 +1344,7 @@ const oriEvent: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1407,7 +1407,7 @@ import { calendarManager } from '@kit.CalendarKit';
 let calendar : calendarManager.Calendar | undefined = undefined;
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar data -> ${JSON.stringify(data)}`);
@@ -1476,7 +1476,7 @@ const event2: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1562,7 +1562,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1610,7 +1610,7 @@ import { calendarManager } from '@kit.CalendarKit';
 let calendar : calendarManager.Calendar | undefined = undefined;
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1659,7 +1659,7 @@ const config: calendarManager.CalendarConfig = {
 };
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1719,7 +1719,7 @@ const config: calendarManager.CalendarConfig = {
 };
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1759,7 +1759,7 @@ import { calendarManager } from '@kit.CalendarKit';
 let calendar : calendarManager.Calendar | undefined = undefined;
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1826,7 +1826,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -1838,7 +1838,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar?.queryEventInstances(date.getTime(), date.getTime() + 60 * 60 * 1000, undefined,
-      ['title', 'startTime', 'endTime', 'instanceStartTime', 'instanceEndTime',]).then((data: calendarManager.Event[]) => {
+      ['title', 'startTime', 'endTime', 'instanceStartTime', 'instanceEndTime']).then((data: calendarManager.Event[]) => {
       console.info(`Succeeded in getting event instances, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       // Check whether the parameters are correct.
@@ -1872,7 +1872,7 @@ Describes the calendar configuration information.
 | Name          | Type    | Read-Only   | Optional| Description                                                        |
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | No    | Yes | Whether to enable the reminder for events in the calendar. The value **true** means to enable the reminder for events in the calendar, and **false** means the opposite. The default value is **true**.|
-| color          | number \| string | No  | Yes | Calendar color. If the value is a number, the value ranges from 0x000000 to 0xFFFFFF or from 0x00000000 to 0xFFFFFFFF. If the value is a string, the value contains 7 or 9 characters, for example, **#FFFFFF** or **#FFFFFFFFF**. If this parameter is not set, the default value **0xFF0A59F7** is used. If **undefined** or an incorrect value is input, an exception is thrown.|
+| color          | number \| string | No  | Yes | Calendar color. If the value is a number, the value ranges from 0x000001 to 0xFFFFFF or from 0x00000001 to 0xFFFFFFFF. If the value is a string, the value contains 7 or 9 characters, for example, **#FFFFFF** or **#FFFFFFFF**. If this parameter is not set, the default value **0xFF0A59F7** is used. If **undefined** or an incorrect value is input, an exception is thrown.|
 
 ## Event
 
@@ -1890,7 +1890,7 @@ Describes an **Event** object, including the event title, start time, and end ti
 | endTime        | number                            | No  | No | End time of an event. The value is a 13-digit timestamp. For an all-day event, this field is converted to the timestamp corresponding to 24:00 of the specified date.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                         |
 | isAllDay       | boolean                           | No  | Yes | Whether the event is an all-day event. The value **true** means that the event is an all-day event, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                              |
 | attendee       | [Attendee](#attendee)[]           | No  | Yes | Attendees in a meeting. If this parameter is not set, the default null value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                 |
-| timeZone       | string                            | No  | Yes | Time zone of the event, with a maximum of 5,000 characters. If this parameter is not specified or set to an invalid value, the current time zone is used by default. If a different time zone is required, enter the corresponding time zone. You can call [systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone) to obtain the current system time zone.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| timeZone       | string                            | No  | Yes | Time zone of the event, with a maximum of 5,000 characters. If this parameter is not specified or set to an invalid value, the current time zone is used by default. If a different time zone is required, you can set this parameter to that time zone. You can call [systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone) to obtain the current system time zone.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | reminderTime   | number[]                          | No  | Yes | Reminder time of the event, in minutes. For example, if the value is *x*, the reminder occurs *x* minutes before the event starts. If this parameter is not set, no reminder is set. A negative value indicates the delay time for sending a notification. For an all-day event, this parameter specifies the time offset in minutes before 9 a.m. on the event date. A negative value indicates the number of minutes after 9 a.m.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                             |
 | recurrenceRule | [RecurrenceRule](#recurrencerule) | No  | Yes | Recurrence rule of an event. The event is a recurring event if this parameter is set; otherwise, the event is a non-recurring event. The default value is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                  |
 | description    | string                            | No  | Yes | Event description, with a maximum of 5,000 characters. If this parameter is not specified, the default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                   |
@@ -1982,7 +1982,7 @@ const event2: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -2054,7 +2054,7 @@ const event2: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -2094,7 +2094,7 @@ Filters events by event title. This API supports fuzzy match.
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| title  | string | Yes  | Event title, The value is a string with a maximum of 5,000 characters.|
+| title  | string | Yes  | Event title. The value is a string with a maximum of 5,000 characters.|
 
 **Return value**
 
@@ -2119,7 +2119,7 @@ const event: calendarManager.Event = {
 };
 calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission has been successfully applied for.
+    // Check whether the permission has been granted.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -2166,11 +2166,11 @@ Describes the recurrence rule of a recurring event.
 | expire              | number                                      | No  | Yes | End date of the recurrence period. The value is a 13-digit timestamp. If this parameter is not specified, the event has no end date.<br> If **expire**, **count**, and **interval** are set at the same time, the restriction that is reached first prevails.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                          |
 | count<sup>12+</sup>               | number                                      | No  | Yes | Number of times that an event recurs. The value is a non-negative integer. If the value is a floating point number, it is rounded down. If this parameter is left empty, the default value is **0**, indicating that the number of recurrence times is not limited and the event will continuously recur. If the value is negative, the effect is the same as that of **0**.<br> If **count**, **interval**, and **expire** are set at the same time, the restriction that is reached first prevails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | interval<sup>12+</sup>            | number                                      | No  | Yes | Recurrence interval of a recurring event. The value is a non-negative integer. If the value is a floating point number, it is rounded down.<br> If this parameter is not specified, the default value is **0**. If the value is **0**, **1**, or negative, the event recurs every day, week, month, or year.<br> If **interval**, **count**, and **expire** are set at the same time, the restriction that is reached first prevails.<br>This property is related to the **recurrenceFrequency** rule. The recurrence interval varies according to the recurrence rule. For example, if the **interval** value is **2**, the following situations occur:<br>Daily recurrence: The event recurs every two days.<br>Weekly recurrence: The event recurs every two weeks.<br>Monthly recurrence: The event recurs every two months.<br>Yearly recurrence: The event recurs every two years.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| excludedDates<sup>12+</sup>       | number[]                                    | No  | Yes | Excluded dates set for a duplicate calendar event, in timestamp format. This parameter is not specified by default. If the value is **0** or a negative number, it is treated as an empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                |
+| excludedDates<sup>12+</sup>       | number[]                                    | No  | Yes | Excluded dates set for a duplicate calendar event, in timestamp format. The value must be exactly the same as the start time (hour, minute, and second) of the event. Otherwise, the setting does not take effect. This parameter is not specified by default. If the value is **0** or a negative number, it is treated as an empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                |
 | daysOfWeek<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a week. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 7], corresponding to Monday to Sunday. Values outside this range are invalid and treated as empty values. The relevant field arrays are in one-to-one mapping. For example, if the values of **weeksOfMonth** and **daysOfWeek** are **[1, 2, 3]**, the event recurs on Monday of the first week, Tuesday of the second week, and Wednesday of the third week of each month.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                        |
-| daysOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 31], corresponding to the first to the thirty-first days of a month. Values outside this range are invalid and treated as empty values. The value **29**, **30**, or **31** is invalid if the corresponding date does not exist in the current month. The relevant field arrays are in one-to-one mapping. For example, if the values of **monthsOfYear** and **daysOfMonth** are **[1, 2, 3]**, the event recurs on January 1, February 2, and March 3.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                  |
-| daysOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 366], corresponding to the first to the 366th days of a year. Values outside this range are invalid and treated as empty values. If this year only has 365 days, the value **366** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                           |
-| weeksOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 5], corresponding to the first to the fifth weeks of a month. Values outside this range are invalid and treated as empty values. If this month only has four weeks, the value **5** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                 |
+| daysOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 31], corresponding to the first to the thirty-first days of a month. Values outside this range are invalid and treated as empty values. The value **29**, **30**, or **31** is invalid if there is no such date in the month. The relevant field arrays are in one-to-one mapping. For example, if the values of **monthsOfYear** and **daysOfMonth** are **[1, 2, 3]**, the event recurs on January 1, February 2, and March 3.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                  |
+| daysOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 366], corresponding to the first to the 366th days of a year. Values outside this range are invalid and treated as empty values. If a year only has 365 days, the value **366** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                           |
+| weeksOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 5], corresponding to the first to the fifth weeks of a month. Values outside this range are invalid and treated as empty values. If a month only has four weeks, the value **5** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                 |
 | weeksOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 53], corresponding to the first to the 53rd weeks of each year. Values outside this range are invalid and treated as empty values.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                               |
 | monthsOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by month of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 12], corresponding to the first to the twelfth months of a year. Values outside this range are invalid and treated as empty values.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                               |
 ## RecurrenceFrequency
@@ -2196,9 +2196,9 @@ Describes the attendees in a meeting.
 
 | Name | Type  | Read-Only| Optional| Description                                                                                                                                                                                       |
 | ----- | ------ | ---- |----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| name  | string | No  | No | Name of the attendee, The value is a string with a maximum of 5,000 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                       |
+| name  | string | No  | No | Name of the attendee. The value is a string with a maximum of 5,000 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                       |
 | email | string | No  | No | Email address of the attendee. The email address is in the format of username@domain name.suffix. The username can contain only letters, digits, underscores (_), dots (.), and hyphens (-). The value cannot start or end with a period (.) or hyphen (-). Two consecutive dots (..) are not allowed. The value is a string with a maximum of 5,000 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| role<sup>12+</sup>  | [AttendeeRole](#attendeerole12) | No  | Yes | Role of the attendee. If this parameter is left empty, the default value is null.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                |
+| role<sup>12+</sup>  | [AttendeeRole](#attendeerole12) | No  | Yes | Role of the attendee. If this parameter is left empty, the default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                |
 | status<sup>18+</sup> | [AttendeeStatus](#attendeestatus18) | No  | Yes| Status of the attendee. If this parameter is not set, the default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                               |
 | type<sup>18+</sup>   | [AttendeeType](#attendeetype18)     | No  | Yes| Type of the attendee. If this parameter is not set, the default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                               |
 

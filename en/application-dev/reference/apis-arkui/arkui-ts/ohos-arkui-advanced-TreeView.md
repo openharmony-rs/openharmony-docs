@@ -1,7 +1,7 @@
 # TreeView
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -17,11 +17,13 @@ This component is applicable in productivity applications, such as side navigati
 >
 > - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
+> - This component can be used only in the stage model.
+>
 > - If the **TreeView** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **TreeView** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **TreeView** component.
 
 ## Modules to Import
 
-```
+```ts
 import { TreeView } from "@kit.ArkUI";
 ```
 
@@ -76,7 +78,7 @@ Adds a child node to the selected node.
 
 | Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| nodeParam | [NodeParam](#nodeparam) | No| Node information.|
+| nodeParam | [NodeParam](#nodeparam) | No| Node information, which is used to specify the attributes of the new node. If this parameter is not specified, a new folder node is added under the selected node.|
 
 **Return value**
 
@@ -163,12 +165,12 @@ Refreshes the tree view. You can call this API to update the information about t
 | symbolEditIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol edit icon, which has a higher priority than **editIcon**.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                |
 | primaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Primary title.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                         |
 | secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Secondary title.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                          |
-| container | () =&gt; void | No| Yes| Right-click child component bound to the node. The child component is decorated with @Builder.<br>Default value: **() =&gt; void**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                               |
+| container | ()&nbsp;=&gt;&nbsp;void | No| Yes| Right-click child component bound to the node. The child component is decorated with @Builder.<br>Default value: **()&nbsp;=&gt;&nbsp;void**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                               |
 
 
 ## TreeListenerManager
 
-Implements a **TreeListenerManager** object, which can be bound to a **TreeView** component to listen for changes of tree nodes. One **TreeListenerManager** object can be bound to only one tree view component.
+Implements a **TreeListenerManager** object, which can be bound to a **TreeView** component to listen for changes of tree nodes. One **TreeListenerManager** object can be bound to only one **TreeView** component.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
@@ -213,14 +215,14 @@ Obtains a listener.
 
 ## TreeListener
 
-Listener of the tree view component. You can bind it to the **TreeView** component and use it to listen for changes of tree nodes. One listener can be bound to only one **TreeView** component.
+Sets the listener of the tree view component. You can bind it to the **TreeView** component and use it to listen for changes of tree nodes. One listener can be bound to only one **TreeView** component.
 
 
 ### on
 
 on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
 
-Register a listener.
+Registers a listener.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -274,7 +276,7 @@ Unregisters a listener.
 | Name | Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | Yes| Listening type.|
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | No| Node information.|
+| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | No| Node information. When this parameter is passed, the listener corresponding to the node information is canceled. Otherwise, all listeners of this type are canceled.|
 
 ## TreeListenType
 
@@ -311,7 +313,7 @@ Enumerates the listening types of tree view nodes.
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.
 
-## Example
+## Examples
 
 ### Example 1: Configuring a Simple Tree View
 
@@ -341,12 +343,12 @@ struct TreeViewDemo {
           this.treeController.addNode();
         })
       Divider()
-      Text('Delete').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
+      Text('Remove').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
         .onClick((event: ClickEvent) => {
           this.treeController.removeNode();
         })
       Divider()
-      Text('Rename').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
+      Text('Modify').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
         .onClick((event: ClickEvent) => {
           this.treeController.modifyNode();
         })
@@ -391,7 +393,7 @@ struct TreeViewDemo {
       .addNode({ parentNodeId:33, currentNodeId: 34, isFolder: false, primaryTitle: "Project 8" })
       .addNode({ parentNodeId:-1, currentNodeId: 36, isFolder: false, primaryTitle: "Project 9" })
       .buildDone();
-    this.treeController.refreshNode (-1, "Parent", "Child");
+    this.treeController.refreshNode(-1, "Parent", "Child");
   }
 
   build() {
@@ -459,12 +461,12 @@ struct TreeViewDemo {
           this.treeController.addNode();
         })
       Divider()
-      Text('Delete').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
+      Text('Remove').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
         .onClick((event: ClickEvent) => {
           this.treeController.removeNode();
         })
       Divider()
-      Text('Rename').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
+      Text('Modify').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
         .onClick((event: ClickEvent) => {
           this.treeController.modifyNode();
         })
@@ -517,7 +519,7 @@ struct TreeViewDemo {
       .addNode({ parentNodeId:33, currentNodeId: 34, isFolder: false, primaryTitle: "Project 8" })
       .addNode({ parentNodeId:-1, currentNodeId: 36, isFolder: false, primaryTitle: "Project 9" })
       .buildDone();
-    this.treeController.refreshNode (-1, "Parent", "Child");
+    this.treeController.refreshNode(-1, "Parent", "Child");
   }
 
   build() {

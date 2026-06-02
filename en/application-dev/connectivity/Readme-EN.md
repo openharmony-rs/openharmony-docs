@@ -47,4 +47,10 @@
 
   - [Wi-Fi Scanning Development](wlan/scan-development-guide.md)
 
+- Converged Short-Range<!--fusion-connectivity-->
+
+  - [Converged Short-Range Service Development Overview](fusion-connectivity/fusion-connectivity-overview.md)
+
+  - [Interconnection Between Partner Devices and OpenHarmony Devices](fusion-connectivity/partneragent-life-application-guide.md)
+
 - [Terminology](terminology.md)

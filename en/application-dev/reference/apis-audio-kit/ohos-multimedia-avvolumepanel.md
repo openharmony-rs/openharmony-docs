@@ -56,7 +56,7 @@ Describes the volume panel parameters.
 
 | Name| Type|Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- |-------- |
-|position | [Position](../apis-arkui/arkui-ts/ts-types.md#position) | No| Yes| Position of the volume panel.<br>If this parameter is not set, the volume bar appears at the system default location.<br>If this parameter is set to a position within the screen, the volume bar appears at the specified location.<br>If this parameter is set to a position outside the screen, such as (-1, -1), the system volume bar is not displayed. In this case, you should consider implementing a custom volume bar.|
+|position | [Position](../apis-arkui/arkui-ts/ts-types.md#position) | No| Yes| Position of the volume panel.<br>If this parameter is not set, the system default volume panel position is used.<br>If this parameter is set to a position within the screen, the position set by the application is used.<br>If this parameter is set but the parameter value is invalid, for example, (-1, -1), the system default volume panel is hidden.<br>**Note:** If an application needs to hide the system default volume panel, it must provide a custom volume panel to ensure that users can still adjust the volume.|
 
 ## Events
 
@@ -66,6 +66,7 @@ The [universal events](../apis-arkui/arkui-ts/ts-component-general-events.md) ar
 
 1. When implementing the custom volume bar, you are advised to use the volume change listening API of the audio framework. The application can determine whether to process the current data and display the custom volume bar based on the volume type (**volumeEvent.volumeType**), volume level (**volumeEvent.volume**), and whether to display the volume bar (**volumeEvent.updateUi**) in the API callback. For details, see [on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20).
 2. To ensure users are aware of volume changes, applications are not allowed to adjust the volume in the background. The system will take corresponding control measures.
+3. The system volume panel is designed to allow users to actively adjust the system volume through the application UI, rather than having the application adjust it automatically. Therefore, if an application hides the system default volume panel by setting the volume panel position parameter, it must provide a custom volume panel to ensure that users can still adjust the volume properly.
 
 ## Example
 
