@@ -13,7 +13,7 @@
 
 该模块主要用于以下场景：
 
-- 为[PasteButton](ts-security-components-pastebutton.md#pastebutton-1)、[SaveButton](ts-security-components-savebutton.md#savebutton-1)等安全控件统一设置布局、尺寸、文字、图标、边框和交互相关属性。
+- 为[PasteButton](ts-security-components-pastebutton.md#pastebutton-1)、[SaveButton](ts-security-components-savebutton.md#savebutton-1)等安全控件统一设置布局、尺寸、文字、图标、颜色、边框和交互相关属性。
 - 在满足安全控件规范的前提下，调整安全控件显示效果和交互体验。具体约束请参见[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 - 通过链式调用方式复用安全控件通用属性能力。
 
@@ -90,7 +90,7 @@ position(value: Position): T
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) | 是 | 安全控件左上角相对于父容器左上角的偏移位置。适用于通过绝对定位将安全控件放置到页面固定区域的场景。<br/>x和y建议均传入数值型坐标。<br/>若参数为undefined、null，或x、y为非数字类型时，该属性不生效，异常坐标会按0处理。 |
+| value | [Position](ts-types.md#position) | 是 | 安全控件左上角相对于父容器左上角的偏移位置。适用于通过绝对定位将安全控件放置到页面固定区域的场景。<br/>未显式指定单位时，单位为vp。<br/>x和y建议均传入数值型坐标。<br/>若参数为undefined、null，或x、y为非数字类型时，该属性不生效，异常坐标会按0处理。 |
 
 **返回值：**
 
@@ -112,7 +112,7 @@ markAnchor(value: Position): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) | 是 | 安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。通常与position()、offset()配合使用，用于更精细地设置控件展示位置。<br/>无默认值。<br/>传入异常值时该属性不生效。 |
+| value | [Position](ts-types.md#position) | 是 | 安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。通常与position()、offset()配合使用，用于更精细地设置控件展示位置。<br/>未显式指定单位时，单位为vp。<br/>无默认值。<br/>传入异常值时该属性不生效。 |
 
 **返回值：**
 
@@ -134,7 +134,7 @@ offset(value: Position | Edges | LocalizedEdges): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | 是 | 安全控件相对于自身布局位置的坐标偏移。设置后不会影响父容器布局，仅在绘制阶段调整控件显示位置。<br/>无默认值。<br/>当入参异常时，该属性不生效。 |
+| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | 是 | 安全控件相对于自身布局位置的坐标偏移。设置后不会影响父容器布局，仅在绘制阶段调整控件显示位置。<br/>未显式指定单位时，单位为vp。<br/>无默认值。<br/>当入参异常时，该属性不生效。 |
 
 **返回值：**
 
@@ -200,7 +200,7 @@ fontWeight(value: number | FontWeight | string | Resource): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> | 是 | 安全控件上文字粗细。<br/>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br/>string类型支持使用数字字符串（如'400'），以及FontWeight中的枚举值对应的字符串（如'bold'、'bolder'、'lighter'、'regular'、'medium'）。<br/>从API version 20开始，支持Resource类型。Resource类型仅支持'integer'和'string'，当类型为'integer'时，取值参考前述number类型；当类型为'string'时，取值参考前述string类型。<br/>如果控件未设置fontWeight，文字粗细将默认设置为FontWeight.Medium。如果value入参为undefined、null，或number类型不在[100, 900]范围内，或string类型不符合FontWeight枚举值对应的字符串格式，文字粗细将被设置为FontWeight.Normal。 |
+| value | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> | 是 | 安全控件上文字粗细。<br/>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br/>string类型支持使用数字字符串（如'400'），以及FontWeight中的枚举值对应的字符串（如'bold'、'bolder'、'lighter'、'regular'、'medium'）。<br/>从API version 20开始，支持Resource类型。Resource类型仅支持'integer'和'string'。类型为'integer'时，取值参考前述number类型；类型为'string'时，取值参考前述string类型。<br/>如果控件未设置fontWeight，文字粗细将默认设置为FontWeight.Medium。value入参为undefined、null，或number类型不在[100, 900]范围内，或string类型不符合FontWeight枚举值对应的字符串格式时，文字粗细将被设置为FontWeight.Normal。 |
 
 **返回值：**
 
@@ -332,7 +332,7 @@ borderWidth(value: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) | 是 | 安全控件的边框宽度。<br/>默认不设置边框宽度。未显式指定单位时，单位为vp。<br/>不支持设置百分比字符串。设置异常值时该属性不生效。|
+| value | [Dimension](ts-types.md#dimension10) | 是 | 安全控件的边框宽度。<br/>默认值：0vp。未显式指定单位时，单位为vp。<br/>不支持设置百分比字符串。设置异常值时该属性不生效。|
 
 **返回值：**
 
@@ -480,7 +480,7 @@ textIconSpace(value: Dimension): T
 
 width(value: Length): T
 
-设置安全控件自身的宽度，缺省时将根据元素内容自适配宽度。
+设置安全控件自身的宽度，缺省时将根据元素内容自适配宽度。配合自适应字号相关属性使用时，width的设置会影响文本是否能完整显示。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -490,7 +490,7 @@ width(value: Length): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Length](ts-types.md#length) | 是 | 安全控件自身的宽度，缺省时将根据元素内容自适配宽度。未显式指定单位时，单位为vp。<br/>使用自适应字号相关属性时，安全控件文本未完全显示将导致点击不授权。width的设置会影响文本是否能完整显示。|
+| value | [Length](ts-types.md#length) | 是 | 安全控件自身的宽度，缺省时将根据元素内容自适配宽度。未显式指定单位时，单位为vp。<br/>配合[minFontSize](#minfontsize18)、[maxFontSize](#maxfontsize18)、[maxLines](#maxlines18)以及[heightAdaptivePolicy](#heightadaptivepolicy18)使用实现自适应字号时，安全控件文本未完全显示将导致点击不授权。设置异常值时该属性不生效。|
 
 **返回值：**
 
@@ -502,7 +502,7 @@ width(value: Length): T
 
 height(value: Length): T
 
-设置安全控件自身的高度，缺省时将根据元素内容自适配高度。
+设置安全控件自身的高度，缺省时将根据元素内容自适配高度。配合自适应字号相关属性使用时，height的设置会影响文本是否能完整显示。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -512,7 +512,7 @@ height(value: Length): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Length](ts-types.md#length) | 是 | 安全控件自身的高度，缺省时将根据元素内容自适配高度。未显式指定单位时，单位为vp。<br/>使用自适应字号相关属性时，安全控件文本未完全显示将导致点击不授权。height的设置会影响文本是否能完整显示。|
+| value | [Length](ts-types.md#length) | 是 | 安全控件自身的高度，缺省时将根据元素内容自适配高度。未显式指定单位时，单位为vp。<br/>配合[minFontSize](#minfontsize18)、[maxFontSize](#maxfontsize18)、[maxLines](#maxlines18)以及[heightAdaptivePolicy](#heightadaptivepolicy18)使用实现自适应字号时，安全控件文本未完全显示将导致点击不授权。设置异常值时该属性不生效。|
 
 **返回值：**
 
@@ -524,7 +524,7 @@ height(value: Length): T
 
 size(value: SizeOptions): T
 
-设置宽高尺寸，缺省时将根据元素内容自适配宽高尺寸。
+设置宽度和高度，缺省时将根据元素内容自适配宽高尺寸。size方法用于同时设置宽度和高度，如需单独设置宽度或高度，可使用[width](#width11)或[height](#height11)方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -534,7 +534,7 @@ size(value: SizeOptions): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [SizeOptions](ts-types.md#sizeoptions) | 是 | 宽高尺寸，缺省时将根据元素内容自适配宽高尺寸。未显式指定单位时，单位为vp。<br/>使用自适应字号相关属性时，安全控件文本未完全显示将导致点击不授权。size的设置会影响文本是否能完整显示。|
+| value | [SizeOptions](ts-types.md#sizeoptions) | 是 | 宽度和高度，缺省时将根据元素内容自适配宽高尺寸。未显式指定单位时，单位为vp。<br/>配合[minFontSize](#minfontsize18)、[maxFontSize](#maxfontsize18)、[maxLines](#maxlines18)以及[heightAdaptivePolicy](#heightadaptivepolicy18)使用实现自适应字号时，安全控件文本未完全显示将导致点击不授权。size的设置会影响文本是否能完整显示。|
 
 **返回值：**
 
@@ -556,7 +556,7 @@ constraintSize(value: ConstraintSizeOptions): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是 | 约束尺寸，组件布局时，进行尺寸范围限制。未显式指定单位时，单位为vp。constraintSize的优先级高于width和height。使用自适应字号相关属性时，安全控件文本未完全显示将导致点击不授权。constraintSize的设置会影响文本是否能完整显示。取值结果参考[constraintSize取值对width/height影响](ts-universal-attributes-size.md#constraintsize)。<br>默认值：<br>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}。|
+| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是 | 约束尺寸，组件布局时进行尺寸范围限制。未显式指定单位时，单位为vp。<br/>constraintSize的优先级高于width和height。<br/>使用自适应字号相关属性时，安全控件文本未完全显示将导致点击不授权。constraintSize的设置会影响文本是否能完整显示。<br/>取值结果参考[constraintSize取值对width/height影响](ts-universal-attributes-size.md#constraintsize)。<br/>默认值：<br>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}。|
 
 **返回值：**
 
@@ -622,7 +622,7 @@ id(id: string): T
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| id | string   |  是  | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''。<br/> |
+| id | string   | 是 | 组件的唯一标识，唯一性由使用者保证。<br/>默认值：''。 |
 
 **返回值：**
 
@@ -758,7 +758,7 @@ maxFontSize(maxSize: number | string | Resource): T
 
 maxLines(line: number | Resource): T
 
-设置文本的最大行数。默认情况下，文本自动换行，指定此属性后，文本的最大显示行数不会超过指定值。配合[minFontSize](#minfontsize18)、[maxFontSize](#maxfontsize18)以及[heightAdaptivePolicy](#heightadaptivepolicy18)使用时，安全控件文本未完全显示将导致点击不授权。maxLines的设置会影响文本是否能完整显示，进而影响安全控件的授权行为。
+设置文本的最大行数。默认情况下，文本自动换行，指定此属性后，文本的最大显示行数不会超过指定值。可独立使用限制文本行数，也可配合[minFontSize](#minfontsize18)、[maxFontSize](#maxfontsize18)以及[heightAdaptivePolicy](#heightadaptivepolicy18)使用。配合自适应字号相关属性使用时，安全控件文本未完全显示将导致点击不授权。maxLines的设置会影响文本是否能完整显示，进而影响安全控件的授权行为。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -780,7 +780,7 @@ maxLines(line: number | Resource): T
 
 heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T
 
-设置文本自适应高度的方式。适用于安全控件在不同尺寸或不同语言环境下，需要动态调整文本显示以保证文本完整显示的场景。
+设置文字自适应高度的方式。适用于安全控件在不同尺寸或不同语言环境下，需要动态调整文本显示以保证文本完整显示的场景。
 
 安全控件文本以[maxFontSize](#maxfontsize18)的值进行布局，如果可以完整显示文本，则无需进行自适应调节，该接口设置不生效，否则按指定文本自适应高度的方式进行调节，具体自适应调节规格如下：
 
@@ -889,8 +889,8 @@ focusBox(style: FocusBoxStyle): T
 
 | 名称      | 值 | 说明               |
 | ------- | -------- | ------------------ |
-| Normal  | 0 | 普通按钮（默认不带圆角）。      |
-| Capsule | 1 | 胶囊型按钮（圆角半径默认为高度的一半）。 |
+| Normal  | 0 | 普通按钮。      |
+| Capsule | 1 | 胶囊型按钮（圆角半径为高度的一半）。 |
 | Circle  | 2 | 圆形按钮。              |
 | ROUNDED_RECTANGLE<sup>16+</sup> | 8 | 圆角矩形按钮（默认值：圆角半径大小20vp）。 |
 
