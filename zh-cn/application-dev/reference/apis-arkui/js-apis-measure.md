@@ -48,7 +48,7 @@ static measureText(options: MeasureOptions): number
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[MeasureText.measureText](#measuretextmeasuretext23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[MeasureText.measureText](#measuretextmeasuretext23)。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -94,7 +94,7 @@ struct Index {
 }
 ```
 
-## MeasureText.measureText<sup>23</sup>
+## MeasureText.measureText<sup>23+</sup>
 
 static measureText(options: MeasureOptions): double
 
@@ -102,9 +102,9 @@ static measureText(options: MeasureOptions): double
 
 > **说明：**
 >
-> - 建议使用[measureText](arkts-apis-uicontext-measureutils.md#measuretext12)替代。measureText需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象，然后通过该对象进行调用。且直接使用measureText可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
+> - 建议使用[measureText](arkts-apis-uicontext-measureutils.md#measuretext12)替代。measureText需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象，然后通过该对象进行调用。
 >
-> - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象。
+> - 直接使用MeasureText可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例。
 >
 > - measureText接口的计算结果始终是单行文本的宽度，入参options中配置的布局约束（如constraintWidth、maxLines）对measureText的结果没有影响。如果需要计算布局约束下的宽度，请使用[measureTextSize](arkts-apis-uicontext-measureutils.md#measuretextsize12)方法。
 
@@ -112,7 +112,7 @@ static measureText(options: MeasureOptions): double
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[MeasureText.measureText](#measuretextmeasuretextdeprecated)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[MeasureText.measureText](#measuretextmeasuretextdeprecated)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -127,10 +127,6 @@ static measureText(options: MeasureOptions): double
 | 类型          | 说明       |
 | ------------  | --------- |
 | double        | 文本宽度。<br/>单位：px |
-
-> **说明：**
->
-> 直接使用MeasureText可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例。
 
 ## MeasureText.measureTextSize<sup>(deprecated)</sup>
 
@@ -152,7 +148,7 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[MeasureText.measureTextSize](#measuretextmeasuretextsize23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[MeasureText.measureTextSize](#measuretextmeasuretextsize23)。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -166,7 +162,7 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)  | 返回文本所占布局宽度和高度。<br/>**说明:**  <br/>文本宽度以及高度返回值单位均为px。 |
+| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)  | 返回文本所占布局宽度和高度。<br/>**说明：**  <br/>文本宽度以及高度返回值单位均为px。 |
 
 > **说明：**
 >
@@ -199,7 +195,7 @@ struct Index {
 }
 ```
 
-## MeasureText.measureTextSize<sup>23</sup>
+## MeasureText.measureTextSize<sup>23+</sup>
 
 static measureTextSize(options: MeasureOptions): SizeOptions
 
@@ -207,9 +203,9 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 
 > **说明：**
 >
-> - 建议使用[measureTextSize](arkts-apis-uicontext-measureutils.md#measuretextsize12)替代。measureTextSize需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象，然后通过该对象进行调用。且直接使用measureTextSize可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
+> - 建议使用[measureTextSize](arkts-apis-uicontext-measureutils.md#measuretextsize12)替代。measureTextSize需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象，然后通过该对象进行调用。
 >
-> - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象。
+> - 直接使用MeasureText可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -217,7 +213,7 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[MeasureText.measureTextSize](#measuretextmeasuretextsizedeprecated)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[MeasureText.measureTextSize](#measuretextmeasuretextsizedeprecated)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -231,11 +227,7 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)  | 返回文本所占布局宽度和高度。<br/>**说明:**  <br/>文本宽度以及高度返回值单位均为px。 |
-
-> **说明：**
->
-> 直接使用MeasureText可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例。
+| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)  | 返回文本所占布局宽度和高度。<br/>**说明：**  <br/>文本宽度以及高度返回值单位均为px。 |
 
 ## MeasureOptions
 

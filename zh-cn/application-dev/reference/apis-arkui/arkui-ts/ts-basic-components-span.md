@@ -217,7 +217,7 @@ fontWeight(value: number | FontWeight | ResourceStr)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[fontWeight](#fontweight23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[fontWeight](#fontweight23)。
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -243,7 +243,7 @@ fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWe
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[fontWeight](#fontweight23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[fontWeight](#fontweight23)。
 
 **ArkTS-Dyn起始版本：** 24
 
@@ -266,9 +266,9 @@ fontWeight(weight: int | FontWeight | ResourceStr | undefined, fontWeightConfigs
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[fontWeight](#fontweight)和[fontWeight](#fontweight24)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[fontWeight](#fontweight)和[fontWeight](#fontweight24)。
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -345,7 +345,7 @@ font(value: Font)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[font](#font23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[font](#font23)。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -369,7 +369,7 @@ font(value: Font, fontConfigs?: FontConfigs)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[font](#font23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[font](#font23)。
 
 **ArkTS-Dyn起始版本：** 24
 
@@ -392,7 +392,7 @@ font(value: Font | undefined, fontConfigs?: FontConfigs)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[font](#font10)和[font](#font24)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[font](#font10)和[font](#font24)。
 
 **ArkTS-Sta起始版本：** 23
 

@@ -331,7 +331,7 @@ onPatternComplete(callback: (input: Array\<number\>) => void)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[onPatternComplete](#onpatterncomplete23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPatternComplete](#onpatterncomplete23)。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -351,7 +351,7 @@ onPatternComplete(callback: Callback<Array\<int\>> | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onPatternComplete](#onpatterncomplete)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[onPatternComplete](#onpatterncomplete)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -465,7 +465,7 @@ setChallengeResult(result: PatternLockChallengeResult): void
 
 **参数：** 
 
-| 名称   | 类型                                                         | 必填 | 说明           |
+| 参数名   | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | result | [PatternLockChallengeResult](#patternlockchallengeresult11枚举说明) | 是   | 图案密码状态。包括正确和错误状态。 |
 

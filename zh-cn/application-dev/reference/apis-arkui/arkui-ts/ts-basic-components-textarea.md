@@ -602,7 +602,7 @@ maxLines(value: int | undefined, options?: MaxLinesOptions)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[maxLines](#maxlines10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[maxLines](#maxlines10)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -627,7 +627,7 @@ maxLines(lines: number, options: MaxLinesOptions)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[maxLines](#maxlines23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[maxLines](#maxlines23)。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -1206,7 +1206,7 @@ lineSpacing(value: LengthMetrics)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[fontWeight](#fontweight23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[lineSpacing](#linespacing20)。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1699,6 +1699,30 @@ shaderStyle(shader: ShaderStyle | undefined)
 | ---------------- | ------- | ---- | ----------------------------------------------- |
 | shader         | [ShaderStyle](ts-text-common.md#shaderstyle20) \| undefined | 是 | 文本着色器效果。<br/>值为undefined时，无渐变效果。 |
 
+### punctuationOverflow
+
+ArkTS-Dyn: punctuationOverflow(enabled: Optional\<boolean>)
+
+ArkTS-Sta: punctuationOverflow(enabled: boolean | undefined)
+
+设置是否启用行尾标点符号悬挂。不通过该接口设置，默认标点符号不悬挂。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ----- | ---- | ---- |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用行尾标点符号悬挂。<br/>true表示启用行尾标点符号悬挂，false表示不启用行尾标点符号悬挂。设置为undefined或null时，不启用标点符号悬挂。|
+
 ### includeFontPadding<sup>23+</sup>
 
 ArkTS-Dyn: includeFontPadding(include: Optional\<boolean>)
@@ -1855,8 +1879,6 @@ ArkTS-Sta: onCopy(callback:&nbsp;((value:&nbsp;string)&nbsp;=>&nbsp;void) | unde
 进行复制操作时，触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

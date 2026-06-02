@@ -55,14 +55,35 @@ import {
 ```ts
 import { AnimatedDrawableDescriptor, AnimationOptions, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-try {
-    // 可以提前手动加载动图资源到内存中。
-    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
-    console.info(`load result = ${JSON.stringify(result)}`)
-} catch(e) {
-    console.error("load failed")
+@Entry
+@Component
+struct Index {
+  options: AnimationOptions = { duration: 2000, iterations: 1 };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
+  @State drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+  @State result: string = '';
+
+  aboutToAppear() {
+    // 在页面显示前提前加载资源到内存中，加快Image组件渲染速度。
+    // 使用loadSync同步加载：
+    // let loadResult: DrawableDescriptorLoadedResult = this.drawable.loadSync()
+    // 使用load异步加载：
+    this.drawable.load().then((loadResult: DrawableDescriptorLoadedResult) => {
+      this.result = `width: ${loadResult.imageWidth}, height: ${loadResult.imageHeight}`
+      console.info(`load result = ${JSON.stringify(loadResult)}`)
+    }).catch(() => {
+      console.error("load failed")
+    })
+  }
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+      Text(this.result)
+    }
+  }
 }
 ```
 ## DrawableDescriptor
@@ -131,19 +152,9 @@ loadSync(): DrawableDescriptorLoadedResult
 | -------- | ------------ |
 | 111001   | resource loading failed. |
 
-```ts
-import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult, AnimationOptions } from '@kit.ArkUI';
+**示例：**
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-try {
-    // 可以提前手动加载动图资源到内存中
-    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
-    console.info(`load result = ${JSON.stringify(result)}`)
-} catch(e) {
-    console.error("load failed")
-}
-```
+示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
 
 ### load<sup>21+</sup>
 
@@ -176,22 +187,9 @@ load(): Promise\<DrawableDescriptorLoadedResult>
 | -------- | ------------ |
 | 111001   | resource loading failed. |
 
-```ts
-import {
-  AnimatedDrawableDescriptor,
-  DrawableDescriptor,
-  DrawableDescriptorLoadedResult,
-  AnimationOptions
-} from '@kit.ArkUI';
+**示例：**
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-drawable.load().then((result: DrawableDescriptorLoadedResult) => {
-  console.info(`load result = ${JSON.stringify(result)}`)
-}).catch(() => {
-  console.info(`load failed`)
-})
-```
+示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
 
 ### release
 

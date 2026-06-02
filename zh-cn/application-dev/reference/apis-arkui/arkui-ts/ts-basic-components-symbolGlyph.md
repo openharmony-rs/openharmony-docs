@@ -284,7 +284,7 @@ symbolEffect(symbolEffect: SymbolEffect | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| symbolEffect  | ArkTS-Dyn: [SymbolEffect](#symboleffect12对象说明)<br/>ArkTS-Sta: [SymbolEffect](#symboleffect12对象说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明)<br/>取值为undefined时，按默认值处理。 |
+| symbolEffect  | [SymbolEffect](#symboleffect12对象说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明)<br/>取值为undefined时，按默认值处理。 |
 
 ### symbolEffect<sup>12+</sup>
 

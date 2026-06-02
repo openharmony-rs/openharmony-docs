@@ -76,6 +76,12 @@
       - [Uint16Array](builtin/arkts-dyn-to-sta-builtin-Uint16Array.md)
       - [Uint32Array](builtin/arkts-dyn-to-sta-builtin-Uint32Array.md)
       - [Uint8ClampedArray](builtin/arkts-dyn-to-sta-builtin-Uint8ClampedArray.md)
+    - [ArkTS-Sta 并发迁移规则](arkts-dyn-to-sta-concurrency-rules.md)
+    - [ArkTS-Sta EAWorker迁移规则](arkts-dyn-to-sta-worker-migration-guide.md)
+    - [ArkTS-Sta SDK迁移规则](arkts-dyn-to-sta-sdk-rules.md)
+    - [ArkTS-Sta语法迁移规则](arkts-dyn-to-sta-syntax-rules.md)
+    - [ArkTS-Sta迁移工具使用指导](arkts-easytrans-cli-instructions.md)
+    - [ArkTS-Sta迁移工具(EasyTrans)用户手册](arkts-easytrans-userguide.md)
   - ArkTS-Sta动静态类型互操作规范指导<!--arkts-dyn-to-arkts-sta-spec-->
     - [ArkTS-Sta互操作概述](arkts-interop-overview.md)
     - [ArkTS-Sta互操作类型映射规则](arkts-interop-type-mapping.md)
