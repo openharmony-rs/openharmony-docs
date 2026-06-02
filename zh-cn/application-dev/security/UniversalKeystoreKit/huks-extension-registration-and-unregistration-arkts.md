@@ -1,4 +1,4 @@
-﻿# 注册/注销Provider(ArkTS) 
+# 注册/注销Provider(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
