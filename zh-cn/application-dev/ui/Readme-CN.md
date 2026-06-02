@@ -59,7 +59,6 @@
     - [状态管理概述](state-management/arkts-state-management-overview.md)
       - [MVVM模式（V1）](state-management/arkts-mvvm.md)
       - [MVVM模式（V2）](state-management/arkts-mvvm-v2.md)
-    - [状态管理术语](state-management/arkts-state-management-glossary.md)
     - [状态管理原理介绍](state-management/arkts-state-management-introduce.md)
     - [状态管理V1和V2更新机制差异](state-management/arkts-v1-v2-update-difference.md)
     - 动态ArkTS的状态管理<!--arkts-state-management-v1-dynamic-->
@@ -163,6 +162,7 @@
         - [状态管理V1V2混用指导（ArkTS-Sta）](state-management-static/arkts-static-v1-v2-mixusage.md)
       - [状态管理优秀实践（ArkTS-Sta）](state-management-static/arkts-static-state-management-best-practices.md)
     - [状态管理动静态差异](state-management-static/arkts-state-management-dynamic-static-compare.md)
+    - [状态管理术语](state-management/arkts-state-management-glossary.md)
   - 学习UI范式渲染控制<!--arkts-rendering-control-->
     - [渲染控制概述](rendering-control/arkts-rendering-control-overview.md)
     - [if/else：条件渲染](rendering-control/arkts-rendering-control-ifelse.md)
