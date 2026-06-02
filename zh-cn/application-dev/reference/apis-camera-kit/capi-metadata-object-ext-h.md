@@ -61,7 +61,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetMetadataObjectType(const OH_Camera_Meta
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
+| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
 | [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* type | 元数据对象类型的指针，是一个Camera_MetadataObjectType实例。 |
 
 **返回：**
@@ -86,7 +86,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetTimestamp(const OH_Camera_MetadataObjec
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
+| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
 | int64_t* timestamp | 存储时间戳的指针。 |
 
 **返回：**
@@ -111,7 +111,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetBoundingBox(const OH_Camera_MetadataObj
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
+| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
 | [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | 元数据对象边界框的指针，是一个OH_Camera_Rect_Ext实例。 |
 
 **返回：**
@@ -136,7 +136,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetPitchAngle(const OH_Camera_MetadataObje
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
+| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
 | float* pitchAngle | 存储俯仰角的指针。 |
 
 **返回：**
@@ -161,7 +161,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetYawAngle(const OH_Camera_MetadataObject
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
+| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
 | float* yawAngle | 存储左右旋转角度的指针。 |
 
 **返回：**
@@ -186,7 +186,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRollAngle(const OH_Camera_MetadataObjec
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
+| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
 | float* rollAngle | 存储翻滚角的指针。 |
 
 **返回：**
@@ -211,7 +211,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetLeftEyeBoundingBox(const OH_Camera_Meta
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
+| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
 | [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | 元数据对象边界框的指针，是一个OH_Camera_Rect_Ext实例。 |
 
 **返回：**
@@ -236,7 +236,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRightEyeBoundingBox(const OH_Camera_Met
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
+| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
 | [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | 元数据对象边界框的指针，是一个OH_Camera_Rect_Ext实例。 |
 
 **返回：**
@@ -261,7 +261,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetEmotion(const OH_Camera_MetadataObjectE
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
+| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例的指针。 |
 | [OH_Camera_MetadataObjectEmotion](capi-camera-h.md#oh_camera_metadataobjectemotion)* emotion | 存储情绪类型的指针。 |
 
 **返回：**
