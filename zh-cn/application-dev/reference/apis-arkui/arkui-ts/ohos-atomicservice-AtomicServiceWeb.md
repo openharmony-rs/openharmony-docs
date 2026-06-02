@@ -703,11 +703,11 @@ struct WebComponent {
       })
       Button('refresh').onClick(() => {
         this.controller.refresh();
-        console.info(`AtomicServiceWebLog refresh}`);
+        console.info(`AtomicServiceWebLog refresh`);
       })
       Button('loadUrl').onClick(() => {
         this.controller.loadUrl('https://www.baidu.com/');
-        console.info(`AtomicServiceWebLog loadUrl}`);
+        console.info(`AtomicServiceWebLog loadUrl`);
       })
       Button('深色模式').onClick(() => {
         this.forceDarkAccess = !this.forceDarkAccess;
