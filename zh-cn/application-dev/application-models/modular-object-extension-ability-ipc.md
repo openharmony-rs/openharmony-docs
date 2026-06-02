@@ -213,36 +213,21 @@ private:
     int32_t OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply);
     int32_t HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply);
 // ...
-};
-```
-class CalculatorStub : public ICalculator {
-public:
-    static int32_t OnRemoteRequest(uint32_t code,
-      const OHIPCParcel* data,
-      OHIPCParcel* reply,
-      void* userData);
-private:
-    int32_t OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply);
-    int32_t HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply);
-};
-```
-
-**calculator_stub.cpp**
-  - 先校验接口令牌，确保请求目标正确。
-  - `HandleAdd`从`data`中读取参数，调用真实`Add`业务实现。
-  - 将`errCode`和结果写回`reply`。
 <!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.cpp) -->
-```cpp
+
+``` C++
 int32_t CalculatorStub::OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply)
 {
-  if (OH_IPCParcel_ReadInterfaceToken(data, &remoteDescriptor,
-      &remoteDescriptorLen, OhipcReadInterfaceTokenAllocator) != OH_IPC_SUCCESS) {
-      return OH_IPC_CHECK_PARAM_ERROR;
-  }
-  switch (static_cast<ICalculator::IpcCode>(code)) {
-      case ICalculator::IpcCode::COMMAND_ADD:
-          return HandleAdd(data, reply);
-
+// ...
+    if (OH_IPCParcel_ReadInterfaceToken(data, &remoteDescriptor,
+        &remoteDescriptorLen, OhipcReadInterfaceTokenAllocator) != OH_IPC_SUCCESS) {
+        return OH_IPC_CHECK_PARAM_ERROR;
+    }
+// ...
+    switch (static_cast<ICalculator::IpcCode>(code)) {
+        case ICalculator::IpcCode::COMMAND_ADD:
+            return HandleAdd(data, reply);
+// ...
         default:
             return OH_IPC_CHECK_PARAM_ERROR;
     }
@@ -250,9 +235,25 @@ int32_t CalculatorStub::OnRemoteRequestInner(uint32_t code, const OHIPCParcel* d
 
 int32_t CalculatorStub::HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply)
 {
-  int32_t aValue = 0;
-  if (OH_IPCParcel_ReadInt32(data, &aValue) != OH_IPC_SUCCESS) {
-      return OH_IPC_PARCEL_READ_ERROR;
+    int32_t aValue = 0;
+    if (OH_IPCParcel_ReadInt32(data, &aValue) != OH_IPC_SUCCESS) {
+        return OH_IPC_PARCEL_READ_ERROR;
+    }
+    int32_t a = aValue;
+// ...
+    int32_t result = 0;
+    ErrCode errCode = Add(a, b, result);
+    if (OH_IPCParcel_WriteInt32(reply, errCode) != OH_IPC_SUCCESS) {
+        return OH_IPC_PARCEL_WRITE_ERROR;
+    }
+
+    if (OH_IPCParcel_WriteInt32(reply, result) != OH_IPC_SUCCESS) {
+        return OH_IPC_PARCEL_WRITE_ERROR;
+    }
+
+    return OH_IPC_SUCCESS;
+}
+```
   }
   int32_t a = aValue;
   
