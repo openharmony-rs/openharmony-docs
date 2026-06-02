@@ -22,7 +22,7 @@ This module controls the Data Loss Prevention (DLP) feature, including enabling 
 
 ### Key Enums
 
-- **DlpFeatureStatus**: enumerates the DLP statuses, which is used enable or disable the DLP feature.
+- **DlpFeatureStatus**: enumerates the DLP statuses, which is used to enable or disable the DLP feature.
 
 ### Key APIs
 

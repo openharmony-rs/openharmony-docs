@@ -1404,7 +1404,7 @@ ExampleFunction();
 
 closeDLPFile(callback: AsyncCallback&lt;void&gt;): void
 
-Closes a **DLPFile** objects. This API uses an asynchronous callback to return the result.
+Closes a **DLPFile** object. This API uses an asynchronous callback to return the result.
 
 After calling **openDLPFile()** to return a **DLPFile** object, the system must call **closeDLPFile()** to release resources after using the object.
 
