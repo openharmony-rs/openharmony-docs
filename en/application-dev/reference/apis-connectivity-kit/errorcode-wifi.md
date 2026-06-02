@@ -188,7 +188,7 @@ An error occurs when the Wi-Fi service performs a P2P-related operation.
 1. Disable and then enable the Wi-Fi function again.
 2. If the error persists, restart the device.
 
-## 2801001 P2P Module Error 
+## 2801001 P2P Module Error
 
 **Error Message**
 
