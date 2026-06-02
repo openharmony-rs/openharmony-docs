@@ -75,8 +75,6 @@ type CompatibleUpdateCallback = (component: ESValue) => void
 
 ## CompatibleComponentInfo
 
-interface CompatibleComponentInfo { name: string; component: ESValue; }
-
 在ArkTS-Dyn中创建的自定义组件对象的信息。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。

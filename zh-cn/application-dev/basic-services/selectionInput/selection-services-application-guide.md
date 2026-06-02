@@ -12,6 +12,7 @@
 | 名称 | 描述 |
 | ---- | ---- |
 | [on(type: 'selectionCompleted', callback: Callback\<SelectionInfo\>): void](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted) | 订阅划词完成事件，使用`callback`回调函数。 |
+| [onSelectionComplete(callback: Callback\<SelectionInfo>): void](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#onselectioncomplete) | 订阅划词完成事件，使用`callback`回调函数。 |
 | [getSelectionContent(): Promise\<string\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent) | 获取选中文本的内容。 |
 | [createPanel(ctx: Context, info: PanelInfo): Promise\<Panel\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#createpanel) | 创建划词面板。 |
 | [show(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show) | 显示面板。 |
@@ -22,8 +23,6 @@
 上述接口为本文档用到的核心接口，如需了解划词服务的全量接口，请参考[selectionInput.SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)接口文档获取接口详细描述。
 
 ## 开发步骤
-
-完整的工程示例详见[SelectionAppSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/SelectionService/SelectionAppSample)。
 
 1. 创建划词应用工程。
 
@@ -50,6 +49,8 @@
     ![划词应用工程](figures/selection-application-project.png)
 
 2. 在[SelectionModel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets)文件中，开发者可自定义划词模块管理类，用于统一管理划词内容、窗口等信息。并且实现一些get、set接口，便于信息的类间传递。
+
+    ArkTS-Dyn示例：
     <!-- @[SelectionModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets) -->
     
     ``` TypeScript
@@ -118,8 +119,76 @@
     }
     ```
 
+    ArkTS-Sta示例：
+    <!-- @[SelectionModel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/SelectionService-Sta/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets) -->
+    
+    ``` TypeScript
+    import selectionManager from '@ohos.selectionInput.selectionManager';
+    import SelectionExtensionContext from '@ohos.selectionInput.SelectionExtensionContext';
+    import hilog from '@ohos.hilog';
+    
+    export class SelectionModel {
+      private selectionInfo: selectionManager.SelectionInfo | undefined = undefined;
+      private selectionContent: string | undefined = undefined;
+      private selectionPanel: selectionManager.Panel | undefined = undefined;
+      private context: SelectionExtensionContext | undefined = undefined;
+      private listener: (selectionInfo: selectionManager.SelectionInfo) => void;
+      private static instance: SelectionModel | undefined = undefined;
+    
+      private constructor() {
+        this.listener = (selectionInfo: selectionManager.SelectionInfo) => {
+          hilog.info(0x0000, 'SelectionModel', `Received selection selectionInfo: ${selectionInfo}`);
+        }
+      }
+    
+      public static getInstance(): SelectionModel | undefined {
+        if (SelectionModel.instance == undefined) {
+          SelectionModel.instance = new SelectionModel();
+        }
+        return SelectionModel.instance;
+      }
+    
+      public getSelectionInfo(): selectionManager.SelectionInfo | undefined {
+        return this.selectionInfo;
+      }
+    
+      public setSelectionInfo(selectionInfo: selectionManager.SelectionInfo): void {
+        this.selectionInfo = selectionInfo;
+      }
+    
+      public getSelectionContent(): string | undefined {
+        return this.selectionContent;
+      }
+    
+      public setSelectionContent(selectionContent: string): void {
+        this.selectionContent = selectionContent;
+      }
+    
+      public getSelectionPanel(): selectionManager.Panel | undefined {
+        return this.selectionPanel;
+      }
+    
+      public setSelectionPanel(selectionPanel: selectionManager.Panel): void {
+        this.selectionPanel = selectionPanel;
+      }
+    
+      public getContext(): SelectionExtensionContext | undefined {
+        return this.context;
+      }
+    
+      public setContext(context: SelectionExtensionContext): void {
+        this.context = context;
+      }
+    
+      public registerListener(listener: (selectionInfo: selectionManager.SelectionInfo) => void): void {
+        this.listener = listener;
+      }
+    }
+    ```
+
 3. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件中，开发者可实现扩展能力类。该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)，用于划词扩展生命周期的管理。
-    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
+
+    ArkTS-Dyn示例：
 
     ``` TypeScript
     import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
@@ -157,10 +226,51 @@
 
     export default SelectionExtAbility;
     ```
+
+    ArkTS-Sta示例：
+
+    ``` TypeScript
+    import selectionManager from '@ohos.selectionInput.selectionManager';
+    import SelectionExtensionAbility from '@ohos.selectionInput.SelectionExtensionAbility';
+    import rpc from '@ohos.rpc';
+    import Want from '@ohos.app.ability.Want';
+
+    class SelectionAbilityStub extends rpc.RemoteObject {
+      constructor(des: string) {
+        super(des);
+      }
+
+      onRemoteMessageRequest(
+        code: number,
+        data: rpc.MessageSequence,
+        reply: rpc.MessageSequence,
+        options: rpc.MessageOption
+      ): boolean | Promise<boolean> {
+        return true;
+      }
+    }
+
+    class SelectionExtAbility extends SelectionExtensionAbility {
+      private panel_: selectionManager.Panel | undefined = undefined;
+
+      onConnect(want: Want): rpc.RemoteObject {
+        // 当SelectionExtensionAbility实例完成创建时，系统会触发该回调。开发者可在该回调中执行初始化逻辑（如定义变量、加载资源、监听划词事件等）。
+        return new SelectionAbilityStub('remote');
+      }
+
+      onDisconnect(): void {
+        // 当SelectionExtensionAbility实例被销毁（例如用户关闭划词开关或切换划词应用）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。
+      }
+    }
+
+    export default SelectionExtAbility;
+    ```
     上述代码中，划词扩展被拉起时会触发[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容的设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发[onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#ondisconnect)回调，可以在该回调中完成窗口销毁的操作。详细内容可参见下面第4步。
 
 
 4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)接口获取划词内容。
+
+    ArkTS-Dyn示例：
     <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
 
     ``` TypeScript
@@ -234,6 +344,7 @@
           SelectionModel.getInstance().setSelectionContent(content);
         } catch (error) {
           hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to get selection content: ${JSON.stringify(error)}`);
+          return;
         }
         if (!this.panel_) {
           hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');
@@ -266,7 +377,123 @@
     export default SelectionExtAbility;
     ```
 
+    ArkTS-Sta示例：
+    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/SelectionService-Sta/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
+    
+    ``` TypeScript
+    import SelectionExtensionAbility from '@ohos.selectionInput.SelectionExtensionAbility';
+    import { PanelInfo, PanelType } from '@ohos.selectionInput.SelectionPanel';
+    import selectionManager from '@ohos.selectionInput.selectionManager';
+    import { SelectionModel } from '../models/SelectionModel';
+    import Want from '@ohos.app.ability.Want';
+    import rpc from '@ohos.rpc';
+    import hilog from '@ohos.hilog';
+    
+    class SelectionAbilityStub extends rpc.RemoteObject {
+      constructor(des: string) {
+        super(des);
+      }
+    
+      onRemoteMessageRequest(
+        code: number,
+        data: rpc.MessageSequence,
+        reply: rpc.MessageSequence,
+        options: rpc.MessageOption
+      ): boolean | Promise<boolean> {
+        return true;
+      }
+    }
+    
+    class SelectionExtAbility extends SelectionExtensionAbility {
+      private panel_: selectionManager.Panel | undefined = undefined;
+    
+      onConnect(want: Want): rpc.RemoteObject {
+        try {
+          SelectionModel.getInstance()?.setContext(this.context);
+          selectionManager.onSelectionComplete((info: selectionManager.SelectionInfo) => {
+            if (this.panel_ == undefined) {
+              this.createSelectionPanel();
+            }
+            this.onSelected(info);
+          });
+        } catch(error) {
+          hilog.info(0x0000, 'SelectionExtensionAbility',
+            `Failed to onConnect, error code: ${error.code}, error message: ${error.message}`);
+        }
+        return new SelectionAbilityStub('remote');
+      }
+    
+      onDisconnect(): void {
+        if (!this.panel_) {
+          hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');
+          return;
+        }
+        let panelTemp = this.panel_;
+        if (panelTemp !== undefined) {
+          panelTemp.onHide(() => {
+            hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel has hidden.');
+          });
+          selectionManager.destroyPanel(panelTemp);
+        }
+      }
+    
+      async createSelectionPanel() {
+        let panelInfo: PanelInfo = {
+          panelType: PanelType.MENU_PANEL,
+          x: 0,
+          y: 0,
+          width: 500,
+          height: 300
+        }
+        try {
+          let panel: selectionManager.Panel = await selectionManager.createPanel(this.context, panelInfo);    // 创建菜单面板
+          this.panel_ = panel;
+          await panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
+        } catch(error) {
+          hilog.info(0x0000, 'SelectionExtensionAbility',
+            `Failed to createPanel, error code: ${error.code}, error message: ${error.message}`);
+        }
+      }
+    
+      async onSelected(info: selectionManager.SelectionInfo): Promise<void> {
+        SelectionModel.getInstance()?.setSelectionInfo(info);
+        try {
+          let content = await selectionManager.getSelectionContent();   // 获取划词内容
+          SelectionModel.getInstance()?.setSelectionContent(content);
+        } catch (error) {
+          console.error(`Failed to get selection content, error code: ${error.code}, error message: ${error.message}`);
+          return;
+        }
+        if (!this.panel_) {
+          hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');
+          return;
+        }
+        this.panel_?.moveToGlobalDisplay(info.startDisplayX, info.startDisplayY)    // 将弹窗移动到用户鼠标划词的起始点
+          .then(() => {
+            hilog.info(0x0000, 'SelectionExtensionAbility', 'Move succeed.');
+          })
+          .catch((error) => {
+            hilog.info(0x0000, 'SelectionExtensionAbility',
+              `Failed to move, error code: ${error.code}, error message: ${error.message}`);
+          });
+    
+        this.panel_?.show()    // 显示弹窗
+          .then(() => {
+            hilog.info(0x0000, 'SelectionExtensionAbility', 'Show succeed.');
+          });
+    
+        this.panel_?.onHide(() => {    // 监听弹窗隐藏（窗口失焦时会触发隐藏）
+          hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has hidden.');
+        })
+      }
+    }
+    
+    export default SelectionExtAbility;
+    ```
+
 5. 在[MenuPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets)文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
+
+    ArkTS-Dyn示例：
     <!-- @[MenuPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets) -->
 
     ``` TypeScript
@@ -363,7 +590,105 @@
     }
     ```
 
+    ArkTS-Sta示例：
+    <!-- @[MenuPanel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/SelectionService-Sta/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets) -->
+    
+    ``` TypeScript
+    import { SelectionModel } from '../models/SelectionModel';
+    import { PanelInfo, PanelType } from '@ohos.selectionInput.SelectionPanel';
+    import selectionManager from '@ohos.selectionInput.selectionManager';
+    import SelectionExtensionContext from '@ohos.selectionInput.SelectionExtensionContext';
+    import Want from '@ohos.app.ability.Want';
+    import hilog from '@ohos.hilog';
+    import {Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    
+    @Entry
+    @Component
+    struct MenuPanel {
+      @State message: string = 'MenuPanel';
+      selectionInfo: selectionManager.SelectionInfo | undefined = undefined;
+    
+      CreateMainPanel() {
+        this.selectionInfo = SelectionModel.getInstance()?.getSelectionInfo();
+        let panelInfo: PanelInfo = {
+          panelType: PanelType.MAIN_PANEL,
+          x: 0,
+          y: 0,
+          width: 1500,
+          height: 1000
+        }
+        let contextTemp = SelectionModel.getInstance()?.getContext();
+        if (contextTemp !== undefined) {
+          selectionManager.createPanel(contextTemp, panelInfo)
+            .then(async (panel: selectionManager.Panel) => {
+              SelectionModel.getInstance()?.setSelectionPanel(panel);
+              hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to create main panel');
+    
+              if (this.selectionInfo !== undefined) {
+                panel.moveToGlobalDisplay((this.selectionInfo as selectionManager.SelectionInfo).startDisplayX + 100,
+                  (this.selectionInfo as selectionManager.SelectionInfo).startDisplayY + 100);
+              }
+              try {
+                panel.onDestroy(() => {
+                  hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has destroyed');
+                })
+              } catch (error) {
+                hilog.info(0x0000, 'SelectionExtensionAbility', 'Failed to listen window destroy');
+              }
+              panel.setUiContent('pages/MainPanel')
+                .then(() => {
+                  hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MainPanel].');
+                })
+                .catch((error) => {
+                  hilog.info(0x0000, 'SelectionExtensionAbility',
+                    `Failed to setUiContent of main panel, error code: ${error.code}, error message: ${error.message}`);
+                  return;
+                });
+    
+              await panel.show()
+                .then(() => {
+                  hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to show main panel.');
+                })
+            })
+        }
+      }
+    
+      startEntryAbility() {   // 拉起应用
+        let wantAbility: Want = {
+          bundleName: 'com.selection.selectionapplication',   // 应用的bundleName
+          abilityName: 'EntryAbility',    // 应用的abilityName
+        };
+        let context: SelectionExtensionContext | undefined = SelectionModel.getInstance()?.getContext();
+        if (context !== undefined) {
+          context.startAbility(wantAbility)
+            .then(() => {
+              hilog.info(0x0000, 'SelectionExtensionAbility', `startAbility success, want: ${wantAbility.abilityName}`);
+            })
+        }
+      }
+    
+      build() {
+        Column() {
+          Button('click to show MAIN_PANEL')
+            .onClick(() => {
+              this.CreateMainPanel();
+            })
+          Button('start EntryAbility')
+            .onClick(() => {
+              this.startEntryAbility();
+            })
+        }
+        .backgroundColor('#AAFFFF')
+        .height('100%')
+        .width('100%')
+      }
+    }
+    ```
+
 6. 在[MainPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets)文件中，开发者可根据业务场景，自行实现主面板的显示效果。本示例仅提供了一个简单的展示划词内容的主面板，具体的业务侧功能需要开发者自行实现。
+
+    ArkTS-Dyn示例：
     <!-- @[MainPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets) -->
 
     ``` TypeScript
@@ -394,6 +719,54 @@
         .onTouch((event: TouchEvent) => {
           if (event.type === TouchType.Down) {
             let selectionPanel: selectionManager.Panel | undefined = SelectionModel.getInstance().getSelectionPanel();
+            if (selectionPanel !== undefined) {
+              selectionPanel.startMoving();   // 调用selectionManager提供的startMoving接口可实现划词面板随鼠标拖动
+            }
+          }
+        })
+        .backgroundColor('#AAA000')
+        .height('100%')
+        .width('100%')
+      }
+    }
+    ```
+
+    ArkTS-Sta示例：
+    <!-- @[MainPanel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/SelectionService-Sta/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets) -->
+    
+    ``` TypeScript
+    import {Entry, Text, Column, Component, RelativeContainer, Button, ClickEvent, TouchEvent, TouchType } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import { SelectionModel } from '../models/SelectionModel';
+    import selectionManager from '@ohos.selectionInput.selectionManager';
+    
+    @Entry
+    @Component
+    struct MainPanel {
+      @State message: string = 'MainPanel';
+    
+      aboutToAppear(): void {
+        let selectionModel: SelectionModel | undefined = SelectionModel.getInstance();
+        if (selectionModel !== undefined) {
+          let selectionContent = (selectionModel as SelectionModel).getSelectionContent();
+          if (selectionContent !== undefined) {
+            this.message = selectionContent;
+          }
+        } else {
+          return;
+        }
+        
+      }
+    
+      build() {
+        RelativeContainer() {
+          Text(this.message)
+            .id('MainPanelHelloWorld')
+            .fontSize(8)
+        }
+        .onTouch((event: TouchEvent) => {
+          if (event.type === TouchType.Down) {
+            let selectionPanel: selectionManager.Panel | undefined = SelectionModel.getInstance()?.getSelectionPanel();
             if (selectionPanel !== undefined) {
               selectionPanel.startMoving();   // 调用selectionManager提供的startMoving接口可实现划词面板随鼠标拖动
             }

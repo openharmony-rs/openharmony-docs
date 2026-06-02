@@ -1,4 +1,10 @@
 # 在ArkTS-Sta中使用ArkTS-Dyn的自定义构建函数（@Builder）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -19,7 +25,7 @@
 
 ### 按回调传递参数
 
-开发者可以通过[`UIUtils.makeBinding()`](../reference/apis-arkui/js-apis-stateManagement-static.md#makebindingt)函数、[`Binding`](../reference/apis-arkui/js-apis-stateManagement-static.md#bindingt)类和[`MutableBinding`](../reference/apis-arkui/js-apis-stateManagement-static.md#mutablebindingt)类实现[@Builder函数中状态变量的刷新](./state-management/arkts-builder.md#builder支持状态变量刷新)。
+开发者可以通过[`UIUtils.makeBinding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#makebindingt)函数、[`Binding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#bindingt)类和[`MutableBinding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#mutablebindingt)类实现[@Builder函数中状态变量的刷新](./state-management/arkts-builder.md#builder支持状态变量刷新)。
 
 在ArkTS-Sta调用ArkTS-Dyn自定义构建函数的场景下，ArkTS-Dyn侧@Builder需要接收动态`Binding`或动态`MutableBinding`类型。由于ArkTS-Sta侧通过`UIUtils.makeBinding()`创建的是静态`Binding`或静态`MutableBinding`，与ArkTS-Dyn的参数类型不兼容。因此在传递给@Builder之前，需要使用`transfer.transferDynamic()`将其转换为动态`Binding`或动态`MutableBinding`类型。
 
@@ -60,16 +66,20 @@ import { MutableBinding, Binding } from '@kit.ArkUI';
 export function CustomButton(num1: MutableBinding<number>, num2: Binding<number>) {
   Column() {
     Text(`CustomButton num1: ${num1.value}, num2: ${num2.value}`)
+      .fontSize(20)
+      .margin(10)
     Button('change num1')
       .onClick(() => {
         num1.value++;
       })
+      .width(300)
+      .margin(10)
   }
 }
 ```
 
 ```TypeScript
-// dynamic_library/index.ets
+// dynamic_library/Index.ets
 export { CustomButton } from './src/main/ets/components/MainPage';
 ```
 
@@ -109,16 +119,25 @@ struct Parent {
         )
       )
       Text(`num1: ${this.num1}`)
+        .fontSize(20)
+        .margin(10)
       Button('change num1')
         .onClick(() => {
           this.num1++;
         })
+        .width(300)
+        .margin(10)
       Text(`num2: ${this.num2}`)
+        .fontSize(20)
+        .margin(10)
       Button('change num2')
         .onClick(() => {
           this.num2++;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -131,6 +150,9 @@ struct Parent {
 }
 ```
 
+示例效果图：
+
+![arkts-sta-interop-dyn-builder-demo1](figures/arkts-sta-interop-dyn-builder-demo1.gif)
 
 ### 按引用传递参数
 
@@ -149,7 +171,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets      # 调用@Builder并按引用传递
+│                   └── StaBuilderRef.ets    # 调用@Builder并按引用传递
 │
 └── static_module/                     # ArkTS-Sta子模块
 │   └── src/
@@ -170,9 +192,9 @@ project/
 
 - 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出`Person`类。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-```TypeScript
-'use static'
+<!-- @[StaDynBuilderRefStaticMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilder/static_module/src/main/ets/components/MainPage.ets) -->
 
+```TypeScript
 // static_module/src/main/ets/components/MainPage.ets
 export class Person { // ArkTS-Sta侧的对象字面量类型
   name: string = '';
@@ -180,14 +202,16 @@ export class Person { // ArkTS-Sta侧的对象字面量类型
 }
 ```
 
-```TypeScript
-'use static'
+<!-- @[StaDynBuilderRefStaticIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilder/static_module/Index.ets) -->
 
-// static_module/index.ets
+```TypeScript
+// static_module/Index.ets
 export { Person } from './src/main/ets/components/MainPage'; // 导出ArkTS-Sta Person类
 ```
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义构建函数。且在`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
+
+<!-- @[StaDynBuilderRefMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilder/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
@@ -197,13 +221,19 @@ import { Person } from 'static_module';
 export function personInfo(person: Person) { // 按引用传递参数
   Column(){
     Text(`Name: ${person.name}`)
+      .fontSize(20)
+      .margin(10)
     Text(`Age: ${person.age}`)
+      .fontSize(20)
+      .margin(10)
   }
 }
 ```
 
+<!-- @[StaDynBuilderRefDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilder/dynamic_module/Index.ets) -->
+
 ```TypeScript
-// dynamic_module/index.ets
+// dynamic_module/Index.ets
 export { personInfo } from './src/main/ets/components/MainPage';
 ```
 
@@ -217,10 +247,10 @@ export { personInfo } from './src/main/ets/components/MainPage';
 
 - 在ArkTS-Sta主模块`entry`中引入ArkTS-Dyn自定义构建函数。且在`oh-package.json5`文件中配置子模块依赖。
 
-```TypeScript
-'use static'
+<!-- @[StaDynBuilderRef](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilder/entry/src/main/ets/pages/StaBuilderRef.ets) -->
 
-// entry/src/main/ets/pages/Index.ets
+```TypeScript
+// entry/src/main/ets/pages/StaBuilderRef.ets
 import { Entry, Component, Column, Button } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -238,15 +268,20 @@ struct Parent {
       personInfo({ name: this.name, age: this.age })
       Button('changeName')
         .onClick(() => {
-          // 变化状态变量name，触发@Builder内部UI刷新
+          // 修改状态变量name，触发@Builder内部UI刷新
           this.name += 'a';
         })
+        .width(300)
+        .margin(10)
       Button('changeAge')
         .onClick(() => {
-          // 变化状态变量age，触发@Builder内部UI刷新
+          // 修改状态变量age，触发@Builder内部UI刷新
           this.age += 1;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -259,6 +294,9 @@ struct Parent {
 }
 ```
 
+示例效果图：
+
+![arkts-sta-interop-dyn-builder-demo2](figures/arkts-sta-interop-dyn-builder-demo2.gif)
 
 ### 按值传递参数
 
@@ -273,7 +311,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets     # 调用@Builder并按值传递参数
+│                   └── StaBuilderValue.ets     # 调用@Builder并按值传递参数
 │
 └── dynamic_module/                   # ArkTS-Dyn子模块
     └── src/
@@ -287,19 +325,22 @@ project/
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出@Builder自定义构建函数。
 
+<!-- @[StaDynBuilderValueMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilder/dynamic_module/src/main/ets/components/MainPage.ets) -->
+
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Builder
 export function showTextBuilder(input: string) { // 按值传递参数，不会触发UI刷新
   Text(input)
-    .fontSize(30)
+    .fontSize(20)
 }
 ```
 
-```TypeScript
-// dynamic_module/index.ets
+<!-- @[StaDynBuilderValueDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilder/dynamic_module/Index.ets) -->
 
+```TypeScript
+// dynamic_module/Index.ets
 export { showTextBuilder } from './src/main/ets/components/MainPage'; // 导出@Builder函数
 ```
 
@@ -315,10 +356,10 @@ export { showTextBuilder } from './src/main/ets/components/MainPage'; // 导出@
 
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn自定义构建函数。
 
-```TypeScript
-'use static'
+<!-- @[StaDynBuilderValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilder/entry/src/main/ets/pages/StaBuilderValue.ets) -->
 
-// entry/src/main/ets/pages/Index.ets
+```TypeScript
+// entry/src/main/ets/pages/StaBuilderValue.ets
 import { Entry, Component, Column } from '@ohos.arkui.component';
 
 import { showTextBuilder } from 'dynamic_module'; // 引入@Builder函数
@@ -337,6 +378,9 @@ struct MainPage {
 }
 ```
 
+示例效果图：
+
+![arkts-sta-interop-dyn-builder-demo3](figures/arkts-sta-interop-dyn-builder-demo3.png)
 
 ## 常见问题
 

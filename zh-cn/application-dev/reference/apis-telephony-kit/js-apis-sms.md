@@ -130,7 +130,11 @@ sendMessage\(options: SendMessageOptions\): void
 
 **需要权限**：ohos.permission.SEND_MESSAGES（该权限仅系统应用可申请）
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Telephony.SmsMms
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 

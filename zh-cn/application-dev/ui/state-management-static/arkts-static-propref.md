@@ -34,9 +34,9 @@ import { PropRef } from '@kit.ArkUI';
 
 - 当装饰的变量为boolean、string、number等类型时，数据源的变化可以被同步观察到。
 
-  ```ts
-  'use static'
-
+  <!-- @[PropRefBasicTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefBasicTypes.ets) -->
+  
+  ``` TypeScript
   import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
   @Entry
   @Component
@@ -96,12 +96,7 @@ import { PropRef } from '@kit.ArkUI';
 
 ## 限制条件
 
-1. \@PropRef接收外部传入时，不能接收undefined类型：
-
-    - 若初始化时传入undefined类型，该值将不会生效，而是使用本地的默认值。
-    - 若从数据源更新时传入undefined，则本次从数据源的更新不会生效。
-
-2. \@PropRef不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。从API version 23开始，添加对\@PropRef装饰Function与() => void类型变量的校验，编译期会报错。
+1. \@PropRef不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。从API version 23开始，添加对\@PropRef装饰Function与() => void类型变量的校验，编译期会报错。
 
 ## 使用场景
 
@@ -109,9 +104,9 @@ import { PropRef } from '@kit.ArkUI';
 
 \@PropRef可以接收父组件传递的数据源，并与之单向同步。
 
-```ts
-'use static'
+<!-- @[PropRefParentChild](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefParentChild.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
@@ -148,9 +143,9 @@ struct Child {
 
 \@PropRef会获得父组件数据源的引用，对于复杂类型，修改属性将在父组件中体现。若希望不影响父组件中的数据源，则需重新赋值对象。
 
-```ts
-'use static'
+<!-- @[PropRefDataSourceRef](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefDataSourceRef.ets) -->
 
+``` TypeScript
 import { 
   Entry, 
   Text, 
@@ -215,9 +210,9 @@ struct Child {
 
 当使用\@PropRef装饰数组类型时，可以观察到数组整体及其元素的变化。通过API操作更改数组内容也能被观测到。
 
-```ts
-'use static'
+<!-- @[PropRefArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefArray.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
@@ -250,9 +245,9 @@ struct Child {
 
 使用\@PropRef装饰Map类型时，可以观察到Map整体及其API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[PropRefMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefMap.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
@@ -285,9 +280,9 @@ struct Child {
 
 使用\@PropRef装饰Set类型时，可以观察到Set整体以及API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[PropRefSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefSet.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
@@ -326,9 +321,9 @@ struct Child {
 
 使用\@PropRef装饰Date类型时，可以观察到Date整体及其API操作的变化。
 
-```ts
-'use static'
+<!-- @[PropRefDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefDate.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component

@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) | InputMethod_AttachOptions | 输入法绑定选项。绑定输入法时携带的选项。 |
+| [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) | InputMethod_AttachOptions | 输入法绑定选项，用于在绑定输入法时携带相关配置。 |
 
 ### 函数
 

@@ -38,7 +38,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | visible  | boolean                   | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标光标显示状态成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标光标显示状态成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -136,7 +136,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -196,7 +196,7 @@ struct Index {
             // 设置鼠标指针可见性
             pointer.setPointerVisible(false).then(() => {
               console.info(`Succeeded in setting pointer cursor visible.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to set pointer cursor, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
@@ -303,7 +303,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名       | 类型                           | 必填   | 说明             |
 | -------- | ---------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当获取鼠标光标显示状态成功时，err为undefined，data为鼠标光标状态（true为显示，false为隐藏）；否则为错误对象。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当获取鼠标光标显示状态成功，err为undefined，data为鼠标光标状态（true为显示，false为隐藏）；否则为错误对象。 |
 
 **错误码**：
 
@@ -394,7 +394,7 @@ isPointerVisible(): Promise&lt;boolean&gt;
 
 | 类型                     | 说明                  |
 | ---------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回鼠标光标状态查询结果。true代表显示状态，false代表隐藏状态。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示鼠标光标为显示状态；返回false表示鼠标光标为隐藏状态。 |
 
 **示例**：
 
@@ -445,7 +445,7 @@ struct Index {
             // 查询鼠标指针是否可见
             pointer.isPointerVisible().then((visible: boolean) => {
               console.info(`Succeeded in getting pointer visible, visible: ${JSON.stringify(visible)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get pointer, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
@@ -533,7 +533,7 @@ ArkTS-Dyn: getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerS
 
 ArkTS-Sta: getPointerStyle(windowId: int, callback: AsyncCallback&lt;PointerStyle&gt;): void
 
-获取指定窗口的鼠标样式类型，使用callback异步回调。此接口仅支持获取本应用进程内窗口的鼠标样式类型。
+获取指定窗口的鼠标样式类型，此接口仅支持获取本应用进程内窗口的鼠标样式类型，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -546,7 +546,7 @@ ArkTS-Sta: getPointerStyle(windowId: int, callback: AsyncCallback&lt;PointerStyl
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
 | windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 是    | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
-| callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数。当获取鼠标样式类型成功时，err为undefined，data为鼠标样式类型；否则为错误对象。 |
+| callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数。当获取鼠标样式类型成功，err为undefined，data为鼠标样式类型；否则为错误对象。 |
 
 **错误码**：
 
@@ -634,7 +634,7 @@ ArkTS-Dyn: getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;
 
 ArkTS-Sta: getPointerStyle(windowId: int): Promise&lt;PointerStyle&gt;
 
-获取鼠标样式类型，使用Promise异步回调。此接口仅支持获取本应用进程内窗口的鼠标样式类型。
+获取鼠标样式类型，此接口仅支持获取本应用进程内窗口的鼠标样式类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -831,7 +831,7 @@ ArkTS-Dyn: setPointerStyle(windowId: number, pointerStyle: PointerStyle, callbac
 
 ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定窗口的鼠标样式类型，使用callback异步回调。此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)。
+设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -845,7 +845,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: 
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
 | windowId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle)获取。 |
 | pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。                             |
-| callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。当设置鼠标样式类型成功时，err为undefined，否则为错误对象。 |
+| callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。当设置鼠标样式类型成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -934,7 +934,7 @@ ArkTS-Dyn: setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promis
 
 ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&lt;void&gt;
 
-设置指定窗口的鼠标样式类型，使用Promise异步回调。此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)。
+设置指定窗口的鼠标样式类型，此接口仅支持设置本应用进程内窗口的鼠标样式类型，如需通过UIExtensionAbility进程设置宿主窗口的鼠标样式类型，请参阅[setCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcursor12)，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -953,7 +953,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -1028,7 +1028,7 @@ struct Index {
             // 设置鼠标指针样式
             pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS).then(() => {
               console.info(`Succeeded in setting pointer style.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
                 console.error(`Failed to set pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
           } catch (error) {
@@ -1245,7 +1245,7 @@ ArkTS-Dyn: setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: 
 
 ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int, focusY?: int): Promise&lt;void&gt;
 
-设置指定窗口的自定义光标样式，使用Promise异步回调。此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)。
+设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1259,14 +1259,14 @@ ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int
 | ----- | ------ | ---- | ----------------------------------- |
 | windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口ID。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
-| focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
-| focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
+| focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0，单位为px。 |
+| focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0，单位为px。 |
 
 **返回值**：
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -1380,8 +1380,8 @@ struct Index {
 | 名称     | 类型     | 只读     | 可选     | 说明     |
 | -------- | ------- | -------- | -------- | ------- |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 否   | 自定义光标。最小限制为资源图本身的最小限制。最大限制为256 x 256px。 |
-| focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 自定义光标焦点的水平坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的宽度最大值，该参数缺省时默认为0。 |
-| focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 自定义光标焦点的垂直坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的高度最大值，该参数缺省时默认为0。 |
+| focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 自定义光标焦点的水平坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的宽度最大值，该参数缺省时默认为0，单位为px。 |
+| focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 自定义光标焦点的垂直坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的高度最大值，该参数缺省时默认为0，单位为px。 |
 
 ## CursorConfig<sup>15+</sup>
 
@@ -1403,7 +1403,7 @@ ArkTS-Dyn: setCustomCursor(windowId: number, cursor: CustomCursor, config: Curso
 
 ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorConfig): Promise&lt;void&gt;
 
-设置指定窗口的自定义光标样式，使用Promise异步回调。此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)。
+设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)，使用Promise异步回调。
 
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
@@ -1425,7 +1425,7 @@ ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorCo
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -1553,8 +1553,8 @@ ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?:
 | ----- | ------ | ---- | ----------------------------------- |
 | windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口ID。取值为大于0的整数。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
-| focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
-| focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
+| focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0，单位为px。 |
+| focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0，单位为px。 |
 
 **错误码**：
 

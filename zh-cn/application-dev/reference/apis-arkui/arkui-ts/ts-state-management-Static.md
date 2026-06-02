@@ -1,4 +1,4 @@
-# 应用级变量的状态管理(ArkTS-Sta)
+# 应用级变量的状态管理 (ArkTS-Sta)
 
 状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和应用程序需要的环境状态。
 
@@ -833,8 +833,6 @@ let res: boolean = storage.clear(); // true，已经没有订阅者
 
 ## AbstractProperty\<T\>
 
-interface AbstractProperty\<T\>
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -966,6 +964,8 @@ ref1?.onChange((propertyName: string, value: number) => {
 
 ## SubscribedAbstractProperty
 
+继承自[AbstractProperty\<T\>](#abstractpropertyt)。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1056,8 +1056,6 @@ info(): string
 |string    |属性名称。    |
 
 ## PersistPropsOptions\<T\>
-
-interface PersistPropsOptions\<T\>
 
 指定持久化属性及其默认值的键值对对象，作为[persistProps](#persistprops)参数传入。
 

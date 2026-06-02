@@ -349,8 +349,14 @@ export class AVScreenCaptureDemo {
     if (!this.captureFile) {
       return;
     }
-    fileIo.closeSync(this.captureFile);
+    try {
+      fileIo.closeSync(this.captureFile.fd);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+    }
   }
+
 
   private setConfig(): void {
     if (!this.captureFile) {

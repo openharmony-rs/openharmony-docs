@@ -74,6 +74,26 @@
       - [Set](arkts-sta-set.md)
       - [jsonx](arkts-sta-jsonx.md)
       - [reflect](arkts-sta-reflect.md)
+    - 并发相关<!--js-apis-arkts-concurrency-->
+      - Atomics<!--js-apis-arkts-atomics-->
+        - [Atomics模块描述](arkts-sta-atomics-overview.md)
+        - [Atomics (实例化原子类型接口)](arkts-sta-atomics.md)
+        - [Atomics (基于typedArray的原子类型接口)](arkts-sta-legacyatomics.md)
+      - EAWorker<!--js-apis-arkts-eaworker-->
+        - [EAWorker（独占线程任务执行器）(ArkTS)](eaworker_managed.md)
+        - [EAWorker（独占线程任务执行器）(C/C++)](eaworker_native.md)
+        - [Job和CompletableJob](job.md)
+        - [Message (EAWorker消息)](message.md)
+        - [MessageHandler (EAWorker消息处理器)](message_handler.md)
+      - [Mutex (互斥锁)](arkts-sta-mutex.md)
+      - [RWLock (读写锁)](arkts-sta-rwlock.md)
+      - [AsyncLock (异步锁)](arkts-sta-asynclock.md)
+      - [ConcurrentSet (并发集合)](arkts-sta-concurrentset.md)
+      - [ConcurrentQueue (并发队列)](arkts-sta-concurrentqueue.md)
+      - [ConcurrentHashMap (并发哈希表)](arkts-sta-concurrenthashmap.md)
+      - [StdProcess (进程管理标准库)](arkts-sta-std_process.md)
+      - [taskpool](arkts-sta-taskpool.md)
+      - [Promise (异步操作)](arkts-sta-promise.md)
   - 已停止维护的接口<!--arkts-arkts-dep-->
     - [@ohos.util.Vector (线性容器Vector)](js-apis-vector.md)
 - 错误码<!--arkts-arkts-errcode-->

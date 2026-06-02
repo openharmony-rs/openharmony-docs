@@ -21,7 +21,7 @@
 ## 导入模块
 
 ```ts
-import reminderAgent from'@ohos.reminderAgent';
+import reminderAgent from '@ohos.reminderAgent';
 ```
 
 
@@ -48,6 +48,7 @@ publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>):
 **示例**：
 ```ts
 import { BusinessError } from '@ohos.base';
+import reminderAgent from '@ohos.reminderAgent';
 
 let timer:reminderAgent.ReminderRequestTimer = {
   reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -85,6 +86,8 @@ publishReminder(reminderReq: ReminderRequest): Promise\<number>
 
 **示例**：
 ```ts
+import reminderAgent from '@ohos.reminderAgent';
+
 let timer:reminderAgent.ReminderRequestTimer = {
   reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
   triggerTimeInSeconds: 10
@@ -118,6 +121,7 @@ cancelReminder(reminderId: number, callback: AsyncCallback\<void>): void
 
 ```ts
 import { BusinessError } from '@ohos.base';
+import reminderAgent from '@ohos.reminderAgent';
 
 reminderAgent.cancelReminder(1, (err: BusinessError, data: void) => {
   console.info("cancelReminder callback");
@@ -151,6 +155,8 @@ cancelReminder(reminderId: number): Promise\<void>
 **示例**：
 
 ```ts
+import reminderAgent from '@ohos.reminderAgent';
+
 reminderAgent.cancelReminder(1).then(() => {
     console.info("cancelReminder promise");
 });
@@ -177,6 +183,7 @@ getValidReminders(callback: AsyncCallback\<Array\<ReminderRequest>>): void
 
 ```ts
 import { BusinessError } from '@ohos.base';
+import reminderAgent from '@ohos.reminderAgent';
 
 reminderAgent.getValidReminders((err: BusinessError, reminders: Array<reminderAgent.ReminderRequest>) => {
   console.info("callback, getValidReminders length = " + reminders.length);
@@ -224,6 +231,8 @@ getValidReminders(): Promise\<Array\<ReminderRequest>>
 **示例**：
 
 ```ts
+import reminderAgent from '@ohos.reminderAgent';
+
 reminderAgent.getValidReminders().then((reminders: Array<reminderAgent.ReminderRequest>) => {
   console.info("promise, getValidReminders length = " + reminders.length);
   for (let i = 0; i < reminders.length; i++) {
@@ -247,7 +256,6 @@ reminderAgent.getValidReminders().then((reminders: Array<reminderAgent.ReminderR
     console.info("getValidReminders, slotType = " + reminders[i].slotType);
   }
 })
-
 ```
 
 
@@ -272,6 +280,7 @@ cancelAllReminders(callback: AsyncCallback\<void>): void
 
 ```ts
 import { BusinessError } from '@ohos.base';
+import reminderAgent from '@ohos.reminderAgent';
 
 reminderAgent.cancelAllReminders((err: BusinessError, data: void) =>{
   console.info("cancelAllReminders callback")
@@ -299,6 +308,8 @@ cancelAllReminders(): Promise\<void>
 **示例**：
 
 ```ts
+import reminderAgent from '@ohos.reminderAgent';
+
 reminderAgent.cancelAllReminders().then(() => {
     console.info("cancelAllReminders promise")
 })
@@ -325,10 +336,12 @@ addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback\<void>): voi
 **示例**：
 
 ```ts
-import notification from '@ohos.notificationManager'
 import { BusinessError } from '@ohos.base';
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
+import { NotificationSlot } from './notification/notificationSlot';
 
-let mySlot:notification.NotificationSlot = {
+let mySlot:NotificationSlot = {
   type: notification.SlotType.SOCIAL_COMMUNICATION
 }
 reminderAgent.addNotificationSlot(mySlot, (err: BusinessError, data: void) => {
@@ -363,9 +376,11 @@ addNotificationSlot(slot: NotificationSlot): Promise\<void>
 **示例**：
 
 ```ts
-import notification from '@ohos.notificationManager'
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
+import { NotificationSlot } from './notification/notificationSlot';
 
-let mySlot:notification.NotificationSlot = {
+let mySlot:NotificationSlot = {
   type: notification.SlotType.SOCIAL_COMMUNICATION
 }
 reminderAgent.addNotificationSlot(mySlot).then(() => {
@@ -395,8 +410,9 @@ removeNotificationSlot(slotType: notification.SlotType, callback: AsyncCallback\
 **示例**：
 
 ```ts
-import notification from '@ohos.notification'
 import { BusinessError } from '@ohos.base';
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
 
 reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION, (err: BusinessError, data: void) => {
   console.info("removeNotificationSlot callback");
@@ -430,10 +446,11 @@ removeNotificationSlot(slotType: notification.SlotType): Promise\<void>
 **示例**：
 
 ```ts
-import notification from '@ohos.notification'
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
 
 reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).then(() => {
-    console.info("removeNotificationSlot promise");
+  console.info("removeNotificationSlot promise");
 });
 ```
 
@@ -529,9 +546,9 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 | actionButton | [[ActionButton](#actionbuttondeprecated)?, [ActionButton](#actionbuttondeprecated)?] | 否 | 是 | 弹出的提醒通知栏中显示的按钮（参数可选，支持0/1/2个按钮）。 |
 | wantAgent | WantAgent | 否 | 是 | 点击通知后需要跳转的目标ability信息。 |
 | maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagentdeprecated) | 否 | 是 | 提醒到达时跳转的目标包。如果设备正在使用中，则弹出一个通知框。 |
-| ringDuration | number | 否 | 是 | 指明响铃时长（单位：秒），默认1秒。 |
+| ringDuration | number | 否 | 是 | 指明响铃时长。<br> 单位：s，默认1秒。 |
 | snoozeTimes | number | 否 | 是 | 指明延迟提醒次数，默认0次。 |
-| timeInterval | number | 否 | 是 | 执行延迟提醒间隔（单位：秒），默认0秒。 |
+| timeInterval | number | 否 | 是 | 执行延迟提醒间隔。<br> 单位：s，默认0秒。 |
 | title | string | 否 | 是 | 指明提醒标题。 |
 | content | string | 否 | 是 | 指明提醒内容。 |
 | expiredContent | string | 否 | 是 | 指明提醒过期后需要显示的内容。 |
@@ -585,7 +602,7 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| triggerTimeInSeconds | number | 否 | 否 | 指明倒计时的秒数。 |
+| triggerTimeInSeconds | number | 否 | 否 | 指明倒计时的秒数。<br> 单位：s |
 
 
 ## LocalDateTime<sup>(deprecated)</sup>

@@ -49,7 +49,7 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型。如：手势开始、手势更新、手势结束等。                                   |
-| angle | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否    | 否    | 旋转角度。                             |
+| angle | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否    | 否    | 旋转角度，单位为度。                             |
 
 ## ThreeFingersSwipe
 
@@ -64,8 +64,8 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type         | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型。如：手势开始、手势更新、手势结束等。                                   |
-| x        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标x。                             |
-| y        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标y。                             |
+| x        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标x，单位为px。                             |
+| y        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标y，单位为px。                             |
 
 ## FourFingersSwipe
 
@@ -80,8 +80,8 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type         | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型。如：手势开始、手势更新、手势结束等。                                   |
-| x        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标x。                             |
-| y        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标y。                             |
+| x        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标x，单位为px。                             |
+| y        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标y，单位为px。                             |
 
 ## ThreeFingersTap<sup>11+</sup>
 

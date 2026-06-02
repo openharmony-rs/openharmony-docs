@@ -2,7 +2,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -1011,7 +1011,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathConvertToSvgString(OH_Drawing_Path* path, ch
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或strSize为nullptr，或strSize过小时则返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或strSize为nullptr，或strSize过小时则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
 
 ### OH_Drawing_PathContains()
 
@@ -1467,7 +1467,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetVerbData(OH_Drawing_Path* path, OH_Drawin
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或count为空，则返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或count为空，则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
 
 ### OH_Drawing_PathGetPointData()
 
@@ -1503,7 +1503,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetPointData(OH_Drawing_Path* path, OH_Drawi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或count为空，则返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或count为空，则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
 
 ### OH_Drawing_PathGetConicWeightData()
 
@@ -1539,7 +1539,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetConicWeightData(OH_Drawing_Path* path, fl
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或count为空，则返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或count为空，则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
 
 ### OH_Drawing_PathInterpolate()
 

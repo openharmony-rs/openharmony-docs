@@ -544,7 +544,9 @@ struct Index {
           this.start = value.selection[0];
           this.end = value.selection[1];
         })
+        // 绑定鼠标右键操作自定义菜单
         .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu3(), RichEditorResponseType.RIGHT_CLICK)
+        // 绑定鼠标选中操作自定义菜单
         .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu2(), RichEditorResponseType.SELECT)
         .borderWidth(1)
         .borderColor(Color.Red)
@@ -890,6 +892,8 @@ struct Index {
 > **说明：**
 >
 > 系统暂未预置加粗、斜体等图标，示例代码使用本地资源图标，开发者使用时需自行替换editorMenuOptions中icon项的资源。
+>
+> 示例图为鼠标操作触发的自定义菜单弹出效果。
 
 ![selectionmenu](figures/selectionmenu.gif)
 

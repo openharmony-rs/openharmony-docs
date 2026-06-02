@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## getUIContext
 
@@ -419,7 +421,9 @@ struct MyComponent {
 
 ## RouterPageInfo<sup>12+</sup>
 
-type RouterPageInfo = RouterPageInfo
+ArkTS-Dyn: type RouterPageInfo = RouterPageInfo
+
+ArkTS-Sta: type RouterPageInfo = uiObserver.RouterPageInfo
 
 RouterPageInfo实例对象。
 
@@ -433,7 +437,7 @@ RouterPageInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | 返回RouterPageInfo实例对象。 |
+| ArkTS-Dyn: [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo)<br/>ArkTS-Sta: uiObserver.RouterPageInfo | 返回RouterPageInfo实例对象。 |
 
 ## getDialogController<sup>18+</sup>
 

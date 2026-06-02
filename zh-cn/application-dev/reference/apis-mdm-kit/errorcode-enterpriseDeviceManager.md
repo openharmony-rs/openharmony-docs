@@ -365,17 +365,25 @@ Failed to install the application.
 
 **可能原因**
 
-该错误码表示安装企业应用失败，可能原因如下。
+该错误码表示安装企业应用失败。
+
+如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，可能原因如下。
 1. 应用安装路径为空、不存在、无效路径。
 2. 安装多个不同包名的应用。
 3. 当安装参数flag为0时再次安装已存在的应用。
 4. 传入无效用户id。
 
+<!--RP3--><!--RP3End-->
+
 **处理步骤**
+
+如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，处理步骤如下。
 
 1. 检查应用安装路径是有效的安装路径。
 2. 检查安装参数是有效的安装参数。
 3. 检查安装的是同一应用。
+
+<!--RP4--><!--RP4End-->
 
 ## 9201003 创建账号失败
 
@@ -692,7 +700,7 @@ SIM card activation or deactivation failed.
 1. 检查飞行模式是否关闭。
 2. 检查是否插入SIM卡。
 
-## 9201018 指定应用不持支操作
+## 9201018 指定应用不支持操作
 
 **错误信息**
 
@@ -710,7 +718,7 @@ The application is inoperable.
 
 指定应用不支持添加，请添加其他应用到栏。
 
-## 9201019 指定位置不持支操作
+## 9201019 指定位置不支持操作
 
 **错误信息**
 
@@ -767,3 +775,57 @@ A lock screen password has been set for the device.
 **处理步骤**
 
 删除锁屏密码。
+
+## 9201043 API调用的前置条件未满足
+
+**错误信息**
+
+Prerequisites for the API call have not been satisfied. For example, distributed outgoing transmission is not disallowed before adding the distributed bidirectional collaboration trustlist.
+
+**错误描述**
+
+当API调用的前置条件未满足时，会产生此错误码。
+
+**可能原因**
+
+在添加允许分布式双向协同应用名单之前，设备间单向传输能力未被禁止。
+
+**处理步骤**
+
+先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
+
+## 9201044 指定权限未被禁用
+
+**错误信息**
+
+This permission is not disallowed. Applications cannot be added to or removed from the trustlist.
+
+**错误描述**
+
+指定权限未被禁用时，给该权限添加权限使用例外名单，会产生此错误码。
+
+**可能原因**
+
+在添加允许使用已禁用指定权限的应用到权限使用例外名单之前，指定权限未被禁止。
+
+**处理步骤**
+
+先通过[setDisallowedPermission](./js-apis-enterprise-securityManager.md#securitymanagersetdisallowedpermission)接口禁用指定权限，再给指定权限添加权限使用例外名单。
+
+## 9201045 指定权限不可被禁用
+
+**错误信息**
+
+This permission cannot be disallowed.
+
+**错误描述**
+
+需要禁用指定权限时，会产生此错误码。
+
+**可能原因**
+
+需要禁用的权限的APL等级不是normal或system_basic。
+
+**处理步骤**
+
+检查需要禁用的权限的APL等级是否为normal或system_basic。
