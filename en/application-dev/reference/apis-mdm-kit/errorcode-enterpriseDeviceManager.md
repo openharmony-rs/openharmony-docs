@@ -365,17 +365,25 @@ This error code is reported when a device administrator application fails to ins
 
 **Possible Causes**
 
-The possible causes are as follows:
+This error code indicates a failure to install the enterprise application.
+
+If the called API is [bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall), the possible causes are as follows:
 1. The application installation path is empty or invalid, or does not exist.
 2. The operation attempts to install multiple apps with different bundle names.
 3. The application to be installed already exists when the installation parameter flag is 0.
 4. The user ID is invalid.
 
+<!--RP3--><!--RP3End-->
+
 **Solution**
 
-1. Check that the application installation path is valid.
-2. Check that all the installation parameters are valid.
-3. Check that the same application is installed.
+If the called API is [bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall), perform the following steps:
+
+1. Verify the application installation path.
+2. Verify all installation parameters.
+3. Ensure that the same application is being installed.
+
+<!--RP4--><!--RP4End-->
 
 ## 9201003 Failed to Add an Account
 
@@ -585,7 +593,7 @@ Failed to enable or disable the activation lock.
 
 **Description**
 
-Failed to enable or disable the activation lock.
+Failed to disable or enable the activation lock.
 
 **Possible Causes**
 
@@ -628,7 +636,7 @@ This error code is reported when an enterprise device administrator fails to add
 
 **Possible Causes**
 
-The specified application is already in the Dock.
+The specified application has already in the Dock.
 
 **Solution**
 

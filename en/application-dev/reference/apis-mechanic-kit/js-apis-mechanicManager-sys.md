@@ -1,9 +1,9 @@
 # @ohos.distributedHardware.mechanicManager (Mechanic Manager) (System API)
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @Marssssss-->
+<!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
 
 The **mechanicManager** module provides the mechanic device interaction capabilities, such as connection management, device control, and monitoring.
@@ -748,7 +748,7 @@ Enumerates the target face information.
 
 **System API**: This is a system API.
 
-  | Name| Type| Value | Description|
+| Name| Type| Value| Description|
 | ----------- | ------|---- | --------------- |
 | HUMAN_FACE | int | 0 | Target face information.|
 
@@ -761,11 +761,11 @@ Default search direction.
 
 **System API**: This is a system API.
 
-  | Name| Type| Value | Description|
+| Name| Type| Value| Description|
 | ----------- | ------|---- | --------------- |
 | DEFAULT | int | 0 | Default direction. |
-  | LEFTWARD | int | 1 | Leftward, that is, clockwise.|
-  | RIGHTWARD | int | 2 | Rightward, that is, counterclockwise.|
+| LEFTWARD | int | 1 | Leftward, that is, clockwise.|
+| RIGHTWARD | int | 2 | Rightward, that is, counterclockwise.|
   
  ## TargetInfo<sup>21+<sup>
 
