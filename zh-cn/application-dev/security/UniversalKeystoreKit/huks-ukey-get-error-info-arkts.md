@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API版本26.0.0开始，huksExternalCrypto提供getErrorInfo接口，用于获取最近一次外部密钥操作的详细错误信息。该错误信息由密钥管理扩展（CryptoExtensionAbility）返回，可用于辅助定位问题。
+从API版本26.0.0开始，huksExternalCrypto提供getErrorInfo接口，用于获取最近一次外部密钥操作的详细错误信息。该错误信息由密钥管理扩展（[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)）返回，可用于辅助定位问题。
 
 ## 开发步骤
 
