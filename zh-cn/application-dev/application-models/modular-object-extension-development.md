@@ -115,7 +115,7 @@ ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属
     }
     ```
 
-4. 实现IPC Stub。在cpp目录下分别创建icalculator.h、calculator_stub.h和calculator_stub.cpp文件，以下以实现一个计算器接口（Add方法）为例说明。推荐使用[taihe工具](./modular-object-extension-ability-ipc.md)生成。
+4. 实现IPC Stub。在cpp目录下分别创建icalculator.h、calculator_stub.h和calculator_stub.cpp文件，以下以实现一个计算器接口（Add方法）为例说明。推荐使用[Taihe工具](./modular-object-extension-ability-ipc.md)生成。
 
     icalculator.h定义了接口类ICalculator，包含接口描述符、命令码和方法业务声明。服务端和客户端都需要包含此头文件。
 
