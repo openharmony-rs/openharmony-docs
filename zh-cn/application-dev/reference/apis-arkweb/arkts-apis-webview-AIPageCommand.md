@@ -6,12 +6,12 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-`AIPageCommand`定义[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand26)支持的JSON命令协议，包括不同命令的入参格式和返回格式。调用该接口前，应用需要将命令对象序列化为JSON字符串。
+`AIPageCommand`定义[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand)支持的JSON命令协议，包括不同命令的入参格式和返回格式。调用该接口前，应用需要将命令对象序列化为JSON字符串。
 
 > **说明：**
 >
 > - `command`必须为JSON对象字符串。
-> - `method`字段取值大小写敏感，需使用[命令总览](#命令总览)中列出的取值。
+> - `method`字段取值区分大小写，需使用[命令总览](#命令总览)中列出的取值。
 > - 返回值非空时为JSON字符串，应用可通过`JSON.parse`解析后使用。
 > - 当网页不可用、命令无法执行或无结果返回时，接口返回空字符串。
 
