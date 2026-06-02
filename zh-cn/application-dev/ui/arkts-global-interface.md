@@ -385,7 +385,7 @@ export default class EntryAbility extends UIAbility {
 }
 
 ```
-```
+
 <!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -457,8 +457,7 @@ export default class EntryAbility extends UIAbility {
 }
 
 ```
-}
-```
+
 ### 通过静态方法获取UIContext对象
 从API version 22开始，开发者可以通过UIContext类静态方法如[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)获取UIContext对象。
 
