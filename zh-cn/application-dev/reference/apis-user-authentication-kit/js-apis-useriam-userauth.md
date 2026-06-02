@@ -1651,7 +1651,7 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 
 | 参数名         | 类型                               | 必填 | 说明                       |
 | -------------- | ---------------------------------- | ---- | -------------------------- |
-| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的认证类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）、COMPANION_DEVICE（协同认证）。<br>**说明**：<br>从API version 11开始支持PIN查询。<br>从API版本26.0.0开始支持COMPANION_DEVICE查询。|
+| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的认证类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）、COMPANION_DEVICE（伴随设备）。<br>**说明**：<br>从API version 11开始支持PIN查询。<br>从API版本26.0.0开始支持COMPANION_DEVICE查询。|
 | authTrustLevel | [AuthTrustLevel](#authtrustlevel8) | 是   | 认证信任等级。用于指定查询的认证可信等级，有效值为ATL1(10000)、ATL2(20000)、ATL3(30000)、ATL4(40000)。等级越高，对认证方案的活体检测能力要求越高。       |
 
 > **错误码返回顺序说明：**
