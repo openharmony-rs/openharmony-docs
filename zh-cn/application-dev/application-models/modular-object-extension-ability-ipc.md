@@ -195,19 +195,26 @@ ErrCode CalculatorProxy::Add(int32_t a, int32_t b, int32_t& result)
 ```
   if (OH_IPCParcel_ReadInt32(parcelReply.get(), &resultValue) != OH_IPC_SUCCESS) {
       return OH_IPC_PARCEL_READ_ERROR;
-  }
-  result = resultValue;
-
-  return OH_IPC_SUCCESS;
-}
-```
-
-**calculator_stub.h**
-- `CalculatorStub`继承`ICalculator`。
-- `OnRemoteRequest`作为IPC调用入口。
-- `OnRemoteRequestInner`根据`code`分发到具体`HandleXXX`方法。
 <!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.h) -->
-```cpp
+
+``` C
+class CalculatorStub : public ICalculator {
+public:
+// ...
+    ErrCode WriteRemoteObject(OHIPCParcel* parcel) const override;
+
+    static int32_t OnRemoteRequest(
+        uint32_t code,
+        const OHIPCParcel* data,
+        OHIPCParcel* reply,
+        void* userData);
+// ...
+private:
+    int32_t OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply);
+    int32_t HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply);
+// ...
+};
+```
 class CalculatorStub : public ICalculator {
 public:
     static int32_t OnRemoteRequest(uint32_t code,
