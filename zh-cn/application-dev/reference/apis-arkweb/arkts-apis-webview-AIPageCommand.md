@@ -73,7 +73,6 @@
 | aria-description | aria-description | string | 节点`aria-description`属性值。字段值为空时不返回该字段。 |
 | rect | rect | Object | 节点矩形信息，包含`x`、`y`、`width`、`height`。 |
 | bounds | bounds | Object | 节点矩形信息，包含`x`、`y`、`left`、`top`、`right`、`bottom`、`width`、`height`。 |
-| position | position | Object | 节点矩形信息，包含`x`、`y`、`left`、`top`、`right`、`bottom`、`width`、`height`。 |
 | visible | visible | boolean | 节点是否可见。 |
 | isInViewport | isInViewport | boolean | 节点是否在当前视口内。 |
 | clickable | clickable | boolean | 节点是否可点击。 |
@@ -119,15 +118,14 @@
 | children_nodes | rect | width | number | 节点矩形宽度。 |
 | children_nodes | rect | height | number | 节点矩形高度。 |
 | children_nodes | - | bounds | Object | 节点矩形信息。 |
-| children_nodes | - | position | Object | 节点矩形信息。 |
-| children_nodes | bounds/position | x | number | 节点矩形左上角x坐标。 |
-| children_nodes | bounds/position | y | number | 节点矩形左上角y坐标。 |
-| children_nodes | bounds/position | left | number | 节点矩形左边界。 |
-| children_nodes | bounds/position | top | number | 节点矩形上边界。 |
-| children_nodes | bounds/position | right | number | 节点矩形右边界。 |
-| children_nodes | bounds/position | bottom | number | 节点矩形下边界。 |
-| children_nodes | bounds/position | width | number | 节点矩形宽度。 |
-| children_nodes | bounds/position | height | number | 节点矩形高度。 |
+| children_nodes | bounds | x | number | 节点矩形左上角x坐标。 |
+| children_nodes | bounds | y | number | 节点矩形左上角y坐标。 |
+| children_nodes | bounds | left | number | 节点矩形左边界。 |
+| children_nodes | bounds | top | number | 节点矩形上边界。 |
+| children_nodes | bounds | right | number | 节点矩形右边界。 |
+| children_nodes | bounds | bottom | number | 节点矩形下边界。 |
+| children_nodes | bounds | width | number | 节点矩形宽度。 |
+| children_nodes | bounds | height | number | 节点矩形高度。 |
 | children_nodes | - | visible | boolean | 节点是否可见。 |
 | children_nodes | - | isInViewport | boolean | 节点是否在当前视口内。 |
 | children_nodes | - | clickable | boolean | 节点是否可点击。 |
@@ -299,7 +297,6 @@
 | aria-description | aria-description | string | 节点`aria-description`属性值。字段值为空时不返回该字段。 |
 | rect | rect | Object | 节点矩形信息，包含`x`、`y`、`width`、`height`。 |
 | bounds | bounds | Object | 节点矩形信息，包含`x`、`y`、`left`、`top`、`right`、`bottom`、`width`、`height`。 |
-| position | position | Object | 节点矩形信息，包含`x`、`y`、`left`、`top`、`right`、`bottom`、`width`、`height`。 |
 | visible | visible | boolean | 节点是否可见。 |
 | isInViewport | isInViewport | boolean | 节点是否在当前视口内。 |
 | clickable | clickable | boolean | 节点是否可点击。 |
@@ -345,15 +342,14 @@
 | nodes | rect | width | number | 节点矩形宽度。 |
 | nodes | rect | height | number | 节点矩形高度。 |
 | nodes | - | bounds | Object | 节点矩形信息。 |
-| nodes | - | position | Object | 节点矩形信息。 |
-| nodes | bounds/position | x | number | 节点矩形左上角x坐标。 |
-| nodes | bounds/position | y | number | 节点矩形左上角y坐标。 |
-| nodes | bounds/position | left | number | 节点矩形左边界。 |
-| nodes | bounds/position | top | number | 节点矩形上边界。 |
-| nodes | bounds/position | right | number | 节点矩形右边界。 |
-| nodes | bounds/position | bottom | number | 节点矩形下边界。 |
-| nodes | bounds/position | width | number | 节点矩形宽度。 |
-| nodes | bounds/position | height | number | 节点矩形高度。 |
+| nodes | bounds | x | number | 节点矩形左上角x坐标。 |
+| nodes | bounds | y | number | 节点矩形左上角y坐标。 |
+| nodes | bounds | left | number | 节点矩形左边界。 |
+| nodes | bounds | top | number | 节点矩形上边界。 |
+| nodes | bounds | right | number | 节点矩形右边界。 |
+| nodes | bounds | bottom | number | 节点矩形下边界。 |
+| nodes | bounds | width | number | 节点矩形宽度。 |
+| nodes | bounds | height | number | 节点矩形高度。 |
 | nodes | - | visible | boolean | 节点是否可见。 |
 | nodes | - | isInViewport | boolean | 节点是否在当前视口内。 |
 | nodes | - | clickable | boolean | 节点是否可点击。 |
