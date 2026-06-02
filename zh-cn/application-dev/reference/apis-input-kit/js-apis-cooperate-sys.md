@@ -633,7 +633,7 @@ struct Index {
             inputDeviceCooperate.on('cooperation', callback);
             inputDeviceCooperate.off("cooperation");
           } catch (error) {
-            console.error(``Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

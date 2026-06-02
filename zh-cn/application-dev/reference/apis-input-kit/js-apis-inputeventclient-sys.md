@@ -443,7 +443,7 @@ struct Index {
 | --------- | ------ | ---- | ---- | ------- |
 | isPressed       | boolean | 否    |  否 | 按键是否按下。<br>true表示按键按下，false表示按键抬起。   |
 | keyCode         | number  | 否    |  否 | 按键键值。当前仅支持返回键/KEYCODE_BACK键。 |
-| keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位：μs。           |
+| keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
 | isIntercepted   | boolean | 否    |  否 | 按键是否可以被拦截。<br>true表示可以被拦截，false表示不可被拦截。 |
 
 ## KeyEventData<sup>11+</sup>
