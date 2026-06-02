@@ -100,7 +100,7 @@ Text(content?: string | Resource , value?: TextOptions)
 | minLines<sup>22+</sup> | 设置文本显示的最小行数。 |
 | optimizeTrailingSpace<sup>20+</sup> | 优化行尾空格。 |
 | textIndent<sup>10+</sup> | 设置首行文本缩进。 |
-| tailIndents<sup>26+</sup> | 设置文本尾部缩进。 |
+| tailIndents | 设置文本尾部缩进。<br>**起始版本：** 26.0.0 |
 
 **字体自适应**
 
@@ -1468,13 +1468,15 @@ textIndent(value: Length)
 | ------ | ---------------------------- | ---- | ---------------------------- |
 | value  | [Length](ts-types.md#length) | 是   | 首行文本缩进。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br/>取值范围：大于等于0。设置负数时，按默认值处理。|
 
-### tailIndents<sup>26+</sup>
+### tailIndents
 
 tailIndents(value: Optional\<LengthMetrics> | Array\<LengthMetrics>)
 
-设置文本尾部缩进。
+设置文本尾部缩进。未通过该接口设置时，文本尾部缩进为0fp。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1484,7 +1486,7 @@ tailIndents(value: Optional\<LengthMetrics> | Array\<LengthMetrics>)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 指定文本每一行尾部缩进。当提供一个单独的 LengthMetrics 值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br/>取值范围：大于等于0。设置负数时，按默认值处理。|
+| value  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 指定文本每一行尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。不支持百分比。<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br/>取值范围：大于等于0。设置负数时，按默认值处理。|
 
 ### textOverflow
 
@@ -3748,7 +3750,7 @@ struct StyledStringAppend {
 
 ### 示例32（设置文本尾部缩进）
 
-该示例通过[tailIndents](#tailindents26)接口实现了文本尾部缩进的功能。
+该示例通过[tailIndents](#tailindents)接口实现了文本尾部缩进的功能。
 
 从API版本26.0.0开始，通过tailIndents属性设置文本尾部缩进。
 
@@ -3760,40 +3762,28 @@ import { LengthMetrics } from '@kit.ArkUI';
 struct TailIndentsExample {
   build() {
     Column() {
-      Text('1multiLinesTestAmultiLinesTestBmultiLinesTestCmultiLinesTestDmultiLinesTestEmultiLinesTestFmultiLinesTestG')
-        .fontSize(22)
-        .fontWeight(FontWeight.Bold)
+      Text('未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents')
+        .fontSize(20)
         .borderWidth(1)
         .borderColor(Color.Blue)
-        .textAlign(TextAlign.Start)
+        .textAlign(TextAlign.End)
         .width('100%')
 
-      Text('2multiLinesTestAmultiLinesTestBmultiLinesTestCmultiLinesTestDmultiLinesTestEmultiLinesTestFmultiLinesTestG')
-        .fontSize(22)
-        .fontWeight(FontWeight.Bold)
+      Text('设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值')
+        .fontSize(20)
         .borderWidth(1)
         .borderColor(Color.Blue)
-        .textAlign(TextAlign.Start)
+        .textAlign(TextAlign.End)
         .width('100%')
-        .tailIndents(LengthMetrics.vp(210))
+        .tailIndents(LengthMetrics.vp(100))
 
-      Text('3multiLinesTestAmultiLinesTestBmultiLinesTestCmultiLinesTestDmultiLinesTestEmultiLinesTestFmultiLinesTestG')
-        .fontSize(22)
-        .fontWeight(FontWeight.Bold)
+      Text('设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组')
+        .fontSize(20)
         .borderWidth(1)
         .borderColor(Color.Blue)
-        .textAlign(TextAlign.Start)
+        .textAlign(TextAlign.End)
         .width('100%')
-        .tailIndents([LengthMetrics.vp(210)])
-
-      Text('4multiLinesTestAmultiLinesTestBmultiLinesTestCmultiLinesTestDmultiLinesTestEmultiLinesTestFmultiLinesTestG')
-        .fontSize(22)
-        .fontWeight(FontWeight.Bold)
-        .borderWidth(1)
-        .borderColor(Color.Blue)
-        .textAlign(TextAlign.Start)
-        .width('100%')
-        .tailIndents([LengthMetrics.vp(120), LengthMetrics.vp(340), LengthMetrics.vp(230)])
+        .tailIndents([LengthMetrics.vp(100), LengthMetrics.vp(50), LengthMetrics.vp(20)])
 
     }
     .height('100%')
