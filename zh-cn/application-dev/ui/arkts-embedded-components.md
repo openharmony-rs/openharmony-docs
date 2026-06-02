@@ -30,7 +30,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - 应用范围
 
-  EmbeddedComponent组件只能在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用。
+  EmbeddedComponent组件只能在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用；从API版本26.0.0开始，如果EmbeddedComponent所属应用申请了ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA权限（该权限仅企业普通应用可申请），且该应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)在EmbeddedUIExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中，则允许EmbeddedComponent跨应用拉起EmbeddedUIExtensionAbility。
 
 - 属性限制
 
