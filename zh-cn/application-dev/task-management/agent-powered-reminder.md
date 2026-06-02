@@ -88,7 +88,7 @@
         content: context.resourceManager.getStringSync($r('app.string.countdown_close')
           .id), // 指明提醒内容, "app.string.countdown_close"资源文件中的value值为"计时器已结束"
         wantAgent: {
-          // 点击提醒通知后跳转的目标UIAbility信息
+          // // 点击提醒通知后跳转的目标UIAbility信息
           pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
