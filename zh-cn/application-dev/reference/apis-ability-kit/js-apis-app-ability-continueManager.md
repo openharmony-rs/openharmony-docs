@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-continueManager提供了应用跨端迁移的管理能力，如获取应用跨端迁移过程中快速拉起目标应用的结果。跨端迁移通过在源端和目标端之间建立数据传输通道，将应用状态和数据从源端迁移到目标端。详细的设计逻辑和实现机制请参见[跨端迁移开发指南](../../application-models/hop-cross-device-migration.md)。
+continueManager提供了应用跨端迁移的管理能力，如获取应用跨端迁移过程中快速拉起目标应用的结果。跨端迁移是通过在源端和目标端之间建立数据传输通道，将应用状态和数据从源端迁移到目标端。详细的设计逻辑和实现机制请参见[跨端迁移开发指南](../../application-models/hop-cross-device-migration.md)。
 
 > **说明：**
 > 
@@ -24,7 +24,7 @@ import { continueManager } from '@kit.AbilityKit';
 
 on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
 
-在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。用于跨设备应用迁移场景，如游戏进度从手机迁移到平板、视频播放跨端同步、文档编辑协作等需要保持应用连续性的场景。
+在应用被快速拉起时，通过注册回调函数获取快速拉起结果。使用callback异步回调。适用于跨设备应用迁移场景，如游戏进度从手机迁移到平板、视频播放跨端同步、文档编辑协作等需要保持应用连续的场景。
 
 > **说明：**
 >
@@ -48,7 +48,7 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 16300501 | the system ability work abnormally.请检查分布式调度服务是否正常运行，稍后重试。 |
+| 16300501 | the system ability work abnormally. |
 
 **示例**：
 
@@ -91,7 +91,7 @@ export default class MigrationAbility extends UIAbility {
 
 off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;ContinueResultInfo&gt;): void
 
-在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。用于迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。
+在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。用于跨设备应用迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -111,7 +111,7 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 
 | 错误码ID    | 错误信息 |
 |----------| -------------------------------- |
-| 16300501 | the system ability work abnormally.请检查分布式调度服务是否正常运行，稍后重试。 |
+| 16300501 | the system ability work abnormally. |
 
 **示例**：
 
@@ -154,6 +154,8 @@ export default class MigrationAbility extends UIAbility {
 
 注册或注销回调函数返回的快速拉起结果。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
@@ -164,6 +166,8 @@ export default class MigrationAbility extends UIAbility {
 ## ContinueStateCode
 
 快速拉起的结果状态码的枚举值。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
