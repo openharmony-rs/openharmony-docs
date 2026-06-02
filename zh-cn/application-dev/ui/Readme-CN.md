@@ -407,7 +407,7 @@
       - [使用属性字符串](ndk-styled-string.md)
       - [添加输入框文本事件监听](ndk-textarea-event.md)
   - 使用选择类组件<!--arkts-build-picker-ndk-->
-      - [使用滑动选择器Picker](ndk-picker.md)
+      - [使用滑动选择器 (Picker)](ndk-picker.md)
   - [显示图片（Image）](ndk-image-component.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - [构建表单组件](ndk-build-form-components.md)
