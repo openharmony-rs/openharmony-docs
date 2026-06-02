@@ -327,7 +327,7 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 | [TransitionEffect](#transitioneffect10对象说明) | 组合过渡效应。 |
 
 ### animation<sup>10+</sup>
-
+ 
 animation(value: AnimateParam): TransitionEffect
 
 指定该TransitionEffect的动画参数。
