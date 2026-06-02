@@ -1,4 +1,11 @@
 # UI集合类型互操作(Array/Map/Set)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
 
 ## 概述
 在ArkTS-Sta与ArkTS-Dyn互操作场景中，由于两种语言的Array/Map/Set底层实现不同，跨语言传递时类型对应规则如下：
@@ -54,28 +61,29 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets   # 父组件定义
+│                   └── StaDynBuiltinArraySt.ets   # 父组件定义
 │
-└── dynamic_library/                # ArkTS-Dyn子模块
+└── dynamic_module/                # ArkTS-Dyn子模块
     ├── config.json                 # 配置文件（新增）
     ├── build-profile.json5         # 需添加arkOptions配置
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets  # 子组件定义
+                    └── ArrayStPage.ets  # 子组件定义
 ```
 
 步骤：
 
-1. 创建ArkTS-Dyn子模块`dynamic_library`，定义接收`st.Array`类型的组件。
+1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`st.Array`类型的组件。
 
+   <!-- @[StaDynBuiltinArrayStMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/ArrayStPage.ets) -->
    ```TypeScript
-   // dynamic_library/src/main/ets/components/MainPage.ets
+   // dynamic_module/src/main/ets/components/ArrayStPage.ets
    import st, { STValue } from 'static.@ohos.lang.interop';
 
    @Component
-   export struct Child {
+   export struct ArrayStChild {
      @Link data: st.Array<string>;
 
      build() {
@@ -94,12 +102,13 @@ project/
    }
    ```
 
+   <!-- @[StaDynBuiltinArrayStDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
    ```TypeScript
-   // dynamic_library/Index.ets
-   export { Child } from './src/main/ets/components/MainPage';
+   // dynamic_module/Index.ets
+   export { ArrayStChild } from './src/main/ets/components/ArrayStPage';
    ```
 
-2. 在子模块`dynamic_library`根目录下创建`config.json`文件，用于配置`st`和`STValue`的导入别名。
+2. 在子模块`dynamic_module`根目录下创建`config.json`文件，用于配置`st`和`STValue`的导入别名。
 
    ```json5
    {
@@ -117,7 +126,7 @@ project/
 3. 在子模块的`build-profile.json5`的`buildOption`字段中添加`arkOptions`配置，引用`config.json`。
 
    ```json5
-   // dynamic_library/build-profile.json5
+   // dynamic_module/build-profile.json5
    {
      // ...,
      "buildOption": {
@@ -136,19 +145,19 @@ project/
    // entry/oh-package.json5
    {
      "dependencies": {
-       "dynamic_library": "file:../dynamic_library"
+       "dynamic_module": "file:../dynamic_module"
      }
    }
    ```
 
 5. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
+   <!-- @[StaDynBuiltinArraySt](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinArraySt.ets) -->
    ```TypeScript
-   'use static';
-   // entry/src/main/ets/pages/Index.ets
+   // entry/src/main/ets/pages/StaDynBuiltinArraySt.ets
 
    import { ClickEvent, Entry, Column, Button, Component, Text, State } from '@kit.ArkUI';
-   import { Child } from 'dynamic_library';
+   import { ArrayStChild } from 'dynamic_module';
 
    @Entry
    @Component
@@ -166,7 +175,7 @@ project/
            .onClick((event: ClickEvent) => {
              this.data = ['strawberry', 'blueberry'];
            })
-         Child({ data: this.data })
+         ArrayStChild({ data: this.data })
        }
      }
    }
@@ -183,25 +192,26 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets   # 父组件定义
+│                   └── StaDynBuiltinArrayEs.ets   # 父组件定义
 │
-└── dynamic_library/                # ArkTS-Dyn子模块
+└── dynamic_module/                # ArkTS-Dyn子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets  # 子组件定义
+                    └── EsPage.ets  # 子组件定义
 ```
 
 步骤：
 
-1. 创建ArkTS-Dyn子模块`dynamic_library`，定义接收`Array`类型的组件。
+1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`Array`类型的组件。
 
+   <!-- @[StaDynBuiltinArrayEsMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/EsPage.ets) -->
    ```TypeScript
-   // dynamic_library/src/main/ets/components/MainPage.ets
+   // dynamic_module/src/main/ets/components/EsPage.ets
 
    @Component
-   export struct Child {
+   export struct ArrayEsChild {
      @Link data: Array<string>;
 
      build() {
@@ -225,9 +235,10 @@ project/
    }
    ```
 
+   <!-- @[StaDynBuiltinArrayEsDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
    ```TypeScript
-   // dynamic_library/Index.ets
-   export { Child, dynCreateArray } from './src/main/ets/components/MainPage';
+   // dynamic_module/Index.ets
+   export { ArrayEsChild, dynCreateArray } from './src/main/ets/components/EsPage';
    ```
 
 2. 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
@@ -236,20 +247,20 @@ project/
    // entry/oh-package.json5
    {
      "dependencies": {
-       "dynamic_library": "file:../dynamic_library"
+       "dynamic_module": "file:../dynamic_module"
      }
    }
    ```
 
 3. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
+   <!-- @[StaDynBuiltinArrayEs](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinArrayEs.ets) -->
    ```TypeScript
-   'use static';
-   // entry/src/main/ets/pages/Index.ets
+   // entry/src/main/ets/pages/StaDynBuiltinArrayEs.ets
 
    import { ClickEvent, Entry, Column, Button, Component, Text, State } from '@kit.ArkUI';
    import es from '@ohos.lang.interop';
-   import { Child, dynCreateArray } from 'dynamic_library';
+   import { ArrayEsChild, dynCreateArray } from 'dynamic_module';
 
    @Entry
    @Component
@@ -267,7 +278,7 @@ project/
            .onClick((event: ClickEvent) => {
              this.data = dynCreateArray();
            })
-         Child({ data: this.data })
+         ArrayEsChild({ data: this.data })
        }
      }
    }
@@ -561,28 +572,29 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets   # 父组件定义
+│                   └── StaDynBuiltinMapSt.ets   # 父组件定义
 │
-└── dynamic_library/                # ArkTS-Dyn子模块
+└── dynamic_module/                # ArkTS-Dyn子模块
     ├── config.json                 # 配置文件（新增）
     ├── build-profile.json5         # 需添加arkOptions配置
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets  # 子组件定义
+                    └── MapStPage.ets  # 子组件定义
 ```
 
 步骤：
 
-1. 创建ArkTS-Dyn子模块`dynamic_library`，定义接收`st.Map`类型的组件。
+1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`st.Map`类型的组件。
 
+   <!-- @[StaDynBuiltinMapStMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/MapStPage.ets) -->
    ```TypeScript
-   // dynamic_library/src/main/ets/components/MainPage.ets
+   // dynamic_module/src/main/ets/components/MapStPage.ets
    import st, { STValue } from 'static.@ohos.lang.interop';
 
    @Component
-   export struct Child {
+   export struct MapStChild {
      @Link data: st.Map<string, number>;
 
      build() {
@@ -601,12 +613,13 @@ project/
    }
    ```
 
+   <!-- @[StaDynBuiltinMapStDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
    ```TypeScript
-   // dynamic_library/Index.ets
-   export { Child } from './src/main/ets/components/MainPage';
+   // dynamic_module/Index.ets
+   export { MapStChild } from './src/main/ets/components/MapStPage';
    ```
 
-2. 在子模块`dynamic_library`根目录下创建`config.json`文件，用于配置`st`和`STValue`的导入别名。
+2. 在子模块`dynamic_module`根目录下创建`config.json`文件，用于配置`st`和`STValue`的导入别名。
 
    ```json5
    {
@@ -624,7 +637,7 @@ project/
 3. 在子模块的`build-profile.json5`的`buildOption`字段中添加`arkOptions`配置，引用`config.json`。
 
    ```json5
-   // dynamic_library/build-profile.json5
+   // dynamic_module/build-profile.json5
    {
      // ...,
      "buildOption": {
@@ -643,19 +656,19 @@ project/
    // entry/oh-package.json5
    {
      "dependencies": {
-       "dynamic_library": "file:../dynamic_library"
+       "dynamic_module": "file:../dynamic_module"
      }
    }
    ```
 
 5. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
+   <!-- @[StaDynBuiltinMapSt](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinMapSt.ets) -->
    ```TypeScript
-   'use static';
-   // entry/src/main/ets/pages/Index.ets
+   // entry/src/main/ets/pages/StaDynBuiltinMapSt.ets
 
    import { ClickEvent, Entry, Column, Button, Component, Text, State } from '@kit.ArkUI';
-   import { Child } from 'dynamic_library';
+   import { MapStChild } from 'dynamic_module';
 
    @Entry
    @Component
@@ -673,7 +686,7 @@ project/
            .onClick((event: ClickEvent) => {
              this.data = new Map<string, number>([['strawberry', 4], ['blueberry', 5]]);
            })
-         Child({ data: this.data })
+         MapStChild({ data: this.data })
        }
      }
    }
@@ -690,25 +703,26 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets   # 父组件定义
+│                   └── StaDynBuiltinMapEs.ets   # 父组件定义
 │
-└── dynamic_library/                # ArkTS-Dyn子模块
+└── dynamic_module/                # ArkTS-Dyn子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets  # 子组件定义
+                    └── EsPage.ets  # 子组件定义
 ```
 
 步骤：
 
-1. 创建ArkTS-Dyn子模块`dynamic_library`，定义接收`Map`类型的组件。
+1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`Map`类型的组件。
 
+   <!-- @[StaDynBuiltinMapEsMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/EsPage.ets) -->
    ```TypeScript
-   // dynamic_library/src/main/ets/components/MainPage.ets
+   // dynamic_module/src/main/ets/components/EsPage.ets
 
    @Component
-   export struct Child {
+   export struct MapEsChild {
      @Link data: Map<string, number>;
 
      build() {
@@ -734,9 +748,10 @@ project/
    }
    ```
 
+   <!-- @[StaDynBuiltinMapEsDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
    ```TypeScript
-   // dynamic_library/Index.ets
-   export { Child, dynCreateMap } from './src/main/ets/components/MainPage';
+   // dynamic_module/Index.ets
+   export { MapEsChild, dynCreateMap } from './src/main/ets/components/EsPage';
    ```
 
 2. 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
@@ -745,20 +760,20 @@ project/
    // entry/oh-package.json5
    {
      "dependencies": {
-       "dynamic_library": "file:../dynamic_library"
+       "dynamic_module": "file:../dynamic_module"
      }
    }
    ```
 
 3. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
+   <!-- @[StaDynBuiltinMapEs](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinMapEs.ets) -->
    ```TypeScript
-   'use static';
-   // entry/src/main/ets/pages/Index.ets
+   // entry/src/main/ets/pages/StaDynBuiltinMapEs.ets
 
    import { ClickEvent, Entry, Column, Button, Component, Text, ForEach, State } from '@kit.ArkUI';
    import es from '@ohos.lang.interop';
-   import { Child, dynCreateMap } from 'dynamic_library';
+   import { MapEsChild, dynCreateMap } from 'dynamic_module';
 
    @Entry
    @Component
@@ -785,7 +800,7 @@ project/
            .onClick((event: ClickEvent) => {
              this.data = dynCreateMap();
            })
-         Child({ data: this.data })
+         MapEsChild({ data: this.data })
        }
      }
    }
@@ -1091,28 +1106,29 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets   # 父组件定义
+│                   └── StaDynBuiltinSetSt.ets   # 父组件定义
 │
-└── dynamic_library/                # ArkTS-Dyn子模块
+└── dynamic_module/                # ArkTS-Dyn子模块
     ├── config.json                 # 配置文件（新增）
     ├── build-profile.json5         # 需添加arkOptions配置
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets  # 子组件定义
+                    └── SetStPage.ets  # 子组件定义
 ```
 
 步骤：
 
-1. 创建ArkTS-Dyn子模块`dynamic_library`，定义接收`st.Set`类型的组件。
+1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`st.Set`类型的组件。
 
+   <!-- @[StaDynBuiltinSetStMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/SetStPage.ets) -->
    ```TypeScript
-   // dynamic_library/src/main/ets/components/MainPage.ets
+   // dynamic_module/src/main/ets/components/SetStPage.ets
    import st, { STValue } from 'static.@ohos.lang.interop';
 
    @Component
-   export struct Child {
+   export struct SetStChild {
      @Link data: st.Set<string>;
 
      build() {
@@ -1131,12 +1147,13 @@ project/
    }
    ```
 
+   <!-- @[StaDynBuiltinSetStDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
    ```TypeScript
-   // dynamic_library/Index.ets
-   export { Child } from './src/main/ets/components/MainPage';
+   // dynamic_module/Index.ets
+   export { SetStChild } from './src/main/ets/components/SetStPage';
    ```
 
-2. 在子模块`dynamic_library`根目录下创建`config.json`文件，用于配置`st`和`STValue`的导入别名。
+2. 在子模块`dynamic_module`根目录下创建`config.json`文件，用于配置`st`和`STValue`的导入别名。
 
    ```json5
    {
@@ -1154,7 +1171,7 @@ project/
 3. 在子模块的`build-profile.json5`的`buildOption`字段中添加`arkOptions`配置，引用`config.json`。
 
    ```json5
-   // dynamic_library/build-profile.json5
+   // dynamic_module/build-profile.json5
    {
      // ...,
      "buildOption": {
@@ -1173,19 +1190,20 @@ project/
    // entry/oh-package.json5
    {
      "dependencies": {
-       "dynamic_library": "file:../dynamic_library"
+       "dynamic_module": "file:../dynamic_module"
      }
    }
    ```
 
 5. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
+   <!-- @[StaDynBuiltinSetSt](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinSetSt.ets) -->
+  
    ```TypeScript
-   'use static';
-   // entry/src/main/ets/pages/Index.ets
+   // entry/src/main/ets/pages/StaDynBuiltinSetSt.ets
 
    import { ClickEvent, Entry, Column, Button, Component, Text, State } from '@kit.ArkUI';
-   import { Child } from 'dynamic_library';
+   import { SetStChild } from 'dynamic_module';
 
    @Entry
    @Component
@@ -1203,7 +1221,7 @@ project/
            .onClick((event: ClickEvent) => {
              this.data = new Set<string>(['strawberry', 'blueberry']);
            })
-         Child({ data: this.data })
+         SetStChild({ data: this.data })
        }
      }
    }
@@ -1221,25 +1239,26 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets   # 父组件定义
+│                   └── StaDynBuiltinSetEs.ets   # 父组件定义
 │
-└── dynamic_library/                # ArkTS-Dyn子模块
+└── dynamic_module/                # ArkTS-Dyn子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets  # 子组件定义
+                    └── EsPage.ets  # 子组件定义
 ```
 
 步骤：
 
-1. 创建ArkTS-Dyn子模块`dynamic_library`，定义接收`Set`类型的组件。
+1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`Set`类型的组件。
 
+   <!-- @[StaDynBuiltinSetEsMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/EsPage.ets) -->
    ```TypeScript
-   // dynamic_library/src/main/ets/components/MainPage.ets
+   // dynamic_module/src/main/ets/components/EsPage.ets
 
    @Component
-   export struct Child {
+   export struct SetEsChild {
      @Link data: Set<string>;
 
      build() {
@@ -1265,9 +1284,10 @@ project/
    }
    ```
 
+   <!-- @[StaDynBuiltinSetEsDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
    ```TypeScript
-   // dynamic_library/Index.ets
-   export { Child, dynCreateSet } from './src/main/ets/components/MainPage';
+   // dynamic_module/Index.ets
+   export { SetEsChild, dynCreateSet } from './src/main/ets/components/EsPage';
    ```
 
 2. 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
@@ -1276,20 +1296,20 @@ project/
    // entry/oh-package.json5
    {
      "dependencies": {
-       "dynamic_library": "file:../dynamic_library"
+       "dynamic_module": "file:../dynamic_module"
      }
    }
    ```
 
 3. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
+   <!-- @[StaDynBuiltinSetEs](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinSetEs.ets) -->
    ```TypeScript
-   'use static';
-   // entry/src/main/ets/pages/Index.ets
+   // entry/src/main/ets/pages/StaDynBuiltinSetEs.ets
 
    import { ClickEvent, Entry, Column, Button, Component, Text, State } from '@kit.ArkUI';
    import es from '@ohos.lang.interop';
-   import { Child, dynCreateSet } from 'dynamic_library';
+   import { SetEsChild, dynCreateSet } from 'dynamic_module';
 
    @Entry
    @Component
@@ -1316,7 +1336,7 @@ project/
            .onClick((event: ClickEvent) => {
              this.data = dynCreateSet();
            })
-         Child({ data: this.data })
+         SetEsChild({ data: this.data })
        }
      }
    }

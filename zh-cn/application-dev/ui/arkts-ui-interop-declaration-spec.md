@@ -614,16 +614,16 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets     # 调用ArkTS-Dyn V1自定义组件
+│                   └── StaDynDeclSpecV1.ets     # 调用ArkTS-Dyn V1自定义组件
 │
-└── dynamic_library/                   # ArkTS-Dyn子模块
+└── dynamic_module/                   # ArkTS-Dyn子模块
     ├── build/
     │   └── default/
-    │        └── intermediates/    
+    │        └── intermediates/
     │           └── declgen/
     │               └── default/
     │                   └── declgenV1/
-    │                       └── dynamic_library/
+    │                       └── dynamic_module/
     │                           └── src/
     │                               └── main/
     │                                   └── ets/
@@ -639,10 +639,12 @@ project/
 
 下面的代码示例展示了在ArkTS-Sta中调用ArkTS-Dyn自定义组件并使用状态管理V1装饰器的场景下，修改声明文件的规格。
 
-- 创建ArkTS-Dyn子模块`dynamic_library`，在`dynamic_library/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
+
+<!-- @[StaDynDeclSpecV1MainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
 ```TypeScript
-// dynamic_library/src/main/ets/components/MainPage.ets
+// dynamic_module/src/main/ets/components/MainPage.ets
 
 @Observed
 export class Person{
@@ -652,7 +654,7 @@ export class Person{
 
 // 状态管理V1装饰器
 @Component
-export struct Child {
+export struct ChildV1 {
   @State stateVar: string = 'stateVar';
   @Prop propVar: string = 'propVar';
   @Link linkVar: string;
@@ -684,24 +686,26 @@ export struct Child {
 }
 ```
 
-```TypeScript
-// dynamic_library/index.ets
+<!-- @[StaDynDeclSpecV1DynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/dynamic_module/Index.ets) -->
 
-export { Child, Person } from './src/main/ets/components/MainPage';
+```TypeScript
+// dynamic_module/Index.ets
+
+export { ChildV1, Person } from './src/main/ets/components/MainPage';
 ```
 
-- 手动修改`dynamic_library/src/main/ets/components/MainPage.ets`对应的声明文件，路径为`dynamic_library/build/default/intermediates/declgen/default/declgenV2/dynamic_library/src/main/ets/components/MainPage.d.ets`。
+- 手动修改`dynamic_module/src/main/ets/components/MainPage.ets`对应的声明文件，路径为`dynamic_module/build/default/intermediates/declgen/default/declgenV2/dynamic_module/src/main/ets/components/MainPage.d.ets`。
 
 ```TypeScript
 'use static';
-// dynamic_library/build/default/intermediates/declgen/default/declgenV2/dynamic_library/src/main/ets/components/MainPage.d.ets
+// dynamic_module/build/default/intermediates/declgen/default/declgenV2/dynamic_module/src/main/ets/components/MainPage.d.ets
 
 // 添加对应import语句
 import { compatibleComponent, getCompatibleState, transferCompatibleBuilder, transferCompatibleUpdatableBuilder } from 'arkui.component.interop';
 import { State, Prop, Link, Provide, Consume, LocalStorageLink, LocalStorageProp, StorageLink, StorageProp, ObjectLink, Observed, Track, Watch } from '@ohos.arkui.stateManagement';
 import { Component } from '@ohos.arkui.component';
 @Component
-export declare struct Child {
+export declare struct ChildV1 {
     @State
     stateVar: string;
     @Prop
@@ -742,19 +746,19 @@ export declare class Person {
 // entry/oh-package.json5
 
 "dependencies": {
-  "dynamic_library": "file:../dynamic_library"
+  "dynamic_module": "file:../dynamic_module"
 }
 ```
 
 - 在ArkTS-Sta主模块`entry`中引入ArkTS-Dyn组件。
 
-```TypeScript
-'use static';
+<!-- @[StaDynDeclSpecV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/entry/src/main/ets/pages/StaDynDeclSpecV1.ets) -->
 
-// entry/src/main/ets/pages/Index.ets
+```TypeScript
+// entry/src/main/ets/pages/StaDynDeclSpecV1.ets
 import { Entry, Column, Component } from '@ohos.arkui.component';
 import { State, Provide } from '@ohos.arkui.stateManagement';
-import { Child, Person } from 'dynamic_library';
+import { ChildV1, Person } from 'dynamic_module';
 
 @Entry
 @Component
@@ -765,7 +769,7 @@ struct Parent {
 
   build() {
     Column() {
-      Child({
+      ChildV1({
         linkVar: this.stateVar,
         person: this.person
       })
@@ -790,14 +794,14 @@ project/
 │               └── pages/
 │                   └── Index.ets     # 调用ArkTS-Dyn V2自定义组件
 │
-└── dynamic_library/                   # ArkTS-Dyn子模块
+└── dynamic_module/                   # ArkTS-Dyn子模块
     ├── build/
     │   └── default/
-    │        └── intermediates/    
+    │        └── intermediates/
     │           └── declgen/
     │               └── default/
     │                   └── declgenV1/
-    │                       └── dynamic_library/
+    │                       └── dynamic_module/
     │                           └── src/
     │                               └── main/
     │                                   └── ets/
@@ -813,10 +817,10 @@ project/
 
 下面的代码示例展示了在ArkTS-Sta中调用ArkTS-Dyn自定义组件并使用状态管理V2装饰器的场景下，修改声明文件的规格。
 
-- 创建ArkTS-Dyn子模块`dynamic_library`，在`dynamic_library/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
-// dynamic_library/src/main/ets/components/MainPage.ets
+// dynamic_module/src/main/ets/components/MainPage.ets
 
 @ObservedV2
 export class Person{
@@ -859,16 +863,16 @@ export struct ChildV2 {
 ```
 
 ```TypeScript
-// dynamic_library/index.ets
+// dynamic_module/index.ets
 
 export { ChildV2 } from './src/main/ets/components/MainPage';
 ```
 
-- 手动修改`dynamic_library/src/main/ets/components/MainPage.ets`对应的声明文件，路径为`dynamic_library/build/default/intermediates/declgen/default/declgenV2/dynamic_library/src/main/ets/components/MainPage.d.ets`。
+- 手动修改`dynamic_module/src/main/ets/components/MainPage.ets`对应的声明文件，路径为`dynamic_module/build/default/intermediates/declgen/default/declgenV2/dynamic_module/src/main/ets/components/MainPage.d.ets`。
 
 ```TypeScript
 'use static';
-// dynamic_library/build/default/intermediates/declgen/default/declgenV2/dynamic_library/src/main/ets/components/MainPage.d.ets
+// dynamic_module/build/default/intermediates/declgen/default/declgenV2/dynamic_module/src/main/ets/components/MainPage.d.ets
 
 // 添加对应import语句
 import { compatibleComponent, getCompatibleState, transferCompatibleBuilder, transferCompatibleUpdatableBuilder } from 'arkui.component.interop';
@@ -911,7 +915,7 @@ export declare class Person {
 // entry/oh-package.json5
 
 "dependencies": {
-  "dynamic_library": "file:../dynamic_library"
+  "dynamic_module": "file:../dynamic_module"
 }
 ```
 
@@ -923,7 +927,7 @@ export declare class Person {
 // entry/src/main/ets/pages/Index.ets
 import { Entry, Column, ComponentV2 } from '@ohos.arkui.component';
 import { Provider } from '@ohos.arkui.stateManagement';
-import { ChildV2 } from 'dynamic_library';
+import { ChildV2 } from 'dynamic_module';
 
 @Entry
 @ComponentV2
@@ -950,16 +954,16 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets     # 调用ArkTS-Dyn @Builder等
+│                   └── StaDynDeclSpecBuilder.ets     # 调用ArkTS-Dyn @Builder等
 │
-└── dynamic_library/                   # ArkTS-Dyn子模块
+└── dynamic_module/                   # ArkTS-Dyn子模块
     ├── build/
     │   └── default/
-    │        └── intermediates/    
+    │        └── intermediates/
     │           └── declgen/
     │               └── default/
     │                   └── declgenV1/
-    │                       └── dynamic_library/
+    │                       └── dynamic_module/
     │                           └── src/
     │                               └── main/
     │                                   └── ets/
@@ -970,18 +974,20 @@ project/
             └── ets/
                 └── components/
                     └── MainPage.ets  # ArkTS-Dyn @Builder等
-            
+
 ```
 
 下面的代码示例展示了在ArkTS-Sta中调用ArkTS-Dyn自定义组件并使用\@Builder，WrappedBuilder，\@BuilderParam的场景下，修改声明文件的规格。
 
-- 创建ArkTS-Dyn子模块`dynamic_library`，在`dynamic_library/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
+
+<!-- @[StaDynDeclSpecBuilderMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
 ```TypeScript
-// dynamic_library/src/main/ets/components/MainPage.ets
+// dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
-export struct Child {
+export struct ChildBuilder {
   @Builder
   myText(content: string, num: number) {
     Text('myText')
@@ -1003,23 +1009,25 @@ export function staticBuilder(value: string, size: number) {
 export const staticWrappedBuilder: WrappedBuilder<[string, number]> = wrapBuilder(staticBuilder);
 ```
 
-```TypeScript
-// dynamic_library/index.ets
+<!-- @[StaDynDeclSpecBuilderDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/dynamic_module/Index.ets) -->
 
-export { Child, staticBuilder, staticWrappedBuilder } from './src/main/ets/components/MainPage';
+```TypeScript
+// dynamic_module/Index.ets
+
+export { ChildBuilder, staticBuilder, staticWrappedBuilder } from './src/main/ets/components/MainPage';
 ```
 
-- 手动修改`dynamic_library/src/main/ets/components/MainPage.ets`对应的声明文件，路径为`dynamic_library/build/default/intermediates/declgen/default/declgenV2/dynamic_library/src/main/ets/components/MainPage.d.ets`。
+- 手动修改`dynamic_module/src/main/ets/components/MainPage.ets`对应的声明文件，路径为`dynamic_module/build/default/intermediates/declgen/default/declgenV2/dynamic_module/src/main/ets/components/MainPage.d.ets`。
 
 ```TypeScript
 'use static';
-// dynamic_library/build/default/intermediates/declgen/default/declgenV2/dynamic_library/src/main/ets/components/MainPage.d.ets
+// dynamic_module/build/default/intermediates/declgen/default/declgenV2/dynamic_module/src/main/ets/components/MainPage.d.ets
 
 // 添加对应import语句
 import { compatibleComponent, getCompatibleState, transferCompatibleBuilder, transferCompatibleUpdatableBuilder } from 'arkui.component.interop';
 import { Component, Builder, BuilderParam, WrappedBuilder } from '@ohos.arkui.component';
 @Component
-export declare struct Child {
+export declare struct ChildBuilder {
     @Builder
     myText(content: string, num: number): void;
     @BuilderParam
@@ -1037,19 +1045,19 @@ export declare const staticWrappedBuilder: WrappedBuilder<Array<Any>>;
 // entry/oh-package.json5
 
 "dependencies": {
-  "dynamic_library": "file:../dynamic_library"
+  "dynamic_module": "file:../dynamic_module"
 }
 ```
 
 - 在ArkTS-Sta主模块`entry`中调用ArkTS-Dyn \@Builder，WrappedBuilder，以及传递\@BuilderParam。
 
-```TypeScript
-'use static';
+<!-- @[StaDynDeclSpecBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/entry/src/main/ets/pages/StaDynDeclSpecBuilder.ets) -->
 
-// entry/src/main/ets/pages/Index.ets
+```TypeScript
+// entry/src/main/ets/pages/StaDynDeclSpecBuilder.ets
 import { Entry, Column, Component, Text, Builder, compatibleWrappedBuilder } from '@ohos.arkui.component';
 import { Provider } from '@ohos.arkui.stateManagement';
-import { Child, staticBuilder, staticWrappedBuilder } from 'dynamic_library';
+import { ChildBuilder, staticBuilder, staticWrappedBuilder } from 'dynamic_module';
 
 @Entry
 @Component
@@ -1062,7 +1070,7 @@ struct Parent {
 
   build() {
     Column() {
-      Child({ customBuilderParam: this.parentText })
+      ChildBuilder({ customBuilderParam: this.parentText })
       staticBuilder('dynamicBuilder', 20)
       compatibleWrappedBuilder(staticWrappedBuilder, ESValue.wrap('dynamicWrappedBuilder'), ESValue.wrap(20))
     }
