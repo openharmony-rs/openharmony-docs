@@ -1,4 +1,4 @@
-﻿# 签名/验签(ArkTS) 
+# 签名/验签(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
