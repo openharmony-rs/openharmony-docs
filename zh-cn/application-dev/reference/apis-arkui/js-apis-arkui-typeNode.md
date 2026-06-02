@@ -38,9 +38,66 @@ Text类型的FrameNode节点类型。不允许添加子组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[Text<sup>23+</sup>](#text23)。
+
 | 类型                                               | 说明                                                         |
 | -------------------------------------------------- | ------------------------------------------------------------ |
 | TypedFrameNode&lt;TextInterface, TextAttribute&gt; | 提供Text类型FrameNode节点。<br/> TextInterface用于[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode12)的[initialize](./js-apis-arkui-frameNode.md#属性)接口的入参，入参为Text组件的构造函数类型。 <br/> TextAttribute用于TypedFrameNode的[attribute](./js-apis-arkui-frameNode.md#属性)接口的返回值，返回Text组件的属性设置对象。<br/> TextInterface表示Text的[接口](./arkui-ts/ts-basic-components-text.md#接口)，TextAttribute表示Text的[属性](./arkui-ts/ts-basic-components-text.md#属性)。 |
+
+## Text<sup>23+</sup>
+
+type Text = TextFrameNode
+
+Text类型的FrameNode节点类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[Text](#text)。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [TextFrameNode](#textframenode23) | Text类型FrameNode节点。 |
+
+## TextFrameNode<sup>23+</sup>
+
+TextFrameNode继承自[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode23)，用于声明[Text](./arkui-ts/ts-basic-components-text.md)类型的FrameNode。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+### initialize<sup>23+</sup>
+
+abstract initialize(content?: string | Resource, value?: TextOptions): TextAttribute
+
+初始化Text组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| content | string&nbsp;\|&nbsp;[Resource](./arkui-ts/ts-types.md#resource) | 否   | 文本内容。<br/>默认值：''。 |
+| value | [TextOptions](./arkui-ts/ts-basic-components-text.md#textoptions11) | 否   | Text组件的初始化选项。默认值为空。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [TextAttribute](./arkui-ts/ts-basic-components-text.md#属性) | 返回Text组件的属性设置对象。 |
 
 ### createNode('Text')
 
@@ -51,6 +108,10 @@ createNode(context: UIContext, nodeType: 'Text'): Text
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[createTextNode](#createtextnode23)。
 
 **参数：**
 
@@ -101,6 +162,41 @@ struct FrameNodeTypeTest {
 }
 ```
 
+### createTextNode<sup>23+</sup>
+
+createTextNode(context: UIContext, options?: FrameNodeOptions): Text
+
+创建Text类型的FrameNode节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[createNode('Text')](#createnodetext)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+| options | [FrameNodeOptions](#framenodeoptions24) | 否   | 创建节点的额外选项。默认值继承[FrameNodeOptions](#framenodeoptions24)。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Text](#text) | Text类型的FrameNode节点。 |
+
+**示例：**
+
+<!--code_no_check-->
+
+```ts
+typeNode.createTextNode(uiContext);
+```
+
 ### getAttribute('Text')<sup>20+</sup>
 
 getAttribute(node: FrameNode, nodeType: 'Text'): TextAttribute | undefined
@@ -110,6 +206,12 @@ getAttribute(node: FrameNode, nodeType: 'Text'): TextAttribute | undefined
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[getTextAttribute](#gettextattribute24)。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -165,6 +267,32 @@ struct FrameNodeTypeTest {
 }
 ```
 
+### getTextAttribute<sup>24+</sup>
+
+getTextAttribute(node: FrameNode): TextAttribute | undefined
+
+获取Text节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[getAttribute('Text')](#getattributetext20)。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 获取属性时所需的目标节点。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [TextAttribute](./arkui-ts/ts-basic-components-text.md#属性)&nbsp;\|&nbsp;undefined | Text节点类型的属性，若获取失败，则返回undefined。 |
+
 ### bindController('Text')<sup>20+</sup>
 
 bindController(node: FrameNode, controller: TextController, nodeType: 'Text'): void
@@ -174,6 +302,12 @@ bindController(node: FrameNode, controller: TextController, nodeType: 'Text'): v
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[bindTextController](#bindtextcontroller24)。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -238,6 +372,38 @@ struct FrameNodeTypeTest {
   }
 }
 ```
+
+### bindTextController<sup>24+</sup>
+
+bindTextController(node: FrameNode, controller: TextController): void
+
+将文本控制器[TextController](arkui-ts/ts-basic-components-text.md#textcontroller11)绑定到[Text](#text)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[bindController('Text')](#bindcontrollertext20)。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 绑定文本控制器的目标节点。 |
+| controller | [TextController](arkui-ts/ts-basic-components-text.md#textcontroller11) | 是   | 文本控制器。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
+| 100021   | The FrameNode is not modifiable. |
 
 ## Column
 
@@ -3881,9 +4047,64 @@ TextInput类型的FrameNode节点类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[TextInput<sup>23+</sup>](#textinput23)。
+
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | TypedFrameNode&lt;TextInputInterface, TextInputAttribute&gt; | 提供TextInput类型FrameNode节点。<br/> TextInputInterface用于[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode12)的[initialize](./js-apis-arkui-frameNode.md#属性)接口的入参，入参为TextInput组件的构造函数类型。 <br/> TextInputAttribute用于TypedFrameNode的[attribute](./js-apis-arkui-frameNode.md#属性)接口的返回值，返回TextInput组件的属性设置对象。<br/> TextInputInterface表示TextInput的[接口](./arkui-ts/ts-basic-components-textinput.md#接口)，TextInputAttribute表示TextInput的[属性](./arkui-ts/ts-basic-components-textinput.md#属性)。 |
+
+## TextInput<sup>23+</sup>
+type TextInput = TextInputFrameNode
+
+TextInput类型的FrameNode节点类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[TextInput](#textinput)。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [TextInputFrameNode](#textinputframenode23) | TextInput类型FrameNode节点。 |
+
+## TextInputFrameNode<sup>23+</sup>
+
+TextInputFrameNode继承自[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode23)，用于声明[TextInput](./arkui-ts/ts-basic-components-textinput.md)类型的FrameNode。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+### initialize<sup>23+</sup>
+
+abstract initialize(value?: TextInputOptions): TextInputAttribute
+
+初始化TextInput组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| value | [TextInputOptions](./arkui-ts/ts-basic-components-textinput.md#textinputoptions对象说明) | 否   | TextInput组件的初始化选项。默认值为空。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [TextInputAttribute](./arkui-ts/ts-basic-components-textinput.md#属性) | 返回TextInput组件的属性设置对象。 |
 
 ### createNode('TextInput')
 
@@ -3894,6 +4115,10 @@ createNode(context: UIContext, nodeType: 'TextInput'): TextInput
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[createTextInputNode](#createtextinputnode23)。
 
 **参数：**
 
@@ -3943,6 +4168,41 @@ struct FrameNodeTypeTest {
 }
 ```
 
+### createTextInputNode<sup>23+</sup>
+
+createTextInputNode(context: UIContext, options?: FrameNodeOptions): TextInput
+
+创建TextInput类型的FrameNode节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[createNode('TextInput')](#createnodetextinput)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+| options | [FrameNodeOptions](#framenodeoptions24) | 否   | 创建节点的额外选项。默认值继承[FrameNodeOptions](#framenodeoptions24)。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [TextInput](#textinput) | TextInput类型的FrameNode节点。 |
+
+**示例：**
+
+<!--code_no_check-->
+
+```ts
+typeNode.createTextInputNode(uiContext);
+```
+
 ### getAttribute('TextInput')<sup>20+</sup>
 
 getAttribute(node: FrameNode, nodeType: 'TextInput'): TextInputAttribute | undefined
@@ -3952,6 +4212,12 @@ getAttribute(node: FrameNode, nodeType: 'TextInput'): TextInputAttribute | undef
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[getTextInputAttribute](#gettextinputattribute24)。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -4003,6 +4269,32 @@ struct FrameNodeTypeTest {
 }
 ```
 
+### getTextInputAttribute<sup>24+</sup>
+
+getTextInputAttribute(node: FrameNode): TextInputAttribute | undefined
+
+获取TextInput节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[getAttribute('TextInput')](#getattributetextinput20)。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 获取属性时所需的目标节点。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [TextInputAttribute](./arkui-ts/ts-basic-components-textinput.md#属性)&nbsp;\|&nbsp;undefined | TextInput节点类型的属性，若获取失败，则返回undefined。 |
+
 ### bindController('TextInput')<sup>20+</sup>
 bindController(node: FrameNode, controller: TextInputController, nodeType: 'TextInput'): void
 
@@ -4011,6 +4303,12 @@ bindController(node: FrameNode, controller: TextInputController, nodeType: 'Text
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[bindTextInputController](#bindtextinputcontroller24)。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -4068,6 +4366,36 @@ struct FrameNodeTypeTest {
   }
 }
 ```
+
+### bindTextInputController<sup>24+</sup>
+
+bindTextInputController(node: FrameNode, controller: TextInputController): void
+
+将输入框控制器[TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)绑定到[TextInput](#textinput)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[bindController('TextInput')](#bindcontrollertextinput20)。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 绑定输入框控制器的目标节点。 |
+| controller | [TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8) | 是   | 输入框控制器。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
+| 100021   | The FrameNode is not modifiable. |
 
 ## Button
 
@@ -6675,9 +7003,65 @@ Marquee类型的FrameNode节点类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[Marquee<sup>23+</sup>](#marquee23)。
+
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
 | TypedFrameNode&lt;MarqueeInterface, MarqueeAttribute&gt; | 提供Marquee类型FrameNode节点。<br/> MarqueeInterface用于[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode12)的[initialize](./js-apis-arkui-frameNode.md#属性)接口的入参，入参为Marquee组件的构造函数类型。 <br/> MarqueeAttribute用于TypedFrameNode的[attribute](./js-apis-arkui-frameNode.md#属性)接口的返回值，返回Marquee组件的属性设置对象。<br/> MarqueeInterface表示Marquee的[接口](./arkui-ts/ts-basic-components-marquee.md#接口)，MarqueeAttribute表示Marquee的[属性](./arkui-ts/ts-basic-components-marquee.md#属性)。 |
+
+## Marquee<sup>23+</sup>
+
+type Marquee = MarqueeFrameNode
+
+Marquee类型的FrameNode节点类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[Marquee](#marquee)。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [MarqueeFrameNode](#marqueeframenode23) | Marquee类型FrameNode节点。 |
+
+## MarqueeFrameNode<sup>23+</sup>
+
+MarqueeFrameNode继承自[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode23)，用于声明[Marquee](./arkui-ts/ts-basic-components-marquee.md)类型的FrameNode。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+### initialize<sup>23+</sup>
+
+abstract initialize(value?: MarqueeOptions): MarqueeAttribute
+
+初始化Marquee组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| value | [MarqueeOptions](./arkui-ts/ts-basic-components-marquee.md#marqueeoptions对象说明) | 否   | Marquee组件的初始化选项。默认值为空。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [MarqueeAttribute](./arkui-ts/ts-basic-components-marquee.md#属性) | 返回Marquee组件的属性设置对象。 |
 
 ### createNode('Marquee')<sup>14+</sup>
 
@@ -6688,6 +7072,12 @@ createNode(context: UIContext, nodeType: 'Marquee'): Marquee
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[createMarqueeNode](#creatmarqueenode23)。
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -6738,6 +7128,41 @@ struct FrameNodeTypeTest {
 }
 ```
 
+### createMarqueeNode<sup>23+</sup>
+
+createMarqueeNode(context: UIContext, options?: FrameNodeOptions): Marquee
+
+创建Marquee类型的FrameNode节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[createNode('Marquee')](#createnodemarquee)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+| options | [FrameNodeOptions](#framenodeoptions24) | 否   | 创建节点的额外选项。默认值继承[FrameNodeOptions](#framenodeoptions24)。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Marquee](#marquee) | Marquee类型的FrameNode节点。 |
+
+**示例：**
+
+<!--code_no_check-->
+
+```ts
+typeNode.createMarqueeNode(uiContext);
+```
+
 ## TextArea<sup>14+</sup>
 
 type TextArea = TypedFrameNode&lt;TextAreaInterface, TextAreaAttribute&gt;
@@ -6748,9 +7173,65 @@ TextArea类型的FrameNode节点类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[TextArea<sup>23+</sup>](#textarea23)。
+
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
 | TypedFrameNode&lt;TextAreaInterface, TextAreaAttribute&gt; | 提供TextArea类型FrameNode节点。<br/> TextAreaInterface用于[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode12)的[initialize](./js-apis-arkui-frameNode.md#属性)接口的入参，入参为TextArea组件的构造函数类型。 <br/> TextAreaAttribute用于TypedFrameNode的[attribute](./js-apis-arkui-frameNode.md#属性)接口的返回值，返回TextArea组件的属性设置对象。<br/> TextAreaInterface表示TextArea的[接口](./arkui-ts/ts-basic-components-textarea.md#接口)，TextAreaAttribute表示TextArea的[属性](./arkui-ts/ts-basic-components-textarea.md#属性)。 |
+
+## TextArea<sup>23+</sup>
+
+type TextArea = TextAreaFrameNode
+
+TextArea类型的FrameNode节点类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[TextArea](#textarea)。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [TextAreaFrameNode](#textareaframenode23) | TextArea类型FrameNode节点。 |
+
+## TextAreaFrameNode<sup>23+</sup>
+
+TextAreaFrameNode继承自[TypedFrameNode](./js-apis-arkui-frameNode.md#typedframenode23)，用于声明[TextArea](./arkui-ts/ts-basic-components-textarea.md)类型的FrameNode。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+### initialize<sup>23+</sup>
+
+abstract initialize(value?: TextAreaOptions): TextAreaAttribute
+
+初始化TextArea组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| value | [TextAreaOptions](./arkui-ts/ts-basic-components-textarea.md#textareaoptions对象说明) | 否   | TextArea组件的初始化选项。默认值为空。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [TextAreaAttribute](./arkui-ts/ts-basic-components-textarea.md#属性) | 返回TextArea组件的属性设置对象。 |
 
 ### createNode('TextArea')<sup>14+</sup>
 
@@ -6761,6 +7242,10 @@ createNode(context: UIContext, nodeType: 'TextArea'): TextArea
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[createTextAreaNode](#createtextareanode23)。
 
 **参数：**
 
@@ -6810,6 +7295,41 @@ struct FrameNodeTypeTest {
 }
 ```
 
+### createTextAreaNode<sup>23+</sup>
+
+createTextAreaNode(context: UIContext, options?: FrameNodeOptions): TextArea
+
+创建TextArea类型的FrameNode节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[createNode('TextArea')](#createnodetextarea)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+| options | [FrameNodeOptions](#framenodeoptions24) | 否   | 创建节点的额外选项。默认值继承[FrameNodeOptions](#framenodeoptions24)。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [TextArea](#textarea) | TextArea类型的FrameNode节点。 |
+
+**示例：**
+
+<!--code_no_check-->
+
+```ts
+typeNode.createTextAreaNode(uiContext);
+```
+
 ### getAttribute('TextArea')<sup>20+</sup>
 
 getAttribute(node: FrameNode, nodeType: 'TextArea'): TextAreaAttribute | undefined
@@ -6819,6 +7339,12 @@ getAttribute(node: FrameNode, nodeType: 'TextArea'): TextAreaAttribute | undefin
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[getTextAreaAttribute](#gettextareaattribute24)。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -6870,15 +7396,47 @@ struct FrameNodeTypeTest {
 }
 ```
 
+### getTextAreaAttribute<sup>24+</sup>
+
+getTextAreaAttribute(node: FrameNode): TextAreaAttribute | undefined
+
+获取TextArea节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[getAttribute('TextArea')](#getattributetextarea20)。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 获取属性时所需的目标节点。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [TextAreaAttribute](./arkui-ts/ts-basic-components-textarea.md#属性)&nbsp;\|&nbsp;undefined | TextArea节点类型的属性，若获取失败，则返回undefined。 |
+
 ### bindController('TextArea')<sup>20+</sup>
 
 bindController(node: FrameNode, controller: TextAreaController, nodeType: 'TextArea'): void
 
-将输入框控制器[TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8)绑定到[TextArea](#textarea14)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
+将输入框控制器[TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8)绑定到[TextArea](#textarea)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[bindTextAreaController](#bindtextarecontroller24)。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -6936,6 +7494,36 @@ struct FrameNodeTypeTest {
   }
 }
 ```
+
+### bindTextAreaController<sup>24+</sup>
+
+bindTextAreaController(node: FrameNode, controller: TextAreaController): void
+
+将输入框控制器[TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8)绑定到[TextArea](#textarea)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口从API版本26.0.0开始支持声明式方式创建的节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[bindController('TextArea')](#bindcontrollertextarea20)。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 绑定输入框控制器的目标节点。 |
+| controller | [TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8) | 是   | 输入框控制器。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
+| 100021   | The FrameNode is not modifiable. |
 
 ## SymbolGlyph<sup>14+</sup>
 

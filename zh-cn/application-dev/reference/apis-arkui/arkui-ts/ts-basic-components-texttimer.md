@@ -278,6 +278,10 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier&lt;TextTimerConfiguration&g
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
@@ -302,7 +306,7 @@ ArkTS-Sta: onTimer(event: TimerCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 

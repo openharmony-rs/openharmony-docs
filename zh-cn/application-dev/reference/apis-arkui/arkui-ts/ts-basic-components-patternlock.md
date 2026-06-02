@@ -463,6 +463,8 @@ setChallengeResult(result: PatternLockChallengeResult): void
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：** 
+
 | 名称   | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | result | [PatternLockChallengeResult](#patternlockchallengeresult11枚举说明) | 是   | 图案密码状态。包括正确和错误状态。 |
