@@ -3748,7 +3748,7 @@ struct StyledStringAppend {
 
 ### 示例32（设置文本尾部缩进）
 
-该示例通过[tailIndents](#tailIndents26)接口实现了文本尾部缩进的功能。
+该示例通过[tailIndents](#tailindents26)接口实现了文本尾部缩进的功能。
 
 从API版本26.0.0开始，通过tailIndents属性设置文本尾部缩进。
 
