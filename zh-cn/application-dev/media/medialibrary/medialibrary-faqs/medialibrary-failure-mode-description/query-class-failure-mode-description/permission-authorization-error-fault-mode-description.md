@@ -104,7 +104,7 @@
 ### 复现代码
 
 ```typescript
-const TAG = 'Case06_Permission';
+const TAG = 'Case_Permission';
 
 async trigger201Error(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -130,8 +130,12 @@ async trigger201Error(context: common.Context): Promise<void> {
 
 
 ```log
-E     Case06_Permission Error code: 201
-E     Case06_Permission Error message: Permission denied
+I     Case_Permission Test: query assets without read permission
+E     Case_Permission Error code: 201
+E     Case_Permission Error message: Permission denied
+// 申请权限后。
+I     Case_Permission Test: query assets without read permission
+I     Case_Permission Query success, count: 3
 ```
 
 ### 常见易错代码
