@@ -18,7 +18,9 @@
 
 ## getUIContext
 
-getUIContext(): UIContext
+ArkTS-Dyn: getUIContext(): UIContext
+
+ArkTS-Sta: getUIContext(): UIContext
 
 获取UIContext对象。
 
@@ -28,6 +30,8 @@ getUIContext(): UIContext
 
 **ArkTS-Dyn起始版本：** 11
 
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                      | 说明                    |
@@ -36,15 +40,23 @@ getUIContext(): UIContext
 
 ## UIContext
 
-type UIContext = UIContext
+ArkTS-Dyn: type UIContext = UIContext
+
+ArkTS-Sta: type UIContext = _UIContext
+
+UIContext实例对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| [UIContext](../arkts-apis-uicontext-uicontext.md) | 返回UIContext实例对象。 |
+| ArkTS-Dyn: [UIContext](../arkts-apis-uicontext-uicontext.md)<br/>ArkTS-Sta: _UIContext | 返回UIContext实例对象。 |
 
 **示例：**
 
@@ -73,6 +85,8 @@ getUniqueId(): number
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 12
 
