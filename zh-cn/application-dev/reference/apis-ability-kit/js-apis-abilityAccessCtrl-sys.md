@@ -276,6 +276,8 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 本接口仅支持撤销user_grant类型的权限，且不支持控制是否终止应用进程。若需要撤销user_grant或manual_settings类型权限，或需要控制撤销权限后是否终止应用进程，建议使用[revokePermission](#revokepermission21)。
 
+当权限状态从“已授权”变为“未授权”时，应用进程会被终止。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
@@ -864,6 +866,8 @@ atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags
 revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: number, killProcess?: boolean): Promise&lt;void&gt;
 
 撤销应用权限。调用成功后，应用失去该权限，无法访问相应的受保护资源。根据killProcess参数的值决定是否终止应用进程。使用Promise异步回调。
+
+当killProcess参数为true且权限状态从“已授权”变为“未授权”时，应用进程会被终止。
 
 **系统接口：** 此接口为系统接口。
 
