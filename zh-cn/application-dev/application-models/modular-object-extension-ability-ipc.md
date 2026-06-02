@@ -104,13 +104,15 @@ interface ICalculator {
 **icalculator.h**
 - `GetDescriptor()`返回接口描述符字符串。
 - `IpcCode`枚举为每个方法分配唯一命令码，从1001开始。
-- 仅声明接口，不包含实现。
 <!-- @[ICalculator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/icalculator.h) -->
-```cpp
+
+``` C
 class ICalculator {
 public:
     virtual ~ICalculator() = default;
     static const char* GetDescriptor() { return "OHOS.IPC.ICalculator"; }
+
+    virtual ErrCode WriteRemoteObject(OHIPCParcel* parcel) const = 0;
 
     enum class IpcCode : uint32_t {
         COMMAND_ADD = 1001,
@@ -124,6 +126,7 @@ public:
     virtual ErrCode GetVersion(std::string& result) = 0;
     virtual ErrCode GetTaiheVersion(std::string& result) = 0;
 };
+```
 ```
 
 **calculator_proxy.h**
