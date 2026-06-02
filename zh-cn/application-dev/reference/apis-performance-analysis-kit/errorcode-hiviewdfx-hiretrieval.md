@@ -45,4 +45,4 @@ Multi-instance applications not supported error. Possibly caused by invoking thi
 
 **处理步骤**
 
-请确认当前应用是否为多实例应用。若为多实例应用，请避免调用HiRetrieval相关接口，待后续版本支持后再使用。
+请确认当前应用是否为[多实例应用](../../quick-start/multiInstance.md)。若为[多实例应用](../../quick-start/multiInstance.md)，请避免调用HiRetrieval相关接口，待后续版本支持后再使用。
