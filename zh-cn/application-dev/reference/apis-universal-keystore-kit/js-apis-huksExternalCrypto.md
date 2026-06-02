@@ -95,7 +95,7 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
     - 参数格式错误时，返回[ERROR_PARAMETER_VALIDATION_FAILED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)。
     - 其余失败场景返回错误码[ERROR_GENERIC](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)，成功时返回0。
 
-**需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER。
+**需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -160,7 +160,7 @@ unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam
 
 注销指定的外部provider。使用Promise异步回调。
 
-**需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER。
+**需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -223,8 +223,6 @@ getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>
 
 获取PIN码认证状态。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -283,6 +281,8 @@ propertyId表示查询属性的ID信息，推荐使用GMT 0016-2023中定义的S
 - SKF_EnumContainer
 
 从API版本26.0.0开始，属性ID放开限制，支持自定义属性ID，由[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)实现方提供。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -356,6 +356,8 @@ clearUkeyPinAuthState(resourceId: string): Promise&lt;void&gt;
 清除指定资源ID的PIN码认证状态，清除后PIN认证状态变为HUKS_EXT_CRYPTO_PIN_NO_AUTH（未认证）。使用Promise异步回调。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -500,6 +502,8 @@ openResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&lt
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **参数：**
@@ -562,6 +566,8 @@ closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&l
 该接口会回调[onClearUkeyPinAuthState](js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonclearukeypinauthstate)清理该资源关联的PIN认证状态，以及会回调[onFinishSession](js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonfinishsession)清理该资源关联的会话handle。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 

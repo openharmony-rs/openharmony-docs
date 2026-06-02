@@ -44,7 +44,7 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 | HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL | 34800000 | 密钥扩展错误。可能的原因：<br>1. 输入参数无效。<br>2. 密钥扩展出现无法解决的错误状态。 |
 | HUKS_CRYPTO_EXTENSION_ERR_UKEY_NOT_EXIST | 34800001 | UKey不存在。可能的原因：<br>1. UKey已被移除。<br>2. 密钥扩展陷入错误的UKey状态。 |
 | HUKS_CRYPTO_EXTENSION_ERR_UKEY_DRIVER_FAIL | 34800002 | UKey驱动出现未知错误。 |
-| HUKS_CRYPTO_EXTENSION_ERR_PIN_NO_AUTH | 34800003 | UKey PIN码未认证，需要先通过[onAuthUkeyPin](#cryptoextensionabilityonauthukeypin)认证Ukey PIN码。 |
+| HUKS_CRYPTO_EXTENSION_ERR_PIN_NO_AUTH | 34800003 | UKey PIN码未认证，需要先通过[onAuthUkeyPin](#cryptoextensionabilityonauthukeypin)认证UKey PIN码。 |
 | HUKS_CRYPTO_EXTENSION_ERR_HANDLE_NOT_EXIST | 34800004 | 句柄不存在。可能的原因：<br>1. 句柄无效。<br>2. HUKS服务和密钥扩展的状态不一致。由于异常情况，HUKS服务持有的句柄未能释放。 |
 | HUKS_CRYPTO_EXTENSION_ERR_HANDLE_UNAVAILABLE | 34800005 | 句柄不可用。可能的原因：<br>密钥扩展和UKey的状态不一致。 |
 | HUKS_CRYPTO_EXTENSION_ERR_PIN_INCORRECT | 34800006 | UKey PIN码错误，需要检查输入的PIN码。 |
@@ -70,16 +70,22 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 
 | 名称 | 类型  | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ------ |
-| resultCode  | int | 否   | 否   | 返回值的错误码。 |
+| resultCode  | number | 否   | 否   | 返回值的错误码。 |
 | handle  | string | 否   | 是   | 资源句柄。 |
-| authState  | int | 否   | 是   | 认证状态。 |
-| retryCount  | int | 否   | 是   | 重试次数，表示PIN码认证剩余可用次数，为0时表示无剩余重试机会。 |
+| authState  | number | 否   | 是   | 认证状态。 |
+| retryCount  | number | 否   | 是   | 重试次数，表示PIN码认证剩余可用次数，为0时表示无剩余重试机会。 |
 | certs  | Array<[HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo)> | 否   | 是   | 证书。 |
 | property  | Array<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 否   | 是   | 属性。 |
 | outData  | Uint8Array | 否   | 是   | 返回的数据。 |
 | resourceId | string | 否 | 是 | 返回的资源ID。默认值为空。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CryptoExtensionAbility
+
+密钥扩展能力类，提供外部密钥管理扩展所需接口定义，包括打开/关闭资源、PIN码认证管理、密钥会话操作、证书管理、密钥生成与导入、通用操作等接口能力。驱动厂商需继承CryptoExtensionAbility并实现相关接口，通过[registerProvider](js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)完成能力注册后，由HUKS和证书管理将对应的密钥管理扩展能力开放给应用使用。
+
+CryptoExtensionAbility可以隔离不同的Ukey驱动厂商实现的差异。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 ### onOpenResource
 
@@ -226,7 +232,7 @@ onSetProperty(handle: string, propertyId: string, params: Array\<huksExternalCry
 
 | 类型    | 说明   |
 | -------- | -----------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示设置属性成功。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。可能的原因：<br>1. 输入参数无效。<br>2. 密钥扩展出现无法解决的错误状态。<br>34800002 Ukey驱动错误。<br>34800003 Ukey PIN码未认证，需要先认证Ukey PIN码。<br>34800004 句柄不存在。可能的原因：<br>1. 句柄无效。<br>2. HUKS服务和密钥扩展的状态不一致。由于异常情况，HUKS服务持有的句柄未能释放。<br>34800005 句柄不可用。可能的原因：<br>密钥扩展和Ukey的状态不一致。<br>34800007 Ukey PIN码被锁。可能的原因：<br>PIN码输入错误次数过多。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示设置属性成功。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。可能的原因：<br>1. 输入参数无效。<br>2. 密钥扩展出现无法解决的错误状态。<br>34800002 UKey驱动错误。<br>34800003 UKey PIN码未认证，需要先认证UKey PIN码。<br>34800004 句柄不存在。可能的原因：<br>1. 句柄无效。<br>2. HUKS服务和密钥扩展的状态不一致。由于异常情况，HUKS服务持有的句柄未能释放。<br>34800005 句柄不可用。可能的原因：<br>密钥扩展和UKey的状态不一致。<br>34800007 UKey PIN码被锁。可能的原因：<br>PIN码输入错误次数过多。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
