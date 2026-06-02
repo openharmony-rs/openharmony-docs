@@ -98,7 +98,7 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 
 > **说明：**
 >
-> 由于监听器在事件派发给具体组件之前执行，事件中的一些字段将无法提供有效值：如触发对象[target](ts-universal-events-click.md#eventtarget8)、相对于组件的坐标[(x,y)](ts-universal-mouse-key.md#属性)、[getCurrentLocalPosition](ts-universal-events-touch.md#getcurrentlocalposition)和[stopPropagation](ts-universal-events-touch.md#stoppropagation23)方法、TouchEvent的[preventDefault](ts-universal-events-touch.md#preventdefault23)和[getHistoricalPoints](ts-universal-events-touch.md#gethistoricalpoints10)方法以及KeyEvent的[metaKey](ts-universal-events-key.md#属性)属性和[getModifierKeyState](ts-universal-events-key.md#getmodifierkeystate12)方法。
+> 由于监听器在事件派发给具体组件之前执行，事件中的一些字段将无法提供有效值：如触发对象[target](ts-universal-events-click.md#eventtarget8)、相对于组件的坐标(x,y)、[getCurrentLocalPosition](ts-universal-events-touch.md#getcurrentlocalposition)和[stopPropagation](ts-universal-events-touch.md#stoppropagation23)方法、TouchEvent的[preventDefault](ts-universal-events-touch.md#preventdefault23)和[getHistoricalPoints](ts-universal-events-touch.md#gethistoricalpoints10)方法以及KeyEvent的[metaKey](ts-universal-events-key.md#属性)属性和[getModifierKeyState](ts-universal-events-key.md#getmodifierkeystate12)方法。
 
 **示例：**
 
