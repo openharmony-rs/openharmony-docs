@@ -54,11 +54,11 @@
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | method | - | - | string | 是 | 命令名称，固定为`getFullDom`。 |
 | params | - | - | Object | 否 | 命令参数。不传入时使用默认返回字段。 |
-| params | wants | - | Array\<string> | 否 | 指定需要在节点中追加返回的字段。数组项表示节点信息字段，取值请参见[getFullDom的params.wants字段取值说明](#getfulldom的paramswants字段取值说明)。`getFullDom`会默认请求`tag`、`text`、`content`和全部HTML属性。 |
+| params | wants | - | Array\<string> | 否 | 指定需要在节点中追加返回的字段。数组项表示节点信息字段，取值请参见[getFullDom的params.wants字段取值说明](#getfulldom的paramswants字段取值说明)。`getFullDom`会默认请求`tag`、`text`和全部HTML属性。 |
 
 > **说明：**
 >
-> `getFullDom`默认返回当前网页的`url`、`title`和`children_nodes`。`children_nodes`中的节点默认返回`tag`、`text`、`content`、`attributes`和`children_nodes`；其中`text`、`content`和`attributes`在字段值为空时不会返回。
+> `getFullDom`默认返回当前网页的`url`、`title`和`children_nodes`。`children_nodes`中的节点默认返回`tag`、`text`、`attributes`和`children_nodes`；其中`text`和`attributes`在字段值为空时不会返回。
 
 ### getFullDom的params.wants字段取值说明
 
@@ -67,7 +67,6 @@
 | id | id | string | 请求返回ArkWeb生成的节点标识，不表示按HTML `id`属性筛选节点。该值由frame标识、文档作用域标识和DOM节点标识组合编码，用于区分返回结果中的节点；页面重新加载、frame重建或DOM重建后可能变化。仅在可生成节点标识时返回。如需读取HTML `id`属性，请查看返回节点的`attributes.id`。 |
 | tag | tag | string | 节点标签名。元素节点返回小写HTML标签名，文本节点返回`#text`，ShadowRoot节点返回`#shadowRoot`。 |
 | text | text | string | 节点文本内容。字段值为空时不返回该字段。 |
-| content | content | string | 节点文本内容。字段值为空时不返回该字段。 |
 | title | title | string | 节点`title`属性值。字段值为空时不返回该字段。 |
 | aria-label | aria-label | string | 节点`aria-label`属性值。字段值为空时不返回该字段。 |
 | role | role | string | 节点语义角色。字段值为空时不返回该字段。 |
@@ -110,7 +109,6 @@
 | children_nodes | - | id | string | ArkWeb生成的节点标识，不是HTML `id`属性。仅在`wants`中包含`id`且可生成节点标识时返回。 |
 | children_nodes | - | tag | string | 节点标签名。 |
 | children_nodes | - | text | string | 节点文本内容。 |
-| children_nodes | - | content | string | 节点文本内容。 |
 | children_nodes | - | title | string | 节点`title`属性值。 |
 | children_nodes | - | aria-label | string | 节点`aria-label`属性值。 |
 | children_nodes | - | role | string | 节点语义角色。 |
@@ -191,8 +189,6 @@
   "children_nodes": [
     {
       "tag": "html",
-      "text": "Submit",
-      "content": "Submit",
       "attributes": {
         "lang": "en"
       },
@@ -207,13 +203,9 @@
       "children_nodes": [
         {
           "tag": "body",
-          "text": "Submit",
-          "content": "Submit",
           "children_nodes": [
             {
               "tag": "button",
-              "text": "Submit",
-              "content": "Submit",
               "attributes": {
                 "id": "submit"
               },
@@ -225,7 +217,13 @@
               },
               "visible": true,
               "xpath": "/html[1]/body[1]/button[1]",
-              "children_nodes": []
+              "children_nodes": [
+                {
+                  "tag": "#text",
+                  "text": "Submit",
+                  "children_nodes": []
+                }
+              ]
             }
           ]
         }
@@ -295,7 +293,6 @@
 | id | id | string | 请求返回ArkWeb生成的节点标识，不表示按HTML `id`属性筛选节点。该值由frame标识、文档作用域标识和DOM节点标识组合编码，用于区分返回结果中的节点；页面重新加载、frame重建或DOM重建后可能变化。仅在可生成节点标识时返回。如需读取HTML `id`属性，请在`wants`中通过`attributes`对象项请求`id`属性，并查看返回节点的`attributes.id`。 |
 | tag | tag | string | 节点标签名。返回小写HTML标签名。 |
 | text | text | string | 节点文本内容。字段值为空时不返回该字段。 |
-| content | content | string | 节点文本内容。字段值为空时不返回该字段。 |
 | title | title | string | 节点`title`属性值。字段值为空时不返回该字段。 |
 | aria-label | aria-label | string | 节点`aria-label`属性值。字段值为空时不返回该字段。 |
 | role | role | string | 节点语义角色。字段值为空时不返回该字段。 |
@@ -338,7 +335,6 @@
 | nodes | - | id | string | ArkWeb生成的节点标识，不是HTML `id`属性。仅在`wants`中包含`id`且可生成节点标识时返回。 |
 | nodes | - | tag | string | 节点标签名。 |
 | nodes | - | text | string | 节点文本内容。 |
-| nodes | - | content | string | 节点文本内容。 |
 | nodes | - | title | string | 节点`title`属性值。 |
 | nodes | - | aria-label | string | 节点`aria-label`属性值。 |
 | nodes | - | role | string | 节点语义角色。 |
@@ -430,7 +426,6 @@
     {
       "id": "frameToken|documentToken|12",
       "tag": "button",
-      "text": "Submit",
       "rect": {
         "x": 24,
         "y": 36,
