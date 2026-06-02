@@ -244,18 +244,18 @@ struct Index {
     
     ``` TypeScript
     import { Button, Column, Component, Entry, Text, ObservedArray } from '@kit.ArkUI';
-
+    
     export interface Info {
       name: string;
     }
-
+    
     @Entry
     @Component
     struct Index {
       arr: ObservedArray<Info> = new ObservedArray<Info>(3, (index: int): Info => {
         return { name: ('Hello World ' + index.toString()) } as Info
       });
-
+    
       build() {
         Column() {
           Text(`${this.arr[0].name}`)
@@ -275,40 +275,40 @@ struct Index {
     
     ``` TypeScript
     import { Button, Column, Component, Entry, Text, ObservedSet, Observed, ObservedV2, Track, Trace } from '@kit.ArkUI';
-
+    
     export class UserInfo extends ObservedSet<int> {
       userName: string = 'Jack';
-
+    
       constructor() {
         super();
       }
     }
-
+    
     @Observed
     export class UserInfo1 extends ObservedSet<int> {
       @Track userName: string = 'Jack';
-
+    
       constructor() {
         super();
       }
     }
-
+    
     @ObservedV2
     export class UserInfo2 extends ObservedSet<int> {
       @Trace userName: string = 'Jack';
-
+    
       constructor() {
         super();
       }
     }
-
+    
     @Entry
     @Component
     struct Index {
       arr1: UserInfo = new UserInfo();
       arr2: UserInfo1 = new UserInfo1();
       arr3: UserInfo2 = new UserInfo2();
-
+    
       build() {
         Column() {
           Text(`${this.arr1.userName}`)
