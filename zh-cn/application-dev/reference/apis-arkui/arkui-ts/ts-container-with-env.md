@@ -41,7 +41,7 @@ WithEnv()
 
 ### env
 
-env&lt;T&gt;(key: [WritableSystemEnvKey](ts-env-system-property.md#writablesystemenvkeyt)&lt;T&gt;, value: T)
+env&lt;T&gt;(key: WritableSystemEnvKey&lt;T&gt;, value: T)
 
 设置作用域内的系统环境变量。当前正式支持的系统环境变量键为WritableEnvKey.FONT_SCALE、WritableEnvKey.DIRECTION。
 
@@ -67,7 +67,7 @@ env&lt;T&gt;(key: [WritableSystemEnvKey](ts-env-system-property.md#writablesyste
 
 ### customEnv
 
-customEnv&lt;T&gt;(key: [CustomEnvKey](ts-custom-env-property.md#customenvkeys)&lt;T&gt;, value: T)
+customEnv&lt;T&gt;(key: CustomEnvKey&lt;T&gt;, value: T)
 
 设置作用域内可被后代自定义组件读取的自定义环境变量。
 
