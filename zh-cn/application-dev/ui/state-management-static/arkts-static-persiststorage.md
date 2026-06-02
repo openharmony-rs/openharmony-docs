@@ -256,7 +256,7 @@ import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, Per
 
 @Entry
 @Component
-struct MapSample {
+struct DateSample {
   success: boolean = PersistentStorage.persistProp<Date>('date', new Date(),
     (date: Date): jsonx.JsonElement => {
       const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
