@@ -60,7 +60,7 @@ getUniqueId(): int
 
 ### queryNavDestinationInfo
 
-queryNavDestinationInfo(): NavDestinationInfo | undefined;
+queryNavDestinationInfo(): NavDestinationInfo | undefined
 
 查询自定义组件所属的NavDestination信息，仅当自定义组件在NavDestination的内部时才生效。
 
@@ -118,7 +118,7 @@ queryNavigationInfo(): NavigationInfo | undefined
 
 ### queryRouterPageInfo
 
-queryRouterPageInfo(): RouterPageInfo | undefined;
+queryRouterPageInfo(): RouterPageInfo | undefined
 
 获取RouterPageInfo实例对象。
 
