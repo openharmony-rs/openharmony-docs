@@ -44,7 +44,7 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
 | --------- | ---------------------------------------- | ---------------------------- | ---- | ---------------------------------------- |
 | direction | to&nbsp;&lt;side-or-corner&gt;&nbsp;&nbsp;&lt;side-or-corner&gt;&nbsp;=&nbsp;[left&nbsp;\|&nbsp;right]&nbsp;\|&nbsp;[top&nbsp;\|&nbsp;bottom] | to bottom (gradient from top to bottom)| No   | Transition direction, for example, **to left** (gradient from right to left) or<br>**to bottom right** (gradient from the top left to the bottom right).|
 | angle     | &lt;deg&gt;                              | 180deg                       | No   | Transition direction, which is the angle between the gradient line and the y-axis (in the clockwise direction), with the geometric center of the element being the origin of coordinates and the horizontal axis being the x-axis.|
-| color     | &lt;color&gt;&nbsp;[&lt;length&gt;\|&lt;percentage&gt;] | -                            | Yes   | Color among which smooth transitions are rendered.                     |
+| color     | &lt;color&gt;&nbsp;[&lt;length&gt;\|&lt;percentage&gt;] | -                            | Yes   | Colors among which smooth transitions are rendered.                     |
 
 **Example**
 1. Gradient from top to bottom (default)
