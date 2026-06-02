@@ -80,7 +80,8 @@ example/Easy.ohidl
 主接口文件 `Easy.ohidl`：
 
 <!-- @[easy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/example/Easy.ohidl) -->
-```rust
+
+``` 
 @!namespace("OHOS", "IPC")
 
 @main_service(version = "1.0.0")
