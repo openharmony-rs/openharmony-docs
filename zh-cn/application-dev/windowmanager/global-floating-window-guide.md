@@ -58,8 +58,9 @@
 
    ```ts
    let float_windowClass: window.Window | undefined = undefined;
+   let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('context');
    let config: window.Configuration = {
-     name: "floatWindow", windowType: window.WindowType.TYPE_FLOAT, ctx: getContext(this)
+     name: "floatWindow", windowType: window.WindowType.TYPE_FLOAT, ctx: context as common.BaseContext
    };
    window.createWindow(config, (err, data) => {
      let errCode: number = err.code;
