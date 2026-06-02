@@ -114,7 +114,7 @@
 ### 复现代码
 
 ```typescript
-const TAG = 'Case04_GetAssets';
+const TAG = 'Case_InvalidParam';
 
 async trigger13900020Error(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -157,8 +157,11 @@ async trigger13900020Error(context: common.Context): Promise<void> {
 
 
 ```log
-E     Case04_GetAssets Error code: 13900020
-E     Case04_GetAssets Error message: invalid parameter
+I     Case_InvalidParam Got album, count: 12
+I     Case_InvalidParam Test: invalid fetchOptions
+E     Case_InvalidParam Error code: 13900020
+E     Case_InvalidParam Error message: invalid parameter
+I     Case_InvalidParam Get assets success, count: 0
 ```
 
 ### 常见易错代码
