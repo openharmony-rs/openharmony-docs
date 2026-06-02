@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 Bundle Manager（包管理工具，简称bm）是实现应用安装、卸载、更新、查询等功能的工具，bm为开发者提供基本的应用安装包的调试能力。
 
@@ -609,6 +609,11 @@ HAP/HSP包没有签名。
 **处理步骤**
 
 请开发者根据实际场景选择自动签名或者手动签名，例如无法连接互联网的情况下推荐使用手动签名方式，详情参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section54361623194519)。
+
+> **说明：**
+>
+> 在工程级build-profile.json5文件下的products标签中，signingConfig字段为非必填字段，若该字段缺失，将导致签名失效。详情请参考[products](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section45865492619)标签下的字段说明。
+>
 
 方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
 
