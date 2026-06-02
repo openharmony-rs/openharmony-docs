@@ -462,9 +462,21 @@
     - [自定义弹窗 (CustomDialog) (系统接口)](arkui-ts/ts-methods-custom-dialog-box-sys.md)
     <!--DelEnd-->
     - [日历选择器弹窗 (CalendarPickerDialog)](arkui-ts/ts-methods-calendarpicker-dialog.md)
+    <!--Del-->
+    - [日历选择器弹窗 (CalendarPickerDialog) (系统接口)](arkui-ts/ts-methods-calendarpicker-dialog-sys.md)
+    <!--DelEnd-->
     - [日期滑动选择器弹窗 (DatePickerDialog)](arkui-ts/ts-methods-datepicker-dialog.md)
+    <!--Del-->
+    - [日期滑动选择器弹窗 (DatePickerDialog) (系统接口)](arkui-ts/ts-methods-datepicker-dialog-sys.md)
+    <!--DelEnd-->
     - [时间滑动选择器弹窗 (TimePickerDialog)](arkui-ts/ts-methods-timepicker-dialog.md)
+    <!--Del-->
+    - [时间滑动选择器弹窗 (TimePickerDialog) (系统接口)](arkui-ts/ts-methods-timepicker-dialog-sys.md)
+    <!--DelEnd-->
     - [文本滑动选择器弹窗 (TextPickerDialog)](arkui-ts/ts-methods-textpicker-dialog.md)
+    <!--Del-->
+    - [文本滑动选择器弹窗 (TextPickerDialog) (系统接口)](arkui-ts/ts-methods-textpicker-dialog-sys.md)
+    <!--DelEnd-->
     - [弹出框 (Dialog)](arkui-ts/ohos-arkui-advanced-Dialog.md)
   - 卡片<!--service-widgets-->
     - [FormLink](arkui-ts/ts-container-formlink.md)

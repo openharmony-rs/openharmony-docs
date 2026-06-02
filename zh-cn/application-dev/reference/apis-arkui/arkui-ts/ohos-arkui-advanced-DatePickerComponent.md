@@ -141,6 +141,7 @@ CommonOptions定义日期时间选择器的通用选项。
 > - Date的使用请参考[TimePickerOptions](ts-basic-components-timepicker.md#timepickeroptions对象说明)。
 > - DatePickerComponent的字体字号在14vp至16vp范围内自适应变化，当组件宽度过窄时，可能出现文本显示截断的情况。
 > - 参数缺省或者设置为undefined时，均保持默认值。
+> - 在[DateOptions](#dateoptions)中设置start、end、selected时仅日期部分设置生效，在[TimeOptions](#timeoptions)中设置start、end、selected时仅时间部分设置生效。
 
 **起始版本：** 26.0.0
 
