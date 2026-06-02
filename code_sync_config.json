@@ -54260,7 +54260,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiRetrieval/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":86,
 						"name":"hiretrieval_sample_code",
 						"start_line":23
 					}
