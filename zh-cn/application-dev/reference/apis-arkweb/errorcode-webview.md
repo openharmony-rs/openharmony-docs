@@ -397,7 +397,7 @@ AIPageCommand参数格式错误。
 
 **可能原因**
 
-调用WebviewController.executeAIPageCommand时，传入的command参数不是合法的JSON对象字符串，或命令字段不符合格式要求。
+调用[WebviewController.executeAIPageCommand](arkts-apis-webview-WebviewController.md#executeaipagecommand26)时，传入的command参数不是合法的JSON对象字符串，或命令字段不符合格式要求。
 
 **处理步骤**
 
