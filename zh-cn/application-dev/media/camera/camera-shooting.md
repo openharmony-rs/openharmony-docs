@@ -33,14 +33,18 @@
 
    通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流。通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法传入支持的某一个输出流[Profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)创建拍照输出流。
 
-   ```ts
-   function getPhotoOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
-     let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
+   <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   getPhotoOutput(cameraManager: camera.CameraManager,
+     cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
+     let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
      if (!photoProfilesArray || photoProfilesArray.length === 0) {
-       console.error("photoProfilesArray is null or []");
+       console.error('photoProfilesArray is null or []');
      }
      let photoOutput: camera.PhotoOutput | undefined = undefined;
      try {
+       this.photoProfileObj = photoProfilesArray[0]
        photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
      } catch (error) {
        let err = error as BusinessError;
@@ -52,39 +56,57 @@
 
 3. 设置拍照[on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调，并将拍照的buffer保存为图片。
 
-    Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+   Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-    如需要在图库中看到所保存的图片、视频资源，需要将其保存到媒体库，保存方式请参考：[保存媒体库资源](../medialibrary/photoAccessHelper-savebutton.md)。
+   如需要在图库中看到所保存的图片、视频资源，需要将其保存到媒体库，保存方式请参考：[保存媒体库资源](../medialibrary/photoAccessHelper-savebutton.md)。
 
-    需要在[photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)接口获取到buffer时，将buffer在安全控件中保存到媒体库。
-   ```ts
-   function setPhotoOutputCb(photoOutput: camera.PhotoOutput) {
-   // 设置回调之后，调用photoOutput的capture方法，就会将拍照的buffer回传到回调中。
+   需要在[photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)接口获取到buffer时，将buffer在安全控件中保存到媒体库。
+
+   <!-- @[camera_photoAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   setPhotoOutputCb(photoOutput: camera.PhotoOutput, context: Context) {
+     // 设置回调之后，调用photoOutput的capture方法，就会将拍照的buffer回传到回调中。
      photoOutput.on('photoAvailable', (errCode: BusinessError, photo: camera.Photo): void => {
-        console.info('getPhoto start');
-        if (errCode || photo === undefined) {
-          console.error('getPhoto failed, err: ${errCode}');
-          return;
-        }
-        let imageObj: image.Image = photo.main;
-        imageObj.getComponent(image.ComponentType.JPEG, (errCode: BusinessError, component: image.Component): void => {
-          console.info('getComponent start');
-          if (errCode || component === undefined) {
-            console.error('getComponent failed');
-            return;
-          }
-          let buffer: ArrayBuffer;
-          if (component.byteBuffer) {
-            buffer = component.byteBuffer;
-          } else {
-            console.error('byteBuffer is null');
-            return;
-          }
-          // 如需要在图库中看到所保存的图片、视频资源，请使用用户无感的安全控件创建媒体资源。
-
-         // buffer处理结束后需要释放该资源，如果未正确释放资源会导致后续拍照获取不到buffer。
-         imageObj.release();
-       });
+       console.info('getPhoto start');
+       if (errCode || photo === undefined) {
+         console.error('getPhoto failed, err: ${errCode}');
+         return;
+       }
+         // 如需要在图库中看到所保存的图片、视频资源，请使用用户无感的安全控件创建媒体资源。
+         this.mediaLibSavePhotoSingle(context, photo.main)
+     });
+   }
+   
+   mediaLibSavePhotoSingle(context: Context, imageObj: image.Image) {
+     imageObj.getComponent(image.ComponentType.JPEG, async (errCode: BusinessError, component: image.Component) => {
+       if (errCode || component === undefined) {
+         Logger.error('getComponent failed');
+         return;
+       }
+       const buffer: ArrayBuffer = component.byteBuffer;
+       if (!buffer) {
+         Logger.error('byteBuffer is null');
+         return;
+       }
+       let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+       let extension: string = 'jpg';
+       let options: photoAccessHelper.CreateOptions = {
+         title: 'testPhoto'
+       }
+       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+         photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, photoType, extension, options);
+       assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, buffer)
+       assetChangeRequest.saveCameraPhoto();
+       let accessHelper: photoAccessHelper.PhotoAccessHelper =
+         photoAccessHelper.getPhotoAccessHelper(context);
+       await accessHelper.applyChanges(assetChangeRequest);
+       let imageSource = image.createImageSource(buffer);
+       let pixelmap = imageSource.createPixelMapSync();
+       this.callback(pixelmap, assetChangeRequest.getAsset().uri);
+       accessHelper.release();
+       // buffer处理结束后需要释放该资源，如果未正确释放资源会导致后续拍照获取不到buffer。
+       imageObj.release();
      });
    }
    ```
@@ -93,6 +115,8 @@
 
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
+
+   <!-- @[camera_param_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    ```ts
    function configuringSession(photoSession: camera.PhotoSession): void {
      // 判断设备是否支持闪光灯。
@@ -171,16 +195,32 @@
    >
    > 图片地理位置信息[Location](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)，使用方法可参考[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-3)示例。
 
-   ```ts
-   function capture(captureLocation: camera.Location, photoOutput: camera.PhotoOutput): void {
+
+   <!-- @[camera_capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   capture(captureLocation?: camera.Location): void {
+     let captureLocationDefault: camera.Location = {
+       latitude: 0,
+       longitude: 0,
+       altitude: 0
+     };
+     if (captureLocation != undefined) {
+       captureLocationDefault = captureLocation;
+     }
      let settings: camera.PhotoCaptureSetting = {
        quality: camera.QualityLevel.QUALITY_LEVEL_HIGH,  // 设置图片质量高。
-       rotation: camera.ImageRotation.ROTATION_0,  // 设置图片旋转角度的camera.ImageRotation.ROTATION_0是通过说明中获取拍照角度的getPhotoRotation方法获取的值进行设置。
+       // 设置图片旋转角度的camera.ImageRotation.ROTATION_0是通过说明中获取拍照角度的getPhotoRotation方法获取的值进行设置。
+       rotation: camera.ImageRotation.ROTATION_0,
        location: captureLocation,  // 设置图片地理位置。
        mirror: false  // 设置镜像使能开关(默认关)。
      };
      try {
-       photoOutput.capture(settings, (err: BusinessError) => {
+       if (this.photoOutput == undefined) {
+         console.info(`photoOutput is undefined.`);
+         return;
+       }
+       this.photoOutput.capture(settings, (err: BusinessError) => {
          if (err) {
            console.error(`Failed to capture the photo. error: ${err}`);
            return;
@@ -391,50 +431,48 @@
 
 - 通过注册固定的captureStart回调函数获取监听拍照开始结果，photoOutput创建成功时即可监听，相机设备已经准备开始这次拍照时触发，该事件返回此次拍照的captureId。
 
-  ```ts
-  function onPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
-    photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info(`photo capture started, captureId : ${captureStartInfo.captureId}`);
-    });
-  }
+  <!-- @[capture_start_with_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  // 监听拍照开始
+  photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo): void => {
+    Logger.info(TAG, `photoOutputCallBack captureStartWithInfo success: ${JSON.stringify(captureStartInfo)}`);
+  });
   ```
 
 - 通过注册固定的captureEnd回调函数获取监听拍照结束结果，photoOutput创建成功时即可监听，该事件返回结果为拍照完全结束后的相关信息[CaptureEndInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#captureendinfo)。
 
-  ```ts
-  function onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
-    photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info(`photo capture end, captureId : ${captureEndInfo.captureId}`);
-      console.info(`frameCount : ${captureEndInfo.frameCount}`);
-    });
-  }
+
+  <!-- @[capture_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  // 监听拍照结束
+  photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo): void => {
+    Logger.info(TAG, `photoOutputCallBack captureEnd captureId:
+      ${captureEndInfo.captureId}, frameCount: ${captureEndInfo.frameCount}`);
+  });
   ```
 
 - 通过注册固定的captureReady回调函数获取监听可拍下一张结果，photoOutput创建成功时即可监听，当下一张可拍时触发，该事件返回结果为下一张可拍的相关信息。
 
-  ```ts
-  function onPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
-    photoOutput.on('captureReady', (err: BusinessError) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info(`photo capture ready`);
-    });
-  }
+  <!-- @[capture_ready](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  photoOutput.on('captureReady', (err: BusinessError) => {
+    if (err !== undefined && err.code !== 0) {
+      return;
+    }
+    console.info(`photo capture ready`);
+  });
   ```
 
 - 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
 
-  ```ts
-  function onPhotoOutputError(photoOutput: camera.PhotoOutput): void {
-    photoOutput.on('error', (error: BusinessError) => {
-      console.error(`Photo output error code: ${error.code}`);
-    });
-  }
+  <!-- @[photoOutput_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  // 监听拍照异常
+  photoOutput.on('error', (data: BusinessError): void => {
+    Logger.info(TAG, `photoOutput data: ${JSON.stringify(data)}`);
+  });
   ```

@@ -850,9 +850,9 @@ erase(volumeId: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13600023 | Disc not erasable. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
+| 13600026 | Erase operation failed. |
 
 **示例：**
 
@@ -869,7 +869,7 @@ volumeManager.erase(volumeId).then(() => {
 
 ## volumemanager.eject
 
-eject(volumeId: string): Promise&lt;void&gt;
+eject(diskId: string): Promise&lt;void&gt;
 
 弹出指定卷设备，使用Promise异步回调。
 
@@ -887,7 +887,7 @@ eject(volumeId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
+| diskId | string | 是   | 卷设备所属的磁盘id。 |
 
 **返回值：**
 
@@ -904,16 +904,15 @@ eject(volumeId: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
+| 13600002 | Not supported filesystem. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let volumeId: string = "";
-volumeManager.eject(volumeId).then(() => {
+let diskId: string = "";
+volumeManager.eject(diskId).then(() => {
   console.info("eject successfully.");
 }).catch((error: BusinessError) => {
   console.error("eject failed with error:" + JSON.stringify(error));
@@ -958,8 +957,9 @@ createIsoImage(volumeId: string, filePath: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
+| 13600002 | Not supported filesystem. |
 | 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
+| 13600010 | The input parameter is invalid. |
 | 13600024 | Empty disc. |
 | 13600025 | Failed to write the ISO file. |
 
@@ -1015,10 +1015,8 @@ burn(volumeId: string, want: Want): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13600026 | Insufficient disc space. |
-| 13600027 | Source data not found. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
 | 13600028 | Burn operation failed. |
 
 **示例：**
@@ -1080,8 +1078,8 @@ getOpProcess(volumeId: string): Promise&lt;number&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. |
-| 13600029 | No ongoing operation. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
 
 **示例：**
 
@@ -1134,10 +1132,9 @@ verifyBurnData(volumeId: string, verType: VerifyType): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
 | 13600030 | Verification failed. |
-| 13600031 | Data mismatch. |
 
 **示例：**
 

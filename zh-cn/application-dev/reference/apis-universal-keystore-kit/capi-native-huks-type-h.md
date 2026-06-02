@@ -9,13 +9,13 @@
 
 ## 概述
 
-提供通用密钥库（HUKS）中的枚举变量、结构体定义与宏定义。
+提供通用密钥库（HUKS）中的枚举变量、结构体定义、宏定义与错误码。
 
 **引用文件：** <huks/native_huks_type.h>
 
 **库：** libhuks_ndk.z.so
 
-**系统能力：**
+**系统能力：** 
 
 - API version 20+：SystemCapability.Security.Huks.Core
 - API version 9-19：SystemCapability.Security.Huks
@@ -425,11 +425,11 @@ enum OH_Huks_ErrCode
 | OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 | 同名密钥已存在。<br>**起始版本：** 20 |
 | OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 | 输入的参数无效。<br>**起始版本：** 20 |
 | OH_HUKS_ERR_CODE_ITEM_EXISTS = 12000019 | 该项实体已存在。<br>**起始版本：** 22 |
-| OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | 提供者或Ukey内部执行失败。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | 提供者或UKey内部执行失败。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | PIN码被锁定。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | PIN码错误。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | PIN码未认证通过。<br>**起始版本：** 22 |
-| OH_HUKS_ERR_CODE_BUSY = 12000024 | 提供者或Ukey中的资源正在被使用。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_BUSY = 12000024 | 提供者或UKey中的资源正在被使用。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 | 资源超过限制。<br>**起始版本：** 22 |
 
 ### OH_Huks_TagType

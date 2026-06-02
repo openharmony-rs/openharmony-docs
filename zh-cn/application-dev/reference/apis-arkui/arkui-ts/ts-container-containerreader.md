@@ -71,7 +71,7 @@ ContainerReader(value: ContainerReaderInfo)
 
 ### breakpointConfig
 
-breakpointConfig(value: BreakpointOptions)
+breakpointConfig(value?: BreakpointOptions)
 
 设置断点配置选项，定义触发不同布局行为的尺寸阈值。
 
@@ -89,7 +89,7 @@ breakpointConfig(value: BreakpointOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| value | [BreakpointOptions](#breakpointoptions) | 是 | 断点配置选项，包含宽度和高度的断点阈值数组。 |
+| value | [BreakpointOptions](#breakpointoptions) | 否 | 断点配置选项，包含宽度和高度的断点阈值数组。 |
 
 ## BreakpointOptions
 
