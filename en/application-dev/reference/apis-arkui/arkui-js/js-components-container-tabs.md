@@ -18,7 +18,7 @@ None
 
 ## Child Components
 
-Only &lt;[tab-bar](js-components-container-tab-bar.md)&gt and &lt;[tab-content](js-components-container-tab-content.md)&gt are supported.
+Only &lt;[tab-bar](js-components-container-tab-bar.md)&gt; and &lt;[tab-content](js-components-container-tab-content.md)&gt; are supported.
 
 ## Attributes
 
