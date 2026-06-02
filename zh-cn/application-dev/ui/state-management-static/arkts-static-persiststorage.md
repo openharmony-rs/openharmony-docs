@@ -84,9 +84,9 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
    完整代码如下：
    
-   ```ts
-   'use static'
+   <!-- @[PersistentStorageBasic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageBasic.ets) -->
    
+   ``` TypeScript
    import { Button, ClickEvent, Column, Component, Entry, PersistentStorage, Row, State, StorageLink, Text } from '@kit.ArkUI';
    
    @Entry
@@ -175,14 +175,14 @@ if (AppStorage.get('aProp') > 50) {
 
 静态ArkTS中,语言不支持序列化undefined，因此，不建议开发者使用PersistentStorage时去持久化undefined，可使用null代替，如在下面的示例中，使用persistProp方法初始化'P'为12。通过@StorageLink('P')绑定变量p，类型为number | string | null，点击Button改变P的值，视图会随之刷新。且P的值被持久化存储。
 
-```ts
-'use static'
+<!-- @[PersistentStorageUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageUnionType.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct MapSample {
+struct UnionTypeSample {
   success: boolean = PersistentStorage.persistProp<number | string | null>('union', 12,
     (val: number | string | null): jsonx.JsonElement => {
       const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
@@ -249,14 +249,14 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的persistedDate类型为Date，点击Button改变persistedDate的值，视图会随之刷新，并且persistedDate的值会被持久化存储。
 
-```ts
-'use static'
+<!-- @[PersistentStorageDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageDate.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct MapSample {
+struct DateSample {
   success: boolean = PersistentStorage.persistProp<Date>('date', new Date(),
     (date: Date): jsonx.JsonElement => {
       const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
@@ -324,9 +324,9 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的map类型为Map\<string, string\>，点击Button改变map的值，视图会随之刷新，并且map的值被持久化存储。
 
-```ts
-'use static'
+<!-- @[PersistentStorageMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageMap.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
@@ -401,9 +401,9 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的set类型为Set\<string\>，点击Button改变set的值，视图会随之刷新。且persistedSet的值被持久化存储。
 
-```ts
-'use static'
+<!-- @[PersistentStorageSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageSet.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
@@ -478,9 +478,9 @@ struct SetSample {
 
 在下面的示例中，@StorageLink装饰的class被@Observed修饰，@Observed装饰的class属性改变时，能触发PersistentStorage持久化。
 
-```ts
-'use static'
+<!-- @[PersistentStorageClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageClass.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Observed
