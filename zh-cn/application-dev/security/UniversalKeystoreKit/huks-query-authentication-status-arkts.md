@@ -1,4 +1,4 @@
-﻿# 查询认证状态(ArkTS)
+﻿# 查询认证状态(ArkTS) 
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
