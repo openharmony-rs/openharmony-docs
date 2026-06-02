@@ -3389,6 +3389,8 @@ For details about how to set the soft keyboard to the fixed or floating state, s
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name  | Type               | Mandatory| Description                                       |
@@ -3430,6 +3432,8 @@ Unsubscribes from the event indicating that the soft keyboard in the fixed state
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -3478,6 +3482,8 @@ For details about how to set the soft keyboard to the fixed or floating state, s
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name  | Type               | Mandatory| Description                                       |
@@ -3519,6 +3525,8 @@ Unsubscribes from the event indicating that the soft keyboard in the fixed state
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -3567,6 +3575,8 @@ For details about how to set the soft keyboard to the fixed or floating state, s
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, this API neither takes effect nor returns an error.
+
 **Parameters**
 
 | Name  | Type               | Mandatory| Description                                       |
@@ -3606,6 +3616,8 @@ Unsubscribes from the event indicating that the show animation of the soft keybo
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, this API neither takes effect nor returns an error.
 
 **Parameters**
 
@@ -3653,6 +3665,8 @@ For details about how to set the soft keyboard to the fixed or floating state, s
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, this API neither takes effect nor returns an error.
+
 **Parameters**
 
 | Name  | Type               | Mandatory| Description                                       |
@@ -3692,6 +3706,8 @@ Unsubscribes from the event indicating that the hide animation of the soft keybo
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, this API neither takes effect nor returns an error.
 
 **Parameters**
 
@@ -4762,7 +4778,7 @@ try {
 
 off(type: 'windowStatusDidChange', callback?: Callback&lt;WindowStatusType&gt;): void
 
-Unsubscribes from the window status change event.
+Unsubscribes from the event indicating that the window status has changed.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -5211,7 +5227,7 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 
 Subscribes to main window or child window closing events. This event is triggered only when the user clicks the close button in the system-provided title bar to close the window. It is not triggered when the window is closed in other ways.
 
-The callback function in this API is executed synchronously. For synchronous close events of child windows, refer to [on('subWindowClose')](#onsubwindowclose12). For synchronous close events of the main window, refer to [on('windowStageClose')](arkts-apis-window-WindowStage.md#onwindowstageclose14).
+The callback function in this API is executed asynchronously. For synchronous close events of child windows, refer to [on('subWindowClose')](#onsubwindowclose12). For synchronous close events of the main window, refer to [on('windowStageClose')](arkts-apis-window-WindowStage.md#onwindowstageclose14).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -8142,7 +8158,18 @@ Sets the window title. This API uses a promise to return the result. In the stag
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, this API neither takes effect nor returns an error. Once the device enters the freeform window mode, this API takes effect. On a device that does not support freeform windows, this API returns error code 1300002 or 801.
+**Device behavior differences**:
+ - For the main window:
+   - On a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state, this API can be properly called.
+   - On a device that supports freeform windows but is not in the freeform window state, this API neither takes effect nor returns an error. Once the device enters the freeform window mode, this API takes effect.
+   - On a device that does not support freeform windows, this API returns error code 1300002 or 801.
+
+ - For a child window that displays the decoration bar (that is, **decorEnabled** in [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **true** when the child window is created):
+   - On a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state, this API can be properly called.
+   - On a device that supports freeform windows but is not in the freeform window state, this API neither takes effect nor returns an error. Once the device enters the freeform window mode, this API takes effect.
+   - On a device that does not support the freeform window state, this API can be properly called.
+
+ - For a child window that does not display the decoration bar (that is, **decorEnabled** in [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **false** when the child window is created), this API returns error code 1300002 or 801 when called.
 
 **Parameters**
 
@@ -8795,7 +8822,7 @@ If the child window is focused and the new parent window has a modal child windo
 
 **Device behavior differences**:
 
-Before  <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
+Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
 
 Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API returns error code 801.
 
@@ -8855,7 +8882,7 @@ Obtains the parent window of this child window.
 
 **Device behavior differences**:
 
-Before  <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
+Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
 
 Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on all devices.
 
@@ -13095,4 +13122,3 @@ promise.then(() => {
   console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-<!--no_check-->

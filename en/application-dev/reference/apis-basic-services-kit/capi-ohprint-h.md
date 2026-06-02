@@ -784,7 +784,7 @@ Updates the printer properties based on the KV pairs.
 
 | Name                                                      | Description                      |
 | ------------------------------------------------------------ | -------------------------- |
-| const char *printerId                                        | Pointer to the printer ID to be set.       |
+| const char *printerId                                        | Pointer to the printer ID.       |
 | [const Print_PropertyList](capi-oh-print-print-propertylist.md) *propertyList | Pointer to the list of printer properties to be updated.|
 
 **Returns**
@@ -813,7 +813,7 @@ Restores printer properties to the default settings based on the property key li
 
 | Name                                                      | Description                    |
 | ------------------------------------------------------------ | ------------------------ |
-| const char *printerId                                        | Pointer to the printer ID to be restored.     |
+| const char *printerId                                        | Pointer to the printer ID.     |
 | [const Print_StringList](capi-oh-print-print-stringlist.md) *propertyKeyList | Pointer to the property key list.|
 
 **Returns**

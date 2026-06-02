@@ -1,7 +1,7 @@
 # Custom Rendering (XComponent)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -681,7 +681,7 @@ When using **OH_NativeXComponent** to listen to interaction events, you can only
 
 - OH_ArkUI_SurfaceHolder
 
-  The following uses the touch event callback as an example to demonstrate how to register a callback. For details about how to register the mouse, key, and more event callbacks, see [Listening for Component Events](./ndk-listen-to-component-events.md).
+  The following uses the touch event as an example to demonstrate how to register an event. For details about how to bind other events such as the mouse and key events, see [Binding Basic Input Events](./ndk-bind-input-events.md).
 
   <!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
@@ -704,7 +704,7 @@ The following is a complete example of using **NativeWindow** and **EGL** APIs f
 - Register the corresponding lifecycle callback based on the **OH_ArkUI_SurfaceHolder** instance to obtain the **NativeWindow** instance.
 - Use the **NativeWindow** and **EGL** APIs to develop custom drawing content, and apply for and submit the buffer to the graphics queue.
 - The accessibility and variable frame rate capabilities of the **XComponent** are implemented through related APIs based on **ArkUI_NodeHandle**.
-- You can use the ArkUI NDK APIs to listen to basic events (such as click and touch) and gesture events (such as swipe and zoom) on the **XComponent** component through the **ArkUI_NodeHandle** object. For details, see [Listening for Component Events](./ndk-listen-to-component-events.md).
+- You can use the ArkUI NDK APIs to listen to basic events (such as click and touch) and gesture events (such as swipe and zoom) on the **XComponent** component through the **ArkUI_NodeHandle** object. For details, see [Adding an Event Listener](./ndk-add-component-events.md).
 
 **Available APIs**
 

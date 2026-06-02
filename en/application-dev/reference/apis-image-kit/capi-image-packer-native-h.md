@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -41,7 +41,7 @@ The file declares the APIs for image encoding.
 | Name| Description|
 | -- | -- |
 | [Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)](#oh_packingoptions_create) | Creates the pointer to an OH_PackingOptions struct.|
-| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | Obtains the MIME type. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
+| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | Obtains the MIME type. **format.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
 | [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | Obtains the MIME type in the packing options. The output **format.data** ends with the string terminator **\0**.|
 | [Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_setmimetype) | Sets the MIME type.|
 | [Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_t *quality)](#oh_packingoptions_getquality) | Obtains the encoding quality.|
@@ -128,7 +128,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_M
 
 **Description**
 
-Obtains the MIME type. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
+Obtains the MIME type. **format.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
 
 **Since**: 12
 
@@ -138,7 +138,7 @@ Obtains the MIME type. **value.data** obtained through this API lacks the string
 | Name| Description|
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to the image format. You can pass in a null pointer with the size set to zero. In this case, the system will allocate memory, but you must release the memory after use.|
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to the image format. The format does not need to be manually initialized, and the system will allocate memory. However, you must deallocate the memory after use.<br>**format.data** obtained through this API lacks the string terminator **\0**. You need to check whether the actual data length exceeds the length of the allocated buffer.|
 
 **Returns**
 
@@ -286,6 +286,8 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 
 Sets the **needsPackProperties** parameter in the OH_PackingOptions struct.
 
+Usage scenario: When you need to retain or write image property information (such as Exif information) into the encoding output, set **needsPackProperties** to **true**. Set **needsPackProperties** to **false** if you are only concerned about pixel content or want to reduce the size of the output data, or if the target format does not require the property information.
+
 **Since**: 12
 
 
@@ -294,7 +296,7 @@ Sets the **needsPackProperties** parameter in the OH_PackingOptions struct.
 | Name| Description|
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
-| bool needsPackProperties | Whether to encode image property information (for example, Exif). The values include **true** (yes) and **false** (no).|
+| bool needsPackProperties | Whether to encode image property information (for example, Exif). The values include **true** (yes) and **false** (no). The default value is **false**.<br>If the raw image does not have Exif data, the output file will not contain these properties even if **needsPackProperties** is set to **true**.|
 
 **Returns**
 
@@ -320,7 +322,7 @@ Obtains the desired dynamic range during encoding.
 | Name| Description|
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
-| int32_t* desiredDynamicRange | Desired dynamic range. For details about the available options, see [IMAGE_PACKER_DYNAMIC_RANGE](#image_packer_dynamic_range).|
+| int32_t* desiredDynamicRange | Pointer to the desired dynamic range. For details about the available options, see [IMAGE_PACKER_DYNAMIC_RANGE](#image_packer_dynamic_range).|
 
 **Returns**
 
@@ -363,6 +365,8 @@ Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)
 **Description**
 
 Releases the pointer to an OH_PackingOptions struct.
+
+Resource management: This API must be called to release objects successfully created by [OH_PackingOptions_Create](#oh_packingoptions_create) after encoding is complete. Releasing OH_PackingOptions does not affect the completed encoding output or release the OH_ImagePackerNative object.
 
 **Since**: 12
 
@@ -581,7 +585,7 @@ Sets the number of loops for image sequence encoding. The value range is [0, 655
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to OH_PackingOptionsForSequence .|
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to OH_PackingOptionsForSequence.|
 | uint32_t loopCount | Number of loops.|
 
 **Returns**
@@ -651,6 +655,10 @@ Image_ErrorCode OH_ImagePackerNative_Create(OH_ImagePackerNative **imagePacker)
 
 Creates the pointer to an OH_ImagePackerNative struct.
 
+Usage scenario: This API is applicable for encoding ImageSource, PixelMap, Picture, or PixelMap sequence into data or files in formats such as JPEG, PNG, and WebP. After ImagePacker is created, you need to set parameters such as the encoding format, quality, and whether to retain image properties using OH_PackingOptions or OH_PackingOptionsForSequence.
+
+Resource management: The successfully created OH_ImagePackerNative object is held by the caller and must be released using [OH_ImagePackerNative_Release](#oh_imagepackernative_release) after use. The Packer does not take over the lifecycle of the input ImageSource, PixelMap, Picture, or encoding parameter object.
+
 **Since**: 12
 
 
@@ -675,6 +683,10 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNat
 **Description**
 
 Encodes an image source into data in a given format.
+
+Application scenario: This API is applicable for transcoding an existing ImageSource to another image format, or re-outputting it as in-memory data after modifying image properties.
+
+Resource management: The caller allocates and releases **outData**. Before calling the API, set **size** to the capacity of **outData**. After the call is successful, **size** indicates the length of the encoded data actually written to **outData**. The caller manages **imagePacker**, **options**, and **imageSource**. The API does not automatically release them.
 
 **Since**: 12
 
@@ -705,6 +717,10 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative
 
 Encodes a PixelMap into data in a given format.
 
+Usage scenario: This API is applicable for encoding a PixelMap that has been decoded, edited, drawn, or algorithmically processed into in-memory data in formats such as JPEG, PNG, or WebP, for purposes such as uploading, caching, or further writing to a file.
+
+Resource management: The caller allocates and releases **outData**. Before calling the API, set **size** to the capacity of **outData**. After the call is successful, **size** indicates the length of the encoded data actually written to **outData**. The caller must release the OH_ImagePackerNative, OH_PackingOptions, and OH_PixelmapNative objects at a proper time.
+
 **Since**: 12
 
 
@@ -724,6 +740,64 @@ Encodes a PixelMap into data in a given format.
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>**IMAGE_DECODE_FAILED**: Decoding fails.<br>**IMAGE_ALLOC_FAILED**: Memory allocation fails.<br> **IMAGE_TOO_LARGE**: The data or image is too large.<br>**IMAGE_UNKNOWN_ERROR**: An unknown error occurs.|
 
+**Example:**
+
+Encode a PixelMap into JPEG in-memory data. **outData** is provided by the caller, and **encodedSize** returns the length of the encoded data.
+
+```cpp
+#include <cstdint>
+#include <cstddef>
+#include <cstring>
+#include "multimedia/image_framework/image/image_common.h"
+#include "multimedia/image_framework/image/image_packer_native.h"
+#include "multimedia/image_framework/image/pixelmap_native.h"
+
+static Image_ErrorCode PackPixelmapToJpegData(OH_PixelmapNative *pixelmap,
+    uint8_t *outData, size_t outDataCapacity, size_t *encodedSize)
+{
+    if (pixelmap == nullptr || outData == nullptr || outDataCapacity == 0 || encodedSize == nullptr) {
+        return IMAGE_BAD_PARAMETER;
+    }
+
+    OH_ImagePackerNative *packer = nullptr;
+    OH_PackingOptions *options = nullptr;
+    Image_ErrorCode ret = OH_ImagePackerNative_Create(&packer);
+    if (ret != IMAGE_SUCCESS) {
+        return ret;
+    }
+
+    ret = OH_PackingOptions_Create(&options);
+    if (ret != IMAGE_SUCCESS) {
+        OH_ImagePackerNative_Release(packer);
+        return ret;
+    }
+
+    char mimeTypeData[] = "image/jpeg";
+    Image_MimeType mimeType = {
+        .data = mimeTypeData,
+        .size = strlen(mimeTypeData)
+    };
+    ret = OH_PackingOptions_SetMimeType(options, &mimeType);
+    if (ret == IMAGE_SUCCESS) {
+        ret = OH_PackingOptions_SetQuality(options, 90);
+    }
+
+    size_t size = outDataCapacity;
+    if (ret == IMAGE_SUCCESS) {
+        ret = OH_ImagePackerNative_PackToDataFromPixelmap(packer, options, pixelmap,
+            outData, &size);
+    }
+
+    OH_PackingOptions_Release(options);
+    OH_ImagePackerNative_Release(packer);
+
+    if (ret == IMAGE_SUCCESS) {
+        *encodedSize = size;
+    }
+    return ret;
+}
+```
+
 ### OH_ImagePackerNative_PackToDataFromPicture()
 
 ```c
@@ -733,6 +807,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative 
 **Description**
 
 Encodes a picture into data in a given format.
+
+Resource management: The caller allocates and releases **outData**. Before calling the API, set **size** to the capacity of **outData**. After the call is successful, **size** indicates the length of the encoded data actually written to **outData**. The Picture object itself is not released by this API.
 
 **Since**: 13
 
@@ -762,6 +838,10 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePack
 **Description**
 
 Encodes a PixelMap sequence into data.
+
+Usage scenario: This API is applicable for encoding multiple PixelMap frames into an animated image or other image formats that support sequential frames. Before encoding, use OH_PackingOptionsForSequence to set parameters such as the number of frames, delay time, and number of loops.
+
+Resource management: The caller allocates and releases **outData**. Before calling the API, set **outDataSize** to the capacity of **outData**. After the call is successful, **outDataSize** indicates the length of the encoded data actually written. The PixelMap objects in pixelmapSequence are held and released by the caller.
 
 **Since**: 18
 
@@ -793,6 +873,10 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNat
 
 Encodes an image source into a file.
 
+Usage scenario: This API is applicable for transcoding an ImageSource and directly writing it to a file descriptor, eliminating the need for the caller to manage the encoded in-memory buffer.
+
+Resource management: **fd** must be a writable file descriptor. The caller is responsible for opening and closing the file descriptor. The API does not release **imagePacker**, **options**, or **imageSource**.
+
 **Since**: 12
 
 
@@ -820,6 +904,10 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmap(OH_ImagePackerNative
 **Description**
 
 Encodes a PixelMap into a file.
+
+Usage scenario: This API is applicable for directly saving a processed PixelMap as a file. Compared with PackToDataFromPixelmap, this API does not require the caller to pre-allocate an output data buffer.
+
+Resource management: **fd** must be a writable file descriptor. The caller is responsible for opening and closing the file descriptor. The API does not release **imagePacker**, **options**, or **pixelmap**.
 
 **Since**: 12
 
@@ -906,6 +994,8 @@ Image_ErrorCode OH_ImagePackerNative_GetSupportedFormats(Image_MimeType **suppor
 
 Obtains the supported image formats that can be encoded.
 
+Application scenario: This API is applicable for dynamically querying the target formats supported by the current system before encoding, and setting the MIME type accordingly via OH_PackingOptions_SetMimeType.
+
 **Since**: 20
 
 
@@ -931,6 +1021,8 @@ Image_ErrorCode OH_ImagePackerNative_Release(OH_ImagePackerNative *imagePacker)
 **Description**
 
 Releases the pointer to an OH_ImagePackerNative struct.
+
+Resource management: The OH_ImagePackerNative objects successfully created through [OH_ImagePackerNative_Create](#oh_imagepackernative_create) must be released using this API after use. Releasing a packer does not release the OH_PackingOptions, OH_PackingOptionsForSequence, OH_ImageSourceNative, OH_PixelmapNative, or OH_PictureNative object.
 
 **Since**: 12
 
