@@ -1989,6 +1989,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | CD_DVD_BD   | 3       | 光盘类型。     |
 | DATA_DISK_SSD | 4       | SSD数据盘类型。     |
 | DATA_DISK_HDD | 5       | HDD数据盘类型。     |
+| DVR_USB  | 6       | 行车记录仪U盘类型。     |
 | UNKNOWN_DISK_TYPE | 255       | 未知磁盘类型。     |
 
 ## Disk
