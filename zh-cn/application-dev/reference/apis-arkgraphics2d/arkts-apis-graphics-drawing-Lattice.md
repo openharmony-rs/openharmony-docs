@@ -73,7 +73,7 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
-![zh-ch_Lattice.png](figures/zh-ch_Lattice.png)
+![Lattice.png](figures/Lattice.png)
 
 ## createImageLattice<sup>18+</sup>
 

@@ -42,7 +42,7 @@ The table below shows the effect of each blend mode, where the yellow rectangle 
 | DST_IN      | 6    | r = d * sa, retains only the intersection of the destination pixels with the opaque parts of the source.| ![DST_IN](figures/BlendMode-DstIn.png)|
 | SRC_OUT     | 7    | r = s * (1 - da), retains the parts of the source pixels that do not overlap with the destination.| ![SRC_OUT](figures/BlendMode-SrcOut.png)|
 | DST_OUT     | 8    | r = d * (1 - sa), retains the parts of the destination pixels that do not overlap with the source.| ![SRC_OUT](figures/BlendMode-SrcOut.png)|
-| SRC_ATOP    | 9    | r = s * da + d * (1 - sa), covers the destination pixels with the source pixels, showing the source only in the opaque parts of the destination.| ![SRC_ATOP](figures/image_BlendMode_SrcATop.png)|
+| SRC_ATOP    | 9    | r = s * da + d * (1 - sa), covers the destination pixels with the source pixels, showing the source only in the opaque parts of the destination.| ![SRC_ATOP](figures/BlendMode-SrcATop.png)|
 | DST_ATOP    | 10   | r = d * sa + s * (1 - da), covers the source pixels with the destination pixels, showing the destination only in the opaque parts of the source.| ![DST_ATOP](figures/BlendMode-DstATop.png)|
 | XOR         | 11   | r = s * (1 - da) + d * (1 - sa), shows only the non-overlapping parts of the source and destination pixels.| ![XOR](figures/BlendMode-Xor.png)|
 | PLUS        | 12   | r = min(s + d, 1), adds the color values of the source and destination pixels.                  | ![PLUS](figures/BlendMode-Plus.png)|
