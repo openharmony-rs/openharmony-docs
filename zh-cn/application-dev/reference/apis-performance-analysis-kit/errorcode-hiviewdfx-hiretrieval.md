@@ -29,7 +29,7 @@ Initialization error. Possibly caused by invoking this function before invoking 
 
 在调用该接口之前，先调用[hiRetrieval.init()](js-apis-hiretrieval.md#hiretrievalinit)接口完成应用灰度的初始化。
 
- ## 36000002 
+## 36000002 
 
 **错误信息**
 
@@ -37,7 +37,7 @@ Multi-instance applications not supported error. Possibly caused by invoking thi
 
 **错误描述**
 
-多实例应用调用[hiRetrieval.init()](js-apis-hiretrieval.md#hiretrievalinit)接口异常。
+多实例应用调用[hiRetrieval.init()](js-apis-hiretrieval.md#hiretrievalinit)接口异常（当前仅init()接口会抛出此错误码）。
 
 **可能原因**
 
@@ -45,4 +45,4 @@ Multi-instance applications not supported error. Possibly caused by invoking thi
 
 **处理步骤**
 
-当前版本暂不支持多实例应用调用应用灰度的能力。
+请确认当前应用是否为多实例应用。若为多实例应用，请避免调用HiRetrieval相关接口，待后续版本支持后再使用。
