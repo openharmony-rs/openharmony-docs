@@ -38752,7 +38752,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha256/segmentation.cpp",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":66,
 						"name":"message_digest_sha256_segmentation",
 						"start_line":16
 					}
@@ -38995,7 +38995,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Async.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":43,
 						"name":"message_authentication_code_calculated_as_fragmented_hmac_async",
 						"start_line":15
 					}
@@ -39005,7 +39005,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Sync.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":43,
 						"name":"message_authentication_code_calculated_as_fragmented_hmac_sync",
 						"start_line":15
 					}
@@ -39015,7 +39015,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Async.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":51,
 						"name":"message_authentication_code_calculation_hmac_one_time_incoming",
 						"start_line":16
 					}
@@ -39025,7 +39025,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Sync.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":49,
 						"name":"message_authentication_code_calculation_sync_one_time_incoming",
 						"start_line":15
 					}
@@ -53820,7 +53820,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ml_dsa_signature_verification/ml_dsa_signature_verification_asynchronous.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":62,
 						"name":"signature_verification_with_ml_dsa_key_pair_ark_async",
 						"start_line":16
 					}
@@ -53830,7 +53830,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ml_dsa_signature_verification/ml_dsa_signature_verification_synchronous.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":62,
 						"name":"signature_verification_with_ml_dsa_key_pair_ark_sync",
 						"start_line":16
 					}
