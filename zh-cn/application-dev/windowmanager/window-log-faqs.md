@@ -682,7 +682,9 @@ if (currWindow) {
 
 ### 销毁未完成导致createSubWindow创建同名子窗失败
 
-开发者在[createSubWindow()](../reference/apis-arkui/arkts-apis-window-windowstage.md#createsubwindow9-1)创建窗口对象后，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-window.md#destroyWindow9)，在窗口还未销毁的情况下，再次调用[createSubWindow()](../reference/apis-arkui/arkts-apis-window-windowstage.md#createsubwindow9-1)，且使用相同名称，导致窗口创建失败，报错1300002。
+开发者在[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9
+)创建窗口对象后，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)，在窗口还未销毁的情况下，再次调用[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9
+)，且使用相同名称，导致窗口创建失败，报错1300002。
 
 **典型日志信息**
 
@@ -758,7 +760,7 @@ let windowClass = await windowStage.createSubWindow(windowName);
 
 ### 子窗调用restore失败
 
-开发者对子窗口调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore9)接口，导致操作失败，报错1300004。
+开发者对子窗口调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口，导致操作失败，报错1300004。
 
 **典型日志信息**
 
@@ -779,8 +781,8 @@ hdc shell hidumper -s WindowManagerService -a '-a'
 ```
 
  2.在输出中查找目标窗口，根据Type字段判断：
-- 若Type为1，则对应为主窗口（MainWindow），可以调用restore()。主窗口通常为应用的主入口窗口，一般为应用的EntryAbility名称。
-- Type不为1的窗口，均不能调用restore()。例如，通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-windowstage.md#createsubwindow9-1)接口创建的窗口为子窗口，可在创建时指定子窗口名称。
+- 若Type为1，则对应为主窗口（MainWindow），可以调用restore()。
+- Type不为1的窗口，均不能调用restore()。例如，通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)接口创建的窗口为子窗口，可在创建时指定子窗口名称。
 
 解决要点：
 - restore()只能对主窗口调用，不能对子窗口使用
