@@ -13,7 +13,7 @@ The **usb** module provides USB device management functions, including USB devic
 > 
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are no longer maintained since API version 9. You are advised to use [`@ohos.usbManager`](js-apis-usbManager.md).
+> The APIs provided by this module are no longer maintained since API version 9. You are advised to use [@ohos.usbManager](js-apis-usbManager.md).
 >
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.usb (USB Manager) (No Longer Maintained)](js-apis-usb-deprecated.md).
 
@@ -44,7 +44,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Function list in numeric mask format.|
+| number | Numeric mask of the function list.|
 
 **Example**
 
@@ -67,13 +67,13 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 | Name| Type                          | Mandatory| Description             |
 | ------ | ------------------------------ | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype9) | Yes  | USB function list in numeric mask format.|
+| funcs  | [FunctionType](#functiontype9) | Yes  | Numeric mask of the function list.|
 
 **Return value**
 
 | Type  | Description                          |
 | ------ | ------------------------------ |
-| string | Function list in string format.|
+| string | Function list in string format after conversion.|
 
 **Example**
 
@@ -96,13 +96,13 @@ Sets the current USB function list in Device mode.
 
 | Name| Type                          | Mandatory| Description             |
 | ------ | ------------------------------ | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype9) | Yes  | USB function list in numeric mask format.|
+| funcs  | [FunctionType](#functiontype9) | Yes  | Numeric mask of the function list.|
 
 **Return value**
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
 
 **Example**
 
@@ -151,7 +151,7 @@ Obtains the list of all physical USB ports.
 
 | Type                         | Description                 |
 | ----------------------------- | --------------------- |
-| [Array\<USBPort\>](#usbport9) | List of physical USB ports.|
+|Array\<[USBPort](#usbport9)\>| List of physical USB ports.|
 
 **Example**
 
@@ -209,7 +209,7 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
 
 **Example**
 
