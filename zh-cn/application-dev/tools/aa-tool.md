@@ -494,7 +494,7 @@ aa appdebug -b <bundleName> [-p]
 
 ## 应用调试/调优命令（process）
 
-对应用进行调试或调优，IDE用该命令集成调试和调优工具。
+对应用进行调试或调优，DevEco Studio用该命令集成调试和调优工具。
 
 ```bash
 # 调试应用
