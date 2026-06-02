@@ -679,11 +679,9 @@ if (avScreenCaptureRecorder != undefined) {
 
 setContentAutoRotation(enable: boolean): Promise\<void>
 
-在录制视频过程中添加自定义水印图像。使用Promise异步回调。
+在录屏前设置录制屏幕旋转。使用Promise异步回调。
 
 > **说明：**
->
-> - 应用最多可添加5个水印。
 >
 > - 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用setContentAutoRotation接口。
 
