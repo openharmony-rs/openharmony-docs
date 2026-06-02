@@ -1,4 +1,4 @@
-﻿# Ukey PIN码认证(ArkTS) 
+# Ukey PIN码认证(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
