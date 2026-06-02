@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API版本26.0.0开始，huksExternalCrypto提供getErrorInfo接口，用于获取最近一次外部密钥操作的Extension错误信息。
+从API版本26.0.0开始，huksExternalCrypto提供getErrorInfo接口，用于获取最近一次外部密钥操作的详细错误信息。该错误信息由密钥管理扩展（CryptoExtensionAbility）返回，可用于辅助定位问题。
 
 ## 开发步骤
 
@@ -110,16 +110,16 @@ async function testErrorInfoRetain(): Promise<void> {
 
 | 场景 | errno | errorDesc |
 | ---- | ----- | --------- |
-| Extension返回错误信息结构体 | Extension错误码 | Extension描述 |
-| Extension未返回错误信息结构体 | 0（保持上次） | 保持上次的描述 |
-| 操作成功或HUKS内部错误 | 不更新，保持上次的错误信息 | 不更新，保持上次的错误信息 |
+| 密钥管理扩展返回错误信息 | 具体错误码（非0） | 扩展返回的描述（可能为空） |
+| 密钥管理扩展未返回错误信息 | 0（默认值或保持上次） | 空字符串（默认值或保持上次） |
+| 操作成功或HUKS内部错误 | 不更新，保持上次的值 | 不更新，保持上次的值 |
 
 ## 注意事项
 
-1. 此接口仅返回Extension的错误信息，HUKS内部错误通过异常抛出显示。
+1. 此接口仅返回密钥管理扩展的详细错误信息，HUKS内部错误通过接口异常抛出。
 
-2. Extension未返回错误信息结构体时（errno为0），保持上一次的错误信息。
+2. 当密钥管理扩展未返回详细错误信息时（errno为0），errorDesc为空字符串，开发者应通过接口异常的错误码判断错误原因。
 
-3. 建议在操作失败后立即调用getErrorInfo获取Extension错误信息。
+3. 建议在操作失败后立即调用getErrorInfo获取详细错误信息。errno非0时，表示扩展返回了错误信息，开发者应优先使用errno定位问题。
 
 4. 错误信息覆盖范围：authUkeyPin、getUkeyPinAuthState、getProperty、setProperty、openResource、closeResource、clearUkeyPinAuthState、getResourceId等接口。

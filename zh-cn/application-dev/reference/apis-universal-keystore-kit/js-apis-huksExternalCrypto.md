@@ -60,7 +60,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
 ## HuksExternalErrorInfo
 
-表示外部密钥操作的Extension错误信息。
+表示外部密钥操作时，密钥管理扩展返回的详细错误信息。
 
 **起始版本：** 26.0.0
 
@@ -70,8 +70,8 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| errno | number | 否 | 否 | Extension错误码。<br>- 非0值：Extension返回错误信息结构体时的错误码。<br>- 0值：Extension未返回错误信息结构体，保持上次的错误码。 |
-| errorDesc | string | 否 | 否 | Extension错误描述。<br>- Extension返回错误信息结构体时，返回Extension的描述。<br>- Extension未返回错误信息结构体时，保持上次的描述。 |
+| errno | number | 否 | 否 | 密钥管理扩展返回的错误码。<br>- 非0值：密钥管理扩展返回了详细错误信息，errno为具体错误码。<br>- 0值：密钥管理扩展未返回详细错误信息，errno为默认值0，开发者应通过接口异常的错误码判断错误原因。 |
+| errorDesc | string | 否 | 否 | 密钥管理扩展返回的错误描述。该字段的值与errno关联：<br>- errno非0时：密钥管理扩展返回的描述，可能为空字符串（由扩展决定）。<br>- errno为0时：空字符串。 |
 
 ## HuksExternalPinAuthState
 
@@ -721,13 +721,13 @@ async function testFunction() : Promise<void>
 
 getErrorInfo(): HuksExternalErrorInfo
 
-以同步方式获取最近一次外部密钥操作的Extension错误信息。
+以同步方式获取最近一次外部密钥操作的详细错误信息，该错误信息由密钥管理扩展返回。
 
 > **说明：**
 >
-> 1. 此接口仅返回Extension的错误信息，HUKS内部错误通过异常抛出。
-> 2. Extension未返回错误信息结构体时（errno为0），保持上一次的错误信息。
-> 3. 建议在操作失败后立即调用此接口获取Extension错误信息。
+> 1. 此接口返回密钥管理扩展的详细错误信息（errno和errorDesc），HUKS内部错误通过接口异常抛出。
+> 2. 当密钥管理扩展未返回详细错误信息时（errno为0），errorDesc为空字符串，开发者应通过接口异常的错误码判断错误原因。
+> 3. 建议在操作失败后立即调用此接口获取详细错误信息。
 
 **起始版本：** 26.0.0
 
