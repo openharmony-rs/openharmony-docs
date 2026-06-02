@@ -3746,11 +3746,11 @@ struct StyledStringAppend {
 
 ![incrementalUpdatePolicy](figures/incrementalUpdatePolicy.png)
 
-### 示例32（设置行尾缩进）
+### 示例32（设置文本尾部缩进）
 
-该示例通过[tailIndents](#tailIndents)接口实现了文本行尾缩进的功能。
+该示例通过[tailIndents](#tailIndents)接口实现了文本尾部缩进的功能。
 
-从API版本26.0.0开始，通过tailIndents属性设置文本行尾缩进。
+从API版本26.0.0开始，通过tailIndents属性设置文本尾部缩进。
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
