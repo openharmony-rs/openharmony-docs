@@ -672,7 +672,7 @@ TabBar悬浮样式。
 | maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | 否 | 是    | 蒙层的颜色。蒙层显示区域在纵向会基于蒙层的颜色进行透明度渐变显示，从下到上不透明度变小。浅色模式下默认值为#CCF1F3F5，显示为白色。深色模式下默认值为#99000000，显示为黑色。 |
 | maskHeight   | [Length](ts-types.md#length)           | 否 | 是    | 蒙层的高度。蒙层显示上边缘默认比TabBar上边缘高16vp。 |
 | adaptToHandedness   | boolean           | 否 | 是    | 是否跟随操作手左右布局显示。<br/>true表示跟随操作手左右布局显示；false表示不跟随操作手左右布局显示。<br/>默认值：false |
-| systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial].[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。 |
+| systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。 |
 
 ## BarMode枚举说明
 
