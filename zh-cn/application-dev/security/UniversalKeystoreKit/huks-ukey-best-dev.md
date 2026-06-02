@@ -1,4 +1,4 @@
-﻿# Ukey流程示例指导 
+# Ukey流程示例指导
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
