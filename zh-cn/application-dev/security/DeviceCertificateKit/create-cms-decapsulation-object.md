@@ -72,7 +72,12 @@ async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
     data: stringToUint8Array(inStream),
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
-  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (error) {
+    console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
+  }
   return x509Cert;
 }
 
@@ -108,7 +113,7 @@ async function testCmsDecryptTest() {
     console.info('[XTS] decryptEnvelopedData result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, message: ${error.message}`);
+    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, message: ${error.message}`);
   }
 }
 ```
