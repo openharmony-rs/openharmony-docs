@@ -1,4 +1,4 @@
-﻿# CryptoExtensionAbility适配开发指导 
+# CryptoExtensionAbility适配开发指导
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
