@@ -31,7 +31,8 @@ V1自定义组件冻结支持场景为：
 
 页面1：
 
-```ts
+<!-- @[FreezePageRouter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezePageRouter.ets) -->
+``` TypeScript
 'use static'
 
 import { Button, Column, Component, Entry, StorageLink, Text, Watch } from '@kit.ArkUI';
@@ -59,7 +60,7 @@ struct Page1 {
         })
       Button('go to next page').fontSize(30)
         .onClick(() => {
-          this.getUIContext().getRouter().pushUrl({ url: 'pages/Page2' });
+          this.getUIContext().getRouter().pushUrl({ url: 'pages/FreezePage2' });
         })
     }
   }
@@ -69,7 +70,8 @@ struct Page1 {
 
 页面2：
 
-```ts
+<!-- @[FreezePage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezePage2.ets) -->
+``` TypeScript
 'use static'
 
 import { Button, Column, Component, Entry, StorageLink, Text, Watch } from '@kit.ArkUI';
@@ -127,7 +129,8 @@ struct Page2 {
 
 ![freezeWithTab](../state-management/figures/freezewithTabs.png)
 
-```ts
+<!-- @[FreezeTabContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeTabContent.ets) -->
+``` TypeScript
 'use static'
 
 import { Button, Column, Component, Entry, FontWeight, ForEach, Link, Row, State, TabContent, Tabs, TabsController, Text, Watch } from '@kit.ArkUI';
@@ -196,7 +199,8 @@ struct FreezeChild {
 
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
 
-```ts
+<!-- @[FreezeLazyForEach](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeLazyForEach.ets) -->
+``` TypeScript
 'use static'
 
 import { Button, Color, Column, Component, DataChangeListener, Entry, FontWeight, ForEach, IDataSource, LazyForEach, Link, List, ListItem, Row, State, Text, TextAlign, Watch } from '@kit.ArkUI';
@@ -344,7 +348,8 @@ struct FreezeChild {
 
 在下面例子中，NavigationContentMsgStack会被设置成非激活态，将不再响应状态变量的变化，也不会触发组件刷新。
 
-```ts
+<!-- @[FreezeNavigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeNavigation.ets) -->
+``` TypeScript
 'use static'
 
 import { Builder, Button, ButtonType, ClickEvent, Column, Component, Entry, FontWeight, Link, Margin, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, State, StorageLink, Text, Watch } from '@kit.ArkUI';
@@ -558,7 +563,8 @@ struct NavigationContentMsgStack {
 
 在数据很多的长列表滑动场景下，开发者会使用LazyForEach来按需创建组件，同时配合组件复用降低在滑动过程中因创建和销毁组件带来的开销。但是开发者如果根据其复用类型不同，设置了[reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)，或者为了保证滑动性能设置了较大的cacheCount，这就可能使复用池或者LazyForEach缓存较多的节点。在这种情况下，如果开发者触发List下所有子节点的刷新，就会带来节点刷新数量过多的问题，这个时候，可以考虑搭配组件冻结使用。
 
-```ts
+<!-- @[FreezeReuse](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeReuse.ets) -->
+``` TypeScript
 'use static'
 
 import { Button, ClickEvent, Color, Column, Component, DataChangeListener, Entry, ForEach, IDataSource, LazyForEach, Link, List, ListItem, Reusable, Row, State, Text, Watch } from '@kit.ArkUI';
@@ -707,7 +713,8 @@ class TestDataSource extends BasicDataSource<string> {
 
 **Navigation和TabContent的混用**
 
-```ts
+<!-- @[FreezeMixNavTab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeMixNavTab.ets) -->
+``` TypeScript
 'use static'
 
 import { BarMode, BarPosition, Builder, Button, ButtonType, ClickEvent, Color, Column, Component, Entry, Link, Margin, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, PropRef, Row, State, StorageLink, TabContent, Tabs, TabsController, Text, Watch } from '@kit.ArkUI';
