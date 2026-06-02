@@ -1362,7 +1362,7 @@ NODE_TEXT_PUNCTUATION_OVERFLOW = 1055
 | .value[0].i32 | 是否启用行尾标点符号悬挂。 |
 
 ## NODE_TEXT_TAIL_INDENTS
- 	 
+
 ```c
 NODE_TEXT_TAIL_INDENTS = 1056
 ```
