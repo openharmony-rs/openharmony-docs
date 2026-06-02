@@ -310,7 +310,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
-**Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
 
 **Parameters**
 
@@ -615,7 +615,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
+  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
   console.info('Succeeded in doing getAvailableDevices.');
 
   if (data[0]) {

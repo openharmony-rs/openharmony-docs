@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **inputConsumer** module implements listening for combination key events as well as listening and interception for volume key events.
 
@@ -41,8 +41,9 @@ Sets the key event consumption configuration.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 23, this API can be properly called on phones, PCs/2-in-1 devices, tablets, TVs, and cars. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Since API version 23, this API can be properly called on phones, tablets, PCs/2-in-1 devices, and TVs. On other device types, error code 801 is returned.
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
 | key       | number  | No     | No     | Key value.<br>**Note**: From API version 21, the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode), [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode), [KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode), [KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode), and [KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode) keys.<br>In API version 20 or earlier versions, only the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode) and [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode) keys are supported.|
@@ -258,7 +259,7 @@ If the API call is successful, the system's default response to the key event wi
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 23, this API can be properly called on phones, PCs/2-in-1 devices, tablets, TVs, and cars. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Since API version 23, this API can be properly called on phones, tablets, PCs/2-in-1 devices, and TVs. On other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -315,7 +316,7 @@ Unsubscribes from key press events. This API uses an asynchronous callback to re
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 23, this API can be properly called on phones, PCs/2-in-1 devices, tablets, TVs, and cars. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Since API version 23, this API can be properly called on phones, tablets, PCs/2-in-1 devices, and TVs. On other device types, error code 801 is returned.
 
 **Parameters**
 
