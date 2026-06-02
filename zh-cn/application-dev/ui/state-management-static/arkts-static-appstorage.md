@@ -244,7 +244,7 @@ struct Index {
   @LocalStorageLink('LocalStorageLinkBasic') localStorageLink: number = 1;
   @StorageLink('StorageLinkObject') storageLinkObject: Data = new Data(1);
   @LocalStorageLink('LocalStorageLinkObject') localStorageLinkObject: Data = new Data(1);
-  static {
+  static {     
     AppStorage.setOrCreate<number>('StorageLinkBasic', 47);
     AppStorage.setOrCreate<Data>('StorageLinkObject', new Data(50));
   }
