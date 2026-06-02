@@ -152,8 +152,8 @@
 | 算法名称 | 字符串参数 | API版本 | 
 | -------- | -------- | -------- |
 | AES128_WRAP | AES128_WRAP | 22+ | 
+| AES192_WRAP | AES192_WRAP | 22+ | 
 | AES256_WRAP | AES256_WRAP | 22+ | 
-| AES384_WRAP | AES384_WRAP | 22+ | 
 
 ## 填充模式
 
