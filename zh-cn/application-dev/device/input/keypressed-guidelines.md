@@ -33,6 +33,8 @@
 
 在电子书或新闻阅读应用中，用户希望通过音量键或智控键滑动控制翻页（例如：音量加键向上翻页、音量减键向下翻页、智控键上滑向上翻页、智控键下滑向下翻页），需注意智控键上滑及下滑非设备通用键值，使用前请判断当前设备是否支持相关按键事件上报；在相机或扫码类应用中，用户按音量键可直接拍照，而不跳转系统相机应用。
 
+ArkTS-Dyn示例：
+
 <!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -188,3 +190,179 @@ struct TestDemo14 {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputKit/ArkTSInputConsumer-Sta/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+'use static'
+
+import inputConsumer from '@ohos.multimodalInput.inputConsumer';
+import { KeyEvent } from '@ohos.multimodalInput.keyEvent';
+import { KeyCode } from '@ohos.multimodalInput.keyCode';
+import hilog from '@ohos.hilog';
+import { BusinessError, Callback } from '@ohos.base';
+
+import { Entry, Component, Builder, Column, Row, Button, Text,
+  FlexAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+const DOMAIN: int = 0x0000;
+const TAG: string = 'InputConsumer';
+
+@Entry
+@Component
+struct TestDemo14 {
+  @State text: string = "Default monitoring for Volume Up and Down keys has been added."
+  private volumeUpCallBackFunc: Callback<KeyEvent> = (): void => {
+  }
+  private volumeDownCallBackFunc: Callback<KeyEvent> = (): void => {
+  }
+  options1: inputConsumer.KeyPressedConfig = {
+    key: KeyCode.KEYCODE_VOLUME_UP,
+    action: 1,
+    isRepeat: false,
+  }
+  options2: inputConsumer.KeyPressedConfig = {
+    key: KeyCode.KEYCODE_VOLUME_DOWN,
+    action: 1,
+    isRepeat: false,
+  }
+
+  aboutToAppear(): void {
+    try {
+      this.volumeUpCallBackFunc = (event: KeyEvent): void => {
+        this.getUIContext().getPromptAction().showToast({ message: 'Volume Up key pressed' });
+      }
+
+      this.volumeDownCallBackFunc = (event: KeyEvent): void => {
+        this.getUIContext().getPromptAction().showToast({ message: 'Volume Down key pressed' });
+      }
+
+      inputConsumer.onKeyPressed(this.options1, this.volumeUpCallBackFunc);
+      inputConsumer.onKeyPressed(this.options2, this.volumeDownCallBackFunc);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      const errorCode: int = err.code;
+      const errorMessage: string = err.message;
+      hilog.error(DOMAIN, TAG, `Subscribe execute failed, error code: %{public}d, message: %{public}s`,
+        errorCode, errorMessage);
+    }
+  }
+
+  aboutToDisappear(): void {
+    inputConsumer.offKeyPressed();
+  }
+
+  addVolumeUpMonitor(): void {
+    try {
+      inputConsumer.onKeyPressed(this.options1, this.volumeUpCallBackFunc);
+      this.getUIContext().getPromptAction().showToast({ message: 'Successfully added monitoring for Volume Up key!' });
+      this.text = "Monitoring for Volume Up key has been added.";
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      const errorCode: int = err.code;
+      const errorMessage: string = err.message;
+      hilog.error(DOMAIN, TAG, `Add volume up monitor failed, error code: %{public}d, message: %{public}s`,
+        errorCode, errorMessage);
+      this.getUIContext().getPromptAction().showToast({ message: 'Failed to add monitoring for Volume Up key!' });
+      this.text = `Failed to add monitoring for Volume Up key: code ${errorCode}, ${errorMessage}`;
+    }
+  }
+
+  removeVolumeUpMonitor(): void {
+    try {
+      inputConsumer.offKeyPressed();
+      this.getUIContext().getPromptAction().showToast({ message: 'Successfully removed monitoring for Volume Up key!' });
+      this.text = "Monitoring for Volume Up key has been removed.";
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      const errorCode: int = err.code;
+      const errorMessage: string = err.message;
+      hilog.error(DOMAIN, TAG, `Remove volume up monitor failed, error code: %{public}d, message: %{public}s`,
+        errorCode, errorMessage);
+      this.getUIContext().getPromptAction().showToast({ message: 'Failed to remove monitoring for Volume Up key!' });
+      this.text = `Failed to remove monitoring for Volume Up key: code ${errorCode}, ${errorMessage}`;
+    }
+  }
+
+  addVolumeDownMonitor(): void {
+    try {
+      inputConsumer.onKeyPressed(this.options2, this.volumeDownCallBackFunc);
+      this.getUIContext().getPromptAction().showToast({ message: 'Successfully added monitoring for Volume Down key!' });
+      this.text = "Monitoring for Volume Down key has been added.";
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      const errorCode: int = err.code;
+      const errorMessage: string = err.message;
+      hilog.error(DOMAIN, TAG, `Add volume down monitor failed, error code: %{public}d, message: %{public}s`,
+        errorCode, errorMessage);
+      this.getUIContext().getPromptAction().showToast({ message: 'Failed to add monitoring for Volume Down key!' });
+      this.text = `Failed to add monitoring for Volume Down key: code ${errorCode}, ${errorMessage}`;
+    }
+  }
+  removeVolumeDownMonitor(): void {
+    try {
+      inputConsumer.offKeyPressed();
+      this.getUIContext().getPromptAction().showToast({ message: 'Successfully removed monitoring for Volume Down key!' });
+      this.text = "Monitoring for Volume Down key has been removed.";
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      const errorCode: int = err.code;
+      const errorMessage: string = err.message;
+      hilog.error(DOMAIN, TAG, `Remove volume down monitor failed, error code: %{public}d, message: %{public}s`,
+        errorCode, errorMessage);
+      this.getUIContext().getPromptAction().showToast({ message: 'Failed to remove monitoring for Volume Down key!' });
+      this.text = `Failed to remove monitoring for Volume Down key: code ${errorCode}, ${errorMessage}`;
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button('Add monitoring for Volume Up key')
+          .onClick(() => {
+            this.addVolumeUpMonitor();
+          })
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.Center)
+      .margin({ top: 20, bottom: 50 })
+      Row() {
+        Button('Remove monitoring for Volume Up key')
+          .onClick(() => {
+            this.removeVolumeUpMonitor();
+          })
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.Center)
+      .margin({ top: 20, bottom: 50 })
+      Row() {
+        Button('Add monitoring for Volume Down key')
+          .onClick(() => {
+            this.addVolumeDownMonitor();
+          })
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.Center)
+      .margin({ top: 20, bottom: 50 })
+      Row() {
+        Button('Remove monitoring for Volume Down key')
+          .onClick(() => {
+            this.removeVolumeDownMonitor();
+          })
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.Center)
+      .margin({ top: 20, bottom: 50 })
+      Row() {
+        Text(this.text)
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
