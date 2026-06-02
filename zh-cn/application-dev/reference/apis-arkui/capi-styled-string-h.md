@@ -6100,7 +6100,7 @@ ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | 指向[OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)对象的指针。 |
-| const float* tailIndents | 尾缩进值，单位为vp。当尺寸为1时，所有行共享相同的尾缩进。当尺寸大于1时，第i个值指定第i行的尾部缩进；如果文本行数超出size，则剩余行使用最后一个值缩进。 |
+| const float* tailIndents | 尾部缩进值，单位：vp。当size为1时，所有行共享相同的尾缩进。当size大于1时，第i个值指定第i行的尾部缩进；如果文本行数超出size，则剩余行使用最后一个值缩进。 |
 | uint32_t size | 尾部缩进值个数。 |
 
 **返回：**
