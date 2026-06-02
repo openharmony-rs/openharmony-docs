@@ -201,7 +201,7 @@ struct TextDemo {
         this.displayedText =
           this.displayedText.slice(0,
             this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // Remove characters.
-        let textAfterCut = this.displayedText + "…"; // Add an ellipsis.
+        let textAfterCut = this.displayedText + "..."; // Add an ellipsis.
         let sizeAfterCut = this.getUIContext().getMeasureUtils().measureTextSize({
           textContent: textAfterCut,
           constraintWidth: this.textWidth

@@ -624,7 +624,7 @@ The number of applications in the Dock has reached the maximum.
 
 Delete unnecessary applications from the Dock.
 
-## 9201014 Specified Application Already in Docker
+## 9201014 Specified Application Already in Dock
 
 **Error Message**
 

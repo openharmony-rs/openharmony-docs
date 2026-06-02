@@ -310,7 +310,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
-**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
 
 **Parameters**
 
