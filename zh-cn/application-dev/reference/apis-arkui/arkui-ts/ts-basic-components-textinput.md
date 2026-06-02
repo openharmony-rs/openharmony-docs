@@ -4337,35 +4337,97 @@ struct demo {
 
 ![textInput_barState](figures/textInput_barState.gif)
 
-### 示例26（设置行首标点压缩）
+### 示例26（设置行首标点符号压缩和行尾标点符号悬挂）
 
-该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
 
-从API version 23开始，支持compressLeadingPunctuation接口。
+左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+文本自动换行后，剩余内容（含标点符号）需要能够放入上一行，标点符号悬挂才生效。
+
+从API版本23开始，新增compressLeadingPunctuation接口。
+
+从API版本26.0.0开始，新增punctuationOverflow接口。
+
+ArkTS-Dyn示例：
 
 ```ts
-// xxx.ets
 @Entry
 @Component
-struct Index {
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「123456789！\n『123456789：';
+
   build() {
-    Column(){
-      TextInput({ text: "\u300C行首标点压缩打开" })
-        .compressLeadingPunctuation(true)
-        .margin(5)
+    Column() {
+      TextInput({ text: this.text })
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .fontSize('20fp')
         .style(TextInputStyle.Inline)
-        .fontSize(30)
-        .width("90%")
-      TextInput({ text: "\u300C行首标点压缩关闭" })
-        .compressLeadingPunctuation(false)
-        .style(TextInputStyle.Inline)
-        .fontSize(30)
-        .width("90%")
-    }
+        .align(Alignment.Center)
+        .width('45%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
   }
 }
 ```
-![textInputCompressLeadingPunctuation](figures/textInputCompressLeadingPunctuation.gif)
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Button, Margin, Alignment, ClickEvent, State, TextInput, TextInputStyle } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「123456789！\n『123456789：';
+
+  build() {
+    Column() {
+      TextInput({ text: this.text })
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .fontSize('20fp')
+        .style(TextInputStyle.Inline)
+        .align(Alignment.Center)
+        .width('45%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick((event: ClickEvent) => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick((event: ClickEvent) => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick((event: ClickEvent) => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick((event: ClickEvent) => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
+  }
+}
+```
+![textInputPunctuation](figures/textInputPunctuation.gif)
 
 ### 示例27（设置自适应间距）
 
