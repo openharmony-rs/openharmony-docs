@@ -717,7 +717,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 | int32_t width | 录屏屏幕的宽度。单位为像素（px）。 |
 | int32_t height | 录屏屏幕的高度。单位为像素（px）。|
 
-约束与限制
+约束与限制：
 
 - 该接口仅允许在录屏运行阶段调用。
 - 设置自动跟随旋转配置[OH_AVScreenCapture_StrategyForCanvasFollowRotation](#oh_avscreencapture_strategyforcanvasfollowrotation)时，不支持同时调用该接口调整录屏分辨率。
