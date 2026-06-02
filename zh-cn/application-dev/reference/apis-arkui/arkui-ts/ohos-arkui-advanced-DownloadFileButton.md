@@ -32,6 +32,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 ## DownloadFileButton
 
+DownloadFileButton{( contentOptions: DownloadContentOptions, styleOptions: DownloadStyleOptions )}
+
 下载文件按钮组件，默认显示图标和文字。
 
 **装饰器类型：**@Component
