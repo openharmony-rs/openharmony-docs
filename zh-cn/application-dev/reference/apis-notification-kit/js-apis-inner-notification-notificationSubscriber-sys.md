@@ -549,7 +549,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | 是  | 是  | 通知排序信息。 |
 | reason          | number                                                             | 是  | 是  | 删除原因（1:点击通知后删除通知，2:用户删除通知） 。|
 | sound           | string                                                             | 是  | 是  | 通知声音。 |
-| vibrationValues | Array\<number\>                                                    | 是  | 是  | 通知震动。 |
+| vibrationValues | Array\<number\>                                                    | 是  | 是  | 通知振动。 |
 | voiceContent | [VoiceContent](#voicecontent)                                              | 是  | 是  | 通知语音播报内容。<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
