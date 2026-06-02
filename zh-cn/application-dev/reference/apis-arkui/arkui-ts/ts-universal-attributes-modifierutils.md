@@ -18,9 +18,9 @@ ModifierUtils提供用于属性修改器和属性操作的工具方法。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-### isInstanceOf\<T\>
+### isInstanceOf\<T extends CommonMethod\<T>>
 
-isInstanceOf\<T\>(instance: T, componentName: string): boolean
+isInstanceOf\<T extends CommonMethod\<T>>(instance: T, componentName: string): boolean
 
 检查给定的实例是否为指定组件类型。
 
