@@ -45,11 +45,11 @@
 
 - 示意图（关闭抗锯齿）
 
-  ![zh-cn_image_0000001214837333](figures/zh-cn_image_0000001214837333.png)
+  ![disabled-anti-aliasing](figures/disabled-anti-aliasing.png)
 
 - 示意图（开启抗锯齿）
 
-  ![zh-cn_image_0000001127125162](figures/zh-cn_image_0000001127125162.png)
+  ![enabled-anti-aliasing](figures/enabled-anti-aliasing.png)
 
 
 ## 属性
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001214837127](figures/zh-cn_image_0000001214837127.png)
+![example-lineCap](figures/example-lineCap.png)
 
 ### lineJoin
 
@@ -201,7 +201,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001214717247](figures/zh-cn_image_0000001214717247.png)
+![example-lineJoin](figures/example-lineJoin.png)
 
 ### miterLimit
 
@@ -431,7 +431,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001213192781](figures/zh-cn_image_0000001213192781.png)
+![red-blue-matrix](figures/red-blue-matrix.png)
 
   示例中，新绘制内容是蓝色矩形，现有绘制内容是红色矩形。
 
@@ -536,7 +536,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001213193285](figures/zh-cn_image_0000001213193285.png)
+![red-shadowOffsetY](figures/red-shadowOffsetY.png)
 
 ### imageSmoothingEnabled
 
@@ -607,7 +607,7 @@ fillRect(x: number, y: number, width:number, height: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214811029](figures/zh-cn_image_0000001214811029.png)
+  ![example-fillRect](figures/example-fillRect.png)
 
 ### clearRect
 
@@ -647,7 +647,7 @@ clearRect(x: number, y: number, width:number, height: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214619417](figures/zh-cn_image_0000001214619417.png)
+  ![example-clearRect](figures/example-clearRect.png)
 
 
 ### strokeRect
@@ -686,7 +686,7 @@ strokeRect(x: number, y: number, width:number, height: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214822091](figures/zh-cn_image_0000001214822091.png)
+  ![example2-strokeRect](figures/example2-strokeRect.png)
 
 
 ### fillText
@@ -725,7 +725,7 @@ fillText(text: string, x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214469787](figures/zh-cn_image_0000001214469787.png)
+  ![example-fillText](figures/example-fillText.png)
 
 ### strokeText
 
@@ -763,7 +763,7 @@ strokeText(text: string, x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214460669](figures/zh-cn_image_0000001214460669.png)
+  ![example-strokeText](figures/example-strokeText.png)
 
 ### measureText
 
@@ -874,7 +874,7 @@ beginPath(): void
   }
   ```
 
-  ![zh-cn_image_0000001214629745](figures/zh-cn_image_0000001214629745.png)
+  ![example-beginPath](figures/example-beginPath.png)
 
 
 ### moveTo
@@ -1076,7 +1076,7 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
   }
   ```
 
-  ![zh-cn_image_0000001214621177](figures/zh-cn_image_0000001214621177.png)
+  ![example-bezierCurveTo](figures/example-bezierCurveTo.png)
 
 ### quadraticCurveTo
 
@@ -1244,7 +1244,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
   }
   ```
 
-  ![zh-cn_image_0000001214823665](figures/zh-cn_image_0000001214823665.png)
+  ![example-ellipse](figures/example-ellipse.png)
 
 
 ### rect
@@ -1283,7 +1283,7 @@ rect(x: number, y: number, width: number, height: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214630783](figures/zh-cn_image_0000001214630783.png)
+  ![example-rect](figures/example-rect.png)
 
 ### fill
 
@@ -1313,7 +1313,7 @@ fill(): void
   }
   ```
 
-  ![zh-cn_image_0000001214703717](figures/zh-cn_image_0000001214703717.png)
+  ![example-fill](figures/example-fill.png)
 
 ### clip
 
@@ -1421,7 +1421,7 @@ scale(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214463281](figures/zh-cn_image_0000001214463281.png)
+  ![example-strokeRect](figures/example-strokeRect.png)
 
 ### transform
 
@@ -1475,7 +1475,7 @@ transform方法对应一个变换矩阵，想对一个图形进行变化的时�
   }
   ```
 
-  ![zh-cn_image_0000001214623227](figures/zh-cn_image_0000001214623227.png)
+  ![example-transform](figures/example-transform.png)
 
 ### setTransform
 
@@ -1606,7 +1606,7 @@ createPath2D(path: Path2D, cmds: string): Path2D
   }
   ```
 
-  ![zh-cn_image_0000001214824709](figures/zh-cn_image_0000001214824709.png)
+  ![example-createPath2D](figures/example-createPath2D.png)
 
 ### drawImage
 
@@ -1652,7 +1652,7 @@ drawImage(image: Image | PixelMap, sx: number, sy: number, sWidth: number, sHeig
   }
   ```
 
-  ![zh-cn_image_0000001214704759](figures/zh-cn_image_0000001214704759.png)
+  ![example-drawImage](figures/example-drawImage.png)
 
 ### restore
 
@@ -2027,7 +2027,7 @@ putImageData(imageData: ImageData, dx: number, dy: number): void
   }
   ```
 
-  ![zh-cn_image_0000001214463283](figures/zh-cn_image_0000001214463283.png)
+  ![example-putImageData](figures/example-putImageData.png)
 
 ### getPixelMap<sup>9+</sup>
 
@@ -2107,7 +2107,7 @@ setLineDash(segments: Array): void
   }
   ```
 
-  ![zh-cn_image_0000001214623229](figures/zh-cn_image_0000001214623229.png)
+  ![example-setLineDash](figures/example-setLineDash.png)
 
 ### getLineDash
 
