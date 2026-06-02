@@ -33,35 +33,35 @@ The table below shows the effect of each blend mode, where the yellow rectangle 
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ----------- | ---- | ------------------------------------------------------------ | -------- |
-| CLEAR       | 0    | r = 0, sets the destination pixels to fully transparent.                               | ![CLEAR](figures/image_BlendMode_Clear.png)|
-| SRC         | 1    | r = s (all channels of the result equal those of the source), replaces the destination pixels with the source pixels.| ![SRC](figures/image_BlendMode_Src.png)|
-| DST         | 2    | r = d (all channels of the result equal those of the destination), keeps the destination pixels unchanged.| ![DST](figures/image_BlendMode_Dst.png)|
-| SRC_OVER    | 3    | r = s + (1 - sa) * d, draws the source pixels over the destination pixels, considering the source's transparency.| ![SRC_OVER](figures/image_BlendMode_SrcOver.png)|
-| DST_OVER    | 4    | r = d + (1 - da) * s, draws the destination pixels over the source pixels, considering the destination's transparency.| ![DST_OVER](figures/image_BlendMode_DstOver.png)|
-| SRC_IN      | 5    | r = s * da, retains only the intersection of the source pixels with the opaque parts of the destination.| ![SRC_IN](figures/image_BlendMode_SrcIn.png)|
-| DST_IN      | 6    | r = d * sa, retains only the intersection of the destination pixels with the opaque parts of the source.| ![DST_IN](figures/image_BlendMode_DstIn.png)|
-| SRC_OUT     | 7    | r = s * (1 - da), retains the parts of the source pixels that do not overlap with the destination.| ![SRC_OUT](figures/image_BlendMode_SrcOut.png)|
-| DST_OUT     | 8    | r = d * (1 - sa), retains the parts of the destination pixels that do not overlap with the source.| ![SRC_OUT](figures/image_BlendMode_SrcOut.png)|
+| CLEAR       | 0    | r = 0, sets the destination pixels to fully transparent.                               | ![CLEAR](figures/BlendMode-Clear.png)|
+| SRC         | 1    | r = s (all channels of the result equal those of the source), replaces the destination pixels with the source pixels.| ![SRC](figures/BlendMode-Src.png)|
+| DST         | 2    | r = d (all channels of the result equal those of the destination), keeps the destination pixels unchanged.| ![DST](figures/BlendMode-Dst.png)|
+| SRC_OVER    | 3    | r = s + (1 - sa) * d, draws the source pixels over the destination pixels, considering the source's transparency.| ![SRC_OVER](figures/BlendMode-SrcOver.png)|
+| DST_OVER    | 4    | r = d + (1 - da) * s, draws the destination pixels over the source pixels, considering the destination's transparency.| ![DST_OVER](figures/BlendMode-DstOver.png)|
+| SRC_IN      | 5    | r = s * da, retains only the intersection of the source pixels with the opaque parts of the destination.| ![SRC_IN](figures/BlendMode-SrcIn.png)|
+| DST_IN      | 6    | r = d * sa, retains only the intersection of the destination pixels with the opaque parts of the source.| ![DST_IN](figures/BlendMode-DstIn.png)|
+| SRC_OUT     | 7    | r = s * (1 - da), retains the parts of the source pixels that do not overlap with the destination.| ![SRC_OUT](figures/BlendMode-SrcOut.png)|
+| DST_OUT     | 8    | r = d * (1 - sa), retains the parts of the destination pixels that do not overlap with the source.| ![SRC_OUT](figures/BlendMode-SrcOut.png)|
 | SRC_ATOP    | 9    | r = s * da + d * (1 - sa), covers the destination pixels with the source pixels, showing the source only in the opaque parts of the destination.| ![SRC_ATOP](figures/image_BlendMode_SrcATop.png)|
-| DST_ATOP    | 10   | r = d * sa + s * (1 - da), covers the source pixels with the destination pixels, showing the destination only in the opaque parts of the source.| ![DST_ATOP](figures/image_BlendMode_DstATop.png)|
-| XOR         | 11   | r = s * (1 - da) + d * (1 - sa), shows only the non-overlapping parts of the source and destination pixels.| ![XOR](figures/image_BlendMode_Xor.png)|
-| PLUS        | 12   | r = min(s + d, 1), adds the color values of the source and destination pixels.                  | ![PLUS](figures/image_BlendMode_Plus.png)|
-| MODULATE    | 13   | r = s * d, multiplies the color values of the source and destination pixels.                          | ![MODULATE](figures/image_BlendMode_Modulate.png)|
-| SCREEN      | 14   | r = s + d - s * d, inverts the color values of the source and destination pixels, multiplies them, and then inverts the result, typically producing a brighter outcome.| ![SCREEN](figures/image_BlendMode_Screen.png)|
-| OVERLAY     | 15   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the destination pixels, enhancing contrast.| ![OVERLAY](figures/image_BlendMode_Overlay.png)|
-| DARKEN      | 16   | rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d, takes the darker color values between the source and destination pixels.| ![DARKEN](figures/image_BlendMode_Darken.png)|
-| LIGHTEN     | 17   | rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d, takes the lighter color values between the source and destination pixels.| ![LIGHTEN](figures/image_BlendMode_Lighten.png)|
-| COLOR_DODGE | 18   | Brightens the destination pixels by reducing contrast to reflect the source pixels.          | ![COLOR_DODGE](figures/image_BlendMode_ColorDodge.png)|
-| COLOR_BURN  | 19   | Darkens the destination pixels by increasing contrast to reflect the source pixels.          | ![COLOR_BURN](figures/image_BlendMode_ColorBurn.png)|
-| HARD_LIGHT  | 20   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the source pixels.   | ![HARD_LIGHT](figures/image_BlendMode_HardLight.png)|
-| SOFT_LIGHT  | 21   | Softly brightens or darkens the destination pixels based on the brightness of the source pixels.            | ![SOFT_LIGHT](figures/image_BlendMode_SoftLight.png)|
-| DIFFERENCE  | 22   | rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d, calculates the difference between the color values of the source and destination pixels.| ![SOFT_LIGHT](figures/image_BlendMode_SoftLight.png)|
-| EXCLUSION   | 23   | rc = s + d - two(s * d), ra = s + (1 - sa) * d, similar to **DIFFERENCE** but with lower contrast.| ![EXCLUSION](figures/image_BlendMode_Exclusion.png)|
-| MULTIPLY    | 24   | r = s * (1 - da) + d * (1 - sa) + s * d, multiplies the color values of the source and destination pixels, typically resulting in a darker outcome.| ![MULTIPLY](figures/image_BlendMode_Multiply.png)|
-| HUE         | 25   | Uses the hue of the source pixels and the saturation and brightness of the destination pixels.              | ![HUE](figures/image_BlendMode_Hue.png)|
-| SATURATION  | 26   | Uses the saturation of the source pixels and the hue and brightness of the destination pixels.            | ![SATURATION](figures/image_BlendMode_Saturation.png)|
-| COLOR       | 27   | Uses the hue and saturation of the source pixels and the brightness of the destination pixels.              | ![COLOR](figures/image_BlendMode_Color.png)|
-| LUMINOSITY  | 28   | Uses the brightness of the source pixels and the hue and saturation of the destination pixels.              | ![LUMINOSITY](figures/image_BlendMode_Luminosity.png)|
+| DST_ATOP    | 10   | r = d * sa + s * (1 - da), covers the source pixels with the destination pixels, showing the destination only in the opaque parts of the source.| ![DST_ATOP](figures/BlendMode-DstATop.png)|
+| XOR         | 11   | r = s * (1 - da) + d * (1 - sa), shows only the non-overlapping parts of the source and destination pixels.| ![XOR](figures/BlendMode-Xor.png)|
+| PLUS        | 12   | r = min(s + d, 1), adds the color values of the source and destination pixels.                  | ![PLUS](figures/BlendMode-Plus.png)|
+| MODULATE    | 13   | r = s * d, multiplies the color values of the source and destination pixels.                          | ![MODULATE](figures/BlendMode-Modulate.png)|
+| SCREEN      | 14   | r = s + d - s * d, inverts the color values of the source and destination pixels, multiplies them, and then inverts the result, typically producing a brighter outcome.| ![SCREEN](figures/BlendMode-Screen.png)|
+| OVERLAY     | 15   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the destination pixels, enhancing contrast.| ![OVERLAY](figures/BlendMode-Overlay.png)|
+| DARKEN      | 16   | rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d, takes the darker color values between the source and destination pixels.| ![DARKEN](figures/BlendMode-Darken.png)|
+| LIGHTEN     | 17   | rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d, takes the lighter color values between the source and destination pixels.| ![LIGHTEN](figures/BlendMode-Lighten.png)|
+| COLOR_DODGE | 18   | Brightens the destination pixels by reducing contrast to reflect the source pixels.          | ![COLOR_DODGE](figures/BlendMode-ColorDodge.png)|
+| COLOR_BURN  | 19   | Darkens the destination pixels by increasing contrast to reflect the source pixels.          | ![COLOR_BURN](figures/BlendMode-ColorBurn.png)|
+| HARD_LIGHT  | 20   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the source pixels.   | ![HARD_LIGHT](figures/BlendMode-HardLight.png)|
+| SOFT_LIGHT  | 21   | Softly brightens or darkens the destination pixels based on the brightness of the source pixels.            | ![SOFT_LIGHT](figures/BlendMode-SoftLight.png)|
+| DIFFERENCE  | 22   | rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d, calculates the difference between the color values of the source and destination pixels.| ![SOFT_LIGHT](figures/BlendMode-SoftLight.png)|
+| EXCLUSION   | 23   | rc = s + d - two(s * d), ra = s + (1 - sa) * d, similar to **DIFFERENCE** but with lower contrast.| ![EXCLUSION](figures/BlendMode-Exclusion.png)|
+| MULTIPLY    | 24   | r = s * (1 - da) + d * (1 - sa) + s * d, multiplies the color values of the source and destination pixels, typically resulting in a darker outcome.| ![MULTIPLY](figures/BlendMode-Multiply.png)|
+| HUE         | 25   | Uses the hue of the source pixels and the saturation and brightness of the destination pixels.              | ![HUE](figures/BlendMode-Hue.png)|
+| SATURATION  | 26   | Uses the saturation of the source pixels and the hue and brightness of the destination pixels.            | ![SATURATION](figures/BlendMode-Saturation.png)|
+| COLOR       | 27   | Uses the hue and saturation of the source pixels and the brightness of the destination pixels.              | ![COLOR](figures/BlendMode-Color.png)|
+| LUMINOSITY  | 28   | Uses the brightness of the source pixels and the hue and saturation of the destination pixels.              | ![LUMINOSITY](figures/BlendMode-Luminosity.png)|
 
 ## PathMeasureMatrixFlags<sup>12+</sup>
 
