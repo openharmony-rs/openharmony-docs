@@ -699,7 +699,7 @@ struct WebComponent {
       })
       Button('backward').onClick(() => {
         this.controller.backward();
-        console.info(`AtomicServiceWebLog backward}`);
+        console.info(`AtomicServiceWebLog backward`);
       })
       Button('refresh').onClick(() => {
         this.controller.refresh();
