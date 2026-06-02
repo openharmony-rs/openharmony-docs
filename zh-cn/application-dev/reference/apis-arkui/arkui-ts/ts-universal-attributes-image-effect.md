@@ -1207,6 +1207,8 @@ systemMaterial(material: SystemUiMaterial | undefined): T
 
 type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material
 
+系统材质对象基类。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1219,7 +1221,7 @@ type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial.md#material)     | 系统材质对象。 |
+| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial.md#material)     | 系统材质对象基类。 |
 
 ## doubleSided
 
