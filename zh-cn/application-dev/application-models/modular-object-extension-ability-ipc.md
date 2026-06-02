@@ -147,49 +147,52 @@ private:
 ```
 private:
     OHIPCRemoteProxy* remote_ = nullptr;
-};
-```
-
-**calculator_proxy.cpp**
-- 创建`OHIPCParcel`请求包和响应包。
-- 写入接口令牌，序列化方法参数。
-- 调用`OH_IPCRemoteProxy_SendRequest()`发起同步IPC。
-- 读取`reply`中的错误码与返回值。
 <!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.cpp) -->
-```cpp
+
+``` C++
+ErrCode CalculatorProxy::WriteRemoteObject(OHIPCParcel* parcel) const
+{
+    if (parcel == nullptr || remoteProxy_ == nullptr) {
+        return OH_IPC_CHECK_PARAM_ERROR;
+    }
+    if (OH_IPCParcel_WriteRemoteProxy(parcel, remoteProxy_) != OH_IPC_SUCCESS) {
+        return OH_IPC_PARCEL_WRITE_ERROR;
+    }
+    return OH_IPC_SUCCESS;
+}
+
 ErrCode CalculatorProxy::Add(int32_t a, int32_t b, int32_t& result)
 {
-  std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelData(OH_IPCParcel_Create());
-  std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelReply(OH_IPCParcel_Create());
-  if (OH_IPCParcel_WriteInterfaceToken(parcelData.get(),
-      ICalculator::GetDescriptor()) != OH_IPC_SUCCESS) {
-      return OH_IPC_PARCEL_WRITE_ERROR;
-  }
+// ...
+    std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelData(OH_IPCParcel_Create());
+    std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelReply(OH_IPCParcel_Create());
+// ...
+    if (OH_IPCParcel_WriteInterfaceToken(parcelData.get(),
+        ICalculator::GetDescriptor()) != OH_IPC_SUCCESS) {
+        return OH_IPC_PARCEL_WRITE_ERROR;
+    }
 
-  if (OH_IPCParcel_WriteInt32(parcelData.get(), a) != OH_IPC_SUCCESS) {
-      return OH_IPC_PARCEL_WRITE_ERROR;
-  }
+    if (OH_IPCParcel_WriteInt32(parcelData.get(), a) != OH_IPC_SUCCESS) {
+        return OH_IPC_PARCEL_WRITE_ERROR;
+    }
+    if (OH_IPCParcel_WriteInt32(parcelData.get(), b) != OH_IPC_SUCCESS) {
+        return OH_IPC_PARCEL_WRITE_ERROR;
+    }
+// ...
+    int32_t errCode = OH_IPC_SUCCESS;
+    if (OH_IPCParcel_ReadInt32(parcelReply.get(), &errCode) != OH_IPC_SUCCESS) {
+        return OH_IPC_PARCEL_READ_ERROR;
+    }
 
-  if (OH_IPCParcel_WriteInt32(parcelData.get(), b) != OH_IPC_SUCCESS) {
-      return OH_IPC_PARCEL_WRITE_ERROR;
-  }
+    int32_t resultValue = 0;
+    if (OH_IPCParcel_ReadInt32(parcelReply.get(), &resultValue) != OH_IPC_SUCCESS) {
+        return OH_IPC_PARCEL_READ_ERROR;
+    }
+    result = resultValue;
 
-  int32_t transportErr = OH_IPCRemoteProxy_SendRequest(
-      remote_,
-      static_cast<uint32_t>(ICalculator::IpcCode::COMMAND_ADD),
-      parcelData.get(),
-      parcelReply.get(),
-      &option);
-
-  int32_t errCode = OH_IPC_SUCCESS;
-  if (OH_IPCParcel_ReadInt32(parcelReply.get(), &errCode) != OH_IPC_SUCCESS) {
-      return OH_IPC_PARCEL_READ_ERROR;
-  }
-  if (errCode != OH_IPC_SUCCESS) {
-      return errCode;
-  }
-
-  int32_t resultValue = 0;
+    return errCode;
+}
+```
   if (OH_IPCParcel_ReadInt32(parcelReply.get(), &resultValue) != OH_IPC_SUCCESS) {
       return OH_IPC_PARCEL_READ_ERROR;
   }
