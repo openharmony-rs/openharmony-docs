@@ -3795,10 +3795,10 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 
 **参数：**
 
-| 参数名    | 类型                                                   | 必填 | 说明                                                 |
-| --------- | ---------------------------------------------------------- | ---- |----------------------------------------------------|
-| keyPrefix | string                                 | 是   | 表示要匹配的键前缀， 长度超过[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。                                 |
+| 参数名    | 类型                                                   | 必填 | 说明                                                                                  |
+| --------- | ---------------------------------------------------------- | ---- |-------------------------------------------------------------------------------------|
+| keyPrefix | string                                 | 是   | 表示要匹配的键前缀， 长度不超过[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。                                                                  |
 
 **错误码：**
 
@@ -6636,10 +6636,10 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 
 **参数：**
 
-| 参数名    | 类型                                                       | 必填 | 说明                                                |
-| --------- | ---------------------------------------------------------- | ---- |---------------------------------------------------|
-| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度超过[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。                                |
+| 参数名    | 类型                                                       | 必填 | 说明                                                                                 |
+| --------- | ---------------------------------------------------------- | ---- |------------------------------------------------------------------------------------|
+| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度不超过[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。                                                                 |
 
 **错误码：**
 
