@@ -81,16 +81,19 @@
       
       ``` TypeScript
       let timer: reminderAgentManager.ReminderRequestTimer = {
-        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,  // 提醒类型为倒计时类型
-        ringDuration: Constant.REMINDER_DURATION,
-        title: context.resourceManager.getStringSync($r('app.string.timer').id),  // 指明提醒标题, "app.string.timer"资源文件中的value值为"计时器"
-        content: context.resourceManager.getStringSync($r('app.string.countdown_close').id),  // 指明提醒内容, "app.string.countdown_close"资源文件中的value值为"计时器已结束"
-        wantAgent: {  // // 点击提醒通知后跳转的目标UIAbility信息
+        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER, // 提醒类型为倒计时类型
+        ringDuration: Constant.REMINDER_DURATION, // 指明响铃时长和振动时长（单位：秒）
+        title: context.resourceManager.getStringSync($r('app.string.timer')
+          .id), // 指明提醒标题, "app.string.timer"资源文件中的value值为"计时器"
+        content: context.resourceManager.getStringSync($r('app.string.countdown_close')
+          .id), // 指明提醒内容, "app.string.countdown_close"资源文件中的value值为"计时器已结束"
+        wantAgent: {
+          // 点击提醒通知后跳转的目标UIAbility信息
           pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
         notificationId: 100, // 指明提醒使用的通知的ID号，相同ID号的提醒会覆盖
-        slotType: notificationManager.SlotType.CONTENT_INFORMATION,  // 指明提醒的Slot类型
+        slotType: notificationManager.SlotType.CONTENT_INFORMATION, // 指明提醒的Slot类型
         triggerTimeInSeconds: this.countdownTime
       };
       ```
