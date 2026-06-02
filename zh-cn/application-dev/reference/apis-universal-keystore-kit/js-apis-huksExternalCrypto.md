@@ -56,7 +56,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | 名称 | 类型        | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
 | tag    | [HuksExternalCryptoTag](#huksexternalcryptotag)  | 否   | 否   | 参数标签，用于区分参数。 |
-| value  | boolean\|int\|bigint\|Uint8Array | 否   | 否   | 标签对应值。 |
+| value  | boolean\|number\|bigint\|Uint8Array | 否   | 否   | 标签对应值。 |
 
 ## HuksExternalPinAuthState
 
