@@ -56,6 +56,10 @@
 | params | - | - | Object | 否 | 命令参数。不传入时使用默认返回字段。 |
 | params | wants | - | Array\<string> | 否 | 指定需要在节点中追加返回的字段。数组项表示节点信息字段，取值请参见[getFullDom的params.wants字段取值说明](#getfulldom的paramswants字段取值说明)。`getFullDom`会默认请求`tag`、`text`、`content`和全部HTML属性。 |
 
+> **说明：**
+>
+> `getFullDom`默认返回当前网页的`url`、`title`和`children_nodes`。`children_nodes`中的节点默认返回`tag`、`text`、`content`、`attributes`和`children_nodes`；其中`text`、`content`和`attributes`在字段值为空时不会返回。
+
 ### getFullDom的params.wants字段取值说明
 
 | 取值 | 返回字段 | 返回类型 | 说明 |
@@ -158,7 +162,7 @@
 
 > **说明：**
 >
-> - `children_nodes`中的节点字段由默认字段和`wants`共同决定。字段值为空时，部分字符串字段不会返回。
+> - `children_nodes`中的节点字段由默认字段和`wants`共同决定。字段值为空时，部分字符串字段和`attributes`字段不会返回。
 > - `getFullDom`会跳过`script`、`noscript`、`style`、`template`和`slot`元素子树。
 > - `getFullDom`会遍历开放或关闭的作者Shadow DOM，不返回用户代理Shadow DOM。
 > - 对于可解析的子frame，子frame根节点会合并到对应frame owner节点的`children_nodes`中。
@@ -279,6 +283,7 @@
 
 > **说明：**
 >
+> - `getLiteDom`默认返回当前网页的`url`、`title`和`nodes`。`nodes`中的节点默认返回`tag`、`text`和`xpath`；其中`text`在字段值为空时不会返回。
 > - `isInViewport`会与其他筛选规则叠加生效。
 > - `tags`、`attributes`、`roles`、`clickable`和`scrollable`之间满足任一规则即可匹配。
 > - 如果未设置`tags`、`attributes`、`roles`、`clickable`和`scrollable`，则所有未被跳过的元素节点均满足筛选条件。
@@ -384,7 +389,7 @@
 
 > **说明：**
 >
-> - `nodes`中的节点字段由默认字段和`wants`共同决定。字段值为空时，部分字符串字段不会返回。
+> - `nodes`中的节点字段由默认字段和`wants`共同决定。字段值为空时，部分字符串字段和`attributes`字段不会返回。
 > - `getLiteDom`只返回元素节点，不返回文本节点。
 > - `getLiteDom`会跳过`script`、`noscript`、`style`、`template`和`slot`元素子树。
 > - `getLiteDom`会遍历开放或关闭的作者Shadow DOM，不返回用户代理Shadow DOM。
