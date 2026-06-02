@@ -101,7 +101,7 @@
 // 错误码： 13900020 - Display name invalid
 // 接口: createAsset
 
-const TAG = 'Case07_DisplayName';
+const TAG = 'Case_DisplayNameInvalid';
 
 async trigger13900020Error(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -152,12 +152,17 @@ async trigger13900020Error(context: common.Context): Promise<void> {
 
 
 ```log
-E Case07_DisplayName Test1 Error code: 13900020
-E Case07_DisplayName Test1 Error message: invalid parameter
-E Case07_DisplayName Test2 Error code: 13900020
-E Case07_DisplayName Test2 Error message: invalid parameter
-E Case07_DisplayName Test3 Error code: 13900020
-E Case07_DisplayName Test3 Error message: invalid parameter
+I     Case_DisplayNameInvalid Test1: create asset with illegal chars in displayName
+E     Case_DisplayNameInvalid Test1 Error code: 13900020
+E     Case_DisplayNameInvalid Test1 Error message: invalid parameter
+I     Case_DisplayNameInvalid Test2: create asset with slash in displayName
+E     Case_DisplayNameInvalid Test2 Error code: 13900020
+E     Case_DisplayNameInvalid Test2 Error message: invalid parameter
+I     Case_DisplayNameInvalid Test3: create asset with colon in displayName
+E     Case_DisplayNameInvalid Test3 Error code: 13900020
+E     Case_DisplayNameInvalid Test3 Error message: invalid parameter
+I     Case_DisplayNameInvalid Test4: create asset with valid displayName
+I     Case_DisplayNameInvalid Test4 success, uri: file://media/Photo/6/IMG_1780493682_005/valid_image.jpg
 ```
 
 ### 常见易错代码
