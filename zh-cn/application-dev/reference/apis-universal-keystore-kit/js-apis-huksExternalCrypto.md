@@ -56,7 +56,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | 名称 | 类型        | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
 | tag    | [HuksExternalCryptoTag](#huksexternalcryptotag)  | 否   | 否   | 参数标签，用于区分参数。 |
-| value  | boolean\|number\|bigint\|Uint8Array | 否   | 否   | 标签对应值。 |
+| value  | boolean\|int\|bigint\|Uint8Array | 否   | 否   | 标签对应值。 |
 
 ## HuksExternalPinAuthState
 
@@ -439,7 +439,7 @@ getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise&
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 801 | API is not supported. |
-| 12000002 | The ability name or bundle name parameter is missing. |
+| 12000002 | The ability name, bundle name parameter or resource information is missing. |
 | 12000005 | IPC communication failed. |
 | 12000011 | The provider is not found. |
 | 12000012 | Device environment or input parameters are abnormal. This error may occur if the process function is not found, or due to other issues. |

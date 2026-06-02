@@ -663,6 +663,8 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 > - 离线密钥证明依赖网络，需要定期联网使用该接口以更新离线证书。
 > - 离线匿名密钥证明需保证本地时间是准确的，否则可能导致对端校验证书超期失败。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
@@ -691,20 +693,20 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the app permission is not sufficient permissions, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
-| 202 | non-system applications are not allowed to use system APIs. |
-| 801 | api is not supported. |
-| 12000001 | algorithm mode is not supported. |
+| 201 | The app does not have sufficient permissions. Possible causes: The cross-account permission is not granted, the system is not unlocked by the user, or the user does not exist. |
+| 202 | Non-system apps use system APIs. |
+| 801 | The API is not supported. |
+| 12000001 | The function is not supported. Possible causes: <br>1. The algorithm mode is not supported. <br>2. The group key is not supported. <br>3. The extended encryption key is not supported. |
 | 12000002 | The algorithm parameter is missing. |
 | 12000003 | The algorithm parameter is invalid. |
-| 12000004 | operating file failed. |
-| 12000005 | IPC communication failed. |
-| 12000006 | error occurred in crypto engine. |
-| 12000011 | queried entity does not exist. |
-| 12000012 | Device environment or input parameter abnormal. |
-| 12000014 | memory is insufficient. |
-| 12000018 | group id specified by the access group tag is invalid. |
-| 12000024 | The operation times out. This may be caused by network jitter. |
+| 12000004 | The file operation failed. |
+| 12000005 | The IPC communication failed. |
+| 12000006 | The encryption engine is faulty. |
+| 12000011 | The queried entity does not exist. |
+| 12000012 | The device environment or input parameter is abnormal. |
+| 12000014 | The memory is insufficient. |
+| 12000018 | The parameter is incorrect. Possible causes: <br>1. A mandatory parameter is left empty. <br>2. The parameter type is incorrect. <br>3. The parameter verification failed. |
+| 12000024 | The operation times out. This may be caused by network jitter. You can try again later. |
 | 12000027 | The network is unavailable. Check network connections. |
 
 **示例：**
