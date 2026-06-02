@@ -230,7 +230,7 @@ Before a DLP file management application opens a protected file, the system need
 | access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | Yes| Permission on the DLP file. The permissions on a DLP file determine the access scope of the file. If the value is out of range, error code 19100001 is thrown.|
 | userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. If the value is out of range, error code 19100001 is thrown.|
 | uri | string | Yes| URI of the DLP file. The value contains up to 4095 bytes. If the value is out of range, error code 19100001 is thrown.|
-| callback | AsyncCallback&lt;[DLPSandboxInfo](#dlpsandboxinfo)&gt; | Yes| Callback used to receive information about the application sandbox. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, err is an error object. **res** is a **DLPSandboxInfo** object that contains information about the application sandbox.|
+| callback | AsyncCallback&lt;[DLPSandboxInfo](#dlpsandboxinfo)&gt; | Yes| Callback used to receive information about the application sandbox. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object. **res** is a **DLPSandboxInfo** object that contains information about the application sandbox.|
 
 **Error codes**
 
@@ -698,7 +698,7 @@ Before deleting a link file, stop the read and write.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of stopping read and write on the FUSE. The callback parameter is **err**. **err** is **undefined** when the operation is successful; otherwise, err is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of stopping read and write on the FUSE. The callback parameter is **err**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -980,7 +980,7 @@ When you need to access a different DLP file, you can replace the link file.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | linkFileName | string | Yes| Name of the link file in the FUSE. The value contains up to 255 bytes. If the value is out of range, error code 19100001 is thrown.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of replacing a link file. The callback parameter is **err**. **err** is **undefined** when the operation is successful; otherwise, err is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of replacing a link file. The callback parameter is **err**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1272,7 +1272,7 @@ This API is used when the file owner decides to disable the DLP protection for a
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | plaintextFd | number | Yes| FD of the target plaintext file. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of recovering the plaintext of a DLP file. The callback parameter is **err**. **err** is **undefined** when the operation is successful; otherwise, err is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of recovering the plaintext of a DLP file. The callback parameter is **err**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1577,7 +1577,7 @@ After calling **generateDLPFile()** to return a **DLPFile** object, the system m
 | plaintextFd | number | Yes| FD of the plaintext file to be encrypted. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated.|
 | ciphertextFd | number | Yes| FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated.|
 | property | [DLPProperty](js-apis-dlppermission.md#dlpproperty21) | Yes| Authorization information, which includes the authorized user list, owner account, and contact account information.|
-| callback | AsyncCallback&lt;[DLPFile](#dlpfile)&gt; | Yes|Callback used to receive the result of generating a DLP file. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, err is an error object. **res** is a **DLPFile** object that represents the DLP file generated.|
+| callback | AsyncCallback&lt;[DLPFile](#dlpfile)&gt; | Yes|Callback used to receive the result of generating a DLP file. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object. **res** is a **DLPFile** object that represents the DLP file generated.|
 
 **Error codes**
 
@@ -1727,7 +1727,7 @@ Opens a DLP file. This API uses an asynchronous callback to return the result. A
 | -------- | -------- | -------- | -------- |
 | ciphertextFd | number | Yes| FD of the encrypted file.|
 | appId | string | Yes| ID of the caller. The value contains 8 to 1024 bytes. If the value is out of range, error code 19100001 is returned.|
-| callback | AsyncCallback&lt;[DLPFile](#dlpfile)&gt; | Yes| Callback used to receive the result of opening a DLP file. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, err is an error object. **res** is a **DLPFile** object that represents the DLP file opened.|
+| callback | AsyncCallback&lt;[DLPFile](#dlpfile)&gt; | Yes| Callback used to receive the result of opening a DLP file. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object. **res** is a **DLPFile** object that represents the DLP file opened.|
 
 **Error codes**
 
