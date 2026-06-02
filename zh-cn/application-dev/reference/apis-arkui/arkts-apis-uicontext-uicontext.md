@@ -4334,7 +4334,7 @@ export default class EntryAbility extends UIAbility {
 
 setUIStates(callback: VoidCallback): void
 
-提供在非UI线程中安全更新状态变量的能力。在UI线程调用该接口会同步执行回调函数更新状态变量，在非UI线程中调用时，会将回调函数分发到UI线程队列异步执行。
+提供在非UI线程中安全更新状态变量的能力。在UI线程调用该接口会同步执行回调函数更新状态变量，在非UI线程中调用时，会将回调函数分发到UI线程队列异步执行。使用callback异步回调。
 
 在debug模式下，若检测到未通过setUIStates在非UI线程更新状态变量，系统将输出错误日志（需要使用try-catch捕获异常）。
 
