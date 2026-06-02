@@ -39,7 +39,7 @@ project/
 
 <!-- @[StaBuilderV2Ref](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/entry/src/main/ets/pages/StaBuilderV2Ref.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaBuilderV2Ref.ets
 import { Entry, ComponentV2, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
@@ -81,7 +81,7 @@ struct Index {
 
 <!-- @[StaBuilderV2RefMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 export class Tmp {
@@ -98,7 +98,7 @@ export function overBuilder(params: Tmp) {
 
 <!-- @[StaBuilderV2RefDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 export { overBuilder } from './src/main/ets/components/MainPage';
 ```
@@ -129,7 +129,7 @@ project/
 
 <!-- @[StaBuilderV2Param](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/entry/src/main/ets/pages/StaBuilderV2Param.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaBuilderV2Param.ets
 import { Entry, ComponentV2, Builder, Column, Text, ClickEvent, Color } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
@@ -183,7 +183,7 @@ struct CustomContainerUser {
 
 <!-- @[StaBuilderV2ParamMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @ComponentV2
@@ -204,7 +204,7 @@ export struct CustomContainer {
 
 <!-- @[StaBuilderV2ParamDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 export { CustomContainer } from './src/main/ets/components/MainPage';
 ```
@@ -235,7 +235,7 @@ project/
 
 <!-- @[StaBuilderV2Wrapped](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/entry/src/main/ets/pages/StaBuilderV2Wrapped.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaBuilderV2Wrapped.ets
 import { Entry, ComponentV2, Column, Button, ClickEvent, compatibleWrappedBuilder } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
@@ -278,7 +278,7 @@ struct MainPage {
 
 <!-- @[StaBuilderV2WrappedMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 class Message {
@@ -297,7 +297,7 @@ export const globalBuilder: WrappedBuilder<[Message]> = wrapBuilder(messageBuild
 
 <!-- @[StaBuilderV2WrappedDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 export { globalBuilder } from './src/main/ets/components/MainPage';
 ```

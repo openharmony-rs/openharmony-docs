@@ -60,7 +60,7 @@ project/
 
 <!-- @[StaDynStorageV2StaticMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStoragesV2/static_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // static_module/src/main/ets/components/MainPage.ets
 import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 import { enableCompatibleObservedV2ForDynamic } from '@ohos.arkui.component';
@@ -93,7 +93,7 @@ export function setEnableCompatibleObservedV2ForDynamic(T: Object): void {
 
 <!-- @[StaDynStorageV2StaticIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStoragesV2/static_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // static_module/Index.ets
 export {
   STATIC_KEY, DYNAMIC_KEY, FONT_SIZE, MARGIN, MessageModel, setEnableCompatibleObservedV2ForDynamic
@@ -115,7 +115,7 @@ export {
 
 <!-- @[StaDynStorageV2AppMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStoragesV2/dynamic_module/src/main/ets/components/AppStorageV2Page.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/AppStorageV2Page.ets
 import { AppStorageV2 } from '@kit.ArkUI';
 import {
@@ -200,7 +200,7 @@ export struct AppStorageV2Page {
 
 <!-- @[StaDynStorageV2App](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStoragesV2/entry/src/main/ets/pages/StaDynStorageV2App.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStorageV2App.ets
 import { Entry, Text, Column, Button, Divider, ComponentV2, Row } from '@ohos.arkui.component';
 import { AppStorageV2, Local } from '@ohos.arkui.stateManagement';
@@ -321,7 +321,7 @@ project/
 
 <!-- @[StaDynStorageV2PersistenceMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStoragesV2/dynamic_module/src/main/ets/components/PersistenceV2Page.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/PersistenceV2Page.ets
 import { PersistenceV2, Type } from '@kit.ArkUI';
 
@@ -445,7 +445,7 @@ export struct PersistenceV2Page {
 
 <!-- @[StaDynStorageV2DynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStoragesV2/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 export { AppStorageV2Page } from './src/main/ets/components/AppStorageV2Page';
 export {
@@ -469,7 +469,7 @@ export {
 
 <!-- @[StaDynStorageV2Persistence](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStoragesV2/entry/src/main/ets/pages/StaDynStorageV2Persistence.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStorageV2Persistence.ets
 import { Entry, Text, Column, ComponentV2, Button, Divider } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';

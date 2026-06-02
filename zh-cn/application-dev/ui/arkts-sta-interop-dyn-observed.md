@@ -60,7 +60,7 @@ project/
 
 <!-- @[StaDynObservedMainPageClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/src/main/ets/components/ObservedClass.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/ObservedClass.ets
 
 @Observed
@@ -76,7 +76,7 @@ ArkTS-Dyn中@Observed装饰的数据被ArkTS-Sta的状态管理V1相关装饰器
 
 <!-- @[StaDynObservedDynIndexClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { MyClassA } from './src/main/ets/components/ObservedClass'; // 导出动态@Observed装饰的类
@@ -96,7 +96,7 @@ export { MyClassA } from './src/main/ets/components/ObservedClass'; // 导出动
 
 <!-- @[StaDynObserved](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/entry/src/main/ets/pages/StaDynObserved.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynObserved.ets
 import { Entry, Component, Row, Column, Scroll, Button, ClickEvent, Text } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -134,7 +134,7 @@ struct Index { // ArkTS-Sta组件
     }
   }
 }
-  ```
+```
 
 ![arkts-old-state-management](figures/arkts-sta-interop-dyn-observed_1.gif)
 
@@ -143,7 +143,7 @@ ArkTS-Dyn中@Observed装饰的数据被ArkTS-Sta中@ObjectLink装饰的变量使
 
 <!-- @[StaDynObjectLink](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/entry/src/main/ets/pages/StaDynObjectLink.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynObjectLink.ets
 import { Entry, Component, Row, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
 import { State, ObjectLink} from '@ohos.arkui.stateManagement';
@@ -193,7 +193,7 @@ struct objectLinkSample {
 在下面示例中，memberMap类型为Map\<number, string\>，点击Button改变memberMap的值，视图会随之刷新。
 <!-- @[StaDynObservedMainPageMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/src/main/ets/components/ObservedMapInfo.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/ObservedMapInfo.ets
 import st, { STValue } from 'static.@ohos.lang.interop';
 
@@ -205,7 +205,7 @@ export class MapInfo {
 
 <!-- @[StaDynObservedDynIndexMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { MapInfo } from './src/main/ets/components/ObservedMapInfo';
@@ -221,11 +221,11 @@ export { MapInfo } from './src/main/ets/components/ObservedMapInfo';
 
 <!-- @[StaDynObservedMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/entry/src/main/ets/pages/StaDynObservedMap.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynObservedMap.ets
 import { Entry, Component, Row, Column, Scroll, Button, ClickEvent, Text, ColumnOptions, RowOptions, Color, Margin, Divider, ForEach } from '@ohos.arkui.component';
 import { State, Link, PropRef, Provide, Consume, LocalStorageLink, StorageLink, LocalStoragePropRef, StoragePropRef, Observed, Track } from '@ohos.arkui.stateManagement';
-  
+
 // 引用ArkTS-Dyn中@Observed装饰的数据
 import { MapInfo } from 'dynamic_module';
 
@@ -324,7 +324,7 @@ struct MapSample {
 在下面示例中，memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
 <!-- @[StaDynObservedMainPageSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/src/main/ets/components/ObservedSetInfo.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/ObservedSetInfo.ets
 import st, { STValue } from 'static.@ohos.lang.interop';
 
@@ -336,7 +336,7 @@ export class SetInfo {
 
 <!-- @[StaDynObservedDynIndexSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { SetInfo } from './src/main/ets/components/ObservedSetInfo';
@@ -352,7 +352,7 @@ export { SetInfo } from './src/main/ets/components/ObservedSetInfo';
 
 <!-- @[StaDynObservedSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/entry/src/main/ets/pages/StaDynObservedSet.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynObservedSet.ets
 import { Entry, Component, Row, Column, Scroll, Button, ClickEvent, Text, ColumnOptions, RowOptions, Color, Margin, Divider, ForEach } from '@ohos.arkui.component';
 import { State, Link, PropRef, Provide, Consume, LocalStorageLink, StorageLink, LocalStoragePropRef, StoragePropRef, Observed, Track } from '@ohos.arkui.stateManagement';
@@ -388,7 +388,7 @@ struct SetSample {
           .margin(10)
         // 单独为动态@Observed装饰的类中的所有成员赋值
         Button('set member')
-          .onClick(() => {    
+          .onClick(() => {
             this.stateInfo.memberSet = new Set<number>([4, 3, 2, 1, 0]);
             this.provideInfo.memberSet = new Set<number>([4, 3, 2, 1, 0]);
             this.localStorageLinkInfo.memberSet = new Set<number>([4, 3, 2, 1, 0]);

@@ -78,14 +78,15 @@ project/
 1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`st.Array`类型的组件。
 
    <!-- @[StaDynBuiltinArrayStMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/ArrayStPage.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/src/main/ets/components/ArrayStPage.ets
    import st, { STValue } from 'static.@ohos.lang.interop';
-
+   
    @Component
    export struct ArrayStChild {
      @Link data: st.Array<string>;
-
+   
      build() {
        Column() {
          Text(`Child data: ${this.data}`)
@@ -103,7 +104,8 @@ project/
    ```
 
    <!-- @[StaDynBuiltinArrayStDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/Index.ets
    export { ArrayStChild } from './src/main/ets/components/ArrayStPage';
    ```
@@ -153,17 +155,18 @@ project/
 5. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
    <!-- @[StaDynBuiltinArraySt](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinArraySt.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // entry/src/main/ets/pages/StaDynBuiltinArraySt.ets
-
+   
    import { ClickEvent, Entry, Column, Button, Component, Text, State } from '@kit.ArkUI';
    import { ArrayStChild } from 'dynamic_module';
-
+   
    @Entry
    @Component
    struct Parent {
      @State data: Array<string> = ['apple', 'banana'];
-
+   
      build() {
        Column() {
          Text(`Parent data: ${this.data}`)
@@ -207,13 +210,14 @@ project/
 1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`Array`类型的组件。
 
    <!-- @[StaDynBuiltinArrayEsMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/EsPage.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/src/main/ets/components/EsPage.ets
-
+   
    @Component
    export struct ArrayEsChild {
      @Link data: Array<string>;
-
+   
      build() {
        Column() {
          Text(`Child data: ${this.data}`)
@@ -228,7 +232,7 @@ project/
        }
      }
    }
-
+   
    // 导出创建Array的方法，供ArkTS-Sta使用
    export function dynCreateArray(): Array<string> {
      return ['apple', 'banana'];
@@ -236,7 +240,8 @@ project/
    ```
 
    <!-- @[StaDynBuiltinArrayEsDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/Index.ets
    export { ArrayEsChild, dynCreateArray } from './src/main/ets/components/EsPage';
    ```
@@ -255,18 +260,19 @@ project/
 3. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
    <!-- @[StaDynBuiltinArrayEs](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinArrayEs.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // entry/src/main/ets/pages/StaDynBuiltinArrayEs.ets
-
+   
    import { ClickEvent, Entry, Column, Button, Component, Text, State } from '@kit.ArkUI';
    import es from '@ohos.lang.interop';
    import { ArrayEsChild, dynCreateArray } from 'dynamic_module';
-
+   
    @Entry
    @Component
    struct Parent {
      @State data: es.Array<string> = dynCreateArray(); // 当前es.Array不支持new创建，需通过ArkTS-Dyn方法创建
-
+   
      build() {
        Column() {
          Text(`Parent data: ${this.data}`)
@@ -589,14 +595,15 @@ project/
 1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`st.Map`类型的组件。
 
    <!-- @[StaDynBuiltinMapStMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/MapStPage.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/src/main/ets/components/MapStPage.ets
    import st, { STValue } from 'static.@ohos.lang.interop';
-
+   
    @Component
    export struct MapStChild {
      @Link data: st.Map<string, number>;
-
+   
      build() {
        Column() {
          Text(`Child data: ${this.data}`)
@@ -614,7 +621,8 @@ project/
    ```
 
    <!-- @[StaDynBuiltinMapStDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/Index.ets
    export { MapStChild } from './src/main/ets/components/MapStPage';
    ```
@@ -664,17 +672,18 @@ project/
 5. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
    <!-- @[StaDynBuiltinMapSt](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinMapSt.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // entry/src/main/ets/pages/StaDynBuiltinMapSt.ets
-
+   
    import { ClickEvent, Entry, Column, Button, Component, Text, State } from '@kit.ArkUI';
    import { MapStChild } from 'dynamic_module';
-
+   
    @Entry
    @Component
    struct Parent {
      @State data: Map<string, number> = new Map<string, number>([['apple', 1], ['banana', 2]]);
-
+   
      build() {
        Column() {
          Text(`Parent data: ${this.data}`)
@@ -718,13 +727,14 @@ project/
 1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`Map`类型的组件。
 
    <!-- @[StaDynBuiltinMapEsMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/EsPage.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/src/main/ets/components/EsPage.ets
-
+   
    @Component
    export struct MapEsChild {
      @Link data: Map<string, number>;
-
+   
      build() {
        Column() {
          ForEach(Array.from(this.data.entries()), (item: [string, number]) => {
@@ -741,7 +751,7 @@ project/
        }
      }
    }
-
+   
    // 导出创建Map的方法，供ArkTS-Sta使用
    export function dynCreateMap(): Map<string, number> {
      return new Map<string, number>([['apple', 1], ['banana', 2]]);
@@ -749,7 +759,8 @@ project/
    ```
 
    <!-- @[StaDynBuiltinMapEsDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/Index.ets
    export { MapEsChild, dynCreateMap } from './src/main/ets/components/EsPage';
    ```
@@ -768,18 +779,19 @@ project/
 3. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
    <!-- @[StaDynBuiltinMapEs](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinMapEs.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // entry/src/main/ets/pages/StaDynBuiltinMapEs.ets
-
+   
    import { ClickEvent, Entry, Column, Button, Component, Text, ForEach, State } from '@kit.ArkUI';
    import es from '@ohos.lang.interop';
    import { MapEsChild, dynCreateMap } from 'dynamic_module';
-
+   
    @Entry
    @Component
    struct Parent {
      @State data: es.Map<string, number> = dynCreateMap(); // 当前es.Map不支持new创建，需通过ArkTS-Dyn方法创建
-
+   
      // 辅助函数：将es.Map转为字符串展示
      mapToString(): string {
        let result = '';
@@ -788,7 +800,7 @@ project/
        });
        return result;
      }
-
+   
      build() {
        Column() {
          Text(`Parent data: ${this.mapToString()}`)
@@ -1123,14 +1135,15 @@ project/
 1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`st.Set`类型的组件。
 
    <!-- @[StaDynBuiltinSetStMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/SetStPage.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/src/main/ets/components/SetStPage.ets
    import st, { STValue } from 'static.@ohos.lang.interop';
-
+   
    @Component
    export struct SetStChild {
      @Link data: st.Set<string>;
-
+   
      build() {
        Column() {
          Text(`Child data: ${this.data}`)
@@ -1148,7 +1161,8 @@ project/
    ```
 
    <!-- @[StaDynBuiltinSetStDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/Index.ets
    export { SetStChild } from './src/main/ets/components/SetStPage';
    ```
@@ -1198,18 +1212,18 @@ project/
 5. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
    <!-- @[StaDynBuiltinSetSt](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinSetSt.ets) -->
-  
-   ```TypeScript
+   
+   ``` TypeScript
    // entry/src/main/ets/pages/StaDynBuiltinSetSt.ets
-
+   
    import { ClickEvent, Entry, Column, Button, Component, Text, State } from '@kit.ArkUI';
    import { SetStChild } from 'dynamic_module';
-
+   
    @Entry
    @Component
    struct Parent {
      @State data: Set<string> = new Set<string>(['apple', 'banana']);
-
+   
      build() {
        Column() {
          Text(`Parent data: ${this.data}`)
@@ -1254,13 +1268,14 @@ project/
 1. 创建ArkTS-Dyn子模块`dynamic_module`，定义接收`Set`类型的组件。
 
    <!-- @[StaDynBuiltinSetEsMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/src/main/ets/components/EsPage.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/src/main/ets/components/EsPage.ets
-
+   
    @Component
    export struct SetEsChild {
      @Link data: Set<string>;
-
+   
      build() {
        Column() {
          ForEach(Array.from(this.data.values()), (item: string) => {
@@ -1277,7 +1292,7 @@ project/
        }
      }
    }
-
+   
    // 导出创建Set的方法，供ArkTS-Sta使用
    export function dynCreateSet(): Set<string> {
      return new Set<string>(['apple', 'banana']);
@@ -1285,7 +1300,8 @@ project/
    ```
 
    <!-- @[StaDynBuiltinSetEsDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/dynamic_module/Index.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // dynamic_module/Index.ets
    export { SetEsChild, dynCreateSet } from './src/main/ets/components/EsPage';
    ```
@@ -1304,18 +1320,19 @@ project/
 3. 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
    <!-- @[StaDynBuiltinSetEs](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuiltinCollection/entry/src/main/ets/pages/StaDynBuiltinSetEs.ets) -->
-   ```TypeScript
+   
+   ``` TypeScript
    // entry/src/main/ets/pages/StaDynBuiltinSetEs.ets
-
+   
    import { ClickEvent, Entry, Column, Button, Component, Text, State } from '@kit.ArkUI';
    import es from '@ohos.lang.interop';
    import { SetEsChild, dynCreateSet } from 'dynamic_module';
-
+   
    @Entry
    @Component
    struct Parent {
      @State data: es.Set<string> = dynCreateSet(); // 当前es.Set不支持new创建，需通过ArkTS-Dyn方法创建
-
+   
      // 辅助函数：将es.Set转为字符串展示
      setToString(): string {
        let result = '';
@@ -1324,7 +1341,7 @@ project/
        });
        return result;
      }
-
+   
      build() {
        Column() {
          Text(`Parent data: ${this.setToString()}`)

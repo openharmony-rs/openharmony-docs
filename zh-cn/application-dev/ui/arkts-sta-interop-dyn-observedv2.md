@@ -52,7 +52,7 @@ project/
 
 <!-- @[StaDynObservedV2MainPageClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObservedV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @ObservedV2
@@ -81,7 +81,7 @@ export class ObservedV2ForStatic2 { // 供ArkTS-Sta主模块使用的类
 
 <!-- @[StaDynObservedV2DynIndexClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObservedV2/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { ObservedV2ForStatic2 } from './src/main/ets/components/MainPage'; // 导出供ArkTS-Sta主模块使用的类
@@ -101,7 +101,7 @@ export { ObservedV2ForStatic2 } from './src/main/ets/components/MainPage'; // �
 
 <!-- @[StaDynObservedV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObservedV2/entry/src/main/ets/pages/StaDynObservedV2.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynObservedV2.ets
 
 import { Entry, Row, Text, Column, Component, Button, ComponentV2, enableCompatibleObservedV2ForStatic } from '@ohos.arkui.component';
@@ -143,7 +143,7 @@ struct Index { // ArkTS-Sta自定义组件
 
 <!-- @[StaDynObservedV2MainPageNested](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObservedV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 @ObservedV2
 export class Pencil {
@@ -165,7 +165,7 @@ export class Student {
 
 <!-- @[StaDynObservedV2DynIndexNested](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObservedV2/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { Student } from './src/main/ets/components/MainPage'; // 导出供ArkTS-Sta主模块使用的类
@@ -185,7 +185,7 @@ export { Student } from './src/main/ets/components/MainPage'; // 导出供ArkTS-
 
 <!-- @[StaDynObservedV2Nested](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObservedV2/entry/src/main/ets/pages/StaDynObservedV2Nested.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynObservedV2Nested.ets
 
 import { Entry, Row, Text, Column, Component, Button, ComponentV2, enableCompatibleObservedV2ForStatic } from '@ohos.arkui.component';
@@ -232,7 +232,7 @@ struct Index {// ArkTS-Sta自定义组件
 
 <!-- @[StaDynObservedV2MainPageInherit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObservedV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 @ObservedV2
 export class GrandFather {
@@ -279,7 +279,7 @@ export class Cousin extends Uncle {
 
 <!-- @[StaDynObservedV2DynIndexInherit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObservedV2/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { Son, Cousin } from './src/main/ets/components/MainPage'; // 导出供ArkTS-Sta主模块使用的类
@@ -299,7 +299,7 @@ export { Son, Cousin } from './src/main/ets/components/MainPage'; // 导出供Ar
 
 <!-- @[StaDynObservedV2Inherit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObservedV2/entry/src/main/ets/pages/StaDynObservedV2Inherit.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynObservedV2Inherit.ets
 
 import { Entry, Row, Text, Column, Component, Button, ComponentV2, enableCompatibleObservedV2ForStatic } from '@ohos.arkui.component';

@@ -49,7 +49,7 @@ project/
 
 <!-- @[StaBuilderparamMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderparam/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -75,7 +75,7 @@ export struct CustomContainer { // 导出ArkTS-Dyn自定义组件
 
 <!-- @[StaBuilderparamDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderparam/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { CustomContainer } from './src/main/ets/components/MainPage'; // 导出自定义组件
@@ -95,7 +95,7 @@ export { CustomContainer } from './src/main/ets/components/MainPage'; // 导出�
 
 <!-- @[StaBuilderparam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderparam/entry/src/main/ets/pages/StaBuilderparam.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaBuilderparam.ets
 import { Entry, Component, Builder, Column, Text, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';

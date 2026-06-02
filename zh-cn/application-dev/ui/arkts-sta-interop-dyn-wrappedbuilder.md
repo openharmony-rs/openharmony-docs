@@ -53,7 +53,7 @@ project/
 
 <!-- @[StaWrappedBuilderMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynWrappedBuilder/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 // 定义字面量类
@@ -77,7 +77,7 @@ export const globalBuilder: WrappedBuilder<[Tmp]> = wrapBuilder(overBuilder);
 
 <!-- @[StaWrappedBuilderDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynWrappedBuilder/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { globalBuilder } from './src/main/ets/components/MainPage'; // 导出WrappedBuilder对象
@@ -97,7 +97,7 @@ export { globalBuilder } from './src/main/ets/components/MainPage'; // 导出Wra
 
 <!-- @[StaWrappedBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynWrappedBuilder/entry/src/main/ets/pages/StaWrappedBuilder.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaWrappedBuilder.ets
 import { Entry, Component, Column, Button, ClickEvent, compatibleWrappedBuilder } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';

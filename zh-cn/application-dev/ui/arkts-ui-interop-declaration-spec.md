@@ -643,7 +643,7 @@ project/
 
 <!-- @[StaDynDeclSpecV1MainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Observed
@@ -688,7 +688,7 @@ export struct ChildV1 {
 
 <!-- @[StaDynDeclSpecV1DynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { ChildV1, Person } from './src/main/ets/components/MainPage';
@@ -754,7 +754,7 @@ export declare class Person {
 
 <!-- @[StaDynDeclSpecV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/entry/src/main/ets/pages/StaDynDeclSpecV1.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynDeclSpecV1.ets
 import { Entry, Column, Component } from '@ohos.arkui.component';
 import { State, Provide } from '@ohos.arkui.stateManagement';
@@ -983,7 +983,7 @@ project/
 
 <!-- @[StaDynDeclSpecBuilderMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -1011,7 +1011,7 @@ export const staticWrappedBuilder: WrappedBuilder<[string, number]> = wrapBuilde
 
 <!-- @[StaDynDeclSpecBuilderDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { ChildBuilder, staticBuilder, staticWrappedBuilder } from './src/main/ets/components/MainPage';
@@ -1053,7 +1053,7 @@ export declare const staticWrappedBuilder: WrappedBuilder<Array<Any>>;
 
 <!-- @[StaDynDeclSpecBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynDeclarationSpec/entry/src/main/ets/pages/StaDynDeclSpecBuilder.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynDeclSpecBuilder.ets
 import { Entry, Column, Component, Text, Builder, compatibleWrappedBuilder } from '@ohos.arkui.component';
 import { Provider } from '@ohos.arkui.stateManagement';

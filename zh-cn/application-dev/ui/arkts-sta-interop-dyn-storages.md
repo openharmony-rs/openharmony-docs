@@ -65,7 +65,7 @@ project/
 
 <!-- @[StaDynStorageDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { LocalStoragePropPage, LocalStorageLinkPage, StoragePropPage, StorageLinkPage, AppStoragePage, PersistentStoragePage, EnvironmentPage } from './src/main/ets/components/MainPage';
@@ -103,7 +103,7 @@ export { LocalStoragePropPage, LocalStorageLinkPage, StoragePropPage, StorageLin
 
 <!-- @[StaDynStorageLspMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -129,7 +129,7 @@ export struct LocalStoragePropPage {
 
 <!-- @[StaDynStorageLsp](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageLsp.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStorageLsp.ets
 import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
@@ -172,7 +172,7 @@ struct Index {
 
 <!-- @[StaDynStorageLslMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -198,7 +198,7 @@ export struct LocalStorageLinkPage {
 
 <!-- @[StaDynStorageLsl](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageLsl.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStorageLsl.ets
 import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
@@ -251,7 +251,7 @@ struct Index {
 
 <!-- @[StaDynStorageSpMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -277,7 +277,7 @@ export struct StoragePropPage {
 
 <!-- @[StaDynStorageSp](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageSp.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStorageSp.ets
 import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { StorageLink } from '@ohos.arkui.stateManagement';
@@ -320,7 +320,7 @@ struct Index {
 
 <!-- @[StaDynStorageSlMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -346,7 +346,7 @@ export struct StorageLinkPage {
 
 <!-- @[StaDynStorageSl](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageSl.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStorageSl.ets
 import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { StorageLink } from '@ohos.arkui.stateManagement';
@@ -403,7 +403,7 @@ struct Index {
 
 <!-- @[StaDynStorageAppMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 let gPropA: number = 0;
@@ -429,7 +429,7 @@ export struct AppStoragePage {
 
 <!-- @[StaDynStorageApp](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageApp.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStorageApp.ets
 import { Entry, Component, Column, Text } from '@ohos.arkui.component';
 import { StorageLink } from '@ohos.arkui.stateManagement';
@@ -469,7 +469,7 @@ struct Index {
 
 <!-- @[StaDynStoragePersistMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -519,7 +519,7 @@ export struct PersistentStoragePage {
 
 <!-- @[StaDynStoragePersist](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStoragePersist.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStoragePersist.ets
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { PersistentStorage, StorageLink, StoragePropRef } from '@ohos.arkui.stateManagement';
@@ -587,7 +587,7 @@ struct Index {
 
 <!-- @[StaDynStorageEnvMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -635,7 +635,7 @@ export struct EnvironmentPage {
 
 <!-- @[StaDynStorageEnv](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageEnv.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStorageEnv.ets
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { Environment, StorageLink, StoragePropRef } from '@ohos.arkui.stateManagement';

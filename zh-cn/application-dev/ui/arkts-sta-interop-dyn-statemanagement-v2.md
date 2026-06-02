@@ -61,7 +61,7 @@ project/
 
 <!-- @[StaDynStateV2MainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @ComponentV2
@@ -100,7 +100,7 @@ export struct MainPage { // ArkTS-Dyn自定义组件
 
 <!-- @[StaDynStateV2DynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV2/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 export { MainPage } from './src/main/ets/components/MainPage'; // 导出ArkTS-Dyn自定义组件
 ```
@@ -119,7 +119,7 @@ export { MainPage } from './src/main/ets/components/MainPage'; // 导出ArkTS-Dy
 
 <!-- @[StaDynStateV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV2/entry/src/main/ets/pages/StaDynStateV2.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStateV2.ets
 import { Entry, ComponentV2, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, Provider } from '@ohos.arkui.stateManagement';
@@ -132,7 +132,7 @@ struct ParentComp { // ArkTS-Sta主组件
   // 定义ArkTS-Sta状态变量
   @Local localMessage: string = 'Local Interop';
   @Provider() consumerMessage: string = 'Provider Interop';
-  
+
   build() {
     Column() {
       Button(this.localMessage)

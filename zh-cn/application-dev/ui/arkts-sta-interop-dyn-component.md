@@ -91,7 +91,7 @@ project/
 
 <!-- @[StaDynComponentMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynComponent/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -129,7 +129,7 @@ export struct ChildComponentV2 {
 
 <!-- @[StaDynComponentDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynComponent/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 
 export { ChildComponent, ChildComponentV2 } from './src/main/ets/components/MainPage';
@@ -149,7 +149,7 @@ export { ChildComponent, ChildComponentV2 } from './src/main/ets/components/Main
 
 <!-- @[StaDynComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynComponent/entry/src/main/ets/pages/StaDynComponent.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynComponent.ets
 import { Entry, Component, Column, ComponentV2 } from '@ohos.arkui.component';
 

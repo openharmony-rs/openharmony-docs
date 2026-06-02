@@ -64,7 +64,7 @@ project/
 
 <!-- @[StaDynStateV1DynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV1/dynamic_module/Index.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/Index.ets
 export { StateChild, PropChild, LinkChild, ProvideChild, GrandSon } from './src/main/ets/components/MainPage';
 ```
@@ -90,7 +90,7 @@ export { StateChild, PropChild, LinkChild, ProvideChild, GrandSon } from './src/
 
 <!-- @[StaDynStateV1StateMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV1/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -120,7 +120,7 @@ export struct StateChild { // 定义包含@State成员属性的子组件
 
 <!-- @[StaDynStateV1State](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV1/entry/src/main/ets/pages/StaDynStateV1State.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStateV1State.ets
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -177,7 +177,7 @@ ArkTS-Dyn自定义组件中的\@Prop成员属性支持从ArkTS-Sta父组件中�
 
 <!-- @[StaDynStateV1PropMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV1/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -207,7 +207,7 @@ export struct PropChild { // 定义包含@Prop成员属性的子组件
 
 <!-- @[StaDynStateV1Prop](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV1/entry/src/main/ets/pages/StaDynStateV1Prop.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStateV1Prop.ets
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -254,7 +254,7 @@ struct Index { // 使用包含@Prop成员属性的子组件
 
 <!-- @[StaDynStateV1LinkMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV1/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -284,7 +284,7 @@ export struct LinkChild { // 包含@Link成员属性的子组件
 
 <!-- @[StaDynStateV1Link](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV1/entry/src/main/ets/pages/StaDynStateV1Link.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStateV1Link.ets
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -333,7 +333,7 @@ struct Index { // 使用包含@Link成员属性的子组件
 
 <!-- @[StaDynStateV1ProvideMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV1/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
-```TypeScript
+``` TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
@@ -381,7 +381,7 @@ export struct GrandSon { // 包含@Consume成员属性的子孙组件
 
 <!-- @[StaDynStateV1Provide](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV1/entry/src/main/ets/pages/StaDynStateV1Provide.ets) -->
 
-```TypeScript
+``` TypeScript
 // entry/src/main/ets/pages/StaDynStateV1Provide.ets
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State, Provide } from '@ohos.arkui.stateManagement';
