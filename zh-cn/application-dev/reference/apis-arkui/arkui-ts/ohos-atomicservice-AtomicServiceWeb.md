@@ -699,11 +699,11 @@ struct WebComponent {
       })
       Button('backward').onClick(() => {
         this.controller.backward();
-        console.info(`AtomicServiceWebLog backward}`);
+        console.info(`AtomicServiceWebLog backward`);
       })
       Button('refresh').onClick(() => {
         this.controller.refresh();
-        console.info(`AtomicServiceWebLog refresh}`);
+        console.info(`AtomicServiceWebLog refresh`);
       })
       Button('loadUrl').onClick(() => {
         this.controller.loadUrl('https://www.baidu.com/');
