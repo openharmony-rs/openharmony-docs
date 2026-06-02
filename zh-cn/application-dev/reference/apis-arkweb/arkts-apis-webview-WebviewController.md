@@ -11210,11 +11210,11 @@ struct WebComponent {
 }
 ```
 
-## executeAIPageCommand<sup>26+</sup>
+## executeAIPageCommand
 
 executeAIPageCommand(command: string): Promise\<string\>
 
-异步执行`AIPageCommand`。该接口通过JSON字符串形式的`command`参数指定命令类型和命令参数，执行结果通过Promise异步返回。
+异步执行`AIPageCommand`。该接口通过JSON字符串形式的`command`参数指定命令类型和命令参数，使用Promise异步回调。
 
 > **说明：**
 >
@@ -11237,7 +11237,7 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 | 类型             | 说明 |
 | ---------------- | ---- |
-| Promise\<string\> | Promise实例，返回JSON格式的命令执行结果。不同命令的返回格式不同。执行失败或无返回值时，返回空字符串。 |
+| Promise\<string\> | Promise对象，返回JSON格式的命令执行结果。不同命令的返回格式不同。执行失败或无返回值时，返回空字符串。 |
 
 **错误码：**
 
