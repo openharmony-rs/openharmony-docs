@@ -15,7 +15,10 @@
 
 **库：** libhuks_ndk.z.so
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：** 
+
+- API version 20+：SystemCapability.Security.Huks.Core
+- API version 9-19：SystemCapability.Security.Huks
 
 在API 9-19，系统能力为SystemCapability.Security.Huks；从API 20起，系统能力变更为SystemCapability.Security.Huks.Core
 
