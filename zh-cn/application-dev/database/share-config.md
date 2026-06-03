@@ -176,13 +176,13 @@ crossAppSharedConfig字段配置说明：
       };
       dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
         results.forEach((result) => {
-          console.info(`ttt URI: ${result.uri}, Result: ${result.result}`);
+          console.info(`URI: ${result.uri}, Result: ${result.result}`);
         });
       }).catch((error: Error) => {
         console.info('Error publishing config:', error);
       });
     }).catch((error: Error) => {
-      console.info('ttt Error creating DataProxyHandle:', error);
+      console.info('Error creating DataProxyHandle:', error);
     });
   }
   ```
