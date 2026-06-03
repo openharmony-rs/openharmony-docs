@@ -1,4 +1,4 @@
-# 2900099 Bluetooth API Call Error 
+# 2900099 Bluetooth API Call Error
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

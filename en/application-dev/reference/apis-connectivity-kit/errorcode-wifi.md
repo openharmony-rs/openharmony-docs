@@ -18,7 +18,7 @@ Operation failed.
 
 **Description**
 
-An error occurs when the Wi-Fi service performs an operation related to the station (STA).
+An unknown error occurs in the Wi-Fi service when the API whose **syscap** is **SystemCapability.Communication.WiFi.Core** is called.
 
 **Possible Causes**
 
