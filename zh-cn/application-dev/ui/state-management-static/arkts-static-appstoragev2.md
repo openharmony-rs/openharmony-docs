@@ -64,9 +64,9 @@ import { AppStorageV2 } from '@kit.ArkUI';
 
 AppStorageV2使用connect接口即可实现对AppStorageV2中数据的修改和同步，如果修改的数据被[\@Trace](./arkts-static-new-observedV2-and-trace.md)装饰，该数据的修改会同步更新UI。需要注意的是，使用remove接口只会将数据从AppStorageV2中删除，不影响组件中已创建的数据，详见以下示例代码。
 
-```ts
-'use static'
+<!-- @[AppStorageV2Basic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageV2/entry/src/main/ets/pages/AppStorageV2Basic.ets) -->
 
+``` TypeScript
 import { AppStorageV2, Button, ClickEvent, Column, Component, ComponentV2, Divider, Entry, Link, Local, LocalStorage, LocalStorageLink, ObservedV2, PersistentStorage, Row, State, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -159,9 +159,9 @@ struct Child {
 ### AppStorageV2应用于两页面场景
 
 数据页面（Sample.ets）。
-```ts
-'use static'
+<!-- @[Sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->
 
+``` TypeScript
 import { ObservedV2, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -170,14 +170,14 @@ export class Sample {
   p2: number = 10;
 }
 
-export const ISampleType = Class.from<Sample>();
+export const ISampleType: Class = Class.from<Sample>();
 ```
 
-页面1（Page1.ets）。
-```ts
-'use static'
+页面1（AppStorageV2TwoPages.ets）。
+<!-- @[AppStorageV2TwoPages](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageV2/entry/src/main/ets/pages/AppStorageV2TwoPages.ets) -->
 
-import { Page2 } from './Page2';
+``` TypeScript
+import { Page2 } from './AppStorageV2Navigation';
 import { ISampleType, Sample } from './Sample';
 import { AppStorageV2, Builder, Button, ButtonType, ClickEvent, Column, Component, ComponentV2, Divider, Entry, FontWeight, Link, Local, LocalStorage, LocalStorageLink, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, ObservedV2, PersistentStorage, Row, State, Text, Trace } from '@kit.ArkUI';
 
@@ -247,15 +247,15 @@ struct Page1 {
 }
 ```
 
-页面2（Page2.ets）。
-```ts
-'use static'
+页面2（AppStorageV2Navigation.ets）。
+<!-- @[appstoragev2_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageV2/entry/src/main/ets/pages/AppStorageV2Navigation.ets) -->
 
+``` TypeScript
 import { ISampleType, Sample } from './Sample';
 import { AppStorageV2, Builder, Button, ButtonType, ClickEvent, Column, Component, ComponentV2, Divider, Entry, FontWeight, Link, Local, LocalStorage, LocalStorageLink, NavDestination, NavDestinationContext, NavPathInfo, NavPathStack, Navigation, NavigationMode, ObservedV2, PersistentStorage, Row, State, Text, Trace } from '@kit.ArkUI';
 
 @Builder
-export function Page2Builder() {
+export function Page2Builder():void {
   Page2()
 }
 
@@ -265,7 +265,7 @@ export struct Page2 {
   @Local prop: Sample = AppStorageV2.connect<Sample>(ISampleType, () => new Sample())!;
   pathStack: NavPathStack = new NavPathStack();
 
-  build() {
+  build(): void {
     NavDestination() {
       Column() {
         Button('Page2 connect key Sample')
@@ -292,13 +292,13 @@ export struct Page2 {
   }
 }
 ```
-使用[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)时，需要先添加配置系统路由表文件src/main/resources/base/profile/route_map.json，再替换pageSourceFile为Page2页面的路径，最后在module.json5中添加："routerMap": "$profile:route_map"。
+使用[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)时，需要先添加配置系统路由表文件src/main/resources/base/profile/route_map.json，再替换pageSourceFile为页面2的路径，最后在module.json5中添加："routerMap": "$profile:route_map"。
 ```json
 {
   "routerMap": [
     {
       "name": "Page2",
-      "pageSourceFile": "src/main/ets/pages/Page2.ets",
+      "pageSourceFile": "src/main/ets/pages/AppStorageV2Navigation.ets",
       "buildFunction": "Page2Builder",
       "data": {
         "description" : "AppStorageV2 example"

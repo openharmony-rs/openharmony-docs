@@ -77,9 +77,9 @@ globalConnect支持以下类型的持久化：
 
 此示例展示通过globalConnect持久化Array类型数据，并在UI中动态添加和展示数组元素。
 
-```ts
-'use static'
+<!-- @[persistence_v2_array](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Array.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, ForEach, List, ListItem, StorageDefaultSubCreators } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -93,7 +93,6 @@ export class Info {
   @Trace userInfo: int = 1;
   @Trace arr: Array<Inner> = new Array<Inner>();
 }
-
 @ObservedV2
 export class Person {
   @Trace userName: string = 'John';
@@ -110,7 +109,7 @@ const creators = new StorageDefaultSubCreators([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ArrayExample {
   // 通过globalConnect持久化Array<Person>类型数据
   @Local stateVar: Array<Person> = PersistenceV2.globalConnect<Array<Person>>({
     type: Class.from<Array<Person>>(),
@@ -166,9 +165,9 @@ struct Index {
 
 此示例展示通过globalConnect持久化Map类型数据，key为string类型，value为自定义类Person。
 
-```ts
-'use static'
+<!-- @[persistence_v2_map](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Map.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, StorageDefaultCreator, ForEach } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -193,7 +192,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2MapExample {
   // 通过globalConnect持久化Map<string, Person>类型数据
   @Local stateVar: Map<string, Person> = PersistenceV2.globalConnect<Map<string, Person>>({
     type: Class.from<Map<string, Person>>(),
@@ -257,9 +256,9 @@ struct Index {
 
 此示例展示通过globalConnect持久化Set类型数据，元素为自定义类Person。
 
-```ts
-'use static'
+<!-- @[persistence_v2_set](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Set.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -284,7 +283,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2SetExample {
   // 通过globalConnect持久化Set<Person>类型数据
   @Local stateVar: Set<Person> = PersistenceV2.globalConnect<Set<Person>>({
     type: Class.from<Set<Person>>(),
@@ -351,9 +350,9 @@ struct Index {
 
 此示例展示通过globalConnect持久化包含Date类型字段的自定义类，Date对象在持久化时自动完成序列化和反序列化。
 
-```ts
-'use static'
+<!-- @[persistence_v2_date](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Date.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -380,7 +379,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2DateExample {
   // 通过globalConnect持久化包含Date字段的Event对象
   @Local stateVar: Event = PersistenceV2.globalConnect<Event>({
     type: Class.from<Event>(),
@@ -418,9 +417,9 @@ struct Index {
 
 此示例展示通过globalConnect持久化多层嵌套的自定义类（Company → Dept → Person → Inner，共4层），所有层级的类型均需在`defaultSubCreators`中注册。
 
-```ts
-'use static'
+<!-- @[persistence_v2_nested_class](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2NestedClass.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -458,7 +457,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2NestedClassExample {
   // 通过globalConnect持久化多层嵌套的Company对象
   @Local stateVar: Company = PersistenceV2.globalConnect<Company>({
     type: Class.from<Company>(),
@@ -502,9 +501,9 @@ struct Index {
 
 此示例展示通过globalConnect持久化包含循环引用的对象。Node的parent字段可指向自身或另一个Node，globalConnect内部会自动处理对象间的引用关系，不会无限递归。
 
-```ts
-'use static'
+<!-- @[persistence_v2_circular_ref](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2CircularRef.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -523,7 +522,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2CircularRefExample {
   // 通过globalConnect持久化包含循环引用的Node对象
   @Local stateVar: Node = PersistenceV2.globalConnect<Node>({
     type: Class.from<Node>(),
@@ -572,9 +571,9 @@ struct Index {
 
 此示例展示通过globalConnect持久化一个包含Array、Map、Set三种集合类型的自定义类MixedData。
 
-```ts
-'use static'
+<!-- @[persistence_v2_mixed_collection](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2MixedCollection.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -607,7 +606,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2MixedCollectionExample {
   // 通过globalConnect持久化包含Array、Map、Set的MixedData对象
   @Local stateVar: MixedData = PersistenceV2.globalConnect<MixedData>({
     type: Class.from<MixedData>(),
@@ -778,9 +777,9 @@ struct Index {
 
 此示例结合enableAutoSave参数确定是否自动持久化存储数据。
 
-```ts
-'use static'
+<!-- @[persistence_v2_connect_global_connect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ConnectGlobalConnect.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
   Button, Column, ClickEvent, ComponentV2, Text, ConnectOptions } from '@kit.ArkUI';
 
@@ -805,11 +804,11 @@ class Person {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ConnectGlobalConnectExample {
   // 调用globalConnect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.globalConnect<Person>({
     type: Class.from<Person>(),
-    key: 'Person',
+    key: 'PersistenceV2Connect',
     defaultCreator: (): Person => {
       return new Person();
     },
@@ -895,8 +894,9 @@ struct Index {
 
 当存储数据的结构与当前数据的结构不同时，可能会导致反序列化失败。开发者可通过向notifyOnError的回调函数参数中加入oldValue参数来获取存于磁盘的旧的序列化数据，从而直观地感知到数据结构的差异。
 
-```ts
-'use static'
+<!-- @[persistence_v2_notify_on_error](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2NotifyOnError.ets) -->
+
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Color } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -924,7 +924,7 @@ export class Sample {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2NotifyOnErrorExample {
   static {
     // 接受序列化失败的回调
     PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
@@ -972,9 +972,9 @@ error key: connectSample, reason: serialization, message: TypeError: Receiver is
 
 ### connect向globalConnect迁移实现
 
-```ts
-'use static'
+<!-- @[persistence_v2_connect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ConnectUsage.ets) -->
 
+``` TypeScript
 // 使用connect存储数据
 import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
   Button, Column, ClickEvent, ComponentV2, Text } from '@kit.ArkUI';
@@ -998,7 +998,7 @@ class Person {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ConnectUsageExample {
   // 调用connect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.connect<Person>(
     Class.from<Person>(),
@@ -1036,9 +1036,9 @@ struct Index {
 }
 ```
 
-```ts
-'use static'
+<!-- @[persistence_v2_connect_migration](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ConnectMigration.ets) -->
 
+``` TypeScript
 // 迁移到globalConnect
 import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
   Button, Column, ClickEvent, ComponentV2, Text } from '@kit.ArkUI';
@@ -1093,7 +1093,7 @@ function move() {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ConnectMigrationExample {
   // 调用globalConnect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.globalConnect<Person>({
     type: Class.from<Person>(),
@@ -1145,9 +1145,9 @@ connect向globalConnect迁移，需要将key绑定的value赋值给globalConnect
 
 当开发者将`@Trace`字段的容器元素类型从自定义对象数组`Person[]`改为基本类型数组（如`int[]`），如果defaultCreator中未给数组添加默认元素，此时旧数据中存储的`Person`类型元素会被错误地填充到新类型的数组中，导致运行时类型错误或instanceof检查失败。这是由于框架侧无法获取容器类型的泛型信息，在没有容器默认元素的情况下无法感知到容器元素的类型发生了变更。因此，不建议开发者手动更改容器中的元素类型。
 
-```ts
-'use static'
+<!-- @[persistence_v2_container_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ContainerTypeError.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -1163,7 +1163,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ContainerTypeErrorExample {
   @Local stateVar: Array<Person> = PersistenceV2.globalConnect<Array<Person>>({
     type: Class.from<Array<Person>>(),
     key: 'PersonArray',
@@ -1230,9 +1230,9 @@ struct Index {
 
 在提供了默认元素的情况下，框架会判断出元素类型发生改变，跳过数据恢复，直接使用默认值。
 
-```ts
-'use static'
+<!-- @[persistence_v2_container_element_change](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ContainerElementChange.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
