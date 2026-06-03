@@ -325,7 +325,7 @@ Enumerates the blur types of a mask filter.
 | Name  | Value| Description              | Diagram  |
 | ------ | - | ------------------ | -------- |
 | NORMAL | 0 | Both the outer edges and the inner solid parts are blurred.| ![NORMAL](figures/BlurType-Normal.png)|
-| SOLID  | 1 | The inner solid part remains unchanged, while only the outer edges are blurred.| ![SOLID](figures/BlueType-Solid.png)|
+| SOLID  | 1 | The inner solid part remains unchanged, while only the outer edges are blurred.| ![SOLID](figures/BlurType-Solid.png)|
 | OUTER  | 2 | Only the outer edges are blurred, with the inner solid part being fully transparent.| ![OUTER](figures/BlurType-Outer.png)|
 | INNER  | 3 | Only the inner solid part is blurred, while the outer edges remain sharp.| ![INNER](figures/BlurType-Inner.png)|
 
