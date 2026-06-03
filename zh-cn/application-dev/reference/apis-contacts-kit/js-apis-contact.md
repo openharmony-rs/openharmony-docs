@@ -4707,7 +4707,7 @@ console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList
 
 importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-通过UI交互批量导入多个联系人。每次最多可导入100个联系人。
+通过UI交互批量导入多个联系人。每次最多可导入100个联系人。不支持导入联系人的头像。
 
 **起始版本**：26.0.0
 
