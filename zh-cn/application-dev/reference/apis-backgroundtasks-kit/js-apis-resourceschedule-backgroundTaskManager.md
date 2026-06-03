@@ -1773,11 +1773,13 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-### requestAuthFromUserByDialog<sup>26+</sup>
+### requestAuthFromUserByDialog
 
 requestAuthFromUserByDialog(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
 请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功后会发送授权弹窗。用户授权“本次允许”、“始终允许”或“不允许”后，再次请求授权时将直接回调上次授权结果，不再弹出授权弹窗。建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1792,7 +1794,7 @@ requestAuthFromUserByDialog(context: Context, callback: Callback&lt;UserAuthResu
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
-| callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 用户操作后，返回授权结果。 |
+| callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 回调函数，返回用户授权结果。 |
 
 **错误码：**
 
@@ -1895,11 +1897,13 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-### checkSpecialScenarioAuthResult<sup>26+</sup>
+### checkSpecialScenarioAuthResult
 
 checkSpecialScenarioAuthResult(context: Context): Promise&lt;UserAuthResult&gt;
 
 查询用户是否授权能在后台长时间运行。使用Promise异步回调。当未授权时，返回授权结果[NOT_DETERMINED](#userauthresult22)；当未配置特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务时，返回授权结果为[NOT_SUPPORTED](#userauthresult22)。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
