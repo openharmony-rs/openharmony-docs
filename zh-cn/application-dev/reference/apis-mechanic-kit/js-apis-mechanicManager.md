@@ -31,7 +31,7 @@ on(type: 'attachStateChange', callback: Callback\<AttachStateChangeInfo>): void
 | 参数名     | 类型           | 必填 | 说明     |
 | ---------- | ------------- | ---- | ------- |
 | type | 'attachStateChange' | 是 | 注册监听事件的类型。取值为：'attachStateChange'。 |
-| callback | Callback\<[AttachStateChangeInfo](#attachstatechangeinfo)> | 是 | 回调函数，返回机械体设备连接变化信息。 |
+| callback | Callback\<[AttachStateChangeInfo](#attachstatechangeinfo)> | 是 | 回调函数，返回机械体设备连接变化信息。  |
 
 **错误码：**
 
