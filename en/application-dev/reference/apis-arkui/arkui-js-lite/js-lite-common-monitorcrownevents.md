@@ -24,7 +24,7 @@ This monitor is automatically removed when [page routing](../js-apis-router.md) 
 
 > **NOTE**
 >
-> - The monitor is automatically removed when page routinge occurs. Therefore, it is recommended to call this API in the onShow [lifecycle](./js-lite-framework-lifecycle.md) callback of the page.
+> - The monitor is automatically removed when page routing occurs. Therefore, it is recommended to call this API in the onShow [lifecycle](./js-lite-framework-lifecycle.md) callback of the page.
 > - Only one monitor is supported per page. A newly registered monitor overwrites the previous one, and the system uses the monitor passed in the last call to this API.
 > - Do not use this function in [app.js](../../../ui/js-framework-js-file.md), as its behavior is undefined.
 
