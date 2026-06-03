@@ -1590,7 +1590,7 @@ query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCa
 | -------- | -------- | -------- | -------- |
 | predicates | [RdbPredicates](#rdbpredicates) | 是 | RdbPredicates的实例对象指定的查询条件。 |
 | columns | Array&lt;string&gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
-| callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md)&gt; | 是 | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
+| callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md#resultset)&gt; | 是 | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
 
 **示例：**
 
@@ -1626,7 +1626,7 @@ query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;Resul
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[ResultSet](js-apis-data-resultset.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise&lt;[ResultSet](js-apis-data-resultset.md#resultset)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
 
 **示例：**
 
@@ -1656,7 +1656,7 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 | -------- | -------- | -------- | -------- |
 | sql | string | 是 | 指定要执行的SQL语句。 |
 | bindArgs | Array&lt;[ValueType](#valuetype)&gt; | 是 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数需为空数组。 |
-| callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md)&gt; | 是 | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
+| callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md#resultset)&gt; | 是 | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
 
 **示例：**
 
@@ -1690,7 +1690,7 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[ResultSet](js-apis-data-resultset.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise&lt;[ResultSet](js-apis-data-resultset.md#resultset)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
 
 **示例：**
 
