@@ -222,7 +222,7 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-表示拉起证书管理安装证书向导，显示相应的页面。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+表示拉起证书管理安装证书向导，显示相应的页面。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 14
 
@@ -234,7 +234,7 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 
 **设备行为差异：**
 1. 入参certType为CA_CERT时，该接口在PC/2in1设备中可以正常调用，在其他设备中会返回29700004错误码。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断本设备是否支持打开CA证书安装对话框。
-2. 入参certType为CREDENTIAL_USER或CREDENTIAL_SYSTEM时，在PC/2in、phone、tablet设备中可以正常调用。
+2. 入参certType为CREDENTIAL_USER或CREDENTIAL_SYSTEM时，在PC/2in1、phone和tablet设备中可以正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
