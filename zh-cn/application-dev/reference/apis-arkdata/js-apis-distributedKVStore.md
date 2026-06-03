@@ -3373,12 +3373,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
 try {
-  kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(() => {
+  kvStore!.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(() => {
     console.info('Succeeded in putting data');
     const deviceid = 'no_exist_device_id';
-    kvStore.removeDeviceData(deviceid).then(() => {
+    kvStore!.removeDeviceData(deviceid).then(() => {
       console.info('succeeded in removing device data');
-      kvStore.get(KEY_TEST_STRING_ELEMENT).then((data: boolean | string | number | Uint8Array) => {
+      kvStore!.get(KEY_TEST_STRING_ELEMENT).then((data: boolean | string | number | Uint8Array) => {
         console.info(`Succeeded in getting data. Data=${data}`);
       }).catch((err: BusinessError) => {
         console.error(`Failed to get data.code is ${err.code},message is ${err.message}`);
@@ -3913,9 +3913,9 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries).then(() => {
+  kvStore!.putBatch(entries).then(() => {
     console.info('Succeeded in putting batch');
-    kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    kvStore!.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
       console.info('Succeeded in getting result set');
       resultSet = result;
       if (kvStore != null) {
@@ -4043,7 +4043,6 @@ getResultSet(query: Query): Promise&lt;KVStoreResultSet&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
   for (let i = 0; i < 10; i++) {
     let key = 'batch_test_string_key';
@@ -4056,13 +4055,12 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries).then(() => {
+    kvStore!.putBatch(entries).then(() => {
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
-    kvStore.getResultSet(query).then((result: distributedKVStore.KVStoreResultSet) => {
-      console.info('Succeeded in getting result set');
-      resultSet = result;
+    kvStore!.getResultSet(query).then((result: distributedKVStore.KVStoreResultSet) => {
+      console.info(`Succeeded in getting result set size=${result.getCount()}}`);
     }).catch((err: BusinessError) => {
       console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
     });
