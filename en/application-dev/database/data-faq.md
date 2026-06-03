@@ -80,7 +80,7 @@ When relational data is used, different file artifacts may be generated. The pur
 
 3. Check whether the service code performs the following operations: After [beginTransaction](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#begintransaction) is called to start a transaction and before the transaction is committed, [execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12) or [executeSql](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesql) is called to delete trigger a, delete table A, and recreate table A in sequence. Later, deleting trigger a again fails.
 
-   - Yes:Avoid performing similar operations before a transaction is committed, such as deleting trigger a, deleting table A, recreating table A, and then deleting trigger a again.
+   - Yes: Avoid performing similar operations before a transaction is committed, such as deleting trigger a, deleting table A, recreating table A, and then deleting trigger a again.
 
    - No: Go to the next step.
 
