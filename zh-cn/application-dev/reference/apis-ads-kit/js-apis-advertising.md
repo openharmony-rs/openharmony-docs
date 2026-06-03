@@ -686,4 +686,4 @@ type Advertisement = _Advertisement
 
 | 类型                                                         | 说明                   |
 |--------------------------------------------------------------|----------------------|
-| [_Advertisement](js-apis-inner-advertising-advertisement.md) | 表示Advertisement对象。 |
+| [_Advertisement](js-apis-advertisement.md) | 表示Advertisement对象。 |
