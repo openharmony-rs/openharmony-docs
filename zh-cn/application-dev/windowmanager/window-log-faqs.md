@@ -472,7 +472,7 @@ let windowClass = await windowStage.createSubWindow(windowName);
 
 ### 窗口销毁时调用off('avoidAreaChange')崩溃
 
-开发者在窗口销毁过程中（如[onWindowStageDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)、[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy或页面销毁等）调用[off('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#offavoidareachange9)接口，导致应用崩溃。
+开发者在窗口销毁过程中（如[onWindowStageDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)、[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)或页面销毁等）调用[off('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#offavoidareachange9)接口，导致应用崩溃。
 
 **典型日志信息**
 
