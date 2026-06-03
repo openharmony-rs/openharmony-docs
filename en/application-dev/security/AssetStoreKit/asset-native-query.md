@@ -2,21 +2,22 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:10:50.996Z pushedAt=2026-06-03T10:02:10.575Z -->
 
 ## Available APIs
 
-You can use [OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query) to query an asset.
+Developers can refer to the API documentation for detailed description of the critical asset query API [OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query).
 
 The following table describes the attributes for querying an asset.
 
-> **NOTE**
+> **NOTE:**
 >
-> In the following table, the attributes **ASSET_TAG_ALIAS** and those starting with **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
-> It takes a long time to query the plaintext of the asset attribute **ASSET_TAG_SECRET** due to the need of decryption. Therefore, **Asset_ReturnType** must be set to **ASSET_RETURN_ALL**. For other asset attributes, decryption is not required, so the query takes a short time. Therefore, **Asset_ReturnType** must be set to **ASSET_RETURN_ATTRIBUTES**.
+> In the following table, **ASSET_TAG_ALIAS** and asset attributes whose names contain **ASSET_TAG_DATA_LABEL** are used to store service-defined information. Their content is not encrypted, so do not store sensitive personal data in them.
+> Querying the asset plaintext **ASSET_TAG_SECRET** requires decryption. Currently, batch query is not supported, and the query takes a long time. You need to set **Asset_ReturnType** to **ASSET_RETURN_ALL**. Querying only other asset attributes does not require decryption. Batch query is supported, and the query time is relatively short. You need to set **Asset_ReturnType** to **ASSET_RETURN_ATTRIBUTES**.
 
 | Attribute Name (Asset_Tag)           | Attribute Content (Asset_Value)                                      | Mandatory| Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
@@ -62,13 +63,15 @@ Query the plaintext of asset **demo_alias**.
 For details about how to query the plaintext of an asset in a group, see [Querying the Plaintext of an Asset in a Group](asset-native-group-access-control.md#querying-the-plaintext-of-an-asset-in-a-group).
 
 1. Link the dynamic libraries in the CMake script.
+
    ```txt
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
 2. Include header files.
+
    <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    #include "napi/native_api.h"
    #include <string.h>
@@ -76,8 +79,9 @@ For details about how to query the plaintext of an asset in a group, see [Queryi
    ```
 
 3. Query an asset.
+
    <!-- @[query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    static napi_value QueryAssetPlaintext(napi_env env, napi_callback_info info)
    {
@@ -113,13 +117,15 @@ Query attributes of asset **demo_alias**.
 For details about how to query the attributes of an asset in a group, see [Querying the Attributes of an Asset in a Group](asset-native-group-access-control.md#querying-the-attributes-of-an-asset-in-a-group).
 
 1. Link the dynamic libraries in the CMake script.
+
    ```txt
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
 2. Include header files.
+
    <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    #include "napi/native_api.h"
    #include <string.h>
@@ -127,8 +133,9 @@ For details about how to query the attributes of an asset in a group, see [Query
    ```
 
 3. Query an asset.
+
    <!-- @[query_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    static napi_value QueryAssetAttribute(napi_env env, napi_callback_info info)
    {
@@ -162,13 +169,15 @@ For details about how to query the attributes of an asset in a group, see [Query
 Query attributes of assets whose label is **demo_label** in batches. A total of 10 records that meet the conditions are returned. The results are sorted by the content of the **ASSET_TAG_DATA_LABEL_NORMAL_1** attribute.
 
 1. Link the dynamic libraries in the CMake script.
+
    ```txt
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
 2. Include header files.
+
    <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    #include "napi/native_api.h"
    #include <string.h>
@@ -176,8 +185,9 @@ Query attributes of assets whose label is **demo_label** in batches. A total of 
    ```
 
 3. Query an asset.
+
    <!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    static napi_value QueryBatchAssetAttributes(napi_env env, napi_callback_info info)
    {

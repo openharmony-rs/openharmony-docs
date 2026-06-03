@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:09:21.072Z pushedAt=2026-06-03T09:31:51.977Z -->
 
 ## Adding Assets That Support Sync
 
@@ -13,7 +14,7 @@ Add an asset with the password **demo_pwd**, alias **demo_alias**, and additiona
 
 1. Include the header file and define the tool function.
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -27,7 +28,7 @@ Add an asset with the password **demo_pwd**, alias **demo_alias**, and additiona
 
 2. Develop the desired feature.
    <!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
-   
+
    ``` TypeScript
    let attr: asset.AssetMap = new Map();
    attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
@@ -71,7 +72,7 @@ The following table describes the attributes of **AssetMap** for querying the sy
 
 1. Include the header file and define the tool function.
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -79,7 +80,7 @@ The following table describes the attributes of **AssetMap** for querying the sy
 
 2. Develop the desired feature.
    <!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
-   
+
    ``` TypeScript
    let query: asset.AssetMap = new Map();
    asset.querySyncResult(query).then((res: asset.SyncResult) => {
@@ -97,7 +98,7 @@ The following table describes the attributes of **AssetMap** for querying the sy
 For a successful sync between trusted devices, the assets of both old and new devices must be accessible. Otherwise, the sync might fail.
 
 - For assets that are accessible only when a password is set, the sync will fail if no lock screen password is set on either the old or new device.
-  
+
 - For assets that are accessible only when the screen is unlocked, the sync will fail if the screen of either the old or new device is locked.
 
 - For assets that are accessible only after user authentication, the sync will fail if no lock screen password is set on the old device.
