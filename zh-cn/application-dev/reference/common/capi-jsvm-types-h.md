@@ -18,6 +18,8 @@
 
 **起始版本：** 11
 
+**支持设备类型：** Phone | PC/2in1 | Tablet | Wearable。具体支持情况可通过对应的API接口进行判断。
+
 **相关模块：** [JSVM](capi-jsvm.md)
 
 ## 汇总
