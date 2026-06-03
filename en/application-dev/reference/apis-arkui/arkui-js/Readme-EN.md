@@ -206,7 +206,7 @@
 
 - Global APIs<!--js-full-global-interface-->
 
-  - [Rotating Crown Event Monitor](js-components-common-monitorcrownevents.md)
+  - [Crown Rotation Event Monitor](js-components-common-monitorcrownevents.md)
 
 - [Dynamic Component Creation](js-components-create-elements.md)
 
