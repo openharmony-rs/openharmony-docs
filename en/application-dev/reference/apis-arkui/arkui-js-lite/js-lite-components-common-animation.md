@@ -60,7 +60,7 @@ If there is no default value for when an animation will start or end, use **from
 ```
 
 
-! [animation-demo1] (figures/animation-demo1.gif)
+![animation-demo1](figures/animation-demo1.gif)
 
 
 
