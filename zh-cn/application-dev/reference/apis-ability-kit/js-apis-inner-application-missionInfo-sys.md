@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 表示任务的详细信息，可以通过[getMissionInfo](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissioninfo)获取。

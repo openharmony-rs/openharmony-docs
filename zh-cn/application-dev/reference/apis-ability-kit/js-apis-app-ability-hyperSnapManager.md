@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @jsjzju-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 应用启动过程中的初始化流程可以提前制作成应用快照，从快照启动的应用不再重复执行初始化流程，从而起到加速启动的作用。hyperSnapManager模块提供应用快照管理的能力，包括启用或禁用应用的快照功能、请求重建应用快照等。

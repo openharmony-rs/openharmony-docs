@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 该组件从API version 24开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 24开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 子组件
 
@@ -34,7 +36,7 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | 是 | 指定动态布局组件的布局算法。取非法值时，按照[堆叠布局算法](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)布局子组件，子组件堆叠排列。|
+| algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | 是 | 指定动态布局组件的布局算法。取非法值时，按照堆叠布局算法[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)布局子组件，子组件堆叠排列。|
 
 ## 属性
 
@@ -229,7 +231,7 @@ interface Product {
 
 ### 示例2（切换布局算法）
 
-该示例通过改变[@Local](../../../ui/state-management/arkts-new-local.md)装饰的LayoutAlgorithm变量，实现动态切换DynamicLayout组件布局算法的功能。示例展示如何切换布局算法为[水平线性布局算法](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)、[垂直线性布局算法](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)、[堆叠布局算法](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)和[网格布局算法](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)。
+该示例通过改变[@Local](../../../ui/state-management/arkts-new-local.md)装饰的[LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1)类型变量，实现动态切换DynamicLayout组件布局算法的功能。示例展示如何切换布局算法为水平线性布局算法[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)、垂直线性布局算法[ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)、堆叠布局算法[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)和网格布局算法[GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)。
 
 从API version 24开始，新增RowLayoutAlgorithm、ColumnLayoutAlgorithm、StackLayoutAlgorithm、GridLayoutAlgorithm。
 

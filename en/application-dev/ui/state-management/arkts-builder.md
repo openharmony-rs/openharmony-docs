@@ -14,7 +14,7 @@ Before reading this topic, you are advised to read [Basic Syntax Overview](./ark
 
 The differences between the @Builder decorator and [@Component decorator](./arkts-create-custom-components.md#component) in functions and usage are as follows:
 
-1. The @Builder decorator is used to encapsulate reusable UI structures and extract repeated layout code to improve development efficiency. It is strictly prohibited to define [state variable](./arkts-state-management-glossary.md#state-variables) or use [lifecycle function](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md) in the decorator. Data interaction must be completed through parameter transfer or access to the state variable of the component to which the decorator belongs.
+1. The @Builder decorator is used to encapsulate reusable UI structures and extract repeated layout code to improve development efficiency. It is strictly prohibited to define [state variable](./arkts-state-management-glossary.md#state-variables) or use [custom-component-lifecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md) in the decorator. Data interaction must be completed through parameter transfer or access to the state variable of the component to which the decorator belongs.
 
 2. In the ArkUI framework, the @Component decorator is the core mechanism for encapsulating complex UI components. It allows developers to combine multiple basic components to build a reusable composite UI. This decorator not only supports the definition of internal state variables, but also manages the lifecycle of components.
 
@@ -73,15 +73,16 @@ Invocation pattern:
 
 - Private custom builder functions can be called in custom components, **build()**, and other custom builder functions.
 
-- In a custom component, **this** indicates the component to which the component belongs. The status variables of the component can be accessed in the custom build function. It is recommended that **this** be used to access the status variable of the component instead of being transferred through parameters.
+- In a custom component, **this** indicates the component to which the component belongs. The status variables of the component can be accessed in the custom builder functions. It is recommended that **this** be used to access the status variable of the component instead of being transferred through parameters.
 
 ### Global Custom Builder Function
 
 The following is an example:
 
-<!-- @[global_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomConstructor.ets) --> 
+<!-- @[global_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomConstructor.ets) -->  
 
 ``` TypeScript
+// Global custom builder function showTextBuilder.
 @Builder
 function showTextBuilder() {
   Text('Hello World')
@@ -113,7 +114,7 @@ Parameters for custom builder functions can be passed [by callback](#passing-par
 
 - All parameters must be immutable inside the custom builder function decorated by \@Builder.
 
-- The custom builder function body follows the same [syntax rules](arkts-create-custom-components.md#build-1) as **build()**.
+- The \@Builder function body follows the same [syntax rules](arkts-create-custom-components.md#build-implementation-rules) as the **build()** function.
 
 - The UI components in the \@Builder function can be updated during callback-based transfer and reference-based transfer. Passing by reference takes effect only when one parameter is passed and the parameter is directly passed to the object literal. If there are multiple parameters, the UI component in the @Builder function cannot be refreshed.
 
@@ -121,9 +122,9 @@ Parameters for custom builder functions can be passed [by callback](#passing-par
 
 ### Passing Parameters by Callback
 
-From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh status variables in the \@Builder function. For details, see [State Variables Can Be Refreshed in the \@Builder](#state-variables-can-be-refreshed-in-the-builder).
+From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh state variables in the \@Builder function. For details, see [State Variables Can Be Refreshed in the \@Builder](#state-variables-can-be-refreshed-in-the-builder).
 
-Use **UIUtils.makeBinding()** to wrap the callback function for reading status variables and transfer the callback function as a parameter to the @Builder function. The UI component in the @Builder function can be refreshed. The callback function of the write status variable transferred in **UIUtils.makeBinding()** can further transfer the parameter changes in @Builder to the component that calls the Builder function.
+Use **UIUtils.makeBinding()** to wrap the callback function for reading status variables and transfer the callback function as a parameter to the @Builder function. The UI component in the @Builder function can be refreshed. The callback function of the write status variable transferred in **UIUtils.makeBinding()** can transfer the parameter changes in @Builder to the component that calls the @Builder function.
 
 <!-- @[by_makebinding_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterMakeBinding.ets) -->
 
@@ -208,7 +209,7 @@ struct ParameterReference {
 
 By default, parameters in the \@Builder decorated functions are passed by value. If the transferred parameter is a status variable, the change of the status variable does not cause the UI update in the \@Builder function. Therefore, when using state variables, you are advised to use [Passing Parameters By Callback](#passing-parameters-by-callback) or [Passing Parameters By Reference](#by-reference-parameter-passing).
 
-<!-- @[by_value_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterValue.ets) -->
+<!-- @[by_value_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterValue.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -225,6 +226,7 @@ struct ParameterValue {
 
   build() {
     Column() {
+      // Pass parameters by value. Changes to state variables will not trigger UI refresh inside overBuilderByValue.
       overBuilderByValue(this.label)
     }
   }
@@ -233,15 +235,15 @@ struct ParameterValue {
 
 ## Constraints
 
-1. \@If [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) is not used in a function decorated by Builder, the parameter value cannot be modified. The modification does not trigger UI update. If [passing parameters by reference](#by-reference-parameter-passing) and only one parameter is passed, modifying the internal attributes of the parameter will throw a runtime error. You can use MutableBinding to modify parameter values in the function decorated by \@Builder. For details, see [Changing the Input Parameters in the \@Builder Decorated Function](#changing-the-input-parameters-in-the-builder-decorated-function).
+1. \@If [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) is not used in a function decorated by Builder, the parameter value cannot be modified. The modification does not trigger UI update. If [passing parameters by reference](#by-reference-parameter-passing) and only one parameter is passed, modifying the internal attributes of the parameter will throw a runtime error. You can use MutableBinding to modify parameter values in the function decorated by \@Builder. For details, see [Changing the Input Parameters in the @Builder Decorated Function](#changing-the-input-parameters-in-the-builder-decorated-function).
 
-2. The dynamic UI rendering is triggered only when the \@Builder passes parameters by reference and only one parameter is passed. For details, see [By-Reference Parameter Passing](#by-reference-parameter-passing).
+2. When an @Builder passes a parameter by reference, dynamic UI rendering can be triggered. Refer to [By-Reference Parameter Passing](#by-reference-parameter-passing).
 
-3. If two or more parameters are passed to \@Builder, dynamic UI rendering will not be triggered. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
+3. If an @Builder receives two or more parameters and does not [pass parameters by callback](#passing-parameters-by-callback), dynamic UI rendering will not be triggered. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
 
 4. If the parameters passed to \@Builder contain both value passing and reference passing, dynamic UI rendering will not be triggered. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
 
-5. If the parameters passed to \@Builder are not passed as an object literal, dynamic UI rendering will not be triggered. For details, see [Multiple Parameters in @Builder](#multiple-parameters-in-builder).
+5. Modifying properties of a parameter inside an @Builder function is not allowed; doing so will cause a runtime error. Starting from API version 23, error code [140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder-triggers-invalid-parameter-settings) will be returned. For an example, see [Changing the Input Parameters in the @Builder Decorated Function](#changing-the-input-parameters-in-the-builder-decorated-function).
 
 
 ## Use Cases
@@ -250,7 +252,7 @@ struct ParameterValue {
 
 Create a private **@Builder** function and use **this.builder()** to call the function in **Column**. Update **builderValue** through the [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) lifecycle function and button click event, implementing dynamic UI rendering.
 
-<!-- @[using_custom_builder_function_in_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/InCustomComponent.ets) -->
+<!-- @[using_custom_builder_function_in_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/InCustomComponent.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -287,6 +289,7 @@ struct PrivateBuilder {
           .borderRadius(20)
           .textAlign(TextAlign.Center)
         this.builder()
+        // Click the button to update builderValue to update the text display.
         Button('Click to change the builderValue')
           .onClick(() => {
             this.builderValue = 'builderValue was clicked';
@@ -306,7 +309,7 @@ Effect
 
 Create a global **@Builder** function and call it in **overBuilder()** mode in **Column**. When transferring parameters, you can use the object literal form. Any change of the value will trigger the refresh of the UI, regardless of the simple or complex type.
 
-<!-- @[global_custom_builder_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomBuilder.ets) --> 
+<!-- @[global_custom_builder_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomBuilder.ets) -->  
 
 ``` TypeScript
 class ChildTmp {
@@ -379,6 +382,7 @@ struct ParentDemo {
         tmpValue: this.objParam.tmpValue,
         arrayTmpValue: this.objParam.arrayTmpValue
       })
+      // Click the button to update objParam and trigger the refresh of components in overBuilder.
       Button('Update Values').onClick(() => {
         this.objParam.strValue = 'Hello World';
         this.objParam.numValue = 1;
@@ -402,7 +406,7 @@ Effect
 
 In this scenario, @Builder defines the **Text** component layout but does not handle dynamic UI updates. UI re-rendering occurs when decorator-observed values change, not through @Builder's reactive capabilities.
 
-<!-- @[changing_by_the_decorator_triggers_ui_rerendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingByDecorator.ets) -->
+<!-- @[changing_by_the_decorator_triggers_ui_rerendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingByDecorator.ets) --> 
 
 ``` TypeScript
 class ChildrenTmp {
@@ -442,6 +446,7 @@ struct ParentSample {
       Text('UI Rendered via @Builder')
         .fontSize(20)
       this.privateBuilder()
+      // Click the button to update label and trigger the refresh of Text components.
       Button('Update Values').onClick(() => {
         this.objParam.strValue = 'strValue Hello World';
         this.label = 'label Hello World';
@@ -767,7 +772,7 @@ Effect
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6.gif)
 
-When a parameter is transferred to @Builder by reference, if the parameter is an object decorated by @Local, assigning a value to the object will trigger UI update in @Builder.
+When passing parameters to **@Builder** by reference, if the parameter is an object decorated with **@Local**, assigning a value to the entire object triggers a UI refresh within **@Builder**.
 
 <!-- @[builder_function_combined_with_the_v2_decorator_and_local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedLocal.ets) -->
 
@@ -965,7 +970,7 @@ Effect
 
 ### State Variables Can Be Refreshed in the \@Builder
 
-From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh state variables in the \@Builder function. For details, see [state management APIs](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20).
+From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh state variables in the \@Builder function. For details, see [makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20).
 
 <!-- @[builder_supports_state_variable_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderSupports.ets) --> 
 
@@ -1051,7 +1056,7 @@ struct Single {
         .textAlign(TextAlign.Center)
       // Call the global @Builder function customButton.
       customButton(
-        UIUtils.makeBinding<number>(() => this.number1), // Use the UIUtils.makeBinding() function to update the status variables in the @Builder function.
+        UIUtils.makeBinding<number>(() => this.number1), // Use the UIUtils.makeBinding() function to update the state variables in the @Builder function.
         UIUtils.makeBinding<number>(
           () => this.number2,
           (val: number) => {
@@ -1230,7 +1235,7 @@ In @ComponentV2 decorated components, combine @ObservedV2 and @Trace decorators 
 
 **Incorrect Usage**
 
-Using primitive data types in @ComponentV2 decorated components fails to trigger UI re-rendering.
+In the custom component decorated with [@ComponentV2](arkts-create-custom-components.md#componentv2), using primitive data types cannot trigger UI refresh.
 
 <!-- @[dynamic_rerendering_with_component_v2_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicIncorrectUsage.ets) -->
 
@@ -1281,7 +1286,7 @@ struct PageBuilderIncorrectUsage {
 
 In a custom component decorated by @ComponentV2, only the ParamTmpClass class decorated by @ObservedV2 and the count attribute decorated by @Trace can trigger UI refresh.
 
-<!-- @[dynamic_rerendering_with_component_v2_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicCorrectUsage.ets) --> 
+<!-- @[dynamic_rerendering_with_component_v2_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicCorrectUsage.ets) -->  
 
 ``` TypeScript
 @ObservedV2
@@ -1331,6 +1336,9 @@ struct PageBuilderCorrectUsage {
   aboutToAppear(): void {
     this.progressTimer = setInterval(() => {
       if (this.builderParams.count < 100) {
+        // builderParams is a ParamTmpClass class decorated with @ObservedV2.
+        // The count attribute is decorated with @Trace.
+        // The count change will trigger UI re-rendering.
         this.builderParams.count += 5;
         this.mapValue.set('name', this.builderParams.count);
         this.setValue.add(this.builderParams.count);
@@ -1659,7 +1667,7 @@ struct MakeBindingTest1 {
   }
 }
 ```
-For details about how to use MutableBinding, see [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20).
+For details, see [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) in the statement management API reference.
 
 **Correct Usage**
 <!-- @[not_passed_set_accessor_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorCorrectUsage.ets) -->
@@ -1706,9 +1714,9 @@ struct MakeBindingTest2 {
 }
 ```
 
-### Changing the Input Parameters in the \@Builder Decorated Function
+### Changing the Input Parameters in the @Builder Decorated Function
 
-If [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) is not used, the modification of parameter values in the function decorated by \@Builder does not take effect and may cause runtime errors.
+If [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) is not used, the modification of parameter values in the function decorated by \@Builder does not take effect and may cause runtime errors. Since API version 23, error code [140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder-triggers-invalid-parameter-settings) will be returned.
 
 **Incorrect Usage**
 <!-- @[changing_input_parameters_builder_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingIncorrectUsage.ets) -->
@@ -1901,7 +1909,7 @@ struct Child1 {
 The UI of the button may be abnormal. Therefore, you need to avoid using the \@Builder function in the \@Watch function.
 
 **Correct Usage**
-<!-- @[executing_builder_function_watch_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets) -->
+<!-- @[executing_builder_function_watch_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -1917,6 +1925,7 @@ struct Child2 {
   }
 
   provideWatch() {
+    // Correct format. Do not use the @Builder function in the @Watch function.
     console.info(`content value has changed.`);
   }
 

@@ -12,6 +12,10 @@
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
+## 概述
+
+本模块提供系统剪贴板管理能力。
+
 ## 导入模块
 
 ```ts
@@ -54,7 +58,11 @@ type ValueType = string | image.PixelMap | Want | ArrayBuffer
 
 createData(mimeType: string, value: ValueType): PasteData
 
-构建一个指定类型的剪贴板内容对象。
+构建一个指定类型的剪贴板内容对象，根据传入的MIME类型和数据内容创建PasteData实例。 调用此方法后，系统将验证MIME类型有效性，封装数据内容，并返回可用于后续剪贴板操作的PasteData对象。参数mimeType长度不能超过1024字节，value类型需与mimeType匹配。
+
+**使用场景**：当需要将单一类型的数据（如纯文本、HTML、图片等）放入剪贴板时使用此方法。
+
+**参数选取建议**：mimeType优先使用已定义的常量类型（如MIMETYPE_TEXT_PLAIN），若需要传递自定义格式数据，可使用自定义MIME类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -64,8 +72,14 @@ createData(mimeType: string, value: ValueType): PasteData
 
 | 参数名 | 类型 | 必填 | 说明                                                                                                     |
 | -------- | -------- | -------- |--------------------------------------------------------------------------------------------------------|
-| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值, mimeType长度不能超过1024字节。 |
-| value | [ValueType](#valuetype9) | 是 | 自定义数据内容。                                                                                               |
+| mimeType | string | 是 | 剪贴板数据对应的MIME类型。详情见下文说明。 |
+| value | [ValueType](#valuetype9) | 是 | 自定义数据内容。建议根据实际场景选择合适的数据类型，使用过大的数据对象会影响应用复制粘贴性能和内存占用。对于ArrayBuffer类型，建议合理设置数据大小；对于PixelMap类型，建议及时释放不再使用的对象。 |
+
+**mimeType参数详细说明**
+
+- **支持的MIME类型**：可以是[常量](#常量)中已定义的类型，包括HTML类型、WANT类型、纯文本类型、URI类型、PIXELMAP类型。
+- **自定义类型**：开发者可自定义MIME类型，自定义类型不能与常量中已定义的类型重复。
+- **长度限制**：mimeType长度不能超过1024字节，超出范围时返回错误码401。
 
 **返回值：**
 
@@ -84,14 +98,18 @@ createData(mimeType: string, value: ValueType): PasteData
 **示例1：**
 
   ```ts
+  // 创建ArrayBuffer数据对象
   let dataXml = new ArrayBuffer(256);
+  // 构建自定义MIME类型的剪贴板内容对象
   let pasteData: pasteboard.PasteData = pasteboard.createData('app/xml', dataXml);
   ```
 
 **示例2：**
 
   ```ts
+  // 定义纯文本内容
   let dataText = 'hello';
+  // 构建纯文本类型的剪贴板内容对象
   let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, dataText);
   ```
 
@@ -99,7 +117,9 @@ createData(mimeType: string, value: ValueType): PasteData
 
 createData(data: Record&lt;string, ValueType&gt;): PasteData
 
-构建一个包含多个类型数据的剪贴板内容对象。
+构建一个包含多个类型数据的剪贴板内容对象，支持一次创建多个MIME类型的数据条目。调用此方法后，系统将解析Record中的多个key-value对，创建多个PasteDataRecord条目，首个MIME类型作为默认类型。非默认类型数据需通过[getData](#getdata14)接口读取。
+
+**使用场景**：应用需要将多种不同类型的数据(如文本、URI、HTML等)同时复制到剪贴板时，可使用此接口一次性构建包含多个MIME类型数据的剪贴板内容对象。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -107,7 +127,17 @@ createData(data: Record&lt;string, ValueType&gt;): PasteData
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- |------------------------------------------------| -------- |-----------|
-| data | [Record](../../quick-start/introduction-to-arkts.md#对象字面量)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
+| data | [Record](../../quick-start/introduction-to-arkts.md#对象字面量)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record对象，key为MIME类型，value为对应数据。详情见下文说明。 |
+
+**data参数详细说明**
+
+- **Record的key**：剪贴板数据对应的MIME类型。
+- **支持的MIME类型**：可以是[常量](#常量)中已定义的类型，包括HTML类型、WANT类型、纯文本类型、URI类型、PIXELMAP类型。
+- **自定义类型**：开发者可自定义MIME类型。
+- **长度限制**：mimeType长度不能超过1024字节，超出范围时返回错误码401。
+- **Record的value**：key中指定MIME类型对应的数据。
+- **默认MIME类型**：Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型。
+- **非默认类型读取**：非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。
 
 **返回值：**
 
@@ -126,6 +156,7 @@ createData(data: Record&lt;string, ValueType&gt;): PasteData
 **示例1：**
 
 ```ts
+// 构建包含多种MIME类型的剪贴板内容对象
 let pasteData: pasteboard.PasteData = pasteboard.createData({
     'text/plain': 'hello',
     'app/xml': new ArrayBuffer(256),
@@ -135,9 +166,13 @@ let pasteData: pasteboard.PasteData = pasteboard.createData({
 **示例2：**
 
 ```ts
+// 创建Record对象存储多种类型数据
 let record: Record<string, pasteboard.ValueType> = {};
+// 添加纯文本类型数据
 record[pasteboard.MIMETYPE_TEXT_PLAIN] = 'hello';
+// 添加URI类型数据
 record[pasteboard.MIMETYPE_TEXT_URI] = 'dataability:///com.example.myapplication1/user.txt';
+// 构建剪贴板内容对象
 let pasteData: pasteboard.PasteData = pasteboard.createData(record);
 ```
 
@@ -145,7 +180,12 @@ let pasteData: pasteboard.PasteData = pasteboard.createData(record);
 
 createRecord(mimeType: string, value: ValueType): PasteDataRecord
 
-创建一条指定类型的数据内容条目。
+创建一条指定类型的数据内容条目，将数据内容封装为PasteDataRecord对象。 调用此方法后，系统将根据MIME类型封装数据内容，返回可添加到PasteData中的条目对象。参数mimeType长度不能超过1024字节，value类型需与mimeType对应（如mimeType为MIMETYPE_TEXT_PLAIN，则value类型必须是string），参数不能为空。
+
+**配合使用：**
+
+- 创建的条目通常需要通过[addRecord](#addrecord7)方法添加到[PasteData](#pastedata)对象中才能生效。
+- 典型使用流程：先通过[createData](#pasteboardcreatedata9)创建PasteData对象，再使用createRecord创建条目，最后通过addRecord添加条目。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -155,8 +195,14 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 
 | 参数名 | 类型 | 必填 | 说明                |
 | -------- | -------- | -------- |-------------------|
-| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。  |
-| value | [ValueType](#valuetype9) | 是 | 指定类型对应的数据内容。          |
+| mimeType | string | 是 | 剪贴板数据对应的MIME类型。详情见下文说明。  |
+| value | [ValueType](#valuetype9) | 是 | 指定类型对应的数据内容。建议根据实际场景选择合适的数据类型，避免使用过大的数据对象以免影响剪贴板性能和内存占用。对于ArrayBuffer类型，建议合理设置数据大小；对于PixelMap类型，建议及时释放不再使用的对象。 |
+
+**mimeType参数详细说明**
+
+- **支持的MIME类型**：可以是[常量](#常量)中已定义的类型，包括HTML类型、WANT类型、纯文本类型、URI类型、PIXELMAP类型。
+- **自定义类型**：开发者可自定义MIME类型。
+- **长度限制**：mimeType长度不能超过1024字节，超出范围时返回错误码401。
 
 **返回值：**
 
@@ -175,15 +221,20 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 **示例1：**
 
   ```ts
+  // 创建ArrayBuffer数据对象
   let dataXml = new ArrayBuffer(256);
+  // 创建自定义MIME类型的数据条目
   let pasteDataRecord: pasteboard.PasteDataRecord = pasteboard.createRecord('app/xml', dataXml);
   ```
 
 **示例2：**
 
   ```ts
+  // 创建纯文本剪贴板内容对象
   let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+  // 创建URI类型数据条目
   let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
+  // 替换剪贴板中的第一条记录
   pasteData.replaceRecord(0, record);
   ```
 
@@ -191,7 +242,9 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 
 getSystemPasteboard(): SystemPasteboard
 
-获取系统剪贴板对象。
+获取系统剪贴板对象，返回剪贴板服务的单例实例。 调用此方法后，返回的系统剪贴板对象可用于访问剪贴板的读写、监听等功能。每次调用返回同一实例，依赖剪贴板系统服务正常运行。
+
+**使用场景**：在进行任何剪贴板读写操作前，都需要先调用此方法获取系统剪贴板对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -206,6 +259,7 @@ getSystemPasteboard(): SystemPasteboard
 **示例：**
 
 ```ts
+// 获取系统剪贴板对象 
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 ```
 
@@ -238,7 +292,7 @@ createHtmlData(htmlText: string): PasteData
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| htmlText | string | 是 | HTML内容。 |
+| htmlText | string | 是 | HTML内容，需符合标准HTML格式。 |
 
 **返回值：**
 
@@ -332,7 +386,7 @@ createUriData(uri: string): PasteData
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | URI内容。 |
+| uri | string | 是 | URI内容，需符合标准URI格式。 |
 
 **返回值：**
 
@@ -361,7 +415,7 @@ createHtmlTextRecord(htmlText: string): PasteDataRecord
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| htmlText | string | 是 | HTML内容。 |
+| htmlText | string | 是 | HTML内容，需符合标准HTML格式。 |
 
 **返回值：**
 
@@ -455,7 +509,7 @@ createUriRecord(uri: string): PasteDataRecord
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | URI内容。 |
+| uri | string | 是 | URI内容，需符合标准URI格式。 |
 
 **返回值：**
 
@@ -484,8 +538,8 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 | mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。 |
 | tag | string | 否 | 否 | 用户自定义标签，默认为空。 |
 | timestamp | number | 是 | 否 | 剪贴板数据的写入时间戳（单位：已开机时间的ns数）。 |
-| localOnly | boolean | 否 | 否 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。 |
-| shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 否 | 指示剪贴板数据可以粘贴到的范围，默认值为CROSSDEVICE。 |
+| localOnly | boolean | 否 | 否 | 配置剪贴板内容是否为“仅在本地”，true表示仅在本地有效，false表示允许跨设备传输。默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。 |
+| shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 否 | 指示剪贴板数据可以粘贴到的范围，默认值为CROSSDEVICE。与localOnly属性互斥，设置shareOption会影响localOnly的实际值。 |
 
 ## FileConflictOptions<sup>15+</sup>
 
@@ -523,7 +577,7 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称     | 类型   | 只读 | 可选 | 说明                                                       |
 | -------- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| progress | number | 否   | 否   | 不使用系统提供的进度条时，系统上报拷贝粘贴任务进度百分比。 |
+| progress | number | 否   | 否   | 不使用系统提供的进度条时，系统上报拷贝粘贴任务进度百分比，单位：%。 |
 
 ## ProgressListener<sup>15+</sup>
 
@@ -543,7 +597,7 @@ type ProgressListener = (progress: ProgressInfo) => void
 
 ## ProgressSignal<sup>15+</sup>
 
-定义进度取消的函数，在粘贴过程中可选择取消任务，且仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时此参数才有意义。
+定义进度取消的函数，在粘贴过程中可选择取消任务，且仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时此参数才生效。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -603,7 +657,7 @@ struct PasteboardTest {
 
 ## GetDataParams<sup>15+</sup>
 
-应用在使用剪贴板提供的文件拷贝能力的情况下需要的参数，包含目标路径、文件冲突选项、进度条类型等。
+应用在使用剪贴板提供的文件拷贝能力的情况下需要的参数，包含目标路径、文件冲突选项、进度条类型等。调用本接口前，需确保无其他拷贝或粘贴操作正在进行。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -611,11 +665,25 @@ struct PasteboardTest {
 
 | 名称                | 类型                                          | 只读 | 可选 | 说明                                                         |
 | ------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| destUri             | string                                        | 否 | 是 | 拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理，默认为空。 |
-| fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | 否 | 是 | 定义文件拷贝冲突时的选项，默认为OVERWRITE。                  |
-| progressIndicator   | [ProgressIndicator](#progressindicator15)     | 否 | 否 | 定义进度条指示选项，可选择是否采用系统默认进度显示。         |
+| destUri             | string                                        | 否 | 是 | 拷贝文件时目标路径，需符合URI格式规范。详情见下文说明。 |
+| fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | 否 | 是 | 定义文件拷贝冲突时的选项。OVERWRITE（覆盖）适合需要确保目标路径使用最新文件内容的场景；SKIP（跳过）适合需要保留目标路径原有文件、避免意外覆盖的场景。默认为OVERWRITE。                  |
+| progressIndicator   | [ProgressIndicator](#progressindicator15)     | 否 | 否 | 定义进度条指示选项，可选择是否采用系统默认进度显示。设置为DEFAULT时采用系统默认进度显示；设置为NONE时需应用自行处理进度，此时progressListener和progressSignal参数才有效。 |
 | progressListener    | [ProgressListener](#progresslistener15)       | 否 | 是 | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度，默认为空。 |
-| progressSignal      | [ProgressSignal](#progresssignal15)           | 否 | 是 | 定义进度取消的函数，在粘贴过程中可选择取消任务，且仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时此参数才有意义，默认为空。 |
+| progressSignal      | [ProgressSignal](#progresssignal15)           | 否 | 是 | 定义进度取消的函数。详情见下文说明。 |
+
+**destUri参数详细说明**
+
+- **基本用途**：拷贝文件时目标路径。
+- **使用场景**： 
+- 若不支持文件处理，则不需要设置此参数。
+- 若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理。
+- **默认值**：默认为空。
+
+**progressSignal参数详细说明**
+
+- **基本用途**：定义进度取消的函数，在粘贴过程中可选择取消任务。
+- **使用条件**：仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时此参数才生效。
+- **默认值**：默认为空。
 
 ## PasteDataRecord<sup>7+</sup>
 
@@ -629,11 +697,11 @@ struct PasteboardTest {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText| string | 是 | 否 | HTML内容。 |
+| htmlText| string | 是 | 否 | HTML内容，需符合标准HTML格式。 |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。 |
 | mimeType | string | 是 | 否 | 默认数据类型。 |
 | plainText | string | 是 | 否 | 纯文本内容。 |
-| uri | string | 是 | 否 | URI内容。 |
+| uri | string | 是 | 否 | URI内容，需符合标准URI格式。 |
 | pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。 |
 | data<sup>9+</sup> | Record<string, ArrayBuffer> | 是 | 否 | 自定义数据内容。 |
 
@@ -641,7 +709,7 @@ struct PasteboardTest {
 
 toPlainText(): string
 
-将一个PasteDataRecord中的html、plain、uri内容强制转换为文本内容。
+将一个PasteDataRecord中的html、plain、uri内容强制转换为文本内容。若PasteDataRecord包含其他数据类型（如pixelMap、Want等），转换结果为空字符串。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -673,8 +741,14 @@ addEntry(type: string, value: ValueType): void
 
 | 参数名   | 类型 | 必填 | 说明                |
 |-------| -------- | -------- |-------------------|
-| type  | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。  |
+| type  | string | 是 | 剪贴板数据对应的MIME类型。详情见下文说明。  |
 | value | [ValueType](#valuetype9) | 是 | 自定义数据内容。          |
+
+**mimeType参数详细说明**
+
+- **支持的MIME类型**：可以是[常量](#常量)中已定义的类型，包括HTML类型、WANT类型、纯文本类型、URI类型、PIXELMAP类型。
+- **自定义类型**：开发者可自定义MIME类型。
+- **长度限制**：mimeType长度不能超过1024字节，超出范围时返回错误码401。
 
 **错误码：**
 
@@ -687,9 +761,13 @@ addEntry(type: string, value: ValueType): void
 **示例：**
 
 ```ts
+// 构建HTML内容字符串
 let html = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset=\"utf-8\">\n" + "<title>HTML-PASTEBOARD_HTML</title>\n" + "</head>\n" + "<body>\n" + "    <h1>HEAD</h1>\n" + "    <p></p>\n" + "</body>\n" + "</html>";
+// 创建URI类型数据条目
 let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'dataability:///com.example.myapplication1/user.txt');
+// 添加纯文本类型数据
 record.addEntry(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+// 添加HTML类型数据
 record.addEntry(pasteboard.MIMETYPE_TEXT_HTML, html);
 ```
 
@@ -705,7 +783,7 @@ getValidTypes(types: Array&lt;string&gt;): Array&lt;string&gt;
 
 | 参数名   | 类型 | 必填 | 说明             |
 |-------| -------- | -------- |----------------|
-| types | Array&lt;string&gt; | 是 | MIME类型列表。 |
+| types | Array&lt;string&gt; | 是 | MIME类型列表，设置后用于与剪贴板中数据的MIME类型进行交集匹配，返回匹配成功的类型列表。 |
 
 **返回值：**
 
@@ -741,7 +819,7 @@ let types: string[] = record.getValidTypes([
 
 getData(type: string): Promise&lt;ValueType&gt;
 
-从PasteDataRecord中获取指定MIME类型的自定义数据。
+从PasteDataRecord中获取指定MIME类型的自定义数据，使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -749,7 +827,7 @@ getData(type: string): Promise&lt;ValueType&gt;
 
 | 参数名  | 类型     |必填 | 说明       |
 |------|--------|-------- |----------|
-| type | string |是 | MIME类型，其长度不能超过1024字节。 |
+| type | string | 是 | MIME类型，取值范围：长度不超过1024字节。超出范围时返回错误码401。 |
 
 **返回值：**
 
@@ -887,10 +965,14 @@ getPrimaryText(): string
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 获取系统剪贴板对象
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// 异步读取剪贴板数据
 systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
+    // 获取剪贴板中的纯文本内容
     let text: string = pasteData.getPrimaryText();
 }).catch((err: BusinessError) => {
+    // 处理获取失败的情况
     console.error('Failed to get PasteData. Cause: ' + err.message);
 });
 ```
@@ -1004,7 +1086,9 @@ getPrimaryPixelMap(): image.PixelMap
 ```ts
 import { image } from '@kit.ImageKit';
 
+// 创建图像数据缓冲区
 let buffer = new ArrayBuffer(128);
+// 定义图像尺寸
 let realSize: image.Size = { height: 3, width: 5 };
 let opt: image.InitializationOptions = {
     size: realSize,
@@ -1033,12 +1117,14 @@ addRecord(record: PasteDataRecord): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| record | [PasteDataRecord](#pastedatarecord7) | 是 | 待添加的条目。 |
+| record | [PasteDataRecord](#pastedatarecord7) | 是 | 待添加的条目，设置后会将该条目添加到剪贴板内容中，同时更新mimeTypes属性列表。 |
 
 **示例：**
 
 ```ts
+// 创建URI类型剪贴板内容对象
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, 'dataability:///com.example.myapplication1/user.txt');
+// 创建纯文本类型数据条目
 let textRecord: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let html: string = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset=\"utf-8\">\n" + "<title>HTML-PASTEBOARD_HTML</title>\n" + "</head>\n" + "<body>\n" + "    <h1>HEAD</h1>\n" + "    <p></p>\n" + "</body>\n" + "</html>";
 let htmlRecord: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_HTML, html);
@@ -1052,6 +1138,8 @@ addRecord(mimeType: string, value: ValueType): void
 
 向当前剪贴板内容中添加一条数据内容条目，同时也会将数据类型添加到[PasteDataProperty](#pastedataproperty7)的mimeTypes中。入参均不能为空，否则添加失败。
 
+**使用场景**：当剪贴板内容需要包含多种类型的数据（如同时包含纯文本和HTML）时，使用此方法向已有的PasteData对象添加额外的数据条目。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
@@ -1060,8 +1148,8 @@ addRecord(mimeType: string, value: ValueType): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| mimeType | string | 是 | 数据的MIME类型， 其长度不能超过1024字节。 |
-| value | [ValueType](#valuetype9) | 是 | 数据内容。 |
+| mimeType | string | 是 | 数据的MIME类型，取值范围：长度不超过1024字节。超出范围时返回错误码401。 |
+| value | [ValueType](#valuetype9) | 是 | 数据内容，设置后更新剪贴板内容的属性信息，包括时间戳、数据类型、粘贴范围等。 |
 
 **错误码：**
 
@@ -1076,6 +1164,7 @@ addRecord(mimeType: string, value: ValueType): void
 
   ```ts
   let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, 'dataability:///com.example.myapplication1/user.txt');
+  // 创建ArrayBuffer数据
   let dataXml = new ArrayBuffer(256);
   pasteData.addRecord('app/xml', dataXml);
   ```
@@ -1163,7 +1252,7 @@ setProperty(property: PasteDataProperty): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| property | [PasteDataProperty](#pastedataproperty7) | 是 | 属性描述对象。 |
+| property | [PasteDataProperty](#pastedataproperty7) | 是 | 属性描述对象，设置后更新剪贴板内容的属性信息，包括时间戳、数据类型、粘贴范围等。 |
 
 **错误码：**
 
@@ -1176,9 +1265,12 @@ setProperty(property: PasteDataProperty): void
 **示例：**
 
 ```ts
+// 定义附加属性的类型
 type AdditionType = Record<string, Record<string, Object>>;
 
+// 创建HTML类型剪贴板内容对象
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_HTML, 'application/xml');
+// 获取剪贴板属性对象
 let prop: pasteboard.PasteDataProperty = pasteData.getProperty();
 prop.shareOption = pasteboard.ShareOption.INAPP;
 // 需要注意，不支持对addition进行追加属性的操作，只能通过重新赋值的方式达到追加属性的目的。
@@ -1232,7 +1324,7 @@ getRecord(index: number): PasteDataRecord
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定条目的下标。 |
+| index | number | 是 | 指定条目的下标。有效取值范围：[0, getRecordCount()-1]，超出范围会触发错误码12900001。 |
 
 **返回值：**
 
@@ -1316,7 +1408,7 @@ hasType(mimeType: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| mimeType | string | 是 | 待查询的数据类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型。 |
+| mimeType | string | 是 | 待查询的数据类型。可以是[常量](#常量)中已定义的类型，包括： - HTML类型 - WANT类型 - 纯文本类型 - URI类型 - PIXELMAP类型 也可以是自定义的MIME类型，长度不能超过1024字节。 |
 
 **返回值：**
 
@@ -1353,7 +1445,7 @@ removeRecord(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定的下标。 |
+| index | number | 是 | 指定的下标。有效取值范围：[0, getRecordCount()-1]，超出范围会触发错误码12900001。 |
 
 **错误码：**
 
@@ -1385,8 +1477,8 @@ replaceRecord(index: number, record: PasteDataRecord): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定的下标。 |
-| record | [PasteDataRecord](#pastedatarecord7) | 是 | 被替换后的条目数据内容。 |
+| index | number | 是 | 指定的下标。有效取值范围：[0, getRecordCount()-1]，超出范围会触发错误码12900001。 |
+| record | [PasteDataRecord](#pastedatarecord7) | 是 | 被替换后的条目数据内容，设置后会替换指定下标位置的原始条目。 |
 
 **错误码：**
 
@@ -1409,7 +1501,15 @@ pasteData.replaceRecord(0, record);
 
 pasteStart(): void
 
-读取剪贴板数据前，通知剪贴板服务保留跨设备通道。
+读取剪贴板数据前，通知剪贴板服务保留跨设备通道。访问剪贴板数据中的跨端文件数据前，通知剪贴板服务保留跨设备链路。跨设备链路用于连接远端设备并提供传输远端设备文件到本端设备的能力，如未调用此方法则跨设备链路将在30秒后自动断开。适用于跨设备粘贴场景。
+
+**使用场景**：当需要确保跨设备剪贴板数据通道保持连接，以便后续读取远端设备剪贴板数据时使用。
+
+**配对调用：**
+
+- 必须与[pasteComplete](#pastecomplete12)方法配对使用。
+- 调用顺序：先调用pasteStart()通知保留通道，数据处理完成后必须调用pasteComplete()通知完成。
+- 未调用pasteComplete()会导致跨设备通道未正确关闭，影响后续跨设备剪贴板操作。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -1434,7 +1534,14 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 
 pasteComplete(): void
 
-通知剪贴板服务数据使用已完成。
+通知剪贴板服务数据使用已完成，可释放跨设备通道等资源。应在pasteStart之后、完成数据处理后调用，避免资源浪费。未调用可能导致跨设备通道长时间占用，影响后续跨设备粘贴操作。
+
+**使用流程：**
+
+1. getData()获取剪贴板数据
+2. pasteStart()保留跨设备通道
+3. 使用剪贴板数据
+4. pasteComplete()释放通道
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -1471,7 +1578,7 @@ addHtmlRecord(htmlText: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| htmlText | string | 是 | HTML内容。 |
+| htmlText | string | 是 | HTML内容，需符合标准HTML格式。 |
 
 **示例：**
 
@@ -1577,7 +1684,7 @@ getRecordAt(index: number): PasteDataRecord
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定条目的下标。 |
+| index | number | 是 | 指定条目的下标。有效取值范围：[0, getRecordCount()-1]，超出范围返回错误码401。 |
 
 **返回值：**
 
@@ -1615,7 +1722,7 @@ hasMimeType(mimeType: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| mimeType | string | 是 | 待查询的数据类型。 |
+| mimeType | string | 是 | 待查询的数据类型。可以是[常量](#常量)中已定义的类型，包括： - HTML类型 - WANT类型 - 纯文本类型 - URI类型 - PIXELMAP类型 也可以是自定义的MIME类型，长度不能超过1024字节。 |
 
 **返回值：**
 
@@ -1653,13 +1760,13 @@ removeRecordAt(index: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定的下标。 |
+| index | number | 是 | 指定的下标。有效取值范围：[0, getRecordCount()-1]，超出范围返回错误码401。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 成功移除返回true，失败返回false。 |
+| boolean | 移除指定下标的条目成功返回true，移除失败（如指定下标不存在或超出范围）返回false。 |
 
 **错误码：**
 
@@ -1690,14 +1797,14 @@ replaceRecordAt(index: number, record: PasteDataRecord): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定的下标。 |
+| index | number | 是 | 指定的下标。有效取值范围：[0, getRecordCount()-1]，超出范围返回错误码401。 |
 | record | [PasteDataRecord](#pastedatarecord7) | 是 | 替换后的条目。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 成功替换返回true，失败返回false。 |
+| boolean | 替换指定下标的条目成功返回true，替换失败（如指定下标不存在或超出范围、参数为空）返回false。 |
 
 **示例：**
 
@@ -1721,7 +1828,15 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 
 on(type: 'update', callback: () =&gt;void): void
 
-订阅系统剪贴板内容变化事件，当系统剪贴板中内容变化时触发用户程序的回调。
+订阅系统剪贴板内容变化事件，当系统剪贴板中内容变化时触发用户程序的回调。调用此方法后，系统将在剪贴板服务中注册监听器，剪贴板内容被写入、清空或修改时触发回调。可注册多个监听器，需在适当时机调用off取消监听以释放资源。
+
+**使用场景**：当应用需要实时响应剪贴板内容变化时使用，如自动检测剪贴板中的特定格式数据、实现智能粘贴建议等场景。
+
+**配对调用：**
+
+- 订阅后必须在不再需要监听时调用[off('update')](#offupdate7)取消订阅。
+- 未取消订阅会导致回调函数持续存在，可能造成内存泄漏或多次回调触发。
+- 建议在组件/页面销毁时取消订阅。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -1729,7 +1844,7 @@ on(type: 'update', callback: () =&gt;void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| type | string | 是 | 取值为'update'，表示系统剪贴板内容变化事件。 |
+| type | string | 是 | 取值为'update'，表示系统剪贴板内容变化事件，其他值无效。 |
 | callback | function | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
 
 **错误码：**
@@ -1743,10 +1858,13 @@ on(type: 'update', callback: () =&gt;void): void
 **示例：**
 
 ```ts
+// 获取系统剪贴板对象
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// 定义剪贴板内容变化回调函数 
 let listener = () => {
     console.info('The system pasteboard has changed.');
 };
+// 订阅剪贴板内容变化事件
 systemPasteboard.on('update', listener);
 ```
 
@@ -1755,6 +1873,12 @@ systemPasteboard.on('update', listener);
 off(type: 'update', callback?: () =&gt;void): void
 
 取消订阅系统剪贴板内容变化事件。
+
+**配对调用：**
+
+- 与on('update')方法配合使用，取消订阅的是通过on('update')订阅的事件监听
+- 必须在已订阅的情况下才能调用
+- 如果callback参数未填，清除本应用的所有监听回调；否则清除指定监听回调
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -1776,10 +1900,13 @@ off(type: 'update', callback?: () =&gt;void): void
 **示例：**
 
 ```ts
+// 获取系统剪贴板对象
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// 定义剪贴板内容变化回调函数 
 let listener = () => {
     console.info('The system pasteboard has changed.');
 };
+// 订阅剪贴板内容变化事件
 systemPasteboard.off('update', listener);
 ```
 
@@ -1787,7 +1914,7 @@ systemPasteboard.off('update', listener);
 
 clearData(callback: AsyncCallback&lt;void&gt;): void
 
-清空系统剪贴板内容，使用callback异步回调。
+清空系统剪贴板内容，使用callback异步回调。调用此方法后，系统将删除剪贴板中的所有数据，触发已注册的'update'监听回调。清空成功后，剪贴板中将没有任何数据，hasData方法将返回false。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1810,7 +1937,9 @@ clearData(callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
+// 获取系统剪贴板对象
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// 清空系统剪贴板内容
 systemPasteboard.clearData((err, data) => {
     if (err) {
         console.error(`Failed to clear the pasteboard. Cause: ${err.message}`);
@@ -1853,7 +1982,15 @@ systemPasteboard.clearData().then((data: void) => {
 
 setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void
 
-将数据写入系统剪贴板，使用callback异步回调。
+将数据写入系统剪贴板，使用callback异步回调。 调用此方法后，系统会将PasteData对象写入到系统剪贴板中。写入成功后，其他应用可以读取该剪贴板数据。写入的数据会替换剪贴板中已有的内容。
+
+约束说明：
+
+- 如果有其他拷贝或粘贴操作正在进行，会返回错误27787277。
+- 如果复制被禁止，会返回错误27787278。
+- PasteData对象不能为空。
+
+**使用场景**：适用于需要异步写入剪贴板内容的场景，如UI响应优先、避免阻塞主线程。与setDataSync相比，setData不会阻塞UI线程。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1863,8 +2000,8 @@ setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| data | [PasteData](#pastedata) | 是 | PasteData对象。 |
-| callback | AsyncCallback&lt;void> | 是 | 回调函数。当写入成功，err为undefined，否则为错误对象。 |
+| data | [PasteData](#pastedata) | 是 | PasteData对象，设置后会将该数据写入系统剪贴板，供应用读取和粘贴使用。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当写入成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1879,8 +2016,11 @@ setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
+// 创建纯文本剪贴板内容对象
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'content');
+// 获取系统剪贴板对象
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// 将数据写入系统剪贴板
 systemPasteboard.setData(pasteData, (err, data) => {
     if (err) {
         console.error('Failed to set PasteData. Cause: ' + err.message);
@@ -1896,6 +2036,8 @@ setData(data: PasteData): Promise&lt;void&gt;
 
 将数据写入系统剪贴板，使用Promise异步回调。
 
+**使用场景**：适用于应用需要使用标准化数据结构[UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md)进行跨应用数据交换的场景。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
@@ -1904,7 +2046,7 @@ setData(data: PasteData): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| data | [PasteData](#pastedata) | 是 | PasteData对象。 |
+| data | [PasteData](#pastedata) | 是 | PasteData对象。调用本接口前，需确保无其他拷贝或粘贴操作正在进行。 |
 
 **返回值：**
 
@@ -1927,8 +2069,11 @@ setData(data: PasteData): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 创建纯文本剪贴板内容对象
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'content');
+// 获取系统剪贴板对象
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// 将数据写入系统剪贴板
 systemPasteboard.setData(pasteData).then((data: void) => {
     console.info('Succeeded in setting PasteData.');
 }).catch((err: BusinessError) => {
@@ -1940,7 +2085,9 @@ systemPasteboard.setData(pasteData).then((data: void) => {
 
 getData(callback: AsyncCallback&lt;PasteData&gt;): void
 
-读取系统剪贴板内容，使用callback异步回调。
+读取系统剪贴板内容，使用callback异步回调。将剪贴板数据封装为PasteData对象返回。 调用此方法后，系统将从剪贴板服务读取当前内容，通过callback返回PasteData对象。读取成功后，应用可以通过PasteData对象的方法获取具体的数据内容（如文本、HTML、URI等）。
+
+**使用场景**：适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程。与getDataSync相比，getData不会阻塞UI线程，适合处理大量数据或远端数据。
 
 **需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
@@ -1969,12 +2116,15 @@ getData(callback: AsyncCallback&lt;PasteData&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 获取系统剪贴板对象
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// 读取系统剪贴板内容
 systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) => {
     if (err) {
         console.error('Failed to get PasteData. Cause: ' + err.message);
         return;
     }
+    // 获取剪贴板中的纯文本内容
     let text: string = pasteData.getPrimaryText();
 });
 ```
@@ -1984,6 +2134,8 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 getData(): Promise&lt;PasteData&gt;
 
 读取系统剪贴板内容，使用Promise异步回调。
+
+**使用场景**：适用于应用需要使用标准化数据结构[UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md)读取剪贴板数据的场景。
 
 **需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
@@ -2011,8 +2163,11 @@ getData(): Promise&lt;PasteData&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 获取系统剪贴板对象
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// 读取系统剪贴板内容
 systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
+    // 获取剪贴板中的纯文本内容
     let text: string = pasteData.getPrimaryText();
 }).catch((err: BusinessError) => {
     console.error('Failed to get PasteData. Cause: ' + err.message);
@@ -2059,7 +2214,7 @@ hasData(callback:  AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 返回true表示系统剪贴板中有内容，返回false表示系统剪贴板中没有内容。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数，用于接收剪贴板是否有内容的判断结果。返回true表示系统剪贴板中有内容，返回false表示系统剪贴板中没有内容。 |
 
 **错误码：**
 
@@ -2211,12 +2366,15 @@ getPasteData(callback: AsyncCallback&lt;PasteData&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 获取系统剪贴板对象
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// 读取系统剪贴板内容
 systemPasteboard.getPasteData((err: BusinessError, pasteData: pasteboard.PasteData) => {
     if (err) {
         console.error('Failed to get PasteData. Cause: ' + err.message);
         return;
     }
+    // 获取剪贴板中的纯文本内容
     let text: string = pasteData.getPrimaryText();
 });
 ```
@@ -2243,8 +2401,11 @@ getPasteData(): Promise&lt;PasteData&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 获取系统剪贴板对象
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// 读取系统剪贴板内容
 systemPasteboard.getPasteData().then((pasteData: pasteboard.PasteData) => {
+    // 获取剪贴板中的纯文本内容
     let text: string = pasteData.getPrimaryText();
 }).catch((err: BusinessError) => {
     console.error('Failed to get PasteData. Cause: ' + err.message);
@@ -2428,7 +2589,7 @@ try {
     let result: boolean = systemPasteboard.isRemoteData();
     console.info(`Succeeded in checking the RemoteData. Result: ${result}`);
 } catch (err) {
-    console.error('Failed to check the RemoteData. Cause:' + err.message);
+    console.error('Failed to check the RemoteData. Cause: ' + err.message);
 };
 ```
 
@@ -2464,7 +2625,7 @@ try {
     let result: string = systemPasteboard.getDataSource();
     console.info(`Succeeded in getting DataSource. Result: ${result}`);
 } catch (err) { 
-    console.error('Failed to get DataSource. Cause:' + err.message);
+    console.error('Failed to get DataSource. Cause: ' + err.message);
 };
 ```
 
@@ -2482,7 +2643,7 @@ hasDataType(mimeType: string): boolean
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ------------------ |
-| mimeType | string | 是   | 数据类型。 |
+| mimeType | string | 是   | 数据类型，设置后用于检查剪贴板内容中是否存在该类型的特定数据。其长度不能超过1024字节，超出范围时返回错误码401。 |
 
 **返回值：**
 
@@ -2507,7 +2668,7 @@ try {
     let result: boolean = systemPasteboard.hasDataType(pasteboard.MIMETYPE_TEXT_PLAIN);
     console.info(`Succeeded in checking the DataType. Result: ${result}`);
 } catch (err) {
-    console.error('Failed to check the DataType. Cause:' + err.message);
+    console.error('Failed to check the DataType. Cause: ' + err.message);
 };
 ```
 
@@ -2515,7 +2676,7 @@ try {
 
 clearDataSync(): void
 
-清空系统剪贴板内容, 此接口为同步接口。
+清空系统剪贴板内容，此接口为同步接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2537,7 +2698,7 @@ try {
     systemPasteboard.clearDataSync();
     console.info('Succeeded in clearing the pasteboard.');
 } catch (err) {
-    console.error('Failed to clear the pasteboard. Cause:' + err.message);
+    console.error('Failed to clear the pasteboard. Cause: ' + err.message);
 };
 ```
 
@@ -2545,7 +2706,11 @@ try {
 
 getDataSync(): PasteData
 
-读取系统剪贴板内容, 此接口为同步接口。
+读取系统剪贴板内容，此接口为同步接口。
+
+**使用场景**：适用于应用需要在关键业务流程中同步获取剪贴板数据，或需要立即处理剪贴板内容的场景。
+
+**开发建议**：避免在UI线程调用此接口，以免阻塞界面；处理大量数据或远端数据时，建议使用异步接口getData。
 
 **需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
@@ -2584,7 +2749,9 @@ try {
 
 setDataSync(data: PasteData): void
 
-将数据写入系统剪贴板, 此接口为同步接口。
+将数据写入系统剪贴板，此接口为同步接口。
+
+**使用场景**：适用于应用需要在关键业务流程中同步完成剪贴板数据写入，或需要立即确认写入结果的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2622,7 +2789,7 @@ try {
 
 hasDataSync(): boolean
 
-判断系统剪贴板中是否有内容, 此接口为同步接口。
+判断系统剪贴板中是否有内容，此接口为同步接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2650,7 +2817,7 @@ try {
     let result: boolean = systemPasteboard.hasDataSync();
     console.info(`Succeeded in checking the PasteData. Result: ${result}`);
 } catch (err) {
-    console.error('Failed to check the PasteData. Cause:' + err.message);
+    console.error('Failed to check the PasteData. Cause: ' + err.message);
 };    
 ```
 
@@ -2705,7 +2872,7 @@ systemPasteboard.getUnifiedData().then((data) => {
 
 getUnifiedDataSync(): unifiedDataChannel.UnifiedData
 
-读取系统剪贴板内容, 此接口为同步接口。
+读取系统剪贴板内容，此接口为同步接口。
 
 **需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
@@ -2756,7 +2923,7 @@ setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| data | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 是 | 需要写入剪贴板中的数据。 |
+| data | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 是 | 需要写入剪贴板中的数据。调用本接口前，需确保无其他拷贝或粘贴操作正在进行。 |
 
 **返回值：**
 
@@ -2780,13 +2947,17 @@ setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
+// 创建纯文本数据结构对象
 let plainText : uniformDataStruct.PlainText = {
     uniformDataType: uniformTypeDescriptor.UniformDataType.PLAIN_TEXT,
     textContent : 'PLAINTEXT_CONTENT',
     abstract : 'PLAINTEXT_ABSTRACT',
 }
+// 创建统一数据记录对象
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+// 创建统一数据对象
 let data = new unifiedDataChannel.UnifiedData();
+// 添加数据记录到统一数据对象
 data.addRecord(record);
 
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
@@ -2801,7 +2972,7 @@ systemPasteboard.setUnifiedData(data).then((data: void) => {
 
 setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void
 
-将数据写入系统剪贴板, 此接口为同步接口。
+将数据写入系统剪贴板，此接口为同步接口。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -2827,14 +2998,20 @@ setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
 
+// 创建统一数据对象
 let plainTextData = new unifiedDataChannel.UnifiedData();
+// 创建纯文本数据对象
 let plainText = new unifiedDataChannel.PlainText();
+// 设置纯文本的详细信息
 plainText.details = {
     Key: 'delayPlaintext',
     Value: 'delayPlaintext',
 };
+// 设置文本内容
 plainText.textContent = 'delayTextContent';
+// 设置摘要内容
 plainText.abstract = 'delayTextContent';
+// 添加数据记录到统一数据对象
 plainTextData.addRecord(plainText);
 
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
@@ -2852,6 +3029,14 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 应用设置本应用剪贴板数据的可粘贴范围。
 
+**使用场景**：适用于应用需要全局限制本应用产生的剪贴板数据的粘贴范围，如金融类应用需要保护用户敏感信息的场景。
+
+**配对调用：**
+
+- 与removeAppShareOptions()方法（删除应用全局的可粘贴的范围）配合使用。
+- 需要删除已设置的分享范围时，调用removeAppShareOptions()。
+- 在何处设置就在何处删除，确保分享范围设置和删除的一致性。
+
 **需要权限**：ohos.permission.MANAGE_PASTEBOARD_APP_SHARE_OPTION
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
@@ -2860,7 +3045,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| shareOptions | [ShareOption](#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption.INAPP。|
+| shareOptions | [ShareOption](#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption.INAPP。传入其他值时返回错误码401。 |
 
 **错误码：**
 
@@ -2869,7 +3054,6 @@ setAppShareOptions(shareOptions: ShareOption): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API, <br>**适用版本：** 12 - 13 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12900006 | Settings already exist. |
 
@@ -2891,6 +3075,14 @@ removeAppShareOptions(): void
 
 删除应用全局的可粘贴的范围。
 
+**使用场景**：适用于应用需要取消之前设置的粘贴范围限制，恢复剪贴板数据默认粘贴范围的场景。
+
+**配对调用：**
+
+- 与setAppShareOptions()方法（应用设置本应用剪贴板数据的可粘贴范围）配合使用。
+- 删除的是通过setAppShareOptions()设置的分享范围。
+- 必须在已设置分享范围的情况下才能调用。
+
 **需要权限**：ohos.permission.MANAGE_PASTEBOARD_APP_SHARE_OPTION
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
@@ -2902,7 +3094,6 @@ removeAppShareOptions(): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202 | Permission verification failed. A non-system application calls a system API, <br>**适用版本：** 12 - 13 |
 
 **示例：**
 
@@ -2933,7 +3124,9 @@ try {
 
 detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&gt;
 
-检测**本地**剪贴板中存在的[Pattern](#pattern13)模式，使用Promise异步回调。
+检测**本地**剪贴板中存在的[Pattern](#pattern13)模式，使用Promise异步回调。本地剪贴板指当前设备上的剪贴板数据，不包括跨设备传输的远端剪贴板数据。
+
+**使用场景**：适用于应用在粘贴数据前需要检测剪贴板内容是否包含特定类型的数据(如URL、邮箱、电话号码等)，以便进行相应处理或提供智能提示的场景。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -2941,13 +3134,13 @@ detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| patterns | Array&lt;[Pattern](#pattern13)&gt; | 是 | 需要在剪贴板中检测的模式。 |
+| patterns | Array&lt;[Pattern](#pattern13)&gt; | 是 | 需要在剪贴板中检测的模式，用于检查剪贴板数据是否符合特定格式。可选值包括：URL(URL类型)、NUMBER(数字类型)、EMAIL_ADDRESS(邮箱地址类型)等。取值范围：数组元素数量不限，元素值只能为Pattern枚举值。传入无效值时返回错误码401。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;Pattern&gt;&gt; | Promise对象，返回检测到的模式。 |
+| Promise&lt;Array&lt;[Pattern](#pattern13)&gt;&gt; | Promise对象，返回检测到的模式。 |
 
 **错误码：**
 
@@ -3005,7 +3198,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.getMimeTypes().then((data: Array<string>) => {
     console.info('Succeeded in getting mimeTypes. mimeTypes: ' + data.sort().join(','));
 }).catch((err: BusinessError) => {
-    console.error('Failed to get mimeTypes. Cause:' + err.message);
+    console.error('Failed to get mimeTypes. Cause: ' + err.message);
 });
 ```
 
@@ -3013,7 +3206,9 @@ systemPasteboard.getMimeTypes().then((data: Array<string>) => {
 
 getDataWithProgress(params: GetDataParams): Promise&lt;PasteData&gt;
 
-获取剪贴板的内容和进度，使用Promise异步回调，不支持对文件夹的拷贝。
+获取剪贴板的内容和进度，使用Promise异步回调，不支持对文件夹的拷贝。对于大文件拷贝操作，建议设置进度监听以跟踪拷贝进度，避免在UI线程长时间等待；建议合理设置目标路径以确保有足够的存储空间。
+
+**使用场景**：适用于应用需要粘贴大文件时，需要显示拷贝进度或需要监听拷贝过程以便在必要时取消操作的场景。
 
 **需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
@@ -3138,13 +3333,19 @@ onRemoteUpdate(callback: UpdateCallback): void
 
 订阅跨设备剪贴板内容变化事件，当远端设备系统剪贴板中内容变化时触发用户程序的回调。
 
+**配对调用：** 
+
+- 订阅后必须在不再需要监听时调用[offRemoteUpdate](#offremoteupdatecallback-updatecallback22)取消订阅。
+- 未取消订阅会导致回调函数持续监听远端变化，造成内存泄漏。
+- 建议在组件/页面销毁时取消订阅。
+
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [UpdateCallback](#updatecallback-22) | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
+| callback | [UpdateCallback](#updatecallback-22) | 是 | 剪贴板中内容变化时触发的用户程序的回调，无参数。用于监听跨设备剪贴板内容更新事件，当远端设备剪贴板内容发生变化时触发此回调。 |
 
 **示例：**
 
@@ -3161,6 +3362,12 @@ systemPasteboard.onRemoteUpdate(listener);
 offRemoteUpdate(callback?: UpdateCallback): void
 
 取消订阅跨设备剪贴板内容变化事件。
+
+**配对调用：**
+
+- 与onRemoteUpdate()方法配合使用，取消订阅的是通过onRemoteUpdate()订阅的事件监听
+- 必须在已订阅的情况下才能调用
+- 如果callback参数未填，清除本应用的所有远端监听回调；否则清除指定远端监听回调
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 

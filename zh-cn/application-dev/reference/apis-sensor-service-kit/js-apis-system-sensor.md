@@ -48,7 +48,7 @@ import { Sensor } from '@kit.SensorServiceKit';
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
 | options | [subscribeAccelerometerOptions](#subscribeaccelerometeroptions) | 是   | 监听加速度传感器数据的回调函数的执行频率。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, AccelerometerResponse, subscribeAccelerometerOptions } from '@kit.SensorServiceKit';
@@ -65,6 +65,323 @@ let accelerometerOptions: subscribeAccelerometerOptions = {
   },
 };
 Sensor.subscribeAccelerometer(accelerometerOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let subscribeAccelerometerOptions = {
+  interval: 'normal',
+  success: (ret) => {
+    console.info('Succeeded in subscribing. X-axis data: ' + ret.x);
+    console.info('Succeeded in subscribing. Y-axis data: ' + ret.y);
+    console.info('Succeeded in subscribing. Z-axis data: ' + ret.z);
+  },
+  fail: (data, code) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  },
+};
+Sensor.subscribeAccelerometer(subscribeAccelerometerOptions);
+```
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title">
+    {{ title }}
+  </text>
+  <text class="TextArea">{{ TextContent }}</text>
+  <picker-view type="text" range="{{ sensorList }}" selected="
+    {{ defaultSelect }}" @change="pickerOnchange" class="pickerText">
+  </picker-view>
+  <div class="BUTTON">
+    <input class="buttonText" type="button" onclick="subscribe">订阅</input>
+    <text class="EmptyText"></text>
+    <input class="buttonText" type="button" onclick="unsubscribe">取消订阅</input>
+  </div>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  background-color: #F1F3F5;
+}
+.title {
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  color: black;
+}
+.pickerText {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  selected-color: black;
+}
+.EmptyText {
+  width: 30px;
+  margin-left: 20px;
+}
+.TextArea {
+  background-color: white;
+  border-radius: 0px;
+  color: black;
+  height: 100px;
+  width: 100%;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+.buttonText {
+  background-color: blue;
+  radius: 30px;
+  text-color: white;
+  font-size: 25px;
+  width: 100px;
+  height: 100%;
+  margin-top: 5px;
+  margin-left: 80px;
+  font-weight: bolder;
+}
+.BUTTON {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+```
+
+```js
+// xxx.js
+import sensor from '@system.sensor';
+
+export default {
+  data: {
+    TAG: "WearLiteSample:",
+    title: "LiteWearableDemo",
+    TextContent: "AAA",
+    sensorList: ['ACCELEROMETER', 'MAGNETIC_FIELD', 'PROXIMITY',
+      'AMBIENT_LIGHT', 'PEDOMETER', 'BAROMETER',
+      'HEART_RATE', 'WEAR_DETECTION', 'ORIENTATION', 'GYROSCOPE', 'getOnBodyState'],
+    defaultSelect: '',
+    currentSelect: 'ACCELEROMETER'
+  },
+
+  onInit() {
+    this.defaultSelect = 'ACCELEROMETER';
+  },
+
+
+  pickerOnchange(e) {
+    console.info(this.TAG + 'current selected:' + e.newValue);
+    this.currentSelect = e.newValue;
+  },
+
+  subscribe() {
+    try {
+      switch (this.currentSelect) {
+        case "ACCELEROMETER":
+          let subscribeAccelerometerOptions = {
+            interval: 'normal',
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. X-axis data: ' + ret.x);
+              console.info(this.TAG + 'Succeeded in subscribing. Y-axis data: ' + ret.y);
+              console.info(this.TAG + 'Succeeded in subscribing. Z-axis data: ' + ret.z);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(this.TAG + `Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeAccelerometer(subscribeAccelerometerOptions);
+          break;
+        case "MAGNETIC_FIELD":
+          let subscribeCompassOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get data direction:' + ret.direction);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeCompass(subscribeCompassOptions);
+          break;
+        case "PROXIMITY":
+          let subscribeProximityOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get data distance:' + ret.distance);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeProximity(subscribeProximityOptions);
+          break;
+        case "AMBIENT_LIGHT":
+          let subscribeLightOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get data intensity:' + ret.intensity);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeLight(subscribeLightOptions);
+          break;
+        case "PEDOMETER":
+          let subscribeStepCounterOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get step value:' + ret.steps);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeStepCounter(subscribeStepCounterOptions);
+          break;
+        case "BAROMETER":
+          let subscribeBarometerOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get data value:' + ret.pressure);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+            };
+            sensor.subscribeBarometer(subscribeBarometerOptions);
+            break;
+        case "HEART_RATE":
+          let subscribeHeartRateOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get heartRate value:' + ret.heartRate);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeHeartRate(subscribeHeartRateOptions);
+          break;
+        case "WEAR_DETECTION":
+          let subscribeOnBodyStateOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get on-body state value:' + ret.value);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeOnBodyState(subscribeOnBodyStateOptions);
+          break;
+        case "ORIENTATION":
+          let subscribeDeviceOrientationOptions = {
+            interval: 'normal',
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Alpha data: ' + ret.alpha);
+              console.info(this.TAG + 'Succeeded in subscribing. Beta data: ' + ret.beta);
+              console.info(this.TAG + 'Succeeded in subscribing. Gamma data: ' + ret.gamma);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            }
+          };
+          sensor.subscribeDeviceOrientation(subscribeDeviceOrientationOptions);
+          break;
+        case "GYROSCOPE":
+          let subscribeGyroscopeOptions = {
+            interval: 'normal',
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. X-axis data: ' + ret.x);
+              console.info(this.TAG + 'Succeeded in subscribing. Y-axis data: ' + ret.y);
+              console.info(this.TAG + 'Succeeded in subscribing. Z-axis data: ' + ret.z);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            }
+          };
+          sensor.subscribeGyroscope(subscribeGyroscopeOptions);
+          break;
+        case "getOnBodyState":
+          let getOnBodyStateOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. On body state: ' + ret.value);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.getOnBodyState(getOnBodyStateOptions);
+          break;
+      }
+    } catch (e) {
+      console.error(this.TAG + `subscribe exception occurred, code: ${e.code}, message: ${e.message}`)
+    }
+  },
+
+  unsubscribe() {
+    try {
+      switch (this.currentSelect) {
+        case "ACCELEROMETER":
+          sensor.unsubscribeAccelerometer();
+          break;
+        case "MAGNETIC_FIELD":
+          sensor.unsubscribeCompass();
+          break;
+        case "PROXIMITY":
+          sensor.unsubscribeProximity()
+          break;
+        case "AMBIENT_LIGHT":
+          sensor.unsubscribeLight()
+          break;
+        case "PEDOMETER":
+          sensor.unsubscribeStepCounter()
+          break;
+        case "BAROMETER":
+          sensor.unsubscribeBarometer();
+          break;
+        case "HEART_RATE":
+          sensor.unsubscribeHeartRate()
+          break;
+        case "WEAR_DETECTION":
+          sensor.unsubscribeOnBodyState()
+          break;
+        case "ORIENTATION":
+          sensor.unsubscribeDeviceOrientation();
+          break;
+        case "GYROSCOPE":
+          sensor.unsubscribeGyroscope();
+          break;
+        }
+        this.TextContent = ""
+    } catch (e) {
+        console.error(this.TAG + `unsubscribe exception occurred, code: ${e.code}, message: ${e.message}`)
+    }
+  }
+}
 ```
 
 > **说明：**
@@ -84,9 +401,15 @@ unsubscribeAccelerometer(): void
 
 **需要权限**：ohos.permission.ACCELEROMETER，该权限为系统权限
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
+Sensor.unsubscribeAccelerometer();
+```
+
+**JS示例**：
+
+```js
 Sensor.unsubscribeAccelerometer();
 ```
 
@@ -108,7 +431,7 @@ Sensor.unsubscribeAccelerometer();
 | ------- | --------------------------------------------------- | ---- | -------------------------------- |
 | options | [SubscribeCompassOptions](#subscribecompassoptions) | 是   | 当罗盘传感器数据发生变化时调用。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, CompassResponse, SubscribeCompassOptions } from '@kit.SensorServiceKit';
@@ -118,6 +441,22 @@ let subscribeCompassOptions: SubscribeCompassOptions = {
     console.info('Succeeded in subscribing. Get data direction:' + ret.direction);
   },
   fail: (data: string, code: number) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  },
+};
+Sensor.subscribeCompass(subscribeCompassOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let subscribeCompassOptions = {
+  success: (ret) => {
+    console.info('Succeeded in subscribing. Get data direction:' + ret.direction);
+  },
+  fail: (data, code) => {
     console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
@@ -139,9 +478,15 @@ static unsubscribeCompass(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
+Sensor.unsubscribeCompass();
+```
+
+**JS示例**：
+
+```js
 Sensor.unsubscribeCompass();
 ```
 
@@ -165,7 +510,7 @@ Sensor.unsubscribeCompass();
 | ------- | ------------------------------------------------------- | ---- | -------------------------------- |
 | options | [SubscribeProximityOptions](#subscribeproximityoptions) | 是   | 当距离传感器数据发生变化时调用。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, ProximityResponse, SubscribeProximityOptions } from '@kit.SensorServiceKit';
@@ -179,6 +524,22 @@ let subscribeProximityOptions: SubscribeProximityOptions = {
   },
 };
 Sensor.subscribeProximity(subscribeProximityOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let subscribeProximityOptions = {
+  success: (ret) => {
+    console.info('Succeeded in subscribing. Get data distance:' + ret.distance);
+  },
+  fail: (data, code) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  },
+};
+sensor.subscribeProximity(subscribeProximityOptions);
 ```
 
 > **说明：**
@@ -198,9 +559,15 @@ static unsubscribeProximity(): void
 
 **设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
+Sensor.unsubscribeProximity();
+```
+
+**JS示例**：
+
+```js
 Sensor.unsubscribeProximity();
 ```
 
@@ -224,7 +591,7 @@ Sensor.unsubscribeProximity();
 | ------- | ----------------------------------------------- | ---- | ---------------------------------- |
 | options | [SubscribeLightOptions](#subscribelightoptions) | 是   | 当环境光传感器数据发生变化时调用。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, LightResponse, SubscribeLightOptions } from '@kit.SensorServiceKit';
@@ -238,6 +605,22 @@ let subscribeLightOptions: SubscribeLightOptions = {
   },
 };
 Sensor.subscribeLight(subscribeLightOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let subscribeLightOptions = {
+  success: (ret) => {
+    console.info('Succeeded in subscribing. Get data intensity:' + ret.intensity);
+  },
+  fail: (data, code) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  },
+};
+sensor.subscribeLight(subscribeLightOptions);
 ```
 
 > **说明：**
@@ -257,9 +640,15 @@ static unsubscribeLight(): void
 
 **设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
+Sensor.unsubscribeLight();
+```
+
+**JS示例**：
+
+```js
 Sensor.unsubscribeLight();
 ```
 
@@ -283,7 +672,7 @@ Sensor.unsubscribeLight();
 | ------- | ----------------------------------------------------------- | ---- | -------------------------------------- |
 | options | [SubscribeStepCounterOptions](#subscribestepcounteroptions) | 是   | 当步进计数器传感器数据发生变化时调用。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, StepCounterResponse, SubscribeStepCounterOptions } from '@kit.SensorServiceKit';
@@ -297,6 +686,22 @@ let subscribeStepCounterOptions: SubscribeStepCounterOptions = {
   },
 };
 Sensor.subscribeStepCounter(subscribeStepCounterOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let subscribeStepCounterOptions = {
+  success: (ret) => {
+    console.info('Succeeded in subscribing. Get step value:' + ret.steps);
+  },
+  fail: (data, code) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  },
+};
+sensor.subscribeStepCounter(subscribeStepCounterOptions);
 ```
 
 > **说明：**
@@ -316,9 +721,15 @@ static unsubscribeStepCounter(): void
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
+Sensor.unsubscribeStepCounter();
+```
+
+**JS示例**：
+
+```js
 Sensor.unsubscribeStepCounter();
 ```
 
@@ -341,7 +752,7 @@ static subscribeBarometer(options: SubscribeBarometerOptions): void
 | ------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | options | [SubscribeBarometerOptions](#subscribebarometeroptions) | 是   | 当气压计传感器数据发生变化时调用。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, BarometerResponse, SubscribeBarometerOptions } from '@kit.SensorServiceKit';
@@ -355,6 +766,22 @@ let subscribeBarometerOptions: SubscribeBarometerOptions = {
   },
 };
 Sensor.subscribeBarometer(subscribeBarometerOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let subscribeBarometerOptions = {
+  success: (ret) => {
+    console.info('Succeeded in subscribing. Get data value:' + ret.pressure);
+  },
+  fail: (data, code) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  },
+};
+sensor.subscribeBarometer(subscribeBarometerOptions);
 ```
 
 > **说明：**
@@ -373,9 +800,15 @@ static unsubscribeBarometer(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
+Sensor.unsubscribeBarometer();
+```
+
+**JS示例**：
+
+```js
 Sensor.unsubscribeBarometer();
 ```
 
@@ -400,7 +833,7 @@ Sensor.unsubscribeBarometer();
 | ------- | ------------------------------------------------------- | ---- | -------------------------------- |
 | options | [SubscribeHeartRateOptions](#subscribeheartrateoptions) | 是   | 当心率传感器数据发生变化时调用。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, HeartRateResponse, SubscribeHeartRateOptions } from '@kit.SensorServiceKit';
@@ -414,6 +847,22 @@ let subscribeHeartRateOptions: SubscribeHeartRateOptions = {
   },
 };
 Sensor.subscribeHeartRate(subscribeHeartRateOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let subscribeHeartRateOptions = {
+  success: (ret) => {
+    console.info('Succeeded in subscribing. Get heartRate value:' + ret.heartRate);
+  },
+  fail: (data, code) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  },
+};
+sensor.subscribeHeartRate(subscribeHeartRateOptions);
 ```
 
 > **说明：**
@@ -434,9 +883,15 @@ static unsubscribeHeartRate(): void
 
 **需要权限**：ohos.permission.READ_HEALTH_DATA
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
+Sensor.unsubscribeHeartRate();
+```
+
+**JS示例**：
+
+```js
 Sensor.unsubscribeHeartRate();
 ```
 
@@ -458,7 +913,7 @@ Sensor.unsubscribeHeartRate();
 | ------- | ----------------------------------------------------------- | ---- | ---------------------- |
 | options | [SubscribeOnBodyStateOptions](#subscribeonbodystateoptions) | 是   | 当穿着状态改变时调用。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, OnBodyStateResponse, SubscribeOnBodyStateOptions } from '@kit.SensorServiceKit';
@@ -472,6 +927,22 @@ let subscribeOnBodyStateOptions: SubscribeOnBodyStateOptions = {
   },
 };
 Sensor.subscribeOnBodyState(subscribeOnBodyStateOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let subscribeOnBodyStateOptions = {
+  success: (ret) => {
+    console.info('Succeeded in subscribing. Get on-body state value:' + ret.value);
+  },
+  fail: (data, code) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  },
+};
+sensor.subscribeOnBodyState(subscribeOnBodyStateOptions);
 ```
 
 > **说明：**
@@ -489,9 +960,15 @@ static unsubscribeOnBodyState(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
+Sensor.unsubscribeOnBodyState();
+```
+
+**JS示例**：
+
+```js
 Sensor.unsubscribeOnBodyState();
 ```
 
@@ -513,7 +990,7 @@ Sensor.unsubscribeOnBodyState();
 | ------- | ----------------------------------------------- | ---- | -------------------------- |
 | options | [GetOnBodyStateOptions](#getonbodystateoptions) | 是   | 获取传感器所在设备穿戴状态时调用。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, OnBodyStateResponse, GetOnBodyStateOptions } from '@kit.SensorServiceKit';
@@ -527,6 +1004,22 @@ let getOnBodyStateOptions: GetOnBodyStateOptions = {
   },
 };
 Sensor.getOnBodyState(getOnBodyStateOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let getOnBodyStateOptions = {
+  success: (ret) => {
+    console.info('Succeeded in subscribing. On body state: ' + ret.value);
+  },
+  fail: (data, code) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  },
+};
+sensor.getOnBodyState(getOnBodyStateOptions);
 ```
 
 ### Sensor.subscribeDeviceOrientation<sup>6+</sup>
@@ -551,7 +1044,7 @@ Sensor.getOnBodyState(getOnBodyStateOptions);
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
 | options | [SubscribeDeviceOrientationOptions](#subscribedeviceorientationoptions6) | 是   | 用于监听设备方向传感器数据的回调函数的执行频率。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, DeviceOrientationResponse, SubscribeDeviceOrientationOptions } from '@kit.SensorServiceKit';
@@ -568,6 +1061,25 @@ let subscribeDeviceOrientationOptions: SubscribeDeviceOrientationOptions = {
   }
 };
 Sensor.subscribeDeviceOrientation(subscribeDeviceOrientationOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let subscribeDeviceOrientationOptions = {
+  interval: 'normal',
+  success: (ret) => {
+    console.info('Succeeded in subscribing. Alpha data: ' + ret.alpha);
+    console.info('Succeeded in subscribing. Beta data: ' + ret.beta);
+    console.info('Succeeded in subscribing. Gamma data: ' + ret.gamma);
+  },
+  fail: (data, code) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  }
+};
+sensor.subscribeDeviceOrientation(subscribeDeviceOrientationOptions);
 ```
 
 > **说明：**
@@ -587,9 +1099,15 @@ static unsubscribeDeviceOrientation(): void
 
 **设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
+Sensor.unsubscribeDeviceOrientation();
+```
+
+**JS示例**：
+
+```js
 Sensor.unsubscribeDeviceOrientation();
 ```
 
@@ -615,7 +1133,7 @@ Sensor.unsubscribeDeviceOrientation();
 | ------- | -------------------------------------------------------- | ---- | ---------------------------------------------- |
 | options | [SubscribeGyroscopeOptions](#subscribegyroscopeoptions6) | 是   | 用于侦听陀螺仪传感器数据的回调函数的执行频率。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, GyroscopeResponse, SubscribeGyroscopeOptions } from '@kit.SensorServiceKit';
@@ -632,6 +1150,25 @@ let subscribeGyroscopeOptions: SubscribeGyroscopeOptions = {
   }
 };
 Sensor.subscribeGyroscope(subscribeGyroscopeOptions);
+```
+
+**JS示例**：
+
+```js
+import Sensor from '@system.sensor';
+
+let subscribeGyroscopeOptions = {
+  interval: 'normal',
+  success: (ret) => {
+    console.info('Succeeded in subscribing. X-axis data: ' + ret.x);
+    console.info('Succeeded in subscribing. Y-axis data: ' + ret.y);
+    console.info('Succeeded in subscribing. Z-axis data: ' + ret.z);
+  },
+  fail: (data, code) => {
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+  }
+};
+sensor.subscribeGyroscope(subscribeGyroscopeOptions);
 ```
 
 > **说明：**
@@ -651,9 +1188,15 @@ static unsubscribeGyroscope(): void
 
 **需要权限**：ohos.permission.GYROSCOPE，该权限为系统权限
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
+Sensor.unsubscribeGyroscope();
+```
+
+**JS示例**：
+
+```js
 Sensor.unsubscribeGyroscope();
 ```
 

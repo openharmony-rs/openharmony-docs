@@ -1,15 +1,18 @@
 # 文本组件公共接口
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
->文本类组件公共接口。
->本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 文本类组件公共接口。
 
 ## CaretStyle<sup>10+</sup>
 
@@ -475,6 +478,23 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | IMMERSIVE | 1 | 沉浸式模式，跟随系统。|
 | LIGHT_IMMERSIVE | 2 | 浅色沉浸式风格。|
 | DARK_IMMERSIVE | 3 | 深色沉浸式风格。|
+
+## IncrementalUpdatePolicy
+
+文本渲染的增量更新策略。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| ------- | ---- | ------------------- |
+| NONE | 0 | 不启用增量更新，采用全量布局渲染。 |
+| PARAGRAPH_CACHE | 1 | 启用增量更新，使用段落级缓存。该策略生效的前提是文本绑定的属性字符串对象保持不变，若属性字符串对象发生变化则无法命中缓存。 |
 
 ## InsertValue<sup>12+</sup>对象说明
 
@@ -1013,7 +1033,7 @@ constructor(options: LinearGradientOptions)
 
 | 参数名  | 类型   | 必填   | 说明  |
 | ------- | ------ | ---- | ----- |
-| options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 是    | 显示为线性渐变效果。 |
+| options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 是    | 显示为线性渐变效果。<br/>[LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明)中的direction默认值按[GradientDirection](ts-appendix-enums.md#gradientdirection)中的NONE处理。 |
 
 ## RadialGradientStyle<sup>20+</sup>
 
@@ -1037,7 +1057,7 @@ constructor(options: LinearGradientOptions)
 
 constructor(options: RadialGradientOptions)
 
-用于创建RadialGradientOptions对象的构造函数。
+用于创建RadialGradientStyle对象的构造函数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1071,7 +1091,7 @@ constructor(options: RadialGradientOptions)
 
 constructor(color: ResourceColor)
 
-用于创建ResourceColor对象的构造函数。
+用于创建ColorShaderStyle对象的构造函数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1336,3 +1356,21 @@ Span的无障碍朗读功能属性。
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。组件无文本属性时，屏幕朗读选中此组件不会播报。设置该属性后可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：''<br>值为undefined时，按默认值处理。 |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍说明属性。此描述用于向用户详细解释当前组件，开发人员应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果，尤其当这些后果无法仅从组件的属性和无障碍文本中直接获取时。<br>默认值：''<br>值为undefined时，按默认值处理。 |
 | accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于设置组件是否可被无障碍辅助服务识别。<br>支持取值如下：<br>"auto"：当前组件由无障碍辅助服务和ArkUl进行综合判断组件是否可被无障碍辅助服务所识别。<br>"yes"：当前组件可被无障碍辅助服务识别。<br>"no"：当前组件不可被无障碍辅助服务识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
+
+## FontVariation
+
+type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation
+
+可变字体的属性。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型                              | 说明   |
+| --------------------------------- | --------------------------------- |
+| import('../api/@ohos.graphics.text').default.[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation) | 可变字体的属性。 |

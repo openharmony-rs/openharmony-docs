@@ -82,7 +82,7 @@ The user authentication widget supports the following types of authentication:
 
 **Example 1**
 
- Initiate facial + fingerprint + lock screen password authentication at ATL3 or higher.
+ Initiate face recognition + fingerprint + lock screen password authentication at ATL3 or higher.
 
 <!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
@@ -105,12 +105,12 @@ initiatingUserAuthentication1() {
     };
     // Obtain an authentication object.
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // Subscribe to the authentication result.
     userAuthInstance.on('result', {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
-          Logger.info('userAuthInstance callback');
+          Logger.info('userAuthInstance callback.');
           this.result[ResultIndex.EXAMPLE_1] = (`${result.result}`);
           // Unsubscribe from the authentication result if required.
           userAuthInstance.off('result');
@@ -122,7 +122,7 @@ initiatingUserAuthentication1() {
     });
     // Start authentication.
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
@@ -133,7 +133,7 @@ initiatingUserAuthentication1() {
 
 **Example 2**
 
-Initiate facial authentication at ATL3 or higher, and enable the device unlock result to be reused for the same type of authentication within the specified time.
+Initiate user authentication (trusted authentication level ≥ ATL3), using face recognition + authentication type-related validation + reuse of the maximum valid duration for device unlock, and then retrieve the authentication result.
 
 <!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
@@ -161,12 +161,12 @@ initiatingUserAuthentication2() {
     };
     // Obtain an authentication object.
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // Subscribe to the authentication result.
     userAuthInstance.on('result', {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
-          Logger.info('userAuthInstance callback');
+          Logger.info('userAuthInstance callback.');
           this.result[ResultIndex.EXAMPLE_2] = (`${result.result}`);
           // Unsubscribe from the authentication result if required.
           userAuthInstance.off('result');
@@ -178,7 +178,7 @@ initiatingUserAuthentication2() {
     });
     // Start authentication.
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
@@ -189,7 +189,7 @@ initiatingUserAuthentication2() {
 
 **Example 3**
 
-Initiate facial authentication at ATL3 or higher, and enable the device unlock result to be reused for any type of authentication within the maximum authentication validity of any application.
+Initiate user authentication (trusted authentication level ≥ ATL3), using face authentication + authentication type-related validation + reuse of the maximum valid duration for any application authentication, and then retrieve the authentication result.
 
 <!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
@@ -217,12 +217,12 @@ initiatingUserAuthentication3() {
     };
     // Obtain an authentication object.
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // Subscribe to the authentication result.
     userAuthInstance.on('result', {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
-          Logger.info('userAuthInstance callback');
+          Logger.info('userAuthInstance callback.');
           this.result[ResultIndex.EXAMPLE_3] = (`${result.result}`);
           // Unsubscribe from the authentication result if required.
           userAuthInstance.off('result');
@@ -234,7 +234,7 @@ initiatingUserAuthentication3() {
     });
     // Start authentication.
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
@@ -272,12 +272,12 @@ initiatingUserAuthentication4() {
     };
     // Obtain an authentication object.
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // Subscribe to the authentication result.
     userAuthInstance.on('result', {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
-          Logger.info('userAuthInstance callback');
+          Logger.info('userAuthInstance callback.');
           this.result[ResultIndex.EXAMPLE_4] = (`${result.result}`);
           // Unsubscribe from the authentication result if required.
           userAuthInstance.off('result');
@@ -289,7 +289,7 @@ initiatingUserAuthentication4() {
     });
     // Start authentication.
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);

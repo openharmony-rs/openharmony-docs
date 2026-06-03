@@ -1,7 +1,7 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -57,7 +57,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common } from '@kit.AbilityKit';
 
 try {
-  // Obtain the context from the component and ensure that the return value of this.getuIContext().getHostContext() is UIAbilityContext.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
     console.info(`openSubscriberSettings success`);
@@ -113,7 +113,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common } from '@kit.AbilityKit';
 
 try {
-  // Obtain the context from the component and ensure that the return value of this.getuIContext().getHostContext() is UIAbilityContext.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
@@ -170,7 +170,7 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  console.info(`subscribe success`);
 }).catch((err: BusinessError) => {
   console.error(`subscribe fail: ${JSON.stringify(err)}`);
 });
@@ -208,7 +208,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  console.info(`unsubscribe success`);
 }).catch((err: BusinessError) => {
   console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
@@ -351,7 +351,7 @@ Describes the notification information delivered to the [onReceiveMessage](js-ap
 
 | Type| Description|
 | --- | --- |
-| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |Describes the notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
+| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |Notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
 
 ## SubscribeType
 

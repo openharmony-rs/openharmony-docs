@@ -239,7 +239,7 @@ getMediaKeySystems(): MediaKeySystemDescription[]
 
 | 类型                                             | 说明                           |
 | ----------------------------------------------- | ---------------------------- |
-| [MediaKeySystemDescription](arkts-apis-drm-i.md#mediakeysystemdescription12)           | 设备支持的插件信息列表。                   |
+| [MediaKeySystemDescription](arkts-apis-drm-i.md#mediakeysystemdescription12)[]           | 设备支持的插件信息列表。                   |
 
 **错误码：**
 

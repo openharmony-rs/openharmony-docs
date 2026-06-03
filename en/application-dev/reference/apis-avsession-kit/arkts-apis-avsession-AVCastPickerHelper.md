@@ -1,17 +1,18 @@
 # Class (AVCastPickerHelper)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+
+AVCastPickerHelper implements a semi-modal object used for casting. It displays a semi-modal window for users to select a target cast device. Before using the APIs of this class, you need to create an AVCastPickerHelper instance.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this class are supported since API version 14.
-
-AVCastPickerHelper implements a semi-modal object used for casting. It displays a semi-modal window for users to select a target cast device. Before using the APIs of this class, you need to create an AVCastPickerHelper instance.
+> - The AVCastPickerHelper is displayed in semi-modal mode, and is actually bound to the [full-modal page (bindContentCover)](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover).
 
 ## Modules to Import
 
@@ -37,7 +38,7 @@ Creates an AVCastPickerHelper instance. For details about how to obtain the cont
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -96,7 +97,7 @@ Starts the AVCastPicker dialog box, where users can select the target cast devic
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -106,19 +107,24 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
-async function avCastPicker(context: common.Context) {
-  let avCastPickerOptions : avSession.AVCastPickerOptions = {
-    sessionType : 'video',
+class MyPage {
+  private avCastPicker: avSession.AVCastPickerHelper;
+
+  constructor(context: common.Context) {
+    this.avCastPicker = new avSession.AVCastPickerHelper(context);
   }
-  let avCastPicker = new avSession.AVCastPickerHelper(context);
-  avCastPicker.select(avCastPickerOptions).then(() => {
-    console.info('select successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
-  });
+
+  async selectCastDevice() {
+    const avCastPickerOptions: avSession.AVCastPickerOptions = {
+      sessionType: 'video',
+    };
+
+this.avCastPicker.select(avCastPickerOptions).then(() => {
+  console.info('Succeeded in selecting.');
+});
+  }
 }
 ```
 
@@ -147,7 +153,7 @@ import { avSession } from '@kit.AVSessionKit';
 async function avCastPicker(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
   avCastPicker.resetCommunicationDevice().then(() => {
-    console.info('resetCommunicationDevice successfully');
+    console.info('Succeeded in resetting communication device.');
   });
 }
 ```
@@ -173,7 +179,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -214,7 +220,7 @@ Unsubscribes from semi-modal window change events. If a callback is specified, t
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |

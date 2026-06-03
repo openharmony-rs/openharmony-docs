@@ -1,8 +1,8 @@
 # @ohos.notificationSubscribe (NotificationSubscribe) (System API)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -20,11 +20,17 @@ The **notificationSubscribe** module provides APIs for notification subscription
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, callback: AsyncCallback\<void\>): void
 
 Subscribes to a notification with the subscription information specified. This API uses an asynchronous callback to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
+
+**Substitutes**: [subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -80,11 +86,17 @@ let info: notificationSubscribe.NotificationSubscribeInfo = {
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): void
 
 Subscribes to notifications of all applications under this user. This API uses an asynchronous callback to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
+
+**Substitutes**: [subscribeNotification](#notificationsubscribesubscribenotification)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -136,11 +148,17 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo): Promise\<void\>
 
 Subscribes to a notification with the subscription information specified. This API uses a promise to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
+
+**Substitutes**: [subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -189,7 +207,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber).then(() => {
   console.info("subscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -228,9 +246,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 202      | Not system application to call the interface.     |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.                    |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
 
@@ -246,9 +263,9 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribe success");
+  console.info("subscribeNotification success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -288,9 +305,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 202      | Not system application to call the interface.     |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.                    |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
 
@@ -309,9 +325,9 @@ let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
   bundleNames: ["bundleName1", "bundleName2"],
 }
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info("subscribe success");
+  console.info("subscribeNotification success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -364,7 +380,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
   console.info("subscribeSelf success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribeSelf fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 

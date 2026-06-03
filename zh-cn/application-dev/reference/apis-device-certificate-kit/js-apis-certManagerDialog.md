@@ -152,7 +152,7 @@ openCertificateManagerDialog(context: common.Context, pageType: CertificateDialo
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | pageType | [CertificateDialogPageType](#certificatedialogpagetype)                   | 是   | 表示页面类型。 |
 
 **返回值**：
@@ -211,7 +211,7 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | certType | [CertificateType](#certificatetype14)                   | 是   | 表示安装证书类型，目前支持CA_CERT、CREDENTIAL_USER、CREDENTIAL_SYSTEM。 |
 | certScope | [CertificateScope](#certificatescope14)                   | 是   | 表示安装证书的使用范围，目前支持CURRENT_USER、NOT_SPECIFIED。 |
 | cert | Uint8Array                  | 是   | 表示安装证书数据。 |
@@ -230,12 +230,12 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>**适用版本**：26.0.0+ |
+| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>适用版本：26.0.0+ |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 29700002 | The user cancels the installation operation.     |
 | 29700003 | The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.     |
 | 29700004 | To ensure user security, the current device does not support this API. When certType is set to CA_CERT, this API can be invoked only on 2in1 devices. This error code is returned on other devices. |
-| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
+| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.<br>适用版本：18+ |
 
 **示例**：
 ```ts
@@ -284,7 +284,7 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | certType | [CertificateType](#certificatetype14)                   | 是   | 表示删除证书类型。 |
 | certUri | string                  | 是   | 表示待删除证书的唯一标识符，最大长度为256字节。 |
 
@@ -351,7 +351,7 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | cert     | Uint8Array                                                   | 是   | 表示安装证书数据。             |
 | property | [CertificateDialogProperty](#certificatedialogproperty18) | 是   | 表示拉起证书管理对话框的属性。 |
 
@@ -417,7 +417,7 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | 是  | 表示应用的上下文信息。 |
 
 **返回值**：
 
@@ -433,7 +433,7 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401      | Invalid parameter. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>**适用版本**：26.0.0+ |
+| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>适用版本：26.0.0+ |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.        |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 
@@ -476,7 +476,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | 是  | 表示应用的上下文信息。 |
 | authorizeRequest | [AuthorizeRequest](#authorizerequest22) | 是  | 表示授权请求信息。 |
 
 **返回值**：
@@ -545,7 +545,7 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | 是  | 表示应用的上下文信息。 |
 | ukeyAuthRequest | [UkeyAuthRequest](#ukeyauthrequest22) | 是  | 表示USB凭据授权请求信息。 |
 
 **返回值**：

@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yzkp-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供[应用启动框架](../../application-models/app-startup.md)配置信息的定义。

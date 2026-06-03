@@ -22,7 +22,7 @@ Inspector also provides C APIs for registering and unregistering listeners for U
 
 ## Querying Component Tree and Component Information Using UIContext
 
-ArkUI provides the @ohos.arkui.UIContext (UIContext) extension capability. Use [getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12) to obtain the component tree and component attributes, and [getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12) to obtain attributes of specified components and their child components. Querying with filter conditions is supported.
+ArkUI provides the @ohos.arkui.UIContext([UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)) extension capability. Use [getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12) to obtain the component tree and component attributes, and [getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12) to obtain attributes of specified components and their child components. Querying with filter conditions is supported.
 
 The following example demonstrates the basic usage of **getFilteredInspectorTree** and **getFilteredInspectorTreeById**.
 

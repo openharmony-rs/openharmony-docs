@@ -212,7 +212,7 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 
 若无应用子窗口或子窗口未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)进行显示，则返回应用主窗口。
 
-自由窗口状态下，[独立子窗](../../windowmanager/window-terminology.md#应用窗口)不在接口的计算范围内。
+自由窗口状态下，[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)不在接口的计算范围内。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -288,7 +288,7 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 
 若无应用子窗口或子窗口未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)进行显示，则返回应用主窗口。
 
-自由窗口状态下，[独立子窗](../../windowmanager/window-terminology.md#应用窗口)不在接口的计算范围内。
+自由窗口状态下，[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)不在接口的计算范围内。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -366,7 +366,7 @@ shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;
 
 目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)设置），并确保调用[showWindow()](arkts-apis-window-Window.md#showwindow9)成功且执行完毕。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 > **说明：**
 >
@@ -716,7 +716,7 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
@@ -1036,7 +1036,7 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -1114,7 +1114,7 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -1243,7 +1243,7 @@ offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
 
 关闭应用进程获焦状态变化的监听。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

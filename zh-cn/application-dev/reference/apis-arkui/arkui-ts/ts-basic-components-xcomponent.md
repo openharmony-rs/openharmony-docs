@@ -1,7 +1,7 @@
 # XComponent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -26,6 +26,8 @@ XComponent(params: NativeXComponentParameters)
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -41,6 +43,8 @@ XComponent(options: XComponentOptions)
 创建XComponent组件，支持在ArkTS侧获取SurfaceId、注册XComponent持有的Surface的生命周期回调和触摸、鼠标、按键等组件事件回调，支持AI分析。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,6 +63,8 @@ XComponent(value: {id: string, type: XComponentType, libraryname?: string, contr
 该接口从API version 12开始不再演进，推荐使用[XComponent(options: XComponentOptions)](#xcomponent12)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,6 +102,8 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -109,6 +117,8 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 定义XComponent的具体配置参数。通过这种构造参数创建的XComponent，可以将其对应的[FrameNode](../js-apis-arkui-frameNode.md)对象传递至Native侧，使用NDK接口进行Surface生命周期的相关设置和[添加事件监听](../../../ui/ndk-add-component-events.md)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,6 +152,8 @@ enableAnalyzer(enable: boolean)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -161,6 +173,8 @@ enableSecure(isSecure: boolean)
 防止组件内自绘制内容被截屏、录屏。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,6 +203,8 @@ hdrBrightness(brightness: number)
 > - 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,17 +249,15 @@ hdrBrightness(brightness: number, type?: HdrType)
 
 HDR视频的高动态范围渲染类型。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | ---- | -- | ---- |
-| DEFAULT | 0 | 默认HDR类型，使用标准高动态范围渲染模式。 |
-| AIHDR | 1 | AI HDR类型，使用AI算法对非HDR内容进行智能动态范围扩展，实现HDR的显示效果。|
-| EDR | 2 | EDR类型，应用完成HDR色调映射后，与SDR内容混合至SDR色彩空间。通过对混合后的EDR图层设置提亮系数，实现自绘制图层HDR提亮效果。|
+| DEFAULT | 0 | 默认HDR类型，使用标准高动态范围渲染模式。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| AIHDR | 1 | AI HDR类型，使用AI算法对非HDR内容进行智能动态范围扩展，实现HDR的显示效果。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。|
+| EDR | 2 | EDR类型，应用完成HDR色调映射后，与SDR内容混合至SDR色彩空间。通过对混合后的EDR图层设置提亮系数，实现自绘制图层HDR提亮效果。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 ## 事件
 
 从API version 12开始，type为SURFACE或TEXTURE时，支持[通用事件](ts-component-general-events.md)。
@@ -293,6 +307,8 @@ type OnNativeLoadCallback = (event?: object) =\> void
 XComponent持有的Surface创建后回调事件。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -414,6 +430,8 @@ setXComponentSurfaceRect(rect: SurfaceRect): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -438,6 +456,8 @@ getXComponentSurfaceRect(): SurfaceRect
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -453,6 +473,8 @@ onSurfaceCreated(surfaceId: string): void
 当XComponent持有的Surface创建后进行该回调，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -473,6 +495,8 @@ onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void
 当XComponent持有的Surface大小改变后（包括首次创建时的大小改变）进行该回调，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -495,6 +519,8 @@ onSurfaceDestroyed(surfaceId: string): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -511,7 +537,7 @@ onSurfaceDestroyed(surfaceId: string): void
 
 startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 
-配置AI分析并启动AI分析功能，使用前需先[启用图像AI分析能力](#enableanalyzer12)。使用Promise异步回调。<br>该方法调用时，将截取调用时刻的画面帧进行分析，使用时需注意启动分析的时机，避免出现画面和分析内容不一致的情况。<br>若该方法尚未执行完毕，此时重复调用，则会触发错误回调。
+配置AI分析并启动AI分析功能，使用前需先启用图像AI分析能力[enableAnalyzer](#enableanalyzer12)。使用Promise异步回调。<br>该方法调用时，将截取调用时刻的画面帧进行分析，使用时需注意启动分析的时机，避免出现画面和分析内容不一致的情况。<br>若该方法尚未执行完毕，此时重复调用，则会触发错误回调。
 
 > **说明：**
 > 
@@ -519,6 +545,8 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 > 该特性依赖设备能力，不支持该能力的情况下，将返回错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -557,6 +585,8 @@ stopImageAnalyzer(): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### setXComponentSurfaceRotation<sup>12+</sup>
@@ -566,6 +596,8 @@ setXComponentSurfaceRotation(rotationOptions: SurfaceRotationOptions): void
 设置XComponent持有Surface在屏幕旋转时是否锁定方向，仅XComponent类型为SURFACE("surface")时有效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -593,6 +625,8 @@ getXComponentSurfaceRotation(): Required\<SurfaceRotationOptions>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -608,6 +642,8 @@ lockCanvas(): DrawingCanvas | null
 返回可用于向XComponent上绘制内容的画布对象。具体绘制方法请参考[Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -628,7 +664,7 @@ lockCanvas(): DrawingCanvas | null
 >
 > 使用此接口后，同时在NDK侧获取NativeWindow并调用相关接口进行绘制，可能出现缓冲区竞争和上下文冲突而发生绘制画面错误等异常，因此不允许使用。
 >
-> 此接口需要和[unlockCanvasAndPost](#unlockcanvasandpost20)接口配对使用，具体参考[示例3使用画布对象在XComponent上绘制内容](#示例3使用画布对象在xcomponent上绘制内容)。
+> 此接口需要和[unlockCanvasAndPost](#unlockcanvasandpost20)接口配对使用，具体参考示例3[使用画布对象在XComponent上绘制内容](#示例3使用画布对象在xcomponent上绘制内容)。
 
 ### unlockCanvasAndPost<sup>20+</sup>
 
@@ -637,6 +673,8 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 将画布对象中的内容绘制在XComponent区域，并释放该画布对象。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -653,7 +691,7 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 >
 > 3. 使用此接口后，同时在NDK侧获取NativeWindow并调用相关接口进行绘制，可能出现缓冲区竞争和上下文冲突而发生绘制画面错误等异常，因此不允许使用。
 >
-> 4. 此接口需要和[lockCanvas](#lockcanvas20)接口配对使用，具体参考[示例3使用画布对象在XComponent上绘制内容](#示例3使用画布对象在xcomponent上绘制内容)。
+> 4. 此接口需要和[lockCanvas](#lockcanvas20)接口配对使用，具体参考示例3[使用画布对象在XComponent上绘制内容](#示例3使用画布对象在xcomponent上绘制内容)。
 
 ### setXComponentSurfaceConfig<sup>22+</sup>
 
@@ -666,6 +704,8 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 > 仅当XComponent组件类型为TEXTURE或SURFACE时，本接口生效。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -680,6 +720,8 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
@@ -691,6 +733,8 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 用于描述XComponent持有Surface的显示区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -714,6 +758,8 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 用于描述XComponent持有的Surface在渲染时是否需要被视为不透明。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

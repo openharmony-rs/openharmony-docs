@@ -1,7 +1,7 @@
 # MenuItem
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -45,8 +45,8 @@ Menu中具体item菜单项信息。
 | endIcon   | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是  | MenuItem的末尾图标。不支持Symbol图标。使用Symbol图标时，须使用symbolEndIcon。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | labelInfo | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是  | MenuItem结束的标签信息，如快捷方式Ctrl+C等。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否   | 是  | 用于构建二级菜单。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
-| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 否   | 是  | MenuItem起始的Symbol图标。配置该项时，原先startIcon图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 否   | 是  | MenuItem末尾的Symbol图标。配置该项时，原先endIcon图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 否   | 是  | MenuItem起始的Symbol图标。配置该项时，原先startIcon图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 否   | 是  | MenuItem末尾的Symbol图标。配置该项时，原先endIcon图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 
 ## 属性
@@ -96,6 +96,8 @@ contentFont(value: Font)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -111,6 +113,8 @@ contentFontColor(value: ResourceColor)
 设置菜单项中内容信息的字体颜色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +132,8 @@ labelFont(value: Font)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -143,6 +149,8 @@ labelFontColor(value: ResourceColor)
 设置菜单项中标签信息的字体颜色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

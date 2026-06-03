@@ -145,7 +145,7 @@ hasIrEmitter(): Promise&lt;boolean&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Promise&lt;boolean&gt; | 如果设备具有红外发射器，则返回true；否则返回false。|
+| Promise&lt;boolean&gt; | Promise对象。返回true表示设备具有红外发射器；返回false表示设备不具有红外发射器。|
 
 **错误码：**
 

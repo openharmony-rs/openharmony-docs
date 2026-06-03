@@ -33,9 +33,9 @@
 
 > **说明**
 >
-> - 调用解封装能力解析网络播放路径，需要[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET
-> - 调用解封装能力解析本地文件，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.READ_MEDIA
-> - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法请参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)
+> - 调用解封装能力解析网络播放路径，需要[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+> - 调用解封装能力解析本地文件，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.READ_MEDIA。
+> - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -164,7 +164,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       return;
    }
    ```
-4. 注册[DRM信息监听函数](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)（可选，若非DRM码流或已获得[DRM信息](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md)，可跳过此步）。
+4. 注册DRM信息监听函数，接口参考[Demuxer_MediaKeySystemInfoCallback()](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)（可选）。如果不是DRM码流或已获得DRM信息，可跳过此步骤。DRM信息内容参考[DRM_MediaKeySystemInfo](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md)。
 
    设置DRM信息监听的接口，回调函数支持返回解封装器实例，适用于多个解封装器场景。
 
@@ -264,7 +264,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
          }
          int32_t* referenceIds;
          size_t referenceIdsCount;
-         if (!OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &referenceIds, &referenceIdsCount)) {
+         if (!OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &referenceIds, &referenceIdsCount)) {
             printf("get reference track ids from auxiliary track failed");
          }
          // 根据辅助轨类型处理轨道参考关系。

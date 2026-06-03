@@ -72,6 +72,7 @@
 | [OH_WMV3Level](#oh_wmv3level) | OH_WMV3Level | WMV3级别。 |
 | [OH_TemporalGopReferenceMode](#oh_temporalgopreferencemode) | OH_TemporalGopReferenceMode | 时域图片组参考模式。 |
 | [OH_BitrateMode](#oh_bitratemode) | OH_BitrateMode | 编码器的比特率模式。 |
+| [OH_FrameRetentionMode](#oh_frameretentionmode) | OH_FrameRetentionMode | 视频解码帧保留模式。 |
 
 ### 函数
 
@@ -250,6 +251,9 @@
 | const char * OH_MD_KEY_AUDIO_SOUNDBED_LAYOUT | 设置音频声床的通道布局的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 具体取值请参见[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout)。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_SOUNDBED_BITRATE | 设置音频声床编码比特率的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 实际编码比特率可能会根据编码器的能力调整。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_OBJECT_BITRATE | 设置音频对象编码比特率的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 实际编码比特率可能会根据编码器的能力调整。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE | 设置视频解码帧保留模式的键。取值类型为int32_t。该值表示在[OH_FrameRetentionMode](capi-native-avcodec-base-h.md#oh_frameretentionmode)中定义的帧保留模式。每种模式的详细说明及其行为请参考枚举定义OH_FrameRetentionMode。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO | 设置视频解码帧保留比例的键。取值类型为double。当[OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE](capi-native-avcodec-base-h.md#变量)设置为OH_FRAME_RETENTION_MODE_UNIFORM时，或者未配置保留模式（隐式默认采用均匀逻辑）时，该参数生效。<br> 仅当保留模式显式设置为OH_FRAME_RETENTION_MODE_ADAPTIVE或OH_FRAME_RETENTION_MODE_FULL时，此配置才会被忽略。<br> 有效范围是[0.01, 1.0]（其中1.0表示保留所有帧，0.01为最小限制），任何超出此范围的值都将被视为无效并被忽略。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。每种模式的详细说明及其行为请参考枚举定义[OH_FrameRetentionMode](capi-native-avcodec-base-h.md#oh_frameretentionmode)。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_DECODER_SPEED | 配置视频解码器播放倍速的键。取值类型为double。该键用于指定视频的目标播放倍速。主要推荐与OH_FRAME_RETENTION_MODE_ADAPTIVE模式结合使用，以辅助感知自适应算法准确评估丢帧对视觉感知的影响。<br> 取值必须严格大于0.0，推荐的标准值包括0.5、0.75、1.0（正常速度）、1.25、1.5、2.0 和 3.0，任何小于或等于0.0的值都会被视为无效。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。每种模式的详细说明及其行为请参考枚举定义[OH_FrameRetentionMode](capi-native-avcodec-base-h.md#oh_frameretentionmode)。<br>**起始版本：** 26.0.0 |
 
 ## 枚举类型说明
 
@@ -560,6 +564,7 @@ enum OH_AVOutputFormat
 | AV_OUTPUT_FORMAT_AAC = 11 | 输出文件格式为AAC格式。<br>**起始版本：** 18 |
 | AV_OUTPUT_FORMAT_FLAC = 12 | 输出文件格式为FLAC格式。<br>**起始版本：** 20 |
 | AV_OUTPUT_FORMAT_OGG = 13 | 输出文件格式为OGG格式。<br>**起始版本：** 23 |
+| AV_OUTPUT_FORMAT_FLV = 14 | 输出文件格式为FLV格式。<br>**起始版本：** 26.0.0 |
 
 ### OH_AVSeekMode
 
@@ -1071,6 +1076,24 @@ enum OH_BitrateMode
 | BITRATE_MODE_CQ = 2 | 恒定质量模式。 |
 | BITRATE_MODE_SQR = 3 | 质量稳定模式，仅支持H265（HEVC）。<br>**起始版本：** 20 |
 | BITRATE_MODE_CBR_HIGH_QUALITY = 4 | 高质量恒定比特率模式，仅支持H265（HEVC）。<br>**起始版本：** 26.0.0 |
+
+### OH_FrameRetentionMode
+
+```c
+enum OH_FrameRetentionMode
+```
+
+**描述**
+
+视频解码帧保留模式。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_FRAME_RETENTION_MODE_FULL = 0 | 全量保留模式。<br>解码器工作在透明直通状态，100%保留所有输入帧，实质上禁用了抽帧功能。所有底层的视觉感知算法将被完全跳过，实现零算法开销。<br>**起始版本：** 26.0.0 |
+| OH_FRAME_RETENTION_MODE_ADAPTIVE = 1 | 感知自适应保留模式。<br>解码器动态分析视频特征，优先丢弃对视觉感知影响最小的帧，在最小化播放体验损失的同时保持视觉平滑度。为了获得最佳的算法准确性，强烈建议通过[OH_MD_KEY_VIDEO_DECODER_SPEED](capi-native-avcodec-base-h.md#变量)显式配置当前的播放倍速。<br>**起始版本：** 26.0.0 |
+| OH_FRAME_RETENTION_MODE_UNIFORM = 2 | 平滑定比保留模式。<br>根据用户配置的保留比例（通过[OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO](capi-native-avcodec-base-h.md#变量)配置）均匀地保留视频帧。如果没有显式配置保留比例，解码器默认将输出限制在最高30fps。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明

@@ -44,6 +44,8 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -61,6 +63,8 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 ## HoverEvent<sup>10+</sup>对象说明
 
 继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -46,7 +46,7 @@ import { config } from '@kit.AccessibilityKit';
 | ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。                   |
 | repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击功能配置。                                             |
 
-## enableAbility
+## config.enableAbility
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): Promise&lt;void&gt;
 
@@ -99,11 +99,11 @@ config.enableAbility(name, capability).then(() => {
 });
 ```
 
-## enableAbility
+## config.enableAbility
 
-enableAbility(name: string, capability: Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt;, callback: AsyncCallback&lt;void&gt;): void
+enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-启用辅助扩展，使用callback异步回调。
+启用辅助扩展。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -149,7 +149,7 @@ config.enableAbility(name, capability, (err: BusinessError) => {
 });
 ```
 
-## enableAbilityWithCallback<sup>23+</sup>
+## config.enableAbilityWithCallback<sup>23+</sup>
 
 enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capability&gt;, connectCallback: ConnectCallback): Promise&lt;void&gt;
 
@@ -209,7 +209,7 @@ config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
 });
 ```
 
-## disableAbility
+## config.disableAbility
 
 disableAbility(name: string): Promise&lt;void&gt;
 
@@ -259,11 +259,11 @@ config.disableAbility(name).then(() => {
 })
 ```
 
-## disableAbility
+## config.disableAbility
 
 disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 
-关闭辅助扩展，使用callback异步回调。
+关闭辅助扩展。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -306,11 +306,11 @@ config.disableAbility(name, (err: BusinessError) => {
 });
 ```
 
-## on('enabledAccessibilityExtensionListChange')
+## config.on('enabledAccessibilityExtensionListChange')
 
 on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&gt;): void
 
-添加启用的辅助扩展的列表变化监听，使用callback异步回调。
+添加启用的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -345,11 +345,11 @@ config.on('enabledAccessibilityExtensionListChange', () => {
 });
 ```
 
-## off('enabledAccessibilityExtensionListChange')
+## config.off('enabledAccessibilityExtensionListChange')
 
 off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void&gt;): void
 
-取消启用的辅助扩展的列表变化监听，使用callback异步回调。
+取消启用的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -384,11 +384,11 @@ config.off('enabledAccessibilityExtensionListChange', () => {
 });
 ```
 
-## on('installedAccessibilityListChange')<sup>12+</sup>
+## config.on('installedAccessibilityListChange')<sup>12+</sup>
 
 on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): void
 
-添加已安装的辅助扩展的列表变化监听，使用callback异步回调。
+添加已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -423,11 +423,11 @@ config.on('installedAccessibilityListChange', () => {
 });
 ```
 
-## off('installedAccessibilityListChange')<sup>12+</sup>
+## config.off('installedAccessibilityListChange')<sup>12+</sup>
 
 off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): void
 
-取消已安装的辅助扩展的列表变化监听，使用callback异步回调。
+取消已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -461,7 +461,7 @@ config.off('installedAccessibilityListChange', () => {
   console.info('Unsubscribe installed accessibility extension list change state success');
 });
 ```
-## setMagnificationState<sup>20+</sup>
+## config.setMagnificationState<sup>20+</sup>
 
 setMagnificationState(state: boolean): void
 
@@ -499,6 +499,234 @@ try {
   config.setMagnificationState(true);
 } catch (e) {
   console.error(`Set magnification failed,  error code: ${e?.code}, error msg: ${e?.message}`);
+}
+```
+
+## config.setSeniorModeStateForApp
+
+setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Promise&lt;void&gt;
+
+设置应用状态为“长辈模式”。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名 | 类型                                                                           | 必填 | 说明 |
+| -------- |------------------------------------------------------------------------------| -------- | -------- |
+| appSeniorModeInfos | Array&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 修改应用的“长辈模式”的状态信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 9300000 | System abnormality.  |
+| 9300008 | The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid range. 2. The application corresponding to the appIndex does not exist. |
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let infos: config.AppSeniorModeInfo[] = [{
+  bundleName: 'com.example.myapplication',
+  appIndex: 0,
+  seniorModeState: true
+}];
+
+config.setSeniorModeStateForApp(infos).then(() => {
+  console.info(`Succeeded in setting seniorModeState for App.`);
+}).catch((err: BusinessError) => {
+  console.error(`failed to call setSeniorModeStateForApp, Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## config.getSeniorModeStateForApp
+
+getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;boolean&gt;
+
+查询应用“长辈模式”的状态。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名 | 类型                                                                           | 必填 | 说明 |
+| -------- |------------------------------------------------------------------------------| -------- | -------- |
+| bundleName | string | 是 | 查询“长辈模式”的应用包名。 |
+| appIndex | number | 否 | 应用包的分身索引标识。<br>取值范围：大于等于0的整数。缺省时，appIndex默认为0。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示应用“长辈模式”已启用；返回false表示应用“长辈模式”已关闭。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 9300000 | System abnormality.  |
+| 9300008 | The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid range. 2. The application corresponding to the appIndex does not exist. |
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+config.getSeniorModeStateForApp("com.example.myapplication", 0).then((data: boolean) => {
+  console.info(`Succeeded in getting seniorModeState for app, data: ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`failed to call getSeniorModeStateForApp, Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## config.onSeniorModeStateChangeForApp
+
+onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
+
+监听所有应用“长辈模式”的状态变化事件。使用callback异步回调。
+
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[config.offSeniorModeStateChangeForApp](#configoffseniormodestatechangeforapp)取消监听，否则可能会导致崩溃。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 回调函数。返回被修改的应用“长辈模式”信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback = (data: config.AppSeniorModeInfo) => {
+    console.info(`callback data, name: ${data.bundleName}, appIndex: ${data.appIndex}, seniorModeState: ${data.seniorModeState}`);
+  }
+
+  aboutToAppear(): void {
+    config.onSeniorModeStateChangeForApp(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## config.offSeniorModeStateChangeForApp
+
+offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
+
+取消监听所有应用“长辈模式”的状态变化事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。需与[config.onSeniorModeStateChangeForApp](#configonseniormodestatechangeforapp)的callback一致。缺省时，表示注销所有已注册事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback = (data: config.AppSeniorModeInfo) => {
+    console.info(`callback data, name: ${data.bundleName}, appIndex: ${data.appIndex}, seniorModeState: ${data.seniorModeState}`);
+  }
+
+  aboutToAppear(): void {
+    config.onSeniorModeStateChangeForApp(this.callback);
+  }
+
+  aboutToDisappear(): void {
+    config.offSeniorModeStateChangeForApp(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
 }
 ```
 
@@ -559,7 +787,7 @@ config.highContrastText.set(value).then(() => {
 
 set(value: T, callback: AsyncCallback&lt;void&gt;): void
 
-设置属性，使用callback异步回调。
+设置属性。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -643,7 +871,7 @@ config.highContrastText.get().then((data: boolean) => {
 
 get(callback: AsyncCallback&lt;T&gt;): void
 
-获取属性，使用callback异步回调。
+获取属性。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -682,7 +910,7 @@ config.highContrastText.get((err: BusinessError, data: boolean) => {
 
 on(callback: Callback&lt;T&gt;): void
 
-添加属性变化监听，使用callback异步回调。
+添加属性变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -720,7 +948,7 @@ config.highContrastText.on((data: boolean) => {
 
 off(callback?: Callback&lt;T&gt;): void
 
-取消属性变化监听，使用callback异步回调。
+取消属性变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -755,7 +983,7 @@ config.highContrastText.off((data: boolean) => {
 
 ## ConnectCallback<sup>23+</sup>
 
-通过[enableAbilityWithCallback](#enableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
+通过[config.enableAbilityWithCallback](#configenableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -787,7 +1015,7 @@ type OnDisconnectCallback = () => void
 
 用于不同弱视类型的校正颜色滤镜。  
 
-颜色滤镜功能开启时（[daltonizationState](#属性)设置为true)，颜色滤镜的配置(即设置的DaltonizationColorFilter的值)生效；颜色滤镜功能关闭时（[daltonizationState](#属性)设置为false)，显示为正常类型<sup>11+</sup>。
+颜色滤镜功能开启时（[daltonizationState](#属性)设置为true)，颜色滤镜的配置(即设置的DaltonizationColorFilter的值)生效；颜色滤镜功能关闭时（[daltonizationState](#属性)设置为false)，显示为正常类型。
 
 **系统接口**：此接口为系统接口。
 
@@ -832,3 +1060,20 @@ type OnDisconnectCallback = () => void
 | Long     | 表示长。  |
 | Longest  | 表示最长。 |
 
+## AppSeniorModeInfo
+
+“长辈模式”在应用中的状态信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此类型仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
+| ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
+| bundleName | string | 否   | 否   | 应用包名。 |
+| appIndex | number | 否   | 是   | 应用包的分身索引标识。<br>取值大于等于0的整数，缺省时默认为0。|
+| seniorModeState | boolean | 否   | 否   | 应用是否开启状态为“长辈模式”，true表示开启，false表示未开启。|

@@ -72,8 +72,7 @@ struct Index {
             let buffer: ArrayBuffer = new ArrayBuffer(24);
             histogramStatistic(buffer);
             this.message = 'success';
-            // 销毁Worker线程
-            workerInstance.terminate();
+// ...
           })
       }
       .width('100%')

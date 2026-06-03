@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c; @xuzhihao666-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 UIExtensionContentSession是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)组件的界面操作类，提供页面加载、设置宿主应用（UIExtensionAbility组件的拉起方）窗口隐私模式等功能。当宿主应用拉起指定的UIExtensionAbility组件时，系统创建UIExtensionContentSession对象，并通过[onSessionCreate](js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)回调传递给开发者。一个UIExtensionAbility组件对应一个UIExtensionContentSession对象，每个UIExtensionAbility组件的UIExtensionContentSession对象之间互不影响。

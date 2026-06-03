@@ -135,7 +135,7 @@ struct Index {
 | \<feOffset\> | 定义沿x、y方向偏移距离 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）;<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入，dx和dy。 |
 | \<feGaussianBlur\> | 定义高斯模糊效果 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）;<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入，edgemode和stddeviation。 |
 | \<feBlend\> | 定义两张输入图像混合模式 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）;<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>in2：第二图源（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result），mode。 |
-| \<feComposite\> | 定义两张输入图像合成方式，<br>算法：result = k1 * in * in2 + k2 * in + k3 * in2 + k4 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br>in2：第二图源（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result），operator( over \| in \| out \| atop \| xor \| lighter \| arithmetic )，k1，k2，k3，k4。 |
+| \<feComposite\> | 定义两张输入图像合成方式。当operator为arithmetic时，合成算法为：result = k1 * in * in2 + k2 * in + k3 * in2 + k4；当operator为其他值时，使用对应的[BlendMode](./ts-universal-attributes-image-effect.md#blendmode11枚举说明)合成方式。 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br>in2：第二图源（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br>operator( over \| in \| out \| atop \| xor \| lighter \| arithmetic )：定义两张输入图像的合成方式，非arithmetic值对应[BlendMode](./ts-universal-attributes-image-effect.md#blendmode11枚举说明)；<br>k1：arithmetic合成算法中in与in2乘积的系数；<br>k2：arithmetic合成算法中in的系数；<br>k3：arithmetic合成算法中in2的系数；<br>k4：arithmetic合成算法中的常量偏移。 |
 | \<feColorMatrix\> | 基于转换矩阵对颜色进行变换 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；<br>type ( matrix \| saturate \| hueRotate)、 values。 |
 | \<feFlood\> | 定义填充颜色和透明度 | in：滤镜原始输入（仅支持SourceGraphic、SourceAlpha、其它滤镜效果的result）；<br> result：经过滤镜处理之后的输出，可以作为下一个滤镜的输入；flood-color和flood-opacity。 |
 
@@ -201,7 +201,7 @@ struct Index {
 | 元素 | 说明 | 特有属性 | 通用属性 |
 | :-------- | :-------- | :-------- | :-------- |
 | \<svg\> | 容器，定义个svg片段 | x：x轴偏移分量；<br> y：y轴偏移分量；<br> width：宽度； <br>height：高度；<br> viewBox：视口| fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
-| \<g\> | 分组 | x：x轴偏移分量；<br> y：y轴偏移分量；<br> width：宽度；<br> height：高度 | fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
+| \<g\> | 分组 | width：宽度；<br> height：高度 | fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
 | \<use\> | 复用已有元素 | x：x轴偏移分量；<br> y：y轴偏移分量；<br> href：目标元素 | fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
 | \<defs\> | 定义可复用对象 |无特有属性 |fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
 

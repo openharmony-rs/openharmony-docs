@@ -32,9 +32,9 @@ Generates a media key request. This API uses a promise to return the result.
 | Name    | Type                                            | Mandatory| Description                                                                                                    |
 | -------- | ----------------------------------------------- | ---- |--------------------------------------------------------------------------------------------------------|
 | mimeType  | string     | Yes  | MIME type. The supported DRM solution names can be obtained by calling [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported-1).|
-| initData  | Uint8Array     | Yes  | Initial data.                                                                                                 |
-| mediaKeyType| number     | Yes  | Type of the media key. The value **0** means an online media key, and **1** means an offline media key.                                                                                   |
-| options  | [OptionsData[]](arkts-apis-drm-i.md#optionsdata)     | No  | Optional data.                                                                                                 |
+| initData  | Uint8Array     | Yes  | Initial data, that is, the actual PSSH data in the PSSH box of the encrypted stream. You can obtain the DRM information by listening for **mediaKeySystemInfoUpdate** events of the AVPlayer (via [on('mediaKeySystemInfoUpdate')](../apis-media-kit/arkts-apis-media-AVPlayer.md#onmediakeysysteminfoupdate11)), and then extract the **pssh** field to generate **initData**. For details about the development process, see [DRM Playback with AVPlayer (ArkTS)](../../media/drm/drm-avplayer-arkts-integration.md).                                                                                                    |
+| mediaKeyType| number     | Yes  | Type of the media key. The value range is [0, 1]. The value **0** means an online media key, and **1** means an offline media key.<br>If a value beyond the specified range is passed, parameter verification will fail and error code 401 will be reported.                                                                                   |
+| options  | [OptionsData[]](arkts-apis-drm-i.md#optionsdata)     | No  | Optional data. The default value is an empty array.                                                                                                 |
 
 **Return value**
 
@@ -56,7 +56,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -64,8 +63,6 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let uint8pssh = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateMediaKeyRequest("video/avc", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE).then((mediaKeyRequest: drm.MediaKeyRequest) =>{
   console.info('generateMediaKeyRequest' + mediaKeyRequest);
-}).catch((err: BusinessError) => {
-  console.error(`generateMediaKeyRequest: ERROR: ${err}`);
 });
 ```
 
@@ -105,7 +102,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -113,8 +109,6 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint8Array) => {
   console.info('processMediaKeyResponse:' + mediaKeyId);
-}).catch((err: BusinessError) => {
-  console.error(`processMediaKeyResponse: ERROR: ${err}`);
 });
 ```
 
@@ -147,16 +141,10 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-try {
-  let keyStatus: drm.MediaKeyStatus[] =  mediaKeySession.checkMediaKeyStatus();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`checkMediaKeyStatus ERROR: ${error}`);
-}
+let keyStatus: drm.MediaKeyStatus[] =  mediaKeySession.checkMediaKeyStatus();
 ```
 
 ## clearMediaKeys
@@ -182,7 +170,6 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -190,15 +177,8 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint8Array) => {
   console.info('processMediaKeyResponse:' + mediaKeyId);
-}).catch((err: BusinessError) => {
-  console.error(`processMediaKeyResponse: ERROR: ${err}`);
 });
-try {
-  mediaKeySession.clearMediaKeys();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`clearMediaKeys ERROR: ${error}`);
-}
+mediaKeySession.clearMediaKeys();
 ```
 
 ## generateOfflineReleaseRequest
@@ -237,7 +217,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -245,8 +224,6 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRequest: Uint8Array) => {
   console.info('generateOfflineReleaseRequest:' + offlineReleaseRequest);
-}).catch((err: BusinessError) => {
-  console.error(`generateOfflineReleaseRequest: ERROR: ${err}`);
 });
 ```
 
@@ -255,6 +232,8 @@ mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRe
 processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Promise<void\>
 
 Processes a response to a request for releasing offline media keys. This API uses a promise to return the result.
+
+If the DRM solution on the device does not support the release of offline media keys, error code 24700101 will be reported.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -271,7 +250,7 @@ Processes a response to a request for releasing offline media keys. This API use
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise<void\>          | Promise used to return the result if the DRM solution on the device supports the release of offline media keys.                  |
+| Promise<void\>          | Promise that returns no value.                  |
 
 **Error codes**
 
@@ -287,7 +266,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -295,15 +273,11 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRequest: Uint8Array) => {
   console.info('generateOfflineReleaseRequest:' + offlineReleaseRequest);
-}).catch((err: BusinessError) => {
-  console.error(`generateOfflineReleaseRequest: ERROR: ${err}`);
 });
 // offlineReleaseResponse is obtained from the DRM service. Apply for memory based on the actual length.
 let offlineReleaseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processOfflineReleaseResponse(mediaKeyId, offlineReleaseResponse).then(() => {
   console.info('processOfflineReleaseResponse');
-}).catch((err: BusinessError) => {
-  console.error(`processOfflineReleaseResponse: ERROR: ${err}`);
 });
 ```
 
@@ -343,7 +317,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -351,8 +324,6 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.restoreOfflineMediaKeys(mediaKeyId).then(() => {
   console.info("restoreOfflineMediaKeys");
-}).catch((err: BusinessError) => {
-  console.error(`restoreOfflineMediaKeys: ERROR: ${err}`);
 });
 ```
 
@@ -385,16 +356,11 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-try {
-  let contentProtectionLevel: drm.ContentProtectionLevel = mediaKeySession.getContentProtectionLevel();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getContentProtectionLevel ERROR: ${error}`);
-}
+let contentProtectionLevel: drm.ContentProtectionLevel = mediaKeySession.getContentProtectionLevel();
+console.info(`contentProtectionLevel: ${contentProtectionLevel}`);
 ```
 
 ## requireSecureDecoderModule
@@ -433,16 +399,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-try {
-  let status: boolean = mediaKeySession.requireSecureDecoderModule("video/avc");
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`requireSecureDecoderModule ERROR: ${error}`);
-} 
+let status: boolean = mediaKeySession.requireSecureDecoderModule("video/avc");
 ```
 
 ## on('keyRequired')
@@ -489,6 +449,8 @@ off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 
 Unsubscribes from events indicating that the application requests a media key. This API uses an asynchronous callback to return the result.
 
+This API is used to unregister listeners registered via **on('keyRequired')**, which are used to listen for events triggered when the media key is required during DRM program playback.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
@@ -498,7 +460,7 @@ Unsubscribes from events indicating that the application requests a media key. T
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | Yes  | Event type. The value is fixed at **'keyRequired'**.|
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information.                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information. This parameter is optional. If it is not passed, all listeners for the event type are unregistered.               |
 
 **Error codes**
 
@@ -572,7 +534,7 @@ Unsubscribes from events indicating that a media key expires. This API uses an a
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | Yes  | Event type. The value is fixed at **'keyExpired'**.|
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information.                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information. This parameter is optional. If it is not passed, all listeners for the event type are unregistered.               |
 
 **Error codes**
 
@@ -646,7 +608,7 @@ Unsubscribes from vendor-defined events. This API uses an asynchronous callback 
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | Yes  | Event type. The value is fixed at **'vendorDefined'**.|
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information.                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information. This parameter is optional. If it is not passed, all listeners for the event type are unregistered.               |
 
 **Error codes**
 
@@ -720,7 +682,7 @@ Unsubscribes from events indicating that a media key is updated upon expiry. Thi
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | Yes  | Event type. The value is fixed at **'expirationUpdate'**.|
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information.                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information. This parameter is optional. If it is not passed, all listeners for the event type are unregistered.               |
 
 **Error codes**
 
@@ -796,7 +758,7 @@ Unsubscribes from events indicating that a media key changes. This API uses an a
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | Yes  | Event type. The value is fixed at **'keysChange'**.|
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void | No  | Callback used to return the event information, including a list of key IDs, descriptions of their statuses, and whether each key is available.               |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void | No  | Callback used to return the event information, including a list of key IDs, descriptions of their statuses, and whether each key is available.<br>This parameter is optional. If it is not passed, all listeners for the event type are unregistered.               |
 
 **Error codes**
 
@@ -840,15 +802,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-try {
-  mediaKeySession.destroy();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`mediaKeySession destroy ERROR: ${error}`);
-}
-
+mediaKeySession.destroy();
 ```

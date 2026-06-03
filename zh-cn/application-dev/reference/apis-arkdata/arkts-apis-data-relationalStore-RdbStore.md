@@ -5308,9 +5308,9 @@ if (store != undefined) {
 };
 ```
 
-## cloudSync
+## cloudSyncEx
 
-cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
+cloudSyncEx(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
 主动执行端云同步，根据云同步配置信息进行同步，使用Promise异步回调。使用该接口需要实现云服务功能。
 
@@ -5376,7 +5376,7 @@ let config: relationalStore.CloudSyncConfig = {
   predicate: predicates
 };
 if (store != undefined) {
-  (store as relationalStore.RdbStore).cloudSync(config, (progressDetails: relationalStore.ProgressDetails) => {
+  (store as relationalStore.RdbStore).cloudSyncEx(config, (progressDetails: relationalStore.ProgressDetails) => {
       console.info(`progress: ${progressDetails.schedule}`);
   }).then(() => {
       console.info('cloud sync succeeded');
@@ -5410,8 +5410,8 @@ stopCloudSync(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 801       | Capability not supported because the device does not support the device-cloud capability. |
-| 14800000  | Inner error. |
+| 801       | Capability not supported because the device does not support the cloud synchronization capability. |
+| 14800000  | Internal error. |
 | 14800014  | The target instance is already closed. |
 
 **示例：**
@@ -6945,7 +6945,7 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 
 手动更新加密数据库的密钥。使用Promise异步回调。
 
-当指定数据库类型为向量数据库时（vector: true），无法通过此接口更新密钥。
+从API版本26.0.0开始，支持使用该接口更新向量数据库（创建数据库时配置StoreConfig的vector字段为true）的密钥。
 
 仅支持加密数据库进行密钥更新，不支持非加密数据库变加密数据库及加密数据库变非加密数据库，且需要保持加密参数和密钥生成方式与建库时一致。
 
@@ -6993,6 +6993,7 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 示例1：使用默认的加密参数
@@ -7015,20 +7016,23 @@ export default class EntryAbility extends UIAbility {
 
       if (store != undefined) {
         try {
-          (store as relationalStore.RdbStore).rekey(cryptoParam1);
-          console.info('rekey is successful');
+          await (store as relationalStore.RdbStore).rekey(cryptoParam1);
+          console.info('rekey successful');
         } catch (err) {
-          console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+          let e = err as BusinessError;
+          console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
         }
       }
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let e = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${e.code}, message is ${e.message}`);
     });
   }
 }
 ```
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 示例2：使用自定义的加密参数
@@ -7065,94 +7069,65 @@ export default class EntryAbility extends UIAbility {
 
       if (store != undefined) {
         try {
-          (store as relationalStore.RdbStore).rekey(cryptoParam2);
-          console.info('rekey is successful');
+          await (store as relationalStore.RdbStore).rekey(cryptoParam2);
+          console.info('rekey successful');
         } catch (err) {
-          console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+          let e = err as BusinessError;
+          console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
         }
       }
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let e = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${e.code}, message is ${e.message}`);
     });
   }
 }
 ```
 
-## rekey<sup>26+</sup>
-
-rekey(encryptionKey: Uint8Array): Promise\<void>
-
-手动更新加密数据库的密钥。使用Promise异步回调。
-
-当指定数据库类型为向量数据库时（vector: true），只能够通过此接口更新密钥。
-
-仅支持加密数据库进行密钥更新，不支持非加密数据库，当encryptionKey为空数据组时代表由系统托管并自动生成密钥。
-
-手动更新密钥时需要独占访问数据库，此时若存在任何未释放的结果集（ResultSet）、事务（Transaction）或其他进程打开的数据库均会引发失败。
-
-数据库越大，密钥更新所需的时间越长。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**参数：**
-
-| 参数名       | 类型                                                               | 必填 | 说明                                       |
-| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
-| encryptionKey  | Uint8Array | 是   | 指定用户自定义的加密密钥。|
-
-| 类型          | 说明                       |
-| -------------- | ------------------------ |
-| Promise\<void> | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
-
-| **错误码ID** | **错误信息**                                                            |
-| ------------ | ---------------------------------------------------------------------- |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011     | The current operation failed because the database is corrupted.        |
-| 14800014     | The target instance is already closed.                                 |
-| 14800015     | The database does not respond.                                         |
-| 14800024     | SQLite: The database file is locked.                              |
-| 14800043     | Database does not support this scenario. Possible causes: This is a readonly db.  |
-
-**示例：**
-
-示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
-
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+// 示例3：更新向量数据库密钥
 export default class EntryAbility extends UIAbility {
   onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
     let cryptoParam: relationalStore.CryptoParam = {
       encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
-    }
+    };
     const STORE_CONFIG1: relationalStore.StoreConfig = {
       name: 'test.db',
       securityLevel: relationalStore.SecurityLevel.S2,
       encrypt: true,
       vector: true,
-      cryptionParam: cryptoParam,
+      cryptoParam: cryptoParam,
     };
 
-    let rdbStore: relationalStore.RdbStore = await relationalStore.getRdbStore(this.context, STORE_CONFIG1);
-    let key = new Uint8Array([6, 5, 4, 3, 2, 1]);
-    try {
-      await rdbStore.rekey(key);
-      console.info('rekey succeeded');
-    } catch (err: BusinessError) {
-      console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
-    }
+    relationalStore.getRdbStore(this.context, STORE_CONFIG1).then(async (rdbStore: relationalStore.RdbStore) => {
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let newCryptoParam: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekey(newCryptoParam);
+          console.info('rekey successful');
+        } catch (err) {
+          let e = err as BusinessError;
+          console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
+        }
+      }
+    }).catch((err: Error) => {
+      let e = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${e.code}, message is ${e.message}`);
+    });
   }
 }
 ```
+
 ## setLocale<sup>20+</sup>
 
 setLocale(locale: string) : Promise\<void>
@@ -7264,6 +7239,7 @@ rekeyEx(cryptoParam: CryptoParam): Promise\<void>
 **示例1：原数据库为默认参数加密数据库，更换密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7309,6 +7285,7 @@ export default class EntryAbility extends UIAbility {
 **示例2：原数据库为自定义参数加密数据库，更换自定义密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7364,6 +7341,7 @@ export default class EntryAbility extends UIAbility {
 **示例3：原数据库为默认参数加密库，更换自定义密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7410,6 +7388,7 @@ export default class EntryAbility extends UIAbility {
 **示例4：原数据库为自定义参数加密数据库，更换数据库生成密钥和自定义加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7465,6 +7444,7 @@ export default class EntryAbility extends UIAbility {
 **示例5：原数据库为自定义参数加密数据库，更换为非加密数据库**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7516,6 +7496,7 @@ export default class EntryAbility extends UIAbility {
 **示例6：原数据库为非加密数据库，更换为自定义参数加密数据库**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

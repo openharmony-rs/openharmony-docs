@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -12,7 +12,7 @@ Among state variable decorators, @State is the most fundamental and serves as th
 
 Before reading this topic, you are advised to read [State Management Overview](./arkts-state-management-overview.md) to have a basic understanding of the positioning of AppStorage in the state management framework. For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management Development](./arkts-state-management-faq.md).
 
-> **Note:**
+> **NOTE**
 >
 > This decorator can be used in ArkTS widgets since API version 9.
 >
@@ -66,9 +66,10 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
 - When the decorated variable is of the class or Object type, object assignments and top-level property changes are observable. Top-level properties include all properties returned by **Object.keys(observedObject)**. Example:
   
   Declare the **Person** and **Model** classes.
-  <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+  <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) --> 
   
   ``` TypeScript
+  // Declare the Person class.
   class Person {
     public value: string;
   
@@ -77,6 +78,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
     }
   }
   
+  // Declare the Model class.
   class Model {
     public value: string;
     public name: Person;
@@ -112,7 +114,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
     this.title.value = 'Hi';
     ```
 
-  The value assignment of the nested property cannot be observed.
+  The value assignment of a property of the nested object cannot be observed. Therefore, the UI is not refreshed.
     <!-- @[state_decorate_object_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
   
     ``` TypeScript
@@ -146,9 +148,44 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
     @State count: number = 10;
     ```
 
-2. \@State cannot decorate variables of the Function type. Before API version 23, the framework throws a runtime error.
+2. \@State does not support variables of type **Function**. In versions earlier than API version 23, the application would encounter a runtime error.
 
-   Since API version 23, validation of \@State for variables of Function type is added, and a compilation error will be reported.
+   Starting from API version 23, relevant compile-time validation has been added. Decorating a **Function** type variable with \@State will result in an **ERROR** message. You should remove the \@State decorator from variables of the **Function** type in your code.
+
+3. If the parent component passes **undefined**, the variable decorated by \@State is still initialized using the local default value.
+   
+   <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) --> 
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct Parent {
+     @State count: number | undefined = undefined;
+   
+     build() {
+       Column() {
+         Text(`Parent count value: ${this.count}`)
+           .fontSize(20)
+           .margin(10)
+         Child({ count: this.count })
+       }
+     }
+   }
+   
+   @Component
+   struct Child {
+     // The default value of the child component count is 0. If the parent component passes undefined, the framework retains the default value.
+     @State count: number | undefined = 0;
+   
+     build() {
+       Column() {
+         Text(`Child count value: ${this.count}`)
+           .fontSize(20)
+           .margin(10)
+       }
+     }
+   }
+   ```
 
 ## When to Use
 
@@ -418,7 +455,7 @@ struct MapSample {
 > Since API version 11, \@State supports the Set type.
 
 In this example, the **fruits** variable decorated with \@State is of the **Set\<string\>** type. After the button is clicked, the value of **fruits** changes, and the UI is re-rendered.
-<!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->
+<!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -429,7 +466,7 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.fruits.entries()), (item: [number, number]) => {
+        ForEach(Array.from(this.fruits.entries()), (item: [string, string]) => {
           Text(`${item[0]}`)
             .fontSize(20)
             .margin(10)
@@ -527,11 +564,11 @@ struct DatePickerExample {
 }
 ```
 
-![state-date](figures/state-date.gif)
+
 
 ### Using Union Types
 
-\@State supports **undefined**, **null**, and union types. In the following example, the type of **count** is **number | undefined**. If the property or type of **count** is changed when the button is clicked, the change will be synced to the view.
+\@State supports **undefined**, **null**, and union types. In the following example, the type of **count** is number | undefined. If the value of **count** is changed when the button is clicked, the change will be updated according to the view.
 <!-- @[state_scene_joint_type_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneJointTypeInstance.ets) -->
 
 ``` TypeScript

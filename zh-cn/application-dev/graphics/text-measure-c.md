@@ -1,7 +1,7 @@
 # 文本测量（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -61,7 +61,8 @@
    <!-- @[c_text_metrics_create_paragraph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
-   // 创建文本样式，并设置字体大小为50
+   // 创建文本样式，设置文本颜色为黑色并设置字体大小为50
+   OH_Drawing_TextStyle *myTextStyle = OH_Drawing_CreateTextStyle();
    OH_Drawing_SetTextStyleColor(myTextStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
    OH_Drawing_SetTextStyleFontSize(myTextStyle, 50.0);
    // 创建一个段落样式对象，以设置排版风格

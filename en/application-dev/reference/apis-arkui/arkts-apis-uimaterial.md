@@ -1,8 +1,8 @@
 # @ohos.arkui.uiMaterial (System Material)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -47,7 +47,7 @@ Enumerates the material enabling states, indicating the states of the applicatio
 | Name    | Value| Description             |
 | ------ | --- | --------------- |
 | DEFAULT | 0 | Default state. The immersive system material is enabled by default for the [Dialog](../../ui/arkts-base-dialog-overview.md), [Toast](../../ui/arkts-create-toast.md), and [AlphabetIndexer](arkui-ts/ts-container-alphabet-indexer.md) components if the background color, blur, and shadow are not set for the components. The immersive system material is enabled by default for the text menu triggered by long-pressing or double-clicking after [copyOption](arkui-ts/ts-basic-components-text.md#copyoption9) is set in the [Text](arkui-ts/ts-basic-components-text.md) component. For other components, whether the immersive system material is enabled is set by the application.|
-| ENABLE | 1 | Enabled state. In addition to the components for which the immersive system material is enabled in **DEFAULT** state, the immersive system material is enabled by default for the [ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md), [Chip](arkui-ts/ohos-arkui-advanced-Chip.md), [Select](arkui-ts/ts-basic-components-select.md), [Menu Control](arkui-ts/ts-universal-attributes-menu.md), [Toggle](arkui-ts/ts-basic-components-toggle.md), [SegmentButton](arkui-ts/ohos-arkui-advanced-SegmentButton.md), [SegmentButtonV2](arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md), and [bindSheet](arkui-ts/ts-universal-attributes-sheet-transition.md) components. In this state, the immersive system material style takes precedence over the background color, blur, shadow, and border style set for the components. The immersive system material can be disabled by setting [uiMaterial.Material.empty](#empty) in [systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) for a component. For other components, whether the immersive system material is enabled is set by yourself.|
+| ENABLE | 1 | Enabled state. The immersive system material is enabled by default for the [Dialog](../../ui/arkts-base-dialog-overview.md), [Toast](../../ui/arkts-create-toast.md), [AlphabetIndexer](arkui-ts/ts-container-alphabet-indexer.md), [ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md), [Chip](arkui-ts/ohos-arkui-advanced-Chip.md), [Select](arkui-ts/ts-basic-components-select.md), [Menu Control](arkui-ts/ts-universal-attributes-menu.md), [Toggle](arkui-ts/ts-basic-components-toggle.md), [SegmentButton](arkui-ts/ohos-arkui-advanced-SegmentButton.md), [SegmentButtonV2](arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md), [Slider](arkui-ts/ts-basic-components-slider.md), [bindSheet](arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet), and [SelectionMenu](arkui-ts/ohos-arkui-advanced-SelectionMenu.md). After [copyOption](arkui-ts/ts-basic-components-text.md#copyoption9) is set for the [Text](arkui-ts/ts-basic-components-text.md) component, the immersive system material is enabled by default for the text menu triggered by long-pressing or double-clicking. In this state, the immersive system material style takes precedence over the background color, blur, shadow, and border style set for the components. You need to set whether to enable the immersive system material for other components.|
 | DISABLE | 2 | Disabled state. The immersive system material cannot be enabled for any component. Even if you set the immersive system material parameters for a component, the settings will not take effect.|
 
 ## MaterialInfo
@@ -67,7 +67,7 @@ Provides material configuration information, including the material enabling sta
 | state   | [MaterialState](#materialstate)                                   | No| No  | Material enabling state.|
 | type   | [MaterialType](#materialtype)                                   | No| No  | Material type ID, indicating the material type corresponding to the current configuration. The value is used only for type identification and does not map to underlying features.|
 
-## getMaterialInfo
+## uiMaterial.getMaterialInfo
 
 getMaterialInfo(): MaterialInfo
 
@@ -86,28 +86,6 @@ Obtains the material configuration information of this application. The returned
 | Type  | Description                    |
 | ------ | ------------------------ |
 | [MaterialInfo](#materialinfo) | Material configuration information of this application, including the material enabling state and material type.|
-
-## empty
-
-static get empty(): Material
-
-Returns an empty material object, which is used to disable the immersive system material effect for a component. The usage method is **uiMaterial.Material.empty**.
-
-In enabled state, you can disable the immersive system material effect for a component by setting **systemMaterial(uiMaterial.Material.empty)**.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Return value**
-
-| Type  | Description                    |
-| ------ | ------------------------ |
-| [Material](#material) | Empty material object, indicating that there is no material effect.|
 
 ## ImmersiveStyle
 
@@ -179,6 +157,28 @@ Base class of the system material object on the UI.
 **Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### empty
+
+static get empty(): Material
+
+Returns an empty material object, which is used to disable the immersive system material effect for a component. The usage method is **uiMaterial.Material.empty**.
+
+In enabled state, you can disable the immersive system material effect for a component by setting **systemMaterial(uiMaterial.Material.empty)**. If the component does not support the component-level immersive system material API, the material effect cannot be disabled using this API.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| [Material](#material) | Empty material object, indicating that there is no material effect.|
 
 ## ImmersiveMaterial
 
@@ -315,12 +315,12 @@ Performance on devices with high-level computing power
 
 ### Example 2: Obtaining Material Configuration Information and Using an Empty Material to Disable the Immersive System Material
 
-This example shows how to use [getMaterialInfo](#getmaterialinfo) to obtain the material configuration information of this application and use [empty](#empty) to disable the immersive system material effect for a specific component based on the set state.
+This example shows how to use [uiMaterial.getMaterialInfo](#uimaterialgetmaterialinfo) to obtain the material configuration information of this application and use [empty](#empty) to disable the immersive system material effect for a specific component based on the set state.
 
-Since API version 26.0.0, the **getMaterialInfo** and **empty** methods are added.
+Since API version 26.0.0, the **uiMaterial.getMaterialInfo** and **empty** APIs are added.
 
 Configure the toggle information in the [module.json5](../../quick-start/module-configuration-file.md) file. Note that the configuration takes effect only in the module of the entry type.
-``` ts
+``` json5
 {
   "module": {
     // ···

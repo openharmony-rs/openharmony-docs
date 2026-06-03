@@ -157,6 +157,8 @@ onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -179,6 +181,8 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 绑定此事件的组件触发的拖拽结束后，触发回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -206,6 +210,8 @@ onPreDrag(callback: Callback\<PreDragStatus>): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -229,6 +235,8 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 关于悬停检测的触发机制及详细使用方法，请参考开发指南[支持悬停检测](../../../ui/arkts-common-events-drag-event.md#支持悬停检测)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -265,6 +273,8 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称       | 类型 | 只读 | 可选 | 说明                                                         |
@@ -289,12 +299,14 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 ### 属性
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型  | 只读 | 可选 | 说明             |
 | ------ | ------ | ----- | ---- | ------- |
 | useCustomDropAnimation<sup>10+</sup> | boolean | 否 | 否 |当拖拽结束时，是否禁用系统默认落位动效。<br/>应用可将该值设定为true来禁用系统默认落位动效，并实现自己的自定义落位动效。<br/>当不配置或设置为false时，系统默认落位动效生效，当[setResult](#setresult10)设置为DRAG_SUCCESSFUL时，落位为缩小消失动效，不为DRAG_SUCCESSFUL时，则为放大消失动效。<br/>当未禁用系统默认落位动效时，应用不应再实现自定义动效，以避免动效上的冲突。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | 否 | 是 |设置拖拽过程中需要自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br/>仅在[onDragStart](#ondragstart)回调中设置生效。拖拽成功发起后，系统会在显示拖拽预览窗口前隐藏目标组件。<br/>若拖拽源本身也需要隐藏，需要同时传入拖拽源组件的uniqueId。<br/>组件的uniqueId可通过[UIContext.getFrameNodeById()](../arkts-apis-uicontext-uicontext.md#getframenodebyid12)配合[FrameNode.getUniqueId()](../js-apis-arkui-frameNode.md#getuniqueid12)获取。<br/>开发者应在[onDragEnd](#ondragend10)或[onDrop](#ondrop)中恢复组件显示状态。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | 否 | 是 |设置拖拽过程中需要自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br/>仅在[onDragStart](#ondragstart)回调中设置生效。拖拽成功发起后，系统会在显示拖拽预览窗口前隐藏目标组件。<br/>若拖拽源本身也需要隐藏，需要同时传入拖拽源组件的uniqueId。<br/>组件的uniqueId可通过[UIContext.getFrameNodeById()](../arkts-apis-uicontext-uicontext.md#getframenodebyid12)配合[FrameNode.getUniqueId()](../js-apis-arkui-frameNode.md#getuniqueid12)获取。<br/>开发者应在[onDragEnd](#ondragend10)或[onDrop](#ondrop)中恢复组件显示状态。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 |dragBehavior<sup>10+</sup> | [DragBehavior](#dragbehavior10) | 否 | 否 |切换复制和剪贴模式的角标显示状态。<br/>默认值：DragBehavior.COPY。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ### setData<sup>10+</sup>
@@ -304,6 +316,8 @@ setData(unifiedData: UnifiedData): void
 向DragEvent中设置用于拖拽的数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -320,6 +334,8 @@ getData(): UnifiedData
 获取拖拽相关数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -346,6 +362,8 @@ getSummary(): Summary
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -361,6 +379,8 @@ setResult(dragResult: DragResult): void
 在DragEvent中设置拖拽结果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -378,6 +398,8 @@ getResult(): DragResult
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -393,6 +415,8 @@ getPreviewRect(): Rectangle
 获取拖拽预览图相对于当前窗口的位置，以及预览图尺寸信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -410,6 +434,8 @@ getVelocityX(): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -425,6 +451,8 @@ getVelocityY(): number
 获取当前拖拽的y轴方向拖动速度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -442,6 +470,8 @@ getVelocity(): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -457,6 +487,8 @@ getWindowX(): number
 获取拖拽点相对于窗口左上角的x轴坐标。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -474,6 +506,8 @@ getWindowY(): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -489,6 +523,8 @@ getDisplayX(): number
 获取当前拖拽点相对于屏幕左上角的x轴坐标。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -506,6 +542,8 @@ getDisplayY(): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -521,6 +559,8 @@ getModifierKeyState?(keys: Array<string\>): boolean
 获取功能键按压状态。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -551,6 +591,8 @@ startDataLoading(options: DataSyncOptions): string
 异步获取拖拽数据，并通知开发者当前数据同步进度，仅支持在onDrop阶段使用。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -583,6 +625,8 @@ executeDropAnimation(customDropAnimation: Callback\<void\>): void
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -598,6 +642,8 @@ getDisplayId(): number
 获取当前拖拽事件发生时所在的屏幕ID，不支持在[onDragEnd](ts-universal-events-drag-drop.md#ondragend10)阶段使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -615,6 +661,8 @@ getDragSource(): string
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -631,6 +679,8 @@ isRemote(): boolean
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -646,6 +696,8 @@ setDataLoadParams(dataLoadParams: DataLoadParams): void
 设置起拖方延迟提供数据。使用此方法向系统提供数据加载参数，而不是直接提供完整的数据对象。当用户在目标应用程序上落入时，系统将使用此参数从起拖方请求实际数据。与[setData](#setdata10)方法同时使用，以最后调用的方法为准。该接口仅在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)回调中生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -699,6 +751,8 @@ getGlobalDisplayX(): number
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -715,6 +769,8 @@ getGlobalDisplayY(): number
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -726,6 +782,8 @@ getGlobalDisplayY(): number
 ## DragResult<sup>10+</sup>枚举说明
 
 定义拖拽操作的结果及组件的落入选定状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -744,6 +802,8 @@ getGlobalDisplayY(): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
@@ -754,6 +814,8 @@ getGlobalDisplayY(): number
 ## PreDragStatus<sup>12+</sup>枚举说明
 
 定义拖拽手势触发前的各阶段状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -776,6 +838,8 @@ type UnifiedData = UnifiedData
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
@@ -789,6 +853,8 @@ type Summary = Summary
 拖拽相关数据的简介。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -804,6 +870,8 @@ type DataLoadParams = DataLoadParams
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
@@ -818,6 +886,8 @@ type DataSyncOptions = GetDataParams
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
@@ -831,6 +901,8 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 拖拽事件的回调函数。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -847,6 +919,8 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型  | 只读 | 可选 | 说明           |
@@ -861,6 +935,8 @@ type DragSpringLoadingConfiguration = DragSpringLoadingConfiguration
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
@@ -874,6 +950,8 @@ type SpringLoadingContext = SpringLoadingContext
 定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，使其能访问拖拽状态。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

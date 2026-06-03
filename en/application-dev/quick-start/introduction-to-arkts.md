@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @LeechyLiang-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -2673,6 +2673,71 @@ abstract class C {
 }
 ```
 
+### Source-Level Annotations
+Starting from API version 24, custom source-level annotations are supported.
+
+A source-level annotation is a special type of annotation whose lifecycle exists only during compilation and does not affect compilation artifacts.
+
+You can use the [Retention API](../reference/apis-arkts/js-apis-arkts-lang.md#retention24) provided by ArkTS to define custom source-level annotations. Source-level annotations support a wider range of usage scenarios and can be applied to the following declarations:
+- Class
+- Class member (excluding constructors)
+- Variable declaration
+- Interface
+- Interface member
+- Annotation
+- Function
+- Namespace
+- Type alias
+- Enum
+
+The following example shows how to define and use source-level annotations.
+
+**Example**
+
+<!-- @[annotation_source_retention_annotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/SourceRetentionAnnotation.ets) -->
+
+```ts
+import { Retention, RetentionPolicy } from '@kit.ArkTS';
+
+// Define a custom source-level annotation.
+@Retention({policy: RetentionPolicy.SOURCE})
+@interface SourceAnnotation {}
+// Source-level annotations can be used on classes and class members.
+@SourceAnnotation
+class C {
+  @SourceAnnotation
+  private name_: string = '';
+  @SourceAnnotation
+  get name(): string {
+    return this.name_;
+  }
+}
+// Source-level annotations can be used on variable declarations.
+@SourceAnnotation
+let a = 1;
+// Source-level annotations can be used on interfaces and interface members.
+@SourceAnnotation
+interface I {
+  @SourceAnnotation
+  foo(): void
+}
+// Source-level annotations can be used on annotations.
+@SourceAnnotation
+@interface Anno {}
+// Source-level annotations can be used on functions.
+@SourceAnnotation
+function func () {}
+// Source-level annotations can be used on namespaces.
+@SourceAnnotation
+namespace ns {}
+// Source-level annotations can be used on type aliases.
+@SourceAnnotation
+type A = number;
+// Source-level annotations can be used on enumerations.
+@SourceAnnotation
+enum ColorSet { RED, GREEN, BLUE }
+```
+
 ## ArkUI Supports
 
 This section demonstrates the mechanism provided by ArkTS for creating GUIs. ArkUI provides a series of extended capabilities based on TypeScript to declaratively describe the GUIs of an application and the interaction between GUI components.
@@ -2683,3 +2748,5 @@ This section demonstrates the mechanism provided by ArkTS for creating GUIs. Ark
 [MVVM sample code](../ui/state-management/arkts-mvvm.md#sample-code) provides a complete ArkUI-based application to demonstrate its GUI programming features.
 
 For more details about ArkUI features, see [Basic Syntax Overview](../ui/state-management/arkts-basic-syntax-overview.md).
+
+<!--no_check-->

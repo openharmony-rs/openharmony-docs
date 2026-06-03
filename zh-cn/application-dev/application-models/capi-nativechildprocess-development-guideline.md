@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供了两种创建[Native子进程](../application-models/ability-terminology.md#native子进程)的方式，以及一种终止子进程的方式。

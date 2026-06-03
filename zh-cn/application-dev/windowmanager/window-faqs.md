@@ -434,13 +434,13 @@ supportWindowMode支持的取值如下：
 | -------- | -------- |
 | "fullscreen" | 全屏模式 |
 | "split" | 分屏模式 |
-| "floating" | 悬浮窗模式 |
+| "floating" | 自由悬浮窗口模式 |
 
 > **说明：**
 > 
 > - supportWindowMode字段类型为字符串数组，可缺省，缺省值为["fullscreen", "split", "floating"]。
 > 
-> - 在[自由窗口](window-terminology.md#自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
+> - 在[自由窗口](window-terminology.md#自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以自由悬浮窗口模式启动；如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
 
 module.json5配置示例如下：
 
@@ -493,14 +493,14 @@ module.json5配置示例如下：
   | -------- | -------- | -------- |
   | UNDEFINED | 0 | 表示APP未定义窗口模式。 |
   | FULL_SCREEN | 1 | 表示APP全屏模式。<br/>[自由窗口](window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br/>可通过[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](../reference/apis-arkui/arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br/>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br/>非[自由窗口](window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。 |
-  | MAXIMIZE | 2 | 表示APP窗口最大化模式，在2in1设备中，窗口铺满整个屏幕，有dock栏和状态栏。 |
+  | MAXIMIZE | 2 | 表示APP窗口最大化模式，在PC/2in1设备中，窗口铺满整个屏幕，有dock栏和状态栏。 |
   | MINIMIZE | 3 | 表示APP窗口最小化模式。 |
   | FLOATING | 4 | 表示APP自由悬浮窗口模式。 |
   | SPLIT_SCREEN | 5 | 表示APP分屏模式。 |
 
 - 可通过[on('windowStatusChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowstatuschange11)接口监听窗口模式变化。
 
-  如果应用需要在窗口模式发生变化时（例如从全屏切换到悬浮窗）立即做出响应，可以使用此接口监听窗口模式变化，以实现对应业务适配。
+  如果应用需要在窗口模式发生变化时（例如从全屏切换到自由悬浮窗口模式）立即做出响应，可以使用此接口监听窗口模式变化，以实现对应业务适配。
 
   ```ts
   import { UIAbility } from '@kit.AbilityKit';

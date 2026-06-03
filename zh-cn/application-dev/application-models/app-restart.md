@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 应用重启用于在不同场景下重新初始化应用或恢复应用正常状态。系统提供了应用主动重启、原子化服务主动重启和应用故障恢复被动重启等，开发者可根据实际需求选择合适方案。
@@ -28,7 +28,7 @@
 - 不支持3秒内重复调用重启接口。
 
 示例代码：
-<!-- @[restartapp_withoutWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[restartapp_withoutWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -51,14 +51,12 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // 指定当前UIAbility
           let want: Want = {
-            bundleName: 'com.example.myapplication',
+            bundleName: 'com.example.restartapp',
             abilityName: 'EntryAbility'
           };
           if (this.context) {
             try {
-              // 触发want指定的UIAbility重启
               this.context.restartApp(want);
             } catch (err) {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
@@ -86,17 +84,17 @@ struct Index {
 示例代码：
 
 1. 指定当前UIAbility，重启后刷新当前窗口至初始状态。
-   <!-- @[restartapp_withOldWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index2.ets) -->
-
+   <!-- @[restartapp_withOldWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index2.ets) --> 
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { common, Want } from '@kit.AbilityKit';
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'restartApp with window';
-
+   
      build() {
        RelativeContainer() {
          Button(this.message)
@@ -110,12 +108,11 @@ struct Index {
            .onClick(async () => {
              // 指定当前UIAbility，刷新当前窗口
              let want: Want = {
-               bundleName: 'com.example.myapplication',
+               bundleName: 'com.example.restartapp',
                abilityName: 'EntryAbility'
              };
              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
              try {
-               // 触发want指定的UIAbility重启
                await context.restartApp(want);
                hilog.info(0x0000, 'testTag', 'restart success');
              } catch (err) {
@@ -130,17 +127,17 @@ struct Index {
    ```
 
 2. 指定应用内其他UIAbility，重启后跳转并打开新的Ability窗口。
-   <!-- @[restartapp_withNewWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index3.ets) -->
-
+   <!-- @[restartapp_withNewWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index3.ets) --> 
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { common, Want } from '@kit.AbilityKit';
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'restartApp to new page';
-
+   
      build() {
        RelativeContainer() {
          Button(this.message)
@@ -154,14 +151,13 @@ struct Index {
            .onClick(async () => {
              // 指定应用内其他UIAbility，跳转到新窗口
              let want: Want = {
-               bundleName: 'com.example.myapplication',
+               bundleName: 'com.example.restartapp',
                abilityName: 'SecondAbility'
              };
              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
              try {
-               // 触发want指定的UIAbility重启
                await context.restartApp(want);
-               hilog.info(0x0000, 'testTag', 'restart to new page success');
+               hilog.info(0x0000, 'testTag', 'restart success');
              } catch (err) {
                hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
              }

@@ -44,7 +44,13 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
   与屏幕坐标相关的事件信息会基于EmbeddedComponent的位置宽高进行坐标转换后传递给被拉起的EmbeddedUIExtensionAbility处理。
 
-  EmbeddedComponent组件不支持[点击](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md)等通用事件，仅支持[onTerminated](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated)事件和[onError](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)事件。
+  EmbeddedComponent组件不支持[点击](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md)等通用事件，仅支持[onTerminated](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated)事件和[onError](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)事件。从API版本26.0.0开始，新增支持[onDrawReady](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#ondrawready)事件。
+
+## 获焦能力说明
+
+API版本26.0.0之前，EmbeddedComponent组件获焦时，其拉起的EmbeddedUIExtensionAbility进程内焦点直接下发到第一个可获焦子节点。从API版本26.0.0开始，
+1. 如果外部走焦到EmbeddedUIExtensionAbility，焦点正常下发到第一个可获焦子节点。
+2. 如果由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility，则与UIAbility保持统一规则。两者在拉起一个层级页面且该页面未设置[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、未[主动请求焦点](arkts-common-events-focus-event.md#主动获焦失焦)时，焦点均停留在根容器，不下发到子节点。
 
 ## 场景示例
 
@@ -81,6 +87,9 @@ export struct Embedded {
             .onError((error) => {
               // 失败或异常触发onError回调，文本框显示如下报错内容
               this.message = `Error: code = ${error.code}`;
+            })
+            .onDrawReady(() => {
+              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
             })
         }
         .width('100%')
