@@ -84,7 +84,7 @@ import batteryInfo from '@ohos.batteryInfo';
 
 batterySOC(): int
 
-获取当前设备剩余电池电量百分比。
+表示当前设备剩余电池电量百分比，取值范围是[0，100]。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -96,7 +96,7 @@ batterySOC(): int
 
 | 类型   | 说明                                                       |
 | ------ | ---------------------------------------------------------- |
-| int | 返回当前设备剩余电池电量百分比。|
+| int | 返回当前设备剩余电池电量百分比，取值范围是[0，100]。|
 
 **示例：**
 
@@ -110,7 +110,7 @@ batterySOC(): int
 
 chargingStatus(): BatteryChargeState
 
-获取当前设备电池的充电状态。
+表示当前设备电池的充电状态。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -136,7 +136,7 @@ chargingStatus(): BatteryChargeState
 
 healthStatus(): BatteryHealthState
 
-获取当前设备电池的健康状态。
+表示当前设备电池的健康状态。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -162,7 +162,7 @@ healthStatus(): BatteryHealthState
 
 pluggedType(): BatteryPluggedType
 
-获取当前设备连接的充电器类型。
+表示当前设备连接的充电器类型。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -188,7 +188,7 @@ pluggedType(): BatteryPluggedType
 
 voltage(): int
 
-获取当前设备电池的电压，单位微伏。
+表示当前设备电池的电压，单位微伏。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -214,7 +214,7 @@ voltage(): int
 
 technology(): string
 
-获取当前设备电池的技术型号。
+表示当前设备电池的技术型号。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -240,7 +240,7 @@ technology(): string
 
 batteryTemperature(): int
 
-获取当前设备电池的温度，单位0.1摄氏度。
+表示当前设备电池的温度，单位0.1摄氏度。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -266,7 +266,7 @@ batteryTemperature(): int
 
 isBatteryPresent(): boolean
 
-获取当前设备是否支持电池或者电池是否在位。
+表示当前设备是否支持电池或者电池是否在位。true表示支持电池或电池在位，false表示不支持电池或电池不在位，默认为false。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -278,7 +278,7 @@ isBatteryPresent(): boolean
 
 | 类型   | 说明                                                       |
 | ------ | ---------------------------------------------------------- |
-| boolean | 当前设备是否支持电池或者电池在位。返回true表示当前设备支持电池或者电池在位，返回false表示当前设备不支持电池或者电池不在位。 |
+| boolean | 返回true表示支持电池或电池在位，返回false表示不支持电池或电池不在位。 |
 
 **示例：**
 
@@ -292,7 +292,7 @@ isBatteryPresent(): boolean
 
 batteryCapacityLevel(): BatteryCapacityLevel
 
-获取当前设备电池电量的等级。
+表示当前设备电池电量的等级。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -318,7 +318,7 @@ batteryCapacityLevel(): BatteryCapacityLevel
 
 nowCurrent(): int
 
-获取当前设备电池的电流，单位毫安。
+表示当前设备电池的电流，单位毫安。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
