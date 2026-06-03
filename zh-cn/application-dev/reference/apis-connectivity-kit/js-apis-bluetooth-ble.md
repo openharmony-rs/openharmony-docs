@@ -1537,7 +1537,7 @@ try {
 
 removeService(serviceUuid: string): void
 
-删除server端已添加的服务。
+删除Server端已添加的服务。
 - 该服务曾通过[addService](#addservice)添加。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -1572,10 +1572,47 @@ removeService(serviceUuid: string): void
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let server: ble.GattServer = ble.createGattServer();
 try {
-    // 调用removeService接口前需要完成server端和client端的配对及连接。
     server.removeService('00001810-0000-1000-8000-00805F9B34FB');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+### removeAllServices
+
+removeAllServices(): void
+
+删除Server端所有服务。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+```js
+let server: ble.GattServer = ble.createGattServer();
+try {
+    server.removeAllServices();
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
