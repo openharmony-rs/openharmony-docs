@@ -16,17 +16,17 @@ Defines the quantization information.
 
 In quantization scenarios, the 32-bit floating-point data type is quantized into the fixed-point data type according to the following formula:
 
-![zh-cn_formulaimage_0000001405137102](figures/zh-cn_formulaimage_0000001405137102.png)
+![Formula-for-Quantized-Data](figures/Formula-for-Quantized-Data.png)
 
 where, **s** and **z** are quantization parameters, which are stored by **scale** and **zeroPoint** in OH_NN_QuantParam. **r** is a floating point number, **q** is the quantization result, **q_min** is the lower bound of the quantization result, and **q_max** is the upper bound of the quantization result. The calculation method is as follows:
 
-![zh-cn_formulaimage_0000001459019845](figures/zh-cn_formulaimage_0000001459019845.png)
+![Lower-Bound-of-Quantized](figures/Lower-Bound-of-Quantized.png)
 
-![zh-cn_formulaimage_0000001408820090](figures/zh-cn_formulaimage_0000001408820090.png)
+![Upper-Bound-of-Quantized](figures/Upper-Bound-of-Quantized.png)
 
 The **clamp** function is defined as follows:
 
-![zh-cn_formulaimage_0000001455538697](figures/zh-cn_formulaimage_0000001455538697.png)
+![Clamp-Function7](figures/Clamp-Function7.png)
 
 **Since**: 9
 
