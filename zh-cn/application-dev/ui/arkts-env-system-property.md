@@ -274,7 +274,6 @@ struct GrandChild2 {
     }
   }
 }
-
 ```
 
 ## 使用场景
@@ -282,8 +281,6 @@ struct GrandChild2 {
 
 下面的例子中：
 - 在\@ComponentV2中声明\@Env，获取当前\@ComponentV2组件创建时所在窗口尺寸的布局断点信息，并用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)监听`this.breakpoint`的属性的变化。
-- 在\@ComponentV2中声明\@Env，获取当前\@ComponentV2组件创建时所在窗口的大小信息，单位为vp，并用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)监听`this.sizeInVP`的属性的变化。
-- 在\@ComponentV2中声明\@Env，获取当前\@ComponentV2组件创建时所在窗口的大小信息，单位为px，并用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)监听`this.sizeInPX`的属性的变化。
 - 将\@Env装饰的变量传递给`CompV2`中[\@Param](./state-management/arkts-new-param.md)装饰的变量和`Comp`中的常规变量。
 - 点击`Button('Landscape')`和`Button('Portrait')`切换横竖屏，`Index`、`CompV2`和`Comp`关联组件进行对应的刷新，`orientationChange`被触发监听回调。
 
@@ -295,8 +292,6 @@ import { common } from '@kit.AbilityKit';
 @ComponentV2
 struct Index {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Env(SystemProperties.WINDOW_SIZE) sizeInVP: window.SizeInVP;
-  @Env(SystemProperties.WINDOW_SIZE_PX) sizeInPX: window.Size;
 
   private changeOrientation(isLandscape: boolean) {
     const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
@@ -314,18 +309,12 @@ struct Index {
   aboutToAppear(): void {
     // @Env返回的对象实际上是@ObservedV2装饰的对象（其属性是@Trace装饰的），所以其属性的改变可以通过addMonitor监听
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
   }
 
   build() {
     Column() {
       Text(`Index breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Index breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Index sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Index sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Index sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Index sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
 
       Button('Landscape').onClick(() => {
         this.changeOrientation(true);
@@ -335,8 +324,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
@@ -344,17 +333,11 @@ struct Index {
 @ComponentV2
 struct CompV2 {
   @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require @Param sizeInVP: window.SizeInVP;
-  @Require @Param sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`CompV2 sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`CompV2 sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`CompV2 sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`CompV2 sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -362,17 +345,11 @@ struct CompV2 {
 @Component
 struct Comp {
   @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require sizeInVP: window.SizeInVP;
-  @Require sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`Comp breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Comp breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Comp sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Comp sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Comp sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Comp sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -390,8 +367,6 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct Index {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Env(SystemProperties.WINDOW_SIZE) sizeInVP: window.SizeInVP;
-  @Env(SystemProperties.WINDOW_SIZE_PX) sizeInPX: window.Size;
 
   private changeOrientation(isLandscape: boolean) {
     const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
@@ -409,18 +384,12 @@ struct Index {
   aboutToAppear(): void {
     // @Env返回的对象实际上是@ObservedV2装饰的对象（其属性是@Trace装饰的），所以其属性的改变可以通过addMonitor监听
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
   }
 
   build() {
     Column() {
       Text(`Index breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Index breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Index sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Index sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Index sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Index sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
 
       Button('Landscape').onClick(() => {
         this.changeOrientation(true);
@@ -430,8 +399,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
@@ -439,17 +408,11 @@ struct Index {
 @ComponentV2
 struct CompV2 {
   @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require @Param sizeInVP: window.SizeInVP;
-  @Require @Param sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`CompV2 sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`CompV2 sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`CompV2 sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`CompV2 sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -457,17 +420,11 @@ struct CompV2 {
 @Component
 struct Comp {
   @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require sizeInVP: window.SizeInVP;
-  @Require sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`Comp breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Comp breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Comp sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Comp sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Comp sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Comp sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }

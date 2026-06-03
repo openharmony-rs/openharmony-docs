@@ -10,7 +10,7 @@
 
 ## Available APIs
 
-You can refer to the API documentation for detailed descriptions of the asset removal API [remove(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremove) and the synchronization API [removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremovesync12).
+You can refer to the API documentation for detailed descriptions of the asset removal API [remove(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremove) and the synchronous API [removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremovesync12).
 
 The following table describes the attributes of **AssetMap** for removing an asset.
 
@@ -45,7 +45,7 @@ The following table describes the attributes of **AssetMap** for removing an ass
 
 > **NOTE**
 >
-> This module provides both asynchronous and synchronization APIs. The following is an example of using the asynchronous API. For details about the synchronization API, see [@ohos.security.asset (Asset Store Service)](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> This module provides both asynchronous and synchronous APIs. The following is an example of using the asynchronous API. For details about the synchronous API, see [@ohos.security.asset (Asset Store Service)](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > For an example of removing an asset from a specified group, see [Removing an Asset from a Group](asset-js-group-access-control.md#removing-an-asset-from-a-group).
 >

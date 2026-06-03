@@ -10,7 +10,7 @@
 
 ## Available APIs
 
-You can refer to the API documentation for detailed descriptions of the asset update API [update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate) and the synchronization API [updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12).
+You can refer to the API documentation for detailed descriptions of the asset update API [update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate) and the synchronous API [updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12).
 
 The following table describes the attributes of **AssetMap** for updating an asset.
 

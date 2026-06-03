@@ -10,9 +10,9 @@
 
 ## Available APIs
 
-You can refer to the API documentation for detailed descriptions of the asset query API [query(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquery) and the synchronization API [querySync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquerysync12).
+You can refer to the API documentation for detailed descriptions of the asset query API [query(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquery) and the synchronous API [querySync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquerysync12).
 
-When querying a asset, the content (**AssetMap**) parameter for the asset attribute are as shown in the following table:
+When querying an asset, the content (**AssetMap**) parameter for the asset attribute are as shown in the following table:
 > **NOTE**
 >
 > In the following table, the asset attributes **ALIAS** and those with names containing **DATA_LABEL** are used to store service-defined information. Their content is not encrypted, so do not store sensitive personal data in them.
