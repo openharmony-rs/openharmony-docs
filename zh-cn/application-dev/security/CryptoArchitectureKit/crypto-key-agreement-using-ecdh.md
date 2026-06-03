@@ -65,7 +65,7 @@
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
-  function ecdhAwait() {
+  function ecdhSync() {
     // 假设此公私钥对数据为外部传入
     let pubKeyArray =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
