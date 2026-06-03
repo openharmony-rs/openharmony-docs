@@ -335,6 +335,46 @@ Service timeout.
 
 服务超时，请稍后重试。
 
+## 9200017 企业设备管理员自激活凭证无效
+
+**错误信息**
+
+The self-activation credential of the enterprise device administrator is invalid.
+
+**错误描述**
+
+当企业设备管理员自激活凭证无效时，方法将返回该错误码。
+
+**可能原因**
+
+1、企业ID不匹配。
+
+2、应用appIdentifier配置失败。
+
+3、激活凭证缺少必需字段或者证书链校验失败。
+
+**处理步骤**
+
+检查企业设备管理员自激活凭证是否正确。
+
+## 9200018 该设备非企业设备
+
+**错误信息**
+
+This device is not an enterprise device.
+
+**错误描述**
+
+该设备非企业设备。
+
+**可能原因**
+
+该设备非企业设备。
+
+**处理步骤**
+
+检查该设备是否设置为企业设备。
+
 ## 9201001 管理证书失败
 
 **错误信息**
@@ -604,7 +644,6 @@ Failed to enable or disable the activation lock.
 
 <!--RP2-->设备不支持激活锁服务。
 <!--RP2End-->
-
 
 ## 9201013 快捷栏中的应用数量已到最大值
 

@@ -690,7 +690,6 @@ installForResult(admin: Want, hapFilePaths: Array\<string>, installParam?: Insta
 > 
 > 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
 
-
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
@@ -769,7 +768,6 @@ bundleManager.installForResult(wantTemp, hapFilePaths).then(() => {
 
 传入installParam参数使用示例：
 ```ts
-
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1352,4 +1350,3 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 | bundleName| string         | 否   | 否   | 应用的包名。                 |
 | appSize   | number         | 否   | 否   | 应用安装文件大小，单位为Byte。<br/>应用安装文件保存在以下目录：<br/>/data/storage/el1/bundle         |
 | dataSize  | number         | 否   | 否   | 应用的本地数据、分布式数据和数据库数据大小，单位为Byte。<br/>本地文件保存在以下目录（注意缓存文件目录为以下目录的子目录）：<br/>/data/storage/\${el1-el5}/base<br/>分布式文件保存在以下目录：<br/>/data/storage/el2/distributedfiles<br/>数据库文件保存在以下目录：<br/>/data/storage/\${el1-el5}/database<br/> **说明**：\${el1-el5}指的是[el1，el2，el3，el4，el5目录](../../../application-dev/file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。 |
-
