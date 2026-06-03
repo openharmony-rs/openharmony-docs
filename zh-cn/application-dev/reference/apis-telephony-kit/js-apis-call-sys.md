@@ -4746,6 +4746,57 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 });
 ```
 
+## call.sendUssdResponse<sup>26+</sup>
+
+sendUssdResponse\(slotId: int, content: string\): void
+
+发送ussd响应
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明     |
+| --------- | ------ | ---- | -------- |
+| slotId    | int    | 是   | 表示发送响应的槽位ID。 |
+| content   | string | 是   | 表示响应内容。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { call } from '@kit.TelephonyKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function testSendUssdResponse() {
+    const slotId: int = 0;
+    const content: string = "OK";
+
+    try {
+        call.sendUssdResponse(slotId, content);
+    } catch (error) {
+        const err = error as BusinessError;
+        hilog.error(0x0000, 'testTag', 'Failed to send USSD response. Code: ${err.code}, Message: ${err.message}');
+    }
+}
+```
+
 ## DialOptions
 
 拨打电话的可选参数。
