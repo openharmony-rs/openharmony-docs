@@ -4610,7 +4610,7 @@ import { common } from '@kit.AbilityKit';
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let mode = contact.ContactSyncMode.MODE_INCREMENTAL;
 const totalBatches: number = 3;
-const syncId: number = Date.now();
+const syncId: number = Date.now() / 1000;
 const totalCount = 300;
 const batchSize = 100;
 for (let batch: number = 1; batch <= totalBatches; batch++) {
@@ -5560,7 +5560,7 @@ let website: contact.Website = {
 
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
-| syncId        | number |  否  |  否   |  表示用于同步所有联系人的同步标识符。该值应从0开始。     |
+| syncId        | number |  否  |  否   |  表示用于同步所有联系人的同步标识符。值的范围为[0, 2147483647]。     |
 | currentBatch        | number |  否  |  否    | 表示要同步的当前联系人批次的标识符。值的范围是从1到totalBatches。     |
 | totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
 
