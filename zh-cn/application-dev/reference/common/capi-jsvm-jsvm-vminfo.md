@@ -7,9 +7,7 @@
 <!--Adviser: @fang-jinxu-->
 
 ```c
-typedef struct {
-  // ...
-} JSVM_VMInfo
+typedef struct {...} JSVM_VMInfo
 ```
 
 ## 概述
