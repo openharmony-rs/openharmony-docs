@@ -138,7 +138,7 @@ struct TestDemo14 {
 
   build() {
     Column() {
-      // 注册及去注册音量键键事件
+      // 注册及去注册音量键事件
       Row() {
         Button('Add monitoring for Volume Up key')
           .onClick(() => {
