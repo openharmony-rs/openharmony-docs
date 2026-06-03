@@ -15,7 +15,6 @@
 ## 导入模块
 
 ```js
-// 导入机械体控制模块
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
@@ -89,11 +88,9 @@ let callback = (result: mechanicManager.AttachStateChangeInfo) => {
   console.info(`'callback result:' ${result}`);
 };
 
-// 打印日志，表示开始取消注册监听
 console.info('Unregister');
 // 取消注册"attachStateChange"事件监听
 mechanicManager.off("attachStateChange", callback);
-// 打印日志，表示取消注册成功
 console.info('Succeeded in unregistering callback.');
 ```
 
@@ -122,11 +119,9 @@ getAttachedMechDevices(): MechInfo[]
 **示例：**
 
 ```ts
-// 打印日志，表示开始查询设备列表
 console.info('Query device list');
 // 调用getAttachedMechDevices方法获取已连接的机械体设备列表
 let mechanicInfos = mechanicManager.getAttachedMechDevices();
-// 打印获取到的设备列表信息
 console.info(`'device list:' ${mechanicInfos}`);
 ```
 
@@ -157,11 +152,9 @@ setCameraTrackingEnabled(isEnabled: boolean): void
 **示例：**
 
 ```ts
-// 打印日志，表示开始启用跟踪功能
 console.info('Enable tracing');
 // 调用setCameraTrackingEnabled方法，参数true表示启用摄像头跟踪
 mechanicManager.setCameraTrackingEnabled(true);
-// 打印日志，表示启用跟踪成功
 console.info('Succeeded in enabling tracking.');
 ```
 
@@ -191,11 +184,9 @@ getCameraTrackingEnabled(): boolean
 **示例：**
 
 ```ts
-// 打印日志，表示开始获取跟踪状态
 console.info('Get tracking status');
 // 调用getCameraTrackingEnabled方法获取当前摄像头跟踪是否启用
 let enabled = mechanicManager.getCameraTrackingEnabled();
-// 打印当前跟踪状态，true表示已启用，false表示已禁用
 console.info(`'current tracking status:' ${enabled}`);
 ```
 
@@ -230,11 +221,9 @@ let callback = (result: mechanicManager.TrackingEventInfo) => {
   console.info(`'callback result:' ${result}`);
 };
 
-// 打印日志，表示开始注册监听
 console.info('Register');
 // 注册"trackingStateChange"事件监听，当跟踪状态变化时触发callback回调
 mechanicManager.on("trackingStateChange", callback);
-// 打印日志，表示注册监听成功
 console.info('Succeeded in registering callback.');
 ```
 
@@ -269,11 +258,9 @@ let callback = (result: mechanicManager.TrackingEventInfo) => {
   console.info(`'callback result:' ${result}`);
 };
 
-// 打印日志，表示开始取消注册监听
 console.info('Unregister');
 // 取消注册"trackingStateChange"事件监听
 mechanicManager.off("trackingStateChange", callback);
-// 打印日志，表示取消注册成功
 console.info('Succeeded in unregistering callback.');
 ```
 
@@ -303,11 +290,9 @@ getCameraTrackingLayout(): CameraTrackingLayout
 **示例：**
 
 ```ts
-// 打印日志，表示开始查询布局
 console.info('Query layout');
 // 调用getCameraTrackingLayout方法获取当前摄像头跟踪布局
 let layout = mechanicManager.getCameraTrackingLayout();
-// 打印当前布局信息
 console.info(`'Succeeded in querying layout, current layout:' ${layout}`);
 ```
 
@@ -336,11 +321,9 @@ isControlSupported(mechDeviceType?: MechDeviceType): boolean
 **示例：**
 
 ```ts
-// 打印日志，表示开始检查是否支持控制功能
 console.info('Check whether control is supported');
 // 调用isControlSupported方法，传入MechDeviceType.GIMBAL_DEVICE类型，判断是否支持云台设备控制
 let isSupported = mechanicManager.isControlSupported(mechanicManager.MechDeviceType.GIMBAL_DEVICE);
-// 打印是否支持的结果，true表示支持，false表示不支持
 console.info(`isSupported: ${isSupported}`);
 ```
 
