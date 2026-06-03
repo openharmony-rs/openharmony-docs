@@ -2477,6 +2477,7 @@ pixelmap在跨线程传输时，断开原线程的引用。适用于需立即释
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { common } from '@kit.AbilityKit';
 import { taskpool } from '@kit.ArkTS';
 
@@ -2549,6 +2550,7 @@ marshalling(sequence: rpc.MessageSequence): void
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
@@ -2635,6 +2637,7 @@ unmarshalling(sequence: rpc.MessageSequence): Promise\<PixelMap>
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
@@ -2926,7 +2929,7 @@ isReleased(): boolean
 **示例：**
 
 ```ts
-async function DemoIsReleased(pixelMap: PixelMap) { // 未释放的PixelMap。
+async function IsReleased(pixelMap: PixelMap) { // 未释放的PixelMap。
   pixelMap.isReleased(); // 返回false。
   await pixelMap.release();
   pixelMap.isReleased(); // 返回true。
