@@ -300,8 +300,8 @@ Enumerates the join styles of a pen. The join style defines the shape of the joi
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ----------- | ---- | ----------------------------------------------------------- | -------- |
-| MITER_JOIN | 0    | Mitered corner. If the angle of a polyline is small, its miter length may be inappropriate. In this case, you need to use the miter limit to limit the miter length.| ![MITER_JOIN](figures/image_JoinStyle_Miter_Join.png)|
-| ROUND_JOIN | 1    | Round corner.| ![ROUND_JOIN](figures/JoinStyle-Round_Join.png)|
+| MITER_JOIN | 0    | Mitered corner. If the angle of a polyline is small, its miter length may be inappropriate. In this case, you need to use the miter limit to limit the miter length.| ![MITER_JOIN](figures/JoinStyle-Miter-Join.png)|
+| ROUND_JOIN | 1    | Round corner.| ![ROUND_JOIN](figures/JoinStyle-Round-Join.png)|
 | BEVEL_JOIN | 2    | Beveled corner.| ![BEVEL_JOIN](figures/JoinStyle-Bevel-Join.png)|
 
 ## CapStyle<sup>12+</sup>
@@ -312,7 +312,7 @@ Enumerates the cap styles of a pen. The cap style defines the style of both ends
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ---------- | ---- | ----------------------------------------------------------- | -------- |
-| FLAT_CAP   | 0    | There is no cap style. Both ends of the line segment are cut off square.| ![FLAT_CAP](figures/image_CapStyle_Flat_Cap.jpg)|
+| FLAT_CAP   | 0    | There is no cap style. Both ends of the line segment are cut off square.| ![FLAT_CAP](figures/CapStyle-Flat-Cap.jpg)|
 | SQUARE_CAP | 1    | Square cap style. Both ends have a square, the height of which is half of the width of the line segment, with the same width.| ![SQUARE_CAP](figures/CapStyle-Square-Cap.jpg)|
 | ROUND_CAP  | 2    | Round cap style. Both ends have a semicircle centered, the diameter of which is the same as the width of the line segment.| ![ROUND_CAP](figures/CapStyle-Round-Cap.jpg)|
 

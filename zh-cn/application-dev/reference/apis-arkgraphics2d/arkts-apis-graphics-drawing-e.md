@@ -304,7 +304,7 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称        | 值   | 说明                                                         | 示意图   |
 | ----------- | ---- | ----------------------------------------------------------- | -------- |
-| MITER_JOIN | 0    | 转角类型为尖角，如果折线角度比较小，则尖角会很长，需要使用限制值（miter limit）进行限制。 | ![MITER_JOIN](figures/zh-ch_image_JoinStyle_Miter_Join.png) |
+| MITER_JOIN | 0    | 转角类型为尖角，如果折线角度比较小，则尖角会很长，需要使用限制值（miter limit）进行限制。 | ![MITER_JOIN](figures/JoinStyle-Miter-Join.png) |
 | ROUND_JOIN | 1    | 转角类型为圆头。 | ![ROUND_JOIN](figures/JoinStyle-Round-Join.png) |
 | BEVEL_JOIN | 2    | 转角类型为平头。 | ![BEVEL_JOIN](figures/JoinStyle-Bevel-Join.png) |
 
@@ -316,9 +316,9 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称        | 值   | 说明                                                         | 示意图   |
 | ---------- | ---- | ----------------------------------------------------------- | -------- |
-| FLAT_CAP   | 0    | 没有线帽样式，线条头尾端点处横切。 | ![FLAT_CAP](figures/zh-ch_image_CapStyle_Flat_Cap.jpg) |
-| SQUARE_CAP | 1    | 线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。 | ![SQUARE_CAP](figures/zh-ch_image_CapStyle_Square_Cap.jpg) |
-| ROUND_CAP  | 2    | 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。 | ![ROUND_CAP](figures/zh-ch_image_CapStyle_Round_Cap.jpg) |
+| FLAT_CAP   | 0    | 没有线帽样式，线条头尾端点处横切。 | ![FLAT_CAP](figures/CapStyle-Flat-Cap.jpg) |
+| SQUARE_CAP | 1    | 线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。 | ![SQUARE_CAP](figures/CapStyle-Square-Cap.jpg) |
+| ROUND_CAP  | 2    | 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。 | ![ROUND_CAP](figures/CapStyle-Round-Cap.jpg) |
 
 ## BlurType<sup>12+</sup>
 
