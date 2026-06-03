@@ -136,7 +136,7 @@ enum OH_AVCapabilityFeature
 | VIDEO_LOW_LATENCY = 2 | 编解码器支持低时延特性，只用于视频解码场景。 |
 | VIDEO_ENCODER_B_FRAME = 7 | 编解码器支持B帧特性，只用于视频编码场景。<br>**起始版本：** 20 |
 | VIDEO_ENCODER_PREPROC_DOWNSAMPLING = 9 | 编码器支持下采样预处理特性，该能力仅适用于视频编码器。<br>仅当编码器通过[OH_VideoEncoder_CreatePrimaryWithPreproc](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc)或[OH_VideoEncoder_CreateSecondaryFromPrimary](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary)接口创建时，方可启用该能力。<br>**起始版本：** 26.0.0 |
-| VIDEO_ENCODER_PREPROC_CROP = 10 | 编码器具备裁剪预处理能力，该特性仅适用于视频编码器。<br>仅当编码器通过[OH_VideoEncoder_CreatePrimaryWithPreproc](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc)或[OH_VideoEncoder_CreateSecondaryFromPrimary](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary)接口创建时，方可启用该能力。<br>**起始版本：** 26.0.0 |
+| VIDEO_ENCODER_PREPROC_CROP = 10 | 编码器支持裁剪预处理特性，该特性仅适用于视频编码器。<br>仅当编码器通过[OH_VideoEncoder_CreatePrimaryWithPreproc](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc)或[OH_VideoEncoder_CreateSecondaryFromPrimary](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary)接口创建时，方可启用该能力。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明
