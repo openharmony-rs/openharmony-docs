@@ -278,26 +278,30 @@ import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Row, Te
 struct ContentComponent {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Index内的@Provide装饰的变量
   @Consume count: number;
+  index: number;
 
   build() {
     Column() {
-      Text(`count(${this.count})`)
-      Button(`count(${this.count}), count + 1`)
+      Text(`Child ${this.index} count(${this.count})`)
+        .fontSize(20)
+        .margin(10)
+      Button(`Child ${this.index} count(${this.count}), count + 1`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.count += 1;
         })
     }
-    .width('50%')
+    .width('100%')
   }
 }
 
 @Component
 struct ListComponent {
   build() {
-    Row() {
-      ContentComponent()
-      ContentComponent()
-    }
+    // 通过index区分两个子组件
+    ContentComponent({ index: 1})
+    ContentComponent({ index: 2})
   }
 }
 
@@ -309,12 +313,15 @@ struct Index {
 
   build() {
     Column() {
-      Button(`count(${this.count}), count + 1`)
+      Button(`Parent count(${this.count}), count + 1`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.count += 1;
         })
       ListComponent()
     }
+    .width('100%')
   }
 }
 ```
@@ -565,12 +572,16 @@ struct GrandSon {
   build() {
     Column() {
       Text(`reviewVotes(${this.reviewVotes})`) // Text显示10
+        .fontSize(20)
+        .margin(10)
       Button(`reviewVotes(${this.reviewVotes}), give +1`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.reviewVotes += 1;
         })
     }
-    .width('50%')
+    .width('100%')
   }
 }
 
@@ -602,11 +613,14 @@ struct GrandParent {
   build() {
     Column() {
       Button(`reviewVotes(${this.reviewVotes}), give +1`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.reviewVotes += 1;
         })
       Parent()
     }
+    .width('100%')
   }
 }
 ```
