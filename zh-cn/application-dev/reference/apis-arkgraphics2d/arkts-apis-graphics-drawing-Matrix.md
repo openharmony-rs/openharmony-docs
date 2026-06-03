@@ -1240,7 +1240,7 @@ mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 
 将目标矩形设置为源矩形通过矩阵变换后的图形的外接矩形。如下图所示，蓝色矩形为源矩形，假设黄色矩形为源矩形通过矩阵变换形成的图形，此时黄色矩形的边不与坐标轴平行，无法使用矩形对象表示，因此，将目标矩形设置为黄色矩形的外接矩形，即黑色矩形。
 
-![mapRect](figures/zh-ch_matrix_mapRect.png)
+![mapRect](figures/matrix-mapRect.png)
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
