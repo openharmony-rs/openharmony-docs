@@ -888,7 +888,7 @@ try {
 
 uninstallUserTrustedCertificateSync(certUri: string) : void
 
-删除用户CA证书。
+卸载用户CA证书。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -902,7 +902,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 
 | 参数名       | 类型                         | 必填 | 说明           |
 |-----------|----------------------------|----|--------------|
-| certUri     | string                 | 是  | 表示待卸删除证书的唯一标识符，长度限制256字节以内。    |
+| certUri     | string                 | 是  | 表示待卸载证书的唯一标识符，长度限制256字节以内。    |
 
 **错误码：**
 
