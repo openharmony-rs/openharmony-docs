@@ -3735,35 +3735,101 @@ struct Index {
 
 ![textSetTextSelection](figures/textSetTextSelection.gif)
 
-### 示例23（设置行首标点压缩）
+### 示例23（设置行首标点符号压缩和行尾标点符号悬挂）
 
-该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
 
-从API version 23开始，支持compressLeadingPunctuation接口。
+左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+文本自动换行后，剩余内容（含标点符号）需要能够放入上一行，标点符号悬挂才生效。
+
+从API版本23开始，新增compressLeadingPunctuation接口。
+
+从API版本26.0.0开始，新增punctuationOverflow接口。
+
+ArkTS-Dyn示例：
 
 ```ts
-// xxx.ets
 @Entry
 @Component
-struct Index {
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】';
+
   build() {
-    Column(){
-      Text("\u300C行首标点压缩打开")
-        .compressLeadingPunctuation(true)
-        .margin(5)
-        .border({ width: 1 })
-        .fontSize(30)
-        .width("90%")
-      Text("\u300C行首标点压缩关闭")
-        .compressLeadingPunctuation(false)
-        .border({ width: 1 })
-        .fontSize(30)
-        .width("90%")
-    }
+    Column() {
+      Text(this.text)
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .border({ width: 1, color: Color.Black })
+        .copyOption(CopyOptions.LocalDevice)
+        .fontSize('20fp')
+        .align(Alignment.Center)
+        .height('35%')
+        .width('40%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
   }
 }
 ```
-![textCompressLeadingPunctuation](figures/textCompressLeadingPunctuation.gif)
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Button, Color, Margin, Alignment, ClickEvent, State, Text, CopyOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】';
+
+  build() {
+    Column() {
+      Text(this.text)
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .border({ width: 1, color: Color.Black })
+        .copyOption(CopyOptions.LocalDevice)
+        .fontSize('20fp')
+        .align(Alignment.Center)
+        .height('35%')
+        .width('40%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick((event: ClickEvent) => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick((event: ClickEvent) => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick((event: ClickEvent) => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick((event: ClickEvent) => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
+  }
+}
+```
+![textPunctuation](figures/textPunctuation.gif)
 
 ### 示例24（设置自适应间距）
 
