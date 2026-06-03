@@ -438,7 +438,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.getAppNet().then((data: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
- console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
+ console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
 });
 ```
 
