@@ -1,4 +1,4 @@
-# UDMF（Unified Data Management Framework，统一数据管理框架）
+# UDMF
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->

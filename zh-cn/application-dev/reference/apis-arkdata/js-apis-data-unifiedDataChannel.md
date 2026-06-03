@@ -122,7 +122,7 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 - 仅使用NONE：不做任何文件授权。
 - 仅使用READ：仅做单次只读授权。
 - 仅使用WRITE：做单次读、写授权（写授权包含读授权）。
-- READ+WRITE:做单次读、写授权,与仅使用WRITE的授权效果相同。
+- READ+WRITE：做单次读、写授权，与仅使用WRITE的授权效果相同。
 - READ+PERSIST：做持久化读授权。
 - WRITE+PERSIST：做持久化读写授权。
 - READ+WRITE+PERSIST：做持久化读写授权。
@@ -1468,7 +1468,7 @@ type DataProgressListener = (progressInfo: ProgressInfo, data: UnifiedData | nul
 | 名称                   | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                 |
 |----------------------|-------------------------------------------------| ---- |-----| -----------------------------------------------------------------------------------------------------------------------------------------------|
 | types    | Set\<string\>       | 否 | 是 | 表示数据类型集合，默认为空集合。                                                                                                                         |
-| recordCount | number | 否 | 是 | 表示期望或可提供的最大数据记录数，默认值为0，取值范围为[0, 2<sup>32</sup>-1]。超过取值范围时会按默认值处理。设置为浮点数时，仅使用整数部分。当用于拖拽时，会作为角标数量显示，最大支持2<sup>31</sup>-1，超过此数值时不显示角标。作为角标数量时，优先级低于[DragPreviewOptions](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)中的numberBadge方法。                            |
+| recordCount | number | 否 | 是 | 表示期望或可提供的最大数据记录数，默认值为0，取值范围为[0, 2<sup>32</sup>-1]。超过取值范围时会按默认值处理。设置为浮点数时，仅使用整数部分。当用于拖拽时，会作为角标数量显示，最大支持2<sup>31</sup>-1，超过此数值时不显示角标。作为角标数量时，优先级低于[DragPreviewOptions](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1)中的numberBadge方法。                            |
 
 ## DataLoadHandler<sup>20+</sup>
 
@@ -1480,7 +1480,7 @@ type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 
 说明：当同时传入loadHandler和delayedDataLoadHandler时，优先使用delayedDataLoadHandler，loadHandler不生效。
 
-**实现机制：** 在拖拽或分享等延迟加载场景中，接收方通过GetDataParams传入acceptableInfo参数。系统将acceptableInfo传递给发送方的DataLoadHandler处理函数，处理函数根据接收方需求动态生成UnifiedData对象。系统在接收方触发数据获取时调用处理函数，处理函数必须快速返回结果（建议3秒内），返回null视为加载失败。
+实现机制：在拖拽或分享等延迟加载场景中，接收方通过GetDataParams传入acceptableInfo参数。系统将acceptableInfo传递给发送方的DataLoadHandler处理函数，处理函数根据接收方需求动态生成UnifiedData对象。系统在接收方触发数据获取时调用处理函数，处理函数必须快速返回结果（建议3秒内），返回null视为加载失败。
 
 该处理函数为同步函数，适用于处理简单业务逻辑，若函数业务逻辑较复杂、执行时间较长（3s以上），推荐使用异步处理函数[DelayedDataLoadHandler](#delayeddataloadhandler22)。
 
@@ -1550,7 +1550,7 @@ insertData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;strin
 
 > UDMF处理数据时不会解析用户数据内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。<br/>
 
-**实现机制：** 系统接收UnifiedData对象后，验证数据完整性并序列化存储。根据intention值路由到对应存储空间，生成唯一标识符key（格式见Options说明）。数据在公共数据通路中由系统管理有效期，默认策略为应用退出后自动清理。
+实现机制：系统接收UnifiedData对象后，验证数据完整性并序列化存储。根据intention值路由到对应存储空间，生成唯一标识符key（格式见Options说明）。数据在公共数据通路中由系统管理有效期，默认策略为应用退出后自动清理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2083,7 +2083,7 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[统一数据管理框架(UDMF)错误码](errorcode-udmf.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[统一数据管理框架（UDMF）错误码](errorcode-udmf.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |

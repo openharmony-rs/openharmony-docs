@@ -1,4 +1,4 @@
-# 统一数据管理框架(UDMF)错误码
+# 统一数据管理框架（UDMF）错误码
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->

@@ -31,7 +31,7 @@ import { uniformDataStruct } from '@kit.ArkData';
 | uniformDataType | 'general.plain-text'| 是   | 否   | 统一数据类型标识为纯文本类型数据，固定为“general.plain-text”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。                |
 | textContent | string | 否   | 否   | 纯文本内容。长度限制为20MB。 |
 | abstract    | string | 否   | 是   | 纯文本摘要，非必填字段。当需要为文本提供简短摘要时传入此参数（如用于预览、搜索结果展示等场景），不传入时默认值为空字符串，不提供摘要信息。 |
-| details | Record<string, string> | 否   | 是 | 字典类型对象，key和value均为string类型，用于描述文本内容详细属性。非必填字段，默认值为空字典对象。例如，可生成一个details内容为<br />{<br />"title":"标题",<br />"content":"内容"<br />}<br />的数据对象。当需要存储额外的文本属性信息时传入此参数，不传入时默认值为空字典对象，不提供额外属性。 |
+| details | Record<string, string> | 否   | 是 | 字典类型对象，key和value均为string类型，用于描述文本内容详细属性。非必填字段，默认值为空字典对象。例如，可生成一个details内容为<br/>{<br/>"title":"标题",<br/>"content":"内容"<br/>}<br/>的数据对象。当需要存储额外的文本属性信息时传入此参数，不传入时默认值为空字典对象，不提供额外属性。 |
 
 **示例：**
 

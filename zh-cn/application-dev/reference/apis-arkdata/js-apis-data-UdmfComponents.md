@@ -8,7 +8,7 @@
 
 针对[ContentForm](js-apis-data-uniformDataStruct.md#contentform14)标准数据结构的内容卡片，支持设置标题（必选）、描述、应用图标、应用名称、跳转链接、内容图片。用户点击卡片时，执行传入的回调事件函数，若设置的跳转链接不为空，则跳转到指定的页面。
 
-**使用场景**：
+使用场景：
 - 社交应用分享内容展示
 - 即时通讯消息卡片
 - 内容推荐卡片
@@ -109,7 +109,7 @@ struct Index {
   // 构建UI界面
   build() {
     Column() {
-      // 显示按钮,点击后展示内容卡片
+      // 显示按钮，点击后展示内容卡片
       Button('show card')
         .onClick(() => {
           this.startToShow = true;
@@ -136,5 +136,5 @@ struct Index {
 ## 效果呈现
 
 本例效果如下：<br/>
-![卡片控件](../../ui/figures/卡片控件.jpeg)
+![showContentFormCard](../../ui/figures/showContentFormCard.jpeg)
 

@@ -227,12 +227,6 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | filenameExtensions<sup>12+</sup>  | Array\<string>          | 否   | 否   | 标准化数据类型所关联的文件名后缀列表。                                   |
 | mimeTypes<sup>12+</sup>  | Array\<string>          | 否   | 否   | 标准化数据类型所关联的多用途互联网邮件扩展类型列表。                                   |
 
-## 类型层级判断方法对比
-
-- **belongsTo**：判断归属关系。当前类型归属于指定类型时返回true，包含两者相同的情况。
-- **isLowerLevelType**：判断低层级关系。当前类型层级严格低于指定类型时返回true，不包含相同情况。
-- **isHigherLevelType**：判断高层级关系。当前类型层级严格高于指定类型时返回true，不包含相同情况。
-
 示例：TYPE_SCRIPT归属于SOURCE_CODE（belongsTo返回true），TYPE_SCRIPT是SOURCE_CODE的低层级（isLowerLevelType返回true），SOURCE_CODE是TYPE_SCRIPT的高层级（isHigherLevelType返回true）。
 
 ### belongsTo<sup>11+</sup> 
@@ -241,7 +235,7 @@ belongsTo(type: string): boolean
 
 判断当前标准化数据类型是否归属于指定的标准化数据类型。
 
-**使用场景**：
+使用场景：
 - 数据拖拽操作中判断数据类型兼容性
 - 数据传输前验证数据格式是否支持
 - 内容分享时检查数据类型是否符合要求
@@ -252,7 +246,7 @@ belongsTo(type: string): boolean
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
-| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD ID）。   |
+| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。   |
 
 **返回值：**
 
@@ -294,7 +288,7 @@ isLowerLevelType(type: string): boolean
 
 判断当前标准化数据类型是否是指定标准化数据类型的低层级类型。例如TYPE_SCRIPT为SOURCE_CODE的低层级类型，TYPE_SCRIPT和SOURCE_CODE为TEXT的低层级类型。
 
-**使用场景**：
+使用场景：
 - 数据格式转换时判断是否需要转换
 - 智能选择最合适的数据类型
 - 数据类型层级校验
@@ -305,7 +299,7 @@ isLowerLevelType(type: string): boolean
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
-| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD ID）。   |
+| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。   |
 
 **返回值：**
 
@@ -346,7 +340,7 @@ isHigherLevelType(type: string): boolean
 
 判断当前标准化数据类型是否是指定标准化数据类型的高层级类型。例如SOURCE_CODE为TYPE_SCRIPT的高层级类型，TEXT为SOURCE_CODE和TYPE_SCRIPT的高层级类型。
 
-**使用场景**：
+使用场景：
 - 数据类型兼容性判断
 - 查找所有子类型数据
 - 类型层级遍历和筛选
@@ -398,7 +392,7 @@ equals(typeDescriptor: TypeDescriptor): boolean
 
 判断指定的标准化数据类型描述类对象的类型ID和当前标准化数据类型描述类对象的类型ID是否相同，即[TypeDescriptor](#typedescriptor11)对象的typeId。
 
-**使用场景**：
+使用场景：
 - 比较两个数据类型是否相同
 - 数据类型去重
 - 类型匹配验证
@@ -415,7 +409,7 @@ equals(typeDescriptor: TypeDescriptor): boolean
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 返回true表示所比较的标准化数据类型描述类对象相同；返回false则表示不同。 |
+| boolean | 返回true表示所比较的两个TypeDescriptor相同；返回false则表示不同。 |
 
 **错误码：**
 
@@ -450,8 +444,8 @@ getTypeDescriptor(typeId: string): TypeDescriptor
 
 按给定的标准化数据类型ID查询并返回对应的标准化数据类型描述类对象。
 
-**使用场景**：
-- 获取数据类型的详细信息(如描述、图标等)
+使用场景：
+- 获取数据类型的详细信息（如描述、图标等）
 - 查询数据类型的归属关系
 - 构建数据类型选择器
 
@@ -510,7 +504,7 @@ getUniformDataTypeByFilenameExtension(filenameExtension: string, belongsTo?: str
 
 根据给定的文件后缀名和所归属的标准化数据类型查询标准化数据类型ID，若有多个符合条件的标准化数据类型ID，则返回第一个。
 
-**使用场景**：
+使用场景：
 - 文件导入时识别文件类型
 - 文件预览时选择合适的预览方式
 - 文件上传时确定数据类型
@@ -572,7 +566,7 @@ getUniformDataTypeByMIMEType(mimeType: string, belongsTo?: string): string
 
 根据给定的MIME类型和所归属的标准化数据类型查询标准化数据类型ID，若有多个符合条件的标准化数据类型ID，则返回第一个。
 
-**使用场景**：
+使用场景：
 - 处理剪贴板数据时识别数据类型
 - 解析网络请求的Content-Type
 - 数据拖拽传输时确定数据类型
@@ -628,20 +622,13 @@ try {
 }
 ```
 
-## getUniformDataTypeByFilenameExtension vs getUniformDataTypesByFilenameExtension
-
-- **getUniformDataTypeByFilenameExtension**（API 11+）：返回单个类型ID，若匹配多个则返回第一个。适用于只需获取一个类型ID的场景。
-- **getUniformDataTypesByFilenameExtension**（API 13+）：返回所有匹配的类型ID列表。适用于需要获取全部匹配类型的场景。
-
-建议：根据实际需求选择，如需完整匹配列表请使用API 13+的复数版本。
-
 ## uniformTypeDescriptor.getUniformDataTypesByFilenameExtension<sup>13+</sup>
 
 getUniformDataTypesByFilenameExtension(filenameExtension: string, belongsTo?: string): Array\<string>
 
-根据给定的文件后缀名和所归属的标准化数据类型查询标准化数据类型ID列表。
+根据给定的文件后缀名和所归属的标准化数据类型查询标准化数据类型ID列表。返回单个类型ID，若匹配多个则返回第一个。适用于只需获取一个类型ID的场景。
 
-**使用场景**：
+使用场景：
 - 展示某个文件后缀对应的所有可能数据类型
 - 文件类型选择器中提供多种类型选项
 - 分析文件格式与数据类型的对应关系
@@ -697,24 +684,16 @@ try {
 }
 ```
 
-## getUniformDataTypeByMIMEType vs getUniformDataTypesByMIMEType
-
-- **getUniformDataTypeByMIMEType**（API 11+）：返回单个类型ID，若匹配多个则返回第一个。适用于只需获取一个类型ID的场景。
-- **getUniformDataTypesByMIMEType**（API 13+）：返回所有匹配的类型ID列表。适用于需要获取全部匹配类型的场景。
-
-建议：根据实际需求选择，如需完整匹配列表请使用API 13+的复数版本。
-
 ## uniformTypeDescriptor.getUniformDataTypesByMIMEType<sup>13+</sup>
 
 getUniformDataTypesByMIMEType(mimeType: string, belongsTo?: string): Array\<string>
 
 根据给定的MIME类型和所归属的标准化数据类型查询标准化数据类型ID列表。
 
-**使用场景**：
+使用场景：
 - 获取某个MIME类型对应的所有可能数据类型
 - 数据类型分析和映射关系展示
 - 多类型匹配和选择
-
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 

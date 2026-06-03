@@ -18,7 +18,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [UDMF（Unified Data Management Framework，统一数据管理框架）](capi-udmf.md)
+**相关模块：** [UDMF](capi-udmf.md)
 
 ## 汇总
 
