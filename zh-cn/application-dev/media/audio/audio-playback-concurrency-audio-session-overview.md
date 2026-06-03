@@ -33,7 +33,7 @@
 
 后台音乐播放器正在播放，前台应用（如短视频）开始播放音频。
 
-解决方案：后台应用请求音频焦点（通过会话机制或焦点机制），后台播放器收到中断回调，根据 [`InterruptHint`](../reference/arkts-apis-audio-e.md#interrupthint) 判断执行`INTERRUPT_HINT_PAUSE`或`INTERRUPT_HINT_DUCK`。当前台应用释放焦点后，后台播放器收到`INTERRUPT_HINT_RESUME`，继续播放。
+解决方案：后台应用请求音频焦点（通过会话机制或焦点机制），后台播放器收到中断回调，根据 [`InterruptHint`](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interrupthint) 判断执行`INTERRUPT_HINT_PAUSE`或`INTERRUPT_HINT_DUCK`。当前台应用释放焦点后，后台播放器收到`INTERRUPT_HINT_RESUME`，继续播放。
 
 焦点特点：后台应用被动接收中断事件，根据`InterruptHint`响应（暂停/停止/压低音量），应用无法主动声明策略，适用于传统应用或简单播放场景。
 
@@ -58,11 +58,11 @@
 |  | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
 | 默认场景 | 播放媒体类音频（音乐） | 播放媒体类音频（短视频） | 默认焦点策略是停止，B播放后A被打断，不恢复 | 需要应用A继续播放，参考如下方案 |
-| 方案一 | 使用音频渲染接口[setIndependentAudioSessionStrategy](../reference/arkts-apis-audio-audiorenderer#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成播放后A恢复 | 复播后会跳过之前静音的内容，对进度条敏感的场景，不建议使用 |
+| 方案一 | 使用音频渲染接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成播放后A恢复 | 复播后会跳过之前静音的内容，对进度条敏感的场景，不建议使用 |
 | 方案二 | 无需适配 | 使用音频会话，在启动时使用CONCURRENCY_PAUSE_OTHERS，打断时使用PAUSE策略。当应用B释放焦点时，会给A发送RESUME事件 | B播放完成后，会发送RESUME，A继续播放 | |
 | 方案三 | 应用A提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 无需适配 | 应用A提供设置开关，用户手动开启生效，B播放后与A同时播放 | 参考华为音乐 |
 | 方案四 | 无需适配 | 应用B提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 应用B提供设置开关，用户手动开启生效，B播放后与A同时播放 | 参考华为音乐 |
-| 方案五 | 使用音频会话接口[setAudioSessionBehavior](../reference/arkts-apis-audio-audiosessionmanager#setaudiosessionbehavior24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | A静音播放，效果同方案一 |  |
+| 方案五 | 使用音频会话接口[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | A静音播放，效果同方案一 |  |
 
 #### 场景2：录音被通话应用打断后，无法恢复
 
@@ -70,8 +70,8 @@
 |  | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
 | 默认场景 | 启动音频录制 | 蜂窝通话、视频通话 | 通话和VoIP通话出于安全考虑，禁止录音 |  |
-| 方案一 | 使用[setWillMuteWhenInterrupted](../reference/arkts-apis-audio-audiocapturer#setwillmutewheninterrupted20)接口，设置录制静音打断 | 无需配置 | 应用B音频播放或录制时，应用A可以持续录制，录制为静音流 | |
-| 方案二 | 使用音频录制接口[setIndependentAudioSessionStrategy](../reference/arkts-apis-audio-audiocapturer#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制静音数据，应用B动作完成后恢复有声数据 | 与方案一效果相当，推荐方案二 |
+| 方案一 | 使用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口，设置录制静音打断 | 无需配置 | 应用B音频播放或录制时，应用A可以持续录制，录制为静音流 | |
+| 方案二 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制静音数据，应用B动作完成后恢复有声数据 | 与方案一效果相当，推荐方案二 |
 
 ### 场景3：通话过程中开启录制失败
 
@@ -79,8 +79,8 @@
 |  | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
 | 默认场景 | 启动通话 | 开启录制 | 录制失败 | |
-| 方案一 | 无需配置 | 使用[setWillMuteWhenInterrupted](../reference/arkts-apis-audio-audiocapturer#setwillmutewheninterrupted20)接口 | 录制可以启动，录制数据为静音流 | |
-| 方案二 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../reference/arkts-apis-audio-audiocapturer#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 录制可以启动，录制数据为静音流 | 与方案一效果相当，推荐方案二 |
+| 方案一 | 无需配置 | 使用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口 | 录制可以启动，录制数据为静音流 | |
+| 方案二 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 录制可以启动，录制数据为静音流 | 与方案一效果相当，推荐方案二 |
 
 ## 同应用内不同音频流之间的焦点管理
-应用内默认相同焦点模型，如果需要对不同流进行差异管理，需要应用通过设置[焦点模式](./audio-playback-concurrency#%E7%84%A6%E7%82%B9%E6%A8%A1%E5%BC%8F)为独立焦点模式，再为每条流设置不同的焦点策略。
+应用内默认相同焦点模型，如果需要对不同流进行差异管理，需要应用通过设置[焦点模式](./audio-playback-concurrency.md#焦点模式)为独立焦点模式，再为每条流设置不同的焦点策略。
