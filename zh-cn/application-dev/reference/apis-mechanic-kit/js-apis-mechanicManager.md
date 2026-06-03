@@ -300,23 +300,25 @@ console.info(`'Succeeded in querying layout, current layout:' ${layout}`);
 
 isControlSupported(mechDeviceType?: MechDeviceType): boolean
 
-应用判断当前设备是否支持对特定设备类型的机械体设备控制，以便作出相应的功能选择，例如决定使用APP内部的跟踪控制功能还是系统的默认控制功能，或者给予用户相应的提示。三方厂商APP可以根据此接口判断当前设备是否支持对特定类型的设备的机械控制和智能跟踪功能，以决定是否使用自身APP的跟踪控制功能，还是直接使用系统提供的跟踪功能，或者给予用户相应的提示。
-
-**起始版本：** 26.0.0
+判断当前设备是否支持某类设备的具身控制。应用判断当前设备是否支持对特定设备类型的机械体设备控制，以便作出相应的功能选择。如：需要使用APP内部的跟踪控制功能、使用系统的默认控制功能或者给予用户其他相应的提示。
 
 **系统能力**：SystemCapability.Mechanic.Core
-
+ 
+**ArkTS-Dyn起始版本**: 26.0.0 
+ 
+**ArkTS-Sta起始版本**: 26.0.0
+ 
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechDeviceType | [MechDeviceType](#mechdevicetype)  | 否 | 机械体设备的类型。|
+| mechDeviceType | [MechDeviceType](#mechdevicetype) | 否 | 机械体设备的类型。|
 
 **返回值：**
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| boolean | 当前设备是否支持某类设备的机械体设备控制。true表示支持，false表示不支持。|
+| boolean | 当前设备是否支持某类设备的具身控制。true表示支持，false表示不支持。|
 
 **示例：**
 
