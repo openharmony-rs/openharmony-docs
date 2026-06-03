@@ -1779,7 +1779,7 @@ connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
 
 removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
-删除当前应用程序中对应host的自定义DNS规则（host和对应的IP地址的映射关系）。使用callback异步回调。
+删除当前应用程序中对应host的自定义DNS规则。使用callback异步回调。
 
 > **说明：**
 >
