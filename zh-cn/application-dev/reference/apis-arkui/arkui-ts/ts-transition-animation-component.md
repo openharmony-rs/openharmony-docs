@@ -51,7 +51,7 @@ transition(value: TransitionOptions | TransitionEffect): T
 
 ## transition<sup>23+</sup>
 
-transition(value: TransitionEffect | undefined): this
+transition(value: TransitionEffect | undefined)
 
 设置组件插入时显示和删除时隐藏的过渡效果。
 
@@ -69,12 +69,6 @@ transition(value: TransitionEffect | undefined): this
 | -------- | -------- |  ---- | -------- |
 | value | [TransitionEffect](#transitioneffect10对象说明) \| undefined  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述[TransitionEffect](#transitioneffect10对象说明)对象说明。<br/>当value的值为undefined时，无过渡效果。 |
 
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| this | 返回当前组件。 |
-
 
 ## transition<sup>12+</sup>
 
@@ -86,13 +80,13 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -120,7 +114,7 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 ## transition<sup>23+</sup>
 
-transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;TransitionFinishCallback&gt; | undefined): this
+transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;TransitionFinishCallback&gt; | undefined)
 
 设置组件插入时显示和删除时隐藏的过渡效果。
 
@@ -140,11 +134,6 @@ transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;Transitio
 | -------- | -------- |  ---- | -------- |
 | value | [TransitionEffect](#transitioneffect10对象说明) \| undefined  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述[TransitionEffect](#transitioneffect10对象说明)对象说明。<br/>当value的值为undefined时，无过渡效果。 |
 
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| this | 返回当前组件。 |
 
 >  **说明：**
 >  当前有两种方式触发组件的transition：
@@ -176,28 +165,28 @@ transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;Transitio
 
 ## TransitionEffect<sup>10+</sup>对象说明
 
-TransitionEffect以函数的形式指定转场效果。提供了以下接口：
+TransitionEffect以函数的形式指定转场效果。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+### 属性
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
-### 属性
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | ---------- | -------- | -------- | -------- |
-| IDENTITY | ArkTS-Dyn: [TransitionEffect](#transitioneffect10对象说明)\<"identity"><br/>ArkTS-Sta: [TransitionEffect](#transitioneffect10对象说明) | 是 | 否| 禁用转场效果。 |
-| OPACITY | ArkTS-Dyn: [TransitionEffect](#transitioneffect10对象说明)\<"opacity"><br/>ArkTS-Sta: [TransitionEffect](#transitioneffect10对象说明) | 是 | 否| 为组件添加透明度转场效果，出现时透明度从0到1、消失时透明度从1到0，相当于TransitionEffect.opacity(0)。 |
-| SLIDE | ArkTS-Dyn: [TransitionEffect](#transitioneffect10对象说明)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; }><br/>ArkTS-Sta: [TransitionEffect](#transitioneffect10对象说明) | 是 | 否 | 相当于TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))。从START边滑入，END边滑出。即在LTR模式下，从左侧滑入，右侧滑出；在RTL模式下，从右侧滑入，左侧滑出。 |
-| SLIDE_SWITCH | ArkTS-Dyn: [TransitionEffect](#transitioneffect10对象说明)\<"slideSwitch"><br/>ArkTS-Sta: [TransitionEffect](#transitioneffect10对象说明) | 是 | 否 | 指定出现时从右侧先缩小再放大滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。|
+| IDENTITY | [TransitionEffect](#transitioneffect10对象说明)\<"identity"> | 是 | 否| 禁用转场效果。 |
+| OPACITY | [TransitionEffect](#transitioneffect10对象说明)\<"opacity"> | 是 | 否| 为组件添加透明度转场效果，出现时透明度从0到1、消失时透明度从1到0，相当于TransitionEffect.opacity(0)。 |
+| SLIDE | [TransitionEffect](#transitioneffect10对象说明)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; }> | 是 | 否 | 相当于TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))。从START边滑入，END边滑出。即在LTR模式下，从左侧滑入，右侧滑出；在RTL模式下，从右侧滑入，左侧滑出。 |
+| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10对象说明)\<"slideSwitch"> | 是 | 否 | 指定出现时从右侧先缩小再放大滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。|
 
 >  **说明：**
 >
@@ -208,6 +197,86 @@ TransitionEffect以函数的形式指定转场效果。提供了以下接口：
 >  5. 更详细的关于scale、rotate效果的介绍可参考[图形变换](ts-universal-attributes-transformation.md)。
 >  6. 如果在动画范围([animateTo](../arkts-apis-uicontext-uicontext.md#animateto)、[animation](ts-animatorproperty.md))内触发组件的上下树或可见性([visibility](ts-universal-attributes-visibility.md#visibility))改变，而根组件没有配置transition，会给该组件加上默认透明度转场，即TransitionEffect.OPACITY，动画参数跟随所处动画环境的参数。如不需要可通过主动配置TransitionEffect.IDENTITY来禁用，使该组件直接出现或消失。
 >  7. 当通过删除整棵子树的方式触发消失转场，如需看到完整的消失转场过程，需要保证被删除子树的根组件的有充足的消失转场时间，见示例3。
+
+### IDENTITY<sup>23+</sup>
+
+static get IDENTITY(): TransitionEffect
+
+禁用转场效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [TransitionEffect](#transitioneffect10对象说明) | 返回转场效果。 |
+
+### OPACITY<sup>23+</sup>
+
+static get OPACITY(): TransitionEffect
+
+为组件添加透明度转场效果，出现时透明度从0到1、消失时透明度从1到0，相当于TransitionEffect.opacity(0)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [TransitionEffect](#transitioneffect10对象说明) | 返回转场效果。 |
+
+### SLIDE<sup>23+</sup>
+
+static get SLIDE(): TransitionEffect
+
+相当于TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))。从START边滑入，END边滑出。即在LTR模式下，从左侧滑入，右侧滑出；在RTL模式下，从右侧滑入，左侧滑出。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [TransitionEffect](#transitioneffect10对象说明) | 返回转场效果。 |
+
+### SLIDE_SWITCH<sup>23+</sup>
+
+static get SLIDE_SWITCH(): TransitionEffect
+
+指定出现时从右侧先缩小再放大滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [TransitionEffect](#transitioneffect10对象说明) | 返回转场效果。 |
 
 ### translate<sup>10+</sup>
 

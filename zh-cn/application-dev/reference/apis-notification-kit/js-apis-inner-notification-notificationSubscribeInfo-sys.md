@@ -34,6 +34,8 @@
 | filterLimit<sup>18+</sup>   | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 是 | 通知过滤范围。默认值为0。取值范围包括：<br>- 0：不进行任何过滤，订阅全部通知。 <br>- 1：将渠道类型为[SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype)且[userInput](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)为空的通知过滤掉。<br>- 2：将渠道类型为[SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype)且[userInput](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)不为空的通知过滤掉。<br/> **ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23|
 | voiceContentOptions  | [VoiceContentOptions](#voicecontentoptions)| 否 | 是 | 通知语音播报选项。<br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
 | pictureOptions  | [PictureOptions](#pictureoptions)| 否 | 是 | 实况通知图片配置项。<br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
+| enableClassification   | boolean | 否 | 是 | 是否启用通知分类。<br/> - true：表示启用。<br/> - false：表示禁用。默认值为false。<br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
+| needSilentReplayOnSubscribe   | boolean | 否 | 是 | 是否启用订阅时的静默重放。<br/> - true：表示启用。<br/> - false：表示禁用。默认值为false。<br/> 启用后，首次订阅时会以静默方式重新推送历史通知，不会出现响铃和振动提醒。<br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## VoiceContentOptions
 

@@ -2042,6 +2042,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值 | 说明           |
 | ------ | ------ | ------------ |
 | Top    | 0 | 顶部对齐。        |

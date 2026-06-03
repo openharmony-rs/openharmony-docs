@@ -914,6 +914,28 @@ attributeModifier(modifier: AttributeModifier\<NavigationAttribute> | AttributeM
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
 | modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<NavigationAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>取值为undefined时，按当前组件的属性方法默认值处理。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>NavigationAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
+### configuration
+
+configuration(config: NavigationConfiguration)
+
+设置Navigation配置项，包括路由栈大小限制。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| config | [NavigationConfiguration](#navigationconfiguration) | 是 | Navigation配置项。 |
+
 ### subTitle<sup>(deprecated)</sup>
 
 subTitle(value: string)
@@ -2778,6 +2800,24 @@ Navigation分割线颜色及上下边距。
 | ------ | ------------- | ---- | ---- | --------------- |
 | launchMode | [LaunchMode](#launchmode12枚举说明)  | 否    | 是    | 路由栈的操作模式。<br/>默认值：LaunchMode.STANDARD |
 | animated   | boolean  | 否    | 是    | 是否支持转场动画。<br/>true：支持转场动画；false：不支持转场动画。<br/>默认值：true|
+
+## NavigationConfiguration
+
+Navigation配置项。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| stackSizeLimit | number | 否 | 是 | Navigation路由栈的活跃页面节点数量限制。<br/>默认值：0，表示不限制路由栈大小。<br/>取值小于等于0时，不限制路由栈大小。<br/>取值大于0时，将活跃页面节点数量限制为指定值；超过限制后，系统会按照先入先出顺序自动销毁较早入栈的页面节点，页面的NavPathInfo完整保留在路由栈中，支持后续重新创建页面。 |
 
 ## MoreButtonOptions<sup>19+</sup>
 

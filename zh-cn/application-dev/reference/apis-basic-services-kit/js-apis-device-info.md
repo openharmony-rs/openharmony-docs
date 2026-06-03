@@ -10,6 +10,7 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 部分参数返回值为default的，会在正式发布的版本中配置。
 > 本模块接口返回设备常量信息，建议应用只调用一次，不需要频繁调用。
@@ -336,7 +337,7 @@ apiAvailable(version: string | number): boolean;
 
 **起始版本**：26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）**：从API版本26开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口Stage模型和FA模型下皆可使用。
 
@@ -355,13 +356,13 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 // Check API 26.0.0 (String format for API 26+ represents both OpenHarmony and Distribution OS)
 if (deviceInfo.apiAvailable("26.0.0")) {
-   ...
+   // 需要版本隔离的方法
 }
 
 
 // Check API 5.0.1 (Distribution OS version, API 26-)
 if (deviceInfo.apiAvailable("5.0.1")) {
-   ...
+   // 需要版本隔离的方法
 }
 
 
@@ -369,7 +370,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 // Check API 13 (OpenHarmony SDK version, API 26-)
 if (deviceInfo.apiAvailable(13)) {
-   ...
+   // 需要版本隔离的方法
 }
 
 ```

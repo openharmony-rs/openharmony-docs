@@ -26,7 +26,7 @@ restoreDefault(): void
 
 恢复默认的光标样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,7 +75,7 @@ setCursor(value: PointerStyle): void
 >
 > 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,9 +129,10 @@ ArkTS-Sta: setCustomCursor(value: image.PixelMap, focusX?: int, focusY?: int): v
 
 > **说明：**
 >
-> 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
+> - 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
+> - 仅支持设置静态图片，不支持设置动态图片。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,9 +146,9 @@ ArkTS-Sta: setCustomCursor(value: image.PixelMap, focusX?: int, focusY?: int): v
 
 | 参数名    | 类型                              | 必填   | 说明                                     |
 | ------- | ------------------------------- | ---- | -------------------------------------- |
-| value   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义鼠标光标样式的像素图。最大尺寸为256*256px，超过该尺寸时设置自定义鼠标光标样式不生效。                             |
-| focusX  | ArkTS-Dyn: number</br>ArkTS-Sta: int  | 否    | 自定义光标的焦点X坐标。焦点指的是鼠标实际点击的位置，焦点设置为(0, 0)时表示图片左上角为实际点击位置。<br/>默认值：0<br/>单位：px<br/>取值范围：[0, +∞)              |
-| focusY  | ArkTS-Dyn: number</br>ArkTS-Sta: int  | 否    | 自定义光标的焦点Y坐标。<br/>默认值：0<br/>单位：px<br/>取值范围：[0, +∞)                                         |
+| value   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义鼠标光标样式的像素图。最大尺寸为256*256px，超过该尺寸时，本次设置不会生效，鼠标光标保持当前样式不变。                          |
+| focusX  | ArkTS-Dyn: number</br>ArkTS-Sta: int  | 否    | 自定义光标焦点的X坐标。以光标图片左上角为原点，向右为正方向。该焦点将在显示时与系统鼠标指针的屏幕坐标对齐，鼠标的点击、拖拽等操作均以此点为准。<br/>默认值：0<br/>单位：px<br/>取值范围：[0, 图片宽度]，超出取值范围时按默认值处理。              |
+| focusY  | ArkTS-Dyn: number</br>ArkTS-Sta: int  | 否    | 自定义光标焦点的Y坐标。以光标图片左上角为原点，向下为正方向。结合focusX共同确定图像内代表实际交互位置的点。<br/>默认值：0<br/>单位：px<br/>取值范围：[0, 图片高度]，超出取值范围时按默认值处理。                                           |
 
 **示例：**
 

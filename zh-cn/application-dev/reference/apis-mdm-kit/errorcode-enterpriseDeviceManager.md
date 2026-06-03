@@ -1145,3 +1145,39 @@ Prerequisites for the API call have not been satisfied. For example, distributed
 **处理步骤**
 
 先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
+
+## 9201044 指定权限未被禁用
+
+**错误信息**
+
+This permission is not disallowed. Applications cannot be added to or removed from the trustlist.
+
+**错误描述**
+
+指定权限未被禁用时，给该权限添加权限使用例外名单，会产生此错误码。
+
+**可能原因**
+
+在添加允许使用已禁用指定权限的应用到权限使用例外名单之前，指定权限未被禁止。
+
+**处理步骤**
+
+先通过[setDisallowedPermission](./js-apis-enterprise-securityManager.md#securitymanagersetdisallowedpermission)接口禁用指定权限，再给指定权限添加权限使用例外名单。
+
+## 9201045 指定权限不可被禁用
+
+**错误信息**
+
+This permission cannot be disallowed.
+
+**错误描述**
+
+需要禁用指定权限时，会产生此错误码。
+
+**可能原因**
+
+需要禁用的权限的APL等级不是normal或system_basic。
+
+**处理步骤**
+
+检查需要禁用的权限的APL等级是否为normal或system_basic。

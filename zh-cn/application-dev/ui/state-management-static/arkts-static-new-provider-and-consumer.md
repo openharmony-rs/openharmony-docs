@@ -242,9 +242,9 @@ struct Child {
 2. 点击Parent中的Button，改变\@Provider装饰的str，通知其对应的\@Consumer，刷新对应UI组件。
 3. 点击Child中Button，改变\@Consumer装饰的str，通知其对应的\@Provider，刷新对应UI组件。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerSync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerSync.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Provider } from '@kit.ArkUI';
 
 @Entry
@@ -288,9 +288,9 @@ struct Child {
 2. 点击Parent中的Button，改变\@Provider装饰的str1，仅刷新\@Provider关联的Button组件。
 3. 点击Child中Button，改变\@Consumer装饰的str，仅刷新\@Consumer关联的Button组件。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerNoSync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerNoSync.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Provider } from '@kit.ArkUI';
 
 @Entry
@@ -329,9 +329,9 @@ struct Child {
 
 当装饰interface字面量类型时，仅可以观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerInterface.ets) --> 
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Provider, Text } from '@kit.ArkUI';
 
 interface Info {
@@ -347,16 +347,23 @@ struct Parent {
   build() {
     Column() {
       Text(`parent name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('parent change whole interface')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info = { name: 'Tom' } as Info; // 变化可观察
         })
       Button('parent change interface name')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info.name += '~'; // 变化无法观察
         })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -368,26 +375,35 @@ struct Child {
   build() {
     Column() {
       Text(`child name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('child change whole interface')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info = { name: 'Jerry' } as Info; // 变化可观察
         })
       Button('child change interface name')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info.name += '*'; // 变化无法观察
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_2](../figures/Provider_Consumer_2.gif)
 
 ### 装饰数组类型变量
 
 当装饰数组时，可以观察到数组整体和数组项的变化，同时可以通过调用Array的接口`push`、`pop`、`shift`、`unshift`、`splice`、`copyWithin`、`fill`、`reverse`、`sort`更新Array的数据。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerArray.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, ForEach, Provider, Text } from '@kit.ArkUI';
 
 @ComponentV2
@@ -438,9 +454,9 @@ struct Parent {
 
 当装饰Date类型变量时，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerDate.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Provider, Text } from '@kit.ArkUI';
 
 @Entry
@@ -492,9 +508,9 @@ struct Child {
 
 当装饰Map类型变量时，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`、`clear`、`delete`带来的变化。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerMap.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Consumer, Divider, Entry, ForEach, Provider, Text } from '@kit.ArkUI';
 
 @Entry
@@ -547,9 +563,9 @@ struct Child {
 
 当装饰Set类型变量时，可以观察到数据源对Set整体的赋值，以及调用Set的接口`add`、`clear`、`delete`带来的变化。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerSet.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Consumer, Divider, Entry, ForEach, Provider, Text } from '@kit.ArkUI';
 
 @Entry
@@ -598,9 +614,9 @@ struct Child {
 
 \@Provider和\@Consumer支持装饰箭头函数。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerArrowFunction](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerArrowFunction.ets) --> 
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Local, Provider, Text } from '@kit.ArkUI';
 
 @Entry
@@ -608,6 +624,7 @@ import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Local, Provid
 struct Parent {
   @Local childSub: number = 0;
   @Local childSum: number = 1;
+  // 父组件通过@Provider向下传递箭头函数。
   @Provider() onChange: (axisX: number, axisY: number) => void = (axisX: number, axisY: number): void => {
     this.childSub = axisX - axisY;
     this.childSum = axisX + axisY;
@@ -616,8 +633,11 @@ struct Parent {
   build() {
     Column() {
       Text(`childSub: ${this.childSub}, childSum: ${this.childSum}`)
+        .fontSize(20)
+        .margin(10)
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -630,22 +650,40 @@ struct Child {
 
   build() {
     Button('changed')
+      .width(300)
+      .margin(10)
       .onClick((e: ClickEvent) => {
+        // 子组件中调用该箭头函数，会修改父组件中childSub与childSum变量的值。
         this.onChange(this.axisX, this.axisY);
       })
   }
 }
 ```
 
+![ProviderConsumer_3](../figures/Provider_Consumer_3.gif)
+
 ### \@Provider和\@Consumer装饰复杂类型
 
 1. \@Provider和\@Consumer仅能观察到数据本身的变化。若需观察其装饰的复杂数据类型的属性变化，必须配合\@Trace一起使用。
 2. 装饰内置类型Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同\@Trace。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerComplexType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerComplexType.ets) --> 
 
-import { Button, ClickEvent, Column, ComponentV2, Consumer, Divider, Entry, ForEach, ObservedV2, Provider, Text, Trace } from '@kit.ArkUI';
+``` TypeScript
+import {
+  Button,
+  ClickEvent,
+  Column,
+  ComponentV2,
+  Consumer,
+  Divider,
+  Entry,
+  ForEach,
+  ObservedV2,
+  Provider,
+  Text,
+  Trace
+} from '@kit.ArkUI';
 
 @ObservedV2
 class User {
@@ -668,23 +706,32 @@ struct Parent {
   build() {
     Column() {
       Button('add new user')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users.push(new User('Molly', 18));
         })
       Button('age++')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users[0].age++;
         })
       Button('change name')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users[0].name = 'Shelly';
         })
       Button('reset users')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users = [new User('Json', 10), new User('Eric', 15)];
-        })       
+        })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -696,23 +743,31 @@ struct Child {
     Column() {
       ForEach(this.users, (item: User) => {
         Column() {
-          Text(`name: ${item.name}`).fontSize(30)
-          Text(`age: ${item.age}`).fontSize(30)
+          Text(`name: ${item.name}`)
+            .fontSize(20)
+            .margin(10)
+          Text(`age: ${item.age}`)
+            .fontSize(20)
+            .margin(10)
           Divider()
         }
+        .width('100%')
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_4](../figures/Provider_Consumer_4.gif)
 
 ### \@Provider重名时，\@Consumer向上查找其最近的\@Provider
 
 \@Provider可以在组件树上重名，当重名时\@Consumer会向上查找其最近父节点的\@Provider的数据。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerFindNearest](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerFindNearest.ets) -->
 
+``` TypeScript
 import { Column, ComponentV2, Consumer, Entry, Provider, Text } from '@kit.ArkUI';
 
 @Entry
@@ -762,9 +817,9 @@ struct Child {
 - 点击Text(\`Parent @Consumer val: ${this.val}\`)，触发`@Consumer() val`的变化，变化同步给Index中`@Provider() val`，从而触发子组件`Text(Parent @Param val2: ${this.val2})`的刷新。
 - `Parent @Consumer() val`的变化同步给Child，从而触发`Text(Child @Param val ${this.val})`的刷新。
 
-```ts
-'use static'
+<!-- @[ProviderConsumerInitParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerInitParam.ets) -->
 
+``` TypeScript
 import { ClickEvent, Color, Column, ComponentV2, Consumer, Entry, Param, Provider, Text } from '@kit.ArkUI';
 
 @Entry

@@ -75,7 +75,6 @@ ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是一种基于格�
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  import { buffer } from '@kit.ArkTS';
   
   namespace Kem {
     export function kemDecapsulateSync() {

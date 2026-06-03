@@ -169,3 +169,87 @@ onDidBuild函数在执行自定义组件的build()函数之后执行，开发者
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 23
+
+## ReuseObject
+
+[aboutToReuse](./ts-custom-component-new-lifecycle.md#abouttoreuse)接收的入参类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+### raw
+
+get raw(): RecordData
+
+获取ReuseObject的原始数据。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                                                         | 说明                         |
+| ------------------------------------------------------------ | ---------------------------- |
+| [RecordData](../../apis-arkdata/js-apis-data-preferences.md#recorddata23) | 返回ReuseObject的原始数据。 |
+
+### $_get
+
+native $_get(key: string): RecordData
+
+根据索引获取ReuseObject的数据。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                       | 必填    | 说明         |
+|--------|------------------------------------------|------------|-------------------------|
+| key | string | 是 | 待获取数据的索引。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                         |
+| ------------------------------------------------------------ | ---------------------------- |
+| [RecordData](../../apis-arkdata/js-apis-data-preferences.md#recorddata23) | 返回ReuseObject的原始数据。 |
+
+### has
+
+has(key: string): boolean
+
+返回当前索引是否在ReuseObject的数据范围内。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                       | 必填    | 说明         |
+|--------|------------------------------------------|------------|-------------------------|
+| key | string | 是 | 待获取数据的索引。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                         |
+| ------------------------------------------------------------ | ---------------------------- |
+| boolean | 返回当前索引是否在ReuseObject的数据范围内。true表示在数据范围内，false表示不在数据范围内。 |
+
+### keys
+
+keys(): string[]
+
+获取当前ReuseObject的所有数据索引。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                                                         | 说明                         |
+| ------------------------------------------------------------ | ---------------------------- |
+| string[] | 返回当前ReuseObject的所有数据索引。 |

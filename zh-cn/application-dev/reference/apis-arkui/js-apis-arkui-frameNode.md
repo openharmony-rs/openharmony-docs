@@ -14,8 +14,6 @@ FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeC
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 当前不支持在预览器中使用FrameNode节点。
 >
 > - FrameNode节点暂不支持拖拽。
@@ -3351,6 +3349,24 @@ struct ListNodeTest {
 }
 ```
 
+### isMinimized
+
+isMinimized(): boolean
+
+用于查询当前FrameNode是否为轻量化的FrameNode，轻量化的FrameNode占用的内存更小，但是不支持除了isMinimized以外的任何接口调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型               | 说明               |
+| ------------------ | ------------------ |
+| boolean | 返回当前FrameNode是否为轻量化的FrameNode，true表示当前FrameNode为轻量化的FrameNode，false表示当前FrameNode不是轻量化的FrameNode |
+
 ### adoptChild<sup>22+</sup>
 
 adoptChild(child: FrameNode): void
@@ -3358,8 +3374,6 @@ adoptChild(child: FrameNode): void
 当前节点接纳目标节点为附属节点。被接纳的附属节点不能已有父节点。调用该接口实际上不会将其添加为子节点，而是仅允许其接收对应子节点的生命周期回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3394,8 +3408,6 @@ removeAdoptedChild(child: FrameNode): void
 移除被接纳的目标附属节点。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

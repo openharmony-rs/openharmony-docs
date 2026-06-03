@@ -63,7 +63,7 @@ background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions):
 
 ## background<sup>24+</sup>
 
-background(content: CustomBuilder | ResourceColor | undefined, options?: BackgroundOptions): this
+background(content: CustomBuilder | ResourceColor | undefined, options?: BackgroundOptions)
 
 设置组件背景。
 
@@ -192,9 +192,9 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, repeat?: ImageRepeat): T
 
 设置组件的背景图片。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,9 +227,9 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -257,7 +257,7 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 
 ## backgroundImage<sup>23+</sup>
 
-backgroundImage(src: ResourceStr | PixelMap | undefined, options: BackgroundImageOptions): this
+backgroundImage(src: ResourceStr | PixelMap | undefined, options: BackgroundImageOptions)
 
 设置组件的背景图片。
 
@@ -430,9 +430,9 @@ backgroundBlurStyle(value: BlurStyle, options?: BackgroundBlurStyleOptions): T
 
 为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -532,7 +532,7 @@ backgroundBlurStyle(style: Optional\<BlurStyle>, options?: BackgroundBlurStyleOp
 
 ## backgroundBlurStyle<sup>23+</sup>
 
-backgroundBlurStyle(style: BlurStyle | undefined, options?: BackgroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): this
+backgroundBlurStyle(style: BlurStyle | undefined, options?: BackgroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions)
 
 为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。
 
@@ -554,12 +554,6 @@ backgroundBlurStyle(style: BlurStyle | undefined, options?: BackgroundBlurStyleO
 | options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10对象说明) | 否   | 背景模糊选项。<br/>该参数在ArkTS卡片中，暂不支持使用。                                            |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 >  **说明：**
 >
 >  当通过backgroundBlurStyle中的inactiveColor指定背景色时，不建议再通过[backgroundColor](#backgroundcolor)设置背景色。
@@ -570,9 +564,9 @@ backdropBlur(value: number, options?: BlurOptions): T
 
 为组件添加背景模糊效果，支持自定义设置模糊半径和灰阶参数。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -672,7 +666,7 @@ backdropBlur(radius: Optional\<number>, options?: BlurOptions, sysOptions?: Syst
 
 ## backdropBlur<sup>23+</sup>
 
-backdropBlur(radius: double | undefined, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): this
+backdropBlur(radius: double | undefined, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions)
 
 为组件添加背景模糊效果，支持自定义设置模糊半径和灰阶参数。
 
@@ -694,17 +688,11 @@ backdropBlur(radius: double | undefined, options?: BlurOptions, sysOptions?: Sys
 | options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0] |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 >  **说明：**
 >
 >  backgroundBlurStyle、blur和backdropBlur为实时接口，每帧执行实时渲染，性能负载较大。当模糊内容与模糊半径均无需变动时，推荐采用静态模糊接口[blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。最佳实践请参考[图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
 
-## backgroundEffect<sup>11+</sup> 
+## backgroundEffect<sup>11+</sup>
 
 backgroundEffect(options: BackgroundEffectOptions): T
 
@@ -801,7 +789,7 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 
 ## backgroundEffect<sup>23+</sup> 
 
-backgroundEffect(options: BackgroundEffectOptions | undefined, sysOptions?: SystemAdaptiveOptions): this
+backgroundEffect(options: BackgroundEffectOptions | undefined, sysOptions?: SystemAdaptiveOptions)
 
 设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。
 
@@ -825,12 +813,6 @@ backgroundEffect(options: BackgroundEffectOptions | undefined, sysOptions?: Syst
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options | [BackgroundEffectOptions](#backgroundeffectoptions11) \| undefined | 是   | 设置组件背景属性包括：饱和度，亮度，颜色。<br/>当options的值为undefined时，恢复为无效果的背景。 |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## BackgroundEffectOptions<sup>11+</sup>
 
@@ -888,7 +870,7 @@ backgroundImageResizable(value: ResizableOptions): T
 
 ## backgroundImageResizable<sup>23+</sup>
 
-backgroundImageResizable(value: ResizableOptions | undefined): this
+backgroundImageResizable(value: ResizableOptions | undefined)
 
 设置背景图在拉伸时可调整大小的图像选项。
 
@@ -912,12 +894,6 @@ backgroundImageResizable(value: ResizableOptions | undefined): this
 | ------ | --------------------------------------- | ---- | -------------------------------- |
 | value  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) \|&nbsp;undefined | 是   | 图像拉伸时可调整大小的图像选项。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## BackgroundBlurStyleOptions<sup>10+</sup>对象说明
 
 继承自[BlurStyleOptions](ts-universal-attributes-foreground-blur-style.md#blurstyleoptions)。
@@ -939,6 +915,8 @@ backgroundImageResizable(value: ResizableOptions | undefined): this
 定义背景模糊激活策略。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -1012,7 +990,7 @@ backgroundBrightness(options: Optional\<BackgroundBrightnessOptions>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## backgroundBrightness<sup>23+</sup> 
+## backgroundBrightness<sup>23+</sup>
 
 backgroundBrightness(params: BackgroundBrightnessOptions | undefined)
 

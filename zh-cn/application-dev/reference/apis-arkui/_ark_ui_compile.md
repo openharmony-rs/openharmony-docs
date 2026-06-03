@@ -1445,7 +1445,7 @@ reuseId属性不能用于@ReusableV2装饰的@ComponentV2自定义组件。
 The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
 
 **错误描述**<br>
-从API version 23开始，V1装饰器不能用于Function类型或者() => void类型的变量，会导致运行时出现错误。
+ArkUI状态管理V1装饰器不能用于Function类型或者() => void类型的变量，会导致运行时出现错误；从API version 23开始，该问题提前至编译期拦截，避免潜在运行时异常。ArkUI状态管理V1装饰器包括：[\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management//arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management//arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md)。
 
 **可能原因**<br>
 开发者在Function类型或者() => void类型的变量上使用了V1装饰器。

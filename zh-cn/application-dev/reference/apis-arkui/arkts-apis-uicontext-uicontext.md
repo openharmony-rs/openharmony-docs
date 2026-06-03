@@ -78,7 +78,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **示例：**
 
@@ -4327,6 +4327,65 @@ export default class EntryAbility extends UIAbility {
   }
 
   // ......
+}
+```
+
+## setUIStates<sup>23+</sup>
+
+setUIStates(callback: VoidCallback): void
+
+提供在非UI线程中安全更新状态变量的能力。在UI线程调用该接口会同步执行回调函数更新状态变量，在非UI线程中调用时，会将回调函数分发到UI线程队列异步执行。使用callback异步回调。
+
+在debug模式下，若检测到未通过setUIStates在非UI线程更新状态变量，系统将输出错误日志（需要使用try-catch捕获异常）。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 是 | 用于更新状态变量的回调函数。 |
+
+**示例：**
+
+```ts
+import { taskpool } from '@kit.ArkTS';
+import { Entry, Component, Column, Text, Button, UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State stateVar: string = 'state var';
+  message: string = 'var';
+
+  build() {
+    Column() {
+      Text('Hello World').fontSize(20)
+      Button(this.message)
+        .backgroundColor('#FFFF00FF')
+        .onClick(() => {
+          let uiContext: UIContext = this.getUIContext();
+          taskpool.execute(() => {
+            uiContext.setUIStates(() => {
+              this.stateVar += '~';
+            });
+          });
+
+          // 在非UI线程未使用setUIStates更新状态变量，debug模式下会输出错误日志。
+          taskpool.execute(() => {
+            this.stateVar += '~';
+          }).then(() => {
+          }).catch((err: Error) => {
+            console.error('Illegal update detected: ' + err.message);
+          });
+        })
+      Text(this.stateVar).fontSize(20)
+    }
+  }
 }
 ```
 

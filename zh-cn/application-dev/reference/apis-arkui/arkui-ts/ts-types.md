@@ -323,23 +323,6 @@
 | dx   | [Length](#length) | 否  |  否    | 水平方向偏移量。 |
 | dy   | [Length](#length) | 否  |  否    | 竖直方向偏移量。 |
 
-## RectResult<sup>10+</sup>
-
-位置和尺寸类型，用于描述组件的位置和宽高。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称      | 类型   | 只读 | 可选  | 说明 |
-| ------- | ------ | ----- | -------- | ---------- |
-| x     | number | 否 | 否 | 水平方向横坐标。|
-| y     | number |  否 | 否 | 竖直方向纵坐标。|
-| width | number | 否 | 否 | 内容宽度大小。|
-| height | number | 否 | 否 | 内容高度大小。|
-
 ## ResourceColor
 
 type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Resource](#resource)
