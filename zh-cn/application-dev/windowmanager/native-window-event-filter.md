@@ -17,11 +17,13 @@
 使用WindowManager模块提供的能力去拦截按键事件，让按键事件不往应用内部组件分发。
 
 ### 在CMake脚本中链接动态库
-```
+
+```txt
 target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 ```
 
 ### 添加头文件
+
 ```c++
 #include "multimodalinput/oh_input_manager.h"
 #include "multimodalinput/oh_key_code.h"
@@ -116,7 +118,7 @@ EXTERN_C_END
 
 ### 在CMake脚本中链接动态库
 
-```
+```txt
 target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 ```
 
