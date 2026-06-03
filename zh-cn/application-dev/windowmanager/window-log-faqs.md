@@ -492,13 +492,11 @@ Stack trace:
 
 **分析定位及解决**
 
-根据日志堆栈定位off('avoidAreaChange')调用位置，检查是否在销毁流程中（onWindowStageDestroy或aboutToDisappear等）。
-
-常见场景：销毁流程中错误调用off('avoidAreaChange')导致崩溃。
+根据日志堆栈定位off('avoidAreaChange')调用位置，检查是否在销毁流程中（[onWindowStageDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)或[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)等）。
 
 解决要点：
 
-- off('avoidAreaChange')调用位置不在onWindowStageDestroy、aboutToDisappear或onDestroy等销毁回调中
+- off('avoidAreaChange')调用位置不在onWindowStageDestroy或onDestroy等销毁回调中
 - 异步任务不会在销毁后执行off('avoidAreaChange')
 
 **正反案例**
