@@ -3825,7 +3825,6 @@ struct ShaderColorStyle {
 从API版本26.0.0开始，ParagraphStyle接口新增tailIndents属性。
 
 ArkTS-Dyn示例：
-
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
 
@@ -3917,10 +3916,8 @@ struct Index {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
-
 import { Column,Component, Entry, LengthMetrics, Text, StyledString,
-  TextController, ParagraphStyle, StyledStringKey, ParagraphStyleInterface, TextAlign } from '@ohos.arkui.component'
+  TextController, ParagraphStyle, StyledStringKey, ParagraphStyleInterface, TextAlign } from '@kit.ArkUI';
 
 @Entry
 @Component
