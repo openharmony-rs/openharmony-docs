@@ -41,7 +41,7 @@ The table below shows the effect of each blend mode, where the yellow rectangle 
 | SRC_IN      | 5    | r = s * da, retains only the intersection of the source pixels with the opaque parts of the destination.| ![SRC_IN](figures/BlendMode-SrcIn.png)|
 | DST_IN      | 6    | r = d * sa, retains only the intersection of the destination pixels with the opaque parts of the source.| ![DST_IN](figures/BlendMode-DstIn.png)|
 | SRC_OUT     | 7    | r = s * (1 - da), retains the parts of the source pixels that do not overlap with the destination.| ![SRC_OUT](figures/BlendMode-SrcOut.png)|
-| DST_OUT     | 8    | r = d * (1 - sa), retains the parts of the destination pixels that do not overlap with the source.| ![SRC_OUT](figures/BlendMode-SrcOut.png)|
+| DST_OUT     | 8    | r = d * (1 - sa), retains the parts of the destination pixels that do not overlap with the source.| ![DST_OUT](figures/BlendMode-DstOut.png)|
 | SRC_ATOP    | 9    | r = s * da + d * (1 - sa), covers the destination pixels with the source pixels, showing the source only in the opaque parts of the destination.| ![SRC_ATOP](figures/BlendMode-SrcATop.png)|
 | DST_ATOP    | 10   | r = d * sa + s * (1 - da), covers the source pixels with the destination pixels, showing the destination only in the opaque parts of the source.| ![DST_ATOP](figures/BlendMode-DstATop.png)|
 | XOR         | 11   | r = s * (1 - da) + d * (1 - sa), shows only the non-overlapping parts of the source and destination pixels.| ![XOR](figures/BlendMode-Xor.png)|
@@ -55,7 +55,7 @@ The table below shows the effect of each blend mode, where the yellow rectangle 
 | COLOR_BURN  | 19   | Darkens the destination pixels by increasing contrast to reflect the source pixels.          | ![COLOR_BURN](figures/BlendMode-ColorBurn.png)|
 | HARD_LIGHT  | 20   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the source pixels.   | ![HARD_LIGHT](figures/BlendMode-HardLight.png)|
 | SOFT_LIGHT  | 21   | Softly brightens or darkens the destination pixels based on the brightness of the source pixels.            | ![SOFT_LIGHT](figures/BlendMode-SoftLight.png)|
-| DIFFERENCE  | 22   | rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d, calculates the difference between the color values of the source and destination pixels.| ![SOFT_LIGHT](figures/BlendMode-SoftLight.png)|
+| DIFFERENCE  | 22   | rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d, calculates the difference between the color values of the source and destination pixels.| ![DIFFERENCE](figures/BlendMode-Difference.png)|
 | EXCLUSION   | 23   | rc = s + d - two(s * d), ra = s + (1 - sa) * d, similar to **DIFFERENCE** but with lower contrast.| ![EXCLUSION](figures/BlendMode-Exclusion.png)|
 | MULTIPLY    | 24   | r = s * (1 - da) + d * (1 - sa) + s * d, multiplies the color values of the source and destination pixels, typically resulting in a darker outcome.| ![MULTIPLY](figures/BlendMode-Multiply.png)|
 | HUE         | 25   | Uses the hue of the source pixels and the saturation and brightness of the destination pixels.              | ![HUE](figures/BlendMode-Hue.png)|
@@ -152,8 +152,8 @@ Enumerates the canvas clipping modes.
 
 | Name                | Value   | Description          | Diagram  |
 | ------------------ | ---- | ---------------- | -------- |
-| DIFFERENCE | 0    | Clips a specified area. That is, the difference set is obtained.| ![DIFFERENCE](figures/image_ClipOp_Difference.png) |
-| INTERSECT  | 1    | Retains a specified area. That is, the intersection is obtained.| ![INTERSECT](figures/image_ClipOp_Intersect.png)|
+| DIFFERENCE | 0    | Clips a specified area. That is, the difference set is obtained.| ![DIFFERENCE](figures/ClipOp-Difference.png) |
+| INTERSECT  | 1    | Retains a specified area. That is, the intersection is obtained.| ![INTERSECT](figures/ClipOp-Intersect.png)|
 
 > **NOTE**
 >
@@ -195,7 +195,7 @@ Enumerates the fill types of a path.
 | INVERSE_EVEN_ODD  | 3    | Same as **EVEN_ODD**, but draws outside of the path, rather than inside.|
 
 > **NOTE**<br>
-> ![WINDING&EVEN_ODD](figures/image_PathFillType_Winding_Even_Odd.png)<br>
+> ![WINDING&EVEN_ODD](figures/PathFillType-Winding-Even-Odd.png)<br>
 > As shown in the above figure, the path is a circle, the arrow indicates the path direction, **p** is any point "inside" the path, the blue line is the ray emitted from **p**, and the black arrow indicates the fill result using blue under the corresponding fill type. Under the **WINDING** fill rule, the number of intersection points of the ray and path is 2 (not 0), and therefore **p** is colored. Under the **EVEN_ODD** filling rule, the number of intersection points of the ray and path is 2 (an even number), and therefore **p** is not colored.
 
 ## PointMode<sup>12+</sup>
@@ -300,9 +300,9 @@ Enumerates the join styles of a pen. The join style defines the shape of the joi
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ----------- | ---- | ----------------------------------------------------------- | -------- |
-| MITER_JOIN | 0    | Mitered corner. If the angle of a polyline is small, its miter length may be inappropriate. In this case, you need to use the miter limit to limit the miter length.| ![MITER_JOIN](figures/image_JoinStyle_Miter_Join.png)|
-| ROUND_JOIN | 1    | Round corner.| ![ROUND_JOIN](figures/image_JoinStyle_Round_Join.png)|
-| BEVEL_JOIN | 2    | Beveled corner.| ![BEVEL_JOIN](figures/image_JoinStyle_Bevel_Join.png)|
+| MITER_JOIN | 0    | Mitered corner. If the angle of a polyline is small, its miter length may be inappropriate. In this case, you need to use the miter limit to limit the miter length.| ![MITER_JOIN](figures/JoinStyle-Miter-Join.png)|
+| ROUND_JOIN | 1    | Round corner.| ![ROUND_JOIN](figures/JoinStyle-Round-Join.png)|
+| BEVEL_JOIN | 2    | Beveled corner.| ![BEVEL_JOIN](figures/JoinStyle-Bevel-Join.png)|
 
 ## CapStyle<sup>12+</sup>
 
@@ -312,9 +312,9 @@ Enumerates the cap styles of a pen. The cap style defines the style of both ends
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ---------- | ---- | ----------------------------------------------------------- | -------- |
-| FLAT_CAP   | 0    | There is no cap style. Both ends of the line segment are cut off square.| ![FLAT_CAP](figures/image_CapStyle_Flat_Cap.jpg)|
-| SQUARE_CAP | 1    | Square cap style. Both ends have a square, the height of which is half of the width of the line segment, with the same width.| ![SQUARE_CAP](figures/image_CapStyle_Square_Cap.jpg)|
-| ROUND_CAP  | 2    | Round cap style. Both ends have a semicircle centered, the diameter of which is the same as the width of the line segment.| ![ROUND_CAP](figures/image_CapStyle_Round_Cap.jpg)|
+| FLAT_CAP   | 0    | There is no cap style. Both ends of the line segment are cut off square.| ![FLAT_CAP](figures/CapStyle-Flat-Cap.jpg)|
+| SQUARE_CAP | 1    | Square cap style. Both ends have a square, the height of which is half of the width of the line segment, with the same width.| ![SQUARE_CAP](figures/CapStyle-Square-Cap.jpg)|
+| ROUND_CAP  | 2    | Round cap style. Both ends have a semicircle centered, the diameter of which is the same as the width of the line segment.| ![ROUND_CAP](figures/CapStyle-Round-Cap.jpg)|
 
 ## BlurType<sup>12+</sup>
 
@@ -324,10 +324,10 @@ Enumerates the blur types of a mask filter.
 
 | Name  | Value| Description              | Diagram  |
 | ------ | - | ------------------ | -------- |
-| NORMAL | 0 | Both the outer edges and the inner solid parts are blurred.| ![NORMAL](figures/image_BlueType_Normal.png)|
-| SOLID  | 1 | The inner solid part remains unchanged, while only the outer edges are blurred.| ![SOLID](figures/image_BlueType_Solid.png)|
-| OUTER  | 2 | Only the outer edges are blurred, with the inner solid part being fully transparent.| ![OUTER](figures/image_BlueType_Outer.png)|
-| INNER  | 3 | Only the inner solid part is blurred, while the outer edges remain sharp.| ![INNER](figures/image_BlueType_Inner.png)|
+| NORMAL | 0 | Both the outer edges and the inner solid parts are blurred.| ![NORMAL](figures/BlurType-Normal.png)|
+| SOLID  | 1 | The inner solid part remains unchanged, while only the outer edges are blurred.| ![SOLID](figures/BlueType-Solid.png)|
+| OUTER  | 2 | Only the outer edges are blurred, with the inner solid part being fully transparent.| ![OUTER](figures/BlurType-Outer.png)|
+| INNER  | 3 | Only the inner solid part is blurred, while the outer edges remain sharp.| ![INNER](figures/BlurType-Inner.png)|
 
 ## ScaleToFit<sup>12+</sup>
 
@@ -350,12 +350,12 @@ Enumerates the operations for combining two regions.
 
 | Name                  | Value  | Description                          | Diagram  |
 | --------------------- | ---- | ------------------------------ | -------- |
-| DIFFERENCE         | 0    | Difference operation. | ![CLEAR](figures/image_RegionOp_Difference.png)|
-| INTERSECT          | 1    | Intersect operation.| ![INTERSECT](figures/image_RegionOp_Intersect.png)|
-| UNION              | 2    | Union operation.  | ![UNION](figures/image_RegionOpe_Union.png)|
-| XOR                | 3    | XOR operation.  | ![XOR](figures/image_RegionOp_Xor.png)|
-| REVERSE_DIFFERENCE | 4    | Reverse difference operation.  | ![REVERSE_DIFFERENCE](figures/image_RegionOp_Reverse_difference.png)|
-| REPLACE            | 5    | Replace operation.  | ![REPLACE](figures/image_RegionOp_Replace.png)|
+| DIFFERENCE         | 0    | Difference operation. | ![CLEAR](figures/RegionOp-Difference.png)|
+| INTERSECT          | 1    | Intersect operation.| ![INTERSECT](figures/RegionOp-Intersect.png)|
+| UNION              | 2    | Union operation.  | ![UNION](figures/RegionOpe-Union.png)|
+| XOR                | 3    | XOR operation.  | ![XOR](figures/RegionOp-Xor.png)|
+| REVERSE_DIFFERENCE | 4    | Reverse difference operation.  | ![REVERSE_DIFFERENCE](figures/RegionOp-Reverse-difference.png)|
+| REPLACE            | 5    | Replace operation.  | ![REPLACE](figures/RegionOp-Replace.png)|
 
 > **NOTE**
 >
@@ -382,6 +382,6 @@ Enumerates the connection modes for vertex drawing.
 
 | Name                  | Value  | Description                          | Diagram  |
 | --------------------- | ---- | ------------------------------ | -------- |
-| TRIANGLES_VERTEXMODE           | 0    | Every three vertices come from different triangles. |![TRIANGLES_VERTEXMODE](figures/image_Triangles_VertexMode.png)|
-| TRIANGLESSTRIP_VERTEXMODE          | 1    | Consecutive triangles share one edge. It is efficient for continuous surfaces.|![TRIANGLESSTRIP_VERTEXMODE](figures/image_TrianglesStrip_VertexMode.png)|
-| TRIANGLESFAN_VERTEXMODE       | 2    | All triangles share one vertex. It is suitable for circles and sectors.  |![TRIANGLESFAN_VERTEXMODE](figures/image_TrianglesFan_VertexMode.png)|
+| TRIANGLES_VERTEXMODE           | 0    | Every three vertices come from different triangles. |![TRIANGLES_VERTEXMODE](figures/Triangles-VertexMode.png)|
+| TRIANGLESSTRIP_VERTEXMODE          | 1    | Consecutive triangles share one edge. It is efficient for continuous surfaces.|![TRIANGLESSTRIP_VERTEXMODE](figures/TrianglesStrip-VertexMode.png)|
+| TRIANGLESFAN_VERTEXMODE       | 2    | All triangles share one vertex. It is suitable for circles and sectors.  |![TRIANGLESFAN_VERTEXMODE](figures/TrianglesFan-VertexMode.png)|

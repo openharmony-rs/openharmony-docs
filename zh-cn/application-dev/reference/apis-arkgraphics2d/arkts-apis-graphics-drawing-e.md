@@ -152,8 +152,8 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称                 | 值    | 说明           | 示意图   |
 | ------------------ | ---- | ---------------- | -------- |
-| DIFFERENCE | 0    | 将指定区域裁剪（取差集）。 | ![DIFFERENCE](figures/zh-ch_image_ClipOp_Difference.png) |
-| INTERSECT  | 1    | 将指定区域保留（取交集）。 | ![INTERSECT](figures/zh-ch_image_ClipOp_Intersect.png) |
+| DIFFERENCE | 0    | 将指定区域裁剪（取差集）。 | ![DIFFERENCE](figures/ClipOp-Difference.png) |
+| INTERSECT  | 1    | 将指定区域保留（取交集）。 | ![INTERSECT](figures/ClipOp-Intersect.png) |
 
 > **说明：**
 >
@@ -195,7 +195,7 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 | INVERSE_EVEN_ODD  | 3    | EVEN_ODD涂色规则取反。 |
 
 > **说明：**<br>
-> ![WINDING&EVEN_ODD](figures/zh-ch_image_PathFillType_Winding_Even_Odd.png)<br>
+> ![WINDING&EVEN_ODD](figures/PathFillType-Winding-Even-Odd.png)<br>
 > 如图所示圆环为路径，箭头指示路径的方向，p为区域内任意一点，蓝色线条为点p出发的射线，黑色箭头所指为对应填充规则下使用蓝色填充路径的结果。WINDING填充规则下，射线与路径的交点计数为2，不为0，点p被涂色；EVEN_ODD填充规则下，射线与路径的相交次数为2，是偶数，点p不被涂色。
 
 ## PointMode<sup>12+</sup>
@@ -304,9 +304,9 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称        | 值   | 说明                                                         | 示意图   |
 | ----------- | ---- | ----------------------------------------------------------- | -------- |
-| MITER_JOIN | 0    | 转角类型为尖角，如果折线角度比较小，则尖角会很长，需要使用限制值（miter limit）进行限制。 | ![MITER_JOIN](figures/zh-ch_image_JoinStyle_Miter_Join.png) |
-| ROUND_JOIN | 1    | 转角类型为圆头。 | ![ROUND_JOIN](figures/zh-ch_image_JoinStyle_Round_Join.png) |
-| BEVEL_JOIN | 2    | 转角类型为平头。 | ![BEVEL_JOIN](figures/zh-ch_image_JoinStyle_Bevel_Join.png) |
+| MITER_JOIN | 0    | 转角类型为尖角，如果折线角度比较小，则尖角会很长，需要使用限制值（miter limit）进行限制。 | ![MITER_JOIN](figures/JoinStyle-Miter-Join.png) |
+| ROUND_JOIN | 1    | 转角类型为圆头。 | ![ROUND_JOIN](figures/JoinStyle-Round-Join.png) |
+| BEVEL_JOIN | 2    | 转角类型为平头。 | ![BEVEL_JOIN](figures/JoinStyle-Bevel-Join.png) |
 
 ## CapStyle<sup>12+</sup>
 
@@ -316,9 +316,9 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称        | 值   | 说明                                                         | 示意图   |
 | ---------- | ---- | ----------------------------------------------------------- | -------- |
-| FLAT_CAP   | 0    | 没有线帽样式，线条头尾端点处横切。 | ![FLAT_CAP](figures/zh-ch_image_CapStyle_Flat_Cap.jpg) |
-| SQUARE_CAP | 1    | 线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。 | ![SQUARE_CAP](figures/zh-ch_image_CapStyle_Square_Cap.jpg) |
-| ROUND_CAP  | 2    | 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。 | ![ROUND_CAP](figures/zh-ch_image_CapStyle_Round_Cap.jpg) |
+| FLAT_CAP   | 0    | 没有线帽样式，线条头尾端点处横切。 | ![FLAT_CAP](figures/CapStyle-Flat-Cap.jpg) |
+| SQUARE_CAP | 1    | 线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。 | ![SQUARE_CAP](figures/CapStyle-Square-Cap.jpg) |
+| ROUND_CAP  | 2    | 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。 | ![ROUND_CAP](figures/CapStyle-Round-Cap.jpg) |
 
 ## BlurType<sup>12+</sup>
 
@@ -328,10 +328,10 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称   | 值 | 说明               | 示意图   |
 | ------ | - | ------------------ | -------- |
-| NORMAL | 0 | 全面模糊，外圈边缘和内部实体一起模糊。 | ![NORMAL](figures/zh-ch_image_BlueType_Normal.png) |
-| SOLID  | 1 | 内部实体不变，只模糊外圈边缘部分。 | ![SOLID](figures/zh-ch_image_BlueType_Solid.png) |
-| OUTER  | 2 | 只有外圈边缘模糊，内部实体完全透明。 | ![OUTER](figures/zh-ch_image_BlueType_Outer.png) |
-| INNER  | 3 | 只有内部实体模糊，外圈边缘清晰。 | ![INNER](figures/zh-ch_image_BlueType_Inner.png) |
+| NORMAL | 0 | 全面模糊，外圈边缘和内部实体一起模糊。 | ![NORMAL](figures/BlurType-Normal.png) |
+| SOLID  | 1 | 内部实体不变，只模糊外圈边缘部分。 | ![SOLID](figures/BlurType-Solid.png) |
+| OUTER  | 2 | 只有外圈边缘模糊，内部实体完全透明。 | ![OUTER](figures/BlurType-Outer.png) |
+| INNER  | 3 | 只有内部实体模糊，外圈边缘清晰。 | ![INNER](figures/BlurType-Inner.png) |
 
 ## ScaleToFit<sup>12+</sup>
 
@@ -354,12 +354,12 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称                   | 值   | 说明                           | 示意图   |
 | --------------------- | ---- | ------------------------------ | -------- |
-| DIFFERENCE         | 0    | 两个区域的相减操作。  | ![CLEAR](figures/zh-ch_image_RegionOp_Difference.png) |
-| INTERSECT          | 1    | 两个区域的相交操作。 | ![INTERSECT](figures/zh-ch_image_RegionOp_Intersect.png) |
-| UNION              | 2    | 两个区域的联合操作。   | ![UNION](figures/zh-ch_image_RegionOpe_Union.png) |
-| XOR                | 3    | 两个区域的异或操作。   | ![XOR](figures/zh-ch_image_RegionOp_Xor.png) |
-| REVERSE_DIFFERENCE | 4    | 两个区域的反向相减操作。   | ![REVERSE_DIFFERENCE](figures/zh-ch_image_RegionOp_Reverse_difference.png) |
-| REPLACE            | 5    | 两个区域替换操作。   | ![REPLACE](figures/zh-ch_image_RegionOp_Replace.png) |
+| DIFFERENCE         | 0    | 两个区域的相减操作。  | ![CLEAR](figures/RegionOp-Difference.png) |
+| INTERSECT          | 1    | 两个区域的相交操作。 | ![INTERSECT](figures/RegionOp-Intersect.png) |
+| UNION              | 2    | 两个区域的联合操作。   | ![UNION](figures/RegionOpe-Union.png) |
+| XOR                | 3    | 两个区域的异或操作。   | ![XOR](figures/RegionOp-Xor.png) |
+| REVERSE_DIFFERENCE | 4    | 两个区域的反向相减操作。   | ![REVERSE_DIFFERENCE](figures/RegionOp-Reverse-difference.png) |
+| REPLACE            | 5    | 两个区域替换操作。   | ![REPLACE](figures/RegionOp-Replace.png) |
 
 > **说明：**
 >
@@ -386,6 +386,6 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称                   | 值   | 说明                           | 示意图   |
 | --------------------- | ---- | ------------------------------ | -------- |
-| TRIANGLES_VERTEXMODE           | 0    | 每三个顶点来自不同的三角形。  |![TRIANGLES_VERTEXMODE](figures/zh-ch_image_Triangles_VertexMode.png) |
-| TRIANGLESSTRIP_VERTEXMODE          | 1    | 连续的三角形共享一条边。对于连续表面效率高。 |![TRIANGLESSTRIP_VERTEXMODE](figures/zh-ch_image_TrianglesStrip_VertexMode.png) |
-| TRIANGLESFAN_VERTEXMODE       | 2    | 所有三角形共享一个顶点。非常适合圆形/扇形。   |![TRIANGLESFAN_VERTEXMODE](figures/zh-ch_image_TrianglesFan_VertexMode.png) |
+| TRIANGLES_VERTEXMODE           | 0    | 每三个顶点来自不同的三角形。  |![TRIANGLES_VERTEXMODE](figures/Triangles-VertexMode.png) |
+| TRIANGLESSTRIP_VERTEXMODE          | 1    | 连续的三角形共享一条边。对于连续表面效率高。 |![TRIANGLESSTRIP_VERTEXMODE](figures/TrianglesStrip-VertexMode.png) |
+| TRIANGLESFAN_VERTEXMODE       | 2    | 所有三角形共享一个顶点。非常适合圆形/扇形。   |![TRIANGLESFAN_VERTEXMODE](figures/TrianglesFan-VertexMode.png) |
