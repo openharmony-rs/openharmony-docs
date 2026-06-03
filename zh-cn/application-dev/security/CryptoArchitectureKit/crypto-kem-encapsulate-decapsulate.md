@@ -80,7 +80,7 @@ ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是一种基于格�
     export function kemDecapsulateSync() {
       let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ML-KEM-768');
       let keyPair = asyKeyGenerator.generateKeyPairSync();
-      let kem : cryptoFramework.Kem= cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
+      let kem : cryptoFramework.Kem = cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
       try {
         let encapResult : cryptoFramework.KemEncapResult= kem.encapsulateSync(keyPair.pubKey, null);
         let sharedSecret : Uint8Array = kem.decapsulateSync(keyPair.priKey, encapResult.wrappedKey);

@@ -185,6 +185,7 @@ getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMa
 
 ArkTS-Dyn示例：
 ```ts
+// EntryAbility.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
@@ -214,6 +215,7 @@ async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
 
 ArkTS-Sta示例：
 ```ts
+// EntryAbility.ets
 async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
   if (picture == null) {
     console.error('picture is null');
@@ -271,6 +273,7 @@ hdrComposeToMainPixelmap(): Promise\<void>
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

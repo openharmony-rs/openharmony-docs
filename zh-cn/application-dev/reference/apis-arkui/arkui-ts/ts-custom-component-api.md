@@ -114,7 +114,7 @@ struct MyComponent {
 
 ## queryNavDestinationInfo
 
-queryNavDestinationInfo(): NavDestinationInfo | undefined;
+queryNavDestinationInfo(): NavDestinationInfo | undefined
 
 查询自定义组件所属的[NavDestination](ts-basic-components-navdestination.md)信息，仅当自定义组件在NavDestination的内部时才生效。
 
@@ -397,7 +397,7 @@ NavigationInfo实例对象。
 
 ## queryRouterPageInfo<sup>12+</sup>
 
-queryRouterPageInfo(): RouterPageInfo | undefined;
+queryRouterPageInfo(): RouterPageInfo | undefined
 
 获取RouterPageInfo实例对象。
 
