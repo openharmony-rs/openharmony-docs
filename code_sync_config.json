@@ -6561,7 +6561,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefBasicTypes.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":83,
 						"name":"PropRefBasicTypes",
 						"start_line":18
 					}
@@ -6571,7 +6571,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefParentChild.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":59,
 						"name":"PropRefParentChild",
 						"start_line":18
 					}
@@ -6581,7 +6581,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefDataSourceRef.ets",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":87,
 						"name":"PropRefDataSourceRef",
 						"start_line":18
 					}
@@ -6666,7 +6666,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideConsumeBasic.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":70,
 						"name":"ProvideConsumeBasic",
 						"start_line":18
 					}
@@ -6716,7 +6716,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideAllowOverride.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":79,
 						"name":"ProvideAllowOverride",
 						"start_line":18
 					}
