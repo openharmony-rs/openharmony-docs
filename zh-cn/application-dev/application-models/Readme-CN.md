@@ -88,27 +88,28 @@
     - [拉起图片编辑类应用（startAbilityByType）](photoEditorExtensionAbility.md)
     - [拉起文件处理类应用（startAbility）](file-processing-apps-startup.md)
   - [拉起系统应用](system-app-startup.md)<!--RP1--><!--RP1End-->
-- 意图框架开发指导<!--insight-intent-->
-  - [意图框架概述](insight-intent-overview.md)
-  - 开发意图<!--insight-intent-development-->
-    - [意图开发概述](insight-intent-definition.md)
-    - [使用配置文件开发意图](insight-intent-config-development.md)
-    - [使用装饰器开发意图](insight-intent-decorator-development.md)
-    - [附录：标准意图接入规范](insight-intent-access-specifications.md)
-  - [调试意图](insight-intent-debug.md)
-- 端侧A2A框架开发指导<!--agent-guideline-->
-  - [端侧A2A框架概述](agent-overview.md)
-  - 开发端侧智能体<!--agent-development-->
-    - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
-    - [AgentExtensionAbility配置文件说明](agent-extension-configuration.md)
-    <!--Del-->
-    - [使用AgentExtensionAbility组件提供的智能体服务（仅对系统应用开放）](agent-manager-sys.md)
-    <!--DelEnd-->
-- [基于ArkTS脚本开发应用Skill（ArkTS-Dyn）](arkts-skill-development-guide.md)
+- 方舟智能开发框架开发指导<!--ark-agentic-framework-->
+  - [方舟智能开发框架概述](arkaf-overview.md)
+  - 意图框架开发指导<!--insight-intent-->
+    - [意图框架概述](insight-intent-overview.md)
+    - 开发意图<!--insight-intent-development-->
+      - [意图开发概述](insight-intent-definition.md)
+      - [使用配置文件开发意图](insight-intent-config-development.md)
+      - [使用装饰器开发意图](insight-intent-decorator-development.md)
+      - [附录：标准意图接入规范](insight-intent-access-specifications.md)
+    - [调试意图](insight-intent-debug.md)
+  - [基于ArkTS脚本的应用Skill开发指导（ArkTS-Dyn）](arkts-skill-development-guide.md)
+  - 端侧A2A框架开发指导<!--agent-guideline-->
+    - [端侧A2A框架概述](agent-overview.md)
+    - 开发端侧智能体<!--agent-development-->
+      - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
+      - [AgentExtensionAbility配置文件说明](agent-extension-configuration.md)
+      <!--Del-->
+      - [使用AgentExtensionAbility组件提供的智能体服务（仅对系统应用开放）](agent-manager-sys.md)
+      <!--DelEnd-->
 - 基于ModularObjectExtensionAbility的模块化对象开发指导 (C/C++)<!--modular-object-extension-ability-->
   - [模块化对象模型概述 (C/C++)](modular-object-extension-overview.md)
   - [使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](modular-object-extension-development.md)
-<!--DelEnd-->
 - Native子进程开发指导<!--native-childprocess-development-->
     - [创建Native子进程](capi-nativechildprocess-development-guideline.md)
     - [获取Native子进程退出信息](capi-nativechildprocess-exit-info.md)
