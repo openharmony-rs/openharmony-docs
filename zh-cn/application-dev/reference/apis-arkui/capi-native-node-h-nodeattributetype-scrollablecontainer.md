@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（滚动容器类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @guozejun-->
-<!--Designer: @yylong; @zcdqs-->
+<!--Owner: @shengu_lancer; @yylong; @yangcan18-->
+<!--Designer: @yylong;@guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -718,6 +718,29 @@ NODE_SCROLL_AUTO_ADJUST_MARGIN = 1002028
 | -- | -- |
 | .value[0].i32 | 是否自动调整边距，0：自动调整边距，1：不自动调整边距。 |
 
+
+## NODE_SCROLL_BAR_HEIGHT
+
+```c
+NODE_SCROLL_BAR_HEIGHT = 1002029
+```
+
+定义滚动条滑轨高度。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 滚动条滑轨高度，单位：vp。默认值：自适应滚动组件高度。<br>取值范围：值必须大于等于0。设置为小于0时使用默认值，儿童智能表则恢复至默认值37vp。设置为0时不显示滚动条。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 滚动条滑轨高度，单位：vp。 |
 
 ## NODE_LIST_DIRECTION
 
