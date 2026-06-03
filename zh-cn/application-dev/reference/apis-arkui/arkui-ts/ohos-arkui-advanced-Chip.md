@@ -83,10 +83,10 @@ ChipOptions定义Chip的样式及具体式样参数。
 >
 > 1. 当`suffixSymbol`有传入参数时，`suffixIcon`和`allowClose`不生效；当`suffixSymbol`没有传入参数而`suffixIcon`有传入参数时，`allowClose`不生效；当`suffixSymbol`和`suffixIcon`都没有传入参数时，`allowClose`决定是否显示删除图标。
 >2. `backgroundColor`和`activatedBackgroundColor`赋值为`undefined`时，显示默认背景颜色；赋值为非法值时，背景颜色透明。
-> 3. prefixSymbol/suffixSymbol的fontColor默认值为：normalFontColor: `[$r('sys.color.ohos_id_color_primary')]`、activatedFontColor: `[$r('sys.color.ohos_id_color_text_primary_contrary')]`。fontColor默认值为16。
+> 3. 当prefixSymbol或suffixSymbol设置了图标时，若Chip为非激活状态，图标颜色fontColor为`[$r('sys.color.ohos_id_color_secondary')]`，若Chip为激活状态，图标颜色fontColor为`[$r('sys.color.ohos_id_color_text_primary_contrary')]`。此外，图标的默认大小fontSize为16fp。
 >
-> 4. prefixIcon的fillColor默认值为：`$r('sys.color.ohos_id_color_secondary')`，suffixIcon的fillColor默认值为：`$r('sys.color.ohos_id_color_primary')`。fillColor对颜色的解析与Image组件保持一致。
->5. prefixIcon和suffixIcon的activatedFillColor默认值均为：`$r('sys.color.ohos_id_color_text_primary_contrary')`。activatedFillColor对颜色的解析与Image组件保持一致。
+> 4. 当prefixIcon和suffixIcon设置了图标时，fillColor默认值均为：`$r('sys.color.ohos_id_color_secondary')`。fillColor对颜色的解析与Image组件保持一致。
+> 5. 当prefixIcon和suffixIcon设置了图标时，activatedFillColor默认值均为：`$r('sys.color.ohos_id_color_text_primary_contrary')`。activatedFillColor对颜色的解析与Image组件保持一致。
 
 ## ChipSize
 
