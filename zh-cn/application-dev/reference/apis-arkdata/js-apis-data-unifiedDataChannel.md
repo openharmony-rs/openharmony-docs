@@ -1355,10 +1355,9 @@ UDMF提供的数据操作接口包含三个可选参数：intention、key和visi
 
 | 名称      | 类型                    | 只读 | 可选 | 说明                                                         |
 | --------- | ----------------------- | ---- | ----- | ------------------------------------------------------- |
-| intention | [Intention](#intention) | 否 | 是 | 表示数据操作相关的数据通路类型，取值为[Intention](#intention)枚举类型，包括DATA_HUB、DRAG、SYSTEM_SHARE、PICKER、MENU等。
-。不填写时默认无值，具体是否必填请参阅具体接口的参数说明。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
+| intention | [Intention](#intention) | 否 | 是 | 表示数据操作相关的数据通路类型，取值为[Intention](#intention)枚举类型，包括DATA_HUB、DRAG、SYSTEM_SHARE、PICKER、MENU等。不填写时默认无值，具体是否必填请参阅具体接口的参数说明。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
 | key | string | 否 | 是 | UDMF中数据对象的唯一标识符，可通过[insertData](#unifieddatachannelinsertdata)接口的返回值获取。不填写时默认无值，具体是否必填请参阅具体接口的参数说明。<br>由udmf:/、intention、bundleName和groupId四部分组成，以'/'连接，比如：udmf://DataHub/com.ohos.test/0123456789。<br>其中udmf:/固定，DataHub为对应枚举的取值，com.ohos.test为包名，0123456789为随机生成的groupId。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| visibility<sup>20+</sup> | [Visibility](#visibility20) | 否 | 是 | 表表示数据的可见性等级，取值为[Visibility](#visibility20)枚举类型，包括ALL（所有应用可见）和OWN_PROCESS（仅数据提供者可见）。只在写入数据的时候填写才生效，若不填写默认是Visibility.ALL。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| visibility<sup>20+</sup> | [Visibility](#visibility20) | 否 | 是 | 表示数据的可见性等级，取值为[Visibility](#visibility20)枚举类型，包括ALL（所有应用可见）和OWN_PROCESS（仅数据提供者可见）。只在写入数据的时候填写才生效，若不填写默认是Visibility.ALL。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 
 ## FileConflictOptions<sup>15+</sup>
 
@@ -1549,7 +1548,7 @@ insertData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;strin
 
 将数据写入UDMF的公共数据通路中，并生成数据的唯一标识符，使用callback异步回调。
 
-**说明：** UDMF处理数据时不会解析用户数据内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。
+> UDMF处理数据时不会解析用户数据内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。<br/>
 
 **实现机制：** 系统接收UnifiedData对象后，验证数据完整性并序列化存储。根据intention值路由到对应存储空间，生成唯一标识符key（格式见Options说明）。数据在公共数据通路中由系统管理有效期，默认策略为应用退出后自动清理。
 
@@ -1670,7 +1669,7 @@ updateData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;void&
 
 更新已写入UDMF的公共数据通路的数据，使用callback异步回调。
 
-**说明：** UDMF处理数据时不会解析用户数据内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。
+> UDMF处理数据时不会解析用户数据内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。<br/>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1829,7 +1828,7 @@ queryData(options: Options, callback: AsyncCallback&lt;Array&lt;UnifiedData&gt;&
 
 查询UDMF公共数据通路的数据，使用callback异步回调。
 
-**说明：** UDMF处理数据时不会解析用户数据内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。
+> UDMF处理数据时不会解析用户数据内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。<br/>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1950,7 +1949,7 @@ deleteData(options: Options, callback: AsyncCallback&lt;Array&lt;UnifiedData&gt;
 
 删除UDMF公共数据通路的数据，返回删除的数据集，使用callback异步回调。
 
-**说明：** UDMF处理数据时不会解析用户数据内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。
+> UDMF处理数据时不会解析用户数据内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。<br/>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2084,7 +2083,7 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[统一数据管理框架错误码](errorcode-udmf.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[统一数据管理框架(UDMF)错误码](errorcode-udmf.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |

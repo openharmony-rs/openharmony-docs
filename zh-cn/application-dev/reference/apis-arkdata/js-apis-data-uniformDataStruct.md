@@ -97,7 +97,7 @@ HTML类型数据，用于描述超文本标记语言数据。创建HTML对象后
 | 名称         | 类型   | 只读 | 可选 | 说明                    |
 | ------------ | ------ | ---- | ---- |-----------------------|
 | uniformDataType | 'general.html'| 是   | 否   | 统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
-| htmlContent  | string | 否   | 否   | HTML格式的内容文本，支持标准HTML标签。可以是完整的HTML文档或HTML片段。长度限制为20MB。建议使用UTF-8编码。例如：<div><p>标题</p></div>。|
+| htmlContent  | string | 否   | 否   | HTML格式的内容文本，支持标准HTML标签。可以是完整的HTML文档或HTML片段。长度限制为20MB。建议使用UTF-8编码。例如：\<div>\<p>标题<\/p><\/div>。|
 | plainContent | string | 否   | 是   | 去除html标签后的纯文本内容，非必填字段。当需要提供HTML内容的纯文本版本时传入此参数（如用于文本搜索、无HTML渲染环境的展示等场景），不传入时默认值为空字符串，不提供纯文本版本。 |
 | details | Record<string, string> | 否   | 是   | 字典类型对象，key和value均为string类型，用于描述HTML的详细属性内容。非必填字段，默认值为空字典对象。|
 | uriAuthorizationPolicies | Array<number\> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为[READ]（仅读授权），仅在img标签等场景下生效，其他场景下不生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](js-apis-data-unifiedDataChannel.md#uripermission)。<br/>**起始版本**：26.0.0 |
@@ -251,7 +251,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
 | uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为“general.file-uri”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
-| oriUri     | string | 否   | 否  | 文件的原始URI路径，支持绝对路径和file://协议格式。长度限制为4096字节。例如：/data/local/tmp/test.txt 或 file:///data/local/tmp/test.txt。|
+| oriUri     | string | 否   | 否  | 文件的原始URI路径。支持本地文件绝对路径、file://协议和http/https网络URL格式。长度限制为4096字节。例如：/data/local/tmp/test.txt、file:///data/local/tmp/test.txt或http://example.com/file.txt。|
 | fileType   | string | 否   | 否  | 文件类型（必须是UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节，超出限制时抛出异常。|
 | details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number、string或Uint8Array类型数据。非必填字段，默认值为空字典对象。|
 | uriAuthorizationPolicies | Array<number\> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为[READ, WRITE, PERSIST]（读+写+持久化授权），仅在特定场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](js-apis-data-unifiedDataChannel.md#uripermission)。<br/>**起始版本**：26.0.0|

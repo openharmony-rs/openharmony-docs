@@ -18,7 +18,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [UDMF](capi-udmf.md)
+**相关模块：** [UDMF（Unified Data Management Framework，统一数据管理框架）](capi-udmf.md)
 
 ## 汇总
 
@@ -84,7 +84,7 @@ void OH_Utd_Destroy(OH_Utd* pThis)
 
 **描述**
 
-销毁统一数据类型[OH_Utd](capi-udmf-oh-utd.md)指针指向的实例对象。
+销毁统一数据类型[OH_Utd](capi-udmf-oh-utd.md)指针指向的实例对象。销毁后指针失效，不可再使用，否则会导致未定义行为。
 
 **起始版本：** 12
 
@@ -219,7 +219,7 @@ const char** OH_Utd_GetBelongingToTypes(OH_Utd* pThis, unsigned int* count)
 
 | 类型         | 说明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| const char** | 当入参有效时返回归属关系结果集的字符串指针列表，否则返回nullptr。 |
+| const char** | 当入参有效时返回归属关系结果集的字符串指针列表，否则返回nullptr。<br>当不再需要使用指针时，请及时使用[OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist)销毁对应的实例，否则会导致内存泄漏。 |
 
 ### OH_Utd_GetFilenameExtensions()
 
@@ -245,7 +245,7 @@ const char** OH_Utd_GetFilenameExtensions(OH_Utd* pThis, unsigned int* count)
 
 | 类型         | 说明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| const char** | 当入参有效时返回文件名后缀结果集的字符串指针列表，否则返回nullptr。 |
+| const char** | 当入参有效时返回文件名后缀结果集的字符串指针列表，否则返回nullptr。<br>当不再需要使用指针时，请及时使用[OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist)销毁对应的实例，否则会导致内存泄漏。 |
 
 ### OH_Utd_GetMimeTypes()
 
@@ -271,7 +271,7 @@ const char** OH_Utd_GetMimeTypes(OH_Utd* pThis, unsigned int* count)
 
 | 类型         | 说明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| const char** | 当入参有效时返回MIME类型结果集的字符串指针列表，否则返回nullptr。 |
+| const char** | 当入参有效时返回MIME类型结果集的字符串指针列表，否则返回nullptr。<br>当不再需要使用指针时，请及时使用[OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist)销毁对应的实例，否则会导致内存泄漏。 |
 
 ### OH_Utd_GetTypesByFilenameExtension()
 
@@ -297,7 +297,7 @@ const char** OH_Utd_GetTypesByFilenameExtension(const char* extension, unsigned 
 
 | 类型         | 说明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| const char** | 返回标准数据描述类型结果集字符串列表。<br>当不再需要使用指针时，请及时使用[OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist)销毁对应的实例，否则会导致内存泄漏。 |
+| const char** | 当入参有效时返回标准数据描述类型结果集字符串列表，否则返回nullptr。<br>当不再需要使用指针时，请及时使用[OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist)销毁对应的实例，否则会导致内存泄漏。 |
 
 ### OH_Utd_GetTypesByMimeType()
 
@@ -323,7 +323,7 @@ const char** OH_Utd_GetTypesByMimeType(const char* mimeType, unsigned int* count
 
 | 类型         | 说明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| const char** | 返回标准数据描述类型结果集字符串列表。<br>当不再需要使用指针时，请及时使用[OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist)销毁对应的实例，否则会导致内存泄漏。 |
+| const char** | 当入参有效时返回标准数据描述类型结果集字符串列表，否则返回nullptr。<br>当不再需要使用指针时，请及时使用[OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist)销毁对应的实例，否则会导致内存泄漏。 |
 
 ### OH_Utd_BelongsTo()
 
@@ -437,7 +437,7 @@ void OH_Utd_DestroyStringList(const char** list, unsigned int count)
 
 **描述**
 
-销毁标准数据描述类型结果集字符串列表。
+销毁标准数据描述类型结果集字符串列表。销毁后列表指针失效，不可再使用，否则会导致未定义行为。
 
 **起始版本：** 12
 

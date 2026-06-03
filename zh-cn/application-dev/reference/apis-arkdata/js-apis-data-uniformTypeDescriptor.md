@@ -415,7 +415,7 @@ equals(typeDescriptor: TypeDescriptor): boolean
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 返回true表示所比较的标准化数据类型相同；返回false则表示不同。 |
+| boolean | 返回true表示所比较的标准化数据类型描述类对象相同；返回false则表示不同。 |
 
 **错误码：**
 
@@ -522,7 +522,7 @@ getUniformDataTypeByFilenameExtension(filenameExtension: string, belongsTo?: str
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
 | filenameExtension    | string  | 是    |文件后缀名称，需要包含点号，如'.ts'、'.jpg'等。   |
-| belongsTo    | string  | 否    || belongsTo    | string  | 否    |要查询的标准化数据类型所归属类型ID，用于限定查询范围。当需要查询特定归属类型下的数据类型时传入此参数，当不需要限定归属类型或不确定归属类型时可以不传入。若不传入此参数则只按照文件后缀名称查询[标准化数据类型ID](../../database/uniform-data-type-descriptors.md)。   |   |
+| belongsTo    | string  | 否    |要查询的标准化数据类型所归属类型ID，用于限定查询范围。当需要查询特定归属类型下的数据类型时传入此参数，当不需要限定归属类型或不确定归属类型时可以不传入。若不传入此参数则只按照文件后缀名称查询[标准化数据类型ID](../../database/uniform-data-type-descriptors.md)。   |
 
 **返回值：**
 
