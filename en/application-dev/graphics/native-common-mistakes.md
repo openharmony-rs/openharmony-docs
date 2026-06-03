@@ -69,8 +69,8 @@ A typical crash log is as follows:
 00 /system/lib64/chipset-sdk-sp/libsurface.z.so(OH_NativeWindow_DestroyNativeWindow())
 
 **Typical crash log 2**
-00 /system/lib64/chipset-sdk-sp/libsurface.z.so(……)
-01 /system/lib64/chipset-sdk-sp/libsurface.z.so(……)
+00 /system/lib64/chipset-sdk-sp/libsurface.z.so(...)
+01 /system/lib64/chipset-sdk-sp/libsurface.z.so(...)
 02 /system/lib64/chipset-sdk-sp/libsurface.z.so(OH_NativeWindow_NativeWindowHandleOpt)
 
 **Typical crash log 3**

@@ -6,7 +6,7 @@
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=444d4b7458e1317b3c2f1a471488b9c4b8344c2e translatedAt=2026-06-03T07:21:14.978Z pushedAt=2026-06-03T10:37:28.492Z -->
+<!-- md-trans-meta sourceCommit=444d4b7458e1317b3c2f1a471488b9c4b8344c2e translatedAt=2026-06-03T07:21:14.978Z pushedAt=2026-06-03T11:31:57.555Z -->
 
 As a key component of user interaction, menus serve to build a clear navigation system, presenting functional entries through structured layouts so that users can quickly find target content or perform operations. As an important hub for human-computer interaction, they significantly enhance the accessibility and user experience of Web components and are an indispensable part of application design. Web component menu types include [text selection menu](./web-menu.md#text-selection-menu), [context menu](./web-menu.md#context-menu), and [custom menu](./web-menu.md#custom-menu), allowing applications to choose flexibly based on specific needs.
 
@@ -20,7 +20,7 @@ As a key component of user interaction, menus serve to build a clear navigation 
 
 The text selection menu of the Web component is a context interaction component implemented through custom elements. It dynamically appears when the user selects text, providing semantic operations such as copy, share, and annotate. With standardized functionality and good extensibility, it is one of the core features for text operations on mobile devices. The text selection menu pops up when the user long-presses to select text or when a single handle appears after a long press in editing mode, with menu items arranged horizontally. The system provides a default menu implementation. Applications can customize the text selection menu through the [editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12) interface.
 
-1. Customize menu items through the onCreateMenu method. By operating the Array<[TextMenuItem](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitem12-object-description)> array, you can add or remove displayed menu items. Define the menu item name, icon, ID, and other content in [TextMenuItem](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitem12-object-description).
+1. Customize menu items through the onCreateMenu method. By operating the Array<[TextMenuItem](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitem12)> array, you can add or remove displayed menu items. Define the menu item name, icon, ID, and other content in [TextMenuItem](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitem12).
 
 2. Handle menu item click events through the onMenuItemClick method. When it returns false, the system default logic will be executed.
 
@@ -69,7 +69,7 @@ struct WebComponent {
   onMenuItemClick(menuItem: TextMenuItem, textRange: TextRange): boolean {
     if (menuItem.id.equals(TextMenuItemId.CUT)) {
       // User-defined behavior
-      console.info('intercept id：CUT')
+      console.info('intercept id: CUT')
       return true; // Return true to not execute the system callbacko skip the system callback
     } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
       // User-defined behavior
@@ -77,11 +77,11 @@ struct WebComponent {
       return false; // Return false to execute the system callbackto execute the system callback
     } else if (menuItem.id.equals(TextMenuItemId.of('customItem1'))) {
       // User-defined behavior
-      console.info('intercept id：customItem1')
+      console.info('intercept id: customItem1')
       return true; // When the user-defined menu option returns true, the menu remains open after clicking; when it returns false, the menu closes.urns true, the menu remains open after clicking; when it returns false, the menu closes.
     } else if (menuItem.id.equals(TextMenuItemId.of('customItem2'))) {
       // User-defined behavior
-      console.info('intercept id：customItem2')
+      console.info('intercept id: customItem2')
       return true;
     }
     return false; // Returns the default value false.e default value false.

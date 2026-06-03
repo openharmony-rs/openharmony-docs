@@ -6,7 +6,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d995619613c5a0ea556fde817ece4c1ff6754f94 translatedAt=2026-06-02T08:40:12.689Z pushedAt=2026-06-03T05:43:49.749Z -->
+<!-- md-trans-meta sourceCommit=d995619613c5a0ea556fde817ece4c1ff6754f94 translatedAt=2026-06-02T08:40:12.689Z pushedAt=2026-06-03T11:37:37.987Z -->
 
 ## When to Use
 
@@ -392,7 +392,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    }
    if (store !== undefined) {
      try {
-       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['测试']);
+       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['test']);
        while (resultSet.goToNextRow()) {
          const name = resultSet.getValue(resultSet.getColumnIndex('name'));
          hilog.info(DOMAIN, 'rdbDataPersistence', `name=${name}`);

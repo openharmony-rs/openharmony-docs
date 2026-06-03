@@ -6,7 +6,7 @@
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d995619613c5a0ea556fde817ece4c1ff6754f94 translatedAt=2026-06-02T08:38:43.107Z pushedAt=2026-06-03T05:43:56.779Z -->
+<!-- md-trans-meta sourceCommit=d995619613c5a0ea556fde817ece4c1ff6754f94 translatedAt=2026-06-02T08:38:43.107Z pushedAt=2026-06-03T10:57:27.412Z -->
 
 ## How do I view detailed SQL execution error logs of an RDB store?
 
@@ -80,7 +80,7 @@ When relational data is used, different file artifacts may be generated. The pur
 
 3. Check whether the service code performs the following operations: After [beginTransaction](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#begintransaction) is called to start a transaction and before the transaction is committed, [execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12) or [executeSql](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#executesql) is called to delete trigger a, delete table A, and recreate table A in sequence. Later, deleting trigger a again fails.
 
-   - Yes:Avoid performing similar operations before a transaction is committed, such as deleting trigger a, deleting table A, recreating table A, and then deleting trigger a again.
+   - Yes: Avoid performing similar operations before a transaction is committed, such as deleting trigger a, deleting table A, recreating table A, and then deleting trigger a again.
 
    - No: Go to the next step.
 
@@ -223,3 +223,5 @@ When relational data is used, different file artifacts may be generated. The pur
    - Yes: Provide hilog system logs and contact technical support.
 
    - No: Ensure that the query conditions are as expected and can return data.
+  
+<!--no_check-->

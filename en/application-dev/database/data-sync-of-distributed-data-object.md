@@ -530,11 +530,3 @@ function getRemoteDeviceId() {
   return deviceId;
 }
 ```
-
-## Samples
-
-For distributed data object development, the following samples are available for reference:
-
-- [Device Management (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication)
-
-- [Distributed Notepad (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedNote)

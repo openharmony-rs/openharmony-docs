@@ -6,7 +6,7 @@
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=444d4b7458e1317b3c2f1a471488b9c4b8344c2e translatedAt=2026-06-03T06:17:55.163Z pushedAt=2026-06-03T09:22:43.495Z -->
+<!-- md-trans-meta sourceCommit=444d4b7458e1317b3c2f1a471488b9c4b8344c2e translatedAt=2026-06-03T06:17:55.163Z pushedAt=2026-06-03T11:04:47.441Z -->
 
 ## When to Use
 
@@ -108,7 +108,7 @@ The common APIs for setting image effects using filters are shown in the table b
     - You can use the OH_Filter_Brighten() API to add a brightening effect to the filter.
 
       ``` C++
-      float brightness = 0.5; // Brightening level (0~1)ng level (0~1)
+      float brightness = 0.5; // Brightening level (0~1)
       EffectErrorCode errCodeEffect = OH_Filter_Brighten(filter, brightness);
       ```
 
