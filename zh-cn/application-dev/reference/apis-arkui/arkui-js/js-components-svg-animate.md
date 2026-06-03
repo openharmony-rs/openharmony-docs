@@ -87,7 +87,7 @@
 ```
 
 
-![zh-cn_image_0000001127284938](figures/zh-cn_image_0000001127284938.gif)
+![example-1](figures/example-1.gif)
 
 
 ```html
