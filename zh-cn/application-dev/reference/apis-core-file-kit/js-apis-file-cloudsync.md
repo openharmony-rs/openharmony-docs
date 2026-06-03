@@ -135,6 +135,8 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 云盘同步对象添加同步过程事件监听。
 
+当应用首次注册callback时，SyncProgress中的SyncState初始返回值为4，代表COMPLETED；后续重新注册时，该值将反映实际同步结果，例如若上次上行失败，返回值为1，代表UPLOAD_FAILED。
+
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **参数：**

@@ -372,6 +372,10 @@ enum OH_CapturePickerMode
 | OH_CAPTURE_PICKER_MODE_WINDOW_ONLY = 0 | 仅显示窗口模式。 |
 | OH_CAPTURE_PICKER_MODE_SCREEN_ONLY = 1 | 仅显示屏幕模式。 |
 | OH_CAPTURE_PICKER_MODE_SCREEN_AND_WINDOW = 2 | 显示屏幕和窗口模式（默认模式）。 |
+| OH_CAPTURE_PICKER_MODE_APP_ONLY = 3 | 仅显示应用模式。<br>**起始版本：** 26.0.0 |
+| OH_CAPTURE_PICKER_MODE_WINDOW_AND_APP = 4 | 同时显示窗口和应用模式。<br>**起始版本：** 26.0.0 |
+| OH_CAPTURE_PICKER_MODE_SCREEN_AND_APP = 5 | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0 |
+| OH_CAPTURE_PICKER_MODE_SCREEN_WINDOW_AND_APP = 6 | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明

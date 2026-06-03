@@ -170,7 +170,7 @@ The service is abnormal.
 **可能原因**
 
 1. 权限管理服务无法正常启动。
-2. IPC数据读取写入失败。
+2. IPC（Inter-Process Communication，进程间通信）数据读取写入失败。
 
 **处理步骤**
 
@@ -241,7 +241,7 @@ The request already exists.
 
 **处理步骤**
 
-请处理完上次请求。
+请等待上一次权限请求完成，并根据上一次请求的返回结果完成授权处理后再重新发起请求。
 
 
 ## 12100011 输入的所有权限均已被授权
@@ -336,5 +336,5 @@ The queried data exceeds the upper limit.
 
 **处理步骤**
 
-请减少单次查询的权限或应用数量，分批进行查询。具体上限请参考[@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)中对应接口的参数说明。
+请减少单次查询的权限或应用数量，分批进行查询。具体上限请参考[queryStatusByPermission](js-apis-abilityAccessCtrl-sys.md#querystatusbypermission)和[queryStatusByTokenID](js-apis-abilityAccessCtrl-sys.md#querystatusbytokenid)接口的参数说明。
 <!--DelEnd-->

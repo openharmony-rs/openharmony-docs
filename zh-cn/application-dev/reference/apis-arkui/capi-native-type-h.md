@@ -262,6 +262,7 @@
 | [OH_ArkUI_LineBreakStrategy](#oh_arkui_linebreakstrategy) | OH_ArkUI_LineBreakStrategy | 换行策略类型枚举。 |
 | [ArkUI_RawInputEventType](#arkui_rawinputeventtype) | ArkUI_RawInputEventType | 原始输入事件类型枚举。 |
 | [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | OH_ArkUI_CrossLanguageOperatingStatus | 跨语言配置项的节点树操作状态。 |
+| [OH_ArkUI_NodeMountPolicy](#oh_arkui_nodemountpolicy) | OH_ArkUI_NodeMountPolicy | 子节点挂载策略类型枚举。 |
 
 ### 函数
 
@@ -3863,6 +3864,21 @@ enum OH_ArkUI_CrossLanguageOperatingStatus
 | OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1 | 启用，表示当该配置项应用到节点时，节点的节点树操作状态将被启用。 |
 | OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2 | 禁用，表示当该配置项应用到节点时，节点的节点树操作状态将被禁用。 |
 
+### OH_ArkUI_NodeMountPolicy
+
+```c
+enum OH_ArkUI_NodeMountPolicy
+```
+**描述**
+
+子节点挂载策略类型枚举。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0 | 如果需要将[RenderNode](./js-apis-arkui-renderNode.md)作为子节点挂载，此RenderNode必须是唯一子节点。 |
+| OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1 | 允许同时挂载多个[typeNode](./js-apis-arkui-frameNode.md#typenode12)与RenderNode。 |
 
 ## 函数说明
 

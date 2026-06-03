@@ -1057,7 +1057,7 @@ constructor(options: LinearGradientOptions)
 
 constructor(options: RadialGradientOptions)
 
-用于创建RadialGradientOptions对象的构造函数。
+用于创建RadialGradientStyle对象的构造函数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1091,7 +1091,7 @@ constructor(options: RadialGradientOptions)
 
 constructor(color: ResourceColor)
 
-用于创建ResourceColor对象的构造函数。
+用于创建ColorShaderStyle对象的构造函数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

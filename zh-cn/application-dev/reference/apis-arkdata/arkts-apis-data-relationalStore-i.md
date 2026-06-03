@@ -16,7 +16,7 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 数据库文件名，也是数据库唯一标识符。同一进程禁止创建两个同名的数据库，否则可能导致端端同步、端云同步、静默访问以及密钥备份等功能出现异常。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| name | string | 否 | 否 | 数据库文件名，也是数据库唯一标识符，不能为空字符串且不能包含路径分隔符/。同一进程禁止创建两个同名的数据库，否则可能导致端端同步、端云同步、静默访问以及密钥备份等功能出现异常。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | securityLevel | [SecurityLevel](arkts-apis-data-relationalStore-e.md#securitylevel) | 否 | 否 | 设置数据库安全级别。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | encrypt | boolean | 否 | 是 | 指定数据库是否加密，默认非加密。数据库创建完成后，此参数不允许直接修改。如需变更数据库加密状态，请调用[rekeyEx](arkts-apis-data-relationalStore-RdbStore.md#rekeyex22)接口进行更新操作。<br/> true：加密。<br/> false：非加密。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | dataGroupId<sup>10+</sup> | string | 否 | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应的沙箱路径下创建RdbStore实例。<!--RP1End--><br/>**模型约束：** 此属性仅在Stage模型下可用。<br/>从API version 10开始，支持此可选参数。dataGroupId共享沙箱的方式不支持多进程访问加密数据库，当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
@@ -55,9 +55,9 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 资产的名称。 |
-| uri | string | 否 | 否 | 资产的uri，在系统里的绝对路径。 |
-| path | string | 否 | 否 | 资产在应用沙箱里的路径。 |
+| name | string | 否 | 否 | 资产的名称，长度不超过256字节。 |
+| uri | string | 否 | 否 | 资产的uri，在系统里的绝对路径，路径长度不超过1024字节。 |
+| path | string | 否 | 否 | 资产在应用沙箱里的路径，路径长度不超过1024字节。 |
 | createTime | string | 否 | 否 | 资产被创建出来的时间。 |
 | modifyTime | string | 否 | 否 | 资产最后一次被修改的时间。 |
 | size | string | 否 | 否 | 资产占用空间的大小。在端云同步机制中，本字段作为判定资产是否发生变更的关键依据之一，需确保在全链路中保持统一、一致的存储格式与取值逻辑。建议所有系统节点均采用标准化处理方式（单位为字节（Byte），取值为非负整数），避免因格式差异导致同步异常或误判。 |
@@ -91,7 +91,7 @@
 | tableType<sup>23+</sup> |  [DistributedTableType](arkts-apis-data-relationalStore-e.md#distributedtabletype23)  | 否 | 是 | 分布式表类型。DEVICE_COLLABORATION表示设备协作表；SINGLE_VERSION表示单版本表。跨设备数据同步时，默认值为DEVICE_COLLABORATION；端云数据同步时，默认值为SINGLE_VERSION，不支持DEVICE_COLLABORATION。 |
 | assetConflictPolicy | [AssetConflictPolicy](arkts-apis-data-relationalStore-e.md#assetconflictpolicy) | 否 | 是 | 资产冲突策略。默认值为CONFLICT_POLICY_DEFAULT。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | assetTempPath | string | 否 | 是 | 资产临时路径。仅当assetConflictPolicy值为CONFLICT_POLICY_TEMP_PATH时生效，需指定为[distributedfiles](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)下的临时路径，格式示例：tmp/，若未填写或路径不合规，将抛出 401 错误码。默认值为空。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| assetDownloadOnDemand | boolean | 否 | 是 | 是否按需下载资产。true表示仅下行数据到本地，当需要下载资产时，调用[cloudSync](arkts-apis-data-relationalStore-RdbStore.md#cloudsync)接口触发资产下载；false表示数据与资产都下行到本地。默认值为false。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。                   |
+| assetDownloadOnDemand | boolean | 否 | 是 | 是否按需下载资产。true表示仅下行数据到本地，当需要下载资产时，调用[cloudSyncEx](arkts-apis-data-relationalStore-RdbStore.md#cloudsyncex)接口触发资产下载；false表示数据与资产都下行到本地。默认值为false。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。                   |
 | autoSyncSwitch | boolean | 否 | 是 | 是否启用自动同步开关。true表示启用自动同步，false表示不启用。默认值为true。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## Statistic<sup>10+</sup>
@@ -181,8 +181,8 @@
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | code | number | 否 | 否 | 表示执行SQL返回的错误码，对应的取值和含义请见[sqlite错误码](https://www.sqlite.org/rescode.html) |
-| message | string | 否 | 否 | 表示执行SQL返回的错误信息。 |
-| sql | string | 否 | 否 | 表示报错执行的SQL语句。 |
+| message | string | 否 | 否 | 表示执行SQL返回的错误信息，长度不超过1024字节。 |
+| sql | string | 否 | 否 | 表示报错执行的SQL语句，长度不超过1024字节。 |
 
 ## TransactionOptions<sup>14+</sup>
 

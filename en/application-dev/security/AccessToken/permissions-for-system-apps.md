@@ -6244,3 +6244,17 @@ With this permission, the system application can obtain and delete all credentia
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 20
+
+## ohos.permission.QUERY_SPACE_OPTIMIZATION
+
+Allows an application to query the space optimization effect.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**Valid since**: 26.0.0
