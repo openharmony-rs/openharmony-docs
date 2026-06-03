@@ -58,6 +58,21 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | tag    | [HuksExternalCryptoTag](#huksexternalcryptotag)  | 否   | 否   | 参数标签，用于区分参数。 |
 | value  | boolean\|number\|bigint\|Uint8Array | 否   | 否   | 标签对应值。 |
 
+## HuksExternalErrorInfo
+
+表示外部密钥操作时，密钥管理扩展返回的详细错误信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此结构体仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| errno | number | 否 | 否 | 密钥管理扩展返回的错误码。<br>- 非0值：密钥管理扩展返回了详细错误信息，errno为具体错误码。<br>- 0值：密钥管理扩展未返回详细错误信息，errno为默认值0，开发者应通过接口异常的错误码判断错误原因。 |
+| errorDesc | string | 否 | 否 | 密钥管理扩展返回的错误描述。该字段的值与errno关联：<br>- errno非0时：密钥管理扩展返回的描述，可能为空字符串（由扩展决定）。<br>- errno为0时：空字符串。 |
+
 ## HuksExternalPinAuthState
 
 表示Ukey PIN码管理的状态值的枚举。
@@ -698,5 +713,58 @@ async function testFunction() : Promise<void>
   } catch (error) {
     console.error(`promise: setProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
   }
+}
+```
+
+
+## huksExternalCrypto.getErrorInfo
+
+getErrorInfo(): HuksExternalErrorInfo
+
+以同步方式获取最近一次外部密钥操作的详细错误信息，该错误信息由密钥管理扩展返回。
+
+> **说明：**
+>
+> 1. 此接口返回密钥管理扩展的详细错误信息（errno和errorDesc），HUKS内部错误通过接口异常抛出。
+> 2. 当密钥管理扩展未返回详细错误信息时（errno为0），errorDesc为空字符串，开发者应通过接口异常的错误码判断错误原因。
+> 3. 建议在操作失败后立即调用此接口获取详细错误信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [HuksExternalErrorInfo](#huksexternalerrorinfo) | 返回最近一次操作的错误信息。 |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+const resourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: "testKey"
+});
+
+const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
+  {
+    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
+    value: StringToUint8Array(pin)
+  }
+];
+
+try {
+  await huksExternalCrypto.authUkeyPin(resourceId, params);
+} catch (error) {
+  const errorInfo = huksExternalCrypto.getErrorInfo();
+  console.info(`errno: ${errorInfo.errno}`);
+  console.info(`errorDesc: ${errorInfo.errorDesc}`);
 }
 ```
