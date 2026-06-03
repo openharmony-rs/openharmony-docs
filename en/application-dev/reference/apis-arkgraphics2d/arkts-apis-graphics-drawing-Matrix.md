@@ -16,7 +16,7 @@ A 3 x 3 matrix is shown as below.
 Elements in the matrix from left to right and from top to bottom respectively represent a horizontal scale coefficient, a horizontal skew coefficient, a horizontal translation coefficient, a vertical skew coefficient, a vertical scale coefficient, a vertical translation coefficient, an X-axis perspective coefficient, a Y-axis perspective coefficient, and a perspective scale coefficient.
 If (x<sub>1</sub>, y<sub>1</sub>) is the source coordinate point, (x<sub>2</sub>, y<sub>2</sub>) is the coordinate point obtained by transforming the source coordinate point using the matrix, then the relationship between the two coordinate points is as follows:
 
-![matrix_xy](figures/matrix_xy.PNG)
+![matrix-xy](figures/matrix-xy.PNG)
 
 
 > **NOTE**
