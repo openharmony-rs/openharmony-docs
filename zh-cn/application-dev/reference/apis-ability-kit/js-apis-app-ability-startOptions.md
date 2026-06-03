@@ -136,6 +136,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
   ```ts
+  'use static'
   import { UIAbility, Want, StartOptions, bundleManager, CompletionHandler } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { image } from '@kit.ImageKit';

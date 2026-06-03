@@ -87,6 +87,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIAbility, AbilityConstant, EnvironmentCallback, Want, Configuration } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

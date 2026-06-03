@@ -293,8 +293,10 @@ onAppForegroundStateChange(observer: AppForegroundStateObserver): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -405,8 +407,10 @@ onAbilityFirstFrameStateChange(observer: AbilityFirstFrameStateObserver, bundleN
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -528,8 +532,10 @@ offAppForegroundStateChange(observer?: AppForegroundStateObserver): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -746,8 +752,10 @@ offAbilityFirstFrameStateChange(observer?: AbilityFirstFrameStateObserver): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -803,11 +811,11 @@ on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStat
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| number  | 已注册监听器ID，可用于[off](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appManager.md#appmanageroffapplicationstate14)接口注销监听器。 |
+| number  | 已注册监听器ID，可用于[off](js-apis-app-ability-appManager.md#appmanageroffapplicationstate14)接口注销监听器。 |
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/errorcode-universal.md)和[元能力子系统错误码](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/errorcode-ability.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1474,6 +1482,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2198,6 +2207,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { Entry, Text, Component, Button, ButtonType, State } from '@kit.ArkUI';
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2300,6 +2310,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { appManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2600,6 +2611,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

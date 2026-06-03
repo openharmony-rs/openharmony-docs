@@ -178,8 +178,10 @@ type OnAtomicServiceRequestFailureFn = (appId: string, failureCode: FailureCode,
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { AbilityConstant, AtomicServiceOptions, common, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import CompletionHandlerForAtomicService from '@ohos.app.ability.CompletionHandlerForAtomicService';

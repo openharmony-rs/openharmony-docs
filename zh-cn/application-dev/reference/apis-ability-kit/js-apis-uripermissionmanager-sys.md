@@ -144,8 +144,10 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 **示例：**
 
+ArkTS-Sta示例：
+
   ```ts
-  // ArkTS-Sta示例 
+  'use static'
   import { uriPermissionManager, wantConstant } from '@kit.AbilityKit';
   import { fileIo, fileUri } from '@kit.CoreFileKit';
   
@@ -297,8 +299,10 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 **示例：**
 
+ArkTS-Sta示例：
+
   ```ts
-  // ArkTS-Sta示例
+  'use static'
   import { uriPermissionManager, wantConstant } from '@kit.AbilityKit';
   import { fileIo, fileUri } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -431,6 +435,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
   ```ts
+  'use static'
   import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
   import { fileUri } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -572,8 +577,10 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
 **示例：**
 
+ArkTS-Sta示例：
+
   ```ts
-  // ArkTS-Sta示例
+  'use static'
   import { uriPermissionManager } from '@kit.AbilityKit';
   
   let targetBundleName = 'com.example.test_case2';
@@ -696,8 +703,10 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Sta示例：
+
   ```ts
-  // ArkTS-Sta示例
+  'use static'
   import { uriPermissionManager } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
@@ -813,6 +822,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
   ```ts
+  'use static'
   import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
   import { fileUri } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1064,6 +1074,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
   ```ts
+  'use static'
   // 拉起方应用包名为com.example.caller
   // Index.ets
   import { common, Want, wantConstant } from '@kit.AbilityKit';

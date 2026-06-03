@@ -37,6 +37,7 @@ import { TestRunner } from '@kit.TestKit';
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { TestRunner } from '@kit.TestKit';
 
 export default class UserTestRunner implements TestRunner {
