@@ -83,13 +83,8 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 | 参数项                                             | 描述                                                       |
 | -------------------------------------------------- | ---------------------------------------------------------- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
-<<<<<<< master
-| const char *field                                  | 表示数据库表中的列名。                                     |
-| const char *pattern                                | 表示要比较的指定值。                                     |
-=======
 | const char *field                                  | 表示数据库表中的列名，不能为空。                                     |
 | const char *pattern                                | 表示要比较的指定值，不能为空。                                     |
->>>>>>> master
 
 **返回：**
 
