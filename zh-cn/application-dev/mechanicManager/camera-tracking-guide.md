@@ -1,9 +1,9 @@
 # 目标拍摄跟踪开发指南
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @Marssssss-->
+<!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
 
 从API version 20开始，支持使用机械体设备控制器，提供更丰富的拍摄体验，如目标跟踪和自动构图等专业功能，支持第三方应用。
