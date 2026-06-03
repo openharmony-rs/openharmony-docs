@@ -1057,7 +1057,7 @@ menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
 
 menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 
-设置Select下拉菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响下拉菜单背景色[menuBackgroundColor](#menubackgroundcolor18)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)等参数，不建议与上述接口一起使用。
+设置Select下拉菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响下拉菜单背景色[menuBackgroundColor](#menubackgroundcolor18)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)等参数，当设置系统材质时，上述接口不生效。
 
 **起始版本：** 26.0.0
 
