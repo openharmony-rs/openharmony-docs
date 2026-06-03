@@ -151,7 +151,7 @@ crossAppSharedConfig字段配置说明：
   
   ``` TypeScript
   function publishSharedConfig(): void {
-    console.info('ttt publishSharedConfig start');
+    console.info('publishSharedConfig start');
     dataShare.createDataProxyHandle().then((dataProxyHandle: dataShare.DataProxyHandle) => {
       const newConfigData: dataShare.ProxyData[] = [
         {
