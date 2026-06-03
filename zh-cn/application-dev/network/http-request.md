@@ -862,7 +862,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
             "name": "example.com"
           }
         ],
-        "cleartextTrafficPermitted": false // 可选，自API version 20开始支持该属性。
+        "cleartextTrafficPermitted": false // 可选，自API version 18开始支持该属性。
       }
     ],
     "component-config": {
