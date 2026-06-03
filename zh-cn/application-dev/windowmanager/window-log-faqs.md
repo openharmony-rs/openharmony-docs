@@ -385,7 +385,7 @@ windowClass.showWindow();
 
 ### 窗口销毁时调用getLastWindow崩溃
 
-开发者在窗口销毁过程中（如onWindowStageDestroy、页面销毁等）调用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9-1)接口，导致应用崩溃。
+开发者在窗口销毁过程中（如[onWindowStageDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy)、[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)或页面销毁等）调用[off('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#offavoidareachange9)接口，导致应用崩溃。
 
 **典型日志信息**
 
@@ -529,21 +529,17 @@ Stack trace:
 
 **分析定位及解决**
 
-根据日志堆栈定位findWindow()调用位置，检查窗口名称是否正确。使用以下命令查找findWindow参数信息：
+1. 根据日志堆栈定位findWindow()调用位置，检查窗口名称是否正确。使用以下命令查找findWindow参数信息：
 
-```bash
-grep -n "findWindow" src/**/*.ts
-```
+   ```bash
+   grep -n "findWindow" src/**/*.ts
+   ```
 
-使用hidumper验证窗口状态：
+2. 使用hidumper验证窗口状态：
 
-```bash
-hdc shell hidumper -s WindowManagerService -a '-a'
-```
-
-解决要点：
-- 查找非主窗时使用Configuration中的窗口名称
-- findWindow之后对获取到的对象进行空校验
+   ```bash
+   hdc shell hidumper -s WindowManagerService -a '-a'
+   ```
 
 **正反案例**
 
@@ -589,17 +585,17 @@ Error code: 1300002
 
 destroyWindow()接口用于销毁对应窗口实例，该接口为异步接口，若createSubWindow接口调用时，需要销毁的窗口实例还未销毁完成，则有可能创建同名，触发1300002错误。
 
-根据日志堆栈定位createSubWindow()调用位置，查找所有createSubWindow调用位置，检查是否有使用相同窗口名称的情况：
+1. 根据日志堆栈定位createSubWindow()调用位置，查找所有createSubWindow调用位置，检查是否有使用相同窗口名称的情况：
 
-```bash
-grep -n "createSubWindow" src/**/*.ts
-```
+   ```bash
+   grep -n "createSubWindow" src/**/*.ts
+   ```
 
-在创建窗口失败后，使用hidumper查看当前窗口状态：
+2. 在创建窗口失败后，使用hidumper查看当前窗口状态：
 
-```bash
-hdc shell hidumper -s WindowManagerService -a '-a'
-```
+   ```bash
+   hdc shell hidumper -s WindowManagerService -a '-a'
+   ```
 
 解决要点：
 - 确保destroyWindow()调用后等待异步回调完成，使用await等待销毁完成
@@ -663,8 +659,6 @@ Stack trace:
 
 根据日志堆栈定位off('avoidAreaChange')调用位置，检查是否在销毁流程中（onWindowStageDestroy或aboutToDisappear等）。
 
-常见场景：销毁流程中错误调用off('avoidAreaChange')导致崩溃。
-
 解决要点：
 
 - off('avoidAreaChange')调用位置不在onWindowStageDestroy、aboutToDisappear或onDestroy等销毁回调中
@@ -715,15 +709,15 @@ BusinessError 1300004: Unauthorized operation. Possible cause: Invalid window Ty
 
 `restore()`接口只能对主窗口进行恢复操作，否则会报1300004错误。
 
- 1.使用hidumper查看窗口类型，确认窗口是否为主窗口：
+1. 使用hidumper查看窗口类型，确认窗口是否为主窗口：
 
-```bash
-hdc shell hidumper -s WindowManagerService -a '-a'
-```
+    ```bash
+    hdc shell hidumper -s WindowManagerService -a '-a'
+    ```
 
- 2.在输出中查找目标窗口，根据Type字段判断：
-- 若Type为1，则对应为主窗口（MainWindow），可以调用restore()。
-- Type不为1的窗口，均不能调用restore()。例如，通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)接口创建的窗口为子窗口，可在创建时指定子窗口名称。
+2. 在输出中查找目标窗口，根据Type字段判断：
+   - 若Type为1，则对应为主窗口（MainWindow），可以调用restore()。
+   - Type不为1的窗口，均不能调用restore()。例如，通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)接口创建的窗口为子窗口，可在创建时指定子窗口名称。
 
 ### 子窗口调用getWindowSystemBarProperties()崩溃
 
