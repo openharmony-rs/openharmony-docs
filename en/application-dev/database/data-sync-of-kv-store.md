@@ -364,8 +364,6 @@ The following uses a single KV store as an example to describe how to implement 
 
 For KV Store development, the following samples are available for reference:
 
-- [Distributed Network Authentication (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication)
-
 - [Distributed Data Management (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/Kvstore)
 
 - [Distributed Music Player (JS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/JsDistributedMusicPlayer)

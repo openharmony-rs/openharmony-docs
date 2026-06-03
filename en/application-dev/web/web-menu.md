@@ -73,7 +73,7 @@ struct WebComponent {
       return true; // Return true to not execute the system callbacko skip the system callback
     } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
       // User-defined behavior
-      console.info('Do not intercept id：COPY')
+      console.info('Do not intercept id: COPY')
       return false; // Return false to execute the system callbackto execute the system callback
     } else if (menuItem.id.equals(TextMenuItemId.of('customItem1'))) {
       // User-defined behavior
