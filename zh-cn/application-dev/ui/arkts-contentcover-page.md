@@ -1,8 +1,8 @@
 # 绑定全模态页面（bindContentCover）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 

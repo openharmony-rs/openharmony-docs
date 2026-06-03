@@ -15,9 +15,9 @@
 
 在ArkTS-Dyn中使用时，开发指南参考：[@Watch装饰器：状态变量更改通知（ArkTS-Dyn）](../../../ui/state-management/arkts-watch.md)。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

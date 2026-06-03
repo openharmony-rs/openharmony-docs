@@ -12,8 +12,7 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。  
-> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -27,13 +26,9 @@ open(callback: AsyncCallback\<void\>): void
 
 打开相机，通过注册回调函数获取状态。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -53,8 +48,6 @@ open(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -69,37 +62,15 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function openCameraInput(cameraInput: camera.CameraInput): void {
-  cameraInput.open((err: BusinessError | null , data:undefined) => {
-    if (err && err!.code !== 0) {
-      console.error(`Failed to open the camera, error code: ${err.code}.`);
-      return;
-    }
-    console.info('Callback returned with camera opened.');
-  });
-}
-```
-
-
-
 ## open
 
 open(): Promise\<void\>
 
 打开相机，使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -120,8 +91,6 @@ open(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -134,34 +103,15 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function openCameraInput(cameraInput: camera.CameraInput): void {
-  cameraInput.open().then(() => {
-    console.info('Promise returned with camera opened.');
-  }).catch((error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to open the camera, error code: ${err.code}.`);
-  });
-}
-```
-
 ## open<sup>12+</sup>
 
 open(isSecureEnabled: boolean): Promise\<bigint\>
 
 打开相机。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -187,8 +137,6 @@ open(isSecureEnabled: boolean): Promise\<bigint\>
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -201,35 +149,15 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function openCameraInput(cameraInput: camera.CameraInput): void {
-  cameraInput.open(true).then(() => {
-    console.info('Promise returned with camera opened.');
-  }).catch((error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to open the camera, error code: ${err.code}.`);
-  });
-}
-```
-
 ## open<sup>18+</sup>
 
 open(type: CameraConcurrentType): Promise\<void\>
 
 以指定的并发类型打开相机。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
 
 **参数：**
 
@@ -256,9 +184,6 @@ open(type: CameraConcurrentType): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例：
-
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -271,35 +196,15 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function openCameraInput(cameraInput: camera.CameraInput): void {
-  let type: camera.CameraConcurrentType = camera.CameraConcurrentType.CAMERA_LIMITED_CAPABILITY;
-  cameraInput.open(type).then(() => {
-    console.info('Promise returned with camera opened.');
-  }).catch((error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to open the camera, error code: ${err.code}.`);
-  });
-}
-```
-
 ## close
 
 close(callback: AsyncCallback\<void\>\): void
 
 关闭相机，通过注册回调函数获取状态。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -317,9 +222,6 @@ close(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -334,35 +236,15 @@ function closeCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function closeCameraInput(cameraInput: camera.CameraInput): void {
-  cameraInput.close((err: BusinessError | null, data:undefined) => {
-    if (err && err!.code !== 0) {
-      console.error(`Failed to close the cameras, error code: ${err.code}.`);
-      return;
-    }
-    console.info('Callback returned with camera closed.');
-  });
-}
-```
-
 ## close
 
 close(): Promise\<void\>
 
 关闭相机，使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -380,9 +262,6 @@ close(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例：
-
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -392,21 +271,6 @@ function closeCameraInput(cameraInput: camera.CameraInput): void {
   }).catch((error: BusinessError) => {
     console.error(`Failed to close the cameras, error code: ${error.code}.`);
   }); 
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function closeCameraInput(cameraInput: camera.CameraInput): void {
-  cameraInput.close().then(() => {
-    console.info('Promise returned with camera closed.');
-  }).catch((error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to close the cameras, error code: ${err.code}.`);
-  });
 }
 ```
 
@@ -420,15 +284,9 @@ on(type: 'error', camera: CameraDevice, callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror23)。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -452,60 +310,15 @@ function registerCameraInputError(cameraInput: camera.CameraInput, camera: camer
 }
 ```
 
-## onError<sup>23+</sup>
-
-onError(camera: CameraDevice, callback: ErrorCallback): void
-
-监听CameraInput的错误事件，通过注册回调函数获取结果。使用callback异步回调。
-
-> **说明：**
->
-> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| camera   | [CameraDevice](arkts-apis-camera-i.md#cameradevice)          | 是   | CameraDevice对象。                                           |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取结果。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError): void {
-  console.error(`Camera input error code: ${err.code}`);
-}
-
-function registerCameraInputError(cameraInput: camera.CameraInput, camera: camera.CameraDevice): void {
-   cameraInput.onError(camera, callback);
-}
-```
-
 ## off('error')
 
 off(type: 'error', camera: CameraDevice, callback?: ErrorCallback): void
 
 注销监听CameraInput的错误事件。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror23)。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -523,42 +336,13 @@ function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: cam
 }
 ```
 
-## offError<sup>23+</sup>
-
-offError(camera: CameraDevice, callback?: ErrorCallback): void
-
-注销监听CameraInput的错误事件。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| camera   | [CameraDevice](arkts-apis-camera-i.md#cameradevice)          | 是   | CameraDevice对象。                                           |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
- 
-**示例：**
-
-```ts
-function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: camera.CameraDevice): void {
-   cameraInput.offError(camera);
-}
-```
-
-## isPhysicalCameraOrientationVariable<sup>23+</sup>
+## isPhysicalCameraOrientationVariable<sup>22+</sup>
 
 isPhysicalCameraOrientationVariable(): boolean
 
 查询设备不同折叠状态下，相机物理镜头角度是否可变。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -577,13 +361,13 @@ function isPhysicalCameraOrientationVariable(cameraInput: camera.CameraInput): b
 }
 ```
 
-## getPhysicalCameraOrientation<sup>23+</sup>
+## getPhysicalCameraOrientation<sup>22+</sup>
 
 getPhysicalCameraOrientation(): number
 
 获取设备当前折叠状态下的物理镜头角度。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -591,7 +375,7 @@ getPhysicalCameraOrientation(): number
 
 | 类型        | 说明                                         |
 | ---------- | -------------------------------------------- |
-| number    | 返回设备当前折叠状态下的物理镜头角度。<br>单位为度数（degree），取值范围为[0, 360]。 |
+| number    | 返回设备当前折叠状态下的物理镜头角度。 |
 
 **示例：**
 
@@ -602,13 +386,13 @@ function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
 }
 ```
 
-## usePhysicalCameraOrientation<sup>23+</sup>
+## usePhysicalCameraOrientation<sup>22+</sup>
 
 usePhysicalCameraOrientation(isUsed: boolean): void
 
 选择是否使用物理镜头角度。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -652,7 +436,7 @@ on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDet
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -692,7 +476,7 @@ off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionD
 
 注销监听CameraInput的镜头遮挡或脏污事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

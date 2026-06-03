@@ -2,7 +2,7 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @HarMonkey-->
+<!--Owner: @yhf-->
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
@@ -32,4 +32,3 @@
   - [查询关键资产(C/C++)](asset-native-query.md)
   - [管理群组关键资产(C/C++)](asset-native-group-access-control.md)
   - [同步（备份恢复）关键资产(C/C++)](asset-native-sync.md)
-- [Asset Store Kit术语](asset-glossary.md)

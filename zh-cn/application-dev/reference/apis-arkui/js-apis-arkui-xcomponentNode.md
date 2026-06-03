@@ -1,7 +1,7 @@
 # XComponentNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @pengzhiwen3-->
+<!--Owner: @zjsxstar-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -11,13 +11,11 @@
 
 > **说明：**
 >
-> - 从API version 12开始废弃，建议使用类型为[XComponent](./js-apis-arkui-typeNode.md#xcomponent)的typeNode的方式实现。
+> 从API version 12开始废弃，建议使用[类型为XComponent的typeNode](./js-apis-arkui-frameNode.md#xcomponent12)的方式实现。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
-> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> - 当前不支持在预览器中使用XComponentNode。
+> 当前不支持在预览器中使用XComponentNode。
 
 ## 导入模块
 
@@ -35,7 +33,7 @@ XComponentNode的构造函数。
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 12开始废弃，建议使用[createNode](./js-apis-arkui-typeNode.md#createnodexcomponent)替代。
+> 从API version 11开始支持，从API version 12开始废弃，建议使用[createNode](./js-apis-arkui-frameNode.md#createnodexcomponent12)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

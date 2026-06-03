@@ -1,10 +1,4 @@
 # 自定义声明式节点 (BuilderNode)（ArkTS-Sta）
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @sunbees-->
-<!--Designer: @sunbees-->
-<!--Tester: @khq-->
-<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -36,7 +30,7 @@ BuilderNode仅可作为叶子节点进行使用。如有更新需要，建议使
 >
 > - 如果BuilderNode挂载在FrameNode或者NodeContainer组件上，则使用父节点的布局约束进行布局。
 >
-> - 如果BuilderNode的FrameNode通过[getRenderNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#getrendernode)形式将自己的节点挂载在RenderNode节点上，由于其FrameNode未上树，其大小默认为0，需要通过构造函数中的[RenderOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions)的selfIdealSize属性显式指定布局约束大小。
+> - 如果BuilderNode的FrameNode通过[getRenderNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#getrendernode)形式将自己的节点挂载在RenderNode节点上，由于其FrameNode未上树，其大小默认为0，需要通过构造函数中的[selfIdeaSize](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions)显式指定布局约束大小。
 >
 > - BuilderNode的预加载并不会减少组件的创建时间。Web组件创建的时候需要在内核中加载资源，预创建不能减少Web组件的创建的时间，但是可以让内核进行预加载，减少正式使用时候内核的加载耗时。
 
@@ -60,27 +54,23 @@ BuilderNode对象为一个模板类，需要在创建的时候指定类型。该
 
 BuilderNode的根节点直接作为[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)的[makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode)返回值。
 
-<!-- @[BuilderNodeMakeNodeSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderNode/entry/src/main/ets/pages/samples/BuilderNodeMakeNode.ets) -->
-
 ```ts
 import {
-  Builder,
+  Text,
   Column,
   Component,
-  Entry,
-  FontWeight,
-  NodeContainer,
-  Row,
-  Text,
   UIContext,
+  Builder,
+  Entry,
+  Row,
   wrapBuilder,
-  BuilderNode,
-  FrameNode,
-  NodeController,
-  State
-} from '@kit.ArkUI';
+  NodeContainer,
+  FontWeight
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
 
-export class Params {
+class Params {
   text: string = "";
 
   constructor(text: string) {
@@ -97,7 +87,7 @@ function buildText(params: Params) {
   }
 }
 
-export class TextNodeController extends NodeController {
+class TextNodeController extends NodeController {
   private textNode: BuilderNode<Params> | null = null;
   private message: string = "DEFAULT";
 
@@ -118,7 +108,7 @@ export class TextNodeController extends NodeController {
 struct Index {
   @State message: string = "hello";
 
-  build(): void {
+  build() {
     Row() {
       Column() {
         NodeContainer(new TextNodeController(this.message))
@@ -136,30 +126,25 @@ struct Index {
 
 结合使用BuilderNode和RenderNode。
 
-开发者将BuilderNode的RenderNode挂载到其他RenderNode下时，必须显式指定[RenderOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions)中selfIdealSize属性的具体数值，该selfIdealSize属性的值将作为BuilderNode的布局约束。不建议采用这种方式挂载节点。
-
-<!-- @[BuilderNodeRenderNodeSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderNode/entry/src/main/ets/pages/samples/BuilderNodeRenderNode.ets) -->
+将BuilderNode的RenderNode挂载到其他RenderNode下时，需要显式指定[selfIdeaSize](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions)的大小作为BuilderNode的布局约束。不建议采用这种方式挂载节点。
 
 ```ts
 import {
-  Builder,
+  Text,
   Column,
   Component,
-  Entry,
-  FontWeight,
-  NodeContainer,
-  Row,
-  Text,
   UIContext,
+  Builder,
+  Entry,
+  Row,
   wrapBuilder,
-  BuilderNode,
-  FrameNode,
-  NodeController,
-  RenderNode,
-  State
-} from '@kit.ArkUI';
+  NodeContainer,
+  FontWeight
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { NodeController, BuilderNode, FrameNode, RenderNode } from '@ohos.arkui.node';
 
-export class Params {
+class Params {
   text: string = "";
 
   constructor(text: string) {
@@ -176,7 +161,7 @@ function buildText(params: Params) {
   }
 }
 
-export class TextNodeController extends NodeController {
+class TextNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private textNode: BuilderNode<Params> | null = null;
   private message: string = "DEFAULT";
@@ -207,7 +192,7 @@ export class TextNodeController extends NodeController {
 struct Index {
   @State message: string = "hello";
 
-  build(): void {
+  build() {
     Row() {
       Column() {
         NodeContainer(new TextNodeController(this.message))
@@ -233,34 +218,47 @@ struct Index {
 
 使用[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode-static.md#updateconfiguration)触发BuilderNode中节点的全量更新。
 
-<!-- @[BuilderNodeUpdateTreeSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderNode/entry/src/main/ets/pages/samples/BuilderNodeUpdateTree.ets) -->
-
 ```ts
 import {
-  Builder,
-  Button,
-  ClickEvent,
-  Color,
+  Text,
   Column,
   Component,
-  Entry,
-  FontWeight,
-  NodeContainer,
-  Row,
-  Text,
   UIContext,
+  Builder,
+  Entry,
+  Row,
   wrapBuilder,
-  State,
-  BuilderNode,
-  FrameNode,
-  NodeController
-} from '@kit.ArkUI';
+  NodeContainer,
+  FontWeight,
+  ClickEvent,
+  Button,
+  Color
+} from '@ohos.arkui.component';
+import { State, PropRef } from '@ohos.arkui.stateManagement';
+import { NodeController, BuilderNode, FrameNode, RenderNode } from '@ohos.arkui.node';
 
-export class Params {
+class Params {
   text: string = '';
 
   constructor(text: string) {
     this.text = text;
+  }
+}
+
+// 自定义组件
+@Component
+struct TextBuilder {
+  @PropRef message: string = 'TextBuilder';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .backgroundColor(Color.Gray)
+      }
+    }
   }
 }
 
@@ -270,10 +268,11 @@ function buildText(params: Params) {
     Text(params.text)
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
+    TextBuilder({ message: params.text }) // 自定义组件
   }
 }
 
-export class TextNodeController extends NodeController {
+class TextNodeController extends NodeController {
   private textNode: BuilderNode<Params> | null = null;
   private message: string = '';
 
@@ -288,7 +287,7 @@ export class TextNodeController extends NodeController {
     return this.textNode!.getFrameNode()!;
   }
 
-  update(message: string): void {
+  update(message: string) {
     if (this.textNode !== null) {
       this.textNode!.update(new Params(message));
     }
@@ -302,7 +301,7 @@ struct Index {
   private textNodeController: TextNodeController = new TextNodeController(this.message);
   private count: number = 0;
 
-  build(): void {
+  build() {
     Row() {
       Column() {
         NodeContainer(this.textNodeController)
@@ -336,40 +335,54 @@ struct Index {
 
 ## 通过系统环境变化更新节点
 
-使用[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode-static.md#updateconfiguration)监听[@ohos.app.ability.Configuration (环境变量)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)变化事件，以触发节点的全量更新。
+使用[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode-static.md#updateconfiguration)监听[系统环境变化](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)事件，以触发节点的全量更新。
 
 > **说明：**
 >
 > updateConfiguration接口用于通知对象进行更新，更新所使用的系统环境取决于应用当前系统环境的变化。
 
-<!-- @[BuilderNodeUpdateConfigurationSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderNode/entry/src/main/ets/pages/samples/BuilderNodeUpdateConfiguration.ets) -->
-
 ```ts
 import {
-  $r,
-  Builder,
-  Button,
-  ClickEvent,
+  Text,
   Column,
   Component,
-  Entry,
-  FontWeight,
-  NodeContainer,
-  Row,
-  Text,
   UIContext,
+  Builder,
+  Entry,
+  Row,
   wrapBuilder,
-  State,
-  BuilderNode,
-  FrameNode,
-  NodeController
-} from '@kit.ArkUI';
+  NodeContainer,
+  FontWeight,
+  ClickEvent,
+  Button,
+  Color,
+  $r
+} from '@ohos.arkui.component';
+import { State, PropRef } from '@ohos.arkui.stateManagement';
+import { NodeController, BuilderNode, FrameNode, RenderNode } from '@ohos.arkui.node';
 
-export class Params {
+class Params {
   text: string = '';
 
   constructor(text: string) {
     this.text = text;
+  }
+}
+
+// 自定义组件
+@Component
+struct TextBuilder {
+  // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@PropRef
+  @PropRef message: string = 'TextBuilder';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+    }
   }
 }
 
@@ -379,10 +392,11 @@ function buildText(params: Params) {
     Text(params.text)
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
+    TextBuilder({ message: params.text }) // 自定义组件
   }.backgroundColor($r('sys.color.ohos_id_color_background'))
 }
 
-export class TextNodeController extends NodeController {
+class TextNodeController extends NodeController {
   private textNode: BuilderNode<Params> | null = null;
   private message: string = '';
 
@@ -417,7 +431,7 @@ export class TextNodeController extends NodeController {
 // 记录创建的自定义节点对象
 const builderNodeMap: Array<BuilderNode<Params>> = new Array<BuilderNode<Params>>();
 
-function updateColorMode(): void {
+function updateColorMode() {
   builderNodeMap.forEach((value, index) => {
     // 通知BuilderNode环境变量改变，触发深浅色切换
     value.updateConfiguration();
@@ -441,7 +455,7 @@ struct Index {
     this.textNodeController.deleteNode();
   }
 
-  build(): void {
+  build() {
     Row() {
       Column() {
         NodeContainer(this.textNodeController)

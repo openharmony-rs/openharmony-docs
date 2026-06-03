@@ -12,7 +12,6 @@ Focus继承自[FocusQuery](arkts-apis-camera-FocusQuery.md)。
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 11开始支持。
 
@@ -30,19 +29,15 @@ setFocusMode(afMode: FocusMode): void
 
 进行设置之前，需要先检查设备是否支持指定的焦距模式，可使用方法[isFocusModeSupported](arkts-apis-camera-FocusQuery.md#isfocusmodesupported11)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | 是   | ArkTS-Dyn： 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。<br/>ArkTS-Sta： 指定的焦距模式。目前不支持传参null或者undefined。 |
+| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | 是   | 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。       |
 
 **错误码：**
 
@@ -74,13 +69,9 @@ getFocusMode(): FocusMode
 
 获取当前的对焦模式。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -122,13 +113,9 @@ setFocusPoint(point: Point): void
 
 此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触碰点为{x，y}，则转换后的坐标点为{y/h，1-x/w}。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -167,13 +154,9 @@ getFocusPoint(): Point
 
 查询当前的焦点。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -209,25 +192,19 @@ function getFocusPoint(photoSession: camera.PhotoSession): camera.Point | undefi
 
 ## getFocalLength<sup>11+</sup>
 
-ArkTS-Dyn: getFocalLength(): number
-
-ArkTS-Sta: getFocalLength(): double
+getFocalLength(): number
 
 查询当前的焦距值。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double | 用于获取当前焦距，单位mm。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| number    | 用于获取当前焦距，单位mm。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
@@ -238,8 +215,6 @@ ArkTS-Sta: getFocalLength(): double
 | 7400103                |  Session not config.                                   |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -257,23 +232,3 @@ function getFocalLength(photoSession: camera.PhotoSession): number {
   return focalLength;
 }
 ```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getFocalLength(photoSession: camera.PhotoSession): double {
-  const invalidValue: double = -1;
-  let focalLength: double = invalidValue;
-  try {
-    focalLength = photoSession.getFocalLength();
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The getFocalLength call failed. error code: ${err.code}`);
-  }
-  return focalLength;
-}
-```
- 

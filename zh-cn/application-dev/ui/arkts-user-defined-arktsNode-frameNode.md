@@ -367,42 +367,19 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-<!-- @[frameNodeTree_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTree.ets) --> 
 
 ``` TypeScript
+import { UIContext } from '@ohos.arkui.UIContext';
+import { BuilderNode, FrameNode, NodeController } from '@ohos.arkui.node';
 import { BusinessError } from '@kit.BasicServicesKit';
-import {
-  Builder,
-  BuilderNode,
-  Button,
-  ClickEvent,
-  Color,
-  Column,
-  ColumnOptions,
-  Component,
-  Entry,
-  Flex,
-  FlexAlign,
-  FlexDirection,
-  FrameNode,
-  ItemAlign,
-  NodeContainer,
-  NodeController,
-  Padding,
-  Position,
-  Row,
-  SizeOptions,
-  State,
-  Text,
-  TextAlign,
-  UIContext,
-  WrappedBuilder,
-  wrapBuilder
-} from '@kit.ArkUI';
+import { Entry, Builder, Column, ColumnOptions, Button, Component, NodeContainer, WrappedBuilder, wrapBuilder, Color,
+  Position, Row, Text, FontWeight, SizeOptions, Flex, FlexDirection, ItemAlign, FlexAlign, List, ListItem,
+  TextAlign, Padding, ClickEvent } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 const TEST_TAG: string = 'FrameNode'
 
-export class Params {
+class Params {
   text: string = '';
 
   constructor(text: string) {
@@ -427,10 +404,9 @@ function buttonBuilder(params: Params) {
   }
 }
 
-type paramsbuilder = @Builder
-(a: Params) => void;
+type paramsbuilder = @Builder (a: Params) => void;
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   public buttonNode: BuilderNode<Params> | null = null;
   public frameNode: FrameNode | null = null;
   public childList: Array<FrameNode> = new Array<FrameNode>();
@@ -467,7 +443,7 @@ export class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  operationFrameNodeWithFrameNode(frameNode: FrameNode | undefined | null): void {
+  operationFrameNodeWithFrameNode(frameNode: FrameNode | undefined | null) {
     if (frameNode) {
       console.info(TEST_TAG + ' get ArkTSNode success.')
       console.info(TEST_TAG + ' check rootNode whether is modifiable ' + frameNode.isModifiable());
@@ -486,14 +462,14 @@ export class MyNodeController extends NodeController {
         console.info(TEST_TAG + ' appendChild success ');
       } catch (err) {
         console.info(TEST_TAG + ' appendChild fail :' + (err as BusinessError).code + ' : ' +
-          (err as BusinessError).message);
+        (err as BusinessError).message);
       }
       try {
         frameNode?.insertChildAfter(frameNode2, null);
         console.info(TEST_TAG + ' insertChildAfter success ');
       } catch (err) {
         console.info(TEST_TAG + ' insertChildAfter fail : ' + (err as BusinessError).code + ' : ' +
-          (err as BusinessError).message);
+        (err as BusinessError).message);
       }
       setTimeout(() => {
         try {
@@ -503,7 +479,7 @@ export class MyNodeController extends NodeController {
           console.info(TEST_TAG + ' removeChild success ');
         } catch (err) {
           console.info(TEST_TAG + ' removeChild fail : ' + (err as BusinessError).code + ' : ' +
-            (err as BusinessError).message);
+          (err as BusinessError).message);
         }
       }, 2000)
       setTimeout(() => {
@@ -512,7 +488,7 @@ export class MyNodeController extends NodeController {
           console.info(TEST_TAG + ' clearChildren success ');
         } catch (err) {
           console.info(TEST_TAG + ' clearChildren fail : ' + (err as BusinessError).code + ' : ' +
-            (err as BusinessError).message);
+          (err as BusinessError).message);
         }
       }, 4000)
     }
@@ -532,7 +508,7 @@ export class MyNodeController extends NodeController {
     return result;
   }
 
-  checkAppendChild(parent: FrameNode | undefined | null, child: FrameNode | undefined | null): void {
+  checkAppendChild(parent: FrameNode | undefined | null, child: FrameNode | undefined | null) {
     try {
       if (parent && child) {
         parent.appendChild(child);
@@ -540,7 +516,7 @@ export class MyNodeController extends NodeController {
       }
     } catch (err) {
       console.info(TEST_TAG + ' appendChild fail : ' + (err as BusinessError).code + ' : ' +
-        (err as BusinessError).message);
+      (err as BusinessError).message);
     }
   }
 }
@@ -552,10 +528,10 @@ struct Index {
   @State result: string = ''
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
+  build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-      Column() {
-        Row() {
+      List({ space: 20, initialIndex: 0 }) {
+        ListItem() {
           Column({ space: 5 } as ColumnOptions) {
             Text('验证FrameNode子节点的增、删、改功能')
             Button('对自定义FrameNode进行操作')
@@ -582,7 +558,7 @@ struct Index {
           }
         }
 
-        Row() {
+        ListItem() {
           Column({ space: 5 } as ColumnOptions) {
             Text('验证FrameNode添加子节点的特殊场景')
             Button('新增BuilderNode的代理节点')
@@ -611,7 +587,7 @@ struct Index {
           }
         }
 
-        Row() {
+        ListItem() {
           Column({ space: 5 } as ColumnOptions) {
             Text('验证FrameNode节点的查询功能')
             Button('对自定义FrameNode进行操作')
@@ -643,11 +619,13 @@ struct Index {
               })
           }
         }
-      }
+      }.height('50%')
 
       Text(`Result：\n${this.result}`)
         .fontSize(16)
         .width(400)
+        .height(200)
+        .padding(30)
         .borderWidth(1)
       Column() {
         Text('This is a NodeContainer.')
@@ -682,11 +660,11 @@ struct Index {
 >
 > 当前FrameNode如果不可修改，抛出异常信息。
 >
-> 目标父节点为 [typeNode](../reference/apis-arkui/js-apis-arkui-typeNode.md)时会校验子组件类型或个数，不满足抛出异常信息，限制情况请查看[typeNode](../reference/apis-arkui/js-apis-arkui-typeNode.md)描述。
+> 目标父节点为[typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12)时会校验子组件类型或个数，不满足抛出异常信息，限制情况请查看[typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12)描述。
 >
 > 当前不支持对无组件类型的命令式节点进行移动。
 >
-> 当前仅支持以下类型的[TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12)进行移动操作：[Stack](../reference/apis-arkui/js-apis-arkui-typeNode.md#stack)、[XComponent](../reference/apis-arkui/js-apis-arkui-typeNode.md#xcomponent)。对于其他类型的节点，移动操作不会生效。
+> 当前仅支持以下类型的[TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12)进行移动操作：[Stack](../reference/apis-arkui/js-apis-arkui-frameNode.md#stack12)、[XComponent](../reference/apis-arkui/js-apis-arkui-frameNode.md#xcomponent12)。对于其他类型的节点，移动操作不会生效。
 >
 > 当前仅支持根节点为以下类型组件的[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)进行移动操作：[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)、[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)。对于其他类型的组件，移动操作不会生效。
 
@@ -753,27 +731,14 @@ struct Index {
 ``` 
 
 ArkTS-Sta示例：
-<!-- @[frameNodeMoveTo_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeMoveTo.ets) --> 
 
 ``` TypeScript
-import {
-  Button,
-  ClickEvent,
-  Color,
-  Column,
-  ColumnOptions,
-  Component,
-  Entry,
-  FrameNode,
-  NodeContainer,
-  NodeController,
-  RowOptions,
-  UIContext,
-  typeNode
-} from '@kit.ArkUI';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { BuilderNode, FrameNode, NodeController, typeNode } from '@ohos.arkui.node';
+import { Entry, Column, ColumnOptions, Button, Component, NodeContainer, ClickEvent, RowOptions, Color } from '@ohos.arkui.component';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   uiContext: UIContext | null = null;
   rootNode: FrameNode | null = null;
   rowNode: FrameNode | null = null;
@@ -813,7 +778,7 @@ struct Index {
   private myNodeController1: MyNodeController = new MyNodeController()
   private myNodeController2: MyNodeController = new MyNodeController()
 
-  build(): void {
+  build() {
     Column({ space: 20 } as ColumnOptions) {
       NodeContainer(this.myNodeController1)
       NodeContainer(this.myNodeController2)
@@ -1033,38 +998,16 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeCommon_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeCommon.ets) --> 
-
 ``` TypeScript
-import {
-  Builder,
-  BuilderNode,
-  Button,
-  ClickEvent,
-  Color,
-  Column,
-  ColumnOptions,
-  Component,
-  Entry,
-  Flex,
-  FlexAlign,
-  FlexDirection,
-  FrameNode,
-  ItemAlign,
-  LayoutPolicy,
-  Length,
-  NodeContainer,
-  NodeController,
-  Padding,
-  Position,
-  ResourceColor,
-  Text,
-  UIContext,
-  WrappedBuilder,
-  wrapBuilder
-} from '@kit.ArkUI';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { BuilderNode, FrameNode, NodeController } from '@ohos.arkui.node';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Builder, Column, ColumnOptions, Button, Component, NodeContainer, WrappedBuilder, wrapBuilder, Color,
+  Position, Row, Text, FontWeight, SizeOptions, Flex, FlexDirection, ItemAlign, FlexAlign, List, ListItem,
+  TextAlign, Padding, ClickEvent, Length, LayoutPolicy, ResourceColor } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
-export class Params {
+class Params {
   text: string = '';
 
   constructor(text: string) {
@@ -1089,10 +1032,9 @@ function buttonBuilder(params: Params) {
   }
 }
 
-type paramsbuilder = @Builder
-(a: Params) => void;
+type paramsbuilder = @Builder (a: Params) => void;
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   public buttonNode: BuilderNode<Params> | null = null;
   public frameNode: FrameNode | null = null;
   public rootNode: FrameNode | null = null;
@@ -1129,8 +1071,7 @@ export class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  modifyNode(frameNode: FrameNode | null | undefined, widthValue: Length | LayoutPolicy | undefined,
-    backgroundColorValue: ResourceColor | undefined): void {
+  modifyNode(frameNode: FrameNode | null | undefined, widthValue: Length | LayoutPolicy | undefined, backgroundColorValue: ResourceColor | undefined) {
     if (frameNode) {
       frameNode.commonAttribute
         .width(widthValue)
@@ -1138,7 +1079,7 @@ export class MyNodeController extends NodeController {
     }
   }
 
-  addClickEvent(frameNode: FrameNode | null | undefined): void {
+  addClickEvent(frameNode: FrameNode | null | undefined) {
     if (frameNode) {
       frameNode.commonEvent.setOnClick((event: ClickEvent) => {
         console.info(`FrameNode ${JSON.stringify(event)}`);
@@ -1152,7 +1093,7 @@ export class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
+  build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Column({ space: 10 } as ColumnOptions) {
         Text('修改节点通用属性-宽高')
@@ -1167,8 +1108,8 @@ struct Index {
           .onClick((event: ClickEvent) => {
             // 获取到的是当前页面中的BuilderNode的根节点，该节点不可修改。即节点宽与背景色未发生改变。
             console.info('Check the weather the node can be modified ' +
-              this.myNodeController?.buttonNode?.getFrameNode()
-              ?.isModifiable());
+            this.myNodeController?.buttonNode?.getFrameNode()
+            ?.isModifiable());
             this.myNodeController.modifyNode(this.myNodeController?.buttonNode?.getFrameNode(), 150, Color.Gray)
           })
         Button('modify proxyFrameNode get by search')
@@ -1201,8 +1142,8 @@ struct Index {
             // 获取到的是当前页面中的BuilderNode的根节点，该类节点可增加点击事件。
             // 点击的时候优先回调通过系统组件接口设置的click事件回调，然后回调通过commonEvent增加的click监听。
             console.info('Check the weather the node can be modified ' +
-              this.myNodeController?.buttonNode?.getFrameNode()
-              ?.isModifiable());
+            this.myNodeController?.buttonNode?.getFrameNode()
+            ?.isModifiable());
             this.myNodeController.addClickEvent(this.myNodeController?.buttonNode?.getFrameNode())
           })
         Button('add click event to proxyFrameNode get by search')
@@ -1413,28 +1354,13 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeDraw_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeDraw.ets) --> 
-
 ``` TypeScript
-import {
-  Button,
-  ClickEvent,
-  Color,
-  Column,
-  ColumnOptions,
-  Component,
-  DrawContext,
-  Entry,
-  FrameNode,
-  LayoutConstraint,
-  NodeContainer,
-  NodeController,
-  Padding,
-  Position,
-  Row,
-  Size,
-  UIContext
-} from '@kit.ArkUI'
+import drawing from '@ohos.graphics.drawing';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { FrameNode, NodeController, LayoutConstraint, DrawContext } from '@ohos.arkui.node';
+import { Entry, Column, ColumnOptions, Button, Component, NodeContainer, Color,
+  SizeOptions, Padding, ClickEvent, Row } from '@ohos.arkui.component';
+import { Size, Position } from '@kit.ArkUI'
 
 function GetChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
   const size = child.getUserConfigSize();
@@ -1456,7 +1382,7 @@ function GetChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode
   return res;
 }
 
-export class MyFrameNode extends FrameNode {
+class MyFrameNode extends FrameNode {
   public width: number = 100;
   public offsetY: number = 0;
   private space: number = 1;
@@ -1498,7 +1424,7 @@ export class MyFrameNode extends FrameNode {
     this.setLayoutPosition(layoutPosition);
   }
 
-  onDraw(context: DrawContext): void {
+  onDraw(context: DrawContext) {
     const size = context.size;
     const canvas = context.canvas;
     canvas.drawRect({
@@ -1509,12 +1435,12 @@ export class MyFrameNode extends FrameNode {
     })
   }
 
-  addWidth(): void {
+  addWidth() {
     this.width = (this.width + 10) % 50 + 100;
   }
 }
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   public rootNode: MyFrameNode | null = null;
 
   makeNode(context: UIContext): FrameNode | null {
@@ -1532,7 +1458,7 @@ export class MyNodeController extends NodeController {
 struct Index {
   private nodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
+  build() {
     Row() {
       Column() {
         NodeContainer(this.nodeController)
@@ -1721,31 +1647,15 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodePosition_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodePosition.ets) --> 
-
 ``` TypeScript
-import {
-  Button,
-  ClickEvent,
-  Column,
-  Component,
-  Entry,
-  Flex,
-  FlexAlign,
-  FlexDirection,
-  FrameNode,
-  ItemAlign,
-  NodeContainer,
-  NodeController,
-  Padding,
-  Text,
-  TextAlign,
-  UIContext
-} from '@kit.ArkUI';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { FrameNode, NodeController } from '@ohos.arkui.node';
+import { Entry, Column, Button, Component, NodeContainer, Flex, FlexDirection, ItemAlign, FlexAlign,
+  Text, Padding, ClickEvent, TextAlign } from '@ohos.arkui.component';
 
 const TEST_TAG: string = 'FrameNode'
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   public frameNode: FrameNode | null = null;
   private rootNode: FrameNode | null = null;
 
@@ -1756,37 +1666,37 @@ export class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  getPositionToWindow(): void {
+  getPositionToWindow() {
     let positionToWindow = this.rootNode?.getPositionToWindow(); // 获取FrameNode相对于窗口的位置偏移。
-    console.info('FrameNode:x:' + positionToWindow?.x + ',y:' + positionToWindow?.y)
+    console.info('FrameNode:x:'+positionToWindow?.x+',y:'+positionToWindow?.y)
   }
 
-  getPositionToParent(): void {
+  getPositionToParent() {
     let positionToParent = this.rootNode?.getPositionToParent(); // 获取FrameNode相对于父组件的位置偏移。
-    console.info('FrameNode:x:' + positionToParent?.x + ',y:' + positionToParent?.y)
+    console.info('FrameNode:x:'+positionToParent?.x+',y:'+positionToParent?.y)
   }
 
-  getPositionToScreen(): void {
+  getPositionToScreen() {
     let positionToScreen = this.rootNode?.getPositionToScreen(); // 获取FrameNode相对于屏幕的位置偏移。
-    console.info('FrameNode:x:' + positionToScreen?.x + ',y:' + positionToScreen?.y)
+    console.info('FrameNode:x:'+positionToScreen?.x+',y:'+positionToScreen?.y)
   }
 
-  getPositionToWindowWithTransform(): void {
+  getPositionToWindowWithTransform() {
     let positionToWindowWithTransform =
       this.rootNode?.getPositionToWindowWithTransform(); // 获取FrameNode相对于窗口带有绘制属性的位置偏移。
-    console.info('FrameNode:x:' + positionToWindowWithTransform?.x + ',y:' + positionToWindowWithTransform?.y)
+    console.info('FrameNode:x:'+positionToWindowWithTransform?.x+',y:'+positionToWindowWithTransform?.y)
   }
 
-  getPositionToParentWithTransform(): void {
+  getPositionToParentWithTransform() {
     let positionToParentWithTransform =
       this.rootNode?.getPositionToParentWithTransform(); // 获取FrameNode相对于父组件带有绘制属性的位置偏移。
-    console.info('FrameNode:x:' + positionToParentWithTransform?.x + ',y:' + positionToParentWithTransform?.y)
+    console.info('FrameNode:x:'+positionToParentWithTransform?.x+',y:'+positionToParentWithTransform?.y)
   }
 
-  getPositionToScreenWithTransform(): void {
+  getPositionToScreenWithTransform() {
     let positionToScreenWithTransform =
       this.rootNode?.getPositionToScreenWithTransform(); // 获取FrameNode相对于屏幕带有绘制属性的位置偏移。
-    console.info('FrameNode:x:' + positionToScreenWithTransform?.x + ',y:' + positionToScreenWithTransform?.y)
+    console.info('FrameNode:x:'+positionToScreenWithTransform?.x+',y:'+positionToScreenWithTransform?.y)
   }
 }
 
@@ -1795,7 +1705,7 @@ export class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
+  build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Button('getPositionToWindow')
         .width(300)
@@ -1854,7 +1764,7 @@ struct Index {
 
 ## 通过typeNode创建具体类型的FrameNode节点
 
-通过[typeNode](../reference/apis-arkui/js-apis-arkui-typeNode.md)创建具体类型的FrameNode节点，可以根据属性获取接口来检索用户设置的属性信息。
+通过[typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12)创建具体类型的FrameNode节点，可以根据属性获取接口来检索用户设置的属性信息。
 
 ArkTS-Dyn示例：
 
@@ -2180,35 +2090,16 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeTypeNode_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTypeNode.ets) --> 
-
 ``` TypeScript
-import {
-  Button,
-  ClickEvent,
-  Color,
-  Column,
-  Component,
-  Entry,
-  Flex,
-  FlexAlign,
-  FlexDirection,
-  FrameNode,
-  ItemAlign,
-  NodeContainer,
-  NodeController,
-  Padding,
-  Text,
-  TextAlign,
-  UIContext,
-  Visibility,
-  State,
-  typeNode,
-} from '@kit.ArkUI';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { FrameNode, NodeController, BuilderNode, typeNode } from '@ohos.arkui.node';
+import { Entry, Column, Button, Component, NodeContainer, Builder, Flex, FlexDirection, ItemAlign, FlexAlign,
+  Text, FontWeight, Padding, ClickEvent, Margin, Visibility, Color, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 const TEST_TAG: string = 'FrameNode'
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   public frameNode: typeNode.Column | null = null;
   public uiContext: UIContext | undefined = undefined;
   private rootNode: FrameNode | null = null;
@@ -2230,76 +2121,74 @@ export class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  removeChild(frameNode: FrameNode): void {
+  removeChild(frameNode: FrameNode) {
     let parent = frameNode.getParent();
     if (parent) {
       parent.removeChild(frameNode);
     }
   }
 
-  getUserConfigBorderWidth(frameNode: FrameNode): void {
+  getUserConfigBorderWidth(frameNode: FrameNode) {
     let userConfigBorderWidth = frameNode?.getUserConfigBorderWidth(); // 获取用户设置的边框宽度。
-    console.info('FrameNode:left.unit:' + userConfigBorderWidth?.left?.unit + ',left.value:' +
-      userConfigBorderWidth?.left?.value
-      + 'right.unit:' + userConfigBorderWidth?.right?.unit + ',right.value:' + userConfigBorderWidth?.right?.value
-      + 'top.unit:' + userConfigBorderWidth?.top?.unit + ',top.value:' + userConfigBorderWidth?.top?.value
-      + 'bottom.unit:' + userConfigBorderWidth?.bottom?.unit + ',bottom.value:' + userConfigBorderWidth?.bottom?.value);
+    console.info('FrameNode:left.unit:' +userConfigBorderWidth?.left?.unit + ',left.value:'+userConfigBorderWidth?.left?.value
+      + 'right.unit:'+userConfigBorderWidth?.right?.unit + ',right.value:'+userConfigBorderWidth?.right?.value
+      + 'top.unit:'+userConfigBorderWidth?.top?.unit + ',top.value:'+userConfigBorderWidth?.top?.value
+      + 'bottom.unit:'+userConfigBorderWidth?.bottom?.unit + ',bottom.value:'+userConfigBorderWidth?.bottom?.value);
   }
 
-  getUserConfigPadding(frameNode: FrameNode): void {
+  getUserConfigPadding(frameNode: FrameNode) {
     let userConfigPadding = frameNode?.getUserConfigPadding(); // 获取用户设置的内边距。
-    console.info('FrameNode:left.unit:' + userConfigPadding?.left?.unit + ',left.value:' +
-      userConfigPadding?.left?.value
-      + 'right.unit:' + userConfigPadding?.right?.unit + ',right.value:' + userConfigPadding?.right?.value
-      + 'top.unit:' + userConfigPadding?.top?.unit + ',top.value:' + userConfigPadding?.top?.value
-      + 'bottom.unit:' + userConfigPadding?.bottom?.unit + ',bottom.value:' + userConfigPadding?.bottom?.value);
+    console.info('FrameNode:left.unit:' +userConfigPadding?.left?.unit + ',left.value:'+userConfigPadding?.left?.value
+      + 'right.unit:'+userConfigPadding?.right?.unit + ',right.value:'+userConfigPadding?.right?.value
+      + 'top.unit:'+userConfigPadding?.top?.unit + ',top.value:'+userConfigPadding?.top?.value
+      + 'bottom.unit:'+userConfigPadding?.bottom?.unit + ',bottom.value:'+userConfigPadding?.bottom?.value);
   }
 
-  getUserConfigMargin(frameNode: FrameNode): void {
+  getUserConfigMargin(frameNode: FrameNode) {
     let userConfigMargin = frameNode?.getUserConfigMargin(); // 获取用户设置的外边距。
-    console.info('FrameNode:left.unit:' + userConfigMargin?.left?.unit + ',left.value:' + userConfigMargin?.left?.value
-      + 'right.unit:' + userConfigMargin?.right?.unit + ',right.value:' + userConfigMargin?.right?.value
-      + 'top.unit:' + userConfigMargin?.top?.unit + ',top.value:' + userConfigMargin?.top?.value
-      + 'bottom.unit:' + userConfigMargin?.bottom?.unit + ',bottom.value:' + userConfigMargin?.bottom?.value);
+    console.info('FrameNode:left.unit:' +userConfigMargin?.left?.unit + ',left.value:'+userConfigMargin?.left?.value
+      + 'right.unit:'+userConfigMargin?.right?.unit + ',right.value:'+userConfigMargin?.right?.value
+      + 'top.unit:'+userConfigMargin?.top?.unit + ',top.value:'+userConfigMargin?.top?.value
+      + 'bottom.unit:'+userConfigMargin?.bottom?.unit + ',bottom.value:'+userConfigMargin?.bottom?.value);
   }
 
-  getUserConfigSize(frameNode: FrameNode): void {
+  getUserConfigSize(frameNode: FrameNode) {
     let userConfigSize = frameNode?.getUserConfigSize(); // 获取用户设置的宽高。
-    console.info('FrameNode:width.unit:' + userConfigSize?.width?.unit + ',width.value:' + userConfigSize?.width?.value
-      + 'height.unit:' + userConfigSize?.height?.unit + ',height.value:' + userConfigSize?.height?.value);
+    console.info('FrameNode:width.unit:' +userConfigSize?.width?.unit + ',width.value:'+userConfigSize?.width?.value
+      + 'height.unit:'+userConfigSize?.height?.unit + ',height.value:'+userConfigSize?.height?.value);
   }
 
-  getId(frameNode: FrameNode): void {
+  getId(frameNode: FrameNode) {
     let id = frameNode?.getId(); // 获取用户设置的节点ID。
     console.info(`${TEST_TAG} ${id}`);
   }
 
-  getUniqueId(frameNode: FrameNode): void {
+  getUniqueId(frameNode: FrameNode) {
     let uniqueId = frameNode?.getUniqueId(); // 获取系统分配的唯一标识的节点UniqueID。
     console.info(`${TEST_TAG} ${uniqueId}`);
   }
 
-  getNodeType(frameNode: FrameNode): void {
+  getNodeType(frameNode: FrameNode) {
     let nodeType = frameNode?.getNodeType(); // 获取节点的类型。
     console.info(`${TEST_TAG} ${nodeType}`);
   }
 
-  getOpacity(frameNode: FrameNode): void {
+  getOpacity(frameNode: FrameNode) {
     let opacity = frameNode?.getOpacity(); // 获取节点的不透明度。
     console.info(`${TEST_TAG} ${opacity}`);
   }
 
-  isVisible(frameNode: FrameNode): void {
+  isVisible(frameNode: FrameNode) {
     let visible = frameNode?.isVisible(); // 获取节点是否可见。
-    console.info('FrameNode:' + visible);
+    console.info('FrameNode:'+visible);
   }
 
-  isClipToFrame(frameNode: FrameNode): void {
+  isClipToFrame(frameNode: FrameNode) {
     let clipToFrame = frameNode?.isClipToFrame(); // 获取节点是否是剪裁到组件区域。
     console.info(`${TEST_TAG} ${clipToFrame}`);
   }
 
-  isAttached(frameNode: FrameNode): void {
+  isAttached(frameNode: FrameNode) {
     let attached = frameNode?.isAttached(); // 获取节点是否被挂载到主节点树上。
     console.info(`${TEST_TAG} ${attached}`);
   }
@@ -2311,7 +2200,7 @@ struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   @State index: number = 0;
 
-  build(): void {
+  build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Column() {
         Text('This is a NodeContainer.')
@@ -2605,33 +2494,15 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-
-<!-- @[frameNodeDisposed_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeDisposed.ets) --> 
-
 ``` TypeScript
-import {
-  Builder,
-  BuilderNode,
-  Button,
-  ClickEvent,
-  Color,
-  Column,
-  ColumnOptions,
-  Component,
-  Entry,
-  FontWeight,
-  FrameNode,
-  NodeContainer,
-  NodeController,
-  Text,
-  UIContext,
-  WrappedBuilder,
-  wrapBuilder
-} from '@kit.ArkUI';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { BuilderNode, FrameNode, NodeController } from '@ohos.arkui.node';
+import { Entry, Builder, Column, ColumnOptions, Button, Component, NodeContainer, WrappedBuilder, wrapBuilder, Color,
+  Text, FontWeight, ClickEvent } from '@ohos.arkui.component';
 
 const TEST_TAG: string = 'FrameNode'
 
-export class Params {
+class Params {
   text: string = '';
 
   constructor(text: string) {
@@ -2670,10 +2541,9 @@ function buttonBuilder(params: Params) {
   }
 }
 
-type paramsbuilder = @Builder
-(a: Params) => void;
+type paramsbuilder = @Builder (a: Params) => void;
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   public builderNode: BuilderNode<Params> | null = null;
   public rootNode: FrameNode | null = null;
   private wrapBuilder: WrappedBuilder<paramsbuilder> = wrapBuilder(buttonBuilder);
@@ -2709,7 +2579,7 @@ export class MyNodeController extends NodeController {
   }
 
   disposeFrameNode(): void {
-    if (this.rootNode !== null && this.builderNode !== null && this.builderNode!.getFrameNode()) {
+    if (this.rootNode !== null && this.builderNode !== null) {
       console.info(`${TEST_TAG} disposeFrameNode`);
       this.rootNode!.removeChild(this.builderNode!.getFrameNode()!);
       this.builderNode?.dispose();
@@ -2724,7 +2594,7 @@ export class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
+  build() {
     Column({ space: 4 } as ColumnOptions) {
       NodeContainer(this.myNodeController)
       Button('FrameNode dispose')
@@ -2815,25 +2685,14 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeIsDisposed_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeIsDisposed.ets) --> 
-
 ``` TypeScript
-import {
-  Button,
-  Color,
-  Column,
-  ColumnOptions,
-  Component,
-  Entry,
-  FrameNode,
-  NodeContainer,
-  NodeController,
-  State,
-  Text,
-  UIContext
-} from '@kit.ArkUI';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { FrameNode, NodeController, BuilderNode, typeNode } from '@ohos.arkui.node';
+import { Entry, Column, Button, Component, NodeContainer, Builder, Flex, FlexDirection, ItemAlign, FlexAlign,
+  Text, FontWeight, Padding, ClickEvent, Margin, Visibility, Color, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -2845,7 +2704,7 @@ export class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  disposeFrameNode(): void {
+  disposeFrameNode() {
     // 解除当前FrameNode对象对实体FrameNode节点的引用关系
     this.rootNode?.dispose();
   }
@@ -2869,8 +2728,8 @@ struct Index {
   @State text: string = ''
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
-    Column({ space: 4 } as ColumnOptions) {
+  build() {
+    Column() {
       NodeContainer(this.myNodeController)
       Button('FrameNode dispose')
         .onClick(() => {
@@ -3121,25 +2980,13 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeLazyForEach_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeLazyForEach.ets) --> 
-
 ``` TypeScript
-import {
-  Button,
-  Color,
-  Column,
-  Component,
-  Entry,
-  FrameNode,
-  NodeAdapter,
-  NodeContainer,
-  NodeController,
-  Row,
-  Text,
-  UIContext,
-  typeNode
-} from '@kit.ArkUI';
+import { Text, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color, TextAlign, State, PropRef, DrawContext, DrawModifier, AttributeModifier, ButtonAttribute, Size, TouchEvent, ContentSlot } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+import { AnimatorResult } from '@ohos.animator'
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AttributeUpdater } from '@ohos.arkui.modifier'
+import { NodeController, BuilderNode, FrameNode, RenderNode, NodeContent, typeNode, NodeAdapter } from '@ohos.arkui.node';
 
 const TEST_TAG: string = 'FrameNode';
 
@@ -3183,9 +3030,8 @@ class MyNodeAdapter extends NodeAdapter {
 
   // 根据当前节点总数和重载次数生成列表项的文本数据
   loadData(): void {
-    this.data = new Array<string>();
     for (let i = 0; i < this.totalNodeCount; i++) {
-      this.data.push('Adapter ListItem ' + i + ' r:' + this.reloadTimes);
+      this.data[i] = 'Adapter ListItem ' + i + ' r:' + this.reloadTimes;
     }
   }
 
@@ -3303,11 +3149,9 @@ class MyNodeAdapterController extends NodeController {
 @Component
 struct Index {
   adapterController: MyNodeAdapterController = new MyNodeAdapterController();
-
   aboutToDisappear(): void {
     this.adapterController.nodeAdapter?.dispose();
   }
-
   build() {
     Column() {
       Text('ListNode Adapter');
@@ -3633,38 +3477,14 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeLazyForEachSelect_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeLazyForEachSelect.ets) --> 
-
 ``` TypeScript
-import {
-  Builder,
-  BuilderNode,
-  Button,
-  Column,
-  Color,
-  Component,
-  DataChangeListener,
-  DataOperation,
-  Entry,
-  ExpandMode,
-  FrameNode,
-  IDataSource,
-  LazyForEach,
-  List,
-  ListItem,
-  NodeContainer,
-  NodeController,
-  Scroll,
-  ScrollAlign,
-  ScrollDirection,
-  ScrollToIndexOptions,
-  Scroller,
-  Text,
-  TextAlign,
-  UIContext,
-  wrapBuilder
-} from '@kit.ArkUI';
+import { Text, List, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color, TextAlign, State, PropRef, DrawContext, DrawModifier, AttributeModifier,
+  ButtonAttribute, Size, TouchEvent, ContentSlot, DataChangeListener, DataOperation, IDataSource, Scroller, LazyForEach, ListItem, ScrollToIndexOptions, ScrollAlign, Scroll, ScrollDirection } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+import { AnimatorResult } from '@ohos.animator'
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AttributeUpdater } from '@ohos.arkui.modifier'
+import { NodeController, BuilderNode, FrameNode, RenderNode, NodeContent, typeNode, NodeAdapter, ExpandMode } from '@ohos.arkui.node';
 
 const TEST_TAG: string = 'FrameNode ';
 
@@ -3768,7 +3588,6 @@ class MyDataSource extends BasicDataSource<StringData> {
 
 class StringData {
   message: string;
-
   constructor(message: string) {
     this.message = message;
   }
@@ -3844,8 +3663,8 @@ class MyNodeController extends NodeController {
 
   getChildWithNotExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.NOT_EXPAND);
-    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND): ${childNode?.getId()}`, 'getId');
-    if (childNode?.getId() === 'N9') {
+    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND): ${childNode!.getId()}`, 'getId');
+    if (childNode!.getId() === 'N9') {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: success.`, 'success');
     } else {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND)  result: fail.`, 'fail');
@@ -3855,7 +3674,7 @@ class MyNodeController extends NodeController {
   getChildWithExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.EXPAND);
     hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND): childNode!.getId()`, 'getId');
-    if (childNode?.getId() === 'N3') {
+    if (childNode!.getId() === 'N3') {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND)  result: success.`, 'success');
     } else {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND)  result: fail.`, 'fail');
@@ -3865,7 +3684,7 @@ class MyNodeController extends NodeController {
   getChildWithLazyExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.LAZY_EXPAND);
     hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND): childNode!.getId()`, 'getId');
-    if (childNode?.getId() === 'N3') {
+    if (childNode!.getId() === 'N3') {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: success.`, 'success');
     } else {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND)  result: fail.`, 'fail');
@@ -3940,8 +3759,6 @@ struct Index {
 > - 如果开发者希望对画布进行预期的变换，应使用[concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)而不是[setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12)，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵。
 
 **ArkTS接口调用示例：**
-
-ArkTS-Dyn示例：
 
 <!-- @[frameNodeCanvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCanvas.ets) --> 
 
@@ -4078,164 +3895,6 @@ struct Index {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-<!-- @[frameNodeCanvas_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCanvas.ets) --> 
-
-``` TypeScript
-import {
-  Column,
-  Component,
-  DrawContext,
-  DrawingCanvas,
-  Entry,
-  FrameNode,
-  NodeContainer,
-  NodeController,
-  Row,
-  UIContext
-} from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-function drawImage(canvas: DrawingCanvas) {
-  let matrix = new drawing.Matrix();
-  matrix.setTranslation(100, 100);
-  canvas.concatMatrix(matrix);
-  const pen = new drawing.Pen();
-  pen.setStrokeWidth(5);
-  pen.setColor({
-    alpha: 255,
-    red: 0,
-    green: 0,
-    blue: 255
-  });
-  canvas.attachPen(pen);
-  const brush = new drawing.Brush();
-  brush.setColor({
-    alpha: 255,
-    red: 0,
-    green: 0,
-    blue: 255
-  });
-  canvas.attachBrush(brush);
-  canvas.drawRect({
-    left: 10,
-    top: 10,
-    right: 110,
-    bottom: 60
-  });
-  canvas.detachPen();
-}
-
-function drawImage1(canvas: DrawingCanvas) {
-  let matrix = new drawing.Matrix();
-  matrix.setTranslation(100, 100);
-
-  // 1. getTotalMatrix获取的是用来记录绘制指令的临时canvas的变换矩阵
-  // 2. 如果开发者希望这个画布进行一个预期的变换，应该使用concatMatrix而不是setMatrix，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵
-  canvas.getTotalMatrix();
-  canvas.setMatrix(matrix);
-  const pen = new drawing.Pen();
-  pen.setStrokeWidth(5);
-  pen.setColor({
-    alpha: 255,
-    red: 0,
-    green: 0,
-    blue: 255
-  });
-  canvas.attachPen(pen);
-  const brush = new drawing.Brush();
-  brush.setColor({
-    alpha: 255,
-    red: 0,
-    green: 0,
-    blue: 255
-  });
-  canvas.attachBrush(brush);
-  canvas.drawRect({
-    left: 10,
-    top: 10,
-    right: 110,
-    bottom: 60
-  });
-  canvas.detachPen();
-}
-
-export class MyFrameNode extends FrameNode {
-  constructor(ctx: UIContext) {
-    super(ctx)
-  }
-
-  onDraw(context: DrawContext): void {
-    drawImage(context.canvas);
-  }
-}
-
-export class MyFrameNode1 extends FrameNode {
-  constructor(ctx: UIContext) {
-    super(ctx)
-  }
-
-  onDraw(context: DrawContext): void {
-    drawImage1(context.canvas);
-  }
-}
-
-export class MyNodeController extends NodeController {
-  makeNode(uiContext: UIContext): FrameNode | null {
-    const rootNode: FrameNode = new FrameNode(uiContext);
-    rootNode.commonAttribute.width(300).height(300);
-    const theFrameNode: MyFrameNode = new MyFrameNode(uiContext)
-    theFrameNode.commonAttribute.width(100)
-      .height(50)
-      .position({ x: 10, y: 20 })
-      .backgroundColor(Long.toInt(0xFF2787D9));
-    rootNode.appendChild(theFrameNode);
-    return rootNode;
-  }
-}
-
-export class MyNodeController1 extends NodeController {
-  makeNode(uiContext: UIContext): FrameNode | null {
-    const rootNode: FrameNode = new FrameNode(uiContext);
-    rootNode.commonAttribute.width(300).height(300);
-    const theFrameNode: MyFrameNode1 = new MyFrameNode1(uiContext);
-    theFrameNode.commonAttribute.width(100)
-      .height(50)
-      .position({ x: 10, y: 20 })
-      .backgroundColor(Long.toInt(0xFF2787D9));
-    rootNode.appendChild(theFrameNode);
-    return rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  myNodeController: MyNodeController = new MyNodeController();
-  myNodeController1: MyNodeController1 = new MyNodeController1();
-
-  build(): void {
-    Row() {
-      Column() {
-        NodeContainer(this.myNodeController);
-      }
-      .height('100%')
-      .width('45%')
-
-      Column() {
-        NodeContainer(this.myNodeController1);
-      }
-      .height('100%')
-      .width('45%')
-    }.height('100%')
-    .width('100%')
-
-  }
-}
-```
-
 ![FrameNode-canvas](./figures/frameNode-canvas.png)
 
 ## 更新当前帧节点

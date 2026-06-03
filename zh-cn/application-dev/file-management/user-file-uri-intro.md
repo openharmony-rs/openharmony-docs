@@ -72,17 +72,18 @@ URI类型可以归纳为文档类URI和媒体文件URI两类
 | 'IMG_datetime_0001' | 表示图片文件在用户文件系统中存储的文件名去掉后缀剩下的部分。 |
 | 'VID_datetime_0001' | 表示视频文件在用户文件系统中存储的文件名去掉后缀剩下的部分。 |
 | 'AUD_datetime_0001' | 表示音频文件在用户文件系统中存储的文件名去掉后缀剩下的部分。 |
-|<!--DelRow--> 'displayName.jpg' | 表示图片文件对外展示的displayName，使用[photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
-|<!--DelRow--> 'displayName.mp4' | 表示视频文件对外展示的displayName，使用[photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
-|<!--DelRow--> 'displayName.mp3' | 表示音频文件对外展示的displayName，使用[photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
+|<!--DelRow--> 'displayName.jpg' | 表示图片文件对外展示的displayName，使用[userFileManager.commitModify](../reference/apis-core-file-kit/js-apis-userFileManager-sys.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
+|<!--DelRow--> 'displayName.mp4' | 表示视频文件对外展示的displayName，使用[userFileManager.commitModify](../reference/apis-core-file-kit/js-apis-userFileManager-sys.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
+|<!--DelRow--> 'displayName.mp3' | 表示音频文件对外展示的displayName，使用[userFileManager.commitModify](../reference/apis-core-file-kit/js-apis-userFileManager-sys.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
 
 ### 媒体文件URI获取方式
 
-1. 通过PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)选择图片和视频资源，返回选择的图片和视频的URI。
+1. 通过PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)选择媒体文件，返回选择的媒体文件的URI。
 
-2. 通过[photoAccessHelper](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)模块中的[getAssets](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)或[createAsset](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset)接口获取媒体文件对应文件的URI。
+2. 通过[photoAccessHelper](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)模块中的[getAssets](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)或[createAsset](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset)接口获取媒体文件对应文件的URI。<!--Del-->
 
-3. 通过Picker的[AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)选择和保存音乐文件资源，返回选择和保存后的音乐文件的URI。
+3. 通过[userFileManager](../reference/apis-core-file-kit/js-apis-userFileManager-sys.md)模块中的[getPhotoAssets](../reference/apis-core-file-kit/js-apis-userFileManager-sys.md#getphotoassets)、[getAudioAssets](../reference/apis-core-file-kit/js-apis-userFileManager-sys.md#getaudioassets)、[createAudioAsset](../reference/apis-core-file-kit/js-apis-userFileManager-sys.md#createaudioasset10)或[createPhotoAsset](../reference/apis-core-file-kit/js-apis-userFileManager-sys.md#createphotoasset)接口获取媒体文件对应文件的URI。
+<!--DelEnd-->
 
 ### 媒体文件URI的使用方式
 

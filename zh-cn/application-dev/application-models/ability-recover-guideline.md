@@ -46,7 +46,6 @@
 
 开发者需要在应用模块初始化时启用[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的备份恢复功能。
 
-ArkTS-Dyn示例：
 <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -67,30 +66,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例：
-<!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityRecover-sta/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-// ...
-
-const DOMAIN = 0x0000;
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onCreate');
-    this.context.setRestoreEnabled(true);
-    // ...
-  }
-
-  // ...
-}
-```
-
 开发者主动保存数据，在UIAbility启动时恢复。
 
-ArkTS-Dyn示例：
 <!-- @[onSaveState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -117,35 +94,5 @@ export default class EntryAbility extends UIAbility {
   }
 
 // ···
-}
-```
-
-ArkTS-Sta示例：
-<!-- @[onSaveState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityRecover-sta/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-// ...
-
-const DOMAIN = 0x0000;
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onCreate');
-    this.context.setRestoreEnabled(true);
-    if (want && want.parameters) {
-      let recoveryMyData = want?.parameters?.['myData'];
-    }
-  }
-
-  onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>): AbilityConstant.OnSaveResult {
-    // 保存应用数据。
-    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onSaveState');
-    wantParam['myData'] = 'my1234567';
-    return AbilityConstant.OnSaveResult.ALL_AGREE;
-  }
-
-  // ...
 }
 ```

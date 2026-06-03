@@ -1,8 +1,8 @@
 # 半模态转场
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,15 +14,11 @@
 >
 > - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
-> - 不支持路由跳转。
+>  不支持路由跳转。
 
 ## bindSheet
 
-ArkTS-Dyn: bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
-
-ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: SheetOptions): this
+bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 给组件绑定半模态页面，点击后显示模态页面。
 
@@ -34,9 +30,55 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[bindSheet<sup>23+</sup>](#bindsheet23)。
 
 **ArkTS-Dyn起始版本：** 10
+
+**参数：** 
+
+| 参数名  | 类型                                        | 必填 | 说明                                                         |
+| ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| isShow  | boolean                          | 是   | 是否显示半模态页面。<br/>true：显示半模态页面。<br/>false：隐藏半模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置半模态页面内容。                                         |
+| options | [SheetOptions](#sheetoptions)               | 否   | 配置半模态页面的可选属性。                                   |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+> **说明：**
+>
+> 1. 在非双向绑定情况下，以拖拽方式关闭半模态页面不会改变isShow参数的值。
+>
+> 2. 为了使isShow参数值与半模态界面的状态同步，建议使用[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定isShow参数。从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+>
+> 3. 在半模态单挡位向上拖拽或是多挡位上滑换挡情况下，内容在拖拽结束或换挡结束后更新显示区域。
+>
+> 4. 半模态是一个严格和宿主节点绑定在一起的弹窗。若是想实现类似“页面显示的瞬间就弹出半模态”的效果，请确认宿主节点是否已挂载上树。若宿主节点还没上树就将isShow置为true，半模态将不生效。建议使用[onAppear](ts-universal-events-show-hide.md#onappear)函数，确保在宿主节点挂载后再显示半模态。
+> 尤其是 [SheetMode](#sheetmode12枚举说明) = EMBEDDED 时，除宿主节点外，还需确保对应的页面节点成功挂载。
+>
+> 5. 半模态页面的离场动效不支持打断，动效执行期间无法响应其他手势动作。目前离场动效使用[弹簧曲线](../../../ui/arkts-spring-curve.md)，该动画曲线存在视觉上并不明显的拖尾动画。因此，在半模态退出时，视觉上半模态页面已经消失，但此时动效可能还未结束，若想再次点击拉起半模态页面则不会响应。需要等动效完全结束后，才可以再次拉起。
+>
+
+## bindSheet<sup>23+</sup>
+
+bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: SheetOptions): this
+
+给组件绑定半模态页面，点击后显示模态页面。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[bindSheet](#bindsheet)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -44,15 +86,15 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 
 | 参数名  | 类型                                        | 必填 | 说明                                                         |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isShow  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| Bindable<boolean\> \| undefined | 是   | 是否显示半模态页面。<br/>true：显示半模态页面。<br/>false：隐藏半模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
-| builder | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置半模态页面内容。                                         |
-| options | [SheetOptions](#sheetoptions) | 否   | 配置半模态页面的可选属性。  |
+| isShow  | boolean \| Bindable<boolean\> \| undefined | 是   | 是否显示半模态页面。<br/>true：显示半模态页面。<br/>false：隐藏半模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
+| builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置半模态页面内容。                                         |
+| options | [SheetOptions](#sheetoptions)               | 否   | 配置半模态页面的可选属性。                                   |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+| T | 返回当前组件。 |
 
 > **说明：**
 >
@@ -138,13 +180,7 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 14
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值    | 说明                            |
 | ------ | ----------------------------- | ----------------------------- |
@@ -156,8 +192,6 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 半模态、全模态的公共配置接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | ---------- | ------ | ------ | --------- |
@@ -175,10 +209,6 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值 | 说明           |
 | ------- | ---- | -------- |
@@ -290,35 +320,17 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 
 控制半模态的关闭。
 
-### 属性
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型       | 只读 | 可选 | 说明                                                         |
 | ------- | ---------- | ---- | ---- | ------------------------------------------------------------ |
 | dismiss | () => void | 否   | 否   | 半模态面板关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
-
-### dismiss<sup>23+</sup>
-
-dismiss(): void
-
-半模态面板关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
 
 ## SheetTitleOptions<sup>11+</sup>
 
@@ -375,74 +387,32 @@ dismiss(): void
 
 半模态关闭前的回调。
 
-### 属性
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 | 名称              | 类型                                       | 只读   | 可选   | 说明            |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------- |
-| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否    | 否    | 半模态页面关闭回调函数。开发者需要退出页面时调用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Dyn起始版本：** 12 |
-| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否    | 否    | 返回本次半模态页面退出的操作类型。<br />**说明：**<br /> DismissReason.SLIDE只生效半模态侧边弹窗形态，表示右滑退出。若镜像场景则表示左滑退出。<br /> DismissReason.SLIDE_DOWN生效半模态底部弹窗形态和居中弹窗形态，表示下滑退出。<br /> 半模态气泡弹窗形态无滑动退出能力。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-
-### dismiss<sup>23+</sup>
-
-dismiss(): void
-
-半模态面板关闭回调函数。开发者需要退出时调用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
+| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否    | 否    | 半模态页面关闭回调函数。开发者需要退出页面时调用。 |
+| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否    | 否    | 返回本次半模态页面退出的操作类型。<br />**说明：**<br /> DismissReason.SLIDE只生效半模态侧边弹窗形态，表示右滑退出。若镜像场景则表示左滑退出。<br /> DismissReason.SLIDE_DOWN生效半模态底部弹窗形态和居中弹窗形态，表示下滑退出。<br /> 半模态气泡弹窗形态无滑动退出能力。|
 
 ## SpringBackAction<sup>12+</sup>
 
 控制半模态关闭前的回弹。
 
-### 属性
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 12
-
 | 名称              | 类型                                       | 只读   | 可选   | 说明            |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------- |
 | springBack | [Callback](./ts-types.md#callback12)\<void> | 否    | 否    | 半模态页面关闭前控制回弹函数，开发者需要半模态回弹时调用。  |
-
-### springBack<sup>23+</sup>
-
-springBack(): void
-
-半模态页面关闭前控制回弹函数，开发者需要半模态回弹时调用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
 
 ## SheetKeyboardAvoidMode<sup>13+</sup>枚举说明
 
 半模态激活输入法时对软键盘的避让方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称           | 值   | 说明                         |
 | ------------------------- | ---- | -------------------------------- |
@@ -456,63 +426,6 @@ springBack(): void
 >
 > 设置POPUP_SHEET避让方式时，半模态只避让由面板内的文本框组件拉起的软键盘场景，其他场景半模态无需避让。
 >
-
-## TripleLengthDetents<sup>23+</sup>枚举说明
-
-type TripleLengthDetents = [(SheetSize | Length),SheetSize | Length | undefined,SheetSize | Length | undefined]
-
-定义了三个高度的挡位。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
-
-| 类型      | 说明                          |
-| -----------| ---------------------------- |
-| [SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length)   | 表示值类型为枚举或尺寸，挡位的初始高度。 |
-| SheetSize \| Length \| undefined     | 表示值类型为枚举或尺寸，挡位的最高高度。  |
-| SheetSize \| Length \| undefined     | 表示值类型为枚举或尺寸，挡位的最低高度。  |
-
-## DoubleLengthDetents<sup>23+</sup>枚举说明
-
-type DoubleLengthDetents = [(SheetSize | Length),SheetSize | Length | undefined]
-
-定义了两个高度的挡位。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
-
-| 类型      | 说明                          |
-| -----------| ---------------------------- |
-| [SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length)   | 挡位的初始高度，表示值类型为枚举或尺寸。 |
-| SheetSize \| Length \| undefined     | 挡位的最高高度，表示值类型为枚举或尺寸。  |
-
-## SingleLengthDetent<sup>23+</sup>枚举说明
-
-type SingleLengthDetent = [SheetSize | Length]
-
-定义了单个高度的挡位。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
-
-| 类型      | 说明                          |
-| -----------| ---------------------------- |
-| [SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length)   | 挡位的高度，表示值类型为枚举或尺寸。 |
 
 ## 示例
 ### 示例1（不同高度的半模态弹窗）

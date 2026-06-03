@@ -1,10 +1,4 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @lixingchi1; @katabanga-->
-<!--Designer: @lixingchi1; @katabanga-->
-<!--Tester: @TerryTsao-->
-<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -40,29 +34,29 @@
 
 ```text
 project/
-├── entry/                                  # ArkTS-Dyn主模块
+├── entry/                          # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── StatemgmtV1.ets     # 定义ArkTS-Dyn主模块组件ParentComp
+│                   └── Index.ets    # 定义ArkTS-Dyn主模块组件ParentComp
 │
-└── static_module/                          # ArkTS-Sta子模块
+└── static_module/                   # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── StaStatemgmtV1.ets  # 定义ArkTS-Sta自定义组件Child
+                    └── MainPage.ets  # 定义ArkTS-Sta自定义组件Child
 ```
 
 示例如下：
 
 - 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件`Child`。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-<!-- @[DynInteropStaStatemgmtV1StaStateMgmtV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/src/main/ets/components/StaStatemgmtV1.ets) -->
+```TypeScript
+'use static'
 
-``` TypeScript
-// static_module/src/main/ets/components/StaStatemgmtV1.ets
+// static_module/src/main/ets/components/MainPage.ets
 import { Component, Column, Text, Color } from '@ohos.arkui.component';
 import { State, Link, PropRef, Provide, Consume } from '@ohos.arkui.stateManagement';
 
@@ -74,54 +68,54 @@ export struct Child { // ArkTS-Sta自定义组件
   @Provide provideMessage: string = 'static Provide';
   @Consume consumeMessage: string;
 
-  build(): void {
+  build() {
     Column() {
       Text(this.stateMessage)
-        .fontSize(20)
-        .margin(10)
+        .fontSize(30)
+        .fontColor(Color.Blue)
         .onClick(() => {
           // 点击文本，修改@State状态变量
           this.stateMessage += '!';
         })
       Text(this.linkMessage)
-        .fontSize(20)
-        .margin(10)
+        .fontSize(30)
+        .fontColor(Color.Blue)
         .onClick(() => {
           // 点击文本，修改@Link状态变量
           this.linkMessage += '!';
         })
       Text(this.propMessage)
-        .fontSize(20)
-        .margin(10)
+        .fontSize(30)
+        .fontColor(Color.Blue)
         .onClick(() => {
           // 点击文本，修改@PropRef状态变量
           this.propMessage += '!';
         })
       Text(this.provideMessage)
-        .fontSize(20)
-        .margin(10)
+        .fontSize(30)
+        .fontColor(Color.Blue)
         .onClick(() => {
           // 点击文本，修改@Provide状态变量
           this.provideMessage += '!';
         })
       Text(this.consumeMessage)
-        .fontSize(20)
-        .margin(10)
+        .fontSize(30)
+        .fontColor(Color.Blue)
         .onClick(() => {
           // 点击文本，修改@Consume状态变量
           this.consumeMessage += '!';
         })
     }
-    .width('100%')
+    .padding(20)
   }
 }
 ```
 
-<!-- @[DynInteropStaStatemgmtV1Index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/Index.ets) -->
+```TypeScript
+'use static'
 
-``` TypeScript
-// static_module/Index.ets
-export { Child } from './src/main/ets/components/StaStatemgmtV1'; // 导出ArkTS-Sta自定义组件Child
+// static_module/index.ets
+export { Child } from './src/main/ets/components/MainPage'; // 导出ArkTS-Sta自定义组件Child
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
@@ -136,10 +130,8 @@ export { Child } from './src/main/ets/components/StaStatemgmtV1'; // 导出ArkTS
 
 - 在ArkTS-Dyn主模块`entry`中引入ArkTS-Sta组件。
 
-<!-- @[DynInteropStaStatemgmtV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV1.ets) -->
-
-``` TypeScript
-// entry/src/main/ets/pages/StatemgmtV1.ets
+```TypeScript
+// entry/src/main/ets/pages/Index.ets
 
 import { Child } from 'static_module'; // 引入ArkTS-Sta子模块中的自定义组件Child
 
@@ -156,8 +148,6 @@ struct ParentComp {
           // 点击按钮，修改@State状态变量
           this.message += '~';
         })
-        .width(300)
-        .margin(10)
       // 使用ArkTS-Sta子组件Child，并通过状态绑定与其进行交互
       Child({
         stateMessage: this.message,
@@ -171,7 +161,3 @@ struct ParentComp {
   }
 }
 ```
-
-示例效果图：
-
-![arkts-dyn-interop-sta-statemanagement-v1-demo1](figures/arkts-dyn-interop-sta-statemanagement-v1-demo1.gif)

@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（基础属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3; @wangyang2022; @zju_ljz-->
-<!--Designer: @hehongyang3; @wangyang2022; @lanshouren-->
+<!--Owner: @CCFFWW; @wangyang2022; @zju_ljz-->
+<!--Designer: @CCFFWW; @wangyang2022; @lanshouren-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 

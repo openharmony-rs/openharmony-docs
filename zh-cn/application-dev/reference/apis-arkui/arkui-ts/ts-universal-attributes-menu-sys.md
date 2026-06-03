@@ -18,8 +18,6 @@
 
 菜单项的信息。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 10%; 10%; 40%-->

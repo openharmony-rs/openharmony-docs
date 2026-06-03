@@ -282,7 +282,7 @@ setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: st
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | item   | [SettingsItem](#settingsitem24)                                                  | 是   | 设备设置策略类型。|
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。                       |
-| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。只允许设置当前用户的设备名称，设置其他用户的设备名称返回9200012错误码。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。只允许设置当前用户的三键导航，设置其他用户的三键导航不会生效，value为三键导航的开关状态。<br/>- '0'：表示开启三键导航（通过接口[enterKioskMode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)进入Kiosk模式下，三键导航显示依赖底部手势开启；即三键导航开关和底部手势开关同时开启时，三键导航才会显示。底部手势可通过接口[applicationManager.setKioskFeatures](./js-apis-enterprise-applicationManager.md#applicationmanagersetkioskfeatures20)设置开启或关闭）。<br/>- '1'：表示关闭三键导航。|
+| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。只允许设置当前用户的设备名称，设置其他用户的设备名称返回9200012错误码。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，value为三键导航的开关状态。<br/>- '0'：表示开启三键导航（通过接口[enterKioskMode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)进入Kiosk模式下，三键导航显示依赖底部手势开启；即三键导航开关和底部手势开关同时开启时，三键导航才会显示。底部手势可通过接口[applicationManager.setKioskFeatures](./js-apis-enterprise-applicationManager.md#applicationmanagersetkioskfeatures20)设置开启或关闭）。<br/>- '1'：表示关闭三键导航。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
 
 **错误码**：
 
@@ -564,7 +564,7 @@ try {
 
 setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 
-设置开关的状态。支持设置星闪、蓝牙、Wi-Fi、NFC的状态为开启或关闭，设置完毕后，用户可以手动开关。支持设置蓝牙、NFC的状态为强制开启，设置完毕后，用户不可以手动开关。若已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口禁用了某个开关，则通过本接口设置这个开关的状态会抛出错误码203，需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口解除该开关禁用策略。当设备有多个MDM应用时，各MDM应用设置开关状态不存在冲突，最后设置的策略生效。开启(用户可手动开启、关闭)、关闭(用户可手动开启、关闭)、强制开启(用户不可手动关闭)三个状态可以随意切换，也不存在冲突。
+设置开关的状态。支持设置星闪、蓝牙、Wi-Fi的状态为开启或关闭，设置完毕后，用户可以手动开关。支持设置蓝牙的状态为强制开启，设置完毕后，用户不可以手动开关。若已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口禁用了某个开关，则通过本接口设置这个开关的状态会抛出错误码203，需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口解除该开关禁用策略。当设备有多个MDM应用时，各MDM应用设置开关状态不存在冲突，最后设置的策略生效。开启(用户可手动开启、关闭)、关闭(用户可手动开启、关闭)、强制开启(用户不可手动关闭)三个状态可以随意切换，也不存在冲突。
 
 **起始版本：** 26.0.0
 
@@ -581,7 +581,7 @@ setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 | 参数名   | 类型                                           | 必填   | 说明                                  |
 | ------- | ---------------------------------------------- | ---- |------------------------------------------------------------|
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。   |
-| key     | [SwitchKey](#switchkey)                        | 是      | 开关的名称，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并通过接口[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为自带设备管理应用，可以使用此接口设置以下开关：星闪、蓝牙、Wi-Fi。设置NFC开关时会报错误码9200002。 |
+| key     | [SwitchKey](#switchkey)                        | 是      | 开关的名称，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并通过接口[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为自带设备管理应用，可以使用此接口设置以下开关：星闪、蓝牙、Wi-Fi。 |
 | status  | [SwitchStatus](#switchstatus)                  | 是      | 开关的状态，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并通过接口[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为自带设备管理应用，可以使用此接口设置以下状态：ON、OFF。设置为FORCE_ON状态时会报错误码9200002。 |
 
 **错误码**：
@@ -593,7 +593,6 @@ setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200012  | Parameter verification failed.  |
-| 9201042  | Failed to toggle the switch state.  |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 203      | This function is prohibited by enterprise management policies. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -700,7 +699,6 @@ try {
 | NEARLINK  | 0    | 星闪开关。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
 | BLUETOOTH | 1    | 蓝牙开关。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
 | WIFI      | 2    | Wi-Fi开关。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
-| NFC       | 3    | NFC开关。  | ohos.permission.ENTERPRISE_MANAGE_SETTINGS |
 
 ## SwitchStatus
 

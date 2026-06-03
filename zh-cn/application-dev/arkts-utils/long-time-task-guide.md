@@ -1,4 +1,4 @@
-# 长时任务开发指导 (TaskPool)
+# 长时任务开发指导（TaskPool）
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->

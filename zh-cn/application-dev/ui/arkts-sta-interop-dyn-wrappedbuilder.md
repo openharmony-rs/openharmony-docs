@@ -1,16 +1,10 @@
 # 在ArkTS-Sta中使用ArkTS-Dyn的wrapBuilder（封装全局@Builder）
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @lixingchi1; @katabanga-->
-<!--Designer: @lixingchi1; @katabanga-->
-<!--Tester: @TerryTsao-->
-<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
 从API version 23开始，支持在ArkTS-Sta中使用ArkTS-Dyn的[WrappedBuilder对象](./state-management/arkts-wrapBuilder.md)。适用于ArkTS-Sta互操作中封装全局[\@Builder](./state-management/arkts-builder.md)的场景。
 
-在互操作场景下，[compatibleWrappedBuilder](../reference/apis-arkui/arkui-ts/ts-interop-compatible-WrappedBuilder.md)将ArkTS-Dyn的WrappedBuilder对象转换为占位组件，从而链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
+在互操作场景下，[compatibleWrappedBuilder方法](../reference/apis-arkui/arkui-ts/ts-interop-compatible-WrappedBuilder.md)将ArkTS-Dyn的WrappedBuilder对象转换为占位组件，从而链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
 
 
 ## 使用限制
@@ -37,7 +31,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── StaWrappedBuilder.ets  # ArkTS-Sta主模块入口页面
+│                   └── MainPage.ets  # ArkTS-Sta主模块入口页面
 │
 └── dynamic_module/                   # ArkTS-Dyn子模块
     └── src/
@@ -51,8 +45,6 @@ project/
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出WrappedBuilder对象。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-<!-- @[StaWrappedBuilderMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynWrappedBuilder/dynamic_module/src/main/ets/components/MainPage.ets) -->
-
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
@@ -65,20 +57,15 @@ class Tmp {
 function overBuilder(param: Tmp) { // 按引用传递参数，可以触发UI更新
   Column() {
     Text(param.prop)
-      .fontSize(20)
-      .margin(10)
   }
-  .width('100%')
 }
 
 // 导出WrappedBuilder对象
 export const globalBuilder: WrappedBuilder<[Tmp]> = wrapBuilder(overBuilder);
 ```
 
-<!-- @[StaWrappedBuilderDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynWrappedBuilder/dynamic_module/Index.ets) -->
-
 ```TypeScript
-// dynamic_module/Index.ets
+// dynamic_module/index.ets
 
 export { globalBuilder } from './src/main/ets/components/MainPage'; // 导出WrappedBuilder对象
 ```
@@ -95,10 +82,10 @@ export { globalBuilder } from './src/main/ets/components/MainPage'; // 导出Wra
 
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn WrappedBuilder对象。
 
-<!-- @[StaWrappedBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynWrappedBuilder/entry/src/main/ets/pages/StaWrappedBuilder.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaWrappedBuilder.ets
+'use static'
+
+// entry/src/main/ets/pages/MainPage.ets
 import { Entry, Component, Column, Button, ClickEvent, compatibleWrappedBuilder } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -128,15 +115,9 @@ struct MainPage {
           this.stateVar = 'Hello dynamic!';
         }
       })
-        .width(300)
-        .margin(10)
     }
     .width('100%')
     .height('100%')
   }
 }
 ```
-
-示例效果图：
-
-![arkts-sta-interop-dyn-wrappedbuilder-demo1](figures/arkts-sta-interop-dyn-wrappedbuilder-demo1.gif)

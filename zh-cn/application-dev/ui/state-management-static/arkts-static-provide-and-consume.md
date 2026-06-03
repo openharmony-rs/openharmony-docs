@@ -44,20 +44,12 @@ import { Consume, Provide } from '@kit.ArkUI';
 | 初始化规则          | 必须定义本地默认值。<br/>支持从父组件传入变量（含undefined类型），此时优先使用传入值进行初始化。<br/>若父组件未传值，则使用本地默认值进行初始化。 |
 | 同步规则            | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@Provide初始化时，仅作为初始值，后续变量的变化不会同步至\@Provide。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、[\@PropRef](./arkts-static-propref.md)、\@Provide。<br/>\@Provide变量的变化会同步给子组件的\@Link、\@PropRef变量。<br/>与后代子组件中别名匹配的\@Consume变量双向同步 |
 
-  **图1** \@Provide初始化规则图示  
-
-![provide-initialization](../figures/provide-initialization.png)
-
 | \@Consume变量装饰器 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数          | alias：别名，常量字符串，可选。<br/>如果提供了别名，则必须存在\@Provide变量与其有相同的别名；否则，则需要变量名相同。<br/>指定别名方法为：\@Consume({ alias: 'aliasName' })或\@Consume('aliasName')。 |
 | 允许装饰的变量类型  | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内嵌类型。支持null、undefined以及联合类型。 |
 | 初始化规则          | 禁止外部传入初始化。<br>通过别名/变量名寻找匹配的\@Provide变量，并与之双向同步。<br>从API version 23起，支持本地设置默认值。当找不到匹配的\@Provide变量时，使用本地默认值初始化。|
 | 同步规则            | **在子组件使用时：**<br/>与祖先组件匹配的\@Provide变量双向同步。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、\@PropRef、\@Provide。<br/>\@Consume变量的变化会同步给子组件的\@Link、\@PropRef变量。 |
-
-  **图2** \@Consume初始化规则图示  
-
-![consume-initialization](../figures/consume-initialization.png)
 
 ## 观察变化和行为表现
 
@@ -77,9 +69,9 @@ import { Consume, Provide } from '@kit.ArkUI';
 
 - 当装饰的变量是interface字面量类型时，可以观察到字面量整体以及属性的变化。
 
-  <!-- @[ProvideConsumeInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideConsumeInterface.ets) -->
+  ```ts
+  'use static'
   
-  ``` TypeScript
   import { ClickEvent, Column, Component, Consume, Entry, Provide, Text } from '@kit.ArkUI';
   interface Info {
     name: string;
@@ -159,26 +151,26 @@ import { Consume, Provide } from '@kit.ArkUI';
 
    【正例】
 
-   <!-- @[ConsumeNoExternalInit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ConsumeNoExternalInit.ets) -->
-   
-   ``` TypeScript
+   ```ts
+   'use static'
+
    import { Column, Component, Consume, Entry, Provide, Text } from '@kit.ArkUI';
    @Component
    struct Child {
      @Consume num: number;
-   
+
      build() {
        Column() {
          Text(`num的值: ${this.num}`)
        }
      }
    }
-   
+
    @Entry
    @Component
    struct Parent {
      @Provide num: number = 10;
-   
+
      build() {
        Column() {
          Text(`num的值: ${this.num}`)
@@ -235,10 +227,10 @@ import { Consume, Provide } from '@kit.ArkUI';
 
    【正例】
 
-   <!-- @[ConsumeDefaultValueExample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ConsumeDefaultValueExample.ets) -->
+   ```ts
+   'use static'
    
-   ``` TypeScript
-   import { Column, Component, Consume, Entry, State, Text } from '@kit.ArkUI';
+   import { Column, Component, Consume, Entry, Provide, State, Text } from '@kit.ArkUI';
    
    @Component
    struct Child {
@@ -270,9 +262,9 @@ import { Consume, Provide } from '@kit.ArkUI';
 
 以下示例是@Provide变量与后代组件中@Consume变量进行双向同步的场景。当分别点击Index和ContentComponent组件内的Button时，count的更改会在Index和ContentComponent中双向同步。
 
-<!-- @[ProvideConsumeBasic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideConsumeBasic.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Row, Text } from '@kit.ArkUI';
 @Component
 struct ContentComponent {
@@ -323,9 +315,9 @@ struct Index {
 
 以下示例中，message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[ProvideConsumeMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideConsumeMap.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Consume, Divider, Entry, ForEach, Provide, Row, Text } from '@kit.ArkUI';
 @Component
 struct Child {
@@ -381,9 +373,9 @@ struct MapSample {
 
 以下示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[ProvideConsumeSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideConsumeSet.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Consume, Divider, Entry, ForEach, Provide, Row, Text } from '@kit.ArkUI';
 @Component
 struct Child {
@@ -436,9 +428,9 @@ struct SetSample {
 
 以下示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
 
-<!-- @[ProvideConsumeDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideConsumeDate.ets) -->
+```typescript
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Text } from '@kit.ArkUI';
 @Component
 struct Child {
@@ -488,9 +480,9 @@ struct Parent {
 
 @Provide和@Consume支持联合类型（包括undefined和null）。以下示例中，count类型为`string | undefined`，当点击Ancestors组件中的Button改变count的属性或类型时，Child组件也会对应刷新。
 
-<!-- @[ProvideConsumeUnion](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideConsumeUnion.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Row, Text } from '@kit.ArkUI';
 @Component
 struct Child {
@@ -553,9 +545,9 @@ struct MyComponent {
 
 完整示例如下：
 
-<!-- @[ProvideAllowOverride](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideAllowOverride.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Row, Text } from '@kit.ArkUI';
 @Component
 struct GrandSon {
@@ -624,9 +616,9 @@ struct GrandParent {
 
 以下示例中仅使用\@Consume，点击Child组件中的Button，对应Button下方的UI会刷新，且会触发[\@Watch](./arkts-static-watch.md)的回调。
 
-<!-- @[ConsumeDefaultValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ConsumeDefaultValue.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Consume, Entry, Observed, Provide, Text, Track, Watch } from '@kit.ArkUI';
 
 interface View {

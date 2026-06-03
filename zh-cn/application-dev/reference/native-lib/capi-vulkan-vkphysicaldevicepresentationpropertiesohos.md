@@ -17,8 +17,6 @@ typedef struct VkPhysicalDevicePresentationPropertiesOHOS {...} VkPhysicalDevice
 
 **起始版本：** 10
 
-**废弃版本：** 23 
-
 **相关模块：** [Vulkan](capi-vulkan.md)
 
 **所在头文件：** [vulkan_ohos.h](capi-vulkan-ohos-h.md)
@@ -29,6 +27,5 @@ typedef struct VkPhysicalDevicePresentationPropertiesOHOS {...} VkPhysicalDevice
 
 | 名称 | 描述 |
 | -- | -- |
-| VkStructureType sType | 结构体类型。 |
-| void* pNext    | 下一级结构体指针，pNext为空或者下一级结构体指针。 |
+| VkStructureType sType | 下一级结构体指针，pNext为空或者下一级结构体指针。 |
 | VkBool32 sharedImage | 共享图像标志。 |

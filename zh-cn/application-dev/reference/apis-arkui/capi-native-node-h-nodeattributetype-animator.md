@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（动效、视效相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 

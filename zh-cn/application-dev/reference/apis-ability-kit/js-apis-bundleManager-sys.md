@@ -1366,7 +1366,7 @@ try {
 
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo。使用callback异步回调。从API版本26.0.0开始,该接口支持处理APP包。
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1378,7 +1378,7 @@ getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCa
 
 | 参数名       | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ----------------------------------------------------------- |
-| hapFilePath | string | 是   | 表示存储HAP或APP的路径，路径应该是当前应用程序数据目录的相对路径。 |
+| hapFilePath | string | 是   | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。       |
 | callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
@@ -1421,7 +1421,7 @@ try {
 
 getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<BundleInfo>
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo。使用Promise异步回调。从API版本26.0.0开始,该接口支持处理APP包。
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1433,7 +1433,7 @@ getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<Bundle
 
 | 参数名       | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
-| hapFilePath | string | 是   | 表示存储HAP或APP的路径，路径应该是当前应用程序数据目录的相对路径。 |
+| hapFilePath | string | 是   | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。       |
 
 **返回值：**
@@ -6124,141 +6124,6 @@ try {
   hilog.error(0x0000, 'testTag', 'isApplicationDisableForbidden failed: %{public}s', message);
 }
 
-```
-
-## bundleManager.setApplicationEnabledSync
-
-ArkTS-Dyn: setApplicationEnabledSync(bundleName: string, appIndex: number, isEnabled: boolean, killProcess: boolean): void
-
-ArkTS-Sta: setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled: boolean, killProcess: boolean): void
-
-以同步方法设置指定应用或分身应用的启用或禁用状态，并控制禁用时是否退出应用进程。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名     | 类型    | 必填 | 说明                       |
-| ----------- | ------- | ---- | ---------------------------- |
-| bundleName  | string  | 是   | 应用的包名。 |
-| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。 |
-| isEnabled   | boolean | 是   | 是否启用应用。值为true表示启用应用，值为false表示禁用应用。 |
-| killProcess | boolean | 是   | 禁用应用时是否退出应用进程。值为true表示禁用应用时将退出应用进程，值为false表示禁用应用时不退出应用进程。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
-
-| 错误码ID | 错误信息                            |
-| -------- | --------------------------------------|
-| 201 | Permission denied. |
-| 202 | Permission denied. Non-system APP calling system API. |
-| 17700001 | The specified bundle is not found. |
-| 17700061 | The specified app index is invalid. |
-
-**示例：**
-
-```ts
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-// 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
-let bundleName = 'com.example.myapplication';
-let appIndex = 0;
-let isEnabled = true;
-let killProcess = false;
-
-try {
-  bundleManager.setApplicationEnabledSync(bundleName, appIndex, isEnabled, killProcess);
-  hilog.info(0x0000, 'testTag', 'setApplicationEnabledSync successfully');
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'setApplicationEnabledSync failed: %{public}s', message);
-}
-```
-
-## bundleManager.setApplicationEnabled
-
-ArkTS-Dyn: setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean, killProcess: boolean): Promise\<void>
-
-ArkTS-Sta: setApplicationEnabled(bundleName: string, appIndex: int, isEnabled: boolean, killProcess: boolean): Promise\<void>
-
-设置指定应用或分身应用的启用或禁用状态，并控制禁用时是否退出应用进程。使用Promise异步回调。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名     | 类型    | 必填 | 说明                       |
-| ----------- | ------- | ---- | ---------------------------- |
-| bundleName  | string  | 是   | 应用的包名。 |
-| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。 |
-| isEnabled   | boolean | 是   | 是否启用应用。值为true表示启用应用，值为false表示禁用应用。 |
-| killProcess | boolean | 是   | 禁用应用时是否退出应用进程。值为true表示禁用应用时将退出应用进程，值为false表示禁用应用时不退出应用进程。 |
-
-**返回值：**
-
-| 类型              | 说明                    |
-| ----------------- | ----------------------- |
-| Promise\<void> | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
-
-| 错误码ID | 错误信息                            |
-| -------- | --------------------------------------|
-| 201 | Permission denied. |
-| 202 | Permission denied. Non-system APP calling system API. |
-| 17700001 | The specified bundle is not found. |
-| 17700061 | The specified app index is invalid. |
-
-**示例：**
-
-```ts
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-// 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
-let bundleName = 'com.example.myapplication';
-let appIndex = 0;
-let isEnabled = true;
-let killProcess = false;
-
-try {
-  bundleManager.setApplicationEnabled(bundleName, appIndex, isEnabled, killProcess)
-    .then(() => {
-      hilog.info(0x0000, 'testTag', 'setApplicationEnabled successfully');
-    })
-    .catch((err: Error) => {
-      hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', err.message);
-    });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', message);
-}
 ```
 
 ## bundleManager.getAbilityIcon<sup>deprecated</sup>

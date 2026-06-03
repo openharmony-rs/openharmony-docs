@@ -14,7 +14,7 @@
 
 在ArkTS-Dyn中使用时，开发指南参考：[@Param：组件外部输入（ArkTS-Dyn）](../../../ui/state-management/arkts-new-param.md)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -46,7 +46,6 @@ import { media } from '@kit.MediaKit';
 | width<sup>9+</sup>                                  | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频宽，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | height<sup>9+</sup>                                 | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | playlistLoopMode                      | [PlaylistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
-| privacyType | [audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10) | 否   | 是   | 音频隐私配置。详细信息请参阅[audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10)。<br>默认值为PRIVACY_TYPE_PUBLIC。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -2543,7 +2542,7 @@ ArkTS-Dyn: setPlaybackRate(rate: number): void
 
 ArkTS-Sta: setPlaybackRate(rate: double): void
 
-设置倍速模式。只能在'prepared' | 'playing' | 'paused' | 'completed'状态下调用，在API版本26.0.0及以上的取值范围是[0.125, 8.0]，API版本26.0.0以下的取值范围是[0.125, 4.0]，可以通过[playbackRateDone](#onplaybackratedone20)事件确认是否生效。
+设置倍速模式。只能在prepared/playing/paused/completed状态调用，取值范围是[0.125, 4.0]，可以通过[playbackRateDone](#onplaybackratedone20)事件确认是否生效。
 
 > **注意：**
 >
@@ -2561,7 +2560,7 @@ ArkTS-Sta: setPlaybackRate(rate: double): void
 
 | 参数名 | 类型                             | 必填 | 说明               |
 | ------ | -------------------------------- | ---- | ------------------ |
-| rate  | number | 是   | 指定播放倍速速率，在API版本26.0.0及以上的取值范围是[0.125, 8.0]，API版本26.0.0以下的取值范围是[0.125, 4.0]。 |
+| rate  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 指定播放倍速速率。 |
 
 **错误码：**
 
@@ -5793,59 +5792,5 @@ offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.offTimedMetaData();
-}
-```
-
-### getCurrentTrack
-
-getCurrentTrack(trackType: MediaType): Promise\<number>
-
-获取指定媒体类型的选定轨道。使用Promise异步回调。
-
-只有当AVPlayer处于prepared、playing或者paused状态时，才能调用该接口。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
-
-**参数：**
-
-| 参数名   | 类型     | 必填 | 说明                                                         |
-| -------- | -------- | ---- | ------------------------------------------------------------ |
-| trackType | [MediaType](arkts-apis-media-e.md#mediatype8)| 是   | 媒体类型枚举。<br>仅支持获取MEDIA_TYPE_AUD、MEDIA_TYPE_VID。 |
-
-**返回值：**
-
-| 类型           | 说明                                       |
-| -------------- | ------------------------------------------ |
-| Promise\<number> | Promise对象，返回指定媒体类型选中轨道的索引值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                  |
-| -------- | ----------------------------------------- |
-| 5400101  | No memory. Return by promise.|
-| 5400102  | Operation not allowed. Return by promise.|
-| 5400103  | I/O error. Return by promise.|
-| 5400105  | Service died. Return by promise.|
-
-**示例：**
-
-```ts
-async function test(){
-  let avPlayer = await media.createAVPlayer();
-  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
-  let myTrackId : number;
-  let trackType: media.MediaType = media.MediaType.MEDIA_TYPE_AUD;
-  avPlayer.getCurrentTrack(trackType).then((trackId: number) => {
-    console.info('Succeeded in getting CurrentTrack');
-    myTrackId = trackId;
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to get CurrentTrack, error: ${error}`);
-  });
 }
 ```

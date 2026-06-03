@@ -30,7 +30,7 @@ ArrayBuffer可以用来表示图片等资源，在应用开发中，处理图片
 
 最后，UI主线程接收到Task执行完毕后返回的ArrayBuffer数据，进行拼接并展示。
 
-<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) --> 
+<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) -->
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -80,7 +80,7 @@ struct Index {
           for (let i: number = 0; i < taskNum; i++) {
             let arrayBufferSlice: ArrayBuffer =
               arrayBuffer.slice(arrayBuffer.byteLength / taskNum * i, arrayBuffer.byteLength / taskNum * (i + 1));
-            // 使用拷贝方式传入ArrayBuffer，所以isParamsByTransfer为false，改成true，就可以实现转移方式的传输
+            // 使用拷贝方式传入ArrayBuffer，所以isParamsByTransfer为false
             taskPoolGroup.addTask(createImageTask(arrayBufferSlice, false));
           }
           // 执行Task，UI主线程接收处理完成后的结果

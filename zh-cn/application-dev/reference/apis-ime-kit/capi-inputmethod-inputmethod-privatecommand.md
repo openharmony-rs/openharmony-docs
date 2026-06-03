@@ -12,7 +12,7 @@ typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand
 
 ## 概述
 
-表示私有数据的结构体类型。用于输入框与输入法应用间交互的私有数据结构。
+表示私有数据的结构体类型。输入框和输入法应用之间交互的私有数据。
 
 **起始版本：** 12
 

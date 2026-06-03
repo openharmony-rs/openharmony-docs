@@ -493,7 +493,7 @@ module.json5配置示例如下：
   | -------- | -------- | -------- |
   | UNDEFINED | 0 | 表示APP未定义窗口模式。 |
   | FULL_SCREEN | 1 | 表示APP全屏模式。<br/>[自由窗口](window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br/>可通过[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](../reference/apis-arkui/arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br/>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br/>非[自由窗口](window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。 |
-  | MAXIMIZE | 2 | 表示APP窗口最大化模式，在PC/2in1设备中，窗口铺满整个屏幕，有dock栏和状态栏。 |
+  | MAXIMIZE | 2 | 表示APP窗口最大化模式，在2in1设备中，窗口铺满整个屏幕，有dock栏和状态栏。 |
   | MINIMIZE | 3 | 表示APP窗口最小化模式。 |
   | FLOATING | 4 | 表示APP自由悬浮窗口模式。 |
   | SPLIT_SCREEN | 5 | 表示APP分屏模式。 |

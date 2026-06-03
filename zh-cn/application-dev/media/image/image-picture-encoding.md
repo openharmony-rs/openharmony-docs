@@ -14,14 +14,14 @@
 
 1. 导入相关模块包。
    
-   <!-- @[encodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/EncodingPicture.ets) -->    
+   <!-- @[encodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/EncodingPicture.ets) -->   
    
    ``` TypeScript
    // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileIo as fs } from '@kit.CoreFileKit';
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
@@ -31,12 +31,13 @@
    >
    > 这里以编码成jpeg图片为例。编码的目标格式format遵循MIME标准定义，因此PackingOption.format应设置为image/jpeg，编码后的文件扩展名可设为.jpg或.jpeg。
    
-   <!-- @[create_picturePackOpts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->    
+   <!-- @[create_picturePackOpts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
    let packOpts: image.PackingOption = {
      format: 'image/jpeg',
      quality: 95,
+     desiredDynamicRange: image.PackingDynamicRange.AUTO,
      needsPackProperties: true
    };
    ```
@@ -49,7 +50,7 @@
    
    - picture编码到ArrayBuffer。
    
-     <!-- @[packToData_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->    
+     <!-- @[packToData_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
      ``` TypeScript
      async function packing(picture: image.Picture, packOpts: image.PackingOption) {
@@ -60,34 +61,23 @@
          console.info('Succeeded in packing the image.');
        } catch (error) {
          console.error('Failed to pack the picture to data. And the error is: ' + error);
-       } finally {
-         await imagePackerApi.release();
        }
      }
      ```
    
    - picture编码到文件。
    
-     <!-- @[packToFile_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->    
+     <!-- @[packToFile_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
      ``` TypeScript
      async function packToFile(picture: image.Picture, packOpts: image.PackingOption, context: Context) {
-       let imagePackerApi: image.ImagePacker | undefined = undefined;
-       let file: fileIo.File | undefined = undefined;
        try {
          const path : string = context.cacheDir + '/picture.jpg';
-         file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-         imagePackerApi = image.createImagePacker();
+         let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+         const imagePackerApi = image.createImagePacker();
          await imagePackerApi.packToFile(picture, file.fd, packOpts);
        } catch (error) {
          console.error('Failed to pack the picture to file. And the error is: ' + error);
-       } finally {
-         if (file) {
-           fileIo.closeSync(file.fd);
-         }
-         if (imagePackerApi) {
-           await imagePackerApi.release();
-         }
        }
      }
      ```

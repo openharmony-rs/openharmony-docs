@@ -1,4 +1,4 @@
-# ExtendableColumn (可扩展的Column)
+# ExtendableColumn（可扩展的Column）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-[Column](./ts-container-column.md)的扩展组件的基类。开发者可以自定义扩展组件继承ExtendableColumn，支持重写Column中的[属性](./ts-container-column.md#属性)和[通用属性](./ts-component-general-attributes.md)，同时支持自定义属性。在阅读本文档前，建议提前阅读[Column](./ts-container-column.md)。开发指南请参考[内置组件扩展](../../../ui/state-management-static/arkts-static-extendable-inner-component.md)。
+[Column](./ts-container-column.md)的扩展组件的基类。开发者可以自定义扩展组件继承ExtendableColumn，支持重写Column中的[属性](./ts-container-column.md#属性)和[通用属性](./ts-component-general-attributes.md)，同时支持自定义属性。在阅读本文档前，建议提前阅读[Column](./ts-container-column.md)。
 
 **起始版本：** 26.0.0
 

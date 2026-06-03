@@ -52,9 +52,9 @@ struct Index {
 
 使用\@Event可以修改父组件中变量，当该变量作为子组件\@Param变量的数据源时，该变化将同步更新到子组件的\@Param变量。
 
-<!-- @[EventChangeParent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventDecorator/entry/src/main/ets/pages/EventChangeParent.ets) --> 
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, Event, Local, Param, Text } from '@kit.ArkUI';
 
 @Entry
@@ -80,7 +80,6 @@ struct Index {
         }
       })
     }
-    .width('100%')
   }
 }
 
@@ -93,34 +92,25 @@ struct Child {
   build() {
     Column() {
       Text(`${this.title}`)
-        .fontSize(20)
-        .margin(10)
         .fontColor(this.fontColor)
       Button('change to Title Two')
-        .width(300)
-        .margin(10)
         .onClick((e: ClickEvent) => {
           this.changeFactory(2);
         })
       Button('change to Title One')
-        .width(300)
-        .margin(10)
         .onClick((e: ClickEvent) => {
           this.changeFactory(1);
         })
     }
-    .width('100%')
   }
 }
 ```
 
-![event-change-property](../figures/event1.gif)
-
 值得注意的是，使用\@Event修改父组件的值是立刻生效的，但从父组件将变化同步回子组件的过程是异步的，即在调用完\@Event的方法后，子组件内的值不会立刻修改。这是因为\@Event将子组件值实际的变化能力交由父组件处理，在父组件实际决定如何处理后，将最终值在渲染之前同步回子组件。
 
-<!-- @[EventAsyncSync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventDecorator/entry/src/main/ets/pages/EventAsyncSync.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { ClickEvent, Column, ComponentV2, Entry, Event, Local, Param, Text } from '@kit.ArkUI';
 
 @ComponentV2

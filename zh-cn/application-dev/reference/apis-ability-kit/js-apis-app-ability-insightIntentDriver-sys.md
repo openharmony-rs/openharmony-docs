@@ -11,15 +11,13 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块接口仅可在Stage模型下使用。
 >
-> - 本模块接口仅可在Stage模型下使用。
+> 本模块为系统接口。
 >
-> - 本模块为系统接口。
->
-> - 本模块从API version 20开始支持通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转。
+> 本模块从API version 20开始支持通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转。
 
 ## 导入模块
 
@@ -39,20 +37,19 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | --- |----- | -------- |
-| bundleName | string | 否 | 否 | 意图调用Ability所属的应用名称。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| moduleName | string | 否 | 否 | 意图调用Ability所属的模块名称。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| abilityName | string | 否 | 否 | 意图调用Ability名称。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段传空字符串即可。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| insightIntentName | string | 否 | 否 | 意图调用名称。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| insightIntentParam | Record\<string, Object> | 否 | 否 | 意图调用参数。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 11 |
-| insightIntentParam<sup>22+</sup> | Record\<string, RecordData> | 否 | 否 | 意图调用参数。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
-| executeMode | [insightIntent.ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) | 否 | 否 | 意图调用执行模式。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段需填写（可填任意符合定义的值），但实际不会生效。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| displayId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 意图调用时指定的物理屏幕id，该参数应为整数，仅在executeMode为UI_ABILITY_FOREGROUND时生效。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)的URI。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| flags<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的uris的[flags](js-apis-app-ability-wantConstant.md#flags)。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
-| userId<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。<br>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| bundleName | string | 否 | 否 | 意图调用Ability所属的应用名称。 |
+| moduleName | string | 否 | 否 | 意图调用Ability所属的模块名称。 |
+| abilityName | string | 否 | 否 | 意图调用Ability名称。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段传空字符串即可。 |
+| insightIntentName | string | 否 | 否 | 意图调用名称。 |
+| insightIntentParam | Record\<string, Object> | 否 | 否 | 意图调用参数。 |
+| executeMode | [insightIntent.ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) | 否 | 否 | 意图调用执行模式。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段需填写（可填任意符合定义的值），但实际不会生效。 |
+| displayId<sup>12+</sup> | number | 否 | 是 | 意图调用时指定的物理屏幕id，该参数应为整数，仅在executeMode为UI_ABILITY_FOREGROUND时生效。 |
+| uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)的URI。 |
+| flags<sup>18+</sup> | number | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的uris的[flags](js-apis-app-ability-wantConstant.md#flags)。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。|
+| userId<sup>23+</sup> | number | 否 | 是 | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。    |
 | deviceId | string | 否 | 是 | 连接的目标设备ID。<br/>**说明：**<br/>如果调用方应用的设备ID与目标意图所属的设备ID不同，则需要申请权限`ohos.permission.EXECUTE_DISTRIBUTED_INTENT`。<br>**起始版本：** 26.0.0    |
 
-## InsightIntentInfoFilter<sup>23+</sup>
+## InsightIntentInfoFilter<sup>23+<sup>
 
 意图筛选器，描述目标意图的筛选条件，用于筛选设备上符合条件的意图。
 
@@ -62,26 +59,18 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称        | 类型                                 | 只读 | 可选 | 说明                                                         |
-| ----------- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| intentFlags | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于表示查询全量意图信息或者简要意图信息，取值可参考[GetInsightIntentFlag](#getinsightintentflag20)。 |
-| bundleName  | string                               | 否   | 是   | 目标意图所属的应用包名称。                                   |
-| moduleName  | string                               | 否   | 是   | 目标意图所属的模块名称。                                     |
-| intentName  | string                               | 否   | 是   | 目标意图名称。                                               |
-| userId      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。 |
-## InsightIntentType<sup>20+</sup>
+| 名称        | 类型   | 只读 | 可选 | 说明                                                         |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| intentFlags | number | 否   | 否   | 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于表示查询全量意图信息或者简要意图信息，取值可参考[GetInsightIntentFlag](#getinsightintentflag20)。 |
+| bundleName  | string | 否   | 是   | 目标意图所属的应用包名称。                                                 |
+| moduleName  | string | 否   | 是   | 目标意图所属的模块名称。                                                   |
+| intentName  | string | 否   | 是   | 目标意图名称。                                                   |
+| userId      | number | 否   | 是   | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。   |
+## InsightIntentType<sup>20+<sup>
 
 表示通过意图装饰器定义的意图类型，可通过[getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20)等方法返回的[LinkIntentInfo](#linkintentinfo20)获取。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -91,22 +80,18 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | FUNCTION | @InsightIntentFunctionMethod | [@InsightIntentFunctionMethod](./js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)类型装饰器。 |
 | FORM | @InsightIntentForm | [@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform)类型装饰器。 |
 
-## ExecuteModeForConfiguration<sup>23+</sup>
+## ExecuteModeForConfiguration<sup>23+<sup>
 
 [使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)支持的意图执行模式。例如，将[insight_intent.json配置文件](../../application-models/insight-intent-config-development.md#insight_intentjson配置文件说明)中的executeMode设置为"foreground"，表示支持与UIAbility组件绑定的意图在前台运行。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | FOREGROUND | 0 | 表示支持与UIAbility组件绑定的意图在前台运行。 |
 | BACKGROUND | 1 | 表示支持与UIAbility组件绑定的意图在后台运行。 |
 
-## LinkIntentInfo<sup>20+</sup>
+## LinkIntentInfo<sup>20+<sup>
 
 LinkIntentInfo用于描述[@InsightIntentLink](./js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器支持的参数，例如应用间跳转需要的uri信息。
 
@@ -116,15 +101,11 @@ LinkIntentInfo用于描述[@InsightIntentLink](./js-apis-app-ability-InsightInte
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
 | uri | string | 是 | 否 | 表示意图的uri信息。 |
 
-## PageIntentInfo<sup>20+</sup>
+## PageIntentInfo<sup>20+<sup>
 
 PageIntentInfo用于描述[@InsightIntentPage](./js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)装饰器支持的参数，例如目标页面的[NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)名称。
 
@@ -134,18 +115,14 @@ PageIntentInfo用于描述[@InsightIntentPage](./js-apis-app-ability-InsightInte
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
 | uiAbility | string | 是 | 否 | Ability名称。 |
 | pagePath | string | 是 | 否 | 页面名称。 |
 | navigationId | string | 是 | 否 |  表示与意图绑定[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md)的id。 |
-| navDestinationName | string | 是 | 否 | 表示与意图绑定[navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)的名称。 |
+| navDestinationName | string | 是 | 否 | 表示与意图绑定[NavDestination组件](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)的名称。 |
 
-## FunctionIntentInfo<sup>20+</sup>
+## FunctionIntentInfo<sup>20+<sup>
 
 [@InsightIntentFunctionMethod](./js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)装饰器的参数类型，当前全部属性均继承自[IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo)。
 
@@ -155,11 +132,7 @@ PageIntentInfo用于描述[@InsightIntentPage](./js-apis-app-ability-InsightInte
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
-## FormIntentInfo<sup>20+</sup>
+## FormIntentInfo<sup>20+<sup>
 
 FormIntentInfo用于描述[@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform)装饰器支持的参数，例如卡片名称。同时，该接口也可用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的卡片信息。
 
@@ -169,16 +142,12 @@ FormIntentInfo用于描述[@InsightIntentForm](./js-apis-app-ability-InsightInte
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 20
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- |-------- |
+| abilityName | string | 是 | 否 | Ability名称。 |
+| formName | string | 是 | 否 | 表示[FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)绑定的卡片名称。 |
 
-**ArkTS-Sta起始版本：** 23
-
-| 名称        | 类型   | 只读 | 可选 | 说明                                                         |
-| ----------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| abilityName | string | 是   | 否   | Ability名称。                                                |
-| formName    | string | 是   | 否   | 表示[FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)绑定的卡片名称。 |
-
-## EntryIntentInfo<sup>20+</sup>
+## EntryIntentInfo<sup>20+<sup>
 
 EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器支持的参数，例如意图调用执行模式。
 
@@ -188,16 +157,12 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 20
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- |-------- |
+| abilityName | string | 是 | 否 | Ability名称。 |
+| executeMode | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode)[] | 是 | 否 | 意图调用执行模式。即拉起绑定的Ability时支持的执行模式。 |
 
-**ArkTS-Sta起始版本：** 23
-
-| 名称        | 类型                                                         | 只读 | 可选 | 说明                                                    |
-| ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------- |
-| abilityName | string                                                       | 是   | 否   | Ability名称。                                           |
-| executeMode | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode)[] | 是   | 否   | 意图调用执行模式。即拉起绑定的Ability时支持的执行模式。 |
-
-## SubIntentInfoForConfiguration<sup>23+</sup>
+## SubIntentInfoForConfiguration<sup>23+<sup>
 
 用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)的特有信息。
 
@@ -207,22 +172,18 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
 | srcEntry | string | 是 | 否 | 表示意图执行文件的相对路径，取值为长度不超过127字节的字符串。 |
-| inputParams | ArkTS-Dyn: Array&lt;Record\<string, Object\>&gt;<br>ArkTS-Sta: Array&lt;Record\<string, RecordData\>> | 是 | 是 | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。 |
-| outputParams | ArkTS-Dyn: Array&lt;Record\<string, Object\>&gt;<br>ArkTS-Sta: Array&lt;Record\<string, RecordData\>> | 是 | 是 | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。 |
+| inputParams | Array&lt;Record\<string, Object\>&gt; | 是 | 是 | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。 |
+| outputParams | Array&lt;Record\<string, Object\>&gt; | 是 | 是 | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。 |
 | uiAbility | [UIAbilityIntentInfo](#uiabilityintentinfo23) | 是 | 是 | 表示意图绑定的UIAbility组件信息，包含"ability"字段和"executeMode"字段。 |
 | uiExtension | [UIExtensionIntentInfo](#uiextensionintentinfo23) | 是 | 是 | 表示意图绑定的UIExtensionAbility组件信息。 |
 | from | [FormIntentInfo](#formintentinfo20) | 是 | 是 | 表示意图绑定的卡片信息。 |
 | serviceExtension | [ServiceExtensionIntentInfo](#serviceextensionintentinfo23) | 是 | 是 | 表示意图绑定的ServiceExtensionAbility组件信息。 |
-| entities | ArkTS-Dyn: Record\<string, Object\><br>ArkTS-Sta: Record\<string, RecordData\> | 是 | 是 | 表示意图包含的实体信息。 |
+| entities | Record\<string, Object\> | 是 | 是 | 表示意图包含的实体信息。 |
 
-## UIAbilityIntentInfo<sup>23+</sup>
+## UIAbilityIntentInfo<sup>23+<sup>
 
 用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的UIAbility组件信息。
 
@@ -232,16 +193,12 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
 | abilityName | string | 是 | 否 | 意图绑定的UIAbility组件名称。 |
 | executeMode | [ExecuteModeForConfiguration](#executemodeforconfiguration23)[] | 是 | 否 | 意图调用执行模式。 |
 
-## UIExtensionIntentInfo<sup>23+</sup>
+## UIExtensionIntentInfo<sup>23+<sup>
 
 用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的UIExtensionAbility组件信息。
 
@@ -251,15 +208,11 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
 | abilityName | string | 是 | 否 | 意图绑定的UIExtensionAbility组件名称。 |
 
-## ServiceExtensionIntentInfo<sup>23+</sup>
+## ServiceExtensionIntentInfo<sup>23+<sup>
 
 用于描述[使用配置文件开发的意图](../../application-models/insight-intent-config-development.md)所绑定的ServiceExtensionAbility组件信息。
 
@@ -269,15 +222,11 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
 | abilityName | string | 是 | 否 | 意图绑定的ServiceExtensionAbility组件名称。 |
 
-## DevelopType<sup>23+</sup>
+## DevelopType<sup>23+<sup>
 
 用于描述意图的开发方式。
 
@@ -287,16 +236,12 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CONFIGURATION  | 'configuration' | 使用配置文件开发的意图。 |
 | DECORATOR | 'decorator' | 使用装饰器开发的意图。 |
 
-## EntityInfo<sup>20+</sup>
+## EntityInfo<sup>20+<sup>
 
 EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo)，用于描述[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器定义的意图实体的信息。
 
@@ -308,15 +253,13 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
-| className | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类名。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| entityId | string | 是 | 否 | 表示意图实体的ID。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| entityCategory | string | 是 | 否 | 表示意图实体类别。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| parameters | string | 是 | 否 | 表示意图实体参数的数据格式声明，用于意图调用时定义实体参数的数据格式。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| parentClassName | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类的父类名。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| isQueryable | boolean | 是 | 是 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的意图实体类是否支持查询，只有继承自[insightIntent.AppIntentEntity](./js-apis-app-ability-insightIntent.md#appintententity)类的意图实体支持查询。<br> - true：支持查询。<br> - false：不支持查询。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
-| supportedQueryProperties | string[] | 是 | 是 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的意图实体支持通过哪些属性进行查询。意图实体查询参数[parameters](./js-apis-app-ability-insightIntent.md#queryentityparam)的key值必须在该属性列表中。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| className | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类名。 |
+| entityId | string | 是 | 否 | 表示意图实体的ID。 |
+| entityCategory | string | 是 | 否 | 表示意图实体类别。 |
+| parameters | string | 是 | 否 | 表示意图实体参数的数据格式声明，用于意图调用时定义实体参数的数据格式。 |
+| parentClassName | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类的父类名。 |
 
-## InsightIntentInfo<sup>20+</sup>
+## InsightIntentInfo<sup>20+<sup>
 
 意图信息，表示设备中意图的具体参数配置。
 
@@ -325,10 +268,6 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
@@ -345,21 +284,17 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | keywords | string[] | 是 | 否 | 表示意图的搜索关键字。 |
 | intentType | [InsightIntentType](#insightintenttype20) | 是 | 否 | 表示通过意图装饰器定义的意图类型。<br>**说明：**<br>对于使用配置文件开发的意图，该字段返回值默认为[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)类型装饰器。 |
 | subIntentInfo | [LinkIntentInfo](#linkintentinfo20) \| [PageIntentInfo](#pageintentinfo20) \| [FunctionIntentInfo](#functionintentinfo20) \| [FormIntentInfo](#formintentinfo20) \| [EntryIntentInfo](#entryintentinfo20) | 是 | 否 | 表示特定意图装饰器的意图信息。 <br>**说明：**<br>对于使用配置文件开发的意图，该字段返回值默认为[EntryIntentInfo](#entryintentinfo20)。 |
-| parameters | ArkTS-Dyn: Record\<string, Object\><br/>ArkTS-Sta: Record\<string, RecordData\> | 是 | 否 | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。 |
-| result | ArkTS-Dyn: Record\<string, Object\><br/>ArkTS-Sta: Record\<string, RecordData\> | 是 | 否 | 表示意图调用返回的结果。 |
+| parameters | Record<string, Object> | 是 | 否 | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。 |
+| result | Record<string, Object> | 是 | 否 | 表示意图调用返回的结果。 |
 | entities | Array&lt;[EntityInfo](#entityinfo20)&gt; | 是 | 否 | 表示意图包含的实体信息。 |
 | subIntentInfoForConfiguration<sup>23+</sup> | [SubIntentInfoForConfiguration](#subintentinfoforconfiguration23) | 是 | 是 | 表示使用配置文件开发的意图的特有信息。 |
 | developType<sup>23+</sup> | [DevelopType](#developtype23) | 是 | 是 | 表示意图的开发方式。 |
 
-## GetInsightIntentFlag<sup>20+</sup>
+## GetInsightIntentFlag<sup>20+<sup>
 
 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于[getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20)、[getInsightIntentInfoByBundleName](#insightintentdrivergetinsightintentinfobybundlename20)和[getInsightIntentInfoByIntentName](#insightintentdrivergetinsightintentinfobyintentname20)接口查询意图信息。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -373,10 +308,10 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 >  - 对于使用装饰器开发的意图，通过上述接口查询的全量信息和简要信息存在差别，详见下表。
 
 **表1** 全量意图信息与简要意图信息差别
-
+   
 | 属性 | 全量意图信息是否包含 | 简要意图信息是否包含 |
 | -------- | -------- | -------- |
-| bundleName | 是 | 是 |
+| bundleName | 是 | 是 | 
 | moduleName | 是 | 是 |
 | intentName | 是 | 是 |
 | domain | 是 | 否 |
@@ -393,29 +328,6 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | entities | 否 | 否 |
 | developType<sup>23+</sup> | 是 | 是 |
 | subIntentInfoForConfiguration<sup>23+</sup> | 否 | 否 |
-
-## QueryParam
-
-意图实体查询参数，用于筛选设备上符合条件的意图实体。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| bundleName  | string | 否   | 否   | 目标意图实体所属的应用包名称。 |
-| moduleName  | string | 否   | 否   | 目标意图实体所属的模块名称。 |
-| intentName  | string | 否   | 否   | 目标意图实体所属的意图名称。 |
-| className | string | 否 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)修饰的目标意图实体的类名。 |
-| queryEntityParam | [insightIntent.QueryEntityParam](./js-apis-app-ability-insightIntent.md#queryentityparam) | 否 | 否 | 意图实体查询参数，包含查询模式及查询条件，用于指定意图实体查询方式。 |
-| userId      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 目标意图实体所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图实体所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。   |
 
 ## insightIntentDriver.execute
 
@@ -435,16 +347,12 @@ execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| param | [ExecuteParam](#executeparam) | 是 | 执行意图调用的参数。 |
-| callback | AsyncCallback\<[insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult)> | 是 | 回调函数，返回意图调用执行结果。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | param | [ExecuteParam](#executeparam) | 是 | 执行意图调用的参数。 |
+  | callback | AsyncCallback<[insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult)> | 是 | 回调函数，返回意图调用执行结果。 |
 
 **错误码**：
 
@@ -475,38 +383,35 @@ execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult
 **示例：**
 
 ```ts
-import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-function executeInsightIntentAsync() {
+  function executeInsightIntentAsync() {
+    let param: insightIntentDriver.ExecuteParam = {
+      bundleName: 'com.ohos.intentexecutedemo',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      insightIntentName: 'PlayMusic',
+      insightIntentParam: {
+        songName: 'City Of Stars',
+      },
+      executeMode: insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND,
+    };
 
-  let param: insightIntentDriver.ExecuteParam = {
-    bundleName: 'com.ohos.intentexecutedemo',
-    moduleName: 'entry',
-    abilityName: 'EntryAbility',
-    insightIntentName: 'PlayMusic',
-    insightIntentParam: {
-      'songName': 'City Of Stars',
-    },
-    executeMode: insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND,
-  };
-
-  try {
-    insightIntentDriver.execute(param, (error, data: insightIntent.ExecuteResult | undefined) => {
-      const resultCode = data?.code ?? -1;
-      const resultData = data ? JSON.stringify(data) : 'null';
-      if (error) {
-        hilog.error(0x0000, 'testTag', 'execute insight intent failed with %{public}s', error);
-      } else {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'execute insight intent succeed');
-      }
-      hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', resultCode);
-      hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', resultData);
-    })
-  } catch (error) {
-    hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', error);
+    try {
+      insightIntentDriver.execute(param, (error, data: insightIntent.ExecuteResult) => {
+        if (error) {
+          hilog.error(0x0000, 'testTag', 'execute insight intent failed with %{public}s', JSON.stringify(error));
+        } else {
+          hilog.info(0x0000, 'testTag', '%{public}s', 'execute insight intent succeed');
+        }
+        hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', data.code);
+        hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', JSON.stringify(data.result));
+      })
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', JSON.stringify(error));
+    }
   }
-}
 ```
 
 ## insightIntentDriver.execute
@@ -527,15 +432,11 @@ execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| param | [ExecuteParam](#executeparam) | 是 | 执行意图调用的参数。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | param | [ExecuteParam](#executeparam) | 是 | 执行意图调用的参数。 |
 
 **返回值：**
 
@@ -572,36 +473,34 @@ execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 **示例：**
 
 ```ts
-import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-async function executeSearchMusicIntentPromise() {
-  let param: insightIntentDriver.ExecuteParam = {
-    bundleName: 'com.ohos.intentexecutedemo',
-    moduleName: 'entry',
-    abilityName: 'EntryAbility',
-    insightIntentName: 'PlayMusic',
-    insightIntentParam: {
-      'songName': 'City Of Stars',
-    },
-    executeMode: insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND,
-  };
+  async function executeSearchMusicIntentPromise() {
+    let param: insightIntentDriver.ExecuteParam = {
+      bundleName: 'com.ohos.intentexecutedemo',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      insightIntentName: 'PlayMusic',
+      insightIntentParam: {
+        songName: 'City Of Stars',
+      },
+      executeMode: insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND,
+    };
 
-  try {
-    let resultData: insightIntent.ExecuteResult = await insightIntentDriver.execute(param);
-    hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', resultData.code);
-    hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', resultData.result);
-  } catch (error) {
-    hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', error);
+    try {
+      let resultData: insightIntent.ExecuteResult = await insightIntentDriver.execute(param);
+      hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', resultData.code);
+      hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', JSON.stringify(resultData.result));
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', JSON.stringify(error));
+    }
   }
-}
 ```
 
-## insightIntentDriver.getAllInsightIntentInfo<sup>20+</sup>
+## insightIntentDriver.getAllInsightIntentInfo<sup>20+<sup>
 
-ArkTS-Dyn: getAllInsightIntentInfo(intentFlags: number): Promise<Array\<[InsightIntentInfo](#insightintentinfo20)>>
-
-ArkTS-Sta: getAllInsightIntentInfo(intentFlags: int): Promise<Array\<[InsightIntentInfo](#insightintentinfo20)>>
+getAllInsightIntentInfo(intentFlags: number): Promise<Array\<[InsightIntentInfo](#insightintentinfo20)>>
 
 查询当前设备上的所有意图信息。使用Promise异步回调。
 
@@ -613,15 +512,11 @@ ArkTS-Sta: getAllInsightIntentInfo(intentFlags: int): Promise<Array\<[InsightInt
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| intentFlags | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于表示查询全量意图信息或者简要意图信息，参考[GetInsightIntentFlag](#getinsightintentflag20)。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | intentFlags | number | 是 | 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于表示查询全量意图信息或者简要意图信息，参考[GetInsightIntentFlag](#getinsightintentflag20)。 |
 
 **返回值：**
 
@@ -642,31 +537,27 @@ ArkTS-Sta: getAllInsightIntentInfo(intentFlags: int): Promise<Array\<[InsightInt
 **示例：**
 
 ```ts
-import { insightIntentDriver } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { insightIntentDriver } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-async function getInfos() {
-  try {
-    insightIntentDriver.getAllInsightIntentInfo(insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT |
-    insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO).then((data) => {
-      hilog.info(0x0000, 'testTag', 'getAllInsightIntentInfo return %{public}s', data);
-    }).catch((error: Error) => {
-      let err = error as BusinessError;
-      hilog.info(0x0000, 'testTag', 'getAllInsightIntentInfo errCode: %{public}d', err.code);
-      hilog.info(0x0000, 'testTag', 'getAllInsightIntentInfo errMessage: %{public}s', err.message);
-    });
-  } catch (error) {
-    hilog.error(0x0000, 'testTag', 'getAllInsightIntentInfo error caught %{public}s', error);
+  async function getInfos() {
+    try {
+      insightIntentDriver.getAllInsightIntentInfo(insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT | insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO).then((data) => {
+        hilog.info(0x0000, 'testTag', 'getAllInsightIntentInfo return %{public}s', JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        hilog.info(0x0000, 'testTag', 'getAllInsightIntentInfo errCode: %{public}d', err.code);
+        hilog.info(0x0000, 'testTag', 'getAllInsightIntentInfo errMessage: %{public}s', err.message);
+      });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', 'getAllInsightIntentInfo error caught %{public}s', JSON.stringify(error));
+    }
   }
-}
 ```
 
-## insightIntentDriver.getInsightIntentInfoByBundleName<sup>20+</sup>
+## insightIntentDriver.getInsightIntentInfoByBundleName<sup>20+<sup>
 
-ArkTS-Dyn: getInsightIntentInfoByBundleName(bundleName: string, intentFlags: number): Promise<Array\<[InsightIntentInfo](#insightintentinfo20)>>
-
-ArkTS-Sta: getInsightIntentInfoByBundleName(bundleName: string, intentFlags: int): Promise<Array\<[InsightIntentInfo](#insightintentinfo20)>>
+getInsightIntentInfoByBundleName(bundleName: string, intentFlags: number): Promise<Array\<[InsightIntentInfo](#insightintentinfo20)>>
 
 根据包名查询当前设备上的意图信息。使用Promise异步回调。
 
@@ -678,16 +569,12 @@ ArkTS-Sta: getInsightIntentInfoByBundleName(bundleName: string, intentFlags: int
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 应用包名称。 <br/>**说明：**<br/> 若包名不存在，则返回空数组。 |
-| intentFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于表示查询全量意图信息或者简要意图信息，参考[GetInsightIntentFlag](#getinsightintentflag20)。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | bundleName | string | 是 | 应用包名称。 <br/>**说明：**<br/> 若包名不存在，则返回空数组。 |
+  | intentFlags | number | 是 | 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于表示查询全量意图信息或者简要意图信息，参考[GetInsightIntentFlag](#getinsightintentflag20)。 |
 
 **返回值：**
 
@@ -708,33 +595,28 @@ ArkTS-Sta: getInsightIntentInfoByBundleName(bundleName: string, intentFlags: int
 **示例：**
 
 ```ts
-import { insightIntentDriver } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { insightIntentDriver } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-async function getInfosByBundleName() {
-  try {
-    let bundleName = "com.example.intent"; // 开发者需自行修改为实际包名
-    insightIntentDriver.getInsightIntentInfoByBundleName(bundleName,
-      insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT |
-      insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO).then((data) => {
-      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByBundleName return %{public}s', data);
-    }).catch((error: Error) => {
-      let err = error as BusinessError;
-      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByBundleName errCode: %{public}d', err.code);
-      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByBundleName errMessage: %{public}s', err.message);
-    });
-  } catch (error) {
-    hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByBundleName error caught %{public}s', error);
+  async function getInfosByBundleName() {
+    try {
+      let bundleName = "com.example.intent"; // 开发者需自行修改为实际包名
+      insightIntentDriver.getInsightIntentInfoByBundleName(bundleName, insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT | insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO).then((data) => {
+        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByBundleName return %{public}s', JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByBundleName errCode: %{public}d', err.code);
+        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByBundleName errMessage: %{public}s', err.message);
+      });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByBundleName error caught %{public}s', JSON.stringify(error));
+    }
   }
-}
 ```
 
-## insightIntentDriver.getInsightIntentInfoByIntentName<sup>20+</sup>
+## insightIntentDriver.getInsightIntentInfoByIntentName<sup>20+<sup>
 
-ArkTS-Dyn: getInsightIntentInfoByIntentName(bundleName: string, moduleName: string, intentName: string, intentFlags: number): Promise<[InsightIntentInfo](#insightintentinfo20)>
-
-ArkTS-Sta: getInsightIntentInfoByIntentName(bundleName: string, moduleName: string, intentName: string, intentFlags: int): Promise<[InsightIntentInfo](#insightintentinfo20)>
+getInsightIntentInfoByIntentName(bundleName: string, moduleName: string, intentName: string, intentFlags: number): Promise<[InsightIntentInfo](#insightintentinfo20)>
 
 根据包名、模块名和意图名查询当前设备上的意图信息。使用Promise异步回调。
 
@@ -746,18 +628,14 @@ ArkTS-Sta: getInsightIntentInfoByIntentName(bundleName: string, moduleName: stri
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 应用包名称。<br/>**说明：**<br/> 若包名不存在，则返回空对象。|
-| moduleName | string | 是 | 模块名称。<br/>**说明：**<br/> 若模块名不存在，则返回空对象。|
-| intentName | string | 是 | 意图名称。<br/>**说明：**<br/> 若意图名不存在，则返回空对象。|
-| intentFlags | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于表示查询全量意图信息或者简要意图信息，参考[GetInsightIntentFlag](#getinsightintentflag20)。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | bundleName | string | 是 | 应用包名称。<br/>**说明：**<br/> 若包名不存在，则返回空对象。|
+  | moduleName | string | 是 | 模块名称。<br/>**说明：**<br/> 若模块名不存在，则返回空对象。|
+  | intentName | string | 是 | 意图名称。<br/>**说明：**<br/> 若意图名不存在，则返回空对象。|
+  | intentFlags | number | 是 | 意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于表示查询全量意图信息或者简要意图信息，参考[GetInsightIntentFlag](#getinsightintentflag20)。 |
 
 **返回值：**
 
@@ -778,32 +656,30 @@ ArkTS-Sta: getInsightIntentInfoByIntentName(bundleName: string, moduleName: stri
 **示例：**
 
 ```ts
-import { insightIntentDriver } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { insightIntentDriver } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-function getInfoByIntentName() {
-  try {
-    let bundleName = "com.example.intent"; // 开发者需自行修改为实际包名
-    let moduleName = "entry"; // 开发者需自行修改为实际模块名
-    let intentName = "PlayMusic"; // 开发者需自行修改为实际意图名
-    insightIntentDriver.getInsightIntentInfoByIntentName(
-      bundleName, moduleName, intentName, insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT |
-    insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO)
+  function getInfoByIntentName() {
+    try {
+      let bundleName = "com.example.intent"; // 开发者需自行修改为实际包名
+      let moduleName = "entry"; // 开发者需自行修改为实际模块名
+      let intentName = "play"; // 开发者需自行修改为实际意图名
+      insightIntentDriver.getInsightIntentInfoByIntentName(
+        bundleName, moduleName, intentName, insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT | insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO)
       .then((data) => {
-        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByIntentName return %{public}s', data);
-      }).catch((error: Error) => {
-      let err = error as BusinessError;
-      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByIntentName errCode: %{public}d', err.code);
-      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByIntentName errMessage: %{public}s', err.message);
-    });
-  } catch (error) {
-    hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByIntentName error caught %{public}s', error);
+        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByIntentName return %{public}s', JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByIntentName errCode: %{public}d', err.code);
+        hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByIntentName errMessage: %{public}s', err.message);
+      });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByIntentName error caught %{public}s', JSON.stringify(error));
+    }
   }
-}
 ```
 
-## insightIntentDriver.getInsightIntentInfoByFilter<sup>23+</sup>
+## insightIntentDriver.getInsightIntentInfoByFilter<sup>23+<sup>
 
 getInsightIntentInfoByFilter(filter: InsightIntentInfoFilter): Promise<Array\<InsightIntentInfo>>
 
@@ -816,10 +692,6 @@ getInsightIntentInfoByFilter(filter: InsightIntentInfoFilter): Promise<Array\<In
 **需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -841,7 +713,6 @@ getInsightIntentInfoByFilter(filter: InsightIntentInfoFilter): Promise<Array\<In
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Not system application.                                      |
-| 16000006 | Cross-user operations are not allowed.                       |
 | 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.|
 
 **示例：**
@@ -856,139 +727,19 @@ function getInfoByFilter() {
     intentFlags: insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT | insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO,
     bundleName: 'com.example.intent', // 开发者需自行修改为实际包名
     moduleName: 'entry', // 开发者需自行修改为实际模块名
-    intentName: 'PlayMusic', // 开发者需自行修改为实际意图名
+    intentName: 'play', // 开发者需自行修改为实际意图名
     userId: 100, // 开发者需自行修改为实际userId
   };
 
   try {
     insightIntentDriver.getInsightIntentInfoByFilter(filter).then((data) => {
       hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter return %{public}s', JSON.stringify(data));
-    }).catch((error: Error) => {
-      let err = error as BusinessError;
+    }).catch((err: BusinessError) => {
       hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter errCode: %{public}d', err.code);
       hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter errMessage: %{public}s', err.message);
     });
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByFilter error caught %{public}s', JSON.stringify(error));
-  }
-}
-```
-
-## insightIntentDriver.queryEntityInfo
-
-ArkTS-Dyn: queryEntityInfo(param: QueryParam): Promise\<Array\<Record\<string, Object>>><br/>ArkTS-Sta: queryEntityInfo(param: QueryParam): Promise\<Array\<Record\<string, RecordData>>>
-
-根据[QueryParam](#queryparam)查询应用的动态意图实体信息。使用Promise异步回调。<br/>如果调用方应用的用户ID与目标用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统接口**：此接口为系统接口。
-
-**需要权限**：ohos.permission.EXECUTE_INSIGHT_INTENT
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| param | [QueryParam](#queryparam) | 是 | 意图实体参数，描述意图实体的查询条件，用于查询应用中符合条件的意图实体。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| ArkTS-Dyn: Promise\<Array\<Record\<string, Object>>><br/>ArkTS-Sta: Promise\<Array\<Record\<string, RecordData>>> | Promise对象，返回应用返回的意图实体数组。 |
-
-**错误码**：
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. |
-
-**示例：**
-
-ArkTS-Dyn示例：
-
-```ts
-import { insightIntent, insightIntentDriver } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-function queryEntityInfoByPromise() {
-  let queryParam: insightIntentDriver.QueryParam = {
-    bundleName: 'com.example.intent', // 开发者需自行修改为实际包名
-    moduleName: 'entry', // 开发者需自行修改为实际模块名
-    intentName: 'PlayMusic', // 开发者需自行修改为实际意图名
-    className: 'AppIntentEntityImpl', // 开发者需自行修改为实际的类名
-    queryEntityParam: {
-      queryType: insightIntent.QueryType.BY_PROPERTY,
-      parameters: { // 开发者需自行修改为实际的查询参数
-        'entityId': 'default'
-      },
-    },
-    userId: 100,
-  }
-
-  try {
-    insightIntentDriver.queryEntityInfo(queryParam)
-      .then((data: Array<Record<string, Object>> | undefined) => {
-        hilog.info(0x0000, 'testTag', 'queryEntityInfo return %{public}s', JSON.stringify(data));
-      })
-      .catch((err: BusinessError) => {
-        hilog.error(0x0000, 'testTag', 'queryEntityInfo errCode: %{public}d', err.code);
-        hilog.error(0x0000, 'testTag', 'queryEntityInfo errMessage %{public}s', err.message);
-      });
-  } catch (error) {
-    hilog.error(0x0000, 'testTag', 'queryEntityInfo error caught %{public}s', JSON.stringify(error));
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-'use static'
-
-import { insightIntent, insightIntentDriver } from '@kit.AbilityKit';
-import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-function queryEntityInfoByPromise() {
-  let queryParam: insightIntentDriver.QueryParam = {
-    bundleName: 'com.example.intent', // 开发者需自行修改为实际包名
-    moduleName: 'entry', // 开发者需自行修改为实际模块名
-    intentName: 'PlayMusic', // 开发者需自行修改为实际意图名
-    className: 'AppIntentEntityImpl', // 开发者需自行修改为实际的类名
-    queryEntityParam: {
-      queryType: insightIntent.QueryType.BY_PROPERTY,
-      parameters: { // 开发者需自行修改为实际的查询参数
-        'entityId': 'default'
-      },
-    },
-    userId: 100,
-  }
-
-  try {
-    insightIntentDriver.queryEntityInfo(queryParam)
-      .then((data: Array<Record<string, RecordData>> | undefined) => {
-        hilog.info(0x0000, 'testTag', 'queryEntityInfo return %{public}s', JSON.stringify(data));
-      })
-      .catch((err) => {
-        hilog.error(0x0000, 'testTag', 'queryEntityInfo errCode: %{public}d', err.code);
-        hilog.error(0x0000, 'testTag', 'queryEntityInfo errMessage %{public}s', err.message);
-      });
-  } catch (error) {
-    hilog.error(0x0000, 'testTag', 'queryEntityInfo error caught %{public}s', JSON.stringify(error));
   }
 }
 ```

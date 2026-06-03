@@ -8,20 +8,20 @@
 
 ## 概述
 
-在企业PC设备管理场景下，企业可以引入多家[EMM](./mdm-kit-term.md#enterprise-mobility-management-emm企业移动管理)厂商来共同管理企业PC设备，分散管理权限，满足不同场景的管控诉求。在这种背景下，MDM Kit抽象出不同的设备管理员角色，用来支持多家EMM厂商在PC设备上同时部署自己的MDM业务。 由于这种场景下存在多个[MDM应用](./mdm-kit-term.md#mdm应用)同时调用MDM管控接口的情况，建议企业与EMM厂商提前约定各自MDM应用的管控范围，避免管控策略冲突，[管控策略冲突](#管控策略冲突)可能会导致企业管控失效，引发企业数据泄露等问题。
+在企业PC设备管理场景下，企业可以引入多家[EMM厂商](./mdm-kit-term.md#emm厂商)来共同管理企业PC设备，分散管理权限，满足不同场景的管控诉求。在这种背景下，MDM Kit抽象出不同的设备管理员角色，用来支持多家EMM厂商在PC设备上同时部署自己的MDM业务。 由于这种场景下存在多个[MDM应用](./mdm-kit-term.md#mdm应用设备管理应用)同时调用MDM管控接口的情况，建议企业与EMM厂商提前约定各自MDM应用的管控范围，避免管控策略冲突，[管控策略冲突](#管控策略冲突)可能会导致企业管控失效，引发企业数据泄露等问题。
 
 ## Admin组件的激活角色
 
 Admin组件可以通过不同的方式激活，不同的激活方式，成为的角色也不同。
 
-1.通过[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23)接口，激活后成为[DA角色](./mdm-kit-term.md#device-admin-da普通设备管理员)。当MDM应用仅需对设备进行管控，无需管理其他DA应用时，可选择被激活为DA。
+1.通过[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23)接口, 激活后成为[DA角色](./mdm-kit-term.md#da)。
 
-2.通过[adminManager.startAdminProvision](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口，激活后成为[BDA角色](./mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)。当MDM应用需要对员工使用的个人设备在特殊场景进行有限管控（如禁用拍照、录音等）时，可选择被激活为BDA。
+2.通过[adminManager.startAdminProvision](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口, 激活后成为[BDA角色](./mdm-kit-term.md#bda)。
 
 <!--Del-->
-3.通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口，第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_SUPER，激活后成为[SDA角色](./mdm-kit-term.md#super-device-admin-sda超级设备管理员)。当MDM应用需要管理多个其他DA应用时，可选择被激活为SDA。
+3.通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口, 第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_SUPER， 激活后成为[SDA角色](./mdm-kit-term.md#sda)。
 
-4.通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口，第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_NORMAL，激活后成为[DA角色](./mdm-kit-term.md#device-admin-da普通设备管理员)。<!--DelEnd-->
+4.通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口, 第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_NORMAL， 激活后成为[DA角色](./mdm-kit-term.md#da)。<!--DelEnd-->
 
 ## 管控策略冲突
 
@@ -47,8 +47,8 @@ MDM B：不禁用摄像头。<br/>
 ### 规则2：独占
 - 设计原则：设备上的某些能力可能需要设置完全相反的管控策略，并且这些策略在其各自的使用场景均合理，系统无法识别哪种策略具有更高优先级，如果允许MDM应用随意变更策略则会使策略管控变得混乱，因此设计了独占规则。比如强制开启地理位置定位能力与禁用地理位置定位能力是完全相反的管控策略。
 - 策略生效逻辑：首个成功下发策略的MDM应用获得独占权，不允许后续其他MDM应用尝试下发同类策略，系统将报策略冲突。
-- 示例1：若MDM A先通过[setLocationPolicy](../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md#locationmanagersetlocationpolicy)接口设置了位置策略-强制开启位置服务策略，则MDM B尝试再设置位置策略-禁用位置服务策略将报策略冲突。<br/>
-- 示例2：若MDM A先通过[setLocationPolicy](../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md#locationmanagersetlocationpolicy)接口设置了位置策略-禁用位置服务策略，则MDM B尝试再设置位置策略-强制开启位置服务策略将报策略冲突。<br/>
+- 示例1：若MDM A先设置了[位置策略](../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md#locationmanagersetlocationpolicy)-强制开启位置服务策略，则MDM B尝试再设置位置策略-禁用位置服务策略将报策略冲突。<br/>
+- 示例2：若MDM A先设置了[位置策略](../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md#locationmanagersetlocationpolicy)-禁用位置服务策略，则MDM B尝试再设置位置策略-强制开启位置服务策略将报策略冲突。<br/>
 - Admin组件激活状态变更：Admin组件被取消激活或MDM应用被卸载时，无论设备上是否还有其他MDM应用，该策略立即失效，相关设备设置恢复至系统默认状态，其他MDM应用即可重新配置该策略。
 
 ### 规则3：配置
@@ -66,7 +66,7 @@ MDM B：配置Wi-Fi2，使设备连接到Wi-Fi2网络。<br/>
 - Admin组件激活状态变更：Admin组件被取消激活或MDM应用被卸载时，无论设备上是否还有其他MDM应用，已生效的配置均被保留，不受卸载影响。
 
 ### 规则4：合并
-- 设计原则：对于很多管控策略本身就具有合集属性，允许一个MDM应用多次修改添加，对于这类管控策略冲突设计合并规则。允许多个MDM应用对于同一策略进行追加设置，多个应用设置的策略都能生效。
+- 设计原则：对于很多管控策略本身就具有合集属性，允许一个MDM应用多次修改添加，对于这类管控策略冲突设计合并规格。允许多个MDM应用对于同一策略进行追加设置，多个应用设置的策略都能生效。
 - 策略生效逻辑：系统合并所有MDM应用设置的数据集合，取并集后生效。只有当某一项数据从所有MDM应用的列表中被移除时，才会从最终名单中删除。
 - 示例：<br/>
 MDM应用A：添加[应用1, 应用2] 至应用允许运行名单。<br/>

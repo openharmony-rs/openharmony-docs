@@ -1774,7 +1774,7 @@ on(eventType: 'windowStageLifecycleEvent', callback: Callback&lt;WindowStageLife
 >
 > 2.当前接口不提供WindowStage的获焦失焦状态监听，对于windowStage获焦失焦状态有监听需求的情况下，推荐使用[on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10)；
 >
-> 3.其他系统机制及其生命周期状态切换的详细说明，请参考[主窗口的生命周期](../../windowmanager/window-lifecycle.md#管理应用主窗的生命周期)。
+> 3.其他系统机制及其生命周期状态切换的详细说明，请参考[主窗口的生命周期](../../windowmanager/window-overview.md#主窗口的生命周期)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1856,7 +1856,7 @@ onWindowStageLifecycleEvent(callback: Callback&lt;WindowStageLifecycleEventType&
 >
 > 2.当前接口不提供WindowStage的获焦失焦状态监听，对于windowStage获焦失焦状态有监听需求的情况下，推荐使用[onWindowEvent](arkts-apis-window-Window.md#onwindowevent23)；
 >
-> 3.其他系统机制及其生命周期状态切换的详细说明，请参考[主窗口的生命周期](../../windowmanager/window-lifecycle.md#管理应用主窗的生命周期)。
+> 3.其他系统机制及其生命周期状态切换的详细说明，请参考[主窗口的生命周期](../../windowmanager/window-overview.md#主窗口的生命周期)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2767,7 +2767,7 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
 **设备行为差异：**
 
-在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
@@ -2880,7 +2880,7 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 **设备行为差异：**
 
-在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
@@ -2981,7 +2981,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 
 **设备行为差异：**
 
-在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错，返回false。
 

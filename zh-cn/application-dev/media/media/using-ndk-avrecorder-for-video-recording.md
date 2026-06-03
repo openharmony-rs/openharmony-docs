@@ -49,7 +49,7 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-使用[native_avformat.h](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
+使用[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
 ```C++
 #include <multimedia/player_framework/native_avformat.h>
 ```
@@ -122,7 +122,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
            // 处理状态变更。
        }
        if (state == OH_AVRecorder_State::ERROR) {
-           OH_LOG_ERROR(LOG_APP, "==NDKDemo== Recorder OnStateChange ERROR, reason: %{public}s", reasonStr);
+           OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange ERROR, reason: %{public}s", reasonStr);
            // 处理状态变更。
        }
    }
@@ -553,10 +553,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Stop failed %{public}d", result);
       }
-      if (g_outputFd > 0) {
-         close(g_outputFd);
-      }
-      
+      close(g_outputFd);
       napi_value res;
       napi_create_int32(env, result, &res);
       return res;
@@ -594,10 +591,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
          napi_create_int32(env, AV_ERR_INVALID_VAL, &res);
          return res;
       }
-      if (g_outputFd > 0) {
-         close(g_outputFd);
-         g_outputFd = -1;
-      }
+      
       int result = OH_AVRecorder_Release(g_avRecorder);
       g_avRecorder = nullptr;   // 释放录制资源后，需要显式地将g_avRecorder指针置空。
 

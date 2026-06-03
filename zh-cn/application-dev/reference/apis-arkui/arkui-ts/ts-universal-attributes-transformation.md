@@ -1,8 +1,8 @@
 # 图形变换
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -54,8 +54,6 @@ rotate(options: Optional\<RotateOptions>): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -87,8 +85,6 @@ rotate(options: Optional<RotateOptions | RotateAngleOptions>): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -111,7 +107,7 @@ rotate(options: Optional<RotateOptions | RotateAngleOptions>): T
 
 ## rotate<sup>23+</sup>
 
-rotate(value: RotateOptions | undefined)
+rotate(value: RotateOptions | undefined): this
 
 设置组件旋转。
 
@@ -128,6 +124,12 @@ rotate(value: RotateOptions | undefined)
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [RotateOptions](#rotateoptions对象说明) \| undefined | 是   | 可使组件在以组件左上角为坐标原点的坐标系中进行旋转（坐标系如下图所示）。其中，(x,&nbsp;y,&nbsp;z）指定一个矢量，作为旋转轴。<br/>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。<br/>默认值: 在x、y、z都不指定时，x、y、z的默认值分别为0、0、1。指定了x、y、z任何一个值时，x、y、z中未指定的值默认为0。<br/>{<br/>centerX:&nbsp;'50%',<br/>centerY:&nbsp;'50%',<br/>centerZ:&nbsp;0,<br/>perspective:&nbsp;0<br/>}<br/>单位：vp<br/>![coordinates](figures/coordinates.png)<br/>centerZ、perspective从API version 10开始支持在ArkTS卡片中使用。<br/>当value的值为undefined时，恢复为无旋转效果。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
 
 ## translate
 
@@ -169,8 +171,6 @@ translate(translate: Optional\<TranslateOptions>): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -194,7 +194,7 @@ translate(translate: Optional\<TranslateOptions>): T
 
 ## translate<sup>23+</sup>
 
-translate(value: TranslateOptions | undefined)
+translate(value: TranslateOptions | undefined): this
 
 设置组件平移。
 
@@ -211,6 +211,12 @@ translate(value: TranslateOptions | undefined)
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [TranslateOptions](#translateoptions对象说明) \| undefined | 是   | 可使组件在以组件左上角为坐标原点的坐标系中进行移动（坐标系如下图所示）。其中，x，y，z的值分别表示在对应轴移动的距离，值为正时表示向对应轴的正向移动，值为负时表示向对应轴的反向移动。移动距离支持数字和字符串（比如'10px'，‘10%’）两种类型。<br/>默认值:<br/>{<br/>x:&nbsp;0,<br/>y:&nbsp;0,<br/>z:&nbsp;0<br/>}<br/>单位：vp<br/>![coordinates](figures/coordinates.png)<br/>**说明：**<br/>z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。<br/>![coordinateNode](figures/coordinateNote.png)<br/>当value的值为undefined时，恢复为无平移效果。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
 
 ## scale
 
@@ -252,8 +258,6 @@ scale(options: Optional\<ScaleOptions>): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -276,7 +280,7 @@ scale(options: Optional\<ScaleOptions>): T
 
 ## scale<sup>23+</sup>
 
-scale(value: ScaleOptions | undefined)
+scale(value: ScaleOptions | undefined): this
 
 设置组件缩放。
 
@@ -293,6 +297,12 @@ scale(value: ScaleOptions | undefined)
 | 参数名 | 类型                                  | 必填 | 说明                                                         |
 | ------ | ------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [ScaleOptions](#scaleoptions对象说明) \| undefined | 是   | 可以分别设置X轴、Y轴、Z轴的缩放比例，默认值为1，同时可以通过centerX和centerY设置缩放的中心点。<br/>默认值:<br/>{<br/>x:&nbsp;1,<br/>y:&nbsp;1,<br/>z:&nbsp;1,<br/>centerX:'50%',<br/>centerY:'50%'<br/>}<br/>当value的值为undefined时，恢复为无缩放效果。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
 
 ## transform
 
@@ -330,8 +340,6 @@ transform(transform: Optional\<object>): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -354,7 +362,7 @@ transform(transform: Optional\<object>): T
 
 ## transform<sup>23+</sup>
 
-transform(value: Matrix4Transit | undefined)
+transform(value: Matrix4Transit | undefined): this
 
 可用于显示二维变换时的矩阵变换。包含三维变换时应使用[transform3D](#transform3d20)接口。
 
@@ -372,6 +380,12 @@ transform(value: Matrix4Transit | undefined)
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | [Matrix4Transit](../js-apis-matrix4.md#matrix4transit) \| undefined | 是   | 设置当前组件的变换矩阵。object当前仅支持[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)矩阵对象类型。<br/>当value的值为undefined时，恢复为单位矩阵的效果。 |
 
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
+
 ## transform3D<sup>20+</sup>
 
 ArkTS-Dyn: transform3D(transform: Optional\<Matrix4Transit>): T
@@ -381,8 +395,6 @@ ArkTS-Sta: transform3D(transform: Matrix4Transit | undefined): this
 设置组件的三维变换矩阵。当涉及包含透视效果的三维变换时，transform接口显示效果可能有误，推荐使用transform3D接口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -400,17 +412,13 @@ ArkTS-Sta: transform3D(transform: Matrix4Transit | undefined): this
 
 | 类型 | 说明           |
 | ---- | -------------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+| T    | 返回当前组件。 |
 
 ## Matrix4Transit<sup>20+</sup>
 
-ArkTS-Dyn: type Matrix4Transit = Matrix4Transit
-
-ArkTS-Sta: type Matrix4Transit = matrix4.Matrix4Transit
+type Matrix4Transit = Matrix4Transit
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -420,7 +428,7 @@ ArkTS-Sta: type Matrix4Transit = matrix4.Matrix4Transit
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| ArkTS-Dyn: [Matrix4Transit](../js-apis-matrix4.md#matrix4transit)<br/>ArkTS-Sta: matrix4.[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
+| [Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
 
 ## RotateOptions对象说明
 
@@ -438,8 +446,8 @@ ArkTS-Sta: type Matrix4Transit = matrix4.Matrix4Transit
 | angle                     | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 否 | 旋转角度。取值为正时相对于旋转轴方向顺时针转动，取值为负时相对于旋转轴方向逆时针转动。取值可为string类型，如'90deg'。<br/>默认值：0<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
 | centerX                   | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是  | 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。取值可为string类型，如'50'，'50%'。<br/>单位：vp<br/>默认值：0<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
 | centerY                   | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string| 否 | 是  | 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。取值可为string类型，如'50'，'50%'。<br/>单位：vp<br/>默认值：0<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 7<br/> **ArkTS-Sta起始版本：** 23 |
-| centerZ<sup>10+</sup>     | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 是  | z轴锚点，即3D旋转中心点的z轴分量。<br/>默认值：0<br/>单位：px<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
-| perspective<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                | 否 | 是  | 相机放置的z轴坐标。数值大小表示视距，即相机到z=0平面的距离。取值的正负决定了相机观察的方向。当perspective=0，系统会自动计算适合的相机z轴位置，取值为负数。<br/>旋转轴和旋转中心点都基于[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)设定，组件发生位移时，坐标系不会随之移动。<br/>默认值：0<br/>单位：px<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23|
+| centerZ<sup>10+</sup>     | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 是  | z轴锚点，即3D旋转中心点的z轴分量。<br/>默认值：0<br/>单位：px<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
+| perspective<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                | 否 | 是  | 相机放置的z轴坐标。数值大小表示视距，即相机到z=0平面的距离。取值的正负决定了相机观察的方向。当perspective=0，系统会自动计算适合的相机z轴位置，取值为负数。<br/>旋转轴和旋转中心点都基于[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)设定，组件发生位移时，坐标系不会随之移动。<br/>默认值：0<br/>单位：px<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23|
 
 ## RotateAngleOptions<sup>20+</sup>对象说明
 
@@ -448,8 +456,6 @@ ArkTS-Sta: type Matrix4Transit = matrix4.Matrix4Transit
 **卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

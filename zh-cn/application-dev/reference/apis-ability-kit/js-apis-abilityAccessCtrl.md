@@ -203,12 +203,6 @@ on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, 
 
 - 多次调用本订阅接口时，如果订阅的权限列表间有相同的子集，callback相同时，订阅失败。
 
-权限状态由“已授权”变更为“未授权”可能存在两种场景：
-
-- 用户主动撤销：系统会终止对应应用进程。
-
-- 系统主动回收：应用进程不会终止。典型场景如安全控件的单次授权，在授权周期结束后由系统自动回收。
-
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。

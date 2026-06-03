@@ -25,7 +25,7 @@ getContext(component?: Object):Context
 > 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12)来明确UI的执行上下文。
 
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,7 +51,7 @@ getContext(component?: Object):Context
 
 type Context = Context
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

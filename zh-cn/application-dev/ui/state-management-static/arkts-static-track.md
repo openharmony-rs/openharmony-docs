@@ -18,9 +18,9 @@ import { Track } from '@kit.ArkUI';
 
 状态管理V1中[\@State](./arkts-static-state.md)结合[\@Observed](./arkts-static-observed-and-objectlink.md)使用支持观察第一层属性的变化，第一层属性的变化虽然可以触发更新，但无法做到类属性级的观察，如下面例子展示了这一限制：
 
-<!-- @[TrackWithoutPrecision](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TrackWatch/entry/src/main/ets/pages/TrackWithoutPrecision.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, Column, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
 
 @Observed
@@ -109,9 +109,9 @@ struct Index {
 
 使用\@Track装饰器可以避免冗余刷新。
 
-<!-- @[TrackAvoidRedundant](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TrackWatch/entry/src/main/ets/pages/TrackAvoidRedundant.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, Column, Component, Entry, FontWeight, Observed, Row, State, Text, Track } from '@kit.ArkUI';
 
 class LogTrack {
@@ -206,9 +206,10 @@ struct AddLog {
 
 以下示例展示组件更新和\@Track的处理步骤。对象log是\@State装饰的状态变量，logInfo是\@Track的成员属性，其余成员属性都是非\@Track装饰的，而且也不准备在UI中更新它们的值。
 
-<!-- @[TrackCustomComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TrackWatch/entry/src/main/ets/pages/TrackCustomComponent.ets) -->
 
-``` TypeScript
+```ts
+'use static'
+
 import { Column, Component, Entry, FontWeight, Row, State, Text, Track } from '@kit.ArkUI';
 
 class Log {

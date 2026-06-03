@@ -203,8 +203,6 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 用于分布式设备识别的结构体。
 
-**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC、ohos.permission.ACCESS_SERVICE_DM和ohos.permission.sec.ACCESS_UDID
-
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -680,7 +678,7 @@ ArkTS-Sta: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfil
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: Promise&lt;number&gt; <br /> ArkTS-Sta: Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -832,7 +830,7 @@ ArkTS-Sta: getLocalDisplayDeviceName(maxNameLength: int): Promise&lt;string&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise&lt;string&gt; | 指定名称长度最大字节数的本机设备显示名。 |
+  | string | 指定名称长度最大字节数的本机设备显示名。 |
 
 **错误码：**
 
@@ -914,7 +912,7 @@ ArkTS-Sta: setLocalDeviceName(deviceName: string): Promise&lt;int&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: Promise&lt;number&gt; <br /> ArkTS-Sta: Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -1000,7 +998,7 @@ ArkTS-Sta: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: Promise&lt;number&gt; <br /> ArkTS-Sta: Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 

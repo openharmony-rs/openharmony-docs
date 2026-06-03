@@ -35,7 +35,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 constructor(album: Album)
 
-构造函数用于初始化新创建的对象。用于对相册进行操作。
+构造函数用于初始化新创建的对象。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

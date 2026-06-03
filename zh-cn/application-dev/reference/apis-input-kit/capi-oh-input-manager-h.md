@@ -720,7 +720,7 @@ void OH_Input_SetKeyCode(struct Input_KeyState* keyState, int32_t keyCode)
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_KeyState](capi-input-input-keystate.md)* keyState | 按键状态的枚举对象，具体请参考[Input_KeyStateAction](#input_keystateaction)。 |
-| int32_t keyCode | 按键键值，具体请参考[KeyCode](js-apis-keycode.md#keycode)。 |
+| int32_t keyCode | 按键键值。 |
 
 ### OH_Input_GetKeyCode()
 
@@ -990,7 +990,7 @@ void OH_Input_SetKeyEventKeyCode(struct Input_KeyEvent* keyEvent, int32_t keyCod
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | 按键事件对象，通过[OH_Input_CreateKeyEvent](#oh_input_createkeyevent)接口可以创建按键事件对象。<br>使用完需使用[OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent)接口销毁按键事件对象。 |
-| int32_t keyCode | 按键键值，具体请参考[KeyCode](js-apis-keycode.md#keycode)。 |
+| int32_t keyCode | 按键的键值。 |
 
 ### OH_Input_GetKeyEventKeyCode()
 
@@ -1066,7 +1066,7 @@ int64_t OH_Input_GetKeyEventActionTime(const struct Input_KeyEvent* keyEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | 返回按键事件发生的时间，单位为微秒。 |
+| int64_t | 返回按键事件发生的时间。 |
 
 ### OH_Input_SetKeyEventWindowId()
 
@@ -1276,7 +1276,7 @@ void OH_Input_SetMouseEventDisplayX(struct Input_MouseEvent* mouseEvent, int32_t
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
-| int32_t displayX | 鼠标事件以指定屏幕左上角为原点的相对坐标系的X坐标，单位为px。 |
+| int32_t displayX | 鼠标事件以指定屏幕左上角为原点的相对坐标系的X坐标。 |
 
 ### OH_Input_GetMouseEventDisplayX()
 
@@ -1303,7 +1303,7 @@ int32_t OH_Input_GetMouseEventDisplayX(const struct Input_MouseEvent* mouseEvent
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 鼠标事件以指定屏幕左上角为原点的相对坐标系的X坐标，单位为px。 |
+| int32_t | 鼠标事件以指定屏幕左上角为原点的相对坐标系的X坐标。 |
 
 ### OH_Input_SetMouseEventDisplayY()
 
@@ -1325,7 +1325,7 @@ void OH_Input_SetMouseEventDisplayY(struct Input_MouseEvent* mouseEvent, int32_t
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
-| int32_t displayY | 鼠标事件以指定屏幕左上角为原点的相对坐标系的Y坐标，单位为px。 |
+| int32_t displayY | 鼠标事件以指定屏幕左上角为原点的相对坐标系的Y坐标。 |
 
 ### OH_Input_GetMouseEventDisplayY()
 
@@ -1352,7 +1352,7 @@ int32_t OH_Input_GetMouseEventDisplayY(const struct Input_MouseEvent* mouseEvent
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 鼠标事件以指定屏幕左上角为原点的相对坐标系的Y坐标，单位为px。 |
+| int32_t | 鼠标事件以指定屏幕左上角为原点的相对坐标系的Y坐标。 |
 
 ### OH_Input_SetMouseEventButton()
 
@@ -1548,7 +1548,7 @@ int64_t OH_Input_GetMouseEventActionTime(const struct Input_MouseEvent* mouseEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | 返回鼠标事件发生的时间，单位为微秒。 |
+| int64_t | 返回鼠标事件发生的时间。 |
 
 ### OH_Input_SetMouseEventWindowId()
 
@@ -1780,7 +1780,7 @@ void OH_Input_SetTouchEventDisplayX(struct Input_TouchEvent* touchEvent, int32_t
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
-| int32_t displayX | 触屏输入事件以指定屏幕左上角为原点的相对坐标系的X坐标，单位为px。 |
+| int32_t displayX | 触屏输入事件以指定屏幕左上角为原点的相对坐标系的X坐标。 |
 
 ### OH_Input_GetTouchEventDisplayX()
 
@@ -1829,7 +1829,7 @@ void OH_Input_SetTouchEventDisplayY(struct Input_TouchEvent* touchEvent, int32_t
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
-| int32_t displayY | 触屏输入事件以指定屏幕左上角为原点的相对坐标系的Y坐标，单位为px。 |
+| int32_t displayY | 触屏输入事件以指定屏幕左上角为原点的相对坐标系的Y坐标。 |
 
 ### OH_Input_GetTouchEventDisplayY()
 
@@ -1856,7 +1856,7 @@ int32_t OH_Input_GetTouchEventDisplayY(const struct Input_TouchEvent* touchEvent
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 触屏输入事件以指定屏幕左上角为原点的相对坐标系的Y坐标，单位为px。 |
+| int32_t | 触屏输入事件以指定屏幕左上角为原点的相对坐标系的Y坐标。 |
 
 ### OH_Input_SetTouchEventActionTime()
 
@@ -1905,7 +1905,7 @@ int64_t OH_Input_GetTouchEventActionTime(const struct Input_TouchEvent* touchEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | 返回触屏输入事件发生的时间，单位为微秒。 |
+| int64_t | 返回触屏输入事件发生的时间。 |
 
 ### OH_Input_SetTouchEventWindowId()
 
@@ -4005,7 +4005,7 @@ void OH_Input_SetMouseEventGlobalX(struct Input_MouseEvent* mouseEvent, int32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | const struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
-| int32_t globalX | 鼠标事件以主屏左上角为原点的全局坐标系的X坐标，单位为px。 |
+| int32_t globalX | 鼠标事件以主屏左上角为原点的全局坐标系的X坐标。 |
 
 ### OH_Input_GetMouseEventGlobalX()
 
@@ -4029,7 +4029,7 @@ int32_t OH_Input_GetMouseEventGlobalX(const struct Input_MouseEvent* mouseEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 鼠标事件以主屏左上角为原点的全局坐标系的X坐标，单位为px。|
+| int32_t | 鼠标事件以主屏左上角为原点的全局坐标系的X坐标。 |
 
 ### OH_Input_SetMouseEventGlobalY()
 
@@ -4048,7 +4048,7 @@ void OH_Input_SetMouseEventGlobalY(struct Input_MouseEvent* mouseEvent, int32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | const struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
-| int32_t globalY | 鼠标事件以主屏左上角为原点的全局坐标系的Y坐标，单位为px。|
+| int32_t globalY | 鼠标事件以主屏左上角为原点的全局坐标系的Y坐标。 |
 
 ### OH_Input_GetMouseEventGlobalY()
 
@@ -4072,7 +4072,7 @@ int32_t OH_Input_GetMouseEventGlobalY(const struct Input_MouseEvent* mouseEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 鼠标事件以主屏左上角为原点的全局坐标系的Y坐标，单位为px。|
+| int32_t | 鼠标事件以主屏左上角为原点的全局坐标系的Y坐标。 |
 
 ### OH_Input_InjectTouchEventGlobal()
 
@@ -4121,7 +4121,7 @@ void OH_Input_SetTouchEventGlobalX(struct Input_TouchEvent* touchEvent, int32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | const struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 | 
-| int32_t globalX | 触屏输入事件以主屏左上角为原点的全局坐标系的X坐标，单位为px。|
+| int32_t globalX | 触屏输入事件以主屏左上角为原点的全局坐标系的X坐标。 |
 
 ### OH_Input_GetTouchEventGlobalX()
 
@@ -4145,7 +4145,7 @@ int32_t OH_Input_GetTouchEventGlobalX(const struct Input_TouchEvent* touchEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 触屏输入事件以主屏左上角为原点的全局坐标系的X坐标，单位为px。|
+| int32_t | 触屏输入事件以主屏左上角为原点的全局坐标系的X坐标。 |
 
 ### OH_Input_SetTouchEventGlobalY()
 
@@ -4164,7 +4164,7 @@ void OH_Input_SetTouchEventGlobalY(struct Input_TouchEvent* touchEvent, int32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | const struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 | 
-| int32_t globalY | 触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标，单位为px。|
+| int32_t globalY | 触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标。 |
 
 ### OH_Input_GetTouchEventGlobalY()
 
@@ -4188,7 +4188,7 @@ int32_t OH_Input_GetTouchEventGlobalY(const struct Input_TouchEvent* touchEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标，单位为px。|
+| int32_t | 触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标。 |
 
 ### OH_Input_SetAxisEventGlobalX()
 
@@ -4207,7 +4207,7 @@ Input_Result OH_Input_SetAxisEventGlobalX(struct Input_AxisEvent* axisEvent, int
 | 参数项 | 描述 |
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
-| int32_t globalX | 轴事件以主屏左上角为原点的全局坐标系的X坐标，单位为px。|
+| int32_t globalX | 轴事件以主屏左上角为原点的全局坐标系的X坐标。 |
 
 **返回：**
 
@@ -4232,7 +4232,7 @@ Input_Result OH_Input_GetAxisEventGlobalX(const Input_AxisEvent* axisEvent, int3
 | 参数项 | 描述 |
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
-| int32_t* globalX | 轴事件以主屏左上角为原点的全局坐标系的X坐标，单位为px。|
+| int32_t* globalX | 轴事件以主屏左上角为原点的全局坐标系的X坐标。 |
 
 **返回：**
 
@@ -4257,7 +4257,7 @@ Input_Result OH_Input_SetAxisEventGlobalY(struct Input_AxisEvent* axisEvent, int
 | 参数项 | 描述 |
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
-| int32_t globalY | 轴事件以主屏左上角为原点的全局坐标系的Y坐标，单位为px。|
+| int32_t globalY | 轴事件以主屏左上角为原点的全局坐标系的Y坐标。 |
 
 **返回：**
 
@@ -4282,7 +4282,7 @@ Input_Result OH_Input_GetAxisEventGlobalY(const Input_AxisEvent* axisEvent, int3
 | 参数项 | 描述 |
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
-| int32_t* globalY | 轴事件以主屏左上角为原点的全局坐标系的Y坐标，单位为px。|
+| int32_t* globalY | 轴事件以主屏左上角为原点的全局坐标系的Y坐标。 |
 
 **返回：**
 
@@ -4309,8 +4309,8 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t *displayId | 当前屏幕的屏幕ID。 |
-| double *displayX | 鼠标在当前屏幕的X坐标，单位为px。|
-| double *displayY | 鼠标在当前屏幕的Y坐标，单位为px。|
+| double *displayX | 鼠标在当前屏幕的X坐标。 |
+| double *displayY | 鼠标在当前屏幕的Y坐标。 |
 
 **返回：**
 
@@ -4484,7 +4484,7 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br> 仅支持传入当前窗口和全局窗口的ID，传入其他ID返回全局窗口的默认光标样式，当前窗口ID可以通过[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。 |
-| int32_t* pointerStyle | 鼠标光标样式，取值为[Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle)的枚举值。 |
+| int32_t* pointerStyle | 鼠标光标样式的指针。 |
 
 **返回：**
 

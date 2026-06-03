@@ -1,9 +1,10 @@
 # ArkTS-Sta使用ArkTS-Dyn @Builder按引用传递参数V2状态管理互操作
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lixingchi1; @katabanga-->
-<!--Designer: @lixingchi1; @katabanga-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @lishihao16-->
+<!--Designer: @lixingchi1-->
+<!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
@@ -23,7 +24,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── StaBuilderV2Ref.ets
+│                   └── Index.ets
 │
 └── library/         # ArkTS-Dyn子模块
     └── src/
@@ -37,13 +38,12 @@ project/
 
 - 在ArkTS-Sta主模块`entry`中引入ArkTS-Dyn组件。
 
-<!-- @[StaBuilderV2Ref](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/entry/src/main/ets/pages/StaBuilderV2Ref.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaBuilderV2Ref.ets
+'use static';
+// entry/src/main/ets/pages/Index.ets
 import { Entry, ComponentV2, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
-import { overBuilder } from 'dynamic_module';
+import { overBuilder } from 'library';
 
 @Entry
 @ComponentV2
@@ -73,16 +73,14 @@ struct Index {
 // entry/oh-package.json5
 
 "dependencies": {
-  "dynamic_module": "file:../dynamic_module",
+  "library": "file:../library",
 }
 ```
 
-- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出全局自定义构建函数。
-
-<!-- @[StaBuilderV2RefMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录创建并导出全局自定义构建函数。
 
 ```TypeScript
-// dynamic_module/src/main/ets/components/MainPage.ets
+// library/src/main/ets/components/MainPage.ets
 
 export class Tmp {
   paramA1: string = '';
@@ -96,10 +94,8 @@ export function overBuilder(params: Tmp) {
 }
 ```
 
-<!-- @[StaBuilderV2RefDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/Index.ets) -->
-
 ```TypeScript
-// dynamic_module/Index.ets
+// library/index.ets
 export { overBuilder } from './src/main/ets/components/MainPage';
 ```
 
@@ -113,7 +109,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── StaBuilderV2Param.ets
+│                   └── Index.ets
 │
 └── library/         # ArkTS-Dyn子模块
     └── src/
@@ -127,13 +123,12 @@ project/
 
 - 在ArkTS-Sta主模块`entry`中引入ArkTS-Dyn组件。
 
-<!-- @[StaBuilderV2Param](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/entry/src/main/ets/pages/StaBuilderV2Param.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaBuilderV2Param.ets
+'use static'
+// entry/src/main/ets/pages/Index.ets
 import { Entry, ComponentV2, Builder, Column, Text, ClickEvent, Color } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
-import { CustomContainer } from 'dynamic_module';
+import { CustomContainer } from 'library';
 
 @Entry
 @ComponentV2
@@ -150,7 +145,7 @@ struct CustomContainerUser {
 
   build() {
     Column() {
-      // 创建CustomContainer，在创建CustomContainer时，通过其后紧跟一个大括号"{}"形成尾随闭包
+      // 创建CustomContainer，在创建CustomContainer时，通过其后紧跟一个大括号“{}”形成尾随闭包
       // 作为传递给子组件CustomContainer的@BuilderParam 参数 closer: () => void
       CustomContainer() {
         Column() {
@@ -175,16 +170,14 @@ struct CustomContainerUser {
 // entry/oh-package.json5
 
 "dependencies": {
-  "dynamic_module": "file:../dynamic_module",
+  "library": "file:../library",
 }
 ```
 
-- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。
-
-<!-- @[StaBuilderV2ParamMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录创建并导出自定义组件。
 
 ```TypeScript
-// dynamic_module/src/main/ets/components/MainPage.ets
+// library/src/main/ets/components/MainPage.ets
 
 @ComponentV2
 export struct CustomContainer {
@@ -202,13 +195,10 @@ export struct CustomContainer {
 }
 ```
 
-<!-- @[StaBuilderV2ParamDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/Index.ets) -->
-
 ```TypeScript
-// dynamic_module/Index.ets
+// library/index.ets
 export { CustomContainer } from './src/main/ets/components/MainPage';
 ```
-
 ## ArkTS-Sta使用ArkTS-Dyn状态管理V2互操作WrappedBuilder对象@Builder按引用传递参数
 
 完整示例结构如下图所示：
@@ -219,7 +209,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── StaBuilderV2Wrapped.ets
+│                   └── Index.ets
 │
 └── library/         # ArkTS-Dyn子模块
     └── src/
@@ -233,13 +223,12 @@ project/
 
 - 在ArkTS-Sta主模块`entry`中引入ArkTS-Dyn组件。
 
-<!-- @[StaBuilderV2Wrapped](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/entry/src/main/ets/pages/StaBuilderV2Wrapped.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaBuilderV2Wrapped.ets
+'use static'
+// entry/src/main/ets/pages/Index.ets
 import { Entry, ComponentV2, Column, Button, ClickEvent, compatibleWrappedBuilder } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
-import { globalBuilder } from 'dynamic_module';
+import { globalBuilder } from 'library';
 
 @Entry
 @ComponentV2
@@ -250,7 +239,7 @@ struct MainPage {
     Column() {
       // 无需显式使用占位组件API，框架会自动处理
       let globalBuilderParam = ESValue.instantiateEmptyObject()
-      globalBuilderParam.setProperty(ESValue.wrap('content'), ESValue.wrap(this.stateVar))
+      globalBuilderParam.setProperty(ESValue.wrap('paramA2'), ESValue.wrap(this.stateVar))
       compatibleWrappedBuilder(globalBuilder, globalBuilderParam)
       Button('Click me')
         .onClick((e: ClickEvent) => {
@@ -270,35 +259,31 @@ struct MainPage {
 // entry/oh-package.json5
 
 "dependencies": {
-  "dynamic_module": "file:../dynamic_module",
+  "library": "file:../library",
 }
 ```
 
-- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。
-
-<!-- @[StaBuilderV2WrappedMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录创建并导出自定义组件。
 
 ```TypeScript
-// dynamic_module/src/main/ets/components/MainPage.ets
+// library/src/main/ets/components/MainPage.ets
 
-class Message {
-  content: string = 'Hello World!';
+class Tmp {
+  paramA2: string = 'Hello World!';
 }
 
 @Builder
-function messageBuilder(param: Message) {
+function overBuilder(param: Tmp) {
   Column() {
-    Text(param.content)
+    Text(param.paramA2)
   }
 }
 
-export const globalBuilder: WrappedBuilder<[Message]> = wrapBuilder(messageBuilder);
+export const globalBuilder: WrappedBuilder<[Tmp]> = wrapBuilder(overBuilder);
 ```
 
-<!-- @[StaBuilderV2WrappedDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynBuilderV2/dynamic_module/Index.ets) -->
-
 ```TypeScript
-// dynamic_module/Index.ets
+// library/index.ets
 export { globalBuilder } from './src/main/ets/components/MainPage';
 ```
 

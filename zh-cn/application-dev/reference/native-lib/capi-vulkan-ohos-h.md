@@ -2,8 +2,8 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @GaoPan_t-->
-<!--Designer: @vvan9cha0-->
+<!--Owner: @andrew1993-->
+<!--Designer: @ext4FAT1-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -14,8 +14,6 @@
 **引用文件：** <vulkan/vulkan_ohos.h>
 
 **库：** libvulkan.so
-
-**系统能力：** SystemCapability.Graphic.Vulkan 
 
 **起始版本：** 10
 
@@ -46,13 +44,6 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [VkSwapchainImageUsageFlagBitsOHOS](#vkswapchainimageusageflagbitsohos) | VkSwapchainImageUsageFlagBitsOHOS | 图像使用标志位。 |
-
-### 变量
-
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| VkFlags | VkSwapchainImageUsageFlagsOHOS | 设置掩码的位掩码类型。<br>**起始版本：** 10 |
-| VkFlags | VkSurfaceCreateFlagsOHOS | 用于Vulkan Surface创建时使用的VkFlags类型位掩码，预留的标志类型。<br>**起始版本：** 10 |
 
 ### 宏定义
 

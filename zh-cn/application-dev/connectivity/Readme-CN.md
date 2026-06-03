@@ -17,8 +17,6 @@
   - 低功耗蓝牙<!--bluetooth-ble-->
     - [查找设备](bluetooth/ble-development-guide.md)
     - [连接和传输数据](bluetooth/gatt-development-guide.md)
-  - 蓝牙常见问题<!--bluetooth-faq-->
-    - [蓝牙接口调用报错2900099](bluetooth/bluetooth-faq-2900099-errorcode.md)
 - NFC<!--nfc-->
   - [NFC服务开发概述](nfc/nfc-overview.md)
   - [NFC标签读写开发指南](nfc/nfc-tag-access-guide.md)

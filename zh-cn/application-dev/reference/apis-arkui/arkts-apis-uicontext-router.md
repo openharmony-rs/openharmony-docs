@@ -16,8 +16,6 @@
 >
 > - 本Class首批接口从API version 10开始支持。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 以下API需先使用UIContext中的[getRouter()](arkts-apis-uicontext-uicontext.md#getrouter)方法获取到Router对象，再通过该对象调用对应方法。
 
 ## pushUrl
@@ -1559,6 +1557,8 @@ ArkTS-Sta: getStackSize(): int
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
@@ -1810,6 +1810,8 @@ getParams(): Object
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 

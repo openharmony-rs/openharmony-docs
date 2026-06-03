@@ -10,19 +10,12 @@
 ErrorManager模块提供对错误观测器的注册和注销的能力，主要是观测应用发生js crash和appfreeze等错误。
 
 > **说明**：
->
+> 
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
-
-ArkTS-Dyn示例：
 ```ts
 import { errorManager } from '@kit.AbilityKit';
-```
-
-ArkTS-Sta示例：
-```ts
-import errorManager from '@ohos.app.ability.errorManager';
 ```
 
 ## errorManager.on('error')
@@ -33,16 +26,12 @@ on(type: 'error', observer: ErrorObserver): number
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：9
-
 **参数**：
-
+ 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'error'，表示错误观测器。 |
@@ -50,9 +39,9 @@ on(type: 'error', observer: ErrorObserver): number
 
 **返回值**：
 
-| 类型 | 说明 |
-| -------- | -------- |
-| number | 观测器的索引值，与观测器一一对应。可用于`errorManager.off`函数中的`observerId`参数。 |
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | number | 观测器的索引值，与观测器一一对应。可用于`errorManager.off`函数中的`observerId`参数。 |
 
 **错误码**：
 
@@ -64,7 +53,7 @@ on(type: 'error', observer: ErrorObserver): number
 | 16000003 | The specified ID does not exist. |
 
 **示例**：
-
+    
 ```ts
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -96,18 +85,14 @@ try {
 
 on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 
-在进程中的任意线程中注册 `errorManager.on` 接口，监听整个进程中任意线程的异常。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。
+在进程中的任意线程中注册 `errormanager.on` 接口，监听整个进程中任意线程的异常。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：18
-
 **参数**：
-
+ 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'globalErrorOccurred'，表示错误观测器。 |
@@ -153,16 +138,12 @@ off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 
 如果传入的回调不在通过on方法注册的回调队列中，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：18
-
 **参数**：
-
+ 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'globalErrorOccurred'，表示错误观测器。 |
@@ -209,16 +190,12 @@ off(type: 'error', observerId: number,  callback: AsyncCallback\<void>): void
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：9
-
 **参数**：
-
+ 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'error'，表示错误观测器。 |
@@ -265,16 +242,12 @@ off(type: 'error', observerId: number): Promise\<void>
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：9
-
 **参数**：
-
+ 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'error'，表示错误观测器。 |
@@ -326,16 +299,12 @@ on(type: 'loopObserver', timeout: number, observer: LoopObserver): void
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：12
-
 **参数**：
-
+ 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'loopObserver'，表示注册主线程消息处理耗时监听器。 |
@@ -370,16 +339,12 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 
 在进程中任意线程注册被拒绝promise监听器，注册后可以捕获到当前进程中未被捕获到的promise rejection。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：18
-
 **参数**：
-
+ 
 | 参数名                   | 类型                                                          | 必填 | 说明                                       |
 |-----------------------|-------------------------------------------------------------| -------- |------------------------------------------|
 | type                  | string                                                      | 是 | 填写'globalUnhandledRejectionDetected'，表示注册被拒绝promise监听器。 |
@@ -426,18 +391,12 @@ on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**相关接口**：该接口对应的ArkTS-Sta接口是[errorManager.onUnhandledRejection](#errormanageronunhandledrejection24)。
-
-**ArkTS-Dyn起始版本**：12
-
 **参数**：
-
+ 
 | 参数名                   | 类型                                                          | 必填 | 说明                                       |
 |-----------------------|-------------------------------------------------------------| -------- |------------------------------------------|
 | type                  | string                                                      | 是 | 填写'unhandledRejection'，表示注册被拒绝promise监听器。 |
@@ -487,18 +446,12 @@ on(type: 'freeze', observer: FreezeObserver): void
 > 如果该回调函数执行时间超过1s，可能导致[AppRecovery](./js-apis-app-ability-appRecovery.md)功能不可用。通过解析hilog日志中的begin与Freeze callback execution completed两者的时间差可以计算回调函数执行时长，如果超过1秒，可以尝试采用异步处理、减少阻塞操作、优化数据结构等方法优化回调逻辑，降低执行时长。
 > 
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**相关接口**：该接口对应的ArkTS-Sta接口是[errorManager.onFreeze](#errormanageronfreeze24)。
-
-**ArkTS-Dyn起始版本**：18
-
 **参数**：
-
+ 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'freeze'，表示应用主线程freeze观测器。 |
@@ -531,16 +484,12 @@ off(type: 'loopObserver', observer?: LoopObserver): void
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：12
-
 **参数**：
-
+ 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'loopObserver'，表示应用主线程观测器。 |
@@ -570,13 +519,9 @@ off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 
 如果传入的回调不在通过on方法注册的回调队列中，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：18
 
 **参数**：
 
@@ -629,15 +574,9 @@ off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**相关接口**：该接口对应的ArkTS-Sta接口是[errorManager.offUnhandledRejection](#errormanageroffunhandledrejection24)。
-
-**ArkTS-Dyn起始版本**：12
 
 **参数**：
 
@@ -714,18 +653,12 @@ off(type: 'freeze', observer?: FreezeObserver): void
 
 如果传入的回调与通过on方法注册回调不一致，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**相关接口**：该接口对应的ArkTS-Sta接口是[errorManager.offFreeze](#errormanagerofffreeze24)。
-
-**ArkTS-Dyn起始版本**：18
-
 **参数**：
-
+ 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'freeze'，表示应用主线程freeze观测器。 |
@@ -762,13 +695,9 @@ setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler
 
 若接口参数为空，后续注册的处理器将无法与前序已注册的处理器建立关联，从而中断链式调用。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本**：21
-
-**ArkTS-Sta起始版本**：24
 
 **参数**：
  
@@ -823,7 +752,7 @@ setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): Resour
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -888,320 +817,19 @@ const resourceUsageObserver: errorManager.ResourceUsageObserver = (resourceType:
 oldObserver = errorManager.setDefaultResourceUsageObserver(resourceUsageObserver);
 ```
 
-## errorManager.setDefaultFreezeObserver
-
-setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver
-
-发生APP_FREEZE时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。
-
-如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。
-
-> **说明**：
->
-> 该接口请勿与[errorManager.on('freeze')](#errormanageronfreeze18)、[errorManager.off('freeze')](#errormanagerofffreeze18)接口混用。混用可能会导致回调执行异常。
-
-**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本**：26.0.0
-
-**ArkTS-Sta起始版本**：26.0.0
-
-**参数**：
- 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| defaultObserver | [FreezeObserver](#freezeobserver18) | 否 | 注册freeze观察器。默认值为空。<br>当参数为空时，后续注册的处理器将无法与前序已注册的处理器建立关联，从而中断链式调用。|
-
-**返回值**：
-
-| 类型 | 说明 |
-| -------- | -------- |
-| [FreezeObserver](#freezeobserver18) | 返回上一次注册的错误处理器。 |
-
-**错误码**：
-
-以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 16000205      | The API is not called on the main thread. |
-
-**示例**：
-
-ArkTS-Dyn示例：
-```ts
-import { errorManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let oldHandler: errorManager.FreezeObserver = () => {};
-const freezeHandler: errorManager.FreezeObserver = () => {
-    // 自定义的FreezeHandler实现逻辑
-    console.info('[freezeHandler] freeze handler invoked.');
-    if (oldHandler) {
-        oldHandler();
-    } else {
-        console.info('[freezeHandler] freeze handler end.');
-    }
-};
-
-export function setFreezeHandler() {
-  try {
-    oldHandler = errorManager.setDefaultFreezeObserver(freezeHandler);
-  } catch (paramError) {
-    let code = (paramError as BusinessError).code;
-    let message = (paramError as BusinessError).message;
-    console.error('setFreezeHandler',`error: ${code}, ${message}`);
-  }
-  console.info('Registered freeze Handler.');
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import errorManager from '@ohos.app.ability.errorManager';
-
-let oldHandler: errorManager.FreezeObserver = () => {};
-const freezeHandler: errorManager.FreezeObserver = () => {
-    // 自定义的FreezeHandler实现逻辑
-    console.info('[freezeHandler] freeze handler invoked.');
-    if (oldHandler) {
-        oldHandler();
-    } else {
-        console.info('[freezeHandler] freeze handler end.');
-    }
-};
-
-export function setFreezeHandler() {
-  try {
-    oldHandler = errorManager.setDefaultFreezeObserver(freezeHandler);
-    console.info('Registered freeze Handler.');
-  } catch (paramError) {
-    console.error('setFreezeHandler error: ', paramError);
-  }
-}
-```
-
-## errorManager.onFreeze<sup>24+</sup>
-
-onFreeze(observer: FreezeObserver): void
-
-注册应用主线程freeze监听。多次注册情况下，取最后一次注册的结果。
-
-仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
-
-> **注意**：
->
-> 如果该回调函数执行时间超过1s，可能导致[AppRecovery](./js-apis-app-ability-appRecovery.md)功能不可用。通过解析hilog日志中的begin与Freeze callback execution completed两者的时间差可以计算回调函数执行时长，如果超过1秒，可以尝试采用异步处理、减少阻塞操作、优化数据结构等方法优化回调逻辑，降低执行时长。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**相关接口**：该接口对应的ArkTS-Dyn接口是[errorManager.on('freeze')](#errormanageronfreeze18)。
-
-**ArkTS-Sta起始版本**：24
-
-**参数**：
- 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| observer | [FreezeObserver](#freezeobserver18) | 是 | 由on接口注册的freeze监听的callback。 |
-
-**错误码**：
-
-以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 16200001 | If the caller is invalid. |
-
-**示例**：
-
-```ts
-import errorManager from '@ohos.app.ability.errorManager';
-
-export function FreezeRegister() {
-  try {
-    let observer: errorManager.FreezeObserver = () => {
-      console.info("onFreezecallback");
-    };
-    errorManager.onFreeze(observer);
-    console.info('Registered onfreeze Handler.');
-  } catch (paramError) {
-      console.error('onFreeze error: ', paramError);
-  }
-}
-```
-
-## errorManager.offFreeze<sup>24+</sup>
-
-offFreeze(observer?: FreezeObserver): void
-
-取消之前注册的应用主线程freeze监听。
-
-仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
-
-如果传入的回调与通过on方法注册回调不一致，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**相关接口**：该接口对应的ArkTS-Dyn接口是[errorManager.off('freeze')](#errormanagerofffreeze18)。
-
-**ArkTS-Sta起始版本**：24
-
-**参数**：
- 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| observer | [FreezeObserver](#freezeobserver18) | 否 | 由on接口注册的freeze监听的callback。建议使用该参数，如果参数不填会直接清空callback，否则删除指定的callback。 |
-
-**错误码**：
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 16200001 | If the caller is invalid. |
-| 16300004 | If the observer does not exist. |
-
-**示例**：
-
-```ts
-import errorManager from '@ohos.app.ability.errorManager';
-
-export function FreezeRegister() {
-  try {
-    let observer: errorManager.FreezeObserver = () => {
-      console.info("onFreezecallback");
-    };
-    errorManager.onFreeze(observer);
-    errorManager.offFreeze(observer);
-    console.info('offFreeze end.');
-  } catch (paramError) {
-    console.error('onFreeze error: ', paramError);
-  }
-}
-```
-
-## errorManager.onUnhandledRejection<sup>24+</sup>
-
-onUnhandledRejection(observer: UnhandledRejectionObserver): void
-
-注册被拒绝的promise监听器。注册后可以捕获到当前线程中未被捕获到的promise rejection。
-
-仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**相关接口**：该接口对应的ArkTS-Dyn接口是[errorManager.on('unhandledRejection')](#errormanageronunhandledrejection12)。
-
-**ArkTS-Sta起始版本**：24
-
-**参数**：
- 
-| 参数名                   | 类型                                                          | 必填 | 说明                                       |
-|-----------------------|-------------------------------------------------------------| -------- |------------------------------------------|
-| observer              | [UnhandledRejectionObserver](#unhandledrejectionobserver24) | 是 | 注册被拒绝promise监听器。                          |
-
-**错误码**：
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-
-```ts
-import errorManager from '@ohos.app.ability.errorManager';
-
-let unhandledrejectionObserver: errorManager.UnhandledRejectionObserver = (reason: Error | Any, promise: Promise<Any>) => {
-  const msg = (reason instanceof Error) ? reason.message : String(reason);
-  console.error('testErrorManage','msg: ', msg);
-};
-
-export function onUnhandledRejectionHandler() {
-  try {
-    errorManager.onUnhandledRejection(unhandledrejectionObserver);
-    console.info('onUnhandledRejection end.');
-  } catch (paramError) {
-    console.error('onUnhandledRejection error: ', paramError);
-  }
-}
-```
-
-## errorManager.offUnhandledRejection<sup>24+</sup>
-
-offUnhandledRejection(observer?: UnhandledRejectionObserver): void
-
-注销被拒绝promise监听器。
-
-仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**相关接口**：该接口对应的ArkTS-Dyn接口是[errorManager.off('unhandledRejection')](#errormanageroffunhandledrejection12)。
-
-**ArkTS-Sta起始版本**：24
-
-**参数**：
-
-| 参数名                   | 类型                              | 必填 | 说明                                           |
-|-----------------------|---------------------------------|----|----------------------------------------------|
-| observer              | [UnhandledRejectionObserver](#unhandledrejectionobserver24) | 否  | 注册了被拒绝promise监听器。建议使用该参数，缺省时默认清除所有通过on注册的相同env的observer，否则删除指定observer。                        |
-
-**错误码**：
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16300004 | If the observer does not exist. |
-
-```ts
-import errorManager from '@ohos.app.ability.errorManager';
-
-let unhandledrejectionObserver: errorManager.UnhandledRejectionObserver = (reason: Error | Any, promise: Promise<Any>) => {
-  const msg = (reason instanceof Error) ? reason.message : String(reason);
-  console.error('testErrorManage','msg: ', msg);
-};
-
-export function onUnhandledRejectionHandler() {
-  try {
-    errorManager.onUnhandledRejection(unhandledrejectionObserver); 
-    errorManager.offUnhandledRejection(unhandledrejectionObserver); 
-    console.info('offUnhandledRejection end.');
-  } catch (paramError) {
-    console.error('offUnhandledRejection error: ', paramError);
-  }
-}
-```
-
 ## ErrorObserver
 
 type ErrorObserver = _ErrorObserver.default
 
 ErrorObserver模块。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：9
-
 | 类型 | 说明 |
 | --- | --- |
-| [ErrorObserver](js-apis-inner-application-errorObserver.md) | ErrorObserver模块。 |
+| [_ErrorObserver.default](js-apis-inner-application-errorObserver.md) | ErrorObserver模块。 |
 
 ## LoopObserver<sup>12+</sup>
 
@@ -1209,17 +837,13 @@ type LoopObserver = _LoopObserver
 
 LoopObserver模块。定义异常监听，可作为 `errormanager.on` 函数的参数，监听并处理当前应用主线程超时的事件。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：12
-
 | 类型 | 说明 |
 | --- | --- |
-| [LoopObserver](js-apis-inner-application-loopObserver.md) | LoopObserver模块。 |
+| [_LoopObserver](js-apis-inner-application-loopObserver.md) | LoopObserver模块。 |
 
 ## UnhandledRejectionObserver<sup>12+</sup>
 
@@ -1227,21 +851,15 @@ type UnhandledRejectionObserver = (reason: Error | any, promise: Promise\<any>) 
 
 定义异常监听，用于捕获Promise异步操作失败的原因。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**相关接口**：该接口对应的ArkTS-Sta接口是[UnhandledRejectionObserver](#unhandledrejectionobserver24)。
-
-**ArkTS-Dyn起始版本**：12
 
 **参数**：
 
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |
-| reason | Error \| any  | 是 | 表示被拒绝的理由。 |
+| reason | Error \| any  | 是 | 通常是`Error`类型，表示被拒绝的理由。 |
 | promise | Promise\<any> | 是 | 被拒绝的promise。 |
 
 ## FreezeObserver<sup>18+</sup>
@@ -1250,13 +868,9 @@ type FreezeObserver = () => void
 
 定义应用主线程freeze回调，用于应用自定义添加freeze信息。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本**：18
-
-**ArkTS-Sta起始版本**：24
 
 ## GlobalObserver<sup>18+</sup>
 
@@ -1264,13 +878,9 @@ type GlobalObserver = (reason: GlobalError) => void
 
 定义异常监听，可以作为[errorManager.on('globalErrorOccurred')](#errormanageronglobalerroroccurred18)和[errorManager.on('globalUnhandledRejectionDetected')](#errormanageronglobalunhandledrejectiondetected18)的入参监听当前应用主线程事件处理事件。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：18
 
 **参数**：
 
@@ -1283,13 +893,9 @@ type GlobalObserver = (reason: GlobalError) => void
 
 有关异常事件名字、消息、错误堆栈信息、异常线程名称和类型的对象。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：18
 
 | 名称  | 类型  | 只读  | 可选  | 说明  |
 | ---- | ----- | ---- | ----- | ------ |
@@ -1300,13 +906,9 @@ type GlobalObserver = (reason: GlobalError) => void
 
 虚拟机的实例类型。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本**：18
 
 | 名称  | 值  | 说明   |
 | ---- | --- | ------ |
@@ -1320,13 +922,9 @@ type GlobalObserver = (reason: GlobalError) => void
 
 type ErrorHandler = (errObject: Error) => void
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本**：21
-
-**ArkTS-Sta起始版本**：24
 
 **参数**：
 
@@ -1344,7 +942,7 @@ ArkTS-Sta: type ResourceUsageObserver = (resourceType: ResourceType, resourceSiz
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1366,7 +964,7 @@ ArkTS-Sta: type ResourceUsageObserver = (resourceType: ResourceType, resourceSiz
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1383,24 +981,4 @@ ArkTS-Sta: type ResourceUsageObserver = (resourceType: ResourceType, resourceSiz
 | FD             | 5   | 表示应用当前超基线的资源是FD的数量。 |
 | THREAD         | 6   | 表示应用当前超基线的资源是THREAD的数量。 |
 
-## UnhandledRejectionObserver<sup>24+</sup>
-
-type UnhandledRejectionObserver = (reason: Error | Any, promise: Promise\<Any>) => void
-
-定义异常监听，用于捕获Promise异步操作失败的原因。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**相关接口**：该接口对应的ArkTS-Dyn接口是[UnhandledRejectionObserver](#unhandledrejectionobserver12)。
-
-**ArkTS-Sta起始版本**：24
-
-**参数**：
-
-| 参数名    | 类型            | 必填 | 说明 |
-|--------|---------------|---| -------- |
-| reason | Error \| Any  | 是 | 表示被拒绝的理由。 |
-| promise | Promise\<Any> | 是 | 被拒绝的promise。 |
 

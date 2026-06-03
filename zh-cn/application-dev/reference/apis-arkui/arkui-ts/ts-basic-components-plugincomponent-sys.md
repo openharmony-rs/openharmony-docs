@@ -46,8 +46,6 @@ PluginComponent(options: PluginComponentOptions)
 
 **系统接口：** 此接口为系统接口。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称       | 类型   | 只读 |可选 | 说明                        |
@@ -129,8 +127,6 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 **系统接口：** 此接口为系统接口。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 参数     | 类型               | 描述                        |
@@ -146,8 +142,6 @@ onError(callback:&nbsp;PluginErrorCallback)
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

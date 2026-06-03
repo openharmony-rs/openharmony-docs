@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
-<!--Designer: @liumingxiang; @wanyanglan-->
+<!--Designer: @liumingxiang; @wangyanglan-->
 <!--Tester: @yhl0101; @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -25,7 +25,7 @@ ArkGraphics 2D（方舟2D图形服务 ）主要提供图形绘制与显示相关
 
 ## 使用场景
 
-- 图像效果处理：开发者可根据不同的UI效果需要，使用[@ohos.effectKit (图像效果)](../reference/apis-arkgraphics2d/js-apis-effectKit.md)实现图像的效果处理，以提升用户浏览体验。
+- 图像效果处理：开发者可根据不同的UI效果需要，使用[effectKit模块](../reference/apis-arkgraphics2d/js-apis-effectKit.md)实现图像的效果处理，以提升用户浏览体验。
 
 - 设置图像色域：开发者可根据设计需求使用图像文件并设置色域信息，实现图像广色域效果的绘制和显示。
 

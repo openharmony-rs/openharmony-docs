@@ -1,9 +1,9 @@
 # 属性修改器 (AttributeModifier)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sunbees-->
-<!--Designer: @sunbees-->
-<!--Tester: @khq-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
+<!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -51,22 +51,18 @@ declare interface AttributeModifier<T> {
 ```
 
 ArkTS-Sta：
-<!-- @[Common_AttributeModifierSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AttributeModifier/entry/src/main/ets/pages/AttributeModifierInterface.ets) -->
-
 ``` TypeScript
 declare interface AttributeModifier<T> {
 
-  applyNormalAttribute(instance: T): void;
-
-  applyPressedAttribute(instance: T): void;
-
-  applyFocusedAttribute(instance: T): void;
-
-  applyDisabledAttribute(instance: T): void;
-
-  applySelectedAttribute(instance: T): void;
-
-  monitoredStates(): int;
+  default applyNormalAttribute(instance: T): void;
+  
+  default applyPressedAttribute(instance: T): void;
+  
+  default applyFocusedAttribute(instance: T): void;
+  
+  default applyDisabledAttribute(instance: T): void;
+  
+  default applySelectedAttribute(instance: T): void;
 
 }
 ```
@@ -160,12 +156,16 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
-<!-- @[Common_MyButtonModifierSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AttributeModifier/entry/src/main/ets/pages/samples/AttributeModifierSample01.ets) -->
 
 ``` TypeScript
-import { AttributeModifier, Button, ButtonAttribute, Column, Component, Entry, Observed, Row, State } from '@kit.ArkUI';
+import { Text, List, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color, TextAlign, State, PropRef, DrawContext, DrawModifier, AttributeModifier,
+  ButtonAttribute, Size, TouchEvent, ContentSlot, DataChangeListener, DataOperation, IDataSource, Scroller, LazyForEach, ListItem, ScrollToIndexOptions, ScrollAlign, Scroll, ScrollDirection } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+import { AnimatorResult } from '@ohos.animator'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AttributeUpdater } from '@ohos.arkui.modifier'
+import { NodeController, BuilderNode, FrameNode, RenderNode, NodeContent, typeNode, NodeAdapter, ExpandMode } from '@ohos.arkui.node';
 
-@Observed
 export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   // 可以实现一个Modifier，定义私有的成员变量，外部可动态修改
   public isDark: boolean = false
@@ -195,7 +195,7 @@ struct Button1 {
   // 支持用状态装饰器修饰，行为和普通的对象一致
   @State modifier: MyButtonModifier = new MyButtonModifier(true);
 
-  build(): void {
+  build() {
     Row() {
       Column() {
         Button('Button')
@@ -275,12 +275,17 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
 
-<!-- @[Common_MyButtonModifierSta2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AttributeModifier/entry/src/main/ets/pages/samples/AttributeModifierSample02.ets) -->
-
 ``` TypeScript
-import { AttributeModifier, Button, ButtonAttribute, Column, Component, Entry, Observed, Row, State } from '@kit.ArkUI';
+'use static'
 
-@Observed
+import { Text, List, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color, TextAlign, State, PropRef, DrawContext, DrawModifier, AttributeModifier,
+  ButtonAttribute, Size, TouchEvent, ContentSlot, DataChangeListener, DataOperation, IDataSource, Scroller, LazyForEach, ListItem, ScrollToIndexOptions, ScrollAlign, Scroll, ScrollDirection } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+import { AnimatorResult } from '@ohos.animator'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AttributeUpdater } from '@ohos.arkui.modifier'
+import { NodeController, BuilderNode, FrameNode, RenderNode, NodeContent, typeNode, NodeAdapter, ExpandMode } from '@ohos.arkui.node';
+
 export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   // 可以实现一个Modifier，定义私有的成员变量，外部可动态修改
   public isDark: boolean = false
@@ -309,7 +314,7 @@ export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 struct Button2 {
   @State modifier: MyButtonModifier = new MyButtonModifier(true);
 
-  build(): void {
+  build() {
     Row() {
       Column() {
         // 先设置属性，后设置modifier，按钮颜色会跟随modifier的值改变
@@ -407,23 +412,17 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
 
-<!-- @[Common_MyButtonModifierSta3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AttributeModifier/entry/src/main/ets/pages/samples/AttributeModifierSample03.ets) -->
-
 ``` TypeScript
-import {
-  AttributeModifier,
-  Button,
-  ButtonAttribute,
-  Color,
-  Column,
-  Component,
-  Entry,
-  Observed,
-  Row,
-  State
-} from '@kit.ArkUI';
+'use static'
 
-@Observed
+import { Text, List, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color, TextAlign, State, PropRef, DrawContext, DrawModifier, AttributeModifier,
+  ButtonAttribute, Size, TouchEvent, ContentSlot, DataChangeListener, DataOperation, IDataSource, Scroller, LazyForEach, ListItem, ScrollToIndexOptions, ScrollAlign, Scroll, ScrollDirection } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+import { AnimatorResult } from '@ohos.animator'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AttributeUpdater } from '@ohos.arkui.modifier'
+import { NodeController, BuilderNode, FrameNode, RenderNode, NodeContent, typeNode, NodeAdapter, ExpandMode } from '@ohos.arkui.node';
+
 export class MyButtonModifier2 implements AttributeModifier<ButtonAttribute> {
   public isDark: boolean = false
 
@@ -442,7 +441,6 @@ export class MyButtonModifier2 implements AttributeModifier<ButtonAttribute> {
   }
 }
 
-@Observed
 export class MyButtonModifier3 implements AttributeModifier<ButtonAttribute> {
   public isDark2: boolean = false
 
@@ -465,7 +463,7 @@ struct Button3 {
   @State modifier: MyButtonModifier2 = new MyButtonModifier2(true);
   @State modifier2: MyButtonModifier3 = new MyButtonModifier3(true);
 
-  build(): void {
+  build() {
     Row() {
       Column() {
         Button('Button')
@@ -536,23 +534,16 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
-<!-- @[Common_MyButtonModifierSta4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AttributeModifier/entry/src/main/ets/pages/samples/AttributeModifierSample04.ets) -->
 
 ``` TypeScript
-import {
-  AttributeModifier,
-  AttributeModifierState,
-  Button,
-  ButtonAttribute,
-  Column,
-  Component,
-  Entry,
-  Observed,
-  Row,
-  State
-} from '@kit.ArkUI';
+import { Text, List, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color, TextAlign, State, PropRef, DrawContext, DrawModifier, AttributeModifier,
+  ButtonAttribute, Size, TouchEvent, ContentSlot, DataChangeListener, DataOperation, IDataSource, Scroller, LazyForEach, ListItem, ScrollToIndexOptions, ScrollAlign, Scroll, ScrollDirection } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+import { AnimatorResult } from '@ohos.animator'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AttributeUpdater } from '@ohos.arkui.modifier'
+import { NodeController, BuilderNode, FrameNode, RenderNode, NodeContent, typeNode, NodeAdapter, ExpandMode } from '@ohos.arkui.node';
 
-@Observed
 export class MyButtonModifier4 implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     // instance为Button的属性对象，设置正常状态下属性值
@@ -567,10 +558,6 @@ export class MyButtonModifier4 implements AttributeModifier<ButtonAttribute> {
       .borderColor('#FFC000')
       .borderWidth(5)
   }
-
-  monitoredStates(): int {
-    return AttributeModifierState.NORMAL | AttributeModifierState.PRESSED
-  }
 }
 
 @Entry
@@ -578,7 +565,7 @@ export class MyButtonModifier4 implements AttributeModifier<ButtonAttribute> {
 struct Button4 {
   @State modifier: MyButtonModifier4 = new MyButtonModifier4();
 
-  build(): void {
+  build() {
     Row() {
       Column() {
         Button('Button')

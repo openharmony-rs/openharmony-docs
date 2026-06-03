@@ -1,8 +1,8 @@
 # 组件内隐式共享元素转场 (geometryTransition)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @ge-yafang-->
 
@@ -26,13 +26,10 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | -------- | ---- | ---- | --------------------------------------------------------------------- |
-| hierarchyStrategy<sup>12+</sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | 否   | 是 | <br>决定共享元素动画过程中in/out组件在组件树上层级位置的移动策略，默认值：TransitionHierarchyStrategy.ADAPTIVE。<br>实际影响绑定的in/out组件相对其他组件的前后重叠关系，常规情况下慎重修改。<br>建议在发现共享元素动画过程中出现组件前后重叠关系错误时需要调整再设置此参数。<br>**系统接口：** 此接口为系统接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| hierarchyStrategy<sup>12+</sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | 否   | 是 | <br>决定共享元素动画过程中in/out组件在组件树上层级位置的移动策略，默认值：TransitionHierarchyStrategy.ADAPTIVE。<br>实际影响绑定的in/out组件相对其他组件的前后重叠关系，常规情况下慎重修改。<br>建议在发现共享元素动画过程中出现组件前后重叠关系错误时需要调整再设置此参数。<br>**系统接口：** 此接口为系统接口。<br>ArkTS-Dyn起始版本：12<br>ArkTS-Sta起始版本： 23|
 
 ## TransitionHierarchyStrategy<sup>12+</sup>
-
 共享元素动画过程中in/out组件层级位置移动策略枚举。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

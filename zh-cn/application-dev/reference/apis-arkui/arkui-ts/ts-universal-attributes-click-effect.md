@@ -1,8 +1,8 @@
 # 点击回弹效果
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,8 +11,6 @@
 >  **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
-> - 本模块接口仅可在Stage模型下使用。
 >
 > - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -74,7 +72,7 @@ clickEffect(effect: Optional\<ClickEffect | null>): T
 
 ## clickEffect<sup>23+</sup>
 
-clickEffect(value: ClickEffect | null | undefined)
+clickEffect(value: ClickEffect | null | undefined): this
 
 设置当前组件的点击回弹效果。
 
@@ -92,6 +90,12 @@ clickEffect(value: ClickEffect | null | undefined)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null> | 是   | 设置当前组件的点击回弹效果。<br/>**说明：**<br/>可通过undefined或者null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
 
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件。 |
+
 ## ClickEffect对象说明
 
 定义点击效果。
@@ -107,7 +111,7 @@ clickEffect(value: ClickEffect | null | undefined)
 | 名称  | 类型                                                  | 只读    | 可选   |  说明                                                         |
 | ----- | ----------------------------------------------------------- | ---- | --------- | --------------------------------------------------------- |
 | level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | 否   | 否  |设置当前组件的点击回弹效果。<br/>默认值：ClickEffectLevel.LIGHT<br/>**说明：**<br/>当level为undefined或者null时， ClickEffect采用ClickEffectLevel.LIGHT对应的回弹效果，缩放比参照scale说明。 |
-| scale |  ArkTS-Dyn: number<br/>ArkTS-Sta: double                               | 否   | 是  |回弹缩放比例，支持在设置ClickEffectLevel的基础上微调。<br/>**说明：**<br/>当level为ClickEffectLevel.LIGHT时，默认值：0.90 <br/>当level为ClickEffectLevel.MIDDLE或者ClickEffectLevel.HEAVY时，默认值：0.95 <br/>当level为undefined或者null时，level为ClickEffectLevel.LIGHT，默认值：0.90 <br/>当scale为undefined或者null时，使用当前level对应的默认缩放比例。 |
+| scale |  ArkTS-Dyn: number  ArkTS-Dyn: double                               | 否   | 是  |回弹缩放比例，支持在设置ClickEffectLevel的基础上微调。<br/>**说明：**<br/>当level为ClickEffectLevel.LIGHT时，默认值：0.90 <br/>当level为ClickEffectLevel.MIDDLE或者ClickEffectLevel.HEAVY时，默认值：0.95 <br/>当level为undefined或者null时，level为ClickEffectLevel.LIGHT，默认值：0.90 <br/>当scale为undefined或者null时，使用当前level对应的默认缩放比例。 |
 
 ## 示例
 

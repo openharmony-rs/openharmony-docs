@@ -12,7 +12,7 @@
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放。
+> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.adminManager](js-apis-enterprise-adminManager.md)。
 
@@ -26,7 +26,7 @@ import { adminManager } from '@kit.MDMKit';
 
 enableAdmin(admin: Want, enterpriseInfo: EnterpriseInfo, type: AdminType, callback: AsyncCallback\<void>): void
 
-激活指定的设备管理应用。超级设备管理应用仅在首用户（u100）下可激活。激活后，应用不可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)组件将开机自启并在用户切换后自启。使用callback异步回调。
+激活指定的设备管理应用。超级设备管理应用仅在管理员用户下可激活。激活后，应用不可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#企业设备管理扩展能力)组件将开机自启并在用户切换后自启。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -1509,8 +1509,8 @@ try {
 
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
-| ADMIN_TYPE_NORMAL | 0x00 | 普通设备管理应用，激活后应用可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)组件将开机自启和组件进程死亡后能重新拉起。 |
-| ADMIN_TYPE_SUPER  | 0x01 | 超级设备管理应用，激活后应用不可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)组件将开机自启和组件进程死亡后能重新拉起。 |
+| ADMIN_TYPE_NORMAL | 0x00 | 普通设备管理应用。 |
+| ADMIN_TYPE_SUPER  | 0x01 | 超级设备管理应用。 |
 
 ## RunningMode<sup>19+</sup>
 

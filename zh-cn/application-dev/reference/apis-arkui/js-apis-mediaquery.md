@@ -38,9 +38,9 @@ matchMediaSync(condition: string): MediaQueryListener
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery)方法获取当前UI上下文关联的[MediaQuery](arkts-apis-uicontext-mediaquery.md)对象。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,9 +85,9 @@ let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orient
 
 继承自[MediaQueryResult](#mediaqueryresult)。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,9 +106,9 @@ on(type: 'change', callback: Callback&lt;MediaQueryResult&gt;): void
 >
 > 注册的回调中不允许进一步调用on或off。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,9 +133,9 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 
 通过句柄向对应的查询条件取消注册回调，当媒体属性发生变更时不再触发指定的回调。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -234,9 +234,9 @@ listener.offChange(onPortrait) // 注销回调
 
 用于执行媒体查询操作。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

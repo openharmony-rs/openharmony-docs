@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的SSL客户端证书请求事件的处理对象。示例代码参考[onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9)事件。
+Web组件返回的SSL客户端证书请求事件的处理对象。示例代码参考[onClientAuthenticationRequest事件](./arkts-basic-components-web-events.md#onclientauthenticationrequest9)。
 
 > **说明：**
 >
@@ -97,7 +97,7 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 
 cancel(): void
 
-通知Web组件取消服务器发送的客户端证书请求事件。同时，相同host和port服务器的请求，不重复上报该事件。
+通知Web组件取消相同host和port服务器发送的客户端证书请求事件。同时，相同host和port服务器的请求，不重复上报该事件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -14,8 +14,6 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 以下API需先使用UIContext中的[getContextMenuController()](./arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12)方法获取ContextMenuController实例，再通过此实例调用对应方法。
 
 ## close<sup>12+</sup>
@@ -23,8 +21,6 @@
 close(): void
 
 关闭菜单。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -29,7 +29,6 @@
 
 1. 在EntryAbility中，通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动UIAbility，[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)为UIAbility实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的UIAbility属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
-    ArkTS-Dyn示例：
     <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
     
     ``` TypeScript
@@ -85,67 +84,8 @@
     }
     ```
 
-    ArkTS-Sta示例：
-    <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/pages/MainPage.ets) -->
-    
-    ``` TypeScript
-    import { Entry, Text, TextAttribute, Column, Row, Component, List, ListItem, ListItemAlign, Button, $r, FlexAlign } from '@ohos.arkui.component';
-    import { State} from '@ohos.arkui.stateManagement';
-    import { common, Want } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-    
-    const TAG: string = '[MainPage]';
-    const DOMAIN_NUMBER: int = 0xFF00;
-    
-    @Entry
-    @Component
-    struct MainPage {
-      private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    
-      build() {
-        Column() {
-          List({ initialIndex: 0, space: 8 }) {
-    
-            ListItem() {
-              Row() {
-                // ...
-              }
-              .onClick(() => {
-                // context为Ability对象的成员，在非Ability对象内部调用需要
-                // 将Context对象传递过去
-                let wantInfo: Want = {
-                  deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.samples.uiabilityinteraction',
-                  moduleName: 'entry', // moduleName非必选
-                  abilityName: 'FuncAbilityA',
-                  parameters: {
-                    // 自定义信息
-                    // 请将$r('app.string.main_page_return_info')替换为实际资源文件，在本示例中该资源文件的value值为"来自EntryAbility MainPage页面"
-                    'info': $r('app.string.main_page_return_info')
-                  } as Record<String,RecordData>,
-                };
-                // context为调用方UIAbility的UIAbilityContext
-                this.context.startAbility(wantInfo).then(() => {
-                  hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success.');
-                }).catch((error) => {
-                  hilog.error(DOMAIN_NUMBER, TAG, 'startAbility failed.');
-                });
-              })
-            }
-    
-            // ...
-          }
-          // ...
-        }
-        // ...
-      }
-    }
-    ```
-
 2. 在FuncAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调文件中接收EntryAbility传递过来的参数。
 
-    ArkTS-Dyn示例：
     <!-- @[Ability_FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityA.ets) -->
 
     ``` TypeScript
@@ -164,32 +104,12 @@
     }
     ```
 
-    ArkTS-Sta示例：
-    <!-- @[Ability_FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/innerability/FuncAbilityA.ets) -->
-    
-    ``` TypeScript
-    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-    // ...
-    
-    export default class FuncAbilityA extends UIAbility {
-      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // 接收调用方UIAbility传过来的参数
-        let funcAbilityWant = want;
-        let info = funcAbilityWant?.parameters?.['info'];
-        // ...
-      }
-    
-      // ...
-    }
-    ```
-
     > **说明：**
     >
     > 在被拉起的FuncAbility中，可以通过获取传递过来的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数的`parameters`来获取拉起方[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的PID、Bundle Name等信息。
 
 3. 在FuncAbility业务完成之后，如需要停止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，在FuncAbility中通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 
-    ArkTS-Dyn示例：
     <!-- @[FuncAbilityAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
     
     ``` TypeScript
@@ -224,45 +144,6 @@
     }
     ```
 
-    ArkTS-Sta示例：
-    <!-- @[FuncAbilityAPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
-    
-    ``` TypeScript
-    import { Entry, Text, TextAttribute, Column, Row, Component, Button, $r, List, ListItem, ListItemAlign, FlexAlign } from '@ohos.arkui.component';
-    import { State} from '@ohos.arkui.stateManagement';
-    import { AppStorage } from '@ohos.arkui.stateManagement';
-    import { common } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { RecordData } from '@ohos.base';
-    
-    const TAG: string = '[FuncAbilityAPage]';
-    const DOMAIN_NUMBER: int = 0xFF00;
-    
-    @Entry
-    @Component
-    struct FuncAbilityAPage {
-    
-      build() {
-        Column() {
-          // 请将$r('app.string.Stop_AbilityA')替换为实际资源文件，在本示例中该资源文件的value值为"StopFuncAbilityA"
-          Button($r('app.string.Stop_AbilityA'))
-            .onClick(() => {
-              let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-              // context为需要停止的UIAbility实例的AbilityContext
-              context.terminateSelf((err) => {
-                if (err?.code) {
-                  hilog.error(DOMAIN_NUMBER, TAG, `Failed to terminate self. Code is ${err?.code}, message is ${err?.message}`);
-                  return;
-                }
-              });
-            })
-            // ...
-        }
-        // ...
-      }
-    }
-    ```
-
     > **说明：**
     >
     > 调用terminateSelf()方法停止当前UIAbility实例时，默认会保留该实例的快照（Snapshot），即在最近任务列表中仍然能查看到该实例对应的任务。如不需要保留该实例的快照，可以在其对应UIAbility的[module.json5配置文件](../quick-start/module-configuration-file.md)中，将[abilities标签](../quick-start/module-configuration-file.md#abilities标签)的removeMissionAfterTerminate字段配置为true。
@@ -276,7 +157,6 @@
 
 1. 在EntryAbility中，调用[startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2)接口启动FuncAbility，异步回调中的data用于接收FuncAbility停止自身后返回给EntryAbility的信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
-    ArkTS-Dyn示例：
     <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
     
     ``` TypeScript
@@ -343,78 +223,8 @@
     }
     ```
 
-    ArkTS-Sta示例：
-    <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/pages/MainPage.ets) -->
-    
-    ``` TypeScript
-    import { Entry, Text, TextAttribute, Column, Row, Component, List, ListItem, ListItemAlign, Button, $r, FlexAlign } from '@ohos.arkui.component';
-    import { State} from '@ohos.arkui.stateManagement';
-    import { common, Want } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-    
-    const TAG: string = '[MainPage]';
-    const DOMAIN_NUMBER: int = 0xFF00;
-    
-    @Entry
-    @Component
-    struct MainPage {
-      private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    
-      build() {
-        Column() {
-          List({ initialIndex: 0, space: 8 }) {
-    
-            // ...
-    
-            ListItem() {
-              Row() {
-                // ...
-              }
-              .onClick(() => {
-                let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-                const RESULT_CODE: int = 1001;
-                let want: Want = {
-                  deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.samples.uiabilityinteraction',
-                  moduleName: 'entry', // moduleName非必选
-                  abilityName: 'FuncAbilityA',
-                  parameters: {
-                    // 自定义信息
-                    // 请将$r('app.string.main_page_return_info')替换为实际资源文件，在本示例中该资源文件的value值为"来自EntryAbility MainPage页面"
-                    'info': $r('app.string.main_page_return_info')
-                  } as Record<String,RecordData>
-                };
-                context.startAbilityForResult(want).then((data) => {
-                  if (data?.resultCode === RESULT_CODE) {
-                    // 解析被调用方UIAbility返回的信息
-                    let info = data.want?.parameters?.['info'];
-                    hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(info) ?? '');
-                    if (info !== null) {
-                      this.getUIContext().getPromptAction().showToast({
-                        message: JSON.stringify(info)
-                      });
-                    }
-                  }
-                  hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(data.resultCode) ?? '');
-                }).catch((err) => {
-                  hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability for result. Code is ${err.code}, message is ${err.message}`);
-                });
-              })
-            }
-    
-            // ...
-          }
-          // ...
-        }
-        // ...
-      }
-    }
-    ```
-
 2. 在FuncAbility停止自身时，需要调用[terminateSelfWithResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)方法，入参[abilityResult](../reference/apis-ability-kit/js-apis-inner-ability-abilityResult.md)为FuncAbility需要返回给EntryAbility的信息。
 
-    ArkTS-Dyn示例：
     <!-- @[FuncAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
     
     ``` TypeScript
@@ -468,67 +278,8 @@
     }
     ```
 
-    ArkTS-Sta示例：
-    <!-- @[FuncAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
-    
-    ``` TypeScript
-    import { Entry, Text, TextAttribute, Column, Row, Component, Button, $r, List, ListItem, ListItemAlign, FlexAlign } from '@ohos.arkui.component';
-    import { State} from '@ohos.arkui.stateManagement';
-    import { AppStorage } from '@ohos.arkui.stateManagement';
-    import { common } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { RecordData } from '@ohos.base';
-    
-    const TAG: string = '[FuncAbilityAPage]';
-    const DOMAIN_NUMBER: int = 0xFF00;
-    
-    @Entry
-    @Component
-    struct FuncAbilityAPage {
-    
-      build() {
-        Column() {
-          // ...
-    
-          List({ initialIndex: 0 }) {
-            ListItem() {
-              Row() {
-                // ...
-              }
-              .onClick(() => {
-                let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-                const RESULT_CODE: int = 1001; //FuncAbilityA返回的结果
-                let abilityResult: common.AbilityResult = {
-                  resultCode: RESULT_CODE,
-                  want: {
-                    bundleName: 'com.samples.uiabilityinteraction',
-                    moduleName: 'entry', // moduleName非必选
-                    abilityName: 'FuncAbilityA',
-                    parameters: {
-                      // 请将$r('app.string.ability_return_info')替换为实际资源文件，在本示例中该资源文件的value值为"来自FuncAbility Index页面"
-                      'info': context.resourceManager.getStringSync($r('app.string.ability_return_info').id)
-                    } as Record<String,RecordData>,
-                  },
-                };
-                context.terminateSelfWithResult(abilityResult, (err) => {
-                  if (err?.code) {
-                    hilog.error(DOMAIN_NUMBER, TAG, `Failed to terminate self with result. Code is ${err?.code}, message is ${err?.message}`);
-                    return;
-                  }
-                });
-              })
-            }
-          }
-          // ...
-        }
-        // ...
-      }
-    }
-    ```
-
 3. FuncAbility停止自身后，EntryAbility通过[startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2)方法回调接收被FuncAbility返回的信息，RESULT_CODE需要与前面的数值保持一致。
 
-    ArkTS-Dyn示例：
     <!-- @[FuncAbilityA_For_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
     
     ``` TypeScript
@@ -595,75 +346,6 @@
     }
     ```
 
-    ArkTS-Sta示例：
-    <!-- @[FuncAbilityA_For_Result](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/pages/MainPage.ets) -->
-    
-    ``` TypeScript
-    import { Entry, Text, TextAttribute, Column, Row, Component, List, ListItem, ListItemAlign, Button, $r, FlexAlign } from '@ohos.arkui.component';
-    import { State} from '@ohos.arkui.stateManagement';
-    import { common, Want } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-    
-    const TAG: string = '[MainPage]';
-    const DOMAIN_NUMBER: int = 0xFF00;
-    
-    @Entry
-    @Component
-    struct MainPage {
-      private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    
-      build() {
-        Column() {
-          List({ initialIndex: 0, space: 8 }) {
-    
-            // ...
-    
-            ListItem() {
-              Row() {
-                // ...
-              }
-              .onClick(() => {
-                let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-                const RESULT_CODE: int = 1001;
-                let want: Want = {
-                  deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.samples.uiabilityinteraction',
-                  moduleName: 'entry', // moduleName非必选
-                  abilityName: 'FuncAbilityA',
-                  parameters: {
-                    // 自定义信息
-                    // 请将$r('app.string.main_page_return_info')替换为实际资源文件，在本示例中该资源文件的value值为"来自EntryAbility MainPage页面"
-                    'info': $r('app.string.main_page_return_info')
-                  } as Record<String,RecordData>
-                };
-                context.startAbilityForResult(want).then((data) => {
-                  if (data?.resultCode === RESULT_CODE) {
-                    // 解析被调用方UIAbility返回的信息
-                    let info = data.want?.parameters?.['info'];
-                    hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(info) ?? '');
-                    if (info !== null) {
-                      this.getUIContext().getPromptAction().showToast({
-                        message: JSON.stringify(info)
-                      });
-                    }
-                  }
-                  hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(data.resultCode) ?? '');
-                }).catch((err) => {
-                  hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability for result. Code is ${err.code}, message is ${err.message}`);
-                });
-              })
-            }
-    
-            // ...
-          }
-          // ...
-        }
-        // ...
-      }
-    }
-    ```
-
 
 ## 启动UIAbility的指定页面
 
@@ -684,7 +366,6 @@ UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动�
 调用方[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，Second对应功能A页面），此时需要在传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中配置指定的页面路径信息，可以通过Want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
 
-ArkTS-Dyn示例：
 <!-- @[FuncAbility_Cold](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
 
 ``` TypeScript
@@ -739,69 +420,11 @@ struct MainPage {
 }
 ```
 
-ArkTS-Sta示例：
-<!-- @[FuncAbility_Cold](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/pages/MainPage.ets) -->
-
-``` TypeScript
-import { Entry, Text, TextAttribute, Column, Row, Component, List, ListItem, ListItemAlign, Button, $r, FlexAlign } from '@ohos.arkui.component';
-import { State} from '@ohos.arkui.stateManagement';
-import { common, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-
-const TAG: string = '[MainPage]';
-const DOMAIN_NUMBER: int = 0xFF00;
-
-@Entry
-@Component
-struct MainPage {
-  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-  build() {
-    Column() {
-      List({ initialIndex: 0, space: 8 }) {
-
-        // ...
-
-        ListItem() {
-          Row() {
-            // ...
-          }
-          .onClick(() => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-            let want: Want = {
-              deviceId: '', // deviceId为空表示本设备
-              bundleName: 'com.samples.uiabilityinteraction',
-              moduleName: 'entry', // moduleName非必选
-              abilityName: 'ColdStartAbility',
-              parameters: { // 自定义参数传递页面信息
-                'router': 'funcA'
-              } as Record<String,RecordData>
-            };
-            // context为调用方UIAbility的UIAbilityContext
-            context.startAbility(want).then(() => {
-              hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting ability.');
-            }).catch((err) => {
-              hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability. Code is ${err.code}, message is ${err.message}`);
-            });
-          })
-        }
-
-        // ...
-      }
-      // ...
-    }
-    // ...
-  }
-}
-```
-
 
 ### 目标UIAbility冷启动
 
 目标[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)冷启动时，在目标UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中，接收调用方传过来的参数。然后在目标UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，解析调用方传递过来的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数，获取到需要加载的页面信息url，传入[windowStage.loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法。
 
-ArkTS-Dyn示例：
 <!-- @[ColdAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/ColdStartAbility.ets) -->
 
 ``` TypeScript
@@ -836,42 +459,6 @@ export default class ColdStartAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例：
-<!-- @[ColdAbility](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/specifiedability/ColdStartAbility.ets) -->
-
-``` TypeScript
-import { AbilityConstant, Want, UIAbility } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window, UIContext } from '@kit.ArkUI';
-import { BusinessError } from '@ohos.base';
-
-const DOMAIN_NUMBER: int = 0xFF00;
-const TAG: string = '[ColdStartAbility]';
-
-export default class ColdStartAbility extends UIAbility {
-  private funcAbilityWant: Want | undefined = undefined;
-  private uiContext: UIContext | undefined = undefined;
-
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    // 接收调用方UIAbility传过来的参数
-    this.funcAbilityWant = want;
-  }
-
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
-    hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
-    // Main window is created, set main page for this ability
-    let url = 'pages/Index';
-    if (this.funcAbilityWant?.parameters?.['router'] && this.funcAbilityWant?.parameters?.['router'] === 'funcA') {
-      url = 'pages/ColdPage';
-    }
-    windowStage.loadContent(url, (err, data) => {
-      // ...
-    });
-  }
-}
-```
-
 ### 目标UIAbility热启动
 
 在应用开发中，会遇到目标[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例之前已经启动过的场景，这时再次启动目标UIAbility时，不会重新走初始化逻辑，只会直接触发[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期方法。为了实现跳转到指定页面，需要在onNewWant()中解析参数进行处理。
@@ -892,7 +479,6 @@ export default class ColdStartAbility extends UIAbility {
 
 1. 冷启动短信应用的UIAbility实例时，在[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，通过调用[getUIContext()](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)接口获取UI上下文实例[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)对象。
 
-    ArkTS-Dyn示例：
     <!-- @[HotAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
     
     ``` TypeScript
@@ -933,54 +519,10 @@ export default class ColdStartAbility extends UIAbility {
     }
     ```
 
-    ArkTS-Sta示例：
-    <!-- @[HotAbility](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
-    
-    ``` TypeScript
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
-    import { BusinessError } from '@ohos.base';
-    import { AppStorage } from '@ohos.arkui.stateManagement';
-    import { window, UIContext } from '@kit.ArkUI';
-    const DOMAIN_NUMBER: int = 0xFF00;
-    const TAG: string = '[HotStartAbility]';
-    
-    export default class HotStartAbility extends UIAbility {
-      private funcAbilityWant: Want | undefined = undefined;
-      private uiContext: UIContext | undefined = undefined;
-      // ...
-    
-      onWindowStageCreate(windowStage: window.WindowStage): void {
-        // Main window is created, set main page for this ability
-        hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
-        let url = 'pages/Index';
-        windowStage.loadContent(url, (err, data) => {
-          if (err?.code) {
-            return;
-          }
-    
-          let windowClass: window.Window|undefined = undefined;
-          windowStage.getMainWindow((err: BusinessError<void> | null, data): void => {
-            if (err?.code) {
-              hilog.error(DOMAIN_NUMBER, TAG, `Failed to obtain the main window. Code is ${err?.code}, message is ${err?.message}`);
-              return;
-            }
-            windowClass = data;
-            this.uiContext = windowClass?.getUIContext();
-          });
-          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-        });
-      }
-    
-      // ...
-    }
-    ```
-
 2. 在短信应用UIAbility的[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调中通过AppStorage设置全局变量nameForNavi的值，并进行指定页面的跳转。此时再次启动该短信应用的UIAbility实例时，即可跳转到该短信应用的UIAbility实例的指定页面。
 
     1. 导入相关模块，并在onNewWant()生命周期回调中设置全局变量nameForNavi的值。
 
-        ArkTS-Dyn示例：
         <!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
         
         ``` TypeScript
@@ -1000,31 +542,8 @@ export default class ColdStartAbility extends UIAbility {
         }
         ```
 
-        ArkTS-Sta示例：
-        <!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
-        
-        ``` TypeScript
-        import { hilog } from '@kit.PerformanceAnalysisKit';
-        import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
-        import { BusinessError } from '@ohos.base';
-        import { AppStorage } from '@ohos.arkui.stateManagement';
-        // ...
-        const DOMAIN_NUMBER: int = 0xFF00;
-        const TAG: string = '[HotStartAbility]';
-        
-        export default class HotStartAbility extends UIAbility {
-          // ...
-        
-          onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-            hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'onNewWant');
-            AppStorage.setOrCreate<string>('nameForNavi', 'pageOne');
-          }
-        }
-        ```
-
     2. 在Index页面显示时触发onPageShow回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
 
-        ArkTS-Dyn示例：
         <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/Index.ets) -->
         
         ``` TypeScript
@@ -1062,47 +581,8 @@ export default class ColdStartAbility extends UIAbility {
         }
         ```
 
-        ArkTS-Sta示例：
-        <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/pages/Index.ets) -->
-        
-        ``` TypeScript
-        @Entry
-        @Component
-        struct Index {
-          @State message: string = 'Index';
-          pathStack: NavPathStack = new NavPathStack();
-        
-          onPageShow(): void {
-            let somePage = AppStorage.get<string>('nameForNavi')
-            if (somePage) {
-              this.pathStack.pushPath(new NavPathInfo(somePage, undefined), false);
-              AppStorage.delete('nameForNavi');
-            }
-          }
-        
-          build() {
-            Navigation(this.pathStack) {
-              Text(this.message)
-                .id('Index')
-                // 请将$r('app.float.page_text_font_size')替换为实际资源文件，在本示例中该资源文件的value值为"50fp"
-                .fontSize($r('app.float.page_text_font_size'))
-                .fontWeight(FontWeight.Bold)
-                .alignRules({
-                  center: { anchor: '__container__', align: VerticalAlign.Center } as VerticalAlignParam,
-                  middle: { anchor: '__container__', align: HorizontalAlign.Center } as HorizontalAlignParam
-                } as AlignRuleOption)
-            }
-            .mode(NavigationMode.Stack)
-            .height('100%')
-            .width('100%')
-            .margin({top:250})
-          }
-        }
-        ```
-
     3. 实现Navigation子页面。
 
-        ArkTS-Dyn示例：
         <!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/PageOne.ets) -->
         
         ``` TypeScript
@@ -1127,42 +607,6 @@ export default class ColdStartAbility extends UIAbility {
                   center: { anchor: '__container__', align: VerticalAlign.Center },
                   middle: { anchor: '__container__', align: HorizontalAlign.Center }
                 })
-            }
-            .onReady((context: NavDestinationContext) => {
-              this.pathStack = context.pathStack;
-            })
-            .height('100%')
-            .width('100%')
-            .margin({top:250})
-          }
-        }
-        ```
-
-        ArkTS-Sta示例：
-        <!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UIAbilityInteraction-sta/entry/src/main/ets/pages/PageOne.ets) -->
-        
-        ``` TypeScript
-        @Builder
-        export function PageOneBuilder(): void {
-          PageOne();
-        }
-        
-        @Component
-        export struct PageOne {
-          @State message: string = 'PageOne';
-          pathStack: NavPathStack = new NavPathStack();
-        
-          build(): void {
-            NavDestination() {
-              Text(this.message)
-                .id('PageOne')
-                // 请将$r('app.float.page_text_font_size')替换为实际资源文件，在本示例中该资源文件的value值为"50fp"
-                .fontSize($r('app.float.page_text_font_size'))
-                .fontWeight(FontWeight.Bold)
-                .alignRules({
-                  center: { anchor: '__container__', align: VerticalAlign.Center } as VerticalAlignParam,
-                  middle: { anchor: '__container__', align: HorizontalAlign.Center } as HorizontalAlignParam
-                } as AlignRuleOption)
             }
             .onReady((context: NavDestinationContext) => {
               this.pathStack = context.pathStack;

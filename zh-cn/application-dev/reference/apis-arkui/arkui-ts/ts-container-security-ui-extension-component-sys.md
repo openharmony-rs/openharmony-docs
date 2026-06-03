@@ -426,13 +426,11 @@ offSyncReceiverRegister(callback?: Callback\<SecurityUIExtensionProxy\>): void
 
 ## 示例
 
-### 示例1（SecurityUIExtensionComponent拉起远程UIExtensionAbility并进行双向数据通信）
+### 示例1（SecurityUIExtensionComponent基础使用）
 
-本示例展示了SecurityUIExtensionComponent的使用方法，包括通过配置[Want](../../apis-ability-kit/js-apis-app-ability-want.md#want)拉起指定Ability的UIExtensionAbility，通过[onRemoteReady](#onremoteready)获取[SecurityUIExtensionProxy](#securityuiextensionproxy)，使用[send](#send)或[sendSync](#sendsync)发送数据，以及通过[onReceive](#onreceive)、[onError](#onerror)、[onTerminated](#onterminated)等回调处理事件。
+本示例展示了SecurityUIExtensionComponent的基本用法，通过配置Want拉起指定Ability的UIExtensionAbility，并在连接异常时通过onError回调获取错误信息。
 
-从API版本26.0.0开始，新增[onRemoteReady](#onremoteready)、[onReceive](#onreceive)、[onError](#onerror)、[onTerminated](#onterminated)事件。
-
-**组件使用方**
+从API版本26.0.0开始，新增[onError](#onerror)事件。
 
 ArkTS-Dyn示例：
 
@@ -445,375 +443,85 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  @State receiveData: string = '';
-  private want: Want = {
-    bundleName: 'com.example.securityUIExtProvider',
-    abilityName: 'SecurityUIExtProvider',
+  @State want: Want = {
+    bundleName: 'com.ohos.myapplication',
+    abilityName: 'SUIExtensionProvider',
     parameters: {
       'ability.want.params.uiExtensionType': 'sysPicker/photoPicker',
     },
   }
-  private proxy: UIExtensionProxy | null = null;
 
   build() {
     Column() {
-      Text(this.message).fontSize(20).margin(10)
-      Text('收到数据: ' + this.receiveData).fontSize(16).margin(10)
+      Button('top')
+        .width('80%')
+        .height(40)
+        .margin(3)
 
       SecurityUIExtensionComponent(this.want)
         .width('90%')
-        .height('60%')
-        .backgroundColor(Color.Green)
-        .onRemoteReady((proxy: UIExtensionProxy) => {
-          hilog.info(0x0000, 'SUECDemo', 'onRemoteReady');
-          this.proxy = proxy;
-
-          this.proxy.on('asyncReceiverRegister', asyncRegisterCallback);
-          this.proxy.on('syncReceiverRegister', syncRegisterCallback);
-        })
-        .onReceive((data: Record<string, Object>) => {
-          this.receiveData = JSON.stringify(data['data']);
-          hilog.info(0x0000, 'SUECDemo', 'onReceive: ' + this.receiveData);
-        })
+        .height('90%').backgroundColor(Color.Green)
         .onError((error: BusinessError) => {
           this.message = 'Error: ' + JSON.stringify(error);
-          hilog.error(0x0000, 'SUECDemo', 'onError: ' + error.message);
-        })
-        .onTerminated((info) => {
-          hilog.info(0x0000, 'SUECDemo', 'onTerminated: code=' + info.code);
+          hilog.info(0x0000, 'SecurityUIExtensionComponentDemo', this.message);
         })
 
-      Button('发送异步数据')
-        .margin(5)
-        .onClick(() => {
-          if (this.proxy) {
-            this.proxy.send({ data: '来自使用方的异步消息' });
-          }
-        })
-
-      Button('发送同步数据')
-        .margin(5)
-        .onClick(() => {
-          if (this.proxy) {
-            try {
-              let result = this.proxy.sendSync({ data: '来自使用方的同步消息' });
-              hilog.info(0x0000, 'SUECDemo', 'sendSync result: ' + JSON.stringify(result));
-            } catch (err) {
-              hilog.error(0x0000, 'SUECDemo', `sendSync failed: ${(err as BusinessError).message}`);
-            }
-          }
-        })
-
-
-      Button('取消异步注册监听')
-        .margin(5)
-        .onClick(() => {
-          this.proxy!.off('syncReceiverRegister')
-          hilog.info(0x0000, 'SUECDemo', `offSyncReceiverRegister`);
-        })
-
-      Button('取消同步注册监听')
-        .margin(5)
-        .onClick(() => {
-          this.proxy!.off('asyncReceiverRegister')
-          hilog.info(0x0000, 'SUECDemo', `offAsyncReceiverRegister`);
-        })
+      Button('bottom')
+        .width('80%')
+        .height(40)
+        .margin(3)
     }
     .height('90%')
     .width('90%')
   }
-}
-
-
-function asyncRegisterCallback(proxy: UIExtensionProxy) {
-  hilog.info(0x0000, 'SUECDemo', 'onAsyncReceiverRegister');
-}
-
-function syncRegisterCallback(proxy: UIExtensionProxy) {
-  hilog.info(0x0000, 'SUECDemo', 'onSyncReceiverRegister');
 }
 ```
 
 ArkTS-Sta示例：
 
 ``` TypeScript
+
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { State } from '@ohos.arkui.stateManagement';
-import {
-  Column,
-  Button,
-  Text,
-  Component,
-  Entry,
-  Color,
-  SecurityUIExtensionComponent,
-  SecurityUIExtensionProxy
-} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement'
+import { Column, Button, Component, Entry, Color, SecurityUIExtensionComponent } from '@ohos.arkui.component';
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  @State receiveData: string = '';
   private want: Want = {
-    bundleName: 'com.example.securityUIExtProvider',
-    abilityName: 'SecurityUIExtProvider',
+    bundleName: 'com.ohos.myapplication',
+    abilityName: 'SUIExtensionProvider',
     parameters: {
       'ability.want.params.uiExtensionType': 'sysPicker/photoPicker',
     },
   }
-  private proxy: SecurityUIExtensionProxy | null = null;
 
   build() {
     Column() {
-      Text(this.message).fontSize(20).margin(10)
-      Text('收到数据: ' + this.receiveData).fontSize(16).margin(10)
+      Button('top')
+        .width('80%')
+        .height(40)
+        .margin(3)
 
       SecurityUIExtensionComponent(this.want)
         .width('90%')
-        .height('60%')
+        .height('90%')
         .backgroundColor(Color.Green)
-        .onRemoteReady((proxy1: SecurityUIExtensionProxy) => {
-          hilog.info(0x0000, 'SUECDemo', 'onRemoteReady');
-          this.proxy = proxy1;
-
-          this.proxy!.onAsyncReceiverRegister(asyncRegisterCallback);
-          this.proxy!.onSyncReceiverRegister(syncRegisterCallback);
-        })
-        .onReceive((data) => {
-          this.receiveData = JSON.stringify(data['data']);
-          hilog.info(0x0000, 'SUECDemo', 'onReceive: ' + this.receiveData);
-        })
         .onError((error: BusinessError) => {
           this.message = 'Error: ' + JSON.stringify(error);
-          hilog.error(0x0000, 'SUECDemo', 'onError: ' + error.message);
-        })
-        .onTerminated((info) => {
-          hilog.info(0x0000, 'SUECDemo', 'onTerminated: code=' + info.code);
+          hilog.info(0x0000, 'SecurityUIExtensionComponentDemo', this.message);
         })
 
-      Button('发送异步数据')
-        .margin(5)
-        .onClick(() => {
-          if (this.proxy != undefined) {
-            this.proxy!.send({ "data": '来自使用方的异步消息' });
-          }
-        })
-
-      Button('发送同步数据')
-        .margin(5)
-        .onClick(() => {
-          if (this.proxy != undefined) {
-            try {
-              let result = this.proxy!.sendSync({ "data": '来自使用方的同步消息' });
-              hilog.info(0x0000, 'SUECDemo', 'sendSync result: ' + JSON.stringify(result));
-            } catch (err) {
-              hilog.error(0x0000, 'SUECDemo', `sendSync failed: ${(err as BusinessError).message}`);
-            }
-          }
-        })
-
-      Button('取消异步注册监听')
-        .margin(5)
-        .onClick(() => {
-          this.proxy?.offSyncReceiverRegister()
-          hilog.info(0x0000, 'SUECDemo', `offSyncReceiverRegister`);
-        })
-
-      Button('取消同步注册监听')
-        .margin(5)
-        .onClick(() => {
-          this.proxy?.offAsyncReceiverRegister()
-          hilog.info(0x0000, 'SUECDemo', `offAsyncReceiverRegister`);
-        })
+      Button('bottom')
+        .width('80%')
+        .height(40)
+        .margin(3)
     }
     .height('90%')
     .width('90%')
   }
 }
-
-function asyncRegisterCallback(proxy: SecurityUIExtensionProxy) {
-  hilog.info(0x0000, 'SUECDemo', 'onAsyncReceiverRegister');
-}
-
-function syncRegisterCallback(proxy: SecurityUIExtensionProxy) {
-  hilog.info(0x0000, 'SUECDemo', 'onSyncReceiverRegister');
-}
 ```
-
-**组件提供方**
-
-提供方包含三个文件需要修改：
-
-- 提供方新增扩展入口文件`/src/main/ets/uiextensionability/SecurityUIExtProvider.ets`。
-  
-  ```ts
-  import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  const TAG: string = '[SecurityUIExtAbility]';
-  
-  export default class SecurityUIExtProvider extends UIExtensionAbility {
-    onCreate() {
-      hilog.info(0x0000, TAG, 'onCreate');
-    }
-  
-    onForeground() {
-      hilog.info(0x0000, TAG, 'onForeground');
-    }
-  
-    onBackground() {
-      hilog.info(0x0000, TAG, 'onBackground');
-    }
-  
-    onDestroy() {
-      hilog.info(0x0000, TAG, 'onDestroy');
-    }
-  
-    onSessionCreate(want: Want, session: UIExtensionContentSession) {
-      hilog.info(0x0000, TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
-      let param: Record<string, UIExtensionContentSession> = {
-        'session': session
-      };
-      let storage: LocalStorage = new LocalStorage(param);
-      try {
-        session.loadContent('pages/SecurityExtension', storage);
-      } catch (error) {
-        hilog.error(0x0000, TAG, 'onSessionCreate loadContent error: ', JSON.stringify(error));
-      }
-    }
-  
-    onSessionDestroy(session: UIExtensionContentSession) {
-      hilog.info(0x0000, TAG, 'onSessionDestroy');
-    }
-  }
-  ```
-
-- 提供方扩展Ability入口页面文件`/src/main/ets/pages/SecurityExtension.ets`。
-  
-  ```ts
-  import { UIExtensionContentSession } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  let storage = LocalStorage.getShared()
-  AppStorage.setOrCreate('message', 'UIExtensionAbility')
-  
-  @Entry(storage)
-  @Component
-  struct SecurityExtension {
-    @StorageLink('message') storageLink: string = '';
-    @State backColor: Color = Color.Brown;
-    private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
-    controller: TextInputController = new TextInputController()
-  
-    build() {
-      Scroll() {
-        Column() {
-          Text(this.storageLink)
-            .fontSize(10)
-            .fontWeight(FontWeight.Bold)
-            .width('80%')
-            .height('10%')
-
-          Button('点击向Component发送数据')
-            .fontSize(12)
-            .width('80%')
-            .height('10%')
-            .margin(1)
-            .onClick(() => {
-              hilog.info(0x0000, 'SecurityExtension', 'send 543321, for test start')
-              if (this.session != undefined) {
-                this.session.sendData({ 'data': 'Component应该接收到的数据' })
-                hilog.info(0x0000, 'SecurityExtension', 'send for test')
-              }
-            })
-
-          Button('terminate')
-            .fontSize(12)
-            .width('80%')
-            .height('10%')
-            .margin(1)
-            .onClick(() => {
-              hilog.info(0x0000, 'SecurityExtension', 'terminate')
-              if (this.session != undefined) {
-                this.session.terminateSelf();
-              }
-              storage.clear()
-            })
-
-          Button('terminate with result')
-            .fontSize(12)
-            .width('80%')
-            .height('10%')
-            .margin(1)
-            .onClick(() => {
-              hilog.info(0x0000, 'SecurityExtension', 'terminateSelfWithResult')
-              if (this.session != undefined) {
-                this.session.terminateSelfWithResult({
-                  resultCode: 0,
-                  want: {
-                    bundleName: 'myBundleName',
-                    parameters: { 'result': 123456 }
-                  }
-                })
-              }
-              storage.clear()
-            })
-
-          Button('setReceiveDataCallback')
-            .fontSize(12)
-            .width('80%')
-            .height('10%')
-            .margin(1)
-            .onClick(() => {
-              this.session?.setReceiveDataCallback((data) => {
-                this.storageLink = JSON.stringify(data)
-                hilog.info(0x0000, 'SecurityExtension', 'test setReceiveDataCallback successfully: ' + this.storageLink);
-              })
-            })
-
-          Button('setReceiveDataForResultCallback')
-            .fontSize(12)
-            .width('80%')
-            .height('10%')
-            .margin(1)
-            .onClick(() => {
-              this.session?.setReceiveDataForResultCallback(func1)
-            })
-        }
-      }
-      .id('providerScroll')
-      .width('100%')
-      .height('100%')
-    }
-  }
-  
-  function func1(data: Record<string, Object>): Record<string, Object> {
-    let linkToMsg: SubscribedAbstractProperty<string> = AppStorage.link('message');
-    linkToMsg.set(JSON.stringify(data))
-    hilog.info(0x0000, 'SecurityExtension',
-      'invoke for test, handle callback set by setReceiveDataForResultCallback successfully');
-    return data;
-  }
-  ```
-
-- 提供方module.json5配置。
-  
-  ```json
-  "extensionAbilities": [
-        {
-          "name": "SecurityUIExtProvider",
-          "srcEntry": "./ets/uiextensionability/SecurityUIExtProvider.ets",
-          "description": "$string:module_desc",
-          "label": "$string:EntryAbility_desc",
-          "type": "sysPicker/photoPicker",
-          "exported": true,
-          "metadata" : [{
-            "name" : "supportUIInteraction",
-            "value": "false"
-          }]
-        }
-      ]
-  ```

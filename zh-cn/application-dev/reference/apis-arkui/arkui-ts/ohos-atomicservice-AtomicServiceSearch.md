@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @qq_36417014-->
-<!--Designer: @autojuan-->
+<!--Designer: @zhangbeilei-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
 

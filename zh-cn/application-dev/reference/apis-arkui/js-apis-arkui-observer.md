@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @lushi871202; @hehongyang3-->
-<!--Designer: @piggyguy; @lushi871202; @hehongyang3-->
+<!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,8 +14,6 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 本模块接口仅可在Stage模型下使用。
 >
 > - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
 
@@ -683,7 +681,7 @@ on(type: 'scrollEvent', options: ObserverOptions, callback: Callback\<ScrollEven
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | 是   | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。                   |
-| options  | [ObserverOptions](#observeroptions12)                                  | 是   | 指定监听的滚动组件的id。                                                 |
+| options  | [uiObserver.observerOptions](#observeroptions12)                                  | 是   | 指定监听的滚动组件的id。                                                 |
 | callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>                      | 是   | 回调函数。返回滚动事件的信息。                                            |
 
 **示例：**
@@ -1071,6 +1069,7 @@ offDensityUpdate(context: UIContext, callback?: Callback\<DensityInfo\>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                                                                                           |
 | -------- | ----------------------------------------- | ---- | ---------------------------------------------------------------------------------------------- |
+| type     | string                                    | 是   | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。                                          |
 | context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。                                                             |
 | callback | Callback\<[DensityInfo](#densityinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销指定UIContext下所有densityUpdate事件监听。 |
 
@@ -1203,6 +1202,7 @@ offWillDraw(context: UIContext, callback?: Callback\<void\>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                                                  |
 | -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
+| type     | string                                    | 是   | 监听事件，固定为'willDraw'，即是否将要绘制。 |
 | context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。                    |
 | callback | Callback\<void\>   | 否   | 需要被注销的回调函数。                                |
 
@@ -1326,6 +1326,7 @@ offDidLayout(context: UIContext, callback?: Callback\<void\>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                                                  |
 | -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
+| type     | string                                    | 是   | 监听事件，固定为'didLayout'，即是否布局完成。 |
 | context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。                    |
 | callback | Callback\<void\>   | 否   | 需要被注销的回调函数。                                |
 

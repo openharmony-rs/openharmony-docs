@@ -3995,7 +3995,7 @@ putImageData(imageData: ImageData, dx: number | string, dy: number | string): vo
 
 ### putImageData
 
-putImageData(imageData: ImageData, dx: number | string, dy: number | string, dirtyX: number | string, dirtyY: number | string, dirtyWidth: number | string, dirtyHeight: number | string): void
+putImageData(imageData: ImageData, dx: number | string, dy: number | string, dirtyX: number | string, dirtyY: number | string, dirtyWidth?: number | string, dirtyHeight: number | string): void
 
 使用[ImageData](ts-components-canvas-imagedata.md)数据裁剪后填充至新的矩形区域。
 

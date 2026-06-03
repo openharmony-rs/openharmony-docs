@@ -13,7 +13,7 @@
 >
 >本模块仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -24,10 +24,6 @@ import { skillManager } from '@kit.AbilityKit';
 ## SkillInfoFlag
 
 技能信息标志，指示需要获取的技能信息的内容。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -47,8 +43,6 @@ import { skillManager } from '@kit.AbilityKit';
 getSkillInfoForSelf(moduleName: string, skillName: string, flags: number): Promise\<[SkillInfo](js-apis-bundleManager-SkillInfo.md)\>
 
 获取调用方自身应用中指定模块下指定名称的技能信息。使用Promise异步回调。
-
-**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -108,8 +102,6 @@ getSkillInfosForSelf(flags: number): Promise\<Array\<[SkillInfo](js-apis-bundleM
 
 获取调用方自身应用的所有技能信息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -156,9 +148,7 @@ getSkillInfo(bundleName: string, moduleName: string, skillName: string, flags: n
 
 获取指定应用中指定模块下指定名称的技能信息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE 或 ohos.permission.MANAGE_SKILL
+**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE or ohos.permission.MANAGE_SKILL
 
 > **说明：**
 >
@@ -228,9 +218,7 @@ getSkillInfos(bundleName: string, flags: number, userId?: number): Promise\<Arra
 
 获取指定应用的所有技能信息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE 或 ohos.permission.MANAGE_SKILL
+**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE or ohos.permission.MANAGE_SKILL
 
 > **说明：**
 >
@@ -294,9 +282,7 @@ getAllSkillInfos(flags: number, userId?: number): Promise\<Array\<[SkillInfo](js
 
 获取设备上的所有技能信息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE 或 ohos.permission.MANAGE_SKILL
+**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE or ohos.permission.MANAGE_SKILL
 
 > **说明：**
 >
@@ -350,40 +336,3 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllSkillInfos failed: error %{public}d  %{public}s', err.code, err.message);
 }
 ```
-
-## SkillInfo
-
-type SkillInfo = _SkillInfo
-
-技能配置信息，用于定义AI 代理的技能能力。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-| 类型                                                         | 说明           |
-| ------------------------------------------------------------ | -------------- |
-| [_SkillInfo](js-apis-bundleManager-SkillInfo.md#skillinfo-1) | 应用技能信息。 |
-
-
-## SkillType
-
-type SkillType = _SkillType
-
-技能类型的枚举。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-| 类型                                                         | 说明           |
-| ------------------------------------------------------------ | -------------- |
-| [_SkillType](js-apis-bundleManager-SkillInfo.md#skilltype) | 技能类型的枚举。 |

@@ -1,10 +1,4 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta的@Observed和@ObjectLink（嵌套类对象属性变化）
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @lixingchi1; @katabanga-->
-<!--Designer: @lixingchi1; @katabanga-->
-<!--Tester: @TerryTsao-->
-<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -32,19 +26,19 @@ ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层
 
 ```text
 project/
-├── entry/                                           # ArkTS-Dyn主模块
+├── entry/                           # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── StatemgmtV1Observed.ets      # 使用静态@Observed装饰的数据
+│                   └── Index.ets     # 使用静态@Observed装饰的数据
 │
-└── static_module/                                   # ArkTS-Sta子模块
+└── static_module/                    # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── StaStatemgmtV1Observed.ets   # 导出静态@Observed装饰的数据
+                    └── MainPage.ets   # 导出静态@Observed装饰的数据
 
 ```
 
@@ -52,10 +46,10 @@ project/
 
 - 创建ArkTS-Sta子模块`static_module`，在`src/main/ets/components`目录创建并导出静态@Observed装饰的数据。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-<!-- @[DynInteropStaStatemgmtV1StaStateMgmtV1Observed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/src/main/ets/components/StaStatemgmtV1Observed.ets) -->
+```TypeScript
+'use static'
 
-``` TypeScript
-// static_module/src/main/ets/components/StaStatemgmtV1Observed.ets
+// static_module/src/main/ets/components/MainPage.ets
 import { Observed, Track } from '@ohos.arkui.stateManagement';
 
 @Observed
@@ -67,11 +61,11 @@ export class MyClassA { // 定义静态@Observed装饰的类并导出
 
 - 在ArkTS-Sta子模块`static_module`的`Index.ets`文件中导出静态@Observed装饰的数据。
 
-<!-- @[DynInteropStaStatemgmtV1IndexObserved](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/Index.ets) -->
+```TypeScript
+'use static'
 
-``` TypeScript
 // static_module/Index.ets
-export { MyClassA } from './src/main/ets/components/StaStatemgmtV1Observed'; // 导出静态@Observed装饰的类MyClassA
+export { MyClassA } from './src/main/ets/components/MainPage'; // 导出静态@Observed装饰的类
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件的`dependencies`字段中添加子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
@@ -86,10 +80,8 @@ export { MyClassA } from './src/main/ets/components/StaStatemgmtV1Observed'; // 
 
 - 在ArkTS-Dyn主模块中使用import语句导入ArkTS-Sta组件。
 
-<!-- @[DynInteropStaStatemgmtV1Observed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV1Observed.ets) -->
-
-``` TypeScript
-// entry/src/main/ets/pages/StatemgmtV1Observed.ets
+```TypeScript
+// entry/src/main/ets/pages/Index.ets
 
 // 引用ArkTS-Dyn动态@Observed装饰的数据
 import { MyClassA } from 'static_module';
@@ -100,40 +92,40 @@ export struct Index {
   @State state: MyClassA = new MyClassA();
 
   build() {
-    Row() {
-      Column() {
-        // 在ArkTS-Dyn中使用动态@Observed装饰的数据
-        Text(this.state.name)
-          .fontSize(20) 
-          .margin(10)
-        // 单独为静态@Observed装饰的类中的某一个成员赋值
-        Button('Member Assignment')
-          .onClick(() => {
-            this.state.name = 'state: x';
-          })
-          .width(300)
-          .margin(10)
-        // 创建新对象整体为静态@Observed装饰的类中的成员赋值
-        Button('Overall Assignment')
-          .onClick(() => {
-            let data = new MyClassA();
-            data.name = 'state: Hello';
-            this.state = data;
-          })
-          .width(300)
-          .margin(10)
+    Scroll() {
+      Row() {
+        Column() {
+          // 在ArkTS-Dyn中使用动态@Observed装饰的数据
+          Text(this.state.name)
+            .height('10%')
+
+          Row() {
+            // 单独为静态@Observed装饰的类中的某一个成员赋值
+            Button('Member Assignment')
+              .layoutWeight(1)
+              .onClick(() => {
+                this.state.name = 'state: x';
+              })
+
+            // 创建新对象整体为静态@Observed装饰的类中的成员赋值
+            Button('Overall Assignment')
+              .layoutWeight(1)
+              .onClick(() => {
+                let data = new MyClassA();
+                data.name = 'state: Hello';
+                this.state = data;
+              })
+          }
+          .width('80%')
+        }
+        .width('100%')
       }
-      .width('100%')
     }
     .height('100%')
   }
 }
 ```
 
-
-示例效果图：
-
-![arkts-dyn-interop-sta-observed-demo1](figures/arkts-dyn-interop-sta-observed-demo1.gif)
 
 ## 常见问题
 
@@ -143,7 +135,7 @@ export struct Index {
 
 `entry/src/main/ets/components/MainPage.ets`文件中@Track的示例如下：
 
-``` TypeScript
+```TypeScript
 'use static'
 
 // static_module/src/main/ets/components/MainPage.ets
@@ -158,7 +150,7 @@ export class MyClassA { // 定义静态@Observed装饰的类并导出
 
 位于`static_module/build/default/intermediates/declgen/default/declgenV1/static_module/src/main/ets/components/MainPage.d.ets`的声明文件，修改前如下：
 
-``` TypeScript
+```TypeScript
 import type { Record } from '../../../../../static.Record';
 
 @Observed
@@ -175,7 +167,7 @@ export declare class MyClassA {
 
 应按如下格式修改：
 
-``` TypeScript
+```TypeScript
 import type { Record } from '../../../../../static.Record';
 
 @Observed

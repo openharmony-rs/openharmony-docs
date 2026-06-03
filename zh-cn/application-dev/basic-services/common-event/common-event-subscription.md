@@ -37,7 +37,6 @@
 
 1. 导入模块。
    
-   ArkTS-Dyn示例：
    <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
@@ -46,17 +45,6 @@
    
    const TAG: string = 'ProcessModel';
    const DOMAIN_NUMBER: number = 0xFF00;
-   ```
-
-   ArkTS-Sta示例：
-   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
-   
-   ``` TypeScript
-   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   
-   const TAG: string = 'ProcessModel';
-   const DOMAIN_NUMBER: int = 0xFF00;
    ```
 
 2. 创建订阅者信息，详细的订阅者信息数据类型及包含的参数请见[CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md)文档介绍。
@@ -88,7 +76,6 @@
 
 3. 创建订阅者，保存返回的订阅者对象subscriber，用于执行后续的订阅、退订、接收事件回调等操作。
    
-   ArkTS-Dyn示例：
    <!-- @[CreateSubscriberCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
@@ -105,28 +92,8 @@
      })
    ```
 
-   ArkTS-Sta示例：
-   <!-- @[CreateSubscriberCallback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
-   
-   ``` TypeScript
-   // 创建订阅者回调
-   commonEventManager.createSubscriber(subscribeInfoCustom,
-     (err: BusinessError | null, data: commonEventManager.CommonEventSubscriber | undefined | null) => {
-       if (err) {
-         hilog.error(DOMAIN_NUMBER, TAG,
-           `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-         return;
-       }
-       if (data) {
-         hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
-         subscriberCustom = data;
-       }
-     })
-   ```
-
 4. 创建订阅回调函数，订阅回调函数会在接收到事件时触发。订阅回调函数返回的data内包含了公共事件的名称、发布者携带的数据等信息，公共事件数据的详细参数和数据类型请见[CommonEventData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventData.md)文档介绍。
    
-   ArkTS-Dyn示例：
    <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
@@ -146,24 +113,5 @@
    }
    ```
 
-   ArkTS-Sta示例：
-   <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
-   
-   ``` TypeScript
-   // 订阅公共事件回调
-   if (subscriberCustom !== null) {
-     commonEventManager.subscribe(subscriberCustom as commonEventManager.CommonEventSubscriber,
-       (err: BusinessError | null, data: commonEventManager.CommonEventData | undefined | null) => {
-         if (err) {
-           hilog.error(DOMAIN_NUMBER, TAG,
-             `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
-           return;
-         }
-         hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
-       })
-   } else {
-     hilog.error(DOMAIN_NUMBER, TAG, `Need create subscriber`);
-   }
-   ```
 <!--RP1-->
 <!--RP1End-->

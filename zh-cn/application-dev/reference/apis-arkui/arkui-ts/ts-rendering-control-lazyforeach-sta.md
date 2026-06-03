@@ -1,10 +1,8 @@
 # LazyForEach (ArkTS-Sta)
 
-> **说明：**
+> **说明**
 >
 > - 本模块仅适用于ArkTS-Sta。
->
-> - 本模块接口仅可在Stage模型下使用。
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -40,25 +38,6 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 >
 > 应避免在`keyGenerator`和`itemGenerator`函数中执行耗时操作，以减少应用滑动时卡顿丢帧问题，最佳实践请参考[主线程耗时操作优化-循环渲染](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section4551193714439)。
 > 避免使用JSON.stringify函数。在复杂的业务场景中，使用JSON.stringify会对item对象进行序列化，该过程会消耗大量时间与计算资源，从而降低页面性能，最佳实践请参考[懒加载优化性能-键值生成规则](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization#section68711519072)。
-
-## 属性
-
-### debugLine<sup>24+</sup>
-
-debugLine(sourceLine: string, moduleName?: string)
-
-设置组件源码重定向信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Sta起始版本：** 24
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| sourceLine | string | 是 | 源码行号。 |
-| moduleName | string | 否 | 组件所属模块名。 |
 
 ## IDataSource
 
@@ -217,7 +196,7 @@ onDataChange(index: int): void
 
 ### onDatasetChange
 
-onDatasetChange(dataOperations: Array\<DataOperation\>): void
+onDatasetChange(dataOperations: DataOperation[]): void
 
 批量数据处理后，调用onDatasetChange接口，通知组件按照dataOperations刷新。
 
@@ -233,7 +212,7 @@ onDatasetChange(dataOperations: Array\<DataOperation\>): void
 
 | 参数名         | 类型                | 必填 | 说明               |
 | -------------- | ------------------- | ---- | ------------------ |
-| dataOperations | Array\<[DataOperation](#dataoperation)\> | 是   | 一次处理数据的操作。 |
+| dataOperations | [DataOperation](#dataoperation)[] | 是   | 一次处理数据的操作。 |
 
 ## DataOperation
 

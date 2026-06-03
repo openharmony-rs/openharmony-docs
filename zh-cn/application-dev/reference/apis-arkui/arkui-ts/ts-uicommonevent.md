@@ -11,8 +11,6 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 本模块接口仅可在Stage模型下使用。
 
 ## UICommonEvent
 用于设置基础事件回调。方法入参为undefined的时候，重置对应的事件回调。
@@ -22,7 +20,7 @@ setOnClick(callback: Callback\<ClickEvent> | undefined): void
 
 设置[点击事件](./ts-universal-events-click.md)的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +40,7 @@ setOnTouch(callback: Callback\<TouchEvent> | undefined): void
 
 设置[触摸事件](./ts-universal-events-touch.md)的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,7 +63,7 @@ ArkTS-Sta: setOnAppear(callback: VoidCallback | undefined): void
 
 设置[onAppear](./ts-universal-events-show-hide.md#onappear)挂载显示事件的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +86,7 @@ ArkTS-Sta: setOnDisappear(callback: VoidCallback | undefined): void
 
 设置[onDisAppear](./ts-universal-events-show-hide.md#ondisappear)卸载消失事件的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +106,7 @@ setOnKeyEvent(callback: Callback\<KeyEvent> | undefined): void
 
 设置[按键事件](./ts-universal-events-key.md)的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,7 +128,7 @@ ArkTS-Sta: setOnFocus(callback: VoidCallback | undefined): void
 
 设置[onFocus](./ts-universal-focus-event.md#onfocus)获焦事件的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,7 +150,7 @@ ArkTS-Sta: setOnBlur(callback: VoidCallback | undefined): void
 
 设置[onBlur](./ts-universal-focus-event.md#onblur)失焦事件的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,7 +170,7 @@ setOnHover(callback: HoverCallback | undefined): void
 
 设置[onHover](./ts-universal-events-hover.md#onhover)悬浮事件的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,7 +190,7 @@ setOnMouse(callback: Callback\<MouseEvent> | undefined): void
 
 设置[onMouse](./ts-universal-mouse-key.md#onmouse)鼠标事件的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,7 +210,7 @@ setOnSizeChange(callback: SizeChangeCallback | undefined): void
 
 设置[onSizeChange](./ts-universal-component-size-change-event.md#onsizechange)组件区域变化事件的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,7 +230,7 @@ setOnVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: Visib
 
 设置限制回调间隔的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见区域变化事件的回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -259,7 +257,7 @@ type HoverCallback = (isHover: boolean, event: HoverEvent)=> void
 
 hover事件的回调类型。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -124,4 +124,4 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
 
 - [音频管理（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio)
 
-<!--RP1--><!--RP1End-->
+<!--PR1--><!--PR1End-->

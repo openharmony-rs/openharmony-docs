@@ -92,24 +92,24 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
 | id          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏输入事件ID。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
 | pressedTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否    | 否    | 按下时间戳，单位：μs。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| screenX     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| screenY     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| windowX     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| windowY     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| screenX     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| screenY     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| windowX     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的X坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| windowY     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的Y坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
 | pressure    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否    | 否    | 压力值，取值范围是[0.0, 1.0]，0.0表示不支持。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| width       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏区域的宽度。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| height      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏区域的高度。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| tiltX       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 相对YZ平面的角度，取值的范围[-90, 90]，其中正值是向右倾斜，单位为度。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| tiltY       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 相对XZ平面的角度，取值的范围[-90, 90]，其中正值是向下倾斜，单位为度。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| toolX       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 工具区域的中心点以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| toolY       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 工具区域的中心点以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| toolWidth   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 工具区域宽度。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| toolHeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 工具区域高度。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| rawX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 输入设备上的X坐标。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| rawY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 输入设备上的Y坐标。当前仅支持整数，单位为px。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| width       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏区域的宽度。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| height      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏区域的高度。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| tiltX       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 相对YZ平面的角度，取值的范围[-90, 90]，其中正值是向右倾斜。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| tiltY       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 相对XZ平面的角度，取值的范围[-90, 90]，其中正值是向下倾斜。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| toolX       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 工具区域的中心点以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| toolY       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 工具区域的中心点以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| toolWidth   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 工具区域宽度。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| toolHeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 工具区域高度。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| rawX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 输入设备上的X坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| rawY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 输入设备上的Y坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
 | toolType    | [ToolType](#tooltype) | 否    | 否    | 工具类型。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| globalX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的X坐标，单位为px。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的X坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 <br>**ArkTS-Dyn起始版本**: 20 <br>**ArkTS-Sta起始版本**：23 |
-| globalY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标，单位为px。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的Y坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 <br>**ArkTS-Dyn起始版本**: 20 <br>**ArkTS-Sta起始版本**：23 |
+| globalX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的X坐标。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的X坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 <br>**ArkTS-Dyn起始版本**: 20 <br>**ArkTS-Sta起始版本**：23 |
+| globalY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的Y坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 <br>**ArkTS-Dyn起始版本**: 20 <br>**ArkTS-Sta起始版本**：23 |
 
 ## TouchEvent
 

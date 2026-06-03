@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,8 +11,6 @@
 > **说明：**
 >
 > - 从API version 23开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->
-> - 本模块接口仅可在Stage模型下使用。
 >
 > - 本模块为系统接口。
 

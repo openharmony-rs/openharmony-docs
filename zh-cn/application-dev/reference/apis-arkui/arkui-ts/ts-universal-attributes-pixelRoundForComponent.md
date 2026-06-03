@@ -13,8 +13,6 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->
-> - 本模块接口仅可在Stage模型下使用。
 
 ## pixelRound
 
@@ -36,9 +34,9 @@ ArkTS-Sta: pixelRound(value: PixelRoundPolicy | undefined): this
 - 计算当前组件右下角坐标： 左上角相对于父容器偏移量 + 组件自身尺寸。
 - 重新计算当前组件尺寸： 右下角坐标四舍五入取整 - 左上角坐标四舍五入取整。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,15 +60,11 @@ ArkTS-Sta: pixelRound(value: PixelRoundPolicy | undefined): this
 
 指定组件级像素取整的方向。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |

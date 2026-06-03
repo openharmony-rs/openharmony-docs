@@ -36,4 +36,4 @@ Defines a struct for the printer information.
 | char *location | Printer location.|
 | char *makeAndModel | Brand and model of the printer.|
 | char *printerUri | Printer URI.|
-| char *detailInfo | Details in JSON format.<br>The supported keys are as follows:<br>- **printerAlias**: string type, indicating the printer alias. **Since**: 24<br>- **vendorId**: int type, indicating the USB vendor ID of the printer. **Since**: 12<br>- **productId**: int type, indicating the USB product ID of the printer. **Since**: 12<br>- **protocol**: string array, indicating the list of protocols detected for the printer. **Since**: 24<br>- **ipp**: string type, indicating the printer URI for the detected IPP protocol. **Since**: 24<br>- **ipps**: string type, indicating the printer URI for the detected IPPS protocol. **Since**: 24<br>- **lpd**: string type, indicating the printer URI for the detected LPD protocol. **Since**: 24<br>- **socket**: string type, indicating the printer URI for the detected Socket protocol. **Since**: 24|
+| char *detailInfo | Details in JSON format.|

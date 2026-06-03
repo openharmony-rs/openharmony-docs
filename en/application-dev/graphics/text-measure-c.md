@@ -1,7 +1,7 @@
 # Text Measurement (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->

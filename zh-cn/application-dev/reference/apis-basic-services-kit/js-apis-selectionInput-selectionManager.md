@@ -51,7 +51,7 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'selectionCompleted'。 |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回当前划词信息。该回调仅在用户通过鼠标或触控板选中文本（鼠标左键双击/三击/按下滑动）后按下Ctrl键时触发。       |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回当前划词信息。       |
 
 **错误码：**
 
@@ -93,7 +93,7 @@ onSelectionComplete(callback: Callback\<SelectionInfo>): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回当前划词信息。该回调仅在用户通过鼠标或触控板选中文本（鼠标左键双击/三击/按下滑动）后按下Ctrl键时触发。       |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回当前划词信息。       |
 
 **错误码：**
 
@@ -266,7 +266,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 创建划词面板。使用Promise异步回调。
 
-单个划词应用仅允许创建一个[MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype)和一个[MAIN_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype)。
+单个划词应用仅允许创建一个[主面板类型](js-apis-selectionInput-selectionPanel.md#paneltype)和一个[菜单面板类型](js-apis-selectionInput-selectionPanel.md#paneltype)的窗口。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 

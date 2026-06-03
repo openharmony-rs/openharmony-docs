@@ -20,7 +20,6 @@
 详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 > **说明：**
->
 > - 拍摄动态照片需要麦克风权限ohos.permission.MICROPHONE，权限申请和校验的方式请参考[开发准备](camera-preparation.md)。否则拍摄的照片没有声音。
 
 1. 导入依赖，需要导入相机框架、媒体库、图片相关领域依赖。
@@ -34,8 +33,6 @@
 2. 确定拍照输出流。
 
    通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流，通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法创建拍照输出流。
-
-   <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ```ts
    function getPhotoOutput(cameraManager: camera.CameraManager, 
@@ -61,11 +58,8 @@
 
 3. 查询当前设备当前模式是否支持动态照片能力。
 
-   > **说明：**
-   >
-   > 查询是否支持动态照片前需要先完成相机会话配置、提交和启动会话，详细开发步骤请参考[会话管理](camera-session-management.md)。
-
-   <!-- @[camera_moving_photo_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+    > **说明：**
+    > 查询是否支持动态照片前需要先完成相机会话配置、提交和启动会话，详细开发步骤请参考[会话管理](camera-session-management.md)。
 
     ```ts
     function isMovingPhotoSupported(photoOutput: camera.PhotoOutput): boolean {
@@ -83,11 +77,9 @@
 
 4. 使能动态照片拍照能力。
 
-   > **说明：**
-   >
-   > 使能动态照片前需要使能[分段式拍照](camera-deferred-capture.md)能力。
-
-   <!-- @[camera_moving_photo_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+    > **说明：**
+    >
+    > 使能动态照片前需要使能[分段式拍照](camera-deferred-capture.md)能力。
 
     ```ts
     function enableMovingPhoto(photoOutput: camera.PhotoOutput): void {
@@ -106,8 +98,6 @@
 ## 状态监听
 
 在相机应用开发过程中，可以随时监听动态照片拍照输出流状态。通过注册photoAsset的回调函数获取监听结果，photoOutput创建成功时即可监听。
-
-<!-- @[photo_asset_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ```ts
    function getPhotoAccessHelper(context: Context): photoAccessHelper.PhotoAccessHelper {

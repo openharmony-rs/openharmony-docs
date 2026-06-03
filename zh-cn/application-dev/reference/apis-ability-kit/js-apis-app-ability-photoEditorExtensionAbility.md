@@ -10,11 +10,9 @@
 PhotoEditorExtensionAbility继承自[ExtensionAbility](js-apis-app-ability-extensionAbility.md)，开发者可通过PhotoEditorExtensionAbility实现图片编辑扩展页面。应用通过[startAbilityByType](js-apis-inner-application-uiAbilityContext.md#startability)拉起图片编辑类应用扩展面板后，由用户在面板上选择实现了PhotoEditorExtensionAbility的图片编辑扩展页面并拉起该页面。
 
 > **说明：**
->
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
+> 
 > 本模块首批接口从API version 12 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
+> 
 > 本模块接口仅可在Stage模型下使用。
 
 ## 实现效果
@@ -35,10 +33,6 @@ import { PhotoEditorExtensionAbility } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 |  名称 |类型   |只读   |可选   |说明   |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
 |  context | [PhotoEditorExtensionContext](./js-apis-app-ability-photoEditorExtensionContext.md)  | 否  | 否  | PhotoEditorExtensionAbility的上下文，提供保存图片能力。  |
@@ -53,10 +47,6 @@ onCreate(): void
 
 **系统能力：** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 **示例：**
 
 ```ts
@@ -69,6 +59,7 @@ export default class ExamplePhotoEditorAbility extends PhotoEditorExtensionAbili
     console.info(TAG, `onCreate`);
   }
 }
+
 ```
 
 ### onStartContentEditing
@@ -80,10 +71,6 @@ onStartContentEditing(uri: string, want: Want, session: UIExtensionContentSessio
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AppExtension.PhotoEditorExtension
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 |  类型 | 必填  | 说明  |
@@ -105,6 +92,7 @@ export default class ExamplePhotoEditorAbility extends PhotoEditorExtensionAbili
     console.info(TAG, `onStartContentEditing want: ${JSON.stringify(want)}, uri: ${uri}`);
   }
 }
+
 ```
 
 ### onForeground
@@ -116,10 +104,6 @@ onForeground(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -133,6 +117,7 @@ export default class ExamplePhotoEditorAbility extends PhotoEditorExtensionAbili
     console.info(TAG, `onForeground`);
   }
 }
+
 ```
 
 ### onBackground
@@ -144,10 +129,6 @@ onBackground(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -161,6 +142,7 @@ export default class ExamplePhotoEditorAbility extends PhotoEditorExtensionAbili
     console.info(TAG, `onBackground`);
   }
 }
+
 ```
 
 ### onDestroy
@@ -173,14 +155,10 @@ onDestroy(): void | Promise\<void>
 
 **系统能力：** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 12
-
 **返回值：**
 |  类型 |说明   |
 | ------------ | ------------ |
-| void \| Promise\<void> | 无返回结果或者无返回结果的Promise对象。 |
+|  void \| Promise\<void> |  无返回结果或者无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -213,38 +191,3 @@ onDestroy(): void | Promise\<void>
   }
 
   ```
-### onDestroy<sup>23+</sup>
-
-onDestroy(): Promise\<void> | undefined
-
-PhotoEditorExtensionAbility生命周期回调，在销毁时回调，执行资源清理等操作。 
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.AppExtension.PhotoEditorExtension
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
-
-**返回值：**
-
-| 类型                        | 说明                              |
-| --------------------------- | --------------------------------- |
-| Promise\<void> \| undefined | 无返回结果的Promise对象或未定义。 |
-
-**示例：**
-
-```ts
-// ArkTS-Sta示例
-import { PhotoEditorExtensionAbility } from '@kit.AbilityKit';
-
-const TAG: string = '[testTag] ExamplePhotoEditorAbility';
-
-export default class ExamplePhotoEditorAbility extends PhotoEditorExtensionAbility {
-  onDestroy(): Promise<void> | undefined {
-    console.info(TAG, `onDestroy`);
-    return undefined;
-  }
-}
-```

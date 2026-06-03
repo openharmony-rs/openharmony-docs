@@ -1,6 +1,6 @@
 # If：条件渲染（ArkTS-Sta）
 
-API参数说明见：[If (ArkTS-Sta)](../../reference/apis-arkui/arkui-ts/ts-rendering-control-ifelse-sta.md)API参数说明。
+API参数说明见：[If API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-ifelse-sta.md)。
 
 ArkTS-Sta提供了渲染控制能力。条件渲染可根据应用状态，使用If组件配合其属性渲染相应的UI内容。
 
@@ -46,10 +46,9 @@ ArkTS-Sta提供了渲染控制能力。条件渲染可根据应用状态，使�
 
 ### 使用If进行条件渲染
 
-<!-- @[rendercontrol_ifelse_sta1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderControlIfElse/entry/src/main/ets/pages/samples/IfElseSample01.ets) -->
-
 ```ts
-import { Button, Color, Column, Component, Entry, If, State, Text } from '@kit.ArkUI';
+import { Entry, Component, Column, Text, Button, If, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -93,10 +92,9 @@ If组件的每个分支都包含一个构建函数。此类构建函数必须创
 
 以下示例包含If组件与拥有[\@State](../state-management/arkts-state.md)装饰变量的子组件。
 
-<!-- @[rendercontrol_ifelse_sta2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderControlIfElse/entry/src/main/ets/pages/samples/IfElseSample02.ets) -->
-
 ```ts
-import { Button, Column, ColumnOptions, Component, Entry, FlexAlign, If, State, Text } from '@kit.ArkUI';
+import { Entry, Component, Column, Text, Button, If, FlexAlign, ColumnOptions } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 @Component
 struct CounterView {
@@ -154,14 +152,13 @@ struct MainView {
 
 以下示例展示了条件更改时，若需要保留counter值所做的修改。
 
-<!-- @[rendercontrol_ifelse_sta3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderControlIfElse/entry/src/main/ets/pages/samples/IfElseSample03.ets) -->
-
 ```ts
-import { Button, Column, ColumnOptions, Component, Entry, FlexAlign, If, Link, State, Text } from '@kit.ArkUI';
+import { Entry, Component, Column, Text, Button, If, FlexAlign, ColumnOptions } from '@ohos.arkui.component';
+import { State, Link } from '@ohos.arkui.stateManagement';
 
 @Component
 struct KeepCounterView {
-  @Link counter: number; // 使用@Link保留counter值
+  @Link counter: number;  // 使用@Link保留counter值
   label: string = 'unknown';
 
   build() {
@@ -209,10 +206,9 @@ struct KeepMainView {
 
 嵌套If组件不会影响父组件的相关规则。
 
-<!-- @[rendercontrol_ifelse_sta4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderControlIfElse/entry/src/main/ets/pages/samples/IfElseSample04.ets) -->
-
 ```ts
-import { Button, Column, ColumnOptions, Component, Entry, FlexAlign, If, State, Text } from '@kit.ArkUI';
+import { Entry, Component, Column, Text, Button, If, FlexAlign, ColumnOptions } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component

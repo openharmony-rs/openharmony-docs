@@ -1,4 +1,4 @@
-# Class (AvisMetadata)
+# class (AvisMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->

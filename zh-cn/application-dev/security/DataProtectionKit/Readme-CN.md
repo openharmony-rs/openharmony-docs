@@ -10,4 +10,3 @@
   - [数据防泄漏服务简介](dlp-overview.md)
   - [数据防泄漏服务开发指导(ArkTS)](dlp-guidelines.md)
   - [数据防泄漏服务开发指导(C/C++)](dlp-guidelines-ndk.md)<!--RP1--><!--RP1End-->
-  - [Data Protection Kit术语](dlp-glossary.md)

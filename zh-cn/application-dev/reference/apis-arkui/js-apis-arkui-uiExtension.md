@@ -31,8 +31,6 @@ UIExtension宿主窗代理。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 | 名称                                 | 类型                  | 只读 | 可选 | 说明                                                                                                     |
 | ------------------------------------| -------------------------------------------------- | ---- | ---- | ------------------------------------------------------------------------------------------------------ |
 | properties<sup>14+</sup>            | [WindowProxyProperties](#windowproxyproperties14) |  否  |  否  | 组件（EmbeddedComponent或UIExtensionComponent）的信息。<br/>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](../apis-arkui/js-apis-arkui-uiExtension.md#onwindowsizechange)回调之后获取。<br/>**ArkTS-Dyn起始版本：** 14 <br/>**ArkTS-Sta起始版本：** 23                                                                             |
@@ -50,8 +48,6 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 **ArkTS-Sta起始版本：** 23
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -124,8 +120,6 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -173,8 +167,6 @@ onAvoidAreaChange(callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 **ArkTS-Sta起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -216,8 +208,6 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 **ArkTS-Dyn起始版本：** 12
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -263,8 +253,6 @@ offAvoidAreaChange(callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 **ArkTS-Sta起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明 |
@@ -307,8 +295,6 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 **ArkTS-Dyn起始版本：** 12
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -357,8 +343,6 @@ onWindowSizeChange(callback: Callback&lt;window.Size&gt;): void
 
 **ArkTS-Sta起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                   |
@@ -400,8 +384,6 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 **ArkTS-Dyn起始版本：** 12
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -447,8 +429,6 @@ offWindowSizeChange(callback?: Callback<window.Size>): void
 
 **ArkTS-Sta起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                   |
@@ -492,9 +472,7 @@ on(type: 'rectChange', reasons: number, callback: Callback&lt;RectChangeOptions&
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -545,9 +523,7 @@ onRectChange(reasons: int, callback: Callback&lt;RectChangeOptions&gt;): void
 
 **ArkTS-Sta起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -600,9 +576,7 @@ off(type: 'rectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -649,9 +623,7 @@ offRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 
 **ArkTS-Sta起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -978,8 +950,6 @@ ArkTS-Sta: occupyEvents(eventFlags: int): Promise&lt;void&gt;
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
@@ -1074,8 +1044,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 | 名称                        | 值              | 说明            |
 |-----------------------------| --------------- |----------------|
 | EVENT_NONE                  | 0x00000000      | 无事件。      |
@@ -1098,8 +1066,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 | 名称 | 类型                 | 只读 | 可选 | 说明        |
 | ------ | -------------------- | ----- | ---- | ------------------ |
 | type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否 | 否 | 窗口避让区类型。|
@@ -1117,8 +1083,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 | 名称                         | 类型        | 只读 | 可选 | 说明                             |
 | ------------------------------ | ----------- | ----- | ---- | -------------------------------- |
 | uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 |组件（EmbeddedComponent或UIExtensionComponent）的位置和宽高。 |
@@ -1135,8 +1099,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 | 名称                    | 值     | 说明                                                         |
 | ----------------------- | ------ | ------------------------------------------------------------ |
 | HOST_WINDOW_RECT_CHANGE | 0x0001 | 组件所在的宿主窗口矩形变化。 |
@@ -1152,8 +1114,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 **ArkTS-Sta起始版本：** 23
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |

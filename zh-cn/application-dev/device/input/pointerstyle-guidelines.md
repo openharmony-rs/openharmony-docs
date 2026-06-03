@@ -39,8 +39,6 @@ import { pointer } from '@kit.InputKit';
 3. 应用退出全屏播放。
 4. 在应用中调用鼠标光标显示接口显示光标。
 
-ArkTS-Dyn示例：
-
 <!-- @[pointer_visible](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTsPointer/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -85,75 +83,6 @@ Text("Click to display pointer")
   // ...
 ```
 
-ArkTS-Sta示例：
-
-<!-- @[pointer_visible](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputKit/ArkTsPointer-Sta/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-'use static'
-
-import pointer from '@ohos.multimodalInput.pointer';
-import window from '@ohos.window';
-import hilog from '@ohos.hilog';
-import { BusinessError, Callback, AsyncCallback } from '@ohos.base';
-import { Entry, Component, Column, Text, RelativeContainer,
-  WordBreak, FontWeight, TextAlign, HorizontalAlign } from '@ohos.arkui.component';
-const DOMAIN: int = 0x0000;
-const TAG: string = 'Pointer';
-
-@Entry
-@Component
-struct Index {
-  // 隐藏鼠标光标
-  async hidePointer(): Promise<void> {
-    try {
-      await pointer.setPointerVisible(false);
-      hilog.info(DOMAIN, TAG, 'Set pointer visible success.');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      const errorCode: int = err.code;
-      const errorMessage: string = err.message;
-      hilog.error(DOMAIN, TAG, `The mouse pointer hide attributes is failed. code: %{public}d, message: %{public}s`,
-        errorCode, errorMessage);
-    }
-  }
-
-  // 显示鼠标光标
-  async showPointer(): Promise<void> {
-    try {
-      await pointer.setPointerVisible(true);
-      hilog.info(DOMAIN, TAG, 'Set pointer visible success.');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      const errorCode: int = err.code;
-      const errorMessage: string = err.message;
-      hilog.error(DOMAIN, TAG, `Set pointer visible failed. code: %{public}d, message: %{public}s`,
-        errorCode, errorMessage);
-    }
-  }
-
-  build() {
-    RelativeContainer() {
-      Column() {
-        // 点击隐藏鼠标光标
-        Text("Click to hide pointer")
-          .onClick(() => {
-            this.hidePointer();
-          })
-          // ...
-        // 点击显示鼠标光标
-        Text("Click to display pointer")
-          .onClick(() => {
-            this.showPointer();
-          })
-          // ...
-      }
-      // ...
-    }
-  }
-}
-```
-
 
 ## 设置鼠标光标样式
 
@@ -166,8 +95,6 @@ struct Index {
 3. 设置鼠标光标样式为取色器样式。
 4. 取色结束。
 5. 设置鼠标光标样式为默认样式。
-
-ArkTS-Dyn示例：
 
 <!-- @[pointer_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTsPointer/entry/src/main/ets/pages/Index.ets) -->
 
@@ -230,98 +157,3 @@ Text(`Click to set the mouse pointer style to default style`)
   })
 ```
 
-ArkTS-Sta示例：
-
-<!-- @[pointer_style](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputKit/ArkTsPointer-Sta/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-'use static'
-
-import pointer from '@ohos.multimodalInput.pointer';
-import window from '@ohos.window';
-import hilog from '@ohos.hilog';
-import { BusinessError, Callback, AsyncCallback } from '@ohos.base';
-
-import { Entry, Component, Column, Text, RelativeContainer,
-  WordBreak, FontWeight, TextAlign, HorizontalAlign } from '@ohos.arkui.component';
-
-const DOMAIN: int = 0x0000;
-const TAG: string = 'Pointer';
-
-@Entry
-@Component
-struct Index {
-  // 获取顶层窗口的 ID
-  async getTopWindowId(): Promise<int> {
-    const ctx = this.getUIContext().getHostContext();
-    if (ctx === undefined) {
-      hilog.info(DOMAIN, TAG, 'Failed to get host context');
-      return -1;
-    }
-    const windowClass: window.Window = await window.getLastWindow(ctx);
-    const windowId: int = windowClass.getWindowProperties().id;
-    if (windowId < 0) {
-      hilog.info(DOMAIN, TAG, 'Invalid windowId');
-      return -1;
-    }
-    return windowId;
-  }
-
-  // 设置鼠标光标样式为取色器样式
-  async setColorSuckerPointerStyle(): Promise<void> {
-    try {
-      const windowId: int = await this.getTopWindowId();
-      if (windowId < 0) {
-        return;
-      }
-      // 设置鼠标光标样式为取色器样式
-      await pointer.setPointerStyle(windowId, pointer.PointerStyle.COLOR_SUCKER);
-      hilog.info(DOMAIN, TAG, 'Successfully set mouse pointer style');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      hilog.error(DOMAIN, TAG, `Failed to set the pointer style, code: %{public}d, message: %{public}s`,
-        err.code, err.message);
-    }
-  }
-
-  // 设置鼠标光标样式为默认样式
-  async setDefaultPointerStyle(): Promise<void> {
-    try {
-      const windowId: int = await this.getTopWindowId();
-      if (windowId < 0) {
-        return;
-      }
-      // 设置鼠标光标样式为默认样式
-      await pointer.setPointerStyle(windowId, pointer.PointerStyle.DEFAULT);
-      hilog.info(DOMAIN, TAG, 'Successfully set mouse pointer style');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      hilog.error(DOMAIN, TAG, `Failed to set the pointer style, code: %{public}d, message: %{public}s`,
-        err.code, err.message);
-    }
-  }
-
-  build() {
-    RelativeContainer() {
-      Column() {
-
-        // [Start pointer_style]
-        // 点击设置鼠标光标样式为取色器样式
-        Text(`Click to set the mouse pointer style to the color picker style`)
-          .onClick(() => {
-            this.setColorSuckerPointerStyle();
-          })
-          // ...
-
-        // 点击设置鼠标光标样式为默认样式
-        Text(`Click to set the mouse pointer style to default style`)
-          .onClick(() => {
-            this.setDefaultPointerStyle();
-          })
-          // ...
-      }
-      // ...
-    }
-  }
-}
-```

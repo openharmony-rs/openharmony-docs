@@ -18,10 +18,6 @@
 
 开发者在云端新建任务时，可以选择上述故障中的任一。在任务激活期间，被圈选的设备发生了对应故障，则会自动采集对应的日志并上传到云端。
 
-> **注意：**
->
-> 当前暂不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码36000002，详细处理步骤请参考应用灰度错误码[36000002](../reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hiretrieval.md#36000002)。
-
 ## 工作原理
 
 ### 故障感知
@@ -47,70 +43,66 @@
 
 3. 再在onWindowStageCreate函数中，配置HiRetrievalConfig，调用participate方法参与应用灰度活动。最后调用run接口使能应用灰度采集的完整功能。
 
-   <!-- @[hiretrieval_sample_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiRetrieval/entry/src/main/ets/entryability/EntryAbility.ets) -->
-   
-   ``` TypeScript
+   <!-- @[hiretrieval](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiRetrieval/entry/src/main/ets/EntryAbility.ets) -->
+
+   ```ts
    export default class EntryAbility extends UIAbility {
-     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-       try {
-         this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-       } catch (err) {
-         hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
-       }
-       // 初始化应用灰度采集特性
-       try {
-         hiRetrieval.init();
-       } catch (err) {
-         hilog.error(DOMAIN, 'testTag', 'hiretrieval error: %{public}s', JSON.stringify(err));
-       }
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
-     }
-   
-     onDestroy(): void {
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
-     }
-   
-     onWindowStageCreate(windowStage: window.WindowStage): void {
-       // Main window is created, set main page for this ability
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-   
-       windowStage.loadContent('pages/Index', (err) => {
-         if (err.code) {
-           hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
-           return;
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+         try {
+            this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+         } catch (err) {
+            hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
          }
-         hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
-       });
-   
-       try {
-         // 参与应用灰度采集特性
-         let cfg: hiRetrieval.HiRetrievalConfig = {
-           userType: "student",
-           deviceType: "Phone",
-           deviceModel: "M70",
-         };
-         hiRetrieval.participate(cfg);
-         // 执行应用报告灰度采集任务
-         hiRetrieval.run();
-       } catch (err) {
-         hilog.error(DOMAIN, 'testTag', 'hiretrieval error: %{public}s', JSON.stringify(err));
-       }
-     }
-   
-     onWindowStageDestroy(): void {
-       // Main window is destroyed, release UI related resources
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-     }
-   
-     onForeground(): void {
-       // Ability has brought to foreground
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
-     }
-   
-     onBackground(): void {
-       // Ability has back to background
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
-     }
+         // 初始化应用灰度采集特性
+         hiRetrieval.init();
+         hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+      }
+
+      onDestroy(): void {
+         hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+      }
+
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+         // Main window is created, set main page for this ability
+         hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+         windowStage.loadContent('pages/Index', (err) => {
+            if (err.code) {
+               hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+               return;
+            }
+            hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+         });
+
+         try {
+            // 参与应用灰度采集特性
+            let cfg: hiRetrieval.HiRetrievalConfig = {
+               userType: "student",
+               deviceType: "Phone",
+               deviceModel: "M70",
+            };
+            hiRetrieval.participate(cfg);
+            // 执行应用报告灰度采集任务
+            hiRetrieval.run();
+         } catch (err) {
+            hilog.error(DOMAIN, 'testTag', 'hiretrieval error: %{public}s', JSON.stringify(err));
+         }
+      }
+
+      onWindowStageDestroy(): void {
+         // Main window is destroyed, release UI related resources
+         hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+      }
+
+      onForeground(): void {
+         // Ability has brought to foreground
+         hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
+      }
+
+      onBackground(): void {
+         // Ability has back to background
+         hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
+      }
    }
    ```
 

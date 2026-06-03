@@ -257,7 +257,7 @@ typedef void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* h
 |-------------------------------------------------| -- |
 | const [ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream.md)* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | uint8_t* buffer                                 | 接收数据的buffer。 |
-| int bytesRead                                   | OH_ArkWebHttpBodyStream_Read后的回调函数。如果bytesRead大于0，则表示buffer已填充了bytesRead大小的数据。开发者可以从buffer中读取数据，如果OH_ArkWebHttpBodyStream_IsEOF为false，则开发者可以继续读取剩余的数据。 |
+| int bytesRead                                   | OH_ArkWebHttpBodyStream_Read后的回调函数。如果bytesRead大于0，则表示buffer已填充了bytesRead大小的数据。调用者可以从buffer中读取数据，如果OH_ArkWebHttpBodyStream_IsEOF为false，则调用者可以继续读取剩余的数据。 |
 
 ### ArkWeb_HttpBodyStreamAsyncReadCallback()
 

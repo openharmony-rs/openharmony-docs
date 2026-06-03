@@ -11,12 +11,8 @@ UIAbilityContext是需要保存状态的[UIAbility](js-apis-app-ability-uiAbilit
 
 > **说明：**
 >
->  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
 >  - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
 >  - 本模块接口仅可在Stage模型下使用。
->
 >  - 本模块接口为系统接口。
 
 ## 导入模块
@@ -33,9 +29,7 @@ import { common } from '@kit.AbilityKit';
 
 ### startAbilityForResultWithAccount
 
-ArkTS-Dyn: startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncCallback\<AbilityResult>): void
-
-ArkTS-Sta: startAbilityForResultWithAccount(want: Want, accountId: int, callback: AsyncCallback\<AbilityResult>): void
+startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncCallback\<AbilityResult>): void
 
 启动一个UIAbility并在该UIAbility销毁时返回执行结果。使用callback异步回调。仅支持在主线程调用。
 
@@ -50,16 +44,12 @@ ArkTS-Sta: startAbilityForResultWithAccount(want: Want, accountId: int, callback
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 是 | 回调函数，当接口调用成功，err中code为0，data为被拉起的UIAbility销毁时的结果码和数据；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
@@ -113,10 +103,10 @@ export default class EntryAbility extends UIAbility {
 
     try {
       this.context.startAbilityForResultWithAccount(want, accountId,
-        (err: BusinessError<void> | null, result: common.AbilityResult | undefined) => {
-          if (err?.code) {
+        (err: BusinessError, result: common.AbilityResult) => {
+          if (err.code) {
             // 处理业务逻辑错误
-            console.error(`startAbilityForResultWithAccount failed, code is ${err?.code}, message is ${err?.message}`);
+            console.error(`startAbilityForResultWithAccount failed, code is ${err.code}, message is ${err.message}`);
             return;
           }
           // 执行正常业务
@@ -135,9 +125,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startAbilityForResultWithAccount
 
-ArkTS-Dyn: startAbilityForResultWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
-
-ArkTS-Sta: startAbilityForResultWithAccount(want: Want, accountId: int, options: StartOptions, callback: AsyncCallback\<void\>): void
+startAbilityForResultWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
 
 启动一个UIAbility并在该UIAbility销毁时返回执行结果。使用callback异步回调。仅支持在主线程调用。
 
@@ -152,16 +140,12 @@ ArkTS-Sta: startAbilityForResultWithAccount(want: Want, accountId: int, options:
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动UIAbility所携带的参数。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
@@ -216,10 +200,10 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.startAbilityForResultWithAccount(want, accountId, options, (err: BusinessError | null) => {
-        if (err?.code) {
+      this.context.startAbilityForResultWithAccount(want, accountId, options, (err: BusinessError) => {
+        if (err.code) {
           // 处理业务逻辑错误
-          console.error(`startAbilityForResultWithAccount failed, code is ${err?.code}, message is ${err?.message}`);
+          console.error(`startAbilityForResultWithAccount failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         // 执行正常业务
@@ -238,9 +222,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startAbilityForResultWithAccount
 
-ArkTS-Dyn: startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<AbilityResult\>
-
-ArkTS-Sta: startAbilityForResultWithAccount(want: Want, accountId: int, options?: StartOptions): Promise\<AbilityResult\>
+startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<AbilityResult\>
 
 启动一个UIAbility并在该UIAbility销毁时返回执行结果。使用Promise异步回调。仅支持在主线程调用。
 
@@ -255,16 +237,12 @@ ArkTS-Sta: startAbilityForResultWithAccount(want: Want, accountId: int, options?
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
 
 **返回值：**
@@ -331,7 +309,7 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('startAbilityForResultWithAccount succeed');
         })
-        .catch((err: BusinessError<void>): void => {
+        .catch((err: BusinessError) => {
           // 处理业务逻辑错误
           console.error(`startAbilityForResultWithAccount failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -344,7 +322,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
 ### startServiceExtensionAbility
 
 startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
@@ -354,10 +331,6 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -403,10 +376,10 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.startServiceExtensionAbility(want, (error: BusinessError | null) => {
-        if (error?.code) {
+      this.context.startServiceExtensionAbility(want, (error: BusinessError) => {
+        if (error.code) {
           // 处理业务逻辑错误
-          console.error(`startServiceExtensionAbility failed, code is ${error?.code}, message is ${error?.message}`);
+          console.error(`startServiceExtensionAbility failed, code is ${error.code}, message is ${error.message}`);
           return;
         }
         // 执行正常业务
@@ -431,10 +404,6 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -490,7 +459,7 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('startServiceExtensionAbility succeed');
         })
-        .catch((err: BusinessError<void>): void => {
+        .catch((err: BusinessError) => {
           // 处理业务逻辑错误
           console.error(`startServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -506,9 +475,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startServiceExtensionAbilityWithAccount
 
-ArkTS-Dyn: startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
-
-ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void>): void
+startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
 
 启动一个新的ServiceExtensionAbility。使用callback异步回调。
 
@@ -523,16 +490,12 @@ ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int, c
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
@@ -573,10 +536,10 @@ export default class EntryAbility extends UIAbility {
     let accountId = 100;
 
     try {
-      this.context.startServiceExtensionAbilityWithAccount(want, accountId, (err: BusinessError | null) => {
-        if (err?.code) {
+      this.context.startServiceExtensionAbilityWithAccount(want, accountId, (err: BusinessError) => {
+        if (err.code) {
           // 处理业务逻辑错误
-          console.error(`startServiceExtensionAbilityWithAccount failed, code is ${err?.code}, message is ${err?.message}`);
+          console.error(`startServiceExtensionAbilityWithAccount failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         // 执行正常业务
@@ -594,9 +557,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startServiceExtensionAbilityWithAccount
 
-ArkTS-Dyn: startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
-
-ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
+startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
 启动一个新的ServiceExtensionAbility。使用Promise异步回调。
 
@@ -611,16 +572,12 @@ ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): 
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
@@ -666,15 +623,15 @@ export default class EntryAbility extends UIAbility {
     let accountId = 100;
 
     try {
-      this.context.startServiceExtensionAbilityWithAccount(want, accountId, (err: BusinessError | null) => {
-        if (err?.code) {
+      this.context.startServiceExtensionAbilityWithAccount(want, accountId)
+        .then(() => {
+          // 执行正常业务
+          console.info('startServiceExtensionAbilityWithAccount succeed');
+        })
+        .catch((err: BusinessError) => {
           // 处理业务逻辑错误
-          console.error(`startServiceExtensionAbilityWithAccount failed, code is ${err?.code}, message is ${err?.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('startServiceExtensionAbilityWithAccount succeed');
-      });
+          console.error(`startServiceExtensionAbilityWithAccount failed, code is ${err.code}, message is ${err.message}`);
+        });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
@@ -684,7 +641,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
 ### stopServiceExtensionAbility
 
 stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
@@ -694,10 +650,6 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -741,10 +693,10 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.stopServiceExtensionAbility(want, (err: BusinessError | null) => {
-        if (err?.code) {
+      this.context.stopServiceExtensionAbility(want, (err: BusinessError) => {
+        if (err.code) {
           // 处理业务逻辑错误
-          console.error(`stopServiceExtensionAbility failed, code is ${err?.code}, message is ${err?.message}`);
+          console.error(`stopServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         // 执行正常业务
@@ -769,10 +721,6 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -824,7 +772,7 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('stopServiceExtensionAbility succeed');
         })
-        .catch((err: BusinessError<void>): void => {
+        .catch((err: BusinessError) => {
           // 处理业务逻辑错误
           console.error(`stopServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -840,9 +788,7 @@ export default class EntryAbility extends UIAbility {
 
 ### stopServiceExtensionAbilityWithAccount
 
-ArkTS-Dyn: stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
-
-ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void>): void
+stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
 
 停止同一应用程序内指定账户的服务。使用callback异步回调。
 
@@ -856,16 +802,12 @@ ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, ca
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数，当停止ServiceExtensionAbility的接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
@@ -902,10 +844,10 @@ export default class EntryAbility extends UIAbility {
     let accountId = 100;
 
     try {
-      this.context.stopServiceExtensionAbilityWithAccount(want, accountId, (err: BusinessError | null) => {
-        if (err?.code) {
+      this.context.stopServiceExtensionAbilityWithAccount(want, accountId, (err: BusinessError) => {
+        if (err.code) {
           // 处理业务逻辑错误
-          console.error(`stopServiceExtensionAbilityWithAccount failed, code is ${err?.code}, message is ${err?.message}`);
+          console.error(`stopServiceExtensionAbilityWithAccount failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         // 执行正常业务
@@ -923,9 +865,7 @@ export default class EntryAbility extends UIAbility {
 
 ### stopServiceExtensionAbilityWithAccount
 
-ArkTS-Dyn: stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
-
-ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
+stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
 停止同一应用程序内指定账户的服务。使用Promise异步回调。
 
@@ -939,16 +879,12 @@ ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): P
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
@@ -995,7 +931,7 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('stopServiceExtensionAbilityWithAccount succeed');
         })
-        .catch((err: BusinessError<void>): void => {
+        .catch((err: BusinessError) => {
           // 处理业务逻辑错误
           console.error(`stopServiceExtensionAbilityWithAccount failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -1011,9 +947,7 @@ export default class EntryAbility extends UIAbility {
 
 ### connectServiceExtensionAbilityWithAccount
 
-ArkTS-Dyn: connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions): number
-
-ArkTS-Sta: connectServiceExtensionAbilityWithAccount(want: Want, accountId: int, options: ConnectOptions): long
+connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions): number
 
 将当前UIAbility连接到一个指定account的ServiceExtensionAbility。仅支持在主线程调用。
 
@@ -1030,23 +964,19 @@ ArkTS-Sta: connectServiceExtensionAbilityWithAccount(want: Want, accountId: int,
 
 **设备行为差异**：该接口在Phone、Tablet中可正常调用，在其他设备类型中返回16000006错误码。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 与ServiceExtensionAbility建立连接后回调函数的实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回Ability连接的结果code。 |
+| number | 返回Ability连接的结果code。 |
 
 **错误码：**
 
@@ -1071,8 +1001,6 @@ ArkTS-Sta: connectServiceExtensionAbilityWithAccount(want: Want, accountId: int,
 | 16000050 | Internal error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility, Want, common } from '@kit.AbilityKit';
@@ -1114,60 +1042,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { UIAbility, Want, common, bundleManager } from '@kit.AbilityKit';
-import rpc from '@ohos.rpc';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let commRemote: rpc.IRemoteObject;
-
-type OnConnectFn = (elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) => void
-type OnDisconnectFn = (elementName: bundleManager.ElementName) => void
-type OnFailedFn = (code: int) => void
-
-class ConnectOptions implements common.ConnectOptions {
-  onConnect: OnConnectFn = (elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) => {
-    commRemote = remote;
-    console.info('onConnect...');
-  };
-  onDisconnect: OnDisconnectFn = (elementName: bundleManager.ElementName) => {
-    console.info('onDisconnect...');
-  };
-  onFailed: OnFailedFn = (code: int) => {
-    console.info('onFailed...');
-  };
-}
-
-export default class EntryAbility extends UIAbility {
-  onForeground() {
-    let want: Want = {
-      deviceId: '',
-      bundleName: 'com.example.myapplication',
-      abilityName: 'ServiceExtensionAbility'
-    };
-    let accountId = 100;
-    let options: common.ConnectOptions = new ConnectOptions();
-    let connection: long;
-
-    try {
-      connection = this.context.connectServiceExtensionAbilityWithAccount(want, accountId, options);
-    } catch (err) {
-      // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`connectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
-    }
-  }
-}
-```
-
 ### startAbilityWithAccount
 
-ArkTS-Dyn: startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void\>): void
-
-ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void\>): void
+startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void\>): void
 
 根据want和accountId启动UIAbility。使用callback异步回调。仅支持在主线程调用。
 
@@ -1182,16 +1059,12 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, callback: AsyncCa
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
@@ -1244,10 +1117,10 @@ export default class EntryAbility extends UIAbility {
     let accountId = 100;
 
     try {
-      this.context.startAbilityWithAccount(want, accountId, (err: BusinessError | null) => {
-        if (err?.code) {
+      this.context.startAbilityWithAccount(want, accountId, (err: BusinessError) => {
+        if (err.code) {
           // 处理业务逻辑错误
-          console.error(`startAbilityWithAccount failed, code is ${err?.code}, message is ${err?.message}`);
+          console.error(`startAbilityWithAccount failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         // 执行正常业务
@@ -1266,9 +1139,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startAbilityWithAccount
 
-ArkTS-Dyn: startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
-
-ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options: StartOptions, callback: AsyncCallback\<void\>): void
+startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
 
 根据want、accountId及startOptions启动UIAbility。使用callback异步回调。仅支持在主线程调用。
 
@@ -1283,16 +1154,12 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options: StartOpt
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动UIAbility所携带的参数。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
@@ -1347,10 +1214,10 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.startAbilityWithAccount(want, accountId, options, (err: BusinessError | null) => {
-        if (err?.code) {
+      this.context.startAbilityWithAccount(want, accountId, options, (err: BusinessError) => {
+        if (err.code) {
           // 处理业务逻辑错误
-          console.error(`startAbilityWithAccount failed, code is ${err?.code}, message is ${err?.message}`);
+          console.error(`startAbilityWithAccount failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         // 执行正常业务
@@ -1369,9 +1236,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startAbilityWithAccount
 
-ArkTS-Dyn: startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<void\>
-
-ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options?: StartOptions): Promise\<void\>
+startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<void\>
 
 根据want、accountId和startOptions启动UIAbility。使用Promise异步回调。仅支持在主线程调用。
 
@@ -1386,16 +1251,12 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options?: StartOp
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
 
 **返回值：**
@@ -1462,7 +1323,7 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('startAbilityWithAccount succeed');
         })
-        .catch((err: BusinessError<void>): void => {
+        .catch((err: BusinessError) => {
           // 处理业务逻辑错误
           console.error(`startAbilityWithAccount failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -1485,10 +1346,6 @@ setMissionIcon(icon: image.PixelMap, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1530,14 +1387,14 @@ export default class EntryAbility extends UIAbility {
       editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 }
     }).then((data) => {
       imagePixelMap = data;
-      this.context.setMissionIcon(imagePixelMap, (err: BusinessError<void> | null) => {
+      this.context.setMissionIcon(imagePixelMap, (err: BusinessError) => {
         if (err.code) {
-          console.error(`setMissionIcon failed, code is ${err?.code}, message is ${err?.message}`);
+          console.error(`setMissionIcon failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         console.info('setMissionIcon succeed');
       });
-    }).catch((err: BusinessError<void>): void => {
+    }).catch((err: BusinessError) => {
       console.error(`createPixelMap failed, code is ${err.code}, message is ${err.message}`);
     });
   }
@@ -1554,10 +1411,6 @@ setMissionIcon(icon: image.PixelMap): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1608,12 +1461,10 @@ export default class EntryAbility extends UIAbility {
         .then(() => {
           console.info('setMissionIcon succeed');
         })
-        .catch((error: Error) => {
-          let err = error as BusinessError;
+        .catch((err: BusinessError) => {
           console.error(`setMissionIcon failed, code is ${err.code}, message is ${err.message}`);
         });
-    }).catch((error: Error) => {
-      let err = error as BusinessError;
+    }).catch((err: BusinessError) => {
       console.error(`createPixelMap failed, code is ${err.code}, message is ${err.message}`);
     });
   }
@@ -1641,10 +1492,6 @@ startRecentAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1700,10 +1547,10 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.startRecentAbility(want, (err: BusinessError<void> | null) => {
-        if (err?.code) {
+      this.context.startRecentAbility(want, (err: BusinessError) => {
+        if (err.code) {
           // 处理业务逻辑错误
-          console.error(`startRecentAbility failed, code is ${err?.code}, message is ${err?.message}`);
+          console.error(`startRecentAbility failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         // 执行正常业务
@@ -1718,7 +1565,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
 ### startRecentAbility
 
 startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
@@ -1740,10 +1586,6 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1802,10 +1644,10 @@ export default class EntryAbility extends UIAbility {
     };
 
     try {
-      this.context.startRecentAbility(want, options, (err: BusinessError | null) => {
-        if (err?.code) {
+      this.context.startRecentAbility(want, options, (err: BusinessError) => {
+        if (err.code) {
           // 处理业务逻辑错误
-          console.error(`startRecentAbility failed, code is ${err?.code}, message is ${err?.message}`);
+          console.error(`startRecentAbility failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         // 执行正常业务
@@ -1820,7 +1662,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
 ### startRecentAbility
 
 startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
@@ -1842,10 +1683,6 @@ startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1915,7 +1752,7 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('startRecentAbility succeed');
         })
-        .catch((err: BusinessError<void>): void => {
+        .catch((err: BusinessError) => {
           // 处理业务逻辑错误
           console.error(`startRecentAbility failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -1948,10 +1785,6 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2036,7 +1869,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### startAbilityAsCaller<sup>10+</sup>
+### startAbilityAsCaller<sup>10+<sup>
 
 startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
@@ -2049,10 +1882,6 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2119,7 +1948,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### startAbilityAsCaller<sup>10+</sup>
+### startAbilityAsCaller<sup>10+<sup>
 
 startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\<void>): void
 
@@ -2132,10 +1961,6 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2204,7 +2029,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### startAbilityAsCaller<sup>10+</sup>
+### startAbilityAsCaller<sup>10+<sup>
 
 startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
@@ -2217,10 +2042,6 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2290,14 +2111,14 @@ export default class EntryAbility extends UIAbility {
       .then(() => {
         console.info('startAbilityAsCaller success.');
       })
-      .catch((err: BusinessError<void>): void => {
+      .catch((err: BusinessError) => {
         console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
       });
   }
 }
 ```
 
-### requestModalUIExtension<sup>11+</sup>
+### requestModalUIExtension<sup>11+<sup>
 
 requestModalUIExtension(pickerWant: Want): Promise\<void>
 
@@ -2314,10 +2135,6 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2342,8 +2159,6 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 | 16000050 | Internal error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
@@ -2382,46 +2197,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onForeground() {
-    let want: Want = {
-      bundleName: 'com.example.myapplication',
-      abilityName: 'com.example.myapplication.UIExtAbility',
-      moduleName: 'entry_test',
-      parameters: {
-        'bundleName': 'com.example.myapplication',
-        // 与com.example.myapplication.UIExtAbility配置的type相同
-        'ability.want.params.uiExtensionType': 'sys/commonUI'
-      } as Record<string,RecordData>
-    };
-
-    try {
-      this.context.requestModalUIExtension(want)
-        .then(() => {
-          // 执行正常业务
-          console.info('requestModalUIExtension succeed');
-        })
-        .catch((err: BusinessError): void => {
-          // 处理业务逻辑错误
-          console.error(`requestModalUIExtension failed, code is ${err.code}, message is ${err.message}`);
-        });
-    } catch (err) {
-      // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`requestModalUIExtension failed, code is ${code}, message is ${message}`);
-    }
-  }
-}
-```
-
-### requestModalUIExtension<sup>11+</sup>
+### requestModalUIExtension<sup>11+<sup>
 requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
 请求在指定的前台应用上拉起对应类型的UIExtensionAbility。使用callback异步回调。仅支持在主线程调用。
@@ -2437,10 +2213,6 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2460,8 +2232,6 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 | 16000050 | Internal error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
@@ -2485,45 +2255,6 @@ export default class EntryAbility extends UIAbility {
         if (err.code) {
           // 处理业务逻辑错误
           console.error(`requestModalUIExtension failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('requestModalUIExtension succeed');
-      });
-    } catch (err) {
-      // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`requestModalUIExtension failed, code is ${code}, message is ${message}`);
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError, RecordData } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onForeground() {
-    let want: Want = {
-      bundleName: 'com.example.myapplication',
-      abilityName: 'UIExtAbility',
-      moduleName: 'entry_test',
-      parameters: {
-        'bundleName': 'com.example.myapplication',
-        //与com.example.myapplication.UIExtAbility配置的type相同
-        'ability.want.params.uiExtensionType': 'sys/commonUI'
-      } as Record<string,RecordData>
-    };
-
-    try {
-      this.context.requestModalUIExtension(want, (err: BusinessError | null) => {
-        if (err?.code) {
-          // 处理业务逻辑错误
-          console.error(`requestModalUIExtension failed, code is ${err?.code}, message is ${err?.message}`);
           return;
         }
         // 执行正常业务

@@ -1,4 +1,4 @@
-# ExtendableButton (可扩展的Button)
+# ExtendableButton（可扩展的Button）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-[Button](./ts-basic-components-button.md)的扩展组件的基类。开发者可以自定义扩展组件继承ExtendableButton，支持重写Button中的[属性](./ts-basic-components-button.md#属性)和[通用属性](./ts-component-general-attributes.md)，同时支持自定义属性。在阅读本文档前，建议提前阅读[Button](./ts-basic-components-button.md)。开发指南请参考[内置组件扩展](../../../ui/state-management-static/arkts-static-extendable-inner-component.md)。
+[Button](./ts-basic-components-button.md)的扩展组件的基类。开发者可以自定义扩展组件继承ExtendableButton，支持重写Button中的[属性](./ts-basic-components-button.md#属性)和[通用属性](./ts-component-general-attributes.md)，同时支持自定义属性。在阅读本文档前，建议提前阅读[Button](./ts-basic-components-button.md)。
 
 **起始版本：** 26.0.0
 

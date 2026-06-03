@@ -57,9 +57,9 @@ this.objLink= ...
 import { Observed } from '@kit.ArkUI';
 
 class Child {
-  public num: int;
+  public num: number;
 
-  constructor(num: int) {
+  constructor(num: number) {
     this.num = num;
   }
 }
@@ -67,9 +67,9 @@ class Child {
 @Observed
 class Parent {
   public child: Child;
-  public count: int;
+  public count: number;
 
-  constructor(child: Child, count: int) {
+  constructor(child: Child, count: number) {
     this.child = child;
     this.count = count;
   }
@@ -115,17 +115,17 @@ this.parent.child.num = 5;
     
     @Observed
     class Info {
-      count: int;
+      count: number;
     
-      constructor(count: int) {
+      constructor(count: number) {
         this.count = count;
       }
     }
     
     class Test {
-      msg: int;
+      msg: number;
     
-      constructor(msg: int) {
+      constructor(msg: number) {
         this.msg = msg;
       }
     }
@@ -153,9 +153,9 @@ this.parent.child.num = 5;
 
     @Observed
     class Info {
-      count: int;
+      count: number;
     
-      constructor(count: int) {
+      constructor(count: number) {
         this.count = count;
       }
     }
@@ -197,9 +197,9 @@ this.parent.child.num = 5;
 
     @Observed
     class Info {
-      count: int;
+      count: number;
     
-      constructor(count: int) {
+      constructor(count: number) {
         this.count = count;
       }
     }
@@ -234,16 +234,17 @@ this.parent.child.num = 5;
     ```
   
     【正例】
-    <!-- @[ObjectLinkReadOnly](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkReadOnly.ets) -->
-    
-    ``` TypeScript
+  
+    ```ts
+    'use static'
+
     import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
-    
+
     @Observed
     class Info {
-      count: int;
+      count: number;
     
-      constructor(count: int) {
+      constructor(count: number) {
         this.count = count;
       }
     }
@@ -291,7 +292,7 @@ this.parent.child.num = 5;
 
     @Observed
     class Info {
-      count: int = 99;
+      count: number = 99;
     }
     
     @Component
@@ -320,29 +321,28 @@ this.parent.child.num = 5;
 
     对象创建方式为字面量形式时本应编译报错，但如下示例所示，当且仅当对象为this.xxx结构且创建形式为字面量时，可正常编译通过。
 
-    <!-- @[ObjectLinkLiteralThis](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkLiteralThis.ets) -->
-    
-    ``` TypeScript
+    ```ts
+    'use static'
     import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
     @Observed
     class Info {
-      count: int = 99;
+      count: number = 99;
     }
-    
+
     @Component
     struct Child {
       @ObjectLink count: Info;
-    
+
       build() {
         Text(`${this.count.count}`)
       }
     }
-    
+
     @Entry
     @Component
     struct Parent {
       @State propInfo: Info = { count: 0 } as Info;
-    
+
       build() {
         Column() {
           // 特例：当且仅当字面量为this.xxx结构时，可正常编译通过
@@ -361,7 +361,7 @@ this.parent.child.num = 5;
     
     @Observed
     class Info {
-      count: int = 99;
+      count: number = 99;
     }
     
     @Component
@@ -406,9 +406,9 @@ this.parent.child.num = 5;
 
 ### 对象类型
 
-<!-- @[ObjectLinkObjectType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkObjectType.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text, TextAlign } from '@kit.ArkUI';
 
 @Observed
@@ -458,17 +458,17 @@ Book被\@Observed装饰，其属性的修改可以被观察到。所以点击But
 
 ### 继承对象
 
-<!-- @[ObjectLinkInheritObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkInheritObject.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, Column, CommonMethod, Component, Entry, Observed, State, Text, TextAlign, TextAttribute } from '@kit.ArkUI';
 
 @Observed
 class Animal {
   name: string;
-  age: int;
+  age: number;
 
-  constructor(name: string, age: int) {
+  constructor(name: string, age: number) {
     this.name = name;
     this.age = age;
   }
@@ -478,7 +478,7 @@ class Animal {
 class Dog extends Animal {
   kinds: string;
 
-  constructor(name: string, age: int, kinds: string) {
+  constructor(name: string, age: number, kinds: string) {
     super(name, age);
     this.kinds = kinds;
   }
@@ -541,9 +541,9 @@ struct Index {
 
 ### 嵌套对象
 
-<!-- @[ObjectLinkNestedObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkNestedObject.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text, TextAlign } from '@kit.ArkUI';
 
 @Observed
@@ -613,9 +613,9 @@ struct Index {
 
 在API版本26.0.0以前，上述示例中，Index组件中的Text组件不刷新，因为该变化属于第二层的变化，\@State无法观察到第二层的变化；API版本26.0.0及之后，Index组件中的Text组件会刷新。同时，Book被\@Observed装饰，Book的属性name可以被\@ObjectLink观察到，所以无论点击哪个Button，BookCard组件中的Text组件都会刷新。
 
-<!-- @[ObjectLinkMakeObserved](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkMakeObserved.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text, TextAlign, UIUtils } from '@kit.ArkUI';
 
 interface Book {
@@ -682,19 +682,19 @@ struct Index {
 >
 > NextID是用来在ForEach循环渲染过程中，为每个数组元素生成一个唯一且持久的键值，用于标识对应的组件。
 
-<!-- @[ObjectLinkArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkArray.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, Column, Component, Entry, ForEach, ObjectLink, Observed, Row, State } from '@kit.ArkUI';
 
-let NextID: int = 1;
+let NextID: number = 1;
 
 @Observed
 class Info {
-  public id: int;
-  public info: int;
+  public id: number;
+  public info: number;
 
-  constructor(info: int) {
+  constructor(info: number) {
     this.id = NextID++;
     this.info = info;
   }
@@ -762,27 +762,21 @@ struct Parent {
         .width(320)
         .margin(10)
         .onClick((e) => {
-          if (this.arrA[(this.arrA.length / 2) as int]) {
-            this.arrA[(this.arrA.length / 2) as int].info = 10;
-          } else {
-            console.info('middle element does not exist');
-          }
+          this.arrA[Math.floor(this.arrA.length / 2) as int].info = 10;
         })
       Button(`ViewParent: item property in middle`)
         .width(320)
         .margin(10)
         .onClick((e) => {
-          this.arrA[(this.arrA.length / 2) as int] = new Info(11);
+          this.arrA[Math.floor(this.arrA.length / 2) as int] = new Info(11);
         })
     }
   }
 }
 ```
 
-![Observed_ObjectLink_object_array](../figures/Observed_ObjectLink_object_array.gif)
 
-
-- this.arrA[(this.arrA.length/2) as int] = new Info(..) ：该状态变量的改变触发2次更新：
+- this.arrA[Math.floor(this.arrA.length/2)] = new Info(..) ：该状态变量的改变触发2次更新：
   1. ForEach：数组项的赋值导致ForEach的itemGenerator被修改，因此数组项被识别为有更改，ForEach的item builder将执行，创建新的Child组件实例。
   2. Child({ label: `ViewChild this.arrA[last]`, info: this.arrA[this.arrA.length-1] })：上述更改改变了数组中第二个元素，所以绑定this.arrA[1]的Child将被更新。
 
@@ -790,7 +784,7 @@ struct Parent {
   1. ForEach：新添加的Info对象对于ForEach是未知的itemGenerator，ForEach的item builder将执行，创建新的Child组件实例。
   2. Child({ label: `ViewChild this.arrA[last]`, info: this.arrA[this.arrA.length-1] })：数组的最后一项有更改，因此引起第二个Child的实例的更改。对于Child({ label: `ViewChild this.arrA[first]`, info: this.arrA[0] })，数组的更改并没有触发一个数组项更改的改变，所以第一个Child不会刷新。
 
-- this.arrA[(this.arrA.length/2)].info：@State无法观察到第二层的变化，但是Info被\@Observed装饰，Info的属性的变化将被\@ObjectLink观察到。
+- this.arrA[Math.floor(this.arrA.length/2)].info：@State无法观察到第二层的变化，但是Info被\@Observed装饰，Info的属性的变化将被\@ObjectLink观察到。
 
 ### 序列化和反序列化
 
@@ -800,9 +794,9 @@ struct Parent {
 
 **无参构造**
 
-<!-- @[ObjectLinkSerializeNoParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkSerializeNoParam.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, Column, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
 
 @Observed
@@ -839,9 +833,9 @@ struct Index {
 
 **有参构造**
 
-<!-- @[ObjectLinkSerializeWithParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkSerializeWithParam.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, Column, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
 
 @Observed
@@ -890,25 +884,25 @@ struct Index {
 
 \@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，在下面的示例中，count类型为Source | Data | undefined，点击父组件Parent中的Button改变count的属性或者类型，Child中也会对应刷新。
 
-<!-- @[ObjectLinkUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkUnionType.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
 
 @Observed
 class Source {
-  public source: int;
+  public source: number;
 
-  constructor(source: int) {
+  constructor(source: number) {
     this.source = source;
   }
 }
 
 @Observed
 class Data {
-  public data: int;
+  public data: number;
 
-  constructor(data: int) {
+  constructor(data: number) {
     this.data = data;
   }
 }
@@ -977,5 +971,3 @@ struct Child {
   }
 }
 ```
-
-![ObjectLink-support-union-types](../figures/ObjectLink-support-union-types.gif)

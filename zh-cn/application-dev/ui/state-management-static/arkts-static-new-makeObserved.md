@@ -48,9 +48,9 @@ makeObserved支持以下类型的变量：
 
 - makeObserved转换的数据具备可观察能力，即使不使用状态变量装饰器，也能观察其内部属性变化。
 
-  <!-- @[MakeObservedBasic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MakeObserved/entry/src/main/ets/pages/MakeObservedBasic.ets) --> 
+  ```ts
+  'use static'
   
-  ``` TypeScript
   import { ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
   interface Info {
     name: string;
@@ -73,25 +73,25 @@ makeObserved支持以下类型的变量：
 
 - 从API版本26.0.0开始，不设置`allowDeep`参数，或将其设置为`true`时，makeObserved支持观察嵌套场景。
 
-  <!-- @[MakeObservedNested](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MakeObserved/entry/src/main/ets/pages/MakeObservedNested.ets) --> 
-  
-  ``` TypeScript
+  ```ts
+  'use static'
+
   import { ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
-  
+
   export interface Info {
     name: string;
     age: number;
   }
-  
+
   export interface Person {
     info: Info;
   }
-  
+
   @Entry
   @Component
   struct Index {
     person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25 } as Info } as Person) as Person;
-  
+
     build() {
       Column() {
         Text(`info.name: ${this.person.info.name}`)
@@ -105,25 +105,25 @@ makeObserved支持以下类型的变量：
 
 - 从API版本26.0.0开始，当`allowDeep`为`false`时，makeObserved仅观察一层属性变化，嵌套属性变化不触发刷新。
 
-  <!-- @[MakeObservedOneLevel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MakeObserved/entry/src/main/ets/pages/MakeObservedOneLevel.ets) --> 
-  
-  ``` TypeScript
+  ```ts
+  'use static'
+
   import { Button, ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
-  
+
   export interface Info {
     name: string;
     age: number;
   }
-  
+
   export interface Person {
     info: Info;
   }
-  
+
   @Entry
   @Component
   struct Index {
     person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25 } as Info } as Person, false) as Person;
-  
+
     build() {
       Column() {
         Text(`info.name: ${this.person.info.name}`)
@@ -140,9 +140,9 @@ makeObserved支持以下类型的变量：
 
 - 当makeObserved的返回值被状态变量装饰器装饰时，观察能力以makeObserved为准。
 
-  <!-- @[MakeObservedWithDecorator](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MakeObserved/entry/src/main/ets/pages/MakeObservedWithDecorator.ets) --> 
+  ```ts
+  'use static'
   
-  ``` TypeScript
   import { ClickEvent, Column, Component, Entry, State, Text, UIUtils } from '@kit.ArkUI';
   interface Info {
     name: string;
@@ -201,109 +201,65 @@ makeObserved支持以下类型的变量：
 
 ### makeObserved与Array配合使用
 
-<!-- @[MakeObservedArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MakeObserved/entry/src/main/ets/pages/MakeObservedArray.ets) --> 
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct Index {
   arr: int[] = UIUtils.makeObserved([0, 1, 2]);
-
   build() {
     Column() {
       Text(`${this.arr}`)
-        .fontSize(20)
-        .margin(10)
-      // 修改数组元素，触发UI刷新
-      Button(`change arr[0]: ${this.arr[0]}`)
-        .width(300)
-        .margin(10)
-        .onClick((e: ClickEvent) => {
-          this.arr[0]++;
-        })
-      // 新增数组元素，触发UI刷新
-      Button(`push item: ${this.arr.length}`)
-        .width(300)
-        .margin(10)
-        .onClick((e: ClickEvent) => {
-          this.arr.push(Double.toInt(this.arr.length));
-        })
-      // 删除数组元素，触发UI刷新
-      Button(`pop item`)
-        .width(300)
-        .margin(10)
-        .onClick((e: ClickEvent) => {
-          this.arr.pop();
-        })
-      // 翻转数组元素，触发UI刷新
-      Button(`reverse`)
-        .width(300)
-        .margin(10)
-        .onClick((e: ClickEvent) => {
-          this.arr.reverse();
-        })
+      Button(`change arr[0]: ${this.arr[0]}`).onClick((e: ClickEvent) => {
+        this.arr[0]++;
+      })
+      Button(`push item: ${this.arr.length}`).onClick((e: ClickEvent) => {
+        this.arr.push(Double.toInt(this.arr.length));
+      })
+      Button(`pop item`).onClick((e: ClickEvent) => {
+        this.arr.pop();
+      })
+      Button(`reverse`).onClick((e: ClickEvent) => {
+        this.arr.reverse();
+      })
     }
-    .width('100%')
   }
 }
 ```
-
-![makeobserved-array](../figures/makeobserved1.gif)
 
 ### makeObserved与Map配合使用
 
-<!-- @[MakeObservedMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MakeObserved/entry/src/main/ets/pages/MakeObservedMap.ets) --> 
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Row, Text, UIUtils } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct MapSample {
-  message: Map<int, string> = UIUtils.makeObserved(new Map<int, string>([[0, 'a'], [1, 'b'], [3, 'c']]));
+  message: Map<number, string> = UIUtils.makeObserved(new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]));
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [int, string]) => {
-          Text(`${item[0]}`)
-            .fontSize(20)
-            .margin(10)
-          Text(`${item[1]}`)
-            .fontSize(20)
-            .margin(10)
+        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
+          Text(`${item[0]}`).fontSize(30)
+          Text(`${item[1]}`).fontSize(30)
           Divider()
         })
-        // 新增键值对，触发UI刷新
-        Button('set new one')
-          .width(300)
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.message.set(4, 'd');
-          })
-        // 更新键值对，触发UI刷新
-        Button('replace the first one')
-          .width(300)
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.message.set(0, 'aa');
-          })
-        // 删除键值对，触发UI刷新
-        Button('delete the first one')
-          .width(300)
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.message.delete(0);
-          })
-        // 清空Map，触发UI刷新
-        Button('clear')
-          .width(300)
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.message.clear();
-          })
+        Button('set new one').onClick((e: ClickEvent) => {
+          this.message.set(4, 'd');
+        })
+        Button('clear').onClick((e: ClickEvent) => {
+          this.message.clear();
+        })
+        Button('replace the first one').onClick((e: ClickEvent) => {
+          this.message.set(0, 'aa');
+        })
+        Button('delete the first one').onClick((e: ClickEvent) => {
+          this.message.delete(0);
+        })
       }
       .width('100%')
     }
@@ -311,51 +267,34 @@ struct MapSample {
   }
 }
 ```
-
-![makeobserved-map](../figures/makeobserved2.gif)
 
 ### makeObserved与Set配合使用
 
-<!-- @[MakeObservedSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MakeObserved/entry/src/main/ets/pages/MakeObservedSet.ets) --> 
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Row, Text, UIUtils } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct SetSample {
-  message: Set<int> = UIUtils.makeObserved(new Set<int>([0, 1, 2, 3, 4]));
+  message: Set<number> = UIUtils.makeObserved(new Set<number>([0, 1, 2, 3, 4]));
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [int, int]) => {
-          Text(`${item[0]}`)
-            .fontSize(20)
-            .margin(10)
+        ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
+          Text(`${item[0]}`).fontSize(30)
           Divider()
         })
-        // 新增元素，触发UI刷新
-        Button('set new one')
-          .width(300)
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.message.add(5);
-          })
-        // 删除元素，触发UI刷新
-        Button('delete the first one')
-          .width(300)
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.message.delete(0);
-          })
-        // 清空Set，触发UI刷新
-        Button('clear')
-          .width(300)
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.message.clear();
-          })
+        Button('set new one').onClick((e: ClickEvent) => {
+          this.message.add(5);
+        })
+        Button('clear').onClick((e: ClickEvent) => {
+          this.message.clear();
+        })
+        Button('delete the first one').onClick((e: ClickEvent) => {
+          this.message.delete(0);
+        })
       }
       .width('100%')
     }
@@ -364,15 +303,12 @@ struct SetSample {
 }
 ```
 
-![makeobserved-set](../figures/makeobserved3.gif)
-
 ### makeObserved与Date配合使用
 
-<!-- @[MakeObservedDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MakeObserved/entry/src/main/ets/pages/MakeObservedDate.ets) --> 
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct DateExample {
@@ -381,71 +317,48 @@ struct DateExample {
   build() {
     Column() {
       Text(`${this.selectedDate}`)
-        .fontSize(20)
-        .margin(10)
-      // 调用Date的setFullYear接口修改年份，触发UI刷新
       Button('increase the year by 1')
-        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
-      // 调用Date的setMonth接口修改月份，触发UI刷新
       Button('increase the month by 1')
-        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
           this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
-      // 调用Date的setDate接口修改日期，触发UI刷新
       Button('increase the day by 1')
-        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
-    }
-    .width('100%')
+    }.width('100%')
   }
 }
 ```
-
-![makeobserved-date](../figures/makeobserved4.gif)
 
 ### makeObserved与interface字面量配合使用
 
-<!-- @[MakeObservedInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MakeObserved/entry/src/main/ets/pages/MakeObservedInterface.ets) --> 
+```ts
+'use static'
 
-``` TypeScript
-import { ClickEvent, Column, Component, Entry, Text, UIUtils, Button } from '@kit.ArkUI';
-
+import { ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
 interface Info {
   name: string,
-  age: int
+  age: number
 }
-
 @Entry
 @Component
 struct Index {
-  info: Info = UIUtils.makeObserved({ name: 'Jack', age: 25 } as Info) as Info;
-
+  info: Info = UIUtils.makeObserved({ name: 'Jack', age: 25} as Info) as Info;
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
-        .fontSize(20)
-        .margin(10)
-      Button('change info name')
-        .width(300)
-        .margin(10)
         .onClick((e: ClickEvent) => {
-          // 由于info变量可深度观察，故该属性变化可触发UI刷新。
           this.info.name = 'Tom';
         })
     }
-    .width('100%')
   }
 }
 ```
-
-![makeobserved-interface](../figures/makeobserved5.gif)
 

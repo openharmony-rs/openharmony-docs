@@ -1,8 +1,8 @@
 # 组件内容填充方式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,8 +11,6 @@
 >  **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
-> - 本模块接口仅可在Stage模型下使用。
 >
 > - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -78,7 +76,7 @@ renderFit(fitMode: Optional\<RenderFit>): T
 
 ## renderFit<sup>23+</sup>
 
-renderFit(fitMode: RenderFit | undefined)
+renderFit(fitMode: RenderFit | undefined): this
 
 设置宽高动画过程中的组件内容填充方式。
 
@@ -95,6 +93,12 @@ renderFit(fitMode: RenderFit | undefined)
 | 参数名  | 类型                                       | 必填 | 说明                                                         |
 | ------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | fitMode | [RenderFit](ts-appendix-enums.md#renderfit10) \| undefined | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当fitMode的值为undefined时，取默认值。恢复为内容填充方式为RenderFit.TOP_LEFT的效果。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| this | 返回当前组件。 |
 
 >  **说明：**
 >

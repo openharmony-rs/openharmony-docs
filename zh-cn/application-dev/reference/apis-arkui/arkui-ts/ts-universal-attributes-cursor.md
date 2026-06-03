@@ -13,8 +13,6 @@
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 >  - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->
-> - 本模块接口仅可在Stage模型下使用。
 
 
 ## cursorControl
@@ -25,7 +23,7 @@ setCursor(value: PointerStyle): void
 
 方法语句中可使用的全局接口，调用该接口可更改当前的鼠标光标样式。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,7 +43,7 @@ restoreDefault(): void
 
 方法语句中可使用的全局接口，调用此接口可将鼠标光标恢复成默认箭头样式。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +57,7 @@ type PointerStyle = pointer.PointerStyle
 
 光标样式。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

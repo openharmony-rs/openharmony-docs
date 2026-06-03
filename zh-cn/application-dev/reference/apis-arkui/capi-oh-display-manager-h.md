@@ -449,7 +449,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetFoldDisplayMode(Native
 
 **起始版本：** 12
 
-**设备行为差异：** 该接口在PC/2in1设备、非折叠设备中返回0，在其他设备中可正常调用。
+**设备行为差异：** 该接口在2in1设备、非折叠设备中返回0，在其他设备中可正常调用。
 
 
 **参数：**
@@ -749,7 +749,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterAvailableAreaChan
 
 **起始版本：** 20
 
-**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -776,7 +776,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterAvailableAreaCh
 
 **起始版本：** 20
 
-**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -802,7 +802,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAvailableArea(uint6
 
 **起始版本：** 20
 
-**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过[OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth)、[OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight)获取当前设备屏幕的可用区域。
+**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过[OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth)、[OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight)获取当前设备屏幕的可用区域。
 
 
 **参数：**
@@ -1019,7 +1019,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 获取屏幕的位置信息，即相对于原点（主屏左上角）的x坐标和y坐标。
 
-仅当屏幕当前的显示模式为DISPLAY_SOURCE_MODE_MAIN或DISPLAY_SOURCE_MODE_EXTEND时返回实际值。
+仅当屏幕当前的显示模式为DISPLAY_SOURCE_MODE_MAIN或DISPLAY_SOURCE_MODE_EXTEND时返回实际值，其余默认返回0。
 
 屏幕的显示模式可通过[OH_NativeDisplayManager_GetDisplaySourceMode()](#oh_nativedisplaymanager_getdisplaysourcemode)接口获取。
 

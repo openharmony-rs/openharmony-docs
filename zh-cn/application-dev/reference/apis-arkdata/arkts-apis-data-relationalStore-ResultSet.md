@@ -1461,7 +1461,6 @@ getSendableRow(): sendableRelationalStore.ValuesBucket
 
 <!--code_no_check-->
 ```ts
-// EntryAbility.ets
 import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 import { relationalStore } from '@kit.ArkData';

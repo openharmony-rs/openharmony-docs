@@ -89,7 +89,6 @@ Text(content?: string | Resource , value?: TextOptions)
 | marqueeOptions<sup>18+</sup> | 设置文本跑马灯模式的配置项。 |
 | textOverflow | 设置文本超长时的显示方式。 |
 | wordBreak<sup>11+</sup> | 设置断行规则。 |
-| punctuationOverflow | 设置是否启用行尾标点符号悬挂。<br>**起始版本：** 26.0.0 |
 
 **行与段落**
 
@@ -149,7 +148,6 @@ Text(content?: string | Resource , value?: TextOptions)
 |------|------|
 | contentTransition<sup>20+</sup> | 文本动效属性。 |
 | enableHapticFeedback<sup>13+</sup> | 设置是否开启触控反馈。 |
-| incrementalUpdatePolicy | 设置文本渲染的增量更新策略。<br/>**起始版本：** 26.0.0 |
 | privacySensitive<sup>12+</sup> | 设置是否支持卡片敏感隐私信息。 |
 
 以下是详细的接口说明：
@@ -765,7 +763,7 @@ ArkTS-Sta: fontFeature(value: string | undefined)
 >
 >  系统默认字体支持的liga连字：Th fb ff fb ffb ffh ffi ffk ffl fh fi fk fl rf rt rv rx ry。常导致Span、属性字符串的效果不符合预期，关闭liga连字特性可以规避。
 >
->  文字特性效果与使用的字体文件密切相关。例如，8标点挤压功能需要字体文件中字符支持"ss08"特性，否则无法压缩，在当前系统默认字体中右侧标点符号及感叹号、顿号、问号均不生效。
+>  文字特性效果与使用的字体文件密切相关。例如，8标点挤压功能在当前系统默认字体中仅对左侧标点符号生效，而右侧标点符号及感叹号、顿号、问号均不生效。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -999,30 +997,6 @@ ArkTS-Sta: heightAdaptivePolicy(value: TextHeightAdaptivePolicy | undefined)
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) <br/> ArkTS-Sta: [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) \| undefined | 是   | 文本自适应高度的方式。<br/>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST<br/>取值为undefined时，按默认值处理。 |
-
-### incrementalUpdatePolicy
-
-incrementalUpdatePolicy(policy: IncrementalUpdatePolicy | undefined)
-
-设置文本渲染的增量更新策略。未通过该接口设置时，默认为IncrementalUpdatePolicy.NONE。
-
-该接口仅在Text内容包含属性字符串（StyledString）时生效。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名 | 类型                                                        | 必填 | 说明                                                         |
-| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| policy | [IncrementalUpdatePolicy](ts-text-common.md#incrementalupdatepolicy) \| undefined | 是   | 文本渲染的增量更新策略。<br/>设置为undefined时，按IncrementalUpdatePolicy.NONE处理。 |
 
 ### letterSpacing
 
@@ -1622,30 +1596,6 @@ ArkTS-Sta: privacySensitive(supported: boolean | undefined)
 | 参数名    | 类型    | 必填 | 说明                                                         |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | supported | ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | 是   | 是否支持卡片敏感隐私信息。<br/>默认值为false，当设置为true时，隐私模式下文字将被遮罩为横杠“-”样式。<br/>**说明：** <br/>设置为null则表示不敏感。<br/>进入隐私模式需要卡片框架支持。隐私遮罩的类型可以通过[obscured](./ts-universal-attributes-obscured.md#obscured)配置。<br/>取值为undefined时，按默认值处理。|
-
-### punctuationOverflow
-
-ArkTS-Dyn: punctuationOverflow(enabled: Optional\<boolean>)
-
-ArkTS-Sta: punctuationOverflow(enabled: boolean | undefined)
-
-设置是否启用行尾标点符号悬挂。不通过该接口设置，默认标点符号不悬挂。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ------ | ----- | ---- | ---- |
-| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用行尾标点符号悬挂。<br/>true表示启用行尾标点符号悬挂，false表示不启用行尾标点符号悬挂。设置为undefined或null时，不启用标点符号悬挂。|
 
 ### selectedBackgroundColor<sup>14+</sup>
 
@@ -4196,275 +4146,3 @@ struct TextExample {
 ```
 
 ![bindSelectionMenu](figures/bindSelectionMenu.gif)
-
-### 示例31（设置属性字符串段落缓存策略）
-
-该示例通过[incrementalUpdatePolicy](#incrementalupdatepolicy)接口设置文本渲染的增量更新策略，使用段落级缓存优化渲染性能。
-
-从API版本26.0.0开始，新增incrementalUpdatePolicy属性。
-
-ArkTS-Dyn示例：
-
-```ts
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct StyledStringAppend {
-  controller1: TextController = new TextController();
-  scroller: Scroller = new Scroller();
-  @State index: number = 0
-  // 段落标题样式：居中、加粗
-  titleParagraphStyle: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
-  // 第一段落样式：首行缩进20vp
-  paragraphStyleAttr1: ParagraphStyle = new ParagraphStyle({ textIndent: LengthMetrics.vp(20) });
-  // 第二段落样式：左对齐、首行缩进20vp
-  paragraphStyleAttr2: ParagraphStyle =
-    new ParagraphStyle({ textAlign: TextAlign.Start, textIndent: LengthMetrics.vp(20) });
-  // 行高样式
-  lineHeightStyle: LineHeightStyle = new LineHeightStyle(new LengthMetrics(30));
-  str: string = '属性字符串段落缓存示例'
-  styledString1: MutableStyledString = new MutableStyledString(this.str, [{
-    start: 0,
-    length: this.str.length,
-    styledKey: StyledStringKey.PARAGRAPH_STYLE,
-    styledValue: this.titleParagraphStyle
-  }, {
-    start: 0,
-    length: this.str.length,
-    styledKey: StyledStringKey.LINE_HEIGHT,
-    styledValue: this.lineHeightStyle
-  }, {
-    start: 0,
-    length: this.str.length,
-    styledKey: StyledStringKey.FONT,
-    styledValue: new TextStyle({
-      fontColor: Color.Blue,
-      fontWeight: FontWeight.Bolder
-    })
-  }]);
-
-  aboutToAppear() {
-    // 追加初始段落内容，设置段落缩进和行高
-    let str1: string = '\n首段落：'
-    let str2: string = '属性字符串支持段落样式缓存，单击下方按钮追加新段落，验证段落缓存效果。'
-    let paragraph1: StyledString =
-      new StyledString(str1 + str2, [{
-        start: 0,
-        length: str1.length,
-        styledKey: StyledStringKey.PARAGRAPH_STYLE,
-        styledValue: this.paragraphStyleAttr1
-      }, {
-        start: 0,
-        length: str1.length,
-        styledKey: StyledStringKey.FONT,
-        styledValue: new TextStyle({
-          fontColor: Color.Blue,
-          fontWeight: FontWeight.Bold
-        })
-      }, {
-        start: 0,
-        length: str1.length + str2.length,
-        styledKey: StyledStringKey.LINE_HEIGHT,
-        styledValue: this.lineHeightStyle
-      }]);
-    this.styledString1.appendStyledString(paragraph1);
-    this.controller1.setStyledString(this.styledString1);
-  }
-
-  build() {
-    Column() {
-      Scroll(this.scroller) {
-        Column() {
-          Text('示例：属性字符串段落缓存\n单击"追加文本"追加新段落，后端走段落缓存\n')
-            .fontSize(16)
-            .fontColor(Color.Gray)
-            .margin({ bottom: 5 })
-            .width("100%")
-
-          Text(undefined, { controller: this.controller1 })
-            .width('100%')
-            .borderWidth(1)
-            .padding(10)
-            .copyOption(CopyOptions.InApp)
-            .incrementalUpdatePolicy(IncrementalUpdatePolicy.PARAGRAPH_CACHE)
-        }
-        .width('100%')
-        .padding({ left: 20, right: 20 })
-      }
-      .width('100%')
-
-      Button("追加文本")
-        .width('80%')
-        .margin({ top: 10, bottom: 15 })
-        .onClick(() => {
-          this.index++;
-          // 追加新段落，每个段落带有段落缩进样式，触发后端段落缓存
-          let str1: string = '\n第' + this.index + '段落：'
-          let str2: string = '这是追加的文本内容，用于验证段落缓存机制。'
-          let newParagraph: StyledString = new StyledString(
-            str1 + str2,
-            [{
-              start: 0,
-              length: str1.length,
-              styledKey: StyledStringKey.PARAGRAPH_STYLE,
-              styledValue: this.paragraphStyleAttr2
-            }, {
-              start: 0,
-              length: str1.length + str2.length,
-              styledKey: StyledStringKey.LINE_HEIGHT,
-              styledValue: this.lineHeightStyle
-            }, {
-              start: 0,
-              length: str1.length,
-              styledKey: StyledStringKey.FONT,
-              styledValue: new TextStyle({
-                fontColor: Color.Blue,
-                fontWeight: FontWeight.Bold
-              })
-            }]);
-          this.styledString1.appendStyledString(newParagraph);
-          this.controller1.setStyledString(this.styledString1);
-        })
-    }
-    .width('100%')
-    .height('70%')
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { Entry, State, Text, Column, Scroll, Scroller, Component, Button,
-  TextController, StyledString, MutableStyledString, StyledStringKey,
-  ParagraphStyle, LineHeightStyle, TextStyle, LengthMetrics,
-  TextAlign, FontWeight, Color, CopyOptions, IncrementalUpdatePolicy } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct StyledStringAppend {
-  controller1: TextController = new TextController();
-  scroller: Scroller = new Scroller();
-  @State index: int = 0
-  // 段落标题样式：居中、加粗
-  titleParagraphStyle: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
-  // 第一段落样式：首行缩进20vp
-  paragraphStyleAttr1: ParagraphStyle = new ParagraphStyle({ textIndent: LengthMetrics.vp(20) });
-  // 第二段落样式：左对齐、首行缩进20vp
-  paragraphStyleAttr2: ParagraphStyle =
-    new ParagraphStyle({ textAlign: TextAlign.Start, textIndent: LengthMetrics.vp(20) });
-  // 行高样式
-  lineHeightStyle: LineHeightStyle = new LineHeightStyle(new LengthMetrics(30));
-  str: string = '属性字符串段落缓存示例'
-  styledString1: MutableStyledString = new MutableStyledString(this.str, [{
-    start: 0,
-    length: this.str.length,
-    styledKey: StyledStringKey.PARAGRAPH_STYLE,
-    styledValue: this.titleParagraphStyle
-  }, {
-    start: 0,
-    length: this.str.length,
-    styledKey: StyledStringKey.LINE_HEIGHT,
-    styledValue: this.lineHeightStyle
-  }, {
-    start: 0,
-    length: this.str.length,
-    styledKey: StyledStringKey.FONT,
-    styledValue: new TextStyle({
-      fontColor: Color.Blue,
-      fontWeight: FontWeight.Bolder
-    })
-  }]);
-
-  aboutToAppear() {
-    // 追加初始段落内容，设置段落缩进和行高
-    let str1: string = '\n首段落：'
-    let str2: string = '属性字符串支持段落样式缓存，单击下方按钮追加新段落，验证段落缓存效果。'
-    let paragraph1: StyledString =
-      new StyledString(str1 + str2, [{
-        start: 0,
-        length: str1.length,
-        styledKey: StyledStringKey.PARAGRAPH_STYLE,
-        styledValue: this.paragraphStyleAttr1
-      }, {
-        start: 0,
-        length: str1.length,
-        styledKey: StyledStringKey.FONT,
-        styledValue: new TextStyle({
-          fontColor: Color.Blue,
-          fontWeight: FontWeight.Bold
-        })
-      }, {
-        start: 0,
-        length: str1.length + str2.length,
-        styledKey: StyledStringKey.LINE_HEIGHT,
-        styledValue: this.lineHeightStyle
-      }]);
-    this.styledString1.appendStyledString(paragraph1);
-    this.controller1.setStyledString(this.styledString1);
-  }
-
-  build() {
-    Column() {
-      Scroll(this.scroller) {
-        Column() {
-          Text('示例：属性字符串段落缓存\n单击"追加文本"追加新段落，后端走段落缓存\n')
-            .fontSize(16)
-            .fontColor(Color.Gray)
-            .margin({ bottom: 5 })
-            .width("100%")
-
-          Text(undefined, { controller: this.controller1 })
-            .width('100%')
-            .borderWidth(1)
-            .padding(10)
-            .copyOption(CopyOptions.InApp)
-            .incrementalUpdatePolicy(IncrementalUpdatePolicy.PARAGRAPH_CACHE)
-        }
-        .width('100%')
-        .padding({ left: 20, right: 20 })
-      }
-      .width('100%')
-
-      Button("追加文本")
-        .width('80%')
-        .margin({ top: 10, bottom: 15 })
-        .onClick(() => {
-          this.index++;
-          // 追加新段落，每个段落带有段落缩进样式，触发后端段落缓存
-          let str1: string = '\n第' + this.index + '段落：'
-          let str2: string = '这是追加的文本内容，用于验证段落缓存机制。'
-          let newParagraph: StyledString = new StyledString(
-            str1 + str2,
-            [{
-              start: 0,
-              length: str1.length,
-              styledKey: StyledStringKey.PARAGRAPH_STYLE,
-              styledValue: this.paragraphStyleAttr2
-            }, {
-              start: 0,
-              length: str1.length + str2.length,
-              styledKey: StyledStringKey.LINE_HEIGHT,
-              styledValue: this.lineHeightStyle
-            }, {
-              start: 0,
-              length: str1.length,
-              styledKey: StyledStringKey.FONT,
-              styledValue: new TextStyle({
-                fontColor: Color.Blue,
-                fontWeight: FontWeight.Bold
-              })
-            }]);
-          this.styledString1.appendStyledString(newParagraph);
-          this.controller1.setStyledString(this.styledString1);
-        })
-    }
-    .width('100%')
-    .height('70%')
-  }
-}
-```
-
-![incrementalUpdatePolicy](figures/incrementalUpdatePolicy.png)

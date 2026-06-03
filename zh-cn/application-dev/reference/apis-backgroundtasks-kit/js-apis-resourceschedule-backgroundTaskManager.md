@@ -2507,7 +2507,7 @@ export default class EntryAbility extends UIAbility {
 | continuousTaskId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 否    | 被暂停的长时任务 Id。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 | suspendState | boolean | 否    | 否    | 长时任务状态，false表示激活，true表示暂停。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 | suspendReason | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | 否    | 否    | 长时任务暂停原因。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
-| suspendMessage | [SuspendMessage](#suspendmessage) | 否    | 是    | 长时任务暂停信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0|
+| suspendMessage | [SuspendMessage](#suspendmessage) | 否    | 否    | 长时任务暂停信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## SuspendMessage
 
@@ -2700,7 +2700,7 @@ export default class EntryAbility extends UIAbility {
 
 requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
-请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功后会发送带提示音的用户授权横幅通知。用户授权“本次允许”或“始终允许”后，再次请求授权时将直接回调上次授权结果，不再弹出横幅通知。建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会发送横幅通知，有提示音。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

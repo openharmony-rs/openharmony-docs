@@ -154,7 +154,7 @@
         console.info('doEciesTest success, message: ' + buffer.from(plainData.data).toString('utf-8'));
         return 'Success';
       } catch (error) {
-        console.error(`doEciesTest failed, error: ${JSON.stringify(error)}`);
+        console.error(`doEciesTest failed, error: + ${JSON.stringify(error)}`);
         return 'Failed';
       }
     }
@@ -261,7 +261,7 @@
         console.info('doEciesTest success, message: ' + buffer.from(plainData.data).toString('utf-8'));
         return 'Success';
       } catch (error) {
-        console.error(`doEciesTest failed, error: ${JSON.stringify(error)}`);
+        console.error(`doEciesTest failed, error: + ${JSON.stringify(error)}`);
         return 'Failed';
       }
     }

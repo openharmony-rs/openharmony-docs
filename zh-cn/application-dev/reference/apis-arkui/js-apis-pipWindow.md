@@ -36,7 +36,7 @@ isPiPEnabled(): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -63,7 +63,7 @@ create(config: PiPConfiguration): Promise&lt;PiPController&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -324,14 +324,14 @@ create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;P
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名          | 类型                                       | 必填        | 说明                                                                                                                                                                                                                                     |
 |--------------|------------------------------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | config       | [PiPConfiguration](#pipconfiguration)    | 是         | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context不能为空。构造该参数时，如果指定了templateType，需保证templateType是[PiPTemplateType](#piptemplatetype)类型；如果指定了controlGroups，需保证controlGroups与templateType匹配，详见[PiPControlGroup](#pipcontrolgroup12)。 |
-| contentNode       | [typeNode.XComponent](js-apis-arkui-typeNode.md#xcomponent)    | 是         | 用于渲染画中画窗口中的内容。该参数不能为空。|
+| contentNode       | [typeNode.XComponent](js-apis-arkui-frameNode.md#xcomponent12)    | 是         | 用于渲染画中画窗口中的内容。该参数不能为空。|
 
 **返回值：**
 
@@ -476,18 +476,18 @@ struct Index {
 
 | 名称                  | 类型                                                                         | 只读  | 可选| 说明                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|----------------------------------------------------------------------------|-----|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| context             | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否  | 否 | 表示上下文环境。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0                                                             |
-| componentController | [XComponentController](arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) | 否  | 否 | 表示原始[XComponent](arkui-ts/ts-basic-components-xcomponent.md)控制器。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0                                                          |
-| navigationId        | string                                                           | 否  | 是 | navigation控件ID，不传值则默认不需要缓存页面。<br/>1、UIAbility使用[Navigation](arkui-ts/ts-basic-components-navigation.md)管理页面时，需要设置Navigation控件的id属性，并将该id设置给画中画控制器，确保还原场景下能够从画中画窗口恢复到原页面。<br/>2、UIAbility使用[Router](js-apis-router.md)管理页面时，无需设置navigationId。<br/>3、UIAbility只有单页面时，无需设置navigationId，还原场景下也能够从画中画窗口恢复到原页面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
-| handleId<sup>22+</sup>        | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复到指定的页面。只适用于UIAbility使用[Navigation](arkui-ts/ts-basic-components-navigation.md)管理页面的场景，可以设置为Navigation下的子页面ID。默认为-1，恢复Navigation栈顶页面。推荐使用方法[getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12)获取页面ID。使用[Navigation](arkui-ts/ts-basic-components-navigation.md)模块内页面路由时，推荐使用[系统路由表](../../ui/arkts-navigation-cross-package.md#系统路由表)，否则可能会出现[getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12)获取页面ID不准确的情况。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
-| templateType        | [PiPTemplateType](#piptemplatetype)                                        | 否  | 是 | 模板类型，用以区分视频播放、视频通话、视频会议或视频直播，不传值则默认为视频播放模板。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0                                                            |
-| contentWidth        | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | 原始内容宽度，单位为px。用于确定画中画窗口比例。当使用typeNode的方式创建PiPController时（即使用[PiPWindow.create()](#pipwindowcreate12)传入contentNode参数），不传值则默认为1920。当不使用typeNode的方式创建PiPController时（即使用[PiPWindow.create()](#pipwindowcreate)不传入contentNode参数），不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的宽度。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0                                                           |
-| contentHeight       | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | 原始内容高度，单位为px。用于确定画中画窗口比例。当使用typeNode的方式创建PiPController时（即使用[PiPWindow.create()](#pipwindowcreate12)传入contentNode参数），不传值则默认为1080。当不使用typeNode的方式创建PiPController时（即使用[PiPWindow.create()](#pipwindowcreate)不传入contentNode参数），不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的高度。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0                                                             |
-| controlGroups<sup>12+</sup>       | Array<[PiPControlGroup](#pipcontrolgroup12)>                               | 否 | 是  | 画中画控制面板的可选控件组列表，应用可以对此进行配置以决定是否显示。应用未配置时，面板显示基础控件（如视频播放控件组的播放/暂停控件）；应用选择配置时，则最多可以选择三个控件，超出三个create接口抛出401错误码。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 26.0.0                                                                          |
-| customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | 否  | 是 | 自定义UI控制器，用于实现在画中画界面的自定义UI功能。此参数不填时，默认不使用自定义UI功能<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 26.0.0                                                                       |
-| localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | 否  | 是 | 页面级别的UI状态存储单元。多实例下可用来跟踪主窗实例的UI状态存储对象，不传值则无法通过画中画窗口获取主窗的UI状态存储对象。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。     <br/>**ArkTS-Dyn起始版本：** 17 <br/>**ArkTS-Sta起始版本：** 26.0.0                                                                       |
-| defaultWindowSizeType<sup>19+</sup>| ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否   | 是  |  当前应用第一次拉起画中画的窗口大小。<br/>0：代表不设置大小。按照上个应用的画中画关闭前的大小启动；<br/>1：代表小窗；<br/>2：代表大窗；<br/>不传值则为默认值0。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 19 <br/>**ArkTS-Sta起始版本：** 26.0.0                                                                 |
-| cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | 否   | 是  |  是否开启画中画四角吸附功能。当开启画中画四角吸附功能后，屏幕将被划分为四个热区：以屏幕的上下中线和左右中线为界，形成左上、右上、左下、右下四个区域。画中画拉起时会根据上次画中画消失的位置出现在屏幕对应的角落，用户拖动窗口时可自由移动，松手后则会自动吸附在屏幕边缘。<br/>true：表示开启画中画四角吸附功能。<br/>false：表示关闭画中画四角吸附功能。<br/>不传值则为默认值true。<br/>**设备行为差异：** 该接口在Phone、Tablet设备上可正常调用，在其他设备上不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。   <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 26.0.0                                                               |
+| context             | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否  | 否 | 表示上下文环境。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24                                                             |
+| componentController | [XComponentController](arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) | 否  | 否 | 表示原始[XComponent](arkui-ts/ts-basic-components-xcomponent.md)控制器。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24                                                          |
+| navigationId        | string                                                           | 否  | 是 | navigation控件ID，不传值则默认不需要缓存页面。<br/>1、UIAbility使用[Navigation](arkui-ts/ts-basic-components-navigation.md)管理页面时，需要设置Navigation控件的id属性，并将该id设置给画中画控制器，确保还原场景下能够从画中画窗口恢复到原页面。<br/>2、UIAbility使用[Router](js-apis-router.md)管理页面时，无需设置navigationId。<br/>3、UIAbility只有单页面时，无需设置navigationId，还原场景下也能够从画中画窗口恢复到原页面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
+| handleId<sup>22+</sup>        | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复到指定的页面。只适用于UIAbility使用[Navigation](arkui-ts/ts-basic-components-navigation.md)管理页面的场景，可以设置为Navigation下的子页面ID。默认为-1，恢复Navigation栈顶页面。推荐使用方法[getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12)获取页面ID。使用[Navigation](arkui-ts/ts-basic-components-navigation.md)模块内页面路由时，推荐使用[系统路由表](../../ui/arkts-navigation-cross-package.md#系统路由表)，否则可能会出现[getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12)获取页面ID不准确的情况。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 24  |
+| templateType        | [PiPTemplateType](#piptemplatetype)                                        | 否  | 是 | 模板类型，用以区分视频播放、视频通话、视频会议或视频直播，不传值则默认为视频播放模板。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24                                                            |
+| contentWidth        | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | 原始内容宽度，单位为px。用于确定画中画窗口比例。当使用typeNode的方式创建PiPController时（即使用[PiPWindow.create()](#pipwindowcreate12)传入contentNode参数），不传值则默认为1920。当不使用typeNode的方式创建PiPController时（即使用[PiPWindow.create()](#pipwindowcreate)不传入contentNode参数），不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的宽度。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24                                                           |
+| contentHeight       | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | 原始内容高度，单位为px。用于确定画中画窗口比例。当使用typeNode的方式创建PiPController时（即使用[PiPWindow.create()](#pipwindowcreate12)传入contentNode参数），不传值则默认为1080。当不使用typeNode的方式创建PiPController时（即使用[PiPWindow.create()](#pipwindowcreate)不传入contentNode参数），不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的高度。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24                                                             |
+| controlGroups<sup>12+</sup>       | Array<[PiPControlGroup](#pipcontrolgroup12)>                               | 否 | 是  | 画中画控制面板的可选控件组列表，应用可以对此进行配置以决定是否显示。应用未配置时，面板显示基础控件（如视频播放控件组的播放/暂停控件）；应用选择配置时，则最多可以选择三个控件，超出三个create接口抛出401错误码。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24                                                                          |
+| customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | 否  | 是 | 自定义UI控制器，用于实现在画中画界面的自定义UI功能。此参数不填时，默认不使用自定义UI功能<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24                                                                       |
+| localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | 否  | 是 | 页面级别的UI状态存储单元。多实例下可用来跟踪主窗实例的UI状态存储对象，不传值则无法通过画中画窗口获取主窗的UI状态存储对象。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。     <br/>**ArkTS-Dyn起始版本：** 17 <br/>**ArkTS-Sta起始版本：** 24                                                                       |
+| defaultWindowSizeType<sup>19+</sup>| ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否   | 是  |  当前应用第一次拉起画中画的窗口大小。<br/>0：代表不设置大小。按照上个应用的画中画关闭前的大小启动；<br/>1：代表小窗；<br/>2：代表大窗；<br/>不传值则为默认值0。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 19 <br/>**ArkTS-Sta起始版本：** 24                                                                 |
+| cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | 否   | 是  |  是否开启画中画四角吸附功能。当开启画中画四角吸附功能后，屏幕将被划分为四个热区：以屏幕的上下中线和左右中线为界，形成左上、右上、左下、右下四个区域。画中画拉起时会根据上次画中画消失的位置出现在屏幕四角，用户拖动窗口时可自由移动，松手后则会自动吸附在屏幕边缘。<br/>true：表示开启画中画四角吸附功能。<br/>false：表示关闭画中画四角吸附功能。<br/>不传值则为默认值true。<br/>**设备行为差异：** 该接口在Phone、Tablet设备上可正常调用，在其他设备上不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。   <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 24                                                               |
 
 ## PiPWindowSize<sup>15+</sup>
 
@@ -499,7 +499,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
@@ -517,7 +517,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
@@ -534,7 +534,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称            | 值   | 说明                                   |
 |---------------|-----|--------------------------------------|
@@ -553,7 +553,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
@@ -576,7 +576,7 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 类型                                              | 说明          |
 |-------------------------------------------------|-------------|
@@ -596,7 +596,7 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
@@ -613,7 +613,7 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
@@ -632,7 +632,7 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
@@ -651,7 +651,7 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
@@ -670,7 +670,7 @@ type PiPActionEventType = PiPVideoActionEvent | PiPCallActionEvent | PiPMeetingA
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 类型                                              | 说明          |
 |-------------------------------------------------|-------------|
@@ -691,11 +691,11 @@ type PiPVideoActionEvent = 'playbackStateChanged' | 'nextVideo' | 'previousVideo
 
 | 类型                         | 说明                                      |
 | ---------------------------- | ----------------------------------------- |
-| 'playbackStateChanged'       | 播放状态发生了变化。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
-| 'nextVideo'                  | 播放下一个视频。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0     |
-| 'previousVideo'              | 播放上一个视频。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0     |
-| 'fastForward'<sup>12+</sup>  | 视频进度快进。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| 'fastBackward'<sup>12+</sup> | 视频进度后退。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| 'playbackStateChanged'       | 播放状态发生了变化。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
+| 'nextVideo'                  | 播放下一个视频。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24     |
+| 'previousVideo'              | 播放上一个视频。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24     |
+| 'fastForward'<sup>12+</sup>  | 视频进度快进。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24 |
+| 'fastBackward'<sup>12+</sup> | 视频进度后退。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ## PiPCallActionEvent
 
@@ -709,10 +709,10 @@ type PiPCallActionEvent = 'hangUp' | 'micStateChanged' | 'videoStateChanged' | '
 
 | 类型                | 说明               |
 | ------------------- | ------------------ |
-| 'hangUp'             | 挂断视频通话。   <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0   |
-| 'micStateChanged'   | 打开或关闭麦克风。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
-| 'videoStateChanged' | 打开或关闭摄像头。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
-| 'voiceStateChanged'<sup>12+</sup> | 静音或解除静音。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
+| 'hangUp'             | 挂断视频通话。   <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24   |
+| 'micStateChanged'   | 打开或关闭麦克风。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
+| 'videoStateChanged' | 打开或关闭摄像头。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
+| 'voiceStateChanged'<sup>12+</sup> | 静音或解除静音。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24  |
 
 
 ## PiPMeetingActionEvent
@@ -727,10 +727,10 @@ type PiPMeetingActionEvent = 'hangUp' | 'voiceStateChanged' | 'videoStateChanged
 
 | 类型                | 说明               |
 | ------------------- | ------------------ |
-| 'hangUp'            | 挂断视频会议。   <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0    |
-| 'voiceStateChanged' | 静音或解除静音。  <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0   |
-| 'videoStateChanged' | 打开或关闭摄像头。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
-| 'micStateChanged'<sup>12+</sup>   | 打开或关闭麦克风。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
+| 'hangUp'            | 挂断视频会议。   <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24    |
+| 'voiceStateChanged' | 静音或解除静音。  <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24   |
+| 'videoStateChanged' | 打开或关闭摄像头。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
+| 'micStateChanged'<sup>12+</sup>   | 打开或关闭麦克风。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24  |
 
 
 ## PiPLiveActionEvent
@@ -745,8 +745,8 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 
 | 类型                   | 说明             |
 | ---------------------- | ---------------- |
-| 'playbackStateChanged' | 播放或暂停直播。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| 'voiceStateChanged'<sup>12+</sup> | 静音或解除静音。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
+| 'playbackStateChanged' | 播放或暂停直播。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24 |
+| 'voiceStateChanged'<sup>12+</sup> | 静音或解除静音。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24  |
 
 
 ## PiPControlStatus<sup>12+</sup>
@@ -759,7 +759,7 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称                   | 值   | 说明                    |
 |----------------------|-----|-----------------------|
@@ -778,7 +778,7 @@ type PiPLiveActionEvent = 'playbackStateChanged' | 'voiceStateChanged'
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称                | 值   | 说明                                   |
 |-------------------|-----|--------------------------------------|
@@ -807,7 +807,7 @@ ArkTS-Sta: type ControlPanelActionEventCallback = (event: PiPActionEventType, st
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -817,7 +817,7 @@ ArkTS-Sta: type ControlPanelActionEventCallback = (event: PiPActionEventType, st
 | status | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 表示可切换状态的控件当前的状态，如具备打开和关闭两种状态的麦克风控件组、摄像头控件组和静音控件组，打开为1，关闭为0。其余控件该参数返回默认值-1。 |
 
 
-## StateChangeCallback
+## StateChangeCallback<sup>24+</sup>
 
 type StateChangeCallback = (state: PiPState, reason: string) => void
 
@@ -827,7 +827,7 @@ type StateChangeCallback = (state: PiPState, reason: string) => void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -847,7 +847,7 @@ type StateChangeCallback = (state: PiPState, reason: string) => void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 | 名称                       | 类型           | 只读  | 可选   | 说明                                                                                                                                |
 |--------------------------|--------------|--------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
@@ -874,7 +874,7 @@ startPiP(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -918,7 +918,7 @@ stopPiP(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -961,7 +961,7 @@ setAutoStartEnabled(enable: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -990,7 +990,7 @@ ArkTS-Sta: updateContentSize(width: int, height: int): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1036,7 +1036,7 @@ updatePiPControlStatus(controlType: PiPControlType, status: PiPControlStatus): v
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1072,13 +1072,13 @@ updateContentNode(contentNode: typeNode.XComponent): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名          | 类型                                       | 必填        | 说明                                                                                                                                                                                                                                     |
 |--------------|------------------------------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| contentNode       | [typeNode.XComponent](js-apis-arkui-typeNode.md#xcomponent)    | 是         | 用于渲染画中画窗口中的内容。该参数不能为空。|
+| contentNode       | [typeNode.XComponent](js-apis-arkui-frameNode.md#xcomponent12)    | 是         | 用于渲染画中画窗口中的内容。该参数不能为空。|
 
 **返回值：**
 
@@ -1144,7 +1144,7 @@ setPiPControlEnabled(controlType: PiPControlType, enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1180,7 +1180,7 @@ getPiPWindowInfo(): Promise&lt;PiPWindowInfo&gt;
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -1227,7 +1227,7 @@ getPiPSettingSwitch(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -1272,7 +1272,7 @@ isPiPActive(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -1315,7 +1315,7 @@ on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange-1)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1359,7 +1359,7 @@ this.pipController.on('stateChange', (state: PiPWindow.PiPState, reason: string)
 });
 ```
 
-### onStateChange
+### onStateChange<sup>24+</sup>
 
 onStateChange(callback: StateChangeCallback): void
 
@@ -1371,13 +1371,13 @@ onStateChange(callback: StateChangeCallback): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名        | 类型        | 必填   | 说明                                                                                                |
 |------------|-----------|------|---------------------------------------------------------------------------------------------------|
-| callback   |  [StateChangeCallback](#statechangecallback)   | 是    | 描述画中画生命周期状态变化回调。 |
+| callback   |  [StateChangeCallback](#statechangecallback24)   | 是    | 描述画中画生命周期状态变化回调。 |
 
 **示例：**
 
@@ -1420,7 +1420,7 @@ off(type: 'stateChange'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange-1)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1438,7 +1438,7 @@ off(type: 'stateChange'): void
 this.pipController.off('stateChange');
 ```
 
-### offStateChange
+### offStateChange<sup>24+</sup>
 
 offStateChange(): void
 
@@ -1450,7 +1450,7 @@ offStateChange(): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **示例：**
 
@@ -1468,7 +1468,7 @@ on(type: 'controlPanelActionEvent', callback: ControlPanelActionEventCallback): 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlPanelActionEvent](#oncontrolpanelactionevent-1)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlPanelActionEvent](#oncontrolpanelactionevent24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1512,11 +1512,11 @@ this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEven
 });
 ```
 
-### onControlPanelActionEvent
+### onControlPanelActionEvent<sup>24+</sup>
 
 onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
 
-开启画中画控制面板控件动作事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。推荐使用[onControlEvent](#oncontrolevent)来开启画中画控制面板控件动作事件的监听。
+开启画中画控制面板控件动作事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。推荐使用[onControlEvent](#oncontrolevent24)来开启画中画控制面板控件动作事件的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1524,7 +1524,7 @@ onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1573,7 +1573,7 @@ on(type: 'controlEvent', callback: Callback&lt;ControlEventParam&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlEvent](#oncontrolevent)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlEvent](#oncontrolevent24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1617,7 +1617,7 @@ this.pipController.on('controlEvent', (control) => {
 });
 ```
 
-### onControlEvent
+### onControlEvent<sup>24+</sup>
 
 onControlEvent(callback: Callback&lt;ControlEventParam&gt;): void
 
@@ -1629,7 +1629,7 @@ onControlEvent(callback: Callback&lt;ControlEventParam&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1679,7 +1679,7 @@ off(type: 'controlPanelActionEvent'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlPanelActionEvent](#offcontrolpanelactionevent-1)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlPanelActionEvent](#offcontrolpanelactionevent24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1697,11 +1697,11 @@ off(type: 'controlPanelActionEvent'): void
 this.pipController.off('controlPanelActionEvent');
 ```
 
-### offControlPanelActionEvent
+### offControlPanelActionEvent<sup>24+</sup>
 
 offControlPanelActionEvent(): void
 
-关闭画中画控制面板控件动作事件的监听。推荐使用[offControlEvent](#offcontrolevent)来关闭画中画控制面板控件动作事件的监听。
+关闭画中画控制面板控件动作事件的监听。推荐使用[offControlEvent](#offcontrolevent24)来关闭画中画控制面板控件动作事件的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1709,7 +1709,7 @@ offControlPanelActionEvent(): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **示例：**
 
@@ -1727,7 +1727,7 @@ off(type: 'controlEvent', callback?: Callback&lt;ControlEventParam&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlEvent](#offcontrolevent)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlEvent](#offcontrolevent24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1749,7 +1749,7 @@ let callbackFunc = (event: PiPWindow.ControlEventParam) => {
 this.pipController.off('controlEvent', callbackFunc);
 ```
 
-### offControlEvent
+### offControlEvent<sup>24+</sup>
 
 offControlEvent(callback?: Callback&lt;ControlEventParam&gt;): void
 
@@ -1761,7 +1761,7 @@ offControlEvent(callback?: Callback&lt;ControlEventParam&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1788,7 +1788,7 @@ on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPipWindowSizeChange](#onpipwindowsizechange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPipWindowSizeChange](#onpipwindowsizechange24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1823,7 +1823,7 @@ try {
 }
 ```
 
-### onPipWindowSizeChange
+### onPipWindowSizeChange<sup>24+</sup>
 
 onPipWindowSizeChange(callback: Callback&lt;PiPWindowSize&gt;): void
 
@@ -1835,7 +1835,7 @@ onPipWindowSizeChange(callback: Callback&lt;PiPWindowSize&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1875,7 +1875,7 @@ off(type: 'pipWindowSizeChange', callback?: Callback&lt;PiPWindowSize&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offPipWindowSizeChange](#offpipwindowsizechange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPipWindowSizeChange](#offpipwindowsizechange24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1920,7 +1920,7 @@ try {
 }
 ```
 
-### offPipWindowSizeChange
+### offPipWindowSizeChange<sup>24+</sup>
 
 offPipWindowSizeChange(callback?: Callback&lt;PiPWindowSize&gt;): void
 
@@ -1932,7 +1932,7 @@ offPipWindowSizeChange(callback?: Callback&lt;PiPWindowSize&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1982,7 +1982,7 @@ on(type: 'activeStatusChange', callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onActiveStatusChange](#onactivestatuschange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onActiveStatusChange](#onactivestatuschange24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2004,7 +2004,7 @@ let callback = (activeStatus: boolean) => {
 this.pipController.on('activeStatusChange', callback);
 ```
 
-### onActiveStatusChange
+### onActiveStatusChange<sup>24+</sup>
 
 onActiveStatusChange(callback: Callback&lt;boolean&gt;): void
 
@@ -2016,7 +2016,7 @@ onActiveStatusChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -2043,7 +2043,7 @@ off(type: 'activeStatusChange', callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offActiveStatusChange](#offactivestatuschange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offActiveStatusChange](#offactivestatuschange24)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2065,7 +2065,7 @@ let callback = (activeStatus: boolean) => {
 this.pipController.off('activeStatusChange', callback);
 ```
 
-### offActiveStatusChange
+### offActiveStatusChange<sup>24+</sup>
 
 off(callback?: Callback&lt;boolean&gt;): void
 
@@ -2077,7 +2077,7 @@ off(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 

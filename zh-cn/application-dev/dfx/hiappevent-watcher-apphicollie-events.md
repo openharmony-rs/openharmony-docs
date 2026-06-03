@@ -45,7 +45,7 @@
 | peer_binder | string[] | binder调用信息，binder调用链及相关抓栈信息。 |
 | memory | object | 内存信息，详见memory属性。 |
 | external_log | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
-| log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
+| log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
 | external_callback_log | string | 自定义回调日志信息，可通过[OH_HiCollie_SetFreezeCallback](../reference/apis-performance-analysis-kit/capi-hicollie-h.md#oh_hicollie_setfreezecallback)写入。<br>**说明**：从API version 24开始支持。 |
 
 ### exception字段说明

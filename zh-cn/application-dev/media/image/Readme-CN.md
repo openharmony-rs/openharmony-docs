@@ -20,9 +20,7 @@
   - 图片编辑和处理<!--image-editing-arkts-->
     - [使用PixelMap完成图像变换](image-transformation.md)
     - [使用PixelMap完成位图操作](image-pixelmap-operation.md)<!--RP1--><!--RP1End-->
-  - 图片元数据处理<!--image-metadata-arkts-->
     - [读取和编辑图片Exif信息](image-tool.md)
-    - [使用ImageSource获取专有元数据](image-specific-metadata.md)
   - 图片接收<!--image-receiving-arkts-->
     - [使用ImageReceiver完成图片接收](image-receiver.md)
 - 图片开发指导(C/C++)<!--image-native-->
@@ -53,4 +51,3 @@
     - [图像变换](image-transformation-native.md)
     - [位图操作](image-pixelmap-operation-native.md)
     - [图片接收](image-receiver-native.md)
-- [Image Kit术语](image-glossary.md)

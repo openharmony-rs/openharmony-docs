@@ -1,8 +1,8 @@
 # native_animate.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -68,7 +68,7 @@
 | [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | 销毁关键帧动画参数。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | 设置关键帧动画的整体延时时间，单位为ms（毫秒），默认不延时播放。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setiterations) | 设置关键帧动画的动画播放次数。默认播放一次，设置为-1时表示无限次播放，设置为0时表示无动画效果。 |
-| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | 设置关键帧动画播放完成回调。当关键帧动画[ArkUI_KeyframeAnimateOption](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)所有次数播放完成后调用。 |
+| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)()(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | 设置关键帧动画播放完成回调。当[关键帧动画](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)所有次数播放完成后调用。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option, ArkUI_ExpectedFrameRateRange* frameRate)](#oh_arkui_keyframeanimateoption_setexpectedframerate) | 设置关键帧动画期望帧率。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* option, int32_t value, int32_t index)](#oh_arkui_keyframeanimateoption_setduration) | 设置关键帧动画某段关键帧动画的持续时间，单位为ms（毫秒）。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* option, ArkUI_CurveHandle value, int32_t index)](#oh_arkui_keyframeanimateoption_setcurve) | 设置关键帧动画某段关键帧使用的动画曲线。 |
@@ -529,7 +529,7 @@ void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 设置动画效果相关参数。<br>option为NULL时，操作无效。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | animator动画参数。<br>option为NULL时，操作无效。 |
 | [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画曲线参数。<br>value为NULL时，操作无效。 |
 
 ### OH_ArkUI_AnimateOption_GetICurve()
@@ -550,7 +550,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 设置动画效果相关参数。<br>option为NULL时，返回NULL。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | animator动画参数。<br>option为NULL时，返回NULL。 |
 
 **返回：**
 
@@ -668,7 +668,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 **描述：**
 
 
-设置关键帧动画播放完成回调。当关键帧动画[ArkUI_KeyframeAnimateOption](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)所有次数播放完成后调用。
+设置关键帧动画播放完成回调。当[关键帧动画](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)所有次数播放完成后调用。
 
 **起始版本：** 12
 
@@ -1170,7 +1170,7 @@ int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float val
 
 > **说明：**
 >
-> 当Animator动画为关键帧动画[ArkUI_KeyframeAnimateOption](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)时，此方法不生效。
+> 当Animator动画为[关键帧动画](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)时，此方法不生效。
 
 **起始版本：** 12
 
@@ -1201,7 +1201,7 @@ int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value
 
 > **说明：**
 >
-> 当Animator动画为关键帧动画[ArkUI_KeyframeAnimateOption](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)时，此方法不生效。
+> 当Animator动画为[关键帧动画](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)时，此方法不生效。
 
 **起始版本：** 12
 

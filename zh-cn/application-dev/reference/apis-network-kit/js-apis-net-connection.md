@@ -310,7 +310,7 @@ let options: http.HttpRequestOptions = {
   usingProxy: true, // 选择使用网络代理，从API 10开始支持该属性。
 };
 // 发起一个HTTP请求。
-httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
+httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
   if (!err) {
    console.info(`Result: ${data.result}`);
    console.info(`code: ${data.responseCode}`);

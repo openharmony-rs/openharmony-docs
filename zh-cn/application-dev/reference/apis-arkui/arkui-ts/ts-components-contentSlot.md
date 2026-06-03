@@ -15,8 +15,6 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 本模块接口仅可在Stage模型下使用。
 
 ## 接口
 
@@ -24,7 +22,7 @@ ContentSlot(content: Content)
 
 当内容添加到占位符组件时调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,34 +36,13 @@ ContentSlot(content: Content)
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | content | [Content](#content)  | 是   | Content作为ContentSlot的管理器，通过Native侧提供的接口，可以注册并触发ContentSlot的上下树事件回调以及管理ContentSlot的子组件。 |
 
-## 属性
-
-### debugLine<sup>24+</sup>
-
-debugLine(sourceLine: string, moduleName?: string)
-
-设置组件源码重定向信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 24
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| sourceLine | string | 是 | 源码行号。 |
-| moduleName | string | 否 | 组件所属模块名。 |
-
 ## Content
 
 type Content = Content
 
 定义ComponentContent和NodeContent的基类。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

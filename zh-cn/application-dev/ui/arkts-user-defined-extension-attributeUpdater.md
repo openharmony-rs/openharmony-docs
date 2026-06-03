@@ -1,9 +1,9 @@
 # 属性更新器 (AttributeUpdater)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sunbees-->
-<!--Designer: @sunbees-->
-<!--Tester: @khq-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
+<!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -34,17 +34,16 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 ```
 
 ArkTS-Sta：
-<!-- @[att_class_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AttributeUpdater/entry/src/main/ets/pages/AttributerUpdaterInterface.ets) -->
 
 ``` TypeScript
 export declare class AttributeUpdater<T> implements AttributeModifier<T> {
-
+  
   get attribute(): T | undefined;
-
+  
   initializeModifier(instance: T): void;
-
+  
   get updateConstructorParams(): Initializer<T>;
-
+  
   onComponentChanged(component: T): void;
 }
 ```
@@ -103,13 +102,12 @@ struct updaterDemo {
 ```
 
 ArkTS-Sta示例：
-<!-- @[att_modifier_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AttributeUpdater/entry/src/main/ets/pages/AttModifier.ets) -->
 
 ``` TypeScript
-import { Button, ButtonAttribute, Column, Component, Entry, Row } from '@kit.ArkUI';
+import { Column, Component, Entry, Row, Button, ButtonAttribute } from '@kit.ArkUI';
 import { AttributeUpdater } from '@ohos.arkui.modifier'
 
-export class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
+class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
   // 首次绑定时触发initializeModifier方法，进行属性初始化
   initializeModifier(instance: ButtonAttribute): void {
     instance.backgroundColor('#2787D9')
@@ -123,7 +121,7 @@ export class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
 struct updaterDemo {
   modifier: MyButtonModifier = new MyButtonModifier()
 
-  build(): void {
+  build() {
     Row() {
       Column() {
         Button('Button')
@@ -191,13 +189,15 @@ struct updaterDemo {
 ```
 
 ArkTS-Sta示例：
-<!-- @[att_update_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AttributeUpdater/entry/src/main/ets/pages/AttUpdate.ets) -->
 
 ``` TypeScript
-import { Button, ClickEvent, Color, Column, Component, Entry, Row, Text, TextAlign, TextAttribute } from '@kit.ArkUI';
+// index.ets
+
+import { Entry, Text, Column, Row, Component, Button, ClickEvent, TextAttribute,Color, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 import { AttributeUpdater } from '@ohos.arkui.modifier';
 
-export class MyTextModifier extends AttributeUpdater<TextAttribute> {
+class MyTextModifier extends AttributeUpdater<TextAttribute> {
   initializeModifier(instance: TextAttribute): void {
   }
 }
@@ -205,9 +205,9 @@ export class MyTextModifier extends AttributeUpdater<TextAttribute> {
 @Entry
 @Component
 struct MyStateSample {
-  modifier: MyTextModifier = new MyTextModifier();
 
-  build(): void {
+  modifier: MyTextModifier = new MyTextModifier();
+  build() {
     Row() {
       Column() {
         Text("Text")

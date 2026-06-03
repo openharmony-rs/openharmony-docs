@@ -166,7 +166,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*bufferQueueItf)->RegisterCallback(bufferQueueItf, BufferQueueCallback, pContext);
    ```
 
-7. 获取接口SL_IID_PLAY的playItf实例，开始播放。
+7. 获取接口SL_PLAYSTATE_PLAYING的playItf实例，开始播放。
      
    ```cpp
    SLPlayItf playItf = nullptr;

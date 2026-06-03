@@ -18,8 +18,6 @@
 
 定义XComponent的具体配置参数。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -59,8 +57,6 @@ enableTransparentLayer(enabled: boolean)
 3.在布局静态的场景下对带透明背景XComponent设置独立图层，布局静态场景例如：非页面跳转场景、视频弹幕静置播放场景。
 
 **系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

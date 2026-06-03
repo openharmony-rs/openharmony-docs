@@ -13,7 +13,6 @@ GesturePoint表示手势触摸点。
 
 > **说明：**
 >
-> - 本模块仅适用于ArkTS-Dyn。
 > - 本模块首批接口从API version 9开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -28,8 +27,6 @@ import { GesturePoint } from '@kit.AccessibilityKit';
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：9
-
 ### 属性
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
@@ -39,7 +36,7 @@ import { GesturePoint } from '@kit.AccessibilityKit';
 
 ### constructor<sup>(deprecated)</sup>
 
-constructor(positionX: number, positionY: number)
+constructor(positionX: number, positionY: number);
 
 构造函数。
 
@@ -48,8 +45,6 @@ constructor(positionX: number, positionY: number)
 > 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
-
-**ArkTS-Dyn起始版本**：9
 
 **参数：**
 

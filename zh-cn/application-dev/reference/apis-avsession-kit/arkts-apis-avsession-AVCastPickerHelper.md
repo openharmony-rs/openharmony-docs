@@ -27,7 +27,7 @@ constructor(context: Context)
 
 创建AVCastPickerHelper对象，获取context参考[getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -84,7 +84,7 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 通过选择模式拉起AVCastPicker界面，用户可以选择投播设备。接口采用Promise异步返回形式，传入可选参数AVCastPickerOptions对象，无返回值。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -143,7 +143,7 @@ resetCommunicationDevice(): Promise\<void>
 
 将应用通话设备恢复至默认设备。比如在语音通话场景下，手机设备的通话装置将恢复成听筒。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -181,7 +181,7 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onPickerStateChange](#onpickerstatechange23)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -225,7 +225,7 @@ resetCommunicationDevice(): Promise\<void>
 
 例如，在语音通话场景中，音频输出将自动恢复至听筒。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -304,7 +304,7 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offPickerStateChange](#offpickerstatechange23)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 

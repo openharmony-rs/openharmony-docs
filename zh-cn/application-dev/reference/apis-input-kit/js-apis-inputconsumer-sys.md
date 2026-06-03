@@ -30,7 +30,7 @@ import { inputConsumer } from '@kit.InputKit';
 
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
-订阅系统快捷键，使用callback异步回调。
+订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用callback异步方式上报组合按键数据。
 > **说明：**
 >
 > - 支持仅订阅按键的down事件，或者同时订阅按键的down事件和up事件。
@@ -50,7 +50,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
 | type       | string                     | 是    | 事件类型，目前仅支持'key'。                       |
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。从API版本26.0.0起keyOptions中新增参数[KeyCommandTriggerType](#keycommandtriggertype)，本接口无需关注此参数。|
-| callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 是    | 回调函数，返回组合按键数据。 |
+| callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
 
 **错误码**：
 
@@ -336,7 +336,7 @@ struct Index {
 
 onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 
-订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。
+订阅组合按键（按键命令模式），支持通过 triggerType 指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用 callback 异步方式上报按键事件数据。
 
 与 [inputConsumer.on('key')](#inputconsumeronkey)现有接口的区别：
 - 本接口的keyOptions支持triggerType参数，可选择按键按下触发、重复按下触发、重复按下或抬起均会触发等模式。
@@ -356,7 +356,7 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，支持triggerType参数。 |
-| callback | [KeyCommandCallback](#keycommandcallback) | 是 | 回调函数，返回组合键选项和按键事件数据。 |
+| callback | [KeyCommandCallback](#keycommandcallback) | 是 | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合键选项和按键事件数据。 |
 
 **错误码**：
 

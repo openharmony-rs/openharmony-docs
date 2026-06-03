@@ -5,7 +5,7 @@
 部分基于动态语言实现的功能无法通过静态语言实现，导致部分功能受限或行为发生更改。下面介绍状态管理功能在ArkTS-Dyn和ArkTS-Sta上的差异。
 
 ## V1和V2混用无需enableV2Compatibility
-
+   
 在ArkTS-Dyn（API version 19之后）中，状态管理V1和V2混用时，需要调用[`UIUtils.enableV2Compatibility`](../state-management/arkts-v1-v2-mixusage.md#enablev2compatibility)和[`UIUtils.makeV1Observed`](../state-management/arkts-v1-v2-mixusage.md#makev1observed)接口来实现V1和V2的状态变量传递。
 
 而在ArkTS-Sta中，由于采用相同的状态管理实现逻辑，`@Component`和`@ComponentV2`天然支持V1/V2状态变量的传递，因此无需调用`UIUtils.enableV2Compatibility`和`UIUtils.makeV1Observed`接口，可以直接混用状态管理V1与V2。
@@ -121,7 +121,7 @@ ArkTS在不同语言版本和状态管理版本中提供了不同的双向绑定
    ```typescript
    // ArkTS-Dyn - $$运算符
    TextInput({ text: $$this.text })
-   
+
    // ArkTS-Dyn - !!运算符（API 12+，推荐使用）
    TextInput({ text: this.text!! })
    ```
@@ -131,7 +131,7 @@ ArkTS在不同语言版本和状态管理版本中提供了不同的双向绑定
    ```typescript
    // ArkTS-Sta - $$()函数
    import { $$, TextInput } from '@ohos.arkui.component';
-   
+
    TextInput({ text: $$(this.stateVar) })
    ```
 
@@ -232,201 +232,4 @@ struct Page {
   }
 }
 ```
-
-## globalConnect接口变更
-
-PersistenceV2的globalConnect接口在ArkTS-Dyn和ArkTS-Sta上存在API层面的差异。以下以持久化Array类型为例进行说明。
-
-### API差异对比
-
-| 差异点 | ArkTS-Dyn | ArkTS-Sta |
-|--------|-----------|-----------|
-| globalConnect调用 | `PersistenceV2.globalConnect({...})` | `PersistenceV2.globalConnect<Array<Person>>({...})` |
-| type参数 | `type: Array<Person>` | `type: Class.from<Array<Person>>()` |
-| 嵌套类型标记 | class中使用[\@Type](../state-management/arkts-new-type.md)装饰器标记嵌套类型属性 | 不使用\@Type，统一通过[StorageDefaultSubCreators](../../reference/apis-arkui/js-apis-stateManagement-static.md#storagedefaultsubcreators)批量注册 |
-| 子元素构造器 | [defaultSubCreator](../../reference/apis-arkui/js-apis-stateManagement.md#connectoptionscollectionst-s23)：传入单个工厂函数<br>`defaultSubCreator: () => new Person()` | [defaultSubCreators](../../reference/apis-arkui/js-apis-stateManagement-static.md#connectoptions)：传入StorageDefaultSubCreators构造器集合<br>`defaultSubCreators: creators` |
-
-### 差异说明
-
-- globalConnect调用：ArkTS-Dyn中无需显式泛型；ArkTS-Sta需要显式指定泛型类型参数，以便编译器进行类型推断和检查。
-- type参数：ArkTS-Dyn中可以直接将类型作为参数传入；ArkTS-Sta中由于静态语言无法直接传递类型，需通过 `Class.from<>()` 获取类型元信息。
-- 嵌套类型标记：ArkTS-Dyn中，对于class中嵌套的自定义类属性，需要在class中使用\@Type装饰器标记类型；ArkTS-Sta中不使用\@Type装饰器，而是统一通过StorageDefaultSubCreators一次性注册所有嵌套类型的构造器。
-- 子元素构造器：ArkTS-Dyn中通过defaultSubCreator传入单个工厂函数；ArkTS-Sta中通过StorageDefaultSubCreators批量注册所有嵌套类型后，通过defaultSubCreators参数传入构造器集合。
-
-### 示例对比
-
-以持久化 `Array<Person>` 类型数据为例，其中 `Person` 包含嵌套类型 `Info`，`Info` 中包含嵌套类型 `Inner`。
-
-ArkTS-Dyn示例：
-
-```typescript
-import { PersistenceV2, UIUtils, Type } from '@kit.ArkUI';
-
-@ObservedV2
-class Inner {
-  @Trace age: number = 24; // 迁移时需将number改为int等静态类型
-}
-
-@ObservedV2
-class Info {
-  @Trace userInfo: number = 1;
-  @Trace arr: Array<Inner> = new Array<Inner>();
-}
-
-@ObservedV2
-class Person {
-  @Trace userName: string = 'John';
-  userId: number = 1;
-  @Type(Info) // 迁移时需移除@Type装饰器，嵌套类型改由defaultSubCreators统一注册
-  @Trace info: Info = new Info();
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  // globalConnect调用迁移时需：
-  // - 添加显式泛型类型参数<Array<Person>>
-  // - type参数改为Class.from<Array<Person>>()
-  // - defaultSubCreator改为defaultSubCreators，传入StorageDefaultSubCreators
-  @Local stateVar: Array<Person> = PersistenceV2.globalConnect({
-    type: Array<Person>,
-    key: 'PersonArray',
-    // 动态中defaultCreator需要使用makeObserved包装，确保从磁盘恢复的数据具备观察能力以实现自动持久化
-    // 静态中可无需makeObserved包装，去除即可
-    defaultCreator: () => UIUtils.makeObserved(new Array<Person>()),
-    // 迁移时需替换为defaultSubCreators + StorageDefaultSubCreators
-    defaultSubCreator: () => new Person()
-  })!;
-
-  build() {
-    Column() {
-      Text(`length: ${this.stateVar.length}`)
-      Button('push')
-        .onClick(() => {
-          this.stateVar.push(new Person());
-        })
-      List() {
-        ForEach(this.stateVar, (item: Person, index: number) => {
-          ListItem() {
-            Column() {
-              Text(`item: ${item.userName}`)
-                .onClick(() => {
-                  item.userName += '~';
-                  item.info.userInfo++;
-                  let inner = new Inner();
-                  inner.age = item.info.userInfo;
-                  item.info.arr.push(inner);
-                })
-              Text(`userInfo: ${item.info.userInfo}`)
-            }
-          }
-        }, (item: Person, index: number) => {
-          return item.userName + index.toString();
-        })
-      }
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-'use static'
-
-// 迁移步骤1：移除Type的导入，新增StorageDefaultSubCreators的导入
-import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local,
-  Column, Text, Button, ForEach, List, ListItem, StorageDefaultSubCreators } from '@kit.ArkUI';
-import { contextConstant } from '@kit.AbilityKit';
-
-@ObservedV2
-export class Inner {
-  @Trace age: int = 24; // 迁移步骤2：数值类型从number改为int等静态类型
-}
-
-@ObservedV2
-export class Info {
-  @Trace userInfo: int = 1;
-  @Trace arr: Array<Inner> = new Array<Inner>();
-}
-
-@ObservedV2
-export class Person {
-  @Trace userName: string = 'John';
-  userId: int = 1;
-  @Trace info: Info = new Info(); // 迁移步骤3：移除@Type装饰器，嵌套类型通过defaultSubCreators统一注册
-}
-
-// 迁移步骤4：使用StorageDefaultSubCreators批量注册所有嵌套类型的构造器，替代动态中的@Type + defaultSubCreator
-const creators = new StorageDefaultSubCreators([
-  [Class.from<Person>(), () => new Person()],
-  [Class.from<Inner>(), () => new Inner()],
-  [Class.from<Info>(), () => new Info()]
-]);
-
-@Entry
-@ComponentV2
-struct Index {
-  // 迁移步骤5：globalConnect调用变更
-  // - 添加显式泛型类型参数<Array<Person>>
-  // - type参数使用Class.from<Array<Person>>()替代Array<Person>
-  // - defaultCreator无需再调用makeObserved包装，去除即可
-  // - 使用defaultSubCreators替代defaultSubCreator，传入上述批量注册的构造器集合
-  @Local stateVar: Array<Person> = PersistenceV2.globalConnect<Array<Person>>({
-    type: Class.from<Array<Person>>(),
-    key: 'PersonArray',
-    defaultCreator: () => {
-      return new Array<Person>();
-    },
-    areaMode: contextConstant.AreaMode.EL1,
-    enableAutoSave: true,
-    defaultSubCreators: creators
-  })!;
-
-  build() {
-    Column(undefined) {
-      Text(`length: ${this.stateVar.length}`)
-      Button('push')
-        .onClick(() => {
-          this.stateVar.push(new Person());
-        })
-      List() {
-        ForEach(this.stateVar, (item: Person, index: int) => {
-          ListItem() {
-            if (item instanceof Person) {
-              Column() {
-                Text(`item: ${item.userName}`)
-                  .onClick(() => {
-                    item.userName += '~';
-                    item.info.userInfo++;
-                    let inner = new Inner();
-                    inner.age = item.info.userInfo;
-                    item.info.arr.push(inner);
-                  })
-                Text(`userInfo: ${item.info.userInfo}`)
-              }
-            }
-          }
-        }, (item: Person, index: int) => {
-          return item.userName + index.toString();
-        })
-      }
-    }
-  }
-}
-```
-
-### 迁移步骤说明
-
-从ArkTS-Dyn的globalConnect迁移到ArkTS-Sta，需要完成以下步骤：
-
-1. 移除[\@Type](../state-management/arkts-new-type.md)装饰器：静态ArkTS中不再使用\@Type标记嵌套类型属性，嵌套类型统一通过构造器注册机制处理。
-
-2. 使用[StorageDefaultSubCreators](../../reference/apis-arkui/js-apis-stateManagement-static.md#storagedefaultsubcreators)批量注册嵌套类型：将动态中\@Type装饰器 + [defaultSubCreator](../../reference/apis-arkui/js-apis-stateManagement.md#connectoptionscollectionst-s23)的方式，替换为通过StorageDefaultSubCreators一次性注册所有嵌套类型（包括Person、Info、Inner）的构造器，每个构造器使用 `Class.from<>()` 指定类型。
-
-3. 调整globalConnect调用方式：添加显式泛型参数 `<Array<Person>>`；`type` 参数从直接传入类型改为使用 `Class.from<>()` 包裹。
-
-4. 关于[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)调用：动态中defaultCreator和defaultSubCreator需要通过makeObserved包装返回值，以确保从磁盘恢复的数据具备观察能力以实现自动持久化；静态中可无需makeObserved包装，去除即可。
-
-5. 替换defaultSubCreator为[defaultSubCreators](../../reference/apis-arkui/js-apis-stateManagement-static.md#connectoptions)：将上述通过StorageDefaultSubCreators创建的构造器集合，通过defaultSubCreators参数传入globalConnect。
 

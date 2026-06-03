@@ -1,10 +1,4 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta的@BuilderParam（引用@Builder函数）
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @lixingchi1; @katabanga-->
-<!--Designer: @lixingchi1; @katabanga-->
-<!--Tester: @TerryTsao-->
-<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -37,33 +31,33 @@ ArkTS-Dyn使用\@Builder函数初始化ArkTS-Sta\@BuilderParam时，\@Builder仅
 
 ```text
 project/
-├── entry/                                        # ArkTS-Dyn主模块
+├── entry/                            # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── BuilderParamByRef.ets     # @Builder初始化@BuilderParam
+│                   └── Index.ets     # @Builder初始化@BuilderParam
 │
-└── static_module/                                # ArkTS-Sta子模块
+└── static_module/                    # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── StaBuilderParamByRef.ets  # 定义Person接口，定义@BuilderParam并引用传递
+                    └── MainPage.ets  # 定义Person接口，定义@BuilderParam并引用传递
 ```
 
 示例如下：
 
 - 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件以及`Person`接口。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-<!-- @[DynInteropStaStaBuilderParamByRef](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaUI/static_module/src/main/ets/components/StaBuilderParamByRef.ets) -->
+```TypeScript
+'use static'
 
-``` TypeScript
-// static_module/src/main/ets/components/StaBuilderParamByRef.ets
+// static_module/src/main/ets/components/MainPage.ets
 import { Component, Builder, BuilderParam, Column, Button } from '@ohos.arkui.component';
 import { State, Observed } from '@ohos.arkui.stateManagement';
 
-export interface IPerson { // ArkTS-Sta侧的对象字面量interface
+export interface Person { // ArkTS-Sta侧的对象字面量interface
   name: string;
   age: number;
 }
@@ -74,12 +68,12 @@ export struct Child {
   @State age: number = 20;
 
   @Builder
-  myBuilder(person: IPerson): void {}
+  myBuilder(person: Person) {}
 
   // 使用@BuilderParam接收ArkTS-Dyn侧传递的@Builder函数
-  @BuilderParam customBuilderParam: (person: IPerson) => void = this.myBuilder;
+  @BuilderParam customBuilderParam: (person: Person) => void = this.myBuilder;
 
-  build(): void {
+  build() {
     Column() {
       // 调用@BuilderParam定义的变量，传递ArkTS-Sta侧的对象字面量
       this.customBuilderParam({ name: this.name, age: this.age })
@@ -88,49 +82,38 @@ export struct Child {
           // 修改状态变量，触发@Builder内部UI刷新
           this.name += 'a';
         })
-        .width(300)
-        .margin(10)
       Button('changeAge')
         .onClick(() => {
           // 修改状态变量，触发@Builder内部UI刷新
           this.age += 1;
         })
-        .width(300)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
 
-<!-- @[DynInteropStaBuilderParamIndexByRef](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaUI/static_module/Index.ets) -->
+```TypeScript
+'use static'
 
-``` TypeScript
-// static_module/Index.ets
-export { IPerson, Child } from './src/main/ets/components/StaBuilderParamByRef'; // 导出ArkTS-Sta侧的对象字面量interface和自定义组件
+// static_module/index.ets
+export { Person, Child } from './src/main/ets/components/MainPage';
 ```
 
 - 在ArkTS-Dyn主模块`entry`中引入ArkTS-Sta的自定义组件，传递\@Builder。且在`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-<!-- @[DynInteropStaBuilderParamByRef](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaUI/entry/src/main/ets/pages/BuilderParamByRef.ets) -->
-
-``` TypeScript
-// entry/src/main/ets/pages/BuilderParamByRef.ets
-import { IPerson, Child } from 'static_module'; // 引入ArkTS-Sta侧的IPerson接口与自定义组件
+```TypeScript
+// entry/src/main/ets/pages/Index.ets
+import { Person, Child } from 'static_module'; // 引入ArkTS-Sta侧的Person接口与自定义组件
 
 @Entry
 @Component
 struct Parent { // ArkTS-Dyn侧的自定义组件
   @Builder
-  personInfo(person: IPerson) {
+  personInfo(person: Person) {
     Column() {
       Text(`Name: ${person.name}`)
-        .fontSize(20) 
-        .margin(10)
       Text(`Age: ${person.age}`)
-        .fontSize(20) 
-        .margin(10)
-    }
+      }
   }
 
   build() {
@@ -138,7 +121,6 @@ struct Parent { // ArkTS-Dyn侧的自定义组件
       // 传递@Builder函数引用
       Child({ customBuilderParam: this.personInfo })
     }
-    .width('100%')
   }
 }
 ```
@@ -151,9 +133,6 @@ struct Parent { // ArkTS-Dyn侧的自定义组件
 }
 ```
 
-示例效果图：
-
-![arkts-dyn-interop-sta-builderparam-demo1](figures/arkts-dyn-interop-sta-builderparam-demo1.gif)
 
 ### 按值传递参数
 
@@ -163,19 +142,19 @@ struct Parent { // ArkTS-Dyn侧的自定义组件
 
 ```text
 project/
-├── entry/                                          # ArkTS-Dyn主模块
+├── entry/                            # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── BuilderParamByValue.ets     # @Builder初始化@BuilderParam
+│                   └── Index.ets     # @Builder初始化@BuilderParam
 │
-└── static_module/                                  # ArkTS-Sta子模块
+└── static_module/                    # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── StaBuilderParamByValue.ets  # 定义@BuilderParam并调用
+                    └── MainPage.ets  # 定义@BuilderParam并调用
 ```
 
 下面的代码示例展示了使用ArkTS-Dyn的\@Builder函数给ArkTS-Sta自定义组件的\@BuilderParam赋值并显示UI。
@@ -183,22 +162,22 @@ project/
 
 - 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-<!-- @[DynInteropStaStaBuilderParamByValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaUI/static_module/src/main/ets/components/StaBuilderParamByValue.ets) -->
+```TypeScript
+'use static'
 
-``` TypeScript
-// static_module/src/main/ets/components/StaBuilderParamByValue.ets
+// static_module/src/main/ets/components/MainPage.ets
 import { Component, Builder, BuilderParam, Column } from '@ohos.arkui.component';
 
 @Component
-export struct ChildByValue { // ArkTS-Sta侧的自定义组件
+export struct Child { // ArkTS-Sta侧的自定义组件
   @Builder
-  myBuilder(str: string): void {
+  myBuilder(str: string) {
   }
 
   // 使用@BuilderParam接收ArkTS-Dyn侧传递的@Builder函数
   @BuilderParam customBuilderParam: (input: string) => void = this.myBuilder;
 
-  build(): void {
+  build() {
     Column() {
       this.customBuilderParam('Hello World!')
     }
@@ -206,11 +185,11 @@ export struct ChildByValue { // ArkTS-Sta侧的自定义组件
 }
 ```
 
-<!-- @[DynInteropStaBuilderParamIndexByValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaUI/static_module/Index.ets) -->
+```TypeScript
+'use static'
 
-``` TypeScript
-// static_module/Index.ets
-export { ChildByValue } from './src/main/ets/components/StaBuilderParamByValue';
+// static_module/index.ets
+export { Child } from './src/main/ets/components/MainPage';
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
@@ -225,11 +204,9 @@ export { ChildByValue } from './src/main/ets/components/StaBuilderParamByValue';
 
 - 在ArkTS-Dyn主模块`entry`中引入ArkTS-Sta的自定义组件，且传递\@Builder。
 
-<!-- @[DynInteropStaBuilderParamByValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaUI/entry/src/main/ets/pages/BuilderParamByValue.ets) -->
-
-``` TypeScript
-// entry/src/main/ets/pages/BuilderParamByValue.ets
-import { ChildByValue } from 'static_module'; // 引入ArkTS-Sta侧的自定义组件
+```TypeScript
+// entry/src/main/ets/pages/Index.ets
+import { Child } from 'static_module'; // 引入ArkTS-Sta侧的自定义组件
 
 @Entry
 @Component
@@ -237,19 +214,13 @@ struct Parent {
   @Builder
   myText(input: string) { // ArkTS-Dyn侧的@Builder函数
     Text(input)
-      .fontSize(20) 
-      .margin(10)
   }
 
   build() {
     Column() {
       // 传递@Builder函数引用
-      ChildByValue({ customBuilderParam: this.myText })
+      Child({ customBuilderParam: this.myText })
     }
   }
 }
 ```
-
-示例效果图：
-
-![arkts-dyn-interop-sta-builderparam-demo2](figures/arkts-dyn-interop-sta-builderparam-demo2.png)

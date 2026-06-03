@@ -455,17 +455,17 @@ struct Index {
               actionTime: 2,
               screenId: 1,
               windowId: 0,
-              action: MouseAction.BUTTON_DOWN,
+              action: 2,
               screenX: 100,
               screenY: 200,
               windowX: 100,
               windowY: 200,
               rawDeltaX: 200,
               rawDeltaY: 200,
-              button: Button.RIGHT,
-              pressedButtons: [Button.RIGHT],
+              button: 2,
+              pressedButtons: [2],
               axes: [],
-              pressedKeys: [],
+              pressedKeys: [0],
               ctrlKey: false,
               altKey: false,
               shiftKey: false,
@@ -474,7 +474,7 @@ struct Index {
               capsLock: false,
               numLock: false,
               scrollLock: false,
-              toolType: MouseToolType.MOUSE,
+              toolType: 1,
             }
             let mouseButtonDown: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonDownData
@@ -657,8 +657,8 @@ struct Index {
             inputEventClient.injectTouchEvent(touchEventUp);
 
             let touchEventDownData: TouchEvent = {
-              action: KeyAction.DOWN,
-              sourceType: SourceType.TOUCH_SCREEN,
+              action: 1,
+              sourceType: 0,
               touch: touchEvent,
               touches: [],
               id: 0,

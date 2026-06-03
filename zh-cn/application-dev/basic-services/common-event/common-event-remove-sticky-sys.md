@@ -12,7 +12,7 @@
 
 ## 接口说明
 
-参考接口文档[removeStickyCommonEvent](../../reference/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10)。
+参考[接口文档](../../reference/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10)。
 
 | 接口名 | 接口描述 |
 | -------- | -------- |
@@ -25,7 +25,6 @@
 
 2. 导入模块。
 
-   ArkTS-Dyn示例：
    ```ts
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -34,39 +33,15 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-   ArkTS-Sta示例：
-   ``` TypeScript
-   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   
-   const TAG: string = 'ProcessModel';
-   const DOMAIN_NUMBER: int = 0xFF00;
-   ```
-
-3. 调用[removeStickyCommonEvent](../../reference/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10)方法移除对应的粘性公共事件。
+3. 调用[`removeStickyCommonEvent()`](../../reference/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10)方法移除对应的粘性公共事件。
 
    > **说明：**
    >
    > 移除的粘性公共事件，必须是本应用之前已发布的粘性公共事件，发布粘性公共事件参考[公共事件发布](common-event-publish.md)章节。
 
-   ArkTS-Dyn示例：
    ```ts
    // 移除粘性公共事件，其中的event字段需要替换为实际的事件名称。
    commonEventManager.removeStickyCommonEvent('event', (err: BusinessError) => {
-     // sticky_event粘性公共事件名
-     if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to remove sticky common event. Code is ${err.code}, message is ${err.message}`);
-       return;
-     }
-     // ...
-     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in removing sticky event.`);
-   });
-   ```
-
-   ArkTS-Sta示例：
-   ```ts
-   // 移除粘性公共事件，其中的event字段需要替换为实际的事件名称。
-   commonEventManager.removeStickyCommonEvent('event', (err: BusinessError | null) => {
      // sticky_event粘性公共事件名
      if (err) {
        hilog.error(DOMAIN_NUMBER, TAG, `Failed to remove sticky common event. Code is ${err.code}, message is ${err.message}`);

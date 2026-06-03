@@ -221,7 +221,7 @@ hasIrEmitter(): Promise&lt;boolean&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示设备具有红外发射器；返回false表示设备不具有红外发射器。|
+| Promise&lt;boolean&gt; | 如果设备具有红外发射器，则返回true；否则返回false。|
 
 **错误码：**
 
@@ -275,7 +275,7 @@ struct Index {
             // 查询是否有红外发射器
             infraredEmitter.hasIrEmitter().then((result: boolean) => {
               console.info(`Succeeded in querying infrared emitter: ${JSON.stringify(result)}.`);
-            }).catch((error)=> {
+            }).catch((error: BusinessError)=> {
               console.error(`Failed to query infrared emitter, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);})
         })
     }

@@ -54,7 +54,6 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
 
 3. 打开EmbeddedUIExtAbility.ets文件，导入EmbeddedUIExtensionAbility的依赖包，自定义类继承EmbeddedUIExtensionAbility并实现onCreate、onSessionCreate、onSessionDestroy、onForeground、onBackground和onDestroy生命周期回调。
 
-    ArkTS-Dyn示例：
     <!-- @[embeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/embeddeduiextability/EmbeddedUIExtAbility.ets) -->
     
     ``` TypeScript
@@ -94,51 +93,9 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
     }
     ```
 
-    ArkTS-Sta示例：
-    <!-- @[embeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/EmbeddedUIExtensionAbility-sta/entry/src/main/ets/embeddeduiextability/EmbeddedUIExtAbility.ets) -->
-    
-    ``` TypeScript
-    import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-    import { LocalStorage } from '@ohos.arkui.stateManagement';
-    
-    const TAG: string = '[EmbeddedUIExtAbility]';
-    
-    export default class EmbeddedUIExtAbility extends EmbeddedUIExtensionAbility {
-      onCreate(): void {
-        console.info(TAG, `onCreate`);
-      }
-    
-      onForeground(): void {
-        console.info(TAG, `onForeground`);
-      }
-    
-      onBackground(): void {
-        console.info(TAG, `onBackground`);
-      }
-    
-      onDestroy(): Promise<void> | undefined {
-        console.info(TAG, `onDestroy`);
-      }
-    
-      onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-        console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
-        let param: Record<string, UIExtensionContentSession> = {
-          'session': session
-        };
-        let storage: LocalStorage = new LocalStorage(param);
-        session.loadContent('pages/extension', storage);
-      }
-    
-      onSessionDestroy(session: UIExtensionContentSession): void {
-        console.info(TAG, `onSessionDestroy`);
-      }
-    }
-    ```
-
 
 4. EmbeddedUIExtensionAbility的onSessionCreate中加载了入口页面文件pages/extension.ets内容如下：
 
-    ArkTS-Dyn示例：
     <!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/Extension.ets) -->
 
     ``` TypeScript
@@ -169,41 +126,7 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
     }
     ```
 
-    ArkTS-Sta示例：
-    <!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/EmbeddedUIExtensionAbility-sta/entry/src/main/ets/pages/Extension.ets) -->
-    
-    ``` TypeScript
-    import { UIExtensionContentSession } from '@kit.AbilityKit';
-    
-    import { Entry, Text, Column, Component, Button, FontWeight, State } from '@kit.ArkUI'
-    
-    @Entry()
-    @Component
-    struct Extension {
-      @State message: string = 'EmbeddedUIExtensionAbility Index';
-      localStorage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-      private session: UIExtensionContentSession | undefined = this.localStorage?.get<UIExtensionContentSession>('session');
-    
-      build() {
-        Column() {
-          Text(this.message)
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-          Button('terminateSelfWithResult').fontSize(20).onClick(() => {
-            this.session?.terminateSelfWithResult({
-              resultCode: 1,
-              want: {
-                bundleName: 'com.samples.embeddeduiextensionability',
-                abilityName: 'ExampleEmbeddedAbility'
-              }});
-          })
-        }.width('100%').height('100%')
-      }
-    }
-    ```
-
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册EmbeddedUIExtensionAbility，type标签需要设置为“embeddedUI”，srcEntry标签表示当前EmbeddedUIExtensionAbility组件所对应的代码路径。
-
 
     <!-- @[embeddedModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/module.json5) -->
 
@@ -237,54 +160,11 @@ ohos.extension.processMode.hostSpecified和ohos.extension.processMode.hostInstan
 
 如在首页文件：pages/Index.ets中添加如下内容：
 
-ArkTS-Dyn示例：
 <!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/BasicClass.ets) -->
 
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct BasicClass {
-  @State message: string = 'Message: ';
-  private want: Want = {
-    bundleName: 'com.samples.embeddeduiextensionability',
-    abilityName: 'EmbeddedUIExtAbility',
-    parameters: {
-      'ohos.extension.processMode.hostInstance': 'true'
-    }
-  };
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message).fontSize(30)
-        EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-          .width('100%')
-          .height('90%')
-          .onTerminated((info: TerminationInfo) => {
-            this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
-          })
-          .onError((error: BusinessError) => {
-            this.message = 'Error: code = ' + error.code;
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-ArkTS-Sta示例：
-<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/EmbeddedUIExtensionAbility-sta/entry/src/main/ets/pages/BasicClass.ets) -->
-
-``` TypeScript
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-import { Entry, Text, Row, Column, Component, State, EmbeddedComponent, TerminationInfo, EmbeddedType } from '@kit.ArkUI';
 
 @Entry
 @Component

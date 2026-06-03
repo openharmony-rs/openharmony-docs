@@ -15,7 +15,7 @@
 
 > **说明：**
 > 
-> 应用退至后台后，在不同类型设备上生命周期变化存在差异，详见[不同设备UIAbility生命周期的差异化行为](../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
+> 应用退至后台后，在不同类型设备上生命周期变化存在差异，详见[不同设备生命周期的差异化行为](../windowmanager/window-overview.md#不同设备生命周期的差异化行为)。
 
 ### 使用场景
 

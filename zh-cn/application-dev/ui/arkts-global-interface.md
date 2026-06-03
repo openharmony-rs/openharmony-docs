@@ -168,9 +168,9 @@ struct Index {
 ```
 使用UIContext接口替换：
 
-ArkTS-Dyn示例：
+<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) --> 
 
-<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) -->
+ArkTS-Dyn示例：
 
 ``` TypeScript
 // pages/NewGlobal.ets
@@ -203,34 +203,46 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/NewGlobal.ets) -->
-
 ``` TypeScript
 // pages/NewGlobal.ets
-import { Entry, Component, Column, Text, FontWeight, FlexAlign, HorizontalAlign } from '@ohos.arkui.component';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+import {
+  Component,
+  Entry,
+  RelativeContainer,
+  Text,
+  FontWeight,
+  VerticalAlign,
+  HorizontalAlign,
+  ClickEvent,
+  AlignRuleOption
+} from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
 
 const DOMAIN = 0x0000;
+const TAG = 'testTag';
 
 @Entry
 @Component
 struct Index {
   build() {
-    Column() {
+    RelativeContainer() {
       Text('Calculate 20vp to px')
         .fontWeight(FontWeight.Bold)
-        .onClick(() => {
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .onClick((_: ClickEvent) => {
           let uiContext = this.getUIContext();
           let pxValue = uiContext.vp2px(20);
-          hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+          hilog.info(DOMAIN, TAG, `20vp equals to ${pxValue}px`);
         })
     }
     .height('100%')
     .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
   }
 }
+
 ```
 
 ### 通过窗口对象获取UIContext对象
@@ -320,10 +332,9 @@ export default class EntryAbility extends UIAbility {
 ```
 使用UIContext接口替换：
 
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+
 ArkTS-Dyn示例：
-
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
 ``` TypeScript
 // entryability/EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -386,15 +397,14 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+ArkTS-Sta示例：
 ``` TypeScript
 // entryability/EntryAbility.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-import { LocalStorage } from '@ohos.arkui.stateManagement';
-import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import hilog from '@ohos.hilog';
+import window from '@ohos.window';
 import { ContextUtils } from '../Common/ContextUtils';
 import { WindowUIContextUtils } from '../Common/WindowUtils';
 import { PixelUtils } from '../Common/UIContext';
@@ -409,26 +419,20 @@ export default class EntryAbility extends UIAbility {
     let localStorage = new LocalStorage();
     localStorage.setOrCreate('message', 'Message from Storage')
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'success localStorage');
-    let windowClass: window.Window;
-    try {
-      windowClass = windowStage.getMainWindowSync();
-    } catch (exception) {
-      hilog.error(DOMAIN, 'testTag', `Failed to get main window. Cause: ${exception}`);
-      return;
-    }
+    let window = windowStage.getMainWindowSync();
     // 注册主窗的回调。
-    WindowUIContextUtils.registerWindowCallback(windowClass);
+    WindowUIContextUtils.registerWindowCallback(window);
     // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
-    windowStage.loadContent('pages/Index', localStorage, (err: BusinessError<void> | null): void => {
+    windowStage.loadContent('pages/Index', localStorage, (err) => {
       // 需要在loadContent完成后获取UIContext。
-      if (err && err.code) {
+      if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
       hilog.info(DOMAIN, 'testTag', `loadContent success.`);
       // 需要在回调中调用。
       try {
-        let uiContext = windowClass.getUIContext();
+        let uiContext = window.getUIContext();
         PixelUtils.setUIContext(uiContext);
         // 主窗获焦可能早于loadContent完成，需要在成功后设置保证有效。
         WindowUIContextUtils.setActiveUIContext(uiContext)
@@ -457,7 +461,6 @@ export default class EntryAbility extends UIAbility {
 }
 
 ```
-
 ### 通过静态方法获取UIContext对象
 从API version 22开始，开发者可以通过UIContext类静态方法如[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)获取UIContext对象。
 
@@ -543,8 +546,8 @@ export default class EntryAbility extends UIAbility {
   // ...
 }
 ```
-ArkTS-Dyn示例：
 <!--deprecated_code_no_check-->
+ArkTS-Dyn示例：
 ``` TypeScript
 // pages/Index.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -614,9 +617,9 @@ struct Index {
 使用静态方法替换：
 
 ArkTS-Dyn示例：
-<!--deprecated_code_no_check-->
-<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
+<!--deprecated_code_no_check-->
 ``` TypeScript
 // entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -739,7 +742,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ArkTS-Dyn示例：
-<!-- @[Common_Index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[Common_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // pages/Index.ets
@@ -816,16 +819,13 @@ struct Index {
 ```
 [resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)接口获取UIContext的逻辑与下面示例通过基础查询接口组合使用的代码逻辑是等价的。
 
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->
+
 ArkTS-Dyn示例：
 
-<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->
-
 ``` TypeScript
-// common/Utils.ets
-import hilog from '@ohos.hilog';
-import { UIContext } from '@ohos.arkui';
-
-export function GetUIContextByAtomicInterface(): UIContext {
+// Common/Utils.ets
+function GetUIContextByAtomicInterface(): UIContext {
   let callingScopeUIContext = UIContext.getCallingScopeUIContext();
   if (callingScopeUIContext) {
     hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
@@ -951,7 +951,7 @@ class PixelUtils {
 使用UIContext接口替换：
 
 ArkTS-Dyn示例：
-<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->
 
 ``` TypeScript
 // common/Utils.ets
@@ -1001,12 +1001,13 @@ export class PixelUtil {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/Utils.ets) -->
-
 ``` TypeScript
 // common/Utils.ets
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { UIContext } from '@ohos.arkui.UIContext';
+
+import {
+  UIContext
+} from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
 
 const DOMAIN = 0x0000;
 
@@ -1022,37 +1023,37 @@ export class PixelUtil {
   }
 
   static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
-    let currentContext = uiContext ?? PixelUtil.uiContext;
-    if (!currentContext || !currentContext.isAvailable()) {
+    let _uiContext = uiContext ?? PixelUtil.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
       return undefined;
     }
-    return (currentContext as UIContext).vp2px(vpValue)
+    return _uiContext.vp2px(vpValue)
   }
 
   static fp2px(fpValue: number, uiContext?: UIContext): number | undefined {
-    let currentContext = uiContext ?? PixelUtil.uiContext;
-    if (!currentContext || !currentContext.isAvailable()) {
+    let _uiContext = uiContext ?? PixelUtil.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
       return undefined;
     }
-    return (currentContext as UIContext).fp2px(fpValue)
+    return _uiContext.fp2px(fpValue)
   }
 
   lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
-    let currentContext = uiContext ?? PixelUtil.uiContext;
-    if (!currentContext || !currentContext.isAvailable()) {
+    let _uiContext = uiContext ?? PixelUtil.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
       return undefined;
     }
-    return (currentContext as UIContext).lpx2px(lpxValue)
+    return _uiContext.lpx2px(lpxValue)
   }
 }
+
 ```
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ArkTS-Dyn示例：
-
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -1118,15 +1119,14 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
 ``` TypeScript
 // entryability/EntryAbility.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import hilog from '@ohos.hilog';
+import window from '@ohos.window';
 import { LocalStorage } from '@ohos.arkui.stateManagement';
-import { BusinessError } from '@ohos.base';
 import { ContextUtils } from '../Common/ContextUtils';
 import { WindowUIContextUtils } from '../Common/WindowUtils';
 import { PixelUtils } from '../Common/UIContext';
@@ -1141,26 +1141,20 @@ export default class EntryAbility extends UIAbility {
     let localStorage = new LocalStorage();
     localStorage.setOrCreate('message', 'Message from Storage')
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'success localStorage');
-    let windowClass: window.Window;
-    try {
-      windowClass = windowStage.getMainWindowSync();
-    } catch (exception) {
-      hilog.error(DOMAIN, 'testTag', `Failed to get main window. Cause: ${exception}`);
-      return;
-    }
+    let window = windowStage.getMainWindowSync();
     // 注册主窗的回调。
-    WindowUIContextUtils.registerWindowCallback(windowClass);
+    WindowUIContextUtils.registerWindowCallback(window);
     // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
-    windowStage.loadContent('pages/Index', localStorage, (err: BusinessError<void> | null): void => {
+    windowStage.loadContent('pages/Index', localStorage, (err, _data) => {
       // 需要在loadContent完成后获取UIContext。
-      if (err && err.code) {
+      if (err !== null) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
       hilog.info(DOMAIN, 'testTag', `loadContent success.`);
       // 需要在回调中调用。
       try {
-        let uiContext = windowClass.getUIContext();
+        let uiContext = window.getUIContext();
         PixelUtils.setUIContext(uiContext);
         // 主窗获焦可能早于loadContent完成，需要在成功后设置保证有效。
         WindowUIContextUtils.setActiveUIContext(uiContext)
@@ -1193,7 +1187,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Dyn示例：
 
-<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->
+<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->
 
 ``` TypeScript
 // pages/VpPage.ets
@@ -1226,12 +1220,19 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/VpPage.ets) -->
-
 ``` TypeScript
 // pages/VpPage.ets
-import { Entry, Component, Column, Text, FontWeight, FlexAlign, HorizontalAlign } from '@ohos.arkui.component';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+import {
+  AlignRuleOption,
+  Component,
+  Entry,
+  FontWeight,
+  HorizontalAlign,
+  RelativeContainer,
+  Text,
+  VerticalAlign
+} from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
 import { PixelUtil } from '../Common/Utils';
 
 const DOMAIN = 0x0000;
@@ -1240,9 +1241,13 @@ const DOMAIN = 0x0000;
 @Component
 struct Index {
   build() {
-    Column() {
+    RelativeContainer() {
       Text('Calculate 20vp to px')
         .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
         .onClick(() => {
           let pxValue = PixelUtil.vp2px(20, this.getUIContext());
           hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
@@ -1250,14 +1255,13 @@ struct Index {
     }
     .height('100%')
     .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
   }
 }
+
 ```
 无法获取UIContext时，可考虑直接调用。
 
-<!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 let pxValue = PixelUtils.vp2px(20);
@@ -1275,9 +1279,9 @@ hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
 
 使用UIContext接口替换：
 
-ArkTS-Dyn示例：
+<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->
 
-<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->
+ArkTS-Dyn示例：
 
 ``` TypeScript
 // common/WindowUtils.ets
@@ -1329,13 +1333,12 @@ export class WindowUIContextUtils {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->
-
 ``` TypeScript
 // common/WindowUtils.ets
-import { display, window } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { UIContext } from '@ohos.arkui.UIContext';
+import { UIContext } from '@ohos.arkui.component';
+import display from '@ohos.display';
+import hilog from '@ohos.hilog';
+import window from '@ohos.window';
 
 const DOMAIN = 0x0000;
 
@@ -1344,7 +1347,7 @@ export class WindowUIContextUtils {
 
   static registerWindowCallback(windowClass: window.Window): void {
     try {
-      windowClass.onWindowEvent((event: window.WindowEventType): void => {
+      windowClass.onWindowEvent((event: window.WindowEventType) => {
         if (event === window.WindowEventType.WINDOW_ACTIVE) {
           try {
             let uiContext = windowClass.getUIContext();
@@ -1355,7 +1358,7 @@ export class WindowUIContextUtils {
         }
       });
     } catch (exception) {
-      hilog.error(DOMAIN, 'testTag', `Failed to register callback. Cause: ${exception}`);
+      console.error(`Failed to unregister callback. Cause: ${exception}`);
     }
   }
 
@@ -1368,26 +1371,22 @@ export class WindowUIContextUtils {
   }
 
   static vp2px(vpValue: number, uiContext?: UIContext): number {
-    let currentContext = uiContext ?? WindowUIContextUtils.activeUIContext;
-    if (!currentContext || !currentContext.isAvailable()) {
-      try {
-        let displayClass = display.getDefaultDisplaySync();
-        let density = displayClass.densityPixels;
-        return vpValue * density;
-      } catch (exception) {
-        hilog.error(DOMAIN, 'testTag', `Can't get default display, ${exception}`);
-        return vpValue;
-      }
+    let _uiContext = uiContext ?? WindowUIContextUtils.activeUIContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
+      let displayClass = display.getDefaultDisplaySync();
+      let density = displayClass.densityPixels;
+      return vpValue * density;
     }
 
-    return (currentContext as UIContext).vp2px(vpValue);
+    return _uiContext.vp2px(vpValue);
   }
 }
+
 ```
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -1452,15 +1451,14 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
 ``` TypeScript
 // entryability/EntryAbility.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import { LocalStorage } from '@ohos.arkui.stateManagement';
-import { BusinessError } from '@ohos.base';
+import hilog from '@ohos.hilog';
+import window from '@ohos.window';
 import { ContextUtils } from '../Common/ContextUtils';
 import { WindowUIContextUtils } from '../Common/WindowUtils';
 import { PixelUtils } from '../Common/UIContext';
@@ -1475,26 +1473,20 @@ export default class EntryAbility extends UIAbility {
     let localStorage = new LocalStorage();
     localStorage.setOrCreate('message', 'Message from Storage')
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'success localStorage');
-    let windowClass: window.Window;
-    try {
-      windowClass = windowStage.getMainWindowSync();
-    } catch (exception) {
-      hilog.error(DOMAIN, 'testTag', `Failed to get main window. Cause: ${exception}`);
-      return;
-    }
+    let window = windowStage.getMainWindowSync();
     // 注册主窗的回调。
-    WindowUIContextUtils.registerWindowCallback(windowClass);
+    WindowUIContextUtils.registerWindowCallback(window);
     // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
-    windowStage.loadContent('pages/Index', localStorage, (err: BusinessError<void> | null): void => {
+    windowStage.loadContent('pages/Index', localStorage, (err, _data) => {
       // 需要在loadContent完成后获取UIContext。
-      if (err && err.code) {
+      if (err !== null) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
       hilog.info(DOMAIN, 'testTag', `loadContent success.`);
       // 需要在回调中调用。
       try {
-        let uiContext = windowClass.getUIContext();
+        let uiContext = window.getUIContext();
         PixelUtils.setUIContext(uiContext);
         // 主窗获焦可能早于loadContent完成，需要在成功后设置保证有效。
         WindowUIContextUtils.setActiveUIContext(uiContext)
@@ -1511,24 +1503,19 @@ export default class EntryAbility extends UIAbility {
     });
   }
 
-  onWindowStageWillDestroy(windowStage: window.WindowStage): void {
-    try {
-      let windowClass = windowStage.getMainWindowSync();
-      hilog.info(DOMAIN, 'testTag', '%{public}s', `The main window: ${windowClass}`);
-      // 注销主窗的回调。
-      WindowUIContextUtils.unregisterWindowCallback(windowClass);
-    } catch (exception) {
-      hilog.error(DOMAIN, 'testTag', `Failed to get main window. Cause: ${exception}`);
-    }
+  onWindowStageWillDestroy(windowStage: window.WindowStage) {
+    let window = windowStage.getMainWindowSync();
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `The main window: ${window}`);
+    // 注销主窗的回调。
+    WindowUIContextUtils.unregisterWindowCallback(window);
   }
 
   // ...
 }
-
 ```
 
 ArkTS-Dyn示例：
-<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->
+<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->
 
 ``` TypeScript
 // pages/WindowTestPage.ets
@@ -1593,14 +1580,12 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->
-
 ``` TypeScript
 // pages/WindowTestPage.ets
-import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
+import { ClickEvent, Column, Component, Entry, Text } from '@ohos.arkui.component';
 import { BusinessError } from '@ohos.base';
+import hilog from '@ohos.hilog';
+import window from '@ohos.window';
 import { WindowUIContextUtils } from '../Common/WindowUtils';
 
 const DOMAIN = 0x0000;
@@ -1613,43 +1598,42 @@ struct Index {
   build() {
     Column() {
       Text('Create SubWindow')
-        .onClick((event: ClickEvent): void => {
-          let hostContext = this.getUIContext().getHostContext();
-          if (!hostContext) {
-            hilog.error(DOMAIN, 'testTag', `Can't get host context`);
-            return;
-          }
+        .onClick((_e: ClickEvent) => {
           let config: window.Configuration = {
             name: 'test',
             windowType: window.WindowType.TYPE_DIALOG,
-            ctx: hostContext
+            ctx: this.getUIContext().getHostContext()
           };
-          window.createWindow(config)
-            .then((windowClass: window.Window): void => {
+          try {
+            window.createWindow(config, (err: BusinessError | null, windowClass: window.Window | undefined) => {
+              const errCode: number = err ? err.code : 0;
+              if (errCode || !windowClass) {
+                hilog.error(DOMAIN, 'testTag', `Failed to create the window. Cause: ${errCode}`);
+                return;
+              }
               // 在窗口创建后注册回调。
               this.subWindow = windowClass;
-              windowClass.setUIContent('pages/Index')
-                .then((): void => {
+              try {
+                windowClass.setUIContent('pages/Index', () => {
                   WindowUIContextUtils.registerWindowCallback(windowClass);
                   windowClass.resize(500, 1000);
                   windowClass.showWindow();
-                })
-                .catch((error: BusinessError): void => {
-                  hilog.error(DOMAIN, 'testTag', `Failed to setUIContent. Cause : ${error.message}`);
                 });
-            })
-            .catch((error: BusinessError): void => {
-              hilog.error(DOMAIN, 'testTag', `Failed to create the window. Cause : ${error.message}`);
+              } catch (exception) {
+                hilog.error(DOMAIN, 'testTag', `Failed to setUIContent. Cause : ${exception}`);
+              }
             });
+          } catch (exception) {
+            hilog.error(DOMAIN, 'testTag', `Failed to create the window. Cause : ${exception}`);
+          }
         })
       Text('Destroy SubWindow')
-        .onClick((event: ClickEvent): void => {
+        .onClick((_e: ClickEvent) => {
           let subWindow = this.subWindow;
           if (subWindow) {
             // 在窗口销毁前注销回调。
             WindowUIContextUtils.unregisterWindowCallback(subWindow);
             subWindow.destroyWindow();
-            this.subWindow = undefined;
           }
         })
     }
@@ -1657,6 +1641,7 @@ struct Index {
     .width('100%')
   }
 }
+
 ```
 ### 执行绑定UI实例的闭包
 
@@ -1666,7 +1651,7 @@ struct Index {
 
 ArkTS-Dyn示例：
 
-<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->
+<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->
 
 ``` TypeScript
 // pages/CalendarPickerDialogPage.ets
@@ -1702,23 +1687,37 @@ struct CalendarPickerDialogPage {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->
-
 ``` TypeScript
 // pages/CalendarPickerDialogPage.ets
-import { Entry, Component, Column, Button, CalendarPickerDialog, Color, BlurStyle, ShadowStyle, FlexAlign,
-  HorizontalAlign } from '@ohos.arkui.component';
+import {
+  AlignRuleOption,
+  BlurStyle,
+  Button,
+  CalendarPickerDialog,
+  Color,
+  Component,
+  Entry,
+  HorizontalAlign,
+  RelativeContainer,
+  ShadowStyle,
+  VerticalAlign
+} from '@ohos.arkui.component';
 
 @Entry
 @Component
 struct CalendarPickerDialogPage {
+  private readonly buttonAlignRules: AlignRuleOption = {
+    center: { anchor: '__container__', align: VerticalAlign.Center },
+    middle: { anchor: '__container__', align: HorizontalAlign.Center }
+  };
   private selectedDate: Date = new Date('2025-10-01');
 
   build() {
-    Column() {
+    RelativeContainer() {
       Button('Show CalendarPicker Dialog')
+        .alignRules(this.buttonAlignRules)
         .onClick(() => {
-          let uiContext = this.getUIContext();
+          const uiContext = this.getUIContext();
           uiContext.runScopedTask(() => {
             CalendarPickerDialog.show({
               selected: this.selectedDate,
@@ -1731,8 +1730,6 @@ struct CalendarPickerDialogPage {
     }
     .height('100%')
     .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
   }
 }
 ```
@@ -1813,7 +1810,7 @@ export class PixelUtils {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->
+<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->
 
 ``` TypeScript
 // Common/UIContext.ets
@@ -1861,13 +1858,11 @@ export class PixelUtils {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/UIContext.ets) -->
-
 ``` TypeScript
 // Common/UIContext.ets
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { display } from '@kit.ArkUI';
-import { UIContext } from '@ohos.arkui.UIContext';
+import { UIContext } from '@ohos.arkui.component';
+import display from '@ohos.display';
+import hilog from '@ohos.hilog';
 
 const DOMAIN = 0x0000;
 
@@ -1879,36 +1874,31 @@ export class PixelUtils {
   }
 
   static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
-    let currentContext = uiContext ?? PixelUtils.uiContext;
-    if (!currentContext || !currentContext.isAvailable()) {
-      try {
-        let displayClass = display.getDefaultDisplaySync();
-        let density = displayClass.densityPixels;
-        return vpValue * density;
-      } catch (exception) {
-        hilog.error(DOMAIN, 'testTag', `Can't get default display, ${exception}`);
-        return undefined;
-      }
+    let _uiContext = uiContext ?? PixelUtils.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
+      let displayClass = display.getDefaultDisplaySync();
+      let density = displayClass.densityPixels;
+      return vpValue * density;
     }
-    return (currentContext as UIContext).vp2px(vpValue)
+    return _uiContext.vp2px(vpValue)
   }
 
   static fp2px(fpValue: number, uiContext?: UIContext): number | undefined {
-    let currentContext = uiContext ?? PixelUtils.uiContext;
-    if (!currentContext || !currentContext.isAvailable()) {
+    let _uiContext = uiContext ?? PixelUtils.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
       return undefined;
     }
-    return (currentContext as UIContext).fp2px(fpValue)
+    return _uiContext.fp2px(fpValue)
   }
 
   lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
-    let currentContext = uiContext ?? PixelUtils.uiContext;
-    if (!currentContext || !currentContext.isAvailable()) {
+    let _uiContext = uiContext ?? PixelUtils.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
       return undefined;
     }
-    return (currentContext as UIContext).lpx2px(lpxValue)
+    return _uiContext.lpx2px(lpxValue)
   }
 }
 ```
@@ -1968,7 +1958,7 @@ struct GetContextPage {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->
+<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->
 
 ``` TypeScript
 // Common/ContextUtils.ets
@@ -1991,11 +1981,9 @@ export class ContextUtils {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->
-
 ``` TypeScript
 // Common/ContextUtils.ets
-import { Context, UIContext } from '@ohos.arkui.UIContext';
+import { Context, UIContext } from '@ohos.arkui.component';
 
 export class ContextUtils {
   public static context: Context | undefined;
@@ -2017,7 +2005,7 @@ export class ContextUtils {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -2049,19 +2037,17 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
 ``` TypeScript
 // entryability/EntryAbility.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-import { LocalStorage } from '@ohos.arkui.stateManagement';
-import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import type Want from '@ohos.app.ability.Want';
+import type AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import hilog from '@ohos.hilog';
+import type window from '@ohos.window';
 import { ContextUtils } from '../Common/ContextUtils';
-import { WindowUIContextUtils } from '../Common/WindowUtils';
-import { PixelUtils } from '../Common/UIContext';
-import { PixelUtil } from '../Common/Utils';
+import type { WindowUIContextUtils } from '../Common/WindowUtils';
+import type { PixelUtils } from '../Common/UIContext';
+import type { PixelUtil } from '../Common/Utils';
 
 const DOMAIN = 0x0000;
 
@@ -2076,16 +2062,16 @@ export default class EntryAbility extends UIAbility {
   onDestroy(): Promise<void> | undefined {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
   }
+
   // ...
 }
-
 ```
 
 在UI界面中，建议传入UIContext，以保证符合预期或直接调用getHostContext。
 
 ArkTS-Dyn示例：
 
-<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
+<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
 
 ``` TypeScript
 // pages/ContextPage.ets
@@ -2113,13 +2099,11 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
-
 ``` TypeScript
 // pages/ContextPage.ets
-import { Entry, Component, Column, Text } from '@ohos.arkui.component';
 import { ContextUtils } from '../Common/ContextUtils';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Column, Component, Entry, Text } from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
 
 const DOMAIN = 0xF811;
 
@@ -2138,10 +2122,11 @@ struct Index {
     .width('100%')
   }
 }
+
 ```
 无UI场景直接返回窗口创建时设置的默认返回值。
 
-<!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 let context = ContextUtils.getContext();
@@ -2238,9 +2223,9 @@ struct LocalStoragePage {
 
 使用UIContext接口替换：
 
-ArkTS-Dyn示例：
+<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->
 
-<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->
+ArkTS-Dyn示例：
 
 ``` TypeScript
 // pages/LocalStoragePage
@@ -2275,36 +2260,50 @@ struct LocalStoragePage {
 
 ArkTS-Sta示例：
 
-<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->
-
 ``` TypeScript
 // pages/LocalStoragePage
-import { Entry, Component, Column, Text, FontWeight, FlexAlign, HorizontalAlign } from '@ohos.arkui.component';
-import { LocalStorageLink } from '@ohos.arkui.stateManagement';
+import {
+  AlignRuleOption,
+  Component,
+  Entry,
+  FontWeight,
+  HorizontalAlign,
+  RelativeContainer,
+  Text,
+  VerticalAlign
+} from '@ohos.arkui.component';
+import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement';
 
-@Entry({ useSharedStorage: true })
+const pageStorage = new LocalStorage();
+
+function getPageStorage(): LocalStorage {
+  return pageStorage;
+}
+
+@Entry({ storage: 'getPageStorage' })
 @Component
 struct LocalStoragePage {
   @LocalStorageLink('message') message: string = 'Hello World';
+  private readonly textAlignRules: AlignRuleOption = {
+    center: { anchor: '__container__', align: VerticalAlign.Center },
+    middle: { anchor: '__container__', align: HorizontalAlign.Center }
+  };
 
   build() {
-    Column() {
+    RelativeContainer() {
       Text(this.message)
         .id('LocalStoragePageHelloWorld')
         .fontWeight(FontWeight.Bold)
+        .alignRules(this.textAlignRules)
         .onClick(() => {
-          let uiContext = this.getUIContext();
-          let storage = uiContext.getSharedLocalStorage();
+          let storage = pageStorage;
           if (storage) {
-            storage.setOrCreate('message', 'onClick is called.');
-            this.message = 'LocalStoragePageHelloWorld';
+            storage.setOrCreate('message', 'onClick is called.')
           }
         })
     }
     .height('100%')
     .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
   }
 }
 ```
@@ -2313,7 +2312,7 @@ struct LocalStoragePage {
 
 ArkTS-Dyn示例：
 
-<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -2351,15 +2350,14 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
-<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
 ``` TypeScript
 // entryability/EntryAbility.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import hilog from '@ohos.hilog';
+import window from '@ohos.window';
 import { LocalStorage } from '@ohos.arkui.stateManagement';
-import { BusinessError } from '@ohos.base';
 import { ContextUtils } from '../Common/ContextUtils';
 import { WindowUIContextUtils } from '../Common/WindowUtils';
 import { PixelUtils } from '../Common/UIContext';
@@ -2374,9 +2372,9 @@ export default class EntryAbility extends UIAbility {
     let localStorage = new LocalStorage();
     localStorage.setOrCreate('message', 'Message from Storage')
   // ...
-    windowStage.loadContent('pages/Index', localStorage, (err: BusinessError<void> | null): void => {
+    windowStage.loadContent('pages/Index', localStorage, (err, _data) => {
       // 需要在loadContent完成后获取UIContext。
-      if (err && err.code) {
+      if (err !== null) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }

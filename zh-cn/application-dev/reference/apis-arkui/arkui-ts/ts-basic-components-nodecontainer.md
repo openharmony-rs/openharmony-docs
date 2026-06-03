@@ -14,11 +14,8 @@
 >
 > - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 该组件下仅支持挂载自定义节点[FrameNode](../js-apis-arkui-frameNode.md)或者是[BuilderNode](../js-apis-arkui-builderNode.md)中获取的根节点FrameNode。
->
-> - 不支持挂载查询获得的系统组件代理节点，请参见[isModifiable](../js-apis-arkui-frameNode.md#ismodifiable12)。
+> - 不支持挂载查询获得的系统组件[代理节点](../js-apis-arkui-frameNode.md#ismodifiable12)。
 >
 > - 当前不支持使用[动态属性设置](./ts-universal-attributes-attribute-modifier.md)。
 >
@@ -36,7 +33,7 @@
 
 NodeContainer(controller: NodeController)
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

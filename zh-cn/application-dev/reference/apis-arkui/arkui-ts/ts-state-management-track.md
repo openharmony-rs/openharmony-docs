@@ -14,9 +14,9 @@
 
 在ArkTS-Dyn中使用时，开发指南参考：[@Track装饰器：class对象属性级更新（ArkTS-Dyn）](../../../ui/state-management/arkts-track.md)。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

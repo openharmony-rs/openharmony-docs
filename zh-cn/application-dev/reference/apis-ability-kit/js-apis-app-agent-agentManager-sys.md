@@ -607,9 +607,8 @@ registerAgentCard(agentCard: AgentCard): Promise\<void>
 | 16000002 | Incorrect ability type. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
-| 35600005 | The specified AgentCard version is invalid. |
-| 35600006 | The specified AgentCard has already been registered. Use updateAgentCard instead. |
-| 35600008 | The number of AgentCards in the bundle reaches the limit. |
+| 35600005 | The specified agent card version is invalid. |
+| 35600006 | The specified agent card has already been registered. Use updateAgentCard instead. |
 
 **示例：**
 
@@ -694,8 +693,8 @@ updateAgentCard(agentCard: AgentCard): Promise\<void>
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 35600001 | The specified agentId does not exist. |
-| 35600004 | The specified AgentCard version is older than the current version. |
-| 35600005 | The specified AgentCard version is invalid. |
+| 35600004 | The specified agent card version is older than the current version. |
+| 35600005 | The specified agent card version is invalid. |
 
 **示例：**
 

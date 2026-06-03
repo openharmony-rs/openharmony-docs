@@ -372,7 +372,7 @@ sim.getShowName(0).then((data: string) => {
 
 ## sim.setShowNumber<sup>8+</sup>
 
-setShowNumber\(slotId: number, teleNumber: string, callback: AsyncCallback\<void\>\): void
+setShowNumber\(slotId: number, number: string, callback: AsyncCallback\<void\>\): void
 
 设置指定卡槽SIM卡的号码。使用callback异步回调。
 
@@ -387,7 +387,7 @@ setShowNumber\(slotId: number, teleNumber: string, callback: AsyncCallback\<void
 | 参数名   | 类型                      | 必填 | 说明                                   |
 | -------- | ------------------------- | ---- | -------------------------------------- |
 | slotId   | number                    | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| teleNumber   | string                    | 是   | SIM卡号码。                              |
+| number   | string                    | 是   | SIM卡号码。                              |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                             |
 
 **错误码：**
@@ -420,7 +420,7 @@ sim.setShowNumber(0, number, (err: BusinessError) => {
 
 ## sim.setShowNumber<sup>8+</sup>
 
-setShowNumber\(slotId: number, teleNumber: string\): Promise\<void\>
+setShowNumber\(slotId: number, number: string\): Promise\<void\>
 
 设置指定卡槽SIM卡的号码。使用Promise异步回调。
 
@@ -435,7 +435,7 @@ setShowNumber\(slotId: number, teleNumber: string\): Promise\<void\>
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| teleNumber | string | 是   | SIM卡号码。                              |
+| number | string | 是   | SIM卡号码。                              |
 
 **返回值：**
 

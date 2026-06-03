@@ -10,11 +10,9 @@
 
 > **说明：**
 >
-> - 从API Version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API Version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
-> - 本模块接口为系统接口。
+> 本模块接口为系统接口。
 
 
 ## 导入模块
@@ -77,9 +75,9 @@ begin(scene: string, startInputType: ActionType, note?: string): void
 **示例：** 
 
 用户点击图标启动应用场景动效开始点，由离手事件LAST_UP触发。
-```ts
+  ```ts
 performanceMonitor.begin("LAUNCHER_APP_LAUNCH_FROM_ICON", performanceMonitor.ActionType.LAST_UP, "APP_START_BEGIN");
-```
+  ```
 
 
 ## performanceMonitor.end
@@ -98,9 +96,9 @@ end(scene: string): void
 **示例：** 
 
 用户点击图标启动应用场景动效结束点。
-```ts
+  ```ts
 performanceMonitor.end("LAUNCHER_APP_LAUNCH_FROM_ICON");
-```
+  ```
 
 ## performanceMonitor.recordInputEventTime<sup>12+</sup>
 

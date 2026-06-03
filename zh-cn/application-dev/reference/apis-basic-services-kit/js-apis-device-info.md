@@ -10,7 +10,6 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 部分参数返回值为default的，会在正式发布的版本中配置。
 > 本模块接口返回设备常量信息，建议应用只调用一次，不需要频繁调用。
@@ -44,7 +43,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | productModelAlias<sup>14+</sup> | string | 是 | 认证型号别名。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：TAS-AL00 <br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 24|
 | softwareModel | string | 是 | 内部软件子型号。<br/>示例：<!--RP5-->TAS-AL00<!--RP5End--> <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | hardwareModel | string | 是 | 硬件版本号。<br/>示例：<!--RP6-->TASA00CVN1<!--RP6End--> <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
-| hardwareProfile<sup>(deprecated) </sup> | string | 是 | 硬件Profile。<br/>**说明**：<br/>从API version 6 开始支持，从API version 9 开始废弃，建议使用[系统能力SystemCapability使用指南](../syscap.md)查询相关信息。<br/>示例：default <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
+| hardwareProfile<sup>(deprecated) </sup> | string | 是 | 硬件Profile。<br/>**说明**：<br/>从API版本6 开始支持，从API版本9 开始废弃，建议使用[系统能力SystemCapability使用指南](../syscap.md)查询相关信息。<br/>示例：default <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | serial | string | 是 | 设备序列号SN(Serial Number)。<br/>**说明**：可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业定制应用申请) <br/>示例：序列号随设备差异 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | bootloaderVersion | string | 是 | Bootloader版本号。<br/>示例：bootloader <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | abiList | string | 是 | 应用二进制接口（Abi）。<br/>示例：arm64-v8a <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
@@ -58,8 +57,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | featureVersion | number | 是 | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | buildVersion | number | 是 | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：1 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | sdkApiVersion | number | 是 | 系统软件API版本。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：12 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
-| sdkMinorApiVersion | number | 是 | 系统软件Minor API版本。**从**API 26.0.0版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/> **模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0<br/> **ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
-| sdkPatchApiVersion | number | 是 | 系统软件Patch API版本。**从**API 26.0.0版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/> **模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0<br/> **ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
+| sdkMinorApiVersion | number | 是 | 系统软件Minor API版本。**从**API 26.0.0版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/> **模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26开始，该接口支持在原子化服务中使用。<br/>示例：0<br/> **ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
+| sdkPatchApiVersion | number | 是 | 系统软件Patch API版本。**从**API 26.0.0版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/> **模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26开始，该接口支持在原子化服务中使用。<br/>示例：0<br/> **ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
 | firstApiVersion | number | 是 | 首个版本系统软件API版本。<br/>示例：3 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | versionId | string | 是 | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。<br/>示例：wearable/HUAWEI/HUAWEI/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | buildType | string | 是 | 构建类型。<br/>示例：default <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
@@ -337,7 +336,7 @@ apiAvailable(version: string | number): boolean;
 
 **起始版本**：26.0.0
 
-**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口Stage模型和FA模型下皆可使用。
 
@@ -356,13 +355,13 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 // Check API 26.0.0 (String format for API 26+ represents both OpenHarmony and Distribution OS)
 if (deviceInfo.apiAvailable("26.0.0")) {
-   // 需要版本隔离的方法
+   ...
 }
 
 
 // Check API 5.0.1 (Distribution OS version, API 26-)
 if (deviceInfo.apiAvailable("5.0.1")) {
-   // 需要版本隔离的方法
+   ...
 }
 
 
@@ -370,7 +369,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 // Check API 13 (OpenHarmony SDK version, API 26-)
 if (deviceInfo.apiAvailable(13)) {
-   // 需要版本隔离的方法
+   ...
 }
 
 ```

@@ -78,8 +78,6 @@ stars(starCount: Optional\<number>)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -147,8 +145,6 @@ stepSize(size: Optional\<number>)
 **卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -226,8 +222,6 @@ ArkTS-Sta: starStyle(options: StarStyleOptions | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 18
@@ -256,8 +250,6 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<RatingConfiguration> | und
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -279,8 +271,6 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<RatingConfiguration> | und
 定制Rating内容区的方法。与[contentModifier](#contentmodifier12)相比，modifier参数新增了对undefined类型的支持。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -350,8 +340,6 @@ onChange(callback: Optional\<OnRatingChangeCallback>)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -371,8 +359,6 @@ onChange(callback: Optional\<OnRatingChangeCallback>)
 onChange(callback: OnRatingChangeCallback | undefined)
 
 当评分条的评星变化时会触发该回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。使用callback异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -427,8 +413,6 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -455,8 +439,6 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 18
@@ -479,8 +461,6 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 **卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

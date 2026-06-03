@@ -26,36 +26,36 @@
 
 ```text
 project/
-├── entry/                                           # ArkTS-Dyn主模块
+├── entry/                            # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── StatemgmtV2AppStorageV2.ets  # 使用ArkTS-Sta导出的数据模型
+│                   └── Index.ets     # 使用ArkTS-Sta导出的数据模型
 │
-└── static_module/                                   # ArkTS-Sta子模块
+└── static_module/                    # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── StaAppStorageV2.ets          # 声明ArkTS-Sta数据模型并使用AppStorageV2存储数据
+                    └── MainPage.ets  # 声明ArkTS-Sta数据模型并使用AppStorageV2存储数据
 ```
 
 示例如下：
 
 - 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录进行数据模型声明并初始化一个key为`MessageStatic`的`MessageModel`对象。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-<!-- @[DynInteropStaStatemgmtV2StaAppStorageV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/src/main/ets/components/StaAppStorageV2.ets) -->
+```TypeScript
+'use static'
 
-``` TypeScript
-// static_module/src/main/ets/components/StaAppStorageV2.ets
+// static_module/src/main/ets/component/MainPage.ets
 import {
   ComponentV2, Column, Text, Button, Divider, enableCompatibleObservedV2ForDynamic
 } from '@ohos.arkui.component';
 import { AppStorageV2, ObservedV2, Trace, Local } from '@ohos.arkui.stateManagement';
 
-export const STATIC_KEY: string = 'MessageStatic';
-export const DYNAMIC_KEY: string = 'MessageDynamic';
+export const STATIC_KEY = 'MessageStatic';
+export const DYNAMIC_KEY = 'MessageDynamic';
 export const FONT_SIZE: int = 20;
 export const MARGIN: int = 10;
 
@@ -72,22 +72,22 @@ export class MessageModel {
 }
 
 // 导出ArkTS-Sta中实现的enableCompatibleObservedV2ForDynamic方法
-export function setEnableCompatibleObservedV2ForDynamicStorage(T: Object): void {
+export function setEnableCompatibleObservedV2ForDynamic(T: Object) {
   // 调用enableCompatibleObservedV2ForDynamic方法，使ArkTS-Sta @Trace修饰的属性在ArkTS-Dyn中可观测
   enableCompatibleObservedV2ForDynamic(T);
 }
 
 @ComponentV2
-export struct AppStorageV2Page {
+export struct MainPage {
   // 使用connect在ArkTS-Sta模块的AppStorageV2中创建一个key为MessageStatic的MessageModel对象
   // 修改connect的返回值即可同步回AppStorageV2
   @Local message: MessageModel = AppStorageV2.connect<MessageModel>(
-    Class.from<MessageModel>(),
+    Type.from<MessageModel>(),
     `${STATIC_KEY}`,
     () => new MessageModel(12, 'This is static message')
   )!;
 
-  build(): void {
+  build() {
     Column() {
       Divider()
         .margin(`${MARGIN}`)
@@ -103,7 +103,7 @@ export struct AppStorageV2Page {
         .margin(`${MARGIN}`)
         .onClick(() => {
           this.message = AppStorageV2.connect<MessageModel>(
-            Class.from<MessageModel>(),
+            Type.from<MessageModel>(),
             `${STATIC_KEY}`,
             () => new MessageModel(22, 'This is reconnected static message')
           )!;
@@ -131,13 +131,13 @@ export struct AppStorageV2Page {
 
 - 对ArkTS-Sta模块`static_module/Index.ets`文件中的组件进行导出。
 
-<!-- @[DynInteropStaStatemgmtV2IndexAppStorageV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/Index.ets) -->
+```TypeScript
+'use static'
 
-``` TypeScript
 // static_module/Index.ets
 export {
-  AppStorageV2Page, STATIC_KEY, DYNAMIC_KEY, FONT_SIZE, MARGIN, MessageModel, setEnableCompatibleObservedV2ForDynamicStorage
-} from './src/main/ets/components/StaAppStorageV2';
+  MainPage, STATIC_KEY, DYNAMIC_KEY, FONT_SIZE, MARGIN, MessageModel, setEnableCompatibleObservedV2ForDynamic
+} from './src/main/ets/components/MainPage';
 ```
 
 - 在主模块的`entry/oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
@@ -153,25 +153,24 @@ export {
 
 - 在ArkTS-Dyn主模块的`entry/src/main/ets/pages/Index.ets`文件中进行数据存储并实现互操作方法。
 
-<!-- @[DynInteropStaStatemgmtV2AppStorageV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV2AppStorageV2.ets) -->
+```TypeScript
+// entry/src/main/ets/pages/Index.ets
 
-``` TypeScript
-// entry/src/main/ets/pages/StatemgmtV2AppStorageV2.ets
 import { AppStorageV2 } from '@kit.ArkUI';
 import {
-  STATIC_KEY, DYNAMIC_KEY, FONT_SIZE, MARGIN, MessageModel, setEnableCompatibleObservedV2ForDynamicStorage, AppStorageV2Page
+  STATIC_KEY, DYNAMIC_KEY, FONT_SIZE, MARGIN, MessageModel, setEnableCompatibleObservedV2ForDynamic, MainPage
 } from 'static_module';
 
 @Entry
 @ComponentV2
 struct Index {
   // 声明一个MessageModel对象
-  @Local staMessage: MessageModel = new MessageModel(1, 'Hello');
+  @Local staMessage: MessageModel = new MessageModel();
   @Local keys: string[] = [];
 
   aboutToAppear() {
-    // 调用setEnableCompatibleObservedV2ForDynamicStorage方法，使ArkTS-Sta @Trace修饰的属性在ArkTS-Dyn中可观测
-    setEnableCompatibleObservedV2ForDynamicStorage(this.staMessage);
+    // 调用setEnableCompatibleObservedV2ForDynamic方法，使ArkTS-Sta @Trace修饰的属性在ArkTS-Dyn中可观测
+    setEnableCompatibleObservedV2ForDynamic(this.staMessage);
   }
 
   build() {
@@ -195,7 +194,7 @@ struct Index {
       // 在ArkTS-Dyn模块调用connect函数, 会从ArkTS-Sta模块的AppStorageV2中获取key为MessageStatic的MessageModel的对象
       // 修改connect的返回值即可同步回ArkTS-Sta模块的AppStorageV2
       // 如果ArkTS-Sta模块的AppStorageV2中不存在key为MessageStatic的MessageModel的对象，则会在ArkTS-Dyn模块的AppStorageV2中创建一个key为MessageStatic的MessageModel对象
-      // 在this.staMessage被重新赋值时，需要调用setEnableCompatibleObservedV2ForDynamicStorage方法，使ArkTS-Sta @Trace修饰的属性可以在ArkTS-Dyn中重新被观测
+      // 在this.staMessage被重新赋值时，需要调用setEnableCompatibleObservedV2ForDynamic方法，使ArkTS-Sta @Trace修饰的属性可以在ArkTS-Dyn中重新被观测
       Button(`connect key: ${STATIC_KEY}`)
         .fontSize(`${FONT_SIZE}`)
         .margin(`${MARGIN}`)
@@ -205,7 +204,7 @@ struct Index {
             `${STATIC_KEY}`,
             () => new MessageModel(11, 'This message is connected in Dyn')
           )!;
-          setEnableCompatibleObservedV2ForDynamicStorage(this.staMessage);
+          setEnableCompatibleObservedV2ForDynamic(this.staMessage);
         })
 
       // 在ArkTS-Dyn模块调用remove函数, 会从ArkTS-Dyn模块和ArkTS-Sta模块的AppStorageV2中删除key为MessageStatic的MessageModel的对象
@@ -242,7 +241,7 @@ struct Index {
         })
 
       // 注册绑定互操作并调用ArkTS-Sta模块组件，初始化一个ArkTS-Sta对象
-      AppStorageV2Page()
+      MainPage()
     }
   }
 }
@@ -259,29 +258,29 @@ ArkTS-Sta和ArkTS-Dyn的[PersistenceV2](state-management-static/arkts-static-new
 
 ```text
 project/
-├── entry/                                            # ArkTS-Dyn主模块
+├── entry/                  # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── StatemgmtV2PersistenceV2.ets
+│                   └── Index.ets
 │
-└── static_module/                                    # ArkTS-Sta子模块
+└── static_module/          # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── StaPersistenceV2.ets
+                    └── MainPage.ets
 ```
 
 示例如下：
 
-- 在ArkTS-Sta子模块的`static_module/src/main/ets/component/StaPersistenceV2.ets`文件中进行接口实现。
+- 在ArkTS-Sta子模块的`static_module/src/main/ets/component/MainPage.ets`文件中进行接口实现。
 
-<!-- @[DynInteropStaStatemgmtV2StaPersistenceV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/src/main/ets/components/StaPersistenceV2.ets) -->
+```TypeScript
+'use static'
+// static_module/src/main/ets/components/MainPage.ets
 
-``` TypeScript
-// static_module/src/main/ets/components/StaPersistenceV2.ets
 import { Text, Column, ComponentV2, Button, ClickEvent, Divider } from '@ohos.arkui.component';
 import { ObservedV2, Local, Trace, PersistenceV2 } from '@ohos.arkui.stateManagement';
 
@@ -300,12 +299,44 @@ export class StaDataModel {
     this.canTraceProp = canTraceProp ?? 0;
     this.normalProp = normalProp ?? 10;
   }
+
+  public toJson(): jsonx.JsonElement {
+    const root = new jsonx.JsonElement();
+    // 存储canTraceProp
+    const canTracePropEle = new jsonx.JsonElement();
+    canTracePropEle.setInteger(this.canTraceProp);
+    root.setElement('canTraceProp', canTracePropEle);
+
+    // 存储normalProp
+    const normalPropEle = new jsonx.JsonElement();
+    normalPropEle.setInteger(this.normalProp);
+    root.setElement('normalProp', normalPropEle);
+
+    return root;
+  }
+
+  public fromJson(json: jsonx.JsonElement): void {
+    this.canTraceProp = json.getElement('canTraceProp').asInteger();
+    this.normalProp = json.getElement('normalProp').asInteger();
+  }
+}
+
+const toJsonStaDataModel = (staDataModel: StaDataModel) => {
+  return staDataModel.toJson();
+}
+
+const fromJsonStaDataModel = (json: jsonx.JsonElement): StaDataModel => {
+  const staDataModel = new StaDataModel();
+  staDataModel.fromJson(json);
+  return staDataModel;
 }
 
 function getStaDataModelObject(): StaDataModel {
   return PersistenceV2.connect(
-    Class.from<StaDataModel>(),
+    Type.from<StaDataModel>(),
     'StaDataModel',
+    toJsonStaDataModel,
+    fromJsonStaDataModel,
     (): StaDataModel => {
       return new StaDataModel();
     })!;
@@ -332,8 +363,10 @@ export function normalPropPlusInStatic(): int {
 // 对外接口，实现调用ArkTS-Sta模块的PersistenceV2.connect接口
 export function connectInStatic(): StaDataModel {
   return PersistenceV2.connect(
-    Class.from<StaDataModel>(),
+    Type.from<StaDataModel>(),
     'StaDataModel',
+    toJsonStaDataModel,
+    fromJsonStaDataModel,
     (): StaDataModel => {
       return new StaDataModel();
     })!;
@@ -341,12 +374,12 @@ export function connectInStatic(): StaDataModel {
 
 // 对外接口，实现调用ArkTS-Sta模块的PersistenceV2.save接口
 export function saveInStatic(): void {
-  PersistenceV2.save(Class.from<StaDataModel>());
+  PersistenceV2.save(Type.from<StaDataModel>());
 }
 
 // 对外接口，实现调用ArkTS-Sta模块的PersistenceV2.remove接口
 export function removeInStatic(): void {
-  PersistenceV2.remove(Class.from<StaDataModel>());
+  PersistenceV2.remove(Type.from<StaDataModel>());
 }
 
 // 对外接口，实现调用ArkTS-Sta模块的PersistenceV2.keys接口
@@ -356,17 +389,19 @@ export function keysInStatic(): Array<string> {
 }
 
 @ComponentV2
-export struct PersistenceV2Page {
+export struct MainPage {
   // 在PersistenceV2中创建一个key为StaDataModel的键值对（如果存在，则返回PersistenceV2中的数据），并且和prop关联
   // 对于需要换connect对象的localVar属性，需要加@Local修饰（不建议对属性换connect的对象）
   @Local localVar: StaDataModel = PersistenceV2.connect<StaDataModel>(
-    Class.from<StaDataModel>(),
+    Type.from<StaDataModel>(),
+    toJsonStaDataModel,
+    fromJsonStaDataModel,
     (): StaDataModel => {
       return new StaDataModel();
     })!;
   @Local keys: Array<string> = PersistenceV2.keys();
 
-  build(): void {
+  build() {
     Column() {
       Divider()
         .margin(10)
@@ -413,14 +448,13 @@ export struct PersistenceV2Page {
 
 - 对ArkTS-Sta子模块`static_module/Index.ets`文件中的接口进行导出。
 
-<!-- @[DynInteropStaStatemgmtV2IndexPersistenceV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/Index.ets) -->
-
-``` TypeScript
+```TypeScript
 // static_module/Index.ets
+
 export {
-  PersistenceV2Page, canTracePropPlusInStatic, normalPropPlusInStatic, connectInStatic, saveInStatic, removeInStatic,
+  MainPage, canTracePropPlusInStatic, normalPropPlusInStatic, connectInStatic, saveInStatic, removeInStatic,
   keysInStatic, StaDataModel
-} from './src/main/ets/components/StaPersistenceV2';
+} from './src/main/ets/components/MainPage';
 ```
 
 - 在子模块的`entry/oh-package.json5`文件中配置子模块依赖。
@@ -436,13 +470,12 @@ export {
 
 - 在ArkTS-Dyn模块的`entry/src/main/ets/pages/Index.ets`文件中调用ArkTS-Sta模块的自定义接口。
 
-<!-- @[DynInteropStaStatemgmtV2PersistenceV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV2PersistenceV2.ets) -->
+```TypeScript
+// entry/src/main/ets/pages/Index.ets
 
-``` TypeScript
-// entry/src/main/ets/pages/StatemgmtV2PersistenceV2.ets
 import { PersistenceV2 } from '@kit.ArkUI';
 import {
-  PersistenceV2Page, canTracePropPlusInStatic, normalPropPlusInStatic, connectInStatic, saveInStatic, removeInStatic,
+  MainPage, canTracePropPlusInStatic, normalPropPlusInStatic, connectInStatic, saveInStatic, removeInStatic,
   keysInStatic, StaDataModel
 } from 'static_module';
 
@@ -452,7 +485,7 @@ struct Index {
   // 承接ArkTS-Sta模块的数据
   @Local canTraceProp: number = 0;
   @Local normalProp: number = 10;
-  @Local keys: Array<string> = [];
+  @Local keys: string[] = [];
 
   build() {
     Column() {
@@ -505,13 +538,11 @@ struct Index {
         .margin(10)
         .fontSize(20)
         .onClick(() => {
-          for (let key of keysInStatic()) {
-            this.keys.push(key);
-          }
+          this.keys = keysInStatic();
         })
 
       // 调用ArkTS-Sta模块组件，初始化一个ArkTS-Sta对象
-      PersistenceV2Page()
+      MainPage()
     }
     .width('100%')
     .height('100%')

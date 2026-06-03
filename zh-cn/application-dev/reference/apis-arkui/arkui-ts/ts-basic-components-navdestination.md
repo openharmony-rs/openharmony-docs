@@ -968,58 +968,6 @@ ArkTS-Sta: onReady(callback: Callback\<NavDestinationContext\> | undefined)
 | -------- | -------------------  | ---- | ------------------------------------------ |
 | callback   | ArkTS-Dyn: Callback\<[NavDestinationContext](#navdestinationcontext11)\><br/>ArkTS-Sta: Callback\<[NavDestinationContext](#navdestinationcontext11)\> \| undefined    | 是   | 当NavDestination即将构建子组件之前会触发此回调。<br/>取值为undefined时，不使用回调函数。|
 
-### onSaveState
-
-ArkTS-Dyn: onSaveState(callback: Optional&lt;SaveStateCallback&gt;)
-
-ArkTS-Sta: onSaveState(callback: SaveStateCallback | undefined)
-
-设置自定义页面状态保存回调。在NavDestination页面的[onHidden](#onhidden10)生命周期后触发该回调，用于保存当前页面的自定义状态，以便页面后续重建时恢复。
-
-该回调配合Navigation的[configuration](./ts-basic-components-navigation.md#configuration)接口使用。页面创建时传入的初始参数由Navigation单独保留，开发者只需在该回调中返回自定义页面状态。返回的状态对象必须可序列化；页面重建时，保存的状态会通过[onRestoreState](#onrestorestate)回调传入。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ------ | ------ | ---- | ---- |
-| callback | ArkTS-Dyn: [Optional](./ts-universal-attributes-custom-property.md#optionalt)&lt;[SaveStateCallback](#savestatecallback)&gt;<br/>ArkTS-Sta: [SaveStateCallback](#savestatecallback) \| undefined | 是 | 页面状态保存回调。 |
-
-### onRestoreState
-
-ArkTS-Dyn: onRestoreState(callback: Optional&lt;RestoreStateCallback&gt;)
-
-ArkTS-Sta: onRestoreState(callback: RestoreStateCallback | undefined)
-
-设置自定义页面状态恢复回调。当NavDestination页面被重建时触发该回调，用于恢复页面自定义状态。
-
-该回调配合Navigation的[configuration](./ts-basic-components-navigation.md#configuration)接口使用。页面重建时，系统会将[onSaveState](#onsavestate)返回并保存的状态作为入参传入该回调；如果没有保存自定义状态，则入参为null。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ------ | ------ | ---- | ---- |
-| callback | ArkTS-Dyn: [Optional](./ts-universal-attributes-custom-property.md#optionalt)&lt;[RestoreStateCallback](#restorestatecallback)&gt;<br/>ArkTS-Sta: [RestoreStateCallback](#restorestatecallback) \| undefined | 是 | 页面状态恢复回调。 |
-
 ### onResult<sup>15+</sup>
 
 ArkTS-Dyn: onResult(callback: Optional\<Callback\<ESObject\>\>)
@@ -1124,50 +1072,6 @@ ArkTS-Sta: onNewParam(callback: Callback\<Object | null | undefined\> | undefine
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------- |
 |callback |ArkTS-Dyn: [Optional](./ts-universal-attributes-custom-property.md#optionalt)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Object \| null \| undefined\> \| undefined | 是 | onNewParam触发时的回调函数，入参为路由跳转时传递到目标页面的数据。<br/>取值为undefined时，不使用回调函数。|
-
-## SaveStateCallback
-
-type SaveStateCallback = () =&gt; Record&lt;string, Object&gt; | null
-
-页面状态保存回调。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| Record&lt;string, Object&gt; \| null | 自定义页面状态。状态对象必须可序列化，否则不会被保存；返回null表示不保存页面状态。 |
-
-## RestoreStateCallback
-
-type RestoreStateCallback = (savedState: Record&lt;string, Object&gt; | null) =&gt; void
-
-页面状态恢复回调。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ------ | ---- | ---- | ---- |
-| savedState | Record&lt;string, Object&gt; \| null | 是 | [onSaveState](#onsavestate)保存的自定义页面状态。没有保存自定义状态时为null。 |
 
 ## NavDestinationCommonTitle
 

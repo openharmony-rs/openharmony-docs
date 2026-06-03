@@ -52,7 +52,7 @@
 
 | 名称     | 参数                              | 描述             |
 | ------ | ------------------------------- | -------------- |
-| change | {&nbsp;checked: isChecked&nbsp;} | 组件选中状态发生变化时触发。 |
+| change | {&nbsp;checked：isChecked&nbsp;} | 组件选中状态发生变化时触发。 |
 
 
 ## 方法

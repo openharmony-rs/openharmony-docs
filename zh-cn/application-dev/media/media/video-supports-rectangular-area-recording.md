@@ -2,7 +2,7 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @chenkun613227-->
+<!--Owner: @chenkun-->
 <!--Designer: @yxc2-->
 <!--Tester: @zengxi_3007-->
 <!--Adviser: @w_Machine_cc-->

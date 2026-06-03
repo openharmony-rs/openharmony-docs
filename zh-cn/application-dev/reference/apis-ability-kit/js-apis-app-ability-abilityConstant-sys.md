@@ -11,13 +11,11 @@ AbilityConstant提供Ability相关的枚举，包括WindowMode等。
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块接口仅可在Stage模型下使用。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
-> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.AbilityConstant (Ability相关常量)](js-apis-app-ability-abilityConstant.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.AbilityConstant (Ability相关常量)](js-apis-app-ability-abilityConstant.md)。
 
 ## 导入模块
 
@@ -33,10 +31,6 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                        | 值 | 说明                 |
 | ---                         | --- | ---                  |
 | WINDOW_MODE_UNDEFINED       | 0   | 未定义窗口模式。       |
@@ -46,6 +40,7 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 ```ts
 import { UIAbility, StartOptions, Want, AbilityConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   bundleName: 'com.example.myapplication',
@@ -60,7 +55,7 @@ export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     this.context.startAbility(want, option).then(() => {
       console.info('Succeed to start ability.');
-    }).catch((error: Error) => {
+    }).catch((error: BusinessError) => {
       console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
     });
   }

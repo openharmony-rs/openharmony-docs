@@ -30,29 +30,12 @@
 
    开发者可以在[`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调中实现业务逻辑。
 
-   ArkTS-Dyn示例：
    ```ts
    import { commonEventManager, StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
 
    const TAG: string = 'StaticSubscriber';
    const DOMAIN_NUMBER: number = 0xFF00;
-   
-   export default class StaticSubscriber extends StaticSubscriberExtensionAbility {
-     onReceiveEvent(event: commonEventManager.CommonEventData): void {
-       hilog.info(DOMAIN_NUMBER, TAG, 'onReceiveEvent, event: ' + event.event);
-       // ...
-     }
-   }
-   ```
-
-   ArkTS-Sta示例：
-   ```ts
-   import { commonEventManager, StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-
-   const TAG: string = 'StaticSubscriber';
-   const DOMAIN_NUMBER: int = 0xFF00;
    
    export default class StaticSubscriber extends StaticSubscriberExtensionAbility {
      onReceiveEvent(event: commonEventManager.CommonEventData): void {

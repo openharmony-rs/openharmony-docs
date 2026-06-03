@@ -110,21 +110,8 @@ export struct OperationNodeTree {
 ```
 ArkTS-Sta示例：
 
-<!-- @[operation_node_tree_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/OperationNodeTree.ets) -->
-
 ``` TypeScript
-import {
-  Button,
-  ClickEvent,
-  Component,
-  Entry,
-  FrameNode,
-  NodeContainer,
-  NodeController,
-  RenderNode,
-  Row,
-  UIContext
-} from '@kit.ArkUI';
+import { Entry, Component, Button, NodeContainer, ClickEvent, Row, NodeController, FrameNode, RenderNode, UIContext } from '@kit.ArkUI';
 
 const TEST_TAG: string = 'RenderNode';
 const renderNode = new RenderNode();
@@ -150,7 +137,7 @@ for (let i = 0; i < 5; i++) {
   renderNode.appendChild(node);
 }
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -169,7 +156,7 @@ export class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
+  build() {
     Row() {
       NodeContainer(this.myNodeController)
         .width(200)
@@ -416,28 +403,10 @@ export struct RenderingProperties {
 
 ArkTS-Sta示例：
 
-<!-- @[rendering_properties_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/RenderingProperties.ets) -->
-
 ``` TypeScript
 import {
-  Entry,
-  Column,
-  Component,
-  Button,
-  ClickEvent,
-  NodeContainer,
-  BorderStyle,
-  Flex,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Padding,
-  UIContext,
-  NodeController,
-  FrameNode,
-  RenderNode,
-  ShapeMask,
-  ShapeClip
+  Entry, Column, Component, Button, ClickEvent, NodeContainer, BorderStyle, Flex, FlexDirection, ItemAlign,
+  FlexAlign, Padding, UIContext, NodeController, FrameNode, RenderNode, ShapeMask, ShapeClip
 } from '@kit.ArkUI';
 
 const TEST_TAG: string = 'RenderNode';
@@ -459,7 +428,7 @@ const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000.toInt();
 renderNode.size = { width: 100, height: 100 };
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -479,7 +448,7 @@ export class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
+  build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Column() {
         NodeContainer(this.myNodeController)
@@ -715,27 +684,13 @@ export struct CustomDraw {
 
 ArkTS-Sta示例：
 
-<!-- @[custom_draw_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/CustomDraw.ets) -->
-
 ``` TypeScript
-import {
-  Button,
-  ClickEvent,
-  Column,
-  Component,
-  DrawContext,
-  Entry,
-  FrameNode,
-  NodeContainer,
-  NodeController,
-  RenderNode,
-  UIContext
-} from '@kit.ArkUI';
+import { Entry, Column, Component, Button, ClickEvent, NodeContainer, NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI';
 
-export class MyRenderNode extends RenderNode {
+class MyRenderNode extends RenderNode {
   width: number = 200;
 
-  draw(context: DrawContext): void {
+  draw(context: DrawContext) {
     // 获取canvas对象
     const canvas = context.canvas;
     // 绘制矩阵
@@ -784,7 +739,7 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
+  build() {
     Column() {
       NodeContainer(this.myNodeController)
         .width('100%')
@@ -815,8 +770,6 @@ struct Index {
 > - 如果开发者希望对画布进行预期的变换，应使用[concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)而不是[setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12)，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵。
 
 **ArkTS接口调用示例：**
-
-ArkTS-Dyn示例：
 
 <!-- @[custom_draw_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvas.ets) -->
 
@@ -956,164 +909,6 @@ export struct CustomDrawCanvas {
       };
 
       // ...
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-<!-- @[custom_draw_canvas_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/CustomDrawCanvas.ets) -->
-
-``` TypeScript
-import {
-  Column,
-  Component,
-  DrawContext,
-  DrawingCanvas,
-  Entry,
-  FrameNode,
-  NodeContainer,
-  NodeController,
-  RenderNode,
-  Row,
-  Text,
-  UIContext
-} from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-function drawImage(canvas: DrawingCanvas) {
-  let matrix = new drawing.Matrix();
-  matrix.setTranslation(100, 100);
-  canvas.concatMatrix(matrix);
-  const pen = new drawing.Pen();
-  pen.setStrokeWidth(5);
-  pen.setColor({
-    alpha: 255,
-    red: 0,
-    green: 74,
-    blue: 175
-  });
-  canvas.attachPen(pen);
-  const brush = new drawing.Brush();
-  brush.setColor({
-    alpha: 255,
-    red: 0,
-    green: 74,
-    blue: 175
-  });
-  canvas.attachBrush(brush);
-  canvas.drawRect({
-    left: 10,
-    top: 10,
-    right: 110,
-    bottom: 60
-  });
-  canvas.detachPen();
-}
-
-function drawImage1(canvas: DrawingCanvas) {
-  let matrix = new drawing.Matrix();
-  matrix.setTranslation(100, 100);
-  // 1. getTotalMatrix获取的是用来记录绘制指令的临时canvas的变换矩阵
-  // 2. 如果开发者希望这个画布进行一个预期的变换，应该使用concatMatrix而不是setMatrix，因为setMatrix会覆盖原本真实canvas上存在的变换矩阵
-  canvas.getTotalMatrix();
-  canvas.setMatrix(matrix);
-  const pen = new drawing.Pen();
-  pen.setStrokeWidth(5);
-  pen.setColor({
-    alpha: 255,
-    red: 0,
-    green: 74,
-    blue: 175
-  });
-  canvas.attachPen(pen);
-  const brush = new drawing.Brush();
-  brush.setColor({
-    alpha: 255,
-    red: 0,
-    green: 74,
-    blue: 175
-  });
-  canvas.attachBrush(brush);
-  canvas.drawRect({
-    left: 10,
-    top: 10,
-    right: 110,
-    bottom: 60
-  });
-  canvas.detachPen();
-}
-
-class MyRenderNode extends RenderNode {
-  draw(context: DrawContext): void {
-    drawImage(context.canvas);
-  }
-}
-
-class MyRenderNode1 extends RenderNode {
-  draw(context: DrawContext): void {
-    drawImage1(context.canvas);
-  }
-}
-
-export class MyNodeController extends NodeController {
-  makeNode(uiContext: UIContext): FrameNode | null {
-    const rootNode: FrameNode = new FrameNode(uiContext);
-    rootNode.commonAttribute.width(300).height(300);
-    const theRenderNode: MyRenderNode = new MyRenderNode();
-    theRenderNode.frame = {
-      x: 10,
-      y: 100,
-      width: 100,
-      height: 50
-    };
-    theRenderNode.backgroundColor = Double.toInt(0xFF2787D9);
-    rootNode.getRenderNode()?.appendChild(theRenderNode);
-    return rootNode;
-  }
-}
-
-export class MyNodeController1 extends NodeController {
-  makeNode(uiContext: UIContext): FrameNode | null {
-    const rootNode: FrameNode = new FrameNode(uiContext);
-    rootNode.commonAttribute.width(300).height(300);
-    const theRenderNode: MyRenderNode1 = new MyRenderNode1();
-    theRenderNode.frame = {
-      x: 10,
-      y: 100,
-      width: 100,
-      height: 50
-    };
-    theRenderNode.backgroundColor = Double.toInt(0xFF2787D9);
-    rootNode.getRenderNode()?.appendChild(theRenderNode);
-    return rootNode;
-  }
-}
-
-@Entry
-@Component
-export struct CustomDrawCanvas {
-  myNodeController: MyNodeController = new MyNodeController();
-  myNodeController1: MyNodeController1 = new MyNodeController1();
-
-  build(): void {
-    Column() {
-      Text('调整自定义绘制Canvas的变换矩阵')
-      Row() {
-        Column() {
-          NodeContainer(this.myNodeController)
-        }
-        .height('100%')
-        .width('45%');
-
-        Column() {
-          NodeContainer(this.myNodeController1)
-        }
-        .height('100%')
-        .width('45%');
-      };
-    }
-    .backgroundColor('#f1f2f3')
   }
 }
 ```
@@ -1352,22 +1147,10 @@ export struct SetLabel {
 
 ArkTS-Sta示例：
 
-<!-- @[set_label_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/SetLabel.ets) -->
-
 ``` TypeScript
-import {
-  Color,
-  Column,
-  Component,
-  Entry,
-  FrameNode,
-  NodeContainer,
-  NodeController,
-  RenderNode,
-  UIContext
-} from '@kit.ArkUI';
+import { Entry, Column, Component, NodeContainer, Color, UIContext, NodeController, FrameNode, RenderNode } from '@kit.ArkUI';
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -1396,7 +1179,7 @@ export class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
+  build() {
     Column() {
       NodeContainer(this.myNodeController)
         .width(300)
@@ -1488,25 +1271,10 @@ export struct CheckRenderNodeDisposed {
 ```
 
 ArkTS-Sta示例：
-
-<!-- @[rendernode_is_dispose_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/CheckRenderNodeDisposed.ets) -->
-
 ``` TypeScript
-import {
-  Button,
-  Column,
-  Component,
-  Entry,
-  FrameNode,
-  NodeContainer,
-  NodeController,
-  RenderNode,
-  State,
-  Text,
-  UIContext
-} from '@kit.ArkUI';
+import { Entry, Column, Component, NodeContainer, Color, UIContext, NodeController, FrameNode, RenderNode, State, Button, Text } from '@kit.ArkUI';
 
-export class MyNodeController extends NodeController {
+class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private renderNode: RenderNode | null = null;
 
@@ -1521,7 +1289,7 @@ export class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  disposeRenderNode(): void {
+  disposeRenderNode() {
     // 解除RenderNode与后端实体节点的引用关系
     this.renderNode?.dispose();
   }
@@ -1545,7 +1313,7 @@ export struct CheckRanderNodeDisposed {
   @State text: string = '';
   private myNodeController: MyNodeController = new MyNodeController();
 
-  build(): void {
+  build() {
     Column() {
       NodeContainer(this.myNodeController);
       Button('RenderNode dispose')

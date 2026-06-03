@@ -16,7 +16,7 @@ type ImageType = image.Image | image.Picture
 
 图片容器类型，用于获取全质量图和未压缩图(YUV)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

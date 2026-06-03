@@ -852,7 +852,6 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
     let currentLineWidth = 0;
     let totalHeight = 0;
     let maxLineWidth = 0;
-    let currentLineHeight = 0;
 
     for (let i = 0; i < childCount; i++) {
       const child = self.getChild(i);
@@ -865,25 +864,23 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
         };
         child.measure(childConstraint);
         const childSize = child.getMeasuredSize();
-
         // 检查是否需要换行
         if (currentLineWidth + childSize.width > maxWidth && currentLineWidth > 0) {
-          // 换行前，累加上一行的高度
-          totalHeight += currentLineHeight + this.verticalGap;
-          currentLineWidth = childSize.width + this.horizontalGap;
-          currentLineHeight = childSize.height;
+          // 换行
+          totalHeight += this.verticalGap;
+          currentLineWidth = childSize.width;
+          totalHeight += childSize.height;
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         } else {
           // 继续当前行
           currentLineWidth += childSize.width + this.horizontalGap;
-          currentLineHeight = Math.max(currentLineHeight, childSize.height);
+          if (i === 0) {
+            totalHeight = childSize.height;
+          }
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         }
       }
     }
-    // 累加最后一行的高度
-    totalHeight += currentLineHeight;
-
     self.setMeasuredSize({
       width: Math.min(maxLineWidth, maxWidth),
       height: totalHeight
@@ -1125,7 +1122,7 @@ DynamicLayout支持以下几种方式触发重新布局：
 
 - 通过状态变量切换布局算法。
 
-  开发者使用[@Local](./state-management/arkts-new-local.md)装饰器修饰布局算法变量，可以实现运行时动态切换布局。
+  开发者使用@Local装饰器修饰布局算法变量，可以实现运行时动态切换布局。
 
   <!-- @[ChangeLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutAlgorithm.ets) -->
 
@@ -1369,8 +1366,6 @@ DynamicLayout支持以下几种方式触发重新布局：
 - 响应式布局算法切换。
 
   开发者可以结合[mediaquery](../reference/apis-arkui/arkts-apis-uicontext-mediaquery.md)接口监听屏幕方向变化，自动切换商品列表的布局方式。竖屏时使用列表视图（每行一个商品），横屏时使用网格视图（2x2网格布局）。
-
-  此示例在运行前需要在工程配置文件[module.json5](../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "auto_rotation"。
 
   <!-- @[ChangeLayoutWithMediaQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithMediaQuery.ets) -->
 

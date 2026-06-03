@@ -38,13 +38,9 @@ Defines a common callback.
 
 You can set **data** to customize the data type of the information returned by the callback.
 
-**Atomic service API:** This API can be used in atomic services since API version 11. This API applies only to ArkTS-Dyn.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Base
-
-**ArkTS-Dyn start version**: 6
-
-**ArkTS-Sta start version**: 23
 
 | Name| Type| Mandatory| Description                      |
 | ---- | ---- | ---- | -------------------------- |
@@ -62,13 +58,9 @@ Defines a common callback that carries an error parameter.
 
 The information returned by the callback is of the [BusinessError](#businesserror) type.
 
-**Atomic service API:** This API can be used in atomic services since API version 11. This API applies only to ArkTS-Dyn.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Base
-
-**ArkTS-Dyn start version**: 6
-
-**ArkTS-Sta start version**: 23
 
 **Parameters**
 
@@ -78,17 +70,11 @@ The information returned by the callback is of the [BusinessError](#businesserro
 
 ## AsyncCallback
 
-**ArkTS-Dyn:**  
-
 AsyncCallback\<T, E = void> {
 
 (err: BusinessError\<E>, data: T): void;
 
 }
-
-**ArkTS-Sta:**  
-
-AsyncCallback\<T, E = void> = (err: BusinessError\<E> | null, data: T | undefined) => void
 
 Defines a common callback that carries an error parameter and asynchronous return value.
 
@@ -96,13 +82,9 @@ The error parameter is of the [BusinessError](#businesserror) type.
 
 The type of the asynchronous return value is defined by the developer.
 
-**Atomic service API:** This API can be used in atomic services since API version 11. This API applies only to ArkTS-Dyn.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Base
-
-**ArkTS-Dyn start version**: 6
-
-**ArkTS-Sta start version**: 23
 
 | Name| Type                                                        | Mandatory| Description                        |
 | ---- | ------------------------------------------------------------ | ---- | ---------------------------- |
@@ -111,136 +93,15 @@ The type of the asynchronous return value is defined by the developer.
 
 ## BusinessError
 
-**ArkTS-Dyn:**  
-BusinessError\<T = void> extends Error {
+BusinessError\<T = void> extends Error { code: number; data?: T; }
 
-code: number;
+Defines the error parameter.
 
-data?: T;
-
-}
-
-| Name| Type   | Read-Only| Optional| Description                                                      |
-| ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| code | number | No  | No | Common error information about the API invoking failure.   |
-| data | T      | No  | Yes  | Common callback information. If this parameter is left empty, no related information is returned.|
-
-
-**ArkTS-Sta:**  
-
-BusinessError\<T = void> extends Error {
-
-public data?: T;
-
-}
-
-| Name| Type   | Read-Only| Optional| Description                                                      |
-| ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| data | T      | No  | Yes  | Common callback information. If this parameter is left empty, no related information is returned.|
-
-**Atomic service API:** This API can be used in atomic services since API version 11. This API applies only to ArkTS-Dyn.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Base
 
-**ArkTS-Dyn start version**: 6
-
-**ArkTS-Sta start version**: 23
-
-### constructor<sup>23+</sup>    
-
-constructor()    
-
-Defines a constructor used to create a **BusinessError** object. 
-
-**System capability**: SystemCapability.Base 
-
-**ArkTS mode**: This API applies only to ArkTS-Sta.
-
-### constructor<sup>23+</sup>    
-
-constructor(code: int, error: Error)    
-
-Defines a constructor used to create a **BusinessError** object.
-
-**System capability**: SystemCapability.Base 
-
-**ArkTS mode**: This API applies only to ArkTS-Sta.
-
-**Parameters**
-
-| Name   | Type                                     | Mandatory| Description                              |
-| --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| code | int | Yes  | Common error information about the API invoking failure.|
-| error | Error | Yes  | Defines the error parameter.|
-
-> **NOTE**
->
-> Scheduled for deprecation You are advised to use constructor(code: int, message: string, data?: T) instead.
-
-
-### constructor<sup>23+</sup>      
-
-constructor(code: int, data: T, error: Error)          
-
-Defines a constructor used to create a **BusinessError** object.   
-
-**System capability**: SystemCapability.Base     
-
-**ArkTS mode**: This API applies only to ArkTS-Sta.  
-
-**Parameters**
-
-| Name   | Type                                     | Mandatory| Description                              |
-| --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| code | int | Yes  | Common error information about the API invoking failure.|
-| data | T | Yes  | Common callback information.|
-| error | Error | Yes  | Defines the error parameter.|
-
-> **NOTE**
->
-> Scheduled for deprecation You are advised to use constructor(code: int, message: string, data?: T) instead.
-
-
-### constructor<sup>23+</sup>    
-
-constructor(code: int, message: string, data?: T)   
-
-Defines a constructor used to create a **BusinessError** object.
-
-**System capability**: SystemCapability.Base   
-
-**ArkTS mode**: This API applies only to ArkTS-Sta.
-
-**Parameters**
-
-| Name   | Type                                     | Mandatory| Description                              |
-| --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| code | int | Yes  | Common error information about the API invoking failure.|
-| message | string | Yes  | Error message returned when the API call fails.|
-| data | T | No  | Common callback information.|
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-interface ErrorDataType {
-    url: string;
-}
-
-const businessError = new BusinessError<ErrorDataType>(201, 'no permission', {
-    url: 'http://'
-});
-```
-
-## RecordData
-
-RecordData = undefined \| null \| Object \| Record\<string, [RecordData](#recorddata)> \| Array\<[RecordData](#recorddata)>
-
-**RecordData** is a union type used for object structures with uncertain levels and quantities at each level.
-
-**System capability**: SystemCapability.Base
-
-**ArkTS mode**: This API applies only to ArkTS-Sta.
-
-**ArkTS-Sta start version**: 23
+| Name| Type  | Mandatory| Description                                                      |
+| ---- | ------ | ---- | ---------------------------------------------------------- |
+| code | number | Yes  | Common error information about the API invoking failure.                            |
+| data | T      | No  | Common callback information. If this parameter is left empty, no related information is returned.|

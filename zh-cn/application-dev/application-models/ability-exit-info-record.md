@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-接口详情参见API参考[LaunchParam](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)。
+接口详情参见[API参考](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)。
 
 | **接口名**  | **描述** |
 | -------- | -------- |
@@ -28,7 +28,6 @@
 
     在UIAbility类的onCreate成员函数的launchParam参数中读取Ability上次退出的信息。
 
-    ArkTS-Dyn示例：
     <!-- @[unexp_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
@@ -74,76 +73,12 @@
     }
     ```
 
-    ArkTS-Sta示例：
-    <!-- @[unexp_exit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UnexpExit-sta/entry/src/main/ets/exitability/ExitAbility.ets) -->
-    
-    ``` TypeScript
-    import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    
-    const DOMAIN_NUMBER = 0xF811;
-    const TAG = '[Sample_UnexpExit]';
-    const MAX_RSS_THRESHOLD: number = 100000;
-    const MAX_PSS_THRESHOLD: number = 100000;
-    
-    function doSomething() {
-      hilog.info(DOMAIN_NUMBER, TAG, 'do Something');
-    }
-    
-    function doAnotherThing() {
-      hilog.info(DOMAIN_NUMBER, TAG, 'do Another Thing');
-    }
-    
-    export default class ExitAbility extends UIAbility {
-      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // 获取退出原因
-        let reason: number = launchParam.lastExitReason;
-        let subReason: number = -1;
-        const detailInfo = launchParam.lastExitDetailInfo;
-        if (detailInfo) {
-          subReason = detailInfo.exitSubReason;
-        }
-        let exitMsg: string = launchParam.lastExitMessage;
-        // ...
-        if (detailInfo) {
-          // 获取Ability上次退出时所在进程的信息
-          let pid = detailInfo.pid;
-          let processName: string = detailInfo.processName;
-          let rss: number = detailInfo.rss;
-          let pss: number = detailInfo.pss;
-          // ...
-          // 其他信息
-          let uid: number = detailInfo.uid;
-          let timestamp: number = detailInfo.timestamp;
-          // ...
-        }
-      }
-    }
-    ```
-
 
 2. 根据上次退出的信息做相应的业务处理。
 
     - 对于不同的退出原因，开发者可以增加不同的处理逻辑，例如：
 
-    ArkTS-Dyn示例：
     <!-- @[unexp_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
-    
-    ``` TypeScript
-    if (reason === AbilityConstant.LastExitReason.APP_FREEZE) {
-      // Ability上次因无响应而退出，此处可增加处理逻辑。
-      doSomething();
-    } else if (reason === AbilityConstant.LastExitReason.SIGNAL && subReason === 9) {
-      // Ability上次所在进程因kill -9信号而退出，此处可增加处理逻辑。
-      doAnotherThing();
-    } else if (reason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
-      // Ability上次因rss管控而退出，此处可实现处理逻辑，最简单的就是打印出来。
-      hilog.info(DOMAIN_NUMBER, TAG, `The ability has exit last because the rss control，the lastExitReason is ${reason}, subReason is ${subReason}, lastExitMessage is ${exitMsg}.`);
-    }
-    ```
-
-    ArkTS-Sta示例：
-    <!-- @[unexp_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UnexpExit-sta/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     if (reason === AbilityConstant.LastExitReason.APP_FREEZE) {
@@ -160,18 +95,7 @@
 
     - 根据进程信息感知应用内存占用异常，例如：
 
-    ArkTS-Dyn示例：
     <!-- @[unexp_rss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
-    
-    ``` TypeScript
-    if (rss > MAX_RSS_THRESHOLD || pss > MAX_PSS_THRESHOLD) {
-      // RSS或PSS值过大，说明内存使用率接近或达到上限，打印告警，或者增加处理逻辑。
-      hilog.warn(DOMAIN_NUMBER, TAG, `Process ${processName}(${pid}) memory usage approaches or reaches the upper limit.`);
-    }
-    ```
-
-    ArkTS-Sta示例：
-    <!-- @[unexp_rss](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UnexpExit-sta/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     if (rss > MAX_RSS_THRESHOLD || pss > MAX_PSS_THRESHOLD) {
@@ -183,15 +107,7 @@
 
     - 根据异常退出时刻的时间戳，明确异常发生的时刻，便于问题定位。
     
-    ArkTS-Dyn示例：
     <!-- @[unexp_uid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
-    
-    ``` TypeScript
-    hilog.info(DOMAIN_NUMBER, TAG, `App ${uid} terminated at ${timestamp}.`);
-    ```
-
-    ArkTS-Sta示例：
-    <!-- @[unexp_uid](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/UnexpExit-sta/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     hilog.info(DOMAIN_NUMBER, TAG, `App ${uid} terminated at ${timestamp}.`);

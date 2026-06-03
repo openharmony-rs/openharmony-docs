@@ -12,10 +12,9 @@ Kiosk模式是一种特殊的设备锁定模式，可以确保设备界面只服
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口仅可在Stage模型下使用。
-> - 本模块接口仅适用于通过[applicationManager.setAllowedKioskApps](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)配置的支持Kiosk模式的应用。
+> - 本模块接口仅适用于通过[setAllowedKioskApps接口](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)配置的支持Kiosk模式的应用。
 
 ## 导入模块
 
@@ -32,10 +31,6 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -62,8 +57,6 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 | 16000113 | Current ability is not in foreground. |
 
 **示例**：
-
-ArkTS-Dyn示例：
 
 ```ts
 import { common, kioskManager } from '@kit.AbilityKit';
@@ -95,41 +88,6 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { common, kioskManager } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Entry, Component, Column, Button } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  private uiAbilityContext: common.UIAbilityContext | undefined =
-    this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-  build() {
-    Column() {
-      Button('enterKioskMode').margin({ top: 30 })
-        .onClick(() => {
-          let context: common.UIAbilityContext = this.uiAbilityContext as common.UIAbilityContext;
-          kioskManager.enterKioskMode(context)
-            .then(() => {
-              hilog.info(0x0000, 'testTag', '%{public}s', 'enterKioskMode success');
-            })
-            .catch((err: Error) => {
-              let error = err as BusinessError;
-              hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed:${JSON.stringify(error)}`);
-            });
-        })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
 ## kioskManager.exitKioskMode
 
 exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
@@ -141,10 +99,6 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -171,8 +125,6 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 **示例**：
 
-ArkTS-Dyn示例：
-
 ```ts
 import { common, kioskManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -193,41 +145,6 @@ struct Index {
               hilog.info(0x0000, 'testTag', '%{public}s', 'exitKioskMode success');
             })
             .catch((error: BusinessError) => {
-              hilog.error(0x0000, 'testTag', '%{public}s', `exitKioskMode failed:${JSON.stringify(error)}`);
-            });
-        })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { common, kioskManager } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Entry, Component, Column, Button } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  private uiAbilityContext: common.UIAbilityContext | undefined =
-    this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-  build() {
-    Column() {
-      Button('exitKioskMode').margin({ top: 10 })
-        .onClick(() => {
-          let context: common.UIAbilityContext = this.uiAbilityContext as common.UIAbilityContext;
-          kioskManager.exitKioskMode(context)
-            .then(() => {
-              hilog.info(0x0000, 'testTag', '%{public}s', 'exitKioskMode success');
-            })
-            .catch((err: Error) => {
-              let error = err as BusinessError;
               hilog.error(0x0000, 'testTag', '%{public}s', `exitKioskMode failed:${JSON.stringify(error)}`);
             });
         })

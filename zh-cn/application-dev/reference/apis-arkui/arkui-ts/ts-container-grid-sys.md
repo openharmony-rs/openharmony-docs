@@ -22,8 +22,6 @@ Grid布局选项。
 
 为提高Grid在包含大小不规则节点场景布局性能和准确性，可以使用onGetStartIndexByOffset和onGetStartIndexByIndex两个回调类型参数，两个回调必须同时设置才能生效。该场景下，建议设置[onScrollBarUpdate](ts-container-grid.md#onscrollbarupdate10)来精准定位滚动条的位置。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 类型      | 只读   | 可选 | 说明                    |

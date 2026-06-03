@@ -54,8 +54,8 @@ ArkWeb_ErrorCode (*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, c
 | 参数项 | 描述 |
 | -- | -- |
 | const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Post Message端口结构体指针。 |
-| const char* webTag | Web组件名称。 |
-| const [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 需要发送的消息。 |
+|  const char* webTag | Web组件名称。 |
+|  const [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 需要发送的消息。 |
 
 **返回：**
 

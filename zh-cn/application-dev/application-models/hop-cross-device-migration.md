@@ -466,7 +466,7 @@ export default class MigrationAbility extends UIAbility {
    ```
 配置快速拉起功能后，用户触发迁移，等待迁移数据返回的过程中，并行拉起应用，减小用户等待迁移启动时间。同时需注意，应用在迁移的提前启动时，首次触发迁移会收到`launchReason`为提前拉起 (PREPARE_CONTINUATION)的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)/[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)请求。应用可以通过此`launchReason`，解决跳转、时序等问题，也可以在迁移快速启动时，增加loading界面。
 
-从API version 18开始，在快速拉起时含loading界面的应用，支持获取应用跨端迁移快速拉起结果[continueManager.on](../reference/apis-ability-kit/js-apis-app-ability-continueManager.md#continuemanageron)。根据快速拉起结果，应用可以进行相应操作，例如快速拉起成功时退出loading界面进入接续页面。
+从API version 18开始，在快速拉起时含loading界面的应用，支持[获取应用跨端迁移快速拉起结果](../reference/apis-ability-kit/js-apis-app-ability-continueManager.md#continuemanageron)。根据快速拉起结果，应用可以进行相应操作，例如快速拉起成功时退出loading界面进入接续页面。
 
 快速拉起流程如下图所示。
 
@@ -641,7 +641,6 @@ export default class MigrationAbility extends UIAbility {
 
 **ArkTS-Sta示例：**
 
-<!-- @[sta_onContinue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/ArkTS-Sta/StaContinueSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
 ```ts
  import { AbilityConstant, wantConstant } from '@kit.AbilityKit';
  import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -764,7 +763,7 @@ export default class MigrationAbility extends UIAbility {
 
 - 创建空的分布式数据对象，用于接收恢复的数据。
 - 从[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中读取分布式数据对象组网id。
-- 注册：动态接口[on('status')](../reference/apis-arkdata/js-apis-data-distributedobject.md#onstatus9)，静态接口[onStatus](../reference/apis-arkdata/js-apis-data-distributedobject.md#onstatus23)。接口监听数据变更。在收到`status`为`restore`的事件的回调中，实现数据恢复完毕时需要进行的业务操作。
+- 注册：动态接口[on()](../reference/apis-arkdata/js-apis-data-distributedobject.md)，静态接口[onStatus()](../reference/apis-arkdata/js-apis-data-distributedobject.md)。接口监听数据变更。在收到`status`为`restore`的事件的回调中，实现数据恢复完毕时需要进行的业务操作。
 
 - 调用[setSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#setsessionid9)加入组网，激活分布式数据对象。
 
@@ -839,7 +838,6 @@ export default class MigrationAbility extends UIAbility {
 
 **ArkTS-Sta示例：**
 
-<!-- @[sta_dataObject_onContinue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/ArkTS-Sta/StaObjectContinueSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
 ```ts
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 import { distributedDataObject as distributedObject, commonType } from '@kit.ArkData';
@@ -1065,7 +1063,7 @@ export default class MigrationAbility extends UIAbility {
 }
 ```
 
-对端需要先创建一个各属性为空的`Asset`资产对象作为分布式数据对象的根属性。在接收到[on('status')](../reference/apis-arkdata/js-apis-data-distributedobject.md#onstatus9)接口`status`为`restored`的事件的回调时，表示包括资产在内的数据同步完成，可以像获取基本数据一样获取到源端的资产对象。
+对端需要先创建一个各属性为空的`Asset`资产对象作为分布式数据对象的根属性。在接收到[on()](../reference/apis-arkdata/js-apis-data-distributedobject.md#onstatus9)接口`status`为`restored`的事件的回调时，表示包括资产在内的数据同步完成，可以像获取基本数据一样获取到源端的资产对象。
 
 > **注意**
 >

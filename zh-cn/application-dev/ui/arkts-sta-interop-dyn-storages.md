@@ -1,10 +1,4 @@
 # 在ArkTS-Sta中使用ArkTS-Dyn管理应用拥有的状态
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @lixingchi1; @katabanga-->
-<!--Designer: @lixingchi1; @katabanga-->
-<!--Tester: @TerryTsao-->
-<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -43,13 +37,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   ├── StaDynStorageLsp.ets       # @LocalStorageProp交互
-│                   ├── StaDynStorageLsl.ets       # @LocalStorageLink交互
-│                   ├── StaDynStorageSp.ets        # @StorageProp交互
-│                   ├── StaDynStorageSl.ets        # @StorageLink交互
-│                   ├── StaDynStorageApp.ets       # AppStorage接口交互
-│                   ├── StaDynStoragePersist.ets   # PersistentStorage交互
-│                   └── StaDynStorageEnv.ets       # Environment交互
+│                   └── Index.ets    # ArkTS-Sta主模块入口页面，导入并使用ArkTS-Dyn自定义组件
 │
 └── dynamic_module/                  # ArkTS-Dyn子模块
     └── src/
@@ -63,12 +51,10 @@ project/
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，并导出ArkTS-Dyn自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-<!-- @[StaDynStorageDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/Index.ets) -->
-
 ```TypeScript
-// dynamic_module/Index.ets
+// dynamic_module/index.ets
 
-export { LocalStoragePropPage, LocalStorageLinkPage, StoragePropPage, StorageLinkPage, AppStoragePage, PersistentStoragePage, EnvironmentPage } from './src/main/ets/components/MainPage';
+export { MainPage } from './src/main/ets/components/MainPage'; // 导出ArkTS-Dyn自定义组件
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
@@ -101,13 +87,11 @@ export { LocalStoragePropPage, LocalStorageLinkPage, StoragePropPage, StorageLin
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在ArkTS-Dyn中创建并导出自定义组件。
 
-<!-- @[StaDynStorageLspMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
-
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
-export struct LocalStoragePropPage {
+export struct MainPage {
   @LocalStorageProp('PropA') storageProp: number = 1;
 
   build() {
@@ -117,24 +101,21 @@ export struct LocalStoragePropPage {
           // 状态变化不会同步给ArkTS-Sta的LocalStorage
           this.storageProp += 1;
         })
-        .width(300)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
 
 - 在ArkTS-Sta模块中配置相关模块依赖后，导入ArkTS-Dyn的自定义组件。
 
-<!-- @[StaDynStorageLsp](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageLsp.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaDynStorageLsp.ets
+'use static'
+
+// entry/src/main/ets/pages/Index.ets
 import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
-import { LocalStoragePropPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
+import { MainPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
 
 @Entry
 @Component
@@ -144,23 +125,16 @@ struct Index {
 
   build() {
     Column() {
-      LocalStoragePropPage()
+      MainPage()
       Button('update value')
         .onClick((value: ClickEvent) => {
           // 更新LocalStorage中的数据，并同步更新ArkTS-Dyn组件
           this.storageLink += 1;
         })
-        .width(300)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
-
-示例效果图：
-
-![arkts-sta-interop-dyn-storages-demo1](figures/arkts-sta-interop-dyn-storages-demo1.gif)
 
 ### 与ArkTS-Dyn的\@LocalStorageLink交互
 
@@ -170,13 +144,11 @@ struct Index {
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在ArkTS-Dyn中创建并导出自定义组件。
 
-<!-- @[StaDynStorageLslMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
-
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
-export struct LocalStorageLinkPage {
+export struct MainPage {
   @LocalStorageLink('PropA') storageLink: number = 1;
 
   build() {
@@ -186,24 +158,21 @@ export struct LocalStorageLinkPage {
           // 状态变化会同步给ArkTS-Sta的LocalStorage，并同步更新ArkTS-Sta组件
           this.storageLink += 1;
         })
-        .width(300)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
 
 - 在ArkTS-Sta模块中配置相关模块依赖后，导入ArkTS-Dyn的自定义组件。
 
-<!-- @[StaDynStorageLsl](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageLsl.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaDynStorageLsl.ets
+'use static'
+
+// entry/src/main/ets/pages/Index.ets
 import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
-import { LocalStorageLinkPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
+import { MainPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
 
 @Entry
 @Component
@@ -213,23 +182,17 @@ struct Index {
 
   build() {
     Column() {
-      LocalStorageLinkPage()
+      MainPage()
       Button('update value')
         .onClick((value: ClickEvent) => {
           // 更新LocalStorage中的数据，并同步更新ArkTS-Dyn组件
           this.storageLink += 1;
         })
-        .width(300)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
 
-示例效果图：
-
-![arkts-sta-interop-dyn-storages-demo2](figures/arkts-sta-interop-dyn-storages-demo2.gif)
 
 ### 与ArkTS-Dyn的\@StorageProp交互
 
@@ -249,13 +212,11 @@ struct Index {
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在ArkTS-Dyn中创建并导出自定义组件。
 
-<!-- @[StaDynStorageSpMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
-
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
-export struct StoragePropPage {
+export struct MainPage {
   @StorageProp('PropA') storageProp: number = 1;
 
   build() {
@@ -265,24 +226,21 @@ export struct StoragePropPage {
           // 状态变化不会同步给ArkTS-Sta的AppStorage
           this.storageProp += 1;
         })
-        .width(300)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
 
 - 在ArkTS-Sta模块中配置相关模块依赖后，导入ArkTS-Dyn的自定义组件。
 
-<!-- @[StaDynStorageSp](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageSp.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaDynStorageSp.ets
+'use static'
+
+// entry/src/main/ets/pages/Index.ets
 import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { StorageLink } from '@ohos.arkui.stateManagement';
 
-import { StoragePropPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
+import { MainPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
 
 @Entry
 @Component
@@ -292,23 +250,17 @@ struct Index {
 
   build() {
     Column() {
-      StoragePropPage()
+      MainPage()
       Button('update value')
         .onClick((value: ClickEvent) => {
           // 更新AppStorage中的数据，并同步更新ArkTS-Dyn组件
           this.storageLink += 1;
         })
-        .width(300)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
 
-示例效果图：
-
-![arkts-sta-interop-dyn-storages-demo3](figures/arkts-sta-interop-dyn-storages-demo3.gif)
 
 ### 与ArkTS-Dyn的\@StorageLink进行交互
 
@@ -318,13 +270,11 @@ struct Index {
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在ArkTS-Dyn中创建并导出自定义组件。
 
-<!-- @[StaDynStorageSlMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
-
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
-export struct StorageLinkPage {
+export struct MainPage {
   @StorageLink('PropA') storageLink: number = 1;
 
   build() {
@@ -334,24 +284,21 @@ export struct StorageLinkPage {
           // 状态变化会同步给ArkTS-Sta的AppStorage，并同步更新ArkTS-Sta组件
           this.storageLink += 1;
         })
-        .width(300)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
 
 - 在ArkTS-Sta模块中配置相关模块依赖后，导入ArkTS-Dyn的自定义组件。
 
-<!-- @[StaDynStorageSl](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageSl.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaDynStorageSl.ets
+'use static'
+
+// entry/src/main/ets/pages/Index.ets
 import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { StorageLink } from '@ohos.arkui.stateManagement';
 
-import { StorageLinkPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
+import { MainPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
 
 @Entry
 @Component
@@ -361,27 +308,20 @@ struct Index {
 
   build() {
     Column() {
-      StorageLinkPage()
+      MainPage()
       Button('update value')
         .onClick((value: ClickEvent) => {
           // 更新AppStorage中的数据，并同步更新ArkTS-Dyn组件
           this.storageLink += 1;
         })
-        .width(300)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
 
-示例效果图：
-
-![arkts-sta-interop-dyn-storages-demo4](figures/arkts-sta-interop-dyn-storages-demo4.gif)
-
 ### 通过AppStorage接口进行交互
 
-状态管理V1互操作支持通过ArkTS-Dyn的[AppStorage接口](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)操作ArkTS-Sta的AppStorage数据。
+状态管理V1互操作支持通过ArkTS-Dyn的[AppStorage接口](../reference/apis-arkui/arkui-ts/ts-state-management.md)操作ArkTS-Sta的AppStorage数据。
 
 在通过ArkTS-Dyn的AppStorage接口操作ArkTS-Sta的AppStorage数据时，除prop和setAndProp接口外的其他接口使用规则与非互操作场景一致。
 
@@ -401,15 +341,13 @@ struct Index {
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在ArkTS-Dyn中创建并导出自定义组件。
 
-<!-- @[StaDynStorageAppMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
-
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 let gPropA: number = 0;
 
 @Component
-export struct AppStoragePage {
+export struct MainPage {
   build() {
     Column() {
       Button('change AppStorage')
@@ -417,46 +355,36 @@ export struct AppStoragePage {
           // 通过接口修改ArkTS-Sta的AppStorage并同步更新ArkTS-Sta组件
           AppStorage.setOrCreate('PropA', ++gPropA);
         })
-        .width(300)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
 
 - 在ArkTS-Sta模块中配置相关模块依赖后，导入ArkTS-Dyn自定义组件。
 
-<!-- @[StaDynStorageApp](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageApp.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaDynStorageApp.ets
+'use static'
+
+// entry/src/main/ets/pages/Index.ets
 import { Entry, Component, Column, Text } from '@ohos.arkui.component';
 import { StorageLink } from '@ohos.arkui.stateManagement';
-import { AppStoragePage } from 'dynamic_module';
+import { MainPage } from 'dynamic_module';
 
 @Entry
 @Component
 struct Index {
   // 初始化ArkTS-Sta中的AppStorage数据
-  @StorageLink('PropA') storageLink: number = 0;
+  @StorageLink('PropA') storageLink: number = 1;
 
   build() {
     Column() {
-      AppStoragePage()
+      MainPage()
       // 显示AppStorage中的数据
       Text(`current value: ${this.storageLink}`)
-        .fontSize(20)
-        .margin(10)
     }
-    .width('100%')
   }
 }
 ```
-
-示例效果图：
-
-![arkts-sta-interop-dyn-storages-demo5](figures/arkts-sta-interop-dyn-storages-demo5.gif)
 
 
 ### ArkTS-Dyn使用ArkTS-Sta PersistentStorage中的数据
@@ -467,13 +395,11 @@ struct Index {
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。
 
-<!-- @[StaDynStoragePersistMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
-
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
-export struct PersistentStoragePage {
+export struct MainPage {
   // ArkTS-Dyn绑定ArkTS-Sta PersistentStorage数据
   @StorageLink('LinkA') persistLink: string = 'dynamicB';
   @StorageProp('LinkA') persistProp: string = 'dynamicB';
@@ -482,33 +408,21 @@ export struct PersistentStoragePage {
     Row() {
       Column() {
         Text('----- dynamic storagelink -----')
-          .fontSize(20)
-          .margin(10)
          // 退出应用后重新进入，修改保留
         Text(`PersistentStorage LinkA: ${this.persistLink}`)
-          .fontSize(20)
-          .margin(10)
         Button('change LinkA')
           .onClick((e: ClickEvent) => {
             // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件
             this.persistLink += 'b';
           })
-          .width(300)
-          .margin(10)
         Text('----- dynamic storageprop -----')
-          .fontSize(20)
-          .margin(10)
         // 退出应用后重新进入，同步为LinkA的值
         Text(`PersistentStorage PropB: ${this.persistProp}`)
-          .fontSize(20)
-          .margin(10)
         Button('change PropB')
           .onClick((e: ClickEvent) => {
             // 点击后仅更新当前Text组件
             this.persistProp += 'b';
           })
-          .width(300)
-          .margin(10)
       }
     }
   }
@@ -517,14 +431,14 @@ export struct PersistentStoragePage {
 
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
-<!-- @[StaDynStoragePersist](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStoragePersist.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaDynStoragePersist.ets
+'use static'
+
+// entry/src/main/ets/pages/Index.ets
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { PersistentStorage, StorageLink, StoragePropRef } from '@ohos.arkui.stateManagement';
 
-import { PersistentStoragePage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
+import { MainPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
 
 @Entry
 @Component
@@ -538,44 +452,26 @@ struct Index {
   build() {
     Column() {
       Text('----- static storagelink -----')
-        .fontSize(20)
-        .margin(10)
       // 退出应用后重新进入，修改保留
       Text(`PersistentStorage LinkA: ${this.persistLink}`)
-        .fontSize(20)
-        .margin(10)
       Button('change LinkA')
         .onClick((e: ClickEvent) => {
           // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件
           this.persistLink += 'a';
         })
-        .width(300)
-        .margin(10)
       Text('----- static storagepropref -----')
-        .fontSize(20)
-        .margin(10)
       // 退出应用后重新进入，同步为LinkA的值
       Text(`PersistentStorage PropB: ${this.persistProp}`)
-        .fontSize(20)
-        .margin(10)
       Button('change PropB')
         .onClick((e: ClickEvent) => {
           // 点击后仅更新当前Text组件
           this.persistProp += 'a';
         })
-        .width(300)
-        .margin(10)
-      PersistentStoragePage()
+      MainPage()
     }
-    .width('100%')
   }
 }
 ```
-
-示例效果图：
-
-![arkts-sta-interop-dyn-storages-demo6](figures/arkts-sta-interop-dyn-storages-demo6.gif)
-
 
 ### ArkTS-Dyn使用ArkTS-Sta Environment中的数据
 
@@ -585,13 +481,11 @@ struct Index {
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。
 
-<!-- @[StaDynStorageEnvMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/dynamic_module/src/main/ets/components/MainPage.ets) -->
-
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
-export struct EnvironmentPage {
+export struct MainPage {
   // ArkTS-Dyn绑定ArkTS-Sta Environment数据
   @StorageLink('fontScale') fontScaleLink: number = 4.0;
   @StorageProp('fontScale') fontScaleProp: number = 4.0;
@@ -600,31 +494,21 @@ export struct EnvironmentPage {
     Row() {
       Column() {
         Text('----- dynamic storagelink -----')
-          .fontSize(20)
-          .margin(10)
         Text(`Environment fontscale link: ${this.fontScaleLink}`)
           .fontSize(this.fontScaleLink)
-          .margin(10)
         Button('change fontscale link')
           .onClick((e: ClickEvent) => {
             // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件，fontSize加2
             this.fontScaleLink += 2.0;
           })
-          .width(300)
-          .margin(10)
         Text('----- dynamic storageprop -----')
-          .fontSize(20)
-          .margin(10)
         Text(`Environment fontscale prop: ${this.fontScaleProp}`)
           .fontSize(this.fontScaleProp)
-          .margin(10)
         Button('change fontscale prop')
           .onClick((e: ClickEvent) => {
             // 点击后仅更新当前Text组件，fontSize加2
             this.fontScaleProp += 2.0;
           })
-          .width(300)
-          .margin(10)
       }
     }
   }
@@ -633,14 +517,14 @@ export struct EnvironmentPage {
 
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
-<!-- @[StaDynStorageEnv](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStorages/entry/src/main/ets/pages/StaDynStorageEnv.ets) -->
-
 ```TypeScript
-// entry/src/main/ets/pages/StaDynStorageEnv.ets
+'use static'
+
+// entry/src/main/ets/pages/Index.ets
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { Environment, StorageLink, StoragePropRef } from '@ohos.arkui.stateManagement';
 
-import { EnvironmentPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
+import { MainPage } from 'dynamic_module'; // 导入ArkTS-Dyn自定义组件
 
 @Entry
 @Component
@@ -653,38 +537,23 @@ struct Index {
   build() {
     Column() {
       Text('----- static storagelink -----')
-        .fontSize(20)
-        .margin(10)
       Text(`Environment fontscale link: ${this.fontScaleLink}`)
         .fontSize(this.fontScaleLink)
-        .margin(10)
       Button('change fontScale link')
         .onClick((e: ClickEvent) => {
           // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件
           this.fontScaleLink += 1.0;
         })
-        .width(300)
-        .margin(10)
       Text('----- static storagepropref -----')
-        .fontSize(20)
-        .margin(10)
       Text(`Environment fontscale prop: ${this.fontScaleProp}`)
         .fontSize(this.fontScaleProp)
-        .margin(10)
       Button('change fontScale prop')
         .onClick((e: ClickEvent) => {
           // 点击后仅更新当前Text组件
           this.fontScaleProp += 1.0;
         })
-        .width(300)
-        .margin(10)
-      EnvironmentPage()
+      MainPage()
     }
-    .width('100%')
   }
 }
 ```
-
-示例效果图：
-
-![arkts-sta-interop-dyn-storages-demo7](figures/arkts-sta-interop-dyn-storages-demo7.gif)

@@ -1906,7 +1906,7 @@ avSession.startCastDeviceDiscovery(() => {
 
 远端分布式设备支持的会话类型。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3239,52 +3239,10 @@ aVCastController.offVideoSizeChange();
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager 
 
-**系统接口：** 此接口为系统接口。
-
-| 名称                |  值  | 说明         |
-| --------------------| ---- | ----------- |
-| CATEGORY_ACTIVE     |  1   | 允许在系统控制入口显示的会话类别。 |
-| CATEGORY_NOT_ACTIVE |  2   | 禁止在系统控制入口显示的会话类别。 |
+**系统接口：** 此接口是系统接口。 
+ 
+| 名称                |  值  | 说明         | 
+| --------------------| ---- | ----------- | 
+| CATEGORY_ACTIVE     |  1   | 允许在系统控制入口显示的会话类别。 | 
+| CATEGORY_NOT_ACTIVE |  2   | 禁止在系统控制入口显示的会话类别。 | 
 | CATEGORY_ALL        |  3   | 所有会话类别。 |
-
-## ConnectionState
-
-表示连接状态的枚举，仅包含系统接口部分。完整枚举定义请参见[ConnectionState](arkts-apis-avsession-e.md#connectionstate10)。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。
-
-**原子化服务API（仅ArkTS-Dyn）** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-| 名称                        | 值   | 说明         |
-| --------------------------- | ---- | ----------- |
-| STATE_AUTHENTICATING      | 10    | 与远端设备连接认证中。 |
-| STATE_MIRROR_TO_STREAM      | 11    | 从镜像模式切换到音视频投播。 |
-| STATE_STREAM_TO_MIRROR      | 12    | 从音视频投播切换到镜像模式。 |
-
-## ExtraKey
-
-表示定义在不同场景中使用的额外键的枚举，仅包含系统接口部分。完整枚举定义请参见[ExtraKey](arkts-apis-avsession-e.md#extrakey)。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-| 名称                        | 值   | 说明         |
-| --------------------------- | ---- | ----------- |
-| LIVE_VIEW_HIDDEN_WHEN_KEYGUARD      | 'hw_live_view_hidden_when_keyguard'    | 作为[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口传入的键，值传入bool类型列表，用于通知系统在锁屏时是否隐藏实况窗卡片。 |

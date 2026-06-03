@@ -14,7 +14,7 @@
 
 在ArkTS-Dyn中使用时，开发指南参考：[\@Provider装饰器和\@Consumer装饰器：跨组件层级双向同步（ArkTS-Dyn）](../../../ui/state-management/arkts-new-provider-and-consumer.md)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

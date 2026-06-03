@@ -353,7 +353,7 @@ requestSelected(id: string): void
 
 > **说明：**
 > 
-> - 仅当目标组件满足以下全部条件时，请求才会生效：组件可以响应智慧手势，组件在屏幕内可见，且组件绑定了[onClick](./arkui-ts/ts-universal-events-click.md#onclick)或绑定了单击手势[TapGesture](./arkui-ts/ts-basic-gestures-tapgesture.md#接口)。
+> - 仅当目标组件满足以下全部条件时，请求才会生效：组件可以响应智慧手势，且组件在屏幕内可见。
 > - 组件能否响应智慧手势由[smartGestureShortcut](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut)中的enabled决定。
 
 **ArkTS-Dyn起始版本：** 26.0.0

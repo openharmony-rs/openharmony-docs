@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)。
+本模块提供[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#企业设备管理扩展能力)。
 
 设备管理应用需要存在一个EnterpriseAdminExtensionAbility并重写相关接口，以此具备模块提供的各项能力，比如接收由系统发送的该应用被激活或者解除激活的通知。
 
@@ -540,7 +540,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onKeyEvent(keyEvent: systemManager.KeyEvent): void
 
-[按键事件](./js-apis-enterprise-systemManager.md#keyevent23)回调。MDM应用需要通过[systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23)接口下发按键事件处理策略，当系统按键事件触发时，如果事件与已下发的策略匹配，则触发该回调。回调信息[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中包含当前发生的按键事件信息。
+[系统按键事件](./js-apis-enterprise-systemManager.md#keyevent23)回调。MDM应用需要通过[systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23)接口下发按键事件处理策略，当系统按键事件触发时，如果事件与已下发的策略匹配，则触发该回调。回调信息[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中包含当前发生的按键事件信息。
 
 单按键事件响应。设备单按键被触发时，[onKeyEvent](#onkeyevent23)会在按下和抬起时触发两次回调事件，可由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyAction属性进行判断。[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性在单按键事件中可忽略。
 

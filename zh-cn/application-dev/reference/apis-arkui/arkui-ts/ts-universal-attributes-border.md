@@ -23,9 +23,9 @@ ArkTS-Sta: border(value: BorderOptions | undefined): this
 
 设置边框样式。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,9 +58,9 @@ ArkTS-Sta: borderStyle(value: BorderStyle | EdgeStyles | undefined): this
 
 设置元素的边框线条样式。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,9 +88,9 @@ ArkTS-Sta: borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths | undefi
 
 设置边框的宽度。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,9 +118,9 @@ ArkTS-Sta: borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors |
 
 设置边框的颜色。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,9 +146,9 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
 设置边框的圆角半径。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,9 +176,9 @@ ArkTS-Sta: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses
 
 设置边框的圆角半径和绘制圆角的模式。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -193,7 +193,7 @@ ArkTS-Sta: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses
 | 参数名 | 类型                                                         | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | value  | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup><br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12) \| undefined | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。<br/>取值为undefined时，与不设置表现一致。|
-| type  | ArkTS-Dyn: [RenderStrategy](ts-appendix-enums.md#renderstrategy22)<br/>ArkTS-Sta: [RenderStrategy](ts-appendix-enums.md#renderstrategy22) \| undefined | 否   |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST<br/>取值为undefined时，按默认值处理。|
+| type  | [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否   |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST|
 
 **返回值：**
 

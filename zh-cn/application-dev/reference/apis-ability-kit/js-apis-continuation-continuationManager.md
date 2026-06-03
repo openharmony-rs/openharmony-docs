@@ -9,10 +9,8 @@
 continuationManager模块提供了流转/协同入口管理服务能力，包括连接/取消流转管理服务，注册/解注册设备连接变化监听，拉起设备选择模块，更新连接状态。
 
 > **说明：**
->
-> 本模块仅支持ArkTS-Dyn。
->
-> 本模块首批接口从API version 8开始支持，从API version 22开始废弃，建议使用分布式设备管理[@ohos.distributedDeviceManager (设备管理)](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)替代。
+> 
+> 本模块首批接口从API version 8开始支持，从API version 22开始废弃，建议使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)替代。
 >
 > 本模块接口仅可在Stage模型下使用。
 
@@ -30,21 +28,17 @@ register(callback: AsyncCallback\<number>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[ondevicestatechange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback\<number> | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback\<number> | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
 
 **示例：**
 
@@ -70,22 +64,18 @@ register(options: ContinuationExtraParams, callback: AsyncCallback\<number>): vo
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| options | [ContinuationExtraParams](js-apis-continuation-continuationExtraParams.md) | 是 | 过滤可选择设备列表的额外参数。 |
-| callback | AsyncCallback\<number> | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | options | [ContinuationExtraParams](js-apis-continuation-continuationExtraParams.md) | 是 | 过滤可选择设备列表的额外参数。 |
+  | callback | AsyncCallback\<number> | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
 
 **示例：**
 
@@ -115,15 +105,11 @@ register(options?: ContinuationExtraParams): Promise\<number>
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -161,9 +147,9 @@ registerContinuation(callback: AsyncCallback\<number>): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -171,15 +157,11 @@ registerContinuation(callback: AsyncCallback\<number>): void
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback\<number> | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback\<number> | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
 
 **错误码：**
 
@@ -220,9 +202,9 @@ registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -230,16 +212,12 @@ registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| options | [ContinuationExtraParams](js-apis-continuation-continuationExtraParams.md) | 是 | 过滤可选择设备列表的额外参数。 |
-| callback | AsyncCallback\<number> | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | options | [ContinuationExtraParams](js-apis-continuation-continuationExtraParams.md) | 是 | 过滤可选择设备列表的额外参数。 |
+  | callback | AsyncCallback\<number> | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
 
 **错误码：**
 
@@ -284,19 +262,15 @@ registerContinuation(options?: ContinuationExtraParams): Promise\<number>
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -352,22 +326,18 @@ on(type: 'deviceConnect', callback: Callback\<ContinuationResult>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| type | string | 是 | 监听的事件类型，固定值"deviceConnect"。 |
-| callback | Callback\<[ContinuationResult](js-apis-continuation-continuationResult.md)> | 是 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type | string | 是 | 监听的事件类型，固定值"deviceConnect"。 |
+  | callback | Callback\<[ContinuationResult](js-apis-continuation-continuationResult.md)> | 是 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
 
 **示例：**
 
@@ -389,22 +359,18 @@ on(type: 'deviceDisconnect', callback: Callback\<string>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| type | string | 是 | 监听的事件类型，固定值"deviceDisconnect"。 |
-| callback | Callback\<string> | 是 | 当用户从设备选择模块中断开设备时调用，返回设备ID供开发者使用。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type | string | 是 | 监听的事件类型，固定值"deviceDisconnect"。 |
+  | callback | Callback\<string> | 是 | 当用户从设备选择模块中断开设备时调用，返回设备ID供开发者使用。 |
 
 **示例：**
 
@@ -424,22 +390,18 @@ off(type: 'deviceConnect', callback?: Callback\<ContinuationResult>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| type | string | 是 | 取消监听的事件类型，固定值"deviceConnect"。 |
-| callback | Callback\<[ContinuationResult](js-apis-continuation-continuationResult.md)> | 否 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type | string | 是 | 取消监听的事件类型，固定值"deviceConnect"。 |
+  | callback | Callback\<[ContinuationResult](js-apis-continuation-continuationResult.md)> | 否 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
 
 **示例：**
 
@@ -461,22 +423,18 @@ off(type: 'deviceDisconnect', callback?: Callback\<string>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| type | string | 是 | 取消监听的事件类型，固定值"deviceDisconnect"。 |
-| callback | Callback\<string> | 否 | 当用户从设备选择模块中断开设备时调用，返回设备ID供开发者使用。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type | string | 是 | 取消监听的事件类型，固定值"deviceDisconnect"。 |
+  | callback | Callback\<string> | 否 | 当用户从设备选择模块中断开设备时调用，返回设备ID供开发者使用。 |
 
 **示例：**
 
@@ -496,9 +454,9 @@ on(type: 'deviceSelected', token: number, callback: Callback\<Array\<Continuatio
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -506,17 +464,13 @@ on(type: 'deviceSelected', token: number, callback: Callback\<Array\<Continuatio
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| type | string | 是 | 监听的事件类型，固定值"deviceSelected"。 |
-| token | number | 是 | 注册后的token。 |
-| callback | Callback\<Array\<[ContinuationResult](js-apis-continuation-continuationResult.md)>> | 是 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type | string | 是 | 监听的事件类型，固定值"deviceSelected"。 |
+  | token | number | 是 | 注册后的token。 |
+  | callback | Callback\<Array\<[ContinuationResult](js-apis-continuation-continuationResult.md)>> | 是 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
 
 **错误码：**
 
@@ -558,9 +512,9 @@ on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<Continuat
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[on('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -568,17 +522,13 @@ on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<Continuat
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| type | string | 是 | 监听的事件类型，固定值"deviceUnselected"。 |
-| token | number | 是 | 注册后的token。 |
-| callback | Callback\<Array\<[ContinuationResult](js-apis-continuation-continuationResult.md)>> | 是 | 当用户从设备选择模块中断开设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type | string | 是 | 监听的事件类型，固定值"deviceUnselected"。 |
+  | token | number | 是 | 注册后的token。 |
+  | callback | Callback\<Array\<[ContinuationResult](js-apis-continuation-continuationResult.md)>> | 是 | 当用户从设备选择模块中断开设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
 
 **错误码：**
 
@@ -621,9 +571,9 @@ off(type: 'deviceSelected', token: number): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -631,16 +581,12 @@ off(type: 'deviceSelected', token: number): void
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| type | string | 是 | 取消监听的事件类型，固定值"deviceSelected"。 |
-| token | number | 是 | 注册后的token。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type | string | 是 | 取消监听的事件类型，固定值"deviceSelected"。 |
+  | token | number | 是 | 注册后的token。 |
 
 **错误码：**
 
@@ -675,9 +621,9 @@ off(type: 'deviceUnselected', token: number): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -685,16 +631,12 @@ off(type: 'deviceUnselected', token: number): void
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| type | string | 是 | 取消监听的事件类型，固定值"deviceUnselected"。 |
-| token | number | 是 | 注册后的token。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type | string | 是 | 取消监听的事件类型，固定值"deviceUnselected"。 |
+  | token | number | 是 | 注册后的token。 |
 
 **错误码：**
 
@@ -735,16 +677,12 @@ startDeviceManager(token: number, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
+  | callback | AsyncCallback\<void> | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
 
 **示例：**
 
@@ -775,17 +713,13 @@ startDeviceManager(token: number, options: ContinuationExtraParams, callback: As
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
-| options | [ContinuationExtraParams](js-apis-continuation-continuationExtraParams.md) | 是 | 过滤可选择设备列表的额外参数。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
+  | options | [ContinuationExtraParams](js-apis-continuation-continuationExtraParams.md) | 是 | 过滤可选择设备列表的额外参数。 |
+  | callback | AsyncCallback\<void> | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
 
 **示例：**
 
@@ -820,10 +754,6 @@ startDeviceManager(token: number, options?: ContinuationExtraParams): Promise\<v
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -866,7 +796,7 @@ startContinuationDeviceManager(token: number, callback: AsyncCallback\<void>): v
 > 
 > 从API version 9开始支持，从API version 22开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -874,16 +804,12 @@ startContinuationDeviceManager(token: number, callback: AsyncCallback\<void>): v
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
+  | callback | AsyncCallback\<void> | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -925,7 +851,7 @@ startContinuationDeviceManager(token: number, options: ContinuationExtraParams, 
 > 
 > 从API version 9开始支持，从API version 22开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -933,17 +859,13 @@ startContinuationDeviceManager(token: number, options: ContinuationExtraParams, 
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
-| options | [ContinuationExtraParams](js-apis-continuation-continuationExtraParams.md) | 是 | 过滤可选择设备列表的额外参数。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
+  | options | [ContinuationExtraParams](js-apis-continuation-continuationExtraParams.md) | 是 | 过滤可选择设备列表的额外参数。 |
+  | callback | AsyncCallback\<void> | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -990,17 +912,13 @@ startContinuationDeviceManager(token: number, options?: ContinuationExtraParams)
 > 
 > 从API version 9开始支持，从API version 22开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1062,18 +980,14 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState,
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
-| deviceId | string | 是 | 设备ID。 |
-| status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
+  | deviceId | string | 是 | 设备ID。 |
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
+  | callback | AsyncCallback\<void> | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
 
 **示例：**
 
@@ -1105,17 +1019,13 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState)
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
-| deviceId | string | 是 | 设备ID。 |
-| status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
+  | deviceId | string | 是 | 设备ID。 |
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
 
 **返回值：**
 
@@ -1150,7 +1060,7 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 > 
 > 从API version 9开始支持，从API version 22开始废弃，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1158,18 +1068,14 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
-| deviceId | string | 是 | 设备ID。 |
-| status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
+  | deviceId | string | 是 | 设备ID。 |
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
+  | callback | AsyncCallback\<void> | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1212,7 +1118,7 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 > 
 > 从API version 9开始支持，从API version 22开始废弃，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1220,17 +1126,13 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
-| deviceId | string | 是 | 设备ID。 |
-| status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
+  | deviceId | string | 是 | 设备ID。 |
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
 
 **返回值：**
 
@@ -1279,22 +1181,18 @@ unregister(token: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当解注册成功，err为undefined，否则返回错误对象。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
+  | callback | AsyncCallback\<void> | 是 | 回调函数。当解注册成功，err为undefined，否则返回错误对象。 |
 
 **示例：**
 
@@ -1319,21 +1217,17 @@ unregister(token: number): Promise\<void>
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
 
 **返回值：**
 
@@ -1364,9 +1258,9 @@ unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1374,16 +1268,12 @@ unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当解注册成功，err为undefined，否则返回错误对象。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
+  | callback | AsyncCallback\<void> | 是 | 回调函数。当解注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1423,9 +1313,9 @@ unregisterContinuation(token: number): Promise\<void>
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始废弃，建议使用[off('deviceStateChange')](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1433,15 +1323,11 @@ unregisterContinuation(token: number): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 9
-
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| token | number | 是 | 注册后的token。 |
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | token | number | 是 | 注册后的token。 |
 
 **返回值：**
 
@@ -1487,15 +1373,11 @@ unregisterContinuation(token: number): Promise\<void>
 > 
 > 从API version 22开始废弃，建议使用[DeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1512,15 +1394,11 @@ unregisterContinuation(token: number): Promise\<void>
 > 
 > 从API version 22开始废弃，建议使用[DeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicestatechange)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1537,15 +1415,11 @@ type ContinuationResult = _ContinuationResult
 > 
 > 从API version 10开始支持，从API version 22开始废弃，建议使用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 10
 
 | 类型 | 说明 |
 | --- | --- |
@@ -1561,15 +1435,11 @@ type ContinuationExtraParams = _ContinuationExtraParams
 > 
 > 从API version 10开始支持，从API version 22开始废弃，建议使用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)替代。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 10
 
 | 类型 | 说明 |
 | --- | --- |

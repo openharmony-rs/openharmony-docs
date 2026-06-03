@@ -28,25 +28,25 @@ Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 
 
 参考接口参数说明修改参数符合要求。
 
-## 15100001 超过最大订阅数量或结果集数量
+## 15100001 超过最大订阅数量
 
 **错误信息**
 
-Over max limits.
+Over max  limits.
 
 **错误描述**
 
-数据库订阅数目或打开结果集数目超过最大支持上限，当前最大限制数目都是8。
+超过数据库订阅数目或者打开结果集数目最大支持上限。
 
 **可能原因**
 
-1.  在调用订阅数据库变化接口[on('dataChange')](js-apis-distributedKVStore.md#ondatachange)时，对数据库的订阅数量已超过最大限制数目8。
-2.  调用获取数据库结果集接口[getResultSet](js-apis-distributedKVStore.md#getresultset)时，数据库当前打开的结果集数目超过最大限制数目8。
+1.  在调用订阅数据库变化接口on时，对数据库的订阅数量已超过最大限制数目8。
+2.  调用获取数据库结果集接口getResultSet时，数据库当前打开的结果集数目超过最大限制数目8。
 
 **处理步骤**
 
-1. 如果在调用订阅数据库变化接口[on('dataChange')](js-apis-distributedKVStore.md#ondatachange)时，对数据库的订阅数量已超过最大限制，调用[off('dataChange')](js-apis-distributedKVStore.md#offdatachange)接口取消对数据库的部分订阅后，再次尝试订阅。
-2. 如果在调用获取数据库结果集接口[getResultSet](js-apis-distributedKVStore.md#getresultset)时数据库当前打开的结果集数目超过最大限制，调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)接口关闭部分打开的结果集后重试。
+1. 如果在调用订阅数据库变化接口on时，对数据库的订阅数量已超过最大限制，取消对数据库的部分订阅后，再次尝试订阅。
+2. 如果在调用获取数据库结果集接口getResultSet时数据库当前打开的结果集数目超过最大限制，关闭部分打开的结果集后重试。
 
 ## 15100002 打开已有数据库时参数配置发生变化
 
@@ -56,7 +56,7 @@ Open existed database with changed options.
 
 **错误描述**
 
-调用[getKVStore](js-apis-distributedKVStore.md#getkvstore)接口打开已创建的数据库时，传入的options配置参数与创建该数据库时使用的options配置参数不一致。
+该错误码表示在调用getKVStore接口打开已创建的数据库时，options配置参数发生变化。
 
 **可能原因**
 

@@ -25,7 +25,7 @@ getSupportedExposureDurationRange(): Array\<number\>
 
 获取支持的手动曝光时长范围。单位：微秒。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -41,7 +41,7 @@ getSupportedExposureDurationRange(): Array\<number\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102 | Operation not allowed, session or inputdevice maybe abnormal. |
+| 7400102 | peration not allowed, session or inputdevice maybe abnormal. |
 | 7400103 | Session not config, only throw in session usage. |
 
 **示例：**
@@ -69,7 +69,7 @@ getExposureBiasStep(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

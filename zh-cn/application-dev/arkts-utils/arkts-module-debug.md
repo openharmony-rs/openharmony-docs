@@ -82,13 +82,11 @@ ModuleImportStack:
 ```js
 // entry\src\main\ets\pages\Index.ets
 import  {A} from './A'
-
 A()
 ```
 ```js
 // entry\src\main\ets\pages\A.ets
 import {b} from "./B"
-
 export function A(){
   return b + 2;
 }
@@ -112,7 +110,6 @@ ModuleImportStack:
 // entry\src\main\ets\pages\Index.ets
 import {a} from './A'
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
 const DOMAIN = 0x0000;
 hilog.info(DOMAIN, 'testTag', 'ModuleImportStack test', a);
 ```
@@ -120,7 +117,6 @@ hilog.info(DOMAIN, 'testTag', 'ModuleImportStack test', a);
 // entry\src\main\ets\pages\A.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-
 const DOMAIN = 0x0000;
 hilog.info(DOMAIN, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
 export const a = 1;

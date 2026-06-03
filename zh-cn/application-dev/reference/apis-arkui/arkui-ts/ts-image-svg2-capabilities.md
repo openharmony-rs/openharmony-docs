@@ -208,7 +208,7 @@ struct Index {
 
 ### 支持变换全局中心点配置
 
-SVG支持解析transform-origin属性来配置全局中心点的能力，前后效果对比如下表格说明：
+SVG支持解析[transform-origin](../arkui-js/js-components-common-animation.md)属性来配置全局中心点的能力，前后效果对比如下表格说明：
 
 >**说明：**
 >
@@ -238,7 +238,7 @@ SVG支持解析rotate旋转的局部中心点功能，例如'rotate(30, -10, -10
 
 ### 支持矩阵(matrix)转换
 
-SVG支持解析transform属性的matrix矩阵转换能力。matrix允许对元素进行复杂的线性变换，包括平移、旋转、缩放和倾斜等，例如matrix(a, b, c, d, e, f)。其中各个字段的元素作用如下：a控制元素在x方向上的缩放，b控制元素在y方向上的倾斜，c控制元素在x方向上的倾斜，d控制元素在y方向上的缩放，e控制元素在x方向上的平移，f控制元素在y方向上的平移。
+SVG支持解析transform属性的matrix矩阵转换能力。matrix允许对元素进行复杂的线性变换，包括平移、旋转、缩放和倾斜等，例如matrix(a, b, c, d, e, f)。其中各个字段的元素作用如下：a‌控制元素在x方向上的缩放，b‌控制元素在x方向上的倾斜，c‌控制元素在y方向上的倾斜‌，d‌控制元素在y方向上的缩放‌，e控制元素在x方向上的平移‌，f控制元素在y方向上的平移。
 
 >**说明：**
 >
@@ -394,7 +394,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持裁剪路径单元的解析
 
-支持裁剪路径单元值clipPathUnits的解析，增加clipPathUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持裁剪路径单元值[clipPathUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加clipPathUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
@@ -419,7 +419,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持渐变单元的解析
 
-支持渐变单元值gradientUnits的解析，增加gradientUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持渐变单元值[gradientUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加gradientUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
@@ -463,7 +463,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持遮罩单元和遮罩内容单元的解析
 
-支持遮罩单元maskUnits和遮罩内容单元maskContentUnits的解析，增加maskContentUnits和maskUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持遮罩单元[maskUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)和遮罩内容单元[maskContentUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加maskContentUnits和maskUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
@@ -488,7 +488,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持图案单元和图案内容单元的解析
 
-支持图案单元patternUnits和图案内容单元patternContentUnits的解析，增加patternUnits和patternContentUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持图案单元[patternUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)和图案内容单元[patternContentUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加patternUnits和patternContentUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
@@ -514,7 +514,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持滤镜单元和原语单元解析
 
-支持滤镜单元filterUnits和原语单元primitiveUnits的解析，增加filterUnits和primitiveUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。目前支持到的原语有feFlood,feOffset,feGaussianBlur,feBlend,feColorMatrix,feComposite。
+支持滤镜单元[filterUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)和原语单元[primitiveUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加filterUnits和primitiveUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。目前支持到的原语有feFlood,feOffset,feGaussianBlur,feBlood,feColorMatrix,feComposite。
 
 >**说明：**
 >
@@ -609,7 +609,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### pattern支持平铺效果
 
-pattern图案支持重复平铺效果。
+[pattern](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)图案支持重复平铺效果。
 
 >**说明：**
 >
@@ -659,7 +659,7 @@ pattern图案支持重复平铺效果。
 
 ### 线性渐变
 
-linearGradient线性渐变支持做平移和缩放。
+[linearGradient](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)线性渐变支持做平移和缩放。
 
 >**说明：**
 >
@@ -684,7 +684,7 @@ linearGradient线性渐变支持做平移和缩放。
 
 ### 径向渐变
 
-radialGradient径向渐变支持做平移和缩放。
+[radialGradient](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)径向渐变支持做平移和缩放。
 
 >**说明：**
 >
@@ -709,7 +709,7 @@ radialGradient径向渐变支持做平移和缩放。
 
 ### mask参数异常时默认效果变更
 
-mask遮罩的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
+[mask](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)遮罩的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
 
 >**说明：**
 >
@@ -733,7 +733,7 @@ mask遮罩的x、y、width、height等参数允许是数字、百分数、小数
 
 ### filter参数异常时默认效果变更
 
-filter滤镜的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
+[filter](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)滤镜的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
 
 >**说明：**
 >

@@ -46,8 +46,6 @@ hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 
 **ArkTS-Sta起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -144,8 +142,6 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 

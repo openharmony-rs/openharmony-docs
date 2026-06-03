@@ -1,9 +1,9 @@
 # 自定义绘制修改器 (DrawModifier)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sunbees-->
-<!--Designer: @sunbees-->
-<!--Tester: @khq-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
+<!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -28,7 +28,6 @@ declare class DrawModifier {
 }
 ```
 ArkTS-Sta：
-<!-- @[drawmodifier_interface_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/DrawModifierInterface.ets) -->
 ```ts
 declare class DrawModifier {
 
@@ -272,31 +271,20 @@ struct DrawModifierExample {
 ```
 
 ArkTS-Sta示例：
-<!-- @[drawFront_drawContent_drawBehind_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/DrawFrontDrawContentDrawBehind.ets) -->
 
 ``` TypeScript
-import {
-  $r,
-  Button,
-  Color,
-  Column,
-  Component,
-  DrawContext,
-  DrawModifier,
-  Entry,
-  Row,
-  Text,
-  UIContext,
-  State
-} from '@kit.ArkUI';
+import { Text, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color } from '@ohos.arkui.component';
+import { State, PropRef } from '@ohos.arkui.stateManagement';
+import { NodeController, BuilderNode, FrameNode, RenderNode } from '@ohos.arkui.node';
 import { drawing } from '@kit.ArkGraphics2D';
+import { DrawContext, DrawModifier } from '@kit.ArkUI';
 import { AnimatorResult } from '@ohos.animator'
-import { hilog } from '@kit.PerformanceAnalysisKit'
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const LOG_PRINT_DOMAIN: int = 0xFF00;
+const LOG_PRINT_DOMAIN: number = 0xFF00;
 const PREFIX: string = '[Sample]'
 
-export class MyFullDrawModifier extends DrawModifier {
+class MyFullDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
   public uiContext: UIContext;
@@ -364,7 +352,7 @@ export class MyFullDrawModifier extends DrawModifier {
   }
 }
 
-export class MyFrontDrawModifier extends DrawModifier {
+class MyFrontDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
   public uiContext: UIContext;
@@ -402,7 +390,7 @@ struct DrawModifierExample {
   @State modifier: DrawModifier = new MyFrontDrawModifier(this.getUIContext());
   private count: int = 0;
 
-  create(): void {
+  create() {
     // 设置绘制动画
     let self = this;
     this.drawAnimator = this.getUIContext().createAnimator({
@@ -424,11 +412,11 @@ struct DrawModifierExample {
     };
   }
 
-  build(): void {
+  build() {
     Column() {
       Row() {
         // $r('app.string.Modifier')需要替换为开发者所需的资源文件
-        Text($r('app.string.app_name'))
+        Text($r('app.string.Modifier'))
           .width(100)
           .height(100)
           .margin(10)
@@ -559,16 +547,20 @@ struct DrawModifierExample {
 ```
 
 ArkTS-Sta示例：
-<!-- @[drawForeground_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/DrawForeground.ets) -->
 
 ``` TypeScript
-import { $r, Column, Component, DrawContext, DrawModifier, Entry, Text, TextAlign, UIContext } from '@kit.ArkUI';
+import { Text, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, NodeContainer, FontWeight, ClickEvent, Button, Color, TextAlign } from '@ohos.arkui.component';
+import { State, PropRef } from '@ohos.arkui.stateManagement';
+import { NodeController, BuilderNode, FrameNode, RenderNode } from '@ohos.arkui.node';
 import { drawing } from '@kit.ArkGraphics2D';
+import { DrawContext, DrawModifier } from '@kit.ArkUI';
+import { AnimatorResult } from '@ohos.animator'
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const LOG_PRINT_DOMAIN: int = 0xFF00;
+const LOG_PRINT_DOMAIN: number = 0xFF00;
 const PREFIX: string = '[Sample]'
 
-export class MyForegroundDrawModifier extends DrawModifier {
+class MyForegroundDrawModifier extends DrawModifier {
   public scaleX: number = 3;
   public scaleY: number = 3;
   public uiContext: UIContext;
@@ -605,10 +597,10 @@ struct DrawModifierExample {
   // 将自定义绘制前景的类实例化，传入UIContext实例。
   private foregroundModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
 
-  build(): void {
+  build() {
     Column() {
       // $r('app.string.TestNode')需要替换为开发者所需的资源文件。
-      Text($r('app.string.app_name'))
+      Text($r('app.string.TestNode'))
         .fontSize(36)
         .width('100%')
         .height('100%')

@@ -484,7 +484,7 @@ int32_t OH_ArkUI_DragEvent_GetDataTypes(ArkUI_DragEvent *event, char *eventTypeA
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) *event | ArkUI_DragEvent事件指针。 |
 | char *eventTypeArray[] | 返回拖拽数据的类型列表，需要先自行创建字符串数组。 |
-| int32_t length | 数组总长度，不应少于使用[OH_ArkUI_DragEvent_GetDataTypeCount](#oh_arkui_dragevent_getdatatypecount)获取到的数量。 |
+| int32_t length | 数组总长度，不应少于使用OH_ArkUI_DragEvent_GetDataTypesCount获取到的数量。 |
 | int32_t maxStrLen | 拖拽数据类型的最大字符串长度。 |
 
 **返回：**

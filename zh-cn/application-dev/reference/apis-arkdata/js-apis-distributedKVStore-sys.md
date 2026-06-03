@@ -55,7 +55,7 @@ putBatch(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;):
 | 参数名   | 类型                                                     | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | value    | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt; | 是   | 表示要插入的数据。 |
-| callback | AsyncCallback&lt;void&gt;                                     | 是   | 回调函数。成功时err为undefined，失败时err为错误对象。         |
+| callback | AsyncCallback&lt;void&gt;                                     | 是   | 回调函数。         |
 
 **错误码：**
 
@@ -102,7 +102,7 @@ try {
 
 putBatch(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
 
-将ValuesBucket类型的值写入SingleKVStore数据库，使用Promise异步回调。
+将valuesbucket类型的值写入SingleKVStore数据库，使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -315,7 +315,7 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 | 参数名     | 类型                                                     | 必填 | 说明                                            |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，当此参数为null时，应定义处理逻辑。 |
-| callback   | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。成功时err为undefined，失败时err为错误对象。                                      |
+| callback   | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。                                      |
 
 **错误码：**
 
@@ -536,7 +536,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -637,7 +637,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 | 类型                                                 | 说明                      |
 | ---------------------------------------------------- | ------------------------- |
-| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise对象。返回KVStoreResultSet对象。 |
+| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -647,7 +647,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -755,7 +755,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -856,7 +856,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 | 类型                                                 | 说明                      |
 | ---------------------------------------------------- | ------------------------- |
-| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise对象。返回KVStoreResultSet对象。 |
+| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -866,7 +866,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -967,7 +967,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -1073,7 +1073,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | 类型                                                 | 说明                      |
 | ---------------------------------------------------- | ------------------------- |
-| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise对象。返回KVStoreResultSet对象。 |
+| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1083,7 +1083,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 | ------------ | -------------------------------------- |
 | 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max  limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 

@@ -11,13 +11,11 @@ UIExtensionContentSession是[UIExtensionAbility](js-apis-app-ability-uiExtension
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块接口仅可在Stage模型下使用。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
-> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.UIExtensionContentSession (带界面扩展能力的界面操作类)](js-apis-app-ability-uiExtensionContentSession.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.UIExtensionContentSession (带界面扩展能力的界面操作类)](js-apis-app-ability-uiExtensionContentSession.md)。
 
 ## 导入模块
 
@@ -36,12 +34,6 @@ sendData(data: Record\<string, Object>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[sendData<sup>23+</sup>](#senddata23)。
-
-**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -93,74 +85,6 @@ struct Index {
 }
 ```
 
-### sendData<sup>23+</sup>
-
-sendData(data: Record\<string, RecordData>): void
-
-发送数据给UIExtensionComponent控件。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口**：此接口为系统接口。
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[sendData](#senddata)。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名 | 类型                             | 必填 | 说明                                       |
-| ------ | -------------------------------- | ---- | ------------------------------------------ |
-| data   | Record\<string,&nbsp;RecordData> | 是   | 发送给UIExtensionComponent控件的数据参数。 |
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
-
-| 错误码ID | 错误信息                                              |
-| -------- | ----------------------------------------------------- |
-| 202      | Not System App. Interface caller is not a system app. |
-| 16000050 | Internal error.                                       |
-
-**示例：**
-
-```ts
-// ArkTS-Sta示例
-import { UIExtensionContentSession } from '@kit.AbilityKit';
-import { RecordData } from '@kit.BasicServicesKit';
-import { Entry, Text, Column, Component, Button, RelativeContainer, LocalStorage } from '@kit.ArkUI';
-
-@Entry()
-@Component
-struct Index {
-  private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-  private session: UIExtensionContentSession | undefined =
-    this.storage?.get<UIExtensionContentSession>('session');
-
-  build() {
-    RelativeContainer() {
-      Button('SendData')
-        .onClick(() => {
-          let data: Record<string, RecordData> = {
-            'number': 123456,
-            'message': 'test'
-          };
-
-          try {
-            this.session?.sendData(data);
-          } catch (err) {
-            console.error('sendData err:' + JSON.stringify(err));
-          }
-        })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
 ### setReceiveDataCallback
 
 setReceiveDataCallback(callback: (data: Record\<string, Object>) => void): void
@@ -170,10 +94,6 @@ setReceiveDataCallback(callback: (data: Record\<string, Object>) => void): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -218,72 +138,9 @@ struct Index {
 }
 ```
 
-### setReceiveDataCallback<sup>23+</sup>
-
-setReceiveDataCallback(callback: OnReceiveDataCallback): void
-
-设置从UIExtensionComponent控件接收数据的回调方法。使用callback异步回调。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口**：此接口为系统接口。
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名   | 类型                                              | 必填 | 说明                       |
-| -------- | ------------------------------------------------- | ---- | -------------------------- |
-| callback | [OnReceiveDataCallback](#onreceivedatacallback23) | 是   | 回调函数，返回接收的数据。 |
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 202      | Not System App. Interface caller is not a system app.        |
-| 16000050 | Internal error. Possible causes: Failed to communicate with dependency module. |
-
-**示例：**
-
-```ts
-// ArkTS-Sta示例
-import { UIExtensionContentSession } from '@kit.AbilityKit';
-import { Entry, RelativeContainer, Button, Component, LocalStorage } from '@kit.ArkUI';
-import { RecordData } from '@kit.BasicServicesKit';
-
-@Entry()
-@Component
-struct Index {
-  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-  private session: UIExtensionContentSession | undefined =
-    this.storage?.get<UIExtensionContentSession>('session');
-
-  build() {
-    RelativeContainer() {
-      Button('SendData')
-        .onClick(() => {
-          this.setReceiveDataCallbackFun();
-        })
-    }
-    .height('100%')
-    .width('100%')
-  }
-
-  private setReceiveDataCallbackFun() {
-    this.session?.setReceiveDataCallback((data: Record<string, RecordData>) => {
-      console.info(`Succeeded in setReceiveDataCallback, data: ${JSON.stringify(data)}`);
-    });
-  }
-}
-```
-
 ### setReceiveDataForResultCallback<sup>11+</sup>
 
-setReceiveDataForResultCallback(callback: (data: Record\<string, Object>) => Record\<string, Object>): void
+setReceiveDataForResultCallback(callback: (data: Record<string, Object>) => Record<string, Object>): void
 
 设置从UIExtensionComponent控件接收数据带返回值的回调方法。使用callback异步回调。
 
@@ -291,9 +148,6 @@ setReceiveDataForResultCallback(callback: (data: Record\<string, Object>) => Rec
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -339,70 +193,6 @@ struct Index {
 }
 ```
 
-### setReceiveDataForResultCallback<sup>23+</sup>
-
-setReceiveDataForResultCallback(callback: OnReceiveDataForResultCallback): void
-
-设置从UIExtensionComponent控件接收数据带返回值的回调方法。使用callback异步回调。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名   | 类型                                                         | 必填 | 说明                                 |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
-| callback | [OnReceiveDataForResultCallback](#onreceivedataforresultcallback23) | 是   | 回调函数，返回带返回值的接收的数据。 |
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 202      | Not System App. Interface caller is not a system app.        |
-| 16000050 | Internal error. Possible causes: Failed to communicate with dependency module. |
-
-**示例：**
-
-```ts
-// ArkTS-Sta示例
-import { UIExtensionContentSession } from '@kit.AbilityKit';
-import { Entry, RelativeContainer, Button, Component, LocalStorage } from '@kit.ArkUI';
-import { RecordData } from '@kit.BasicServicesKit';
-
-@Entry()
-@Component
-struct Index {
-  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-  private session: UIExtensionContentSession | undefined =
-    this.storage?.get<UIExtensionContentSession>('session');
-
-  build() {
-    RelativeContainer() {
-      Button('SendData')
-        .onClick(() => {
-          this.setReceiveDataForResultCallbackFun();
-        })
-    }
-    .height('100%')
-    .width('100%')
-  }
-
-  private setReceiveDataForResultCallbackFun() {
-    this.session?.setReceiveDataForResultCallback((data: Record<string, RecordData>) => {
-      console.info(`Succeeded in setReceiveDataCallback, data: ${JSON.stringify(data)}`);
-      return data;
-    });
-  }
-}
-```
-
 ### startAbility
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
@@ -417,10 +207,6 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -464,7 +250,7 @@ export default class UIExtAbility extends UIExtensionAbility {
   // ...
 
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    session.startAbility(want, (err: BusinessError | null) => {
+    session.startAbility(want, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
         return;
@@ -491,10 +277,6 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -541,7 +323,7 @@ export default class UIExtAbility extends UIExtensionAbility {
       displayId: 0
     };
 
-    session.startAbility(want, startOptions, (err: BusinessError | null) => {
+    session.startAbility(want, startOptions, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
         return;
@@ -568,10 +350,6 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -629,8 +407,7 @@ export default class UIExtAbility extends UIExtensionAbility {
       .then(() => {
         console.info(`Succeeded in startAbility`);
       })
-      .catch((error: Error) => {
-        let err = error as BusinessError;
+      .catch((err: BusinessError) => {
         console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
       });
   }
@@ -658,10 +435,6 @@ Ability的终止方式包括以下几种情况：
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -705,7 +478,7 @@ export default class UIExtAbility extends UIExtensionAbility {
   // ...
 
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    session.startAbilityForResult(want, (err: BusinessError | null, data: common.AbilityResult | undefined) => {
+    session.startAbilityForResult(want, (err: BusinessError, data: common.AbilityResult) => {
       if (err) {
         console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
         return;
@@ -737,10 +510,6 @@ Ability的终止方式包括以下几种情况：
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -787,14 +556,13 @@ export default class UIExtAbility extends UIExtensionAbility {
       displayId: 0
     };
 
-    session.startAbilityForResult(want, startOptions,
-      (err: BusinessError | null, data: common.AbilityResult | undefined) => {
-        if (err) {
-          console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
-          return;
-        }
-        console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
-      })
+    session.startAbilityForResult(want, startOptions, (err: BusinessError, data: common.AbilityResult) => {
+      if (err) {
+        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
+        return;
+      }
+      console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
+    })
   }
 
   // ...
@@ -820,10 +588,6 @@ Ability的终止方式包括以下几种情况：
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -882,8 +646,7 @@ export default class UIExtAbility extends UIExtensionAbility {
       .then((data: common.AbilityResult) => {
         console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
       })
-      .catch((error: Error) => {
-        let err = error as BusinessError;
+      .catch((err: BusinessError) => {
         console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
       });
   }
@@ -902,10 +665,6 @@ setWindowBackgroundColor(color: string): void
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -923,8 +682,6 @@ setWindowBackgroundColor(color: string): void
 | 16000050 | Internal error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { UIExtensionContentSession, UIExtensionAbility, Want } from '@kit.AbilityKit';
@@ -953,36 +710,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { UIExtensionContentSession, UIExtensionAbility, Want } from '@kit.AbilityKit';
-import { LocalStorage } from '@kit.ArkUI';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let storage: LocalStorage = new LocalStorage();
-    storage.setOrCreate('session', session);
-
-    try {
-      session.loadContent('pages/Extension', storage);
-    } catch (err) {
-      console.info('loadContent err:' + JSON.stringify(err));
-    }
-
-    try {
-      session.setWindowBackgroundColor('#00FF00');
-    } catch (err) {
-      console.info('setWindowBackgroundColor err:' + JSON.stringify(err));
-    }
-  }
-
-  // ...
-}
-```
-
 ### startAbilityAsCaller<sup>11+</sup>
 
 startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
@@ -992,10 +719,6 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1044,7 +767,7 @@ export default class UIExtAbility extends UIExtensionAbility {
     localWant.moduleName = 'entry';
     localWant.abilityName = 'TestAbility';
 
-    session.startAbilityAsCaller(localWant, (err: BusinessError | null) => {
+    session.startAbilityAsCaller(localWant, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
         return;
@@ -1066,10 +789,6 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1121,7 +840,7 @@ export default class UIExtAbility extends UIExtensionAbility {
       displayId: 0
     };
 
-    session.startAbilityAsCaller(localWant, startOptions, (err: BusinessError | null) => {
+    session.startAbilityAsCaller(localWant, startOptions, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
         return;
@@ -1143,10 +862,6 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1209,8 +924,7 @@ export default class UIExtAbility extends UIExtensionAbility {
       .then(() => {
         console.info(`Succeeded in startAbilityAsCaller`);
       })
-      .catch((error: Error) => {
-        let err = error as BusinessError;
+      .catch((err: BusinessError) => {
         console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
       });
   }
@@ -1229,10 +943,6 @@ getUIExtensionHostWindowProxy(): uiExtensionHost.UIExtensionHostWindowProxy
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
-
 **返回值：**
 
 | 类型 | 说明 |
@@ -1249,8 +959,6 @@ getUIExtensionHostWindowProxy(): uiExtensionHost.UIExtensionHostWindowProxy
 | 16000050 | Internal error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -1295,96 +1003,3 @@ export default class UIExtAbility extends UIExtensionAbility {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-```ts
-import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-import { uiExtensionHost, LocalStorage } from '@kit.ArkUI';
-
-const TAG: string = '[UIExtAbility]';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  onCreate() {
-    console.info(TAG, `UIExtAbility onCreate`);
-  }
-
-  onForeground() {
-    console.info(TAG, `UIExtAbility onForeground`);
-  }
-
-  onBackground() {
-    console.info(TAG, `UIExtAbility onBackground`);
-  }
-
-  onDestroy(): Promise<void> | undefined {
-    console.info(TAG, `UIExtAbility onDestroy`);
-    return undefined;
-  }
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    let extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    let data: Record<string, UIExtensionContentSession | uiExtensionHost.UIExtensionHostWindowProxy> = {
-      'session': session,
-      'extensionHostWindow': extensionHostWindow
-    };
-    let storage: LocalStorage = new LocalStorage(data);
-
-    try {
-      session.loadContent('pages/Extension', storage);
-    } catch (err) {
-      console.info('loadContent err:' + JSON.stringify(err));
-    }
-  }
-
-  onSessionDestroy(session: UIExtensionContentSession) {
-    console.info(TAG, `UIExtAbility onSessionDestroy`);
-  }
-}
-```
-
-## OnReceiveDataCallback<sup>23+</sup>
-
-type OnReceiveDataCallback = (data: Record\<string, RecordData\>) => void
-
-从UIExtensionComponent控件接收数据的回调方法。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**系统接口**：此接口为系统接口。
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名 | 类型                        | 必填 | 说明                       |
-| ------ | --------------------------- | ---- | -------------------------- |
-| data   | Record\<string, RecordData> | 是   | 回调函数，返回接收的数据。 |
-
-## OnReceiveDataForResultCallback<sup>23+</sup>
-
-type OnReceiveDataForResultCallback = (data: Record<string, RecordData>) => Record<string, RecordData>
-
-从UIExtensionComponent控件接收数据带返回值的回调方法。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名 | 类型                        | 必填 | 说明                                 |
-| ------ | --------------------------- | ---- | ------------------------------------ |
-| data   | Record\<string, RecordData> | 是   | 回调函数，返回带返回值的接收的数据。 |
-
-**返回值：**
-
-| 类型                        | 说明             |
-| --------------------------- | ---------------- |
-| Record\<string, RecordData> | 返回的数据对象。 |

@@ -23,7 +23,7 @@ import { State } from '@kit.ArkUI';
 | \@State变量装饰器  | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
 | 装饰器参数         | 无                                                           |
-| 允许装饰的变量类型 | Object、class、string、int、double、long、boolean、enum、interface等基本类型以及Array、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#state支持联合类型)。 |
+| 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及Array、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#state支持联合类型)。 |
 | 初始化规则         | 必须定义本地默认值。<br/>支持从父组件传入变量（含undefined类型），此时优先使用传入值进行初始化。<br/>若父组件未传值，则使用本地默认值进行初始化。 |
 | 同步规则           | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@State初始化时，仅作为初始值，后续变量的变化不会同步至\@State。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、\@PropRef、[\@Provide](arkts-static-provide-and-consume.md)。<br/>\@State变量的变化会同步给子组件的\@Link、\@PropRef变量。 |
 
@@ -33,34 +33,33 @@ import { State } from '@kit.ArkUI';
 
 ### 观察变化
 
-- 当装饰的数据类型为boolean、string、int类型时，可以观察到数值的变化。
+- 当装饰的数据类型为boolean、string、number类型时，可以观察到数值的变化。
 
   ```ts
   // 简单类型
-  @State count: int = 0;
+  @State count: number = 0;
   // 可以观察到值的变化
   this.count = 1;
   ```
 
 - 当装饰class类型时，需要借助[@Observed](./arkts-static-observed-and-objectlink.md)与[@Track](./arkts-static-track.md)观测类属性，单独的@State仅能观测类整体的赋值。
 
-   <!-- @[StateObservedClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateObservedClass.ets) -->
-   
-   ``` TypeScript
+   ```ts
+   'use static'
    import { Button, Column, ColumnOptions, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
-   
+
    @Observed
    class ObservedClass {
      value: string = '';
    }
-   
+
    class NotObservedClass {
      value: string;
      constructor(value: string) {
        this.value = value;
      }
    }
-   
+
    @Entry
    @Component
    struct Index {
@@ -97,8 +96,8 @@ import { State } from '@kit.ArkUI';
 
   ```ts
   class Model {
-    public value: int;
-    constructor(value: int) {
+    public value: number;
+    constructor(value: number) {
       this.value = value;
     }
   }
@@ -154,13 +153,13 @@ import { State } from '@kit.ArkUI';
 
 - 当装饰interface字面量类型时，可以观察到字面量整体以及属性的变化。
 
-  <!-- @[StateInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateInterface.ets) -->
+  ```ts
+  'use static'
   
-  ``` TypeScript
   import { ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
   interface Info {
     name: string;
-    age: int;
+    age: number;
   }
   @Entry
   @Component
@@ -190,10 +189,10 @@ import { State } from '@kit.ArkUI';
 
     ```ts
     // 错误写法，编译报错
-    @State count: int;
+    @State count: number;
 
     // 正确写法
-    @State count: int = 10;
+    @State count: number = 10;
     ```
 2. \@State不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。从API version 23开始，添加对\@State装饰Function与() => void类型变量的校验，编译期会报错。
 
@@ -206,91 +205,61 @@ import { State } from '@kit.ArkUI';
 - 当状态变量count改变时，仅能查询到与之关联的Button组件。
 - 仅Button组件执行更新方法，实现按需刷新。
 
-<!-- @[StateSimpleTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateSimpleTypes.ets) -->
+```ts
+'use static'
 
-``` TypeScript
-import { Button, ClickEvent, Component, Entry, State, Row, Column } from '@kit.ArkUI';
-
+import { Button, ClickEvent, Component, Entry, State } from '@kit.ArkUI';
 @Entry
 @Component
 struct MyComponent {
-  @State count: int = 0; // 使用@State装饰简单类型变量
+  @State count: number = 0;
 
   build() {
-    Row() {
-      Column() {
-        Button(`click times: ${this.count}`)
-          .onClick(() => {
-            this.count += 1;
-          })
-          .width(300)
-      }
-      .width('100%')
-    }
-    .height('100%')
+    Button(`click times: ${this.count}`)
+      .onClick((e: ClickEvent) => {
+        this.count += 1;
+      })
   }
 }
 ```
 
-![state-simple](../figures/state-simple.gif)
-
 ### 装饰Map类型变量
 
-在下面的示例中，message类型为Map\<string, int\>，点击Button改变其值，视图随之刷新。
+在下面的示例中，message类型为Map\<number, string\>，点击Button改变其值，视图随之刷新。
 
-<!-- @[StateMapVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateMapVariable.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Row, State, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct MapSample {
-  @State fruits: Map<string, int> = new Map<string ,int>([['apple', 1], ['banana', 2]]); // 使用@State装饰Map类型变量
+  @State message: Map<number, string> = new Map<number, string>([[0.0, 'a'], [1.0, 'b'], [3.0, 'c']]);
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.fruits.entries()), (item: [string, int]) => {
-          Text(`key: ${item[0]}, value: ${item[1]}`)
-            .fontSize(20)
-            .margin(10)
+        ForEach(Array.from(this.message.entries()), (item: [number, string], index: int) => {
+          Text(`${item[0]}`).fontSize(30)
+          Text(`${item[1]}`).fontSize(30)
+          Divider()
         })
-        // 新增键值对，触发UI刷新
-        Button('Set entry cherry')
-          .onClick(() => {
-            this.fruits.set('cherry', 3);
-          })
-          .width(300)
-          .margin(10)
-        // 更新键值对，触发UI刷新
-        Button('Update entry apple')
-          .onClick(() => {
-            this.fruits.set('apple', 4);
-          })
-          .width(300)
-          .margin(10)
-        // 删除键值对，触发UI刷新
-        Button('Delete entry apple')
-          .onClick(() => {
-            this.fruits.delete('apple');
-          })
-          .width(300)
-          .margin(10)
-        // 对Map整体重新赋值，触发UI刷新
-        Button('Reset map')
-          .onClick(() => {
-            this.fruits = new Map<string, int>([['strawberry', 9], ['blueberry', 8]]);
-          })
-          .width(300)
-          .margin(10)
-        // 清空Map，触发UI刷新
-        Button('Clear map')
-          .onClick(() => {
-            this.fruits.clear();
-          })
-          .width(300)
-          .margin(10)
+        Button('init map').onClick((e: ClickEvent) => {
+          this.message = new Map<number, string>([[0.0, 'a'], [1.0, 'b'], [3.0, 'c']]);
+        })
+        Button('set new one').onClick((e: ClickEvent) => {
+          this.message.set(4.0, 'd');
+        })
+        Button('clear').onClick((e: ClickEvent) => {
+          this.message.clear();
+        })
+        Button('replace the first one').onClick((e: ClickEvent) => {
+          this.message.set(0.0, 'aa' );
+        })
+        Button('delete the first one').onClick((e: ClickEvent) => {
+          this.message.delete(0.0);
+        })
       }
       .width('100%')
     }
@@ -299,58 +268,39 @@ struct MapSample {
 }
 ```
 
-![state-map](../figures/state-map.gif)
-
 ### 装饰Set类型变量
 
-在下面的示例中，message类型为Set\<string\>，点击Button改变其值，视图随之刷新。
+在下面的示例中，message类型为Set\<number\>，点击Button改变其值，视图随之刷新。
 
-<!-- @[StateSetVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateSetVariable.ets) -->
+```ts
+'use static'
 
-``` TypeScript
 import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Row, State, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct SetSample {
-  @State fruits: Set<string> = new Set<string>(['apple', 'banana']); // 使用@State装饰Set类型变量
+  @State message: Set<number> = new Set<number>([0.0, 1.0, 2.0, 3.0, 4.0]);
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.fruits.entries()), (item: [string, string]) => {
-          Text(`${item[0]}`)
-            .fontSize(20)
-            .margin(10)
+        ForEach(Array.from(this.message.entries()), (item: [number, number], index: int) => {
+          Text(`${item[0]}`).fontSize(30)
+          Divider()
         })
-        // 新增元素，触发UI刷新
-        Button('Add element')
-          .onClick(() => {
-            this.fruits.add('cherry');
-          })
-          .width(300)
-          .margin(10)
-        // 删除元素，触发UI刷新
-        Button('Delete element apple')
-          .onClick(() => {
-            this.fruits.delete('apple');
-          })
-          .width(300)
-          .margin(10)
-        // 对Set整体重新赋值，触发UI刷新
-        Button('Reset set')
-          .onClick(() => {
-            this.fruits = new Set<string>(['strawberry', 'blueberry']);
-          })
-          .width(300)
-          .margin(10)
-        // 清空Set，触发UI刷新
-        Button('Clear set')
-          .onClick(() => {
-            this.fruits.clear();
-          })
-          .width(300)
-          .margin(10)
+        Button('init set').onClick((e: ClickEvent) => {
+          this.message = new Set<number>([0.0, 1.0, 2.0, 3.0, 4.0]);
+        })
+        Button('set new one').onClick((e: ClickEvent) => {
+          this.message.add(5.0);
+        })
+        Button('clear').onClick((e: ClickEvent) => {
+          this.message.clear();
+        })
+        Button('delete the first one').onClick((e: ClickEvent) => {
+          this.message.delete(0.0);
+        })
       }
       .width('100%')
     }
@@ -358,107 +308,70 @@ struct SetSample {
   }
 }
 ```
-
-![state-set](../figures/state-set.gif)
 
 ### 装饰Date类型变量
 
 在下面的示例中，selectedDate类型为Date，点击Button改变其值，视图随之刷新。
 
-<!-- @[StateDateVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateDateVariable.ets) -->
+```ts
+'use static'
 
-``` TypeScript
-import { Button, ClickEvent, Column, Component, Entry, State, Text, Row, DatePicker } from '@kit.ArkUI';
-
+import { Button, ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
-struct DatePickerExample {
-  @State selectedDate: Date = new Date('2021-08-08'); // 使用@State装饰Date类型变量
+struct DateExample {
+  @State selectedDate: Date = new Date('2021-08-08');
 
   build() {
-    Row() {
-      Column() {
-        // 通过给selectedDate重新赋值新的Date实例，触发UI刷新
-        Button('set selectedDate to 2023-07-08')
-          .onClick(() => {
-            this.selectedDate = new Date('2023-07-08');
-          })
-          .margin(10)
-          .width(300)
-        // 调用Date的setFullYear接口修改年份，触发UI刷新
-        Button('increase the year by 1')
-          .onClick(() => {
-            this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-          })
-          .margin(10)
-          .width(300)
-        // 调用Date的setMonth接口修改月份，触发UI刷新
-        Button('increase the month by 1')
-          .onClick(() => {
-            this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-          })
-          .margin(10)
-          .width(300)
-        // 调用Date的setDate接口修改日期，触发UI刷新
-        Button('increase the day by 1')
-          .onClick(() => {
-            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-          })
-          .margin(10)
-          .width(300)
-        DatePicker({
-          start: new Date('1970-1-1'),
-          end: new Date('2100-1-1'),
-          selected: this.selectedDate
-        }).margin(20)
-      }
-      .width('100%')
-    }
-    .height('100%')
+    Column() {
+      Text(`${this.selectedDate}`)
+      Button('set selectedDate to 2023-07-08')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate = new Date('2023-07-08');
+        })
+      Button('increase the year by 1')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+        })
+      Button('increase the month by 1')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+        })
+      Button('increase the day by 1')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+    }.width('100%')
   }
 }
 ```
-
-![state-date](../figures/state-date.gif)
 
 ### \@State支持联合类型
 
-\@State支持联合类型（包括undefined和null）。在下面的示例中，count类型为int | undefined，点击Button改变count的值或类型，视图会随之刷新。
+\@State支持联合类型（包括undefined和null）。在下面的示例中，count类型为number | undefined，点击Button改变count的值或类型，视图会随之刷新。
 
-<!-- @[StateUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateDecorator/entry/src/main/ets/pages/StateUnionType.ets) -->
+```ts
+'use static'
 
-``` TypeScript
-import { Button, ClickEvent, Column, Component, Entry, State, Text, Row } from '@kit.ArkUI';
-
+import { Button, ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
-struct UnionTypeSample {
-  @State count: int | undefined = 0; // 使用@State装饰联合类型变量
+struct MyComponent {
+  @State count: number | undefined = 0;
 
   build() {
-    Row() {
-      Column() {
-        Text(`count: ${this.count}`)
-        // 将联合类型变量从int切换为undefined，触发UI刷新
-        Button('change to undefined')
-          .onClick(() => {
-            this.count = undefined;
-          })
-          .width(300)
-          .margin(10)
-        // 将联合类型变量从undefined切换为int，触发UI刷新
-        Button('change to int')
-          .onClick(() => {
-            this.count = 10;
-          })
-          .width(300)
-          .margin(10)
-      }
-      .width('100%')
+    Column() {
+      Text(`count(${this.count})`)
+      Button('change')
+        .onClick((e: ClickEvent) => {
+          this.count = undefined;
+        })
     }
-    .height('100%')
   }
 }
 ```
 
-![state-union](../figures/state-union.gif)

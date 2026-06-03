@@ -18,7 +18,7 @@
 
 ## 子组件
 
-不支持。
+支持子组件[\<span>](js-service-widget-basic-span.md)。
 
 
 ## 属性

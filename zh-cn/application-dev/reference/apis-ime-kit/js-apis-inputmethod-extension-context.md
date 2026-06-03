@@ -147,7 +147,7 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 16000001 | The specified ability does not exist.                   |
 | 16000002 | Incorrect ability type.                                 |
 | 16000004 | Cannot start an invisible component.                    |

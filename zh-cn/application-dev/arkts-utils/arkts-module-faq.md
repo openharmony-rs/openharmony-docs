@@ -62,7 +62,6 @@
 ``` typescript
 // A.ets
 import { Animal } from './B'
-
 export let a = "this is A";
 export function A() {
   return new Animal;
@@ -70,7 +69,6 @@ export function A() {
 
 // B.ets
 import { a } from './A'
-
 export class Animal {
   static {
     console.info("this is in class");
@@ -112,7 +110,7 @@ ModuleImportStack:
 
 3. 检查是否使用了normalized特性但未重启应用。
 
-   查看反编译后的abc文件为normalized ohmurl格式。可以在文件内搜索@normalized：
+   查看[反编译](./tool-disassembler.md)后的abc文件为normalized ohmurl格式。可以在文件内搜索@normalized：
 
    ![normalized](./figures/module_normalized.PNG)
 
@@ -120,7 +118,7 @@ ModuleImportStack:
 
 **参考链接**
 
-[Disassembler反汇编工具](./tool-disassembler.md)
+[反编译工具](./tool-disassembler.md)
 
 ## cannot find record 'fileName', please check request path.
 
@@ -138,11 +136,11 @@ ModuleImportStack:
 
 1. 检查动态加载文件的配置是否正确。
 
-   按照动态加载写法进行检查。
+   按照[动态加载](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-dynamic-import)写法进行检查。
 
 2. 检查文件路径和编译产物是否匹配。
 
-      在本地工程复现问题，可以在entry/build/default/cache/default/default@CompileArkTS/esmodule/release/filesInfo.txt（以release工程为例）文件中搜索报错的文件路径，搜索可能有两种情况：
+      在本地工程复现问题，可以在entry/build/default/cache/default/default@CompileArkTS/esmodule/release/filesInfo.txt文件中搜索报错的文件路径，搜索可能有两种情况：
 
    情况一：搜索不到完整的文件名，但可以搜索到相似的名字。
 
@@ -158,4 +156,6 @@ ModuleImportStack:
 
 **参考链接**
 
-[动态加载](./arkts-dynamic-import.md)
+[动态加载指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-dynamic-import)
+
+

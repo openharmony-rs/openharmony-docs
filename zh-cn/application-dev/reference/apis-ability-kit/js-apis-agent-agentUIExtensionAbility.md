@@ -15,13 +15,9 @@ AgentUIExtensionAbility继承自[UIExtensionAbility](js-apis-app-ability-uiExten
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
 > 本模块首批接口从API version 24 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
->
-> 本模块接口不支持在[har](../../quick-start/har-package.md)包中使用。
 
 ## 约束限制
 
@@ -39,7 +35,3 @@ import { AgentUIExtensionAbility } from '@kit.AbilityKit';
 AgentUIExtensionAbility继承自[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)，为开发者提供接入端侧Agent UI界面显示能力。例如，如果Agent开发者希望能够在其他应用显示Agent返回的结果时，可以通过接入AgentUIExtensionAbility提供展示嵌入式弹窗的能力。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
-
-**ArkTS-Dyn起始版本：** 24
-
-**ArkTS-Sta起始版本：** 24

@@ -1,8 +1,8 @@
 # 工具栏设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @pengzhiwen3-->
-<!--Designer: @dutie123-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,8 +11,6 @@
 >  **说明：**
 >
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 本模块接口仅可在Stage模型下使用。
 >
 > - 该toolbar为组件通用属性，请注意与[Navigation](ts-basic-components-navigation.md)组件自身的toolbar属性进行区分。
 
@@ -47,7 +45,7 @@ toolbar(value: CustomBuilder): T
 >
 >  3. toolbar当前仅支持单行布局，不支持多行布局，因此应避免在一个toolbar中放置多行布局的元素。
 >
->  4. toolbar仅支持在[NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明)为Split的场景中使用。
+>  4. toolbar仅支持在[NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明)为Split的场景中使用。当[NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明)设置为Stack或Auto时，无法应用toolbar。
 >
 >  5. 标题栏高度会根据toolbar内的[ToolBarItem](ts-basic-components-toolbaritem.md)组件在有限范围内浮动：
 >     * [ToolBarItem](ts-basic-components-toolbaritem.md)组件与标题栏默认存在4VP的margin（外边距）。

@@ -206,13 +206,13 @@
 
    确认pixelMap和imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
+   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
    ``` TypeScript
    async release(pixelMap: image.PixelMap | undefined, imageSource: image.ImageSource | undefined) {
-     await pixelMap?.release();
+     pixelMap?.release();
      pixelMap = undefined;
-     await imageSource?.release();
+     imageSource?.release();
      imageSource = undefined;
    }
    ```

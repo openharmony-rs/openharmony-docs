@@ -718,20 +718,13 @@ GLint glGetAttribLocation(GLuint program, const GLchar *name);
 
 glGetAttribLocation函数用于获取顶点着色器中某个属性的位置，这个位置在编译链接顶点着色器程序后就已经确定了，它是根据属性的名称来确定的。其中program指要查询的程序对象，name指要查询其位置的属性变量的名称。 
 
-### 使用glGetUniformLocation获取uniform变量位置
+### 使用glGetUniformLocation获取统一变量位置
 
 ```cpp
 GLint glGetUniformLocation(GLuint program, const GLchar *name);
 ```
 
-glGetUniformLocation函数用于查询特定uniform变量在程序对象中的位置。其中各个参数含义如下：
-
-- program：指要查询的程序对象的标识符。
-- name：指要查询其位置的uniform变量的名称。该名称应与顶点或片段着色器中定义的uniform变量名称一致。
-
-glGetUniformLocation的返回值是要查询的uniform变量的位置（GLint类型）。如果返回-1，则表示未找到指定的uniform变量。需要注意的是，调用此函数之前必须成功链接程序对象（调用glLinkProgram）。此外，如果uniform变量在着色器中被优化掉或不存在，该函数也会返回-1。
-
-通常在获取uniform变量位置后，可以结合glUniformMatrix4fv、glUniform3f等函数向该uniform变量传递数据。
+glGetUniformLocation函数用于查询特定统一变量在程序对象中的位置。其中program指要查询的程序对象，name指要查询其位置的统一变量的名称。 
 
 ### 使用glUniformMatrix4fv传递4×4矩阵
 
@@ -739,7 +732,7 @@ glGetUniformLocation的返回值是要查询的uniform变量的位置（GLint类
 void glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 ```
 
-glUniformMatrix4fv函数用于向uniform变量传递4×4矩阵数据。其中各个参数含义如下：
+glGetUniformLocation函数用于获取着色器中uniform变量的位置。其中各个参数含义如下：
 - location：要修改的uniform变量的位置。
 - count：要修改的矩阵的数量。如果目标uniform变量不是数组，则此值应为1；如果是数组，则应大于等于1。
 - transpose：是否转置矩阵。如果是GL_FALSE，则矩阵按列优先(column major)顺序传递；如果是GL_TRUE，则矩阵按行优先(row major)顺序传递。

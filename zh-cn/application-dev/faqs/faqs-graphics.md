@@ -2,7 +2,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
-<!--Designer: @liumingxiang; @wanyanglan-->
+<!--Designer: @liumingxiang; @wangyanglan-->
 <!--Tester: @yhl0101; @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -39,18 +39,18 @@ try {
 ``` ts
 import window from '@ohos.window';
 
-// 如果需要在页面中获取窗口宽高信息，建议将以下代码放在页面生命周期onPageShow阶段，不要在页面生命周期aboutToAppear阶段中调用
+//如果需要在页面中获取窗口宽高信息，建议将以下代码放在页面生命周期onPageShow阶段，不要在页面生命周期aboutToAppear阶段中调用
 let windowClass = null;
 try {    
     let promise = window.getLastWindow(this.context);
     promise.then((data)=> {
-        // 获取窗口对象
+        //获取窗口对象
         windowClass = data;
         try {
-            // 获取窗口属性
+            //获取窗口属性
             let properties = windowClass.getWindowProperties();
             let rect = properties.windowRect;
-            // rect.width: 窗口宽度；rect.height: 窗口高度
+            //rect.width: 窗口宽度；rect.height: 窗口高度
         } catch (exception) {
              console.error('Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
         }
@@ -87,7 +87,7 @@ import effectKit from "@ohos.effectKit";
 ```
 **参考链接：**
 
-[blur()](../reference/apis-arkgraphics2d/js-apis-effectKit.md#blur)接口
+[图片添加模糊效果](../reference/apis-arkgraphics2d/js-apis-effectKit.md#blur)
 
 
 ## EGL绘制操作是否只能在主线程，可以放子线程中执行吗(API 10)

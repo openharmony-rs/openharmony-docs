@@ -12,12 +12,10 @@ AbilityDelegator模块可以通过[AbilityMonitor](../apis-ability-kit/js-apis-i
 AbilityDelegator可以通过[getAbilityDelegator](js-apis-app-ability-abilityDelegatorRegistry.md#abilitydelegatorregistrygetabilitydelegator)方法获取。
 
 > **说明：**
->
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
-> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 本模块接口仅可在<!--RP1-->[单元测试框架](../../application-test/unittest-guidelines.md)<!--RP1End-->中使用。
+> 
+> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> 本模块接口仅可在<!--RP1-->[单元测试框架](../../application-test/unittest-guidelines.md)<!--RP1End-->中使用。
 
 ## 导入模块
 
@@ -33,13 +31,9 @@ addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): void
 
 添加AbilityMonitor实例。使用callback异步回调。不支持多线程并发调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -75,7 +69,7 @@ function onAbilityCreateCallback(data: UIAbility) {
 }
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError<void> | null) => {
+abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
   console.error(`addAbilityMonitor fail, error: ${JSON.stringify(error)}`);
 });
 ```
@@ -86,13 +80,9 @@ addAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
 添加AbilityMonitor实例。使用Promise异步回调。不支持多线程并发调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -142,13 +132,9 @@ addAbilityMonitorSync(monitor: AbilityMonitor): void
 
 同步添加AbilityMonitor实例。不支持多线程并发调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -192,13 +178,9 @@ removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<void>): v
 
 删除已经添加的AbilityMonitor实例。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -226,17 +208,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 
 function onAbilityCreateCallback(data: UIAbility) {
-  console.info('onAbilityCreateCallback');
+    console.info('onAbilityCreateCallback');
 }
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityName',
-  onAbilityCreate: onAbilityCreateCallback
+    abilityName: 'abilityName',
+    onAbilityCreate: onAbilityCreateCallback
 };
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError | null) => {
-  console.error(`removeAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
+    console.error(`removeAbilityMonitor fail, error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -246,13 +228,9 @@ removeAbilityMonitor(monitor: AbilityMonitor): Promise\<void>
 
 删除已经添加的AbilityMonitor实例。使用Promise异步回调。不支持多线程并发调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -303,13 +281,9 @@ removeAbilityMonitorSync(monitor: AbilityMonitor): void
 
 同步删除已经添加的AbilityMonitor实例。不支持多线程并发调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -352,13 +326,9 @@ waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback\<UIAbility>)
 
 等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期，并返回Ability实例。使用callback异步回调。不支持多线程并发调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -394,7 +364,7 @@ function onAbilityCreateCallback(data: UIAbility) {
 }
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError<void> | null, data: UIAbility | undefined) => {
+abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbility) => {
   if (error) {
     console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
   } else {
@@ -405,27 +375,21 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError<void> | null,
 
 ### waitAbilityMonitor<sup>9+</sup>
 
-ArkTS-Dyn: waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCallback\<UIAbility>): void
-
-ArkTS-Sta: waitAbilityMonitor(monitor: AbilityMonitor, timeout: long, callback: AsyncCallback\<UIAbility>): void
+waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCallback\<UIAbility>): void
 
 设置等待时间，等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期，并返回Ability实例。使用callback异步回调。不支持多线程并发调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | monitor  | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) | 是   | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md)实例。 |
-| timeout  | ArkTS-Dyn: number<br>ArkTS-Sta: long                         | 是   | 最大等待时间，单位毫秒（ms），默认值为5000毫秒。             |
-| callback | AsyncCallback\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | 是   | 表示指定的回调方法。                                         |
+| timeout  | number                                                       | 是   | 最大等待时间，单位毫秒（ms），默认值为5000毫秒。                                 |
+| callback | AsyncCallback\<[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)> | 是   | 表示指定的回调方法。                                           |
 
 **错误码**：
 
@@ -455,40 +419,33 @@ function onAbilityCreateCallback(data: UIAbility) {
 }
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.waitAbilityMonitor(monitor, timeout,
-  (error: BusinessError<void> | null, data: UIAbility | undefined) => {
-    if (error && error.code !== 0) {
-      console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
-    } else {
-      console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
-    }
-  });
+abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, data: UIAbility) => {
+  if (error && error.code !== 0) {
+    console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+  } else {
+    console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
+  }
+});
 ```
 
 
 
 ### waitAbilityMonitor<sup>9+</sup>
 
-ArkTS-Dyn: waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise\<UIAbility>
-
-ArkTS-Sta: waitAbilityMonitor(monitor: AbilityMonitor, timeout?: long): Promise\<UIAbility>
+waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise\<UIAbility>
 
 设置等待时间，等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期，并返回Ability实例。使用Promise异步回调。不支持多线程并发调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | monitor | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) | 是   | [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md)实例。 |
-| timeout | ArkTS-Dyn: number<br/>ArkTS-Sta: long                        | 否   | 最大等待时间，单位毫秒（ms），默认值为5000毫秒。             |
+| timeout | number                                                       | 否   | 最大等待时间，单位毫秒（ms），默认值为5000毫秒。                                 |
 
 **返回值：**
 
@@ -533,13 +490,9 @@ getAppContext(): Context
 
 获取应用Context。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -561,19 +514,13 @@ let context = abilityDelegator.getAppContext();
 
 ### getAbilityState<sup>9+</sup>
 
-ArkTS-Dyn: getAbilityState(ability: UIAbility): number
-
-ArkTS-Sta: getAbilityState(ability: UIAbility): int
+getAbilityState(ability: UIAbility): number
 
 获取指定ability的生命周期状态。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -583,9 +530,9 @@ ArkTS-Sta: getAbilityState(ability: UIAbility): int
 
 **返回值：**
 
-| 类型                                | 说明                                                         |
-| ----------------------------------- | ------------------------------------------------------------ |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 指定ability的生命周期状态。状态枚举值使用[AbilityLifecycleState](js-apis-app-ability-abilityDelegatorRegistry.md#abilitylifecyclestate)。 |
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| number | 指定ability的生命周期状态。状态枚举值使用[AbilityLifecycleState](js-apis-app-ability-abilityDelegatorRegistry.md#abilitylifecyclestate)。 |
 
 **错误码**：
 
@@ -606,12 +553,8 @@ let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
+abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   console.info('getCurrentTopAbility callback');
-  if (data === undefined) {
-    console.error('Current top ability is undefined');
-    return;
-  }
   ability = data;
   let state = abilityDelegator.getAbilityState(ability);
   console.info(`getAbilityState ${state}`);
@@ -624,13 +567,9 @@ getCurrentTopAbility(callback: AsyncCallback\<UIAbility>): void
 
 获取当前应用顶部Ability。使用callback异步回调。不支持Worker线程调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -655,10 +594,10 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let ability: UIAbility | undefined;
+let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
+abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   console.info('getCurrentTopAbility callback');
   ability = data;
 });
@@ -670,13 +609,9 @@ getCurrentTopAbility(): Promise\<UIAbility>
 
 获取当前应用顶部Ability。使用Promise异步回调。不支持Worker线程调用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -714,13 +649,9 @@ startAbility(want: Want, callback: AsyncCallback\<void>): void
 
 启动指定Ability。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -766,7 +697,7 @@ let want: Want = {
 };
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.startAbility(want, (err: BusinessError<void> | null, data: undefined) => {
+abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
   console.info('startAbility callback');
 });
 ```
@@ -777,13 +708,9 @@ startAbility(want: Want): Promise\<void>
 
 启动指定Ability。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -833,7 +760,7 @@ let want: Want = {
 };
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.startAbility(want).then(() => {
+abilityDelegator.startAbility(want).then((data: void) => {
   console.info('startAbility promise');
 });
 ```
@@ -844,13 +771,9 @@ doAbilityForeground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
 调度指定Ability生命周期状态到Foreground状态。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -879,14 +802,10 @@ let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
+abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   console.info('getCurrentTopAbility callback');
-  if (data === undefined) {
-    console.error('Current top ability is undefined');
-    return;
-  }
   ability = data;
-  abilityDelegator.doAbilityForeground(ability, (err: BusinessError<void> | null) => {
+  abilityDelegator.doAbilityForeground(ability, (err: BusinessError) => {
     console.info("doAbilityForeground callback");
   });
 });
@@ -898,13 +817,9 @@ doAbilityForeground(ability: UIAbility): Promise\<void>
 
 调度指定Ability生命周期状态到Foreground状态。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -938,12 +853,8 @@ let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
+abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   console.info('getCurrentTopAbility callback');
-  if (data === undefined) {
-    console.error('Current top ability is undefined');
-    return;
-  }
   ability = data;
   abilityDelegator.doAbilityForeground(ability).then(() => {
     console.info("doAbilityForeground promise");
@@ -957,13 +868,9 @@ doAbilityBackground(ability: UIAbility, callback: AsyncCallback\<void>): void
 
 调度指定Ability生命周期状态到Background状态。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -992,14 +899,10 @@ let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
+abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   console.info('getCurrentTopAbility callback');
-  if (data === undefined) {
-    console.error('Current top ability is undefined');
-    return;
-  }
   ability = data;
-  abilityDelegator.doAbilityBackground(ability, (err: BusinessError<void> | null) => {
+  abilityDelegator.doAbilityBackground(ability, (err: BusinessError) => {
     console.info("doAbilityBackground callback");
   });
 });
@@ -1011,13 +914,9 @@ doAbilityBackground(ability: UIAbility): Promise\<void>
 
 调度指定Ability生命周期状态到Background状态。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1051,12 +950,8 @@ let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
+abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   console.info('getCurrentTopAbility callback');
-  if (data === undefined) {
-    console.error('Current top ability is undefined');
-    return;
-  }
   ability = data;
   abilityDelegator.doAbilityBackground(ability).then(() => {
     console.info("doAbilityBackground promise");
@@ -1070,13 +965,9 @@ printSync(msg: string): void
 
 打印日志信息到单元测试终端控制台。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1110,13 +1001,9 @@ print(msg: string, callback: AsyncCallback\<void>): void
 
 打印日志信息到单元测试终端控制台。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1135,7 +1022,7 @@ let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let msg = 'msg';
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.print(msg, (err: BusinessError<void> | null) => {
+abilityDelegator.print(msg, (err: BusinessError) => {
   console.info('print callback');
 });
 ```
@@ -1146,13 +1033,9 @@ print(msg: string): Promise\<void>
 
 打印日志信息到单元测试终端控制台。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1188,13 +1071,9 @@ executeShellCommand(cmd: string, callback: AsyncCallback\<ShellCmdResult>): void
 
 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1213,36 +1092,29 @@ let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let cmd = 'cmd';
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd,
-  (err: BusinessError<void> | null, data: abilityDelegatorRegistry.ShellCmdResult | undefined) => {
-    console.info('executeShellCommand callback');
-  });
+abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
+  console.info('executeShellCommand callback');
+});
 ```
 
 ### executeShellCommand
 
-ArkTS-Dyn: executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback\<ShellCmdResult>): void
-
-ArkTS-Sta: executeShellCommand(cmd: string, timeoutSecs: long, callback: AsyncCallback\<ShellCmdResult>): void
+executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback\<ShellCmdResult>): void
 
 指定超时时间，并执行指定的shell命令。使用callback异步回调。
 
 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                          |
 | ----------- | ------------------------------------------------------------ | ---- | ----------------------------- |
 | cmd         | string                                                       | 是   | shell命令字符串。               |
-| timeoutSecs | ArkTS-Dyn: number<br/>ArkTS-Sta: long                 | 是   | 设定命令超时时间，单位秒（s）。 |
+| timeoutSecs | number                                                       | 是   | 设定命令超时时间，单位秒（s）。 |
 | callback    | AsyncCallback\<[ShellCmdResult](js-apis-inner-application-shellCmdResult.md#shellcmdresult-1)> | 是   | 回调函数。当执行指定的shell命令成功，err为undefined，data为获取到的执行结果；否则为错误对象。   |
 
 **示例：**
@@ -1256,36 +1128,29 @@ let cmd = 'cmd';
 let timeout = 100;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, timeout,
-  (err: BusinessError<void> | null, data: abilityDelegatorRegistry.ShellCmdResult | undefined) => {
-    console.info('executeShellCommand callback');
-  });
+abilityDelegator.executeShellCommand(cmd, timeout, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
+  console.info('executeShellCommand callback');
+});
 ```
 
 ### executeShellCommand
 
-ArkTS-Dyn: executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
-
-ArkTS-Sta: executeShellCommand(cmd: string, timeoutSecs?: long): Promise\<ShellCmdResult>
+executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
 
 指定超时时间，并执行指定的shell命令。使用Promise异步回调。
 
 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                          |
 | ----------- | ------ | ---- | ----------------------------- |
 | cmd         | string | 是   | shell命令字符串。               |
-| timeoutSecs | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否   | 设定命令超时时间，单位秒（s）。默认值为0，表示不设置超时时间。 |
+| timeoutSecs | number | 否   | 设定命令超时时间，单位秒（s）。默认值为0，表示不设置超时时间。 |
 
 **返回值：**
 
@@ -1294,8 +1159,6 @@ ArkTS-Sta: executeShellCommand(cmd: string, timeoutSecs?: long): Promise\<ShellC
 | Promise\<[ShellCmdResult](js-apis-inner-application-shellCmdResult.md#shellcmdresult-1)> | Promise对象，返回Shell命令执行结果[ShellCmdResult](js-apis-inner-application-shellCmdResult.md#shellcmdresult-1)对象。 |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -1310,43 +1173,22 @@ abilityDelegator.executeShellCommand(cmd, timeout).then((data) => {
 });
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let cmd = 'cmd';
-let timeout: long = 100;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, timeout).then((data) => {
-  console.info('executeShellCommand promise');
-});
-```
-
 ### finishTest<sup>9+</sup>
 
-ArkTS-Dyn: finishTest(msg: string, code: number, callback: AsyncCallback\<void>): void
-
-ArkTS-sta: finishTest(msg: string, code: long, callback: AsyncCallback\<void>): void
+finishTest(msg: string, code: number, callback: AsyncCallback\<void>): void
 
 结束测试并打印日志信息到单元测试终端控制台。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明               |
 | -------- | -------------------- | ---- | ------------------ |
 | msg      | string               | 是   | 日志字符串。         |
-| code     | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 是   | 日志码。             |
+| code     | number               | 是   | 日志码。             |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当结束测试并打印日志信息到单元测试终端控制台成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -1368,33 +1210,27 @@ let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let msg = 'msg';
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.finishTest(msg, 0, (err: BusinessError<void> | null) => {
+abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
   console.info('finishTest callback');
 });
 ```
 
 ### finishTest<sup>9+</sup>
 
-ArkTS-Dyn: finishTest(msg: string, code: number): Promise\<void>
-
-ArkTS-Sta: finishTest(msg: string, code: long): Promise\<void>
+finishTest(msg: string, code: number): Promise\<void>
 
 结束测试并打印日志信息到单元测试终端控制台。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明       |
 | ------ | ------ | ---- | ---------- |
 | msg    | string | 是   | 日志字符串。 |
-| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 日志码。     |
+| code   | number | 是   | 日志码。     |
 
 **返回值：**
 
@@ -1431,13 +1267,9 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<vo
 
 添加一个AbilityStageMonitor对象，用于监视指定AbilityStage的生命周期状态更改。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1467,7 +1299,7 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addAbilityStageMonitor({
   moduleName: 'moduleName',
   srcEntrance: 'srcEntrance',
-}, (err: BusinessError<void> | null) => {
+}, (err: BusinessError) => {
   console.info('addAbilityStageMonitor callback');
 });
 ```
@@ -1478,13 +1310,9 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
 添加一个AbilityStageMonitor对象，用于监视指定AbilityStage的生命周期状态更改。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1529,13 +1357,9 @@ addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 
 同步添加一个AbilityStageMonitor对象，用于监视指定AbilityStage的生命周期状态更改。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1572,13 +1396,9 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\
 
 从应用程序内存中删除指定的AbilityStageMonitor对象。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1608,7 +1428,7 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityStageMonitor({
   moduleName: 'moduleName',
   srcEntrance: 'srcEntrance',
-}, (err: BusinessError<void> | null) => {
+}, (err: BusinessError) => {
   console.info('removeAbilityStageMonitor callback');
 });
 ```
@@ -1619,13 +1439,9 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise\<void>
 
 从应用程序内存中删除指定的AbilityStageMonitor对象。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1670,13 +1486,9 @@ removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 
 同步从应用程序内存中删除指定的AbilityStageMonitor对象。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1714,13 +1526,9 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<A
 
 返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1751,33 +1559,27 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.waitAbilityStageMonitor({
   moduleName: 'moduleName',
   srcEntrance: 'srcEntrance',
-}, (err: BusinessError<void> | null, data: AbilityStage | undefined) => {
+}, (err: BusinessError, data: AbilityStage) => {
   console.info('waitAbilityStageMonitor callback');
 });
 ```
 
 ### waitAbilityStageMonitor<sup>9+</sup>
 
-ArkTS-Dyn: waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise\<AbilityStage>
-
-ArkTS-Sta: waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: long): Promise\<AbilityStage>
+waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise\<AbilityStage>
 
 返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象，支持设置超时最大等待时间。使用Promise异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | monitor | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) | 是   | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) 实例。 |
-| timeout | ArkTS-Dyn: number <br/>ArkTS-Sta: long                         | 否   | 超时最大等待时间，单位毫秒（ms），默认值为5000毫秒。         |
+| timeout | number | 否   | 超时最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
 
 **返回值：**
 
@@ -1813,26 +1615,20 @@ abilityDelegator.waitAbilityStageMonitor({
 
 ### waitAbilityStageMonitor<sup>9+</sup>
 
-ArkTS-Dyn: waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback: AsyncCallback\<AbilityStage>): void
-
-ArkTS-Sta: waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: long, callback: AsyncCallback\<AbilityStage>): void
+waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback: AsyncCallback\<AbilityStage>): void
 
 在指定的超时最大等待时间内，返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | monitor | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) | 是   | [AbilityStageMonitor](../apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md) 实例。 |
-| timeout | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 是   | 超时最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
+| timeout | number | 是   | 超时最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
 | callback | AsyncCallback\<AbilityStage>                                         | 是       | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为undefined，data为获取到的[AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md)对象；否则为错误对象。   |
 
 **错误码**：
@@ -1858,7 +1654,7 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.waitAbilityStageMonitor({
   moduleName: 'moduleName',
   srcEntrance: 'srcEntrance',
-}, timeout, (err: BusinessError<void> | null, data: AbilityStage | undefined) => {
+}, timeout, (err: BusinessError, data: AbilityStage) => {
   console.info('waitAbilityStageMonitor callback');
 });
 ```
@@ -1869,13 +1665,9 @@ setMockList(mockList: Record\<string, string>): void
 
 设置模块的mock替换关系。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 

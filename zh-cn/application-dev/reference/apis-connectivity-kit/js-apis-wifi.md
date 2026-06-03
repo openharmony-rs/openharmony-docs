@@ -11,7 +11,7 @@
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 从API Version 9 开始，该接口不再维护，推荐使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager.md)等相关接口。
+> 从API Version 9 开始，该接口不再维护，推荐使用[`@ohos.wifiManager (WLAN)`](js-apis-wifiManager.md)等相关接口。
 
 
 ## 导入模块
@@ -47,10 +47,10 @@ isWifiActive(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-  let isWifiActive = wifi.isWifiActive();
-  console.info("isWifiActive:" + isWifiActive);
+	let isWifiActive = wifi.isWifiActive();
+	console.info("isWifiActive:" + isWifiActive);
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -80,9 +80,9 @@ scan(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-  wifi.scan();
+	wifi.scan();
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -94,9 +94,10 @@ getScanInfos(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfoList](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfos](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 ohos.permission.LOCATION)
+ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -115,9 +116,10 @@ getScanInfos(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfoList](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfos](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 ohos.permission.LOCATION)
+ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -244,30 +246,30 @@ addUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 import wifi from '@ohos.wifi';
 
 try {
-  let config:wifi.WifiDeviceConfig = {
-    ssid : "****",
-    bssid:  "****",
-    preSharedKey: "****",
-    isHiddenSsid: false,
-    securityType: 0,
-    creatorUid: 0,
-    disableReason: 0,
-    netId: 0,
-    randomMacType: 0,
-    randomMacAddr:  "****",
-    ipType: 0,
-    staticIp: {
-      ipAddress: 0,
-      gateway: 0,
-      dnsServers: [],
-      domains: []
-    }
-  }
-  wifi.addUntrustedConfig(config).then(result => {
-    console.info("result:" + JSON.stringify(result));
-  });  
+	let config:wifi.WifiDeviceConfig = {
+		ssid : "****",
+		bssid:  "****",
+		preSharedKey: "****",
+		isHiddenSsid: false,
+		securityType: 0,
+		creatorUid: 0,
+		disableReason: 0,
+		netId: 0,
+		randomMacType: 0,
+		randomMacAddr:  "****",
+		ipType: 0,
+		staticIp: {
+			ipAddress: 0,
+			gateway: 0,
+			dnsServers: [],
+			domains: []
+		}
+	}
+	wifi.addUntrustedConfig(config).then(result => {
+		console.info("result:" + JSON.stringify(result));
+	});	
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -297,30 +299,30 @@ addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boolean&
 import wifi from '@ohos.wifi';
 
 try {
-  let config:wifi.WifiDeviceConfig = {
-    ssid : "****",
-    bssid:  "****",
-    preSharedKey: "****",
-    isHiddenSsid: false,
-    securityType: 0,
-    creatorUid: 0,
-    disableReason: 0,
-    netId: 0,
-    randomMacType: 0,
-    randomMacAddr:  "****",
-    ipType: 0,
-    staticIp: {
-      ipAddress: 0,
-      gateway: 0,
-      dnsServers: [],
-      domains: []
-    }
-  }
-  wifi.addUntrustedConfig(config,(error,result) => {
-    console.info("result:" + JSON.stringify(result));
-  });  
+	let config:wifi.WifiDeviceConfig = {
+		ssid : "****",
+		bssid:  "****",
+		preSharedKey: "****",
+		isHiddenSsid: false,
+		securityType: 0,
+		creatorUid: 0,
+		disableReason: 0,
+		netId: 0,
+		randomMacType: 0,
+		randomMacAddr:  "****",
+		ipType: 0,
+		staticIp: {
+			ipAddress: 0,
+			gateway: 0,
+			dnsServers: [],
+			domains: []
+		}
+	}
+	wifi.addUntrustedConfig(config,(error,result) => {
+		console.info("result:" + JSON.stringify(result));
+	});	
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -356,30 +358,30 @@ removeUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 import wifi from '@ohos.wifi';
 
 try {
-  let config:wifi.WifiDeviceConfig = {
-    ssid : "****",
-    bssid:  "****",
-    preSharedKey: "****",
-    isHiddenSsid: false,
-    securityType: 0,
-    creatorUid: 0,
-    disableReason: 0,
-    netId: 0,
-    randomMacType: 0,
-    randomMacAddr:  "****",
-    ipType: 0,
-    staticIp: {
-      ipAddress: 0,
-      gateway: 0,
-      dnsServers: [],
-      domains: []
-    }
-  }
-  wifi.removeUntrustedConfig(config).then(result => {
-    console.info("result:" + JSON.stringify(result));
-  });  
+	let config:wifi.WifiDeviceConfig = {
+		ssid : "****",
+		bssid:  "****",
+		preSharedKey: "****",
+		isHiddenSsid: false,
+		securityType: 0,
+		creatorUid: 0,
+		disableReason: 0,
+		netId: 0,
+		randomMacType: 0,
+		randomMacAddr:  "****",
+		ipType: 0,
+		staticIp: {
+			ipAddress: 0,
+			gateway: 0,
+			dnsServers: [],
+			domains: []
+		}
+	}
+	wifi.removeUntrustedConfig(config).then(result => {
+		console.info("result:" + JSON.stringify(result));
+	});	
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -410,30 +412,30 @@ removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boole
 import wifi from '@ohos.wifi';
 
 try {
-  let config:wifi.WifiDeviceConfig = {
-    ssid : "****",
-    bssid:  "****",
-    preSharedKey: "****",
-    isHiddenSsid: false,
-    securityType: 0,
-    creatorUid: 0,
-    disableReason: 0,
-    netId: 0,
-    randomMacType: 0,
-    randomMacAddr:  "****",
-    ipType: 0,
-    staticIp: {
-      ipAddress: 0,
-      gateway: 0,
-      dnsServers: [],
-      domains: []
-    }
-  }
-  wifi.removeUntrustedConfig(config,(error,result) => {
-  console.info("result:" + JSON.stringify(result));
-  });  
+	let config:wifi.WifiDeviceConfig = {
+		ssid : "****",
+		bssid:  "****",
+		preSharedKey: "****",
+		isHiddenSsid: false,
+		securityType: 0,
+		creatorUid: 0,
+		disableReason: 0,
+		netId: 0,
+		randomMacType: 0,
+		randomMacAddr:  "****",
+		ipType: 0,
+		staticIp: {
+			ipAddress: 0,
+			gateway: 0,
+			dnsServers: [],
+			domains: []
+		}
+	}
+	wifi.removeUntrustedConfig(config,(error,result) => {
+	console.info("result:" + JSON.stringify(result));
+	});	
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -469,12 +471,12 @@ getSignalLevel(rssi: number, band: number): number
 import wifi from '@ohos.wifi';
 
 try {
-  let rssi = 0;
-  let band = 0;
-  let level = wifi.getSignalLevel(rssi,band);
-  console.info("level:" + JSON.stringify(level));
+	let rssi = 0;
+	let band = 0;
+	let level = wifi.getSignalLevel(rssi,band);
+	console.info("level:" + JSON.stringify(level));
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -640,11 +642,11 @@ isFeatureSupported(featureId: number): boolean
 import wifi from '@ohos.wifi';
 
 try {
-  let featureId = 0;
-  let ret = wifi.isFeatureSupported(featureId);
-  console.info("isFeatureSupported:" + ret);
+	let featureId = 0;
+	let ret = wifi.isFeatureSupported(featureId);
+	console.info("isFeatureSupported:" + ret);
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -675,10 +677,10 @@ getIpInfo(): IpInfo
 import wifi from '@ohos.wifi';
 
 try {
-  let info = wifi.getIpInfo();
-  console.info("info:" + JSON.stringify(info));
+	let info = wifi.getIpInfo();
+	console.info("info:" + JSON.stringify(info));
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -728,10 +730,10 @@ getCountryCode(): string
 import wifi from '@ohos.wifi';
 
 try {
-  let code = wifi.getCountryCode();
-  console.info("code:" + code);
+	let code = wifi.getCountryCode();
+	console.info("code:" + code);
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -820,11 +822,11 @@ wifi.getP2pLinkedInfo((err, data:wifi.WifiP2pLinkedInfo) => {
        console.error("get p2p linked info error");
        return;
    }
-  console.info("get wifi p2p linked info: " + JSON.stringify(data));
+	console.info("get wifi p2p linked info: " + JSON.stringify(data));
 });
 
 wifi.getP2pLinkedInfo().then(data => {
-  console.info("get wifi p2p linked info: " + JSON.stringify(data));
+	console.info("get wifi p2p linked info: " + JSON.stringify(data));
 });
 ```
 
@@ -878,11 +880,11 @@ wifi.getCurrentGroup((err, data:wifi.WifiP2pGroupInfo) => {
        console.error("get current P2P group error");
        return;
    }
-  console.info("get current P2P group: " + JSON.stringify(data));
+	console.info("get current P2P group: " + JSON.stringify(data));
 });
 
 wifi.getCurrentGroup().then(data => {
-  console.info("get current P2P group: " + JSON.stringify(data));
+	console.info("get current P2P group: " + JSON.stringify(data));
 });
 ```
 
@@ -904,7 +906,7 @@ getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | Promise对象。表示对端设备列表信息。 |
+  | Promise&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | Promise对象。表示对端设备列表信息。 |
 
 
 ## wifi.getP2pPeerDevices<sup>(deprecated)</sup>
@@ -925,7 +927,7 @@ getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | 是 | 回调函数。当操作成功时，err为0，data表示对端设备列表信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示对端设备列表信息。如果error为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -936,11 +938,11 @@ wifi.getP2pPeerDevices((err, data:wifi.WifiP2pDevice) => {
        console.error("get P2P peer devices error");
        return;
    }
-  console.info("get P2P peer devices: " + JSON.stringify(data));
+	console.info("get P2P peer devices: " + JSON.stringify(data));
 });
 
 wifi.getP2pPeerDevices().then(data => {
-  console.info("get P2P peer devices: " + JSON.stringify(data));
+	console.info("get P2P peer devices: " + JSON.stringify(data));
 });
 ```
 
@@ -1013,17 +1015,17 @@ createGroup(config: WifiP2PConfig): boolean
 import wifi from '@ohos.wifi';
 
 try {
-  let config:wifi.WifiP2PConfig = {
-    deviceAddress: "****",
-    netId: 0,
-    passphrase: "*****",
-    groupName: "****",
-    goBand: 0
-  }
-  wifi.createGroup(config);  
-  
+	let config:wifi.WifiP2PConfig = {
+		deviceAddress: "****",
+		netId: 0,
+		passphrase: "*****",
+		groupName: "****",
+		goBand: 0
+	}
+	wifi.createGroup(config);	
+	
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1088,9 +1090,9 @@ removeGroup(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-  wifi.removeGroup();  
+	wifi.removeGroup();	
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1214,9 +1216,9 @@ p2pCancelConnect(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-  wifi.p2pCancelConnect();  
+	wifi.p2pCancelConnect();	
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1245,9 +1247,9 @@ startDiscoverDevices(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-  wifi.startDiscoverDevices();  
+	wifi.startDiscoverDevices();	
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1276,9 +1278,9 @@ stopDiscoverDevices(): boolean
 import wifi from '@ohos.wifi';
 
 try {
-  wifi.stopDiscoverDevices();  
+	wifi.stopDiscoverDevices();	
 }catch(error){
-  console.error("failed:" + JSON.stringify(error));
+	console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1301,7 +1303,7 @@ try {
 | groupName | string | 否 | 否 | 群组名称。 |
 | networkId | number | 否 | 否 | 网络ID。 |
 | frequency | number | 否 | 否 | 群组的频率。 |
-| clientDevices | [WifiP2pDevice](#wifip2pdevicedeprecated)[] | 否 | 否 | 接入的设备列表信息。 |
+| clientDevices | [WifiP2pDevice[]](#wifip2pdevicedeprecated) | 否 | 否 | 接入的设备列表信息。 |
 | goIpAddress | string | 否 | 否 | 群组IP地址。 |
 
 
@@ -1834,7 +1836,7 @@ on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pPeerDeviceChange"字符串。 |
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | 是 | 状态改变回调函数。 |
 
 
 ## wifi.off('p2pPeerDeviceChange')<sup>(deprecated)</sup>
@@ -1856,7 +1858,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pPeerDeviceChange"字符串。 |
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **示例：**
 ```ts

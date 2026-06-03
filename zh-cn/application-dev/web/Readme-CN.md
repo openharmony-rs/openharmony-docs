@@ -73,4 +73,3 @@
   - [使用DevTools工具调试前端页面](web-debugging-with-devtools.md)
   - [使用crashpad收集Web组件崩溃信息](web-crashpad.md)
   - [定位与解决Web白屏问题](web-white-screen.md)<!--RP1--><!--RP1End-->
-- [ArkWeb术语](arkweb-glossary.md)

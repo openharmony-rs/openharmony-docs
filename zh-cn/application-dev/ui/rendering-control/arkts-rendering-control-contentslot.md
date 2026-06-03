@@ -79,42 +79,35 @@ struct Parent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[contentslot_one_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ContentSlot/entry/src/main/ets/pages/Index.ets) -->
 
 ```ts
-import { Column, Component, ContentSlot, Entry, NodeContent, Text } from '@kit.ArkUI';
 
-export class NativeMethods {
+import { Column, ContentSlot, Entry, Component } from '@ohos.arkui.component';
+import { Content, NodeContent } from '@ohos.arkui.node';
+
+class Native {
   static {
     loadLibrary("entry")
   }
 
-  static native createNativeNode(content: NodeContent): void;
-
-  static native destroyNativeNode(content: NodeContent): void;
+  native createNativeNode(content: NodeContent): void;
 }
-
 @Entry
 @Component
 struct Parent {
-  private nodeContent: NodeContent = new NodeContent();
+  private nodeContent: Content = new NodeContent();
+  private nativeNode: Native = new Native();
 
-  aboutToAppear(): void {
+  aboutToAppear() {
     // 通过C-API创建节点，并添加到管理器nodeContent上。
-    NativeMethods.createNativeNode(this.nodeContent as NodeContent);
+    this.nativeNode.createNativeNode(this.nodeContent as NodeContent);
   }
 
-  aboutToDisappear(): void {
-    NativeMethods.destroyNativeNode(this.nodeContent as NodeContent);
-  }
-
-  build(): void {
+  build() {
     Column() {
-      Text('This is ContentSlot sample')
-        .fontSize(30)
       // 显示nodeContent管理器里存放的Native侧的组件。
       ContentSlot(this.nodeContent)
-    }.width('100%')
+    }
   }
 }
 ```
