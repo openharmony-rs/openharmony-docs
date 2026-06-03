@@ -6100,14 +6100,17 @@ ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | 指向[OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)对象的指针。 |
-| const float* tailIndents | 尾部缩进值，单位：vp。当size为1时，所有行共享相同的尾缩进。当size大于1时，第i个值指定第i行的尾部缩进；如果文本行数超出size，则剩余行使用最后一个值缩进。 |
-| uint32_t size | 尾部缩进值个数。 |
+| const float* tailIndents | 尾部缩进值数组。单位：vp。其有效长度由size指定。若size等于1，则所有文本行使用相同的尾部缩进值tailIndents[0]；若size大于1，则第i行（从0开始计数）使用tailIndents[i]作为尾部缩进值。当文本行数超过size时，超出部分的行将复用tailIndents[size - 1]的值做缩进。 |
+| uint32_t size | tailIndents数组中有效尾部缩进值的个数。 |
+
+单位：vp
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
 
 ### OH_ArkUI_ParagraphStyle_GetTailIndents()
 
@@ -6131,7 +6134,7 @@ ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTailIndents(const OH_ArkUI_ParagraphS
 | -- | -- |
 | [const OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | 指向[OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)对象的指针。 |
 | float** tailIndents | 尾部缩进值，单位为vp。 |
-| uint32_t tailIndentsSize | 调用方提供的tailIndents缓冲区大小。 |
+| uint32_t tailIndentsSize | tailIndents缓冲区大小。 |
 | uint32_t* writeLength | 实际写入缓冲区的尾部缩进值个数。 |
 
 **返回：**
