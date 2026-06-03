@@ -1893,7 +1893,7 @@ export default class EntryAbility extends UIAbility {
 
 checkSpecialScenarioAuthResult(context: Context): Promise&lt;UserAuthResult&gt;
 
-查询用户是否授权能在后台长时间运行。使用Promise异步回调。当未授权时，返回授权结果NOT_DETERMINED；当未配置特殊场景类型MODE_SPECIAL_SCENARIO_PROCESSING的长时任务时，返回授权结果为NOT_SUPPORTED
+查询用户是否授权能在后台长时间运行。使用Promise异步回调。当未授权时，返回授权结果[NOT_DETERMINED](#userauthresult22)；当未配置特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务时，返回授权结果为[NOT_SUPPORTED](#userauthresult22)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
