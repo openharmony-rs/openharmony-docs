@@ -20,7 +20,7 @@ import { Builder } from '@kit.ArkUI';
 
 @Builder装饰器和[@Component装饰器](./arkts-create-custom-components.md#component)在功能和使用方式上的主要差异：
 
-1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#状态变量state-variables)或使用[自定义组件的生命周期函数](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
+1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#state-variables状态变量)或使用[自定义组件的生命周期函数](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
 
 2. 在ArkUI框架中，@Component装饰器作为封装复杂UI组件的核心机制，允许开发者通过组合多个基础组件来构建可复用的复合界面。该装饰器不仅支持内部状态变量的定义，还能完整管理组件的生命周期。
 
