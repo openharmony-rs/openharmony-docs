@@ -46,8 +46,7 @@
 
   应用在创建全局悬浮窗前，需要申请对应的权限。
   
-  <!--RP1-->
-  相关参考：[设置全局悬浮窗](application-window-stage.md#设置全局悬浮窗)。<!--RP1End-->
+  相关参考：[设置全局悬浮窗](application-window-stage.md#设置全局悬浮窗受限开放)。
 
 ## 自由窗口
 
