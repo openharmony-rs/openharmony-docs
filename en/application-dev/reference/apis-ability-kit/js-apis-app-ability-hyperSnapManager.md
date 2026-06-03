@@ -18,7 +18,6 @@ An application snapshot is created only once. Starting from the application snap
 
 **Figure 1** Snapshot startup process
 
-![Snapshot-Start](./figures/Snapshot-Start.png)
 
 ## Modules to Import
 
