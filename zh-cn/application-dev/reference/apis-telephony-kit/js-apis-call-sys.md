@@ -4750,7 +4750,9 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 
 sendUssdResponse\(slotId: number, content: string\): void
 
-发送ussd响应。
+发送非结构化补充数据业务响应消息。
+
+**起始版本**: 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -4762,7 +4764,7 @@ sendUssdResponse\(slotId: number, content: string\): void
 
 | 参数名    | 类型   | 必填 | 说明     |
 | --------- | ------ | ---- | -------- |
-| slotId    | number    | 是   | 表示发送响应的槽位ID。 |
+| slotId    | number    | 是   | 表示发送响应的卡槽ID。 |
 | content   | string | 是   | 表示响应内容。 |
 
 **错误码：**
